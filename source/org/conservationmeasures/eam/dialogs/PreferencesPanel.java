@@ -12,7 +12,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.Box;
 import javax.swing.JLabel;
@@ -22,6 +21,7 @@ import javax.swing.ListCellRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
@@ -96,6 +96,13 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		gridVisibleCheckBox.addActionListener(this);
 		panel.add(gridVisibleCheckBox);
 		
+		panel.add(new UiLabel("Currency Decimal Places"));
+		currencyDecimalDropDown = new UiComboBox(decimalPlacesChoices);
+		int currentDecimal = mainWindow.getProject().getMetadata().getCurrencyDecimalPlaces();
+		currencyDecimalDropDown.setSelectedItem(Integer.toString(currentDecimal));
+		currencyDecimalDropDown.addActionListener(this);
+		panel.add(currencyDecimalDropDown);
+		
 		return panel;
 	}
 	
@@ -108,28 +115,31 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	
 	void update()
 	{
-		Color interventionColor = (Color)interventionDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_STRATEGY, interventionColor);
-		
-		Color indirectFactorColor = (Color)indirectFactorDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR, indirectFactorColor);
-		
-		Color directThreatColor = (Color)directThreatDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT, directThreatColor);
-		
-		Color targetColor = (Color)targetDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
-		
-		Color scopeColor = (Color)scopeDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE, scopeColor);
-		
-		mainWindow.setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
-		
 		try
 		{
+			Color interventionColor = (Color)interventionDropdown.getSelectedItem();
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_STRATEGY, interventionColor);
+
+			Color indirectFactorColor = (Color)indirectFactorDropdown.getSelectedItem();
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR, indirectFactorColor);
+
+			Color directThreatColor = (Color)directThreatDropdown.getSelectedItem();
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT, directThreatColor);
+
+			Color targetColor = (Color)targetDropdown.getSelectedItem();
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
+
+			Color scopeColor = (Color)scopeDropdown.getSelectedItem();
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE, scopeColor);
+
+			mainWindow.setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
+
+			String currencyDecimal = (String)currencyDecimalDropDown.getSelectedItem();
+			mainWindow.getProject().setMetadata(ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES, currencyDecimal);
+
 			mainWindow.savePreferences();
 		}
-		catch (IOException e)
+		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unable to save preferences");
@@ -205,4 +215,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	static final Color[] scopeColorChoices = {new Color(0, 255, 0), new Color(128, 255, 128), new Color(0, 220, 0), new Color(0, 180, 0), new Color(0, 128, 0)};
 	
 	static final String headerText = "<html><H2>e-Adaptive Management Preferences</H2></html>";
+	
+	private String[] decimalPlacesChoices = {"0", "1", "2", "3", };
+	private UiComboBox currencyDecimalDropDown;
+
 }
