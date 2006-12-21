@@ -13,13 +13,15 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.main.MainWindow;
+
 public class WizardPanel extends JPanel
 {
-	public WizardPanel()
+	public WizardPanel(MainWindow mainWindowToUse)
 	{
 		super(new BorderLayout());
-		
 		steps = new SkeletonWizardStep[0];
+		mainWindow = mainWindowToUse;
 	}
 
 	public void setContents(JPanel contents)
@@ -88,8 +90,13 @@ public class WizardPanel extends JPanel
 		return currentStep;
 	}
 
-
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
 	SkeletonWizardStep[] steps;
 	protected int currentStep;
+	MainWindow mainWindow;
 }
 

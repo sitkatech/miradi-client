@@ -24,6 +24,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 {
 	public NoProjectWizardPanel(MainWindow mainWindowToUse) throws Exception
 	{
+		super(mainWindowToUse);
 		mainWindow = mainWindowToUse;
 		WELCOME = addStep(new NoProjectWizardWelcomeStep(this));
 		IMPORT = addStep(new NoProjectWizardImportStep(this));
@@ -245,7 +246,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		refresh();
 	}
 
-	MainWindow getMainWindow()
+	public MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}

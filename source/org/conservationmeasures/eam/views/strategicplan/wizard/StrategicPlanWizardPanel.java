@@ -11,12 +11,14 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class StrategicPlanWizardPanel extends WizardPanel
 {
-	public StrategicPlanWizardPanel(Actions actionsToUse) throws Exception
+	public StrategicPlanWizardPanel(Actions actionsToUse, MainWindow mainWindow) throws Exception
 	{
+		super(mainWindow);
 		actions  = actionsToUse;
 		
 		HOW_TO_CONSTRUCT_STRAT_PLAN = addStep(new StrategicPlanHowToConstructStep(this));

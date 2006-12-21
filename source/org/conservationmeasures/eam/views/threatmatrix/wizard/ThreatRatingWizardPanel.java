@@ -21,6 +21,7 @@ public class ThreatRatingWizardPanel extends WizardPanel
 {
 	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse) throws Exception
 	{
+		super(viewToUse.getMainWindow());
 		view = viewToUse;
 		
 		OVERVIEW = addStep(new ThreatRatingWizardOverviewStep(this));

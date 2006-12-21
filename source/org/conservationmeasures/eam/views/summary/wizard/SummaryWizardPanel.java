@@ -8,12 +8,14 @@ package org.conservationmeasures.eam.views.summary.wizard;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class SummaryWizardPanel extends WizardPanel
 {
-	public SummaryWizardPanel(Actions actionsToUse) throws Exception
+	public SummaryWizardPanel(Actions actionsToUse, MainWindow mainWindow) throws Exception
 	{
+		super(mainWindow);
 		actions = actionsToUse;
 		
 		OVERVIEW = addStep(new SummaryWizardOverviewStep(this));

@@ -48,7 +48,7 @@ public class SummaryView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception 
 	{
-		wizardPanel = new SummaryWizardPanel(getMainWindow().getActions());
+		wizardPanel = new SummaryWizardPanel(getMainWindow().getActions(), getMainWindow());
 		return wizardPanel;
 	}
 		

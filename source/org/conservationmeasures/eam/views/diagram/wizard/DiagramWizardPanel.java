@@ -11,22 +11,24 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopObjectivesStep;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class DiagramWizardPanel extends WizardPanel
 {
-	public DiagramWizardPanel(Actions actionsToUse) throws Exception
+	public DiagramWizardPanel(Actions actionsToUse, MainWindow mainWindow) throws Exception
 	{
+		super(mainWindow);
 		actions = actionsToUse;
 		
 		OVERVIEW = addStep(new DiagramWizardOverviewStep(this));

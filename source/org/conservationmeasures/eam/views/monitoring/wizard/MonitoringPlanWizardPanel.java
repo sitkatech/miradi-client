@@ -5,12 +5,14 @@
  */
 package org.conservationmeasures.eam.views.monitoring.wizard;
 
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class MonitoringPlanWizardPanel extends WizardPanel
 {
-	public MonitoringPlanWizardPanel() throws Exception
+	public MonitoringPlanWizardPanel(MainWindow mainWindow) throws Exception
 	{
+		super(mainWindow);
 		int WELCOME = addStep(new MonitoringPlanWizardWelcomeStep(this));
 
 		setStep(WELCOME);

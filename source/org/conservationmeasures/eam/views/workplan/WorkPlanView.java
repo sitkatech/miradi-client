@@ -68,7 +68,7 @@ public class WorkPlanView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new WorkPlanWizardPanel();
+		return new WorkPlanWizardPanel(getMainWindow());
 	}
 
 	public void deleteTabs() throws Exception

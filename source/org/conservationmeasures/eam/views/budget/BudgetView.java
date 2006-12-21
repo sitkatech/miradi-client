@@ -118,7 +118,7 @@ public class BudgetView extends TabbedView
 	
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new BudgetWizardPanel();
+		return new BudgetWizardPanel(getMainWindow());
 	}
 
 	public TaskTreeTablePanel getTaskTreeTablePanel()

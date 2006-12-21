@@ -54,7 +54,7 @@ public class ScheduleView extends TabbedView
 	
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new ScheduleWizardPanel();
+		return new ScheduleWizardPanel(getMainWindow());
 	}
 	
 }
