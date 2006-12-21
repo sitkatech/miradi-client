@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -86,6 +87,11 @@ public class ProjectMetadata extends EAMBaseObject
 	{
 		return teamResourceIds.getIdList();
 	}
+	
+	public int getCurrencyDecimalPlaces()
+	{
+		return currencyDecimalPlaces.asInt();
+	}
 
 	void clear()
 	{
@@ -100,6 +106,7 @@ public class ProjectMetadata extends EAMBaseObject
 		effectiveDate = new DateData();
 		sizeInHectares = new NumberData();
 		teamResourceIds = new IdListData();
+		currencyDecimalPlaces = new IntegerData();
 		
 		addField(TAG_PROJECT_NAME, projectName);
 		addField(TAG_PROJECT_SCOPE, projectScope);
@@ -111,6 +118,7 @@ public class ProjectMetadata extends EAMBaseObject
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
 		addField(TAG_TNC_SIZE_IN_HECTARES, sizeInHectares);
 		addField(TAG_TEAM_RESOURCE_IDS, teamResourceIds);
+		addField(TAG_CURRENCY_DECIMAL_PLACES, currencyDecimalPlaces);
 		
 		
 		tncLessonsLearned = new StringData();
@@ -135,6 +143,7 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_EXPECTED_END_DATE = "ExpectedEndDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 	public static final String TAG_TEAM_RESOURCE_IDS = "TeamResourceIds";
+	public static final String TAG_CURRENCY_DECIMAL_PLACES = "CurrencyDecimalPlaces";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -156,6 +165,7 @@ public class ProjectMetadata extends EAMBaseObject
 	DateData effectiveDate;
 	NumberData sizeInHectares;
 	IdListData teamResourceIds;
+	IntegerData currencyDecimalPlaces;
 	
 	StringData tncLessonsLearned;
 	StringData tncWorkbookVersionNumber;
