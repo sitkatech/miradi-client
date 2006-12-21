@@ -7,13 +7,16 @@ package org.conservationmeasures.eam.dialogfields;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiTextArea;
 
-public class ObjectNumericInputField extends ObjectTextInputField
+public class ObjectNumericInputField extends ObjectAdjustableStringInputField
 {
+	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int column)
+	{
+		super(projectToUse, objectType, objectId, tag, column);
+	}
+	 
 	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
 	{
-		super(projectToUse, objectType, objectId, tag, new UiTextArea(1, 10));
+		this(projectToUse, objectType, objectId, tag, 10);
 	}
-
 }

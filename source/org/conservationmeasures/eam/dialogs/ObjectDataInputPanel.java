@@ -117,6 +117,11 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return new ObjectDateInputField(project, objectType, objectId, tag);
 	}
 	
+	public ObjectDataInputField createNumericField(String tag, int column)
+	{
+		return new ObjectNumericInputField(project, objectType, objectId, tag, column);
+	}
+	
 	public ObjectDataInputField createNumericField(String tag)
 	{
 		return new ObjectNumericInputField(project, objectType, objectId, tag);
