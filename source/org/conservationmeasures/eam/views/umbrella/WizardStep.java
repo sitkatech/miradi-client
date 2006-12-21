@@ -104,15 +104,7 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 	
 	void fireRightClick(MouseEvent e)
 	{
-		try
-		{
-			Actions actions = new Actions( getWizard().getMainWindow());
-			getRightClickMenu(actions).show(this, e.getX(), e.getY());
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
+		getRightClickMenu(getWizard().getMainWindow().getActions()).show(this, e.getX(), e.getY());
 	}
 	
 	HashMap nameToValueMap = new HashMap();
