@@ -128,14 +128,7 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 
-	
-	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1, int mnemonic)
-	{
-		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(class1), mnemonic);
-		menu.add(menuItemNewProject);
-		return menuItemNewProject; 
-	}
-	
+
 	private JMenu createExportSetupMenu()
 	{
 		JMenu menu = new JMenu("Configure Export");
@@ -285,13 +278,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionInsertFactorLink.class, KeyEvent.VK_I);
 		return menu;
 	}
-	
-	private JMenuItem createJMenuItemCenterLocation(EAMAction action, int mnemonic)
-	{
-		JMenuItem centeredLocationAction = new MenuItemWithoutLocation(action);
-		centeredLocationAction.setMnemonic(mnemonic);
-		return centeredLocationAction;
-	}
+
 	
 	private JMenu createViewMenu(Actions actions)
 	{
@@ -501,4 +488,21 @@ public class MainMenuBar extends JMenuBar
 		menu.add(actions.get(ActionAbout.class));
 		return menu;
 	}
+	
+	
+	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1, int mnemonic)
+	{
+		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(class1), mnemonic);
+		menu.add(menuItemNewProject);
+		return menuItemNewProject; 
+	}
+	
+	
+	private JMenuItem createJMenuItemCenterLocation(EAMAction action, int mnemonic)
+	{
+		JMenuItem centeredLocationAction = new MenuItemWithoutLocation(action);
+		centeredLocationAction.setMnemonic(mnemonic);
+		return centeredLocationAction;
+	}
+	
 }
