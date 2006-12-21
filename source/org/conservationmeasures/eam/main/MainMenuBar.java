@@ -6,12 +6,12 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 
 import javax.swing.Action;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
@@ -111,33 +111,35 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createFileMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
+		menu.setMnemonic(KeyEvent.VK_F);
 		
-		addMenuItem(actions, menu, ActionNewProject.class, EAMenuItem.KEY_CTL_P);
-		
-		menu.add(new EAMenuItem(actions.get(ActionProjectSaveAs.class)));
-		menu.add(new JMenuItem(actions.get(ActionClose.class)));
+		addMenuItem(actions, menu, ActionNewProject.class, KeyEvent.VK_N);
+		addMenuItem(actions, menu, ActionProjectSaveAs.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionPrint.class)));
+		addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionSaveImage.class)));
+		addMenuItem(actions, menu, ActionSaveImage.class, KeyEvent.VK_S);
 		menu.add(createExportSetupMenu());
 		menu.add(createExportMenu(actions));
 		menu.add(createImportMenu(actions));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionExit.class)));
+		addMenuItem(actions, menu, ActionExit.class, KeyEvent.VK_E);
 		return menu;
 	}
 
-	private void addMenuItem(Actions actions, JMenu menu, Class class1, KeyStroke accelerator)
+	
+	private void addMenuItem(Actions actions, JMenu menu, Class class1, int mnemonic)
 	{
-		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(class1), accelerator);
+		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(class1), mnemonic);
 		menu.add(menuItemNewProject);
 	}
-	
 	
 	private JMenu createExportSetupMenu()
 	{
 		JMenu menu = new JMenu("Configure Export");
+		menu.setMnemonic(KeyEvent.VK_C);
+		
 		menu.add("Entire Project");
 		menu.add("Specific Views");
 		menu.add("Restrict Data");
@@ -148,7 +150,9 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportMenu(Actions actions)
 	{
 		JMenu menu = new JMenu("Export");
-		menu.add(new JMenuItem(actions.get(ActionExportZippedProjectFile.class)));
+		menu.setMnemonic(KeyEvent.VK_E);
+		
+		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
 		menu.add("CMP Learning Center");
 		menu.add(createExportOrgDatabaseSubmenu());
 		menu.add(createExportDonorReportsSubmenu());
@@ -159,6 +163,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportOrgDatabaseSubmenu()
 	{
 		JMenu menu = new JMenu("Organization Database");
+		menu.setMnemonic(KeyEvent.VK_O);
+		
 		menu.add("WWF Track");
 		menu.add("TNC Project Database");
 		menu.add("WCS Accounting System");
@@ -168,6 +174,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportDonorReportsSubmenu()
 	{
 		JMenu menu = new JMenu("Donor Report");
+		menu.setMnemonic(KeyEvent.VK_D);
+		
 		menu.add("GEF Format");
 		menu.add("Moore Format");
 		menu.add("CGBD Common Format");
@@ -177,6 +185,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportOtherSubmenu()
 	{
 		JMenu menu = new JMenu("Other Format");
+		menu.setMnemonic(KeyEvent.VK_O);
+		
 		menu.add("Diagram to MS Visio");
 		menu.add("Workplan to MS Project");
 		menu.add("Budget to MS Excel");
@@ -188,8 +198,11 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createImportMenu(Actions actions)
 	{
 		JMenu menu = new JMenu("Import");
-		menu.add(new JMenuItem(actions.get(ActionImportZippedProjectFile.class)));
-		menu.add(new JMenuItem(actions.get(ActionImportTncCapWorkbook.class)));
+		menu.setMnemonic(KeyEvent.VK_I);
+		
+		addMenuItem(actions, menu, ActionImportZippedProjectFile.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionImportTncCapWorkbook.class, KeyEvent.VK_C);
+		
 		menu.add(createImportProjectSubmenu());
 		menu.add(createImportMapSubmenu());
 		menu.add(createImportDiagramSubmenu());
@@ -200,6 +213,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createImportProjectSubmenu()
 	{
 		JMenu menu = new JMenu("Conservation Project");
+		menu.setMnemonic(KeyEvent.VK_C);
+		
 		menu.add("TNC CAP Workbook");
 		return menu;
 	}
@@ -207,6 +222,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createImportMapSubmenu()
 	{
 		JMenu menu = new JMenu("Maps");
+		menu.setMnemonic(KeyEvent.VK_M);
+		
 		menu.add("ARC Shape Files");
 		return menu;
 	}
@@ -214,6 +231,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createImportDiagramSubmenu()
 	{
 		JMenu menu = new JMenu("Diagrams");
+		menu.setMnemonic(KeyEvent.VK_D);
+		
 		menu.add("MS Visio");
 		return menu;
 	}
@@ -221,6 +240,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createImportWorkplanSubmenu()
 	{
 		JMenu menu = new JMenu("Workplans");
+		menu.setMnemonic(KeyEvent.VK_W);
+		
 		menu.add("MS Project");
 		return menu;
 	}
@@ -228,83 +249,103 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createEditMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Edit"));
-		menu.add(new JMenuItem(actions.get(ActionUndo.class)));
-		menu.add(new JMenuItem(actions.get(ActionRedo.class)));
+		menu.setMnemonic(KeyEvent.VK_E);
+		
+		addMenuItem(actions, menu, ActionUndo.class, KeyEvent.VK_U);
+		addMenuItem(actions, menu, ActionRedo.class, KeyEvent.VK_R);
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionCut.class)));
-		menu.add(new JMenuItem(actions.get(ActionCopy.class)));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionPaste.class)));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionPasteWithoutLinks.class)));
+		
+		addMenuItem(actions, menu, ActionCut.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionCopy.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionPaste.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionPasteWithoutLinks.class, KeyEvent.VK_P);
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionDelete.class)));
-		menu.add(new JMenuItem(actions.get(ActionSelectAll.class)));
-		menu.add(new JMenuItem(actions.get(ActionSelectChain.class)));
+		
+		addMenuItem(actions, menu, ActionDelete.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_C);
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionPreferences.class)));
+		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_P);
 		return menu;
 	}
 	
 	private JMenu createInsertMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Insert"));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDraftStrategy.class)));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertStrategy.class)));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertContributingFactor.class)));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class)));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class)));
+		menu.setMnemonic(KeyEvent.VK_I);
+		
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDraftStrategy.class),KeyEvent.VK_D));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertStrategy.class),KeyEvent.VK_S));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertContributingFactor.class),KeyEvent.VK_C));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class),KeyEvent.VK_D));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class),KeyEvent.VK_T));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionInsertFactorLink.class)));
+		
+		addMenuItem(actions, menu, ActionInsertFactorLink.class, KeyEvent.VK_I);
 		return menu;
 	}
 	
-	private JMenuItem createJMenuItemCenterLocation(EAMAction action)
+	private JMenuItem createJMenuItemCenterLocation(EAMAction action, int mnemonic)
 	{
 		JMenuItem centeredLocationAction = new MenuItemWithoutLocation(action);
+		centeredLocationAction.setMnemonic(mnemonic);
 		return centeredLocationAction;
 	}
 	
 	private JMenu createViewMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|View"));
+		menu.setMnemonic(KeyEvent.VK_V);
+		
 		Action[] viewSwitchActions = ViewSwitcher.getViewSwitchActions(actions);
 		for(int i = 0; i < viewSwitchActions.length; ++i)
 			menu.add(viewSwitchActions[i]);
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionZoomIn.class)));
-		menu.add(new JMenuItem(actions.get(ActionZoomOut.class)));
+		addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_Z);
+		addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_Z);
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionConfigureLayers.class)));
-		menu.add(new JMenuItem(actions.get(ActionShowSelectedChainMode.class)));
-		menu.add(new JMenuItem(actions.get(ActionShowFullModelMode.class)));
+		addMenuItem(actions, menu, ActionConfigureLayers.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu, ActionShowFullModelMode.class, KeyEvent.VK_S);
+		
 		return menu;
 	}
 	
 	private JMenu createMenu1(Actions actions)
 	{
 		JMenu menu1 = new JMenu("1. Conceptualize Your Project");
+		menu1.setMnemonic(KeyEvent.VK_C);
 		
 		JMenu menu1a = new JMenu("1A. Define initial project team");
-		menu1a.add(actions.get(ActionJumpSelectTeam.class));
-		menu1a.add(actions.get(ActionJumpDesignateLeader.class));
-		menu1a.add(actions.get(ActionJumpDevelopCharter.class));
+		menu1a.setMnemonic(KeyEvent.VK_D);
+		
+		addMenuItem(actions, menu1a, ActionJumpSelectTeam.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu1a, ActionJumpDesignateLeader.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu1a, ActionJumpDevelopCharter.class, KeyEvent.VK_D);
 	
 		JMenu menu1b = new JMenu("1B. Define clear and common purpose");
-		menu1b.add(actions.get(ActionJumpDefineScope.class));
-		menu1b.add(actions.get(ActionJumpEstablishVision.class));
-		menu1b.add(actions.get(ActionJumpIdentifyTargets.class));
-		menu1b.add(actions.get(ActionJumpDescribeTargets.class));
+		menu1b.setMnemonic(KeyEvent.VK_D);
+		
+		addMenuItem(actions, menu1b, ActionJumpDefineScope.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu1b, ActionJumpEstablishVision.class, KeyEvent.VK_E);
+		addMenuItem(actions, menu1b, ActionJumpIdentifyTargets.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu1b, ActionJumpDescribeTargets.class, KeyEvent.VK_D);
 		
 		JMenu menu1c = new JMenu("1C. Understand project context");
-		menu1c.add(actions.get(ActionJumpIdentifyDirectThreats.class));
-		menu1c.add(actions.get(ActionJumpRankDirectThreats.class));
-		menu1c.add(actions.get(ActionJumpIdentifyContributingFactors.class)); 
-		menu1c.add(actions.get(ActionJumpAssessStakeholders.class));
-		menu1c.add(actions.get(ActionJumpAnalyzeProjectCapacity.class));
+		menu1c.setMnemonic(KeyEvent.VK_U);
+		
+		addMenuItem(actions, menu1c, ActionJumpIdentifyDirectThreats.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu1c, ActionJumpRankDirectThreats.class, KeyEvent.VK_R);
+		addMenuItem(actions, menu1c, ActionJumpIdentifyContributingFactors.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu1c, ActionJumpAssessStakeholders.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu1c, ActionJumpAnalyzeProjectCapacity.class, KeyEvent.VK_A);
 		
 		JMenu menu1d = new JMenu("1D. Model project situation");
-		menu1d.add(actions.get(ActionJumpArticulateCoreAssumptions.class));
-		menu1d.add(actions.get(ActionJumpCreateModel.class));
-		menu1d.add(actions.get(ActionJumpGroundTruthRevise.class));
+		menu1d.setMnemonic(KeyEvent.VK_M);
+		
+		addMenuItem(actions, menu1d, ActionJumpArticulateCoreAssumptions.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu1d, ActionJumpCreateModel.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu1d, ActionJumpGroundTruthRevise.class, KeyEvent.VK_G);
 		
 		menu1.add(menu1a);
 		menu1.add(menu1b);
@@ -316,18 +357,23 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createMenu2(Actions actions)
 	{
 		JMenu menu2 = new JMenu("2. Plan Your Actions");
+		menu2.setMnemonic(KeyEvent.VK_P);
 		
 		JMenu menu2a = new JMenu("2A. Develop clear goal and objectives");
-		menu2a.add(actions.get(ActionJumpDevelopTargetGoals.class));
-		menu2a.add(actions.get(ActionJumpIdentifyStrategies.class));
-		menu2a.add(actions.get(ActionJumpDevelopObjectives.class));
+		menu2a.setMnemonic(KeyEvent.VK_D);
+		
+		addMenuItem(actions, menu2a, ActionJumpDevelopTargetGoals.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu2a, ActionJumpIdentifyStrategies.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu2a, ActionJumpDevelopObjectives.class, KeyEvent.VK_D);;
 		
 		JMenu menu2b = new JMenu("2B. Strategically select activities");
-		menu2b.add(actions.get(ActionJumpRankDraftStrategies.class));
-		menu2b.add(actions.get(ActionJumpResultsChains.class));
-		menu2b.add(actions.get(ActionJumpActivitiesAndActionPlan.class));
-		menu2b.add(actions.get(ActionJumpAnalyzeResourcesFeasibilityAndRisk.class));
+		menu2b.setMnemonic(KeyEvent.VK_S);
 		
+		addMenuItem(actions, menu2b, ActionJumpRankDraftStrategies.class, KeyEvent.VK_R);
+		addMenuItem(actions, menu2b, ActionJumpResultsChains.class, KeyEvent.VK_R);;
+		addMenuItem(actions, menu2b, ActionJumpActivitiesAndActionPlan.class, KeyEvent.VK_A);;
+		addMenuItem(actions, menu2b, ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);;
+
 		menu2.add(menu2a);
 		menu2.add(menu2b);
 		return menu2;
@@ -336,16 +382,21 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createMenu3(Actions actions)
 	{
 		JMenu menu3 = new JMenu("3. Plan Your Monitoring");
+		menu3.setMnemonic(KeyEvent.VK_P);
 		
 		JMenu menu3a = new JMenu("3A. Focus your monitoring");
-		menu3a.add(actions.get(ActionJumpDetermineNeeds.class));
-		menu3a.add(actions.get(ActionJumpDefineAudiences.class));
+		menu3a.setMnemonic(KeyEvent.VK_F);
+		
+		addMenuItem(actions, menu3a, ActionJumpDetermineNeeds.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu3a, ActionJumpDefineAudiences.class, KeyEvent.VK_D);
 		
 		JMenu menu3b = new JMenu("3B. Develop a formal monitoring plan");
-		menu3b.add(actions.get(ActionJumpDefineIndicators.class));
-		menu3b.add(actions.get(ActionJumpSelectAppropriateMethods.class));
-		menu3b.add(actions.get(ActionJumpPlanDataStorage.class));
+		menu3b.setMnemonic(KeyEvent.VK_D);
 		
+		addMenuItem(actions, menu3b, ActionJumpDefineIndicators.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu3b, ActionJumpSelectAppropriateMethods.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu3b, ActionJumpPlanDataStorage.class, KeyEvent.VK_P);
+
 		menu3.add(menu3a);
 		menu3.add(menu3b);
 		return menu3;
@@ -354,44 +405,52 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createMenu4(Actions actions)
 	{
 		JMenu menu4 = new JMenu("4. Implement Actions and Monitoring");
+		menu4.setMnemonic(KeyEvent.VK_I);
 		
+		addMenuItem(actions, menu4, ActionJumpImplementPlans.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu4, ActionJumpRefinePlans.class, KeyEvent.VK_R);
+
 		JMenu menu4a = new JMenu("4A. Develop detailed short-term work plans");
-		menu4a.add(actions.get(ActionJumpShorttermPlans.class));
-		menu4a.add(actions.get(ActionJumpDevelopActivities.class));
-		menu4a.add(actions.get(ActionJumpDefineTasks.class));
-		menu4a.add(actions.get(ActionJumpDevelopBudgets.class));
-		menu4a.add(actions.get(ActionJumpTeamRoles.class));
+		menu4a.setMnemonic(KeyEvent.VK_D);
 		
+		addMenuItem(actions, menu4a, ActionJumpShorttermPlans.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu4a, ActionJumpDevelopActivities.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu4a, ActionJumpDefineTasks.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu4a, ActionJumpDevelopBudgets.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu4a, ActionJumpTeamRoles.class, KeyEvent.VK_T);
+
 		menu4.add(menu4a);
-		menu4.add(actions.get(ActionJumpImplementPlans.class));
-		menu4.add(actions.get(ActionJumpRefinePlans.class));
 		return menu4;
 	}
 	
 	private JMenu createMenu5(Actions actions)
 	{
 		JMenu menu5 = new JMenu("5. Analyze");
+		menu5.setMnemonic(KeyEvent.VK_A);
 		
-		menu5.add(actions.get(ActionJumpAnalyzeData.class));
-		menu5.add(actions.get(ActionJumpAnalyzeInterventions.class));
-		menu5.add(actions.get(ActionJumpCommunicateResults.class));
+		addMenuItem(actions, menu5, ActionJumpAnalyzeData.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu5, ActionJumpAnalyzeInterventions.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu5, ActionJumpCommunicateResults.class, KeyEvent.VK_C);
+		
 		return menu5;
 	}
 	
 	private JMenu createMenu6(Actions actions)
 	{
 		JMenu menu6 = new JMenu("6. Use/Adapt");
-		menu6.add(actions.get(ActionJumpAdaptAndMonitorPlans.class));
+		menu6.setMnemonic(KeyEvent.VK_U);
+		addMenuItem(actions, menu6, ActionJumpAdaptAndMonitorPlans.class, KeyEvent.VK_C);
 		return menu6;
 	}
 	
 	private JMenu createMenu7(Actions actions)
 	{
 		JMenu menu7 = new JMenu("7. Capture and Share Learning");
+		menu7.setMnemonic(KeyEvent.VK_C);
 		
-		menu7.add(actions.get(ActionJumpDocument.class));
-		menu7.add(actions.get(ActionJumpShare.class));
-		menu7.add(actions.get(ActionJumpCreate.class));
+		addMenuItem(actions, menu7, ActionJumpDocument.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu7, ActionJumpShare.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu7, ActionJumpCreate.class, KeyEvent.VK_C);
 		
 		return menu7;
 	}
@@ -404,6 +463,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createProcessMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-Step"));
+		menu.setMnemonic(KeyEvent.VK_S);
+		
 		menu.add(createMenu1(actions));
 		menu.add(createMenu2(actions));
 		menu.add(createMenu3(actions));
@@ -418,6 +479,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createHelpMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
+		menu.setMnemonic(KeyEvent.VK_H);
 		
 		JMenuItem item1 = new JMenuItem(actions.get(ActionComingAttractions.class));
 		item1.putClientProperty(HelpButtonData.class, 
