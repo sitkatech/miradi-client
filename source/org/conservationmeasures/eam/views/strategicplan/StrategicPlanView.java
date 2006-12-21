@@ -58,7 +58,7 @@ public class StrategicPlanView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		stratPlanWizardPanel = new StrategicPlanWizardPanel(getMainWindow().getActions(), getMainWindow());
+		stratPlanWizardPanel = new StrategicPlanWizardPanel(getMainWindow());
 		return stratPlanWizardPanel;
 	}
 	

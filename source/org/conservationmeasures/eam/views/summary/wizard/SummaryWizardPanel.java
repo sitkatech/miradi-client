@@ -13,10 +13,10 @@ import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class SummaryWizardPanel extends WizardPanel
 {
-	public SummaryWizardPanel(Actions actionsToUse, MainWindow mainWindow) throws Exception
+	public SummaryWizardPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-		actions = actionsToUse;
+		actions = mainWindow.getActions();
 		
 		OVERVIEW = addStep(new SummaryWizardOverviewStep(this));
 		TEAM_MEMBERS = addStep(new SummaryWizardDefineTeamMembers(this));

@@ -26,10 +26,10 @@ import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class DiagramWizardPanel extends WizardPanel
 {
-	public DiagramWizardPanel(Actions actionsToUse, MainWindow mainWindow) throws Exception
+	public DiagramWizardPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-		actions = actionsToUse;
+		actions = mainWindow.getActions();
 		
 		OVERVIEW = addStep(new DiagramWizardOverviewStep(this));
 		PROJECT_SCOPE = addStep(new DiagramWizardProjectScopeStep(this));

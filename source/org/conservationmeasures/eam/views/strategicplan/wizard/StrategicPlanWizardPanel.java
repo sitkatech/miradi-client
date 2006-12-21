@@ -16,10 +16,10 @@ import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class StrategicPlanWizardPanel extends WizardPanel
 {
-	public StrategicPlanWizardPanel(Actions actionsToUse, MainWindow mainWindow) throws Exception
+	public StrategicPlanWizardPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-		actions  = actionsToUse;
+		actions  = mainWindow.getActions();
 		
 		HOW_TO_CONSTRUCT_STRAT_PLAN = addStep(new StrategicPlanHowToConstructStep(this));
 		VIEW_ALL_GOALS = addStep(new StrategicPlanViewAllGoals(this));
