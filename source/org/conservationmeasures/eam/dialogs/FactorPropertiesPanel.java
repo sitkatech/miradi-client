@@ -124,6 +124,21 @@ public class FactorPropertiesPanel extends DisposablePanel
 		grid.add(new UiLabel());
 		return grid;
 	}
+	
+	public String getFactorLabel(DiagramFactor diagramFactor)
+	{
+		//TODO: factor labes should be centralized in a common properties file or classs
+		if(diagramFactor.isDirectThreat())
+			return EAM.text("Direct Threat");
+		else if (diagramFactor.isContributingFactor())
+			return  EAM.text("Contributing Factor");
+		else if (diagramFactor.isStrategy()) 
+			return EAM.text("Strategy");
+		else if (diagramFactor.isTarget())
+			return EAM.text("Target");
+		else
+			return "";
+	}
 
 	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
 	{

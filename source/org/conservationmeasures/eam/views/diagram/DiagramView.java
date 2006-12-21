@@ -468,8 +468,9 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		closeActivePropertiesDialog();
 		if(nodePropertiesDlg != null)
 			disposeOfNodePropertiesDialog();
-		String title = EAM.text("Title|Properties");
+		
 		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), diagram);
+		String title = EAM.text("Title|"+nodePropertiesPanel.getFactorLabel(node) + " Properties");
 		nodePropertiesDlg = new ModelessDialogWithClose(getMainWindow(), nodePropertiesPanel, title);
 		
 		nodePropertiesPanel.setCurrentDiagramFactor(diagram, node);
