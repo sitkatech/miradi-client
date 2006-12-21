@@ -114,12 +114,12 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_F);
 		
 		addMenuItem(actions, menu, ActionNewProject.class, KeyEvent.VK_N);
-		addMenuItem(actions, menu, ActionProjectSaveAs.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionProjectSaveAs.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
 		menu.addSeparator();
-		addMenuItem(actions, menu, ActionSaveImage.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu, ActionSaveImage.class, KeyEvent.VK_J);
 		menu.add(createExportSetupMenu());
 		menu.add(createExportMenu(actions));
 		menu.add(createImportMenu(actions));
@@ -249,17 +249,17 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionRedo.class, KeyEvent.VK_R);
 		menu.addSeparator();
 		
-		addMenuItem(actions, menu, ActionCut.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionCut.class, KeyEvent.VK_T);
 		addMenuItem(actions, menu, ActionCopy.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionPaste.class, KeyEvent.VK_P);
-		addMenuItem(actions, menu, ActionPasteWithoutLinks.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionPasteWithoutLinks.class, -1);
 		menu.addSeparator();
 		
 		addMenuItem(actions, menu, ActionDelete.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_C);
 		menu.addSeparator();
-		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_I);
 		return menu;
 	}
 	
@@ -289,12 +289,12 @@ public class MainMenuBar extends JMenuBar
 		for(int i = 0; i < viewSwitchActions.length; ++i)
 			menu.add(viewSwitchActions[i]);
 		menu.addSeparator();
-		addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_Z);
-		addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_Z);
+		addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_O);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionConfigureLayers.class, KeyEvent.VK_C);
-		addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_S);
-		addMenuItem(actions, menu, ActionShowFullModelMode.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_O);
+		addMenuItem(actions, menu, ActionShowFullModelMode.class, KeyEvent.VK_F);
 		
 		return menu;
 	}
@@ -485,7 +485,7 @@ public class MainMenuBar extends JMenuBar
 		item4.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 		
-		menu.add(actions.get(ActionAbout.class));
+		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
 		return menu;
 	}
 	

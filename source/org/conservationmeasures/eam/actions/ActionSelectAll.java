@@ -17,7 +17,7 @@ public class ActionSelectAll extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|SelectAll");
+		return EAM.text("Action|Select All");
 	}
 
 }
