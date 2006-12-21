@@ -129,10 +129,11 @@ public class MainMenuBar extends JMenuBar
 	}
 
 	
-	private void addMenuItem(Actions actions, JMenu menu, Class class1, int mnemonic)
+	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1, int mnemonic)
 	{
 		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(class1), mnemonic);
 		menu.add(menuItemNewProject);
+		return menuItemNewProject; 
 	}
 	
 	private JMenu createExportSetupMenu()
@@ -481,25 +482,21 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
 		menu.setMnemonic(KeyEvent.VK_H);
 		
-		JMenuItem item1 = new JMenuItem(actions.get(ActionComingAttractions.class));
+		JMenuItem item1  = addMenuItem(actions, menu, ActionComingAttractions.class, KeyEvent.VK_C);
 		item1.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class, HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
-		menu.add(item1);
-		
-		JMenuItem item2 = new JMenuItem(actions.get(ActionHelptButtonMoreInfo.class));
+
+		JMenuItem item2  = addMenuItem(actions, menu, ActionHelptButtonMoreInfo.class, KeyEvent.VK_M);
 		item2.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
-		menu.add(item2);
 		
-		JMenuItem item3 = new JMenuItem(actions.get(ActionHelpButtonExamples.class));
+		JMenuItem item3  = addMenuItem(actions, menu, ActionHelpButtonExamples.class, KeyEvent.VK_E);
 		item3.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
-		menu.add(item3);
 		
-		JMenuItem item4 = new JMenuItem(actions.get(ActionHelptButtonWorkshop.class));
+		JMenuItem item4  = addMenuItem(actions, menu, ActionHelptButtonWorkshop.class, KeyEvent.VK_W);
 		item4.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
-		menu.add(item4);
 		
 		menu.add(actions.get(ActionAbout.class));
 		return menu;
