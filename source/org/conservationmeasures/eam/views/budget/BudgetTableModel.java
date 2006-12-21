@@ -36,7 +36,11 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		assignmentIdList  = assignmentIdListToUse;
 		totalsCalculator = new BudgetTotalsCalculator(project);
 		dateRanges = new ProjectCalendar(project).getQuarterlyDateDanges();
-		formatter = new DecimalFormat("0.00");
+		
+		int currencyDecimalPlaces = project.getMetadata().getCurrencyDecimalPlaces();
+		formatter = new DecimalFormat();
+		formatter.setMinimumFractionDigits(currencyDecimalPlaces);
+		formatter.setMaximumFractionDigits(currencyDecimalPlaces);
 	}
 	
 	public BaseId getAssignmentForRow(int row)
