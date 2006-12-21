@@ -2,6 +2,8 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -139,8 +141,9 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 			dropdownThreatClassification.setSelectedItem(foundTaxonomyItem);
 
-			dropdownThreatClassification
-					.addActionListener(new ThreatClassificationChangeHandler());
+			dropdownThreatClassification.addActionListener(new ThreatClassificationChangeHandler());
+			
+			dropdownThreatClassification.addFocusListener(new ClassificationFocusHandler());
 
 			return dropdownThreatClassification;
 
@@ -176,8 +179,9 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 			dropdownStrategyClassification.setSelectedItem(foundTaxonomyItem);
 
-			dropdownStrategyClassification
-				.addActionListener(new StrategyClassificationChangeHandler());
+			dropdownStrategyClassification.addActionListener(new StrategyClassificationChangeHandler());
+			
+			dropdownStrategyClassification.addFocusListener(new ClassificationFocusHandler());
 
 			return dropdownStrategyClassification;
 		}
@@ -234,24 +238,26 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 						getCurrentFactorId(), tag, taxonomyCode);
 				getProject().executeCommand(cmd);
 			}
-			else 
-			{
-				EAM.errorDialog(EAM
-						.text("Please choose a specific classification not a catagory"));
-				String code = getCurrentDiagramFactor().getUnderlyingObject().getData(tag);
-				for (int i=0; i<thisComboBox.getItemCount(); i++) 
-				{
-					TaxonomyItem foundItem = (TaxonomyItem)thisComboBox.getItemAt(i);
-					if (code.equals(foundItem.getTaxonomyCode())) 
-						thisComboBox.setSelectedIndex(i);
-				}
-				
-			}
 		}
 		catch(CommandFailedException e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("That action failed due to an unknown error");
+		}
+	}
+	
+	class ClassificationFocusHandler implements FocusListener
+	{
+
+		public void focusGained(FocusEvent e)
+		{
+		}
+
+		public void focusLost(FocusEvent e)
+		{
+			TaxonomyItem taxonomyItem = (TaxonomyItem) ((UiComboBox)e.getSource()).getSelectedItem();
+			if (!taxonomyItem.isLeaf())
+				EAM.errorDialog("(" + EAM.text(taxonomyItem.getTaxonomyDescription() + ")\n Please choose a specific classification not a catagory"));
 		}
 	}
 	
