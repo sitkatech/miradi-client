@@ -226,7 +226,7 @@ abstract public class Factor extends EAMBaseObject
 
 	public static final String OBJECT_NAME = "Factor";
 	public static final String OBJECT_NAME_THREAT = "Direct Threat";
-	public static final String OBJECT_NAME_CONTRIBUTING_FACTOR = "Contributing Facttor";
+	public static final String OBJECT_NAME_CONTRIBUTING_FACTOR = "Contributing Factor";
 	
 	private FactorType type;
 	private StringData comment;
