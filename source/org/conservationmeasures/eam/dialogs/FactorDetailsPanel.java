@@ -114,55 +114,26 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 				EAM.errorDialog("That action failed due to an unknown error");
 			}
 		}
-
 	}
-
+	
 	private JComponent createThreatClassificationDropdown()
 	{
-		String[] choices = { "error processing classifications", };
-		try
-		{
-			TaxonomyItem[] taxonomyItems = TaxonomyLoader
-					.load(TaxonomyLoader.THREAT_TAXONOMIES_FILE);
-			dropdownThreatClassification = new UiComboBox(taxonomyItems);
-
-			String taxonomyCode = getCurrentDiagramFactor().getUnderlyingObject()
-					.getData(Cause.TAG_TAXONOMY_CODE);
-
-			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
-					taxonomyItems, taxonomyCode);
-
-			if(foundTaxonomyItem == null)
-			{
-				String errorMessage = "Threat not found in table ; please make another selection";
-				EAM.errorDialog(EAM.text(errorMessage));
-				foundTaxonomyItem = taxonomyItems[0];
-			}
-
-			dropdownThreatClassification.setSelectedItem(foundTaxonomyItem);
-
-			dropdownThreatClassification.addActionListener(new ThreatClassificationChangeHandler());
-			
-			dropdownThreatClassification.addFocusListener(new ClassificationFocusHandler());
-
-			return dropdownThreatClassification;
-
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return new UiComboBox(choices);
-		}
+		return createClassificationDropdown(TaxonomyLoader.THREAT_TAXONOMIES_FILE);
 	}
 
 	private JComponent createStrategyClassificationDropdown()
 	{
+		return  createClassificationDropdown(TaxonomyLoader.STRATEGY_TAXONOMIES_FILE);
+	}
+	
+	
+	private UiComboBox createClassificationDropdown(String taxonomyFile)
+	{
 		String[] choices = { "error processing classifications", };
 		try
 		{
-			TaxonomyItem[] taxonomyItems = TaxonomyLoader
-					.load(TaxonomyLoader.STRATEGY_TAXONOMIES_FILE);
-			dropdownStrategyClassification = new UiComboBox(taxonomyItems);
+			TaxonomyItem[] taxonomyItems = TaxonomyLoader.load(taxonomyFile);
+			UiComboBox comboBox = new UiComboBox(taxonomyItems);
 			
 			String taxonomyCode = getCurrentDiagramFactor().getUnderlyingObject()
 			.getData(Cause.TAG_TAXONOMY_CODE);
@@ -172,18 +143,18 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 			if(foundTaxonomyItem == null)
 			{
-				String errorMessage = "Strategy not found in table ; please make another selection";
+				String errorMessage = "Classification not found in table ; please make another selection";
 				EAM.errorDialog(EAM.text(errorMessage));
 				foundTaxonomyItem = taxonomyItems[0];
 			}
 
-			dropdownStrategyClassification.setSelectedItem(foundTaxonomyItem);
+			comboBox.setSelectedItem(foundTaxonomyItem);
 
-			dropdownStrategyClassification.addActionListener(new StrategyClassificationChangeHandler());
+			comboBox.addActionListener(new ClassificationChangeHandler());
 			
-			dropdownStrategyClassification.addFocusListener(new ClassificationFocusHandler());
+			comboBox.addFocusListener(new ClassificationFocusHandler());
 
-			return dropdownStrategyClassification;
+			return comboBox;
 		}
 		catch(Exception e)
 		{
@@ -203,23 +174,14 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		}
 		return null;
 	}
-
-	class ThreatClassificationChangeHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			TaxonomyItem taxonomyItem = getThreatTaxonomyItem();
-			actionSaveTaxonomySelection(dropdownThreatClassification, taxonomyItem);
-		}
-
-	}
 	
-	class StrategyClassificationChangeHandler implements ActionListener
+	class ClassificationChangeHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			TaxonomyItem taxonomyItem = getStrategyTaxonomyItem();
-			actionSaveTaxonomySelection(dropdownStrategyClassification, taxonomyItem);
+			UiComboBox comboBox = (UiComboBox)event.getSource();
+			TaxonomyItem taxonomyItem = getStrategyTaxonomyItem(comboBox);
+			actionSaveTaxonomySelection(comboBox, taxonomyItem);
 		}
 	}
 	
@@ -228,7 +190,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		try
 		{
 			int type = ObjectType.FACTOR;
-			// TODO: This looks wrong...could be called for Strategy or DirectThreat
 			String tag = Cause.TAG_TAXONOMY_CODE;
 		
 			if(taxonomyItem != null)
@@ -248,7 +209,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	
 	class ClassificationFocusHandler implements FocusListener
 	{
-
 		public void focusGained(FocusEvent e)
 		{
 		}
@@ -271,20 +231,9 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 				Strategy.TAG_STATUS, newValue);
 	}
 
-
-	private TaxonomyItem getThreatTaxonomyItem()
+	private TaxonomyItem getStrategyTaxonomyItem(UiComboBox comboBox)
 	{
-		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownThreatClassification.getSelectedItem();
-		
-		if (!taxonomyItem.isLeaf()) 
-			return null;
-
-		return taxonomyItem;
-	}
-
-	private TaxonomyItem getStrategyTaxonomyItem()
-	{
-		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownStrategyClassification.getSelectedItem();
+		TaxonomyItem taxonomyItem = (TaxonomyItem) comboBox.getSelectedItem();
 		
 		if (!taxonomyItem.isLeaf()) 
 			return null;
@@ -310,6 +259,4 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	private Icon detailIcon;
 	private DiagramFactor currentDiagramFactor;
 	private UiCheckBox statusCheckBox;
-	private UiComboBox dropdownThreatClassification;
-	private UiComboBox dropdownStrategyClassification;
 }
