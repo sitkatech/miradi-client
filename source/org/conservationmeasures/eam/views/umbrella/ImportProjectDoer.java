@@ -19,7 +19,7 @@ import org.martus.swing.UiFileChooser;
 
 public abstract class ImportProjectDoer extends ViewDoer
 {
-	public abstract boolean createProject(File finalProjectDirectory, File importFile);
+	public abstract void createProject(File finalProjectDirectory, File importFile)  throws Exception;
 	
 	public abstract String getFileExtension();
 	
@@ -60,19 +60,15 @@ public abstract class ImportProjectDoer extends ViewDoer
 				return;
 			}
 			
-			if (!createProject(finalProjectDirectory, fileToImport))
-			{
-				EAM.notifyDialog(EAM.text("Import failed"));
-				return;
-			}
+			createProject(finalProjectDirectory, fileToImport);
 
 			refreshNoProjectPanel();
 			EAM.notifyDialog(EAM.text("Import Competed"));
 		}
 		catch(Exception e)
 		{
+			EAM.errorDialog("Import failed: " + e.getMessage());
 			EAM.logException(e);
-			EAM.errorDialog("Unexpected error has occurred");
 		}
 	}
 

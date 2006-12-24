@@ -10,24 +10,14 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
 import org.conservationmeasures.eam.utils.ZIPFileFilter;
 
 public class ImportZippedProjectFileDoer  extends ImportProjectDoer
 {
-	public boolean createProject(File finalProjectDirectory, File importFile)
+	public void createProject(File finalProjectDirectory, File importFile) throws Exception
 	{
-		try
-		{
-			ProjectUnzipper.unzipToProjectDirectory(importFile, finalProjectDirectory);
-			return true;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
+		ProjectUnzipper.unzipToProjectDirectory(importFile, finalProjectDirectory);
 	}
 
 	public FileFilter getFileFilter()
