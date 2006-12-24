@@ -14,7 +14,10 @@ import java.util.HashSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.conservationmeasures.eam.database.ProjectServer;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.martus.util.DirectoryUtils;
 
 public class ProjectUnzipper
 {
@@ -66,11 +69,16 @@ public class ProjectUnzipper
 		}
 	}
 	
-	public static void unzipToProjectDirectory(File zipFile, File projectDirectory) throws IOException
+	public static void unzipToProjectDirectory(File zipFile, File projectDirectory) throws Exception
 	{
 		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
 		projectDirectory.mkdir();
 		unzip(zipIn, projectDirectory);
+		if (!ProjectServer.isExistingProject(projectDirectory))
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
+			throw(new CommandFailedException(projectDirectory +" \nNot a valid project file"));
+		}
 	}
 	
 	public static void unzip(ZipInputStream zipInput, File destinationDirectory) throws IOException
