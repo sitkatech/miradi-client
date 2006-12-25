@@ -18,12 +18,12 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.dialogfields.ObjectAdjustableStringInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectCodeListField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
-import org.conservationmeasures.eam.dialogfields.ObjectDateInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectDateChooserInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
-import org.conservationmeasures.eam.dialogfields.ObjectChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -112,9 +112,9 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return new ObjectAdjustableStringInputField(project, objectType, objectId, tag, column);
 	}
 	
-	public ObjectDataInputField createDateField(String tag)
+	public ObjectDataInputField createDateChooserField(String tag)
 	{
-		return new ObjectDateInputField(project, objectType, objectId, tag);
+		return new ObjectDateChooserInputField(project, objectType, objectId, tag);
 	}
 	
 	public ObjectDataInputField createNumericField(String tag, int column)

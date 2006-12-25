@@ -29,7 +29,7 @@ public class EAM
 {
 	public static void main(String[] args)
 	{
-		setLogLevel(LOG_DEBUG);
+		setLogLevel(LOG_QUIET);
 		if(Arrays.asList(args).contains("--verbose"))
 			setLogLevel(LOG_VERBOSE);
 		setExceptionLoggingDestination();

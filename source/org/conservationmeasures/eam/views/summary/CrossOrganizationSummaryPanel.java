@@ -18,11 +18,15 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 
 		addField(createReadonlyTextField(metadata.PSEUDO_TAG_PROJECT_FILENAME));
 		addField(createStringField(metadata.TAG_PROJECT_NAME));
-		addField(createDateField(metadata.TAG_START_DATE));
-		addField(createDateField(metadata.TAG_EXPECTED_END_DATE));
+	
+		addField(createDateChooserField(metadata.TAG_START_DATE));
+		addField(createDateChooserField(metadata.TAG_EXPECTED_END_DATE));
+		
 		addField(createNumericField(metadata.TAG_CURRENCY_DECIMAL_PLACES, 2));
-		addField(createDateField(metadata.TAG_DATA_EFFECTIVE_DATE));
+		addField(createDateChooserField(metadata.TAG_DATA_EFFECTIVE_DATE));
+		
 		addFieldTeam(mainWindowToUse);
+		
 		addField(createMultilineField(metadata.TAG_PROJECT_SCOPE));
 		addField(createStringField(metadata.TAG_SHORT_PROJECT_SCOPE));
 		addField(createMultilineField(metadata.TAG_PROJECT_VISION));
