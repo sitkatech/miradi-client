@@ -95,20 +95,6 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return col == getUnitTotalsColumnIndex();
 	}
 
-	protected boolean isUnitsColumn(int col)
-	{
-		if (col < (TOTAL_ROW_HEADER_COLUMN_COUNT))
-			return false;
-		
-		if (!isOdd(col))
-			return false;
-		
-		if (col  < (getColumnCount() - TOTALS_COLUMN_COUNT ))
-			return true;
-		
-		return false;
-	}
-
 	public boolean isCostColumn(int col)
 	{
 		if (col < (TOTAL_ROW_HEADER_COLUMN_COUNT))
@@ -155,6 +141,8 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	abstract public BaseId getAssignmentForRow(int row);
 	
 	abstract public boolean doubleRowed();
+	
+	abstract protected boolean isUnitsColumn(int col);
 	
 	private static final int RESOURCES_COLUMN_INDEX = 0;
 	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;

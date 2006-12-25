@@ -95,6 +95,17 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		return true;
 	}
 	
+	protected boolean isUnitsColumn(int col)
+	{
+		if (col < (UNIT_ROW_HEADER_COLUMN_COUNT))
+			return false;
+		
+		if (col  < (getColumnCount() - UNIT_TOTAL_COLUMN_COUNT ))
+			return true;
+		
+		return false;
+	}
+	
 	public boolean doubleRowed()
 	{
 		return false;
@@ -102,6 +113,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 
     
 	static final int UNIT_ROW_HEADER_COLUMN_COUNT = 3;
+	static final int UNIT_TOTAL_COLUMN_COUNT = 1;
 	
 	BudgetTableModel budgetModel;
 }

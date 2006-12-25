@@ -526,6 +526,21 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return false;
 	}
 	
+	protected boolean isUnitsColumn(int col)
+	{
+		if (col < (TOTAL_ROW_HEADER_COLUMN_COUNT))
+			return false;
+		
+		if (!isOdd(col))
+			return false;
+		
+		if (col  < (getColumnCount() - TOTALS_COLUMN_COUNT ))
+			return true;
+		
+		return false;
+	}
+
+	
 	public boolean isTotalsRow(int row)
 	{
 		if (row < (getRowCount() - 2))
