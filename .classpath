@@ -9,6 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="third-party/jexcel/jxl.jar"/>
 	<classpathentry kind="lib" path="third-party/tablelayout/TableLayout.jar"/>
-	<classpathentry kind="lib" path="third-party/BrowserLauncher2-all-10rc4/BrowserLauncher2-all-10rc4.jar"/>
+	<classpathentry kind="lib" path="third-party/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
