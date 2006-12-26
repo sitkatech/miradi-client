@@ -40,8 +40,7 @@ public class ThreatGridPanel extends JPanel
 
 	public JScrollPane createThreatGridPanel(NonEditableThreatMatrixTableModel model) throws Exception
 	{
-		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
-		JTable rowTable = createRowHeaderTable(newRowHeaderData);
+		JTable rowTable = createThreatTableRowHeader(model);
 		rowHeaderTable = rowTable;
 		
 		ThreatMatrixTable table = createThreatTable(model);
@@ -60,6 +59,14 @@ public class ThreatGridPanel extends JPanel
 				rowTable, table);
 		
 		return scrollPane;
+	}
+
+	private JTable createThreatTableRowHeader(NonEditableThreatMatrixTableModel model)
+	{
+		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
+		JTable rowTable = createRowHeaderTable(newRowHeaderData);
+		rowTable.getColumnModel().getColumn(0).setHeaderRenderer(new TableHeaderRenderer());
+		return rowTable;
 	}
 	
 	public void establishPriorSortState() throws Exception  
