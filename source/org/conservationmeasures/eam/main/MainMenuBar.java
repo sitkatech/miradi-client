@@ -357,15 +357,15 @@ public class MainMenuBar extends JMenuBar
 		
 		addMenuItem(actions, menu2a, ActionJumpDevelopTargetGoals.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu2a, ActionJumpIdentifyStrategies.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu2a, ActionJumpDevelopObjectives.class, KeyEvent.VK_D);;
+		addMenuItem(actions, menu2a, ActionJumpDevelopObjectives.class, KeyEvent.VK_D);
 		
 		JMenu menu2b = new JMenu("2B. Strategically select activities");
 		menu2b.setMnemonic(KeyEvent.VK_S);
 		
 		addMenuItem(actions, menu2b, ActionJumpRankDraftStrategies.class, KeyEvent.VK_R);
-		addMenuItem(actions, menu2b, ActionJumpResultsChains.class, KeyEvent.VK_R);;
-		addMenuItem(actions, menu2b, ActionJumpActivitiesAndActionPlan.class, KeyEvent.VK_A);;
-		addMenuItem(actions, menu2b, ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);;
+		addMenuItem(actions, menu2b, ActionJumpResultsChains.class, KeyEvent.VK_R);
+		addMenuItem(actions, menu2b, ActionJumpActivitiesAndActionPlan.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu2b, ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);
 
 		menu2.add(menu2a);
 		menu2.add(menu2b);
