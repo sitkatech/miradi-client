@@ -23,7 +23,7 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 		project = projectToUse;
 		totalCalculator = new BudgetTotalsCalculator(project);
 		yearlyDateRanges = new ProjectCalendar(project).getYearlyDateRanges();
-		formatter = project.getCurrencyFormatter();
+		currencyFormatter = project.getCurrencyFormatter();
 		
 		combineColumnNames();
 	}
@@ -61,14 +61,14 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 		TreeTableNode node = (TreeTableNode)rawNode;
 		DateRange dateRange = (DateRange)columnNames.get(col);
         double total = totalCalculator.calculateTotalCost(node, dateRange); 
-		return  formatter.format(total);
+		return  currencyFormatter.format(total);
 	}
 
 	private Object getCost(Object rawNode)
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
 		double totalCost = totalCalculator.calculateTotalCost(node);
-		return formatter.format(totalCost);
+		return currencyFormatter.format(totalCost);
 	}
 
 	
@@ -82,7 +82,7 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 		return col == getColumnCount() - 1;
 	}
 	
-	DecimalFormat formatter;
+	DecimalFormat currencyFormatter;
 	
 	private Vector columnNames;
 	private Vector yearlyDateRanges;
