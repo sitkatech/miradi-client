@@ -28,7 +28,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		
 		dateChooser = new JDateChooser(new DateEditor());
 		dateChooser.setDate(getStartDate(tag));
-		dateChooser.setDateFormatString("yyyy-MM-d");
+		dateChooser.setDateFormatString("yyyy-MM-dd");
 
 		//TODO remove hardcoded pref and min settings
 		Dimension dimension = new Dimension(150, 20);
