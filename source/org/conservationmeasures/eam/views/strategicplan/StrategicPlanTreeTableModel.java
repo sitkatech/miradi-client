@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
@@ -41,7 +43,7 @@ public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 	
 	public static final int labelColumn = 0;
 	
-	static final String[] columnNames = {"Item", Strategy.TAG_TAXONOMY_CODE};
+	static final String[] columnNames = {"Item", EAM.fieldLabel(ObjectType.FACTOR, Strategy.TAG_TAXONOMY_CODE)};
 	
 	Project project;
 
