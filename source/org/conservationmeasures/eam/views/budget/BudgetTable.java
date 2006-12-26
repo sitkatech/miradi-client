@@ -255,6 +255,9 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 		
 		if (model.isUnitsTotalColumn(column))
 			setComponentColors(component, totalsColor);
+		
+		if (model.isCellEditable(row, column))
+			component.setForeground(Color.BLUE);
 	}
 	
 	void setComponentColors(Component component, Color background)
