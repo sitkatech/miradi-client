@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="third-party/jexcel/jxl.jar"/>
 	<classpathentry kind="lib" path="third-party/tablelayout/TableLayout.jar"/>
 	<classpathentry kind="lib" path="third-party/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
+	<classpathentry kind="lib" path="third-party/jcalendar-1.3.2/jcalendar-1.3.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
