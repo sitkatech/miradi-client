@@ -84,6 +84,9 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		if (isLabelColumn(col))
 			return false;
 		
+		if (isYearlyTotalColumn(col))
+			return false;
+		
 		if (isOdd(row))
 			return false;
 			
