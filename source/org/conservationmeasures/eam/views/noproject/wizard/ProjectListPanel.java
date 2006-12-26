@@ -16,8 +16,11 @@ public class ProjectListPanel extends JPanel
 		projectList = new ProjectList(handlerToUse);
 		
 		WizardHtmlViewer intro = new WizardHtmlViewer(handlerToUse);
+
 		intro.setText("<p>To <strong>continue working on an existing project</strong>, " +
-				"select it from the list below:</p>");
+				"click on the name in the list below. To copy, rename, export " +
+				"to zip, or delete a file, right click (alt-click) on the name.</p>");
+		
 		
 		add(intro, BorderLayout.BEFORE_FIRST_LINE);
 		add(new UiScrollPane(projectList), BorderLayout.CENTER);
