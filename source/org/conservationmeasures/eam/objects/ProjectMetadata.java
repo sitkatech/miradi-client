@@ -126,12 +126,18 @@ public class ProjectMetadata extends EAMBaseObject
 		tncWorkbookVersionDate = new DateData();
 		tncDatabaseDownloadDate = new DateData();
 		tncPlanningTeamComment = new StringData();
+		tncEcoregion = new StringData();
+		tncCountry = new StringData();
+		tncOperatingUnits = new StringData();
 		
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
 		addField(TAG_TNC_WORKBOOK_VERSION_DATE, tncWorkbookVersionDate);
 		addField(TAG_TNC_DATABASE_DOWNLOAD_DATE, tncDatabaseDownloadDate);
 		addField(TAG_TNC_PLANNING_TEAM_COMMENT, tncPlanningTeamComment);
+		addField(TAG_TNC_ECOREGION, tncEcoregion);
+		addField(TAG_TNC_COUNTRY, tncCountry);
+		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
 	}
 
 	public static final String TAG_PROJECT_NAME = "ProjectName";
@@ -153,6 +159,9 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_TNC_DATABASE_DOWNLOAD_DATE = "TNC.DatabaseDownloadDate";
 	public static final String TAG_TNC_PLANNING_TEAM_COMMENT = "TNC.PlanningTeamComment";
 	public static final String TAG_TNC_SIZE_IN_HECTARES = "TNC.SizeInHectares";
+	public static final String TAG_TNC_ECOREGION = "TNC.Ecoregion";
+	public static final String TAG_TNC_COUNTRY = "TNC.Country";
+	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
 
 
 	StringData projectName;
@@ -172,4 +181,7 @@ public class ProjectMetadata extends EAMBaseObject
 	DateData tncWorkbookVersionDate;
 	DateData tncDatabaseDownloadDate;
 	StringData tncPlanningTeamComment;
+	StringData tncEcoregion;
+	StringData tncCountry;
+	StringData tncOperatingUnits;
 }
