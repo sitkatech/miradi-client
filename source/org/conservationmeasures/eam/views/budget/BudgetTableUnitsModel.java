@@ -110,9 +110,14 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 	{
 		return false;
 	}
-
-    
-	static final int UNIT_ROW_HEADER_COLUMN_COUNT = 3;
+	
+	public int getUnitsLabelColumnIndex()
+	{
+		return UNITS_LABEL_COLUMN_INDEX;
+	}
+	
+	private static final int UNITS_LABEL_COLUMN_INDEX = 1;
+	static final int UNIT_ROW_HEADER_COLUMN_COUNT = 4;
 	static final int UNIT_TOTAL_COLUMN_COUNT = 1;
 	
 	BudgetTableModel budgetModel;

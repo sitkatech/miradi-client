@@ -63,7 +63,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	public int getRowCount()
 	{
 		if (assignmentIdList != null)
-			return (assignmentIdList.size() * 2) + TOTALS_ROW_COUNT;
+			return (assignmentIdList.size() * 2);
 		
 		return 0;
 	}
@@ -82,9 +82,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			return false;
 		
 		if (isLabelColumn(col))
-			return false;
-		
-		if (isTotalsRow(row))
 			return false;
 		
 		if (isOdd(row))
@@ -194,9 +191,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			if (!isOdd(row))
 				return "";
 
-			if (isTotalsRow(row))
-				return formatter.format(getTotalCostForColumn(row, col));
-				
 			ProjectResource currentResource = getCurrentResource(row);
 			if (currentResource == null)
 				return "";
@@ -214,16 +208,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return "";
 	}
 
-	private double getTotalCostForColumn(int row, int col) throws Exception
-	{
-		if (getRowCount() <= 2)
-			return 0.0;
-		
-		DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
-		double totalCostColumn = totalsCalculator.getTotalCost(assignmentIdList, dateRange);
-		return totalCostColumn;
-	}
-
 	private int covertToUnitsColumn(int col)
 	{
 		return (col - (TOTAL_ROW_HEADER_COLUMN_COUNT)) / 2;
@@ -233,9 +217,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	{
 		if (isStaticLabelColum(col))
 			return getStaticCellLabel(row, col); 
-
-		if (isTotalsRow(row))
-			return getStaticRowTotalsLabel(row, col);
 
 		ProjectResource resource = getCurrentResource(row);
 		if (resource  == null)
@@ -250,19 +231,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return "";
 	}
 	
-	private String getStaticRowTotalsLabel(int row, int col)
-	{
-		final int TOTAL_COLUMN_ROW_HEADER = 6;
-		
-		if (col != TOTAL_COLUMN_ROW_HEADER)
-			return  "";
-		
-		if (isOdd(row))
-			return "Total";
-		
-		return "Total";
-	}
-
 	private String getStaticCellLabel(int row, int col)
 	{
 		if (isOdd(row))
@@ -279,9 +247,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		try
 		{
 			DateRange combinedDateRange = getCombinedDateRange();
-			if (isTotalsRow(row))
-				return formatter.format(getTotalsCostTotals(combinedDateRange));
-			
 			Assignment assignment = getAssignment(getCorrectedRow(row));
 			double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
 			return formatter.format(totalCost);
@@ -293,11 +258,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return "";
 	}
 	
-	private double getTotalsCostTotals(DateRange combinedDateRange) throws Exception
-	{
-		return totalsCalculator.getTotalCost(assignmentIdList, combinedDateRange);
-	}
-
 	private Object getTotalUnits(int row)
 	{
 		if (isOdd(row))
@@ -305,10 +265,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		try
 		{
 			DateRange combinedDateRange = getCombinedDateRange();
-		
-			if (isTotalsRow(row))
-				return formatter.format(getTotalsForTotalsUnits(combinedDateRange));
-			
 			Assignment assignment = getAssignment(getCorrectedRow(row));
 			double totalUnits = totalsCalculator.getTotalUnits(assignment, combinedDateRange);
 			return formatter.format(totalUnits);
@@ -319,11 +275,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		}
 		
 		return new String("");
-	}
-
-	private double getTotalsForTotalsUnits(DateRange combinedDateRange) throws Exception
-	{
-		return totalsCalculator.getTotalUnits(assignmentIdList, combinedDateRange);
 	}
 
 	private DateRange getCombinedDateRange() throws Exception
@@ -340,9 +291,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		double units = 0.0;
 		try
 		{
-			if (isTotalsRow(row))
-				return formatter.format(getTotalColumnUnits(row, col));
-			
 			DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row));
 			units = effortList.getTotalUnitQuantity(dateRanges[covertToUnitsColumn(col)]);
 		}
@@ -351,16 +299,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			EAM.logException(e);
 		}
 		return formatter.format(units);
-	}
-
-	private double getTotalColumnUnits(int row, int col) throws Exception
-	{
-		if (getRowCount() <= 2)
-			return 0.0;
-		
-		DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
-		double totalCostColumn = totalsCalculator.getTotalUnits(assignmentIdList, dateRange);
-		return totalCostColumn;
 	}
 
 	private DateRangeEffortList getDateRangeEffortList(int row) throws Exception
@@ -395,9 +333,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	
 	public Object getCurrentAccountingCode(int row)
 	{
-		if (isTotalsRow(row))
-			return null;
-		
 		BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE);
 		BaseId accountingId = new BaseId(stringId);
@@ -408,9 +343,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	
 	public Object getCurrentFundingSource(int row)
 	{
-		if (isTotalsRow(row))
-			return null;
-		
 		BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE);
 		BaseId fundingId = new BaseId(stringId);
@@ -421,9 +353,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	
 	public ProjectResource getCurrentResource(int row)
 	{
-		if (isTotalsRow(row))
-			return null;
-		
 		BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
 		BaseId resourceId = new BaseId(stringId);
@@ -540,20 +469,15 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return false;
 	}
 
-	
-	public boolean isTotalsRow(int row)
-	{
-		if (row < (getRowCount() - 2))
-			return false;
-			
-		return true;
-	}
-	
 	public boolean doubleRowed()
 	{
 		return true;
 	}	
-
+	
+	public int getUnitsLabelColumnIndex()
+	{
+		return UNITS_LABEL_COLUMN_INDEX;
+	}
 	
 	DecimalFormat formatter;
 	
@@ -563,5 +487,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	Task task;
 	BudgetTotalsCalculator totalsCalculator;
 	IdList assignmentIdList;
-		 
+	
+	private static final int UNITS_LABEL_COLUMN_INDEX = 3;
+	
 }

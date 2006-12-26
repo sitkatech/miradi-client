@@ -26,11 +26,6 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return RESOURCES_COLUMN_INDEX;
 	}
 	
-	public int getRowTotalsLabelColumnIndex()
-	{
-		return ROW_TOTALS_LABEL_COLUMN_INDEX;
-	}
-	
 	public int getUnitsAndCostLabelColumnIndex()
 	{
 		return UNITS_AND_COST_LABEL_COLUMN_INDEX;
@@ -39,11 +34,6 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	public int getCostPerUnitLabelColumnIndex()
 	{
 		return COST_PER_UNIT_COLUMN_INDEX;
-	}
-	
-	public int getUnitsLabelColumnIndex()
-	{
-		return UNITS_LABEL_COLUMN_INDEX;
 	}
 	
 	public int getUnitTotalsColumnIndex()
@@ -55,16 +45,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	{
 		return getColumnCount() - 1;
 	}
-	
-	public boolean isUnitsTotalRow(int row)
-	{
-		int minusCount = 1;
-		if (doubleRowed())
-			minusCount = 2;
 		
-		return row == (getRowCount() - minusCount);
-	}
-	
 	protected boolean isFundingSourceColumn(int col)
 	{
 		return col == getFundingSourceColumnIndex();
@@ -136,9 +117,9 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 
 	abstract public boolean isYearlyTotalColumn(int col);
 	
-	abstract public boolean isTotalsRow(int row);
-	
 	abstract public BaseId getAssignmentForRow(int row);
+	
+	abstract public int getUnitsLabelColumnIndex();
 	
 	abstract public boolean doubleRowed();
 	
@@ -147,14 +128,11 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	private static final int RESOURCES_COLUMN_INDEX = 0;
 	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;
 	private static final int ACCOUNTING_CODE_COLUMN_INDEX = 2;
-	private static final int UNITS_LABEL_COLUMN_INDEX = 3;
 	private static final int COST_PER_UNIT_COLUMN_INDEX = 4;	
 	private static final int UNITS_AND_COST_LABEL_COLUMN_INDEX = 5;
-	private static final int ROW_TOTALS_LABEL_COLUMN_INDEX = 6;
-
-	static final int TOTAL_ROW_HEADER_COLUMN_COUNT = 7;
 	
-	static final int TOTALS_ROW_COUNT = 2;
+	static final int TOTAL_ROW_HEADER_COLUMN_COUNT = 5;
+	
 	static final int TOTALS_COLUMN_COUNT = 2;
 	
 }

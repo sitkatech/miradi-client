@@ -109,9 +109,6 @@ public class BudgetTable extends JTable implements ObjectPicker
 			return new EAMObject[0];
 		
 		AbstractBudgetTableModel budgetModel = getBudgetModel();
-		if (budgetModel.isTotalsRow(selectedRow))
-			return new EAMObject[0];
-		
 		selectedRow = budgetModel.getCorrectedRow(selectedRow);
 		
 		BaseId selectedId = budgetModel.getAssignmentForRow(selectedRow);
@@ -230,8 +227,6 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 			setComponentColors(component, BACKGROUND_COLORS[row % 2]);
 		
 		Color totalsColor = new Color(0xf0, 0xf0, 0xf0).darker();
-		if (model.isTotalsRow(row))
-			setComponentColors(component, totalsColor);
 		
 		if (model.isYearlyTotalColumn(column))
 			setComponentColors(component, totalsColor);
@@ -261,35 +256,17 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 	
 	private void setSingleRowedBorders(AbstractBudgetTableModel model, int row, int column, Color darkBorderColor, final int THICKNESS)
 	{
-		boolean unitsTotalRow = model.isUnitsTotalRow(row);
-		if (unitsTotalRow)
-			setBorder(BorderFactory.createMatteBorder(THICKNESS, 0, 0, 0, darkBorderColor));
-		
 		boolean yearlyTotalColumn = model.isYearlyTotalColumn(column);
 		if (yearlyTotalColumn)
 			setBorder(BorderFactory.createMatteBorder(0, THICKNESS, 0, THICKNESS, darkBorderColor));
-		
-		if (unitsTotalRow && yearlyTotalColumn)
-			setBorder(BorderFactory.createMatteBorder(THICKNESS, THICKNESS, 0, THICKNESS, darkBorderColor));
 	}
 
 	private void setDoubleRowedBorders(AbstractBudgetTableModel model, int row, int column, Color darkBorderColor, final int THICKNESS)
 	{
-	
-		if (model.getRowTotalsLabelColumnIndex() == column)
-			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
-		
 		if (model.isCostColumn(column))
 			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
-		
-		if (model.isUnitsTotalRow(row))
-			setBorder(BorderFactory.createMatteBorder(THICKNESS, 0, 0, 0, darkBorderColor));
-		
-		if (model.isCostColumn(column) && model.isUnitsTotalRow(row))
-			setBorder(BorderFactory.createMatteBorder(THICKNESS, 0, 0, THICKNESS, darkBorderColor));
-		
-		if (model.getRowTotalsLabelColumnIndex() == column && model.isUnitsTotalRow(row))
-			setBorder(BorderFactory.createMatteBorder(THICKNESS, 0, 0, THICKNESS, darkBorderColor));
+		if (model.getCostPerUnitLabelColumnIndex() == column)
+			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
 	}
 
 	private static final Color[] EVERY_OTHER_TWO_COLORS = new Color[] { new Color(0xf0, 0xf0, 0xf0), new Color(0xf0, 0xf0, 0xf0), Color.WHITE, Color.WHITE, };
