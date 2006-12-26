@@ -89,7 +89,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		scopeDropdown.addActionListener(this);
 		panel.add(scopeDropdown);
 
-		panel.add(new UiLabel("Show Grid"));
+		panel.add(new UiLabel("Show Diagram Grid"));
 		gridVisibleCheckBox = new UiCheckBox();
 		gridVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
 		gridVisibleCheckBox.addActionListener(this);
