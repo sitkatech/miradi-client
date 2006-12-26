@@ -24,7 +24,7 @@ public class TncCapWorkbookImporter
 
 	private boolean isValidVersion()
 	{
-		return (getProjectVersion().equals(VER1));
+		return (getProjectVersion().startsWith(VER1));
 	}
 	
 	
@@ -100,7 +100,7 @@ public class TncCapWorkbookImporter
 	private String fileName;
 	private Workbook workbook;
 	
-	final static String VER1 = "CAP_v5a.xls";
+	final static String VER1 = "CAP_v5a";
 	
 	final static int PROJECT_SHEET_NUMBER = 0;
 	final static int EXPECTED_ROW = 6;
