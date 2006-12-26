@@ -1,5 +1,5 @@
 /*
- * Copyright 2005, The Benetech Initiative
+ * Copyright 2006, The Benetech Initiative
  * 
  * This file is confidential and proprietary
  */
@@ -19,10 +19,14 @@ import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
-import org.conservationmeasures.eam.actions.ActionComingAttractions;
+import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
+import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
+import org.conservationmeasures.eam.actions.ActionHelpCMPStandards;
+import org.conservationmeasures.eam.actions.ActionHelpComingAttractions;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
+import org.conservationmeasures.eam.actions.ActionHelpCredits;
 import org.conservationmeasures.eam.actions.ActionHelptButtonMoreInfo;
 import org.conservationmeasures.eam.actions.ActionHelptButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
@@ -241,10 +245,15 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private void addUmbrellaDoersToMap()
 	{
 		addDoerToMap(ActionAbout.class, new AboutDoer());
-		addDoerToMap(ActionComingAttractions.class, new HelpButtonDoer());
+		addDoerToMap(ActionHelpComingAttractions.class, new HelpButtonDoer());
+		addDoerToMap(ActionHelpAdaptiveManagement.class, new HelpButtonDoer());
+		addDoerToMap(ActionHelpAgileSoftware.class, new HelpButtonDoer());
+		addDoerToMap(ActionHelpCMPStandards.class, new HelpButtonDoer());
+		addDoerToMap(ActionHelpCredits.class, new HelpButtonDoer());
 		addDoerToMap(ActionHelpButtonExamples.class, new HelpButtonDoer());
 		addDoerToMap(ActionHelptButtonMoreInfo.class, new HelpButtonDoer());
 		addDoerToMap(ActionHelptButtonWorkshop.class, new HelpButtonDoer());
+		
 		addDoerToMap(ActionNewProject.class, new NewProject());
 		addDoerToMap(ActionProjectSaveAs.class, new SaveAsProjectDoer());
 		addDoerToMap(ActionClose.class, new Close());

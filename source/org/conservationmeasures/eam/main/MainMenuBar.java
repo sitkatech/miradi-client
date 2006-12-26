@@ -15,7 +15,10 @@ import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
-import org.conservationmeasures.eam.actions.ActionComingAttractions;
+import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
+import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
+import org.conservationmeasures.eam.actions.ActionHelpCMPStandards;
+import org.conservationmeasures.eam.actions.ActionHelpComingAttractions;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
@@ -23,6 +26,7 @@ import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
+import org.conservationmeasures.eam.actions.ActionHelpCredits;
 import org.conservationmeasures.eam.actions.ActionHelptButtonMoreInfo;
 import org.conservationmeasures.eam.actions.ActionHelptButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
@@ -470,23 +474,40 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
 		menu.setMnemonic(KeyEvent.VK_H);
 		
-		JMenuItem item1  = addMenuItem(actions, menu, ActionComingAttractions.class, KeyEvent.VK_C);
-		item1.putClientProperty(HelpButtonData.class, 
+		JMenuItem item  = addMenuItem(actions, menu, ActionHelpComingAttractions.class, KeyEvent.VK_C);
+		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class, HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
+		
+		item  = addMenuItem(actions, menu, ActionHelpAdaptiveManagement.class, KeyEvent.VK_A);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class,HelpButtonData.ADAPTIVE_MANAGEMENT, HelpButtonData.ADAPTIVE_MANAGEMENT_HTML));
 
-		JMenuItem item2  = addMenuItem(actions, menu, ActionHelptButtonMoreInfo.class, KeyEvent.VK_M);
-		item2.putClientProperty(HelpButtonData.class, 
+		item  = addMenuItem(actions, menu, ActionHelpAgileSoftware.class, KeyEvent.VK_S);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class,HelpButtonData.AGILE_SOFTWARE, HelpButtonData.AGILE_SOFTWARE_HTML));
+		
+		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_C);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class,HelpButtonData.CMP_STANDARDS, HelpButtonData.CMP_STANDARDS_HTML));
+		
+		item = addMenuItem(actions, menu, ActionHelptButtonMoreInfo.class, KeyEvent.VK_M);
+		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 		
-		JMenuItem item3  = addMenuItem(actions, menu, ActionHelpButtonExamples.class, KeyEvent.VK_E);
-		item3.putClientProperty(HelpButtonData.class, 
+		item = addMenuItem(actions, menu, ActionHelpButtonExamples.class, KeyEvent.VK_E);
+		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
 		
-		JMenuItem item4  = addMenuItem(actions, menu, ActionHelptButtonWorkshop.class, KeyEvent.VK_W);
-		item4.putClientProperty(HelpButtonData.class, 
+		item  = addMenuItem(actions, menu, ActionHelptButtonWorkshop.class, KeyEvent.VK_W);
+		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 		
 		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
+		
+		item  = addMenuItem(actions, menu, ActionHelpCredits.class, KeyEvent.VK_C);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class,HelpButtonData.CREDITS, HelpButtonData.CREDITS_HTML));
+		
 		return menu;
 	}
 	

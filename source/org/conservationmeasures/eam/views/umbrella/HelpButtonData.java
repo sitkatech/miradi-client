@@ -33,7 +33,14 @@ public class HelpButtonData
 	public static final String WORKSHOP = "Workshop";
 	public static final String COMING_ATTACTIONS = "Coming Attactions";
 	public static final String COMING_ATTRACTIONS_HTML = "ComingAttractions.html";
-
+	public static final String CREDITS = "Credits";
+	public static final String CREDITS_HTML = "Credits.html";
+	public static final String AGILE_SOFTWARE = "Agile Software";
+	public static final String AGILE_SOFTWARE_HTML = "AgileSoftware.html";
+	public static final String CMP_STANDARDS = "CMP Standards";
+	public static final String CMP_STANDARDS_HTML = "CMPStandards.html";
+	public static final String ADAPTIVE_MANAGEMENT = "Adaptive Management";
+	public static final String ADAPTIVE_MANAGEMENT_HTML = "AdaptiveManagement.html";
 	
 	public String title;
 	public String htmlFile;

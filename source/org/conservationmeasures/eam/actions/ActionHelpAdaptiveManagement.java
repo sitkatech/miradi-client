@@ -8,16 +8,16 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionComingAttractions extends MainWindowAction
+public class ActionHelpAdaptiveManagement extends MainWindowAction
 {
-	public ActionComingAttractions(MainWindow mainWindow)
+	public ActionHelpAdaptiveManagement(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Coming Attractions...");
+		return EAM.text("Action|Adaptive Management");
 	}
 
 }
