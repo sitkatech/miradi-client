@@ -1,7 +1,5 @@
 package org.conservationmeasures.eam.views.budget;
 
-import javax.swing.JLabel;
-
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
 import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
@@ -32,7 +30,7 @@ import org.conservationmeasures.eam.views.workplan.CreateTaskDoer;
 import org.conservationmeasures.eam.views.workplan.DeleteWorkPlanTreeNode;
 import org.conservationmeasures.eam.views.workplan.TreeNodeDown;
 import org.conservationmeasures.eam.views.workplan.TreeNodeUp;
-import org.martus.swing.ResourceImageIcon;
+import org.martus.swing.HtmlViewer;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetView extends TabbedView
@@ -78,7 +76,7 @@ public class BudgetView extends TabbedView
 		addScrollableTab(budgetManagmentPanel);
 		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);
 		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel.getIcon(), fundingSourcePoolManagementPanel);
-		addTab(EAM.text("Accounting"), new UiScrollPane(new BudgetComponent()));
+		addTab(EAM.text("Accounting"), new UiScrollPane(getBudgetComponent()));
 	}
 	
 	public void deleteTabs() throws Exception
@@ -126,6 +124,14 @@ public class BudgetView extends TabbedView
 		return treeTableComponent;
 	}
 
+	private HtmlViewer getBudgetComponent()
+	{
+		HtmlViewer htmlViewer= new HtmlViewer("",null);
+		htmlViewer.setText("<p>Coming soon – ability to enter actual expenditures and to match " +
+				"these up to budget line items and report on them by programmatic objectives and " +
+				"activities, by accounting codes, or by funding sources.</p>");
+		return htmlViewer;
+	}
 	
 	BudgetTreeTablePanel treeTableComponent;
 	
@@ -137,10 +143,3 @@ public class BudgetView extends TabbedView
 	FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
 }
 
-class BudgetComponent extends JLabel
-{
-	public BudgetComponent()
-	{
-		super(new ResourceImageIcon("images/Budget.png"));
-	}
-}
