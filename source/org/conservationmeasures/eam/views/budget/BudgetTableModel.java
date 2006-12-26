@@ -36,7 +36,8 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		assignmentIdList  = assignmentIdListToUse;
 		totalsCalculator = new BudgetTotalsCalculator(project);
 		dateRanges = new ProjectCalendar(project).getQuarterlyDateDanges();
-		formatter = project.getCurrencyFormatter();
+		currencyFormatter = project.getCurrencyFormatter();
+		decimalFormatter = project.getDecimalFormatter();
 	}
 	
 	public BaseId getAssignmentForRow(int row)
@@ -201,7 +202,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			final int BACK_ONE_ROW = 1;
 			double units = new Double(getUnit(row - BACK_ONE_ROW, col)).doubleValue();
 			double costPerUnit = currentResource.getCostPerUnit();
-			return formatter.format(units * costPerUnit);
+			return currencyFormatter.format(units * costPerUnit);
 		}
 		catch (Exception e)
 		{
@@ -252,7 +253,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			DateRange combinedDateRange = getCombinedDateRange();
 			Assignment assignment = getAssignment(getCorrectedRow(row));
 			double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
-			return formatter.format(totalCost);
+			return currencyFormatter.format(totalCost);
 		}
 		catch(Exception e)
 		{
@@ -270,7 +271,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			DateRange combinedDateRange = getCombinedDateRange();
 			Assignment assignment = getAssignment(getCorrectedRow(row));
 			double totalUnits = totalsCalculator.getTotalUnits(assignment, combinedDateRange);
-			return formatter.format(totalUnits);
+			return decimalFormatter.format(totalUnits);
 		}
 		catch(Exception e)
 		{
@@ -301,7 +302,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		{
 			EAM.logException(e);
 		}
-		return formatter.format(units);
+		return decimalFormatter.format(units);
 	}
 
 	private DateRangeEffortList getDateRangeEffortList(int row) throws Exception
@@ -509,7 +510,8 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 
 	
 	
-	DecimalFormat formatter;
+	DecimalFormat currencyFormatter;
+	DecimalFormat decimalFormatter;
 	
 	Project project;
 	DateRange[] dateRanges;

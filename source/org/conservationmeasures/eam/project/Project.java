@@ -948,12 +948,21 @@ public class Project
 
 	}
 	
+	public DecimalFormat getDecimalFormatter()
+	{
+		DecimalFormat formatter = new DecimalFormat("##0.##");
+		formatter.setDecimalSeparatorAlwaysShown(false);
+		
+		return formatter;
+	}
+	
 	public DecimalFormat getCurrencyFormatter()
 	{
 		int currencyDecimalPlaces = getMetadata().getCurrencyDecimalPlaces();
 		DecimalFormat formatter = new DecimalFormat();
 		formatter.setMinimumFractionDigits(currencyDecimalPlaces);
 		formatter.setMaximumFractionDigits(currencyDecimalPlaces);
+		
 		return formatter;
 	}
 
