@@ -58,20 +58,39 @@ public class BudgetTable extends JTable implements ObjectPicker
 		if (model.getColumnCount() <= 0)
 			return;
 		
-		ProjectResource[] projectResources = project.getAllProjectResources();
-		int resourceColumn = model.getResourcesColumnIndex();
-		createComboColumn(projectResources, resourceColumn);
-		
-		FundingSource[] fundingSources = project.getObjectManager().getFundingSourcePool().getAllFundingSources();
-		int fundingSourceColumn = model.getFundingSourceColumnIndex();
-		createComboColumn(fundingSources, fundingSourceColumn);
-		
-		AccountingCode[] accountingCodes = project.getObjectManager().getAccountingCodePool().getAllAccountingCodes();
-		int accountingCodesColumn = model.getAccountingCodeColumnIndex();
-		createComboColumn(accountingCodes, accountingCodesColumn);
+		addResourceColumn();
+		addFundingSourceColumn();
+		addAccountingCodeColumn();
 		
 		setSingleCellEditor();
 		
+	}
+
+	private void addResourceColumn()
+	{
+		ProjectResource[] projectResources = project.getAllProjectResources();
+		int resourceColumn = model.getResourcesColumnIndex();
+		createComboColumn(projectResources, resourceColumn);
+	}
+
+	private void addAccountingCodeColumn()
+	{
+		int accountingCodesColumn = model.getAccountingCodeColumnIndex();
+		if (accountingCodesColumn < 0)
+			return;
+
+		AccountingCode[] accountingCodes = project.getObjectManager().getAccountingCodePool().getAllAccountingCodes();
+		createComboColumn(accountingCodes, accountingCodesColumn);
+	}
+
+	private void addFundingSourceColumn()
+	{
+		int fundingSourceColumn = model.getFundingSourceColumnIndex();
+		if (fundingSourceColumn < 0 )
+			return;
+
+		FundingSource[] fundingSources = project.getObjectManager().getFundingSourcePool().getAllFundingSources();
+		createComboColumn(fundingSources, fundingSourceColumn);
 	}
 
 	private void setSingleCellEditor()
@@ -259,6 +278,8 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 		boolean yearlyTotalColumn = model.isYearlyTotalColumn(column);
 		if (yearlyTotalColumn)
 			setBorder(BorderFactory.createMatteBorder(0, THICKNESS, 0, THICKNESS, darkBorderColor));
+		if (model.isUnitsLabelColumn(column))
+			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
 	}
 
 	private void setDoubleRowedBorders(AbstractBudgetTableModel model, int row, int column, Color darkBorderColor, final int THICKNESS)

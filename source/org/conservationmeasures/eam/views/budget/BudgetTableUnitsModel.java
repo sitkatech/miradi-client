@@ -68,7 +68,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 	
 	public int translateToBudgetModelCol(int col)
 	{
-		if (col < UNIT_ROW_HEADER_COLUMN_COUNT)
+		if (col < UNIT_ROW_HEADER_COLUMN_COUNT - 1)
 			return col;
 		col -= UNIT_ROW_HEADER_COLUMN_COUNT;
 		col *= 2;
@@ -106,6 +106,11 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		return false;
 	}
 	
+	protected boolean isLabelColumn(int col)
+	{
+		return col == 1;
+	}
+	
 	public boolean doubleRowed()
 	{
 		return false;
@@ -116,8 +121,19 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		return UNITS_LABEL_COLUMN_INDEX;
 	}
 	
+	public int getAccountingCodeColumnIndex()
+	{
+		return -1;
+	}
+	
+	public int getFundingSourceColumnIndex()
+	{
+		return -1;
+	}
+	
 	private static final int UNITS_LABEL_COLUMN_INDEX = 1;
-	static final int UNIT_ROW_HEADER_COLUMN_COUNT = 4;
+	static final int UNIT_ROW_HEADER_COLUMN_COUNT = 2;
+	
 	static final int UNIT_TOTAL_COLUMN_COUNT = 1;
 	
 	BudgetTableModel budgetModel;

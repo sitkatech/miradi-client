@@ -11,16 +11,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 
 abstract public class AbstractBudgetTableModel extends AbstractTableModel
 {
-	public int getAccountingCodeColumnIndex()
-	{
-		return ACCOUNTING_CODE_COLUMN_INDEX;
-	}
-	
-	public int getFundingSourceColumnIndex()
-	{
-		return FUNDING_SOURCE_COLUMN_INDEX;
-	}
-	
 	public int getResourcesColumnIndex()
 	{
 		return RESOURCES_COLUMN_INDEX;
@@ -46,21 +36,6 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return getColumnCount() - 1;
 	}
 		
-	protected boolean isFundingSourceColumn(int col)
-	{
-		return col == getFundingSourceColumnIndex();
-	}
-
-	protected boolean isAccountingCodeColumn(int col)
-	{
-		return col == getAccountingCodeColumnIndex();
-	}
-
-	protected boolean isLabelColumn(int col)
-	{
-		return 3 <= col && col < TOTAL_ROW_HEADER_COLUMN_COUNT;
-	}
-
 	protected boolean isResourceColumn(int col)
 	{
 		return col == getResourcesColumnIndex();
@@ -114,7 +89,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	{
 		return row /= 2;
 	}
-
+	
 	abstract public boolean isYearlyTotalColumn(int col);
 	
 	abstract public BaseId getAssignmentForRow(int row);
@@ -125,9 +100,13 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	
 	abstract protected boolean isUnitsColumn(int col);
 	
+	abstract protected boolean isLabelColumn(int col);
+
+	abstract public int getAccountingCodeColumnIndex();
+	
+	abstract public int getFundingSourceColumnIndex();
+	
 	private static final int RESOURCES_COLUMN_INDEX = 0;
-	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;
-	private static final int ACCOUNTING_CODE_COLUMN_INDEX = 2;
 	private static final int COST_PER_UNIT_COLUMN_INDEX = 4;	
 	private static final int UNITS_AND_COST_LABEL_COLUMN_INDEX = 5;
 	

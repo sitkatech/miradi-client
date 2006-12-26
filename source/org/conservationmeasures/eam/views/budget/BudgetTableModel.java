@@ -479,6 +479,33 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return UNITS_LABEL_COLUMN_INDEX;
 	}
 	
+	protected boolean isLabelColumn(int col)
+	{
+		return 3 <= col && col < TOTAL_ROW_HEADER_COLUMN_COUNT;
+	}
+	
+	public int getAccountingCodeColumnIndex()
+	{
+		return ACCOUNTING_CODE_COLUMN_INDEX;
+	}
+	
+	public int getFundingSourceColumnIndex()
+	{
+		return FUNDING_SOURCE_COLUMN_INDEX;
+	}
+	
+	protected boolean isFundingSourceColumn(int col)
+	{
+		return col == getFundingSourceColumnIndex();
+	}
+
+	protected boolean isAccountingCodeColumn(int col)
+	{
+		return col == getAccountingCodeColumnIndex();
+	}
+
+	
+	
 	DecimalFormat formatter;
 	
 	Project project;
@@ -488,6 +515,8 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	BudgetTotalsCalculator totalsCalculator;
 	IdList assignmentIdList;
 	
+	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;
+	private static final int ACCOUNTING_CODE_COLUMN_INDEX = 2;
 	private static final int UNITS_LABEL_COLUMN_INDEX = 3;
 	
 }
