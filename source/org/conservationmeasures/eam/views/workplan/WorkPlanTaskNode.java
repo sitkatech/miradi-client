@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
-import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -15,7 +14,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class WorkPlanTaskNode extends TreeTableNode
@@ -88,7 +86,6 @@ public class WorkPlanTaskNode extends TreeTableNode
 		}
 		
 		tasks = (WorkPlanTaskNode[])possibleTasks.toArray(new WorkPlanTaskNode[0]);
-		Arrays.sort(tasks, new IgnoreCaseStringComparator());
 	}
 
 	Project project;
