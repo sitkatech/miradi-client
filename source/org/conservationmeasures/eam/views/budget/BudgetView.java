@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.dialogs.AccountingCodePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.FundingSourcePoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -35,6 +36,7 @@ import org.martus.swing.UiScrollPane;
 
 public class BudgetView extends TabbedView
 {
+
 	public BudgetView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
@@ -68,15 +70,15 @@ public class BudgetView extends TabbedView
 		
 		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions(), treeTableComponent);
 		budgetManagmentPanel = new BudgetManagementPanel(getMainWindow(), getProject(), budgetPropertiesPanel, treeTableComponent);
-		
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
-		
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
+		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
 		
 		addScrollableTab(budgetManagmentPanel);
 		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);
 		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel.getIcon(), fundingSourcePoolManagementPanel);
 		addTab(EAM.text("Accounting"), new UiScrollPane(getBudgetComponent()));
+		addScrollableTab(resourceManagementPanel);
 	}
 	
 	public void deleteTabs() throws Exception
@@ -92,6 +94,9 @@ public class BudgetView extends TabbedView
 		
 		budgetManagmentPanel.dispose();
 		budgetManagmentPanel = null;
+		
+		resourceManagementPanel.dispose();
+		resourceManagementPanel = null;
 	}
 	
 	private void addBudgetDoersToMap()
@@ -134,12 +139,10 @@ public class BudgetView extends TabbedView
 	}
 	
 	BudgetTreeTablePanel treeTableComponent;
-	
 	BudgetPropertiesPanel budgetPropertiesPanel;
 	BudgetManagementPanel budgetManagmentPanel;
-
 	AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
-	
 	FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
+	ResourcePoolManagementPanel resourceManagementPanel;
 }
 
