@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
@@ -17,6 +18,9 @@ import javax.swing.table.TableColumn;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
@@ -61,6 +65,7 @@ public class BudgetTreeTable extends TreeTableWithStateSaving
 			
 			Map map = defaultFont.getAttributes();
 		    map.put(TextAttribute.SIZE, new Float(15.0));
+		    map.put(TextAttribute.FOREGROUND, Color.RED);
 		    map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_SEMIBOLD);
 		    customFont = new Font(map);
 		}
@@ -71,27 +76,58 @@ public class BudgetTreeTable extends TreeTableWithStateSaving
 			TreePath path = tree.getPathForRow(row);
 			TreeTableNode node = (TreeTableNode)path.getLastPathComponent();
 			component.setFont(getNodeFont(node));
+			component.setForeground(getForegroundColor(node));
 			
 			return component;
 		}
 
+		private Color getForegroundColor(TreeTableNode node)
+		{
+			if(node.getType() == ObjectType.INDICATOR)
+				return FactorRenderer.INDICATOR_COLOR;
+
+			if (node.getType() == ObjectType.TASK)
+				return getTaskColor((Task)node.getObject());
+
+			if (node.getType() == ObjectType.FACTOR)
+				return getFactorColor((Factor)node.getObject());
+			
+			return Color.BLACK;
+		}
+		
+		private Color getTaskColor(Task task)
+		{
+			if (task.isActivity())
+				return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES).darker();
+			if (task.isMethod())
+				return FactorRenderer.INDICATOR_COLOR.darker();
+			
+			return Color.BLACK;
+		}
+		
+		private Color getFactorColor(Factor factor)
+		{
+			if (factor.isStrategy())
+				return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES).darker();
+			
+			return Color.BLACK;
+		}
+
 		private Font getNodeFont(TreeTableNode node)
 		{
-			Font fontToSet = defaultFont;
-			
 			if (node.getType() == ObjectType.FAKE)
-				fontToSet = customFont;
+				return customFont;
 			
-			else if(node.getType() == ObjectType.INDICATOR)
-				fontToSet = boldFont;
+			if(node.getType() == ObjectType.INDICATOR)
+				return boldFont;
 			
-			else if(node.getType() == ObjectType.FACTOR)
-				fontToSet = getFactorFont((Factor)node.getObject());
+			if(node.getType() == ObjectType.FACTOR)
+				return getFactorFont((Factor)node.getObject());
 			
-			else if(node.getType() == ObjectType.TASK)
-				fontToSet = getTaskFont((Task)node.getObject());
+			if(node.getType() == ObjectType.TASK)
+				return getTaskFont((Task)node.getObject());
 
-			return fontToSet;
+			return defaultFont;
 		}
 
 		private Font getFactorFont(Factor factor)
