@@ -98,6 +98,7 @@ import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class MainMenuBar extends JMenuBar
 {
+
 	public MainMenuBar(Actions actions) throws HeadlessException
 	{
 		add(createFileMenu(actions));
@@ -133,13 +134,13 @@ public class MainMenuBar extends JMenuBar
 	{
 		JMenu menu = new JMenu("Configure Export");
 		menu.setMnemonic(KeyEvent.VK_C);
-		
-		menu.add("Entire Project");
-		menu.add("Specific Views");
-		menu.add("Restrict Data");
-		menu.add("Encryption Level");
+		addDisabledMenuItem(menu, "Entire Project");
+		addDisabledMenuItem(menu, "Specific Views");
+		addDisabledMenuItem(menu, "Restrict Data");
+		addDisabledMenuItem(menu, "Encryption Level");
 		return menu;
 	}
+
 
 	private JMenu createExportMenu(Actions actions)
 	{
@@ -147,7 +148,7 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_E);
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
-		menu.add("CMP Learning Center");
+		addDisabledMenuItem(menu, "CMP Learning Center");
 		menu.add(createExportOrgDatabaseSubmenu());
 		menu.add(createExportDonorReportsSubmenu());
 		menu.add(createExportOtherSubmenu());
@@ -159,9 +160,9 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu("Organization Database");
 		menu.setMnemonic(KeyEvent.VK_O);
 		
-		menu.add("WWF Track");
-		menu.add("TNC Project Database");
-		menu.add("WCS Accounting System");
+		addDisabledMenuItem(menu, "WWF Track");
+		addDisabledMenuItem(menu, "TNC Project Database");
+		addDisabledMenuItem(menu, "WCS Accounting System");
 		return menu;
 	}
 	
@@ -170,9 +171,9 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu("Donor Report");
 		menu.setMnemonic(KeyEvent.VK_D);
 		
-		menu.add("GEF Format");
-		menu.add("Moore Format");
-		menu.add("CGBD Common Format");
+		addDisabledMenuItem(menu, "GEF Format");
+		addDisabledMenuItem(menu, "Moore Format");
+		addDisabledMenuItem(menu, "CGBD Common Format");
 		return menu;
 	}
 	
@@ -181,11 +182,11 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu("Other Format");
 		menu.setMnemonic(KeyEvent.VK_O);
 		
-		menu.add("Diagram to MS Visio");
-		menu.add("Workplan to MS Project");
-		menu.add("Budget to MS Excel");
-		menu.add("Map to ARC");
-		menu.add("Generic XML");
+		addDisabledMenuItem(menu, "Diagram to MS Visio");
+		addDisabledMenuItem(menu, "Workplan to MS Project");
+		addDisabledMenuItem(menu, "Budget to MS Excel");
+		addDisabledMenuItem(menu, "Map to ARC");
+		addDisabledMenuItem(menu, "Generic XML");
 		return menu;
 	}
 	
@@ -209,7 +210,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu("Conservation Project");
 		menu.setMnemonic(KeyEvent.VK_C);
 		
-		menu.add("TNC CAP Workbook");
+		addDisabledMenuItem(menu, "TNC CAP Workbook");
 		return menu;
 	}
 	
@@ -218,7 +219,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu("Maps");
 		menu.setMnemonic(KeyEvent.VK_M);
 		
-		menu.add("ARC Shape Files");
+		addDisabledMenuItem(menu, "ARC Shape Files");
 		return menu;
 	}
 	
@@ -227,7 +228,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu("Diagrams");
 		menu.setMnemonic(KeyEvent.VK_D);
 		
-		menu.add("MS Visio");
+		addDisabledMenuItem(menu, "MS Visio");
 		return menu;
 	}
 	
@@ -236,7 +237,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu("Workplans");
 		menu.setMnemonic(KeyEvent.VK_W);
 		
-		menu.add("MS Project");
+		addDisabledMenuItem(menu, "MS Project");
 		return menu;
 	}
 	
@@ -503,6 +504,14 @@ public class MainMenuBar extends JMenuBar
 		JMenuItem centeredLocationAction = new MenuItemWithoutLocation(action);
 		centeredLocationAction.setMnemonic(mnemonic);
 		return centeredLocationAction;
+	}
+	
+	
+	private void addDisabledMenuItem(JMenu menu, String name)
+	{
+		JMenuItem label = new JMenuItem(name);
+		label.setEnabled(false);
+		menu.add(label);
 	}
 	
 }
