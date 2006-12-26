@@ -219,7 +219,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 				getMainWindow().createOrOpenProject(newFile);
 			}
 			else
-				EAM.notifyDialog(EAM.text("Invalid project name, choose antother name."));
+				EAM.notifyDialog(EAM.text("Invalid project name, choose another name."));
 		}
 	}
 
