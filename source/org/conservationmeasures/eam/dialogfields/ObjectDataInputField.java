@@ -159,6 +159,10 @@ abstract public class ObjectDataInputField implements FocusListener
 		{
 			EAM.errorDialog(EAM.text("Text|Must be numeric"));
 		}
+		catch(NumberFormatException nfe)
+		{
+			EAM.errorDialog(EAM.text("Text|Must be numeric"));
+		}
 		catch(Throwable e)
 		{
 			e.printStackTrace();
