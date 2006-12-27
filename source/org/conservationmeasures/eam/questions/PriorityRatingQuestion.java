@@ -21,10 +21,10 @@ public class PriorityRatingQuestion extends ChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem("1", "Low", Color.GREEN),
-			new ChoiceItem("2", "Medium", Color.YELLOW),
-			new ChoiceItem("3", "High", Color.ORANGE),
-			new ChoiceItem("4", "Very High", Color.RED),
+			new ChoiceItem("1", "Low", COLOR_1_OF_4),
+			new ChoiceItem("2", "Medium", COLOR_2_OF_4),
+			new ChoiceItem("3", "High", COLOR_3_OF_4),
+			new ChoiceItem("4", "Very High", COLOR_4_OF_4),
 		};
 	}
 }
