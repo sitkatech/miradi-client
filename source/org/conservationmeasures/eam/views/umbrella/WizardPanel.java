@@ -22,6 +22,7 @@ public class WizardPanel extends JPanel
 		super(new BorderLayout());
 		steps = new SkeletonWizardStep[0];
 		mainWindow = mainWindowToUse;
+		setFocusCycleRoot(true);
 	}
 
 	public void setContents(JPanel contents)
