@@ -157,19 +157,22 @@ abstract public class ObjectDataInputField implements FocusListener
 		}
 		catch (InvalidNumberException ine)
 		{
-			EAM.errorDialog(EAM.text("Text|Must be numeric"));
+			EAM.errorDialog(EAM.text("Text|" + NUMERIC_ERROR_MESSEGE));
 		}
 		catch(NumberFormatException nfe)
 		{
-			EAM.errorDialog(EAM.text("Text|Must be numeric"));
+			EAM.errorDialog(EAM.text("Text|" + NUMERIC_ERROR_MESSEGE));
 		}
 		catch(Throwable e)
 		{
 			e.printStackTrace();
 			EAM.errorDialog(EAM.text("Text|Unknown error prevented saving this data"));
 		}
+		
+
 	}
 
+	private static final String NUMERIC_ERROR_MESSEGE = "Must be numeric";
 	Project project;
 	private int objectType;
 	private BaseId objectId;
