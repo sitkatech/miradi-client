@@ -53,7 +53,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 		
 		box.add(new HyperlinkLabel( 
-				"Why are my choices limited to one color family for each type of factor?",
+				"<p>Why are my choices limited to one <p></p>color family for each type of factor?</p>",
 				"We are trying to create a standard set of symbols that can be recognized " +
 				"globally. Just like people the world over recognize a red octagon as a " +
 				"stop sign, we hope that they will recognize a green oval as a target or " +
