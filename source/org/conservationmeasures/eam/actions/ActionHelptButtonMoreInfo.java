@@ -12,7 +12,7 @@ public class ActionHelptButtonMoreInfo extends MainWindowAction
 {
 	public ActionHelptButtonMoreInfo(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(),"images/info.png");
 	}
 
 	private static String getLabel()
