@@ -22,10 +22,10 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
+import org.conservationmeasures.eam.utils.HyperlinkLabel;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
-import org.martus.swing.Utilities;
 
 public class PreferencesPanel extends DataInputPanel implements ActionListener
 {
@@ -50,14 +50,24 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		box.add(new UiLabel("Choose the colors that look best on your system"));
 		box.add(createColorPreferencesPanel());
 		box.add(buttonBox);
+
+		
+		box.add(new HyperlinkLabel( 
+				"Why are my choices limited to one color family for each type of factor?",
+				"We are trying to create a standard set of symbols that can be recognized " +
+				"globally. Just like people the world over recognize a red octagon as a " +
+				"stop sign, we hope that they will recognize a green oval as a target or " +
+				"a yellow hexagon as a strategy"));
+		
 		box.add(Box.createVerticalGlue());
-		add(box);
-		setLocation(Utilities.center(getSize(), Utilities.getViewableRectangle()));		
+
+		add(box);	
 	}
 
 	DialogGridPanel createColorPreferencesPanel()
 	{
 		DialogGridPanel panel = new DialogGridPanel();
+
 
 		panel.add(new UiLabel("Strategy (Yellow)"));
 		interventionDropdown = createColorsDropdown(interventionColorChoices);

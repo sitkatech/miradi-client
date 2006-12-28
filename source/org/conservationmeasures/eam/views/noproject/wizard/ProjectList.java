@@ -7,15 +7,13 @@ package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.Date;
 
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.utils.HyperlinkLabel;
 import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiLabel;
@@ -47,7 +45,7 @@ public class ProjectList extends JPanel
 			String name = projectFile.getName();
 			MultiCalendar date = new MultiCalendar(new Date(projectFile.lastModified()));
 			String isoDate = date.toIsoDateString();
-			add(new Hyperlink(NoProjectWizardPanel.OPEN_PREFIX+name, name, handler));
+			add(new HyperlinkLabel(name, NoProjectWizardPanel.OPEN_PREFIX+name, handler));
 			add(new TableHeadingText(isoDate));
 		}
 		
@@ -71,62 +69,6 @@ public class ProjectList extends JPanel
 		}
 		
 	}
-	
-	static class Hyperlink extends UiLabel implements MouseListener
-	{
-		public Hyperlink(String urlToReturn, String textToShow, HyperlinkHandler handlerToUse)
-		{
-			super("<html><u>" + textToShow + "</u></html>");
-			url = urlToReturn;
-			text = textToShow;
-			handler = handlerToUse;
-			
-			setBackground(Color.WHITE);
-			setForeground(Color.BLUE);
-			setOpaque(true);
-			addMouseListener(this);
-		}
 
-		public void mouseClicked(MouseEvent e)
-		{
-			if(e.getButton() == MouseEvent.BUTTON1)
-				handler.linkClicked(url);
-		}
-
-		public void mouseEntered(MouseEvent e)
-		{
-			setBackground(Color.LIGHT_GRAY);
-			invalidate();
-		}
-
-		public void mouseExited(MouseEvent e)
-		{
-			setBackground(Color.WHITE);
-			invalidate();
-		}
-
-		public void mousePressed(MouseEvent e)
-		{
-			if(e.isPopupTrigger())
-				fireRightClick(e);
-		}
-
-		public void mouseReleased(MouseEvent e)
-		{
-			if(e.isPopupTrigger())
-				fireRightClick(e);
-		}
-		
-		void fireRightClick(MouseEvent e)
-		{
-			JPopupMenu menu = handler.getRightClickMenu(text);
-			menu.show(this, e.getX(), e.getY());
-		}
-		
-		String url;
-		String text;
-		HyperlinkHandler handler;
-	}
-	
 	HyperlinkHandler handler;
 }

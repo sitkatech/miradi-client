@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.dialogs.PreferencesDialog;
 import org.conservationmeasures.eam.dialogs.PreferencesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.martus.swing.Utilities;
 
 public class Preferences extends MainWindowDoer
 {
@@ -27,6 +28,7 @@ public class Preferences extends MainWindowDoer
 		PreferencesPanel preferencesPanel = new PreferencesPanel(getMainWindow());
 		//TODO change heading
 		PreferencesDialog dlg = new PreferencesDialog(getMainWindow(), preferencesPanel, "Preferences");
+		Utilities.centerDlg(dlg);
 		dlg.setVisible(true);	
 	}
 }
