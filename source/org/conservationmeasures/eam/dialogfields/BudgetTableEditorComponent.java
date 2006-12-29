@@ -56,7 +56,11 @@ public class BudgetTableEditorComponent extends DisposablePanel
 
 	public void dataWasChanged()
 	{
+		
 		budgetTableModel.dataWasChanged();
+		
+		if (budgetTable.getCellEditor() != null)
+			budgetTable.getCellEditor().cancelCellEditing();
 	}
 	
 	JPanel createButtonBar(Actions actions)
