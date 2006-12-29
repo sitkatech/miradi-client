@@ -36,10 +36,7 @@ public class ProjectCalendar
 		if (startDate.length() > 0 )
 			projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
 		
-		int yearCount = 3;
-		String endDate = project.getMetadata().getExpectedEndDate();
-		if (endDate.length() > 0)
-			yearCount = DateRange.getYearsInBetween(projectStartDate, MultiCalendar.createFromIsoDateString(endDate));
+		int yearCount = getYearDifference(projectStartDate);
 		
 		int year = projectStartDate.getGregorianYear();
 		yearlyDateRanges = new Vector();
@@ -50,6 +47,21 @@ public class ProjectCalendar
 			year++;
 		}
 		dateRanges = (DateRange[])vector.toArray(new DateRange[0]);
+	}
+
+	private int getYearDifference(MultiCalendar projectStartDate)
+	{
+		final int DEFAULT_YEAR_DIFF = 3;
+		String endDate = project.getMetadata().getExpectedEndDate();
+		
+		if (endDate.length() <= 0)
+			return DEFAULT_YEAR_DIFF;
+		
+		int yearDiff = DateRange.getYearsInBetween(projectStartDate, MultiCalendar.createFromIsoDateString(endDate));
+		if (yearDiff == 0)
+			return DEFAULT_YEAR_DIFF;
+		
+		return yearDiff;
 	}
 
 	private Vector getQuartersPlustYearlyRange(int year) throws Exception
