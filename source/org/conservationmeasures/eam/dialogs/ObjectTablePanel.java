@@ -87,6 +87,13 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	public void setPropertiesPanel(ObjectDataInputPanel panel)
 	{
 		propertiesPanel = panel;
+		selectFirstRow();
+	}
+
+	private void selectFirstRow()
+	{
+		if(table.getRowCount()>0)
+			table.setRowSelectionInterval(0, 0);
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
@@ -110,13 +117,15 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	public void commandUndone(CommandExecutedEvent event)
 	{
 		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+		{
 			table.updateTableAfterUndo((CommandSetObjectData)event.getCommand());
-		if(event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+		}
+		else if(event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
 		{
 			CommandCreateObject cmd = (CommandCreateObject)event.getCommand();
 			table.updateTableAfterObjectDeleted(new ORef(cmd.getObjectType(), cmd.getCreatedId()));
 		}
-		if(event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+		else if(event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
 		{
 			CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
 			table.updateTableAfterObjectCreated(new ORef(cmd.getObjectType(), cmd.getObjectId()));
