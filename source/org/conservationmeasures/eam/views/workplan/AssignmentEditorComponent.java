@@ -58,6 +58,7 @@ public class AssignmentEditorComponent extends DisposablePanel
 	public void dataWasChanged()
 	{
 		unitsModel.dataWasChanged();
+		budgetTable.cancelCellEditing();
 	}
 	
 	JPanel createButtonBar(Actions actions)

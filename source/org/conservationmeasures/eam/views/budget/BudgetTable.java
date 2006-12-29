@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
@@ -148,6 +149,15 @@ public class BudgetTable extends JTable implements ObjectPicker
 	AbstractBudgetTableModel model;
 	
 	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
+
+	public void cancelCellEditing()
+	{
+		TableCellEditor editor = getCellEditor();
+		if (editor == null)
+			return;
+
+		editor.cancelCellEditing();
+	}
 }
 
 class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
