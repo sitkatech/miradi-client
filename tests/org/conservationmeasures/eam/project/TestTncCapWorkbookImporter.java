@@ -30,17 +30,7 @@ public class TestTncCapWorkbookImporter extends EAMTestCase
 	}
 
 	public void testProjectInfoImport() throws Exception
-	{
-		try 
-		{
-			new TncCapWorkbookImporter("./tests/CAP_vXa_beta_091806_San_Miguel_v5_data.xls");
-			fail("Should have trown for bad file version");
-		}
-		catch (Exception ignoreExpected)
-		{	
-		}
-		
-		
+	{		
 		TncCapWorkbookImporter tncCapWookbook = new TncCapWorkbookImporter("./tests/CAP_v5a_beta_091806_San_Miguel_v5_data.xls");
 		assertEquals(PROJECT_VERSION, tncCapWookbook.getProjectVersion());
 		assertEquals(PROJECT_VERSION_DATE, tncCapWookbook.getProjectVersionDate());
