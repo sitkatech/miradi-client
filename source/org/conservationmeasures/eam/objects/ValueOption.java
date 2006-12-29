@@ -53,7 +53,7 @@ public class ValueOption extends EAMBaseObject
 	{
 		switch(getNumericValue())
 		{
-			case -1: return Color.DARK_GRAY;
+			case -1: return INVALID_GRAY;
 			case 0: return Color.WHITE;
 			case 1: return ChoiceQuestion.COLOR_4_OF_4;
 			case 2: return ChoiceQuestion.COLOR_3_OF_4;
@@ -100,6 +100,7 @@ public class ValueOption extends EAMBaseObject
 	
 	final public static String TAG_NUMERIC = "Numeric";
 	final public static String TAG_COLOR = "Color";
+	final private static Color INVALID_GRAY = new Color(200,200,200);
 	
 	int numeric;
 	Color color;
