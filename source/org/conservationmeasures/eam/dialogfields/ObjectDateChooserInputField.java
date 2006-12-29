@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.util.Date;
 
 import javax.swing.JComponent;
-import javax.swing.event.CaretEvent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -95,11 +94,23 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		public DateEditor()
 		{
 			super();
+			setEditable(false);
 		}
 
-		public void caretUpdate(CaretEvent arg0)
+		public void setDate(Date newDate)
 		{
-			super.caretUpdate(arg0);
+			super.setDate(newDate);
+			saveDate();	
+		}
+
+		private void saveDate()
+		{
+			if (dateChooser == null)
+				return;
+			
+			if (!dateChooser.isDateSelected())
+				return;
+			
 			setNeedsSave();
 			saveIfNeeded();
 		}

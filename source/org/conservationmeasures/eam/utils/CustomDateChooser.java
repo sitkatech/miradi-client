@@ -20,6 +20,11 @@ public class CustomDateChooser extends JDateChooser
 		calendarButton.addMouseListener(new MouseListener());
 	}
 	
+	public boolean isDateSelected()
+	{
+		return dateSelected;
+	}
+	
 	class MouseListener extends MouseAdapter
 	{
 		public void mouseReleased(MouseEvent e)
