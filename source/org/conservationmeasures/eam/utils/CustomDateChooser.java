@@ -12,9 +12,9 @@ import java.util.Calendar;
 import com.toedter.calendar.IDateEditor;
 import com.toedter.calendar.JDateChooser;
 
-public class CustomeDateChooser extends JDateChooser
+public class CustomDateChooser extends JDateChooser
 {
-	public CustomeDateChooser(IDateEditor dateEditor)
+	public CustomDateChooser(IDateEditor dateEditor)
 	{
 		super(dateEditor);
 		calendarButton.addMouseListener(new MouseListener());

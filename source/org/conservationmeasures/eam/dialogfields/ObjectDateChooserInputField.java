@@ -14,7 +14,7 @@ import javax.swing.event.CaretEvent;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.CustomeDateChooser;
+import org.conservationmeasures.eam.utils.CustomDateChooser;
 import org.martus.util.MultiCalendar;
 
 import com.toedter.calendar.JTextFieldDateEditor;
@@ -26,7 +26,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		super(projectToUse, type, id, tag);
 		project = projectToUse;
 		
-		dateChooser = new CustomeDateChooser(new DateEditor());
+		dateChooser = new CustomDateChooser(new DateEditor());
 		dateChooser.setDate(getStartDate(tag));
 		dateChooser.setDateFormatString("MM/dd/yyyy");
 
@@ -105,7 +105,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		}
 	}
 	
-	CustomeDateChooser dateChooser;
+	CustomDateChooser dateChooser;
 }
 
 
