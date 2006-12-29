@@ -71,11 +71,11 @@ public class ObjectTable extends UiTable implements ObjectPicker
 		
 		if (e.getType()!=TableModelEvent.DELETE)
 		{
-			scrollToAndSelectInsertedRow(e.getFirstRow());
+			scrollToAndSelectRow(e.getFirstRow());
 		}
 	}
 
-	private void scrollToAndSelectInsertedRow(int row)
+	private void scrollToAndSelectRow(int row)
 	{
 		Rectangle rect = getCellRect(row, 0, true);
 		scrollRectToVisible(rect);
