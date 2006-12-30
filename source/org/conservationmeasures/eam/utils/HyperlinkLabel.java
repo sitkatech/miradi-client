@@ -18,10 +18,10 @@ import org.martus.swing.UiLabel;
 public class HyperlinkLabel extends UiLabel implements MouseListener
 {
 	
-	public HyperlinkLabel(String textToShow, String textToDisplay)
+	public HyperlinkLabel(String linkText, String popUpTextToUse)
 	{
-		this(textToShow);
-		displayText[0] = textToDisplay;
+		this(linkText);
+		popUpText[0] = popUpTextToUse;
 	}
 	
 	public HyperlinkLabel(String textToShow, String urlToReturn, HyperlinkHandler handlerToUse)
@@ -46,7 +46,7 @@ public class HyperlinkLabel extends UiLabel implements MouseListener
 		if(e.getButton() == MouseEvent.BUTTON1)
 		{
 			if (handler == null)
-				EAM.okDialog(EAM.text("Hyperlink Label"), displayText);
+				EAM.okDialog(EAM.text("Hyperlink Label"), popUpText);
 			else
 				handler.linkClicked(url);
 		}
@@ -87,6 +87,6 @@ public class HyperlinkLabel extends UiLabel implements MouseListener
 	
 	String url;
 	String text;
-	String[] displayText = new String[1];
+	String[] popUpText = new String[1];
 	HyperlinkHandler handler;
 }
