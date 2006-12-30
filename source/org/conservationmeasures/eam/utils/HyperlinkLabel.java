@@ -21,20 +21,20 @@ public class HyperlinkLabel extends UiLabel implements MouseListener
 	public HyperlinkLabel(String linkText, String popUpTextToUse)
 	{
 		this(linkText);
-		popUpText[0] = popUpTextToUse;
+		popUpText = popUpTextToUse;
 	}
 	
-	public HyperlinkLabel(String textToShow, String urlToReturn, HyperlinkHandler handlerToUse)
+	public HyperlinkLabel(String linkText, String urlToReturn, HyperlinkHandler handlerToUse)
 	{
-		this(textToShow);
+		this(linkText);
 		url = urlToReturn;
 		handler = handlerToUse;
 	}
 	
-	private HyperlinkLabel(String textToShow)
+	private HyperlinkLabel(String linkText)
 	{
-		super("<html><u>" + textToShow + "</u></html>");
-		text = textToShow;
+		super("<html><u>" + linkText + "</u></html>");
+		text = linkText;
 		setBackground(Color.WHITE);
 		setForeground(Color.BLUE);
 		setOpaque(true);
@@ -46,7 +46,10 @@ public class HyperlinkLabel extends UiLabel implements MouseListener
 		if(e.getButton() == MouseEvent.BUTTON1)
 		{
 			if (handler == null)
-				EAM.okDialog(EAM.text("Hyperlink Label"), popUpText);
+			{
+				String[] array = {popUpText};
+				EAM.okDialog(EAM.text("Hyperlink Label"), array);
+			}
 			else
 				handler.linkClicked(url);
 		}
@@ -87,6 +90,6 @@ public class HyperlinkLabel extends UiLabel implements MouseListener
 	
 	String url;
 	String text;
-	String[] popUpText = new String[1];
+	String popUpText;
 	HyperlinkHandler handler;
 }
