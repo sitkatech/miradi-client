@@ -144,12 +144,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 	{
 		return (AbstractBudgetTableModel)getModel();
 	}
-
-	Project project;
-	AbstractBudgetTableModel model;
 	
-	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
-
 	public void cancelCellEditing()
 	{
 		TableCellEditor editor = getCellEditor();
@@ -158,6 +153,12 @@ public class BudgetTable extends JTable implements ObjectPicker
 
 		editor.cancelCellEditing();
 	}
+
+	Project project;
+	AbstractBudgetTableModel model;
+	
+	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
+
 }
 
 class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
