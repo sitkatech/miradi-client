@@ -73,7 +73,7 @@ class MoreInfoButton extends HelpButton
 {
 	public MoreInfoButton(Action action)
 	{
-		super(action, Color.GREEN);
+		super(action, Color.CYAN);
 		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 	}
 }
@@ -91,7 +91,7 @@ class WorkshopButton extends HelpButton
 {
 	public WorkshopButton(Action action)
 	{
-		super(action, Color.CYAN);
+		super(action, Color.GREEN);
 		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 	}
 }
