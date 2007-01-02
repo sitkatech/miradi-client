@@ -57,7 +57,11 @@ public class ProjectCalendar
 		if (endDate.length() <= 0)
 			return DEFAULT_YEAR_DIFF;
 		
-		int yearDiff = DateRange.getYearsInBetween(projectStartDate, MultiCalendar.createFromIsoDateString(endDate));
+		MultiCalendar projectEndDate = MultiCalendar.createFromIsoDateString(endDate);
+		if (projectStartDate.after(projectEndDate))
+			return DEFAULT_YEAR_DIFF;
+		
+		int yearDiff = DateRange.getYearsInBetween(projectStartDate, projectEndDate);
 		if (yearDiff == 0)
 			return DEFAULT_YEAR_DIFF;
 		
