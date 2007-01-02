@@ -14,8 +14,8 @@ import javax.swing.JComponent;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
-import org.conservationmeasures.eam.actions.ActionHelptButtonMoreInfo;
-import org.conservationmeasures.eam.actions.ActionHelptButtonWorkshop;
+import org.conservationmeasures.eam.actions.ActionHelpButtonMoreInfo;
+import org.conservationmeasures.eam.actions.ActionHelpButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
@@ -47,9 +47,9 @@ public class EAMToolBar extends JToolBar
 		
 		add(Box.createHorizontalGlue());
 
-		add(new MoreInfoButton(actions.get(ActionHelptButtonMoreInfo.class)));
+		add(new MoreInfoButton(actions.get(ActionHelpButtonMoreInfo.class)));
 		add(new ExamplesButton(actions.get(ActionHelpButtonExamples.class)));
-		add(new WorkshopButton(actions.get(ActionHelptButtonWorkshop.class)));
+		add(new WorkshopButton(actions.get(ActionHelpButtonWorkshop.class)));
 	}
 	
 }

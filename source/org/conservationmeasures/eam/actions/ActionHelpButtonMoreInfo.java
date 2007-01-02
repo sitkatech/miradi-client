@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionHelptButtonMoreInfo extends MainWindowAction
+public class ActionHelpButtonMoreInfo extends MainWindowAction
 {
-	public ActionHelptButtonMoreInfo(MainWindow mainWindow)
+	public ActionHelpButtonMoreInfo(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(),"images/info.png");
 	}

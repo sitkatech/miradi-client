@@ -80,8 +80,8 @@ public class Actions
 		registerAction(new ActionHelpCMPStandards(mainWindow));
 		registerAction(new ActionHelpCredits(mainWindow));
 		registerAction(new ActionHelpButtonExamples(mainWindow));
-		registerAction(new ActionHelptButtonMoreInfo(mainWindow));
-		registerAction(new ActionHelptButtonWorkshop(mainWindow));
+		registerAction(new ActionHelpButtonMoreInfo(mainWindow));
+		registerAction(new ActionHelpButtonWorkshop(mainWindow));
 		registerAction(new ActionClose(mainWindow));
 		registerAction(new ActionContextualHelp(mainWindow));
 		registerAction(new ActionCopy(mainWindow));

@@ -27,8 +27,8 @@ import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
 import org.conservationmeasures.eam.actions.ActionHelpCredits;
-import org.conservationmeasures.eam.actions.ActionHelptButtonMoreInfo;
-import org.conservationmeasures.eam.actions.ActionHelptButtonWorkshop;
+import org.conservationmeasures.eam.actions.ActionHelpButtonMoreInfo;
+import org.conservationmeasures.eam.actions.ActionHelpButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
@@ -490,7 +490,7 @@ public class MainMenuBar extends JMenuBar
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class,HelpButtonData.CMP_STANDARDS, HelpButtonData.CMP_STANDARDS_HTML));
 		
-		item = addMenuItem(actions, menu, ActionHelptButtonMoreInfo.class, KeyEvent.VK_M);
+		item = addMenuItem(actions, menu, ActionHelpButtonMoreInfo.class, KeyEvent.VK_M);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 		
@@ -498,7 +498,7 @@ public class MainMenuBar extends JMenuBar
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
 		
-		item  = addMenuItem(actions, menu, ActionHelptButtonWorkshop.class, KeyEvent.VK_W);
+		item  = addMenuItem(actions, menu, ActionHelpButtonWorkshop.class, KeyEvent.VK_W);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 		
