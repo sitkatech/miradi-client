@@ -41,7 +41,7 @@ public class CustomDateChooser extends JDateChooser
 		
 		public void mousePressed(MouseEvent e)
 		{
-			super.mouseReleased(e);
+			super.mousePressed(e);
 			if (popup.isVisible())
 			{
 				newCalendar = jcalendar.getCalendar();
