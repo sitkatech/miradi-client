@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Dimension;
+import java.awt.event.FocusEvent;
 import java.util.Date;
 
 import javax.swing.JComponent;
@@ -94,7 +95,6 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		public DateEditor()
 		{
 			super();
-			setEditable(false);
 		}
 
 		public void setDate(Date newDate)
@@ -113,6 +113,12 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 			
 			setNeedsSave();
 			saveIfNeeded();
+		}
+
+		public void focusLost(FocusEvent arg0)
+		{
+			super.focusLost(arg0);
+			saveDate();
 		}
 	}
 	
