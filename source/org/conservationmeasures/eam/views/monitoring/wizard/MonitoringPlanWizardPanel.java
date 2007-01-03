@@ -15,11 +15,13 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 		super(mainWindow);
 		OVERVIEW = addStep(new MonitoringOverviewStep(this));
 		FOCUS = addStep(new MonitoringFocusStep(this));
-		FORMAL = addStep(new MonitoringFormalStep(this));
+		DEFINE_INDICATORS = addStep(new MonitoringDefineIndicatorsStep(this));
+		EDIT_NDICATORS = addStep(new MonitoringEditIndicatorsStep(this));
 		setStep(OVERVIEW);
 	}
 	
 	int OVERVIEW;
 	int FOCUS;
-	int FORMAL;
+	int DEFINE_INDICATORS;
+	int EDIT_NDICATORS;
 }

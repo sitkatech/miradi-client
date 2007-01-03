@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class MonitoringFormalStep extends WizardStep
+public class MonitoringEditIndicatorsStep  extends WizardStep
 {
-	public MonitoringFormalStep(WizardPanel wizardToUse)
+	public MonitoringEditIndicatorsStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -34,6 +34,6 @@ public class MonitoringFormalStep extends WizardStep
 		}
 	}
 	
-	String HTML_FILENAME = "MonitoringFormalStep.html";
+	String HTML_FILENAME = "MonitoringEditIndicatorsStep.html";
 }
 
