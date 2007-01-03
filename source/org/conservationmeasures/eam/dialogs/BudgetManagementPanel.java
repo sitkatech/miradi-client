@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import java.awt.Dimension;
+
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -19,6 +21,10 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 		propertiesPanel = propertiesPanelToUse;
 		treeTableComponent = treeTableComponentToUse;
 		treeTableComponent.setPropertiesPanel(propertiesPanel.getInputPanel());
+		
+		Dimension dimension = new Dimension(0,200);
+		propertiesPanel.setPreferredSize(dimension);
+		treeTableComponent.setPreferredSize(dimension);
 		
 		createVerticalSplitPane(treeTableComponent, propertiesPanel);
 	}
