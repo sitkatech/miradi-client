@@ -25,17 +25,17 @@ public class MonitoringFocusStep extends WizardStep
 	{
 		if(linkDescription.equals("Definition:StrategyEffectiveness"))
 		{
-			EAM.okDialog("Definition: Monitoring Plan", new String[] {
+			EAM.okDialog("Definition: Strategy Effectiveness", new String[] {
 					"Information used to answer the question: Are the conservation actions " +
 					"we are taking achieving their desired results?"});
 		}
 		
 		if(linkDescription.equals("Definition:StatusAssessments"))
 		{
-			EAM.okDialog("Definition: Indicator", new String[] {
+			EAM.okDialog("Definition: Status Assessments", new String[] {
 					"Information used to answer the questions how are key targets, threats, " +
 					"and other factors changing? Answers to these questions, even when no " +
-					"actions are occurring, are important to determine if future actions are needed.  "});
+					"actions are occurring, are important to determine if future actions are needed."});
 		}
 	}
 	
