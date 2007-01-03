@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.monitoring;
 
 import java.awt.BorderLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -22,7 +23,9 @@ public class MonitoringPanel extends JPanel
 		model = new MonitoringModel(projectToUse);
 		tree = new MonitoringTreeTable(projectToUse, model);
 		restoreTreeExpansionState();
-		add(new UiScrollPane(tree), BorderLayout.CENTER);
+		UiScrollPane scrollPane = new UiScrollPane(tree);
+		scrollPane.setBorder(BorderFactory.createTitledBorder("Indicators linked to goals and objectives." ));
+		add(scrollPane, BorderLayout.CENTER);
 	}
 	
 	public void dispose()
