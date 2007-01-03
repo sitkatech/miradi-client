@@ -13,9 +13,11 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 	public MonitoringPlanWizardPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-		int WELCOME = addStep(new MonitoringOverviewStep(this));
-
-		setStep(WELCOME);
+		OVERVIEW = addStep(new MonitoringOverviewStep(this));
+		FOCUS = addStep(new MonitoringFocusStep(this));
+		setStep(OVERVIEW);
 	}
-
+	
+	int OVERVIEW;
+	int FOCUS;
 }
