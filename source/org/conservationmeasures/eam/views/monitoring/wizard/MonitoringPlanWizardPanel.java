@@ -17,6 +17,7 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 		FOCUS = addStep(new MonitoringFocusStep(this));
 		DEFINE_INDICATORS = addStep(new MonitoringDefineIndicatorsStep(this));
 		EDIT_NDICATORS = addStep(new MonitoringEditIndicatorsStep(this));
+		SELECT_METHODS = addStep(new MonitoringSelectMethodsStep(this));
 		setStep(OVERVIEW);
 	}
 	
@@ -24,4 +25,5 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 	int FOCUS;
 	int DEFINE_INDICATORS;
 	int EDIT_NDICATORS;
+	int SELECT_METHODS;
 }
