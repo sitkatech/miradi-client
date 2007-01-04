@@ -7,8 +7,10 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.LayoutManager2;
 
+import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.main.MainWindow;
@@ -37,6 +39,12 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		add(splitter, BorderLayout.CENTER);
 	}
 	
+	protected void setComponentPreferredSize(JComponent component)
+	{
+		Dimension dimension = new Dimension(0,200);
+		component.setPreferredSize(dimension);
+	}
+
 	private MainWindow mainWindow;
 	
 	private static final String PROPERTIES_SPLITTER = "PropertiesSplitter"; 

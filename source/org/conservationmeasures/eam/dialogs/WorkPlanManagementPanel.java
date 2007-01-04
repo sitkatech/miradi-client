@@ -17,8 +17,11 @@ public class WorkPlanManagementPanel extends VerticalSplitPanel
 		super(mainWindow);
 		treeTableComponent = treeTablePanelToUse;
 		propertiesPanel = propertiesPanelToUse;
-    
+    	
 		treeTableComponent.setPropertiesPanel(propertiesPanel);
+	
+    	setComponentPreferredSize(treeTableComponent);
+		setComponentPreferredSize(propertiesPanel);
 		createVerticalSplitPane(treeTableComponent, propertiesPanel);
 	}
 	
