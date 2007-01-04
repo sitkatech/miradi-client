@@ -9,38 +9,24 @@ import java.util.Hashtable;
 
 public class DefinitionCommonTerms
 {
+    static
+    {
+		definitions = new Hashtable();
+		new Definition("Undefined", "Undefined", "Undefined");
+		new Definition("Definition:Goal", "Goal", 
+			"Goal -- A formal statement detailing a desired impact of a project. " +
+			"In conservation projects, it is the desired future status of a target." );
+    }
 	
-	static public void setTerms()
-	{
-		definitionHeaders.put("Definition:Goals",  "Goals");
-		definitions.put("Definition:Goals",  
-				"Goal -- A formal statement detailing a desired impact of a project.  " +
-				"In conservation projects, it is the desired future status of a target." );
-	}
-	
-	static public String getDefinition(String definitionKey)
-	{
-		if (definitions.size()==0) 
-			setTerms();
-		
-		String text = (String) definitions.get(definitionKey);
-		if (text==null)
-			text = "";
-		return text;
-	}
-	
-	static public String getDefinitionHeader(String definitionKey)
-	{
-		if (definitions.size()==0) 
-			setTerms();
-		
-		String text = (String) definitionHeaders.get(definitionKey);
-		if (text==null)
-			text = "Undefined";
-		return "Definition: " + text;
-	}
-	
-	
+    static public Definition getDefintion(String key)
+    {
+    	Definition def = (Definition)definitions.get(key);
+    	if (def==null)
+    		return (Definition)definitions.get("Undefined");
+    	return def;
+    }
+    
 	static Hashtable definitions = new Hashtable();
-	static Hashtable definitionHeaders = new Hashtable();
 }
+
+
