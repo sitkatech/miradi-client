@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.HtmlViewer;
 
@@ -42,6 +43,15 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 		htmlViewer.setText(htmlText);
 		invalidate();
 		validate();
+	}
+	
+	public void linkClicked(String linkDescription)
+	{
+		if (linkDescription.startsWith("Definition:"))
+		{
+			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
+			EAM.okDialog("Definition:" + def.term, new String[] {def.definition});
+		}
 	}
 	
 	public void valueChanged(String name, String value)

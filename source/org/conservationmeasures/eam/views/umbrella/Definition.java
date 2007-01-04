@@ -6,11 +6,10 @@
 package org.conservationmeasures.eam.views.umbrella;
 public class Definition
 {
-	public Definition(String key, String termToUse, String defintionToUse)
+	public Definition(String termToUse, String defintionToUse)
 	{
 		definition = defintionToUse;
 		term = termToUse;
-		DefinitionCommonTerms.definitions.put(key, this);
 	}
 	
 	public String term;
