@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.strategicplan.wizard;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
@@ -23,12 +24,9 @@ public class StrategicPlanDevelopGoalStep extends WizardStep
 	
 	public void linkClicked(String linkDescription)
 	{
-		if(linkDescription.equals("Definition:Goal"))
-		{
-			EAM.okDialog("Definition:Goals", new String[] {
-				"Goal -- A formal statement detailing a desired impact of a project.  " +
-				"In conservation projects, it is the desired future status of a target." });
-		}
+		EAM.okDialog(
+			DefinitionCommonTerms.getDefinitionHeader(linkDescription),new String[] {
+			DefinitionCommonTerms.getDefinition(linkDescription)});
 	}
 	
 	private static final String HTML_FILE_NAME = "DevelopGoals.html";
