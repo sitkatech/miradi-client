@@ -72,7 +72,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 			else if(linkDescription.startsWith(DEFINITION_PREFIX))
 			{
 				Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
-				EAM.okDialog("Definition:" + def.term, new String[] {def.definition});
+				EAM.okDialog(def.term, new String[] {def.definition});
 			}
 			else
 			{
