@@ -68,8 +68,15 @@ public class WorkPlanView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new WorkPlanWizardPanel(getMainWindow());
+		wizardPanel =  new WorkPlanWizardPanel(getMainWindow());
+		return wizardPanel;
 	}
+	
+	public void jump(Class stepMarker) throws Exception
+	{
+		wizardPanel.jump(stepMarker);
+	}
+
 
 	public void deleteTabs() throws Exception
 	{
@@ -128,6 +135,7 @@ public class WorkPlanView extends TabbedView
 	
 	MainWindow mainWindow;
 
+	WizardPanel wizardPanel;
 	WorkPlanManagementPanel workPlanManagementPanel;
 	ResourcePoolManagementPanel resourceManagementPanel;
 	ActivityPoolManagementPanel activitiesManagementPanel;

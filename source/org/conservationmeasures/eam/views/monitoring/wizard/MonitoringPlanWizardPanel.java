@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
@@ -21,8 +22,7 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 		actions = mainWindow.getActions();
 		
 		OVERVIEW = addStep(new MonitoringWizardOverviewStep(this));
-		EDIT_NDICATORS = addStep(new MonitoringWizardEditIndicatorsStep(this));
-		SELECT_METHODS = addStep(new MonitoringWizardSelectMethodsStep(this));
+		EDIT_INDICATORS = addStep(new MonitoringWizardEditIndicatorsStep(this));
 		setStep(OVERVIEW);
 	}
 	
@@ -31,14 +31,14 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 		if(stepMarker.equals(ActionJumpMonitoringOverview.class))
 			setStep(OVERVIEW);
 		else if(stepMarker.equals(ActionJumpEditIndicators.class))
-			setStep(EDIT_NDICATORS);
+			setStep(EDIT_INDICATORS);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 	
 	public void previous() throws Exception
 	{
-		if(currentStep == EDIT_NDICATORS)
+		if(currentStep == EDIT_INDICATORS)
 			actions.get(ActionJumpDefineIndicators.class).doAction();
 		
 		super.previous();
@@ -48,6 +48,8 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 	{
 		if(currentStep == OVERVIEW)
 			actions.get(ActionJumpMonitoringFocus.class).doAction();
+		else if(currentStep == EDIT_INDICATORS)
+			actions.get(ActionJumpSelectMethod.class).doAction();
 		
 		super.next();
 	}
@@ -55,6 +57,6 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 	Actions actions;
 
 	int OVERVIEW;
-	int EDIT_NDICATORS;
+	int EDIT_INDICATORS;
 	int SELECT_METHODS;
 }

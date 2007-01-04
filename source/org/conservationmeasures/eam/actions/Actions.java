@@ -51,6 +51,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
@@ -216,6 +217,7 @@ public class Actions
 		registerAction(new ActionJumpMonitoringFocus(mainWindow));
 		registerAction(new ActionJumpEditIndicators(mainWindow));
 		registerAction(new ActionJumpMonitoringOverview(mainWindow));
+		registerAction(new ActionJumpSelectMethod(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
