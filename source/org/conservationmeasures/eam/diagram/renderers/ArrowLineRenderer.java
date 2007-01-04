@@ -102,7 +102,12 @@ public class ArrowLineRenderer extends EdgeRenderer
 		
 		boolean isFromFactorSelected = diagram.isCellSelected(getLinkCell().getFrom());
 		boolean isToFactorSelected = diagram.isCellSelected(getLinkCell().getTo());
-		return (isFromFactorSelected || isToFactorSelected);
+		
+		boolean onlyOneFactorSelected = (diagram.getSelectionCount() == 1);
+		if(onlyOneFactorSelected)
+			return (isFromFactorSelected || isToFactorSelected);
+
+		return (isFromFactorSelected && isToFactorSelected);
 	}
 
 	protected Shape createLineEnd(int size, int style, Point2D src, Point2D dst)
