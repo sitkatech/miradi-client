@@ -52,7 +52,8 @@ public class MonitoringView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new MonitoringPlanWizardPanel(getMainWindow());
+		wizardPanel = new MonitoringPlanWizardPanel(getMainWindow());
+		return wizardPanel;
 	}
 
 	public IndicatorPoolManagementPanel getIndicatorManagementPanel()
@@ -64,6 +65,12 @@ public class MonitoringView extends TabbedView
 	{
 	}
 	
+	public void jump(Class stepMarker) throws Exception
+	{
+		wizardPanel.jump(stepMarker);
+	}
+	
+	WizardPanel wizardPanel;
 	MonitoringPanel monitoringPanel;
 	IndicatorPoolManagementPanel indicatorManagementPanel;
 }

@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
@@ -27,7 +28,9 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 	
 	public void jump(Class stepMarker) throws Exception
 	{
-		if(stepMarker.equals(ActionJumpEditIndicators.class))
+		if(stepMarker.equals(ActionJumpMonitoringOverview.class))
+			setStep(OVERVIEW);
+		else if(stepMarker.equals(ActionJumpEditIndicators.class))
 			setStep(EDIT_NDICATORS);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
