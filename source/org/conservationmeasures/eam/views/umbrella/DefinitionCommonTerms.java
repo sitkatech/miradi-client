@@ -154,6 +154,46 @@ public class DefinitionCommonTerms
 			"The people who conceive of and initiate the project.");
 		defs.put("Definition:InitialProjectTeam", def);
 		
+
+		def = new Definition("Overall Threat Rating", "The overall threat rating is...");
+		defs.put("Definition:OverallThreatRating", def);
+		
+
+		def = new Definition("Irreversibility", "Irreversibility is...");
+		defs.put("Definition:Irreversibility", def);
+		
+
+		def = new Definition("Severity", "Severity is...");
+		defs.put("Definition:Severity", def);
+		
+
+		def = new Definition("Project", "A project is...");
+		defs.put("Definition:Project", def);
+		
+		
+		def = new Definition("CMP", "The Conservation Measures Partnership (CMP) is...");
+		defs.put("Definition:CMP", def);
+		
+
+		def = new Definition("OpenStandards", "The Open Standards are...");
+		defs.put("Definition:OpenStandards", def);
+
+		
+		def = new Definition("NewProject", "A New Project is...");
+		defs.put("Definition:NewProject", def);
+		
+
+		def = new Definition("CreateProject", "A New Project is...");
+		defs.put("Definition:CreateProject", def);
+	
+
+		def = new Definition("ImportZip","A Zipped Project is...");
+		defs.put("Definition:ImportZip", def);
+
+		
+		def = new Definition("ImportCAP","A CAP Workbook is...");
+		defs.put("Definition:ImportCAP", def);
+
 		definitions = defs;
     }
 	

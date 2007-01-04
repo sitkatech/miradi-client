@@ -44,6 +44,8 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
 				EAM.logException(e);
 			}
 		}
+		else 
+			super.linkClicked(linkDescription);
 	}
 
 }

@@ -16,6 +16,8 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
 import org.conservationmeasures.eam.views.noproject.RenameProject;
+import org.conservationmeasures.eam.views.umbrella.Definition;
+import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
@@ -69,7 +71,8 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 			}
 			else if(linkDescription.startsWith(DEFINITION_PREFIX))
 			{
-				showDefinition(linkDescription);
+				Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
+				EAM.okDialog("Definition:" + def.term, new String[] {def.definition});
 			}
 			else
 			{
@@ -83,42 +86,6 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		}
 	}
 	
-	void showDefinition(String linkDescription)
-	{
-		String itemToDefine = linkDescription.substring(DEFINITION_PREFIX.length());
-		String[] definition = new String[] {"Not available"};
-		
-		if(itemToDefine.equals("Project"))
-		{
-			definition = new String[] {"A project is..."};
-		}
-		else if(itemToDefine.equals("CMP"))
-		{
-			definition = new String[] {"The Conservation Measures Partnership (CMP) is..."};
-		}
-		else if(itemToDefine.equals("OpenStandards"))
-		{
-			definition = new String[] {"The Open Standards are..."};
-		}
-		else if(itemToDefine.equals("NewProject"))
-		{
-			definition = new String[] {"A New Project is..."};
-		}
-		else if(itemToDefine.equals("CreateProject"))
-		{
-			definition = new String[] {"A New Project is..."};
-		}
-		else if(itemToDefine.equals("ImportZip"))
-		{
-			definition = new String[] {"A Zipped Project is..."};
-		}
-		else if(itemToDefine.equals("ImportCAP"))
-		{
-			definition = new String[] {"A CAP Workbook is..."};
-		}
-		
-		EAM.okDialog("Definition", definition);
-	}
 	
 	public JPopupMenu getRightClickMenu(String itemText)
 	{

@@ -64,10 +64,8 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 			ShowBundleRulesDialog dlg = new ShowBundleRulesDialog();
 			dlg.setVisible(true);
 		}
-		else if(linkDescription.equals("Definition:OverallThreatRating"))
-		{
-			EAM.okDialog("Definition: Overall Threat Rating", new String[] {"The overall threat rating is..."});
-		}
+		else 
+			super.linkClicked(linkDescription);
 	}
 
 	static class CheckBundleText extends HtmlBuilder

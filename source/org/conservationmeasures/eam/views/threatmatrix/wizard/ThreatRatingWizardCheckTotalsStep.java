@@ -64,6 +64,8 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 			ShowBundleRulesDialog dlg = new ShowBundleRulesDialog();
 			dlg.setVisible(true);
 		}
+		else 
+			super.linkClicked(linkDescription);
 	}
 
 	static class CheckTotalsText extends HtmlBuilder
