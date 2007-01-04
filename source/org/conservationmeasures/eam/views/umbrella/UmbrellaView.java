@@ -62,6 +62,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
+import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
@@ -69,6 +70,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
@@ -290,6 +293,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpIdentifyContributingFactors.class);
 		addJumpDoerToMap(ActionJumpAssessStakeholders.class);
 		addJumpDoerToMap(ActionJumpAnalyzeProjectCapacity.class);
+		addJumpDoerToMap(ActionJumpMonitoringFocus.class);
 		
 		addJumpDoerToMap(ActionJumpArticulateCoreAssumptions.class);
 		addJumpDoerToMap(ActionJumpCreateModel.class);
@@ -308,8 +312,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpDefineAudiences.class);
 		
 		addJumpDoerToMap(ActionJumpDefineIndicators.class);
+		addJumpDoerToMap(ActionJumpEditIndicators.class);
 		addJumpDoerToMap(ActionJumpSelectAppropriateMethods.class);
 		addJumpDoerToMap(ActionJumpPlanDataStorage.class);
+		
+		addJumpDoerToMap(ActionJumpMonitoringOverview.class);
 		
 		addJumpDoerToMap(ActionJumpShorttermPlans.class);
 		addJumpDoerToMap(ActionJumpDevelopActivities.class);

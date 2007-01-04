@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class MonitoringDefineIndicatorsStep extends WizardStep
+public class MonitoringWizardEditIndicatorsStep  extends WizardStep
 {
-	public MonitoringDefineIndicatorsStep(WizardPanel wizardToUse)
+	public MonitoringWizardEditIndicatorsStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -34,6 +34,6 @@ public class MonitoringDefineIndicatorsStep extends WizardStep
 		}
 	}
 	
-	String HTML_FILENAME = "MonitoringDefineIndicatorsStep.html";
+	String HTML_FILENAME = "MonitoringEditIndicatorsStep.html";
 }
 

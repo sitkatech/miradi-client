@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class MonitoringFocusStep extends WizardStep
+public class MonitoringWizardFocusStep extends WizardStep
 {
-	public MonitoringFocusStep(WizardPanel wizardToUse)
+	public MonitoringWizardFocusStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}

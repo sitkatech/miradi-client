@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
+import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
@@ -42,6 +43,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
@@ -210,6 +213,9 @@ public class Actions
 		registerAction(new ActionJumpViewAllGoals(mainWindow));
 		registerAction(new ActionJumpViewAllObjectives(mainWindow));
 		registerAction(new ActionJumpStratPlanWelcome(mainWindow));
+		registerAction(new ActionJumpMonitoringFocus(mainWindow));
+		registerAction(new ActionJumpEditIndicators(mainWindow));
+		registerAction(new ActionJumpMonitoringOverview(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
