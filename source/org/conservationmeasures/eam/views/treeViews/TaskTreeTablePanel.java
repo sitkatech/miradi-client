@@ -120,7 +120,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 			return;
 		}
 		tree.clearSelection();
-		tree.setRowSelectionInterval(row, row);
+		setSelectedRow(row);
 	}
 
 	public Task getSelectedTask()
@@ -236,6 +236,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		int currentSelectedRow = tree.getSelectedRow();
 		if(isChangeActivitiesListCommand(event) || isChangeSubtaskListCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
@@ -254,6 +255,8 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 				model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
 			restoreTreeExpansionState();
 		}
+		
+		setSelectedRow(currentSelectedRow);
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
@@ -280,6 +283,20 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 			restoreTreeExpansionState();
 		}
 	}
+	
+	private void setSelectedRow(int currentSelectedRow)
+	{
+		try
+		{
+			tree.setRowSelectionInterval(currentSelectedRow, currentSelectedRow);
+		}
+		catch (Exception e)
+		{
+			//TODO how to ignore?
+			EAM.logException(e);
+		}
+	}
+
 	
 	public void setPropertiesPanel(ObjectDataInputPanel propertiesPanelToUse)
 	{
