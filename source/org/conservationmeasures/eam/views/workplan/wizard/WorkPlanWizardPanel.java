@@ -21,10 +21,10 @@ public class WorkPlanWizardPanel extends WizardPanel
 		
 		WELCOME = addStep(new WorkPlanOverviewStep(this));
 		SELECT_METHOD = addStep(new MonitoringWizardSelectMethodsStep(this));
-		addStep(new WorkPlanDevelopActivitiesAndTasks(this));
-		addStep(new WorkPlanDevelopMethodsAndTasks(this));
-		addStep(new WorkPlanCreateResources(this));
-		addStep(new WorkPlanAssignResources(this));
+		addStep(new WorkPlanDevelopActivitiesAndTasksStep(this));
+		addStep(new WorkPlanDevelopMethodsAndTasksStep(this));
+		addStep(new WorkPlanCreateResourcesStep(this));
+		addStep(new WorkPlanAssignResourcesStep(this));
 		setStep(WELCOME);
 	}
 	

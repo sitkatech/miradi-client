@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.workplan.wizard;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class WorkPlanDevelopMethodsAndTasks extends WizardStep
+public class WorkPlanCreateResourcesStep extends WizardStep
 {
-	public WorkPlanDevelopMethodsAndTasks(WizardPanel wizardToUse)
+	public WorkPlanCreateResourcesStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -20,5 +20,5 @@ public class WorkPlanDevelopMethodsAndTasks extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "WorkPlanDevelopMethodsAndTasks.html";
+	String HTML_FILENAME = "WorkPlanCreateResources.html";
 }

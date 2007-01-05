@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.workplan.wizard;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class WorkPlanDevelopActivitiesAndTasks extends WizardStep
+public class WorkPlanDevelopActivitiesAndTasksStep extends WizardStep
 {
-	public WorkPlanDevelopActivitiesAndTasks(WizardPanel wizardToUse)
+	public WorkPlanDevelopActivitiesAndTasksStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
