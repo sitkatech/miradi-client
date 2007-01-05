@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectCodeListField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDateChooserInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectMultilineDisplayField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;

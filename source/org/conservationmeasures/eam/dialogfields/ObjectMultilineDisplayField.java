@@ -3,9 +3,8 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogs;
+package org.conservationmeasures.eam.dialogfields;
 
-import org.conservationmeasures.eam.dialogfields.ObjectTextInputField;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiTextArea;
