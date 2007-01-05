@@ -17,15 +17,10 @@ public class CustomDateChooser extends JDateChooser
 	public CustomDateChooser(IDateEditor dateEditor)
 	{
 		super(dateEditor);
-		calendarButton.addMouseListener(new MouseListener());
+		calendarButton.addMouseListener(new CustomMouseListener());
 	}
 	
-	public boolean isDateSelected()
-	{
-		return dateSelected;
-	}
-	
-	class MouseListener extends MouseAdapter
+	class CustomMouseListener extends MouseAdapter
 	{
 		public void mouseReleased(MouseEvent e)
 		{
