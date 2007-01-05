@@ -29,6 +29,9 @@ public class EAM
 {
 	public static void main(String[] args)
 	{
+		if(!handleEamToMiradiMigration())
+			return;
+		
 		setLogLevel(LOG_DEBUG);
 		if(Arrays.asList(args).contains("--verbose"))
 			setLogLevel(LOG_VERBOSE);
@@ -64,8 +67,13 @@ public class EAM
 
 	public static File getHomeDirectory()
 	{
+		File home = new File(System.getProperty("user.home"), "Miradi");
+		return home;
+	}
+	
+	public static File getOldEamHomeDirectory()
+	{
 		File home = new File(System.getProperty("user.home"), "eAM");
-		home.mkdirs();
 		return home;
 	}
 	
@@ -81,6 +89,35 @@ public class EAM
 			System.out.println("Unable to create exception logging file: " + e.getLocalizedMessage());
 		}
 
+	}
+	
+	private static boolean handleEamToMiradiMigration()
+	{
+		File miradiDirectory = EAM.getHomeDirectory();
+		if(miradiDirectory.exists())
+			return true;
+		
+		File oldEamDirectory = EAM.getOldEamHomeDirectory();
+		if(!oldEamDirectory.exists())
+			return true;
+		
+		String[] miradiMigrationText = {
+			"Miradi has detected some e-Adaptive Management ",
+			"projects and settings on this computer, which can ",
+			"automatically be imported into Miradi.",
+			"",
+			"If you want to run Miradi without performing this migration, ",
+			"delete the e-Adaptive Management project directory ",
+			"(" + oldEamDirectory + "), or rename it to something else",
+			"",
+			"Do you want to Import the old data, or Exit Miradi?",
+			"",
+		};
+		if(!EAM.confirmDialog("e-Adaptive Management Data Import", miradiMigrationText, new String[] {"Import", "Exit"}))
+			return false;
+		
+		oldEamDirectory.renameTo(miradiDirectory);
+		return true;
 	}
 	
 	///////////////////////////////////////////////////////////////////

@@ -56,6 +56,7 @@ public class ProjectList extends JPanel
 	public File[] getProjectDirectories()
 	{
 		File home = EAM.getHomeDirectory();
+		home.mkdirs();
 		return home.listFiles(new CreateProjectDialog.DirectoryFilter());
 
 	}
