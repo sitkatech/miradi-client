@@ -44,7 +44,7 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 	
 	public void doIt() throws CommandFailedException
 	{
-		String title = EAM.text("Title|About e-Adaptive Management");
+		String title = EAM.text("Title|About Miradi");
 		showOkDialog(title, aboutText);
 	}
 	
@@ -103,20 +103,21 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 
 	public static final String mainAboutText = 
 		"<p>" +
-		"Copyright 2005-2006, The Conservation Measures Partnership (CMP, at www.conservationmeasures.org) " +
+		"Copyright 2005-2007, The Conservation Measures Partnership (CMP, at www.conservationmeasures.org) " +
 		"and Beneficent Technology, Inc. (Benetech, at www.benetech.org)" +
 		"</p>" +
 
 		"<p align='left'>" +
 		"This software program is being developed to assist conservation practitioners " +
 		"to go through the adaptive management process outlined in the CMP's Open Standards " +
-		"for the Practice of Conservation. To obtain a copy of the latest version of these standards, " +
-		"go to www.conservationmeasures.org. " +
+		"for the Practice of Conservation. " +
+		"To obtain a copy of the latest version of these standards, " +
+		"go to <a href='www.conservationmeasures.org'>www.conservationmeasures.org</a>. " +
 		"You can also find more information about this software program " +
 		"at:" +
 		"</p>" +
 		"<p align='center'>" +
-		"<a href=\"http://www.conservationmeasures.org/CMP/Site_Page.cfm?PageID=22\">CMP Site</a>" +
+		"<a href='http://miradi.org'>miradi.org</a>" +
 		"</p>" +
 		"<p align='left'>" +
 		"If you have questions or suggestions, " +
@@ -136,7 +137,8 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 
 	static final String aboutText = 
 		"<html><table><tr><td align='center' valign='top'>" +
-		"<h1>e-Adaptive Management Pre-Release Demo</h1>" +
+		"<h1>Miradi</h1>" +
+		"<h2>Adaptive Management for Conservation Projects</h2>" +
 		"<font face='Arial'>" +
 		mainAboutText + 
 		licenseText + 
