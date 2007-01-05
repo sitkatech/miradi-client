@@ -12,7 +12,7 @@ public class ActionHelpButtonExamples extends MainWindowAction
 {
 	public ActionHelpButtonExamples(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(),"images/example.png");
 	}
 
 	private static String getLabel()
