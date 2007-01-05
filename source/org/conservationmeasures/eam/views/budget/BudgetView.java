@@ -132,7 +132,7 @@ public class BudgetView extends TabbedView
 	private HtmlViewer getBudgetComponent()
 	{
 		HtmlViewer htmlViewer= new HtmlViewer("",null);
-		htmlViewer.setText("<p>Coming soon – ability to enter actual expenditures and to match " +
+		htmlViewer.setText("<p>Coming soon - ability to enter actual expenditures and to match " +
 				"these up to budget line items and report on them by programmatic objectives and " +
 				"activities, by accounting codes, or by funding sources.</p>");
 		return htmlViewer;
