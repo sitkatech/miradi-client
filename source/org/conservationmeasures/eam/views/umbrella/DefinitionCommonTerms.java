@@ -87,13 +87,13 @@ public class DefinitionCommonTerms
 		
 		
 		def = new Definition("Vision", 
-			"Vision Statement - A general summary of the desired state or " +
+			"Vision - A general summary of the desired state or " +
 			"ultimate condition of the project area that a project is working to achieve");
 		defs.put("Definition:Vision", def);
 		
 
 		def = new Definition("Indicator", 
-			"A measurable entity related to a specific information need " +
+			"Indicator - A measurable entity related to a specific information need " +
 			"(for example, the status of a target, change in a threat, " +
 			"or progress towards an objective).  " +
 			"A good indicator meets the criteria of being: measurable, " +
@@ -102,13 +102,13 @@ public class DefinitionCommonTerms
 		
 
 		def = new Definition("Method",
-			"A specific technique used to collect data to measure an indicator.  " +
+			"Method - A specific technique used to collect data to measure an indicator.  " +
 			"A good method is accurate, reliable, cost-effective, feasible, and appropriate." );
 		defs.put("Definition:Method", def);
 		
 
 		def = new Definition("Monitoring Plan", 
-			"A plan for collecting information that you and others " +
+			"Monitoring Plan - A plan for collecting information that you and others " +
 			"need to know about your project. A good play includes " +
 			"the indicators that you will track over time as well as " +
 			"the methods that you will use.");
@@ -116,45 +116,45 @@ public class DefinitionCommonTerms
 		
 		
 		def = new Definition("Strategy Effectiveness", 
-			"Information used to answer the question: Are the conservation actions " +
+			"Strategy Effectiveness - Information used to answer the question: Are the conservation actions " +
 			"we are taking achieving their desired results?");
 		defs.put("Definition:StrategyEffectiveness", def);
 		
 
 		def = new Definition("Status Assessments", 
-			"Information used to answer the questions how are key targets, threats, " +
+			"Status Assessments - Information used to answer the questions how are key targets, threats, " +
 			"and other factors changing? Answers to these questions, even when no " +
 			"actions are occurring, are important to determine if future actions are needed.");
 		defs.put("Definition:StatusAssessments", def);
 		
 		
 		def = new Definition("Objective", 
-			"Objective -- A formal statement detailing a desired " +
+			"Objective - A formal statement detailing a desired " +
 			"outcome of a project, such as reducing a critical threat." );
 		defs.put("Definition:Objective", def);
 		
 		
 		def = new Definition("StrategicPlan", 
-			"Strategic plan -- An outline of how the project team proposes to" +
+			"Strategic plan - An outline of how the project team proposes to" +
 			" change the world that contains a project's goals, objectives," +
 			" and strategies." );
 		defs.put("Definition:StrategicPlan", def);
 
 		
 		def = new Definition("Strategy", 
-			"Strategy -- A broad course of action designed to restore natural systems, " +
+			"Strategy - A broad course of action designed to restore natural systems, " +
 			"reduce threats, and/or develop capacity.  A strategy is typically " +
 			"used as an umbrella term to describe a set of specific " +
 			"conservation actions." );
-		defs.put("Definition:Strategies", def);
+		defs.put("Definition:Strategy", def);
 		
 		
 		def = new Definition("Initial Project Team",
-			"The people who conceive of and initiate the project.");
+			"Initial Project Team - The people who conceive of and initiate the project.");
 		defs.put("Definition:InitialProjectTeam", def);
 		
 		
-		def = new Definition("Initial Project Team", 
+		def = new Definition("Work Plan", 
 				"Work Plan - A description of the specific activities/methods and tasks that " +
 				"you need to undertake your strategic and monitoring plans.  A good work plan " +
 				"shows the timing and sequence of each task as well as the specific resources " +
