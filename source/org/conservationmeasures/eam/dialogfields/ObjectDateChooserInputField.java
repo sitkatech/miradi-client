@@ -5,11 +5,13 @@
  */
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.FocusEvent;
 import java.util.Date;
 
 import javax.swing.JComponent;
+import javax.swing.event.CaretEvent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -96,19 +98,17 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		{
 			super();
 		}
-
+		
 		public void setDate(Date newDate)
 		{
 			super.setDate(newDate);
+			setForeground(Color.blue);
 			saveDate();	
 		}
 
 		private void saveDate()
 		{
 			if (dateChooser == null)
-				return;
-			
-			if (!dateChooser.isDateSelected())
 				return;
 			
 			setNeedsSave();
@@ -118,8 +118,22 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		public void focusLost(FocusEvent arg0)
 		{
 			super.focusLost(arg0);
+			setForeground(Color.BLUE);
 			saveDate();
 		}
+
+		public void caretUpdate(CaretEvent event)
+		{
+			super.caretUpdate(event);
+			setForeground(Color.BLUE);
+		}
+		
+		public void setEnabled(boolean b)
+		{
+			super.setEnabled(b);
+			setForeground(Color.blue);
+		}
+
 	}
 	
 	CustomDateChooser dateChooser;
