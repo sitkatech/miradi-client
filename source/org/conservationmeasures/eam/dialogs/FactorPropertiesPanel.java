@@ -26,7 +26,11 @@ import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
@@ -106,20 +110,21 @@ public class FactorPropertiesPanel extends DisposablePanel
 		createTextField(diagramFactor.getLabel(), MAX_LABEL_LENGTH);
 
 		DialogGridPanel grid = new DialogGridPanel();
-		grid.add(new UiLabel(EAM.text("Label|Label")));
+
+		grid.add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR, "Label")));
 		grid.add(textField);
 
-		grid.add(new UiLabel(EAM.text("Label|Type")));
+		grid.add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR, "Type")));
 		
 		//TODO: factor labes should be centralized in a common properties file or class
 		if(diagramFactor.isDirectThreat())
-			grid.add(new UiLabel(EAM.text("Direct Threat"), new DirectThreatIcon(), UiLabel.LEADING));
+			grid.add(new UiLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING));
 		else if (diagramFactor.isContributingFactor())
-			grid.add(new UiLabel(EAM.text("Contributing Factor"), new ContributingFactorIcon(), UiLabel.LEADING));
+			grid.add(new UiLabel(EAM.text(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR), new ContributingFactorIcon(), UiLabel.LEADING));
 		else if (diagramFactor.isStrategy()) 
-			grid.add(new UiLabel(EAM.text("Strategy"), new StrategyIcon(), UiLabel.LEADING));
+			grid.add(new UiLabel(EAM.text(Strategy.OBJECT_NAME), new StrategyIcon(), UiLabel.LEADING));
 		else if (diagramFactor.isTarget())
-			grid.add(new UiLabel(EAM.text("Target"), new TargetIcon(), UiLabel.LEADING));
+			grid.add(new UiLabel(EAM.text(Target.OBJECT_NAME), new TargetIcon(), UiLabel.LEADING));
 
 		grid.add(new UiLabel());
 		return grid;
