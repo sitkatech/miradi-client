@@ -23,20 +23,20 @@ public class DefinitionCommonTerms
 			"that are chosen to represent and encompass the full array of " +
 			"biodiversity found in a project area.  They are the basis for " +
 			"setting goals, carrying out conservation actions, and measuring " +
-			"conservation effectiveness.  In theory – and hopefully in practice " +
-			"– conservation of the focal targets will ensure the conservation of " +
+			"conservation effectiveness.  In theory - and hopefully in practice " +
+			"- conservation of the focal targets will ensure the conservation of " +
 			"all native biodiversity within functional landscapes. ");
 		defs.put("Definition:ConservationTargets", def);
 		
 
 		def = new Definition("Ecosystems", 
-			"Ecosystems –The ecological systems that characterize the " +
+			"Ecosystems - The ecological systems that characterize the " +
 			"terrestrial, aquatic, and marine biodiversity of the project site. ");
 		defs.put("Definition:Ecosystems", def);
 		
 		
 		def = new Definition("Focal Species", 
-			"Focal Species – These include species endemic to the ecoregion, " +
+			"Focal Species - These include species endemic to the ecoregion, " +
 			"area-sensitive (umbrella) species, commercially exploited species, " +
 			"flagship species, keystone species, or imperiled species. Species " +
 			"selected as focal targets are typically those that are not represented " +
@@ -46,7 +46,7 @@ public class DefinitionCommonTerms
 		
 		
 		def = new Definition("Ecological Processes",
-			"Ecological Processes – Ecological processes that create and maintain " +
+			"Ecological Processes - Ecological processes that create and maintain " +
 			"biodiversity. These could include pollination, seed dispersal, " +
 			"dispersal of large mammals between protected areas, movements of " +
 			"migratory fish, nursery and recruitment areas for coastal fisheries; " +
@@ -69,7 +69,7 @@ public class DefinitionCommonTerms
 		
 		def = new Definition("Contributing Factor", 
 			"Contributing factors (Indirect threats and Opportunities) " +
-			"– Human-induced actions and event that underlie or lead " +
+			"- Human-induced actions and event that underlie or lead " +
 			"to the direct threats");
 		defs.put("Definition:IndirectThreat", def);
 		
@@ -103,8 +103,7 @@ public class DefinitionCommonTerms
 
 		def = new Definition("Method",
 			"A specific technique used to collect data to measure an indicator.  " +
-			"Methods vary in their accuracy and reliability, cost-effectiveness, " +
-			"feasibility, and appropriateness." );
+			"A good method is accurate, reliable, cost-effective, feasible, and appropriate." );
 		defs.put("Definition:Method", def);
 		
 
@@ -142,8 +141,8 @@ public class DefinitionCommonTerms
 		defs.put("Definition:StrategicPlan", def);
 
 		
-		def = new Definition("Strategies", 
-			"Strategies -- A broad course of action designed to restore natural systems, " +
+		def = new Definition("Strategy", 
+			"Strategy -- A broad course of action designed to restore natural systems, " +
 			"reduce threats, and/or develop capacity.  A strategy is typically " +
 			"used as an umbrella term to describe a set of specific " +
 			"conservation actions." );
@@ -154,7 +153,33 @@ public class DefinitionCommonTerms
 			"The people who conceive of and initiate the project.");
 		defs.put("Definition:InitialProjectTeam", def);
 		
+		
+		def = new Definition("Initial Project Team", 
+				"Work Plan - A description of the specific activities/methods and tasks that " +
+				"you need to undertake your strategic and monitoring plans.  A good work plan " +
+				"shows the timing and sequence of each task as well as the specific resources " +
+				"required to carry it out.");
+		defs.put("Definition:WorkPlan", def);
+		
 
+		def = new Definition("Activity",
+				"Activity - An action carried out to accomplish one or more of a project�s strategies.");
+		defs.put("Definition:Activity", def);
+		
+		
+		def = new Definition("Task",
+			"Task - A specific action required in service of an activity or method.  Tasks themselves can " +
+			"be broken into sub-tasks if necessary.");
+		defs.put("Definition:Task", def);
+		
+		
+		def = new Definition("Quarter",
+				"Quarter - A planning period encompassing 3 months. If you are using a Western calendar, " +
+				"typically 1st quarter is Jan - Mar, 2nd quarter is Apr - Jun, 3rd quarter is Jul - Sep, " +
+				"and 4th qtr is Oct - Dec. ");
+		defs.put("Definition:Quarter", def);
+		
+		
 		def = new Definition("Overall Threat Rating", "The overall threat rating is...");
 		defs.put("Definition:OverallThreatRating", def);
 		

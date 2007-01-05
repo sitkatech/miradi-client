@@ -19,7 +19,7 @@ public class WorkPlanWizardPanel extends WizardPanel
 		super(mainWindow);
 		actions = mainWindow.getActions();
 		
-		WELCOME = addStep(new WorkPlanWizardWelcomeStep(this));
+		WELCOME = addStep(new WorkPlanOverviewStep(this));
 		SELECT_METHOD = addStep(new MonitoringWizardSelectMethodsStep(this));
 		setStep(WELCOME);
 	}
