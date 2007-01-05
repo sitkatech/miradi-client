@@ -20,5 +20,5 @@ public class WorkPlanDevelopActivitiesAndTask extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "WorkPlanDevelopActivitiesAndTask.html";
+	String HTML_FILENAME = "WorkPlanDevelopActivitiesAndTasks.html";
 }
