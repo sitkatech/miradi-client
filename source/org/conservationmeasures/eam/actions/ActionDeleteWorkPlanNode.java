@@ -17,7 +17,7 @@ public class ActionDeleteWorkPlanNode extends ObjectsAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Delete");
+		return EAM.text("Action|Delete Item");
 	}
 
 	public String getToolTipText()

@@ -17,7 +17,7 @@ public class ActionTreeNodeDown extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Tree|Move Down");
+		return EAM.text("Action|Tree|Move Item Down");
 	}
 
 	public String getToolTipText()
