@@ -116,15 +116,14 @@ public class FactorPropertiesPanel extends DisposablePanel
 
 		grid.add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR, "Type")));
 		
-		//TODO: factor labes should be centralized in a common properties file or class
 		if(diagramFactor.isDirectThreat())
 			grid.add(new UiLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING));
 		else if (diagramFactor.isContributingFactor())
-			grid.add(new UiLabel(EAM.text(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR), new ContributingFactorIcon(), UiLabel.LEADING));
+			grid.add(new UiLabel(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING));
 		else if (diagramFactor.isStrategy()) 
-			grid.add(new UiLabel(EAM.text(Strategy.OBJECT_NAME), new StrategyIcon(), UiLabel.LEADING));
+			grid.add(new UiLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING));
 		else if (diagramFactor.isTarget())
-			grid.add(new UiLabel(EAM.text(Target.OBJECT_NAME), new TargetIcon(), UiLabel.LEADING));
+			grid.add(new UiLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING));
 
 		grid.add(new UiLabel());
 		return grid;
