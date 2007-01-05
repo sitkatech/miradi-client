@@ -17,11 +17,11 @@ public class ActionAddAssignment extends ObjectsAction
 	
 	public static String getLabel()
 	{
-		return EAM.text("Action|Add Item");
+		return EAM.text("Action|Add Resource");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Add item to list");
+		return EAM.text("TT|Add resource to list");
 	}
 }
