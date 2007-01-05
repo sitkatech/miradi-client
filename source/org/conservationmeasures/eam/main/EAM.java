@@ -117,6 +117,15 @@ public class EAM
 			return false;
 		
 		oldEamDirectory.renameTo(miradiDirectory);
+		
+		String[] importCompleteText = {
+			"Import complete.",
+			"",
+			"We strongly recommend that you uninstall e-Adaptive Management, ",
+			"if you have not already done so. It is now obsolete, having been ",
+			"replaced by Miradi.",
+		};
+		EAM.okDialog("Import Complete", importCompleteText);
 		return true;
 	}
 	
