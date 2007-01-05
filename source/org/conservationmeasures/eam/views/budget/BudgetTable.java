@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.EventObject;
 
-import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -99,12 +98,11 @@ public class BudgetTable extends JTable implements ObjectPicker
 		int colCount = getColumnCount();
 		for (int i = 0; i < colCount; i++)
 		{
+			TableColumn column = getColumnModel().getColumn(i);
+			if (model.isCostTotalsColumn(i) || model.isUnitsTotalColumn(i) || model.isYearlyTotalColumn(i))
+			    column.setHeaderRenderer(new CustomColumnHeaderRenederer());
 			if (model.isUnitsColumn(i))
-			{
-				TableColumn singleClickCostCol = getColumnModel().getColumn(i);
-				DefaultCellEditor singleClickEditor = new SingleClickAutoSelectCellEditor(new JTextField());
-				singleClickCostCol.setCellEditor(singleClickEditor);
-			}
+				column.setCellEditor(new SingleClickAutoSelectCellEditor(new JTextField()));
 		}
 	}
 
@@ -235,6 +233,17 @@ class SingleClickAutoSelectCellEditor extends DefaultCellEditor
 	}
 }
 
+class CustomColumnHeaderRenederer extends DefaultTableCellRenderer
+{
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+	{
+		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+		component.setBackground(new Color(0xf0, 0xf0, 0xf0).darker());
+		return component;
+	}
+	
+}
+
 class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRenderer
 {
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
@@ -243,8 +252,8 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 		AbstractBudgetTableModel model = (AbstractBudgetTableModel)table.getModel();
 		if (!isSelected)
 			setColors(table, model, component, row, column);
-	
-		setBorders(model, row, column);
+		//TODO see todo comment for setBorders() method below
+		//setBorders(model, row, column);
 		return component;
 	}
 
@@ -276,34 +285,36 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 		component.setBackground(background);
 		component.setForeground(Color.BLACK);
 	}
-	
-	private void setBorders(AbstractBudgetTableModel model, int row, int column)
-	{
-		Color darkBorderColor = Color.DARK_GRAY;
-		final int THICKNESS = 2;
-		if (model.doubleRowed())
-			setDoubleRowedBorders(model, row, column, darkBorderColor, THICKNESS);
-		else
-			setSingleRowedBorders(model, row, column, darkBorderColor, THICKNESS);
-	}
-	
-	private void setSingleRowedBorders(AbstractBudgetTableModel model, int row, int column, Color darkBorderColor, final int THICKNESS)
-	{
-		boolean yearlyTotalColumn = model.isYearlyTotalColumn(column);
-		if (yearlyTotalColumn)
-			setBorder(BorderFactory.createMatteBorder(0, THICKNESS, 0, THICKNESS, darkBorderColor));
-		if (model.isUnitsLabelColumn(column))
-			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
-	}
 
-	private void setDoubleRowedBorders(AbstractBudgetTableModel model, int row, int column, Color darkBorderColor, final int THICKNESS)
-	{
-		if (model.isCostColumn(column))
-			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
-		if (model.getCostPerUnitLabelColumnIndex() == column)
-			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
-	}
+	//TODO remove commented code if thick borders are not longer needed.  check with others and 
+	//see if the background color change is enough to set apart columns (totals column)
+//	private void setBorders(AbstractBudgetTableModel model, int row, int column)
+//	{
+//		Color darkBorderColor = Color.DARK_GRAY;
+//		final int THICKNESS = 2;
+//		if (model.doubleRowed())
+//			setDoubleRowedBorders(model, row, column, darkBorderColor, THICKNESS);
+//		else
+//			setSingleRowedBorders(model, row, column, darkBorderColor, THICKNESS);
+//	}
+//	
+//	private void setSingleRowedBorders(AbstractBudgetTableModel model, int row, int column, Color darkBorderColor, final int THICKNESS)
+//	{
+//		boolean yearlyTotalColumn = model.isYearlyTotalColumn(column);
+//		if (yearlyTotalColumn)
+//			setBorder(BorderFactory.createMatteBorder(0, THICKNESS, 0, THICKNESS, darkBorderColor));
+//		if (model.isUnitsLabelColumn(column))
+//			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
+//	}
+//
+//	private void setDoubleRowedBorders(AbstractBudgetTableModel model, int row, int column, Color darkBorderColor, final int THICKNESS)
+//	{
+//		if (model.isCostColumn(column))
+//			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
+//		if (model.getCostPerUnitLabelColumnIndex() == column)
+//			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
+//	}
 
-	private static final Color[] EVERY_OTHER_TWO_COLORS = new Color[] { new Color(0xf0, 0xf0, 0xf0), new Color(0xf0, 0xf0, 0xf0), Color.WHITE, Color.WHITE, };
-	private static final Color[] BACKGROUND_COLORS = new Color[] { new Color(0xf0, 0xf0, 0xf0), Color.WHITE, };
+	private static final Color[] EVERY_OTHER_TWO_COLORS = new Color[] { Color.WHITE, Color.WHITE, new Color(0xf0, 0xf0, 0xf0), new Color(0xf0, 0xf0, 0xf0), };
+	private static final Color[] BACKGROUND_COLORS = new Color[] {  Color.WHITE, new Color(0xf0, 0xf0, 0xf0), };
 }
