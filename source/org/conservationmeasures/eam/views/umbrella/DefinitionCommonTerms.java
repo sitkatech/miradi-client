@@ -180,6 +180,12 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Quarter", def);
 		
 		
+		def = new Definition("Resource",
+				"Resource – A person or item that is needed to complete an activity/method or a task.  " +
+				"There are three main kinds of resources.");
+		defs.put("Definition:Resource", def);
+		
+		
 		def = new Definition("Overall Threat Rating", "The overall threat rating is...");
 		defs.put("Definition:OverallThreatRating", def);
 		
