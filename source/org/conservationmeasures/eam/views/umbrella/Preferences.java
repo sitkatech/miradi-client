@@ -26,8 +26,8 @@ public class Preferences extends MainWindowDoer
 	void showPreferencesDialog()
 	{
 		PreferencesPanel preferencesPanel = new PreferencesPanel(getMainWindow());
-		//TODO change heading
-		PreferencesDialog dlg = new PreferencesDialog(getMainWindow(), preferencesPanel, "Preferences");
+		PreferencesDialog dlg = new PreferencesDialog(getMainWindow(), preferencesPanel, "Miradi Preferences");
+		dlg.pack();
 		Utilities.centerDlg(dlg);
 		dlg.setVisible(true);	
 	}

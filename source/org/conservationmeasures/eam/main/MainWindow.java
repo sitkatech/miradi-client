@@ -435,7 +435,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	private void updateTitle()
 	{
-		setTitle(EAM.text("Title|CMP e-Adaptive Management") + " - " + project.getFilename());
+		setTitle("Miradi - " + project.getFilename());
 	}
 	
 	class WindowEventHandler extends WindowAdapter

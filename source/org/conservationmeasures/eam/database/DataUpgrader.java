@@ -70,7 +70,7 @@ public class DataUpgrader extends ProjectServer
 				"The pre-migration project was archived in: " + zipFile + "\n" +
 				"WARNING: Attempting to open this project again before repairing the problem " +
 				"may result in losing data. \n" +
-				"Please seek technical help from the e-AdaptiveManagement team."));
+				"Please seek technical help from the Miradi team."));
 	}
 
 	public DataUpgrader(File projectDirectory) throws IOException

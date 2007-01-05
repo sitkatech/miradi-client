@@ -38,7 +38,7 @@ public class Paste extends LocationDoer
 			TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
 			if(!list.getProjectFileName().equals(getProject().getFilename()))
 			{
-				EAM.notifyDialog(EAM.text("Paste between different e-AM projects not yet supported"));
+				EAM.notifyDialog(EAM.text("Paste between different Miradi projects not yet supported"));
 				return;
 			}
 			pasteCellsIntoProject(list);

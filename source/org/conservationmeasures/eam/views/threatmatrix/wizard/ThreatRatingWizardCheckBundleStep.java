@@ -96,7 +96,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 							"") +
 					tableCell(
 							smallParagraph(bold("Overall Threat Rating -- ") +
-									"The e-AM Software calculates threat ratings " +
+									"Miradi calculates threat ratings " +
 									"using a rule-based system for combining the scope, severity, " +
 									"and irreversibility criteria.  " +
 									"These procedures involve specifying rules " +

@@ -102,7 +102,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 							"") +
 					tableCell(
 							smallParagraph(bold("Summary Threat Ratings - ") +
-									"The e-AM Software rolls up threat ratings " +
+									"Miradi rolls up threat ratings " +
 									"for each target and threat using another rule-based system " +
 									"for combining ratings for each target-threat combination. " +
 									anchorTag(SHOW_RULES, "Click here") + 
@@ -131,7 +131,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 			rules.setText("<html>" +
 					HtmlBuilder.font("Arial", 
 					"<h2>Explanation of How Threat Rating Summaries Are Calculated</h2>" +
-					"<p>The e-AM software uses a combination of rules for rolling up ratings " +
+					"<p>Miradi uses a combination of rules for rolling up ratings " +
 					"across targets and threats, and for the project as a whole. </p>" +
 					
 					"<p>As shown in the grid below, " +

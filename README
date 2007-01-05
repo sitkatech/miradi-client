@@ -1,5 +1,5 @@
-CMP e-Adaptive Management
-Copyright 2005-2006, The Conservation Measures Partnership and 
+Miradi - Adaptive Management Software for Conservation Projects
+Copyright 2005-2007, The Conservation Measures Partnership and 
 		Beneficent Technology, Inc. (Benetech, at www.benetech.org)
 
 *** This pre-release version is intended for evaluation and feedback only ***
@@ -23,7 +23,7 @@ The jgraph.jar file is copyright JGraph Ltd, and is
 
 PREREQUISITES
 
-1. Java 1.4.2 or later
+1. Java 1.5 or later
 
 
 
