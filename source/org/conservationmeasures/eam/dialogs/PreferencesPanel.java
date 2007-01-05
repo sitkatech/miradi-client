@@ -5,17 +5,17 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
-import javax.swing.JLabel;
+import javax.swing.BorderFactory;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -34,34 +34,19 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
 
-		Box textBox = Box.createHorizontalBox();
-		textBox.add(Box.createHorizontalGlue());
-		JLabel bodyComponent = new JLabel(headerText);
-		textBox.add(bodyComponent);
-		bodyComponent.setFont(Font.getFont("Arial"));
-		textBox.add(Box.createHorizontalGlue());
 
-		Box buttonBox = Box.createHorizontalBox();
-		buttonBox.add(Box.createHorizontalGlue());
-		buttonBox.add(Box.createHorizontalGlue());
-
-		Box box = Box.createVerticalBox();
-		box.add(textBox);
-		box.add(new UiLabel("Choose the colors that look best on your system"));
-		box.add(createColorPreferencesPanel());
-		box.add(buttonBox);
-
-		
-		box.add(new HyperlinkLabel( 
-				"<p>Why are my choices limited to one <p></p>color family for each type of factor?</p>",
+		JPanel bottomText = new JPanel();
+		bottomText.add(new HyperlinkLabel( 
+				"<p>Why are my choices limited to one color family for each type of factor?</p>",
 				"We are trying to create a standard set of symbols that can be recognized " +
 				"globally. Just like people the world over recognize a red octagon as a " +
 				"stop sign, we hope that they will recognize a green oval as a target or " +
-				"a yellow hexagon as a strategy"));
-		
-		box.add(Box.createVerticalGlue());
+				"a yellow hexagon as a strategy"), BorderLayout.AFTER_LAST_LINE);
+		bottomText.setBorder(BorderFactory.createEmptyBorder(25, 5, 25, 5));
 
-		add(box);	
+		add(new UiLabel("Choose the colors that look best on your system:"), BorderLayout.BEFORE_FIRST_LINE);
+		add(createColorPreferencesPanel(), BorderLayout.CENTER);
+		add(bottomText, BorderLayout.AFTER_LAST_LINE);
 	}
 
 	DialogGridPanel createColorPreferencesPanel()
@@ -98,6 +83,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
 		scopeDropdown.addActionListener(this);
 		panel.add(scopeDropdown);
+		
+		panel.add(new UiLabel(" "));
+		panel.add(new UiLabel(" "));
 
 		panel.add(new UiLabel("Show Diagram Grid"));
 		gridVisibleCheckBox = new UiCheckBox();
@@ -213,7 +201,4 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	static final Color[] indirectFactorColorChoices = {new Color(255, 190, 0), new Color(255, 128, 0), new Color(200, 128, 0), new Color(255, 220, 0), new Color(255, 190, 64), new Color(255, 240, 200)};
 	static final Color[] targetColorChoices = {new Color(153, 255, 153), new Color(200, 255, 200), new Color(80, 255, 80), new Color(64, 220, 64)};
 	static final Color[] scopeColorChoices = {new Color(0, 255, 0), new Color(128, 255, 128), new Color(0, 220, 0), new Color(0, 180, 0), new Color(0, 128, 0)};
-
-	static final String headerText = "<html><H2>e-Adaptive Management Preferences</H2></html>";
-
 }
