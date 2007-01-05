@@ -117,6 +117,12 @@ public class EAM
 			return false;
 		
 		oldEamDirectory.renameTo(miradiDirectory);
+		if(oldEamDirectory.exists() || !miradiDirectory.exists())
+		{
+			EAM.errorDialog("Import failed. Be sure no projects are open, and that you " +
+					"have permission to create " + miradiDirectory.getAbsolutePath());
+			return false;
+		}
 		
 		String[] importCompleteText = {
 			"Import complete.",
