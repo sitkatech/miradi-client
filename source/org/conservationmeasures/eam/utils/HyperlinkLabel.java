@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.utils;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -38,6 +39,7 @@ public class HyperlinkLabel extends UiLabel implements MouseListener
 		setBackground(Color.WHITE);
 		setForeground(Color.BLUE);
 		setOpaque(true);
+		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		addMouseListener(this);
 	}
 
