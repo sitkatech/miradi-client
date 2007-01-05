@@ -15,6 +15,6 @@ public class ObjectStringInputField extends ObjectTextInputField
 	public ObjectStringInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
 	{
 		super(projectToUse, objectType, objectId, tag, new UiTextField());
-		setupFixedSizeTextField(1,10);
+		setupFixedSizeTextField(1,50);
 	}
 }
