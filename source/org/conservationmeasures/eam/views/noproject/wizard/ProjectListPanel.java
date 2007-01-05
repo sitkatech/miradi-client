@@ -1,8 +1,11 @@
 package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 import org.conservationmeasures.eam.views.umbrella.WizardHtmlViewer;
 import org.martus.swing.HyperlinkHandler;
@@ -24,6 +27,9 @@ public class ProjectListPanel extends JPanel
 		
 		add(intro, BorderLayout.BEFORE_FIRST_LINE);
 		add(new UiScrollPane(projectList), BorderLayout.CENTER);
+		Border lineBorder = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border emptyBorder = BorderFactory.createEmptyBorder(3,3,3,3);
+		setBorder(BorderFactory.createCompoundBorder(emptyBorder, lineBorder));
 	}
 	
 	public void refresh()
