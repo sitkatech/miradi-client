@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.utils;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Calendar;
 
 import com.toedter.calendar.IDateEditor;
@@ -18,6 +20,24 @@ public class CustomDateChooser extends JDateChooser
 	{
 		super(dateEditor);
 		calendarButton.addMouseListener(new CustomMouseListener());
+		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
+		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
+	}
+
+	class MonthChangeListener implements PropertyChangeListener
+	{
+		public void propertyChange(PropertyChangeEvent evt)
+		{
+			setDate(jcalendar.getDate());
+		}
+	}
+	
+	class YearChangeListener implements PropertyChangeListener
+	{
+		public void propertyChange(PropertyChangeEvent evt)
+		{
+			setDate(jcalendar.getDate());
+		}
 	}
 	
 	class CustomMouseListener extends MouseAdapter
