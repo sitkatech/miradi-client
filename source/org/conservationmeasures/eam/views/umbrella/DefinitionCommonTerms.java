@@ -28,7 +28,14 @@ public class DefinitionCommonTerms
 			"all native biodiversity within functional landscapes. ");
 		defs.put("Definition:ConservationTargets", def);
 		
-
+		
+		def = new Definition("Conservation Targets", 
+				"Stress - A degraded attribute of a conservation target that is caused " +
+				"by human activities (e.g., low population size, reduced extent of forest " +
+				"system; reduced river flows; increased sedimentation; lowered groundwater table level).");
+		defs.put("Definition:Stress", def);
+		
+		
 		def = new Definition("Ecosystems", 
 			"Ecosystems - The ecological systems that characterize the " +
 			"terrestrial, aquatic, and marine biodiversity of the project site. ");
