@@ -77,7 +77,7 @@ public class BudgetView extends TabbedView
 		addScrollableTab(budgetManagmentPanel);
 		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);
 		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel.getIcon(), fundingSourcePoolManagementPanel);
-		addTab(EAM.text("Accounting"), new UiScrollPane(getBudgetComponent()));
+		addTab(EAM.text("Actuals - demo"), new UiScrollPane(getBudgetComponent()));
 		addScrollableTab(resourceManagementPanel);
 	}
 	
