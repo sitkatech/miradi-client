@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacit
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
@@ -30,8 +31,10 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivities;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
@@ -218,6 +221,9 @@ public class Actions
 		registerAction(new ActionJumpEditIndicators(mainWindow));
 		registerAction(new ActionJumpMonitoringOverview(mainWindow));
 		registerAction(new ActionJumpSelectMethod(mainWindow));
+		registerAction(new ActionJumpAssignResources(mainWindow));
+		registerAction(new ActionJumpDevelopMonitoringMethodsAndTasks(mainWindow));
+		registerAction(new ActionJumpDevelopActivitiesAndTasks(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

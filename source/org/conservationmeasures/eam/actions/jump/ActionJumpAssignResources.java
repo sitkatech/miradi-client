@@ -9,16 +9,15 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpAnalyzeInterventions extends MainWindowAction
+public class ActionJumpAssignResources extends MainWindowAction
 {
-	public ActionJumpAnalyzeInterventions(MainWindow mainWindowToUse)
+	public ActionJumpAssignResources(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-
-	private static String getLabel()
+	
+	static String getLabel()
 	{
-		return EAM.text("5B. Analyze interventions");
+		return EAM.text("Assign resources");
 	}
-
 }

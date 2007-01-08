@@ -15,20 +15,20 @@ import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
-import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
-import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
-import org.conservationmeasures.eam.actions.ActionHelpCMPStandards;
-import org.conservationmeasures.eam.actions.ActionHelpComingAttractions;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
+import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
+import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
 import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
-import org.conservationmeasures.eam.actions.ActionHelpCredits;
 import org.conservationmeasures.eam.actions.ActionHelpButtonMoreInfo;
 import org.conservationmeasures.eam.actions.ActionHelpButtonWorkshop;
+import org.conservationmeasures.eam.actions.ActionHelpCMPStandards;
+import org.conservationmeasures.eam.actions.ActionHelpComingAttractions;
+import org.conservationmeasures.eam.actions.ActionHelpCredits;
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
@@ -54,7 +54,6 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeInterventions;
@@ -62,6 +61,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacit
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
@@ -69,13 +69,14 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivities;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
@@ -91,11 +92,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
-import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -324,17 +322,18 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu1b, ActionJumpIdentifyTargets.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu1b, ActionJumpDescribeTargets.class, KeyEvent.VK_D);
 		
-		JMenu menu1c = new JMenu("1C. Understand project context");
+		JMenu menu1c = new JMenu("1C. Identify critical threats");
 		menu1c.setMnemonic(KeyEvent.VK_U);
 		
 		addMenuItem(actions, menu1c, ActionJumpIdentifyDirectThreats.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu1c, ActionJumpRankDirectThreats.class, KeyEvent.VK_R);
-		addMenuItem(actions, menu1c, ActionJumpIdentifyContributingFactors.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu1c, ActionJumpAssessStakeholders.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu1c, ActionJumpAnalyzeProjectCapacity.class, KeyEvent.VK_A);
 		
-		JMenu menu1d = new JMenu("1D. Model project situation");
+		JMenu menu1d = new JMenu("1D. Analyze project situation");
 		menu1d.setMnemonic(KeyEvent.VK_M);
+		
+		addMenuItem(actions, menu1d, ActionJumpIdentifyContributingFactors.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu1d, ActionJumpAssessStakeholders.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu1d, ActionJumpAnalyzeProjectCapacity.class, KeyEvent.VK_A);
 		
 		addMenuItem(actions, menu1d, ActionJumpArticulateCoreAssumptions.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu1d, ActionJumpCreateModel.class, KeyEvent.VK_C);
@@ -352,19 +351,18 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu2 = new JMenu("2. Plan Your Actions");
 		menu2.setMnemonic(KeyEvent.VK_P);
 		
-		JMenu menu2a = new JMenu("2A. Develop clear goal and objectives");
+		JMenu menu2a = new JMenu("2A. Develop goals and objectives");
 		menu2a.setMnemonic(KeyEvent.VK_D);
 		
 		addMenuItem(actions, menu2a, ActionJumpDevelopTargetGoals.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu2a, ActionJumpIdentifyStrategies.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu2a, ActionJumpDevelopObjectives.class, KeyEvent.VK_D);
 		
 		JMenu menu2b = new JMenu("2B. Strategically select activities");
 		menu2b.setMnemonic(KeyEvent.VK_S);
 		
+		addMenuItem(actions, menu2b, ActionJumpIdentifyStrategies.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu2b, ActionJumpRankDraftStrategies.class, KeyEvent.VK_R);
 		addMenuItem(actions, menu2b, ActionJumpResultsChains.class, KeyEvent.VK_R);
-		addMenuItem(actions, menu2b, ActionJumpActivitiesAndActionPlan.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu2b, ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);
 
 		menu2.add(menu2a);
@@ -387,7 +385,6 @@ public class MainMenuBar extends JMenuBar
 		menu3b.setMnemonic(KeyEvent.VK_D);
 		
 		addMenuItem(actions, menu3b, ActionJumpDefineIndicators.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu3b, ActionJumpSelectAppropriateMethods.class, KeyEvent.VK_S);
 		addMenuItem(actions, menu3b, ActionJumpPlanDataStorage.class, KeyEvent.VK_P);
 
 		menu3.add(menu3a);
@@ -400,19 +397,21 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu4 = new JMenu("4. Implement Actions and Monitoring");
 		menu4.setMnemonic(KeyEvent.VK_I);
 		
+
+		JMenu menu4a = new JMenu("4A. Develop detailed short-term work plan");
+		menu4a.setMnemonic(KeyEvent.VK_D);
+		
+		addMenuItem(actions, menu4a, ActionJumpDevelopActivitiesAndTasks.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu4a, ActionJumpDevelopMonitoringMethodsAndTasks.class, KeyEvent.VK_M);
+		addMenuItem(actions, menu4a, ActionJumpAssignResources.class, KeyEvent.VK_T);
+		addMenuItem(actions, menu4a, ActionJumpDevelopActivities.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu4a, ActionJumpDevelopBudgets.class, KeyEvent.VK_D);
+
+		menu4.add(menu4a);
+		
 		addMenuItem(actions, menu4, ActionJumpImplementPlans.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu4, ActionJumpRefinePlans.class, KeyEvent.VK_R);
 
-		JMenu menu4a = new JMenu("4A. Develop detailed short-term work plans");
-		menu4a.setMnemonic(KeyEvent.VK_D);
-		
-		addMenuItem(actions, menu4a, ActionJumpShorttermPlans.class, KeyEvent.VK_S);
-		addMenuItem(actions, menu4a, ActionJumpDevelopActivities.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu4a, ActionJumpDefineTasks.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu4a, ActionJumpDevelopBudgets.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu4a, ActionJumpTeamRoles.class, KeyEvent.VK_T);
-
-		menu4.add(menu4a);
 		return menu4;
 	}
 	

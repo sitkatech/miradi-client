@@ -18,7 +18,7 @@ public class ActionJumpIdentifyStrategies extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Identify “key factors” & draft strategies"); 
+		return EAM.text("Identify \"key factors\" & draft strategies"); 
 	}
 
 }
