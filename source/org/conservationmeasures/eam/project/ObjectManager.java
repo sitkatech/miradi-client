@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -430,12 +431,14 @@ public class ObjectManager
 				return getLabelOfTaskParent(taskId);
 			if(fieldTag.equals(Task.PSEUDO_TAG_INDICATOR_LABEL))
 				return getLabelOfTaskParent(taskId);
+			
+			DecimalFormat formater = project.getCurrencyFormatter();
 			if (fieldTag.equals(Task.PSEUDO_TAG_SUBTASK_TOTAL))
-				return getSubtaskTotalCost(taskId);
+				return getSubtaskTotalCost(taskId, formater);
 			if (fieldTag.equals(Task.PSEUDO_TAG_TASK_TOTAL))
-				return getTaskTotalCost(taskId);
+				return getTaskTotalCost(taskId, formater);
 			if (fieldTag.equals(Task.PSEUDO_TAG_TASK_COST))
-				return getTaskCost(taskId);
+				return getTaskCost(taskId, formater);
 		}
 		catch(Exception e)
 		{
@@ -445,28 +448,31 @@ public class ObjectManager
 		return "";
 	}
 	
-	private String getTaskCost(BaseId taskId) throws Exception
+	private String getTaskCost(BaseId taskId, DecimalFormat formater) throws Exception
 	{
 		BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(project);
 		//TODO switch to TaskId instead of BaseId to TaskId conversion
 		double taskCost = calculator.getTaskCost(new TaskId(taskId.asInt()));
-		return Double.toString(taskCost);
+		
+		return formater.format(taskCost);
 	}
 
-	private String getSubtaskTotalCost(BaseId taskId) throws Exception
+	private String getSubtaskTotalCost(BaseId taskId, DecimalFormat formater) throws Exception
 	{
 		BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(project);
 		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
 		double subtaskTotalCost = calculator.getTotalTasksCost(task.getSubtaskIdList());
-		return Double.toString(subtaskTotalCost);
+		
+		return formater.format(subtaskTotalCost);
 	}
 
-	private String getTaskTotalCost(BaseId taskId) throws Exception
+	private String getTaskTotalCost(BaseId taskId, DecimalFormat formater) throws Exception
 	{
 		BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(project);
 		//TODO switch to TaskId instead of BaseId to TaskId conversion
 		double totalTaskCost = calculator.getTotalTaskCost(new TaskId(taskId.asInt()));
-		return Double.toString(totalTaskCost);
+		
+		return formater.format(totalTaskCost);
 	}
 
 	private String getProjectMetadataPseudoField(BaseId taskId, String fieldTag)
