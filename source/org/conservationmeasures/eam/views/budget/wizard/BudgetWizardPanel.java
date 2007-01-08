@@ -14,11 +14,12 @@ public class BudgetWizardPanel extends WizardPanel
 	{
 		super(mainWindow);
 		
+		int developBudget = addStep(new BudgetWizardDevelopBudget(this));
 		addStep(new BudgetWizardAccountingAndFunding(this));
 		addStep(new BudgetWizardBudgetDetail(this));
 		addStep(new BudgetWizardDemo(this));
 		
-		int developBudget = addStep(new BudgetWizardDevelopBudget(this));
+		
 		setStep(developBudget);
 	}
 }
