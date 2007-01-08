@@ -3,8 +3,10 @@ package org.conservationmeasures.eam.views.budget;
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
 import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
+import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteAccountingCode;
 import org.conservationmeasures.eam.actions.ActionDeleteFundingSource;
+import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
 import org.conservationmeasures.eam.actions.ActionImportAccountingCodes;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
@@ -24,6 +26,8 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardPanel;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
+import org.conservationmeasures.eam.views.umbrella.CreateResource;
+import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.workplan.CreateActivityDoer;
 import org.conservationmeasures.eam.views.workplan.CreateMethodDoer;
@@ -117,6 +121,9 @@ public class BudgetView extends TabbedView
 		
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());
+		
+		addDoerToMap(ActionCreateResource.class, new CreateResource());
+		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 	}
 	
 	public WizardPanel createWizardPanel() throws Exception
