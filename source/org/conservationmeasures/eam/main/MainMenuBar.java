@@ -474,23 +474,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
 		menu.setMnemonic(KeyEvent.VK_H);
 		
-		JMenuItem item  = addMenuItem(actions, menu, ActionHelpComingAttractions.class, KeyEvent.VK_C);
-		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(UmbrellaView.class, HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
-		
-		item  = addMenuItem(actions, menu, ActionHelpAdaptiveManagement.class, KeyEvent.VK_A);
-		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(UmbrellaView.class,HelpButtonData.ADAPTIVE_MANAGEMENT, HelpButtonData.ADAPTIVE_MANAGEMENT_HTML));
-
-		item  = addMenuItem(actions, menu, ActionHelpAgileSoftware.class, KeyEvent.VK_S);
-		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(UmbrellaView.class,HelpButtonData.AGILE_SOFTWARE, HelpButtonData.AGILE_SOFTWARE_HTML));
-		
-		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_C);
-		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(UmbrellaView.class,HelpButtonData.CMP_STANDARDS, HelpButtonData.CMP_STANDARDS_HTML));
-		
-		item = addMenuItem(actions, menu, ActionHelpButtonMoreInfo.class, KeyEvent.VK_M);
+		JMenuItem item  = addMenuItem(actions, menu, ActionHelpButtonMoreInfo.class, KeyEvent.VK_M);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 		
@@ -501,12 +485,36 @@ public class MainMenuBar extends JMenuBar
 		item  = addMenuItem(actions, menu, ActionHelpButtonWorkshop.class, KeyEvent.VK_W);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
+				
+		menu.addSeparator();
 		
-		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
+		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_C);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class,HelpButtonData.CMP_STANDARDS, HelpButtonData.CMP_STANDARDS_HTML));
+
+
+		item  = addMenuItem(actions, menu, ActionHelpAdaptiveManagement.class, KeyEvent.VK_A);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class,HelpButtonData.ADAPTIVE_MANAGEMENT, HelpButtonData.ADAPTIVE_MANAGEMENT_HTML));
+
+
+		item  = addMenuItem(actions, menu, ActionHelpAgileSoftware.class, KeyEvent.VK_S);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class,HelpButtonData.AGILE_SOFTWARE, HelpButtonData.AGILE_SOFTWARE_HTML));
 		
+		
+		item  = addMenuItem(actions, menu, ActionHelpComingAttractions.class, KeyEvent.VK_C);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class, HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
+
 		item  = addMenuItem(actions, menu, ActionHelpCredits.class, KeyEvent.VK_C);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class,HelpButtonData.CREDITS, HelpButtonData.CREDITS_HTML));
+		
+		menu.addSeparator();
+		
+		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
+		
 		
 		return menu;
 	}
