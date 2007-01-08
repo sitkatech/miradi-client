@@ -65,7 +65,7 @@ class OverviewText extends HtmlBuilder
 							"return to the " + 
 							anchorTag("View:Diagram", "diagram view") + " to add it. " +
 							"If a threat is not linked to a specific target, " +
-							"you can create this link in the diagram view as well.") +
+							"you can create this by clicking on a blank cell in the table (note that this also creates a corresponding link in the diagram).") +
 						paragraph(bold("Click next to continue with the threat rating process.")) +
 						newline() +
 						indent(table(
