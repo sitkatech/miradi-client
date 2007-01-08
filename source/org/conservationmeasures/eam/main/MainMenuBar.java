@@ -56,7 +56,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeInterventions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
@@ -421,7 +421,7 @@ public class MainMenuBar extends JMenuBar
 		menu5.setMnemonic(KeyEvent.VK_A);
 		
 		addMenuItem(actions, menu5, ActionJumpAnalyzeData.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu5, ActionJumpAnalyzeInterventions.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu5, ActionJumpAnalyzeStrategies.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu5, ActionJumpCommunicateResults.class, KeyEvent.VK_C);
 		
 		return menu5;

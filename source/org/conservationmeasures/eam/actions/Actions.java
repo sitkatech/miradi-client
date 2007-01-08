@@ -13,7 +13,7 @@ import java.util.Map;
 import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeInterventions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
@@ -207,7 +207,7 @@ public class Actions
 		registerAction(new ActionJumpImplementPlans(mainWindow));
 		registerAction(new ActionJumpRefinePlans(mainWindow));
 		registerAction(new ActionJumpAnalyzeData(mainWindow));
-		registerAction(new ActionJumpAnalyzeInterventions(mainWindow));
+		registerAction(new ActionJumpAnalyzeStrategies(mainWindow));
 		registerAction(new ActionJumpCommunicateResults(mainWindow));
 		registerAction(new ActionJumpAdaptAndMonitorPlans(mainWindow));
 		registerAction(new ActionJumpDocument(mainWindow));
