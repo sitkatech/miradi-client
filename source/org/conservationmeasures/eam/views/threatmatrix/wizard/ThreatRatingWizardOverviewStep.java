@@ -84,13 +84,13 @@ class OverviewText extends HtmlBuilder
 								bold("top row ") +
 								"is a listing of all targets for your project. To " + bold("sort the table, ") +
 								"click on any cell in the header row to sort by that column. " +
-								"You can also " + bold("move") + "or " + bold("change the width") + " of columns.") + 
+								"You can also " + bold("move") + " or " + bold("change the width ") + "of columns.") + 
 						smallParagraph("The " +
 								"cells of the table " +
 								"show the overall threat ratings for each threat " +
 								"on each target that it affects.  " +
 								"You can click on a cell to bring up the specific criteria " +
-								"that go into the overall threat ratings.") + 
+								"that go into the overall threat ratings. To " + bold("create a new link") + " between a threat and target, click on a blank cell in the table. ") + 
 						smallParagraph("Finally, the table contains three types of summary ratings:") +
 						list(
 							listItem(smallParagraph("The " +
