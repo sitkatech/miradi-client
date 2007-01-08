@@ -220,6 +220,9 @@ public class BudgetTotalsCalculator
 	
 	public double getTotalFakeCost(TreeTableNode node) throws Exception
 	{
+		if (node.getChildCount() <= 0)
+			return 0.0;
+		
 		TreeTableNode child = node.getChild(0);
 		if (child == null)
 			return 0.0;
@@ -369,6 +372,9 @@ public class BudgetTotalsCalculator
 	
 	public double getTotalFakeCost(TreeTableNode node, DateRange dateRange) throws Exception
 	{
+		if (node.getChildCount() <= 0)
+			return 0.0;
+		
 		TreeTableNode child = node.getChild(0);
 		if (child == null)
 			return 0.0;
