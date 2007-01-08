@@ -230,11 +230,19 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			return resource.getData(ProjectResource.TAG_COST_UNIT);
 		
 		if (col == getCostPerUnitLabelColumnIndex() && isOdd(row))
-			return resource.getData(ProjectResource.TAG_COST_PER_UNIT);
+			return getCostPerUnit(resource);
 			
 		return "";
 	}
 	
+	private String getCostPerUnit(ProjectResource resource)
+	{
+		String raw = resource.getData(ProjectResource.TAG_COST_PER_UNIT);
+		double costPerUnit = new Double(raw).doubleValue();
+		
+		return currencyFormatter.format(costPerUnit);
+	}
+
 	private String getStaticCellLabel(int row, int col)
 	{
 		if (isOdd(row))
