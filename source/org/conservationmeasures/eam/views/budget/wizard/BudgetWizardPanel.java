@@ -13,7 +13,12 @@ public class BudgetWizardPanel extends WizardPanel
 	public BudgetWizardPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-		int WELCOME = addStep(new BudgetWizardWelcomeStep(this));
-		setStep(WELCOME);
+		
+		addStep(new BudgetWizardAccountingAndFunding(this));
+		addStep(new BudgetWizardBudgetDetail(this));
+		addStep(new BudgetWizardDemo(this));
+		
+		int developBudget = addStep(new BudgetWizardDevelopBudget(this));
+		setStep(developBudget);
 	}
 }

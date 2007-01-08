@@ -8,17 +8,18 @@ package org.conservationmeasures.eam.views.budget.wizard;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class BudgetWizardWelcomeStep extends WizardStep
+public class BudgetWizardAccountingAndFunding extends WizardStep
 {
-	public BudgetWizardWelcomeStep(WizardPanel wizardToUse)
+	public BudgetWizardAccountingAndFunding(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
-
+	
 	public String getResourceFileName()
 	{
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "WelcomeStep.html";
+	String HTML_FILENAME = "AccountingCodesAndFundingSources.html";
+
 }
