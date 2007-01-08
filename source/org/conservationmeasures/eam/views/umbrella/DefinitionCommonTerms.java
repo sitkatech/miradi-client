@@ -181,8 +181,8 @@ public class DefinitionCommonTerms
 		
 		
 		def = new Definition("Resource",
-				"Resource - A person or item that is needed to complete an activity/method or a task.  " +
-				"There are three main kinds of resources.");
+				"Resource - A person or item that is needed to complete an activity/method or a task. " +
+				"There are three main kinds of resources - human, material, and financial.");
 		defs.put("Definition:Resource", def);
 		
 		
