@@ -65,7 +65,7 @@ public class WizardHtmlViewer extends HtmlViewer
 		"  .navigation { background-color: #eeeeee; " +
 			"border-width: 1; border-color: black; font-size: small; }",
 		"  .hintheading { font-style: italics; font-weight: bold; }",
-		"  .task {font-weight: bold; color: #0000ff; }",
+		"  .task {font-weight: bold; }",
 		"  .toolbarbutton {color: #0000ff; }",
 		"  .hint {font-style: italics; }",
 	};
