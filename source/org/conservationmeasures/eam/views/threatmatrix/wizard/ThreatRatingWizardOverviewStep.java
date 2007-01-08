@@ -82,7 +82,9 @@ class OverviewText extends HtmlBuilder
 						smallParagraph(("The " + bold("far left hand column ") +
 								"is a listing of all threats and the " +
 								bold("top row ") +
-								"is a listing of all targets for your project. ") + 
+								"is a listing of all targets for your project. To " + bold("sort the table, ") +
+								"click on any cell in the header row to sort by that column. " +
+								"You can also " + bold("move") + "or " + bold("change the width") + " of columns.") + 
 						smallParagraph("The " +
 								"cells of the table " +
 								"show the overall threat ratings for each threat " +
