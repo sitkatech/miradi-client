@@ -42,6 +42,7 @@ public class DiagramWizardPanel extends WizardPanel
 		VISION = addStep(new DiagramWizardVisionStep(this));
 		CONSERVATION_TARGET = addStep(new DiagramWizardDefineTargetsStep(this));
 		addStep(new DiagramWizardReviewAndModifyTargetsStep(this));
+		addStep(new DescribeTargetStatusStep(this));
 		IDENTIFY_DIRECT_THREATS = addStep(new DiagramWizardIdentifyDirectThreatStep(this));
 		addStep(new DiagramWizardLinkDirectThreatsToTargetsStep(this));
 		IDENTIFY_INDIRECT_THREATS = addStep(new DiagramWizardIdentifyIndirectThreatStep(this));
@@ -51,7 +52,7 @@ public class DiagramWizardPanel extends WizardPanel
 		DEVELOP_OBJECTIVE = addStep(new StrategicPlanDevelopObjectivesStep(this));	
 		MONITORING_FOCUS = addStep(new MonitoringWizardFocusStep(this));
 		DEFINE_INDICATOR = addStep(new MonitoringWizardDefineIndicatorsStep(this));
-		
+
 		setStep(OVERVIEW);
 	}
 
