@@ -871,6 +871,7 @@ public class Project
 		}
 		LayerManager manager = getLayerManager();
 		getGraphLayoutCache().setVisible(getDiagramModel().getProjectScopeBox(), manager.isScopeBoxVisible());
+		selectionModel.clearSelection();
 	}
 
 	public void updateVisibilityOfSingleFactor(DiagramFactor node)
