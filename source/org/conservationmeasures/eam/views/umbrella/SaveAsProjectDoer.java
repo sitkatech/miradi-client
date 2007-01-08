@@ -54,8 +54,8 @@ public class SaveAsProjectDoer extends MainWindowDoer
 		File projectDirToCopy = getProject().getDatabase().getTopDirectory();
 		File homeDir = EAM.getHomeDirectory();
 		File tempZipFile = File.createTempFile(newProjectName, ZIPFileFilter.EXTENSION);
-		ProjectZipper.createProjectZipFile(tempZipFile,  "/" + newProjectName, projectDirToCopy);
-		ProjectUnzipper.unzipToProjectDirectory(tempZipFile, homeDir);
+		ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, projectDirToCopy);
+		ProjectUnzipper.unzipToProjectDirectory(tempZipFile, new File(homeDir,newProjectName));
 		tempZipFile.delete();
 	}
 }

@@ -71,14 +71,16 @@ public class ProjectUnzipper
 	
 	public static void unzipToProjectDirectory(File zipFile, File projectDirectory) throws Exception
 	{
+		if (projectDirectory.getParentFile().compareTo(EAM.getHomeDirectory())!=0)
+			throw(new CommandFailedException(projectDirectory +" \nNot a valid project file"));
+		
 		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
 		projectDirectory.mkdir();
 		unzip(zipIn, projectDirectory);
 		if (!ProjectServer.isExistingProject(projectDirectory))
 		{
-			EAM.logWarning("Would have deleted entire directory: " + projectDirectory);
-//			DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
-			throw(new CommandFailedException(projectDirectory +" \nNot a valid project file"));
+			//TODO: better to create a delete project tree method 
+			DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
 		}
 	}
 	
