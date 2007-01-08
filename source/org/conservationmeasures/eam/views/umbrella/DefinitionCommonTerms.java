@@ -29,7 +29,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:ConservationTargets", def);
 		
 		
-		def = new Definition("Conservation Targets", 
+		def = new Definition("Stress", 
 				"Stress - A degraded attribute of a conservation target that is caused " +
 				"by human activities (e.g., low population size, reduced extent of forest " +
 				"system; reduced river flows; increased sedimentation; lowered groundwater table level).");
