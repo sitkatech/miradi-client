@@ -76,7 +76,8 @@ public class ProjectUnzipper
 		unzip(zipIn, projectDirectory);
 		if (!ProjectServer.isExistingProject(projectDirectory))
 		{
-			DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
+			EAM.logWarning("Would have deleted entire directory: " + projectDirectory);
+//			DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
 			throw(new CommandFailedException(projectDirectory +" \nNot a valid project file"));
 		}
 	}
