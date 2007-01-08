@@ -48,12 +48,14 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			return;
 		
 		try
-		{
+		{	
+			Project project = getMainWindow().getProject();
 			DiagramView view = (DiagramView)getView();
 			DiagramComponent diagram = view.getDiagramComponent();
-			SelectChain.selectAllChainsRelatedToAllSelectedCells(diagram);
+			
+			if (project.getOnlySelectedFactors().length == 1)
+				SelectChain.selectAllChainsRelatedToAllSelectedCells(diagram);
 
-			Project project = getMainWindow().getProject();
 			BaseId viewId = getCurrentViewId();
 
 			DiagramFactor[] selectedNodes = project.getOnlySelectedFactors();
