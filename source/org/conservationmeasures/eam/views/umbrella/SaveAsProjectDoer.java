@@ -40,6 +40,7 @@ public class SaveAsProjectDoer extends MainWindowDoer
 			}
 			catch(Exception e)
 			{
+				EAM.logException(e);
 				throw new CommandFailedException(
 						"SaveAsProjectDoer: Possible Write Protected:" + e);
 			}
