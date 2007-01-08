@@ -77,6 +77,9 @@ public class ObjectTable extends UiTable implements ObjectPicker
 
 	private void scrollToAndSelectRow(int row)
 	{
+		if (getRowCount() <= row)
+			return;
+		
 		Rectangle rect = getCellRect(row, 0, true);
 		scrollRectToVisible(rect);
 		setRowSelectionInterval(row, row);
