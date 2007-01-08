@@ -12,7 +12,7 @@ public class ActionHelpButtonWorkshop extends MainWindowAction
 {
 	public ActionHelpButtonWorkshop(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "images/Workshop.png");
 	}
 
 	private static String getLabel()
