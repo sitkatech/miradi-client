@@ -18,7 +18,6 @@ public class MapView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new MapToolBar(mainWindowToUse.getActions()));
-		add(new UiScrollPane(new MapComponent()), BorderLayout.CENTER);
 	}
 
 	public String cardName() 
@@ -34,6 +33,7 @@ public class MapView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
+		add(new UiScrollPane(new MapComponent()), BorderLayout.CENTER);
 	}
 
 	public void becomeInactive() throws Exception

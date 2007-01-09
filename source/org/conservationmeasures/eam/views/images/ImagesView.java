@@ -22,7 +22,6 @@ public class ImagesView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new ImagesToolBar(mainWindowToUse.getActions()));
-		add(new UiScrollPane(new ImagesComponent()), BorderLayout.CENTER);
 	}
 
 	public String cardName() 
@@ -38,6 +37,7 @@ public class ImagesView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
+		add(new UiScrollPane(new ImagesComponent()), BorderLayout.CENTER);
 	}
 
 	public void becomeInactive() throws Exception
