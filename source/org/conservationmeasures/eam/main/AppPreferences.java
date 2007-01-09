@@ -105,14 +105,12 @@ public class AppPreferences
 	
 	public void setTaggedInt(String tag, int value)
 	{
-		EAM.logDebug("setTaggedInt " + tag + ":" + value);
 		taggedIntMap.put(tag, new Integer(value));
 	}
 	
 	public int getTaggedInt(String tag)
 	{
 		Integer value = (Integer)taggedIntMap.get(tag);
-		EAM.logDebug("getTaggedInt " + tag + ":" + value);
 		if(value == null)
 			return 0;
 		return value.intValue();
