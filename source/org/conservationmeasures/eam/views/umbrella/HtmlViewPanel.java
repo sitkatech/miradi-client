@@ -25,6 +25,9 @@ import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.Utilities;
 
+import edu.stanford.ejalbert.BrowserLauncher;
+import edu.stanford.ejalbert.BrowserLauncherRunner;
+
 public class HtmlViewPanel implements HyperlinkHandler
 {
 
@@ -119,11 +122,29 @@ public class HtmlViewPanel implements HyperlinkHandler
 
 	public void linkClicked(String linkDescription)
 	{	
+		if (!linkDescription.startsWith(HTTP_PROTOCOL))
+			return;
+			
+        try 
+        {
+            BrowserLauncherRunner runner = new BrowserLauncherRunner(
+            		new BrowserLauncher(null),
+                    "",
+                    linkDescription,
+                    null);
+            new Thread(runner).start();
+        }
+        catch (Exception e) 
+        {
+        	EAM.logException(e);
+        }
 	}
 
 	public void valueChanged(String widget, String newValue)
 	{
 	}
+	
+	private static String HTTP_PROTOCOL = "http";
 	private String viewTitle;
 	private Class viewClass;
 	private String htmlFileName;
