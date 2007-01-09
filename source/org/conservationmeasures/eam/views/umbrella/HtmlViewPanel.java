@@ -16,13 +16,13 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
+import org.martus.swing.UiScrollPane;
 import org.martus.swing.Utilities;
 
 import edu.stanford.ejalbert.BrowserLauncher;
@@ -50,7 +50,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 			return;
 		HtmlViewer bodyComponent =  new HtmlViewer(body, this);
 		bodyComponent.setFont(Font.getFont("Arial"));
-		bodyComponent.setSize(new Dimension(750, Short.MAX_VALUE));
+		bodyComponent.setSize(new Dimension(bodyComponent.getPreferredSize().width, Short.MAX_VALUE));
 		
 		JButton close = new JButton(new CloseAction(dlg));
 
@@ -61,7 +61,9 @@ public class HtmlViewPanel implements HyperlinkHandler
 		double[] rowSizes = {bodyComponent.getWidth()};
 		double[] columnSizes = {TableLayout.PREFERRED, TableLayout.PREFERRED};
 		double gridSizes[][] = { rowSizes, columnSizes };
-		JPanel panel = new JPanel(new TableLayout(gridSizes));
+		TableLayout tableLayout = new TableLayout(gridSizes);
+		JPanel panel = new JPanel(tableLayout);
+		
 		String columnZeroRowZero = "0, 0";
 		panel.add(bodyComponent, columnZeroRowZero);
 		String columnZeroRowOneCenteredCentered = "0, 1, c, c";
@@ -70,7 +72,10 @@ public class HtmlViewPanel implements HyperlinkHandler
 		panel.setBorder(new EmptyBorder(18,18,18,18));
 		panel.setBackground(bodyComponent.getBackground());
 		
-		dlg.getContentPane().add(new JScrollPane(panel));
+		UiScrollPane scrollPane = new UiScrollPane(panel);
+		scrollPane.getHorizontalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
+		dlg.getContentPane().add(scrollPane);
 		dlg.pack();
 		dlg.setLocation(Utilities.center(dlg.getSize(), Utilities.getViewableRectangle()));
 		
@@ -148,5 +153,5 @@ public class HtmlViewPanel implements HyperlinkHandler
 	private String viewTitle;
 	private Class viewClass;
 	private String htmlFileName;
-	
+
 }
