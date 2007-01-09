@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.utils.ZIPFileFilter;
 
 public class ImportZippedProjectFileDoer  extends ImportProjectDoer
 {
-	public void createProject(File finalProjectDirectory, File importFile) throws Exception
+	public void createProject(File importFile, File finalProjectDirectory) throws Exception
 	{
 		ProjectUnzipper.unzipToProjectDirectory(importFile, finalProjectDirectory);
 	}

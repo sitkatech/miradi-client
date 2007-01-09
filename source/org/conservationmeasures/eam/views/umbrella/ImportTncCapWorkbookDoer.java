@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.utils.XLSFileFilter;
 
 public class ImportTncCapWorkbookDoer extends ImportProjectDoer
 {
-	public void createProject(File finalProjectDirectory, File importFile) throws Exception
+	public void createProject(File importFile, File finalProjectDirectory) throws Exception
 	{
 		TncCapWorkbookImporter importer =new TncCapWorkbookImporter(importFile.getAbsolutePath());
 		Project project = new Project();
