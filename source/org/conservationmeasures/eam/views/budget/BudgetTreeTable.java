@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
@@ -20,9 +19,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
-import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
@@ -77,9 +73,8 @@ public class BudgetTreeTable extends TreeTableWithStateSaving
 			italicFont = defaultFont.deriveFont(Font.ITALIC);
 			
 			Map map = defaultFont.getAttributes();
-		    map.put(TextAttribute.SIZE, new Float(15.0));
-		    map.put(TextAttribute.FOREGROUND, Color.RED);
-		    map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_SEMIBOLD);
+		    map.put(TextAttribute.SIZE, new Float(defaultFont.getSize2D() + 2));
+		    map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
 		    customFont = new Font(map);
 		    
 		    setHorizontalAlignment(SwingConstants.RIGHT);
@@ -91,41 +86,8 @@ public class BudgetTreeTable extends TreeTableWithStateSaving
 			TreePath path = tree.getPathForRow(row);
 			TreeTableNode node = (TreeTableNode)path.getLastPathComponent();
 			component.setFont(getNodeFont(node));
-			component.setForeground(getForegroundColor(node));
 			
 			return component;
-		}
-
-		private Color getForegroundColor(TreeTableNode node)
-		{
-			if(node.getType() == ObjectType.INDICATOR)
-				return FactorRenderer.INDICATOR_COLOR;
-
-			if (node.getType() == ObjectType.TASK)
-				return getTaskColor((Task)node.getObject());
-
-			if (node.getType() == ObjectType.FACTOR)
-				return getFactorColor((Factor)node.getObject());
-			
-			return Color.BLACK;
-		}
-		
-		private Color getTaskColor(Task task)
-		{
-			if (task.isActivity())
-				return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES).darker();
-			if (task.isMethod())
-				return FactorRenderer.INDICATOR_COLOR.darker();
-			
-			return Color.BLACK;
-		}
-		
-		private Color getFactorColor(Factor factor)
-		{
-			if (factor.isStrategy())
-				return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES).darker();
-			
-			return Color.BLACK;
 		}
 
 		private Font getNodeFont(TreeTableNode node)
@@ -156,11 +118,12 @@ public class BudgetTreeTable extends TreeTableWithStateSaving
 		private Font getTaskFont(Task task)
 		{
 			if (task.isActivity())
-				return italicFont;
-			if (task.isMethod())
-				return italicFont;
+				return defaultFont;
 			
-			return defaultFont;
+			if (task.isMethod())
+				return defaultFont;
+			
+			return italicFont;
 		}
 		
 		Font defaultFont;
