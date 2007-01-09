@@ -11,8 +11,10 @@ import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.util.Map;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTree;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.tree.TreePath;
@@ -37,8 +39,7 @@ public class BudgetTreeTable extends TreeTableWithStateSaving
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		
-		setTableColumnRenderer();
-		
+		setTableColumnRenderer();	
 	}
 
 	private void setTableColumnRenderer()
@@ -50,9 +51,21 @@ public class BudgetTreeTable extends TreeTableWithStateSaving
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(i);
 			tableColumn.setCellRenderer(new FontRenderer(getTree()));
+			tableColumn.setHeaderRenderer(new CenterAlignRender());
 		}
 	}
 	
+	public class CenterAlignRender extends DefaultTableCellRenderer 
+	{
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+		{
+			Component component =  table.getTableHeader().getDefaultRenderer().getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+			((JLabel) component).setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+			
+			return component;
+		}
+	}
+
 	protected static class FontRenderer extends DefaultTableCellRenderer
 	{
 		public FontRenderer(JTree treeToUse)
@@ -68,6 +81,8 @@ public class BudgetTreeTable extends TreeTableWithStateSaving
 		    map.put(TextAttribute.FOREGROUND, Color.RED);
 		    map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_SEMIBOLD);
 		    customFont = new Font(map);
+		    
+		    setHorizontalAlignment(SwingConstants.RIGHT);
 		}
 		
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
