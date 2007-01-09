@@ -19,7 +19,7 @@ import org.martus.swing.UiFileChooser;
 
 public abstract class ImportProjectDoer extends ViewDoer
 {
-	public abstract void createProject(File importFile, File finalProjectDirectory)  throws Exception;
+	public abstract void createProject(File importFile, File homeDirectory, String newProjectFilename)  throws Exception;
 	
 	public abstract String getFileExtension();
 	
@@ -45,7 +45,8 @@ public abstract class ImportProjectDoer extends ViewDoer
 			
 			File fileToImport = results.getChosenFile();
 			String projectName = withoutExtension(fileToImport.getName());
-			File finalProjectDirectory = new File(EAM.getHomeDirectory(), projectName);
+			File homeDirectory = EAM.getHomeDirectory();
+			File finalProjectDirectory = new File(homeDirectory, projectName);
 			
 			if(ProjectServer.isExistingProject(finalProjectDirectory))
 			{
@@ -60,7 +61,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 				return;
 			}
 			
-			createProject(fileToImport, finalProjectDirectory);
+			createProject(fileToImport, homeDirectory, projectName);
 
 			refreshNoProjectPanel();
 			EAM.notifyDialog(EAM.text("Import Competed"));

@@ -17,15 +17,15 @@ import org.conservationmeasures.eam.utils.XLSFileFilter;
 
 public class ImportTncCapWorkbookDoer extends ImportProjectDoer
 {
-	public void createProject(File importFile, File finalProjectDirectory) throws Exception
+	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
 		TncCapWorkbookImporter importer =new TncCapWorkbookImporter(importFile.getAbsolutePath());
 		Project project = new Project();
-		project.createOrOpen(finalProjectDirectory);
+		project.createOrOpen(new File(homeDirectory, newProjectFilename));
 		
 		try
 		{
-			project.setMetadata(ProjectMetadata.TAG_PROJECT_NAME, finalProjectDirectory.getName());
+			project.setMetadata(ProjectMetadata.TAG_PROJECT_NAME, newProjectFilename);
 			project.setMetadata(ProjectMetadata.TAG_PROJECT_VISION, importer.getProjectVision());
 			project.setMetadata(ProjectMetadata.TAG_PROJECT_SCOPE, importer.getProjectScopeFull());
 			project.setMetadata(ProjectMetadata.TAG_START_DATE, importer.getProjectStartDate());
