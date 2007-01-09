@@ -229,10 +229,6 @@ public class DefinitionCommonTerms
 		defs.put("Definition:NewProject", def);
 		
 
-		def = new Definition("CreateProject", "A New Project is...");
-		defs.put("Definition:CreateProject", def);
-	
-
 		def = new Definition("ImportZip","A Zipped Project is...");
 		defs.put("Definition:ImportZip", def);
 
