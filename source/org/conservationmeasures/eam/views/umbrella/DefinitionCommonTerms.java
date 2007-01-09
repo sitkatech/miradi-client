@@ -17,7 +17,15 @@ public class DefinitionCommonTerms
 			"In conservation projects, it is the desired future status of a target." );
 		defs.put("Definition:Goal", def);
 		
-
+		
+		def = new Definition("Chain", 
+		"Chain - A sequence of linked factors in a conceptual model.  At a minimum, " +
+		"a chain will consist of a target and direct threat, although in many cases " +
+		"they will also include one or more contributing factors.  Chains represent " +
+		"the assumptions that you are making about your project site.");
+		defs.put("Definition:Chain", def);
+		
+		
 		def = new Definition("Conservation Targets", 
 			"Targets - A limited suite of species, communities, and ecological systems " +
 			"that are chosen to represent and encompass the full array of " +
