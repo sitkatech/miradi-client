@@ -53,7 +53,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			DiagramView view = (DiagramView)getView();
 			DiagramComponent diagram = view.getDiagramComponent();
 			
-			if (project.getOnlySelectedFactors().length == 1)
+			if (project.getOnlySelectedCells().length == 1)
 				SelectChain.selectAllChainsRelatedToAllSelectedCells(diagram);
 
 			BaseId viewId = getCurrentViewId();
