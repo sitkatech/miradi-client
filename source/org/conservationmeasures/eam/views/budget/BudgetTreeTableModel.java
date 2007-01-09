@@ -60,7 +60,11 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
 		DateRange dateRange = (DateRange)columnNames.get(col);
-        double total = totalCalculator.calculateTotalCost(node, dateRange); 
+        double total = totalCalculator.calculateTotalCost(node, dateRange);
+        
+        if (total <= 0)
+        	return "";
+        
 		return  currencyFormatter.format(total);
 	}
 
@@ -68,6 +72,10 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
 		double totalCost = totalCalculator.calculateTotalCost(node);
+		
+		if (totalCost <= 0)
+        	return "";
+        
 		return currencyFormatter.format(totalCost);
 	}
 
