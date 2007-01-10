@@ -37,7 +37,6 @@ public class UiTableWithAlternatingRows extends UiTable
 
 	private void initialize()
 	{
-		setRowHeight(getRowHeight() * 3);
 		backgrounds = new Color[] { Color.WHITE, new Color(0xf0, 0xf0, 0xf0), };
 		setDefaultRenderer(Object.class, new Renderer());
 	}
