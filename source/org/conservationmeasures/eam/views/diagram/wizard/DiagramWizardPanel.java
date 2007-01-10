@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
@@ -47,6 +48,10 @@ public class DiagramWizardPanel extends WizardPanel
 		addStep(new DiagramWizardLinkDirectThreatsToTargetsStep(this));
 		IDENTIFY_INDIRECT_THREATS = addStep(new DiagramWizardIdentifyIndirectThreatStep(this));
 		addStep(new DiagramWizardConstructChainsStep(this));
+		SELECT_CHAIN = addStep(new SelectChainStep(this));
+		addStep(new DevelopDraftStrategiesStep(this));
+		addStep(new RankDraftStrategiesStep(this));
+		addStep(new EditAllStrategiesStep(this));
 		REVIEW_AND_ADJUST = addStep(new DiagramWizardReviewModelAndAdjustStep(this));
 		DEVELOP_GOAL = addStep(new StrategicPlanDevelopGoalStep(this));
 		DEVELOP_OBJECTIVE = addStep(new StrategicPlanDevelopObjectivesStep(this));	
@@ -78,6 +83,8 @@ public class DiagramWizardPanel extends WizardPanel
 			setStep(DEVELOP_GOAL);
 		else if (stepMarker.equals(ActionJumpDevelopObjectives.class))
 			setStep(DEVELOP_OBJECTIVE);
+		else if (stepMarker.equals(ActionJumpIdentifyStrategies.class))
+			setStep(SELECT_CHAIN);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
@@ -124,4 +131,5 @@ public class DiagramWizardPanel extends WizardPanel
 	private int REVIEW_AND_ADJUST;
 	private int DEFINE_INDICATOR;
 	private int MONITORING_FOCUS;
+	private int SELECT_CHAIN;
 }

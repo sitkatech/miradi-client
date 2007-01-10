@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
@@ -142,6 +143,9 @@ public class JumpDoer extends MainWindowDoer
 		
 		if (jumpActionClass.equals(ActionJumpSelectMethod.class))
 			return WorkPlanView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpIdentifyStrategies.class))
+			return DiagramView.getViewName();
 		
 		return null;
 	}
