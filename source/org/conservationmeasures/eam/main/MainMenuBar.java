@@ -496,21 +496,21 @@ public class MainMenuBar extends JMenuBar
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class,HelpButtonData.ADAPTIVE_MANAGEMENT, HelpButtonData.ADAPTIVE_MANAGEMENT_HTML));
 
-
+		
 		item  = addMenuItem(actions, menu, ActionHelpAgileSoftware.class, KeyEvent.VK_S);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class,HelpButtonData.AGILE_SOFTWARE, HelpButtonData.AGILE_SOFTWARE_HTML));
-		
+
+		menu.addSeparator();
 		
 		item  = addMenuItem(actions, menu, ActionHelpComingAttractions.class, KeyEvent.VK_C);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class, HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
 
+		
 		item  = addMenuItem(actions, menu, ActionHelpCredits.class, KeyEvent.VK_C);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class,HelpButtonData.CREDITS, HelpButtonData.CREDITS_HTML));
-		
-		menu.addSeparator();
 		
 		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
 		
