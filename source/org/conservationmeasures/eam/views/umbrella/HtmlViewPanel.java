@@ -46,7 +46,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 		EAMDialog dlg = new EAMDialog(EAM.mainWindow, title);
 		dlg.setModal(true);
 		
-		String body = loadComingAttractonsHtml();
+		String body = loadHtml();
 		if (body == null)
 			return;
 		HtmlViewer bodyComponent =  new HtmlViewer(body, this);
@@ -94,7 +94,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 	}
 
 	
-	private String loadComingAttractonsHtml()
+	private String loadHtml()
 	{
 		try
 		{
