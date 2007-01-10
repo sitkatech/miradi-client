@@ -127,7 +127,8 @@ public class HtmlViewPanel implements HyperlinkHandler
 
 	public void linkClicked(String linkDescription)
 	{	
-		if (!linkDescription.startsWith(HTTP_PROTOCOL))
+		if (!linkDescription.startsWith(HTTP_PROTOCOL) && 
+			!linkDescription.startsWith(MAIL_PROTOCOL))
 			return;
 			
         try 
@@ -150,6 +151,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 	}
 	
 	private static String HTTP_PROTOCOL = "http";
+	private static String MAIL_PROTOCOL = "mailto:";
 	private String viewTitle;
 	private Class viewClass;
 	private String htmlFileName;
