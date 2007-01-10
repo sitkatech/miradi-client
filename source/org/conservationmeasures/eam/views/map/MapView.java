@@ -50,10 +50,10 @@ public class MapView extends UmbrellaView
 		super.becomeInactive();
 	}
 
-	private HtmlViewer getIntroText()
+	private HtmlViewer getIntroText() throws Exception
 	{
 		HtmlViewer htmlViewer = new HtmlViewer("",null);
-		htmlViewer.setText(loadResourceFile(OVERVIEW_HTML));
+		htmlViewer.setText(EAM.loadResourceFile(this.getClass(), OVERVIEW_HTML));
 		
 		//TODO: Find a better way to calculate scroll bar width to subtract
 		htmlViewer.setFixedWidth(htmlViewer,this.getSize().width - 20);
@@ -61,19 +61,6 @@ public class MapView extends UmbrellaView
 		return htmlViewer;
 	}
 	
-	
-	private String loadResourceFile(String htmlFile)
-	{
-		try
-		{
-			return EAM.loadResourceFile(this.getClass(), htmlFile);
-		}
-		catch (Exception e)
-		{
-			EAM.errorDialog("ERROR: file not found: " + this.getClass() + "/" + htmlFile );
-			return null;
-		}
-	}
 	
 	private String OVERVIEW_HTML = "Overview.html";
 
