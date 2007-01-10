@@ -15,7 +15,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.util.DirectoryUtils;
 
@@ -69,19 +68,21 @@ public class ProjectUnzipper
 		}
 	}
 	
-	public static void unzipToProjectDirectory(File zipFile, File projectDirectory) throws Exception
+	public static void unzipToProjectDirectory(File zipFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
-		if (projectDirectory.getParentFile().compareTo(EAM.getHomeDirectory())!=0)
-			throw(new CommandFailedException(projectDirectory +" \nNot a valid project file"));
+		if(!Project.isValidProjectFilename(newProjectFilename))
+			throw new Exception("Illegal project name: " + newProjectFilename);
 		
 		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
+		
+		// TODO: Import to a temp directory for safer deletion?
+		File projectDirectory = new File(homeDirectory, newProjectFilename);
 		projectDirectory.mkdir();
 		unzip(zipIn, projectDirectory);
+
+		// TODO: Find a better test for whether or not the import failed? 
 		if (!ProjectServer.isExistingProject(projectDirectory))
-		{
-			//TODO: better to create a delete project tree method 
 			DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
-		}
 	}
 	
 	public static void unzip(ZipInputStream zipInput, File destinationDirectory) throws IOException

@@ -96,11 +96,14 @@ public class TestProjectUnzipper extends EAMTestCase
 				EAM.setLogLevel(EAM.LOG_DEBUG);
 				boolean isImportable = ProjectUnzipper.isZipFileImportable(zip);
 				assertTrue("isn't importable? " + EAM.getLoggedString(), isImportable);
-				File unzippedDirectory = createTempDirectory(); 
+				
+				String projectFilename = "UnzippedProject";
+				File fakeHomeDirectory = createTempDirectory();
+				File unzippedDirectory = new File(fakeHomeDirectory, projectFilename);
 				Project unzippedProject= new Project();
 				try
 				{
-					ProjectUnzipper.unzipToProjectDirectory(zip, unzippedDirectory);
+					ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
 					unzippedProject.createOrOpen(unzippedDirectory);
 					Factor target = unzippedProject.findNode(targetId);
 					assertNotNull("didn't find the target we wrote?", target);
@@ -123,6 +126,37 @@ public class TestProjectUnzipper extends EAMTestCase
 			DirectoryUtils.deleteEntireDirectoryTree(originalDirectory);
 		}
 
+	}
+	
+	public void testUnzipEmptyFilename() throws Exception
+	{
+		File originalDirectory = createTempDirectory();
+		try
+		{
+			Project project = new Project();
+			project.createOrOpen(originalDirectory);
+			
+			File zip = createTempFile();
+			try
+			{
+				ProjectZipper.createProjectZipFile(zip, originalDirectory);
+				String projectFilename = "";
+				File fakeHomeDirectory = createTempDirectory();
+				ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
+				fail("Should have thrown for empty filename");
+			}
+			catch(Exception ignoreExpected)
+			{
+			}
+			finally
+			{
+				zip.delete();
+			}
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(originalDirectory);
+		}
 	}
 
 }

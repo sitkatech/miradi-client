@@ -17,7 +17,7 @@ public class ImportZippedProjectFileDoer  extends ImportProjectDoer
 {
 	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
-		ProjectUnzipper.unzipToProjectDirectory(importFile, new File(homeDirectory, newProjectFilename));
+		ProjectUnzipper.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
 	}
 
 	public FileFilter getFileFilter()
