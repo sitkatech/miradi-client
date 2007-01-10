@@ -292,7 +292,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		}
 		catch (Exception e)
 		{
-			//TODO how to ignore?
+			//TODO ingnoring for now.  precheck to ingore and only log real errors.
 			EAM.logException(e);
 		}
 	}
