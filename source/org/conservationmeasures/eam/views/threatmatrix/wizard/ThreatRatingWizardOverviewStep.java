@@ -21,7 +21,6 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
 	
 	public String getText()
 	{
-		System.out.println(OverviewText.build());
 		return OverviewText.build();
 	}
 

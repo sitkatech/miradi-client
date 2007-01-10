@@ -79,7 +79,6 @@ public class ProjectUnzipper
 		File tempHomeDir = createTempDirectory("$$$"+newProjectFilename);
 
 		File tempProjectDirectory = new File(tempHomeDir, newProjectFilename);
-		System.out.println(tempProjectDirectory.getAbsolutePath());
 		tempProjectDirectory.mkdir();
 		unzip(zipIn, tempProjectDirectory);
 

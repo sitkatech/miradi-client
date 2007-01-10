@@ -47,7 +47,6 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	{
 		try
 		{
-			System.out.println("valueChanged for " + widget + " to " + newValue);
 			if(widget.equals("Threat"))
 				selectedThreatName = newValue;
 			else if(widget.equals("Target"))
