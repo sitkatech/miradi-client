@@ -87,7 +87,8 @@ public class TestProjectUnzipper extends EAMTestCase
 			Project project = new Project();
 			project.createOrOpen(originalDirectory);
 			project.createObject(ObjectType.FACTOR, targetId, new CreateFactorParameter(new FactorTypeTarget()));
-			
+			project.close();
+
 			File zip = createTempFile();
 			try
 			{
@@ -99,20 +100,26 @@ public class TestProjectUnzipper extends EAMTestCase
 				
 				String projectFilename = "UnzippedProject";
 				File fakeHomeDirectory = createTempDirectory();
-				File unzippedDirectory = new File(fakeHomeDirectory, projectFilename);
-				Project unzippedProject= new Project();
 				try
 				{
-					ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
-					unzippedProject.createOrOpen(unzippedDirectory);
-					Factor target = unzippedProject.findNode(targetId);
-					assertNotNull("didn't find the target we wrote?", target);
+					File unzippedDirectory = new File(fakeHomeDirectory, projectFilename);
+					Project unzippedProject= new Project();
+					try
+					{
+						ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
+						unzippedProject.createOrOpen(unzippedDirectory);
+						Factor target = unzippedProject.findNode(targetId);
+						assertNotNull("didn't find the target we wrote?", target);
+					}
+					finally
+					{
+						unzippedProject.close();
+						DirectoryUtils.deleteEntireDirectoryTree(unzippedDirectory);
+					}
 				}
 				finally
 				{
-					project.close();
-					unzippedProject.close();
-					DirectoryUtils.deleteEntireDirectoryTree(unzippedDirectory);
+					DirectoryUtils.deleteEntireDirectoryTree(fakeHomeDirectory);
 				}
 			}
 			finally
@@ -135,6 +142,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		{
 			Project project = new Project();
 			project.createOrOpen(originalDirectory);
+			project.close();
 			
 			File zip = createTempFile();
 			try
@@ -142,8 +150,15 @@ public class TestProjectUnzipper extends EAMTestCase
 				ProjectZipper.createProjectZipFile(zip, originalDirectory);
 				String projectFilename = "";
 				File fakeHomeDirectory = createTempDirectory();
-				ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
-				fail("Should have thrown for empty filename");
+				try
+				{
+					ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
+					fail("Should have thrown for empty filename");
+				}
+				finally
+				{
+					DirectoryUtils.deleteEntireDirectoryTree(fakeHomeDirectory);
+				}
 			}
 			catch(Exception ignoreExpected)
 			{
