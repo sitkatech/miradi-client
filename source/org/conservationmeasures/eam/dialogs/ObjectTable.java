@@ -22,10 +22,10 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
+import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.martus.swing.UiTable;
 
-public class ObjectTable extends UiTable implements ObjectPicker
+public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker
 {
 	public ObjectTable(ObjectTableModel modelToUse)
 	{
