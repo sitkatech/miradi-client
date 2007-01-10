@@ -225,8 +225,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 
 	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
 	{
-		if(activePropertiesDlg != null)
-			activePropertiesDlg.dispose();
+		closeActivePropertiesDialog();
 		
 		activePropertiesDlg = newDialog;
 		activePropertiesPanel = (ModelessDialogPanel)newDialog.getWrappedPanel();

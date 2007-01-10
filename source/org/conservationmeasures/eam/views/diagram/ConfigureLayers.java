@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.ViewDoer;
-import org.martus.swing.Utilities;
 
 public class ConfigureLayers extends ViewDoer
 {
@@ -29,10 +28,8 @@ public class ConfigureLayers extends ViewDoer
 		
 		MainWindow window = getMainWindow();
 		LayerPanel layerPanel = new LayerPanel(window);
-		ModelessDialogWithClose modelessDialog = new ModelessDialogWithClose(window, layerPanel, EAM.text("Title|View Layers"));
-		modelessDialog.setLocation(Utilities.center(modelessDialog.getSize(), Utilities.getViewableRectangle()));	
-		modelessDialog.pack();
-		modelessDialog.setVisible(true);
+		ModelessDialogWithClose dlg = new ModelessDialogWithClose(window, layerPanel, EAM.text("Title|View Layers"));
+		getView().showFloatingPropertiesDialog(dlg);
 	}
 
 }

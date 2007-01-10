@@ -463,6 +463,13 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		wizardPanel.jump(stepMarker);
 	}
 
+	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
+	{
+		if(nodePropertiesDlg != null)
+			disposeOfNodePropertiesDialog();
+		super.showFloatingPropertiesDialog(newDialog);
+	}
+
 	public void showNodeProperties(DiagramFactor node, int startingTabIdentifier)
 	{
 		closeActivePropertiesDialog();
