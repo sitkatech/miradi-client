@@ -5,9 +5,6 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
-import info.clearthought.layout.TableLayout;
-
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
@@ -24,6 +21,8 @@ import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.Utilities;
+
+import com.jhlabs.awt.GridLayoutPlus;
 
 import edu.stanford.ejalbert.BrowserLauncher;
 import edu.stanford.ejalbert.BrowserLauncherRunner;
@@ -50,19 +49,12 @@ public class HtmlViewPanel implements HyperlinkHandler
 			return;
 		HtmlViewer bodyComponent =  new HtmlViewer(body, this);
 		bodyComponent.setFont(Font.getFont("Arial"));
-		bodyComponent.setSize(new Dimension(bodyComponent.getPreferredSize().width, Short.MAX_VALUE));
+
 		
 		JButton close = new JButton(new CloseAction(dlg));
 
-		// Seems like there should be an easier way to enforce a fixed width
-		// and allow an HTML text component to become as high as necessary.
-		// I couldn't find any sane way using any built-in LayoutManager,
-		// nor with any jhlabs LayoutManager. 2006-11-18 kbs
-		double[] rowSizes = {bodyComponent.getWidth()};
-		double[] columnSizes = {TableLayout.PREFERRED, TableLayout.PREFERRED};
-		double gridSizes[][] = { rowSizes, columnSizes };
-		TableLayout tableLayout = new TableLayout(gridSizes);
-		JPanel panel = new JPanel(tableLayout);
+		JPanel panel = new JPanel(new GridLayoutPlus(0,1));
+		bodyComponent.setFixedWidth(bodyComponent,bodyComponent.getPreferredSize().width);
 		
 		String columnZeroRowZero = "0, 0";
 		panel.add(bodyComponent, columnZeroRowZero);
@@ -84,6 +76,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 		dlg.setVisible(true);
 		
 	}
+
 	
 	private String loadComingAttractonsHtml()
 	{

@@ -6,8 +6,6 @@
 package org.conservationmeasures.eam.views.images;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -57,23 +55,16 @@ public class ImagesView extends UmbrellaView
 	
 	private HtmlViewer getIntroText()
 	{
-		HtmlViewer htmlViewer= new HtmlViewer("",null);
+		HtmlViewer htmlViewer = new HtmlViewer("",null);
 		htmlViewer.setText(loadResourceFile(OVERVIEW_HTML));
 		
 		//TODO: Find a better way to calculate scroll bar width to subtract
-		setFixedWidth(htmlViewer,this.getSize().width - 20);
+		htmlViewer.setFixedWidth(htmlViewer,this.getSize().width - 20);
 
 		return htmlViewer;
 	}
 	
-	public static void setFixedWidth( Component component, int width )
-	{
-		component.setSize( new Dimension( width, Short.MAX_VALUE ) );
-		Dimension preferredSize = component.getPreferredSize();
-		component.setPreferredSize( new Dimension( width, preferredSize.height ) );
-	}
-	
-	
+
 	private String loadResourceFile(String htmlFile)
 	{
 		try
