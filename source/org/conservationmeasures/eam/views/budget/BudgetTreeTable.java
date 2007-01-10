@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.views.budget;
 
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.font.TextAttribute;
-import java.util.Map;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -23,10 +21,10 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.BoldedStrategyIndicatorTableTree;
 import org.conservationmeasures.eam.views.TreeTableNode;
-import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 
-public class BudgetTreeTable extends TreeTableWithStateSaving
+public class BudgetTreeTable extends BoldedStrategyIndicatorTableTree
 {
 	public BudgetTreeTable(Project projectToUse, BudgetTreeTableModel treeTableModel)
 	{
@@ -71,13 +69,9 @@ public class BudgetTreeTable extends TreeTableWithStateSaving
 			defaultFont = getFont();
 			boldFont = defaultFont.deriveFont(Font.BOLD);
 			italicFont = defaultFont.deriveFont(Font.ITALIC);
-			
-			Map map = defaultFont.getAttributes();
-		    map.put(TextAttribute.SIZE, new Float(defaultFont.getSize2D() + 2));
-		    map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
-		    customFont = new Font(map);
+			customFont = createFristLevelFont(defaultFont);
 		    
-		    setHorizontalAlignment(SwingConstants.RIGHT);
+			setHorizontalAlignment(SwingConstants.RIGHT);
 		}
 		
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)

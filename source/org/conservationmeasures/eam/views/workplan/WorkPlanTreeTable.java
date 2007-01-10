@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.workplan;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
+import org.conservationmeasures.eam.views.BoldedStrategyIndicatorTableTree;
 
-public class WorkPlanTreeTable extends TreeTableWithStateSaving 
+public class WorkPlanTreeTable extends BoldedStrategyIndicatorTableTree 
 {
 	public WorkPlanTreeTable(Project projectToUse, WorkPlanTreeTableModel monitoringModelToUse)
 	{

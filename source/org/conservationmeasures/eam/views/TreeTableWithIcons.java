@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views;
 
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.font.TextAttribute;
+import java.util.Map;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -53,26 +55,31 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		setDefaultEditor(TreeTableModel.class, ce);
 	}
 
-		public GenericTreeTableModel getTreeTableModel()
+	public GenericTreeTableModel getTreeTableModel()
 	{
 		return (GenericTreeTableModel)getModel();
 	}
+	
+	public static Font createFristLevelFont(Font defaultFontToUse)
+	{
+		Map map = defaultFontToUse.getAttributes();
+	    map.put(TextAttribute.SIZE, new Float(defaultFontToUse.getSize2D() + 2));
+	    map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+	    Font customFont = new Font(map);
+		return customFont;
+	}
 
 	protected static class Renderer extends DefaultTreeCellRenderer
-	{
+	{		
 		public Renderer()
 		{
-			Font uiLabelFont = new UiLabel().getFont();
-			Font boldFont = uiLabelFont.deriveFont(Font.BOLD);
-			Font italicFont = uiLabelFont.deriveFont(Font.ITALIC);
-			
 			factorRenderer = new DefaultTreeCellRenderer();
 			
 			objectiveRenderer = new DefaultTreeCellRenderer();
 			objectiveRenderer.setClosedIcon(new ObjectiveIcon());
 			objectiveRenderer.setOpenIcon(new ObjectiveIcon());
 			objectiveRenderer.setLeafIcon(new ObjectiveIcon());
-			objectiveRenderer.setFont(boldFont);
+			objectiveRenderer.setFont(getBoldFont());
 
 			indicatorRenderer = new DefaultTreeCellRenderer();
 			indicatorRenderer.setClosedIcon(new IndicatorIcon());
@@ -83,30 +90,30 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			goalRenderer.setClosedIcon(new GoalIcon());
 			goalRenderer.setOpenIcon(new GoalIcon());
 			goalRenderer.setLeafIcon(new GoalIcon());
-			goalRenderer.setFont(boldFont);
+			goalRenderer.setFont(getBoldFont());
 			
 			activityRenderer = new DefaultTreeCellRenderer();
 			activityRenderer.setClosedIcon(new ActivityIcon());
 			activityRenderer.setOpenIcon(new ActivityIcon());
 			activityRenderer.setLeafIcon(new ActivityIcon());
-			activityRenderer.setFont(italicFont);
 
 			methodRenderer = new DefaultTreeCellRenderer();
 			methodRenderer.setClosedIcon(new MethodIcon());
 			methodRenderer.setOpenIcon(new MethodIcon());
 			methodRenderer.setLeafIcon(new MethodIcon());
-			methodRenderer.setFont(italicFont);
 
 			taskRenderer = new DefaultTreeCellRenderer();
 			taskRenderer.setClosedIcon(new TaskIcon());
 			taskRenderer.setOpenIcon(new TaskIcon());
 			taskRenderer.setLeafIcon(new TaskIcon());
-			taskRenderer.setFont(italicFont);
+			taskRenderer.setFont(getItalicFont());
 
 			stringNoIconRenderer = new DefaultTreeCellRenderer();
 			stringNoIconRenderer.setClosedIcon(null);
 			stringNoIconRenderer.setOpenIcon(null);
 			stringNoIconRenderer.setLeafIcon(null);
+			Font customFont = createFristLevelFont(getDefaultFont());
+			stringNoIconRenderer.setFont(customFont);
 			
 			defaultRenderer = new DefaultTreeCellRenderer();
 		}
@@ -121,7 +128,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			else if(node.getType() == ObjectType.INDICATOR)
 				renderer = indicatorRenderer;
 			else if(node.getType() == ObjectType.FACTOR)
-				renderer = getFactorRenderer((Factor)node.getObject());
+				renderer = getStrategyRenderer((Factor)node.getObject());
 			else if(node.getType() == ObjectType.OBJECTIVE)
 				renderer = objectiveRenderer;
 			else if(node.getType() == ObjectType.GOAL)
@@ -141,7 +148,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			return taskRenderer;
 		}
 
-		private TreeCellRenderer getFactorRenderer(Factor factor)
+		protected DefaultTreeCellRenderer getStrategyRenderer(Factor factor)
 		{
 			DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
 			FactorIcon factorIcon = new FactorIcon(factor);
@@ -149,7 +156,26 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			renderer.setClosedIcon(factorIcon);
 			renderer.setOpenIcon(factorIcon);
 			renderer.setLeafIcon(factorIcon);
+			
 			return renderer;
+		}
+		
+		public static Font getDefaultFont()
+		{
+			Font defaultFont = new UiLabel().getFont();
+			return defaultFont;
+		}
+		
+		public static Font getBoldFont()
+		{
+			Font defaultFont = getDefaultFont();
+			return defaultFont.deriveFont(Font.BOLD);
+		}
+
+		public static Font getItalicFont()
+		{
+			Font defaultFont = getDefaultFont();
+			return defaultFont.deriveFont(Font.ITALIC);
 		}
 
 		DefaultTreeCellRenderer objectiveRenderer;
