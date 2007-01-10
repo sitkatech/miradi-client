@@ -200,7 +200,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 				return "";
 
 			final int BACK_ONE_ROW = 1;
-			double units = new Double(getUnit(row - BACK_ONE_ROW, col)).doubleValue();
+			double units = convertStringToDouble(getUnit(row - BACK_ONE_ROW, col));
 			double costPerUnit = currentResource.getCostPerUnit();
 			return currencyFormatter.format(units * costPerUnit);
 		}
@@ -238,9 +238,29 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	private String getCostPerUnit(ProjectResource resource)
 	{
 		String raw = resource.getData(ProjectResource.TAG_COST_PER_UNIT);
-		double costPerUnit = new Double(raw).doubleValue();
+		double costPerUnit = convertStringToDouble(raw);
 		
 		return currencyFormatter.format(costPerUnit);
+	}
+
+	//TODO this method should possibly be renamed and made available 
+	//for the whole app.
+	public static double convertStringToDouble(String raw)
+	{
+		if (raw.length() == 0)
+			return 0;
+		
+		double newDouble = 0;
+		try
+		{
+			 newDouble = new Double(raw).doubleValue();
+		}
+		catch (NumberFormatException e)
+		{
+			EAM.logException(e);
+		}
+		
+		return newDouble; 
 	}
 
 	private String getStaticCellLabel(int row, int col)
