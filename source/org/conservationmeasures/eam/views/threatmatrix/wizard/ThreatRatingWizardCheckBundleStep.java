@@ -94,7 +94,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 								)) + 
 							newline() +
 							"") +
-					tableCell(
+						hintTableCell(
 							smallParagraph(bold("Overall Threat Rating -- ") +
 									"Miradi calculates threat ratings " +
 									"using a rule-based system for combining the scope, severity, " +

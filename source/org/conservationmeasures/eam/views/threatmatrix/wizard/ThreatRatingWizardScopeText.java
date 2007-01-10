@@ -34,7 +34,7 @@ public class ThreatRatingWizardScopeText extends HtmlBuilder
 					
 					)
 				) + 
-				tableCell(
+				hintTableCell(
 					smallParagraph(bold("Scope - ") + "Most commonly defined spatially as " +
 							"the geographic scope of impact on the conservation target " +
 							"at the site that can reasonably be expected " +

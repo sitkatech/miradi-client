@@ -34,7 +34,7 @@ public class ThreatRatingWizardSeverityText extends HtmlBuilder
 					
 					)
 				) + 
-				tableCell(
+				hintTableCell(
 					smallParagraph(bold("Severity - ") + "The level of damage to the conservation target " +
 						"that can reasonably be expected within ten years under current circumstances " +
 						"(i.e., given the continuation of the existing situation).") +

@@ -21,6 +21,7 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
 	
 	public String getText()
 	{
+		System.out.println(OverviewText.build());
 		return OverviewText.build();
 	}
 
@@ -77,8 +78,8 @@ class OverviewText extends HtmlBuilder
 							)) + 
 						newline() +
 						"") +
-				tableCell(
-						smallHeading("Guide to the Threat Rating Summary Table") + 
+					hintTableCell(
+						hintHeading("Guide to the Threat Rating Summary Table") + 
 						smallParagraph(("The " + bold("far left hand column ") +
 								"is a listing of all threats and the " +
 								bold("top row ") +

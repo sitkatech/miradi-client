@@ -100,7 +100,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 								)) + 
 							newline() +
 							"") +
-					tableCell(
+						hintTableCell(
 							smallParagraph(bold("Summary Threat Ratings - ") +
 									"Miradi rolls up threat ratings " +
 									"for each target and threat using another rule-based system " +

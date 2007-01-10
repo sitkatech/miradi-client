@@ -23,12 +23,17 @@ public class HtmlBuilder
 	
 	static public String heading(String text)
 	{
-		return "<h2>" + text + "</h2>";
+		return "<p class='viewname'>" + text + "</p>";
 	}
 	
 	static public String smallHeading(String text)
 	{
 		return "<h3>" + text + "</h3>";
+	}
+	
+	static public String hintHeading(String text)
+	{
+		return "<p class='hintheading'><strong>"+ text +"</strong></p>";
 	}
 	
 	static public String horizontalLine()
@@ -74,7 +79,7 @@ public class HtmlBuilder
 	
 	static public String list(String contents)
 	{
-		return "<ul" + contents + "</ul>";
+		return "<ul>" + contents + "</ul>";
 	}
 	
 	static public String listItem(String text)
@@ -110,6 +115,11 @@ public class HtmlBuilder
 	static public String tableCell(String text)
 	{
 		return "<td align='left' valign='top'>" + text + "</td>";
+	}
+	
+	static public String hintTableCell(String text)
+	{
+		return "<td align='left' valign='top'><div class='navigation'> " + text + "</div></td>";
 	}
 	
 	static public String tableHeader(String text)

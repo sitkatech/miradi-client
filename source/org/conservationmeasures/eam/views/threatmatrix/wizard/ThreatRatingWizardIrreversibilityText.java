@@ -35,7 +35,7 @@ public class ThreatRatingWizardIrreversibilityText extends HtmlBuilder
 					
 					)
 				) + 
-				tableCell(
+				hintTableCell(
 					smallParagraph(bold("Irreversibility - ") + "The degree to which the effects of a threat " +
 							"can be restored.") +
 					indent(smallParagraph(bold("Very High: ") + "The effects of the threat are not reversible " +

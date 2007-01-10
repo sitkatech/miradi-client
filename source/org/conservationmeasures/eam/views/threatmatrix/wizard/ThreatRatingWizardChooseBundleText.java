@@ -39,7 +39,7 @@ public class ThreatRatingWizardChooseBundleText extends HtmlBuilder
 							)) + 
 						newline()
 					) +
-					tableCell(
+					hintTableCell(
 						smallParagraph(bold("Hint:  ") +
 								"If this is your first time, you might want to " +
 								"start with one of your simpler targets and threats."
