@@ -68,6 +68,7 @@ public class ProjectUnzipper
 		}
 	}
 	
+
 	public static void unzipToProjectDirectory(File zipFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
 		if(!Project.isValidProjectFilename(newProjectFilename))
@@ -75,14 +76,30 @@ public class ProjectUnzipper
 		
 		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
 		
-		// TODO: Import to a temp directory for safer deletion?
-		File projectDirectory = new File(homeDirectory, newProjectFilename);
-		projectDirectory.mkdir();
-		unzip(zipIn, projectDirectory);
+		File tempHomeDir = createTempDirectory("$$$"+newProjectFilename);
+
+		File tempProjectDirectory = new File(tempHomeDir, newProjectFilename);
+		System.out.println(tempProjectDirectory.getAbsolutePath());
+		tempProjectDirectory.mkdir();
+		unzip(zipIn, tempProjectDirectory);
 
 		// TODO: Find a better test for whether or not the import failed? 
-		if (!ProjectServer.isExistingProject(projectDirectory))
-			DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
+		if (ProjectServer.isExistingProject(tempProjectDirectory))
+		{
+			File destinationProjectDirectory = new File(homeDirectory,newProjectFilename);
+			DirectoryUtils.copyDirectoryTree(tempProjectDirectory, destinationProjectDirectory);
+		}
+
+		DirectoryUtils.deleteEntireDirectoryTree(tempHomeDir);
+	}
+	
+	
+	private static File createTempDirectory(String name) throws IOException
+	{
+		File dir = File.createTempFile(name, null);
+		dir.delete();
+		dir.mkdirs();
+		return dir;
 	}
 	
 	public static void unzip(ZipInputStream zipInput, File destinationDirectory) throws IOException
