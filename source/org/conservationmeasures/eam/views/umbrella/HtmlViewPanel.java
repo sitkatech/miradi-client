@@ -5,7 +5,9 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -69,12 +71,26 @@ public class HtmlViewPanel implements HyperlinkHandler
 		scrollPane.getVerticalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
 		dlg.getContentPane().add(scrollPane);
 		dlg.pack();
-		dlg.setLocation(Utilities.center(dlg.getSize(), Utilities.getViewableRectangle()));
+
+		fudgeSize(dlg);
 		
 		dlg.getRootPane().setDefaultButton(close);
 		close.requestFocus(true);
 		dlg.setVisible(true);
+	}
+
+	// TODO: There really has to be a better way to get a dialog to contain and center its self
+	private void fudgeSize(EAMDialog dlg)
+	{
+		Dimension dimension = dlg.getSize();
+		dimension.height = dimension.height - 70;
+		dimension.width = dimension.width + 20;
+		dlg.setSize(dimension);
 		
+		Rectangle rectangle = Utilities.getViewableRectangle();
+		rectangle.height = rectangle.height - 20;
+		
+		dlg.setLocation(Utilities.center(dimension, rectangle));
 	}
 
 	
