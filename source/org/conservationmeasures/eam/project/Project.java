@@ -971,7 +971,7 @@ public class Project
 
 	public static final String MONITORING_VIEW_NAME = "Monitoring Plan";
 	public static final String STRATEGIC_PLAN_VIEW_NAME = "Strategic Plan";
-	public static final String IMAGES_VIEW_NAME = "Images";
+	public static final String IMAGES_VIEW_NAME = "Library";
 	public static final String SCHEDULE_VIEW_NAME = "Schedule";
 	public static final String MAP_VIEW_NAME = "Map";
 	public static final String WORK_PLAN_VIEW_NAME = "Work Plan";

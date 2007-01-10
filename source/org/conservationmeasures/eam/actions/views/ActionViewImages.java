@@ -18,12 +18,12 @@ public class ActionViewImages extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Images") + DEMO_INDICATOR;
+		return EAM.text("Action|Library") + DEMO_INDICATOR;
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Images View");
+		return EAM.text("TT|Switch to the Library View");
 	}
 	
 	public String toString()
