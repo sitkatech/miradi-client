@@ -447,6 +447,8 @@ public class Project
 	
 	static public boolean isValidProjectFilename(String candidate)
 	{
+		if(candidate.length() < 1)
+			return false;
 		if(candidate.length() > 32)
 			return false;
 		

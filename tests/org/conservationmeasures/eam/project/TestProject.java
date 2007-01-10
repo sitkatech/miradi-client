@@ -156,6 +156,7 @@ public class TestProject extends EAMTestCase
 		assertFalse("Other Punct", Project.isValidProjectFilename("$"));
 		final char ACCENT_A_LOWER = 0xE1;
 		assertTrue("Foreign", Project.isValidProjectFilename(new String(new char[] {ACCENT_A_LOWER})));
+		assertFalse("Empty", Project.isValidProjectFilename(""));
 	}
 	
 	public void testViewChanges() throws Exception
