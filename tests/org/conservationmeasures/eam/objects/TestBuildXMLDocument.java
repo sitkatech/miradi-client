@@ -34,7 +34,24 @@ public class TestBuildXMLDocument extends EAMTestCase
 			project.createOrOpen(projectFile);
 			
 			
+			processObjectPool(project, ObjectType.ACCOUNTING_CODE);
+			processObjectPool(project, ObjectType.ASSIGNMENT);
+			processObjectPool(project, ObjectType.DIAGRAM_LINK);
 			processObjectPool(project, ObjectType.FACTOR);
+			processObjectPool(project, ObjectType.FACTOR_LINK);
+			processObjectPool(project, ObjectType.FAKE);
+			processObjectPool(project, ObjectType.FUNDING_SOURCE);
+			processObjectPool(project, ObjectType.GOAL);
+			processObjectPool(project, ObjectType.INDICATOR);
+			processObjectPool(project, ObjectType.OBJECTIVE);
+			processObjectPool(project, ObjectType.PROJECT_METADATA);
+			processObjectPool(project, ObjectType.PROJECT_RESOURCE);
+			processObjectPool(project, ObjectType.RATING_CRITERION);
+			processObjectPool(project, ObjectType.TASK);
+			processObjectPool(project, ObjectType.VALUE_OPTION);
+			processObjectPool(project, ObjectType.VIEW_DATA);
+			
+			
 		}
 		catch (Exception e)
 		{
@@ -46,6 +63,12 @@ public class TestBuildXMLDocument extends EAMTestCase
 	private void processObjectPool(Project project , int objectType) throws Exception
 	{
 			EAMObjectPool pool = project.getPool(objectType);
+			if (pool==null)
+			{
+				System.out.println("SKIPING POOL=:" + objectType);
+				return;
+			}
+			
 			BaseId[] baseIds = pool.getIds();
 			for(int i = 0; i < baseIds.length; ++i)
 			{
