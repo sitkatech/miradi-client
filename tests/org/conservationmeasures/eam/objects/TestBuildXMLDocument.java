@@ -35,19 +35,19 @@ public class TestBuildXMLDocument extends EAMTestCase
 			
 			//processObjectPool(project, "Fake",ObjectType.FAKE);
 			
-			System.out.print("<?xml version=\"1.0\" encoding=\"US-ASCII\"?>");
+			writeXMLVersionLine();
 			
 			System.out.print("<Mardis" +  " project=\"" + projectName + "\">");
 			
-			processObjectPool(project, "AccountingCode", 	ObjectType.ACCOUNTING_CODE);
-			processObjectPool(project, "Assignment", 		ObjectType.ASSIGNMENT);
-			processObjectPool(project, "DiagramLink",		ObjectType.DIAGRAM_LINK);
-			processObjectPool(project, "Factor", 			ObjectType.FACTOR);
-			processObjectPool(project, "FactorLink",		ObjectType.FACTOR_LINK);
-			processObjectPool(project, "FundingSource",		ObjectType.FUNDING_SOURCE);
-			processObjectPool(project, "Goal", 				ObjectType.GOAL);
-			processObjectPool(project, "Indicator", 		ObjectType.INDICATOR);
-			processObjectPool(project, "Objective", 		ObjectType.OBJECTIVE);
+			processObjectPool(project, AccountingCode.OBJECT_NAME, 	ObjectType.ACCOUNTING_CODE);
+			processObjectPool(project, Assignment.OBJECT_NAME, 		ObjectType.ASSIGNMENT);
+			processObjectPool(project, "DiagramLink",				ObjectType.DIAGRAM_LINK);
+			processObjectPool(project, Factor.OBJECT_NAME, 			ObjectType.FACTOR);
+			processObjectPool(project, "FactorLink",				ObjectType.FACTOR_LINK);
+			processObjectPool(project, "FundingSource",				ObjectType.FUNDING_SOURCE);
+			processObjectPool(project, Goal.OBJECT_NAME, 			ObjectType.GOAL);
+			processObjectPool(project, Indicator.OBJECT_NAME, 		ObjectType.INDICATOR);
+			processObjectPool(project, Objective.OBJECT_NAME, 		ObjectType.OBJECTIVE);
 			processObjectPool(project, "ProjectMetaData", 	ObjectType.PROJECT_METADATA);
 			processObjectPool(project, "ProjectResource", 	ObjectType.PROJECT_RESOURCE);
 			processObjectPool(project, "RatingCriterion", 	ObjectType.RATING_CRITERION);
@@ -55,14 +55,13 @@ public class TestBuildXMLDocument extends EAMTestCase
 			processObjectPool(project, "ValueOption", 		ObjectType.VALUE_OPTION);
 			processObjectPool(project, "ViewData", 			ObjectType.VIEW_DATA);
 			
-			System.out.print("</Mardis>");
+			writeEndELement("Mardis");
 			
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-
 	}
 
 	private void processObjectPool(Project project ,String elementName, int objectType) throws Exception
@@ -78,9 +77,9 @@ public class TestBuildXMLDocument extends EAMTestCase
 			{
 				EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
 				
-				System.out.print("<"+elementName+  "  id=\"" + i + "\">");
+				writeStartELementWithIDRef(elementName,i);
 				processTags(object);
-				System.out.print("</"+elementName+">");
+				writeEndELement(elementName);
 			}
 	}
 
@@ -90,14 +89,15 @@ public class TestBuildXMLDocument extends EAMTestCase
 		for(int i = 0; i < tags.length; ++i)
 		{
 			
-			System.out.print("<"+tags[i]+">");
+			writeStartELement(tags[i]);
+			
 			ObjectData field = object.getField(tags[i]);
 			if (tags[i].endsWith("Ids"))
 				buildFieldIDListElements(field);
 			else
-				System.out.print(XmlUtilities.getXmlEncoded(field.get()));
+				writeData(field.get());
 			
-			System.out.print("</"+tags[i]+">");
+			writeEndELement(tags[i]);
 		}
 	}
 
@@ -108,13 +108,45 @@ public class TestBuildXMLDocument extends EAMTestCase
 			IdList idList = new IdList(field.get());
 			for (int i=0; i<idList.size(); ++i )
 			{
-				System.out.print("<ref idref=\"" + idList.get(i) + "\"/>");
+				writeIDRefElement(idList.get(i).asInt());
 			}
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	
+	
+	private void writeStartELement(String name)
+	{
+		System.out.print("<"+name+">");
+	}
+	
+	private void writeStartELementWithIDRef(String name, int id)
+	{
+		System.out.print("<"+name+  "  id=\"" + id + "\">");
+	}
+	
+	private void writeIDRefElement(int id)
+	{
+		System.out.print("<ref idref=\"" + id + "\"/>");
+	}
+	
+	private void writeEndELement(String name)
+	{
+		System.out.print("</"+name+">");
+	}
+	
+	private void writeData(String text)
+	{
+		System.out.print(XmlUtilities.getXmlEncoded(text));
+	}
+	
+	private void writeXMLVersionLine()
+	{
+		System.out.print("<?xml version=\"1.0\" encoding=\"US-ASCII\"?>");
 	}
 	
 }
