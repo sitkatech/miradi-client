@@ -57,6 +57,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivities;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudget;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
@@ -87,6 +88,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
@@ -345,6 +347,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpStratPlanWelcome.class);
 		
 		addJumpDoerToMap(ActionJumpScheduleWizardWelcomeStep.class);
+		addJumpDoerToMap(ActionJumpWorkPlanAssignResourcesStep.class);
+		addJumpDoerToMap(ActionJumpDevelopBudget.class);
 	}
 	
 	private void addJumpDoerToMap(Class actionClass)

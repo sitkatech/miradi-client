@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.budget.wizard;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleWizardWelcomeStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
@@ -35,6 +36,8 @@ public class BudgetWizardPanel extends WizardPanel
 	public void previous() throws Exception
 	{
 		super.previous();
+		if (currentStep == DEVELOP_BUDGET)
+			actions.get(ActionJumpWorkPlanAssignResourcesStep.class).doAction();
 	}
 	
 	int DEVELOP_BUDGET;

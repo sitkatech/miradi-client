@@ -7,12 +7,13 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudget;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
@@ -24,12 +25,14 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.utils.JumpLocation;
 import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.schedule.ScheduleView;
@@ -151,6 +154,12 @@ public class JumpDoer extends MainWindowDoer
 		
 		if (jumpActionClass.equals(ActionJumpScheduleWizardWelcomeStep.class))
 			return ScheduleView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpWorkPlanAssignResourcesStep.class))
+			return WorkPlanView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpDevelopBudget.class))
+			return BudgetView.getViewName();
 		
 		return null;
 	}

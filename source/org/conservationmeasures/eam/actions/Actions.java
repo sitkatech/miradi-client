@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivities;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudget;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
@@ -63,6 +64,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
@@ -226,6 +228,8 @@ public class Actions
 		registerAction(new ActionJumpDevelopMonitoringMethodsAndTasks(mainWindow));
 		registerAction(new ActionJumpDevelopActivitiesAndTasks(mainWindow));
 		registerAction(new ActionJumpScheduleWizardWelcomeStep(mainWindow));
+		registerAction(new ActionJumpWorkPlanAssignResourcesStep(mainWindow));
+		registerAction(new ActionJumpDevelopBudget(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
