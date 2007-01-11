@@ -11,12 +11,11 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
-import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.Project;
+import org.martus.util.xml.XmlUtilities;
 
 public class TestBuildXMLDocument extends EAMTestCase
 {
@@ -27,30 +26,36 @@ public class TestBuildXMLDocument extends EAMTestCase
 
 	public void testBuild() throws Exception
 	{
+		String projectName = "exportedProject";
 		try
 		{
-			File projectFile = new File(EAM.getHomeDirectory(),"exportedProject");
+			File projectFile = new File(EAM.getHomeDirectory(),projectName);
 			Project project = new Project();
 			project.createOrOpen(projectFile);
 			
+			//processObjectPool(project, "Fake",ObjectType.FAKE);
 			
-			processObjectPool(project, ObjectType.ACCOUNTING_CODE);
-			processObjectPool(project, ObjectType.ASSIGNMENT);
-			processObjectPool(project, ObjectType.DIAGRAM_LINK);
-			processObjectPool(project, ObjectType.FACTOR);
-			processObjectPool(project, ObjectType.FACTOR_LINK);
-			processObjectPool(project, ObjectType.FAKE);
-			processObjectPool(project, ObjectType.FUNDING_SOURCE);
-			processObjectPool(project, ObjectType.GOAL);
-			processObjectPool(project, ObjectType.INDICATOR);
-			processObjectPool(project, ObjectType.OBJECTIVE);
-			processObjectPool(project, ObjectType.PROJECT_METADATA);
-			processObjectPool(project, ObjectType.PROJECT_RESOURCE);
-			processObjectPool(project, ObjectType.RATING_CRITERION);
-			processObjectPool(project, ObjectType.TASK);
-			processObjectPool(project, ObjectType.VALUE_OPTION);
-			processObjectPool(project, ObjectType.VIEW_DATA);
+			System.out.print("<?xml version=\"1.0\" encoding=\"US-ASCII\"?>");
 			
+			System.out.print("<Mardis" +  " project=\"" + projectName + "\">");
+			
+			processObjectPool(project, "AccountingCode", 	ObjectType.ACCOUNTING_CODE);
+			processObjectPool(project, "Assignment", 		ObjectType.ASSIGNMENT);
+			processObjectPool(project, "DiagramLink",		ObjectType.DIAGRAM_LINK);
+			processObjectPool(project, "Factor", 			ObjectType.FACTOR);
+			processObjectPool(project, "FactorLink",		ObjectType.FACTOR_LINK);
+			processObjectPool(project, "FundingSource",		ObjectType.FUNDING_SOURCE);
+			processObjectPool(project, "Goal", 				ObjectType.GOAL);
+			processObjectPool(project, "Indicator", 		ObjectType.INDICATOR);
+			processObjectPool(project, "Objective", 		ObjectType.OBJECTIVE);
+			processObjectPool(project, "ProjectMetaData", 	ObjectType.PROJECT_METADATA);
+			processObjectPool(project, "ProjectResource", 	ObjectType.PROJECT_RESOURCE);
+			processObjectPool(project, "RatingCriterion", 	ObjectType.RATING_CRITERION);
+			processObjectPool(project, "Task", 				ObjectType.TASK);
+			processObjectPool(project, "ValueOption", 		ObjectType.VALUE_OPTION);
+			processObjectPool(project, "ViewData", 			ObjectType.VIEW_DATA);
+			
+			System.out.print("</Mardis>");
 			
 		}
 		catch (Exception e)
@@ -60,45 +65,57 @@ public class TestBuildXMLDocument extends EAMTestCase
 
 	}
 
-	private void processObjectPool(Project project , int objectType) throws Exception
+	private void processObjectPool(Project project ,String elementName, int objectType) throws Exception
 	{
 			EAMObjectPool pool = project.getPool(objectType);
 			if (pool==null)
 			{
-				System.out.println("SKIPING POOL=:" + objectType);
-				return;
+				throw new Exception("POOL NOT FOUND:" + objectType);
 			}
 			
 			BaseId[] baseIds = pool.getIds();
 			for(int i = 0; i < baseIds.length; ++i)
 			{
 				EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
-				String[] tags = object.getFieldTags();
-				for(int tagIdx = 0; tagIdx < tags.length; ++tagIdx)
-				{
-					String sampleData = getSampleData(object, tags[tagIdx]);
-					System.out.println(sampleData);
-				}
+				
+				System.out.print("<"+elementName+  "  id=\"" + i + "\">");
+				processTags(object);
+				System.out.print("</"+elementName+">");
 			}
 	}
-	
-	
-	private String getSampleData(EAMBaseObject object, String tag)
+
+	private void processTags(EAMBaseObject object)
 	{
-		ObjectData field = object.getField(tag);
-		if(field instanceof IdListData)
+		String[] tags = object.getFieldTags();
+		for(int i = 0; i < tags.length; ++i)
 		{
-			IdList list = new IdList();
-			list.add(new BaseId(7));
-			return tag + ":" +  list.toString();
+			
+			System.out.print("<"+tags[i]+">");
+			ObjectData field = object.getField(tags[i]);
+			if (tags[i].endsWith("Ids"))
+				buildFieldIDListElements(field);
+			else
+				System.out.print(XmlUtilities.getXmlEncoded(field.get()));
+			
+			System.out.print("</"+tags[i]+">");
 		}
-		
-		if(field instanceof RatingData)
-		{
-			return tag + ":"  + field.get();
-		}
-		
-		return tag + ":" + field.get();
 	}
+
+	private void buildFieldIDListElements(ObjectData field)
+	{
+		try 
+		{
+			IdList idList = new IdList(field.get());
+			for (int i=0; i<idList.size(); ++i )
+			{
+				System.out.print("<ref idref=\"" + idList.get(i) + "\"/>");
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 }
 
