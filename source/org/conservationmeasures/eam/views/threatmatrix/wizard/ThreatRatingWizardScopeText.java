@@ -17,7 +17,7 @@ public class ThreatRatingWizardScopeText extends HtmlBuilder
 				tableCell(
 					heading("Rate the Scope of the Selected Threat") +
 					indent(paragraph("Using the scale shown on the right, rate the " + 
-							definition("Definition:Scope", "scope", "Scope is...") + 
+							definition("Definition:ThreatRatingScope", "scope", "Scope is...") + 
 							" of the threat on the target.  " +
 							"You can click on the blue triangle to record any comments or assumptions.") +
 							paragraph(bold("What is the scope of the threat on the target?")) +

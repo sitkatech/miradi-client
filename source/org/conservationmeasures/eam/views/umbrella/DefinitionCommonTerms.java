@@ -106,6 +106,7 @@ public class DefinitionCommonTerms
 			"spatially as the geographic scope of impact on the conservation target at the site " +
 			"that can reasonably be expected within ten years under current circumstances " +
 			"(i.e., given the continuation of the existing situation). ");
+		defs.put("Definition:ThreatRatingScope", def);
 		
 		def = new Definition("Vision", 
 			"Vision - A general summary of the desired state or " +
