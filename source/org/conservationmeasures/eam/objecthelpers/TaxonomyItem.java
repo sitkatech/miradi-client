@@ -12,7 +12,15 @@ public class TaxonomyItem
 	{
 		taxonomyCode = code;
 		taxonomyDescription = description;
-		isLeafFlag = code.indexOf(".")!=-1;
+		if (isNonSelectedItem())
+			isLeafFlag = true;
+		else
+			isLeafFlag = code.indexOf(".")!=-1;
+	}
+
+	private boolean isNonSelectedItem()
+	{
+		return taxonomyCode.length()==0;
 	}
 
 	public String getTaxonomyCode()
