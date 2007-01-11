@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objects;
 
 import java.io.File;
 
-import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
@@ -31,9 +30,9 @@ public class TestBuildXMLDocument extends EAMTestCase
 		try
 		{
 			File projectFile = new File(EAM.getHomeDirectory(),"exportedProject");
-			ProjectServer ps = new ProjectServer();
-			ps.open(projectFile);
-			Project project = new Project(ps);
+			Project project = new Project();
+			project.createOrOpen(projectFile);
+			
 			
 			processObjectPool(project, ObjectType.FACTOR);
 		}
@@ -48,7 +47,6 @@ public class TestBuildXMLDocument extends EAMTestCase
 	{
 			EAMObjectPool pool = project.getPool(objectType);
 			BaseId[] baseIds = pool.getIds();
-			System.out.println("HERE" + baseIds.length);
 			for(int i = 0; i < baseIds.length; ++i)
 			{
 				EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
