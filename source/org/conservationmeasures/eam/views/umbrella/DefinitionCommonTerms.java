@@ -101,6 +101,12 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Scope", def);
 		
 		
+		def = new Definition("ThreatRatingScope", 
+			"Scope (threat ratings) - A threat rating criterion that is most commonly defined " +
+			"spatially as the geographic scope of impact on the conservation target at the site " +
+			"that can reasonably be expected within ten years under current circumstances " +
+			"(i.e., given the continuation of the existing situation). ");
+		
 		def = new Definition("Vision", 
 			"Vision - A general summary of the desired state or " +
 			"ultimate condition of the project area that a project is working to achieve");
@@ -295,7 +301,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:TabDelimitedFile", def);
 		
 		
-		def = new Definition("FundintSources", "Funding Sources – The sources of money available to your project.");
+		def = new Definition("Funding Sources", "Funding Sources – The sources of money available to your project.");
 		defs.put("Definition:FundingSources", def);
 		
 		
