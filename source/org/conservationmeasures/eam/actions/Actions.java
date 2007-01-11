@@ -13,9 +13,9 @@ import java.util.Map;
 import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
@@ -53,6 +53,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
+import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleWizardWelcomeStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
@@ -224,6 +225,7 @@ public class Actions
 		registerAction(new ActionJumpAssignResources(mainWindow));
 		registerAction(new ActionJumpDevelopMonitoringMethodsAndTasks(mainWindow));
 		registerAction(new ActionJumpDevelopActivitiesAndTasks(mainWindow));
+		registerAction(new ActionJumpScheduleWizardWelcomeStep(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
