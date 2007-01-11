@@ -201,7 +201,10 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Resource", def);
 		
 		
-		def = new Definition("Overall Threat Rating", "The overall threat rating is...");
+		def = new Definition("Overall Threat Rating", 
+				"Overall Threat Rating - The rating of the effect of a direct threat on a specific target. " +
+				"The overall threat rating is calculated using a rule-based system to combine the scope, " +
+				"severity, and irreversibility criteria. ");
 		defs.put("Definition:OverallThreatRating", def);
 		
 
@@ -209,42 +212,75 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Irreversibility", def);
 		
 
-		def = new Definition("Severity", "Severity is...");
+		def = new Definition("Severity", 
+				"Severity - A threat rating criterion that is defined as " +
+				"the level of damage to the conservation target that can " +
+				"reasonably be expected within ten years under current " +
+				"circumstances (i.e., given the continuation of the existing situation). ");
 		defs.put("Definition:Severity", def);
 		
 
-		def = new Definition("Project", "A project is...");
+		def = new Definition("Project", 
+				"Project - Any set of actions undertaken by a group of people and/or " +
+				"organizations to achieve defined goals and objectives. " +
+				"Projects can range in scale from efforts by local people to protect a " +
+				"small sacred grove to efforts by a donor to protect an entire ocean. " +
+				"A project is the basic unit for a software file in Miradi.");
 		defs.put("Definition:Project", def);
 		
 		
-		def = new Definition("CMP", "The Conservation Measures Partnership (CMP) is...");
+		def = new Definition("CMP", 
+				"The Conservation Measures Partnership (CMP) - A consortium of some of " +
+				"the world's leading conservation organizations, CMP members work together " +
+				"to develop common standards and tools such as Miradi. More information " +
+				"is available at www.ConservationMeasures.org ");
 		defs.put("Definition:CMP", def);
 		
 
-		def = new Definition("OpenStandards", "The Open Standards are...");
+		def = new Definition("OpenStandards", 
+				"Open Standards for the Practice of Conservation - A series of best practices " +
+				"for designing, managing, monitoring, and learning from conservation projects. " +
+				"The basis for Miradi. You can download a copy of the Open Standards at www.ConservationMeasures.org");
 		defs.put("Definition:OpenStandards", def);
 
 		
-		def = new Definition("NewProject", "A New Project is...");
+		def = new Definition("NewProject", 
+				"New Project - A new project is equivalent to a new software file in Miradi. As a general rule, " +
+				"you should have one file for each project, although for certain large and complex projects, " +
+				"you may wish to have one file for each target or for other subdivisions. Miradi's default setting " +
+				"is to create a folder with the name of the project in the Miradi directory (in Windows, the default " +
+				"path is C:/Documents and Setting/User Name/Miradi).");
 		defs.put("Definition:NewProject", def);
 		
 
-		def = new Definition("ImportZip","A Zipped Project is...");
+		def = new Definition("ImportZip",
+				"Zipped Project - A project folder that has been compressed using the zip format. " +
+				"To share files with other Miradi users, you can use the file/export/project " +
+				"zip file menu command to create a zipped folder that can then be imported into " +
+				"Miradi. Note that Miradi will automatically zip and unzip the folders for you if " +
+				"you use the export and import commands. Miradi will also create zip files for project " +
+				"backups that are created during format migrations. ");
 		defs.put("Definition:ImportZip", def);
 
 		
-		def = new Definition("ImportCAP","A CAP Workbook is...");
+		def = new Definition("ImportCAP",
+				"TNC CAP Workbook - An Excel-based software program used by The Nature Conservancy. " +
+				"Miradi will currently import basic info from a CAP Workbook; in the future it will " +
+				"import the entire workbook contents.");
 		defs.put("Definition:ImportCAP", def);
+		
 		
 		def = new Definition("Budget", "Budget – A forward looking projection of the " +
 				"expenses and anticipated funding sources for the activities/methods and " +
 				"tasks you need to implement your strategic and monitoring plans.");
 		defs.put("Definition:Budget", def);
 
+		
 		def = new Definition("ActualExpenditures", "Actual Expenditures – A backwards looking " +
 				"report on the money you spent for the activities/methods and tasks you " +
 				"undertook to implement your strategic and monitoring plans.");
 		defs.put("Definition:ActualExpenditures", def);
+		
 		
 		def = new Definition("AccountingCodes", "Accounting Codes – A set of categories " +
 				"developed by an organization to categorize and track expenses.  " +
@@ -257,6 +293,7 @@ public class DefinitionCommonTerms
 				"spreadsheet programs will allow you to create a table and then export " +
 				"as a tab delimited file.");
 		defs.put("Definition:TabDelimitedFile", def);
+		
 		
 		def = new Definition("FundintSources", "Funding Sources – The sources of money available to your project.");
 		defs.put("Definition:FundingSources", def);
