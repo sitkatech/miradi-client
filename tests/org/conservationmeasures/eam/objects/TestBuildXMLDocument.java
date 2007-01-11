@@ -90,15 +90,15 @@ public class TestBuildXMLDocument extends EAMTestCase
 		{
 			IdList list = new IdList();
 			list.add(new BaseId(7));
-			return list.toString();
+			return "IdListData:" +  list.toString();
 		}
 		
 		if(field instanceof RatingData)
 		{
-			return "3";
+			return "RatingData:" + "3";
 		}
 		
-		return tag + tag;
+		return tag + ":" + field.get();
 	}
 }
 
