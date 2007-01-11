@@ -217,7 +217,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		{
 			TaxonomyItem taxonomyItem = (TaxonomyItem) ((UiComboBox)e.getSource()).getSelectedItem();
 			if (!taxonomyItem.isLeaf())
-				EAM.errorDialog("(" + EAM.text(taxonomyItem.getTaxonomyDescription() + ")\n Please choose a specific classification not a catagory"));
+				EAM.errorDialog("(" + EAM.text(taxonomyItem.getTaxonomyDescription() + ")\n Please choose a specific classification not a category"));
 		}
 	}
 	
