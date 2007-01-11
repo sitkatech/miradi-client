@@ -31,7 +31,11 @@ public class TestBuildXMLDocument extends EAMTestCase
 		try
 		{
 			File projectFile = new File(EAM.getHomeDirectory(),"exportedProject");
-			processObjectPool(projectFile, ObjectType.FACTOR);
+			ProjectServer ps = new ProjectServer();
+			ps.open(projectFile);
+			Project project = new Project(ps);
+			
+			processObjectPool(project, ObjectType.FACTOR);
 		}
 		catch (Exception e)
 		{
@@ -40,15 +44,8 @@ public class TestBuildXMLDocument extends EAMTestCase
 
 	}
 
-	private void processObjectPool(File projectFile, int objectType) throws Exception
+	private void processObjectPool(Project project , int objectType) throws Exception
 	{
-		
-		ProjectServer ps = new ProjectServer();
-		
-		try
-		{
-			ps.open(projectFile);
-			Project project = new Project(ps);
 			EAMObjectPool pool = project.getPool(objectType);
 			BaseId[] baseIds = pool.getIds();
 			System.out.println("HERE" + baseIds.length);
@@ -62,11 +59,6 @@ public class TestBuildXMLDocument extends EAMTestCase
 					System.out.println(sampleData);
 				}
 			}
-		}
-		finally
-		{
-			ps.close();
-		}
 	}
 	
 	
