@@ -11,7 +11,9 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
@@ -23,6 +25,7 @@ public class ThreatRatingWizardPanel extends WizardPanel
 	{
 		super(viewToUse.getMainWindow());
 		view = viewToUse;
+		actions = getMainWindow().getActions();
 		
 		OVERVIEW = addStep(new ThreatRatingWizardOverviewStep(this));
 		CHOOSE_BUNDLE = addStep(new ThreatRatingWizardChooseBundle(this));
@@ -69,6 +72,14 @@ public class ThreatRatingWizardPanel extends WizardPanel
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 	
+	public void previous() throws Exception
+	{
+		if (currentStep == OVERVIEW)
+			actions.get(ActionJumpReviewModelAndAdjust.class).doAction();
+			
+		super.previous();
+	}
+	
 	ThreatRatingFramework getFramework()
 	{
 		ThreatRatingFramework framework = getView().getProject().getThreatRatingFramework();
@@ -81,5 +92,6 @@ public class ThreatRatingWizardPanel extends WizardPanel
 	
 	ThreatMatrixView view;
 	ThreatRatingBundle selectedBundle;
+	Actions actions;
 }
 

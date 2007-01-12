@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleWizardWelcomeStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
@@ -160,6 +161,9 @@ public class JumpDoer extends MainWindowDoer
 		
 		if (jumpActionClass.equals(ActionJumpDevelopBudget.class))
 			return BudgetView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpReviewModelAndAdjust.class))
+			return DiagramView.getViewName();
 		
 		return null;
 	}

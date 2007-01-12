@@ -78,6 +78,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
+import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleWizardWelcomeStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
@@ -349,6 +350,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpScheduleWizardWelcomeStep.class);
 		addJumpDoerToMap(ActionJumpWorkPlanAssignResourcesStep.class);
 		addJumpDoerToMap(ActionJumpDevelopBudget.class);
+		addJumpDoerToMap(ActionJumpReviewModelAndAdjust.class);
 	}
 	
 	private void addJumpDoerToMap(Class actionClass)

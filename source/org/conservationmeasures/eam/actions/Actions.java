@@ -54,6 +54,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
+import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleWizardWelcomeStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
@@ -230,6 +231,7 @@ public class Actions
 		registerAction(new ActionJumpScheduleWizardWelcomeStep(mainWindow));
 		registerAction(new ActionJumpWorkPlanAssignResourcesStep(mainWindow));
 		registerAction(new ActionJumpDevelopBudget(mainWindow));
+		registerAction(new ActionJumpReviewModelAndAdjust(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

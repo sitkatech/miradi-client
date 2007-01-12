@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
@@ -85,6 +86,8 @@ public class DiagramWizardPanel extends WizardPanel
 			setStep(DEVELOP_OBJECTIVE);
 		else if (stepMarker.equals(ActionJumpIdentifyStrategies.class))
 			setStep(SELECT_CHAIN);
+		else if (stepMarker.equals(ActionJumpReviewModelAndAdjust.class))
+			setStep(REVIEW_AND_ADJUST);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
