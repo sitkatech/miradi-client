@@ -302,7 +302,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:TabDelimitedFile", def);
 		
 		
-		def = new Definition("Funding Sources", "Funding Sources – The sources of money available to your project.");
+		def = new Definition("Funding Sources", "Funding Sources - The sources of money available to your project.");
 		defs.put("Definition:FundingSources", def);
 		
 		
