@@ -6,16 +6,19 @@
 package org.conservationmeasures.eam.objects;
 
 import java.io.File;
+import java.io.PrintStream;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objectdata.ObjectData;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.EAMFileSaveChooser;
+import org.conservationmeasures.eam.utils.EAMXmlFileChooser;
 import org.martus.util.xml.XmlUtilities;
 
 public class TestBuildXMLDocument extends EAMTestCase
@@ -28,6 +31,12 @@ public class TestBuildXMLDocument extends EAMTestCase
 	public void testBuild() throws Exception
 	{
 		String projectName = "exportedProject";
+		
+		EAMFileSaveChooser eamFileChooser = new EAMXmlFileChooser(new MainWindow());
+		File chosen = eamFileChooser.displayChooser();
+		if (chosen==null) return;
+		System.setOut(new PrintStream(chosen));
+		
 		try
 		{
 			File projectFile = new File(EAM.getHomeDirectory(),projectName);
@@ -37,8 +46,9 @@ public class TestBuildXMLDocument extends EAMTestCase
 			//processObjectPool(project, "Fake",ObjectType.FAKE);
 			
 			writeXMLVersionLine();
-			
-			System.out.print("<Mardis" +  " project=\"" + projectName + "\">");
+			writeLineReturn();
+			writeStartElementWithNamedAttr("Miradi", "project", projectName);
+
 			
 			processObjectPool(project, AccountingCode.OBJECT_NAME, 	ObjectType.ACCOUNTING_CODE);
 			processObjectPool(project, Assignment.OBJECT_NAME, 		ObjectType.ASSIGNMENT);
@@ -56,7 +66,8 @@ public class TestBuildXMLDocument extends EAMTestCase
 			processObjectPool(project, "ValueOption", 		ObjectType.VALUE_OPTION);
 			processObjectPool(project, "ViewData", 			ObjectType.VIEW_DATA);
 			
-			writeEndELement("Mardis");
+			writeLineReturn();
+			writeEndELement("Miradi");
 			
 		}
 		catch (Exception e)
@@ -77,23 +88,34 @@ public class TestBuildXMLDocument extends EAMTestCase
 			for(int i = 0; i < baseIds.length; ++i)
 			{
 				EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
-				ORef oref = object.getRef();
-				writeStartELement(elementName, i, oref.getObjectType(), oref.getObjectId().asInt());
+				writeLineReturn();
+				writeStartELement(elementName, baseIds[i].asInt());
 				processTags(object);
+				writeLineReturn();
 				writeEndELement(elementName);
 			}
 	}
 
 	private void processTags(EAMBaseObject object)
 	{
+		
+		if (object.getType() == ObjectType.TASK)
+		{
+			BaseId parentRefId = ((Task)object).getParentRef().getObjectId();
+			if (parentRefId!=null)
+			{
+				int parentRef = parentRefId.asInt();
+				writeLineReturn();
+				writeLineTab();
+				writeParentRefElement(parentRef);
+			}
+		}
+			
 		String[] tags = object.getFieldTags();
 		for(int i = 0; i < tags.length; ++i)
 		{
-
-//			CreateObjectParameter cop = object.getCreationExtraInfo();
-//			if (cop != null)
-//				System.out.println(cop.toString());
-			
+			writeLineReturn();
+			writeLineTab();
 			writeStartELement(tags[i]);
 			
 			ObjectData field = object.getField(tags[i]);
@@ -104,9 +126,10 @@ public class TestBuildXMLDocument extends EAMTestCase
 			
 			writeEndELement(tags[i]);
 		}
+
 	}
 
-	
+
 	private void buildFieldIDListElements(ObjectData field)
 	{
 		try 
@@ -114,6 +137,9 @@ public class TestBuildXMLDocument extends EAMTestCase
 			IdList idList = new IdList(field.get());
 			for (int i=0; i<idList.size(); ++i )
 			{
+				writeLineReturn();
+				writeLineTab();
+				writeLineTab();
 				writeIDRefElement(idList.get(i).asInt());
 			}
 		}
@@ -126,33 +152,57 @@ public class TestBuildXMLDocument extends EAMTestCase
 	
 	private void writeStartELement(String name)
 	{
-		System.out.print("<"+name+">");
+		write("<"+name+">");
 	}
 	
-	private void writeStartELement(String name, int id, int objectType, int oref)
+	private void writeStartELement(String name, int id)
 	{
-		System.out.print("<"+name  +  "  id=\"" + id + "\"  oref=\"" + objectType + ":" + oref + "\">");
+		write("<"+name  +  "  id=\"" + id  + "\">");
 	}
 	
 	private void writeIDRefElement(int id)
 	{
-		System.out.print("<ref idref=\"" + id + "\"/>");
+		write("<ref idref=\"" + + id + "\"/>");
+	}
+	
+	private void writeParentRefElement(int id)
+	{
+		write("<parentref idref=\"" + + id + "\"/>");
 	}
 	
 	private void writeEndELement(String name)
 	{
-		System.out.print("</"+name+">");
+		write("</"+name+">");
 	}
 	
 	private void writeData(String text)
 	{
-		System.out.print(XmlUtilities.getXmlEncoded(text));
+		write(XmlUtilities.getXmlEncoded(text));
+	}
+	
+	private void writeStartElementWithNamedAttr(String name, String attrName, String attrValue)
+	{
+		write("<"+name  +  "  " + attrName + "=\"" + attrValue + "\">");
 	}
 	
 	private void writeXMLVersionLine()
 	{
-		System.out.print("<?xml version=\"1.0\" encoding=\"US-ASCII\"?>");
+		write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 	}
 	
+	private void write(String text)
+	{
+		System.out.print(text);
+	}
+	
+	private void writeLineReturn()
+	{
+		System.out.println();
+	}
+	
+	private void writeLineTab()
+	{
+		System.out.print("       ");
+	}
 }
 
