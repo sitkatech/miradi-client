@@ -30,15 +30,16 @@ public class TaxonomyItem
 
 	}
 	
-	public boolean isLeaf() {
-		if(isNonSelectedItem())
+	public boolean isLeaf() 
+	{
+		if(isEmptyItem())
 			return true;
 		if(taxonomyCode.indexOf(".") >= 0)
 			return true;
 		return false;
 	}
 
-	private boolean isNonSelectedItem()
+	private boolean isEmptyItem()
 	{
 		return taxonomyCode.length()==0;
 	}
@@ -46,6 +47,5 @@ public class TaxonomyItem
 	
 	String taxonomyCode;
 	String taxonomyDescription;
-	boolean isLeafFlag;
 	
 }
