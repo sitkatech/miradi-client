@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objectdata.ObjectData;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.Project;
@@ -92,11 +91,12 @@ public class TestBuildXMLDocument extends EAMTestCase
 			
 			writeStartELement(tags[i]);
 			
-			
+
 //			ORef oref = object.getRef();
 //			System.out.println(oref.getObjectType()); // need a translation method
 //			System.out.println(oref.getObjectId());
 			
+			object.getCreationExtraInfo();
 // ARE we getting everything what is in extra info 			
 			
 			ObjectData field = object.getField(tags[i]);
