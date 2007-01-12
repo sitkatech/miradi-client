@@ -13,7 +13,7 @@ public class DefinitionCommonTerms
     {
     	Hashtable defs = new Hashtable();
 		Definition def = new Definition("Goal", 
-			"Goal -- A formal statement detailing a desired impact of a project. " +
+			"Goal - A formal statement detailing a desired impact of a project. " +
 			"In conservation projects, it is the desired future status of a target." );
 		defs.put("Definition:Goal", def);
 		
@@ -70,7 +70,7 @@ public class DefinitionCommonTerms
 		
 
 		def = new Definition("Direct Threat", 
-			"Direct threat -- Proximate agents or factors that directly " +
+			"Direct threat - Proximate agents or factors that directly " +
 			"degrade conservation targets.");
 		defs.put("Definition:DirectThreat", def);
 			
@@ -277,25 +277,25 @@ public class DefinitionCommonTerms
 		defs.put("Definition:ImportCAP", def);
 		
 		
-		def = new Definition("Budget", "Budget – A forward looking projection of the " +
+		def = new Definition("Budget", "Budget - A forward looking projection of the " +
 				"expenses and anticipated funding sources for the activities/methods and " +
 				"tasks you need to implement your strategic and monitoring plans.");
 		defs.put("Definition:Budget", def);
 
 		
-		def = new Definition("ActualExpenditures", "Actual Expenditures – A backwards looking " +
+		def = new Definition("ActualExpenditures", "Actual Expenditures - A backwards looking " +
 				"report on the money you spent for the activities/methods and tasks you " +
 				"undertook to implement your strategic and monitoring plans.");
 		defs.put("Definition:ActualExpenditures", def);
 		
 		
-		def = new Definition("AccountingCodes", "Accounting Codes – A set of categories " +
+		def = new Definition("AccountingCodes", "Accounting Codes - A set of categories " +
 				"developed by an organization to categorize and track expenses.  " +
 				"They typically include hierarchical strings of numbers and/or " +
 				"letters (the code) along with a text description.");
 		defs.put("Definition:AccountingCodes", def);
 		
-		def = new Definition("TabDelimitedFile", "Tab Delimited File – A software file " +
+		def = new Definition("TabDelimitedFile", "Tab Delimited File - A software file " +
 				"with regular entries spaced by tab commands.  Most word processors or " +
 				"spreadsheet programs will allow you to create a table and then export " +
 				"as a tab delimited file.");
