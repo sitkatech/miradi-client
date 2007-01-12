@@ -12,15 +12,6 @@ public class TaxonomyItem
 	{
 		taxonomyCode = code;
 		taxonomyDescription = description;
-		if (isNonSelectedItem())
-			isLeafFlag = true;
-		else
-			isLeafFlag = code.indexOf(".")!=-1;
-	}
-
-	private boolean isNonSelectedItem()
-	{
-		return taxonomyCode.length()==0;
 	}
 
 	public String getTaxonomyCode()
@@ -40,8 +31,18 @@ public class TaxonomyItem
 	}
 	
 	public boolean isLeaf() {
-		return isLeafFlag;
+		if(isNonSelectedItem())
+			return true;
+		if(taxonomyCode.indexOf(".") >= 0)
+			return true;
+		return false;
 	}
+
+	private boolean isNonSelectedItem()
+	{
+		return taxonomyCode.length()==0;
+	}
+
 	
 	String taxonomyCode;
 	String taxonomyDescription;
