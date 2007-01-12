@@ -8,7 +8,9 @@ package org.conservationmeasures.eam.views.strategicplan.wizard;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -31,10 +33,8 @@ public class StrategicPlanWizardPanel extends WizardPanel
 	{
 		if (stepMarker.equals(ActionJumpViewAllGoals.class))
 			setStep(VIEW_ALL_GOALS);
-		
 		else if (stepMarker.equals(ActionJumpViewAllObjectives.class))
 			setStep(VIEW_ALL_OBJECTIVES);
-		
 		else if (stepMarker.equals(ActionJumpStratPlanWelcome.class))
 			setStep(HOW_TO_CONSTRUCT_STRAT_PLAN);
 		else
@@ -47,6 +47,8 @@ public class StrategicPlanWizardPanel extends WizardPanel
 			actions.get(ActionJumpDevelopTargetGoals.class).doAction();
 		if (currentStep == VIEW_ALL_OBJECTIVES)
 			actions.get(ActionJumpDevelopObjectives.class).doAction();
+		if (currentStep == HOW_TO_CONSTRUCT_STRAT_PLAN)
+			actions.get(ActionJumpThreatRatingWizardCheckTotals.class).doAction();
 		
 		super.previous();
 	}
@@ -57,6 +59,8 @@ public class StrategicPlanWizardPanel extends WizardPanel
 			actions.get(ActionJumpDevelopTargetGoals.class).doAction();
 		if (currentStep == VIEW_ALL_GOALS)
 			actions.get(ActionJumpDevelopObjectives.class).doAction();
+		if (currentStep == VIEW_ALL_OBJECTIVES)
+			actions.get(ActionJumpMonitoringOverview.class).doAction();
 		
 		super.next();
 	}

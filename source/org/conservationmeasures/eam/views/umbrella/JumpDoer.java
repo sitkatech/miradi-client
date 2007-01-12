@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleWizardWelcome
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
@@ -164,6 +165,9 @@ public class JumpDoer extends MainWindowDoer
 		
 		if (jumpActionClass.equals(ActionJumpReviewModelAndAdjust.class))
 			return DiagramView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpThreatRatingWizardCheckTotals.class))
+			return ThreatMatrixView.getViewName();
 		
 		return null;
 	}
