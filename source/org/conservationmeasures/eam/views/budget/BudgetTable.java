@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -34,7 +35,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class BudgetTable extends JTable implements ObjectPicker 
-{
+{	
 	public BudgetTable(Project projectToUse, AbstractBudgetTableModel modelToUse)
 	{
 		super(modelToUse);
@@ -150,6 +151,17 @@ public class BudgetTable extends JTable implements ObjectPicker
 			return;
 
 		editor.cancelCellEditing();
+	}
+	
+	public Component prepareEditor(TableCellEditor editor, int row, int column)
+	{
+		Component c = super.prepareEditor(editor, row, column);
+		if (c instanceof JTextComponent)
+		{
+			((JTextField)c).selectAll();
+		}
+
+		return c;
 	}
 
 	Project project;
