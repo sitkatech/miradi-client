@@ -12,10 +12,11 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objectdata.ObjectData;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.util.xml.XmlUtilities;
 
 public class TestBuildXMLDocument extends EAMTestCase
 {
@@ -92,11 +93,14 @@ public class TestBuildXMLDocument extends EAMTestCase
 			writeStartELement(tags[i]);
 			
 
-//			ORef oref = object.getRef();
-//			System.out.println(oref.getObjectType()); // need a translation method
-//			System.out.println(oref.getObjectId());
+			ORef oref = object.getRef();
+			System.out.println(oref.getObjectType()); // need a translation method
+			System.out.println(oref.getObjectId());
 			
-			object.getCreationExtraInfo();
+			CreateObjectParameter cop = object.getCreationExtraInfo();
+			if (cop != null)
+				System.out.println(cop.toString());
+			
 // ARE we getting everything what is in extra info 			
 			
 			ObjectData field = object.getField(tags[i]);
@@ -109,6 +113,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 		}
 	}
 
+	
 	private void buildFieldIDListElements(ObjectData field)
 	{
 		try 
@@ -129,32 +134,32 @@ public class TestBuildXMLDocument extends EAMTestCase
 	
 	private void writeStartELement(String name)
 	{
-		System.out.print("<"+name+">");
+		//System.out.print("<"+name+">");
 	}
 	
 	private void writeStartELementWithIDRef(String name, int id)
 	{
-		System.out.print("<"+name+  "  id=\"" + id + "\">");
+		//System.out.print("<"+name+  "  id=\"" + id + "\">");
 	}
 	
 	private void writeIDRefElement(int id)
 	{
-		System.out.print("<ref idref=\"" + id + "\"/>");
+		//System.out.print("<ref idref=\"" + id + "\"/>");
 	}
 	
 	private void writeEndELement(String name)
 	{
-		System.out.print("</"+name+">");
+		//System.out.print("</"+name+">");
 	}
 	
 	private void writeData(String text)
 	{
-		System.out.print(XmlUtilities.getXmlEncoded(text));
+		//System.out.print(XmlUtilities.getXmlEncoded(text));
 	}
 	
 	private void writeXMLVersionLine()
 	{
-		System.out.print("<?xml version=\"1.0\" encoding=\"US-ASCII\"?>");
+		//System.out.print("<?xml version=\"1.0\" encoding=\"US-ASCII\"?>");
 	}
 	
 }
