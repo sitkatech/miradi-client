@@ -12,11 +12,11 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objectdata.ObjectData;
-import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.Project;
+import org.martus.util.xml.XmlUtilities;
 
 public class TestBuildXMLDocument extends EAMTestCase
 {
@@ -77,8 +77,8 @@ public class TestBuildXMLDocument extends EAMTestCase
 			for(int i = 0; i < baseIds.length; ++i)
 			{
 				EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
-				
-				writeStartELementWithIDRef(elementName,i);
+				ORef oref = object.getRef();
+				writeStartELement(elementName, i, oref.getObjectType(), oref.getObjectId().asInt());
 				processTags(object);
 				writeEndELement(elementName);
 			}
@@ -89,19 +89,12 @@ public class TestBuildXMLDocument extends EAMTestCase
 		String[] tags = object.getFieldTags();
 		for(int i = 0; i < tags.length; ++i)
 		{
+
+//			CreateObjectParameter cop = object.getCreationExtraInfo();
+//			if (cop != null)
+//				System.out.println(cop.toString());
 			
 			writeStartELement(tags[i]);
-			
-
-			ORef oref = object.getRef();
-			System.out.println(oref.getObjectType()); // need a translation method
-			System.out.println(oref.getObjectId());
-			
-			CreateObjectParameter cop = object.getCreationExtraInfo();
-			if (cop != null)
-				System.out.println(cop.toString());
-			
-// ARE we getting everything what is in extra info 			
 			
 			ObjectData field = object.getField(tags[i]);
 			if (tags[i].endsWith("Ids"))
@@ -129,37 +122,36 @@ public class TestBuildXMLDocument extends EAMTestCase
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	
 	private void writeStartELement(String name)
 	{
-		//System.out.print("<"+name+">");
+		System.out.print("<"+name+">");
 	}
 	
-	private void writeStartELementWithIDRef(String name, int id)
+	private void writeStartELement(String name, int id, int objectType, int oref)
 	{
-		//System.out.print("<"+name+  "  id=\"" + id + "\">");
+		System.out.print("<"+name  +  "  id=\"" + id + "\"  oref=\"" + objectType + ":" + oref + "\">");
 	}
 	
 	private void writeIDRefElement(int id)
 	{
-		//System.out.print("<ref idref=\"" + id + "\"/>");
+		System.out.print("<ref idref=\"" + id + "\"/>");
 	}
 	
 	private void writeEndELement(String name)
 	{
-		//System.out.print("</"+name+">");
+		System.out.print("</"+name+">");
 	}
 	
 	private void writeData(String text)
 	{
-		//System.out.print(XmlUtilities.getXmlEncoded(text));
+		System.out.print(XmlUtilities.getXmlEncoded(text));
 	}
 	
 	private void writeXMLVersionLine()
 	{
-		//System.out.print("<?xml version=\"1.0\" encoding=\"US-ASCII\"?>");
+		System.out.print("<?xml version=\"1.0\" encoding=\"US-ASCII\"?>");
 	}
 	
 }
