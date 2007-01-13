@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTa
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleWizardWelcomeStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
@@ -39,6 +40,7 @@ import org.conservationmeasures.eam.utils.JumpLocation;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.diagram.wizard.ActionJumpEditAllStrategies;
 import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
@@ -138,6 +140,12 @@ public class JumpDoer extends MainWindowDoer
 			return DiagramView.getViewName();
 		
 		if (jumpActionClass.equals(ActionJumpIdentifyStrategies.class))
+			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpRankDraftStrategies.class))
+			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpEditAllStrategies.class))
 			return DiagramView.getViewName();
 		
 		if (jumpActionClass.equals(ActionJumpReviewModelAndAdjust.class))

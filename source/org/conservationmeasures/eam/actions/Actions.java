@@ -79,6 +79,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.diagram.wizard.ActionJumpEditAllStrategies;
 
 public class Actions
 {
@@ -236,6 +237,7 @@ public class Actions
 		registerAction(new ActionJumpReviewModelAndAdjust(mainWindow));
 		registerAction(new ActionJumpThreatRatingWizardCheckTotals(mainWindow));
 		registerAction(new ActionJumpLinkDirectThreatsToTargets(mainWindow));
+		registerAction(new ActionJumpEditAllStrategies(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

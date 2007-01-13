@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTa
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
@@ -55,8 +56,8 @@ public class DiagramWizardPanel extends WizardPanel
 		REVIEW_AND_ADJUST = addStep(new DiagramWizardReviewModelAndAdjustStep(this));
 		SELECT_CHAIN = addStep(new SelectChainStep(this));
 		addStep(new DevelopDraftStrategiesStep(this));
-		addStep(new RankDraftStrategiesStep(this));
-		addStep(new EditAllStrategiesStep(this));
+		RANK_DRAFT_STRATEGIES = addStep(new RankDraftStrategiesStep(this));
+		EDIT_ALL_STRATEGIES = addStep(new EditAllStrategiesStep(this));
 		DEVELOP_GOAL = addStep(new StrategicPlanDevelopGoalStep(this));
 		DEVELOP_OBJECTIVE = addStep(new StrategicPlanDevelopObjectivesStep(this));	
 		MONITORING_FOCUS = addStep(new MonitoringWizardFocusStep(this));
@@ -87,6 +88,10 @@ public class DiagramWizardPanel extends WizardPanel
 			setStep(LINK_DIRECT_THREATS);
 		else if(stepMarker.equals(ActionJumpCreateModel.class))
 			setStep(REVIEW_AND_ADJUST);
+		else if(stepMarker.equals(ActionJumpRankDraftStrategies.class))
+			setStep(RANK_DRAFT_STRATEGIES);
+		else if (stepMarker.equals(ActionJumpEditAllStrategies.class))
+			setStep(EDIT_ALL_STRATEGIES);
 		else if (stepMarker.equals(ActionJumpDevelopTargetGoals.class))
 			setStep(DEVELOP_GOAL);
 		else if (stepMarker.equals(ActionJumpDevelopObjectives.class))
@@ -109,6 +114,8 @@ public class DiagramWizardPanel extends WizardPanel
 			actions.get(ActionJumpStratPlanWelcome.class).doAction();
 		else if (currentStep == DEVELOP_OBJECTIVE)
 			actions.get(ActionJumpViewAllGoals.class).doAction();
+		else if(currentStep == SELECT_CHAIN)
+			actions.get(ActionJumpViewAllObjectives.class).doAction();
 		else if (currentStep == OVERVIEW)
 			 actions.get(ActionJumpSelectTeam.class).doAction();
 		 
@@ -119,6 +126,10 @@ public class DiagramWizardPanel extends WizardPanel
 	{
 		if(currentStep ==  LINK_DIRECT_THREATS)
 			actions.get(ActionJumpRankDirectThreats.class).doAction();
+		else if(currentStep == EDIT_ALL_STRATEGIES)
+			actions.get(ActionJumpMonitoringOverview.class).doAction();
+		else if(currentStep == REVIEW_AND_ADJUST)
+			actions.get(ActionJumpStratPlanWelcome.class).doAction();
 		else if (currentStep == DEVELOP_GOAL)
 			actions.get(ActionJumpViewAllGoals.class).doAction();
 		else if (currentStep == DEVELOP_OBJECTIVE)
@@ -140,6 +151,8 @@ public class DiagramWizardPanel extends WizardPanel
 	private int LINK_DIRECT_THREATS;
 	private int IDENTIFY_INDIRECT_THREATS;
 	private int SELECT_CHAIN;
+	private int RANK_DRAFT_STRATEGIES;
+	private int EDIT_ALL_STRATEGIES;
 	private int REVIEW_AND_ADJUST;
 
 	private int DEVELOP_GOAL;
