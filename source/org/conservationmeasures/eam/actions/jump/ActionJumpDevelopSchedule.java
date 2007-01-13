@@ -9,15 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpScheduleWizardWelcomeStep extends MainWindowAction
+public class ActionJumpDevelopSchedule extends MainWindowAction
 {
-	public ActionJumpScheduleWizardWelcomeStep(MainWindow mainWindowToUse)
+	public ActionJumpDevelopSchedule(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-	
-	static String getLabel()
+
+	private static String getLabel()
 	{
-		return EAM.text("View Schedule welcome wizard");
+		return EAM.text("Develop Gantt chart and/or calendar of project activities");
 	}
+
 }

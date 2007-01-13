@@ -5,14 +5,19 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
+import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetFutureDemo;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudget;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
@@ -25,7 +30,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
-import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleWizardWelcomeStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
@@ -193,12 +197,23 @@ public class JumpDoer extends MainWindowDoer
 		if (jumpActionClass.equals(ActionJumpWorkPlanAssignResourcesStep.class))
 			return WorkPlanView.getViewName();
 		
+		if (jumpActionClass.equals(ActionJumpDevelopActivitiesAndTasks.class))
+			return WorkPlanView.getViewName();
+
+		if (jumpActionClass.equals(ActionJumpDevelopMonitoringMethodsAndTasks.class))
+			return WorkPlanView.getViewName();
+
+		if (jumpActionClass.equals(ActionJumpAssignResources.class))
+			return WorkPlanView.getViewName();
+
 		
-		if (jumpActionClass.equals(ActionJumpDevelopBudget.class))
+		if (jumpActionClass.equals(ActionJumpDevelopBudgets.class))
+			return BudgetView.getViewName();
+		if(jumpActionClass.equals(ActionJumpBudgetFutureDemo.class))
 			return BudgetView.getViewName();
 
 		
-		if (jumpActionClass.equals(ActionJumpScheduleWizardWelcomeStep.class))
+		if (jumpActionClass.equals(ActionJumpDevelopSchedule.class))
 			return ScheduleView.getViewName();
 		
 		return null;

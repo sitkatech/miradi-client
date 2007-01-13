@@ -103,6 +103,11 @@ public class BudgetView extends TabbedView
 		resourceManagementPanel = null;
 	}
 	
+	public void jump(Class stepMarker) throws Exception
+	{
+		wizardPanel.jump(stepMarker);
+	}
+	
 	private void addBudgetDoersToMap()
 	{
 		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityDoer());
@@ -128,7 +133,8 @@ public class BudgetView extends TabbedView
 	
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new BudgetWizardPanel(getMainWindow());
+		wizardPanel = new BudgetWizardPanel(getMainWindow());
+		return wizardPanel;
 	}
 
 	public TaskTreeTablePanel getTaskTreeTablePanel()
@@ -145,6 +151,7 @@ public class BudgetView extends TabbedView
 		return htmlViewer;
 	}
 	
+	BudgetWizardPanel wizardPanel;
 	BudgetTreeTablePanel treeTableComponent;
 	BudgetPropertiesPanel budgetPropertiesPanel;
 	BudgetManagementPanel budgetManagmentPanel;

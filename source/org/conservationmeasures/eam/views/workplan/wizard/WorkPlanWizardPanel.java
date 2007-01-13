@@ -6,7 +6,10 @@
 package org.conservationmeasures.eam.views.workplan.wizard;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudget;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
@@ -23,9 +26,9 @@ public class WorkPlanWizardPanel extends WizardPanel
 		
 		WELCOME = addStep(new WorkPlanOverviewStep(this));
 		SELECT_METHOD = addStep(new MonitoringWizardSelectMethodsStep(this));
-		addStep(new WorkPlanDevelopActivitiesAndTasksStep(this));
-		addStep(new WorkPlanDevelopMethodsAndTasksStep(this));
-		addStep(new WorkPlanCreateResourcesStep(this));
+		DEVELOP_ACTIVITIES = addStep(new WorkPlanDevelopActivitiesAndTasksStep(this));
+		DEVELOP_METHODS = addStep(new WorkPlanDevelopMethodsAndTasksStep(this));
+		CREATE_RESOURCES = addStep(new WorkPlanCreateResourcesStep(this));
 		ASSIGN_RESOURCES = addStep(new WorkPlanAssignResourcesStep(this));
 		setStep(WELCOME);
 	}
@@ -35,7 +38,13 @@ public class WorkPlanWizardPanel extends WizardPanel
 	{
 		if (stepMarker.equals(ActionJumpSelectMethod.class))
 			setStep(SELECT_METHOD);
-		if (stepMarker.equals(ActionJumpWorkPlanAssignResourcesStep.class))
+		else if (stepMarker.equals(ActionJumpDevelopActivitiesAndTasks.class))
+			setStep(DEVELOP_ACTIVITIES);
+		else if (stepMarker.equals(ActionJumpDevelopMonitoringMethodsAndTasks.class))
+			setStep(DEVELOP_METHODS);
+		else if (stepMarker.equals(ActionJumpAssignResources.class))
+			setStep(CREATE_RESOURCES);
+		else if (stepMarker.equals(ActionJumpWorkPlanAssignResourcesStep.class))
 			setStep(ASSIGN_RESOURCES);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
@@ -44,7 +53,7 @@ public class WorkPlanWizardPanel extends WizardPanel
 	public void next() throws Exception
 	{
 		if (currentStep == ASSIGN_RESOURCES)
-			actions.get(ActionJumpDevelopBudget.class).doAction();
+			actions.get(ActionJumpDevelopBudgets.class).doAction();
 		
 		super.next();
 	}
@@ -61,5 +70,8 @@ public class WorkPlanWizardPanel extends WizardPanel
 	
 	int WELCOME;
 	int SELECT_METHOD;
+	int DEVELOP_ACTIVITIES;
+	int DEVELOP_METHODS;
+	int CREATE_RESOURCES;
 	int ASSIGN_RESOURCES;
 }

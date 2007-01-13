@@ -56,9 +56,9 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
@@ -72,7 +72,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivities;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
@@ -97,6 +97,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.ResourceImageIcon;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -400,11 +401,12 @@ public class MainMenuBar extends JMenuBar
 
 		JMenu menu4a = new JMenu("4A. Develop detailed short-term work plan");
 		menu4a.setMnemonic(KeyEvent.VK_D);
+		menu4a.setIcon(new ResourceImageIcon("icons/blankicon.png"));
 		
 		addMenuItem(actions, menu4a, ActionJumpDevelopActivitiesAndTasks.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu4a, ActionJumpDevelopMonitoringMethodsAndTasks.class, KeyEvent.VK_M);
 		addMenuItem(actions, menu4a, ActionJumpAssignResources.class, KeyEvent.VK_T);
-		addMenuItem(actions, menu4a, ActionJumpDevelopActivities.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu4a, ActionJumpDevelopSchedule.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu4a, ActionJumpDevelopBudgets.class, KeyEvent.VK_D);
 
 		menu4.add(menu4a);
