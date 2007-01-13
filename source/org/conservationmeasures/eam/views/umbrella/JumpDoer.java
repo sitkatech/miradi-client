@@ -6,9 +6,11 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudget;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
@@ -19,7 +21,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTargets;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
@@ -136,7 +137,7 @@ public class JumpDoer extends MainWindowDoer
 		if (jumpActionClass.equals(ActionJumpDevelopObjectives.class))
 			return DiagramView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpMonitoringFocus.class))
+		if (jumpActionClass.equals(ActionJumpDetermineNeeds.class))
 			return DiagramView.getViewName();
 		
 		if (jumpActionClass.equals(ActionJumpIdentifyStrategies.class))
@@ -155,6 +156,9 @@ public class JumpDoer extends MainWindowDoer
 			return DiagramView.getViewName();
 		
 		if(jumpActionClass.equals(ActionJumpCreateModel.class))
+			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpDefineIndicators.class))
 			return DiagramView.getViewName();
 		
 		

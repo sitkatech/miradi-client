@@ -48,7 +48,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTargets;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
@@ -224,7 +223,6 @@ public class Actions
 		registerAction(new ActionJumpViewAllGoals(mainWindow));
 		registerAction(new ActionJumpViewAllObjectives(mainWindow));
 		registerAction(new ActionJumpStratPlanWelcome(mainWindow));
-		registerAction(new ActionJumpMonitoringFocus(mainWindow));
 		registerAction(new ActionJumpEditIndicators(mainWindow));
 		registerAction(new ActionJumpMonitoringOverview(mainWindow));
 		registerAction(new ActionJumpSelectMethod(mainWindow));

@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.views.monitoring.wizard;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -50,7 +50,7 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 	public void next() throws Exception
 	{
 		if(currentStep == OVERVIEW)
-			actions.get(ActionJumpMonitoringFocus.class).doAction();
+			actions.get(ActionJumpDetermineNeeds.class).doAction();
 		else if(currentStep == EDIT_INDICATORS)
 			actions.get(ActionJumpSelectMethod.class).doAction();
 		

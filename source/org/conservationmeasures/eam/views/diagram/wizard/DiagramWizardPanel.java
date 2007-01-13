@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
@@ -19,7 +20,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTargets;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
@@ -70,7 +70,7 @@ public class DiagramWizardPanel extends WizardPanel
 	{
 		if(stepMarker.equals(ActionJumpDefineIndicators.class))
 			setStep(DEFINE_INDICATOR);
-		else if(stepMarker.equals(ActionJumpMonitoringFocus.class))
+		else if(stepMarker.equals(ActionJumpDetermineNeeds.class))
 			setStep(MONITORING_FOCUS);
 		else if(stepMarker.equals(ActionJumpDefineScope.class))
 			setStep(PROJECT_SCOPE);
