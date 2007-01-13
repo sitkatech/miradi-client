@@ -12,9 +12,9 @@
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
+import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
-import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotals;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -79,7 +79,7 @@ public class ThreatRatingWizardPanel extends WizardPanel
 	public void next() throws Exception
 	{
 		if (currentStep == CHECK_TOTALS)
-			actions.get(ActionJumpStratPlanWelcome.class).doAction();
+			actions.get(ActionJumpIdentifyContributingFactors.class).doAction();
 		
 		super.next();
 	}
@@ -87,7 +87,7 @@ public class ThreatRatingWizardPanel extends WizardPanel
 	public void previous() throws Exception
 	{
 		if (currentStep == OVERVIEW)
-			actions.get(ActionJumpReviewModelAndAdjust.class).doAction();
+			actions.get(ActionJumpLinkDirectThreatsToTargets.class).doAction();
 			
 		super.previous();
 	}

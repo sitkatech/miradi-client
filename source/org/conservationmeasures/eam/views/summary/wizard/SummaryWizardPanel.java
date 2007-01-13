@@ -7,6 +7,9 @@ package org.conservationmeasures.eam.views.summary.wizard;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
@@ -30,6 +33,12 @@ public class SummaryWizardPanel extends WizardPanel
 	public void jump(Class stepMarker) throws Exception
 	{ 
 		if(stepMarker.equals(ActionJumpSelectTeam.class))
+			setStep(TEAM_MEMBERS);
+		else if(stepMarker.equals(ActionJumpDesignateLeader.class))
+			setStep(PROJECT_LEADER);
+		else if(stepMarker.equals(ActionJumpDefineScope.class))
+			setStep(PROJECT_SCOPE);
+		else if(stepMarker.equals(ActionJumpEstablishVision.class))
 			setStep(PROJECT_VISION);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);

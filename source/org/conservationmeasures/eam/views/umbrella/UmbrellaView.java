@@ -71,6 +71,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
@@ -294,6 +295,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpDescribeTargets.class);
 		
 		addJumpDoerToMap(ActionJumpIdentifyDirectThreats.class);
+		addJumpDoerToMap(ActionJumpLinkDirectThreatsToTargets.class);
 		addJumpDoerToMap(ActionJumpRankDirectThreats.class);
 		addJumpDoerToMap(ActionJumpIdentifyContributingFactors.class);
 		addJumpDoerToMap(ActionJumpAssessStakeholders.class);

@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudget;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
@@ -16,6 +18,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingF
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringFocus;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
@@ -100,13 +103,23 @@ public class JumpDoer extends MainWindowDoer
 	
 	String getViewForAction(Class jumpActionClass)
 	{
+		if(jumpActionClass.equals(ActionJumpSelectTeam.class))
+			return SummaryView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpDesignateLeader.class))
+			return SummaryView.getViewName();
+		
 		if(jumpActionClass.equals(ActionJumpDefineScope.class))
-			return DiagramView.getViewName();
+			return SummaryView.getViewName();
 
 		if(jumpActionClass.equals(ActionJumpEstablishVision.class))
-			return DiagramView.getViewName();
+			return SummaryView.getViewName();
+		
 		
 		if(jumpActionClass.equals(ActionJumpIdentifyTargets.class))
+			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpDescribeTargets.class))
 			return DiagramView.getViewName();
 		
 		if(jumpActionClass.equals(ActionJumpIdentifyDirectThreats.class))
@@ -115,23 +128,38 @@ public class JumpDoer extends MainWindowDoer
 		if(jumpActionClass.equals(ActionJumpIdentifyContributingFactors.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpCreateModel.class))
-			return DiagramView.getViewName();
-		
-		if(jumpActionClass.equals(ActionJumpRankDirectThreats.class))
-			return ThreatMatrixView.getViewName();
-		
-		if(jumpActionClass.equals(ActionJumpSelectTeam.class))
-			return SummaryView.getViewName();
-		
 		if (jumpActionClass.equals(ActionJumpDevelopTargetGoals.class))
 			return DiagramView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpViewAllGoals.class))
-			return StrategicPlanView.getViewName();
-		
 		if (jumpActionClass.equals(ActionJumpDevelopObjectives.class))
 			return DiagramView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpMonitoringFocus.class))
+			return DiagramView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpIdentifyStrategies.class))
+			return DiagramView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpReviewModelAndAdjust.class))
+			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpLinkDirectThreatsToTargets.class))
+			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpCreateModel.class))
+			return DiagramView.getViewName();
+		
+		
+
+		if(jumpActionClass.equals(ActionJumpRankDirectThreats.class))
+			return ThreatMatrixView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpThreatRatingWizardCheckTotals.class))
+			return ThreatMatrixView.getViewName();
+		
+
+		if (jumpActionClass.equals(ActionJumpViewAllGoals.class))
+			return StrategicPlanView.getViewName();
 		
 		if (jumpActionClass.equals(ActionJumpViewAllObjectives.class))
 			return StrategicPlanView.getViewName();
@@ -139,35 +167,27 @@ public class JumpDoer extends MainWindowDoer
 		if (jumpActionClass.equals(ActionJumpStratPlanWelcome.class))
 			return StrategicPlanView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpMonitoringFocus.class))
-			return DiagramView.getViewName();
-		
+
 		if (jumpActionClass.equals(ActionJumpEditIndicators.class))
 			return MonitoringView.getViewName();
 		
 		if (jumpActionClass.equals(ActionJumpMonitoringOverview.class))
 			return MonitoringView.getViewName();
 		
+		
 		if (jumpActionClass.equals(ActionJumpSelectMethod.class))
 			return WorkPlanView.getViewName();
-		
-		if (jumpActionClass.equals(ActionJumpIdentifyStrategies.class))
-			return DiagramView.getViewName();
-		
-		if (jumpActionClass.equals(ActionJumpScheduleWizardWelcomeStep.class))
-			return ScheduleView.getViewName();
 		
 		if (jumpActionClass.equals(ActionJumpWorkPlanAssignResourcesStep.class))
 			return WorkPlanView.getViewName();
 		
+		
 		if (jumpActionClass.equals(ActionJumpDevelopBudget.class))
 			return BudgetView.getViewName();
+
 		
-		if (jumpActionClass.equals(ActionJumpReviewModelAndAdjust.class))
-			return DiagramView.getViewName();
-		
-		if (jumpActionClass.equals(ActionJumpThreatRatingWizardCheckTotals.class))
-			return ThreatMatrixView.getViewName();
+		if (jumpActionClass.equals(ActionJumpScheduleWizardWelcomeStep.class))
+			return ScheduleView.getViewName();
 		
 		return null;
 	}
