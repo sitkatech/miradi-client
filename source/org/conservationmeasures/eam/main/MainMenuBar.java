@@ -120,10 +120,10 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionNewProject.class, KeyEvent.VK_N);
 		addMenuItem(actions, menu, ActionProjectSaveAs.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionSaveImage.class, KeyEvent.VK_J);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
 		menu.addSeparator();
-		addMenuItem(actions, menu, ActionSaveImage.class, KeyEvent.VK_J);
 		menu.add(createExportSetupMenu());
 		menu.add(createExportMenu(actions));
 		menu.add(createImportMenu(actions));
