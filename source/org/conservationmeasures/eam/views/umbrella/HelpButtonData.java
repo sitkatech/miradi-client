@@ -35,6 +35,10 @@ public class HelpButtonData
 	public static final String COMING_ATTRACTIONS_HTML = "ComingAttractions.html";
 	public static final String CREDITS = "Credits";
 	public static final String CREDITS_HTML = "Credits.html";
+	public static final String ABOUT_BENETECH = "About Benetech";
+	public static final String ABOUT_BENETECH_HTML = "AboutBenetech.html";
+	public static final String ABOUT_CMP = "About the CMP";
+	public static final String ABOUT_CMP_HTML = "AboutCMP.html";
 	public static final String AGILE_SOFTWARE = "Agile Software";
 	public static final String AGILE_SOFTWARE_HTML = "AgileSoftware.html";
 	public static final String CMP_STANDARDS = "CMP Standards";

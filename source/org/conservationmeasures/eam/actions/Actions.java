@@ -86,6 +86,8 @@ public class Actions
 		actions = new HashMap();
 		
 		registerAction(new ActionAbout(mainWindow));
+		registerAction(new ActionAboutBenetech(mainWindow));
+		registerAction(new ActionAboutCMP(mainWindow));
 		registerAction(new ActionHelpComingAttractions(mainWindow));
 		registerAction(new ActionHelpAdaptiveManagement(mainWindow));
 		registerAction(new ActionHelpAgileSoftware(mainWindow));

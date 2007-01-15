@@ -18,6 +18,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
+import org.conservationmeasures.eam.actions.ActionAboutBenetech;
+import org.conservationmeasures.eam.actions.ActionAboutCMP;
 import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionConfigureExport;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
@@ -259,6 +261,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private void addUmbrellaDoersToMap()
 	{
 		addDoerToMap(ActionAbout.class, new AboutDoer());
+		addDoerToMap(ActionAboutBenetech.class, new HelpButtonDoer());
+		addDoerToMap(ActionAboutCMP.class, new HelpButtonDoer());
 		addDoerToMap(ActionHelpComingAttractions.class, new HelpButtonDoer());
 		addDoerToMap(ActionHelpAdaptiveManagement.class, new HelpButtonDoer());
 		addDoerToMap(ActionHelpAgileSoftware.class, new HelpButtonDoer());

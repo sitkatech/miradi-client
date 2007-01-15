@@ -14,14 +14,15 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
+import org.conservationmeasures.eam.actions.ActionAboutBenetech;
+import org.conservationmeasures.eam.actions.ActionAboutCMP;
 import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionConfigureExport;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
-import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
-import org.conservationmeasures.eam.actions.ActionReportsDemo;
+import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
@@ -47,6 +48,7 @@ import org.conservationmeasures.eam.actions.ActionPreferences;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
 import org.conservationmeasures.eam.actions.ActionRedo;
+import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
@@ -184,7 +186,7 @@ public class MainMenuBar extends JMenuBar
 		
 		addMenuItem(actions, menu, ActionDelete.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_H);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_P);
 		return menu;
@@ -398,7 +400,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
 		menu.setMnemonic(KeyEvent.VK_H);
 		
-		JMenuItem item  = addMenuItem(actions, menu, ActionHelpButtonMoreInfo.class, KeyEvent.VK_M);
+		JMenuItem item  = addMenuItem(actions, menu, ActionHelpButtonMoreInfo.class, KeyEvent.VK_I);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 		
@@ -412,12 +414,12 @@ public class MainMenuBar extends JMenuBar
 				
 		menu.addSeparator();
 		
-		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_C);
+		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_O);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class,HelpButtonData.CMP_STANDARDS, HelpButtonData.CMP_STANDARDS_HTML));
 
 
-		item  = addMenuItem(actions, menu, ActionHelpAdaptiveManagement.class, KeyEvent.VK_A);
+		item  = addMenuItem(actions, menu, ActionHelpAdaptiveManagement.class, KeyEvent.VK_M);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class,HelpButtonData.ADAPTIVE_MANAGEMENT, HelpButtonData.ADAPTIVE_MANAGEMENT_HTML));
 
@@ -428,14 +430,24 @@ public class MainMenuBar extends JMenuBar
 
 		menu.addSeparator();
 		
-		item  = addMenuItem(actions, menu, ActionHelpComingAttractions.class, KeyEvent.VK_C);
+		item  = addMenuItem(actions, menu, ActionHelpComingAttractions.class, KeyEvent.VK_T);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class, HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
 
 		
-		item  = addMenuItem(actions, menu, ActionHelpCredits.class, KeyEvent.VK_C);
+		item  = addMenuItem(actions, menu, ActionHelpCredits.class, KeyEvent.VK_R);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(UmbrellaView.class,HelpButtonData.CREDITS, HelpButtonData.CREDITS_HTML));
+		
+		item  = addMenuItem(actions, menu, ActionAboutBenetech.class, KeyEvent.VK_B);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class,HelpButtonData.ABOUT_BENETECH, HelpButtonData.ABOUT_BENETECH_HTML));
+
+		item  = addMenuItem(actions, menu, ActionAboutCMP.class, KeyEvent.VK_C);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class,HelpButtonData.ABOUT_CMP, HelpButtonData.ABOUT_CMP_HTML));
+
+		menu.addSeparator();
 		
 		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
 		
