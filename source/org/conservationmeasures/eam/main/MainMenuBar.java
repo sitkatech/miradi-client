@@ -75,12 +75,12 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
@@ -161,48 +161,11 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionImportZippedProjectFile.class, KeyEvent.VK_P);
 		addMenuItem(actions, menu, ActionImportTncCapWorkbook.class, KeyEvent.VK_C);
 		
-		menu.add(createImportProjectSubmenu());
-		menu.add(createImportMapSubmenu());
-		menu.add(createImportDiagramSubmenu());
-		menu.add(createImportWorkplanSubmenu());
+		JMenuItem item = addMenuItem(actions, menu, ActionDemo.class, KeyEvent.VK_D);
+		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
+
 		return menu;
-	}
-	
-	private JMenu createImportProjectSubmenu()
-	{
-		JMenu menu = new JMenu("Conservation Project");
-		menu.setMnemonic(KeyEvent.VK_C);
-		
-		addDisabledMenuItem(menu, "TNC CAP Workbook");
-		return menu;
-	}
-	
-	private JMenu createImportMapSubmenu()
-	{
-		JMenu menu = new JMenu("Maps");
-		menu.setMnemonic(KeyEvent.VK_M);
-		
-		addDisabledMenuItem(menu, "ARC Shape Files");
-		return menu;
-	}
-	
-	private JMenu createImportDiagramSubmenu()
-	{
-		JMenu menu = new JMenu("Diagrams");
-		menu.setMnemonic(KeyEvent.VK_D);
-		
-		addDisabledMenuItem(menu, "MS Visio");
-		return menu;
-	}
-	
-	private JMenu createImportWorkplanSubmenu()
-	{
-		JMenu menu = new JMenu("Workplans");
-		menu.setMnemonic(KeyEvent.VK_W);
-		
-		addDisabledMenuItem(menu, "MS Project");
-		return menu;
-	}
+	}	
 	
 	private JMenu createEditMenu(Actions actions)
 	{
@@ -495,13 +458,4 @@ public class MainMenuBar extends JMenuBar
 		centeredLocationAction.setMnemonic(mnemonic);
 		return centeredLocationAction;
 	}
-	
-	
-	private void addDisabledMenuItem(JMenu menu, String name)
-	{
-		JMenuItem label = new JMenuItem(name);
-		label.setEnabled(false);
-		menu.add(label);
-	}
-	
 }
