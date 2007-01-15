@@ -56,7 +56,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 		JButton close = new JButton(new CloseAction(dlg));
 
 		JPanel panel = new JPanel(new GridLayoutPlus(0,1));
-		bodyComponent.setFixedWidth(bodyComponent,bodyComponent.getPreferredSize().width);
+		bodyComponent.setFixedWidth(bodyComponent,750);
 		
 		String columnZeroRowZero = "0, 0";
 		panel.add(bodyComponent, columnZeroRowZero);
