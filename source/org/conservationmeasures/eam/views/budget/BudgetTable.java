@@ -50,7 +50,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 	{
 		//TODO budget code - remove commented code
 		//Task selectedTask = (Task)project.findObject(ObjectType.TASK, taskId);
-		//rebuild();
+		rebuild();
 	}
 	
 	private void rebuild()
