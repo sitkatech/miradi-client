@@ -8,15 +8,15 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionDemoAndDatabases extends MainWindowAction
+public class ActionReportsDemo extends MainWindowAction
 {
-	public ActionDemoAndDatabases(MainWindow mainWindow)
+	public ActionReportsDemo(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Demo and Databases");
+		return EAM.text("Action|Reports - demo");
 	}
 }

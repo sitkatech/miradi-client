@@ -17,12 +17,12 @@ public class ActionExportZippedProjectFile extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Miradi Zip File and Reports");
+		return EAM.text("Action|Miradi Zip File");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Miradi Zip File and Reports");
+		return EAM.text("TT|Miradi Zip File");
 	}
 
 }

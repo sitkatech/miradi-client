@@ -20,8 +20,8 @@ import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
-import org.conservationmeasures.eam.actions.ActionDemo;
-import org.conservationmeasures.eam.actions.ActionDemoAndDatabases;
+import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
+import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
@@ -144,10 +144,10 @@ public class MainMenuBar extends JMenuBar
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
 		
-		JMenuItem item = addMenuItem(actions, menu,ActionDemoAndDatabases.class, KeyEvent.VK_D);
+		JMenuItem item = addMenuItem(actions, menu,ActionReportsDemo.class, KeyEvent.VK_D);
 		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO_AND_DATABASES, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 
-		item = addMenuItem(actions, menu, ActionDemo.class, KeyEvent.VK_D);
+		item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
 		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 		
 		return menu;
@@ -161,7 +161,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionImportZippedProjectFile.class, KeyEvent.VK_P);
 		addMenuItem(actions, menu, ActionImportTncCapWorkbook.class, KeyEvent.VK_C);
 		
-		JMenuItem item = addMenuItem(actions, menu, ActionDemo.class, KeyEvent.VK_D);
+		JMenuItem item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
 		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 
 		return menu;
