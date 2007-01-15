@@ -10,11 +10,8 @@ import java.text.DecimalFormat;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.AccountingCodeId;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FundingSourceId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -423,7 +420,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		try
 		{
 			ProjectResource projectResource = (ProjectResource)value;
-			ProjectResourceId resourceId = (ProjectResourceId)(projectResource).getId();
+			BaseId resourceId = projectResource.getId();
 			
 			BaseId  assignmentId = getAssignmentForRow(row);
 			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId.toString());
@@ -441,7 +438,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		try
 		{
 			FundingSource fSource = (FundingSource)value;
-			FundingSourceId fSourceId = (FundingSourceId)(fSource).getId();
+			BaseId fSourceId = fSource.getId();
 			
 			BaseId  assignmentId = getAssignmentForRow(row);
 			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE, fSourceId.toString());
@@ -458,7 +455,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		try
 		{
 			AccountingCode aCode = (AccountingCode)value;
-			AccountingCodeId aCodeId = (AccountingCodeId)(aCode).getId();
+			BaseId aCodeId = aCode.getId();
 			
 			BaseId  assignmentId = getAssignmentForRow(row);
 			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE, aCodeId.toString());
