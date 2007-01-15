@@ -100,52 +100,40 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 		
 		JDialog dlg;
 	}
-
-	public static final String mainAboutText = 
-		"<p>" +
-		"Copyright 2005-2007, The Conservation Measures Partnership (CMP, at www.conservationmeasures.org) " +
-		"and Beneficent Technology, Inc. (Benetech, at www.benetech.org)" +
-		"</p>" +
-
-		"<p align='left'>" +
-		"This software program is being developed to assist conservation practitioners " +
-		"to go through the adaptive management process outlined in the CMP's Open Standards " +
-		"for the Practice of Conservation. " +
-		"To obtain a copy of the latest version of these standards, " +
-		"go to <a href='www.conservationmeasures.org'>www.conservationmeasures.org</a>. " +
-		"You can also find more information about this software program " +
-		"at:" +
-		"</p>" +
-		"<p align='center'>" +
-		"<a href='http://miradi.org'>miradi.org</a>" +
-		"</p>" +
-		"<p align='left'>" +
-		"If you have questions or suggestions, " +
-		"please contact Nick Salafsky at Nick@FOSonline.org or at 1-301-263-2784. " +
-		"</p>" +
-		"<p>NOT FOR RELEASE OR REDISTRIBUTION</p>" +
-		"<b>VERSION " + VersionConstants.VERSION_STRING +
-		"</p>";
-
-	public static final String licenseText = 
-		"<p align='left'>"  +
-		"This pre-release version is intended for evaluation and feedback only. " +
-		"Please send suggestions and other feedback to e-AM@conservationmeasures.org. " +
-		"You are not allowed to redistribute this program without the express written " +
-		"permission of The CMP or Benetech." + 
-		"</p>" ;
-
+	
 	static final String aboutText = 
-		"<html><table><tr><td align='center' valign='top'>" +
-		"<h1>Miradi</h1>" +
-		"<h2>Adaptive Management for Conservation Projects</h2>" +
-		"<font face='Arial'>" +
-		mainAboutText + 
-		licenseText + 
-		"</font>" + 
-		"</td></tr>" +
-		"</table></html>";
-
+			"<FONT face=Tahoma size=6><STRONG>" +
+			"<IMG src=\"images/miradi64.png\" height=64 width=64>Miradi</STRONG>" + 
+			"</FONT>" +
+			"<FONT size=2>TM</FONT>" +
+			"<BR>" +
+			"<FONT face=Tahoma size=4>" +
+			"<STRONG>Adaptive Management Software for Conservation Projects</STRONG>" +
+			"</FONT>&nbsp;" +
+			"<FONT size=4>" +
+			"<P>(c) Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York on" + 
+			"behalf of the Conservation Measures Partnership (\"CMP\") and Beneficent " +
+			"Technology, Inc. (\"Benetech\"), Palo Alto, California.</P>" +
+			"<p>VERSION " + VersionConstants.VERSION_STRING +"</p>" +
+			"<P>NOT FOR REDISTRIBUTION<BR>This pre-release version is intended for evaluation" + 
+			"and feedback only. Please send suggestions and other feedback to " +
+			"<A href=\"mailto:feedback@miradi.org\">feedback@miradi.org</A>. You are not allowed" + 
+			"to redistribute this program without the express written permission of the CMP " +
+			"(<A href=\"http://www.conservationmeasures.org\">www.conservationmeasures.org</A>)" +
+			"&nbsp;or Benetech (<A href=\"http://www.benetech.org\">www.benetech.org</A>). You can also " +
+			"find more information about this software program at: " +
+			"<A href=\"http://www.miradi.org\">www.miradi.org</A>.</P>" +
+			"<P>This software program is being developed to assist conservation practitioners" + 
+			"to go through the adaptive management process outlined in the CMP's <EM>Open " +
+			"Standards for the Practice of Conservation</EM>.&nbsp;To obtain a copy of the " +
+			"latest version of these standards, go to " +
+			"</font>" +
+			"<A href=\"www.conservationmeasures.org\">" +
+			"<U><FONT color=#0000ff>www.conservationmeasures.org</U></FONT>" + 
+			"</A>" +
+			".&nbsp;&nbsp; </P>" +
+			"<P>&nbsp;</P>";
+	
 	public void buttonPressed(String buttonName)
 	{
 	}
