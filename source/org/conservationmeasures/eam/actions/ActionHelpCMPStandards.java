@@ -17,7 +17,7 @@ public class ActionHelpCMPStandards extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|CMP Standards");
+		return EAM.text("Action|CMP Open Standards");
 	}
 
 }
