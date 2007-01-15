@@ -34,7 +34,7 @@ public class AccountingCode extends EAMBaseObject
 	{
 		String result = getLabel();
 		if(result.length() > 0)
-			return result;
+			return combineShortLabelAndLabel(code.get(), result);
 		return EAM.text("Label|(Undefined Accounting Code)");
 	}
 	
