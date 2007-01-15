@@ -12,7 +12,7 @@ public class ActionAbout extends MainWindowAction
 {
 	public ActionAbout(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "images/miradi16.png");
 	}
 
 	private static String getLabel()
