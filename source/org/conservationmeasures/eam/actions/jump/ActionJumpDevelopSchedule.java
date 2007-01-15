@@ -18,7 +18,7 @@ public class ActionJumpDevelopSchedule extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Develop Gantt chart and/or calendar of project activities");
+		return EAM.text("Develop project schedule");
 	}
 
 }
