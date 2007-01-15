@@ -15,6 +15,7 @@ import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
+import org.conservationmeasures.eam.actions.ActionConfigureExport;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
@@ -124,26 +125,15 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
 		menu.addSeparator();
-		menu.add(createExportSetupMenu());
+		JMenuItem item = addMenuItem(actions, menu, ActionConfigureExport.class, KeyEvent.VK_D);
+		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.CONFIGURE_EXPORT, HelpButtonData.IMPORT_AND_EXPORT_HTML));
+
 		menu.add(createExportMenu(actions));
 		menu.add(createImportMenu(actions));
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionExit.class, KeyEvent.VK_E);
 		return menu;
 	}
-
-
-	private JMenu createExportSetupMenu()
-	{
-		JMenu menu = new JMenu("Configure Export");
-		menu.setMnemonic(KeyEvent.VK_C);
-		addDisabledMenuItem(menu, "Entire Project");
-		addDisabledMenuItem(menu, "Specific Views");
-		addDisabledMenuItem(menu, "Restrict Data");
-		addDisabledMenuItem(menu, "Encryption Level");
-		return menu;
-	}
-
 
 	private JMenu createExportMenu(Actions actions)
 	{

@@ -41,6 +41,8 @@ public class HelpButtonData
 	public static final String CMP_STANDARDS_HTML = "CMPStandards.html";
 	public static final String ADAPTIVE_MANAGEMENT = "Adaptive Management";
 	public static final String ADAPTIVE_MANAGEMENT_HTML = "AdaptiveManagement.html";
+	public static final String IMPORT_AND_EXPORT_HTML = "export&import.html";
+	public static final String CONFIGURE_EXPORT = "Configure Export";
 	
 	public String title;
 	public String htmlFile;

@@ -239,6 +239,7 @@ public class Actions
 		registerAction(new ActionJumpDevelopSchedule(mainWindow));
 		registerAction(new ActionJumpDevelopBudgets(mainWindow));
 		registerAction(new ActionJumpBudgetFutureDemo(mainWindow));
+		registerAction(new ActionConfigureExport(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

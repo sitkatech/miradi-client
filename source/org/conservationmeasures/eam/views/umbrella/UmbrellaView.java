@@ -19,6 +19,7 @@ import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
+import org.conservationmeasures.eam.actions.ActionConfigureExport;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
@@ -275,6 +276,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionExportZippedProjectFile.class, new ExportZippedProjectFileDoer());
 		addDoerToMap(ActionImportZippedProjectFile.class, new ImportZippedProjectFileDoer());
 		addDoerToMap(ActionImportTncCapWorkbook.class, new ImportTncCapWorkbookDoer());
+		addDoerToMap(ActionConfigureExport.class, new HelpButtonDoer());
 		
 		addDoerToMap(ActionViewSummary.class, new ViewSummary());
 		addDoerToMap(ActionViewDiagram.class, new ViewDiagram());
