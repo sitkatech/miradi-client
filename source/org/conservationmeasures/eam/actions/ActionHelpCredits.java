@@ -12,7 +12,7 @@ public class ActionHelpCredits extends MainWindowAction
 {
 	public ActionHelpCredits(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "images/Umbrella/thx16.png");
 	}
 
 	private static String getLabel()
