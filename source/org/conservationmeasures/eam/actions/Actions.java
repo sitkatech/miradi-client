@@ -240,6 +240,8 @@ public class Actions
 		registerAction(new ActionJumpDevelopBudgets(mainWindow));
 		registerAction(new ActionJumpBudgetFutureDemo(mainWindow));
 		registerAction(new ActionConfigureExport(mainWindow));
+		registerAction(new ActionDemo(mainWindow));
+		registerAction(new ActionDemoAndDatabases(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

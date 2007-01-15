@@ -20,6 +20,8 @@ import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionDemo;
+import org.conservationmeasures.eam.actions.ActionDemoAndDatabases;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
@@ -141,45 +143,13 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_E);
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
-		addDisabledMenuItem(menu, "CMP Learning Center");
-		menu.add(createExportOrgDatabaseSubmenu());
-		menu.add(createExportDonorReportsSubmenu());
-		menu.add(createExportOtherSubmenu());
-		return menu;
-	}
-	
-	private JMenu createExportOrgDatabaseSubmenu()
-	{
-		JMenu menu = new JMenu("Organization Database");
-		menu.setMnemonic(KeyEvent.VK_O);
 		
-		addDisabledMenuItem(menu, "WWF Track");
-		addDisabledMenuItem(menu, "TNC Project Database");
-		addDisabledMenuItem(menu, "WCS Accounting System");
-		return menu;
-	}
-	
-	private JMenu createExportDonorReportsSubmenu()
-	{
-		JMenu menu = new JMenu("Donor Report");
-		menu.setMnemonic(KeyEvent.VK_D);
+		JMenuItem item = addMenuItem(actions, menu,ActionDemoAndDatabases.class, KeyEvent.VK_D);
+		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO_AND_DATABASES, HelpButtonData.IMPORT_AND_EXPORT_HTML));
+
+		item = addMenuItem(actions, menu, ActionDemo.class, KeyEvent.VK_D);
+		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 		
-		addDisabledMenuItem(menu, "GEF Format");
-		addDisabledMenuItem(menu, "Moore Format");
-		addDisabledMenuItem(menu, "CGBD Common Format");
-		return menu;
-	}
-	
-	private JMenu createExportOtherSubmenu()
-	{
-		JMenu menu = new JMenu("Other Format");
-		menu.setMnemonic(KeyEvent.VK_O);
-		
-		addDisabledMenuItem(menu, "Diagram to MS Visio");
-		addDisabledMenuItem(menu, "Workplan to MS Project");
-		addDisabledMenuItem(menu, "Budget to MS Excel");
-		addDisabledMenuItem(menu, "Map to ARC");
-		addDisabledMenuItem(menu, "Generic XML");
 		return menu;
 	}
 	
