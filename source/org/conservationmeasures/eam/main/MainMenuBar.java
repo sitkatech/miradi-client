@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionAboutBenetech;
 import org.conservationmeasures.eam.actions.ActionAboutCMP;
 import org.conservationmeasures.eam.actions.ActionClose;
-import org.conservationmeasures.eam.actions.ActionConfigureExport;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
@@ -129,8 +128,6 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
 		menu.addSeparator();
-		JMenuItem item = addMenuItem(actions, menu, ActionConfigureExport.class, KeyEvent.VK_D);
-		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.CONFIGURE_EXPORT, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 
 		menu.add(createExportMenu(actions));
 		menu.add(createImportMenu(actions));
