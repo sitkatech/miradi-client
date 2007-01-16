@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMeth
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
@@ -244,6 +245,7 @@ public class Actions
 		registerAction(new ActionConfigureExport(mainWindow));
 		registerAction(new ActionDatabasesDemo(mainWindow));
 		registerAction(new ActionReportsDemo(mainWindow));
+		registerAction(new ActionJumpDiagramOverview(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

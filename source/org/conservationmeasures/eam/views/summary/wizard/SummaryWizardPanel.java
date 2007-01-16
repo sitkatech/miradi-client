@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.views.summary.wizard;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -52,7 +52,7 @@ public class SummaryWizardPanel extends WizardPanel
 	public void next() throws Exception
 	{	
 		if (currentStep == PROJECT_VISION)
-			actions.get(ActionJumpCreateModel.class).doAction();
+			actions.get(ActionJumpDiagramOverview.class).doAction();
 		else
 			super.next();
 	}

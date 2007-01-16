@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
@@ -24,7 +25,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
@@ -100,6 +100,8 @@ public class DiagramWizardPanel extends WizardPanel
 			setStep(SELECT_CHAIN);
 		else if (stepMarker.equals(ActionJumpReviewModelAndAdjust.class))
 			setStep(REVIEW_AND_ADJUST);
+		else if (stepMarker.equals(ActionJumpDiagramOverview.class))
+			setStep(OVERVIEW);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
@@ -117,7 +119,7 @@ public class DiagramWizardPanel extends WizardPanel
 		else if(currentStep == SELECT_CHAIN)
 			actions.get(ActionJumpViewAllObjectives.class).doAction();
 		else if (currentStep == OVERVIEW)
-			 actions.get(ActionJumpSelectTeam.class).doAction();
+			 actions.get(ActionJumpEstablishVision.class).doAction();
 		 
 		super.previous();
 	}
