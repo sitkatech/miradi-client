@@ -71,7 +71,7 @@ class MapComponent extends JTabbedPane
 
 	public MapComponent()
 	{
-		setTabPlacement(JTabbedPane.BOTTOM);
+		setTabPlacement(JTabbedPane.TOP);
 	
 		String[] demoMaps = 
 		{

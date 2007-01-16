@@ -74,7 +74,7 @@ public class ImagesView extends UmbrellaView
 
 		public ImagesComponent()
 		{
-			setTabPlacement(JTabbedPane.BOTTOM);
+			setTabPlacement(JTabbedPane.TOP);
 		
 			String[] demoMaps = 
 			{
