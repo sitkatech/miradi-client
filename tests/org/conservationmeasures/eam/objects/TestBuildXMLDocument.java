@@ -81,7 +81,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 		
 		writeLineReturn();
 		writeStartELement(GroupElementName);
-		
+
 			EAMObjectPool pool = project.getPool(objectType);
 			if (pool==null)
 			{
@@ -92,11 +92,33 @@ public class TestBuildXMLDocument extends EAMTestCase
 			for(int i = 0; i < baseIds.length; ++i)
 			{
 				EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
+				
+				
+				String useThisElementName = elementName;
+				if (elementName.equals(Factor.OBJECT_NAME))
+				{
+					Factor factor = (Factor)object;
+					if (factor.isContributingFactor())
+						useThisElementName = "ContributingFactor";
+					else if (factor.isTarget())
+						useThisElementName = Target.OBJECT_NAME;
+					else if (factor.isStatusDraft())
+						useThisElementName = "Draft" + Strategy.OBJECT_NAME;
+					else if (factor.isStrategy())
+						useThisElementName = Strategy.OBJECT_NAME;
+					else if (factor.isCause())
+						useThisElementName = Cause.OBJECT_NAME;
+					else
+						useThisElementName = "UnKnownFactor" + factor.getClass().getSimpleName();
+				}
+				
+				
+				
 				writeLineReturn();
-				writeStartELement(elementName, baseIds[i].asInt());
+				writeStartELement(useThisElementName, baseIds[i].asInt());
 				processTags(object);
 				writeLineReturn();
-				writeEndELement(elementName);
+				writeEndELement(useThisElementName);
 			}
 			
 			writeLineReturn();
