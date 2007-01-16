@@ -30,7 +30,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 
 	public void testBuild() throws Exception
 	{
-		String projectName = "exportedProject";
+		String projectName = "Marine demo 06-10-20";
 		
 		EAMFileSaveChooser eamFileChooser = new EAMXmlFileChooser(new MainWindow());
 		File chosen = eamFileChooser.displayChooser();
@@ -50,21 +50,21 @@ public class TestBuildXMLDocument extends EAMTestCase
 			writeStartElementWithNamedAttr("Miradi", "project", projectName);
 
 			
-			processObjectPool(project, AccountingCode.OBJECT_NAME, 	ObjectType.ACCOUNTING_CODE);
-			processObjectPool(project, Assignment.OBJECT_NAME, 		ObjectType.ASSIGNMENT);
-			processObjectPool(project, "DiagramLink",				ObjectType.DIAGRAM_LINK);
-			processObjectPool(project, Factor.OBJECT_NAME, 			ObjectType.FACTOR);
-			processObjectPool(project, "FactorLink",				ObjectType.FACTOR_LINK);
-			processObjectPool(project, "FundingSource",				ObjectType.FUNDING_SOURCE);
-			processObjectPool(project, Goal.OBJECT_NAME, 			ObjectType.GOAL);
-			processObjectPool(project, Indicator.OBJECT_NAME, 		ObjectType.INDICATOR);
-			processObjectPool(project, Objective.OBJECT_NAME, 		ObjectType.OBJECTIVE);
-			processObjectPool(project, "ProjectMetaData", 	ObjectType.PROJECT_METADATA);
-			processObjectPool(project, "ProjectResource", 	ObjectType.PROJECT_RESOURCE);
-			processObjectPool(project, "RatingCriterion", 	ObjectType.RATING_CRITERION);
-			processObjectPool(project, "Task", 				ObjectType.TASK);
-			processObjectPool(project, "ValueOption", 		ObjectType.VALUE_OPTION);
-			processObjectPool(project, "ViewData", 			ObjectType.VIEW_DATA);
+			processObjectPool(project, AccountingCode.OBJECT_NAME + "s" , AccountingCode.OBJECT_NAME, ObjectType.ACCOUNTING_CODE);
+			processObjectPool(project, Assignment.OBJECT_NAME + "s", Assignment.OBJECT_NAME, ObjectType.ASSIGNMENT);
+			processObjectPool(project, "DiagramLinks", "DiagramLink",ObjectType.DIAGRAM_LINK);
+			processObjectPool(project, Factor.OBJECT_NAME + "s", Factor.OBJECT_NAME, ObjectType.FACTOR);
+			processObjectPool(project, "FactorLinks", "FactorLink",	ObjectType.FACTOR_LINK);
+			processObjectPool(project, "FundingSources", "FundingSource", ObjectType.FUNDING_SOURCE);
+			processObjectPool(project, Goal.OBJECT_NAME + "s", Goal.OBJECT_NAME, ObjectType.GOAL);
+			processObjectPool(project, Indicator.OBJECT_NAME + "s", Indicator.OBJECT_NAME, ObjectType.INDICATOR);
+			processObjectPool(project, Objective.OBJECT_NAME + "s", Objective.OBJECT_NAME, ObjectType.OBJECTIVE);
+			processObjectPool(project, "ProjectMeta", "ProjectMetaData", ObjectType.PROJECT_METADATA);
+			processObjectPool(project, "ProjectResources", "ProjectResource", ObjectType.PROJECT_RESOURCE);
+			processObjectPool(project, "RatingCriterions", "RatingCriterion", ObjectType.RATING_CRITERION);
+			processObjectPool(project, "Tasks", "Task", ObjectType.TASK);
+			processObjectPool(project, "ValueOptions", "ValueOption", ObjectType.VALUE_OPTION);
+			processObjectPool(project, "Views", "ViewData", ObjectType.VIEW_DATA);
 			
 			writeLineReturn();
 			writeEndELement("Miradi");
@@ -76,8 +76,12 @@ public class TestBuildXMLDocument extends EAMTestCase
 		}
 	}
 
-	private void processObjectPool(Project project ,String elementName, int objectType) throws Exception
+	private void processObjectPool(Project project, String GroupElementName ,String elementName, int objectType) throws Exception
 	{
+		
+		writeLineReturn();
+		writeStartELement(GroupElementName);
+		
 			EAMObjectPool pool = project.getPool(objectType);
 			if (pool==null)
 			{
@@ -94,6 +98,9 @@ public class TestBuildXMLDocument extends EAMTestCase
 				writeLineReturn();
 				writeEndELement(elementName);
 			}
+			
+			writeLineReturn();
+			writeEndELement(GroupElementName);
 	}
 
 	private void processTags(EAMBaseObject object)
