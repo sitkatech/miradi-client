@@ -43,6 +43,10 @@ public class BudgetTable extends JTable implements ObjectPicker
 		project = projectToUse;
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setDefaultRenderer(Object.class, new AlternatingThickBorderedTotalsColoredRenderer());
+		//TODO remove the addition of two pixels.  the + 2 is becuase dropdowns cut off 'g's.
+		// must figure out a way to do this right.  
+		final int TWO_PIXELS = 2;
+		setRowHeight(rowHeight + TWO_PIXELS);
 		rebuild();
 	}
 	
