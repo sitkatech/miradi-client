@@ -81,8 +81,8 @@ public class BudgetView extends TabbedView
 		addScrollableTab(budgetManagmentPanel);
 		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);
 		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel.getIcon(), fundingSourcePoolManagementPanel);
-		addTab(EAM.text("Actuals - demo"), new UiScrollPane(getBudgetComponent()));
 		addScrollableTab(resourceManagementPanel);
+		addTab(EAM.text("Actuals - demo"), new UiScrollPane(getBudgetComponent()));
 	}
 	
 	public void deleteTabs() throws Exception
