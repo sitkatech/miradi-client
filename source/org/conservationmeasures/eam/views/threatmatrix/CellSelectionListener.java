@@ -31,6 +31,8 @@ class CellSelectionListener implements ListSelectionListener
 			return;
 		
 		int column = threatTable.convertColumnIndexToModel(threatTable.getSelectedColumn());
+		if(column < 0)
+			return;
 
 		try
 		{
