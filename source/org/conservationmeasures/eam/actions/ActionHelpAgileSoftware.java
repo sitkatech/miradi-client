@@ -12,7 +12,7 @@ public class ActionHelpAgileSoftware extends MainWindowAction
 {
 	public ActionHelpAgileSoftware(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "icons/agile16.png");
 	}
 
 	private static String getLabel()

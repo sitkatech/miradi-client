@@ -12,7 +12,7 @@ public class ActionHelpCMPStandards extends MainWindowAction
 {
 	public ActionHelpCMPStandards(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "icons/cmpstandards16.png");
 	}
 
 	private static String getLabel()

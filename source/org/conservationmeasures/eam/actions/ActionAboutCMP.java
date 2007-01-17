@@ -12,7 +12,7 @@ public class ActionAboutCMP extends MainWindowAction
 {
 	public ActionAboutCMP(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "icons/cmp16.png");
 	}
 
 	private static String getLabel()

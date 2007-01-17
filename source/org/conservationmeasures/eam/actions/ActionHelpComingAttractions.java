@@ -12,7 +12,7 @@ public class ActionHelpComingAttractions extends MainWindowAction
 {
 	public ActionHelpComingAttractions(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "icons/coming attract16.png");
 	}
 
 	private static String getLabel()

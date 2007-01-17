@@ -12,7 +12,7 @@ public class ActionHelpAdaptiveManagement extends MainWindowAction
 {
 	public ActionHelpAdaptiveManagement(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "icons/AM16.png");
 	}
 
 	private static String getLabel()
