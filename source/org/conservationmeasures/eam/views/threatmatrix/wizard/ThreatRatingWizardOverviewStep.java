@@ -57,7 +57,7 @@ class OverviewText extends HtmlBuilder
 		return font("Arial", 
 			wizardFrame(tableRow(
 				tableCell(
-						heading("Threat Rating") + 
+						heading("Intro to Threat Rating View") + 
 						paragraph("The table below contains a summary of your threat ratings.  " +
 							"Threat/Target combinations that have been rated " +
 							"should appear colored in.") +
