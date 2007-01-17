@@ -286,6 +286,12 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 	
 	private void setSelectedRow(int currentSelectedRow)
 	{
+		if(currentSelectedRow < 0)
+		{
+			tree.clearSelection();
+			return;
+		}
+		
 		try
 		{
 			tree.setRowSelectionInterval(currentSelectedRow, currentSelectedRow);
