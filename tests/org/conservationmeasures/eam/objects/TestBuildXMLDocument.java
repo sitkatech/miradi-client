@@ -86,62 +86,56 @@ public class TestBuildXMLDocument extends EAMTestCase
 
 	private void processFactorObjectPool(Project project, String groupElementName ,String elementName, int objectType) throws Exception
 	{
-		
 		writeLineReturn();
 		writeStartELement(groupElementName);
 
-			EAMObjectPool pool = project.getPool(objectType);
-			BaseId[] baseIds = pool.getIds();
-			for(int i = 0; i < baseIds.length; ++i)
-			{
-				Factor factor = (Factor) project.findObject(objectType, baseIds[i]);
-				if (!factor.isContributingFactor() && groupElementName.equals("ContributingFactors"))
-					continue;
-				else if (!factor.isTarget() && groupElementName.equals("Targets"))
-					continue;
-				else if (!factor.isStatusDraft() && groupElementName.equals("DraftStrategys"))
-					continue;
-				else if (!factor.isStrategy() && groupElementName.equals("Strategys"))
-					continue;
-				else if (!factor.isCause() && groupElementName.equals("Causes"))
-					continue;
+		EAMObjectPool pool = project.getPool(objectType);
+		BaseId[] baseIds = pool.getIds();
+		for(int i = 0; i < baseIds.length; ++i)
+		{
+			Factor object = (Factor) project.findObject(objectType, baseIds[i]);
+			if (!object.isContributingFactor() && groupElementName.equals("ContributingFactors"))
+				continue;
+			else if (!object.isTarget() && groupElementName.equals("Targets"))
+				continue;
+			else if (!object.isStatusDraft() && groupElementName.equals("DraftStrategys"))
+				continue;
+			else if (!object.isStrategy() && groupElementName.equals("Strategys"))
+				continue;
+			else if (!object.isCause() && groupElementName.equals("Causes"))
+				continue;
 
-				writeLineReturn();
-				writeStartELement(elementName, baseIds[i].asInt());
-				processTags(factor);
-				writeLineReturn();
-				writeEndELement(elementName);
-			}
+			processTags(elementName, baseIds, i, object);
+		}
 			
-			writeLineReturn();
-			writeEndELement(groupElementName);
+		writeLineReturn();
+		writeEndELement(groupElementName);
 	}
 	
 	private void processObjectPool(Project project, String GroupElementName ,String elementName, int objectType) throws Exception
 	{
-		
 		writeLineReturn();
 		writeStartELement(GroupElementName);
 
-			EAMObjectPool pool = project.getPool(objectType);
-			if (pool==null)
-			{
-				throw new Exception("POOL NOT FOUND:" + objectType);
-			}
+		EAMObjectPool pool = project.getPool(objectType);
+		BaseId[] baseIds = pool.getIds();
+		for(int i = 0; i < baseIds.length; ++i)
+		{
+			EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
+			processTags(elementName, baseIds, i, object);
+		}
 			
-			BaseId[] baseIds = pool.getIds();
-			for(int i = 0; i < baseIds.length; ++i)
-			{
-				EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
-				writeLineReturn();
-				writeStartELement(elementName, baseIds[i].asInt());
-				processTags(object);
-				writeLineReturn();
-				writeEndELement(elementName);
-			}
-			
-			writeLineReturn();
-			writeEndELement(GroupElementName);
+		writeLineReturn();
+		writeEndELement(GroupElementName);
+	}
+
+	private void processTags(String elementName, BaseId[] baseIds, int i, EAMBaseObject object)
+	{
+		writeLineReturn();
+		writeStartELement(elementName, baseIds[i].asInt());
+		processTags(object);
+		writeLineReturn();
+		writeEndELement(elementName);
 	}
 
 	private void processTags(EAMBaseObject object)
