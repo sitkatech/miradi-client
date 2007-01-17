@@ -50,15 +50,21 @@ public class TestBuildXMLDocument extends EAMTestCase
 			writeStartElementWithNamedAttr("Miradi", "project", projectName);
 
 			
-			processObjectPool(project, AccountingCode.OBJECT_NAME + "s" , AccountingCode.OBJECT_NAME, ObjectType.ACCOUNTING_CODE);
-			processObjectPool(project, Assignment.OBJECT_NAME + "s", Assignment.OBJECT_NAME, ObjectType.ASSIGNMENT);
+			processObjectPool(project, "AccountingCodes" , "AccountingCode", ObjectType.ACCOUNTING_CODE);
+			processObjectPool(project, "Assignments", "Assignment", ObjectType.ASSIGNMENT);
 			processObjectPool(project, "DiagramLinks", "DiagramLink",ObjectType.DIAGRAM_LINK);
-			processObjectPool(project, Factor.OBJECT_NAME + "s", Factor.OBJECT_NAME, ObjectType.FACTOR);
+			
+			processFactorObjectPool(project, "Strategys", "Strategy", ObjectType.FACTOR);
+			processFactorObjectPool(project, "DraftStrategys", "Strategy", ObjectType.FACTOR);
+			processFactorObjectPool(project, "Targets", "Target", ObjectType.FACTOR);
+			processFactorObjectPool(project, "ContributingFactors", "ContributingFactor", ObjectType.FACTOR);
+			processFactorObjectPool(project, "Causes", "Cause", ObjectType.FACTOR);
+
 			processObjectPool(project, "FactorLinks", "FactorLink",	ObjectType.FACTOR_LINK);
 			processObjectPool(project, "FundingSources", "FundingSource", ObjectType.FUNDING_SOURCE);
-			processObjectPool(project, Goal.OBJECT_NAME + "s", Goal.OBJECT_NAME, ObjectType.GOAL);
-			processObjectPool(project, Indicator.OBJECT_NAME + "s", Indicator.OBJECT_NAME, ObjectType.INDICATOR);
-			processObjectPool(project, Objective.OBJECT_NAME + "s", Objective.OBJECT_NAME, ObjectType.OBJECTIVE);
+			processObjectPool(project, "Goals", "Goal", ObjectType.GOAL);
+			processObjectPool(project, "Indicators", "Indicator", ObjectType.INDICATOR);
+			processObjectPool(project, "Objectives", "Objective", ObjectType.OBJECTIVE);
 			processObjectPool(project, "ProjectMeta", "ProjectMetaData", ObjectType.PROJECT_METADATA);
 			processObjectPool(project, "ProjectResources", "ProjectResource", ObjectType.PROJECT_RESOURCE);
 			processObjectPool(project, "RatingCriterions", "RatingCriterion", ObjectType.RATING_CRITERION);
@@ -76,6 +82,41 @@ public class TestBuildXMLDocument extends EAMTestCase
 		}
 	}
 
+	
+
+	private void processFactorObjectPool(Project project, String groupElementName ,String elementName, int objectType) throws Exception
+	{
+		
+		writeLineReturn();
+		writeStartELement(groupElementName);
+
+			EAMObjectPool pool = project.getPool(objectType);
+			BaseId[] baseIds = pool.getIds();
+			for(int i = 0; i < baseIds.length; ++i)
+			{
+				Factor factor = (Factor) project.findObject(objectType, baseIds[i]);
+				if (!factor.isContributingFactor() && groupElementName.equals("ContributingFactors"))
+					continue;
+				else if (!factor.isTarget() && groupElementName.equals("Targets"))
+					continue;
+				else if (!factor.isStatusDraft() && groupElementName.equals("DraftStrategys"))
+					continue;
+				else if (!factor.isStrategy() && groupElementName.equals("Strategys"))
+					continue;
+				else if (!factor.isCause() && groupElementName.equals("Causes"))
+					continue;
+
+				writeLineReturn();
+				writeStartELement(elementName, baseIds[i].asInt());
+				processTags(factor);
+				writeLineReturn();
+				writeEndELement(elementName);
+			}
+			
+			writeLineReturn();
+			writeEndELement(groupElementName);
+	}
+	
 	private void processObjectPool(Project project, String GroupElementName ,String elementName, int objectType) throws Exception
 	{
 		
@@ -92,33 +133,11 @@ public class TestBuildXMLDocument extends EAMTestCase
 			for(int i = 0; i < baseIds.length; ++i)
 			{
 				EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
-				
-				
-				String useThisElementName = elementName;
-				if (elementName.equals(Factor.OBJECT_NAME))
-				{
-					Factor factor = (Factor)object;
-					if (factor.isContributingFactor())
-						useThisElementName = "ContributingFactor";
-					else if (factor.isTarget())
-						useThisElementName = Target.OBJECT_NAME;
-					else if (factor.isStatusDraft())
-						useThisElementName = "Draft" + Strategy.OBJECT_NAME;
-					else if (factor.isStrategy())
-						useThisElementName = Strategy.OBJECT_NAME;
-					else if (factor.isCause())
-						useThisElementName = Cause.OBJECT_NAME;
-					else
-						useThisElementName = "UnKnownFactor" + factor.getClass().getSimpleName();
-				}
-				
-				
-				
 				writeLineReturn();
-				writeStartELement(useThisElementName, baseIds[i].asInt());
+				writeStartELement(elementName, baseIds[i].asInt());
 				processTags(object);
 				writeLineReturn();
-				writeEndELement(useThisElementName);
+				writeEndELement(elementName);
 			}
 			
 			writeLineReturn();
