@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanOverview;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.diagram.wizard.ActionJumpEditAllStrategies;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
@@ -52,7 +52,7 @@ public class MonitoringPlanWizardPanel extends WizardPanel
 		if(currentStep == OVERVIEW)
 			actions.get(ActionJumpDetermineNeeds.class).doAction();
 		else if(currentStep == EDIT_INDICATORS)
-			actions.get(ActionJumpSelectMethod.class).doAction();
+			actions.get(ActionJumpWorkPlanOverview.class).doAction();
 		
 		super.next();
 	}

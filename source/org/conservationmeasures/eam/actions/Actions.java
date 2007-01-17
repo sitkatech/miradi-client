@@ -67,6 +67,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardChe
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanOverview;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
@@ -246,6 +247,7 @@ public class Actions
 		registerAction(new ActionDatabasesDemo(mainWindow));
 		registerAction(new ActionReportsDemo(mainWindow));
 		registerAction(new ActionJumpDiagramOverview(mainWindow));
+		registerAction(new ActionJumpWorkPlanOverview(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

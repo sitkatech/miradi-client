@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMeth
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanOverview;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardSelectMethodsStep;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
@@ -46,6 +47,8 @@ public class WorkPlanWizardPanel extends WizardPanel
 			setStep(CREATE_RESOURCES);
 		else if (stepMarker.equals(ActionJumpWorkPlanAssignResourcesStep.class))
 			setStep(ASSIGN_RESOURCES);
+		else if (stepMarker.equals(ActionJumpWorkPlanOverview.class))
+			setStep(WELCOME);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
@@ -61,6 +64,8 @@ public class WorkPlanWizardPanel extends WizardPanel
 	public void previous() throws Exception
 	{
 		if(currentStep == SELECT_METHOD)
+			actions.get(ActionJumpEditIndicators.class).doAction();
+		else if (currentStep == WELCOME)
 			actions.get(ActionJumpEditIndicators.class).doAction();
 		
 		super.previous();
