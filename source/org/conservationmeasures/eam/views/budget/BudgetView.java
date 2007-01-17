@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardPanel;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
+import org.conservationmeasures.eam.views.umbrella.WizardHtmlViewer;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.workplan.CreateActivityDoer;
 import org.conservationmeasures.eam.views.workplan.CreateMethodDoer;
@@ -144,10 +145,14 @@ public class BudgetView extends TabbedView
 
 	private HtmlViewer getBudgetComponent()
 	{
-		HtmlViewer htmlViewer= new HtmlViewer("",null);
-		htmlViewer.setText("<p>Coming soon - ability to enter actual expenditures and to match " +
-				"these up to budget line items and report on them by programmatic objectives and " +
-				"activities, by accounting codes, or by funding sources.</p>");
+		HtmlViewer htmlViewer= new WizardHtmlViewer(null);
+		htmlViewer.setText(
+				"<h2>Coming soon</h2>" +
+				"<STRONG>Tracking of Actual Expenses</STRONG> -&nbsp;" +
+				"Tools to enter actual expenditures and to match these up to budget line items " +
+				"and report on them by programmatic objectives and activities, " +
+				"by accounting codes, or by funding sources, " +
+				"using a Quicken or Quickbooks style interface.");
 		return htmlViewer;
 	}
 	
