@@ -111,19 +111,19 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 			"<STRONG>Adaptive Management Software for Conservation Projects</STRONG>" +
 			"</FONT>&nbsp;" +
 			"<FONT size=4>" +
-			"<P>(c) Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York on" + 
+			"<P>(c) Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York on " + 
 			"behalf of the Conservation Measures Partnership (\"CMP\") and Beneficent " +
 			"Technology, Inc. (\"Benetech\"), Palo Alto, California.</P>" +
 			"<p>VERSION " + VersionConstants.VERSION_STRING +"</p>" +
-			"<P>NOT FOR REDISTRIBUTION<BR>This pre-release version is intended for evaluation" + 
+			"<P>NOT FOR REDISTRIBUTION<BR>This pre-release version is intended for evaluation " + 
 			"and feedback only. Please send suggestions and other feedback to " +
-			"<A href=\"mailto:feedback@miradi.org\">feedback@miradi.org</A>. You are not allowed" + 
+			"<A href=\"mailto:feedback@miradi.org\">feedback@miradi.org</A>. You are not allowed " + 
 			"to redistribute this program without the express written permission of the CMP " +
 			"(<A href=\"http://www.conservationmeasures.org\">www.conservationmeasures.org</A>)" +
 			"&nbsp;or Benetech (<A href=\"http://www.benetech.org\">www.benetech.org</A>). You can also " +
 			"find more information about this software program at: " +
 			"<A href=\"http://www.miradi.org\">www.miradi.org</A>.</P>" +
-			"<P>This software program is being developed to assist conservation practitioners" + 
+			"<P>This software program is being developed to assist conservation practitioners " + 
 			"to go through the adaptive management process outlined in the CMP's <EM>Open " +
 			"Standards for the Practice of Conservation</EM>.&nbsp;To obtain a copy of the " +
 			"latest version of these standards, go to " +
