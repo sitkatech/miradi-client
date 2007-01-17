@@ -102,14 +102,19 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 	}
 	
 	static final String aboutText = 
-			"<FONT face=Tahoma size=6><STRONG>" +
-			"<IMG src=\"images/miradi64.png\" height=64 width=64>Miradi</STRONG>" + 
-			"</FONT>" +
-			"<FONT size=2>TM</FONT>" +
+			"<table><tr>" +
+			"<td>" +
+			"<IMG src=\"images/miradi64.png\" height=64 width=64>" +
+			"</td>" +
+			"<td width='20'></td>" +
+			"<td>" + 
+			"<FONT face=Tahoma size=6><STRONG>Miradi</STRONG></FONT><sup>TM</sup>" +
 			"<BR>" +
 			"<FONT face=Tahoma size=4>" +
 			"<STRONG>Adaptive Management Software for Conservation Projects</STRONG>" +
 			"</FONT>&nbsp;" +
+			"</td>" +
+			"</tr></table>" +
 			"<FONT size=4>" +
 			"<P>(c) Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York on " + 
 			"behalf of the Conservation Measures Partnership (\"CMP\") and Beneficent " +
