@@ -18,7 +18,7 @@ public class ActionJumpAdaptAndMonitorPlans extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("6A. Adapt your action and monitoring plans");
+		return EAM.text("6A. Adapt Your Action and Monitoring Plans");
 	}
 
 }

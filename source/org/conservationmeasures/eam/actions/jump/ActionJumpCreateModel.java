@@ -18,7 +18,7 @@ public class ActionJumpCreateModel extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Create a model");
+		return EAM.text("Create a Model");
 	}
 	
 }

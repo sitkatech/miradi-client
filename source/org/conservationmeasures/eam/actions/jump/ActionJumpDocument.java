@@ -18,7 +18,7 @@ public class ActionJumpDocument extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("7A. Document what you learn");
+		return EAM.text("7A. Document What You Learn");
 	}
 
 }

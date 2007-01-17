@@ -18,7 +18,7 @@ public class ActionJumpDefineAudiences extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Clearly define audiences");
+		return EAM.text("Clearly Define Audiences");
 	}
 	
 }

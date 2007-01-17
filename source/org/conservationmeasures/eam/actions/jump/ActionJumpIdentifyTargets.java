@@ -18,7 +18,7 @@ public class ActionJumpIdentifyTargets extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Identify and prioritize targets");
+		return EAM.text("Identify and Prioritize Targets");
 	}
 	
 }

@@ -18,7 +18,7 @@ public class ActionJumpRankDirectThreats extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Rank direct threats");
+		return EAM.text("Rank Direct Threats");
 	}
 	
 }

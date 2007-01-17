@@ -18,7 +18,7 @@ public class ActionJumpEstablishVision extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Establish a clear and common vision");
+		return EAM.text("Establish a Clear and Common Vision");
 	}
 	
 }

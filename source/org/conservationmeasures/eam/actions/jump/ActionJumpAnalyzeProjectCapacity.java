@@ -18,7 +18,7 @@ public class ActionJumpAnalyzeProjectCapacity extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Analyze project capacity");
+		return EAM.text("Analyze Project Capacity");
 	}
 	
 }

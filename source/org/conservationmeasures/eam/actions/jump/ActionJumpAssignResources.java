@@ -18,6 +18,6 @@ public class ActionJumpAssignResources extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Assign resources");
+		return EAM.text("Assign Resources");
 	}
 }

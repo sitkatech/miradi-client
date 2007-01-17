@@ -18,7 +18,7 @@ public class ActionJumpIdentifyContributingFactors extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Identify indirect threats & opportunities");
+		return EAM.text("Identify Indirect Threats & Opportunities");
 	}
 	
 }

@@ -18,7 +18,7 @@ public class ActionJumpDetermineNeeds extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Determine what you need to know");
+		return EAM.text("Determine What You Need to Know");
 	}
 	
 }

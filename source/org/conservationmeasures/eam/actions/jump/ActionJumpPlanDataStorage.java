@@ -18,7 +18,7 @@ public class ActionJumpPlanDataStorage extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Plan for data storage"); 
+		return EAM.text("Plan for Data Storage"); 
 	}
 
 }

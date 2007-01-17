@@ -18,7 +18,7 @@ public class ActionJumpRefinePlans extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("4C. Refine work plans on ongoing basis");
+		return EAM.text("4C. Refine Work Plans on Ongoing Basis");
 	}
 
 }

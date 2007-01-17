@@ -18,7 +18,7 @@ public class ActionJumpDevelopSchedule extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Develop project schedule");
+		return EAM.text("Develop Project Schedule");
 	}
 
 }

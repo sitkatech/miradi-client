@@ -18,7 +18,7 @@ public class ActionJumpDevelopObjectives extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Develop objectives"); 
+		return EAM.text("Develop Objectives"); 
 	}
 
 }

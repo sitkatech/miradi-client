@@ -18,7 +18,7 @@ public class ActionJumpAnalyzeStrategies extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("5B. Analyze strategies");
+		return EAM.text("5B. Analyze Strategies");
 	}
 
 }

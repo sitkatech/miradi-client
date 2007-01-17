@@ -18,7 +18,7 @@ public class ActionJumpResultsChains extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Develop results chains for key strategies"); 
+		return EAM.text("Develop Results Chains for Key Strategies"); 
 	}
 
 }

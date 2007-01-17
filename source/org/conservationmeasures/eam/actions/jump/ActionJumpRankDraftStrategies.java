@@ -18,7 +18,7 @@ public class ActionJumpRankDraftStrategies extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Rank draft strategies"); 
+		return EAM.text("Rank Draft Strategies"); 
 	}
 
 }

@@ -18,7 +18,7 @@ public class ActionJumpArticulateCoreAssumptions extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Articulate your core assumptions");
+		return EAM.text("Articulate Your Core Assumptions");
 	}
 	
 }

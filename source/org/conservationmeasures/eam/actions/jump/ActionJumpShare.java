@@ -18,7 +18,7 @@ public class ActionJumpShare extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("7B. Share what you learn");
+		return EAM.text("7B. Share What You Learn");
 	}
 
 }

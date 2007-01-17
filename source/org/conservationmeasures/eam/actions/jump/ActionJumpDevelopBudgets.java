@@ -18,7 +18,7 @@ public class ActionJumpDevelopBudgets extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Develop project budgets");
+		return EAM.text("Develop Project Budgets");
 	}
 
 }

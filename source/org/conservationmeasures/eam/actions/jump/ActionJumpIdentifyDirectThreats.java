@@ -18,7 +18,7 @@ public class ActionJumpIdentifyDirectThreats extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Identify direct threats");
+		return EAM.text("Identify Direct Threats");
 	}
 	
 }

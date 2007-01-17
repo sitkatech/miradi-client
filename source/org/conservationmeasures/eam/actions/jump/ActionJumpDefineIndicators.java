@@ -18,7 +18,7 @@ public class ActionJumpDefineIndicators extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Define indicators"); 
+		return EAM.text("Define Indicators"); 
 	}
 
 }

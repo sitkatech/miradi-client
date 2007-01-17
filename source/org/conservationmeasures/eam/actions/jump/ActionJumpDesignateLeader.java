@@ -18,7 +18,7 @@ public class ActionJumpDesignateLeader extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Designate a project leader & roles");
+		return EAM.text("Designate a Project Leader & Roles");
 	}
 
 }

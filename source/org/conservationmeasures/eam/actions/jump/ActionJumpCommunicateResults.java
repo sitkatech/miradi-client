@@ -18,7 +18,7 @@ public class ActionJumpCommunicateResults extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("5C. Communicate results within project team");
+		return EAM.text("5C. Communicate Results Within Project Team");
 	}
 
 }

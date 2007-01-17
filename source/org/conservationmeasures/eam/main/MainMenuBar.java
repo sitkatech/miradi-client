@@ -230,14 +230,14 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu1 = new JMenu("1. Conceptualize Your Project");
 		menu1.setMnemonic(KeyEvent.VK_C);
 		
-		JMenu menu1a = new JMenu("1A. Define initial project team");
+		JMenu menu1a = new JMenu("1A. Define Initial Project Team");
 		menu1a.setMnemonic(KeyEvent.VK_D);
 		
 		addMenuItem(actions, menu1a, ActionJumpSelectTeam.class, KeyEvent.VK_S);
 		addMenuItem(actions, menu1a, ActionJumpDesignateLeader.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu1a, ActionJumpDevelopCharter.class, KeyEvent.VK_D);
 	
-		JMenu menu1b = new JMenu("1B. Define clear and common purpose");
+		JMenu menu1b = new JMenu("1B. Define Clear and Common Purpose");
 		menu1b.setMnemonic(KeyEvent.VK_D);
 		
 		addMenuItem(actions, menu1b, ActionJumpDefineScope.class, KeyEvent.VK_D);
@@ -245,13 +245,13 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu1b, ActionJumpIdentifyTargets.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu1b, ActionJumpDescribeTargets.class, KeyEvent.VK_D);
 		
-		JMenu menu1c = new JMenu("1C. Identify critical threats");
+		JMenu menu1c = new JMenu("1C. Identify Critical Threats");
 		menu1c.setMnemonic(KeyEvent.VK_U);
 		
 		addMenuItem(actions, menu1c, ActionJumpIdentifyDirectThreats.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu1c, ActionJumpRankDirectThreats.class, KeyEvent.VK_R);
 		
-		JMenu menu1d = new JMenu("1D. Analyze project situation");
+		JMenu menu1d = new JMenu("1D. Analyze Project Situation");
 		menu1d.setMnemonic(KeyEvent.VK_M);
 		
 		addMenuItem(actions, menu1d, ActionJumpIdentifyContributingFactors.class, KeyEvent.VK_I);
@@ -274,13 +274,13 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu2 = new JMenu("2. Plan Your Actions");
 		menu2.setMnemonic(KeyEvent.VK_P);
 		
-		JMenu menu2a = new JMenu("2A. Develop goals and objectives");
+		JMenu menu2a = new JMenu("2A. Develop Goals and Objectives");
 		menu2a.setMnemonic(KeyEvent.VK_D);
 		
 		addMenuItem(actions, menu2a, ActionJumpDevelopTargetGoals.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu2a, ActionJumpDevelopObjectives.class, KeyEvent.VK_D);
 		
-		JMenu menu2b = new JMenu("2B. Strategically select activities");
+		JMenu menu2b = new JMenu("2B. Strategically Select Activities");
 		menu2b.setMnemonic(KeyEvent.VK_S);
 		
 		addMenuItem(actions, menu2b, ActionJumpIdentifyStrategies.class, KeyEvent.VK_I);
@@ -298,13 +298,13 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu3 = new JMenu("3. Plan Your Monitoring");
 		menu3.setMnemonic(KeyEvent.VK_P);
 		
-		JMenu menu3a = new JMenu("3A. Focus your monitoring");
+		JMenu menu3a = new JMenu("3A. Focus Your Monitoring");
 		menu3a.setMnemonic(KeyEvent.VK_F);
 		
 		addMenuItem(actions, menu3a, ActionJumpDetermineNeeds.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu3a, ActionJumpDefineAudiences.class, KeyEvent.VK_D);
 		
-		JMenu menu3b = new JMenu("3B. Develop a formal monitoring plan");
+		JMenu menu3b = new JMenu("3B. Develop a Formal Monitoring Plan");
 		menu3b.setMnemonic(KeyEvent.VK_D);
 		
 		addMenuItem(actions, menu3b, ActionJumpDefineIndicators.class, KeyEvent.VK_D);
@@ -321,7 +321,7 @@ public class MainMenuBar extends JMenuBar
 		menu4.setMnemonic(KeyEvent.VK_I);
 		
 
-		JMenu menu4a = new JMenu("4A. Develop detailed short-term work plan");
+		JMenu menu4a = new JMenu("4A. Develop Detailed Short-Term Work Plan");
 		menu4a.setMnemonic(KeyEvent.VK_D);
 		menu4a.setIcon(new ResourceImageIcon("icons/blankicon.png"));
 		

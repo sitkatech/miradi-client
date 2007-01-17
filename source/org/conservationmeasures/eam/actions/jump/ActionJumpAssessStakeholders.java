@@ -18,7 +18,7 @@ public class ActionJumpAssessStakeholders extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Assess stakeholders");
+		return EAM.text("Assess Stakeholders");
 	}
 	
 }

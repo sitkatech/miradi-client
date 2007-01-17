@@ -18,7 +18,7 @@ public class ActionJumpAnalyzeData extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("5A. Analyze your data");
+		return EAM.text("5A. Analyze Your Data");
 	}
 
 }

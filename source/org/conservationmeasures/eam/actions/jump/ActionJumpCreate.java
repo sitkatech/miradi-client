@@ -18,7 +18,7 @@ public class ActionJumpCreate extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("7C. Create a learning environment");
+		return EAM.text("7C. Create a Learning Environment");
 	}
 
 }

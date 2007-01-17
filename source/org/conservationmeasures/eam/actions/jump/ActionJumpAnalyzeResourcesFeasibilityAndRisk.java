@@ -18,7 +18,7 @@ public class ActionJumpAnalyzeResourcesFeasibilityAndRisk extends MainWindowActi
 	
 	private static String getLabel()
 	{
-		return EAM.text("Analyze resources, feasibility, and risk"); 
+		return EAM.text("Analyze Resources, Feasibility, and Risk"); 
 	}
 
 }

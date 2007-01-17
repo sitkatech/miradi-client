@@ -18,6 +18,6 @@ public class ActionJumpDevelopMonitoringMethodsAndTasks extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Develop monitoring methods & tasks");
+		return EAM.text("Develop Monitoring Methods & Tasks");
 	}
 }

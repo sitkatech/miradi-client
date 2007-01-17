@@ -18,7 +18,7 @@ public class ActionJumpGroundTruthRevise extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Ground truth and revise model");
+		return EAM.text("Ground Truth and Revise Model");
 	}
 	
 }

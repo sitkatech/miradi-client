@@ -18,7 +18,7 @@ public class ActionJumpImplementPlans extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("4B. Implement work plans");
+		return EAM.text("4B. Implement Work Plans");
 	}
 
 }

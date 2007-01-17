@@ -18,7 +18,7 @@ public class ActionJumpDescribeTargets extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Describe status of targets");
+		return EAM.text("Describe Status of Targets");
 	}
 	
 }
