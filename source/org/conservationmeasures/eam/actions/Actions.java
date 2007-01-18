@@ -98,6 +98,7 @@ public class Actions
 		registerAction(new ActionHelpButtonExamples(mainWindow));
 		registerAction(new ActionHelpButtonMoreInfo(mainWindow));
 		registerAction(new ActionHelpButtonWorkshop(mainWindow));
+		registerAction(new ActionHelpButtonSupport(mainWindow));
 		registerAction(new ActionClose(mainWindow));
 		registerAction(new ActionContextualHelp(mainWindow));
 		registerAction(new ActionCopy(mainWindow));

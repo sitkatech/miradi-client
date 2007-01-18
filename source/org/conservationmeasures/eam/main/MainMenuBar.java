@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
 import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
 import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
 import org.conservationmeasures.eam.actions.ActionHelpButtonMoreInfo;
+import org.conservationmeasures.eam.actions.ActionHelpButtonSupport;
 import org.conservationmeasures.eam.actions.ActionHelpButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionHelpCMPStandards;
 import org.conservationmeasures.eam.actions.ActionHelpComingAttractions;
@@ -408,7 +409,11 @@ public class MainMenuBar extends JMenuBar
 		item  = addMenuItem(actions, menu, ActionHelpButtonWorkshop.class, KeyEvent.VK_W);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
-				
+		
+		item  = addMenuItem(actions, menu, ActionHelpButtonSupport.class, KeyEvent.VK_P);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class, HelpButtonData.SUPPORT, HelpButtonData.SUPPORT_HTML));
+		
 		menu.addSeparator();
 		
 		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_O);

@@ -49,7 +49,8 @@ public class HelpButtonData
 	public static final String CONFIGURE_EXPORT = "Configure Export";
 	public static final String DEMO = "Demo";
 	public static final String DEMO_AND_DATABASES = "Demo and Databases";
-	
+	public static final String SUPPORT = "Support";
+	public static final String SUPPORT_HTML = "Support.html";
 	
 	public String title;
 	public String htmlFile;
