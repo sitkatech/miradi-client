@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.views.umbrella;
 import javax.swing.text.html.StyleSheet;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.utils.HtmlFormViewer;
+import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 
-public class WizardHtmlViewer extends HtmlFormViewer
+public class WizardHtmlViewer extends HtmlViewer
 {
 	public WizardHtmlViewer(HyperlinkHandler hyperLinkHandler)
 	{

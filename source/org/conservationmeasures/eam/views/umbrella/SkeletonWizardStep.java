@@ -2,14 +2,13 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
+import org.martus.swing.HyperlinkHandler;
 
-public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
+public abstract class SkeletonWizardStep extends JPanel implements HyperlinkHandler
 {
 	public SkeletonWizardStep(WizardPanel wizardToUse)
 	{
@@ -80,9 +79,6 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	{
 	}
 
-	public void setComponent(String name, JComponent component)
-	{
-	}
 
 
 
