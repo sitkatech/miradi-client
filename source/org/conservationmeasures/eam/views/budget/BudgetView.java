@@ -1,5 +1,7 @@
 package org.conservationmeasures.eam.views.budget;
 
+import java.awt.Component;
+
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
 import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
@@ -23,6 +25,7 @@ import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.HtmlFormViewer;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardPanel;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
@@ -36,7 +39,6 @@ import org.conservationmeasures.eam.views.workplan.CreateTaskDoer;
 import org.conservationmeasures.eam.views.workplan.DeleteWorkPlanTreeNode;
 import org.conservationmeasures.eam.views.workplan.TreeNodeDown;
 import org.conservationmeasures.eam.views.workplan.TreeNodeUp;
-import org.martus.swing.HtmlViewer;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetView extends TabbedView
@@ -143,9 +145,9 @@ public class BudgetView extends TabbedView
 		return treeTableComponent;
 	}
 
-	private HtmlViewer getBudgetComponent()
+	private Component getBudgetComponent()
 	{
-		HtmlViewer htmlViewer= new WizardHtmlViewer(null);
+		HtmlFormViewer htmlViewer= new WizardHtmlViewer(null);
 		htmlViewer.setText(
 				"<h2>Coming soon</h2>" +
 				"<STRONG>Tracking of Actual Expenses</STRONG> -&nbsp;" +

@@ -10,7 +10,6 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.Hashtable;
 
 import javax.swing.JComboBox;
 import javax.swing.event.DocumentEvent;
@@ -34,9 +33,9 @@ import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiEditorPane;
 
 
-public class EAMHtmlViewer extends UiEditorPane implements HyperlinkListener
+public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 {
-	public EAMHtmlViewer(String htmlSource, HyperlinkHandler hyperLinkHandler)
+	public HtmlFormViewer(String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
 		linkHandler = hyperLinkHandler;
 		
@@ -180,10 +179,8 @@ public class EAMHtmlViewer extends UiEditorPane implements HyperlinkListener
 		{
 			comboBox = (JComboBox)super.createComponent();
 			comboBox.addItemListener(this);
-			String elementName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
-			String key = handler.getClass().getSimpleName() + "." + elementName;
-			components.put(key,comboBox);
-			System.out.println("ADDING comboBox:" + key );
+			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
+			((HtmlFormEventHandler)handler).setComponent(fieldName, comboBox);
 			return comboBox;
 		}
 
@@ -210,10 +207,8 @@ public class EAMHtmlViewer extends UiEditorPane implements HyperlinkListener
 		{
 			textField = (JTextComponent)super.createComponent();
 			textField.getDocument().addDocumentListener(this);
-			String elementName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
-			String key = handler.getClass().getSimpleName() + "." + elementName;
-			components.put(key,textField);
-			System.out.println("ADDING textField:" + key );
+			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
+			((HtmlFormEventHandler)handler).setComponent(fieldName, textField);
 			return textField;
 		}
 
@@ -278,11 +273,5 @@ public class EAMHtmlViewer extends UiEditorPane implements HyperlinkListener
 	}
 	
 	HyperlinkHandler linkHandler;
-	//TODO: rather then making static the a method can be added to allow the handler to ask (getComponents method)for the table.
-	// This can be done also by pushing via a setComponents method on the handler interface ; also setComponent method can be used 
-	// bypassing the need for a table in the HtmlViewer all together. Note either of these solutions wouold also simplify the key 
-	// as only the element name attr would be needed.
-	// Side note: I tested if we can set the value of a component via the handler and yes you can at any time.
-	public static Hashtable components = new Hashtable();
 }
 

@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.martus.swing.HtmlViewer;
+import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
 
 public class WizardStep extends SkeletonWizardStep implements MouseListener
@@ -121,7 +121,7 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 	
 	class EditorActionCopy extends ActionCopy
 	{
-		public EditorActionCopy(MainWindow mainWindow, HtmlViewer htmlViewerToUse)
+		public EditorActionCopy(MainWindow mainWindow, HtmlFormViewer htmlViewerToUse)
 		{
 			super(mainWindow);
 			htmlViewer = htmlViewerToUse;
@@ -132,11 +132,11 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 			htmlViewer.copy();
 		}
 		
-		private HtmlViewer htmlViewer;
+		private HtmlFormViewer htmlViewer;
 	}
 	
 	HashMap nameToValueMap = new HashMap();
-	private HtmlViewer htmlViewer;
+	private HtmlFormViewer htmlViewer;
 
 
 }

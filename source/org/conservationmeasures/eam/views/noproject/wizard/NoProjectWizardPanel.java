@@ -5,7 +5,9 @@ import java.io.File;
 import java.util.HashMap;
 
 import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
+import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
@@ -13,6 +15,7 @@ import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
 import org.conservationmeasures.eam.views.noproject.RenameProject;
@@ -22,7 +25,7 @@ import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
 
-public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandler
+public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHandler
 {
 	public NoProjectWizardPanel(MainWindow mainWindowToUse) throws Exception
 	{
@@ -118,15 +121,22 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		String url;
 	}
 
-	public void valueChanged(String name, String value)
+	public void valueChanged(String widget, String newValue)
 	{
-		nameToValueMap.put(name, value);
+	}
+
+	
+	public void setComponent(String name, JComponent component)
+	{
+		System.out.println("HERE");
+		nameToValueMap.put(name, component);
+		
 	}
 	
 	public String getValue(String name)
 	{
 		if (nameToValueMap.containsKey(name))
-			return (String)nameToValueMap.get(name);
+			return ((JTextComponent)nameToValueMap.get(name)).getText();
 		return "";
 	}
 
@@ -232,5 +242,6 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 	int WELCOME;
 	int IMPORT;
 	int CREATE;
+
 
 }
