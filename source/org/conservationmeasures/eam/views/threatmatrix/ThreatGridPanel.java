@@ -169,6 +169,10 @@ public class ThreatGridPanel extends JPanel
 			int firstSpace = headerText.indexOf(' ');
 			if(firstSpace >= 0)
 				headerText = headerText.substring(0, firstSpace);
+			
+			if (headerText.length() == 0)
+				headerText = "W";
+			
 			TextLayout textLayout = new TextLayout(headerText, g2.getFont(), g2.getFontRenderContext());
 			int textWidth = textLayout.getBounds().getBounds().width;
 			int width = Math.max(DEFAULT_COLUMN_WIDTH, textWidth + 20);
