@@ -128,7 +128,6 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	
 	public void setComponent(String name, JComponent component)
 	{
-		System.out.println("HERE");
 		nameToValueMap.put(name, component);
 		
 	}
