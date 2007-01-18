@@ -12,7 +12,7 @@ public class ActionHelpButtonSupport extends MainWindowAction
 {
 	public ActionHelpButtonSupport(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "icons/lifebuoy16.png");
 	}
 
 	private static String getLabel()
