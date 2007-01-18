@@ -10,6 +10,7 @@ import info.clearthought.layout.TableLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.util.EventObject;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -44,10 +45,34 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 	
 	public void doIt() throws CommandFailedException
 	{
-		String title = EAM.text("Title|About Miradi");
-		showOkDialog(title, aboutText);
+		doIt(null);
 	}
 	
+	public void doIt(EventObject event) throws CommandFailedException
+	{
+		boolean initialSplash = (event == null);
+		String title = EAM.text("Title|About Miradi");
+		String text = aboutText;
+		if(!initialSplash)
+		{
+			text += getHelpAboutExtraText();
+		}
+		showOkDialog(title, text);
+	}
+
+	private String getHelpAboutExtraText()
+	{
+		try
+		{
+			return EAM.loadResourceFile(getClass(), "HelpAboutExtra.html");
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
 	void showOkDialog(String title, String body)
 	{
 		EAMDialog dlg = new EAMDialog(EAM.mainWindow, title);
