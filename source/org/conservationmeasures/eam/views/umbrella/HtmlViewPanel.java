@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -56,25 +57,10 @@ public class HtmlViewPanel implements HyperlinkHandler
 		contents.add(new JScrollPane(bodyComponent), BorderLayout.CENTER);
 		contents.add(createButtonBar(dlg), BorderLayout.AFTER_LAST_LINE);
 
-		dlg.setSize(900, 700);
+		Rectangle rectangle = Utilities.getViewableRectangle();
+		dlg.setSize(900, rectangle.height);
 		dlg.setVisible(true);
 	}
-	
-//FIXME: stoped working with this new apporach.	
-//	private void fudgeSize(EAMDialog dlg)
-//	{
-//		Dimension dimension = dlg.getSize();
-//		dimension.height = dimension.height - 70;
-//		dimension.width = dimension.width + 20;
-//		dlg.setSize(dimension);
-//		
-//		Rectangle rectangle = Utilities.getViewableRectangle();
-//		rectangle.height = rectangle.height - 20;
-//		
-//		dlg.setLocation(Utilities.center(dimension, rectangle));
-//	}
-	
-
 
 	private Box createButtonBar(EAMDialog dlg)
 	{
