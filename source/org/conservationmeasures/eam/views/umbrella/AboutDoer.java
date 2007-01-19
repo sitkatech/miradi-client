@@ -23,7 +23,6 @@ import javax.swing.border.EmptyBorder;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.VersionConstants;
 import org.conservationmeasures.eam.views.Doer;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
@@ -127,42 +126,33 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 	}
 	
 	static final String aboutText = 
-			"<table><tr>" +
-			"<td>" +
-			"<IMG src=\"images/miradi64.png\" height=64 width=64>" +
-			"</td>" +
-			"<td width='20'></td>" +
-			"<td>" + 
-			"<FONT face=Tahoma size=6><STRONG>Miradi </STRONG></FONT><sup>TM</sup>" +
-			"<BR>" +
-			"<FONT face=Tahoma size=4>" +
-			"<STRONG>Adaptive Management Software for Conservation Projects</STRONG>" +
-			"</FONT>&nbsp;" +
-			"</td>" +
-			"</tr></table>" +
-			"<FONT size=4>" +
-			"<P>(c) Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York on " + 
-			"behalf of the Conservation Measures Partnership (\"CMP\") and Beneficent " +
-			"Technology, Inc. (\"Benetech\"), Palo Alto, California.</P>" +
-			"<p>VERSION " + VersionConstants.VERSION_STRING +"</p>" +
-			"<P>NOT FOR REDISTRIBUTION<BR>This pre-release version is intended for evaluation " + 
-			"and feedback only. Please send suggestions and other feedback to " +
-			"<A href=\"mailto:feedback@miradi.org\">feedback@miradi.org</A>. You are not allowed " + 
-			"to redistribute this program without the express written permission of the CMP " +
-			"(<A href=\"http://www.conservationmeasures.org\">www.conservationmeasures.org</A>)" +
-			"&nbsp;or Benetech (<A href=\"http://www.benetech.org\">www.benetech.org</A>). You can also " +
-			"find more information about this software program at: " +
-			"<A href=\"http://www.miradi.org\">www.miradi.org</A>.</P>" +
-			"<P>This software program is being developed to assist conservation practitioners " + 
-			"to go through the adaptive management process outlined in the CMP's <EM>Open " +
-			"Standards for the Practice of Conservation</EM>.&nbsp;To obtain a copy of the " +
-			"latest version of these standards, go to " +
-			"</font>" +
-			"<A href=\"www.conservationmeasures.org\">" +
-			"<U><FONT color=#0000ff>www.conservationmeasures.org</U></FONT>" + 
-			"</A>" +
-			".&nbsp;&nbsp; </P>" +
-			"<P>&nbsp;</P>";
+		"<FONT face=Tahoma size=6><STRONG><IMG height=64  hspace=20 " +  
+		"src=\"icons/miradi64.png\"" + 
+		"width=64 align=left border=0>Miradi</STRONG> </FONT><FONT " +
+		"size=2>TM</FONT><BR><FONT face=Tahoma size=4><STRONG>Adaptive Management " + 
+		"Software for Conservation Projects</STRONG></FONT>&nbsp; " +
+		"<P>(c) Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York (on " + 
+		"behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent " +
+		"Technology, Inc. (\"Benetech\"), Palo Alto, California.</P>" +
+		"<P>Version 1.0 Beta, 2007-01-2x, xx:xx:xx</P>" +
+		"<P><STRONG><FONT size=4>Not for Redistribution</FONT><BR></STRONG>This " + 
+		"pre-release version is intended for evaluation and feedback only.&nbsp;You are " + 
+		"not allowed to redistribute this program without the express written permission " +
+		"of the CMP or Benetech.</P>" +
+		"<P><STRONG><FONT size=4>Updates and More Information</FONT><BR></STRONG>Before " + 
+		"running this program,&nbsp;check that you have&nbsp;the latest version at <A " +
+		"href=\"https://downloads.miradi.org\">https://downloads.miradi.org</A>.&nbsp;You " +
+		"can also find more information about this software program at <A " +
+		"href=\"http://www.miradi.org\">www.miradi.org</A>&nbsp;or by e-mailing " +
+		"<A href=\"mailto:info@miradi.org\">info@miradi.org</A>.&nbsp;Please send suggestions " + 
+		"and&nbsp;bug reports&nbsp;to <A " +
+		"href=\"mailto:feedback@miradi.org\">feedback@miradi.org</A>.</P>" +
+		"<P><STRONG><FONT size=4>About Miradi</FONT><BR></STRONG>This software program is " + 
+		"being developed to assist conservation practitioners to go through the adaptive " +
+		"management process outlined in the CMP's <EM>Open Standards for the Practice of " +
+		"Conservation</EM>.&nbsp;To obtain a copy of the latest version of these " +
+		"standards, go to " +
+		"<A href=\"http://www.conservationmeasures.org\"><U><FONT color=#0000ff>www.conservationmeasures.org</U></FONT></A>.&nbsp";
 	
 	public void buttonPressed(String buttonName)
 	{
