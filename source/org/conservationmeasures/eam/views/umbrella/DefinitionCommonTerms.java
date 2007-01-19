@@ -102,7 +102,7 @@ public class DefinitionCommonTerms
 		
 		
 		def = new Definition("ThreatRatingScope", 
-			"Scope (threat ratings) - A threat rating criterion that is most commonly defined " +
+			"Scope (Threat Rating) - A threat rating criterion that is most commonly defined " +
 			"spatially as the geographic scope of impact on the conservation target at the site " +
 			"that can reasonably be expected within ten years under current circumstances " +
 			"(i.e., given the continuation of the existing situation). ");
