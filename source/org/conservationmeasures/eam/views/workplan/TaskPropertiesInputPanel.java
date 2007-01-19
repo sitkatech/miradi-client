@@ -39,9 +39,6 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	
 	public void dispose()
 	{
-		if(editorComponent != null)
-			editorComponent.dispose();
-		editorComponent = null;
 		super.dispose();
 	}
 

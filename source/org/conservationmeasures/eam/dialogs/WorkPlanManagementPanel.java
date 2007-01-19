@@ -27,12 +27,6 @@ public class WorkPlanManagementPanel extends VerticalSplitPanel
 	
 	public void dispose()
 	{
-		treeTableComponent.dispose();
-		treeTableComponent = null;
-		
-		propertiesPanel.dispose();
-		propertiesPanel = null;
-		
 		super.dispose();
 	}
 
