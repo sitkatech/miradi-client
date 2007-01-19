@@ -106,7 +106,10 @@ class OverviewText extends HtmlBuilder
 						smallParagraph("These summary ratings are not entered directly, " +
 								"but are calculated as you rate the specific effects " +
 								"of threats on targets in the cells of the table.") +
-					""))
+					"<p></p>" +
+					"<table width='100%'><tr><td align='center'>" +
+					"<img src='images/ThreatRating/Wizard/threat-nav.png' width='512' height='370'></img>" +
+					"</td></tr></table>"))
 				))
 			);
 
