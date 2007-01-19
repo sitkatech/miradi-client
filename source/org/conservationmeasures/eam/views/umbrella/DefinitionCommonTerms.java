@@ -215,7 +215,11 @@ public class DefinitionCommonTerms
 		defs.put("Definition:OverallThreatRating", def);
 		
 
-		def = new Definition("Irreversibility", "Irreversibility is...");
+		def = new Definition("Irreversibility", "Irreversibility - A threat rating criterion that is" +
+				" defined as the degree to which the effects of a direct threat can be restored." +
+				" Note that irreversibility refers to the \"effects of the direct threat on" +
+				" the target\" not the direct threat itself - you can think of it as " +
+				"the \"recoverability\" of the target from the effects of the threat. ");
 		defs.put("Definition:Irreversibility", def);
 		
 
