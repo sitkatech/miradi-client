@@ -83,13 +83,14 @@ public class HtmlViewPanel implements HyperlinkHandler
 	private void fudgeSize(EAMDialog dlg)
 	{
 		Dimension dimension = dlg.getSize();
-		dimension.height = dimension.height - 70;
-		dimension.width = dimension.width + 20;
-		dlg.setSize(dimension);
-		
 		Rectangle rectangle = Utilities.getViewableRectangle();
-		rectangle.height = rectangle.height - 20;
-		
+		if (rectangle.height < dimension.height)
+		{
+			dimension.height = dimension.height - 70;
+			dimension.width = dimension.width + 20;
+			dlg.setSize(dimension);
+			rectangle.height = rectangle.height - 20;
+		}
 		dlg.setLocation(Utilities.center(dimension, rectangle));
 	}
 
