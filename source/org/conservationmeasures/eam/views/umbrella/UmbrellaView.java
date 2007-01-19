@@ -151,6 +151,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 
 	public void becomeActive() throws Exception
 	{
+		existingCommandListenerCount = getProject().getCommandListenerCount();
 		if(isActive)
 			EAM.logWarning("UmbrellaView.becomeActive was already active: " + getClass().getName());
 		getProject().addCommandExecutedListener(this);
@@ -164,6 +165,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		getProject().removeCommandExecutedListener(this);
 		isActive = false;
 		removeAll();
+		if(getProject().getCommandListenerCount() != existingCommandListenerCount)
+		{
+			EAM.logError("CommandListener orphaned by " + getClass());
+			getProject().logCommandListeners(System.err);
+		}
 	}
 	
 	public MainWindow getMainWindow()
@@ -454,6 +460,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private JComponent toolBar;
 	private HashMap actionToDoerMap;
 	private boolean isActive;
+	
+	private int existingCommandListenerCount;
 	
 	private ModelessDialogPanel activePropertiesPanel;
 	private ModelessDialogWithClose activePropertiesDlg;

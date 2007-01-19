@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.Arrays;
@@ -585,7 +586,7 @@ public class Project
 	{
 		EAM.logVerbose("Command executed: " + command.toString());
 		CommandExecutedEvent event = new CommandExecutedEvent(command);
-		for(int i=0; i < commandExecutedListeners.size(); ++i)
+		for(int i=0; i < getCommandListenerCount(); ++i)
 		{
 			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
 			listener.commandExecuted(event);
@@ -596,7 +597,7 @@ public class Project
 	{
 		EAM.logVerbose("Command undone: " + command.toString());
 		CommandExecutedEvent event = new CommandExecutedEvent(command);
-		for(int i=0; i < commandExecutedListeners.size(); ++i)
+		for(int i=0; i < getCommandListenerCount(); ++i)
 		{
 			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
 			listener.commandUndone(event);
@@ -605,13 +606,27 @@ public class Project
 	
 	void fireCommandFailed(Command command, CommandFailedException e)
 	{
-		for(int i=0; i < commandExecutedListeners.size(); ++i)
+		for(int i=0; i < getCommandListenerCount(); ++i)
 		{
 			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
 			listener.commandFailed(command, e);
 		}
 	}
 	
+	public int getCommandListenerCount()
+	{
+		return commandExecutedListeners.size();
+	}
+	
+	public void logCommandListeners(PrintStream out)
+	{
+		for(int i=0; i < getCommandListenerCount(); ++i)
+		{
+			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+			out.println(listener.getClass());
+		}
+	}
+
 	public boolean canUndo()
 	{
 		if(!isOpen())
@@ -640,10 +655,6 @@ public class Project
 		
 		projectInfo.setCurrentView(viewName);
 		
-		int newListenerCount = commandExecutedListeners.size();
-		if(previousCommandListenerCount != newListenerCount)
-			EAM.logDebug("Listener count went from " + previousCommandListenerCount + " to " + newListenerCount);
-		previousCommandListenerCount = newListenerCount;
 	}
 
 	public boolean isLegalViewName(String viewName)
@@ -1003,7 +1014,5 @@ public class Project
 	GraphLayoutCache graphLayoutCache;
 	DiagramSaver diagramSaver;
 	
-	private int previousCommandListenerCount;
-
 }
 
