@@ -23,6 +23,7 @@ import javax.swing.border.EmptyBorder;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.VersionConstants;
 import org.conservationmeasures.eam.views.Doer;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
@@ -126,15 +127,24 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 	}
 	
 	static final String aboutText = 
-		"<FONT face=Tahoma size=6><STRONG><IMG height=64  hspace=20 " +  
-		"src=\"icons/miradi64.png\"" + 
-		"width=64 align=left border=0>Miradi</STRONG> </FONT><FONT " +
-		"size=2>TM</FONT><BR><FONT face=Tahoma size=4><STRONG>Adaptive Management " + 
-		"Software for Conservation Projects</STRONG></FONT>&nbsp; " +
+		"<table><tr>" +
+		"<td>" +
+		"<IMG src=\"images/miradi64.png\" height=64 width=64>" +
+		"</td>" +
+		"<td width='20'></td>" +
+		"<td>" + 
+		"<FONT face=Tahoma size=6><STRONG>Miradi </STRONG></FONT><sup>TM</sup>" +
+		"<BR>" +
+		"<FONT face=Tahoma size=4>" +
+		"<STRONG>Adaptive Management Software for Conservation Projects</STRONG>" +
+		"</FONT>&nbsp;" +
+		"</td>" +
+		"</tr></table>" +
+		"<FONT size=4>" +
 		"<P>(c) Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York (on " + 
 		"behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent " +
 		"Technology, Inc. (\"Benetech\"), Palo Alto, California.</P>" +
-		"<P>Version 1.0 Beta, 2007-01-2x, xx:xx:xx</P>" +
+		"<p>VERSION " + VersionConstants.VERSION_STRING +"</p>" +
 		"<P><STRONG><FONT size=4>Not for Redistribution</FONT><BR></STRONG>This " + 
 		"pre-release version is intended for evaluation and feedback only.&nbsp;You are " + 
 		"not allowed to redistribute this program without the express written permission " +
