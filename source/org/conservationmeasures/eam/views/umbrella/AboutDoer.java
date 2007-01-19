@@ -133,7 +133,7 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 			"</td>" +
 			"<td width='20'></td>" +
 			"<td>" + 
-			"<FONT face=Tahoma size=6><STRONG>Miradi</STRONG></FONT><sup>TM</sup>" +
+			"<FONT face=Tahoma size=6><STRONG>Miradi </STRONG></FONT><sup>TM</sup>" +
 			"<BR>" +
 			"<FONT face=Tahoma size=4>" +
 			"<STRONG>Adaptive Management Software for Conservation Projects</STRONG>" +
