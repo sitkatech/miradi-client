@@ -32,6 +32,14 @@ public class BudgetPropertiesPanel extends DisposablePanel
 		add(tableEditorComponent, BorderLayout.CENTER);
 	}
 	
+	public void dispose()
+	{
+		inputPanel.dispose();
+		inputPanel = null;
+		
+		super.dispose();
+	}
+
 	public BudgetPropertiesInputPanel getInputPanel()
 	{
 		return inputPanel;

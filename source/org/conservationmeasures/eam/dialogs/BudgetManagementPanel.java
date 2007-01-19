@@ -31,7 +31,6 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 		treeTableComponent.dispose();
 		treeTableComponent = null;
 
-		propertiesPanel.dispose();
 		propertiesPanel = null;
 
 		super.dispose();
