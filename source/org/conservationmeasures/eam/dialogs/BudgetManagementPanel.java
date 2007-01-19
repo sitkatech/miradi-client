@@ -28,6 +28,7 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 
 	public void dispose()
 	{
+		// TODO: This should probably be disposed by whoever created it, not by this class
 		treeTableComponent.dispose();
 		treeTableComponent = null;
 
