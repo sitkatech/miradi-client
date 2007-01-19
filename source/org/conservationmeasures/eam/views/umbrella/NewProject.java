@@ -31,6 +31,9 @@ public class NewProject extends MainWindowDoer
 
 	public boolean isAvailable()
 	{
+		if (getProject().isOpen())
+			return false;
+		
 		return true;
 	}
 
