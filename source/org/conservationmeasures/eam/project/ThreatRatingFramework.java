@@ -173,9 +173,9 @@ public class ThreatRatingFramework
 		
 	}
 	
-	public ValueOption getHighestValueForThreat(BaseId threatId)
+	public ValueOption getHighestValueForTarget(BaseId targetId)
 	{
-		ThreatRatingBundle[] bundleArray = getBundlesForThisThreat(threatId);
+		ThreatRatingBundle[] bundleArray = getBundlesForThisTarget(targetId);
 		if(bundleArray.length == 0)
 			return findValueOptionByNumericValue(0);
 		ValueOption highestValue = getBundleValue(bundleArray[0]);
@@ -190,10 +190,10 @@ public class ThreatRatingFramework
 	
 	public ValueOption getProjectMajorityRating()
 	{
-		Factor[] threats = getProject().getFactorPool().getDirectThreats();
-		int[] highestValues = new int[threats.length];
-		for(int i = 0; i < threats.length; ++i)
-			highestValues[i] = getHighestValueForThreat(threats[i].getId()).getNumericValue();
+		Factor[] targets = getProject().getFactorPool().getTargets();
+		int[] highestValues = new int[targets.length];
+		for(int i = 0; i < targets.length; ++i)
+			highestValues[i] = getHighestValueForTarget(targets[i].getId()).getNumericValue();
 		
 		return getMajorityOfNumericValues(highestValues);
 	}
@@ -230,6 +230,12 @@ public class ThreatRatingFramework
 	
 	public ValueOption getTargetThreatRatingValue(BaseId targetId)
 	{
+		ThreatRatingBundle[] bundleArray = getBundlesForThisTarget(targetId);
+		return getSummaryOfBundles(bundleArray);
+	}
+
+	private ThreatRatingBundle[] getBundlesForThisTarget(BaseId targetId)
+	{
 		HashSet bundlesForThisThreat = new HashSet();
 		
 		Iterator iter = bundles.values().iterator();
@@ -240,7 +246,7 @@ public class ThreatRatingFramework
 				bundlesForThisThreat.add(bundle);
 		}
 		ThreatRatingBundle[] bundleArray = (ThreatRatingBundle[])bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
-		return getSummaryOfBundles(bundleArray);
+		return bundleArray;
 	}
 	
 	public ValueOption getProjectRollupRating()

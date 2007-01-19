@@ -236,14 +236,14 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("target value included contributing factor?", none, framework.getTargetThreatRatingValue(targetId));
 	}
 	
-	public void testGetHighestValueForThreat() throws Exception
+	public void testGetHighestValueForTarget() throws Exception
 	{
-		int[][] bundleValues = { {3}, {4} };
+		int[][] bundleValues = { {3,}, {4,}, };
 		ThreatRatingFramework trf = createFramework(bundleValues);
 		try
 		{
-			FactorId threatId = trf.getProject().getFactorPool().getDirectThreats()[0].getModelNodeId();
-			assertEquals(4, trf.getHighestValueForThreat(threatId).getNumericValue());
+			FactorId targetId = trf.getProject().getFactorPool().getTargets()[0].getModelNodeId();
+			assertEquals(4, trf.getHighestValueForTarget(targetId).getNumericValue());
 		}
 		finally
 		{
@@ -334,22 +334,22 @@ public class TestThreatRatingFramework extends EAMTestCase
 		Project tempProject = new ProjectForTesting(getName());
 		ThreatRatingFramework trf = tempProject.getThreatRatingFramework();
 		
-		int targetCount = bundleValues.length;
-		FactorId[] targetIds = new FactorId[targetCount];
-		for(int i = 0; i < targetCount; ++i)
-			targetIds[i] = createTarget(tempProject);
-
-		int threatCount = bundleValues[0].length;
+		int threatCount = bundleValues.length;
 		FactorId[] threatIds = new FactorId[threatCount];
 		for(int i = 0; i < threatCount; ++i)
 			threatIds[i] = createThreat(tempProject);
 		
-		for(int targetIndex = 0; targetIndex < targetCount; ++targetIndex)
+		int targetCount = bundleValues[0].length;
+		FactorId[] targetIds = new FactorId[targetCount];
+		for(int i = 0; i < targetCount; ++i)
+			targetIds[i] = createTarget(tempProject);
+
+		for(int threatIndex = 0; threatIndex < threatCount; ++threatIndex)
 		{
-			int[] valuesForTarget = bundleValues[targetIndex];
-			for(int threatIndex = 0; threatIndex < threatCount; ++threatIndex)
+			int[] valuesForThreat = bundleValues[threatIndex];
+			for(int targetIndex = 0; targetIndex < targetCount; ++targetIndex)
 			{
-				int numericValue = valuesForTarget[threatIndex];
+				int numericValue = valuesForThreat[targetIndex];
 				if(numericValue < 0)
 					continue;
 				ValueOption valueOption = trf.findValueOptionByNumericValue(numericValue);
