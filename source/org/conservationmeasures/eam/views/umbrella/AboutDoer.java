@@ -144,7 +144,7 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 		"<P>(c) Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York (on " + 
 		"behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent " +
 		"Technology, Inc. (\"Benetech\"), Palo Alto, California.</P>" +
-		"<p>VERSION " + VersionConstants.VERSION_STRING +"</p>" +
+		"<p>VERSION 1.0 Beta, " + VersionConstants.VERSION_STRING +"</p>" +
 		"<P><STRONG><FONT size=4>Not for Redistribution</FONT><BR></STRONG>This " + 
 		"pre-release version is intended for evaluation and feedback only.&nbsp;You are " + 
 		"not allowed to redistribute this program without the express written permission " +
