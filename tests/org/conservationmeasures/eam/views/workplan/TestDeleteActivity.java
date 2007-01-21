@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -59,17 +61,17 @@ public class TestDeleteActivity extends EAMTestCase
 			project.executeCommand(addResource3);
 			
 			assertEquals("Parent doesn't have child?", 1, parentHasChild.getSubtaskCount());
-			DeleteActivity.deleteTaskTree(project, leafChild);
+			transactionDeleteTask(project, leafChild);
 			assertEquals("Didn't delete subtasks?", 0, parentHasChild.getSubtaskCount());
 			Undo.undo(project);
 			assertEquals("Didn't restore subtasks?", 1, parentHasChild.getSubtaskCount());
 			
-			DeleteActivity.deleteTaskTree(project, parentNoChild);
+			transactionDeleteTask(project, parentNoChild);
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
 			Undo.undo(project);
 			assertEquals("Didn't restore activity?", 2, strategy.getActivityIds().size());
 			
-			DeleteActivity.deleteTaskTree(project, parentHasChild);
+			transactionDeleteTask(project, parentHasChild);
 			parentHasChild = null;
 		
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
@@ -83,5 +85,19 @@ public class TestDeleteActivity extends EAMTestCase
 		{
 			project.close();
 		}
+	}
+
+	private void transactionDeleteTask(Project project, Task leafChild) throws Exception
+	{
+		project.executeCommand(new CommandBeginTransaction());
+		try
+		{
+			DeleteActivity.deleteTaskTree(project, leafChild);
+		}
+		finally
+		{
+			project.executeCommand(new CommandEndTransaction());
+		}
+
 	}
 }

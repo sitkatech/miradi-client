@@ -61,6 +61,8 @@ public class DeleteActivity extends ObjectsDoer
 		String[] confirmText = {"Are you sure you want to delete?"};
 		if(!EAM.confirmDialog("Delete", confirmText, buttons))
 			return;
+		
+		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
 			//FIXME we are adding the parentRef during runtime to the tasks.
@@ -74,6 +76,10 @@ public class DeleteActivity extends ObjectsDoer
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			project.executeCommand(new CommandEndTransaction());
 		}
 	}
 
@@ -96,15 +102,7 @@ public class DeleteActivity extends ObjectsDoer
 	
 	private static void executeDeleteCommands(Project project, Command[] commands) throws ParseException, CommandFailedException
 	{
-		project.executeCommand(new CommandBeginTransaction());
-		try
-		{
-			project.executeCommands(commands);
-		}
-		finally
-		{
-			project.executeCommand(new CommandEndTransaction());
-		}
+		project.executeCommands(commands);
 	}
 
 	private static Command[] createDeleteCommands(Project project, Task task) throws Exception
