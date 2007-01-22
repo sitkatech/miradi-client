@@ -53,6 +53,13 @@ public class CommandDiagramAddFactor extends Command
 		}
 	}
 
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		CommandDiagramRemoveFactor commandDiagramRemoveFactor = new CommandDiagramRemoveFactor(insertedDiagramFactorId);
+		commandDiagramRemoveFactor.setFactorId(wrappedFactorId);
+		return commandDiagramRemoveFactor;
+	}
+
 	public void undo(Project target) throws CommandFailedException
 	{
 		try

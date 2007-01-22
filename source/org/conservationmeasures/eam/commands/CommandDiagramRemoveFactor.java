@@ -42,6 +42,11 @@ public class CommandDiagramRemoveFactor extends Command
 			throw new CommandFailedException(e);
 		}
 	}
+	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		return new CommandDiagramAddFactor(diagramFactorId, wrappedFactorId);
+	}
 
 	public void undo(Project target) throws CommandFailedException
 	{
@@ -66,6 +71,10 @@ public class CommandDiagramRemoveFactor extends Command
 		return wrappedFactorId;
 	}
 	
+	void setFactorId(FactorId wrappedFactorIdToUse)
+	{
+		wrappedFactorId = wrappedFactorIdToUse;
+	}
 	
 	public static final String COMMAND_NAME = "CommandDiagramRemoveFactor";
 
