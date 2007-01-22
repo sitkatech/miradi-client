@@ -7,14 +7,14 @@ package org.conservationmeasures.eam.diagram;
 
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
-import org.conservationmeasures.eam.commands.CommandDoNothing;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
+import org.conservationmeasures.eam.commands.CommandJump;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
@@ -113,7 +113,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	public void testGetIndexToUndoAndRedo() throws Exception
 	{
-		CommandDoNothing nop = new CommandDoNothing();
+		CommandJump nop = new CommandJump(4);
 		Project p = new ProjectForTesting(getName());
 		
 		assertFalse("already an undoable?", p.canUndo());

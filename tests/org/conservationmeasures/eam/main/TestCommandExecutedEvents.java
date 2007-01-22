@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.main;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDoNothing;
+import org.conservationmeasures.eam.commands.CommandJump;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -20,9 +20,9 @@ public class TestCommandExecutedEvents extends EAMTestCase
 
 	public void testBasics()
 	{
-		Command cmd = new CommandDoNothing();
+		Command cmd = new CommandJump(5);
 		CommandExecutedEvent event = new CommandExecutedEvent(cmd);
-		assertEquals(new CommandDoNothing(), event.getCommand());
+		assertEquals(cmd, event.getCommand());
 	}
 	
 	public void testProjectFiresEvent() throws Exception
@@ -57,7 +57,7 @@ public class TestCommandExecutedEvents extends EAMTestCase
 		assertEquals("executed not zero to start?", 0, listener.timesExecuted);
 		assertEquals("undone not zero to start?", 0, listener.timesUndone);
 		
-		Command cmd = new CommandDoNothing();
+		Command cmd = new CommandJump(5);
 		project.executeCommand(cmd);
 		assertEquals("execute didn't fire?", 1, listener.timesExecuted);
 		project.executeCommand(cmd);
