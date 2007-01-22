@@ -75,7 +75,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 		
 		if (rectangle.height > dim.height)
 			rectangle.height = dim.height + buttonBarHeight;
-
+//FIXME: method needs to be re thought 
 		dlg.setSize(forcedWidth, rectangle.height);
 	}
 
