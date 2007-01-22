@@ -20,6 +20,18 @@ public class TestCommandSetObjectData extends EAMTestCase
 		super(name);
 	}
 
+	public void testGetReverseCommand() throws Exception
+	{
+		//(int objectType, BaseId objectId, String fieldTag, String dataValue)
+		CommandSetObjectData commandSetObjectData = new CommandSetObjectData(ObjectType.TASK, new BaseId(68), Task.TAG_LABEL, "some value");
+		CommandSetObjectData reverseCommand = (CommandSetObjectData) commandSetObjectData.getReverseCommand();
+		
+		assertEquals("not same type?", commandSetObjectData.getObjectType(), reverseCommand.getObjectType());
+		assertEquals("not same id?", commandSetObjectData.getObjectId(), reverseCommand.getObjectId());
+		assertEquals("not same tag?", commandSetObjectData.getFieldTag(), reverseCommand.getFieldTag());
+		assertEquals("not same value?", commandSetObjectData.getPreviousDataValue(), reverseCommand.getDataValue());
+	}
+	
 	public void testListInsert() throws Exception
 	{
 		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));

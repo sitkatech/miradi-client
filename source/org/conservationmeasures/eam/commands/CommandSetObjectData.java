@@ -107,6 +107,11 @@ public class CommandSetObjectData extends Command
 		}
 	}
 
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		return new CommandSetObjectData(type, id, tag, oldValue);
+	}
+
 	public void undo(Project target) throws CommandFailedException
 	{
 		try
