@@ -18,7 +18,6 @@ public class TestCommandSetThreatRating extends EAMTestCase
 	
 	public void testGetReverseCommand() throws Exception
 	{
-		//(FactorId threatIdToUpdate, FactorId targetIdToUpdate, BaseId criterionIdToUpdate, BaseId valueIdToUse)
 		CommandSetThreatRating commandSetThreatRating = new CommandSetThreatRating(new FactorId(3), new FactorId(5), new BaseId(6), new BaseId(8));
 		CommandSetThreatRating reverseCommand = (CommandSetThreatRating) commandSetThreatRating.getReverseCommand();
 		
