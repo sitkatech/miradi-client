@@ -14,6 +14,13 @@ import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
 import org.conservationmeasures.eam.commands.TestCommandCreateObject;
+import org.conservationmeasures.eam.commands.TestCommandDeleteObject;
+import org.conservationmeasures.eam.commands.TestCommandDiagramAddFactor;
+import org.conservationmeasures.eam.commands.TestCommandDiagramAddFactorLink;
+import org.conservationmeasures.eam.commands.TestCommandDiagramMove;
+import org.conservationmeasures.eam.commands.TestCommandDiagramRemoveFactor;
+import org.conservationmeasures.eam.commands.TestCommandDiagramRemoveFactorLink;
+import org.conservationmeasures.eam.commands.TestCommandSetFactorSize;
 import org.conservationmeasures.eam.commands.TestCommandSetObjectData;
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDataUpgrader;
@@ -194,6 +201,13 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommands.class));
 		suite.addTest(new TestSuite(TestCommandCreateObject.class));
 		suite.addTest(new TestSuite(TestCommandSetObjectData.class));
+		suite.addTest(new TestSuite(TestCommandDeleteObject.class));
+		suite.addTest(new TestSuite(TestCommandDiagramAddFactor.class));
+		suite.addTest(new TestSuite(TestCommandDiagramAddFactorLink.class));
+		suite.addTest(new TestSuite(TestCommandDiagramMove.class));
+		suite.addTest(new TestSuite(TestCommandDiagramRemoveFactor.class));
+		suite.addTest(new TestSuite(TestCommandDiagramRemoveFactorLink.class));
+		suite.addTest(new TestSuite(TestCommandSetFactorSize.class));
 		
 		// ratings package
 		suite.addTest(new TestSuite(TestRatingChoice.class));
