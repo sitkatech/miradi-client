@@ -22,9 +22,11 @@ public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 	{
 		super(wizardToUse, criterionIdToUse);
 	}
-
-	public String getText()
+	
+	public String getResourceFileName()
 	{
-		return new ThreatRatingWizardSeverityText(getValueOptionLabels(), value.getLabel()).getText();
+		return HTML_FILENAME;
 	}
+
+	String HTML_FILENAME = "ThreatRatingScope.html";
 }
