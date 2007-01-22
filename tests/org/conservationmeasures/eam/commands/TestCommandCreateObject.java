@@ -22,6 +22,17 @@ public class TestCommandCreateObject extends EAMTestCase
 		super(name);
 	}
 
+	public void testGetReverseCommand() throws Exception
+	{
+		CommandCreateObject createCommand = new CommandCreateObject(ObjectType.TASK);
+		createCommand.setCreatedId(new BaseId(11));
+
+		CommandDeleteObject reversedCommand = (CommandDeleteObject)createCommand.getReverseCommand();
+
+		assertEquals("not same id?", createCommand.getCreatedId(), reversedCommand.getObjectId());
+		assertEquals("not same type", createCommand.getObjectType(), reversedCommand.getObjectType());
+	}
+	
 	public void testRedo() throws Exception
 	{
 		Project project = new ProjectForTesting(getName());

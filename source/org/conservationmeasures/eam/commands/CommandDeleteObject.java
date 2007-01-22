@@ -17,7 +17,7 @@ public class CommandDeleteObject extends Command
 	{
 		type = objectType;
 		id = objectId;
-		extraInfo = null;
+		reverseExtraInfo = null;
 	}
 	
 	public int getObjectType()
@@ -40,7 +40,7 @@ public class CommandDeleteObject extends Command
 		try
 		{
 			EAMObject object = target.findObject(type, id);
-			extraInfo = object.getCreationExtraInfo();
+			reverseExtraInfo = object.getCreationExtraInfo();
 			target.deleteObject(type, id);
 		}
 		catch (Exception e)
@@ -48,12 +48,19 @@ public class CommandDeleteObject extends Command
 			throw new CommandFailedException(e);
 		}
 	}
+	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		CommandCreateObject command = new CommandCreateObject(type, reverseExtraInfo);
+		command.setCreatedId(id);
+		return command;
+	}
 
 	public void undo(Project target) throws CommandFailedException
 	{
 		try
 		{
-			target.createObject(type, id, extraInfo);
+			target.createObject(type, id, reverseExtraInfo);
 		}
 		catch (Exception e)
 		{
@@ -65,5 +72,5 @@ public class CommandDeleteObject extends Command
 
 	int type;
 	BaseId id;
-	CreateObjectParameter extraInfo;
+	CreateObjectParameter reverseExtraInfo;
 }

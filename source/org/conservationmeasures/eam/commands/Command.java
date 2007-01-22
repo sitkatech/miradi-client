@@ -25,6 +25,11 @@ public abstract class Command
 		return false;
 	}
 	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		throw new CommandFailedException("Command Failed");
+	}
+	
 	abstract public String getCommandName();
 	abstract public void execute(Project target) throws CommandFailedException;
 	abstract public void undo(Project target) throws CommandFailedException;

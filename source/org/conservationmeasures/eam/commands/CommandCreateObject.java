@@ -24,6 +24,11 @@ public class CommandCreateObject extends Command
 		createdId = BaseId.INVALID;
 	}
 	
+	void setCreatedId(BaseId id)
+	{
+		createdId = id;
+	}
+	
 	public int getObjectType()
 	{
 		return type;
@@ -54,6 +59,11 @@ public class CommandCreateObject extends Command
 		{
 			throw new CommandFailedException(e);
 		}
+	}
+	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		return new CommandDeleteObject(type, createdId);
 	}
 
 	public void undo(Project target) throws CommandFailedException
