@@ -37,6 +37,11 @@ public class CommandSetThreatRating extends Command
 	{
 		previousValueId = setBundleValue(target, valueId, BaseId.INVALID);
 	}
+	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		return new CommandSetThreatRating(getThreatId(), getTargetId(), getCriterionId(), getPreviousValueId());
+	}
 
 	public void undo(Project target) throws CommandFailedException
 	{

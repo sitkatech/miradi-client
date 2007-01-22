@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.commands.TestCommandDiagramRemoveFactor;
 import org.conservationmeasures.eam.commands.TestCommandDiagramRemoveFactorLink;
 import org.conservationmeasures.eam.commands.TestCommandSetFactorSize;
 import org.conservationmeasures.eam.commands.TestCommandSetObjectData;
+import org.conservationmeasures.eam.commands.TestCommandSetThreatRating;
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDataUpgrader;
 import org.conservationmeasures.eam.database.TestProjectServer;
@@ -208,6 +209,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommandDiagramRemoveFactor.class));
 		suite.addTest(new TestSuite(TestCommandDiagramRemoveFactorLink.class));
 		suite.addTest(new TestSuite(TestCommandSetFactorSize.class));
+		suite.addTest(new TestSuite(TestCommandSetThreatRating.class));
 		
 		// ratings package
 		suite.addTest(new TestSuite(TestRatingChoice.class));
