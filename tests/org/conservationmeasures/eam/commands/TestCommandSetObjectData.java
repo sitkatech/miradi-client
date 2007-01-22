@@ -22,7 +22,6 @@ public class TestCommandSetObjectData extends EAMTestCase
 
 	public void testGetReverseCommand() throws Exception
 	{
-		//(int objectType, BaseId objectId, String fieldTag, String dataValue)
 		CommandSetObjectData commandSetObjectData = new CommandSetObjectData(ObjectType.TASK, new BaseId(68), Task.TAG_LABEL, "some value");
 		CommandSetObjectData reverseCommand = (CommandSetObjectData) commandSetObjectData.getReverseCommand();
 		
