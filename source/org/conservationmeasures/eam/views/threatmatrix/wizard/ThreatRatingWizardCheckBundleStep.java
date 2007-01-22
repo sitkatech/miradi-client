@@ -17,7 +17,6 @@ import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
@@ -30,15 +29,6 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 		super(wizardToUse);
 	}
 	
-	public String getText()
-	{
-		return CheckBundleText.build();
-	}
-
-	public boolean save() throws Exception
-	{
-		return true;
-	}
 
 	public void buttonPressed(String buttonName)
 	{
@@ -68,47 +58,6 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 			super.linkClicked(linkDescription);
 	}
 
-	static class CheckBundleText extends HtmlBuilder
-	{
-		public static String build()
-		{
-			return font("Arial", 
-				wizardFrame(tableRow(
-					tableCell(
-							heading("Check Overall Threat Rating") + 
-							paragraph("Once you have completed your ratings for all three criteria, " +
-									"the software automatically calculates the " +
-									definition("Definition:OverallThreatRating", "overall threat rating",
-											"The Overall Threat Rating is...") + 
-									" for this target and threat combination.  " +
-									"You should check whether you agree with this overall rating.  " +
-									"If it does not make sense, " +
-									"go back and adjust the ratings for the specific criteria.") +
-							newline() +
-							indent(table(
-								tableRow(
-									tableCell(button("Back", "&lt; Previous")) +
-									tableCell("&nbsp;") +
-									tableCell(button("Next", "Next &gt;")) 
-									)
-								)) + 
-							newline() +
-							"") +
-						hintTableCell(
-							smallParagraph(bold("Overall Threat Rating -- ") +
-									"Miradi calculates threat ratings " +
-									"using a rule-based system for combining the scope, severity, " +
-									"and irreversibility criteria.  " +
-									"These procedures involve specifying rules " +
-									"as to how different parameters should be combined with one another. " +
-									anchorTag(SHOW_RULES, "Click here") + 
-									" for a detailed description of this system.")
-						)
-					))
-				);
-
-		}
-	}
 
 	public class ShowBundleRulesDialog extends EAMDialog implements ActionListener
 	{
@@ -170,6 +119,13 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 		
 	}
 
+	
+	public String getResourceFileName()
+	{
+		return HTML_FILENAME;
+	}
+
+	String HTML_FILENAME = "ThreatRatingCheckBundle.html";
 	
 	static final String SHOW_RULES = "ShowRules";
 

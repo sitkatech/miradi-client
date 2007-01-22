@@ -30,16 +30,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 		super(wizardToUse);
 	}
 	
-	public String getText()
-	{
-		return CheckTotalsText.build();
-	}
-
-	public boolean save() throws Exception
-	{
-		return true;
-	}
-
+	
 	public void buttonPressed(String buttonName)
 	{
 		if(buttonName.equals("Back"))
@@ -68,51 +59,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 			super.linkClicked(linkDescription);
 	}
 
-	static class CheckTotalsText extends HtmlBuilder
-	{
-		public static String build()
-		{
-			return font("Arial", 
-				wizardFrame(tableRow(
-					tableCell(
-							heading("Threat Rating Summary") + 
-							paragraph("The table below contains a summary of your threat ratings. ") +
-							list(
-								listItem("The " +
-										bold("column on the far right ") +
-										"contains a summary of the overall rating of each threat across all targets.") +
-								listItem("The " +
-										bold("row on the bottom ") +
-										"contains a summary of the overall threat rating for each target.") +
-								listItem("Finally, the " +
-										bold("lowest right hand cell") +
-										" contains a summary of the threat rating for your entire project.")
-							) +
-							paragraph("These summary ratings are not entered directly, but are calculated as you rate the specific effects of threats on targets in the cells of the table.") +
-							paragraph("You should check whether you agree with these summary ratings.  If any of them do not make sense, you may need to go back and adjust the ratings for the specific criteria.") +
-							newline() +
-							indent(table(
-								tableRow(
-									tableCell(button("Back", "&lt; Previous")) +
-									tableCell("&nbsp;") +
-									tableCell(button("Next", "Next &gt;")) 
-									)
-								)) + 
-							newline() +
-							"") +
-						hintTableCell(
-							smallParagraph(bold("Summary Threat Ratings - ") +
-									"Miradi rolls up threat ratings " +
-									"for each target and threat using another rule-based system " +
-									"for combining ratings for each target-threat combination. " +
-									anchorTag(SHOW_RULES, "Click here") + 
-									" for a detailed description of this system.")
-						)
-					))
-				);
 
-		}
-	}
 
 	public class ShowBundleRulesDialog extends EAMDialog implements ActionListener
 	{
@@ -210,6 +157,12 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 		
 	}
 
+	public String getResourceFileName()
+	{
+		return HTML_FILENAME;
+	}
+
+	String HTML_FILENAME = "ThreatRatingCheckTotals.html";
 	
 	static final String SHOW_RULES = "ShowRules";
 }
