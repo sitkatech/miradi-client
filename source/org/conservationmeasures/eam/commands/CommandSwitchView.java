@@ -40,6 +40,11 @@ public class CommandSwitchView extends Command
 		target.switchToView(toView);
 	}
 	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		return new CommandSwitchView(getPreviousView());
+	}
+
 	public String toString()
 	{
 		StringBuffer string = new StringBuffer();
