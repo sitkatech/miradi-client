@@ -45,6 +45,12 @@ public class CommandDiagramMove extends Command
 			throw new CommandFailedException(e);
 		}
 	}
+	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		CommandDiagramMove command = new CommandDiagramMove(-getDeltaX(), -getDeltaY(), getIds());
+		return command;
+	}
 
 	public void undo(Project target) throws CommandFailedException
 	{
