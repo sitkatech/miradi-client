@@ -13,6 +13,7 @@ import junit.framework.TestCase;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
+import org.conservationmeasures.eam.commands.TestCommandBeginTransaction;
 import org.conservationmeasures.eam.commands.TestCommandCreateObject;
 import org.conservationmeasures.eam.commands.TestCommandDeleteObject;
 import org.conservationmeasures.eam.commands.TestCommandDiagramAddFactor;
@@ -20,6 +21,7 @@ import org.conservationmeasures.eam.commands.TestCommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.TestCommandDiagramMove;
 import org.conservationmeasures.eam.commands.TestCommandDiagramRemoveFactor;
 import org.conservationmeasures.eam.commands.TestCommandDiagramRemoveFactorLink;
+import org.conservationmeasures.eam.commands.TestCommandEndTransaction;
 import org.conservationmeasures.eam.commands.TestCommandSetFactorSize;
 import org.conservationmeasures.eam.commands.TestCommandSetObjectData;
 import org.conservationmeasures.eam.commands.TestCommandSetThreatRating;
@@ -212,6 +214,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommandSetFactorSize.class));
 		suite.addTest(new TestSuite(TestCommandSetThreatRating.class));
 		suite.addTest(new TestSuite(TestCommandSwitchView.class));
+		suite.addTest(new TestSuite(TestCommandBeginTransaction.class));
+		suite.addTest(new TestSuite(TestCommandEndTransaction.class));
 		
 		// ratings package
 		suite.addTest(new TestSuite(TestRatingChoice.class));

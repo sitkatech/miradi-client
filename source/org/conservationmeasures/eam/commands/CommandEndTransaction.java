@@ -19,6 +19,11 @@ public class CommandEndTransaction extends Command
 	public void execute(Project target) throws CommandFailedException 
 	{
 	}
+	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		return new CommandBeginTransaction();
+	}
 
 	public void undo(Project target) throws CommandFailedException
 	{
