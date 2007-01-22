@@ -17,9 +17,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.views.threatmatrix.NonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
-import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class ThreatRatingWizardChooseBundle extends WizardStep
+public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 {
 	public ThreatRatingWizardChooseBundle(ThreatRatingWizardPanel wizardToUse)
 	{
@@ -72,12 +71,6 @@ public class ThreatRatingWizardChooseBundle extends WizardStep
 		super.buttonPressed(buttonName);
 	}
 
-
-	ThreatRatingWizardPanel getThreatRatingWizard()
-	{
-		return (ThreatRatingWizardPanel)getWizard();
-	}
-	
 	
 	private String getName(FactorId nodeId)
 	{
