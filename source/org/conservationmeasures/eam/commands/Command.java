@@ -27,7 +27,7 @@ public abstract class Command
 	
 	public Command getReverseCommand() throws CommandFailedException
 	{
-		throw new CommandFailedException("Command Failed");
+		throw new CommandFailedException("Unimplemented getReverseCommand: " + getClass());
 	}
 	
 	abstract public String getCommandName();
