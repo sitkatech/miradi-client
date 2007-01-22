@@ -23,6 +23,11 @@ public class CommandBeginTransaction extends Command
 	{
 	}
 	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		return new CommandEndTransaction();
+	}
+
 	public String getCommandName()
 	{
 		return COMMAND_NAME;
