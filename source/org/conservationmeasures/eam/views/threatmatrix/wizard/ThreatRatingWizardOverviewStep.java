@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
@@ -17,16 +16,6 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
 	public ThreatRatingWizardOverviewStep(ThreatRatingWizardPanel wizardToUse) 
 	{
 		super(wizardToUse);
-	}
-	
-	public String getText()
-	{
-		return OverviewText.build();
-	}
-
-	public boolean save() throws Exception
-	{
-		return true;
 	}
 
 	public void linkClicked(String linkDescription)
@@ -47,71 +36,15 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
 		else 
 			super.linkClicked(linkDescription);
 	}
-
-}
-
-class OverviewText extends HtmlBuilder
-{
-	public static String build()
+	
+	public String getResourceFileName()
 	{
-		return font("Arial", 
-			wizardFrame(tableRow(
-				tableCell(
-						heading("Intro to Threat Rating View") + 
-						paragraph("The table below contains a summary of your threat ratings.  " +
-							"Threat/Target combinations that have been rated " +
-							"should appear colored in.") +
-						paragraph("If there is a threat or target that is missing, " +
-							"return to the " + 
-							anchorTag("View:Diagram", "diagram view") + " to add it. " +
-							"If a threat is not linked to a specific target, " +
-							"you can create this by clicking on a blank cell in the table (note that this also creates a corresponding link in the diagram).") +
-						paragraph(bold("Click next to continue with the threat rating process.")) +
-						newline() +
-						indent(table(
-							tableRow(
-								tableCell(button("Back", "&lt; Previous")) +
-								tableCell("&nbsp;") +
-								tableCell(button("Next", "Next &gt;")) 
-								)
-							)) + 
-						newline() +
-						"") +
-					hintTableCell(
-						hintHeading("Guide to the Threat Rating Summary Table") + 
-						smallParagraph(("The " + bold("far left hand column ") +
-								"is a listing of all threats and the " +
-								bold("top row ") +
-								"is a listing of all targets for your project. To " + bold("sort the table, ") +
-								"click on any cell in the header row to sort by that column. " +
-								"You can also " + bold("move") + " or " + bold("change the width ") + "of columns.") + 
-						smallParagraph("The " +
-								"cells of the table " +
-								"show the overall threat ratings for each threat " +
-								"on each target that it affects.  " +
-								"You can click on a cell to bring up the specific criteria " +
-								"that go into the overall threat ratings. To " + bold("create a new link") + " between a threat and target, click on a blank cell in the table. ") + 
-						smallParagraph("Finally, the table contains three types of summary ratings:") +
-						list(
-							listItem(smallParagraph("The " +
-									bold("column on the far right ") +
-									"contains a summary of the overall rating of each threat across all targets.")) +
-							listItem(smallParagraph("The " +
-									bold("row on the bottom ") +
-									"contains a summary of the overall threat rating for each target.")) + 
-							listItem(smallParagraph("Finally, the " +
-									bold("lowest right hand cell ") +
-									"contains a summary of the threat rating for your entire project."))
-							) +
-						smallParagraph("These summary ratings are not entered directly, " +
-								"but are calculated as you rate the specific effects " +
-								"of threats on targets in the cells of the table.") +
-					"<p></p>" +
-					"<table width='100%'><tr><td align='center'>" +
-					"<img src='images/ThreatRating/Wizard/threat-nav.png' width='512' height='370'></img>" +
-					"</td></tr></table>"))
-				))
-			);
-
+		return HTML_FILENAME;
 	}
+
+	String HTML_FILENAME = "ThreatRatingOverview.html";
+
+
 }
+
+
