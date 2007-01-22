@@ -29,6 +29,11 @@ public class CommandSetFactorSize extends Command
 		 previousSize = doSetSize(target, getCurrentSize(), getPreviousSize()); 
 	}
 	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		return new CommandSetFactorSize(id, getPreviousSize(), getCurrentSize());
+	}
+	
 	public void undo(Project target) throws CommandFailedException
 	{
 		doSetSize(target, getPreviousSize(), getCurrentSize());
