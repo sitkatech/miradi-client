@@ -42,6 +42,13 @@ public class CommandDiagramRemoveFactorLink extends Command
 			throw new CommandFailedException(e);
 		}
 	}
+	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		CommandDiagramAddFactorLink commandDiagramAddFactorLink = new CommandDiagramAddFactorLink(wrappedFactorLinkId);
+		commandDiagramAddFactorLink.setDiagramFactorLinkId(diagramFactorLinkId);
+		return commandDiagramAddFactorLink;
+	}
 
 	public void undo(Project target) throws CommandFailedException
 	{
@@ -66,7 +73,10 @@ public class CommandDiagramRemoveFactorLink extends Command
 		return wrappedFactorLinkId;
 	}
 
-	
+	void setFactorLinkId(FactorLinkId factorLinkIdToUse)
+	{
+		wrappedFactorLinkId = factorLinkIdToUse;
+	}
 
 	public static final String COMMAND_NAME = "CommandDiagramRemoveFactorLink";
 
