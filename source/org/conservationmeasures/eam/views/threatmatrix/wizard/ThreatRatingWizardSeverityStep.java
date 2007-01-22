@@ -28,5 +28,5 @@ public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "ThreatRatingScope.html";
+	String HTML_FILENAME = "ThreatRatingSeverity.html";
 }
