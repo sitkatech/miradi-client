@@ -40,7 +40,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 		htmlFileName = htmlFileNameToUse;
 	}
 
-	void showOkDialog()
+	public void showOkDialog()
 	{
 		String title = EAM.text("Title|" + viewTitle);
 		EAMDialog dlg = new EAMDialog(EAM.mainWindow, title);
