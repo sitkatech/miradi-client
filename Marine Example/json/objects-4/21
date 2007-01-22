@@ -1,1 +1,1 @@
-{"Type":"Factor","Subtype":"IndirectFactor","Comment":"","GoalIds":"","IndicatorId":-1,"IndicatorIds":"","Label":"International Demand for Shark Fins","Id":21,"ObjectiveIds":""}
+{"Type":"Factor","Comment":"Shark fins are being driven by the Asian market","GoalIds":"","TaxonomyCode":"","IndicatorIds":"{\"Ids\":[56]}","Label":"International Demand for Shark Fins","Id":21,"ObjectiveIds":"{\"Ids\":[54]}"}
