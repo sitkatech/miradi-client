@@ -36,7 +36,7 @@ public class TestCommandExecutedEvents extends EAMTestCase
 
 			public void commandUndone(CommandExecutedEvent event)
 			{
-				++timesUndone;
+				//++timesUndone;
 			}
 			
 			public void commandFailed(Command command, CommandFailedException e)
@@ -64,12 +64,12 @@ public class TestCommandExecutedEvents extends EAMTestCase
 		assertEquals("execute didn't fire again?", 2, listener.timesExecuted);
 
 		project.undo();
-		assertEquals("undo fired an execute?", 2, listener.timesExecuted);
-		assertEquals("undo didn't fire?", 1, listener.timesUndone);
+		assertEquals("undo didn't fire an execute?", 3, listener.timesExecuted);
+		assertEquals("undo didn't fire?", 0, listener.timesUndone);
 
 		project.redo();
-		assertEquals("redo's command didn't fire?", 3, listener.timesExecuted);
-		assertEquals("undo fired for redo?", 1, listener.timesUndone);
+		assertEquals("redo's command didn't fire?", 4, listener.timesExecuted);
+		assertEquals("undo fired for redo?", 0, listener.timesUndone);
 		
 		try 
 		{

@@ -29,9 +29,9 @@ public class Redo extends ProjectDoer
 		try
 		{
 			Command redone = project.redo();
-			if(redone.isBeginTransaction())
+			if(redone.isEndTransaction())
 			{
-				while(!redone.isEndTransaction())
+				while(!redone.isBeginTransaction())
 					redone = project.redo();
 			}
 		}

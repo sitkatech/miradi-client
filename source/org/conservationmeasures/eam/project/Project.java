@@ -498,8 +498,8 @@ public class Project
 		try
 		{
 			isExecuting = true;
-			undoWithoutRecording(cmd);
-			fireCommandUndone(cmd);
+			executeWithoutRecording(cmd);
+			fireCommandExecuted(cmd);
 			return cmd;
 		}
 		finally
@@ -514,8 +514,8 @@ public class Project
 		try
 		{
 			isExecuting = true;
-			executeWithoutRecording(cmd);
-			fireCommandExecuted(cmd);
+			executeWithoutRecording(cmd.getReverseCommand());
+			fireCommandExecuted(cmd.getReverseCommand());
 			return cmd;
 		}
 		finally
@@ -537,27 +537,14 @@ public class Project
 		}
 	}
 	
-	private void undoWithoutRecording(Command command) throws CommandFailedException
-	{
-		try 
-		{
-			command.undo(this);
-		} 
-		catch (CommandFailedException e) 
-		{
-			fireCommandFailed(command, e);
-			throw(e);
-		}
-	}
-	
 	public void recordCommand(Command command)
 	{
 		try
 		{
-			undoRedoState.pushUndoableCommand(command);
+			undoRedoState.pushUndoableCommand(command.getReverseCommand());
 			fireCommandExecuted(command);
 		}
-		catch (IOException e)
+		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
