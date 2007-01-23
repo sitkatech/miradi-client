@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.umbrella;
+package org.conservationmeasures.eam.utils;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

@@ -10,6 +10,7 @@ import java.util.EventObject;
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
 public class HelpButtonDoer extends MainWindowDoer

@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.views.umbrella.HtmlViewPanel;
+import org.conservationmeasures.eam.utils.HtmlViewPanel;
 
 public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 {
