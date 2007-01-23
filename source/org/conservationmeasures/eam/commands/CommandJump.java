@@ -28,6 +28,11 @@ public class CommandJump extends Command
 	public void undo(Project target) throws CommandFailedException
 	{
 	}
+	
+	public Command getReverseCommand() throws CommandFailedException
+	{
+		return new CommandJump(previousStep);
+	}
 
 	public static final String COMMAND_NAME = "Jump";
 	
