@@ -28,8 +28,8 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.ImageView;
 import javax.swing.text.html.StyleSheet;
 
+import org.conservationmeasures.eam.main.EAMResourceImageIcon;
 import org.martus.swing.HyperlinkHandler;
-import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiEditorPane;
 
 
@@ -257,7 +257,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 			{
 				try
 				{
-					ResourceImageIcon icon = new ResourceImageIcon(name);
+					EAMResourceImageIcon icon = new EAMResourceImageIcon(name);
 					image = icon.getImage();
 				}
 				catch(NullPointerException e)
