@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.umbrella;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.EventObject;
-import java.util.HashMap;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -56,17 +55,8 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 	
 	public void valueChanged(String name, String value)
 	{
-		nameToValueMap.put(name, value);
 	}
 	
-	public String getValue(String name)
-	{
-		if (nameToValueMap.containsKey(name))
-			return (String)nameToValueMap.get(name);
-		return "";
-	}
-
-
 
 	public JPopupMenu getRightClickMenu(Actions actions)
 	{
@@ -135,7 +125,6 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 		private HtmlFormViewer htmlViewer;
 	}
 	
-	HashMap nameToValueMap = new HashMap();
 	private HtmlFormViewer htmlViewer;
 
 

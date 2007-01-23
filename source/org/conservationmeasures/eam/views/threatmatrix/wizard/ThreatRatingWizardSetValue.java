@@ -56,7 +56,6 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 	
 	public void valueChanged(String widget, String newValue)
 	{
-		setValue(newValue);
 	}
 	
 	public void setValue(String newValue)
@@ -110,6 +109,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 			try
 			{
 				//TODO: Make hot value change here
+				setValue(valueBox.getSelectedItem().toString());
 			}
 			catch(Exception e)
 			{
