@@ -32,9 +32,9 @@ public class Undo extends ProjectDoer
 		try
 		{
 			Command undone = project.undo();
-			if(undone.isBeginTransaction())
+			if(undone.isEndTransaction())
 			{
-				while(!undone.isEndTransaction())
+				while(!undone.isBeginTransaction())
 					undone = project.undo();
 			}
 		}

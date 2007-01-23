@@ -498,8 +498,8 @@ public class Project
 		try
 		{
 			isExecuting = true;
-			executeWithoutRecording(cmd);
-			fireCommandExecuted(cmd);
+			executeWithoutRecording(cmd.getReverseCommand());
+			fireCommandExecuted(cmd.getReverseCommand());
 			return cmd;
 		}
 		finally
@@ -514,8 +514,8 @@ public class Project
 		try
 		{
 			isExecuting = true;
-			executeWithoutRecording(cmd.getReverseCommand());
-			fireCommandExecuted(cmd.getReverseCommand());
+			executeWithoutRecording(cmd);
+			fireCommandExecuted(cmd);
 			return cmd;
 		}
 		finally
@@ -541,7 +541,7 @@ public class Project
 	{
 		try
 		{
-			undoRedoState.pushUndoableCommand(command.getReverseCommand());
+			undoRedoState.pushUndoableCommand(command);
 			fireCommandExecuted(command);
 		}
 		catch (Exception e)
