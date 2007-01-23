@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.util.HashMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
@@ -133,15 +132,13 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	
 	public void setComponent(String name, JComponent component)
 	{
-		nameToValueMap.put(name, component);
-		
+		if (name.equals("NewProjectName"))
+			newProjectNameField = (JTextComponent)component;
 	}
 	
 	public String getValue(String name)
 	{
-		if (nameToValueMap.containsKey(name))
-			return ((JTextComponent)nameToValueMap.get(name)).getText();
-		return "";
+		return newProjectNameField.getText();
 	}
 
 	public void buttonPressed(String buttonName)
@@ -232,7 +229,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		return mainWindow;
 	}
 
-	HashMap nameToValueMap = new HashMap();
+	JTextComponent newProjectNameField;
 	
 	public static final String OPEN_PREFIX = "OPEN:";
 	public static final String COPY_PREFIX = "COPY:";
