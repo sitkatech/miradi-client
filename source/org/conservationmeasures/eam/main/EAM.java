@@ -7,10 +7,8 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.Color;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
@@ -249,15 +247,19 @@ public class EAM
 
 
 
-	public static String loadResourceFile(Class thisClass, String resourceFileName) throws IOException
+	public static String loadResourceFile(Class thisClass, String resourceFileName) throws Exception
 	{
 		URL htmlFile = thisClass.getResource(resourceFileName);
-		InputStream inputStream = htmlFile.openStream();
-		if (testDirectoryExist)
+
+		boolean doesTestDirectoryExist = new File(EAM.getHomeDirectory(),TEST_DIRECTORY_NAME).exists();
+		if (doesTestDirectoryExist)
 		{
-			inputStream = getAlternateLoaderInputStream(htmlFile.getPath());
+			int index = htmlFile.getPath().indexOf(CLASS_DIRECTORY_PATH);
+			String relatviePath = htmlFile.getPath().substring(index);
+			htmlFile = getAlternateLoader(relatviePath, htmlFile);
 		}
 		
+		InputStream inputStream = htmlFile.openStream();
 		UnicodeReader reader = new UnicodeReader(inputStream);
 		try
 		{
@@ -276,10 +278,11 @@ public class EAM
 		try
 		{
 			URL url = ResourceImageIcon.class.getClassLoader().getResource(resourceFileName);
-			
-			if (testDirectoryExist)
+
+			boolean doesTestDirectoryExist = new File(EAM.getHomeDirectory(),TEST_DIRECTORY_NAME).exists();
+			if (doesTestDirectoryExist)
 			{
-				url = getAlternateImageURL(resourceFileName, url);
+				url = getAlternateLoader(resourceFileName, url);
 			}
 			
 			return url;
@@ -291,10 +294,10 @@ public class EAM
 		}
 	}
 
-	private static URL getAlternateImageURL(String resourceFileName, URL url) throws MalformedURLException
+	private static URL getAlternateLoader(String relatviePath, URL url) throws MalformedURLException
 	{
 		File home = EAM.getHomeDirectory();
-		File newLoadPath = new File(new File(home,TEST_DIRECTORY_NAME),resourceFileName);
+		File newLoadPath = new File(new File(home,TEST_DIRECTORY_NAME),relatviePath);
 		if (newLoadPath.exists())
 		{
 			 return new URL("file:"+newLoadPath.getPath());
@@ -303,26 +306,12 @@ public class EAM
 		return url;
 	}
 	
-	private static InputStream getAlternateLoaderInputStream(String path) throws FileNotFoundException
-	{
-		int index = path.indexOf(CLASS_DIRECTORY_PATH);
-		String relatviePath = path.substring(index);
-		File home = EAM.getHomeDirectory();
-		File newLoadPath = new File(new File(home,TEST_DIRECTORY_NAME),relatviePath);
-		if (newLoadPath.exists())
-		{
-			return new FileInputStream(newLoadPath);
-		}
-		System.out.println("File not found in test directory:" + newLoadPath);
-		return new FileInputStream(path);
-	}
-	
+
 	
 	///////////////////////////////////////////////////////////////////
 	
 	private final static String CLASS_DIRECTORY_PATH = "org/conservationmeasures/eam";
 	private final static String TEST_DIRECTORY_NAME = "Test";
-	private final static boolean testDirectoryExist = new File(EAM.getHomeDirectory(),TEST_DIRECTORY_NAME).exists();
 	
 	public static int STANDARD_SCROLL_INCREMENT = 12;
 
