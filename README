@@ -30,12 +30,9 @@ Portions of the code are from the Martus(tm) free, social justice
 documentation and monitoring software, Copyright (C) 2001-2007, Beneficent 
 Technology, Inc. (Benetech).
 
-   
-The jgraph.jar file is copyright JGraph Ltd, and is 
-  distributed under the LGPL as described in LICENSE.jgraph
-  It is not been modified from the original version, 
-  which is available from http://jgraph.com
-  
+Miradi relies on the following third-party libraries: BrowserLauncher2, 
+jcalendar, jexcel, jgraph, jhlabs, jtreetable, and tableLayout.
+
 
 ---------------------
 PREREQUISITES
@@ -67,19 +64,18 @@ Mac OS X:
 - Make sure Apple's official Java is installed
 
 - Point your web browser at https://downloads.miradi.org
-  If you get a browser warning, it is because we are using a self signed
-  SSL Certificate for the download site. 
 
 - Download Miradi-Mac.zip and unzip the contents into some working 
   directory. 
 
-- Copy all the .jar files except miradi.jar to the 
+- Copy the contents of the LibExt directory to the 
   System/Library/Java/Extensions folder
 
 - Copy miradi.jar to your desktop, or wherever you wish to launch it from.
 
 - Ctrl-click on miradi.jar, and choose "Java Launcher (Default)
 
+- MarineExample.zip is a sample project that can be imported into Miradi
 
 
 GNU/Linux:
@@ -87,13 +83,11 @@ GNU/Linux:
 - Make sure Sun's official Java 1.5 is installed
 
 - Point your web browser at https://downloads.miradi.org
-  If you get a browser warning, it is because we are using a self signed
-  SSL Certificate for the download site. 
 
 - Download Miradi-Linux.zip and unzip the contents into some working 
   directory. 
 
-- Copy all the .jar files except miradi.jar to the 
+- Copy the contents of the LibExt directory to the 
   System/Library/Java/Extensions folder
 
 - Copy miradi.jar to a "permanent" location, such as /usr/local/lib or 
@@ -102,6 +96,8 @@ GNU/Linux:
 - To run Miradi, use this command line:
     java -cp <path-to-miradi.jar> org.conservationmeasures.main.Miradi
     
+- MarineExample.zip is a sample project that can be imported into Miradi
+
 
 
 ---------------------
@@ -109,18 +105,19 @@ Upgrading From Earlier Versions
 
 This is the first public release of Miradi. 
 
-If you have an earlier pre-release version of Miradi 
-installed, you can just install Miradi 1.0-Beta right 
-over it.
+If you have an earlier pre-release version of Miradi installed, you can 
+just install Miradi 1.0-Beta right over it. This is also true if you were 
+using e-Adaptive Management (the working name for earlier versions of Miradi).
 
-If you had e-Adaptive Management (the working name for 
-earlier versions of Miradi) installed, we recommend 
-that you uninstall it first, and then install Miradi. 
-Your existing e-Adaptive Management projects will be 
-imported into Miradi. However, the Miradi Marine Example 
-project will not be installed, unless you manually 
-delete the eAM project directory before installing 
-Miradi. This eAM directory is in your HOME directory.
+If a Miradi (or eAM) project directory exists when you install Miradi, the 
+new Marine Example project will not be installed. In order to install the 
+example project, you must manually delete the Miradi (or eAM) project 
+directory before installing Miradi. This Miradi (or eAM) directory is in 
+your HOME directory.
+
+If you installed e-Adaptive Management, we recommend that you uninstall it 
+first, and then install Miradi. Your existing e-Adaptive Management projects 
+(in the eAM directory) will be imported into Miradi. 
 
 
 ---------------------
