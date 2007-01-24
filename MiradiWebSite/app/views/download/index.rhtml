@@ -1,4 +1,5 @@
 <h1>Miradi Downloads</h1>
+<p>Logged in as: <strong><%= session[:user].email %></strong></p>
 <p>Files available for download:</p>
 <ul>
 <li><a href='download_file?file=MiradiSetup.exe'>MiradiSetup.exe</a></li>
@@ -6,4 +7,8 @@
 <li><a href=''>Miradi-Linux.zip</a></li>
 <li><a href=''>MarineExample.zip</a></li>
 <li><a href='download_file?file=README'>README</a></li>
-</li>
+</ul>
+
+<p>
+<%= link_to "Logout", "/logout" %>
+</p>
