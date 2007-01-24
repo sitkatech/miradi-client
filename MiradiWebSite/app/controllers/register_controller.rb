@@ -1,5 +1,5 @@
 class RegisterController < ApplicationController
-  def attempt
+  def index
     if request.post?
   	  email = params[:user][:email]
   	  password = params[:user][:password]
@@ -9,7 +9,6 @@ class RegisterController < ApplicationController
   	  if !ac
   	    session[:user] = nil
   	    flash[:warning] = "Unknown Access Code"
-  	    redirect_to :action => 'index'
   	    return
   	  end
   	  
@@ -21,7 +20,6 @@ class RegisterController < ApplicationController
       else
         session[:user] = nil
         flash[:warning] = "Registration unsuccessful"
-        redirect_to "/register"
       end
   
     end

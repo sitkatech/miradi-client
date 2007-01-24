@@ -1,17 +1,25 @@
 class User < ActiveRecord::Base
   attr_accessor :password
+  attr_accessor :password_confirmation
 
   validates_uniqueness_of :email
+  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"  
+  validates_length_of :password, :within => 5..40
+  validates_presence_of :email, :password, :password_confirmation, :password_salt
+  validates_confirmation_of :password
+
+  
   
   def admin?
     return self.admin_flag
   end
 
-  def password=(password)
+  def password=(pass)
+    @password = pass
     if !(self.password_salt?)
       self.password_salt = User.random_string(10)
     end
-    self.password_hash = User.encrypt(password, self.password_salt)
+    self.password_hash = User.encrypt(@password, self.password_salt)
   end
 
 
