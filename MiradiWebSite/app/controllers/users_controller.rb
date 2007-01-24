@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :admin_required
+
   def index
     list
     render :action => 'list'

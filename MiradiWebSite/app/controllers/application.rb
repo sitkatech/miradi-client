@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
     redirect_to :controller => "login"
     return false 
   end
+  
+  def admin_required
+    if session[:user] && session[:user].admin?
+      return true
+    end
+    redirect_to :controller => "login"
+    return false 
+  end
 end

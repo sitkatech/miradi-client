@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   validates_uniqueness_of :email
+  
+  def admin?
+    return self.admin_flag
+  end
 
   def password=(password)
     if !(self.password_salt?)
