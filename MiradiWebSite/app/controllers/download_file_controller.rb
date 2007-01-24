@@ -1,6 +1,8 @@
 $available_files = ['README']
 
 class DownloadFileController < ApplicationController
+  before_filter :login_required
+
   def index
 	file = params[:file]
 	if(!$available_files.index(file))

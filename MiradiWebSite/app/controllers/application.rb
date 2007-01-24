@@ -4,4 +4,14 @@
 class ApplicationController < ActionController::Base
   # Pick a unique cookie name to distinguish our session data from others'
   session :session_key => '_miradi.org_session_id'
+
+
+  def login_required
+    if session[:user]
+      return true
+    end
+    flash[:warning]='Please login to continue'
+    redirect_to :controller => "login"
+    return false 
+  end
 end
