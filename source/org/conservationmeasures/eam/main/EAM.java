@@ -251,8 +251,7 @@ public class EAM
 	{
 		URL url = thisClass.getResource(resourceFileName);
 
-		boolean doesTestDirectoryExist = new File(EAM.getHomeDirectory(),EXTERNAL_RESOURCE_DIRECTORY_NAME).exists();
-		if (doesTestDirectoryExist)
+		if (doesTestDirectoryExist())
 		{
 			//FIXME: should find a better approach then using indexOf
 			int index = url.getPath().indexOf(CLASS_DIRECTORY_PATH);
@@ -272,7 +271,6 @@ public class EAM
 		}
 	}
 
-
 	
 	public static URL loadResourceImageFile(String resourceFileName) 
 	{
@@ -280,8 +278,7 @@ public class EAM
 		{
 			URL url = ResourceImageIcon.class.getClassLoader().getResource(resourceFileName);
 
-			boolean doesTestDirectoryExist = new File(EAM.getHomeDirectory(),EXTERNAL_RESOURCE_DIRECTORY_NAME).exists();
-			if (doesTestDirectoryExist)
+			if (doesTestDirectoryExist())
 			{
 				url = findAlternateResource(resourceFileName, url);
 			}
@@ -294,12 +291,11 @@ public class EAM
 			return null;
 		}
 	}
+	
 
 	private static URL findAlternateResource(String relativePath, URL url) throws MalformedURLException
 	{
-		File home = EAM.getHomeDirectory();
-		File testDirectory = new File(home,EXTERNAL_RESOURCE_DIRECTORY_NAME);
-		File newLoadPath = new File(testDirectory,relativePath);
+		File newLoadPath = getAlternateDirectory(relativePath);
 		if (newLoadPath.exists())
 		{
 			 return newLoadPath.toURL();
@@ -307,7 +303,20 @@ public class EAM
 		EAM.logVerbose("File not found in external resource directory directory:" + newLoadPath);
 		return url;
 	}
+
+	private static File getAlternateDirectory(String relativePath)
+	{
+		File home = EAM.getHomeDirectory();
+		File testDirectory = new File(home,EXTERNAL_RESOURCE_DIRECTORY_NAME);
+		return new File(testDirectory,relativePath);
+	}
 	
+	
+	private static boolean doesTestDirectoryExist()
+	{
+		return new File(EAM.getHomeDirectory(),EXTERNAL_RESOURCE_DIRECTORY_NAME).exists();
+	}
+
 
 	
 	///////////////////////////////////////////////////////////////////
