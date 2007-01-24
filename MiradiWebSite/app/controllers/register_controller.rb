@@ -6,7 +6,7 @@ class RegisterController < ApplicationController
   	  access_code = params[:user][:access_code]
   	  
   	  ac = AccessCode.find(:first, :conditions=>["code = ?", access_code])
-  	  if !ac
+  	  if UserCount > 0 && !ac
   	    session[:user] = nil
   	    flash[:warning] = "Unknown Access Code"
   	    return
