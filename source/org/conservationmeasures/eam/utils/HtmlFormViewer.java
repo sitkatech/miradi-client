@@ -12,6 +12,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.HyperlinkEvent;
@@ -133,11 +134,15 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 				}
 				if(typeAttribute.equals("text"))
 				{
-					return new OurTexView(elem, handler);
+					return new OurTextView(elem, handler);
 				}
 				if(typeAttribute.equals("textarea"))
 				{
-					return new OurTexView(elem, handler);
+					return new OurTextView(elem, handler);
+				}
+				if(typeAttribute.equals("label"))
+				{
+					return new OurLabelView(elem, handler);
 				}
 			}
 			else if(elem.getName().equals("img"))
@@ -195,9 +200,9 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 	}
 	
 	
-	class OurTexView extends FormView implements DocumentListener
+	class OurTextView extends FormView implements DocumentListener
 	{
-		public OurTexView(Element elem, HyperlinkHandler handlerToUse)
+		public OurTextView(Element elem, HyperlinkHandler handlerToUse)
 		{
 			super(elem);
 			handler = handlerToUse;
@@ -205,9 +210,9 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 
 		protected Component createComponent()
 		{
+			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
 			textField = (JTextComponent)super.createComponent();
 			textField.getDocument().addDocumentListener(this);
-			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
 			((HtmlFormEventHandler)handler).setComponent(fieldName, textField);
 			return textField;
 		}
@@ -243,6 +248,26 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 
 	}
 
+	
+	class OurLabelView extends FormView
+	{
+		public OurLabelView(Element elem, HyperlinkHandler handlerToUse)
+		{
+			super(elem);
+			handler = handlerToUse;
+		}
+
+		protected Component createComponent()
+		{
+			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
+			JLabel label = new JLabel("");
+			((HtmlFormEventHandler)handler).setComponent(fieldName, label);
+			return label;
+		}
+
+		HyperlinkHandler handler;
+	}
+	
 	class OurImageView extends ImageView
 	{
 		public OurImageView(Element elem)
