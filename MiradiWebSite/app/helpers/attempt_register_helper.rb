@@ -1,0 +1,2 @@
+module AttemptRegisterHelper
+end

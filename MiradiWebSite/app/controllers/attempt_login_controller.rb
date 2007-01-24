@@ -1,9 +1,9 @@
 class AttemptLoginController < ApplicationController
   def index
-  	email = params[:user][:email]
-  	password = params[:user][:password]
-  	
   	if request.post?
+      email = params[:user][:email]
+      password = params[:user][:password]
+      
   	  u = User.authenticate(email, password)
       if u
         session[:user] = u 
