@@ -30,7 +30,7 @@ test:
 
 production:
   adapter: mysql
-  database: miradi.org_production
-  username: root
+  database: miradi
+  username: miradi
   password: 
   host: localhost
