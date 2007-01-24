@@ -13,6 +13,10 @@ class RegisterController < ApplicationController
   	  end
   	  
       @user = User.new(@params[:user])
+      if User.count == 0
+        @user.admin_flag = true
+      end
+      
       if @user.save
         session[:user] = User.authenticate(email, password)
         flash[:message] = "Registration successful"
