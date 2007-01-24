@@ -249,17 +249,18 @@ public class EAM
 
 	public static String loadResourceFile(Class thisClass, String resourceFileName) throws Exception
 	{
-		URL htmlFile = thisClass.getResource(resourceFileName);
+		URL url = thisClass.getResource(resourceFileName);
 
-		boolean doesTestDirectoryExist = new File(EAM.getHomeDirectory(),TEST_DIRECTORY_NAME).exists();
+		boolean doesTestDirectoryExist = new File(EAM.getHomeDirectory(),EXTERNAL_RESOURCE_DIRECTORY_NAME).exists();
 		if (doesTestDirectoryExist)
 		{
-			int index = htmlFile.getPath().indexOf(CLASS_DIRECTORY_PATH);
-			String relatviePath = htmlFile.getPath().substring(index);
-			htmlFile = getAlternateLoader(relatviePath, htmlFile);
+			//FIXME: should find a better approach then using indexOf
+			int index = url.getPath().indexOf(CLASS_DIRECTORY_PATH);
+			String relativePath = url.getPath().substring(index);
+			url = findAlternateResource(relativePath, url);
 		}
 		
-		InputStream inputStream = htmlFile.openStream();
+		InputStream inputStream = url.openStream();
 		UnicodeReader reader = new UnicodeReader(inputStream);
 		try
 		{
@@ -279,10 +280,10 @@ public class EAM
 		{
 			URL url = ResourceImageIcon.class.getClassLoader().getResource(resourceFileName);
 
-			boolean doesTestDirectoryExist = new File(EAM.getHomeDirectory(),TEST_DIRECTORY_NAME).exists();
+			boolean doesTestDirectoryExist = new File(EAM.getHomeDirectory(),EXTERNAL_RESOURCE_DIRECTORY_NAME).exists();
 			if (doesTestDirectoryExist)
 			{
-				url = getAlternateLoader(resourceFileName, url);
+				url = findAlternateResource(resourceFileName, url);
 			}
 			
 			return url;
@@ -294,15 +295,16 @@ public class EAM
 		}
 	}
 
-	private static URL getAlternateLoader(String relatviePath, URL url) throws MalformedURLException
+	private static URL findAlternateResource(String relativePath, URL url) throws MalformedURLException
 	{
 		File home = EAM.getHomeDirectory();
-		File newLoadPath = new File(new File(home,TEST_DIRECTORY_NAME),relatviePath);
+		File testDirectory = new File(home,EXTERNAL_RESOURCE_DIRECTORY_NAME);
+		File newLoadPath = new File(testDirectory,relativePath);
 		if (newLoadPath.exists())
 		{
-			 return new URL("file:"+newLoadPath.getPath());
+			 return newLoadPath.toURL();
 		}
-		System.out.println("File not found in test directory:" + newLoadPath);
+		EAM.logVerbose("File not found in external resource directory directory:" + newLoadPath);
 		return url;
 	}
 	
@@ -311,7 +313,7 @@ public class EAM
 	///////////////////////////////////////////////////////////////////
 	
 	private final static String CLASS_DIRECTORY_PATH = "org/conservationmeasures/eam";
-	private final static String TEST_DIRECTORY_NAME = "Test";
+	private final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
 	
 	public static int STANDARD_SCROLL_INCREMENT = 12;
 
