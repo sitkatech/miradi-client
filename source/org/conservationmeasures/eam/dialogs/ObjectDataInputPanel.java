@@ -13,7 +13,6 @@ import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
@@ -27,7 +26,6 @@ import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -192,10 +190,6 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		updateFieldsFromProject();
 	}
 
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-	}
-	
 	boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
 	{
 		if(!event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))

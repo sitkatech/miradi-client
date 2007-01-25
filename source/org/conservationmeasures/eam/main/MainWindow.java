@@ -27,7 +27,6 @@ import javax.swing.ToolTipManager;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -292,11 +291,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		updateAfterCommand(event);
-	}
-
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-		mainStatusBar.setStatusError(e);
 	}
 	
 	private void updateAfterCommand(CommandExecutedEvent event)

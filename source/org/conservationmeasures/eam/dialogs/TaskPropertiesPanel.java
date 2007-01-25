@@ -10,8 +10,6 @@ import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
@@ -82,12 +80,6 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		inputPanel.commandExecuted(event);
 	}
 
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-		super.commandFailed(command, e);
-		inputPanel.commandFailed(command, e);
-	}
-	
 	Project project;
 	AssignmentEditorComponent editorComponent;
 	TaskPropertiesInputPanel inputPanel;	

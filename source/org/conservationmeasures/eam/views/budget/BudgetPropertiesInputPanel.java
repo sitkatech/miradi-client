@@ -6,11 +6,9 @@
 package org.conservationmeasures.eam.views.budget;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.BudgetTableEditorComponent;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
@@ -54,10 +52,6 @@ public class BudgetPropertiesInputPanel extends ObjectDataInputPanel
 		super.commandExecuted(event);
 		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			updateTable((CommandSetObjectData)event.getCommand());
-	}
-	
-	public void commandFailed(Command command, CommandFailedException e)
-	{
 	}
 	
 	BudgetTableEditorComponent tableEditorComponent;

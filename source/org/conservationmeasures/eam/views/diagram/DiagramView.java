@@ -58,7 +58,6 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -347,10 +346,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 //			EAM.errorDialog("WARNING: Unexpected problem occurred during grouping");
 //		}
 //	}
-
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-	}
 
 	private void setModeIfRelevant(CommandSetObjectData cmd, String newMode)
 	{

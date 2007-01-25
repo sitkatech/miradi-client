@@ -442,10 +442,6 @@ public class TestCommands extends EAMTestCase
 			
 		}
 
-		public void commandFailed(Command command, CommandFailedException e)
-		{
-		}
-		
 		Vector undoneCommands;
 	}
 	

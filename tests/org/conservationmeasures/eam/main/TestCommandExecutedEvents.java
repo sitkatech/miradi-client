@@ -33,24 +33,14 @@ public class TestCommandExecutedEvents extends EAMTestCase
 			{
 				++timesExecuted;
 			}
-
-			public void commandFailed(Command command, CommandFailedException e)
-			{
-				++failureCount;
-			}
-
-
 			
 			public int timesExecuted;
-			public int timesUndone;
-			public int failureCount;
 		}
 		
 		Project project = new ProjectForTesting(getName());
 		TestListener listener = new TestListener();
 		project.addCommandExecutedListener(listener);
 		assertEquals("executed not zero to start?", 0, listener.timesExecuted);
-		assertEquals("undone not zero to start?", 0, listener.timesUndone);
 		
 		Command cmd = new CommandJump(5);
 		project.executeCommand(cmd);
@@ -60,11 +50,9 @@ public class TestCommandExecutedEvents extends EAMTestCase
 
 		project.undo();
 		assertEquals("undo didn't fire an execute?", 3, listener.timesExecuted);
-		assertEquals("undo didn't fire?", 0, listener.timesUndone);
-
+		
 		project.redo();
 		assertEquals("redo's command didn't fire?", 4, listener.timesExecuted);
-		assertEquals("undo fired for redo?", 0, listener.timesUndone);
 		
 		try 
 		{
@@ -73,8 +61,7 @@ public class TestCommandExecutedEvents extends EAMTestCase
 		catch (CommandFailedException ignoreExpected) 
 		{
 		}
-		assertEquals("redo again fired a failure?", 0, listener.failureCount);
-		
+
 		project.removeCommandExecutedListener(listener);
 		project.close();
 	}

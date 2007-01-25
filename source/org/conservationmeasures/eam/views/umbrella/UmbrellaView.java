@@ -23,14 +23,13 @@ import org.conservationmeasures.eam.actions.ActionAboutCMP;
 import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionConfigureExport;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
-import org.conservationmeasures.eam.actions.ActionHelpButtonSupport;
-import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
 import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
 import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
 import org.conservationmeasures.eam.actions.ActionHelpButtonMoreInfo;
+import org.conservationmeasures.eam.actions.ActionHelpButtonSupport;
 import org.conservationmeasures.eam.actions.ActionHelpButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionHelpCMPStandards;
 import org.conservationmeasures.eam.actions.ActionHelpComingAttractions;
@@ -41,6 +40,7 @@ import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionPreferences;
 import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
 import org.conservationmeasures.eam.actions.ActionRedo;
+import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
@@ -116,7 +116,6 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePropertiesPanel;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -419,10 +418,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		closeActivePropertiesDialogIfWeDeletedItsObject(event.getCommand());
 	}
 
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-	}
-	
 	void closeActivePropertiesDialogIfWeDeletedItsObject(Command rawCommand)
 	{
 		if(activePropertiesDlg == null)

@@ -13,11 +13,9 @@ import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.ObjectsAction;
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -114,10 +112,6 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 		}
 	}
 
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-	}
-	
 	public void addButton(ObjectsAction action)
 	{
 		addButton(createObjectsActionButton(action, table));

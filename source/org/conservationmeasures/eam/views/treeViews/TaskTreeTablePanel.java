@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -257,10 +256,6 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		}
 		
 		setSelectedRow(currentSelectedRow);
-	}
-
-	public void commandFailed(Command command, CommandFailedException e)
-	{
 	}
 
 	private void setSelectedRow(int currentSelectedRow)

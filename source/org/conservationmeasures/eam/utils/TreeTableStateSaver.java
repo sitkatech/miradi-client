@@ -10,9 +10,7 @@ import java.text.ParseException;
 import javax.swing.JTree;
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -39,10 +37,6 @@ public class TreeTableStateSaver implements CommandExecutedListener
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		executeTreeStateRestore(event);
-	}
-
-	public void commandFailed(Command command, CommandFailedException e)
-	{
 	}
 
 	private void executeTreeStateRestore(CommandExecutedEvent event)

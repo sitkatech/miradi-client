@@ -532,7 +532,6 @@ public class Project
 		} 
 		catch (CommandFailedException e) 
 		{
-			fireCommandFailed(command, e);
 			throw(e);
 		}
 	}
@@ -577,15 +576,6 @@ public class Project
 		{
 			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
 			listener.commandExecuted(event);
-		}
-	}
-	
-	void fireCommandFailed(Command command, CommandFailedException e)
-	{
-		for(int i=0; i < getCommandListenerCount(); ++i)
-		{
-			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
-			listener.commandFailed(command, e);
 		}
 	}
 	
@@ -910,10 +900,6 @@ public class Project
 			save();
 		}
 
-		public void commandFailed(Command command, CommandFailedException e)
-		{
-		}
-		
 		void save()
 		{
 			if(!isOpen())

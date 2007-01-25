@@ -8,10 +8,8 @@ package org.conservationmeasures.eam.views.workplan;
 import javax.swing.BorderFactory;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
@@ -76,11 +74,6 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		super.commandExecuted(event);
 		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			updateTable();
-	}
-		
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-		super.commandFailed(command, e);
 	}
 		
 	Project project;
