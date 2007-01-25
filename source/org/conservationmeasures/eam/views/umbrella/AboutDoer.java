@@ -10,10 +10,8 @@ import java.util.EventObject;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPopupMenu;
-import javax.swing.SwingUtilities;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.VersionConstants;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 import org.conservationmeasures.eam.utils.HtmlViewPanel;
@@ -32,30 +30,7 @@ public class AboutDoer extends Doer  implements HtmlFormEventHandler
 	
 	public void doIt() throws CommandFailedException
 	{
-		//FIXME:  error only happens when entering from splash page: the following code resolves the problem but not sure why
-		// wiht this code no error is thrown at any time and the splash page behavor is as before
-		
-		try
-		{
-			SwingUtilities.invokeAndWait(new Runnable()
-			{
-				public void run()
-				{
-					try
-					{
-						doIt(null);
-					}
-					catch(Exception e)
-					{
-						EAM.logException(e);
-					}
-				}
-			});
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
+		doIt(null);
 	}
 	
 	public void doIt(EventObject event) throws CommandFailedException

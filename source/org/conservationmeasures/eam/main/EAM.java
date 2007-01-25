@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Locale;
 
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -29,6 +30,7 @@ import org.martus.util.UnicodeReader;
 
 public class EAM
 {
+
 	public static void main(String[] args)
 	{
 		if(!handleEamToMiradiMigration())
@@ -44,9 +46,7 @@ public class EAM
 			setBestLookAndFeel();
 			VersionConstants.setVersionString();
 			Translation.loadFieldLabels();
-	
-			mainWindow = new MainWindow();
-			mainWindow.start(args);
+			SwingUtilities.invokeAndWait(new MainWindowRunner(args));
 		}
 		catch(Exception e)
 		{
@@ -54,6 +54,7 @@ public class EAM
 			errorDialog(e.getMessage());
 		}
 	}
+
 	
 	public static String getJavaVersion()
 	{
@@ -182,6 +183,29 @@ public class EAM
 	public static void logVerbose(String text)
 	{
 		Logging.logVerbose(text);
+	}
+	
+	private static final class MainWindowRunner implements Runnable
+	{
+		MainWindowRunner(String[] argsToUse)
+		{
+			args = argsToUse;
+		}
+		
+		public void run()
+		{
+			try
+			{
+				mainWindow = new MainWindow();
+				mainWindow.start(args);
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+		
+		String[] args;
 	}
 	
 	public static final int LOG_QUIET = Logging.LOG_QUIET;
@@ -317,8 +341,6 @@ public class EAM
 		return new File(EAM.getHomeDirectory(),EXTERNAL_RESOURCE_DIRECTORY_NAME).exists();
 	}
 
-
-	
 	///////////////////////////////////////////////////////////////////
 	
 	private final static String CLASS_DIRECTORY_PATH = "org/conservationmeasures/eam";
@@ -337,6 +359,7 @@ public class EAM
 	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
 
-
-	
 }
+
+
+
