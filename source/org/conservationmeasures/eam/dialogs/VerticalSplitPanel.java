@@ -13,20 +13,26 @@ import java.awt.LayoutManager2;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
-import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 
 abstract public class VerticalSplitPanel extends ModelessDialogPanel
 {
-	public VerticalSplitPanel(MainWindow mainWindowToUse)
+	public VerticalSplitPanel(SplitterPositionSaver splitPositionSaverToUse, Component top, Component bottom)
 	{
-		this(mainWindowToUse, new BorderLayout());
+		this(splitPositionSaverToUse, new BorderLayout());
+		createVerticalSplitPane(top, bottom);
 	}
 	
-	public VerticalSplitPanel(MainWindow mainWindowToUse, LayoutManager2 layoutToUse)
+	public VerticalSplitPanel(SplitterPositionSaver splitPositionSaverToUse)
+	{
+		this(splitPositionSaverToUse, new BorderLayout());
+	}
+	
+	public VerticalSplitPanel(SplitterPositionSaver splitPositionSaverToUse, LayoutManager2 layoutToUse)
 	{
 		super(layoutToUse);
-		mainWindow = mainWindowToUse;
+		splitPositionSaver = splitPositionSaverToUse;
 	}
 
 	public void createVerticalSplitPane(Component top, Component bottom)
@@ -34,8 +40,8 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		JScrollPane treeComponentScroll = new JScrollPane(top);
 		JScrollPane propertiesScroll = new JScrollPane(bottom);
 			
-		String splitterName = mainWindow.getProject().getCurrentView() + PROPERTIES_SPLITTER;
-		ViewSplitPane splitter = new ViewSplitPane(mainWindow, splitterName, treeComponentScroll, propertiesScroll );
+		String splitterName = splitPositionSaver.getSplitterName() + PROPERTIES_SPLITTER;
+		ViewSplitPane splitter = new ViewSplitPane(splitPositionSaver, splitterName, treeComponentScroll, propertiesScroll );
 		add(splitter, BorderLayout.CENTER);
 	}
 	
@@ -45,7 +51,6 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		component.setPreferredSize(dimension);
 	}
 
-	private MainWindow mainWindow;
-	
+	private SplitterPositionSaver splitPositionSaver;	
 	private static final String PROPERTIES_SPLITTER = "PropertiesSplitter"; 
 }

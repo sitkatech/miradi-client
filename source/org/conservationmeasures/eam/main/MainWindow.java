@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectRepairer;
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.BudgetView;
@@ -52,7 +53,7 @@ import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.util.DirectoryLock;
 
-public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
+public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner, SplitterPositionSaver
 {
 	public MainWindow() throws IOException
 	{
@@ -395,6 +396,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		repaint();
 	}
 
+	public String getSplitterName()
+	{
+		return getProject().getCurrentView();
+	}
+	
 	public void setSplitterLocationToMiddle(String name)
 	{
 		preferences.setTaggedInt(name, 0);

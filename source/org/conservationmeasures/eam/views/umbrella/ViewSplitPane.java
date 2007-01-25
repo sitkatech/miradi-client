@@ -10,15 +10,14 @@ import java.awt.Container;
 
 import javax.swing.JSplitPane;
 
-import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 
 public class ViewSplitPane extends JSplitPane
 {
-		
-	public ViewSplitPane(MainWindow mainWindowToUse, String splitterNameToUse, Container topPanel, Container bottomPanel) 
+	public ViewSplitPane(SplitterPositionSaver splitPositionSaverToUse,  String splitterNameToUse, Container topPanel, Container bottomPanel) 
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
-		mainWindow = mainWindowToUse;
+		splitPositionSaver = splitPositionSaverToUse;
 		splitterName = splitterNameToUse;
 		
 		setOneTouchExpandable(true);
@@ -28,13 +27,13 @@ public class ViewSplitPane extends JSplitPane
 		setBottomComponent(bottomPanel);
 		setFocusable(false);
 		
-		setDividerLocationWithoutNotifications(mainWindow.getSplitterLocation(splitterName));
+		setDividerLocationWithoutNotifications(splitPositionSaver.getSplitterLocation(splitterName));
 	}
 
 	public void setDividerLocation(int location)
 	{
 		setDividerLocationWithoutNotifications(location);
-		mainWindow.setSplitterLocation(splitterName, location);
+		splitPositionSaver.setSplitterLocation(splitterName, location);
 	}
 
 	private void setDividerLocationWithoutNotifications(int location)
@@ -42,6 +41,6 @@ public class ViewSplitPane extends JSplitPane
 		super.setDividerLocation(location);
 	}
 
-	MainWindow mainWindow;
 	String splitterName;
+	private SplitterPositionSaver splitPositionSaver;
 }
