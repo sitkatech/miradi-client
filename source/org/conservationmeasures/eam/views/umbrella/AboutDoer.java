@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import java.awt.Point;
 import java.util.EventObject;
 
 import javax.swing.JComponent;
@@ -86,9 +85,6 @@ public class AboutDoer extends Doer  implements HtmlFormEventHandler
 	{
 		if (name.equals("Version"))
 		{
-			//TODO: location adjustment can be moved to the FORM VIEWER iteself
-			Point p = ((JLabel)component).getLocation();
-			((JLabel)component).setLocation(p.x, p.y-4);
 			String text = "<html><strong>" + VersionConstants.VERSION_STRING  + "</strong></html>";
 			((JLabel)component).setText(text);
 		}
