@@ -33,7 +33,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 	public HtmlViewPanel(String titleToUse, Class viewClassToUse, String htmlFileNameToUse)
 	{
-		this(titleToUse,  viewClassToUse,  htmlFileNameToUse, null);
+		this(titleToUse,  viewClassToUse,  htmlFileNameToUse, new DummyHandler());
 	}
 
 	
@@ -43,7 +43,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		viewTitle = titleToUse;
 		viewClass = viewClassToUse;
 		htmlFileName = htmlFileNameToUse;
-		htmlFormEventHandler = handlerToUse;
+		delegateFormHandler = handlerToUse;
 	}
 	
 	
@@ -131,15 +131,12 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 	public void buttonPressed(String buttonName)
 	{
-		if (htmlFormEventHandler!=null)
-			htmlFormEventHandler.buttonPressed(buttonName);
+		delegateFormHandler.buttonPressed(buttonName);
 	}
 
 	public JPopupMenu getRightClickMenu(String url)
 	{
-		if (htmlFormEventHandler!=null)
-			return htmlFormEventHandler.getRightClickMenu(url);
-		return null;
+		return delegateFormHandler.getRightClickMenu(url);
 	}
 
 	public void linkClicked(String linkDescription)
@@ -147,8 +144,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		if (!linkDescription.startsWith(HTTP_PROTOCOL) && 
 			!linkDescription.startsWith(MAIL_PROTOCOL))
 		{
-			if (htmlFormEventHandler!=null)
-				htmlFormEventHandler.linkClicked(linkDescription);
+			delegateFormHandler.linkClicked(linkDescription);
 			return;
 		}
 
@@ -169,14 +165,38 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 	public void valueChanged(String widget, String newValue)
 	{
-		if (htmlFormEventHandler!=null)
-			htmlFormEventHandler.valueChanged(widget, newValue);
+		delegateFormHandler.valueChanged(widget, newValue);
 	}
 	
 	public void setComponent(String name, JComponent component)
 	{
-		if (htmlFormEventHandler!=null)
-			htmlFormEventHandler.setComponent(name, component);
+		delegateFormHandler.setComponent(name, component);
+	}
+	
+	static class DummyHandler implements HtmlFormEventHandler
+	{
+
+		public void setComponent(String name, JComponent component)
+		{
+		}
+
+		public void buttonPressed(String buttonName)
+		{
+		}
+
+		public JPopupMenu getRightClickMenu(String url)
+		{
+			return null;
+		}
+
+		public void linkClicked(String linkDescription)
+		{
+		}
+
+		public void valueChanged(String widget, String newValue)
+		{
+		}
+		
 	}
 	
 	private static String HTTP_PROTOCOL = "http";
@@ -184,7 +204,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	private String viewTitle;
 	private Class viewClass;
 	private String htmlFileName;
-	private HtmlFormEventHandler htmlFormEventHandler;
+	private HtmlFormEventHandler delegateFormHandler;
 
 
 }
