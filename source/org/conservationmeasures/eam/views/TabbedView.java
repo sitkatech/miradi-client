@@ -135,6 +135,11 @@ abstract public class TabbedView extends UmbrellaView
 		
 	}
 
+	public void addNoneScrollableTab(ObjectPoolManagementPanel panel)
+	{
+		addTab(panel.getPanelDescription(), panel.getIcon(), panel);
+	}
+	
 	public void addScrollableTab(ObjectPoolManagementPanel panel)
 	{
 		JScrollPane scrollPane = new JScrollPane(panel);
