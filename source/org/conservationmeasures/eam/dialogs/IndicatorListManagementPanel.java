@@ -12,12 +12,13 @@ import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 
 public class IndicatorListManagementPanel extends ObjectListManagementPanel
 {
-	public IndicatorListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
+	public IndicatorListManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(new IndicatorListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, new IndicatorListTablePanel(projectToUse, actions, nodeId),
 				new IndicatorPropertiesPanel(projectToUse, actions));
 	}
 	

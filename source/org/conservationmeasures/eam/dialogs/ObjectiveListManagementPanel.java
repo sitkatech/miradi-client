@@ -12,12 +12,13 @@ import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 
 public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 {
-	public ObjectiveListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
+	public ObjectiveListManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(new ObjectiveListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, new ObjectiveListTablePanel(projectToUse, actions, nodeId),
 				new ObjectivePropertiesPanel(projectToUse, actions));
 	}
 	

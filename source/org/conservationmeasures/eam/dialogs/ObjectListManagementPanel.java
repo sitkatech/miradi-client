@@ -5,12 +5,13 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 
 abstract public class ObjectListManagementPanel extends ObjectManagementPanel
 {
-	public ObjectListManagementPanel(ObjectListTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectListManagementPanel(SplitterPositionSaver splitPositionSaverToUse, ObjectListTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		super(tablePanelToUse, propertiesPanelToUse);
+		super(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
 }

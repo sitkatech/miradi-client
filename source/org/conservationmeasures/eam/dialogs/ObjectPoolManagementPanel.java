@@ -7,11 +7,13 @@ package org.conservationmeasures.eam.dialogs;
 
 import javax.swing.Icon;
 
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+
 abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 {
-	public ObjectPoolManagementPanel(ObjectTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectPoolManagementPanel(SplitterPositionSaver splitPositionSaverToUse, ObjectTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		super(tablePanelToUse, propertiesPanelToUse);
+		super(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
 	abstract public Icon getIcon();

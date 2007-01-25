@@ -38,10 +38,10 @@ public class StrategicPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
-		objectivePanel =  new ObjectivePoolManagementPanel(getProject(), getActions());
-		goalPanel = new GoalPoolManagementPanel(getProject(), getActions());
+		objectivePanel =  new ObjectivePoolManagementPanel(getProject(), getMainWindow(), getActions());
+		goalPanel = new GoalPoolManagementPanel(getProject(), getMainWindow(), getActions());
 		
-		strategyPoolManagementPanel = new StrategyPoolManagementPanel(getProject());
+		strategyPoolManagementPanel = new StrategyPoolManagementPanel(getProject(), getMainWindow());
 		
 		addTab(EAM.text("Strategic Plan"), strategicPlanPanel);
 		addScrollableTab(goalPanel);

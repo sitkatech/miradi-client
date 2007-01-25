@@ -137,24 +137,24 @@ public class FactorPropertiesPanel extends DisposablePanel
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
 
-		indicatorsTab = new IndicatorListManagementPanel(getProject(), getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+		indicatorsTab = new IndicatorListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
 		tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
 		
 		if(diagramFactor.canHaveObjectives())
 		{
-			objectivesTab = new ObjectiveListManagementPanel(getProject(), getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
 			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
 		}
 		
 		if(diagramFactor.canHaveGoal())
 		{
-			goalsTab = new GoalListManagementPanel(getProject(), getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
 			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
 		}
 		
 		if(diagramFactor.isStrategy())
 		{
-			ActivityListManagementPanel activitiesTab = new ActivityListManagementPanel(getProject(), getCurrentFactorId(), mainWindow.getActions());
+			ActivityListManagementPanel activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentFactorId(), mainWindow.getActions());
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
 		

@@ -82,9 +82,9 @@ public class BudgetView extends TabbedView
 		
 		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions(), treeTableComponent);
 		budgetManagmentPanel = new BudgetManagementPanel(getMainWindow(), getProject(), budgetPropertiesPanel, treeTableComponent);
-		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
-		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
-		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
+		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
+		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
+		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
 		
 		addScrollableTab(budgetManagmentPanel);
 		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);

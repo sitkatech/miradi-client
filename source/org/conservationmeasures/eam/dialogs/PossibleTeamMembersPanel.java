@@ -12,7 +12,7 @@ public class PossibleTeamMembersPanel extends ResourcePoolManagementPanel
 {
 	public PossibleTeamMembersPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), mainWindowToUse.getActions(), OVERVIEW_TEXT);
+		super(mainWindowToUse.getProject(), mainWindowToUse, mainWindowToUse.getActions(), OVERVIEW_TEXT);
 	}
 
 	final static String OVERVIEW_TEXT = 

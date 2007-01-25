@@ -5,21 +5,19 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 
-abstract public class ObjectManagementPanel extends ModelessDialogPanel
+abstract public class ObjectManagementPanel extends VerticalSplitPanel
 {
-	public ObjectManagementPanel(ObjectTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectManagementPanel(SplitterPositionSaver splitPositionSaverToUse, ObjectTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
+		super(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
 		listComponent = tablePanelToUse;
-		add(listComponent, BorderLayout.CENTER);
 		
 		propertiesPanel = propertiesPanelToUse;
 		listComponent.setPropertiesPanel(propertiesPanel);
-		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void dispose()

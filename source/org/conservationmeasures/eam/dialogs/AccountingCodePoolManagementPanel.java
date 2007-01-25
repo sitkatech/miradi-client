@@ -14,13 +14,14 @@ import org.conservationmeasures.eam.icons.AccountCodeIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 import org.martus.swing.UiLabel;
 
 public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public AccountingCodePoolManagementPanel(Project projectToUse, Actions actionsToUse, String overviewText) throws Exception
+	public AccountingCodePoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
+		super(splitPositionSaverToUse, new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
 				new AccountingCodePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);

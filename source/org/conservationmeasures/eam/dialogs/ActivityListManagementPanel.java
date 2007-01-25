@@ -12,12 +12,13 @@ import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 
 public class ActivityListManagementPanel extends ObjectListManagementPanel
 {
-	public ActivityListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
+	public ActivityListManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(new ActivityListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, new ActivityListTablePanel(projectToUse, actions, nodeId),
 				new TaskPropertiesPanel(projectToUse, actions));
 	}
 	
