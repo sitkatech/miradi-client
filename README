@@ -13,7 +13,7 @@ written permission of the CMP or Benetech.
 
 Updates and More Information
 Before running this program, check that you have the latest version at 
-https://downloads.miradi.org. You can also find more information about 
+https://miradi.org/download. You can also find more information about 
 this software program at www.miradi.org or by e-mailing info@miradi.org. 
 Please send suggestions and bug reports to feedback@miradi.org. 
 
@@ -63,7 +63,7 @@ MS Windows:
 Mac OS X:
 - Make sure Apple's official Java is installed
 
-- Point your web browser at https://downloads.miradi.org
+- Point your web browser at https://miradi.org/download
 
 - Download Miradi-Mac.zip and unzip the contents into some working 
   directory. 
@@ -82,7 +82,7 @@ GNU/Linux:
 
 - Make sure Sun's official Java 1.5 is installed
 
-- Point your web browser at https://downloads.miradi.org
+- Point your web browser at https://miradi.org/download
 
 - Download Miradi-Linux.zip and unzip the contents into some working 
   directory. 
@@ -124,5 +124,5 @@ first, and then install Miradi. Your existing e-Adaptive Management projects
 Known Issues
 
 For an up-to-date list of known issues and possible 
-workarounds, see: http://help.miradi.org
+workarounds, see: http://miradi.org/help
 

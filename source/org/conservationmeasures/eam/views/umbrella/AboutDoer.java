@@ -151,7 +151,7 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 		"of the CMP or Benetech.</P>" +
 		"<P><STRONG><FONT size=4>Updates and More Information</FONT><BR></STRONG>Before " + 
 		"running this program,&nbsp;check that you have&nbsp;the latest version at <A " +
-		"href=\"https://downloads.miradi.org\">https://downloads.miradi.org</A>.&nbsp;You " +
+		"href=\"https://miradi.org/download\">https://miradi.org/download</A>.&nbsp;You " +
 		"can also find more information about this software program at <A " +
 		"href=\"http://www.miradi.org\">www.miradi.org</A>&nbsp;or by e-mailing " +
 		"<A href=\"mailto:info@miradi.org\">info@miradi.org</A>.&nbsp;Please send suggestions " + 
