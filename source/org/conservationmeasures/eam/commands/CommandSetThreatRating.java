@@ -43,11 +43,6 @@ public class CommandSetThreatRating extends Command
 		return new CommandSetThreatRating(getThreatId(), getTargetId(), getCriterionId(), getPreviousValueId());
 	}
 
-	public void undo(Project target) throws CommandFailedException
-	{
-		setBundleValue(target, previousValueId, valueId);
-	}
-	
 	private BaseId setBundleValue(Project target, BaseId newValueId, BaseId expectedValueId) throws CommandFailedException
 	{
 		try

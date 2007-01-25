@@ -25,10 +25,6 @@ public class CommandEndTransaction extends Command
 		return new CommandBeginTransaction();
 	}
 
-	public void undo(Project target) throws CommandFailedException
-	{
-	}
-
 	public String getCommandName()
 	{
 		return COMMAND_NAME;

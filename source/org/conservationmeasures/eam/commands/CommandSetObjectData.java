@@ -112,21 +112,6 @@ public class CommandSetObjectData extends Command
 		return new CommandSetObjectData(type, id, tag, oldValue);
 	}
 
-	public void undo(Project target) throws CommandFailedException
-	{
-		try
-		{
-			String currentValue = target.getObjectData(type, id, tag);
-			if(!newValue.equals(currentValue))
-				throw new RuntimeException("CommandSetDataObject undo for object " + type + ":" + id + " Tag "+ tag +" expected " + newValue + " but was " + currentValue);
-			target.setObjectData(type, id, tag, oldValue);
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-	}
-	
 	public static final String COMMAND_NAME = "SetObjectData";
 
 	int type;

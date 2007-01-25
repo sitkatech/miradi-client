@@ -48,19 +48,6 @@ public class CommandDiagramRemoveFactor extends Command
 		return new CommandDiagramAddFactor(diagramFactorId, wrappedFactorId);
 	}
 
-	public void undo(Project target) throws CommandFailedException
-	{
-		try
-		{
-			target.addFactorToDiagram(wrappedFactorId, diagramFactorId);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException(e);
-		}
-	}
-
 	public DiagramFactorId getDiagramNodeId()
 	{
 		return diagramFactorId;

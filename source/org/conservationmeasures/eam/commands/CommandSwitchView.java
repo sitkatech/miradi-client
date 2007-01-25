@@ -56,12 +56,6 @@ public class CommandSwitchView extends Command
 		return string.toString();
 	}
 
-	public void undo(Project target) throws CommandFailedException
-	{
-		target.switchToView(fromView);
-	}
-	
-
 	public static final String COMMAND_NAME = "SwitchView";
 
 	String toView;

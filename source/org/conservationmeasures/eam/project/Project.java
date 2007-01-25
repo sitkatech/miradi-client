@@ -491,7 +491,7 @@ public class Project
 		for(int i = 0; i < commands.length; ++i)
 			executeCommand(commands[i]);
 	}
-
+	
 	public Command undo() throws CommandFailedException
 	{
 		Command cmd = undoRedoState.popCommandToUndo();

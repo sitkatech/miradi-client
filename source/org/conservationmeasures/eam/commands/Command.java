@@ -32,5 +32,4 @@ public abstract class Command
 	
 	abstract public String getCommandName();
 	abstract public void execute(Project target) throws CommandFailedException;
-	abstract public void undo(Project target) throws CommandFailedException;
 }

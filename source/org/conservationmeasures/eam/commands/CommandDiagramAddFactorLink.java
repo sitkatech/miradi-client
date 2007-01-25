@@ -60,20 +60,6 @@ public class CommandDiagramAddFactorLink extends Command
 		return commandDiagramRemoveFactorLink;
 	}
 
-	public void undo(Project target) throws CommandFailedException
-	{
-		try
-		{
-			target.removeLinkFromDiagram(insertedDiagramFactorLinkId);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException(e);
-		}
-		
-	}
-
 	public void setDiagramFactorLinkId(DiagramFactorLinkId insertedDiagramFactorLinkIdToUse)
 	{
 		insertedDiagramFactorLinkId = insertedDiagramFactorLinkIdToUse;

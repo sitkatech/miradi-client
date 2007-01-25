@@ -52,19 +52,6 @@ public class CommandDiagramMove extends Command
 		return command;
 	}
 
-	public void undo(Project target) throws CommandFailedException
-	{
-		try
-		{
-			target.moveFactors(-getDeltaX(), -getDeltaY(), getIds());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException(e);
-		}
-	}
-	
 	public int getDeltaX()
 	{
 		return deltaX;

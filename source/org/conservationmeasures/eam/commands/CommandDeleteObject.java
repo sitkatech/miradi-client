@@ -55,18 +55,6 @@ public class CommandDeleteObject extends Command
 		command.setCreatedId(id);
 		return command;
 	}
-
-	public void undo(Project target) throws CommandFailedException
-	{
-		try
-		{
-			target.createObject(type, id, reverseExtraInfo);
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-	}
 	
 	public final static String COMMAND_NAME = "DeleteObject";
 

@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.conservationmeasures.eam.views.map.MapView;
 
@@ -72,7 +73,6 @@ public class TestCommands extends EAMTestCase
 		int type = ObjectType.RATING_CRITERION;
 		BaseId createdId = project.createObject(type);
 		RatingCriterion criterion = project.getThreatRatingFramework().getCriterion(createdId);
-		String originalLabel = criterion.getLabel();
 		
 		String field = RatingCriterion.TAG_LABEL;
 		String value = "Blah";
@@ -85,32 +85,46 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("didn't set value?", value, criterion.getLabel());
 		
-		cmd.undo(project);
-		assertEquals("didn't undo?", originalLabel, criterion.getLabel());
-		
-		verifyUndoTwiceThrows(cmd);
-		
-		
 		CommandSetObjectData badId = new CommandSetObjectData(type, new BaseId(-99), field, value);
 		try
 		{
+			ignoreLogs();
 			project.executeCommand(badId);
 			fail("Should have thrown for bad id");
 		}
 		catch (CommandFailedException ignoreExpected)
 		{
 		}
+		finally 
+		{
+			logToConsole();
+		}
 		
 		CommandSetObjectData badField = new CommandSetObjectData(type, createdId, "bogus", value);
 		try
 		{
+			ignoreLogs();
 			project.executeCommand(badField);
 			fail("Should have thrown for bad field tag");
 		}
 		catch (CommandFailedException ignoreExpected)
 		{
 		}
+		finally
+		{
+			logToConsole();
+		}
 		
+	}
+
+	private void logToConsole()
+	{
+		Logging.setLogToConsole();
+	}
+
+	private void ignoreLogs()
+	{
+		Logging.setLogToString();
 	}
 	
 	public void testCommandDeleteObject_ThreatRatingValueOption() throws Exception
@@ -125,10 +139,8 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertNull("Got deleted object?", project.getThreatRatingFramework().getValueOption(createdId));
 		
-		cmd.undo(project);
+		project.undo();
 		assertNotNull("Didn't undelete?", project.getThreatRatingFramework().getValueOption(createdId));
-		
-		verifyUndoTwiceThrows(cmd);
 	}
 	
 	public void testCommandDeleteObject_ThreatRatingCriterion() throws Exception
@@ -143,10 +155,8 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertNull("Got deleted object?", project.getThreatRatingFramework().getCriterion(createdId));
 		
-		cmd.undo(project);
+		project.undo();
 		assertNotNull("Didn't undelete?", project.getThreatRatingFramework().getCriterion(createdId));
-		
-		verifyUndoTwiceThrows(cmd);
 	}
 	
 	public void testCommandCreateObject_ThreatRatingCriterion() throws Exception
@@ -165,11 +175,8 @@ public class TestCommands extends EAMTestCase
 		
 		assertNotNull("didn't create?", framework.getCriterion(cmd.getCreatedId()));
 		
-		cmd.undo(project);
+		project.undo();
 		assertEquals("didn't undo?", oldCount, framework.getCriteria().length);
-		
-		verifyUndoTwiceThrows(cmd);
-
 	}
 	
 	public void testCommandDiagramMove() throws Exception
@@ -186,7 +193,7 @@ public class TestCommands extends EAMTestCase
 		}
 
 		Point zeroZero = new Point(0, 0);
-		cmd.undo(project);
+		project.undo();
 		for(int i=0; i < ids.length; ++i)
 		{
 			DiagramFactor node = project.getDiagramModel().getDiagramFactorById(ids[i]);
@@ -208,9 +215,8 @@ public class TestCommands extends EAMTestCase
 		assertEquals("Didn't memorize old value?", defaultValueId, cmd.getPreviousValueId());
 		assertEquals("Didn't set new value?", valueId, framework.getBundle(threatId, targetId).getValueId(criterionId));
 		
-		cmd.undo(project);
+		project.undo();
 		assertEquals("Didn't undo?", defaultValueId, framework.getBundle(threatId, targetId).getValueId(criterionId));
-		verifyUndoTwiceThrows(cmd);
 	}
 	
 	public void testCommandNodeResized() throws Exception
@@ -228,10 +234,8 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't memorize old size?", originalSize, cmd.getPreviousSize());
 		assertEquals("didn't change to new size?", newSize, node.getSize());
 
-		cmd.undo(project);
+		project.undo();
 		assertEquals("didn't undo?", originalSize, project.getDiagramModel().getDiagramFactorById(id).getSize());
-		
-		verifyUndoTwiceThrows(cmd);
 	}
 	
 
@@ -267,7 +271,7 @@ public class TestCommands extends EAMTestCase
 	private void verifyUndoDiagramAddNode(CommandDiagramAddFactor cmd) throws CommandFailedException
 	{
 		DiagramFactorId insertedId = cmd.getInsertedId();
-		cmd.undo(project);
+		project.undo();
 		try
 		{
 			EAM.setLogToString();
@@ -275,21 +279,6 @@ public class TestCommands extends EAMTestCase
 			fail("Should have thrown because node didn't exist");
 		}
 		catch(Exception ignoreExpected)
-		{
-		}
-
-		verifyUndoTwiceThrows(cmd);
-	}
-
-	private void verifyUndoTwiceThrows(Command cmd)
-	{
-		try
-		{
-			EAM.setLogToString();
-			cmd.undo(project);
-			fail("Should have thrown because can't undotwice");
-		}
-		catch(CommandFailedException ignoreExpected)
 		{
 		}
 	}
@@ -320,13 +309,11 @@ public class TestCommands extends EAMTestCase
 		assertEquals("wrong dest?", to, toNode.getDiagramFactorId());
 
 		assertTrue("linkage not created?", project.getDiagramModel().areLinked(fromNode, toNode));
-		addLinkageCommand.undo(project);
-		createModelLinkage.undo(project);
+		project.undo();
+		
+		project.undo();
 		assertFalse("didn't remove linkage?", project.getDiagramModel().areLinked(fromNode, toNode));
 		assertNull("didn't delete linkage from pool?", project.getFactorLinkPool().find(modelLinkageId));
-		
-		verifyUndoTwiceThrows(addLinkageCommand);
-		verifyUndoTwiceThrows(createModelLinkage);
 	}
 	
 	public void testDeleteLinkage() throws Exception
@@ -347,7 +334,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("model id not set?", addLinkageCommand.getFactorLinkId(), cmd.getFactorLinkId());
 
 		assertFalse("linkage not deleted?", model.areLinked(fromNode, toNode));
-		cmd.undo(project);
+		project.undo();
 		assertTrue("didn't restore link?", model.areLinked(fromNode, toNode));
 	}
 
@@ -362,10 +349,8 @@ public class TestCommands extends EAMTestCase
 		
 		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getFactorId());
 		
-		cmd.undo(project);
+		project.undo();
 		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getDiagramFactorById(id).getFactorType());
-
-		verifyUndoTwiceThrows(cmd);
 	}
 	
 	public void testBeginTransaction() throws Exception

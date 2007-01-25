@@ -33,12 +33,7 @@ public class CommandSetFactorSize extends Command
 	{
 		return new CommandSetFactorSize(id, getPreviousSize(), getCurrentSize());
 	}
-	
-	public void undo(Project target) throws CommandFailedException
-	{
-		doSetSize(target, getPreviousSize(), getCurrentSize());
-	}
-	
+		
 	private Dimension doSetSize(Project target, Dimension desiredSize, Dimension expectedSize) throws CommandFailedException
 	{
 		try

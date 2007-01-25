@@ -36,7 +36,6 @@ public class TestCommandExecutedEvents extends EAMTestCase
 
 			public void commandUndone(CommandExecutedEvent event)
 			{
-				//++timesUndone;
 			}
 			
 			public void commandFailed(Command command, CommandFailedException e)
