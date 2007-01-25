@@ -60,7 +60,6 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 		setCaretPosition(0);
 	}
 
-	
 	public void setFixedWidth( Component component, int width )
 	{
 		component.setSize( new Dimension( width, Short.MAX_VALUE ) );

@@ -16,30 +16,37 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.main.EAM;
-import org.martus.swing.HtmlViewer;
-import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.Utilities;
 
 import edu.stanford.ejalbert.BrowserLauncher;
 import edu.stanford.ejalbert.BrowserLauncherRunner;
 
-public class HtmlViewPanel implements HyperlinkHandler
+public class HtmlViewPanel implements HtmlFormEventHandler
 {
 
 	public HtmlViewPanel(String titleToUse, Class viewClassToUse, String htmlFileNameToUse)
+	{
+		this(titleToUse,  viewClassToUse,  htmlFileNameToUse, null);
+	}
+
+	
+	public HtmlViewPanel(String titleToUse, Class viewClassToUse, String htmlFileNameToUse, HtmlFormEventHandler handlerToUse)
 	{
 		super();
 		viewTitle = titleToUse;
 		viewClass = viewClassToUse;
 		htmlFileName = htmlFileNameToUse;
+		htmlFormEventHandler = handlerToUse;
 	}
-
+	
+	
 	public void showOkDialog()
 	{
 		String title = EAM.text("Title|" + viewTitle);
@@ -49,7 +56,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 		String body = loadHtml();
 		if (body == null)
 			return;
-		HtmlViewer bodyComponent =  new HtmlViewer(body, this);
+		HtmlFormViewer bodyComponent =  new HtmlFormViewer(body, this);
 		bodyComponent.setFont(Font.getFont("Arial"));
 		dlg.setBackground(bodyComponent.getBackground());
 
@@ -64,7 +71,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 	}
 
 
-	private void calculateHeight(EAMDialog dlg, Container contents, HtmlViewer bodyComponent)
+	private void calculateHeight(EAMDialog dlg, Container contents, HtmlFormViewer bodyComponent)
 	{
 		final int buttonBarHeight = 40;
 		final int forcedWidth = 900;
@@ -124,10 +131,14 @@ public class HtmlViewPanel implements HyperlinkHandler
 
 	public void buttonPressed(String buttonName)
 	{
+		if (htmlFormEventHandler!=null)
+			htmlFormEventHandler.buttonPressed(buttonName);
 	}
 
 	public JPopupMenu getRightClickMenu(String url)
 	{
+		if (htmlFormEventHandler!=null)
+			return htmlFormEventHandler.getRightClickMenu(url);
 		return null;
 	}
 
@@ -135,8 +146,12 @@ public class HtmlViewPanel implements HyperlinkHandler
 	{	
 		if (!linkDescription.startsWith(HTTP_PROTOCOL) && 
 			!linkDescription.startsWith(MAIL_PROTOCOL))
+		{
+			if (htmlFormEventHandler!=null)
+				htmlFormEventHandler.linkClicked(linkDescription);
 			return;
-			
+		}
+
         try 
         {
             BrowserLauncherRunner runner = new BrowserLauncherRunner(
@@ -154,6 +169,14 @@ public class HtmlViewPanel implements HyperlinkHandler
 
 	public void valueChanged(String widget, String newValue)
 	{
+		if (htmlFormEventHandler!=null)
+			htmlFormEventHandler.valueChanged(widget, newValue);
+	}
+	
+	public void setComponent(String name, JComponent component)
+	{
+		if (htmlFormEventHandler!=null)
+			htmlFormEventHandler.setComponent(name, component);
 	}
 	
 	private static String HTTP_PROTOCOL = "http";
@@ -161,5 +184,7 @@ public class HtmlViewPanel implements HyperlinkHandler
 	private String viewTitle;
 	private Class viewClass;
 	private String htmlFileName;
+	private HtmlFormEventHandler htmlFormEventHandler;
+
 
 }
