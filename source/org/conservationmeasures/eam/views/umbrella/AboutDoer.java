@@ -61,8 +61,7 @@ public class AboutDoer extends Doer  implements HtmlFormEventHandler
 	
 	public void doIt(EventObject event) throws CommandFailedException
 	{
-		String title = EAM.text("Title|About Miradi");
-		new HtmlViewPanel(title, this.getClass(), "About.html", this).showOkDialog();
+		new HtmlViewPanel("About Miradi", this.getClass(), "About.html", this).showOkDialog();
 	}
 
 
