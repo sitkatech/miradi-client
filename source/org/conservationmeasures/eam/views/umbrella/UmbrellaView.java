@@ -419,10 +419,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		closeActivePropertiesDialogIfWeDeletedItsObject(event.getCommand());
 	}
 
-	public void commandUndone(CommandExecutedEvent event)
-	{
-	}
-
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 	}

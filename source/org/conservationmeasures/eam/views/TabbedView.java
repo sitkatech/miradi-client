@@ -135,30 +135,6 @@ abstract public class TabbedView extends UmbrellaView
 		
 	}
 
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		super.commandUndone(event);
-		Command rawCommand = event.getCommand();
-		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		try
-		{
-			if(cmd.getObjectType() != ObjectType.VIEW_DATA)
-				return;
-			if(!cmd.getObjectId().equals(getViewData().getId()))
-				return;
-			if(!cmd.getFieldTag().equals(ViewData.TAG_CURRENT_TAB))
-				return;
-			EAM.logVerbose("TabbedView.commandUndone: " + cmd.toString());
-			setTab(new Integer(cmd.getPreviousDataValue()).intValue());
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-
 	public void addScrollableTab(ObjectPoolManagementPanel panel)
 	{
 		JScrollPane scrollPane = new JScrollPane(panel);

@@ -294,11 +294,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		updateAfterCommand(event);
 	}
 
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		updateAfterCommand(event);
-	}
-	
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 		mainStatusBar.setStatusError(e);

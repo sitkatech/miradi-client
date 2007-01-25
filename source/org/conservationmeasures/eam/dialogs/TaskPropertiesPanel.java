@@ -81,13 +81,7 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		super.commandExecuted(event);
 		inputPanel.commandExecuted(event);
 	}
-	
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		super.commandUndone(event);
-		inputPanel.commandUndone(event);
-	}
-	
+
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 		super.commandFailed(command, e);

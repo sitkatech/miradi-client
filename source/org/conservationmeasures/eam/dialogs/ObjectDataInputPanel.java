@@ -191,17 +191,6 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		}
 		updateFieldsFromProject();
 	}
-	
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		if(wasOurObjectJustCreateUndone(event))
-		{
-			setFieldObjectIds(BaseId.INVALID);
-			setObjectId(BaseId.INVALID);
-			return;
-		}
-		updateFieldsFromProject();
-	}
 
 	public void commandFailed(Command command, CommandFailedException e)
 	{

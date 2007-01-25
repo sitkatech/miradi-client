@@ -56,13 +56,6 @@ public class BudgetPropertiesInputPanel extends ObjectDataInputPanel
 			updateTable((CommandSetObjectData)event.getCommand());
 	}
 	
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		super.commandUndone(event);
-		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			updateTable((CommandSetObjectData)event.getCommand());
-	}
-
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 	}

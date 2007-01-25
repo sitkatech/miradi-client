@@ -11,6 +11,5 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 public interface CommandExecutedListener
 {
 	public void commandExecuted(CommandExecutedEvent event);
-	public void commandUndone(CommandExecutedEvent event);
 	public void commandFailed(Command command, CommandFailedException e);
 }

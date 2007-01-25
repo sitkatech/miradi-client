@@ -442,10 +442,6 @@ public class TestCommands extends EAMTestCase
 			
 		}
 
-		public void commandUndone(CommandExecutedEvent event)
-		{
-		}
-		
 		public void commandFailed(Command command, CommandFailedException e)
 		{
 		}

@@ -40,11 +40,7 @@ public class TreeTableStateSaver implements CommandExecutedListener
 	{
 		executeTreeStateRestore(event);
 	}
-	
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		executeTreeStateRestore(event);
-	}
+
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 	}

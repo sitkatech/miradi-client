@@ -53,12 +53,6 @@ public class TeamEditorComponent extends ObjectTablePanel implements KeyListener
 		super.commandExecuted(event);
 		notifyTableRoleCodeChange(event);
 	}
-
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		super.commandUndone(event);
-		notifyTableRoleCodeChange(event);
-	}
 	
 	private void notifyTableRoleCodeChange(CommandExecutedEvent event)
 	{

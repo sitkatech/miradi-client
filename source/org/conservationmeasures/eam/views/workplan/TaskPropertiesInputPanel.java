@@ -77,14 +77,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			updateTable();
 	}
-	
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		super.commandUndone(event);
-		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			updateTable();
-	}
-	
+		
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 		super.commandFailed(command, e);

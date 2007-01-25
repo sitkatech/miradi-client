@@ -180,11 +180,6 @@ public class ThreatMatrixView extends UmbrellaView
 		updateAfterCommand(event.getCommand());
 	}
 
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		updateAfterCommand(event.getCommand());
-	}
-
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 	}

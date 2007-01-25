@@ -263,27 +263,6 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 	{
 	}
 
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		if(isChangeActivitiesListCommand(event) || isChangeSubtaskListCommand(event))
-		{
-			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
-			restoreTreeExpansionState();
-		}
-		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isChangeObjectiveListCommand(event))
-		{
-			model.objectiveWasModified();
-			restoreTreeExpansionState();
-		}
-		else if(isSetDataCommand(event))
-		{
-			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			restoreTreeExpansionState();
-		}
-	}
-	
 	private void setSelectedRow(int currentSelectedRow)
 	{
 		if(currentSelectedRow < 0)

@@ -580,17 +580,6 @@ public class Project
 		}
 	}
 	
-	void fireCommandUndone(Command command)
-	{
-		EAM.logVerbose("Command undone: " + command.toString());
-		CommandExecutedEvent event = new CommandExecutedEvent(command);
-		for(int i=0; i < getCommandListenerCount(); ++i)
-		{
-			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
-			listener.commandUndone(event);
-		}
-	}
-	
 	void fireCommandFailed(Command command, CommandFailedException e)
 	{
 		for(int i=0; i < getCommandListenerCount(); ++i)
@@ -917,11 +906,6 @@ public class Project
 	class DiagramSaver implements CommandExecutedListener
 	{
 		public void commandExecuted(CommandExecutedEvent event)
-		{
-			save();
-		}
-
-		public void commandUndone(CommandExecutedEvent event)
 		{
 			save();
 		}

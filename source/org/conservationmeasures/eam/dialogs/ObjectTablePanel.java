@@ -114,24 +114,6 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 		}
 	}
 
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-		{
-			table.updateTableAfterUndo((CommandSetObjectData)event.getCommand());
-		}
-		else if(event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-		{
-			CommandCreateObject cmd = (CommandCreateObject)event.getCommand();
-			table.updateTableAfterObjectDeleted(new ORef(cmd.getObjectType(), cmd.getCreatedId()));
-		}
-		else if(event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-		{
-			CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
-			table.updateTableAfterObjectCreated(new ORef(cmd.getObjectType(), cmd.getObjectId()));
-		}
-	}
-
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 	}

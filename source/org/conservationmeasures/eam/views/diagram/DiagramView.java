@@ -325,27 +325,28 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		}
 	}
 
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		Command rawCommand = event.getCommand();
-		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-
-		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		String newMode = cmd.getPreviousDataValue();
-		setModeIfRelevant(cmd, newMode);
-		refreshIfNeeded(cmd);
-		updateScopeIfNeeded(cmd);
-		try
-		{
-			updateClusterAfterUndoIfNeeded(cmd);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			EAM.errorDialog("WARNING: Unexpected problem occurred during grouping");
-		}
-	}
+//	TODO remove commented code after removing Undone method proves to work
+//	public void commandUndone(CommandExecutedEvent event)
+//	{
+//		Command rawCommand = event.getCommand();
+//		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+//			return;
+//
+//		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+//		String newMode = cmd.getPreviousDataValue();
+//		setModeIfRelevant(cmd, newMode);
+//		refreshIfNeeded(cmd);
+//		updateScopeIfNeeded(cmd);
+//		try
+//		{
+//			updateClusterAfterUndoIfNeeded(cmd);
+//		}
+//		catch (Exception e)
+//		{
+//			e.printStackTrace();
+//			EAM.errorDialog("WARNING: Unexpected problem occurred during grouping");
+//		}
+//	}
 
 	public void commandFailed(Command command, CommandFailedException e)
 	{
@@ -378,24 +379,25 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		diagram.repaint(diagram.getBounds());
 	}
 	
-	private void updateClusterAfterUndoIfNeeded(CommandSetObjectData cmd) throws Exception
-	{
-		if(cmd.getObjectType() != ObjectType.FACTOR)
-			return;
-		
-		FactorId nodeId = new FactorId(cmd.getObjectId().asInt());
-		Factor cmNode = getProject().findNode(nodeId);
-		if(!cmNode.isFactorCluster())
-			return;
-		
-		if(!cmd.getFieldTag().equals(FactorCluster.TAG_MEMBER_IDS))
-			return;
-		
-		IdList newMembers = new IdList(cmd.getPreviousDataValue());
-		IdList oldMembers = new IdList(cmd.getDataValue());
-		
-		updateCluster((FactorId)cmd.getObjectId(), newMembers, oldMembers);
-	}
+//	TODO remove commented code after removing Undone method proves to work
+//	private void updateClusterAfterUndoIfNeeded(CommandSetObjectData cmd) throws Exception
+//	{
+//		if(cmd.getObjectType() != ObjectType.FACTOR)
+//			return;
+//		
+//		FactorId nodeId = new FactorId(cmd.getObjectId().asInt());
+//		Factor cmNode = getProject().findNode(nodeId);
+//		if(!cmNode.isFactorCluster())
+//			return;
+//		
+//		if(!cmd.getFieldTag().equals(FactorCluster.TAG_MEMBER_IDS))
+//			return;
+//		
+//		IdList newMembers = new IdList(cmd.getPreviousDataValue());
+//		IdList oldMembers = new IdList(cmd.getDataValue());
+//		
+//		updateCluster((FactorId)cmd.getObjectId(), newMembers, oldMembers);
+//	}
 	
 	private void captureClusterIfNeeded(CommandSetObjectData cmd) throws Exception
 	{
