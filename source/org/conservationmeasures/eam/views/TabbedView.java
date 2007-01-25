@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.Icon;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -145,18 +144,6 @@ abstract public class TabbedView extends UmbrellaView
 		addTab(panel.getPanelDescription(), panel);
 	}
 	
-	public void addScrollableTab(ObjectPoolManagementPanel panel)
-	{
-		JScrollPane scrollPane = new JScrollPane(panel);
-		addTab(panel.getPanelDescription(), panel.getIcon(), scrollPane);
-	}
-	
-	public void addScrollableTab(ModelessDialogPanel panel)
-	{
-		JScrollPane scrollPane = new JScrollPane(panel);
-		addTab(panel.getPanelDescription(), scrollPane);
-	}
-
 	class TabChangeListener implements ChangeListener
 	{
 		public void stateChanged(ChangeEvent event)
