@@ -1,2 +1,3 @@
-rsync -vaHSz -r . cmp.benetech.org:/var/www/miradi.org/
-rsync -vaHSz -r ../README cmp.benetech.org:/var/www/miradi.org/private/
+rsync -vHSzrlgoDC -r . cmp.benetech.org:/var/www/miradi.org/
+rsync -vHSzrlgoDC -r ../README cmp.benetech.org:/var/www/miradi.org/private/
+rsync -vHSzrlgoDC -r ../dist/MiradiSetup.exe cmp.benetech.org:/var/www/miradi.org/private/
