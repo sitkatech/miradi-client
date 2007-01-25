@@ -18,17 +18,19 @@ public class MethodPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public MethodPoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new MethodPoolTablePanel(projectToUse),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new MethodPoolTablePanel(projectToUse),
 				new TaskPropertiesPanel(projectToUse, actions, BaseId.INVALID));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Methods");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new MethodIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Methods");
 }

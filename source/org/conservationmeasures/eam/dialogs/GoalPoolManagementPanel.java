@@ -19,17 +19,19 @@ public class GoalPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public GoalPoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new GoalPoolTablePanel(projectToUse),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new GoalPoolTablePanel(projectToUse),
 				new GoalPropertiesPanel(projectToUse, actions, new GoalId(BaseId.INVALID.asInt())));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Goals");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new GoalIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Goals");
 }

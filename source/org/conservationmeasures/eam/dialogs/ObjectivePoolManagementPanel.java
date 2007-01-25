@@ -19,17 +19,19 @@ public class ObjectivePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public ObjectivePoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new ObjectivePoolTablePanel(projectToUse), 
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ObjectivePoolTablePanel(projectToUse), 
 				new ObjectivePropertiesPanel(projectToUse, actions, new ObjectiveId(BaseId.INVALID.asInt())));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Objectives");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new ObjectiveIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Objectives"); 
 }

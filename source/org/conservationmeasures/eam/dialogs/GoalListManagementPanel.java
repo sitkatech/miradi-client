@@ -18,17 +18,19 @@ public class GoalListManagementPanel extends ObjectListManagementPanel
 {
 	public GoalListManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new GoalListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new GoalListTablePanel(projectToUse, actions, nodeId),
 				new GoalPropertiesPanel(projectToUse, actions));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Goals");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new GoalIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Goals"); 
 }

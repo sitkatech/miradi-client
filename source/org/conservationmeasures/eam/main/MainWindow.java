@@ -396,11 +396,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		repaint();
 	}
 
-	public String getSplitterName()
-	{
-		return getProject().getCurrentView();
-	}
-	
 	public void setSplitterLocationToMiddle(String name)
 	{
 		preferences.setTaggedInt(name, 0);

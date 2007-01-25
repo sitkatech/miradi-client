@@ -18,13 +18,13 @@ public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 {
 	public ObjectiveListManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new ObjectiveListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ObjectiveListTablePanel(projectToUse, actions, nodeId),
 				new ObjectivePropertiesPanel(projectToUse, actions));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Objectives");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
@@ -32,4 +32,5 @@ public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 		return new ObjectiveIcon();
 	}
 	
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Objectives"); 
 }

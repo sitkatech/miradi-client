@@ -19,17 +19,18 @@ public class IndicatorPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public IndicatorPoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new IndicatorPoolTablePanel(projectToUse),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new IndicatorPoolTablePanel(projectToUse),
 				new IndicatorPropertiesPanel(projectToUse, actions, new IndicatorId(BaseId.INVALID.asInt())));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Indicators");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new IndicatorIcon();
 	}
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Indicators");
 }

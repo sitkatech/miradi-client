@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 
 abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 {
-	public ObjectPoolManagementPanel(SplitterPositionSaver splitPositionSaverToUse, ObjectTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectPoolManagementPanel(SplitterPositionSaver splitPositionSaverToUse, String splitterNameToUse, ObjectTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		super(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
+		super(splitPositionSaverToUse, splitterNameToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
 	abstract public Icon getIcon();

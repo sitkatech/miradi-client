@@ -18,17 +18,19 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 {
 	public ActivityListManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new ActivityListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ActivityListTablePanel(projectToUse, actions, nodeId),
 				new TaskPropertiesPanel(projectToUse, actions));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Activities");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new ActivityIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Activities"); 
 }

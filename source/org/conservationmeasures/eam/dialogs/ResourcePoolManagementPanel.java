@@ -21,7 +21,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public ResourcePoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(splitPositionSaverToUse, new ResourcePoolTablePanel(projectToUse, actionsToUse),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ResourcePoolTablePanel(projectToUse, actionsToUse),
 				new ResourcePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
@@ -29,11 +29,13 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Resources");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new ProjectResourceIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Title|Resources"); 
 }

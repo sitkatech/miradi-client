@@ -18,17 +18,19 @@ public class ActivityPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public ActivityPoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new ActivityPoolTablePanel(projectToUse),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ActivityPoolTablePanel(projectToUse),
 				new TaskPropertiesPanel(projectToUse, actions, BaseId.INVALID));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Activities");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new ActivityIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Activities");
 }

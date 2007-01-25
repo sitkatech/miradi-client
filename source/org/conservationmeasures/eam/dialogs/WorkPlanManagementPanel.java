@@ -22,7 +22,7 @@ public class WorkPlanManagementPanel extends VerticalSplitPanel
 	
     	setComponentPreferredSize(treeTableComponent);
 		setComponentPreferredSize(propertiesPanel);
-		createVerticalSplitPane(treeTableComponent, propertiesPanel);
+		createVerticalSplitPane(treeTableComponent, propertiesPanel, PANEL_DESCRIPTION);
 	}
 	
 	public void dispose()
@@ -37,7 +37,7 @@ public class WorkPlanManagementPanel extends VerticalSplitPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Work Plan");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public WorkPlanPanel getWorkPlanPanel()
@@ -45,6 +45,7 @@ public class WorkPlanManagementPanel extends VerticalSplitPanel
 		return treeTableComponent;
 	}
 	
+	private static String PANEL_DESCRIPTION = EAM.text("Work Plan"); 
 	WorkPlanPanel treeTableComponent;
 	ObjectDataInputPanel propertiesPanel;
 }

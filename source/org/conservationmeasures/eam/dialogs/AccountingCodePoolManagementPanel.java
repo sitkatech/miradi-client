@@ -21,7 +21,7 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public AccountingCodePoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(splitPositionSaverToUse, new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
 				new AccountingCodePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
@@ -29,11 +29,12 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Accounting Codes");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new AccountCodeIcon();
 	}
+	private static String PANEL_DESCRIPTION = EAM.text("Title|Accounting Codes"); 
 }

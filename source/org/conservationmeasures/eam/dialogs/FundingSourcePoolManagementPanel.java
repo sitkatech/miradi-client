@@ -21,7 +21,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public FundingSourcePoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(splitPositionSaverToUse, new FundingSourcePoolTablePanel(projectToUse, actionsToUse),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new FundingSourcePoolTablePanel(projectToUse, actionsToUse),
 				new FundingSourcePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
@@ -29,11 +29,13 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Funding Sources");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new FundingSourceIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Title|Funding Sources"); 
 }

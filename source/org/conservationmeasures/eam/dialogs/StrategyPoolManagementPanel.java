@@ -18,17 +18,19 @@ public class StrategyPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public StrategyPoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse) throws Exception
 	{
-		super(splitPositionSaverToUse, new StrategyPoolTablePanel(projectToUse),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new StrategyPoolTablePanel(projectToUse),
 				new StrategyPropertiesPanel(projectToUse, ObjectType.FACTOR, BaseId.INVALID));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Strategies");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
 	{
 		return new StrategyIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Strategies");
 }

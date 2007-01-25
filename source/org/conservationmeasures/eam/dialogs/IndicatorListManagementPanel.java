@@ -18,18 +18,20 @@ public class IndicatorListManagementPanel extends ObjectListManagementPanel
 {
 	public IndicatorListManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new IndicatorListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new IndicatorListTablePanel(projectToUse, actions, nodeId),
 				new IndicatorPropertiesPanel(projectToUse, actions));
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Indicators");
+		return PANEL_DESCRIPTION; 
 	}
 	
 	public Icon getIcon()
 	{
 		return new IndicatorIcon();
 	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Indicators"); 
 }
 

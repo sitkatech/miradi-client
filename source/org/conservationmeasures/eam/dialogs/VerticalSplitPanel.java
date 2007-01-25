@@ -18,10 +18,10 @@ import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 
 abstract public class VerticalSplitPanel extends ModelessDialogPanel
 {
-	public VerticalSplitPanel(SplitterPositionSaver splitPositionSaverToUse, Component top, Component bottom)
+	public VerticalSplitPanel(SplitterPositionSaver splitPositionSaverToUse, String splitterNameToUse, Component top, Component bottom)
 	{
 		this(splitPositionSaverToUse, new BorderLayout());
-		createVerticalSplitPane(top, bottom);
+		createVerticalSplitPane(top, bottom, splitterNameToUse);
 	}
 	
 	public VerticalSplitPanel(SplitterPositionSaver splitPositionSaverToUse)
@@ -35,12 +35,11 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		splitPositionSaver = splitPositionSaverToUse;
 	}
 
-	public void createVerticalSplitPane(Component top, Component bottom)
+	public void createVerticalSplitPane(Component top, Component bottom, String splitterName)
 	{
 		JScrollPane treeComponentScroll = new JScrollPane(top);
 		JScrollPane propertiesScroll = new JScrollPane(bottom);
 			
-		String splitterName = splitPositionSaver.getSplitterName() + PROPERTIES_SPLITTER;
 		ViewSplitPane splitter = new ViewSplitPane(splitPositionSaver, splitterName, treeComponentScroll, propertiesScroll );
 		add(splitter, BorderLayout.CENTER);
 	}
@@ -51,6 +50,5 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		component.setPreferredSize(dimension);
 	}
 
-	private SplitterPositionSaver splitPositionSaver;	
-	private static final String PROPERTIES_SPLITTER = "PropertiesSplitter"; 
+	private SplitterPositionSaver splitPositionSaver;	 
 }

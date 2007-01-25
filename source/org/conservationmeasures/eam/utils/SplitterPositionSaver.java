@@ -10,5 +10,4 @@ public interface SplitterPositionSaver
 	public int getSplitterLocation(String name);
 	public void setSplitterLocation(String name, int location);
 	public void setSplitterLocationToMiddle(String name);
-	public String getSplitterName();
 }

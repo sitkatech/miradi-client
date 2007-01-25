@@ -23,7 +23,7 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 		setComponentPreferredSize(propertiesPanel);
 		setComponentPreferredSize(treeTableComponent);
 		
-		createVerticalSplitPane(treeTableComponent, propertiesPanel);
+		createVerticalSplitPane(treeTableComponent, propertiesPanel, PANEL_DESCRIPTION);
 	}
 
 	public void dispose()
@@ -44,9 +44,10 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Budget");
+		return PANEL_DESCRIPTION;
 	}
 
+	private static String PANEL_DESCRIPTION = EAM.text("Budget");
 	BudgetTreeTablePanel treeTableComponent;
 	BudgetPropertiesPanel propertiesPanel;
 }
