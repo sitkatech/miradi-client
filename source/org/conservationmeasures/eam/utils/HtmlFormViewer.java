@@ -8,11 +8,13 @@ package org.conservationmeasures.eam.utils;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.HyperlinkEvent;
@@ -260,6 +262,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 		{
 			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
 			JLabel label = new JLabel("");
+			label.setBorder(new EmptyBorder(new Insets(0,0,10,0)));
 			((HtmlFormEventHandler)handler).setComponent(fieldName, label);
 			return label;
 		}
