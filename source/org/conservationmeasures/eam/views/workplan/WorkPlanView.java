@@ -65,10 +65,10 @@ public class WorkPlanView extends TabbedView
 		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
 		methodPoolManagementPanel = new MethodPoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
 		
-		addScrollableTab(workPlanManagementPanel);
-		addScrollableTab(activitiesManagementPanel);
-		addScrollableTab(methodPoolManagementPanel);
-		addScrollableTab(resourceManagementPanel);
+		addNoneScrollableTab(workPlanManagementPanel);
+		addNoneScrollableTab(activitiesManagementPanel);
+		addNoneScrollableTab(methodPoolManagementPanel);
+		addNoneScrollableTab(resourceManagementPanel);
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
