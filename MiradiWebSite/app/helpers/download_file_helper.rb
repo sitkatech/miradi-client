@@ -1,2 +1,0 @@
-module DownloadFileHelper
-end
