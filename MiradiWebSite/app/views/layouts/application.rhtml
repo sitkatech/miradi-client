@@ -7,18 +7,45 @@
   <title>Miradi</title>
   <%= stylesheet_link_tag 'miradi' %>
 </head>
-<body>
-<table><tr>
-<td><img src='images/miradi64.png'/></td>
-<td>
-<p class='miradihead'>Miradi<sup>TM</sup></p>
-<p class='miradisub'>Adaptive Management Software for Conservation Projects</p>
-</td>
-</tr></table>
 
+<body>
+<table width='100%' cellspacing='0' cellpadding='0'>
+<tr>
+<td class='banner' align='right'>
+<img src='images/miradi64.png' hspace='20' vspace='20'/>
+</td>
+<td class='banner'>
+<span class='miradihead'>Miradi<sup><font size='-1'>TM</font></sup></span>
+<br/>
+<span class='miradisub'>Adaptive Management Software for Conservation Projects</span>
+</td>
+</tr>
+
+<tr>
+<td class='menu'>
+<p class='menuitem'><%= link_to "Our Vision", '/vision' %></p>
+<p class='menuitem'><%= link_to "CMP Open Standards", '/standards' %></p>
+<p class='menuitem'><%= link_to "Software Features", '/features' %></p>
+<p class='menuitem'><%= link_to "About CMP and Benetech", '/aboutcmp' %></p>
+<p class='menuitem'><%= link_to "Contact Us", '/contact' %></p>
+<p class='menuitem'><%= link_to "Download Miradi", '/download' %></p>
+</td>
+
+<td class='content'>
+<p style="color: red"><%= flash[:error] %></p>
+<p style="color: orange"><%= flash[:warning] %></p>
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= @content_for_layout %>
+</td>
+</tr>
+<tr><td class='footer' colspan='2'>
+Copyright 2007, 
+<%= link_to "Conservation Measures Partnership", 'http://conservationmeasures.org' %> and
+<%= link_to "Benetech", 'http://benetech.org' %>.
+For more information: info@miradi.org
+</td></tr>
+</table>
 
 </body>
 </html>

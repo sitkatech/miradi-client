@@ -1,4 +1,8 @@
-body { background-color: #fff; color: #333; }
+body {
+	 background-color: #fff; color: #333; 
+  border: thin solid black;
+  font-family: sans-serif;
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -73,10 +77,50 @@ div.progressBar div.background {
 }
 
 .miradihead {
-    font-size: 24pt;
+    font-size: 200%;
+    font-weight: bold;
 }
 
 .miradisub {
-    font-size: 12pt;
-    font-style: italic;
+    font-weight: bold;
 }
+
+.banner {
+	background-color: #eee;
+	foreground-color: black;
+}
+
+.menu {
+	width: 5cm;
+	background-color: #eee;
+	foreground-color: black;
+}
+
+.menuitem A:link {
+	color: blue;
+	text-decoration: none;
+}
+
+.menuitem A:visited {
+	color: #007;
+	text-decoration: none;
+}
+
+.menuitem A:hover {
+	color: white;
+	text-decoration: none;
+}
+
+.content {
+	background-color: white;
+	foreground-color: black;
+  border: thin solid black;
+  padding: 10px;
+}
+
+.footer {
+	background-color: #eee;
+	foreground-color: black;
+	font-size: 75%;
+}
+
