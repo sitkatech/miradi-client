@@ -1,5 +1,8 @@
 <h1>Miradi Download Login</h1>
 
+<% if(flash[:warning]) %> Warning: <%= flash[:warning] %> <% end %>
+<%= error_messages_for :user %><br/>
+
 <form action="/login" method="post">
 <p>
 Enter your email address: 
