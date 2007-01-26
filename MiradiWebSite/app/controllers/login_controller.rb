@@ -3,6 +3,9 @@ class LoginController < ApplicationController
 	render :action => 'index'
   end
   
+  def request_account
+  end
+  
   def attempt_login
   	if request.post?
       email = params[:user][:email]
@@ -16,7 +19,7 @@ class LoginController < ApplicationController
         flash[:warning] = "Login unsuccessful"
       end
       if session[:user]
-	    redirect_to "/download"
+	    redirect_to :controller => 'files'
 	  else
 	    render :action => 'index'
 	  end
@@ -26,7 +29,7 @@ class LoginController < ApplicationController
 
   def logout
     session[:user] = nil
-    render :action => 'index'
+    redirect_to :back
   end
 
   def attempt_register
@@ -51,7 +54,7 @@ class LoginController < ApplicationController
       if @user.save
         session[:user] = User.authenticate(email, password)
         flash[:message] = "Registration successful"
-        redirect_to "/download"          
+        redirect_to :controller => 'files'          
       else
         session[:user] = nil
         flash[:warning] = "Registration unsuccessful"

@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'features', {:controller => 'welcome', :action => 'features'}
   map.connect 'aboutcmp', {:controller => 'welcome', :action => 'aboutcmp'}
   map.connect 'contact', {:controller => 'welcome', :action => 'contact'}
+  map.connect 'download', {:controller => 'welcome', :action => 'download'}
 
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
