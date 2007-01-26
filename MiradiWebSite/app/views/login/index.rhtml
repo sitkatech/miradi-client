@@ -1,22 +1,37 @@
-<h1>Miradi Download Login</h1>
-
-<% if(flash[:warning]) %> Warning: <%= flash[:warning] %> <% end %>
-<%= error_messages_for :user %><br/>
-
-<form action="/login" method="post">
-<p>
-Enter your email address: 
-<input id="user_email" name="user[email]" size="30" type="text" value=""/>
-</p>
+<h3>Download Miradi</h1>
 
 <p>
-Enter your password:
-<input id='user_password' name='user[password]' size='30' type='password' value=''/>
+Miradi 1.0-Beta is available for download on a limited basis. 
+If you have been given an Access Code, 
+<%= link_to "click here", :action => 'register' %> to enter it 
+and create an account so you can download Miradi.
+If you do not have an Access Code, you can request download 
+permission by sending an email to 
+<%= link_to "info@miradi.org", "mailto:info@miradi.org" %>. 
 </p>
 
-<input type="submit" value="Login"/>
+<%= start_form_tag :action=> "attempt_login" %>
+<p>
+If you have already registered, enter your email address and 
+password below, then click the Login button:
+</p>
 
-</form>
+<table>
+<tr>
+<td>Email Address:</td>
+<td><input id="user_email" name="user[email]" size="30" type="text" value=""/></td>
+</tr>
 
-Click here to <%= link_to "register", "/login/register" %>
+<tr>
+<td>Password:</td>
+<td><input id='user_password' name='user[password]' size='30' type='password' value=''/></td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+<td><input type="submit" value="Login"/></td>
+</table>
+
+<%= end_form_tag %>
+
 

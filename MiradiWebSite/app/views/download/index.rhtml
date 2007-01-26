@@ -1,8 +1,4 @@
-<h1>Miradi Downloads</h1>
-<p>Logged in as: <strong><%= session[:user].email %></strong></p>
-
-<% if(flash[:warning]) %> Warning: <%= flash[:warning] %> <% end %>
-
+<h3>Download Miradi</h3>
 <p>Files available for download:</p>
 <ul>
 <li><%= link_to "MiradiSetup.exe", '/download/file?file=MiradiSetup.exe' %></li>
@@ -12,6 +8,7 @@
 <li><%= link_to "README", '/download/file?file=README' %></li>
 </ul>
 
-<p>
+<p class='loggedinas'>
+Logged in as: <strong><%= session[:user].email %></strong>. 
 <%= link_to "Logout", "/login/logout" %>
 </p>

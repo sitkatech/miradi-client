@@ -1,5 +1,9 @@
 class LoginController < ApplicationController
-  def index
+  def login
+	render :action => 'index'
+  end
+  
+  def attempt_login
   	if request.post?
       email = params[:user][:email]
       password = params[:user][:password]
@@ -14,7 +18,7 @@ class LoginController < ApplicationController
       if session[:user]
 	    redirect_to "/download"
 	  else
-	    redirect_to "/login"
+	    render :action => 'index'
 	  end
     end
     
@@ -22,10 +26,10 @@ class LoginController < ApplicationController
 
   def logout
     session[:user] = nil
-    redirect_to '/login'
+    render :action => 'index'
   end
 
-  def register
+  def attempt_register
     if request.post?
   	  email = params[:user][:email]
   	  password = params[:user][:password]
@@ -35,6 +39,7 @@ class LoginController < ApplicationController
   	  if User.count > 0 && !ac
   	    session[:user] = nil
   	    flash[:warning] = "Unknown Access Code"
+        render :action => 'register'
   	    return
   	  end
   	  
@@ -50,6 +55,7 @@ class LoginController < ApplicationController
       else
         session[:user] = nil
         flash[:warning] = "Registration unsuccessful"
+        render :action => 'register'
       end
   
     end
