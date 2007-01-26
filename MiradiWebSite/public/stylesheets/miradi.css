@@ -104,7 +104,8 @@ div.progressBar div.background {
 }
 
 .menu {
-	width: 11em;
+	width: 8em;
+	padding: 1em;
 	background-color: #eee;
 	foreground-color: black;
 }
@@ -142,5 +143,8 @@ div.progressBar div.background {
 }
 
 .loggedinas {
+	background-color: #ccc;
+	foreground-color: black;
+	border: thin solid black;
 	font-size: 75%;
 }

@@ -22,7 +22,7 @@
 </tr>
 
 <tr>
-<td class='menu'>
+<td class='menu' valign='top'>
 <p class='menuitem'><%= link_to "Miradi Home", '/' %></p>
 <p class='menuitem'><%= link_to "Our Vision", '/vision' %></p>
 <p class='menuitem'><%= link_to "CMP Open Standards", '/openstandards' %></p>
@@ -30,6 +30,15 @@
 <p class='menuitem'><%= link_to "About CMP and Benetech", '/aboutcmp' %></p>
 <p class='menuitem'><%= link_to "Contact Us", '/contact' %></p>
 <p class='menuitem'><%= link_to "Download Miradi", '/download' %></p>
+
+<% if session[:user] %>
+<p class='loggedinas'>
+<%= session[:user].email %>
+<br/> 
+<%= link_to "Logout", "/login/logout" %>
+</p>
+<% end %>
+
 </td>
 
 <td class='content' valign='top'>

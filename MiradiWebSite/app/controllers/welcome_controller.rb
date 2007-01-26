@@ -16,5 +16,8 @@ class WelcomeController < ApplicationController
 	
 	def contact
 	end
+	
+	def download
+	end
 
 end
