@@ -1,14 +1,17 @@
 <h1>Miradi Downloads</h1>
 <p>Logged in as: <strong><%= session[:user].email %></strong></p>
+
+<% if(flash[:warning]) %> Warning: <%= flash[:warning] %> <% end %>
+
 <p>Files available for download:</p>
 <ul>
-<li><a href='download_file?file=MiradiSetup.exe'>MiradiSetup.exe</a></li>
-<li><a href='download_file?file=Miradi-Mac.zip'>Miradi-Mac.zip</a></li>
-<li><a href='download_file?file=Miradi-Linux.zip'>Miradi-Linux.zip</a></li>
-<li><a href='download_file?file=MarineExample.zip'>MarineExample.zip</a></li>
-<li><a href='download_file?file=README'>README</a></li>
+<li><%= link_to "MiradiSetup.exe", '/download/file?file=MiradiSetup.exe' %></li>
+<li><%= link_to "Miradi-Mac.zip", '/download/file?file=Miradi-Mac.zip' %></li>
+<li><%= link_to "Miradi-Linux.zip", '/download/file?file=Miradi-Linux.zip' %></li>
+<li><%= link_to "MarineExample.zip", '/download/file?file=MarineExample.zip' %></li>
+<li><%= link_to "README", '/download/file?file=README' %></li>
 </ul>
 
 <p>
-<%= link_to "Logout", "/logout" %>
+<%= link_to "Logout", "/login/logout" %>
 </p>

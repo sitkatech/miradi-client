@@ -1,6 +1,6 @@
 <h1>Miradi Download Login</h1>
 
-<form action="/attempt_login" method="post">
+<form action="/login" method="post">
 <p>
 Enter your email address: 
 <input id="user_email" name="user[email]" size="30" type="text" value=""/>
@@ -15,4 +15,5 @@ Enter your password:
 
 </form>
 
-Click here to <a href='register'>register</a>
+Click here to <%= link_to "register", "register" %>
+
