@@ -90,8 +90,21 @@ div.progressBar div.background {
 	foreground-color: black;
 }
 
+.banner A:link {
+	text-decoration: none;
+}
+
+.banner A:visited {
+	text-decoration: none;
+}
+
+.banner A:hover {
+	text-decoration: none;
+	background-color: #eee;
+}
+
 .menu {
-	width: 5cm;
+	width: 11em;
 	background-color: #eee;
 	foreground-color: black;
 }
@@ -102,7 +115,7 @@ div.progressBar div.background {
 }
 
 .menuitem A:visited {
-	color: #007;
+	color: blue;
 	text-decoration: none;
 }
 
@@ -124,3 +137,10 @@ div.progressBar div.background {
 	font-size: 75%;
 }
 
+.homeicon {
+	padding: 20px;
+}
+
+.loggedinas {
+	font-size: 75%;
+}

@@ -1,33 +1,40 @@
-<h3>Register for Downloads</h1>
+<h3>Register for Downloads</h3>
 
-<% if(flash[:warning]) %> Warning: <%= flash[:warning] %> <% end %>
 <%= error_messages_for :user %><br/>
  
  
-<%= start_form_tag :action=> "index" %>
+<%= start_form_tag :action=> "attempt_register" %>
 
-<p>
- <label for="user_email">Email</label>
- <%= text_field "user", "email", :size => 30 %>
-</p>
+<table>
 
-<p>
- <label for="user_password">Password</label>
- <%= password_field "user", "password", :size => 30 %>
-</p>
+<tr>
+ <td><label for="user_access_code">Access Code</label></td>
+ <td><%= text_field "user", "access_code", :size => 30 %></td>
+</tr>
 
-<p>
- <label for="user_password_confirmation">Confirm your password</label>
- <%= password_field "user", "password_confirmation", :size => 30 %>
-</p>
+<tr>
+ <td><label for="user_email">Email</label></td>
+ <td><%= text_field "user", "email", :size => 30 %></td>
+</tr>
 
-<p>
- <label for="user_access_code">Access Code</label>
- <%= text_field "user", "access_code", :size => 30 %>
-</p>
+<tr>
+ <td><label for="user_password">Password</label></td>
+ <td><%= password_field "user", "password", :size => 30 %></td>
+</tr>
 
+<tr>
+ <td><label for="user_password_confirmation">Confirm your password</label></td>
+ <td><%= password_field "user", "password_confirmation", :size => 30 %></td>
+</tr>
 
-
-<input type="submit" value="Register"/>
+<tr>
+<td>&nbsp;</td>
+<td><input type="submit" value="Register"/></td>
+</tr>
+</table>
 
 <%= end_form_tag %>
+
+<p>
+<%= link_to "Click here", "/login" %> to return to the login page.
+</p>

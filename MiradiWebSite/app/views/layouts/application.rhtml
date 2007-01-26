@@ -11,8 +11,8 @@
 <body>
 <table width='100%' cellspacing='0' cellpadding='0'>
 <tr>
-<td class='banner' align='right'>
-<img src='images/miradi64.png' hspace='20' vspace='20'/>
+<td class='banner' align='center' margin='20'>
+<a href='/'><img class='homeicon' src='/images/miradi64.png' border='0'/></a>
 </td>
 <td class='banner'>
 <span class='miradihead'>Miradi<sup><font size='-1'>TM</font></sup></span>
@@ -23,15 +23,16 @@
 
 <tr>
 <td class='menu'>
+<p class='menuitem'><%= link_to "Miradi Home", '/' %></p>
 <p class='menuitem'><%= link_to "Our Vision", '/vision' %></p>
-<p class='menuitem'><%= link_to "CMP Open Standards", '/standards' %></p>
+<p class='menuitem'><%= link_to "CMP Open Standards", '/openstandards' %></p>
 <p class='menuitem'><%= link_to "Software Features", '/features' %></p>
 <p class='menuitem'><%= link_to "About CMP and Benetech", '/aboutcmp' %></p>
 <p class='menuitem'><%= link_to "Contact Us", '/contact' %></p>
 <p class='menuitem'><%= link_to "Download Miradi", '/download' %></p>
 </td>
 
-<td class='content'>
+<td class='content' valign='top'>
 <p style="color: red"><%= flash[:error] %></p>
 <p style="color: orange"><%= flash[:warning] %></p>
 <p style="color: green"><%= flash[:notice] %></p>
