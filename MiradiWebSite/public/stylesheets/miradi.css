@@ -154,3 +154,9 @@ div.progressBar div.background {
 	font-size: 125%;
     font-weight: bold;
 }
+
+.fieldnotes {
+  color: black;
+  background-color: #ffc;
+  font-style: italic;
+}
