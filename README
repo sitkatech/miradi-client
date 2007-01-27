@@ -42,40 +42,22 @@ For MS Windows:
 - 64 MB available disk space
 
 
-For Mac OS X:
-- Java 1.5 or later
-- 10 MB available disk space
-
-
 For GNU/Linux:
 - Java 1.5 or later
 - 10 MB available disk space
 
 
+For Mac OS X:
+Miradi is being designed to work on all major operating systems 
+including Macintosh. However, Version 1.0 Beta is not available 
+for Mac because it has some issues that will be ironed out in the 
+coming months.
 
 ---------------------
 INSTALLING
 
 MS Windows:
 - Download and run MiradiSetup.exe
-
-
-Mac OS X:
-- Make sure Apple's official Java is installed
-
-- Point your web browser at https://miradi.org/download
-
-- Download Miradi-Mac.zip and unzip the contents into some working 
-  directory. 
-
-- Copy the contents of the LibExt directory to the 
-  System/Library/Java/Extensions folder
-
-- Copy miradi.jar to your desktop, or wherever you wish to launch it from.
-
-- Ctrl-click on miradi.jar, and choose "Java Launcher (Default)
-
-- MarineExample.zip is a sample project that can be imported into Miradi
 
 
 GNU/Linux:
