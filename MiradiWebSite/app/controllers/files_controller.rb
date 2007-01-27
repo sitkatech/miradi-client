@@ -20,6 +20,8 @@ class FilesController < ApplicationController
 	if(file == 'README')
 	  type = 'text'
 	  disposition = 'inline'
+	elsif(file.index('.pdf'))
+	  type = 'application/pdf'
 	end
 	path = File.join(dir, file)
 	raise Exception, "Cannot read file #{path}" unless File.exist?(path)# and File.readable?(path)
