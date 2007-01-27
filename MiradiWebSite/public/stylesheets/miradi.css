@@ -148,3 +148,9 @@ div.progressBar div.background {
 	border: thin solid black;
 	font-size: 75%;
 }
+
+.requiredfield {
+	color: red;
+	font-size: 125%;
+    font-weight: bold;
+}

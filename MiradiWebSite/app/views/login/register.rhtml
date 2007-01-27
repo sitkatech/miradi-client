@@ -5,27 +5,49 @@
  
 <%= start_form_tag :action=> "attempt_register" %>
 
+<p><span class='requiredfield'>*</span> = Required Field</p>
 <table>
 
 <tr>
- <td><label for="user_access_code">Access Code</label></td>
+ <td><label for="user_access_code">Access Code</label><span class='requiredfield'>*</span></td>
  <td><%= text_field "user", "access_code", :size => 30 %></td>
 </tr>
 
 <tr>
- <td><label for="user_email">Email</label></td>
+ <td><label for="user_email">Email Address</label><span class='requiredfield'>*</span></td>
  <td><%= text_field "user", "email", :size => 30 %></td>
 </tr>
 
 <tr>
- <td><label for="user_password">Password</label></td>
+ <td><label for="user_password">Choose a Password</label><span class='requiredfield'>*</span></td>
  <td><%= password_field "user", "password", :size => 30 %></td>
 </tr>
 
 <tr>
- <td><label for="user_password_confirmation">Confirm your password</label></td>
+ <td><label for="user_password_confirmation">Confirm Password</label><span class='requiredfield'>*</span></td>
  <td><%= password_field "user", "password_confirmation", :size => 30 %></td>
 </tr>
+
+<tr>
+ <td><label for="user_name">Name</label></td>
+ <td><%= text_field "user", "name", :size => 70 %></td>
+</tr>
+
+<tr>
+ <td><label for="user_organization">Organization</label></td>
+ <td><%= text_field "user", "organization", :size => 70 %></td>
+</tr>
+
+<tr>
+ <td><label for="user_position">Title/Position</label></td>
+ <td><%= text_field "user", "position", :size => 70 %></td>
+</tr>
+
+<tr>
+ <td><label for="user_notes">Comments</label></td>
+ <td><%= text_area "user", "notes", :rows => 4, :cols => 70 %></td>
+</tr>
+
 
 <tr>
 <td>&nbsp;</td>
