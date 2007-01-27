@@ -24,7 +24,7 @@ class LoginController < ApplicationController
       if session[:user]
 	    redirect_to :controller => 'files'
 	  else
-	    render :action => 'index'
+	    redirect_to :back
 	  end
     end
     
@@ -40,14 +40,6 @@ class LoginController < ApplicationController
   	  email = params[:user][:email]
   	  password = params[:user][:password]
   	  access_code = params[:user][:access_code]
-  	  
-  	  ac = AccessCode.find(:first, :conditions=>["code = ?", access_code])
-  	  if User.count > 0 && !ac
-  	    session[:user] = nil
-  	    flash[:warning] = "Unknown Access Code"
-        render :action => 'register'
-  	    return
-  	  end
   	  
       @user = User.new(@params[:user])
       if User.count == 0

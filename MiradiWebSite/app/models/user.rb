@@ -10,7 +10,12 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :password, :password_confirmation, :password_salt
   validates_confirmation_of :password
 
-  
+  def validate_on_create
+  	  ac = AccessCode.find(:first, :conditions=>["code = ?", access_code])
+  	  if User.count > 0 && !ac
+  	    errors.add('access_code', "Unknown Access Code")
+  	  end
+  end
   
   def admin?
     return self.admin_flag
