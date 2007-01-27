@@ -3,8 +3,8 @@ class LoginController < ApplicationController
 	render :action => 'index'
   end
   
-  def request_account
-  end
+	def requestaccess
+	end
   
   def attempt_login
   	if request.post?
