@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       return true
     end
     flash[:warning]='Please login to continue'
-    redirect_to :controller => "login"
+    redirect_to :controller => "download"
     return false 
   end
   
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     if session[:user] && session[:user].admin?
       return true
     end
-    redirect_to :controller => "login"
+    redirect_to :controller => "welcome"
     return false 
   end
 end
