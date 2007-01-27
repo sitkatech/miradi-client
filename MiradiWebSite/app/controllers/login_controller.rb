@@ -3,8 +3,11 @@ class LoginController < ApplicationController
 	render :action => 'index'
   end
   
-	def requestaccess
-	end
+  def requestaccess
+  end
+  
+  def registerthanks
+  end
   
   def attempt_login
   	if request.post?
@@ -54,7 +57,7 @@ class LoginController < ApplicationController
       if @user.save
         session[:user] = User.authenticate(email, password)
         flash[:message] = "Registration successful"
-        redirect_to :controller => 'files'          
+        redirect_to :action => 'registerthanks'          
       else
         session[:user] = nil
         flash[:warning] = "Registration unsuccessful"
