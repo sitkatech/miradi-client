@@ -16,9 +16,6 @@
 <p><label for="user_position">Position</label><br/>
 <%= text_field 'user', 'position'  %></p>
 
-<p><label for="user_created_timestamp">Created timestamp</label><br/>
-<%= datetime_select 'user', 'created_timestamp'  %></p>
-
 <p><label for="user_access_code">Access code</label><br/>
 <%= text_field 'user', 'access_code'  %></p>
 
@@ -27,5 +24,11 @@
 
 <p><label for="user_admin_flag">Admin flag</label><br/>
 <select id="user_admin_flag" name="user[admin_flag]"><option value="false">False</option><option value="true">True</option></select></p>
+
+<p><label for="user_created_at">Created at</label><br/>
+<%= datetime_select 'user', 'created_at'  %></p>
+
+<p><label for="user_name">Name</label><br/>
+<%= text_field 'user', 'name'  %></p>
 <!--[eoform:user]-->
 
