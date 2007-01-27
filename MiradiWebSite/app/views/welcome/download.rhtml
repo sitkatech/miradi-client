@@ -7,27 +7,66 @@ software and provide feedback.&nbsp;We will be releasing updated versions
 appoximately the middle of each month; please check back to make sure you have 
 the latest one.&nbsp;You can also use this site to download sample projects and 
 other information.</P>
-<P>
-<a href='/files'>
-<IMG height=23 alt=""  
-src="/images/button_login.png" 
-width=126 align=absMiddle border=0></a>
-Click here if you are <STRONG>already a 
-registered user</STRONG> and know your user name/password</P>
-<P>
+
+<table>
+
+<tr>
+<%= start_form_tag :controller => :login, :action=> "attempt_login" %>
+<td>
+<INPUT TYPE="IMAGE" SRC="/images/button_login.png" ALT="Submit button"/>
+</td>
+<td>
+Type your user name (email address) and password, and click here 
+if you are <STRONG>already a registered user</STRONG>. 
+</td>
+</tr>
+
+<tr>
+<td/>
+<td>
+<table>
+<tr>
+<td>Email Address:</td>
+<td><input id="user_email" name="user[email]" size="30" type="text" value=""/></td>
+</tr>
+<tr>
+<td>Password:</td>
+<td><input id='user_password' name='user[password]' size='30' type='password' value=''/></td>
+</tr>
+</table
+</td>
+<%= end_form_tag %>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td>
 <a href='/login/register'>
 <IMG height=23 alt="" 
 src="/images/button_register.png" 
 width=126 align=absMiddle border=0></a>
-Click here if you have an access code or user 
-name/password, but need&nbsp;to&nbsp;<STRONG>register your account</STRONG></P>
-<P>
+</td>
+<td>
+Click here if you have an access code, but need to <STRONG>register your account</STRONG>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+
+<tr>
+<td>
 <a href='/login/requestaccess'>
 <IMG height=23 alt=""  
 src="/images/button_access.png" 
 width=126 align=absMiddle border=0></a>
+</td>
+<td>
 Click here if you would like to 
-<STRONG>request becoming a Miradi test user</STRONG></P>
+<STRONG>request becoming a Miradi test user</STRONG>
+<br/>
+
+</td>
+</tr>
+</table>
+
 <P><STRONG></STRONG>&nbsp;</P>
 <P><STRONG>Technical Note:&nbsp; </STRONG>Miradi is being designed to work on 
 all major operating systems including Windows, Linux, and 
