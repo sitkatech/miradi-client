@@ -77,11 +77,12 @@ div.progressBar div.background {
 }
 
 .miradihead {
-    font-size: 200%;
+    font-size: 220%;
     font-weight: bold;
 }
 
 .miradisub {
+	font-size: 120%;
     font-weight: bold;
 }
 
