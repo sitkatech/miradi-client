@@ -33,6 +33,7 @@ class FilesController < ApplicationController
 	end
 	path = File.join(dir, file)
 	raise Exception, "Cannot read file #{path}" unless File.exist?(path)# and File.readable?(path)
+	logger.info("DOWNLOAD: #{file} by #{session[:user].email} at #{Time.now}")
 	send_file(path, {:stream => false, :type => type, :disposition => disposition})
   end
   
