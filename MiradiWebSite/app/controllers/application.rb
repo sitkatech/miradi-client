@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   session :session_key => '_miradi.org_session_id'
   layout 'application'
 
+  # Never put passwords in the log file
+  filter_parameter_logging "password"
+
   def login_required
     if session[:user]
       return true
