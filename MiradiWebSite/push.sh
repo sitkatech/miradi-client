@@ -1,6 +1,6 @@
-rsync -vHSzrlgoDC -r --exclude=tmp/ --exclude=log/ . cmp.benetech.org:/var/www/miradi.org/
-rsync -vHSzrlgoDC -r ../README cmp.benetech.org:/var/www/miradi.org/private/
-rsync -vHSzrlgoDC -r ../dist/MiradiSetup.exe cmp.benetech.org:/var/www/miradi.org/private/
-rsync -vHSzrlgoDC -r ../dist/Miradi-Mac.zip cmp.benetech.org:/var/www/miradi.org/private/
-rsync -vHSzrlgoDC -r ../dist/Miradi-Linux.zip cmp.benetech.org:/var/www/miradi.org/private/
-rsync -vHSzrlgoDC -r ../dist/MarineExample.zip cmp.benetech.org:/var/www/miradi.org/private/
+rsync -vHSzrlgoD -r --exclude=tmp/ --exclude=log/ --exclude=CVS/ . miradi.org:/var/www/miradi.org/
+rsync -vHSzrlgoD -r ../README miradi.org:/var/www/miradi.org/private/
+rsync -vHSzrlgoD -r ../dist/MiradiSetup.exe miradi.org:/var/www/miradi.org/private/
+rsync -vHSzrlgoD -r ../dist/Miradi-Mac.zip miradi.org:/var/www/miradi.org/private/
+rsync -vHSzrlgoD -r ../dist/Miradi-Linux.zip miradi.org:/var/www/miradi.org/private/
+rsync -vHSzrlgoD -r ../dist/MarineExample.zip miradi.org:/var/www/miradi.org/private/
