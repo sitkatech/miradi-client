@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class WizardPanel extends JPanel
+public class WizardPanel extends JPanel implements IWizardPanel
 {
 	public WizardPanel(MainWindow mainWindowToUse)
 	{
@@ -24,6 +24,7 @@ public class WizardPanel extends JPanel
 		mainWindow = mainWindowToUse;
 		setFocusCycleRoot(true);
 	}
+
 
 	public void setContents(JPanel contents)
 	{
@@ -35,6 +36,7 @@ public class WizardPanel extends JPanel
 		repaint();
 	}
 	
+
 	public void next() throws Exception
 	{
 		int nextStep = currentStep + 1;
@@ -44,6 +46,7 @@ public class WizardPanel extends JPanel
 		setStep(nextStep);
 	}
 	
+
 	public void previous() throws Exception
 	{
 		int nextStep = currentStep - 1;
@@ -58,6 +61,7 @@ public class WizardPanel extends JPanel
 		setMinimumSize(new Dimension(0, 0));
 	}
 	
+
 	public void setStep(int newStep) throws Exception
 	{
 		currentStep = newStep;
@@ -65,6 +69,7 @@ public class WizardPanel extends JPanel
 		setContents(steps[currentStep]);
 	}
 	
+
 	public void refresh() throws Exception
 	{
 		for(int i = 0; i < steps.length; ++i)
@@ -81,15 +86,18 @@ public class WizardPanel extends JPanel
 		return (steps.length - 1);
 	}
 	
+
 	public void jump(Class stepMarker) throws Exception
 	{
 		throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 
+
 	public int getCurrentStep()
 	{
 		return currentStep;
 	}
+
 
 	public MainWindow getMainWindow()
 	{
