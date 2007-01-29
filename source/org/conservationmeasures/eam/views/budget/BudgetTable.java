@@ -236,7 +236,11 @@ class SingleClickAutoSelectCellEditor extends DefaultCellEditor
 		public boolean isCellEditable(EventObject anEvent) 
 		{
 			boolean isEditable = super.isCellEditable(anEvent);
-			if(isEditable) 
+			
+			if (anEvent == null)
+				return isEditable;
+			
+			if(isEditable)
 				SwingUtilities.invokeLater(new LaterRunner());
 			
 			return isEditable;
