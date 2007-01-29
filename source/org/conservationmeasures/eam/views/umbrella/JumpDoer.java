@@ -28,7 +28,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
-import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
@@ -169,7 +169,7 @@ public class JumpDoer extends MainWindowDoer
 		
 		
 
-		if(jumpActionClass.equals(ActionJumpRankDirectThreats.class))
+		if(jumpActionClass.equals(ActionJumpThreatRatingWizardOverviewStep.class))
 			return ThreatMatrixView.getViewName();
 		
 		if (jumpActionClass.equals(ActionJumpThreatRatingWizardCheckTotals.class))

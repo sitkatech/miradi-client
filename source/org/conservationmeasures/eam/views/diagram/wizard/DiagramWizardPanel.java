@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
-import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
@@ -127,7 +127,7 @@ public class DiagramWizardPanel extends WizardPanel
 	public void next() throws Exception
 	{
 		if(currentStep ==  LINK_DIRECT_THREATS)
-			actions.get(ActionJumpRankDirectThreats.class).doAction();
+			actions.get(ActionJumpThreatRatingWizardOverviewStep.class).doAction();
 		else if(currentStep == EDIT_ALL_STRATEGIES)
 			actions.get(ActionJumpMonitoringOverview.class).doAction();
 		else if(currentStep == REVIEW_AND_ADJUST)

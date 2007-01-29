@@ -5,11 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import org.conservationmeasures.eam.commands.CommandSwitchView;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.umbrella.NewWizardPanel;
 
 public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
 {
@@ -22,13 +19,11 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
 	{
 		if(linkDescription.equals("View:Diagram"))
 		{
-			CommandSwitchView cmd = new CommandSwitchView(DiagramView.getViewName());
-			Project project = ((ThreatRatingWizardPanel)getWizard()).getView().getProject();
 			try
 			{
-				project.executeCommand(cmd);
+				((NewWizardPanel)getWizard()).control(linkDescription);
 			}
-			catch (CommandFailedException e)
+			catch (Exception e)
 			{
 				EAM.logException(e);
 			}
