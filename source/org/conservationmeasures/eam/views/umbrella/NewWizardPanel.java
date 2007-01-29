@@ -12,7 +12,17 @@ import java.util.Hashtable;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.commands.CommandSwitchView;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckTotalsStep;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardChooseBundle;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardIrreversibilityStep;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardOverviewStep;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardScopeStep;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardSeverityStep;
 
 public class NewWizardPanel extends JPanel implements IWizardPanel
 {
@@ -22,12 +32,42 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		mainWindow = mainWindowToUse;
 		setFocusCycleRoot(true);
 		currentStepName =  "";
+		setupSteps();
 	}
 
-	public int addStep(SkeletonWizardStep step)
+	private void setupSteps()
+	{
+		try
+		{
+			setupStepsThreatMatrixView();
+		}
+		catch (Exception e)
+		{
+			EAM.logError("Wizard load failed");
+			EAM.logException(e);
+		}
+	}
+
+	private void setupStepsThreatMatrixView() throws Exception
+	{
+		if (mainWindow.getCurrentView().cardName().equals(ThreatMatrixView.getViewName()));
+		{
+			ThreatRatingWizardPanel panel =(ThreatRatingWizardPanel)this;
+			addStep(new ThreatRatingWizardOverviewStep(panel));
+			addStep(new ThreatRatingWizardChooseBundle(panel));
+			addStep(ThreatRatingWizardScopeStep.create(panel, mainWindow.getProject()));
+			addStep(ThreatRatingWizardSeverityStep.create(panel, mainWindow.getProject()));
+			addStep(ThreatRatingWizardIrreversibilityStep.create(panel, mainWindow.getProject()));
+			addStep(new ThreatRatingWizardCheckBundleStep(panel));
+			addStep(new ThreatRatingWizardCheckTotalsStep(panel));
+			currentStepName = "ThreatRatingWizardOverviewStep";
+			setStep("ThreatRatingWizardOverviewStep");
+		}
+	}
+	
+	private void addStep(SkeletonWizardStep step)
 	{
 		stepClasses.put(step.getClass().getSimpleName(), step);
-		return 0;
 	}
 	
 	public void setContents(JPanel contents)
@@ -63,7 +103,7 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 	{
 	}
 	
-	public void setStep(String newStep) throws Exception
+	private void setStep(String newStep) throws Exception
 	{
 		WizardStepEntry entryCur = stepTable.findStep(currentStepName);
 		String viewNameCur = entryCur.getViewName();
@@ -75,6 +115,7 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		{
 			//TODO: should be in a single undo/redo transaction
 			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
+			EAM.logWarning("During wizard migration the target step may not be correclty opened:" + newStep);
 			mainWindow.getCurrentView().jump(newStep);
 		}
 		else {
@@ -128,12 +169,10 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		return 0;
 	}
 	
-	MainWindow mainWindow;
+	protected MainWindow mainWindow;
 	public String currentStepName;
-	static StepTable stepTable = new StepTable();
-	Hashtable stepClasses = new Hashtable();
-	public int currentStep;
-	
+	private static StepTable stepTable = new StepTable();
+	private static Hashtable stepClasses = new Hashtable();
 
 }
 
@@ -216,6 +255,13 @@ class StepTable extends Hashtable
 		stepEntry = new WizardStepEntry( 
 				"DiagramWizardOverviewStep",  "Diagram", controlNames8, steps8);
 		put(stepEntry.getStepName(),stepEntry);
+		
+		String[] controlNames9 = {};
+		String[] steps9 = {};
+		stepEntry = new WizardStepEntry( 
+				"DiagramWizardLinkDirectThreatsToTargetsStep",  "Diagram", controlNames9, steps9);
+		put(stepEntry.getStepName(),stepEntry);
+		
 		
 	}
 

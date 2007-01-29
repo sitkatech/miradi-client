@@ -6,13 +6,14 @@
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 {
-	public static ThreatRatingWizardSeverityStep create(ThreatRatingWizardPanel wizardToUse) throws Exception
+	public static ThreatRatingWizardSeverityStep create(ThreatRatingWizardPanel wizardToUse, Project project) throws Exception
 	{
-		ThreatRatingFramework framework = wizardToUse.getView().getProject().getThreatRatingFramework();
+		ThreatRatingFramework framework = project.getThreatRatingFramework();
 		BaseId criterionId = framework.findCriterionByLabel("Severity").getId();
 		ThreatRatingWizardSeverityStep step = new ThreatRatingWizardSeverityStep(wizardToUse, criterionId);
 		return step;

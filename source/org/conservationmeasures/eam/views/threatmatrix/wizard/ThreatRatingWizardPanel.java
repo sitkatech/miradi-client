@@ -16,17 +16,6 @@ public class ThreatRatingWizardPanel extends NewWizardPanel
 	{
 		super(viewToUse.getMainWindow());
 		view = viewToUse;
-
-		addStep(new ThreatRatingWizardOverviewStep(this));
-		addStep(new ThreatRatingWizardChooseBundle(this));
-		addStep(ThreatRatingWizardScopeStep.create(this));
-		addStep(ThreatRatingWizardSeverityStep.create(this));
-		addStep(ThreatRatingWizardIrreversibilityStep.create(this));
-		addStep(new ThreatRatingWizardCheckBundleStep(this));
-		addStep(new ThreatRatingWizardCheckTotalsStep(this));
-
-		currentStepName = "ThreatRatingWizardOverviewStep";
-		setStep("ThreatRatingWizardOverviewStep");
 		selectBundle(null);
 	}
 
@@ -53,8 +42,7 @@ public class ThreatRatingWizardPanel extends NewWizardPanel
 	
 	ThreatRatingFramework getFramework()
 	{
-		ThreatRatingFramework framework = getView().getProject().getThreatRatingFramework();
-		return framework;
+		return mainWindow.getProject().getThreatRatingFramework();
 	}
 
 	ThreatMatrixView view;
