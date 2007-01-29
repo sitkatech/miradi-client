@@ -134,12 +134,12 @@ abstract public class TabbedView extends UmbrellaView
 		
 	}
 
-	public void addNoneScrollableTab(ObjectPoolManagementPanel panel)
+	public void addNonScrollableTab(ObjectPoolManagementPanel panel)
 	{
 		addTab(panel.getPanelDescription(), panel.getIcon(), panel);
 	}
 	
-	public void addNoneScrollableTab(ModelessDialogPanel panel)
+	public void addNonScrollableTab(ModelessDialogPanel panel)
 	{
 		addTab(panel.getPanelDescription(), panel);
 	}

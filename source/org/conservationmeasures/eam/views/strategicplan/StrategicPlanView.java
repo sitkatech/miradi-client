@@ -44,9 +44,9 @@ public class StrategicPlanView extends TabbedView
 		strategyPoolManagementPanel = new StrategyPoolManagementPanel(getProject(), getMainWindow());
 		
 		addTab(EAM.text("Strategic Plan"), strategicPlanPanel);
-		addNoneScrollableTab(goalPanel);
-		addNoneScrollableTab(objectivePanel);
-		addNoneScrollableTab(strategyPoolManagementPanel);
+		addNonScrollableTab(goalPanel);
+		addNonScrollableTab(objectivePanel);
+		addNonScrollableTab(strategyPoolManagementPanel);
 	}
 	
 	public void deleteTabs()

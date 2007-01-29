@@ -86,10 +86,10 @@ public class BudgetView extends TabbedView
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
 		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
 		
-		addNoneScrollableTab(budgetManagmentPanel);
+		addNonScrollableTab(budgetManagmentPanel);
 		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);
 		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel.getIcon(), fundingSourcePoolManagementPanel);
-		addNoneScrollableTab(resourceManagementPanel);
+		addNonScrollableTab(resourceManagementPanel);
 		addTab(EAM.text("Actuals - demo"), new UiScrollPane(getBudgetComponent()));
 	}
 	
