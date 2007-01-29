@@ -50,6 +50,17 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 		{
 			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
 			EAM.okDialog(def.term, new String[] {def.definition});
+		} 
+		else if(linkDescription.startsWith("View:"))
+		{
+			try
+			{
+				((NewWizardPanel)getWizard()).control(linkDescription);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
 		}
 	}
 	
