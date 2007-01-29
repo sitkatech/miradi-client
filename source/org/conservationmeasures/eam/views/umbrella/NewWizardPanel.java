@@ -46,16 +46,19 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		setStep(control.getStepName());
 	}
 	
+	//TODO: will go away when all wizards are converted, called by SkeletonWizardStep
 	public void next() throws Exception
 	{
 		control("Next");
 	}
 	
+	//TODO: will go away when all wizards are converted, called by SkeletonWizardStep
 	public void previous() throws Exception
 	{
 		control("Back");
 	}
 
+	//TODO: not used but need do to interface: will go away when all wizards are converted
 	public void setStep(int newStep) throws Exception
 	{
 	}
@@ -82,6 +85,7 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		}
 	}
 	
+	//TODO: not used but need do to interface: will go away when all wizards are converted
 	public Class makeStepMarker(String stepName)
 	{
 		return null;
@@ -118,7 +122,7 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		setMinimumSize(new Dimension(0, 0));
 	}
 	
-	
+	//TODO: not used but need do to interface: will go away when all wizards are converted
 	public int getCurrentStep()
 	{
 		return 0;
