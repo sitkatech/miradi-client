@@ -126,7 +126,6 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		}
 
 		SkeletonWizardStep stepClass = stepTable.findStep(newStep).getStepClass();
-		//TODO: if not needed when all wizard converted.
 		if (stepClass!=null)
 		{
 			currentStepName = newStep;
