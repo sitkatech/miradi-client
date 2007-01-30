@@ -52,17 +52,6 @@ public class DateRangeEffortList
 		return null;
 	}
 	
-	//FIXME budget code - this method should no longer be used, replace with getTotalUnitQuantity()
-	public double getUnitsForDateRange(DateRange dateRangeToUse)
-	{
-		
-		DateRangeEffort effort = getEffortForDateRange(dateRangeToUse);
-		if (effort != null)
-			return effort.getUnitQuantity();
-		
-		return 0;
-	}
-	
 	public double getTotalUnitQuantity(DateRange boundryDateRange)
 	{
 		double totalUnits = 0.0;
