@@ -53,6 +53,8 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	{
 		try
 		{
+			//TODO: this mehod button press will becomm just a call to control(buttonName)
+			// ...the save will go way when put hot dropdowns in threatMatrx wizard. It is here only to support the old code
 			if(buttonName.indexOf("Next") >= 0)
 			{
 				if(!save())

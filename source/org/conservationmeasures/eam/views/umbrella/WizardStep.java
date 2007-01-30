@@ -55,7 +55,7 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 		{
 			try
 			{
-				((NewWizardPanel)getWizard()).control(linkDescription);
+				getWizard().control(linkDescription);
 			}
 			catch (Exception e)
 			{

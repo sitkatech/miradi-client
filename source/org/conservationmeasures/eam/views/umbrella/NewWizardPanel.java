@@ -162,6 +162,7 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 	
 	protected MainWindow mainWindow;
 	public String currentStepName;
+	//TODO: this should not be a static but is really a wizard manager and should be pulled from above.
 	private static StepTable stepTable = new StepTable();
 
 }
