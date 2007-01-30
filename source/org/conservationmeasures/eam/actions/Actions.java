@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverview;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
+import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
@@ -79,7 +80,6 @@ import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.diagram.wizard.ActionJumpEditAllStrategies;
 
 public class Actions
 {
