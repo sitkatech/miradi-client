@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 
-public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
+public class ThreatMatrixOverviewStep extends ThreatRatingWizardStep
 {
-	public ThreatRatingWizardOverviewStep(ThreatRatingWizardPanel wizardToUse) 
+	public ThreatMatrixOverviewStep(ThreatRatingWizardPanel wizardToUse) 
 	{
 		super(wizardToUse);
 	}

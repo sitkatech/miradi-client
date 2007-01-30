@@ -93,7 +93,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
-import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
@@ -250,7 +250,7 @@ public class MainMenuBar extends JMenuBar
 		menu1c.setMnemonic(KeyEvent.VK_U);
 		
 		addMenuItem(actions, menu1c, ActionJumpIdentifyDirectThreats.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu1c, ActionJumpThreatRatingWizardOverviewStep.class, KeyEvent.VK_R);
+		addMenuItem(actions, menu1c, ActionJumpThreatMatrixOverviewStep.class, KeyEvent.VK_R);
 		
 		JMenu menu1d = new JMenu("1D. Analyze Project Situation");
 		menu1d.setMnemonic(KeyEvent.VK_M);

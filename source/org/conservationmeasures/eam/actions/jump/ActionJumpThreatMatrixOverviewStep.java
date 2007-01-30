@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpThreatRatingWizardOverviewStep extends MainWindowAction
+public class ActionJumpThreatMatrixOverviewStep extends MainWindowAction
 {
-	public ActionJumpThreatRatingWizardOverviewStep(MainWindow mainWindowToUse)
+	public ActionJumpThreatMatrixOverviewStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

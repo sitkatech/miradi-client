@@ -14,12 +14,13 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckTotalsStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardChooseBundle;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardIrreversibilityStep;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardOverviewStep;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardSeverityStep;
@@ -40,6 +41,7 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		try
 		{
 			setupStepsThreatMatrixView();
+			setInitialStep();
 		}
 		catch (Exception e)
 		{
@@ -50,24 +52,31 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 
 	private void setupStepsThreatMatrixView() throws Exception
 	{
-		if (mainWindow.getCurrentView().cardName().equals(ThreatMatrixView.getViewName()));
-		{
-			ThreatRatingWizardPanel panel =(ThreatRatingWizardPanel)this;
-			addStep(new ThreatRatingWizardOverviewStep(panel));
-			addStep(new ThreatRatingWizardChooseBundle(panel));
-			addStep(ThreatRatingWizardScopeStep.create(panel, mainWindow.getProject()));
-			addStep(ThreatRatingWizardSeverityStep.create(panel, mainWindow.getProject()));
-			addStep(ThreatRatingWizardIrreversibilityStep.create(panel, mainWindow.getProject()));
-			addStep(new ThreatRatingWizardCheckBundleStep(panel));
-			addStep(new ThreatRatingWizardCheckTotalsStep(panel));
-			currentStepName = "ThreatRatingWizardOverviewStep";
-			setStep("ThreatRatingWizardOverviewStep");
-		}
+		addStep(new ThreatMatrixOverviewStep((ThreatRatingWizardPanel)this));
+		addStep(new ThreatRatingWizardChooseBundle((ThreatRatingWizardPanel)this));
+		addStep(ThreatRatingWizardScopeStep.create((ThreatRatingWizardPanel)this, mainWindow.getProject()));
+		addStep(ThreatRatingWizardSeverityStep.create((ThreatRatingWizardPanel)this, mainWindow.getProject()));
+		addStep(ThreatRatingWizardIrreversibilityStep.create((ThreatRatingWizardPanel)this, mainWindow.getProject()));
+		addStep(new ThreatRatingWizardCheckBundleStep((ThreatRatingWizardPanel)this));
+		addStep(new ThreatRatingWizardCheckTotalsStep((ThreatRatingWizardPanel)this));
+
 	}
+
+	private void setInitialStep() throws Exception
+	{
+		currentStepName = mainWindow.getCurrentView().cardName() + "OverviewStep";
+		setStep(currentStepName);
+	}
+	
 	
 	private void addStep(SkeletonWizardStep step)
 	{
-		stepClasses.put(step.getClass().getSimpleName(), step);
+		String name = step.getClass().getSimpleName();
+		WizardStepEntry entry = stepTable.findStep(name);
+		if (mainWindow.getCurrentView().cardName().equals(entry.getViewName()));
+		{
+			stepClasses.put(step.getClass().getSimpleName(), step);
+		}
 	}
 	
 	public void setContents(JPanel contents)
@@ -191,17 +200,17 @@ class StepTable extends Hashtable
 				"DiagramWizardLinkDirectThreatsToTargetsStep", 
 				"DiagramWizardOverviewStep"};
 		WizardStepEntry stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardOverviewStep",  "ThreatMatrix", controlNames1, steps1);
+				"ThreatMatrixOverviewStep",  ThreatMatrixView.getViewName(), controlNames1, steps1);
 		put(stepEntry.getStepName(),stepEntry);
 		
 		
 		String[] controlNames2 = {"Next" , "Back" , "Done"};
 		String[] steps2 = {
 				"ThreatRatingWizardScopeStep", 
-				"ThreatRatingWizardOverviewStep", 
+				"ThreatMatrixOverviewStep", 
 				"ThreatRatingWizardCheckTotalsStep"};
 		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardChooseBundle",  "ThreatMatrix", controlNames2, steps2);
+				"ThreatRatingWizardChooseBundle",  ThreatMatrixView.getViewName(), controlNames2, steps2);
 		put(stepEntry.getStepName(),stepEntry);
 		
 		
@@ -210,7 +219,7 @@ class StepTable extends Hashtable
 				"ThreatRatingWizardSeverityStep", 
 				"ThreatRatingWizardChooseBundle"};
 		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardScopeStep",  "ThreatMatrix", controlNames3, steps3);
+				"ThreatRatingWizardScopeStep",  ThreatMatrixView.getViewName(), controlNames3, steps3);
 		put(stepEntry.getStepName(),stepEntry);
 		
 		
@@ -219,7 +228,7 @@ class StepTable extends Hashtable
 				"ThreatRatingWizardIrreversibilityStep", 
 				"ThreatRatingWizardScopeStep"};
 		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardSeverityStep",  "ThreatMatrix", controlNames4, steps4);
+				"ThreatRatingWizardSeverityStep",  ThreatMatrixView.getViewName(), controlNames4, steps4);
 		put(stepEntry.getStepName(),stepEntry);
 		
 		
@@ -228,7 +237,7 @@ class StepTable extends Hashtable
 				"ThreatRatingWizardCheckBundleStep", 
 				"ThreatRatingWizardSeverityStep"};
 		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardIrreversibilityStep",  "ThreatMatrix", controlNames5, steps5);
+				"ThreatRatingWizardIrreversibilityStep",  ThreatMatrixView.getViewName(), controlNames5, steps5);
 		put(stepEntry.getStepName(),stepEntry);
 		
 		
@@ -237,29 +246,29 @@ class StepTable extends Hashtable
 				"DiagramWizardIdentifyIndirectThreatStep", 
 				"ThreatRatingWizardIrreversibilityStep"};
 		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardCheckBundleStep",  "ThreatMatrix", controlNames6, steps6);
+				"ThreatRatingWizardCheckBundleStep",  ThreatMatrixView.getViewName(), controlNames6, steps6);
 		put(stepEntry.getStepName(),stepEntry);
 		
 		
 		String[] controlNames7 = {"Next" , "Back"};
 		String[] steps7 = {
-				"ThreatRatingWizardOverviewStep", 
-				"ThreatRatingWizardOverviewStep"};
+				"ThreatMatrixOverviewStep", 
+				"ThreatMatrixOverviewStep"};
 		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardCheckTotalsStep",  "ThreatMatrix", controlNames7, steps7);
+				"ThreatRatingWizardCheckTotalsStep",  ThreatMatrixView.getViewName(), controlNames7, steps7);
 		put(stepEntry.getStepName(),stepEntry);
 		
 		
 		String[] controlNames8 = {};
 		String[] steps8 = {};
 		stepEntry = new WizardStepEntry( 
-				"DiagramWizardOverviewStep",  "Diagram", controlNames8, steps8);
+				"DiagramWizardOverviewStep",  DiagramView.getViewName(), controlNames8, steps8);
 		put(stepEntry.getStepName(),stepEntry);
 		
 		String[] controlNames9 = {};
 		String[] steps9 = {};
 		stepEntry = new WizardStepEntry( 
-				"DiagramWizardLinkDirectThreatsToTargetsStep",  "Diagram", controlNames9, steps9);
+				"DiagramWizardLinkDirectThreatsToTargetsStep", DiagramView.getViewName(), controlNames9, steps9);
 		put(stepEntry.getStepName(),stepEntry);
 		
 		
@@ -311,23 +320,6 @@ class WizardStepEntry extends Hashtable
 		return stepName;
 	}
 
-	SkeletonWizardStep getStepClass()
-	{
-		return null;
-//		try
-//		{
-//		 Class classx = Class.forName(stepName);
-//         Constructor[] contrs = classx .getConstructors();
-//         Object[] obj = {};
-//         SkeletonWizardStep ws = (SkeletonWizardStep) contrs[0].newInstance(obj);
-//         return ws;
-//		}
-//		catch(Exception e)
-//		{
-//			e.printStackTrace();
-//			return null;
-//		}
-	}
 	
 	String stepName;
 	String viewName;
