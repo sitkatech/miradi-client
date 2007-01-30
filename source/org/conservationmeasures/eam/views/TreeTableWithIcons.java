@@ -41,9 +41,11 @@ import com.java.sun.jtreetable.TreeTableModel;
 
 public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 {
-	public TreeTableWithIcons(Project projectToUse, TreeTableModel treeTableModel)
+
+	public TreeTableWithIcons(Project projectToUse, TreeTableModel treeTableModelToUse)
 	{
-		super(treeTableModel);
+		super(treeTableModelToUse);
+		treeTableModel = treeTableModelToUse;
 		project = projectToUse;
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
@@ -55,9 +57,9 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		setDefaultEditor(TreeTableModel.class, ce);
 	}
 
-	public GenericTreeTableModel getTreeTableModel()
+	public TreeTableModel getTreeTableModel()
 	{
-		return (GenericTreeTableModel)getModel();
+		return treeTableModel;
 	}
 	
 	public static Font createFristLevelFont(Font defaultFontToUse)
@@ -225,6 +227,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 	
 		return new EAMObject[] {foundObject};
 	}
-	
+
+	private TreeTableModel treeTableModel;
 	Project project;
 }
