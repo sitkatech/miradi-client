@@ -43,7 +43,7 @@ public class DiagramWizardPanel extends WizardPanel
 		super(mainWindow);
 		actions = mainWindow.getActions();
 		
-		OVERVIEW = addStep(new DiagramWizardOverviewStep(this));
+		OVERVIEW = addStep(new DiagramOverviewStep(this));
 		PROJECT_SCOPE = addStep(new DiagramWizardProjectScopeStep(this));
 		VISION = addStep(new DiagramWizardVisionStep(this));
 		CONSERVATION_TARGET = addStep(new DiagramWizardDefineTargetsStep(this));
