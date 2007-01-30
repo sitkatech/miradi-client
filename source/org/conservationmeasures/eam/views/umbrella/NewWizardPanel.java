@@ -170,8 +170,8 @@ class StepTable extends Hashtable
 	public void loadDigramViewSteps()
 	{
 		final String viewName = DiagramView.getViewName();
-		loadStep("DiagramWizardOverviewStep", viewName);
-		loadStep("DiagramWizardLinkDirectThreatsToTargetsStep", viewName);
+		loadStep("DiagramWizardOverviewStep", null, viewName);
+		loadStep("DiagramWizardLinkDirectThreatsToTargetsStep", null, viewName);
 	}
 
 
@@ -180,40 +180,33 @@ class StepTable extends Hashtable
 		final String viewName = ThreatMatrixView.getViewName();
 		Project project = panel.mainWindow.getProject();
 		
-		WizardStepEntry stepEntry = loadStep("ThreatMatrixOverviewStep", viewName);
+		WizardStepEntry stepEntry = loadStep("ThreatMatrixOverviewStep", new ThreatMatrixOverviewStep(panel), viewName);
 		stepEntry.loadNextBack("ThreatRatingWizardChooseBundle", "DiagramWizardLinkDirectThreatsToTargetsStep");
 		stepEntry.loadControl("View:Diagram", "DiagramWizardOverviewStep");
-		stepEntry.setStepClass(new ThreatMatrixOverviewStep(panel));
 
-		stepEntry = loadStep("ThreatRatingWizardChooseBundle", viewName);
+		stepEntry = loadStep("ThreatRatingWizardChooseBundle", new ThreatRatingWizardChooseBundle(panel), viewName);
 		stepEntry.loadNextBack("ThreatRatingWizardScopeStep", "ThreatMatrixOverviewStep");
 		stepEntry.loadControl("Done", "ThreatRatingWizardCheckTotalsStep");
-		stepEntry.setStepClass(new ThreatRatingWizardChooseBundle(panel));
 		
-		stepEntry = loadStep("ThreatRatingWizardScopeStep", viewName);
+		stepEntry = loadStep("ThreatRatingWizardScopeStep", ThreatRatingWizardScopeStep.create(panel, project), viewName);
 		stepEntry.loadNextBack("ThreatRatingWizardSeverityStep", "ThreatRatingWizardChooseBundle");
-		stepEntry.setStepClass(ThreatRatingWizardScopeStep.create(panel, project));
 	
-		stepEntry = loadStep("ThreatRatingWizardSeverityStep", viewName);
+		stepEntry = loadStep("ThreatRatingWizardSeverityStep", ThreatRatingWizardSeverityStep.create(panel, project), viewName);
 		stepEntry.loadNextBack("ThreatRatingWizardIrreversibilityStep", "ThreatRatingWizardScopeStep");
-		stepEntry.setStepClass(ThreatRatingWizardSeverityStep.create(panel, project));
 		
-		stepEntry = loadStep("ThreatRatingWizardIrreversibilityStep", viewName);
+		stepEntry = loadStep("ThreatRatingWizardIrreversibilityStep", ThreatRatingWizardIrreversibilityStep.create(panel, project), viewName);
 		stepEntry.loadNextBack("ThreatRatingWizardCheckBundleStep", "ThreatRatingWizardSeverityStep");
-		stepEntry.setStepClass(ThreatRatingWizardIrreversibilityStep.create(panel, project));
 		
-		stepEntry = loadStep("ThreatRatingWizardCheckBundleStep", viewName);
+		stepEntry = loadStep("ThreatRatingWizardCheckBundleStep", new ThreatRatingWizardCheckBundleStep(panel), viewName);
 		stepEntry.loadNextBack("ThreatRatingWizardChooseBundle", "ThreatRatingWizardIrreversibilityStep");
-		stepEntry.setStepClass(new ThreatRatingWizardCheckBundleStep(panel));
 
-		stepEntry = loadStep("ThreatRatingWizardCheckTotalsStep", viewName);
+		stepEntry = loadStep("ThreatRatingWizardCheckTotalsStep", new ThreatRatingWizardCheckTotalsStep(panel) , viewName);
 		stepEntry.loadNextBack("ThreatMatrixOverviewStep", "ThreatRatingWizardChooseBundle");
-		stepEntry.setStepClass(new ThreatRatingWizardCheckTotalsStep(panel));
 	}
 
-	private WizardStepEntry loadStep(final String string, final String viewName)
+	private WizardStepEntry loadStep(String string, WizardStep wizardStep, String viewName)
 	{
-		WizardStepEntry stepEntry = new WizardStepEntry(string,  viewName);
+		WizardStepEntry stepEntry = new WizardStepEntry(string,  viewName, wizardStep);
 		put(stepEntry.getStepName(),stepEntry);
 		return stepEntry;
 	}
@@ -229,11 +222,12 @@ class StepTable extends Hashtable
 
 class WizardStepEntry
 {
-	WizardStepEntry(String stepNameToUse, String viewNameToUse)
+	WizardStepEntry(String stepNameToUse, String viewNameToUse, WizardStep wizardStep)
 	{
 		viewName = viewNameToUse;
 		stepName = stepNameToUse;
 		entries = new Hashtable();
+		step = wizardStep;
 	}
 	
 
@@ -272,11 +266,6 @@ class WizardStepEntry
 	WizardStep getStepClass()
 	{
 		return step;
-	}
-	
-	void setStepClass(WizardStep panel)
-	{
-		step = panel;
 	}
 	
 	private String stepName;
