@@ -59,7 +59,6 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		addStep(ThreatRatingWizardIrreversibilityStep.create((ThreatRatingWizardPanel)this, mainWindow.getProject()));
 		addStep(new ThreatRatingWizardCheckBundleStep((ThreatRatingWizardPanel)this));
 		addStep(new ThreatRatingWizardCheckTotalsStep((ThreatRatingWizardPanel)this));
-
 	}
 
 	private void setInitialStep() throws Exception
@@ -194,84 +193,58 @@ class StepTable extends Hashtable
 	
 	void load() 
 	{
-		String[] controlNames1 = {"Next" , "Back" , "View:Diagram"};
-		String[] steps1 = {
-				"ThreatRatingWizardChooseBundle", 
-				"DiagramWizardLinkDirectThreatsToTargetsStep", 
-				"DiagramWizardOverviewStep"};
-		WizardStepEntry stepEntry = new WizardStepEntry( 
-				"ThreatMatrixOverviewStep",  ThreatMatrixView.getViewName(), controlNames1, steps1);
+		loadThreatMatrixViewSteps();
+		loadDigramViewSteps();
+
+	}
+
+	private void loadDigramViewSteps()
+	{
+		final String viewName = DiagramView.getViewName();
+		
+		addStep(viewName, "DiagramWizardOverviewStep");
+		addStep(viewName, "DiagramWizardLinkDirectThreatsToTargetsStep");
+	}
+
+	private void loadThreatMatrixViewSteps()
+	{
+		final String viewName = ThreatMatrixView.getViewName();
+		WizardStepEntry stepEntry = addStep(viewName, "ThreatMatrixOverviewStep");
+		stepEntry.loadControl("Next", "ThreatRatingWizardChooseBundle");
+		stepEntry.loadControl("Back", "DiagramWizardLinkDirectThreatsToTargetsStep");
+		stepEntry.loadControl("View:Diagram", "DiagramWizardOverviewStep");
+
+		stepEntry = addStep(viewName, "ThreatRatingWizardChooseBundle");
+		stepEntry.loadControl("Next", "ThreatRatingWizardScopeStep");
+		stepEntry.loadControl("Back", "ThreatMatrixOverviewStep");
+		stepEntry.loadControl("Done", "ThreatRatingWizardCheckTotalsStep");
+		
+		stepEntry = addStep(viewName, "ThreatRatingWizardScopeStep");
+		stepEntry.loadControl("Next", "ThreatRatingWizardSeverityStep");
+		stepEntry.loadControl("Back", "ThreatRatingWizardChooseBundle");
+	
+		stepEntry = addStep(viewName, "ThreatRatingWizardSeverityStep");
+		stepEntry.loadControl("Next", "ThreatRatingWizardIrreversibilityStep");
+		stepEntry.loadControl("Back", "ThreatRatingWizardScopeStep");
+		
+		stepEntry = addStep(viewName, "ThreatRatingWizardIrreversibilityStep");
+		stepEntry.loadControl("Next", "ThreatRatingWizardCheckBundleStep");
+		stepEntry.loadControl("Back", "ThreatRatingWizardSeverityStep");
+		
+		stepEntry = addStep(viewName, "ThreatRatingWizardCheckBundleStep");
+		stepEntry.loadControl("Next", "DiagramWizardIdentifyIndirectThreatStep");
+		stepEntry.loadControl("Back", "ThreatRatingWizardIrreversibilityStep");
+
+		stepEntry = addStep(viewName, "ThreatRatingWizardCheckTotalsStep");
+		stepEntry.loadControl("Next", "ThreatMatrixOverviewStep");
+		stepEntry.loadControl("Back", "ThreatMatrixOverviewStep");
+	}
+
+	private WizardStepEntry addStep(final String viewName, final String string)
+	{
+		WizardStepEntry stepEntry = new WizardStepEntry(string,  viewName);
 		put(stepEntry.getStepName(),stepEntry);
-		
-		
-		String[] controlNames2 = {"Next" , "Back" , "Done"};
-		String[] steps2 = {
-				"ThreatRatingWizardScopeStep", 
-				"ThreatMatrixOverviewStep", 
-				"ThreatRatingWizardCheckTotalsStep"};
-		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardChooseBundle",  ThreatMatrixView.getViewName(), controlNames2, steps2);
-		put(stepEntry.getStepName(),stepEntry);
-		
-		
-		String[] controlNames3 = {"Next" , "Back"};
-		String[] steps3 = {
-				"ThreatRatingWizardSeverityStep", 
-				"ThreatRatingWizardChooseBundle"};
-		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardScopeStep",  ThreatMatrixView.getViewName(), controlNames3, steps3);
-		put(stepEntry.getStepName(),stepEntry);
-		
-		
-		String[] controlNames4 = {"Next" , "Back"};
-		String[] steps4 = {
-				"ThreatRatingWizardIrreversibilityStep", 
-				"ThreatRatingWizardScopeStep"};
-		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardSeverityStep",  ThreatMatrixView.getViewName(), controlNames4, steps4);
-		put(stepEntry.getStepName(),stepEntry);
-		
-		
-		String[] controlNames5 = {"Next" , "Back"};
-		String[] steps5 = {
-				"ThreatRatingWizardCheckBundleStep", 
-				"ThreatRatingWizardSeverityStep"};
-		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardIrreversibilityStep",  ThreatMatrixView.getViewName(), controlNames5, steps5);
-		put(stepEntry.getStepName(),stepEntry);
-		
-		
-		String[] controlNames6 = {"Next" , "Back"};
-		String[] steps6 = {
-				"DiagramWizardIdentifyIndirectThreatStep", 
-				"ThreatRatingWizardIrreversibilityStep"};
-		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardCheckBundleStep",  ThreatMatrixView.getViewName(), controlNames6, steps6);
-		put(stepEntry.getStepName(),stepEntry);
-		
-		
-		String[] controlNames7 = {"Next" , "Back"};
-		String[] steps7 = {
-				"ThreatMatrixOverviewStep", 
-				"ThreatMatrixOverviewStep"};
-		stepEntry = new WizardStepEntry( 
-				"ThreatRatingWizardCheckTotalsStep",  ThreatMatrixView.getViewName(), controlNames7, steps7);
-		put(stepEntry.getStepName(),stepEntry);
-		
-		
-		String[] controlNames8 = {};
-		String[] steps8 = {};
-		stepEntry = new WizardStepEntry( 
-				"DiagramWizardOverviewStep",  DiagramView.getViewName(), controlNames8, steps8);
-		put(stepEntry.getStepName(),stepEntry);
-		
-		String[] controlNames9 = {};
-		String[] steps9 = {};
-		stepEntry = new WizardStepEntry( 
-				"DiagramWizardLinkDirectThreatsToTargetsStep", DiagramView.getViewName(), controlNames9, steps9);
-		put(stepEntry.getStepName(),stepEntry);
-		
-		
+		return stepEntry;
 	}
 
 	WizardStepEntry findStep(String stepName)
@@ -281,26 +254,23 @@ class StepTable extends Hashtable
 			System.out.println("ENTRY NOT FOUND FOR STEP NAME=:" + stepName);
 		return entry;
 	}
-	
 }
 
 class WizardStepEntry extends Hashtable
 {
-	WizardStepEntry(String stepNameToUse, String viewNameToUse, String[] controlNames, String[] steps)
+	WizardStepEntry(String stepNameToUse, String viewNameToUse)
 	{
 		viewName = viewNameToUse;
 		stepName = stepNameToUse;
-		load(controlNames, steps);
 	}
 	
-	void load(String[] controlNames, String[] steps) 
+
+	void loadControl(String controlName , String controlStep)
 	{
-		for (int i=0; i<controlNames.length; ++i)
-		{
-			put(controlNames[i], new WizardControl(controlNames[i],steps[i]));
-		}
+		put(controlName, new WizardControl(controlName, controlStep));
 	}
 	
+
 	WizardControl findControl(String controlName)
 	{
 		WizardControl control = (WizardControl)get(controlName);
@@ -321,8 +291,8 @@ class WizardStepEntry extends Hashtable
 	}
 
 	
-	String stepName;
-	String viewName;
+	private String stepName;
+	private String viewName;
 }
 
 class WizardControl
