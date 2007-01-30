@@ -181,40 +181,33 @@ class StepTable extends Hashtable
 		Project project = panel.mainWindow.getProject();
 		
 		WizardStepEntry stepEntry = loadStep("ThreatMatrixOverviewStep", viewName);
-		stepEntry.loadControl("Next", "ThreatRatingWizardChooseBundle");
-		stepEntry.loadControl("Back", "DiagramWizardLinkDirectThreatsToTargetsStep");
+		stepEntry.loadNextBack("ThreatRatingWizardChooseBundle", "DiagramWizardLinkDirectThreatsToTargetsStep");
 		stepEntry.loadControl("View:Diagram", "DiagramWizardOverviewStep");
 		stepEntry.setStepClass(new ThreatMatrixOverviewStep(panel));
 
 		stepEntry = loadStep("ThreatRatingWizardChooseBundle", viewName);
-		stepEntry.loadControl("Next", "ThreatRatingWizardScopeStep");
-		stepEntry.loadControl("Back", "ThreatMatrixOverviewStep");
+		stepEntry.loadNextBack("ThreatRatingWizardScopeStep", "ThreatMatrixOverviewStep");
 		stepEntry.loadControl("Done", "ThreatRatingWizardCheckTotalsStep");
 		stepEntry.setStepClass(new ThreatRatingWizardChooseBundle(panel));
 		
 		stepEntry = loadStep("ThreatRatingWizardScopeStep", viewName);
-		stepEntry.loadControl("Next", "ThreatRatingWizardSeverityStep");
-		stepEntry.loadControl("Back", "ThreatRatingWizardChooseBundle");
+		stepEntry.loadNextBack("ThreatRatingWizardSeverityStep", "ThreatRatingWizardChooseBundle");
 		stepEntry.setStepClass(ThreatRatingWizardScopeStep.create(panel, project));
 	
 		stepEntry = loadStep("ThreatRatingWizardSeverityStep", viewName);
-		stepEntry.loadControl("Next", "ThreatRatingWizardIrreversibilityStep");
-		stepEntry.loadControl("Back", "ThreatRatingWizardScopeStep");
+		stepEntry.loadNextBack("ThreatRatingWizardIrreversibilityStep", "ThreatRatingWizardScopeStep");
 		stepEntry.setStepClass(ThreatRatingWizardSeverityStep.create(panel, project));
 		
 		stepEntry = loadStep("ThreatRatingWizardIrreversibilityStep", viewName);
-		stepEntry.loadControl("Next", "ThreatRatingWizardCheckBundleStep");
-		stepEntry.loadControl("Back", "ThreatRatingWizardSeverityStep");
+		stepEntry.loadNextBack("ThreatRatingWizardCheckBundleStep", "ThreatRatingWizardSeverityStep");
 		stepEntry.setStepClass(ThreatRatingWizardIrreversibilityStep.create(panel, project));
 		
 		stepEntry = loadStep("ThreatRatingWizardCheckBundleStep", viewName);
-		stepEntry.loadControl("Next", "ThreatRatingWizardChooseBundle");
-		stepEntry.loadControl("Back", "ThreatRatingWizardIrreversibilityStep");
+		stepEntry.loadNextBack("ThreatRatingWizardChooseBundle", "ThreatRatingWizardIrreversibilityStep");
 		stepEntry.setStepClass(new ThreatRatingWizardCheckBundleStep(panel));
 
 		stepEntry = loadStep("ThreatRatingWizardCheckTotalsStep", viewName);
-		stepEntry.loadControl("Next", "ThreatMatrixOverviewStep");
-		stepEntry.loadControl("Back", "ThreatRatingWizardChooseBundle");
+		stepEntry.loadNextBack("ThreatMatrixOverviewStep", "ThreatRatingWizardChooseBundle");
 		stepEntry.setStepClass(new ThreatRatingWizardCheckTotalsStep(panel));
 	}
 
@@ -249,7 +242,14 @@ class WizardStepEntry
 		entries.put(controlName, new WizardControl(controlName, controlStep));
 	}
 	
+	
+	void loadNextBack(String controlStepNameNext , String controlStepBack)
+	{
+		entries.put("Next", new WizardControl("Next", controlStepNameNext));
+		entries.put("Back", new WizardControl("Back", controlStepBack));
+	}
 
+	
 	WizardControl findControl(String controlName)
 	{
 		WizardControl control = (WizardControl)entries.get(controlName);
