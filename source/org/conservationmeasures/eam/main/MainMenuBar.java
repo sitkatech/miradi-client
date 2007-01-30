@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
+import org.conservationmeasures.eam.actions.ActionExportBudgetTableTree;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
 import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
@@ -143,6 +144,8 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_E);
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
+		
+		addMenuItem(actions, menu, ActionExportBudgetTableTree.class, KeyEvent.VK_F);
 		
 		JMenuItem item = addMenuItem(actions, menu,ActionReportsDemo.class, KeyEvent.VK_D);
 		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO_AND_DATABASES, HelpButtonData.IMPORT_AND_EXPORT_HTML));

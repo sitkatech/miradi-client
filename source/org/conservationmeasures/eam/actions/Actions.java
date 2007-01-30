@@ -249,6 +249,7 @@ public class Actions
 		registerAction(new ActionReportsDemo(mainWindow));
 		registerAction(new ActionJumpDiagramOverview(mainWindow));
 		registerAction(new ActionJumpWorkPlanOverview(mainWindow));
+		registerAction(new ActionExportBudgetTableTree(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
