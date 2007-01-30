@@ -232,12 +232,12 @@ class StepTable extends Hashtable
 		stepEntry.loadControl("Back", "ThreatRatingWizardSeverityStep");
 		
 		stepEntry = loadStep(viewName, "ThreatRatingWizardCheckBundleStep");
-		stepEntry.loadControl("Next", "DiagramWizardIdentifyIndirectThreatStep");
+		stepEntry.loadControl("Next", "ThreatRatingWizardChooseBundle");
 		stepEntry.loadControl("Back", "ThreatRatingWizardIrreversibilityStep");
 
 		stepEntry = loadStep(viewName, "ThreatRatingWizardCheckTotalsStep");
 		stepEntry.loadControl("Next", "ThreatMatrixOverviewStep");
-		stepEntry.loadControl("Back", "ThreatMatrixOverviewStep");
+		stepEntry.loadControl("Back", "ThreatRatingWizardChooseBundle");
 	}
 
 	private WizardStepEntry loadStep(final String viewName, final String string)
@@ -251,7 +251,7 @@ class StepTable extends Hashtable
 	{
 		WizardStepEntry entry =(WizardStepEntry)get(stepName);
 		if (entry==null)
-			System.out.println("ENTRY NOT FOUND FOR STEP NAME=:" + stepName);
+			EAM.logError("ENTRY NOT FOUND FOR STEP NAME=:" + stepName);
 		return entry;
 	}
 }
@@ -275,7 +275,7 @@ class WizardStepEntry extends Hashtable
 	{
 		WizardControl control = (WizardControl)get(controlName);
 		if (control==null)
-			System.out.println("CONTROL ("+ controlName +") NOT FOUND IN STEP=:" + stepName);
+			EAM.logError("CONTROL ("+ controlName +") NOT FOUND IN STEP=:" + stepName);
 		return control;
 	}
 

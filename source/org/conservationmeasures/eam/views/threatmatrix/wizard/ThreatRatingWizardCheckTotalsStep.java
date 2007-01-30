@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlViewPanel;
 
 public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
@@ -15,23 +14,6 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 		super(wizardToUse);
 	}
 	
-	
-	public void buttonPressed(String buttonName)
-	{
-		if(buttonName.equals("Back"))
-		{
-			try
-			{
-				getThreatRatingWizard().jump(ThreatRatingWizardChooseBundle.class);
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-			}
-			return;
-		}
-		super.buttonPressed(buttonName);
-	}
 
 	public void linkClicked(String linkDescription)
 	{
