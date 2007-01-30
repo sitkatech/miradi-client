@@ -53,25 +53,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		return getThreatRatingWizard().getView();
 	}
 	
-	
-	public void buttonPressed(String buttonName)
-	{
-		if(buttonName.equals("Done"))
-		{
-			try
-			{
-				getThreatRatingWizard().jump(ThreatRatingWizardCheckTotalsStep.class);
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-			}
-			return;
-		}
-		super.buttonPressed(buttonName);
-	}
 
-	
 	private String getName(FactorId nodeId)
 	{
 		return getView().getProject().getFactorPool().find(nodeId).getLabel();

@@ -98,7 +98,10 @@ public class WizardPanel extends JPanel implements IWizardPanel
 		return currentStep;
 	}
 
-
+	public void control(String controlName) throws Exception
+	{
+	}
+	
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
@@ -107,5 +110,6 @@ public class WizardPanel extends JPanel implements IWizardPanel
 	SkeletonWizardStep[] steps;
 	protected int currentStep;
 	MainWindow mainWindow;
+
 }
 

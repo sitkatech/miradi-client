@@ -60,11 +60,12 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 				
 				getWizard().next();
 			}
-			
-			if(buttonName.indexOf("Back") >= 0)
+			else if(buttonName.indexOf("Back") >= 0)
 			{
 				getWizard().previous();
 			}
+			else
+				getWizard().control(buttonName);
 		}
 		catch (Exception e)
 		{

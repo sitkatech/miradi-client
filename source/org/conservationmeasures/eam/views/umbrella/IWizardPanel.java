@@ -17,6 +17,8 @@ public interface IWizardPanel
 	public abstract void next() throws Exception;
 
 	public abstract void previous() throws Exception;
+	
+	public abstract void control(String controlName) throws Exception;
 
 	public abstract void setStep(int newStep) throws Exception;
 
