@@ -202,45 +202,45 @@ class StepTable extends Hashtable
 	{
 		final String viewName = DiagramView.getViewName();
 		
-		addStep(viewName, "DiagramWizardOverviewStep");
-		addStep(viewName, "DiagramWizardLinkDirectThreatsToTargetsStep");
+		loadStep(viewName, "DiagramWizardOverviewStep");
+		loadStep(viewName, "DiagramWizardLinkDirectThreatsToTargetsStep");
 	}
 
 	private void loadThreatMatrixViewSteps()
 	{
 		final String viewName = ThreatMatrixView.getViewName();
-		WizardStepEntry stepEntry = addStep(viewName, "ThreatMatrixOverviewStep");
+		WizardStepEntry stepEntry = loadStep(viewName, "ThreatMatrixOverviewStep");
 		stepEntry.loadControl("Next", "ThreatRatingWizardChooseBundle");
 		stepEntry.loadControl("Back", "DiagramWizardLinkDirectThreatsToTargetsStep");
 		stepEntry.loadControl("View:Diagram", "DiagramWizardOverviewStep");
 
-		stepEntry = addStep(viewName, "ThreatRatingWizardChooseBundle");
+		stepEntry = loadStep(viewName, "ThreatRatingWizardChooseBundle");
 		stepEntry.loadControl("Next", "ThreatRatingWizardScopeStep");
 		stepEntry.loadControl("Back", "ThreatMatrixOverviewStep");
 		stepEntry.loadControl("Done", "ThreatRatingWizardCheckTotalsStep");
 		
-		stepEntry = addStep(viewName, "ThreatRatingWizardScopeStep");
+		stepEntry = loadStep(viewName, "ThreatRatingWizardScopeStep");
 		stepEntry.loadControl("Next", "ThreatRatingWizardSeverityStep");
 		stepEntry.loadControl("Back", "ThreatRatingWizardChooseBundle");
 	
-		stepEntry = addStep(viewName, "ThreatRatingWizardSeverityStep");
+		stepEntry = loadStep(viewName, "ThreatRatingWizardSeverityStep");
 		stepEntry.loadControl("Next", "ThreatRatingWizardIrreversibilityStep");
 		stepEntry.loadControl("Back", "ThreatRatingWizardScopeStep");
 		
-		stepEntry = addStep(viewName, "ThreatRatingWizardIrreversibilityStep");
+		stepEntry = loadStep(viewName, "ThreatRatingWizardIrreversibilityStep");
 		stepEntry.loadControl("Next", "ThreatRatingWizardCheckBundleStep");
 		stepEntry.loadControl("Back", "ThreatRatingWizardSeverityStep");
 		
-		stepEntry = addStep(viewName, "ThreatRatingWizardCheckBundleStep");
+		stepEntry = loadStep(viewName, "ThreatRatingWizardCheckBundleStep");
 		stepEntry.loadControl("Next", "DiagramWizardIdentifyIndirectThreatStep");
 		stepEntry.loadControl("Back", "ThreatRatingWizardIrreversibilityStep");
 
-		stepEntry = addStep(viewName, "ThreatRatingWizardCheckTotalsStep");
+		stepEntry = loadStep(viewName, "ThreatRatingWizardCheckTotalsStep");
 		stepEntry.loadControl("Next", "ThreatMatrixOverviewStep");
 		stepEntry.loadControl("Back", "ThreatMatrixOverviewStep");
 	}
 
-	private WizardStepEntry addStep(final String viewName, final String string)
+	private WizardStepEntry loadStep(final String viewName, final String string)
 	{
 		WizardStepEntry stepEntry = new WizardStepEntry(string,  viewName);
 		put(stepEntry.getStepName(),stepEntry);
