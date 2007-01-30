@@ -282,7 +282,7 @@ class StepTable extends Hashtable
 
 	private WizardStepEntry loadStep(WizardStep wizardStep, String viewName)
 	{
-		WizardStepEntry stepEntry = new WizardStepEntry(wizardStep.getClass().getSimpleName(),  viewName, wizardStep);
+		WizardStepEntry stepEntry = new WizardStepEntry(wizardStep.getClass().getSimpleName(),  wizardStep, viewName);
 		put(stepEntry.getStepName(),stepEntry);
 		return stepEntry;
 	}
@@ -299,7 +299,7 @@ class StepTable extends Hashtable
 class WizardStepEntry
 {
 	//TODO: If we can change the jump classes later to contain the static reference to the step class (.class) to go to then we can get rid of string step names
-	WizardStepEntry(String stepNameToUse, String viewNameToUse, WizardStep wizardStep)
+	WizardStepEntry(String stepNameToUse, WizardStep wizardStep, String viewNameToUse)
 	{
 		viewName = viewNameToUse;
 		stepName = stepNameToUse;
