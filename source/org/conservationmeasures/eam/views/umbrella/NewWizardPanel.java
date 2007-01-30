@@ -104,15 +104,17 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		{
 			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
 			EAM.logWarning("During wizard migration the target step may not be correclty opened:" + newStep);
-			//TODO: this line can be removed and allowed to fall into the else code when all wizards have been converted.
-			mainWindow.getCurrentView().jump(newStep);
 		}
-		else {
-			SkeletonWizardStep stepClass = stepTable.findStep(newStep).getStepClass();
+
+		SkeletonWizardStep stepClass = stepTable.findStep(newStep).getStepClass();
+		//TODO: if not needed when all wizard converted.
+		if (stepClass!=null)
+		{
 			currentStepName = newStep;
 			stepClass.refresh();
 			setContents(stepClass);
 		}
+
 	}
 	
 	//TODO: not used but need do to interface: will go away when all wizards are converted
