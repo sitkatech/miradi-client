@@ -63,9 +63,7 @@ public class WorkPlanWizardPanel extends WizardPanel
 	
 	public void previous() throws Exception
 	{
-		if(currentStep == SELECT_METHOD)
-			actions.get(ActionJumpMonitoringWizardEditIndicatorsStep.class).doAction();
-		else if (currentStep == WELCOME)
+		if (currentStep == WELCOME)
 			actions.get(ActionJumpMonitoringWizardEditIndicatorsStep.class).doAction();
 		
 		super.previous();
