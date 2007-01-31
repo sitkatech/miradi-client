@@ -333,18 +333,29 @@ class StepTable extends Hashtable
 	//TODO: Later when all issues have been resolved these can be loaded into an array and linked up.
 	public void setUpSequences()
 	{
-		sequenceSteps(ThreatMatrixOverviewStep.class, 				ThreatRatingWizardChooseBundle.class);
-		sequenceSteps(ThreatRatingWizardChooseBundle.class, 		ThreatRatingWizardScopeStep.class);
-		sequenceSteps(ThreatRatingWizardScopeStep.class, 			ThreatRatingWizardSeverityStep.class);
-		sequenceSteps(ThreatRatingWizardSeverityStep.class, 		ThreatRatingWizardIrreversibilityStep.class);
-		sequenceSteps(ThreatRatingWizardIrreversibilityStep.class, 	ThreatRatingWizardCheckBundleStep.class);
+		Class[] entries = 
+		{
+				ThreatMatrixOverviewStep.class,
+				ThreatRatingWizardChooseBundle.class,
+				ThreatRatingWizardScopeStep.class,
+				ThreatRatingWizardSeverityStep.class,
+				ThreatRatingWizardIrreversibilityStep.class,
+				ThreatRatingWizardCheckBundleStep.class,
+		};
+		
+		sequenceSteps(entries);
 	}
 	
-	public void sequenceSteps(Class wizardStepA, Class wizardStepB)
+
+	public void sequenceSteps(Class[] entries)
 	{
-		findStep(wizardStepA).loadNextBack(wizardStepB, null);
-		findStep(wizardStepB).loadNextBack(null, wizardStepA);
+		for (int i=0; i<entries.length-2; ++i)
+		{
+			findStep(entries[i]).loadControl("Next", entries[i+1]);
+			findStep(entries[i+1]).loadControl("Back", entries[i]);
+		}
 	}
+	
 	
 	private WizardStepEntry loadStep(Class wizardStep, String viewName)
 	{
@@ -352,11 +363,13 @@ class StepTable extends Hashtable
 		put(stepEntry.getStepName(),stepEntry);
 		return stepEntry;
 	}
+	
 
 	WizardStepEntry findStep(Class stepClass)
 	{
 		return findStep(stepClass.getSimpleName());
 	}
+	
 	
 	WizardStepEntry findStep(String stepName)
 	{
