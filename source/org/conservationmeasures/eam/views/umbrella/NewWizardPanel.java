@@ -240,6 +240,8 @@ class StepTable extends Hashtable
 	{
 		loadDigramViewSteps();
 		loadThreatMatrixViewSteps();
+		
+		setUpSequences();
 	}
 	
 	public void loadDigramViewSteps()
@@ -334,9 +336,15 @@ class StepTable extends Hashtable
 	}
 
 	
-	public void sequenceSteps()
+	public void setUpSequences()
 	{
 		
+	}
+	
+	public void sequenceSteps(Class wizardStepA, Class wizardStepB)
+	{
+		findStep(wizardStepA).loadNextBack(wizardStepB, null);
+		findStep(wizardStepB).loadNextBack(null, wizardStepA);
 	}
 	
 	private WizardStepEntry loadStep(Class wizardStep, String viewName)
@@ -346,6 +354,11 @@ class StepTable extends Hashtable
 		return stepEntry;
 	}
 
+	WizardStepEntry findStep(Class stepClass)
+	{
+		return findStep(stepClass.getSimpleName());
+	}
+	
 	WizardStepEntry findStep(String stepName)
 	{
 		WizardStepEntry entry =(WizardStepEntry)get(stepName);
@@ -373,8 +386,10 @@ class WizardStepEntry
 	
 	void loadNextBack(Class controlStepNameNext , Class controlStepBack)
 	{
-		entries.put("Next", new WizardControl("Next", controlStepNameNext.getSimpleName()));
-		entries.put("Back", new WizardControl("Back", controlStepBack.getSimpleName()));
+		if (controlStepNameNext!=null)
+			entries.put("Next", new WizardControl("Next", controlStepNameNext.getSimpleName()));
+		if (controlStepBack!=null)
+			entries.put("Back", new WizardControl("Back", controlStepBack.getSimpleName()));
 	}
 
 	
