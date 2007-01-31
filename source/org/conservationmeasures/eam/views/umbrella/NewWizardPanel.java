@@ -256,32 +256,33 @@ class StepTable extends Hashtable
 		final String viewName = ThreatMatrixView.getViewName();
 		Project project = panel.mainWindow.getProject();
 		
-		WizardStepEntry stepEntry1 = loadStep(new ThreatMatrixOverviewStep(panel), viewName);
-		stepEntry1.loadControl("View:Diagram", DiagramOverviewStep.class);
-		stepEntry1.loadControl("Back", DiagramWizardLinkDirectThreatsToTargetsStep.class);
+		WizardStepEntry[] entries = new WizardStepEntry[7];
 		
-		WizardStepEntry stepEntry2 = loadStep(new ThreatRatingWizardChooseBundle(panel), viewName);
-		stepEntry2.loadControl("Done", ThreatRatingWizardCheckTotalsStep.class);
+		entries[0] = loadStep(new ThreatMatrixOverviewStep(panel), viewName);
+		entries[0].loadControl("View:Diagram", DiagramOverviewStep.class);
+		entries[0].loadControl("Back", DiagramWizardLinkDirectThreatsToTargetsStep.class);
 		
-		WizardStepEntry stepEntry3 = loadStep(ThreatRatingWizardScopeStep.create(panel, project), viewName);
-		WizardStepEntry stepEntry4 = loadStep(ThreatRatingWizardSeverityStep.create(panel, project), viewName);
-		WizardStepEntry stepEntry5 = loadStep(ThreatRatingWizardIrreversibilityStep.create(panel, project), viewName);
-		WizardStepEntry stepEntry6 =  loadStep(new ThreatRatingWizardCheckBundleStep(panel), viewName);
-		WizardStepEntry stepEntry7 = loadStep(new ThreatRatingWizardCheckTotalsStep(panel) , viewName);
-		stepEntry7.loadControl("Next", ThreatMatrixOverviewStep.class);
+		entries[1] =loadStep(new ThreatRatingWizardChooseBundle(panel), viewName);
+		entries[1].loadControl("Done", ThreatRatingWizardCheckTotalsStep.class);
 		
-		sequenceSteps(stepEntry1,stepEntry2);
-		sequenceSteps(stepEntry2,stepEntry3);
-		sequenceSteps(stepEntry3,stepEntry4);
-		sequenceSteps(stepEntry4,stepEntry5);
-		sequenceSteps(stepEntry5,stepEntry6);
-		sequenceSteps(stepEntry6,stepEntry7);
+		entries[2] = loadStep(ThreatRatingWizardScopeStep.create(panel, project), viewName);
+		entries[3] = loadStep(ThreatRatingWizardSeverityStep.create(panel, project), viewName);
+		entries[4] = loadStep(ThreatRatingWizardIrreversibilityStep.create(panel, project), viewName);
+		entries[5] = loadStep(new ThreatRatingWizardCheckBundleStep(panel), viewName);
+		entries[6] = loadStep(new ThreatRatingWizardCheckTotalsStep(panel) , viewName);
+		entries[6].loadControl("Next", ThreatMatrixOverviewStep.class);
+		
+		sequenceSteps(entries);
+
 	}
 	
-	public void sequenceSteps(WizardStepEntry entry1, WizardStepEntry entry2)
+	public void sequenceSteps(WizardStepEntry[] entries)
 	{
-		entry1.loadControl("Next", entry2.getStepClass().getClass());
-		entry2.loadControl("Back", entry1.getStepClass().getClass());
+		for (int i=0; i<entries.length-1; ++i)
+		{
+			entries[i].loadControl("Next", entries[i+1].getStepClass().getClass());
+			entries[i+1].loadControl("Back", entries[i].getStepClass().getClass());
+		}
 	}
 
 	private WizardStepEntry loadStep(WizardStep wizardStep, String viewName)
