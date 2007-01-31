@@ -11,8 +11,6 @@ import java.util.Hashtable;
 
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverviewStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanHowToConstructStep;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -38,7 +36,6 @@ import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardEdit
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopObjectivesStep;
-import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanHowToConstructStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllGoals;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllObjectives;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
@@ -248,62 +245,36 @@ class StepTable extends Hashtable
 	{
 		final String viewName = DiagramView.getViewName();
 		
-		WizardStepEntry stepEntry = loadStep(DiagramOverviewStep.class, viewName);
-		stepEntry.loadNextBack(DiagramWizardProjectScopeStep.class, DiagramWizardVisionStep.class);
+		loadStep(DiagramOverviewStep.class, viewName);
+		loadStep(DiagramWizardProjectScopeStep.class, viewName);
+		loadStep(DiagramWizardVisionStep.class, viewName);
+		loadStep(DiagramWizardDefineTargetsStep.class, viewName);
+		loadStep(DiagramWizardReviewAndModifyTargetsStep.class, viewName);
+		loadStep(DescribeTargetStatusStep.class, viewName);
+		loadStep(DiagramWizardIdentifyDirectThreatStep.class, viewName);
+		loadStep(DiagramWizardLinkDirectThreatsToTargetsStep.class, viewName);
+		loadStep(DiagramWizardIdentifyIndirectThreatStep.class, viewName);		
+		loadStep(DiagramWizardConstructChainsStep.class, viewName);	
+		loadStep(DiagramWizardReviewModelAndAdjustStep.class, viewName);		
+		loadStep(SelectChainStep.class, viewName);		
+		loadStep(DevelopDraftStrategiesStep.class, viewName);
+		loadStep(RankDraftStrategiesStep.class, viewName);
 		
-		stepEntry = loadStep(DiagramWizardProjectScopeStep.class, viewName);
-		stepEntry.loadNextBack(DiagramWizardVisionStep.class, DiagramOverviewStep.class);
+		//FIXME: there is a next seq break here and in subsequent steps
+		WizardStepEntry stepEntry1  = loadStep(EditAllStrategiesStep.class, viewName);
+		stepEntry1.loadNext(MonitoringOverviewStep.class);
 		
-		stepEntry = loadStep(DiagramWizardVisionStep.class, viewName);
-		stepEntry.loadNextBack(DiagramWizardDefineTargetsStep.class, DiagramWizardProjectScopeStep.class);
+		WizardStepEntry stepEntry2  = loadStep(StrategicPlanDevelopGoalStep.class, viewName);
+		stepEntry2.loadNext(StrategicPlanViewAllGoals.class);
 		
-		stepEntry = loadStep(DiagramWizardDefineTargetsStep.class, viewName);
-		stepEntry.loadNextBack(DiagramWizardReviewAndModifyTargetsStep.class, DiagramWizardVisionStep.class);
+		WizardStepEntry stepEntry3 = loadStep(StrategicPlanDevelopObjectivesStep.class, viewName);		
+		stepEntry3.loadNext(StrategicPlanViewAllObjectives.class);
 		
-		stepEntry = loadStep(DiagramWizardReviewAndModifyTargetsStep.class, viewName);
-		stepEntry.loadNextBack(DescribeTargetStatusStep.class, DiagramWizardDefineTargetsStep.class);
+		WizardStepEntry stepEntry4 = loadStep(MonitoringWizardFocusStep.class, viewName);		
+		stepEntry4.loadNext(MonitoringWizardDefineIndicatorsStep.class);
 		
-		stepEntry = loadStep(DescribeTargetStatusStep.class, viewName);
-		stepEntry.loadNextBack(DiagramWizardIdentifyDirectThreatStep.class, DiagramWizardReviewAndModifyTargetsStep.class);
-		
-		stepEntry = loadStep(DiagramWizardIdentifyDirectThreatStep.class, viewName);
-		stepEntry.loadNextBack(DiagramWizardLinkDirectThreatsToTargetsStep.class, DescribeTargetStatusStep.class);
-		
-		stepEntry = loadStep(DiagramWizardLinkDirectThreatsToTargetsStep.class, viewName);
-		stepEntry.loadNextBack(ThreatMatrixOverviewStep.class, DiagramWizardIdentifyDirectThreatStep.class);
-		
-		stepEntry = loadStep(DiagramWizardIdentifyIndirectThreatStep.class, viewName);		
-		stepEntry.loadNextBack(DiagramWizardConstructChainsStep.class, ThreatRatingWizardCheckTotalsStep.class);
-		
-		stepEntry = loadStep(DiagramWizardConstructChainsStep.class, viewName);	
-		stepEntry.loadNextBack(DiagramWizardReviewModelAndAdjustStep.class, DiagramWizardIdentifyIndirectThreatStep.class);
-		
-		stepEntry = loadStep(DiagramWizardReviewModelAndAdjustStep.class, viewName);		
-		stepEntry.loadNextBack(ActionJumpStrategicPlanHowToConstructStep.class, DiagramWizardConstructChainsStep.class);
-		
-		stepEntry = loadStep(SelectChainStep.class, viewName);		
-		stepEntry.loadNextBack(DevelopDraftStrategiesStep.class, StrategicPlanViewAllObjectives.class);
-		
-		stepEntry = loadStep(DevelopDraftStrategiesStep.class, viewName);
-		stepEntry.loadNextBack(RankDraftStrategiesStep.class, SelectChainStep.class);
-		
-		stepEntry = loadStep(RankDraftStrategiesStep.class, viewName);
-		stepEntry.loadNextBack(EditAllStrategiesStep.class, DevelopDraftStrategiesStep.class);
-		
-		stepEntry = loadStep(EditAllStrategiesStep.class, viewName);
-		stepEntry.loadNextBack(ActionJumpMonitoringOverviewStep.class, RankDraftStrategiesStep.class);
-		
-		stepEntry = loadStep(StrategicPlanDevelopGoalStep.class, viewName);
-		stepEntry.loadNextBack(StrategicPlanViewAllGoals.class, StrategicPlanHowToConstructStep.class);
-		
-		stepEntry = loadStep(StrategicPlanDevelopObjectivesStep.class, viewName);		
-		stepEntry.loadNextBack(StrategicPlanViewAllObjectives.class, StrategicPlanViewAllGoals.class);
-		
-		stepEntry = loadStep(MonitoringWizardFocusStep.class, viewName);		
-		stepEntry.loadNextBack(MonitoringWizardDefineIndicatorsStep.class, MonitoringOverviewStep.class);
-		
-		stepEntry = loadStep(MonitoringWizardDefineIndicatorsStep.class, viewName);
-		stepEntry.loadNextBack(MonitoringWizardEditIndicatorsStep.class, MonitoringWizardDefineIndicatorsStep.class);
+		WizardStepEntry stepEntry5 =  loadStep(MonitoringWizardDefineIndicatorsStep.class, viewName);
+		stepEntry5.loadNext(MonitoringWizardEditIndicatorsStep.class);
 	}
 
 
@@ -311,30 +282,45 @@ class StepTable extends Hashtable
 	{
 		final String viewName = ThreatMatrixView.getViewName();
 		
-		WizardStepEntry stepEntry = loadStep(ThreatMatrixOverviewStep.class, viewName);
-		stepEntry.loadNextBack(null, DiagramWizardLinkDirectThreatsToTargetsStep.class);
-		stepEntry.loadControl("View:Diagram", DiagramOverviewStep.class);
+		WizardStepEntry stepEntry1 = loadStep(ThreatMatrixOverviewStep.class, viewName);
+		stepEntry1.loadControl("View:Diagram", DiagramOverviewStep.class);
 
-		stepEntry = loadStep(ThreatRatingWizardChooseBundle.class, viewName);
-		stepEntry.loadControl("Done", ThreatRatingWizardCheckTotalsStep.class);
+		WizardStepEntry stepEntry2 = loadStep(ThreatRatingWizardChooseBundle.class, viewName);
+		stepEntry2.loadControl("Done", ThreatRatingWizardCheckTotalsStep.class);
 		
-		stepEntry = loadStep(ThreatRatingWizardScopeStep.class, viewName);
-		stepEntry = loadStep(ThreatRatingWizardSeverityStep.class, viewName);
-		stepEntry = loadStep(ThreatRatingWizardIrreversibilityStep.class, viewName);
+		loadStep(ThreatRatingWizardScopeStep.class, viewName);
+		loadStep(ThreatRatingWizardSeverityStep.class, viewName);
+		loadStep(ThreatRatingWizardIrreversibilityStep.class, viewName);
 		
-		stepEntry = loadStep(ThreatRatingWizardCheckBundleStep.class, viewName);
-		stepEntry.loadNextBack(ThreatRatingWizardChooseBundle.class, null);
+		//FIXME: The following steps have incorrect next steps : need to reslove
+		WizardStepEntry stepEntry3 = loadStep(ThreatRatingWizardCheckBundleStep.class, viewName);
+		stepEntry3.loadNext(ThreatRatingWizardChooseBundle.class);
 
-		stepEntry = loadStep(ThreatRatingWizardCheckTotalsStep.class, viewName);
-		stepEntry.loadNextBack(ThreatMatrixOverviewStep.class, ThreatRatingWizardChooseBundle.class);
+		WizardStepEntry stepEntry4 = loadStep(ThreatRatingWizardCheckTotalsStep.class, viewName);
+		stepEntry4.loadNext(ThreatMatrixOverviewStep.class);
 	}
 
-	
-	//TODO: Later when all issues have been resolved these can be loaded into an array and linked up.
+
 	public void setUpSequences()
 	{
 		Class[] entries = 
 		{
+				DiagramOverviewStep.class,
+				DiagramWizardProjectScopeStep.class,
+				DiagramWizardVisionStep.class,
+				DiagramWizardDefineTargetsStep.class,
+				DiagramWizardReviewAndModifyTargetsStep.class,
+				DescribeTargetStatusStep.class,
+				DiagramWizardIdentifyDirectThreatStep.class,
+				DiagramWizardLinkDirectThreatsToTargetsStep.class,
+				DiagramWizardIdentifyIndirectThreatStep.class,		
+				DiagramWizardConstructChainsStep.class,	
+				DiagramWizardReviewModelAndAdjustStep.class,		
+				SelectChainStep.class,		
+				DevelopDraftStrategiesStep.class,
+				RankDraftStrategiesStep.class,
+				EditAllStrategiesStep.class,
+				
 				ThreatMatrixOverviewStep.class,
 				ThreatRatingWizardChooseBundle.class,
 				ThreatRatingWizardScopeStep.class,
@@ -402,6 +388,16 @@ class WizardStepEntry
 			entries.put("Next", new WizardControl("Next", controlStepNameNext.getSimpleName()));
 		if (controlStepBack!=null)
 			entries.put("Back", new WizardControl("Back", controlStepBack.getSimpleName()));
+	}
+	
+	void loadNext(Class controlStep)
+	{
+		entries.put("Next", new WizardControl("Next", controlStep.getSimpleName()));
+	}
+	
+	void loadBack(Class controlStep)
+	{
+		entries.put("Back", new WizardControl("Next", controlStep.getSimpleName()));
 	}
 
 	
