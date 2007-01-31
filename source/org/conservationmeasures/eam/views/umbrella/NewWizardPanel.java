@@ -291,14 +291,7 @@ class WizardStepEntry
 	{
 		entries.put(controlName, new WizardControl(controlName, controlStep.getSimpleName()));
 	}
-	
-	void loadNextBack(Class controlStepNameNext , Class controlStepBack)
-	{
-		entries.put("Next", new WizardControl("Next", controlStepNameNext.getSimpleName()));
-		entries.put("Back", new WizardControl("Back", controlStepBack.getSimpleName()));
-	}
 
-	
 	WizardControl findControl(String controlName)
 	{
 		WizardControl control = (WizardControl)entries.get(controlName);
