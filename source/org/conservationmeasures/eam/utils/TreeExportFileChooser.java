@@ -18,17 +18,17 @@ public class TreeExportFileChooser extends EAMFileSaveChooser
 
 	public String getDialogApproveTitleText()
 	{
-		return "Title|Save CSV File";
+		return "Title|Save Tab Delimited File";
 	}
 
 	public String getApproveButtonToolTipText()
 	{
-		return "TT|Save CSV File";
+		return "TT|Save Tab Delimited File";
 	}
 
 	public String getDialogApprovelButtonText()
 	{
-		return "Save CSV";
+		return "Save Tab Delimited ";
 	}
 
 	public String getDialogOverwriteTitleText()
