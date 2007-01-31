@@ -312,33 +312,32 @@ class StepTable extends Hashtable
 		final String viewName = ThreatMatrixView.getViewName();
 		
 		WizardStepEntry stepEntry = loadStep(ThreatMatrixOverviewStep.class, viewName);
-		stepEntry.loadNextBack(ThreatRatingWizardChooseBundle.class, DiagramWizardLinkDirectThreatsToTargetsStep.class);
+		stepEntry.loadNextBack(null, DiagramWizardLinkDirectThreatsToTargetsStep.class);
 		stepEntry.loadControl("View:Diagram", DiagramOverviewStep.class);
 
 		stepEntry = loadStep(ThreatRatingWizardChooseBundle.class, viewName);
-		stepEntry.loadNextBack(ThreatRatingWizardScopeStep.class, ThreatMatrixOverviewStep.class);
 		stepEntry.loadControl("Done", ThreatRatingWizardCheckTotalsStep.class);
 		
 		stepEntry = loadStep(ThreatRatingWizardScopeStep.class, viewName);
-		stepEntry.loadNextBack(ThreatRatingWizardSeverityStep.class, ThreatRatingWizardChooseBundle.class);
-	
 		stepEntry = loadStep(ThreatRatingWizardSeverityStep.class, viewName);
-		stepEntry.loadNextBack(ThreatRatingWizardIrreversibilityStep.class, ThreatRatingWizardScopeStep.class);
-		
 		stepEntry = loadStep(ThreatRatingWizardIrreversibilityStep.class, viewName);
-		stepEntry.loadNextBack(ThreatRatingWizardCheckBundleStep.class, ThreatRatingWizardSeverityStep.class);
 		
 		stepEntry = loadStep(ThreatRatingWizardCheckBundleStep.class, viewName);
-		stepEntry.loadNextBack(ThreatRatingWizardChooseBundle.class, ThreatRatingWizardIrreversibilityStep.class);
+		stepEntry.loadNextBack(ThreatRatingWizardChooseBundle.class, null);
 
 		stepEntry = loadStep(ThreatRatingWizardCheckTotalsStep.class, viewName);
 		stepEntry.loadNextBack(ThreatMatrixOverviewStep.class, ThreatRatingWizardChooseBundle.class);
 	}
 
 	
+	//TODO: Later when all issues have been resolved these can be loaded into an array and linked up.
 	public void setUpSequences()
 	{
-		
+		sequenceSteps(ThreatMatrixOverviewStep.class, 				ThreatRatingWizardChooseBundle.class);
+		sequenceSteps(ThreatRatingWizardChooseBundle.class, 		ThreatRatingWizardScopeStep.class);
+		sequenceSteps(ThreatRatingWizardScopeStep.class, 			ThreatRatingWizardSeverityStep.class);
+		sequenceSteps(ThreatRatingWizardSeverityStep.class, 		ThreatRatingWizardIrreversibilityStep.class);
+		sequenceSteps(ThreatRatingWizardIrreversibilityStep.class, 	ThreatRatingWizardCheckBundleStep.class);
 	}
 	
 	public void sequenceSteps(Class wizardStepA, Class wizardStepB)
