@@ -398,7 +398,11 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			Assignment assignment = getAssignment(row);
 			DateRangeEffort effort = getDateRangeEffort(row, timeIndex);
 			DateRangeEffortList effortList = getDateRangeEffortList(row);
-			double units = Double.parseDouble(value.toString());
+			
+			double units = 0;
+			String valueAsString = value.toString().trim();
+			if (! valueAsString.equals(""))
+				units = Double.parseDouble(valueAsString);
 			
 			//FIXME budget code - take out daterange
 			if (effort == null)
