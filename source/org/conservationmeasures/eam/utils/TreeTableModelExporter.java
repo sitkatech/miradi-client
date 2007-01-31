@@ -32,10 +32,6 @@ public class TreeTableModelExporter
 			printWriter = new PrintWriter(fileToExportTo);
 			writeTreeTableModel(printWriter);
 		}
-		catch (IOException e)
-		{
-			throw new Exception(e);
-		}
 		finally
 		{
 			if (printWriter == null)
@@ -54,22 +50,15 @@ public class TreeTableModelExporter
 	}
 	
 	private void writeAllPaths(PrintWriter printWriter, TreePath[] paths, int maxTreeDepth)
-	{
-		for (int index = 0; index < paths.length; index++)
+	{	
+		final int START_INDEX_WITHOUT_ROOT = 1;
+	
+		for (int index = START_INDEX_WITHOUT_ROOT; index < paths.length; index++)
 		{
-			writeAllNoneRootPaths(printWriter, paths[index], maxTreeDepth);
+			writeTreeColumn(paths[index], printWriter, maxTreeDepth);
+			writeNonTreeColumns(paths[index], printWriter);
+			printWriter.print(NEW_LINE);
 		}
-	}
-
-	private void writeAllNoneRootPaths(PrintWriter printWriter, TreePath treePath, int maxTreeDepth)
-	{
-		TreeTableNode lastPathComponent = (TreeTableNode) treePath.getLastPathComponent();
-		if (isRootNode(lastPathComponent))
-			return;
-
-		writeNode(treePath, printWriter, maxTreeDepth);
-		writeNonTreeColumns(lastPathComponent, printWriter);
-		printWriter.print(NEW_LINE);
 	}
 
 	private int getMaxTreeDepth(TreePath[] paths)
@@ -103,7 +92,7 @@ public class TreeTableModelExporter
         }
     }
 
-    private void writeNode(TreePath path, PrintWriter printWriter, int maxTreeDepth)
+    private void writeTreeColumn(TreePath path, PrintWriter printWriter, int maxTreeDepth)
 	{
     	int pathCount = path.getPathCount() - INVISIBLE_ROOT;
 		writeTabs(printWriter, pathCount);
@@ -114,8 +103,9 @@ public class TreeTableModelExporter
         writeTabs(printWriter, diff - INVISIBLE_ROOT);
      }
 
-    private void writeNonTreeColumns(TreeTableNode lastPathComponent, PrintWriter printWriter)
+    private void writeNonTreeColumns(TreePath treePath, PrintWriter printWriter)
 	{
+		TreeTableNode lastPathComponent = (TreeTableNode) treePath.getLastPathComponent();
     	int colCount = treeTableModelToExport.getColumnCount();
 		for (int colCounter = 0; colCounter < colCount; colCounter++ )
 		{
@@ -123,15 +113,6 @@ public class TreeTableModelExporter
 			printWriter.print(valueToWrite);
 			printWriter.print(TAB_SEPARATOR);
 		}
-	}
-
-	private boolean isRootNode(TreeTableNode lastPathComponent)
-	{
-		TreeTableNode root = (TreeTableNode) treeTableModelToExport.getRoot();
-		if (lastPathComponent.equals(root))
-        	return true;
-		
-		return false;
 	}
 
 	private void writeTabs(PrintWriter printWriter, int tabCountWrites)
