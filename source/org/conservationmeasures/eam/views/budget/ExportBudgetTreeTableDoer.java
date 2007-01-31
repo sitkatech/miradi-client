@@ -8,8 +8,7 @@ package org.conservationmeasures.eam.views.budget;
 import java.io.File;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.utils.EAMCSVFileChooser;
+import org.conservationmeasures.eam.utils.TreeExportFileChooser;
 import org.conservationmeasures.eam.utils.TreeTableModelExporter;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -41,7 +40,7 @@ public class ExportBudgetTreeTableDoer extends MainWindowDoer
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
+			throw new CommandFailedException(e);
 		}
 	}
 	
@@ -56,7 +55,7 @@ public class ExportBudgetTreeTableDoer extends MainWindowDoer
 
 	private File getFileFromUser() throws Exception
 	{
-		EAMCSVFileChooser csvFileChooser = new EAMCSVFileChooser(getMainWindow());
+		TreeExportFileChooser csvFileChooser = new TreeExportFileChooser(getMainWindow());
 		File chosenFile = csvFileChooser.displayChooser();
 		
 		return chosenFile; 

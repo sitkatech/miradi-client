@@ -8,12 +8,10 @@ package org.conservationmeasures.eam.utils;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Vector;
 
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 import com.java.sun.jtreetable.TreeTableModel;
@@ -32,11 +30,11 @@ public class TreeTableModelExporter
 		try
 		{
 			printWriter = new PrintWriter(fileToExportTo);
-			writeOutTreeTablModel(printWriter);
+			writeTreeTableModel(printWriter);
 		}
 		catch (IOException e)
 		{
-			EAM.logException(e);
+			throw new Exception(e);
 		}
 		finally
 		{
@@ -47,40 +45,45 @@ public class TreeTableModelExporter
 		}
 	}
 	
-	private void writeOutTreeTablModel(PrintWriter printWriter)
+	private void writeTreeTableModel(PrintWriter printWriter)
 	{
-		TreePath[] paths = getAllTreePaths(printWriter);
-		int longestPath = getLongestPath(paths);
+		TreePath[] paths = getAllTreePaths();
+		int maxTreeDepth = getMaxTreeDepth(paths);
 		
-		writeAllPaths(printWriter, paths, longestPath);
+		writeAllPaths(printWriter, paths, maxTreeDepth);
 	}
 	
-	private void writeAllPaths(PrintWriter printWriter, TreePath[] paths, int longestPath)
+	private void writeAllPaths(PrintWriter printWriter, TreePath[] paths, int maxTreeDepth)
 	{
 		for (int i = 0; i < paths.length; i++)
-			writeNode(paths[i], printWriter, longestPath);
+		{
+			writeNode(paths[i], printWriter, maxTreeDepth);
+			writeNonTreeColumns(paths[i], printWriter);
+	        printWriter.print(NEW_LINE);
+		}
 	}
 
-	private int getLongestPath(TreePath[] paths)
+	private int getMaxTreeDepth(TreePath[] paths)
 	{
-		int longestPathCount = 0;
+		int maxTreeDepthCount = 0;
 		for (int i = 0; i < paths.length; i++)
-			longestPathCount = Math.max(paths[i].getPathCount(), longestPathCount);
+			maxTreeDepthCount = Math.max(paths[i].getPathCount(), maxTreeDepthCount);
 		
-		return longestPathCount;
+		return maxTreeDepthCount;
 	}
 
-    public TreePath[] getAllTreePaths(PrintWriter printWriter) {
+    public TreePath[] getAllTreePaths() 
+    {
         TreeTableNode root = (TreeTableNode)treeTableModelToExport.getRoot();
-        List list = new ArrayList();
-        addPath(new TreePath(root), list, printWriter);
+        Vector allPaths = new Vector();
+        addPath(new TreePath(root), allPaths);
 
-        return (TreePath[])list.toArray(new TreePath[list.size()]);
+        return (TreePath[])allPaths.toArray(new TreePath[0]);
     }
     
-    public void addPath(TreePath parent, List list, PrintWriter printWriter) 
+    public void addPath(TreePath parent, Vector allPathsToUse) 
     {
-        list.add(parent);
+    	allPathsToUse.add(parent);
         TreeTableNode node = (TreeTableNode)parent.getLastPathComponent();
         if (node.getChildCount() >= 0)
         {
@@ -88,48 +91,49 @@ public class TreeTableModelExporter
             {
         		TreeTableNode n = node.getChild(i);
                 TreePath path = parent.pathByAddingChild(n);
-                addPath(path, list, printWriter);
+                addPath(path, allPathsToUse);
             }
         }
     }
 
-    private void writeNode(TreePath path, PrintWriter printWriter, int longestPath)
+    private void writeNode(TreePath path, PrintWriter printWriter, int maxTreeDepth)
 	{
     	int pathCount = path.getPathCount() - INVISIBLE_ROOT;
-		padWithTabs(printWriter, pathCount);
+		writeTabs(printWriter, pathCount);
         Object lastPathComponent = path.getLastPathComponent();
 
         if (lastPathComponent.toString() == null)
         	return;
 
         printWriter.print(lastPathComponent.toString());
-        int diff = longestPath  - pathCount;
-        padWithTabs(printWriter, diff - INVISIBLE_ROOT);
-        appendTotalsColumns(printWriter, (TreeTableNode)lastPathComponent);
+        int diff = maxTreeDepth  - pathCount;
+        writeTabs(printWriter, diff - INVISIBLE_ROOT);
+     }
 
-        printWriter.print(NEW_LINE);
-	}
-
-    private void appendTotalsColumns(PrintWriter printWriter, TreeTableNode node)
+    private void writeNonTreeColumns(TreePath path, PrintWriter printWriter)
 	{
+    	Object lastPathComponent = path.getLastPathComponent();
+        if (lastPathComponent.toString() == null)
+        	return;
+
     	int colCount = treeTableModelToExport.getColumnCount();
 		for (int colCounter = 0; colCounter < colCount; colCounter++ )
 		{
-			String valueToWrite = treeTableModelToExport.getValueAt(node, colCounter).toString();
+			String valueToWrite = treeTableModelToExport.getValueAt(lastPathComponent, colCounter).toString();
 			printWriter.print(valueToWrite);
-			printWriter.print(TAB_SEPERATOR);
+			printWriter.print(TAB_SEPARATOR);
 		}
 	}
 
-	private void padWithTabs(PrintWriter printWriter, int tabCount)
+	private void writeTabs(PrintWriter printWriter, int tabCountWrites)
 	{
-    	for (int i = 0; i < tabCount; i++)
-    		printWriter.print(TAB_SEPERATOR);
+    	for (int i = 0; i < tabCountWrites; i++)
+    		printWriter.print(TAB_SEPARATOR);
 	}
 
 	private File fileToExportTo;
 	private TreeTableModel treeTableModelToExport;
-	private static final String TAB_SEPERATOR = "\t";
+	private static final String TAB_SEPARATOR = "\t";
 	private static final String NEW_LINE = "\n";
-	private static final int INVISIBLE_ROOT = 1;
+	private static final int INVISIBLE_ROOT = 2;
 }

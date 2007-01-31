@@ -11,19 +11,19 @@ import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class CSVFileFilter extends FileFilter
+public class TreeExportFileFilter extends FileFilter
 {
 	public boolean accept(File pathname)
 	{
 		if (pathname.isDirectory())
 			return true;
-		return (pathname.getName().toLowerCase().endsWith(EXTENSION));
+		return (pathname.getName().toLowerCase().endsWith(MIRADI_TREE_EXPORT_EXTENSION));
 	}
 
 	public String getDescription()
 	{
-		return EAM.text("FileFilter|CSV (*.csv)");
+		return EAM.text("FileFilter|MTE (*.mte)");
 	}
 
-	public static final String EXTENSION = ".csv";
+	public static final String MIRADI_TREE_EXPORT_EXTENSION = ".mte";
 }

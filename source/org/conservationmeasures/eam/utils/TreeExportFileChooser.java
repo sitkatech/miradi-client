@@ -9,9 +9,9 @@ import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class EAMCSVFileChooser extends EAMFileSaveChooser
+public class TreeExportFileChooser extends EAMFileSaveChooser
 {
-	public EAMCSVFileChooser(MainWindow mainWindow)
+	public TreeExportFileChooser(MainWindow mainWindow)
 	{
 		super(mainWindow);
 	}
@@ -43,11 +43,11 @@ public class EAMCSVFileChooser extends EAMFileSaveChooser
 
 	public FileFilter getFileFilter()
 	{
-		return new CSVFileFilter();
+		return new TreeExportFileFilter();
 	}
 
 	public String getFileExtension()
 	{
-		return CSVFileFilter.EXTENSION;
+		return TreeExportFileFilter.MIRADI_TREE_EXPORT_EXTENSION;
 	}
 }
