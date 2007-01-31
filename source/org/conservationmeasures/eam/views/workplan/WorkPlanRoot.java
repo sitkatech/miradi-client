@@ -54,7 +54,7 @@ public class WorkPlanRoot extends TreeTableNode
 
 	public String toString()
 	{
-		return null;
+		return "";
 	}
 	
 	public BaseId getId()
