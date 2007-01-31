@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpLinkDirectThreatsToTargets extends MainWindowAction
+public class ActionJumpStrategicPlanDevelopObjectivesStep extends MainWindowAction
 {
-	public ActionJumpLinkDirectThreatsToTargets(MainWindow mainWindowToUse)
+	public ActionJumpStrategicPlanDevelopObjectivesStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
-	static String getLabel()
+	private static String getLabel()
 	{
-		return EAM.text("Link Direct Threats to Targets");
+		return EAM.text("Develop Objectives"); 
 	}
 
 }

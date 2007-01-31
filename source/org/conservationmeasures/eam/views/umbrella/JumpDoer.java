@@ -7,37 +7,36 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
 import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetFutureDemo;
-import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverview;
-import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategies;
-import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
-import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
-import org.conservationmeasures.eam.actions.jump.ActionJumpLinkDirectThreatsToTargets;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverview;
-import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
-import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDescribeTargetStatusStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardVisionStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategiesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDiagramWizardIdentifyDirectThreatStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
-import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotals;
-import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
-import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanHowToConstructStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotalsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanOverview;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -118,53 +117,53 @@ public class JumpDoer extends MainWindowDoer
 		if(jumpActionClass.equals(ActionJumpDesignateLeader.class))
 			return SummaryView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpDefineScope.class))
+		if(jumpActionClass.equals(ActionJumpDiagramWizardProjectScopeStep.class))
 			return SummaryView.getViewName();
 
-		if(jumpActionClass.equals(ActionJumpEstablishVision.class))
+		if(jumpActionClass.equals(ActionJumpDiagramWizardVisionStep.class))
 			return SummaryView.getViewName();
 		
 		
-		if(jumpActionClass.equals(ActionJumpIdentifyTargets.class))
+		if(jumpActionClass.equals(ActionJumpDiagramWizardDefineTargetsStep.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpDescribeTargets.class))
+		if(jumpActionClass.equals(ActionJumpDiagramWizardDescribeTargetStatusStep.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpIdentifyDirectThreats.class))
+		if(jumpActionClass.equals(ActionJumpIdentifyDiagramWizardIdentifyDirectThreatStep.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpIdentifyContributingFactors.class))
+		if(jumpActionClass.equals(ActionJumpDiagramWizardIdentifyIndirectThreatStep.class))
 			return DiagramView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpDevelopTargetGoals.class))
+		if (jumpActionClass.equals(ActionJumpStrategicPlanDevelopGoalStep.class))
 			return DiagramView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpDevelopObjectives.class))
+		if (jumpActionClass.equals(ActionJumpStrategicPlanDevelopObjectivesStep.class))
 			return DiagramView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpDetermineNeeds.class))
+		if (jumpActionClass.equals(ActionJumpMonitoringWizardFocusStep.class))
 			return DiagramView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpIdentifyStrategies.class))
+		if (jumpActionClass.equals(ActionJumpSelectChainStep.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpRankDraftStrategies.class))
+		if(jumpActionClass.equals(ActionJumpRankDraftStrategiesStep.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpEditAllStrategies.class))
+		if(jumpActionClass.equals(ActionJumpEditAllStrategiesStep.class))
 			return DiagramView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpReviewModelAndAdjust.class))
+		if (jumpActionClass.equals(ActionJumpDiagramWizardReviewModelAndAdjustStep.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpLinkDirectThreatsToTargets.class))
+		if(jumpActionClass.equals(ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpCreateModel.class))
+		if(jumpActionClass.equals(ActionJumpDiagramWizardReviewModelAndAdjustStep.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpDefineIndicators.class))
+		if(jumpActionClass.equals(ActionJumpMonitoringWizardDefineIndicatorsStep.class))
 			return DiagramView.getViewName();
 		
 		
@@ -172,24 +171,24 @@ public class JumpDoer extends MainWindowDoer
 		if(jumpActionClass.equals(ActionJumpThreatMatrixOverviewStep.class))
 			return ThreatMatrixView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpThreatRatingWizardCheckTotals.class))
+		if (jumpActionClass.equals(ActionJumpThreatRatingWizardCheckTotalsStep.class))
 			return ThreatMatrixView.getViewName();
 		
 
-		if (jumpActionClass.equals(ActionJumpViewAllGoals.class))
+		if (jumpActionClass.equals(ActionJumpStrategicPlanViewAllGoals.class))
 			return StrategicPlanView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpViewAllObjectives.class))
+		if (jumpActionClass.equals(ActionJumpStrategicPlanViewAllObjectives.class))
 			return StrategicPlanView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpStratPlanWelcome.class))
+		if (jumpActionClass.equals(ActionJumpStrategicPlanHowToConstructStep.class))
 			return StrategicPlanView.getViewName();
 		
 
-		if (jumpActionClass.equals(ActionJumpEditIndicators.class))
+		if (jumpActionClass.equals(ActionJumpMonitoringWizardEditIndicatorsStep.class))
 			return MonitoringView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpMonitoringOverview.class))
+		if (jumpActionClass.equals(ActionJumpMonitoringOverviewStep.class))
 			return MonitoringView.getViewName();
 		
 		
@@ -218,7 +217,7 @@ public class JumpDoer extends MainWindowDoer
 		if (jumpActionClass.equals(ActionJumpDevelopSchedule.class))
 			return ScheduleView.getViewName();
 		
-		if (jumpActionClass.equals(ActionJumpDiagramOverview.class))
+		if (jumpActionClass.equals(ActionJumpDiagramOverviewStep.class))
 			return DiagramView.getViewName();
 		
 		if (jumpActionClass.equals(ActionJumpWorkPlanOverview.class))

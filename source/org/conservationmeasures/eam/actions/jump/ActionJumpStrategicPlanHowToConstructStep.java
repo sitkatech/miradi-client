@@ -9,16 +9,15 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDevelopObjectives extends MainWindowAction
+public class ActionJumpStrategicPlanHowToConstructStep extends MainWindowAction
 {
-	public ActionJumpDevelopObjectives(MainWindow mainWindowToUse)
+	public ActionJumpStrategicPlanHowToConstructStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-	
+
 	private static String getLabel()
 	{
-		return EAM.text("Develop Objectives"); 
+		return EAM.text("View Strategic Plan welcome wizard");
 	}
-
 }

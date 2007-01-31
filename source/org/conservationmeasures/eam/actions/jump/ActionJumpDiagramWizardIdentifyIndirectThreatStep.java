@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpMonitoringOverview extends MainWindowAction
+public class ActionJumpDiagramWizardIdentifyIndirectThreatStep extends MainWindowAction
 {
-	public ActionJumpMonitoringOverview(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardIdentifyIndirectThreatStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-
+	
 	static String getLabel()
 	{
-		return EAM.text("Monitoring Overview");
+		return EAM.text("Identify Indirect Threats & Opportunities");
 	}
 	
 }

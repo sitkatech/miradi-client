@@ -9,17 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpEditAllStrategies extends MainWindowAction
+public class ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep extends MainWindowAction
 {
-	public ActionJumpEditAllStrategies(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
-	private static String getLabel()
+	static String getLabel()
 	{
-		return EAM.text("Edit All Strategies"); 
+		return EAM.text("Link Direct Threats to Targets");
 	}
-
 
 }

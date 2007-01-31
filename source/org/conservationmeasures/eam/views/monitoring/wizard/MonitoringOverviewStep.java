@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.monitoring.wizard;
 import org.conservationmeasures.eam.views.umbrella.IWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class MonitoringWizardOverviewStep extends WizardStep
+public class MonitoringOverviewStep extends WizardStep
 {
-	public MonitoringWizardOverviewStep(IWizardPanel wizardToUse)
+	public MonitoringOverviewStep(IWizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}

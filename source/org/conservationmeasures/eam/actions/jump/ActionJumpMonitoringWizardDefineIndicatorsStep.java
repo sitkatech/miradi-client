@@ -9,15 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpViewAllObjectives extends MainWindowAction
+public class ActionJumpMonitoringWizardDefineIndicatorsStep extends MainWindowAction
 {
-	public ActionJumpViewAllObjectives(MainWindow mainWindowToUse)
+	public ActionJumpMonitoringWizardDefineIndicatorsStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
-	static String getLabel()
+	private static String getLabel()
 	{
-		return EAM.text("View all objectives");
+		return EAM.text("Define Indicators"); 
 	}
+
 }

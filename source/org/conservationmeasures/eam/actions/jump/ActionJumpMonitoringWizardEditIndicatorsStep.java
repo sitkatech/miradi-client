@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpIdentifyTargets extends MainWindowAction
+public class ActionJumpMonitoringWizardEditIndicatorsStep extends MainWindowAction
 {
-	public ActionJumpIdentifyTargets(MainWindow mainWindowToUse)
+	public ActionJumpMonitoringWizardEditIndicatorsStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-	
+
 	static String getLabel()
 	{
-		return EAM.text("Identify and Prioritize Targets");
+		return EAM.text("Edit Indicators");
 	}
 	
 }

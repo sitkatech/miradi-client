@@ -11,6 +11,8 @@ import java.util.Hashtable;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanHowToConstructStep;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -30,10 +32,15 @@ import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardVisionStep
 import org.conservationmeasures.eam.views.diagram.wizard.EditAllStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.SelectChainStep;
+import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefineIndicatorsStep;
+import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopObjectivesStep;
+import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanHowToConstructStep;
+import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllGoals;
+import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllObjectives;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
@@ -162,16 +169,18 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		{
 			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
 			EAM.logWarning("During wizard migration the target step may not be correclty opened:" + newStep);
+			mainWindow.getCurrentView().jump(newStep);
 		}
-
-		SkeletonWizardStep stepClass = stepTable.findStep(newStep).getStepClass();
-		if (stepClass!=null)
+		else
 		{
-			currentStepName = newStep;
-			stepClass.refresh();
-			setContents(stepClass);
+			SkeletonWizardStep stepClass = stepTable.findStep(newStep).getStepClass();
+			if (stepClass!=null)
+			{
+				currentStepName = newStep;
+				stepClass.refresh();
+				setContents(stepClass);
+			}
 		}
-
 	}
 	
 	//TODO: not used but need do to interface: will go away when all wizards are converted
@@ -238,7 +247,7 @@ class StepTable extends Hashtable
 		final String viewName = DiagramView.getViewName();
 		
 		WizardStepEntry stepEntry = loadStep(DiagramOverviewStep.class, viewName);
-		stepEntry.loadNextBack(DiagramOverviewStep.class, DiagramWizardProjectScopeStep.class);
+		stepEntry.loadNextBack(DiagramWizardProjectScopeStep.class, DiagramWizardVisionStep.class);
 		
 		stepEntry = loadStep(DiagramWizardProjectScopeStep.class, viewName);
 		stepEntry.loadNextBack(DiagramWizardVisionStep.class, DiagramOverviewStep.class);
@@ -259,19 +268,19 @@ class StepTable extends Hashtable
 		stepEntry.loadNextBack(DiagramWizardLinkDirectThreatsToTargetsStep.class, DescribeTargetStatusStep.class);
 		
 		stepEntry = loadStep(DiagramWizardLinkDirectThreatsToTargetsStep.class, viewName);
-		stepEntry.loadNextBack(DiagramWizardIdentifyIndirectThreatStep.class, DiagramWizardIdentifyDirectThreatStep.class);
+		stepEntry.loadNextBack(ThreatMatrixOverviewStep.class, DiagramWizardIdentifyDirectThreatStep.class);
 		
 		stepEntry = loadStep(DiagramWizardIdentifyIndirectThreatStep.class, viewName);		
-		stepEntry.loadNextBack(DiagramWizardConstructChainsStep.class, DiagramWizardLinkDirectThreatsToTargetsStep.class);
+		stepEntry.loadNextBack(DiagramWizardConstructChainsStep.class, ThreatRatingWizardCheckTotalsStep.class);
 		
 		stepEntry = loadStep(DiagramWizardConstructChainsStep.class, viewName);	
 		stepEntry.loadNextBack(DiagramWizardReviewModelAndAdjustStep.class, DiagramWizardIdentifyIndirectThreatStep.class);
 		
 		stepEntry = loadStep(DiagramWizardReviewModelAndAdjustStep.class, viewName);		
-		stepEntry.loadNextBack(SelectChainStep.class, DiagramWizardConstructChainsStep.class);
+		stepEntry.loadNextBack(ActionJumpStrategicPlanHowToConstructStep.class, DiagramWizardConstructChainsStep.class);
 		
 		stepEntry = loadStep(SelectChainStep.class, viewName);		
-		stepEntry.loadNextBack(DevelopDraftStrategiesStep.class, DiagramWizardReviewModelAndAdjustStep.class);
+		stepEntry.loadNextBack(DevelopDraftStrategiesStep.class, StrategicPlanViewAllObjectives.class);
 		
 		stepEntry = loadStep(DevelopDraftStrategiesStep.class, viewName);
 		stepEntry.loadNextBack(RankDraftStrategiesStep.class, SelectChainStep.class);
@@ -280,19 +289,19 @@ class StepTable extends Hashtable
 		stepEntry.loadNextBack(EditAllStrategiesStep.class, DevelopDraftStrategiesStep.class);
 		
 		stepEntry = loadStep(EditAllStrategiesStep.class, viewName);
-		stepEntry.loadNextBack(StrategicPlanDevelopGoalStep.class, RankDraftStrategiesStep.class);
+		stepEntry.loadNextBack(ActionJumpMonitoringOverviewStep.class, RankDraftStrategiesStep.class);
 		
 		stepEntry = loadStep(StrategicPlanDevelopGoalStep.class, viewName);
-		stepEntry.loadNextBack(StrategicPlanDevelopObjectivesStep.class, EditAllStrategiesStep.class);
+		stepEntry.loadNextBack(StrategicPlanViewAllGoals.class, StrategicPlanHowToConstructStep.class);
 		
 		stepEntry = loadStep(StrategicPlanDevelopObjectivesStep.class, viewName);		
-		stepEntry.loadNextBack(MonitoringWizardFocusStep.class, StrategicPlanDevelopGoalStep.class);
+		stepEntry.loadNextBack(StrategicPlanViewAllObjectives.class, StrategicPlanViewAllGoals.class);
 		
 		stepEntry = loadStep(MonitoringWizardFocusStep.class, viewName);		
-		stepEntry.loadNextBack(MonitoringWizardDefineIndicatorsStep.class, StrategicPlanDevelopObjectivesStep.class);
+		stepEntry.loadNextBack(MonitoringWizardDefineIndicatorsStep.class, MonitoringOverviewStep.class);
 		
 		stepEntry = loadStep(MonitoringWizardDefineIndicatorsStep.class, viewName);
-		stepEntry.loadNextBack(MonitoringWizardDefineIndicatorsStep.class, MonitoringWizardDefineIndicatorsStep.class);
+		stepEntry.loadNextBack(MonitoringWizardEditIndicatorsStep.class, MonitoringWizardDefineIndicatorsStep.class);
 	}
 
 
@@ -324,6 +333,12 @@ class StepTable extends Hashtable
 		stepEntry.loadNextBack(ThreatMatrixOverviewStep.class, ThreatRatingWizardChooseBundle.class);
 	}
 
+	
+	public void sequenceSteps()
+	{
+		
+	}
+	
 	private WizardStepEntry loadStep(Class wizardStep, String viewName)
 	{
 		WizardStepEntry stepEntry = new WizardStepEntry(wizardStep.getSimpleName(), viewName);

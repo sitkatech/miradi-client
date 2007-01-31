@@ -9,16 +9,15 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpEditIndicators extends MainWindowAction
+public class ActionJumpThreatRatingWizardCheckTotalsStep extends MainWindowAction
 {
-	public ActionJumpEditIndicators(MainWindow mainWindowToUse)
+	public ActionJumpThreatRatingWizardCheckTotalsStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	static String getLabel()
 	{
-		return EAM.text("Edit Indicators");
+		return EAM.text("Threat rating summary");
 	}
-	
 }

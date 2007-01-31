@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpIdentifyDirectThreats extends MainWindowAction
+public class ActionJumpDiagramWizardVisionStep extends MainWindowAction
 {
-	public ActionJumpIdentifyDirectThreats(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardVisionStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	static String getLabel()
 	{
-		return EAM.text("Identify Direct Threats");
+		return EAM.text("Establish a Clear and Common Vision");
 	}
 	
 }

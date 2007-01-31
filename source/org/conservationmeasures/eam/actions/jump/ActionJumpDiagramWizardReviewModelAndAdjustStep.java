@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpIdentifyStrategies extends MainWindowAction
+public class ActionJumpDiagramWizardReviewModelAndAdjustStep extends MainWindowAction
 {
-	public ActionJumpIdentifyStrategies(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardReviewModelAndAdjustStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
-	private static String getLabel()
+	static String getLabel()
 	{
-		return EAM.text("Identify \"Key Factors\" & Draft Strategies"); 
+		return EAM.text("Create a Model");
 	}
-
+	
 }

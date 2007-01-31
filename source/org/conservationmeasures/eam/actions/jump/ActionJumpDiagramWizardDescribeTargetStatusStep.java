@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpCreateModel extends MainWindowAction
+public class ActionJumpDiagramWizardDescribeTargetStatusStep extends MainWindowAction
 {
-	public ActionJumpCreateModel(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardDescribeTargetStatusStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	static String getLabel()
 	{
-		return EAM.text("Create a Model");
+		return EAM.text("Describe Status of Targets");
 	}
 	
 }

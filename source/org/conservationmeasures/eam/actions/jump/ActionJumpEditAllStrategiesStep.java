@@ -9,16 +9,17 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDefineIndicators extends MainWindowAction
+public class ActionJumpEditAllStrategiesStep extends MainWindowAction
 {
-	public ActionJumpDefineIndicators(MainWindow mainWindowToUse)
+	public ActionJumpEditAllStrategiesStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	private static String getLabel()
 	{
-		return EAM.text("Define Indicators"); 
+		return EAM.text("Edit All Strategies"); 
 	}
+
 
 }

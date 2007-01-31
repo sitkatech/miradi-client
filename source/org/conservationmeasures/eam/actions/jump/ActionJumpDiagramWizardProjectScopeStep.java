@@ -9,15 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDiagramOverview extends MainWindowAction
+public class ActionJumpDiagramWizardProjectScopeStep extends MainWindowAction
 {
-	public ActionJumpDiagramOverview(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardProjectScopeStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	static String getLabel()
 	{
-		return EAM.text("Diagram overview");
+		return EAM.text("Define Project Scope");
 	}
+	
 }

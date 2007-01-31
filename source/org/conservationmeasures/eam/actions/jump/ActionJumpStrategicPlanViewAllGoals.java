@@ -9,16 +9,15 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDescribeTargets extends MainWindowAction
+public class ActionJumpStrategicPlanViewAllGoals extends MainWindowAction
 {
-	public ActionJumpDescribeTargets(MainWindow mainWindowToUse)
+	public ActionJumpStrategicPlanViewAllGoals(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-	
-	static String getLabel()
+
+	private static String getLabel()
 	{
-		return EAM.text("Describe Status of Targets");
+		return EAM.text("View all goals");
 	}
-	
 }

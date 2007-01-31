@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpIdentifyContributingFactors extends MainWindowAction
+public class ActionJumpRankDraftStrategiesStep extends MainWindowAction
 {
-	public ActionJumpIdentifyContributingFactors(MainWindow mainWindowToUse)
+	public ActionJumpRankDraftStrategiesStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
-	static String getLabel()
+	private static String getLabel()
 	{
-		return EAM.text("Identify Indirect Threats & Opportunities");
+		return EAM.text("Rank Draft Strategies"); 
 	}
-	
+
 }

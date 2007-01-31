@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDetermineNeeds extends MainWindowAction
+public class ActionJumpDiagramWizardDefineTargetsStep extends MainWindowAction
 {
-	public ActionJumpDetermineNeeds(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardDefineTargetsStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	static String getLabel()
 	{
-		return EAM.text("Determine What You Need to Know");
+		return EAM.text("Identify and Prioritize Targets");
 	}
 	
 }

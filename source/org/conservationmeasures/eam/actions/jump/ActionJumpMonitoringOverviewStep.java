@@ -9,15 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpViewAllGoals extends MainWindowAction
+public class ActionJumpMonitoringOverviewStep extends MainWindowAction
 {
-	public ActionJumpViewAllGoals(MainWindow mainWindowToUse)
+	public ActionJumpMonitoringOverviewStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
-	private static String getLabel()
+	static String getLabel()
 	{
-		return EAM.text("View all goals");
+		return EAM.text("Monitoring Overview");
 	}
+	
 }

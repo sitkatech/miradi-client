@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpEstablishVision extends MainWindowAction
+public class ActionJumpMonitoringWizardFocusStep extends MainWindowAction
 {
-	public ActionJumpEstablishVision(MainWindow mainWindowToUse)
+	public ActionJumpMonitoringWizardFocusStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	static String getLabel()
 	{
-		return EAM.text("Establish a Clear and Common Vision");
+		return EAM.text("Determine What You Need to Know");
 	}
 	
 }

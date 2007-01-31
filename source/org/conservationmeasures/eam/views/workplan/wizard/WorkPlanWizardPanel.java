@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpEditIndicators;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanOverview;
@@ -64,9 +64,9 @@ public class WorkPlanWizardPanel extends WizardPanel
 	public void previous() throws Exception
 	{
 		if(currentStep == SELECT_METHOD)
-			actions.get(ActionJumpEditIndicators.class).doAction();
+			actions.get(ActionJumpMonitoringWizardEditIndicatorsStep.class).doAction();
 		else if (currentStep == WELCOME)
-			actions.get(ActionJumpEditIndicators.class).doAction();
+			actions.get(ActionJumpMonitoringWizardEditIndicatorsStep.class).doAction();
 		
 		super.previous();
 	}

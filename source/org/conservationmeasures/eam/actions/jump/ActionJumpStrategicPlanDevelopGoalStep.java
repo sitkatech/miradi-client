@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpRankDraftStrategies extends MainWindowAction
+public class ActionJumpStrategicPlanDevelopGoalStep extends MainWindowAction
 {
-	public ActionJumpRankDraftStrategies(MainWindow mainWindowToUse)
+	public ActionJumpStrategicPlanDevelopGoalStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	private static String getLabel()
 	{
-		return EAM.text("Rank Draft Strategies"); 
+		return EAM.text("Develop Goals for Each Target"); 
 	}
 
 }

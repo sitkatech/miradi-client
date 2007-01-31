@@ -6,13 +6,13 @@
 package org.conservationmeasures.eam.views.strategicplan.wizard;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
-import org.conservationmeasures.eam.actions.jump.ActionJumpReviewModelAndAdjust;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
-import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
-import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanHowToConstructStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllObjectives;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
@@ -31,11 +31,11 @@ public class StrategicPlanWizardPanel extends WizardPanel
 	
 	public void jump(Class stepMarker) throws Exception
 	{
-		if (stepMarker.equals(ActionJumpViewAllGoals.class))
+		if (stepMarker.equals(ActionJumpStrategicPlanViewAllGoals.class))
 			setStep(VIEW_ALL_GOALS);
-		else if (stepMarker.equals(ActionJumpViewAllObjectives.class))
+		else if (stepMarker.equals(ActionJumpStrategicPlanViewAllObjectives.class))
 			setStep(VIEW_ALL_OBJECTIVES);
-		else if (stepMarker.equals(ActionJumpStratPlanWelcome.class))
+		else if (stepMarker.equals(ActionJumpStrategicPlanHowToConstructStep.class))
 			setStep(HOW_TO_CONSTRUCT_STRAT_PLAN);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
@@ -44,11 +44,11 @@ public class StrategicPlanWizardPanel extends WizardPanel
 	public void previous() throws Exception
 	{
 		if (currentStep == VIEW_ALL_GOALS)
-			actions.get(ActionJumpDevelopTargetGoals.class).doAction();
+			actions.get(ActionJumpStrategicPlanDevelopGoalStep.class).doAction();
 		if (currentStep == VIEW_ALL_OBJECTIVES)
-			actions.get(ActionJumpDevelopObjectives.class).doAction();
+			actions.get(ActionJumpStrategicPlanDevelopObjectivesStep.class).doAction();
 		if (currentStep == HOW_TO_CONSTRUCT_STRAT_PLAN)
-			actions.get(ActionJumpReviewModelAndAdjust.class).doAction();
+			actions.get(ActionJumpDiagramWizardReviewModelAndAdjustStep.class).doAction();
 		
 		super.previous();
 	}
@@ -56,11 +56,11 @@ public class StrategicPlanWizardPanel extends WizardPanel
 	public void next() throws Exception
 	{
 		if (currentStep == HOW_TO_CONSTRUCT_STRAT_PLAN)
-			actions.get(ActionJumpDevelopTargetGoals.class).doAction();
+			actions.get(ActionJumpStrategicPlanDevelopGoalStep.class).doAction();
 		if (currentStep == VIEW_ALL_GOALS)
-			actions.get(ActionJumpDevelopObjectives.class).doAction();
+			actions.get(ActionJumpStrategicPlanDevelopObjectivesStep.class).doAction();
 		if (currentStep == VIEW_ALL_OBJECTIVES)
-			actions.get(ActionJumpIdentifyStrategies.class).doAction();
+			actions.get(ActionJumpSelectChainStep.class).doAction();
 		
 		super.next();
 	}
