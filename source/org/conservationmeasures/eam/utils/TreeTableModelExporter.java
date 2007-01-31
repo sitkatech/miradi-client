@@ -55,12 +55,21 @@ public class TreeTableModelExporter
 	
 	private void writeAllPaths(PrintWriter printWriter, TreePath[] paths, int maxTreeDepth)
 	{
-		for (int i = 0; i < paths.length; i++)
+		for (int index = 0; index < paths.length; index++)
 		{
-			writeNode(paths[i], printWriter, maxTreeDepth);
-			writeNonTreeColumns(paths[i], printWriter);
-	        printWriter.print(NEW_LINE);
+			writeAllNoneRootPaths(printWriter, paths[index], maxTreeDepth);
 		}
+	}
+
+	private void writeAllNoneRootPaths(PrintWriter printWriter, TreePath treePath, int maxTreeDepth)
+	{
+		TreeTableNode lastPathComponent = (TreeTableNode) treePath.getLastPathComponent();
+		if (isRootNode(lastPathComponent))
+			return;
+
+		writeNode(treePath, printWriter, maxTreeDepth);
+		writeNonTreeColumns(lastPathComponent, printWriter);
+		printWriter.print(NEW_LINE);
 	}
 
 	private int getMaxTreeDepth(TreePath[] paths)
@@ -85,14 +94,12 @@ public class TreeTableModelExporter
     {
     	allPathsToUse.add(parent);
         TreeTableNode node = (TreeTableNode)parent.getLastPathComponent();
-        if (node.getChildCount() >= 0)
+      
+        for (int i  = 0; i < node.getChildCount(); i++)
         {
-        	for (int i  = 0; i < node.getChildCount(); i++)
-            {
-        		TreeTableNode n = node.getChild(i);
-                TreePath path = parent.pathByAddingChild(n);
-                addPath(path, allPathsToUse);
-            }
+        	TreeTableNode n = node.getChild(i);
+        	TreePath path = parent.pathByAddingChild(n);
+        	addPath(path, allPathsToUse);
         }
     }
 
@@ -100,22 +107,15 @@ public class TreeTableModelExporter
 	{
     	int pathCount = path.getPathCount() - INVISIBLE_ROOT;
 		writeTabs(printWriter, pathCount);
-        Object lastPathComponent = path.getLastPathComponent();
-
-        if (lastPathComponent.toString() == null)
-        	return;
+        TreeTableNode lastPathComponent = (TreeTableNode) path.getLastPathComponent();
 
         printWriter.print(lastPathComponent.toString());
         int diff = maxTreeDepth  - pathCount;
         writeTabs(printWriter, diff - INVISIBLE_ROOT);
      }
 
-    private void writeNonTreeColumns(TreePath path, PrintWriter printWriter)
+    private void writeNonTreeColumns(TreeTableNode lastPathComponent, PrintWriter printWriter)
 	{
-    	Object lastPathComponent = path.getLastPathComponent();
-        if (lastPathComponent.toString() == null)
-        	return;
-
     	int colCount = treeTableModelToExport.getColumnCount();
 		for (int colCounter = 0; colCounter < colCount; colCounter++ )
 		{
@@ -123,6 +123,15 @@ public class TreeTableModelExporter
 			printWriter.print(valueToWrite);
 			printWriter.print(TAB_SEPARATOR);
 		}
+	}
+
+	private boolean isRootNode(TreeTableNode lastPathComponent)
+	{
+		TreeTableNode root = (TreeTableNode) treeTableModelToExport.getRoot();
+		if (lastPathComponent.equals(root))
+        	return true;
+		
+		return false;
 	}
 
 	private void writeTabs(PrintWriter printWriter, int tabCountWrites)
