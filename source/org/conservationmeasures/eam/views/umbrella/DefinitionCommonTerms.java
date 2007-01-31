@@ -185,7 +185,7 @@ public class DefinitionCommonTerms
 		
 
 		def = new Definition("Activity",
-				"Activity - An action carried out to accomplish one or more of a project’s strategies.");
+				"Activity - An action carried out to accomplish one or more of a project's strategies.");
 		defs.put("Definition:Activity", def);
 		
 		
