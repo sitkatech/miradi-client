@@ -9,11 +9,18 @@ import java.text.DecimalFormat;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
 
 abstract public class AbstractBudgetTableModel extends AbstractTableModel
@@ -172,6 +179,101 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return DateRange.combine(dateRanges[0], dateRanges[dateRanges.length - 1]);
 	}
 	
+	public void setAccountingCode(AccountingCode aCode, BaseId  assignmentId)
+	{
+		try
+		{
+			BaseId aCodeId = aCode.getId();
+			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE, aCodeId.toString());
+			project.executeCommand(command);
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	public Object getCurrentFundingSource(BaseId assignmentId)
+	{
+		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE);
+		BaseId fundingId = new BaseId(stringId);
+		
+		FundingSource fundingSource = (FundingSource)project.findObject(ObjectType.FUNDING_SOURCE, fundingId);
+		return fundingSource;
+	}
+	
+	public ProjectResource getCurrentResource(BaseId assignmentId)
+	{
+		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
+		BaseId resourceId = new BaseId(stringId);
+		
+		ProjectResource resource = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId);
+		
+		return resource;
+	}
+	
+	public Object getCurrentAccountingCode(BaseId assignmentId)
+	{
+		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE);
+		BaseId accountingId = new BaseId(stringId);
+		
+		AccountingCode accountingCode = (AccountingCode)project.findObject(ObjectType.ACCOUNTING_CODE, accountingId);
+		return accountingCode;
+	}
+	
+	public String getTotalCost(Assignment assignment)
+	{		
+		try
+		{
+			DateRange combinedDateRange = getCombinedDateRange();
+			double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
+			return currencyFormatter.format(totalCost);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		return "";
+	}
+	
+	public String getCostPerUnit(ProjectResource resource)
+	{
+		String raw = resource.getData(ProjectResource.TAG_COST_PER_UNIT);
+		double costPerUnit = convertStringToDouble(raw);
+		
+		return currencyFormatter.format(costPerUnit);
+	}
+	
+	public void setFundingSource(FundingSource fSource, BaseId  assignmentId)
+	{
+		try
+		{
+			BaseId fSourceId = fSource.getId();
+			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE, fSourceId.toString());
+			project.executeCommand(command);
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	public void setResource(ProjectResource projectResource, BaseId  assignmentId)
+	{
+		try
+		{
+			BaseId resourceId = projectResource.getId();
+			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId.toString());
+			project.executeCommand(command);
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+
+	
 	abstract public boolean isYearlyTotalColumn(int col);
 	
 	abstract public BaseId getAssignmentForRow(int row);
@@ -200,4 +302,5 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	DecimalFormat decimalFormatter;
 	DateRange[] dateRanges;
 	BudgetTotalsCalculator totalsCalculator;
+	Project project;
 }

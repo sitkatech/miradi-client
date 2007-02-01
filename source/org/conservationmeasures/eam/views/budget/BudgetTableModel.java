@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.budget;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
@@ -212,7 +211,10 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		}
 		if (isResourceColumn(col))
 		{
-			setResource(value, row);
+			ProjectResource projectResource = (ProjectResource)value;
+			BaseId  assignmentId = getAssignmentForRow(row);
+
+			setResource(projectResource, assignmentId);
 			return;
 		}
 		
@@ -227,7 +229,10 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		
 		if (isFundingSourceColumn(col))
 		{
-			setFundingSource(value, row);
+			FundingSource fSource = (FundingSource)value;
+			BaseId  assignmentId = getAssignmentForRow(row);
+
+			setFundingSource(fSource, assignmentId);
 			return;
 		}
 		
@@ -254,30 +259,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			
 		return "";
 	}
-	
-	private String getCostPerUnit(ProjectResource resource)
-	{
-		String raw = resource.getData(ProjectResource.TAG_COST_PER_UNIT);
-		double costPerUnit = convertStringToDouble(raw);
 		
-		return currencyFormatter.format(costPerUnit);
-	}
-
-	private String getTotalCost(Assignment assignment)
-	{		
-		try
-		{
-			DateRange combinedDateRange = getCombinedDateRange();
-			double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
-			return currencyFormatter.format(totalCost);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-		return "";
-	}
-	
 	private DateRangeEffortList getDateRangeEffortList(int row) throws Exception
 	{
 		Assignment assignment = getAssignment(row);
@@ -308,37 +290,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return (Assignment)project.findObject(ObjectType.ASSIGNMENT, getAssignmentForRow(row));
 	}
 	
-	public Object getCurrentAccountingCode(BaseId assignmentId)
-	{
-		//BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
-		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE);
-		BaseId accountingId = new BaseId(stringId);
-		
-		AccountingCode accountingCode = (AccountingCode)project.findObject(ObjectType.ACCOUNTING_CODE, accountingId);
-		return accountingCode;
-	}
-	
-	public Object getCurrentFundingSource(BaseId assignmentId)
-	{
-		//BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
-		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE);
-		BaseId fundingId = new BaseId(stringId);
-		
-		FundingSource fundingSource = (FundingSource)project.findObject(ObjectType.FUNDING_SOURCE, fundingId);
-		return fundingSource;
-	}
-	
-	public ProjectResource getCurrentResource(BaseId assignmentId)
-	{
-		//BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
-		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
-		BaseId resourceId = new BaseId(stringId);
-		
-		ProjectResource resource = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId);
-		
-		return resource;
-	}
-	
 	private void setUnits(Object value, int row, int timeIndex)
 	{
 		try
@@ -366,56 +317,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			EAM.logException(e);
 		}
 	}
-	
-	public void setResource(Object value, int row)
-	{
-		try
-		{
-			ProjectResource projectResource = (ProjectResource)value;
-			BaseId resourceId = projectResource.getId();
 			
-			BaseId  assignmentId = getAssignmentForRow(row);
-			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId.toString());
-			project.executeCommand(command);
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-		}
-		
-	}
-	
-	public void setFundingSource(Object value, int row)
-	{
-		try
-		{
-			FundingSource fSource = (FundingSource)value;
-			BaseId fSourceId = fSource.getId();
-			
-			BaseId  assignmentId = getAssignmentForRow(row);
-			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE, fSourceId.toString());
-			project.executeCommand(command);
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-		}
-	}
-	
-	public void setAccountingCode(AccountingCode aCode, BaseId  assignmentId)
-	{
-		try
-		{
-			BaseId aCodeId = aCode.getId();
-			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE, aCodeId.toString());
-			project.executeCommand(command);
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-		}
-	}
-	
 	public boolean isYearlyTotalColumn(int col)
 	{
 		if (col < TOTAL_ROW_HEADER_COLUMN_COUNT)
@@ -482,7 +384,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return col == getAccountingCodeColumnIndex();
 	}
 	
-	Project project;
 	Task task;
 	IdList assignmentIdList;
 	
