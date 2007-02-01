@@ -455,13 +455,12 @@ class StepTable extends Hashtable
 		loadStep(ThreatRatingWizardScopeStep.class, viewName);
 		loadStep(ThreatRatingWizardSeverityStep.class, viewName);
 		loadStep(ThreatRatingWizardIrreversibilityStep.class, viewName);
-		
 
 		WizardStepEntry stepEntry3 = loadStep(ThreatRatingWizardCheckBundleStep.class, viewName);
-		stepEntry3.loadNext(ThreatRatingWizardChooseBundle.class); // next in conflict
+		stepEntry3.loadNext(ThreatRatingWizardChooseBundle.class); 
 
 		WizardStepEntry stepEntry4 = loadStep(ThreatRatingWizardCheckTotalsStep.class, viewName);
-		stepEntry4.loadNext(ThreatMatrixOverviewStep.class); // next in conflict
+		stepEntry4.loadNext(ThreatMatrixOverviewStep.class); 
 	}
 
 
@@ -469,6 +468,42 @@ class StepTable extends Hashtable
 	{
 		Class[] entries = 
 		{
+				SummaryWizardOverviewStep.class,
+				SummaryWizardDefineTeamMembers.class,
+				SummaryWizardDefineProjectLeader.class,
+				SummaryWizardDefineProjecScope.class,
+				SummaryWizardDefineProjectVision.class,
+				
+				DiagramOverviewStep.class,
+				DiagramWizardProjectScopeStep.class,
+				DiagramWizardVisionStep.class,
+				DiagramWizardDefineTargetsStep.class,
+				DiagramWizardReviewAndModifyTargetsStep.class,
+				DescribeTargetStatusStep.class,
+				DiagramWizardIdentifyDirectThreatStep.class,
+				DiagramWizardLinkDirectThreatsToTargetsStep.class,
+				DiagramWizardIdentifyIndirectThreatStep.class,		
+				DiagramWizardConstructChainsStep.class,	
+				DiagramWizardReviewModelAndAdjustStep.class,		
+				
+				StrategicOverviewStep.class,
+				StrategicPlanDevelopGoalStep.class,
+				StrategicPlanViewAllGoals.class,
+				StrategicPlanDevelopObjectivesStep.class, 	
+				StrategicPlanViewAllObjectives.class,
+
+				SelectChainStep.class,		
+				DevelopDraftStrategiesStep.class,
+				RankDraftStrategiesStep.class,
+				EditAllStrategiesStep.class,
+				
+				ThreatMatrixOverviewStep.class,
+				ThreatRatingWizardChooseBundle.class,
+				ThreatRatingWizardScopeStep.class,
+				ThreatRatingWizardSeverityStep.class,
+				ThreatRatingWizardIrreversibilityStep.class,
+				ThreatRatingWizardCheckBundleStep.class,
+				
 				EditAllStrategiesStep.class,
 				
 				MonitoringOverviewStep.class,
@@ -490,46 +525,6 @@ class StepTable extends Hashtable
 				BudgetWizardDemo.class, 
 				
 				ScheduleOverviewStep.class,
-
-				SummaryWizardOverviewStep.class,
-				SummaryWizardDefineTeamMembers.class,
-				SummaryWizardDefineProjectLeader.class,
-				SummaryWizardDefineProjecScope.class,
-				SummaryWizardDefineProjectVision.class,
-				
-				DiagramOverviewStep.class,
-				DiagramWizardProjectScopeStep.class,
-				DiagramWizardVisionStep.class,
-				DiagramWizardDefineTargetsStep.class,
-				DiagramWizardReviewAndModifyTargetsStep.class,
-				DescribeTargetStatusStep.class,
-				DiagramWizardIdentifyDirectThreatStep.class,
-				DiagramWizardLinkDirectThreatsToTargetsStep.class,
-				DiagramWizardIdentifyIndirectThreatStep.class,		
-				DiagramWizardConstructChainsStep.class,	
-				DiagramWizardReviewModelAndAdjustStep.class,		
-				SelectChainStep.class,		
-				DevelopDraftStrategiesStep.class,
-				RankDraftStrategiesStep.class,
-				EditAllStrategiesStep.class,
-				
-				ThreatMatrixOverviewStep.class,
-				ThreatRatingWizardChooseBundle.class,
-				ThreatRatingWizardScopeStep.class,
-				ThreatRatingWizardSeverityStep.class,
-				ThreatRatingWizardIrreversibilityStep.class,
-				ThreatRatingWizardCheckBundleStep.class,
-				
-				//????
-				StrategicOverviewStep.class,
-				StrategicPlanDevelopGoalStep.class,
-				//JumpActionStrategicPlanViewAllGoals.class,
-				
-				StrategicPlanViewAllGoals.class,
-				StrategicPlanDevelopObjectivesStep.class, 	
-				//StrategicPlanViewAllObjectives.class,
-				//     ActionJumpSelectChainStep *** confilic
-
 		};
 		
 		sequenceSteps(entries);
