@@ -73,12 +73,6 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 		throw new RuntimeException("Unknown value option: " + label);
 	}
 
-	public boolean save() throws Exception
-	{
-		getThreatRatingWizard().getView().setBundleValue(criterion, value);
-		return true;
-	}
-
 	public void setComponent(String name, JComponent component)
 	{
 		try
@@ -108,8 +102,8 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 		{
 			try
 			{
-				//TODO: Make hot value change here
 				setValue(valueBox.getSelectedItem().toString());
+				getThreatRatingWizard().getView().setBundleValue(criterion, value);
 			}
 			catch(Exception e)
 			{

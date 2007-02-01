@@ -234,28 +234,13 @@ public class WizardPanel extends JPanel
 		WizardControl control = entry.findControl(controlName);
 		jump(control.getStepName());
 	}
-	
-	//TODO: will go away when all wizards are converted, called by SkeletonWizardStep
-	public void next() throws Exception
-	{
-		control("Next");
-	}
-	
-	//TODO: will go away when all wizards are converted, called by SkeletonWizardStep
-	public void previous() throws Exception
-	{
-		control("Back");
-	}
 
-	//TODO: not used but need do to interface: will go away when all wizards are converted
-	public void setStep(int newStep) throws Exception
-	{
-	}
-	
+
 	public void setStep(Class newStep) throws Exception
 	{
 		setStep(newStep.getSimpleName());
 	}
+	
 	
 	public void setStep(String newStep) throws Exception
 	{
@@ -291,12 +276,7 @@ public class WizardPanel extends JPanel
 	{
 		return name.replaceAll(" ", "");
 	}
-	
-	//TODO: not used but need do to interface: will go away when all wizards are converted
-	public Class makeStepMarker(String stepName)
-	{
-		return null;
-	}
+
 	
 	public void refresh() throws Exception
 	{
@@ -329,11 +309,6 @@ public class WizardPanel extends JPanel
 		setMinimumSize(new Dimension(0, 0));
 	}
 	
-	//TODO: not used but need do to interface: will go away when all wizards are converted
-	public int getCurrentStep()
-	{
-		return 0;
-	}
 	
 	protected MainWindow mainWindow;
 	public String currentStepName;
@@ -367,10 +342,10 @@ class StepTable extends Hashtable
 		loadStep(NoProjectOverviewStep.class, viewName);
 		
 		WizardStepEntry stepEntry1 = loadStep(NoProjectWizardImportStep.class, viewName);
-		stepEntry1.loadControl("Back", NoProjectOverviewStep.class);
+		stepEntry1.loadBack(NoProjectOverviewStep.class);
 		
 		WizardStepEntry stepEntry2 = loadStep(NoProjectWizardProjectCreateStep.class, viewName);
-		stepEntry2.loadControl("Back", NoProjectOverviewStep.class);
+		stepEntry2.loadBack(NoProjectOverviewStep.class);
 	}
 	
 	private void loadBudgetSteps()

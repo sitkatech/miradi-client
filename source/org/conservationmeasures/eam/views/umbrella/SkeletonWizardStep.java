@@ -44,30 +44,11 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		return null;
 	}
 	
-	public boolean save() throws Exception
-	{
-		return true;
-	}
-	
 	public void buttonPressed(String buttonName)
 	{
 		try
 		{
-			//TODO: this mehod button press will becomm just a call to control(buttonName)
-			// ...the save will go way when put hot dropdowns in threatMatrx wizard. It is here only to support the old code
-			if(buttonName.indexOf("Next") >= 0)
-			{
-				if(!save())
-					return;
-				
-				getWizard().next();
-			}
-			else if(buttonName.indexOf("Back") >= 0)
-			{
-				getWizard().previous();
-			}
-			else
-				getWizard().control(buttonName);
+			getWizard().control(buttonName);
 		}
 		catch (Exception e)
 		{
