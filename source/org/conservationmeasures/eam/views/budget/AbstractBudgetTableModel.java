@@ -5,9 +5,16 @@
 */ 
 package org.conservationmeasures.eam.views.budget;
 
+import java.text.DecimalFormat;
+
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
+import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.utils.DateRange;
 
 abstract public class AbstractBudgetTableModel extends AbstractTableModel
 {
@@ -90,6 +97,81 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return row /= 2;
 	}
 	
+	public Object getCost(ProjectResource currentResource, DateRangeEffortList effortList, DateRange dateRange)
+	{
+		try
+		{
+			if (currentResource == null)
+				return "";
+			
+			String unit = getUnit(effortList, dateRange);
+			double units = convertStringToDouble(unit);
+			double costPerUnit = currentResource.getCostPerUnit();
+			return currencyFormatter.format(units * costPerUnit);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		return "";
+	}
+	
+	public String getUnit(DateRangeEffortList effortList, DateRange dateRange)
+	{
+		double units = 0.0;
+		try
+		{
+			units = effortList.getTotalUnitQuantity(dateRange);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		return decimalFormatter.format(units);
+	}
+	
+//	TODO this method should possibly be renamed and made available 
+	//for the whole app.
+	public static double convertStringToDouble(String raw)
+	{
+		if (raw.length() == 0)
+			return 0;
+		
+		double newDouble = 0;
+		try
+		{
+			 newDouble = new Double(raw).doubleValue();
+		}
+		catch (NumberFormatException e)
+		{
+			EAM.logException(e);
+		}
+		
+		return newDouble; 
+	}
+	
+	public Object getTotalUnits(Assignment assignment)
+	{
+		try
+		{
+			DateRange combinedDateRange = getCombinedDateRange();
+			double totalUnits = totalsCalculator.getTotalUnits(assignment, combinedDateRange);
+			return decimalFormatter.format(totalUnits);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		return "";
+	}
+
+	public DateRange getCombinedDateRange() throws Exception
+	{
+		return DateRange.combine(dateRanges[0], dateRanges[dateRanges.length - 1]);
+	}
+	
 	abstract public boolean isYearlyTotalColumn(int col);
 	
 	abstract public BaseId getAssignmentForRow(int row);
@@ -114,4 +196,8 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	
 	static final int TOTALS_COLUMN_COUNT = 2;
 	
+	DecimalFormat currencyFormatter;
+	DecimalFormat decimalFormatter;
+	DateRange[] dateRanges;
+	BudgetTotalsCalculator totalsCalculator;
 }

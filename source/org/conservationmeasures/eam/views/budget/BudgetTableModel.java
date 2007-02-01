@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.budget;
 
-import java.text.DecimalFormat;
-
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -125,29 +123,78 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 
 	public Object getValueAt(int row, int col)
 	{
+		//TODO remove comment when done - coverted
 		if (isResourceColumn(col))
-			return getCurrentResource(row);
+			return getCurrentResource(getAssignmentForRow(getCorrectedRow(row)));
 		
 		if (isLabelColumn(col))
 			return getResourceCellLabel(row, col);
 		
+		//TODO remove comment when done - coverted
 		if (isAccountingCodeColumn(col))
-			return getCurrentAccountingCode(row);
-		
+			return getCurrentAccountingCode(getAssignmentForRow(getCorrectedRow(row)));
+
+		//TODO remove comment when done - coverted
 		if (isFundingSourceColumn(col))
-			return getCurrentFundingSource(row);
+			return getCurrentFundingSource(getAssignmentForRow(getCorrectedRow(row)));
 		
+		//TODO remove comment when done - coverted
 		if (isCostColumn(col))
-			return getCost(row, col);
-		
-		if (isUnitsColumn(col))
-			return getUnit(row, col);
+		{
+			if (!isOdd(row))
+				return "";
 			
-		if (isUnitsTotalColumn(col))
-			return getTotalUnits(row);
+			try
+			{
+				final int BACK_ONE_ROW = 1;
+				DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row - BACK_ONE_ROW));
+				DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
+				ProjectResource currentResource = getCurrentResource(getAssignmentForRow(getCorrectedRow(row)));
+
+				return getCost(currentResource, effortList, dateRange);
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
 		
+		//TODO remove comment when done - coverted
+		if (isUnitsColumn(col))
+		{
+			if (isOdd(row))
+				return "";
+
+			DateRangeEffortList effortList;
+			try
+			{
+				effortList = getDateRangeEffortList(getCorrectedRow(row));
+				DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
+				return getUnit(effortList, dateRange);
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+		
+		//TODO remove comment when done - coverted			
+		if (isUnitsTotalColumn(col))
+		{
+			if (isOdd(row))
+				return "";
+			
+			return getTotalUnits(getAssignment(getCorrectedRow(row)));
+		}
+		
+		//TODO remove comment when done - coverted
 		if (isCostTotalsColumn(col))
-			return getTotalCost(row);
+		{
+			if (!isOdd(row))
+				return "";
+
+			return getTotalCost(getAssignment(getCorrectedRow(row)));
+		}
 		
 		return new String("");
 	}
@@ -171,7 +218,10 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		
 		if (isAccountingCodeColumn(col))
 		{
-			setAccountingCode(value, row);
+			AccountingCode aCode = (AccountingCode)value;
+			BaseId  assignmentId = getAssignmentForRow(row);
+
+			setAccountingCode(aCode, assignmentId);
 			return;
 		}
 		
@@ -185,30 +235,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			setUnits(value, row, covertToUnitsColumn(col));
 	}
 
-	private Object getCost(int row, int col)
-	{
-		try
-		{
-			if (!isOdd(row))
-				return "";
-
-			ProjectResource currentResource = getCurrentResource(row);
-			if (currentResource == null)
-				return "";
-
-			final int BACK_ONE_ROW = 1;
-			double units = convertStringToDouble(getUnit(row - BACK_ONE_ROW, col));
-			double costPerUnit = currentResource.getCostPerUnit();
-			return currencyFormatter.format(units * costPerUnit);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		
-		return "";
-	}
-
 	private int covertToUnitsColumn(int col)
 	{
 		return (col - (TOTAL_ROW_HEADER_COLUMN_COUNT)) / 2;
@@ -216,10 +242,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	
 	private String getResourceCellLabel(int row, int col)
 	{
-		if (isStaticLabelColum(col))
-			return getStaticCellLabel(row, col); 
-
-		ProjectResource resource = getCurrentResource(row);
+		ProjectResource resource = getCurrentResource(getAssignmentForRow(getCorrectedRow(row)));
 		if (resource  == null)
 			return "";
 		
@@ -240,43 +263,11 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return currencyFormatter.format(costPerUnit);
 	}
 
-	//TODO this method should possibly be renamed and made available 
-	//for the whole app.
-	public static double convertStringToDouble(String raw)
-	{
-		if (raw.length() == 0)
-			return 0;
-		
-		double newDouble = 0;
-		try
-		{
-			 newDouble = new Double(raw).doubleValue();
-		}
-		catch (NumberFormatException e)
-		{
-			EAM.logException(e);
-		}
-		
-		return newDouble; 
-	}
-
-	private String getStaticCellLabel(int row, int col)
-	{
-		if (isOdd(row))
-			return "Cost";
-		
-		return "Units";
-	}
-	
-	private String getTotalCost(int row)
-	{
-		if (!isOdd(row))
-			return "";
-		
+	private String getTotalCost(Assignment assignment)
+	{		
 		try
 		{
 			DateRange combinedDateRange = getCombinedDateRange();
-			Assignment assignment = getAssignment(getCorrectedRow(row));
 			double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
 			return currencyFormatter.format(totalCost);
 		}
@@ -287,49 +278,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return "";
 	}
 	
-	private Object getTotalUnits(int row)
-	{
-		if (isOdd(row))
-			return "";
-		try
-		{
-			DateRange combinedDateRange = getCombinedDateRange();
-			Assignment assignment = getAssignment(getCorrectedRow(row));
-			double totalUnits = totalsCalculator.getTotalUnits(assignment, combinedDateRange);
-			return decimalFormatter.format(totalUnits);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-		
-		return new String("");
-	}
-
-	private DateRange getCombinedDateRange() throws Exception
-	{
-		return DateRange.combine(dateRanges[0], dateRanges[dateRanges.length - 1]);
-	}
-
-	//FIXME budget code - dont return string just the value
-	public String getUnit(int row, int col)
-	{
-		if (isOdd(row))
-			return "";
-
-		double units = 0.0;
-		try
-		{
-			DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row));
-			units = effortList.getTotalUnitQuantity(dateRanges[covertToUnitsColumn(col)]);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		return decimalFormatter.format(units);
-	}
-
 	private DateRangeEffortList getDateRangeEffortList(int row) throws Exception
 	{
 		Assignment assignment = getAssignment(row);
@@ -360,9 +308,9 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return (Assignment)project.findObject(ObjectType.ASSIGNMENT, getAssignmentForRow(row));
 	}
 	
-	public Object getCurrentAccountingCode(int row)
+	public Object getCurrentAccountingCode(BaseId assignmentId)
 	{
-		BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
+		//BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE);
 		BaseId accountingId = new BaseId(stringId);
 		
@@ -370,9 +318,9 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return accountingCode;
 	}
 	
-	public Object getCurrentFundingSource(int row)
+	public Object getCurrentFundingSource(BaseId assignmentId)
 	{
-		BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
+		//BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE);
 		BaseId fundingId = new BaseId(stringId);
 		
@@ -380,9 +328,9 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return fundingSource;
 	}
 	
-	public ProjectResource getCurrentResource(int row)
+	public ProjectResource getCurrentResource(BaseId assignmentId)
 	{
-		BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
+		//BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
 		BaseId resourceId = new BaseId(stringId);
 		
@@ -454,14 +402,11 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		}
 	}
 	
-	public void setAccountingCode(Object value, int row)
+	public void setAccountingCode(AccountingCode aCode, BaseId  assignmentId)
 	{
 		try
 		{
-			AccountingCode aCode = (AccountingCode)value;
 			BaseId aCodeId = aCode.getId();
-			
-			BaseId  assignmentId = getAssignmentForRow(row);
 			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE, aCodeId.toString());
 			project.executeCommand(command);
 		}
@@ -536,17 +481,9 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	{
 		return col == getAccountingCodeColumnIndex();
 	}
-
-	
-	
-	DecimalFormat currencyFormatter;
-	DecimalFormat decimalFormatter;
 	
 	Project project;
-	DateRange[] dateRanges;
-	
 	Task task;
-	BudgetTotalsCalculator totalsCalculator;
 	IdList assignmentIdList;
 	
 	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;
