@@ -63,11 +63,7 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 			}
 		}
 	}
-	
-	public void valueChanged(String name, String value)
-	{
-	}
-	
+
 
 	public JPopupMenu getRightClickMenu(Actions actions)
 	{
