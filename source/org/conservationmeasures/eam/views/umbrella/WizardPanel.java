@@ -525,8 +525,8 @@ class StepTable extends Hashtable
 	{
 		for (int i=0; i<=entries.length-2; ++i)
 		{
-			findStep(entries[i]).loadControl("Next", entries[i+1]);
-			findStep(entries[i+1]).loadControl("Back", entries[i]);
+			findStep(entries[i]).loadNext(entries[i+1]);
+			findStep(entries[i+1]).loadBack(entries[i]);
 		}
 	}
 	
