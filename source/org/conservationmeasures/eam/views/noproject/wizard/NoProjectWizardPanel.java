@@ -34,12 +34,6 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	public NoProjectWizardPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
-		mainWindow = mainWindowToUse;
-		WELCOME = addStep(new NoProjectWizardWelcomeStep(this));
-		IMPORT = addStep(new NoProjectWizardImportStep(this));
-		CREATE =addStep(new NoProjectWizardProjectCreateStep(this));
-
-		setStep(WELCOME);
 	}
 
 	public void linkClicked(String linkDescription)
@@ -147,7 +141,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		{
 			if(buttonName.equals("NewProject"))
 			{
-				setStep(CREATE);
+				setStep(NoProjectWizardProjectCreateStep.class);
 			}
 			else if(buttonName.equals("CreateProject"))
 			{
@@ -155,7 +149,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 			}
 			else if(buttonName.equals("Import"))
 			{
-				setStep(IMPORT);
+				setStep(NoProjectWizardImportStep.class);
 			}
 			else if(buttonName.equals("ImportZip"))
 			{
@@ -167,17 +161,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 				EAMAction action = getMainWindow().getActions().get(ActionImportTncCapWorkbook.class);
 				action.doAction();
 			}
-			else if(buttonName.indexOf("Next") >= 0)
-			{
-				next();
-			}
-			else if(buttonName.indexOf("Back") >= 0)
-			{
-				if (getCurrentStep() == CREATE)
-					setStep(WELCOME);
-				else
-					previous();
-			}
+			else control(buttonName);
 		}
 		catch(Exception e)
 		{
@@ -224,11 +208,6 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		refresh();
 	}
 
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-
 	JTextComponent newProjectNameField;
 	
 	public static final String OPEN_PREFIX = "OPEN:";
@@ -238,11 +217,5 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	public static final String EXPORT_PREFIX = "EXPORT:";
 	
 	public static final String DEFINITION_PREFIX = "Definition:";
-
-	MainWindow mainWindow;
-	int WELCOME;
-	int IMPORT;
-	int CREATE;
-
 
 }

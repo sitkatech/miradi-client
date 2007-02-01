@@ -6,13 +6,12 @@
 package org.conservationmeasures.eam.views.diagram.wizard;
 
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.umbrella.NewWizardPanel;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
-public class DiagramWizardPanel extends NewWizardPanel
+public class DiagramWizardPanel extends WizardPanel
 {
 	public DiagramWizardPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-
 	}
 }

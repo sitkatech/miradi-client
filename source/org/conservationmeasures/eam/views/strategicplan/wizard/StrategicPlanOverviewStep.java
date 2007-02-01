@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.strategicplan.wizard;
 import org.conservationmeasures.eam.views.umbrella.IWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class StrategicOverviewStep extends WizardStep
+public class StrategicPlanOverviewStep extends WizardStep
 {
-	public StrategicOverviewStep(IWizardPanel wizardToUse)
+	public StrategicPlanOverviewStep(IWizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}

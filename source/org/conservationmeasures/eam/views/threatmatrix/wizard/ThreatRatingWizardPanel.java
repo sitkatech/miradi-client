@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.threatmatrix.wizard;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
-import org.conservationmeasures.eam.views.umbrella.NewWizardPanel;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
-public class ThreatRatingWizardPanel extends NewWizardPanel
+public class ThreatRatingWizardPanel extends WizardPanel
 {
 	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse) throws Exception
 	{

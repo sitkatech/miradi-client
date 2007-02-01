@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class NoProjectWizardWelcomeStep extends NoProjectWizardStep
+public class NoProjectOverviewStep extends NoProjectWizardStep
 {
-	public NoProjectWizardWelcomeStep(NoProjectWizardPanel wizardToUse) throws Exception
+	public NoProjectOverviewStep(NoProjectWizardPanel wizardToUse) throws Exception
 	{
 		super(wizardToUse);
 		

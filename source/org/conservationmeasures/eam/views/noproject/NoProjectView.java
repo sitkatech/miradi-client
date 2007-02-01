@@ -15,15 +15,13 @@ public class NoProjectView extends UmbrellaView
 	public NoProjectView(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-		
-		wizard = new NoProjectWizardPanel(mainWindow);
-		
 		setToolBar(new NoProjectToolBar(getActions()));
 	}
 	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
+		wizard = new NoProjectWizardPanel(getMainWindow());
 		wizard.refresh();
 		add(wizard);
 	}
