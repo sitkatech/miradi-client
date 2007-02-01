@@ -945,7 +945,7 @@ public class Project
 	public static final String WORK_PLAN_VIEW_NAME = "Work Plan";
 	public static final String BUDGET_VIEW_NAME = "Financial";
 	public static final String THREAT_MATRIX_VIEW_NAME = "ThreatMatrix";
-	public static final String NO_PROJECT_VIEW_NAME = "";
+	public static final String NO_PROJECT_VIEW_NAME = "NoProject";
 	public static final String DIAGRAM_VIEW_NAME = "Diagram";
 	public static final String SUMMARY_VIEW_NAME = "Summary";
 
