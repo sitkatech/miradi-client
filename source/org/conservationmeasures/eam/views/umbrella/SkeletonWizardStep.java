@@ -58,6 +58,15 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	public void linkClicked(String linkDescription)
 	{
+		if (linkDescription.startsWith("Definition:"))
+		{
+			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
+			EAM.okDialog(def.term, new String[] {def.definition});
+		} 
+		else if(linkDescription.startsWith("View:"))
+		{
+			buttonPressed(linkDescription);
+		}
 	}
 
 	public JPopupMenu getRightClickMenu(String url)

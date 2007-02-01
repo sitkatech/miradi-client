@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
@@ -44,26 +43,6 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 		validate();
 	}
 	
-	public void linkClicked(String linkDescription)
-	{
-		if (linkDescription.startsWith("Definition:"))
-		{
-			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
-			EAM.okDialog(def.term, new String[] {def.definition});
-		} 
-		else if(linkDescription.startsWith("View:"))
-		{
-			try
-			{
-				getWizard().control(linkDescription);
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
-	}
-
 
 	public JPopupMenu getRightClickMenu(Actions actions)
 	{
