@@ -258,23 +258,23 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		
 		WizardStepEntry entryNew = stepTable.findStep(newStep);
 		String viewNameNew = entryNew.getViewName();
+		SkeletonWizardStep stepClass = stepTable.findStep(newStep).getStepClass();
 		
+		//FIXME: view switch should not happen here
 		if (!viewNameNew.equals(viewNameCur))
 		{
 			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
-			EAM.logWarning("During wizard migration the target step may not be correclty opened:" + newStep);
-			mainWindow.getCurrentView().jump(newStep);
+			mainWindow.getCurrentView().jump(stepClass.getClass());
+			return;
 		}
-		else
+
+		if (stepClass!=null)
 		{
-			SkeletonWizardStep stepClass = stepTable.findStep(newStep).getStepClass();
-			if (stepClass!=null)
-			{
-				currentStepName = newStep;
-				stepClass.refresh();
-				setContents(stepClass);
-			}
+			currentStepName = newStep;
+			stepClass.refresh();
+			setContents(stepClass);
 		}
+
 	}
 
 	private String removeSpaces(String name)
