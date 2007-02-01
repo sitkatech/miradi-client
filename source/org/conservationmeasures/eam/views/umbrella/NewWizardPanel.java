@@ -373,11 +373,8 @@ class StepTable extends Hashtable
 		final String viewName = StrategicPlanView.getViewName();
 		
 		loadStep(StrategicOverviewStep.class, viewName);
-		//JumpActionStrategicPlanDevelopGoalStep
 		loadStep(StrategicPlanViewAllGoals.class, viewName);
-		//ActionJumpStrategicPlanDevelopObjectivesStep
 		loadStep(StrategicPlanViewAllObjectives.class, viewName);
-		//ActionJumpSelectChainStep *** confilic
 	}
 	
 	private void loadScheduleSteps()
@@ -437,13 +434,8 @@ class StepTable extends Hashtable
 		loadStep(DevelopDraftStrategiesStep.class, viewName);
 		loadStep(RankDraftStrategiesStep.class, viewName);
 		loadStep(EditAllStrategiesStep.class, viewName);
-		
 		loadStep(StrategicPlanDevelopGoalStep.class, viewName);
-		//JumpActionStrategicPlanViewAllGoals.class);
-		
 		loadStep(StrategicPlanDevelopObjectivesStep.class, viewName);		
-		//JumpActionStrategicPlanViewAllObjectives.class);
-		
 		loadStep(MonitoringWizardFocusStep.class, viewName);		
 		loadStep(MonitoringWizardDefineIndicatorsStep.class, viewName);
 	}
@@ -454,6 +446,7 @@ class StepTable extends Hashtable
 		final String viewName = ThreatMatrixView.getViewName();
 		
 		WizardStepEntry stepEntry1 = loadStep(ThreatMatrixOverviewStep.class, viewName);
+		//TODO: View:Diagram...should be Step:StepName or support both
 		stepEntry1.loadControl("View:Diagram", DiagramOverviewStep.class);
 
 		WizardStepEntry stepEntry2 = loadStep(ThreatRatingWizardChooseBundle.class, viewName);
@@ -526,6 +519,16 @@ class StepTable extends Hashtable
 				ThreatRatingWizardSeverityStep.class,
 				ThreatRatingWizardIrreversibilityStep.class,
 				ThreatRatingWizardCheckBundleStep.class,
+				
+				//????
+				StrategicOverviewStep.class,
+				StrategicPlanDevelopGoalStep.class,
+				//JumpActionStrategicPlanViewAllGoals.class,
+				
+				StrategicPlanViewAllGoals.class,
+				StrategicPlanDevelopObjectivesStep.class, 	
+				//StrategicPlanViewAllObjectives.class,
+				//     ActionJumpSelectChainStep *** confilic
 
 		};
 		
@@ -582,22 +585,14 @@ class WizardStepEntry
 		entries.put(controlName, new WizardControl(controlName, controlStep.getSimpleName()));
 	}
 	
-	void loadNextBack(Class controlStepNameNext , Class controlStepBack)
-	{
-		if (controlStepNameNext!=null)
-			entries.put("Next", new WizardControl("Next", controlStepNameNext.getSimpleName()));
-		if (controlStepBack!=null)
-			entries.put("Back", new WizardControl("Back", controlStepBack.getSimpleName()));
-	}
-	
 	void loadNext(Class controlStep)
 	{
-		entries.put("Next", new WizardControl("Next", controlStep.getSimpleName()));
+		loadControl("Next", controlStep);
 	}
 	
 	void loadBack(Class controlStep)
 	{
-		entries.put("Back", new WizardControl("Next", controlStep.getSimpleName()));
+		loadControl("Back", controlStep);
 	}
 
 	
