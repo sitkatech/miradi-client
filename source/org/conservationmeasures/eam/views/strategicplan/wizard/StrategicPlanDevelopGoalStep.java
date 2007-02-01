@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.strategicplan.wizard;
 
-import org.conservationmeasures.eam.views.umbrella.IWizardPanel;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
 public class StrategicPlanDevelopGoalStep extends WizardStep
 {
-	public StrategicPlanDevelopGoalStep(IWizardPanel wizardToUse)
+	public StrategicPlanDevelopGoalStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}

@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.wizard;
 
-import org.conservationmeasures.eam.views.umbrella.IWizardPanel;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
 public class DiagramWizardTargetStep extends WizardStep
 {
-	public DiagramWizardTargetStep(IWizardPanel panelToUse)
+	public DiagramWizardTargetStep(WizardPanel panelToUse)
 	{
 		super(panelToUse);
 	}

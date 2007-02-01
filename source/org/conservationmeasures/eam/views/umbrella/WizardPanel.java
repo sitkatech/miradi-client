@@ -42,24 +42,24 @@ import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardEdit
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardSelectMethodsStep;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
+import org.conservationmeasures.eam.views.noproject.wizard.NoProjectOverviewStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardImportStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardPanel;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardProjectCreateStep;
-import org.conservationmeasures.eam.views.noproject.wizard.NoProjectOverviewStep;
 import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.views.schedule.wizard.ScheduleOverviewStep;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
-import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanOverviewStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopObjectivesStep;
+import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanOverviewStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllGoals;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllObjectives;
 import org.conservationmeasures.eam.views.summary.SummaryView;
+import org.conservationmeasures.eam.views.summary.wizard.SummaryOverviewStep;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjecScope;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineTeamMembers;
-import org.conservationmeasures.eam.views.summary.wizard.SummaryOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
@@ -76,7 +76,7 @@ import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopActivit
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanOverviewStep;
 
-public class WizardPanel extends JPanel implements IWizardPanel
+public class WizardPanel extends JPanel
 {
 	public WizardPanel(MainWindow mainWindowToUse)
 	{
@@ -232,7 +232,7 @@ public class WizardPanel extends JPanel implements IWizardPanel
 	{
 		WizardStepEntry entry = stepTable.findStep(currentStepName);
 		WizardControl control = entry.findControl(controlName);
-		setStep(control.getStepName());
+		jump(control.getStepName());
 	}
 	
 	//TODO: will go away when all wizards are converted, called by SkeletonWizardStep

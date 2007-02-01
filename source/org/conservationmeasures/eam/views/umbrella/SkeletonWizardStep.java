@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
 {
-	public SkeletonWizardStep(IWizardPanel wizardToUse)
+	public SkeletonWizardStep(WizardPanel wizardToUse)
 	{
 		super(new BorderLayout());
 		wizard = wizardToUse;
@@ -25,7 +25,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	abstract public void refresh() throws Exception;
 
-	public IWizardPanel getWizard()
+	public WizardPanel getWizard()
 	{
 		return wizard;
 	}
@@ -94,5 +94,5 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 
 
 
-	private IWizardPanel wizard;
+	private WizardPanel wizard;
 }

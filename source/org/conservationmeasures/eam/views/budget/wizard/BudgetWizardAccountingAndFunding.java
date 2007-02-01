@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.budget.wizard;
 
-import org.conservationmeasures.eam.views.umbrella.IWizardPanel;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
 public class BudgetWizardAccountingAndFunding extends WizardStep
 {
-	public BudgetWizardAccountingAndFunding(IWizardPanel wizardToUse)
+	public BudgetWizardAccountingAndFunding(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}

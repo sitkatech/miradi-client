@@ -26,7 +26,7 @@ import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
 public class WizardStep extends SkeletonWizardStep implements MouseListener
 {
-	public WizardStep(IWizardPanel wizardToUse)
+	public WizardStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 
