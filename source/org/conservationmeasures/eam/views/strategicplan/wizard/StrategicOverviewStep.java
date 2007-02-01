@@ -3,22 +3,22 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.schedule.wizard;
+package org.conservationmeasures.eam.views.strategicplan.wizard;
 
 import org.conservationmeasures.eam.views.umbrella.IWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class ScheduleWizardWelcomeStep extends WizardStep
+public class StrategicOverviewStep extends WizardStep
 {
-	public ScheduleWizardWelcomeStep(IWizardPanel wizardToUse)
+	public StrategicOverviewStep(IWizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
-
+	
 	public String getResourceFileName()
 	{
-		return HTML_FILENAME;
+		return HTML_FILE_NAME;
 	}
-
-	String HTML_FILENAME = "WelcomeStep.html";
+	
+	private static final String HTML_FILE_NAME = "HowToConstructStratPlan.html";
 }

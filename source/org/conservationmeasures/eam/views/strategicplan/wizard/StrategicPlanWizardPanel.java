@@ -23,7 +23,7 @@ public class StrategicPlanWizardPanel extends WizardPanel
 		super(mainWindow);
 		actions  = mainWindow.getActions();
 		
-		HOW_TO_CONSTRUCT_STRAT_PLAN = addStep(new StrategicPlanHowToConstructStep(this));
+		HOW_TO_CONSTRUCT_STRAT_PLAN = addStep(new StrategicOverviewStep(this));
 		VIEW_ALL_GOALS = addStep(new StrategicPlanViewAllGoals(this));
 		VIEW_ALL_OBJECTIVES = addStep(new StrategicPlanViewAllObjectives(this));
 		setStep(HOW_TO_CONSTRUCT_STRAT_PLAN );

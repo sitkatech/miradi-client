@@ -14,6 +14,11 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.budget.BudgetView;
+import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardAccountingAndFunding;
+import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardBudgetDetail;
+import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardDemo;
+import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardDevelopBudget;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.wizard.DescribeTargetStatusStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DevelopDraftStrategiesStep;
@@ -30,14 +35,27 @@ import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardVisionStep
 import org.conservationmeasures.eam.views.diagram.wizard.EditAllStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.SelectChainStep;
+import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
+import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardSelectMethodsStep;
+import org.conservationmeasures.eam.views.noproject.NoProjectView;
+import org.conservationmeasures.eam.views.schedule.ScheduleView;
+import org.conservationmeasures.eam.views.schedule.wizard.ScheduleOverviewStep;
+import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
+import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicOverviewStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopObjectivesStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllGoals;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllObjectives;
+import org.conservationmeasures.eam.views.summary.SummaryView;
+import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjecScope;
+import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectLeader;
+import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectVision;
+import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineTeamMembers;
+import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
@@ -47,6 +65,12 @@ import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizard
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardSeverityStep;
+import org.conservationmeasures.eam.views.workplan.WorkPlanView;
+import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanAssignResourcesStep;
+import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanCreateResourcesStep;
+import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopActivitiesAndTasksStep;
+import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopMethodsAndTasksStep;
+import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanOverviewStep;
 
 public class NewWizardPanel extends JPanel implements IWizardPanel
 {
@@ -62,12 +86,35 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 	{
 		try
 		{
-			if (mainWindow.getCurrentView().cardName().equals(ThreatMatrixView.getViewName()))
+			String currentView = mainWindow.getCurrentView().cardName();
+			
+			if (currentView.equals(ThreatMatrixView.getViewName()))
 				setupStepsThreatMatrixView();
 				
-			if (mainWindow.getCurrentView().cardName().equals(DiagramView.getViewName()))
+			if (currentView.equals(DiagramView.getViewName()))
 				setupStepsDiagramView();
+			
+			if (currentView.equals(MonitoringView.getViewName()))
+				setupStepsMonitoringView();
+			
+			if (currentView.equals(WorkPlanView.getViewName()))
+				setupWorkPlanView();
+			
+			if (currentView.equals(SummaryView.getViewName()))
+				setupStepsSummaryView();
 				
+			if (currentView.equals(ScheduleView.getViewName()))
+				setupScheduleView();
+			
+			if (currentView.equals(StrategicPlanView.getViewName()))
+				setupStrategicPlanView();
+			
+			if (currentView.equals(BudgetView.getViewName()))
+				setupBudgetView();
+			
+			if (currentView.equals(NoProjectView.getViewName()))
+				setupNoProjectView();
+			
 			setStep("");
 		}
 		catch (Exception e)
@@ -76,7 +123,42 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 			EAM.logException(e);
 		}
 	}
+	
+	private void setupNoProjectView()
+	{
+		//addStep(new NoProjectWizardWelcomeStep(this));
+		//addStep(new NoProjectWizardImportStep(this));
+		//addStep(new NoProjectWizardProjectCreateStep(this));
+	}
+	
+	private void setupBudgetView()
+	{
+		addStep(new BudgetWizardDevelopBudget(this));
+		addStep(new BudgetWizardAccountingAndFunding(this));
+		addStep(new BudgetWizardBudgetDetail(this));
+		addStep(new BudgetWizardDemo(this));
+	}
+	
+	private void setupStrategicPlanView()
+	{
+		addStep(new StrategicOverviewStep(this));
+		addStep(new StrategicPlanViewAllGoals(this));
+		addStep(new StrategicPlanViewAllObjectives(this));
+	}
+	
+	private void setupScheduleView()
+	{
+		addStep(new ScheduleOverviewStep(this));
+	}
 
+	private void setupStepsSummaryView()
+	{
+		addStep(new SummaryWizardOverviewStep(this));
+		addStep(new SummaryWizardDefineTeamMembers(this));
+		addStep(new SummaryWizardDefineProjectLeader(this));
+		addStep(new SummaryWizardDefineProjecScope(this));
+		addStep(new SummaryWizardDefineProjectVision(this));
+	}
 	
 	private void setupStepsDiagramView() throws Exception
 	{
@@ -112,6 +194,21 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 		addStep(new ThreatRatingWizardCheckTotalsStep((ThreatRatingWizardPanel)this));
 	}
 
+	public void setupStepsMonitoringView()
+	{
+		addStep(new MonitoringOverviewStep(this));
+		addStep(new MonitoringWizardEditIndicatorsStep(this));
+	}
+	
+	public void setupWorkPlanView()
+	{
+		addStep(new WorkPlanOverviewStep(this));
+		addStep(new MonitoringWizardSelectMethodsStep(this));
+		addStep(new WorkPlanDevelopActivitiesAndTasksStep(this));
+		addStep(new WorkPlanDevelopMethodsAndTasksStep(this));
+		addStep(new WorkPlanCreateResourcesStep(this));
+		addStep(new WorkPlanAssignResourcesStep(this));
+	}
 	
 	public void addStep(WizardStep step)
 	{
@@ -154,7 +251,7 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 	private void setStep(String newStep) throws Exception
 	{
 		if (newStep.equals(""))
-			newStep = currentStepName = mainWindow.getCurrentView().cardName() + "OverviewStep";
+			newStep = currentStepName = removeSpaces(mainWindow.getCurrentView().cardName()) + "OverviewStep";
 		
 		WizardStepEntry entryCur = stepTable.findStep(currentStepName);
 		String viewNameCur = entryCur.getViewName();
@@ -178,6 +275,11 @@ public class NewWizardPanel extends JPanel implements IWizardPanel
 				setContents(stepClass);
 			}
 		}
+	}
+
+	private String removeSpaces(String name)
+	{
+		return name.replaceAll(" ", "");
 	}
 	
 	//TODO: not used but need do to interface: will go away when all wizards are converted
@@ -237,8 +339,83 @@ class StepTable extends Hashtable
 	{
 		loadDigramViewSteps();
 		loadThreatMatrixViewSteps();
+		loadMonitoringViewSteps();
+		loadWorkPlanSteps();
+		loadSummarySteps();
+		loadScheduleSteps();
+		loadStrategicPlanSteps();
+		loadBudgetSteps();
+		loadNoProjectSteps();
 		
 		setUpSequences();
+	}
+	
+	private void loadNoProjectSteps()
+	{
+		//addStep(new NoProjectWizardWelcomeStep(this));
+		//addStep(new NoProjectWizardImportStep(this));
+		//addStep(new NoProjectWizardProjectCreateStep(this));
+		//what is the next flow for no project?
+	}
+	
+	private void loadBudgetSteps()
+	{
+		final String viewName = BudgetView.getViewName();
+		
+		loadStep(BudgetWizardDevelopBudget.class, viewName);
+		loadStep(BudgetWizardAccountingAndFunding.class, viewName);
+		loadStep(BudgetWizardBudgetDetail.class, viewName);
+		loadStep(BudgetWizardDemo.class, viewName);
+	}
+	
+	private void loadStrategicPlanSteps()
+	{
+		final String viewName = StrategicPlanView.getViewName();
+		
+		loadStep(StrategicOverviewStep.class, viewName);
+		//JumpActionStrategicPlanDevelopGoalStep
+		loadStep(StrategicPlanViewAllGoals.class, viewName);
+		//ActionJumpStrategicPlanDevelopObjectivesStep
+		loadStep(StrategicPlanViewAllObjectives.class, viewName);
+		//ActionJumpSelectChainStep *** confilic
+	}
+	
+	private void loadScheduleSteps()
+	{
+		final String viewName = ScheduleView.getViewName();
+		
+		loadStep(ScheduleOverviewStep.class, viewName);
+	}
+	
+	public void loadSummarySteps()
+	{
+		final String viewName = SummaryView.getViewName();
+		
+		loadStep(SummaryWizardOverviewStep.class, viewName);
+		loadStep(SummaryWizardDefineTeamMembers.class, viewName);
+		loadStep(SummaryWizardDefineProjectLeader.class, viewName);;
+		loadStep(SummaryWizardDefineProjecScope.class, viewName);
+		loadStep(SummaryWizardDefineProjectVision.class, viewName);
+	}
+	
+	public void loadWorkPlanSteps()
+	{
+		final String viewName = WorkPlanView.getViewName();
+		
+		loadStep(WorkPlanOverviewStep.class, viewName);
+		loadStep(MonitoringWizardSelectMethodsStep.class, viewName);;
+		loadStep(WorkPlanDevelopActivitiesAndTasksStep.class, viewName);
+		loadStep(WorkPlanDevelopMethodsAndTasksStep.class, viewName);
+		loadStep(WorkPlanCreateResourcesStep.class, viewName);
+		loadStep(WorkPlanAssignResourcesStep.class, viewName);
+	}
+	
+	public void loadMonitoringViewSteps()
+	{		
+		final String viewName = MonitoringView.getViewName();
+	
+		loadStep(MonitoringOverviewStep.class, viewName);
+		loadStep(MonitoringWizardEditIndicatorsStep.class, viewName);
 	}
 	
 	public void loadDigramViewSteps()
@@ -259,22 +436,16 @@ class StepTable extends Hashtable
 		loadStep(SelectChainStep.class, viewName);		
 		loadStep(DevelopDraftStrategiesStep.class, viewName);
 		loadStep(RankDraftStrategiesStep.class, viewName);
+		loadStep(EditAllStrategiesStep.class, viewName);
 		
-		//FIXME: there is a next seq break here and in subsequent steps
-		WizardStepEntry stepEntry1  = loadStep(EditAllStrategiesStep.class, viewName);
-		stepEntry1.loadNext(MonitoringOverviewStep.class);
+		loadStep(StrategicPlanDevelopGoalStep.class, viewName);
+		//JumpActionStrategicPlanViewAllGoals.class);
 		
-		WizardStepEntry stepEntry2  = loadStep(StrategicPlanDevelopGoalStep.class, viewName);
-		stepEntry2.loadNext(StrategicPlanViewAllGoals.class);
+		loadStep(StrategicPlanDevelopObjectivesStep.class, viewName);		
+		//JumpActionStrategicPlanViewAllObjectives.class);
 		
-		WizardStepEntry stepEntry3 = loadStep(StrategicPlanDevelopObjectivesStep.class, viewName);		
-		stepEntry3.loadNext(StrategicPlanViewAllObjectives.class);
-		
-		WizardStepEntry stepEntry4 = loadStep(MonitoringWizardFocusStep.class, viewName);		
-		stepEntry4.loadNext(MonitoringWizardDefineIndicatorsStep.class);
-		
-		WizardStepEntry stepEntry5 =  loadStep(MonitoringWizardDefineIndicatorsStep.class, viewName);
-		stepEntry5.loadNext(MonitoringWizardEditIndicatorsStep.class);
+		loadStep(MonitoringWizardFocusStep.class, viewName);		
+		loadStep(MonitoringWizardDefineIndicatorsStep.class, viewName);
 	}
 
 
@@ -292,12 +463,12 @@ class StepTable extends Hashtable
 		loadStep(ThreatRatingWizardSeverityStep.class, viewName);
 		loadStep(ThreatRatingWizardIrreversibilityStep.class, viewName);
 		
-		//FIXME: The following steps have incorrect next steps : need to reslove
+
 		WizardStepEntry stepEntry3 = loadStep(ThreatRatingWizardCheckBundleStep.class, viewName);
-		stepEntry3.loadNext(ThreatRatingWizardChooseBundle.class);
+		stepEntry3.loadNext(ThreatRatingWizardChooseBundle.class); // next in conflict
 
 		WizardStepEntry stepEntry4 = loadStep(ThreatRatingWizardCheckTotalsStep.class, viewName);
-		stepEntry4.loadNext(ThreatMatrixOverviewStep.class);
+		stepEntry4.loadNext(ThreatMatrixOverviewStep.class); // next in conflict
 	}
 
 
@@ -305,6 +476,34 @@ class StepTable extends Hashtable
 	{
 		Class[] entries = 
 		{
+				EditAllStrategiesStep.class,
+				
+				MonitoringOverviewStep.class,
+				MonitoringWizardFocusStep.class,
+				MonitoringWizardDefineIndicatorsStep.class,
+				
+				MonitoringWizardEditIndicatorsStep.class,
+				
+				WorkPlanOverviewStep.class,
+				MonitoringWizardSelectMethodsStep.class,
+				WorkPlanDevelopActivitiesAndTasksStep.class,
+				WorkPlanDevelopMethodsAndTasksStep.class,
+				WorkPlanCreateResourcesStep.class,
+				WorkPlanAssignResourcesStep.class,
+				
+				BudgetWizardDevelopBudget.class, 
+				BudgetWizardAccountingAndFunding.class,
+				BudgetWizardBudgetDetail.class,
+				BudgetWizardDemo.class, 
+				
+				ScheduleOverviewStep.class,
+
+				SummaryWizardOverviewStep.class,
+				SummaryWizardDefineTeamMembers.class,
+				SummaryWizardDefineProjectLeader.class,
+				SummaryWizardDefineProjecScope.class,
+				SummaryWizardDefineProjectVision.class,
+				
 				DiagramOverviewStep.class,
 				DiagramWizardProjectScopeStep.class,
 				DiagramWizardVisionStep.class,
@@ -327,6 +526,7 @@ class StepTable extends Hashtable
 				ThreatRatingWizardSeverityStep.class,
 				ThreatRatingWizardIrreversibilityStep.class,
 				ThreatRatingWizardCheckBundleStep.class,
+
 		};
 		
 		sequenceSteps(entries);
@@ -335,7 +535,7 @@ class StepTable extends Hashtable
 
 	public void sequenceSteps(Class[] entries)
 	{
-		for (int i=0; i<entries.length-2; ++i)
+		for (int i=0; i<=entries.length-2; ++i)
 		{
 			findStep(entries[i]).loadControl("Next", entries[i+1]);
 			findStep(entries[i+1]).loadControl("Back", entries[i]);
