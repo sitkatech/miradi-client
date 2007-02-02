@@ -71,7 +71,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		}
 		catch (Exception e)
 		{
-			String body = EAM.text("Wizard load of control" + controlName+ ") failed");
+			String body = EAM.text("Wizard load of control failed:") + controlName;
 			EAM.errorDialog(body);
 			EAM.logException(e);
 		}

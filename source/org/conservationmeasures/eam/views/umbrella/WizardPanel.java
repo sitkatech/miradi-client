@@ -124,7 +124,7 @@ public class WizardPanel extends JPanel
 		}
 		catch (Exception e)
 		{
-			String body = EAM.text("Wizard load failed for view(" + view.cardName() + ")");
+			String body = EAM.text("Wizard load failed for view: ") + view.cardName();
 			EAM.errorDialog(body);
 			EAM.logError(body);
 			EAM.logException(e);
