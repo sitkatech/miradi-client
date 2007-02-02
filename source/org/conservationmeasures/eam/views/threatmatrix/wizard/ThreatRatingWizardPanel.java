@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
@@ -12,11 +13,18 @@ import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class ThreatRatingWizardPanel extends WizardPanel
 {
-	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse) throws Exception
+	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse)
 	{
-		super(viewToUse.getMainWindow());
+		super(viewToUse.getMainWindow(), viewToUse);
 		view = viewToUse;
-		selectBundle(null);
+		try
+		{
+			selectBundle(null);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception

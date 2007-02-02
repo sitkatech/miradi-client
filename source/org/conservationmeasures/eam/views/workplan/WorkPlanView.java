@@ -44,6 +44,7 @@ public class WorkPlanView extends TabbedView
 		setToolBar(new WorkPlanToolBar(mainWindowToUse.getActions()));
 		addWorkPlanDoersToMap();
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
+		wizardPanel = new WorkPlanWizardPanel(this);
 	}
 
 	public String cardName() 
@@ -73,7 +74,7 @@ public class WorkPlanView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		wizardPanel =  new WorkPlanWizardPanel(getMainWindow());
+
 		return wizardPanel;
 	}
 	

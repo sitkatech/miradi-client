@@ -45,7 +45,6 @@ public class ThreatMatrixView extends UmbrellaView
 		super(mainWindowToUse);
 		
 		addThreatMatrixiewDoersToMap();
-		
 		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions()));
 	}
 

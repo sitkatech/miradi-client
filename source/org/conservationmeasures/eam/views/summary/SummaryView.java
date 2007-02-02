@@ -32,8 +32,8 @@ public class SummaryView extends TabbedView
 	{
 		super(mainWindowToUse);
 		setToolBar(new SummaryToolBar(mainWindowToUse.getActions()));
-		
 		addSummaryDoersToMap();
+		wizardPanel = new SummaryWizardPanel(this);
 	}
 
 	public String cardName() 
@@ -48,7 +48,6 @@ public class SummaryView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception 
 	{
-		wizardPanel = new SummaryWizardPanel(getMainWindow());
 		return wizardPanel;
 	}
 		

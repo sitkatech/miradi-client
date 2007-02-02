@@ -78,11 +78,12 @@ import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanOverviewStep;
 
 public class WizardPanel extends JPanel
 {
-	public WizardPanel(MainWindow mainWindowToUse)
+	public WizardPanel(MainWindow mainWindowToUse, UmbrellaView viewToUse)
 	{
 		super(new BorderLayout());
 		mainWindow = mainWindowToUse;
 		setFocusCycleRoot(true);
+		view = viewToUse;
 		setupSteps();
 	}
 
@@ -90,7 +91,7 @@ public class WizardPanel extends JPanel
 	{
 		try
 		{
-			String currentView = mainWindow.getCurrentView().cardName();
+			String currentView = view.cardName();
 			
 			if (currentView.equals(ThreatMatrixView.getViewName()))
 				addThreatMatrixViewSteps();
@@ -246,7 +247,7 @@ public class WizardPanel extends JPanel
 	{
 		if (newStep.equals(""))
 		{
-			newStep = removeSpaces(mainWindow.getCurrentView().cardName()) + "OverviewStep";
+			newStep = removeSpaces(view.cardName()) + "OverviewStep";
 			currentStepName = newStep;
 		}
 		
@@ -313,6 +314,7 @@ public class WizardPanel extends JPanel
 	}
 	
 	
+	protected UmbrellaView view;
 	protected MainWindow mainWindow;
 	public String currentStepName;
 	//TODO: this should not be a static but is really a wizard manager and should be pulled from above.

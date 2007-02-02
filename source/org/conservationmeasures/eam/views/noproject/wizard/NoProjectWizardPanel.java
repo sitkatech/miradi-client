@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
@@ -26,14 +25,15 @@ import org.conservationmeasures.eam.views.noproject.RenameProject;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
 
 public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHandler
 {
-	public NoProjectWizardPanel(MainWindow mainWindowToUse) throws Exception
+	public NoProjectWizardPanel(UmbrellaView view) throws Exception
 	{
-		super(mainWindowToUse);
+		super(view.getMainWindow(), view);
 	}
 
 	public void linkClicked(String linkDescription)

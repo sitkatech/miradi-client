@@ -20,8 +20,8 @@ public class MonitoringView extends TabbedView
 	{
 		super(mainWindowToUse);
 		setToolBar(new MonitoringToolBar(mainWindowToUse.getActions()));
-
 		addMonitoringPlanDoersToMap();
+		wizardPanel = new MonitoringPlanWizardPanel(this);
 	}
 
 	public String cardName() 
@@ -52,7 +52,6 @@ public class MonitoringView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		wizardPanel = new MonitoringPlanWizardPanel(getMainWindow());
 		return wizardPanel;
 	}
 

@@ -55,6 +55,7 @@ public class BudgetView extends TabbedView
 		super(mainWindowToUse);
 		addBudgetDoersToMap();
 		setToolBar(new BudgetToolBar(mainWindowToUse.getActions()));
+		wizardPanel = new BudgetWizardPanel(this);
 	}
 
 	public String cardName() 
@@ -143,7 +144,6 @@ public class BudgetView extends TabbedView
 	
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		wizardPanel = new BudgetWizardPanel(getMainWindow());
 		return wizardPanel;
 	}
 

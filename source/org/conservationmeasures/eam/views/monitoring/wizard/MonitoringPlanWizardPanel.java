@@ -5,13 +5,13 @@
 */ 
 package org.conservationmeasures.eam.views.monitoring.wizard;
 
-import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class MonitoringPlanWizardPanel extends WizardPanel
 {
-	public MonitoringPlanWizardPanel(MainWindow mainWindow) throws Exception
+	public MonitoringPlanWizardPanel(UmbrellaView view)
 	{
-		super(mainWindow);
+		super(view.getMainWindow(), view);
 	}
 }

@@ -25,6 +25,7 @@ public class ScheduleView extends TabbedView
 		super(mainWindowToUse);
 		setToolBar(new ScheduleToolBar(mainWindowToUse.getActions()));
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
+		wizardPanel = new ScheduleWizardPanel(this);
 	}
 
 	public String cardName() 
@@ -54,9 +55,10 @@ public class ScheduleView extends TabbedView
 	
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new ScheduleWizardPanel(getMainWindow());
+		return wizardPanel;
 	}
 	
+	private WizardPanel wizardPanel;
 }
 
 class ScheduleComponent extends JLabel
