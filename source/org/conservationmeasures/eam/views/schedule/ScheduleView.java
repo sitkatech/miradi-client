@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.views.schedule.wizard.ScheduleWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiScrollPane;
@@ -25,7 +24,7 @@ public class ScheduleView extends TabbedView
 		super(mainWindowToUse);
 		setToolBar(new ScheduleToolBar(mainWindowToUse.getActions()));
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
-		wizardPanel = new ScheduleWizardPanel(this);
+		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public String cardName() 

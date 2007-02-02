@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class StrategicPlanView extends TabbedView
@@ -22,7 +21,7 @@ public class StrategicPlanView extends TabbedView
 		super(mainWindowToUse);
 		setToolBar(new StrategicPlanToolBar(mainWindowToUse.getActions()));
 		addStrategicPlanDoersToMap();
-		stratPlanWizardPanel = new StrategicPlanWizardPanel(this);
+		stratPlanWizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 	
 	public String cardName() 
@@ -91,7 +90,7 @@ public class StrategicPlanView extends TabbedView
 	{
 	}
 	
-	StrategicPlanWizardPanel stratPlanWizardPanel;
+	WizardPanel stratPlanWizardPanel;
 	StrategicPlanPanel strategicPlanPanel;
 	ObjectivePoolManagementPanel objectivePanel;
 	GoalPoolManagementPanel goalPanel;

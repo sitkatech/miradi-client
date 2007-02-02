@@ -33,7 +33,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardPanel;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
@@ -55,7 +54,7 @@ public class BudgetView extends TabbedView
 		super(mainWindowToUse);
 		addBudgetDoersToMap();
 		setToolBar(new BudgetToolBar(mainWindowToUse.getActions()));
-		wizardPanel = new BudgetWizardPanel(this);
+		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public String cardName() 
@@ -165,7 +164,7 @@ public class BudgetView extends TabbedView
 		return htmlViewer;
 	}
 	
-	BudgetWizardPanel wizardPanel;
+	WizardPanel wizardPanel;
 	BudgetTreeTablePanel treeTableComponent;
 	BudgetPropertiesPanel budgetPropertiesPanel;
 	BudgetManagementPanel budgetManagmentPanel;

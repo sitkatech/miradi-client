@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class MonitoringView extends TabbedView
@@ -21,7 +20,7 @@ public class MonitoringView extends TabbedView
 		super(mainWindowToUse);
 		setToolBar(new MonitoringToolBar(mainWindowToUse.getActions()));
 		addMonitoringPlanDoersToMap();
-		wizardPanel = new MonitoringPlanWizardPanel(this);
+		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public String cardName() 

@@ -73,11 +73,11 @@ import org.conservationmeasures.eam.objects.FactorCluster;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImage;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.Utilities;
 
@@ -97,6 +97,8 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		updateToolBar();
 
 		getProject().addCommandExecutedListener(this);
+		
+		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	private void updateToolBar()
@@ -217,7 +219,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 
 	public JPanel createWizard() throws Exception
 	{
-		wizardPanel = new DiagramWizardPanel(getMainWindow(), this);
 		return wizardPanel;
 	}
 	
@@ -511,7 +512,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	JSplitPane bigSplitter;
 	DiagramComponent diagram;
 	Properties propertiesDoer;
-	DiagramWizardPanel wizardPanel;
+	WizardPanel wizardPanel;
 	String mode;
 	DiagramLegendPanel legendDialog;
 	

@@ -33,7 +33,6 @@ import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
-import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanWizardPanel;
 
 public class WorkPlanView extends TabbedView
 {
@@ -44,7 +43,7 @@ public class WorkPlanView extends TabbedView
 		setToolBar(new WorkPlanToolBar(mainWindowToUse.getActions()));
 		addWorkPlanDoersToMap();
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
-		wizardPanel = new WorkPlanWizardPanel(this);
+		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public String cardName() 
