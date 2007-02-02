@@ -22,7 +22,6 @@ public class NoProjectView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
-		//wizard = new NoProjectWizardPanel(getMainWindow(), this);
 		wizard.refresh();
 		add(wizard);
 	}
