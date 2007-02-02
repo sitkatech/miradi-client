@@ -169,7 +169,6 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 				EAM.logException(e);
 			}
 		}
-
 	}
 
 	private int convertColumnToMatchDataRangeArray(int col)
@@ -253,10 +252,8 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 	{
 		return -1;
 	}
-
 	
 	private static final int UNITS_LABEL_COLUMN_INDEX = 1;
 	static final int UNIT_ROW_HEADER_COLUMN_COUNT = 2;
-	
 	static final int UNIT_TOTAL_COLUMN_COUNT = 1;
 }
