@@ -55,23 +55,16 @@ public class BudgetTable extends JTable implements ObjectPicker
 	
 	public void setTask(BaseId taskId)
 	{
-		//TODO budget code - remove commented code
-		//Task selectedTask = (Task)project.findObject(ObjectType.TASK, taskId);
 		rebuild();
 	}
 	
 	private void rebuild()
 	{
-		//TODO budget code - verify the need for this if
-		if (model.getColumnCount() <= 0)
-			return;
-		
 		addResourceColumn();
 		addFundingSourceColumn();
 		addAccountingCodeColumn();
 		
 		setSingleCellEditor();
-		
 	}
 
 	private void addResourceColumn()
