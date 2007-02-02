@@ -46,6 +46,7 @@ public class ThreatMatrixView extends UmbrellaView
 		
 		addThreatMatrixiewDoersToMap();
 		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions()));
+		wizardPanel = new ThreatRatingWizardPanel(this);
 	}
 
 	
@@ -114,7 +115,6 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	private ThreatRatingWizardPanel createWizardPanel() throws Exception
 	{
-		wizardPanel = new ThreatRatingWizardPanel(this);
 		return wizardPanel;
 	}
 	

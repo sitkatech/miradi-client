@@ -21,15 +21,18 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 {
-	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse, BaseId criterionId) throws Exception
+	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse, String critertionNameToUse) throws Exception
 	{
 		super(wizardToUse);
-		criterion = getFramework().getCriterion(criterionId);
+		critertionName = critertionNameToUse;
 	}
 
 	public void refresh() throws Exception
 	{
+		ThreatRatingFramework framework = getWizard().getMainWindow().getProject().getThreatRatingFramework();
+		BaseId criterionId = framework.findCriterionByLabel(critertionName).getId();
 		ThreatRatingBundle bundle = getThreatRatingWizard().getSelectedBundle();
+		criterion = getFramework().getCriterion(criterionId);
 		if(bundle == null)
 		{
 			return;
@@ -116,6 +119,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 	
 	
 	JComboBox valueBox;
+	String critertionName;
 	RatingCriterion criterion;
 	protected ValueOption value;
 }

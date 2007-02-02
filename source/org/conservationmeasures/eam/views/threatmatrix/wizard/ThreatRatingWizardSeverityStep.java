@@ -5,23 +5,18 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 {
 	public static ThreatRatingWizardSeverityStep create(ThreatRatingWizardPanel wizardToUse, Project project) throws Exception
 	{
-		ThreatRatingFramework framework = project.getThreatRatingFramework();
-		BaseId criterionId = framework.findCriterionByLabel("Severity").getId();
-		ThreatRatingWizardSeverityStep step = new ThreatRatingWizardSeverityStep(wizardToUse, criterionId);
-		return step;
+		return new ThreatRatingWizardSeverityStep(wizardToUse,"Severity");
 	}
 	
-	private ThreatRatingWizardSeverityStep(ThreatRatingWizardPanel wizardToUse, BaseId criterionIdToUse) throws Exception
+	private ThreatRatingWizardSeverityStep(ThreatRatingWizardPanel wizardToUse,  String critertion) throws Exception
 	{
-		super(wizardToUse, criterionIdToUse);
+		super(wizardToUse, critertion);
 	}
 	
 	public String getResourceFileName()
