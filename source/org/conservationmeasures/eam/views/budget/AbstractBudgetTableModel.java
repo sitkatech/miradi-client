@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -20,11 +21,25 @@ import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
+import org.conservationmeasures.eam.utils.DateRangeEffort;
 
 abstract public class AbstractBudgetTableModel extends AbstractTableModel
 {
+	
+	public AbstractBudgetTableModel(Project projectToUse, IdList assignmentIdListToUse) throws Exception
+	{
+		project = projectToUse;
+		assignmentIdList  = assignmentIdListToUse;
+		totalsCalculator = new BudgetTotalsCalculator(project);
+		dateRanges = new ProjectCalendar(project).getQuarterlyDateDanges();
+		currencyFormatter = project.getCurrencyFormatter();
+		decimalFormatter = project.getDecimalFormatter();
+	}
+	
 	public int getResourcesColumnIndex()
 	{
 		return RESOURCES_COLUMN_INDEX;
@@ -271,8 +286,39 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 			EAM.logException(e);
 		}
 	}
+	
+	public void setUnits(Assignment assignment, DateRangeEffortList effortList, DateRangeEffort effort, double units) throws Exception
+	{
+		effort.setUnitQuantity(units);
+		effortList.setDateRangeEffort(effort);
+		Command command = new CommandSetObjectData(assignment.getType(), assignment.getId(), assignment.TAG_DATERANGE_EFFORTS, effortList.toString());
+		project.executeCommand(command);
+	}
+	
+	public DateRangeEffortList getDateRangeEffortList(Assignment assignment) throws Exception
+	{
+		String dREffortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
+		DateRangeEffortList dREffortList = new DateRangeEffortList(dREffortListAsString);
+		return dREffortList;
+	}
+	
+	public DateRangeEffort getDateRangeEffort(Assignment assignment, DateRange dateRange) throws Exception
+	{
+		DateRangeEffort dateRangeEffort = null;
+		DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+		dateRangeEffort = effortList.getEffortForDateRange(dateRange);
+		return dateRangeEffort;
+	}
+	
+	protected boolean isAccountingCodeColumn(int col)
+	{
+		return col == getAccountingCodeColumnIndex();
+	}
 
-
+	protected boolean isFundingSourceColumn(int col)
+	{
+		return col == getFundingSourceColumnIndex();
+	}
 	
 	abstract public boolean isYearlyTotalColumn(int col);
 	
@@ -303,4 +349,6 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	DateRange[] dateRanges;
 	BudgetTotalsCalculator totalsCalculator;
 	Project project;
+	Task task;
+	IdList assignmentIdList;
 }

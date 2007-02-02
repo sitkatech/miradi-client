@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.budget;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
@@ -18,7 +16,6 @@ import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 
@@ -26,12 +23,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 {
 	public BudgetTableModel(Project projectToUse, IdList assignmentIdListToUse) throws Exception
 	{
-		project = projectToUse;
-		assignmentIdList  = assignmentIdListToUse;
-		totalsCalculator = new BudgetTotalsCalculator(project);
-		dateRanges = new ProjectCalendar(project).getQuarterlyDateDanges();
-		currencyFormatter = project.getCurrencyFormatter();
-		decimalFormatter = project.getDecimalFormatter();
+		super(projectToUse, assignmentIdListToUse);
 	}
 	
 	public BaseId getAssignmentForRow(int row)
@@ -51,7 +43,8 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			assignmentIdList = new IdList();
 		else
 			assignmentIdList = task.getAssignmentIdList();
-		
+	
+		System.out.println("here something change "+assignmentIdList.size());
 		fireTableDataChanged();
 	}
 	
@@ -122,22 +115,20 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 
 	public Object getValueAt(int row, int col)
 	{
-		//TODO remove comment when done - coverted
+		BaseId assignmentForRow = getAssignmentForRow(getCorrectedRow(row));
+		
 		if (isResourceColumn(col))
-			return getCurrentResource(getAssignmentForRow(getCorrectedRow(row)));
+			return getCurrentResource(assignmentForRow);
 		
 		if (isLabelColumn(col))
 			return getResourceCellLabel(row, col);
 		
-		//TODO remove comment when done - coverted
 		if (isAccountingCodeColumn(col))
-			return getCurrentAccountingCode(getAssignmentForRow(getCorrectedRow(row)));
+			return getCurrentAccountingCode(assignmentForRow);
 
-		//TODO remove comment when done - coverted
 		if (isFundingSourceColumn(col))
-			return getCurrentFundingSource(getAssignmentForRow(getCorrectedRow(row)));
+			return getCurrentFundingSource(assignmentForRow);
 		
-		//TODO remove comment when done - coverted
 		if (isCostColumn(col))
 		{
 			if (!isOdd(row))
@@ -146,9 +137,11 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			try
 			{
 				final int BACK_ONE_ROW = 1;
-				DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row - BACK_ONE_ROW));
+				int correctedRow = getCorrectedRow(row - BACK_ONE_ROW);
+				Assignment assignment = getAssignment(correctedRow);
+				DateRangeEffortList effortList = getDateRangeEffortList(assignment);
 				DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
-				ProjectResource currentResource = getCurrentResource(getAssignmentForRow(getCorrectedRow(row)));
+				ProjectResource currentResource = getCurrentResource(assignmentForRow);
 
 				return getCost(currentResource, effortList, dateRange);
 			}
@@ -158,7 +151,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			}
 		}
 		
-		//TODO remove comment when done - coverted
 		if (isUnitsColumn(col))
 		{
 			if (isOdd(row))
@@ -167,7 +159,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			DateRangeEffortList effortList;
 			try
 			{
-				effortList = getDateRangeEffortList(getCorrectedRow(row));
+				effortList = getDateRangeEffortList(getAssignment(getCorrectedRow(row)));
 				DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
 				return getUnit(effortList, dateRange);
 			}
@@ -177,7 +169,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			}
 		}
 		
-		//TODO remove comment when done - coverted			
 		if (isUnitsTotalColumn(col))
 		{
 			if (isOdd(row))
@@ -186,7 +177,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			return getTotalUnits(getAssignment(getCorrectedRow(row)));
 		}
 		
-		//TODO remove comment when done - coverted
 		if (isCostTotalsColumn(col))
 		{
 			if (!isOdd(row))
@@ -209,35 +199,52 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			EAM.logDebug("value in setValueAt is null");
 			return;
 		}
+		BaseId assignmentId = getAssignmentForRow(row);
 		if (isResourceColumn(col))
 		{
 			ProjectResource projectResource = (ProjectResource)value;
-			BaseId  assignmentId = getAssignmentForRow(row);
-
 			setResource(projectResource, assignmentId);
 			return;
 		}
 		
 		if (isAccountingCodeColumn(col))
 		{
-			AccountingCode aCode = (AccountingCode)value;
-			BaseId  assignmentId = getAssignmentForRow(row);
-
-			setAccountingCode(aCode, assignmentId);
+			AccountingCode accountingCode = (AccountingCode)value;
+			setAccountingCode(accountingCode, assignmentId);
 			return;
 		}
 		
 		if (isFundingSourceColumn(col))
 		{
 			FundingSource fSource = (FundingSource)value;
-			BaseId  assignmentId = getAssignmentForRow(row);
-
 			setFundingSource(fSource, assignmentId);
 			return;
 		}
 		
 		if (isUnitsColumn(col))
-			setUnits(value, row, covertToUnitsColumn(col));
+		{
+			try
+			{
+				Assignment assignment = getAssignment(row);
+				DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+				DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[covertToUnitsColumn(col)]);
+
+				double units = 0;
+				String valueAsString = value.toString().trim();
+				if (! valueAsString.equals(""))
+					units = Double.parseDouble(valueAsString);
+
+				//FIXME budget code - take out daterange
+				if (effort == null)
+					effort = new DateRangeEffort("", units, dateRanges[covertToUnitsColumn(col)]);
+
+				setUnits(assignment, effortList, effort, units);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
 	}
 
 	private int covertToUnitsColumn(int col)
@@ -259,65 +266,12 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			
 		return "";
 	}
-		
-	private DateRangeEffortList getDateRangeEffortList(int row) throws Exception
-	{
-		Assignment assignment = getAssignment(row);
-		String dREffortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
-		DateRangeEffortList dREffortList = new DateRangeEffortList(dREffortListAsString);
-		return dREffortList;
-	}
-	
-	public DateRangeEffort getDateRangeEffort(int row, int timeIndex)
-	{
-		DateRangeEffort dateRangeEffort = null;
-		try
-		{
-			DateRangeEffortList effortList = getDateRangeEffortList(row);
-			DateRange dateRange = dateRanges[timeIndex];
-			dateRangeEffort = effortList.getEffortForDateRange(dateRange);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		
-		return dateRangeEffort;
-	}
 	
 	public Assignment getAssignment(int row)
 	{
 		return (Assignment)project.findObject(ObjectType.ASSIGNMENT, getAssignmentForRow(row));
 	}
-	
-	private void setUnits(Object value, int row, int timeIndex)
-	{
-		try
-		{
-			Assignment assignment = getAssignment(row);
-			DateRangeEffort effort = getDateRangeEffort(row, timeIndex);
-			DateRangeEffortList effortList = getDateRangeEffortList(row);
-			
-			double units = 0;
-			String valueAsString = value.toString().trim();
-			if (! valueAsString.equals(""))
-				units = Double.parseDouble(valueAsString);
-			
-			//FIXME budget code - take out daterange
-			if (effort == null)
-				effort = new DateRangeEffort("", units, dateRanges[timeIndex]);
-			
-			effort.setUnitQuantity(units);
-			effortList.setDateRangeEffort(effort);
-			Command command = new CommandSetObjectData(assignment.getType(), assignment.getId(), assignment.TAG_DATERANGE_EFFORTS, effortList.toString());
-			project.executeCommand(command);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-			
+				
 	public boolean isYearlyTotalColumn(int col)
 	{
 		if (col < TOTAL_ROW_HEADER_COLUMN_COUNT)
@@ -374,18 +328,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return FUNDING_SOURCE_COLUMN_INDEX;
 	}
 	
-	protected boolean isFundingSourceColumn(int col)
-	{
-		return col == getFundingSourceColumnIndex();
-	}
-
-	protected boolean isAccountingCodeColumn(int col)
-	{
-		return col == getAccountingCodeColumnIndex();
-	}
-	
-	Task task;
-	IdList assignmentIdList;
 	
 	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;
 	private static final int ACCOUNTING_CODE_COLUMN_INDEX = 2;
