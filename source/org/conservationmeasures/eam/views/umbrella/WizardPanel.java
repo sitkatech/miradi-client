@@ -133,7 +133,9 @@ public class WizardPanel extends JPanel
 	
 	private void addNoProjectViewSteps() throws Exception
 	{
-		stepTable.createNoProjectStepEntries((NoProjectWizardPanel)this);
+		addStep(new NoProjectOverviewStep((NoProjectWizardPanel)this));
+		addStep(new NoProjectWizardImportStep((NoProjectWizardPanel)this));
+		addStep(new NoProjectWizardProjectCreateStep((NoProjectWizardPanel)this));
 	}
 	
 	private void addBudgetViewSteps()
@@ -335,20 +337,21 @@ class StepTable extends Hashtable
 		createScheduleStepEntries();
 		createStrategicPlanStepEntries();
 		createBudgetStepEntries();
+		createNoProjectStepEntries();
 		
 		setUpSequences1();
 	}
 	
-	public void createNoProjectStepEntries(NoProjectWizardPanel panel) throws Exception
+	private void createNoProjectStepEntries()
 	{
 		final String viewName = NoProjectView.getViewName();
 		
-		createStepEntry(new NoProjectOverviewStep(panel), viewName);
+		createStepEntry(NoProjectOverviewStep.class, viewName);
 		
-		WizardStepEntry stepEntry1 = createStepEntry(new NoProjectWizardImportStep(panel), viewName);
+		WizardStepEntry stepEntry1 = createStepEntry(NoProjectWizardImportStep.class, viewName);
 		stepEntry1.createBackControl(NoProjectOverviewStep.class);
 		
-		WizardStepEntry stepEntry2 = createStepEntry(new NoProjectWizardProjectCreateStep(panel), viewName);
+		WizardStepEntry stepEntry2 = createStepEntry(NoProjectWizardProjectCreateStep.class, viewName);
 		stepEntry2.createBackControl(NoProjectOverviewStep.class);
 	}
 	
@@ -538,14 +541,6 @@ class StepTable extends Hashtable
 	private WizardStepEntry createStepEntry(Class wizardStep, String viewName)
 	{
 		WizardStepEntry stepEntry = new WizardStepEntry(wizardStep.getSimpleName(), viewName);
-		put(stepEntry.getStepName(),stepEntry);
-		return stepEntry;
-	}
-	
-	private WizardStepEntry createStepEntry(SkeletonWizardStep wizardStep, String viewName)
-	{
-		WizardStepEntry stepEntry = new WizardStepEntry(wizardStep.getClass().getSimpleName(), viewName);
-		stepEntry.setStepClass(wizardStep);
 		put(stepEntry.getStepName(),stepEntry);
 		return stepEntry;
 	}
