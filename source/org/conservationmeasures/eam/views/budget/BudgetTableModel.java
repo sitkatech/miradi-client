@@ -44,7 +44,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		else
 			assignmentIdList = task.getAssignmentIdList();
 	
-		System.out.println("here something change "+assignmentIdList.size());
 		fireTableDataChanged();
 	}
 	
