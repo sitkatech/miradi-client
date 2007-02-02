@@ -192,9 +192,9 @@ public class WizardPanel extends JPanel
 	{
 		addStep(new ThreatMatrixOverviewStep((ThreatRatingWizardPanel)this));
 		addStep(new ThreatRatingWizardChooseBundle((ThreatRatingWizardPanel)this));
-		addStep(ThreatRatingWizardScopeStep.create((ThreatRatingWizardPanel)this, mainWindow.getProject()));
-		addStep(ThreatRatingWizardSeverityStep.create((ThreatRatingWizardPanel)this, mainWindow.getProject()));
-		addStep(ThreatRatingWizardIrreversibilityStep.create((ThreatRatingWizardPanel)this, mainWindow.getProject()));
+		addStep(new ThreatRatingWizardScopeStep((ThreatRatingWizardPanel)this));
+		addStep(new ThreatRatingWizardSeverityStep((ThreatRatingWizardPanel)this));
+		addStep(new ThreatRatingWizardIrreversibilityStep((ThreatRatingWizardPanel)this));
 		addStep(new ThreatRatingWizardCheckBundleStep((ThreatRatingWizardPanel)this));
 		addStep(new ThreatRatingWizardCheckTotalsStep((ThreatRatingWizardPanel)this));
 	}

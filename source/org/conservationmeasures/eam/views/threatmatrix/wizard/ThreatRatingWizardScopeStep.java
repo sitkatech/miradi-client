@@ -5,16 +5,15 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import org.conservationmeasures.eam.project.Project;
 
 public class ThreatRatingWizardScopeStep extends ThreatRatingWizardSetValue
 {
-	public static ThreatRatingWizardScopeStep create(ThreatRatingWizardPanel wizardToUse, Project project) throws Exception
+	public ThreatRatingWizardScopeStep(ThreatRatingWizardPanel wizardToUse) throws Exception
 	{
-		return  new ThreatRatingWizardScopeStep(wizardToUse,"Scope");
+		super(wizardToUse, "Scope");
 	}
 	
-	private ThreatRatingWizardScopeStep(ThreatRatingWizardPanel wizardToUse, String critertion) throws Exception
+	public ThreatRatingWizardScopeStep(ThreatRatingWizardPanel wizardToUse, String critertion) throws Exception
 	{
 		super(wizardToUse, critertion);
 	}

@@ -5,16 +5,15 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import org.conservationmeasures.eam.project.Project;
 
 public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 {
-	public static ThreatRatingWizardSeverityStep create(ThreatRatingWizardPanel wizardToUse, Project project) throws Exception
+	public ThreatRatingWizardSeverityStep(ThreatRatingWizardPanel wizardToUse) throws Exception
 	{
-		return new ThreatRatingWizardSeverityStep(wizardToUse,"Severity");
+		super(wizardToUse, "Severity");
 	}
 	
-	private ThreatRatingWizardSeverityStep(ThreatRatingWizardPanel wizardToUse,  String critertion) throws Exception
+	public ThreatRatingWizardSeverityStep(ThreatRatingWizardPanel wizardToUse,  String critertion) throws Exception
 	{
 		super(wizardToUse, critertion);
 	}
