@@ -63,14 +63,16 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	}
 	
 
-	private void control(String buttonName)
+	private void control(String controlName)
 	{
 		try
 		{
-			getWizard().control(buttonName);
+			getWizard().control(controlName);
 		}
 		catch (Exception e)
 		{
+			String body = EAM.text("Wizard load of control" + controlName+ ") failed");
+			EAM.errorDialog(body);
 			EAM.logException(e);
 		}
 	}
