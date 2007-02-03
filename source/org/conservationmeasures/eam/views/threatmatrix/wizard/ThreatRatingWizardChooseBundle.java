@@ -38,7 +38,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	
 	ThreatMatrixView getView()
 	{
-		return getThreatRatingWizard().getView();
+		return getThreatRatingWizard().getThreatMatrixView();
 	}
 	
 

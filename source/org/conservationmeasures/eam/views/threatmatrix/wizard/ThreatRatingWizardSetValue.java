@@ -106,7 +106,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 			try
 			{
 				setValue(valueBox.getSelectedItem().toString());
-				getThreatRatingWizard().getView().setBundleValue(criterion, value);
+				getThreatRatingWizard().getThreatMatrixView().setBundleValue(criterion, value);
 			}
 			catch(Exception e)
 			{

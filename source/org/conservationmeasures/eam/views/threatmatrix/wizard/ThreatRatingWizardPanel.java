@@ -43,7 +43,7 @@ public class ThreatRatingWizardPanel extends WizardPanel
 		view.selectBundle(bundle);
 	}
 	
-	public ThreatMatrixView getView()
+	public ThreatMatrixView getThreatMatrixView()
 	{
 		return view;
 	}
