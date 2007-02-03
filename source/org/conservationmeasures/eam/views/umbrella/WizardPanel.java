@@ -284,11 +284,11 @@ class StepTable extends Hashtable
 	{	
 		createStepEntry(new NoProjectOverviewStep(panel), viewName);
 		
-		WizardStepEntry stepEntry1 = createStepEntry(new NoProjectWizardImportStep(panel), viewName);
-		stepEntry1.createBackControl(NoProjectOverviewStep.class);
+		createStepEntry(new NoProjectWizardImportStep(panel), viewName)
+			.createBackControl(NoProjectOverviewStep.class);
 		
-		WizardStepEntry stepEntry2 = createStepEntry(new NoProjectWizardProjectCreateStep(panel), viewName);
-		stepEntry2.createBackControl(NoProjectOverviewStep.class);
+		createStepEntry(new NoProjectWizardProjectCreateStep(panel), viewName)
+			.createBackControl(NoProjectOverviewStep.class);
 	}
 	
 	public void createBudgetStepEntries(WizardPanel panel, String viewName)
@@ -362,23 +362,25 @@ class StepTable extends Hashtable
 
 	public void createThreatMatrixViewStepEntries(ThreatRatingWizardPanel panel, String viewName) throws Exception
 	{
-		WizardStepEntry stepEntry1 = createStepEntry(new ThreatMatrixOverviewStep(panel), viewName);
 		//TODO: View:Diagram...should be Step:StepName or support both
-		stepEntry1.createControl("View:Diagram", DiagramOverviewStep.class);
+		
+		createStepEntry(new ThreatMatrixOverviewStep(panel), viewName)
+			.createControl("View:Diagram", DiagramOverviewStep.class);
 
-		WizardStepEntry stepEntry2 = createStepEntry(new ThreatRatingWizardChooseBundle(panel), viewName);
-		stepEntry2.createControl("Done", ThreatRatingWizardCheckTotalsStep.class);
+
+		createStepEntry(new ThreatRatingWizardChooseBundle(panel), viewName)
+			.createControl("Done", ThreatRatingWizardCheckTotalsStep.class);
 		
 		createStepEntry(new ThreatRatingWizardScopeStep(panel), viewName);
 		createStepEntry(new ThreatRatingWizardSeverityStep(panel), viewName);
 		createStepEntry(new ThreatRatingWizardIrreversibilityStep(panel), viewName);
 
-		WizardStepEntry stepEntry3 = createStepEntry(new ThreatRatingWizardCheckBundleStep(panel), viewName);
-		stepEntry3.createNextControl(ThreatRatingWizardChooseBundle.class); 
+		createStepEntry(new ThreatRatingWizardCheckBundleStep(panel), viewName)
+			.createNextControl(ThreatRatingWizardChooseBundle.class); 
 
-		WizardStepEntry stepEntry4 = createStepEntry(new ThreatRatingWizardCheckTotalsStep(panel), viewName);
-		stepEntry4.createNextControl(ThreatMatrixOverviewStep.class); 
-		stepEntry4.createBackControl(ThreatRatingWizardChooseBundle.class); 
+		createStepEntry(new ThreatRatingWizardCheckTotalsStep(panel), viewName)
+			.createNextControl(ThreatMatrixOverviewStep.class)
+			.createBackControl(ThreatRatingWizardChooseBundle.class); 
 	}
 
 
@@ -483,19 +485,20 @@ class WizardStepEntry
 	}
 	
 	//TODO: add control directly to wizard step; get rid of WizardControl class
-	void createControl(String controlName , Class controlStep)
+	WizardStepEntry createControl(String controlName , Class controlStep)
 	{
 		entries.put(controlName, new WizardControl(controlName, controlStep.getSimpleName()));
+		return this;
 	}
 	
-	void createNextControl(Class controlStep)
+	WizardStepEntry createNextControl(Class controlStep)
 	{
-		createControl("Next", controlStep);
+		return createControl("Next", controlStep);
 	}
 	
-	void createBackControl(Class controlStep)
+	WizardStepEntry createBackControl(Class controlStep)
 	{
-		createControl("Back", controlStep);
+		return createControl("Back", controlStep);
 	}
 
 	
