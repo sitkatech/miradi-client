@@ -518,8 +518,8 @@ class WizardStepEntry
 			
 		if (found<0)
 		{
-			EAM.logError("Step not found in sequence table" + stepName);
-			EAM.errorDialog(EAM.text("Step not found in sequence table:" + stepName));
+			EAM.logError("Step not found in sequence table: " + stepName);
+			EAM.errorDialog(EAM.text("Step not found in sequence table: ") + stepName);
 			return null;
 		}
 		
@@ -540,8 +540,8 @@ class WizardStepEntry
 			
 		}
 		
-		EAM.logError("Control not specified" + stepName);
-		EAM.errorDialog(EAM.text("Control not specified:" + stepName));
+		EAM.logError("Control not specified: " + stepName);
+		EAM.errorDialog(EAM.text("Control not specified: ") + stepName);
 		return null;
 	}
 
