@@ -25,18 +25,6 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		super(wizardToUse);
 	}
 
-	public boolean save() throws Exception
-	{
-		ThreatRatingBundle selectedBundle = getSelectedBundle();
-
-		if(selectedBundle == null)
-		{
-			EAM.errorDialog(EAM.text("This threat is not currently linked to the selected target.  To create a link, click in the associated gray box in the threat table"));
-			return false;
-		}
-		
-		return true;
-	}
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
@@ -115,6 +103,27 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		return HTML_FILENAME;
 	}
 
+	
+	public void buttonPressed(String buttonName)
+	{
+		if (buttonName.equals("Next"))
+			try
+			{
+				if(getSelectedBundle() == null)
+				{
+					EAM.errorDialog(EAM.text("Please select a threat and target"));
+					return;
+				}
+			}
+			catch (Exception e)
+			{
+				EAM.errorDialog("Internal Error bundle not found");
+				return;
+			}
+		
+		super.buttonPressed(buttonName);
+		
+	}
 	
 	class RatingItemListener implements ItemListener
 	{
