@@ -378,6 +378,7 @@ class StepTable extends Hashtable
 
 		WizardStepEntry stepEntry4 = createStepEntry(new ThreatRatingWizardCheckTotalsStep(panel), viewName);
 		stepEntry4.createNextControl(ThreatMatrixOverviewStep.class); 
+		stepEntry4.createBackControl(ThreatRatingWizardChooseBundle.class); 
 	}
 
 
