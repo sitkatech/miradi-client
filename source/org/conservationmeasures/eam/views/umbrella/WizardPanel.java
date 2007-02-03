@@ -518,9 +518,7 @@ class WizardStepEntry
 			
 		if (found<0)
 		{
-			String msg = EAM.text("Step not found in sequence table: ") + stepName;
-			EAM.logError(msg);
-			EAM.errorDialog(msg);
+			reportError(EAM.text("Step not found in sequence table: ") + stepName);
 			return null;
 		}
 		
@@ -541,10 +539,14 @@ class WizardStepEntry
 			
 		}
 		
-		String msg = EAM.text("Control not specified: ") + stepName;
+		reportError(EAM.text("Control not specified: ") + stepName);
+		return null;
+	}
+
+	private void reportError(String msg)
+	{
 		EAM.logError(msg);
 		EAM.errorDialog(msg);
-		return null;
 	}
 
 
