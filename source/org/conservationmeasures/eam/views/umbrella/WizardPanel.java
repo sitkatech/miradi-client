@@ -94,31 +94,31 @@ public class WizardPanel extends JPanel
 			String currentView = view.cardName();
 			
 			if (currentView.equals(ThreatMatrixView.getViewName()))
-				addThreatMatrixViewSteps();
+				addThreatMatrixViewSteps(currentView);
 				
 			if (currentView.equals(DiagramView.getViewName()))
-				addDiagramViewSteps();
+				addDiagramViewSteps(currentView);
 			
 			if (currentView.equals(MonitoringView.getViewName()))
-				addMonitoringViewSteps();
+				addMonitoringViewSteps(currentView);
 			
 			if (currentView.equals(WorkPlanView.getViewName()))
-				addWorkPlanViewSteps();
+				addWorkPlanViewSteps(currentView);
 			
 			if (currentView.equals(SummaryView.getViewName()))
-				addSummaryViewSteps();
+				addSummaryViewSteps(currentView);
 				
 			if (currentView.equals(ScheduleView.getViewName()))
-				addScheduleViewSteps();
+				addScheduleViewSteps(currentView);
 			
 			if (currentView.equals(StrategicPlanView.getViewName()))
-				addStrategicPlanViewSteps();
+				addStrategicPlanViewSteps(currentView);
 			
 			if (currentView.equals(BudgetView.getViewName()))
-				addBudgetViewSteps();
+				addBudgetViewSteps(currentView);
 			
 			if (currentView.equals(NoProjectView.getViewName()))
-				addNoProjectViewSteps();
+				addNoProjectViewSteps(currentView);
 			
 			setStep("");
 		}
@@ -131,97 +131,51 @@ public class WizardPanel extends JPanel
 		}
 	}
 	
-	private void addNoProjectViewSteps() throws Exception
+	private void addNoProjectViewSteps(String currentView) throws Exception
 	{
-		addStep(new NoProjectOverviewStep((NoProjectWizardPanel)this));
-		addStep(new NoProjectWizardImportStep((NoProjectWizardPanel)this));
-		addStep(new NoProjectWizardProjectCreateStep((NoProjectWizardPanel)this));
+		stepTable.createNoProjectStepEntries((NoProjectWizardPanel)this, currentView);
 	}
 	
-	private void addBudgetViewSteps()
+	private void addBudgetViewSteps(String currentView)
 	{
-		addStep(new FinancialOverviewStep(this));
-		addStep(new BudgetWizardAccountingAndFunding(this));
-		addStep(new BudgetWizardBudgetDetail(this));
-		addStep(new BudgetWizardDemo(this));
+		stepTable.createBudgetStepEntries(this, currentView);
 	}
 	
-	private void addStrategicPlanViewSteps()
+	private void addStrategicPlanViewSteps(String currentView)
 	{
-		addStep(new StrategicPlanOverviewStep(this));
-		addStep(new StrategicPlanViewAllGoals(this));
-		addStep(new StrategicPlanViewAllObjectives(this));
+		stepTable.createStrategicPlanStepEntries(this, currentView);
 	}
 	
-	private void addScheduleViewSteps()
+	private void addScheduleViewSteps(String currentView)
 	{
-		addStep(new ScheduleOverviewStep(this));
+		stepTable.createScheduleStepEntries(this, currentView);
 	}
 
-	private void addSummaryViewSteps()
+	private void addSummaryViewSteps(String currentView)
 	{
-		addStep(new SummaryOverviewStep(this));
-		addStep(new SummaryWizardDefineTeamMembers(this));
-		addStep(new SummaryWizardDefineProjectLeader(this));
-		addStep(new SummaryWizardDefineProjecScope(this));
-		addStep(new SummaryWizardDefineProjectVision(this));
+		stepTable.createSummaryStepEntries(this, currentView);
 	}
 	
-	private void addDiagramViewSteps() throws Exception
+	private void addDiagramViewSteps(String currentView) throws Exception
 	{
-		addStep(new DiagramOverviewStep(this));
-		addStep(new DiagramWizardProjectScopeStep(this));
-		addStep(new DiagramWizardVisionStep(this));
-		addStep(new DiagramWizardDefineTargetsStep(this));
-		addStep(new DiagramWizardReviewAndModifyTargetsStep(this));
-		addStep(new DescribeTargetStatusStep(this));
-		addStep(new DiagramWizardIdentifyDirectThreatStep(this));
-		addStep(new DiagramWizardLinkDirectThreatsToTargetsStep(this));
-		addStep(new DiagramWizardIdentifyIndirectThreatStep(this));
-		addStep(new DiagramWizardConstructChainsStep(this));
-		addStep(new DiagramWizardReviewModelAndAdjustStep(this));
-		addStep(new SelectChainStep(this));
-		addStep(new DevelopDraftStrategiesStep(this));
-		addStep(new RankDraftStrategiesStep(this));
-		addStep(new EditAllStrategiesStep(this));
-		addStep(new StrategicPlanDevelopGoalStep(this));
-		addStep(new StrategicPlanDevelopObjectivesStep(this));	
-		addStep(new MonitoringWizardFocusStep(this));
-		addStep(new MonitoringWizardDefineIndicatorsStep(this));
+		stepTable.createDigramViewStepEntries(this, currentView);
 	}
 	
-	private void addThreatMatrixViewSteps() throws Exception
+	private void addThreatMatrixViewSteps(String currentView) throws Exception
 	{
-		addStep(new ThreatMatrixOverviewStep((ThreatRatingWizardPanel)this));
-		addStep(new ThreatRatingWizardChooseBundle((ThreatRatingWizardPanel)this));
-		addStep(new ThreatRatingWizardScopeStep((ThreatRatingWizardPanel)this));
-		addStep(new ThreatRatingWizardSeverityStep((ThreatRatingWizardPanel)this));
-		addStep(new ThreatRatingWizardIrreversibilityStep((ThreatRatingWizardPanel)this));
-		addStep(new ThreatRatingWizardCheckBundleStep((ThreatRatingWizardPanel)this));
-		addStep(new ThreatRatingWizardCheckTotalsStep((ThreatRatingWizardPanel)this));
+		stepTable.createThreatMatrixViewStepEntries((ThreatRatingWizardPanel)this, currentView);
 	}
 
-	public void addMonitoringViewSteps()
+	public void addMonitoringViewSteps(String currentView)
 	{
-		addStep(new MonitoringPlanOverviewStep(this));
-		addStep(new MonitoringWizardEditIndicatorsStep(this));
+		stepTable.createMonitoringViewStepEntries(this, currentView);
 	}
 	
-	public void addWorkPlanViewSteps()
+	public void addWorkPlanViewSteps(String currentView)
 	{
-		addStep(new WorkPlanOverviewStep(this));
-		addStep(new MonitoringWizardSelectMethodsStep(this));
-		addStep(new WorkPlanDevelopActivitiesAndTasksStep(this));
-		addStep(new WorkPlanDevelopMethodsAndTasksStep(this));
-		addStep(new WorkPlanCreateResourcesStep(this));
-		addStep(new WorkPlanAssignResourcesStep(this));
+		stepTable.createWorkPlanStepEntries(this, currentView);
 	}
-	
-	public void addStep(SkeletonWizardStep step)
-	{
-		stepTable.findStep(step.getClass().getSimpleName()).setStepClass(step);
-	}
-	
+
 	public void setContents(JPanel contents)
 	{
 		removeAll();
@@ -234,8 +188,7 @@ public class WizardPanel extends JPanel
 	public void control(String controlName) throws Exception
 	{
 		WizardStepEntry entry = stepTable.findStep(currentStepName);
-		WizardControl control = entry.findControl(controlName);
-		jump(control.getStepName());
+		jump(entry.findControlTargetStep(controlName));
 	}
 
 
@@ -327,141 +280,108 @@ public class WizardPanel extends JPanel
 class StepTable extends Hashtable
 {
 	
-	public StepTable()
-	{
-		createDigramViewStepEntries();
-		createThreatMatrixViewStepEntries();
-		createMonitoringViewStepEntries();
-		createWorkPlanStepEntries();
-		createSummaryStepEntries();
-		createScheduleStepEntries();
-		createStrategicPlanStepEntries();
-		createBudgetStepEntries();
-		createNoProjectStepEntries();
+	public void createNoProjectStepEntries(NoProjectWizardPanel panel, String viewName) throws Exception
+	{	
+		createStepEntry(new NoProjectOverviewStep(panel), viewName);
 		
-		setUpSequences1();
-	}
-	
-	private void createNoProjectStepEntries()
-	{
-		final String viewName = NoProjectView.getViewName();
-		
-		createStepEntry(NoProjectOverviewStep.class, viewName);
-		
-		WizardStepEntry stepEntry1 = createStepEntry(NoProjectWizardImportStep.class, viewName);
+		WizardStepEntry stepEntry1 = createStepEntry(new NoProjectWizardImportStep(panel), viewName);
 		stepEntry1.createBackControl(NoProjectOverviewStep.class);
 		
-		WizardStepEntry stepEntry2 = createStepEntry(NoProjectWizardProjectCreateStep.class, viewName);
+		WizardStepEntry stepEntry2 = createStepEntry(new NoProjectWizardProjectCreateStep(panel), viewName);
 		stepEntry2.createBackControl(NoProjectOverviewStep.class);
 	}
 	
-	private void createBudgetStepEntries()
+	public void createBudgetStepEntries(WizardPanel panel, String viewName)
 	{
-		final String viewName = BudgetView.getViewName();
-		
-		createStepEntry(FinancialOverviewStep.class, viewName);
-		createStepEntry(BudgetWizardAccountingAndFunding.class, viewName);
-		createStepEntry(BudgetWizardBudgetDetail.class, viewName);
-		createStepEntry(BudgetWizardDemo.class, viewName);
+		createStepEntry(new FinancialOverviewStep(panel), viewName);
+		createStepEntry(new BudgetWizardAccountingAndFunding(panel), viewName);
+		createStepEntry(new BudgetWizardBudgetDetail(panel), viewName);
+		createStepEntry(new BudgetWizardDemo(panel), viewName);
 	}
 	
-	private void createStrategicPlanStepEntries()
+	public void createStrategicPlanStepEntries(WizardPanel panel, String viewName)
 	{
-		final String viewName = StrategicPlanView.getViewName();
-		
-		createStepEntry(StrategicPlanOverviewStep.class, viewName);
-		createStepEntry(StrategicPlanViewAllGoals.class, viewName);
-		createStepEntry(StrategicPlanViewAllObjectives.class, viewName);
+		createStepEntry(new StrategicPlanOverviewStep(panel), viewName);
+		createStepEntry(new StrategicPlanViewAllGoals(panel), viewName);
+		createStepEntry(new StrategicPlanViewAllObjectives(panel), viewName);
 	}
 	
-	private void createScheduleStepEntries()
+	public void createScheduleStepEntries(WizardPanel panel, String viewName)
 	{
-		final String viewName = ScheduleView.getViewName();
-		
-		createStepEntry(ScheduleOverviewStep.class, viewName);
+		createStepEntry(new ScheduleOverviewStep(panel), viewName);
 	}
 	
-	public void createSummaryStepEntries()
+	public void createSummaryStepEntries(WizardPanel panel, String viewName)
 	{
-		final String viewName = SummaryView.getViewName();
-		
-		createStepEntry(SummaryOverviewStep.class, viewName);
-		createStepEntry(SummaryWizardDefineTeamMembers.class, viewName);
-		createStepEntry(SummaryWizardDefineProjectLeader.class, viewName);;
-		createStepEntry(SummaryWizardDefineProjecScope.class, viewName);
-		createStepEntry(SummaryWizardDefineProjectVision.class, viewName);
+		createStepEntry(new SummaryOverviewStep(panel), viewName);
+		createStepEntry(new SummaryWizardDefineTeamMembers(panel), viewName);
+		createStepEntry(new SummaryWizardDefineProjectLeader(panel), viewName);;
+		createStepEntry(new SummaryWizardDefineProjecScope(panel), viewName);
+		createStepEntry(new SummaryWizardDefineProjectVision(panel), viewName);
 	}
 	
-	public void createWorkPlanStepEntries()
+	public void createWorkPlanStepEntries(WizardPanel panel, String viewName)
 	{
-		final String viewName = WorkPlanView.getViewName();
-		
-		createStepEntry(WorkPlanOverviewStep.class, viewName);
-		createStepEntry(MonitoringWizardSelectMethodsStep.class, viewName);;
-		createStepEntry(WorkPlanDevelopActivitiesAndTasksStep.class, viewName);
-		createStepEntry(WorkPlanDevelopMethodsAndTasksStep.class, viewName);
-		createStepEntry(WorkPlanCreateResourcesStep.class, viewName);
-		createStepEntry(WorkPlanAssignResourcesStep.class, viewName);
+		createStepEntry(new WorkPlanOverviewStep(panel), viewName);
+		createStepEntry(new MonitoringWizardSelectMethodsStep(panel), viewName);;
+		createStepEntry(new WorkPlanDevelopActivitiesAndTasksStep(panel), viewName);
+		createStepEntry(new WorkPlanDevelopMethodsAndTasksStep(panel), viewName);
+		createStepEntry(new WorkPlanCreateResourcesStep(panel), viewName);
+		createStepEntry(new WorkPlanAssignResourcesStep(panel), viewName);
 	}
 	
-	public void createMonitoringViewStepEntries()
+	public void createMonitoringViewStepEntries(WizardPanel panel, String viewName)
 	{		
-		final String viewName = MonitoringView.getViewName();
-	
-		createStepEntry(MonitoringPlanOverviewStep.class, viewName);
-		createStepEntry(MonitoringWizardEditIndicatorsStep.class, viewName);
+		createStepEntry(new MonitoringPlanOverviewStep(panel), viewName);
+		createStepEntry(new MonitoringWizardEditIndicatorsStep(panel), viewName);
 	}
 	
-	public void createDigramViewStepEntries()
+	public void createDigramViewStepEntries(WizardPanel panel, String viewName)
 	{
-		final String viewName = DiagramView.getViewName();
-		
-		createStepEntry(DiagramOverviewStep.class, viewName);
-		createStepEntry(DiagramWizardProjectScopeStep.class, viewName);
-		createStepEntry(DiagramWizardVisionStep.class, viewName);
-		createStepEntry(DiagramWizardDefineTargetsStep.class, viewName);
-		createStepEntry(DiagramWizardReviewAndModifyTargetsStep.class, viewName);
-		createStepEntry(DescribeTargetStatusStep.class, viewName);
-		createStepEntry(DiagramWizardIdentifyDirectThreatStep.class, viewName);
-		createStepEntry(DiagramWizardLinkDirectThreatsToTargetsStep.class, viewName);
-		createStepEntry(DiagramWizardIdentifyIndirectThreatStep.class, viewName);		
-		createStepEntry(DiagramWizardConstructChainsStep.class, viewName);	
-		createStepEntry(DiagramWizardReviewModelAndAdjustStep.class, viewName);		
-		createStepEntry(SelectChainStep.class, viewName);		
-		createStepEntry(DevelopDraftStrategiesStep.class, viewName);
-		createStepEntry(RankDraftStrategiesStep.class, viewName);
-		createStepEntry(EditAllStrategiesStep.class, viewName);
-		createStepEntry(StrategicPlanDevelopGoalStep.class, viewName);
-		createStepEntry(StrategicPlanDevelopObjectivesStep.class, viewName);		
-		createStepEntry(MonitoringWizardFocusStep.class, viewName);		
-		createStepEntry(MonitoringWizardDefineIndicatorsStep.class, viewName);
+		createStepEntry(new DiagramOverviewStep(panel), viewName);
+		createStepEntry(new DiagramWizardProjectScopeStep(panel), viewName);
+		createStepEntry(new DiagramWizardVisionStep(panel), viewName);
+		createStepEntry(new DiagramWizardDefineTargetsStep(panel), viewName);
+		createStepEntry(new DiagramWizardReviewAndModifyTargetsStep(panel), viewName);
+		createStepEntry(new DescribeTargetStatusStep(panel), viewName);
+		createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel), viewName);
+		createStepEntry(new DiagramWizardLinkDirectThreatsToTargetsStep(panel), viewName);
+		createStepEntry(new DiagramWizardIdentifyIndirectThreatStep(panel), viewName);		
+		createStepEntry(new DiagramWizardConstructChainsStep(panel), viewName);	
+		createStepEntry(new DiagramWizardReviewModelAndAdjustStep(panel), viewName);		
+		createStepEntry(new SelectChainStep(panel), viewName);		
+		createStepEntry(new DevelopDraftStrategiesStep(panel), viewName);
+		createStepEntry(new RankDraftStrategiesStep(panel), viewName);
+		createStepEntry(new EditAllStrategiesStep(panel), viewName);
+		createStepEntry(new StrategicPlanDevelopGoalStep(panel), viewName);
+		createStepEntry(new StrategicPlanDevelopObjectivesStep(panel), viewName);		
+		createStepEntry(new MonitoringWizardFocusStep(panel), viewName);		
+		createStepEntry(new MonitoringWizardDefineIndicatorsStep(panel), viewName);
 	}
 
 
-	public void createThreatMatrixViewStepEntries()
+	public void createThreatMatrixViewStepEntries(ThreatRatingWizardPanel panel, String viewName) throws Exception
 	{
-		final String viewName = ThreatMatrixView.getViewName();
-		
-		WizardStepEntry stepEntry1 = createStepEntry(ThreatMatrixOverviewStep.class, viewName);
+		WizardStepEntry stepEntry1 = createStepEntry(new ThreatMatrixOverviewStep(panel), viewName);
 		//TODO: View:Diagram...should be Step:StepName or support both
 		stepEntry1.createControl("View:Diagram", DiagramOverviewStep.class);
 
-		WizardStepEntry stepEntry2 = createStepEntry(ThreatRatingWizardChooseBundle.class, viewName);
+		WizardStepEntry stepEntry2 = createStepEntry(new ThreatRatingWizardChooseBundle(panel), viewName);
 		stepEntry2.createControl("Done", ThreatRatingWizardCheckTotalsStep.class);
 		
-		createStepEntry(ThreatRatingWizardScopeStep.class, viewName);
-		createStepEntry(ThreatRatingWizardSeverityStep.class, viewName);
-		createStepEntry(ThreatRatingWizardIrreversibilityStep.class, viewName);
+		createStepEntry(new ThreatRatingWizardScopeStep(panel), viewName);
+		createStepEntry(new ThreatRatingWizardSeverityStep(panel), viewName);
+		createStepEntry(new ThreatRatingWizardIrreversibilityStep(panel), viewName);
 
-		WizardStepEntry stepEntry3 = createStepEntry(ThreatRatingWizardCheckBundleStep.class, viewName);
+		WizardStepEntry stepEntry3 = createStepEntry(new ThreatRatingWizardCheckBundleStep(panel), viewName);
 		stepEntry3.createNextControl(ThreatRatingWizardChooseBundle.class); 
 
-		WizardStepEntry stepEntry4 = createStepEntry(ThreatRatingWizardCheckTotalsStep.class, viewName);
+		WizardStepEntry stepEntry4 = createStepEntry(new ThreatRatingWizardCheckTotalsStep(panel), viewName);
 		stepEntry4.createNextControl(ThreatMatrixOverviewStep.class); 
 	}
 
 
-	public void setUpSequences1()
+	static Class[] getSequence()
 	{
 		Class[] entries = 
 		{
@@ -524,27 +444,17 @@ class StepTable extends Hashtable
 				ScheduleOverviewStep.class,
 		};
 		
-		sequenceSteps(entries);
+		return entries;
+		
 	}
 	
-
-	public void sequenceSteps(Class[] entries)
+	private WizardStepEntry createStepEntry(SkeletonWizardStep step, String viewName)
 	{
-		for (int i=0; i<=entries.length-2; ++i)
-		{
-			findStep(entries[i]).createNextControl(entries[i+1]);
-			findStep(entries[i+1]).createBackControl(entries[i]);
-		}
-	}
-	
-	
-	private WizardStepEntry createStepEntry(Class wizardStep, String viewName)
-	{
-		WizardStepEntry stepEntry = new WizardStepEntry(wizardStep.getSimpleName(), viewName);
+		WizardStepEntry stepEntry = new WizardStepEntry(step.getClass().getSimpleName(), viewName);
+		stepEntry.setStepClass(step);
 		put(stepEntry.getStepName(),stepEntry);
 		return stepEntry;
 	}
-	
 
 	WizardStepEntry findStep(Class stepClass)
 	{
@@ -571,7 +481,7 @@ class WizardStepEntry
 		entries = new Hashtable();
 	}
 	
-	
+	//TODO: add control directly to wizard step; get rid of WizardControl class
 	void createControl(String controlName , Class controlStep)
 	{
 		entries.put(controlName, new WizardControl(controlName, controlStep.getSimpleName()));
@@ -588,24 +498,69 @@ class WizardStepEntry
 	}
 
 	
-	WizardControl findControl(String controlName)
+	String findControlTargetStep(String controlName)
 	{
 		WizardControl control = (WizardControl)entries.get(controlName);
+		
 		if (control==null)
-			EAM.logError("CONTROL ("+ controlName +") NOT FOUND IN STEP=:" + stepName);
-		return control;
+			return doDeferedLookup(controlName);
+
+		return control.getStepName();
 	}
 
-	SkeletonWizardStep getStepClass()
+
+	String doDeferedLookup(String controlName)
 	{
-		if (step==null)
-			EAM.logError("Class for step name ("+ stepName +") in view ("+ viewName +") NOT FOUND");
-		return step;
+		Class[] sequences = StepTable.getSequence();
+
+		int found = findPositionInSequence(sequences);
+			
+		if (found<0)
+		{
+			EAM.logError("Step not found in sequence table" + stepName);
+			EAM.errorDialog(EAM.text("Step not found in sequence table:" + stepName));
+			return null;
+		}
+		
+		if (controlName.equals("Next"))
+		{
+			String name = sequences[0].getSimpleName();
+			if (found != sequences.length-1)
+				name = sequences[found+1].getSimpleName();
+			return name;
+		}
+		
+		if (controlName.equals("Back"))
+		{
+			String name = sequences[sequences.length-1].getSimpleName();
+			if (found != 0)
+				name = sequences[found-1].getSimpleName();
+			return name;
+			
+		}
+		
+		EAM.logError("Control not specified" + stepName);
+		EAM.errorDialog(EAM.text("Control not specified:" + stepName));
+		return null;
+	}
+
+
+	private int findPositionInSequence(Class[] sequences)
+	{
+		for (int i=0; i<sequences.length; ++i)
+			if (sequences[i].getSimpleName().equals(stepName)) 
+				return i;
+		return -1;
 	}
 	
 	void setStepClass(SkeletonWizardStep stepToUse)
 	{
 		step = stepToUse;
+	}
+	
+	SkeletonWizardStep getStepClass()
+	{
+		return step;
 	}
 	
 	String getViewName()
@@ -624,6 +579,7 @@ class WizardStepEntry
 	private SkeletonWizardStep step;
 }
 
+//TODO: THis class will go away once controls are stored directly in step classes
 class WizardControl
 {
 	WizardControl(String controlNameToUse, String stepNameToUse)
