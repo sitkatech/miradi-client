@@ -210,6 +210,10 @@ public class WizardPanel extends JPanel
 		String viewNameCur = currentStepClass.getWizard().getView().cardName();
 		
 		SkeletonWizardStep newStepClass = stepTable.findStep(newStep).getStepClass();
+		
+		if (newStepClass==null) 
+			return;
+		
 		String viewNameNew = newStepClass.getWizard().getView().cardName();
 	
 		
@@ -217,17 +221,13 @@ public class WizardPanel extends JPanel
 		if (!viewNameNew.equals(viewNameCur))
 		{
 			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
-			newStepClass.getWizard().jump(newStepClass.getClass());
+			newStepClass.getWizard().jump(newStep);
 			return;
 		}
 
-		if (newStepClass!=null)
-		{
-			currentStepName = newStep;
-			newStepClass.refresh();
-			setContents(newStepClass);
-		}
-
+		currentStepName = newStep;
+		newStepClass.refresh();
+		setContents(newStepClass);
 	}
 
 	private String removeSpaces(String name)
