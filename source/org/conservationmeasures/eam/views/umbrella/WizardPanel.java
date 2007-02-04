@@ -12,17 +12,6 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.budget.BudgetView;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
-import org.conservationmeasures.eam.views.monitoring.MonitoringView;
-import org.conservationmeasures.eam.views.noproject.NoProjectView;
-import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardPanel;
-import org.conservationmeasures.eam.views.schedule.ScheduleView;
-import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
-import org.conservationmeasures.eam.views.summary.SummaryView;
-import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
-import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 
 public class WizardPanel extends JPanel
 {
@@ -39,35 +28,7 @@ public class WizardPanel extends JPanel
 	{
 		try
 		{
-			String currentView = view.cardName();
-			
-			if (currentView.equals(ThreatMatrixView.getViewName()))
-				wizardManager.createThreatMatrixViewStepEntries((ThreatRatingWizardPanel)this);
-				
-			if (currentView.equals(DiagramView.getViewName()))
-				wizardManager.createDigramViewStepEntries(this);
-			
-			if (currentView.equals(MonitoringView.getViewName()))
-				wizardManager.createMonitoringViewStepEntries(this);
-			
-			if (currentView.equals(WorkPlanView.getViewName()))
-				wizardManager.createWorkPlanStepEntries(this);
-			
-			if (currentView.equals(SummaryView.getViewName()))
-				wizardManager.createSummaryStepEntries(this);
-				
-			if (currentView.equals(ScheduleView.getViewName()))
-				wizardManager.createScheduleStepEntries(this);
-			
-			if (currentView.equals(StrategicPlanView.getViewName()))
-				wizardManager.createStrategicPlanStepEntries(this);
-			
-			if (currentView.equals(BudgetView.getViewName()))
-				wizardManager.createBudgetStepEntries(this);
-			
-			if (currentView.equals(NoProjectView.getViewName()))
-				wizardManager.createNoProjectStepEntries((NoProjectWizardPanel)this);
-			
+			wizardManager.setUpSteps(view,this);
 			currentStepName = removeSpaces(view.cardName()) + "OverviewStep";
 			setStep(currentStepName);
 		}
@@ -79,7 +40,7 @@ public class WizardPanel extends JPanel
 			EAM.logException(e);
 		}
 	}
-	
+
 	public void setContents(JPanel contents)
 	{
 		removeAll();
