@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.BorderLayout;
+import java.util.Hashtable;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -20,6 +21,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	{
 		super(new BorderLayout());
 		wizard = wizardToUse;
+		controls = new Hashtable();
 
 	}
 	
@@ -90,8 +92,17 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	public void setComponent(String name, JComponent component)
 	{
 	}
+	
+	public Class getControl(String controlName)
+	{
+		return (Class) controls.get(controlName);
+	}
 
+	public void addControl(String controlName, Class targetStepp)
+	{
+		controls.put(controlName, targetStepp);
+	}
 
-
+	private Hashtable controls;
 	private WizardPanel wizard;
 }

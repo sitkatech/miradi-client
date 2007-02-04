@@ -217,11 +217,12 @@ public class WizardPanel extends JPanel
 		if (!viewNameNew.equals(viewNameCur))
 		{
 			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
-			SkeletonWizardStep stepClass = stepTable.findStep(newStep).getStepClass();
-			mainWindow.getCurrentView().jump(stepClass.getClass());
+			SkeletonWizardStep stepClass = entryNew.getStepClass();
+			stepClass.getWizard().jump(stepClass.getClass());
 			return;
 		}
-		SkeletonWizardStep stepClass = stepTable.findStep(newStep).getStepClass();
+		
+		SkeletonWizardStep stepClass = entryNew.getStepClass();
 		if (stepClass!=null)
 		{
 			currentStepName = newStep;
@@ -484,13 +485,12 @@ class WizardStepEntry
 	WizardStepEntry(String stepNameToUse)
 	{
 		stepName = stepNameToUse;
-		entries = new Hashtable();
 	}
 	
 	//TODO: add control directly to wizard step; get rid of WizardControl class
 	WizardStepEntry createControl(String controlName , Class controlStep)
 	{
-		entries.put(controlName, new WizardControl(controlName, controlStep.getSimpleName()));
+		step.addControl(controlName, controlStep);
 		return this;
 	}
 	
@@ -507,12 +507,12 @@ class WizardStepEntry
 	
 	String findControlTargetStep(String controlName)
 	{
-		WizardControl control = (WizardControl)entries.get(controlName);
+		Class targetStep = step.getControl(controlName);
 		
-		if (control==null)
+		if (targetStep==null)
 			return doDeferedLookup(controlName);
 
-		return control.getStepName();
+		return targetStep.getSimpleName();
 	}
 
 
@@ -580,24 +580,6 @@ class WizardStepEntry
 	}
 	
 	private String stepName;
-	private Hashtable entries;
+
 	private SkeletonWizardStep step;
-}
-
-//TODO: THis class will go away once controls are stored directly in step classes
-class WizardControl
-{
-	WizardControl(String controlNameToUse, String stepNameToUse)
-	{
-		controlName = controlNameToUse;
-		stepName = stepNameToUse;
-	}
-
-	String getStepName()
-	{
-		return stepName;
-	}
-	
-	String stepName;
-	String controlName;
 }
