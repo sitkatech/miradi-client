@@ -206,28 +206,26 @@ public class WizardPanel extends JPanel
 			currentStepName = newStep;
 		}
 		
-		WizardStepEntry entryCur = stepTable.findStep(currentStepName);
-		String viewNameCur = entryCur.getStepClass().getWizard().getView().cardName();
+		SkeletonWizardStep currentStepClass = stepTable.findStep(currentStepName).getStepClass();
+		String viewNameCur = currentStepClass.getWizard().getView().cardName();
 		
-		WizardStepEntry entryNew = stepTable.findStep(newStep);
-		String viewNameNew = entryNew.getStepClass().getWizard().getView().cardName();
+		SkeletonWizardStep newStepClass = stepTable.findStep(newStep).getStepClass();
+		String viewNameNew = newStepClass.getWizard().getView().cardName();
 	
 		
 		//FIXME: view switch should not happen here
 		if (!viewNameNew.equals(viewNameCur))
 		{
 			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
-			SkeletonWizardStep stepClass = entryNew.getStepClass();
-			stepClass.getWizard().jump(stepClass.getClass());
+			newStepClass.getWizard().jump(newStepClass.getClass());
 			return;
 		}
-		
-		SkeletonWizardStep stepClass = entryNew.getStepClass();
-		if (stepClass!=null)
+
+		if (newStepClass!=null)
 		{
 			currentStepName = newStep;
-			stepClass.refresh();
-			setContents(stepClass);
+			newStepClass.refresh();
+			setContents(newStepClass);
 		}
 
 	}
