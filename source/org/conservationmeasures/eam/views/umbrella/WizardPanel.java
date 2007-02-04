@@ -42,31 +42,31 @@ public class WizardPanel extends JPanel
 			String currentView = view.cardName();
 			
 			if (currentView.equals(ThreatMatrixView.getViewName()))
-				addThreatMatrixViewSteps();
+				wizardManager.createThreatMatrixViewStepEntries((ThreatRatingWizardPanel)this);
 				
 			if (currentView.equals(DiagramView.getViewName()))
-				addDiagramViewSteps();
+				wizardManager.createDigramViewStepEntries(this);
 			
 			if (currentView.equals(MonitoringView.getViewName()))
-				addMonitoringViewSteps();
+				wizardManager.createMonitoringViewStepEntries(this);
 			
 			if (currentView.equals(WorkPlanView.getViewName()))
-				addWorkPlanViewSteps();
+				wizardManager.createWorkPlanStepEntries(this);
 			
 			if (currentView.equals(SummaryView.getViewName()))
-				addSummaryViewSteps();
+				wizardManager.createSummaryStepEntries(this);
 				
 			if (currentView.equals(ScheduleView.getViewName()))
-				addScheduleViewSteps();
+				wizardManager.createScheduleStepEntries(this);
 			
 			if (currentView.equals(StrategicPlanView.getViewName()))
-				addStrategicPlanViewSteps();
+				wizardManager.createStrategicPlanStepEntries(this);
 			
 			if (currentView.equals(BudgetView.getViewName()))
-				addBudgetViewSteps();
+				wizardManager.createBudgetStepEntries(this);
 			
 			if (currentView.equals(NoProjectView.getViewName()))
-				addNoProjectViewSteps();
+				wizardManager.createNoProjectStepEntries((NoProjectWizardPanel)this);
 			
 			currentStepName = removeSpaces(view.cardName()) + "OverviewStep";
 			setStep(currentStepName);
@@ -80,51 +80,6 @@ public class WizardPanel extends JPanel
 		}
 	}
 	
-	private void addNoProjectViewSteps() throws Exception
-	{
-		wizardManager.createNoProjectStepEntries((NoProjectWizardPanel)this);
-	}
-	
-	private void addBudgetViewSteps()
-	{
-		wizardManager.createBudgetStepEntries(this);
-	}
-	
-	private void addStrategicPlanViewSteps()
-	{
-		wizardManager.createStrategicPlanStepEntries(this);
-	}
-	
-	private void addScheduleViewSteps()
-	{
-		wizardManager.createScheduleStepEntries(this);
-	}
-
-	private void addSummaryViewSteps()
-	{
-		wizardManager.createSummaryStepEntries(this);
-	}
-	
-	private void addDiagramViewSteps() throws Exception
-	{
-		wizardManager.createDigramViewStepEntries(this);
-	}
-	
-	private void addThreatMatrixViewSteps() throws Exception
-	{
-		wizardManager.createThreatMatrixViewStepEntries((ThreatRatingWizardPanel)this);
-	}
-
-	public void addMonitoringViewSteps()
-	{
-		wizardManager.createMonitoringViewStepEntries(this);
-	}
-	
-	public void addWorkPlanViewSteps()
-	{
-		wizardManager.createWorkPlanStepEntries(this);
-	}
-
 	public void setContents(JPanel contents)
 	{
 		removeAll();
@@ -172,7 +127,6 @@ public class WizardPanel extends JPanel
 		jump(name);
 	}
 
-	
 	public void jump(String stepMarker) throws Exception
 	{
 			setStep(stepMarker);

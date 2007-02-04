@@ -294,7 +294,6 @@ class WizardStepEntry
 		stepName = stepNameToUse;
 	}
 	
-	//TODO: add control directly to wizard step; get rid of WizardControl class
 	WizardStepEntry createControl(String controlName , Class controlStep)
 	{
 		step.addControl(controlName, controlStep);
@@ -311,7 +310,6 @@ class WizardStepEntry
 		return createControl("Back", controlStep);
 	}
 
-	
 	String findControlTargetStep(String controlName)
 	{
 		Class targetStep = step.getControl(controlName);
@@ -321,7 +319,6 @@ class WizardStepEntry
 
 		return targetStep.getSimpleName();
 	}
-
 
 	String doDeferedLookup(String controlName)
 	{
