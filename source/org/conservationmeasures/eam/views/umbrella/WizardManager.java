@@ -128,10 +128,9 @@ class WizardManager extends Hashtable
 			return currentStepName;
 		}
 
-		currentStepName = newStep;
 		newStepClass.refresh();
 		newStepClass.getWizard().setContents(newStepClass);
-		return currentStepName;
+		return newStep;
 	}
 	
 	public void createNoProjectStepEntries(NoProjectWizardPanel panel) throws Exception
