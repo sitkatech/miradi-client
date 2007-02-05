@@ -79,7 +79,22 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		}
 	}
 	
-
+	SkeletonWizardStep createControl(String controlName , Class controlStep)
+	{
+		addControl(controlName, controlStep);
+		return this;
+	}
+	
+	SkeletonWizardStep createNextControl(Class controlStep)
+	{
+		return createControl("Next", controlStep);
+	}
+	
+	SkeletonWizardStep createBackControl(Class controlStep)
+	{
+		return createControl("Back", controlStep);
+	}
+	
 	public JPopupMenu getRightClickMenu(String url)
 	{
 		return null;

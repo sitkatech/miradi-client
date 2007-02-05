@@ -312,12 +312,12 @@ public class WizardManager
 		
 	}
 	
-	private WizardStepEntry createStepEntry(SkeletonWizardStep step)
+	private SkeletonWizardStep createStepEntry(SkeletonWizardStep step)
 	{
 		WizardStepEntry stepEntry = new WizardStepEntry();
 		stepEntry.setStepClass(step);
 		stepEntries.put(step.getClass().getSimpleName(),stepEntry);
-		return stepEntry;
+		return step;
 	}
 
 	WizardStepEntry findStep(Class stepClass)
@@ -398,22 +398,6 @@ public class WizardManager
 
 class WizardStepEntry
 {
-	WizardStepEntry createControl(String controlName , Class controlStep)
-	{
-		step.addControl(controlName, controlStep);
-		return this;
-	}
-	
-	WizardStepEntry createNextControl(Class controlStep)
-	{
-		return createControl("Next", controlStep);
-	}
-	
-	WizardStepEntry createBackControl(Class controlStep)
-	{
-		return createControl("Back", controlStep);
-	}
-
 	void setStepClass(SkeletonWizardStep stepToUse)
 	{
 		step = stepToUse;
