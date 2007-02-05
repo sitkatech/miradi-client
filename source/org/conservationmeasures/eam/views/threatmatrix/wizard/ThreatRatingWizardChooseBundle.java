@@ -111,7 +111,11 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 			{
 				if(getSelectedBundle() == null)
 				{
-					EAM.errorDialog(EAM.text("Please select a threat and target"));
+					if ((threatBox.getSelectedIndex())==0 || (targetBox.getSelectedIndex()==0))
+						EAM.errorDialog(EAM.text("Please select a threat and target"));
+					else
+						EAM.errorDialog(EAM.text("This threat is not currently linked to the selected target.  " +
+						"To create a link, click in the associated gray box in the threat table"));
 					return;
 				}
 			}
