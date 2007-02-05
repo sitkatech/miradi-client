@@ -314,9 +314,9 @@ public class WizardManager
 	
 	private WizardStepEntry createStepEntry(SkeletonWizardStep step)
 	{
-		WizardStepEntry stepEntry = new WizardStepEntry(step.getClass().getSimpleName());
+		WizardStepEntry stepEntry = new WizardStepEntry();
 		stepEntry.setStepClass(step);
-		stepEntries.put(stepEntry.getStepName(),stepEntry);
+		stepEntries.put(step.getClass().getSimpleName(),stepEntry);
 		return stepEntry;
 	}
 
@@ -339,12 +339,6 @@ public class WizardManager
 
 class WizardStepEntry
 {
-	//TODO: If we can change the jump classes later to contain the static reference to the step class (.class) to go to then we can get rid of string step names
-	WizardStepEntry(String stepNameToUse)
-	{
-		stepName = stepNameToUse;
-	}
-	
 	WizardStepEntry createControl(String controlName , Class controlStep)
 	{
 		step.addControl(controlName, controlStep);
@@ -379,7 +373,7 @@ class WizardStepEntry
 			
 		if (found<0)
 		{
-			reportError(EAM.text("Step not found in sequence table: ") + stepName);
+			reportError(EAM.text("Step not found in sequence table: ") + getStepClass().getClass().getSimpleName());
 			return null;
 		}
 		
@@ -400,7 +394,7 @@ class WizardStepEntry
 			
 		}
 		
-		reportError(EAM.text("Control not specified: ") + stepName);
+		reportError(EAM.text("Control not specified: ") + getStepClass().getClass().getSimpleName());
 		return null;
 	}
 
@@ -414,7 +408,7 @@ class WizardStepEntry
 	private int findPositionInSequence(Class[] sequences)
 	{
 		for (int i=0; i<sequences.length; ++i)
-			if (sequences[i].getSimpleName().equals(stepName)) 
+			if (sequences[i].getSimpleName().equals(getStepClass().getClass().getSimpleName())) 
 				return i;
 		return -1;
 	}
@@ -428,13 +422,6 @@ class WizardStepEntry
 	{
 		return step;
 	}
-	
-	String getStepName()
-	{
-		return stepName;
-	}
-	
-	private String stepName;
 
 	private SkeletonWizardStep step;
 }
