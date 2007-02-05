@@ -82,14 +82,28 @@ public class ProjectUnzipper
 		tempProjectDirectory.mkdir();
 		unzip(zipIn, tempProjectDirectory);
 
+		try 
+		{
+			validateAndCopyProject(homeDirectory, newProjectFilename, tempProjectDirectory);
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempHomeDir);
+		}
+
+	}
+
+	private static void validateAndCopyProject(File homeDirectory, String newProjectFilename, File tempProjectDirectory) throws Exception
+	{
 		// TODO: Find a better test for whether or not the import failed? 
 		if (ProjectServer.isExistingProject(tempProjectDirectory))
 		{
 			File destinationProjectDirectory = new File(homeDirectory,newProjectFilename);
 			DirectoryUtils.copyDirectoryTree(tempProjectDirectory, destinationProjectDirectory);
+			return;
 		}
-
-		DirectoryUtils.deleteEntireDirectoryTree(tempHomeDir);
+		
+		throw new Exception("Illegal project: " + newProjectFilename);
 	}
 	
 	
