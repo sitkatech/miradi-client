@@ -79,11 +79,12 @@ public class ProjectUnzipper
 		File tempHomeDir = createTempDirectory("$$$"+newProjectFilename);
 
 		File tempProjectDirectory = new File(tempHomeDir, newProjectFilename);
-		tempProjectDirectory.mkdir();
-		unzip(zipIn, tempProjectDirectory);
 
+		tempProjectDirectory.mkdir();
+		
 		try 
 		{
+			unzip(zipIn, tempProjectDirectory);
 			validateAndCopyProject(homeDirectory, newProjectFilename, tempProjectDirectory);
 		}
 		finally
