@@ -55,7 +55,7 @@ public class WizardPanel extends JPanel
 	public void control(String controlName) throws Exception
 	{
 		WizardStepEntry entry = wizardManager.findStep(currentStepName);
-		jump(entry.findControlTargetStep(controlName));
+		jump(wizardManager.findControlTargetStep(controlName, entry));
 	}
 
 
@@ -114,6 +114,6 @@ public class WizardPanel extends JPanel
 	protected UmbrellaView view;
 	protected MainWindow mainWindow;
 	public String currentStepName;
-	private static WizardManager wizardManager;
+	private WizardManager wizardManager;
 
 }

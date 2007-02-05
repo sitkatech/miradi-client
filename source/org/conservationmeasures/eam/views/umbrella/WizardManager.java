@@ -334,6 +334,65 @@ public class WizardManager
 		return entry;
 	}
 	
+	String findControlTargetStep(String controlName, WizardStepEntry entry)
+	{
+		Class targetStep = entry.getStepClass().getControl(controlName);
+		
+		if (targetStep==null)
+			return doDeferedLookup(controlName,entry);
+
+		return targetStep.getSimpleName();
+	}
+	
+	
+	String doDeferedLookup(String controlName, WizardStepEntry entry)
+	{
+		Class[] sequences = WizardManager.getSequence();
+
+		int found = findPositionInSequence(sequences, entry);
+			
+		if (found<0)
+		{
+			reportError(EAM.text("Step not found in sequence table: ") + entry.getStepClass().getClass().getSimpleName());
+			return null;
+		}
+		
+		if (controlName.equals("Next"))
+		{
+			String name = sequences[0].getSimpleName();
+			if (found != sequences.length-1)
+				name = sequences[found+1].getSimpleName();
+			return name;
+		}
+		
+		if (controlName.equals("Back"))
+		{
+			String name = sequences[sequences.length-1].getSimpleName();
+			if (found != 0)
+				name = sequences[found-1].getSimpleName();
+			return name;
+			
+		}
+		
+		reportError(EAM.text("Control not specified: ") + entry.getStepClass().getClass().getSimpleName());
+		return null;
+	}
+
+	private void reportError(String msg)
+	{
+		EAM.logError(msg);
+		EAM.errorDialog(msg);
+	}
+
+
+	private int findPositionInSequence(Class[] sequences, WizardStepEntry entry)
+	{
+		for (int i=0; i<sequences.length; ++i)
+			if (sequences[i].getSimpleName().equals(entry.getStepClass().getClass().getSimpleName())) 
+				return i;
+		return -1;
+	}
+	
 	Hashtable stepEntries;
 }
 
@@ -355,64 +414,6 @@ class WizardStepEntry
 		return createControl("Back", controlStep);
 	}
 
-	String findControlTargetStep(String controlName)
-	{
-		Class targetStep = step.getControl(controlName);
-		
-		if (targetStep==null)
-			return doDeferedLookup(controlName);
-
-		return targetStep.getSimpleName();
-	}
-
-	String doDeferedLookup(String controlName)
-	{
-		Class[] sequences = WizardManager.getSequence();
-
-		int found = findPositionInSequence(sequences);
-			
-		if (found<0)
-		{
-			reportError(EAM.text("Step not found in sequence table: ") + getStepClass().getClass().getSimpleName());
-			return null;
-		}
-		
-		if (controlName.equals("Next"))
-		{
-			String name = sequences[0].getSimpleName();
-			if (found != sequences.length-1)
-				name = sequences[found+1].getSimpleName();
-			return name;
-		}
-		
-		if (controlName.equals("Back"))
-		{
-			String name = sequences[sequences.length-1].getSimpleName();
-			if (found != 0)
-				name = sequences[found-1].getSimpleName();
-			return name;
-			
-		}
-		
-		reportError(EAM.text("Control not specified: ") + getStepClass().getClass().getSimpleName());
-		return null;
-	}
-
-	private void reportError(String msg)
-	{
-		EAM.logError(msg);
-		EAM.errorDialog(msg);
-	}
-
-
-	private int findPositionInSequence(Class[] sequences)
-	{
-		for (int i=0; i<sequences.length; ++i)
-			if (sequences[i].getSimpleName().equals(getStepClass().getClass().getSimpleName())) 
-				return i;
-		return -1;
-	}
-	
 	void setStepClass(SkeletonWizardStep stepToUse)
 	{
 		step = stepToUse;
