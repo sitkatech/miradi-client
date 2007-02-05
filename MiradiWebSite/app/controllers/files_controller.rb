@@ -6,18 +6,23 @@ class FilesController < ApplicationController
   end
   
   def files
+	list_files(get_private_directory)
+  end
+  
+  def list_files(dir)
     @sizeK = Hash.new
-	dir = get_private_directory
 	Dir.foreach(dir) do | f |
 	  @sizeK[f] = File.size(File.join(dir, f)) / 1024
 	end
   end
   
   def file
+	download_file(get_private_directory)
+  end
+  
+  def download_file(dir)
 	file = params[:file]
 
-	dir = get_private_directory
-	
 	if(file.index('.') == 0 || !Dir.entries(dir).index(file))
       flash[:warning]  = "File not found"
 	  redirect_to "/download"
@@ -37,7 +42,19 @@ class FilesController < ApplicationController
 	send_file(path, {:stream => false, :type => type, :disposition => disposition})
   end
   
+  def untested
+    list_files(get_untested_directory)
+  end
+  
+  def file_untested
+	download_file(get_untested_directory)
+  end
+  
   def get_private_directory
 	return File.join(RAILS_ROOT,'private')
+  end
+
+  def get_untested_directory
+	return File.join(File.join(RAILS_ROOT,'private'), 'untested')
   end
 end
