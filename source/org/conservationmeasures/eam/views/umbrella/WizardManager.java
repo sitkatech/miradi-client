@@ -228,7 +228,6 @@ public class WizardManager
 		createStepEntry(new ThreatMatrixOverviewStep(panel))
 			.createControl("View:Diagram", DiagramOverviewStep.class);
 
-
 		createStepEntry(new ThreatRatingWizardChooseBundle(panel))
 			.createControl("Done", ThreatRatingWizardCheckTotalsStep.class);
 		
@@ -346,7 +345,7 @@ public class WizardManager
 			
 		if (found<0)
 		{
-			reportError(EAM.text("Step not found in sequence table: ") + step.getClass().getSimpleName());
+			reportError(EAM.text("Step not found in sequence table: ") + getStepName(step));
 			return null;
 		}
 		
@@ -367,7 +366,7 @@ public class WizardManager
 			
 		}
 		
-		reportError(EAM.text("Control not specified: ") + step.getClass().getSimpleName());
+		reportError(EAM.text("Control not specified: ") + getStepName(step));
 		return null;
 	}
 
@@ -381,9 +380,14 @@ public class WizardManager
 	private int findPositionInSequence(Class[] sequences, SkeletonWizardStep step)
 	{
 		for (int i=0; i<sequences.length; ++i)
-			if (sequences[i].getSimpleName().equals(step.getClass().getSimpleName())) 
+			if (sequences[i].getSimpleName().equals(getStepName(step))) 
 				return i;
 		return -1;
+	}
+	
+	private String getStepName(SkeletonWizardStep step)
+	{
+		return step.getClass().getSimpleName();
 	}
 	
 	Hashtable stepEntries;
