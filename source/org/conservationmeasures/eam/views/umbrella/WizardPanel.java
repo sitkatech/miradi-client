@@ -19,6 +19,7 @@ public class WizardPanel extends JPanel
 	{
 		super(new BorderLayout());
 		mainWindow = mainWindowToUse;
+		wizardManager = mainWindow.getWizardManager();
 		setFocusCycleRoot(true);
 		view = viewToUse;
 		setupSteps();
@@ -113,7 +114,6 @@ public class WizardPanel extends JPanel
 	protected UmbrellaView view;
 	protected MainWindow mainWindow;
 	public String currentStepName;
-	//TODO: this should not be a static but is really a wizard manager and should be pulled from above.
-	private static WizardManager wizardManager = new WizardManager();
+	private static WizardManager wizardManager;
 
 }

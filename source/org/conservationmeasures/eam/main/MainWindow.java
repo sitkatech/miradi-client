@@ -49,6 +49,7 @@ import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.umbrella.WizardManager;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.util.DirectoryLock;
@@ -65,6 +66,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		preferences = new AppPreferences();
 		project = projectToUse;
 		setFocusCycleRoot(true);
+		wizardManager = new WizardManager();
 	}
 	
 	public void start(String[] args) throws Exception
@@ -194,6 +196,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public Project getProject()
 	{
 		return project;
+	}
+	
+	public WizardManager getWizardManager()
+	{
+		return wizardManager;
 	}
 	
 	public DiagramComponent getDiagramComponent()
@@ -468,4 +475,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private JPanel toolBarBox;
 	private MainMenuBar mainMenuBar;
 	private MainStatusBar mainStatusBar;
+	
+	private WizardManager wizardManager;
 }

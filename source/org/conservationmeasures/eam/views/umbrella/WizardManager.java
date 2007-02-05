@@ -72,7 +72,7 @@ import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopMethods
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanOverviewStep;
 
 
-class WizardManager
+public class WizardManager
 {
 	
 	public WizardManager()
