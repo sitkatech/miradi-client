@@ -29,6 +29,7 @@ public class WizardPanel extends JPanel
 		try
 		{
 			wizardManager.setUpSteps(view,this);
+			//TODO: avoid dubble initialize of current step name 
 			currentStepName = removeSpaces(view.cardName()) + "OverviewStep";
 			setStep(currentStepName);
 		}
@@ -64,6 +65,7 @@ public class WizardPanel extends JPanel
 	
 	public void setStep(String newStep) throws Exception
 	{
+		//TODO: this shoud be cleaner when we do not sub class wizard panels
 		currentStepName = wizardManager.setStep(newStep, currentStepName);
 	}
 	
