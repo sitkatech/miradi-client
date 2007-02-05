@@ -67,6 +67,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		
 		calculateHeight(dlg, contents, bodyComponent);
 		Utilities.centerDlg(dlg);
+		close.requestFocus(true);
 		dlg.setVisible(true);
 	}
 
@@ -89,14 +90,15 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 	private Box createButtonBar(EAMDialog dlg)
 	{
-		JButton close = new JButton(new CloseAction(dlg));
-		close.requestFocus(true);
+		close = new JButton(new CloseAction(dlg));
 		dlg.getRootPane().setDefaultButton(close);
 		Box buttonBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {Box.createHorizontalGlue(), close};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 		return buttonBar;
 	}
+	
+
 	
 	private String loadHtml()
 	{
@@ -205,6 +207,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	private Class viewClass;
 	private String htmlFileName;
 	private HtmlFormEventHandler delegateFormHandler;
+	private JButton close;
 
 
 }
