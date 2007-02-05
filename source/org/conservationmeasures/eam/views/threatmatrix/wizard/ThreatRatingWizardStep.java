@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import org.conservationmeasures.eam.views.umbrella.WizardStep;
+import org.conservationmeasures.eam.wizard.WizardStep;
 
 public abstract class ThreatRatingWizardStep extends WizardStep
 {

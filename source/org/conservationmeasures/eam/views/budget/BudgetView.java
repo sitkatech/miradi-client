@@ -36,14 +36,14 @@ import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
-import org.conservationmeasures.eam.views.umbrella.WizardHtmlViewer;
-import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.workplan.CreateActivityDoer;
 import org.conservationmeasures.eam.views.workplan.CreateMethodDoer;
 import org.conservationmeasures.eam.views.workplan.CreateTaskDoer;
 import org.conservationmeasures.eam.views.workplan.DeleteWorkPlanTreeNode;
 import org.conservationmeasures.eam.views.workplan.TreeNodeDown;
 import org.conservationmeasures.eam.views.workplan.TreeNodeUp;
+import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
+import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetView extends TabbedView

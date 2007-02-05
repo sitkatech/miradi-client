@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.umbrella;
+package org.conservationmeasures.eam.wizard;
 
 import java.awt.BorderLayout;
 import java.util.Hashtable;
@@ -14,6 +14,8 @@ import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
+import org.conservationmeasures.eam.views.umbrella.Definition;
+import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
 {

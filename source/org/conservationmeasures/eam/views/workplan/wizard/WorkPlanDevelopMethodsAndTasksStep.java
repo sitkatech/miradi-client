@@ -5,8 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.workplan.wizard;
 
-import org.conservationmeasures.eam.views.umbrella.WizardPanel;
-import org.conservationmeasures.eam.views.umbrella.WizardStep;
+import org.conservationmeasures.eam.wizard.WizardPanel;
+import org.conservationmeasures.eam.wizard.WizardStep;
 
 public class WorkPlanDevelopMethodsAndTasksStep extends WizardStep
 {

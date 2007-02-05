@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.views.noproject.wizard;
 import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.views.umbrella.SkeletonWizardStep;
-import org.conservationmeasures.eam.views.umbrella.WizardHtmlViewer;
+import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
+import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 
 public class NoProjectWizardStep extends SkeletonWizardStep
 {

@@ -49,8 +49,8 @@ import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.umbrella.WizardManager;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
+import org.conservationmeasures.eam.wizard.WizardManager;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.util.DirectoryLock;
 

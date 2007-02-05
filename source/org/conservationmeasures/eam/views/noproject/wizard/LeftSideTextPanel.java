@@ -10,7 +10,7 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.views.umbrella.WizardHtmlViewer;
+import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 
 public class LeftSideTextPanel extends JPanel
