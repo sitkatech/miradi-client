@@ -16,7 +16,7 @@ import javax.swing.JTabbedPane;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.HtmlViewer;
+import org.conservationmeasures.eam.utils.HtmlFormViewer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 
@@ -55,9 +55,9 @@ public class MapView extends UmbrellaView
 		super.becomeInactive();
 	}
 
-	private HtmlViewer getIntroText() throws Exception
+	private HtmlFormViewer getIntroText() throws Exception
 	{
-		HtmlViewer htmlViewer = new HtmlViewer("",null);
+		HtmlFormViewer htmlViewer = new HtmlFormViewer("",null);
 		htmlViewer.setText(EAM.loadResourceFile(this.getClass(), OVERVIEW_HTML));
 		
 		//TODO: Find a better way to calculate scroll bar width to subtract
