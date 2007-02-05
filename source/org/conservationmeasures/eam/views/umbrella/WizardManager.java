@@ -115,10 +115,10 @@ public class WizardManager
 	
 	public String setStep(String newStep, String currentStepName) throws Exception
 	{	
-		SkeletonWizardStep currentStepClass = findStep(currentStepName).getStepClass();
+		SkeletonWizardStep currentStepClass = findStep(currentStepName);
 		String viewNameCur = currentStepClass.getWizard().getView().cardName();
 		
-		SkeletonWizardStep newStepClass = findStep(newStep).getStepClass();
+		SkeletonWizardStep newStepClass = findStep(newStep);
 		
 		if (newStepClass==null) 
 			return currentStepName;
@@ -314,46 +314,39 @@ public class WizardManager
 	
 	private SkeletonWizardStep createStepEntry(SkeletonWizardStep step)
 	{
-		WizardStepEntry stepEntry = new WizardStepEntry();
-		stepEntry.setStepClass(step);
-		stepEntries.put(step.getClass().getSimpleName(),stepEntry);
+		stepEntries.put(step.getClass().getSimpleName(),step);
 		return step;
 	}
 
-	WizardStepEntry findStep(Class stepClass)
-	{
-		return findStep(stepClass.getSimpleName());
-	}
 	
-	
-	WizardStepEntry findStep(String stepName)
+	SkeletonWizardStep findStep(String stepName)
 	{
-		WizardStepEntry entry =(WizardStepEntry)stepEntries.get(stepName);
-		if (entry==null)
+		SkeletonWizardStep step =(SkeletonWizardStep)stepEntries.get(stepName);
+		if (step==null)
 			EAM.logError("ENTRY NOT FOUND FOR STEP NAME=:" + stepName);
-		return entry;
+		return step;
 	}
 	
-	String findControlTargetStep(String controlName, WizardStepEntry entry)
+	String findControlTargetStep(String controlName, SkeletonWizardStep step)
 	{
-		Class targetStep = entry.getStepClass().getControl(controlName);
+		Class targetStep = step.getControl(controlName);
 		
 		if (targetStep==null)
-			return doDeferedLookup(controlName,entry);
+			return doDeferedLookup(controlName,step);
 
 		return targetStep.getSimpleName();
 	}
 	
 	
-	String doDeferedLookup(String controlName, WizardStepEntry entry)
+	String doDeferedLookup(String controlName, SkeletonWizardStep step)
 	{
 		Class[] sequences = WizardManager.getSequence();
 
-		int found = findPositionInSequence(sequences, entry);
+		int found = findPositionInSequence(sequences, step);
 			
 		if (found<0)
 		{
-			reportError(EAM.text("Step not found in sequence table: ") + entry.getStepClass().getClass().getSimpleName());
+			reportError(EAM.text("Step not found in sequence table: ") + step.getClass().getSimpleName());
 			return null;
 		}
 		
@@ -374,7 +367,7 @@ public class WizardManager
 			
 		}
 		
-		reportError(EAM.text("Control not specified: ") + entry.getStepClass().getClass().getSimpleName());
+		reportError(EAM.text("Control not specified: ") + step.getClass().getSimpleName());
 		return null;
 	}
 
@@ -385,10 +378,10 @@ public class WizardManager
 	}
 
 
-	private int findPositionInSequence(Class[] sequences, WizardStepEntry entry)
+	private int findPositionInSequence(Class[] sequences, SkeletonWizardStep step)
 	{
 		for (int i=0; i<sequences.length; ++i)
-			if (sequences[i].getSimpleName().equals(entry.getStepClass().getClass().getSimpleName())) 
+			if (sequences[i].getSimpleName().equals(step.getClass().getSimpleName())) 
 				return i;
 		return -1;
 	}
@@ -396,17 +389,3 @@ public class WizardManager
 	Hashtable stepEntries;
 }
 
-class WizardStepEntry
-{
-	void setStepClass(SkeletonWizardStep stepToUse)
-	{
-		step = stepToUse;
-	}
-	
-	SkeletonWizardStep getStepClass()
-	{
-		return step;
-	}
-
-	private SkeletonWizardStep step;
-}

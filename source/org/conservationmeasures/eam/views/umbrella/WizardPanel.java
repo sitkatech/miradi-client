@@ -54,8 +54,8 @@ public class WizardPanel extends JPanel
 	
 	public void control(String controlName) throws Exception
 	{
-		WizardStepEntry entry = wizardManager.findStep(currentStepName);
-		jump(wizardManager.findControlTargetStep(controlName, entry));
+		SkeletonWizardStep step = wizardManager.findStep(currentStepName);
+		jump(wizardManager.findControlTargetStep(controlName, step));
 	}
 
 
@@ -78,7 +78,7 @@ public class WizardPanel extends JPanel
 	
 	public void refresh() throws Exception
 	{
-		SkeletonWizardStep stepClass = wizardManager.findStep(currentStepName).getStepClass();
+		SkeletonWizardStep stepClass = wizardManager.findStep(currentStepName);
 		stepClass.refresh();
 		stepClass.validate();
 	}
