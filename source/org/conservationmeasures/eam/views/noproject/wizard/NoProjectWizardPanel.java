@@ -139,19 +139,11 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	{
 		try
 		{
-			if(buttonName.equals("NewProject"))
-			{
-				setStep(NoProjectWizardProjectCreateStep.class);
-			}
-			else if(buttonName.equals("CreateProject"))
+			if(buttonName.equals("CreateProject"))
 			{
 				createProject();
 			}
-			else if(buttonName.equals("Import"))
-			{
-				setStep(NoProjectWizardImportStep.class);
-			}
-			else if(buttonName.equals("ImportZip"))
+			if(buttonName.equals("ImportZip"))
 			{
 				EAMAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
 				action.doAction();

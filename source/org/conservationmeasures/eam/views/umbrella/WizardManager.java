@@ -141,7 +141,9 @@ class WizardManager
 	
 	public void createNoProjectStepEntries(NoProjectWizardPanel panel) throws Exception
 	{	
-		createStepEntry(new NoProjectOverviewStep(panel));
+		createStepEntry(new NoProjectOverviewStep(panel))
+			.createControl("Import",NoProjectWizardImportStep.class)
+			.createControl("NewProject",NoProjectWizardProjectCreateStep.class);
 		
 		createStepEntry(new NoProjectWizardImportStep(panel))
 			.createBackControl(NoProjectOverviewStep.class);
