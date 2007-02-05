@@ -72,8 +72,14 @@ import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopMethods
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanOverviewStep;
 
 
-class WizardManager extends Hashtable
+class WizardManager
 {
+	
+	public WizardManager()
+	{
+		stepEntries = new Hashtable();
+	}
+	
 	public void setUpSteps(UmbrellaView view, WizardPanel panel) throws Exception
 	{
 		String currentView = view.cardName();
@@ -308,7 +314,7 @@ class WizardManager extends Hashtable
 	{
 		WizardStepEntry stepEntry = new WizardStepEntry(step.getClass().getSimpleName());
 		stepEntry.setStepClass(step);
-		put(stepEntry.getStepName(),stepEntry);
+		stepEntries.put(stepEntry.getStepName(),stepEntry);
 		return stepEntry;
 	}
 
@@ -320,11 +326,13 @@ class WizardManager extends Hashtable
 	
 	WizardStepEntry findStep(String stepName)
 	{
-		WizardStepEntry entry =(WizardStepEntry)get(stepName);
+		WizardStepEntry entry =(WizardStepEntry)stepEntries.get(stepName);
 		if (entry==null)
 			EAM.logError("ENTRY NOT FOUND FOR STEP NAME=:" + stepName);
 		return entry;
 	}
+	
+	Hashtable stepEntries;
 }
 
 class WizardStepEntry
