@@ -30,7 +30,6 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 	public ColumnSortHandler(ThreatGridPanel threatGirdPanelInUse)
 	{
 		threatGirdPanel = threatGirdPanelInUse;
-		mainTableModel = (NonEditableThreatMatrixTableModel)threatGirdPanelInUse.getThreatMatrixTable().getModel();
 	}
 
 	public void mouseClicked(MouseEvent e) 
@@ -127,6 +126,8 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 
 	public void sort(int sortColumn) 
 	{
+		mainTableModel = (NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
+		
 		Comparator comparator = getComparator(sortColumn);
 
 		Factor[] threatList = mainTableModel.getDirectThreats();

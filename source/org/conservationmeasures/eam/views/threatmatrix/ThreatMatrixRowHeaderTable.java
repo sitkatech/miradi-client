@@ -10,11 +10,12 @@ import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.LookAndFeel;
 import javax.swing.event.ChangeEvent;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 public class ThreatMatrixRowHeaderTable extends JTable
 {
-	public ThreatMatrixRowHeaderTable(TableModel rowHeaderData)
+	public ThreatMatrixRowHeaderTable(TableModel rowHeaderData, ThreatGridPanel panel)
 	{
 		super(rowHeaderData);
 		getTableHeader().setResizingAllowed(true);
@@ -28,6 +29,10 @@ public class ThreatMatrixRowHeaderTable extends JTable
 		setDefaultRenderer(Object.class, new TableHeaderRenderer());
 		getColumnModel().getColumn(0).setHeaderRenderer(new TableHeaderRenderer());
 	
+		JTableHeader rowHeader = getTableHeader();
+		threatColumnSortListener = new ThreatNameColumnHandler(panel);
+		rowHeader.addMouseListener(threatColumnSortListener);
+		
 		LookAndFeel.installColorsAndFont(this, "TableHeader.background",
 				"TableHeader.foreground", "TableHeader.font");
 	}
@@ -44,4 +49,12 @@ public class ThreatMatrixRowHeaderTable extends JTable
 		dimension.width = getPreferredSize().width;
 		setPreferredScrollableViewportSize(dimension);
 	}
+	
+	public void sort(boolean sortOrder)
+	{
+		threatColumnSortListener.setToggle(sortOrder);
+		threatColumnSortListener.sort(0);
+	}
+	
+	private ThreatNameColumnHandler threatColumnSortListener;
 }

@@ -15,6 +15,7 @@ import java.util.Enumeration;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.TableColumnModelEvent;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
@@ -38,6 +39,11 @@ public class ThreatMatrixTable extends JTable
 		
 		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer(panel);
 		setDefaultRenderer(Object.class, customTableCellRenderer);
+		
+		JTableHeader columnHeader = getTableHeader();
+		bundleColumnSortHandler = new BundleColumnSortHandler(panel);
+		columnHeader.addMouseListener(bundleColumnSortHandler);
+		columnHeader.addMouseMotionListener(bundleColumnSortHandler);
 	}
 
 	public void columnMoved(TableColumnModelEvent event)
@@ -77,6 +83,13 @@ public class ThreatMatrixTable extends JTable
 			columnToAdjust.setResizable(true);
 		}
 	}
+	
+	public void sort(boolean sortOrder, int sortColumn)
+	{
+		bundleColumnSortHandler.setToggle(sortOrder);
+		bundleColumnSortHandler.sort(sortColumn);
+	}
 
+	private BundleColumnSortHandler bundleColumnSortHandler;
 	private final static Graphics staticGraphics = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
 }

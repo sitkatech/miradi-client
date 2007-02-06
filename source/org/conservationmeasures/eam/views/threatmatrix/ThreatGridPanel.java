@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
-import javax.swing.table.JTableHeader;
 
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -45,20 +44,9 @@ public class ThreatGridPanel extends JPanel
 	public JScrollPane createThreatGridPanel(NonEditableThreatMatrixTableModel model) throws Exception
 	{
 		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
-		rowHeaderTable =  new ThreatMatrixRowHeaderTable(newRowHeaderData);
+		rowHeaderTable =  new ThreatMatrixRowHeaderTable(newRowHeaderData, this);
 		threatTable = new ThreatMatrixTable(model, this);
-		
-		JTableHeader columnHeader = threatTable.getTableHeader();
-		targetColumnSortListener = new BundleColumnSortHandler(this);
-		columnHeader.addMouseListener(targetColumnSortListener);
-		columnHeader.addMouseMotionListener(targetColumnSortListener);
-
-		JTableHeader rowHeader = rowHeaderTable.getTableHeader();
-		threatColumnSortListener = new ThreatNameColumnHandler(this);
-		rowHeader.addMouseListener(threatColumnSortListener);
-		
 		JScrollPane scrollPane = new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
-		
 		return scrollPane;
 	}
 
@@ -128,8 +116,7 @@ public class ThreatGridPanel extends JPanel
 
 			if(currentSortBy.equals(ViewData.SORT_THREATS))
 			{
-				threatColumnSortListener.setToggle(sortOrder);
-				threatColumnSortListener.sort(0);
+				rowHeaderTable.sort(sortOrder);
 			}
 			else
 			{
@@ -141,8 +128,7 @@ public class ThreatGridPanel extends JPanel
 					if (wasTargetDeleted(columnToSort)) 
 						return;
 				}
-				targetColumnSortListener.setToggle(sortOrder);
-				targetColumnSortListener.sort(columnToSort);
+				threatTable.sort(sortOrder, columnToSort);
 			}
 		}
 	}
@@ -156,9 +142,7 @@ public class ThreatGridPanel extends JPanel
 	private ThreatMatrixView view;
 	private ThreatRatingBundle highlightedBundle;
 	private ThreatMatrixTable threatTable;
-	private ThreatNameColumnHandler threatColumnSortListener;
-	private BundleColumnSortHandler targetColumnSortListener;
-	private JTable rowHeaderTable;
+	private ThreatMatrixRowHeaderTable rowHeaderTable;
 	
 	public final static int ABOUT_ONE_LINE = 20;
 	public final static int ROW_HEIGHT = 2 * ABOUT_ONE_LINE;
