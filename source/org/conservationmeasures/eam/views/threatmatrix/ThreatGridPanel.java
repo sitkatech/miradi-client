@@ -32,22 +32,19 @@ public class ThreatGridPanel extends JPanel
 	public JScrollPane createThreatGridPanel(NonEditableThreatMatrixTableModel model) throws Exception
 	{
 		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
-		JTable rowTable =  new ThreatMatrixRowHeaderTable(newRowHeaderData);
-		rowHeaderTable = rowTable;
+		rowHeaderTable =  new ThreatMatrixRowHeaderTable(newRowHeaderData);
+		threatTable = new ThreatMatrixTable(model, this);
 		
-		ThreatMatrixTable table = new ThreatMatrixTable(model, this);
-		threatTable = table;
-		
-		JTableHeader columnHeader = table.getTableHeader();
+		JTableHeader columnHeader = threatTable.getTableHeader();
 		targetColumnSortListener = new BundleColumnSortHandler(this);
 		columnHeader.addMouseListener(targetColumnSortListener);
 		columnHeader.addMouseMotionListener(targetColumnSortListener);
 
-		JTableHeader rowHeader = rowTable.getTableHeader();
+		JTableHeader rowHeader = rowHeaderTable.getTableHeader();
 		threatColumnSortListener = new ThreatNameColumnHandler(this);
 		rowHeader.addMouseListener(threatColumnSortListener);
 		
-		JScrollPane scrollPane = new ScrollPaneWithTableAndRowHeader(rowTable, table);
+		JScrollPane scrollPane = new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
 		
 		return scrollPane;
 	}
