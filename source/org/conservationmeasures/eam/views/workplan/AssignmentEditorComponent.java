@@ -19,38 +19,25 @@ import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.budget.AbstractBudgetTableModel;
+import org.conservationmeasures.eam.views.budget.AssignmentTableModelSplittableShell;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
-import org.conservationmeasures.eam.views.budget.BudgetTableUnitsModel;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class AssignmentEditorComponent extends DisposablePanel
+abstract public class AssignmentEditorComponent extends DisposablePanel
 {
 	public AssignmentEditorComponent(Actions actions, Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(new BorderLayout());
-		
 		project = projectToUse;
 		objectPicker = objectPickerToUse;
-
-		unitsModel = new BudgetTableUnitsModel(project, new IdList());
-				
-		JScrollPane scrollPane = createScrollPaneWithFixedHeader();
-		add(scrollPane, BorderLayout.CENTER);
-		add(createButtonBar(actions), BorderLayout.EAST);
 	}
 
-	public void dispose()
-	{
-		super.dispose();
-	}
-	
 	public void setTaskId(BaseId taskId)
 	{ 
 		lockedTable.setTask(taskId);
@@ -70,7 +57,7 @@ public class AssignmentEditorComponent extends DisposablePanel
 		scrollTable.cancelCellEditing();
 	}
 	
-	JPanel createButtonBar(Actions actions)
+	protected JPanel createButtonBar(Actions actions)
 	{
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		JPanel box = new JPanel(layout);
@@ -78,17 +65,11 @@ public class AssignmentEditorComponent extends DisposablePanel
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), objectPicker));
 		return box;
 	}
-	
-	private JScrollPane createScrollPaneWithFixedHeader()
-	{
-		lockedModel = new WorkPlanTableModelLockedHeaderRows(unitsModel);
-		scrollModel = new WorkPlanTableModelScrollableHeaderRows(unitsModel);
 
-		lockedTable = new BudgetTable(project, lockedModel);
-		scrollTable = new BudgetTable(project, scrollModel);
-		
-		lockedTable.addListSelectionListener(new SelectionSyncKeeper(lockedTable, scrollTable, true));
-		scrollTable.addListSelectionListener(new SelectionSyncKeeper(lockedTable, scrollTable, false));
+	protected JScrollPane createScrollPaneWithFixedHeader()
+	{
+		lockedTable.addListSelectionListener(new TableSelectionInSyncKeeper(lockedTable, scrollTable, true));
+		scrollTable.addListSelectionListener(new TableSelectionInSyncKeeper(lockedTable, scrollTable, false));
 		
 		JScrollPane scrollPane = new JScrollPane(scrollTable);
 	
@@ -101,21 +82,21 @@ public class AssignmentEditorComponent extends DisposablePanel
 		return scrollPane;
 	}
 
-	BudgetTable lockedTable;
-	BudgetTable scrollTable;
-	
-	BudgetTableUnitsModel unitsModel;
-	WorkPlanTableModelLockedHeaderRows lockedModel;
-	WorkPlanTableModelScrollableHeaderRows scrollModel;
-	
 	Project project;
-	ObjectPicker objectPicker;
+	
+	protected BudgetTable lockedTable;
+	protected BudgetTable scrollTable;
+	protected AssignmentTableModelSplittableShell lockedModel;
+	protected AssignmentTableModelSplittableShell scrollModel;
+	
+	protected AbstractBudgetTableModel mainTableModel;	
+	protected ObjectPicker objectPicker;
+	
 }
 
-//FIXME the below code is a duplicate of the code in the BudgetEditorCom....  Must refactor
-class SelectionSyncKeeper implements ListSelectionListener
+class TableSelectionInSyncKeeper implements ListSelectionListener
 {
-	public SelectionSyncKeeper(JTable lockedTableToUse, JTable scrollTableToUse, boolean isLockedTableToUse)
+	public TableSelectionInSyncKeeper(JTable lockedTableToUse, JTable scrollTableToUse, boolean isLockedTableToUse)
 	{
 		lockedTable = lockedTableToUse;
 		scrollTable = scrollTableToUse;
@@ -131,7 +112,7 @@ class SelectionSyncKeeper implements ListSelectionListener
 		catch (Exception e)
 		{
 			//FIXME we dont care about exception, right?
-			EAM.logException(e);
+			//EAM.logException(e);
 		}
 	}
 
