@@ -9,10 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.commands.Command;
@@ -34,7 +32,6 @@ import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizard
 import org.conservationmeasures.eam.views.umbrella.SaveImage;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
-import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
 
 
@@ -91,27 +88,15 @@ public class ThreatMatrixView extends UmbrellaView
 	private Container createThreatMatrixPanel() throws Exception
 	{
 		grid = new ThreatGridPanel(this, model);
-		
-		JComponent heading = createHeading();
-		gridWithHeadings = new JPanel(new BorderLayout());
-		gridWithHeadings.add(heading, BorderLayout.BEFORE_FIRST_LINE);
-		gridWithHeadings.add(grid, BorderLayout.CENTER);
 		details = new ThreatRatingBundlePanel(this);
 		
 		Container bottomHalf = new JPanel(new BorderLayout());
 		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
-		bottomHalf.add(gridWithHeadings, BorderLayout.CENTER); 
+		bottomHalf.add(grid, BorderLayout.CENTER); 
 
 		return bottomHalf;
 	}
 
-	private JComponent createHeading()
-	{
-		String targetLabelText = "<html><h2>TARGETS</h2></html>";
-		UiLabel targetLabel = new UiLabel(EAM.text(targetLabelText));
-		targetLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		return targetLabel;
-	}
 	
 	private ThreatRatingWizardPanel createWizardPanel() throws Exception
 	{

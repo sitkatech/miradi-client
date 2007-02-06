@@ -7,16 +7,20 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
 
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.martus.swing.UiLabel;
 
 public class ThreatGridPanel extends JPanel
 {
@@ -26,9 +30,18 @@ public class ThreatGridPanel extends JPanel
 	{
 		super(new BorderLayout());
 		view = viewToUse;
+		add(createHeading(), BorderLayout.BEFORE_FIRST_LINE);
 		add(createThreatGridPanel(modelToUse));
 	}
 
+	private JComponent createHeading()
+	{
+		String targetLabelText = "<html><h2>TARGETS</h2></html>";
+		UiLabel targetLabel = new UiLabel(EAM.text(targetLabelText));
+		targetLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		return targetLabel;
+	}
+	
 	public JScrollPane createThreatGridPanel(NonEditableThreatMatrixTableModel model) throws Exception
 	{
 		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
