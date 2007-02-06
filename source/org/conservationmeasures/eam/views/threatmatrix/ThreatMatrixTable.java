@@ -61,27 +61,33 @@ public class ThreatMatrixTable extends JTable
 
 	private void setColumnWidths()
 	{
-		Graphics2D g2 = (Graphics2D)staticGraphics;
 		Enumeration columns = getColumnModel().getColumns();
 		while(columns.hasMoreElements())
 		{
 			TableColumn columnToAdjust = (TableColumn)columns.nextElement();
-			String headerText = (String)columnToAdjust.getHeaderValue();
-			int firstSpace = headerText.indexOf(' ');
-			if(firstSpace >= 0)
-				headerText = headerText.substring(0, firstSpace);
-			
-			if (headerText.length() == 0)
-				headerText = "W";
-			
-			TextLayout textLayout = new TextLayout(headerText, g2.getFont(), g2.getFontRenderContext());
-			int textWidth = textLayout.getBounds().getBounds().width;
+			int textWidth = avoidSplittingFirstWord(columnToAdjust);
 			int width = Math.max(ThreatGridPanel.DEFAULT_COLUMN_WIDTH, textWidth + 20);
 			columnToAdjust.setHeaderRenderer(new TableHeaderRenderer());
 			columnToAdjust.setPreferredWidth(width);
 			columnToAdjust.setWidth(width);
 			columnToAdjust.setResizable(true);
 		}
+	}
+
+	private int avoidSplittingFirstWord(TableColumn columnToAdjust)
+	{
+		Graphics2D g2 = (Graphics2D)staticGraphics;
+		String headerText = (String)columnToAdjust.getHeaderValue();
+		int firstSpace = headerText.indexOf(' ');
+		if(firstSpace >= 0)
+			headerText = headerText.substring(0, firstSpace);
+		
+		if (headerText.length() == 0)
+			headerText = "W";
+		
+		TextLayout textLayout = new TextLayout(headerText, g2.getFont(), g2.getFontRenderContext());
+		int textWidth = textLayout.getBounds().getBounds().width;
+		return textWidth;
 	}
 	
 	public void sort(boolean sortOrder, int sortColumn)

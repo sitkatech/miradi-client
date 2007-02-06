@@ -59,15 +59,8 @@ public class ThreatGridPanel extends JPanel
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
 		highlightedBundle = bundle;
-		refreshCell(bundle);
-	}
-	
-	
-	private void refreshCell(ThreatRatingBundle bundle) throws Exception
-	{
 		repaint();
 	}
-
 	
 	public Project getProject() 
 	{
