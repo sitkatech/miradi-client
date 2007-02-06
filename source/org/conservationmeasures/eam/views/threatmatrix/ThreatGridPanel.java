@@ -46,8 +46,7 @@ public class ThreatGridPanel extends JPanel
 		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
 		rowHeaderTable =  new ThreatMatrixRowHeaderTable(newRowHeaderData, this);
 		threatTable = new ThreatMatrixTable(model, this);
-		JScrollPane scrollPane = new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
-		return scrollPane;
+		return new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
 	}
 
 	
