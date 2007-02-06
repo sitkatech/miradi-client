@@ -12,11 +12,11 @@ import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class WorkPlanTableEditorComponent extends AssignmentEditorComponent
 {
-	public WorkPlanTableEditorComponent(Actions actions, Project project, ObjectPicker objectPicker) throws Exception
+	public WorkPlanTableEditorComponent(Actions actions, Project project, ObjectPicker objectPicker,BudgetTableUnitsModel model) throws Exception
 	{
 		super(actions, project, objectPicker, 
-				new WorkPlanTableModelLockedHeaderRows(new BudgetTableUnitsModel(project)),
-				new WorkPlanTableModelScrollableHeaderRows(new BudgetTableUnitsModel(project)));
+				new WorkPlanTableModelLockedHeaderRows(model),
+				new WorkPlanTableModelScrollableHeaderRows(model));
 
 	}
 }

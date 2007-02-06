@@ -76,8 +76,8 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 
 	protected JScrollPane createScrollPaneWithFixedHeader()
 	{
-		lockedTable.addListSelectionListener(new TableSelectionInSyncKeeper(lockedTable, scrollTable, true));
-		scrollTable.addListSelectionListener(new TableSelectionInSyncKeeper(lockedTable, scrollTable, false));
+		lockedTable.addListSelectionListener(new SelectionListener(lockedTable));
+		scrollTable.addListSelectionListener(new SelectionListener(scrollTable));
 		
 		JScrollPane scrollPane = new JScrollPane(scrollTable);
 	
@@ -89,6 +89,33 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 		
 		return scrollPane;
 	}
+	
+	class SelectionListener implements ListSelectionListener 
+	{
+	      public SelectionListener(JTable tableToUse) 
+	      {
+	    	  table = tableToUse;
+	      }
+	      
+	      public void valueChanged(ListSelectionEvent e) 
+	      {
+	         if (table.equals(lockedTable))
+	            selectRow(scrollTable, lockedTable.getSelectedRow());
+	         else
+	            selectRow(lockedTable, scrollTable.getSelectedRow());
+	      }
+	      
+	      private void selectRow(JTable tableToUse, int rowToSelect)
+	      {
+	    	  if (rowToSelect < 0 )
+	    		  return;
+	    	  
+	    	  tableToUse.setRowSelectionInterval(rowToSelect, rowToSelect);
+	      }
+	      
+	      private JTable table;
+	   }
+
 
 	Project project;
 	
@@ -100,49 +127,3 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 	protected ObjectPicker objectPicker;
 	
 }
-
-class TableSelectionInSyncKeeper implements ListSelectionListener
-{
-	public TableSelectionInSyncKeeper(JTable lockedTableToUse, JTable scrollTableToUse, boolean isLockedTableToUse)
-	{
-		lockedTable = lockedTableToUse;
-		scrollTable = scrollTableToUse;
-		isLockedTable = isLockedTableToUse;
-	}
-	
-	public void valueChanged(ListSelectionEvent event)
-	{
-		try
-		{
-			checkSelection(isLockedTable);
-		}
-		catch (Exception e)
-		{
-			//FIXME we dont care about exception, right?
-			//EAM.logException(e);
-		}
-	}
-
-	private void checkSelection(boolean islockedTable) throws Exception 
-	{
-		int lockedSelectedIndex = lockedTable.getSelectedRow();
-		int selectedIndex = scrollTable.getSelectedRow();
-
-		if (lockedSelectedIndex != selectedIndex)
-			setSelection(islockedTable, lockedSelectedIndex, selectedIndex);
-	}
-
-	private void setSelection(boolean islockedTable, int lockedSelectedIndex, int selectedIndex) throws Exception
-	{
-		if (islockedTable)
-			scrollTable.setRowSelectionInterval(lockedSelectedIndex, lockedSelectedIndex);
-		else 
-			lockedTable.setRowSelectionInterval(selectedIndex, selectedIndex);
-	}
-
-	private JTable lockedTable;
-	private JTable scrollTable;
-	private boolean isLockedTable;
-}
-
-

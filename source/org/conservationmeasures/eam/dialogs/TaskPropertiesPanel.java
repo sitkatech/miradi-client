@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.budget.BudgetTableUnitsModel;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.conservationmeasures.eam.views.workplan.AssignmentEditorComponent;
 import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
@@ -37,7 +38,8 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, ObjectType.TASK, idToEdit);
 		project = projectToUse;
 		setBorder(BorderFactory.createEtchedBorder());
-		editorComponent = new WorkPlanTableEditorComponent(actions, project, objectPicker);
+		BudgetTableUnitsModel budgetTableUnitsModel = new BudgetTableUnitsModel(project);
+		editorComponent = new WorkPlanTableEditorComponent(actions, project, objectPicker, budgetTableUnitsModel);
 		inputPanel = new TaskPropertiesInputPanel(project, actions, idToEdit, editorComponent);
 		
 		setLayout(new BorderLayout());

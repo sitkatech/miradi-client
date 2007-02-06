@@ -15,10 +15,10 @@ import org.conservationmeasures.eam.views.workplan.AssignmentEditorComponent;
 
 public class BudgetTableEditorComponent extends AssignmentEditorComponent
 {
-	public BudgetTableEditorComponent(Project project, Actions actions, ObjectPicker picker) throws Exception
+	public BudgetTableEditorComponent(Project project, Actions actions, ObjectPicker picker, BudgetTableModel model) throws Exception
 	{
 		super(actions, project, picker,
-				new BudgetTableModelLockedHeaderRows(new BudgetTableModel(project)),
-				new BudgetTableModelScrollableHeaderRows(new BudgetTableModel(project)));
+				new BudgetTableModelLockedHeaderRows(model),
+				new BudgetTableModelScrollableHeaderRows(model));
 	}
 }
