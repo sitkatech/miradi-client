@@ -76,8 +76,8 @@ public class ThreatMatrixTable extends JTable
 
 	private int avoidSplittingFirstWord(TableColumn columnToAdjust)
 	{
-		Graphics2D g2 = (Graphics2D)staticGraphics;
 		String headerText = (String)columnToAdjust.getHeaderValue();
+		
 		int firstSpace = headerText.indexOf(' ');
 		if(firstSpace >= 0)
 			headerText = headerText.substring(0, firstSpace);
@@ -85,9 +85,9 @@ public class ThreatMatrixTable extends JTable
 		if (headerText.length() == 0)
 			headerText = "W";
 		
+		Graphics2D g2 = (Graphics2D)staticGraphics;
 		TextLayout textLayout = new TextLayout(headerText, g2.getFont(), g2.getFontRenderContext());
-		int textWidth = textLayout.getBounds().getBounds().width;
-		return textWidth;
+		return textLayout.getBounds().getBounds().width;
 	}
 	
 	public void sort(boolean sortOrder, int sortColumn)
