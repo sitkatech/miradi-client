@@ -15,11 +15,11 @@ public class BudgetTableModelScrollableHeaderRows extends BudgetTableModelSplitt
 	
 	public int getColumnCount()
 	{
-		return model.getColumnCount() - FIXED_COLUMN_COUNT;
+		return model.getColumnCount() - LOCKED_COLUMN_COUNT;
 	}
 	
 	public int getCorrectedSplittedColumnIndex(int col)
 	{
-		return col + FIXED_COLUMN_COUNT;
+		return col + LOCKED_COLUMN_COUNT;
 	}
 }

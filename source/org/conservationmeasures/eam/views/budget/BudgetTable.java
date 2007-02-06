@@ -37,7 +37,7 @@ import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class BudgetTable extends JTable implements ObjectPicker 
 {	
-	public BudgetTable(Project projectToUse, BudgetTableModelSplittableShell modelToUse)
+	public BudgetTable(Project projectToUse, AssignmentTableModelSplittableShell modelToUse)
 	{
 		super(modelToUse);
 		model = modelToUse;
@@ -126,7 +126,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 		if (selectedRow < 0)
 			return new EAMObject[0];
 		
-		BudgetTableModelSplittableShell budgetModel = getBudgetModel();
+		AssignmentTableModelSplittableShell budgetModel = getBudgetModel();
 		selectedRow = budgetModel.getCorrectedRow(selectedRow);
 		
 		BaseId selectedId = budgetModel.getAssignmentForRow(selectedRow);
@@ -137,9 +137,9 @@ public class BudgetTable extends JTable implements ObjectPicker
 		return new EAMObject[] {selectedObject};
 	}
 
-	public BudgetTableModelSplittableShell  getBudgetModel()
+	public AssignmentTableModelSplittableShell  getBudgetModel()
 	{
-		return (BudgetTableModelSplittableShell)getModel();
+		return (AssignmentTableModelSplittableShell)getModel();
 	}
 	
 	public void cancelCellEditing()
@@ -163,7 +163,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 	}
 
 	Project project;
-	BudgetTableModelSplittableShell model;
+	AssignmentTableModelSplittableShell model;
 	
 	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
 }
@@ -182,7 +182,7 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
         else 
         	setColors(table.getBackground(), table.getForeground());
         
-        BudgetTableModelSplittableShell budgetModel = ((BudgetTable)table).getBudgetModel();
+        AssignmentTableModelSplittableShell budgetModel = ((BudgetTable)table).getBudgetModel();
 		if (! budgetModel.isCellEditable(row, col))
         	return new JLabel("");
         
@@ -260,14 +260,14 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
 		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		BudgetTableModelSplittableShell model = ((BudgetTable)table).getBudgetModel();
+		AssignmentTableModelSplittableShell model = ((BudgetTable)table).getBudgetModel();
 		if (!isSelected)
 			setColors(table, model, component, row, column);
 		setBorders(model, row, column);
 		return component;
 	}
 
-	private void setColors(JTable table, BudgetTableModelSplittableShell model, Component component, int row, int column)
+	private void setColors(JTable table, AssignmentTableModelSplittableShell model, Component component, int row, int column)
 	{
 		if (model.doubleRowed())
 			setComponentColors(component, EVERY_OTHER_TWO_COLORS[row % 4]);
@@ -296,7 +296,7 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 		component.setForeground(Color.BLACK);
 	}
 
-	private void setBorders(BudgetTableModelSplittableShell model, int row, int column)
+	private void setBorders(AssignmentTableModelSplittableShell model, int row, int column)
 	{
 		Color darkBorderColor = Color.DARK_GRAY;
 		final int THICKNESS = 2;
@@ -306,7 +306,7 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 			setSingleRowedBorders(model, row, column, darkBorderColor, THICKNESS);
 	}
 	
-	private void setSingleRowedBorders(BudgetTableModelSplittableShell model, int row, int column, Color darkBorderColor, final int THICKNESS)
+	private void setSingleRowedBorders(AssignmentTableModelSplittableShell model, int row, int column, Color darkBorderColor, final int THICKNESS)
 	{
 		boolean yearlyTotalColumn = model.isYearlyTotalColumn(column);
 		if (yearlyTotalColumn)
@@ -315,7 +315,7 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
 	}
 
-	private void setDoubleRowedBorders(BudgetTableModelSplittableShell model, int row, int column, Color darkBorderColor, final int THICKNESS)
+	private void setDoubleRowedBorders(AssignmentTableModelSplittableShell model, int row, int column, Color darkBorderColor, final int THICKNESS)
 	{
 		if (model.isCostColumn(column))
 			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));

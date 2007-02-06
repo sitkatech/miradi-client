@@ -6,21 +6,19 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.views.budget.AbstractBudgetTableModel;
+import org.conservationmeasures.eam.views.budget.AssignmentTableModelSplittableShell;
 
-public class WorkPlanTableModelLockedHeaderRows extends WorkPlanTableModelSplittableShell
+abstract public class WorkPlanTableModelSplittableShell extends AssignmentTableModelSplittableShell
 {
-	public WorkPlanTableModelLockedHeaderRows(AbstractBudgetTableModel modelToUse)
+	public WorkPlanTableModelSplittableShell(AbstractBudgetTableModel modelToUse)
 	{
 		super(modelToUse);
 	}
 
-	public int getColumnCount()
+	public boolean doubleRowed()
 	{
-		return LOCKED_COLUMN_COUNT;
+		return false;
 	}
-
-	public int getCorrectedSplittedColumnIndex(int col)
-	{
-		return col;
-	}
+	
+	protected final static int LOCKED_COLUMN_COUNT = 2;
 }

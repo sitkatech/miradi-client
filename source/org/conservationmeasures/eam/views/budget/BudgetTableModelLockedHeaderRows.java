@@ -15,7 +15,7 @@ public class BudgetTableModelLockedHeaderRows extends BudgetTableModelSplittable
 	
 	public int getColumnCount()
 	{
-		return FIXED_COLUMN_COUNT;
+		return LOCKED_COLUMN_COUNT;
 	}
 	
 	public int getCorrectedSplittedColumnIndex(int col)

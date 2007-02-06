@@ -6,9 +6,8 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.views.budget.AbstractBudgetTableModel;
-import org.conservationmeasures.eam.views.budget.BudgetTableModelSplittableShell;
 
-public class WorkPlanTableModelScrollableHeaderRows extends BudgetTableModelSplittableShell
+public class WorkPlanTableModelScrollableHeaderRows extends WorkPlanTableModelSplittableShell
 {
 	public WorkPlanTableModelScrollableHeaderRows(AbstractBudgetTableModel modelToUse)
 	{
@@ -17,11 +16,11 @@ public class WorkPlanTableModelScrollableHeaderRows extends BudgetTableModelSpli
 
 	public int getColumnCount()
 	{
-		return model.getColumnCount() - 2;
+		return model.getColumnCount() - LOCKED_COLUMN_COUNT;
 	}
 
 	public int getCorrectedSplittedColumnIndex(int col)
 	{
-		return col + 2;
+		return col + LOCKED_COLUMN_COUNT;
 	}
 }
