@@ -7,8 +7,11 @@ package org.conservationmeasures.eam.wizard;
 
 import java.util.Hashtable;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardAccountingAndFunding;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardBudgetDetail;
@@ -126,12 +129,21 @@ public class WizardManager
 		
 		String viewNameNew = newStepClass.getWizard().getView().cardName();
 	
-		
 		//FIXME: view switch should not happen here
 		if (!viewNameNew.equals(viewNameCur))
 		{
-			newStepClass.getWizard().getMainWindow().getProject().executeCommand(new CommandSwitchView(viewNameNew));
-			newStepClass.getWizard().jump(newStep);
+			MainWindow mainWindow = currentStepClass.getWizard().getMainWindow();
+			try
+			{
+				mainWindow.getProject().executeCommand(new CommandBeginTransaction());
+				mainWindow.setSplitterLocationToMiddle(viewNameNew);
+				mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
+				newStepClass.getWizard().jump(newStep);
+			}
+			finally
+			{
+				mainWindow.getProject().executeCommand(new CommandEndTransaction());
+			}
 			return currentStepName;
 		}
 
