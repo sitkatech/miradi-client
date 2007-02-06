@@ -6,15 +6,20 @@
 package org.conservationmeasures.eam.views.budget;
 
 
-public class BudgetTableModelUnitsScrollableHeaderRows extends BudgetTableModelSplittableShell
+public class BudgetTableModelScrollableHeaderRows extends BudgetTableModelSplittableShell
 {
-	public BudgetTableModelUnitsScrollableHeaderRows(BudgetTableUnitsModel modelToUse)
+	public BudgetTableModelScrollableHeaderRows(AbstractBudgetTableModel modelToUse)
 	{
 		super(modelToUse);
 	}
 	
 	public int getColumnCount()
 	{
-		return model.getRowCount() - 2;
+		return model.getColumnCount() - FIXED_COLUMN_COUNT;
+	}
+	
+	public int getCorrectedSplittedColumnIndex(int col)
+	{
+		return col + FIXED_COLUMN_COUNT;
 	}
 }

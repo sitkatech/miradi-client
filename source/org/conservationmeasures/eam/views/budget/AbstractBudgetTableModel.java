@@ -65,17 +65,17 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return getColumnCount() - 1;
 	}
 		
-	protected boolean isResourceColumn(int col)
+	public boolean isResourceColumn(int col)
 	{
 		return col == getResourcesColumnIndex();
 	}
 
-	protected boolean isCostTotalsColumn(int col)
+	public boolean isCostTotalsColumn(int col)
 	{
 		return col == getCostTotalsColumnIndex();
 	}
 
-	protected boolean isUnitsTotalColumn(int col)
+	public boolean isUnitsTotalColumn(int col)
 	{
 		return col == getUnitTotalsColumnIndex();
 	}
@@ -104,7 +104,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return col == getCostPerUnitLabelColumnIndex();
 	}
 
-	protected boolean isUnitsLabelColumn(int col)
+	public boolean isUnitsLabelColumn(int col)
 	{
 		return col == getUnitsLabelColumnIndex();
 	}
@@ -310,12 +310,12 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return dateRangeEffort;
 	}
 	
-	protected boolean isAccountingCodeColumn(int col)
+	public boolean isAccountingCodeColumn(int col)
 	{
 		return col == getAccountingCodeColumnIndex();
 	}
 
-	protected boolean isFundingSourceColumn(int col)
+	public boolean isFundingSourceColumn(int col)
 	{
 		return col == getFundingSourceColumnIndex();
 	}
@@ -335,6 +335,10 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	abstract public int getAccountingCodeColumnIndex();
 	
 	abstract public int getFundingSourceColumnIndex();
+	
+	abstract public void setTask(Task taskToUse);
+	
+	abstract public void dataWasChanged();
 	
 	private static final int RESOURCES_COLUMN_INDEX = 0;
 	private static final int COST_PER_UNIT_COLUMN_INDEX = 4;	

@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -36,12 +37,13 @@ import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class BudgetTable extends JTable implements ObjectPicker 
 {	
-	public BudgetTable(Project projectToUse, AbstractBudgetTableModel modelToUse)
+	public BudgetTable(Project projectToUse, BudgetTableModelSplittableShell modelToUse)
 	{
 		super(modelToUse);
 		model = modelToUse;
 		project = projectToUse;
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setDefaultRenderer(Object.class, new AlternatingThickBorderedTotalsColoredRenderer());
 		// this property is set due to a JTable bug#4724980 
 		putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
@@ -60,38 +62,8 @@ public class BudgetTable extends JTable implements ObjectPicker
 	
 	private void rebuild()
 	{
-		addResourceColumn();
-		addFundingSourceColumn();
-		addAccountingCodeColumn();
-		
+		addColumnEditorsAndRenderers();
 		setSingleCellEditor();
-	}
-
-	private void addResourceColumn()
-	{
-		ProjectResource[] projectResources = project.getAllProjectResources();
-		int resourceColumn = model.getResourcesColumnIndex();
-		createComboColumn(projectResources, resourceColumn);
-	}
-
-	private void addAccountingCodeColumn()
-	{
-		int accountingCodesColumn = model.getAccountingCodeColumnIndex();
-		if (accountingCodesColumn < 0)
-			return;
-
-		AccountingCode[] accountingCodes = project.getObjectManager().getAccountingCodePool().getAllAccountingCodes();
-		createComboColumn(accountingCodes, accountingCodesColumn);
-	}
-
-	private void addFundingSourceColumn()
-	{
-		int fundingSourceColumn = model.getFundingSourceColumnIndex();
-		if (fundingSourceColumn < 0 )
-			return;
-
-		FundingSource[] fundingSources = project.getObjectManager().getFundingSourcePool().getAllFundingSources();
-		createComboColumn(fundingSources, fundingSourceColumn);
 	}
 
 	private void setSingleCellEditor()
@@ -107,6 +79,33 @@ public class BudgetTable extends JTable implements ObjectPicker
 		}
 	}
 
+	private void addColumnEditorsAndRenderers()
+	{
+		for (int colIndex = 0 ; colIndex < model.getColumnCount(); colIndex++)
+		{
+			setColumnEditorAndRenderer(colIndex);
+		}
+	}
+	
+	private void setColumnEditorAndRenderer(int column)
+	{
+		if (model.isResourceColumn(column))
+		{
+			ProjectResource[] resources = project.getAllProjectResources();
+			createComboColumn(resources, column);
+		}
+		else if (model.isFundingSourceColumn(column))
+		{
+			FundingSource[] fundingSources = project.getObjectManager().getFundingSourcePool().getAllFundingSources();
+			createComboColumn(fundingSources, column);
+		}
+		else if (model.isAccountingCodeColumn(column))
+		{
+			AccountingCode[] accountingCodes = project.getObjectManager().getAccountingCodePool().getAllAccountingCodes();
+			createComboColumn(accountingCodes, column);
+		}
+	}
+	
 	private void createComboColumn(EAMBaseObject[] projectResources, int col)
 	{
 		JComboBox resourceCombo = new JComboBox(projectResources);
@@ -127,21 +126,20 @@ public class BudgetTable extends JTable implements ObjectPicker
 		if (selectedRow < 0)
 			return new EAMObject[0];
 		
-		AbstractBudgetTableModel budgetModel = getBudgetModel();
+		BudgetTableModelSplittableShell budgetModel = getBudgetModel();
 		selectedRow = budgetModel.getCorrectedRow(selectedRow);
 		
 		BaseId selectedId = budgetModel.getAssignmentForRow(selectedRow);
 		EAMObject selectedObject = project.findObject(ObjectType.ASSIGNMENT, selectedId);
-		
 		if (selectedObject == null)
 			return new EAMObject[0];
-		
+	
 		return new EAMObject[] {selectedObject};
 	}
 
-	public AbstractBudgetTableModel  getBudgetModel()
+	public BudgetTableModelSplittableShell  getBudgetModel()
 	{
-		return (AbstractBudgetTableModel)getModel();
+		return (BudgetTableModelSplittableShell)getModel();
 	}
 	
 	public void cancelCellEditing()
@@ -165,10 +163,9 @@ public class BudgetTable extends JTable implements ObjectPicker
 	}
 
 	Project project;
-	AbstractBudgetTableModel model;
+	BudgetTableModelSplittableShell model;
 	
 	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
-
 }
 
 class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
@@ -178,16 +175,14 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
         super(items);
     }
 
-    public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int col) 
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) 
     {
-
         if (isSelected) 
         	setColors(table.getSelectionBackground(), table.getSelectionForeground());
         else 
         	setColors(table.getBackground(), table.getForeground());
         
-        AbstractBudgetTableModel budgetModel = ((BudgetTable)table).getBudgetModel();
+        BudgetTableModelSplittableShell budgetModel = ((BudgetTable)table).getBudgetModel();
 		if (! budgetModel.isCellEditable(row, col))
         	return new JLabel("");
         
@@ -265,14 +260,14 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
 		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		AbstractBudgetTableModel model = (AbstractBudgetTableModel)table.getModel();
+		BudgetTableModelSplittableShell model = ((BudgetTable)table).getBudgetModel();
 		if (!isSelected)
 			setColors(table, model, component, row, column);
 		setBorders(model, row, column);
 		return component;
 	}
 
-	private void setColors(JTable table, AbstractBudgetTableModel model, Component component, int row, int column)
+	private void setColors(JTable table, BudgetTableModelSplittableShell model, Component component, int row, int column)
 	{
 		if (model.doubleRowed())
 			setComponentColors(component, EVERY_OTHER_TWO_COLORS[row % 4]);
@@ -301,7 +296,7 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 		component.setForeground(Color.BLACK);
 	}
 
-	private void setBorders(AbstractBudgetTableModel model, int row, int column)
+	private void setBorders(BudgetTableModelSplittableShell model, int row, int column)
 	{
 		Color darkBorderColor = Color.DARK_GRAY;
 		final int THICKNESS = 2;
@@ -311,7 +306,7 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 			setSingleRowedBorders(model, row, column, darkBorderColor, THICKNESS);
 	}
 	
-	private void setSingleRowedBorders(AbstractBudgetTableModel model, int row, int column, Color darkBorderColor, final int THICKNESS)
+	private void setSingleRowedBorders(BudgetTableModelSplittableShell model, int row, int column, Color darkBorderColor, final int THICKNESS)
 	{
 		boolean yearlyTotalColumn = model.isYearlyTotalColumn(column);
 		if (yearlyTotalColumn)
@@ -320,11 +315,11 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
 	}
 
-	private void setDoubleRowedBorders(AbstractBudgetTableModel model, int row, int column, Color darkBorderColor, final int THICKNESS)
+	private void setDoubleRowedBorders(BudgetTableModelSplittableShell model, int row, int column, Color darkBorderColor, final int THICKNESS)
 	{
 		if (model.isCostColumn(column))
 			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
-		if (model.getCostPerUnitLabelColumnIndex() == column)
+		if (model.isCostPerUnitLabelColumn(column))
 			setBorder(BorderFactory.createMatteBorder(0, 0, 0, THICKNESS, darkBorderColor));
 	}
 

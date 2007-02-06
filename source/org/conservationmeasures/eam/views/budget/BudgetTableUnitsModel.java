@@ -53,7 +53,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		return 0;
 	}
 	
-	protected boolean isUnitsTotalColumn(int col)
+	public boolean isUnitsTotalColumn(int col)
 	{
 		return col == getColumnCount() - 1 ;
 	}

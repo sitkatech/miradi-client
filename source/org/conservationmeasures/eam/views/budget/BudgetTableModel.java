@@ -115,7 +115,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	public Object getValueAt(int row, int col)
 	{
 		BaseId assignmentForRow = getAssignmentForRow(getCorrectedRow(row));
-		
 		if (isResourceColumn(col))
 			return getCurrentResource(assignmentForRow);
 		
