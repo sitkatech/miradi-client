@@ -129,10 +129,10 @@ class TableSelectionInSyncKeeper implements ListSelectionListener
 		int selectedIndex = scrollTable.getSelectedRow();
 
 		if (lockedSelectedIndex != selectedIndex)
-			setSeclection(islockedTable, lockedSelectedIndex, selectedIndex);
+			setSelection(islockedTable, lockedSelectedIndex, selectedIndex);
 	}
 
-	private void setSeclection(boolean islockedTable, int lockedSelectedIndex, int selectedIndex) throws Exception
+	private void setSelection(boolean islockedTable, int lockedSelectedIndex, int selectedIndex) throws Exception
 	{
 		if (islockedTable)
 			scrollTable.setRowSelectionInterval(lockedSelectedIndex, lockedSelectedIndex);
