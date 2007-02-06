@@ -23,6 +23,12 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 	{
 		super(projectToUse, new IdList());
 	}
+		
+	public void setTask(Task taskToUse)
+	{
+		task = taskToUse;
+		dataWasChanged();
+	}
 	
 	public void dataWasChanged()
 	{
@@ -32,12 +38,6 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 			assignmentIdList = task.getAssignmentIdList();
 
 		fireTableDataChanged();
-	}
-	
-	public void setTask(Task taskToUse)
-	{
-		task = taskToUse;
-		dataWasChanged();
 	}
 	
 	public int getColumnCount()
