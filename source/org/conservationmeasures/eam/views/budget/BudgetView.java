@@ -81,7 +81,7 @@ public class BudgetView extends TabbedView
 	{
 		treeTableComponent = BudgetTreeTablePanel.createBudgetTreeTablePanel(getMainWindow(), getProject());
 		
-		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions(), treeTableComponent);
+		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions(), treeTableComponent.getTree());
 		budgetManagmentPanel = new BudgetManagementPanel(getMainWindow(), getProject(), budgetPropertiesPanel, treeTableComponent);
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");

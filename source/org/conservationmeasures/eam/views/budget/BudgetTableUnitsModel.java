@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.utils.DateRangeEffort;
 
 public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 {
-	public BudgetTableUnitsModel(Project projectToUse, IdList assignmentIdListToUse) throws Exception
+	public BudgetTableUnitsModel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, assignmentIdListToUse);
+		super(projectToUse, new IdList());
 	}
 	
 	public void dataWasChanged()

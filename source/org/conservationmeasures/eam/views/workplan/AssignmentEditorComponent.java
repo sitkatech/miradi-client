@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.budget.AbstractBudgetTableModel;
 import org.conservationmeasures.eam.views.budget.AssignmentTableModelSplittableShell;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -31,11 +30,20 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class AssignmentEditorComponent extends DisposablePanel
 {
-	public AssignmentEditorComponent(Actions actions, Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
+	public AssignmentEditorComponent(Actions actions, Project projectToUse, ObjectPicker objectPickerToUse, AssignmentTableModelSplittableShell lockedModelToUse, AssignmentTableModelSplittableShell scrollModelToUse) throws Exception
 	{
 		super(new BorderLayout());
 		project = projectToUse;
 		objectPicker = objectPickerToUse;
+		lockedModel = lockedModelToUse;
+		scrollModel = scrollModelToUse;
+
+		lockedTable = new BudgetTable(project, lockedModel);
+		scrollTable = new BudgetTable(project, scrollModel);
+				
+		JScrollPane scrollPane = createScrollPaneWithFixedHeader();
+		add(scrollPane, BorderLayout.CENTER);
+		add(createButtonBar(actions), BorderLayout.LINE_END);
 	}
 
 	public void setTaskId(BaseId taskId)
@@ -88,8 +96,7 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 	protected BudgetTable scrollTable;
 	protected AssignmentTableModelSplittableShell lockedModel;
 	protected AssignmentTableModelSplittableShell scrollModel;
-	
-	protected AbstractBudgetTableModel mainTableModel;	
+		
 	protected ObjectPicker objectPicker;
 	
 }

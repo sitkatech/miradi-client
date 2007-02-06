@@ -13,19 +13,19 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.BudgetPropertiesInputPanel;
-import org.conservationmeasures.eam.views.budget.BudgetTreeTablePanel;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class BudgetPropertiesPanel extends DisposablePanel
 {
-	public BudgetPropertiesPanel(Project projectToUse, Actions actions, BudgetTreeTablePanel treeTableComponent) throws Exception
+	public BudgetPropertiesPanel(Project projectToUse, Actions actions, ObjectPicker picker) throws Exception
 	{
-		this(projectToUse, actions, BaseId.INVALID, treeTableComponent);
+		this(projectToUse, actions, BaseId.INVALID, picker);
 	}
 	
-	public BudgetPropertiesPanel(Project projectToUse, Actions actions, BaseId idToShow, BudgetTreeTablePanel treeTableComponent) throws Exception
+	public BudgetPropertiesPanel(Project projectToUse, Actions actions, BaseId idToShow, ObjectPicker picker) throws Exception
 	{
 		super(new BorderLayout());
-		tableEditorComponent = new BudgetTableEditorComponent(projectToUse, actions, treeTableComponent);
+		tableEditorComponent = new BudgetTableEditorComponent(projectToUse, actions, picker);
 		inputPanel = new BudgetPropertiesInputPanel(projectToUse, actions,idToShow,tableEditorComponent);
 		
 		add(inputPanel, BorderLayout.PAGE_START);
