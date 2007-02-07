@@ -76,9 +76,7 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 
 	protected JScrollPane createScrollPaneWithFixedHeader()
 	{
-		lockedTable.addListSelectionListener(new SelectionListener(lockedTable));
-		scrollTable.addListSelectionListener(new SelectionListener(scrollTable));
-		
+		new SelectionInSyncKeeper(lockedTable, scrollTable);
 		JScrollPane scrollPane = new JScrollPane(scrollTable);
 	
 		JViewport viewport = new JViewport();
@@ -90,30 +88,42 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 		return scrollPane;
 	}
 	
-	class SelectionListener implements ListSelectionListener 
+	class SelectionInSyncKeeper implements ListSelectionListener 
 	{
-	      public SelectionListener(JTable tableToUse) 
+	      public SelectionInSyncKeeper(JTable table1ToUse, JTable table2ToUse) 
 	      {
-	    	  table = tableToUse;
+	    	  table1 = table1ToUse;
+	    	  table2 = table2ToUse;
+	    	  
+	    	  table1.getSelectionModel().addListSelectionListener(this);
+	    	  table2.getSelectionModel().addListSelectionListener(this);
 	      }
 	      
 	      public void valueChanged(ListSelectionEvent e) 
 	      {
-	         if (table.equals(lockedTable))
-	            selectRow(scrollTable, lockedTable.getSelectedRow());
-	         else
-	            selectRow(lockedTable, scrollTable.getSelectedRow());
+	    	  int table1SelectedRow = table1.getSelectedRow();
+	    	  int table2SelectedRow = table2.getSelectedRow();
+	    	  
+	    	  if (table1SelectedRow == table2SelectedRow)
+	    		  return;
+	    	  
+	    	  if (e.getSource().equals(table1.getSelectionModel()))
+	    	    setSelectedRow(table2, table1SelectedRow);
+	    	  
+	    	  if (e.getSource().equals(table2.getSelectionModel()))
+	    	    setSelectedRow(table1, table2SelectedRow);
 	      }
 	      
-	      private void selectRow(JTable tableToUse, int rowToSelect)
+	      private void setSelectedRow(JTable tableToUse, int rowToSelect)
 	      {
-	    	  if (rowToSelect < 0 )
+	    	  if (rowToSelect < 0)
 	    		  return;
 	    	  
 	    	  tableToUse.setRowSelectionInterval(rowToSelect, rowToSelect);
 	      }
 	      
-	      private JTable table;
+	      private JTable table1;
+	      private JTable table2;
 	   }
 
 
