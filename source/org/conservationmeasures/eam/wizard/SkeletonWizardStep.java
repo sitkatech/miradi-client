@@ -14,8 +14,6 @@ import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
-import org.conservationmeasures.eam.views.umbrella.Definition;
-import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
 {
@@ -55,12 +53,10 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 
 	public void linkClicked(String linkDescription)
 	{
-		if (linkDescription.startsWith("Definition:"))
-		{
-			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
-			EAM.okDialog(def.term, new String[] {def.definition});
-		} 
-		else if(linkDescription.startsWith("View:"))
+		if (getWizard().getMainWindow().mainLinkFunction(linkDescription))
+			return;
+			
+		if(linkDescription.startsWith("View:"))
 		{
 			control(linkDescription);
 		}

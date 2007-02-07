@@ -26,9 +26,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.Utilities;
 
-import edu.stanford.ejalbert.BrowserLauncher;
-import edu.stanford.ejalbert.BrowserLauncherRunner;
-
 public class HtmlViewPanel implements HtmlFormEventHandler
 {
 
@@ -145,28 +142,13 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 	public void linkClicked(String linkDescription)
 	{	
-		if (!linkDescription.startsWith(HTTP_PROTOCOL) && 
-			!linkDescription.startsWith(MAIL_PROTOCOL))
-		{
-			delegateFormHandler.linkClicked(linkDescription);
+		if (mainWindow.mainLinkFunction(linkDescription))
 			return;
-		}
-
-        try 
-        {
-            BrowserLauncherRunner runner = new BrowserLauncherRunner(
-            		new BrowserLauncher(null),
-                    "",
-                    linkDescription,
-                    null);
-            new Thread(runner).start();
-        }
-        catch (Exception e) 
-        {
-        	EAM.logException(e);
-        }
+		
+		delegateFormHandler.linkClicked(linkDescription);
 	}
 
+	
 	public void valueChanged(String widget, String newValue)
 	{
 		delegateFormHandler.valueChanged(widget, newValue);
@@ -202,9 +184,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		}
 		
 	}
-	
-	private static String HTTP_PROTOCOL = "http";
-	private static String MAIL_PROTOCOL = "mailto:";
+
 	private String viewTitle;
 	private Class viewClass;
 	private String htmlFileName;

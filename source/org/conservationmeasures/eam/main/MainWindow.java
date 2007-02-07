@@ -48,11 +48,16 @@ import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
+import org.conservationmeasures.eam.views.umbrella.Definition;
+import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.util.DirectoryLock;
+
+import edu.stanford.ejalbert.BrowserLauncher;
+import edu.stanford.ejalbert.BrowserLauncherRunner;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner, SplitterPositionSaver
 {
@@ -450,6 +455,49 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			}
 		}
 	}
+	
+	public boolean mainLinkFunction(String linkDescription)
+	{	
+		if (linkDescription.startsWith("Definition:"))
+		{
+			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
+			EAM.okDialog(def.term, new String[] {def.definition});
+		} 
+		else if (isBrowserProtocol(linkDescription))
+		{
+	        launchBrowser(linkDescription);
+		}
+		else
+			return false;
+		
+        return true;
+	}
+	
+	private void launchBrowser(String linkDescription)
+	{
+		try 
+		{
+		    BrowserLauncherRunner runner = new BrowserLauncherRunner(
+		    		new BrowserLauncher(null),
+		            "",
+		            linkDescription,
+		            null);
+		    new Thread(runner).start();
+		}
+		catch (Exception e) 
+		{
+			EAM.logException(e);
+		}
+	}
+
+	private boolean isBrowserProtocol(String linkDescription)
+	{
+		return linkDescription.startsWith(HTTP_PROTOCOL) || linkDescription.startsWith(MAIL_PROTOCOL);
+	}
+	
+	
+	private static String HTTP_PROTOCOL = "http";
+	private static String MAIL_PROTOCOL = "mailto:";
 	
 	private static final String APP_PREFERENCES_FILENAME = "settings";
 	private static final int TOOP_TIP_DELAY_MILLIS = 0;
