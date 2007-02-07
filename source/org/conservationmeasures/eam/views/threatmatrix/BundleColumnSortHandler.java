@@ -21,6 +21,7 @@ public class BundleColumnSortHandler extends ColumnSortHandler
 
 	public void saveState(int sortColumn)
 	{
+		ThreatMatrixTableModel mainTableModel = (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
 		if(isSummaryColumn(sortColumn, mainTableModel))
 		{
 			saveSortState(sortToggle, ViewData.SORT_SUMMARY);
@@ -33,6 +34,7 @@ public class BundleColumnSortHandler extends ColumnSortHandler
 	
 	public Comparator getComparator(int sortColumn)
 	{
+		ThreatMatrixTableModel mainTableModel = (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
 		if(isSummaryColumn(sortColumn, mainTableModel))
 			return new SummaryColumnComparator(mainTableModel);
 		return new FactorComparator(sortColumn,mainTableModel);

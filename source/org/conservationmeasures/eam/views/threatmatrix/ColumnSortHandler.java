@@ -126,7 +126,7 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 
 	public void sort(int sortColumn) 
 	{
-		mainTableModel = (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
+		ThreatMatrixTableModel mainTableModel = (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
 		
 		Comparator comparator = getComparator(sortColumn);
 
@@ -148,6 +148,5 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 	public abstract boolean getToggle();
 	
 	protected ThreatGridPanel threatGridPanel;
-	protected ThreatMatrixTableModel mainTableModel;
 
 }
