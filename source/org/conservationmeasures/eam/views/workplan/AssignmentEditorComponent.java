@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.budget.AssignmentTableModelSplittableShell;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -69,8 +70,13 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 	{
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		JPanel box = new JPanel(layout);
-		box.add(createObjectsActionButton(actions.getObjectsAction(ActionRemoveAssignment.class), lockedTable));
-		box.add(createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), objectPicker));
+		
+		ObjectsActionButton addButton = createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), objectPicker);
+		box.add(addButton);
+		
+		ObjectsActionButton removeButton = createObjectsActionButton(actions.getObjectsAction(ActionRemoveAssignment.class), lockedTable);
+		box.add(removeButton);
+		
 		return box;
 	}
 
