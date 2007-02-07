@@ -35,11 +35,12 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 	
 	public void dataWasChanged()
 	{
-		if(task == null)
-			assignmentIdList = new IdList();
-		else
-			assignmentIdList = task.getAssignmentIdList();
+		if (task == null)
+			return;
+		if (isAlreadyCurrentAssignment())
+			return;
 
+		assignmentIdList = task.getAssignmentIdList();
 		fireTableDataChanged();
 	}
 	

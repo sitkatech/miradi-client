@@ -38,6 +38,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		dateRanges = new ProjectCalendar(project).getQuarterlyDateDanges();
 		currencyFormatter = project.getCurrencyFormatter();
 		decimalFormatter = project.getDecimalFormatter();
+		assignmentIdList = new IdList();
 	}
 	
 	public int getResourcesColumnIndex()
@@ -323,6 +324,11 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	protected boolean isAlreadyCurrentTask(Task taskToUse)
 	{
 		return task != null && taskToUse != null && task.getId().equals(taskToUse.getId());
+	}
+	
+	protected boolean isAlreadyCurrentAssignment()
+	{
+		return assignmentIdList.equals(task.getAssignmentIdList());
 	}
 	
 	abstract public boolean isYearlyTotalColumn(int col);

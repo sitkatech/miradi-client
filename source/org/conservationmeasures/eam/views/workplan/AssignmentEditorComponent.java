@@ -64,6 +64,9 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 		
 		lockedTable.cancelCellEditing();
 		scrollTable.cancelCellEditing();
+		
+		lockedTable.repaint();
+		scrollTable.repaint();
 	}
 	
 	protected JPanel createButtonBar(Actions actions)
