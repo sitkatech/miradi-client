@@ -252,7 +252,7 @@ public class WizardManager
 			.createNextControl(ThreatRatingWizardChooseBundle.class); 
 
 		createStepEntry(new ThreatRatingWizardCheckTotalsStep(panel))
-			.createNextControl(ThreatMatrixOverviewStep.class)
+			.createNextControl(DiagramWizardIdentifyIndirectThreatStep.class)
 			.createBackControl(ThreatRatingWizardChooseBundle.class); 
 	}
 
@@ -275,6 +275,14 @@ public class WizardManager
 				DescribeTargetStatusStep.class,
 				DiagramWizardIdentifyDirectThreatStep.class,
 				DiagramWizardLinkDirectThreatsToTargetsStep.class,
+				
+				ThreatMatrixOverviewStep.class,
+				ThreatRatingWizardChooseBundle.class,
+				ThreatRatingWizardScopeStep.class,
+				ThreatRatingWizardSeverityStep.class,
+				ThreatRatingWizardIrreversibilityStep.class,
+				ThreatRatingWizardCheckBundleStep.class,
+				
 				DiagramWizardIdentifyIndirectThreatStep.class,		
 				DiagramWizardConstructChainsStep.class,	
 				DiagramWizardReviewModelAndAdjustStep.class,		
@@ -289,16 +297,7 @@ public class WizardManager
 				DevelopDraftStrategiesStep.class,
 				RankDraftStrategiesStep.class,
 				EditAllStrategiesStep.class,
-				
-				ThreatMatrixOverviewStep.class,
-				ThreatRatingWizardChooseBundle.class,
-				ThreatRatingWizardScopeStep.class,
-				ThreatRatingWizardSeverityStep.class,
-				ThreatRatingWizardIrreversibilityStep.class,
-				ThreatRatingWizardCheckBundleStep.class,
-				
-				EditAllStrategiesStep.class,
-				
+
 				MonitoringPlanOverviewStep.class,
 				MonitoringWizardFocusStep.class,
 				MonitoringWizardDefineIndicatorsStep.class,
