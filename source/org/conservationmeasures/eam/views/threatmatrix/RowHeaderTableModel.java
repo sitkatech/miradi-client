@@ -9,9 +9,10 @@ import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class NonEditableRowHeaderTableModel extends AbstractTableModel
+public class RowHeaderTableModel extends AbstractTableModel
 {
-	public NonEditableRowHeaderTableModel(NonEditableThreatMatrixTableModel modelToUse) {
+	public RowHeaderTableModel(ThreatMatrixTableModel modelToUse) 
+	{
 		model = modelToUse;
 	}
 
@@ -43,5 +44,5 @@ public class NonEditableRowHeaderTableModel extends AbstractTableModel
 	}
 	
 
-	NonEditableThreatMatrixTableModel model;
+	ThreatMatrixTableModel model;
 }

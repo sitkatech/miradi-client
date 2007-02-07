@@ -39,9 +39,9 @@ public class BundleColumnSortHandler extends ColumnSortHandler
 	}
 
 	
-	private boolean isSummaryColumn(int sortColumn, NonEditableThreatMatrixTableModel modelToSort) 
+	private boolean isSummaryColumn(int sortColumn, ThreatMatrixTableModel modelToSort) 
 	{
-		return (sortColumn == threatGirdPanel.getThreatMatrixTable().getSummaryColumn());
+		return (sortColumn == threatGridPanel.getThreatMatrixTable().getSummaryColumn());
 	}
 	
 	

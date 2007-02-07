@@ -50,7 +50,7 @@ class CellSelectionListener implements ListSelectionListener
 
 	private ThreatRatingBundle getBundleIfAny(int row, int column) throws Exception
 	{
-		NonEditableThreatMatrixTableModel model = (NonEditableThreatMatrixTableModel) threatTable.getModel();
+		ThreatMatrixTableModel model = (ThreatMatrixTableModel) threatTable.getModel();
 		if(model.isSumaryColumn(row, column) || model.isSumaryRow(row, column))
 			return null;
 		
@@ -62,7 +62,7 @@ class CellSelectionListener implements ListSelectionListener
 
 	private void offerToCreateLink(int row, int column) throws CommandFailedException
 	{
-		NonEditableThreatMatrixTableModel model = (NonEditableThreatMatrixTableModel) threatTable.getModel();
+		ThreatMatrixTableModel model = (ThreatMatrixTableModel) threatTable.getModel();
 		String[] body = new String[] {
 				EAM.text("Do you want to create a link between these this Threat and Target?"),
 				(model).getThreatName(row),
@@ -90,7 +90,7 @@ class CellSelectionListener implements ListSelectionListener
 
 	private boolean isLinked(int row, int column)
 	{
-		NonEditableThreatMatrixTableModel model = (NonEditableThreatMatrixTableModel) threatTable.getModel();
+		ThreatMatrixTableModel model = (ThreatMatrixTableModel) threatTable.getModel();
 		return model.getProject().isLinked(model.getThreatId(row), model.getTargetId(column));
 	}
 	

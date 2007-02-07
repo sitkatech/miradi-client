@@ -29,7 +29,7 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 {
 	public ColumnSortHandler(ThreatGridPanel threatGirdPanelInUse)
 	{
-		threatGirdPanel = threatGirdPanelInUse;
+		threatGridPanel = threatGirdPanelInUse;
 	}
 
 	public void mouseClicked(MouseEvent e) 
@@ -60,14 +60,14 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 	
 	int getSummaryColumn()
 	{
-		return threatGirdPanel.getThreatMatrixTable().getSummaryColumn();
+		return threatGridPanel.getThreatMatrixTable().getSummaryColumn();
 	}
 
 	private void sortBySelectedColumn(int sortColumn)
 	{
 		sort(sortColumn);
-		threatGirdPanel.revalidate();
-		threatGirdPanel.repaint();
+		threatGridPanel.revalidate();
+		threatGridPanel.repaint();
 	}
 
 	
@@ -86,7 +86,7 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 		try
 		{
 			String order = (sortDirection) ? ViewData.SORT_ASCENDING: ViewData.SORT_DESCENDING;
-			ViewData viewData = threatGirdPanel.getProject().getCurrentViewData();
+			ViewData viewData = threatGridPanel.getProject().getCurrentViewData();
 
 			executeCommand(new CommandBeginTransaction());
 			
@@ -106,7 +106,7 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 	{
 		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(),viewData.getId(), 
 				ViewData.TAG_CURRENT_SORT_BY, sortColumnId);
-		threatGirdPanel.getProject().executeCommand(cmd);
+		threatGridPanel.getProject().executeCommand(cmd);
 	}
 
 
@@ -114,19 +114,19 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 	{
 		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId(), 
 				ViewData.TAG_CURRENT_SORT_DIRECTION, order);
-		threatGirdPanel.getProject().executeCommand(cmd);
+		threatGridPanel.getProject().executeCommand(cmd);
 	}
 	
 	
 	private void executeCommand(Command cmd) throws CommandFailedException
 	{
-		threatGirdPanel.getProject().executeCommand(cmd);
+		threatGridPanel.getProject().executeCommand(cmd);
 	}
 	
 
 	public void sort(int sortColumn) 
 	{
-		mainTableModel = (NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
+		mainTableModel = (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
 		
 		Comparator comparator = getComparator(sortColumn);
 
@@ -147,7 +147,7 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 	public abstract void saveState(int sortColumn);
 	public abstract boolean getToggle();
 	
-	protected ThreatGridPanel threatGirdPanel;
-	protected NonEditableThreatMatrixTableModel mainTableModel;
+	protected ThreatGridPanel threatGridPanel;
+	protected ThreatMatrixTableModel mainTableModel;
 
 }

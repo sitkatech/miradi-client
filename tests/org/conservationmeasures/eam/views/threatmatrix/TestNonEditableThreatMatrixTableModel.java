@@ -29,7 +29,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		model = new NonEditableThreatMatrixTableModel(project);
+		model = new ThreatMatrixTableModel(project);
 	}
 
 	protected void tearDown() throws Exception
@@ -146,5 +146,5 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	}
 	
 	ProjectForTesting project;
-	NonEditableThreatMatrixTableModel model;
+	ThreatMatrixTableModel model;
 }

@@ -73,7 +73,7 @@ public class ThreatMatrixView extends UmbrellaView
 		super.becomeActive();
 		removeAll();
 
-		model = new NonEditableThreatMatrixTableModel(getProject());
+		model = new ThreatMatrixTableModel(getProject());
 		
 		bigSplitter = new ViewSplitPane(getMainWindow(), getProject().getCurrentView(),createWizardPanel(), createThreatMatrixPanel());
 		
@@ -110,7 +110,7 @@ public class ThreatMatrixView extends UmbrellaView
 		super.becomeInactive();
 	}
 
-	public NonEditableThreatMatrixTableModel getModel()
+	public ThreatMatrixTableModel getModel()
 	{
 		return model;
 	}
@@ -216,7 +216,7 @@ public class ThreatMatrixView extends UmbrellaView
 	}
 
 	JSplitPane bigSplitter;
-	NonEditableThreatMatrixTableModel model;
+	ThreatMatrixTableModel model;
 	ThreatRatingWizardPanel wizardPanel;
 	ThreatGridPanel grid;
 	ThreatRatingBundlePanel details;

@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
-public class NonEditableThreatMatrixTableModel extends AbstractTableModel
+public class ThreatMatrixTableModel extends AbstractTableModel
 {
-	public NonEditableThreatMatrixTableModel(Project projectToShow)
+	public ThreatMatrixTableModel(Project projectToShow)
 	{
 		project = projectToShow;
 		framework = getProject().getThreatRatingFramework();

@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 public class FactorComparator implements  Comparator
 {
 	
-	public FactorComparator(int sortColumnToUse, NonEditableThreatMatrixTableModel modelToUse )
+	public FactorComparator(int sortColumnToUse, ThreatMatrixTableModel modelToUse )
 	{
 		sortColumn = sortColumnToUse;
 		model = modelToUse;
@@ -64,7 +64,7 @@ public class FactorComparator implements  Comparator
 
 	int sortColumn = 0;
 	Factor[] targetList;
-	NonEditableThreatMatrixTableModel model;
+	ThreatMatrixTableModel model;
 	ThreatRatingFramework framework;
 
 }

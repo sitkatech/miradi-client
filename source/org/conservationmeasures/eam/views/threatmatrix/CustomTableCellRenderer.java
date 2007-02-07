@@ -76,9 +76,9 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		
 	}
 
-	private NonEditableThreatMatrixTableModel getThreatTableModel()
+	private ThreatMatrixTableModel getThreatTableModel()
 	{
-		return (NonEditableThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
+		return (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
 	}
 
 	private boolean isOverallRatingCell(JTable table, int row, int column)

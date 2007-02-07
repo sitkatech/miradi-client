@@ -15,7 +15,7 @@ import javax.swing.JComponent;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.views.threatmatrix.NonEditableThreatMatrixTableModel;
+import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 
 public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
@@ -28,7 +28,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
-		NonEditableThreatMatrixTableModel model = getView().getModel();
+		ThreatMatrixTableModel model = getView().getModel();
 		FactorId threatId = model.findThreatByName(threatBox.getSelectedItem().toString());
 		FactorId targetId = model.findTargetByName(targetBox.getSelectedItem().toString());
 		ThreatRatingBundle bundle = model.getBundle(threatId, targetId);

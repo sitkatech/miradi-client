@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 public class SummaryColumnComparator implements  Comparator
 {
 	
-	public SummaryColumnComparator(NonEditableThreatMatrixTableModel modelToUse )
+	public SummaryColumnComparator(ThreatMatrixTableModel modelToUse )
 	{
 		model = modelToUse;
 		framework = model.getFramework();
@@ -50,7 +50,7 @@ public class SummaryColumnComparator implements  Comparator
 		}
 	}
 
-	NonEditableThreatMatrixTableModel model;
+	ThreatMatrixTableModel model;
 	ThreatRatingFramework framework;
 
 }

@@ -24,7 +24,7 @@ import org.martus.swing.UiLabel;
 public class ThreatGridPanel extends JPanel
 {
 	public ThreatGridPanel(ThreatMatrixView viewToUse,
-			NonEditableThreatMatrixTableModel modelToUse)
+			ThreatMatrixTableModel modelToUse)
 			throws Exception
 	{
 		super(new BorderLayout());
@@ -41,9 +41,9 @@ public class ThreatGridPanel extends JPanel
 		return targetLabel;
 	}
 	
-	public JScrollPane createThreatGridPanel(NonEditableThreatMatrixTableModel model) throws Exception
+	public JScrollPane createThreatGridPanel(ThreatMatrixTableModel model) throws Exception
 	{
-		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
+		RowHeaderTableModel newRowHeaderData = new RowHeaderTableModel(model);
 		rowHeaderTable =  new ThreatMatrixRowHeaderTable(newRowHeaderData, this);
 		threatTable = new ThreatMatrixTable(model, this);
 		return new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
@@ -116,7 +116,7 @@ public class ThreatGridPanel extends JPanel
 				if (!currentSortBy.equals(ViewData.SORT_SUMMARY)) 
 				{
 					FactorId nodeId = new FactorId(new Integer(currentSortBy).intValue());
-					columnToSort= ((NonEditableThreatMatrixTableModel)threatTable.getModel()).findTargetIndexById(nodeId);
+					columnToSort= ((ThreatMatrixTableModel)threatTable.getModel()).findTargetIndexById(nodeId);
 					if (wasTargetDeleted(columnToSort)) 
 						return;
 				}

@@ -25,7 +25,7 @@ public class MatrixTableImageCreator
 		try
 		{
 			ValueOption myValueOption = new WhiteInvalidValueOption();
-	    	((NonEditableThreatMatrixTableModel)table.getModel()).setDefaultValueOption(myValueOption);
+	    	((ThreatMatrixTableModel)table.getModel()).setDefaultValueOption(myValueOption);
 	    	TableHeaderRenderer.SetOverRideColor(Color.WHITE);
 
 	        JTableHeader tableHeaderSet = table.getTableHeader(); 
@@ -51,7 +51,7 @@ public class MatrixTableImageCreator
 		}
 		finally 
 		{
-	    	((NonEditableThreatMatrixTableModel)table.getModel()).setDefaultValueOption(null);
+	    	((ThreatMatrixTableModel)table.getModel()).setDefaultValueOption(null);
 	    	TableHeaderRenderer.SetOverRideColor(null);
 		}
 		
