@@ -43,7 +43,7 @@ public class ThreatGridPanel extends JPanel
 	
 	public JScrollPane createThreatGridPanel(ThreatMatrixTableModel model) throws Exception
 	{
-		RowHeaderTableModel newRowHeaderData = new RowHeaderTableModel(model);
+		ThreatMatrixRowHeaderTableModel newRowHeaderData = new ThreatMatrixRowHeaderTableModel(model);
 		rowHeaderTable =  new ThreatMatrixRowHeaderTable(newRowHeaderData, this);
 		threatTable = new ThreatMatrixTable(model, this);
 		return new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
