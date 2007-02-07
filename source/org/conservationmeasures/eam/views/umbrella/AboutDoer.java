@@ -12,12 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.VersionConstants;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 import org.conservationmeasures.eam.utils.HtmlViewPanel;
-import org.conservationmeasures.eam.views.Doer;
+import org.conservationmeasures.eam.views.MainWindowDoer;
 
-public class AboutDoer extends Doer  implements HtmlFormEventHandler
+public class AboutDoer extends MainWindowDoer  implements HtmlFormEventHandler
 {
 	public AboutDoer()
 	{
@@ -35,7 +36,7 @@ public class AboutDoer extends Doer  implements HtmlFormEventHandler
 	
 	public void doIt(EventObject event) throws CommandFailedException
 	{
-		new HtmlViewPanel("About Miradi", this.getClass(), "About.html", this).showOkDialog();
+		new HtmlViewPanel(getMainWindow(), EAM.text("About Miradi"), this.getClass(), "About.html", this).showOkDialog();
 	}
 
 

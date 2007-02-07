@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.HtmlViewPanel;
 
 public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
@@ -19,7 +21,9 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 	{
 		if(linkDescription.equals(SHOW_RULES))
 		{
-			HtmlViewPanel htmlViewPanel = new HtmlViewPanel("Bundle Rules", this.getClass(), getResourceBundleRulesFileName());
+			MainWindow mainWindow = getWizard().getMainWindow();
+			HtmlViewPanel htmlViewPanel = 
+				new HtmlViewPanel(mainWindow, EAM.text("Bundle Rules"), this.getClass(), getResourceBundleRulesFileName());
 			htmlViewPanel.showOkDialog();
 		}
 		else 

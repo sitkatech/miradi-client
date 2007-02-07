@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.Utilities;
 
 import edu.stanford.ejalbert.BrowserLauncher;
@@ -31,26 +32,27 @@ import edu.stanford.ejalbert.BrowserLauncherRunner;
 public class HtmlViewPanel implements HtmlFormEventHandler
 {
 
-	public HtmlViewPanel(String titleToUse, Class viewClassToUse, String htmlFileNameToUse)
+	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse)
 	{
-		this(titleToUse,  viewClassToUse,  htmlFileNameToUse, new DummyHandler());
+		this(mainWindowToUse, titleToUse,  classToUse,  htmlFileNameToUse, new DummyHandler());
 	}
 
 	
-	public HtmlViewPanel(String titleToUse, Class viewClassToUse, String htmlFileNameToUse, HtmlFormEventHandler handlerToUse)
+	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class viewClassToUse, String htmlFileNameToUse, HtmlFormEventHandler handlerToUse)
 	{
 		super();
 		viewTitle = titleToUse;
 		viewClass = viewClassToUse;
 		htmlFileName = htmlFileNameToUse;
 		delegateFormHandler = handlerToUse;
+		mainWindow = mainWindowToUse;
 	}
 	
 	
 	public void showOkDialog()
 	{
 		String title = EAM.text("Title|" + viewTitle);
-		EAMDialog dlg = new EAMDialog(EAM.mainWindow, title);
+		EAMDialog dlg = new EAMDialog(mainWindow, title);
 		dlg.setModal(true);
 
 		String body = loadHtml();
@@ -208,6 +210,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	private String htmlFileName;
 	private HtmlFormEventHandler delegateFormHandler;
 	private JButton close;
+	private MainWindow mainWindow;
 
 
 }
