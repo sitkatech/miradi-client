@@ -43,9 +43,12 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 
 	private void addFieldTeam(MainWindow mainWindowToUse)
 	{
-		addLabel(EAM.text("Label|Team Members:"));
+		addLabel(EAM.text("Label|Team Members"));
 		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindowToUse.getActions());
 		add(teamEditorComponent);
+		addLabel("");
+		addLabel(EAM.text("Label|<html><em>NOTE: Resources will only be " +
+				"shown above if they have the Team Member role checked</em></html>"));
 	}
 
 	public String getPanelDescription()
