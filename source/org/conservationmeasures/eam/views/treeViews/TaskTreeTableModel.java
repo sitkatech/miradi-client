@@ -7,8 +7,13 @@ package org.conservationmeasures.eam.views.treeViews;
 
 import javax.swing.tree.TreePath;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -59,10 +64,13 @@ EAM.logDebug("objectiveWasModified");
 		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
 	}
 
-	public void dataWasChanged(int objectType, BaseId objectId)
+	public void dataWasChanged(CommandSetObjectData cmd)
 	{
-		rebuildNode();
-		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
+		if(isTreeStructureChangingCommand(cmd))
+		{
+			rebuildNode();
+			fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
+		}
 
 EAM.logDebug("dataWasChanged");
 	}
@@ -107,6 +115,20 @@ EAM.logDebug("idListWasChanged");
 				return found;
 		}
 		return null;
+	}
+
+	static boolean isTreeStructureChangingCommand(CommandSetObjectData cmd)
+	{
+		int type = cmd.getObjectType();
+		String tag = cmd.getFieldTag();
+		if(type == ObjectType.FACTOR && tag.equals(Strategy.TAG_ACTIVITY_IDS))
+			return true;
+		if(type == ObjectType.INDICATOR && tag.equals(Indicator.TAG_TASK_IDS))
+			return true;
+		if(type == ObjectType.TASK && tag.equals(Task.TAG_SUBTASK_IDS))
+			return true;
+		
+		return false;
 	}
 
 }

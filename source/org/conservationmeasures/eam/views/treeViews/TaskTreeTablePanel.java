@@ -250,14 +250,16 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			if(cmd.getObjectType() != ObjectType.VIEW_DATA)
-				model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			restoreTreeExpansionState();
+			model.dataWasChanged(cmd);
+			if(TaskTreeTableModel.isTreeStructureChangingCommand(cmd))
+				restoreTreeExpansionState();
+			else
+				repaint();
 		}
 		
 		setSelectedRow(currentSelectedRow);
 	}
-
+	
 	private void setSelectedRow(int currentSelectedRow)
 	{
 		if(currentSelectedRow < 0)
