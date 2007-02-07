@@ -26,6 +26,9 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		
 	public void setTask(Task taskToUse)
 	{
+		if (isAlreadyCurrentTask(taskToUse))
+			return;
+		
 		task = taskToUse;
 		dataWasChanged();
 	}

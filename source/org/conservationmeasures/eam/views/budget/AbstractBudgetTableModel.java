@@ -320,6 +320,11 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return col == getFundingSourceColumnIndex();
 	}
 	
+	protected boolean isAlreadyCurrentTask(Task taskToUse)
+	{
+		return task != null && taskToUse != null && task.getId().equals(taskToUse.getId());
+	}
+	
 	abstract public boolean isYearlyTotalColumn(int col);
 	
 	abstract public BaseId getAssignmentForRow(int row);

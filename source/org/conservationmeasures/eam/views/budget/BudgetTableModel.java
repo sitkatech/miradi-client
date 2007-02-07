@@ -40,11 +40,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		dataWasChanged();
 	}
 
-	private boolean isAlreadyCurrentTask(Task taskToUse)
-	{
-		return task != null && taskToUse != null && task.getId().equals(taskToUse.getId());
-	}
-	
 	public void dataWasChanged()
 	{
 		if(task == null)
