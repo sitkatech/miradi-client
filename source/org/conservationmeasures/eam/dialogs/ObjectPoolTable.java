@@ -18,6 +18,12 @@ public class ObjectPoolTable extends ObjectTable
 		resizeTable(4);
 	}
 	
+	public ObjectPoolTable(ObjectPoolTableModel modelToUse, int sortColumn)
+	{
+		this(modelToUse);
+		sort(sortColumn);
+	}
+	
 	public ObjectPoolTableModel getObjectPoolTableModel()
 	{
 		return (ObjectPoolTableModel)getModel();
