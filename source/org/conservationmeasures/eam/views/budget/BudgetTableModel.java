@@ -33,8 +33,16 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 
 	public void setTask(Task taskToUse)
 	{
+		if (isAlreadyCurrentTask(taskToUse))
+			return;
+			
 		task = taskToUse;
 		dataWasChanged();
+	}
+
+	private boolean isAlreadyCurrentTask(Task taskToUse)
+	{
+		return task != null && taskToUse != null && task.getId().equals(taskToUse.getId());
 	}
 	
 	public void dataWasChanged()

@@ -44,7 +44,20 @@ public class BudgetPropertiesInputPanel extends ObjectDataInputPanel
 
 	private void updateTable(CommandSetObjectData command)
 	{
-		tableEditorComponent.dataWasChanged();
+		if (wasAssignmentModified(command) || wasAssignmentAddedOrRemoved(command))
+		{
+			tableEditorComponent.dataWasChanged();
+		}
+	}
+
+	private boolean wasAssignmentAddedOrRemoved(CommandSetObjectData command)
+	{
+		return command.getObjectType() == ObjectType.TASK && command.getFieldTag().equals(Task.TAG_ASSIGNMENT_IDS);
+	}
+
+	private boolean wasAssignmentModified(CommandSetObjectData command)
+	{
+		return command.getObjectType() == ObjectType.ASSIGNMENT;
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
