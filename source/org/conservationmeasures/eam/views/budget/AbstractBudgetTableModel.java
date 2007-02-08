@@ -327,21 +327,31 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 			return;
 			
 		task = taskToUse;
-		setAssignmentIdListAndFire();	
+		updateAssignmentIdList();	
 	}
 	
 	public void dataWasChanged()
 	{
-		if (task == null)
-			return;
-		
 		if (isAlreadyCurrentAssignmentIdList())
 			return;
 		
-		setAssignmentIdListAndFire();
+		updateAssignmentIdList();
 	}
 
-	private void setAssignmentIdListAndFire()
+	private boolean isAlreadyCurrentTask(Task taskToUse)
+	{
+		 if(task == null || taskToUse == null)
+			 return false;
+		 
+		 return task.getId().equals(taskToUse.getId());
+	}
+	
+	private boolean isAlreadyCurrentAssignmentIdList()
+	{
+		return assignmentIdList.equals(getAssignmentsForTask(task));
+	}
+	
+	private void updateAssignmentIdList()
 	{
 		assignmentIdList = getAssignmentsForTask(task);
 		fireTableDataChanged();
@@ -354,20 +364,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		
 		return taskToUse.getAssignmentIdList();
 	}
-	
-	protected boolean isAlreadyCurrentTask(Task taskToUse)
-	{
-		 if(task == null || taskToUse == null)
-			 return false;
-		 
-		 return task.getId().equals(taskToUse.getId());
-	}
-	
-	protected boolean isAlreadyCurrentAssignmentIdList()
-	{
-		return assignmentIdList.equals(task.getAssignmentIdList());
-	}
-	
+		
 	abstract public boolean isYearlyTotalColumn(int col);
 	
 	abstract public BaseId getAssignmentForRow(int row);
