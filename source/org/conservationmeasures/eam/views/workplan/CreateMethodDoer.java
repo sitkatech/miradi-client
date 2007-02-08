@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Task;
 
 //TODO InsertMethodDoer, InsertTaskDoer, InsertActivitDoer have code in common that needs to be refactored
 public class CreateMethodDoer extends AbstractTaskTreeDoer
@@ -35,8 +34,7 @@ public class CreateMethodDoer extends AbstractTaskTreeDoer
 		String tag = AbstractTaskTreeDoer.getTaskIdsTag(parent.getRef());
 		try
 		{
-			Task task = createTask(getProject(), parent, tag);
-			getPanel().selectObject(task);
+			createTask(getProject(), parent, tag);
 		}
 		catch (Exception e)
 		{

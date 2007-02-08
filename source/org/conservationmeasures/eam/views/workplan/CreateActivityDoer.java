@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Task;
 
 public class CreateActivityDoer extends AbstractTaskTreeDoer
 {
@@ -38,8 +37,7 @@ public class CreateActivityDoer extends AbstractTaskTreeDoer
 		String tag = AbstractTaskTreeDoer.getTaskIdsTag(parent.getRef());
 		try
 		{
-			Task task = createTask(getProject(), parent, tag);
-			getPanel().selectObject(task);
+			createTask(getProject(), parent, tag);
 		}
 		catch (Exception e)
 		{

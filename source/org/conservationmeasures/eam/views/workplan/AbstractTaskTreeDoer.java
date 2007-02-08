@@ -62,7 +62,7 @@ public abstract class AbstractTaskTreeDoer extends ObjectsDoer
 		throw new RuntimeException("getTaskIdsTag called for non-task container type " + container.getObjectType());
 	}
 
-	public static Task createTask(Project project, EAMObject object, String containerTag) throws CommandFailedException, ParseException, Exception
+	public void createTask(Project project, EAMObject object, String containerTag) throws CommandFailedException, ParseException, Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
@@ -74,7 +74,9 @@ public abstract class AbstractTaskTreeDoer extends ObjectsDoer
 			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(object, containerTag, createdId);
 			project.executeCommand(addChildCommand);
 			
-			return (Task)project.findObject(ObjectType.TASK, createdId);
+			EAMObject objectToSelect = project.findObject(ObjectType.TASK, createdId);
+			getPanel().selectObject(objectToSelect);
+			//return (Task)project.findObject(ObjectType.TASK, createdId);
 		}
 		finally
 		{
