@@ -265,39 +265,47 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 			setColors(table, model, component, row, column);
 		
 		if (isSelected && hasFocus)
-			setComponentColors(component, Color.white);
+			setSelectedAndInFocusCellColors(table, row, column, component);
 		
 		setBorders(model, row, column);
 		return component;
 	}
 
+	private void setSelectedAndInFocusCellColors(JTable table, int row, int column, Component component)
+	{
+		if (table.isCellEditable(row, column))
+			setComponentColors(component, Color.white, Color.blue);
+		else
+			setComponentColors(component, Color.lightGray, Color.black);
+	}
+
 	private void setColors(JTable table, AssignmentTableModelSplittableShell model, Component component, int row, int column)
 	{
 		if (model.doubleRowed())
-			setComponentColors(component, EVERY_OTHER_TWO_COLORS[row % 4]);
+			setComponentColors(component, EVERY_OTHER_TWO_COLORS[row % 4], Color.BLACK);
 		
 		if (! model.doubleRowed())
-			setComponentColors(component, BACKGROUND_COLORS[row % 2]);
+			setComponentColors(component, BACKGROUND_COLORS[row % 2], Color.BLACK);
 		
 		Color totalsColor = new Color(0xf0, 0xf0, 0xf0).darker();
 		
 		if (model.isYearlyTotalColumn(column))
-			setComponentColors(component, totalsColor);
+			setComponentColors(component, totalsColor, Color.BLACK);
 		
 		if (model.isCostTotalsColumn(column))
-			setComponentColors(component, totalsColor);
+			setComponentColors(component, totalsColor, Color.BLACK);
 		
 		if (model.isUnitsTotalColumn(column))
-			setComponentColors(component, totalsColor);
+			setComponentColors(component, totalsColor, Color.BLACK);
 		
 		if (model.isCellEditable(row, column))
 			component.setForeground(Color.BLUE);
 	}
 	
-	void setComponentColors(Component component, Color background)
+	void setComponentColors(Component component, Color background, Color foreground)
 	{
 		component.setBackground(background);
-		component.setForeground(Color.BLACK);
+		component.setForeground(foreground);
 	}
 
 	private void setBorders(AssignmentTableModelSplittableShell model, int row, int column)
