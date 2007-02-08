@@ -321,14 +321,49 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return col == getFundingSourceColumnIndex();
 	}
 	
+	public void setTask(Task taskToUse)
+	{
+		if (isAlreadyCurrentTask(taskToUse))
+			return;
+			
+		task = taskToUse;
+		dataWasChanged();
+	}
+	
+	public void dataWasChanged()
+	{
+		if (task != null)
+			possiblyFireTableDataChangedDueToNewTask();
+		else
+			possiblyFireTableDataChanged();	
+	}
+	
 	protected boolean isAlreadyCurrentTask(Task taskToUse)
 	{
 		return task != null && taskToUse != null && task.getId().equals(taskToUse.getId());
 	}
 	
-	protected boolean isAlreadyCurrentAssignment()
+	protected boolean isAlreadyCurrentAssignmentIdList()
 	{
 		return assignmentIdList.equals(task.getAssignmentIdList());
+	}
+
+	private void possiblyFireTableDataChangedDueToNewTask()
+	{
+		if (isAlreadyCurrentAssignmentIdList())
+			return;
+		
+		assignmentIdList = task.getAssignmentIdList();
+		fireTableDataChanged();
+	}
+
+	private void possiblyFireTableDataChanged()
+	{
+		if (assignmentIdList.size() == 0)
+			return;
+		
+		assignmentIdList = new IdList();
+		fireTableDataChanged();
 	}
 	
 	abstract public boolean isYearlyTotalColumn(int col);
@@ -347,9 +382,9 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	
 	abstract public int getFundingSourceColumnIndex();
 	
-	abstract public void setTask(Task taskToUse);
+	//abstract public void setTask(Task taskToUse);
 	
-	abstract public void dataWasChanged();
+//	abstract public void dataWasChanged();
 	
 	private static final int RESOURCES_COLUMN_INDEX = 0;
 	private static final int COST_PER_UNIT_COLUMN_INDEX = 4;	

@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
@@ -22,26 +21,6 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 	public BudgetTableUnitsModel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, new IdList());
-	}
-		
-	public void setTask(Task taskToUse)
-	{
-		if (isAlreadyCurrentTask(taskToUse))
-			return;
-		
-		task = taskToUse;
-		dataWasChanged();
-	}
-	
-	public void dataWasChanged()
-	{
-		if (task == null)
-			return;
-		if (isAlreadyCurrentAssignment())
-			return;
-
-		assignmentIdList = task.getAssignmentIdList();
-		fireTableDataChanged();
 	}
 	
 	public int getColumnCount()
