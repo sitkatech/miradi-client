@@ -28,6 +28,19 @@ import org.martus.swing.Utilities;
 
 public class HtmlViewPanel implements HtmlFormEventHandler
 {
+	
+	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, String htmlTextToUse)
+	{
+		this(mainWindowToUse, titleToUse, htmlTextToUse, new DummyHandler());
+	}
+	
+	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, String htmlTextToUse, HtmlFormEventHandler handlerToUse)
+	{
+		super();
+		htmlText = htmlTextToUse;
+		initVars(mainWindowToUse, titleToUse, handlerToUse);
+	}
+
 
 	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse)
 	{
@@ -35,16 +48,21 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	}
 
 	
-	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class viewClassToUse, String htmlFileNameToUse, HtmlFormEventHandler handlerToUse)
+	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse, HtmlFormEventHandler handlerToUse)
 	{
 		super();
-		viewTitle = titleToUse;
-		viewClass = viewClassToUse;
+		resourceClass = classToUse;
 		htmlFileName = htmlFileNameToUse;
+		initVars(mainWindowToUse, titleToUse, handlerToUse);
+	}
+	
+	private void initVars(MainWindow mainWindowToUse, String titleToUse, HtmlFormEventHandler handlerToUse)
+	{
+		viewTitle = titleToUse;
 		delegateFormHandler = handlerToUse;
 		mainWindow = mainWindowToUse;
 	}
-	
+
 	
 	public void showOkDialog()
 	{
@@ -101,13 +119,16 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	
 	private String loadHtml()
 	{
+		if (htmlText!=null)
+			return htmlText;
+		
 		try
 		{
-			return EAM.loadResourceFile(viewClass, htmlFileName);
+			return EAM.loadResourceFile(resourceClass, htmlFileName);
 		}
 		catch (Exception e)
 		{
-			EAM.errorDialog("ERROR: Feature file not found: " + viewClass + "/" + htmlFileName );
+			EAM.errorDialog("ERROR: Feature file not found: " + resourceClass + "/" + htmlFileName );
 			return null;
 		}
 	}
@@ -186,7 +207,8 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	}
 
 	private String viewTitle;
-	private Class viewClass;
+	private Class resourceClass;
+	private String htmlText;
 	private String htmlFileName;
 	private HtmlFormEventHandler delegateFormHandler;
 	private JButton close;

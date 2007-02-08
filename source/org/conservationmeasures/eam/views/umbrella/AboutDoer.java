@@ -7,18 +7,13 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.util.EventObject;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPopupMenu;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.VersionConstants;
-import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
-public class AboutDoer extends MainWindowDoer  implements HtmlFormEventHandler
+public class AboutDoer extends MainWindowDoer 
 {
 	public AboutDoer()
 	{
@@ -36,34 +31,39 @@ public class AboutDoer extends MainWindowDoer  implements HtmlFormEventHandler
 	
 	public void doIt(EventObject event) throws CommandFailedException
 	{
-		new HtmlViewPanel(getMainWindow(), EAM.text("About Miradi"), this.getClass(), "About.html", this).showOkDialog();
-	}
-
-
-	public void buttonPressed(String buttonName)
-	{
-	}
-
-	public void linkClicked(String linkDescription)
-	{
-	}
-
-	public JPopupMenu getRightClickMenu(String url)
-	{
-		return null;
-	}
-
-	public void valueChanged(String widget, String newValue)
-	{
-	}
-
-	public void setComponent(String name, JComponent component)
-	{
-		if (name.equals("Version"))
+		String title = EAM.text("Title|About Miradi");
+		String text =  buildMainSection();
+		
+		boolean initialSplash = (event == null);
+		if(!initialSplash)
 		{
-			String text = "<html><strong>" + VersionConstants.VERSION_STRING  + "</strong></html>";
-			((JLabel)component).setText(text);
+			text += loadHtmlFile("HelpAboutExtra.html");
 		}
+		
+		new HtmlViewPanel(getMainWindow(), title, text).showOkDialog();
+	}
+
+	
+	private String buildMainSection()
+	{
+		String text = loadHtmlFile("AboutPart1.html");
+		text +=  VersionConstants.VERSION_STRING;
+		text += loadHtmlFile("AboutPart2.html");
+		return text;
 	}
 	
+	
+	private String loadHtmlFile(String htmlFile)
+	{
+		try
+		{
+			return EAM.loadResourceFile(getClass(), htmlFile);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
 }
