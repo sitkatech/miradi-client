@@ -263,6 +263,10 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 		AssignmentTableModelSplittableShell model = ((BudgetTable)table).getBudgetModel();
 		if (!isSelected)
 			setColors(table, model, component, row, column);
+		
+		if (isSelected && hasFocus)
+			setComponentColors(component, Color.white);
+		
 		setBorders(model, row, column);
 		return component;
 	}
