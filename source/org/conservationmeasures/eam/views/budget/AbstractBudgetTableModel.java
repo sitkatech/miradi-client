@@ -327,10 +327,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 			return;
 			
 		task = taskToUse;
-		if (task == null)
-			setAssignmentIdListAndFire(new IdList());
-		else
-			setAssignmentIdListAndFire(task.getAssignmentIdList());	
+		setAssignmentIdListAndFire();	
 	}
 	
 	public void dataWasChanged()
@@ -338,26 +335,32 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		if (task == null)
 			return;
 		
-		possiblyFireTableDataChangedDueToNewTask();
-	}
-	
-	private void possiblyFireTableDataChangedDueToNewTask()
-	{
 		if (isAlreadyCurrentAssignmentIdList())
 			return;
 		
-		setAssignmentIdListAndFire(task.getAssignmentIdList());
+		setAssignmentIdListAndFire();
+	}
+
+	private void setAssignmentIdListAndFire()
+	{
+		assignmentIdList = getAssignmentsForTask(task);
+		fireTableDataChanged();
 	}
 	
-	private void setAssignmentIdListAndFire(IdList assignmentIdListToUse)
+	private IdList getAssignmentsForTask(Task taskToUse)
 	{
-		assignmentIdList = assignmentIdListToUse;
-		fireTableDataChanged();
+		if (taskToUse == null)
+			return new IdList();
+		
+		return taskToUse.getAssignmentIdList();
 	}
 	
 	protected boolean isAlreadyCurrentTask(Task taskToUse)
 	{
-		return task != null && taskToUse != null && task.getId().equals(taskToUse.getId());
+		 if(task == null || taskToUse == null)
+			 return false;
+		 
+		 return task.getId().equals(taskToUse.getId());
 	}
 	
 	protected boolean isAlreadyCurrentAssignmentIdList()
