@@ -250,7 +250,17 @@ public class FactorPropertiesPanel extends DisposablePanel
 		return textField.getText();
 	}
 
-
+	public void setAllTabSplitterLocationsToMiddle()
+	{
+		if (indicatorsTab != null)
+			indicatorsTab.updateSplitterLocation(indicatorsTab.getPanelDescription());
+		
+		if (objectivesTab != null)
+			objectivesTab.updateSplitterLocation(objectivesTab.getPanelDescription());
+		
+		if (goalsTab != null)
+			goalsTab.updateSplitterLocation(goalsTab.getPanelDescription());
+	}
 
 	static final int MAX_LABEL_LENGTH = 40;
 	public static final int TAB_DETAILS = 0;

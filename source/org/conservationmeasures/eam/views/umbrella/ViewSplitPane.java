@@ -14,9 +14,11 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 
 public class ViewSplitPane extends JSplitPane
 {
-	public ViewSplitPane(SplitterPositionSaver splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel) 
+	public ViewSplitPane(Component componentSplittedToUse, SplitterPositionSaver splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel) 
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
+		
+		mainComponentSplitted = componentSplittedToUse;
 		splitPositionSaver = splitPositionSaverToUse;
 		splitterName = splitterNameToUse;
 		
@@ -27,20 +29,29 @@ public class ViewSplitPane extends JSplitPane
 		setBottomComponent(bottomPanel);
 		setFocusable(false);
 		
-		setDividerLocationWithoutNotifications(splitPositionSaver.getSplitterLocation(splitterName));
+		int mainComponentHeight = mainComponentSplitted.getHeight();
+		int splitterLocation = splitPositionSaver.getSplitterLocation(mainComponentHeight, splitterName);
+		setDividerLocationWithoutNotifications(splitterLocation);
 	}
-
+	
+	public void setSplitterLocationToMiddle(String name)
+	{
+		splitPositionSaver.setSplitterLocationToMiddle(name);
+		setDividerLocation(0.5);
+	}
+	
 	public void setDividerLocation(int location)
 	{
 		setDividerLocationWithoutNotifications(location);
-		splitPositionSaver.setSplitterLocation(splitterName, location);
+		splitPositionSaver.setSplitterLocation(mainComponentSplitted.getHeight(), splitterName, location);
 	}
 
 	private void setDividerLocationWithoutNotifications(int location)
 	{
 		super.setDividerLocation(location);
 	}
-
+	
 	String splitterName;
 	private SplitterPositionSaver splitPositionSaver;
+	private Component mainComponentSplitted;
 }

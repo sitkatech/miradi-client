@@ -413,24 +413,27 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		preferences.setTaggedInt(name, 0);
 	}
 
-	public void setSplitterLocation(String name, int location)
+	public void setSplitterLocation(int componentHeight, String name, int location)
 	{
 		//TODO fixme can no longer use the view height.  
 		//should use the appropriate height.
-		int splitPercent = location * 100 / viewHolder.getHeight();
+		int splitPercent = location * 100 / componentHeight;
 		int splitPercentFromMiddle = splitPercent * 2 - 100;
+		
 		preferences.setTaggedInt(name, splitPercentFromMiddle);
 	}
 	
-	public int getSplitterLocation(String name)
+	public int getSplitterLocation(int height, String name)
 	{
 		//TODO fixme can no longer use the view height.  
 		//should use the appropriate height.
 		int splitPercentFromMiddle = preferences.getTaggedInt(name);
 		int splitPercent = (splitPercentFromMiddle + 100) / 2;
-		return viewHolder.getHeight() * splitPercent / 100; 
+		int location = height * splitPercent / 100;
+		
+		return location; 
 	}
-
+	
 	public void lostOwnership(Clipboard clipboard, Transferable contents) 
 	{
 	}

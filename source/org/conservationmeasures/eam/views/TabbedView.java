@@ -46,7 +46,7 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		super.becomeActive();
 		removeAll();
-		bigSplitter = new ViewSplitPane(getMainWindow(), getProject().getCurrentView(),createWizardPanel(), tabs);
+		bigSplitter = new ViewSplitPane(this, getMainWindow(), getProject().getCurrentView(),createWizardPanel(), tabs);
 		add(bigSplitter, BorderLayout.CENTER);
 		
 		ignoreTabChanges = true;

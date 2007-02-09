@@ -38,9 +38,14 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 	public void createVerticalSplitPane(Component top, Component bottom, String splitterName)
 	{
 		JScrollPane propertiesScroll = new JScrollPane(bottom);
-			
-		ViewSplitPane splitter = new ViewSplitPane(splitPositionSaver, splitterName, top, propertiesScroll );
+		
+		splitter = new ViewSplitPane(this, splitPositionSaver, splitterName, top, propertiesScroll );
 		add(splitter, BorderLayout.CENTER);
+	}
+	
+	public void updateSplitterLocation(String name)
+	{
+		splitter.setSplitterLocationToMiddle(name);
 	}
 	
 	protected void setComponentPreferredSize(JComponent component)
@@ -49,5 +54,6 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		component.setPreferredSize(dimension);
 	}
 
-	private SplitterPositionSaver splitPositionSaver;	 
+	private SplitterPositionSaver splitPositionSaver;
+	private ViewSplitPane splitter;
 }

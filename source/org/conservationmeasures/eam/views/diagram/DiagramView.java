@@ -200,7 +200,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		bottomHalf.setLeftComponent(legendDialog);
 		bottomHalf.setDividerLocation(legendDialog.getPreferredSize().width);
 		
-		bigSplitter = new ViewSplitPane(getMainWindow(), getProject().getCurrentView(), createWizard(), bottomHalf);
+		bigSplitter = new ViewSplitPane(this, getMainWindow(), getProject().getCurrentView(), createWizard(), bottomHalf);
 		add(bigSplitter, BorderLayout.CENTER);
 		
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
@@ -481,8 +481,10 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		nodePropertiesPanel.setCurrentDiagramFactor(diagram, node);
 		nodePropertiesPanel.selectTab(startingTabIdentifier);
 		nodePropertiesDlg.pack();
+		
 		Utilities.centerDlg(nodePropertiesDlg);
 		nodePropertiesDlg.setVisible(true);
+		nodePropertiesPanel.setAllTabSplitterLocationsToMiddle();
 	}
 
 	private void disposeOfNodePropertiesDialog()
