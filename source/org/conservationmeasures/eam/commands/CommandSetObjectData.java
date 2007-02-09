@@ -51,7 +51,12 @@ public class CommandSetObjectData extends Command
 		id = objectId;
 		tag = fieldTag;
 		newValue = dataValue;
-		oldValue = "";
+	}
+	
+	public CommandSetObjectData(int objectType, BaseId objectId, String fieldTag, String newValueToUse, String oldValueToUse)
+	{
+		this(objectType, objectId, fieldTag, newValueToUse);
+		oldValue = oldValueToUse;
 	}
 	
 	public int getObjectType()
@@ -110,7 +115,7 @@ public class CommandSetObjectData extends Command
 
 	public Command getReverseCommand() throws CommandFailedException
 	{
-		return new CommandSetObjectData(type, id, tag, oldValue);
+		return new CommandSetObjectData(type, id, tag, oldValue, newValue);
 	}
 
 	public static final String COMMAND_NAME = "SetObjectData";

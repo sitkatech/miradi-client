@@ -25,12 +25,11 @@ public class TestCommandSetObjectData extends EAMTestCase
 		CommandSetObjectData commandSetObjectData = new CommandSetObjectData(ObjectType.TASK, new BaseId(68), Task.TAG_LABEL, "some value");
 		CommandSetObjectData reverseCommand = (CommandSetObjectData) commandSetObjectData.getReverseCommand();
 		
-		assertNotEquals("not null value?", commandSetObjectData.getPreviousDataValue(), null);
 		assertEquals("not same type?", commandSetObjectData.getObjectType(), reverseCommand.getObjectType());
 		assertEquals("not same id?", commandSetObjectData.getObjectId(), reverseCommand.getObjectId());
 		assertEquals("not same tag?", commandSetObjectData.getFieldTag(), reverseCommand.getFieldTag());
 		assertEquals("not same value?", commandSetObjectData.getPreviousDataValue(), reverseCommand.getDataValue());
-		
+		assertNotNull("not null value?", reverseCommand.getPreviousDataValue());
 	}
 	
 	public void testListInsert() throws Exception
