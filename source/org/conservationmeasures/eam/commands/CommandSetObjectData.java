@@ -51,6 +51,7 @@ public class CommandSetObjectData extends Command
 		id = objectId;
 		tag = fieldTag;
 		newValue = dataValue;
+		oldValue = "";
 	}
 	
 	public int getObjectType()
