@@ -358,7 +358,7 @@ public class WizardManager
 			
 		if (found<0)
 		{
-			String text = "Contorl ("+ controlName +") not found for step: " + getStepName(step);
+			String text = "Control ("+ controlName +") not found for step: " + getStepName(step);
 			reportError(EAM.text(text));
 			return null;
 		}
