@@ -344,43 +344,38 @@ public class WizardManager
 		Class targetStep = step.getControl(controlName);
 		
 		if (targetStep==null)
-			return doDeferedLookup(controlName,step);
+			return doDeferedSequenceLookup(controlName,step);
 
 		return targetStep.getSimpleName();
 	}
 	
 	
-	String doDeferedLookup(String controlName, SkeletonWizardStep step)
+	String doDeferedSequenceLookup(String controlName, SkeletonWizardStep step)
 	{
 		Class[] sequences = WizardManager.getSequence();
-
-		int found = findPositionInSequence(sequences, step);
+		
+		int position = findPositionInSequence(sequences, step);
+		if (position>=0)
+		{
+			if (controlName.equals("Next"))
+			{
+				String name = sequences[0].getSimpleName();
+				if (position != sequences.length-1)
+					name = sequences[position+1].getSimpleName();
+				return name;
+			}
 			
-		if (found<0)
-		{
-			String text = "Control ("+ controlName +") not found for step: " + getStepName(step);
-			reportError(EAM.text(text));
-			return null;
+			if (controlName.equals("Back"))
+			{
+				String name = sequences[sequences.length-1].getSimpleName();
+				if (position != 0)
+					name = sequences[position-1].getSimpleName();
+				return name;			
+			}
 		}
 		
-		if (controlName.equals("Next"))
-		{
-			String name = sequences[0].getSimpleName();
-			if (found != sequences.length-1)
-				name = sequences[found+1].getSimpleName();
-			return name;
-		}
-		
-		if (controlName.equals("Back"))
-		{
-			String name = sequences[sequences.length-1].getSimpleName();
-			if (found != 0)
-				name = sequences[found-1].getSimpleName();
-			return name;
-			
-		}
-		
-		reportError(EAM.text("Control not specified: ") + getStepName(step));
+		String errorText = "Control ("+ controlName +") not found for step: " + getStepName(step);
+		reportError(EAM.text(errorText));
 		return null;
 	}
 
