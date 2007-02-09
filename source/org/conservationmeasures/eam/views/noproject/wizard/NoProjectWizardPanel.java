@@ -38,6 +38,9 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 
 	public void linkClicked(String linkDescription)
 	{
+		if(getMainWindow().mainLinkFunction(linkDescription))
+			return;
+		
 		try 
 		{
 			if(linkDescription.startsWith(OPEN_PREFIX))
