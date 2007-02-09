@@ -126,14 +126,6 @@ public class TestDiagramFactor extends EAMTestCase
 		assertEquals("node size width incorrect?", 100.0, target.getSize().getWidth(), TOLERANCE);
 		assertEquals("node size height incorrect?", 50.0, target.getSize().getHeight(), TOLERANCE);
 	}
-
-	public void testFont()
-	{
-		return;
-		//FIXME: currently not working on MAC
-		//Font nodeFont = GraphConstants.getFont(targetAttributeMap);
-		//assertTrue("not bold?", nodeFont.isBold());
-	}
 	
 	public void testBuildCommandsToClear() throws Exception
 	{
