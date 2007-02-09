@@ -162,7 +162,8 @@ public class WizardManager
 			.createBackControl(NoProjectOverviewStep.class);
 		
 		createStepEntry(new NoProjectWizardProjectCreateStep(panel))
-			.createBackControl(NoProjectOverviewStep.class);
+			.createBackControl(NoProjectOverviewStep.class)
+			.createControl("CreateProject",NoProjectWizardProjectCreateStep.class);
 	}
 	
 	public void createBudgetStepEntries(WizardPanel panel)
@@ -357,7 +358,8 @@ public class WizardManager
 			
 		if (found<0)
 		{
-			reportError(EAM.text("Step not found in sequence table: ") + getStepName(step));
+			String text = "Contorl ("+ controlName +") not found for step: " + getStepName(step);
+			reportError(EAM.text(text));
 			return null;
 		}
 		
