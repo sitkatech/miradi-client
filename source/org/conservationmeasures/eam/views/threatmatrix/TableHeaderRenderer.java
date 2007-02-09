@@ -43,7 +43,7 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
 		//FIXME: for now this code allows the MAC to be tuned independently until a general solution can be found for all 
 		if (!UIManager.getBorder("TableHeader.cellBorder").getClass().getName().startsWith("javax"))
 		{
-			cellBorder =  BorderFactory.createEtchedBorder(3, Color.WHITE, Color.BLACK);
+			cellBorder =  BorderFactory.createRaisedBevelBorder();
 		}
         Border focusCellHighlightBorder = UIManager.getBorder("Table.focusCellHighlightBorder");
         createCellNotSelectionBorder(cellBorder, focusCellHighlightBorder);
