@@ -114,8 +114,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		try
 		{
 			String mode = getProject().getCurrentViewData().getData(ViewData.TAG_CURRENT_MODE);
-			if (mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
-					return true;
+			return (mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM));
 		}
 		catch (Exception e)
 		{
