@@ -27,7 +27,8 @@ public abstract class EAMFileSaveChooser
 
 	public File displayChooser() throws CommandFailedException
 	{
-		JFileChooser dlg = new JFileChooser();
+		
+		JFileChooser dlg = new JFileChooser(currentDirectory);
 
 		dlg.setDialogTitle(EAM.text(getDialogApproveTitleText()));
 		dlg.setFileFilter(getFileFilter());
@@ -49,10 +50,16 @@ public abstract class EAMFileSaveChooser
 			chosen.delete();
 		}
 
+		currentDirectory = chosen.getParent();
 		return chosen;
 
 	}
 
+	public File getPriorPath()
+	{
+		return null;
+	}
+	
 	public abstract String getDialogApproveTitleText();
 
 	public abstract String getApproveButtonToolTipText();
@@ -66,5 +73,7 @@ public abstract class EAMFileSaveChooser
 	public abstract String getFileExtension();
 
 	public abstract FileFilter getFileFilter();
+	
+	private static String currentDirectory;
 
 }
