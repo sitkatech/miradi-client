@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.umbrella;
+package org.conservationmeasures.eam.utils;
 
 import java.io.File;
 
@@ -22,7 +22,7 @@ public class JPEGFileFilter extends FileFilter
 	{
 		if(pathname.isDirectory())
 			return true;
-		return(pathname.getName().toLowerCase().endsWith(JPG_EXTENSION));
+		return(pathname.getName().toLowerCase().endsWith(EXTENSION));
 	}
 
 	public String getDescription()
@@ -30,5 +30,5 @@ public class JPEGFileFilter extends FileFilter
 		return EAM.text("FileFilter|JPEG (*.jpg)");
 	}
 
-	static final String JPG_EXTENSION = ".jpg";
+	public static final String EXTENSION = ".jpg";
 }
