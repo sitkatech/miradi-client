@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
@@ -75,11 +76,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		{
 			addField(createStringField(Strategy.TAG_SHORT_LABEL));
 			
-			// FIXME: Convert to new mechanism (create status field or just checkbox field?)
-			add(new UiLabel(EAM.text("Label|Status")));
-			statusCheckBox.setSelected(factorToEdit.isStatusDraft());
-			statusCheckBox.addItemListener(new StatusChangeHandler());
-			add(statusCheckBox);
+			addOptionalDraftStatusCheckBox(factorToEdit);
 
 			// FIXME: Convert to new mechanism
 			add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR,  Cause.TAG_TAXONOMY_CODE)));
@@ -96,6 +93,36 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		addField(createMultilineField(Factor.TAG_COMMENT));
 		
 		updateFieldsFromProject();
+	}
+
+
+	private void addOptionalDraftStatusCheckBox(DiagramFactor factorToEdit)
+	{
+		// FIXME: Convert to new mechanism (create status field or just checkbox field?)
+		if (brainStormModeActvie())
+		{
+			add(new UiLabel(EAM.text("Label|Status")));
+			statusCheckBox.setSelected(factorToEdit.isStatusDraft());
+			statusCheckBox.addItemListener(new StatusChangeHandler());
+			add(statusCheckBox);
+		}
+	}
+
+
+	private boolean brainStormModeActvie()
+	{
+		try
+		{
+			String mode = getProject().getCurrentViewData().getData(ViewData.TAG_CURRENT_MODE);
+			if (mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+					return true;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		return false;
 	}
 
 	
