@@ -55,11 +55,6 @@ public abstract class EAMFileSaveChooser
 
 	}
 
-	public File getPriorPath()
-	{
-		return null;
-	}
-	
 	public abstract String getDialogApproveTitleText();
 
 	public abstract String getApproveButtonToolTipText();
