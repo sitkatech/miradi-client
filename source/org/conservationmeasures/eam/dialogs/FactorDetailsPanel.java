@@ -99,7 +99,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	private void addOptionalDraftStatusCheckBox(DiagramFactor factorToEdit)
 	{
 		// FIXME: Convert to new mechanism (create status field or just checkbox field?)
-		if (brainStormModeActvie())
+		if (inChainMode())
 		{
 			add(new UiLabel(EAM.text("Label|Status")));
 			statusCheckBox.setSelected(factorToEdit.isStatusDraft());
@@ -109,7 +109,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	}
 
 
-	private boolean brainStormModeActvie()
+	private boolean inChainMode()
 	{
 		try
 		{
