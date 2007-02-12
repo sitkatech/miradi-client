@@ -253,7 +253,7 @@ public class ObjectManager
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_TARGETS))
 				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_TARGET, annotationType, annotationId, fieldTag);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_STRATEGIES))
-				return getFactorRelatedStrategies(annotationType, annotationId);
+				return getRelatedStrategyLabelsAsMultiline(annotationType, annotationId);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
 				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, annotationId, annotationType, fieldTag);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_METHODS))
@@ -268,7 +268,7 @@ public class ObjectManager
 	}
 	
 	
-	private String getFactorRelatedStrategies(int annotationType, BaseId annotationId) throws Exception
+	private String getRelatedStrategyLabelsAsMultiline(int annotationType, BaseId annotationId) throws Exception
 	{
 		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
 		NonDraftStrategySet filteredSet = new NonDraftStrategySet(cmNodes);
@@ -285,7 +285,7 @@ public class ObjectManager
 			if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
 				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_TARGET, objectType, objectId, fieldTag);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getFactorRelatedStrategies(objectType, objectId);
+				return getRelatedStrategyLabelsAsMultiline(objectType, objectId);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
 				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, objectId, objectType, fieldTag);
 		}
@@ -304,7 +304,7 @@ public class ObjectManager
 			if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 				return getAnnotationFactorLabel(objectType, objectId);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getFactorRelatedStrategies(objectType, objectId);
+				return getRelatedStrategyLabelsAsMultiline(objectType, objectId);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
 				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, objectId, objectType, fieldTag);
 		}
