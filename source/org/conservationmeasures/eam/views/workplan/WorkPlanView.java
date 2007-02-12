@@ -70,6 +70,16 @@ public class WorkPlanView extends TabbedView
 		addNonScrollableTab(methodPoolManagementPanel);
 		addNonScrollableTab(resourceManagementPanel);
 	}
+	
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+		
+		workPlanManagementPanel.updateSplitterLocation();
+		activitiesManagementPanel.updateSplitterLocation();
+		methodPoolManagementPanel.updateSplitterLocation();
+		resourceManagementPanel.updateSplitterLocation();
+	}
 
 	public WizardPanel createWizardPanel() throws Exception
 	{

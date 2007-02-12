@@ -43,9 +43,14 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		add(splitter, BorderLayout.CENTER);
 	}
 	
-	public void updateSplitterLocation(String name)
+	public void updateSplitterLocation()
 	{
-		splitter.setSplitterLocationToMiddle(name);
+		splitter.updateSplitterLocation(getPanelDescription());
+	}
+	
+	public void updateSplitterLocationToMiddle()
+	{
+		splitter.setSplitterLocationToMiddle(getPanelDescription());
 	}
 	
 	protected void setComponentPreferredSize(JComponent component)

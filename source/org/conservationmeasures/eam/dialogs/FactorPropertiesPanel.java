@@ -255,16 +255,16 @@ public class FactorPropertiesPanel extends DisposablePanel
 	public void setAllTabSplitterLocationsToMiddle()
 	{
 		if (indicatorsTab != null)
-			indicatorsTab.updateSplitterLocation(indicatorsTab.getPanelDescription());
+			indicatorsTab.updateSplitterLocationToMiddle();
 		
 		if (objectivesTab != null)
-			objectivesTab.updateSplitterLocation(objectivesTab.getPanelDescription());
+			objectivesTab.updateSplitterLocationToMiddle();
 		
 		if (goalsTab != null)
-			goalsTab.updateSplitterLocation(goalsTab.getPanelDescription());
+			goalsTab.updateSplitterLocationToMiddle();
 		
 		if (activitiesTab != null)
-			activitiesTab.updateSplitterLocation(activitiesTab.getPanelDescription());
+			activitiesTab.updateSplitterLocationToMiddle();
 	}
 
 	static final int MAX_LABEL_LENGTH = 40;

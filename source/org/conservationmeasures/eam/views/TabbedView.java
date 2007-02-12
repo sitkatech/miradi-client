@@ -70,6 +70,7 @@ abstract public class TabbedView extends UmbrellaView
 		finally
 		{
 			ignoreTabChanges = false;
+			validate();
 		}
 	}
 

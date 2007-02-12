@@ -28,39 +28,53 @@ public class ViewSplitPane extends JSplitPane
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
 		setFocusable(false);
-		
+	
 		int splitterLocation = getSplitterLocation(splitterName);
 		setDividerLocationWithoutNotifications(splitterLocation);
 	}
 	
+	public void  updateSplitterLocation(String name)
+	{
+		setDividerLocation(getSplitterLocation(name));
+	}
+	
 	public void setDividerLocation(int location)
 	{
-		setDividerLocationWithoutNotifications(location);
-
-		int splitPercent = location * 100 / mainComponentSplitted.getHeight();
-		int splitPercentFromMiddle = splitPercent * 2 - 100;
-		
-		splitPositionSaver.saveSplitterLocation(splitterName, splitPercentFromMiddle);
+		super.setDividerLocation(location);
+		saveLocation(location);
 	}
 
 	private void setDividerLocationWithoutNotifications(int location)
 	{
 		super.setDividerLocation(location);
 	}
+
+	private int getMainHeight()
+	{
+		return mainComponentSplitted.getHeight();
+	}
+
+	private void saveLocation(int location)
+	{
+		int splitPercent = location * 100 / getMainHeight();
+		int splitPercentFromMiddle = splitPercent * 2 - 100;
+		
+		splitPositionSaver.saveSplitterLocation(splitterName, splitPercentFromMiddle);
+	}
+	
+	public int getSplitterLocation(String name)
+	{
+		int splitPercentFromMiddle = splitPositionSaver.getSplitterLocation(name);		
+		int splitPercent = (splitPercentFromMiddle + 100) / 2;
+		int location = getMainHeight() * splitPercent / 100;
+		
+		return location; 
+	}
 	
 	public void setSplitterLocationToMiddle(String name)
 	{
 		splitPositionSaver.saveSplitterLocation(name, SPLITTER_MIDDLE_LOCATION);
-		setDividerLocation(0.5);
-	}
-
-	public int getSplitterLocation(String name)
-	{
-		int splitPercentFromMiddle = splitPositionSaver.getSplitterLocation(name);
-		int splitPercent = (splitPercentFromMiddle + 100) / 2;
-		int location = mainComponentSplitted.getHeight() * splitPercent / 100;
-		
-		return location; 
+		setDividerLocation(getSplitterLocation(name));
 	}
 	
 	String splitterName;
