@@ -99,6 +99,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public BufferedImage getImage()
 	{
 		Color currentColor = getBackground();
+		boolean currentGridSetting = isGridVisible();
 		try
 		{
 			setToDefaultBackgroundColor();
@@ -108,7 +109,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		finally
 		{
 			setBackground(currentColor);
-			setGridVisible(true);
+			setGridVisible(currentGridSetting);
 		}
 	}
 
