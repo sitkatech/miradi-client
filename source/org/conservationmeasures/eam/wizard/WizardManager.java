@@ -336,7 +336,7 @@ public class WizardManager
 	{
 		SkeletonWizardStep step =(SkeletonWizardStep)stepEntries.get(stepName);
 		if (step==null)
-			EAM.logError("ENTRY NOT FOUND FOR STEP NAME=:" + stepName);
+			EAM.logVerbose("ENTRY NOT FOUND FOR STEP NAME=:" + stepName);
 		return step;
 	}
 	
