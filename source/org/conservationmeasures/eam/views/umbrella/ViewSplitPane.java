@@ -29,15 +29,18 @@ public class ViewSplitPane extends JSplitPane
 		setBottomComponent(bottomPanel);
 		setFocusable(false);
 		
-		int mainComponentHeight = mainComponentSplitted.getHeight();
-		int splitterLocation = getSplitterLocation(mainComponentHeight, splitterName);
+		int splitterLocation = getSplitterLocation(splitterName);
 		setDividerLocationWithoutNotifications(splitterLocation);
 	}
 	
 	public void setDividerLocation(int location)
 	{
 		setDividerLocationWithoutNotifications(location);
-		setSplitterLocation(mainComponentSplitted.getHeight(), splitterName, location);
+
+		int splitPercent = location * 100 / mainComponentSplitted.getHeight();
+		int splitPercentFromMiddle = splitPercent * 2 - 100;
+		
+		splitPositionSaver.saveSplitterLocation(splitterName, splitPercentFromMiddle);
 	}
 
 	private void setDividerLocationWithoutNotifications(int location)
@@ -45,26 +48,17 @@ public class ViewSplitPane extends JSplitPane
 		super.setDividerLocation(location);
 	}
 	
-	
 	public void setSplitterLocationToMiddle(String name)
 	{
 		splitPositionSaver.saveSplitterLocation(name, SPLITTER_MIDDLE_LOCATION);
 		setDividerLocation(0.5);
 	}
 
-	public void setSplitterLocation(int containerHeight, String name, int location)
-	{
-		int splitPercent = location * 100 / containerHeight;
-		int splitPercentFromMiddle = splitPercent * 2 - 100;
-		
-		splitPositionSaver.saveSplitterLocation(name, splitPercentFromMiddle);
-	}
-	
-	public int getSplitterLocation(int containerHeight, String name)
+	public int getSplitterLocation(String name)
 	{
 		int splitPercentFromMiddle = splitPositionSaver.getSplitterLocation(name);
 		int splitPercent = (splitPercentFromMiddle + 100) / 2;
-		int location = containerHeight * splitPercent / 100;
+		int location = mainComponentSplitted.getHeight() * splitPercent / 100;
 		
 		return location; 
 	}
