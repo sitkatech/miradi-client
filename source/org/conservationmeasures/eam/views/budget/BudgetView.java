@@ -70,11 +70,11 @@ public class BudgetView extends TabbedView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
-	}
 
-	public void becomeInactive() throws Exception
-	{
-		super.becomeInactive();
+		budgetManagmentPanel.updateSplitterLocation();
+		accountingCodePoolManagementPanel.updateSplitterLocation();
+		fundingSourcePoolManagementPanel.updateSplitterLocation();
+		resourceManagementPanel.updateSplitterLocation();
 	}
 
 	public void createTabs() throws Exception

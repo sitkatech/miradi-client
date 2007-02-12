@@ -69,7 +69,15 @@ public class StrategicPlanView extends TabbedView
 	{
 		stratPlanWizardPanel.jump(stepMarker);
 	}
-
+	
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+		
+		goalPanel.updateSplitterLocation();
+		objectivePanel.updateSplitterLocation();
+		strategyPoolManagementPanel.updateSplitterLocation();
+	}
 
 	public StrategicPlanPanel getStrategicPlanPanel()
 	{

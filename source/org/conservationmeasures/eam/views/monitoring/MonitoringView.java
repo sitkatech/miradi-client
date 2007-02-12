@@ -68,6 +68,13 @@ public class MonitoringView extends TabbedView
 		wizardPanel.jump(stepMarker);
 	}
 	
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+
+		indicatorManagementPanel.updateSplitterLocation();
+	}
+
 	WizardPanel wizardPanel;
 	MonitoringPanel monitoringPanel;
 	IndicatorPoolManagementPanel indicatorManagementPanel;
