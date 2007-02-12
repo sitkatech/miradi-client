@@ -14,11 +14,11 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaver;
 
 public class ViewSplitPane extends JSplitPane
 {
-	public ViewSplitPane(Component componentSplittedToUse, SplitterPositionSaver splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel) 
+	public ViewSplitPane(Component componentSplitted, SplitterPositionSaver splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel) 
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
 		
-		mainComponentSplitted = componentSplittedToUse;
+		mainComponentSplitted = componentSplitted;
 		splitPositionSaver = splitPositionSaverToUse;
 		splitterName = splitterNameToUse;
 		
