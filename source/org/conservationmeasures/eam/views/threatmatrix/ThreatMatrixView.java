@@ -29,7 +29,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
-import org.conservationmeasures.eam.views.umbrella.SaveImage;
+import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.martus.swing.UiScrollPane;
@@ -49,7 +49,7 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	private void addThreatMatrixiewDoersToMap()
 	{
-		addDoerToMap(ActionSaveImage.class, new SaveImage());
+		addDoerToMap(ActionSaveImage.class, new SaveImageDoer());
 	}
 	
 	public String cardName()

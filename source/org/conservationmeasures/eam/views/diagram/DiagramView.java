@@ -74,7 +74,7 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
-import org.conservationmeasures.eam.views.umbrella.SaveImage;
+import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -164,7 +164,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionSelectChain.class, new SelectChain());
 		addDoerToMap(ActionProperties.class, propertiesDoer);
 		addDoerToMap(ActionPrint.class, new Print());
-		addDoerToMap(ActionSaveImage.class, new SaveImage());
+		addDoerToMap(ActionSaveImage.class, new SaveImageDoer());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
 		addDoerToMap(ActionShowSelectedChainMode.class, new ShowSelectedChainModeDoer());
 		addDoerToMap(ActionShowFullModelMode.class, new ShowFullModelModeDoer());
