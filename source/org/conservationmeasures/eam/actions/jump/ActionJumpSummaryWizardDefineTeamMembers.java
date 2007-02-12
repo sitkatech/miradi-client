@@ -9,15 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpAssignResources extends MainWindowAction
+public class ActionJumpSummaryWizardDefineTeamMembers extends MainWindowAction
 {
-	public ActionJumpAssignResources(MainWindow mainWindowToUse)
+	public ActionJumpSummaryWizardDefineTeamMembers(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-	
+
 	static String getLabel()
 	{
-		return EAM.text("Assign Resources");
+		return EAM.text("Select Team Members");
 	}
+	
 }

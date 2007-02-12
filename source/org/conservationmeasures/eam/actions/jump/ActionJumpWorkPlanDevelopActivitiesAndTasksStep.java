@@ -9,16 +9,15 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDiagramWizardDescribeTargetStatusStep extends MainWindowAction
+public class ActionJumpWorkPlanDevelopActivitiesAndTasksStep extends MainWindowAction
 {
-	public ActionJumpDiagramWizardDescribeTargetStatusStep(MainWindow mainWindowToUse)
+	public ActionJumpWorkPlanDevelopActivitiesAndTasksStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	static String getLabel()
 	{
-		return EAM.text("Describe Status of Targets");
+		return EAM.text("Develop Activities & Tasks");
 	}
-	
 }

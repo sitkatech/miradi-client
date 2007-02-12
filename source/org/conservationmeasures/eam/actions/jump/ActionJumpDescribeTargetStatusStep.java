@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpIdentifyDiagramWizardIdentifyDirectThreatStep extends MainWindowAction
+public class ActionJumpDescribeTargetStatusStep extends MainWindowAction
 {
-	public ActionJumpIdentifyDiagramWizardIdentifyDirectThreatStep(MainWindow mainWindowToUse)
+	public ActionJumpDescribeTargetStatusStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	static String getLabel()
 	{
-		return EAM.text("Identify Direct Threats");
+		return EAM.text("Describe Status of Targets");
 	}
 	
 }

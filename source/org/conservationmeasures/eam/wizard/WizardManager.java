@@ -332,7 +332,7 @@ public class WizardManager
 	}
 
 	
-	SkeletonWizardStep findStep(String stepName)
+	public SkeletonWizardStep findStep(String stepName)
 	{
 		SkeletonWizardStep step =(SkeletonWizardStep)stepEntries.get(stepName);
 		if (step==null)

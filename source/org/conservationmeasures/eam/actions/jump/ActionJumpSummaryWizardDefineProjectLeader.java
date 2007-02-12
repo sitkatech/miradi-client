@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpSelectTeam extends MainWindowAction
+public class ActionJumpSummaryWizardDefineProjectLeader extends MainWindowAction
 {
-	public ActionJumpSelectTeam(MainWindow mainWindowToUse)
+	public ActionJumpSummaryWizardDefineProjectLeader(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
-	static String getLabel()
+	private static String getLabel()
 	{
-		return EAM.text("Select Team Members");
+		return EAM.text("Designate a Project Leader & Roles");
 	}
-	
+
 }

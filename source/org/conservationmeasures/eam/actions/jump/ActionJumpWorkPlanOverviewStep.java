@@ -9,16 +9,15 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDevelopSchedule extends MainWindowAction
+public class ActionJumpWorkPlanOverviewStep extends MainWindowAction
 {
-	public ActionJumpDevelopSchedule(MainWindow mainWindowToUse)
+	public ActionJumpWorkPlanOverviewStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-
-	private static String getLabel()
+	
+	static String getLabel()
 	{
-		return EAM.text("Develop Project Schedule");
+		return EAM.text("Work plan overview");
 	}
-
 }

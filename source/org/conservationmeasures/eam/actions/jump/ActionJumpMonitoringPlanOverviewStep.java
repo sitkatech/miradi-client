@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDevelopBudgets extends MainWindowAction
+public class ActionJumpMonitoringPlanOverviewStep extends MainWindowAction
 {
-	public ActionJumpDevelopBudgets(MainWindow mainWindowToUse)
+	public ActionJumpMonitoringPlanOverviewStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
-	private static String getLabel()
+	static String getLabel()
 	{
-		return EAM.text("Develop Project Budgets");
+		return EAM.text("Monitoring Overview");
 	}
-
+	
 }

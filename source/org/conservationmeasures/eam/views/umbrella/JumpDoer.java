@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
+import org.conservationmeasures.eam.wizard.WizardManager;
 
 public class JumpDoer extends MainWindowDoer
 {
@@ -17,7 +19,16 @@ public class JumpDoer extends MainWindowDoer
 	
 	public boolean isAvailable()
 	{
-		return getProject().isOpen();
+		if (!getProject().isOpen()) 
+			return false;
+		
+		//FIXME: move the following code to the WizardManager
+		String name = actionClass.getSimpleName();
+		if (name.startsWith("ActionJump"))
+			name = name.substring("ActionJump".length());
+		WizardManager wizardManager = getMainWindow().getWizardManager();
+		SkeletonWizardStep step = wizardManager.findStep(name);
+		return (step!=null);
 	}
 
 	public void doIt() throws CommandFailedException

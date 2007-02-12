@@ -51,22 +51,19 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasi
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
 import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetFutureDemo;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDescribeTargetStatusStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargetStatusStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
@@ -74,33 +71,35 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewMo
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardVisionStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategiesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpFinancialOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringPlanOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardSelectMethodsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
+import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectMethod;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanHowToConstructStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanHowToConstructStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotalsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllGoals;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanOverview;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanOverviewStep;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
@@ -311,16 +310,16 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewStrategicPlan.class, new ViewStrategicPlan());
 		addDoerToMap(ActionViewMonitoring.class, new ViewMonitoring());
 		
-		addJumpDoerToMap(ActionJumpSelectTeam.class);
-		addJumpDoerToMap(ActionJumpDesignateLeader.class);
+		addJumpDoerToMap(ActionJumpSummaryWizardDefineTeamMembers.class);
+		addJumpDoerToMap(ActionJumpSummaryWizardDefineProjectLeader.class);
 		addJumpDoerToMap(ActionJumpDevelopCharter.class);
 		
 		addJumpDoerToMap(ActionJumpDiagramWizardProjectScopeStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardVisionStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardDefineTargetsStep.class);
-		addJumpDoerToMap(ActionJumpDiagramWizardDescribeTargetStatusStep.class);
+		addJumpDoerToMap(ActionJumpDescribeTargetStatusStep.class);
 		
-		addJumpDoerToMap(ActionJumpIdentifyDiagramWizardIdentifyDirectThreatStep.class);
+		addJumpDoerToMap(ActionJumpDiagramWizardIdentifyDirectThreatStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class);
 		addJumpDoerToMap(ActionJumpThreatMatrixOverviewStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardIdentifyIndirectThreatStep.class);
@@ -349,13 +348,13 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpSelectAppropriateMethods.class);
 		addJumpDoerToMap(ActionJumpPlanDataStorage.class);
 		
-		addJumpDoerToMap(ActionJumpMonitoringOverviewStep.class);
-		addJumpDoerToMap(ActionJumpSelectMethod.class);
+		addJumpDoerToMap(ActionJumpMonitoringPlanOverviewStep.class);
+		addJumpDoerToMap(ActionJumpMonitoringWizardSelectMethodsStep.class);
 		
 		addJumpDoerToMap(ActionJumpShorttermPlans.class);
-		addJumpDoerToMap(ActionJumpDevelopSchedule.class);
+		addJumpDoerToMap(ActionJumpScheduleOverviewStep.class);
 		addJumpDoerToMap(ActionJumpDefineTasks.class);
-		addJumpDoerToMap(ActionJumpDevelopBudgets.class);
+		addJumpDoerToMap(ActionJumpFinancialOverviewStep.class);
 		addJumpDoerToMap(ActionJumpTeamRoles.class);
 		addJumpDoerToMap(ActionJumpRefinePlans.class);
 		addJumpDoerToMap(ActionJumpImplementPlans.class);
@@ -380,14 +379,14 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpDiagramWizardReviewModelAndAdjustStep.class);
 		addJumpDoerToMap(ActionJumpThreatRatingWizardCheckTotalsStep.class);
 
-		addJumpDoerToMap(ActionJumpDevelopActivitiesAndTasks.class);
-		addJumpDoerToMap(ActionJumpDevelopMonitoringMethodsAndTasks.class);
-		addJumpDoerToMap(ActionJumpAssignResources.class);
-		addJumpDoerToMap(ActionJumpDevelopSchedule.class);
-		addJumpDoerToMap(ActionJumpDevelopBudgets.class);
+		addJumpDoerToMap(ActionJumpWorkPlanDevelopActivitiesAndTasksStep.class);
+		addJumpDoerToMap(ActionJumpWorkPlanDevelopMethodsAndTasksStep.class);
+		addJumpDoerToMap(ActionJumpWorkPlanAssignResourcesStep.class);
+		addJumpDoerToMap(ActionJumpScheduleOverviewStep.class);
+		addJumpDoerToMap(ActionJumpFinancialOverviewStep.class);
 		addJumpDoerToMap(ActionJumpBudgetFutureDemo.class);
 		addJumpDoerToMap(ActionJumpDiagramOverviewStep.class);
-		addJumpDoerToMap(ActionJumpWorkPlanOverview.class);
+		addJumpDoerToMap(ActionJumpWorkPlanOverviewStep.class);
 	}
 	
 	private void addJumpDoerToMap(Class actionClass)

@@ -67,39 +67,39 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasi
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAssignResources;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDescribeTargetStatusStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivitiesAndTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMonitoringMethodsAndTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardVisionStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDiagramWizardIdentifyDirectThreatStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargetStatusStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardVisionStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
+import org.conservationmeasures.eam.actions.jump.ActionJumpFinancialOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
-import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
+import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -237,8 +237,8 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu1a = new JMenu("1A. Define Initial Project Team");
 		menu1a.setMnemonic(KeyEvent.VK_D);
 		
-		addMenuItem(actions, menu1a, ActionJumpSelectTeam.class, KeyEvent.VK_S);
-		addMenuItem(actions, menu1a, ActionJumpDesignateLeader.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu1a, ActionJumpSummaryWizardDefineTeamMembers.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu1a, ActionJumpSummaryWizardDefineProjectLeader.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu1a, ActionJumpDevelopCharter.class, KeyEvent.VK_D);
 	
 		JMenu menu1b = new JMenu("1B. Define Clear and Common Purpose");
@@ -247,12 +247,12 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu1b, ActionJumpDiagramWizardProjectScopeStep.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu1b, ActionJumpDiagramWizardVisionStep.class, KeyEvent.VK_E);
 		addMenuItem(actions, menu1b, ActionJumpDiagramWizardDefineTargetsStep.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu1b, ActionJumpDiagramWizardDescribeTargetStatusStep.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu1b, ActionJumpDescribeTargetStatusStep.class, KeyEvent.VK_D);
 		
 		JMenu menu1c = new JMenu("1C. Identify Critical Threats");
 		menu1c.setMnemonic(KeyEvent.VK_U);
 		
-		addMenuItem(actions, menu1c, ActionJumpIdentifyDiagramWizardIdentifyDirectThreatStep.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu1c, ActionJumpDiagramWizardIdentifyDirectThreatStep.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu1c, ActionJumpThreatMatrixOverviewStep.class, KeyEvent.VK_R);
 		
 		JMenu menu1d = new JMenu("1D. Analyze Project Situation");
@@ -329,11 +329,11 @@ public class MainMenuBar extends JMenuBar
 		menu4a.setMnemonic(KeyEvent.VK_D);
 		menu4a.setIcon(new ResourceImageIcon("icons/blankicon.png"));
 		
-		addMenuItem(actions, menu4a, ActionJumpDevelopActivitiesAndTasks.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu4a, ActionJumpDevelopMonitoringMethodsAndTasks.class, KeyEvent.VK_M);
-		addMenuItem(actions, menu4a, ActionJumpAssignResources.class, KeyEvent.VK_T);
-		addMenuItem(actions, menu4a, ActionJumpDevelopSchedule.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu4a, ActionJumpDevelopBudgets.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu4a, ActionJumpWorkPlanDevelopActivitiesAndTasksStep.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu4a, ActionJumpWorkPlanDevelopMethodsAndTasksStep.class, KeyEvent.VK_M);
+		addMenuItem(actions, menu4a, ActionJumpWorkPlanAssignResourcesStep.class, KeyEvent.VK_T);
+		addMenuItem(actions, menu4a, ActionJumpScheduleOverviewStep.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu4a, ActionJumpFinancialOverviewStep.class, KeyEvent.VK_D);
 
 		menu4.add(menu4a);
 		

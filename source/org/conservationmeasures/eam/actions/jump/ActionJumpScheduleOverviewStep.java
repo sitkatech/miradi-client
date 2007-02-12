@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDesignateLeader extends MainWindowAction
+public class ActionJumpScheduleOverviewStep extends MainWindowAction
 {
-	public ActionJumpDesignateLeader(MainWindow mainWindowToUse)
+	public ActionJumpScheduleOverviewStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Designate a Project Leader & Roles");
+		return EAM.text("Develop Project Schedule");
 	}
 
 }

@@ -9,15 +9,15 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDevelopActivitiesAndTasks extends MainWindowAction
+public class ActionJumpWorkPlanDevelopMethodsAndTasksStep extends MainWindowAction
 {
-	public ActionJumpDevelopActivitiesAndTasks(MainWindow mainWindowToUse)
+	public ActionJumpWorkPlanDevelopMethodsAndTasksStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	static String getLabel()
 	{
-		return EAM.text("Develop Activities & Tasks");
+		return EAM.text("Develop Monitoring Methods & Tasks");
 	}
 }

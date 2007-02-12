@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpSelectMethod extends MainWindowAction
+public class ActionJumpDiagramWizardIdentifyDirectThreatStep extends MainWindowAction
 {
-	public ActionJumpSelectMethod(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardIdentifyDirectThreatStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-
+	
 	static String getLabel()
 	{
-		return EAM.text("Method selection");
+		return EAM.text("Identify Direct Threats");
 	}
 	
 }

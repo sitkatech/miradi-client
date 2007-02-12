@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpMonitoringOverviewStep extends MainWindowAction
+public class ActionJumpMonitoringWizardSelectMethodsStep extends MainWindowAction
 {
-	public ActionJumpMonitoringOverviewStep(MainWindow mainWindowToUse)
+	public ActionJumpMonitoringWizardSelectMethodsStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	static String getLabel()
 	{
-		return EAM.text("Monitoring Overview");
+		return EAM.text("Method selection");
 	}
 	
 }
