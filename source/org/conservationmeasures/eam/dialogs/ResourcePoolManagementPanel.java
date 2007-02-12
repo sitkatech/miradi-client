@@ -14,12 +14,12 @@ import org.conservationmeasures.eam.icons.ProjectResourceIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.martus.swing.UiLabel;
 
 public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public ResourcePoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
+	public ResourcePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
 		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ResourcePoolTablePanel(projectToUse, actionsToUse),
 				new ResourcePropertiesPanel(projectToUse, BaseId.INVALID));

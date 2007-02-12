@@ -13,11 +13,11 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class GoalPoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public GoalPoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actions) throws Exception
+	public GoalPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
 		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new GoalPoolTablePanel(projectToUse),
 				new GoalPropertiesPanel(projectToUse, actions, new GoalId(BaseId.INVALID.asInt())));

@@ -10,11 +10,11 @@ import java.awt.Component;
 
 import javax.swing.JSplitPane;
 
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class ViewSplitPane extends JSplitPane
 {
-	public ViewSplitPane(Component componentSplitted, SplitterPositionSaver splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel) 
+	public ViewSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel) 
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
 		
@@ -70,7 +70,7 @@ public class ViewSplitPane extends JSplitPane
 	}
 	
 	String splitterName;
-	private SplitterPositionSaver splitPositionSaver;
+	private SplitterPositionSaverAndGetter splitPositionSaver;
 	private Component mainComponentSplitted;
 	
 	public final static int SPLITTER_MIDDLE_LOCATION = 0;

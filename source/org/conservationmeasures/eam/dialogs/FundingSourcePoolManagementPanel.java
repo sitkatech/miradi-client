@@ -14,12 +14,12 @@ import org.conservationmeasures.eam.icons.FundingSourceIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.martus.swing.UiLabel;
 
 public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public FundingSourcePoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
+	public FundingSourcePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
 		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new FundingSourcePoolTablePanel(projectToUse, actionsToUse),
 				new FundingSourcePropertiesPanel(projectToUse, BaseId.INVALID));

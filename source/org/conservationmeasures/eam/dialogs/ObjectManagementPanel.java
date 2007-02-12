@@ -7,11 +7,11 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 abstract public class ObjectManagementPanel extends VerticalSplitPanel
 {
-	public ObjectManagementPanel(SplitterPositionSaver splitPositionSaverToUse, String splitterNameToUse, ObjectTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, String splitterNameToUse, ObjectTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
 		super(splitPositionSaverToUse, splitterNameToUse, tablePanelToUse, propertiesPanelToUse);
 		listComponent = tablePanelToUse;

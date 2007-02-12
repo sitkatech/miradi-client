@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.utils;
 
-public interface SplitterPositionSaver
+public interface SplitterPositionSaverAndGetter
 {
 	public int getSplitterLocation(String name);
 	public void saveSplitterLocation(String name, int location);

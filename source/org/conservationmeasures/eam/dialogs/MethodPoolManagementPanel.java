@@ -12,11 +12,11 @@ import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class MethodPoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public MethodPoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actions) throws Exception
+	public MethodPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
 		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new MethodPoolTablePanel(projectToUse),
 				new TaskPropertiesPanel(projectToUse, actions, BaseId.INVALID));

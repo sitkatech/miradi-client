@@ -12,11 +12,11 @@ import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class GoalListManagementPanel extends ObjectListManagementPanel
 {
-	public GoalListManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
+	public GoalListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
 		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new GoalListTablePanel(projectToUse, actions, nodeId),
 				new GoalPropertiesPanel(projectToUse, actions));

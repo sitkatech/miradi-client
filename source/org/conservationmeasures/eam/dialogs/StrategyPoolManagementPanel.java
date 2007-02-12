@@ -12,11 +12,11 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class StrategyPoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public StrategyPoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse) throws Exception
+	public StrategyPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
 		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new StrategyPoolTablePanel(projectToUse),
 				new StrategyPropertiesPanel(projectToUse, ObjectType.FACTOR, BaseId.INVALID));

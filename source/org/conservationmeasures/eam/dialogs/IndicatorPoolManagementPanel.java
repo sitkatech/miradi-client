@@ -13,11 +13,11 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class IndicatorPoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public IndicatorPoolManagementPanel(Project projectToUse, SplitterPositionSaver splitPositionSaverToUse, Actions actions) throws Exception
+	public IndicatorPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
 		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new IndicatorPoolTablePanel(projectToUse),
 				new IndicatorPropertiesPanel(projectToUse, actions, new IndicatorId(BaseId.INVALID.asInt())));

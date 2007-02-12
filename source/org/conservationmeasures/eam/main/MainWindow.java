@@ -35,7 +35,7 @@ import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectRepairer;
-import org.conservationmeasures.eam.utils.SplitterPositionSaver;
+import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.BudgetView;
@@ -59,7 +59,7 @@ import org.martus.util.DirectoryLock;
 import edu.stanford.ejalbert.BrowserLauncher;
 import edu.stanford.ejalbert.BrowserLauncherRunner;
 
-public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner, SplitterPositionSaver
+public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner, SplitterPositionSaverAndGetter
 {
 	public MainWindow() throws IOException
 	{
