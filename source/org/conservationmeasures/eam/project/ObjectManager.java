@@ -282,11 +282,10 @@ public class ObjectManager
 		{
 			if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 				return getAnnotationFactorLabel(objectType, objectId);
-
 			if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
 				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_TARGET, objectType, objectId, fieldTag);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_STRATEGY, objectType, objectId, fieldTag);
+				return getFactorRelatedStrategies(objectType, objectId);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
 				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, objectId, objectType, fieldTag);
 		}
@@ -304,9 +303,8 @@ public class ObjectManager
 		{
 			if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 				return getAnnotationFactorLabel(objectType, objectId);
-
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_STRATEGY, objectType, objectId, fieldTag);
+				return getFactorRelatedStrategies(objectType, objectId);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
 				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, objectId, objectType, fieldTag);
 		}
