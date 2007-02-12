@@ -13,6 +13,11 @@ public class NonDraftStrategySet extends FactorSet
 	{
 		attemptToAddAll(nodesToAttemptToAdd);
 	}
+	
+	public NonDraftStrategySet(Factor[] nodesToAttemptToAdd)
+	{
+		attemptToAddAll(nodesToAttemptToAdd);
+	}
 
 	public boolean isLegal(Factor node)
 	{

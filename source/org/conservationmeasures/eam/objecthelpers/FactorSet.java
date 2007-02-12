@@ -28,10 +28,15 @@ public class FactorSet implements Collection
 	
 	public void attemptToAddAll(FactorSet nodesToAdd)
 	{
-		Factor[] nodesAsArray = nodesToAdd.toNodeArray();
-		for(int i = 0; i < nodesAsArray.length; ++i)
-			attemptToAdd(nodesAsArray[i]);
+		attemptToAddAll(nodesToAdd.toNodeArray());
 	}
+	
+	public void attemptToAddAll(Factor[] nodesToAdd)
+	{
+		for(int i = 0; i < nodesToAdd.length; ++i)
+			attemptToAdd(nodesToAdd[i]);
+	}
+	
 	
 	public boolean isLegal(Factor node)
 	{
