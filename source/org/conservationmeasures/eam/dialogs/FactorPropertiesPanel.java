@@ -55,6 +55,8 @@ public class FactorPropertiesPanel extends DisposablePanel
 			goalsTab.dispose();
 		if(objectivesTab != null)
 			objectivesTab.dispose();
+		if(activitiesTab != null)
+			activitiesTab.dispose();
 		super.dispose();
 	}
 	
@@ -154,7 +156,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		
 		if(diagramFactor.isStrategy())
 		{
-			ActivityListManagementPanel activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentFactorId(), mainWindow.getActions());
+			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentFactorId(), mainWindow.getActions());
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
 		
@@ -260,6 +262,9 @@ public class FactorPropertiesPanel extends DisposablePanel
 		
 		if (goalsTab != null)
 			goalsTab.updateSplitterLocation(goalsTab.getPanelDescription());
+		
+		if (activitiesTab != null)
+			activitiesTab.updateSplitterLocation(activitiesTab.getPanelDescription());
 	}
 
 	static final int MAX_LABEL_LENGTH = 40;
@@ -273,6 +278,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 	ObjectiveListManagementPanel objectivesTab;
 	IndicatorListManagementPanel indicatorsTab;
 	GoalListManagementPanel goalsTab;
+	ActivityListManagementPanel activitiesTab;
 	MainWindow mainWindow;
 	DiagramComponent diagram;
 	DiagramFactor currentDiagramFactor;
