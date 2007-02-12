@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.utils;
 
 public interface SplitterPositionSaver
 {
-	public int getSplitterLocation(int height, String name);
-	public void setSplitterLocation(int height, String name, int location);
-	public void setSplitterLocationToMiddle(String name);
+	public int getSplitterLocation(String name);
+	public void saveSplitterLocation(String name, int location);
 }

@@ -408,26 +408,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		repaint();
 	}
 
-	public void setSplitterLocationToMiddle(String name)
+	public void saveSplitterLocation(String name, int location)
 	{
-		preferences.setTaggedInt(name, 0);
-	}
-
-	public void setSplitterLocation(int containerHeight, String name, int location)
-	{
-		int splitPercent = location * 100 / containerHeight;
-		int splitPercentFromMiddle = splitPercent * 2 - 100;
-		
-		preferences.setTaggedInt(name, splitPercentFromMiddle);
+		preferences.setTaggedInt(name, location);
 	}
 	
-	public int getSplitterLocation(int containerHeight, String name)
+	public int getSplitterLocation(String name)
 	{
-		int splitPercentFromMiddle = preferences.getTaggedInt(name);
-		int splitPercent = (splitPercentFromMiddle + 100) / 2;
-		int location = containerHeight * splitPercent / 100;
-		
-		return location; 
+		return preferences.getTaggedInt(name);
 	}
 	
 	public void lostOwnership(Clipboard clipboard, Transferable contents) 
