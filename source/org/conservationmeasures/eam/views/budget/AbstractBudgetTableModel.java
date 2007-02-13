@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
+import org.conservationmeasures.eam.utils.Utility;
 
 abstract public class AbstractBudgetTableModel extends AbstractTableModel
 {
@@ -128,7 +129,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 				return "";
 			
 			String unit = getUnit(effortList, dateRange);
-			double units = convertStringToDouble(unit);
+			double units = Utility.convertStringToDouble(unit);
 			double costPerUnit = currentResource.getCostPerUnit();
 			return currencyFormatter.format(units * costPerUnit);
 		}
@@ -152,26 +153,6 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 			EAM.logException(e);
 		}
 		return decimalFormatter.format(units);
-	}
-	
-//	TODO this method should possibly be renamed and made available 
-	//for the whole app.
-	public static double convertStringToDouble(String raw)
-	{
-		if (raw.length() == 0)
-			return 0;
-		
-		double newDouble = 0;
-		try
-		{
-			 newDouble = new Double(raw).doubleValue();
-		}
-		catch (NumberFormatException e)
-		{
-			EAM.logException(e);
-		}
-		
-		return newDouble; 
 	}
 	
 	public Object getTotalUnits(Assignment assignment)
@@ -255,7 +236,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	public String getCostPerUnit(ProjectResource resource)
 	{
 		String raw = resource.getData(ProjectResource.TAG_COST_PER_UNIT);
-		double costPerUnit = convertStringToDouble(raw);
+		double costPerUnit = Utility.convertStringToDouble(raw);
 		
 		return currencyFormatter.format(costPerUnit);
 	}
