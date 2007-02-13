@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiComboBox;
 
-public class ObjectClassificationField extends ObjectDataInputField
+public class ObjectClassificationChoiceField extends ObjectDataInputField
 {
-	public ObjectClassificationField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
+	public ObjectClassificationChoiceField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, questionToUse.getTag());
 		combo = new UiComboBox(questionToUse.getChoices());
