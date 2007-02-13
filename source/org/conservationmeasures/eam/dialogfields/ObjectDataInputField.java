@@ -168,8 +168,11 @@ abstract public class ObjectDataInputField implements FocusListener
 			e.printStackTrace();
 			EAM.errorDialog(EAM.text("Text|Unknown error prevented saving this data"));
 		}
-		
-
+	}
+	
+	public Project getProject()
+	{
+		return project;
 	}
 
 	private static final String NUMERIC_ERROR_MESSEGE = "Text|Must be numeric";

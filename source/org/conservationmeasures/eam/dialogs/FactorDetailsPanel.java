@@ -5,15 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.Icon;
-import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -26,22 +21,21 @@ import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
-import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.StrategyClassificationQuestion;
 import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummary;
 import org.conservationmeasures.eam.questions.TargetStatusQuestion;
+import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 import org.martus.swing.UiCheckBox;
-import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 
 public class FactorDetailsPanel extends ObjectDataInputPanel
@@ -61,9 +55,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		
 		if(factorToEdit.isDirectThreat())
 		{
-			// FIXME: Convert to new mechanism
-			add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR,  Cause.TAG_TAXONOMY_CODE)));
-			add(createThreatClassificationDropdown());
+			addField(createClassificationChoiceField(new ThreatClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
 			detailIcon = new DirectThreatIcon();
 		}
 		
@@ -75,13 +67,8 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		if(factorToEdit.isStrategy())
 		{
 			addField(createStringField(Strategy.TAG_SHORT_LABEL));
-			
 			addOptionalDraftStatusCheckBox(factorToEdit);
-
-			// FIXME: Convert to new mechanism
-			add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR,  Cause.TAG_TAXONOMY_CODE)));
-			add(createStrategyClassificationDropdown());
-			
+			addField(createClassificationChoiceField(new StrategyClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
 			addField(createChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
 			addField(createChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
 			addField(createChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
@@ -147,111 +134,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		}
 	}
 	
-	private JComponent createThreatClassificationDropdown()
-	{
-		return createClassificationDropdown(TaxonomyLoader.THREAT_TAXONOMIES_FILE);
-	}
-
-	private JComponent createStrategyClassificationDropdown()
-	{
-		return  createClassificationDropdown(TaxonomyLoader.STRATEGY_TAXONOMIES_FILE);
-	}
-	
-	
-	private UiComboBox createClassificationDropdown(String taxonomyFile)
-	{
-		String[] choices = { "error processing classifications", };
-		try
-		{
-			TaxonomyItem[] taxonomyItems = TaxonomyLoader.load(taxonomyFile);
-			UiComboBox comboBox = new UiComboBox(taxonomyItems);
-			
-			String taxonomyCode = getCurrentDiagramFactor().getUnderlyingObject()
-			.getData(Cause.TAG_TAXONOMY_CODE);
-
-			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
-					taxonomyItems, taxonomyCode);
-
-			if(foundTaxonomyItem == null)
-			{
-				String errorMessage = "Classification not found in table ; please make another selection";
-				EAM.errorDialog(EAM.text(errorMessage));
-				foundTaxonomyItem = taxonomyItems[0];
-			}
-
-			comboBox.setSelectedItem(foundTaxonomyItem);
-
-			comboBox.addActionListener(new ClassificationChangeHandler());
-			
-			comboBox.addFocusListener(new ClassificationFocusHandler());
-
-			return comboBox;
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return new UiComboBox(choices);
-		}
-
-	}
-	
-	private TaxonomyItem SearchTaxonomyClassificationsForCode(
-			TaxonomyItem[] taxonomyItems, String taxonomyCode)
-	{
-		for(int i = 0; i < taxonomyItems.length; i++)
-		{
-			if(taxonomyItems[i].getTaxonomyCode().equals(taxonomyCode))
-				return taxonomyItems[i];
-		}
-		return null;
-	}
-	
-	class ClassificationChangeHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			UiComboBox comboBox = (UiComboBox)event.getSource();
-			TaxonomyItem taxonomyItem = getStrategyTaxonomyItem(comboBox);
-			actionSaveTaxonomySelection(comboBox, taxonomyItem);
-		}
-	}
-	
-	private void actionSaveTaxonomySelection(UiComboBox thisComboBox, TaxonomyItem taxonomyItem)
-	{
-		try
-		{
-			int type = ObjectType.FACTOR;
-			String tag = Cause.TAG_TAXONOMY_CODE;
-		
-			if(taxonomyItem != null)
-			{
-				String taxonomyCode = taxonomyItem.getTaxonomyCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getCurrentFactorId(), tag, taxonomyCode);
-				getProject().executeCommand(cmd);
-			}
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("That action failed due to an unknown error");
-		}
-	}
-	
-	class ClassificationFocusHandler implements FocusListener
-	{
-		public void focusGained(FocusEvent e)
-		{
-		}
-
-		public void focusLost(FocusEvent e)
-		{
-			TaxonomyItem taxonomyItem = (TaxonomyItem) ((UiComboBox)e.getSource()).getSelectedItem();
-			if (!taxonomyItem.isLeaf())
-				EAM.errorDialog("(" + EAM.text(taxonomyItem.getTaxonomyDescription() + ")\n Please choose a specific classification not a category"));
-		}
-	}
-	
 	Command buildStatusCommand()
 	{
 		String newValue = Strategy.STATUS_REAL;
@@ -262,15 +144,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 				Strategy.TAG_STATUS, newValue);
 	}
 
-	private TaxonomyItem getStrategyTaxonomyItem(UiComboBox comboBox)
-	{
-		TaxonomyItem taxonomyItem = (TaxonomyItem) comboBox.getSelectedItem();
-		
-		if (!taxonomyItem.isLeaf()) 
-			return null;
-		
-		return taxonomyItem;
-	}
 	
 	DiagramFactor getCurrentDiagramFactor()
 	{

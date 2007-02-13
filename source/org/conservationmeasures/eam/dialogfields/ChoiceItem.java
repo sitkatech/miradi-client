@@ -41,7 +41,17 @@ public class ChoiceItem
 		return getLabel();
 	}
 	
+	public boolean isSelectable()
+	{
+		return selectable;
+	}
 	
+	public void setSelectable(boolean selectableToUse)
+	{
+		selectable = selectableToUse;
+	}
+	
+	boolean selectable;
 	String code;
 	String label;
 	Color color;
