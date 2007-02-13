@@ -31,9 +31,8 @@ public class WizardPanel extends JPanel
 		try
 		{
 			wizardManager.setUpSteps(view,this);
-			//TODO: avoid dubble initialize of current step name 
-			currentStepName = removeSpaces(view.cardName()) + "OverviewStep";
-			setStep(currentStepName);
+			String stepName = removeSpaces(view.cardName()) + "OverviewStep";
+			currentStepName = wizardManager.setStep(stepName, stepName);
 		}
 		catch (Exception e)
 		{
@@ -59,24 +58,11 @@ public class WizardPanel extends JPanel
 		jump(wizardManager.findControlTargetStep(controlName, step));
 	}
 
-
-	public void setStep(Class newStep) throws Exception
-	{
-		setStep(newStep.getSimpleName());
-	}
-	
-	public void setStep(String newStep) throws Exception
-	{
-		//TODO: this shoud be cleaner when we do not sub class wizard panels
-		currentStepName = wizardManager.setStep(newStep, currentStepName);
-	}
-	
 	private String removeSpaces(String name)
 	{
 		return name.replaceAll(" ", "");
 	}
 
-	
 	public void refresh() throws Exception
 	{
 		SkeletonWizardStep stepClass = wizardManager.findStep(currentStepName);
@@ -86,15 +72,7 @@ public class WizardPanel extends JPanel
 	
 	public void jump(Class stepMarker) throws Exception
 	{
-		String name = stepMarker.getSimpleName();
-		if (name.startsWith("ActionJump"))
-			name = name.substring("ActionJump".length());
-		jump(name);
-	}
-
-	public void jump(String stepMarker) throws Exception
-	{
-			setStep(stepMarker);
+		currentStepName = wizardManager.setStep(stepMarker, currentStepName);
 	}
 
 	public MainWindow getMainWindow()

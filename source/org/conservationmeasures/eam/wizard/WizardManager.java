@@ -118,6 +118,12 @@ public class WizardManager
 	}
 	
 	
+	public String setStep(Class step, String currentStepName) throws Exception
+	{
+		String name = stripJumpPrefix(step);
+		return setStep(name, currentStepName);
+	}
+	
 	public String setStep(String newStep, String currentStepName) throws Exception
 	{	
 		SkeletonWizardStep currentStepClass = findStep(currentStepName);
@@ -139,7 +145,7 @@ public class WizardManager
 				mainWindow.getProject().executeCommand(new CommandBeginTransaction());
 				mainWindow.saveSplitterLocation(viewNameNew, ViewSplitPane.SPLITTER_MIDDLE_LOCATION);
 				mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
-				newStepClass.getWizard().jump(newStep);
+				newStepClass.getWizard().jump(newStepClass.getClass());
 			}
 			finally
 			{
@@ -332,6 +338,21 @@ public class WizardManager
 	}
 
 	
+	public String stripJumpPrefix(Class stepMarker)
+	{
+		String name = stepMarker.getSimpleName();
+		if (name.startsWith("ActionJump"))
+			name = name.substring("ActionJump".length());
+		return name;
+	}
+	
+	
+	public boolean isaStep(Class stepMarker)
+	{
+		String name = stripJumpPrefix(stepMarker);
+		return (stepEntries.get(name)!=null);
+	}
+	
 	public SkeletonWizardStep findStep(String stepName)
 	{
 		SkeletonWizardStep step =(SkeletonWizardStep)stepEntries.get(stepName);
@@ -340,18 +361,18 @@ public class WizardManager
 		return step;
 	}
 	
-	String findControlTargetStep(String controlName, SkeletonWizardStep step)
+	Class findControlTargetStep(String controlName, SkeletonWizardStep step)
 	{
 		Class targetStep = step.getControl(controlName);
 		
 		if (targetStep==null)
 			return doDeferedSequenceLookup(controlName,step);
 
-		return targetStep.getSimpleName();
+		return targetStep;
 	}
 	
 	//TODO: to be refactored to eleminate dup code
-	String doDeferedSequenceLookup(String controlName, SkeletonWizardStep step)
+	Class doDeferedSequenceLookup(String controlName, SkeletonWizardStep step)
 	{
 		Class[] sequences = WizardManager.getSequence();
 		String errorText = "Control ("+ controlName +") not found for step: " + getStepName(step);
@@ -365,17 +386,17 @@ public class WizardManager
 		
 		if (controlName.equals("Next"))
 		{
-			String name = sequences[0].getSimpleName();
+			Class name = sequences[0];
 			if (position != sequences.length-1)
-				name = sequences[position+1].getSimpleName();
+				name = sequences[position+1];
 			return name;
 		}
 		
 		if (controlName.equals("Back"))
 		{
-			String name = sequences[sequences.length-1].getSimpleName();
+			Class name = sequences[sequences.length-1];
 			if (position != 0)
-				name = sequences[position-1].getSimpleName();
+				name = sequences[position-1];
 			return name;			
 		}
 

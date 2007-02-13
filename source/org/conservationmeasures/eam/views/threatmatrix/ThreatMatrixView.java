@@ -210,10 +210,6 @@ public class ThreatMatrixView extends UmbrellaView
 		wizardPanel.jump(stepMarker);
 	}
 	
-	public void jump(String stepMarker) throws Exception
-	{
-		wizardPanel.jump(stepMarker);
-	}
 
 	JSplitPane bigSplitter;
 	ThreatMatrixTableModel model;
