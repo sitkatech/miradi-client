@@ -26,7 +26,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectResource.TAG_POSITION));
 		addField(createStringField(ProjectResource.TAG_PHONE_NUMBER));
 		addField(createStringField(ProjectResource.TAG_EMAIL));
-		addField(createChoiceField(new BudgetCostUnitQuestion(ProjectResource.TAG_COST_UNIT)));
+		addField(createRatingChoiceField(new BudgetCostUnitQuestion(ProjectResource.TAG_COST_UNIT)));
 		addField(createNumericField(ProjectResource.TAG_COST_PER_UNIT));
 		addField(createMultilineField(ProjectResource.TAG_COMMENTS));
 		

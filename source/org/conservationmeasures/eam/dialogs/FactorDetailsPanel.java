@@ -49,7 +49,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 		if(factorToEdit.isTarget())
 		{
-			addField(createChoiceField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS)));
+			addField(createRatingChoiceField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS)));
 			detailIcon = new TargetIcon();
 		}
 		
@@ -69,10 +69,10 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			addField(createStringField(Strategy.TAG_SHORT_LABEL));
 			addOptionalDraftStatusCheckBox(factorToEdit);
 			addField(createClassificationChoiceField(new StrategyClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
-			addField(createChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
-			addField(createChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
-			addField(createChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
-			addField(createChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
+			addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
+			addField(createRatingChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
+			addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
+			addField(createRatingChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
 			addField(createReadOnlyChoiceField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 			detailIcon = new StrategyIcon();
 		}

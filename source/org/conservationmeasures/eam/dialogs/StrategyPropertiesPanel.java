@@ -23,10 +23,10 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, objectTypeToUse, idToShow);
 		addField(createStringField(Strategy.TAG_SHORT_LABEL));
 		addField(createStringField(Strategy.TAG_LABEL));
-		addField(createChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
-		addField(createChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
-		addField(createChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
-		addField(createChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
+		addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
+		addField(createRatingChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
+		addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
+		addField(createRatingChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
 		addField(createReadOnlyChoiceField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 		addField(createReadOnlyChoiceField(new StrategyTaxonomyQuestion(Strategy.TAG_TAXONOMY_CODE)));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_GOALS));

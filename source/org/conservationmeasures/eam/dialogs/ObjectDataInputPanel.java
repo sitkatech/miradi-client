@@ -147,7 +147,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return new ObjectClassificationField(project, objectType, objectId, question);
 	}
 	
-	public ObjectDataInputField createChoiceField(ChoiceQuestion question)
+	public ObjectDataInputField createRatingChoiceField(ChoiceQuestion question)
 	{
 		return new ObjectRaitingChoiceField(project, objectType, objectId, question);
 	}
