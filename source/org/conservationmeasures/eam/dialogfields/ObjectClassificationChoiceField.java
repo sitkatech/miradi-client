@@ -10,65 +10,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import javax.swing.JComponent;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiComboBox;
 
-public class ObjectClassificationChoiceField extends ObjectDataInputField
+public class ObjectClassificationChoiceField extends ObjectChoiceField
 {
 	public ObjectClassificationChoiceField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectType, objectId, questionToUse.getTag());
-		combo = new UiComboBox(questionToUse.getChoices());
+		super(projectToUse, objectType, objectId, questionToUse);
 		combo.addActionListener(new ClassificationChangeHandler());
 		combo.addFocusListener(new ClassificationFocusHandler());
-		addFocusListener();
-	}
-
-	public JComponent getComponent()
-	{
-		return combo;
-	}
-
-	public String getText()
-	{
-		ChoiceItem selected = (ChoiceItem)combo.getSelectedItem();
-		if(selected == null)
-			return "";
-		return selected.getCode();
-	}
-
-	public void setText(String code)
-	{
-		for(int i = 0; i < combo.getItemCount(); ++i)
-		{
-			ChoiceItem choice = (ChoiceItem)combo.getItemAt(i);
-			if(choice.getCode().equals(code))
-			{
-				combo.setSelectedIndex(i);
-				return;
-			}
-		}
-		combo.setSelectedIndex(-1);
-	}
-
-	public void updateEditableState()
-	{
-		combo.setEnabled(isValidObject());
-		if(isValidObject())
-		{
-			combo.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
-			combo.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
-		}
-		else
-		{
-			combo.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-			combo.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-			
-		}
 	}
 
 	class ClassificationChangeHandler implements ActionListener
@@ -114,5 +67,4 @@ public class ObjectClassificationChoiceField extends ObjectDataInputField
 		return taxonomyItem;
 	}
 
-	private UiComboBox combo;
 }
