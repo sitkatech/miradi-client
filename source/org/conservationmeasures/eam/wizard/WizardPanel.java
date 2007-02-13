@@ -31,8 +31,8 @@ public class WizardPanel extends JPanel
 		try
 		{
 			wizardManager.setUpSteps(view,this);
-			String stepName = removeSpaces(view.cardName()) + "OverviewStep";
-			currentStepName = wizardManager.setStep(stepName, stepName);
+			String defaultStepName = removeSpaces(view.cardName()) + "OverviewStep";
+			currentStepName = wizardManager.setStep(defaultStepName, defaultStepName);
 		}
 		catch (Exception e)
 		{

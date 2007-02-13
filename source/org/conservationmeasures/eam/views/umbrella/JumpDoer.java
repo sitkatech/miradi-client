@@ -22,7 +22,7 @@ public class JumpDoer extends MainWindowDoer
 			return false;
 		
 		WizardManager wizardManager = getMainWindow().getWizardManager();
-		return wizardManager.isaStep(actionClass);
+		return wizardManager.isValidStep(actionClass);
 	}
 
 	public void doIt() throws CommandFailedException

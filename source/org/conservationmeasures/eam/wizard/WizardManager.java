@@ -341,13 +341,14 @@ public class WizardManager
 	public String stripJumpPrefix(Class stepMarker)
 	{
 		String name = stepMarker.getSimpleName();
-		if (name.startsWith("ActionJump"))
-			name = name.substring("ActionJump".length());
+		final String prefix = "ActionJump";
+		if (name.startsWith(prefix))
+			name = name.substring(prefix.length());
 		return name;
 	}
 	
 	
-	public boolean isaStep(Class stepMarker)
+	public boolean isValidStep(Class stepMarker)
 	{
 		String name = stripJumpPrefix(stepMarker);
 		return (stepEntries.get(name)!=null);
