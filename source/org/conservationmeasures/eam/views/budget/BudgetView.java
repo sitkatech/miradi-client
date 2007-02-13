@@ -102,6 +102,9 @@ public class BudgetView extends TabbedView
 		accountingCodePoolManagementPanel.dispose();
 		accountingCodePoolManagementPanel = null;
 		
+		treeTableComponent.dispose();
+		treeTableComponent = null;
+		
 		budgetPropertiesPanel.dispose();
 		budgetPropertiesPanel = null;
 		

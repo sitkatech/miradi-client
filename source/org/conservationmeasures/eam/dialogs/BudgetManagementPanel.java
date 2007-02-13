@@ -26,17 +26,6 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 		createVerticalSplitPane(treeTableComponent, propertiesPanel, PANEL_DESCRIPTION);
 	}
 
-	public void dispose()
-	{
-		// TODO: This should probably be disposed by whoever created it, not by this class
-		treeTableComponent.dispose();
-		treeTableComponent = null;
-
-		propertiesPanel = null;
-
-		super.dispose();
-	}
-
 	public EAMObject getObject()
 	{
 		return treeTableComponent.getSelectedObject().getObject();
