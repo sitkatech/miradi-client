@@ -28,14 +28,20 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		super(projectToUse, type, id, tag);
 		project = projectToUse;
 		
-		dateChooser = new CustomDateChooser(new DateEditor());
+		DateEditor dateEditor = new DateEditor();
+		dateChooser = new CustomDateChooser(dateEditor);
 		dateChooser.setDate(getStartDate(tag));
 		dateChooser.setDateFormatString("MM/dd/yyyy");
 
-		//TODO remove hardcoded pref and min settings
-		Dimension dimension = new Dimension(150, 20);
-		dateChooser.setMinimumSize(dimension);
-		dateChooser.setPreferredSize(dimension);
+		setDateChooserPreferredSizeWithPadding();
+	}
+
+	private void setDateChooserPreferredSizeWithPadding()
+	{
+		Dimension preferredDimension = dateChooser.getPreferredSize();
+		preferredDimension.width = preferredDimension.width + EXTRA_PADDING;
+		dateChooser.setMinimumSize(preferredDimension);
+		dateChooser.setPreferredSize(preferredDimension);
 	}
 		
 	private Date getStartDate(String tag)
@@ -137,6 +143,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	}
 	
 	CustomDateChooser dateChooser;
+	private static final int EXTRA_PADDING = 10;
 }
 
 
