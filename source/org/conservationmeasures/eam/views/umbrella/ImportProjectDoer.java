@@ -45,6 +45,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 			
 			File fileToImport = results.getChosenFile();
 			String projectName = withoutExtension(fileToImport.getName());
+			projectName = Project.makeProjectFilenameLegal(projectName);
 			File homeDirectory = EAM.getHomeDirectory();
 			File finalProjectDirectory = new File(homeDirectory, projectName);
 			

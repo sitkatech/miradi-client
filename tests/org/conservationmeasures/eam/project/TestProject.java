@@ -159,6 +159,17 @@ public class TestProject extends EAMTestCase
 		assertFalse("Empty", Project.isValidProjectFilename(""));
 	}
 	
+	public void testMakeProjectFilenameLegal() throws Exception
+	{
+		assertEquals("didn't fix empty?", "-", Project.makeProjectFilenameLegal(""));
+		String longest = "12345678901234567890123456789012";
+		assertEquals("didn't fix long?", longest, Project.makeProjectFilenameLegal(longest + longest));
+		String allGood = "abc 123 .-";
+		assertEquals("Ruined a good name?", allGood, Project.makeProjectFilenameLegal(allGood));
+		String bad = "`~!@#$%^&*()_=+[]\\{}|;':\',<>/?";
+		assertEquals("Didn't fix bad?", "------------------------------", Project.makeProjectFilenameLegal(bad));
+	}
+	
 	public void testViewChanges() throws Exception
 	{
 		assertEquals("didn't start in summary view?", Project.SUMMARY_VIEW_NAME, project.getCurrentView());

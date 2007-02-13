@@ -448,10 +448,16 @@ public class Project
 	
 	static public boolean isValidProjectFilename(String candidate)
 	{
+		return candidate.equals(makeProjectFilenameLegal(candidate));
+	}
+	
+	static public String makeProjectFilenameLegal(String candidate)
+	{
 		if(candidate.length() < 1)
-			return false;
-		if(candidate.length() > 32)
-			return false;
+			return "-";
+		
+		if(candidate.length() > MAX_PROJECT_FILENAME_LENGTH)
+			candidate = candidate.substring(0, MAX_PROJECT_FILENAME_LENGTH);
 		
 		char[] asArray = candidate.toCharArray();
 		for(int i = 0; i < candidate.length(); ++i)
@@ -464,9 +470,10 @@ public class Project
 			if(c == ' ' || c == '.' || c == '-')
 				continue;
 			
-			return false;
+			asArray[i] = '-';
 		}
-		return true;
+
+		return new String(asArray);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////
@@ -952,6 +959,8 @@ public class Project
 	public static final String DEFAULT_VIEW_NAME = SUMMARY_VIEW_NAME;
 	
 	public static final int DEFAULT_GRID_SIZE = 15;
+
+	private static final int MAX_PROJECT_FILENAME_LENGTH = 32;
 
 	ProjectInfo projectInfo;
 	ObjectManager objectManager;
