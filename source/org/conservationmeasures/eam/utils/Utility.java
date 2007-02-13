@@ -11,7 +11,7 @@ public class Utility
 {
 	public static double convertStringToDouble(String raw)
 	{
-		if (raw.length() == 0)
+		if (raw.trim().length() == 0)
 			return 0;
 		
 		double newDouble = 0;
