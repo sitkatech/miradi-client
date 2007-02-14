@@ -127,6 +127,8 @@ EAM.logDebug("idListWasChanged");
 			return true;
 		if(type == ObjectType.TASK && tag.equals(Task.TAG_SUBTASK_IDS))
 			return true;
+		if(type == ObjectType.TASK && tag.equals(Task.TAG_LABEL))
+			return true;
 		
 		return false;
 	}
