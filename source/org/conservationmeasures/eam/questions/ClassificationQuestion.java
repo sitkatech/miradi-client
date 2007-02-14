@@ -13,20 +13,17 @@ import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
 public abstract class ClassificationQuestion extends ChoiceQuestion
 {
-	public ClassificationQuestion(String tag)
+	public ClassificationQuestion(String tag, String fileName)
 	{
-		super(tag, "Taxonomy Classifications", null);
-		setChoiceItems(getImpactChoices());
+		super(tag, "Taxonomy Classifications", getImpactChoices(fileName));
 	}
 	
-	public abstract String getTaxonomyFile();
-	
-	private ChoiceItem[] getImpactChoices()
+	private static ChoiceItem[] getImpactChoices(String fileName)
 	{
 		try 
 		{
 			Vector chocies = new Vector();
-			TaxonomyItem[] taxonomyItems = TaxonomyLoader.load(getTaxonomyFile());
+			TaxonomyItem[] taxonomyItems = TaxonomyLoader.load(fileName);
 
 			for (int i=0; i<taxonomyItems.length; ++i)
 			{

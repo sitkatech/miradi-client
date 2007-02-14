@@ -17,11 +17,6 @@ public class ChoiceQuestion
 		choices = choicesToUse;
 	}
 	
-	public void setChoiceItems(ChoiceItem[] choicesToUse)
-	{
-		choices = choicesToUse;
-	}
-	
 	public String getTag()
 	{
 		return tag;

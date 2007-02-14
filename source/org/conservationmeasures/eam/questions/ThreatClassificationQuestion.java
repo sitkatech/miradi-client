@@ -11,12 +11,7 @@ public class ThreatClassificationQuestion  extends ClassificationQuestion
 {
 	public ThreatClassificationQuestion(String tag)
 	{
-		super(tag);
-	}
-	
-	public String getTaxonomyFile()
-	{
-		return taxonomyFile;
+		super(tag, taxonomyFile);
 	}
 
 	private static String taxonomyFile = TaxonomyLoader.THREAT_TAXONOMIES_FILE;

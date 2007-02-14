@@ -11,12 +11,7 @@ public class StrategyClassificationQuestion extends ClassificationQuestion
 {
 	public StrategyClassificationQuestion(String tag)
 	{
-		super(tag);
-	}
-	
-	public String getTaxonomyFile()
-	{
-		return taxonomyFile;
+		super(tag, taxonomyFile);
 	}
 	
 	private static String taxonomyFile = TaxonomyLoader.STRATEGY_TAXONOMIES_FILE;
