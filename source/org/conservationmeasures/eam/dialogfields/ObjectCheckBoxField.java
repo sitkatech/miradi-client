@@ -12,7 +12,6 @@ import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiCheckBox;
 
@@ -36,13 +35,13 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	public String getText()
 	{
 		if (checkBox.isSelected())
-			return Strategy.STATUS_DRAFT;
-		return Strategy.STATUS_REAL;
+			return on;
+		return off;
 	}
 
 	public void setText(String code)
 	{
-		checkBox.setSelected(code.equals(Strategy.STATUS_DRAFT));
+		checkBox.setSelected(code.equals(on));
 	}
 
 	public void updateEditableState()
