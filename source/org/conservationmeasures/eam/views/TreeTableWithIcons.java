@@ -224,7 +224,10 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			return new EAMObject[0];
 		
 		EAMObject foundObject = pool.findObject(oRef.getObjectId());
-	
+		
+		if (foundObject == null)
+			return new EAMObject[0];
+		
 		return new EAMObject[] {foundObject};
 	}
 
