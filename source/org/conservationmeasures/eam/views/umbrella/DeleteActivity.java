@@ -6,16 +6,13 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -120,26 +117,9 @@ public class DeleteActivity extends ObjectsDoer
 			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Task.TAG_SUBTASK_IDS, task.getId());
 
 		commandsToDeleteTasks.add(commandSetObjectData);
-		destroyTask(project, task, commandsToDeleteTasks);
+		task.createDeleteSelfAndSubtasksCommands(project, commandsToDeleteTasks);
 		
 		return (Command[])commandsToDeleteTasks.toArray(new Command[0]);
-	}
-
-	//FIXME there are duplicates of this method.  the second one is in diamgram.DeleteAnnotationDoer.
-	//refactor it.  Task.destroySelf or somehting similiar
-	private static void destroyTask(Project project, Task task, Vector deleteIds) throws Exception
-	{
-		deleteIds.add(new CommandSetObjectData(task.getType(), task.getId(), Task.TAG_SUBTASK_IDS, ""));
-		int subTaskCount = task.getSubtaskCount();
-		for (int index = 0; index < subTaskCount; index++)
-		{
-			BaseId subTaskId = task.getSubtaskId(index);
-			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
-			destroyTask(project, subTask, deleteIds);
-		}
-		
-		deleteIds.addAll(Arrays.asList(task.createCommandsToClear()));
-		deleteIds.add(new CommandDeleteObject(task.getType(), task.getId()));
 	}
 
 	WorkPlanView view;

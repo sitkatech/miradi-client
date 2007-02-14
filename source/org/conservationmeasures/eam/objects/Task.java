@@ -5,6 +5,11 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Arrays;
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -14,6 +19,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Task extends EAMBaseObject
@@ -37,6 +43,21 @@ public class Task extends EAMBaseObject
 		jsonObject.put(TAG_PARENT_REF, parentRef.toString());
 		
 		return jsonObject;
+	}
+	
+	public void createDeleteSelfAndSubtasksCommands(Project project, Vector deleteIds) throws Exception
+	{
+		deleteIds.add(new CommandSetObjectData(getType(), getId(), Task.TAG_SUBTASK_IDS, ""));
+		int subTaskCount = getSubtaskCount();
+		for (int index = 0; index < subTaskCount; index++)
+		{
+			BaseId subTaskId = getSubtaskId(index);
+			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
+			subTask.createDeleteSelfAndSubtasksCommands(project,  deleteIds);
+		}
+		
+		deleteIds.addAll(Arrays.asList(createCommandsToClear()));
+		deleteIds.add(new CommandDeleteObject(getType(), getId()));
 	}
 
 	public int getType()

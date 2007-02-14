@@ -117,26 +117,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		for (int i  = 0; i < subtaskList.size(); i++)
 		{
 			Task taskToDelete = (Task)project.findObject(ObjectType.TASK, subtaskList.get(i));
-			destroyTask(project, taskToDelete, commands);
+			taskToDelete.createDeleteSelfAndSubtasksCommands(project, commands);
 		}
 		
 		return commands;
-	}
-
-	//FIXME there are duplicates of this method.  the second one is in umbrella.DeleteActivity.
-	//refactor it.  Task.destroySelf or somehting similiar
-	private static void destroyTask(Project project, Task task, Vector deleteIds) throws Exception
-	{
-		deleteIds.add(new CommandSetObjectData(task.getType(), task.getId(), Task.TAG_SUBTASK_IDS, ""));
-		int subTaskCount = task.getSubtaskCount();
-		for (int index = 0; index < subTaskCount; index++)
-		{
-			BaseId subTaskId = task.getSubtaskId(index);
-			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
-			destroyTask(project, subTask, deleteIds);
-		}
-		
-		deleteIds.addAll(Arrays.asList(task.createCommandsToClear()));
-		deleteIds.add(new CommandDeleteObject(task.getType(), task.getId()));
 	}
 }
