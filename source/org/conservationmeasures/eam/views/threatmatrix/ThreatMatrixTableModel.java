@@ -150,8 +150,8 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	public ThreatRatingBundle getBundle(int threatIndex, int targetIndex)
 			throws Exception
 	{
-		FactorId threatId = getDirectThreats()[threatIndex].getModelNodeId();
-		FactorId targetId = getTargets()[targetIndex].getModelNodeId();
+		FactorId threatId = getDirectThreats()[threatIndex].getFactorId();
+		FactorId targetId = getTargets()[targetIndex].getFactorId();
 		ThreatRatingBundle bundle = getBundle(threatId, targetId);
 		return bundle;
 	}
@@ -184,7 +184,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	public FactorId getThreatId(int threatIndex)
 	{
 		Factor cmNode = getThreatNode(threatIndex);
-		return cmNode.getModelNodeId();
+		return cmNode.getFactorId();
 	}
 
 	public Factor getThreatNode(int threatIndex)
@@ -201,7 +201,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	public FactorId getTargetId(int targetIndex)
 	{
 		Factor cmNode = getTargetNode(targetIndex);
-		return cmNode.getModelNodeId();
+		return cmNode.getFactorId();
 	}
 	
 	
@@ -268,7 +268,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	{
 		for(int i = 0; i < nodes.length; ++i)
 			if(nodes[i].getLabel().equals(name))
-				return nodes[i].getModelNodeId();
+				return nodes[i].getFactorId();
 
 		return new FactorId(BaseId.INVALID.asInt());
 	}

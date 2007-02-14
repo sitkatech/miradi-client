@@ -63,8 +63,8 @@ public class TestDiagramFactorLink extends ObjectTestCase
 
 	public void testBasics() throws Exception
 	{
-		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getModelNodeId());
-		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
+		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getFactorId());
+		DiagramFactor target = model.createDiagramFactor(cmTarget.getFactorId());
 		FactorLinkId id = new FactorLinkId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
 		DiagramFactorLink linkage = model.createDiagramFactorLink(cmLinkage);
@@ -78,8 +78,8 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	
 	public void testIds() throws Exception
 	{
-		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getModelNodeId());
-		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
+		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getFactorId());
+		DiagramFactor target = model.createDiagramFactor(cmTarget.getFactorId());
 		FactorLinkId linkId = new FactorLinkId(5);
 		DiagramFactorLinkId id = new DiagramFactorLinkId(17);
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(

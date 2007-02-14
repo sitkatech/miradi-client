@@ -290,7 +290,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			Iterator iter = possibleDraftStrategies.iterator();
 			while(iter.hasNext())
 			{
-				FactorId possibleStrategyId = ((Factor)iter.next()).getModelNodeId();
+				FactorId possibleStrategyId = ((Factor)iter.next()).getFactorId();
 				if(factorIds.contains(possibleStrategyId))
 					continue;
 				Factor possibleIntervention = getProject().findNode(possibleStrategyId);

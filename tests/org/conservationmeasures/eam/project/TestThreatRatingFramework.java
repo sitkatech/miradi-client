@@ -242,7 +242,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		ThreatRatingFramework trf = createFramework(bundleValues);
 		try
 		{
-			FactorId targetId = trf.getProject().getFactorPool().getTargets()[0].getModelNodeId();
+			FactorId targetId = trf.getProject().getFactorPool().getTargets()[0].getFactorId();
 			assertEquals(4, trf.getHighestValueForTarget(targetId).getNumericValue());
 		}
 		finally

@@ -196,8 +196,8 @@ public class TestProjectServer extends EAMTestCase
 			Target cmTarget = new Target(takeNextModelNodeId());
 			nodePool.put(cmTarget);
 			
-			model.createDiagramFactor(cmIntervention.getModelNodeId());
-			model.createDiagramFactor(cmTarget.getModelNodeId());
+			model.createDiagramFactor(cmIntervention.getFactorId());
+			model.createDiagramFactor(cmTarget.getFactorId());
 			
 			storage.writeDiagram(model);
 			

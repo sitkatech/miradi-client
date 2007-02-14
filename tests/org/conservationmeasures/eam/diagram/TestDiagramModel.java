@@ -191,7 +191,7 @@ public class TestDiagramModel extends EAMTestCase
 		model.deleteDiagramFactor(nodeToDelete);
 		Target cmTargetToUndo = new Target(nodeToDelete.getWrappedId());
 		
-		model.createDiagramFactor(cmTargetToUndo.getModelNodeId()); //simulates an undo
+		model.createDiagramFactor(cmTargetToUndo.getFactorId()); //simulates an undo
 		DiagramFactor nodeAfterUndo = createNode(Factor.TYPE_TARGET);
 		assertTrue("reused an id?", nodeAfterUndo.getDiagramFactorId().asInt() > lastCreated.getDiagramFactorId().asInt());
 	}
@@ -298,7 +298,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		Factor cmTarget = new Target(takeNextModelNodeId());
 		project.getFactorPool().put(cmTarget);
-		return model.createDiagramFactor(cmTarget.getModelNodeId());
+		return model.createDiagramFactor(cmTarget.getFactorId());
 	}
 	
 	private DiagramFactor createNode(FactorType nodeType) throws Exception
@@ -307,7 +307,7 @@ public class TestDiagramModel extends EAMTestCase
 		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
 		project.getFactorPool().put(cmObject);
-		return model.createDiagramFactor(cmObject.getModelNodeId());
+		return model.createDiagramFactor(cmObject.getFactorId());
 	}
 	
 	private DiagramFactorLink createLinkage(FactorLinkId id, FactorId fromId, FactorId toId) throws Exception

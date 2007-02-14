@@ -27,7 +27,7 @@ public class FactorPool extends PoolWithIdAssigner
 	
 	public void put(Factor node)
 	{
-		put(node.getModelNodeId(), node);
+		put(node.getFactorId(), node);
 	}
 	
 	public Factor find(FactorId id)

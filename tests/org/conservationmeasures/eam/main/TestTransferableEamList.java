@@ -65,7 +65,7 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		Strategy cmIntervention = new Strategy(node1Id);
 		nodePool.put(cmIntervention);
-		DiagramFactor node1 = model.createDiagramFactor(cmIntervention.getModelNodeId());
+		DiagramFactor node1 = model.createDiagramFactor(cmIntervention.getFactorId());
 		node1.setLocation(node1Location);
 		
 		FactorId node2Id = new FactorId(2);
@@ -73,7 +73,7 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		Target cmTarget = new Target(node2Id);
 		nodePool.put(cmTarget);
-		DiagramFactor node2 = model.createDiagramFactor(cmTarget.getModelNodeId());
+		DiagramFactor node2 = model.createDiagramFactor(cmTarget.getFactorId());
 		node2.setLocation(node2Location);
 		
 		FactorLinkId linkage1Id = new FactorLinkId(3);

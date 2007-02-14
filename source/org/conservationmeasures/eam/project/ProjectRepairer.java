@@ -77,7 +77,7 @@ public class ProjectRepairer
 		try
 		{
 			node.setIndicators(newIndicatorIds);
-			project.writeFactor(node.getModelNodeId());
+			project.writeFactor(node.getFactorId());
 		}
 		catch (Exception logAndContinue)
 		{
@@ -98,7 +98,7 @@ public class ProjectRepairer
 		node.setGoals(ids);
 		try
 		{
-			project.writeFactor(node.getModelNodeId());
+			project.writeFactor(node.getFactorId());
 		}
 		catch(Exception logAndContinue)
 		{
@@ -118,7 +118,7 @@ public class ProjectRepairer
 		node.setObjectives(ids);
 		try
 		{
-			project.writeFactor(node.getModelNodeId());
+			project.writeFactor(node.getFactorId());
 		}
 		catch(Exception logAndContinue)
 		{
@@ -146,7 +146,7 @@ public class ProjectRepairer
 		node.setObjectives(newIds);
 		try
 		{
-			project.writeFactor(node.getModelNodeId());
+			project.writeFactor(node.getFactorId());
 		}
 		catch(Exception logAndContinue)
 		{

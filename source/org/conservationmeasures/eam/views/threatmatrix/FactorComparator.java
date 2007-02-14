@@ -29,12 +29,12 @@ public class FactorComparator implements  Comparator
 	{
 		try
 		{
-			FactorId nodeIdColumn = targetList[sortColumn].getModelNodeId();
+			FactorId nodeIdColumn = targetList[sortColumn].getFactorId();
 
 			Factor factor1 = ((Factor) object1);
 			Factor factor2 = ((Factor) object2);
-			FactorId nodeIdRow1 = factor1.getModelNodeId();
-			FactorId nodeIdRow2 = factor2.getModelNodeId();
+			FactorId nodeIdRow1 = factor1.getFactorId();
+			FactorId nodeIdRow2 = factor2.getFactorId();
 
 			ThreatRatingBundle bundle1 = model.getBundle(nodeIdRow1,nodeIdColumn);
 			ThreatRatingBundle bundle2 = model.getBundle(nodeIdRow2,nodeIdColumn);

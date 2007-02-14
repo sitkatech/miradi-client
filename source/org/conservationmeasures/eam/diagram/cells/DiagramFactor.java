@@ -107,7 +107,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 	
 	public FactorId getWrappedId()
 	{
-		return underlyingObject.getModelNodeId();
+		return underlyingObject.getFactorId();
 	}
 	
 	public int getWrappedType()

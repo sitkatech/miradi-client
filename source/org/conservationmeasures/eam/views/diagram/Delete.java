@@ -143,7 +143,7 @@ public class Delete extends ProjectDoer
 	{
 		Command[] commandsToClear = factorToDelete.createCommandsToClear();
 		getProject().executeCommands(commandsToClear);
-		getProject().executeCommand(new CommandDeleteObject(factorToDelete.getType(), factorToDelete.getModelNodeId()));
+		getProject().executeCommand(new CommandDeleteObject(factorToDelete.getType(), factorToDelete.getFactorId()));
 	}
 	
 	private void deleteAnnotations(Factor factorToDelete) throws Exception

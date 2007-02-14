@@ -83,7 +83,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
 		nodePool.put(cmObject);
-		return model.createDiagramFactor(cmObject.getModelNodeId());
+		return model.createDiagramFactor(cmObject.getFactorId());
 	}
 
 	ProjectForTesting project;

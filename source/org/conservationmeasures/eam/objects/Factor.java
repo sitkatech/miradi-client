@@ -34,7 +34,7 @@ abstract public class Factor extends EAMBaseObject
 		type = nodeType;
 	}
 	
-	public FactorId getModelNodeId()
+	public FactorId getFactorId()
 	{
 		return new FactorId(getId().asInt());
 	}
