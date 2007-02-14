@@ -2,7 +2,8 @@ Miradi (TM)
 
 Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York 
     (on behalf of the Conservation Measures Partnership, "CMP") and 
-    Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+    Beneficent Technology, Inc. ("The Benetech Initiative"), 
+    Palo Alto, California. 
 
 VERSION 1.0-Beta 
 
@@ -28,7 +29,7 @@ Third-Party Software Credits
 
 Portions of the code are from the Martus(tm) free, social justice 
 documentation and monitoring software, Copyright (C) 2001-2007, Beneficent 
-Technology, Inc. (Benetech).
+Technology, Inc. ("The Benetech Initiative").
 
 Miradi relies on the following third-party libraries: BrowserLauncher2, 
 jcalendar, jexcel, jgraph, jhlabs, jtreetable, and tableLayout.
@@ -41,17 +42,15 @@ For MS Windows:
 - Windows XP
 - 64 MB available disk space
 
+For Mac OS X:
+- Java 1.5 or later
+- 10 MB available disk space
 
 For GNU/Linux:
 - Java 1.5 or later
 - 10 MB available disk space
 
 
-For Mac OS X:
-Miradi is being designed to work on all major operating systems 
-including Macintosh. However, Version 1.0 Beta is not available 
-for Mac because it has some issues that will be ironed out in the 
-coming months.
 
 ---------------------
 INSTALLING
@@ -60,14 +59,28 @@ MS Windows:
 - Download and run MiradiSetup.exe
 
 
+Mac OS X:
+- Make sure Apple's official Java 1.5 is installed (Java 1.4 is not supported)
+
+- Obtain Miradi-Mac.zip from http://miradi.org and unzip the contents 
+  into a temporary directory
+
+- Copy the contents of the LibExt directory to the 
+  System/Library/Java/Extensions folder
+
+- Copy miradi.jar to your desktop, or wherever you wish to launch it from
+
+- Ctrl-click on miradi.jar, and choose "Java Launcher (Default)
+
+- MarineExample.zip is a sample project that can be imported into Miradi
+
+
 GNU/Linux:
 
 - Make sure Sun's official Java 1.5 is installed
 
-- Point your web browser at https://miradi.org/download
-
-- Download Miradi-Linux.zip and unzip the contents into some working 
-  directory. 
+- Obtain Miradi-Linux.zip from http://miradi.org and unzip the contents 
+  into a temporary directory
 
 - Copy the contents of the LibExt directory to the 
   System/Library/Java/Extensions folder
@@ -85,10 +98,8 @@ GNU/Linux:
 ---------------------
 Upgrading From Earlier Versions
 
-This is the first public release of Miradi. 
-
-If you have an earlier pre-release version of Miradi installed, you can 
-just install Miradi 1.0-Beta right over it. This is also true if you were 
+If you have an earlier version of Miradi installed, you can 
+just install this new version right over it. This is also true if you were 
 using e-Adaptive Management (the working name for earlier versions of Miradi).
 
 If a Miradi (or eAM) project directory exists when you install Miradi, the 
