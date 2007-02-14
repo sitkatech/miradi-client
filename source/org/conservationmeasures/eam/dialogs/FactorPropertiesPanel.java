@@ -93,7 +93,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog("Error reading activity information");
+			EAM.errorDialog("Error reading factor information:" + e.getMessage());
 		}
 	}
 
@@ -165,7 +165,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 	
 	class FactorDetailsTab extends ModelessDialogPanel
 	{
-		public FactorDetailsTab(Project projectToUse, DiagramFactor diagramFactor)
+		public FactorDetailsTab(Project projectToUse, DiagramFactor diagramFactor) throws Exception
 		{
 			realPanel = new FactorDetailsPanel(projectToUse, diagramFactor);
 			add(new JScrollPane(realPanel));

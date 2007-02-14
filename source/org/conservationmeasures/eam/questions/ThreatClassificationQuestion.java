@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
 public class ThreatClassificationQuestion  extends ClassificationQuestion
 {
-	public ThreatClassificationQuestion(String tag)
+	public ThreatClassificationQuestion(String tag) throws Exception
 	{
 		super(tag, taxonomyFile);
 	}

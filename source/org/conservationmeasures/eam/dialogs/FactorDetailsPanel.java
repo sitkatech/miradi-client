@@ -36,7 +36,7 @@ import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 
 public class FactorDetailsPanel extends ObjectDataInputPanel
 {
-	public FactorDetailsPanel(Project projectToUse, DiagramFactor factorToEdit)
+	public FactorDetailsPanel(Project projectToUse, DiagramFactor factorToEdit) throws Exception
 	{
 		super(projectToUse, factorToEdit.getType(), factorToEdit.getWrappedId());
 		currentDiagramFactor = factorToEdit;

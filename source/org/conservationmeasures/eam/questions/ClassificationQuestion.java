@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import java.awt.Color;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
@@ -13,12 +12,12 @@ import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
 public abstract class ClassificationQuestion extends ChoiceQuestion
 {
-	public ClassificationQuestion(String tag, String fileName)
+	public ClassificationQuestion(String tag, String fileName) throws Exception
 	{
 		super(tag, "Taxonomy Classifications", getImpactChoices(fileName));
 	}
 	
-	private static ChoiceItem[] getImpactChoices(String fileName)
+	private static ChoiceItem[] getImpactChoices(String fileName) throws Exception
 	{
 		try 
 		{
@@ -39,9 +38,7 @@ public abstract class ClassificationQuestion extends ChoiceQuestion
 		}
 		catch (Exception e)
 		{
-			//TODO: should throw error instead 
-			ChoiceItem[] errorLine = {new ChoiceItem("", "error processing classifications", Color.WHITE), };
-			return errorLine;
+			throw new Exception("error processing classifications:" + fileName);
 		}
 	}
 }
