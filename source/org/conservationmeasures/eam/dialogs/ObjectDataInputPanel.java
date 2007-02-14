@@ -15,7 +15,6 @@ import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.dialogfields.ObjectAdjustableStringInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectCheckBoxField;
 import org.conservationmeasures.eam.dialogfields.ObjectClassificationChoiceField;
@@ -34,6 +33,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.Alignment;

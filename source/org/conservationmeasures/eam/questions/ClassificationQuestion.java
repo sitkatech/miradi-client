@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.questions;
 import java.awt.Color;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.dialogfields.ChoiceItem;
-import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 

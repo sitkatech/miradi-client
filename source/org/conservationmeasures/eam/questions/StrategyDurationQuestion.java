@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.dialogfields.ChoiceItem;
-import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 
 public class StrategyDurationQuestion extends ChoiceQuestion
 {

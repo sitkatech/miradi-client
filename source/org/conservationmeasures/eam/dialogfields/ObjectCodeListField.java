@@ -11,6 +11,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class ObjectCodeListField extends ObjectDataInputField implements ListSelectionListener
 {

@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.ChainObject;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
-import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -59,6 +58,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
 public class ObjectManager

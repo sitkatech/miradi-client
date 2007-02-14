@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.dialogfields.ChoiceItem;
-import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class TestRatingQuestion extends EAMTestCase
 {

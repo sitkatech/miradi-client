@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import org.conservationmeasures.eam.dialogfields.ChoiceItem;
-import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;

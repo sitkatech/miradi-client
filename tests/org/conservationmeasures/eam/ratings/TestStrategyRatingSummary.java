@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.ratings;
 
-import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;

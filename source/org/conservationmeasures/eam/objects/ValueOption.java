@@ -7,10 +7,10 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ValueOption extends EAMBaseObject

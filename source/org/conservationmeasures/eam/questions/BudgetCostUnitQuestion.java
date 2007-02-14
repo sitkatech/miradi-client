@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import org.conservationmeasures.eam.dialogfields.ChoiceItem;
-import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 
 public class BudgetCostUnitQuestion extends ChoiceQuestion
 {

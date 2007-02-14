@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -13,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummary;
 
 public class StrategyPoolTableModel extends ObjectPoolTableModel
