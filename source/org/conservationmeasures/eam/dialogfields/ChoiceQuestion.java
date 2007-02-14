@@ -17,6 +17,11 @@ public class ChoiceQuestion
 		choices = choicesToUse;
 	}
 	
+	public void setChoiceTimes(ChoiceItem[] choicesToUse)
+	{
+		choices = choicesToUse;
+	}
+	
 	public String getTag()
 	{
 		return tag;

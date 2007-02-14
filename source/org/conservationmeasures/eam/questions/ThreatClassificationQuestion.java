@@ -5,45 +5,18 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import java.awt.Color;
-import java.util.Vector;
-
-import org.conservationmeasures.eam.dialogfields.ChoiceItem;
-import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
-import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
-public class ThreatClassificationQuestion extends ChoiceQuestion
+public class ThreatClassificationQuestion  extends ClassificationQuestion
 {
 	public ThreatClassificationQuestion(String tag)
 	{
-		super(tag, "Taxonomy Classifications", getImpactChoices());
+		super(tag);
 	}
 	
-	static ChoiceItem[] getImpactChoices()
+	public String getTaxonomyFile()
 	{
-		
-		try 
-		{
-			Vector chocies = new Vector();
-			TaxonomyItem[] taxonomyItems = TaxonomyLoader.load(taxonomyFile);
-
-			for (int i=0; i<taxonomyItems.length; ++i)
-			{
-				ChoiceItem choice = new ChoiceItem(
-						taxonomyItems[i].getTaxonomyCode(), 
-						taxonomyItems[i].getTaxonomyDescription());
-				choice.setSelectable(taxonomyItems[i].isLeaf());
-				chocies.add(choice);
-			}
-			
-			return (ChoiceItem[])chocies.toArray(new ChoiceItem[0]);
-		}
-		catch (Exception e)
-		{
-			ChoiceItem[] choices = {new ChoiceItem("", "error processing classifications", Color.WHITE), };
-			return choices;
-		}
+		return taxonomyFile;
 	}
 
 	private static String taxonomyFile = TaxonomyLoader.THREAT_TAXONOMIES_FILE;
