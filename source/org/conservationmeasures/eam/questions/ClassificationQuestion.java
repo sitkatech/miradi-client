@@ -42,8 +42,8 @@ public abstract class ClassificationQuestion extends ChoiceQuestion
 		}
 		catch (Exception e)
 		{
-			ChoiceItem[] choices = {new ChoiceItem("", "error processing classifications", Color.WHITE), };
-			return choices;
+			ChoiceItem[] errorLine = {new ChoiceItem("", "error processing classifications", Color.WHITE), };
+			return errorLine;
 		}
 	}
 }
