@@ -277,9 +277,7 @@ public class EAM
 
 		if (doesTestDirectoryExist())
 		{
-			//FIXME: should find a better approach then using indexOf
-			int index = url.getPath().indexOf(CLASS_DIRECTORY_PATH);
-			String relativePath = url.getPath().substring(index);
+			String relativePath = new File(convertToPath(thisClass.getPackage().getName()),resourceFileName).getPath();
 			url = findAlternateResource(relativePath, url);
 		}
 		
@@ -295,6 +293,10 @@ public class EAM
 		}
 	}
 
+	public static String convertToPath(String path)
+	{
+		return path.replace('.', File.separatorChar);
+	}
 	
 	public static URL loadResourceImageFile(String resourceFileName) 
 	{
@@ -343,7 +345,6 @@ public class EAM
 
 	///////////////////////////////////////////////////////////////////
 	
-	private final static String CLASS_DIRECTORY_PATH = "org/conservationmeasures/eam";
 	private final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
 	
 	public static int STANDARD_SCROLL_INCREMENT = 12;
