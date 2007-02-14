@@ -103,9 +103,9 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		add(panel);
 	}
 	
-	public ObjectDataInputField createCheckBoxField(String tag)
+	public ObjectDataInputField createCheckBoxField(String tag, String on, String off)
 	{
-		return new ObjectCheckBoxField(project, objectType, objectId, tag);
+		return new ObjectCheckBoxField(project, objectType, objectId, tag, on, off);
 	}
 	
 	public ObjectDataInputField createStringField(String tag)

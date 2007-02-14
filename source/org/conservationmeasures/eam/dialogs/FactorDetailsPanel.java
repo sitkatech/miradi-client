@@ -82,7 +82,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		if (!inChainMode())
 			return;
 		
-		ObjectDataInputField field = createCheckBoxField(tag);
+		ObjectDataInputField field = createCheckBoxField(tag, Strategy.STATUS_DRAFT, Strategy.STATUS_REAL);
 		((JCheckBox)field.getComponent()).addItemListener(new StatusChangeHandler());
 		addField(field);
 	}
