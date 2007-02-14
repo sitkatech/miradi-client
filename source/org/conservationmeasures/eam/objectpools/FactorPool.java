@@ -47,7 +47,7 @@ public class FactorPool extends PoolWithIdAssigner
 	
 	public IdList getInterventionIds()
 	{
-		Factor[] cmNodeList = getInterventions();
+		Factor[] cmNodeList = getStrategies();
 		IdList interventionIds = new IdList();
 		for (int i = 0; i < cmNodeList.length; i++)
 			interventionIds.add(cmNodeList[i].getId());
@@ -55,7 +55,7 @@ public class FactorPool extends PoolWithIdAssigner
 		return interventionIds;
 	}
 
-	public Factor[] getInterventions()
+	public Factor[] getStrategies()
 	{
 		return getNodesOfType(new FactorTypeStrategy());
 	}
