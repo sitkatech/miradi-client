@@ -18,7 +18,7 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 {
 	public ActivityListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ActivityListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, new ActivityListTablePanel(projectToUse, actions, nodeId),
 				new TaskPropertiesPanel(projectToUse, actions));
 	}
 	

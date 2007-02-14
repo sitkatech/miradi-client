@@ -18,7 +18,7 @@ public class MethodPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public MethodPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new MethodPoolTablePanel(projectToUse),
+		super(splitPositionSaverToUse, new MethodPoolTablePanel(projectToUse),
 				new TaskPropertiesPanel(projectToUse, actions, BaseId.INVALID));
 	}
 	

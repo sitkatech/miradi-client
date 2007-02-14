@@ -23,7 +23,7 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 		setComponentPreferredSize(propertiesPanel);
 		setComponentPreferredSize(treeTableComponent);
 		
-		createVerticalSplitPane(treeTableComponent, propertiesPanel, PANEL_DESCRIPTION);
+		createVerticalSplitPane(treeTableComponent, propertiesPanel, getSplitterDescription());
 	}
 
 	public EAMObject getObject()

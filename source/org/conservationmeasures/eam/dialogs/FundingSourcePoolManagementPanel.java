@@ -21,7 +21,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public FundingSourcePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new FundingSourcePoolTablePanel(projectToUse, actionsToUse),
+		super(splitPositionSaverToUse, new FundingSourcePoolTablePanel(projectToUse, actionsToUse),
 				new FundingSourcePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);

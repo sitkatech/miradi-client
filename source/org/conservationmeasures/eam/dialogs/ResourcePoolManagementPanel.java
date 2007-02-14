@@ -21,7 +21,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public ResourcePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ResourcePoolTablePanel(projectToUse, actionsToUse),
+		super(splitPositionSaverToUse, new ResourcePoolTablePanel(projectToUse, actionsToUse),
 				new ResourcePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);

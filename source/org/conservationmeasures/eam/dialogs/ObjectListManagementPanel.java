@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 abstract public class ObjectListManagementPanel extends ObjectManagementPanel
 {
-	public ObjectListManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, String splitterNameToUse, ObjectListTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectListManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectListTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		super(splitPositionSaverToUse, splitterNameToUse, tablePanelToUse, propertiesPanelToUse);
+		super(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
 }

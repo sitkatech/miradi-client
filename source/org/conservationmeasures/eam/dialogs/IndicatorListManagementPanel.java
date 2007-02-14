@@ -18,7 +18,7 @@ public class IndicatorListManagementPanel extends ObjectListManagementPanel
 {
 	public IndicatorListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new IndicatorListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, new IndicatorListTablePanel(projectToUse, actions, nodeId),
 				new IndicatorPropertiesPanel(projectToUse, actions));
 	}
 	

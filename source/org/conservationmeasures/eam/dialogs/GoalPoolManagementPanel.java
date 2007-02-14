@@ -19,7 +19,7 @@ public class GoalPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public GoalPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new GoalPoolTablePanel(projectToUse),
+		super(splitPositionSaverToUse, new GoalPoolTablePanel(projectToUse),
 				new GoalPropertiesPanel(projectToUse, actions, new GoalId(BaseId.INVALID.asInt())));
 	}
 	

@@ -18,7 +18,7 @@ public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 {
 	public ObjectiveListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ObjectiveListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, new ObjectiveListTablePanel(projectToUse, actions, nodeId),
 				new ObjectivePropertiesPanel(projectToUse, actions));
 	}
 	

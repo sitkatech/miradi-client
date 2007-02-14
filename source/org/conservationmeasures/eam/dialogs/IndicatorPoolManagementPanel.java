@@ -19,7 +19,7 @@ public class IndicatorPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public IndicatorPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new IndicatorPoolTablePanel(projectToUse),
+		super(splitPositionSaverToUse, new IndicatorPoolTablePanel(projectToUse),
 				new IndicatorPropertiesPanel(projectToUse, actions, new IndicatorId(BaseId.INVALID.asInt())));
 	}
 	

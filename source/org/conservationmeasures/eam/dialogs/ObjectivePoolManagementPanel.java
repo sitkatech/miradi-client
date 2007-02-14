@@ -19,7 +19,7 @@ public class ObjectivePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public ObjectivePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new ObjectivePoolTablePanel(projectToUse), 
+		super(splitPositionSaverToUse, new ObjectivePoolTablePanel(projectToUse), 
 				new ObjectivePropertiesPanel(projectToUse, actions, new ObjectiveId(BaseId.INVALID.asInt())));
 	}
 	

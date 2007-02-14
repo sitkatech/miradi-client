@@ -18,10 +18,11 @@ import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 
 abstract public class VerticalSplitPanel extends ModelessDialogPanel
 {
-	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, String splitterNameToUse, Component top, Component bottom)
+	//TODO using the splitter name should not longer be passed in, instead getsplitterDescription is being used
+	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, Component top, Component bottom)
 	{
 		this(splitPositionSaverToUse, new BorderLayout());
-		createVerticalSplitPane(top, bottom, splitterNameToUse);
+		createVerticalSplitPane(top, bottom, getSplitterDescription());
 	}
 	
 	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse)
@@ -45,18 +46,23 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 	
 	public void updateSplitterLocation()
 	{
-		splitter.updateSplitterLocation(getPanelDescription());
+		splitter.updateSplitterLocation(getSplitterDescription());
 	}
 	
 	public void updateSplitterLocationToMiddle()
 	{
-		splitter.setSplitterLocationToMiddle(getPanelDescription());
+		splitter.setSplitterLocationToMiddle(getSplitterDescription());
 	}
 	
 	protected void setComponentPreferredSize(JComponent component)
 	{
 		Dimension dimension = new Dimension(0,200);
 		component.setPreferredSize(dimension);
+	}
+	
+	public String getSplitterDescription()
+	{
+		return getPanelDescription();
 	}
 
 	private SplitterPositionSaverAndGetter splitPositionSaver;

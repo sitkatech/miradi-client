@@ -21,7 +21,7 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public AccountingCodePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
+		super(splitPositionSaverToUse, new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
 				new AccountingCodePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);

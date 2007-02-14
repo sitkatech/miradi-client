@@ -18,7 +18,7 @@ public class StrategyPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public StrategyPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
-		super(splitPositionSaverToUse, PANEL_DESCRIPTION, new StrategyPoolTablePanel(projectToUse),
+		super(splitPositionSaverToUse, new StrategyPoolTablePanel(projectToUse),
 				new StrategyPropertiesPanel(projectToUse, ObjectType.FACTOR, BaseId.INVALID));
 	}
 	
