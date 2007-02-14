@@ -17,7 +17,7 @@ public class ChoiceQuestion
 		choices = choicesToUse;
 	}
 	
-	public void setChoiceTimes(ChoiceItem[] choicesToUse)
+	public void setChoiceItems(ChoiceItem[] choicesToUse)
 	{
 		choices = choicesToUse;
 	}

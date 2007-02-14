@@ -16,7 +16,7 @@ public abstract class ClassificationQuestion extends ChoiceQuestion
 	public ClassificationQuestion(String tag)
 	{
 		super(tag, "Taxonomy Classifications", null);
-		setChoiceTimes(getImpactChoices());
+		setChoiceItems(getImpactChoices());
 	}
 	
 	public abstract String getTaxonomyFile();
