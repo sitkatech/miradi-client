@@ -9,18 +9,16 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.Icon;
+import javax.swing.JCheckBox;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -35,8 +33,6 @@ import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummary;
 import org.conservationmeasures.eam.questions.TargetStatusQuestion;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
-import org.martus.swing.UiCheckBox;
-import org.martus.swing.UiLabel;
 
 public class FactorDetailsPanel extends ObjectDataInputPanel
 {
@@ -45,8 +41,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		super(projectToUse, factorToEdit.getType(), factorToEdit.getWrappedId());
 		currentDiagramFactor = factorToEdit;
 		
-		statusCheckBox = new UiCheckBox(EAM.text("Label|Draft"));
-
 		if(factorToEdit.isTarget())
 		{
 			addField(createRatingChoiceField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS)));
@@ -67,7 +61,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		if(factorToEdit.isStrategy())
 		{
 			addField(createStringField(Strategy.TAG_SHORT_LABEL));
-			addOptionalDraftStatusCheckBox(factorToEdit);
+			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
 			addField(createClassificationChoiceField(new StrategyClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
 			addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
 			addField(createRatingChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
@@ -83,16 +77,14 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	}
 
 
-	private void addOptionalDraftStatusCheckBox(DiagramFactor factorToEdit)
+	private void addOptionalDraftStatusCheckBox(String tag)
 	{
-		// FIXME: Convert to new mechanism (create status field or just checkbox field?)
-		if (inChainMode())
-		{
-			add(new UiLabel(EAM.text("Label|Status")));
-			statusCheckBox.setSelected(factorToEdit.isStatusDraft());
-			statusCheckBox.addItemListener(new StatusChangeHandler());
-			add(statusCheckBox);
-		}
+		if (!inChainMode())
+			return;
+		
+		ObjectDataInputField field = createCheckBoxField(tag);
+		((JCheckBox)field.getComponent()).addItemListener(new StatusChangeHandler());
+		addField(field);
 	}
 
 
@@ -121,29 +113,9 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	{
 		public void itemStateChanged(ItemEvent event)
 		{
-			try
-			{
-				getProject().executeCommand(buildStatusCommand());
-				getProject().updateVisibilityOfSingleFactor(getCurrentDiagramFactor());
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
+			getProject().updateVisibilityOfSingleFactor(getCurrentDiagramFactor());
 		}
 	}
-	
-	Command buildStatusCommand()
-	{
-		String newValue = Strategy.STATUS_REAL;
-		if(statusCheckBox.isSelected())
-			newValue = Strategy.STATUS_DRAFT;
-
-		return new CommandSetObjectData(ObjectType.FACTOR, getCurrentFactorId(), 
-				Strategy.TAG_STATUS, newValue);
-	}
-
 	
 	DiagramFactor getCurrentDiagramFactor()
 	{
@@ -162,5 +134,4 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	
 	private Icon detailIcon;
 	private DiagramFactor currentDiagramFactor;
-	private UiCheckBox statusCheckBox;
 }

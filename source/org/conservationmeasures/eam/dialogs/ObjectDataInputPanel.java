@@ -17,14 +17,15 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.dialogfields.ObjectAdjustableStringInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectCheckBoxField;
 import org.conservationmeasures.eam.dialogfields.ObjectClassificationChoiceField;
-import org.conservationmeasures.eam.dialogfields.ObjectRaitingChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectCodeListField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDateChooserInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultilineDisplayField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectRaitingChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -100,6 +101,11 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
 		add(panel);
+	}
+	
+	public ObjectDataInputField createCheckBoxField(String tag)
+	{
+		return new ObjectCheckBoxField(project, objectType, objectId, tag);
 	}
 	
 	public ObjectDataInputField createStringField(String tag)
