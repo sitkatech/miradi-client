@@ -277,7 +277,8 @@ public class EAM
 
 		if (doesTestDirectoryExist())
 		{
-			String relativePath = new File(convertToPath(thisClass.getPackage().getName()),resourceFileName).getPath();
+			final String relativePackagePath = convertToPath(thisClass.getPackage().getName());
+			String relativePath = new File(relativePackagePath, resourceFileName).getPath();
 			url = findAlternateResource(relativePath, url);
 		}
 		

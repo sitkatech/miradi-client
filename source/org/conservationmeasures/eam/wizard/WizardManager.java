@@ -374,24 +374,7 @@ public class WizardManager
 	
 	Class doDeferedSequenceLookup(String controlName, SkeletonWizardStep step)
 	{
-		Class[] sequences = WizardManager.getSequence();
-		Class name = null;
-		
-		int position = findPositionInSequence(sequences, step);
-		if (position<0)
-		{}
-		else if (controlName.equals("Next"))
-		{
-			name = sequences[0];
-			if (position != sequences.length-1)
-				name = sequences[position+1];
-		}
-		else if (controlName.equals("Back"))
-		{
-			name = sequences[sequences.length-1];
-			if (position != 0)
-				name = sequences[position-1];		
-		}
+		Class name = getDestinationStep(controlName, step);
 
 		if (name==null)
 		{
@@ -399,6 +382,26 @@ public class WizardManager
 			reportError(EAM.text(errorText));
 		}
 		return name;
+	}
+
+	private Class getDestinationStep(String controlName, SkeletonWizardStep step)
+	{
+		Class[] sequences = WizardManager.getSequence();
+
+		int position = findPositionInSequence(sequences, step);
+		if (position<0)
+			return null;
+		
+		if (controlName.equals("Next"))
+			++position;
+		
+		if (controlName.equals("Back"))
+			--position;
+		
+		if (position<0 || position>=sequences.length)
+			return null;
+		
+		return sequences[position];
 	}
 
 	private void reportError(String msg)

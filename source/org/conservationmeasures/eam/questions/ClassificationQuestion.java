@@ -39,6 +39,7 @@ public abstract class ClassificationQuestion extends ChoiceQuestion
 		}
 		catch (Exception e)
 		{
+			//TODO: should throw error instead 
 			ChoiceItem[] errorLine = {new ChoiceItem("", "error processing classifications", Color.WHITE), };
 			return errorLine;
 		}

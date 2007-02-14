@@ -17,14 +17,14 @@ import org.martus.swing.UiCheckBox;
 
 public class ObjectCheckBoxField extends ObjectDataInputField
 {
-	public ObjectCheckBoxField(Project projectToUse, int objectType, BaseId objectId, String tag, String onToUse, String offToUse)
+	public ObjectCheckBoxField(Project projectToUse, int objectType, BaseId objectId, String tag, String valueWhenChecked, String valueWhenUnchecked)
 	{
 		super(projectToUse, objectType, objectId, tag);
 		checkBox = new UiCheckBox();
 		checkBox.addItemListener(new StatusChangeHandler());
 		addFocusListener();
-		on = onToUse;
-		off = offToUse;
+		checkedValue = valueWhenChecked;
+		uncheckedValue = valueWhenUnchecked;
 	}
 
 	public JComponent getComponent()
@@ -35,13 +35,13 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	public String getText()
 	{
 		if (checkBox.isSelected())
-			return on;
-		return off;
+			return checkedValue;
+		return uncheckedValue;
 	}
 
 	public void setText(String code)
 	{
-		checkBox.setSelected(code.equals(on));
+		checkBox.setSelected(code.equals(checkedValue));
 	}
 
 	public void updateEditableState()
@@ -69,6 +69,6 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	}
 	
 	UiCheckBox checkBox;
-	String on;
-	String off;
+	String checkedValue;
+	String uncheckedValue;
 }
