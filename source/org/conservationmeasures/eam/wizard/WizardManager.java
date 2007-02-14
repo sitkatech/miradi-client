@@ -372,37 +372,33 @@ public class WizardManager
 		return targetStep;
 	}
 	
-	//TODO: to be refactored to eleminate dup code
 	Class doDeferedSequenceLookup(String controlName, SkeletonWizardStep step)
 	{
 		Class[] sequences = WizardManager.getSequence();
-		String errorText = "Control ("+ controlName +") not found for step: " + getStepName(step);
+		Class name = null;
 		
 		int position = findPositionInSequence(sequences, step);
 		if (position<0)
+		{}
+		else if (controlName.equals("Next"))
 		{
-			reportError(EAM.text(errorText));
-			return null;
-		}
-		
-		if (controlName.equals("Next"))
-		{
-			Class name = sequences[0];
+			name = sequences[0];
 			if (position != sequences.length-1)
 				name = sequences[position+1];
-			return name;
 		}
-		
-		if (controlName.equals("Back"))
+		else if (controlName.equals("Back"))
 		{
-			Class name = sequences[sequences.length-1];
+			name = sequences[sequences.length-1];
 			if (position != 0)
-				name = sequences[position-1];
-			return name;			
+				name = sequences[position-1];		
 		}
 
-		reportError(EAM.text(errorText));
-		return null;
+		if (name==null)
+		{
+			String errorText = "Control ("+ controlName +") not found for step: " + getStepName(step);
+			reportError(EAM.text(errorText));
+		}
+		return name;
 	}
 
 	private void reportError(String msg)
