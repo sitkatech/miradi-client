@@ -37,7 +37,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		valueOption = (ValueOption)value;
 		renderingRow = row;
 		renderingCol = column;
-		
+		selected =  hasFocus;
 		setBorders(table, row, column);
 		
 		return this;
@@ -130,7 +130,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		int height = getHeight();
 
 		boolean optionSelected = false;
-		if ( optionSelected &&  (bundle!=null))
+		if (selected && optionSelected &&  (bundle!=null))
 		{
 			drawMainCellBody(g, INNER_CELL_RATING_BOX_WIDTH, height);
 			drawRatingBoxes(g, height);
@@ -198,6 +198,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	}
 
 	private static final int INNER_CELL_RATING_BOX_WIDTH = 10;
+	boolean selected;
 	ThreatGridPanel threatGridPanel;
 	ThreatRatingBundle bundle;
 	ValueOption valueOption;
