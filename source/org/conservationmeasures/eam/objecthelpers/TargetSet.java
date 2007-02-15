@@ -14,6 +14,11 @@ public class TargetSet extends FactorSet
 		attemptToAddAll(nodesToAttemptToAdd);
 	}
 
+	public TargetSet(Factor[] nodesToAttemptToAdd)
+	{
+		attemptToAddAll(nodesToAttemptToAdd);
+	}
+	
 	public boolean isLegal(Factor node)
 	{
 		return (node.isTarget());

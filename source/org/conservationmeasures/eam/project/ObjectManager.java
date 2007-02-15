@@ -14,7 +14,6 @@ import java.util.Iterator;
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.ChainObject;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -251,11 +250,11 @@ public class ObjectManager
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 				return getAnnotationFactorLabel(annotationType, annotationId);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_TARGETS))
-				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_TARGET, annotationType, annotationId, fieldTag);
+				return getRelatedTargetLabelsAsMultiLine(annotationType, annotationId);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_STRATEGIES))
 				return getRelatedStrategyLabelsAsMultiline(annotationType, annotationId);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, annotationId, annotationType, fieldTag);
+				return getRelatedDirectThreatLabelsAsMultiLine(annotationType, annotationId);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_METHODS))
 				return getIndicatorMethodsSingleLine(annotationId);
 		}
@@ -266,15 +265,6 @@ public class ObjectManager
 		}
 		return "";
 	}
-	
-	
-	private String getRelatedStrategyLabelsAsMultiline(int annotationType, BaseId annotationId) throws Exception
-	{
-		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
-		NonDraftStrategySet filteredSet = new NonDraftStrategySet(cmNodes);
-		return getLabelsAsMultiline(filteredSet);
-	}
-	
 
 	private String getObjectivePseudoField(int objectType, BaseId objectId, String fieldTag)
 	{
@@ -283,11 +273,11 @@ public class ObjectManager
 			if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 				return getAnnotationFactorLabel(objectType, objectId);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
-				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_TARGET, objectType, objectId, fieldTag);
+				return getRelatedTargetLabelsAsMultiLine(objectType, objectId);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
 				return getRelatedStrategyLabelsAsMultiline(objectType, objectId);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, objectId, objectType, fieldTag);
+				return getRelatedDirectThreatLabelsAsMultiLine(objectType, objectId);
 		}
 		catch(Exception e)
 		{
@@ -306,7 +296,7 @@ public class ObjectManager
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
 				return getRelatedStrategyLabelsAsMultiline(objectType, objectId);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, objectId, objectType, fieldTag);
+				return getRelatedDirectThreatLabelsAsMultiLine(objectType, objectId);
 		}
 		catch(Exception e)
 		{
@@ -501,8 +491,6 @@ public class ObjectManager
 	}
 	
 	
-	//TODO: tthe two methods getRelatedFactorLabelsAsMultiLine and getRelatedDirectThreatLabelsAsMultiLine should be based on filters
-	// See callers of this method for the appoarch
 	private String getLabelsAsMultiline(FactorSet factors)
 	{
 		StringBuffer result = new StringBuffer();
@@ -520,45 +508,29 @@ public class ObjectManager
 	}
 	
 	
-	private String getRelatedFactorLabelsAsMultiLine(FactorType nodeType, int annotationType, BaseId annotationId, String fieldTag) throws Exception
+	private String getRelatedStrategyLabelsAsMultiline(int annotationType, BaseId annotationId) throws Exception
 	{
-		String label ="";
 		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
-		boolean isFirst = true;
-		for (int i = 0; i < cmNodes.length; i++)
-		{
-			Factor cmNode = cmNodes[i];
-			if (cmNode.getNodeType().equals(nodeType))
-			{
-				if (!isFirst)
-					label += "\n";
-				label += cmNode.getLabel();
-				
-				isFirst = false;
-			}
-		}
-		return label;
+		NonDraftStrategySet filteredSet = new NonDraftStrategySet(cmNodes);
+		return getLabelsAsMultiline(filteredSet);
+	}
+	
+	
+	private String getRelatedTargetLabelsAsMultiLine(int annotationType, BaseId annotationId) throws Exception
+	{
+		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+		TargetSet filteredSet = new TargetSet(cmNodes);
+		return getLabelsAsMultiline(filteredSet);
+	}
+	
+	
+	private String getRelatedDirectThreatLabelsAsMultiLine(int annotationType, BaseId annotationId) throws Exception
+	{
+		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+		DirectThreatSet filteredSet = new DirectThreatSet(cmNodes);
+		return getLabelsAsMultiline(filteredSet);
 	}
 
-	private String getRelatedDirectThreatLabelsAsMultiLine(FactorType nodeType, BaseId annotationId, int annotationType, String fieldTag) throws Exception
-	{
-		String label ="";
-		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
-		boolean isFirst = true;
-		for (int i = 0; i < cmNodes.length; i++)
-		{
-			Factor cmNode = cmNodes[i];
-			if (cmNode.isDirectThreat() && cmNode.getNodeType().equals(nodeType))
-			{
-				if (!isFirst)
-					label += "\n"; 
-				label += cmNode.getLabel();
-				
-				isFirst = false;
-			}
-		}
-		return label;
-	}
 	
 	private FactorSet getFactorsRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
 	{
@@ -573,7 +545,7 @@ public class ObjectManager
 		return new FactorSet();
 	}
 
-	public String getAnnotationFactorLabel(int objectType, BaseId objectId)
+	private String getAnnotationFactorLabel(int objectType, BaseId objectId)
 	{
 		try
 		{

@@ -13,6 +13,11 @@ public class DirectThreatSet extends FactorSet
 	{
 		attemptToAddAll(nodesToAttemptToAdd);
 	}
+	
+	public DirectThreatSet(Factor[] nodesToAttemptToAdd)
+	{
+		attemptToAddAll(nodesToAttemptToAdd);
+	}
 
 	public boolean isLegal(Factor node)
 	{
