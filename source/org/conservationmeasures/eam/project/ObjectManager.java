@@ -510,27 +510,28 @@ public class ObjectManager
 	
 	private String getRelatedStrategyLabelsAsMultiline(int annotationType, BaseId annotationId) throws Exception
 	{
-		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
-		NonDraftStrategySet filteredSet = new NonDraftStrategySet(cmNodes);
-		return getLabelsAsMultiline(filteredSet);
+		return getRelatedLabelsAsMultiLine(new NonDraftStrategySet(), annotationType, annotationId);
 	}
 	
 	
 	private String getRelatedTargetLabelsAsMultiLine(int annotationType, BaseId annotationId) throws Exception
 	{
-		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
-		TargetSet filteredSet = new TargetSet(cmNodes);
-		return getLabelsAsMultiline(filteredSet);
+		return getRelatedLabelsAsMultiLine(new TargetSet(), annotationType, annotationId);
 	}
 	
 	
 	private String getRelatedDirectThreatLabelsAsMultiLine(int annotationType, BaseId annotationId) throws Exception
 	{
-		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
-		DirectThreatSet filteredSet = new DirectThreatSet(cmNodes);
-		return getLabelsAsMultiline(filteredSet);
+		return getRelatedLabelsAsMultiLine(new DirectThreatSet(), annotationType, annotationId);
 	}
 
+	
+	private String getRelatedLabelsAsMultiLine(FactorSet set, int annotationType, BaseId annotationId) throws Exception
+	{
+		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+		set.attemptToAddAll(cmNodes);
+		return getLabelsAsMultiline(set);
+	}
 	
 	private FactorSet getFactorsRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
 	{

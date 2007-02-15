@@ -9,6 +9,11 @@ import org.conservationmeasures.eam.objects.Factor;
 
 public class NonDraftStrategySet extends FactorSet
 {
+	public NonDraftStrategySet()
+	{
+		super();
+	}
+	
 	public NonDraftStrategySet(FactorSet nodesToAttemptToAdd)
 	{
 		attemptToAddAll(nodesToAttemptToAdd);

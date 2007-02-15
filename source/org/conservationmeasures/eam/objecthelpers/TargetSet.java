@@ -9,6 +9,11 @@ import org.conservationmeasures.eam.objects.Factor;
 
 public class TargetSet extends FactorSet
 {
+	public TargetSet()
+	{
+		super();
+	}
+	
 	public TargetSet(FactorSet nodesToAttemptToAdd)
 	{
 		attemptToAddAll(nodesToAttemptToAdd);

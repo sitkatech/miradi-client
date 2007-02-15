@@ -9,6 +9,12 @@ import org.conservationmeasures.eam.objects.Factor;
 
 public class DirectThreatSet extends FactorSet
 {
+	
+	public DirectThreatSet()
+	{
+		super();
+	}
+	
 	public DirectThreatSet(FactorSet nodesToAttemptToAdd)
 	{
 		attemptToAddAll(nodesToAttemptToAdd);
