@@ -131,7 +131,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		int widthForRatingBoxes = 0;
 		int height = getHeight();
 
-		boolean optionSelected = false;
+		boolean optionSelected = true;
 		if ( optionSelected &&  (bundle!=null))
 		{
 			widthForRatingBoxes = 10;
@@ -144,7 +144,6 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 
 	private void drawMainCellBody(Graphics g, int widthForRatingBoxes, int height)
 	{
-		// ***do not adjust for summary cells
 		int width = getWidth() - widthForRatingBoxes;
 		drawRect(g, widthForRatingBoxes, 0, width, height, valueOption.getColor());
 	
