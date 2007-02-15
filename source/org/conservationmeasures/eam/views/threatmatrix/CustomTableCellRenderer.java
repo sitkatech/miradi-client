@@ -15,9 +15,12 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 {
@@ -30,6 +33,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	public Component getTableCellRendererComponent(JTable table, Object value,
 			boolean isSelected, boolean hasFocus, int row, int column)
 	{
+		bundle = getBundle(row, column);
 		valueOption = (ValueOption)value;
 		renderingRow = row;
 		renderingCol = column;
@@ -37,6 +41,20 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		setBorders(table, row, column);
 		
 		return this;
+	}
+
+	private ThreatRatingBundle getBundle(int row, int column)
+	{
+		try
+		{
+			int indirectColumn = threatGridPanel.getThreatMatrixTable().convertColumnIndexToModel(column);
+			return getThreatTableModel().getBundle(row, indirectColumn);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return null;
+		}
 	}
 
 	private void setBorders(JTable table, int row, int column)
@@ -56,8 +74,6 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	{
 		try 
 		{
-			int indirectColumn = threatGridPanel.getThreatMatrixTable().convertColumnIndexToModel(column);
-			ThreatRatingBundle bundle = getThreatTableModel().getBundle(row, indirectColumn);
 			if(bundle != null && threatGridPanel.getSelectedBundle()!= null)
 			{
 				if(threatGridPanel.getSelectedBundle().equals(bundle))
@@ -79,6 +95,11 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	private ThreatMatrixTableModel getThreatTableModel()
 	{
 		return (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
+	}
+	
+	private ThreatRatingFramework getThreatRatingFramework()
+	{
+		return threatGridPanel.getThreatMatrixView().getThreatRatingFramework();
 	}
 
 	private boolean isOverallRatingCell(JTable table, int row, int column)
@@ -106,21 +127,50 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	{
 		super.paintBorder(g);
 		
-		int width = getWidth();
+		int widthForRatingBoxes = 0;
 		int height = getHeight();
 
-		g.setColor(valueOption.getColor());
-		g.fillRect(0, 0, width, height);
+		boolean optionSelected = false;
+		if ( optionSelected &&  (bundle!=null))
+		{
+			widthForRatingBoxes = getWidth()/3;
+			drawRatingBoxes(g, widthForRatingBoxes, height);
+		}
 		
+		int width = getWidth() - widthForRatingBoxes;
+		drawRect(g, widthForRatingBoxes, 0, width, height, valueOption.getColor());
+	
 		String label = valueOption.getLabel();
 		g.setFont(font);
 		int textHeight = g.getFontMetrics().getAscent();
-		int textWidth = g.getFontMetrics().stringWidth(label);
+		int textWidth = g.getFontMetrics().stringWidth(label)-widthForRatingBoxes;
 		g.setColor(Color.BLACK);
 		g.drawString(label, (width-textWidth)/2, (height-textHeight)/2 + textHeight);
 	}
 
+	//TODO: it is possible that this should be a loop in case more ratings are added
+	private void drawRatingBoxes(Graphics g, int width, int height)
+	{
+		RatingCriterion[] criterionItems = getThreatRatingFramework().getCriteria();
+		drawRatingBox(g, 0, 0, width, height/3, criterionItems[0]);
+		drawRatingBox(g, height/3, 0, width, height/3, criterionItems[1]);
+		drawRatingBox(g, 2*(height/3), 0, width, height/3, criterionItems[2]);
+	}
 
+	private void drawRatingBox(Graphics g, int xpos, int ypos, int width, int height, RatingCriterion criterionItem)
+	{
+		BaseId valueId = bundle.getValueId(criterionItem.getId());
+		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
+		drawRect(g, ypos, xpos, width, height, option.getColor());
+	}
+
+	private void drawRect(Graphics g,  int ypos,int xpos, int width, int height, Color colorToUse)
+	{
+		g.setColor(colorToUse);
+		g.fillRect(ypos, xpos, width, height);
+	}
+
+	
 	protected void firePropertyChange(String propertyName, Object oldValue, Object newValue)
 	{
 		//  Do nothing, as recommended in the javadocs for DefaultTableCellRenderer
@@ -143,7 +193,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 
 
 	ThreatGridPanel threatGridPanel;
-	
+	ThreatRatingBundle bundle;
 	ValueOption valueOption;
 	Font font;
 	int renderingRow;
