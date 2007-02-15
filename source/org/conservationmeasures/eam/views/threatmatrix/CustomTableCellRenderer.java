@@ -33,7 +33,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	public Component getTableCellRendererComponent(JTable table, Object value,
 			boolean isSelected, boolean hasFocus, int row, int column)
 	{
-		bundle = getBundle(row, column);
+		bundle = null;
 		valueOption = (ValueOption)value;
 		renderingRow = row;
 		renderingCol = column;
@@ -74,6 +74,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	{
 		try 
 		{
+			bundle = getBundle(row, column);
 			if(bundle != null && threatGridPanel.getSelectedBundle()!= null)
 			{
 				if(threatGridPanel.getSelectedBundle().equals(bundle))
