@@ -127,19 +127,16 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	protected void paintComponent(Graphics g)
 	{
 		super.paintBorder(g);
-		
-		int widthForRatingBoxes = 0;
 		int height = getHeight();
 
-		boolean optionSelected = true;
+		boolean optionSelected = false;
 		if ( optionSelected &&  (bundle!=null))
 		{
-			widthForRatingBoxes = 10;
-			drawMainCellBody(g, widthForRatingBoxes, height);
-			drawRatingBoxes(g, widthForRatingBoxes, height);
+			drawMainCellBody(g, INNER_CELL_RATING_BOX_WIDTH, height);
+			drawRatingBoxes(g, height);
 		}
 		else
-			drawMainCellBody(g, widthForRatingBoxes, height);
+			drawMainCellBody(g, 0, height);
 	}
 
 	private void drawMainCellBody(Graphics g, int widthForRatingBoxes, int height)
@@ -156,27 +153,27 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	}
 
 	//TODO: it is possible that this should be a loop in case more ratings are added
-	private void drawRatingBoxes(Graphics g, int width, int height)
+	private void drawRatingBoxes(Graphics g, int height)
 	{
 		RatingCriterion[] criterionItems = getThreatRatingFramework().getCriteria();
-		drawRatingBox(g, 0, 0, width, height/3, criterionItems[0]);
-		drawRatingBox(g, height/3, 0, width, height/3, criterionItems[1]);
-		drawRatingBox(g, 2*(height/3), 0, width, height/3, criterionItems[2]);
+		drawRatingBox(g, 0, 0, INNER_CELL_RATING_BOX_WIDTH, height/3, criterionItems[0]);
+		drawRatingBox(g, 0, height/3, INNER_CELL_RATING_BOX_WIDTH, height/3, criterionItems[1]);
+		drawRatingBox(g, 0, 2*(height/3), INNER_CELL_RATING_BOX_WIDTH, height/3, criterionItems[2]);
 	}
 
 	private void drawRatingBox(Graphics g, int xpos, int ypos, int width, int height, RatingCriterion criterionItem)
 	{
 		BaseId valueId = bundle.getValueId(criterionItem.getId());
 		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
-		drawRect(g, ypos, xpos, width, height, option.getColor());
+		drawRect(g, xpos, ypos, width, height, option.getColor());
 		g.setColor(Color.BLACK);
-		g.drawRect(ypos, xpos, width, height);
+		g.drawRect(xpos, ypos, width, height);
 	}
 
-	private void drawRect(Graphics g,  int ypos,int xpos, int width, int height, Color colorToUse)
+	private void drawRect(Graphics g, int xpos, int ypos, int width, int height, Color colorToUse)
 	{
 		g.setColor(colorToUse);
-		g.fillRect(ypos, xpos, width, height);
+		g.fillRect(xpos, ypos, width, height);
 	}
 
 	
@@ -200,7 +197,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		//  Do nothing, as recommended in the javadocs for DefaultTableCellRenderer
 	}
 
-
+	private static final int INNER_CELL_RATING_BOX_WIDTH = 10;
 	ThreatGridPanel threatGridPanel;
 	ThreatRatingBundle bundle;
 	ValueOption valueOption;
