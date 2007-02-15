@@ -133,19 +133,26 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		boolean optionSelected = false;
 		if ( optionSelected &&  (bundle!=null))
 		{
-			widthForRatingBoxes = getWidth()/3;
+			widthForRatingBoxes = 10;
+			drawMainCellBody(g, widthForRatingBoxes, height);
 			drawRatingBoxes(g, widthForRatingBoxes, height);
 		}
-		
+		else
+			drawMainCellBody(g, widthForRatingBoxes, height);
+	}
+
+	private void drawMainCellBody(Graphics g, int widthForRatingBoxes, int height)
+	{
+		// ***do not adjust for summary cells
 		int width = getWidth() - widthForRatingBoxes;
 		drawRect(g, widthForRatingBoxes, 0, width, height, valueOption.getColor());
 	
 		String label = valueOption.getLabel();
 		g.setFont(font);
 		int textHeight = g.getFontMetrics().getAscent();
-		int textWidth = g.getFontMetrics().stringWidth(label)-widthForRatingBoxes;
+		int textWidth = g.getFontMetrics().stringWidth(label);
 		g.setColor(Color.BLACK);
-		g.drawString(label, (width-textWidth)/2, (height-textHeight)/2 + textHeight);
+		g.drawString(label, (width-textWidth)/2 + widthForRatingBoxes, (height-textHeight)/2 + textHeight);
 	}
 
 	//TODO: it is possible that this should be a loop in case more ratings are added
@@ -162,6 +169,8 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		BaseId valueId = bundle.getValueId(criterionItem.getId());
 		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
 		drawRect(g, ypos, xpos, width, height, option.getColor());
+		g.setColor(Color.BLACK);
+		g.drawRect(ypos, xpos, width, height);
 	}
 
 	private void drawRect(Graphics g,  int ypos,int xpos, int width, int height, Color colorToUse)
