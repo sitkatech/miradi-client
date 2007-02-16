@@ -93,6 +93,13 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		gridVisibleCheckBox.addActionListener(this);
 		panel.add(gridVisibleCheckBox);
 
+		
+		panel.add(new UiLabel("Show Ratings in Cell"));
+		cellRatingsVisibleCheckBox = new UiCheckBox();
+		cellRatingsVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
+		cellRatingsVisibleCheckBox.addActionListener(this);
+		panel.add(cellRatingsVisibleCheckBox);
+		
 		return panel;
 	}
 
@@ -121,10 +128,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE, scopeColor);
 
 		mainWindow.setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
+		
+		mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
 
 		try
 		{
-
 			mainWindow.savePreferences();
 		}
 		catch (Exception e)
@@ -195,6 +203,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	UiComboBox targetDropdown;
 	UiComboBox scopeDropdown;
 	UiCheckBox gridVisibleCheckBox; 
+	UiCheckBox cellRatingsVisibleCheckBox;
 
 	static final Color[] interventionColorChoices = {new Color(255, 255, 0), new Color(240, 240, 0), new Color(255, 255, 128)};
 	static final Color[] directThreatColorChoices = {new Color(255, 150, 150), new Color(255, 128, 128), new Color(220, 150, 150), new Color(255, 200, 200)};

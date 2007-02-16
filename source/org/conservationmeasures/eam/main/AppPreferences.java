@@ -91,6 +91,8 @@ public class AppPreferences
 	{
 		if (tag.equals(TAG_GRID_VISIBLE))
 			isGridVisible = state;
+		else if (tag.equals(TAG_CELL_RATINGS_VISIBLE))
+			isCellRatingsVisible = state;
 		else
 			throw new RuntimeException(tag);
 	}
@@ -99,6 +101,8 @@ public class AppPreferences
 	{
 		if (tag.equals(TAG_GRID_VISIBLE))
 			return isGridVisible;
+		else if (tag.equals(TAG_CELL_RATINGS_VISIBLE))
+			return isCellRatingsVisible;
 	
 		throw new RuntimeException(tag);
 	}
@@ -127,6 +131,7 @@ public class AppPreferences
 		json.put(TAG_COLOR_SCOPE, scopeColor);
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
 		json.put(TAG_GRID_VISIBLE, isGridVisible);
+		json.put(TAG_CELL_RATINGS_VISIBLE, isCellRatingsVisible);
 		
 		EnhancedJsonObject taggedIntJson = new EnhancedJsonObject();
 		Iterator iter = taggedIntMap.keySet().iterator();
@@ -152,6 +157,7 @@ public class AppPreferences
 		
 		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, true);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
+		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, false);
 		
 		taggedIntMap = new HashMap();
 		EnhancedJsonObject taggedIntJson = json.optJson(TAG_TAGGED_INTS);
@@ -172,6 +178,7 @@ public class AppPreferences
 	public static final String TAG_COLOR_SCOPE = "ColorScope";
 	public static final String TAG_IS_MAXIMIZED = "IsMaximized";
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
+	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
 	public static final String TAG_TAGGED_INTS = "TaggedInts";
 	
 	private static final Color DEFAULT_TARGET_COLOR = new Color(153, 255, 153);
@@ -188,8 +195,9 @@ public class AppPreferences
 	public Color targetColor;
 	public Color scopeColor;
 	
-	public boolean isGridVisible; 
-	boolean isMaximized;
+	private boolean isGridVisible; 
+	private boolean isCellRatingsVisible;
+	private boolean isMaximized;
 	
 	HashMap taggedIntMap;
 }

@@ -16,7 +16,9 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -37,7 +39,6 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		valueOption = (ValueOption)value;
 		renderingRow = row;
 		renderingCol = column;
-		selected =  hasFocus;
 		setBorders(table, row, column);
 		
 		return this;
@@ -87,6 +88,11 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		return (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
 	}
 	
+	private MainWindow getMainWindow()
+	{
+		return threatGridPanel.getThreatMatrixView().getMainWindow();
+	}
+
 	private ThreatRatingFramework getThreatRatingFramework()
 	{
 		return threatGridPanel.getThreatMatrixView().getThreatRatingFramework();
@@ -118,8 +124,8 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		super.paintBorder(g);
 		int height = getHeight();
 
-		boolean optionSelected = false;
-		if (selected && optionSelected &&  (bundle!=null))
+		boolean isCellRatingVisible = getMainWindow().getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
+		if (isCellRatingVisible &&  (bundle!=null))
 		{
 			drawMainCellBody(g, INNER_CELL_RATING_BOX_WIDTH, height);
 			drawRatingBoxes(g, height);
@@ -127,6 +133,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		else
 			drawMainCellBody(g, 0, height);
 	}
+
 
 	private void drawMainCellBody(Graphics g, int offset, int height)
 	{
@@ -195,7 +202,6 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	}
 
 	private static final int INNER_CELL_RATING_BOX_WIDTH = 10;
-	boolean selected;
 	ThreatGridPanel threatGridPanel;
 	ThreatRatingBundle bundle;
 	ValueOption valueOption;
