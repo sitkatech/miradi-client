@@ -131,7 +131,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	private void drawMainCellBody(Graphics g, int offset, int height)
 	{
 		int width = getWidth() - offset;
-		drawRect(g, offset, 0, width, height, valueOption.getColor());
+		drawSolidRect(g, offset, 0, width, height, valueOption.getColor());
 		drawMainBobyCellText(g, offset, width, height);
 	}
 
@@ -158,17 +158,21 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	{
 		BaseId valueId = bundle.getValueId(criterionItem.getId());
 		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
-		drawRect(g, xpos, ypos, width, height, option.getColor());
-		g.setColor(Color.BLACK);
-		g.drawRect(xpos, ypos, width, height);
+		drawSolidRect(g, xpos, ypos, width, height, option.getColor());
+		drawLineRect(g, xpos, ypos, width, height, Color.BLACK);
 	}
 
-	private void drawRect(Graphics g, int xpos, int ypos, int width, int height, Color colorToUse)
+	private void drawSolidRect(Graphics g, int xpos, int ypos, int width, int height, Color colorToUse)
 	{
 		g.setColor(colorToUse);
 		g.fillRect(xpos, ypos, width, height);
 	}
-
+	
+	private void drawLineRect(Graphics g, int xpos, int ypos, int width, int height, Color colorToUse)
+	{
+		g.setColor(colorToUse);
+		g.drawRect(xpos, ypos, width, height);
+	}
 	
 	protected void firePropertyChange(String propertyName, Object oldValue, Object newValue)
 	{
