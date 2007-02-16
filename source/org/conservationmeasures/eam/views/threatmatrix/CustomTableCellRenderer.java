@@ -43,20 +43,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		return this;
 	}
 
-	private ThreatRatingBundle getBundle(int row, int column)
-	{
-		try
-		{
-			int indirectColumn = threatGridPanel.getThreatMatrixTable().convertColumnIndexToModel(column);
-			return getThreatTableModel().getBundle(row, indirectColumn);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return null;
-		}
-	}
-
+	
 	private void setBorders(JTable table, int row, int column)
 	{
 		if (isOverallRatingCell(table, row, column))
@@ -74,7 +61,9 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	{
 		try 
 		{
-			bundle = getBundle(row, column);
+			int indirectColumn = threatGridPanel.getThreatMatrixTable().convertColumnIndexToModel(column);
+			bundle = getThreatTableModel().getBundle(row, indirectColumn);
+			
 			if(bundle != null && threatGridPanel.getSelectedBundle()!= null)
 			{
 				if(threatGridPanel.getSelectedBundle().equals(bundle))
@@ -139,17 +128,21 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 			drawMainCellBody(g, 0, height);
 	}
 
-	private void drawMainCellBody(Graphics g, int widthForRatingBoxes, int height)
+	private void drawMainCellBody(Graphics g, int offset, int height)
 	{
-		int width = getWidth() - widthForRatingBoxes;
-		drawRect(g, widthForRatingBoxes, 0, width, height, valueOption.getColor());
-	
+		int width = getWidth() - offset;
+		drawRect(g, offset, 0, width, height, valueOption.getColor());
+		drawMainBobyCellText(g, offset, width, height);
+	}
+
+	private void drawMainBobyCellText(Graphics g, int offset, int width, int height)
+	{
 		String label = valueOption.getLabel();
 		g.setFont(font);
 		int textHeight = g.getFontMetrics().getAscent();
 		int textWidth = g.getFontMetrics().stringWidth(label);
 		g.setColor(Color.BLACK);
-		g.drawString(label, (width-textWidth)/2 + widthForRatingBoxes, (height-textHeight)/2 + textHeight);
+		g.drawString(label, (width-textWidth)/2 + offset, (height-textHeight)/2 + textHeight);
 	}
 
 	//TODO: it is possible that this should be a loop in case more ratings are added
