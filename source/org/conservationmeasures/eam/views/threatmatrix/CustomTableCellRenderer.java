@@ -167,8 +167,18 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
 		drawSolidRect(g, xpos, ypos, width, height, option.getColor());
 		drawLineRect(g, xpos, ypos, width, height, Color.BLACK);
+		drawRatingLetter(g,criterionItem, xpos, ypos);
 	}
 
+	//FIXME: need to calculate font position using bounding rectangle of the font
+	private void drawRatingLetter(Graphics g, RatingCriterion criterionItem, int x, int y)
+	{
+		String letter = criterionItem.getLabel().substring(0,1);
+		g.setFont(new Font("", Font.BOLD, 8));
+		g.drawString(letter, x+2, y+10);
+	}
+	
+	
 	private void drawSolidRect(Graphics g, int xpos, int ypos, int width, int height, Color colorToUse)
 	{
 		g.setColor(colorToUse);
