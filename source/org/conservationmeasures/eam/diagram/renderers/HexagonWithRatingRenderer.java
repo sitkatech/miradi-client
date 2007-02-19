@@ -10,8 +10,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
+import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.font.TextLayout;
+import java.awt.geom.Rectangle2D;
+
+import org.martus.swing.Utilities;
 
 public class HexagonWithRatingRenderer extends HexagonRenderer
 {
@@ -41,17 +46,25 @@ public class HexagonWithRatingRenderer extends HexagonRenderer
 		g2.setColor(Color.BLACK);
 		g.drawPolygon(smallHex);
 		
-		drawRatingLetter(g, g2, smallHex);
-	}
-
-	//FIXME: need to calculate font position using bounding rectangle of the font
-	private void drawRatingLetter(Graphics g, Graphics2D g2, Polygon smallHex)
-	{
-		String letter = rating.getLabel().substring(0,1);
-		g2.setFont(new Font("", Font.BOLD, 8));
-		g.drawString(letter, smallHex.xpoints[0]+8, smallHex.ypoints[0]+3);
+		drawRatingLetter(g, g2, smallRect);
 	}
 	
+	private void drawRatingLetter(Graphics g, Graphics2D g2, Rectangle smallRect)
+	{
+		String letter =  rating.getLabel().substring(0,1);
+		g2.setFont(new Font("", Font.BOLD, 8));
+		Rectangle2D p = calcalateCenteredAndCushioned(g2, smallRect, letter);
+		g.drawString(letter, p.getBounds().x,  p.getBounds().y + p.getBounds().height);
+	}
+
+	private Rectangle calcalateCenteredAndCushioned(Graphics2D g2, Rectangle2D graphBounds, String text)
+	{
+		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
+		Rectangle textBounds = textLayout.getBounds().getBounds();
+		Point upperLeftToDrawText = Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
+		textBounds.setLocation(upperLeftToDrawText);
+		return textBounds;
+	}
 
 	private static final int PRIORITY_WIDTH = 20;
 	private static final int PRIORITY_HEIGHT = 10;

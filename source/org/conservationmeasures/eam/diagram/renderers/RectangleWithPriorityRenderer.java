@@ -10,7 +10,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.font.TextLayout;
+import java.awt.geom.Rectangle2D;
+
+import org.martus.swing.Utilities;
 
 public class RectangleWithPriorityRenderer extends RectangleRenderer
 {
@@ -42,14 +47,24 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 		drawRatingLetter(g, g2, smallRect);
 	}
 
-	//FIXME: need to calculate font position using bounding rectangle of the font
+
 	private void drawRatingLetter(Graphics g, Graphics2D g2, Rectangle smallRect)
 	{
 		String letter =  priority.getLabel().substring(0,1);
 		g2.setFont(new Font("", Font.BOLD, 12));
-		g.drawString(letter, smallRect.x+5, smallRect.y+15);
+		Rectangle2D p = calcalateCenteredAndCushioned(g2, smallRect, letter);
+		g.drawString(letter, p.getBounds().x,  p.getBounds().y + p.getBounds().height);
 	}
 
+	private Rectangle calcalateCenteredAndCushioned(Graphics2D g2, Rectangle2D graphBounds, String text)
+	{
+		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
+		Rectangle textBounds = textLayout.getBounds().getBounds();
+		Point upperLeftToDrawText = Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
+		textBounds.setLocation(upperLeftToDrawText);
+		return textBounds;
+	}
+	
 	private static final int PRIORITY_WIDTH = 20;
 	private static final int PRIORITY_HEIGHT = 20;
 }

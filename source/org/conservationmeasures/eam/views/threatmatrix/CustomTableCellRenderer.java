@@ -9,6 +9,11 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.font.TextLayout;
+import java.awt.geom.Rectangle2D;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -23,6 +28,7 @@ import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.martus.swing.Utilities;
 
 class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 {
@@ -166,17 +172,26 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
 		drawSolidRect(g, xpos+1, ypos, width, height, option.getColor());
 		drawLineRect(g, xpos+1, ypos, width, height, Color.BLACK);
-		drawRatingLetter(g,criterionItem, xpos, ypos);
-	}
-
-	//FIXME: need to calculate font position using bounding rectangle of the font
-	private void drawRatingLetter(Graphics g, RatingCriterion criterionItem, int x, int y)
-	{
-		String letter = criterionItem.getLabel().substring(0,1);
-		g.setFont(new Font("", Font.BOLD, 8));
-		g.drawString(letter, x+4, y+10);
+		drawRatingLetter(g,(Graphics2D)g, criterionItem, new Rectangle(xpos+1, ypos, width, height));
 	}
 	
+	
+	private void drawRatingLetter(Graphics g, Graphics2D g2,  RatingCriterion criterionItem, Rectangle smallRect)
+	{
+		String letter = criterionItem.getLabel().substring(0,1);
+		g2.setFont(new Font("", Font.BOLD, 8));
+		Rectangle2D p = calcalateCenteredAndCushioned(g2, smallRect, letter);
+		g.drawString(letter, p.getBounds().x,  p.getBounds().y + p.getBounds().height);
+	}
+
+	private Rectangle calcalateCenteredAndCushioned(Graphics2D g2, Rectangle2D graphBounds, String text)
+	{
+		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
+		Rectangle textBounds = textLayout.getBounds().getBounds();
+		Point upperLeftToDrawText = Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
+		textBounds.setLocation(upperLeftToDrawText);
+		return textBounds;
+	}
 	
 	private void drawSolidRect(Graphics g, int xpos, int ypos, int width, int height, Color colorToUse)
 	{
