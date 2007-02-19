@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -37,6 +38,16 @@ public class EllipseWithPriorityRenderer extends EllipseRenderer
 		g.fillOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		g2.setColor(Color.BLACK);
 		g.drawOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
+		
+		drawRatingLetter(g, g2, smallRect);
+	}
+
+	//FIXME: need to calculate font position using bounding rectangle of the font
+	private void drawRatingLetter(Graphics g, Graphics2D g2, Rectangle smallRect)
+	{
+		String letter = rating.getLabel().substring(0,1);
+		g2.setFont(new Font("", Font.BOLD, 8));
+		g.drawString(letter, smallRect.x+8, smallRect.y+8);
 	}
 
 	private static final int PRIORITY_WIDTH = 20;

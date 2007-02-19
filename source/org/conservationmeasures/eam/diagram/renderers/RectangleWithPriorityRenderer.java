@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -37,6 +38,16 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 		g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		g2.setColor(Color.BLACK);
 		g.drawRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
+		
+		drawRatingLetter(g, g2, smallRect);
+	}
+
+	//FIXME: need to calculate font position using bounding rectangle of the font
+	private void drawRatingLetter(Graphics g, Graphics2D g2, Rectangle smallRect)
+	{
+		String letter =  priority.getLabel().substring(0,1);
+		g2.setFont(new Font("", Font.BOLD, 12));
+		g.drawString(letter, smallRect.x+5, smallRect.y+15);
 	}
 
 	private static final int PRIORITY_WIDTH = 20;

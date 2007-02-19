@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -39,6 +40,16 @@ public class HexagonWithRatingRenderer extends HexagonRenderer
 		g.fillPolygon(smallHex);
 		g2.setColor(Color.BLACK);
 		g.drawPolygon(smallHex);
+		
+		drawRatingLetter(g, g2, smallHex);
+	}
+
+	//FIXME: need to calculate font position using bounding rectangle of the font
+	private void drawRatingLetter(Graphics g, Graphics2D g2, Polygon smallHex)
+	{
+		String letter = rating.getLabel().substring(0,1);
+		g2.setFont(new Font("", Font.BOLD, 8));
+		g.drawString(letter, smallHex.xpoints[0]+8, smallHex.ypoints[0]+3);
 	}
 	
 
