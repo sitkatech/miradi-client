@@ -35,7 +35,6 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	public Component getTableCellRendererComponent(JTable table, Object value,
 			boolean isSelected, boolean hasFocus, int row, int column)
 	{
-		bundle = null;
 		valueOption = (ValueOption)value;
 		renderingRow = row;
 		renderingCol = column;
