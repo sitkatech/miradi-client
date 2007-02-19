@@ -157,7 +157,6 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		g.drawString(label, (width-textWidth)/2 + offset, (height-textHeight)/2 + textHeight);
 	}
 
-	//TODO: it is possible that this should be a loop in case more ratings are added
 	private void drawRatingBoxes(Graphics g, int height)
 	{
 		RatingCriterion[] criterionItems = getThreatRatingFramework().getCriteria();
