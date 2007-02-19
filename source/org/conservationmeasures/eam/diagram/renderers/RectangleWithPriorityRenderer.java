@@ -44,16 +44,16 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 		g2.setColor(Color.BLACK);
 		g.drawRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		
-		drawRatingLetter(g, g2, smallRect);
+		drawRatingLetter(g2, smallRect);
 	}
 
 
-	private void drawRatingLetter(Graphics g, Graphics2D g2, Rectangle smallRect)
+	private void drawRatingLetter(Graphics2D g2, Rectangle smallRect)
 	{
 		String letter =  priority.getLabel().substring(0,1);
 		g2.setFont(new Font("", Font.BOLD, 12));
 		Point p = calcalateStartingXY(g2, smallRect, letter);
-		g.drawString(letter, p.x,  p.y);
+		g2.drawString(letter, p.x,  p.y);
 	}
 
 	private Point calcalateStartingXY(Graphics2D g2, Rectangle2D graphBounds, String text)
