@@ -156,9 +156,9 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	private void drawRatingBoxes(Graphics g, int height)
 	{
 		RatingCriterion[] criterionItems = getThreatRatingFramework().getCriteria();
-		drawRatingBox(g, 0, 0, INNER_CELL_RATING_BOX_WIDTH, height/3, criterionItems[0]);
-		drawRatingBox(g, 0, height/3, INNER_CELL_RATING_BOX_WIDTH, height/3, criterionItems[1]);
-		drawRatingBox(g, 0, 2*(height/3), INNER_CELL_RATING_BOX_WIDTH, height/3, criterionItems[2]);
+		int boxHeight = height/criterionItems.length;
+		for (int i=0; i<criterionItems.length; ++i)
+			drawRatingBox(g, 0, i*boxHeight, INNER_CELL_RATING_BOX_WIDTH, boxHeight, criterionItems[i]);
 	}
 
 	private void drawRatingBox(Graphics g, int xpos, int ypos, int width, int height, RatingCriterion criterionItem)
