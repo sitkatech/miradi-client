@@ -164,8 +164,8 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	{
 		BaseId valueId = bundle.getValueId(criterionItem.getId());
 		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
-		drawSolidRect(g, xpos, ypos, width, height, option.getColor());
-		drawLineRect(g, xpos, ypos, width, height, Color.BLACK);
+		drawSolidRect(g, xpos+1, ypos, width, height, option.getColor());
+		drawLineRect(g, xpos+1, ypos, width, height, Color.BLACK);
 		drawRatingLetter(g,criterionItem, xpos, ypos);
 	}
 
@@ -174,7 +174,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	{
 		String letter = criterionItem.getLabel().substring(0,1);
 		g.setFont(new Font("", Font.BOLD, 8));
-		g.drawString(letter, x+2, y+10);
+		g.drawString(letter, x+4, y+10);
 	}
 	
 	
