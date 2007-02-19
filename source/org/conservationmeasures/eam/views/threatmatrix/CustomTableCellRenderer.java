@@ -180,17 +180,17 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	{
 		String letter = criterionItem.getLabel().substring(0,1);
 		g2.setFont(new Font("", Font.BOLD, 8));
-		Rectangle2D p = calcalateCenteredAndCushioned(g2, smallRect, letter);
-		g.drawString(letter, p.getBounds().x,  p.getBounds().y + p.getBounds().height);
+		Point p = calcalateStartingXY(g2, smallRect, letter);
+		g.drawString(letter, p.x,  p.y);
 	}
 
-	private Rectangle calcalateCenteredAndCushioned(Graphics2D g2, Rectangle2D graphBounds, String text)
+	private Point calcalateStartingXY(Graphics2D g2, Rectangle2D graphBounds, String text)
 	{
 		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
 		Rectangle textBounds = textLayout.getBounds().getBounds();
-		Point upperLeftToDrawText = Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
-		textBounds.setLocation(upperLeftToDrawText);
-		return textBounds;
+		Point p =  Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
+		p.setLocation(p.x, p.y+ textBounds.height);
+		return p;
 	}
 	
 	private void drawSolidRect(Graphics g, int xpos, int ypos, int width, int height, Color colorToUse)
