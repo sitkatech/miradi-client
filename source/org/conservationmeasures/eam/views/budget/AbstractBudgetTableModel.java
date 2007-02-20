@@ -359,7 +359,6 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 			if (! valueAsString.equals(""))
 				units = Double.parseDouble(valueAsString);
 
-			//FIXME budget code - take out daterange
 			if (effort == null)
 				effort = new DateRangeEffort("", units, getDateRange(col));
 
