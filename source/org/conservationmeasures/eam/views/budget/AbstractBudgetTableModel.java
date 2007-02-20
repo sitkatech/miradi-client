@@ -352,7 +352,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		{
 			Assignment assignment = getAssignment(row);
 			DateRangeEffortList effortList = getDateRangeEffortList(assignment);
-			DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[convertColumn(col)]);
+			DateRangeEffort effort = getDateRangeEffort(assignment, getDateRange(col));
 
 			double units = 0;
 			String valueAsString = value.toString().trim();
@@ -361,7 +361,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 
 			//FIXME budget code - take out daterange
 			if (effort == null)
-				effort = new DateRangeEffort("", units, dateRanges[convertColumn(col)]);
+				effort = new DateRangeEffort("", units, getDateRange(col));
 
 			setUnits(assignment, effortList, effort, units);
 		}
@@ -371,7 +371,11 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		}
 	}
 
-		
+	private DateRange getDateRange(int col)
+	{
+		return dateRanges[convertColumn(col)];
+	}
+
 	abstract public boolean isYearlyTotalColumn(int col);
 	
 	abstract public BaseId getAssignmentForRow(int row);
