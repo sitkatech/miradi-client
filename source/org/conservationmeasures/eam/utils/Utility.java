@@ -5,7 +5,14 @@
 */ 
 package org.conservationmeasures.eam.utils;
 
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.font.TextLayout;
+
 import org.conservationmeasures.eam.main.EAM;
+import org.martus.swing.Utilities;
 
 public class Utility
 {
@@ -25,5 +32,15 @@ public class Utility
 		}
 		
 		return newDouble; 
+	}
+	
+	
+	public static void drawStringCentered(Graphics2D g2, String text, Font textFont, Rectangle graphBounds)
+	{
+		g2.setFont(textFont);
+		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
+		Rectangle textBounds = textLayout.getBounds().getBounds();
+		Point p =  Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
+		g2.drawString(text, p.x,  p.y+ textBounds.height);
 	}
 }

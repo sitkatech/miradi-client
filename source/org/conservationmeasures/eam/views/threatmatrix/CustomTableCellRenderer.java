@@ -10,10 +10,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.font.TextLayout;
-import java.awt.geom.Rectangle2D;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -28,7 +25,7 @@ import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
-import org.martus.swing.Utilities;
+import org.conservationmeasures.eam.utils.Utility;
 
 class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 {
@@ -172,25 +169,9 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
 		drawSolidRect(g, xpos+1, ypos, width, height, option.getColor());
 		drawLineRect(g, xpos+1, ypos, width, height, Color.BLACK);
-		drawRatingLetter((Graphics2D)g, option, new Rectangle(xpos+1, ypos, width, height));
-	}
-	
-	
-	private void drawRatingLetter(Graphics2D g2, ValueOption option, Rectangle smallRect)
-	{
+		Font letterFont = new Font("", Font.BOLD, 10);
 		String letter = option.getLabel().substring(0,1);
-		g2.setFont(new Font("", Font.BOLD, 10));
-		Point p = calcalateStartingXY(g2, smallRect, letter);
-		g2.drawString(letter, p.x,  p.y);
-	}
-
-	private Point calcalateStartingXY(Graphics2D g2, Rectangle2D graphBounds, String text)
-	{
-		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
-		Rectangle textBounds = textLayout.getBounds().getBounds();
-		Point p =  Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
-		p.setLocation(p.x, p.y+ textBounds.height);
-		return p;
+		Utility.drawStringCentered((Graphics2D)g, letter, letterFont, new Rectangle(xpos+1, ypos, width, height));
 	}
 	
 	private void drawSolidRect(Graphics g, int xpos, int ypos, int width, int height, Color colorToUse)

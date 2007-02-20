@@ -10,12 +10,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
-import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.font.TextLayout;
-import java.awt.geom.Rectangle2D;
 
-import org.martus.swing.Utilities;
+import org.conservationmeasures.eam.utils.Utility;
 
 public class RectangleWithPriorityRenderer extends RectangleRenderer
 {
@@ -44,26 +41,13 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 		g2.setColor(Color.BLACK);
 		g.drawRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		
-		drawRatingLetter(g2, smallRect);
+	
+		Font letterFont = new Font("", Font.BOLD, 12);
+		String letter = priority.getLabel().substring(0,1);
+		Utility.drawStringCentered(g2, letter, letterFont, smallRect);
 	}
 
 
-	private void drawRatingLetter(Graphics2D g2, Rectangle smallRect)
-	{
-		String letter =  priority.getLabel().substring(0,1);
-		g2.setFont(new Font("", Font.BOLD, 12));
-		Point p = calcalateStartingXY(g2, smallRect, letter);
-		g2.drawString(letter, p.x,  p.y);
-	}
-
-	private Point calcalateStartingXY(Graphics2D g2, Rectangle2D graphBounds, String text)
-	{
-		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
-		Rectangle textBounds = textLayout.getBounds().getBounds();
-		Point p =  Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
-		p.setLocation(p.x, p.y+ textBounds.height);
-		return p;
-	}
 	
 	private static final int PRIORITY_WIDTH = 20;
 	private static final int PRIORITY_HEIGHT = 20;
