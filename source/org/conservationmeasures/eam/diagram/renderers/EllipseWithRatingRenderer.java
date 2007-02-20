@@ -17,7 +17,7 @@ import java.awt.geom.Rectangle2D;
 
 import org.martus.swing.Utilities;
 
-public class EllipseWithPriorityRenderer extends EllipseRenderer
+public class EllipseWithRatingRenderer extends EllipseRenderer
 {
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
