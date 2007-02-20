@@ -136,9 +136,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	}
 	
 
-	public Font getRatingBubbleFont(Graphics2D g2)
+	public void setRatingBubbleFont(Graphics2D g2)
 	{
-		return g2.getFont().deriveFont(9.0f).deriveFont(Font.BOLD);
+		g2.setFont(g2.getFont().deriveFont(9.0f).deriveFont(Font.BOLD));
 	}
 	
 	public void paint(Graphics g1)

@@ -40,7 +40,7 @@ public class EllipseWithRatingRenderer extends EllipseRenderer
 		g2.setColor(Color.BLACK);
 		g.drawOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		
-		g2.setFont(getRatingBubbleFont(g2));
+		setRatingBubbleFont(g2);
 		String letter = rating.getLabel().substring(0,1);
 		Utility.drawStringCentered(g2, letter, smallRect);
 	}

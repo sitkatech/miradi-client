@@ -42,7 +42,7 @@ public class HexagonWithRatingRenderer extends HexagonRenderer
 		g2.setColor(Color.BLACK);
 		g.drawPolygon(smallHex);
 		
-		g2.setFont(getRatingBubbleFont(g2));
+		setRatingBubbleFont(g2);
 		String letter = rating.getLabel().substring(0,1);
 		Utility.drawStringCentered(g2, letter, smallRect);
 	}

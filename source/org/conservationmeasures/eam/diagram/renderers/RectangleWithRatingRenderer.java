@@ -40,7 +40,7 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 		g2.setColor(Color.BLACK);
 		g.drawRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		
-		g2.setFont(getRatingBubbleFont(g2));
+		setRatingBubbleFont(g2);
 		String letter = priority.getLabel().substring(0,1);
 		Utility.drawStringCentered(g2, letter, smallRect);
 	}
