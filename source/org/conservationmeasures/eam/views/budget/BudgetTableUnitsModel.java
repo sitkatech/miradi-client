@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
-import org.conservationmeasures.eam.utils.DateRangeEffort;
 
 public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 {
@@ -70,7 +69,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 			return "Unit Totals";
 	
 		if (isUnitsColumn(col))
-			return dateRanges[convertColumnToMatchDateRangeArray(col)].toString();
+			return dateRanges[convertColumn(col)].toString();
 		
 		return "";
 	}
@@ -91,7 +90,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 			try
 			{
 				effortList = getDateRangeEffortList(getAssignment(row));
-				DateRange dateRange = dateRanges[convertColumnToMatchDateRangeArray(col)];
+				DateRange dateRange = dateRanges[convertColumn(col)];
 				return getUnit(effortList, dateRange);
 			}
 			catch(Exception e)
@@ -129,32 +128,10 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		}
 		
 		if (isUnitsColumn(col))
-		{
-			try
-			{
-				Assignment assignment = getAssignment(row);
-				DateRangeEffortList effortList = getDateRangeEffortList(assignment);
-				DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[convertColumnToMatchDateRangeArray(col)]);
-
-				double units = 0;
-				String valueAsString = value.toString().trim();
-				if (! valueAsString.equals(""))
-					units = Double.parseDouble(valueAsString);
-
-				//FIXME budget code - take out daterange
-				if (effort == null)
-					effort = new DateRangeEffort("", units, dateRanges[convertColumnToMatchDateRangeArray(col)]);
-
-				setUnits(assignment, effortList, effort, units);
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
+			setUnitsForColumn(value, row, col);
 	}
 
-	private int convertColumnToMatchDateRangeArray(int col)
+	public int convertColumn(int col)
 	{
 		return col - UNIT_ROW_HEADER_COLUMN_COUNT;
 	}

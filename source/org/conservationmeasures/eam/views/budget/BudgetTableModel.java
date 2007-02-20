@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
-import org.conservationmeasures.eam.utils.DateRangeEffort;
 
 public class BudgetTableModel extends AbstractBudgetTableModel
 {
@@ -90,7 +89,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			return "Cost Totals";
 		
 		if (isUnitsColumn(col))
-			return dateRanges[covertToUnitsColumn(col)].toString();
+			return dateRanges[convertColumn(col)].toString();
 		
 		return "";
 	}
@@ -121,7 +120,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 				int correctedRow = getCorrectedRow(row - BACK_ONE_ROW);
 				Assignment assignment = getAssignment(correctedRow);
 				DateRangeEffortList effortList = getDateRangeEffortList(assignment);
-				DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
+				DateRange dateRange = dateRanges[convertColumn(col)];
 				ProjectResource currentResource = getCurrentResource(assignmentForRow);
 
 				return getCost(currentResource, effortList, dateRange);
@@ -141,7 +140,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			try
 			{
 				effortList = getDateRangeEffortList(getAssignment(getCorrectedRow(row)));
-				DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
+				DateRange dateRange = dateRanges[convertColumn(col)];
 				return getUnit(effortList, dateRange);
 			}
 			catch(Exception e)
@@ -203,32 +202,10 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		}
 		
 		if (isUnitsColumn(col))
-		{
-			try
-			{
-				Assignment assignment = getAssignment(row);
-				DateRangeEffortList effortList = getDateRangeEffortList(assignment);
-				DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[covertToUnitsColumn(col)]);
-
-				double units = 0;
-				String valueAsString = value.toString().trim();
-				if (! valueAsString.equals(""))
-					units = Double.parseDouble(valueAsString);
-
-				//FIXME budget code - take out daterange
-				if (effort == null)
-					effort = new DateRangeEffort("", units, dateRanges[covertToUnitsColumn(col)]);
-
-				setUnits(assignment, effortList, effort, units);
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
+			setUnitsForColumn(value, row, col);
 	}
 
-	private int covertToUnitsColumn(int col)
+	public int convertColumn(int col)
 	{
 		return (col - (TOTAL_ROW_HEADER_COLUMN_COUNT)) / 2;
 	}

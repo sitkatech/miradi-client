@@ -345,6 +345,32 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		
 		return taskToUse.getAssignmentIdList();
 	}
+	
+	public void setUnitsForColumn(Object value, int row, int col)
+	{
+		try
+		{
+			Assignment assignment = getAssignment(row);
+			DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+			DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[convertColumn(col)]);
+
+			double units = 0;
+			String valueAsString = value.toString().trim();
+			if (! valueAsString.equals(""))
+				units = Double.parseDouble(valueAsString);
+
+			//FIXME budget code - take out daterange
+			if (effort == null)
+				effort = new DateRangeEffort("", units, dateRanges[convertColumn(col)]);
+
+			setUnits(assignment, effortList, effort, units);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
 		
 	abstract public boolean isYearlyTotalColumn(int col);
 	
@@ -362,9 +388,9 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	
 	abstract public int getFundingSourceColumnIndex();
 	
-	//abstract public void setTask(Task taskToUse);
+	abstract public int convertColumn(int col);
 	
-//	abstract public void dataWasChanged();
+	abstract public Assignment getAssignment(int row);
 	
 	private static final int RESOURCES_COLUMN_INDEX = 0;
 	private static final int COST_PER_UNIT_COLUMN_INDEX = 4;	
