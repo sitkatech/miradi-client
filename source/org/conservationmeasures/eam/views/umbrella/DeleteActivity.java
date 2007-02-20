@@ -117,7 +117,8 @@ public class DeleteActivity extends ObjectsDoer
 			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Task.TAG_SUBTASK_IDS, task.getId());
 
 		commandsToDeleteTasks.add(commandSetObjectData);
-		task.createDeleteSelfAndSubtasksCommands(project, commandsToDeleteTasks);
+		Vector returnedDeleteTaskCommands = task.getDeleteSelfAndSubtasksCommands(project);
+		commandsToDeleteTasks.addAll(returnedDeleteTaskCommands);
 		
 		return (Command[])commandsToDeleteTasks.toArray(new Command[0]);
 	}

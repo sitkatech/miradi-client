@@ -117,7 +117,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		for (int i  = 0; i < subtaskList.size(); i++)
 		{
 			Task taskToDelete = (Task)project.findObject(ObjectType.TASK, subtaskList.get(i));
-			taskToDelete.createDeleteSelfAndSubtasksCommands(project, commands);
+			Vector returnedDeleteCommands = taskToDelete.getDeleteSelfAndSubtasksCommands(project);
+			
+			commands.addAll(returnedDeleteCommands);
 		}
 		
 		return commands;

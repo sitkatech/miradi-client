@@ -45,19 +45,24 @@ public class Task extends EAMBaseObject
 		return jsonObject;
 	}
 	
-	public void createDeleteSelfAndSubtasksCommands(Project project, Vector deleteIds) throws Exception
+	public Vector getDeleteSelfAndSubtasksCommands(Project project) throws Exception
 	{
+		Vector deleteIds = new Vector();
 		deleteIds.add(new CommandSetObjectData(getType(), getId(), Task.TAG_SUBTASK_IDS, ""));
 		int subTaskCount = getSubtaskCount();
 		for (int index = 0; index < subTaskCount; index++)
 		{
 			BaseId subTaskId = getSubtaskId(index);
 			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
-			subTask.createDeleteSelfAndSubtasksCommands(project,  deleteIds);
+			Vector returnedDeleteCommands = subTask.getDeleteSelfAndSubtasksCommands(project);
+			deleteIds.addAll(returnedDeleteCommands);
+			
 		}
 		
 		deleteIds.addAll(Arrays.asList(createCommandsToClear()));
 		deleteIds.add(new CommandDeleteObject(getType(), getId()));
+		
+		return deleteIds;
 	}
 
 	public int getType()
