@@ -40,6 +40,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -134,6 +135,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return this;
 	}
 	
+
+	public Font getRatingBubbleFont(Graphics2D g2)
+	{
+		return g2.getFont().deriveFont(9.0f).deriveFont(Font.BOLD);
+	}
 	
 	public void paint(Graphics g1)
 	{

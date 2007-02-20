@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -41,8 +40,7 @@ public class EllipseWithRatingRenderer extends EllipseRenderer
 		g2.setColor(Color.BLACK);
 		g.drawOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		
-		Font letterFont = g2.getFont().deriveFont(8.0f).deriveFont(Font.BOLD);
-		g2.setFont(letterFont);
+		g2.setFont(getRatingBubbleFont(g2));
 		String letter = rating.getLabel().substring(0,1);
 		Utility.drawStringCentered(g2, letter, smallRect);
 	}
