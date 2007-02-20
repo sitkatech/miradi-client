@@ -124,6 +124,27 @@ public class WizardManager
 		return setStep(name, currentStepName);
 	}
 	
+	//TODO: To support view that are not using wizard fraimwork: need to convert them
+	public String setStep(Class step) throws Exception
+	{
+		String name = stripJumpPrefix(step);
+		SkeletonWizardStep newStepClass = findStep(name);
+		String viewNameNew = newStepClass.getWizard().getView().cardName();
+		MainWindow mainWindow = newStepClass.getWizard().getMainWindow();
+		try
+		{
+			mainWindow.getProject().executeCommand(new CommandBeginTransaction());
+			mainWindow.saveSplitterLocation(viewNameNew, ViewSplitPane.SPLITTER_MIDDLE_LOCATION);
+			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
+			newStepClass.getWizard().jump(newStepClass.getClass());
+		}
+		finally
+		{
+			mainWindow.getProject().executeCommand(new CommandEndTransaction());
+		}
+		return "";
+	}
+	
 	public String setStep(String newStep, String currentStepName) throws Exception
 	{	
 		SkeletonWizardStep currentStepClass = findStep(currentStepName);
