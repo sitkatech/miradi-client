@@ -6,7 +6,9 @@
 package org.conservationmeasures.eam.views.budget;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.AccountingCodeId;
@@ -52,10 +54,16 @@ public class AddAssignmentDoer extends ObjectsDoer
 	{
 		Task selectedTask = (Task)project.findObject(ObjectType.TASK, getSelectedIds()[0]);
 		
+		project.executeCommand(new CommandBeginTransaction());
+		
 		CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT, createExtraInfo(project, selectedTask));
 		project.executeCommand(createAssignment);
+		
 		Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedTask, Task.TAG_ASSIGNMENT_IDS, createAssignment.getCreatedId());
 		project.executeCommand(appendAssignment);
+		
+		project.executeCommand(new CommandEndTransaction());
+		
 	}
 	
 	private CreateAssignmentParameter createExtraInfo(Project project, Task selectedTask)
