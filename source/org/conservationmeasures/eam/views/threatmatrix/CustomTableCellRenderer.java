@@ -172,13 +172,13 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
 		drawSolidRect(g, xpos+1, ypos, width, height, option.getColor());
 		drawLineRect(g, xpos+1, ypos, width, height, Color.BLACK);
-		drawRatingLetter((Graphics2D)g, criterionItem, new Rectangle(xpos+1, ypos, width, height));
+		drawRatingLetter((Graphics2D)g, option, new Rectangle(xpos+1, ypos, width, height));
 	}
 	
 	
-	private void drawRatingLetter(Graphics2D g2,  RatingCriterion criterionItem, Rectangle smallRect)
+	private void drawRatingLetter(Graphics2D g2, ValueOption option, Rectangle smallRect)
 	{
-		String letter = criterionItem.getLabel().substring(0,1);
+		String letter = option.getLabel().substring(0,1);
 		g2.setFont(new Font("", Font.BOLD, 8));
 		Point p = calcalateStartingXY(g2, smallRect, letter);
 		g2.drawString(letter, p.x,  p.y);
