@@ -10,6 +10,7 @@ import java.util.Hashtable;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.budget.BudgetView;
@@ -130,18 +131,7 @@ public class WizardManager
 		String name = stripJumpPrefix(step);
 		SkeletonWizardStep newStepClass = findStep(name);
 		String viewNameNew = newStepClass.getWizard().getView().cardName();
-		MainWindow mainWindow = newStepClass.getWizard().getMainWindow();
-		try
-		{
-			mainWindow.getProject().executeCommand(new CommandBeginTransaction());
-			mainWindow.saveSplitterLocation(viewNameNew, ViewSplitPane.SPLITTER_MIDDLE_LOCATION);
-			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
-			newStepClass.getWizard().jump(newStepClass.getClass());
-		}
-		finally
-		{
-			mainWindow.getProject().executeCommand(new CommandEndTransaction());
-		}
+		doJump(newStepClass, newStepClass, viewNameNew);
 		return "";
 	}
 	
@@ -156,28 +146,33 @@ public class WizardManager
 			return currentStepName;
 		
 		String viewNameNew = newStepClass.getWizard().getView().cardName();
-	
-		//FIXME: view switch should not happen here
+
 		if (!viewNameNew.equals(viewNameCur))
 		{
-			MainWindow mainWindow = currentStepClass.getWizard().getMainWindow();
-			try
-			{
-				mainWindow.getProject().executeCommand(new CommandBeginTransaction());
-				mainWindow.saveSplitterLocation(viewNameNew, ViewSplitPane.SPLITTER_MIDDLE_LOCATION);
-				mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
-				newStepClass.getWizard().jump(newStepClass.getClass());
-			}
-			finally
-			{
-				mainWindow.getProject().executeCommand(new CommandEndTransaction());
-			}
+			doJump(currentStepClass, newStepClass, viewNameNew);
 			return currentStepName;
 		}
 
 		newStepClass.refresh();
 		newStepClass.getWizard().setContents(newStepClass);
 		return newStep;
+	}
+
+	//FIXME: view switch should not happen here
+	private void doJump(SkeletonWizardStep currentStepClass, SkeletonWizardStep newStepClass, String viewNameNew) throws CommandFailedException, Exception
+	{
+		MainWindow mainWindow = currentStepClass.getWizard().getMainWindow();
+		try
+		{
+			mainWindow.getProject().executeCommand(new CommandBeginTransaction());
+			mainWindow.saveSplitterLocation(viewNameNew, ViewSplitPane.SPLITTER_MIDDLE_LOCATION);
+			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
+			newStepClass.getWizard().jump(newStepClass.getClass());
+		}
+		finally
+		{
+			mainWindow.getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 	
 	public void createNoProjectStepEntries(NoProjectWizardPanel panel) throws Exception
