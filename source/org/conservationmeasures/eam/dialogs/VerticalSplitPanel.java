@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 
 abstract public class VerticalSplitPanel extends ModelessDialogPanel
 {
-	//TODO using the splitter name should not longer be passed in, instead getsplitterDescription is being used
 	public VerticalSplitPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, Component top, Component bottom)
 	{
 		this(splitPositionSaverToUse, new BorderLayout());
