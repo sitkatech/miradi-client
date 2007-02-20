@@ -9,7 +9,7 @@ import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
-import org.conservationmeasures.eam.diagram.renderers.RectangleWithPriorityRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RectangleWithRatingRenderer;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
@@ -44,5 +44,5 @@ public class RectangleFactorView extends FactorView
 		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(p, getRectangleWithoutAnnotations());
 	}
 	
-	protected static RectangleRenderer rectangleRenderer = new RectangleWithPriorityRenderer();
+	protected static RectangleRenderer rectangleRenderer = new RectangleWithRatingRenderer();
 }

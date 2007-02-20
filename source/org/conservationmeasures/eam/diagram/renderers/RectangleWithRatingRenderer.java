@@ -14,7 +14,7 @@ import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.utils.Utility;
 
-public class RectangleWithPriorityRenderer extends RectangleRenderer
+public class RectangleWithRatingRenderer extends RectangleRenderer
 {
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
