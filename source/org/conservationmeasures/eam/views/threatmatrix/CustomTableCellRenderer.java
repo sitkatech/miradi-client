@@ -169,9 +169,10 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		ValueOption option = getThreatRatingFramework().getValueOption(valueId);
 		drawSolidRect(g, xpos+1, ypos, width, height, option.getColor());
 		drawLineRect(g, xpos+1, ypos, width, height, Color.BLACK);
-		Font letterFont = new Font("", Font.BOLD, 10);
+		
+		g.setFont( new Font("", Font.BOLD, 10));
 		String letter = option.getLabel().substring(0,1);
-		Utility.drawStringCentered((Graphics2D)g, letter, letterFont, new Rectangle(xpos+1, ypos, width, height));
+		Utility.drawStringCentered((Graphics2D)g, letter, new Rectangle(xpos+1, ypos, width, height));
 	}
 	
 	private void drawSolidRect(Graphics g, int xpos, int ypos, int width, int height, Color colorToUse)

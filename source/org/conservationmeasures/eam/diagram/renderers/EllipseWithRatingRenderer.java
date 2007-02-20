@@ -41,9 +41,9 @@ public class EllipseWithRatingRenderer extends EllipseRenderer
 		g2.setColor(Color.BLACK);
 		g.drawOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		
-		Font letterFont = new Font("", Font.BOLD, 8);
+		g2.setFont(new Font("", Font.BOLD, 8));
 		String letter = rating.getLabel().substring(0,1);
-		Utility.drawStringCentered(g2, letter, letterFont, smallRect);
+		Utility.drawStringCentered(g2, letter, smallRect);
 	}
 
 	

@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.utils;
 
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -35,9 +34,8 @@ public class Utility
 	}
 	
 	
-	public static void drawStringCentered(Graphics2D g2, String text, Font textFont, Rectangle graphBounds)
+	public static void drawStringCentered(Graphics2D g2, String text, Rectangle graphBounds)
 	{
-		g2.setFont(textFont);
 		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
 		Rectangle textBounds = textLayout.getBounds().getBounds();
 		Point p =  Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
