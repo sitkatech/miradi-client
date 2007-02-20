@@ -70,7 +70,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 			return "Unit Totals";
 	
 		if (isUnitsColumn(col))
-			return dateRanges[convertColumnToMatchDataRangeArray(col)].toString();
+			return dateRanges[convertColumnToMatchDateRangeArray(col)].toString();
 		
 		return "";
 	}
@@ -91,7 +91,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 			try
 			{
 				effortList = getDateRangeEffortList(getAssignment(row));
-				DateRange dateRange = dateRanges[convertColumnToMatchDataRangeArray(col)];
+				DateRange dateRange = dateRanges[convertColumnToMatchDateRangeArray(col)];
 				return getUnit(effortList, dateRange);
 			}
 			catch(Exception e)
@@ -134,7 +134,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 			{
 				Assignment assignment = getAssignment(row);
 				DateRangeEffortList effortList = getDateRangeEffortList(assignment);
-				DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[convertColumnToMatchDataRangeArray(col)]);
+				DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[convertColumnToMatchDateRangeArray(col)]);
 
 				double units = 0;
 				String valueAsString = value.toString().trim();
@@ -143,7 +143,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 
 				//FIXME budget code - take out daterange
 				if (effort == null)
-					effort = new DateRangeEffort("", units, dateRanges[convertColumnToMatchDataRangeArray(col)]);
+					effort = new DateRangeEffort("", units, dateRanges[convertColumnToMatchDateRangeArray(col)]);
 
 				setUnits(assignment, effortList, effort, units);
 			}
@@ -154,7 +154,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		}
 	}
 
-	private int convertColumnToMatchDataRangeArray(int col)
+	private int convertColumnToMatchDateRangeArray(int col)
 	{
 		return col - UNIT_ROW_HEADER_COLUMN_COUNT;
 	}
