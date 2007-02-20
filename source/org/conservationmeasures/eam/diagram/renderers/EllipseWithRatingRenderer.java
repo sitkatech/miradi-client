@@ -22,11 +22,11 @@ public class EllipseWithRatingRenderer extends EllipseRenderer
 		
 		Graphics2D g2 = (Graphics2D)g;
 		Paint oldPaint = g2.getPaint();
-		drawPriority(g, rect, g2);
+		drawRating(g, rect, g2);
 		g2.setPaint(oldPaint);
 	}
 	
-	void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
+	void drawRating(Graphics g, Rectangle rect, Graphics2D g2) 
 	{
 		if(rating == null || rating.getCode().length() == 0)
 			return;
