@@ -170,7 +170,8 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		drawSolidRect(g, xpos+1, ypos, width, height, option.getColor());
 		drawLineRect(g, xpos+1, ypos, width, height, Color.BLACK);
 		
-		g.setFont( new Font("", Font.BOLD, 10));
+		Font letterFont = g.getFont().deriveFont(10.0f).deriveFont(Font.BOLD);
+		g.setFont(letterFont);
 		String letter = option.getLabel().substring(0,1);
 		Utility.drawStringCentered((Graphics2D)g, letter, new Rectangle(xpos+1, ypos, width, height));
 	}

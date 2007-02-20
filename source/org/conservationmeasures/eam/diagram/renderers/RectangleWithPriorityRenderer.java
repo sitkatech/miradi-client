@@ -41,7 +41,8 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 		g2.setColor(Color.BLACK);
 		g.drawRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		
-		g2.setFont(new Font("", Font.BOLD, 12));
+		Font letterFont = g2.getFont().deriveFont(9.0f).deriveFont(Font.BOLD);
+		g2.setFont(letterFont);
 		String letter = priority.getLabel().substring(0,1);
 		Utility.drawStringCentered(g2, letter, smallRect);
 	}
