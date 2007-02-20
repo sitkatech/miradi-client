@@ -179,7 +179,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	private void drawRatingLetter(Graphics2D g2, ValueOption option, Rectangle smallRect)
 	{
 		String letter = option.getLabel().substring(0,1);
-		g2.setFont(new Font("", Font.BOLD, 8));
+		g2.setFont(new Font("", Font.BOLD, 10));
 		Point p = calcalateStartingXY(g2, smallRect, letter);
 		g2.drawString(letter, p.x,  p.y);
 	}
