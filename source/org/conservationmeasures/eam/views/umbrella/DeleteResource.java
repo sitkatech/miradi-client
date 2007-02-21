@@ -30,14 +30,8 @@ public class DeleteResource extends ObjectsDoer
 		
 		ProjectResource resource = (ProjectResource)getObjects()[0];
 		BaseId idToRemove = resource.getId();
-		
-		Vector dialogText = new Vector();
-		
-		// FIXME budget code - Needs to look in Assignments
-//		Task[] tasksThatUseThisResource = getProject().findTasksThatUseThisResource(idToRemove);
-//		if(tasksThatUseThisResource.length > 0)
-//			dialogText.add("This resource is assigned to one or more tasks.");
 
+		Vector dialogText = new Vector();
 		dialogText.add("\nAre you sure you want to delete this resource?");
 
 		String[] buttons = {"Yes", "No", };
