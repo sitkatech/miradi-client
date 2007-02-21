@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -45,10 +46,12 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 		Utility.drawStringCentered(g2, letter, smallRect);
 	}
 
-	int getInsetDimensionWidth()
+	
+	Dimension getInsetDimension()
 	{
-		return PRIORITY_WIDTH;
+		return new Dimension(PRIORITY_WIDTH, 0);
 	}
+
 	
 	private static final int PRIORITY_WIDTH = 20;
 	private static final int PRIORITY_HEIGHT = 20;
