@@ -14,7 +14,14 @@ public class PossibleTeamMembersPanel extends ResourcePoolManagementPanel
 	{
 		super(mainWindowToUse.getProject(), mainWindowToUse, mainWindowToUse.getActions(), OVERVIEW_TEXT);
 	}
+	
+	public String getSplitterDescription()
+	{
+		return getPanelDescription() + SPLITTER_TAG;
+	}
 
+	final static String SPLITTER_TAG = "Splitter";
+	
 	final static String OVERVIEW_TEXT = 
 		EAM.text("<html>" +
 				"<p>" +

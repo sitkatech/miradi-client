@@ -91,6 +91,7 @@ public class SummaryView extends TabbedView
 		PossibleTeamMembersPanel panel = new PossibleTeamMembersPanel(getMainWindow());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription());
 		showFloatingPropertiesDialog(dlg);
+		panel.updateSplitterLocation();
 	}
 	
 	private void addSummaryDoersToMap()
