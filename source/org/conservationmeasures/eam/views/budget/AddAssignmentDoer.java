@@ -54,16 +54,19 @@ public class AddAssignmentDoer extends ObjectsDoer
 	{
 		Task selectedTask = (Task)project.findObject(ObjectType.TASK, getSelectedIds()[0]);
 		
-		project.executeCommand(new CommandBeginTransaction());
-		
-		CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT, createExtraInfo(project, selectedTask));
-		project.executeCommand(createAssignment);
-		
-		Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedTask, Task.TAG_ASSIGNMENT_IDS, createAssignment.getCreatedId());
-		project.executeCommand(appendAssignment);
-		
-		project.executeCommand(new CommandEndTransaction());
-		
+		try
+		{
+			project.executeCommand(new CommandBeginTransaction());
+			CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT, createExtraInfo(project, selectedTask));
+			project.executeCommand(createAssignment);
+
+			Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedTask, Task.TAG_ASSIGNMENT_IDS, createAssignment.getCreatedId());
+			project.executeCommand(appendAssignment);
+		}
+		finally 
+		{
+			project.executeCommand(new CommandEndTransaction());	
+		}
 	}
 	
 	private CreateAssignmentParameter createExtraInfo(Project project, Task selectedTask)
