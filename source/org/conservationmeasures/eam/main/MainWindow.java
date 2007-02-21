@@ -47,6 +47,7 @@ import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
+import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
@@ -107,6 +108,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		imagesView = new ImagesView(this);
 		strategicPlanView = new StrategicPlanView(this);
 		monitoringView = new MonitoringView(this);
+		targetViabilityView = new TargetViabilityView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -121,6 +123,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(imagesView, imagesView.cardName());
 		viewHolder.add(strategicPlanView, strategicPlanView.cardName());
 		viewHolder.add(monitoringView, monitoringView.cardName());
+		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
+		
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -356,6 +360,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setCurrentView(strategicPlanView);
 		else if(viewName.equals(monitoringView.cardName()))
 			setCurrentView(monitoringView);
+		else if (viewName.equals(targetViabilityView.cardName()))
+			setCurrentView(targetViabilityView);
 		else
 		{
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
@@ -504,6 +510,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private ImagesView imagesView;
 	private StrategicPlanView strategicPlanView;
 	private TabbedView monitoringView;
+	private TargetViabilityView targetViabilityView;
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;

@@ -649,6 +649,8 @@ public class Project
 			IMAGES_VIEW_NAME,
 			STRATEGIC_PLAN_VIEW_NAME,
 			MONITORING_VIEW_NAME,
+			TARGET_VIABILITY_NAME,
+			
 		};
 	}
 	
@@ -955,6 +957,7 @@ public class Project
 	public static final String NO_PROJECT_VIEW_NAME = "NoProject";
 	public static final String DIAGRAM_VIEW_NAME = "Diagram";
 	public static final String SUMMARY_VIEW_NAME = "Summary";
+	public static final String TARGET_VIABILITY_NAME = "Target Viability";
 
 	public static final String DEFAULT_VIEW_NAME = SUMMARY_VIEW_NAME;
 	

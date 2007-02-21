@@ -75,6 +75,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
 import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.views.ActionViewSummary;
+import org.conservationmeasures.eam.actions.views.ActionViewTargetViability;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -134,6 +135,7 @@ public class Actions
 		registerAction(new ActionViewImages(mainWindow));
 		registerAction(new ActionViewSchedule(mainWindow));
 		registerAction(new ActionViewMonitoring(mainWindow));
+		registerAction(new ActionViewTargetViability(mainWindow));
 		
 		registerAction(new ActionConfigureLayers(mainWindow));
 		registerAction(new ActionShowSelectedChainMode(mainWindow));

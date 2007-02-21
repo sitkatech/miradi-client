@@ -14,13 +14,14 @@ import javax.swing.JComboBox;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
-import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
+import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.views.ActionViewSummary;
+import org.conservationmeasures.eam.actions.views.ActionViewTargetViability;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 
@@ -48,6 +49,7 @@ public class ViewSwitcher extends JComboBox
 			actions.get(ActionViewSchedule.class),
 			actions.get(ActionViewMap.class),
 			actions.get(ActionViewImages.class),
+			actions.get(ActionViewTargetViability.class),
 
 		};
 		return views;

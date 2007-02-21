@@ -59,6 +59,8 @@ import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProj
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineTeamMembers;
+import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
@@ -116,6 +118,9 @@ public class WizardManager
 		
 		if (currentView.equals(NoProjectView.getViewName()))
 			createNoProjectStepEntries((NoProjectWizardPanel)panel);
+		
+		if (currentView.equals(TargetViabilityView.getViewName()))
+			createTargetViabilityStepEntries(panel);
 	}
 	
 	
@@ -207,6 +212,11 @@ public class WizardManager
 	public void createScheduleStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new ScheduleOverviewStep(panel));
+	}
+	
+	public void createTargetViabilityStepEntries(WizardPanel panel)
+	{
+		createStepEntry(new TargetViabilityOverviewStep(panel));
 	}
 	
 	public void createSummaryStepEntries(WizardPanel panel)
