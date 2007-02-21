@@ -138,7 +138,7 @@ public class ThreatGridPanel extends JPanel
 	
 	public final static int ABOUT_ONE_LINE = 20;
 	public final static int ROW_HEIGHT = 2 * ABOUT_ONE_LINE;
-	public final static int ABOUT_ONE_INCH = 72;
+	public final static int ABOUT_ONE_INCH = 82;
 	public final static int LEFTMOST_COLUMN_WIDTH = 2 * ABOUT_ONE_INCH;
 	public final static int DEFAULT_COLUMN_WIDTH = ABOUT_ONE_INCH;
 	

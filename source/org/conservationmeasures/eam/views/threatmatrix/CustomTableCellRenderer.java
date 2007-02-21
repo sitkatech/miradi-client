@@ -208,7 +208,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		//  Do nothing, as recommended in the javadocs for DefaultTableCellRenderer
 	}
 
-	private static final int INNER_CELL_RATING_BOX_WIDTH = 12;
+	private static final int INNER_CELL_RATING_BOX_WIDTH = 20;
 	ThreatGridPanel threatGridPanel;
 	ThreatRatingBundle bundle;
 	ValueOption valueOption;
