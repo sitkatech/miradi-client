@@ -49,10 +49,10 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 	
 	Dimension getInsetDimension()
 	{
-		return new Dimension(PRIORITY_WIDTH, 0);
+		return new Dimension(0, PRIORITY_HEIGHT);
 	}
 
 	
 	private static final int PRIORITY_WIDTH = 20;
-	private static final int PRIORITY_HEIGHT = 20;
+	private static final int PRIORITY_HEIGHT = 10;
 }
