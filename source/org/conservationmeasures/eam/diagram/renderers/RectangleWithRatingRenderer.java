@@ -45,7 +45,10 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 		Utility.drawStringCentered(g2, letter, smallRect);
 	}
 
-
+	int getInsetDimensionWidth()
+	{
+		return PRIORITY_WIDTH;
+	}
 	
 	private static final int PRIORITY_WIDTH = 20;
 	private static final int PRIORITY_HEIGHT = 20;

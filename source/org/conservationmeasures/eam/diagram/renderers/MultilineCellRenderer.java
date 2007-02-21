@@ -80,8 +80,8 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			fillShape(g2, rect, getFillColor());
 		}
 		
-		int xInset = getInsetDimension().width;
-		int yInset = getInsetDimension().height;
+		int xInset = getInsetDimensionWidth();
+		int yInset = getInsetDimensionHeight();
 		label.setBorder(new EmptyBorder(yInset, xInset, yInset, xInset));
 		label.setSize(getSize());
 		label.setHorizontalAlignment(JLabel.CENTER);
@@ -250,9 +250,14 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		return JLabel.TOP;
 	}
 	
-	Dimension getInsetDimension()
+	int getInsetDimensionWidth()
 	{
-		return new Dimension(0, 0);
+		return 0;
+	}
+	
+	int getInsetDimensionHeight()
+	{
+		return 0;
 	}
 	
 	public void fillShape(Graphics g, Rectangle rect, Color color)
