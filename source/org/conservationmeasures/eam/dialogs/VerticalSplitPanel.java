@@ -14,6 +14,7 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
+import org.conservationmeasures.eam.views.umbrella.ThinNonOneTouchExpandableViewSplitPane;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 
 abstract public class VerticalSplitPanel extends ModelessDialogPanel
@@ -39,7 +40,7 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 	{
 		JScrollPane propertiesScroll = new JScrollPane(bottom);
 		
-		splitter = new ViewSplitPane(this, splitPositionSaver, splitterName, top, propertiesScroll );
+		splitter = new ThinNonOneTouchExpandableViewSplitPane(this, splitPositionSaver, splitterName, top, propertiesScroll );
 		add(splitter, BorderLayout.CENTER);
 	}
 	
