@@ -38,23 +38,10 @@ public class ImporFromUrlZippedProjectFileDoer
 			File newFile = new File(homeDirectory,getFileNameWithoutExtension(remoteFile.getFile()));
 			String newName = getFileNameWithoutExtension(new File(remoteFile.getFile()).getName());
 			
-			if(ProjectServer.isExistingProject(newFile))
+			String errorText = validateNewProject(mainWindow, newFile, newName);
+			if (errorText.length()>0)
 			{
-				EAM.notifyDialog(EAM.text("Project by this name already exists, can not import."));
-				return;
-			}
-			
-			if (!mainWindow.getProject().isValidProjectFilename(newName))
-			{
-				String text = "Invalid project name, can not import:" + newName;
-				EAM.notifyDialog(EAM.text(text));
-				return;
-			}
-			
-			if(newFile.exists())
-			{
-				String text = EAM.text("Cannot import over an existing file or directory: ") + newFile.getAbsolutePath();
-				EAM.notifyDialog(EAM.text(text));
+				EAM.notifyDialog(EAM.text(errorText));
 				return;
 			}
 			
@@ -72,6 +59,21 @@ public class ImporFromUrlZippedProjectFileDoer
 		{
 			cleanUp(outputStream, inputStream, tempDir);
 		}
+	}
+
+	//TODO: This code is used by several importes , rename and copy routines and should be made common
+	private String validateNewProject(MainWindow mainWindow, File newFile, String newName)
+	{
+		if(ProjectServer.isExistingProject(newFile))
+			return  "Project by this name already exists, can not import:" + newName;
+		
+		if (!mainWindow.getProject().isValidProjectFilename(newName))
+			return "Invalid project name, can not import:" + newName;
+		
+		if(newFile.exists())
+			return "Cannot import over an existing file or directory:" + newName;
+		
+		return "";
 	}
 	
 	public void copy(InputStream inputStream, OutputStream outputStream) throws Exception
