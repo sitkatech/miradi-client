@@ -9,9 +9,9 @@ import java.awt.Component;
 
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
-public class ThinNonOneTouchExpandableViewSplitPane extends ViewSplitPane
+public class ManagementPanelSplitPane extends ViewSplitPane
 {
-	public ThinNonOneTouchExpandableViewSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel)
+	public ManagementPanelSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel)
 	{
 		super(componentSplitted, splitPositionSaverToUse, splitterNameToUse, topPanel, bottomPanel);
 		setOneTouchExpandable(false);
