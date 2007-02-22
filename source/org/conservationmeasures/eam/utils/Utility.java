@@ -9,6 +9,9 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.font.TextLayout;
+import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.Utilities;
@@ -41,4 +44,29 @@ public class Utility
 		Point p =  Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
 		g2.drawString(text, p.x,  p.y+ textBounds.height);
 	}
+	
+
+	static public void copy(InputStream inputStream, OutputStream outputStream) throws Exception
+	{
+		byte[] buffer = new byte[1024];
+		int numRead;
+		long numWritten = 0;
+		while ((numRead = inputStream.read(buffer)) != -1) 
+		{
+			outputStream.write(buffer, 0, numRead);
+			numWritten += numRead;
+		}
+	}
+	
+	
+	static public String getFileNameWithoutExtension(String name)
+	{
+		String fileName = new File(name).getName();
+		int lastDotAt = fileName.lastIndexOf('.');
+		if(lastDotAt < 0)
+			return fileName;
+		
+		return fileName.substring(0, lastDotAt);
+	}
+	
 }

@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
+import org.conservationmeasures.eam.utils.Utility;
 import org.martus.util.DirectoryUtils;
 
 public class ImportFromUrlZippedProjectFileDoer 
@@ -32,7 +33,7 @@ public class ImportFromUrlZippedProjectFileDoer
 		{
 			tempDir = File.createTempFile(TEMP_FILE_NAME, null);
 			URL remoteFile = new URL(remotePath);
-			String newName = getFileNameWithoutExtension(remoteFile.getFile());
+			String newName = Utility.getFileNameWithoutExtension(remoteFile.getFile());
 			String errorText = Project.validateNewProject(newName);
 			if (errorText.length()>0)
 			{
@@ -43,7 +44,7 @@ public class ImportFromUrlZippedProjectFileDoer
 			
 			outputStream = new BufferedOutputStream(new FileOutputStream(tempDir));
 			inputStream = remoteFile.openConnection().getInputStream();
-			copy(inputStream, outputStream);
+			Utility.copy(inputStream, outputStream);
 			ProjectUnzipper.unzipToProjectDirectory(tempDir, EAM.getHomeDirectory(), newName);
 			EAM.notifyDialog(EAM.text("Import Completed"));
 			
@@ -58,32 +59,6 @@ public class ImportFromUrlZippedProjectFileDoer
 		{
 			cleanUp(outputStream, inputStream, tempDir);
 		}
-	}
-
-
-	
-	//TODO: this is a buffered stream copy method, it should moved to utils
-	static private void copy(InputStream inputStream, OutputStream outputStream) throws Exception
-	{
-		byte[] buffer = new byte[1024];
-		int numRead;
-		long numWritten = 0;
-		while ((numRead = inputStream.read(buffer)) != -1) 
-		{
-			outputStream.write(buffer, 0, numRead);
-			numWritten += numRead;
-		}
-	}
-	
-	//TODO: this  method, should moved to utils
-	static private String getFileNameWithoutExtension(String name)
-	{
-		String fileName = new File(name).getName();
-		int lastDotAt = fileName.lastIndexOf('.');
-		if(lastDotAt < 0)
-			return fileName;
-		
-		return fileName.substring(0, lastDotAt);
 	}
 	
 
@@ -102,8 +77,6 @@ public class ImportFromUrlZippedProjectFileDoer
 		{
 		}
 	}
-
-	
 
 	static private String TEMP_FILE_NAME = "URLImport";
 	
