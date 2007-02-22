@@ -10,6 +10,7 @@ import java.io.File;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiOptionPane;
 import org.martus.util.DirectoryLock;
 
@@ -37,19 +38,12 @@ public class RenameProject
 			String newName = UiOptionPane.showInputDialog("Enter New Project Name");
 			if (newName == null)
 				return;
-			
-			File newFile = new File(projectToRename.getParentFile(),newName);
-			
-			if(ProjectServer.isExistingProject(newFile))
+
+			String errorText = Project.validateNewProject(newName);
+			if (errorText.length()>0)
 			{
-				EAM.notifyDialog(EAM.text("Project by this name already exists, choose antother name."));
-				return;
-			}
-			
-			
-			if (!mainWindow.getProject().isValidProjectFilename(newName))
-			{
-				EAM.notifyDialog(EAM.text("Invalid project name, choose antother name."));
+				errorText = "Rename Failed:" + errorText;
+				EAM.notifyDialog(EAM.text(errorText));
 				return;
 			}
 			
@@ -61,6 +55,7 @@ public class RenameProject
 				return;
 		
 			directoryLock.close();
+			File newFile = new File(projectToRename.getParentFile(),newName);
 			projectToRename.renameTo(newFile);
 		}
 		finally

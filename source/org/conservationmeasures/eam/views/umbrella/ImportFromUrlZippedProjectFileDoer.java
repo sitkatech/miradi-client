@@ -34,6 +34,7 @@ public class ImportFromUrlZippedProjectFileDoer
 			tempDir = File.createTempFile(TEMP_FILE_NAME, null);
 			URL remoteFile = new URL(remotePath);
 			String newName = Utility.getFileNameWithoutExtension(remoteFile.getFile());
+			newName = Project.makeProjectFilenameLegal(newName);
 			String errorText = Project.validateNewProject(newName);
 			if (errorText.length()>0)
 			{

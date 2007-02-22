@@ -9,10 +9,10 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.martus.swing.UiFileChooser;
@@ -44,25 +44,17 @@ public abstract class ImportProjectDoer extends ViewDoer
 				return;
 			
 			File fileToImport = results.getChosenFile();
-			String projectName = withoutExtension(fileToImport.getName());
+			String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
 			projectName = Project.makeProjectFilenameLegal(projectName);
-			File homeDirectory = EAM.getHomeDirectory();
-			File finalProjectDirectory = new File(homeDirectory, projectName);
-			
-			if(ProjectServer.isExistingProject(finalProjectDirectory))
+			String errorText = Project.validateNewProject(projectName);
+			if (errorText.length()>0)
 			{
-				EAM.notifyDialog(EAM.text("Cannot import a project that already exists: ") + projectName);
+				errorText = "Import Failed:" + errorText;
+				EAM.notifyDialog(EAM.text(errorText));
 				return;
 			}
 			
-			if(finalProjectDirectory.exists())
-			{
-				EAM.notifyDialog(EAM.text("Cannot import over an existing file or directory: ") + 
-						finalProjectDirectory.getAbsolutePath());
-				return;
-			}
-			
-			createProject(fileToImport, homeDirectory, projectName);
+			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
 
 			refreshNoProjectPanel();
 			EAM.notifyDialog(EAM.text("Import Competed"));
@@ -78,14 +70,6 @@ public abstract class ImportProjectDoer extends ViewDoer
 	{
 		NoProjectView noProjectView = (NoProjectView)getView();
 		noProjectView.refreshText();
-	}
-
-	private String withoutExtension(String fileName)
-	{
-		int lastDotAt = fileName.lastIndexOf('.');
-		if(lastDotAt < 0)
-			return fileName;
-		return fileName.substring(0, lastDotAt);
 	}
 
 }
