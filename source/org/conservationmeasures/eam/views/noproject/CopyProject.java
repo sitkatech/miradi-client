@@ -40,14 +40,8 @@ public class CopyProject
 			if (newName == null)
 				return;
 			
-			String errorText = Project.validateNewProject(newName);
-			if (errorText.length()>0)
-			{
-				errorText = "Copy Failed:" + errorText;
-				EAM.notifyDialog(EAM.text(errorText));
-				return;
-			}
-			
+			Project.validateNewProject(newName);
+
 			String[] body = {EAM.text("Are you sure you want to copy project: "), 
 					projectToCopy.getName(),
 			};
@@ -58,6 +52,10 @@ public class CopyProject
 			directoryLock.close();
 			File newFile = new File(projectToCopy.getParentFile(),newName);
 			DirectoryUtils.copyDirectoryTree(projectToCopy, newFile);
+		}
+		catch (Exception e)
+		{
+			EAM.notifyDialog("Copy Failed:" +e.getMessage());
 		}
 		finally
 		{

@@ -35,13 +35,7 @@ public class ImportFromUrlZippedProjectFileDoer
 			URL remoteFile = new URL(remotePath);
 			String newName = Utility.getFileNameWithoutExtension(remoteFile.getFile());
 			newName = Project.makeProjectFilenameLegal(newName);
-			String errorText = Project.validateNewProject(newName);
-			if (errorText.length()>0)
-			{
-				errorText = "Import Failed:" + errorText;
-				EAM.notifyDialog(EAM.text(errorText));
-				return;
-			}
+			Project.validateNewProject(newName);
 			
 			outputStream = new BufferedOutputStream(new FileOutputStream(tempDir));
 			inputStream = remoteFile.openConnection().getInputStream();
@@ -52,7 +46,6 @@ public class ImportFromUrlZippedProjectFileDoer
 		}
 		catch(Exception e)
 		{
-			EAM.logException(e);
 			String errorText = "Import Failed:" + e.getMessage();
 			EAM.notifyDialog(EAM.text(errorText));
 		}

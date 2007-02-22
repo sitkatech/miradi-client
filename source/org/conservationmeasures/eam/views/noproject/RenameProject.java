@@ -39,14 +39,8 @@ public class RenameProject
 			if (newName == null)
 				return;
 
-			String errorText = Project.validateNewProject(newName);
-			if (errorText.length()>0)
-			{
-				errorText = "Rename Failed:" + errorText;
-				EAM.notifyDialog(EAM.text(errorText));
-				return;
-			}
-			
+			Project.validateNewProject(newName);
+
 			String[] body = {EAM.text("Are you sure you want to rename project: "), 
 					projectToRename.getName(),
 			};
@@ -57,6 +51,10 @@ public class RenameProject
 			directoryLock.close();
 			File newFile = new File(projectToRename.getParentFile(),newName);
 			projectToRename.renameTo(newFile);
+		}
+		catch (Exception e)
+		{
+			EAM.notifyDialog("Rename Failed:" +e.getMessage());
 		}
 		finally
 		{

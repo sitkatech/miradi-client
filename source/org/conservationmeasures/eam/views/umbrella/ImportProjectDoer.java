@@ -46,23 +46,15 @@ public abstract class ImportProjectDoer extends ViewDoer
 			File fileToImport = results.getChosenFile();
 			String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
 			projectName = Project.makeProjectFilenameLegal(projectName);
-			String errorText = Project.validateNewProject(projectName);
-			if (errorText.length()>0)
-			{
-				errorText = "Import Failed:" + errorText;
-				EAM.notifyDialog(EAM.text(errorText));
-				return;
-			}
-			
-			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
+			Project.validateNewProject(projectName);
 
+			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
 			refreshNoProjectPanel();
 			EAM.notifyDialog(EAM.text("Import Competed"));
 		}
 		catch(Exception e)
 		{
 			EAM.errorDialog("Import failed: " + e.getMessage());
-			EAM.logException(e);
 		}
 	}
 
