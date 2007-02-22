@@ -210,7 +210,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	
 	private void ImporFromUrlZippedProjectFile() throws Exception
 	{
-		new ImportFromUrlZippedProjectFileDoer().doIt(mainWindow);
+		ImportFromUrlZippedProjectFileDoer.doIt(getMainWindow());
 		refresh();
 	}
 	

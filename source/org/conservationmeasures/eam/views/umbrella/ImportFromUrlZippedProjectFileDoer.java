@@ -21,7 +21,7 @@ import org.martus.util.DirectoryUtils;
 
 public class ImportFromUrlZippedProjectFileDoer 
 {
-	public void doIt(MainWindow mainWindow) throws CommandFailedException 
+	static public void doIt(MainWindow mainWindow) throws CommandFailedException 
 	{
 		String remotePath = "https://miradi.org/MarineExample.zip";
 		
@@ -66,7 +66,7 @@ public class ImportFromUrlZippedProjectFileDoer
 	}
 
 	//TODO: This code is used by several importes , rename and copy routines and should be made common
-	private String validateNewProject(MainWindow mainWindow, File newFile, String newName)
+	static private String validateNewProject(MainWindow mainWindow, File newFile, String newName)
 	{
 		if(ProjectServer.isExistingProject(newFile))
 			return "Project by this name already exists:" + newName;
@@ -81,7 +81,7 @@ public class ImportFromUrlZippedProjectFileDoer
 	}
 	
 	//TODO: this is a buffered stream copy method, it should moved to utils
-	public void copy(InputStream inputStream, OutputStream outputStream) throws Exception
+	static private void copy(InputStream inputStream, OutputStream outputStream) throws Exception
 	{
 		byte[] buffer = new byte[1024];
 		int numRead;
@@ -94,7 +94,7 @@ public class ImportFromUrlZippedProjectFileDoer
 	}
 
 	//FIXME: can be coded better
-	private void cleanUp(OutputStream outputStream, InputStream inputStream, File tempDir)
+	static private void cleanUp(OutputStream outputStream, InputStream inputStream, File tempDir)
 	{
 		try
 		{
@@ -109,7 +109,7 @@ public class ImportFromUrlZippedProjectFileDoer
 		}
 	}
 
-	private String getFileNameWithoutExtension(String name)
+	static private String getFileNameWithoutExtension(String name)
 	{
 		String fileName = new File(name).getName();
 		int lastDotAt = fileName.lastIndexOf('.');
@@ -120,6 +120,6 @@ public class ImportFromUrlZippedProjectFileDoer
 	}
 	
 
-	private static String TEMP_FILE_NAME = "URLImport";
+	static private String TEMP_FILE_NAME = "URLImport";
 	
 }
