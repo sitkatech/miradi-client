@@ -15,29 +15,15 @@ import java.net.URL;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
-import org.conservationmeasures.eam.views.ViewDoer;
-import org.conservationmeasures.eam.views.noproject.NoProjectView;
-import org.martus.swing.UiOptionPane;
 import org.martus.util.DirectoryUtils;
 
-public class ImporFromUrlZippedProjectFileDoer extends ViewDoer
+public class ImporFromUrlZippedProjectFileDoer 
 {
-	public boolean isAvailable() 
+	public void doIt(MainWindow mainWindow) throws CommandFailedException 
 	{
-		Project project = getProject();
-		return !project.isOpen();
-	}
-
-	public void doIt() throws CommandFailedException 
-	{
-		if (!isAvailable())
-			return;
-
-		String remotePath = UiOptionPane.showInputDialog("Enter URL Address Here");
-		if (remotePath == null)
-			return;
+		String remotePath = "https://miradi.org/MarineExample.zip";
 		
 		OutputStream outputStream = null;
 		InputStream inputStream = null;
@@ -49,8 +35,8 @@ public class ImporFromUrlZippedProjectFileDoer extends ViewDoer
 			
 
 			File homeDirectory = EAM.getHomeDirectory();
-			File newFile = new File(homeDirectory,withoutExtension(remoteFile.getFile()));
-			String newName = withoutExtension(remoteFile.getFile());
+			File newFile = new File(homeDirectory,getFileNameWithoutExtension(remoteFile.getFile()));
+			String newName = getFileNameWithoutExtension(new File(remoteFile.getFile()).getName());
 			
 			if(ProjectServer.isExistingProject(newFile))
 			{
@@ -58,24 +44,25 @@ public class ImporFromUrlZippedProjectFileDoer extends ViewDoer
 				return;
 			}
 			
-			if (!getProject().isValidProjectFilename(newName))
+			if (!mainWindow.getProject().isValidProjectFilename(newName))
 			{
-				EAM.notifyDialog(EAM.text("Invalid project name, can not import."));
+				String text = "Invalid project name, can not import:" + newName;
+				EAM.notifyDialog(EAM.text(text));
 				return;
 			}
 			
 			if(newFile.exists())
 			{
 				String text = EAM.text("Cannot import over an existing file or directory: ") + newFile.getAbsolutePath();
-				EAM.notifyDialog(text);
+				EAM.notifyDialog(EAM.text(text));
 				return;
 			}
 			
 			outputStream = new BufferedOutputStream(new FileOutputStream(tempDir));
 			inputStream = remoteFile.openConnection().getInputStream();
 			copy(inputStream, outputStream);
-			ProjectUnzipper.unzipToProjectDirectory(tempDir, homeDirectory, tempDir.getName());
-			refreshNoProjectPanel();
+			ProjectUnzipper.unzipToProjectDirectory(tempDir, homeDirectory, newName);
+			
 		}
 		catch(Exception e)
 		{
@@ -114,18 +101,13 @@ public class ImporFromUrlZippedProjectFileDoer extends ViewDoer
 		}
 	}
 
-	private String withoutExtension(String fileName)
+	private String getFileNameWithoutExtension(String fileName)
 	{
 		int lastDotAt = fileName.lastIndexOf('.');
 		if(lastDotAt < 0)
 			return fileName;
+		
 		return fileName.substring(0, lastDotAt);
-	}
-	
-	private void refreshNoProjectPanel() throws Exception
-	{
-		NoProjectView noProjectView = (NoProjectView)getView();
-		noProjectView.refreshText();
 	}
 	
 

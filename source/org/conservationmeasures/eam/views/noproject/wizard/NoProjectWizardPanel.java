@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.views.noproject.RenameProject;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
+import org.conservationmeasures.eam.views.umbrella.ImporFromUrlZippedProjectFileDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
@@ -78,6 +79,10 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 				Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
 				EAM.okDialog(def.term, new String[] {def.definition});
 			}
+			else if(linkDescription.startsWith(DOWNLOAD_PREFIX))
+			{
+				ImporFromUrlZippedProjectFile();
+			}
 			else
 			{
 				EAM.okDialog("Not implemented yet", new String[] {"Not implemented yet"});
@@ -90,7 +95,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		}
 	}
 	
-	
+
 	public JPopupMenu getRightClickMenu(String itemText)
 	{
 		JPopupMenu menu = new JPopupMenu();
@@ -202,7 +207,14 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		CopyProject.doIt(getMainWindow(), projectDirectory);
 		refresh();
 	}
-
+	
+	private void ImporFromUrlZippedProjectFile() throws Exception
+	{
+		new ImporFromUrlZippedProjectFileDoer().doIt(mainWindow);
+		refresh();
+	}
+	
+	
 	JTextComponent newProjectNameField;
 	
 	public static final String OPEN_PREFIX = "OPEN:";
@@ -210,6 +222,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	public static final String RENAME_PREFIX = "RENAME:";
 	public static final String DELETE_PREFIX = "DELETE:";
 	public static final String EXPORT_PREFIX = "EXPORT:";
+	public static final String DOWNLOAD_PREFIX = "DOWNLOAD:";
 	
 	public static final String DEFINITION_PREFIX = "Definition:";
 
