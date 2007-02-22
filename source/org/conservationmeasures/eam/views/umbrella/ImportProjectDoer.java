@@ -35,7 +35,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 	{
 		try
 		{
-			File startingDirectory = UiFileChooser.getHomeDirectoryFile();
+			File startingDirectory = new File(currentDirectory);
 			String windowTitle = EAM.text("Import Project");
 			UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(
 					getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory, null, getFileFilter());
@@ -50,6 +50,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 
 			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
 			refreshNoProjectPanel();
+			currentDirectory = fileToImport.getParent();
 			EAM.notifyDialog(EAM.text("Import Competed"));
 		}
 		catch(Exception e)
@@ -63,5 +64,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 		NoProjectView noProjectView = (NoProjectView)getView();
 		noProjectView.refreshText();
 	}
+	
+	private static String currentDirectory = UiFileChooser.getHomeDirectoryFile().getPath();
 
 }
