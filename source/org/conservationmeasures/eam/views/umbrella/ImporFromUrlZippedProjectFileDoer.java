@@ -36,11 +36,12 @@ public class ImporFromUrlZippedProjectFileDoer
 
 			File homeDirectory = EAM.getHomeDirectory();
 			File newFile = new File(homeDirectory,getFileNameWithoutExtension(remoteFile.getFile()));
-			String newName = getFileNameWithoutExtension(new File(remoteFile.getFile()).getName());
+			String newName = getFileNameWithoutExtension(remoteFile.getFile());
 			
 			String errorText = validateNewProject(mainWindow, newFile, newName);
 			if (errorText.length()>0)
 			{
+				errorText = "Cannot import:" + errorText;
 				EAM.notifyDialog(EAM.text(errorText));
 				return;
 			}
@@ -49,6 +50,7 @@ public class ImporFromUrlZippedProjectFileDoer
 			inputStream = remoteFile.openConnection().getInputStream();
 			copy(inputStream, outputStream);
 			ProjectUnzipper.unzipToProjectDirectory(tempDir, homeDirectory, newName);
+			EAM.notifyDialog(EAM.text("Import Completed"));
 			
 		}
 		catch(Exception e)
@@ -65,13 +67,13 @@ public class ImporFromUrlZippedProjectFileDoer
 	private String validateNewProject(MainWindow mainWindow, File newFile, String newName)
 	{
 		if(ProjectServer.isExistingProject(newFile))
-			return  "Project by this name already exists, can not import:" + newName;
+			return "Project by this name already exists:" + newName;
 		
 		if (!mainWindow.getProject().isValidProjectFilename(newName))
-			return "Invalid project name, can not import:" + newName;
+			return "Invalid project name:" + newName;
 		
 		if(newFile.exists())
-			return "Cannot import over an existing file or directory:" + newName;
+			return "A file or directory exist by the same name:" + newName;
 		
 		return "";
 	}
@@ -103,8 +105,9 @@ public class ImporFromUrlZippedProjectFileDoer
 		}
 	}
 
-	private String getFileNameWithoutExtension(String fileName)
+	private String getFileNameWithoutExtension(String name)
 	{
+		String fileName = new File(name).getName();
 		int lastDotAt = fileName.lastIndexOf('.');
 		if(lastDotAt < 0)
 			return fileName;
