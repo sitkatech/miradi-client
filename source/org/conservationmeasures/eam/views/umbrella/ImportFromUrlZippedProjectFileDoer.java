@@ -41,7 +41,7 @@ public class ImportFromUrlZippedProjectFileDoer
 			String errorText = validateNewProject(mainWindow, newFile, newName);
 			if (errorText.length()>0)
 			{
-				errorText = "Cannot import:" + errorText;
+				errorText = "Import Failed:" + errorText;
 				EAM.notifyDialog(EAM.text(errorText));
 				return;
 			}
@@ -56,7 +56,7 @@ public class ImportFromUrlZippedProjectFileDoer
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			String errorText = "Cannot import:" + e.getMessage();
+			String errorText = "Import Failed:" + e.getMessage();
 			EAM.notifyDialog(EAM.text(errorText));
 		}
 		finally
