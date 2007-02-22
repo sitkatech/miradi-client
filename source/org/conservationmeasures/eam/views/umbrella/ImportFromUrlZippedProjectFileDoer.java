@@ -12,10 +12,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
-import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
 import org.martus.util.DirectoryUtils;
 
@@ -32,13 +32,8 @@ public class ImportFromUrlZippedProjectFileDoer
 		{
 			tempDir = File.createTempFile(TEMP_FILE_NAME, null);
 			URL remoteFile = new URL(remotePath);
-			
-
-			File homeDirectory = EAM.getHomeDirectory();
-			File newFile = new File(homeDirectory,getFileNameWithoutExtension(remoteFile.getFile()));
 			String newName = getFileNameWithoutExtension(remoteFile.getFile());
-			
-			String errorText = validateNewProject(mainWindow, newFile, newName);
+			String errorText = Project.validateNewProject(newName);
 			if (errorText.length()>0)
 			{
 				errorText = "Import Failed:" + errorText;
@@ -49,7 +44,7 @@ public class ImportFromUrlZippedProjectFileDoer
 			outputStream = new BufferedOutputStream(new FileOutputStream(tempDir));
 			inputStream = remoteFile.openConnection().getInputStream();
 			copy(inputStream, outputStream);
-			ProjectUnzipper.unzipToProjectDirectory(tempDir, homeDirectory, newName);
+			ProjectUnzipper.unzipToProjectDirectory(tempDir, EAM.getHomeDirectory(), newName);
 			EAM.notifyDialog(EAM.text("Import Completed"));
 			
 		}
@@ -65,20 +60,7 @@ public class ImportFromUrlZippedProjectFileDoer
 		}
 	}
 
-	//TODO: This code is used by several importes , rename and copy routines and should be made common
-	static private String validateNewProject(MainWindow mainWindow, File newFile, String newName)
-	{
-		if(ProjectServer.isExistingProject(newFile))
-			return "Project by this name already exists:" + newName;
-		
-		if (!mainWindow.getProject().isValidProjectFilename(newName))
-			return "Invalid project name:" + newName;
-		
-		if(newFile.exists())
-			return "A file or directory exist by the same name:" + newName;
-		
-		return "";
-	}
+
 	
 	//TODO: this is a buffered stream copy method, it should moved to utils
 	static private void copy(InputStream inputStream, OutputStream outputStream) throws Exception
@@ -92,6 +74,18 @@ public class ImportFromUrlZippedProjectFileDoer
 			numWritten += numRead;
 		}
 	}
+	
+	//TODO: this  method, should moved to utils
+	static private String getFileNameWithoutExtension(String name)
+	{
+		String fileName = new File(name).getName();
+		int lastDotAt = fileName.lastIndexOf('.');
+		if(lastDotAt < 0)
+			return fileName;
+		
+		return fileName.substring(0, lastDotAt);
+	}
+	
 
 	//FIXME: can be coded better
 	static private void cleanUp(OutputStream outputStream, InputStream inputStream, File tempDir)
@@ -109,15 +103,6 @@ public class ImportFromUrlZippedProjectFileDoer
 		}
 	}
 
-	static private String getFileNameWithoutExtension(String name)
-	{
-		String fileName = new File(name).getName();
-		int lastDotAt = fileName.lastIndexOf('.');
-		if(lastDotAt < 0)
-			return fileName;
-		
-		return fileName.substring(0, lastDotAt);
-	}
 	
 
 	static private String TEMP_FILE_NAME = "URLImport";

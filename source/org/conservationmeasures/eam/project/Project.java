@@ -102,6 +102,20 @@ public class Project
 		addCommandExecutedListener(diagramSaver);
 	}
 	
+	static public String validateNewProject(String newName)
+	{
+		File newFile = new File(EAM.getHomeDirectory(),newName);
+		if(ProjectServer.isExistingProject(newFile))
+			return "Project by this name already exists:" + newName;
+		
+		if (!EAM.mainWindow.getProject().isValidProjectFilename(newName))
+			return "Invalid project name:" + newName;
+		
+		if(newFile.exists())
+			return "A file or directory exist by the same name:" + newName;
+		
+		return "";
+	}
 	/////////////////////////////////////////////////////////////////////////////////
 	// simple getters
 	
