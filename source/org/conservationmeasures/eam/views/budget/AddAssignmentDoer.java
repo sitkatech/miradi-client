@@ -53,10 +53,10 @@ public class AddAssignmentDoer extends ObjectsDoer
 	private void createAssignment(Project project) throws Exception
 	{
 		Task selectedTask = (Task)project.findObject(ObjectType.TASK, getSelectedIds()[0]);
-		
+
+		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			project.executeCommand(new CommandBeginTransaction());
 			CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT, createExtraInfo(project, selectedTask));
 			project.executeCommand(createAssignment);
 
