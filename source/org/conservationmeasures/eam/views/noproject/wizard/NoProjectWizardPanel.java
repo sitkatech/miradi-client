@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.views.noproject.RenameProject;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
-import org.conservationmeasures.eam.views.umbrella.ImporFromUrlZippedProjectFileDoer;
+import org.conservationmeasures.eam.views.umbrella.ImportFromUrlZippedProjectFileDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
@@ -210,7 +210,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	
 	private void ImporFromUrlZippedProjectFile() throws Exception
 	{
-		new ImporFromUrlZippedProjectFileDoer().doIt(mainWindow);
+		new ImportFromUrlZippedProjectFileDoer().doIt(mainWindow);
 		refresh();
 	}
 	

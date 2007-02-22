@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
 import org.martus.util.DirectoryUtils;
 
-public class ImporFromUrlZippedProjectFileDoer 
+public class ImportFromUrlZippedProjectFileDoer 
 {
 	public void doIt(MainWindow mainWindow) throws CommandFailedException 
 	{
@@ -55,7 +55,9 @@ public class ImporFromUrlZippedProjectFileDoer
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
+			String errorText = "Cannot import:" + e.getMessage();
+			EAM.notifyDialog(EAM.text(errorText));
 		}
 		finally
 		{
@@ -78,6 +80,7 @@ public class ImporFromUrlZippedProjectFileDoer
 		return "";
 	}
 	
+	//TODO: this is a buffered stream copy method, it should moved to utils
 	public void copy(InputStream inputStream, OutputStream outputStream) throws Exception
 	{
 		byte[] buffer = new byte[1024];
@@ -90,6 +93,7 @@ public class ImporFromUrlZippedProjectFileDoer
 		}
 	}
 
+	//FIXME: can be coded better
 	private void cleanUp(OutputStream outputStream, InputStream inputStream, File tempDir)
 	{
 		try
