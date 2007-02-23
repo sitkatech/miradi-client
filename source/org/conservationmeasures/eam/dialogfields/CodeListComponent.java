@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -103,12 +104,26 @@ public class CodeListComponent extends JPanel implements ItemListener
 	public void setEnabled(boolean isValidObject)
 	{
 		super.setEnabled(isValidObject);
-		for (int checkBoxIndex = 0; checkBoxIndex<checkBoxes.length; ++checkBoxIndex )
+		for (int checkBoxIndex = 0; checkBoxIndex<checkBoxes.length; ++checkBoxIndex)
 		{
-			checkBoxes[checkBoxIndex].setEnabled(isValidObject);
+			updateEditableState(checkBoxes[checkBoxIndex],isValidObject);
 		}
 	}
 	
+	public void updateEditableState(JCheckBox checkBox, boolean isValidObject)
+	{
+			checkBox.setEnabled(isValidObject);
+			Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
+			Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
+			if(!isValidObject)
+			{
+				fg = EAM.READONLY_FOREGROUND_COLOR;
+				bg = EAM.READONLY_BACKGROUND_COLOR;
+			}
+			checkBox.setForeground(fg);
+			checkBox.setBackground(bg);
+
+	}
 
 	private JCheckBox checkBoxes[];
 	private ChoiceItem choiceItems[];
