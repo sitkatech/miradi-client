@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.questions;
 
 
+
 public class ResourceRoleQuestion extends ChoiceQuestion
 {
 	public ResourceRoleQuestion(String tagToUse)
@@ -16,8 +17,8 @@ public class ResourceRoleQuestion extends ChoiceQuestion
 	static ChoiceItem[] getRoleChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("Contact", "Team Contact"),
 				new ChoiceItem(TeamMemberRoleCode, "Team Member"),
+				new ChoiceItem("Contact", "Team Contact"),
 				new ChoiceItem("Leader", "Leader/Manager"),
 				new ChoiceItem("Facilitator", "Process Facilitator"),
 				new ChoiceItem("Advisor", "Project Advisor"),
