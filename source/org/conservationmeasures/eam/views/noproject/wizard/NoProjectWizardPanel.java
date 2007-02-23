@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 
 import javax.swing.AbstractAction;
@@ -30,7 +32,7 @@ import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
 
-public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHandler
+public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHandler, KeyListener
 {
 	public NoProjectWizardPanel(UmbrellaView view) throws Exception
 	{
@@ -134,8 +136,27 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	
 	public void setComponent(String name, JComponent component)
 	{
-		if (name.equals("NewProjectName"))
+		if (name.equals(NEW_PROJECT_NAME))
+		{
 			newProjectNameField = (JTextComponent)component;
+			newProjectNameField.addKeyListener(this);
+		}
+	}
+	
+	public void keyPressed(KeyEvent keyEvent)
+	{
+		if (keyEvent.getKeyCode() ==KeyEvent.VK_ENTER)
+		{
+			buttonPressed(CREATE_PROJECT);
+		}
+	}
+
+	public void keyReleased(KeyEvent e)
+	{
+	}
+
+	public void keyTyped(KeyEvent e)
+	{
 	}
 	
 	public String getValue(String name)
@@ -147,16 +168,16 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	{
 		try
 		{
-			if(buttonName.equals("CreateProject"))
+			if(buttonName.equals(CREATE_PROJECT))
 			{
 				createProject();
 			}
-			if(buttonName.equals("ImportZip"))
+			if(buttonName.equals(IMPORT_ZIP))
 			{
 				EAMAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
 				action.doAction();
 			}
-			else if(buttonName.equals("ImportCAP"))
+			else if(buttonName.equals(IMPORT_CAP))
 			{
 				EAMAction action = getMainWindow().getActions().get(ActionImportTncCapWorkbook.class);
 				action.doAction();
@@ -172,7 +193,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 
 	private void createProject() throws Exception
 	{
-		String newName = getValue("NewProjectName");
+		String newName = getValue(NEW_PROJECT_NAME);
 		if (newName.length()>0)
 		{
 			if (getMainWindow().getProject().isValidProjectFilename(newName))
@@ -217,13 +238,16 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	
 	JTextComponent newProjectNameField;
 	
+	private static final String IMPORT_CAP = "ImportCAP";
+	private static final String IMPORT_ZIP = "ImportZip";
+	private static final String NEW_PROJECT_NAME = "NewProjectName";
+	private static final String CREATE_PROJECT = "CreateProject";
 	public static final String OPEN_PREFIX = "OPEN:";
-	public static final String COPY_PREFIX = "COPY:";
-	public static final String RENAME_PREFIX = "RENAME:";
-	public static final String DELETE_PREFIX = "DELETE:";
-	public static final String EXPORT_PREFIX = "EXPORT:";
-	public static final String DOWNLOAD_PREFIX = "DOWNLOAD:";
-	
-	public static final String DEFINITION_PREFIX = "Definition:";
+	private static final String COPY_PREFIX = "COPY:";
+	private static final String RENAME_PREFIX = "RENAME:";
+	private static final String DELETE_PREFIX = "DELETE:";
+	private static final String EXPORT_PREFIX = "EXPORT:";
+	private static final String DOWNLOAD_PREFIX = "DOWNLOAD:";
+	private static final String DEFINITION_PREFIX = "Definition:";
 
 }
