@@ -65,12 +65,12 @@ public abstract class Command
 		{
 			String name = keys[i];
 			Object object = logData.get(name);
-			logLine = logLine + processLogLine(name, object)+ ", " ;
+			logLine = logLine + processLogItem(name, object)+ ", " ;
 		}
 		return logLine;
 	}
 
-	private String processLogLine(String name, Object object)
+	private String processLogItem(String name, Object object)
 	{
 		if(name.equals(CreateObjectParameter.class.getSimpleName()))
 		{
