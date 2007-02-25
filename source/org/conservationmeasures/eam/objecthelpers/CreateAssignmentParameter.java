@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.ids.AccountingCodeId;
 import org.conservationmeasures.eam.ids.FundingSourceId;
 import org.conservationmeasures.eam.ids.ProjectResourceId;
@@ -62,8 +64,19 @@ public class CreateAssignmentParameter extends CreateObjectParameter
 		return true;
 	}
 	
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put(TaskId.class.getSimpleName(), taskId);
+		dataPairs.put(ProjectResourceId.class.getSimpleName(), resourceId);
+		dataPairs.put(FundingSourceId.class.getSimpleName(), fundingId);
+		dataPairs.put(AccountingCodeId.class.getSimpleName(), accountingId);
+		return dataPairs;
+	}
+	
 	TaskId taskId;
 	ProjectResourceId resourceId;
 	FundingSourceId fundingId;
 	AccountingCodeId accountingId;
+
 }

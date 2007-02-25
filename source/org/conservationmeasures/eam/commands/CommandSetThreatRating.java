@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -88,6 +90,15 @@ public class CommandSetThreatRating extends Command
 		return previousValueId;
 	}
 
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put("THREAT_ID", threatId);
+		dataPairs.put("TARGET_ID", targetId);
+		dataPairs.put("CRITERION_ID", criterionId);
+		dataPairs.put("VALUE_ID", valueId);
+		return dataPairs;
+	}
 
 	public static final String COMMAND_NAME = "SetThreatRatingValue";
 

@@ -548,7 +548,7 @@ public class Project
 	{
 		try 
 		{
-			command.execute(this);
+			command.executeAndLog(this);
 		} 
 		catch (CommandFailedException e) 
 		{

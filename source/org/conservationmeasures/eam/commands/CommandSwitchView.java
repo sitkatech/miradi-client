@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
@@ -56,6 +58,13 @@ public class CommandSwitchView extends Command
 		return string.toString();
 	}
 
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put(String.class.getSimpleName(), toView);
+		return dataPairs;
+	}
+	
 	public static final String COMMAND_NAME = "SwitchView";
 
 	String toView;

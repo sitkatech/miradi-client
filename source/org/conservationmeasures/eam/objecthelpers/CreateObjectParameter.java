@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
-public class CreateObjectParameter
+import java.util.HashMap;
+
+public abstract class CreateObjectParameter
 {
+	abstract public HashMap getLogData();
 }

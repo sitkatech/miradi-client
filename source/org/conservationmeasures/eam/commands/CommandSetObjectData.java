@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.commands;
 
 import java.text.ParseException;
+import java.util.HashMap;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -118,6 +119,16 @@ public class CommandSetObjectData extends Command
 		return new CommandSetObjectData(type, id, tag, oldValue, newValue);
 	}
 
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put("OBJECT_TYPE", new Integer(type));
+		dataPairs.put(BaseId.class.getSimpleName(), id);
+		dataPairs.put("TAG", tag);
+		dataPairs.put("NEW_VALUE", newValue);
+		return dataPairs;
+	}
+	
 	public static final String COMMAND_NAME = "SetObjectData";
 
 	int type;

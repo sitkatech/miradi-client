@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -21,11 +23,17 @@ public class CommandDiagramMove extends Command
 	
 	public String toString()
 	{
+		String stringOfIds = formatFactors();
+		return getCommandName() + ":" + stringOfIds + "," + deltaX + "," + deltaY;
+	}
+	
+	public String formatFactors()
+	{
 		String stringOfIds = "(";
 		for(int i=0; i < ids.length; ++i)
 			stringOfIds += ids[i] + ",";
 		stringOfIds += ")";
-		return getCommandName() + ":" + stringOfIds + "," + deltaX + "," + deltaY;
+		return stringOfIds;
 	}
 	
 	public String getCommandName()
@@ -67,6 +75,14 @@ public class CommandDiagramMove extends Command
 		return ids;
 	}
 
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put("DELTA_X", new Integer(deltaX));
+		dataPairs.put("DELTA_Y", new Integer(deltaY));
+		dataPairs.put("DIAGRAM_FACTOR_IDS", formatFactors());
+		return dataPairs;
+	}
 
 	public static final String COMMAND_NAME = "DiagramMove";
 

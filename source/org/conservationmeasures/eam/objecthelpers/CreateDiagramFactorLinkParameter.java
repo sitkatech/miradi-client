@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 
@@ -30,6 +32,15 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 	public DiagramFactorId getToFactorId()
 	{
 		return toId;
+	}
+	
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put(FactorLinkId.class.getSimpleName(), factorLinkId);
+		dataPairs.put("FactorFromId", fromId);
+		dataPairs.put("FactorToID", toId);
+		return dataPairs;
 	}
 	
 	private FactorLinkId factorLinkId;

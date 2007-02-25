@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
+import java.util.HashMap;
+
 public class CreateTaskParameter extends CreateObjectParameter
 {
 	public CreateTaskParameter(ORef parentRefToUse)
@@ -15,6 +17,13 @@ public class CreateTaskParameter extends CreateObjectParameter
 	public ORef getParentRef()
 	{
 		return parentRef;
+	}
+	
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put(ORef.class.getSimpleName(), parentRef);
+		return dataPairs;
 	}
 	
 	ORef parentRef;

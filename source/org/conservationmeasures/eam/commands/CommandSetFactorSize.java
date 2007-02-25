@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.commands;
 
 import java.awt.Dimension;
+import java.util.HashMap;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
@@ -78,6 +79,15 @@ public class CommandSetFactorSize extends Command
 	public String getCommandName() 
 	{
 		return COMMAND_NAME;
+	}
+	
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put(DiagramFactorId.class.getSimpleName(), id);
+		dataPairs.put("CURRENT_SIZE", currentSize);
+		dataPairs.put("PREVIOUS_SIZE", previousSize);
+		return dataPairs;
 	}
 	
 	public static final String COMMAND_NAME = "ReSize";

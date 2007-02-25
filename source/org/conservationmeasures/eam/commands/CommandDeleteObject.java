@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -54,6 +56,14 @@ public class CommandDeleteObject extends Command
 		CommandCreateObject command = new CommandCreateObject(type, reverseExtraInfo);
 		command.setCreatedId(id);
 		return command;
+	}
+	
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put("OBJECT_TYPE", new Integer(type));
+		dataPairs.put(BaseId.class.getSimpleName(), id);
+		return dataPairs;
 	}
 	
 	public final static String COMMAND_NAME = "DeleteObject";

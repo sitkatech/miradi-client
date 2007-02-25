@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -58,6 +60,14 @@ public class CommandDiagramAddFactor extends Command
 		CommandDiagramRemoveFactor commandDiagramRemoveFactor = new CommandDiagramRemoveFactor(insertedDiagramFactorId);
 		commandDiagramRemoveFactor.setFactorId(wrappedFactorId);
 		return commandDiagramRemoveFactor;
+	}
+	
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put(FactorId.class.getSimpleName(), wrappedFactorId);
+		dataPairs.put(DiagramFactorId.class.getSimpleName(), insertedDiagramFactorId);
+		return dataPairs;
 	}
 
 	public static final String COMMAND_NAME = "CommandDiagramAddFactor";

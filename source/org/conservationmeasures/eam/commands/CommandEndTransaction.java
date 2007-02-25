@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 
@@ -40,6 +42,12 @@ public class CommandEndTransaction extends Command
 		return true;
 	}
 
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		return dataPairs;
+	}
+	
 	public static final String COMMAND_NAME = "EndTransaction";
 
 }

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -63,6 +65,13 @@ public class CommandDiagramRemoveFactorLink extends Command
 	void setFactorLinkId(FactorLinkId factorLinkIdToUse)
 	{
 		wrappedFactorLinkId = factorLinkIdToUse;
+	}
+	
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put(DiagramFactorLinkId.class.getSimpleName(), diagramFactorLinkId);
+		return dataPairs;
 	}
 
 	public static final String COMMAND_NAME = "CommandDiagramRemoveFactorLink";

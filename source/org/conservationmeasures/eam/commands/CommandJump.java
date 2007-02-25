@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
+import java.util.HashMap;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 
@@ -30,6 +32,13 @@ public class CommandJump extends Command
 		return new CommandJump(previousStep);
 	}
 
+	public HashMap getLogData()
+	{
+		HashMap dataPairs = new HashMap();
+		dataPairs.put("STEP", new Integer(step));
+		return dataPairs;
+	}
+	
 	public static final String COMMAND_NAME = "Jump";
 	
 	int step;
