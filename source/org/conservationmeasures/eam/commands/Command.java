@@ -21,7 +21,7 @@ public abstract class Command
 	
 	public boolean equals(Object other)
 	{
-		return toString().equals(other.toString());
+		return toString().equals(getValue(other));
 	}
 	
 	public boolean isBeginTransaction()
@@ -76,7 +76,7 @@ public abstract class Command
 		{
 			return processCreateObjectParameter((CreateObjectParameter)object);
 		}
-		return name + "=" + object.toString();
+		return name + "=" + getValue(object);
 	}
 	
 	private String processCreateObjectParameter(CreateObjectParameter parms)
@@ -91,9 +91,16 @@ public abstract class Command
 		{
 			String name = keys[i];
 			Object object = logData.get(name);
-			logLine = logLine + name + "=" + object.toString() + ", " ;
+			logLine = logLine + name + "=" + getValue(object) + ", " ;
 		}
 		return logLine + ")";
+	}
+	
+	private String getValue(Object object)
+	{
+		if (object==null)
+			return "NULL";
+		return object.toString();
 	}
 	
 	private String[] getSortedKeys(HashMap logData)
