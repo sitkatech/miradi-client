@@ -50,7 +50,7 @@ public abstract class Command
 	{
 		//TODO: first phase check in , the following remains to be done
 		// File logDirectory = EAM.mainWindow.getLogDirectory();  creation and replace of per project
-		String logLine  = getCommandName() + ": ";
+		String logLine  = "{" + target.getFilename() + "} " + getCommandName() + ": ";
 		HashMap logData = getLogData();
 		if (logData!=null)
 			logLine = logLine + processLogData(logData);
