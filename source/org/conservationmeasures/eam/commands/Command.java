@@ -83,6 +83,7 @@ public abstract class Command
 	
 	private String processCreateObjectParameter(CreateObjectParameter parms)
 	{
+		if (parms==null) return "";
 		String logLine = parms.getClass().getSimpleName() + "=(";
 		HashMap logData = parms.getLogData();
 		Set keySet = logData.keySet();
