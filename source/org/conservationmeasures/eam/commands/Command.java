@@ -54,15 +54,15 @@ public abstract class Command
 		HashMap logData = getLogData();
 		if (logData!=null)
 			logLine = logLine + processLogData(logData);
-		//System.out.println("LOG ENTRY:  " + logLine);
+		System.out.println("LOG ENTRY:  " + logLine);
 	}
 	
 	private String processLogData(HashMap logData)
 	{
 		String logLine = "";
 		Set keySet = logData.keySet();
-		Arrays.sort(keySet.toArray());
 		String[] keys = (String[])keySet.toArray(new String[0]);
+		Arrays.sort(keys);
 		for (int i=0; i<keys.length; ++i) 
 		{
 			String name = keys[i];
@@ -89,8 +89,8 @@ public abstract class Command
 		String logLine = parms.getClass().getSimpleName() + "=(";
 		HashMap logData = parms.getLogData();
 		Set keySet = logData.keySet();
-		Arrays.sort(keySet.toArray());
 		String[] keys = (String[])keySet.toArray(new String[0]);
+		Arrays.sort(keys);
 		for (int i=0; i<keys.length; ++i) 
 		{
 			String name = keys[i];
