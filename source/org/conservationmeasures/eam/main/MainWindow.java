@@ -498,7 +498,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		File thisProjectDirectory = new File(EAM.getHomeDirectory(), projectToUse.getFilename());
 		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
-		//TODO: SHould copy file to temp dir before delteing.
 		if (commandLogFile.length() > COMMAND_LOG_SIXZE)
 			commandLogFile.delete();
 		return commandLogFile;
