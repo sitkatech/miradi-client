@@ -58,6 +58,9 @@ public abstract class Command
 			if (EAM.mainWindow==null)
 				return;
 			PrintStream logPrintStream = EAM.mainWindow.getCommandLogFile();
+			//TODO: need to handle no project calles
+			if (logPrintStream==null)
+				return;
 			logPrintStream.println("LOG ENTRY:  " + processLogData(target));
 		}
 		catch (Exception e)

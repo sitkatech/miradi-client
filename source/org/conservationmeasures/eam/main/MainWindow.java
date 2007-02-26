@@ -506,6 +506,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public PrintStream getCommandLogFile() throws FileNotFoundException
 	{
+		//TODO: need to handle no project calles
+		if (commandLog==null)
+			return null;
 		FileOutputStream os =  new FileOutputStream(commandLog, true);
 		return new PrintStream(os);
 	}
