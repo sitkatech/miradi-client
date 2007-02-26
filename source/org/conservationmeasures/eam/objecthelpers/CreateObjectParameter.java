@@ -7,7 +7,14 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import java.util.HashMap;
 
+import org.conservationmeasures.eam.commands.Command;
+
 public abstract class CreateObjectParameter
 {
-	abstract public HashMap getLogData();
+	abstract public String getFormatedDataString();
+	
+	protected String formatDataString(HashMap logData)
+	{
+		return "(" + Command.formatLogData(logData) + ")";
+	}
 }

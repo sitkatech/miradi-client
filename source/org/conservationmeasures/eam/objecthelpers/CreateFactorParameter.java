@@ -21,11 +21,11 @@ public class CreateFactorParameter extends CreateObjectParameter
 		return factorType;
 	}
 	
-	public HashMap getLogData()
+	public String getFormatedDataString()
 	{
 		HashMap dataPairs = new HashMap();
 		dataPairs.put(FactorType.class.getSimpleName(), factorType);
-		return dataPairs;
+		return formatDataString(dataPairs);
 	}
 	
 	FactorType factorType;

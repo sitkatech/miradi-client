@@ -19,11 +19,11 @@ public class CreateTaskParameter extends CreateObjectParameter
 		return parentRef;
 	}
 	
-	public HashMap getLogData()
+	public String getFormatedDataString()
 	{
 		HashMap dataPairs = new HashMap();
 		dataPairs.put(ORef.class.getSimpleName(), parentRef);
-		return dataPairs;
+		return formatDataString(dataPairs);
 	}
 	
 	ORef parentRef;

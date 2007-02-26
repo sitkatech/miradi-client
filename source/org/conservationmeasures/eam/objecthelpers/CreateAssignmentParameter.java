@@ -64,14 +64,14 @@ public class CreateAssignmentParameter extends CreateObjectParameter
 		return true;
 	}
 	
-	public HashMap getLogData()
+	public String getFormatedDataString()
 	{
 		HashMap dataPairs = new HashMap();
 		dataPairs.put(TaskId.class.getSimpleName(), taskId);
 		dataPairs.put(ProjectResourceId.class.getSimpleName(), resourceId);
 		dataPairs.put(FundingSourceId.class.getSimpleName(), fundingId);
 		dataPairs.put(AccountingCodeId.class.getSimpleName(), accountingId);
-		return dataPairs;
+		return formatDataString(dataPairs);
 	}
 	
 	TaskId taskId;

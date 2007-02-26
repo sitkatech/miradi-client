@@ -72,7 +72,8 @@ public class CommandCreateObject extends Command
 	{
 		HashMap dataPairs = new HashMap();
 		dataPairs.put("OBJECT_TYPE", new Integer(type));
-		dataPairs.put(CreateObjectParameter.class.getSimpleName(), parameter);
+		if (parameter!=null)
+			dataPairs.put(parameter.getClass().getSimpleName(), parameter.getFormatedDataString());
 		return dataPairs;
 	}
 	

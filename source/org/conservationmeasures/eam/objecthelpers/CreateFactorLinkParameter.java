@@ -27,12 +27,12 @@ public class CreateFactorLinkParameter extends CreateObjectParameter
 		return toId;
 	}
 	
-	public HashMap getLogData()
+	public String getFormatedDataString()
 	{
 		HashMap dataPairs = new HashMap();
 		dataPairs.put("FactorFromId", fromId);
 		dataPairs.put("FactorToId", toId);
-		return dataPairs;
+		return formatDataString(dataPairs);
 	}
 	
 	FactorId fromId;

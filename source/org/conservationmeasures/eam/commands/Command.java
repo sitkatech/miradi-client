@@ -12,7 +12,6 @@ import java.util.Set;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.project.Project;
 
 public abstract class Command
@@ -23,7 +22,7 @@ public abstract class Command
 	
 	public boolean equals(Object other)
 	{
-		return toString().equals(getValue(other));
+		return toString().equals(other.toString());
 	}
 	
 	public boolean isBeginTransaction()
@@ -50,8 +49,6 @@ public abstract class Command
 	
 	private void logData(Project target, HashMap dataPairs) throws CommandFailedException
 	{
-		//TODO: error logs should be wrtten to this file as well, since it is project specific
-		// If we do this then the wrtie(println) shuold be in synk method in main
 		try
 		{
 			//FIXME: null check to handle test code
@@ -61,7 +58,9 @@ public abstract class Command
 			//TODO: need to handle no project calles
 			if (logPrintStream==null)
 				return;
-			logPrintStream.println("LOG ENTRY:  " + processLogData(target));
+			String logLine = "LOG ENTRY:  " + processLogData(target);
+			logPrintStream.println(logLine);
+			EAM.logVerbose(logLine);
 		}
 		catch (Exception e)
 		{
@@ -71,13 +70,11 @@ public abstract class Command
 	
 	private String processLogData(Project target)
 	{
-		String logLine  = "{" + target.getFilename() + "} " + getCommandName() + ": ";
-		HashMap logData = getLogData();
-		logLine = logLine + processLogData(logData);
-		return logLine;
+		String logLine  =  getCommandName() + ": ";
+		return logLine + formatLogData(getLogData());
 	}
 	
-	private String processLogData(HashMap logData)
+	public static String formatLogData(HashMap logData)
 	{
 		String logLine = "";
 		String[] keys = getSortedKeys(logData);
@@ -89,41 +86,14 @@ public abstract class Command
 		}
 		return logLine;
 	}
-
-	private String processLogItem(String name, Object object)
+	
+	public static String processLogItem(String name, Object object)
 	{
-		if(name.equals(CreateObjectParameter.class.getSimpleName()))
-		{
-			return processCreateObjectParameter((CreateObjectParameter)object);
-		}
-		return name + "=" + getValue(object);
+		String value = (object==null)? "NULL" : object.toString();
+		return name + "=" + value;
 	}
 	
-	private String processCreateObjectParameter(CreateObjectParameter parms)
-	{
-		if (parms==null) 
-			return "";
-		
-		String logLine = parms.getClass().getSimpleName() + "=(";
-		HashMap logData = parms.getLogData();
-		String[] keys = getSortedKeys(logData);
-		for (int i=0; i<keys.length; ++i) 
-		{
-			String name = keys[i];
-			Object object = logData.get(name);
-			logLine = logLine + name + "=" + getValue(object) + ", " ;
-		}
-		return logLine + ")";
-	}
-	
-	private String getValue(Object object)
-	{
-		if (object==null)
-			return "NULL";
-		return object.toString();
-	}
-	
-	private String[] getSortedKeys(HashMap logData)
+	public static String[] getSortedKeys(HashMap logData)
 	{
 		Set keySet = logData.keySet();
 		String[] keys = (String[])keySet.toArray(new String[0]);

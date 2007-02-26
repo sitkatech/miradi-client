@@ -34,13 +34,13 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 		return toId;
 	}
 	
-	public HashMap getLogData()
+	public String getFormatedDataString()
 	{
 		HashMap dataPairs = new HashMap();
 		dataPairs.put(FactorLinkId.class.getSimpleName(), factorLinkId);
 		dataPairs.put("FactorFromId", fromId);
 		dataPairs.put("FactorToID", toId);
-		return dataPairs;
+		return formatDataString(dataPairs);
 	}
 	
 	private FactorLinkId factorLinkId;
