@@ -73,8 +73,7 @@ public abstract class Command
 	{
 		String logLine  = "{" + target.getFilename() + "} " + getCommandName() + ": ";
 		HashMap logData = getLogData();
-		if (logData!=null)
-			logLine = logLine + processLogData(logData);
+		logLine = logLine + processLogData(logData);
 		return logLine;
 	}
 	
