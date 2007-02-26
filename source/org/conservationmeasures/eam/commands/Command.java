@@ -5,11 +5,13 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.project.Project;
 
@@ -46,15 +48,31 @@ public abstract class Command
 		throw new CommandFailedException("Unimplemented getReverseCommand: " + getClass());
 	}
 	
-	public void logData(Project target, HashMap dataPairs) throws CommandFailedException
+	private void logData(Project target, HashMap dataPairs) throws CommandFailedException
 	{
-		//TODO: first phase check in , the following remains to be done
-		// File logDirectory = EAM.mainWindow.getLogDirectory();  creation and replace of per project
+		//TODO: error logs should be wrtten to this file as well, since it is project specific
+		// If we do this then the wrtie(println) shuold be in synk method in main
+		try
+		{
+			//FIXME: null check to handle test code
+			if (EAM.mainWindow==null)
+				return;
+			PrintStream logPrintStream = EAM.mainWindow.getCommandLogFile();
+			logPrintStream.println("LOG ENTRY:  " + processLogData(target));
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	private String processLogData(Project target)
+	{
 		String logLine  = "{" + target.getFilename() + "} " + getCommandName() + ": ";
 		HashMap logData = getLogData();
 		if (logData!=null)
 			logLine = logLine + processLogData(logData);
-		//System.out.println("LOG ENTRY:  " + logLine);
+		return logLine;
 	}
 	
 	private String processLogData(HashMap logData)
