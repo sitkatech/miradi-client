@@ -58,7 +58,7 @@ public abstract class Command
 			//TODO: need to handle no project calles
 			if (logPrintStream==null)
 				return;
-			String logLine = "LOG ENTRY:  " + processLogData(target);
+			String logLine = "LOG ENTRY:  " + logDataAsString(target);
 			logPrintStream.println(logLine);
 			EAM.logVerbose(logLine);
 		}
@@ -68,7 +68,7 @@ public abstract class Command
 		}
 	}
 	
-	private String processLogData(Project target)
+	private String logDataAsString(Project target)
 	{
 		String logLine  =  getCommandName() + ": ";
 		return logLine + formatLogData(getLogData());
@@ -82,12 +82,12 @@ public abstract class Command
 		{
 			String name = keys[i];
 			Object object = logData.get(name);
-			logLine = logLine + processLogItem(name, object)+ ", " ;
+			logLine = logLine + logItemAsString(name, object)+ ", " ;
 		}
 		return logLine;
 	}
 	
-	public static String processLogItem(String name, Object object)
+	public static String logItemAsString(String name, Object object)
 	{
 		String value = (object==null)? "NULL" : object.toString();
 		return name + "=" + value;
