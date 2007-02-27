@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
-import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
@@ -51,16 +50,8 @@ public abstract class Command
 	{
 		try
 		{
-			//FIXME: null check to handle test code
-			if (EAM.mainWindow==null)
-				return;
-			PrintStream logPrintStream = EAM.mainWindow.getCommandLogFile();
-			//TODO: need to handle no project calles
-			if (logPrintStream==null)
-				return;
 			String logLine = logDataAsString(target);
-			logPrintStream.println(logLine);
-			EAM.logVerbose("Command Executed: " +logLine);
+			target.writeLogLine(logLine);
 		}
 		catch (Exception e)
 		{

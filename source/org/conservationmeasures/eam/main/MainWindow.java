@@ -15,10 +15,7 @@ import java.awt.datatransfer.Transferable;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.util.Arrays;
 
 import javax.swing.Box;
@@ -241,8 +238,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			getDiagramComponent().setGraphLayoutCache(project.getGraphLayoutCache());
 			getProject().updateVisibilityOfFactors();
 			getDiagramComponent().requestFocus();
-			
-			setCommandLogFile(project);
 		}
 		catch(UnknownCommandException e)
 		{
@@ -493,33 +488,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return linkDescription.startsWith(HTTP_PROTOCOL) || linkDescription.startsWith(MAIL_PROTOCOL);
 	}
 	
-	
-	private File createCommandLogFile(Project projectToUse) throws IOException
-	{
-		File thisProjectDirectory = new File(EAM.getHomeDirectory(), projectToUse.getFilename());
-		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
-		if (commandLogFile.exists())
-			commandLogFile.delete();
-		return commandLogFile;
-	}
-	
-	public PrintStream getCommandLogFile() throws FileNotFoundException
-	{
-		//TODO: need to handle no project calles
-		if (commandLog==null)
-			return null;
-		FileOutputStream os =  new FileOutputStream(commandLog, true);
-		return new PrintStream(os);
-	}
-	
-	private void setCommandLogFile(Project projectToUse) throws IOException
-	{
-		commandLog = createCommandLogFile(projectToUse);
-		getCommandLogFile().println("LOG ENTRY: Project Opened");
-	}
-	
-	private static final String COMMAND_LOG_FILE_NAME = "command.log";
-	
+
 	private static String HTTP_PROTOCOL = "http";
 	private static String MAIL_PROTOCOL = "mailto:";
 	
@@ -550,6 +519,5 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private MainStatusBar mainStatusBar;
 	
 	private WizardManager wizardManager;
-	private File commandLog;
 	
 }

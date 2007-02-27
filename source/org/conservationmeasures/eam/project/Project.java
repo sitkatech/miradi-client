@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Point;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.DecimalFormat;
@@ -339,15 +340,43 @@ public class Project
 	public void createOrOpen(File projectDirectory) throws Exception
 	{
 		clear();
-
+			
 		if(ProjectServer.isExistingProject(projectDirectory))
 			openProject(projectDirectory);
 		else
 			createProject(projectDirectory);
 		
+		setCommandLogFile();
+		
 		finishOpening();
 	}
 
+	
+	
+	private File createCommandLogFile() throws IOException
+	{
+		File thisProjectDirectory = new File(EAM.getHomeDirectory(), getFilename());
+		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
+		if (commandLogFile.exists())
+			commandLogFile.delete();
+		return commandLogFile;
+	}
+	
+	private void setCommandLogFile() throws IOException
+	{
+		commandLog = createCommandLogFile();
+		writeLogLine("LOG ENTRY: Project Opened");
+	}
+
+	public void writeLogLine(String logLine) throws IOException
+	{
+		FileOutputStream os =  new FileOutputStream(commandLog, true);
+		PrintStream logPrintStream = new PrintStream(os);
+		logPrintStream.println(logLine);
+		EAM.logVerbose("Command Executed: " +logLine);
+		os.close();
+	}
+	
 	private void createDefaultObjectsIfNeeded() throws Exception
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
@@ -959,6 +988,8 @@ public class Project
 		return formatter;
 	}
 
+	
+
 	public static final String MONITORING_VIEW_NAME = "Monitoring Plan";
 	public static final String STRATEGIC_PLAN_VIEW_NAME = "Strategic Plan";
 	public static final String IMAGES_VIEW_NAME = "Library";
@@ -978,6 +1009,10 @@ public class Project
 
 	private static final int MAX_PROJECT_FILENAME_LENGTH = 32;
 
+	
+	private static final String COMMAND_LOG_FILE_NAME = "command.log";
+	File commandLog;
+	
 	ProjectInfo projectInfo;
 	ObjectManager objectManager;
 	UndoRedoState undoRedoState;
