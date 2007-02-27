@@ -61,8 +61,7 @@ public abstract class Command
 	
 	private String logDataAsString(Project target)
 	{
-		String logLine  =  getCommandName() + ": ";
-		return logLine + formatLogData(getLogData());
+		return getCommandName() + ": " + formatLogData(getLogData());
 	}
 	
 	public static String formatLogData(HashMap logData)
