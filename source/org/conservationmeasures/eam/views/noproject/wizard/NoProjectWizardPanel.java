@@ -202,7 +202,6 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 			Project.validateNewProject(newName);
 			File newFile = new File(EAM.getHomeDirectory(),newName);
 			getMainWindow().createOrOpenProject(newFile);
-			refresh();
 		}
 		catch (Exception e)
 		{
