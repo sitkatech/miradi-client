@@ -37,8 +37,7 @@ public abstract class Command
 	public void executeAndLog(Project target) throws CommandFailedException
 	{
 		execute(target);
-		HashMap dataPairs = getLogData();
-		logData(target, dataPairs);
+		logData(target, getLogData());
 	}
 	
 	public Command getReverseCommand() throws CommandFailedException
@@ -50,8 +49,7 @@ public abstract class Command
 	{
 		try
 		{
-			String logLine = logDataAsString(target);
-			target.writeLogLine(logLine);
+			target.writeLogLine(logDataAsString(target));
 		}
 		catch (Exception e)
 		{
