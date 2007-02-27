@@ -58,9 +58,9 @@ public abstract class Command
 			//TODO: need to handle no project calles
 			if (logPrintStream==null)
 				return;
-			String logLine = "LOG ENTRY:  " + logDataAsString(target);
+			String logLine = logDataAsString(target);
 			logPrintStream.println(logLine);
-			EAM.logVerbose(logLine);
+			EAM.logVerbose("Command Executed: " +logLine);
 		}
 		catch (Exception e)
 		{
