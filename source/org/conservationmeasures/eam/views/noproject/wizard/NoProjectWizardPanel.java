@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
@@ -191,18 +192,21 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		}
 	}
 
-	private void createProject() throws Exception
+	private void createProject()
 	{
 		String newName = getValue(NEW_PROJECT_NAME);
-		if (newName.length()>0)
+		if (newName.length()<=0)
+			return;
+		try 
 		{
-			if (getMainWindow().getProject().isValidProjectFilename(newName))
-			{
-				File newFile = new File(EAM.getHomeDirectory(),newName);
-				getMainWindow().createOrOpenProject(newFile);
-			}
-			else
-				EAM.notifyDialog(EAM.text("Invalid project name, choose another name."));
+			Project.validateNewProject(newName);
+			File newFile = new File(EAM.getHomeDirectory(),newName);
+			getMainWindow().createOrOpenProject(newFile);
+			refresh();
+		}
+		catch (Exception e)
+		{
+			EAM.notifyDialog("Create Failed:" +e.getMessage());
 		}
 	}
 
