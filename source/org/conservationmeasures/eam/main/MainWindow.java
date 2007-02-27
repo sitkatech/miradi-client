@@ -498,7 +498,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		File thisProjectDirectory = new File(EAM.getHomeDirectory(), projectToUse.getFilename());
 		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
-		if (commandLogFile.length() > COMMAND_LOG_SIXZE)
+		if (commandLogFile.exists())
 			commandLogFile.delete();
 		return commandLogFile;
 	}
@@ -519,7 +519,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	}
 	
 	private static final String COMMAND_LOG_FILE_NAME = "command.log";
-	private static final int COMMAND_LOG_SIXZE = 100000;
 	
 	private static String HTTP_PROTOCOL = "http";
 	private static String MAIL_PROTOCOL = "mailto:";
