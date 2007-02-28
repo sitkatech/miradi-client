@@ -346,31 +346,26 @@ public class Project
 		else
 			createProject(projectDirectory);
 		
-		setCommandLogFile();
+		writeStartingLogEntry();
 		
 		finishOpening();
 	}
 
-	
-	
-	private File createCommandLogFile() throws IOException
+
+	private void writeStartingLogEntry() throws IOException
 	{
 		File thisProjectDirectory = new File(EAM.getHomeDirectory(), getFilename());
 		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
 		if (commandLogFile.exists())
 			commandLogFile.delete();
-		return commandLogFile;
-	}
-	
-	private void setCommandLogFile() throws IOException
-	{
-		commandLog = createCommandLogFile();
 		writeLogLine("LOG ENTRY: Project Opened");
 	}
 
 	public void writeLogLine(String logLine) throws IOException
 	{
-		FileOutputStream os =  new FileOutputStream(commandLog, true);
+		File thisProjectDirectory = new File(EAM.getHomeDirectory(), getFilename());
+		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
+		FileOutputStream os = new FileOutputStream(commandLogFile, true);
 		PrintStream logPrintStream = new PrintStream(os);
 		logPrintStream.println(logLine);
 		EAM.logVerbose("Command Executed: " +logLine);
@@ -1008,10 +1003,8 @@ public class Project
 	public static final int DEFAULT_GRID_SIZE = 15;
 
 	private static final int MAX_PROJECT_FILENAME_LENGTH = 32;
-
 	
 	private static final String COMMAND_LOG_FILE_NAME = "command.log";
-	File commandLog;
 	
 	ProjectInfo projectInfo;
 	ObjectManager objectManager;
