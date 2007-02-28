@@ -103,7 +103,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if(indicators.size() == 1)
 				indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
 			else if(indicators.size() > 1)
-				indicatorText = "*";
+				indicatorText = "+";
 		}
 		
 		objectivesText = null;
