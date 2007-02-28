@@ -364,6 +364,11 @@ public class Project
 	public void writeLogLine(String logLine) throws IOException
 	{
 		File thisProjectDirectory = new File(EAM.getHomeDirectory(), getFilename());
+		
+		//TODO: this line is here to support test code
+		if (!thisProjectDirectory.exists())
+			return;
+		
 		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
 		FileOutputStream os = new FileOutputStream(commandLogFile, true);
 		PrintStream logPrintStream = new PrintStream(os);
