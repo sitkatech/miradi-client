@@ -358,7 +358,7 @@ public class Project
 		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
 		if (commandLogFile.exists())
 			commandLogFile.delete();
-		writeLogLine("LOG ENTRY: Project Opened");
+		writeLogLine("Project Opened");
 	}
 
 	public void writeLogLine(String logLine) throws IOException
