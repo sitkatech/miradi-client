@@ -18,12 +18,12 @@ import org.conservationmeasures.eam.dialogs.PossibleTeamMembersPanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.ModifyResource;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.martus.swing.UiScrollPane;
 
 public class SummaryView extends TabbedView
 {
@@ -73,10 +73,7 @@ public class SummaryView extends TabbedView
 	
 	void addPanelAsTab(ObjectDataInputPanel panel)
 	{
-		UiScrollPane uiScrollPane= new UiScrollPane(panel);
-		addTab(panel.getPanelDescription(), uiScrollPane);
-		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
-		uiScrollPane.getVerticalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
+		addTab(panel.getPanelDescription(), new FastScrollPane(panel));
 	}
 
 	public void deleteTabs() throws Exception

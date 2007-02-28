@@ -1011,8 +1011,6 @@ public class Project
 	
 	private static final String COMMAND_LOG_FILE_NAME = "command.log";
 	
-	public static final int SCROLL_UNIT_INCREMENT = 15;
-	
 	ProjectInfo projectInfo;
 	ObjectManager objectManager;
 	UndoRedoState undoRedoState;

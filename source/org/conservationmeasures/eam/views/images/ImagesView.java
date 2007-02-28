@@ -14,10 +14,10 @@ import javax.swing.JTabbedPane;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.ResourceImageIcon;
-import org.martus.swing.UiScrollPane;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -45,10 +45,7 @@ public class ImagesView extends UmbrellaView
 		JPanel panel = new JPanel(new GridLayoutPlus(0,1));
 		panel.add(getIntroText());
 		panel.add(new ImagesComponent(), BorderLayout.CENTER);
-		UiScrollPane uiScrollPane= new UiScrollPane(panel);
-		add(uiScrollPane);
-		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
-		uiScrollPane.getVerticalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
+		add(new FastScrollPane(panel));
 	}
 
 	public void becomeInactive() throws Exception
