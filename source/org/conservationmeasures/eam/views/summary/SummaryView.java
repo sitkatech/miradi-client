@@ -73,7 +73,10 @@ public class SummaryView extends TabbedView
 	
 	void addPanelAsTab(ObjectDataInputPanel panel)
 	{
-		addTab(panel.getPanelDescription(), new UiScrollPane(panel));
+		UiScrollPane uiScrollPane= new UiScrollPane(panel);
+		addTab(panel.getPanelDescription(), uiScrollPane);
+		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
+		uiScrollPane.getVerticalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
 	}
 
 	public void deleteTabs() throws Exception

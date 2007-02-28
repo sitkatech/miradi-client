@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiScrollPane;
@@ -31,7 +32,10 @@ public class ProjectListPanel extends JPanel
 		
 		
 		add(intro, BorderLayout.BEFORE_FIRST_LINE);
-		add(new UiScrollPane(projectList), BorderLayout.CENTER);
+		UiScrollPane uiScrollPane = new UiScrollPane(projectList);
+		add(uiScrollPane, BorderLayout.CENTER);
+		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
+		uiScrollPane.getVerticalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
 		Border lineBorder = BorderFactory.createLineBorder(Color.BLACK, 2);
 		Border emptyBorder = BorderFactory.createEmptyBorder(3,3,3,3);
 		setBorder(BorderFactory.createCompoundBorder(emptyBorder, lineBorder));

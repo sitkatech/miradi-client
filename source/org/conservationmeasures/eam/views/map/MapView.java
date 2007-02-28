@@ -46,7 +46,10 @@ public class MapView extends UmbrellaView
 		JPanel panel = new JPanel(new GridLayoutPlus(0,1));
 		panel.add(getIntroText());
 		panel.add(new MapComponent(), BorderLayout.CENTER);
-		add(new UiScrollPane(panel));
+		UiScrollPane uiScrollPane= new UiScrollPane(panel);
+		add(uiScrollPane);
+		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
+		uiScrollPane.getVerticalScrollBar().setUnitIncrement(Project.SCROLL_UNIT_INCREMENT);
 	}
 	
 
