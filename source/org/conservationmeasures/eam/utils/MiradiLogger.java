@@ -81,10 +81,15 @@ public class MiradiLogger
 			log("VERBOSE: ", text);
 	}
 	
+	public void logPlainString(String text)
+	{
+		logDestination.println(text);
+		logDestination.flush();
+	}
+	
 	private void log(String type, String text)
 	{
-		logDestination.println(type + text);
-		logDestination.flush();
+		logPlainString(type + text);
 	}
 	
 	private int level;
