@@ -60,6 +60,23 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return false;
 	}
 	
+	
+	public FactorLinkId getLinkedId(FactorId nodeId1, FactorId nodeId2)
+	{
+		for(int i = 0; i < getIds().length; ++i)
+		{
+			FactorLink thisLinkage = getLinkage(i);
+			FactorId fromId = thisLinkage.getFromFactorId();
+			FactorId toId = thisLinkage.getToFactorId();
+			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
+				return (FactorLinkId) thisLinkage.getId();
+			if(fromId.equals(nodeId2) && toId.equals(nodeId1))
+				return (FactorLinkId) thisLinkage.getId();
+		}
+		return null;
+	}
+	
+	
 	public FactorLinkId[] getFactorLinkIds()
 	{
 		BaseId[] rawIds = getIds();

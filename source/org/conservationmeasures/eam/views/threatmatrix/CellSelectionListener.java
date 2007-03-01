@@ -54,7 +54,7 @@ class CellSelectionListener implements ListSelectionListener
 		if(model.isSumaryColumn(row, column) || model.isSumaryRow(row, column))
 			return null;
 		
-		if(!isLinked(row, column))
+		if(!threatTable.areLinked(row, column))
 			offerToCreateLink(row, column);
 		
 		return model.getBundle(row, column);
@@ -88,11 +88,6 @@ class CellSelectionListener implements ListSelectionListener
 		}
 	}
 
-	private boolean isLinked(int row, int column)
-	{
-		ThreatMatrixTableModel model = (ThreatMatrixTableModel) threatTable.getModel();
-		return model.getProject().isLinked(model.getThreatId(row), model.getTargetId(column));
-	}
 	
 	private void unselectToForceFutureNotifications(int row, int column)
 	{

@@ -63,7 +63,7 @@ public class Delete extends ProjectDoer
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactorLink())
-					deleteFactorLink(cell.getDiagramFactorLink());	
+					deleteFactorLink(getProject(), cell.getDiagramFactorLink());	
 			}
 			
 			for(int i=0; i < selectedRelatedCells.length; ++i)
@@ -83,16 +83,16 @@ public class Delete extends ProjectDoer
 		}
 	}
 
-	private void deleteFactorLink(DiagramFactorLink linkageToDelete) throws CommandFailedException
+	public static void deleteFactorLink(Project project, DiagramFactorLink linkageToDelete) throws CommandFailedException
 	{	
 		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
 		CommandDiagramRemoveFactorLink removeCommand = new CommandDiagramRemoveFactorLink(id);
-		getProject().executeCommand(removeCommand);
+		project.executeCommand(removeCommand);
 		
-		Command[] commandsToClear = getProject().findObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId()).createCommandsToClear();
-		getProject().executeCommands(commandsToClear);
+		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId()).createCommandsToClear();
+		project.executeCommands(commandsToClear);
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId());
-		getProject().executeCommand(deleteLinkage);
+		project.executeCommand(deleteLinkage);
 	}
 
 	// TODO: This method should be inside Project and should have unit tests
