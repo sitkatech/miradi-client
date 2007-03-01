@@ -31,6 +31,9 @@ import org.martus.util.UnicodeReader;
 public class EAM
 {
 
+	// MUST be positioned before main() so it gets initialized first
+	private static MiradiLogger logger = new MiradiLogger();
+
 	public static void main(String[] args)
 	{
 		if(!handleEamToMiradiMigration())
@@ -361,7 +364,6 @@ public class EAM
 	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
 
-	private static MiradiLogger logger = new MiradiLogger();
 }
 
 
