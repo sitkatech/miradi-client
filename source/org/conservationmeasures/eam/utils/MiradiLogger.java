@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.utils;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class Logging
+public class MiradiLogger
 {
-	public Logging()
+	public MiradiLogger()
 	{
 		logDestination = System.out;
 	}

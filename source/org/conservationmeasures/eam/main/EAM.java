@@ -22,7 +22,7 @@ import javax.swing.UIManager;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.utils.Logging;
+import org.conservationmeasures.eam.utils.MiradiLogger;
 import org.conservationmeasures.eam.utils.Translation;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiNotifyDlg;
@@ -208,10 +208,10 @@ public class EAM
 		String[] args;
 	}
 	
-	public static final int LOG_QUIET = Logging.LOG_QUIET;
-	public static final int LOG_NORMAL = Logging.LOG_NORMAL;
-	public static final int LOG_DEBUG = Logging.LOG_DEBUG;
-	public static final int LOG_VERBOSE = Logging.LOG_VERBOSE;
+	public static final int LOG_QUIET = MiradiLogger.LOG_QUIET;
+	public static final int LOG_NORMAL = MiradiLogger.LOG_NORMAL;
+	public static final int LOG_DEBUG = MiradiLogger.LOG_DEBUG;
+	public static final int LOG_VERBOSE = MiradiLogger.LOG_VERBOSE;
 	
 
 	///////////////////////////////////////////////////////////////////
@@ -361,7 +361,7 @@ public class EAM
 	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
 
-	private static Logging logger = new Logging();
+	private static MiradiLogger logger = new MiradiLogger();
 }
 
 
