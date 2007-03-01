@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetFactorSize extends Command
 {
@@ -45,7 +44,7 @@ public class CommandSetFactorSize extends Command
 			if(expectedSize != null && !currentNodeSize.equals(expectedSize))
 				throw new Exception("CommandSetNodeSize expected " + expectedSize + " but was " + currentNodeSize);
 			node.setSize(desiredSize);
-			Logging.logVerbose("Updating Cell Size from:"+ expectedSize +" to:"+ desiredSize);
+			EAM.logVerbose("Updating Cell Size from:"+ expectedSize +" to:"+ desiredSize);
 			model.updateCell(node);
 			return currentNodeSize;
 		}

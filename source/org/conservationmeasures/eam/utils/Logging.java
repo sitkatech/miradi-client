@@ -10,38 +10,43 @@ import java.io.PrintStream;
 
 public class Logging
 {
-	private static void setLogDestination(PrintStream dest)
+	public Logging()
+	{
+		logDestination = System.out;
+	}
+	
+	private void setLogDestination(PrintStream dest)
 	{
 		logDestination = dest;
 	}
 	
-	public static void setExceptionLoggingDestination(PrintStream destination)
+	public void setExceptionLoggingDestination(PrintStream destination)
 	{
 		exceptionDestination = destination;
 	}
 	
-	public static void setLogToString()
+	public void setLogToString()
 	{
 		logContents = new ByteArrayOutputStream();
 		setLogDestination(new PrintStream(logContents));
 	}
 	
-	public static void setLogToConsole()
+	public void setLogToConsole()
 	{
 		setLogDestination(System.out);
 	}
 	
-	public static String getLoggedString()
+	public String getLoggedString()
 	{
 		return logContents.toString();
 	}
 	
-	public static void setLogLevel(int logLevel)
+	public void setLogLevel(int logLevel)
 	{
 		level = logLevel;
 	}
 	
-	public static void logException(Exception e)
+	public void logException(Exception e)
 	{
 		logDestination.println("ERROR: ");
 		e.printStackTrace(logDestination);
@@ -53,39 +58,39 @@ public class Logging
 		}
 	}
 	
-	public static void logError(String text)
+	public void logError(String text)
 	{
 		log("ERROR: ", text);
 	}
 	
-	public static void logWarning(String text)
+	public void logWarning(String text)
 	{
 		if(level >= LOG_NORMAL)
 			log("WARNING: ", text);
 	}
 	
-	public static void logDebug(String text)
+	public void logDebug(String text)
 	{
 		if(level >= LOG_DEBUG)
 			log("DEBUG: ", text);
 	}
 	
-	public static void logVerbose(String text)
+	public void logVerbose(String text)
 	{
 		if(level >= LOG_VERBOSE)
 			log("VERBOSE: ", text);
 	}
 	
-	private static void log(String type, String text)
+	private void log(String type, String text)
 	{
 		logDestination.println(type + text);
 		logDestination.flush();
 	}
 	
-	private static int level;
-	private static PrintStream logDestination = System.out;
-	private static ByteArrayOutputStream logContents;
-	private static PrintStream exceptionDestination = null;
+	private int level;
+	private PrintStream logDestination;
+	private ByteArrayOutputStream logContents;
+	private PrintStream exceptionDestination;
 
 	public static final int LOG_QUIET = -1;
 	public static final int LOG_NORMAL = 0;

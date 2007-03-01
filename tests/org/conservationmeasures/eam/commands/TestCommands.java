@@ -39,7 +39,6 @@ import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
-import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.conservationmeasures.eam.views.map.MapView;
 
@@ -119,12 +118,12 @@ public class TestCommands extends EAMTestCase
 
 	private void logToConsole()
 	{
-		Logging.setLogToConsole();
+		EAM.setLogToConsole();
 	}
 
 	private void ignoreLogs()
 	{
-		Logging.setLogToString();
+		EAM.setLogToString();
 	}
 	
 	public void testCommandDeleteObject_ThreatRatingValueOption() throws Exception

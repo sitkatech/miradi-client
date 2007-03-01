@@ -11,27 +11,27 @@ import java.awt.Point;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
+import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class FactorCommandHelper
@@ -94,7 +94,7 @@ public class FactorCommandHelper
 			
 			CommandSetObjectData newNodeLabel = createSetLabelCommand(addCommand.getFactorId(), nodeData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeLabel);
-			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
+			EAM.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
 			
 			
 		}
@@ -139,14 +139,14 @@ public class FactorCommandHelper
 			DiagramFactorId newToId = dataHelper.getNewId(linkageData.getToId());
 			if(newFromId.isInvalid() || newToId.isInvalid())
 			{
-				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromId() + " to OriginalId:" + linkageData.getToId()+" node deleted?");	
+				EAM.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromId() + " to OriginalId:" + linkageData.getToId()+" node deleted?");	
 				continue;
 			}
 			
 			DiagramFactor newFromNode = getDiagramFactorById(newFromId);
 			DiagramFactor newToNode = getDiagramFactorById(newToId);
 			CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, newFromNode.getWrappedId(), newToNode.getWrappedId());
-			Logging.logDebug("Paste Link : " + addLinkageCommand.getFactorLinkId() + " from:" + newFromId + " to:" + newToId);
+			EAM.logDebug("Paste Link : " + addLinkageCommand.getFactorLinkId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}
 	

@@ -12,6 +12,8 @@ import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import org.conservationmeasures.eam.main.EAM;
+
 
 public class Translation
 {
@@ -32,7 +34,7 @@ public class Translation
 		Locale actualLocaleUsed = currentResourceBundle.getLocale();
 		if(!locale.equals(actualLocaleUsed))
 		{
-			Logging.logWarning("Requested " + locale + " but fell back to: " + actualLocaleUsed);
+			EAM.logWarning("Requested " + locale + " but fell back to: " + actualLocaleUsed);
 		}
 	}
 
@@ -53,7 +55,7 @@ public class Translation
 		}
 		catch(MissingResourceException e)
 		{
-			Logging.logWarning("Unknown translation key: " + key);
+			EAM.logWarning("Unknown translation key: " + key);
 			return "<" + extractPartToDisplay(key) + ">";
 		}
 	}

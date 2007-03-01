@@ -85,7 +85,7 @@ public class EAM
 		try
 		{
 			File destination = new File(getHomeDirectory(), "exceptions.log");
-			Logging.setExceptionLoggingDestination(new PrintStream(new FileOutputStream(destination)));
+			logger.setExceptionLoggingDestination(new PrintStream(new FileOutputStream(destination)));
 		}
 		catch(FileNotFoundException e)
 		{
@@ -142,47 +142,47 @@ public class EAM
 	// Logging
 	public static void setLogToString()
 	{
-		Logging.setLogToString();
+		logger.setLogToString();
 	}
 	
 	public static void setLogToConsole()
 	{
-		Logging.setLogToConsole();
+		logger.setLogToConsole();
 	}
 	
 	public static String getLoggedString()
 	{
-		return Logging.getLoggedString();
+		return logger.getLoggedString();
 	}
 	
 	public static void setLogLevel(int level)
 	{
-		Logging.setLogLevel(level);
+		logger.setLogLevel(level);
 	}
 	
 	public static void logException(Exception e)
 	{
-		Logging.logException(e);
+		logger.logException(e);
 	}
 	
 	public static void logError(String text)
 	{
-		Logging.logError(text);
+		logger.logError(text);
 	}
 	
 	public static void logWarning(String text)
 	{
-		Logging.logWarning(text);
+		logger.logWarning(text);
 	}
 	
 	public static void logDebug(String text)
 	{
-		Logging.logDebug(text);
+		logger.logDebug(text);
 	}
 	
 	public static void logVerbose(String text)
 	{
-		Logging.logVerbose(text);
+		logger.logVerbose(text);
 	}
 	
 	private static final class MainWindowRunner implements Runnable
@@ -361,6 +361,7 @@ public class EAM
 	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
 
+	private static Logging logger = new Logging();
 }
 
 

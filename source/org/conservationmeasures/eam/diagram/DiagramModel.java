@@ -40,7 +40,6 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
@@ -257,7 +256,7 @@ public class DiagramModel extends DefaultGraphModel
 			DiagramFactor factorToMove = getDiagramFactorById(id);
 			Point oldLocation = factorToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
-			Logging.logVerbose("moved Node from:"+ oldLocation +" to:"+ newLocation);
+			EAM.logVerbose("moved Node from:"+ oldLocation +" to:"+ newLocation);
 			factorToMove.setLocation(newLocation);
 			updateCell(factorToMove);
 		}
