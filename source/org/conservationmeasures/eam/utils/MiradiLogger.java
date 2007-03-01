@@ -5,19 +5,21 @@
 */ 
 package org.conservationmeasures.eam.utils;
 
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
 public class MiradiLogger
 {
 	public MiradiLogger()
 	{
-		logDestination = System.out;
-	}
-	
-	private void setLogDestination(PrintStream dest)
-	{
-		logDestination = dest;
+		log = Logger.getLogger("org.miradi");
+		log.setUseParentHandlers(false);
+		setLogLevel(LOG_NORMAL);
+		setLogToConsole();
 	}
 	
 	public void setExceptionLoggingDestination(PrintStream destination)
@@ -27,30 +29,61 @@ public class MiradiLogger
 	
 	public void setLogToString()
 	{
-		logContents = new ByteArrayOutputStream();
-		setLogDestination(new PrintStream(logContents));
+		removeAllHandlers();
+		log.addHandler(new StringHandler());
 	}
 	
 	public void setLogToConsole()
 	{
-		setLogDestination(System.out);
+		removeAllHandlers();
+		log.addHandler(new ConsoleHandler());
 	}
 	
 	public String getLoggedString()
 	{
-		return logContents.toString();
+		StringHandler handler = (StringHandler)log.getHandlers()[0];
+		return handler.getLoggedString();
+	}
+	
+	class StringHandler extends Handler
+	{
+		public StringHandler()
+		{
+			buffer = new StringBuffer();
+		}
+		
+		public void close() throws SecurityException
+		{
+		}
+
+		public void flush()
+		{
+		}
+
+		public void publish(LogRecord record)
+		{
+			buffer.append(record.getLevel().getName());
+			buffer.append(": ");
+			buffer.append(record.getMessage());
+			buffer.append("\n");
+		}
+		
+		public String getLoggedString()
+		{
+			return buffer.toString();
+		}
+		
+		StringBuffer buffer;
 	}
 	
 	public void setLogLevel(int logLevel)
 	{
-		level = logLevel;
+		log.setLevel(levels[logLevel]);
 	}
 	
 	public void logException(Exception e)
 	{
-		logDestination.println("ERROR: ");
-		e.printStackTrace(logDestination);
-		logDestination.flush();
+		log.log(Level.SEVERE, "Exception", e);
 		if(exceptionDestination != null)
 		{
 			e.printStackTrace(exceptionDestination);
@@ -60,45 +93,38 @@ public class MiradiLogger
 	
 	public void logError(String text)
 	{
-		log("ERROR: ", text);
+		log.log(Level.SEVERE, text);
 	}
 	
 	public void logWarning(String text)
 	{
-		if(level >= LOG_NORMAL)
-			log("WARNING: ", text);
+		log.log(Level.WARNING, text);
 	}
 	
 	public void logDebug(String text)
 	{
-		if(level >= LOG_DEBUG)
-			log("DEBUG: ", text);
+		log.log(Level.INFO, text);
 	}
 	
 	public void logVerbose(String text)
 	{
-		if(level >= LOG_VERBOSE)
-			log("VERBOSE: ", text);
+		log.log(Level.FINE, text);
 	}
 	
-	public void logPlainString(String text)
+	private void removeAllHandlers()
 	{
-		logDestination.println(text);
-		logDestination.flush();
+		Handler[] handlers = log.getHandlers();
+		for(int i = 0; i < handlers.length; ++i)
+			log.removeHandler(handlers[i]);
 	}
 	
-	private void log(String type, String text)
-	{
-		logPlainString(type + text);
-	}
-	
-	private int level;
-	private PrintStream logDestination;
-	private ByteArrayOutputStream logContents;
+	private Logger log;
 	private PrintStream exceptionDestination;
+	
+	private static final Level[] levels = {Level.SEVERE, Level.WARNING, Level.INFO, Level.FINE, };
+	public static final int LOG_QUIET = 0;
+	public static final int LOG_NORMAL = 1;
+	public static final int LOG_DEBUG = 2;
+	public static final int LOG_VERBOSE = 3;
 
-	public static final int LOG_QUIET = -1;
-	public static final int LOG_NORMAL = 0;
-	public static final int LOG_DEBUG = 1;
-	public static final int LOG_VERBOSE = 2;
 }

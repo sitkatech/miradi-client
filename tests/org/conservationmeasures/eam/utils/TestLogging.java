@@ -29,7 +29,7 @@ public class TestLogging extends EAMTestCase
 		EAM.setLogLevel(EAM.LOG_VERBOSE);
 		EAM.setLogToString();
 		EAM.logError(someText);
-		assertEquals("ERROR: " + someText + EAM.NEWLINE, EAM.getLoggedString());
+		assertEquals("SEVERE: " + someText + EAM.NEWLINE, EAM.getLoggedString());
 
 		EAM.setLogToString();
 		EAM.logWarning(someText);
@@ -37,7 +37,7 @@ public class TestLogging extends EAMTestCase
 
 		EAM.setLogToString();
 		EAM.logDebug(someText);
-		assertEquals("DEBUG: " + someText + EAM.NEWLINE, EAM.getLoggedString());
+		assertEquals("INFO: " + someText + EAM.NEWLINE, EAM.getLoggedString());
 	}
 	
 	public void testSetLogLevel()
