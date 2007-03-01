@@ -351,7 +351,7 @@ public class Project
 		finishOpening();
 	}
 
-
+	//TODO: need to remvoe duplicate code after test code fixed as to not need to be tested for
 	private void writeStartingLogEntry() throws IOException
 	{
 		File thisProjectDirectory = new File(EAM.getHomeDirectory(), getFilename());
