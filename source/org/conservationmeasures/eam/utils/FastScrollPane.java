@@ -11,27 +11,10 @@ import org.martus.swing.UiScrollPane;
 
 public class FastScrollPane extends UiScrollPane
 {
-	public FastScrollPane()
-	{
-		super();
-		setUnitIncrements();
-	}
 	
 	public FastScrollPane(Component view)
 	{
 		super(view);
-		setUnitIncrements();
-	}
-
-	public FastScrollPane(int vsbPolicy, int hsbPolicy)
-	{
-		super(vsbPolicy, hsbPolicy);
-		setUnitIncrements();
-	}
-
-	public FastScrollPane(Component view, int vsbPolicy, int hsbPolicy)
-	{
-		super(view, vsbPolicy, hsbPolicy);
 		setUnitIncrements();
 	}
 	
