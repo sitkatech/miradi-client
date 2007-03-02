@@ -146,18 +146,23 @@ public class ThreatMatrixTable extends JTable
 			int col = table.columnAtPoint(event.getPoint());
 			if(model.isSummaryData(row, col))
 				return;
-			boolean areLinked = table.areLinked(row, col);
-			JPopupMenu menu = getRightClickMenu(areLinked, row, col);
+			JPopupMenu menu = getRightClickMenu(table, row, col);
 			menu.show(table, event.getX(), event.getY());
 		}
 	    
-		private JPopupMenu getRightClickMenu(boolean areLinked, int row, int col)
+		private JPopupMenu getRightClickMenu(ThreatMatrixTable table, int row, int col)
 		{
 			JPopupMenu menu = new JPopupMenu();
-			EAMenuItem creamMenuItem = new EAMenuItem(new ActionCreateModelLinkage(!areLinked, row, col));
+			boolean areLinked = table.areLinked(row, col);
+			
+			EAMenuItem creamMenuItem = new EAMenuItem(new ActionCreateModelLinkage(row, col));
+			creamMenuItem.setEnabled(!areLinked);
 			creamMenuItem.setText(EAM.text("Create Link"));
-			EAMenuItem deleteMenuItem = new EAMenuItem(new ActionDeleteModelLinkage(areLinked,  row, col));
+			
+			EAMenuItem deleteMenuItem = new EAMenuItem(new ActionDeleteModelLinkage(row, col));
+			deleteMenuItem.setEnabled(areLinked);
 			deleteMenuItem.setText(EAM.text("Delete Link"));
+			
 			menu.add(creamMenuItem);
 			menu.add(deleteMenuItem);
 			return menu;
@@ -166,9 +171,8 @@ public class ThreatMatrixTable extends JTable
 	
 	class ActionDeleteModelLinkage extends AbstractAction
 	{
-		public ActionDeleteModelLinkage(boolean enabled, int rowToUse, int colToUse)
+		public ActionDeleteModelLinkage(int rowToUse, int colToUse)
 		{
-			setEnabled(enabled);
 			row = rowToUse;
 			col = colToUse;
 		}
@@ -200,9 +204,8 @@ public class ThreatMatrixTable extends JTable
 	
 	class ActionCreateModelLinkage extends AbstractAction
 	{
-		public ActionCreateModelLinkage(boolean enabled, int rowToUse, int colToUse)
+		public ActionCreateModelLinkage(int rowToUse, int colToUse)
 		{
-			setEnabled(enabled);
 			row = rowToUse;
 			col = colToUse;
 		}
