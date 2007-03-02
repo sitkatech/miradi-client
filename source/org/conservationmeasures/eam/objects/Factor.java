@@ -219,6 +219,7 @@ abstract public class Factor extends EAMBaseObject
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
 	public static final String TAG_GOAL_IDS = "GoalIds"; 
+	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS = "KeyEcologicalAttributeIds";
 	public static final String PSEUDO_TAG_GOALS = "PseudoTagGoals";
 	public static final String PSEUDO_TAG_OBJECTIVES = "PseudoTagObjectives";
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
