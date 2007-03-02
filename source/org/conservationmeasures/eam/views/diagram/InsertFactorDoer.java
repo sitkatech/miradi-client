@@ -101,12 +101,18 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 		if (createAt != null)
 			return createAt;
-		else if (selectedFactors.length > 0 && !factorType.isTarget())
-			return getLocationSelectedNonTargetNode(selectedFactors, (int)newFactor.getBounds().getWidth());
-		else if (factorType.isTarget())
+		
+		if (factorType.isTarget())
 			return getTargetLocation(newFactor, getDiagramVisibleRect());
-		else
-			return getCenterLocation(getDiagramVisibleRect());
+		
+		return getNonTargetDeltaPoint(selectedFactors, factorType, newFactor);
+	}
+	
+	private Point getNonTargetDeltaPoint(DiagramFactor[] selectedFactors, FactorType factorType, DiagramFactor newFactor)
+	{
+		if (selectedFactors.length > 0 && !factorType.isTarget())
+			return getLocationSelectedNonTargetNode(selectedFactors, (int)newFactor.getBounds().getWidth());
+		return getCenterLocation(getDiagramVisibleRect());
 	}
 	
 	private Rectangle getDiagramVisibleRect()
