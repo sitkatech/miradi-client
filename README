@@ -65,12 +65,13 @@ Mac OS X:
 - Obtain Miradi-Mac.zip from http://miradi.org and unzip the contents 
   into a temporary directory
 
-- Copy the contents of the LibExt directory to the 
+- Copy the contents of the LibExt directory (not the directory itself) to the 
   System/Library/Java/Extensions folder
 
 - Copy miradi.jar to your desktop, or wherever you wish to launch it from
 
-- Ctrl-click on miradi.jar, and choose "Java Launcher (Default)
+- Ctrl-click on miradi.jar, and choose "Jar Launcher (Default)" or simply 
+  double click to start Miradi
 
 - MarineExample.zip is a sample project that can be imported into Miradi
 
