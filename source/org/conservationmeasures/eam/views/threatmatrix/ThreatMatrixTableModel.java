@@ -44,10 +44,10 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 		if (isOverallProjectRating(row,column))
 			return getFramework().getOverallProjectRating();
 	
-		if (isSumaryRow(row,column))
+		if (isSumaryRow(row))
 			return getFramework().getTargetThreatRatingValue(getTargetId(column));
 	
-		if (isSumaryColumn(row,column))
+		if (isSumaryColumn(column))
 			return getFramework().getThreatThreatRatingValue(getThreatId(row));
 
 		ThreatRatingBundle bundle = realDataGetValueAt(row,column);
@@ -64,14 +64,19 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 		return (row == getDirectThreats().length && column==getTargets().length);
 	}
 	
-	boolean isSumaryRow(int row, int column) 
+	boolean isSumaryRow(int row) 
 	{
 		return (row == getDirectThreats().length);
 	}
 
-	boolean isSumaryColumn(int row, int column) 
+	boolean isSumaryColumn(int column) 
 	{
 		return (column==getTargets().length);
+	}
+	
+	public boolean isSummaryData(int row, int column) 
+	{
+		return isSumaryRow(row)  ||  isSumaryColumn(column);
 	}
 	
 	private Object getDefaultValueOption() 

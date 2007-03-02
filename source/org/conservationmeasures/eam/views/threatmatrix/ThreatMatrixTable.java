@@ -128,10 +128,10 @@ public class ThreatMatrixTable extends JTable
 	    public void mousePressed(MouseEvent event)
 		{
 	    	ThreatMatrixTable table = (ThreatMatrixTable) event.getSource();
+	    	ThreatMatrixTableModel model = (ThreatMatrixTableModel)table.getModel();
 			int row = table.rowAtPoint(event.getPoint());
 			int col = table.columnAtPoint(event.getPoint());
-			final boolean isSummaryCell = (row == table.getRowCount() - 1) || (col == table.getColumnCount() - 1);
-			if(isSummaryCell)
+			if(model.isSummaryData(row, col))
 				return;
 			boolean areLinked = table.areLinked(row, col);
 			JPopupMenu menu = getRightClickMenu(areLinked, row, col);

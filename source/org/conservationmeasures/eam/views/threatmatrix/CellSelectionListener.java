@@ -51,7 +51,7 @@ class CellSelectionListener implements ListSelectionListener
 	private ThreatRatingBundle getBundleIfAny(int row, int column) throws Exception
 	{
 		ThreatMatrixTableModel model = (ThreatMatrixTableModel) threatTable.getModel();
-		if(model.isSumaryColumn(row, column) || model.isSumaryRow(row, column))
+		if(model.isSumaryColumn(column) || model.isSumaryRow(row))
 			return null;
 		
 		if(!threatTable.areLinked(row, column))
