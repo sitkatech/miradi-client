@@ -47,17 +47,7 @@ public class FactorLinkPool extends PoolWithIdAssigner
 	
 	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
 	{
-		for(int i = 0; i < getIds().length; ++i)
-		{
-			FactorLink thisLinkage = getLinkage(i);
-			FactorId fromId = thisLinkage.getFromFactorId();
-			FactorId toId = thisLinkage.getToFactorId();
-			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
-				return true;
-			if(fromId.equals(nodeId2) && toId.equals(nodeId1))
-				return true;
-		}
-		return false;
+		return (getLinkedId(nodeId1, nodeId2)!=null);
 	}
 	
 	
