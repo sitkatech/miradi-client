@@ -185,6 +185,16 @@ public class ThreatMatrixTable extends JTable
 			FactorId threatId = model.getThreatId(row); 
 			FactorId targetId = model.getTargetId(col);
 			FactorLinkId modelLinkageId = project.getFactorLinkPool().getLinkedId(threatId, targetId);
+
+			String[] body = new String[] {
+					EAM.text("Are sure you want to delete the link between these this Threat and Target?"),
+					(model).getThreatName(row),
+					(model).getTargetName(col),
+					};
+			String[] buttons = new String[] {EAM.text("Delete Link"), EAM.text("Cancel")};
+			if(!EAM.confirmDialog(EAM.text("Delete a link?"), body, buttons))
+				return;
+			
 			try
 			{
 				DiagramFactorLink linkageToDelete = diagramModel.getDiagramFactorLinkbyWrappedId(modelLinkageId);
