@@ -94,6 +94,9 @@ abstract public class EAMBaseObject implements EAMObject
 			case ObjectType.FUNDING_SOURCE:
 				return new FundingSource(idAsInt, json);
 				
+			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
+				return new KeyEcologicalAttribute(idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

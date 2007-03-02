@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.FundingSourcePool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
+import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
@@ -85,6 +86,7 @@ public class ObjectManager
 		addNormalPool(new AssignmentPool(ida));
 		addNormalPool(new AccountingCodePool(ida));
 		addNormalPool(new FundingSourcePool(ida));
+		addNormalPool(new KeyEcologicalAttributePool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -158,7 +160,12 @@ public class ObjectManager
 	{
 		return (AssignmentPool)getPool(ObjectType.ASSIGNMENT);
 	}
-	
+
+	public KeyEcologicalAttributePool getKeyEcologicalAttributePool()
+	{
+		return (KeyEcologicalAttributePool)getPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+	}
+
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
