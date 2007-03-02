@@ -127,7 +127,20 @@ public class ThreatMatrixTable extends JTable
 	{
 	    public void mousePressed(MouseEvent event)
 		{
-	    	ThreatMatrixTable table = (ThreatMatrixTable) event.getSource();
+			if (event.isPopupTrigger())
+				showPopUp(event);
+		}
+
+
+	    public void mouseReleased(MouseEvent event)
+	    {
+			if (event.isPopupTrigger())
+				showPopUp(event);
+	    }
+
+		private void showPopUp(MouseEvent event)
+		{
+			ThreatMatrixTable table = (ThreatMatrixTable) event.getSource();
 	    	ThreatMatrixTableModel model = (ThreatMatrixTableModel)table.getModel();
 			int row = table.rowAtPoint(event.getPoint());
 			int col = table.columnAtPoint(event.getPoint());
@@ -137,7 +150,7 @@ public class ThreatMatrixTable extends JTable
 			JPopupMenu menu = getRightClickMenu(areLinked, row, col);
 			menu.show(table, event.getX(), event.getY());
 		}
-
+	    
 		private JPopupMenu getRightClickMenu(boolean areLinked, int row, int col)
 		{
 			JPopupMenu menu = new JPopupMenu();
