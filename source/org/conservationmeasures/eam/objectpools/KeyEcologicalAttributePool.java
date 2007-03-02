@@ -35,14 +35,14 @@ public class KeyEcologicalAttributePool extends EAMNormalObjectPool
 		return new KeyEcologicalAttribute(new KeyEcologicalAttributeId(actualId.asInt()));
 	}
 	
-	public KeyEcologicalAttribute[] getAllIndicators()
+	public KeyEcologicalAttribute[] getAllKeyEcologicalAttribute()
 	{
 		BaseId[] allIds = getIds();
-		KeyEcologicalAttribute[] allIndicators = new KeyEcologicalAttribute[allIds.length];
-		for (int i = 0; i < allIndicators.length; i++)
-			allIndicators[i] = find(allIds[i]);
+		KeyEcologicalAttribute[] allKeyEcologicalAttribute = new KeyEcologicalAttribute[allIds.length];
+		for (int i = 0; i < allKeyEcologicalAttribute.length; i++)
+			allKeyEcologicalAttribute[i] = find(allIds[i]);
 			
-		return allIndicators;
+		return allKeyEcologicalAttribute;
 	}
 }
 
