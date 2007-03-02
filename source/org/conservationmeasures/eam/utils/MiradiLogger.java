@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
+import org.conservationmeasures.eam.main.EAM;
+
 public class MiradiLogger
 {
 	public MiradiLogger()
@@ -65,7 +67,7 @@ public class MiradiLogger
 			buffer.append(record.getLevel().getName());
 			buffer.append(": ");
 			buffer.append(record.getMessage());
-			buffer.append("\n");
+			buffer.append(EAM.NEWLINE);
 		}
 		
 		public String getLoggedString()
