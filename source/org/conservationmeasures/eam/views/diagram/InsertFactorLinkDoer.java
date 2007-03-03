@@ -92,9 +92,11 @@ public class InsertFactorLinkDoer extends ProjectDoer
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromId, toId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		projectToUse.executeCommand(createModelLinkage);
+		
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		projectToUse.executeCommand(command);
+		
 		return command;
 	}
 
