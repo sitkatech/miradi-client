@@ -57,6 +57,8 @@ public class FactorPropertiesPanel extends DisposablePanel
 			objectivesTab.dispose();
 		if(activitiesTab != null)
 			activitiesTab.dispose();
+		if(viabilityTab != null)
+			viabilityTab.dispose();
 		super.dispose();
 	}
 	
@@ -72,6 +74,9 @@ public class FactorPropertiesPanel extends DisposablePanel
 				break;
 			case TAB_GOALS:
 				tabs.setSelectedComponent(goalsTab);
+				break;
+			case TAB_VIABILITY:
+				tabs.setSelectedComponent(viabilityTab);
 				break;
 			default:
 				tabs.setSelectedComponent(detailsTab);
@@ -159,6 +164,10 @@ public class FactorPropertiesPanel extends DisposablePanel
 			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentFactorId(), mainWindow.getActions());
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
+		
+		//TODO: determine when to display
+		viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+		tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab );
 		
 		return tabs;
 	}
@@ -265,6 +274,9 @@ public class FactorPropertiesPanel extends DisposablePanel
 		
 		if (activitiesTab != null)
 			activitiesTab.updateSplitterLocationToMiddle();
+		
+		if (viabilityTab != null)
+			viabilityTab.updateSplitterLocationToMiddle();
 	}
 
 	static final int MAX_LABEL_LENGTH = 40;
@@ -272,12 +284,14 @@ public class FactorPropertiesPanel extends DisposablePanel
 	public static final int TAB_INDICATORS = 1;
 	public static final int TAB_OBJECTIVES = 2;
 	public static final int TAB_GOALS = 3;
+	public static final int TAB_VIABILITY = 4;
 
 	JTabbedPane tabs;
 	FactorDetailsTab detailsTab;
 	ObjectiveListManagementPanel objectivesTab;
 	IndicatorListManagementPanel indicatorsTab;
 	GoalListManagementPanel goalsTab;
+	TargetViabilityTreeManagementPanel viabilityTab;
 	ActivityListManagementPanel activitiesTab;
 	MainWindow mainWindow;
 	DiagramComponent diagram;

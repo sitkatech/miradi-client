@@ -64,7 +64,7 @@ public class TargetViabilityRoot extends TreeTableNode
 	public void rebuild()
 	{
 		Vector vector = new Vector();
-		vector.add(new TargetViabilityRoot(project));
+		//vector.add(new WorkPlanStrategyRoot(project));
 		children = vector;
 	}
 	

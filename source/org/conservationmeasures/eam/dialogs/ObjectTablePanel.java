@@ -5,53 +5,30 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
-import org.martus.swing.UiButton;
-import org.martus.swing.UiScrollPane;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
-public class ObjectTablePanel extends DisposablePanel implements ListSelectionListener, CommandExecutedListener
+public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelectionListener
 {
 	public ObjectTablePanel(Project projectToUse, int objectTypeToUse, ObjectTable tableToUse)
 	{
-		super(new BorderLayout());
-		project = projectToUse;
-		objectType = objectTypeToUse;
+		super(projectToUse, tableToUse);
 		table = tableToUse;
 		table.addListSelectionListener(this);
-		add(new UiScrollPane(table), BorderLayout.CENTER);
-		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
-		buttons = new JPanel(layout);
-		add(buttons, BorderLayout.AFTER_LINE_ENDS);
-		project.addCommandExecutedListener(this);
-		setFocusCycleRoot(true);
 	}
 	
-	public void dispose()
-	{
-		project.removeCommandExecutedListener(this);
-		super.dispose();
-	}
-
 	public EAMObject getSelectedObject()
 	{
 		EAMObject[] selected = table.getSelectedObjects();
@@ -84,7 +61,7 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	
 	public void setPropertiesPanel(ObjectDataInputPanel panel)
 	{
-		propertiesPanel = panel;
+		super.setPropertiesPanel(panel);
 		selectFirstRow();
 	}
 
@@ -112,16 +89,6 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 		}
 	}
 
-	public void addButton(ObjectsAction action)
-	{
-		addButton(createObjectsActionButton(action, table));
-	}
-	
-	public void addButton(UiButton button)
-	{
-		buttons.add(button);
-	}
-	
 	public void addDoubleClickAction(EAMAction action ) 
 	{
 		table.addMouseListener(new MouseAdapterDoubleClickDelegator(action)); 
@@ -132,10 +99,5 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 		return table;
 	}
 	
-	Project project;
-	int objectType;
 	ObjectTable table;
-	ObjectDataInputPanel propertiesPanel;
-	JPanel buttons;
-
 }

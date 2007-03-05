@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTableModel;
 
-public class TargetViabilityTreeTableModel extends TaskTreeTableModel
+public class TargetViabilityTreeModel extends TaskTreeTableModel
 {
-	public TargetViabilityTreeTableModel(Project projectToUse)
+	public TargetViabilityTreeModel(Project projectToUse)
 	{
 		super(new TargetViabilityRoot(projectToUse));
 		project = projectToUse;
@@ -25,7 +25,7 @@ public class TargetViabilityTreeTableModel extends TaskTreeTableModel
 
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(ObjectType.TASK, columnTags[column]);
+		return EAM.fieldLabel(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, columnTags[column]);
 	}
 
 	public static String[] columnTags = {"Item", };

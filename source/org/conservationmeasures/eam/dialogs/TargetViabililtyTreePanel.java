@@ -11,14 +11,14 @@ import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 
 public class TargetViabililtyTreePanel extends TaskTreeTablePanel
 {
-	public static TargetViabililtyTreePanel createWorkPlanPanel(MainWindow mainWindowToUse, Project projectToUse)
+	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse)
 	{
-		TargetViabilityTreeTableModel model = new TargetViabilityTreeTableModel(projectToUse);
-		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(projectToUse, model);
+		TargetViabilityTreeModel model = new TargetViabilityTreeModel(projectToUse);
+		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
 	}
 	
-	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTreeTable treeToUse, TargetViabilityTreeTableModel modelToUse)
+	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTree treeToUse, TargetViabilityTreeModel modelToUse)
 	{
 		super(mainWindowToUse, projectToUse, treeToUse);
 		model = modelToUse;

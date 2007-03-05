@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 abstract public class ObjectManagementPanel extends VerticalSplitPanel
 {
-	public ObjectManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
 		super(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
 		listComponent = tablePanelToUse;
@@ -43,7 +43,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel
 		return listComponent.getSelectedObject();
 	}
 
-	ObjectTablePanel listComponent;
+	ObjectCollectionPanel listComponent;
 	ObjectDataInputPanel propertiesPanel;
 
 }

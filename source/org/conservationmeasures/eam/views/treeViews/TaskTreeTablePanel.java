@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.DisposablePanel;
+import org.conservationmeasures.eam.dialogs.ObjectCollectionPanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -45,11 +45,11 @@ import org.martus.swing.UiScrollPane;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectionListener, CommandExecutedListener
+public class TaskTreeTablePanel extends ObjectCollectionPanel  implements TreeSelectionListener, CommandExecutedListener
 {
 	public TaskTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
 	{
-		super(new BorderLayout());
+		super(projectToUse, treeToUse);
 		mainWindow = mainWindowToUse;
 		project = projectToUse;
 		tree = treeToUse;
@@ -93,8 +93,13 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		tree.dispose();
 		super.dispose();
 	}
+	
+	public EAMObject getSelectedObject()
+	{
+		return getSelectedTreeNode().getObject();
+	}
 
-	public TreeTableNode getSelectedObject()
+	public TreeTableNode getSelectedTreeNode()
 	{
 		TreeTableNode selected = (TreeTableNode)tree.getTree().getLastSelectedPathComponent();
 		return selected;
@@ -124,7 +129,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 
 	public Task getSelectedTask()
 	{
-		TreeTableNode selected = getSelectedObject();
+		TreeTableNode selected = getSelectedTreeNode();
 		if(selected == null)
 			return null;
 		if(selected.getType() != ObjectType.TASK)
@@ -219,7 +224,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 
 	public void valueChanged(TreeSelectionEvent e)
 	{	
-		TreeTableNode selectedObject = getSelectedObject();
+		TreeTableNode selectedObject = getSelectedTreeNode();
 		if (selectedObject == null)
 			return;
 		if (propertiesPanel == null)
@@ -227,7 +232,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		
 		BaseId baseId = BaseId.INVALID;
 		if (selectedObject.getType() == ObjectType.TASK)
-			baseId = getSelectedObject().getObjectReference().getObjectId();
+			baseId = getSelectedTreeNode().getObjectReference().getObjectId();
 		
 		propertiesPanel.setObjectId(baseId);
 		mainWindow.getActions().updateActionStates();

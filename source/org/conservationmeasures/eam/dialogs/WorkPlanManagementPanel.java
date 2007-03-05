@@ -33,7 +33,7 @@ public class WorkPlanManagementPanel extends VerticalSplitPanel
 
 	public EAMObject getObject()
 	{
-		return treeTableComponent.getSelectedObject().getObject();
+		return treeTableComponent.getSelectedTreeNode().getObject();
 	}
 
 	public String getPanelDescription()

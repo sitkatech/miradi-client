@@ -10,9 +10,9 @@ import javax.swing.tree.TreeSelectionModel;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 
-public class TargetViabilityTreeTable extends TreeTableWithStateSaving 
+public class TargetViabilityTree extends TreeTableWithStateSaving 
 {
-	public TargetViabilityTreeTable(Project projectToUse, TargetViabilityTreeTableModel targetViabilityModelToUse)
+	public TargetViabilityTree(Project projectToUse, TargetViabilityTreeModel targetViabilityModelToUse)
 	{
 		super(projectToUse, targetViabilityModelToUse);
 		setModel(treeTableModelAdapter);
