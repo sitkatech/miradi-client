@@ -18,7 +18,6 @@ public class ObjectsActionButton extends UiButton implements ListSelectionListen
 	{
 		super(action);
 		action.setPicker(picker);
-		picker.addListSelectionListener(this);
 	}
 
 	public void valueChanged(ListSelectionEvent arg0)
