@@ -165,9 +165,11 @@ public class FactorPropertiesPanel extends DisposablePanel
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
 		
-		//TODO: determine when to display
-		viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-		tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab );
+		if (diagramFactor.isTarget())
+		{
+			viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab );
+		}
 		
 		return tabs;
 	}

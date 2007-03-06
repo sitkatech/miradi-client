@@ -5,12 +5,14 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import javax.swing.tree.TreePath;
+
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.treeViews.TaskTreeTableModel;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
-public class TargetViabilityTreeModel extends TaskTreeTableModel
+public class TargetViabilityTreeModel extends GenericTreeTableModel
 {
 	public TargetViabilityTreeModel(Project projectToUse)
 	{
@@ -27,7 +29,14 @@ public class TargetViabilityTreeModel extends TaskTreeTableModel
 	{
 		return EAM.fieldLabel(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, columnTags[column]);
 	}
+	
+	public TreePath getPathToRoot()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public static String[] columnTags = {"Item", };
 	Project project;
+
 }

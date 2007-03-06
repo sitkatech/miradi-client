@@ -5,16 +5,31 @@
 */ 
 package org.conservationmeasures.eam.views;
 
+import javax.swing.tree.TreePath;
+
+import org.conservationmeasures.eam.ids.BaseId;
+
 import com.java.sun.jtreetable.AbstractTreeTableModel;
 import com.java.sun.jtreetable.TreeTableModel;
 
 public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 {
+	
 	public GenericTreeTableModel(Object root)
 	{
 		super(root);
 	}
 
+	public TreePath getPathToRoot()
+	{
+		return null;
+	}
+	
+	public TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
+	{
+		return null;
+	}
+	
 	public Class getColumnClass(int column)
 	{
 		if(column == 0)

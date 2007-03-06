@@ -7,9 +7,8 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 
-public class TargetViabililtyTreePanel extends TaskTreeTablePanel
+public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 {
 	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse)
 	{
