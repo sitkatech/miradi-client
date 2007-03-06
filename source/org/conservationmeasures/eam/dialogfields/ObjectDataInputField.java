@@ -129,8 +129,7 @@ abstract public class ObjectDataInputField implements FocusListener
 		String existingValue = project.getObjectData(objectType, objectId, tag);
 		if(existingValue.equals(newValue))
 			return;
-		
-		EAM.logDebug("ObjectDataInputField.saveIfNeeded, saving " + tag + ":" + newValue);
+
 		CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, tag, newValue);
 		try
 		{
