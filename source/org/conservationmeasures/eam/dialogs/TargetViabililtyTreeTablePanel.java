@@ -7,10 +7,10 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
-import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Target;
@@ -36,6 +36,11 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		{
 			treeTableModel.rebuildEntreTree();
 			restoreTreeExpansionState();
+			IdList newIdList = extractNewlyAddedIds(event);
+			for (int i=0; i<newIdList.size(); ++i)
+			{
+				selectObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, newIdList.get(i));
+			}
 		} 
 		else if(isSetDataCommand(event))
 		{
@@ -48,13 +53,24 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			}
 		}
 
-		if (isCreateObjectCommand(event))
+		setSelectedRow(currentSelectedRow);
+	}
+
+	private IdList extractNewlyAddedIds(CommandExecutedEvent event)
+	{
+		try
 		{
-			BaseId baseId = ((CommandCreateObject)event.getCommand()).getCreatedId();
-			selectObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, baseId);
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			IdList oldIdList = new IdList(cmd.getPreviousDataValue());
+			IdList newIdList = new IdList(cmd.getDataValue());
+			newIdList.subtract(oldIdList);
+			return newIdList;
 		}
-		else
-			setSelectedRow(currentSelectedRow);
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new IdList();
+		}
 	}
 
 	
