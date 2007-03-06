@@ -99,7 +99,12 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public void selectObject(EAMObject objectToSelect)
 	{
-		TreePath found = model.findObject(model.getPathToRoot(), objectToSelect.getType(), objectToSelect.getId());
+		selectObject(objectToSelect.getType(), objectToSelect.getId());
+	}
+
+	public void selectObject(int objectType, BaseId objectToSelect)
+	{
+		TreePath found = model.findObject(model.getPathToRoot(), objectType, objectToSelect);
 		if(found == null)
 			return;
 		tree.getTree().expandPath(found.getParentPath());
@@ -112,7 +117,9 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		tree.clearSelection();
 		setSelectedRow(row);
 	}
-
+	
+	
+	
 	public GenericTreeTableModel getModel()
 	{
 		return model;
@@ -185,6 +192,8 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	
 	abstract public void commandExecuted(CommandExecutedEvent event);
 	
+	
+
 	
 	public void setSelectedRow(int currentSelectedRow)
 	{

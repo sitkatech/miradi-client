@@ -7,7 +7,9 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -25,6 +27,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+
 		TargetViabilityTreeModel treeTableModel = (TargetViabilityTreeModel)getModel();
 		
 		int currentSelectedRow = tree.getSelectedRow();
@@ -45,10 +48,16 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			}
 		}
 
-		setSelectedRow(currentSelectedRow);
+		if (isCreateObjectCommand(event))
+		{
+			BaseId baseId = ((CommandCreateObject)event.getCommand()).getCreatedId();
+			selectObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, baseId);
+		}
+		else
+			setSelectedRow(currentSelectedRow);
 	}
-	
 
+	
 	static final Class[] buttonActions = new Class[] {
 			ActionCreateKeyEcologicalAttribute.class, 
 			ActionDeleteKeyEcologicalAttribute.class,};

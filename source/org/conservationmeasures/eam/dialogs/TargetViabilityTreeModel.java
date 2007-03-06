@@ -31,10 +31,10 @@ public class TargetViabilityTreeModel extends GenericTreeTableModel
 		return EAM.fieldLabel(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, columnTags[column]);
 	}
 	
+	//TODO: not sure if GenericTreeModel should do this and not here
 	public TreePath getPathToRoot()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new TreePath(getRoot());
 	}
 
 	public static String[] columnTags = {"Item", };
