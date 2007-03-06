@@ -616,10 +616,11 @@ public class ObjectManager
 		loadPool(ObjectType.RATING_CRITERION);
 		loadPool(ObjectType.VALUE_OPTION);
 		loadPool(ObjectType.PROJECT_METADATA);
+		loadPool(ObjectType.DIAGRAM_LINK);
 		loadPool(ObjectType.ASSIGNMENT);
 		loadPool(ObjectType.ACCOUNTING_CODE);
 		loadPool(ObjectType.FUNDING_SOURCE);
-		//loadPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+		loadPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

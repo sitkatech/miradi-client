@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.io.File;
+
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -15,6 +17,7 @@ import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.martus.util.DirectoryUtils;
 
 public class ObjectTestCase extends EAMTestCase
 {
@@ -45,6 +48,37 @@ public class ObjectTestCase extends EAMTestCase
 		{
 			project.close();
 		}
+		
+		verifyLoadPool(objectType, extraInfo);
+	}
+	
+	private void verifyLoadPool(int objectType, CreateObjectParameter extraInfo) throws Exception
+	{
+		BaseId id = BaseId.INVALID;
+
+		File dir = createTempDirectory();
+		Project project = new Project();
+		project.createOrOpen(dir);
+		try
+		{
+			id = project.createObject(objectType, BaseId.INVALID, extraInfo);
+		}
+		finally
+		{
+			project.close();
+		}
+		
+		project.createOrOpen(dir);
+		try
+		{
+			EAMBaseObject object = (EAMBaseObject)project.findObject(objectType, id);
+			assertNotNull("Didn't load pool?", object);
+		}
+		finally
+		{
+			project.close();
+		}
+		DirectoryUtils.deleteEntireDirectoryTree(dir);
 	}
 	
 	private void verifyFieldLifecycle(Project project, EAMBaseObject object, String tag) throws Exception
