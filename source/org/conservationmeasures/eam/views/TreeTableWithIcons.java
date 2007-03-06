@@ -13,7 +13,6 @@ import java.util.Map;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
@@ -203,11 +202,6 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		    ((JTextField)getComponent()).setEditable(false);
 			return super.getTableCellEditorComponent(table, value, isSelected, r, c);
 		}
-	}
-
-	public void addListSelectionListener(ListSelectionListener listener)
-	{
-		getSelectionModel().addListSelectionListener(listener);
 	}
 
 	public EAMObject[] getSelectedObjects()
