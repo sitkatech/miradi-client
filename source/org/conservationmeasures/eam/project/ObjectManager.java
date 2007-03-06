@@ -86,7 +86,7 @@ public class ObjectManager
 		addNormalPool(new AssignmentPool(ida));
 		addNormalPool(new AccountingCodePool(ida));
 		addNormalPool(new FundingSourcePool(ida));
-		//addNormalPool(new KeyEcologicalAttributePool(ida));
+		addNormalPool(new KeyEcologicalAttributePool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -619,7 +619,7 @@ public class ObjectManager
 		loadPool(ObjectType.ASSIGNMENT);
 		loadPool(ObjectType.ACCOUNTING_CODE);
 		loadPool(ObjectType.FUNDING_SOURCE);
-		loadPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+		//loadPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
