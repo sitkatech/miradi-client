@@ -25,7 +25,7 @@ public class TaskTreeTablePanel extends TreeTablePanel
 {
 	public TaskTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
 	{
-		super( mainWindowToUse, projectToUse, treeToUse, buttonActions, ObjectType.TASK);
+		super( mainWindowToUse, treeToUse, buttonActions, ObjectType.TASK);
 	}
 	
 
@@ -56,7 +56,8 @@ public class TaskTreeTablePanel extends TreeTablePanel
 				restoreTreeExpansionState();
 			}
 			else
-			{				
+			{	
+				restoreTreeExpansionState();			
 				repaint();
 			}
 		}

@@ -43,6 +43,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements  
 		super.dispose();
 	}
 
+	
 	public void setPropertiesPanel(ObjectDataInputPanel panel)
 	{
 		propertiesPanel = panel;
@@ -63,7 +64,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements  
 	
 	abstract public void commandExecuted(CommandExecutedEvent event);
 	
-	private Project project;
+	public Project project;
 	private JPanel buttons;
 	private ObjectPicker component;
 	ObjectDataInputPanel propertiesPanel;

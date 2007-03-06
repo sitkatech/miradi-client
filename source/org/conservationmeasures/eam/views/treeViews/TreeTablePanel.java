@@ -26,7 +26,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
@@ -37,11 +36,10 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class TreeTablePanel extends ObjectCollectionPanel  implements TreeSelectionListener, CommandExecutedListener
 {
-	public TreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse, Class[] classes, int objectType)
+	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] classes, int objectType)
 	{
-		super(projectToUse, treeToUse);
+		super(mainWindowToUse.getProject(), treeToUse);
 		mainWindow = mainWindowToUse;
-		project = projectToUse;
 		tree = treeToUse;
 		panelObjectType = objectType;
 		
@@ -220,7 +218,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		propertiesPanel = propertiesPanelToUse;
 	}
 
-	Project project;
 	MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected GenericTreeTableModel model;

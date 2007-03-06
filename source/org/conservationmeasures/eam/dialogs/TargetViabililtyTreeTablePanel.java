@@ -22,12 +22,11 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 {
 	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
 	{
-		super( mainWindowToUse, projectToUse, treeToUse, buttonActions, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+		super( mainWindowToUse, treeToUse, buttonActions, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-
 		TargetViabilityTreeModel treeTableModel = (TargetViabilityTreeModel)getModel();
 		
 		int currentSelectedRow = tree.getSelectedRow();
@@ -49,11 +48,11 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			if (isModifiedObjectMabeyInTree)
 			{
 				treeTableModel.rebuildEntreTree();
+				restoreTreeExpansionState();	
 				repaint();
 			}
+			setSelectedRow(currentSelectedRow);
 		}
-
-		setSelectedRow(currentSelectedRow);
 	}
 
 	private IdList extractNewlyAddedIds(CommandExecutedEvent event)
