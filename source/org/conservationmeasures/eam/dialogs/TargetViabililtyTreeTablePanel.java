@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
-import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
-import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -50,7 +48,5 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 
 	static final Class[] buttonActions = new Class[] {
 			ActionCreateKeyEcologicalAttribute.class, 
-			ActionDeleteKeyEcologicalAttribute.class,
-			ActionTreeNodeUp.class,
-			ActionTreeNodeDown.class,};
+			ActionDeleteKeyEcologicalAttribute.class,};
 }
