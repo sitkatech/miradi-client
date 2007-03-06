@@ -50,13 +50,13 @@ public class TaskTreeTablePanel extends TreeTablePanel
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			taskTreeTableModel.rebuildEntreTree();
 			if(TaskTreeTableModel.isTreeStructureChangingCommand(cmd))
 			{
-				taskTreeTableModel.rebuildEntreTree();
 				restoreTreeExpansionState();
 			}
 			else
-			{
+			{				
 				repaint();
 			}
 		}
