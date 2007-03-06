@@ -58,7 +58,7 @@ public class TaskTreeTableModel extends GenericTreeTableModel
 
 	public void objectiveWasModified()
 	{
-		rebuildEntierTree();
+		rebuildEntreTree();
 	}
 
 	static boolean isTreeStructureChangingCommand(CommandSetObjectData cmd)

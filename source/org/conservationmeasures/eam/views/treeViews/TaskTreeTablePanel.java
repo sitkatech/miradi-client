@@ -39,7 +39,7 @@ public class TaskTreeTablePanel extends TreeTablePanel
 		if( isFactorCommand(event,  Strategy.TAG_ACTIVITY_IDS) ||
 			isFactorCommand(event,  Task.TAG_SUBTASK_IDS))
 		{
-			taskTreeTableModel.rebuildEntierTree();
+			taskTreeTableModel.rebuildEntreTree();
 			restoreTreeExpansionState();
 		}
 		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isFactorCommand(event, Factor.TAG_OBJECTIVE_IDS))
@@ -52,7 +52,7 @@ public class TaskTreeTablePanel extends TreeTablePanel
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			if(TaskTreeTableModel.isTreeStructureChangingCommand(cmd))
 			{
-				taskTreeTableModel.rebuildEntierTree();
+				taskTreeTableModel.rebuildEntreTree();
 				restoreTreeExpansionState();
 			}
 			else

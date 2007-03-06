@@ -31,7 +31,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 	{
 		try
 		{
-			getRootStratPlanObject().rebuild();
+			getRootNode().rebuild();
 		}
 		catch(Exception e)
 		{
@@ -39,12 +39,12 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 		}
 	}
 
-	TreeTableNode getRootStratPlanObject()
+	TreeTableNode getRootNode()
 	{
 		return (TreeTableNode)getRoot();
 	}
 
-	public void rebuildEntierTree()
+	public void rebuildEntreTree()
 	{
 		rebuildNode();
 		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);

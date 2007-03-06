@@ -30,7 +30,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		int currentSelectedRow = tree.getSelectedRow();
 		if( isFactorCommand(event,  Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
 		{
-			treeTableModel.rebuildEntierTree();
+			treeTableModel.rebuildEntreTree();
 			restoreTreeExpansionState();
 		} 
 		else if(isSetDataCommand(event))
