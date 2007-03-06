@@ -131,27 +131,27 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	}
 	
 
-	boolean isSetDataCommand(CommandExecutedEvent event)
+	public boolean isSetDataCommand(CommandExecutedEvent event)
 	{
 		Command rawCommand = event.getCommand();
 		return(rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME));
 	}
 
 
-	boolean isCreateObjectCommand(CommandExecutedEvent event)
+	public boolean isCreateObjectCommand(CommandExecutedEvent event)
 	{
 		Command rawCommand = event.getCommand();
 		return (rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME));
 	}
 
-	boolean isDeleteObjectCommand(CommandExecutedEvent event)
+	public boolean isDeleteObjectCommand(CommandExecutedEvent event)
 	{
 		Command rawCommand = event.getCommand();
 		return (rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME));
 	}
 
 
-	boolean isFactorCommand(CommandExecutedEvent event, String tag)
+	public boolean isFactorCommand(CommandExecutedEvent event, String tag)
 	{
 		if(!isSetDataCommand(event))
 			return false;

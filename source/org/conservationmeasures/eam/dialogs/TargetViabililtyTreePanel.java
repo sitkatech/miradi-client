@@ -5,14 +5,15 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 
 public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 {
-	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse)
+	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, FactorId targetId)
 	{
-		TargetViabilityTreeModel model = new TargetViabilityTreeModel(projectToUse);
+		TargetViabilityTreeModel model = new TargetViabilityTreeModel(projectToUse, targetId);
 		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
 	}

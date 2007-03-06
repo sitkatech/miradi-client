@@ -95,6 +95,12 @@ abstract public class Factor extends EAMBaseObject
 	{
 		return goals.getIdList();
 	}
+	
+	public IdList getKeyEcologicalAttributes()
+	{
+		return keyEcologicalAttributes.getIdList();
+	}
+
 
 	public void setGoals(IdList goalsToUse)
 	{
@@ -146,6 +152,11 @@ abstract public class Factor extends EAMBaseObject
 		return false;
 	}
 
+	public boolean canHaveKeyEcologicalAttribures()
+	{
+		return false;
+	}
+	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateFactorParameter(getNodeType());
@@ -201,11 +212,13 @@ abstract public class Factor extends EAMBaseObject
 	    indicators = new IdListData();
 		objectives = new IdListData();
 		goals = new IdListData();
+		keyEcologicalAttributes = new IdListData();
 		
 		addField(TAG_COMMENT, comment);
 		addField(TAG_INDICATOR_IDS, indicators);
 		addField(TAG_OBJECTIVE_IDS, objectives);
 		addField(TAG_GOAL_IDS, goals);
+		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributes);
 	}
 
 	public static final FactorType TYPE_INVALID = null;
@@ -235,4 +248,5 @@ abstract public class Factor extends EAMBaseObject
 	private IdListData indicators;
 	private IdListData objectives;
 	private IdListData goals;
+	private IdListData keyEcologicalAttributes;
 }

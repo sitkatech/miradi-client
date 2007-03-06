@@ -8,83 +8,71 @@ package org.conservationmeasures.eam.dialogs;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class TargetViabilityRoot extends TreeTableNode
+public class KeyEcologicalAttributesNode extends TreeTableNode
 {
-	public TargetViabilityRoot(Project projectToUse, FactorId targetId)
+	public KeyEcologicalAttributesNode(Project projectToUse, KeyEcologicalAttribute keaToUse)
 	{
 		project = projectToUse;
-		target = (Target)project.findNode(targetId);
+		kea = keaToUse;
 		rebuild();
 	}
 	
 	public EAMObject getObject()
 	{
-		return null;
+		return kea;
 	}
 
 	public TreeTableNode getChild(int index)
 	{
-		return keyEcologicalAttributes[index];
+		return (TreeTableNode)children.get(index);
 	}
 
 	public int getChildCount()
 	{
-		return keyEcologicalAttributes.length;
+		return children.size();
 	}
 
 	public ORef getObjectReference()
 	{
-		return null;
+		return kea.getRef();
 	}
 	
 	public int getType()
 	{
-		return ObjectType.FACTOR;
+		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
 
 	public Object getValueAt(int column)
 	{
+		if(column == 0)
+			return kea.getLabel();
 		return "";
 	}
 
 	public String toString()
 	{
-		return "";
+		return (String)getValueAt(0);
 	}
 	
 	public BaseId getId()
 	{
-		return null;
+		return kea.getId();
 	}
-	
 	public void rebuild()
 	{
-		int childCount = target.getKeyEcologicalAttributes().size();
-		Vector KeyEcologicalAttributesVector = new Vector();
-		for(int i = 0; i < childCount; ++i)
-		{
-			BaseId keaId = target.getKeyEcologicalAttributes().get(i);
-			KeyEcologicalAttribute kea = project.getKeyEcologicalAttributePool().find(keaId);
-			if (kea == null)
-				continue;
-			KeyEcologicalAttributesVector.add(new KeyEcologicalAttributesNode(project, kea));
-		}
-		
-		keyEcologicalAttributes = (KeyEcologicalAttributesNode[])KeyEcologicalAttributesVector.toArray(new KeyEcologicalAttributesNode[0]);
-
+		children = new Vector();
 	}
 	
+	Vector children;
 	Project project;
-	Target target;
-	KeyEcologicalAttributesNode[] keyEcologicalAttributes;
+	KeyEcologicalAttribute kea;
 
 }
+

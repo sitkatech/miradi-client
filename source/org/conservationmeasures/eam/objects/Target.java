@@ -33,6 +33,12 @@ public class Target extends Factor
 		return true;
 	}
 	
+	public boolean canHaveKeyEcologicalAttribures()
+	{
+		return true;
+	}
+	
+	
 	void clear()
 	{
 		super.clear();

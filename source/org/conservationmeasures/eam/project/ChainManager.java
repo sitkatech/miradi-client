@@ -36,6 +36,8 @@ public class ChainManager
 			return findFactorsThatHaveThisObject(id, Factor.TAG_GOAL_IDS);
 		if(type == ObjectType.INDICATOR)
 			return findFactorsThatHaveThisObject(id, Factor.TAG_INDICATOR_IDS);
+		if(type == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+			return findFactorsThatHaveThisObject(id, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		
 		throw new RuntimeException("Not an annotation type? " + type);
 	}

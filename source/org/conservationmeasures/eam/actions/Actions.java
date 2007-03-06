@@ -160,6 +160,8 @@ public class Actions
 		registerAction(new ActionDeleteObjective(mainWindow));
 		registerAction(new ActionCreateGoal(mainWindow));
 		registerAction(new ActionDeleteGoal(mainWindow));
+		registerAction(new ActionCreateKeyEcologicalAttribute(mainWindow));
+		registerAction(new ActionDeleteKeyEcologicalAttribute(mainWindow));
 		registerAction(new ActionViewPossibleTeamMembers(mainWindow));
 		registerAction(new ActionTeamCreateMember(mainWindow));
 		registerAction(new ActionTeamRemoveMember(mainWindow));

@@ -29,16 +29,17 @@ public class TaskTreeTablePanel extends TreeTablePanel
 	}
 	
 
+	//FIXME: this entire method is unclear 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		TaskTreeTableModel taskTreeTableModel = (TaskTreeTableModel)getModel();
 		
+		//FIXME: SHould we check for Indicators Methods Ids here
 		int currentSelectedRow = tree.getSelectedRow();
 		if( isFactorCommand(event,  Strategy.TAG_ACTIVITY_IDS) ||
 			isFactorCommand(event,  Task.TAG_SUBTASK_IDS))
 		{
-			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			taskTreeTableModel.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
+			taskTreeTableModel.rebuildEntierTree();
 			restoreTreeExpansionState();
 		}
 		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isFactorCommand(event, Factor.TAG_OBJECTIVE_IDS))
@@ -49,11 +50,15 @@ public class TaskTreeTablePanel extends TreeTablePanel
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			taskTreeTableModel.dataWasChanged(cmd);
 			if(TaskTreeTableModel.isTreeStructureChangingCommand(cmd))
+			{
+				taskTreeTableModel.rebuildEntierTree();
 				restoreTreeExpansionState();
+			}
 			else
+			{
 				repaint();
+			}
 		}
 		
 		setSelectedRow(currentSelectedRow);

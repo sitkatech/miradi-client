@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCreateKeyEcologicalAttribute extends MainWindowAction
+public class ActionCreateKeyEcologicalAttribute extends ObjectsAction
 {
 	public ActionCreateKeyEcologicalAttribute(MainWindow mainWindowToUse)
 	{

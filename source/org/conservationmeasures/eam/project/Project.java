@@ -50,6 +50,7 @@ import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
+import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
@@ -157,6 +158,11 @@ public class Project
 	public TaskPool getTaskPool()
 	{
 		return objectManager.getTaskPool();
+	}
+	
+	public KeyEcologicalAttributePool getKeyEcologicalAttributePool()
+	{
+		return objectManager.getKeyEcologicalAttributePool();
 	}
 	
 	public ViewPool getViewPool()

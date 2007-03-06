@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import javax.swing.tree.TreePath;
 
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
@@ -14,9 +15,9 @@ import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class TargetViabilityTreeModel extends GenericTreeTableModel
 {
-	public TargetViabilityTreeModel(Project projectToUse)
+	public TargetViabilityTreeModel(Project projectToUse, FactorId targetId)
 	{
-		super(new TargetViabilityRoot(projectToUse));
+		super(new TargetViabilityRoot(projectToUse, targetId));
 		project = projectToUse;
 	}
 

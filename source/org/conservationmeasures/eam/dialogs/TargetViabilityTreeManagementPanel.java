@@ -18,7 +18,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 {
 	public TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.mainWindow, projectToUse),
+		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.mainWindow, projectToUse, nodeId),
 				new KeyEcologicalAttributePropertiesPanel(projectToUse, actions));
 	}
 	

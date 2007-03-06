@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.workplan;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -80,11 +79,6 @@ public class WorkPlanStrategy extends TreeTableNode
 		{
 			BaseId activityId = intervention.getActivityIds().get(i);
 			Task activity = project.getTaskPool().find(activityId);
-			if(activity == null)
-			{
-				EAM.logWarning("Ignoring null activity " + activityId + " in work plan " + intervention.getId());
-				continue;
-			}
 			activityVector.add(new WorkPlanTaskNode(project, activity));
 		}
 		activities = (WorkPlanTaskNode[])activityVector.toArray(new WorkPlanTaskNode[0]);

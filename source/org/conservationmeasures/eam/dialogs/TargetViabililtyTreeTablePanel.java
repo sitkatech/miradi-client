@@ -5,15 +5,15 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
-import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
-import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
-import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
+import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
+import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
@@ -24,19 +24,33 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	{
 		super( mainWindowToUse, projectToUse, treeToUse, buttonActions, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 	}
-	
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-
+		TargetViabilityTreeModel treeTableModel = (TargetViabilityTreeModel)getModel();
+		
+		int currentSelectedRow = tree.getSelectedRow();
+		if( isFactorCommand(event,  Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
+		{
+			treeTableModel.rebuildEntierTree();
+			restoreTreeExpansionState();
+		} 
+		else if(isSetDataCommand(event))
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			if (cmd.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+			{
+				repaint();
+			}
+		}
+		
+		setSelectedRow(currentSelectedRow);
 	}
 	
 
 	static final Class[] buttonActions = new Class[] {
-			ActionTreeCreateActivity.class, 
-			ActionTreeCreateMethod.class,
-			ActionTreeCreateTask.class,
-			ActionDeleteWorkPlanNode.class,
+			ActionCreateKeyEcologicalAttribute.class, 
+			ActionDeleteKeyEcologicalAttribute.class,
 			ActionTreeNodeUp.class,
 			ActionTreeNodeDown.class,};
 }

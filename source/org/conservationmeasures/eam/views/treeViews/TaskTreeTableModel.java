@@ -9,7 +9,6 @@ import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -59,62 +58,7 @@ public class TaskTreeTableModel extends GenericTreeTableModel
 
 	public void objectiveWasModified()
 	{
-EAM.logDebug("objectiveWasModified");
-		rebuildNode();
-		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
-	}
-
-	public void dataWasChanged(CommandSetObjectData cmd)
-	{
-		if(isTreeStructureChangingCommand(cmd))
-		{
-			rebuildNode();
-			fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
-		}
-
-EAM.logDebug("dataWasChanged");
-	}
-
-	private void rebuildNode()
-	{
-		try
-		{
-			getRootStratPlanObject().rebuild();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-
-	TreeTableNode getRootStratPlanObject()
-	{
-		return (TreeTableNode)getRoot();
-	}
-
-	public void idListWasChanged(int objectType, BaseId objectId, String newIdListAsString)
-	{
-		rebuildNode();
-		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
-
-EAM.logDebug("idListWasChanged");
-	}
-
-	public TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
-	{
-		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
-		if(nodeToSearch.getType() == objectType && nodeToSearch.getObjectReference().getObjectId().equals(objectId))
-			return pathToStartSearch;
-
-		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)
-		{
-			TreeTableNode thisChild = nodeToSearch.getChild(i);
-			TreePath childPath = pathToStartSearch.pathByAddingChild(thisChild);
-			TreePath found = findObject(childPath, objectType, objectId);
-			if(found != null)
-				return found;
-		}
-		return null;
+		rebuildEntierTree();
 	}
 
 	static boolean isTreeStructureChangingCommand(CommandSetObjectData cmd)

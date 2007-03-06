@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
 import com.java.sun.jtreetable.TreeTableModel;
@@ -25,8 +26,45 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 		return null;
 	}
 	
+
+	protected void rebuildNode()
+	{
+		try
+		{
+			getRootStratPlanObject().rebuild();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	TreeTableNode getRootStratPlanObject()
+	{
+		return (TreeTableNode)getRoot();
+	}
+
+	public void rebuildEntierTree()
+	{
+		rebuildNode();
+		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
+	}
+	
+
 	public TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
 	{
+		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
+		if(nodeToSearch.getType() == objectType && nodeToSearch.getObjectReference().getObjectId().equals(objectId))
+			return pathToStartSearch;
+
+		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)
+		{
+			TreeTableNode thisChild = nodeToSearch.getChild(i);
+			TreePath childPath = pathToStartSearch.pathByAddingChild(thisChild);
+			TreePath found = findObject(childPath, objectType, objectId);
+			if(found != null)
+				return found;
+		}
 		return null;
 	}
 	
