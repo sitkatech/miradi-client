@@ -47,6 +47,8 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 	public void rebuildEntreTree()
 	{
 		rebuildNode();
+		//FIXME: the fire not insert was put here unil we can see where to best place it; this fixes the no update panel bug.
+		fireTreeNodesInserted(getRoot(), new Object[] {getRoot()}, null, null);
 		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
 	}
 	
