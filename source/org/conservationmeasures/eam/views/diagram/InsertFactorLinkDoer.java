@@ -96,9 +96,7 @@ public class InsertFactorLinkDoer extends ProjectDoer
 		projectToUse.executeCommand(createModelLinkage);
 		
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
-		DiagramFactorId fromDiagramFactorId = projectToUse.getDiagramModel().getDiagramFactorByWrappedId(fromId).getDiagramFactorId();
-		DiagramFactorId toDiagramFactorId = projectToUse.getDiagramModel().getDiagramFactorByWrappedId(toId).getDiagramFactorId();
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(projectToUse, fromId, toId, modelLinkageId);
 		
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
     	projectToUse.executeCommand(createDiagramLinkCommand);
@@ -109,4 +107,11 @@ public class InsertFactorLinkDoer extends ProjectDoer
 		return command;
 	}
 
+	private static CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(Project projectToUse, FactorId fromId, FactorId toId, FactorLinkId modelLinkageId)
+	{
+		DiagramFactorId fromDiagramFactorId = projectToUse.getDiagramModel().getDiagramFactorByWrappedId(fromId).getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = projectToUse.getDiagramModel().getDiagramFactorByWrappedId(toId).getDiagramFactorId();
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+		return diagramLinkExtraInfo;
+	}
 }
