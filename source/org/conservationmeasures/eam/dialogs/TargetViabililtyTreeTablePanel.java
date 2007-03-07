@@ -29,7 +29,6 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	{
 		TargetViabilityTreeModel treeTableModel = (TargetViabilityTreeModel)getModel();
 		
-		int currentSelectedRow = tree.getSelectedRow();
 		final boolean wereNodesAddedOrRemoved = isFactorCommand(event,  Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		if( wereNodesAddedOrRemoved)
 		{
@@ -49,9 +48,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			{
 				treeTableModel.rebuildEntreTree();
 				restoreTreeExpansionState();	
-				repaint();
 			}
-			setSelectedRow(currentSelectedRow);
 		}
 	}
 
