@@ -64,10 +64,15 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 		
+		//undo create diagram lingate
+		project.undo();
+		
 		// undo add linkage to diagram
 		project.undo();
+		
 		// undo create model linkage
 		project.undo();
+		
 		assertFalse("didn't undo?", model.areLinked(model.getDiagramFactorByWrappedId(fromId), model.getDiagramFactorByWrappedId(toId)));
 		verifyLinkageNotPresent(linkId);
 

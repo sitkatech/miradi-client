@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -297,6 +298,13 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(createModelLinkage);
 		
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(fromId).getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(toId).getDiagramFactorId();
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+		
+		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
+    	project.executeCommand(createDiagramLinkCommand);
+		
 		CommandDiagramAddFactorLink addLinkageCommand = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(addLinkageCommand);
 		
@@ -312,6 +320,8 @@ public class TestCommands extends EAMTestCase
 		
 		project.undo();
 		assertFalse("didn't remove linkage?", project.getDiagramModel().areLinked(fromNode, toNode));
+		
+		project.undo();
 		assertNull("didn't delete linkage from pool?", project.getFactorLinkPool().find(modelLinkageId));
 	}
 	

@@ -748,15 +748,17 @@ public class Project
 		DiagramFactorLink linkageToDelete = model.getDiagramFactorLinkById(idToDelete);
 		FactorLinkId modelLinkageId = linkageToDelete.getWrappedId();
 		model.deleteDiagramFactorLink(linkageToDelete);
+		
 		return modelLinkageId;
 	}
 
 	public DiagramFactorLinkId addLinkToDiagram(FactorLinkId linkId) throws Exception
 	{
 		FactorLink cmLinkage = getFactorLinkPool().find(linkId);
-		DiagramModel model = getDiagramModel();
-		DiagramFactorLink linkage = model.createDiagramFactorLink(cmLinkage);
-		return linkage.getDiagramLinkageId();
+		DiagramFactorLink addedDiagramFactorLink = diagramModel.addLinkToDiagram(cmLinkage);
+		DiagramFactorLinkId diagramLinkageId = addedDiagramFactorLink.getDiagramLinkageId();
+		
+		return diagramLinkageId;
 	}
 
 	protected void writeFactor(FactorId factorId) throws IOException, ParseException

@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
@@ -792,6 +793,12 @@ public class TestProject extends EAMTestCase
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, id, parameter);
+		
+		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(fromId).getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(toId).getDiagramFactorId();
+		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(createdId, fromDiagramFactorId, toDiagramFactorId);
+		project.createObject(ObjectType.DIAGRAM_LINK, extraInfo);
+		
 		DiagramFactorLinkId diagramLinkageId = project.addLinkToDiagram(createdId);
 		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
 	}

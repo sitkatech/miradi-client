@@ -27,6 +27,8 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
@@ -153,36 +155,37 @@ public class DiagramModel extends DefaultGraphModel
 
 		notifyListeners(createDiagramModelEvent(diagramFactorToDelete), new ModelEventNotifierFactorDeleted());
 	}
-	
-	public DiagramFactorLink createDiagramFactorLink(FactorLink factorLinkToWrap) throws Exception
-	{
-		FactorLinkId factorLinkId = (FactorLinkId)factorLinkToWrap.getId();
-		DiagramFactor from = getDiagramFactorByWrappedId(factorLinkToWrap.getFromFactorId());
-		DiagramFactor to = getDiagramFactorByWrappedId(factorLinkToWrap.getToFactorId());
-		
-		DiagramFactorLinkId newDiagramLinkId = new DiagramFactorLinkId(factorLinkId.asInt());
-		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(
-				factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
-		DiagramFactorLink newLink = new DiagramFactorLink(newDiagramLinkId, extraInfo);
-		LinkCell cell = new LinkCell(factorLinkToWrap, newLink, from, to);
+
+    public DiagramFactorLink addLinkToDiagram(FactorLink factorLinkToWrap) throws Exception
+    {
+    	DiagramFactorLinkPool pool = (DiagramFactorLinkPool) project.getPool(ObjectType.DIAGRAM_LINK);
+    	DiagramFactorLink diagramFactorLink = pool.findUsingRawId((FactorLinkId)factorLinkToWrap.getId());
+    	
+    	CreateDiagramFactorLinkParameter extraInfo = (CreateDiagramFactorLinkParameter) diagramFactorLink.getCreationExtraInfo();
+		DiagramFactor from = rawGetFactorById(extraInfo.getFromFactorId());
+		DiagramFactor to = rawGetFactorById(extraInfo.getToFactorId());		
+		LinkCell cell = new LinkCell(factorLinkToWrap, diagramFactorLink, from, to);
 		
 		EAMGraphCell[] newLinks = new EAMGraphCell[]{cell};
 		Map nestedMap = getNestedAttributeMap(cell);
 		ConnectionSet cs = new ConnectionSet(cell, from.getPort(), to.getPort());
-		insert(newLinks, nestedMap, cs, null, null);
 
-		cellInventory.addFactorLink(newLink, cell);
+		insert(newLinks, nestedMap, cs, null, null);
+		cellInventory.addFactorLink(diagramFactorLink, cell);
+		
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkAdded());
 		
-		return newLink;
-	}
-	
+    	return diagramFactorLink;
+    }
+    
 	public void deleteDiagramFactorLink(DiagramFactorLink diagramFactorLinkToDelete) throws Exception
 	{
 		LinkCell cell = cellInventory.getLinkCell(diagramFactorLinkToDelete);
 		Object[] links = new Object[]{cell};
+		
 		remove(links);
 		cellInventory.removeFactorLink(diagramFactorLinkToDelete);
+		
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkDeleted());
 	}
 	
@@ -482,7 +485,7 @@ public class DiagramModel extends DefaultGraphModel
 			FactorLink link = getFactorLinkPool().find(linkIds[i]);
 			if(doesFactorExist(link.getFromFactorId()) && doesFactorExist(link.getToFactorId()))
 			{
-				createDiagramFactorLink(link);
+				addLinkToDiagram(link);
 			}
 		}
 	}

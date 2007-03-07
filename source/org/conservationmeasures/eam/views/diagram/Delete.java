@@ -91,8 +91,12 @@ public class Delete extends ProjectDoer
 		
 		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId()).createCommandsToClear();
 		project.executeCommands(commandsToClear);
+		
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId());
 		project.executeCommand(deleteLinkage);
+		
+		CommandDeleteObject removeFactorLinkCommand = new CommandDeleteObject(ObjectType.DIAGRAM_LINK, id);
+		project.executeCommand(removeFactorLinkCommand);
 	}
 
 	// TODO: This method should be inside Project and should have unit tests

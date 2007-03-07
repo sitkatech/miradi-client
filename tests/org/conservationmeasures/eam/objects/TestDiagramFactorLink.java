@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -23,6 +24,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class TestDiagramFactorLink extends ObjectTestCase
 {
@@ -65,10 +67,12 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	{
 		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getFactorId());
 		DiagramFactor target = model.createDiagramFactor(cmTarget.getFactorId());
-		FactorLinkId id = new FactorLinkId(5);
-		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
-		DiagramFactorLink linkage = model.createDiagramFactorLink(cmLinkage);
-		LinkCell cell = model.findLinkCell(linkage);
+
+		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, factor.getWrappedId(), target.getWrappedId());
+		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
+		DiagramFactorLink diagramFactorLink = model.getDiagramFactorLinkById(diagramFactorLinkId);
+		
+		LinkCell cell = model.findLinkCell(diagramFactorLink);
 		assertEquals("didn't remember from?", factor, cell.getFrom());
 		assertEquals("didn't remember to?", target, cell.getTo());
 
@@ -102,8 +106,12 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		
+		createDiagramFactorLink(interventionId, factorId, modelLinkageId);
+		
 		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(command);
+		
 		assertNotNull("link not in model?", model.getDiagramFactorLinkById(command.getDiagramFactorLinkId()));
 		
 		ProjectServer server = project.getTestDatabase();
@@ -111,6 +119,16 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		FactorLink linkage = (FactorLink)server.readObject(ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from id?", interventionId, linkage.getFromFactorId());
 		assertEquals("Didn't load to id?", factorId, linkage.getToFactorId());
+	}
+
+	private void createDiagramFactorLink(FactorId interventionId, FactorId factorId, FactorLinkId modelLinkageId) throws CommandFailedException
+	{
+		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(interventionId).getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(factorId).getDiagramFactorId();
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+		
+		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
+    	project.executeCommand(createDiagramLinkCommand);
 	}
 	
 	ProjectForTesting project;

@@ -8,22 +8,24 @@ package org.conservationmeasures.eam.diagram;
 import java.util.Set;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class TestDiagramModel extends EAMTestCase
 {
@@ -312,9 +314,10 @@ public class TestDiagramModel extends EAMTestCase
 	
 	private DiagramFactorLink createLinkage(FactorLinkId id, FactorId fromId, FactorId toId) throws Exception
 	{
-		FactorLink cmLinkage = new FactorLink(id, fromId, toId);
-		model.getFactorLinkPool().put(cmLinkage);
-		return model.createDiagramFactorLink(cmLinkage);
+		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
+		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
+		
+		return model.getDiagramFactorLinkById(diagramFactorLinkId);
 	}
 
 

@@ -11,10 +11,12 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
@@ -94,7 +96,14 @@ public class InsertFactorLinkDoer extends ProjectDoer
 		projectToUse.executeCommand(createModelLinkage);
 		
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
-		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
+		DiagramFactorId fromDiagramFactorId = projectToUse.getDiagramModel().getDiagramFactorByWrappedId(fromId).getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = projectToUse.getDiagramModel().getDiagramFactorByWrappedId(toId).getDiagramFactorId();
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+		
+		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
+    	projectToUse.executeCommand(createDiagramLinkCommand);
+		
+    	CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		projectToUse.executeCommand(command);
 		
 		return command;

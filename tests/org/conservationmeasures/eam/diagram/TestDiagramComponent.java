@@ -6,17 +6,19 @@
 
 package org.conservationmeasures.eam.diagram;
 
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.jgraph.graph.GraphLayoutCache;
 
 public class TestDiagramComponent extends EAMTestCase
@@ -53,14 +55,16 @@ public class TestDiagramComponent extends EAMTestCase
 		
 		DiagramFactor hiddenNode = diagramComponent.getDiagramModel().createDiagramFactor(hiddenId);
 		DiagramFactor visibleNode = diagramComponent.getDiagramModel().createDiagramFactor(visibleId);
-		DiagramFactorLink hiddenLinkage = diagramComponent.getDiagramModel().createDiagramFactorLink(cmLinkage);
+
+		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, hiddenId, visibleId);
+		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
 		
 		GraphLayoutCache graphLayoutCache = diagramComponent.getGraphLayoutCache();
 		graphLayoutCache.setVisible(cmLinkage, false);
 		graphLayoutCache.setVisible(visibleNode, true);
 		graphLayoutCache.setVisible(hiddenNode, false);
 		
-		assertFalse("Link still visible?", graphLayoutCache.isVisible(hiddenLinkage));
+		assertFalse("Link still visible?", graphLayoutCache.isVisible(diagramFactorLinkId));
 		assertFalse("Hidden Node still visible?", graphLayoutCache.isVisible(hiddenNode));
 		assertTrue("Visible Node Not visible?", graphLayoutCache.isVisible(visibleNode));
 		
