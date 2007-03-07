@@ -39,6 +39,19 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 		}
 	}
 
+	public TreePath getPathOfParent(int objectType, BaseId objectId)
+	{
+		TreePath path = getPathOfNode(objectType, objectId);
+		if(path == null)
+			return null;
+		return path.getParentPath();
+	}
+
+	public TreePath getPathOfNode(int objectType, BaseId objectId)
+	{
+		return findObject(getPathToRoot(), objectType, objectId);
+	}
+	
 	TreeTableNode getRootNode()
 	{
 		return (TreeTableNode)getRoot();
@@ -47,9 +60,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 	public void rebuildEntreTree()
 	{
 		rebuildNode();
-		//FIXME: the fire not insert was put here unil we can see where to best place it; this fixes the no update panel bug.
-		fireTreeNodesInserted(getRoot(), new Object[] {getRoot()}, null, null);
-		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
+		fireTreeStructureChanged(getRoot(), new Object[] {getPathToRoot()}, null, null);
 	}
 	
 

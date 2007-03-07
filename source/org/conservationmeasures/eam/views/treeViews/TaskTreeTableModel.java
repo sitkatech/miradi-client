@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.treeViews;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -33,18 +32,6 @@ public class TaskTreeTableModel extends GenericTreeTableModel
 		return null;
 	}
 
-	public TreePath getPathOfParent(int objectType, BaseId objectId)
-	{
-		TreePath path = getPathOfNode(objectType, objectId);
-		if(path == null)
-			return null;
-		return path.getParentPath();
-	}
-
-	public TreePath getPathOfNode(int objectType, BaseId objectId)
-	{
-		return findObject(getPathToRoot(), objectType, objectId);
-	}
 
 	public TreePath getPathToRoot()
 	{
