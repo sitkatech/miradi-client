@@ -60,11 +60,16 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements  
 		buttons.add(button);
 	}
 	
+	public Project getProject()
+	{
+		return project;
+	}
+	
 	abstract public EAMObject getSelectedObject();
 	
 	abstract public void commandExecuted(CommandExecutedEvent event);
 	
-	public Project project;
+	private Project project;
 	private JPanel buttons;
 	private ObjectPicker component;
 	ObjectDataInputPanel propertiesPanel;
