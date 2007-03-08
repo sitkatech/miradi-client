@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.FactorIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
+import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.TaskIcon;
@@ -98,6 +99,11 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			activityRenderer.setOpenIcon(new ActivityIcon());
 			activityRenderer.setLeafIcon(new ActivityIcon());
 
+			keyEcologicalAttributeRenderer = new DefaultTreeCellRenderer();
+			keyEcologicalAttributeRenderer.setClosedIcon(new KeyEcologicalAttributeIcon());
+			keyEcologicalAttributeRenderer.setOpenIcon(new KeyEcologicalAttributeIcon());
+			keyEcologicalAttributeRenderer.setLeafIcon(new KeyEcologicalAttributeIcon());
+			
 			methodRenderer = new DefaultTreeCellRenderer();
 			methodRenderer.setClosedIcon(new MethodIcon());
 			methodRenderer.setOpenIcon(new MethodIcon());
@@ -136,6 +142,8 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 				renderer = goalRenderer;
 			else if(node.getType() == ObjectType.TASK)
 				renderer = getTaskRenderer((Task)node.getObject());
+			else if(node.getType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+				renderer = keyEcologicalAttributeRenderer;
 			
 			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 		}
@@ -188,6 +196,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		DefaultTreeCellRenderer defaultRenderer;
 		DefaultTreeCellRenderer factorRenderer;
 		DefaultTreeCellRenderer stringNoIconRenderer;
+		DefaultTreeCellRenderer keyEcologicalAttributeRenderer;
 	}
 
 	class NonEditableTreeTableCellEditor extends TreeTableCellEditor
