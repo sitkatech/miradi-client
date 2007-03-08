@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
@@ -87,6 +88,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		if(nodesThatUseThisAnnotation.size() == 1)
 		{
 			commands.addAll(buildCommandsToDeleteSubTasks(project, type, idToRemove));
+			commands.addAll(buildCommandsToDeleteKEAIndicators(project, type, idToRemove));
 			commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 			commands.add(new CommandDeleteObject(type, idToRemove));
 		}
@@ -104,6 +106,27 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 			return null;
 		
 		return (Factor)selected;
+	}
+	
+	
+	private static Vector buildCommandsToDeleteKEAIndicators(Project project, int type, BaseId id) throws Exception
+	{
+		Vector commands = new Vector();
+		if (!(type == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE))
+			return commands;
+	
+		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(type, id);
+		commands.addAll(Arrays.asList(kea.createCommandsToClear()));
+		
+		IdList indicatorList = kea.getIndicatorIds();
+		for (int i  = 0; i < indicatorList.size(); i++)
+		{
+			Indicator indicatorToDelete = (Indicator)project.findObject(ObjectType.INDICATOR, indicatorList.get(i));
+			commands.addAll(Arrays.asList(indicatorToDelete.createCommandsToClear()));
+			commands.add(new CommandDeleteObject(ObjectType.INDICATOR, indicatorToDelete.getId()));
+		}
+
+		return commands;
 	}
 	
 	private static Vector buildCommandsToDeleteSubTasks(Project project, int type, BaseId id) throws Exception

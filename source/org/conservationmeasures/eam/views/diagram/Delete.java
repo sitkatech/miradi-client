@@ -26,7 +26,9 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorCluster;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -158,6 +160,9 @@ public class Delete extends ProjectDoer
 		// children inforceing referencial integrity as a cascade, instead of having the the code here.
 		if (factorToDelete.isStrategy())
 			removeAndDeleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
+		
+		if (factorToDelete.isTarget())
+			removeAndDeleteKeyEcologicalAttributesInList(factorToDelete, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 
 	
@@ -182,4 +187,16 @@ public class Delete extends ProjectDoer
 			DeleteActivity.deleteTaskTree(getProject(), childTask);
 		}
 	}
+	
+	private void removeAndDeleteKeyEcologicalAttributesInList(Factor objectToDelete, String annotationListTag) throws Exception
+	{
+		IdList ids = new IdList(objectToDelete.getData(annotationListTag));
+		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
+		{
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)getProject().findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, ids.get(annotationIndex));
+			Command[] commands = DeleteKeyEcologicalAttributeDoer.buildCommandsToDeleteAnnotation(getProject(), objectToDelete, annotationListTag, kea);
+			getProject().executeCommands(commands);
+		}
+	}
+
 }
