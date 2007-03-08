@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
+import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.IdList;
@@ -13,6 +14,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
@@ -29,15 +31,18 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	{
 		TargetViabilityTreeModel treeTableModel = (TargetViabilityTreeModel)getModel();
 		
-		final boolean wereNodesAddedOrRemoved = isSetDataCommandWithThisTypeAndTag(event, ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		final boolean wereNodesAddedOrRemoved = 
+			isSetDataCommandWithThisTypeAndTag(event, ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS) ||
+			isSetDataCommandWithThisTypeAndTag(event, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
 		if( wereNodesAddedOrRemoved)
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
 			IdList newIdList = extractNewlyAddedIds(event);
+			int objectType = ((CommandSetObjectData)event.getCommand()).getObjectType();
 			for (int i=0; i<newIdList.size(); ++i)
 			{
-				expandAndSelectObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, newIdList.get(i));
+				expandAndSelectObject(objectType, newIdList.get(i));
 			}
 		} 
 		else if(isSetDataCommand(event))
@@ -73,5 +78,6 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	
 	static final Class[] buttonActions = new Class[] {
 			ActionCreateKeyEcologicalAttribute.class, 
-			ActionDeleteKeyEcologicalAttribute.class,};
+			ActionDeleteKeyEcologicalAttribute.class,
+			ActionCreateKeyEcologicalAttributeIndicator.class,};
 }

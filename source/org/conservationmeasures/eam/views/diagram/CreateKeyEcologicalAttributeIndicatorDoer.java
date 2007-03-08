@@ -14,16 +14,21 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public class CreateKeyEcologicalAttributeIndicatorDoer extends ViewDoer
+public class CreateKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
+		if (getObjects().length != 1)
+			return false;
+		
+		if (getObjects()[0].getType() != ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+			return false;
+		
 		return true;
 	}
 
@@ -37,7 +42,7 @@ public class CreateKeyEcologicalAttributeIndicatorDoer extends ViewDoer
 		if(!isAvailable())
 			return;
 
-		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)getView().getSelectedObject();
+		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)getObjects()[0];
 
 		try
 		{
@@ -55,8 +60,7 @@ public class CreateKeyEcologicalAttributeIndicatorDoer extends ViewDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			CreateTaskParameter parentRef = new CreateTaskParameter(kea.getRef());
-			CommandCreateObject create = new CommandCreateObject(ObjectType.INDICATOR, parentRef);
+			CommandCreateObject create = new CommandCreateObject(ObjectType.INDICATOR);
 			project.executeCommand(create);
 			BaseId createdId = create.getCreatedId();
 	

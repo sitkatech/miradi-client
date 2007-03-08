@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.actions.ActionCreateActivity;
 import org.conservationmeasures.eam.actions.ActionCreateGoal;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
+import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
@@ -191,6 +192,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		
 		addDoerToMap(ActionCreateKeyEcologicalAttribute.class, new CreateKeyEcologicalAttributeDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttribute.class, new DeleteKeyEcologicalAttributeDoer());
+		addDoerToMap(ActionCreateKeyEcologicalAttributeIndicator.class, new CreateKeyEcologicalAttributeIndicatorDoer());
 	}
 	
 	public void becomeActive() throws Exception
