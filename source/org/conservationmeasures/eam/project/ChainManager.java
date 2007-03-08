@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 
 public class ChainManager
 {
@@ -35,13 +36,42 @@ public class ChainManager
 		if(type == ObjectType.GOAL)
 			return findFactorsThatHaveThisObject(id, Factor.TAG_GOAL_IDS);
 		if(type == ObjectType.INDICATOR)
-			return findFactorsThatHaveThisObject(id, Factor.TAG_INDICATOR_IDS);
+			return findFactorsThatHaveThisIndicator(id);
 		if(type == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			return findFactorsThatHaveThisObject(id, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		
 		throw new RuntimeException("Not an annotation type? " + type);
 	}
 
+	public FactorSet findFactorsThatHaveThisIndicator(BaseId objectId) throws Exception
+	{
+		FactorSet factorSet =  findFactorsThatHaveThisObject(objectId, Factor.TAG_INDICATOR_IDS);
+		FactorSet targetsFound = findKEAsWithThisIndicator(objectId);
+		factorSet.attemptToAddAll(targetsFound);
+		return factorSet;
+	}
+
+	private FactorSet findKEAsWithThisIndicator(BaseId objectId)
+	{
+		FactorSet targetsFound = new FactorSet();
+		Factor[] targets = getFactorPool().getTargets();
+		for (int i=0; i<targets.length; ++i)
+		{
+			IdList keas = targets[i].getKeyEcologicalAttributes();
+			for (int j=0; j<keas.size(); ++j)
+			{
+				BaseId keyEcologicalAttributeId = keas.get(j);
+				KeyEcologicalAttribute keyEcologicalAttribute = (KeyEcologicalAttribute) project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keyEcologicalAttributeId);
+				if (keyEcologicalAttribute.getIndicatorIds().find(objectId) != BaseId.INVALID.asInt())
+				{
+					targetsFound.attemptToAdd(targets[i]);
+					break;
+				}
+			}
+		}
+		return targetsFound;
+	}
+	
 	public FactorSet findFactorsThatUseThisObjective(BaseId objectiveId) throws Exception
 	{
 		return findFactorsThatUseThisAnnotation(ObjectType.OBJECTIVE, objectiveId);
