@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
@@ -484,16 +485,13 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void addLinksToModel() throws Exception
 	{
-		FactorLinkId[] linkIds = getFactorLinkPool().getFactorLinkIds();
-		
-		for(int i = 0; i < linkIds.length; ++i)
+		DiagramFactorLinkPool diagramFactorLinkPool = (DiagramFactorLinkPool) project.getPool(ObjectType.DIAGRAM_LINK);
+		IdList allDiagramFactorLinkIds = diagramFactorLinkPool.getIdList();
+		for (int i = 0; i < allDiagramFactorLinkIds.size(); i++)
 		{
-			FactorLink link = getFactorLinkPool().find(linkIds[i]);
-			if(doesFactorExist(link.getFromFactorId()) && doesFactorExist(link.getToFactorId()))
-			{
-				DiagramFactorLink diagramFactorLink = project.getDiagramFactorLinkFromPool(linkIds[i]);
-				addLinkToDiagram(diagramFactorLink);
-			}
+			BaseId factorLinkId = allDiagramFactorLinkIds.get(i);
+			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) diagramFactorLinkPool.getRawObject(factorLinkId);
+			addLinkToDiagram(diagramFactorLink);
 		}
 	}
 
