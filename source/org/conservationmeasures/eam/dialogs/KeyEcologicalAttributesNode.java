@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -29,14 +30,14 @@ public class KeyEcologicalAttributesNode extends TreeTableNode
 		return kea;
 	}
 
-	public TreeTableNode getChild(int index)
-	{
-		return (TreeTableNode)children.get(index);
-	}
-
 	public int getChildCount()
 	{
-		return children.size();
+		return indicators.length;
+	}
+
+	public TreeTableNode getChild(int index)
+	{
+		return indicators[index];
 	}
 
 	public ORef getObjectReference()
@@ -65,14 +66,25 @@ public class KeyEcologicalAttributesNode extends TreeTableNode
 	{
 		return kea.getId();
 	}
+
 	public void rebuild()
 	{
-		children = new Vector();
+		int childCount = kea.getIndicatorIds().size();
+		Vector indicatorVector = new Vector();
+		for(int i = 0; i < childCount; ++i)
+		{
+			BaseId indicatorId = kea.getIndicatorIds().get(i);
+			Indicator indicator = project.getIndicatorPool().find(indicatorId);
+			indicatorVector.add(new KeyEcologicalAttributeIndicatorNode(project, indicator));
+		}
+		indicators = (KeyEcologicalAttributeIndicatorNode[])indicatorVector.toArray(new KeyEcologicalAttributeIndicatorNode[0]);
 	}
 	
+
 	Vector children;
 	Project project;
 	KeyEcologicalAttribute kea;
+	KeyEcologicalAttributeIndicatorNode[] indicators;
 
 }
 
