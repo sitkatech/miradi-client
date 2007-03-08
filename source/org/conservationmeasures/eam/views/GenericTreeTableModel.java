@@ -23,7 +23,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 
 	public TreePath getPathToRoot()
 	{
-		return null;
+		return new TreePath(getRoot());
 	}
 	
 

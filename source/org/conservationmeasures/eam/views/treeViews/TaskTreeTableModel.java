@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.treeViews;
 
-import javax.swing.tree.TreePath;
-
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -29,11 +27,6 @@ public class TaskTreeTableModel extends GenericTreeTableModel
 	public String getColumnName(int column)
 	{
 		return null;
-	}
-
-	public TreePath getPathToRoot()
-	{
-		return new TreePath(getRoot());
 	}
 
 	static boolean isTreeStructureChangingCommand(CommandSetObjectData cmd)

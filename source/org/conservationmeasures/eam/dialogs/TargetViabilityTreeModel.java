@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import javax.swing.tree.TreePath;
-
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -31,12 +29,6 @@ public class TargetViabilityTreeModel extends GenericTreeTableModel
 		return EAM.fieldLabel(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, columnTags[column]);
 	}
 	
-	//TODO: not sure if GenericTreeModel should do this and not here
-	public TreePath getPathToRoot()
-	{
-		return new TreePath(getRoot());
-	}
-
 	public static String[] columnTags = {"Item", };
 	Project project;
 
