@@ -45,6 +45,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
+import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
@@ -58,7 +59,6 @@ import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -754,11 +754,19 @@ public class Project
 
 	public DiagramFactorLinkId addLinkToDiagram(FactorLinkId linkId) throws Exception
 	{
-		FactorLink cmLinkage = getFactorLinkPool().find(linkId);
-		DiagramFactorLink addedDiagramFactorLink = diagramModel.addLinkToDiagram(cmLinkage);
+		DiagramFactorLink diagramFactorLink =  getDiagramFactorLinkFromPool(linkId);
+		DiagramFactorLink addedDiagramFactorLink = diagramModel.addLinkToDiagram(diagramFactorLink);
 		DiagramFactorLinkId diagramLinkageId = addedDiagramFactorLink.getDiagramLinkageId();
 		
 		return diagramLinkageId;
+	}
+	
+	public DiagramFactorLink getDiagramFactorLinkFromPool(FactorLinkId factorLinkId)
+	{
+		DiagramFactorLinkPool pool = (DiagramFactorLinkPool) getPool(ObjectType.DIAGRAM_LINK);
+    	DiagramFactorLink diagramFactorLink = pool.findUsingRawId(factorLinkId);
+    	
+    	return diagramFactorLink;
 	}
 
 	protected void writeFactor(FactorId factorId) throws IOException, ParseException
