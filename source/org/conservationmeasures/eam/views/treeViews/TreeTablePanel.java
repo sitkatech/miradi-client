@@ -155,7 +155,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	}
 
 
-	public boolean isFactorCommand(CommandExecutedEvent event, int objectType, String tag)
+	public boolean isThisCommand(CommandExecutedEvent event, int objectType, String tag)
 	{
 		if(!isSetDataCommand(event))
 			return false;
