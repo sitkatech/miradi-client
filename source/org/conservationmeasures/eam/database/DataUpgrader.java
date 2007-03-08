@@ -81,7 +81,8 @@ public class DataUpgrader extends ProjectServer
 
 	void upgrade() throws Exception
 	{
-		if(readDataVersion(getTopDirectory()) == 1)
+		//TODO remove old migration code
+		/*if(readDataVersion(getTopDirectory()) == 1)
 			upgradeToVersion2();
 		if(readDataVersion(getTopDirectory()) == 2)
 			upgradeToVersion3();
@@ -109,8 +110,15 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion14();
 		if(readDataVersion(getTopDirectory()) == 14)
 			upgradeToVersion15();
+		*/
+		
 	}
 
+	void upgradeToVersion16()
+	{
+		
+	}
+	
 	void upgradeToVersion2() throws IOException, ParseException
 	{
 		// add manifest file to Objects-1 and Objects-2
