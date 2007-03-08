@@ -33,32 +33,36 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		int currentSelectedRow = tree.getSelectedRow();
-		if(	isThisSeDataCommand(event, ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS) || 
-			isThisSeDataCommand(event, ObjectType.TASK , Task.TAG_SUBTASK_IDS))
+		if(	isSetDataCommandWithThisTypeAndTag(event, ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS) || 
+			isSetDataCommandWithThisTypeAndTag(event, ObjectType.TASK , Task.TAG_SUBTASK_IDS))
 		{
-			model.rebuildEntreTree();
-			restoreTreeExpansionState();
+			rebuildEntireTree();
 		}
 		else if(isCreateObjectCommand(event) || 
 				isDeleteObjectCommand(event) || 
-				isThisSeDataCommand(event,ObjectType.FACTOR , Factor.TAG_OBJECTIVE_IDS))
+				isSetDataCommandWithThisTypeAndTag(event,ObjectType.FACTOR , Factor.TAG_OBJECTIVE_IDS))
 		{
-			model.rebuildEntreTree();
-			restoreTreeExpansionState();
+			rebuildEntireTree();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			if(TaskTreeTableModel.isTreeStructureChangingCommand(cmd))
 			{
-				model.rebuildEntreTree();
-				restoreTreeExpansionState();
+				rebuildEntireTree();
 			}
 			else
 				repaint();
 		}
-		
+	}
+
+	
+	//TODO: should pull up to super class
+	private void rebuildEntireTree()
+	{
+		int currentSelectedRow = tree.getSelectedRow();
+		model.rebuildEntireTree();
+		restoreTreeExpansionState();
 		setSelectedRow(currentSelectedRow);
 	}
 	

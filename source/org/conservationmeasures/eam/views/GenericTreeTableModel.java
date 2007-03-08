@@ -58,7 +58,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 		return (TreeTableNode)getRoot();
 	}
 
-	public void rebuildEntreTree()
+	public void rebuildEntireTree()
 	{
 		rebuildNode();
 		fireTreeStructureChanged(getRoot(), new Object[] {getPathToRoot()}, null, null);

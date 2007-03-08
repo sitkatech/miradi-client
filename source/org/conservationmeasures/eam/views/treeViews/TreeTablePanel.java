@@ -90,22 +90,22 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public TreeTableNode getSelectedTreeNode()
 	{
-		TreeTableNode selected = (TreeTableNode)tree.getTree().getLastSelectedPathComponent();
-		return selected;
+		return (TreeTableNode)tree.getTree().getLastSelectedPathComponent();
 	}
 
 	public void selectObject(EAMObject objectToSelect)
 	{
-		selectObject(objectToSelect.getType(), objectToSelect.getId());
+		expandAndSelectObject(objectToSelect.getType(), objectToSelect.getId());
 	}
 
-	public void selectObject(int objectType, BaseId objectToSelect)
+	public void expandAndSelectObject(int objectType, BaseId objectToSelect)
 	{
 		TreePath found = model.findObject(model.getPathToRoot(), objectType, objectToSelect);
 		if(found == null)
 			return;
 		tree.getTree().expandPath(found.getParentPath());
 		int row = tree.getTree().getRowForPath(found);
+		//FIXME: not sure if this if and clear are of any real use
 		if(row < 0)
 		{
 			EAM.logWarning("TreeTablePanel.selectObject failed: row -1");
@@ -135,6 +135,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	}
 	
 
+	//TODO: would these be better in the event...so it would be event.isSetDataCommond()...etc
 	public boolean isSetDataCommand(CommandExecutedEvent event)
 	{
 		return isCommand(event, CommandSetObjectData.COMMAND_NAME);
@@ -157,7 +158,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	}
 
 
-	public boolean isThisSeDataCommand(CommandExecutedEvent event, int objectType, String tag)
+	public boolean isSetDataCommandWithThisTypeAndTag(CommandExecutedEvent event, int objectType, String tag)
 	{
 		if(!isSetDataCommand(event))
 			return false;

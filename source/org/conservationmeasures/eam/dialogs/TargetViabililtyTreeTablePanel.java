@@ -29,15 +29,15 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	{
 		TargetViabilityTreeModel treeTableModel = (TargetViabilityTreeModel)getModel();
 		
-		final boolean wereNodesAddedOrRemoved = isThisSeDataCommand(event, ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		final boolean wereNodesAddedOrRemoved = isSetDataCommandWithThisTypeAndTag(event, ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		if( wereNodesAddedOrRemoved)
 		{
-			treeTableModel.rebuildEntreTree();
+			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
 			IdList newIdList = extractNewlyAddedIds(event);
 			for (int i=0; i<newIdList.size(); ++i)
 			{
-				selectObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, newIdList.get(i));
+				expandAndSelectObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, newIdList.get(i));
 			}
 		} 
 		else if(isSetDataCommand(event))
@@ -46,12 +46,13 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			final boolean isModifiedObjectMabeyInTree = cmd.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 			if (isModifiedObjectMabeyInTree)
 			{
-				treeTableModel.rebuildEntreTree();
+				treeTableModel.rebuildEntireTree();
 				restoreTreeExpansionState();	
 			}
 		}
 	}
 
+	//TODO: would this be better as a static in IdList class
 	private IdList extractNewlyAddedIds(CommandExecutedEvent event)
 	{
 		try
