@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
-import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class TaskTreeTableModel extends GenericTreeTableModel
 {
@@ -32,20 +31,9 @@ public class TaskTreeTableModel extends GenericTreeTableModel
 		return null;
 	}
 
-
 	public TreePath getPathToRoot()
 	{
-		return new TreePath(getRootWorkPlanObject());
-	}
-
-	TreeTableNode getRootWorkPlanObject()
-	{
-		return (TreeTableNode)getRoot();
-	}
-
-	public void objectiveWasModified()
-	{
-		rebuildEntreTree();
+		return new TreePath(getRoot());
 	}
 
 	static boolean isTreeStructureChangingCommand(CommandSetObjectData cmd)
