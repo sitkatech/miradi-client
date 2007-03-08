@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
 import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -31,31 +30,19 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	{
 		super(mainWindowToUse, treeToUse, buttonActions, ObjectType.TASK);
 	}
-	
-
-	boolean isChangeSubtaskListCommand(CommandExecutedEvent event)
-	{
-		if(!isSetDataCommand(event))
-			return false;
-
-		Command rawCommand = event.getCommand();
-		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		if(cmd.getObjectType() == ObjectType.TASK && cmd.getFieldTag().equals(Task.TAG_SUBTASK_IDS))
-			return true;
-		return false;
-	}
-
-
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		int currentSelectedRow = tree.getSelectedRow();
-		if(isFactorCommand(event, Strategy.TAG_ACTIVITY_IDS) || isChangeSubtaskListCommand(event))
+		if(	isFactorCommand(event, ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS) || 
+			isFactorCommand(event, ObjectType.TASK , Task.TAG_SUBTASK_IDS))
 		{
 			model.rebuildEntreTree();
 			restoreTreeExpansionState();
 		}
-		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isFactorCommand(event,Factor.TAG_OBJECTIVE_IDS))
+		else if(isCreateObjectCommand(event) || 
+				isDeleteObjectCommand(event) || 
+				isFactorCommand(event,ObjectType.FACTOR , Factor.TAG_OBJECTIVE_IDS))
 		{
 			model.rebuildEntreTree();
 			restoreTreeExpansionState();

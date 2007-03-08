@@ -24,7 +24,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -156,14 +155,14 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	}
 
 
-	public boolean isFactorCommand(CommandExecutedEvent event, String tag)
+	public boolean isFactorCommand(CommandExecutedEvent event, int objectType, String tag)
 	{
 		if(!isSetDataCommand(event))
 			return false;
 
 		Command rawCommand = event.getCommand();
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		if(cmd.getObjectType() == ObjectType.FACTOR && cmd.getFieldTag().equals(tag))
+		if(cmd.getObjectType() == objectType && cmd.getFieldTag().equals(tag))
 		{
 			return true;
 		}
