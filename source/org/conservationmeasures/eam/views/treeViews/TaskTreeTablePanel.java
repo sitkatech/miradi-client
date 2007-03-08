@@ -34,15 +34,15 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		int currentSelectedRow = tree.getSelectedRow();
-		if(	isThisCommand(event, ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS) || 
-			isThisCommand(event, ObjectType.TASK , Task.TAG_SUBTASK_IDS))
+		if(	isThisSeDataCommand(event, ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS) || 
+			isThisSeDataCommand(event, ObjectType.TASK , Task.TAG_SUBTASK_IDS))
 		{
 			model.rebuildEntreTree();
 			restoreTreeExpansionState();
 		}
 		else if(isCreateObjectCommand(event) || 
 				isDeleteObjectCommand(event) || 
-				isThisCommand(event,ObjectType.FACTOR , Factor.TAG_OBJECTIVE_IDS))
+				isThisSeDataCommand(event,ObjectType.FACTOR , Factor.TAG_OBJECTIVE_IDS))
 		{
 			model.rebuildEntreTree();
 			restoreTreeExpansionState();

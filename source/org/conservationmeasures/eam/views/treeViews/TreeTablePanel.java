@@ -137,31 +137,32 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public boolean isSetDataCommand(CommandExecutedEvent event)
 	{
-		Command rawCommand = event.getCommand();
-		return(rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME));
+		return isCommand(event, CommandSetObjectData.COMMAND_NAME);
 	}
-
 
 	public boolean isCreateObjectCommand(CommandExecutedEvent event)
 	{
-		Command rawCommand = event.getCommand();
-		return (rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME));
+		return isCommand(event, CommandCreateObject.COMMAND_NAME);
 	}
 
 	public boolean isDeleteObjectCommand(CommandExecutedEvent event)
 	{
+		return isCommand(event, CommandDeleteObject.COMMAND_NAME);
+	}
+
+	private boolean isCommand(CommandExecutedEvent event, final String string)
+	{
 		Command rawCommand = event.getCommand();
-		return (rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME));
+		return (rawCommand.getCommandName().equals(string));
 	}
 
 
-	public boolean isThisCommand(CommandExecutedEvent event, int objectType, String tag)
+	public boolean isThisSeDataCommand(CommandExecutedEvent event, int objectType, String tag)
 	{
 		if(!isSetDataCommand(event))
 			return false;
 
-		Command rawCommand = event.getCommand();
-		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 		return (cmd.getObjectType() == objectType && cmd.getFieldTag().equals(tag));
 	}
 	
