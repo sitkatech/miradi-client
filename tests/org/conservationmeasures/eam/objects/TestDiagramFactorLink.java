@@ -107,9 +107,8 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		
-		createDiagramFactorLink(interventionId, factorId, modelLinkageId);
-		
-		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
+		DiagramFactorLinkId createdDiagramFactorLinkId = createDiagramFactorLink(interventionId, factorId, modelLinkageId);		
+		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(createdDiagramFactorLinkId);
 		project.executeCommand(command);
 		
 		assertNotNull("link not in model?", model.getDiagramFactorLinkById(command.getDiagramFactorLinkId()));
@@ -121,7 +120,7 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		assertEquals("Didn't load to id?", factorId, linkage.getToFactorId());
 	}
 
-	private void createDiagramFactorLink(FactorId interventionId, FactorId factorId, FactorLinkId modelLinkageId) throws CommandFailedException
+	private DiagramFactorLinkId createDiagramFactorLink(FactorId interventionId, FactorId factorId, FactorLinkId modelLinkageId) throws CommandFailedException
 	{
 		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(interventionId).getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(factorId).getDiagramFactorId();
@@ -129,6 +128,9 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
     	project.executeCommand(createDiagramLinkCommand);
+    	
+    	DiagramFactorLinkId diagramFactorLinkId = new DiagramFactorLinkId(createDiagramLinkCommand.getCreatedId().asInt());
+    	return diagramFactorLinkId;
 	}
 	
 	ProjectForTesting project;

@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramAddFactorLink extends Command
 {
-	public CommandDiagramAddFactorLink(FactorLinkId idToWrap)
+	public CommandDiagramAddFactorLink(DiagramFactorLinkId diagramFactorLinkToUse)
 	{
-		wrappedFactorLinkId = idToWrap;
+		diagramFactorLinkIdToAdd = diagramFactorLinkToUse;
 		insertedDiagramFactorLinkId = new DiagramFactorLinkId(BaseId.INVALID.asInt());
 	}
 	
@@ -27,14 +27,14 @@ public class CommandDiagramAddFactorLink extends Command
 		return insertedDiagramFactorLinkId;
 	}
 
-	public FactorLinkId getFactorLinkId()
+	public DiagramFactorLinkId getFactorLinkId()
 	{
-		return wrappedFactorLinkId;
+		return diagramFactorLinkIdToAdd;
 	}
 
 	public String toString()
 	{
-		return getCommandName() + ": " + insertedDiagramFactorLinkId + "," + wrappedFactorLinkId ;
+		return getCommandName() + ": " + insertedDiagramFactorLinkId + "," + diagramFactorLinkIdToAdd ;
 	}
 	
 	public String getCommandName()
@@ -46,7 +46,7 @@ public class CommandDiagramAddFactorLink extends Command
 	{
 		try
 		{
-			insertedDiagramFactorLinkId = target.addLinkToDiagram(wrappedFactorLinkId);
+			insertedDiagramFactorLinkId = target.addLinkToDiagram(diagramFactorLinkIdToAdd);
 		}
 		catch (Exception e)
 		{
@@ -58,7 +58,7 @@ public class CommandDiagramAddFactorLink extends Command
 	public Command getReverseCommand() throws CommandFailedException
 	{
 		CommandDiagramRemoveFactorLink commandDiagramRemoveFactorLink = new CommandDiagramRemoveFactorLink(insertedDiagramFactorLinkId);
-		commandDiagramRemoveFactorLink.setFactorLinkId(wrappedFactorLinkId);
+		commandDiagramRemoveFactorLink.setFactorLinkId(diagramFactorLinkIdToAdd);
 		return commandDiagramRemoveFactorLink;
 	}
 
@@ -70,12 +70,12 @@ public class CommandDiagramAddFactorLink extends Command
 	public HashMap getLogData()
 	{
 		HashMap dataPairs = new HashMap();
-		dataPairs.put(FactorLinkId.class.getSimpleName(), wrappedFactorLinkId);
+		dataPairs.put(FactorLinkId.class.getSimpleName(), diagramFactorLinkIdToAdd);
 		return dataPairs;
 	}
 	
 	public static final String COMMAND_NAME = "CommandDiagramAddFactorLink";
 
-	FactorLinkId wrappedFactorLinkId;
+	DiagramFactorLinkId diagramFactorLinkIdToAdd;
 	DiagramFactorLinkId insertedDiagramFactorLinkId;
 }

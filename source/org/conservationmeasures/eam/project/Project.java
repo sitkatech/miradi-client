@@ -45,7 +45,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
-import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
@@ -742,33 +741,24 @@ public class Project
 		return node.getDiagramFactorId();
 	}
 	
-	public FactorLinkId removeLinkFromDiagram(DiagramFactorLinkId idToDelete) throws Exception
+	public DiagramFactorLinkId removeLinkFromDiagram(DiagramFactorLinkId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramFactorLink linkageToDelete = model.getDiagramFactorLinkById(idToDelete);
-		FactorLinkId modelLinkageId = linkageToDelete.getWrappedId();
 		model.deleteDiagramFactorLink(linkageToDelete);
 		
-		return modelLinkageId;
+		return linkageToDelete.getDiagramLinkageId();
 	}
 
-	public DiagramFactorLinkId addLinkToDiagram(FactorLinkId linkId) throws Exception
+	public DiagramFactorLinkId addLinkToDiagram(DiagramFactorLinkId diagramFactorLinkId) throws Exception
 	{
-		DiagramFactorLink diagramFactorLink =  getDiagramFactorLinkFromPool(linkId);
+		DiagramFactorLink diagramFactorLink = (DiagramFactorLink) findObject(ObjectType.DIAGRAM_LINK, diagramFactorLinkId);
 		DiagramFactorLink addedDiagramFactorLink = diagramModel.addLinkToDiagram(diagramFactorLink);
 		DiagramFactorLinkId diagramLinkageId = addedDiagramFactorLink.getDiagramLinkageId();
 		
 		return diagramLinkageId;
 	}
 	
-	public DiagramFactorLink getDiagramFactorLinkFromPool(FactorLinkId factorLinkId)
-	{
-		DiagramFactorLinkPool pool = (DiagramFactorLinkPool) getPool(ObjectType.DIAGRAM_LINK);
-    	DiagramFactorLink diagramFactorLink = pool.findUsingRawId(factorLinkId);
-    	
-    	return diagramFactorLink;
-	}
-
 	protected void writeFactor(FactorId factorId) throws IOException, ParseException
 	{
 		Factor cmNode = getFactorPool().find(factorId);

@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
-import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestCommandDiagramAddFactorLink extends EAMTestCase
@@ -17,7 +17,7 @@ public class TestCommandDiagramAddFactorLink extends EAMTestCase
 	
 	public void testGetReverseCommand() throws Exception
 	{
-		CommandDiagramAddFactorLink addFactorLink = new CommandDiagramAddFactorLink(new FactorLinkId(56)); 
+		CommandDiagramAddFactorLink addFactorLink = new CommandDiagramAddFactorLink(new DiagramFactorLinkId(56)); 
 		CommandDiagramRemoveFactorLink reverseCommand = (CommandDiagramRemoveFactorLink) addFactorLink.getReverseCommand();
 		
 		assertEquals("not same factor link id?", addFactorLink.getFactorLinkId(), reverseCommand.getFactorLinkId());

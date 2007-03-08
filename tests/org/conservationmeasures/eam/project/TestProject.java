@@ -797,9 +797,10 @@ public class TestProject extends EAMTestCase
 		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(fromId).getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(toId).getDiagramFactorId();
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(createdId, fromDiagramFactorId, toDiagramFactorId);
-		project.createObject(ObjectType.DIAGRAM_LINK, extraInfo);
+		BaseId	createdRawDiagramFactorLinkId = project.createObject(ObjectType.DIAGRAM_LINK, extraInfo);
+		DiagramFactorLinkId createdDiagramFactorLinkId = new DiagramFactorLinkId(createdRawDiagramFactorLinkId.asInt());
 		
-		DiagramFactorLinkId diagramLinkageId = project.addLinkToDiagram(createdId);
+		DiagramFactorLinkId diagramLinkageId = project.addLinkToDiagram(createdDiagramFactorLinkId);
 		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
 	}
 

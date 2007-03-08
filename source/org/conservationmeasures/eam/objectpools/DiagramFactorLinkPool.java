@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -30,18 +29,4 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 	{
 		return new DiagramFactorLink(actualId, (CreateDiagramFactorLinkParameter)extraInfo);
 	}
-	
-	public DiagramFactorLink findUsingRawId(FactorLinkId idToUse)
-	{
-		BaseId []allIds = getIds();
-		for (int i = 0; i < allIds.length; i++)
-		{
-			DiagramFactorLink diagramFactorLink = find(allIds[i]);
-			if (diagramFactorLink.getWrappedId().equals(idToUse))
-				return diagramFactorLink;
-		}
-		
-		return null;
-	}
-
 }

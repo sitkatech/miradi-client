@@ -10,7 +10,6 @@ import java.util.HashMap;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
@@ -18,8 +17,8 @@ public class CommandDiagramRemoveFactorLink extends Command
 {
 	public CommandDiagramRemoveFactorLink(DiagramFactorLinkId idToDelete)
 	{
-		diagramFactorLinkId = idToDelete;
-		wrappedFactorLinkId = new FactorLinkId(BaseId.INVALID.asInt());
+		diagramFactorLinkIdToDelete = idToDelete;
+		removedDiagramFactorLinkId = new DiagramFactorLinkId(BaseId.INVALID.asInt());
 	}
 	
 	public String toString()
@@ -36,7 +35,7 @@ public class CommandDiagramRemoveFactorLink extends Command
 	{
 		try
 		{
-			wrappedFactorLinkId = target.removeLinkFromDiagram(diagramFactorLinkId);
+			removedDiagramFactorLinkId = target.removeLinkFromDiagram(diagramFactorLinkIdToDelete);
 		}
 		catch (Exception e)
 		{
@@ -47,35 +46,35 @@ public class CommandDiagramRemoveFactorLink extends Command
 	
 	public Command getReverseCommand() throws CommandFailedException
 	{
-		CommandDiagramAddFactorLink commandDiagramAddFactorLink = new CommandDiagramAddFactorLink(wrappedFactorLinkId);
-		commandDiagramAddFactorLink.setDiagramFactorLinkId(diagramFactorLinkId);
+		CommandDiagramAddFactorLink commandDiagramAddFactorLink = new CommandDiagramAddFactorLink(removedDiagramFactorLinkId);
+		commandDiagramAddFactorLink.setDiagramFactorLinkId(diagramFactorLinkIdToDelete);
 		return commandDiagramAddFactorLink;
 	}
 
 	public DiagramFactorLinkId getDiagramFactorLinkId()
 	{
-		return diagramFactorLinkId;
+		return diagramFactorLinkIdToDelete;
 	}
 
-	public FactorLinkId getFactorLinkId()
+	public DiagramFactorLinkId getFactorLinkId()
 	{
-		return wrappedFactorLinkId;
+		return removedDiagramFactorLinkId;
 	}
 
-	void setFactorLinkId(FactorLinkId factorLinkIdToUse)
+	void setFactorLinkId(DiagramFactorLinkId diagramFactorLinkIdToUse)
 	{
-		wrappedFactorLinkId = factorLinkIdToUse;
+		removedDiagramFactorLinkId = diagramFactorLinkIdToUse;
 	}
 	
 	public HashMap getLogData()
 	{
 		HashMap dataPairs = new HashMap();
-		dataPairs.put(DiagramFactorLinkId.class.getSimpleName(), diagramFactorLinkId);
+		dataPairs.put(DiagramFactorLinkId.class.getSimpleName(), diagramFactorLinkIdToDelete);
 		return dataPairs;
 	}
 
 	public static final String COMMAND_NAME = "CommandDiagramRemoveFactorLink";
 
-	DiagramFactorLinkId diagramFactorLinkId;
-	FactorLinkId wrappedFactorLinkId;
+	DiagramFactorLinkId diagramFactorLinkIdToDelete;
+	DiagramFactorLinkId removedDiagramFactorLinkId;
 }
