@@ -162,11 +162,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 		Command rawCommand = event.getCommand();
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		if(cmd.getObjectType() == objectType && cmd.getFieldTag().equals(tag))
-		{
-			return true;
-		}
-		return false;
+		return (cmd.getObjectType() == objectType && cmd.getFieldTag().equals(tag));
 	}
 	
 	
