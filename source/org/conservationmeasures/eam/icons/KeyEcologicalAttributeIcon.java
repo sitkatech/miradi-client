@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.icons;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
-import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
 
 public class KeyEcologicalAttributeIcon  extends EamIcon 
 {
 
 	FactorRenderer getRenderer() 
 	{
-		return new RectangleRenderer();
+		return new RoundRectangleRenderer();
 	}
 
 	Color getIconColor() 
