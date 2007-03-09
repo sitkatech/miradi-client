@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
+import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker
@@ -89,6 +90,11 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 	public ObjectTableModel getObjectTableModel()
 	{
 		return (ObjectTableModel)getModel();
+	}
+	
+	public TreeTableNode[] getSelectedTreeNodes()
+	{
+		return null;
 	}
 	
 	public EAMObject[] getSelectedObjects()

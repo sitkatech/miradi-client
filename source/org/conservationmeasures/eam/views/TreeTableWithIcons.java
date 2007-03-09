@@ -212,6 +212,12 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			return super.getTableCellEditorComponent(table, value, isSelected, r, c);
 		}
 	}
+	
+	public TreeTableNode[] getSelectedTreeNodes()
+	{
+		return new TreeTableNode[] {(TreeTableNode)getTree().getLastSelectedPathComponent()};
+	}
+
 
 	public EAMObject[] getSelectedObjects()
 	{

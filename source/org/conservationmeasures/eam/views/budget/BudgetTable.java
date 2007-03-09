@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class BudgetTable extends JTable implements ObjectPicker 
@@ -114,6 +115,10 @@ public class BudgetTable extends JTable implements ObjectPicker
 		resourceCol.setCellRenderer(new ComboBoxRenderer(projectResources));
 	}
 	
+	public TreeTableNode[] getSelectedTreeNodes()
+	{
+		return null;
+	}
 
 	public EAMObject[] getSelectedObjects()
 	{
