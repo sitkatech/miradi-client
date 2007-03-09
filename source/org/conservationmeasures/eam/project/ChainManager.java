@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.Target;
 
 public class ChainManager
 {
@@ -57,19 +58,28 @@ public class ChainManager
 		Factor[] targets = getFactorPool().getTargets();
 		for (int i=0; i<targets.length; ++i)
 		{
-			IdList keas = targets[i].getKeyEcologicalAttributes();
-			for (int j=0; j<keas.size(); ++j)
-			{
-				BaseId keyEcologicalAttributeId = keas.get(j);
-				KeyEcologicalAttribute keyEcologicalAttribute = (KeyEcologicalAttribute) project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keyEcologicalAttributeId);
-				if (keyEcologicalAttribute.getIndicatorIds().find(objectId) != BaseId.INVALID.asInt())
-				{
-					targetsFound.attemptToAdd(targets[i]);
-					break;
-				}
-			}
+			if (doesTargetContainKEAWithIndicator(objectId,  (Target)targets[i]))
+				targetsFound.attemptToAdd(targets[i]);
 		}
 		return targetsFound;
+	}
+
+	private boolean doesTargetContainKEAWithIndicator(BaseId objectId,  Target target)
+	{
+		IdList keas = target.getKeyEcologicalAttributes();
+		for (int j=0; j<keas.size(); ++j)
+		{
+			BaseId keyEcologicalAttributeId = keas.get(j);
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute) project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keyEcologicalAttributeId);
+			if (doesKEAContainIndicator(objectId, kea))
+				return true;
+		}
+		return false;
+	}
+	
+	private boolean doesKEAContainIndicator(BaseId objectId,  KeyEcologicalAttribute kea)
+	{
+		return (kea.getIndicatorIds().find(objectId) != BaseId.INVALID.asInt());
 	}
 	
 	public FactorSet findFactorsThatUseThisObjective(BaseId objectiveId) throws Exception
