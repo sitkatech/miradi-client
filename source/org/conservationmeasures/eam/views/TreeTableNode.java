@@ -18,4 +18,8 @@ public abstract class TreeTableNode
 	public abstract Object getValueAt(int column);
 	public abstract EAMObject getObject();
 	abstract public void rebuild() throws Exception;
+	public TreeTableNode getParent(TreeTableNode node) throws Exception 
+	{
+		throw new Exception("This mehtod is not implemented");
+	};
 }
