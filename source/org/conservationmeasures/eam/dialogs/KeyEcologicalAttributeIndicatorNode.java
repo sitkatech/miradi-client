@@ -16,11 +16,11 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 {
-	public KeyEcologicalAttributeIndicatorNode(Project projectToUse, KeyEcologicalAttributesNode kea, Indicator indicatorToUse)
+	public KeyEcologicalAttributeIndicatorNode(Project projectToUse, KeyEcologicalAttributesNode parent, Indicator indicatorToUse)
 	{
 		project = projectToUse;
 		indicator = indicatorToUse;
-		keyEcologicalAttributesNode = kea;
+		keyEcologicalAttributesNode = parent;
 	}
 	
 	public EAMObject getObject()
