@@ -46,12 +46,12 @@ public class ChainManager
 	public FactorSet findFactorsThatHaveThisIndicator(BaseId objectId) throws Exception
 	{
 		FactorSet factorSet =  findFactorsThatHaveThisObject(objectId, Factor.TAG_INDICATOR_IDS);
-		FactorSet targetsFound = findKEAsWithThisIndicator(objectId);
+		FactorSet targetsFound = findTargetsWithKEAsThatHaveThisIndicator(objectId);
 		factorSet.attemptToAddAll(targetsFound);
 		return factorSet;
 	}
 
-	private FactorSet findKEAsWithThisIndicator(BaseId objectId)
+	private FactorSet findTargetsWithKEAsThatHaveThisIndicator(BaseId objectId)
 	{
 		FactorSet targetsFound = new FactorSet();
 		Factor[] targets = getFactorPool().getTargets();
