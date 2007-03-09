@@ -68,8 +68,14 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 	public TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
 	{
 		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
-		if(nodeToSearch.getType() == objectType && nodeToSearch.getObjectReference().getObjectId().equals(objectId))
-			return pathToStartSearch;
+
+		if(nodeToSearch.getType() == objectType)
+		{
+			if (nodeToSearch.getObjectReference()==null)
+				return pathToStartSearch;
+			if (nodeToSearch.getObjectReference().getObjectId().equals(objectId))
+				return pathToStartSearch;
+		}
 
 		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)
 		{
