@@ -218,7 +218,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		return new TreeTableNode[] {(TreeTableNode)getTree().getLastSelectedPathComponent()};
 	}
 
-
+	 //TODO: This method needs review as it seems a bit complex
 	public EAMObject[] getSelectedObjects()
 	{
 		TreeTableNode selectedNode = (TreeTableNode)getTree().getLastSelectedPathComponent();
