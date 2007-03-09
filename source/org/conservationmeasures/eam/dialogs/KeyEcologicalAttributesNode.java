@@ -75,7 +75,7 @@ public class KeyEcologicalAttributesNode extends TreeTableNode
 		{
 			BaseId indicatorId = kea.getIndicatorIds().get(i);
 			Indicator indicator = project.getIndicatorPool().find(indicatorId);
-			indicatorVector.add(new KeyEcologicalAttributeIndicatorNode(project, indicator));
+			indicatorVector.add(new KeyEcologicalAttributeIndicatorNode(project, this, indicator));
 		}
 		indicators = (KeyEcologicalAttributeIndicatorNode[])indicatorVector.toArray(new KeyEcologicalAttributeIndicatorNode[0]);
 	}
