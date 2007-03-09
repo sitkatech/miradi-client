@@ -74,15 +74,15 @@ public class TargetViabilityRoot extends TreeTableNode
 		{
 			BaseId keaId = target.getKeyEcologicalAttributes().get(i);
 			KeyEcologicalAttribute kea = project.getKeyEcologicalAttributePool().find(keaId);
-			KeyEcologicalAttributesVector.add(new KeyEcologicalAttributesNode(project, kea));
+			KeyEcologicalAttributesVector.add(new KeyEcologicalAttributeNode(project, kea));
 		}
 		
-		keyEcologicalAttributes = (KeyEcologicalAttributesNode[])KeyEcologicalAttributesVector.toArray(new KeyEcologicalAttributesNode[0]);
+		keyEcologicalAttributes = (KeyEcologicalAttributeNode[])KeyEcologicalAttributesVector.toArray(new KeyEcologicalAttributeNode[0]);
 
 	}
 	
 	Project project;
 	Target target;
-	KeyEcologicalAttributesNode[] keyEcologicalAttributes;
+	KeyEcologicalAttributeNode[] keyEcologicalAttributes;
 
 }

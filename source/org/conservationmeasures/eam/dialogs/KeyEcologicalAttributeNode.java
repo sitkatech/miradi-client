@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class KeyEcologicalAttributesNode extends TreeTableNode
+public class KeyEcologicalAttributeNode extends TreeTableNode
 {
-	public KeyEcologicalAttributesNode(Project projectToUse, KeyEcologicalAttribute keaToUse)
+	public KeyEcologicalAttributeNode(Project projectToUse, KeyEcologicalAttribute keaToUse)
 	{
 		project = projectToUse;
 		kea = keaToUse;
