@@ -77,13 +77,13 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}
 	}
 	
-	public static Command[] buildCommandsToDeleteAnnotation(Project project, Factor factor, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
+	public static Command[] buildCommandsToDeleteAnnotation(Project project, EAMObject eamObject, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
 		Vector commands = new Vector();
 	
 		int type = annotationToDelete.getType();
 		BaseId idToRemove = annotationToDelete.getId();
-		commands.add(CommandSetObjectData.createRemoveIdCommand(factor, annotationIdListTag, idToRemove));
+		commands.add(CommandSetObjectData.createRemoveIdCommand(eamObject, annotationIdListTag, idToRemove));
 		FactorSet nodesThatUseThisAnnotation = new ChainManager(project).findFactorsThatUseThisAnnotation(type, idToRemove);
 		if(nodesThatUseThisAnnotation.size() == 1)
 		{
@@ -121,9 +121,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		IdList indicatorList = kea.getIndicatorIds();
 		for (int i  = 0; i < indicatorList.size(); i++)
 		{
-			Indicator indicatorToDelete = (Indicator)project.findObject(ObjectType.INDICATOR, indicatorList.get(i));
-			commands.addAll(Arrays.asList(indicatorToDelete.createCommandsToClear()));
-			commands.add(new CommandDeleteObject(ObjectType.INDICATOR, indicatorToDelete.getId()));
+			EAMBaseObject thisAnnotation = (EAMBaseObject)project.findObject(ObjectType.INDICATOR,  indicatorList.get(i));
+			Command[] deleteCommands = DeleteIndicator.buildCommandsToDeleteAnnotation(project, kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
+			commands.addAll(Arrays.asList(deleteCommands));
 		}
 
 		return commands;
