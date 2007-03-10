@@ -7,10 +7,11 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
@@ -19,17 +20,17 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelNew
 {
 	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		this(projectToUse, actions, new KeyEcologicalAttributeId(BaseId.INVALID.asInt()));
+		this(projectToUse, actions, new FactorId(BaseId.INVALID.asInt()));
 	}
 	
-	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions, KeyEcologicalAttribute keyEcologicalAttribute) throws Exception
+	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions, Factor factor) throws Exception
 	{
-		this(projectToUse, actions, (KeyEcologicalAttributeId)keyEcologicalAttribute.getId());
+		this(projectToUse, actions, factor.getId());
 	}
 	
-	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions, KeyEcologicalAttributeId idToShow) throws Exception
+	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions, BaseId idToShow) throws Exception
 	{
-		super(projectToUse, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, idToShow));
+		super(projectToUse, new ORef(ObjectType.FACTOR, idToShow));
 		addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
 		addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
 		updateFieldsFromProject();
