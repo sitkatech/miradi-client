@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -165,10 +166,15 @@ abstract public class ObjectDataInputPanelNew extends ModelessDialogPanel implem
 	}
 	
 	
-	//TODO: Scan list of orefs for object type match: make sure to return invalid id BaseId.INVALID if not found
-	private BaseId getObjecIdtForType(int objectTYpe)
+	private BaseId getObjecIdtForType(int objectType)
 	{
-		return null;
+		for (int i=0; i<orefs.size(); ++i)
+		{
+			int type = ((ORef)orefs.get(i)).getObjectType();
+			if (objectType == type)
+				return  ((ORef)orefs.get(i)).getObjectId();
+		}
+		return BaseId.INVALID;
 	}
 	
 	
@@ -212,10 +218,15 @@ abstract public class ObjectDataInputPanelNew extends ModelessDialogPanel implem
 		updateFieldsFromProject();
 	}
 	
-	//TODO: Scan list of ofres and delete matching object
+
 	public void deleteObjectFromList(BaseId baseId)
 	{
-		orefs.remove(null);
+		for (int i=0; i<orefs.size(); ++i)
+		{
+			BaseId objectId = ((ORef)orefs.get(i)).getObjectId();
+			if (objectId.equals(baseId))
+				orefs.remove(i);
+		}
 	}
 
 	boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
