@@ -341,16 +341,14 @@ abstract public class ObjectDataInputPanelNew extends ModelessDialogPanel implem
 	}
 
 
-	//TODO: Is this used  anywhree in orig input panel can we delte from ModelssDialgo Panel
 	public EAMObject getObject()
 	{
 		return null;
 	}
 
-	//TODO: Is this used  anywhree in orig input panel 
-	public BaseId[] getObjectId()
+	public BaseId getObjectId()
 	{
-		return null;
+		return getORef(orefs.size()-1).getObjectId();
 	}
 
 
