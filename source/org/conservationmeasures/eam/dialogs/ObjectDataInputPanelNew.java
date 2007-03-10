@@ -112,14 +112,31 @@ abstract public class ObjectDataInputPanelNew extends ModelessDialogPanel implem
 	}
 	
 	
+	public ObjectDataInputField createCheckBoxField(String tag, String on, String off)
+	{
+		return new ObjectCheckBoxField(project, getORef(0).getObjectType(), getObjecIdtForType(getORef(0).getObjectType()), tag, on, off);
+	}
+	
 	public ObjectDataInputField createCheckBoxField(int objectType, String tag, String on, String off)
 	{
 		return new ObjectCheckBoxField(project, objectType, getObjecIdtForType(objectType), tag, on, off);
 	}
-
+	
+	
+	public ObjectDataInputField createStringField(String tag)
+	{
+		return new ObjectStringInputField(project, getORef(0).getObjectType(), getObjecIdtForType(getORef(0).getObjectType()), tag);
+	}
+	
 	public ObjectDataInputField createStringField(int objectType, String tag)
 	{
 		return new ObjectStringInputField(project, objectType, getObjecIdtForType(objectType), tag);
+	}
+	
+	
+	public ObjectDataInputField createStringField(String tag, int column)
+	{
+		return new ObjectAdjustableStringInputField(project, getORef(0).getObjectType(), getObjecIdtForType(getORef(0).getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag, int column)
@@ -127,15 +144,29 @@ abstract public class ObjectDataInputPanelNew extends ModelessDialogPanel implem
 		return new ObjectAdjustableStringInputField(project, objectType, getObjecIdtForType(objectType), tag, column);
 	}
 	
+	
+	public ObjectDataInputField createDateChooserField(String tag)
+	{
+		return new ObjectDateChooserInputField(project,  getORef(0).getObjectType(), getObjecIdtForType( getORef(0).getObjectType()), tag);
+	}
+	
 	public ObjectDataInputField createDateChooserField(int objectType, String tag)
 	{
 		return new ObjectDateChooserInputField(project, objectType, getObjecIdtForType(objectType), tag);
+	}
+	
+	
+	public ObjectDataInputField createNumericField(String tag, int column)
+	{
+		return new ObjectNumericInputField(project, getORef(0).getObjectType(), getObjecIdtForType(getORef(0).getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag, int column)
 	{
 		return new ObjectNumericInputField(project, objectType, getObjecIdtForType(objectType), tag, column);
 	}
+	
+	//---------------------------
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag)
 	{
@@ -177,11 +208,17 @@ abstract public class ObjectDataInputPanelNew extends ModelessDialogPanel implem
 	{
 		for (int i=0; i<orefs.size(); ++i)
 		{
-			int type = ((ORef)orefs.get(i)).getObjectType();
+			int type = getORef(i).getObjectType();
 			if (objectType == type)
-				return  ((ORef)orefs.get(i)).getObjectId();
+				return  getORef(i).getObjectId();
 		}
 		return BaseId.INVALID;
+	}
+	
+	
+	public ORef getORef(int index)
+	{
+		return (ORef) orefs.get(index);
 	}
 	
 	
@@ -230,7 +267,7 @@ abstract public class ObjectDataInputPanelNew extends ModelessDialogPanel implem
 	{
 		for (int i=0; i<orefs.size(); ++i)
 		{
-			BaseId objectId = ((ORef)orefs.get(i)).getObjectId();
+			BaseId objectId = getORef(i).getObjectId();
 			if (objectId.equals(baseId))
 				orefs.remove(i);
 		}
