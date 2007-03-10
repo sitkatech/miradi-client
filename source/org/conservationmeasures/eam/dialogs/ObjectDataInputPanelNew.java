@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Rectangle;
+import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -42,6 +43,12 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class ObjectDataInputPanelNew extends ModelessDialogPanel implements CommandExecutedListener
 {
+	public ObjectDataInputPanelNew(Project projectToUse, ORef orefToUse)
+	{
+		this(projectToUse, new Vector(Arrays.asList(new ORef[] {orefToUse})));
+	}
+	
+	
 	public ObjectDataInputPanelNew(Project projectToUse, Vector orefsToUse)
 	{
 		GridLayoutPlus layout = new GridLayoutPlus(0, 2);
@@ -83,10 +90,10 @@ abstract public class ObjectDataInputPanelNew extends ModelessDialogPanel implem
 		}
 	}
 		
-	public void addField(int objectType, ObjectDataInputField field)
+	public void addField(ObjectDataInputField field)
 	{
 		fields.add(field);
-		addLabel(objectType, field.getTag());
+		addLabel(field.getObjectType(), field.getTag());
 		addFieldComponent(field.getComponent());
 	}
 
