@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.workplan;
 
+import java.util.Vector;
+
 import javax.swing.BorderFactory;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -42,9 +44,21 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 
 	private void addCommonFields()
 	{
-		addField(createStringField(Task.TAG_LABEL));
-		
+		addField(createStringField(ObjectType.TASK, Task.TAG_LABEL));
 		updateFieldsFromProject();
+	}
+	
+	//TODO: THis override is here because multiple task in a path can not be disnguished between methods and task or other sub types
+	public void setObjectId(Vector orefs)
+	{
+		if (orefs.size()>1) 
+		{
+			Vector vec = new Vector();
+			vec.add(orefs.get(orefs.size()-1));
+			setObjectId(vec);
+		}
+		else
+			super.setObjectId(orefs);
 	}
 	
 	public void setObjectId(BaseId id)

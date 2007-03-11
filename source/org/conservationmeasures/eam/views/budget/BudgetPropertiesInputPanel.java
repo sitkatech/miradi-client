@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.budget;
 
+import java.util.Vector;
+
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.BudgetTableEditorComponent;
@@ -34,6 +36,19 @@ public class BudgetPropertiesInputPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Text|Budget properties");
+	}
+	
+	//TODO: THis override is here because multiple task in a path can not be disnguished between methods and task or other sub types
+	public void setObjectId(Vector orefs)
+	{
+		if (orefs.size()>1) 
+		{
+			Vector vec = new Vector();
+			vec.add(orefs.get(orefs.size()-1));
+			setObjectId(vec);
+		}
+		else
+			super.setObjectId(orefs);
 	}
 	
 	public void setObjectId(BaseId newId)

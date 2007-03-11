@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 
-public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelNew
+public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 {
 	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{

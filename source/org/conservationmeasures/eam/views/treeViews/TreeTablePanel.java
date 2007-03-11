@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.treeViews;
 
 import java.awt.BorderLayout;
+import java.util.Vector;
 
 import javax.swing.JPanel;
 import javax.swing.event.TreeSelectionEvent;
@@ -24,6 +25,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -170,17 +172,24 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	
 	public void valueChanged(TreeSelectionEvent e)
 	{	
-		TreeTableNode selectedObject = getSelectedTreeNode();
-		if (selectedObject == null)
-			return;
 		if (propertiesPanel == null)
 			return;
 		
-		BaseId baseId = BaseId.INVALID;
-		if (selectedObject.getType() == panelObjectType)
-			baseId = getSelectedTreeNode().getObjectReference().getObjectId();
+		if (tree.getTree().getSelectionPaths()==null)
+			return;
 		
-		propertiesPanel.setObjectId(baseId);
+		Object[] selectedObjects = tree.getTree().getSelectionPaths()[0].getPath();
+		
+		Vector objects = new Vector();
+		for (int i=0; i<selectedObjects.length; ++i)
+		{
+			EAMObject object = ((TreeTableNode)selectedObjects[i]).getObject();
+			if (object==null) 
+				continue;
+			objects.add(new ORef(object.getType(), object.getId()));
+		}
+		
+		propertiesPanel.setObjectId(objects);
 		mainWindow.getActions().updateActionStates();
 	}
 	

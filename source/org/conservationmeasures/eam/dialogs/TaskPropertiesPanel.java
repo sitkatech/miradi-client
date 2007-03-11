@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 
@@ -67,6 +68,19 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		super.dispose();
 	}
 
+	//TODO: THis override is here because multiple task in a path can not be disnguished between methods and task or other sub types
+	public void setObjectId(Vector orefs)
+	{
+		if (orefs.size()>1) 
+		{
+			Vector vec = new Vector();
+			vec.add(orefs.get(orefs.size()-1));
+			setObjectId(vec);
+		}
+		else
+			super.setObjectId(orefs);
+	}
+	
 	public void setObjectId(BaseId id)
 	{
 		inputPanel.setObjectId(id);
