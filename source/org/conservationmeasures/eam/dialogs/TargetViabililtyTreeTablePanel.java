@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIn
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -39,7 +38,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
-			IdList newIdList = extractNewlyAddedIds(event);
+			IdList newIdList = IdList.extractNewlyAddedIds(event);
 			int objectType = ((CommandSetObjectData)event.getCommand()).getObjectType();
 			for (int i=0; i<newIdList.size(); ++i)
 			{
@@ -58,25 +57,6 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		}
 	}
 
-	//TODO: would this be better as a static in IdList class
-	private IdList extractNewlyAddedIds(CommandExecutedEvent event)
-	{
-		try
-		{
-			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			IdList oldIdList = new IdList(cmd.getPreviousDataValue());
-			IdList newIdList = new IdList(cmd.getDataValue());
-			newIdList.subtract(oldIdList);
-			return newIdList;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new IdList();
-		}
-	}
-
-	
 	static final Class[] buttonActions = new Class[] {
 			ActionCreateKeyEcologicalAttribute.class, 
 			ActionDeleteKeyEcologicalAttribute.class,

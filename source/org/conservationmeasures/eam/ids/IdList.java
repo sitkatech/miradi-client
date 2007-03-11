@@ -9,6 +9,9 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
@@ -157,6 +160,22 @@ public class IdList
 		return new IdList(this);
 	}
 	
+	static public IdList extractNewlyAddedIds(CommandExecutedEvent event)
+	{
+		try
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			IdList oldIdList = new IdList(cmd.getPreviousDataValue());
+			IdList newIdList = new IdList(cmd.getDataValue());
+			newIdList.subtract(oldIdList);
+			return newIdList;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new IdList();
+		}
+	}
 	
 	private static final String TAG_IDS = "Ids";
 
