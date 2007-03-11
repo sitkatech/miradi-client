@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
 
@@ -29,7 +30,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		TargetViabilityTreeModel treeTableModel = (TargetViabilityTreeModel)getModel();
+		GenericTreeTableModel treeTableModel = getModel();
 		
 		final boolean wereNodesAddedOrRemoved = 
 			isSetDataCommandWithThisTypeAndTag(event, ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS) ||

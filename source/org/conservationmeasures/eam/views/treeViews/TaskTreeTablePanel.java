@@ -14,14 +14,17 @@ import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 
 public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelectionListener, CommandExecutedListener
@@ -33,10 +36,20 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		GenericTreeTableModel treeTableModel = getModel();
+		
 		if(	isSetDataCommandWithThisTypeAndTag(event, ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS) || 
+			isSetDataCommandWithThisTypeAndTag(event, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE , KeyEcologicalAttribute.TAG_INDICATOR_IDS) ||
 			isSetDataCommandWithThisTypeAndTag(event, ObjectType.TASK , Task.TAG_SUBTASK_IDS))
 		{
-			rebuildEntireTree();
+			treeTableModel.rebuildEntireTree();
+			restoreTreeExpansionState();
+			int objectType = ((CommandSetObjectData)event.getCommand()).getObjectType();
+			IdList newIdList = IdList.extractNewlyAddedIds(event);
+			for (int i=0; i<newIdList.size(); ++i)
+			{
+				expandAndSelectObject(objectType, newIdList.get(i));
+			}
 		}
 		else if(isCreateObjectCommand(event) || 
 				isDeleteObjectCommand(event) || 
