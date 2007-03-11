@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.ids.IdList;
 
 public class CommandExecutedEvent
 {
@@ -56,6 +57,40 @@ public class CommandExecutedEvent
 
 		CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
 		return (cmd.getObjectType() == objectType && cmd.getFieldTag().equals(tag));
+	}
+	
+	public IdList extractNewlyAddedIds()
+	{
+		try
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
+			IdList oldIdList = new IdList(cmd.getPreviousDataValue());
+			IdList newIdList = new IdList(cmd.getDataValue());
+			newIdList.subtract(oldIdList);
+			return newIdList;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new IdList();
+		}
+	}
+	
+	public IdList extractNewlyRemovedIds()
+	{
+		try
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
+			IdList oldIdList = new IdList(cmd.getPreviousDataValue());
+			IdList newIdList = new IdList(cmd.getDataValue());
+			oldIdList.subtract(newIdList);
+			return oldIdList;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new IdList();
+		}
 	}
 	
 	private Command command;
