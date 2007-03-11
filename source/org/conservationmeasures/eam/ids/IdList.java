@@ -177,6 +177,24 @@ public class IdList
 		}
 	}
 	
+	static public IdList extractNewlyRemovedIds(CommandExecutedEvent event)
+	{
+		try
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			IdList oldIdList = new IdList(cmd.getPreviousDataValue());
+			IdList newIdList = new IdList(cmd.getDataValue());
+			oldIdList.subtract(newIdList);
+			return oldIdList;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new IdList();
+		}
+	}
+	
+	
 	private static final String TAG_IDS = "Ids";
 
 	Vector data;

@@ -38,8 +38,8 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
-			IdList newIdList = IdList.extractNewlyAddedIds(event);
 			int objectType = ((CommandSetObjectData)event.getCommand()).getObjectType();
+			IdList newIdList = IdList.extractNewlyAddedIds(event);
 			for (int i=0; i<newIdList.size(); ++i)
 			{
 				expandAndSelectObject(objectType, newIdList.get(i));
