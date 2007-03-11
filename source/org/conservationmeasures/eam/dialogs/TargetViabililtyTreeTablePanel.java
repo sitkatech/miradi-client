@@ -48,13 +48,8 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		} 
 		else if(event.isSetDataCommand())
 		{
-			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			final boolean isModifiedObjectMabeyInTree = cmd.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
-			if (isModifiedObjectMabeyInTree)
-			{
-				treeTableModel.rebuildEntireTree();
-				restoreTreeExpansionState();	
-			}
+			treeTableModel.rebuildEntireTree();
+			restoreTreeExpansionState();	
 		}
 	}
 
