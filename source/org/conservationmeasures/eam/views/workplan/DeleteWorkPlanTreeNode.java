@@ -12,6 +12,8 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
@@ -45,6 +47,16 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 			else if (object.getType() == ObjectType.INDICATOR)
 			{
 				Factor factor = getFactor(project, object.getId());
+				if (factor.isTarget())
+				{
+					ChainManager chainManager = new ChainManager(project);
+					KeyEcologicalAttribute kea = chainManager.findKEAWithIndicator(object.getId(), (Target)factor);
+					if (kea!=null)
+					{
+						DeleteAnnotationDoer.deleteAnnotationViaCommands(project, kea, (Indicator)object, Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
+						return;
+					}	
+				}
 				DeleteAnnotationDoer.deleteAnnotationViaCommands(project, factor, (Indicator)object, Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
 			}
 		}

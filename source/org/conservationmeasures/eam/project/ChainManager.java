@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import java.text.ParseException;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
@@ -64,7 +65,34 @@ public class ChainManager
 		return targetsFound;
 	}
 
-	private boolean doesTargetContainKEAWithIndicator(BaseId objectId,  Target target)
+	public KeyEcologicalAttribute[] findKEAsThatHaveThisIndicator(BaseId objectId)
+	{
+		Vector keasFound = new Vector();
+		Factor[] targets = getFactorPool().getTargets();
+		for (int i=0; i<targets.length; ++i)
+		{
+			KeyEcologicalAttribute kea = findKEAWithIndicator(objectId,  (Target)targets[i]);
+			if (kea!=null)
+				keasFound.add(kea);
+		}
+		return (KeyEcologicalAttribute[])keasFound.toArray(new KeyEcologicalAttribute[0]);
+	}
+	
+	
+	public KeyEcologicalAttribute findKEAWithIndicator(BaseId objectId,  Target target)
+	{
+		IdList keas = target.getKeyEcologicalAttributes();
+		for (int j=0; j<keas.size(); ++j)
+		{
+			BaseId keyEcologicalAttributeId = keas.get(j);
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute) project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keyEcologicalAttributeId);
+			if (doesKEAContainIndicator(objectId, kea))
+				return kea;
+		}
+		return null;
+	}
+	
+	public boolean doesTargetContainKEAWithIndicator(BaseId objectId,  Target target)
 	{
 		IdList keas = target.getKeyEcologicalAttributes();
 		for (int j=0; j<keas.size(); ++j)

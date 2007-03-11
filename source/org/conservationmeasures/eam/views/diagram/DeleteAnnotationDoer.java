@@ -53,7 +53,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
 	}
 
-	public static void deleteAnnotationViaCommands(Project project, Factor factor, EAMBaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
+	public static void deleteAnnotationViaCommands(Project project, EAMBaseObject factor, EAMBaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
 	{
 		String[] buttons = {"Delete", "Retain", };
 		if(!EAM.confirmDialog("Delete", confirmDialogText, buttons))
