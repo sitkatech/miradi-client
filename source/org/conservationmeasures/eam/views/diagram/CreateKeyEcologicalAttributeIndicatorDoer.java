@@ -26,7 +26,7 @@ public class CreateKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 		if (getObjects().length != 1)
 			return false;
 		
-		if (getObjects()[0].getType() != ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+		if (getObjects()[getObjects().length-1].getType() != ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			return false;
 		
 		return true;

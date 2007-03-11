@@ -13,11 +13,11 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public abstract class CreateAnnotationDoer extends ViewDoer
+public abstract class CreateAnnotationDoer extends ObjectsDoer
 {
 	
 	abstract int getAnnotationType();
