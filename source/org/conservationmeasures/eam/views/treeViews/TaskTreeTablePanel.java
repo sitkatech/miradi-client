@@ -38,9 +38,9 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	{
 		GenericTreeTableModel treeTableModel = getModel();
 		
-		if(	isSetDataCommandWithThisTypeAndTag(event, ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS) || 
-			isSetDataCommandWithThisTypeAndTag(event, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE , KeyEcologicalAttribute.TAG_INDICATOR_IDS) ||
-			isSetDataCommandWithThisTypeAndTag(event, ObjectType.TASK , Task.TAG_SUBTASK_IDS))
+		if(	event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS) || 
+				event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE , KeyEcologicalAttribute.TAG_INDICATOR_IDS) ||
+				event.isSetDataCommandWithThisTypeAndTag(ObjectType.TASK , Task.TAG_SUBTASK_IDS))
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
@@ -51,13 +51,13 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 				expandAndSelectObject(objectType, newIdList.get(i));
 			}
 		}
-		else if(isCreateObjectCommand(event) || 
-				isDeleteObjectCommand(event) || 
-				isSetDataCommandWithThisTypeAndTag(event,ObjectType.FACTOR , Factor.TAG_OBJECTIVE_IDS))
+		else if(event.isCreateObjectCommand() || 
+				event.isDeleteObjectCommand() || 
+				event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR , Factor.TAG_OBJECTIVE_IDS))
 		{
 			rebuildEntireTree();
 		}
-		else if(isSetDataCommand(event))
+		else if(event.isSetDataCommand())
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			if(TaskTreeTableModel.isTreeStructureChangingCommand(cmd))

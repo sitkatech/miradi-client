@@ -6,6 +6,9 @@
 package org.conservationmeasures.eam.main;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 
 public class CommandExecutedEvent
 {
@@ -24,5 +27,36 @@ public class CommandExecutedEvent
 		return getCommand().getCommandName();
 	}
 
+	public boolean isSetDataCommand()
+	{
+		return isCommand(CommandSetObjectData.COMMAND_NAME);
+	}
+
+	public boolean isCreateObjectCommand()
+	{
+		return isCommand(CommandCreateObject.COMMAND_NAME);
+	}
+
+	public boolean isDeleteObjectCommand()
+	{
+		return isCommand(CommandDeleteObject.COMMAND_NAME);
+	}
+
+	private boolean isCommand(final String string)
+	{
+		Command rawCommand = getCommand();
+		return (rawCommand.getCommandName().equals(string));
+	}
+
+
+	public boolean isSetDataCommandWithThisTypeAndTag(int objectType, String tag)
+	{
+		if(!isSetDataCommand())
+			return false;
+
+		CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
+		return (cmd.getObjectType() == objectType && cmd.getFieldTag().equals(tag));
+	}
+	
 	private Command command;
 }

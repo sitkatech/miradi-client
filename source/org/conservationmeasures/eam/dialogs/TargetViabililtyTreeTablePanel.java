@@ -33,8 +33,8 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		GenericTreeTableModel treeTableModel = getModel();
 		
 		final boolean wereNodesAddedOrRemoved = 
-			isSetDataCommandWithThisTypeAndTag(event, ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS) ||
-			isSetDataCommandWithThisTypeAndTag(event, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
 		if( wereNodesAddedOrRemoved)
 		{
 			treeTableModel.rebuildEntireTree();
@@ -46,7 +46,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 				expandAndSelectObject(objectType, newIdList.get(i));
 			}
 		} 
-		else if(isSetDataCommand(event))
+		else if(event.isSetDataCommand())
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			final boolean isModifiedObjectMabeyInTree = cmd.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;

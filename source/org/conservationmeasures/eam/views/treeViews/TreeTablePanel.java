@@ -14,10 +14,6 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ObjectCollectionPanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -137,39 +133,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	}
 	
 
-	//TODO: would these be better in the event...so it would be event.isSetDataCommond()...etc
-	public boolean isSetDataCommand(CommandExecutedEvent event)
-	{
-		return isCommand(event, CommandSetObjectData.COMMAND_NAME);
-	}
-
-	public boolean isCreateObjectCommand(CommandExecutedEvent event)
-	{
-		return isCommand(event, CommandCreateObject.COMMAND_NAME);
-	}
-
-	public boolean isDeleteObjectCommand(CommandExecutedEvent event)
-	{
-		return isCommand(event, CommandDeleteObject.COMMAND_NAME);
-	}
-
-	private boolean isCommand(CommandExecutedEvent event, final String string)
-	{
-		Command rawCommand = event.getCommand();
-		return (rawCommand.getCommandName().equals(string));
-	}
-
-
-	public boolean isSetDataCommandWithThisTypeAndTag(CommandExecutedEvent event, int objectType, String tag)
-	{
-		if(!isSetDataCommand(event))
-			return false;
-
-		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-		return (cmd.getObjectType() == objectType && cmd.getFieldTag().equals(tag));
-	}
-	
-	
 	public void valueChanged(TreeSelectionEvent e)
 	{	
 		if (propertiesPanel == null)
