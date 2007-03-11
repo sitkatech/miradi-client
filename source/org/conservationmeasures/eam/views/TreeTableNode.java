@@ -20,6 +20,6 @@ public abstract class TreeTableNode
 	abstract public void rebuild() throws Exception;
 	public TreeTableNode getParentNode() throws Exception 
 	{
-		throw new Exception("getParent not implemented yet for nodes of type " + getType());
+		throw new Exception("getParent not implemented yet for nodes of type " + getType() + " in node:" + getClass());
 	};
 }
