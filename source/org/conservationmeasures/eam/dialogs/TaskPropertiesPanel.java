@@ -78,7 +78,7 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 			setObjectId(vec);
 		}
 		else
-			super.setObjectId(orefs);
+			inputPanel.setObjectId(orefs);
 	}
 	
 	public void setObjectId(BaseId id)
