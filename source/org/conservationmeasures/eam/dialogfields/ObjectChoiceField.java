@@ -66,11 +66,10 @@ public class ObjectChoiceField extends ObjectDataInputField
 		{
 			combo.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 			combo.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-			
 		}
 	}
 
-	public void actionSaveSelection(UiComboBox comboBox)
+	public void saveSelection()
 	{
 		setNeedsSave();
 		saveIfNeeded();
@@ -80,8 +79,7 @@ public class ObjectChoiceField extends ObjectDataInputField
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			UiComboBox comboBox = (UiComboBox)event.getSource();
-			actionSaveSelection(comboBox);
+			saveSelection();
 		}
 	}
 	

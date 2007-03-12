@@ -24,9 +24,9 @@ public class ObjectClassificationChoiceField extends ObjectChoiceField
 	}
 
 	
-	public void actionSaveSelection(UiComboBox comboBox)
+	public void saveSelection()
 	{
-		ChoiceItem taxonomyItem = getTaxonomyItem(comboBox);
+		ChoiceItem taxonomyItem = getTaxonomyItem(combo);
 		if(taxonomyItem != null)
 		{
 			setNeedsSave();
