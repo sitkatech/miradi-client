@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -53,9 +54,8 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	{
 		if (orefs.size()>1) 
 		{
-			Vector vec = new Vector();
-			vec.add(orefs.get(orefs.size()-1));
-			setObjectId(vec);
+			BaseId id = ((ORef)orefs.get(orefs.size()-1)).getObjectId();
+			setObjectId(id);
 		}
 		else
 			super.setObjectId(orefs);
@@ -63,7 +63,6 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	
 	public void setObjectId(BaseId id)
 	{
-		super.setObjectId(id);
 		if (editorComponent == null)
 			return;
 	
