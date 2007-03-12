@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
@@ -43,14 +44,15 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 			return;
 		try
 		{
-			BaseId selectedId = BaseId.INVALID;
+			ORef oref = new ORef(ObjectType.FAKE,BaseId.INVALID);
 			int[] row = table.getSelectedRows();
 			if (row.length == 1 )
 			{
 				EAMObject selectedObject = table.getObjectTableModel().getObjectFromRow(row[0]);
-				selectedId = selectedObject.getId();
+				oref = selectedObject.getRef();
+				
 			}
-			propertiesPanel.setObjectId(selectedId);
+			propertiesPanel.setObjectId(oref);
 			propertiesPanel.setFocusOnFirstField();
 		}
 		catch (Exception e)

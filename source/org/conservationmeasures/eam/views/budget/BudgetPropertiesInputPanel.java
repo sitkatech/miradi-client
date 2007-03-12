@@ -41,13 +41,13 @@ public class BudgetPropertiesInputPanel extends ObjectDataInputPanel
 	
 	public void setObjectId(Vector orefsToUse)
 	{
-		setObjectId(((ORef)orefsToUse.get(0)).getObjectId());
+		super.setObjectId(orefsToUse);
+		if (orefsToUse.size()==0)
+			tableEditorComponent.setTaskId(BaseId.INVALID);
+		else
+			tableEditorComponent.setTaskId(((ORef)orefsToUse.get(0)).getObjectId());
 	}
 	
-	public void setObjectId(BaseId newId)
-	{
-		tableEditorComponent.setTaskId(newId);
-	}
 
 	private void updateTable(CommandSetObjectData command)
 	{

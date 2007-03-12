@@ -598,7 +598,7 @@ public class ObjectManager
 
 		EAMObject object = getPool(objectType).findObject(objectId);
 		if(object == null)
-			EAM.logDebug("getObjectData no such object: " + objectType + ":" + objectId);
+			EAM.logDebug("getObjectData no such object: " + objectType + ":" + objectId + " fieldTag=" + fieldTag);
 		return object.getData(fieldTag);
 	}
 
