@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.workplan;
 
-import java.util.Vector;
-
 import javax.swing.BorderFactory;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -15,7 +13,6 @@ import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -48,24 +45,13 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		addField(createStringField(ObjectType.TASK, Task.TAG_LABEL));
 		updateFieldsFromProject();
 	}
-	
-	//TODO: THis override is here because multiple task in a path can not be disnguished between methods and task or other sub types
-	public void setObjectId(Vector orefs)
-	{
-		if (orefs.size()>1) 
-		{
-			BaseId id = ((ORef)orefs.get(orefs.size()-1)).getObjectId();
-			setObjectId(id);
-		}
-		else
-			super.setObjectId(orefs);
-	}
-	
+
+
 	public void setObjectId(BaseId id)
 	{
 		if (editorComponent == null)
 			return;
-	
+		super.setObjectId(id);
 		editorComponent.setTaskId(id);
 	}
 	

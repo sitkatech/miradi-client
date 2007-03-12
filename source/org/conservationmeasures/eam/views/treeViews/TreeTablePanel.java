@@ -144,7 +144,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		Object[] selectedObjects = tree.getTree().getSelectionPaths()[0].getPath();
 		
 		Vector objects = new Vector();
-		for (int i=0; i<selectedObjects.length; ++i)
+		for (int i=selectedObjects.length-1; i>-1; --i)
 		{
 			EAMObject object = ((TreeTableNode)selectedObjects[i]).getObject();
 			if (object==null) 

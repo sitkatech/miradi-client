@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.BudgetTableUnitsModel;
@@ -68,17 +69,9 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		super.dispose();
 	}
 
-	//TODO: THis override is here because multiple task in a path can not be disnguished between methods and task or other sub types
-	public void setObjectId(Vector orefs)
+	public void setObjectId(Vector orefsToUse)
 	{
-		if (orefs.size()>1) 
-		{
-			Vector vec = new Vector();
-			vec.add(orefs.get(orefs.size()-1));
-			setObjectId(vec);
-		}
-		else
-			inputPanel.setObjectId(orefs);
+		setObjectId(((ORef)orefsToUse.get(0)).getObjectId());
 	}
 	
 	public void setObjectId(BaseId id)
