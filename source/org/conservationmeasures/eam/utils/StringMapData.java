@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class StringMapData
+import org.conservationmeasures.eam.objectdata.ObjectData;
+
+public class StringMapData extends ObjectData
 {
 
 	public StringMapData()
@@ -62,6 +64,18 @@ public class StringMapData
 		return (String)data.get(code);
 	}
 
+	public String get()
+	{
+		if(size() == 0)
+			return "";
+		return toJson().toString();
+	}
+
+	public void set(String newValue) throws Exception
+	{
+		throw new RuntimeException("Method set() not implemented");
+	}
+
 	public String find(String object)
 	{
 		Iterator iterator = data.keySet().iterator();
@@ -105,12 +119,6 @@ public class StringMapData
 		return json;
 	}
 
-	public String toString()
-	{
-		if(size() == 0)
-			return "";
-		return toJson().toString();
-	}
 
 	public boolean equals(Object rawOther)
 	{
@@ -129,5 +137,4 @@ public class StringMapData
 	private static final String TAG_IDS = "Codes";
 
 	HashMap data;
-
 }
