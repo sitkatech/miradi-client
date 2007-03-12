@@ -6,8 +6,6 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
@@ -24,7 +22,6 @@ public class ObjectRaitingChoiceField extends ObjectChoiceField
 	{
 		super(projectToUse, objectType, objectId, questionToUse);
 		combo.setRenderer(new RatingChoiceRenderer());
-		combo.addActionListener(new ComboChangeHandler());
 	}
 
 	class RatingChoiceRenderer extends DefaultListCellRenderer
@@ -37,15 +34,5 @@ public class ObjectRaitingChoiceField extends ObjectChoiceField
 				setIcon(RatingIcon.createFromChoice(thisOption));
 			return cell;
 		}
-	}
-	
-	class ComboChangeHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent arg0)
-		{
-			setNeedsSave();
-			saveIfNeeded();
-		}
-		
 	}
 }

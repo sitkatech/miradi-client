@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 
 public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 {
@@ -32,6 +33,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, new ORef(ObjectType.FACTOR, idToShow));
 		addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
+		addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
+		addField(ObjectChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_TYPE_CODE)));
 		addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
 		updateFieldsFromProject();
 

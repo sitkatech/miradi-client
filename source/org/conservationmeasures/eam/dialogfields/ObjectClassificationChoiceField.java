@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -22,22 +20,13 @@ public class ObjectClassificationChoiceField extends ObjectChoiceField
 	public ObjectClassificationChoiceField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, questionToUse);
-		combo.addActionListener(new ClassificationChangeHandler());
 		combo.addFocusListener(new ClassificationFocusHandler());
 	}
 
-	class ClassificationChangeHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			UiComboBox comboBox = (UiComboBox)event.getSource();
-			ChoiceItem taxonomyItem = getTaxonomyItem(comboBox);
-			actionSaveTaxonomySelection(comboBox, taxonomyItem);
-		}
-	}
 	
-	private void actionSaveTaxonomySelection(UiComboBox thisComboBox, ChoiceItem taxonomyItem)
+	public void actionSaveSelection(UiComboBox comboBox)
 	{
+		ChoiceItem taxonomyItem = getTaxonomyItem(comboBox);
 		if(taxonomyItem != null)
 		{
 			setNeedsSave();

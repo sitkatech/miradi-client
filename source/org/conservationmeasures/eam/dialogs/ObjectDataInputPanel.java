@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.ObjectAdjustableStringInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectCheckBoxField;
+import org.conservationmeasures.eam.dialogfields.ObjectChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectClassificationChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectCodeListField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
@@ -205,7 +206,6 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return new ObjectMultilineInputField(project, objectType, getObjecIdtForType(objectType), tag);
 	}
 	
-	
 	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question)
 	{
 		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjecIdtForType(getORef(0).getObjectType()), question);
@@ -225,7 +225,12 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	{
 		return new ObjectMultilineDisplayField(project, objectType, getObjecIdtForType(objectType), tag);
 	}
-		
+	
+	public ObjectDataInputField ObjectChoiceField(int objectType, ChoiceQuestion question)
+	{
+		return new ObjectChoiceField(project, objectType, getObjecIdtForType(objectType), question);
+	}
+	
 	public ObjectDataInputField createClassificationChoiceField(ChoiceQuestion question)
 	{
 		return new ObjectClassificationChoiceField(project, getORef(0).getObjectType(), getObjecIdtForType(getORef(0).getObjectType()), question);

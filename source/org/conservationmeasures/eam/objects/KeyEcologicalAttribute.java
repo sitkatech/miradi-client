@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -29,7 +30,12 @@ public class KeyEcologicalAttribute extends EAMBaseObject
 	{
 		super.clear();
 		indicatorIds = new IdListData();
+		description = new StringData();
+		typeCode = new StringData();
+		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
+		addField(TAG_DESCRIPTION, description);
+		addField(TAG_TYPE_CODE, typeCode);
 	}
 	
 	public int getType()
@@ -43,10 +49,11 @@ public class KeyEcologicalAttribute extends EAMBaseObject
 	}
 	
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
+	public static final String TAG_DESCRIPTION = "Description";
+	public static final String TAG_TYPE_CODE = "TypeCode";
 	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
 	
 	IdListData indicatorIds;
-
-
-
+	StringData description;
+	StringData typeCode;
 }

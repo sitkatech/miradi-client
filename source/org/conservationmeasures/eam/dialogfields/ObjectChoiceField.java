@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -21,6 +24,7 @@ public class ObjectChoiceField extends ObjectDataInputField
 		super(projectToUse, objectType, objectId, questionToUse.getTag());
 		combo = new UiComboBox(questionToUse.getChoices());
 		addFocusListener();
+		combo.addActionListener(new ComboChangeHandler());
 	}
 
 	public JComponent getComponent()
@@ -66,5 +70,20 @@ public class ObjectChoiceField extends ObjectDataInputField
 		}
 	}
 
+	public void actionSaveSelection(UiComboBox comboBox)
+	{
+		setNeedsSave();
+		saveIfNeeded();
+	}
+	
+	class ComboChangeHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			UiComboBox comboBox = (UiComboBox)event.getSource();
+			actionSaveSelection(comboBox);
+		}
+	}
+	
 	UiComboBox combo;
 }
