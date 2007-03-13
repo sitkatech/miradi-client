@@ -28,7 +28,7 @@ public class StringMapData extends ObjectData
 	public StringMapData(EnhancedJsonObject json)
 	{
 		this();
-		EnhancedJsonObject array = json.optJson(TAG_IDS);
+		EnhancedJsonObject array = json.optJson(TAG_STRING_MAP);
 		if(array == null)
 			array = new EnhancedJsonObject();
 		Iterator iterator = array.keys();
@@ -114,7 +114,7 @@ public class StringMapData extends ObjectData
 			String key = (String)iterator.next();
 			array.put(key, get(key));
 		}
-		json.put(TAG_IDS, array);
+		json.put(TAG_STRING_MAP, array);
 		return json;
 	}
 
@@ -133,7 +133,7 @@ public class StringMapData extends ObjectData
 		return data.hashCode();
 	}
 
-	private static final String TAG_IDS = "Codes";
+	private static final String TAG_STRING_MAP = "StringMap";
 
 	HashMap data;
 }
