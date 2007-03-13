@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.utils.StringMapData;
 import org.martus.util.DirectoryUtils;
 
 public class ObjectTestCase extends EAMTestCase
@@ -118,8 +119,13 @@ public class ObjectTestCase extends EAMTestCase
 			list.add(new BaseId(7));
 			return list.toString();
 		}
-		
-		if(field instanceof RatingData)
+		else if(field instanceof StringMapData)
+		{
+			StringMapData list = new StringMapData();
+			list.add("A","RolaA");
+			return list.toString();
+		}
+		else if(field instanceof RatingData)
 		{
 			return "3";
 		}
