@@ -47,7 +47,7 @@ public class CommandDiagramRemoveFactor extends Command
 	
 	public Command getReverseCommand() throws CommandFailedException
 	{
-		return new CommandDiagramAddFactor(diagramFactorId, wrappedFactorId);
+		return new CommandDiagramAddFactor(diagramFactorId);
 	}
 
 	public DiagramFactorId getDiagramNodeId()

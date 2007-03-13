@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.EdgeView;
@@ -18,7 +18,7 @@ import org.jgraph.graph.VertexView;
 
 public class FactorView extends VertexView
 {
-    public FactorView(DiagramFactor factorToUse) 
+    public FactorView(FactorCell factorToUse) 
     {
         super(factorToUse);
         factor = factorToUse;
@@ -38,5 +38,5 @@ public class FactorView extends VertexView
 		return rectangleCopy;
 	}
 
-	protected DiagramFactor factor;
+	protected FactorCell factor;
 }

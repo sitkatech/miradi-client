@@ -6,17 +6,19 @@
 
 package org.conservationmeasures.eam.diagram;
 
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.diagram.cells.DiagramCause;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.jgraph.graph.GraphLayoutCache;
@@ -42,20 +44,31 @@ public class TestDiagramComponent extends EAMTestCase
 		project.close();
 	}
 	
+	private FactorCell createNode(FactorType nodeType) throws Exception
+	{
+		DiagramModel model = project.getDiagramModel();
+		FactorCommandHelper commandHelper = new FactorCommandHelper(project);
+		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createCommand.getCreatedId();
+		FactorCell factorCell = model.getDiagramFactorById(diagramFactorId);
+		
+		return factorCell;
+	}
+	
 	public void testSelectAll() throws Exception
 	{
 		DiagramComponent diagramComponent = new DiagramComponent();
 		diagramComponent.setModel(project.getDiagramModel());
 		diagramComponent.setGraphLayoutCache(project.getGraphLayoutCache());
 		
-		CreateFactorParameter cmnp = new CreateFactorParameter(new FactorTypeCause());
-		FactorId hiddenId = (FactorId) project.createObject(ObjectType.FACTOR, BaseId.INVALID, cmnp);
-		FactorId visibleId = (FactorId) project.createObject(ObjectType.FACTOR, BaseId.INVALID, cmnp);
+		DiagramCause hiddenNode = (DiagramCause) createNode(Factor.TYPE_CAUSE);
+		FactorId hiddenId = hiddenNode.getWrappedId();
+
+		DiagramCause visibleNode = (DiagramCause) createNode(Factor.TYPE_CAUSE);
+		FactorId visibleId = visibleNode.getWrappedId();
+		
 		FactorLink cmLinkage = new FactorLink(new FactorLinkId(100), hiddenId, visibleId);
 		
-		DiagramFactor hiddenNode = diagramComponent.getDiagramModel().createDiagramFactor(hiddenId);
-		DiagramFactor visibleNode = diagramComponent.getDiagramModel().createDiagramFactor(visibleId);
-
 		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, hiddenId, visibleId);
 		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
 		

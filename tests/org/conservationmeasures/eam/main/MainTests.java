@@ -40,7 +40,6 @@ import org.conservationmeasures.eam.diagram.TestProjectScopeBox;
 import org.conservationmeasures.eam.diagram.TestSetFactorSize;
 import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
 import org.conservationmeasures.eam.diagram.cells.TestDiagramFactor;
-import org.conservationmeasures.eam.diagram.cells.TestDiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.TestFactorDataMap;
 import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeContributingFactor;
 import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeDirectThreat;
@@ -55,7 +54,6 @@ import org.conservationmeasures.eam.objects.TestCause;
 import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
 import org.conservationmeasures.eam.objects.TestDiagramFactorLink;
 import org.conservationmeasures.eam.objects.TestFactor;
-import org.conservationmeasures.eam.objects.TestFactorCluster;
 import org.conservationmeasures.eam.objects.TestFactorLink;
 import org.conservationmeasures.eam.objects.TestFundingSource;
 import org.conservationmeasures.eam.objects.TestGoal;
@@ -160,7 +158,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDelete.class));
 		suite.addTest(new TestSuite(TestEamGraphCell.class));
 		suite.addTest(new TestSuite(TestDiagramAddFactor.class));
-		suite.addTest(new TestSuite(TestDiagramFactorCluster.class));
 		suite.addTest(new TestSuite(TestDiagramFactor.class));
 		suite.addTest(new TestSuite(TestFactorDataMap.class));
 		suite.addTest(new TestSuite(TestFactorTypeContributingFactor.class));
@@ -175,7 +172,6 @@ public class MainTests extends TestCase
 		
 		// objects package
 		suite.addTest(new TestSuite(TestActivityInsertionPoint.class));
-		suite.addTest(new TestSuite(TestFactorCluster.class));
 		suite.addTest(new TestSuite(TestStrategy.class));
 		suite.addTest(new TestSuite(TestCause.class));
 		suite.addTest(new TestSuite(TestDiagramFactorLink.class));

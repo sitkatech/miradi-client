@@ -10,7 +10,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -82,7 +82,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		for(int i = 0; i < factorIds.size(); ++i)
 		{
 			FactorId nodeId = new FactorId(factorIds.get(i).asInt());
-			DiagramFactor diagramFactor = diagramModel.getDiagramFactorByWrappedId(nodeId);
+			FactorCell diagramFactor = diagramModel.getDiagramFactorByWrappedId(nodeId);
 			if (glc.isVisible(diagramFactor))
 				diagramComponent.addSelectionCell(diagramFactor);
 		}

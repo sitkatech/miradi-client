@@ -5,9 +5,8 @@
 */ 
 package org.conservationmeasures.eam.diagram.cellviews;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexView;
@@ -25,7 +24,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 
 	private VertexView createNodeView(EAMGraphCell cell)
 	{
-		DiagramFactor diagramFactor = (DiagramFactor)cell;
+		FactorCell diagramFactor = (FactorCell)cell;
 		if(diagramFactor.isTarget())
 		{
 			return new EllipseFactorView(diagramFactor);
@@ -45,10 +44,6 @@ public class CellViewFactory extends DefaultCellViewFactory
 		if(diagramFactor.isStrategy())
 		{
 			return new HexagonFactorView(diagramFactor);
-		}
-		if(diagramFactor.isFactorCluster())
-		{
-			return new FactorClusterView((DiagramFactorCluster)diagramFactor);
 		}
 		throw new RuntimeException("Unknown node type");
 	}

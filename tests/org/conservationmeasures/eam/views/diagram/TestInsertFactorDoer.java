@@ -11,15 +11,12 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
@@ -58,7 +55,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		inserter.doIt();
 
 		FactorId id = project.getFactorPool().getModelNodeIds()[0];
-		DiagramFactor node = project.getDiagramModel().getDiagramFactorByWrappedId(id);
+		FactorCell node = project.getDiagramModel().getDiagramFactorByWrappedId(id);
 		assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
 		assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
 		assertTrue("select node was called?", inserter.wasSelectNodeCalled());
@@ -87,37 +84,39 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		assertEquals("is same point?", somePoint, samePoint);
 	}
 
-	private void verifyNewTargetNodeLocation(OurMainWindow mainWindow, Project project) throws Exception
+	private void verifyNewTargetNodeLocation(OurMainWindow mainWindow, ProjectForTesting project) throws Exception
 	{
 		InsertInterventionWithFakePropertiesEditing inserter = createInserter(mainWindow);
 
-		DiagramFactor dNode1 = createDiagramNode(project);
+		FactorCell dNode1 = project.createFactorCell(Factor.TYPE_TARGET);
 
 		final Rectangle visibleRect = new Rectangle(0, 0, DIAGRAM_WIDTH, DIAGRAM_HEIGHT);
-		Point newNodeLocation1 = inserter.getTargetLocation(dNode1, visibleRect);
+		DiagramFactor diagramFactor = dNode1.getDiagramFactor();
+		Point newNodeLocation1 = inserter.getTargetLocation(diagramFactor, visibleRect);
 		dNode1.setLocation(newNodeLocation1);
-
-		int x = DIAGRAM_WIDTH - (int)dNode1.getBounds().getWidth() - InsertFactorDoer.TARGET_RIGHT_SPACING;
+		
+		int node1BoudsWidth = (int)dNode1.getBounds().getWidth();
+		int x = DIAGRAM_WIDTH - node1BoudsWidth - InsertFactorDoer.TARGET_RIGHT_SPACING;
 		int y = InsertFactorDoer.TARGET_TOP_LOCATION;
 		Point firstPoint = new Point(x, y);
 		assertEquals("first target location wrong?", firstPoint, newNodeLocation1);
 
-		DiagramFactor dNode2 = createDiagramNode(project);	
+		FactorCell dNode2 = project.createFactorCell(Factor.TYPE_TARGET);	
 
 		y = InsertFactorDoer.TARGET_TOP_LOCATION + (int)dNode1.getRectangle().getHeight() + InsertFactorDoer.TARGET_BETWEEN_SPACING;
 
 		Point secondPoint  = new Point(x, y);
-		Point newNodeLocation2 = inserter.getTargetLocation(dNode2, visibleRect);
+		Point newNodeLocation2 = inserter.getTargetLocation(dNode2.getDiagramFactor(), visibleRect);
 		assertEquals("second target location wrong?", secondPoint, newNodeLocation2);
 	}
 	
-	private void verifyNonTargetWithSelectedNode(OurMainWindow mainWindow, Project project) throws Exception
+	private void verifyNonTargetWithSelectedNode(OurMainWindow mainWindow, ProjectForTesting project) throws Exception
 	{
 		Point someFirstPoint = project.getSnapped(400, 500);
 		Point someSecondPoint = project.getSnapped(0, 500);
 		InsertInterventionWithFakePropertiesEditing inserter = createInserter(mainWindow);
 		
-		DiagramFactor diagramNode = createDiagramNode(project);
+		FactorCell diagramNode = project.createFactorCell(Factor.TYPE_CAUSE);
 		int x = (int)diagramNode.getBounds().getWidth() / 2 + InsertFactorDoer.DEFAULT_MOVE;
 		Point someThirdPoint = project.getSnapped(x , 500);
 
@@ -126,11 +125,11 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		checkNodeLocation(project, inserter, diagramNode, someThirdPoint);
 	}
 
-	private void checkNodeLocation(Project project, InsertInterventionWithFakePropertiesEditing inserter, DiagramFactor diagramNode, Point somePoint)
+	private void checkNodeLocation(Project project, InsertInterventionWithFakePropertiesEditing inserter, FactorCell diagramNode, Point somePoint)
 	{
 		diagramNode.setLocation(somePoint);
 		int nodeWidth = (int)diagramNode.getBounds().getWidth();
-		DiagramFactor[] selectedNodes = new DiagramFactor[1];
+		FactorCell[] selectedNodes = new FactorCell[1];
 		selectedNodes[0] = diagramNode;
 		Point movedLocation = inserter.getLocationSelectedNonTargetNode(selectedNodes, nodeWidth);
 		int snappedX = project.getSnapped(somePoint).x;
@@ -147,15 +146,6 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		return inserter;
 	}
 	
-	private DiagramFactor createDiagramNode(Project project) throws Exception
-	{
-		CreateFactorParameter modelNodeParameter2 = new CreateFactorParameter(new FactorTypeTarget());
-		FactorId nodeId2 = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, modelNodeParameter2);
-		DiagramFactorId  dModelId2 = project.addFactorToDiagram(nodeId2);
-		DiagramFactor dNode2 = project.getDiagramModel().getDiagramFactorById(dModelId2);
-		return dNode2;
-	}
-
 	static class InsertInterventionWithFakePropertiesEditing extends InsertStrategyDoer
 	{
 		protected void selectNewFactor(FactorId idToUse)

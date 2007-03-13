@@ -9,6 +9,8 @@ import java.awt.Dimension;
 
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestCommandSetFactorSize extends EAMTestCase
 {
@@ -19,13 +21,13 @@ public class TestCommandSetFactorSize extends EAMTestCase
 	
 	public void testGetReverseCommand() throws Exception
 	{
-		Dimension previousSize = new Dimension(1, 1);
-		Dimension currentSize = new Dimension(2, 2);
-		CommandSetFactorSize commandSetSize = new CommandSetFactorSize(new DiagramFactorId(56), currentSize, previousSize);
-		CommandSetFactorSize reverseCommand = (CommandSetFactorSize)commandSetSize.getReverseCommand();
+		String previousSize = EnhancedJsonObject.convertFromDimension(new Dimension(1, 1));
+		String currentSize = EnhancedJsonObject.convertFromDimension(new Dimension(2, 2));
+		CommandSetObjectData commandSetSize = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, new DiagramFactorId(56), currentSize, previousSize);
+		CommandSetObjectData reverseCommand = (CommandSetObjectData)commandSetSize.getReverseCommand();
 		
-		assertEquals("not same id?", commandSetSize.getId(), reverseCommand.getId());
-		assertEquals("not same previous size?", commandSetSize.getPreviousSize(), reverseCommand.getCurrentSize());
-		assertEquals("not same current size?", commandSetSize.getCurrentSize(), reverseCommand.getPreviousSize());		
+		assertEquals("not same id?", commandSetSize.getObjectId(), reverseCommand.getObjectId());
+		assertEquals("not same previous size?", commandSetSize.getPreviousDataValue(), reverseCommand.getDataValue());
+		assertEquals("not same current size?", commandSetSize.getDataValue(), reverseCommand.getPreviousDataValue());		
 	}
 }

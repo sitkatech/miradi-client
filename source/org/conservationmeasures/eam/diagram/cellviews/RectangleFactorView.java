@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram.cellviews;
 
 import java.awt.geom.Point2D;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleWithRatingRenderer;
 import org.conservationmeasures.eam.main.EAM;
@@ -18,7 +18,7 @@ import org.jgraph.graph.GraphCellEditor;
 
 public class RectangleFactorView extends FactorView
 {
-	public RectangleFactorView(DiagramFactor factor)
+	public RectangleFactorView(FactorCell factor)
 	{
 		super(factor);
 	}

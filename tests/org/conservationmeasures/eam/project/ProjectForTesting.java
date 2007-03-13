@@ -8,9 +8,14 @@ package org.conservationmeasures.eam.project;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
@@ -51,13 +56,26 @@ public class ProjectForTesting extends Project
 	}
 	
 
-	public FactorId createNodeAndAddToDiagram(FactorType nodeType, BaseId id) throws Exception
+	public FactorId createNodeAndAddToDiagram(FactorType nodeType) throws Exception
 	{
-		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
-		FactorId nodeId = (FactorId)createObject(ObjectType.FACTOR, id, parameter);
-		addFactorToDiagram(nodeId);
-		return nodeId;
+		FactorId factorId = createNode(nodeType);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		executeCommand(createDiagramFactorCommand);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		CommandDiagramAddFactor addDiagramFactorCommand = new CommandDiagramAddFactor(diagramFactorId);
+		executeCommand(addDiagramFactorCommand);
+				
+		return factorId;
 	}
+	
+	public FactorCell createFactorCell(FactorType nodeType) throws Exception
+	{
+		FactorId insertedId = createNodeAndAddToDiagram(nodeType);
+		return getDiagramModel().getDiagramFactorByWrappedId(insertedId);
+	}
+	
 
 
 	Vector commandStack;

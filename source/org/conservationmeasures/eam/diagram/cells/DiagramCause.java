@@ -8,16 +8,17 @@ package org.conservationmeasures.eam.diagram.cells;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramConstants;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 
-public class DiagramCause extends DiagramFactor
+//TODO rename to DiagramCauseCell. and the same for sibling classes.  class names should end with Cell
+public class DiagramCause extends FactorCell
 {
-	public DiagramCause(DiagramFactorId idToUse, Cause cmFactor)
+	public DiagramCause(Cause cmFactor, DiagramFactor diagramFactorToUse)
 	{
-		super(idToUse, cmFactor);
+		super(cmFactor, diagramFactorToUse);
 	}
 
 	public Color getColor()
@@ -29,7 +30,7 @@ public class DiagramCause extends DiagramFactor
 		if(isStress())
 			return DiagramConstants.COLOR_STRESS;
 		
-		throw new RuntimeException("Unknown factor type: " + getFactorType().getClass());
+		throw new RuntimeException("Unknown factor type: " + getClass());
 	}
 
 

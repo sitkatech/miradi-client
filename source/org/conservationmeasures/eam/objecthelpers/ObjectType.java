@@ -24,5 +24,6 @@ public class ObjectType
 	public static final int ACCOUNTING_CODE = 15;
 	public static final int FUNDING_SOURCE = 16;
 	public static final int KEY_ECOLOGICAL_ATTRIBUTE = 17;
+	public static final int DIAGRAM_FACTOR = 18;
 }
 

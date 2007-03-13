@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
+import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
@@ -87,6 +88,7 @@ public class ObjectManager
 		addNormalPool(new AccountingCodePool(ida));
 		addNormalPool(new FundingSourcePool(ida));
 		addNormalPool(new KeyEcologicalAttributePool(ida));
+		addNormalPool(new DiagramFactorPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -164,6 +166,16 @@ public class ObjectManager
 	public KeyEcologicalAttributePool getKeyEcologicalAttributePool()
 	{
 		return (KeyEcologicalAttributePool)getPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+	}
+	
+	public DiagramFactorPool getDiagramFactorPool()
+	{
+		return (DiagramFactorPool) getPool(ObjectType.DIAGRAM_FACTOR);
+	}
+	
+	public DiagramFactorLinkPool getDiagramFactorLinkPool()
+	{
+		return (DiagramFactorLinkPool) getPool(ObjectType.DIAGRAM_LINK);
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
@@ -621,6 +633,7 @@ public class ObjectManager
 		loadPool(ObjectType.ACCOUNTING_CODE);
 		loadPool(ObjectType.FUNDING_SOURCE);
 		loadPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+		loadPool(ObjectType.DIAGRAM_FACTOR);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

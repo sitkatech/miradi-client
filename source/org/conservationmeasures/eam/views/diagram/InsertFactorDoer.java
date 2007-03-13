@@ -8,22 +8,24 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class InsertFactorDoer extends LocationDoer
 {
@@ -43,7 +45,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		
 		try
 		{
-			DiagramFactor[] selectedFactors = getProject().getOnlySelectedFactors();
+			FactorCell[] selectedFactors = getProject().getOnlySelectedFactors();
 			FactorId id = insertFactorItself();
 			if((selectedFactors.length > 0) && (getTypeToInsert()!= Factor.TYPE_TARGET))
 				linkToPreviouslySelectedFactors(id, selectedFactors);
@@ -67,37 +69,45 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	void launchPropertiesEditor(FactorId id) throws Exception, CommandFailedException
 	{
-		DiagramFactor newFactor = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
+		FactorCell newFactor = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
 		getDiagramView().getPropertiesDoer().doFactorProperties(newFactor, null);
 	}
 
 	private FactorId insertFactorItself() throws Exception
 	{
 		Point createAt = getLocation();
-		DiagramFactor[] selectedNodes = getProject().getOnlySelectedFactors();
+		Project project = getProject();
+		FactorCell[] selectedNodes = project.getOnlySelectedFactors();
 
-		getProject().executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandBeginTransaction());
 		FactorType factorType = getTypeToInsert();
-		FactorId id = new FactorCommandHelper(getProject()).createFactorAndDiagramFactor(factorType).getFactorId();
-		DiagramFactor addedFactor = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
+		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
+		DiagramFactorId id = (DiagramFactorId) factorCommandHelper.createFactorAndDiagramFactor(factorType).getCreatedId();
+		
+		FactorCell factorCell = project.getDiagramModel().getDiagramFactorById(id);
+		DiagramFactor addedFactor = factorCell.getDiagramFactor();
 
-		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(id, getInitialText());
-		getProject().executeCommand(setNameCommand);
+		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(addedFactor.getWrappedId(), getInitialText());
+		project.executeCommand(setNameCommand);
 
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, addedFactor);
-		
-		Point snappedPoint  = getProject().getSnapped(deltaPoint);
-		Command moveCommand = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, new DiagramFactorId[] {addedFactor.getDiagramFactorId()});
-		getProject().executeCommand(moveCommand);
+		Point snappedPoint  = project.getSnapped(deltaPoint);
+		//Command moveCommand = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, new DiagramFactorId[] {addedFactor.getDiagramFactorId()});
+		DiagramFactorId diagramFactorId = addedFactor.getDiagramFactorId();
+		String newLocation = EnhancedJsonObject.convertFromPoint(snappedPoint);
+		CommandSetObjectData moveCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_LOCATION, newLocation);
+		project.executeCommand(moveCommand);
 		doExtraSetup(id);
-		getProject().executeCommand(new CommandEndTransaction());
+		project.executeCommand(new CommandEndTransaction());
 
 		forceVisibleInLayerManager();
-		getProject().updateVisibilityOfFactors();
-		return id;
+		project.updateVisibilityOfFactors();
+		
+		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, id);
+		return diagramFactor.getWrappedId();
 	}
 	
-	private Point getDeltaPoint(Point createAt, DiagramFactor[] selectedFactors, FactorType factorType, DiagramFactor newFactor)
+	private Point getDeltaPoint(Point createAt, FactorCell[] selectedFactors, FactorType factorType, DiagramFactor newFactor)
 	{
 		if (createAt != null)
 			return createAt;
@@ -108,10 +118,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return getNonTargetDeltaPoint(selectedFactors, factorType, newFactor);
 	}
 	
-	private Point getNonTargetDeltaPoint(DiagramFactor[] selectedFactors, FactorType factorType, DiagramFactor newFactor)
+	private Point getNonTargetDeltaPoint(FactorCell[] selectedFactors, FactorType factorType, DiagramFactor newFactor)
 	{
 		if (selectedFactors.length > 0 && !factorType.isTarget())
-			return getLocationSelectedNonTargetNode(selectedFactors, (int)newFactor.getBounds().getWidth());
+			return getLocationSelectedNonTargetNode(selectedFactors, (int)newFactor.getSize().getWidth());
+		
 		return getCenterLocation(getDiagramVisibleRect());
 	}
 	
@@ -138,11 +149,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 		Point deltaPoint = new Point();
 		DiagramModel diagramModel = getProject().getDiagramModel();
-		DiagramFactor[] allTargets = diagramModel.getAllDiagramTargets();
+		FactorCell[] allTargets = diagramModel.getAllDiagramTargets();
 
 		if (allTargets.length == 1)
 		{
-			int nodeWidth = addedNode.getRectangle().width;
+			int nodeWidth = addedNode.getSize().width;
 			deltaPoint.x = visibleRectangle.width - TARGET_RIGHT_SPACING - nodeWidth;
 			deltaPoint.y = TARGET_TOP_LOCATION;
 		}
@@ -163,7 +174,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getLocationSelectedNonTargetNode(DiagramFactor[] selectedNodes, int nodeWidth)
+	public Point getLocationSelectedNonTargetNode(FactorCell[] selectedNodes, int nodeWidth)
 	{
 		Point nodeLocation = selectedNodes[0].getLocation();
 		int x = Math.max(0, nodeLocation.x - DEFAULT_MOVE - nodeWidth);
@@ -171,7 +182,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return new Point(x, nodeLocation.y);
 	}
 	
-	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, DiagramFactor[] nodesToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, FactorCell[] nodesToLinkTo) throws CommandFailedException
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)

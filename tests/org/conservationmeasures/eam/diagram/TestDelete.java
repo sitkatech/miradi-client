@@ -6,11 +6,10 @@
 package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -31,10 +30,10 @@ public class TestDelete extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
-		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY, BaseId.INVALID);
-		DiagramFactor intervention = model.getDiagramFactorByWrappedId(interventionId);
-		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
-		DiagramFactor factor = model.getDiagramFactorByWrappedId(factorId);
+		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
+		FactorCell intervention = model.getDiagramFactorByWrappedId(interventionId);
+		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
+		FactorCell factor = model.getDiagramFactorByWrappedId(factorId);
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
 		

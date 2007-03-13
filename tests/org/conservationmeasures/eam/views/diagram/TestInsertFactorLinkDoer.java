@@ -37,9 +37,9 @@ public class TestInsertFactorLinkDoer extends EAMTestCase
 	
 	public void testwouldCreateLinkageLoop() throws Exception
 	{
-		FactorId node1 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
-		FactorId node2 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
-		FactorId node3 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
+		FactorId node1 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
+		FactorId node2 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
+		FactorId node3 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
 		
 		CreateFactorLinkParameter parameter12 = new CreateFactorLinkParameter(node1, node2);
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter12);
@@ -59,9 +59,9 @@ public class TestInsertFactorLinkDoer extends EAMTestCase
 		try
 		{
 			assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
-			project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
+			project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
 			assertFalse("Enabled when only 1 node?", doer.isAvailable());
-			project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
+			project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
 			assertTrue("not enabled when 2 nodes?", doer.isAvailable());
 		}
 		finally

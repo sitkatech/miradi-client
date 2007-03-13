@@ -10,23 +10,23 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.RatingCriterion;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
@@ -196,21 +196,20 @@ public class TestProjectServer extends EAMTestCase
 			Target cmTarget = new Target(takeNextModelNodeId());
 			nodePool.put(cmTarget);
 			
-			model.createDiagramFactor(cmIntervention.getFactorId());
-			model.createDiagramFactor(cmTarget.getFactorId());
+			project.createFactorCell(Factor.TYPE_CAUSE);
+			project.createFactorCell(Factor.TYPE_CAUSE);
 			
 			storage.writeDiagram(model);
 			
 			DiagramModel got = new DiagramModel(project); 
 			storage.readDiagram(got);
 			Vector gotNodes = got.getAllDiagramFactors();
-			Vector expectedNodes = model.getAllDiagramFactors();
-			assertEquals("wrong node count?", expectedNodes.size(), gotNodes.size());
+			assertEquals("wrong node count?", 2, gotNodes.size());
 			for(int i=0; i < gotNodes.size(); ++i)
 			{
-				DiagramFactor gotNode = (DiagramFactor)gotNodes.get(i);
+				FactorCell gotNode = (FactorCell)gotNodes.get(i);
 				DiagramFactorId gotId = gotNode.getDiagramFactorId();
-				DiagramFactor expectedNode = model.getDiagramFactorById(gotId);
+				FactorCell expectedNode = model.getDiagramFactorById(gotId);
 				assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
 			}
 		}

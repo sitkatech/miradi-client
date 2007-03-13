@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -24,7 +24,7 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 		return EAM.text("Label|New Factor");
 	}
 
-	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, DiagramFactor[] factorsToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, FactorCell[] factorsToLinkTo) throws CommandFailedException
 	{
 		super.linkToPreviouslySelectedFactors(newlyInsertedId, factorsToLinkTo);
 		Factor insertedNode = getProject().findNode(newlyInsertedId);

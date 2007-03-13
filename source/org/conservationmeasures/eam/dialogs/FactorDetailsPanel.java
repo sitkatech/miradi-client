@@ -11,7 +11,7 @@ import java.awt.event.ItemListener;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
@@ -36,7 +36,7 @@ import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 
 public class FactorDetailsPanel extends ObjectDataInputPanel
 {
-	public FactorDetailsPanel(Project projectToUse, DiagramFactor factorToEdit) throws Exception
+	public FactorDetailsPanel(Project projectToUse, FactorCell factorToEdit) throws Exception
 	{
 		super(projectToUse, factorToEdit.getType(), factorToEdit.getWrappedId());
 		currentDiagramFactor = factorToEdit;
@@ -117,7 +117,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		}
 	}
 	
-	DiagramFactor getCurrentDiagramFactor()
+	FactorCell getCurrentDiagramFactor()
 	{
 		return currentDiagramFactor;
 	}
@@ -133,5 +133,5 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	}
 	
 	private Icon detailIcon;
-	private DiagramFactor currentDiagramFactor;
+	private FactorCell currentDiagramFactor;
 }

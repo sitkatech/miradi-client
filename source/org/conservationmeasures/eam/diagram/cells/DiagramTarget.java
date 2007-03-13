@@ -11,16 +11,16 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Target;
 
-public class DiagramTarget extends DiagramFactor
+public class DiagramTarget extends FactorCell
 {
-	public DiagramTarget(DiagramFactorId idToUse, Target targetToWrap)
+	public DiagramTarget(Target targetToWrap, DiagramFactor diagramFactor)
 	{
-		super(idToUse, targetToWrap);
+		super(targetToWrap, diagramFactor);
 	}
 
 	public Color getColor()

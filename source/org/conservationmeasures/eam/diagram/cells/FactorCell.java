@@ -11,78 +11,53 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.text.ParseException;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
-import org.conservationmeasures.eam.commands.CommandSetFactorSize;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objects.FactorCluster;
-import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.DataMap;
-import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
-abstract public class DiagramFactor extends EAMGraphCell
+abstract public class FactorCell extends EAMGraphCell
 {
-	public static DiagramFactor wrapConceptualModelObject(DiagramFactorId idToUse, Factor cmObject)
-	{
-		if(cmObject.isStrategy())
-			return new DiagramStrategy(idToUse, (Strategy)cmObject);
-		else if(cmObject.isCause())
-			return new DiagramCause(idToUse, (Cause)cmObject);
-		else if(cmObject.isTarget())
-			return new DiagramTarget(idToUse, (Target)cmObject);
-		else if(cmObject.isFactorCluster())
-			return new DiagramFactorCluster(idToUse, (FactorCluster)cmObject);
-			
-		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
-	}
 	
-	public static DiagramFactor createFromJson(Project project, EnhancedJsonObject json) throws Exception
-	{
-		DiagramFactorId id = new DiagramFactorId(json.getId(TAG_ID).asInt());
-		FactorId wrappedId = new FactorId(json.getId(TAG_WRAPPED_ID).asInt());
-		Factor factor = project.findNode(wrappedId);
-		DiagramFactor diagramFactor = wrapConceptualModelObject(id, factor);
-		diagramFactor.fillFrom(json);
-		return diagramFactor;
-	}
-
-	protected DiagramFactor(DiagramFactorId idToUse, Factor factorToWrap)
+	protected FactorCell(Factor factorToWrap, DiagramFactor diagramFactorToUse)
 	{
 		underlyingObject = factorToWrap;
-		id = idToUse;
+		id = diagramFactorToUse.getDiagramFactorId();
+		diagramFactor = diagramFactorToUse;
 		
 		port = new DefaultPort();
 		add(port);
 		setColors();
 		setFont();
-		setLocation(new Point(0, 0));
-		Dimension defaultNodeSize = getDefaultSize();
-		setSize(defaultNodeSize);
-		setPreviousSize(defaultNodeSize);
+		updateFromDiagramFactor();
 	}
 	
+	public void updateFromDiagramFactor()
+	{
+		setLocation(diagramFactor.getLocation());
+		Dimension size = diagramFactor.getSize();
+		setSize(size);
+		setPreviousSize(size);
+	}
+	
+	//FIXME this method should move or should be deleted
+	public static DiagramFactor wrapConceptualModelObject(DiagramFactorId idToUse, FactorId factorId)
+	{
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
+		
+		return new DiagramFactor(idToUse, extraInfo);
+	}
+
 	public Rectangle getRectangle()
 	{
 		return new Rectangle(getLocation(), getSize());
-	}
-
-	public static Dimension getDefaultSize()
-	{
-		return new Dimension(120, 60);
 	}
 	
 	public boolean isFactor()
@@ -99,10 +74,20 @@ abstract public class DiagramFactor extends EAMGraphCell
 	{
 		return id;
 	}
+	
+	public DiagramFactor getDiagramFactor()
+	{
+		return diagramFactor;
+	}
 
 	public int getType()
 	{
 		return getWrappedType();
+	}
+	
+	public FactorType getUnderlyingFactorType()
+	{
+		return underlyingObject.getNodeType();
 	}
 	
 	public FactorId getWrappedId()
@@ -377,72 +362,12 @@ abstract public class DiagramFactor extends EAMGraphCell
 		return smallTriangle;
 	}
 
-	public Command[] buildCommandsToClear()
-	{
-		int x = getLocation().x;
-		int y = getLocation().y;
-		return new Command[] {
-			new CommandSetFactorSize(getDiagramFactorId(), getDefaultSize(), getSize()),
-			new CommandDiagramMove(-x, -y, new DiagramFactorId[] {getDiagramFactorId()}),
-			new CommandSetObjectData(getWrappedType(), getWrappedId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
-		};
-	}
-	
-	public FactorDataMap createFactorDataMap()
-	{
-		FactorDataMap dataMap = new FactorDataMap();
-		dataMap.putId(TAG_ID, getDiagramFactorId());
-		dataMap.putId(TAG_WRAPPED_ID, getWrappedId());
-		
-		// FIXME: This is a crude hack, to preserve the node type information
-		// here so we can re-create the node if it gets pasted. 
-		// Really, for each node copied to the clipboard, we should copy 
-		// the json for both the ConceptualModelNode and for the DiagramNode.
-		// That will also fix the current bug that objectives and goals are not copied
-		dataMap.put(TAG_NODE_TYPE, FactorDataMap.convertNodeTypeToInt(getFactorType()));
-		
-		
-		dataMap.putPoint(TAG_LOCATION, getLocation());
-		dataMap.putDimension(TAG_SIZE, getSize());
-		dataMap.putString(TAG_VISIBLE_LABEL, getLabel());
-		
-		return dataMap;
-	}
-	
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject dataMap = new DataMap();
-		dataMap.putId(TAG_ID, getDiagramFactorId());
-		dataMap.putId(TAG_WRAPPED_ID, getWrappedId());
-		dataMap.putPoint(TAG_LOCATION, getLocation());
-		dataMap.putDimension(TAG_SIZE, getSize());
-		return dataMap;
-	}
-	
-	public void fillFrom(EnhancedJsonObject json) throws ParseException
-	{
-		FactorDataMap dataMap = new FactorDataMap(json);
-		setLocation(dataMap.getPoint(TAG_LOCATION));
-		setSize(dataMap.getDimension(TAG_SIZE));
-	}
-	
-	public static final String TAG_ID = "Id";
-	public static final String TAG_WRAPPED_ID = "WrappedId";
-	public static final String TAG_LOCATION = "Location";
-	public static final String TAG_SIZE = "Size";
-
-	// FIXME: cut/copy/paste need to be overhauled, because right now they
-	// only memorize a small subset of all available data (e.g. label but not 
-	// comments, objectives, etc.)
-	public static final String TAG_VISIBLE_LABEL = "Label";
-
-	public static final String TAG_NODE_TYPE = "NodeType";
-
 	DefaultPort port;
 	Dimension previousSize;
 	Point previousLocation;
 	
 	DiagramFactorId id;
 	Factor underlyingObject;
+	DiagramFactor diagramFactor;
 }
 

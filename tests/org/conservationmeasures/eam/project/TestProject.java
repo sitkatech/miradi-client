@@ -11,15 +11,17 @@ import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
-import org.conservationmeasures.eam.commands.CommandSetFactorSize;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
@@ -38,17 +40,21 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.martus.util.DirectoryUtils;
@@ -84,8 +90,14 @@ public class TestProject extends EAMTestCase
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
 	{
 		FactorId factorId = project.createNode(Factor.TYPE_CAUSE);
-		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), factorId);
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
+		project.executeCommand(createDiagramFactorCommand);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(cmd);
+		
 		DiagramModel model = new DiagramModel(project);
 		project.getDatabase().readDiagram(model);
 		assertEquals("not one node?", 1, model.getAllDiagramFactors().size());
@@ -200,9 +212,9 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
-		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
-		DiagramFactor node2 =  createNode(Factor.TYPE_STRATEGY);
-		DiagramFactor node3 =  createNode(Factor.TYPE_CAUSE);
+		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell node2 =  project.createFactorCell(Factor.TYPE_STRATEGY);
+		FactorCell node3 =  project.createFactorCell(Factor.TYPE_CAUSE);
 		
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		DiagramFactorLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -230,8 +242,8 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedNodes() throws Exception
 	{
-		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
-		DiagramFactor node2 =  createNode(Factor.TYPE_STRATEGY);
+		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell node2 =  project.createFactorCell(Factor.TYPE_STRATEGY);
 		
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
@@ -255,9 +267,9 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
-		DiagramFactor node2 =  createNode(Factor.TYPE_STRATEGY);
-		DiagramFactor node3 =  createNode(Factor.TYPE_CAUSE);
+		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell node2 =  project.createFactorCell(Factor.TYPE_STRATEGY);
+		FactorCell node3 =  project.createFactorCell(Factor.TYPE_CAUSE);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -276,7 +288,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(4, model.getAllDiagramFactorLinks().size());
 		for(int i = 0; i < nodes.size(); ++i)
 		{
-			assertEquals(2, model.getFactorLinks((DiagramFactor)nodes.get(i)).size());
+			assertEquals(2, model.getFactorLinks((FactorCell)nodes.get(i)).size());
 		}
 		
 		//Test when a pasted item has linkages to a previously deleted node
@@ -288,7 +300,12 @@ public class TestProject extends EAMTestCase
 
 	public void testDiagramMoveOnly() throws Exception
 	{
-		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
+		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		
+		// reset command stack to empty
+		assertNotNull(project.getLastCommand());
+		assertNotNull(project.getLastCommand());
+		
 		node1.setPreviousLocation(new Point(0,0));
 		node1.setLocation(new Point(0,0));
 		node1.setPreviousSize(node1.getSize());
@@ -296,7 +313,7 @@ public class TestProject extends EAMTestCase
 		DiagramFactorId[] noNodesMoved = new DiagramFactorId[1];
 		noNodesMoved[0] = node1.getDiagramFactorId();
 	
-		new FactorMoveHandler(project).factorsWereMovedOrResized(0, 0, noNodesMoved);
+		new FactorMoveHandler(project).factorsWereMovedOrResized(noNodesMoved);
 		try
 		{
 			project.getLastCommand();
@@ -306,57 +323,78 @@ public class TestProject extends EAMTestCase
 		{
 		}
 		
+		Point deltaLocation = new Point(55, 88);
+		node1.setLocation(deltaLocation);
 		
-		int deltaX = 55;
-		int deltaY = 88;
-		node1.setLocation(new Point(deltaX,deltaY));
-		
-		DiagramFactor node2 =  createNode(Factor.TYPE_CAUSE);
+		FactorCell node2 =  project.createFactorCell(Factor.TYPE_CAUSE);
 		node2.setPreviousLocation(new Point(10,10));
-		node2.setLocation(new Point(20,30));
+		Point node2Location = new Point(20,30);
+		node2.setLocation(node2Location);
 		
 		DiagramFactorId[] ids = new DiagramFactorId[2];
 		ids[0] = node1.getDiagramFactorId();
 		ids[1] = node2.getDiagramFactorId();
 		
 		
-		new FactorMoveHandler(project).factorsWereMovedOrResized(deltaX, deltaY, ids);
+		new FactorMoveHandler(project).factorsWereMovedOrResized(ids);
 		project.getLastCommand(); //End Transaction
-		CommandDiagramMove commandDiagramMoveRecorded = (CommandDiagramMove)project.getLastCommand();
-		assertEquals(deltaX, commandDiagramMoveRecorded.getDeltaX());
-		assertEquals(deltaY, commandDiagramMoveRecorded.getDeltaY());
-		assertEquals(node1.getDiagramFactorId(), commandDiagramMoveRecorded.getIds()[0]);
-		assertEquals(node2.getDiagramFactorId(), commandDiagramMoveRecorded.getIds()[1]);
-		project.getLastCommand(); //begin Transaction
 		
+		CommandSetObjectData commandDiagramMove1 = (CommandSetObjectData)project.getLastCommand();
+		assertEquals(node2.getDiagramFactorId(), commandDiagramMove1.getObjectId());
+		Point point1 = EnhancedJsonObject.convertToPoint(commandDiagramMove1.getDataValue());
+		assertEquals(point1, node2Location);
+		
+		CommandSetObjectData commandDiagramMove2 = (CommandSetObjectData)project.getLastCommand();
+		assertEquals(node1.getDiagramFactorId(), commandDiagramMove2.getObjectId());
+		Point point2 = EnhancedJsonObject.convertToPoint(commandDiagramMove2.getDataValue());
+		assertEquals(point2, deltaLocation);
+		
+		project.getLastCommand(); //begin Transaction
 	}
 	
 	public void testResizeNodesOnly() throws Exception
 	{
-		DiagramFactor node1 =  createNode(Factor.TYPE_STRATEGY);
+		FactorCell node1 =  project.createFactorCell(Factor.TYPE_STRATEGY);
+		DiagramFactor diagramFactor1 = node1.getDiagramFactor();
 		node1.setSize(new Dimension(5,10));
 		node1.setPreviousSize((new Dimension(55, 80)));
 		node1.setPreviousLocation(new Point(0,0));
 		node1.setLocation(new Point(0,0));
+		diagramFactor1.setSize(node1.getPreviousSize());
+		diagramFactor1.setLocation(node1.getPreviousLocation());
 
-		DiagramFactor node2 =  createNode(Factor.TYPE_CAUSE);
+		FactorCell node2 =  project.createFactorCell(Factor.TYPE_CAUSE);
+		DiagramFactor diagramFactor2 = node2.getDiagramFactor();
 		node2.setSize(new Dimension(15,15));
 		node2.setPreviousSize((new Dimension(52, 33)));
 		node2.setPreviousLocation(new Point(0,0));
 		node2.setLocation(new Point(0,0));
+		diagramFactor2.setSize(node2.getPreviousSize());
+		diagramFactor2.setLocation(node2.getPreviousLocation());
+
 		
 		DiagramFactorId[] ids = new DiagramFactorId[2];
 		ids[0] = node1.getDiagramFactorId();
 		ids[1] = node2.getDiagramFactorId();
 		
-		new FactorMoveHandler(project).factorsWereMovedOrResized(0, 0, ids);
+		new FactorMoveHandler(project).factorsWereMovedOrResized(ids);
+		
 		project.getLastCommand(); //End Transaction
-		CommandSetFactorSize commandSetNodeSize2Recorded = (CommandSetFactorSize)project.getLastCommand();
-		assertEquals(node2.getSize(), commandSetNodeSize2Recorded.getCurrentSize());
-		assertEquals(node2.getPreviousSize(), commandSetNodeSize2Recorded.getPreviousSize());
-		CommandSetFactorSize commandSetNodeSize1Recorded = (CommandSetFactorSize)project.getLastCommand();
-		assertEquals(node1.getSize(), commandSetNodeSize1Recorded.getCurrentSize());
-		assertEquals(node1.getPreviousSize(), commandSetNodeSize1Recorded.getPreviousSize());
+		
+		CommandSetObjectData commandSetNodeSize2 = (CommandSetObjectData)project.getLastCommand();
+		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, node2.getDiagramFactorId()));
+		String foundSize =  EnhancedJsonObject.convertFromDimension(diagramFactor.getSize());
+		assertEquals(foundSize, commandSetNodeSize2.getDataValue());
+		
+		String node2PreviousSize = EnhancedJsonObject.convertFromDimension(node2.getPreviousSize());
+		assertEquals(node2PreviousSize, commandSetNodeSize2.getPreviousDataValue());
+		
+		CommandSetObjectData commandSetNodeSize1 = (CommandSetObjectData)project.getLastCommand();
+		String size = EnhancedJsonObject.convertFromDimension(node1.getSize());
+		assertEquals(size, commandSetNodeSize1.getDataValue());
+		String previousSize = EnhancedJsonObject.convertFromDimension(node1.getPreviousSize());
+		assertEquals(previousSize, commandSetNodeSize1.getPreviousDataValue());
+		
 		project.getLastCommand(); //begin Transaction
 	}
 
@@ -370,30 +408,41 @@ public class TestProject extends EAMTestCase
 		Dimension position2 = new Dimension(95, 88);
 		
 		
-		DiagramFactor nodeResizedAndMoved =  createNode(Factor.TYPE_STRATEGY);
+		FactorCell nodeResizedAndMoved =  project.createFactorCell(Factor.TYPE_STRATEGY);
 		nodeResizedAndMoved.setSize(position1);
 		nodeResizedAndMoved.setPreviousSize(position2);
 		nodeResizedAndMoved.setPreviousLocation(new Point(x,y));
 		nodeResizedAndMoved.setLocation(new Point(x+deltaX, y+deltaY));
+		DiagramFactor diagramFactorResizedAndMoved = nodeResizedAndMoved.getDiagramFactor();
+		diagramFactorResizedAndMoved.setLocation(nodeResizedAndMoved.getPreviousLocation());
+		diagramFactorResizedAndMoved.setSize(nodeResizedAndMoved.getPreviousSize());
 
-		DiagramFactor nodeMovedOnly =  createNode(Factor.TYPE_CAUSE);
+		FactorCell nodeMovedOnly =  project.createFactorCell(Factor.TYPE_CAUSE);
 		nodeMovedOnly.setSize(position1);
 		nodeMovedOnly.setPreviousSize(position1);
 		nodeMovedOnly.setPreviousLocation(new Point(x,y));
 		nodeMovedOnly.setLocation(new Point(x+deltaX, y+deltaY));
+		DiagramFactor diagramFactorMovedOnly = nodeMovedOnly.getDiagramFactor();
+		diagramFactorMovedOnly.setLocation(nodeMovedOnly.getPreviousLocation());
+		diagramFactorMovedOnly.setSize(nodeMovedOnly.getPreviousSize());
 		
-		DiagramFactor nodeResizedOnly = createNode(Factor.TYPE_CAUSE);
+		FactorCell nodeResizedOnly = project.createFactorCell(Factor.TYPE_CAUSE);
 		nodeResizedOnly.setSize(position1);
 		nodeResizedOnly.setPreviousSize(position2);
 		nodeResizedOnly.setPreviousLocation(new Point(x,y));
 		nodeResizedOnly.setLocation(new Point(x,y));
-
-		DiagramFactor nodeNotMovedOrResized =  createNode(Factor.TYPE_CAUSE);
+		DiagramFactor diagramFactorResizedOnly = nodeResizedOnly.getDiagramFactor();
+		diagramFactorResizedOnly.setLocation(nodeResizedOnly.getPreviousLocation());
+		diagramFactorResizedOnly.setSize(nodeResizedOnly.getPreviousSize());
+		
+		FactorCell nodeNotMovedOrResized =  project.createFactorCell(Factor.TYPE_CAUSE);
 		nodeNotMovedOrResized.setSize(position1);
 		nodeNotMovedOrResized.setPreviousSize(position1);
 		nodeNotMovedOrResized.setPreviousLocation(new Point(x,y));
 		nodeNotMovedOrResized.setLocation(new Point(x,y));
-
+		DiagramFactor diagramFactorNotMovedOrResized = nodeNotMovedOrResized.getDiagramFactor();
+		diagramFactorNotMovedOrResized.setLocation(nodeNotMovedOrResized.getPreviousLocation());
+		diagramFactorNotMovedOrResized.setSize(nodeNotMovedOrResized.getPreviousSize());
 		
 		DiagramFactorId[] ids = new DiagramFactorId[4];
 		ids[0] = nodeResizedAndMoved.getDiagramFactorId();
@@ -401,23 +450,29 @@ public class TestProject extends EAMTestCase
 		ids[2] = nodeResizedOnly.getDiagramFactorId();
 		ids[3] = nodeNotMovedOrResized.getDiagramFactorId();
 
-		new FactorMoveHandler(project).factorsWereMovedOrResized(deltaX, deltaY, ids);
+		new FactorMoveHandler(project).factorsWereMovedOrResized(ids);
 		
 		project.getLastCommand(); //End Transaction
 		
-		CommandDiagramMove commandDiagramMoveRecorded = (CommandDiagramMove)project.getLastCommand();
-		assertEquals(deltaX, commandDiagramMoveRecorded.getDeltaX());
-		assertEquals(deltaY, commandDiagramMoveRecorded.getDeltaY());
-		assertEquals(nodeResizedAndMoved.getDiagramFactorId(), commandDiagramMoveRecorded.getIds()[0]);
-		assertEquals(nodeMovedOnly.getDiagramFactorId(), commandDiagramMoveRecorded.getIds()[1]);
-
-		CommandSetFactorSize commandNodeResizedOnlyRecorded = (CommandSetFactorSize)project.getLastCommand();
-		assertEquals(nodeResizedOnly.getSize(), commandNodeResizedOnlyRecorded.getCurrentSize());
-		assertEquals(nodeResizedOnly.getPreviousSize(), commandNodeResizedOnlyRecorded.getPreviousSize());
+		CommandSetObjectData commandNodeResizedOnly = (CommandSetObjectData)project.getLastCommand();
+		String nodeResizeOnlySize = EnhancedJsonObject.convertFromDimension(nodeResizedOnly.getSize());
+		assertEquals(nodeResizeOnlySize, commandNodeResizedOnly.getDataValue());
 		
-		CommandSetFactorSize commandNodeResizedAndMovedRecorded = (CommandSetFactorSize)project.getLastCommand();
-		assertEquals(nodeResizedAndMoved.getSize(), commandNodeResizedAndMovedRecorded.getCurrentSize());
-		assertEquals(nodeResizedAndMoved.getPreviousSize(), commandNodeResizedAndMovedRecorded.getPreviousSize());
+		String nodeResizeOnlyPreviousSize = EnhancedJsonObject.convertFromDimension(nodeResizedOnly.getPreviousSize()); 
+		assertEquals(nodeResizeOnlyPreviousSize, commandNodeResizedOnly.getPreviousDataValue());
+		
+		
+		CommandSetObjectData commandDiagramMoveRecorded = (CommandSetObjectData)project.getLastCommand();
+		Point deltaPoint = EnhancedJsonObject.convertToPoint(commandDiagramMoveRecorded.getDataValue());
+		assertEquals(diagramFactorMovedOnly.getLocation(), deltaPoint);
+		assertEquals(diagramFactorMovedOnly.getDiagramFactorId(), commandDiagramMoveRecorded.getObjectId());
+		
+		CommandSetObjectData commandNodeResizedAndMovedRecorded = (CommandSetObjectData)project.getLastCommand();
+		String nodeResizedAndMovedSize = EnhancedJsonObject.convertFromDimension(nodeResizedAndMoved.getSize());
+		assertEquals(nodeResizedAndMovedSize, commandNodeResizedAndMovedRecorded.getDataValue());
+		
+		String nodeResizedAndMovedPreviousSize = EnhancedJsonObject.convertFromDimension(nodeResizedAndMoved.getPreviousSize());
+		assertEquals(nodeResizedAndMovedPreviousSize, commandNodeResizedAndMovedRecorded.getPreviousDataValue());
 		
 		project.getLastCommand(); //begin Transaction
 	}
@@ -426,9 +481,9 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
-		DiagramFactor node2 = createNode(Factor.TYPE_STRATEGY);
-		DiagramFactor node3 = createNode(Factor.TYPE_CAUSE);
+		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell node2 = project.createFactorCell(Factor.TYPE_STRATEGY);
+		FactorCell node3 = project.createFactorCell(Factor.TYPE_CAUSE);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -454,22 +509,23 @@ public class TestProject extends EAMTestCase
 		assertEquals("objects already in the pool?", 0, project.getFactorPool().size());
 		assertEquals("nodes  already in the diagram?", 0, model.getAllDiagramFactors().size());
 
-		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
-
-		Object[] selectedCells = new DiagramFactor[] {node1};
+		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		Object[] selectedCells = new FactorCell[] {node1};
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
 		project.removeDiagramFactorFromDiagram(idToDelete);
 		project.deleteObject(ObjectType.FACTOR, node1.getWrappedId());
+		project.deleteObject(ObjectType.DIAGRAM_FACTOR, node1.getDiagramFactorId());
 		
 		assertEquals("objects still in the pool?", 0, project.getFactorPool().size());
 		assertEquals("nodes  still in the diagram?", 0, model.getAllDiagramFactors().size());
 
 		Point pastePoint = new Point(5,5);
-		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, pastePoint);
+		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
+		factorCommandHelper.pasteFactorsAndLinksIntoProject(transferableList, pastePoint);
 		Vector nodes = model.getAllDiagramFactors();
 		assertEquals(1, nodes.size());
-		DiagramFactor pastedNode = (DiagramFactor)nodes.get(0);
+		FactorCell pastedNode = (FactorCell)nodes.get(0);
 		assertEquals("didn't paste correct size?", node1.getSize(), pastedNode.getSize());
 		assertNotEquals("didn't change id?", node1.getDiagramFactorId(), pastedNode.getDiagramFactorId());
 		assertEquals("didn't snap?", project.getSnapped(pastePoint), pastedNode.getLocation());
@@ -489,8 +545,13 @@ public class TestProject extends EAMTestCase
 	
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
-		FactorId modelNodeId = project.createNode(Factor.TYPE_CAUSE);
-		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
+		FactorId factorId = project.createNode(Factor.TYPE_CAUSE);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		project.executeCommand(createDiagramFactorCommand);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(cmd);
 		DiagramModel copyOfModel = new DiagramModel(project);
 		project.getDatabase().readDiagram(copyOfModel);
@@ -505,31 +566,51 @@ public class TestProject extends EAMTestCase
 		FactorId factorId = project.createNode(Factor.TYPE_CAUSE);
 		int existingCalls = database.callsToWriteObject;
 		
-		CommandDiagramAddFactor targetCommand = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), targetId);
-		project.executeCommand(targetCommand);
-		assertEquals(existingCalls, database.callsToWriteObject);
-		DiagramFactor target = project.getDiagramModel().getDiagramFactorByWrappedId(targetId);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(targetId);
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		project.executeCommand(createDiagramFactor);
+		assertEquals(1 + existingCalls, database.callsToWriteObject);
 		
-		CommandDiagramAddFactor factorCommand = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), factorId);
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
+		CommandDiagramAddFactor targetCommand = new CommandDiagramAddFactor(diagramFactorId);
+		project.executeCommand(targetCommand);
+		assertEquals(1 + existingCalls, database.callsToWriteObject);
+		FactorCell target = project.getDiagramModel().getDiagramFactorByWrappedId(targetId);
+		
+		
+		CreateDiagramFactorParameter extraDiagramFactorInfo2 = new CreateDiagramFactorParameter(factorId);
+		CommandCreateObject createDiagramFactor2 = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo2);
+		project.executeCommand(createDiagramFactor2);
+		assertEquals(2 + existingCalls, database.callsToWriteObject);
+		
+		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createDiagramFactor2.getCreatedId();
+		CommandDiagramAddFactor factorCommand = new CommandDiagramAddFactor(diagramFactorId2);
 		project.executeCommand(factorCommand);
-		assertEquals(0 + existingCalls, database.callsToWriteObject);
-		DiagramFactor factor = project.getDiagramModel().getDiagramFactorByWrappedId(factorId);
+		assertEquals(2 + existingCalls, database.callsToWriteObject);
+		FactorCell factor = project.getDiagramModel().getDiagramFactorByWrappedId(factorId);
 		
 		// undo the AddNode
 		project.undo();
-		assertEquals(0 + existingCalls, database.callsToWriteObject);
+		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		
-		// redo the AddNode
+		// undo the create diagram factor
+		project.undo();
+		assertEquals(2 + existingCalls, database.callsToWriteObject);
+		
+		// redo the created diagram factor
 		project.redo();
-		assertEquals(0 + existingCalls, database.callsToWriteObject);
+		assertEquals(3 + existingCalls, database.callsToWriteObject);
+		
+		// redo the add diagram factor
+		project.redo();
+		assertEquals(3 + existingCalls, database.callsToWriteObject);
 
 		project.executeCommand(new CommandDiagramMove(9, 9, new DiagramFactorId[] {target.getDiagramFactorId(), factor.getDiagramFactorId()} ));
-		assertEquals(0 + existingCalls, database.callsToWriteObject);
+		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
-		Dimension oldDimension = factor.getSize();
-		project.executeCommand(new CommandSetFactorSize(factor.getDiagramFactorId(), new Dimension(50, 75), oldDimension));
-		assertEquals(0 + existingCalls, database.callsToWriteObject);
-		
+		String newDimension = EnhancedJsonObject.convertFromDimension(new Dimension(50, 75));
+		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_SIZE, newDimension));
+		assertEquals(4 + existingCalls, database.callsToWriteObject);
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception
@@ -537,14 +618,20 @@ public class TestProject extends EAMTestCase
 		FactorId gotId = project.createNode(Factor.TYPE_CAUSE);
 		try
 		{
-			project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, gotId);
+			CreateFactorParameter createTarget = new CreateFactorParameter(Factor.TYPE_CAUSE);
+			project.createObject(ObjectType.FACTOR, gotId, createTarget);
 			fail("Should have thrown for inserting a duplicate id");
 		}
 		catch(RuntimeException ignoreExpected)
 		{
 		}
 		
-		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), gotId);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(gotId);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		project.executeCommand(createDiagramFactorCommand);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(cmd);
 		try
 		{
@@ -564,8 +651,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testLinkagePool() throws Exception
 	{
-		DiagramFactor nodeA = createNode(new FactorTypeCause());
-		DiagramFactor nodeB = createNode(new FactorTypeTarget());
+		FactorCell nodeA = project.createFactorCell(new FactorTypeCause());
+		FactorCell nodeB = project.createFactorCell(new FactorTypeTarget());
 		FactorId idA = nodeA.getWrappedId();
 		FactorId idB = nodeB.getWrappedId();
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(idA, idB);
@@ -585,9 +672,9 @@ public class TestProject extends EAMTestCase
 
 	public void testFindNodesThatUseThisObjective() throws Exception
 	{
-		DiagramFactor nodeA = createNode(new FactorTypeTarget());
-		DiagramFactor nodeB = createNode(new FactorTypeTarget());
-		createNode(new FactorTypeTarget());
+		FactorCell nodeA = project.createFactorCell(new FactorTypeTarget());
+		FactorCell nodeB = project.createFactorCell(new FactorTypeTarget());
+		project.createFactorCell(new FactorTypeTarget());
 		
 		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
 		BaseId objectiveId2 = project.createObject(ObjectType.OBJECTIVE);
@@ -612,8 +699,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testFindAllNodesRelatedToThisObjective() throws Exception
 	{
-		DiagramFactor nodeContributingFactor = createNode(new FactorTypeCause());
-		DiagramFactor nodeDirectThreat = createNode(new FactorTypeCause());
+		FactorCell nodeContributingFactor = project.createFactorCell(new FactorTypeCause());
+		FactorCell nodeDirectThreat = project.createFactorCell(new FactorTypeCause());
 		
 		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
 		
@@ -636,9 +723,9 @@ public class TestProject extends EAMTestCase
 	public void testFindNodesThatUseThisIndicator() throws Exception
 	{
 		
-		DiagramFactor nodeA = createNode(new FactorTypeTarget());
-		DiagramFactor nodeB = createNode(new FactorTypeTarget());
-		createNode(new FactorTypeTarget());
+		FactorCell nodeA = project.createFactorCell(new FactorTypeTarget());
+		FactorCell nodeB = project.createFactorCell(new FactorTypeTarget());
+		project.createFactorCell(new FactorTypeTarget());
 		
 		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		IndicatorId indicatorId2 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
@@ -661,8 +748,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testFindAllNodesRelatedToThisIndicator() throws Exception
 	{
-		DiagramFactor nodeContributingFactor = createNode(new FactorTypeCause());
-		DiagramFactor nodeDirectThreat = createNode(new FactorTypeCause());
+		FactorCell nodeContributingFactor = project.createFactorCell(new FactorTypeCause());
+		FactorCell nodeDirectThreat = project.createFactorCell(new FactorTypeCause());
 		
 		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		IdList indicators1 = new IdList();
@@ -682,10 +769,10 @@ public class TestProject extends EAMTestCase
 	
 	public void testDirectThreatSet() throws Exception
 	{
-		DiagramFactor nodeContributingFactor = createNode(new FactorTypeCause());
-		DiagramFactor nodeDirectThreatA = createNode(new FactorTypeCause());	
+		FactorCell nodeContributingFactor = project.createFactorCell(new FactorTypeCause());
+		FactorCell nodeDirectThreatA = project.createFactorCell(new FactorTypeCause());	
 		((Cause)nodeDirectThreatA.getUnderlyingObject()).increaseTargetCount();
-		DiagramFactor nodeDirectThreatB = createNode(new FactorTypeCause());
+		FactorCell nodeDirectThreatB = project.createFactorCell(new FactorTypeCause());
 		((Cause)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
 		
 		FactorSet allNodes = new FactorSet();
@@ -708,19 +795,16 @@ public class TestProject extends EAMTestCase
 		diskProject.createOrOpen(tempDir);
 		try
 		{
-			factorId = createNodeAndAddToDiagram(diskProject, Factor.TYPE_CAUSE, BaseId.INVALID);
-			FactorId targetId = createNodeAndAddToDiagram(diskProject, Factor.TYPE_TARGET, BaseId.INVALID);
-			
+			factorId = createNodeAndAddToDiagram(diskProject, Factor.TYPE_CAUSE).getWrappedId();
+			FactorId targetId = createNodeAndAddToDiagram(diskProject, Factor.TYPE_TARGET).getWrappedId();
 			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
 			
 			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_STRATEGY);
 			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
-			DiagramFactorId diagramNodeId = diskProject.addFactorToDiagram(interventionId);
-
-			CommandDiagramRemoveFactor cmdDelete = new CommandDiagramRemoveFactor(diagramNodeId);
-			diskProject.executeCommand(cmdDelete);
-			
 			diskProject.deleteObject(ObjectType.FACTOR, interventionId);
+	
+			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, Factor.TYPE_CAUSE);
+			deleteNodeAndRemoveFromDiagram(diskProject, diagramFactor);
 		}
 		finally
 		{
@@ -765,6 +849,20 @@ public class TestProject extends EAMTestCase
 		
 	}
 	
+	private void deleteNodeAndRemoveFromDiagram(Project diskProject, DiagramFactor diagramFactor) throws CommandFailedException
+	{
+		DiagramFactorId diagramFactorId = diagramFactor.getDiagramFactorId();
+		FactorId factorId = diagramFactor.getWrappedId();
+		CommandDiagramRemoveFactor commandRemoveDiagramFactor = new CommandDiagramRemoveFactor(diagramFactorId);
+		diskProject.executeCommand(commandRemoveDiagramFactor);
+		
+		CommandDeleteObject commandDeleteDiagramFactor = new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
+		diskProject.executeCommand(commandDeleteDiagramFactor);
+		
+		CommandDeleteObject commandDeleteFactor = new CommandDeleteObject(ObjectType.FACTOR, factorId);
+		diskProject.executeCommand(commandDeleteFactor);
+	}
+
 	public void testCreateNewProject() throws Exception
 	{
 		File tempDir = createTempDirectory();
@@ -783,12 +881,6 @@ public class TestProject extends EAMTestCase
 		}
 	}
 	
-	private DiagramFactor createNode(FactorType nodeType) throws Exception
-	{
-		FactorId insertedId = project.createNodeAndAddToDiagram(nodeType, BaseId.INVALID);
-		return project.getDiagramModel().getDiagramFactorByWrappedId(insertedId);
-	}
-	
 	private DiagramFactorLink createLinkage(BaseId id, FactorId fromId, FactorId toId) throws Exception
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
@@ -804,14 +896,16 @@ public class TestProject extends EAMTestCase
 		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
 	}
 
-	public FactorId createNodeAndAddToDiagram(Project projectToUse, FactorType nodeType, BaseId id) throws Exception
+	//TODO remove baseid as a method arg.  no longer used
+	public DiagramFactor createNodeAndAddToDiagram(Project projectToUse, FactorType nodeType) throws Exception
 	{
-		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
-		FactorId nodeId = (FactorId)projectToUse.createObject(ObjectType.FACTOR, id, parameter);
-		projectToUse.addFactorToDiagram(nodeId);
-		return nodeId;
+		FactorCommandHelper commandHelper = new FactorCommandHelper(projectToUse);
+		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createCommand.getCreatedId();
+		DiagramFactor diagramFactor = (DiagramFactor) projectToUse.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
+		
+		return diagramFactor;
 	}
-
 
 	ProjectForTesting project;
 	IdAssigner idAssigner;

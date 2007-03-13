@@ -20,7 +20,7 @@ public class TestCommandDiagramRemoveFactor extends EAMTestCase
 		CommandDiagramRemoveFactor commandRemove = new CommandDiagramRemoveFactor(new DiagramFactorId(4));
 		CommandDiagramAddFactor reverseCommand = (CommandDiagramAddFactor)commandRemove.getReverseCommand();
 		
-		assertEquals("not same id?", commandRemove.getFactorId(), reverseCommand.getFactorId());
+		assertEquals("not same id?", commandRemove.getDiagramNodeId(), reverseCommand.getInsertedId());
 		assertEquals("not same driagram id?", commandRemove.getDiagramNodeId(), reverseCommand.getInsertedId());
 	}
 }

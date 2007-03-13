@@ -12,12 +12,12 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandJump;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
@@ -53,10 +53,13 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 		assertTrue("no link?", model.areLinked(model.getDiagramFactorByWrappedId(fromId), model.getDiagramFactorByWrappedId(toId)));
+		
 		// undo add linkage to diagram
 		project.undo();
+
 		// undo create model linkage
 		project.undo();
+		
 		assertFalse("didn't undo?", model.areLinked(model.getDiagramFactorByWrappedId(fromId), model.getDiagramFactorByWrappedId(toId)));
 	}
 	
@@ -78,14 +81,24 @@ public class TestUndoAndRedo extends EAMTestCase
 
 		// undo diagram node add
 		project.undo();
+		
+		// undo diagram node create
+		project.undo();
+		
 		// undo model node create
 		project.undo();
+		
 		verifyNodeNotPresent(toId);
 
 		// undo diagram node add
 		project.undo();
+		
+		// undo diagram node create
+		project.undo();
+		
 		// undo model node create
 		project.undo();
+		
 		verifyNodeNotPresent(fromId);
 
 		try
@@ -104,14 +117,22 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		project.undo();
 		
-		FactorId modelNodeId = project.createNode(Factor.TYPE_CAUSE);
-		CommandDiagramAddFactor insert = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
+		FactorId factorId = project.createNode(Factor.TYPE_CAUSE);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		project.executeCommand(createDiagramFactorCommand);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		CommandDiagramAddFactor insert = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(insert);
+		
 		verifyNodePresent(insert.getInsertedId());
 		project.undo();
-		verifyNodeNotPresent(insert.getInsertedId());
-
 		project.undo();
+		
+		verifyNodeNotPresent(insert.getInsertedId());
+		project.undo();
+		
 		verifyLinkageNotPresent(linkId);
 	
 	}
@@ -207,10 +228,17 @@ public class TestUndoAndRedo extends EAMTestCase
 		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_CAUSE);
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.FACTOR, extraInfo);
 		project.executeCommand(createModelNodeCommand);
-		FactorId modelNodeId = (FactorId)createModelNodeCommand.getCreatedId();
-		CommandDiagramAddFactor addToDiagramCommand = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
+		
+		FactorId factorId = (FactorId) createModelNodeCommand.getCreatedId();
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		project.executeCommand(createDiagramFactorCommand);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		CommandDiagramAddFactor addToDiagramCommand = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(addToDiagramCommand);
-		return modelNodeId;
+		
+		return factorId;
 		
 	}
 	

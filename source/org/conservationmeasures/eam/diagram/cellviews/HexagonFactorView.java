@@ -39,7 +39,7 @@ package org.conservationmeasures.eam.diagram.cellviews;
 
 import java.awt.geom.Point2D;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.diagram.renderers.HexagonRenderer;
 import org.conservationmeasures.eam.diagram.renderers.HexagonWithRatingRenderer;
@@ -50,7 +50,7 @@ import org.jgraph.graph.GraphCellEditor;
 
 public class HexagonFactorView extends FactorView
 {
-	public HexagonFactorView(DiagramFactor node)
+	public HexagonFactorView(FactorCell node)
 	{
 		super(node);
 	}

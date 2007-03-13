@@ -9,32 +9,25 @@ import java.util.HashMap;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 
 public class CommandDiagramAddFactor extends Command
 {
-	public CommandDiagramAddFactor(DiagramFactorId idToUse, FactorId idToWrap)
+	public CommandDiagramAddFactor(DiagramFactorId idToUse)
 	{
-		wrappedFactorId = idToWrap;
-		insertedDiagramFactorId = idToUse;
+		diagramFactorId = idToUse;
 	}
 	
 	public DiagramFactorId getInsertedId()
 	{
-		return insertedDiagramFactorId;
+		return diagramFactorId;
 	}
 	
-	public FactorId getFactorId()
-	{
-		return wrappedFactorId;
-	}
-
 	public String toString()
 	{
-		return getCommandName() + ":" + insertedDiagramFactorId + ","+ wrappedFactorId;
+		return getCommandName() + ":" + diagramFactorId;
 	}
 	
 	public String getCommandName()
@@ -46,7 +39,7 @@ public class CommandDiagramAddFactor extends Command
 	{
 		try
 		{
-			insertedDiagramFactorId = target.addFactorToDiagram(wrappedFactorId, insertedDiagramFactorId);
+			target.addFactorToDiagram(diagramFactorId);
 		}
 		catch (Exception e)
 		{
@@ -57,21 +50,17 @@ public class CommandDiagramAddFactor extends Command
 
 	public Command getReverseCommand() throws CommandFailedException
 	{
-		CommandDiagramRemoveFactor commandDiagramRemoveFactor = new CommandDiagramRemoveFactor(insertedDiagramFactorId);
-		commandDiagramRemoveFactor.setFactorId(wrappedFactorId);
-		return commandDiagramRemoveFactor;
+		return new CommandDiagramRemoveFactor(diagramFactorId);
 	}
 	
 	public HashMap getLogData()
 	{
 		HashMap dataPairs = new HashMap();
-		dataPairs.put(FactorId.class.getSimpleName(), wrappedFactorId);
-		dataPairs.put(DiagramFactorId.class.getSimpleName(), insertedDiagramFactorId);
+		dataPairs.put(DiagramFactorId.class.getSimpleName(), diagramFactorId);
 		return dataPairs;
 	}
 
 	public static final String COMMAND_NAME = "CommandDiagramAddFactor";
 
-	private FactorId wrappedFactorId;
-	private DiagramFactorId insertedDiagramFactorId;
+	private DiagramFactorId diagramFactorId;
 }

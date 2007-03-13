@@ -58,11 +58,10 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -71,9 +70,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.FactorCluster;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -138,7 +137,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	public EAMObject getSelectedObject()
 	{
-		DiagramFactor node = diagram.getSelectedFactor();
+		FactorCell node = diagram.getSelectedFactor();
 		if(node == null)
 			return null;
 		return node.getUnderlyingObject();
@@ -273,7 +272,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			Vector allNodes = getProject().getDiagramModel().getAllDiagramFactors();
 			for (int i = 0; i < allNodes.size(); ++i)
 			{
-				DiagramFactor node = (DiagramFactor) allNodes.get(i);
+				FactorCell node = (FactorCell) allNodes.get(i);
 				FactorId id = node.getWrappedId();
 				if (!visibleFactorIds.contains(id))
 					idsToHide.add(id);
@@ -317,45 +316,30 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			return;
 
-		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		String newMode = cmd.getDataValue();
-		setModeIfRelevant(cmd, newMode);
-		refreshIfNeeded(cmd);
-		updateScopeIfNeeded(cmd);
-		
 		try
 		{
-			captureClusterIfNeeded(cmd);
+			CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+			String newValue = cmd.getDataValue();
+			setModeIfRelevant(cmd, newValue);
+			updateFactorBoundsIfRelevant(cmd, newValue);
+			updateScopeIfNeeded(cmd);
+			refreshIfNeeded(cmd);
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
-			EAM.errorDialog("WARNING: Unexpected problem occurred during grouping");
+			EAM.logException(e);
 		}
 	}
 
-//	TODO remove commented code after removing Undone method proves to work
-//	public void commandUndone(CommandExecutedEvent event)
-//	{
-//		Command rawCommand = event.getCommand();
-//		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-//			return;
-//
-//		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-//		String newMode = cmd.getPreviousDataValue();
-//		setModeIfRelevant(cmd, newMode);
-//		refreshIfNeeded(cmd);
-//		updateScopeIfNeeded(cmd);
-//		try
-//		{
-//			updateClusterAfterUndoIfNeeded(cmd);
-//		}
-//		catch (Exception e)
-//		{
-//			e.printStackTrace();
-//			EAM.errorDialog("WARNING: Unexpected problem occurred during grouping");
-//		}
-//	}
+	private void updateFactorBoundsIfRelevant(CommandSetObjectData cmd, String newValue) throws Exception
+	{
+		if (cmd.getObjectType() != ObjectType.DIAGRAM_FACTOR)
+			return;
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) cmd.getObjectId();
+		DiagramModel diagramModel = getProject().getDiagramModel();
+		diagramModel.updateCellFromDiagramFactor(diagramFactorId);
+	}
 
 	private void setModeIfRelevant(CommandSetObjectData cmd, String newMode)
 	{
@@ -384,85 +368,35 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		diagram.repaint(diagram.getBounds());
 	}
 	
-//	TODO remove commented code after removing Undone method proves to work
-//	private void updateClusterAfterUndoIfNeeded(CommandSetObjectData cmd) throws Exception
-//	{
-//		if(cmd.getObjectType() != ObjectType.FACTOR)
-//			return;
-//		
-//		FactorId nodeId = new FactorId(cmd.getObjectId().asInt());
-//		Factor cmNode = getProject().findNode(nodeId);
-//		if(!cmNode.isFactorCluster())
-//			return;
-//		
-//		if(!cmd.getFieldTag().equals(FactorCluster.TAG_MEMBER_IDS))
-//			return;
-//		
-//		IdList newMembers = new IdList(cmd.getPreviousDataValue());
-//		IdList oldMembers = new IdList(cmd.getDataValue());
-//		
-//		updateCluster((FactorId)cmd.getObjectId(), newMembers, oldMembers);
-//	}
-	
-	private void captureClusterIfNeeded(CommandSetObjectData cmd) throws Exception
-	{
-		if(cmd.getObjectType() != ObjectType.FACTOR)
-			return;
-		
-		FactorId nodeId = new FactorId(cmd.getObjectId().asInt());
-		Factor cmNode = getProject().findNode(nodeId);
-		if(!cmNode.isFactorCluster())
-			return;
-		
-		if(!cmd.getFieldTag().equals(FactorCluster.TAG_MEMBER_IDS))
-			return;
-		
-		FactorId clusterId = (FactorId)cmd.getObjectId();
-		IdList newMembers = new IdList(cmd.getDataValue());
-		DiagramModel model = getDiagramComponent().getDiagramModel();
-		DiagramFactorCluster cluster = (DiagramFactorCluster)model.getDiagramFactorByWrappedId(clusterId);
-		IdList oldMembers = new IdList(cluster.getUnderlyingObject().getData(FactorCluster.TAG_MEMBER_IDS));
-		
-		updateCluster(cluster.getWrappedId(), newMembers, oldMembers);
-	}
-
-	private void updateCluster(FactorId clusterId, IdList newMembers, IdList oldMembers) throws Exception
-	{
-		IdList idsToAdd = new IdList(newMembers);
-		idsToAdd.subtract(oldMembers);
-		
-		IdList idsToRemove = new IdList(oldMembers);
-		idsToRemove.subtract(newMembers);
-
-		DiagramModel model = getDiagramComponent().getDiagramModel();
-		DiagramFactorCluster cluster = (DiagramFactorCluster)model.getDiagramFactorByWrappedId(clusterId);
-		
-		for(int i = 0; i < idsToRemove.size(); ++i)
-		{
-			BaseId memberId = idsToRemove.get(i);
-			DiagramFactor memberNode = model.getDiagramFactorByWrappedId((FactorId)memberId);
-			getProject().removeDiagramFactorFromCluster(cluster, memberNode);
-		}
-		
-		for(int i = 0; i < idsToAdd.size(); ++i)
-		{
-			BaseId memberId = idsToAdd.get(i);
-			DiagramFactor memberNode = model.getDiagramFactorByWrappedId((FactorId)memberId);
-			getProject().addDiagramFactorToCluster(cluster, memberNode);
-		}
-		
-		model.updateCell(cluster);
-	}
-	
 	void updateScopeIfNeeded(CommandSetObjectData cmd)
 	{
-		if(cmd.getObjectType() != ObjectType.PROJECT_METADATA)
-			return;
-		if(cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE) ||
-				cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_VISION))
-		{
+		if (isScopeTextChange(cmd) || isFactorBoundsChange(cmd))
 			getDiagramComponent().getDiagramModel().updateProjectScopeBox();
-		}
+		
+	//	if(cmd.getObjectType() != ObjectType.PROJECT_METADATA)
+	//		return;
+	//	if(cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE) ||
+	//			cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_VISION))
+	//	{
+//			getDiagramComponent().getDiagramModel().updateProjectScopeBox();
+	//	}
+	}
+
+	private boolean isScopeTextChange(CommandSetObjectData cmd)
+	{
+		if (cmd.getObjectType() != ObjectType.PROJECT_METADATA)
+			return false;
+		
+		return (cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE) ||
+				cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_VISION));
+	}
+
+	private boolean isFactorBoundsChange(CommandSetObjectData cmd)
+	{
+		if (cmd.getObjectType() != ObjectType.DIAGRAM_FACTOR)
+			return false;
+		return (cmd.getFieldTag().equals(DiagramFactor.TAG_LOCATION) || 
+				cmd.getFieldTag().equals(DiagramFactor.TAG_SIZE));
 	}
 
 	public void jump(Class stepMarker) throws Exception
@@ -477,7 +411,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		super.showFloatingPropertiesDialog(newDialog);
 	}
 
-	public void showNodeProperties(DiagramFactor node, int startingTabIdentifier)
+	public void showNodeProperties(FactorCell node, int startingTabIdentifier)
 	{
 		closeActivePropertiesDialog();
 		if(nodePropertiesDlg != null)
@@ -509,7 +443,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(nodePropertiesDlg == null)
 			return;
 		
-		DiagramFactor selectedNode = diagram.getSelectedFactor();
+		FactorCell selectedNode = diagram.getSelectedFactor();
 		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentDiagramFactor()))
 			disposeOfNodePropertiesDialog();
 	}

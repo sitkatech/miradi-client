@@ -9,13 +9,12 @@ package org.conservationmeasures.eam.diagram.cells;
 import java.awt.Point;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestFactorDataHelper extends EAMTestCase 
 {
@@ -28,20 +27,14 @@ public class TestFactorDataHelper extends EAMTestCase
 	
 	public void setUp() throws Exception 
 	{
-		DiagramFactorId nodeId1 = new DiagramFactorId(44);
-		DiagramFactorId nodeId2 = new DiagramFactorId(25);
-		DiagramFactorId nodeId3 = new DiagramFactorId(6346);
+		project = new ProjectForTesting(getName());
 
-		Target cmTarget1 = new Target(originalNodeId1);
-		node1 = DiagramFactor.wrapConceptualModelObject(nodeId1, cmTarget1);
+		node1 = project.createFactorCell(Factor.TYPE_TARGET); 
 		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
-		
-		Target cmTarget2 = new Target(originalNodeId2);
-		node2 = DiagramFactor.wrapConceptualModelObject(nodeId2, cmTarget2);
-		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
 
-		Target cmTarget3 = new Target(originalNodeId3);
-		node3 = DiagramFactor.wrapConceptualModelObject(nodeId3, cmTarget3);
+		node2 = project.createFactorCell(Factor.TYPE_TARGET);
+		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
+		node3 = project.createFactorCell(Factor.TYPE_TARGET);
 		
 		nodes = new Vector();
 		nodes.add(node1);
@@ -128,11 +121,13 @@ public class TestFactorDataHelper extends EAMTestCase
 	final int nodeLocation2x = 5;
 	final int nodeLocation2y = 10;
 	
-	DiagramFactor node1;
-	DiagramFactor node2;
-	DiagramFactor node3;
+	FactorCell node1;
+	FactorCell node2;
+	FactorCell node3;
 
 	Vector nodes;
 	Point nodeLocation1;
 	Point nodeLocation2;
+	
+	ProjectForTesting project;
 }

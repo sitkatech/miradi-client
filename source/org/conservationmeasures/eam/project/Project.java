@@ -24,9 +24,8 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.PartialGraphLayoutCache;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
@@ -45,6 +44,8 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
+import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
+import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
@@ -55,6 +56,7 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -65,7 +67,6 @@ import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.jgraph.graph.GraphLayoutCache;
-import org.jgraph.graph.ParentMap;
 
 
 public class Project
@@ -142,6 +143,16 @@ public class Project
 	public EAMObjectPool getPool(int objectType)
 	{
 		return objectManager.getPool(objectType);
+	}
+	
+	public DiagramFactorPool getDiagramFactorPool()
+	{
+		return objectManager.getDiagramFactorPool();
+	}
+	
+	public DiagramFactorLinkPool getDiagramFactorLinkPool()
+	{
+		return objectManager.getDiagramFactorLinkPool();
 	}
 	
 	public FactorPool getFactorPool()
@@ -323,7 +334,7 @@ public class Project
 			FactorId modelNodeId = new FactorId(objectId.asInt());
 			if(model.doesFactorExist(modelNodeId))
 			{
-				DiagramFactor diagramNode = getDiagramModel().getDiagramFactorByWrappedId(modelNodeId);
+				FactorCell diagramNode = getDiagramModel().getDiagramFactorByWrappedId(modelNodeId);
 				getDiagramModel().updateCell(diagramNode);
 			}
 		}
@@ -705,40 +716,21 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
 	
-	public void addDiagramFactorToCluster(DiagramFactorCluster cluster, DiagramFactor node)
-	{
-		ParentMap parentMap = new ParentMap();
-		parentMap.addEntry(node, cluster);
-		getGraphLayoutCache().edit(null, null, parentMap, null);
-	}
-
-	public void removeDiagramFactorFromCluster(DiagramFactorCluster cluster, DiagramFactor node)
-	{
-		DiagramFactor[] nodes = {node};
-		ParentMap parentMap = ParentMap.create(getDiagramModel(), nodes, true, false);
-		getGraphLayoutCache().edit(null, null, parentMap, null);
-	}
-
 	public FactorId removeDiagramFactorFromDiagram(DiagramFactorId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		DiagramFactor nodeToDelete = model.getDiagramFactorById(idToDelete);
+		FactorCell nodeToDelete = model.getDiagramFactorById(idToDelete);
 		FactorId modelNodeId = nodeToDelete.getWrappedId();
 		model.deleteDiagramFactor(nodeToDelete);
 		return modelNodeId;
 	}
 
-	public DiagramFactorId addFactorToDiagram(FactorId modelNodeId) throws Exception
-	{
-		return addFactorToDiagram(modelNodeId, new DiagramFactorId(BaseId.INVALID.asInt()));
-	}
-	
-	public DiagramFactorId addFactorToDiagram(FactorId modelNodeId, DiagramFactorId requestedId) throws Exception
+	public void addFactorToDiagram(DiagramFactorId diagramFactorId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		DiagramFactor node = model.createDiagramFactor(modelNodeId, requestedId);
-		updateVisibilityOfSingleFactor(node);
-		return node.getDiagramFactorId();
+		DiagramFactor diagramFactor = (DiagramFactor) findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
+		FactorCell factorCell = model.addDiagramFactor(diagramFactor);
+		updateVisibilityOfSingleFactor(factorCell);
 	}
 	
 	public DiagramFactorLinkId removeLinkFromDiagram(DiagramFactorLinkId idToDelete) throws Exception
@@ -796,7 +788,7 @@ public class Project
 			}
 			else if(cell.isFactor())
 			{
-				Set linkages = model.getFactorLinks((DiagramFactor)cell);
+				Set linkages = model.getFactorLinks((FactorCell)cell);
 				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 				{
 					EAMGraphCell link = (EAMGraphCell) iter.next();
@@ -823,16 +815,16 @@ public class Project
 		return cells;
 	}
 	
-	public DiagramFactor[] getOnlySelectedFactors()
+	public FactorCell[] getOnlySelectedFactors()
 	{
 		if(selectionModel == null)
-			return new DiagramFactor[0];
+			return new FactorCell[0];
 		
 		Object[] rawCells = selectionModel.getSelectionCells();
 		return getOnlySelectedFactors(rawCells);
 	}
 
-	public DiagramFactor[] getOnlySelectedFactors(Object[] allSelectedCells)
+	public FactorCell[] getOnlySelectedFactors(Object[] allSelectedCells)
 	{
 		Vector nodes = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
@@ -840,7 +832,7 @@ public class Project
 			if(((EAMGraphCell)allSelectedCells[i]).isFactor())
 				nodes.add(allSelectedCells[i]);
 		}
-		return (DiagramFactor[])nodes.toArray(new DiagramFactor[0]);
+		return (FactorCell[])nodes.toArray(new FactorCell[0]);
 	}
 	
 	public DiagramFactorLink[] getOnlySelectedLinks()
@@ -903,7 +895,7 @@ public class Project
 		Vector nodes = model.getAllDiagramFactors();
 		for(int i = 0; i < nodes.size(); ++i)
 		{
-			DiagramFactor node = (DiagramFactor)nodes.get(i);
+			FactorCell node = (FactorCell)nodes.get(i);
 			updateVisibilityOfSingleFactor(node);
 		}
 		LayerManager manager = getLayerManager();
@@ -911,7 +903,7 @@ public class Project
 		selectionModel.clearSelection();
 	}
 
-	public void updateVisibilityOfSingleFactor(DiagramFactor node)
+	public void updateVisibilityOfSingleFactor(FactorCell node)
 	{
 		LayerManager manager = getLayerManager();
 		boolean isVisible = manager.isVisible(node);
@@ -937,7 +929,7 @@ public class Project
 	{
 		try
 		{
-			DiagramFactor nodeToSelect = diagramModel.getDiagramFactorByWrappedId(idToUse);
+			FactorCell nodeToSelect = diagramModel.getDiagramFactorByWrappedId(idToUse);
 			selectionModel.setSelectionCell(nodeToSelect);
 		}
 		catch (Exception e)

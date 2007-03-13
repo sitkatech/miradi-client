@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -31,7 +31,7 @@ class CellInventory
 		factorLinks.clear();
 	}
 
-	public void addFactor(DiagramFactor node)
+	public void addFactor(FactorCell node)
 	{
 		DiagramFactorId realId = node.getDiagramFactorId();
 		
@@ -46,29 +46,29 @@ class CellInventory
 		return factors;
 	}
 	
-	public DiagramFactor getFactorById(DiagramFactorId id)
+	public FactorCell getFactorById(DiagramFactorId id)
 	{
 		for (Iterator iter = factors.iterator(); iter.hasNext();) 
 		{
-			DiagramFactor factor = (DiagramFactor)iter.next();
+			FactorCell factor = (FactorCell)iter.next();
 			if(factor.getDiagramFactorId().equals(id))
 				return factor;
 		}
 		return null;
 	}
 	
-	public DiagramFactor getFactorById(FactorId id)
+	public FactorCell getFactorById(FactorId id)
 	{
 		for (Iterator iter = factors.iterator(); iter.hasNext();) 
 		{
-			DiagramFactor factor = (DiagramFactor)iter.next();
+			FactorCell factor = (FactorCell)iter.next();
 			if(factor.getWrappedId().equals(id))
 				return factor;
 		}
 		return null;
 	}
 	
-	public void removeFactor(DiagramFactor node)
+	public void removeFactor(FactorCell node)
 	{
 		factors.remove(node);
 	}

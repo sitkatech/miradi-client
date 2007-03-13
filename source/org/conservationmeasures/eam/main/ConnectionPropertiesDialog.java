@@ -17,7 +17,7 @@ import javax.swing.Box;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
@@ -51,10 +51,10 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		linkFromList = createChoices(FactorLink.FROM);
 		linkToList = createChoices(FactorLink.TO);
 		DiagramComponent diagram = mainWindow.getDiagramComponent();
-		DiagramFactor firstSelected = diagram.getSelectedFactor(0);
+		FactorCell firstSelected = diagram.getSelectedFactor(0);
 		if(firstSelected != null)
 			linkFromList.setSelectedItem(firstSelected);
-		DiagramFactor secondSelected = diagram.getSelectedFactor(1);
+		FactorCell secondSelected = diagram.getSelectedFactor(1);
 		if(secondSelected != null)
 			linkToList.setSelectedItem(secondSelected);
 		Box box = Box.createHorizontalBox();
@@ -73,7 +73,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		comboBox.addItem(EAM.text("Label|--Select One---"));
 		
 		Vector vectorOfFactors = model.getAllDiagramFactors();
-		DiagramFactor[] diagramFactors = (DiagramFactor[])vectorOfFactors.toArray(new DiagramFactor[0]);
+		FactorCell[] diagramFactors = (FactorCell[])vectorOfFactors.toArray(new FactorCell[0]);
 		Arrays.sort(diagramFactors, new IgnoreCaseStringComparator());
 		for(int i=0; i < diagramFactors.length; ++i)
 		{
@@ -120,14 +120,14 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		return result;
 	}
 	
-	public DiagramFactor getFrom()
+	public FactorCell getFrom()
 	{
-		return (DiagramFactor)linkFromList.getSelectedItem();
+		return (FactorCell)linkFromList.getSelectedItem();
 	}
 	
-	public DiagramFactor getTo()
+	public FactorCell getTo()
 	{
-		return (DiagramFactor)linkToList.getSelectedItem();
+		return (FactorCell)linkToList.getSelectedItem();
 	}
 	
 	MainWindow mainWindow;

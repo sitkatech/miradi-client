@@ -1,30 +1,26 @@
 /* 
-* Copyright 2005-2007, Wildlife Conservation Society, 
-* Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
-* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
-*/ 
+ * Copyright 2005-2007, Wildlife Conservation Society, 
+ * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
+ * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+ */ 
 package org.conservationmeasures.eam.project;
 
-import java.awt.Rectangle;
-import java.text.ParseException;
-import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.FactorCluster;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorMoveHandler
 {
@@ -33,137 +29,79 @@ public class FactorMoveHandler
 		project = projectToUse;
 	}
 
-	public void factorsWereMovedOrResized(int deltaX, int deltaY, DiagramFactorId[] ids) throws CommandFailedException
+	public void factorsWereMovedOrResized(DiagramFactorId[] ids) throws CommandFailedException
 	{
-		DiagramModel model = getProject().getDiagramModel();
-		model.factorsWereMoved(ids);
-
-		Vector commandsToRecord = new Vector();
-		Vector commandsToExecute = new Vector();
-		Vector movedNodes = new Vector();
-		for(int i = 0 ; i < ids.length; ++i)
+		try 
 		{
-			try 
+			DiagramModel model = getProject().getDiagramModel();
+			model.factorsWereMoved(ids);
+
+			//TODO remove commandsToRecode code,  no longer used
+			Vector commandsToRecord = new Vector();
+			Vector commandsToExecute = new Vector();
+			for(int i = 0 ; i < ids.length; ++i)
 			{
-				DiagramFactor node = model.getDiagramFactorById(ids[i]);
-				if(node.getParent() != null)
-					commandsToExecute.addAll(buildDetachFromClusterCommand(node));
-				if(node.getParent() == null)
-					commandsToExecute.addAll(buildAttachToClusterCommand(node));
-				
+				FactorCell node = model.getDiagramFactorById(ids[i]);
 				if(node.hasMoved())
-					movedNodes.add(node);
-				
+					commandsToExecute.add(buildMoveCommand(node));
+
 				if(node.sizeHasChanged())
-					commandsToRecord.add(buildResizeCommand(node));
-			} 
-			catch (Exception e) 
-			{
-				EAM.logException(e);
+					commandsToExecute.add(buildResizeCommand(node));
 			}
-		}
-		
-		if(movedNodes.size() > 0)
-		{
-			DiagramFactorId[] idsActuallyMoved = new DiagramFactorId[movedNodes.size()];
-			for(int i = 0; i < movedNodes.size(); ++i)
+
+			if(commandsToRecord.size() > 0 || commandsToExecute.size() > 0)
 			{
-				DiagramFactor node = (DiagramFactor)movedNodes.get(i);
-				idsActuallyMoved[i] = node.getDiagramFactorId();
+				getProject().recordCommand(new CommandBeginTransaction());
+				for(int i=0; i < commandsToRecord.size(); ++i)
+					getProject().recordCommand((Command)commandsToRecord.get(i));
+				
+				for(int i=0; i < commandsToExecute.size(); ++i)
+					getProject().executeCommand((Command)commandsToExecute.get(i));
+				getProject().recordCommand(new CommandEndTransaction());
 			}
-			
-			commandsToRecord.add(new CommandDiagramMove(deltaX, deltaY, idsActuallyMoved));
-		}
-		
-		if(commandsToRecord.size() > 0 || commandsToExecute.size() > 0)
+
+			//TODO remove cluster related code below
+			/*
+			 * NOTE: The following chunk of code works around a weird bug deep in jgraph
+			 * If you click on a cluster, then click on a member, then drag the member out,
+			 * part of jgraph still thinks the cluster has a member that is selected.
+			 * So when you drag the node back in, it doesn't become a member because jgraph 
+			 * won't return the cluster, because it thinks the cluster has something selected.
+			 * The workaround is to re-select what is selected, so the cached values inside 
+			 * jgraph get reset to their proper values.
+			 */
+			MainWindow mainWindow = EAM.mainWindow;
+			if(mainWindow != null)
+			{
+				DiagramComponent diagram = mainWindow.getDiagramComponent();
+				diagram.setSelectionCells(diagram.getSelectionCells());
+			}
+
+		} 
+		catch (Exception e) 
 		{
-			getProject().recordCommand(new CommandBeginTransaction());
-			for(int i=0; i < commandsToRecord.size(); ++i)
-				getProject().recordCommand((Command)commandsToRecord.get(i));
-			for(int i=0; i < commandsToExecute.size(); ++i)
-				getProject().executeCommand((Command)commandsToExecute.get(i));
-			getProject().recordCommand(new CommandEndTransaction());
-		}
-		
-		/*
-		 * NOTE: The following chunk of code works around a weird bug deep in jgraph
-		 * If you click on a cluster, then click on a member, then drag the member out,
-		 * part of jgraph still thinks the cluster has a member that is selected.
-		 * So when you drag the node back in, it doesn't become a member because jgraph 
-		 * won't return the cluster, because it thinks the cluster has something selected.
-		 * The workaround is to re-select what is selected, so the cached values inside 
-		 * jgraph get reset to their proper values.
-		 */
-		MainWindow mainWindow = EAM.mainWindow;
-		if(mainWindow != null)
-		{
-			DiagramComponent diagram = mainWindow.getDiagramComponent();
-			diagram.setSelectionCells(diagram.getSelectionCells());
+			EAM.logException(e);
+			throw new CommandFailedException(e);
 		}
 
 	}
-	
-	private List buildAttachToClusterCommand(DiagramFactor node) throws Exception
+
+	private Object buildMoveCommand(FactorCell node)
 	{
-		Vector result = new Vector();
-		if(node.isFactorCluster())
-			return result;
-		
-		DiagramFactorCluster cluster = getFirstClusterThatContains(node.getRectangle());
-		if(cluster == null)
-			return result;
-		
-		// FIXME: It looks wrong to mix commands with a non-command call like addNodeToCluster()
-		getProject().addDiagramFactorToCluster(cluster, node);
-		CommandSetObjectData cmd = CommandSetObjectData.createAppendIdCommand(cluster.getUnderlyingObject(), 
-				FactorCluster.TAG_MEMBER_IDS, node.getDiagramFactorId());
-		result.add(cmd);
-		return result;
+		String currentLocation = EnhancedJsonObject.convertFromPoint(node.getLocation());
+		return new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, node.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, currentLocation);
 	}
-	
-	private List buildDetachFromClusterCommand(DiagramFactor node) throws ParseException
+
+	private Command buildResizeCommand(FactorCell node)
 	{
-		Vector result = new Vector();
-		DiagramFactorCluster cluster = (DiagramFactorCluster)node.getParent();
-		if(cluster.getRectangle().contains(node.getRectangle()))
-			return result;
-		
-		// FIXME: It looks wrong to mix commands with a non-command call like removeNodeFromCluster()
-		getProject().removeDiagramFactorFromCluster(cluster, node);
-		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
-				FactorCluster.TAG_MEMBER_IDS, node.getDiagramFactorId());
-		result.add(cmd);
-		return result;
+		String currentSize = EnhancedJsonObject.convertFromDimension(node.getSize());
+		return new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, node.getDiagramFactorId(), DiagramFactor.TAG_SIZE, currentSize);
 	}
-	
-	private DiagramFactorCluster getFirstClusterThatContains(Rectangle candidateRect) throws Exception
-	{
-		DiagramModel model = getProject().getDiagramModel();
-		Vector allNodes = model.getAllDiagramFactors();
-		for(int i = 0; i < allNodes.size(); ++i)
-		{
-			DiagramFactor node = (DiagramFactor)allNodes.get(i);
-			DiagramFactor possibleCluster = model.getDiagramFactorByWrappedId(node.getWrappedId());
-			if(!possibleCluster.isFactorCluster())
-				continue;
-			
-			if(possibleCluster.getRectangle().contains(candidateRect))
-				return (DiagramFactorCluster)possibleCluster;
-		}
-		
-		return null;
-	}
-	
-	private Command buildResizeCommand(DiagramFactor node)
-	{
-		return new CommandSetFactorSize(node.getDiagramFactorId(), node.getSize(), node.getPreviousSize());
-	}
-	
 
 	Project getProject()
 	{
 		return project;
 	}
-	
+
 	Project project;
 }

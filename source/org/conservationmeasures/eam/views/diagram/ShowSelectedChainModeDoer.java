@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -60,8 +60,8 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			if (project.getOnlySelectedCells().length == 1)
 				SelectChain.selectAllChainsRelatedToAllSelectedCells(diagram);
 
-			DiagramFactor[] orphanedDaftStrats = getOrphanedDraftStrategies(project, view, diagram);
-			DiagramFactor[] selectedNodes = project.getOnlySelectedFactors();
+			FactorCell[] orphanedDaftStrats = getOrphanedDraftStrategies(project, view, diagram);
+			FactorCell[] selectedNodes = project.getOnlySelectedFactors();
 			
 			BaseId viewId = getCurrentViewId();
 			IdList nodeIdsToProcess = new IdList();
@@ -84,7 +84,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		}
 	}
 
-	private void addFactorsToList(DiagramFactor[] orphanedDaftStrats, IdList selectedNodeIds)
+	private void addFactorsToList(FactorCell[] orphanedDaftStrats, IdList selectedNodeIds)
 	{
 		for(int i = 0; i < orphanedDaftStrats.length; ++i)
 		{
@@ -92,7 +92,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		}
 	}
 
-	private DiagramFactor[] getOrphanedDraftStrategies(Project project, DiagramView view, DiagramComponent diagram)
+	private FactorCell[] getOrphanedDraftStrategies(Project project, DiagramView view, DiagramComponent diagram)
 	{
 		Vector diagramFactors = new Vector();
 		DiagramModel model = project.getDiagramModel();
@@ -101,12 +101,12 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		{
 			if (!factors[i].isStatusDraft())
 				continue;
-			DiagramFactor diagramFactor = model.getDiagramFactorByWrappedId(factors[i].getFactorId());
+			FactorCell diagramFactor = model.getDiagramFactorByWrappedId(factors[i].getFactorId());
 			if (model.getFactorLinks(diagramFactor).size() > 0) 
 				continue;
 			diagramFactors.add(diagramFactor);
 		}
-		return (DiagramFactor[])diagramFactors.toArray(new DiagramFactor[0]);
+		return (FactorCell[])diagramFactors.toArray(new FactorCell[0]);
 	}
 	
 	private BaseId getCurrentViewId() throws Exception

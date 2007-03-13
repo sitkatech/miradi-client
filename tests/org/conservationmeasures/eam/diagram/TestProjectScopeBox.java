@@ -9,14 +9,11 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -52,11 +49,11 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle allZeros = new Rectangle(0,0,0,0);
 		assertEquals("not all zeros to start?", allZeros, noTargets);
 		
-		createNode(Factor.TYPE_CAUSE);
+		project.createFactorCell(Factor.TYPE_CAUSE);
 		Rectangle2D oneNonTarget = scope.getBounds();
 		assertEquals("not all zeros with one non-target?", allZeros, oneNonTarget);
 
-		DiagramFactor target1 = createNode(Factor.TYPE_TARGET);
+		FactorCell target1 = project.createFactorCell(Factor.TYPE_TARGET);
 		project.setMetadata(ProjectMetadata.TAG_PROJECT_VISION, "Sample Vision");
 		Dimension targetSize = target1.getSize();
 		Rectangle2D oneTarget = scope.getBounds();
@@ -69,7 +66,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertNotEquals("still at y zero?", 0, (int)movedTarget.getY());
 		assertEquals("affected target?", targetSize, target1.getSize());
 		
-		DiagramFactor target2 = createNode(Factor.TYPE_TARGET);
+		FactorCell target2 = project.createFactorCell(Factor.TYPE_TARGET);
 		model.moveFactors(200, 200, new DiagramFactorId[] {target2.getDiagramFactorId()});
 		model.updateCell(target2);
 		Rectangle2D twoTargets = scope.getBounds();
@@ -77,17 +74,9 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertTrue("didn't surround target2?", twoTargets.contains(target2.getBounds()));
 	}
 
-	private DiagramFactor createNode(FactorType nodeType) throws Exception
-	{
-		FactorId id = new FactorId(idAssigner.takeNextId().asInt());
-		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
-		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
-		nodePool.put(cmObject);
-		return model.createDiagramFactor(cmObject.getFactorId());
-	}
-
 	ProjectForTesting project;
 	FactorPool nodePool;
 	DiagramModel model;
 	IdAssigner idAssigner;
 }
+;

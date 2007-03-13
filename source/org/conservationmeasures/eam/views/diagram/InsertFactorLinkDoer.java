@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -99,7 +100,6 @@ public class InsertFactorLinkDoer extends ProjectDoer
 		
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(projectToUse, fromId, toId, modelLinkageId);
-		
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
     	projectToUse.executeCommand(createDiagramLinkCommand);
     	
@@ -113,9 +113,16 @@ public class InsertFactorLinkDoer extends ProjectDoer
 
 	private static CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(Project projectToUse, FactorId fromId, FactorId toId, FactorLinkId modelLinkageId)
 	{
-		DiagramFactorId fromDiagramFactorId = projectToUse.getDiagramModel().getDiagramFactorByWrappedId(fromId).getDiagramFactorId();
-		DiagramFactorId toDiagramFactorId = projectToUse.getDiagramModel().getDiagramFactorByWrappedId(toId).getDiagramFactorId();
+		DiagramModel diagramModel = projectToUse.getDiagramModel();
+		
+		FactorCell diagramFactorByWrappedFromId = diagramModel.getDiagramFactorByWrappedId(fromId);
+		DiagramFactorId fromDiagramFactorId = diagramFactorByWrappedFromId.getDiagramFactorId();
+		
+		FactorCell diagramFactorByWrappedToId = diagramModel.getDiagramFactorByWrappedId(toId);
+		DiagramFactorId toDiagramFactorId = diagramFactorByWrappedToId.getDiagramFactorId();
+		
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+		
 		return diagramLinkExtraInfo;
 	}
 }

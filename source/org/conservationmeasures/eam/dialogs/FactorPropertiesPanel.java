@@ -17,7 +17,7 @@ import javax.swing.JTabbedPane;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
@@ -84,7 +84,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		}
 	}
 
-	public void setCurrentDiagramFactor(DiagramComponent diagram, DiagramFactor diagramFactor)
+	public void setCurrentDiagramFactor(DiagramComponent diagram, FactorCell diagramFactor)
 	{
 		this.setLayout(new BorderLayout());
 		this.removeAll();
@@ -102,7 +102,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		}
 	}
 
-	public DiagramFactor getCurrentDiagramFactor()
+	public FactorCell getCurrentDiagramFactor()
 	{
 		return currentDiagramFactor;
 	}
@@ -112,7 +112,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		return getCurrentDiagramFactor().getWrappedId();
 	}
 
-	private Component createLabelBar(DiagramFactor diagramFactor)
+	private Component createLabelBar(FactorCell diagramFactor)
 	{
 		createTextField(diagramFactor.getLabel(), MAX_LABEL_LENGTH);
 
@@ -136,7 +136,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		return grid;
 	}
 	
-	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
+	private Component createTabbedPane(FactorCell diagramFactor) throws Exception
 	{
 		tabs = new JTabbedPane();
 		tabs.setFocusable(false);
@@ -176,7 +176,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 	
 	class FactorDetailsTab extends ModelessDialogPanel
 	{
-		public FactorDetailsTab(Project projectToUse, DiagramFactor diagramFactor) throws Exception
+		public FactorDetailsTab(Project projectToUse, FactorCell diagramFactor) throws Exception
 		{
 			realPanel = new FactorDetailsPanel(projectToUse, diagramFactor);
 			add(new JScrollPane(realPanel));
@@ -297,7 +297,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 	ActivityListManagementPanel activitiesTab;
 	MainWindow mainWindow;
 	DiagramComponent diagram;
-	DiagramFactor currentDiagramFactor;
+	FactorCell currentDiagramFactor;
 	UiTextField textField;
 	boolean ignoreObjectiveChanges;
 	

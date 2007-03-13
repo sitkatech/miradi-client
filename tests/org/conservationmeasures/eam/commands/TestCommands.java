@@ -10,7 +10,7 @@ import java.awt.Point;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
@@ -29,10 +29,12 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -40,6 +42,7 @@ import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.conservationmeasures.eam.views.map.MapView;
 
@@ -188,7 +191,7 @@ public class TestCommands extends EAMTestCase
 		
 		for(int i=0; i < ids.length; ++i)
 		{
-			DiagramFactor node = project.getDiagramModel().getDiagramFactorById(ids[i]);
+			FactorCell node = project.getDiagramModel().getDiagramFactorById(ids[i]);
 			assertEquals("didn't set location?", moveTo, node.getLocation());
 		}
 
@@ -196,7 +199,7 @@ public class TestCommands extends EAMTestCase
 		project.undo();
 		for(int i=0; i < ids.length; ++i)
 		{
-			DiagramFactor node = project.getDiagramModel().getDiagramFactorById(ids[i]);
+			FactorCell node = project.getDiagramModel().getDiagramFactorById(ids[i]);
 			assertEquals("didn't restore original location?", zeroZero, node.getLocation());
 		}
 	}
@@ -222,20 +225,26 @@ public class TestCommands extends EAMTestCase
 	public void testCommandNodeResized() throws Exception
 	{
 		DiagramFactorId id = insertTarget();
-		Dimension defaultSize = new Dimension(120, 60);
-		DiagramFactor node = project.getDiagramModel().getDiagramFactorById(id);
-		Dimension originalSize = node.getSize();
+		String defaultSize = EnhancedJsonObject.convertFromDimension(new Dimension(120, 60));
+		DiagramModel diagramModel = project.getDiagramModel();
+		FactorCell node = diagramModel.getDiagramFactorById(id);
+		String originalSize = EnhancedJsonObject.convertFromDimension(node.getSize());
 		assertEquals(defaultSize, originalSize);
 		
-		Dimension newSize = new Dimension(88, 22);
+		String newSize = EnhancedJsonObject.convertFromDimension(new Dimension(88, 22));
 		
-		CommandSetFactorSize cmd = new CommandSetFactorSize(id, newSize, originalSize);
+		DiagramFactorId diagramFactorId = node.getDiagramFactorId();
+		CommandSetObjectData cmd = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_SIZE, newSize, originalSize);
 		project.executeCommand(cmd);
-		assertEquals("didn't memorize old size?", originalSize, cmd.getPreviousSize());
-		assertEquals("didn't change to new size?", newSize, node.getSize());
+
+		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
+		assertEquals("didn't memorize old size?", originalSize, cmd.getPreviousDataValue());
+		assertEquals("didn't change to new size?", newSize, EnhancedJsonObject.convertFromDimension(diagramFactor.getSize()));
 
 		project.undo();
-		assertEquals("didn't undo?", originalSize, project.getDiagramModel().getDiagramFactorById(id).getSize());
+		Dimension size = diagramModel.getDiagramFactorById(id).getSize();
+		String sizeAsString = EnhancedJsonObject.convertFromDimension(size);
+		assertEquals("didn't undo?", originalSize, sizeAsString);
 	}
 	
 
@@ -256,13 +265,18 @@ public class TestCommands extends EAMTestCase
 
 	private void verifyDiagramAddNode(FactorType type) throws Exception, CommandFailedException
 	{
-		FactorId modelNodeId = project.createNode(type);
-		CommandDiagramAddFactor add = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
+		FactorId factorId = project.createNode(type);
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
+		project.executeCommand(createDiagramFactorCommand);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		CommandDiagramAddFactor add = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(add);
 
 		DiagramFactorId insertedId = add.getInsertedId();
-		DiagramFactor node = project.getDiagramModel().getDiagramFactorById(insertedId);
-		assertEquals("type not right?", type, node.getFactorType());
+		FactorCell node = project.getDiagramModel().getDiagramFactorById(insertedId);
+		assertEquals("type not right?", type, node.getUnderlyingFactorType());
 		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramFactorId());
 
 		verifyUndoDiagramAddNode(add);
@@ -312,9 +326,9 @@ public class TestCommands extends EAMTestCase
 		
 		DiagramFactorLink inserted = model.getDiagramFactorLinkbyWrappedId(modelLinkageId);
 		LinkCell cell = model.findLinkCell(inserted);
-		DiagramFactor fromNode = cell.getFrom();
+		FactorCell fromNode = cell.getFrom();
 		assertEquals("wrong source?", from, fromNode.getDiagramFactorId());
-		DiagramFactor toNode = cell.getTo();
+		FactorCell toNode = cell.getTo();
 		assertEquals("wrong dest?", to, toNode.getDiagramFactorId());
 
 		assertTrue("linkage not created?", project.getDiagramModel().areLinked(fromNode, toNode));
@@ -333,8 +347,8 @@ public class TestCommands extends EAMTestCase
 
 		DiagramFactorId from = insertIntervention();
 		DiagramFactorId to = insertContributingFactor();
-		DiagramFactor fromNode = model.getDiagramFactorById(from);
-		DiagramFactor toNode = model.getDiagramFactorById(to);
+		FactorCell fromNode = model.getDiagramFactorById(from);
+		FactorCell toNode = model.getDiagramFactorById(to);
 
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
@@ -361,7 +375,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getFactorId());
 		
 		project.undo();
-		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getDiagramFactorById(id).getFactorType());
+		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getDiagramFactorById(id).getUnderlyingFactorType());
 	}
 	
 	public void testBeginTransaction() throws Exception
@@ -406,7 +420,7 @@ public class TestCommands extends EAMTestCase
 		project.undo();
 		project.redo();
 		
-		DiagramFactor inserted = project.getDiagramModel().getDiagramFactorById(insertedId);
+		FactorCell inserted = project.getDiagramModel().getDiagramFactorById(insertedId);
 		assertTrue("wrong node?", inserted.isTarget());
 		
 	}
@@ -488,9 +502,15 @@ public class TestCommands extends EAMTestCase
 
 	private DiagramFactorId insertNode(FactorType type) throws Exception
 	{
-		FactorId modelNodeId = project.createNode(type);
-		CommandDiagramAddFactor add = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
+		FactorId factorId = project.createNode(type);
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
+		project.executeCommand(createDiagramFactorCommand);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		CommandDiagramAddFactor add = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(add);
+		
 		return add.getInsertedId();
 	}
 	

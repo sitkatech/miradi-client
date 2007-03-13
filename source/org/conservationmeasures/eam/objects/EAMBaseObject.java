@@ -96,6 +96,9 @@ abstract public class EAMBaseObject implements EAMObject
 				
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
 				return new KeyEcologicalAttribute(idAsInt, json);
+			
+			case ObjectType.DIAGRAM_FACTOR:
+				return new DiagramFactor(idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
@@ -257,7 +260,7 @@ abstract public class EAMBaseObject implements EAMObject
 		
 	}
 	
-	protected static final String TAG_ID = "Id";
+	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	
 	public static final String DEFAULT_LABEL = "";

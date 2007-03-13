@@ -39,7 +39,7 @@ package org.conservationmeasures.eam.diagram.cellviews;
 
 import java.awt.geom.Point2D;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.diagram.renderers.EllipseWithRatingRenderer;
 import org.jgraph.graph.CellViewRenderer;
@@ -49,7 +49,7 @@ import org.jgraph.graph.GraphCellEditor;
 
 public class EllipseFactorView extends FactorView
 {
-	public EllipseFactorView(DiagramFactor nodeToUse)
+	public EllipseFactorView(FactorCell nodeToUse)
 	{
 		super(nodeToUse);
 	}

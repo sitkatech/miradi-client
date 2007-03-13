@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.diagram.ChainObject;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -22,7 +22,7 @@ public class SelectChain extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		DiagramFactor[] selectedFactors = getProject().getOnlySelectedFactors();
+		FactorCell[] selectedFactors = getProject().getOnlySelectedFactors();
 		DiagramFactorLink[] selectedLinks = getProject().getOnlySelectedLinks();
 		int combinedLengths = selectedLinks.length + selectedFactors.length;
 		
@@ -58,10 +58,10 @@ public class SelectChain extends ViewDoer
 	private static void selectChainBasedOnFactorSelection(DiagramComponent diagram) throws Exception
 	{
 		Project project = diagram.getProject();
-		DiagramFactor[] selectedFactors = project.getOnlySelectedFactors();
+		FactorCell[] selectedFactors = project.getOnlySelectedFactors();
 		for(int i = 0; i < selectedFactors.length; ++i)
 		{
-			DiagramFactor selectedFactor = selectedFactors[i];
+			FactorCell selectedFactor = selectedFactors[i];
 			DiagramModel model = project.getDiagramModel();
 			ChainObject chainObject = new ChainObject();
 			chainObject.buildNormalChain(model, selectedFactor.getUnderlyingObject());
@@ -103,7 +103,7 @@ public class SelectChain extends ViewDoer
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			// convert CMNode to DiagramNode
-			DiagramFactor nodeToSelect = model.getDiagramFactorByWrappedId((FactorId)chainNodes[i].getId());
+			FactorCell nodeToSelect = model.getDiagramFactorByWrappedId((FactorId)chainNodes[i].getId());
 			diagram.addSelectionCell(nodeToSelect);
 		}
 	}

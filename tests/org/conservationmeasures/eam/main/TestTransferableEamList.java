@@ -9,18 +9,21 @@ package org.conservationmeasures.eam.main;
 import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objectpools.FactorPool;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
@@ -55,33 +58,33 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals("wrong project filename?", projectFileName, eamList.getProjectFileName());
 	}
 
-	public void testGetTransferData() throws Exception
+	public void testGetTransfeData() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
-		FactorPool nodePool = model.getFactorPool();
-
-		FactorId node1Id = new FactorId(1);
+		
 		Point node1Location = new Point(1,2);
+		FactorCommandHelper commandHelper = new FactorCommandHelper(project);
+		CommandCreateObject createCommand1 = commandHelper.createFactorAndDiagramFactor(Factor.TYPE_CAUSE);
+		DiagramFactorId diagramFactorId1 = (DiagramFactorId) createCommand1.getCreatedId();
+		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId1);
+		FactorId factorId1 = diagramFactor1.getWrappedId();
+		diagramFactor1.setLocation(node1Location);
 		
-		Strategy cmIntervention = new Strategy(node1Id);
-		nodePool.put(cmIntervention);
-		DiagramFactor node1 = model.createDiagramFactor(cmIntervention.getFactorId());
-		node1.setLocation(node1Location);
-		
-		FactorId node2Id = new FactorId(2);
 		Point node2Location = new Point(2,3);
+		CommandCreateObject createCommand2 = commandHelper.createFactorAndDiagramFactor(Factor.TYPE_CAUSE);
+		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createCommand2.getCreatedId();
+		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
+		FactorId factorId2 = diagramFactor2.getWrappedId();
+		diagramFactor2.setLocation(node2Location);
 		
-		Target cmTarget = new Target(node2Id);
-		nodePool.put(cmTarget);
-		DiagramFactor node2 = model.createDiagramFactor(cmTarget.getFactorId());
-		node2.setLocation(node2Location);
-		
-		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, node1Id, node2Id);
+		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, factorId1, factorId2);
 		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
 		DiagramFactorLink diagramFactorLink = model.getDiagramFactorLinkById(diagramFactorLinkId);
-		
-		EAMGraphCell dataCells[] = {node1, node2, model.findLinkCell(diagramFactorLink)};
+
+		FactorCell factorCell1 = model.getDiagramFactorById(diagramFactorId1);
+		FactorCell factorCell2 = model.getDiagramFactorById(diagramFactorId2);
+		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramFactorLink)};
 		TransferableEamList eamList = new TransferableEamList(project.getFilename(), dataCells);
 		TransferableEamList eamTransferData = (TransferableEamList)eamList.getTransferData(TransferableEamList.eamListDataFlavor);
 		assertNotNull(eamTransferData);
@@ -90,15 +93,20 @@ public class TestTransferableEamList extends EAMTestCase
 		FactorLinkDataMap[] linkagesData = eamTransferData.getArrayOfFactorLinkDataMaps();
 		
 		assertEquals(2, nodesData.length);
-		assertEquals(node1.getDiagramFactorId(), nodesData[0].getId(DiagramFactor.TAG_ID));
-		assertEquals(node1Location, nodesData[0].getPoint(DiagramFactor.TAG_LOCATION));
-		assertEquals(node2.getDiagramFactorId(), nodesData[1].getId(DiagramFactor.TAG_ID));
-		assertEquals(node2Location, nodesData[1].getPoint(DiagramFactor.TAG_LOCATION));
+		
+		assertEquals(diagramFactorId1, nodesData[0].getId(DiagramFactor.TAG_ID));
+		Point point1 = nodesData[0].getPoint(DiagramFactor.TAG_LOCATION);
+		assertEquals(node1Location, point1);
+		
+		assertEquals(diagramFactorId2, nodesData[1].getId(DiagramFactor.TAG_ID));
+		Point point2 = nodesData[1].getPoint(DiagramFactor.TAG_LOCATION);
+		assertEquals(node2Location, point2);
 
 		assertEquals(1, linkagesData.length);
+		
 		assertEquals(diagramFactorLink.getId(), linkagesData[0].getId());
-		assertEquals(node1.getDiagramFactorId(), linkagesData[0].getFromId());
-		assertEquals(node2.getDiagramFactorId(), linkagesData[0].getToId());
+		assertEquals(diagramFactorId1, linkagesData[0].getFromId());
+		assertEquals(diagramFactorId2, linkagesData[0].getToId());
 		
 		project.close();
 	}

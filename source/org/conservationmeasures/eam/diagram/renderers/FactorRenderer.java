@@ -49,7 +49,7 @@ import java.awt.Stroke;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -77,7 +77,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	{
 		super.getRendererComponent(graphToUse, view, sel, focus, previewMode);
 
-		node = (DiagramFactor)view.getCell();
+		node = (FactorCell)view.getCell();
 		DiagramModel model = (DiagramModel)graphToUse.getModel();
 		ThreatRatingFramework framework = model.getThreatRatingFramework();
 		priority = null;
@@ -223,7 +223,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
 	
 	ValueOption priority;
-	DiagramFactor node;
+	FactorCell node;
 	ChoiceItem rating;
 	String indicatorText;
 	String objectivesText;

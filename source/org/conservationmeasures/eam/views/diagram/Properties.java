@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
@@ -53,7 +53,7 @@ public class Properties extends LocationDoer
 
 		EAMGraphCell selected = getProject().getOnlySelectedCells()[0];
 		if(selected.isFactor())
-			doFactorProperties((DiagramFactor)selected, getLocation());
+			doFactorProperties((FactorCell)selected, getLocation());
 		else if(selected.isProjectScope())
 			doProjectScopeProperties((ProjectScopeBox)selected);
 		else if(selected.isFactorLink())
@@ -74,13 +74,13 @@ public class Properties extends LocationDoer
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	void doFactorProperties(DiagramFactor selectedFactor, Point at) throws CommandFailedException
+	void doFactorProperties(FactorCell selectedFactor, Point at) throws CommandFailedException
 	{
 		DiagramView view = (DiagramView)getView();
 		view.showNodeProperties(selectedFactor, getTabToStartOn(selectedFactor, at));
 	}
 
-	private int getTabToStartOn(DiagramFactor factor, Point at)
+	private int getTabToStartOn(FactorCell factor, Point at)
 	{
 		if(at == null)
 			return FactorPropertiesPanel.TAB_DETAILS;

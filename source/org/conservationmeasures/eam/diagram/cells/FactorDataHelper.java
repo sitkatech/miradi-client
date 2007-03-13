@@ -55,7 +55,7 @@ public class FactorDataHelper
 	{
 		for (Iterator iter = existingNodesInProject.iterator(); iter.hasNext();) 
 		{
-			DiagramFactorId id = ((DiagramFactor) iter.next()).getDiagramFactorId();
+			DiagramFactorId id = ((FactorCell) iter.next()).getDiagramFactorId();
 			setNewId(id, id);
 		}
 	}

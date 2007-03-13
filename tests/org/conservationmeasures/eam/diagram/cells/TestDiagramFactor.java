@@ -10,13 +10,8 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
-import org.conservationmeasures.eam.commands.CommandSetFactorSize;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
@@ -24,11 +19,10 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.jgraph.graph.GraphConstants;
 
 public class TestDiagramFactor extends EAMTestCase
@@ -44,8 +38,6 @@ public class TestDiagramFactor extends EAMTestCase
 		project = new ProjectForTesting(getName());
 		idAssigner = new IdAssigner();
 
-		Strategy cmIntervention = new Strategy(takeNextModelNodeId());
-		Cause cmContributingFactor = new Cause(takeNextModelNodeId());
 		Cause cmDirectThreat = new Cause(takeNextModelNodeId());
 		cmDirectThreat.increaseTargetCount();
 		CreateFactorParameter createTarget = new CreateFactorParameter(new FactorTypeTarget());
@@ -53,14 +45,10 @@ public class TestDiagramFactor extends EAMTestCase
 		FactorId cmTargetId = new FactorId(rawTargetId.asInt());
 		cmTarget = (Target)project.findNode(cmTargetId);
 		
-		DiagramFactorId interventionNodeId = new DiagramFactorId(44);
-		intervention = DiagramFactor.wrapConceptualModelObject(interventionNodeId, cmIntervention);
-		DiagramFactorId indirectFactorNodeId = new DiagramFactorId(46);
-		indirectFactor = DiagramFactor.wrapConceptualModelObject(indirectFactorNodeId, cmContributingFactor);
-		DiagramFactorId directThreatNodeId = new DiagramFactorId(43);
-		directThreat = DiagramFactor.wrapConceptualModelObject(directThreatNodeId, cmDirectThreat);
-		DiagramFactorId targetNodeId = new DiagramFactorId(35);
-		target = DiagramFactor.wrapConceptualModelObject(targetNodeId, cmTarget);
+		intervention = project.createFactorCell(Factor.TYPE_STRATEGY);
+		indirectFactor = project.createFactorCell(Factor.TYPE_CAUSE);
+		directThreat  = project.createFactorCell(Factor.TYPE_CAUSE);
+		target = project.createFactorCell(Factor.TYPE_TARGET);
 		targetAttributeMap = target.getAttributes();
 	}
 	
@@ -77,8 +65,8 @@ public class TestDiagramFactor extends EAMTestCase
 	
 	public void testObjectives()
 	{
-		assertTrue(directThreat.canHaveObjectives());
-		assertTrue(indirectFactor.canHaveObjectives());
+		assertTrue("direct threat can have objectives?", directThreat.canHaveObjectives());
+		assertTrue("indirect threat can have objectives?", indirectFactor.canHaveObjectives());
 		assertTrue(intervention.canHaveObjectives());
 		assertFalse(target.canHaveObjectives());
 	}
@@ -127,29 +115,30 @@ public class TestDiagramFactor extends EAMTestCase
 		assertEquals("node size height incorrect?", 50.0, target.getSize().getHeight(), TOLERANCE);
 	}
 	
-	public void testBuildCommandsToClear() throws Exception
-	{
-		Command[] commands = target.buildCommandsToClear();
-		assertEquals(3, commands.length);
-		int next = 0;
-		assertEquals(CommandSetFactorSize.COMMAND_NAME, commands[next++].getCommandName());
-		assertEquals(CommandDiagramMove.COMMAND_NAME, commands[next++].getCommandName());
-		assertEquals(CommandSetObjectData.COMMAND_NAME, commands[next++].getCommandName());
-	}
+	//TODO diagramFactor conversion - remove commented code since DiagramFactor is cleared automatically
+	//public void testBuildCommandsToClear() throws Exception
+	//{
+	//	Command[] commands = target.buildCommandsToClear();
+	//	assertEquals(3, commands.length);
+	//	int next = 0;
+	//	assertEquals(CommandSetFactorSize.COMMAND_NAME, commands[next++].getCommandName());
+	//	assertEquals(CommandDiagramMove.COMMAND_NAME, commands[next++].getCommandName());
+	//	assertEquals(CommandSetObjectData.COMMAND_NAME, commands[next++].getCommandName());
+	//}
 	
 	public void testJson() throws Exception
 	{
-		target.setLocation(new Point(100, 200));
-		target.setSize(new Dimension(50, 75));
+		FactorCell factorCell = project.createFactorCell(Factor.TYPE_CAUSE);
+		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
+		diagramFactor.setLocation(new Point(100, 200));
+		diagramFactor.setSize(new Dimension(50, 75));
 		
-		DiagramFactor got = new DiagramTarget(target.getDiagramFactorId(), cmTarget);
-		EnhancedJsonObject json = target.toJson();
-		got.fillFrom(json);
+		DiagramFactor diagramFactor2 = new DiagramFactor(diagramFactor.getDiagramFactorId().asInt(), diagramFactor.toJson());
 		
-		assertEquals("location", target.getLocation(), got.getLocation());
-		assertEquals("size", target.getSize(), got.getSize());
-		assertEquals("id", target.getDiagramFactorId(), got.getDiagramFactorId());
-		assertEquals("wrapped id", target.getWrappedId(), got.getWrappedId());
+		assertEquals("location", diagramFactor.getLocation(), diagramFactor2.getLocation());
+		assertEquals("size", diagramFactor.getSize(), diagramFactor2.getSize());
+		assertEquals("id", diagramFactor.getDiagramFactorId(), diagramFactor2.getDiagramFactorId());
+		assertEquals("wrapped id", diagramFactor.getWrappedId(), diagramFactor2.getWrappedId());
 	}
 
 	private FactorId takeNextModelNodeId()
@@ -160,12 +149,12 @@ public class TestDiagramFactor extends EAMTestCase
 
 	static final double TOLERANCE = 0.00;
 	
-	Project project;
+	ProjectForTesting project;
 	IdAssigner idAssigner;
 	Target cmTarget;
-	DiagramFactor intervention;
-	DiagramFactor indirectFactor;
-	DiagramFactor directThreat;
-	DiagramFactor target;
+	FactorCell intervention;
+	FactorCell indirectFactor;
+	FactorCell directThreat;
+	FactorCell target;
 	Map targetAttributeMap;
 }

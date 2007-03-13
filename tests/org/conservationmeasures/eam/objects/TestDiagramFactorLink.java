@@ -9,7 +9,9 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.DiagramCause;
+import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
@@ -23,6 +25,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParamet
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
@@ -65,29 +68,38 @@ public class TestDiagramFactorLink extends ObjectTestCase
 
 	public void testBasics() throws Exception
 	{
-		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getFactorId());
-		DiagramFactor target = model.createDiagramFactor(cmTarget.getFactorId());
-
-		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, factor.getWrappedId(), target.getWrappedId());
+		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
+		CommandCreateObject createObject1 = factorCommandHelper.createFactorAndDiagramFactor(Factor.TYPE_CAUSE);
+		DiagramFactorId diagramFactorId1 = (DiagramFactorId) createObject1.getCreatedId();
+		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId1);
+		FactorCell factorCell1 = model.getDiagramFactorById(diagramFactorId1);
+		
+		CommandCreateObject createObject2 = factorCommandHelper.createFactorAndDiagramFactor(Factor.TYPE_CAUSE);
+		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createObject2.getCreatedId();
+		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
+		FactorCell factorCell2 = model.getDiagramFactorById(diagramFactorId2);
+		
+		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, diagramFactor1.getWrappedId(), diagramFactor2.getWrappedId());
 		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
 		DiagramFactorLink diagramFactorLink = model.getDiagramFactorLinkById(diagramFactorLinkId);
 		
 		LinkCell cell = model.findLinkCell(diagramFactorLink);
-		assertEquals("didn't remember from?", factor, cell.getFrom());
-		assertEquals("didn't remember to?", target, cell.getTo());
+		assertEquals("didn't remember from?", diagramFactor1, cell.getFrom().getDiagramFactor());
+		assertEquals("didn't remember to?", diagramFactor2, cell.getTo().getDiagramFactor());
 
-		assertEquals("source not the port of from?", factor.getPort(), cell.getSource());
-		assertEquals("target not the port of to?", target.getPort(), cell.getTarget());
+		assertEquals("source not the port of from?", factorCell1.getPort(), cell.getSource());
+		assertEquals("target not the port of to?", factorCell2.getPort(), cell.getTarget());
 	}
 	
 	public void testIds() throws Exception
 	{
-		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getFactorId());
-		DiagramFactor target = model.createDiagramFactor(cmTarget.getFactorId());
+		DiagramCause factor = (DiagramCause) project.createFactorCell(Factor.TYPE_CAUSE);
+		DiagramTarget diagramTarget = (DiagramTarget) project.createFactorCell(Factor.TYPE_TARGET);
+		
 		FactorLinkId linkId = new FactorLinkId(5);
 		DiagramFactorLinkId id = new DiagramFactorLinkId(17);
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(
-				linkId, factor.getDiagramFactorId(), target.getDiagramFactorId());
+				linkId, factor.getDiagramFactorId(), diagramTarget.getDiagramFactorId());
 		DiagramFactorLink linkage = new DiagramFactorLink(id, extraInfo);
 		assertEquals(id, linkage.getDiagramLinkageId());
 		assertEquals(linkId, linkage.getWrappedId());
@@ -100,8 +112,8 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	
 	public void testLinkNodes() throws Exception
 	{
-		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY, BaseId.INVALID);
-		FactorId factorId = 	project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
+		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
+		FactorId factorId = 	project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);

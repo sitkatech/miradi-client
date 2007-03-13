@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.ViewData;
 
@@ -29,7 +29,7 @@ public class LayerManager
 		scopeBoxVisibleFlag = true;
 	}
 	
-	public boolean isVisible(DiagramFactor node)
+	public boolean isVisible(FactorCell node)
 	{
 		if(hiddenIds.contains(node.getWrappedId()))
 			return false;

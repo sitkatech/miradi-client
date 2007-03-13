@@ -17,7 +17,7 @@ import org.jgraph.graph.GraphConstants;
 
 public class LinkCell extends EAMGraphCell implements Edge
 {
-	public LinkCell(FactorLink linkToUse, DiagramFactorLink diagramLinkToUse, DiagramFactor fromToUse, DiagramFactor toToUse)
+	public LinkCell(FactorLink linkToUse, DiagramFactorLink diagramLinkToUse, FactorCell fromToUse, FactorCell toToUse)
 	{
 		link = linkToUse;
 		diagramLink = diagramLinkToUse;
@@ -36,12 +36,12 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return diagramLink;
 	}
 
-	public DiagramFactor getFrom()
+	public FactorCell getFrom()
 	{
 		return from;
 	}
 	
-	public DiagramFactor getTo()
+	public FactorCell getTo()
 	{
 		return to;
 	}
@@ -120,6 +120,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 
 	FactorLink link;
 	DiagramFactorLink diagramLink;
-	DiagramFactor from;
-	DiagramFactor to;
+	FactorCell from;
+	FactorCell to;
 }

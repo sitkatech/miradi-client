@@ -11,10 +11,11 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 
 public class TransferableEamList implements Transferable 
 {
@@ -45,7 +46,8 @@ public class TransferableEamList implements Transferable
 				}
 				if(cell.isFactor())
 				{
-					factors.add(((DiagramFactor)cell).createFactorDataMap());
+					FactorType factorType = ((FactorCell)cell).getUnderlyingFactorType();
+					factors.add(cell.getDiagramFactor().createFactorDataMap(factorType.toString()));
 				}
 			} 
 			catch (Exception e) 

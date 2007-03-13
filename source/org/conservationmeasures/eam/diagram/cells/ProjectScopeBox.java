@@ -117,7 +117,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		Vector nodes = model.getAllDiagramFactors();
 		for(int i=0; i < nodes.size(); ++i)
 		{
-			DiagramFactor node = (DiagramFactor)nodes.get(i);
+			FactorCell node = (FactorCell)nodes.get(i);
 			if(node.isTarget())
 			{
 				if(bounds == null)

@@ -99,6 +99,8 @@ public class DiagramFactorLink extends EAMBaseObject
 				new DiagramFactorId(toId.getId().asInt()));
 	}
 
+	
+	//TODO convert to new EAMObject.addField system
 	void clear()
 	{
 		super.clear();

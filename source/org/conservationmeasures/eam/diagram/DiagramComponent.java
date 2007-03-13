@@ -34,7 +34,7 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
@@ -167,7 +167,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler.showContextMenu(e);
 	}
 	
-	public boolean isNodeVisible(DiagramFactor node)
+	public boolean isNodeVisible(FactorCell node)
 	{
 		return project.getLayerManager().isVisible(node);
 	}
@@ -197,14 +197,14 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return project.getLayerManager().areIndicatorsVisible();
 	}
 	
-	public DiagramFactor getSelectedFactor()
+	public FactorCell getSelectedFactor()
 	{
 		if (getSelectionCount() != 1)
 			return null;
 		return getSelectedFactor(0);
 	}
 	
-	public DiagramFactor getSelectedFactor(int index)
+	public FactorCell getSelectedFactor(int index)
 	{
 		Object[] selectedCells = getSelectionCells();
 		for(int i = 0; i < selectedCells.length; ++i)
@@ -213,7 +213,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			if(thisCell.isFactor())
 			{
 				if(index == 0)
-					return (DiagramFactor)thisCell;
+					return (FactorCell)thisCell;
 				--index;
 			}
 		}
@@ -233,7 +233,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		Vector allDiagramFactors = getDiagramModel().getAllDiagramFactors();
 		for (int i  = 0; i < allDiagramFactors.size(); i++)
 		{
-			DiagramFactor diagramFactor = (DiagramFactor)allDiagramFactors.elementAt(i);
+			FactorCell diagramFactor = (FactorCell)allDiagramFactors.elementAt(i);
 			if (glc.isVisible(diagramFactor))
 				addSelectionCell(diagramFactor);
 		}

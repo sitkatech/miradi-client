@@ -7,12 +7,11 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCluster;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
@@ -171,8 +170,6 @@ abstract public class Factor extends EAMBaseObject
 			return new Cause(new FactorId(idAsInt), json);
 		if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
 			return new Target(new FactorId(idAsInt), json);
-		if(typeString.equals(FactorTypeCluster.CLUSTER_TYPE))
-			return new FactorCluster(new FactorId(idAsInt), json);
 		
 		throw new RuntimeException("Read unknown node type: " + typeString);
 	}
@@ -199,8 +196,6 @@ abstract public class Factor extends EAMBaseObject
 			return new Cause(idToCreate);
 		else if(nodeType.isTarget())
 			return new Target(idToCreate);
-		else if(nodeType.isFactorCluster())
-			return new FactorCluster(idToCreate);
 	
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}
@@ -225,7 +220,6 @@ abstract public class Factor extends EAMBaseObject
 	public static final FactorType TYPE_TARGET = new FactorTypeTarget();
 	public static final FactorType TYPE_CAUSE = new FactorTypeCause();
 	public static final FactorType TYPE_STRATEGY = new FactorTypeStrategy();
-	public static final FactorType TYPE_CLUSTER = new FactorTypeCluster();
 	
 	public static final String TAG_NODE_TYPE = "Type";
 	public static final String TAG_COMMENT = "Comment";

@@ -133,10 +133,38 @@ public class EnhancedJsonObject extends JSONObject
 	
 	public void putPoint(String tag, Point value)
 	{
-		JSONObject point = new JSONObject();
-		point.put(TAG_POINT_X, value.x);
-		point.put(TAG_POINT_Y, value.y);
-		put(tag, point);
+		String pointAsString = convertFromPoint(value);
+		put(tag, pointAsString);
+	}
+
+	public static String convertFromPoint(Point point)
+	{
+		JSONObject json = new JSONObject();
+		json.put(TAG_POINT_X, point.x);
+		json.put(TAG_POINT_Y, point.y);
+		
+		return json.toString();
+	}
+	
+	public static Point convertToPoint(String pointAsString) throws ParseException
+	{
+		JSONObject point = new EnhancedJsonObject(pointAsString);
+		return new Point(point.getInt(TAG_POINT_X), point.getInt(TAG_POINT_Y));
+	}
+	
+	public static Dimension convertToDimension(String dimensionAsString) throws ParseException
+	{
+		JSONObject dimension = new EnhancedJsonObject(dimensionAsString);
+		return new Dimension(dimension.getInt(TAG_WIDTH), dimension.getInt(TAG_HEIGHT));
+	}
+	
+	public static String convertFromDimension(Dimension dimension)
+	{
+		JSONObject json = new JSONObject();
+		json.put(TAG_WIDTH, dimension.width);
+		json.put(TAG_HEIGHT, dimension.height);
+		
+		return json.toString();
 	}
 
 	public void putDimension(String tag, Dimension value)
@@ -147,16 +175,16 @@ public class EnhancedJsonObject extends JSONObject
 		put(tag, size);
 	}
 
-	public Point getPoint(String tag)
+	public Point getPoint(String tag) throws Exception
 	{
-		JSONObject point = getJson(tag);
-		return new Point(point.getInt(TAG_POINT_X), point.getInt(TAG_POINT_Y));
+		String pointAsString = getString(tag);
+		return convertToPoint(pointAsString);
 	}
 
-	public Dimension getDimension(String tag)
+	public Dimension getDimension(String tag) throws ParseException
 	{
-		JSONObject size = getJson(tag);
-		return new Dimension(size.getInt(TAG_WIDTH), size.getInt(TAG_HEIGHT));
+		String dimensionAsString = getString(tag);
+		return convertToDimension(dimensionAsString);
 	}
 
 	public void removeAll()
