@@ -334,7 +334,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 
 	boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
 	{
-		if(!event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+		if(!event.isDeleteObjectCommand())
 			return false;
 		
 		CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
@@ -342,17 +342,6 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 			return false;
 		return true;
 	}
-
-
-	boolean wasOurObjectJustCreateUndone(CommandExecutedEvent event)
-	{
-		if(!event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-			return false;
-		
-		CommandCreateObject cmd = (CommandCreateObject)event.getCommand();
-		return (cmd.getCreatedId().equals(getObjecIdForType(cmd.getObjectType())));
-	}
-	
 
 	public EAMObject getObject()
 	{
