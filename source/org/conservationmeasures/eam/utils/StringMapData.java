@@ -28,6 +28,11 @@ public class StringMapData extends ObjectData
 	public StringMapData(EnhancedJsonObject json)
 	{
 		this();
+		copyFromJson(json);
+	}
+
+	private void copyFromJson(EnhancedJsonObject json)
+	{
 		EnhancedJsonObject array = json.optJson(TAG_STRING_MAP);
 		if(array == null)
 			array = new EnhancedJsonObject();
@@ -35,7 +40,7 @@ public class StringMapData extends ObjectData
 		while (iterator.hasNext())
 		{
 			String key = (String)iterator.next();
-			add(key, (String)array.get(key));
+			add(key, get(key));
 		}
 	}
 
@@ -73,6 +78,7 @@ public class StringMapData extends ObjectData
 
 	public void set(String newValue) throws Exception
 	{
+		copyFromJson(new EnhancedJsonObject(newValue));
 	}
 
 	public String find(String object)
