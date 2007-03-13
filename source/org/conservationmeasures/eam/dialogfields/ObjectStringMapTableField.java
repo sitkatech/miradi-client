@@ -41,7 +41,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		String[] names = new String[items.length-1];
 		for (int i=0; i<items.length-1; ++i)
 		{
-			names[i] = items[i].getLabel();
+			names[i] = items[i+1].getLabel();
 		}
 		return names;
 	}
