@@ -33,12 +33,12 @@ public class KeyEcologicalAttribute extends EAMBaseObject
 		indicatorIds = new IdListData();
 		description = new StringData();
 		keyEcologicalAttributeType = new StringData();
-		indicatorRatings = new StringMapData();
+		indicatorThreshold = new StringMapData();
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);
 		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, keyEcologicalAttributeType);
-		addField(TAG_INDICATOR_RATINGS, indicatorRatings);
+		addField(TAG_INDICATOR_THRESHOLDS, indicatorThreshold);
 	}
 	
 	public int getType()
@@ -54,11 +54,11 @@ public class KeyEcologicalAttribute extends EAMBaseObject
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_DESCRIPTION = "Description";
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
-	public static final String TAG_INDICATOR_RATINGS = "IndicatorRatings";
+	public static final String TAG_INDICATOR_THRESHOLDS = "IndicatorThresholds";
 	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
 	
 	IdListData indicatorIds;
 	StringData description;
 	StringData keyEcologicalAttributeType;
-	StringMapData indicatorRatings;
+	StringMapData indicatorThreshold;
 }
