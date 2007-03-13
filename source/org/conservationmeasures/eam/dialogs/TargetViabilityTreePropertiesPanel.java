@@ -37,7 +37,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 		addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
 		addField(createObjectChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
 		addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
-		addField(createObjectTableField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
+		addField(createObjectStringMapTableField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
 		updateFieldsFromProject();
 
 	}

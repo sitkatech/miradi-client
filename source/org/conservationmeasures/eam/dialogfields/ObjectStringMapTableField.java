@@ -21,9 +21,9 @@ import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.StringMapData;
 import org.martus.swing.UiTable;
 
-public class ObjectTableField extends ObjectDataInputField
+public class ObjectStringMapTableField extends ObjectDataInputField
 {
-	public ObjectTableField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
+	public ObjectStringMapTableField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, questionToUse.getTag());
 		question = questionToUse;
@@ -63,7 +63,7 @@ public class ObjectTableField extends ObjectDataInputField
 				String value = (String) table.getModel().getValueAt(0, i);
 				data.add(code, (value==null)?"":value);
 			}
-			//System.out.println("HERE getText:" + data.get());
+			//System.out.println("HERE getText saving data:" + data.get());
 			return data.get();
 		}
 		catch(Exception e)
