@@ -76,7 +76,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	{
 		try
 		{
-			skip = true;
+			avoidSaveDuringInternalSet = true;
 			table.editingCanceled(null);
 			table.clearSelection();
 			StringMapData data = new StringMapData(dataString);
@@ -86,11 +86,14 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 				String code = items[i+1].getCode();
 				table.getModel().setValueAt(data.get(code), 0, i);
 			}
-			skip = false;
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
+		}
+		finally
+		{
+			avoidSaveDuringInternalSet = false;
 		}
 	}
 
@@ -120,14 +123,14 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 
 		public void tableChanged(TableModelEvent event)
 		{
-			if (!skip) 
+			if (!avoidSaveDuringInternalSet) 
 			{
 				saveSelection();
 			}
 		}
 
 	}
-	boolean skip;
+	boolean avoidSaveDuringInternalSet;
 	ChoiceQuestion question;
 	JTable table;
 }
