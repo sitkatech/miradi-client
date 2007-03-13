@@ -12,8 +12,8 @@ public class CreateKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 {
 	public boolean isAvailable()
 	{
-		if (getObjects().length != 1)
-			return false;
+		if (getObjects().length ==0)
+			return true;
 		
 		if (getSelectedObjectType() != ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			return false;
