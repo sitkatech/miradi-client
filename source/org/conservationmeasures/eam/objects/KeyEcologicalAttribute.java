@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.utils.StringMapData;
 
 public class KeyEcologicalAttribute extends EAMBaseObject
 {
@@ -31,11 +32,13 @@ public class KeyEcologicalAttribute extends EAMBaseObject
 		super.clear();
 		indicatorIds = new IdListData();
 		description = new StringData();
-		typeCode = new StringData();
+		keyEcologicalAttributeType = new StringData();
+		indicatorRatings = new StringMapData();
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);
-		addField(TAG_TYPE_CODE, typeCode);
+		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, keyEcologicalAttributeType);
+		addField(TAG_INDICATOR_RATINGS, indicatorRatings);
 	}
 	
 	public int getType()
@@ -50,10 +53,12 @@ public class KeyEcologicalAttribute extends EAMBaseObject
 	
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_DESCRIPTION = "Description";
-	public static final String TAG_TYPE_CODE = "TypeCode";
+	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
+	public static final String TAG_INDICATOR_RATINGS = "IndicatorRatings";
 	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
 	
 	IdListData indicatorIds;
 	StringData description;
-	StringData typeCode;
+	StringData keyEcologicalAttributeType;
+	StringMapData indicatorRatings;
 }

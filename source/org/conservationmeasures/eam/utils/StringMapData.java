@@ -73,7 +73,6 @@ public class StringMapData extends ObjectData
 
 	public void set(String newValue) throws Exception
 	{
-		throw new RuntimeException("Method set() not implemented");
 	}
 
 	public String find(String object)
