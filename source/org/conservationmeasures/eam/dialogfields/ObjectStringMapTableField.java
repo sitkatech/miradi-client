@@ -76,6 +76,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	{
 		try
 		{
+			skip = true;
 			table.editingCanceled(null);
 			table.clearSelection();
 			StringMapData data = new StringMapData(dataString);
@@ -85,6 +86,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 				String code = items[i+1].getCode();
 				table.getModel().setValueAt(data.get(code), 0, i);
 			}
+			skip = false;
 		}
 		catch(Exception e)
 		{
@@ -115,19 +117,17 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	
 	class TableChangeHandler implements TableModelListener
 	{
-		//FIXME: should be a better way to stop loop....maybe do save only in fouse change?
-		boolean skip = true;
+
 		public void tableChanged(TableModelEvent event)
 		{
-			if (skip) 
+			if (!skip) 
 			{
-				skip = false;
 				saveSelection();
-				skip = true;
 			}
 		}
 
 	}
+	boolean skip;
 	ChoiceQuestion question;
 	JTable table;
 }
