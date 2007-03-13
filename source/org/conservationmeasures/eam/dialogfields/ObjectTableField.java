@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Color;
+
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
@@ -92,7 +94,17 @@ public class ObjectTableField extends ObjectDataInputField
 
 	public void updateEditableState()
 	{
-
+		boolean editable = allowEdits() && isValidObject();
+		table.setEnabled(editable);
+		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
+		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
+		if(!editable)
+		{
+			fg = EAM.READONLY_FOREGROUND_COLOR;
+			bg = EAM.READONLY_BACKGROUND_COLOR;
+		}
+		table.setForeground(fg);
+		table.setBackground(bg);
 	}
 
 	public void saveSelection()
