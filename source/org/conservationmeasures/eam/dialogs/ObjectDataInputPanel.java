@@ -14,7 +14,6 @@ import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.ObjectAdjustableStringInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectCheckBoxField;
