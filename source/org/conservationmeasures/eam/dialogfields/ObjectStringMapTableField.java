@@ -76,6 +76,8 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	{
 		try
 		{
+			table.editingCanceled(null);
+			table.clearSelection();
 			StringMapData data = new StringMapData(dataString);
 			ChoiceItem[] items = question.getChoices();
 			for(int i=0; i < items.length - 1; ++i)
@@ -115,7 +117,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	{
 		//FIXME: should be a better way to stop loop....maybe do save only in fouse change?
 		boolean skip = true;
-		public void tableChanged(TableModelEvent arg0)
+		public void tableChanged(TableModelEvent event)
 		{
 			if (skip) 
 			{
@@ -124,6 +126,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 				skip = true;
 			}
 		}
+
 	}
 	ChoiceQuestion question;
 	JTable table;
