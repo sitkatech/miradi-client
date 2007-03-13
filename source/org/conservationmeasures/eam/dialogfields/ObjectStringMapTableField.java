@@ -9,8 +9,8 @@ import java.awt.Color;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -32,14 +32,16 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		table = new UiTable(new DefaultTableModel(data,names));
 		addFocusListener();
 		table.setRowHeight(20);
-		table.getModel().addTableModelListener(new TableChangeHandler());
+		TableChangeHandler listener = new TableChangeHandler();
+	    table.getSelectionModel().addListSelectionListener(listener);
+
 	}
 
 	private String[] getColumnNames(ChoiceQuestion questionToUse)
 	{
 		ChoiceItem[] items = questionToUse.getChoices();
 		String[] names = new String[items.length-1];
-		for (int i=1; i<items.length-1; ++i)
+		for (int i=0; i<items.length-1; ++i)
 		{
 			names[i] = items[i].getLabel();
 		}
@@ -57,7 +59,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		{
 			StringMapData data = new StringMapData();
 			ChoiceItem[] items = question.getChoices();
-			for(int i = 0; i < items.length - 1; ++i)
+			for(int i=0; i < items.length - 1; ++i)
 			{
 				String code = items[i].getCode();
 				String value = (String) table.getModel().getValueAt(0, i);
@@ -77,13 +79,14 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	{
 		try
 		{
-			//System.out.println("HERE setText:" + dataString);
+		//	System.out.println("HERE setText:" + dataString);
 			StringMapData data = new StringMapData(dataString);
 			ChoiceItem[] items = question.getChoices();
-			for(int i = 1; i < items.length - 1; ++i)
+			for(int i=0; i < items.length - 1; ++i)
 			{
 				String code = items[i].getCode();
-				table.getModel().setValueAt(data.get(code), 0, i - 1);
+				table.getModel().setValueAt(data.get(code), 0, i);
+				//System.out.println("HERE seting:" + data.get(code) + " at col=" + (i));
 			}
 		}
 		catch(Exception e)
@@ -113,10 +116,11 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		saveIfNeeded();
 	}
 	
-	class TableChangeHandler implements TableModelListener
+	class TableChangeHandler implements ListSelectionListener
 	{
-		public void tableChanged(TableModelEvent event)
+		public void valueChanged(ListSelectionEvent e)
 		{
+			//System.out.println("HERE: valueChanged" + e.getSource() );
 			saveSelection();
 		}
 	}
