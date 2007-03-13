@@ -131,136 +131,136 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	
 	public ObjectDataInputField createCheckBoxField(String tag, String on, String off)
 	{
-		return new ObjectCheckBoxField(project, getORef(0).getObjectType(), getObjecIdForType(getORef(0).getObjectType()), tag, on, off);
+		return new ObjectCheckBoxField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, on, off);
 	}
 	
 	public ObjectDataInputField createCheckBoxField(int objectType, String tag, String on, String off)
 	{
-		return new ObjectCheckBoxField(project, objectType, getObjecIdForType(objectType), tag, on, off);
+		return new ObjectCheckBoxField(project, objectType, getObjectIdForType(objectType), tag, on, off);
 	}
 	
 	
 	public ObjectDataInputField createStringField(String tag)
 	{
-		return new ObjectStringInputField(project, getORef(0).getObjectType(), getObjecIdForType(getORef(0).getObjectType()), tag);
+		return new ObjectStringInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag)
 	{
-		return new ObjectStringInputField(project, objectType, getObjecIdForType(objectType), tag);
+		return new ObjectStringInputField(project, objectType, getObjectIdForType(objectType), tag);
 	}
 	
 	
 	public ObjectDataInputField createStringField(String tag, int column)
 	{
-		return new ObjectAdjustableStringInputField(project, getORef(0).getObjectType(), getObjecIdForType(getORef(0).getObjectType()), tag, column);
+		return new ObjectAdjustableStringInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag, int column)
 	{
-		return new ObjectAdjustableStringInputField(project, objectType, getObjecIdForType(objectType), tag, column);
+		return new ObjectAdjustableStringInputField(project, objectType, getObjectIdForType(objectType), tag, column);
 	}
 	
 	
 	public ObjectDataInputField createDateChooserField(String tag)
 	{
-		return new ObjectDateChooserInputField(project,  getORef(0).getObjectType(), getObjecIdForType( getORef(0).getObjectType()), tag);
+		return new ObjectDateChooserInputField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createDateChooserField(int objectType, String tag)
 	{
-		return new ObjectDateChooserInputField(project, objectType, getObjecIdForType(objectType), tag);
+		return new ObjectDateChooserInputField(project, objectType, getObjectIdForType(objectType), tag);
 	}
 	
 	
 	public ObjectDataInputField createNumericField(String tag, int column)
 	{
-		return new ObjectNumericInputField(project, getORef(0).getObjectType(), getObjecIdForType(getORef(0).getObjectType()), tag, column);
+		return new ObjectNumericInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag, int column)
 	{
-		return new ObjectNumericInputField(project, objectType, getObjecIdForType(objectType), tag, column);
+		return new ObjectNumericInputField(project, objectType, getObjectIdForType(objectType), tag, column);
 	}
 	
 
 	public ObjectDataInputField createNumericField(String tag)
 	{
-		return new ObjectNumericInputField(project, getORef(0).getObjectType(), getObjecIdForType(getORef(0).getObjectType()), tag);
+		return new ObjectNumericInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag)
 	{
-		return new ObjectNumericInputField(project, objectType, getObjecIdForType(objectType), tag);
+		return new ObjectNumericInputField(project, objectType, getObjectIdForType(objectType), tag);
 	}
 
 	public ObjectDataInputField createMultilineField(String tag)
 	{
-		return new ObjectMultilineInputField(project, getORef(0).getObjectType(), getObjecIdForType(getORef(0).getObjectType()), tag);
+		return new ObjectMultilineInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag)
 	{
-		return new ObjectMultilineInputField(project, objectType, getObjecIdForType(objectType), tag);
+		return new ObjectMultilineInputField(project, objectType, getObjectIdForType(objectType), tag);
 	}
 	
 	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question)
 	{
-		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjecIdForType(getORef(0).getObjectType()), question);
+		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
 	}
 	
 	public ObjectDataInputField createMultiCodeField(int objectType, ChoiceQuestion question)
 	{
-		return new ObjectCodeListField(project, objectType, getObjecIdForType(objectType), question);
+		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), question);
 	}
 
 	public ObjectDataInputField createReadonlyTextField(String tag)
 	{
-		return new ObjectMultilineDisplayField(project, getORef(0).getObjectType(), getObjecIdForType(getORef(0).getObjectType()), tag);
+		return new ObjectMultilineDisplayField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
 	}
 	
 	public ObjectDataInputField createReadonlyTextField(int objectType, String tag)
 	{
-		return new ObjectMultilineDisplayField(project, objectType, getObjecIdForType(objectType), tag);
+		return new ObjectMultilineDisplayField(project, objectType, getObjectIdForType(objectType), tag);
 	}
 	
 	public ObjectDataInputField ObjectChoiceField(int objectType, ChoiceQuestion question)
 	{
-		return new ObjectChoiceField(project, objectType, getObjecIdForType(objectType), question);
+		return new ObjectChoiceField(project, objectType, getObjectIdForType(objectType), question);
 	}
 	
 	public ObjectDataInputField createClassificationChoiceField(ChoiceQuestion question)
 	{
-		return new ObjectClassificationChoiceField(project, getORef(0).getObjectType(), getObjecIdForType(getORef(0).getObjectType()), question);
+		return new ObjectClassificationChoiceField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
 	}
 	
 	public ObjectDataInputField createClassificationChoiceField(int objectType, ChoiceQuestion question)
 	{
-		return new ObjectClassificationChoiceField(project, objectType, getObjecIdForType(objectType), question);
+		return new ObjectClassificationChoiceField(project, objectType, getObjectIdForType(objectType), question);
 	}
 	
 	public ObjectDataInputField createRatingChoiceField(ChoiceQuestion question)
 	{
-		return new ObjectRaitingChoiceField(project,  getORef(0).getObjectType(), getObjecIdForType( getORef(0).getObjectType()), question);
+		return new ObjectRaitingChoiceField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), question);
 	}
 	
 	public ObjectDataInputField createRatingChoiceField(int objectType, ChoiceQuestion question)
 	{
-		return new ObjectRaitingChoiceField(project, objectType, getObjecIdForType(objectType), question);
+		return new ObjectRaitingChoiceField(project, objectType, getObjectIdForType(objectType), question);
 	}
 
 	public ObjectDataInputField createReadOnlyChoiceField(ChoiceQuestion question)
 	{
-		return new ObjectReadonlyChoiceField(project,  getORef(0).getObjectType(), getObjecIdForType( getORef(0).getObjectType()), question);
+		return new ObjectReadonlyChoiceField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), question);
 	}
 	
 	public ObjectDataInputField createReadOnlyChoiceField(int objectType, ChoiceQuestion question)
 	{
-		return new ObjectReadonlyChoiceField(project, objectType, getObjecIdForType(objectType), question);
+		return new ObjectReadonlyChoiceField(project, objectType, getObjectIdForType(objectType), question);
 	}
 	
 	
-	private BaseId getObjecIdForType(int objectType)
+	private BaseId getObjectIdForType(int objectType)
 	{
 		for (int i=0; i<orefs.size(); ++i)
 		{
@@ -302,7 +302,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		for(int i = 0; i < fields.size(); ++i)
 		{
 			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
-			field.setObjectId(getObjecIdForType(field.getObjectType()));
+			field.setObjectId(getObjectIdForType(field.getObjectType()));
 		}
 	}
 	
@@ -335,7 +335,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 			return false;
 		
 		CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
-		if(!cmd.getObjectId().equals(getObjecIdForType(cmd.getObjectType())))
+		if(!cmd.getObjectId().equals(getObjectIdForType(cmd.getObjectType())))
 			return false;
 		return true;
 	}
