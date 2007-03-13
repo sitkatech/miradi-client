@@ -21,14 +21,14 @@ public class TestStringMapData  extends EAMTestCase
 		StringMapData list = new StringMapData();
 		assertEquals("wrong initial size?", 0, list.size());
 		String key1 = new String("A");
-		String id1 = new String("RoleA");
+		String value1 = new String("RoleA");
 		String key2 = new String("B");
-		String id2 = new String("RoleB");
-		list.add(key1, id1);
-		list.add(key2, id2);
+		String value2 = new String("RoleB");
+		list.add(key1, value1);
+		list.add(key2, value2);
 		assertEquals("wrong size?", 2, list.size());
-		assertEquals("bad get 1?", id1, list.get(key1));
-		assertEquals("bad get 2?", id2, list.get(key2));
+		assertEquals("bad get 1?", value1, list.get(key1));
+		assertEquals("bad get 2?", value2, list.get(key2));
 	}
 	
 	public void testJson()
@@ -101,13 +101,13 @@ public class TestStringMapData  extends EAMTestCase
 
 	public void testFind()
 	{
-		String[] ids = new String[] { new String("Role1"), new String("Role19"), new String("Role3"), };
+		String[] values = new String[] { new String("Role1"), new String("Role19"), new String("Role3"), };
 		String[] keys = new String[] { new String("1"), new String("19"), new String("3"), };
 		StringMapData list = new StringMapData();
-		for(int i = 0; i < ids.length; ++i)
-			list.add(keys[i], ids[i]);
-		for(int i = 0; i < ids.length; ++i)
-			assertEquals("Couldn't find " + i + "?", ids[i], list.get(keys[i]));
+		for(int i = 0; i < values.length; ++i)
+			list.add(keys[i], values[i]);
+		for(int i = 0; i < values.length; ++i)
+			assertEquals("Couldn't find " + i + "?", values[i], list.get(keys[i]));
 		assertEquals("Found non-existant?", null, list.find(new String("Role27")));
 	}
 }
