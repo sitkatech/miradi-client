@@ -29,8 +29,7 @@ public class ObjectClassificationChoiceField extends ObjectChoiceField
 		ChoiceItem taxonomyItem = getTaxonomyItem(combo);
 		if(taxonomyItem != null)
 		{
-			setNeedsSave();
-			saveIfNeeded();
+			saveSelection();
 		}
 	}
 	
