@@ -9,8 +9,8 @@ import java.awt.Color;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -32,9 +32,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		table = new UiTable(new DefaultTableModel(data,names));
 		addFocusListener();
 		table.setRowHeight(20);
-		TableChangeHandler listener = new TableChangeHandler();
-	    table.getSelectionModel().addListSelectionListener(listener);
-
+	    table.getModel().addTableModelListener(new TableChangeHandler());
 	}
 
 	private String[] getColumnNames(ChoiceQuestion questionToUse)
@@ -116,12 +114,12 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		saveIfNeeded();
 	}
 	
-	class TableChangeHandler implements ListSelectionListener
+	class TableChangeHandler implements TableModelListener
 	{
-		public void valueChanged(ListSelectionEvent e)
+		public void tableChanged(TableModelEvent arg0)
 		{
-			//System.out.println("HERE: valueChanged" + e.getSource() );
 			saveSelection();
+
 		}
 	}
 	ChoiceQuestion question;
