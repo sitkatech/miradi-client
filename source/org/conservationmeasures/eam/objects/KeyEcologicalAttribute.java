@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.conservationmeasures.eam.utils.StringMapData;
 
 public class KeyEcologicalAttribute extends EAMBaseObject
 {
@@ -33,12 +32,10 @@ public class KeyEcologicalAttribute extends EAMBaseObject
 		indicatorIds = new IdListData();
 		description = new StringData();
 		keyEcologicalAttributeType = new StringData();
-		indicatorThreshold = new StringMapData();
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);
 		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, keyEcologicalAttributeType);
-		addField(TAG_INDICATOR_THRESHOLDS, indicatorThreshold);
 	}
 	
 	public int getType()
@@ -54,11 +51,10 @@ public class KeyEcologicalAttribute extends EAMBaseObject
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_DESCRIPTION = "Description";
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
-	public static final String TAG_INDICATOR_THRESHOLDS = "IndicatorThresholds";
-	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
+	
+	public static final String OBJECT_NAME = "Key Ecological Attribute";
 	
 	IdListData indicatorIds;
 	StringData description;
 	StringData keyEcologicalAttributeType;
-	StringMapData indicatorThreshold;
 }

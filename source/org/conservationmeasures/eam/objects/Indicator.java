@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.utils.StringMapData;
 
 public class Indicator extends EAMBaseObject
 {
@@ -54,11 +55,13 @@ public class Indicator extends EAMBaseObject
 		priority = new RatingData();
 		status = new RatingData();
 		taskIds = new IdListData();
+		indicatorThreshold = new StringMapData();
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
 		addField(TAG_TASK_IDS, taskIds);
+		addField(TAG_INDICATOR_THRESHOLDS, indicatorThreshold);
 	}
 	
 	public int getType()
@@ -88,6 +91,7 @@ public class Indicator extends EAMBaseObject
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public static final String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
 	public static final String PSEUDO_TAG_METHODS = "PseudoTagMethods";
+	public static final String TAG_INDICATOR_THRESHOLDS = "IndicatorThresholds";
 	
 	public static final String OBJECT_NAME = "Indicator";
 
@@ -95,4 +99,5 @@ public class Indicator extends EAMBaseObject
 	RatingData priority;
 	RatingData status;
 	IdListData taskIds;
+	StringMapData indicatorThreshold;
 }
