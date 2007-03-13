@@ -40,7 +40,7 @@ public class StringMapData extends ObjectData
 		while (iterator.hasNext())
 		{
 			String key = (String)iterator.next();
-			add(key, get(key));
+			add(key, (String)array.get(key));
 		}
 	}
 
