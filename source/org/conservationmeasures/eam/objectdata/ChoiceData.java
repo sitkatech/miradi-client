@@ -6,14 +6,14 @@
 package org.conservationmeasures.eam.objectdata;
 
 
-public class RatingData extends StringData
+public class ChoiceData extends StringData
 {
-	public RatingData()
+	public ChoiceData()
 	{
 		super();
 	}
 	
-	public RatingData(String newValue) throws Exception
+	public ChoiceData(String newValue) throws Exception
 	{
 		this();
 		set(newValue);

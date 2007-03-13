@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.NumberData;
-import org.conservationmeasures.eam.objectdata.RatingData;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -67,7 +67,7 @@ public class ProjectResource extends EAMBaseObject
 		phoneNumber = new StringData();
 		email = new StringData();
 		costPerUnit = new NumberData();
-		costUnit = new RatingData();
+		costUnit = new ChoiceData();
 		organization = new StringData();
 		roleCodes = new CodeListData();
 		comments = new StringData();
@@ -102,7 +102,7 @@ public class ProjectResource extends EAMBaseObject
 	StringData phoneNumber;
 	StringData email;
 	NumberData costPerUnit;
-	RatingData costUnit;
+	ChoiceData costUnit;
 	StringData organization;
 	CodeListData roleCodes;
 	StringData comments;

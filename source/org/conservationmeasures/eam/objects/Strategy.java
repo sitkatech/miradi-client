@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.conservationmeasures.eam.objectdata.RatingData;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StrategyCostQuestion;
@@ -131,10 +131,10 @@ public class Strategy extends Factor
 		super.clear();
 		activityIds = new IdListData();
 		taxonomyCode = new StringData();
-		impactRating = new RatingData();
-		durationRating = new RatingData();
-		feasibilityRating = new RatingData();
-		costRating = new RatingData();
+		impactRating = new ChoiceData();
+		durationRating = new ChoiceData();
+		feasibilityRating = new ChoiceData();
+		costRating = new ChoiceData();
 		shortLabel = new StringData();
 		
 		addField(TAG_ACTIVITY_IDS, activityIds);
@@ -163,8 +163,8 @@ public class Strategy extends Factor
 	StringData shortLabel;
 	IdListData activityIds;
 	StringData taxonomyCode;
-	RatingData impactRating;
-	RatingData durationRating;
-	RatingData feasibilityRating;
-	RatingData costRating;
+	ChoiceData impactRating;
+	ChoiceData durationRating;
+	ChoiceData feasibilityRating;
+	ChoiceData costRating;
 }

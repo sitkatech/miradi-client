@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
-import org.conservationmeasures.eam.objectdata.RatingData;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -125,7 +125,7 @@ public class ObjectTestCase extends EAMTestCase
 			list.add("A","RolaA");
 			return list.toString();
 		}
-		else if(field instanceof RatingData)
+		else if(field instanceof ChoiceData)
 		{
 			return "3";
 		}

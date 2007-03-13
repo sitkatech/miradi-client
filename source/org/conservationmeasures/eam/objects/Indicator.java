@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.conservationmeasures.eam.objectdata.RatingData;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -52,8 +52,8 @@ public class Indicator extends EAMBaseObject
 	{
 		super.clear();
 		shortLabel = new StringData();
-		priority = new RatingData();
-		status = new RatingData();
+		priority = new ChoiceData();
+		status = new ChoiceData();
 		taskIds = new IdListData();
 		indicatorThreshold = new StringMapData();
 
@@ -96,8 +96,8 @@ public class Indicator extends EAMBaseObject
 	public static final String OBJECT_NAME = "Indicator";
 
 	StringData shortLabel;
-	RatingData priority;
-	RatingData status;
+	ChoiceData priority;
+	ChoiceData status;
 	IdListData taskIds;
 	StringMapData indicatorThreshold;
 }

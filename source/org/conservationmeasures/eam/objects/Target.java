@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objectdata.RatingData;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -42,12 +42,12 @@ public class Target extends Factor
 	void clear()
 	{
 		super.clear();
-		targetStatus = new RatingData();
+		targetStatus = new ChoiceData();
 		
 		addField(TAG_TARGET_STATUS, targetStatus);
 	}
 	
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
 	public static final String OBJECT_NAME = "Target";
-	RatingData targetStatus;
+	ChoiceData targetStatus;
 }
