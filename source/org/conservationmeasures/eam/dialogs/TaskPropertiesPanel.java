@@ -69,13 +69,13 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		super.dispose();
 	}
 
-	public void setObjectId(Vector orefsToUse)
+	public void setObjectRefs(Vector orefsToUse)
 	{
-		super.setObjectId(orefsToUse);
+		super.setObjectRefs(orefsToUse);
 		if (orefsToUse.size()==0)
-			inputPanel.setObjectId(new ORef(ObjectType.FAKE,BaseId.INVALID));
+			inputPanel.setObjectRef(new ORef(ObjectType.FAKE,BaseId.INVALID));
 		else
-			inputPanel.setObjectId((ORef)orefsToUse.get(0));
+			inputPanel.setObjectRef((ORef)orefsToUse.get(0));
 	}
 	
 	

@@ -52,7 +52,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 				oref = selectedObject.getRef();
 				
 			}
-			propertiesPanel.setObjectId(oref);
+			propertiesPanel.setObjectRef(oref);
 			propertiesPanel.setFocusOnFirstField();
 		}
 		catch (Exception e)

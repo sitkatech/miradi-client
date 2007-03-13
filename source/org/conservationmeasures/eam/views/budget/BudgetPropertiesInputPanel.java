@@ -39,9 +39,9 @@ public class BudgetPropertiesInputPanel extends ObjectDataInputPanel
 		return EAM.text("Text|Budget properties");
 	}
 	
-	public void setObjectId(Vector orefsToUse)
+	public void setObjectRefs(Vector orefsToUse)
 	{
-		super.setObjectId(orefsToUse);
+		super.setObjectRefs(orefsToUse);
 		if (orefsToUse.size()==0)
 			tableEditorComponent.setTaskId(BaseId.INVALID);
 		else

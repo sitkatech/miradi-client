@@ -153,7 +153,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 			objects.insertElementAt(new ORef(object.getType(), object.getId()),0);
 		}
 		
-		propertiesPanel.setObjectId(objects);
+		propertiesPanel.setObjectRefs(objects);
 		mainWindow.getActions().updateActionStates();
 	}
 	

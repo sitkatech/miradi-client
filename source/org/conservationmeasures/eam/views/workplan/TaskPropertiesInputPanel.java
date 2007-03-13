@@ -49,9 +49,9 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	public void setObjectId(Vector orefsToUse)
+	public void setObjectRefs(Vector orefsToUse)
 	{
-		super.setObjectId(orefsToUse);
+		super.setObjectRefs(orefsToUse);
 		if (editorComponent == null)
 			return;
 		if (orefsToUse.size()==0)
