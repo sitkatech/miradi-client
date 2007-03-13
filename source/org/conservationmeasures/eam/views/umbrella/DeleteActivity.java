@@ -37,7 +37,7 @@ public class DeleteActivity extends ObjectsDoer
 		if ((getObjects().length != 1))
 			return false;
 		
-		if (!(getObjects()[0].getType() == ObjectType.TASK))
+		if (!(getSelectedObjectType() == ObjectType.TASK))
 			return false;
 		
 		return true;

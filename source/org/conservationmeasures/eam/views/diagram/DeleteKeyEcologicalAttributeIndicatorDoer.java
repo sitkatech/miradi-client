@@ -29,7 +29,7 @@ public class DeleteKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 		if ((getObjects().length != 1))
 			return false;
 		
-		if (!(getObjects()[0].getType() == ObjectType.INDICATOR))
+		if (!(getSelectedObjectType() == ObjectType.INDICATOR))
 			return false;
 		
 		return true;

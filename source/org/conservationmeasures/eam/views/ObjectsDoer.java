@@ -50,6 +50,12 @@ abstract public class ObjectsDoer extends ViewDoer
 		return objectIds;
 	}
 
+	
+	public int getSelectedObjectType() 
+	{
+		return getObjects()[0].getType();
+	}
+	
 	public BaseId getSelectedId()
 	{
 		EAMObject selected = getObjects()[0];

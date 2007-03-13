@@ -16,7 +16,7 @@ public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 		if (getObjects().length != 1)
 			return false;
 		
-		if (getObjects()[0].getType() != ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+		if (getSelectedObjectType() != ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			return false;
 		
 		return true;
