@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import java.awt.Color;
 
 public class KeyEcologicalAttributeTypeQuestion extends ChoiceQuestion
 {
@@ -17,10 +16,10 @@ public class KeyEcologicalAttributeTypeQuestion extends ChoiceQuestion
 	static ChoiceItem[] getKEATypeChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem("1", "Size", COLOR_1_OF_4),
-			new ChoiceItem("2", "Condition", COLOR_2_OF_4),
-			new ChoiceItem("3", "LandScape", COLOR_3_OF_4),
+			new ChoiceItem("", "Not Specified"),
+			new ChoiceItem("1", "Size"),
+			new ChoiceItem("2", "Condition"),
+			new ChoiceItem("3", "LandScape"),
 		};
 	}
 
