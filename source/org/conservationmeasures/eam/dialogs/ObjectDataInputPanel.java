@@ -78,8 +78,6 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return project;
 	}
 	
-
-	//FIXME: should me shold not rely on existing OREF....change setObjectId to take an ORef
 	public void setObjectId(ORef oref)
 	{
 		setObjectId(new Vector(Arrays.asList(new ORef[] {oref})));
