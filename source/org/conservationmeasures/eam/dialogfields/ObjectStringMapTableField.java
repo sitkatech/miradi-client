@@ -42,6 +42,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		for (int i=0; i<items.length-1; ++i)
 		{
 			names[i] = items[i].getLabel();
+			names[i] = "XXXXXXXXXXXXXXXXXXX";
 		}
 		return names;
 	}
@@ -59,11 +60,10 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 			ChoiceItem[] items = question.getChoices();
 			for(int i=0; i < items.length - 1; ++i)
 			{
-				String code = items[i].getCode();
+				String code = items[i+1].getCode();
 				String value = (String) table.getModel().getValueAt(0, i);
 				data.add(code, (value==null)?"":value);
 			}
-			//System.out.println("HERE getText saving data:" + data.get());
 			return data.get();
 		}
 		catch(Exception e)
@@ -77,14 +77,12 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	{
 		try
 		{
-		//	System.out.println("HERE setText:" + dataString);
 			StringMapData data = new StringMapData(dataString);
 			ChoiceItem[] items = question.getChoices();
 			for(int i=0; i < items.length - 1; ++i)
 			{
-				String code = items[i].getCode();
+				String code = items[i+1].getCode();
 				table.getModel().setValueAt(data.get(code), 0, i);
-				//System.out.println("HERE seting:" + data.get(code) + " at col=" + (i));
 			}
 		}
 		catch(Exception e)
@@ -116,10 +114,16 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	
 	class TableChangeHandler implements TableModelListener
 	{
+		//FIXME: should be a better way to stop loop....maybe do save only in fouse change?
+		boolean skip = true;
 		public void tableChanged(TableModelEvent arg0)
 		{
-			saveSelection();
-
+			if (skip) 
+			{
+				skip = false;
+				saveSelection();
+				skip = true;
+			}
 		}
 	}
 	ChoiceQuestion question;
