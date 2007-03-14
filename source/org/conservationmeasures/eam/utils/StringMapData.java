@@ -33,6 +33,7 @@ public class StringMapData extends ObjectData
 
 	private void copyFromJson(EnhancedJsonObject json)
 	{
+		data.clear();
 		EnhancedJsonObject array = json.optJson(TAG_STRING_MAP);
 		if(array == null)
 			array = new EnhancedJsonObject();

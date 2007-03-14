@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.StringMapData;
 import org.martus.util.DirectoryUtils;
+import org.martus.util.MultiCalendar;
 
 public class ObjectTestCase extends EAMTestCase
 {
@@ -128,6 +130,10 @@ public class ObjectTestCase extends EAMTestCase
 		else if(field instanceof ChoiceData)
 		{
 			return "3";
+		}
+		else if(field instanceof DateData)
+		{
+			return MultiCalendar.createFromGregorianYearMonthDay(1953, 10, 21).toString();
 		}
 		
 		return tag + tag;

@@ -56,6 +56,7 @@ public class Indicator extends EAMBaseObject
 		priority = new ChoiceData();
 		status = new ChoiceData();
 		taskIds = new IdListData();
+		goalIds = new IdListData();
 		indicatorThreshold = new StringMapData();
 		measurementThrend= new ChoiceData();
 		measurementStatus= new ChoiceData();
@@ -67,6 +68,7 @@ public class Indicator extends EAMBaseObject
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
 		addField(TAG_TASK_IDS, taskIds);
+		addField(TAG_GOAL_IDS, goalIds);
 		addField(TAG_INDICATOR_THRESHOLDS, indicatorThreshold);
 		addField(TAG_MEASUREMENT_TREND, measurementThrend);
 		addField(TAG_MEASUREMENT_STATUS, measurementStatus);
@@ -96,6 +98,7 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_PRIORITY = "Priority";
 	public static final String TAG_STATUS = "Status";
 	public final static String TAG_TASK_IDS = "TaskIds";
+	public final static String TAG_GOAL_IDS = "GoalIds";
 	public static final String TAG_INDICATOR_THRESHOLDS = "IndicatorThresholds";
 	public static final String TAG_MEASUREMENT_TREND = "MeasurementTrend";
 	public static final String TAG_MEASUREMENT_STATUS  = "MeasurementStatus";
@@ -122,4 +125,5 @@ public class Indicator extends EAMBaseObject
 	DateData measurementDate;
 	StringData measurementSummary;
 	StringData measurementDetail;
+	IdListData goalIds;
 }
