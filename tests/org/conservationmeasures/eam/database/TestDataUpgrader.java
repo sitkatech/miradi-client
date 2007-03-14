@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -16,6 +17,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -627,23 +629,81 @@ public class TestDataUpgrader extends EAMTestCase
 	
 	public void testCreateDiagramFactorLinksFromRawFactorLinks() throws Exception
 	{
-		//TODO finish test method
-		//String factorLink = " {\"ToId\":28,\"FromId\":29,\"StressLabel\":\"\",\"Label\":\"\",\"Id\":30} ";
+		String factorLink1 ="{\"FromId\":\"28\",\"ToId\":\"29\",\"Label\":\"\",\"StressLabel\":\"\",\"Id\":56}";
+		String factorLink2 ="{\"FromId\":\"30\",\"ToId\":\"31\",\"Label\":\"\",\"StressLabel\":\"\",\"Id\":57}";
+		int[] factorLinkIds = new int[2];
+		factorLinkIds[0] = 56;
+		factorLinkIds[1] = 57;
+		
+		HashMap factorToDiamgramFactorIdMap = new HashMap();
+		factorToDiamgramFactorIdMap.put(new Integer(28), new Integer(91));
+		factorToDiamgramFactorIdMap.put(new Integer(29), new Integer(92));
+	
+		factorToDiamgramFactorIdMap.put(new Integer(30), new Integer(93));
+		factorToDiamgramFactorIdMap.put(new Integer(31), new Integer(94));
+		
+		
 		File jsonDir = new File(tempDirectory, "json");
 		jsonDir.mkdirs();
 
-		//HashMap hashMap = new HashMap();
-		//hashMap.put(new Integer(28), )
+		File objects6Dir = new File(jsonDir, "objects-6");
+		objects6Dir.mkdirs();
 		
+		File factor56File = new File(objects6Dir, "56");
+		createFile(factor56File, factorLink1);
+		assertTrue(factor56File.exists());
+		
+		File factor57File = new File(objects6Dir, "57");
+		createFile(factor57File, factorLink2);
+		assertTrue(factor57File.exists());
+		
+		String manifestContent = buildManifestContents(factorLinkIds);
+		File manifestFile = new File(objects6Dir, "manifest");
+		createFile(manifestFile, manifestContent);
+		assertTrue(manifestFile.exists());
+		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":134}");
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.createDiagramFactorLinksFromRawFactorLinks(factorToDiamgramFactorIdMap);
+		
+		File objects13Dir = new File(jsonDir, "objects-13");
+		assertTrue("objects-13 dir does not exist?", objects13Dir.exists());
+		
+		File manifest13File = new File(objects13Dir, "manifest");
+		assertTrue("manifest exists?", manifest13File.exists());
+		
+		File file1 = new File(objects13Dir, "135");
+		assertTrue("diagram link file 135 exists?", file1.exists());
+		
+		EnhancedJsonObject json1 = new EnhancedJsonObject(readFile(file1));
+		DiagramFactorLink diagramLink = new DiagramFactorLink(135, json1);
+		assertEquals("same wrapped id?", 57, diagramLink.getWrappedId().asInt());
+		String fromDiagramLinkId = diagramLink.getData(DiagramFactorLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+		String toDiagramLinkId = diagramLink.getData(DiagramFactorLink.TAG_TO_DIAGRAM_FACTOR_ID);
+		assertEquals("same from diagram link id?", Integer.toString(93), fromDiagramLinkId);
+		assertEquals("same from diagram link id?", Integer.toString(94), toDiagramLinkId);
+	
+		
+		File file2 = new File(objects13Dir, "136");
+		assertTrue("diagram link file 136 exists?", file2.exists());
+		
+		EnhancedJsonObject json2 = new EnhancedJsonObject(readFile(file2));
+		DiagramFactorLink diagramLink2 = new DiagramFactorLink(136, json2);
+		assertEquals("same wrapped id?", 56, diagramLink2.getWrappedId().asInt());
+		String fromDiagramLinkId2 = diagramLink2.getData(DiagramFactorLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+		String toDiagramLinkId2 = diagramLink2.getData(DiagramFactorLink.TAG_TO_DIAGRAM_FACTOR_ID);
+		assertEquals("same from diagram link id?", Integer.toString(91), fromDiagramLinkId2);
+		assertEquals("same from diagram link id?", Integer.toString(92), toDiagramLinkId2);
+	
+	
 	}
 	
 	public void testCreateDiagramFactorsFromRawFactors() throws Exception
 	{
- 
-		
-		String allFactorInfos = " {\"Nodes\":{\"28\":{\"Size\":{\"Width\":120,\"Height\":60},\"WrappedId\":28,\"Location\":{\"Y\":270,\"X\":120},\"Id\":28},\"29\":{\"Size\":{\"Width\":151,\"Height\":60},\"WrappedId\":29,\"Location\":{\"Y\":15,\"X\":375},\"Id\":29}},\"Type\":\"Diagram\"}  ";
-		String expected28Content = "{\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"WrappedFactorId\":\"28\",\"Location\":\"{\\\"Y\\\":270,\\\"X\\\":120}\",\"Id\":91}";
-		String expected29Content = "{\"Size\":\"{\\\"Width\\\":151,\\\"Height\\\":60}\",\"WrappedFactorId\":\"29\",\"Location\":\"{\\\"Y\\\":15,\\\"X\\\":375}\",\"Id\":92}";
+ 		String allFactorInfos = " {\"Nodes\":{\"28\":{\"Size\":{\"Width\":120,\"Height\":60},\"WrappedId\":28,\"Location\":{\"Y\":270,\"X\":120},\"Id\":28},\"29\":{\"Size\":{\"Width\":151,\"Height\":60},\"WrappedId\":29,\"Location\":{\"Y\":15,\"X\":375},\"Id\":29}},\"Type\":\"Diagram\"}  ";
+		String expected91Content = "{\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"WrappedFactorId\":\"28\",\"Location\":\"{\\\"Y\\\":270,\\\"X\\\":120}\",\"Id\":91}";
+		String expected92Content = "{\"Size\":\"{\\\"Width\\\":151,\\\"Height\\\":60}\",\"WrappedFactorId\":\"29\",\"Location\":\"{\\\"Y\\\":15,\\\"X\\\":375}\",\"Id\":92}";
 		String expectedManifestContent = "{\"Type\":\"ObjectManifest\",\"91\":true,\"92\":true}";
 		
 		File jsonDir = new File(tempDirectory, "json");
@@ -658,56 +718,27 @@ public class TestDataUpgrader extends EAMTestCase
 		File diagramMainFile = new File(diagramsDir, "main");
 		createFile(diagramMainFile, allFactorInfos);
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(jsonDir);
-		dataUpgrader.upgradeToVersion16();
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.createDiagramFactorsFromRawFactors();
 		
 		File objects18Dir = new File(jsonDir, "objects-18");
 		assertTrue("objects-18 dir does not exist?", objects18Dir.exists());
 		
 		File file1 = new File(objects18Dir, "91");
 		File file2 = new File(objects18Dir, "92");
-		assertTrue("file 28 exists?", file1.exists());
-		assertTrue("file 29 exists?", file2.exists());
+		assertTrue("file 91 exists?", file1.exists());
+		assertTrue("file 92 exists?", file2.exists());
 		
 		//TODO create the Json and compare each item within the json.
-		String file28Content = readFile(file1);
-		String file29Content = readFile(file2);
-		assertEquals("file 28 content the same?", expected28Content.trim(), file28Content.trim());
-		assertEquals("file 29 content the same?", expected29Content.trim(), file29Content.trim());
+		String file91Content = readFile(file1);
+		String file92Content = readFile(file2);
+		assertEquals("file 91 content the same?", expected91Content.trim(), file91Content.trim());
+		assertEquals("file 92 content the same?", expected92Content.trim(), file92Content.trim());
 		
 		File manifestFile = new File(objects18Dir, "manifest");
 		String migratedManifestContents = readFile(manifestFile);
 		assertTrue("has manifest file?", manifestFile.exists());
 		assertEquals("manifests has same content?", expectedManifestContent.trim(), migratedManifestContents.trim());
-		
-//TODO remove comments after being done with migration of diagramfactors and dLinks
-//File objects13Dir = new File(jsonDir, "objects-13");
-//assertTrue("objects-13 dir does not exist?", objects13Dir.exists());
-//		
-//		
-//		final int wrappedId28 = 28; 
-//		final Dimension size28 = new Dimension(120, 60);
-//		final Point location28 = new Point(120, 270);
-//		
-//		final int wrappedId66 = 66;
-//		final Dimension size66 = new Dimension(151, 60);
-//		final Point location66 = new Point(375, 15);
-
-//		String readDiagramMain = readFile(diagramMainFile);
-//		EnhancedJsonObject readIn = new EnhancedJsonObject(readDiagramMain);
-//		EnhancedJsonObject nodes = new EnhancedJsonObject(readIn.getString("Nodes"));
-//
-//		EnhancedJsonObject ids28 = new EnhancedJsonObject(nodes.getString(new Integer(allObjectIds[0]).toString()));
-//		assertEquals(allObjectIds[0], ids28.getId("Id").asInt());
-//		assertEquals(location28, ids28.getPoint(DiagramFactor.TAG_LOCATION));
-//		assertEquals(size28, ids28.getDimension(DiagramFactor.TAG_SIZE));
-//		assertEquals(wrappedId28, ids28.getId("WrappedId").asInt());
-//
-//		EnhancedJsonObject ids66 = new EnhancedJsonObject(nodes.getString(new Integer(allObjectIds[1]).toString()));
-//		assertEquals(allObjectIds[1], ids66.getId("Id").asInt());
-//		assertEquals(location66, ids66.getPoint(DiagramFactor.TAG_LOCATION));
-//		assertEquals(size66, ids66.getDimension(DiagramFactor.TAG_SIZE));
-//		assertEquals(wrappedId66, ids66.getId("WrappedId").asInt());
 	}
 
 	private EnhancedJsonObject createDiagramNodeJson(int id)
@@ -732,7 +763,7 @@ public class TestDataUpgrader extends EAMTestCase
 		return contents;
 	}
 	
-	String buildManifestContents(IdList idList)
+	public String buildManifestContents(IdList idList)
 	{
 		int[] ids = new int[idList.size()];
 		for(int i = 0; i < ids.length; ++i)
@@ -740,7 +771,7 @@ public class TestDataUpgrader extends EAMTestCase
 		return buildManifestContents(ids);
 	}
 	
-	String buildManifestContents(int[] ids)
+	public String buildManifestContents(int[] ids)
 	{
 		String contents = "{\"Type\":\"NodeManifest\"";
 		for(int i = 0; i < ids.length; ++i)

@@ -118,8 +118,8 @@ public class DataUpgrader extends ProjectServer
 	
 		//FIXME remove comments after links have been added to the migration.  
 		// this code is commented so that older projects are not corrupted on accident
-		//if (readDataVersion(getTopDirectory()) == 15)
-		//	upgradeToVersion16();
+		if (readDataVersion(getTopDirectory()) == 15)
+			upgradeToVersion16();
 		
 	}
 
@@ -127,35 +127,84 @@ public class DataUpgrader extends ProjectServer
 	{
 		HashMap mappedFactorIds = createDiagramFactorsFromRawFactors();
 		createDiagramFactorLinksFromRawFactorLinks(mappedFactorIds);
+		writeVersion(16);
 	}
 	
-	public void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds)
+	public void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds) throws Exception
 	{
-		//TODO finish method
-		//File objects18Dir = new File(topDirectory, "objects-13");
+		File jsonDir = new File(topDirectory, "json");
+		File objects13Dir = new File(jsonDir, "objects-13");
+		if (objects13Dir.exists())
+			throw new RuntimeException("objects-13 directory already exists " + objects13Dir.getAbsolutePath());
+		
+		objects13Dir.mkdirs();
+		int highestId = readHighestIdInProjectFile(jsonDir);
+		
+		File objects6Dir = new File(jsonDir, "objects-6");
+		if (! objects6Dir.exists())
+			throw new RuntimeException("objects-6 directory does not exist. " + objects6Dir.getAbsolutePath());
+		
+		File manifestFor6File = new File(objects6Dir, "manifest");
+		if (! manifestFor6File.exists())
+			//TODO should it just retunr; instead of runtimeexception
+			throw new RuntimeException("could not find manifest file: "+manifestFor6File.getAbsolutePath());
+		
+		ObjectManifest manifest = new ObjectManifest(JSONFile.read(manifestFor6File));
+		String manifest13Contents = "{\"Type\":\"ObjectManifest\"";
+		BaseId[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			highestId++;
+			manifest13Contents += ",\"" + highestId + "\":true";
+			File nodeFile = new File(objects6Dir, Integer.toString(ids[i].asInt()));
+			JSONObject factorLinkJson = JSONFile.read(nodeFile);
+			
+			int toFactorId = factorLinkJson.getInt("ToId");
+			int fromFactorId = factorLinkJson.getInt("FromId");
+			int wrappedId = factorLinkJson.getInt("Id");
+			int wrappedToId = ((Integer)mappedFactorIds.get(new Integer(toFactorId))).intValue();
+			int wrappedFromId = ((Integer)mappedFactorIds.get(new Integer(fromFactorId))).intValue();
+			
+			EnhancedJsonObject diagramFactorLinkJson = new EnhancedJsonObject();
+			diagramFactorLinkJson.put("WrappedLinkId", wrappedId);
+			diagramFactorLinkJson.put("Id", highestId);
+			diagramFactorLinkJson.put("ToDiagramFactorId", wrappedToId);
+			diagramFactorLinkJson.put("FromDiagramFactorId", wrappedFromId);
+			
+			File idFile = new File(objects13Dir, Integer.toString(highestId));
+			createFile(idFile, diagramFactorLinkJson.toString());
+		}
+		manifest13Contents += "}";
+		File manifestFile = new File(objects13Dir, "manifest");
+		createFile(manifestFile, manifest13Contents);
+		writeHighestIdToProjectFile(jsonDir, highestId);
 	}
 
 	public HashMap createDiagramFactorsFromRawFactors() throws Exception
 	{
-		File objects18Dir = new File(topDirectory, "objects-18");
+		File jsonDir = new File(topDirectory, "json");
+		File objects18Dir = new File(jsonDir, "objects-18");
 		if (objects18Dir.exists())
 			throw new RuntimeException("objects-18 directory already exists " + objects18Dir.getAbsolutePath());
 		
 		objects18Dir.mkdir();
 		
-		File diagramsDir =  new File(topDirectory, "diagrams");
+		//TODO the content of main file inside diagrams should be cleaned up.  
+		File diagramsDir =  new File(jsonDir, "diagrams");
 		File diagramMainFile = new File(diagramsDir, "main");
 		EnhancedJsonObject readIn = readFile(diagramMainFile);
 		EnhancedJsonObject nodes = new EnhancedJsonObject(readIn.getJson("Nodes"));
-		int highestId = readHighestIdInProjectFile();
+		int highestId = readHighestIdInProjectFile(jsonDir);
 		HashMap factorIdsMap = new HashMap();
-		String maniFestContents = "{\"Type\":\"ObjectManifest\"";
-		Iterator iter = nodes.keys();
+		String manifest18Contents = "{\"Type\":\"ObjectManifest\"";
+		IdList ids = new IdList();
 		
+		Iterator iter = nodes.keys();
 		while(iter.hasNext())
 		{
 			highestId++;
-			maniFestContents += ",\"" + highestId + "\":true";
+			ids.add(new BaseId(highestId));
+			manifest18Contents += ",\"" + highestId + "\":true";
 			String key = (String)iter.next();
 			EnhancedJsonObject oldDiagramFactor = nodes.getJson(key);
 			EnhancedJsonObject sizeJson = oldDiagramFactor.getJson("Size");
@@ -174,26 +223,29 @@ public class DataUpgrader extends ProjectServer
 			factorIdsMap.put(new Integer(wrappedId), new Integer(highestId));
 		}
 		
-		maniFestContents += "}";
+		readIn.put("DiagramFactorIds", ids.toJson());
+		writeJson(diagramMainFile, readIn);
+		
+		manifest18Contents += "}";
 		File manifestFile = new File(objects18Dir, "manifest");
-		createFile(manifestFile, maniFestContents);
-		writeHighestIdToProjectFile(highestId);
+		createFile(manifestFile, manifest18Contents);
+		writeHighestIdToProjectFile(jsonDir, highestId);
 		
 		return factorIdsMap;
 	}
 	
-	private int readHighestIdInProjectFile() throws Exception
+	private int readHighestIdInProjectFile(File dirToUse) throws Exception
 	{
-		File projectFile = new File(topDirectory, "project");
+		File projectFile = new File(dirToUse, "project");
 		EnhancedJsonObject readIn = readFile(projectFile);
 		int gotId = readIn.getInt("HighestUsedNodeId");
 		
 		return gotId;
 	}
 	
-	private void writeHighestIdToProjectFile(int highestIdToWrite) throws Exception
+	private void writeHighestIdToProjectFile(File dirToUse, int highestIdToWrite) throws Exception
 	{
-		File projectFile = new File(topDirectory, "project");
+		File projectFile = new File(dirToUse, "project");
 		EnhancedJsonObject readIn = readFile(projectFile);
 		readIn.put("HighestUsedNodeId", highestIdToWrite);
 		writeJson(projectFile, readIn);
