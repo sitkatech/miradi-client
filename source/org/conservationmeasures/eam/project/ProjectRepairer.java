@@ -231,7 +231,8 @@ public class ProjectRepairer
 				if(nodes.size() == 0)
 				{
 					EAM.logWarning("Deleting orphan " + annotationType + ":" + annotationId);
-					project.deleteObject(annotationType, annotationId);
+					//FIXME: restore this after ophan detectio nis reliable
+					//project.deleteObject(annotationType, annotationId);
 				}
 			}
 			catch(Exception e)

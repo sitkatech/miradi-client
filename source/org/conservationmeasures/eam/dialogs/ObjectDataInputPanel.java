@@ -279,15 +279,24 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	}
 	
 	
+	public static BaseId getObjectIdForTypeInThisList(int objectType, Vector orefsToUse)
+	{
+		for (int i=0; i<orefsToUse.size(); ++i)
+		{
+			ORef oref = (ORef) orefsToUse.get(i);
+			int type = oref.getObjectType();
+			if (objectType == type)
+				return  oref.getObjectId();
+		}
+		return BaseId.INVALID;
+	}
+	
+	
 	public ORef getORef(int index)
 	{
 		return (ORef) orefs.get(index);
 	}
 	
-	public void insertToOrefs(int index, ORef oref)
-	{
-		orefs.add(0, oref);
-	}
 	
 	public void saveModifiedFields()
 	{

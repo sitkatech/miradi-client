@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
@@ -47,26 +48,34 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 		addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DATE));
 		addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY));
 		addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL));
+		addField(createObjectChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
+		addField(createStringField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
+		addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY));
 		updateFieldsFromProject();
 	}
 	
-	public void setObjectRefs(Vector orefs)
+	public void setObjectRefs(Vector orefsToUse)
 	{
-		BaseId objectId = getObjectIdForType(ObjectType.INDICATOR);
-		if (!objectId.isInvalid())
+		BaseId objectId = getObjectIdForTypeInThisList(ObjectType.INDICATOR, orefsToUse);
+		if (objectId.isInvalid())
+		{
+			super.setObjectRefs(orefsToUse);
 			return;
+		}
 		Indicator indicator = (Indicator)getProject().findObject(ObjectType.INDICATOR, objectId);
 		try
 		{
 			IdList list = new IdList(indicator.getData(Indicator.TAG_GOAL_IDS));
 			if (list.size()!=0)
-				insertToOrefs(0,new ORef(ObjectType.GOAL,list.get(0)));
+				orefsToUse.insertElementAt(new ORef(ObjectType.GOAL,list.get(0)),0);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
+		super.setObjectRefs(orefsToUse);
 	}
+	
 
 	public String getPanelDescription()
 	{
