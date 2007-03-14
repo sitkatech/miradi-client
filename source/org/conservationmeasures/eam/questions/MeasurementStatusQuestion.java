@@ -5,8 +5,10 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
+import java.awt.Color;
 
-//FIXME: this should be combined wiht priority rating question and target status question
+
+//FIXME: this should be combined wiht  target status question
 public class MeasurementStatusQuestion extends ChoiceQuestion
 {
 	public MeasurementStatusQuestion(String tagToUse)
@@ -17,11 +19,11 @@ public class MeasurementStatusQuestion extends ChoiceQuestion
 	static ChoiceItem[] getTrendStatuses()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified"),
-				new ChoiceItem("1", "Poor"),
-				new ChoiceItem("2", "Fair"),
-				new ChoiceItem("3", "Good"),
-				new ChoiceItem("4", "Very Good"),
+				new ChoiceItem("", "Not Specified", Color.WHITE),
+				new ChoiceItem("1", "Poor", COLOR_1_OF_4),
+				new ChoiceItem("2", "Fair", COLOR_2_OF_4),
+				new ChoiceItem("3", "Good", COLOR_3_OF_4),
+				new ChoiceItem("4", "Very Good", COLOR_4_OF_4),
 		};
 	}
 }
