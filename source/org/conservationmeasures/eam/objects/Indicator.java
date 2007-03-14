@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
+import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -56,12 +57,22 @@ public class Indicator extends EAMBaseObject
 		status = new ChoiceData();
 		taskIds = new IdListData();
 		indicatorThreshold = new StringMapData();
+		measurementThrend= new ChoiceData();;
+		measurementStatus= new ChoiceData();;
+		measurementDate= new DateData();;
+		measurementSummary= new StringData();;
+		measurementDetail= new StringData();;
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
 		addField(TAG_TASK_IDS, taskIds);
 		addField(TAG_INDICATOR_THRESHOLDS, indicatorThreshold);
+		addField(TAG_MEASUREMENT_THREND, measurementThrend);
+		addField(TAG_MEASUREMENT_STATUS, measurementStatus);
+		addField(TAG_MEASUREMENT_DATE, measurementDate);
+		addField(TAG_MEASUREMENT_SUMMARY, measurementSummary);
+		addField(TAG_MEASUREMENT_DETAIL, measurementDetail);
 	}
 	
 	public int getType()
@@ -85,13 +96,19 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_PRIORITY = "Priority";
 	public static final String TAG_STATUS = "Status";
 	public final static String TAG_TASK_IDS = "TaskIds";
+	public static final String TAG_INDICATOR_THRESHOLDS = "IndicatorThresholds";
+	public static final String TAG_MEASUREMENT_THREND = "MeasurementThrend";
+	public static final String TAG_MEASUREMENT_STATUS  = "MeasurementStatus";
+	public static final String TAG_MEASUREMENT_DATE = "MeasurementDate";
+	public static final String TAG_MEASUREMENT_SUMMARY = "MeasurementSummary";
+	public static final String TAG_MEASUREMENT_DETAIL = "MeasurementDetail";
 	
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public static final String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
 	public static final String PSEUDO_TAG_METHODS = "PseudoTagMethods";
-	public static final String TAG_INDICATOR_THRESHOLDS = "IndicatorThresholds";
+
 	
 	public static final String OBJECT_NAME = "Indicator";
 
@@ -100,4 +117,9 @@ public class Indicator extends EAMBaseObject
 	ChoiceData status;
 	IdListData taskIds;
 	StringMapData indicatorThreshold;
+	ChoiceData measurementThrend;
+	ChoiceData measurementStatus;
+	DateData measurementDate;
+	StringData measurementSummary;
+	StringData measurementDetail;
 }

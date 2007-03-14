@@ -6,8 +6,10 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JComponent;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -19,6 +21,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.StringMapData;
+import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;
 
 public class ObjectStringMapTableField extends ObjectDataInputField
@@ -48,7 +51,12 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 
 	public JComponent getComponent()
 	{
-		return table;
+		UiScrollPane pane = new UiScrollPane(table);
+		pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		//FIXME: temp hack to force single row display
+		pane.setPreferredSize(new Dimension(table.getPreferredSize().width*2, table.getPreferredSize().height*2));
+		return pane;
 	}
 
 	public String getText()
@@ -84,7 +92,8 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 			for(int i=0; i < items.length - 1; ++i)
 			{
 				String code = items[i+1].getCode();
-				table.getModel().setValueAt(data.get(code), 0, i);
+				String value = data.get(code);
+				table.getModel().setValueAt((value==null)?"":value, 0, i);
 			}
 		}
 		catch(Exception e)

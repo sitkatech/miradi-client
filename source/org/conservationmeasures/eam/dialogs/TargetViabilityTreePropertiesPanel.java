@@ -16,7 +16,8 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
-import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.TrendQuestion;
+import org.conservationmeasures.eam.questions.TrendStatusQuestion;
 
 public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 {
@@ -37,7 +38,12 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 		addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
 		addField(createObjectChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
 		addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
-		addField(createObjectStringMapTableField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
+		addField(createObjectStringMapTableField(ObjectType.INDICATOR,  new TrendStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
+		addField(createObjectChoiceField(ObjectType.INDICATOR, new TrendStatusQuestion(Indicator.TAG_MEASUREMENT_STATUS)));  
+		addField(createObjectChoiceField(ObjectType.INDICATOR, new TrendQuestion(Indicator.TAG_MEASUREMENT_THREND)));
+		//addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DATE));
+		addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY));
+		addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL));
 		updateFieldsFromProject();
 
 	}
