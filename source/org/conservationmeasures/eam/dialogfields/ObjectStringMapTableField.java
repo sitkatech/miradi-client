@@ -69,7 +69,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 			{
 				String code = items[i+1].getCode();
 				String value = (String) table.getModel().getValueAt(0, i);
-				data.add(code, (value==null)?"":value);
+				data.add(code, value);
 			}
 			return data.get();
 		}
@@ -93,7 +93,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 			{
 				String code = items[i+1].getCode();
 				String value = data.get(code);
-				table.getModel().setValueAt((value==null)?"":value, 0, i);
+				table.getModel().setValueAt(value, 0, i);
 			}
 		}
 		catch(Exception e)

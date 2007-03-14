@@ -66,7 +66,10 @@ public class StringMapData extends ObjectData
 
 	public String get(String code)
 	{
-		return (String)data.get(code);
+		String value = (String)data.get(code);
+		if (value==null)
+			return "";
+		return value;
 	}
 
 	public String get()
