@@ -30,7 +30,6 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		
 		DateEditor dateEditor = new DateEditor();
 		dateChooser = new CustomDateChooser(dateEditor);
-		dateChooser.setDate(getStartDate(tag));
 		dateChooser.setDateFormatString("MM/dd/yyyy");
 
 		setDateChooserPreferredSizeWithPadding();
@@ -44,16 +43,6 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		dateChooser.setPreferredSize(preferredDimension);
 	}
 		
-	private Date getStartDate(String tag)
-	{
-		String storedDateString = project.getMetadata().getData(tag);
-		if (storedDateString.length() <= 0 )
-			return null;
-		
-		MultiCalendar calendar = MultiCalendar.createFromIsoDateString(storedDateString);
-		return calendar.getTime();
-	}
-
 	public String getPanelDescription()
 	{
 		return EAM.text("Date Chooser");
