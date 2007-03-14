@@ -90,6 +90,7 @@ import org.conservationmeasures.eam.utils.TestDateRange;
 import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
+import org.conservationmeasures.eam.utils.TestPointList;
 import org.conservationmeasures.eam.utils.TestStringMapData;
 import org.conservationmeasures.eam.utils.TestTaxonomyLoader;
 import org.conservationmeasures.eam.utils.TestTranslations;
@@ -198,7 +199,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProjectResource.class));
 		suite.addTest(new TestSuite(TestFundingSource.class));
 		suite.addTest(new TestSuite(TestAccountingCode.class));
-		
+		suite.addTest(new TestSuite(TestPointList.class));
 		
 		
 		// commands package
