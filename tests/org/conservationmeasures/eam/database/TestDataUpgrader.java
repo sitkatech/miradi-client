@@ -763,7 +763,7 @@ public class TestDataUpgrader extends EAMTestCase
 		return contents;
 	}
 	
-	public String buildManifestContents(IdList idList)
+	private String buildManifestContents(IdList idList)
 	{
 		int[] ids = new int[idList.size()];
 		for(int i = 0; i < ids.length; ++i)
@@ -771,7 +771,7 @@ public class TestDataUpgrader extends EAMTestCase
 		return buildManifestContents(ids);
 	}
 	
-	public String buildManifestContents(int[] ids)
+	private String buildManifestContents(int[] ids)
 	{
 		String contents = "{\"Type\":\"NodeManifest\"";
 		for(int i = 0; i < ids.length; ++i)

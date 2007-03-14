@@ -5,16 +5,18 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.awt.Point;
 import java.io.File;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
-import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -134,6 +136,13 @@ public class ObjectTestCase extends EAMTestCase
 		else if(field instanceof DateData)
 		{
 			return MultiCalendar.createFromGregorianYearMonthDay(1953, 10, 21).toString();
+		}
+		else if (field instanceof PointListData)
+		{
+			PointListData pointList = new PointListData();
+			pointList.add(new Point(-1, 55));
+			
+			return pointList.toString();
 		}
 		
 		return tag + tag;

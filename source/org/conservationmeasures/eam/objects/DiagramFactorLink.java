@@ -71,8 +71,6 @@ public class DiagramFactorLink extends EAMBaseObject
 			return fromId.get();
 		if(fieldTag.equals(TAG_TO_DIAGRAM_FACTOR_ID))
 			return toId.get();
-		if (fieldTag.equals(TAG_BEND_POINTS))
-			return bendPoints.get();
 		
 		return super.getData(fieldTag);
 	}
@@ -85,18 +83,18 @@ public class DiagramFactorLink extends EAMBaseObject
 			fromId.set(dataValue);
 		else if(fieldTag.equals(TAG_TO_DIAGRAM_FACTOR_ID))
 			toId.set(dataValue);
-		else if (fieldTag.equals(TAG_BEND_POINTS))
-			bendPoints.set(dataValue);
 		else 
 			super.setData(fieldTag, dataValue);
 	}
 
+	//FIXME add bend points to dataMap
 	public FactorLinkDataMap createLinkageDataMap() throws Exception
 	{
 		FactorLinkDataMap dataMap = new FactorLinkDataMap();
 		dataMap.setId(getDiagramLinkageId());
 		dataMap.setFromId(new DiagramFactorId(fromId.getId().asInt()));
 		dataMap.setToId(new DiagramFactorId(toId.getId().asInt()));
+		
 		
 		return dataMap;
 	}
@@ -109,7 +107,6 @@ public class DiagramFactorLink extends EAMBaseObject
 				new DiagramFactorId(toId.getId().asInt()));
 	}
 	
-	//TODO convert to new EAMObject.addField system
 	void clear()
 	{
 		super.clear();
@@ -118,6 +115,8 @@ public class DiagramFactorLink extends EAMBaseObject
 		fromId = new BaseIdData();
 		toId = new BaseIdData();
 		bendPoints = new PointListData();
+		
+		addField(TAG_BEND_POINTS, bendPoints);
 	}
 	
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";

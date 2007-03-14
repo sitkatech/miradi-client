@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objectdata;
 
 import java.awt.Point;
-import java.text.ParseException;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.PointList;
@@ -25,13 +24,13 @@ public class PointListData extends ObjectData
 		{
 			set(valueToUse);
 		}
-		catch (ParseException e)
+		catch (Exception e)
 		{
 			EAM.logDebug("PointListData ignoring invalid: " + valueToUse);
 		}
 	}
 
-	public void set(String newValue) throws ParseException
+	public void set(String newValue) throws Exception
 	{
 		set(new PointList(newValue));
 	}
@@ -84,7 +83,6 @@ public class PointListData extends ObjectData
 	{
 		return points.hashCode();
 	}
-	
 	
 	PointList points;
 }

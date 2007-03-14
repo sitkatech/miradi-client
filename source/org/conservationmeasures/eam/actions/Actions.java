@@ -256,6 +256,7 @@ public class Actions
 		registerAction(new ActionJumpDiagramOverviewStep(mainWindow));
 		registerAction(new ActionJumpWorkPlanOverviewStep(mainWindow));
 		registerAction(new ActionExportBudgetTableTree(mainWindow));
+		registerAction(new ActionCreateBendPoint(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

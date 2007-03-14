@@ -29,7 +29,7 @@ public class TestPointList extends EAMTestCase
 		assertEquals("bad get 2?", point2, list.get(1));
 	}
 	
-	public void testJson()
+	public void testJson() throws Exception
 	{
 		PointList list = createSamplePointList();
 		EnhancedJsonObject json = list.toJson();

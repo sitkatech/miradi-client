@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.utils;
 
 import java.awt.Point;
-import java.text.ParseException;
 import java.util.List;
 import java.util.Vector;
 
@@ -22,7 +21,7 @@ public class PointList
 		this(new Vector(copyFrom.data));
 	}
 	
-	public PointList(EnhancedJsonObject json)
+	public PointList(EnhancedJsonObject json) throws Exception
 	{
 		this();
 		EnhancedJsonArray array = json.optJsonArray(TAG_POINTS);
@@ -30,10 +29,13 @@ public class PointList
 			array = new EnhancedJsonArray();
 		
 		for(int i = 0; i < array.length(); ++i)
-			add((Point)array.get(i));
+		{
+			Point point = EnhancedJsonObject.convertToPoint(array.getString(i));
+			add(point);
+		}
 	}
 	
-	public PointList(String listAsJsonString) throws ParseException
+	public PointList(String listAsJsonString) throws Exception
 	{
 		this(new EnhancedJsonObject(listAsJsonString));
 	}
@@ -91,7 +93,10 @@ public class PointList
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		EnhancedJsonArray array = new EnhancedJsonArray();
 		for(int i = 0; i < size(); ++i)
-			array.put(get(i));
+		{
+			String pointAsString = EnhancedJsonObject.convertFromPoint(get(i));
+			array.put(pointAsString);
+		}
 		json.put(TAG_POINTS, array);
 
 		return json;
