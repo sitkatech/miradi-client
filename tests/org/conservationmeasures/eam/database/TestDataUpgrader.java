@@ -625,20 +625,32 @@ public class TestDataUpgrader extends EAMTestCase
 		
 	}
 	
-	public void testCreateObjectsFromJson() throws Exception
+	public void testCreateDiagramFactorLinksFromRawFactorLinks() throws Exception
 	{
-		//TODO use when convertin factor links to diagram factor links
-		//String factorLink = " {\"ToId\":28,\"FromId\":29,\"StressLabel\":\"\",\"Label\":\"\",\"Id\":30} "; 
+		//TODO finish test method
+		//String factorLink = " {\"ToId\":28,\"FromId\":29,\"StressLabel\":\"\",\"Label\":\"\",\"Id\":30} ";
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
+
+		//HashMap hashMap = new HashMap();
+		//hashMap.put(new Integer(28), )
+		
+	}
+	
+	public void testCreateDiagramFactorsFromRawFactors() throws Exception
+	{
+ 
+		
 		String allFactorInfos = " {\"Nodes\":{\"28\":{\"Size\":{\"Width\":120,\"Height\":60},\"WrappedId\":28,\"Location\":{\"Y\":270,\"X\":120},\"Id\":28},\"29\":{\"Size\":{\"Width\":151,\"Height\":60},\"WrappedId\":29,\"Location\":{\"Y\":15,\"X\":375},\"Id\":29}},\"Type\":\"Diagram\"}  ";
-		String expected28Content = "{\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"WrappedFactorId\":\"28\",\"Location\":\"{\\\"Y\\\":270,\\\"X\\\":120}\",\"Id\":28}";
-		String expected29Content = "{\"Size\":\"{\\\"Width\\\":151,\\\"Height\\\":60}\",\"WrappedFactorId\":\"29\",\"Location\":\"{\\\"Y\\\":15,\\\"X\\\":375}\",\"Id\":29}";
-		String expectedManifestContent = "{\"Type\":\"ObjectManifest\",\"28\":true,\"29\":true}";
+		String expected28Content = "{\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"WrappedFactorId\":\"28\",\"Location\":\"{\\\"Y\\\":270,\\\"X\\\":120}\",\"Id\":91}";
+		String expected29Content = "{\"Size\":\"{\\\"Width\\\":151,\\\"Height\\\":60}\",\"WrappedFactorId\":\"29\",\"Location\":\"{\\\"Y\\\":15,\\\"X\\\":375}\",\"Id\":92}";
+		String expectedManifestContent = "{\"Type\":\"ObjectManifest\",\"91\":true,\"92\":true}";
 		
 		File jsonDir = new File(tempDirectory, "json");
 		jsonDir.mkdirs();
 		
 		File projectFile = new File(jsonDir, "project");
-		createFile(projectFile, "{\"HighestUsedNodeId\":27}");
+		createFile(projectFile, "{\"HighestUsedNodeId\":90}");
 		
 		File diagramsDir =  new File(jsonDir, "diagrams");
 		diagramsDir.mkdirs();
@@ -652,13 +664,14 @@ public class TestDataUpgrader extends EAMTestCase
 		File objects18Dir = new File(jsonDir, "objects-18");
 		assertTrue("objects-18 dir does not exist?", objects18Dir.exists());
 		
-		File file28 = new File(objects18Dir, "28");
-		File file29 = new File(objects18Dir, "29");
-		assertTrue("Id 28 exists?", file28.exists());
-		assertTrue("Id 29 exists?", file29.exists());
+		File file1 = new File(objects18Dir, "91");
+		File file2 = new File(objects18Dir, "92");
+		assertTrue("file 28 exists?", file1.exists());
+		assertTrue("file 29 exists?", file2.exists());
 		
-		String file28Content = readFile(file28);
-		String file29Content = readFile(file29);
+		//TODO create the Json and compare each item within the json.
+		String file28Content = readFile(file1);
+		String file29Content = readFile(file2);
 		assertEquals("file 28 content the same?", expected28Content.trim(), file28Content.trim());
 		assertEquals("file 29 content the same?", expected29Content.trim(), file29Content.trim());
 		
@@ -666,7 +679,6 @@ public class TestDataUpgrader extends EAMTestCase
 		String migratedManifestContents = readFile(manifestFile);
 		assertTrue("has manifest file?", manifestFile.exists());
 		assertEquals("manifests has same content?", expectedManifestContent.trim(), migratedManifestContents.trim());
-		
 		
 //TODO remove comments after being done with migration of diagramfactors and dLinks
 //File objects13Dir = new File(jsonDir, "objects-13");

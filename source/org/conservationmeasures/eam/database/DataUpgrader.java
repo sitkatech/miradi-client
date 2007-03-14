@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -124,10 +125,17 @@ public class DataUpgrader extends ProjectServer
 
 	public void upgradeToVersion16() throws Exception
 	{
-		createDiagramFactorsFromRawFactors();
+		HashMap mappedFactorIds = createDiagramFactorsFromRawFactors();
+		createDiagramFactorLinksFromRawFactorLinks(mappedFactorIds);
 	}
 	
-	public void createDiagramFactorsFromRawFactors() throws Exception
+	public void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds)
+	{
+		//TODO finish method
+		//File objects18Dir = new File(topDirectory, "objects-13");
+	}
+
+	public HashMap createDiagramFactorsFromRawFactors() throws Exception
 	{
 		File objects18Dir = new File(topDirectory, "objects-18");
 		if (objects18Dir.exists())
@@ -140,9 +148,10 @@ public class DataUpgrader extends ProjectServer
 		EnhancedJsonObject readIn = readFile(diagramMainFile);
 		EnhancedJsonObject nodes = new EnhancedJsonObject(readIn.getJson("Nodes"));
 		int highestId = readHighestIdInProjectFile();
+		HashMap factorIdsMap = new HashMap();
 		String maniFestContents = "{\"Type\":\"ObjectManifest\"";
 		Iterator iter = nodes.keys();
-	
+		
 		while(iter.hasNext())
 		{
 			highestId++;
@@ -159,14 +168,18 @@ public class DataUpgrader extends ProjectServer
 			newDiagramFactor.put("Size", getDimensionAsString(sizeJson));
 			newDiagramFactor.put("Location", getPointAsString(locationJson));
 			
-			File idFile = new File(objects18Dir, wrappedId);
+			File idFile = new File(objects18Dir, Integer.toString(highestId));
 			createFile(idFile, newDiagramFactor.toString());
+			
+			factorIdsMap.put(new Integer(wrappedId), new Integer(highestId));
 		}
 		
 		maniFestContents += "}";
 		File manifestFile = new File(objects18Dir, "manifest");
 		createFile(manifestFile, maniFestContents);
 		writeHighestIdToProjectFile(highestId);
+		
+		return factorIdsMap;
 	}
 	
 	private int readHighestIdInProjectFile() throws Exception
