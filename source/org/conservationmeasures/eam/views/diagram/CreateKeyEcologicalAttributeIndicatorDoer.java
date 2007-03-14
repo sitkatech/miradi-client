@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
@@ -67,11 +68,24 @@ public class CreateKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(kea, 
 					KeyEcologicalAttribute.TAG_INDICATOR_IDS, createdId, childIndex);
 			project.executeCommand(addChild);
+			
+			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, createdId);
+			insertIndicatorGoal(project, indicator);
 		}
 		finally
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
-		
+	}
+	
+	public static void insertIndicatorGoal(Project project, Indicator indicator) throws Exception
+	{
+		CommandCreateObject create = new CommandCreateObject(ObjectType.GOAL);
+		project.executeCommand(create);
+		BaseId createdId = create.getCreatedId();
+
+		CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(indicator, 
+				Indicator.TAG_GOAL_IDS, createdId, 0);
+		project.executeCommand(addChild);
 	}
 }
