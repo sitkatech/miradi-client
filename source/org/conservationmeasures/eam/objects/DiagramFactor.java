@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.DimensionData;
 import org.conservationmeasures.eam.objectdata.PointData;
-import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -116,7 +115,6 @@ public class DiagramFactor extends EAMBaseObject
 		underlyingObjectId = new BaseIdData();
 		size = new DimensionData();
 		location = new PointData();
-		label = new StringData();
 		
 		addField(TAG_WRAPPED_ID, underlyingObjectId);
 		addField(TAG_SIZE, size);

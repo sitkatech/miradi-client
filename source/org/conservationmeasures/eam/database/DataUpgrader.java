@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.database;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -21,6 +23,7 @@ import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.martus.util.UnicodeWriter;
 
 public class DataUpgrader extends ProjectServer
 {
@@ -111,14 +114,114 @@ public class DataUpgrader extends ProjectServer
 		if(readDataVersion(getTopDirectory()) == 14)
 			upgradeToVersion15();
 		*/
+	
+		//FIXME remove comments after links have been added to the migration.  
+		// this code is commented so that older projects are not corrupted on accident
+		//if (readDataVersion(getTopDirectory()) == 15)
+		//	upgradeToVersion16();
 		
 	}
 
-	void upgradeToVersion16()
+	public void upgradeToVersion16() throws Exception
 	{
-		
+		createDiagramFactorsFromRawFactors();
 	}
 	
+	public void createDiagramFactorsFromRawFactors() throws Exception
+	{
+		File objects18Dir = new File(topDirectory, "objects-18");
+		if (objects18Dir.exists())
+			throw new RuntimeException("objects-18 directory already exists " + objects18Dir.getAbsolutePath());
+		
+		objects18Dir.mkdir();
+		
+		File diagramsDir =  new File(topDirectory, "diagrams");
+		File diagramMainFile = new File(diagramsDir, "main");
+		EnhancedJsonObject readIn = readFile(diagramMainFile);
+		EnhancedJsonObject nodes = new EnhancedJsonObject(readIn.getJson("Nodes"));
+		int highestId = readHighestIdInProjectFile();
+		String maniFestContents = "{\"Type\":\"ObjectManifest\"";
+		Iterator iter = nodes.keys();
+	
+		while(iter.hasNext())
+		{
+			highestId++;
+			maniFestContents += ",\"" + highestId + "\":true";
+			String key = (String)iter.next();
+			EnhancedJsonObject oldDiagramFactor = nodes.getJson(key);
+			EnhancedJsonObject sizeJson = oldDiagramFactor.getJson("Size");
+			EnhancedJsonObject locationJson = oldDiagramFactor.getJson("Location");	
+			String wrappedId = oldDiagramFactor.getString("WrappedId");
+			
+			EnhancedJsonObject newDiagramFactor = new EnhancedJsonObject();
+			newDiagramFactor.put("Id", highestId);
+			newDiagramFactor.put("WrappedFactorId", wrappedId);
+			newDiagramFactor.put("Size", getDimensionAsString(sizeJson));
+			newDiagramFactor.put("Location", getPointAsString(locationJson));
+			
+			File idFile = new File(objects18Dir, wrappedId);
+			createFile(idFile, newDiagramFactor.toString());
+		}
+		
+		maniFestContents += "}";
+		File manifestFile = new File(objects18Dir, "manifest");
+		createFile(manifestFile, maniFestContents);
+		writeHighestIdToProjectFile(highestId);
+	}
+	
+	private int readHighestIdInProjectFile() throws Exception
+	{
+		File projectFile = new File(topDirectory, "project");
+		EnhancedJsonObject readIn = readFile(projectFile);
+		int gotId = readIn.getInt("HighestUsedNodeId");
+		
+		return gotId;
+	}
+	
+	private void writeHighestIdToProjectFile(int highestIdToWrite) throws Exception
+	{
+		File projectFile = new File(topDirectory, "project");
+		EnhancedJsonObject readIn = readFile(projectFile);
+		readIn.put("HighestUsedNodeId", highestIdToWrite);
+		writeJson(projectFile, readIn);
+	}
+
+	private Object getPointAsString(EnhancedJsonObject locationJson)
+	{
+		int x = locationJson.getInt("X");
+		int y = locationJson.getInt("Y");
+		Point point = new Point(x, y);
+		
+		return EnhancedJsonObject.convertFromPoint(point);
+	}
+
+	private String getDimensionAsString(EnhancedJsonObject sizeJson)
+	{
+		int width = sizeJson.getInt("Width");
+		int height = sizeJson.getInt("Height");
+		Dimension dimension = new Dimension(width, height);
+		
+		return EnhancedJsonObject.convertFromDimension(dimension);
+	}
+	
+	private EnhancedJsonObject readFile(File file) throws Exception
+	{
+		EnhancedJsonObject objectRead = JSONFile.read(file);
+		return objectRead;
+	}
+
+	private void writeJson(File file, EnhancedJsonObject jsonToWrite) throws Exception
+	{
+		JSONFile.write(file, jsonToWrite);
+	}
+	
+	void createFile(File file, String contents) throws Exception
+	{
+		UnicodeWriter writer = new UnicodeWriter(file);
+		writer.writeln(contents);
+		writer.close();
+	}
+
 	void upgradeToVersion2() throws IOException, ParseException
 	{
 		// add manifest file to Objects-1 and Objects-2

@@ -624,6 +624,79 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("same parent id?", 2, parentRef4.getInt("ObjectId"));
 		
 	}
+	
+	public void testCreateObjectsFromJson() throws Exception
+	{
+		//TODO use when convertin factor links to diagram factor links
+		//String factorLink = " {\"ToId\":28,\"FromId\":29,\"StressLabel\":\"\",\"Label\":\"\",\"Id\":30} "; 
+		String allFactorInfos = " {\"Nodes\":{\"28\":{\"Size\":{\"Width\":120,\"Height\":60},\"WrappedId\":28,\"Location\":{\"Y\":270,\"X\":120},\"Id\":28},\"29\":{\"Size\":{\"Width\":151,\"Height\":60},\"WrappedId\":29,\"Location\":{\"Y\":15,\"X\":375},\"Id\":29}},\"Type\":\"Diagram\"}  ";
+		String expected28Content = "{\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"WrappedFactorId\":\"28\",\"Location\":\"{\\\"Y\\\":270,\\\"X\\\":120}\",\"Id\":28}";
+		String expected29Content = "{\"Size\":\"{\\\"Width\\\":151,\\\"Height\\\":60}\",\"WrappedFactorId\":\"29\",\"Location\":\"{\\\"Y\\\":15,\\\"X\\\":375}\",\"Id\":29}";
+		String expectedManifestContent = "{\"Type\":\"ObjectManifest\",\"28\":true,\"29\":true}";
+		
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
+		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":27}");
+		
+		File diagramsDir =  new File(jsonDir, "diagrams");
+		diagramsDir.mkdirs();
+		
+		File diagramMainFile = new File(diagramsDir, "main");
+		createFile(diagramMainFile, allFactorInfos);
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(jsonDir);
+		dataUpgrader.upgradeToVersion16();
+		
+		File objects18Dir = new File(jsonDir, "objects-18");
+		assertTrue("objects-18 dir does not exist?", objects18Dir.exists());
+		
+		File file28 = new File(objects18Dir, "28");
+		File file29 = new File(objects18Dir, "29");
+		assertTrue("Id 28 exists?", file28.exists());
+		assertTrue("Id 29 exists?", file29.exists());
+		
+		String file28Content = readFile(file28);
+		String file29Content = readFile(file29);
+		assertEquals("file 28 content the same?", expected28Content.trim(), file28Content.trim());
+		assertEquals("file 29 content the same?", expected29Content.trim(), file29Content.trim());
+		
+		File manifestFile = new File(objects18Dir, "manifest");
+		String migratedManifestContents = readFile(manifestFile);
+		assertTrue("has manifest file?", manifestFile.exists());
+		assertEquals("manifests has same content?", expectedManifestContent.trim(), migratedManifestContents.trim());
+		
+		
+//TODO remove comments after being done with migration of diagramfactors and dLinks
+//File objects13Dir = new File(jsonDir, "objects-13");
+//assertTrue("objects-13 dir does not exist?", objects13Dir.exists());
+//		
+//		
+//		final int wrappedId28 = 28; 
+//		final Dimension size28 = new Dimension(120, 60);
+//		final Point location28 = new Point(120, 270);
+//		
+//		final int wrappedId66 = 66;
+//		final Dimension size66 = new Dimension(151, 60);
+//		final Point location66 = new Point(375, 15);
+
+//		String readDiagramMain = readFile(diagramMainFile);
+//		EnhancedJsonObject readIn = new EnhancedJsonObject(readDiagramMain);
+//		EnhancedJsonObject nodes = new EnhancedJsonObject(readIn.getString("Nodes"));
+//
+//		EnhancedJsonObject ids28 = new EnhancedJsonObject(nodes.getString(new Integer(allObjectIds[0]).toString()));
+//		assertEquals(allObjectIds[0], ids28.getId("Id").asInt());
+//		assertEquals(location28, ids28.getPoint(DiagramFactor.TAG_LOCATION));
+//		assertEquals(size28, ids28.getDimension(DiagramFactor.TAG_SIZE));
+//		assertEquals(wrappedId28, ids28.getId("WrappedId").asInt());
+//
+//		EnhancedJsonObject ids66 = new EnhancedJsonObject(nodes.getString(new Integer(allObjectIds[1]).toString()));
+//		assertEquals(allObjectIds[1], ids66.getId("Id").asInt());
+//		assertEquals(location66, ids66.getPoint(DiagramFactor.TAG_LOCATION));
+//		assertEquals(size66, ids66.getDimension(DiagramFactor.TAG_SIZE));
+//		assertEquals(wrappedId66, ids66.getId("WrappedId").asInt());
+	}
 
 	private EnhancedJsonObject createDiagramNodeJson(int id)
 	{
