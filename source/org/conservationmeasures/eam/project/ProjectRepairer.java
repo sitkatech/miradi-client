@@ -40,6 +40,7 @@ public class ProjectRepairer
 		fixDeletedTeamMembers();
 		repairUnsnappedNodes();
 		deleteOrphanAnnotations();
+		//TODO delete factors that are not in the diagram
 	}
 	
 	void fixNodeAnnotationIds() throws Exception
