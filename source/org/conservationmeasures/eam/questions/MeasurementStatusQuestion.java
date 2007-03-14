@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.questions;
 
 
+//FIXME: this should be combined wiht priority rating question and target status question
 public class MeasurementStatusQuestion extends ChoiceQuestion
 {
 	public MeasurementStatusQuestion(String tagToUse)
