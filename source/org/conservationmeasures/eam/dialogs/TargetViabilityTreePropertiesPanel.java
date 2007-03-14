@@ -5,9 +5,12 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import java.util.Vector;
+
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -16,8 +19,8 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
-import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.conservationmeasures.eam.questions.MeasurementStatusQuestion;
+import org.conservationmeasures.eam.questions.TrendQuestion;
 
 public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 {
@@ -45,7 +48,24 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY));
 		addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL));
 		updateFieldsFromProject();
-
+	}
+	
+	public void setObjectRefs(Vector orefs)
+	{
+		BaseId objectId = getObjectIdForType(ObjectType.INDICATOR);
+		if (!objectId.isInvalid())
+			return;
+		Indicator indicator = (Indicator)getProject().findObject(ObjectType.INDICATOR, objectId);
+		try
+		{
+			IdList list = new IdList(indicator.getData(Indicator.TAG_GOAL_IDS));
+			if (list.size()!=0)
+				insertToOrefs(0,new ORef(ObjectType.GOAL,list.get(0)));
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 
 	public String getPanelDescription()
