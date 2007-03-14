@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.questions;
 
 
-public class TrendStatusQuestion extends ChoiceQuestion
+public class MeasurementStatusQuestion extends ChoiceQuestion
 {
-	public TrendStatusQuestion(String tagToUse)
+	public MeasurementStatusQuestion(String tagToUse)
 	{
 		super(tagToUse, "Trend Status", getTrendStatuses());
 	}

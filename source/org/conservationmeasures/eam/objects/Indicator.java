@@ -57,18 +57,18 @@ public class Indicator extends EAMBaseObject
 		status = new ChoiceData();
 		taskIds = new IdListData();
 		indicatorThreshold = new StringMapData();
-		measurementThrend= new ChoiceData();;
-		measurementStatus= new ChoiceData();;
+		measurementThrend= new ChoiceData();
+		measurementStatus= new ChoiceData();
 		measurementDate= new DateData();;
-		measurementSummary= new StringData();;
-		measurementDetail= new StringData();;
+		measurementSummary= new StringData();
+		measurementDetail= new StringData();
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
 		addField(TAG_TASK_IDS, taskIds);
 		addField(TAG_INDICATOR_THRESHOLDS, indicatorThreshold);
-		addField(TAG_MEASUREMENT_THREND, measurementThrend);
+		addField(TAG_MEASUREMENT_TREND, measurementThrend);
 		addField(TAG_MEASUREMENT_STATUS, measurementStatus);
 		addField(TAG_MEASUREMENT_DATE, measurementDate);
 		addField(TAG_MEASUREMENT_SUMMARY, measurementSummary);
@@ -97,7 +97,7 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_STATUS = "Status";
 	public final static String TAG_TASK_IDS = "TaskIds";
 	public static final String TAG_INDICATOR_THRESHOLDS = "IndicatorThresholds";
-	public static final String TAG_MEASUREMENT_THREND = "MeasurementThrend";
+	public static final String TAG_MEASUREMENT_TREND = "MeasurementTrend";
 	public static final String TAG_MEASUREMENT_STATUS  = "MeasurementStatus";
 	public static final String TAG_MEASUREMENT_DATE = "MeasurementDate";
 	public static final String TAG_MEASUREMENT_SUMMARY = "MeasurementSummary";
