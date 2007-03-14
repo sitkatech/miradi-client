@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -40,10 +41,17 @@ abstract public class Desire extends EAMBaseObject
 	{
 		super.clear();
 		shortLabel = new StringData();
-		fullText = new StringData();
+		fullText = new StringData();	
+		desiredStatus = new ChoiceData();;
+		byWhen = new StringData();
+		desiredSummary = new StringData();
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_FULL_TEXT, fullText);
+		addField(TAG_DESIRED_STATUS, desiredStatus);
+		addField(TAG_BY_WHEN, byWhen);
+		addField(TAG_DESIRED_SUMMARY, desiredSummary);
+		 
 	}
 	
 	public final static String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
@@ -52,9 +60,15 @@ abstract public class Desire extends EAMBaseObject
 	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
+	public final static String TAG_DESIRED_STATUS = "DesiredStatus";
+	public final static String TAG_BY_WHEN = "ByWhen";
+	public final static String TAG_DESIRED_SUMMARY = "DesiredSummary";
+	
 	public static final String OBJECT_NAME = "Desire";
 
 	StringData shortLabel;
 	StringData fullText;
-
+	ChoiceData desiredStatus;
+	StringData byWhen;
+	StringData desiredSummary;
 }
