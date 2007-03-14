@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIndicator;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -31,20 +30,29 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		GenericTreeTableModel treeTableModel = getModel();
+		final boolean wereKEANodesAddedOrRemoved = 
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		
-		final boolean wereNodesAddedOrRemoved = 
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS) ||
+		final boolean wereIndicatorNodesAddedOrRemoved = 
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+		
+		final boolean wereNodesAddedOrRemoved = wereKEANodesAddedOrRemoved || wereIndicatorNodesAddedOrRemoved;
+		
 		if( wereNodesAddedOrRemoved)
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
-			int objectType = ((CommandSetObjectData)event.getCommand()).getObjectType();
+			
+			int annoationObjectType = ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
+			if (wereIndicatorNodesAddedOrRemoved)
+				annoationObjectType = ObjectType.INDICATOR;
+
 			IdList newIdList = event.extractNewlyAddedIds();
 			for (int i=0; i<newIdList.size(); ++i)
 			{
-				expandAndSelectObject(objectType, newIdList.get(i));
+				expandAndSelectObject(annoationObjectType, newIdList.get(i));
 			}
+			repaint();
 		} 
 		else if(event.isSetDataCommand())
 		{
