@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
+import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -21,8 +22,8 @@ public class DiagramFactorLink extends EAMBaseObject
 	public DiagramFactorLink(BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
 	{
 		super(new DiagramFactorLinkId(idToUse.asInt()));
-		clear();
 		
+		clear();
 		underlyingObjectId.setId(extraInfo.getFactorLinkId());
 		fromId.setId(extraInfo.getFromFactorId());
 		toId.setId(extraInfo.getToFactorId());
@@ -31,6 +32,7 @@ public class DiagramFactorLink extends EAMBaseObject
 	public DiagramFactorLink(int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(new DiagramFactorLinkId(idToUse), json);
+		
 		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
 		fromId.setId(json.getId(TAG_FROM_DIAGRAM_FACTOR_ID));
 		toId.setId(json.getId(TAG_TO_DIAGRAM_FACTOR_ID));
@@ -42,6 +44,7 @@ public class DiagramFactorLink extends EAMBaseObject
 		json.putId(TAG_WRAPPED_ID, underlyingObjectId.getId());
 		json.putId(TAG_FROM_DIAGRAM_FACTOR_ID, fromId.getId());
 		json.putId(TAG_TO_DIAGRAM_FACTOR_ID, toId.getId());
+		
 		return json;
 	}
 
@@ -68,6 +71,9 @@ public class DiagramFactorLink extends EAMBaseObject
 			return fromId.get();
 		if(fieldTag.equals(TAG_TO_DIAGRAM_FACTOR_ID))
 			return toId.get();
+		if (fieldTag.equals(TAG_BEND_POINTS))
+			return bendPoints.get();
+		
 		return super.getData(fieldTag);
 	}
 
@@ -79,7 +85,10 @@ public class DiagramFactorLink extends EAMBaseObject
 			fromId.set(dataValue);
 		else if(fieldTag.equals(TAG_TO_DIAGRAM_FACTOR_ID))
 			toId.set(dataValue);
-		else super.setData(fieldTag, dataValue);
+		else if (fieldTag.equals(TAG_BEND_POINTS))
+			bendPoints.set(dataValue);
+		else 
+			super.setData(fieldTag, dataValue);
 	}
 
 	public FactorLinkDataMap createLinkageDataMap() throws Exception
@@ -88,6 +97,7 @@ public class DiagramFactorLink extends EAMBaseObject
 		dataMap.setId(getDiagramLinkageId());
 		dataMap.setFromId(new DiagramFactorId(fromId.getId().asInt()));
 		dataMap.setToId(new DiagramFactorId(toId.getId().asInt()));
+		
 		return dataMap;
 	}
 
@@ -98,22 +108,25 @@ public class DiagramFactorLink extends EAMBaseObject
 				new DiagramFactorId(fromId.getId().asInt()), 
 				new DiagramFactorId(toId.getId().asInt()));
 	}
-
 	
 	//TODO convert to new EAMObject.addField system
 	void clear()
 	{
 		super.clear();
+
 		underlyingObjectId = new BaseIdData();
 		fromId = new BaseIdData();
 		toId = new BaseIdData();
+		bendPoints = new PointListData();
 	}
 	
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
 	public static final String TAG_FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TAG_TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
+	public static final String TAG_BEND_POINTS = "BendPoints";
 	
 	private BaseIdData underlyingObjectId;
 	private BaseIdData fromId;
 	private BaseIdData toId;
+	private PointListData bendPoints;
 }

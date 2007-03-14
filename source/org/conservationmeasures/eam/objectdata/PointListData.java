@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.utils.PointList;
 
 public class PointListData extends ObjectData
 {
-
 	public PointListData()
 	{
 		points = new PointList();
