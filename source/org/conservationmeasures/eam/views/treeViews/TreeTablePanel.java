@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.util.Vector;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
@@ -98,22 +99,37 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public void expandAndSelectObject(int objectType, BaseId objectToSelect)
 	{
-		TreePath found = model.findObject(model.getPathToRoot(), objectType, objectToSelect);
-		if(found == null)
-			return;
-		tree.getTree().expandPath(found.getParentPath());
-		int row = tree.getTree().getRowForPath(found);
-		//FIXME: not sure if this if and clear are of any real use
-		if(row < 0)
-		{
-			EAM.logWarning("TreeTablePanel.selectObject failed: row -1");
-			return;
-		}
-		tree.clearSelection();
-		setSelectedRow(row);
+		SwingUtilities.invokeLater(new expandAndSelectObject(objectType, objectToSelect));
 	}
 	
-	
+	class expandAndSelectObject implements Runnable
+	{
+		public expandAndSelectObject(int objectTypeToUse, BaseId objectToSelectToUse)
+		{
+			objectType = objectTypeToUse;
+			objectToSelect = objectToSelectToUse;
+		}
+		
+		public void run()
+		{
+			TreePath found = model.findObject(model.getPathToRoot(), objectType, objectToSelect);
+			if(found == null)
+				return;
+			tree.getTree().expandPath(found.getParentPath());
+			int row = tree.getTree().getRowForPath(found);
+			//FIXME: not sure if this if and clear are of any real use
+			if(row < 0)
+			{
+				EAM.logWarning("TreeTablePanel.selectObject failed: row -1");
+				return;
+			}
+			setSelectedRow(row);
+		}
+		
+		int objectType;
+		BaseId objectToSelect;
+		
+	}
 	
 	public GenericTreeTableModel getModel()
 	{
@@ -160,16 +176,13 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	
 	abstract public void commandExecuted(CommandExecutedEvent event);
 	
-	
 
-	
 	public void setSelectedRow(int currentSelectedRow)
 	{
-		if(currentSelectedRow < 0)
-		{
-			tree.clearSelection();
+		tree.clearSelection();
+
+		if (currentSelectedRow<0)
 			return;
-		}
 		
 		try
 		{
