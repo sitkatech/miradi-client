@@ -3,9 +3,9 @@ package org.conservationmeasures.eam.project;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
@@ -186,7 +186,7 @@ public class TestProjectRepairer extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		try
 		{
-			BaseId orphan = project.createObject(annotationType);
+			//BaseId orphan = project.createObject(annotationType);
 			BaseId nonOrphan = project.createObject(annotationType);
 			CreateFactorParameter extraInfo = new CreateFactorParameter(nodeType);
 			FactorId nodeId = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, extraInfo);
@@ -195,9 +195,11 @@ public class TestProjectRepairer extends EAMTestCase
 			project.setObjectData(ObjectType.FACTOR, nodeId, nodeTagForAnnotationList, annotationIds.toString());
 			
 			EAM.setLogToString();
+			
+//			TODO: removed orphan deletion code until a solution can be found to general extentions of having annoations having annoations
 			ProjectRepairer.repairAnyProblems(project);
-			assertContains("Deleting orphan", EAM.getLoggedString());
-			assertNull("Didn't delete orphan?", project.findObject(annotationType, orphan));
+			//assertContains("Deleting orphan", EAM.getLoggedString());
+			//assertNull("Didn't delete orphan?", project.findObject(annotationType, orphan));
 			assertEquals("Deleted non-orphan?", nonOrphan, project.findObject(annotationType, nonOrphan).getId());
 		}
 		finally
