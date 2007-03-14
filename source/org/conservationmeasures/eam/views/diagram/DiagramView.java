@@ -371,15 +371,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	void updateScopeIfNeeded(CommandSetObjectData cmd)
 	{
 		if (isScopeTextChange(cmd) || isFactorBoundsChange(cmd))
-			getDiagramComponent().getDiagramModel().updateProjectScopeBox();
-		
-	//	if(cmd.getObjectType() != ObjectType.PROJECT_METADATA)
-	//		return;
-	//	if(cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE) ||
-	//			cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_VISION))
-	//	{
-//			getDiagramComponent().getDiagramModel().updateProjectScopeBox();
-	//	}
+			getProject().getDiagramModel().updateProjectScopeBox();
 	}
 
 	private boolean isScopeTextChange(CommandSetObjectData cmd)
