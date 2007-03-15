@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import java.awt.Dimension;
+
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -20,6 +22,10 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	{
 		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.mainWindow, projectToUse, nodeId),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
+		//FIXME: This is a crude way to avoid having the Target Properties dlg
+		// be too tall to fit on a WXGA screen.
+		setPreferredSize(new Dimension(600, 500));
+
 	}
 	
 	public String getPanelDescription()
