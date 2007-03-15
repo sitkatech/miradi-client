@@ -6,9 +6,8 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.ProjectDoer;
 
-public class CreateBendPointDoer extends ProjectDoer
+public class CreateBendPointDoer extends LocationDoer
 {
 	public boolean isAvailable()
 	{
@@ -22,5 +21,11 @@ public class CreateBendPointDoer extends ProjectDoer
 	{
 		if (!isAvailable())
 			return;
+		
+		//TODO finish adding bend points
+		//DiagramFactorLink selectedLink = getProject().getOnlySelectedLinks()[0];
+		//LinkCell linkCell = getProject().getDiagramModel().findLinkCell(selectedLink);
+		
 	}
+
 }

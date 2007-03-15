@@ -8,11 +8,12 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCreateBendPoint extends MainWindowAction
+public class ActionCreateBendPoint extends LocationAction
 {
 	public ActionCreateBendPoint(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		//FIXME add either icon or the correct label
+		super(mainWindowToUse, getLabel(), getLabel());
 	}
 
 	private static String getLabel()
