@@ -120,7 +120,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|KeyEcologicalAttribute Properties");
+		return EAM.text("Title|Key Ecological Attribute Properties");
 	}
 
 }
