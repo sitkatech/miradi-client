@@ -63,6 +63,7 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -323,7 +324,8 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
 			String newValue = cmd.getDataValue();
 			setModeIfRelevant(cmd, newValue);
-			updateFactorBoundsIfRelevant(cmd, newValue);
+			updateFactorBoundsIfRelevant(cmd);
+			updateFactorLinkIfRelevant(cmd);
 			updateScopeIfNeeded(cmd);
 			refreshIfNeeded(cmd);
 		}
@@ -333,7 +335,17 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		}
 	}
 
-	private void updateFactorBoundsIfRelevant(CommandSetObjectData cmd, String newValue) throws Exception
+	private void updateFactorLinkIfRelevant(CommandSetObjectData cmd) throws Exception
+	{
+		if (cmd.getObjectType() != ObjectType.DIAGRAM_LINK)
+			return;
+		
+		DiagramFactorLinkId diagramFactorLinkId = (DiagramFactorLinkId) cmd.getObjectId();
+		DiagramModel diagramModel = getProject().getDiagramModel();
+		diagramModel.updateCellFromDiagramFactor(diagramFactorLinkId);
+	}
+	
+	private void updateFactorBoundsIfRelevant(CommandSetObjectData cmd) throws Exception
 	{
 		if (cmd.getObjectType() != ObjectType.DIAGRAM_FACTOR)
 			return;

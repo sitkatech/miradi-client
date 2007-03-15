@@ -358,6 +358,11 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getFactorById(id);
 	}
 
+	public LinkCell getDiagramFactorLinkById(DiagramFactorLink diagramFactorLink)
+	{
+		return cellInventory.getLinkCell(diagramFactorLink);
+	}
+	
 	public DiagramFactorLink getDiagramFactorLinkById(DiagramFactorLinkId id) throws Exception
 	{
 		DiagramFactorLink linkage = cellInventory.getFactorLinkById(id);
@@ -379,6 +384,11 @@ public class DiagramModel extends DefaultGraphModel
 		return (cellInventory.getFactorById(factor.getDiagramFactorId()) != null);
 	}
 
+	public boolean doesDiagramFactorLinkExist(DiagramFactorLinkId linkId)
+	{
+		return (cellInventory.getFactorLinkById(linkId) != null);	
+	}
+	
 	public boolean doesDiagramFactorLinkExist(DiagramFactorLink link)
 	{
 		return (cellInventory.getFactorLinkById(link.getDiagramLinkageId()) != null);
@@ -452,6 +462,17 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
+	public void updateCellFromDiagramFactor(DiagramFactorLinkId diagramFactorLinkId) throws Exception
+	{
+		if (! doesDiagramFactorLinkExist(diagramFactorLinkId))
+			return;
+		
+		DiagramFactorLink diagramFactorLink  = getDiagramFactorLinkById(diagramFactorLinkId);
+		LinkCell linkCell = getDiagramFactorLinkById(diagramFactorLink);
+		linkCell.updateFromDiagramFactorLink();
+		updateCell(linkCell);
+	}
+
 	public void updateCellFromDiagramFactor(DiagramFactorId diagramFactorId) throws Exception
 	{
 		if (! doesDiagramFactorExist(diagramFactorId))

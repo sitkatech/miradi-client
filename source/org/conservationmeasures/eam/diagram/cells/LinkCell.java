@@ -25,7 +25,13 @@ public class LinkCell extends EAMGraphCell implements Edge
 		diagramLink = diagramLinkToUse;
 		from = fromToUse;
 		to = toToUse;
+		updateFromDiagramFactorLink();
+	}
+	
+	public void updateFromDiagramFactorLink()
+	{
 		fillConnectorAttributeMap("");
+		updateBendPoints();
 	}
 	
 	public boolean isFactorLink()
@@ -53,16 +59,14 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return link;
 	}
 	
-	private void updateBendPoints(DiagramComponent diagram)
+	private void updateBendPoints()
 	{
-		//TODO should update bendable arrows from this
 		PointList bendPoints = getDiagramFactorLink().getBendPoints();
-		ArrayList list = new ArrayList(bendPoints.getAllPoints());
-		
+		ArrayList bendPointList = new ArrayList(bendPoints.getAllPoints());
 		ArrayList newList =new ArrayList();
-		newList.add(from.getLocation());
-		newList.addAll(list);
 		newList.add(to.getLocation());
+		newList.addAll(bendPointList);
+		newList.add(from.getLocation());
 		
 		GraphConstants.setPoints(getAttributes(), newList);
 	}
@@ -75,7 +79,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		else
 			setTail(ArrowLineRenderer.ARROW_JUST_LINE);
 		
-		updateBendPoints(diagram);
+		updateBendPoints();
 	}
 
 	private boolean isThisLinkVisible(DiagramComponent diagram)
