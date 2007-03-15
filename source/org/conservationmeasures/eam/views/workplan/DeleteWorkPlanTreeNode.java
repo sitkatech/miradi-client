@@ -51,13 +51,10 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 				{
 					ChainManager chainManager = new ChainManager(project);
 					KeyEcologicalAttribute kea = chainManager.findKEAWithIndicator(object.getId(), (Target)factor);
-					if (kea!=null)
-					{
-						DeleteAnnotationDoer.deleteAnnotationViaCommands(project, kea, (Indicator)object, Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
-						return;
-					}	
+					DeleteAnnotationDoer.deleteAnnotationViaCommands(project, kea, (Indicator)object, Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
 				}
-				DeleteAnnotationDoer.deleteAnnotationViaCommands(project, factor, (Indicator)object, Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
+				else
+					DeleteAnnotationDoer.deleteAnnotationViaCommands(project, factor, (Indicator)object, Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
 			}
 		}
 		catch (Exception e)
