@@ -133,7 +133,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	private static Vector buildCommandsToDeleteSubTasks(Project project, int type, BaseId id) throws Exception
 	{
 		Vector commands = new Vector();
-		if (!(type == ObjectType.INDICATOR))
+		if (type != ObjectType.INDICATOR)
 			return commands;
 	
 		Indicator indicator = (Indicator)project.findObject(type, id);
