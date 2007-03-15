@@ -30,7 +30,7 @@ public class CreateBendPointDoer extends LocationDoer
 		try
 		{
 			DiagramFactorLink selectedLink = getProject().getOnlySelectedLinks()[0];
-			Point newBendPoint = getLocation();
+			Point newBendPoint = getNewBendPointLocation();
 
 			CommandSetObjectData setBendPointCommand = CommandSetObjectData.createAppendPointCommand(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newBendPoint);
 			getProject().executeCommand(setBendPointCommand);
@@ -48,6 +48,17 @@ public class CreateBendPointDoer extends LocationDoer
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
+	}
+
+	private Point getNewBendPointLocation()
+	{
+		Point newBendPoint = getLocation();
+		if (newBendPoint != null)
+			return newBendPoint;
+		
+		
+		//TODO calculate location without mouse click location 
+		return newBendPoint;
 	}
 
 }
