@@ -61,37 +61,36 @@ public class CommandExecutedEvent
 	
 	public IdList extractNewlyAddedIds()
 	{
-		try
-		{
 			CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
-			IdList oldIdList = new IdList(cmd.getPreviousDataValue());
-			IdList newIdList = new IdList(cmd.getDataValue());
-			newIdList.subtract(oldIdList);
-			return newIdList;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new IdList();
-		}
+			final String value1 = cmd.getPreviousDataValue();
+			final String value2 = cmd.getDataValue();
+			return substract(value1, value2);
 	}
-	
+
 	public IdList extractNewlyRemovedIds()
+	{
+		CommandSetObjectData cmd = (CommandSetObjectData) getCommand();
+		final String value1 = cmd.getPreviousDataValue();
+		final String value2 = cmd.getDataValue();
+		return substract(value2, value1);
+	}
+
+	private IdList substract(String value1, String value2)
 	{
 		try
 		{
-			CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
-			IdList oldIdList = new IdList(cmd.getPreviousDataValue());
-			IdList newIdList = new IdList(cmd.getDataValue());
-			oldIdList.subtract(newIdList);
-			return oldIdList;
+			IdList oldIdList = new IdList(value1);
+			IdList newIdList = new IdList(value2);
+			newIdList.subtract(oldIdList);
+			return newIdList;
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			EAM.logException(e);
 			return new IdList();
 		}
 	}
-	
+
+
 	private Command command;
 }
