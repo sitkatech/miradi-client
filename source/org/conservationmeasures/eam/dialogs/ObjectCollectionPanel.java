@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiButton;
-import org.martus.swing.UiScrollPane;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -28,7 +28,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements  
 		super(new BorderLayout());
 		project = projectToUse;
 		component = componentToUse;
-		add(new UiScrollPane((JComponent)component), BorderLayout.CENTER);
+		add(new FastScrollPane((JComponent)component), BorderLayout.CENTER);
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		buttons = new JPanel(layout);
 		add(buttons, BorderLayout.AFTER_LINE_ENDS);

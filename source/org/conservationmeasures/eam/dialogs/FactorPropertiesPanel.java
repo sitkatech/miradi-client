@@ -12,7 +12,6 @@ import java.awt.event.FocusListener;
 
 import javax.swing.Icon;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -34,6 +33,7 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
@@ -179,7 +179,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		public FactorDetailsTab(Project projectToUse, FactorCell diagramFactor) throws Exception
 		{
 			realPanel = new FactorDetailsPanel(projectToUse, diagramFactor);
-			add(new JScrollPane(realPanel));
+			add(new FastScrollPane(realPanel));
 		}
 
 		public void dispose()
