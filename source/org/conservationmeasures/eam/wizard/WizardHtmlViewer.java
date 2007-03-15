@@ -56,7 +56,7 @@ public class WizardHtmlViewer extends HtmlFormViewer
 	 * GRRRR!
 	 */
 	final static String[] rules = {
-		"body {font-family: sans-serif, arial; }",
+		"body {font-family: sans-serif, arial; margin: 10}",
 		"code {font-family: sans-serif; }",
 		"  .viewname { font-size: 125%;  }",
 		"  .processsection { font-size: 120%; }",
