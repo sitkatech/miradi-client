@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIndicator;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -51,6 +52,16 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			for (int i=0; i<newIdList.size(); ++i)
 			{
 				expandAndSelectObject(annoationObjectType, newIdList.get(i));
+			}
+			
+			if (newIdList.size()==0)
+			{
+				//TODO: right now we only go to the root of the node being deleted....not the sibling
+				int objectType = ObjectType.FACTOR;
+				if (wereIndicatorNodesAddedOrRemoved)
+					objectType = ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
+				CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+				expandAndSelectObject(objectType, cmd.getObjectId());
 			}
 			repaint();
 		} 
