@@ -34,6 +34,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 		super(mainWindowToUse, treeToUse, buttonActions, ObjectType.TASK);
 	}
 
+	//TODO: THis code needs to be analized to see if it really needs to rebuld its tree under all these conditions
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		GenericTreeTableModel treeTableModel = getModel();
