@@ -43,29 +43,33 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions, BaseId idToShow) throws Exception
 	{
 		super(projectToUse, new ORef(ObjectType.FACTOR, idToShow));
-		ObjectDataInputField aa1 = addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
-		ObjectDataInputField aa2 = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
-		ObjectDataInputField aa3 = addField(createObjectChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
-		ObjectDataInputField aa4 = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
+		ObjectDataInputField keaLabel = addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
+		ObjectDataInputField keaDesc = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
+		ObjectDataInputField keaType = addField(createObjectChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
+		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
 		
-		ObjectDataInputField aa5 = addField(createObjectStringMapTableField(ObjectType.INDICATOR,  new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
+		ObjectDataInputField indicatorThreshold = addField(createObjectStringMapTableField(ObjectType.INDICATOR,  new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
 		
-		ObjectDataInputField aa6 = addField(createRatingChoiceField(ObjectType.INDICATOR, new MeasurementStatusQuestion(Indicator.TAG_MEASUREMENT_STATUS)));  
-		ObjectDataInputField aa7 = addField(createObjectChoiceField(ObjectType.INDICATOR, new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND)));
-		ObjectDataInputField aa8 = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DATE));
-		ObjectDataInputField aa9 = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY,10));
-		ObjectDataInputField aa0 = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,10));
-		ObjectDataInputField aa11 = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
-		ObjectDataInputField aa22 = addField(createStringField(ObjectType.GOAL, Goal.TAG_BY_WHEN,10));
-		ObjectDataInputField aa33 = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,10));
+		ObjectDataInputField measurementStatus = addField(createRatingChoiceField(ObjectType.INDICATOR, new MeasurementStatusQuestion(Indicator.TAG_MEASUREMENT_STATUS)));  
+		ObjectDataInputField measurementTrend = addField(createObjectChoiceField(ObjectType.INDICATOR, new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND)));
+		ObjectDataInputField measurementDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DATE));
+		ObjectDataInputField measurementSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY,10));
+		ObjectDataInputField measurementDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,10));
+		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
+		ObjectDataInputField byWhen = addField(createStringField(ObjectType.GOAL, Goal.TAG_BY_WHEN,10));
+		ObjectDataInputField desiredSummary = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,10));
 		
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
 		
-		ObjectDataInputField[] topfields = new ObjectDataInputField[] {aa1, aa2, aa3, aa4, aa5};
+		ObjectDataInputField[] topfields = 
+			new ObjectDataInputField[] {keaLabel, keaDesc, keaType, 
+				indicatorLabel, indicatorThreshold};
 		JPanel topfieldsPanel = createRowBox(topfields, 2);
 		main.add(topfieldsPanel);
 		
-		ObjectDataInputField[] trendfield = new ObjectDataInputField[]  {aa6, aa7, aa8, aa9, aa0, aa11, null, aa22, aa33};
+		ObjectDataInputField[] trendfield = 
+			new ObjectDataInputField[]  {measurementStatus, measurementTrend, measurementDate, 
+				measurementSummary, measurementDetail, desiredStatus, null, byWhen, desiredSummary};
 		JPanel trendfieldPanel = createColumnBox(trendfield, 5);
 		main.add(trendfieldPanel);
 		

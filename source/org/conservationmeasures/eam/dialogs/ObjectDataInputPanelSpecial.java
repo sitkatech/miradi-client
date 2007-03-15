@@ -86,12 +86,12 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		panel.setLayout(layout);
 		for (int i=0; i<fields.length; ++i)
 		{
-			createColumn(panel, fields[i]);
+			createColumn(panel, fields[i], columns, i);
 		}
 		return panel;
 	}
 	
-	private void createColumn(JPanel box, ObjectDataInputField field)
+	private void createColumn(JPanel box, ObjectDataInputField field, int columns, int column)
 	{
 		JPanel panel = new JPanel(new GridLayoutPlus(1,1));
 		if (field==null)
@@ -100,7 +100,7 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		}
 		else
 		{
-			panel.add(createLabel(field));
+			if (column<columns) panel.add(createLabel(field));
 			panel.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
 		}
 		box.add(panel);
