@@ -16,7 +16,6 @@ import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.ObjectCollectionPanel;
-import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -41,9 +40,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		tree = treeToUse;
 		panelObjectType = objectType;
 		
-		tree.getTree().addTreeSelectionListener(this);
 		restoreTreeExpansionState();
-		
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
 		add(uiScrollPane, BorderLayout.CENTER);
 		
@@ -151,7 +148,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public void valueChanged(TreeSelectionEvent e)
 	{	
-		if (propertiesPanel == null)
+		if (getPropertiesPanel() == null)
 			return;
 		
 		TreePath[] treePaths = tree.getTree().getSelectionPaths();
@@ -169,7 +166,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 			objects.insertElementAt(new ORef(object.getType(), object.getId()),0);
 		}
 		
-		propertiesPanel.setObjectRefs(objects);
+		getPropertiesPanel().setObjectRefs(objects);
 		mainWindow.getActions().updateActionStates();
 	}
 	
@@ -195,15 +192,8 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		}
 	}
 
-	
-	public void setPropertiesPanel(ObjectDataInputPanel propertiesPanelToUse)
-	{
-		propertiesPanel = propertiesPanelToUse;
-	}
-
 	MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected GenericTreeTableModel model;
-	protected ObjectDataInputPanel propertiesPanel;
 	int panelObjectType;
 }

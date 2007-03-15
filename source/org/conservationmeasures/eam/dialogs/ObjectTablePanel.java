@@ -40,7 +40,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 	
 	public void valueChanged(ListSelectionEvent event)
 	{
-		if (propertiesPanel==null)
+		if (getPropertiesPanel()==null)
 			return;
 		try
 		{
@@ -52,8 +52,8 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 				oref = selectedObject.getRef();
 				
 			}
-			propertiesPanel.setObjectRef(oref);
-			propertiesPanel.setFocusOnFirstField();
+			getPropertiesPanel().setObjectRef(oref);
+			getPropertiesPanel().setFocusOnFirstField();
 		}
 		catch (Exception e)
 		{

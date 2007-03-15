@@ -44,12 +44,17 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements  
 	}
 
 	
-	public void setPropertiesPanel(ObjectDataInputPanel panel)
+	public void setPropertiesPanel(AbstractObjectDataInputPanel panel)
 	{
 		propertiesPanel = panel;
 	}
 
+	public AbstractObjectDataInputPanel getPropertiesPanel()
+	{
+		return propertiesPanel;
+	}
 
+	
 	public void addButton(ObjectsAction action)
 	{
 		addButton(createObjectsActionButton(action, component));
@@ -72,6 +77,6 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements  
 	private Project project;
 	private JPanel buttons;
 	private ObjectPicker component;
-	ObjectDataInputPanel propertiesPanel;
+	private AbstractObjectDataInputPanel propertiesPanel;
 
 }
