@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -27,7 +26,6 @@ import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion
 import org.conservationmeasures.eam.questions.MeasurementStatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
 
-import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
 
 public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpecial
@@ -49,47 +47,37 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField aa2 = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
 		ObjectDataInputField aa3 = addField(createObjectChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
 		ObjectDataInputField aa4 = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
+		
 		ObjectDataInputField aa5 = addField(createObjectStringMapTableField(ObjectType.INDICATOR,  new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
+		
 		ObjectDataInputField aa6 = addField(createRatingChoiceField(ObjectType.INDICATOR, new MeasurementStatusQuestion(Indicator.TAG_MEASUREMENT_STATUS)));  
 		ObjectDataInputField aa7 = addField(createObjectChoiceField(ObjectType.INDICATOR, new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND)));
 		ObjectDataInputField aa8 = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DATE));
-		ObjectDataInputField aa9 = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY));
-		ObjectDataInputField aa0 = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL));
+		ObjectDataInputField aa9 = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY,10));
+		ObjectDataInputField aa0 = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,10));
 		ObjectDataInputField aa11 = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
-		ObjectDataInputField aa22 = addField(createStringField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
-		ObjectDataInputField aa33 = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY));
+		ObjectDataInputField aa22 = addField(createStringField(ObjectType.GOAL, Goal.TAG_BY_WHEN,10));
+		ObjectDataInputField aa33 = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,10));
 		
-		JPanel panel = new JPanel();
-		GridLayoutPlus layout = new GridLayoutPlus(0, 2);
-		layout.setColAlignment(0, Alignment.NORTHEAST);
-		panel.setLayout(layout);
+		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
 		
-		createRow(panel, aa1);
-		createRow(panel,aa2);
-		createRow(panel,aa3);
-		createRow(panel,aa4);
-		createRow(panel,aa5);
-		createRow(panel,aa6);
-		createRow(panel,aa7);
-		createRow(panel,aa8);
-		createRow(panel,aa9);
-		createRow(panel,aa0);
-		createRow(panel,aa11);
-		createRow(panel,aa22);
-		createRow(panel,aa33);
+		ObjectDataInputField[] topfields = new ObjectDataInputField[] {aa1, aa2, aa3, aa4};
+		JPanel topfieldsPanel = createRowBox(topfields, 2);
+		main.add(topfieldsPanel);
 		
-		addFieldComponent(panel);
+		ObjectDataInputField[] tablefield = new ObjectDataInputField[] {aa5};
+		JPanel tablefieldPanel = createRowBox(tablefield, 2);
+		main.add(tablefieldPanel);
 		
+		ObjectDataInputField[] trendfield = new ObjectDataInputField[]  {aa6, aa7, aa8, aa9, aa0, aa11, null, aa22, aa33};
+		JPanel trendfieldPanel = createColumnBox(trendfield, 5);
+		main.add(trendfieldPanel);
+		
+		addFieldComponent(main);
 		updateFieldsFromProject();
 	}
 	
-	public void createRow(JPanel box, ObjectDataInputField field)
-	{
-		JPanel panel = new JPanel(new BorderLayout());
-		box.add(createLabel(field));
-		panel.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
-		box.add(panel);
-	}
+
 
 	public void setObjectRefs(Vector orefsToUse)
 	{

@@ -11,9 +11,9 @@ import org.martus.swing.UiTextArea;
 
 public class ObjectMultilineInputField extends ObjectTextInputField
 {
-	public ObjectMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
+	public ObjectMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new UiTextArea(3, 50));
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new UiTextArea(3, columnsToUse));
 		((UiTextArea)getComponent()).setWrapStyleWord(true);
 		((UiTextArea)getComponent()).setLineWrap(true);
 	}

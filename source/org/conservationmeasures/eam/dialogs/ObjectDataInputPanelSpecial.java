@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.util.Arrays;
 import java.util.Vector;
 
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
@@ -19,6 +20,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;
+
+import com.jhlabs.awt.Alignment;
+import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInputPanel implements CommandExecutedListener
 {
@@ -52,4 +56,57 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	{
 		add(component);
 	}
+	
+	public JPanel createRowBox(ObjectDataInputField[] fields, int columns)
+	{
+		JPanel panel = new JPanel();
+		GridLayoutPlus layout = new GridLayoutPlus(0, columns);
+		layout.setColAlignment(0, Alignment.NORTHEAST);
+		panel.setLayout(layout);
+		for (int i=0; i<fields.length; ++i)
+		{
+			createRow(panel, fields[i]);
+		}
+		return panel;
+	}
+	
+	private void createRow(JPanel box, ObjectDataInputField field)
+	{
+		JPanel panel = new JPanel(new BorderLayout());
+		box.add(createLabel(field));
+		panel.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
+		box.add(panel);
+	}
+	
+	public JPanel createColumnBox(ObjectDataInputField[] fields, int columns)
+	{
+		JPanel panel = new JPanel();
+		GridLayoutPlus layout = new GridLayoutPlus(0, columns);
+		layout.setColAlignment(0, Alignment.NORTHEAST);
+		panel.setLayout(layout);
+		for (int i=0; i<fields.length; ++i)
+		{
+			createColumn(panel, fields[i]);
+		}
+		return panel;
+	}
+	
+	private void createColumn(JPanel box, ObjectDataInputField field)
+	{
+		JPanel panel = new JPanel(new GridLayoutPlus(1,1));
+		if (field==null)
+		{
+			panel.add(new JPanel());
+		}
+		else
+		{
+			panel.add(createLabel(field));
+			panel.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
+		}
+		box.add(panel);
+	}
+	
+	
+	
+	
 }
