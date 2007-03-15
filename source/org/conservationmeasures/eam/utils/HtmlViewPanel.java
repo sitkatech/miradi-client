@@ -19,7 +19,6 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.main.EAM;
@@ -81,7 +80,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 		Container contents = dlg.getContentPane();
 		contents.setLayout(new BorderLayout());
-		contents.add(new JScrollPane(bodyComponent), BorderLayout.CENTER);
+		contents.add(new FastScrollPane(bodyComponent), BorderLayout.CENTER);
 		contents.add(createButtonBar(dlg), BorderLayout.AFTER_LAST_LINE);
 		
 		calculateHeight(dlg, contents, bodyComponent);
