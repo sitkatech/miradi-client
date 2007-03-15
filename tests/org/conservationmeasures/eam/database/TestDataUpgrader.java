@@ -645,6 +645,47 @@ public class TestDataUpgrader extends EAMTestCase
 		
 	}
 	
+	public void testUpgradeTo16WithNoObjects6Directory() throws Exception
+	{
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
+		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":90}");
+
+		File diagramsDir =  new File(jsonDir, "diagrams");
+		diagramsDir.mkdirs();
+		
+ 		String allFactorInfos = " {\"Nodes\":{\"28\":{\"Size\":{\"Width\":120,\"Height\":60},\"WrappedId\":28,\"Location\":{\"Y\":270,\"X\":120},\"Id\":28},\"29\":{\"Size\":{\"Width\":151,\"Height\":60},\"WrappedId\":29,\"Location\":{\"Y\":15,\"X\":375},\"Id\":29}},\"Type\":\"Diagram\"}  ";
+		File diagramMainFile = new File(diagramsDir, "main");
+		createFile(diagramMainFile, allFactorInfos);
+
+		DataUpgrader upgraderWithNoObjects6 = new DataUpgrader(tempDirectory);
+		upgraderWithNoObjects6.upgradeToVersion16();
+	}
+	
+	public void testUpgradeTo16WithObjects6DirectoryButNoManifest() throws Exception
+	{
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
+		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":90}");
+
+		File diagramsDir =  new File(jsonDir, "diagrams");
+		diagramsDir.mkdirs();
+		
+ 		String allFactorInfos = " {\"Nodes\":{\"28\":{\"Size\":{\"Width\":120,\"Height\":60},\"WrappedId\":28,\"Location\":{\"Y\":270,\"X\":120},\"Id\":28},\"29\":{\"Size\":{\"Width\":151,\"Height\":60},\"WrappedId\":29,\"Location\":{\"Y\":15,\"X\":375},\"Id\":29}},\"Type\":\"Diagram\"}  ";
+		File diagramMainFile = new File(diagramsDir, "main");
+		createFile(diagramMainFile, allFactorInfos);
+
+		File objects6Dir = new File(jsonDir, "objects-6");
+		objects6Dir.mkdirs();
+		
+		DataUpgrader upgraderWithNoObjects6 = new DataUpgrader(tempDirectory);
+		upgraderWithNoObjects6.upgradeToVersion16();
+	}
+	
 	public void testCreateDiagramFactorLinksFromRawFactorLinks() throws Exception
 	{
 		String factorLink1 ="{\"FromId\":\"28\",\"ToId\":\"29\",\"Label\":\"\",\"StressLabel\":\"\",\"Id\":56}";
@@ -663,7 +704,7 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		File jsonDir = new File(tempDirectory, "json");
 		jsonDir.mkdirs();
-
+		
 		File objects6Dir = new File(jsonDir, "objects-6");
 		objects6Dir.mkdirs();
 		

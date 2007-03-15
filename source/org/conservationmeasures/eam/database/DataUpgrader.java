@@ -154,12 +154,11 @@ public class DataUpgrader extends ProjectServer
 		
 		File objects6Dir = new File(jsonDir, "objects-6");
 		if (! objects6Dir.exists())
-			throw new RuntimeException("objects-6 directory does not exist. " + objects6Dir.getAbsolutePath());
+			return;
 		
 		File manifestFor6File = new File(objects6Dir, "manifest");
 		if (! manifestFor6File.exists())
-			//TODO should it just retunr; instead of runtimeexception
-			throw new RuntimeException("could not find manifest file: "+manifestFor6File.getAbsolutePath());
+			return;
 		
 		ObjectManifest manifest = new ObjectManifest(JSONFile.read(manifestFor6File));
 		String manifest13Contents = "{\"Type\":\"ObjectManifest\"";
