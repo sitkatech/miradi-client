@@ -286,7 +286,6 @@ public class WizardManager
 			.createNextControl(ThreatRatingWizardChooseBundle.class); 
 
 		createStepEntry(new ThreatRatingWizardCheckTotalsStep(panel))
-			.createNextControl(DiagramWizardIdentifyIndirectThreatStep.class)
 			.createBackControl(ThreatRatingWizardChooseBundle.class); 
 	}
 
@@ -316,6 +315,7 @@ public class WizardManager
 				ThreatRatingWizardSeverityStep.class,
 				ThreatRatingWizardIrreversibilityStep.class,
 				ThreatRatingWizardCheckBundleStep.class,
+				ThreatRatingWizardCheckTotalsStep.class,
 				
 				DiagramWizardIdentifyIndirectThreatStep.class,		
 				DiagramWizardConstructChainsStep.class,	
@@ -388,7 +388,7 @@ public class WizardManager
 		return step;
 	}
 	
-	Class findControlTargetStep(String controlName, SkeletonWizardStep step)
+	public Class findControlTargetStep(String controlName, SkeletonWizardStep step)
 	{
 		Class targetStep = step.getControl(controlName);
 		
@@ -401,16 +401,10 @@ public class WizardManager
 	Class doDeferedSequenceLookup(String controlName, SkeletonWizardStep step)
 	{
 		Class name = getDestinationStep(controlName, step);
-
-		if (name==null)
-		{
-			String errorText = "Control ("+ controlName +") not found for step: " + getStepName(step);
-			reportError(EAM.text(errorText));
-		}
 		return name;
 	}
 
-	private Class getDestinationStep(String controlName, SkeletonWizardStep step)
+	public Class getDestinationStep(String controlName, SkeletonWizardStep step)
 	{
 		Class[] sequences = WizardManager.getSequence();
 
@@ -418,22 +412,16 @@ public class WizardManager
 		if (position<0)
 			return null;
 		
-		if (controlName.equals("Next"))
+		if (controlName.equals(CONTROL_NEXT))
 			++position;
 		
-		if (controlName.equals("Back"))
+		if (controlName.equals(CONTROL_BACK))
 			--position;
 		
 		if (position<0 || position>=sequences.length)
 			return null;
 		
 		return sequences[position];
-	}
-
-	private void reportError(String msg)
-	{
-		EAM.logError(msg);
-		EAM.errorDialog(msg);
 	}
 
 
@@ -445,11 +433,13 @@ public class WizardManager
 		return -1;
 	}
 	
-	private String getStepName(SkeletonWizardStep step)
+	public static String getStepName(SkeletonWizardStep step)
 	{
 		return step.getClass().getSimpleName();
 	}
 	
+	public static String CONTROL_NEXT = "Next";
+	public static String CONTROL_BACK = "Back";
 	Hashtable stepEntries;
 }
 

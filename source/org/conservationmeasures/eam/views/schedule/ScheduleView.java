@@ -56,8 +56,6 @@ public class ScheduleView extends TabbedView
 	{
 		return wizardPanel;
 	}
-	
-	private WizardPanel wizardPanel;
 }
 
 class ScheduleComponent extends JLabel

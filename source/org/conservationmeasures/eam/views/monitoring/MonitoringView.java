@@ -75,7 +75,6 @@ public class MonitoringView extends TabbedView
 		indicatorManagementPanel.updateSplitterLocation();
 	}
 
-	WizardPanel wizardPanel;
 	MonitoringPanel monitoringPanel;
 	IndicatorPoolManagementPanel indicatorManagementPanel;
 }

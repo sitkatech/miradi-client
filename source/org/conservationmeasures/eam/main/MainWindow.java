@@ -323,6 +323,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			EAM.errorDialog("Unexpected error switching view");
 		}
 		
+		updateActionsAndStatusBar();
+	}
+
+	public void updateActionsAndStatusBar()
+	{
 		SwingUtilities.invokeLater(new ActionUpdater());
 		updateStatusBar();
 	}
@@ -500,7 +505,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private Project project;
 	
 	private NoProjectView noProjectView;
-	private SummaryView summaryView;
+	private UmbrellaView summaryView;
 	private DiagramView diagramView;
 	private ThreatMatrixView threatMatrixView;
 	private BudgetView budgetView;

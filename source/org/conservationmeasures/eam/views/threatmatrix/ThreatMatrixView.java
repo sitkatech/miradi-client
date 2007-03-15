@@ -100,7 +100,7 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	private ThreatRatingWizardPanel createWizardPanel() throws Exception
 	{
-		return wizardPanel;
+		return (ThreatRatingWizardPanel)wizardPanel;
 	}
 	
 	public void becomeInactive() throws Exception
@@ -122,7 +122,7 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
-		wizardPanel.selectBundle(bundle);
+		((ThreatRatingWizardPanel)wizardPanel).selectBundle(bundle);
 		details.selectBundle(bundle);
 		grid.selectBundle(bundle);
 		invalidate();
@@ -213,7 +213,6 @@ public class ThreatMatrixView extends UmbrellaView
 
 	JSplitPane bigSplitter;
 	ThreatMatrixTableModel model;
-	ThreatRatingWizardPanel wizardPanel;
 	ThreatGridPanel grid;
 	ThreatRatingBundlePanel details;
 	JPanel gridWithHeadings;

@@ -167,7 +167,6 @@ public class BudgetView extends TabbedView
 		return htmlViewer;
 	}
 	
-	WizardPanel wizardPanel;
 	BudgetTreeTablePanel treeTableComponent;
 	BudgetPropertiesPanel budgetPropertiesPanel;
 	BudgetManagementPanel budgetManagmentPanel;

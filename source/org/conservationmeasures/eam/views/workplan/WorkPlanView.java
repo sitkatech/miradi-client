@@ -154,7 +154,6 @@ public class WorkPlanView extends TabbedView
 	
 	MainWindow mainWindow;
 
-	WizardPanel wizardPanel;
 	WorkPlanManagementPanel workPlanManagementPanel;
 	ResourcePoolManagementPanel resourceManagementPanel;
 	ActivityPoolManagementPanel activitiesManagementPanel;

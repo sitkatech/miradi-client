@@ -463,7 +463,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	JSplitPane bigSplitter;
 	DiagramComponent diagram;
 	Properties propertiesDoer;
-	WizardPanel wizardPanel;
 	String mode;
 	DiagramLegendPanel legendDialog;
 	

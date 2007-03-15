@@ -109,8 +109,6 @@ public class SummaryView extends TabbedView
 		wizardPanel.jump(stepMarker);
 	}
 
-	WizardPanel wizardPanel;
-	
 	CrossOrganizationSummaryPanel crossOrganizationSummaryPanel;
 	TNCSummaryPanel tncSummaryPanel;
 

@@ -250,13 +250,17 @@ public class Actions
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
 		registerAction(new ActionJumpBudgetFutureDemo(mainWindow));
+		registerAction(new ActionJumpDiagramOverviewStep(mainWindow));
+		registerAction(new ActionJumpWorkPlanOverviewStep(mainWindow));
+		
 		registerAction(new ActionConfigureExport(mainWindow));
 		registerAction(new ActionDatabasesDemo(mainWindow));
 		registerAction(new ActionReportsDemo(mainWindow));
-		registerAction(new ActionJumpDiagramOverviewStep(mainWindow));
-		registerAction(new ActionJumpWorkPlanOverviewStep(mainWindow));
 		registerAction(new ActionExportBudgetTableTree(mainWindow));
 		registerAction(new ActionCreateBendPoint(mainWindow));
+		registerAction(new ActionWizardNext(mainWindow));
+		registerAction(new ActionWizardPrevious(mainWindow));
+		
 	}
 	
 	public EAMAction get(Class c)

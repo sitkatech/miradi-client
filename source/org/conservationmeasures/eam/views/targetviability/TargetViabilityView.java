@@ -48,6 +48,4 @@ public class TargetViabilityView extends TabbedView
 	{
 		return wizardPanel;
 	}
-	
-	WizardPanel wizardPanel;
 }

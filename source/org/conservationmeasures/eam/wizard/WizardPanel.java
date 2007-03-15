@@ -6,13 +6,19 @@
 package org.conservationmeasures.eam.wizard;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.Box;
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.actions.ActionWizardNext;
+import org.conservationmeasures.eam.actions.ActionWizardPrevious;
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiButton;
 
 public class WizardPanel extends JPanel
 {
@@ -23,6 +29,7 @@ public class WizardPanel extends JPanel
 		wizardManager = mainWindow.getWizardManager();
 		setFocusCycleRoot(true);
 		view = viewToUse;
+		navigationButtons = createNavigationButtons();
 		setupSteps();
 	}
 
@@ -47,6 +54,7 @@ public class WizardPanel extends JPanel
 	{
 		removeAll();
 		add(contents, BorderLayout.CENTER);
+		add(navigationButtons, BorderLayout.AFTER_LAST_LINE);
 		allowSplitterToHideUsCompletely();
 		revalidate();
 		repaint();
@@ -55,7 +63,20 @@ public class WizardPanel extends JPanel
 	public void control(String controlName) throws Exception
 	{
 		SkeletonWizardStep step = wizardManager.findStep(currentStepName);
-		jump(wizardManager.findControlTargetStep(controlName, step));
+		Class destinationStepClass = wizardManager.findControlTargetStep(controlName, step);
+		if (destinationStepClass==null)
+		{
+			String errorText = "Control ("+ controlName +") not found for step: " + wizardManager.getStepName(step);
+			reportError(EAM.text(errorText));
+		}
+
+		jump(destinationStepClass);
+	}
+
+	private void reportError(String msg)
+	{
+		EAM.logError(msg);
+		EAM.errorDialog(msg);
 	}
 
 	private String removeSpaces(String name)
@@ -90,9 +111,21 @@ public class WizardPanel extends JPanel
 		return view;
 	}
 	
+	Component createNavigationButtons()
+	{
+		Actions actions = mainWindow.getActions();
+		Box box = Box.createHorizontalBox();
+		box.add(Box.createHorizontalStrut(10));
+		box.add(new UiButton(actions.get(ActionWizardPrevious.class)));
+		box.add(Box.createHorizontalGlue());
+		box.add(new UiButton(actions.get(ActionWizardNext.class)));
+		box.add(Box.createHorizontalStrut(10));
+		return box;
+	}
+	
 	protected UmbrellaView view;
 	protected MainWindow mainWindow;
 	public String currentStepName;
 	private WizardManager wizardManager;
-
+	Component navigationButtons;
 }

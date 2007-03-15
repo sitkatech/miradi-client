@@ -42,6 +42,8 @@ import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionUndo;
+import org.conservationmeasures.eam.actions.ActionWizardNext;
+import org.conservationmeasures.eam.actions.ActionWizardPrevious;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
@@ -57,12 +59,10 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargetStatusStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargetStatusStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
@@ -99,6 +99,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotalsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanOverviewStep;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
@@ -126,6 +128,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
+import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 
@@ -141,6 +144,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	}
 	
 	abstract public String cardName();
+	
+	public WizardPanel getWizardPanel()
+	{
+		return wizardPanel;
+	}
 	
 	public void jump(Class stepMarker) throws Exception
 	{
@@ -307,6 +315,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewMonitoring.class, new ViewMonitoring());
 		addDoerToMap(ActionViewTargetViability.class, new ViewTargetViability());
 		
+		addDoerToMap(ActionWizardNext.class, new WizardNextDoer());
+		addDoerToMap(ActionWizardPrevious.class, new WizardPreviousDoer());
+		
 		addJumpDoerToMap(ActionJumpSummaryWizardDefineTeamMembers.class);
 		addJumpDoerToMap(ActionJumpSummaryWizardDefineProjectLeader.class);
 		addJumpDoerToMap(ActionJumpDevelopCharter.class);
@@ -456,5 +467,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	private ModelessDialogPanel activePropertiesPanel;
 	private ModelessDialogWithClose activePropertiesDlg;
+	protected WizardPanel wizardPanel;
  
 }

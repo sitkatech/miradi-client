@@ -21,7 +21,7 @@ public class StrategicPlanView extends TabbedView
 		super(mainWindowToUse);
 		setToolBar(new StrategicPlanToolBar(mainWindowToUse.getActions()));
 		addStrategicPlanDoersToMap();
-		stratPlanWizardPanel = new WizardPanel(mainWindowToUse, this);
+		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 	
 	public String cardName() 
@@ -62,12 +62,12 @@ public class StrategicPlanView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return stratPlanWizardPanel;
+		return wizardPanel;
 	}
 	
 	public void jump(Class stepMarker) throws Exception
 	{
-		stratPlanWizardPanel.jump(stepMarker);
+		wizardPanel.jump(stepMarker);
 	}
 	
 	public void becomeActive() throws Exception
@@ -98,7 +98,6 @@ public class StrategicPlanView extends TabbedView
 	{
 	}
 	
-	WizardPanel stratPlanWizardPanel;
 	StrategicPlanPanel strategicPlanPanel;
 	ObjectivePoolManagementPanel objectivePanel;
 	GoalPoolManagementPanel goalPanel;
