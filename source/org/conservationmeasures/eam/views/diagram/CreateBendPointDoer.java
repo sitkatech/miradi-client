@@ -12,7 +12,10 @@ public class CreateBendPointDoer extends ProjectDoer
 {
 	public boolean isAvailable()
 	{
-		return false;
+		if(!getProject().isOpen())
+			return false;
+		
+		return (getProject().getOnlySelectedLinks().length == 1);
 	}
 
 	public void doIt() throws CommandFailedException
