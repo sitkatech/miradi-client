@@ -13,6 +13,7 @@ import java.awt.LayoutManager2;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.umbrella.ManagementPanelSplitPane;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
@@ -38,7 +39,7 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 
 	public void createVerticalSplitPane(Component top, Component bottom, String splitterName)
 	{
-		JScrollPane propertiesScroll = new JScrollPane(bottom);
+		JScrollPane propertiesScroll = new FastScrollPane(bottom);
 		
 		splitter = new ManagementPanelSplitPane(this, splitPositionSaver, splitterName, top, propertiesScroll );
 		add(splitter, BorderLayout.CENTER);

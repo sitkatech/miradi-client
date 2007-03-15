@@ -8,7 +8,9 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class ScrollPaneWithTableAndRowHeader extends JScrollPane
+import org.conservationmeasures.eam.utils.FastScrollPane;
+
+public class ScrollPaneWithTableAndRowHeader extends FastScrollPane
 {
 	public ScrollPaneWithTableAndRowHeader(JTable rowHeaderTableToUse, JTable table)
 	{

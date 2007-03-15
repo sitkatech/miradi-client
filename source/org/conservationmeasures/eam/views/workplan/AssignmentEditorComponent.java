@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.budget.AssignmentTableModelSplittableShell;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
@@ -86,7 +87,7 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 	protected JScrollPane createScrollPaneWithFixedHeader()
 	{
 		new SelectionInSyncKeeper(lockedTable, scrollTable);
-		JScrollPane scrollPane = new JScrollPane(scrollTable);
+		JScrollPane scrollPane = new FastScrollPane(scrollTable);
 	
 		JViewport viewport = new JViewport();
 		viewport.setView(lockedTable);

@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
 
@@ -30,7 +31,7 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 		super(wizardToUse);
 
 		htmlViewer = new WizardHtmlViewer(this);
-		JScrollPane scrollPane = new JScrollPane(htmlViewer);
+		JScrollPane scrollPane = new FastScrollPane(htmlViewer);
 		add(scrollPane);
 		htmlViewer.addMouseListener(this);
 	}
