@@ -13,7 +13,7 @@ public class MeasurementStatusQuestion extends ChoiceQuestion
 {
 	public MeasurementStatusQuestion(String tagToUse)
 	{
-		super(tagToUse, "Trend Status", getTrendStatuses());
+		super(tagToUse, "Measurement Status", getTrendStatuses());
 	}
 
 	static ChoiceItem[] getTrendStatuses()
