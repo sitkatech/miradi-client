@@ -114,7 +114,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 				return;
 			tree.getTree().expandPath(found.getParentPath());
 			int row = tree.getTree().getRowForPath(found);
-			//FIXME: not sure if this if and clear are of any real use
+			//FIXME: not sure if this 'if' is of any real use
 			if(row < 0)
 			{
 				EAM.logWarning("TreeTablePanel.selectObject failed: row -1");
