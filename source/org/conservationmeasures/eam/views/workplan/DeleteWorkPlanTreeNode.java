@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.workplan;
 
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
@@ -51,16 +52,25 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 				{
 					ChainManager chainManager = new ChainManager(project);
 					KeyEcologicalAttribute kea = chainManager.findKEAWithIndicator(object.getId(), (Target)factor);
-					DeleteAnnotationDoer.deleteAnnotationViaCommands(project, kea, (Indicator)object, Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
+					final String string = KeyEcologicalAttribute.TAG_INDICATOR_IDS;
+					deleteAnnotation(project, object, kea, string);
 				}
 				else
-					DeleteAnnotationDoer.deleteAnnotationViaCommands(project, factor, (Indicator)object, Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
+				{
+					final String string = Factor.TAG_INDICATOR_IDS;
+					DeleteAnnotationDoer.deleteAnnotationViaCommands(project, factor, (Indicator)object, string, getConfirmDialogText());
+				}
 			}
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
+	}
+
+	private void deleteAnnotation(Project project, EAMObject object, KeyEcologicalAttribute kea, final String string) throws CommandFailedException
+	{
+		DeleteAnnotationDoer.deleteAnnotationViaCommands(project, kea, (Indicator)object, string, getConfirmDialogText());
 	}
 
 	private Factor getFactor(Project project, BaseId indicatorId) throws Exception
