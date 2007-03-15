@@ -56,7 +56,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			
 			if (newIdList.size()==0)
 			{
-				//TODO: right now we only go to the root of the node being deleted....not the sibling
+				//TODO: right now we only go to the root of the node being deleted....not the sibling of the delted node
 				CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 				expandAndSelectObject(cmd.getObjectType(), cmd.getObjectId());
 			}
