@@ -86,15 +86,6 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	}
 
 
-	private JPanel createGridLayoutPanel(int columns)
-	{
-		JPanel panel = new JPanel();
-		GridLayoutPlus layout = new GridLayoutPlus(0, columns);
-		layout.setColAlignment(0, Alignment.NORTHEAST);
-		panel.setLayout(layout);
-		return panel;
-	}
-	
 	private void createColumn(JPanel box, ObjectDataInputField field, int columns, int column)
 	{
 		JPanel panel = new JPanel(new GridLayoutPlus(1,1));
@@ -111,6 +102,15 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	}
 	
 	
+
+	private JPanel createGridLayoutPanel(int columns)
+	{
+		JPanel panel = new JPanel();
+		GridLayoutPlus layout = new GridLayoutPlus(0, columns);
+		layout.setColAlignment(0, Alignment.NORTHEAST);
+		panel.setLayout(layout);
+		return panel;
+	}
 	
 	
 }
