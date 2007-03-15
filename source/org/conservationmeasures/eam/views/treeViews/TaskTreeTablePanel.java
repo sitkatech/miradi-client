@@ -39,12 +39,12 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	{
 		GenericTreeTableModel treeTableModel = getModel();
 		
-		final boolean whereActivityNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS);
-		final boolean whereIndicatorNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE , KeyEcologicalAttribute.TAG_INDICATOR_IDS);
-		final boolean whereTaskNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.TASK , Task.TAG_SUBTASK_IDS);
-		if(	whereActivityNodesAddedOrRemoved || 
-				whereIndicatorNodesAddedOrRemoved ||
-				whereTaskNodesAddedOrRemoved)
+		final boolean wereActivityNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS);
+		final boolean wereIndicatorNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE , KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+		final boolean wereTaskNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.TASK , Task.TAG_SUBTASK_IDS);
+		if(	wereActivityNodesAddedOrRemoved || 
+				wereIndicatorNodesAddedOrRemoved ||
+				wereTaskNodesAddedOrRemoved)
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
@@ -53,7 +53,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 			for (int i=0; i<newIdList.size(); ++i)
 			{
 				int annoationObjectType = ObjectType.INDICATOR;
-				if (whereActivityNodesAddedOrRemoved || whereTaskNodesAddedOrRemoved )
+				if (wereActivityNodesAddedOrRemoved || wereTaskNodesAddedOrRemoved )
 					annoationObjectType = ObjectType.TASK;
 				expandAndSelectObject(annoationObjectType, newIdList.get(i));
 			}
