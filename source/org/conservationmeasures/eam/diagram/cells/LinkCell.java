@@ -6,11 +6,13 @@
 package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
@@ -51,6 +53,20 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return link;
 	}
 	
+	private void updateBendPoints(DiagramComponent diagram)
+	{
+		//TODO should update bendable arrows from this
+		PointList bendPoints = getDiagramFactorLink().getBendPoints();
+		ArrayList list = new ArrayList(bendPoints.getAllPoints());
+		
+		ArrayList newList =new ArrayList();
+		newList.add(from.getLocation());
+		newList.addAll(list);
+		newList.add(to.getLocation());
+		
+		GraphConstants.setPoints(getAttributes(), newList);
+	}
+	
 	public void update(DiagramComponent diagram)
 	{
 		boolean isVisible = isThisLinkVisible(diagram);
@@ -58,6 +74,8 @@ public class LinkCell extends EAMGraphCell implements Edge
 			setTail(GraphConstants.ARROW_NONE);
 		else
 			setTail(ArrowLineRenderer.ARROW_JUST_LINE);
+		
+		updateBendPoints(diagram);
 	}
 
 	private boolean isThisLinkVisible(DiagramComponent diagram)
@@ -115,6 +133,8 @@ public class LinkCell extends EAMGraphCell implements Edge
 	    GraphConstants.setGradientColor(getAttributes(), Color.BLACK); //Windows 2000 quirk required to see line.
 		GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_TECHNICAL);
 		GraphConstants.setEndFill(getAttributes(), true);
+		//TODO do we realy need this for bendable arrows
+		GraphConstants.setBendable(getAttributes(), true);
 	}
 
 

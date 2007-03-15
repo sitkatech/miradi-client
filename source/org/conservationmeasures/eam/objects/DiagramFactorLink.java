@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParamet
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.utils.PointList;
 
 public class DiagramFactorLink extends EAMBaseObject
 {
@@ -105,6 +106,11 @@ public class DiagramFactorLink extends EAMBaseObject
 				new FactorLinkId(underlyingObjectId.getId().asInt()), 
 				new DiagramFactorId(fromId.getId().asInt()), 
 				new DiagramFactorId(toId.getId().asInt()));
+	}
+	
+	public PointList getBendPoints()
+	{
+		return bendPoints.getPointList();
 	}
 	
 	void clear()

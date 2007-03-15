@@ -60,6 +60,11 @@ public class PointList
 		return (Point)data.get(index);
 	}
 	
+	public Vector getAllPoints()
+	{
+		return data;
+	}
+	
 	public boolean contains(Point point)
 	{
 		return data.contains(point);
