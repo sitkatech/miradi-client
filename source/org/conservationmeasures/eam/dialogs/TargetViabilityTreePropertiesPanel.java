@@ -61,13 +61,9 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
 		
-		ObjectDataInputField[] topfields = new ObjectDataInputField[] {aa1, aa2, aa3, aa4};
+		ObjectDataInputField[] topfields = new ObjectDataInputField[] {aa1, aa2, aa3, aa4, aa5};
 		JPanel topfieldsPanel = createRowBox(topfields, 2);
 		main.add(topfieldsPanel);
-		
-		ObjectDataInputField[] tablefield = new ObjectDataInputField[] {aa5};
-		JPanel tablefieldPanel = createRowBox(tablefield, 2);
-		main.add(tablefieldPanel);
 		
 		ObjectDataInputField[] trendfield = new ObjectDataInputField[]  {aa6, aa7, aa8, aa9, aa0, aa11, null, aa22, aa33};
 		JPanel trendfieldPanel = createColumnBox(trendfield, 5);
