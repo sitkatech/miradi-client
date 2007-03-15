@@ -38,9 +38,12 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	{
 		GenericTreeTableModel treeTableModel = getModel();
 		
-		if(	event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS) || 
-				event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE , KeyEcologicalAttribute.TAG_INDICATOR_IDS) ||
-				event.isSetDataCommandWithThisTypeAndTag(ObjectType.TASK , Task.TAG_SUBTASK_IDS))
+		final boolean whereActivityNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS);
+		final boolean whereIndicatorNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE , KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+		final boolean whereTaskNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.TASK , Task.TAG_SUBTASK_IDS);
+		if(	whereActivityNodesAddedOrRemoved || 
+				whereIndicatorNodesAddedOrRemoved ||
+				whereTaskNodesAddedOrRemoved)
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
@@ -48,7 +51,16 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 			IdList newIdList = event.extractNewlyAddedIds();
 			for (int i=0; i<newIdList.size(); ++i)
 			{
-				expandAndSelectObject(objectType, newIdList.get(i));
+				int annoationObjectType = ObjectType.INDICATOR;
+				if (whereActivityNodesAddedOrRemoved || whereTaskNodesAddedOrRemoved )
+					annoationObjectType = ObjectType.TASK;
+				expandAndSelectObject(annoationObjectType, newIdList.get(i));
+			}
+			if (newIdList.size()==0)
+			{
+				//TODO: right now we only go to the root of the node being deleted....not the sibling
+				CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+				expandAndSelectObject(objectType, cmd.getObjectId());
 			}
 		}
 		else if(event.isCreateObjectCommand() || 

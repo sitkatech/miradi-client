@@ -57,11 +57,8 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			if (newIdList.size()==0)
 			{
 				//TODO: right now we only go to the root of the node being deleted....not the sibling
-				int objectType = ObjectType.FACTOR;
-				if (wereIndicatorNodesAddedOrRemoved)
-					objectType = ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 				CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-				expandAndSelectObject(objectType, cmd.getObjectId());
+				expandAndSelectObject(cmd.getObjectType(), cmd.getObjectId());
 			}
 			repaint();
 		} 
