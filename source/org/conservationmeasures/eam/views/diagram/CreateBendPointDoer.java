@@ -58,7 +58,7 @@ public class CreateBendPointDoer extends LocationDoer
 		
 		
 		//TODO calculate location without mouse click location 
-		return newBendPoint;
+		return new Point(0, 0);
 	}
 
 }

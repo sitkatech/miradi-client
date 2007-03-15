@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
-import java.util.ArrayList;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
@@ -62,12 +62,15 @@ public class LinkCell extends EAMGraphCell implements Edge
 	private void updateBendPoints()
 	{
 		PointList bendPoints = getDiagramFactorLink().getBendPoints();
-		ArrayList bendPointList = new ArrayList(bendPoints.getAllPoints());
-		ArrayList newList =new ArrayList();
+		Vector bendPointList = new Vector(bendPoints.getAllPoints());
+		Vector newList =new Vector();
 		newList.add(to.getLocation());
-		newList.addAll(bendPointList);
-		newList.add(from.getLocation());
 		
+		//TODO remove reversing of array
+		for (int i = bendPointList.size() - 1; i >= 0 ; i--)
+			newList.add(bendPointList.get(i));
+		
+		newList.add(from.getLocation());
 		GraphConstants.setPoints(getAttributes(), newList);
 	}
 	
