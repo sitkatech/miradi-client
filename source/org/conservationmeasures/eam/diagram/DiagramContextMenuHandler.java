@@ -86,7 +86,7 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertFactorLink.class));
-		insertMenu.add(actions.get(ActionCreateBendPoint.class));
+		insertMenu.add(createMenuItem(ActionCreateBendPoint.class, menuInvokedAt));
 
 		return insertMenu;
 	}

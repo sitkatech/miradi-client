@@ -12,8 +12,8 @@ public class ActionCreateBendPoint extends LocationAction
 {
 	public ActionCreateBendPoint(MainWindow mainWindowToUse)
 	{
-		//FIXME add either icon or the correct label
-		super(mainWindowToUse, getLabel(), getLabel());
+		//TODO fix icon
+		super(mainWindowToUse, getLabel(), "icons/bendPoint.gif");
 	}
 
 	private static String getLabel()
