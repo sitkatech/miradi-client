@@ -28,6 +28,10 @@ import org.martus.util.UnicodeWriter;
 
 public class DataUpgrader extends ProjectServer
 {
+	public class MigrationTooOldException extends Exception
+	{
+	}
+
 	public static void attemptUpgrade(File projectDirectory)
 	{
 		String[] migrationText = {
@@ -61,6 +65,13 @@ public class DataUpgrader extends ProjectServer
 			DataUpgrader upgrader = new DataUpgrader(projectDirectory);
 			upgrader.upgrade();
 			versionAfterUpgrading = readDataVersion(projectDirectory);
+		}
+		catch (DataUpgrader.MigrationTooOldException e)
+		{
+			EAM.errorDialog(EAM.text("That project is too old to be migrated by this version of Miradi. " +
+					"You can use Miradi 1.0 to migrate it to a modern data format, " +
+					"and after that it can be opened and migrated by this version."));
+			return;
 		}
 		catch (Exception e)
 		{
@@ -115,9 +126,10 @@ public class DataUpgrader extends ProjectServer
 		if(readDataVersion(getTopDirectory()) == 14)
 			upgradeToVersion15();
 		*/
-	
-		//FIXME remove comments after links have been added to the migration.  
-		// this code is commented so that older projects are not corrupted on accident
+
+		if(readDataVersion(getTopDirectory()) < 15)
+			throw new MigrationTooOldException();
+		
 		if (readDataVersion(getTopDirectory()) == 15)
 			upgradeToVersion16();
 		

@@ -48,6 +48,24 @@ public class TestDataUpgrader extends EAMTestCase
 	
 		super.tearDown();
 	}
+	
+	public void testMigrateTooOldProject() throws Exception
+	{
+		File jsonDirectory = new File(tempDirectory, "json");
+		jsonDirectory.mkdirs();
+		
+		File version = new File(jsonDirectory, "version");
+		createFile(version, "{\"Version\":14}");
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		try
+		{
+			upgrader.upgrade();
+			fail("Should have thrown for version too old to migrate");
+		}
+		catch(DataUpgrader.MigrationTooOldException ignoreExpected)
+		{
+		}
+	}
 
 	public void testRenameNodeTagFromNameToLabelNoManifest() throws Exception
 	{
