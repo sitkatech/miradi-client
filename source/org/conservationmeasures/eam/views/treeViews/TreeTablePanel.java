@@ -96,12 +96,12 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public void expandAndSelectObject(int objectType, BaseId objectToSelect)
 	{
-		SwingUtilities.invokeLater(new expandAndSelectObject(objectType, objectToSelect));
+		SwingUtilities.invokeLater(new ExpandAndSelectObject(objectType, objectToSelect));
 	}
 	
-	class expandAndSelectObject implements Runnable
+	class ExpandAndSelectObject implements Runnable
 	{
-		public expandAndSelectObject(int objectTypeToUse, BaseId objectToSelectToUse)
+		public ExpandAndSelectObject(int objectTypeToUse, BaseId objectToSelectToUse)
 		{
 			objectType = objectTypeToUse;
 			objectToSelect = objectToSelectToUse;
