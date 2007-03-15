@@ -89,7 +89,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		{
 			commands.addAll(buildCommandsToDeleteSubTasks(project, type, idToRemove));
 			commands.addAll(buildCommandsToDeleteKEAIndicators(project, type, idToRemove));
-			commands.addAll(buildCommandsToDeleteSubGolas(project, type, idToRemove));
+			commands.addAll(buildCommandsToDeleteSubGoals(project, type, idToRemove));
 			commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 			commands.add(new CommandDeleteObject(type, idToRemove));
 		}
@@ -150,7 +150,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	}
 	
 	
-	private static Vector buildCommandsToDeleteSubGolas(Project project, int type, BaseId id) throws Exception
+	private static Vector buildCommandsToDeleteSubGoals(Project project, int type, BaseId id) throws Exception
 	{
 		Vector commands = new Vector();
 		if (!(type == ObjectType.INDICATOR))
