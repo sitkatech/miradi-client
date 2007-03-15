@@ -28,7 +28,8 @@ import org.martus.swing.Utilities;
 
 public class HtmlViewPanel implements HtmlFormEventHandler
 {
-	
+
+	// FIXME: These constructors are a mess...might want to be multiple classes?
 	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, String htmlTextToUse)
 	{
 		this(mainWindowToUse, titleToUse, htmlTextToUse, new DummyHandler());
@@ -61,6 +62,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		viewTitle = titleToUse;
 		delegateFormHandler = handlerToUse;
 		mainWindow = mainWindowToUse;
+		closeButtonText = EAM.text("Close");
 	}
 
 	
@@ -110,7 +112,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		close = new JButton(new CloseAction(dlg));
 		dlg.getRootPane().setDefaultButton(close);
 		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), close};
+		Component[] components = new Component[] {Box.createHorizontalGlue(), close, Box.createHorizontalStrut(10)};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 		return buttonBar;
 	}
@@ -135,14 +137,14 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 
 	
-	static class CloseAction extends AbstractAction
+	class CloseAction extends AbstractAction
 	{
 		public CloseAction(JDialog dialogToClose)
 		{
-			super("CLOSE");
+			super(getCloseButtonText());
 			dlg = dialogToClose;
 		}
-		
+
 		public void actionPerformed(ActionEvent arg0)
 		{
 			dlg.dispose();
@@ -151,6 +153,16 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		JDialog dlg;
 	}
 
+	String getCloseButtonText()
+	{
+		return closeButtonText;
+	}
+	
+	public void setCloseButtonText(String text)
+	{
+		closeButtonText = text;
+	}
+	
 	public void buttonPressed(String buttonName)
 	{
 		delegateFormHandler.buttonPressed(buttonName);
@@ -213,6 +225,6 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	private HtmlFormEventHandler delegateFormHandler;
 	private JButton close;
 	private MainWindow mainWindow;
-
+	private String closeButtonText;
 
 }
