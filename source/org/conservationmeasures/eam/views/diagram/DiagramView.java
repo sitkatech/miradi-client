@@ -20,6 +20,7 @@ import javax.swing.JSplitPane;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCreateActivity;
+import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
 import org.conservationmeasures.eam.actions.ActionCreateGoal;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
@@ -158,6 +159,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionInsertStrategy.class, new InsertStrategyDoer());
 		addDoerToMap(ActionInsertDraftStrategy.class, new InsertDraftStrategyDoer());
 		addDoerToMap(ActionInsertFactorLink.class, new InsertFactorLinkDoer());
+		addDoerToMap(ActionCreateBendPoint.class, new CreateBendPointDoer());
 		addDoerToMap(ActionCopy.class, new Copy());
 		addDoerToMap(ActionSelectAll.class, new SelectAllDoer());
 		addDoerToMap(ActionCut.class, new Cut());

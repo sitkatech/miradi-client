@@ -14,21 +14,22 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
-import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
+import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
-import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
+import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
-import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
+import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
@@ -85,6 +86,7 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertFactorLink.class));
+		insertMenu.add(actions.get(ActionCreateBendPoint.class));
 
 		return insertMenu;
 	}

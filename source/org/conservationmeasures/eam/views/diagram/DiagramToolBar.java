@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
@@ -44,6 +45,7 @@ public class DiagramToolBar extends EAMToolBar
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),
 				new ToolBarButton(actions, ActionInsertTarget.class),
 				new ToolBarButton(actions, ActionInsertFactorLink.class),
+				new ToolBarButton(actions, ActionCreateBendPoint.class),
 			},
 			{
 				new ToolBarButton(actions, ActionCut.class),

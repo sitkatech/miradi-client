@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.actions.ActionAboutCMP;
 import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
 import org.conservationmeasures.eam.actions.ActionDelete;
@@ -204,8 +205,9 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class),KeyEvent.VK_D));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class),KeyEvent.VK_T));
 		menu.addSeparator();
-		
 		addMenuItem(actions, menu, ActionInsertFactorLink.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu, ActionCreateBendPoint.class, KeyEvent.VK_B);
+		
 		return menu;
 	}
 

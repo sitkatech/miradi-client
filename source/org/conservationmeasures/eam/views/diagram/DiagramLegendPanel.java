@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
@@ -83,6 +84,8 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 		addButtonLineWithCheckBox(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		addButtonLineWithCheckBox(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
+		//TODO find a better place for this string "Bend Point" check also to see if its desired name
+		addButtonLineWithCheckBox(jpanel, "Bend Point", actions.get(ActionCreateBendPoint.class));
 		addTargetLinkLine(jpanel, TARGET_LINKS_TEXT);
 		
 		addIconLineWithCheckBox(jpanel, Goal.OBJECT_NAME, new GoalIcon());
