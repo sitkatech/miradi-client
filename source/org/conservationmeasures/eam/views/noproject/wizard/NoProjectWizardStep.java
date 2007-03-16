@@ -6,6 +6,9 @@
 package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
@@ -23,6 +26,10 @@ public class NoProjectWizardStep extends SkeletonWizardStep
 		add(headerHtmlViewer, BorderLayout.BEFORE_FIRST_LINE);
 
 		projectList = new ProjectListPanel(wizardToUse);
+		
+		setBackground(Color.WHITE);
+		setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+
 	}
 
 	public void refresh() throws Exception

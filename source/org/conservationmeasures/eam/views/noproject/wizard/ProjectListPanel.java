@@ -10,7 +10,6 @@ import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
@@ -32,9 +31,8 @@ public class ProjectListPanel extends JPanel
 		
 		add(intro, BorderLayout.BEFORE_FIRST_LINE);
 		add(new FastScrollPane(projectList), BorderLayout.CENTER);
-		Border lineBorder = BorderFactory.createLineBorder(Color.BLACK, 2);
-		Border emptyBorder = BorderFactory.createEmptyBorder(3,3,3,3);
-		setBorder(BorderFactory.createCompoundBorder(emptyBorder, lineBorder));
+		setBackground(Color.WHITE);
+		setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 	}
 	
 	public void refresh()

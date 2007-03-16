@@ -6,10 +6,10 @@
 package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.io.File;
 import java.util.Date;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -19,15 +19,20 @@ import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiLabel;
 import org.martus.util.MultiCalendar;
 
-import com.jhlabs.awt.BasicGridLayout;
+import com.jhlabs.awt.GridLayoutPlus;
 
 public class ProjectList extends JPanel
 {
 	public ProjectList(HyperlinkHandler handlerToUse)
 	{
-		super(new BasicGridLayout(0, 2));
 		handler = handlerToUse;
+
+		int COL_GUTTER = 5;
+		int ROW_GUTTER = 0;
+		GridLayoutPlus layout = new GridLayoutPlus(0, 2, COL_GUTTER, ROW_GUTTER);
+		setLayout(layout);
 		
+		setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		setBackground(Color.WHITE);
 		refresh();
 	}
@@ -35,8 +40,8 @@ public class ProjectList extends JPanel
 	public void refresh()
 	{
 		removeAll();
-		add(new UiLabel("Project Filename"));
-		add(new UiLabel("Last Modified"));
+		add(new TableHeadingText("Project Filename"));
+		add(new TableHeadingText("Last Modified"));
 		
 		File[] projectDirectories = getProjectDirectories();
 		for(int i = 0; i < projectDirectories.length; ++i)
@@ -46,7 +51,7 @@ public class ProjectList extends JPanel
 			MultiCalendar date = new MultiCalendar(new Date(projectFile.lastModified()));
 			String isoDate = date.toIsoDateString();
 			add(new HyperlinkLabel(name, NoProjectWizardPanel.OPEN_PREFIX+name, handler));
-			add(new TableHeadingText(isoDate));
+			add(new HtmlLabel("<font size='+0'>" + isoDate + "</font>"));
 		}
 		
 		// NOTE: invalidate() is not strong enough to blank the bottom row after delete
@@ -61,12 +66,19 @@ public class ProjectList extends JPanel
 
 	}
 	
-	class TableHeadingText extends UiLabel
+	class HtmlLabel extends UiLabel
+	{
+		public HtmlLabel(String text)
+		{
+			super("<html><span style='background-color: white;'" + text + "</span></html>");
+		}
+	}
+	
+	class TableHeadingText extends HtmlLabel
 	{
 		public TableHeadingText(String text)
 		{
-			super(text);
-			setFont(getFont().deriveFont(Font.BOLD));
+			super("<strong><font size='+1'>" + text + "</font></strong>");
 		}
 		
 	}

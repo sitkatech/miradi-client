@@ -34,10 +34,14 @@ public class HyperlinkLabel extends UiLabel implements MouseListener
 	
 	private HyperlinkLabel(String linkText)
 	{
-		super("<html><u>" + linkText + "</u></html>");
+		super("<html>" +
+				"<span style='background-color: light-gray;" +
+				"color: blue;" +
+				"font-size: 120%; " +
+				"text-decoration: underline;'>" + 
+				linkText + "</span></html>");
 		text = linkText;
-		setBackground(Color.WHITE);
-		setForeground(Color.BLUE);
+		setBackground(NORMAL_BACKGROUND);
 		setOpaque(true);
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		addMouseListener(this);
@@ -59,13 +63,13 @@ public class HyperlinkLabel extends UiLabel implements MouseListener
 
 	public void mouseEntered(MouseEvent e)
 	{
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(HOVER_BACKGROUND);
 		invalidate();
 	}
 
 	public void mouseExited(MouseEvent e)
 	{
-		setBackground(Color.WHITE);
+		setBackground(NORMAL_BACKGROUND);
 		invalidate();
 	}
 
@@ -90,6 +94,8 @@ public class HyperlinkLabel extends UiLabel implements MouseListener
 		}
 	}
 	
+	Color NORMAL_BACKGROUND = Color.WHITE;
+	Color HOVER_BACKGROUND = Color.LIGHT_GRAY;
 	String url;
 	String text;
 	String popUpText;
