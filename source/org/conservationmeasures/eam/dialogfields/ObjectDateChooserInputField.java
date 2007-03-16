@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CustomDateChooser;
 import org.martus.util.MultiCalendar;
 
-import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 
 public class ObjectDateChooserInputField extends ObjectDataInputField
@@ -74,7 +73,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	{
 		if (newValue.length() <= 0 )
 		{   
-			((JDateChooser)getComponent()).setDate(null);		
+			dateChooser.setDate(null);		
 			clearNeedsSave();
 			return;
 		}
