@@ -100,7 +100,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box2);
 
 		Box boxIndrPrty = Box.createHorizontalBox();
-		indicatorPriority.getComponent().setMaximumSize(indicatorPriority.getComponent().getPreferredSize());
+		normalizeSize(indicatorPriority,indicatorPriority);
 		boxIndrPrty.add(indicatorPriority.getComponent());
 		boxIndrPrty.add(Box.createHorizontalGlue());
 		mainGridPanel.add(createLabel(indicatorPriority));
@@ -108,7 +108,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 
 
 		Box boxMonStatus = Box.createHorizontalBox();
-		monitoringStatus.getComponent().setMaximumSize(monitoringStatus.getComponent().getPreferredSize());
+		normalizeSize(monitoringStatus,monitoringStatus);
 		boxMonStatus.add(monitoringStatus.getComponent());
 		mainGridPanel.add(createLabel(monitoringStatus));
 		mainGridPanel.add(boxMonStatus);
@@ -126,9 +126,9 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 
 		Box box5 = Box.createHorizontalBox();
-		measurementStatus.getComponent().setMaximumSize(measurementStatus.getComponent().getPreferredSize());
+		normalizeSize(measurementStatus,measurementStatus);
 		box5.add(createColumn(measurementStatus));
-		measurementDate.getComponent().setMaximumSize(measurementStatus.getComponent().getPreferredSize());
+		normalizeSize(measurementDate,measurementStatus);
 		box5.add(createColumn(measurementDate));
 		box5.add(createColumn(measurementSummary));
 		box5.add(createColumn(measurementDetail));
@@ -136,17 +136,18 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box5);
 
 		Box box6 = Box.createHorizontalBox();
+		normalizeSize(measurementTrend,measurementTrend);
 		box6.add(createColumn(measurementTrend));
-		measureementStatusConfidence.getComponent().setMaximumSize(measureementStatusConfidence.getComponent().getPreferredSize());
+		normalizeSize(measureementStatusConfidence,measureementStatusConfidence);
 		box6.add(createColumn(measureementStatusConfidence));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box6);
 		
 
 		Box box7 = Box.createHorizontalBox();
-		desiredStatus.getComponent().setMaximumSize(desiredStatus.getComponent().getPreferredSize());
+		normalizeSize(desiredStatus,desiredStatus);
 		box7.add(createColumn(desiredStatus));
-		byWhen.getComponent().setMaximumSize(desiredStatus.getComponent().getPreferredSize());
+		normalizeSize(byWhen,desiredStatus);
 		box7.add(createColumn(byWhen));
 		box7.add(createColumn(desiredSummary));
 		box7.add(createColumn(desiredDetail));
@@ -160,6 +161,10 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	}
 	
 
+	private void normalizeSize(ObjectDataInputField target, ObjectDataInputField source)
+	{
+		target.getComponent().setMaximumSize(source.getComponent().getPreferredSize());
+	}
 
 	public void setObjectRefs(Vector orefsToUse)
 	{
