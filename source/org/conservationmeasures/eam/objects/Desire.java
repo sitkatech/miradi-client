@@ -45,12 +45,14 @@ abstract public class Desire extends EAMBaseObject
 		desiredStatus = new ChoiceData();;
 		byWhen = new StringData();
 		desiredSummary = new StringData();
+		desiredDetail = new StringData();
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_FULL_TEXT, fullText);
 		addField(TAG_DESIRED_STATUS, desiredStatus);
 		addField(TAG_BY_WHEN, byWhen);
 		addField(TAG_DESIRED_SUMMARY, desiredSummary);
+		addField(TAG_DESIRED_DETAIL, desiredDetail);
 		 
 	}
 	
@@ -63,6 +65,7 @@ abstract public class Desire extends EAMBaseObject
 	public final static String TAG_DESIRED_STATUS = "DesiredStatus";
 	public final static String TAG_BY_WHEN = "ByWhen";
 	public final static String TAG_DESIRED_SUMMARY = "DesiredSummary";
+	public final static String TAG_DESIRED_DETAIL = "DesiredDetail";
 	
 	public static final String OBJECT_NAME = "Desire";
 
@@ -71,4 +74,5 @@ abstract public class Desire extends EAMBaseObject
 	ChoiceData desiredStatus;
 	StringData byWhen;
 	StringData desiredSummary;
+	StringData desiredDetail;
 }

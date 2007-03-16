@@ -63,6 +63,7 @@ public class Indicator extends EAMBaseObject
 		measurementDate= new DateData();;
 		measurementSummary= new StringData();
 		measurementDetail= new StringData();
+		measurementStatusConfidence = new StringData();
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_PRIORITY, priority);
@@ -75,6 +76,8 @@ public class Indicator extends EAMBaseObject
 		addField(TAG_MEASUREMENT_DATE, measurementDate);
 		addField(TAG_MEASUREMENT_SUMMARY, measurementSummary);
 		addField(TAG_MEASUREMENT_DETAIL, measurementDetail);
+		addField(TAG_MEASUREMENT_STATUS_CONFIDENCE, measurementStatusConfidence);
+		
 	}
 	
 	public int getType()
@@ -105,6 +108,7 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_MEASUREMENT_DATE = "MeasurementDate";
 	public static final String TAG_MEASUREMENT_SUMMARY = "MeasurementSummary";
 	public static final String TAG_MEASUREMENT_DETAIL = "MeasurementDetail";
+	public static final String TAG_MEASUREMENT_STATUS_CONFIDENCE = "MeasurementStatusConfidence";
 	
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
@@ -125,5 +129,6 @@ public class Indicator extends EAMBaseObject
 	DateData measurementDate;
 	StringData measurementSummary;
 	StringData measurementDetail;
+	StringData measurementStatusConfidence;
 	IdListData goalIds;
 }
