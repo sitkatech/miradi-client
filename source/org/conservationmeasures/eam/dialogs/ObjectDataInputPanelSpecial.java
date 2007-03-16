@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.util.Arrays;
 import java.util.Vector;
 
+import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -57,53 +58,18 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		add(component);
 	}
 	
-	public JPanel createRowBox(ObjectDataInputField[] fields, int columns)
+
+	public Box createColumn(ObjectDataInputField field)
 	{
-		JPanel panel = createGridLayoutPanel(columns);
-		for (int i=0; i<fields.length; ++i)
-		{
-			createRow(panel, fields[i]);
-		}
-		return panel;
-	}
-	
-	private void createRow(JPanel box, ObjectDataInputField field)
-	{
-		JPanel panel = new JPanel(new BorderLayout());
+		Box box = Box.createVerticalBox();
 		box.add(createLabel(field));
-		panel.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
-		box.add(panel);
-	}
-	
-	public JPanel createColumnBox(ObjectDataInputField[] fields, int columns)
-	{
-		JPanel panel = createGridLayoutPanel(columns);
-		for (int i=0; i<fields.length; ++i)
-		{
-			createColumn(panel, fields[i], columns, i);
-		}
-		return panel;
-	}
-
-
-	private void createColumn(JPanel box, ObjectDataInputField field, int columns, int column)
-	{
-		JPanel panel = new JPanel(new GridLayoutPlus(1,1));
-		if (field==null)
-		{
-			panel.add(new JPanel());
-		}
-		else
-		{
-			if (column<columns) panel.add(createLabel(field));
-			panel.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
-		}
-		box.add(panel);
+		box.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
+		return box;
 	}
 	
 	
 
-	private JPanel createGridLayoutPanel(int columns)
+	public JPanel createGridLayoutPanel(int row, int columns)
 	{
 		JPanel panel = new JPanel();
 		GridLayoutPlus layout = new GridLayoutPlus(0, columns);

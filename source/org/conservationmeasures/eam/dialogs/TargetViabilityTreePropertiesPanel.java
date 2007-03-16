@@ -5,8 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import java.awt.BorderLayout;
 import java.util.Vector;
 
+import javax.swing.Box;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -22,10 +24,13 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.questions.MeasurementStatusQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.RatingSourceQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
+import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -48,15 +53,19 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField keaDesc = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
 		ObjectDataInputField keaType = addField(createObjectChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
 		
-		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
+		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL,20));
+		ObjectDataInputField indicatorShortLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL,STD_SHORT));
+		ObjectDataInputField indicatorPriority = addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
+		ObjectDataInputField monitoringStatus = addField(createObjectChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
 		ObjectDataInputField indicatorThreshold = addField(createObjectStringMapTableField(ObjectType.INDICATOR,  new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
 		ObjectDataInputField measurementStatus = addField(createRatingChoiceField(ObjectType.INDICATOR, new MeasurementStatusQuestion(Indicator.TAG_MEASUREMENT_STATUS)));  
 		ObjectDataInputField measurementTrend = addField(createObjectChoiceField(ObjectType.INDICATOR, new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND)));
 		ObjectDataInputField measurementDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DATE));
-		ObjectDataInputField measurementSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY,10));
-		ObjectDataInputField measurementDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,10));
+		ObjectDataInputField measurementSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY,STD_SHORT));
+		ObjectDataInputField measurementDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,STD_SHORT));
 		ObjectDataInputField measureementStatusConfidence = addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_MEASUREMENT_STATUS_CONFIDENCE)));
-
+		ObjectDataInputField ratingSource = addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
+		
 		
 		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
 		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
@@ -64,20 +73,86 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,10));
 		
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
+
+		JPanel mainGridPanel = createGridLayoutPanel(0,2);
 		
-		ObjectDataInputField[] topfields = 
-			new ObjectDataInputField[] {keaLabel, keaDesc, keaType, 
-				indicatorLabel, indicatorThreshold, measureementStatusConfidence};
-		JPanel topfieldsPanel = createRowBox(topfields, 2);
-		main.add(topfieldsPanel);
+		Box box1 = Box.createHorizontalBox();
+		box1.add(keaLabel.getComponent());
+		box1.add(Box.createHorizontalStrut(20));
+		box1.add(createLabel(keaType));
+		box1.add(keaType.getComponent());
+		mainGridPanel.add(createLabel(keaLabel));
+		mainGridPanel.add(box1);
 		
-		ObjectDataInputField[] trendfield = 
-			new ObjectDataInputField[]  {measurementStatus, measurementTrend, measurementDate, 
-				measurementSummary, measurementDetail, desiredStatus, null, byWhen, desiredSummary, desiredDetail};
-		JPanel trendfieldPanel = createColumnBox(trendfield, 5);
-		main.add(trendfieldPanel);
+		JPanel keaDescPanel = new JPanel(new BorderLayout());
+		mainGridPanel.add(createLabel(keaDesc));
+		keaDescPanel.add(keaDesc.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
+		mainGridPanel.add(keaDescPanel);
+		
+		Box box2 = Box.createHorizontalBox();
+		box2.add(createLabel(indicatorShortLabel));
+		box2.add(indicatorShortLabel.getComponent());
+		box2.add(Box.createHorizontalStrut(20));
+		box2.add(createLabel(indicatorLabel));
+		box2.add(indicatorLabel.getComponent());
+		mainGridPanel.add(new UiLabel("Indicator"));
+		mainGridPanel.add(box2);
+
+		Box boxIndrPrty = Box.createHorizontalBox();
+		indicatorPriority.getComponent().setMaximumSize(indicatorPriority.getComponent().getPreferredSize());
+		boxIndrPrty.add(indicatorPriority.getComponent());
+		boxIndrPrty.add(Box.createHorizontalGlue());
+		mainGridPanel.add(createLabel(indicatorPriority));
+		mainGridPanel.add(boxIndrPrty);
+
+
+		Box boxMonStatus = Box.createHorizontalBox();
+		monitoringStatus.getComponent().setMaximumSize(monitoringStatus.getComponent().getPreferredSize());
+		boxMonStatus.add(monitoringStatus.getComponent());
+		mainGridPanel.add(createLabel(monitoringStatus));
+		mainGridPanel.add(boxMonStatus);
 		
 		
+		mainGridPanel.add(createLabel(indicatorThreshold));
+		JPanel box3 = createGridLayoutPanel(0,2);
+		box3.add(indicatorThreshold.getComponent());
+		JPanel box4 = createGridLayoutPanel(2,1);
+		JPanel optionPanel = new JPanel();
+		box4.add(optionPanel);
+		box4.add(createColumn(ratingSource));
+		box3.add(box4);
+		mainGridPanel.add(box3);
+		
+
+		Box box5 = Box.createHorizontalBox();
+		measurementStatus.getComponent().setMaximumSize(measurementStatus.getComponent().getPreferredSize());
+		box5.add(createColumn(measurementStatus));
+		measurementDate.getComponent().setMaximumSize(measurementStatus.getComponent().getPreferredSize());
+		box5.add(createColumn(measurementDate));
+		box5.add(createColumn(measurementSummary));
+		box5.add(createColumn(measurementDetail));
+		mainGridPanel.add(new UiLabel("Current Status"));
+		mainGridPanel.add(box5);
+
+		Box box6 = Box.createHorizontalBox();
+		box6.add(createColumn(measurementTrend));
+		box6.add(createColumn(measureementStatusConfidence));
+		mainGridPanel.add(new UiLabel(""));
+		mainGridPanel.add(box6);
+		
+
+		Box box7 = Box.createHorizontalBox();
+		desiredStatus.getComponent().setMaximumSize(desiredStatus.getComponent().getPreferredSize());
+		box7.add(createColumn(desiredStatus));
+		byWhen.getComponent().setMaximumSize(desiredStatus.getComponent().getPreferredSize());
+		box7.add(createColumn(byWhen));
+		box7.add(createColumn(desiredSummary));
+		box7.add(createColumn(desiredDetail));
+		mainGridPanel.add(new UiLabel("Current Status"));
+		mainGridPanel.add(box7);
+
+		main.add(mainGridPanel);
+
 		addFieldComponent(main);
 		updateFieldsFromProject();
 	}
