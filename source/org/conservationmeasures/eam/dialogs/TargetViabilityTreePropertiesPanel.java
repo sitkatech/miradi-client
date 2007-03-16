@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion
 import org.conservationmeasures.eam.questions.MeasurementStatusQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.questions.RatingSourceQuestion;
+import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.martus.swing.UiLabel;
 
@@ -63,7 +64,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField measurementDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DATE));
 		ObjectDataInputField measurementSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY,STD_SHORT));
 		ObjectDataInputField measurementDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,STD_SHORT));
-		ObjectDataInputField measureementStatusConfidence = addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_MEASUREMENT_STATUS_CONFIDENCE)));
+		ObjectDataInputField measureementStatusConfidence = addField(createObjectChoiceField(ObjectType.INDICATOR,  new StatusConfidenceQuestion(Indicator.TAG_MEASUREMENT_STATUS_CONFIDENCE)));
 		ObjectDataInputField ratingSource = addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
 		
 		
@@ -136,6 +137,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 
 		Box box6 = Box.createHorizontalBox();
 		box6.add(createColumn(measurementTrend));
+		measureementStatusConfidence.getComponent().setMaximumSize(measureementStatusConfidence.getComponent().getPreferredSize());
 		box6.add(createColumn(measureementStatusConfidence));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box6);
@@ -148,7 +150,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box7.add(createColumn(byWhen));
 		box7.add(createColumn(desiredSummary));
 		box7.add(createColumn(desiredDetail));
-		mainGridPanel.add(new UiLabel("Current Status"));
+		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box7);
 
 		main.add(mainGridPanel);
