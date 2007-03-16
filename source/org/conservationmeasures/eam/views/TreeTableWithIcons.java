@@ -55,6 +55,8 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		getColumnModel().getColumn(0).setPreferredWidth(200);
 		TableCellEditor ce = new NonEditableTreeTableCellEditor();
 		setDefaultEditor(TreeTableModel.class, ce);
+		if (getRowCount()>0)
+			setRowSelectionInterval(0,0);
 	}
 
 	public GenericTreeTableModel getTreeTableModel()
