@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -58,10 +59,18 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		add(component);
 	}
 	
-
 	public Box createColumn(ObjectDataInputField field)
 	{
 		Box box = Box.createVerticalBox();
+		box.add(createLabel(field));
+		box.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
+		return box;
+	}
+
+	public JPanel createColumn(ObjectDataInputField field, Dimension dim)
+	{
+		JPanel box = createGridLayoutPanel(2,1);
+		field.getComponent().setMaximumSize(new Dimension(dim.width, field.getComponent().getPreferredSize().height));
 		box.add(createLabel(field));
 		box.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
 		return box;

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -58,7 +59,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField keaDesc = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
 		ObjectDataInputField keaType = addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
 		
-		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL,20));
+		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL,STD_SPACE_20));
 		ObjectDataInputField indicatorShortLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL,STD_SHORT));
 		ObjectDataInputField indicatorPriority = addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		ObjectDataInputField monitoringStatus = addField(createChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
@@ -74,8 +75,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
 		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
-		ObjectDataInputField desiredSummary = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,10));
-		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,10));
+		ObjectDataInputField desiredSummary = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
+		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,STD_SHORT));
 		
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
 
@@ -83,9 +84,9 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		Box box1 = Box.createHorizontalBox();
 		box1.add(keaLabel.getComponent());
-		box1.add(Box.createHorizontalStrut(20));
+		box1.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box1.add(createLabel(keaType));
-		box1.add(Box.createHorizontalStrut(20));
+		box1.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box1.add(keaType.getComponent());
 		mainGridPanel.add(createLabel(keaLabel));
 		mainGridPanel.add(box1);
@@ -97,11 +98,11 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		Box box2 = Box.createHorizontalBox();
 		box2.add(createLabel(indicatorShortLabel));
-		box2.add(Box.createHorizontalStrut(20));
+		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(indicatorShortLabel.getComponent());
-		box2.add(Box.createHorizontalStrut(20));
+		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(createLabel(indicatorLabel));
-		box2.add(Box.createHorizontalStrut(20));
+		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(indicatorLabel.getComponent());
 		mainGridPanel.add(new UiLabel("Indicator"));
 		mainGridPanel.add(box2);
@@ -132,31 +133,44 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box3);
 		
 
+		Dimension col1Model = desiredStatus.getComponent().getPreferredSize();
+		Dimension col2Model = byWhen.getComponent().getPreferredSize();
+		Dimension col3Model = desiredSummary.getComponent().getPreferredSize();
+		
+		
 		Box box5 = Box.createHorizontalBox();
-		normalizeSize(measurementStatus,measurementStatus);
-		box5.add(createColumn(measurementStatus));
-		normalizeSize(measurementDate,measurementStatus);
-		box5.add(createColumn(measurementDate));
-		box5.add(createColumn(measurementSummary));
+		box5.add(createColumn(measurementStatus, col1Model));
+		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
+		box5.add(createColumn(measurementDate, col2Model));
+		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
+		box5.add(createColumn(measurementSummary, col3Model));
+		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
 		box5.add(createColumn(measurementDetail));
 		mainGridPanel.add(new UiLabel("Current Status"));
 		mainGridPanel.add(box5);
 
 		Box box6 = Box.createHorizontalBox();
-		normalizeSize(measurementTrend,measurementTrend);
-		box6.add(createColumn(measurementTrend));
-		normalizeSize(measureementStatusConfidence,measureementStatusConfidence);
-		box6.add(createColumn(measureementStatusConfidence));
+		box6.add(createColumn(measurementTrend, col1Model));
+		box6.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
+		box6.add(createColumn(measureementStatusConfidence, col2Model));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box6);
 		
 
 		Box box7 = Box.createHorizontalBox();
-		normalizeSize(desiredStatus,desiredStatus);
-		box7.add(createColumn(desiredStatus));
-		normalizeSize(byWhen,desiredStatus);
-		box7.add(createColumn(byWhen));
-		box7.add(createColumn(desiredSummary));
+		box7.add(createColumn(desiredStatus, col1Model));
+		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
+		box7.add(createColumn(byWhen, col2Model));
+		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
+		box7.add(createColumn(desiredSummary, col3Model));
+		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
 		box7.add(createColumn(desiredDetail));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box7);
@@ -215,10 +229,13 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	}
 	
 	
-	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Key Ecological Attribute Properties");
 	}
+	
+	private static final int STD_SPACE_20 = 20;
+
+
 
 }
