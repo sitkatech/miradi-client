@@ -20,6 +20,7 @@ public class MiradiLogger
 	{
 		log = Logger.getLogger("org.miradi");
 		log.setUseParentHandlers(false);
+		consoleLogger = new ConsoleHandler();
 		setLogLevel(LOG_NORMAL);
 		setLogToConsole();
 	}
@@ -38,7 +39,7 @@ public class MiradiLogger
 	public void setLogToConsole()
 	{
 		removeAllHandlers();
-		log.addHandler(new ConsoleHandler());
+		log.addHandler(consoleLogger);
 	}
 	
 	public String getLoggedString()
@@ -80,7 +81,9 @@ public class MiradiLogger
 	
 	public void setLogLevel(int logLevel)
 	{
-		log.setLevel(levels[logLevel]);
+		Level javaLogLevel = levels[logLevel];
+		log.setLevel(javaLogLevel);
+		consoleLogger.setLevel(javaLogLevel);
 	}
 	
 	public void logException(Exception e)
@@ -121,6 +124,7 @@ public class MiradiLogger
 	}
 	
 	private Logger log;
+	private Handler consoleLogger;
 	private PrintStream exceptionDestination;
 	
 	private static final Level[] levels = {Level.SEVERE, Level.WARNING, Level.INFO, Level.FINE, };
