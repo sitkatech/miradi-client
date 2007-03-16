@@ -74,9 +74,8 @@ public abstract class AbstractTaskTreeDoer extends ObjectsDoer
 			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(object, containerTag, createdId);
 			project.executeCommand(addChildCommand);
 			
-			EAMObject objectToSelect = project.findObject(ObjectType.TASK, createdId);
-			getPanel().selectObject(objectToSelect);
-			//return (Task)project.findObject(ObjectType.TASK, createdId);
+			ORef ref = new ORef(ObjectType.TASK, createdId);
+			getPicker().ensureObjectVisible(ref);
 		}
 		finally
 		{

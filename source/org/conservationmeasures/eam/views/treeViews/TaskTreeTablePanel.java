@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -48,21 +47,6 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
-			int objectType = ((CommandSetObjectData)event.getCommand()).getObjectType();
-			IdList newIdList = event.extractNewlyAddedIds();
-			for (int i=0; i<newIdList.size(); ++i)
-			{
-				int annoationObjectType = ObjectType.INDICATOR;
-				if (wereActivityNodesAddedOrRemoved || wereTaskNodesAddedOrRemoved )
-					annoationObjectType = ObjectType.TASK;
-				expandAndSelectObject(annoationObjectType, newIdList.get(i));
-			}
-			if (newIdList.size()==0)
-			{
-				//TODO: right now we only go to the root of the node being deleted....not the sibling
-				CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-				expandAndSelectObject(objectType, cmd.getObjectId());
-			}
 		}
 		else if(event.isCreateObjectCommand() || 
 				event.isDeleteObjectCommand() || 
@@ -86,10 +70,13 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	//TODO: should pull up to super class
 	private void rebuildEntireTree()
 	{
-		int currentSelectedRow = tree.getSelectedRow();
+		//TODO: Is this needed? Is it the right place/mechanism?
+//		int currentSelectedRow = tree.getSelectedRow();
 		model.rebuildEntireTree();
 		restoreTreeExpansionState();
-		setSelectedRow(currentSelectedRow);
+		
+		//TODO: Is this needed? Is it the right place/mechanism?
+//		setSelectedRow(currentSelectedRow);
 	}
 	
 

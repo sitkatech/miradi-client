@@ -25,6 +25,7 @@ import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
@@ -135,6 +136,13 @@ public class BudgetTable extends JTable implements ObjectPicker
 			return new EAMObject[0];
 	
 		return new EAMObject[] {selectedObject};
+	}
+
+	public void ensureObjectVisible(ORef ref)
+	{
+		// TODO Auto-generated method stub
+		// we should scroll the table as needed to make this 
+		// probably-newly-created object visible
 	}
 
 	public AssignmentTableModelSplittableShell  getBudgetModel()

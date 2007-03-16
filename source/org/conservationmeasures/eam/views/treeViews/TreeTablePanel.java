@@ -9,14 +9,12 @@ import java.awt.BorderLayout;
 import java.util.Vector;
 
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.ObjectCollectionPanel;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -91,53 +89,9 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public void selectObject(EAMObject objectToSelect)
 	{
-		expandAndSelectObject(objectToSelect.getType(), objectToSelect.getId());
+		tree.selectObject(objectToSelect.getRef());
 	}
 
-	public void expandAndSelectObject(int objectType, BaseId objectToSelect)
-	{
-		TreePath found = model.findObject(model.getPathToRoot(), objectType, objectToSelect);
-		if(found == null)
-			return;
-		tree.getTree().expandPath(found.getParentPath());
-		int row = tree.getTree().getRowForPath(found);
-		//FIXME: not sure if this 'if' is of any real use
-		if(row < 0)
-		{
-			EAM.logWarning("TreeTablePanel.selectObject failed: row -1");
-			return;
-		}
-		
-		setSelectedRow(row);
-	}
-	
-	class SelectTreeRow implements Runnable
-	{
-		public SelectTreeRow(int rowToUse)
-		{
-			row = rowToUse;
-		}
-		
-		public void run()
-		{
-			tree.clearSelection();
-
-			if (row < 0)
-				return;
-			
-			try
-			{
-				tree.setRowSelectionInterval(row, row);
-			}
-			catch (Exception e)
-			{
-				//TODO ingnoring for now.  precheck to ingore and only log real errors.
-				EAM.logException(e);
-			}
-		}
-		int row;
-	}
-	
 	public GenericTreeTableModel getModel()
 	{
 		return model;
@@ -184,17 +138,9 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	abstract public void commandExecuted(CommandExecutedEvent event);
 	
 
-	public void setSelectedRow(int currentSelectedRow)
+	//TODO:Is this needed? Is it the right place/mechanism? 
+	public void setSelectedObject(ORef ref)
 	{
-		//FIXME: This is necessary because rebuilding the tree from scratch
-		// causes Swing to post an event to the queue that clears any selection.
-		// If we just call select here, it will get stomped later.
-		// So we post our event after theirs, so we win
-		// Eventually, we will fire a less traumatic event out of the model, 
-		// which will avoid causing swing to clear the selection, at which point 
-		// the invokeLater can go away and we can directly select the row we want
-		// 2007-03-15 kbs
-		SwingUtilities.invokeLater(new SelectTreeRow(currentSelectedRow));
 	}
 
 	MainWindow mainWindow;

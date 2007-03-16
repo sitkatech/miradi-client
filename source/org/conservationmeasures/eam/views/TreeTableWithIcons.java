@@ -42,7 +42,7 @@ import com.java.sun.jtreetable.TreeTableModel;
 public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 {
 
-	public TreeTableWithIcons(Project projectToUse, TreeTableModel treeTableModelToUse)
+	public TreeTableWithIcons(Project projectToUse, GenericTreeTableModel treeTableModelToUse)
 	{
 		super(treeTableModelToUse);
 		treeTableModel = treeTableModelToUse;
@@ -57,7 +57,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		setDefaultEditor(TreeTableModel.class, ce);
 	}
 
-	public TreeTableModel getTreeTableModel()
+	public GenericTreeTableModel getTreeTableModel()
 	{
 		return treeTableModel;
 	}
@@ -240,6 +240,13 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		return new EAMObject[] {foundObject};
 	}
 
-	private TreeTableModel treeTableModel;
+	public void ensureObjectVisible(ORef ref)
+	{
+		// TODO Auto-generated method stub
+		// we should scroll the table as needed to make this 
+		// probably-newly-created object visible
+	}
+
+	private GenericTreeTableModel treeTableModel;
 	Project project;
 }

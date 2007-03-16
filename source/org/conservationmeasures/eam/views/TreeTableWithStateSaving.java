@@ -5,29 +5,172 @@
 */ 
 package org.conservationmeasures.eam.views;
 
+import javax.swing.event.TreeExpansionEvent;
+import javax.swing.event.TreeExpansionListener;
+import javax.swing.tree.TreePath;
+
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EAMTreeTableModelAdapter;
-import org.conservationmeasures.eam.utils.TreeTableStateSaver;
 
-public class TreeTableWithStateSaving extends TreeTableWithIcons
+public class TreeTableWithStateSaving extends TreeTableWithIcons implements TreeExpansionListener
 {
 	public TreeTableWithStateSaving(Project projectToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(projectToUse, treeTableModel);
-		treeTableStateSaver = new TreeTableStateSaver(projectToUse, tree);
-		treeTableModelAdapter = new EAMTreeTableModelAdapter(projectToUse, treeTableStateSaver, treeTableModel, tree);
+		treeTableModelAdapter = new EAMTreeTableModelAdapter(projectToUse, treeTableModel, tree);
+		
+		tree.addTreeExpansionListener(this);
 	}
 	
 	public void dispose()
 	{
-		treeTableStateSaver.dispose();
+		tree.removeTreeExpansionListener(this);
+	}
+	
+	public void addObjectToExpandedList(ORef ref) throws Exception
+	{
+		ORefList expandedList = getExpandedNodeList();
+		if(expandedList.contains(ref))
+			return;
+		
+		expandedList.add(ref);
+		saveExpandedPath(expandedList);
 	}
 	
 	public void restoreTreeState() throws Exception
 	{
-		treeTableStateSaver.restoreTreeState();
+		ignoreNotifications = true;
+		try
+		{
+			updateTreeExpansion(getExpandedNodeList());
+		}
+		finally
+		{
+			ignoreNotifications = false;
+		}
 	}
 	
+	public void ensureObjectVisible(ORef ref)
+	{
+		try
+		{
+			addObjectToExpandedList(ref);
+			selectObject(ref);
+			super.ensureObjectVisible(ref);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unexpected error has occurred making the new object visible");
+		}
+
+	}
+	
+	public void selectObject(ORef ref)
+	{
+		TreePath path = getTreeTableModel().getPathOfNode(ref.getObjectType(), ref.getObjectId());
+		tree.addSelectionPath(path);
+	}
+
+	void updateTreeExpansion(ORefList expandedList)
+	{
+		ignoreNotifications = true;
+		try
+		{
+			TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
+			TreePath rootPath = new TreePath(root);
+			recursiveChangeNodeExpansionState(expandedList, rootPath);
+			treeTableModelAdapter.fireTableDataChanged();
+		}
+		finally
+		{
+			ignoreNotifications = false;
+		}
+		
+	}
+	
+	private void recursiveChangeNodeExpansionState(ORefList objRefListToUse, TreePath thisPath)
+	{
+		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
+		ORef topLevelObjRef = topLevelObject.getObjectReference();
+		
+		if ( ! (objRefListToUse.contains(topLevelObjRef) || topLevelObjRef == null))
+		{
+			tree.collapsePath(thisPath);
+			return;
+		}
+		
+		tree.expandPath(thisPath);
+		
+		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
+		{
+			TreeTableNode secondLevelObject = topLevelObject.getChild(childIndex);
+			TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
+			recursiveChangeNodeExpansionState(objRefListToUse, secondLevelPath);
+		}
+	}
+
+	public void treeCollapsed(TreeExpansionEvent event)
+	{
+		swingTreeExpansionWasChanged();
+	}
+
+	public void treeExpanded(TreeExpansionEvent event)
+	{
+		swingTreeExpansionWasChanged();
+	}
+	
+	void swingTreeExpansionWasChanged()
+	{
+		if(ignoreNotifications)
+			return;
+	
+		try
+		{
+			int rowCount = tree.getRowCount();
+			ORefList objRefList = new ORefList();
+			for (int i = 0; i < rowCount; i ++)
+			{
+				TreePath treePath = tree.getPathForRow(i);
+				if (tree.isExpanded(treePath))
+				{
+					TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
+					ORef objectReference = node.getObjectReference();
+					if (objectReference != null)
+						objRefList.add(objectReference);
+				}
+			}
+			saveExpandedPath(objRefList);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unexpected error has occurred saving tree expansion state");
+		}
+	}
+
+	private void saveExpandedPath(ORefList newObjRefList) throws Exception
+	{
+		ViewData viewData = project.getViewData(project.getCurrentView());		
+		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId() ,ViewData.TAG_CURRENT_EXPANSION_LIST, newObjRefList.toString());
+		project.executeCommand(cmd);
+	}
+	
+	private ORefList getExpandedNodeList() throws Exception
+	{
+		ViewData viewData = project.getViewData(project.getCurrentView());
+		ORefList objRefList= new ORefList(viewData.getData(ViewData.TAG_CURRENT_EXPANSION_LIST));
+		return objRefList;
+	}
+
+	
 	protected EAMTreeTableModelAdapter treeTableModelAdapter;
-	protected TreeTableStateSaver treeTableStateSaver; 
+
+	private boolean ignoreNotifications;
+
 }

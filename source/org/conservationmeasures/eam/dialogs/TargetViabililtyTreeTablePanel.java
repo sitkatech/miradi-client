@@ -9,8 +9,6 @@ import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIndicator;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -43,23 +41,6 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
-			
-			int annoationObjectType = ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
-			if (wereIndicatorNodesAddedOrRemoved)
-				annoationObjectType = ObjectType.INDICATOR;
-
-			IdList newIdList = event.extractNewlyAddedIds();
-			for (int i=0; i<newIdList.size(); ++i)
-			{
-				expandAndSelectObject(annoationObjectType, newIdList.get(i));
-			}
-			
-			if (newIdList.size()==0)
-			{
-				//TODO: right now we only go to the root of the node being deleted....not the sibling of the delted node
-				CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-				expandAndSelectObject(cmd.getObjectType(), cmd.getObjectId());
-			}
 			repaint();
 		} 
 		else if(event.isSetDataCommand())

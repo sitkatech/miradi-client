@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -12,6 +13,7 @@ public interface ObjectPicker
 {
 	public EAMObject[] getSelectedObjects();
 	public void clearSelection();
+	public void ensureObjectVisible(ORef ref);
 	//TODO: to be extracted to its own interface (TreeObjectPicker) later
 	public TreeTableNode[] getSelectedTreeNodes();
 }

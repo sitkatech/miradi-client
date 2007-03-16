@@ -56,7 +56,7 @@ public class CreateKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 		}
 	}
 
-	public static void insertKEAIndicator(Project project, KeyEcologicalAttribute kea, int childIndex) throws CommandFailedException, ParseException, Exception
+	public void insertKEAIndicator(Project project, KeyEcologicalAttribute kea, int childIndex) throws CommandFailedException, ParseException, Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
@@ -71,6 +71,8 @@ public class CreateKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 			
 			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, createdId);
 			insertIndicatorGoal(project, indicator);
+			
+			getPicker().ensureObjectVisible(indicator.getRef());
 		}
 		finally
 		{

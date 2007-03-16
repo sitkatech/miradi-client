@@ -106,6 +106,13 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		return objects;
 	}
 
+	public void ensureObjectVisible(ORef ref)
+	{
+		// TODO Auto-generated method stub
+		// we should scroll the table as needed to make this 
+		// probably-newly-created object visible
+	}
+
 	private EAMObject getObjectFromRow(int row)
 	{
 		return getObjectTableModel().getObjectFromRow(row);

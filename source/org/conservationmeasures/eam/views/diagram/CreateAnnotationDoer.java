@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -43,6 +44,9 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 			getProject().executeCommand(create);
 			BaseId createdId = create.getCreatedId();
 			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(factor, getAnnotationIdListTag(), createdId));
+			
+			ORef ref = new ORef(create.getObjectType(), createdId);
+			getPicker().ensureObjectVisible(ref);
 		}
 		catch(Exception e)
 		{

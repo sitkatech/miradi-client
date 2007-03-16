@@ -7,38 +7,28 @@ package org.conservationmeasures.eam.utils;
 
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
-import javax.swing.event.TreeExpansionEvent;
-import javax.swing.event.TreeExpansionListener;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 import com.java.sun.jtreetable.TreeTableModel;
 
 public class EAMTreeTableModelAdapter extends AbstractTableModel
 {
-	public EAMTreeTableModelAdapter(Project projectToUse, TreeTableStateSaver treeTableStateSaverToUse, TreeTableModel treeTableModelToUse, JTree treeToUse)
+	public EAMTreeTableModelAdapter(Project projectToUse, TreeTableModel treeTableModelToUse, JTree treeToUse)
 	{
 		tree = treeToUse;
 		treeTableModel = treeTableModelToUse;
 		project = projectToUse;
-		treeTableStateSaver = treeTableStateSaverToUse; 
-		setExpansionListeners(tree);
 		setModelListeners(treeTableModel);
 	}
 
 	private void setModelListeners(TreeTableModel treeTableModel)
 	{
 		treeTableModel.addTreeModelListener(new TreeModelHandler());
-	}
-
-	private void setExpansionListeners(JTree tree)
-	{
-		tree.addTreeExpansionListener(new TreeExpansionHandler());
 	}
 
 	public int getColumnCount() 
@@ -124,32 +114,6 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 		}
 	}
 
-	private final class TreeExpansionHandler implements TreeExpansionListener
-	{
-		public void treeExpanded(TreeExpansionEvent event) 
-		{
-			treeExpansionStateChanged();
-		}
-
-		public void treeCollapsed(TreeExpansionEvent event) 
-		{
-			treeExpansionStateChanged();
-		}
-
-		private void treeExpansionStateChanged()
-		{
-			try
-			{
-				treeTableStateSaver.saveTreeExpansionState();
-			}
-			catch(Exception e)
-			{
-				EAM.errorDialog(EAM.text("Could not save tree epanded state"));
-			}
-			fireTableDataChanged();
-		}
-	}
-
 	private final class DelayedTableDataChangedFirer implements Runnable
 	{
 		public void run() 
@@ -166,13 +130,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 		}
 	}
 	
-	public void restoreTreeState() throws Exception
-	{
-		treeTableStateSaver.restoreTreeState();
-	}
-
 	Project project;
 	JTree tree;
 	TreeTableModel treeTableModel;
-	TreeTableStateSaver treeTableStateSaver;
 }

@@ -16,6 +16,11 @@ abstract public class ObjectsDoer extends ViewDoer
 		picker = pickerToUse;
 	}
 	
+	public ObjectPicker getPicker()
+	{
+		return picker;
+	}
+	
 	public TreeTableNode[] getSelectedTreeNodes()
 	{
 		if(picker == null)
