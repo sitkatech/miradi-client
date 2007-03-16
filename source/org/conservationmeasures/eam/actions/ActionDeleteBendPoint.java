@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCreateBendPoint extends LocationAction
+public class ActionDeleteBendPoint extends LocationAction
 {
-	public ActionCreateBendPoint(MainWindow mainWindowToUse)
+	public ActionDeleteBendPoint(MainWindow mainWindowToUse)
 	{
 		//TODO fix icon to match action
 		super(mainWindowToUse, getLabel(), "icons/bendPoint.gif");
@@ -18,12 +18,12 @@ public class ActionCreateBendPoint extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Create Bend Point");
+		return EAM.text("Action|Delete Bend Point");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a Bend Point");
+		return EAM.text("TT|Delete a Bend Point");
 	}
 
 }

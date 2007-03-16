@@ -358,7 +358,7 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getFactorById(id);
 	}
 
-	public LinkCell getDiagramFactorLinkById(DiagramFactorLink diagramFactorLink)
+	public LinkCell getDiagramFactorLink(DiagramFactorLink diagramFactorLink)
 	{
 		return cellInventory.getLinkCell(diagramFactorLink);
 	}
@@ -468,7 +468,7 @@ public class DiagramModel extends DefaultGraphModel
 			return;
 		
 		DiagramFactorLink diagramFactorLink  = getDiagramFactorLinkById(diagramFactorLinkId);
-		LinkCell linkCell = getDiagramFactorLinkById(diagramFactorLink);
+		LinkCell linkCell = getDiagramFactorLink(diagramFactorLink);
 		linkCell.updateFromDiagramFactorLink();
 		updateCell(linkCell);
 	}

@@ -20,6 +20,6 @@ public class FactorLinkView extends EdgeView
 	{
 		return arrowLineRenderer;
 	}
-
+		
 	protected static ArrowLineRenderer arrowLineRenderer = new ArrowLineRenderer();
 }

@@ -65,11 +65,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		Vector bendPointList = new Vector(bendPoints.getAllPoints());
 		Vector newList =new Vector();
 		newList.add(to.getLocation());
-		
-		//TODO remove reversing of array
-		for (int i = bendPointList.size() - 1; i >= 0 ; i--)
-			newList.add(bendPointList.get(i));
-		
+		newList.addAll(bendPointList);
 		newList.add(from.getLocation());
 		GraphConstants.setPoints(getAttributes(), newList);
 	}

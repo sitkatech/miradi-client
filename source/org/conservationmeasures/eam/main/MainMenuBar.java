@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportBudgetTableTree;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
@@ -207,6 +208,7 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionInsertFactorLink.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu, ActionCreateBendPoint.class, KeyEvent.VK_B);
+		addMenuItem(actions, menu, ActionDeleteBendPoint.class, KeyEvent.VK_DELETE);
 		
 		return menu;
 	}

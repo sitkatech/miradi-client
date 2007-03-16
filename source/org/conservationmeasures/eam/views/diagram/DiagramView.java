@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
+import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
 import org.conservationmeasures.eam.actions.ActionDeleteGoal;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
@@ -161,6 +162,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionInsertDraftStrategy.class, new InsertDraftStrategyDoer());
 		addDoerToMap(ActionInsertFactorLink.class, new InsertFactorLinkDoer());
 		addDoerToMap(ActionCreateBendPoint.class, new CreateBendPointDoer());
+		addDoerToMap(ActionDeleteBendPoint.class, new DeleteBendPointDoer());
 		addDoerToMap(ActionCopy.class, new Copy());
 		addDoerToMap(ActionSelectAll.class, new SelectAllDoer());
 		addDoerToMap(ActionCut.class, new Cut());
