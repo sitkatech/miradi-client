@@ -182,6 +182,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 			IdList list = new IdList(indicator.getData(Indicator.TAG_GOAL_IDS));
 			if (list.size()!=0)
 				orefsToUse.insertElementAt(new ORef(ObjectType.GOAL,list.get(0)),0);
+			else
+				EAM.logError("No Goals found for EKA Indicator:" + objectId);
 		}
 		catch (Exception e)
 		{
