@@ -96,36 +96,46 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public void expandAndSelectObject(int objectType, BaseId objectToSelect)
 	{
-		SwingUtilities.invokeLater(new ExpandAndSelectObject(objectType, objectToSelect));
+		TreePath found = model.findObject(model.getPathToRoot(), objectType, objectToSelect);
+		if(found == null)
+			return;
+		tree.getTree().expandPath(found.getParentPath());
+		int row = tree.getTree().getRowForPath(found);
+		//FIXME: not sure if this 'if' is of any real use
+		if(row < 0)
+		{
+			EAM.logWarning("TreeTablePanel.selectObject failed: row -1");
+			return;
+		}
+		
+		setSelectedRow(row);
 	}
 	
-	class ExpandAndSelectObject implements Runnable
+	class SelectTreeRow implements Runnable
 	{
-		public ExpandAndSelectObject(int objectTypeToUse, BaseId objectToSelectToUse)
+		public SelectTreeRow(int rowToUse)
 		{
-			objectType = objectTypeToUse;
-			objectToSelect = objectToSelectToUse;
+			row = rowToUse;
 		}
 		
 		public void run()
 		{
-			TreePath found = model.findObject(model.getPathToRoot(), objectType, objectToSelect);
-			if(found == null)
+			tree.clearSelection();
+
+			if (row < 0)
 				return;
-			tree.getTree().expandPath(found.getParentPath());
-			int row = tree.getTree().getRowForPath(found);
-			//FIXME: not sure if this 'if' is of any real use
-			if(row < 0)
+			
+			try
 			{
-				EAM.logWarning("TreeTablePanel.selectObject failed: row -1");
-				return;
+				tree.setRowSelectionInterval(row, row);
 			}
-			setSelectedRow(row);
+			catch (Exception e)
+			{
+				//TODO ingnoring for now.  precheck to ingore and only log real errors.
+				EAM.logException(e);
+			}
 		}
-		
-		int objectType;
-		BaseId objectToSelect;
-		
+		int row;
 	}
 	
 	public GenericTreeTableModel getModel()
@@ -176,20 +186,15 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public void setSelectedRow(int currentSelectedRow)
 	{
-		tree.clearSelection();
-
-		if (currentSelectedRow<0)
-			return;
-		
-		try
-		{
-			tree.setRowSelectionInterval(currentSelectedRow, currentSelectedRow);
-		}
-		catch (Exception e)
-		{
-			//TODO ingnoring for now.  precheck to ingore and only log real errors.
-			EAM.logException(e);
-		}
+		//FIXME: This is necessary because rebuilding the tree from scratch
+		// causes Swing to post an event to the queue that clears any selection.
+		// If we just call select here, it will get stomped later.
+		// So we post our event after theirs, so we win
+		// Eventually, we will fire a less traumatic event out of the model, 
+		// which will avoid causing swing to clear the selection, at which point 
+		// the invokeLater can go away and we can directly select the row we want
+		// 2007-03-15 kbs
+		SwingUtilities.invokeLater(new SelectTreeRow(currentSelectedRow));
 	}
 
 	MainWindow mainWindow;
