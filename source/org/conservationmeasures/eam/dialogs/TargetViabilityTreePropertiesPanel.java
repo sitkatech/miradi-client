@@ -6,10 +6,14 @@
 package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
@@ -118,7 +122,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		JPanel box3 = createGridLayoutPanel(0,2);
 		box3.add(indicatorThreshold.getComponent());
 		JPanel box4 = createGridLayoutPanel(2,1);
-		JPanel optionPanel = new JPanel();
+		Box optionPanel = createOptionGroup();
 		box4.add(optionPanel);
 		box4.add(createColumn(ratingSource));
 		box3.add(box4);
@@ -160,6 +164,20 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		updateFieldsFromProject();
 	}
 	
+	private Box createOptionGroup()
+	{
+		ButtonGroup bg = new ButtonGroup();
+		JRadioButton statusButton = new JRadioButton("Show Status");
+		JRadioButton thresholdsButton = new JRadioButton("Show Thresholds");
+		bg.add(thresholdsButton);
+		bg.add(statusButton);
+		Box box = Box.createVerticalBox();
+		box.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		box.add(new UiLabel("OPTIONS"));
+		box.add(statusButton);
+		box.add(thresholdsButton);
+		return box;
+	}
 
 	private void normalizeSize(ObjectDataInputField target, ObjectDataInputField source)
 	{
