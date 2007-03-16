@@ -346,7 +346,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return getORef(orefs.size()-1).getObjectId();
 	}
 
-
+	public static int STD_SHORT = 10;
+	
 	private Project project;
 	private Vector orefs;
 	private Vector fields;
