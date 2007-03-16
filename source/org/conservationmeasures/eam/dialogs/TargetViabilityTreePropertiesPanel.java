@@ -75,7 +75,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
 		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
-		ObjectDataInputField desiredSummary = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
+		ObjectDataInputField desiredSummary = addField(createStringField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
 		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,STD_SHORT));
 		
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
