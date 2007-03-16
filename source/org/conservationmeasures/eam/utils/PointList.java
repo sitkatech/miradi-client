@@ -54,6 +54,11 @@ public class PointList
 	{
 		data.add(point);
 	}
+	
+	public void addAll(List listToAdd)
+	{
+		data.addAll(listToAdd);
+	}
 		
 	public Point get(int index)
 	{

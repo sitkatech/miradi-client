@@ -1,28 +1,39 @@
 /* 
-* Copyright 2005-2007, Wildlife Conservation Society, 
-* Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
-* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
-*/ 
+ * Copyright 2005-2007, Wildlife Conservation Society, 
+ * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
+ * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+ */ 
 package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Point2D;
+import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objectdata.PointListData;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.Properties;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
+import org.jgraph.graph.GraphConstants;
 
 
 public class MouseEventHandler implements MouseListener, GraphSelectionListener
@@ -32,22 +43,22 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		mainWindow = mainWindowToUse;
 		selectedCells = new Object[0];
 	}
-	
+
 	Project getProject()
 	{
 		return mainWindow.getProject();
 	}
-	
+
 	DiagramComponent getDiagram()
 	{
 		return mainWindow.getDiagramComponent();
 	}
-	
+
 	Actions getActions()
 	{
 		return mainWindow.getActions();
 	}
-	
+
 	public void mousePressed(MouseEvent event)
 	{
 		dragStartedAt = null;
@@ -64,16 +75,30 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			dragStartedAt = null;
 			return;
 		}
-		for(int i = 0; i < selectedCells.length; ++i)
+		try
 		{
-			if(((EAMGraphCell)selectedCells[i]).isFactor())
+			for(int i = 0; i < selectedCells.length; ++i)
 			{
-				FactorCell factor = (FactorCell)selectedCells[i];
-				factor.setPreviousLocation(factor.getLocation());
-				factor.setPreviousSize(factor.getSize());
+				if(((EAMGraphCell)selectedCells[i]).isFactor())
+				{
+					FactorCell factor = (FactorCell)selectedCells[i];
+					factor.setPreviousLocation(factor.getLocation());
+					factor.setPreviousSize(factor.getSize());
+				}
+				if(((EAMGraphCell)selectedCells[i]).isFactorLink())
+				{
+					LinkCell linkCell = (LinkCell)selectedCells[i];
+					DiagramFactorLink diagramFactorLink = linkCell.getDiagramFactorLink();
+					previousBendPointList = diagramFactorLink.getBendPoints();
+				}
+
 			}
 		}
-		
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+
 	}
 
 	public void mouseReleased(MouseEvent event)
@@ -88,43 +113,77 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		if(dragStartedAt == null)
 			return;
 		
-		Vector selectedFactors = new Vector();
-		for(int i = 0; i < selectedCells.length; ++i)
-		{
-			if(((EAMGraphCell)selectedCells[i]).isFactor())
-				selectedFactors.add(selectedCells[i]);
-		}
-		
-		if(selectedFactors.size() == 0)
-			return;
-		
-		DiagramFactorId[] selectedFactorIds = new DiagramFactorId[selectedFactors.size()];
-		for(int i = 0; i < selectedFactors.size(); ++i)
-		{
-			selectedFactorIds[i] = ((FactorCell)selectedFactors.get(i)).getDiagramFactorId();
-		}
-
-		Point dragEndedAt = event.getPoint();
-		int deltaX = dragEndedAt.x - dragStartedAt.x; 
-		int deltaY = dragEndedAt.y - dragStartedAt.y;
-		
-		if(deltaX == 0 && deltaY == 0)
-			return;
-
-		// adjust for snap
-		FactorCell node = (FactorCell)selectedFactors.get(0);
-		deltaX = node.getLocation().x - node.getPreviousLocation().x;
-		deltaY = node.getLocation().y - node.getPreviousLocation().y;
-
 		try
 		{
+			Vector selectedFactors = new Vector();
+			for(int i = 0; i < selectedCells.length; ++i)
+			{
+				if(((EAMGraphCell)selectedCells[i]).isFactor())
+					selectedFactors.add(selectedCells[i]);
+
+				if(((EAMGraphCell)selectedCells[i]).isFactorLink())
+					setDiagramFactorLinkBendPoints((LinkCell)selectedCells[i]);
+			}
+
+			if(selectedFactors.size() == 0)
+				return;
+
+			DiagramFactorId[] selectedFactorIds = new DiagramFactorId[selectedFactors.size()];
+			for(int i = 0; i < selectedFactors.size(); ++i)
+			{
+				selectedFactorIds[i] = ((FactorCell)selectedFactors.get(i)).getDiagramFactorId();
+			}
+
+			Point dragEndedAt = event.getPoint();
+			int deltaX = dragEndedAt.x - dragStartedAt.x; 
+			int deltaY = dragEndedAt.y - dragStartedAt.y;
+
+			if(deltaX == 0 && deltaY == 0)
+				return;
+
+			// adjust for snap
+			FactorCell node = (FactorCell)selectedFactors.get(0);
+			deltaX = node.getLocation().x - node.getPreviousLocation().x;
+			deltaY = node.getLocation().y - node.getPreviousLocation().y;
+
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(selectedFactorIds);
 		}
-		catch(CommandFailedException e)
+		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unexpected error");
 		}
+
+	}
+
+	private void setDiagramFactorLinkBendPoints(LinkCell linkCell) throws CommandFailedException
+	{
+		List points = GraphConstants.getPoints(linkCell.getAttributes());
+		PointListData currentBendPoints = extracBendPointsOnly(points);
+		String newList = currentBendPoints.getPointList().toString();
+		String previousList = previousBendPointList.toString();
+		DiagramFactorLinkId linkId = linkCell.getDiagramFactorLinkId();
+		
+		CommandSetObjectData setBendPointsCommand= new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newList, previousList);
+		getProject().executeCommand(setBendPointsCommand);
+	}
+
+	private PointListData extracBendPointsOnly(List points)
+	{
+		PointListData pointList = new PointListData();
+		int HAS_NO_BEND_POINTS_COUNT = 2;
+		if (points.size() == HAS_NO_BEND_POINTS_COUNT)
+			return pointList;
+		
+		int FROM_INDEX = 1;
+		int TO_INDEX = points.size() - 1;
+		for (int index = FROM_INDEX; index < TO_INDEX; index++)
+		{
+			Point convertedPoint = Utility.convertToPoint((Point2D) points.get(index));
+			pointList.add(convertedPoint);
+		}
+		
+		return pointList;
 	}
 
 	public void mouseEntered(MouseEvent arg0)
@@ -163,7 +222,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 	{
 		selectionChanged(event);
 	}
-	
+
 	public void selectionChanged(GraphSelectionEvent event)
 	{
 		selectedCells = getDiagram().getSelectionCells();
@@ -178,4 +237,5 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 	MainWindow mainWindow;
 	Point dragStartedAt;
 	Object[] selectedCells;
+	PointList previousBendPointList;
 }

@@ -6,10 +6,12 @@
 package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.PointList;
@@ -39,6 +41,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return true;
 	}
 	
+	public DiagramFactorLinkId getDiagramFactorLinkId()
+	{
+		return diagramLink.getDiagramLinkageId();
+	}
+	
 	public DiagramFactorLink getDiagramFactorLink()
 	{
 		return diagramLink;
@@ -63,7 +70,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 		PointList bendPoints = getDiagramFactorLink().getBendPoints();
 		Vector bendPointList = new Vector(bendPoints.getAllPoints());
-		Vector newList =new Vector();
+		Vector newList = new Vector();
 		newList.add(to.getLocation());
 		newList.addAll(bendPointList);
 		newList.add(from.getLocation());
@@ -104,6 +111,16 @@ public class LinkCell extends EAMGraphCell implements Edge
 		
 	}
 
+	public Point getFromLocation()
+	{
+		return from.getLocation();
+	}
+	
+	public Point getToLocation()
+	{
+		return to.getLocation();
+	}
+	
 	// BEGIN Edge Interface
 	public Object getSource()
 	{

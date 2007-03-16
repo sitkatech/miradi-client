@@ -24,15 +24,18 @@ public class DeleteBendPointDoer extends LocationDoer
 		if (bendPoints.size() <= 0)
 			return false;
 		
-		//TODO remove commented code when done
-		//EdgeHandle handle = (EdgeHandle) getMainWindow().getDiagramComponent().getUI().getHandle();
-		
+		//TODO remove commented code when done		
 //		DiagramFactorLink link = links[0];
 //		DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
+//		GraphUI graphUI = diagramComponent.getUI();
+//		
 //		LinkCell linkCell = diagramComponent.getDiagramModel().getDiagramFactorLink(link);
 //		LinkCell[] singleElementArray = {linkCell};
 //		CellView[] cellView = diagramComponent.getGraphLayoutCache().getMapping(singleElementArray);
 //		FactorLinkView linkView = (FactorLinkView) cellView[0];
+//		Object handle = linkView.getHandle();
+//		System.out.println(handle);
+
 //		List handles = linkView.getPoints();
 //		int handleSize = diagramComponent.getHandleSize(); 
 //

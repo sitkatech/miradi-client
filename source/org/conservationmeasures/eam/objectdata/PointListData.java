@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objectdata;
 
 import java.awt.Point;
+import java.util.List;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.PointList;
@@ -63,6 +64,11 @@ public class PointListData extends ObjectData
 	public void add(Point point)
 	{
 		points.add(point);
+	}
+	
+	public void addAll(List listToAdd)
+	{
+		points.addAll(listToAdd);
 	}
 	
 	public void removePoint(Point point)

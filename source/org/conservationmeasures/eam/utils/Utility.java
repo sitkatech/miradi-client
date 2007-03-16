@@ -9,6 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.font.TextLayout;
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,6 +19,15 @@ import org.martus.swing.Utilities;
 
 public class Utility
 {
+	public static Point convertToPoint(Point2D point2d)
+	{
+		int x = (int) point2d.getX();
+		int y = (int) point2d.getY();
+		Point point = new Point(x, y);
+		
+		return point;
+	}
+	
 	public static double convertStringToDouble(String raw)
 	{
 		if (raw.trim().length() == 0)
