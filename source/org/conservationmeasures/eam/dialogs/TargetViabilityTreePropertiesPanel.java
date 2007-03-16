@@ -85,6 +85,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box1.add(keaLabel.getComponent());
 		box1.add(Box.createHorizontalStrut(20));
 		box1.add(createLabel(keaType));
+		box1.add(Box.createHorizontalStrut(20));
 		box1.add(keaType.getComponent());
 		mainGridPanel.add(createLabel(keaLabel));
 		mainGridPanel.add(box1);
@@ -96,9 +97,11 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		Box box2 = Box.createHorizontalBox();
 		box2.add(createLabel(indicatorShortLabel));
+		box2.add(Box.createHorizontalStrut(20));
 		box2.add(indicatorShortLabel.getComponent());
 		box2.add(Box.createHorizontalStrut(20));
 		box2.add(createLabel(indicatorLabel));
+		box2.add(Box.createHorizontalStrut(20));
 		box2.add(indicatorLabel.getComponent());
 		mainGridPanel.add(new UiLabel("Indicator"));
 		mainGridPanel.add(box2);
