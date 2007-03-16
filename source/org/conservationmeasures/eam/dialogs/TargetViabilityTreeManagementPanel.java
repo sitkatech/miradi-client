@@ -24,7 +24,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
 		//FIXME: This is a crude way to avoid having the Target Properties dlg
 		// be too tall to fit on a WXGA screen.
-		setPreferredSize(new Dimension(600, 500));
+		setPreferredSize(new Dimension(900, 150));
 
 	}
 	
