@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Vector;
 
@@ -22,13 +21,11 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
-import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.Properties;
 import org.jgraph.event.GraphSelectionEvent;
@@ -159,31 +156,13 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 	private void setDiagramFactorLinkBendPoints(LinkCell linkCell) throws CommandFailedException
 	{
 		List points = GraphConstants.getPoints(linkCell.getAttributes());
-		PointListData currentBendPoints = extracBendPointsOnly(points);
-		String newList = currentBendPoints.getPointList().toString();
+		PointList currentBendPoints = LinkCell.extracBendPointsOnly(points);
+		String newList = currentBendPoints.toJson().toString();
 		String previousList = previousBendPointList.toString();
 		DiagramFactorLinkId linkId = linkCell.getDiagramFactorLinkId();
 		
 		CommandSetObjectData setBendPointsCommand= new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newList, previousList);
 		getProject().executeCommand(setBendPointsCommand);
-	}
-
-	private PointListData extracBendPointsOnly(List points)
-	{
-		PointListData pointList = new PointListData();
-		int HAS_NO_BEND_POINTS_COUNT = 2;
-		if (points.size() == HAS_NO_BEND_POINTS_COUNT)
-			return pointList;
-		
-		int FROM_INDEX = 1;
-		int TO_INDEX = points.size() - 1;
-		for (int index = FROM_INDEX; index < TO_INDEX; index++)
-		{
-			Point convertedPoint = Utility.convertToPoint((Point2D) points.get(index));
-			pointList.add(convertedPoint);
-		}
-		
-		return pointList;
 	}
 
 	public void mouseEntered(MouseEvent arg0)

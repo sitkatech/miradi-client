@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.geom.Point2D;
+import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -15,6 +17,7 @@ import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
@@ -154,8 +157,24 @@ public class LinkCell extends EAMGraphCell implements Edge
 		GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_TECHNICAL);
 		GraphConstants.setEndFill(getAttributes(), true);
 		//TODO do we realy need this for bendable arrows
-		GraphConstants.setBendable(getAttributes(), true);
+		//GraphConstants.setBendable(getAttributes(), true);
 	}
+	
+	public static PointList extracBendPointsOnly(List points)
+	{
+		PointList pointList = new PointList();
+		
+		int FROM_INDEX = 1;
+		int TO_INDEX = points.size() - 1;
+		for (int index = FROM_INDEX; index < TO_INDEX; index++)
+		{
+			Point convertedPoint = Utility.convertToPoint((Point2D) points.get(index));
+			pointList.add(convertedPoint);
+		}
+
+		return pointList;
+	}
+
 
 
 	FactorLink link;

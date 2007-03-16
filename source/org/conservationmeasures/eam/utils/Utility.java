@@ -23,9 +23,16 @@ public class Utility
 	{
 		int x = (int) point2d.getX();
 		int y = (int) point2d.getY();
-		Point point = new Point(x, y);
 		
-		return point;
+		return new Point(x, y);
+	}
+	
+	public static Point2D convertToPoint2D(Point point)
+	{
+		double x = point.getX();
+		double y = point.getY();
+		
+		return new Point2D.Double(x, y);
 	}
 	
 	public static double convertStringToDouble(String raw)

@@ -63,7 +63,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		disableInPlaceEditing();
 		setDisconnectable(false);
 		setDisconnectOnMove(false);
-		setBendable(true);
+		setBendable(false);
 		setGridSize(Project.DEFAULT_GRID_SIZE);
 		setGridEnabled(true);
 		setGridMode(JGraph.CROSS_GRID_MODE);

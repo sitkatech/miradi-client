@@ -50,6 +50,11 @@ public class PointList
 		return data.size();
 	}
 	
+	public void insertAt(Point point, int index)
+	{
+		data.insertElementAt(point, index);
+	}
+	
 	public void add(Point point)
 	{
 		data.add(point);

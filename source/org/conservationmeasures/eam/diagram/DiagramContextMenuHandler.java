@@ -108,6 +108,7 @@ public class DiagramContextMenuHandler
 		Point scaledPoint = Utilities.createPointFromPoint2D(scaledPoint2D);
 		
 		JPopupMenu menu = getPopupMenu(scaledPoint);
+		mainWindow.updateActionsAndStatusBar();
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 	
