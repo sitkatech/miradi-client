@@ -55,7 +55,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		//FIXME: temp hack to force single row display
-		pane.setPreferredSize(new Dimension(table.getPreferredSize().width*2, table.getPreferredSize().height*2));
+		pane.setPreferredSize(new Dimension(table.getPreferredSize().width*2, table.getPreferredSize().height));
 		return pane;
 	}
 
@@ -134,7 +134,8 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		{
 			if (!avoidSaveDuringInternalSet) 
 			{
-				saveSelection();
+				if (event.getFirstRow()==0);
+					saveSelection();
 			}
 		}
 

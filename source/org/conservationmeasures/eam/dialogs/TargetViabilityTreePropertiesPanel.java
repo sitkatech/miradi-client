@@ -18,6 +18,7 @@ import javax.swing.JRadioButton;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -29,6 +30,7 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.questions.MeasurementStatusQuestion;
@@ -63,7 +65,6 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField indicatorShortLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL,STD_SHORT));
 		ObjectDataInputField indicatorPriority = addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		ObjectDataInputField monitoringStatus = addField(createChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
-		ObjectDataInputField indicatorThreshold = addField(createStringMapTableField(ObjectType.INDICATOR,  new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
 		ObjectDataInputField measurementStatus = addField(createRatingChoiceField(ObjectType.INDICATOR, new MeasurementStatusQuestion(Indicator.TAG_MEASUREMENT_STATUS)));  
 		ObjectDataInputField measurementTrend = addField(createChoiceField(ObjectType.INDICATOR, new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND)));
 		ObjectDataInputField measurementDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DATE));
@@ -77,6 +78,14 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
 		ObjectDataInputField desiredSummary = addField(createStringField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
 		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,STD_SHORT));
+		
+		ObjectDataInputField indicatorThreshold = 
+			addField(createViabilityRatingsTableField(
+					ObjectType.INDICATOR,  
+					new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS), 
+					measurementSummary, 
+					desiredSummary
+					));
 		
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
 
@@ -196,6 +205,11 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		return box;
 	}
 
+	public ObjectDataInputField createViabilityRatingsTableField(int objectType, ChoiceQuestion question, ObjectDataInputField measurementSummary, ObjectDataInputField desiredSummary)
+	{
+		return new ViabilityRatingsTableField(getProject(), objectType, getObjectIdForType(objectType), question, measurementSummary, desiredSummary);
+	}
+	
 	private void normalizeSize(ObjectDataInputField target, ObjectDataInputField source)
 	{
 		target.getComponent().setMaximumSize(source.getComponent().getPreferredSize());
