@@ -5,8 +5,14 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Component;
+
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -25,6 +31,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		model = (DefaultTableModel)table.getModel();
 		model.insertRow(1, new String[]{});
 		question = questionToUse;
+		table.setDefaultRenderer(Object.class, new TableCellRenderer());
 	}
 
 	private void setIconRow(ORef oref)
@@ -69,6 +76,22 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		measurementSummary = "";
 		detailStatus = "";
 		detailSummary = "";
+	}
+	
+	class TableCellRenderer extends DefaultTableCellRenderer
+	{
+		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
+				boolean isSelected, boolean hasFocus, int row, int column)
+		{
+			if (row==1) 
+			{
+				JLabel label = new JLabel();
+				label.setIcon(new GoalIcon());
+				label.setText((String)value);
+				return label;
+			}
+			return this;
+		}
 	}
 	
 	String measurementStatus;
