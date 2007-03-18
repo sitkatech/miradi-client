@@ -72,21 +72,15 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField measurementDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,STD_SHORT));
 		ObjectDataInputField measureementStatusConfidence = addField(createChoiceField(ObjectType.INDICATOR,  new StatusConfidenceQuestion(Indicator.TAG_MEASUREMENT_STATUS_CONFIDENCE)));
 		ObjectDataInputField ratingSource = addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
-		
+		ObjectDataInputField indicatorThreshold = 
+			addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
 		
 		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
 		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
 		ObjectDataInputField desiredSummary = addField(createStringField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
 		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,STD_SHORT));
 		
-		ObjectDataInputField indicatorThreshold = 
-			addField(createViabilityRatingsTableField(
-					ObjectType.INDICATOR,  
-					new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS), 
-					measurementSummary, 
-					desiredSummary
-					));
-		
+
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
 
 		JPanel mainGridPanel = createGridLayoutPanel(0,2);
@@ -205,9 +199,9 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		return box;
 	}
 
-	public ObjectDataInputField createViabilityRatingsTableField(int objectType, ChoiceQuestion question, ObjectDataInputField measurementSummary, ObjectDataInputField desiredSummary)
+	public ObjectDataInputField createViabilityRatingsTableField(int objectType, ChoiceQuestion question)
 	{
-		return new ViabilityRatingsTableField(getProject(), objectType, getObjectIdForType(objectType), question, measurementSummary, desiredSummary);
+		return new ViabilityRatingsTableField(getProject(), objectType, getObjectIdForType(objectType), question);
 	}
 	
 	private void normalizeSize(ObjectDataInputField target, ObjectDataInputField source)
