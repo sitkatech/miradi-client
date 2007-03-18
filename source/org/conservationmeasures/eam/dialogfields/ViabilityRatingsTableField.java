@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogfields;
 import javax.swing.table.DefaultTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
@@ -18,32 +19,36 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	{
 		super(projectToUse, objectType, objectId, questionToUse);
 		model = (DefaultTableModel)table.getModel();
-		model.insertRow(1, getRowStatus());
+		model.insertRow(1, new String[]{});
 		question = questionToUse;
 	}
 
-
-	public void setText(String dataString)
-	{
-		super.setText(dataString);
-		setIconRow();
-	}
-	
 	private void setIconRow()
 	{
 		//TODO: set iconic row display based on summary fields.
-		Object[] data = getRowStatus();
+		Object[] data = new String[] {"aa","b","c","aa"};
 		model.setValueAt(data[0], 1, 0);
 		model.setValueAt(data[1], 1, 1);
 		model.setValueAt(data[2], 1, 2);
 		model.setValueAt(data[3], 1, 3);
 	}
 	
-	private Object[] getRowStatus()
+
+	public void setIconRowObject(ORef oref)
 	{
-		return new String[] {"aa","b","c","aa"};
+		if (oref==null)
+			clearIconRow();
+		else
+			setIconRow();
 	}
 	
+	private void clearIconRow()
+	{
+		model.setValueAt("", 1, 0);
+		model.setValueAt("", 1, 1);
+		model.setValueAt("", 1, 2);
+		model.setValueAt("", 1, 3);
+	}
 	
 	ChoiceQuestion question;
 	DefaultTableModel model;

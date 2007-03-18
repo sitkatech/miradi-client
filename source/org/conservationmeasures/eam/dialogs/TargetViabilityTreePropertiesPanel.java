@@ -17,11 +17,13 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -72,7 +74,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField measurementDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,STD_SHORT));
 		ObjectDataInputField measureementStatusConfidence = addField(createChoiceField(ObjectType.INDICATOR,  new StatusConfidenceQuestion(Indicator.TAG_MEASUREMENT_STATUS_CONFIDENCE)));
 		ObjectDataInputField ratingSource = addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
-		ObjectDataInputField indicatorThreshold = 
+		indicatorThreshold = (ViabilityRatingsTableField)
 			addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
 		
 		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
@@ -211,6 +213,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 
 	public void setObjectRefs(Vector orefsToUse)
 	{
+		indicatorThreshold.setIconRowObject(null);
 		BaseId objectId = getObjectIdForTypeInThisList(ObjectType.INDICATOR, orefsToUse);
 		if (!objectId.isInvalid())
 			orefsToUse = insertIndicatorsGoal(orefsToUse, objectId);
@@ -224,7 +227,13 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		{
 			IdList list = new IdList(indicator.getData(Indicator.TAG_GOAL_IDS));
 			if (list.size()!=0)
-				orefsToUse.insertElementAt(new ORef(ObjectType.GOAL,list.get(0)),0);
+				
+			{
+				ORef ref = new ORef(ObjectType.GOAL,list.get(0));
+				orefsToUse.insertElementAt(ref,0);
+				indicatorThreshold.setIconRowObject(new ORef(ObjectType.INDICATOR, objectId));
+				indicatorThreshold.setIconRowObject(ref);
+			}
 			else
 				EAM.logError("No Goals found for EKA Indicator:" + objectId);
 		}
@@ -242,8 +251,21 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		return EAM.text("Title|Key Ecological Attribute Properties");
 	}
 	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommand())
+		{
+			final CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
+			String tag = command.getFieldTag();
+			if (tag.equals(Indicator.TAG_MEASUREMENT_SUMMARY) || tag.equals(Goal.TAG_DESIRED_SUMMARY))
+			{
+				ORef ref = new ORef(command.getObjectType(), command.getObjectId());
+				indicatorThreshold.setIconRowObject(ref);
+			}
+		}
+	}
+	
+	private ViabilityRatingsTableField indicatorThreshold;
 	private static final int STD_SPACE_20 = 20;
-
-
 
 }
