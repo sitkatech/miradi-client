@@ -257,7 +257,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		{
 			final CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
 			String tag = command.getFieldTag();
-			if (tag.equals(Indicator.TAG_MEASUREMENT_SUMMARY) || tag.equals(Goal.TAG_DESIRED_SUMMARY))
+			if (tag.equals(Indicator.TAG_MEASUREMENT_SUMMARY) || tag.equals(Goal.TAG_DESIRED_SUMMARY) ||
+				tag.equals(Indicator.TAG_MEASUREMENT_STATUS) || tag.equals(Goal.TAG_DESIRED_STATUS))
 			{
 				ORef ref = new ORef(command.getObjectType(), command.getObjectId());
 				indicatorThreshold.setIconRowObject(ref);

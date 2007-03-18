@@ -9,6 +9,10 @@ import javax.swing.table.DefaultTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
@@ -23,14 +27,27 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		question = questionToUse;
 	}
 
-	private void setIconRow()
-	{
-		//TODO: set iconic row display based on summary fields.
-		Object[] data = new String[] {"aa","b","c","aa"};
-		model.setValueAt(data[0], 1, 0);
-		model.setValueAt(data[1], 1, 1);
-		model.setValueAt(data[2], 1, 2);
-		model.setValueAt(data[3], 1, 3);
+	private void setIconRow(ORef oref)
+	{	EAMObject object = getProject().findObject(oref);
+		if (object.getType() == ObjectType.GOAL)
+		{
+			detailSummary = object.getData(Goal.TAG_DESIRED_SUMMARY);
+			String detailStatusCode = object.getData(Goal.TAG_DESIRED_STATUS);
+			detailStatus = question.findChoiceByCode(detailStatusCode).getLabel();
+		}
+		else if (object.getType() == ObjectType.INDICATOR)
+		{
+			measurementSummary = object.getData(Indicator.TAG_MEASUREMENT_SUMMARY);
+			String measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
+			measurementStatus = question.findChoiceByCode(measurementStatusCode).getLabel();
+		}
+
+		
+		//TODO: checking to make sure fields come over correctly
+		model.setValueAt(detailStatus, 1, 0);
+		model.setValueAt(detailSummary, 1, 1);
+		model.setValueAt(measurementSummary, 1, 2);
+		model.setValueAt(measurementStatus, 1, 3);
 	}
 	
 
@@ -39,7 +56,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		if (oref==null)
 			clearIconRow();
 		else
-			setIconRow();
+			setIconRow(oref);
 	}
 	
 	private void clearIconRow()
@@ -48,8 +65,16 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		model.setValueAt("", 1, 1);
 		model.setValueAt("", 1, 2);
 		model.setValueAt("", 1, 3);
+		measurementStatus = "";
+		measurementSummary = "";
+		detailStatus = "";
+		detailSummary = "";
 	}
 	
+	String measurementStatus;
+	String measurementSummary;
+	String detailStatus;
+	String detailSummary;
 	ChoiceQuestion question;
 	DefaultTableModel model;
 
