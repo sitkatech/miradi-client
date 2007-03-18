@@ -17,7 +17,6 @@ import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
@@ -26,7 +25,7 @@ import org.martus.swing.UiLabel;
 import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInputPanel implements CommandExecutedListener
+abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInputPanel
 {
 	
 	public ObjectDataInputPanelSpecial(Project projectToUse, int objectType, BaseId idToUse)
