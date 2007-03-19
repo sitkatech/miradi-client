@@ -9,7 +9,6 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
@@ -41,9 +40,7 @@ public class LinkBendPointsMoveHandler
 			movedPoints.add(movedPoint);
 		}
 		
-		String newBendPoints = movedPoints.toJson().toString();
-		String oldBendPoints = pointsToMove.toJson().toString();
-		CommandSetObjectData bendPointMoveCommand = new CommandSetObjectData(ObjectType.DIAGRAM_LINK, diagramLink.getDiagramLinkageId(), DiagramFactorLink.TAG_BEND_POINTS, newBendPoints, oldBendPoints);
+		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, movedPoints, pointsToMove);
 		project.executeCommand(bendPointMoveCommand);
 	}
 	

@@ -20,10 +20,8 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.project.Project;
@@ -163,11 +161,9 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 	{
 		List points = GraphConstants.getPoints(linkCell.getAttributes());
 		PointList currentBendPoints = LinkCell.extracBendPointsOnly(points);
-		String newList = currentBendPoints.toJson().toString();
-		String previousList = previousBendPointList.toString();
-		DiagramFactorLinkId linkId = linkCell.getDiagramFactorLinkId();
+		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
 		
-		CommandSetObjectData setBendPointsCommand= new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newList, previousList);
+		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, currentBendPoints, previousBendPointList);
 		getProject().executeCommand(setBendPointsCommand);
 	}
 

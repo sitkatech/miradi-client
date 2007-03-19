@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.commands;
 
-import java.awt.Point;
 import java.text.ParseException;
 import java.util.HashMap;
 
@@ -19,12 +18,13 @@ import org.conservationmeasures.eam.utils.PointList;
 
 public class CommandSetObjectData extends Command
 {
-	static public CommandSetObjectData createAppendPointCommand(EAMObject object, String poinListTag, Point pointToAppend) throws Exception
+	
+	static public CommandSetObjectData createNewPointList(EAMObject object, String listTag, PointList newList, PointList oldList)
 	{
-		PointList newList = new PointList(object.getData(poinListTag));
-		newList.add(pointToAppend);
+		String newListAsString = newList.toJson().toString();
+		String oldListAsString = oldList.toJson().toString();
 		
-		return new CommandSetObjectData(object.getType(), object.getId(), poinListTag, newList.toString());
+		return new CommandSetObjectData(object.getType(), object.getId(), listTag, newListAsString, oldListAsString);
 	}
 	
 	static public CommandSetObjectData createAppendIdsCommand(EAMObject object, String idListTag, IdList idsToAppend) throws ParseException
