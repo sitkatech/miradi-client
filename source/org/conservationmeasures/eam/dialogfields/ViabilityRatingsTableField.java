@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import org.conservationmeasures.eam.icons.GoalIcon;
+import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -91,12 +93,12 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			
 			if ((row==1) && validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
-				comp =  new JLabel(measurementSummary, JLabel.LEFT);
+				comp =  new JLabel(measurementSummary, new IndicatorIcon(), JLabel.LEFT);
 			}
 			
 			if ((row==2) && validCode(detailStatusCode)  && Integer.parseInt(detailStatusCode)-1 == column)
 			{
-				comp =  new JLabel(detailSummary, JLabel.LEFT);
+				comp =  new JLabel(detailSummary, new GoalIcon(), JLabel.LEFT);
 			}
 
 			return getComponent(comp, column);
