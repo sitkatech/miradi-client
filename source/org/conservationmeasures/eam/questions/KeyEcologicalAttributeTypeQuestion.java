@@ -17,9 +17,9 @@ public class KeyEcologicalAttributeTypeQuestion extends ChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified"),
-			new ChoiceItem("1", "Size"),
-			new ChoiceItem("2", "Condition"),
-			new ChoiceItem("3", "LandScape"),
+			new ChoiceItem("10", "Size"),
+			new ChoiceItem("20", "Condition"),
+			new ChoiceItem("30", "LandScape"),
 		};
 	}
 

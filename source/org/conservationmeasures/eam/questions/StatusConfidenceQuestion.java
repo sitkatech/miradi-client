@@ -17,6 +17,10 @@ public class StatusConfidenceQuestion extends ChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified"),
+			new ChoiceItem("RoughGuess", "Rough Guess"),
+			new ChoiceItem("ExpertKnowlege", "Expert Knowlege"),
+			new ChoiceItem("RapidAssessment", "Rapid Assessment"),
+			new ChoiceItem("IntensiveAssessment", "Intensive Assessment")
 		};
 	}
 }
