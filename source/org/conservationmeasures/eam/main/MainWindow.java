@@ -33,6 +33,8 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectRepairer;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
@@ -307,7 +309,34 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		possiblyNotifyUserIfProjectDateChange(event);
 		updateAfterCommand(event);
+	}
+
+	private void possiblyNotifyUserIfProjectDateChange(CommandExecutedEvent event)
+	{
+		if (isProjectStartDateChangeCommand(event) || isProjectEndDateChangeCommand(event))
+		{
+			Runnable doHelloWorld = new Runnable() 
+			{
+				public void run() 
+				{
+					//TODO rework dialog text
+					EAM.notifyDialog("Date change notification");
+				}
+			};
+			SwingUtilities.invokeLater(doHelloWorld);
+		}
+	}
+
+	private boolean isProjectEndDateChangeCommand(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(ObjectType.PROJECT_METADATA, ProjectMetadata.TAG_EXPECTED_END_DATE);
+	}
+	
+	private boolean isProjectStartDateChangeCommand(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(ObjectType.PROJECT_METADATA, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 	}
 	
 	private void updateAfterCommand(CommandExecutedEvent event)
