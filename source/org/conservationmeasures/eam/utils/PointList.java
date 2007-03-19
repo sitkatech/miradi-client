@@ -85,6 +85,11 @@ public class PointList
 		return data.indexOf(point);
 	}
 	
+	public void removePoint(int index)
+	{
+		data.remove(index);
+	}
+	
 	public void removePoint(Point point)
 	{
 		if(!data.contains(point))
@@ -142,5 +147,4 @@ public class PointList
 	private static final String TAG_POINTS = "Points";
 
 	Vector data;
-
 }

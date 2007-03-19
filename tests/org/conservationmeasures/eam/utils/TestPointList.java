@@ -27,6 +27,10 @@ public class TestPointList extends EAMTestCase
 		assertEquals("wrong size?", 2, list.size());
 		assertEquals("bad get 1?", point1, list.get(0));
 		assertEquals("bad get 2?", point2, list.get(1));
+		
+		list.removePoint(0);
+		assertEquals("wrong size?", 1, list.size());
+		assertEquals("bad get 1?", point2, list.get(0));
 	}
 	
 	public void testJson() throws Exception
