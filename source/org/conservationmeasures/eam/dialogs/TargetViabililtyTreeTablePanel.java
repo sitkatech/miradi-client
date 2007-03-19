@@ -26,6 +26,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		super( mainWindowToUse, treeToUse, buttonActions, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 	}
 
+	// FIXME: Shouldn't this be in the TreeTable instead of the panel???
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		GenericTreeTableModel treeTableModel = getModel();
