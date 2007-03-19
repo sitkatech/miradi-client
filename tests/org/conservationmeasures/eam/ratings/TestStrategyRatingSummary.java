@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
-import org.conservationmeasures.eam.questions.StrategyRatingSummary;
+import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 
 public class TestStrategyRatingSummary extends EAMTestCase
 {
@@ -41,7 +41,7 @@ public class TestStrategyRatingSummary extends EAMTestCase
 		StrategyDurationQuestion durationQuestion = new StrategyDurationQuestion("impact");
 		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion("feasibility");
 		StrategyCostQuestion costQuestion = new StrategyCostQuestion("feasibility");
-		StrategyRatingSummary summary = new StrategyRatingSummary("summary");
+		StrategyRatingSummaryQuestion summary = new StrategyRatingSummaryQuestion("summary");
 		ChoiceItem impact = impactQuestion.findChoiceByCode(impactCode);
 		ChoiceItem duration = durationQuestion.findChoiceByCode(durationCode);
 		ChoiceItem feasibility = feasibilityQuestion.findChoiceByCode(feasibilityCode);

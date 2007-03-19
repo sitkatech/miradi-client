@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
-import org.conservationmeasures.eam.questions.StrategyRatingSummary;
+import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 
 public class StrategyPoolTableModel extends ObjectPoolTableModel
 {
@@ -43,7 +43,7 @@ public class StrategyPoolTableModel extends ObjectPoolTableModel
 	public String getValueToDisplay(ORef rowObjectRef, String tag)
 	{
 		if(tag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
-			return getRatingSummaryString(rowObjectRef, new StrategyRatingSummary(tag));
+			return getRatingSummaryString(rowObjectRef, new StrategyRatingSummaryQuestion(tag));
 		return super.getValueToDisplay(rowObjectRef, tag);
 	}
 	

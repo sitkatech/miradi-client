@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
-import org.conservationmeasures.eam.questions.StrategyRatingSummary;
+import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -91,7 +91,7 @@ public class Strategy extends Factor
 	
 	public ChoiceItem getStrategyRating()
 	{
-		StrategyRatingSummary summary = new StrategyRatingSummary("");
+		StrategyRatingSummaryQuestion summary = new StrategyRatingSummaryQuestion("");
 		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion("");
 		StrategyDurationQuestion durationQuestion = new StrategyDurationQuestion("");
 		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion("");

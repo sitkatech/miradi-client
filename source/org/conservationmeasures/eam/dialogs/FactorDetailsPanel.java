@@ -30,7 +30,7 @@ import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
-import org.conservationmeasures.eam.questions.StrategyRatingSummary;
+import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.questions.TargetStatusQuestion;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 
@@ -67,7 +67,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			addField(createRatingChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
 			addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
 			addField(createRatingChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
-			addField(createReadOnlyChoiceField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
+			addField(createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 			detailIcon = new StrategyIcon();
 		}
 

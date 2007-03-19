@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
-import org.conservationmeasures.eam.questions.StrategyRatingSummary;
+import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.questions.StrategyTaxonomyQuestion;
 
 public class StrategyPropertiesPanel extends ObjectDataInputPanel
@@ -27,7 +27,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		addField(createRatingChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
 		addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
 		addField(createRatingChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
-		addField(createReadOnlyChoiceField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
+		addField(createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 		addField(createReadOnlyChoiceField(new StrategyTaxonomyQuestion(Strategy.TAG_TAXONOMY_CODE)));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_GOALS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_OBJECTIVES));
