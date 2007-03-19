@@ -134,6 +134,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		{
 			if (!avoidSaveDuringInternalSet) 
 			{
+				//TODO: shold not be needed if setIconRowObject sets avoidSaveDuringInternalSet
 				if (event.getFirstRow()==0)
 				{
 					saveSelection();
