@@ -18,7 +18,7 @@ public class RatingSourceQuestion extends ChoiceQuestion
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified"),
 			new ChoiceItem("RoughEstimate", "Rough Estimate"),
-			new ChoiceItem("ExpertOpinon", "Expert Opinon"),
+			new ChoiceItem("ExpertOpinion", "Expert Opinion"),
 			new ChoiceItem("PublishedStudy", "Published Study"),
 		};
 	}

@@ -258,14 +258,17 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		{
 			final CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
 			String tag = command.getFieldTag();
-			if ((command.getObjectType() == ObjectType.GOAL) || (command.getObjectType() == ObjectType.INDICATOR))
+			
+			final boolean areIndicatorMeasurementFields = (command.getObjectType() == ObjectType.INDICATOR) && 
+								(tag.equals(Indicator.TAG_MEASUREMENT_SUMMARY) || tag.equals(Indicator.TAG_MEASUREMENT_STATUS));
+			
+			final boolean areGoalDesireFields = (command.getObjectType() == ObjectType.GOAL) && 
+								(tag.equals(Goal.TAG_DESIRED_SUMMARY) || tag.equals(Goal.TAG_DESIRED_STATUS));
+			
+			if (areIndicatorMeasurementFields || areGoalDesireFields)
 			{
-				if (tag.equals(Indicator.TAG_MEASUREMENT_SUMMARY) || tag.equals(Goal.TAG_DESIRED_SUMMARY) ||
-					tag.equals(Indicator.TAG_MEASUREMENT_STATUS) || tag.equals(Goal.TAG_DESIRED_STATUS))
-				{
-					ORef ref = new ORef(command.getObjectType(), command.getObjectId());
-					indicatorThreshold.setIconRowObject(ref);
-				}
+				ORef ref = new ORef(command.getObjectType(), command.getObjectId());
+				indicatorThreshold.setIconRowObject(ref);
 			}
 		}
 	}
