@@ -117,9 +117,9 @@ public class WizardPanel extends JPanel
 		Box box = Box.createHorizontalBox();
 		box.add(Box.createHorizontalStrut(10));
 		box.add(new UiButton(actions.get(ActionWizardPrevious.class)));
-		box.add(Box.createHorizontalGlue());
+		box.add(Box.createHorizontalStrut(20));
 		box.add(new UiButton(actions.get(ActionWizardNext.class)));
-		box.add(Box.createHorizontalStrut(10));
+		box.add(Box.createHorizontalGlue());
 		return box;
 	}
 	
