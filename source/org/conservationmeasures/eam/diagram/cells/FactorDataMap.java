@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.DataMap;
 import org.json.JSONObject;
 
@@ -21,4 +22,15 @@ public class FactorDataMap extends DataMap
 	{
 		super(copyFrom);
 	}	
+
+	public String getFactorType()
+	{
+		return getString(Factor.TAG_NODE_TYPE);
+	}
+	
+	public String getLabel()
+	{
+		return getString(Factor.TAG_LABEL);
+	}
+	
 }

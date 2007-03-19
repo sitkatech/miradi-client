@@ -85,20 +85,21 @@ public class DiagramFactor extends EAMBaseObject
 		size.setDimension(dimensionToUse);
 	}
 	
-	public FactorDataMap createFactorDataMap(String factorType)
+	public FactorDataMap createFactorDataMap(String factorType, String factorLabel)
 	{
 		FactorDataMap dataMap = new FactorDataMap();
 		dataMap.putId(TAG_ID, getDiagramFactorId());
 		dataMap.putId(TAG_WRAPPED_ID, getWrappedId());
-		dataMap.put(Factor.TAG_NODE_TYPE, factorType);
+		dataMap.putString(TAG_LOCATION, location.get());
+		dataMap.putString(TAG_SIZE, size.get());
+		
 		
 		// FIXME: This is a crude hack, so we can re-create the node if it gets pasted. 
 		// Really, for each node copied to the clipboard, we should copy 
 		// the json for both the ConceptualModelNode and for the DiagramNode.
 		// That will also fix the current bug that objectives and goals are not copied
-		
-		dataMap.putString(TAG_LOCATION, location.get());
-		dataMap.putString(TAG_SIZE, size.get());
+		dataMap.put(Factor.TAG_NODE_TYPE, factorType);
+		dataMap.put(Factor.TAG_LABEL, factorLabel);
 		
 		return dataMap;
 	}

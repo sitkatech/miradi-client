@@ -30,10 +30,13 @@ public class TestFactorDataMap extends EAMTestCase
 		Point location = new Point(5,22);
 		nodeA.setLocation(location);
 		String factorType = Factor.TYPE_TARGET.toString();
-		FactorDataMap nodeAData = nodeA.createFactorDataMap(factorType);
+		String label = "Different from Node A";
+		FactorDataMap nodeAData = nodeA.createFactorDataMap(factorType, label);
 		
 		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramFactor.TAG_LOCATION));
 		assertEquals("id incorrect", nodeId, nodeAData.getId(DiagramFactor.TAG_ID));
 		assertEquals("wrapped id incorrect", wrappedId, nodeAData.getId(DiagramFactor.TAG_WRAPPED_ID));
+		assertEquals("node type incorrect", factorType, nodeAData.getFactorType());
+		assertEquals("label incorrect", label, nodeAData.getLabel());
 	}
 }

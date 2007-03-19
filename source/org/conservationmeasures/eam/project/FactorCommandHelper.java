@@ -123,6 +123,9 @@ public class FactorCommandHelper
 			String newMoveLocation = EnhancedJsonObject.convertFromPoint(new Point(newNodeLocation.x, newNodeLocation.y));
 			CommandSetObjectData moveCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newDiagramNodeId, DiagramFactor.TAG_LOCATION, newMoveLocation);
 			executeCommand(moveCommand);
+			
+			CommandSetObjectData setLabel = new CommandSetObjectData(ObjectType.FACTOR, newNode.getWrappedId(), Factor.TAG_LABEL, nodeData.getLabel()); 
+			executeCommand(setLabel);
 		}
 	}
 

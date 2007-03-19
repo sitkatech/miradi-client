@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class TransferableEamList implements Transferable 
 {
@@ -46,8 +47,10 @@ public class TransferableEamList implements Transferable
 				}
 				if(cell.isFactor())
 				{
-					FactorType factorType = ((FactorCell)cell).getUnderlyingFactorType();
-					factors.add(cell.getDiagramFactor().createFactorDataMap(factorType.toString()));
+					Factor factor = ((FactorCell)cell).getUnderlyingObject();
+					FactorType factorType = factor.getNodeType();
+					FactorDataMap factorDataMap = cell.getDiagramFactor().createFactorDataMap(factorType.toString(), factor.getLabel());
+					factors.add(factorDataMap);
 				}
 			} 
 			catch (Exception e) 
