@@ -78,7 +78,7 @@ public class DeleteBendPointDoer extends LocationDoer
 	
 	private boolean isWithinRange(Point bendPoint, Point clickLocation)
 	{
-		//TODO check JGraph to see what the bounds of the bend point is, if any.
+		//TODO check JGraph.HandLeSize to see what the bounds of the bend point is, if any.
 		final double MAX_DISTANCE = 10.0;
 		double distance = clickLocation.distance(bendPoint);
 		if (distance <= MAX_DISTANCE)
