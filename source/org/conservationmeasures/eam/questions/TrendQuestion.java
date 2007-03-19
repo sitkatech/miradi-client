@@ -16,13 +16,13 @@ public class TrendQuestion extends ChoiceQuestion
 	static ChoiceItem[] getTrends()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Unknown Trend"),
+				new ChoiceItem("", "Not Specified"),
+				new ChoiceItem("Unknown", "Unknown"),
 				new ChoiceItem("StrongIncrease", "Strong Increase"),
 				new ChoiceItem("MildIncrease", "Mild Increase"),
 				new ChoiceItem("Flat", "Flat"),
 				new ChoiceItem("MildDecrease", "Mild Decrease"),
 				new ChoiceItem("StrongDecrease", "Strong Decrease"),
-				new ChoiceItem("UnkownTrend", "Unkown Trend"),
 		};
 	}
 }
