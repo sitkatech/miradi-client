@@ -9,6 +9,7 @@ import java.awt.Component;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,10 +35,12 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		model.insertRow(2, new String[]{});
 		question = questionToUse;
 		table.setDefaultRenderer(Object.class, new TableCellRenderer());
+		table.getTableHeader().setDefaultRenderer(new HeaderRenderer());
 	}
 
 	private void setIconRow(ORef oref)
-	{	EAMObject object = getProject().findObject(oref);
+	{	
+		EAMObject object = getProject().findObject(oref);
 		if (object.getType() == ObjectType.GOAL)
 		{
 			detailSummary = object.getData(Goal.TAG_DESIRED_SUMMARY);
@@ -48,8 +51,6 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			measurementSummary = object.getData(Indicator.TAG_MEASUREMENT_SUMMARY);
 			measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
 		}
-
-		clearIconRows();
 	}
 
 
@@ -63,6 +64,9 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	
 	private void clearIconRows()
 	{
+		measurementStatusCode = "";
+		detailStatusCode = "";
+		
 		for (int i=0; i<4; ++i)
 		{
 			model.setValueAt("", 1, i);
@@ -77,19 +81,41 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
 				boolean isSelected, boolean hasFocus, int row, int column)
 		{
-			if (row==0) 
-				return this;
-
-			if ((row==1) && validCode(detailStatusCode) && Integer.parseInt(detailStatusCode)-1 == column)
+			if ((row==1) && validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
-				return new JLabel(detailSummary, new IndicatorIcon(), JLabel.LEFT);
+				JLabel ms =  new  JLabel(measurementSummary, new IndicatorIcon(), JLabel.LEFT);
+				ms.setOpaque(true);
+				ms.setBackground(question.getChoices()[Integer.parseInt(measurementStatusCode)].getColor());
+				return ms;
 			}
-			else if ((row==2) && validCode(measurementStatusCode)  && Integer.parseInt(measurementStatusCode)-1 == column)
+			
+			if ((row==2) && validCode(detailStatusCode)  && Integer.parseInt(detailStatusCode)-1 == column)
 			{
-				return new JLabel(measurementSummary, new GoalIcon(), JLabel.LEFT);
+				JLabel ms = new  JLabel(detailSummary, new GoalIcon(), JLabel.LEFT);
+				if (validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
+				{
+					ms.setOpaque(true);
+					ms.setBackground(question.getChoices()[Integer.parseInt(measurementStatusCode)].getColor());
+				}
+				return ms;
 			}
-			return this;
+			
+			return getComponent((String) value, column);
 		}
+		
+		
+		private Component getComponent(String value, int column)
+		{
+			JTextField field = new JTextField(value);
+			
+			if (validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
+			{
+				field.setOpaque(true);
+				field.setBackground(question.getChoices()[Integer.parseInt(measurementStatusCode)].getColor());
+			}
+			return field;
+		}
+		
 		
 		private boolean validCode(String code)
 		{
@@ -103,6 +129,21 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			}
 			return true;
 		}
+		
+		
+	}
+	
+	class HeaderRenderer extends DefaultTableCellRenderer
+	{
+		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
+				boolean isSelected, boolean hasFocus, int row, int column)
+		{
+			setOpaque(false);
+			JTextField field = new JTextField((String)value);
+			field.setBackground(question.getChoices()[column+1].getColor());
+			return field;
+		}
+		
 	}
 	
 	String measurementStatusCode;

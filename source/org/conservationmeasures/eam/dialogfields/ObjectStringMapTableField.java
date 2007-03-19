@@ -134,7 +134,10 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		{
 			if (!avoidSaveDuringInternalSet) 
 			{
-				saveSelection();
+				if (event.getFirstRow()==0)
+				{
+					saveSelection();
+				}
 			}
 		}
 
