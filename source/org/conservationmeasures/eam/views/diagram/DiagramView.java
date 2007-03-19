@@ -344,7 +344,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		
 		DiagramFactorLinkId diagramFactorLinkId = (DiagramFactorLinkId) cmd.getObjectId();
 		DiagramModel diagramModel = getProject().getDiagramModel();
-		diagramModel.updateCellFromDiagramFactor(diagramFactorLinkId);
+		diagramModel.updateCellFromDiagramFactorLink(diagramFactorLinkId);
 	}
 	
 	private void updateFactorBoundsIfRelevant(CommandSetObjectData cmd) throws Exception

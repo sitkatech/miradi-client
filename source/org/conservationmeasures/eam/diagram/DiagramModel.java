@@ -462,7 +462,7 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	public void updateCellFromDiagramFactor(DiagramFactorLinkId diagramFactorLinkId) throws Exception
+	public void updateCellFromDiagramFactorLink(DiagramFactorLinkId diagramFactorLinkId) throws Exception
 	{
 		if (! doesDiagramFactorLinkExist(diagramFactorLinkId))
 			return;
