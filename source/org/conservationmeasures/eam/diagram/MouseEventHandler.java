@@ -109,10 +109,9 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		if(dragStartedAt == null)
 			return;
 		
-		
+		getProject().recordCommand(new CommandBeginTransaction());
 		try
 		{
-			getProject().recordCommand(new CommandBeginTransaction());
 			Vector selectedFactors = new Vector();
 			Vector selectedLinks = new Vector();
 			

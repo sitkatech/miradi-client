@@ -63,9 +63,9 @@ public class NudgeDoer extends ProjectDoer
 			ids[i] = cells[i].getDiagramFactorId(); 
 		}
 		
+		getProject().recordCommand(new CommandBeginTransaction());
 		try
 		{
-			getProject().recordCommand(new CommandBeginTransaction());
 			getProject().moveFactors(deltaX, deltaY, ids);
 			
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(ids);
