@@ -113,6 +113,13 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		if(dragStartedAt == null)
 			return;
 		
+		Point dragEndedAt = event.getPoint();
+		int deltaX = dragEndedAt.x - dragStartedAt.x; 
+		int deltaY = dragEndedAt.y - dragStartedAt.y;
+
+		if(deltaX == 0 && deltaY == 0)
+			return;
+		
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
 		{
@@ -120,26 +127,20 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
 				EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
-				if((selectedCell).isFactor())
+				if(selectedCell.isFactor())
 					selectedFactors.add(selectedCells[i]);
 
-				if((selectedCell).isFactorLink())
+				if(selectedCell.isFactorLink())
 					setDiagramFactorLinkBendPoints((LinkCell) selectedCells[i]);
 			}
 
+			//TODO this loop can go away if the list is build in the above loop
 			DiagramFactorId[] selectedFactorIds = new DiagramFactorId[selectedFactors.size()];
 			for(int i = 0; i < selectedFactors.size(); ++i)
 			{
 				selectedFactorIds[i] = ((FactorCell)selectedFactors.get(i)).getDiagramFactorId();
 			}
-
-			Point dragEndedAt = event.getPoint();
-			int deltaX = dragEndedAt.x - dragStartedAt.x; 
-			int deltaY = dragEndedAt.y - dragStartedAt.y;
-
-			if(deltaX == 0 && deltaY == 0)
-				return;
-
+			
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(selectedFactorIds);
 		}
 		catch (Exception e)
