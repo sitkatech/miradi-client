@@ -15,7 +15,6 @@ public class TargetViabilityTree extends TreeTableWithStateSaving
 	public TargetViabilityTree(Project projectToUse, TargetViabilityTreeModel targetViabilityModelToUse)
 	{
 		super(projectToUse, targetViabilityModelToUse);
-		setModel(treeTableModelAdapter);
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 	}
