@@ -8,13 +8,11 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
@@ -27,10 +25,10 @@ import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.diagram.LinkBendPointsMoveHandler;
 import org.conservationmeasures.eam.views.diagram.Properties;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
-import org.jgraph.graph.GraphConstants;
 
 
 public class MouseEventHandler implements MouseListener, GraphSelectionListener
@@ -116,6 +114,8 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		{
 			getProject().recordCommand(new CommandBeginTransaction());
 			Vector selectedFactors = new Vector();
+			Vector selectedLinks = new Vector();
+			
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
 				EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
@@ -123,7 +123,10 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 					selectedFactors.add(selectedCells[i]);
 
 				if((selectedCell).isFactorLink())
-					setDiagramFactorLinkBendPoints((LinkCell)selectedCells[i]);
+				{
+					DiagramFactorLink selectedDiagramLink = ((LinkCell)selectedCells[i]).getDiagramFactorLink();
+					selectedLinks.add(selectedDiagramLink);
+				}
 			}
 
 			if(selectedFactors.size() == 0)
@@ -148,6 +151,9 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			deltaY = node.getLocation().y - node.getPreviousLocation().y;
 
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(selectedFactorIds);
+			
+			DiagramFactorLink[] diagramLinks = (DiagramFactorLink[]) selectedLinks.toArray(new DiagramFactorLink[0]);
+			new LinkBendPointsMoveHandler(getProject()).moveLinkBendPoints(diagramLinks, deltaX, deltaY);
 		}
 		catch (Exception e)
 		{
@@ -159,16 +165,6 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			getProject().recordCommand(new CommandEndTransaction());
 		}
 
-	}
-
-	private void setDiagramFactorLinkBendPoints(LinkCell linkCell) throws CommandFailedException
-	{
-		List points = GraphConstants.getPoints(linkCell.getAttributes());
-		PointList currentBendPoints = LinkCell.extracBendPointsOnly(points);
-		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
-		
-		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, currentBendPoints, previousBendPointList);
-		getProject().executeCommand(setBendPointsCommand);
 	}
 
 	public void mouseEntered(MouseEvent arg0)
