@@ -216,11 +216,11 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		indicatorThreshold.setIconRowObject(null);
 		BaseId objectId = getObjectIdForTypeInThisList(ObjectType.INDICATOR, orefsToUse);
 		if (!objectId.isInvalid())
-			orefsToUse = insertIndicatorsGoal(orefsToUse, objectId);
+			orefsToUse = insertIndicatorsGoalIntoCurrentSelectedObjectList(orefsToUse, objectId);
 		super.setObjectRefs(orefsToUse);
 	}
 
-	private Vector insertIndicatorsGoal(Vector orefsToUse, BaseId objectId)
+	private Vector insertIndicatorsGoalIntoCurrentSelectedObjectList(Vector orefsToUse, BaseId objectId)
 	{
 		Indicator indicator = (Indicator)getProject().findObject(ObjectType.INDICATOR, objectId);
 		try
@@ -257,6 +257,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		{
 			final CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
 			String tag = command.getFieldTag();
+			if ((command.getObjectType() == ObjectType.GOAL) || (command.getObjectType() == ObjectType.INDICATOR))
 			if (tag.equals(Indicator.TAG_MEASUREMENT_SUMMARY) || tag.equals(Goal.TAG_DESIRED_SUMMARY) ||
 				tag.equals(Indicator.TAG_MEASUREMENT_STATUS) || tag.equals(Goal.TAG_DESIRED_STATUS))
 			{
