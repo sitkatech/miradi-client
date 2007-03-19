@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -97,14 +96,15 @@ abstract public class InsertFactorDoer extends LocationDoer
 		String newLocation = EnhancedJsonObject.convertFromPoint(snappedPoint);
 		CommandSetObjectData moveCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_LOCATION, newLocation);
 		project.executeCommand(moveCommand);
-		doExtraSetup(id);
+		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, id);
+		FactorId factorId = diagramFactor.getWrappedId();
+		doExtraSetup(factorId);
 		project.executeCommand(new CommandEndTransaction());
 
 		forceVisibleInLayerManager();
 		project.updateVisibilityOfFactors();
 		
-		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, id);
-		return diagramFactor.getWrappedId();
+		return factorId;
 	}
 	
 	private Point getDeltaPoint(Point createAt, FactorCell[] selectedFactors, FactorType factorType, DiagramFactor newFactor)
@@ -198,7 +198,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 
 	}
 
-	void doExtraSetup(BaseId id) throws CommandFailedException
+	void doExtraSetup(FactorId id) throws CommandFailedException
 	{
 
 	}
