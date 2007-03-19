@@ -31,6 +31,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		super(projectToUse, objectType, objectId, questionToUse);
 		model = (DefaultTableModel)table.getModel();
 		model.insertRow(1, new String[]{});
+		model.insertRow(2, new String[]{});
 		question = questionToUse;
 		table.setDefaultRenderer(Object.class, new TableCellRenderer());
 	}
@@ -48,44 +49,42 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
 		}
 
-		
-		//TODO: checking to make sure fields come over correctly
-		model.setValueAt("", 1, 0);
-		model.setValueAt("", 1, 1);
-		model.setValueAt("", 1, 2);
-		model.setValueAt("", 1, 3);
+		clearIconRows();
 	}
-	
+
 
 	public void setIconRowObject(ORef oref)
 	{
 		if (oref==null)
-			clearIconRow();
+			clearIconRows();
 		else
 			setIconRow(oref);
 	}
 	
-	private void clearIconRow()
+	private void clearIconRows()
 	{
-		model.setValueAt("", 1, 0);
-		model.setValueAt("", 1, 1);
-		model.setValueAt("", 1, 2);
-		model.setValueAt("", 1, 3);
+		for (int i=0; i<4; ++i)
+		{
+			model.setValueAt("", 1, i);
+			model.setValueAt("", 2, i);
+		}
 	}
+	
+	
 	
 	class TableCellRenderer extends DefaultTableCellRenderer
 	{
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
 				boolean isSelected, boolean hasFocus, int row, int column)
 		{
-			if (row!=1) 
+			if (row==0) 
 				return this;
 
-			if (validCode(detailStatusCode) && Integer.parseInt(detailStatusCode)-1 == column)
+			if ((row==1) && validCode(detailStatusCode) && Integer.parseInt(detailStatusCode)-1 == column)
 			{
 				return new JLabel(detailSummary, new IndicatorIcon(), JLabel.LEFT);
 			}
-			else if (validCode(measurementStatusCode)  && Integer.parseInt(measurementStatusCode)-1 == column)
+			else if ((row==2) && validCode(measurementStatusCode)  && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
 				return new JLabel(measurementSummary, new GoalIcon(), JLabel.LEFT);
 			}
