@@ -139,7 +139,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 
 		Dimension col1Model = desiredStatus.getComponent().getPreferredSize();
-		Dimension col2Model = byWhen.getComponent().getPreferredSize();
+		Dimension col2Model = measureementStatusConfidence.getComponent().getPreferredSize();
 		Dimension col3Model = desiredSummary.getComponent().getPreferredSize();
 		
 		
@@ -218,6 +218,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		if (!objectId.isInvalid())
 			orefsToUse = insertIndicatorsGoalIntoCurrentSelectedObjectList(orefsToUse, objectId);
 		super.setObjectRefs(orefsToUse);
+		indicatorThreshold.repaint();
 	}
 
 	private Vector insertIndicatorsGoalIntoCurrentSelectedObjectList(Vector orefsToUse, BaseId objectId)
@@ -258,11 +259,13 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 			final CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
 			String tag = command.getFieldTag();
 			if ((command.getObjectType() == ObjectType.GOAL) || (command.getObjectType() == ObjectType.INDICATOR))
-			if (tag.equals(Indicator.TAG_MEASUREMENT_SUMMARY) || tag.equals(Goal.TAG_DESIRED_SUMMARY) ||
-				tag.equals(Indicator.TAG_MEASUREMENT_STATUS) || tag.equals(Goal.TAG_DESIRED_STATUS))
 			{
-				ORef ref = new ORef(command.getObjectType(), command.getObjectId());
-				indicatorThreshold.setIconRowObject(ref);
+				if (tag.equals(Indicator.TAG_MEASUREMENT_SUMMARY) || tag.equals(Goal.TAG_DESIRED_SUMMARY) ||
+					tag.equals(Indicator.TAG_MEASUREMENT_STATUS) || tag.equals(Goal.TAG_DESIRED_STATUS))
+				{
+					ORef ref = new ORef(command.getObjectType(), command.getObjectId());
+					indicatorThreshold.setIconRowObject(ref);
+				}
 			}
 		}
 	}

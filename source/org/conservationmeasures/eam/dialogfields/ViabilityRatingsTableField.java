@@ -59,6 +59,8 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			clearIconRows();
 		else
 			setIconRow(oref);
+		
+		table.repaint();
 	}
 	
 	private void clearIconRows()
@@ -74,6 +76,10 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	}
 	
 	
+	public void repaint()
+	{
+		table.repaint();
+	}
 	
 	class TableCellRenderer extends DefaultTableCellRenderer
 	{
