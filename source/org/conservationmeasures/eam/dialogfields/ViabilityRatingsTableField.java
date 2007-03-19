@@ -83,11 +83,11 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 
 			if (validCode(detailStatusCode) && Integer.parseInt(detailStatusCode)-1 == column)
 			{
-				return new JLabel((String)value, new IndicatorIcon(), JLabel.LEFT);
+				return new JLabel(detailSummary, new IndicatorIcon(), JLabel.LEFT);
 			}
 			else if (validCode(measurementStatusCode)  && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
-				return new JLabel((String)value, new GoalIcon(), JLabel.LEFT);
+				return new JLabel(measurementSummary, new GoalIcon(), JLabel.LEFT);
 			}
 			return this;
 		}
