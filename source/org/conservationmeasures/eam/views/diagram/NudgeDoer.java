@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.event.KeyEvent;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -62,7 +64,11 @@ public class NudgeDoer extends ProjectDoer
 		try
 		{
 			getProject().moveFactors(deltaX, deltaY, ids);
+			
+			getProject().recordCommand(new CommandBeginTransaction());
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(ids);
+			getProject().recordCommand(new CommandEndTransaction());
+			
 		}
 		catch (Exception e)
 		{

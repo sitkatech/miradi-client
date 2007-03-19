@@ -11,11 +11,13 @@ import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.ProjectServer;
@@ -313,7 +315,17 @@ public class TestProject extends EAMTestCase
 		DiagramFactorId[] noNodesMoved = new DiagramFactorId[1];
 		noNodesMoved[0] = node1.getDiagramFactorId();
 	
+		project.recordCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project).factorsWereMovedOrResized(noNodesMoved);
+		project.recordCommand(new CommandEndTransaction());
+		
+		//begin transaction
+		project.getLastCommand();
+		
+		//end trasaction
+		project.getLastCommand();
+		
+		
 		try
 		{
 			project.getLastCommand();
@@ -336,7 +348,10 @@ public class TestProject extends EAMTestCase
 		ids[1] = node2.getDiagramFactorId();
 		
 		
+		project.recordCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project).factorsWereMovedOrResized(ids);
+		project.recordCommand(new CommandEndTransaction());
+		
 		project.getLastCommand(); //End Transaction
 		
 		CommandSetObjectData commandDiagramMove1 = (CommandSetObjectData)project.getLastCommand();
@@ -377,7 +392,9 @@ public class TestProject extends EAMTestCase
 		ids[0] = node1.getDiagramFactorId();
 		ids[1] = node2.getDiagramFactorId();
 		
+		project.recordCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project).factorsWereMovedOrResized(ids);
+		project.recordCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
 		
@@ -450,7 +467,9 @@ public class TestProject extends EAMTestCase
 		ids[2] = nodeResizedOnly.getDiagramFactorId();
 		ids[3] = nodeNotMovedOrResized.getDiagramFactorId();
 
+		project.recordCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project).factorsWereMovedOrResized(ids);
+		project.recordCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
 		

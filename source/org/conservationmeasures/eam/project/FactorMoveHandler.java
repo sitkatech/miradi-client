@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.project;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -51,13 +49,13 @@ public class FactorMoveHandler
 
 			if(commandsToRecord.size() > 0 || commandsToExecute.size() > 0)
 			{
-				getProject().recordCommand(new CommandBeginTransaction());
 				for(int i=0; i < commandsToRecord.size(); ++i)
 					getProject().recordCommand((Command)commandsToRecord.get(i));
 				
 				for(int i=0; i < commandsToExecute.size(); ++i)
+				{
 					getProject().executeCommand((Command)commandsToExecute.get(i));
-				getProject().recordCommand(new CommandEndTransaction());
+				}
 			}
 
 			//TODO remove cluster related code below

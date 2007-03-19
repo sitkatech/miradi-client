@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -145,7 +147,9 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			deltaX = node.getLocation().x - node.getPreviousLocation().x;
 			deltaY = node.getLocation().y - node.getPreviousLocation().y;
 
+			getProject().recordCommand(new CommandBeginTransaction());
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(selectedFactorIds);
+			getProject().recordCommand(new CommandEndTransaction());
 		}
 		catch (Exception e)
 		{
