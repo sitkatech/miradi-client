@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
-import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JComponent;
@@ -132,19 +131,16 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		}
 		
 		
+		//TODO: refactor to integrate with above code
 		public void updateEditableState(JComponent comp)
 		{
 			boolean editable = allowEdits() && isValidObject();
 			comp.setEnabled(editable);
-			Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
-			Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
 			if(!editable)
 			{
-				fg = EAM.READONLY_FOREGROUND_COLOR;
-				bg = EAM.READONLY_BACKGROUND_COLOR;
+				comp.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+				comp.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 			}
-			comp.setForeground(fg);
-			comp.setBackground(bg);
 		}
 
 	}
