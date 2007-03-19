@@ -192,24 +192,33 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		Box box = Box.createVerticalBox();
 		box.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		box.add(new UiLabel("OPTIONS"));
-		box.add(createCheckBox("Show Thresholds"));
-		box.add(createCheckBox("Show Status"));
+		box.add(createCheckBox("Show Thresholds", new OptionThresholdChangeListener()));
+		box.add(createCheckBox("Show Status", new OptionStatusChangeListener()));
 		return box;
 	}
 
-	private JCheckBox createCheckBox(String text)
+	private JCheckBox createCheckBox(String text, ItemListener listener)
 	{
 		JCheckBox check = new JCheckBox(text,true);
-		check.addItemListener(new OptionChangeListener());
+		check.addItemListener(listener);
 		return check;
 	}
 
-	class OptionChangeListener implements ItemListener
+	class OptionStatusChangeListener implements ItemListener
 	{
 		public void itemStateChanged(ItemEvent event)
 		{
 			JCheckBox check = (JCheckBox)event.getSource();
-			indicatorThreshold.setOption(check.getText().substring(5),check.getModel().isSelected());
+			indicatorThreshold.showStatus(check.isSelected());
+		}
+	}
+	
+	class OptionThresholdChangeListener implements ItemListener
+	{
+		public void itemStateChanged(ItemEvent event)
+		{
+			JCheckBox check = (JCheckBox)event.getSource();
+			indicatorThreshold.showThreshold(check.isSelected());
 		}
 	}
 	

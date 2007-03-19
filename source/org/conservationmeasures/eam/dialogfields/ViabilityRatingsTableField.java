@@ -55,12 +55,10 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
 		}
 	}
-
-	public void setOption(String option, boolean selected)
+	
+	public void showThreshold(boolean show)
 	{
-		if (option.equals("Thresholds"))
-		{
-			if (selected)
+			if (show)
 			{
 				table.setRowHeight(0, currentRowHeight);
 			}
@@ -68,10 +66,12 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			{
 				table.setRowHeight(0, 1);
 			}
-		}
-		if (option.equals("Status"))
-		{
-			if (selected)
+	}
+	
+
+	public void showStatus(boolean show)
+	{
+			if (show)
 			{
 				table.setRowHeight(1, currentRowHeight);
 				table.setRowHeight(2, currentRowHeight);
@@ -81,7 +81,6 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 				table.setRowHeight(1, 1);
 				table.setRowHeight(2, 1);
 			}
-		}
 	}
 	
 	public void setIconRowObject(ORef oref)
