@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import org.conservationmeasures.eam.icons.GoalIcon;
+import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -39,22 +40,20 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		if (object.getType() == ObjectType.GOAL)
 		{
 			detailSummary = object.getData(Goal.TAG_DESIRED_SUMMARY);
-			String detailStatusCode = object.getData(Goal.TAG_DESIRED_STATUS);
-			detailStatus = question.findChoiceByCode(detailStatusCode).getLabel();
+			detailStatusCode = object.getData(Goal.TAG_DESIRED_STATUS);
 		}
 		else if (object.getType() == ObjectType.INDICATOR)
 		{
 			measurementSummary = object.getData(Indicator.TAG_MEASUREMENT_SUMMARY);
-			String measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
-			measurementStatus = question.findChoiceByCode(measurementStatusCode).getLabel();
+			measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
 		}
 
 		
 		//TODO: checking to make sure fields come over correctly
-		model.setValueAt(detailStatus, 1, 0);
-		model.setValueAt(detailSummary, 1, 1);
-		model.setValueAt(measurementSummary, 1, 2);
-		model.setValueAt(measurementStatus, 1, 3);
+		model.setValueAt("", 1, 0);
+		model.setValueAt("", 1, 1);
+		model.setValueAt("", 1, 2);
+		model.setValueAt("", 1, 3);
 	}
 	
 
@@ -72,10 +71,6 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		model.setValueAt("", 1, 1);
 		model.setValueAt("", 1, 2);
 		model.setValueAt("", 1, 3);
-		measurementStatus = "";
-		measurementSummary = "";
-		detailStatus = "";
-		detailSummary = "";
 	}
 	
 	class TableCellRenderer extends DefaultTableCellRenderer
@@ -83,20 +78,37 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
 				boolean isSelected, boolean hasFocus, int row, int column)
 		{
-			if (row==1) 
+			if (row!=1) 
+				return this;
+
+			if (validCode(detailStatusCode) && Integer.parseInt(detailStatusCode)-1 == column)
 			{
-				JLabel label = new JLabel();
-				label.setIcon(new GoalIcon());
-				label.setText((String)value);
-				return label;
+				return new JLabel((String)value, new IndicatorIcon(), JLabel.LEFT);
+			}
+			else if (validCode(measurementStatusCode)  && Integer.parseInt(measurementStatusCode)-1 == column)
+			{
+				return new JLabel((String)value, new GoalIcon(), JLabel.LEFT);
 			}
 			return this;
 		}
+		
+		private boolean validCode(String code)
+		{
+			try
+			{
+				Integer.parseInt(code);
+			}
+			catch (Exception e)
+			{
+				return false;
+			}
+			return true;
+		}
 	}
 	
-	String measurementStatus;
+	String measurementStatusCode;
 	String measurementSummary;
-	String detailStatus;
+	String detailStatusCode;
 	String detailSummary;
 	ChoiceQuestion question;
 	DefaultTableModel model;
