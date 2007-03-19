@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.noproject.wizard;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.utils.FastScrollPane;
@@ -32,7 +31,6 @@ public class ProjectListPanel extends JPanel
 		add(intro, BorderLayout.BEFORE_FIRST_LINE);
 		add(new FastScrollPane(projectList), BorderLayout.CENTER);
 		setBackground(Color.WHITE);
-		setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 	}
 	
 	public void refresh()
