@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JComponent;
@@ -17,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -112,10 +114,10 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 				comp.setOpaque(true);
 				comp.setBackground(question.getChoices()[Integer.parseInt(measurementStatusCode)].getColor());
 			}
+			updateEditableState(comp);
 			return comp;
 		}
-		
-		
+
 		private boolean validCode(String code)
 		{
 			try
@@ -130,6 +132,21 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		}
 		
 		
+		public void updateEditableState(JComponent comp)
+		{
+			boolean editable = allowEdits() && isValidObject();
+			comp.setEnabled(editable);
+			Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
+			Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
+			if(!editable)
+			{
+				fg = EAM.READONLY_FOREGROUND_COLOR;
+				bg = EAM.READONLY_BACKGROUND_COLOR;
+			}
+			comp.setForeground(fg);
+			comp.setBackground(bg);
+		}
+
 	}
 	
 	class HeaderRenderer extends DefaultTableCellRenderer
@@ -144,6 +161,9 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		}
 		
 	}
+	
+	
+
 	
 	String measurementStatusCode;
 	String measurementSummary;
