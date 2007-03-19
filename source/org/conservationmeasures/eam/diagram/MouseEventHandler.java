@@ -111,8 +111,10 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		if(dragStartedAt == null)
 			return;
 		
+		
 		try
 		{
+			getProject().recordCommand(new CommandBeginTransaction());
 			Vector selectedFactors = new Vector();
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
@@ -145,14 +147,16 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			deltaX = node.getLocation().x - node.getPreviousLocation().x;
 			deltaY = node.getLocation().y - node.getPreviousLocation().y;
 
-			getProject().recordCommand(new CommandBeginTransaction());
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(selectedFactorIds);
-			getProject().recordCommand(new CommandEndTransaction());
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unexpected error");
+		}
+		finally
+		{
+			getProject().recordCommand(new CommandEndTransaction());
 		}
 
 	}

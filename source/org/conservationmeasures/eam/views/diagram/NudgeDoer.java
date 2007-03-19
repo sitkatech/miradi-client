@@ -62,21 +62,26 @@ public class NudgeDoer extends ProjectDoer
 		{
 			ids[i] = cells[i].getDiagramFactorId(); 
 		}
+		
 		try
 		{
+			getProject().recordCommand(new CommandBeginTransaction());
 			getProject().moveFactors(deltaX, deltaY, ids);
 			
-			getProject().recordCommand(new CommandBeginTransaction());
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(ids);
 			new LinkBendPointsMoveHandler(getProject()).moveLinkBendPoints(links, deltaX, deltaY);
-			getProject().recordCommand(new CommandEndTransaction());
-			
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 			throw new CommandFailedException("Unable to move factors");
 		}
+		finally
+		{
+			getProject().recordCommand(new CommandEndTransaction());
+		}
+		
+		
 	}
 
 	int direction;
