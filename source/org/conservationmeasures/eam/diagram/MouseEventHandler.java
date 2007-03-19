@@ -155,6 +155,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 
 	}
 
+	//TODO these empty methods can away if class extends MouseAdapater
 	public void mouseEntered(MouseEvent arg0)
 	{
 	}
