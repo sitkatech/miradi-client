@@ -128,9 +128,6 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 				}
 			}
 
-			if(selectedFactors.size() == 0)
-				return;
-
 			DiagramFactorId[] selectedFactorIds = new DiagramFactorId[selectedFactors.size()];
 			for(int i = 0; i < selectedFactors.size(); ++i)
 			{
@@ -144,15 +141,11 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			if(deltaX == 0 && deltaY == 0)
 				return;
 
-			// adjust for snap
-			FactorCell node = (FactorCell)selectedFactors.get(0);
-			deltaX = node.getLocation().x - node.getPreviousLocation().x;
-			deltaY = node.getLocation().y - node.getPreviousLocation().y;
-
+			Point snappedDeltaPoint = getProject().getSnapped(deltaX, deltaY);
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(selectedFactorIds);
 			
 			DiagramFactorLink[] diagramLinks = (DiagramFactorLink[]) selectedLinks.toArray(new DiagramFactorLink[0]);
-			new LinkBendPointsMoveHandler(getProject()).moveLinkBendPoints(diagramLinks, deltaX, deltaY);
+			new LinkBendPointsMoveHandler(getProject()).moveLinkBendPoints(diagramLinks, snappedDeltaPoint.x, snappedDeltaPoint.y);
 		}
 		catch (Exception e)
 		{
