@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.views.ObjectsDoer;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public abstract class CreateAnnotationDoer extends ObjectsDoer
 {
@@ -46,7 +47,9 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(factor, getAnnotationIdListTag(), createdId));
 			
 			ORef ref = new ORef(create.getObjectType(), createdId);
-			getPicker().ensureObjectVisible(ref);
+			ObjectPicker picker = getPicker();
+			if(picker != null)
+				picker.ensureObjectVisible(ref);
 		}
 		catch(Exception e)
 		{
