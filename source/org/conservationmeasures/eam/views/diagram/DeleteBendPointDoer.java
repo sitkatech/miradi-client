@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.awt.Point;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.utils.PointList;
@@ -23,6 +25,11 @@ public class DeleteBendPointDoer extends LocationDoer
 		PointList bendPoints = links[0].getBendPoints();
 		if (bendPoints.size() <= 0)
 			return false;
+		
+		if (containsPointWithinRange(bendPoints))
+			return true;
+		
+		return false;
 		
 		//TODO remove commented code when done		
 //		DiagramFactorLink link = links[0];
@@ -61,9 +68,24 @@ public class DeleteBendPointDoer extends LocationDoer
 //				}
 //			}
 //		}
+	}
+
+	private boolean containsPointWithinRange(PointList bendPoints)
+	{
+		//TODO check JGraph to see what the bounds of the bend point is, if any.
+		final double MAX_DISTANCE = 5.0;
+		Point clickLocation = getLocation();
+		if (clickLocation == null)
+			return false;
 		
-		//TODO should check to see if a bend point was selected
-		return true;
+		for (int i = 0; i < bendPoints.size(); i++)
+		{
+			double distance = clickLocation.distance(bendPoints.get(i));
+			if (distance <= MAX_DISTANCE)
+				return true;
+		}
+		
+		return false;
 	}
 
 	public void doIt() throws CommandFailedException
