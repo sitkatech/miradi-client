@@ -38,6 +38,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		question = questionToUse;
 		table.setDefaultRenderer(Object.class, new TableCellRenderer());
 		table.getTableHeader().setDefaultRenderer(new HeaderRenderer());
+		currentRowHeight = table.getRowHeight();
 	}
 
 	private void setIconRow(ORef oref)
@@ -55,9 +56,32 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		}
 	}
 
-	public void setOption()
+	public void setOption(String option, boolean selected)
 	{
-		
+		if (option.equals("Thresholds"))
+		{
+			if (selected)
+			{
+				table.setRowHeight(0, currentRowHeight);
+			}
+			else
+			{
+				table.setRowHeight(0, 1);
+			}
+		}
+		if (option.equals("Status"))
+		{
+			if (selected)
+			{
+				table.setRowHeight(1, currentRowHeight);
+				table.setRowHeight(2, currentRowHeight);
+			}
+			else
+			{
+				table.setRowHeight(1, 1);
+				table.setRowHeight(2, 1);
+			}
+		}
 	}
 	
 	public void setIconRowObject(ORef oref)
@@ -171,5 +195,5 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	String detailSummary;
 	ChoiceQuestion question;
 	DefaultTableModel model;
-
+	int currentRowHeight;
 }

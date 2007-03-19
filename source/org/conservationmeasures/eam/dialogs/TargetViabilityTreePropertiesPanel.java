@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -187,16 +189,30 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	
 	private Box createOptionGroup()
 	{
-		JCheckBox statusButton = new JCheckBox("Show Status");
-		JCheckBox thresholdsButton = new JCheckBox("Show Thresholds");
 		Box box = Box.createVerticalBox();
 		box.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		box.add(new UiLabel("OPTIONS"));
-		box.add(statusButton);
-		box.add(thresholdsButton);
+		box.add(createCheckBox("Show Thresholds"));
+		box.add(createCheckBox("Show Status"));
 		return box;
 	}
 
+	private JCheckBox createCheckBox(String text)
+	{
+		JCheckBox check = new JCheckBox(text,true);
+		check.addItemListener(new OptionChangeListener());
+		return check;
+	}
+
+	class OptionChangeListener implements ItemListener
+	{
+		public void itemStateChanged(ItemEvent event)
+		{
+			JCheckBox check = (JCheckBox)event.getSource();
+			indicatorThreshold.setOption(check.getText().substring(5),check.getModel().isSelected());
+		}
+	}
+	
 	public ObjectDataInputField createViabilityRatingsTableField(int objectType, ChoiceQuestion question)
 	{
 		return new ViabilityRatingsTableField(getProject(), objectType, getObjectIdForType(objectType), question);
