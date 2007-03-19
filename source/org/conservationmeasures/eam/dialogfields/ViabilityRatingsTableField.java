@@ -7,14 +7,13 @@ package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Component;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import org.conservationmeasures.eam.icons.GoalIcon;
-import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -81,39 +80,31 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
 				boolean isSelected, boolean hasFocus, int row, int column)
 		{
+			
+			JComponent comp =  new JTextField((String)value, JLabel.LEFT);
+			
 			if ((row==1) && validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
-				JLabel ms =  new  JLabel(measurementSummary, new IndicatorIcon(), JLabel.LEFT);
-				ms.setOpaque(true);
-				ms.setBackground(question.getChoices()[Integer.parseInt(measurementStatusCode)].getColor());
-				return ms;
+				comp =  new JLabel(measurementSummary, JLabel.LEFT);
 			}
 			
 			if ((row==2) && validCode(detailStatusCode)  && Integer.parseInt(detailStatusCode)-1 == column)
 			{
-				JLabel ms = new  JLabel(detailSummary, new GoalIcon(), JLabel.LEFT);
-				if (validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
-				{
-					ms.setOpaque(true);
-					ms.setBackground(question.getChoices()[Integer.parseInt(measurementStatusCode)].getColor());
-				}
-				return ms;
+				comp =  new JLabel(detailSummary, JLabel.LEFT);
 			}
-			
-			return getComponent((String) value, column);
+
+			return getComponent(comp, column);
 		}
 		
 		
-		private Component getComponent(String value, int column)
+		private JComponent getComponent(JComponent comp, int column)
 		{
-			JTextField field = new JTextField(value);
-			
 			if (validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
-				field.setOpaque(true);
-				field.setBackground(question.getChoices()[Integer.parseInt(measurementStatusCode)].getColor());
+				comp.setOpaque(true);
+				comp.setBackground(question.getChoices()[Integer.parseInt(measurementStatusCode)].getColor());
 			}
-			return field;
+			return comp;
 		}
 		
 		
