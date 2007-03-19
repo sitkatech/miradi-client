@@ -55,7 +55,11 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		}
 	}
 
-
+	public void setOption()
+	{
+		
+	}
+	
 	public void setIconRowObject(ORef oref)
 	{
 		if (oref==null)

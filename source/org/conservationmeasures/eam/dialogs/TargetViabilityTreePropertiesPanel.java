@@ -12,9 +12,8 @@ import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
-import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -188,11 +187,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	
 	private Box createOptionGroup()
 	{
-		ButtonGroup bg = new ButtonGroup();
-		JRadioButton statusButton = new JRadioButton("Show Status");
-		JRadioButton thresholdsButton = new JRadioButton("Show Thresholds");
-		bg.add(thresholdsButton);
-		bg.add(statusButton);
+		JCheckBox statusButton = new JCheckBox("Show Status");
+		JCheckBox thresholdsButton = new JCheckBox("Show Thresholds");
 		Box box = Box.createVerticalBox();
 		box.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		box.add(new UiLabel("OPTIONS"));
