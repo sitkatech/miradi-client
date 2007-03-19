@@ -156,11 +156,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 	    GraphConstants.setGradientColor(getAttributes(), Color.BLACK); //Windows 2000 quirk required to see line.
 		GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_TECHNICAL);
 		GraphConstants.setEndFill(getAttributes(), true);
-		//TODO do we realy need this for bendable arrows
-		//GraphConstants.setBendable(getAttributes(), true);
 	}
 	
-	public static PointList extracBendPointsOnly(List points)
+	public static PointList extractBendPointsOnly(List points)
 	{
 		PointList pointList = new PointList();
 		
