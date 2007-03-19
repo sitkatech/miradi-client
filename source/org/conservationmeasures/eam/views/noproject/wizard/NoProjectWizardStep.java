@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
@@ -23,7 +24,15 @@ public class NoProjectWizardStep extends SkeletonWizardStep
 		String header = EAM.loadResourceFile(getClass(), "WelcomeHeader.html");
 		WizardHtmlViewer headerHtmlViewer = new WizardHtmlViewer(wizardToUse);
 		headerHtmlViewer.setText(header);
-		add(headerHtmlViewer, BorderLayout.BEFORE_FIRST_LINE);
+
+		String introText = EAM.loadResourceFile(getClass(), "WelcomeIntroduction.html");
+		WizardHtmlViewer introHtmlViewer = new WizardHtmlViewer(wizardToUse);
+		introHtmlViewer.setText(introText);
+
+		JPanel headerBox = new JPanel(new BorderLayout());
+		headerBox.add(headerHtmlViewer, BorderLayout.BEFORE_FIRST_LINE);
+		headerBox.add(introHtmlViewer, BorderLayout.CENTER);
+		add(headerBox, BorderLayout.BEFORE_FIRST_LINE);
 
 		projectList = new ProjectListPanel(wizardToUse);
 		
@@ -38,5 +47,4 @@ public class NoProjectWizardStep extends SkeletonWizardStep
 	}
 	
 	ProjectListPanel projectList;
-
 }
