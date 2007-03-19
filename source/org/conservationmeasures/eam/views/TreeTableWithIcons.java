@@ -58,6 +58,11 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		if (getRowCount()>0)
 			setRowSelectionInterval(0,0);
 	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
 
 	public GenericTreeTableModel getTreeTableModel()
 	{
