@@ -76,13 +76,14 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		{
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
-				if(((EAMGraphCell)selectedCells[i]).isFactor())
+				EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
+				if((selectedCell).isFactor())
 				{
 					FactorCell factor = (FactorCell)selectedCells[i];
 					factor.setPreviousLocation(factor.getLocation());
 					factor.setPreviousSize(factor.getSize());
 				}
-				if(((EAMGraphCell)selectedCells[i]).isFactorLink())
+				if((selectedCell).isFactorLink())
 				{
 					LinkCell linkCell = (LinkCell)selectedCells[i];
 					DiagramFactorLink diagramFactorLink = linkCell.getDiagramFactorLink();
@@ -115,10 +116,11 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			Vector selectedFactors = new Vector();
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
-				if(((EAMGraphCell)selectedCells[i]).isFactor())
+				EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
+				if((selectedCell).isFactor())
 					selectedFactors.add(selectedCells[i]);
 
-				if(((EAMGraphCell)selectedCells[i]).isFactorLink())
+				if((selectedCell).isFactorLink())
 					setDiagramFactorLinkBendPoints((LinkCell)selectedCells[i]);
 			}
 
