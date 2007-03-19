@@ -230,7 +230,15 @@ public class DefinitionCommonTerms
 				"circumstances (i.e., given the continuation of the existing situation). ");
 		defs.put("Definition:Severity", def);
 		
-
+		// FIXME: This definition is no longer called...its contents should be merged with Project
+		def = new Definition("NewProject", 
+				"New Project - A new project is equivalent to a new software file in Miradi. As a general rule, " +
+				"you should have one file for each project, although for certain large and complex projects, " +
+				"you may wish to have one file for each target or for other subdivisions. Miradi's default setting " +
+				"is to create a folder with the name of the project in the Miradi directory (in Windows, the default " +
+				"path is C:/Documents and Setting/User Name/Miradi).");
+		defs.put("Definition:NewProject", def);
+		
 		def = new Definition("Project", 
 				"Project - Any set of actions undertaken by a group of people and/or " +
 				"organizations to achieve defined goals and objectives. " +
@@ -254,14 +262,6 @@ public class DefinitionCommonTerms
 				"The basis for Miradi. You can download a copy of the Open Standards at www.ConservationMeasures.org");
 		defs.put("Definition:OpenStandards", def);
 
-		
-		def = new Definition("NewProject", 
-				"New Project - A new project is equivalent to a new software file in Miradi. As a general rule, " +
-				"you should have one file for each project, although for certain large and complex projects, " +
-				"you may wish to have one file for each target or for other subdivisions. Miradi's default setting " +
-				"is to create a folder with the name of the project in the Miradi directory (in Windows, the default " +
-				"path is C:/Documents and Setting/User Name/Miradi).");
-		defs.put("Definition:NewProject", def);
 		
 
 		def = new Definition("ImportZip",
