@@ -13,15 +13,13 @@ import java.awt.geom.Point2D;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
+import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.PortView;
 
@@ -32,12 +30,11 @@ public class CreateBendPointDoer extends LocationDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		Point clickLocation = getLocation();
-		LinkCell cell = getLinkCellAtLocation(clickLocation);
-		if (cell == null)
-			return false;
-			
-		return true;
+		DiagramFactorLink[] selectedLinks = getProject().getOnlySelectedLinks();
+		if (selectedLinks.length == 1)
+			return true;
+		
+		return false;
 	}
 	
 	public void doIt() throws CommandFailedException
@@ -47,15 +44,15 @@ public class CreateBendPointDoer extends LocationDoer
 		
 		try
 		{
-			DiagramFactorLink selectedLink = getLinkCellAtLocation(getLocation()).getDiagramFactorLink();
-			Point newBendPoint = getNewBendPointLocation();
+			diagramModel = getProject().getDiagramModel();
+			diagram = getMainWindow().getDiagramComponent();
+			cache = diagram.getGraphLayoutCache();
+			
+			DiagramFactorLink selectedLink = getProject().getOnlySelectedLinks()[0];
+			Point newBendPoint = getNewBendPointLocation(selectedLink);
 			PointList newListWithBendPoint = getNewBendPointList(selectedLink, newBendPoint);
 			
-			String newList = newListWithBendPoint.toString();
-			String previousList = selectedLink.getBendPoints().toString();
-			DiagramFactorLinkId linkId = selectedLink.getDiagramLinkageId();
-			
-			CommandSetObjectData setBendPointsCommand= new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newList, previousList);
+			CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint, selectedLink.getBendPoints());
 			getProject().executeCommand(setBendPointsCommand);
 		}
 		catch (Exception e)
@@ -67,19 +64,15 @@ public class CreateBendPointDoer extends LocationDoer
 
 	private PointList getNewBendPointList(DiagramFactorLink selectedLink, Point newBendPoint)
 	{
-		DiagramModel diagramModel = getProject().getDiagramModel();
 		LinkCell linkCell = diagramModel.getDiagramFactorLink(selectedLink);
-		
-		DiagramComponent diagram = getMainWindow().getDiagramComponent();
-		GraphLayoutCache cache = diagram.getGraphLayoutCache();
-		PortView sourceView = (PortView) cache.getMapping(linkCell.getSource(), false);
-		PortView targetView = (PortView) cache.getMapping(linkCell.getTarget(), false);
+		Point sourceLocation = getSourceLocation(linkCell);
+		Point targetLocation = getTargetLocation(linkCell);
 		PointList bendPointsOnly = selectedLink.getBendPoints();
 		
 		PointList allLinkPoints = new PointList();
-		allLinkPoints.add(Utility.convertToPoint(sourceView.getLocation()));
+		allLinkPoints.add(sourceLocation);
 		allLinkPoints.addAll(bendPointsOnly.getAllPoints());
-		allLinkPoints.add(Utility.convertToPoint(targetView.getLocation()));
+		allLinkPoints.add(targetLocation);
 		
 		double closestDistance = Double.MAX_VALUE;
 		int insertionIndex = -1;
@@ -102,9 +95,25 @@ public class CreateBendPointDoer extends LocationDoer
 				insertionIndex = i;
 			}
 		}
-		
 		bendPointsOnly.insertAt(newBendPoint, insertionIndex);
+	
 		return bendPointsOnly;
+	}
+
+	private Point getTargetLocation(LinkCell linkCell)
+	{
+		PortView targetView = (PortView) cache.getMapping(linkCell.getTarget(), false);
+		Point targetLocation = Utility.convertToPoint(targetView.getLocation());
+		
+		return targetLocation;
+	}
+
+	private Point getSourceLocation(LinkCell linkCell)
+	{
+		PortView sourceView = (PortView) cache.getMapping(linkCell.getSource(), false);
+		Point sourceLocation = Utility.convertToPoint(sourceView.getLocation());
+	
+		return sourceLocation;
 	}
 
 	private Line2D.Double createLineSegment(PointList allLinkPoints, int index)
@@ -115,33 +124,34 @@ public class CreateBendPointDoer extends LocationDoer
 		return new Line2D.Double(point1, point2);
 	}
 	
-	private Point getNewBendPointLocation()
+	private Point getNewBendPointLocation(DiagramFactorLink selectedLink)
 	{
 		Point newBendPoint = getLocation();
 		if (newBendPoint != null)
 			return newBendPoint;
 	
-		//TODO in this case find first segement and insert (get ) the middle location 
+		LinkCell linkCell = diagramModel.getDiagramFactorLink(selectedLink);
+		EdgeView view = (EdgeView) cache.getMapping(linkCell, false);
+		PointList currentBendPoints = selectedLink.getBendPoints();
 		
-		//TODO calculate location without mouse click location 
-		return new Point(0, 0);
-	}
-	
-	private LinkCell getLinkCellAtLocation(Point point)
-	{
-		if (point == null)
-			return null;
+		//TODO getTargetLocation returs the center of the factor box, which
+		//causes the calcuation on the first bendpoint to be wrong.  must get the 
+		//point where the link interestects the factor box.  
+		Point firstBendPoint = getTargetLocation(linkCell);
+		if (currentBendPoints.size() > 0)
+			firstBendPoint = currentBendPoints.get(0);
 		
-		DiagramComponent diagram = getMainWindow().getDiagramComponent();
-		EAMGraphCell cell = (EAMGraphCell) diagram.getFirstCellForLocation(point.x, point.y);
-		if (cell == null)
-			return null;
+		//note : view.getPoint(0) is not return the same thing as view.getpoints().get(0)
+		Point2D point = view.getPoint(0);
+		Point sourceLocation = Utility.convertToPoint(point);
 		
-		if (!cell.isFactorLink())
-			return null;
+		int middleX = (sourceLocation.x + firstBendPoint.x) / 2; 
+		int middleY = (sourceLocation.y + firstBendPoint.y) / 2;
 		
-		return (LinkCell) cell;
-
+		return new Point(middleX, middleY);
 	}
 
+	DiagramComponent diagram;
+	GraphLayoutCache cache;
+	DiagramModel diagramModel;
 }
