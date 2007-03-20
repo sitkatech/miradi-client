@@ -110,7 +110,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box2.add(createLabel(indicatorLabel));
 		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(indicatorLabel.getComponent());
-		mainGridPanel.add(new UiLabel("Indicator"));
+		mainGridPanel.add(new UiLabel(EAM.text("Indicator")));
 		mainGridPanel.add(box2);
 
 		Box boxIndrPrty = Box.createHorizontalBox();
@@ -155,7 +155,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
 		box5.add(createColumn(measurementDetail));
-		mainGridPanel.add(new UiLabel("Current Status"));
+		mainGridPanel.add(new UiLabel(EAM.text("Current Status")));
 		mainGridPanel.add(box5);
 
 		Box box6 = Box.createHorizontalBox();
@@ -191,7 +191,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	{
 		Box box = Box.createVerticalBox();
 		box.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		box.add(new UiLabel("OPTIONS"));
+		box.add(new UiLabel(EAM.text("OPTIONS")));
 		box.add(createCheckBox(EAM.text("Show Thresholds"), new OptionThresholdChangeListener()));
 		box.add(createCheckBox(EAM.text("Show Status"), new OptionStatusChangeListener()));
 		return box;
