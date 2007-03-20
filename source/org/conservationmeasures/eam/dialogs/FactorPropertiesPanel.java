@@ -271,7 +271,11 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			String value = cmd.getDataValue();
 			if (value.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
+			{
 				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+				validate();
+				viabilityTab.updateSplitterLocation();
+			}
 			else
 				tabs.remove(tabs.indexOfComponent(viabilityTab));
 		}
