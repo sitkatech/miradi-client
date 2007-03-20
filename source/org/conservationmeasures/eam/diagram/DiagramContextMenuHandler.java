@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.LocationAction;
+import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -58,6 +59,12 @@ public class DiagramContextMenuHandler
 	{
 		UiPopupMenu menu = new UiPopupMenu();
 		menu.add(getInsertMenu(menuInvokedAt));
+		menu.add(createMenuItem(ActionCreateBendPoint.class, menuInvokedAt));
+		
+		MainWindowAction objectsAction = actions.getMainWindowAction(ActionDeleteBendPoint.class);
+		if (objectsAction.isEnabled())
+			menu.add(createMenuItem(ActionDeleteBendPoint.class, menuInvokedAt));
+		
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionUndo.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionRedo.class)));
@@ -87,9 +94,7 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertFactorLink.class));
-		insertMenu.add(createMenuItem(ActionCreateBendPoint.class, menuInvokedAt));
-		insertMenu.add(createMenuItem(ActionDeleteBendPoint.class, menuInvokedAt));
-
+		
 		return insertMenu;
 	}
 

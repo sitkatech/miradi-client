@@ -272,6 +272,11 @@ public class Actions
 		return (EAMAction)action;
 	}
 	
+	public MainWindowAction getMainWindowAction(Class c)
+	{
+		return (MainWindowAction)get(c);
+	}
+	
 	public ObjectsAction getObjectsAction(Class c)
 	{
 		return (ObjectsAction)get(c);
