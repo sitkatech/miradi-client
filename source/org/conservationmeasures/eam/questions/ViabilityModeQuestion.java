@@ -19,4 +19,5 @@ public class ViabilityModeQuestion extends ChoiceQuestion
 				new ChoiceItem("TNC", "TNC-Style"),
 		};
 	}
+	public static String TNC_STYLE_CODE = "TNC";
 }

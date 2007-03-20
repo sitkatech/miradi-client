@@ -12,6 +12,7 @@ import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
@@ -22,6 +23,8 @@ import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -31,16 +34,18 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.TargetStatusQuestion;
+import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
 
-public class FactorPropertiesPanel extends DisposablePanel
+public class FactorPropertiesPanel extends DisposablePanel implements CommandExecutedListener
 {
 	public FactorPropertiesPanel(MainWindow parent,DiagramComponent diagramToUse)
 	{
 		mainWindow = parent;
 		diagram = diagramToUse;
+		getProject().addCommandExecutedListener(this);
 	}
 	
 	//TODO: can put a loop of disposable panels and move the code to DIsposablePanel passing in list
@@ -59,6 +64,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			viabilityTab.dispose();
 		if(grid != null)
 			grid.dispose();
+		getProject().removeCommandExecutedListener(this);
 		super.dispose();
 	}
 	
@@ -255,6 +261,19 @@ public class FactorPropertiesPanel extends DisposablePanel
 		if (viabilityTab != null)
 			viabilityTab.updateSplitterLocationToMiddle();
 	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Target.TAG_VIABILITY_MODE))
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			String value = cmd.getDataValue();
+			if (value.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
+				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+			else
+				tabs.remove(tabs.indexOfComponent(viabilityTab));
+		}
+	}
 
 	static final int MAX_LABEL_LENGTH = 40;
 	public static final int TAB_DETAILS = 0;
@@ -276,5 +295,6 @@ public class FactorPropertiesPanel extends DisposablePanel
 	UiTextField textField;
 	boolean ignoreObjectiveChanges;
 	FactorInputPanel grid;
+
 
 }
