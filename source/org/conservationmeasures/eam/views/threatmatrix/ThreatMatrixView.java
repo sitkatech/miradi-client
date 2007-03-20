@@ -12,7 +12,9 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
+import org.conservationmeasures.eam.actions.ActionHideCellRatings;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
+import org.conservationmeasures.eam.actions.ActionShowCellRatings;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -50,6 +52,8 @@ public class ThreatMatrixView extends UmbrellaView
 	private void addThreatMatrixiewDoersToMap()
 	{
 		addDoerToMap(ActionSaveImage.class, new SaveImageDoer());
+		addDoerToMap(ActionShowCellRatings.class, new ShowCellRatingsDoer());
+		addDoerToMap(ActionHideCellRatings.class, new HideCellRatingsDoer());
 	}
 	
 	public String cardName()
