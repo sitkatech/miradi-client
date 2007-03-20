@@ -5,13 +5,16 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.BudgetCostUnitQuestion;
 import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 
 public class ResourcePropertiesPanel extends ObjectDataInputPanel
 {
@@ -37,4 +40,32 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Title|Resource Properties");
 	}
+
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		if(!event.isSetDataCommandWithThisTypeAndTag(ObjectType.PROJECT_RESOURCE, ProjectResource.TAG_ROLE_CODES))
+			return;
+			
+		try
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			CodeList oldCodes = new CodeList(cmd.getPreviousDataValue());
+			CodeList newCodes = new CodeList(cmd.getDataValue());
+			oldCodes.subtract(newCodes);
+			if(!oldCodes.contains(ResourceRoleQuestion.TeamMemberRoleCode))
+				return;
+			
+			EAM.okDialog(EAM.text("Remove Team Member"), new String[] {
+					EAM.text("You are removing this resource from the project team, " +
+							"so he/she will no longer appear in " +
+							"the list of Team Members in the Summary View. ")});
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+	}
+	
+	
 }
