@@ -347,6 +347,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			String startDate = metadata.getStartDate();
 			String endDate = metadata.getExpectedEndDate();
 
+			if (startDate.trim().length() <= 0 || endDate.trim().length() <= 0)
+				return false;
+			
 			MultiCalendar multiStartDate = MultiCalendar.createFromIsoDateString(startDate);
 			MultiCalendar multiEndDate = MultiCalendar.createFromIsoDateString(endDate);
 			DateRange projectDateRange = new DateRange(multiStartDate, multiEndDate);
