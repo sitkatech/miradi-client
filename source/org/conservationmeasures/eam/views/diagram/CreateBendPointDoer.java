@@ -31,12 +31,25 @@ public class CreateBendPointDoer extends LocationDoer
 			return false;
 		
 		DiagramFactorLink[] selectedLinks = getProject().getOnlySelectedLinks();
-		if (selectedLinks.length == 1)
-			return true;
+		if (selectedLinks.length != 1)
+			return false;
 		
-		return false;
+		if (bendPointAlreadyExists(selectedLinks[0]))
+			return false;
+		
+		return true;
 	}
 	
+	private boolean bendPointAlreadyExists(DiagramFactorLink link)
+	{
+		Point clickLocation = getLocation();
+		if (clickLocation == null)
+			return false;
+		
+		PointList bendPoints = link.getBendPoints();
+		return bendPoints.contains(clickLocation);
+	}
+
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
