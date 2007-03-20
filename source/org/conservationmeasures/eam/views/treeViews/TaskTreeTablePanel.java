@@ -62,7 +62,10 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 				rebuildEntireTree();
 			}
 			else
+			{
+				restoreTreeExpansionState();
 				repaint();
+			}
 		}
 	}
 
