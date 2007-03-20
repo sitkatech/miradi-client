@@ -99,10 +99,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		indicatorText = null;
 		if(diagram.areIndicatorsVisible())
 		{
-			IdList indicators = node.getIndicators();
-			if(indicators.size() == 1)
-				indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
-			else if(indicators.size() > 1)
+			IdList clonedList = new IdList();
+			clonedList.addAll(node.getIndicators());
+			clonedList.addAll(model.getProject().getChainManager().getInDirectIndicators(node.getUnderlyingObject()));
+			if(clonedList.size() == 1)
+				indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, clonedList.get(0), Indicator.TAG_SHORT_LABEL);
+			else if(clonedList.size() > 1)
 				indicatorText = "+";
 		}
 		
@@ -134,7 +136,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 		return this;
 	}
-	
 
 	public void setRatingBubbleFont(Graphics2D g2)
 	{

@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 
 public class ChainManager
 {
@@ -119,6 +120,19 @@ public class ChainManager
 		return list;
 	}
 	
+	
+	public IdList getInDirectIndicators(Factor factor)
+	{
+		if (factor.isTarget())
+		{
+			String code = factor.getData(Target.TAG_VIABILITY_MODE);
+			if (code.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
+			{
+				return findAllKeaIndicatorsForTarget((Target)factor);
+			}
+		}
+		return new IdList();
+	}
 	
 	private boolean doesKEAContainIndicator(BaseId objectId,  KeyEcologicalAttribute kea)
 	{
