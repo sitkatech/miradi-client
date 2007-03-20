@@ -8,9 +8,15 @@ package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.JTextComponent;
@@ -29,7 +35,8 @@ public class ObjectTextInputField extends ObjectDataInputField
 		addFocusListener();
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
-	}
+		field.addMouseListener(new MouseHandler());
+	}	
 
 	public JComponent getComponent()
 	{
@@ -96,6 +103,64 @@ public class ObjectTextInputField extends ObjectDataInputField
 		int preferredWidth = textArea.getPreferredSize().width;
 		Dimension preferredSize = new Dimension(preferredWidth, preferredHeight);
 		textComponent.setPreferredSize(preferredSize);
+	}
+	
+	public class MouseHandler extends MouseAdapter
+	{
+		public void mousePressed(MouseEvent e)
+		{
+			if(e.isPopupTrigger())
+				fireRightClick(e);
+		}
+
+		public void mouseReleased(MouseEvent e)
+		{
+			if(e.isPopupTrigger())
+				fireRightClick(e);
+		}
+		
+		void fireRightClick(MouseEvent e)
+		{
+			getRightClickMenu().show(field, e.getX(), e.getY());
+		}
+		
+		public JPopupMenu getRightClickMenu()
+		{
+			JPopupMenu menu = new JPopupMenu();
+			
+			JMenuItem menuItemCopy = new JMenuItem("Copy");
+			menuItemCopy.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					field.copy();
+				}
+			});
+			menu.add(menuItemCopy);
+			
+			JMenuItem menuItemCut = new JMenuItem("Cut");
+			menuItemCut.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					field.cut();
+				}
+			});
+			menu.add(menuItemCut);
+			
+			JMenuItem menuItemPaste = new JMenuItem("Paste");
+			menuItemPaste.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					field.paste();
+				}
+			});
+			menu.add(menuItemPaste);
+			
+			return menu;
+		}
+
 	}
 	
 	JTextComponent field;
