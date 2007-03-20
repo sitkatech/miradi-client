@@ -75,6 +75,8 @@ public class BudgetView extends TabbedView
 		accountingCodePoolManagementPanel.updateSplitterLocation();
 		fundingSourcePoolManagementPanel.updateSplitterLocation();
 		resourceManagementPanel.updateSplitterLocation();
+		
+		getMainWindow().setStatusBarIfDataExistsOutOfRange();
 	}
 
 	public void createTabs() throws Exception

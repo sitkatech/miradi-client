@@ -33,10 +33,16 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectRepairer;
+import org.conservationmeasures.eam.utils.DateRange;
+import org.conservationmeasures.eam.utils.DateRangeEffort;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.TabbedView;
@@ -58,6 +64,7 @@ import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.util.DirectoryLock;
+import org.martus.util.MultiCalendar;
 
 import edu.stanford.ejalbert.BrowserLauncher;
 import edu.stanford.ejalbert.BrowserLauncherRunner;
@@ -286,6 +293,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void updateStatusBar()
 	{
+		setDiagramViewStatusBar();
+	}
+
+	private void setDiagramViewStatusBar()
+	{
+		if (!diagramView.getViewName().equals(currentView.getName()))
+			return;
+		
 		if(getProject().getLayerManager().areAllNodesVisible())
 			mainStatusBar.setStatusAllLayersVisible();
 		else
@@ -309,36 +324,55 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		possiblyNotifyUserIfProjectDateChange(event);
 		updateAfterCommand(event);
 	}
 
-	private void possiblyNotifyUserIfProjectDateChange(CommandExecutedEvent event)
+	public void setStatusBarIfDataExistsOutOfRange()
 	{
-		if (isProjectStartDateChangeCommand(event) || isProjectEndDateChangeCommand(event))
-		{
-			Runnable doHelloWorld = new Runnable() 
-			{
-				public void run() 
-				{
-					//TODO rework dialog text
-					EAM.notifyDialog("Date change notification");
-				}
-			};
-			SwingUtilities.invokeLater(doHelloWorld);
-		}
+		if (isDataOutsideOfcurrentProjectDateRange())
+			mainStatusBar.setStatus("Data exists out of range");
+		else
+			mainStatusBar.setStatusReady();
+		
 	}
 
-	private boolean isProjectEndDateChangeCommand(CommandExecutedEvent event)
+	//TODO refactor this method (nested for loops)
+	private boolean isDataOutsideOfcurrentProjectDateRange()
 	{
-		return event.isSetDataCommandWithThisTypeAndTag(ObjectType.PROJECT_METADATA, ProjectMetadata.TAG_EXPECTED_END_DATE);
+		try
+		{
+			ProjectMetadata metadata = getProject().getMetadata();
+			String startDate = metadata.getStartDate();
+			String endDate = metadata.getExpectedEndDate();
+
+			MultiCalendar multiStartDate = MultiCalendar.createFromIsoDateString(startDate);
+			MultiCalendar multiEndDate = MultiCalendar.createFromIsoDateString(endDate);
+			DateRange projectDateRange = new DateRange(multiStartDate, multiEndDate);
+			
+			BaseId[] assignmentIds = getProject().getAssignmentPool().getIds();
+			for (int i = 0; i < assignmentIds.length; i++)
+			{
+				Assignment assignment = (Assignment) getProject().findObject(new ORef(ObjectType.ASSIGNMENT, assignmentIds[i]));
+				DateRangeEffortList effortList = assignment.getDetails();
+				for (int j = 0; j < effortList.size(); j++)
+				{
+					DateRangeEffort effort = effortList.get(j);
+					DateRange effortDateRange = effort.getDateRange();
+					if (!projectDateRange.contains(effortDateRange))
+						return true;
+				}
+			}
+			
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+		
+		return false;
 	}
-	
-	private boolean isProjectStartDateChangeCommand(CommandExecutedEvent event)
-	{
-		return event.isSetDataCommandWithThisTypeAndTag(ObjectType.PROJECT_METADATA, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-	}
-	
+
 	private void updateAfterCommand(CommandExecutedEvent event)
 	{
 		try

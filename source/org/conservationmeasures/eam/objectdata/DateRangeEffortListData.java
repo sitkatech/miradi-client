@@ -35,6 +35,13 @@ public class DateRangeEffortListData extends ObjectData
 		
 		return rawOther.toString().equals(toString());
 	}
+	
+	public DateRangeEffortList getDateRangeEffortList()
+	{
+		return dateRangeEffortList; 
+	}
+	 
+	
 
 	public String get()
 	{

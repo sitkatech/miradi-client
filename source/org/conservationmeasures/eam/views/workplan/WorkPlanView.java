@@ -79,6 +79,8 @@ public class WorkPlanView extends TabbedView
 		activitiesManagementPanel.updateSplitterLocation();
 		methodPoolManagementPanel.updateSplitterLocation();
 		resourceManagementPanel.updateSplitterLocation();
+		
+		getMainWindow().setStatusBarIfDataExistsOutOfRange();
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
