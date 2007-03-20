@@ -107,7 +107,7 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 	private Project project;
 	
 	private static final String ITEMS_COLUMN_NAME = "Items";
-	private static final String COST_COLUMN_NAME = "Cost";
+	private static final String COST_COLUMN_NAME = "Total";
 	
 	private static final int ITEMS_COLUMN = 0;
 }
