@@ -60,25 +60,36 @@ public class DeleteBendPointDoer extends LocationDoer
 		PointList newBendPoints = new PointList();
 		Point clickLocation = getLocation();
 		if (clickLocation == null)
-		{
-			newBendPoints.addAll(currentBendPoints.getAllPoints());
-			newBendPoints.removePoint(0);
-			return newBendPoints;
-		}
+			return removeFirstPoint(currentBendPoints, newBendPoints);
 		
+		newBendPoints.addAll(currentBendPoints.getAllPoints());
 		for (int i = 0; i < currentBendPoints.size(); i++)
 		{
 			Point bendPoint = currentBendPoints.get(i);
-			if (!isWithinRange(bendPoint, clickLocation))
-				newBendPoints.add(bendPoint);
+			if (isWithinRange(bendPoint, clickLocation))
+			{
+				newBendPoints.removePoint(bendPoint);
+				break;
+			}
 		}
 		
+		return newBendPoints;
+	}
+
+	private PointList removeFirstPoint(PointList currentBendPoints, PointList newBendPoints)
+	{
+		newBendPoints.addAll(currentBendPoints.getAllPoints());
+		newBendPoints.removePoint(0);
+
 		return newBendPoints;
 	}
 	
 	private boolean isWithinRange(Point bendPoint, Point clickLocation)
 	{
 		//TODO check JGraph.HandLeSize to see what the bounds of the bend point is, if any.
+		//isWithinRange should use the graph's handleSize value instead of 10. 
+		//It's protected, so it needs to expose it via a DiagramComponent method.
+
 		final double MAX_DISTANCE = 10.0;
 		double distance = clickLocation.distance(bendPoint);
 		if (distance <= MAX_DISTANCE)
