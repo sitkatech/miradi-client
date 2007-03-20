@@ -105,6 +105,21 @@ public class ChainManager
 		return false;
 	}
 	
+	
+	public IdList findAllKeaIndicatorsForTarget(Target target)
+	{
+		IdList list = new IdList();
+		IdList keas = target.getKeyEcologicalAttributes();
+		for (int j=0; j<keas.size(); ++j)
+		{
+			BaseId keyEcologicalAttributeId = keas.get(j);
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute) project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keyEcologicalAttributeId);
+			list.addAll(kea.getIndicatorIds());
+		}
+		return list;
+	}
+	
+	
 	private boolean doesKEAContainIndicator(BaseId objectId,  KeyEcologicalAttribute kea)
 	{
 		return (kea.getIndicatorIds().find(objectId) != BaseId.INVALID.asInt());
