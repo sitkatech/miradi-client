@@ -987,6 +987,10 @@ public class Project
 		return formatter;
 	}
 
+	public ChainManager getChainManager()
+	{
+		return new ChainManager(this);
+	}
 	
 
 	public static final String MONITORING_VIEW_NAME = "Monitoring Plan";
