@@ -329,9 +329,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void setStatusBarIfDataExistsOutOfRange()
 	{
-		//TODO change status bar text
+		final String dataOutOfRange = EAM.text("" +
+				"WorkPlan/Financial data outside project begin/end dates will not be shown");
 		if (isDataOutsideOfcurrentProjectDateRange())
-			mainStatusBar.setStatus("Data exists out of range");
+			mainStatusBar.setStatus(dataOutOfRange);
 		else
 			mainStatusBar.setStatusReady();
 		
