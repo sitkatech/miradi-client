@@ -17,14 +17,9 @@ import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.project.ChainManager;
-import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
@@ -133,31 +128,9 @@ abstract public class FactorCell extends EAMGraphCell
 
 	public IdList getIndicators()
 	{
-		IdList list = underlyingObject.getIndicators();
-		
-		if (isTarget())
-		{
-			String code = underlyingObject.getData(Target.TAG_VIABILITY_MODE);
-			if (code.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
-			{
-				IdList listtoAdd = getChainManager().findAllKeaIndicatorsForTarget((Target)underlyingObject);
-				list.addAll(listtoAdd);
-			}
-		}
-		return list;
+		return underlyingObject.getIndicators();
 	}
 
-	ChainManager getChainManager()
-	{
-		return new ChainManager(getProject());
-	}
-	
-	private Project getProject()
-	{
-		//FIXME: need to have access to project , should be passed in , maybe
-		return EAM.mainWindow.getCurrentView().getProject();
-	}
-	
 	public boolean canHaveObjectives()
 	{
 		return underlyingObject.canHaveObjectives();
