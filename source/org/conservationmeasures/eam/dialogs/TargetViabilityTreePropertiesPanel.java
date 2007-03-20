@@ -21,6 +21,8 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
+import org.conservationmeasures.eam.icons.GoalIcon;
+import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -134,7 +136,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		JPanel box4 = createGridLayoutPanel(2,1);
 		Box optionPanel = createOptionGroup();
 		box4.add(optionPanel);
-		box4.add(createColumn(ratingSource));
+		box4.add(createColumnBox(ratingSource));
 		box3.add(box4);
 		mainGridPanel.add(box3);
 		
@@ -145,39 +147,39 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		
 		Box box5 = Box.createHorizontalBox();
-		box5.add(createColumn(measurementStatus, col1Model));
+		box5.add(createColumnJPanel(measurementStatus, col1Model));
 		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
-		box5.add(createColumn(measurementDate, col2Model));
+		box5.add(createColumnJPanel(measurementDate, col2Model));
 		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
-		box5.add(createColumn(measurementSummary, col3Model));
+		box5.add(createColumnJPanelWithIcon(measurementSummary,new IndicatorIcon(), col3Model));
 		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
-		box5.add(createColumn(measurementDetail));
+		box5.add(createColumnBox(measurementDetail));
 		mainGridPanel.add(new UiLabel(EAM.text("Current Status")));
 		mainGridPanel.add(box5);
 
 		Box box6 = Box.createHorizontalBox();
-		box6.add(createColumn(measurementTrend, col1Model));
+		box6.add(createColumnJPanel(measurementTrend, col1Model));
 		box6.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
-		box6.add(createColumn(measureementStatusConfidence, col2Model));
+		box6.add(createColumnJPanel(measureementStatusConfidence, col2Model));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box6);
 		
 
 		Box box7 = Box.createHorizontalBox();
-		box7.add(createColumn(desiredStatus, col1Model));
+		box7.add(createColumnJPanel(desiredStatus, col1Model));
 		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
-		box7.add(createColumn(byWhen, col2Model));
+		box7.add(createColumnJPanel(byWhen, col2Model));
 		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
-		box7.add(createColumn(desiredSummary, col3Model));
+		box7.add(createColumnJPanelWithIcon(desiredSummary, new GoalIcon(), col3Model));
 		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
-		box7.add(createColumn(desiredDetail));
+		box7.add(createColumnBox(desiredDetail));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box7);
 
@@ -275,22 +277,19 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommand())
+		final boolean areIndicatorMeasurementFields = 
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_SUMMARY) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_STATUS);
+		
+		final boolean areGoalDesireFields = 
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.GOAL,Goal.TAG_DESIRED_SUMMARY) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.GOAL,Goal.TAG_DESIRED_STATUS);
+		
+		if (areIndicatorMeasurementFields || areGoalDesireFields)
 		{
-			final CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
-			String tag = command.getFieldTag();
-			
-			final boolean areIndicatorMeasurementFields = (command.getObjectType() == ObjectType.INDICATOR) && 
-								(tag.equals(Indicator.TAG_MEASUREMENT_SUMMARY) || tag.equals(Indicator.TAG_MEASUREMENT_STATUS));
-			
-			final boolean areGoalDesireFields = (command.getObjectType() == ObjectType.GOAL) && 
-								(tag.equals(Goal.TAG_DESIRED_SUMMARY) || tag.equals(Goal.TAG_DESIRED_STATUS));
-			
-			if (areIndicatorMeasurementFields || areGoalDesireFields)
-			{
-				ORef ref = new ORef(command.getObjectType(), command.getObjectId());
-				indicatorThreshold.setIconRowObject(ref);
-			}
+			CommandSetObjectData  command = (CommandSetObjectData) event.getCommand();
+			ORef ref = new ORef(command.getObjectType(), command.getObjectId());
+			indicatorThreshold.setIconRowObject(ref);
 		}
 	}
 	

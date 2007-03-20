@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.Box;
+import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -58,7 +60,7 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		add(component);
 	}
 	
-	public Box createColumn(ObjectDataInputField field)
+	public Box createColumnBox(ObjectDataInputField field)
 	{
 		Box box = Box.createVerticalBox();
 		box.add(createLabel(field));
@@ -66,7 +68,7 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		return box;
 	}
 
-	public JPanel createColumn(ObjectDataInputField field, Dimension dim)
+	public JPanel createColumnJPanel(ObjectDataInputField field, Dimension dim)
 	{
 		JPanel box = createGridLayoutPanel(2,1);
 		field.getComponent().setMaximumSize(new Dimension(dim.width, field.getComponent().getPreferredSize().height));
@@ -75,6 +77,19 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		return box;
 	}
 	
+	public JPanel createColumnJPanelWithIcon(ObjectDataInputField field, Icon icon, Dimension dim)
+	{
+		JPanel box = createGridLayoutPanel(2,1);
+		field.getComponent().setMaximumSize(new Dimension(dim.width, field.getComponent().getPreferredSize().height));
+		box.add(createLabel(field));
+		
+		JPanel boxIcon = createGridLayoutPanel(1,2);
+		boxIcon.add(new JLabel(icon));
+		boxIcon.add(field.getComponent());
+		
+		box.add(boxIcon, BorderLayout.BEFORE_LINE_BEGINS);
+		return box;
+	}
 	
 
 	public JPanel createGridLayoutPanel(int row, int columns)
