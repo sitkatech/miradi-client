@@ -43,11 +43,15 @@ public class Target extends Factor
 	{
 		super.clear();
 		targetStatus = new ChoiceData();
+		viabiltyMode = new ChoiceData();
 		
 		addField(TAG_TARGET_STATUS, targetStatus);
+		addField(TAG_VIABILITY_MODE, viabiltyMode);
 	}
 	
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
+	public static final String TAG_VIABILITY_MODE = "ViabilityMode";
 	public static final String OBJECT_NAME = "Target";
 	ChoiceData targetStatus;
+	ChoiceData viabiltyMode;
 }

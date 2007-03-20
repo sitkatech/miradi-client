@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -33,6 +34,7 @@ import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.questions.TargetStatusQuestion;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
+import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 
 public class FactorDetailsPanel extends ObjectDataInputPanel
 {
@@ -43,6 +45,8 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		
 		if(factorToEdit.isTarget())
 		{
+			addField(createMultilineField(Factor.TAG_COMMENT));
+			addField(createChoiceField(ObjectType.FACTOR, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
 			addField(createRatingChoiceField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS)));
 			detailIcon = new TargetIcon();
 		}
@@ -50,12 +54,14 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		if(factorToEdit.isDirectThreat())
 		{
 			addField(createClassificationChoiceField(new ThreatClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
+			addField(createMultilineField(Factor.TAG_COMMENT));
 			detailIcon = new DirectThreatIcon();
 		}
 		
 		if(factorToEdit.isContributingFactor())
 		{
 			detailIcon = new ContributingFactorIcon();
+			addField(createMultilineField(Factor.TAG_COMMENT));
 		}
 
 		if(factorToEdit.isStrategy())
@@ -68,10 +74,9 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
 			addField(createRatingChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
 			addField(createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
+			addField(createMultilineField(Factor.TAG_COMMENT));
 			detailIcon = new StrategyIcon();
 		}
-
-		addField(createMultilineField(Factor.TAG_COMMENT));
 		
 		updateFieldsFromProject();
 	}

@@ -5,14 +5,14 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-public class ViabilitySelectionQuestion extends ChoiceQuestion
+public class ViabilityModeQuestion extends ChoiceQuestion
 {
-	public ViabilitySelectionQuestion(String tagToUse)
+	public ViabilityModeQuestion(String tagToUse)
 	{
-		super(tagToUse, "Target Viability Methodology", getViabilitySelectionChoices());
+		super(tagToUse, "Target Viability Methodology", getViabilityModeChoices());
 	}
 
-	static ChoiceItem[] getViabilitySelectionChoices()
+	static ChoiceItem[] getViabilityModeChoices()
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Basic"),
