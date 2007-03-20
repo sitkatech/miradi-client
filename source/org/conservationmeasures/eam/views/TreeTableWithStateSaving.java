@@ -82,10 +82,12 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		ignoreNotifications = true;
 		try
 		{
+			TreePath selectedPath = tree.getSelectionPath();
 			TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
 			TreePath rootPath = new TreePath(root);
 			recursiveChangeNodeExpansionState(expandedList, rootPath);
 			treeTableModelAdapter.fireTableDataChanged();
+			tree.addSelectionPath(selectedPath);
 		}
 		finally
 		{
