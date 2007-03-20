@@ -192,8 +192,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		Box box = Box.createVerticalBox();
 		box.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		box.add(new UiLabel("OPTIONS"));
-		box.add(createCheckBox("Show Thresholds", new OptionThresholdChangeListener()));
-		box.add(createCheckBox("Show Status", new OptionStatusChangeListener()));
+		box.add(createCheckBox(EAM.text("Show Thresholds"), new OptionThresholdChangeListener()));
+		box.add(createCheckBox(EAM.text("Show Status"), new OptionStatusChangeListener()));
 		return box;
 	}
 
