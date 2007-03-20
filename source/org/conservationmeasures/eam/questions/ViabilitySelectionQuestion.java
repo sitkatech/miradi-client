@@ -9,14 +9,14 @@ public class ViabilitySelectionQuestion extends ChoiceQuestion
 {
 	public ViabilitySelectionQuestion(String tagToUse)
 	{
-		super(tagToUse, "Viability Selection", getViabilitySelectionChoices());
+		super(tagToUse, "Target Viability Methodology", getViabilitySelectionChoices());
 	}
 
 	static ChoiceItem[] getViabilitySelectionChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("Basic", "Basic"),
-				new ChoiceItem("TNC", "TNC"),
+				new ChoiceItem("", "Basic"),
+				new ChoiceItem("TNC", "TNC-Style"),
 		};
 	}
 }
