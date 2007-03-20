@@ -7,21 +7,20 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -30,11 +29,9 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.DialogGridPanel;
+import org.conservationmeasures.eam.questions.TargetStatusQuestion;
 import org.conservationmeasures.eam.utils.FastScrollPane;
-import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
 
@@ -46,6 +43,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		diagram = diagramToUse;
 	}
 	
+	//TODO: can put a loop of disposable panels and move the code to DIsposablePanel passing in list
 	public void dispose()
 	{
 		detailsTab.dispose();
@@ -59,6 +57,8 @@ public class FactorPropertiesPanel extends DisposablePanel
 			activitiesTab.dispose();
 		if(viabilityTab != null)
 			viabilityTab.dispose();
+		if(grid != null)
+			grid.dispose();
 		super.dispose();
 	}
 	
@@ -114,26 +114,31 @@ public class FactorPropertiesPanel extends DisposablePanel
 
 	private Component createLabelBar(FactorCell diagramFactor)
 	{
-		createTextField(diagramFactor.getLabel(), MAX_LABEL_LENGTH);
-
-		DialogGridPanel grid = new DialogGridPanel();
-
-		grid.add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR, "Label")));
-		grid.add(textField);
-
-		grid.add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR, "Type")));
+		grid = new FactorInputPanel(getProject(), diagramFactor.getUnderlyingObject().getId());
 		
+		grid.addField(grid.createStringField(Factor.TAG_LABEL, MAX_LABEL_LENGTH));
 		if(diagramFactor.isDirectThreat())
-			grid.add(new UiLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING));
+			grid.addLine(new UiLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING), new JPanel());
 		else if (diagramFactor.isContributingFactor())
-			grid.add(new UiLabel(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING));
+			grid.addLine(new UiLabel(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING), new JPanel());
 		else if (diagramFactor.isStrategy()) 
-			grid.add(new UiLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING));
+			grid.addLine(new UiLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING), new JPanel());
 		else if (diagramFactor.isTarget())
-			grid.add(new UiLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING));
-
+		{
+			grid.addLine(new UiLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING), new JPanel());
+			grid.addField(getTargetRating(diagramFactor.getUnderlyingObject()));
+		}
+		
 		grid.add(new UiLabel());
 		return grid;
+	}
+	
+	
+	private ObjectDataInputField getTargetRating(Factor factor)
+	{
+		ObjectDataInputField field =  new ObjectReadonlyChoiceField(getProject(), ObjectType.FACTOR, factor.getId(), new TargetStatusQuestion(Target.TAG_TARGET_STATUS));
+		field.setText(factor.getData(Target.TAG_TARGET_STATUS));
+		return field;
 	}
 	
 	private Component createTabbedPane(FactorCell diagramFactor) throws Exception
@@ -207,46 +212,20 @@ public class FactorPropertiesPanel extends DisposablePanel
 	}
 
 
-	private Component createTextField(String initialText, int maxLength)
+
+	class FactorInputPanel extends ObjectDataInputPanel
 	{
-		textField = new UiTextFieldWithLengthLimit(maxLength);
-		textField.addFocusListener(new LabelFocusHandler());
-		textField.requestFocus(true);
 
-		textField.setText(initialText);
-		textField.selectAll();
-
-		JPanel component = new JPanel(new BorderLayout());
-		component.add(textField, BorderLayout.LINE_START);
-		return component;
-	}
-
-	class LabelFocusHandler implements FocusListener
-	{
-		public void focusGained(FocusEvent event)
+		public FactorInputPanel(Project projectToUse, BaseId idToUse)
 		{
+			super(projectToUse, ObjectType.FACTOR, idToUse);
 		}
 
-		public void focusLost(FocusEvent event)
+		public String getPanelDescription()
 		{
-			String newText = getText();
-			if(newText.equals(getCurrentDiagramFactor().getLabel()))
-				return;
-			try
-			{
-				CommandSetObjectData cmd = FactorCommandHelper
-						.createSetLabelCommand(getCurrentFactorId(), newText);
-				getProject().executeCommand(cmd);
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
+			return "";
 		}
 	}
-
-
 
 	private Project getProject()
 	{
@@ -258,10 +237,6 @@ public class FactorPropertiesPanel extends DisposablePanel
 		return diagram;
 	}
 
-	private String getText()
-	{
-		return textField.getText();
-	}
 
 	public void setAllTabSplitterLocationsToMiddle()
 	{
@@ -300,6 +275,6 @@ public class FactorPropertiesPanel extends DisposablePanel
 	FactorCell currentDiagramFactor;
 	UiTextField textField;
 	boolean ignoreObjectiveChanges;
-	
+	FactorInputPanel grid;
 
 }

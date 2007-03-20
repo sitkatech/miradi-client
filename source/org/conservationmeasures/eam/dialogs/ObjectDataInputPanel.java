@@ -47,6 +47,12 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel 
 		setLayout(layout);
 	}
 	
+	public void addLine(Component field1, Component field2)
+	{
+		add(field1);
+		add(field2);
+	}
+	
 	public ObjectDataInputField addField(ObjectDataInputField field)
 	{
 		super.addField(field);
