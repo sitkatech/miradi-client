@@ -24,6 +24,7 @@ import javax.swing.text.JTextComponent;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiTextArea;
 
 public class ObjectTextInputField extends ObjectDataInputField
@@ -128,7 +129,8 @@ public class ObjectTextInputField extends ObjectDataInputField
 		{
 			JPopupMenu menu = new JPopupMenu();
 			
-			JMenuItem menuItemCopy = new JMenuItem("Copy");
+			ResourceImageIcon copyIcon = new ResourceImageIcon("icons/copy.gif");
+			JMenuItem menuItemCopy = new JMenuItem("Copy", copyIcon);
 			menuItemCopy.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent e)
@@ -138,7 +140,8 @@ public class ObjectTextInputField extends ObjectDataInputField
 			});
 			menu.add(menuItemCopy);
 			
-			JMenuItem menuItemCut = new JMenuItem("Cut");
+			ResourceImageIcon cutIcon = new ResourceImageIcon("icons/cut.gif");
+			JMenuItem menuItemCut = new JMenuItem("Cut", cutIcon);
 			menuItemCut.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent e)
@@ -148,7 +151,8 @@ public class ObjectTextInputField extends ObjectDataInputField
 			});
 			menu.add(menuItemCut);
 			
-			JMenuItem menuItemPaste = new JMenuItem("Paste");
+			ResourceImageIcon pastIcon = new ResourceImageIcon("icons/paste.gif");
+			JMenuItem menuItemPaste = new JMenuItem("Paste", pastIcon);
 			menuItemPaste.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent e)
