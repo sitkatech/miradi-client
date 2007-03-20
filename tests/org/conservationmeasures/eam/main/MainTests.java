@@ -80,6 +80,7 @@ import org.conservationmeasures.eam.project.TestProjectUnzipper;
 import org.conservationmeasures.eam.project.TestProjectZipper;
 import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.project.TestTNCThreatFormula;
+import org.conservationmeasures.eam.project.TestTNCViabilityFormula;
 import org.conservationmeasures.eam.project.TestThreatRatingFramework;
 import org.conservationmeasures.eam.project.TestTncCapWorkbookImporter;
 import org.conservationmeasures.eam.ratings.TestRatingChoice;
@@ -136,6 +137,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProjectInfo.class));
 		suite.addTest(new TestSuite(TestThreatRatingFramework.class));
 		suite.addTest(new TestSuite(TestTNCThreatFormula.class));
+		suite.addTest(new TestSuite(TestTNCViabilityFormula.class));
 		suite.addTest(new TestSuite(TestProjectZipper.class));
 		suite.addTest(new TestSuite(TestProjectUnzipper.class));
 		suite.addTest(new TestSuite(TestTncCapWorkbookImporter.class));
