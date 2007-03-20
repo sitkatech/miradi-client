@@ -6,12 +6,15 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.main.AppPreferences;
 
-public class HideCellRatingsDoer extends MainWindowDoer
+public class HideCellRatingsDoer extends CellRatingsDoer
 {
 	public boolean isAvailable()
 	{
+		if (isCellRatingVisible())
+			return true;
+		
 		return false;
 	}
 
@@ -19,5 +22,8 @@ public class HideCellRatingsDoer extends MainWindowDoer
 	{
 		if (!isAvailable())
 			return;
+		
+		getMainWindow().setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, false);
+		updateToolBar();
 	}
 }

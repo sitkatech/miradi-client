@@ -16,20 +16,28 @@ import org.conservationmeasures.eam.utils.ToolBarButton;
 
 public class ThreatMatrixToolBar extends EAMToolBar
 {
-	public ThreatMatrixToolBar(Actions actions)
+	public ThreatMatrixToolBar(Actions actions, boolean isCellRatingVisible)
 	{
-		super(actions, ActionViewThreatMatrix.class, createButtons(actions));
+		super(actions, ActionViewThreatMatrix.class, createButtons(actions, isCellRatingVisible));
 	}
 	
-	static JComponent[][] createButtons(Actions actions)
+	static JComponent[][] createButtons(Actions actions, boolean isCellRatingVisible)
 	{
 		JComponent[][] buttons = new JComponent[][] {
-				{new ToolBarButton(actions, ActionShowCellRatings.class),
-				 new ToolBarButton(actions, ActionHideCellRatings.class),	
+				{getCellRatingsButton(actions, isCellRatingVisible)
 				},
 			};
 		
 		return buttons;
 	}
+	
+	private static ToolBarButton getCellRatingsButton(Actions actions, boolean isCellRatingVisible)
+	{
+		if (isCellRatingVisible)
+			return new ToolBarButton(actions, ActionHideCellRatings.class);
+	
+		return new ToolBarButton(actions, ActionShowCellRatings.class);
+	}
+	
 }
 

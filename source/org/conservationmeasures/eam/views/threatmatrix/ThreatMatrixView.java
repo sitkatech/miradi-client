@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.commands.CommandSetThreatRating;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -44,11 +45,21 @@ public class ThreatMatrixView extends UmbrellaView
 		super(mainWindowToUse);
 		
 		addThreatMatrixiewDoersToMap();
-		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions()));
+		recreateToolBar();
 		wizardPanel = new ThreatRatingWizardPanel(this);
 	}
 
-	
+	//FIXME umberall view probably should not store the toolbar
+	public void recreateToolBar()
+	{
+		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions(), isCellRatingsVisible()));
+	}
+
+	private boolean isCellRatingsVisible()
+	{
+		return getMainWindow().getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
+	}
+
 	private void addThreatMatrixiewDoersToMap()
 	{
 		addDoerToMap(ActionSaveImage.class, new SaveImageDoer());
@@ -214,7 +225,6 @@ public class ThreatMatrixView extends UmbrellaView
 		wizardPanel.jump(stepMarker);
 	}
 	
-
 	JSplitPane bigSplitter;
 	ThreatMatrixTableModel model;
 	ThreatGridPanel grid;
