@@ -53,7 +53,7 @@ public class NudgeDoer extends LocationDoer
 		moveSelectedNodes(deltaX, deltaY);
 	}
 
-	private boolean isLocationInsideDiagramBounds(FactorCell factorCell, int deltaX, int deltaY)
+	private boolean isFutureCellLocationInsideDiagramBounds(FactorCell factorCell, int deltaX, int deltaY)
 	{
 		Point cellLocation = factorCell.getLocation();
 		int futureX = cellLocation.x + deltaX;
@@ -73,9 +73,8 @@ public class NudgeDoer extends LocationDoer
 		for(int i = 0; i < cells.length; ++i)
 		{
 			ids[i] = cells[i].getDiagramFactorId();
-			if (!isLocationInsideDiagramBounds(cells[i], deltaX, deltaY))
+			if (!isFutureCellLocationInsideDiagramBounds(cells[i], deltaX, deltaY))
 				return;
-			
 		}
 		
 		getProject().recordCommand(new CommandBeginTransaction());
