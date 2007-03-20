@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -52,8 +53,14 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 				if (factor.isTarget())
 				{
 					ChainManager chainManager = new ChainManager(project);
-					KeyEcologicalAttribute kea = chainManager.findKEAWithIndicator(object.getId(), (Target)factor);
-					deleteAnnotation(project, object, kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+					IdList indicators = ((Target)factor).getIndicators();
+					if (indicators.contains(object.getId()))
+						deleteAnnotation(project, object, factor, Target.TAG_INDICATOR_IDS);
+					else
+					{
+						KeyEcologicalAttribute kea = chainManager.findKEAWithIndicator(object.getId(), (Target)factor);
+						deleteAnnotation(project, object, kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+					}
 				}
 				else
 				{
