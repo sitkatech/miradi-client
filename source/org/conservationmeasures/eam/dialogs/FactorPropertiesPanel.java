@@ -179,7 +179,9 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		if (diagramFactor.isTarget())
 		{
 			viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab );
+			Factor factor = diagramFactor.getUnderlyingObject();
+			if (factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE))
+				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
 		}
 		
 		return tabs;
