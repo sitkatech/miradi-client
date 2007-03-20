@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -15,9 +16,8 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.FactorMoveHandler;
-import org.conservationmeasures.eam.views.ProjectDoer;
 
-public class NudgeDoer extends ProjectDoer
+public class NudgeDoer extends LocationDoer
 {
 
 	public NudgeDoer(int directionToNudge)
@@ -53,6 +53,18 @@ public class NudgeDoer extends ProjectDoer
 		moveSelectedNodes(deltaX, deltaY);
 	}
 
+	private boolean isLocationInsideDiagramBounds(FactorCell factorCell, int deltaX, int deltaY)
+	{
+		Point cellLocation = factorCell.getLocation();
+		int futureX = cellLocation.x + deltaX;
+		int futureY = cellLocation.y + deltaY;
+		
+		if (futureX < 0 || futureY < 0)
+			return false;
+	
+		return true;
+	}
+	
 	private void moveSelectedNodes(int deltaX, int deltaY) throws CommandFailedException
 	{
 		FactorCell[] cells = getProject().getOnlySelectedFactors();
@@ -60,7 +72,10 @@ public class NudgeDoer extends ProjectDoer
 		DiagramFactorId[] ids = new DiagramFactorId[cells.length];
 		for(int i = 0; i < cells.length; ++i)
 		{
-			ids[i] = cells[i].getDiagramFactorId(); 
+			ids[i] = cells[i].getDiagramFactorId();
+			if (!isLocationInsideDiagramBounds(cells[i], deltaX, deltaY))
+				return;
+			
 		}
 		
 		getProject().recordCommand(new CommandBeginTransaction());
