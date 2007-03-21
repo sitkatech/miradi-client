@@ -123,15 +123,17 @@ public class ChainManager
 	
 	public IdList getViabilityIndicators(Factor factor)
 	{
-		if (factor.isTarget())
+		if (!factor.isTarget())
+			return new IdList();
+		
+		String code = factor.getData(Target.TAG_VIABILITY_MODE);
+		if (code.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
 		{
-			String code = factor.getData(Target.TAG_VIABILITY_MODE);
-			if (code.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
-			{
-				return findAllKeaIndicatorsForTarget((Target)factor);
-			}
+			return findAllKeaIndicatorsForTarget((Target)factor);
 		}
-		return new IdList();
+
+		return ((Target)factor).getIndicators();
+
 	}
 	
 	private boolean doesKEAContainIndicator(BaseId objectId,  KeyEcologicalAttribute kea)
