@@ -116,12 +116,10 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box2);
 
 		Box boxIndrPrty = Box.createHorizontalBox();
-		normalizeSize(indicatorPriority,indicatorPriority);
 		boxIndrPrty.add(createLabel(indicatorPriority));
 		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
 		boxIndrPrty.add(indicatorPriority.getComponent());
 		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
-		normalizeSize(monitoringStatus,monitoringStatus);
 		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
 		boxIndrPrty.add(createLabel(monitoringStatus));
 		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
@@ -229,10 +227,6 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		return new ViabilityRatingsTableField(getProject(), objectType, getObjectIdForType(objectType), question);
 	}
 	
-	private void normalizeSize(ObjectDataInputField target, ObjectDataInputField source)
-	{
-		target.getComponent().setMaximumSize(source.getComponent().getPreferredSize());
-	}
 
 	public void setObjectRefs(Vector orefsToUse)
 	{
