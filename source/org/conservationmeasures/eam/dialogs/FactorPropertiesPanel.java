@@ -270,6 +270,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		//FIXME: need to figure out correct combination of validate and pack and set spliters needed.
 		if (event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Target.TAG_VIABILITY_MODE))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
