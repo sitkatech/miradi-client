@@ -121,18 +121,18 @@ public class ChainManager
 	}
 	
 	
-	public IdList getViabilityIndicators(Factor factor)
+	public IdList getDirectAndIndirectIndicators(Factor factor)
 	{
-		if (!factor.isTarget())
-			return new IdList();
-		
-		String code = factor.getData(Target.TAG_VIABILITY_MODE);
-		if (code.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
+		if (factor.isTarget())
 		{
-			return findAllKeaIndicatorsForTarget((Target)factor);
+			String code = factor.getData(Target.TAG_VIABILITY_MODE);
+			if (code.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
+			{
+				return findAllKeaIndicatorsForTarget((Target)factor);
+			}
 		}
 
-		return ((Target)factor).getIndicators();
+		return factor.getIndicators();
 
 	}
 	

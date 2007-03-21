@@ -17,9 +17,11 @@ import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
@@ -128,7 +130,7 @@ abstract public class FactorCell extends EAMGraphCell
 
 	public IdList getIndicators()
 	{
-		return underlyingObject.getIndicators();
+		return getChainManager().getDirectAndIndirectIndicators(underlyingObject);
 	}
 
 	public boolean canHaveObjectives()
@@ -144,6 +146,11 @@ abstract public class FactorCell extends EAMGraphCell
 	public boolean isCause()
 	{
 		return underlyingObject.isCause();
+	}
+
+	private ChainManager getChainManager()
+	{
+		return EAM.mainWindow.getProject().getChainManager();
 	}
 
 	public Point getLocation()

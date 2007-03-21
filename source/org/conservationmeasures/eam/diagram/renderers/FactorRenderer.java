@@ -99,7 +99,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		indicatorText = null;
 		if(diagram.areIndicatorsVisible())
 		{
-			IdList indicators = model.getProject().getChainManager().getViabilityIndicators(node.getUnderlyingObject());
+			IdList indicators = model.getProject().getChainManager().getDirectAndIndirectIndicators(node.getUnderlyingObject());
 			if(indicators.size() == 1)
 				indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
 			else if(indicators.size() > 1)
