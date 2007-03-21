@@ -101,7 +101,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			IdList clonedList = new IdList();
 			clonedList.addAll(node.getIndicators());
-			clonedList.addAll(model.getProject().getChainManager().getInDirectIndicators(node.getUnderlyingObject()));
+			clonedList.addAll(model.getProject().getChainManager().getViabilityIndicators(node.getUnderlyingObject()));
 			if(clonedList.size() == 1)
 				indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, clonedList.get(0), Indicator.TAG_SHORT_LABEL);
 			else if(clonedList.size() > 1)

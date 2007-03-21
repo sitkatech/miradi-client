@@ -121,7 +121,7 @@ public class ChainManager
 	}
 	
 	
-	public IdList getInDirectIndicators(Factor factor)
+	public IdList getViabilityIndicators(Factor factor)
 	{
 		if (factor.isTarget())
 		{
