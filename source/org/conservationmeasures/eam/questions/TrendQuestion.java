@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
+import org.martus.swing.ResourceImageIcon;
+
 
 public class TrendQuestion extends ChoiceQuestion
 {
@@ -17,12 +19,12 @@ public class TrendQuestion extends ChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Not Specified"),
-				new ChoiceItem("Unknown", "Unknown"),
-				new ChoiceItem("StrongIncrease", "Strong Increase"),
-				new ChoiceItem("MildIncrease", "Mild Increase"),
-				new ChoiceItem("Flat", "Flat"),
-				new ChoiceItem("MildDecrease", "Mild Decrease"),
-				new ChoiceItem("StrongDecrease", "Strong Decrease"),
+				new ChoiceItem("Unknown", "Unknown", new ResourceImageIcon("images/arrows/va_unknown16.png")),
+				new ChoiceItem("StrongIncrease", "Strong Increase", new ResourceImageIcon("images/arrows/va_strongup16.png")),
+				new ChoiceItem("MildIncrease", "Mild Increase", new ResourceImageIcon("images/arrows/va_mildup16.png")),
+				new ChoiceItem("Flat", "Flat", new ResourceImageIcon("images/arrows/va_flat16.png")),
+				new ChoiceItem("MildDecrease", "Mild Decrease", new ResourceImageIcon("images/arrows/va_milddown16.png")),
+				new ChoiceItem("StrongDecrease", "Strong Decrease", new ResourceImageIcon("images/arrows/va_strongdown16.png")),
 		};
 	}
 }

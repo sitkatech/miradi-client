@@ -7,11 +7,13 @@ package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
 
+import javax.swing.Icon;
+
 public class ChoiceItem
 {
 	public ChoiceItem(String codeToUse, String labelToUse)
 	{
-		this(codeToUse, labelToUse, null);
+		this(codeToUse, labelToUse, (Color)null);
 	}
 	
 	public ChoiceItem(String codeToUse, String labelToUse, Color colorToUse)
@@ -19,6 +21,13 @@ public class ChoiceItem
 		code = codeToUse;
 		label = labelToUse;
 		color = colorToUse;
+	}
+	
+	public ChoiceItem(String codeToUse, String labelToUse, Icon iconToUse)
+	{
+		code = codeToUse;
+		label = labelToUse;
+		icon = iconToUse;
 	}
 	
 	public String getCode()
@@ -55,4 +64,5 @@ public class ChoiceItem
 	String code;
 	String label;
 	Color color;
+	Icon icon;
 }
