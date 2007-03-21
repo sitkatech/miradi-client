@@ -61,6 +61,14 @@ import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProj
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewStep;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability2Step;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability3Step;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability4Step;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability5Step;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability6Step;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability7Step;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability8Step;
+import org.conservationmeasures.eam.views.targetviability.wizard.LegacyTargetViabilityOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
@@ -216,7 +224,16 @@ public class WizardManager
 	
 	public void createTargetViabilityStepEntries(WizardPanel panel)
 	{
+		//TODO rename TargetViability Classes to reflect content
+		createStepEntry(new TargetViability2Step(panel)).createControl("DoneViabilityAnalysis", DiagramWizardIdentifyDirectThreatStep.class);
+		createStepEntry(new LegacyTargetViabilityOverviewStep(panel));
 		createStepEntry(new TargetViabilityOverviewStep(panel));
+		createStepEntry(new TargetViability3Step(panel));
+		createStepEntry(new TargetViability4Step(panel));
+		createStepEntry(new TargetViability5Step(panel));
+		createStepEntry(new TargetViability6Step(panel));
+		createStepEntry(new TargetViability7Step(panel));
+		createStepEntry(new TargetViability8Step(panel));
 	}
 	
 	public void createSummaryStepEntries(WizardPanel panel)
@@ -351,6 +368,16 @@ public class WizardManager
 				BudgetWizardDemo.class, 
 				
 				ScheduleOverviewStep.class,
+				
+				TargetViabilityOverviewStep.class,
+				TargetViability2Step.class,
+				TargetViability3Step.class,
+				TargetViability4Step.class,
+				TargetViability5Step.class,
+				TargetViability6Step.class,
+				TargetViability7Step.class,
+				TargetViability8Step.class,
+				
 		};
 		
 		return entries;
