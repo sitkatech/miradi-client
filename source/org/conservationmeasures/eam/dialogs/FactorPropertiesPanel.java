@@ -182,7 +182,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			Factor factor = diagramFactor.getUnderlyingObject();
 			if (factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE))
 			{
-				handleViabilityTabONsetup();
+				handleViabilityTabON();
 			}
 		}
 		
@@ -268,7 +268,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		//FIXME: need to figure out correct combination of validate and pack and set spliters needed.
+		//FIXME: refactor entire tab add remove mechisisim
 		if (event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Target.TAG_VIABILITY_MODE))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
@@ -281,6 +281,11 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			{
 				handleViabilityTabOFF();
 			}
+			
+			SwingUtilities.getWindowAncestor(detailsTab).pack();
+			viabilityTab.updateSplitterLocation();
+			goalsTab.updateSplitterLocation();
+			indicatorsTab.updateSplitterLocation();
 			validate();
 		}
 	}
@@ -290,19 +295,9 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		tabs.remove(tabs.indexOfComponent(viabilityTab));
 		tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab);
 		tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
-		SwingUtilities.getWindowAncestor(detailsTab).pack();
-		goalsTab.updateSplitterLocation();
-		indicatorsTab.updateSplitterLocation();
 	}
 
 	private void handleViabilityTabON()
-	{
-		handleViabilityTabONsetup();
-		SwingUtilities.getWindowAncestor(detailsTab).pack();
-		viabilityTab.updateSplitterLocation();
-	}
-
-	private void handleViabilityTabONsetup()
 	{
 		tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
 		tabs.remove(tabs.indexOfComponent(goalsTab));
