@@ -255,18 +255,22 @@ class SingleClickAutoSelectCellEditor extends DefaultCellEditor
 
 class CustomColumnHeaderRenederer extends DefaultTableCellRenderer
 {
+	public CustomColumnHeaderRenederer()
+	{
+	  preferredSize = getPreferredSize();
+	}
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
 		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		component.setBackground(new Color(0xf0, 0xf0, 0xf0).darker());
-		Dimension preferred = component.getPreferredSize();
-		component.setPreferredSize(new Dimension(preferred.width, ABOUT_TWO_LINE_HIGHT));
+		int sameWidth = component.getPreferredSize().width;
+		int doubleHieght = preferredSize.height * 2;
+		component.setPreferredSize(new Dimension(sameWidth, doubleHieght));
 		
 		return component;
 	}
 	
-	static final int ABOUT_TWO_LINE_HIGHT = 25;
-	
+	Dimension preferredSize;
 }
 
 class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRenderer
