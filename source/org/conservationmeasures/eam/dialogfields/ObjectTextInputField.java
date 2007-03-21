@@ -131,24 +131,26 @@ public class ObjectTextInputField extends ObjectDataInputField
 		{
 			JPopupMenu menu = new JPopupMenu();
 			
-			JMenuItem menuItemCopy = createMenuItem(new CopyTextAction(field), "icons/copy.gif", "Copy");
+			JMenuItem menuItemCopy = createMenuItem(new CopyTextAction(field), "icons/copy.gif");
+			menuItemCopy.setText(EAM.text("Copy"));
 			menu.add(menuItemCopy);
 		
-			JMenuItem menuItemCut = createMenuItem(new CutTextAction(field), "icons/cut.gif", "Cut");
+			JMenuItem menuItemCut = createMenuItem(new CutTextAction(field), "icons/cut.gif");
+			menuItemCut.setText(EAM.text("Cut"));
 			menu.add(menuItemCut);
 			
-			JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(field), "icons/paste.gif", "Paste");
+			JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(field), "icons/paste.gif");
+			menuItemPaste.setText(EAM.text("Paste"));
 			menu.add(menuItemPaste);
 			
 			return menu;
 		}
 		
-		private JMenuItem createMenuItem(Action action, String iconLocation, String text)
+		private JMenuItem createMenuItem(Action action, String iconLocation)
 		{
 			JMenuItem menuItem = new JMenuItem(action);
 			ResourceImageIcon icon = new ResourceImageIcon(iconLocation);
 			menuItem.setIcon(icon);
-			menuItem.setText(EAM.text(text));
 			
 			return menuItem;
 		}
