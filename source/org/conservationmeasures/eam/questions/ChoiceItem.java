@@ -45,6 +45,11 @@ public class ChoiceItem
 		return color;
 	}
 	
+	public Icon getIcon()
+	{
+		return icon;
+	}
+	
 	public String toString()
 	{
 		return getLabel();
