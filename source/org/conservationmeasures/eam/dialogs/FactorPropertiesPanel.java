@@ -180,7 +180,11 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
 			Factor factor = diagramFactor.getUnderlyingObject();
 			if (factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE))
+			{
 				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+				tabs.remove(tabs.indexOfComponent(goalsTab));
+				tabs.remove(tabs.indexOfComponent(indicatorsTab));
+			}
 		}
 		
 		return tabs;
@@ -272,11 +276,17 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			if (value.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
 			{
 				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
-				validate();
-				viabilityTab.updateSplitterLocation();
+				tabs.remove(tabs.indexOfComponent(goalsTab));
+				tabs.remove(tabs.indexOfComponent(indicatorsTab));
 			}
 			else
+			{
 				tabs.remove(tabs.indexOfComponent(viabilityTab));
+				tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab);
+				tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
+			}
+			validate();
+			viabilityTab.updateSplitterLocation();
 		}
 	}
 
