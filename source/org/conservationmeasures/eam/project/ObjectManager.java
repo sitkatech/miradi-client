@@ -56,11 +56,13 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
 public class ObjectManager
@@ -365,8 +367,56 @@ public class ObjectManager
 	{
 		Target target = (Target)project.findNode(factorId);
 		if(target.isViabilityModeTNC())
-			return "";
+			return computeTNCViability(target);
 		return target.getBasicTargetStatus();
+	}
+	
+	public String computeTNCViability(Target target)
+	{
+		HashMap categoryKeaRatings = new HashMap();
+		
+		IdList keas = target.getKeyEcologicalAttributes();
+		for(int i = 0; i < keas.size(); ++i)
+		{
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keas.get(i));
+			String category = kea.getData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+			CodeList codesForCategory = (CodeList)categoryKeaRatings.get(category);
+			if(codesForCategory == null)
+			{
+				codesForCategory = new CodeList();
+				categoryKeaRatings.put(category, codesForCategory);
+			}
+
+			String keaViability = computeTNCViability(kea);
+			codesForCategory.add(keaViability);
+		}
+		
+		CodeList categorySummaryRatings = new CodeList();
+		Iterator iter = categoryKeaRatings.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String category = (String)iter.next();
+			CodeList keaCodes = (CodeList)categoryKeaRatings.get(category);
+			String categoryRating = TNCViabilityFormula.getTotalCategoryRatingCode(keaCodes);
+			categorySummaryRatings.add(categoryRating);
+		}
+		
+		return TNCViabilityFormula.getAverageRatingCode(categorySummaryRatings);
+	}
+	
+	public String computeTNCViability(KeyEcologicalAttribute kea)
+	{
+		CodeList statuses = new CodeList();
+		IdList indicatorIds = kea.getIndicatorIds();
+		for(int i = 0; i < indicatorIds.size(); ++i)
+		{
+			String status = project.getObjectData(ObjectType.INDICATOR, indicatorIds.get(i), Indicator.TAG_MEASUREMENT_STATUS);
+			statuses.add(status);
+			EAM.logVerbose("Indicator status: " + status);
+		}
+		String result = TNCViabilityFormula.getAverageRatingCode(statuses);
+		EAM.logVerbose("Viability for KEA " + kea.getLabel() + " is: " + result);
+		return result;
 	}
 
 	private String getFactorGoals(FactorId factorId) throws ParseException

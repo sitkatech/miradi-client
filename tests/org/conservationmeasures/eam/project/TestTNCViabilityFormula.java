@@ -6,6 +6,7 @@
 
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.utils.CodeList;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestTNCViabilityFormula extends TestCaseEnhanced
@@ -48,30 +49,32 @@ public class TestTNCViabilityFormula extends TestCaseEnhanced
 	public void testGetAverageRatingCode() throws Exception
 	{
 		assertEquals(TNCViabilityFormula.UNSPECIFIED, TNCViabilityFormula.getAverageRatingCode(
-				new String[0]));
+				new CodeList()));
 		assertEquals(TNCViabilityFormula.UNSPECIFIED, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.UNSPECIFIED}));
+				new CodeList(new String[] {TNCViabilityFormula.UNSPECIFIED})));
 		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.POOR}));
+				new CodeList(new String[] {TNCViabilityFormula.POOR})));
 		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.POOR, TNCViabilityFormula.FAIR}));
+				new CodeList(new String[] {TNCViabilityFormula.POOR, TNCViabilityFormula.FAIR})));
 		assertEquals(TNCViabilityFormula.FAIR, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.POOR, TNCViabilityFormula.FAIR, TNCViabilityFormula.FAIR, TNCViabilityFormula.FAIR}));
+				new CodeList(new String[] {TNCViabilityFormula.POOR, TNCViabilityFormula.FAIR, 
+						TNCViabilityFormula.FAIR, TNCViabilityFormula.FAIR})));
 		assertEquals(TNCViabilityFormula.FAIR, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.FAIR}));
+				new CodeList(new String[] {TNCViabilityFormula.FAIR})));
 		assertEquals(TNCViabilityFormula.FAIR, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.FAIR, TNCViabilityFormula.GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.FAIR, TNCViabilityFormula.GOOD})));
 		assertEquals(TNCViabilityFormula.GOOD, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.GOOD})));
 		assertEquals(TNCViabilityFormula.GOOD, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.GOOD, TNCViabilityFormula.VERY_GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.GOOD, TNCViabilityFormula.VERY_GOOD})));
 		assertEquals(TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.GOOD, TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.VERY_GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.GOOD, TNCViabilityFormula.VERY_GOOD, 
+						TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.VERY_GOOD})));
 		assertEquals(TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.getAverageRatingCode(
-				new String[] {TNCViabilityFormula.VERY_GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.VERY_GOOD})));
 		try
 		{
-			TNCViabilityFormula.getAverageRatingCode(new String[] {"8"});
+			TNCViabilityFormula.getAverageRatingCode(new CodeList(new String[] {"8"}));
 			fail("Should have thrown for unknown value");
 		}
 		catch(TNCViabilityFormula.UnexpectedValueException ignoreExpected)
@@ -83,22 +86,25 @@ public class TestTNCViabilityFormula extends TestCaseEnhanced
 	public void testGetTotalCategoryRatingCode() throws Exception
 	{
 		assertEquals(TNCViabilityFormula.UNSPECIFIED, TNCViabilityFormula.getTotalCategoryRatingCode(
-				new String[] {}));
+				new CodeList(new String[] {})));
 		assertEquals(TNCViabilityFormula.UNSPECIFIED, TNCViabilityFormula.getTotalCategoryRatingCode(
-				new String[] {TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.UNSPECIFIED, TNCViabilityFormula.VERY_GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.UNSPECIFIED, 
+						TNCViabilityFormula.VERY_GOOD})));
 		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getTotalCategoryRatingCode(
-				new String[] {TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.POOR, TNCViabilityFormula.VERY_GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.POOR, 
+						TNCViabilityFormula.VERY_GOOD})));
 		assertEquals(TNCViabilityFormula.FAIR, TNCViabilityFormula.getTotalCategoryRatingCode(
-				new String[] {TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.FAIR, TNCViabilityFormula.VERY_GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.FAIR, 
+						TNCViabilityFormula.VERY_GOOD})));
 		assertEquals(TNCViabilityFormula.GOOD, TNCViabilityFormula.getTotalCategoryRatingCode(
-				new String[] {TNCViabilityFormula.GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.GOOD})));
 		assertEquals(TNCViabilityFormula.GOOD, TNCViabilityFormula.getTotalCategoryRatingCode(
-				new String[] {TNCViabilityFormula.GOOD, TNCViabilityFormula.VERY_GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.GOOD, TNCViabilityFormula.VERY_GOOD})));
 		assertEquals(TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.getTotalCategoryRatingCode(
-				new String[] {TNCViabilityFormula.VERY_GOOD}));
+				new CodeList(new String[] {TNCViabilityFormula.VERY_GOOD})));
 		try
 		{
-			TNCViabilityFormula.getTotalCategoryRatingCode(new String[] {"8"});
+			TNCViabilityFormula.getTotalCategoryRatingCode(new CodeList(new String[] {"8"}));
 			fail("Should have thrown for unknown value");
 		}
 		catch(TNCViabilityFormula.UnexpectedValueException ignoreExpected)

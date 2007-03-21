@@ -9,6 +9,9 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.IndicatorId;
+import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
@@ -80,8 +83,10 @@ public class TestObjectManager extends EAMTestCase
 	
 	public void testPseudoTagTargetViability() throws Exception
 	{
-		String sampleStatusCode = "2";
 		String NOT_SPECIFIED = "";
+		String FAIR = "2";
+		String sampleStatusCode = FAIR;
+
 		FactorId targetId = project.createNode(Factor.TYPE_TARGET);
 		Target target = (Target)project.findNode(targetId);
 		target.setData(Target.TAG_TARGET_STATUS, sampleStatusCode);
@@ -91,9 +96,52 @@ public class TestObjectManager extends EAMTestCase
 		
 		target.setData(Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
 		String notRated = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
-		assertEquals("Didn't return simple viability?", NOT_SPECIFIED, notRated);
+		assertEquals("Didn't return detailed viability?", NOT_SPECIFIED, notRated);
+		
+		Indicator condition1Indicator = createIndicator(FAIR);
+		KeyEcologicalAttribute conditionKea = createKEA(new Indicator[] {condition1Indicator});
+
+		IdList keas = new IdList();
+		keas.add(conditionKea.id);
+		target.setData(Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keas.toString());
+
+		String fair = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
+		assertEquals("Didn't compute for one kea one indicator?", FAIR, fair);
+		
 	}
 
+	private Indicator createIndicator(String status) throws Exception
+	{
+		IndicatorId indicatorId = (IndicatorId)project.createObject(ObjectType.INDICATOR);
+		project.setObjectData(ObjectType.INDICATOR, indicatorId, Indicator.TAG_MEASUREMENT_STATUS, status);
+		return (Indicator)project.findObject(ObjectType.INDICATOR, indicatorId);
+	}
+
+	private KeyEcologicalAttribute createKEA(Indicator[] indicators) throws Exception
+	{
+		KeyEcologicalAttributeId keaId1 = (KeyEcologicalAttributeId)project.createObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId1);
+
+		IdList indicatorIds = new IdList();
+		for(int i = 0; i < indicators.length; ++i)
+			indicatorIds.add(indicators[i].getId());
+		kea.setData(KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
+		
+		return kea;
+	}
+	
+	public void testComputeTNCViabilityOfKEA() throws Exception
+	{
+		String FAIR = "2";
+		String GOOD = "3";
+		String VERY_GOOD = "4";
+
+		Indicator fair = createIndicator(FAIR);
+		Indicator veryGood = createIndicator(VERY_GOOD);
+		KeyEcologicalAttribute kea = createKEA(new Indicator[] {fair, veryGood});
+		assertEquals(GOOD, project.getObjectManager().computeTNCViability(kea));
+	}
+	
 	private void verifyObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception
 	{
 		verifyBasicObjectLifecycle(type, parameter);

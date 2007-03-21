@@ -17,10 +17,14 @@ public class KeyEcologicalAttributeTypeQuestion extends ChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified"),
-			new ChoiceItem("10", "Size"),
-			new ChoiceItem("20", "Condition"),
-			new ChoiceItem("30", "LandScape"),
+			new ChoiceItem(SIZE, "Size"),
+			new ChoiceItem(CONDITION, "Condition"),
+			new ChoiceItem(LANDSCAPE, "LandScape"),
 		};
 	}
+
+	public static final String SIZE = "10";
+	public static final String CONDITION = "20";
+	public static final String LANDSCAPE = "30";
 
 }

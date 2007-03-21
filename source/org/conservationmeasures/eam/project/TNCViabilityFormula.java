@@ -9,6 +9,8 @@ package org.conservationmeasures.eam.project;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import org.conservationmeasures.eam.utils.CodeList;
+
 public class TNCViabilityFormula
 {
 	public static double getValueFromRatingCode(String code)
@@ -41,24 +43,25 @@ public class TNCViabilityFormula
 		return UNSPECIFIED;
 	}
 
-	public static String getAverageRatingCode(String[] codes)
+	public static String getAverageRatingCode(CodeList codes)
 	{
 		int total = 0;
-		for(int i = 0; i < codes.length; ++i)
+		for(int i = 0; i < codes.size(); ++i)
 		{
-			if(codes[i].equals(UNSPECIFIED))
+			String code = codes.get(i);
+			if(code.equals(UNSPECIFIED))
 				return UNSPECIFIED;
-			total += getValueFromRatingCode(codes[i]);
+			total += getValueFromRatingCode(code);
 		}
 		
-		double average = ((double)total)/codes.length;
+		double average = ((double)total)/codes.size();
 		
 		return getRatingCodeFromValue(average);
 	}
 
-	public static String getTotalCategoryRatingCode(String[] keaCodes)
+	public static String getTotalCategoryRatingCode(CodeList keaCodes)
 	{
-		HashSet codes = new HashSet(Arrays.asList(keaCodes));
+		HashSet codes = new HashSet(Arrays.asList(keaCodes.toArray()));
 		if(codes.size() == 0 || codes.contains(UNSPECIFIED))
 			return UNSPECIFIED;
 		if(codes.contains(POOR))
@@ -68,9 +71,9 @@ public class TNCViabilityFormula
 		
 		int goods = 0;
 		int veryGoods = 0;
-		for(int i = 0; i < keaCodes.length; ++i)
+		for(int i = 0; i < keaCodes.size(); ++i)
 		{
-			String code = keaCodes[i];
+			String code = keaCodes.get(i);
 			if(code.equals(GOOD))
 				++goods;
 			else if(code.equals(VERY_GOOD))

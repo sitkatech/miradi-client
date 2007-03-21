@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.utils;
 
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
@@ -14,6 +15,11 @@ public class CodeList
 	public CodeList()
 	{
 		this(new Vector());
+	}
+	
+	public CodeList(String[] codes)
+	{
+		this(new Vector(Arrays.asList(codes)));
 	}
 	
 	public CodeList(CodeList copyFrom)
@@ -84,6 +90,11 @@ public class CodeList
 			if(contains(code))
 				removeCode(code);
 		}
+	}
+	
+	public String[] toArray()
+	{
+		return (String[])data.toArray(new String[0]);
 	}
 	
 	public EnhancedJsonObject toJson()
