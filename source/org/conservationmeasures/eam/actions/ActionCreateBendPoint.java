@@ -13,7 +13,7 @@ public class ActionCreateBendPoint extends LocationAction
 	public ActionCreateBendPoint(MainWindow mainWindowToUse)
 	{
 		//TODO fix icon to match action
-		super(mainWindowToUse, getLabel(), "icons/bendPoint.gif");
+		super(mainWindowToUse, getLabel(), "icons/bendpt16.png");
 	}
 
 	private static String getLabel()
