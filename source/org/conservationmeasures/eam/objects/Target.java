@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -43,6 +44,10 @@ public class Target extends Factor
 		return targetStatus.get();
 	}
 	
+	public boolean isViabilityModeTNC()
+	{
+		return viabiltyMode.get().equals(ViabilityModeQuestion.TNC_STYLE_CODE);
+	}
 	
 	void clear()
 	{

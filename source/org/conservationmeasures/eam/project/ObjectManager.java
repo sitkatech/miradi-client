@@ -363,8 +363,10 @@ public class ObjectManager
 	
 	private String getTargetViability(FactorId factorId)
 	{
-		String viabilityCode = ((Target)project.findNode(factorId)).getBasicTargetStatus();
-		return viabilityCode;
+		Target target = (Target)project.findNode(factorId);
+		if(target.isViabilityModeTNC())
+			return "";
+		return target.getBasicTargetStatus();
 	}
 
 	private String getFactorGoals(FactorId factorId) throws ParseException

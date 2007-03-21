@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.martus.util.DirectoryUtils;
 
 
@@ -75,6 +76,22 @@ public class TestObjectManager extends EAMTestCase
 
 		isPseudoTag = manager.isPseudoTag("notAPseudoField");
 		assertEquals("not pseudo tag?", false, isPseudoTag);
+	}
+	
+	public void testPseudoTagTargetViability() throws Exception
+	{
+		String sampleStatusCode = "2";
+		String NOT_SPECIFIED = "";
+		FactorId targetId = project.createNode(Factor.TYPE_TARGET);
+		Target target = (Target)project.findNode(targetId);
+		target.setData(Target.TAG_TARGET_STATUS, sampleStatusCode);
+		
+		String simple = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
+		assertEquals("Didn't return simple viability?", sampleStatusCode, simple);
+		
+		target.setData(Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
+		String notRated = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
+		assertEquals("Didn't return simple viability?", NOT_SPECIFIED, notRated);
 	}
 
 	private void verifyObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception
@@ -161,7 +178,7 @@ public class TestObjectManager extends EAMTestCase
 		assertNotNull("Pool doesn't have object type " + created);
 	}
 	
-	Project project;
+	ProjectForTesting project;
 	ObjectManager manager;
 	ProjectServer db;
 }

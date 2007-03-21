@@ -86,7 +86,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if(node.isTarget())
 		{
 			Target target = (Target)node.getUnderlyingObject();
-			String ratingCode = target.getData(Target.TAG_TARGET_STATUS);
+			String ratingCode = model.getProject().getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
 			TargetStatusQuestion question = new TargetStatusQuestion("");
 			rating = question.findChoiceByCode(ratingCode);
 		}
