@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.targetviability.wizard;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WizardStep;
 
-public class LegacyTargetViabilityOverviewStep extends WizardStep
+public class TargetViability1Step extends WizardStep
 {
-	public LegacyTargetViabilityOverviewStep(WizardPanel wizardToUse)
+	public TargetViability1Step(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -20,5 +20,6 @@ public class LegacyTargetViabilityOverviewStep extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "TargetViabilityOverviewStep.html";
+	String HTML_FILENAME = "viability-1.html";
+
 }

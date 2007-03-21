@@ -20,6 +20,5 @@ public class TargetViabilityOverviewStep extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "viability-1.html";
-
+	String HTML_FILENAME = "summary_viability_demo.html";
 }
