@@ -121,7 +121,7 @@ public class ChainManager
 	}
 	
 	
-	public IdList getDirectAndIndirectIndicators(Factor factor)
+	public IdList getDirectOrIndirectIndicators(Factor factor)
 	{
 		if (factor.isTarget())
 		{

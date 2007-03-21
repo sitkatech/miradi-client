@@ -130,7 +130,7 @@ abstract public class FactorCell extends EAMGraphCell
 
 	public IdList getIndicators()
 	{
-		return getChainManager().getDirectAndIndirectIndicators(underlyingObject);
+		return getChainManager().getDirectOrIndirectIndicators(underlyingObject);
 	}
 
 	public boolean canHaveObjectives()
