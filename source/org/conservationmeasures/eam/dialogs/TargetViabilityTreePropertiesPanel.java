@@ -112,25 +112,24 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box2.add(createLabel(indicatorShortLabel));
 		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(indicatorShortLabel.getComponent());
-		//box2.add(Box.createHorizontalStrut(STD_SPACE_20*15));
 		mainGridPanel.add(createLabel(indicatorLabel));
 		mainGridPanel.add(box2);
 
 		Box boxIndrPrty = Box.createHorizontalBox();
 		normalizeSize(indicatorPriority,indicatorPriority);
+		boxIndrPrty.add(createLabel(indicatorPriority));
+		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
 		boxIndrPrty.add(indicatorPriority.getComponent());
-		boxIndrPrty.add(Box.createHorizontalGlue());
-		mainGridPanel.add(createLabel(indicatorPriority));
+		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
+		normalizeSize(monitoringStatus,monitoringStatus);
+		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
+		boxIndrPrty.add(createLabel(monitoringStatus));
+		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
+		boxIndrPrty.add(monitoringStatus.getComponent());
+		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(boxIndrPrty);
 
 
-		Box boxMonStatus = Box.createHorizontalBox();
-		normalizeSize(monitoringStatus,monitoringStatus);
-		boxMonStatus.add(monitoringStatus.getComponent());
-		mainGridPanel.add(createLabel(monitoringStatus));
-		mainGridPanel.add(boxMonStatus);
-		
-		
 		mainGridPanel.add(createLabel(indicatorThreshold));
 		JPanel box3 = createGridLayoutPanel(0,2);
 		box3.add(indicatorThreshold.getComponent());
