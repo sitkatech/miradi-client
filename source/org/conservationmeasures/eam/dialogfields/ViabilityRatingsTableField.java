@@ -117,16 +117,18 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 				boolean isSelected, boolean hasFocus, int row, int column)
 		{
 			
-			JComponent comp =  new JTextField((String)value, JLabel.LEFT);
+			JComponent comp =  new JTextField((String)value);
+			((JTextField)comp).setHorizontalAlignment(JTextField.CENTER);
+
 			
 			if ((row==1) && validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
-				comp =  new JLabel(measurementSummary, new IndicatorIcon(), JLabel.LEFT);
+				comp =  new JLabel(measurementSummary, new IndicatorIcon(), JLabel.CENTER);
 			}
 			
 			if ((row==2) && validCode(detailStatusCode)  && Integer.parseInt(detailStatusCode)-1 == column)
 			{
-				comp =  new JLabel(detailSummary, new GoalIcon(), JLabel.LEFT);
+				comp =  new JLabel(detailSummary, new GoalIcon(), JLabel.CENTER);
 			}
 
 			return getComponent(comp, column);
