@@ -38,6 +38,11 @@ public class Target extends Factor
 		return true;
 	}
 	
+	public String getBasicTargetStatus()
+	{
+		return targetStatus.get();
+	}
+	
 	
 	void clear()
 	{
@@ -52,6 +57,9 @@ public class Target extends Factor
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
 	public static final String TAG_VIABILITY_MODE = "ViabilityMode";
 	public static final String OBJECT_NAME = "Target";
+	
+	public static final String PSEUDO_TAG_TARGET_VIABILITY = "PseudoTagTargetViability";
+	
 	ChoiceData targetStatus;
 	ChoiceData viabiltyMode;
 }

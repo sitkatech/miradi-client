@@ -16,7 +16,7 @@ public class ViabilityModeQuestion extends ChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Basic"),
-				new ChoiceItem("TNC", "Detailed-Style"),
+				new ChoiceItem("TNC", "Detailed"),
 		};
 	}
 	public static String TNC_STYLE_CODE = "TNC";

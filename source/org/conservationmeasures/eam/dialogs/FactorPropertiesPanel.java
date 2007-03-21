@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -136,14 +137,14 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		}
 		
 		grid.add(new UiLabel());
+		grid.setObjectRef(new ORef(diagramFactor.getType(), diagramFactor.getWrappedId()));
 		return grid;
 	}
 	
 	
 	private ObjectDataInputField createTargetStatusField(Factor factor)
 	{
-		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.FACTOR,new TargetStatusQuestion(Target.TAG_TARGET_STATUS));
-		field.setText(factor.getData(Target.TAG_TARGET_STATUS));
+		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.FACTOR,new TargetStatusQuestion(Target.PSEUDO_TAG_TARGET_VIABILITY));
 		return field;
 	}
 	

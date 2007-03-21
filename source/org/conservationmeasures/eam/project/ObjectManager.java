@@ -58,6 +58,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
@@ -340,6 +341,9 @@ public class ObjectManager
 			// TODO: Enforce isStrategy for this
 			if(fieldTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return getStrategyRatingSummary((FactorId)factorId);
+			// TODO: Enforce isTarget for this
+			if(fieldTag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
+				return getTargetViability((FactorId)factorId);
 		}
 		catch(Exception e)
 		{
@@ -357,6 +361,12 @@ public class ObjectManager
 
 	}
 	
+	private String getTargetViability(FactorId factorId)
+	{
+		String viabilityCode = ((Target)project.findNode(factorId)).getBasicTargetStatus();
+		return viabilityCode;
+	}
+
 	private String getFactorGoals(FactorId factorId) throws ParseException
 	{
 		return getFactorDesires(factorId, ObjectType.GOAL, Factor.TAG_GOAL_IDS);
