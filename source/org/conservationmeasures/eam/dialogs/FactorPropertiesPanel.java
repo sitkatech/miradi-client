@@ -182,9 +182,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			Factor factor = diagramFactor.getUnderlyingObject();
 			if (factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE))
 			{
-				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
-				tabs.remove(tabs.indexOfComponent(goalsTab));
-				tabs.remove(tabs.indexOfComponent(indicatorsTab));
+				handleViabilityTabONsetup();
 			}
 		}
 		
@@ -277,23 +275,38 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			String value = cmd.getDataValue();
 			if (value.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
 			{
-				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
-				tabs.remove(tabs.indexOfComponent(goalsTab));
-				tabs.remove(tabs.indexOfComponent(indicatorsTab));
-				SwingUtilities.getWindowAncestor(detailsTab).pack();
-				viabilityTab.updateSplitterLocation();
+				handleViabilityTabON();
 			}
 			else
 			{
-				tabs.remove(tabs.indexOfComponent(viabilityTab));
-				tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab);
-				tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
-				SwingUtilities.getWindowAncestor(detailsTab).pack();
-				goalsTab.updateSplitterLocation();
-				indicatorsTab.updateSplitterLocation();
+				handleViabilityTabOFF();
 			}
 			validate();
 		}
+	}
+
+	private void handleViabilityTabOFF()
+	{
+		tabs.remove(tabs.indexOfComponent(viabilityTab));
+		tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab);
+		tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
+		SwingUtilities.getWindowAncestor(detailsTab).pack();
+		goalsTab.updateSplitterLocation();
+		indicatorsTab.updateSplitterLocation();
+	}
+
+	private void handleViabilityTabON()
+	{
+		handleViabilityTabONsetup();
+		SwingUtilities.getWindowAncestor(detailsTab).pack();
+		viabilityTab.updateSplitterLocation();
+	}
+
+	private void handleViabilityTabONsetup()
+	{
+		tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+		tabs.remove(tabs.indexOfComponent(goalsTab));
+		tabs.remove(tabs.indexOfComponent(indicatorsTab));
 	}
 
 	static final int MAX_LABEL_LENGTH = 40;

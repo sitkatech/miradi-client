@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import java.awt.Dimension;
+
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
@@ -25,6 +27,14 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	{
 		super( mainWindowToUse, treeToUse, buttonActions, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 	}
+
+
+
+	public Dimension getPreferredSize()
+	{
+		return new Dimension(super.getPreferredSize().width, 100);
+	}
+
 
 	// FIXME: Shouldn't this be in the TreeTable instead of the panel???
 	public void commandExecuted(CommandExecutedEvent event)
