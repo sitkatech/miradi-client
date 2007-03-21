@@ -17,6 +17,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
 import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -24,6 +25,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
 import org.conservationmeasures.eam.utils.StringMapData;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;
@@ -41,37 +43,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		table.setRowHeight(20);
 	    table.getModel().addTableModelListener(new TableChangeHandler());
 	}
-	
-	class MyTable extends UiTable
-	{
-		public MyTable(DefaultTableModel model)
-		{
-			super(model);
-		}
 
-		public Component prepareEditor(TableCellEditor editor, int row, int column)
-		{
-			Component c = super.prepareEditor(editor, row, column);
-			if (c instanceof JTextComponent)
-			{
-				if (row==0)
-				{
-					((JTextField)c).selectAll();
-				}
-			}
-
-			return c;
-		}
-
-		public boolean isCellEditable(int row, int column)
-		{
-			return (row==0);
-		}
-
-	}
-
-
-	
 	private String[] getColumnNames(ChoiceQuestion questionToUse)
 	{
 		ChoiceItem[] items = questionToUse.getChoices();
@@ -159,6 +131,46 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	{
 		setNeedsSave();
 		saveIfNeeded();
+	}
+	
+	
+	class MyTable extends UiTable
+	{
+		public MyTable(DefaultTableModel model)
+		{
+			super(model);
+			setSingleCellEditor();
+		}
+
+		public Component prepareEditor(TableCellEditor editor, int row, int column)
+		{
+			Component c = super.prepareEditor(editor, row, column);
+			if (c instanceof JTextComponent)
+			{
+				if (row==0)
+				{
+					((JTextField)c).selectAll();
+				}
+			}
+
+			return c;
+		}
+
+		public boolean isCellEditable(int row, int column)
+		{
+			return (row==0);
+		}
+		
+		private void setSingleCellEditor()
+		{
+			int colCount = question.getChoices().length-1;
+			for (int i = 0; i < colCount; i++)
+			{
+				TableColumn column = getColumnModel().getColumn(i);
+				column.setCellEditor(new SingleClickAutoSelectCellEditor(new JTextField()));
+			}
+		}
+		
 	}
 	
 	class TableChangeHandler implements TableModelListener

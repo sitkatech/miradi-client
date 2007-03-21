@@ -13,7 +13,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -26,7 +25,6 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
-import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
 
 public class ViabilityRatingsTableField extends ObjectStringMapTableField
 {
@@ -42,20 +40,9 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		table.getTableHeader().setDefaultRenderer(new HeaderRenderer());
 		table.setShowHorizontalLines(false);
 		currentRowHeight = table.getRowHeight();
-		setSingleCellEditor();
 	}
 
 
-	private void setSingleCellEditor()
-	{
-		int colCount = question.getChoices().length-1;
-		for (int i = 0; i < colCount; i++)
-		{
-			TableColumn column = table.getColumnModel().getColumn(i);
-			column.setCellEditor(new SingleClickAutoSelectCellEditor(new JTextField()));
-		}
-	}
-	
 	
 	private void setIconRow(ORef oref)
 	{	
