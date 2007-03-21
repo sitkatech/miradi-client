@@ -159,10 +159,10 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box5);
 
 		Box box6 = Box.createHorizontalBox();
-		box6.add(createColumnJPanel(measurementTrend, col1Model));
-		box6.add(Box.createHorizontalStrut(STD_SPACE_20));
-		
 		box6.add(createColumnJPanel(measureementStatusConfidence, col2Model));
+		box6.add(Box.createHorizontalStrut(STD_SPACE_20));
+	
+		box6.add(createColumnJPanel(measurementTrend, col1Model));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box6);
 		
