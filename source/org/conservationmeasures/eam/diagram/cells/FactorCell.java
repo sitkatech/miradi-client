@@ -148,6 +148,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return underlyingObject.isCause();
 	}
 
+	//FIXME: should not access static main window.
 	private ChainManager getChainManager()
 	{
 		return EAM.mainWindow.getProject().getChainManager();
