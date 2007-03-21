@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
-import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
@@ -132,7 +131,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		else if (diagramFactor.isTarget())
 		{
 			grid.addLine(new UiLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING), new JPanel());
-			grid.addField(getTargetRating(diagramFactor.getUnderlyingObject()));
+			grid.addField(createTargetStatusField(diagramFactor.getUnderlyingObject()));
 		}
 		
 		grid.add(new UiLabel());
@@ -140,9 +139,9 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	}
 	
 	
-	private ObjectDataInputField getTargetRating(Factor factor)
+	private ObjectDataInputField createTargetStatusField(Factor factor)
 	{
-		ObjectDataInputField field =  new ObjectReadonlyChoiceField(getProject(), ObjectType.FACTOR, factor.getId(), new TargetStatusQuestion(Target.TAG_TARGET_STATUS));
+		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.FACTOR,new TargetStatusQuestion(Target.TAG_TARGET_STATUS));
 		field.setText(factor.getData(Target.TAG_TARGET_STATUS));
 		return field;
 	}
