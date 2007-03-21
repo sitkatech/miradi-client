@@ -89,9 +89,18 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			return "Cost Totals";
 		
 		if (isUnitsColumn(col))
-			return dateRanges[convertColumn(col)].toString();
+			
+			return "<html><center>" + getDateRangeAsString(col) + "<br>Units</center></html>";
+		
+		if (isCostColumn(col))
+			return "<html><center>" + getDateRangeAsString(col) + "<br>Cost</center></html>";
 		
 		return "";
+	}
+
+	private String getDateRangeAsString(int col)
+	{
+		return dateRanges[convertColumn(col)].toString();
 	}
 
 	public Object getValueAt(int row, int col)

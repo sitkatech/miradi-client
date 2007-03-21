@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.budget;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.util.EventObject;
 
 import javax.swing.BorderFactory;
@@ -258,8 +259,13 @@ class CustomColumnHeaderRenederer extends DefaultTableCellRenderer
 	{
 		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		component.setBackground(new Color(0xf0, 0xf0, 0xf0).darker());
+		Dimension preferred = component.getPreferredSize();
+		component.setPreferredSize(new Dimension(preferred.width, ABOUT_TWO_LINE_HIGHT));
+		
 		return component;
 	}
+	
+	static final int ABOUT_TWO_LINE_HIGHT = 25;
 	
 }
 
