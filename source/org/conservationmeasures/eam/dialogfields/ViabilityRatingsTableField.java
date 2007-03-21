@@ -40,6 +40,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		question = questionToUse;
 		table.setDefaultRenderer(Object.class, new TableCellRenderer());
 		table.getTableHeader().setDefaultRenderer(new HeaderRenderer());
+		table.setShowHorizontalLines(false);
 		currentRowHeight = table.getRowHeight();
 		setSingleCellEditor();
 	}
@@ -174,8 +175,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			return true;
 		}
 		
-		
-		//TODO: refactor to integrate with above code
+
 		public void updateEditableState(JComponent comp)
 		{
 			boolean editable = allowEdits() && isValidObject();
