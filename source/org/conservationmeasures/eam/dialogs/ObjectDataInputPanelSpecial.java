@@ -50,7 +50,7 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	
 	public UiLabel createLabel(ObjectDataInputField field)
 	{
-		UiLabel label = new UiLabel(EAM.fieldLabel(field.getObjectType(), field.getTag()));
+		UiLabel label = new UiLabel(EAM.fieldLabel(field.getObjectType(), field.getTag()), JLabel.LEFT);
 		label.setVerticalAlignment(SwingConstants.TOP);
 		return label;
 	}
