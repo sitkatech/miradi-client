@@ -15,7 +15,9 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
@@ -57,6 +59,7 @@ public class TestDiagramComponent extends EAMTestCase
 	
 	public void testSelectAll() throws Exception
 	{
+		EAM.mainWindow = new MainWindow(project);
 		DiagramComponent diagramComponent = new DiagramComponent();
 		diagramComponent.setModel(project.getDiagramModel());
 		diagramComponent.setGraphLayoutCache(project.getGraphLayoutCache());
@@ -85,5 +88,6 @@ public class TestDiagramComponent extends EAMTestCase
 		Object[] selectionCells = diagramComponent.getSelectionCells();
 		assertEquals("Selection count wrong?", 1, selectionCells.length);
 		assertEquals("Wrong selection?", visibleNode, selectionCells[0]);
+		EAM.mainWindow = null;
 	}
 }

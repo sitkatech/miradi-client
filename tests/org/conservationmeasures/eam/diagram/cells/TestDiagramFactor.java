@@ -15,7 +15,9 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
@@ -73,8 +75,10 @@ public class TestDiagramFactor extends EAMTestCase
 
 	public void testIndicator()
 	{
+		EAM.mainWindow = new MainWindow(project);
 		IdList indicators = directThreat.getIndicators();
 		assertEquals(0, indicators.size());
+		EAM.mainWindow = null;
 	}
 	
 	public void testGoals()
