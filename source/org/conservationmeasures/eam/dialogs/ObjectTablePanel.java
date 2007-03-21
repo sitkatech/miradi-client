@@ -40,8 +40,17 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 	
 	public void valueChanged(ListSelectionEvent event)
 	{
+		updatePropertiesPanel();
+
+		//FIXME: Avoid using static mainwindow!
+		EAM.mainWindow.getActions().updateActionStates();
+	}
+
+	private void updatePropertiesPanel()
+	{
 		if (getPropertiesPanel()==null)
 			return;
+		
 		try
 		{
 			ORef oref = new ORef(ObjectType.FAKE,BaseId.INVALID);
@@ -54,6 +63,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 			}
 			getPropertiesPanel().setObjectRef(oref);
 			getPropertiesPanel().setFocusOnFirstField();
+
 		}
 		catch (Exception e)
 		{
