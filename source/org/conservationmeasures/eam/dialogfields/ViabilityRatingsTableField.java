@@ -44,6 +44,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		setSingleCellEditor();
 	}
 
+
 	private void setSingleCellEditor()
 	{
 		int colCount = question.getChoices().length-1;

@@ -6,14 +6,18 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -32,12 +36,42 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		question = questionToUse;
 		String[][] data = new String[][]{{}};
 		String[] names = getColumnNames(questionToUse);
-		table = new UiTable(new DefaultTableModel(data,names));
+		table = new MyTable(new DefaultTableModel(data,names));
 		addFocusListener();
 		table.setRowHeight(20);
 	    table.getModel().addTableModelListener(new TableChangeHandler());
 	}
+	
+	class MyTable extends UiTable
+	{
+		public MyTable(DefaultTableModel model)
+		{
+			super(model);
+		}
 
+		public Component prepareEditor(TableCellEditor editor, int row, int column)
+		{
+			Component c = super.prepareEditor(editor, row, column);
+			if (c instanceof JTextComponent)
+			{
+				if (row==0)
+				{
+					((JTextField)c).selectAll();
+				}
+			}
+
+			return c;
+		}
+
+		public boolean isCellEditable(int row, int column)
+		{
+			return (row==0);
+		}
+
+	}
+
+
+	
 	private String[] getColumnNames(ChoiceQuestion questionToUse)
 	{
 		ChoiceItem[] items = questionToUse.getChoices();
