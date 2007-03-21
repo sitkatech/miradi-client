@@ -142,7 +142,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 
 		//FIXME: this code may not be nessicary in its present form, ie a simpler way to do what it is doing
 		Dimension col1Model = measureementStatusConfidence.getComponent().getPreferredSize();
-		Dimension col2Model = desiredStatus.getComponent().getPreferredSize();
+		Dimension col2Model = measurementTrend.getComponent().getPreferredSize();
 		Dimension col3Model = desiredSummary.getComponent().getPreferredSize();
 		
 		
