@@ -8,12 +8,11 @@ package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -24,6 +23,9 @@ import javax.swing.text.JTextComponent;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.CopyTextAction;
+import org.conservationmeasures.eam.views.umbrella.CutTextAction;
+import org.conservationmeasures.eam.views.umbrella.PasteTextAction;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiTextArea;
 
@@ -129,42 +131,27 @@ public class ObjectTextInputField extends ObjectDataInputField
 		{
 			JPopupMenu menu = new JPopupMenu();
 			
-			ResourceImageIcon copyIcon = new ResourceImageIcon("icons/copy.gif");
-			JMenuItem menuItemCopy = new JMenuItem("Copy", copyIcon);
-			menuItemCopy.addActionListener(new ActionListener()
-			{
-				public void actionPerformed(ActionEvent e)
-				{
-					field.copy();
-				}
-			});
+			JMenuItem menuItemCopy = createMenuItem(new CopyTextAction(field), "icons/copy.gif", "Copy");
 			menu.add(menuItemCopy);
-			
-			ResourceImageIcon cutIcon = new ResourceImageIcon("icons/cut.gif");
-			JMenuItem menuItemCut = new JMenuItem("Cut", cutIcon);
-			menuItemCut.addActionListener(new ActionListener()
-			{
-				public void actionPerformed(ActionEvent e)
-				{
-					field.cut();
-				}
-			});
+		
+			JMenuItem menuItemCut = createMenuItem(new CutTextAction(field), "icons/cut.gif", "Cut");
 			menu.add(menuItemCut);
 			
-			ResourceImageIcon pastIcon = new ResourceImageIcon("icons/paste.gif");
-			JMenuItem menuItemPaste = new JMenuItem("Paste", pastIcon);
-			menuItemPaste.addActionListener(new ActionListener()
-			{
-				public void actionPerformed(ActionEvent e)
-				{
-					field.paste();
-				}
-			});
+			JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(field), "icons/paste.gif", "Paste");
 			menu.add(menuItemPaste);
 			
 			return menu;
 		}
-
+		
+		private JMenuItem createMenuItem(Action action, String iconLocation, String text)
+		{
+			JMenuItem menuItem = new JMenuItem(action);
+			ResourceImageIcon icon = new ResourceImageIcon(iconLocation);
+			menuItem.setIcon(icon);
+			menuItem.setText(EAM.text(text));
+			
+			return menuItem;
+		}
 	}
 	
 	JTextComponent field;
