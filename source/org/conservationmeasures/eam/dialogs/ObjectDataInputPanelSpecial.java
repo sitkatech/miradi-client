@@ -64,7 +64,7 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	{
 		Box box = Box.createVerticalBox();
 		box.add(createLabel(field));
-		box.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
+		box.add(field.getComponent());
 		return box;
 	}
 
