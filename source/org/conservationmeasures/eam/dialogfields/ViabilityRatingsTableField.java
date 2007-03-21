@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Component;
 
+import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -15,7 +16,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import org.conservationmeasures.eam.icons.GoalIcon;
-import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.questions.TrendQuestion;
 
 public class ViabilityRatingsTableField extends ObjectStringMapTableField
 {
@@ -56,6 +57,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		{
 			measurementSummary = object.getData(Indicator.TAG_MEASUREMENT_SUMMARY);
 			measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
+			measurementTrendCode = object.getData(Indicator.TAG_MEASUREMENT_TREND);
 		}
 	}
 	
@@ -126,7 +128,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			
 			if ((row==1) && validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
-				comp =  new JLabel(measurementSummary, new IndicatorIcon(), JLabel.CENTER);
+				comp =  new JLabel(measurementSummary, getTrendIcon(), JLabel.CENTER);
 			}
 			
 			if ((row==2) && validCode(detailStatusCode)  && Integer.parseInt(detailStatusCode)-1 == column)
@@ -135,6 +137,12 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			}
 
 			return getComponent(comp, column);
+		}
+
+
+		private Icon getTrendIcon()
+		{
+			return new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND).findChoiceByCode(measurementTrendCode).getIcon();
 		}
 		
 		
@@ -194,6 +202,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	
 	String measurementStatusCode;
 	String measurementSummary;
+	String measurementTrendCode;
 	String detailStatusCode;
 	String detailSummary;
 	ChoiceQuestion question;

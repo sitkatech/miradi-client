@@ -293,7 +293,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	{
 		final boolean areIndicatorMeasurementFields = 
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_SUMMARY) ||
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_STATUS);
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_STATUS) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_TREND);
 		
 		final boolean areGoalDesireFields = 
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.GOAL,Goal.TAG_DESIRED_SUMMARY) ||
