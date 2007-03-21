@@ -99,9 +99,11 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(createLabel(keaLabel));
 		mainGridPanel.add(box1);
 		
-		JPanel keaDescPanel = new JPanel(new BorderLayout());
-		mainGridPanel.add(createLabel(keaDesc));
+		Box keaDescPanel = Box.createHorizontalBox();
+		keaDescPanel.add(createLabel(keaDesc));
+		keaDescPanel.add(Box.createHorizontalStrut(STD_SPACE_20));
 		keaDescPanel.add(keaDesc.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
+		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(keaDescPanel);
 		
 		Box box2 = Box.createHorizontalBox();
