@@ -139,8 +139,9 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box3);
 		
 
-		Dimension col1Model = desiredStatus.getComponent().getPreferredSize();
-		Dimension col2Model = measureementStatusConfidence.getComponent().getPreferredSize();
+		//FIXME: this code may not be nessicary in its present form, ie a simpler way to do what it is doing
+		Dimension col1Model = measureementStatusConfidence.getComponent().getPreferredSize();
+		Dimension col2Model = desiredStatus.getComponent().getPreferredSize();
 		Dimension col3Model = desiredSummary.getComponent().getPreferredSize();
 		
 		
@@ -159,10 +160,10 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box5);
 
 		Box box6 = Box.createHorizontalBox();
-		box6.add(createColumnJPanel(measureementStatusConfidence, col2Model));
+		box6.add(createColumnJPanel(measureementStatusConfidence, col1Model));
 		box6.add(Box.createHorizontalStrut(STD_SPACE_20));
 	
-		box6.add(createColumnJPanel(measurementTrend, col1Model));
+		box6.add(createColumnJPanel(measurementTrend, col2Model));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box6);
 		
