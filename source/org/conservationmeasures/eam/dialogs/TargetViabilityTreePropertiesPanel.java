@@ -135,7 +135,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		JPanel box4 = createGridLayoutPanel(2,1);
 		Box optionPanel = createOptionGroup();
 		box4.add(optionPanel);
-		box4.add(createColumnBox(ratingSource));
+		box4.add(createColumnJPanel(ratingSource, ratingSource.getComponent().getPreferredSize()));
 		box3.add(box4);
 		mainGridPanel.add(box3);
 		
