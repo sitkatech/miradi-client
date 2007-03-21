@@ -11,6 +11,7 @@ import java.awt.Component;
 import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -276,17 +277,20 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			if (value.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
 			{
 				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+				viabilityTab.updateSplitterLocation();
 				tabs.remove(tabs.indexOfComponent(goalsTab));
 				tabs.remove(tabs.indexOfComponent(indicatorsTab));
+				SwingUtilities.getWindowAncestor(viabilityTab).pack();
 			}
 			else
 			{
 				tabs.remove(tabs.indexOfComponent(viabilityTab));
 				tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab);
 				tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
+				goalsTab.updateSplitterLocation();
+				indicatorsTab.updateSplitterLocation();
 			}
 			validate();
-			viabilityTab.updateSplitterLocation();
 		}
 	}
 
