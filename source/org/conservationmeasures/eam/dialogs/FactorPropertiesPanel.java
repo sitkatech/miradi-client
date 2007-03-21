@@ -278,16 +278,17 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			if (value.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
 			{
 				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
-				viabilityTab.updateSplitterLocation();
 				tabs.remove(tabs.indexOfComponent(goalsTab));
 				tabs.remove(tabs.indexOfComponent(indicatorsTab));
-				SwingUtilities.getWindowAncestor(viabilityTab).pack();
+				SwingUtilities.getWindowAncestor(detailsTab).pack();
+				viabilityTab.updateSplitterLocation();
 			}
 			else
 			{
 				tabs.remove(tabs.indexOfComponent(viabilityTab));
 				tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab);
 				tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
+				SwingUtilities.getWindowAncestor(detailsTab).pack();
 				goalsTab.updateSplitterLocation();
 				indicatorsTab.updateSplitterLocation();
 			}
