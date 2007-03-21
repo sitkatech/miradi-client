@@ -49,7 +49,7 @@ import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPreferences;
 import org.conservationmeasures.eam.actions.ActionPrint;
-import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
+import org.conservationmeasures.eam.actions.ActionCopyProjectTo;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
@@ -126,7 +126,7 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_F);
 		
 		addMenuItem(actions, menu, ActionNewProject.class, KeyEvent.VK_N);
-		addMenuItem(actions, menu, ActionProjectSaveAs.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu, ActionCopyProjectTo.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionSaveImage.class, KeyEvent.VK_J);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
 		menu.addSeparator();

@@ -38,7 +38,7 @@ import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionPreferences;
-import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
+import org.conservationmeasures.eam.actions.ActionCopyProjectTo;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionUndo;
@@ -289,7 +289,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionHelpButtonSupport.class, new HelpButtonDoer());
 		
 		addDoerToMap(ActionNewProject.class, new NewProject());
-		addDoerToMap(ActionProjectSaveAs.class, new SaveAsProjectDoer());
+		addDoerToMap(ActionCopyProjectTo.class, new CopyProjectToDoer());
 		addDoerToMap(ActionClose.class, new Close());
 		addDoerToMap(ActionExit.class, new Exit());
 		addDoerToMap(ActionUndo.class, new Undo());

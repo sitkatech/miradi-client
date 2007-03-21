@@ -112,7 +112,7 @@ public class Actions
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertContributingFactor(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
-		registerAction(new ActionProjectSaveAs(mainWindow));
+		registerAction(new ActionCopyProjectTo(mainWindow));
 		registerAction(new ActionExportZippedProjectFile(mainWindow));
 		registerAction(new ActionImportZippedProjectFile(mainWindow));
 		registerAction(new ActionImportTncCapWorkbook(mainWindow));

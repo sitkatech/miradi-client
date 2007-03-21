@@ -66,8 +66,13 @@ public class CreateProjectDialog extends EAMDialog implements ActionListener,
 
 	public boolean showCreateDialog(String buttonLabel)
 	{
-		setTitle(EAM.text("Title|Create New Project"));
-		okButton.setText(EAM.text(buttonLabel));
+		return showCreateDialog(EAM.text("Title|Create New Project"), buttonLabel);
+	}
+
+	public boolean showCreateDialog(String title, String buttonLabel)
+	{
+		setTitle(title);
+		okButton.setText(buttonLabel);
 		return showDialog();
 	}
 

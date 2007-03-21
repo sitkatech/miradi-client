@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.project.ProjectZipper;
 import org.conservationmeasures.eam.utils.ZIPFileFilter;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
-public class SaveAsProjectDoer extends MainWindowDoer
+public class CopyProjectToDoer extends MainWindowDoer
 {
 	public boolean isAvailable()
 	{
@@ -28,7 +28,7 @@ public class SaveAsProjectDoer extends MainWindowDoer
 		while(true)
 		{
 			CreateProjectDialog dlg = new CreateProjectDialog(getMainWindow());
-			if(!dlg.showCreateDialog(EAM.text("Button|Save As")))
+			if(!dlg.showCreateDialog(EAM.text("Copy Project To"), EAM.text("Button|Copy To")))
 				return;
 
 			File chosen = dlg.getSelectedFile();
@@ -41,7 +41,7 @@ public class SaveAsProjectDoer extends MainWindowDoer
 			{
 				EAM.logException(e);
 				throw new CommandFailedException(
-						"SaveAsProjectDoer: Possible Write Protected:" + e);
+						"CopyProjectToDoer: Possible Write Protected:" + e);
 			}
 
 			return;

@@ -8,21 +8,21 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionProjectSaveAs extends MainWindowAction
+public class ActionCopyProjectTo extends MainWindowAction
 {
-	public ActionProjectSaveAs(MainWindow mainWindowToUse)
+	public ActionCopyProjectTo(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Save Project As...");
+		return EAM.text("Action|Copy Project To...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Save project as");
+		return EAM.text("TT|Create a copy of this project under a different name");
 	}
 
 }
