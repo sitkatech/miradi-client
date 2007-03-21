@@ -12,7 +12,6 @@ public class ActionDeleteBendPoint extends LocationAction
 {
 	public ActionDeleteBendPoint(MainWindow mainWindowToUse)
 	{
-		//TODO fix icon to match action
 		super(mainWindowToUse, getLabel(), "icons/bendpt-no16.png");
 	}
 
