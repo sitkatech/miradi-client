@@ -24,6 +24,7 @@ public class ObjectAdjustableStringInputField extends ObjectTextInputField
 		setupFixedSizeTextField(0,columnsToUse);
 		DocumentEventHandler handler = new DocumentEventHandler();
 		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
+		getComponent().setMaximumSize(getComponent().getPreferredSize());
 		columns = columnsToUse;
 	}
 

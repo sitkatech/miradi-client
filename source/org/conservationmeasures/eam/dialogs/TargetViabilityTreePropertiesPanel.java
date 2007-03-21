@@ -66,7 +66,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField keaDesc = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
 		ObjectDataInputField keaType = addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
 		
-		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL,STD_SPACE_20));
+		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
 		ObjectDataInputField indicatorShortLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL,STD_SHORT));
 		ObjectDataInputField indicatorPriority = addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		ObjectDataInputField monitoringStatus = addField(createChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
@@ -107,14 +107,13 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(keaDescPanel);
 		
 		Box box2 = Box.createHorizontalBox();
+		box2.add(indicatorLabel.getComponent());
+		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(createLabel(indicatorShortLabel));
 		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(indicatorShortLabel.getComponent());
-		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box2.add(createLabel(indicatorLabel));
-		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box2.add(indicatorLabel.getComponent());
-		mainGridPanel.add(new UiLabel(EAM.text("Indicator")));
+		//box2.add(Box.createHorizontalStrut(STD_SPACE_20*15));
+		mainGridPanel.add(createLabel(indicatorLabel));
 		mainGridPanel.add(box2);
 
 		Box boxIndrPrty = Box.createHorizontalBox();
