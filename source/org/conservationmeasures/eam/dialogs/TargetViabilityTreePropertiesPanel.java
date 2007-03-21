@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Vector;
@@ -96,7 +97,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box1.add(createLabel(keaType));
 		box1.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box1.add(keaType.getComponent());
-		mainGridPanel.add(createLabel(keaLabel));
+		mainGridPanel.add(makeBoldLabel(keaLabel));
 		mainGridPanel.add(box1);
 		
 		Box keaDescPanel = Box.createHorizontalBox();
@@ -112,7 +113,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box2.add(createLabel(indicatorShortLabel));
 		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(indicatorShortLabel.getComponent());
-		mainGridPanel.add(createLabel(indicatorLabel));
+		mainGridPanel.add(makeBoldLabel(indicatorLabel));
 		mainGridPanel.add(box2);
 
 		Box boxIndrPrty = Box.createHorizontalBox();
@@ -128,7 +129,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(boxIndrPrty);
 
 
-		mainGridPanel.add(createLabel(indicatorThreshold));
+		mainGridPanel.add(makeBoldLabel(indicatorThreshold));
 		JPanel box3 = createGridLayoutPanel(0,2);
 		box3.add(indicatorThreshold.getComponent());
 		JPanel box4 = createGridLayoutPanel(2,1);
@@ -156,7 +157,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
 		box5.add(createColumnBox(measurementDetail));
-		mainGridPanel.add(new UiLabel(EAM.text("Current Status")));
+		mainGridPanel.add(makeBoldLabel(EAM.text("Current Status")));
 		mainGridPanel.add(box5);
 
 		Box box6 = Box.createHorizontalBox();
@@ -179,13 +180,31 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
 		
 		box7.add(createColumnBox(desiredDetail));
-		mainGridPanel.add(new UiLabel(EAM.text("Future Status/Goal")));
+		mainGridPanel.add(makeBoldLabel(EAM.text("Future Status/Goal")));
 		mainGridPanel.add(box7);
 
 		main.add(mainGridPanel);
 
 		addFieldComponent(main);
 		updateFieldsFromProject();
+	}
+	
+	private UiLabel makeBoldLabel(String field)
+	{
+		return makeBold(new UiLabel(field));
+	}
+
+	private UiLabel makeBoldLabel(ObjectDataInputField field)
+	{
+		return makeBold(createLabel(field));
+	}
+	
+
+	private UiLabel makeBold(UiLabel label)
+	{
+		Font font = label.getFont();
+		label.setFont(font.deriveFont(Font.BOLD));
+		return label;
 	}
 	
 	private Box createOptionGroup()
