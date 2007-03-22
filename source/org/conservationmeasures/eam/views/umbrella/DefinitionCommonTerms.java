@@ -232,8 +232,7 @@ public class DefinitionCommonTerms
 				"Project (general) - Any set of actions undertaken by a group of people and/or " +
 				"organizations to achieve defined goals and objectives. " +
 				"Projects can range in scale from efforts by local people to protect a " +
-				"small sacred grove to efforts by a donor to protect an entire ocean. " +
-				"A project is the basic unit for a software file in Miradi." + 
+				"small sacred grove to efforts by a donor to protect an entire ocean. " + 
 				"\n\n" +
 				"Project (in Miradi) - A project is the basic unit for a software file in Miradi. " +
 				"As a general rule, you should have one file for each real-world project you are managing, " +
