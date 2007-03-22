@@ -59,6 +59,7 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.TargetStatusQuestion;
@@ -95,11 +96,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			rating = ((Strategy)node.getUnderlyingObject()).getStrategyRating();
 
 		DiagramComponent diagram = (DiagramComponent)graph;
+		ChainManager chainManager = model.getProject().getChainManager();
 
 		indicatorText = null;
 		if(diagram.areIndicatorsVisible())
 		{
-			IdList indicators = model.getProject().getChainManager().getDirectOrIndirectIndicators(node.getUnderlyingObject());
+			IdList indicators = chainManager.getDirectOrIndirectIndicators(node.getUnderlyingObject());
 			if(indicators.size() == 1)
 				indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
 			else if(indicators.size() > 1)
@@ -124,7 +126,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			if(node.canHaveGoal())
 			{
-				IdList goalIds = node.getGoals();
+				IdList goalIds = chainManager.getDirectOrIndirectGoals(node.getUnderlyingObject());
 				if(goalIds.size() == 1)
 					goalsText = EAM.text("Goal") + " " + model.getProject().getObjectData(ObjectType.GOAL, goalIds.get(0), Goal.TAG_SHORT_LABEL);
 				else if(goalIds.size() > 1)
