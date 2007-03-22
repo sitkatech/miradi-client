@@ -224,16 +224,7 @@ public class WizardManager
 	
 	public void createTargetViabilityStepEntries(WizardPanel panel)
 	{
-		//TODO rename TargetViability Classes to reflect
-		createStepEntry(new TargetViability2Step(panel)).createControl("DoneViabilityAnalysis", DiagramWizardIdentifyDirectThreatStep.class);
 		createStepEntry(new TargetViabilityOverviewStep(panel));
-		createStepEntry(new TargetViability1Step(panel));
-		createStepEntry(new TargetViability3Step(panel));
-		createStepEntry(new TargetViability4Step(panel));
-		createStepEntry(new TargetViability5Step(panel));
-		createStepEntry(new TargetViability6Step(panel));
-		createStepEntry(new TargetViability7Step(panel));
-		createStepEntry(new TargetViability8Step(panel));
 	}
 	
 	public void createSummaryStepEntries(WizardPanel panel)
@@ -269,6 +260,16 @@ public class WizardManager
 		createStepEntry(new DiagramWizardDefineTargetsStep(panel));
 		createStepEntry(new DiagramWizardReviewAndModifyTargetsStep(panel));
 		createStepEntry(new DescribeTargetStatusStep(panel));
+		//TODO rename TargetViability Classes to reflect
+		createStepEntry(new TargetViability2Step(panel)).createControl("DoneViabilityAnalysis", DiagramWizardIdentifyDirectThreatStep.class);
+		createStepEntry(new TargetViability1Step(panel));
+		createStepEntry(new TargetViability3Step(panel));
+		createStepEntry(new TargetViability4Step(panel));
+		createStepEntry(new TargetViability5Step(panel));
+		createStepEntry(new TargetViability6Step(panel));
+		createStepEntry(new TargetViability7Step(panel));
+		createStepEntry(new TargetViability8Step(panel));
+		
 		createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel));
 		createStepEntry(new DiagramWizardLinkDirectThreatsToTargetsStep(panel));
 		createStepEntry(new DiagramWizardIdentifyIndirectThreatStep(panel));		
@@ -323,6 +324,14 @@ public class WizardManager
 				DiagramWizardDefineTargetsStep.class,
 				DiagramWizardReviewAndModifyTargetsStep.class,
 				DescribeTargetStatusStep.class,
+				TargetViability1Step.class,
+				TargetViability2Step.class,
+				TargetViability3Step.class,
+				TargetViability4Step.class,
+				TargetViability5Step.class,
+				TargetViability6Step.class,
+				TargetViability7Step.class,
+				TargetViability8Step.class,
 				DiagramWizardIdentifyDirectThreatStep.class,
 				DiagramWizardLinkDirectThreatsToTargetsStep.class,
 				
@@ -369,16 +378,7 @@ public class WizardManager
 				
 				ScheduleOverviewStep.class,
 				
-				TargetViabilityOverviewStep.class,
-				TargetViability1Step.class,
-				TargetViability2Step.class,
-				TargetViability3Step.class,
-				TargetViability4Step.class,
-				TargetViability5Step.class,
-				TargetViability6Step.class,
-				TargetViability7Step.class,
-				TargetViability8Step.class,
-				
+				TargetViabilityOverviewStep.class,				
 		};
 		
 		return entries;
