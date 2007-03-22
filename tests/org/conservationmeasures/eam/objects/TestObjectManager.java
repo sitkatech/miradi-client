@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.martus.util.DirectoryUtils;
 
@@ -105,6 +106,10 @@ public class TestObjectManager extends EAMTestCase
 		keas.add(conditionKea.id);
 		target.setData(Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keas.toString());
 
+		String keaWithoutCategory = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
+		assertEquals("Included uncategorized KEA?", NOT_SPECIFIED, keaWithoutCategory);
+
+		conditionKea.setData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.CONDITION);
 		String fair = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
 		assertEquals("Didn't compute for one kea one indicator?", FAIR, fair);
 		

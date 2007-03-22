@@ -35,7 +35,7 @@ public class TestTNCViabilityFormula extends TestCaseEnhanced
 
 	public void testGetRatingCodeFromValue() throws Exception
 	{
-		assertEquals(TNCViabilityFormula.UNSPECIFIED, TNCViabilityFormula.getRatingCodeFromValue(-0.01));
+		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getRatingCodeFromValue(-0.01));
 		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getRatingCodeFromValue(0.0));
 		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getRatingCodeFromValue(1.74));
 		assertEquals(TNCViabilityFormula.FAIR, TNCViabilityFormula.getRatingCodeFromValue(1.75));
@@ -54,6 +54,8 @@ public class TestTNCViabilityFormula extends TestCaseEnhanced
 				new CodeList(new String[] {TNCViabilityFormula.UNSPECIFIED})));
 		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getAverageRatingCode(
 				new CodeList(new String[] {TNCViabilityFormula.POOR})));
+		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getAverageRatingCode(
+				new CodeList(new String[] {TNCViabilityFormula.POOR, TNCViabilityFormula.UNSPECIFIED})));
 		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getAverageRatingCode(
 				new CodeList(new String[] {TNCViabilityFormula.POOR, TNCViabilityFormula.FAIR})));
 		assertEquals(TNCViabilityFormula.FAIR, TNCViabilityFormula.getAverageRatingCode(
@@ -88,6 +90,8 @@ public class TestTNCViabilityFormula extends TestCaseEnhanced
 		assertEquals(TNCViabilityFormula.UNSPECIFIED, TNCViabilityFormula.getTotalCategoryRatingCode(
 				new CodeList(new String[] {})));
 		assertEquals(TNCViabilityFormula.UNSPECIFIED, TNCViabilityFormula.getTotalCategoryRatingCode(
+				new CodeList(new String[] {TNCViabilityFormula.UNSPECIFIED})));
+		assertEquals(TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.getTotalCategoryRatingCode(
 				new CodeList(new String[] {TNCViabilityFormula.VERY_GOOD, TNCViabilityFormula.UNSPECIFIED, 
 						TNCViabilityFormula.VERY_GOOD})));
 		assertEquals(TNCViabilityFormula.POOR, TNCViabilityFormula.getTotalCategoryRatingCode(

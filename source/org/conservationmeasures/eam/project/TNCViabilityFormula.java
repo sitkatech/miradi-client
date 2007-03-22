@@ -37,32 +37,33 @@ public class TNCViabilityFormula
 			return GOOD;
 		if(d >= 1.75)
 			return FAIR;
-		if(d >= 0)
-			return POOR;
-		
-		return UNSPECIFIED;
+		return POOR;
 	}
 
 	public static String getAverageRatingCode(CodeList codes)
 	{
+		int validCount = 0;
 		int total = 0;
 		for(int i = 0; i < codes.size(); ++i)
 		{
 			String code = codes.get(i);
 			if(code.equals(UNSPECIFIED))
-				return UNSPECIFIED;
+				continue;
+			++validCount;
 			total += getValueFromRatingCode(code);
 		}
 		
-		double average = ((double)total)/codes.size();
+		if(validCount == 0)
+			return UNSPECIFIED;
 		
+		double average = ((double)total)/validCount;
 		return getRatingCodeFromValue(average);
 	}
 
 	public static String getTotalCategoryRatingCode(CodeList keaCodes)
 	{
 		HashSet codes = new HashSet(Arrays.asList(keaCodes.toArray()));
-		if(codes.size() == 0 || codes.contains(UNSPECIFIED))
+		if(codes.size() == 0)
 			return UNSPECIFIED;
 		if(codes.contains(POOR))
 			return POOR;
@@ -74,6 +75,9 @@ public class TNCViabilityFormula
 		for(int i = 0; i < keaCodes.size(); ++i)
 		{
 			String code = keaCodes.get(i);
+			if(code.equals(UNSPECIFIED))
+				continue;
+			
 			if(code.equals(GOOD))
 				++goods;
 			else if(code.equals(VERY_GOOD))
@@ -84,6 +88,9 @@ public class TNCViabilityFormula
 				throw new UnexpectedValueException(code, method);
 			}
 		}
+		
+		if(goods + veryGoods == 0)
+			return UNSPECIFIED;
 		
 		if(veryGoods > goods)
 			return VERY_GOOD;

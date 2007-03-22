@@ -380,6 +380,9 @@ public class ObjectManager
 		{
 			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keas.get(i));
 			String category = kea.getData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+			if(category.equals(TNCViabilityFormula.UNSPECIFIED))
+				continue;
+			
 			CodeList codesForCategory = (CodeList)categoryKeaRatings.get(category);
 			if(codesForCategory == null)
 			{
