@@ -11,14 +11,14 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 
 public class ProjectRepairer
@@ -228,10 +228,10 @@ public class ProjectRepairer
 			BaseId annotationId = allIds.get(i);
 			try
 			{
-				FactorSet nodes = chainManager.findFactorsThatUseThisAnnotation(annotationType, annotationId);
-				if(nodes.size() == 0)
+				EAMObject owner = chainManager.getOwner(new ORef(annotationType, annotationId));
+				if(owner == null)
 				{
-					EAM.logWarning("Deleting orphan " + annotationType + ":" + annotationId);
+					EAM.logWarning("Detected orphan " + annotationType + ":" + annotationId);
 					//FIXME: restore this after ophan detectio nis reliable
 					//project.deleteObject(annotationType, annotationId);
 				}

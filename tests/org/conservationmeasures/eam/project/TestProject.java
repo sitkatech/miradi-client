@@ -689,33 +689,6 @@ public class TestProject extends EAMTestCase
 		assertFalse("still linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 	}
 
-	public void testFindNodesThatUseThisObjective() throws Exception
-	{
-		FactorCell nodeA = project.createFactorCell(new FactorTypeTarget());
-		FactorCell nodeB = project.createFactorCell(new FactorTypeTarget());
-		project.createFactorCell(new FactorTypeTarget());
-		
-		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
-		BaseId objectiveId2 = project.createObject(ObjectType.OBJECTIVE);
-
-		IdList objectiveId = new IdList();
-		objectiveId.add(objectiveId1);
-		
-		nodeA.getUnderlyingObject().setObjectives(objectiveId);
-		nodeB.getUnderlyingObject().setObjectives(objectiveId);
-		
-		FactorSet foundNodes = chainManager.findFactorsThatUseThisObjective(objectiveId1);
-				
-		assertEquals("didn't find both nodes?", 2, foundNodes.size());
-		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
-		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
-
-		FactorSet noNodes = chainManager.findFactorsThatUseThisObjective(objectiveId2);
-		
-		assertEquals("found a node?", 0, noNodes.size());
-		
-	}
-	
 	public void testFindAllNodesRelatedToThisObjective() throws Exception
 	{
 		FactorCell nodeContributingFactor = project.createFactorCell(new FactorTypeCause());
@@ -737,32 +710,6 @@ public class TestProject extends EAMTestCase
 		assertContains("missing contributing factor?", nodeContributingFactor.getUnderlyingObject(), foundNodes);
 		
 		
-	}
-	
-	public void testFindNodesThatUseThisIndicator() throws Exception
-	{
-		
-		FactorCell nodeA = project.createFactorCell(new FactorTypeTarget());
-		FactorCell nodeB = project.createFactorCell(new FactorTypeTarget());
-		project.createFactorCell(new FactorTypeTarget());
-		
-		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
-		IndicatorId indicatorId2 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
-		
-		IdList indicators1 = new IdList();
-		indicators1.add(indicatorId1);
-		nodeA.getUnderlyingObject().setIndicators(indicators1);
-		nodeB.getUnderlyingObject().setIndicators(indicators1);
-		
-		FactorSet foundNodes = chainManager.findFactorsThatUseThisIndicator(indicatorId1);
-				
-		assertEquals("didn't find both nodes?", 2, foundNodes.size());
-		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
-		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
-
-		FactorSet noNodes = chainManager.findFactorsThatUseThisIndicator(indicatorId2);
-		
-		assertEquals("found a node?", 0, noNodes.size());
 	}
 	
 	public void testFindAllNodesRelatedToThisIndicator() throws Exception

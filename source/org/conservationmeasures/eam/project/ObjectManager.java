@@ -652,12 +652,11 @@ public class ObjectManager
 		try
 		{
 			ChainManager chainManager = new ChainManager(project);
-			FactorSet cmNodeSet = chainManager.findFactorsThatUseThisAnnotation(objectType, objectId); 
-			Iterator iterator = cmNodeSet.iterator();
-			if (!iterator.hasNext())
+			Factor owner = chainManager.getDirectOrIndirectOwningFactor(new ORef(objectType, objectId)); 
+			if (owner == null)
 				return ""; 
 
-			return ((Factor)iterator.next()).getLabel();
+			return owner.getLabel();
 		}
 		catch( Exception e)
 		{

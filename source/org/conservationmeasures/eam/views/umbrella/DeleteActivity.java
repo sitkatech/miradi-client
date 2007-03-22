@@ -14,11 +14,9 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -86,9 +84,8 @@ public class DeleteActivity extends ObjectsDoer
 			return;
 		
 		ChainManager chainManager = new ChainManager(project);
-		FactorSet factorSet = chainManager.findFactorsThatHaveThisObject(Strategy.TYPE_STRATEGY, selectedTask.getId(), Strategy.TAG_ACTIVITY_IDS);
-		Factor strategy = (Factor)factorSet.iterator().next();
-		selectedTask.setParentRef(strategy.getRef());
+		EAMObject foundIn = chainManager.getOwner(selectedTask.getRef());
+		selectedTask.setParentRef(foundIn.getRef());
 	}
 
 	public static void deleteTaskTree(Project project, Task selectedTask) throws Exception

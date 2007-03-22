@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -26,7 +25,6 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
@@ -53,7 +51,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
 	}
 
-	public static void deleteAnnotationViaCommands(Project project, EAMBaseObject factor, EAMBaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
+	public static void deleteAnnotationViaCommands(Project project, EAMObject owner, EAMBaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
 	{
 		String[] buttons = {"Delete", "Retain", };
 		if(!EAM.confirmDialog("Delete", confirmDialogText, buttons))
@@ -62,7 +60,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			Command[] commands = buildCommandsToDeleteAnnotation(project, factor, annotationIdListTag, annotationToDelete);
+			Command[] commands = buildCommandsToDeleteAnnotation(project, owner, annotationIdListTag, annotationToDelete);
 			for(int i = 0; i < commands.length; ++i)
 				project.executeCommand(commands[i]);
 		}
@@ -77,22 +75,18 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}
 	}
 	
-	public static Command[] buildCommandsToDeleteAnnotation(Project project, EAMObject eamObject, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
+	public static Command[] buildCommandsToDeleteAnnotation(Project project, EAMObject owner, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
 		Vector commands = new Vector();
 	
 		int type = annotationToDelete.getType();
 		BaseId idToRemove = annotationToDelete.getId();
-		commands.add(CommandSetObjectData.createRemoveIdCommand(eamObject, annotationIdListTag, idToRemove));
-		FactorSet nodesThatUseThisAnnotation = new ChainManager(project).findFactorsThatUseThisAnnotation(type, idToRemove);
-		if(nodesThatUseThisAnnotation.size() == 1)
-		{
-			commands.addAll(buildCommandsToDeleteSubTasks(project, type, idToRemove));
-			commands.addAll(buildCommandsToDeleteKEAIndicators(project, type, idToRemove));
-			commands.addAll(buildCommandsToDeleteSubGoals(project, type, idToRemove));
-			commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
-			commands.add(new CommandDeleteObject(type, idToRemove));
-		}
+		commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationIdListTag, idToRemove));
+		commands.addAll(buildCommandsToDeleteSubTasks(project, type, idToRemove));
+		commands.addAll(buildCommandsToDeleteKEAIndicators(project, type, idToRemove));
+		commands.addAll(buildCommandsToDeleteSubGoals(project, type, idToRemove));
+		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
+		commands.add(new CommandDeleteObject(type, idToRemove));
 		
 		return (Command[])commands.toArray(new Command[0]);
 	}

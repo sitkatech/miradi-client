@@ -6,23 +6,21 @@
 package org.conservationmeasures.eam.project;
 
 import java.text.ParseException;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.FactorPool;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 
 public class ChainManager
@@ -32,80 +30,96 @@ public class ChainManager
 		project = projectToUse;
 	}
 	
-	public FactorSet findFactorsThatUseThisAnnotation(int type, BaseId id) throws Exception
+	// FIXME: Write tests for this!!!
+	public Factor getDirectOrIndirectOwningFactor(ORef ref) throws Exception
 	{
-		if(type == ObjectType.OBJECTIVE)
-			return findFactorsThatHaveThisObject(id, Factor.TAG_OBJECTIVE_IDS);
-		if(type == ObjectType.GOAL)
-			return findFactorsThatHaveThisObject(id, Factor.TAG_GOAL_IDS);
-		if(type == ObjectType.INDICATOR)
-			return findFactorsThatHaveThisIndicator(id);
-		if(type == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
-			return findFactorsThatHaveThisObject(id, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
-		
-		throw new RuntimeException("Not an annotation type? " + type);
-	}
-
-	public FactorSet findFactorsThatHaveThisIndicator(BaseId objectId) throws Exception
-	{
-		FactorSet factorSet =  findFactorsThatHaveThisObject(objectId, Factor.TAG_INDICATOR_IDS);
-		FactorSet targetsFound = findTargetsWithKEAsThatHaveThisIndicator(objectId);
-		factorSet.attemptToAddAll(targetsFound);
-		return factorSet;
-	}
-
-	private FactorSet findTargetsWithKEAsThatHaveThisIndicator(BaseId objectId)
-	{
-		FactorSet targetsFound = new FactorSet();
-		Factor[] targets = getFactorPool().getTargets();
-		for (int i=0; i<targets.length; ++i)
+		EAMObject owner = project.findObject(ref);
+		int AVOID_INFINITE_LOOP = 10000;
+		for(int i = 0; i < AVOID_INFINITE_LOOP; ++i)
 		{
-			if (doesTargetContainKEAWithIndicator(objectId,  (Target)targets[i]))
-				targetsFound.attemptToAdd(targets[i]);
-		}
-		return targetsFound;
-	}
-
-	public KeyEcologicalAttribute[] findKEAsThatHaveThisIndicator(BaseId objectId)
-	{
-		Vector keasFound = new Vector();
-		Factor[] targets = getFactorPool().getTargets();
-		for (int i=0; i<targets.length; ++i)
-		{
-			KeyEcologicalAttribute kea = findKEAWithIndicator(objectId,  (Target)targets[i]);
-			if (kea!=null)
-				keasFound.add(kea);
-		}
-		return (KeyEcologicalAttribute[])keasFound.toArray(new KeyEcologicalAttribute[0]);
-	}
-	
-	
-	public KeyEcologicalAttribute findKEAWithIndicator(BaseId objectId,  Target target)
-	{
-		IdList keas = target.getKeyEcologicalAttributes();
-		for (int j=0; j<keas.size(); ++j)
-		{
-			BaseId keyEcologicalAttributeId = keas.get(j);
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute) project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keyEcologicalAttributeId);
-			if (doesKEAContainIndicator(objectId, kea))
-				return kea;
+			if(owner.getType() == ObjectType.FACTOR)
+				return (Factor)owner;
+			owner = getOwner(owner.getRef());
+			if(owner == null)
+				break;
 		}
 		return null;
 	}
 	
-	public boolean doesTargetContainKEAWithIndicator(BaseId objectId,  Target target)
+	// FIXME: Write tests for this!!!
+	public EAMObject getOwner(ORef ref) throws Exception
 	{
-		IdList keas = target.getKeyEcologicalAttributes();
-		for (int j=0; j<keas.size(); ++j)
+		switch(ref.getObjectType())
 		{
-			BaseId keyEcologicalAttributeId = keas.get(j);
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute) project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keyEcologicalAttributeId);
-			if (doesKEAContainIndicator(objectId, kea))
-				return true;
+			case ObjectType.ASSIGNMENT:
+				return assignmentOwner(ref);
+			case ObjectType.GOAL:
+				return goalOwner(ref);
+			case ObjectType.INDICATOR:
+				return indicatorOwner(ref);
+			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
+				return keyEcologicalAttributeOwner(ref);
+			case ObjectType.OBJECTIVE:
+				return getObjectiveOwner(ref);
+			case ObjectType.TASK:
+				return getTaskOwner(ref);
+			default:
+				throw new RuntimeException("getOwner not implemented for object " + ref);
 		}
-		return false;
 	}
 	
+	private EAMObject assignmentOwner(ORef ref) throws Exception
+	{
+		return findOwner(ref, getProject().getTaskPool().getAllTasks(), Task.TAG_ASSIGNMENT_IDS);
+	}
+
+	private EAMObject goalOwner(ORef ref) throws Exception
+	{
+		EAMObject factorOwner = findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_GOAL_IDS);
+		if(factorOwner != null)
+			return factorOwner;
+		return findOwner(ref, getProject().getIndicatorPool().getAllIndicators(), Indicator.TAG_GOAL_IDS);		
+	}
+	
+	private EAMObject indicatorOwner(ORef ref) throws Exception
+	{
+		EAMObject factorOwner = findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_INDICATOR_IDS);
+		if(factorOwner != null)
+			return factorOwner;
+		return findOwner(ref, getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute(), KeyEcologicalAttribute.TAG_INDICATOR_IDS);		
+	}
+	
+	private EAMObject keyEcologicalAttributeOwner(ORef ref) throws Exception
+	{
+		return findOwner(ref, getFactorPool().getTargets(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+	}
+
+	private EAMObject getObjectiveOwner(ORef ref) throws Exception
+	{
+		return findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_OBJECTIVE_IDS);
+	}
+	
+	private EAMObject getTaskOwner(ORef ref) throws Exception
+	{
+		EAMObject strategyOwner = findOwner(ref, getFactorPool().getStrategies(), Strategy.TAG_ACTIVITY_IDS);
+		if(strategyOwner != null)
+			return strategyOwner;
+		EAMObject IndicatorOwner = findOwner(ref, getProject().getIndicatorPool().getAllIndicators(), Indicator.TAG_TASK_IDS);
+		if(IndicatorOwner != null)
+			return IndicatorOwner;
+		return findOwner(ref, getProject().getTaskPool().getAllTasks(), Task.TAG_SUBTASK_IDS);		
+	}
+
+	private EAMObject findOwner(ORef refToFind, EAMObject[] objectsToSearchIn, String tagOfIdListToSearch) throws ParseException
+	{
+		for(int i = 0; i < objectsToSearchIn.length; ++i)
+		{
+			IdList candidates = new IdList(objectsToSearchIn[i].getData(tagOfIdListToSearch));
+			if(candidates.contains(refToFind.getObjectId()))
+				return objectsToSearchIn[i];
+		}
+		return null;
+	}
 	
 	public IdList findAllKeaIndicatorsForTarget(Target target)
 	{
@@ -136,90 +150,52 @@ public class ChainManager
 
 	}
 	
-	private boolean doesKEAContainIndicator(BaseId objectId,  KeyEcologicalAttribute kea)
+	public IdList getDirectOrIndirectGoals(Factor factor)
 	{
-		return (kea.getIndicatorIds().find(objectId) != BaseId.INVALID.asInt());
-	}
-	
-	public FactorSet findFactorsThatUseThisObjective(BaseId objectiveId) throws Exception
-	{
-		return findFactorsThatUseThisAnnotation(ObjectType.OBJECTIVE, objectiveId);
-	}
-
-	public FactorSet findFactorsThatUseThisIndicator(BaseId indicatorId) throws Exception
-	{
-		return findFactorsThatUseThisAnnotation(ObjectType.INDICATOR, indicatorId);
-	}
-	
-	public FactorSet findFactorsThatUseThisGoal(BaseId goalId) throws Exception
-	{
-		return findFactorsThatUseThisAnnotation(ObjectType.GOAL, goalId);
-	}
-	
-	public FactorSet findFactorsThatHaveThisObject(BaseId objectId, String tag) throws ParseException
-	{
-		return findFactorsThatHaveThisObject(null, objectId, tag);
-	}
-
-	public FactorSet findFactorsThatHaveThisObject(FactorType type, BaseId objectId, String tag) throws ParseException
-	{
-		FactorSet foundFactors = new FactorSet();
-		FactorPool pool = getFactorPool();
-		FactorId[] allNodeIds = pool.getModelNodeIds();
-		for(int i = 0; i < allNodeIds.length; ++i)
+		IdList goalIds = new IdList();
+		if (!factor.isTarget())
+			return goalIds;
+		
+		IdList keaIds = getDirectOrIndirectIndicators(factor);
+		for(int i = 0; i < keaIds.size(); ++i)
 		{
-			Factor node = pool.find(allNodeIds[i]);
-			if(type == null || type.equals(node.getNodeType()))
-			{
-				IdList candidateIds = new IdList(node.getData(tag));
-				if(candidateIds.contains(objectId))
-					foundFactors.attemptToAdd(node);
-			}
+			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, keaIds.get(i));
+			goalIds.addAll(indicator.getGoalIds());
 		}
 		
-		return foundFactors;
+		return goalIds;
 	}
-
+	
 	public FactorSet findAllFactorsRelatedToThisIndicator(BaseId indicatorId) throws Exception
 	{
-		Factor[] nodesThatUseThisIndicator = findFactorsThatUseThisIndicator(indicatorId).toNodeArray();
-		FactorSet relatedNodes = new FactorSet();
-		
-		for(int i = 0; i < nodesThatUseThisIndicator.length; ++i)
-		{
-			FactorSet nodesInChain = getDiagramModel().getAllUpstreamDownstreamNodes(nodesThatUseThisIndicator[i]);
-			relatedNodes.attemptToAddAll(nodesInChain);
-		}
-		
-		return relatedNodes;
+		ORef ref = new ORef(ObjectType.INDICATOR, indicatorId);
+		return findAllFactorsRelatedToThisObject(ref);
 	}
-	
-	public FactorSet findAllFactorsRelatedToThisObjective(BaseId objectiveId) throws Exception
+
+	public FactorSet findAllFactorsRelatedToThisObjective(BaseId indicatorId) throws Exception
 	{
-		Factor[] nodesThatUseThisObjective = findFactorsThatUseThisObjective(objectiveId).toNodeArray();
-		FactorSet relatedNodes = new FactorSet();
-		
-		for(int i = 0; i < nodesThatUseThisObjective.length; ++i)
-		{
-			FactorSet nodesInChain = getDiagramModel().getAllUpstreamDownstreamNodes(nodesThatUseThisObjective[i]);
-			relatedNodes.attemptToAddAll(nodesInChain);
-		}
-		
-		return relatedNodes;
+		ORef ref = new ORef(ObjectType.OBJECTIVE, indicatorId);
+		return findAllFactorsRelatedToThisObject(ref);
 	}
-	
-	public FactorSet findAllFactorsRelatedToThisGoal(BaseId goalId) throws Exception
+
+	public FactorSet findAllFactorsRelatedToThisGoal(BaseId indicatorId) throws Exception
 	{
-		Factor[] nodesThatUseThisGoal = findFactorsThatUseThisGoal(goalId).toNodeArray();
-		FactorSet relatedNodes = new FactorSet();
+		ORef ref = new ORef(ObjectType.GOAL, indicatorId);
+		return findAllFactorsRelatedToThisObject(ref);
+	}
+
+	public FactorSet findAllFactorsRelatedToThisObject(ORef ref) throws Exception
+	{
+		Factor owningFactor = getDirectOrIndirectOwningFactor(ref);
+		FactorSet relatedFactors = new FactorSet();
 		
-		for(int i = 0; i < nodesThatUseThisGoal.length; ++i)
+		if(owningFactor != null)
 		{
-			FactorSet nodesInChain = getDiagramModel().getAllUpstreamDownstreamNodes(nodesThatUseThisGoal[i]);
-			relatedNodes.attemptToAddAll(nodesInChain);
+			FactorSet nodesInChain = getDiagramModel().getAllUpstreamDownstreamNodes(owningFactor);
+			relatedFactors.attemptToAddAll(nodesInChain);
 		}
 		
-		return relatedNodes;
+		return relatedFactors;
 	}
 	
 	FactorPool getFactorPool()
@@ -237,38 +213,6 @@ public class ChainManager
 		return project;
 	}
 	
-	public String getRelatedTargetsAsHtml(BaseId indicatorId)
-	{
-		try
-		{
-			FactorSet modelNodes = findAllFactorsRelatedToThisIndicator(indicatorId);
-			TargetSet targets = new TargetSet(modelNodes);
-			
-			return EAMBaseObject.toHtml(targets.toNodeArray());
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return HTML_ERROR;
-		}
-	}
-
-	public String getRelatedDirectThreatsAsHtml(BaseId indicatorId)
-	{
-		try
-		{
-			FactorSet modelNodes =  findAllFactorsRelatedToThisIndicator(indicatorId);
-			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
-			
-			return EAMBaseObject.toHtml(directThreats.toNodeArray());
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return HTML_ERROR;
-		}
-	}
-
 	static final String HTML_ERROR = "<html>(Error)</html>";
 	
 	Project project;

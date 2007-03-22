@@ -6,17 +6,12 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
@@ -43,6 +38,7 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 		try
 		{
 			Project project = getProject();
+			ChainManager chainManager = new ChainManager(project);
 			EAMObject object = getObjects()[0];
 			if (object.getType() == ObjectType.TASK)
 			{
@@ -50,22 +46,14 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 			}
 			else if (object.getType() == ObjectType.INDICATOR)
 			{
-				Factor factor = getFactor(project, object.getId());
-				if (factor.isTarget())
+				EAMObject owner = chainManager.getOwner(object.getRef());
+				if (owner.getType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 				{
-					ChainManager chainManager = new ChainManager(project);
-					IdList indicators = ((Target)factor).getIndicators();
-					if (indicators.contains(object.getId()))
-						deleteAnnotation(project, object, factor, Target.TAG_INDICATOR_IDS);
-					else
-					{
-						KeyEcologicalAttribute kea = chainManager.findKEAWithIndicator(object.getId(), (Target)factor);
-						deleteAnnotation(project, object, kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
-					}
+					deleteAnnotation(project, object, owner, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
 				}
-				else
+				else if(owner.getType() == ObjectType.FACTOR)
 				{
-					deleteAnnotation(project, object, factor, Factor.TAG_INDICATOR_IDS);
+					deleteAnnotation(project, object, owner, Factor.TAG_INDICATOR_IDS);
 				}
 			}
 		}
@@ -75,16 +63,9 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 		}
 	}
 
-	private void deleteAnnotation(Project project, EAMObject object, EAMBaseObject kea, final String string) throws CommandFailedException
+	private void deleteAnnotation(Project project, EAMObject objectToDelete, EAMObject owner, final String tagOfIdList) throws CommandFailedException
 	{
-		DeleteAnnotationDoer.deleteAnnotationViaCommands(project, kea, (Indicator)object, string, getConfirmDialogText());
-	}
-
-	private Factor getFactor(Project project, BaseId indicatorId) throws Exception
-	{
-		ChainManager chainManager = new ChainManager(project);
-		FactorSet factorSet = chainManager.findFactorsThatUseThisIndicator(indicatorId);
-		return (Factor)factorSet.iterator().next();
+		DeleteAnnotationDoer.deleteAnnotationViaCommands(project, owner, (Indicator)objectToDelete, tagOfIdList, getConfirmDialogText());
 	}
 
 	private String[] getConfirmDialogText()
