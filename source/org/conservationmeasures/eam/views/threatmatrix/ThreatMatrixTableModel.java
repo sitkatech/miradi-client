@@ -104,7 +104,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	public String getColumnName(int columnIndex) 
 	{
 		if (columnIndex==getTargets().length)
-			return EAM.text("Summary Target Rating");
+			return EAM.text("Summary Threat Rating");
 		return getTargets()[columnIndex].toString();
 	}
 	

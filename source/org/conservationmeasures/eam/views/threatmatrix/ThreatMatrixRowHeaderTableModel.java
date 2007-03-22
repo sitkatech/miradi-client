@@ -29,7 +29,7 @@ public class ThreatMatrixRowHeaderTableModel extends AbstractTableModel
 	public Object getValueAt(int row, int column)
 	{
 		if (row==model.getRowCount()-1) 
-			return EAM.text("Summary Threat Rating");
+			return EAM.text("Summary Target Rating");
 		return model.getThreatNode(row);
 	}
 
