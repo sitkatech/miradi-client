@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -40,6 +41,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		table.setDefaultRenderer(Object.class, new TableCellRenderer());
 		table.getTableHeader().setDefaultRenderer(new HeaderRenderer());
 		table.setShowHorizontalLines(false);
+		table.setIntercellSpacing(new Dimension(0,0));
 		currentRowHeight = table.getRowHeight();
 	}
 
@@ -148,6 +150,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		
 		private JComponent getComponent(JComponent comp, int column)
 		{
+			comp.setBorder(null);
 			if (validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
 				comp.setOpaque(true);
