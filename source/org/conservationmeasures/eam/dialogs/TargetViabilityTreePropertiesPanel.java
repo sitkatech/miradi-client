@@ -175,7 +175,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box7.add(createColumnJPanel(goalShortLable,col1Model));
 		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box7.add(createColumnBox(goalLabel));
-		mainGridPanel.add(createSplitLabel(EAM.text("Future Status"), EAM.text("/Goal")));
+		mainGridPanel.add(createSplitLabel(EAM.text("Future Status"), EAM.text("(aka Goal)")));
 		mainGridPanel.add(box7);
 
 		
