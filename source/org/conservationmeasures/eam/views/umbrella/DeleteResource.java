@@ -34,6 +34,7 @@ public class DeleteResource extends ObjectsDoer
 		Vector dialogText = new Vector();
 		
 		// FIXME budget code - Needs to look in Assignments
+		// also after deleting the resource, update all assignments that refered to it
 //		Task[] tasksThatUseThisResource = getProject().findTasksThatUseThisResource(idToRemove);
 //		if(tasksThatUseThisResource.length > 0)
 //			dialogText.add("This resource is assigned to one or more tasks.");
