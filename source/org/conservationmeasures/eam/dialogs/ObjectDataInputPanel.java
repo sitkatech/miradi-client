@@ -42,7 +42,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel 
 	public ObjectDataInputPanel(Project projectToUse, Vector orefsToUse)
 	{
 		super(projectToUse, orefsToUse);
-		GridLayoutPlus layout = new GridLayoutPlus(0, 2);
+		GridLayoutPlus layout = new GridLayoutPlus(0, 2, HGAP, VGAP);
 		layout.setColAlignment(0, Alignment.NORTHEAST);
 		setLayout(layout);
 	}
@@ -60,6 +60,14 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel 
 		addFieldComponent(field.getComponent());
 		return field;
 	}
+	
+	public ObjectDataInputField addFieldWithCustomLabel(ObjectDataInputField field, UiLabel label)
+	{
+		super.addField(field);
+		addLabel(label);
+		addFieldComponent(field.getComponent());
+		return field;
+	}
 
 	public void addLabel(String translatedLabelText)
 	{
@@ -69,6 +77,12 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel 
 	public void addLabel(int objectType, String translatedLabelText)
 	{
 		UiLabel label = new UiLabel(EAM.fieldLabel(objectType, translatedLabelText));
+		addLabel(label);
+	}
+
+
+	private void addLabel(UiLabel label)
+	{
 		label.setVerticalAlignment(SwingConstants.TOP);
 		add(label);
 	}
@@ -79,4 +93,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel 
 		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
 		add(panel);
 	}
+	
+	static final int HGAP = 3;
+	static final int VGAP = 3;
 }
