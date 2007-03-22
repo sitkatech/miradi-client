@@ -51,6 +51,7 @@ import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.GraphLayoutCache;
+import org.jgraph.graph.PortView;
 import org.martus.swing.Utilities;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder, GraphSelectionListener
@@ -70,7 +71,13 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setSelectionModel(new EAMGraphSelectionModel(this));
 		defaultBackgroundColor = getBackground();
 		addGraphSelectionListener(this);
+		ensureCellPerimetersAreRespectedByLinksWithBendPoints();
 	}    
+
+	private void ensureCellPerimetersAreRespectedByLinksWithBendPoints()
+	{
+		PortView.allowPortMagic = false;
+	}
 
 	public DiagramComponent(MainWindow mainWindow)
 	{
