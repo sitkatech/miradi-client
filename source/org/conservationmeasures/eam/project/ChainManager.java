@@ -155,11 +155,15 @@ public class ChainManager
 		IdList goalIds = new IdList();
 		if (!factor.isTarget())
 			return goalIds;
+
+		Target target = (Target)factor;
+		if(!target.isViabilityModeTNC())
+			return target.getGoals();
 		
-		IdList keaIds = getDirectOrIndirectIndicators(factor);
-		for(int i = 0; i < keaIds.size(); ++i)
+		IdList indicatorIds = getDirectOrIndirectIndicators(factor);
+		for(int i = 0; i < indicatorIds.size(); ++i)
 		{
-			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, keaIds.get(i));
+			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, indicatorIds.get(i));
 			goalIds.addAll(indicator.getGoalIds());
 		}
 		
