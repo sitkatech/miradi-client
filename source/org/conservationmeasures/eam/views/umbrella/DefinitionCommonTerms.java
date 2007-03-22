@@ -214,14 +214,12 @@ public class DefinitionCommonTerms
 				"severity, and irreversibility criteria. ");
 		defs.put("Definition:OverallThreatRating", def);
 		
-
-		def = new Definition("Irreversibility", "Irreversibility - A threat rating criterion that is" +
-				" defined as the degree to which the effects of a direct threat can be restored." +
-				" Note that irreversibility refers to the \"effects of the direct threat on" +
-				" the target\" not the direct threat itself - you can think of it as " +
-				"the \"recoverability\" of the target from the effects of the threat. ");
+		def = new Definition("Irreversibility", "Irreversibility – The degree to which the effects of a threat can be undone and the biodiversity targets affected by the threat restored, if the threat is stopped.\n" + 
+		"4 = Very High: The effects of the threat cannot be undone, and it is very unlikely the target can be restored (e.g., wetlands converted to a shopping centre). \n" +
+		"3 = High: The effects of the threat can technically be undone and the target restored, but it is not practically affordable (e.g., wetland converted to agriculture).\n" + 
+		"2 = Medium: The effects of the threat can be undone and the target restored with a reasonable commitment of resources (e.g., ditching and draining of wetland). \n" +
+		"1 = Low: The effects of the threat are easily reversible and the target can be easily restored at a relatively low cost (e.g., off-road vehicles trespassing in wetland).\n"); 
 		defs.put("Definition:Irreversibility", def);
-		
 
 		def = new Definition("Severity", 
 				"Severity - A threat rating criterion that is defined as " +
