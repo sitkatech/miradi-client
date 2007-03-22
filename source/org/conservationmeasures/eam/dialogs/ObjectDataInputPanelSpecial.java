@@ -84,7 +84,12 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		box.add(createLabel(field));
 		
 		JPanel boxIcon = createGridLayoutPanel(1,2);
-		boxIcon.add(new JLabel(icon));
+		JLabel label = new JLabel(icon);
+		//TODO +2 is not a good way of fixing the cropped icon problem
+		Dimension dimension = new Dimension(icon.getIconWidth() + 2, icon.getIconHeight());
+		label.setPreferredSize(dimension);
+		label.setMinimumSize(dimension);
+		boxIcon.add(label);
 		boxIcon.add(field.getComponent());
 		
 		box.add(boxIcon, BorderLayout.BEFORE_LINE_BEGINS);
