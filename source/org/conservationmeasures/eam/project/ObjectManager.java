@@ -432,10 +432,8 @@ public class ObjectManager
 		{
 			String status = project.getObjectData(ObjectType.INDICATOR, indicatorIds.get(i), Indicator.TAG_MEASUREMENT_STATUS);
 			statuses.add(status);
-			EAM.logVerbose("Indicator status: " + status);
 		}
 		String result = TNCViabilityFormula.getAverageRatingCode(statuses);
-		EAM.logVerbose("Viability for KEA " + kea.getLabel() + " is: " + result);
 		return result;
 	}
 
