@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
@@ -318,6 +319,15 @@ abstract public class FactorCell extends EAMGraphCell
 		if(getGoals().size() == 0)
 			return false;
 		return getAnnotationsRect().contains(p);
+	}
+	
+	public boolean isPointInViability(Point p)
+	{
+		if (isTarget() && ((Target)getUnderlyingObject()).isViabilityModeTNC())
+		{
+			return (isPointInIndicator(p) || isPointInGoal(p));
+		}
+		return false;
 	}
 	
 	public Rectangle getAnnotationsRect()

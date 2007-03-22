@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesPanel;
@@ -92,6 +92,11 @@ public class Properties extends LocationDoer
 		{
 			EAM.logDebug("Objective");
 			return FactorPropertiesPanel.TAB_OBJECTIVES;
+		}
+		if (factor.isPointInViability(at))
+		{
+			EAM.logDebug("ViabilityModeTNC");
+			return FactorPropertiesPanel.TAB_VIABILITY;
 		}
 		if(factor.isPointInIndicator(at))
 		{
