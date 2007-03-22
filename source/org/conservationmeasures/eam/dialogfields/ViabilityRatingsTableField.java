@@ -5,9 +5,11 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -41,7 +43,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		table.setDefaultRenderer(Object.class, new TableCellRenderer());
 		table.getTableHeader().setDefaultRenderer(new HeaderRenderer());
 		table.setShowHorizontalLines(false);
-		table.setIntercellSpacing(new Dimension(0,0));
+		table.setIntercellSpacing(new Dimension(3,0));
 		currentRowHeight = table.getRowHeight();
 	}
 
@@ -138,6 +140,11 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 				comp =  new JLabel(detailSummary, new GoalIcon(), JLabel.CENTER);
 			}
 
+			if (row!=0)
+				comp.setBorder(null);
+			else
+				comp.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY));
+			
 			return getComponent(comp, column);
 		}
 
@@ -150,7 +157,6 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		
 		private JComponent getComponent(JComponent comp, int column)
 		{
-			comp.setBorder(null);
 			if (validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
 				comp.setOpaque(true);
