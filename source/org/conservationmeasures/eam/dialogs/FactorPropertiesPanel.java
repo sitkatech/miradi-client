@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.Icon;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 
@@ -93,14 +92,13 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 
 	public void setCurrentDiagramFactor(DiagramComponent diagram, FactorCell diagramFactor)
 	{
-		this.setLayout(new BorderLayout());
-		this.removeAll();
+		setLayout(new BorderLayout());
+		removeAll();
 		try
 		{
 			currentDiagramFactor = diagramFactor;
-			this.add(createLabelBar(currentDiagramFactor),
-					BorderLayout.BEFORE_FIRST_LINE);
-			this.add(createTabbedPane(currentDiagramFactor), BorderLayout.CENTER);
+			add(createLabelBar(currentDiagramFactor),	BorderLayout.BEFORE_FIRST_LINE);
+			add(createTabbedPane(currentDiagramFactor), BorderLayout.CENTER);
 		}
 		catch(Exception e)
 		{
@@ -121,26 +119,31 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 
 	private Component createLabelBar(FactorCell diagramFactor)
 	{
-		grid = new FactorInputPanel(getProject(), diagramFactor.getUnderlyingObject().getId());
+		Factor factor = diagramFactor.getUnderlyingObject();
+		grid = new FactorInputPanel(getProject(), factor.getId());
 		
-		grid.addField(grid.createStringField(Factor.TAG_LABEL, MAX_LABEL_LENGTH));
-		if(diagramFactor.isDirectThreat())
-			grid.addLine(new UiLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING), new JPanel());
-		else if (diagramFactor.isContributingFactor())
-			grid.addLine(new UiLabel(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING), new JPanel());
-		else if (diagramFactor.isStrategy()) 
-			grid.addLine(new UiLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING), new JPanel());
-		else if (diagramFactor.isTarget())
-		{
-			grid.addLine(new UiLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING), new JPanel());
-			grid.addField(createTargetStatusField(diagramFactor.getUnderlyingObject()));
-		}
+		grid.addFieldWithCustomLabel(grid.createStringField(Factor.TAG_LABEL), createFactorTypeLabel(factor));
 		
-		grid.add(new UiLabel());
+		if (factor.isTarget())
+			grid.addField(createTargetStatusField(factor));
+		
 		grid.setObjectRef(new ORef(diagramFactor.getType(), diagramFactor.getWrappedId()));
 		return grid;
 	}
 	
+	private UiLabel createFactorTypeLabel(Factor factor)
+	{
+		if(factor.isDirectThreat())
+			return new UiLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING);
+		if (factor.isContributingFactor())
+			return new UiLabel(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING);
+		if (factor.isStrategy()) 
+			return new UiLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING);
+		if (factor.isTarget())
+			return new UiLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING);
+		
+		throw new RuntimeException("Unknown factor type");
+	}
 	
 	private ObjectDataInputField createTargetStatusField(Factor factor)
 	{
