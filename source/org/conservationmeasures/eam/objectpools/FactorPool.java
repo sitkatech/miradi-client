@@ -93,4 +93,15 @@ public class FactorPool extends PoolWithIdAssigner
 		return (Factor[])cmNodes.toArray(new Factor[0]);
 	}
 	
+	public Factor[] getAllFactors()
+	{
+		Vector cmNodes = new Vector();
+		FactorId[] ids = getModelNodeIds();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			cmNodes.add(getRawObject(ids[i]));
+		}
+		return (Factor[])cmNodes.toArray(new Factor[0]);
+	}
+	
 }

@@ -49,6 +49,11 @@ public class Indicator extends EAMBaseObject
 		taskIds.add(taskId);
 	}
 	
+	public IdList getGoalIds()
+	{
+		return goalIds.getIdList();
+	}
+
 	void clear()
 	{
 		super.clear();
