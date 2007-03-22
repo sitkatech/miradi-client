@@ -20,8 +20,6 @@ public class PossibleTeamMembersPanel extends ResourcePoolManagementPanel
 		return getPanelDescription() + SPLITTER_TAG;
 	}
 
-	final static String SPLITTER_TAG = "Splitter";
-	
 	final static String OVERVIEW_TEXT = 
 		EAM.text("<html>" +
 				"<p>" +

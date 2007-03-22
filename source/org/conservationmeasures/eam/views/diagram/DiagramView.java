@@ -435,7 +435,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		
 		Utilities.centerDlg(nodePropertiesDlg);
 		nodePropertiesDlg.setVisible(true);
-		nodePropertiesPanel.setAllTabSplitterLocationsToMiddle();
+		nodePropertiesPanel.updateAllSplitterLocations();
 	}
 
 	private void disposeOfNodePropertiesDialog()

@@ -249,7 +249,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	}
 
 
-	public void setAllTabSplitterLocationsToMiddle()
+	public void updateAllSplitterLocations()
 	{
 		if (indicatorsTab != null)
 			indicatorsTab.updateSplitterLocationToMiddle();
@@ -264,7 +264,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			activitiesTab.updateSplitterLocationToMiddle();
 		
 		if (viabilityTab != null)
-			viabilityTab.updateSplitterLocationToMiddle();
+			viabilityTab.updateSplitterLocation();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
