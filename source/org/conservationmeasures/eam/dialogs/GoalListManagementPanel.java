@@ -21,6 +21,11 @@ public class GoalListManagementPanel extends ObjectListManagementPanel
 		super(splitPositionSaverToUse, new GoalListTablePanel(projectToUse, actions, nodeId),
 				new GoalPropertiesPanel(projectToUse, actions));
 	}
+
+	public String getSplitterDescription()
+	{
+		return getPanelDescription() + SPLITTER_TAG;
+	}
 	
 	public String getPanelDescription()
 	{

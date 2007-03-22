@@ -22,6 +22,11 @@ public class IndicatorListManagementPanel extends ObjectListManagementPanel
 				new IndicatorPropertiesPanel(projectToUse, actions));
 	}
 	
+	public String getSplitterDescription()
+	{
+		return getPanelDescription() + SPLITTER_TAG;
+	}
+	
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION; 

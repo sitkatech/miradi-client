@@ -22,6 +22,11 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 				new TaskPropertiesPanel(projectToUse, actions));
 	}
 	
+	public String getSplitterDescription()
+	{
+		return getPanelDescription() + SPLITTER_TAG;
+	}
+	
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;

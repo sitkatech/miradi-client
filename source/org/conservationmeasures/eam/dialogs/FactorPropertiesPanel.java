@@ -252,16 +252,16 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	public void updateAllSplitterLocations()
 	{
 		if (indicatorsTab != null)
-			indicatorsTab.updateSplitterLocationToMiddle();
+			indicatorsTab.updateSplitterLocation();
 		
 		if (objectivesTab != null)
-			objectivesTab.updateSplitterLocationToMiddle();
+			objectivesTab.updateSplitterLocation();
 		
 		if (goalsTab != null)
-			goalsTab.updateSplitterLocationToMiddle();
+			goalsTab.updateSplitterLocation();
 		
 		if (activitiesTab != null)
-			activitiesTab.updateSplitterLocationToMiddle();
+			activitiesTab.updateSplitterLocation();
 		
 		if (viabilityTab != null)
 			viabilityTab.updateSplitterLocation();

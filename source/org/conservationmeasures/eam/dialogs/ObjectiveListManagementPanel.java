@@ -22,6 +22,11 @@ public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 				new ObjectivePropertiesPanel(projectToUse, actions));
 	}
 	
+	public String getSplitterDescription()
+	{
+		return getPanelDescription() + SPLITTER_TAG;
+	}
+	
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
