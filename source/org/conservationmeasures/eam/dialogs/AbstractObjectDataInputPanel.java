@@ -10,6 +10,8 @@ import java.awt.Rectangle;
 import java.util.Arrays;
 import java.util.Vector;
 
+import javax.swing.border.EmptyBorder;
+
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.ObjectAdjustableStringInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectCheckBoxField;
@@ -55,6 +57,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		orefs = orefsToUse;
 		fields = new Vector();
 		project.addCommandExecutedListener(this);
+		setBorder(new EmptyBorder(5,5,5,5));
 	}
 	
 	public void dispose()
