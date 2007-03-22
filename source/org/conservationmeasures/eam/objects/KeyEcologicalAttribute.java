@@ -51,6 +51,7 @@ public class KeyEcologicalAttribute extends EAMBaseObject
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_DESCRIPTION = "Description";
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
+	public static final String PSUEDO_TAG_VIABILITY_STATUS = "PseudoTagViabilityStatus";
 	
 	public static final String OBJECT_NAME = "Key Ecological Attribute";
 	

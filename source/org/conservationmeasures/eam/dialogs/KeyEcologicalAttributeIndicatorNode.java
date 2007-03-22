@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
-import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.TargetStatusQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
@@ -62,10 +62,11 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 	{
 		String tag = COLUMN_TAGS[column];
 		String rawValue = project.getObjectData(getType(), getObjectReference().getObjectId(), tag);
-		if(tag.equals(Indicator.TAG_PRIORITY))
-			return new PriorityRatingQuestion(tag).findChoiceByCode(rawValue).getLabel();
-		if(tag.equals(Indicator.TAG_STATUS))
-			return new IndicatorStatusRatingQuestion(tag).findChoiceByCode(rawValue).getLabel();
+		if(tag.equals(Indicator.TAG_MEASUREMENT_STATUS))
+		{
+			ChoiceItem choice = new TargetStatusQuestion(tag).findChoiceByCode(rawValue);
+			return choice.getLabel();
+		}
 		
 		return rawValue;
 	}
@@ -80,13 +81,9 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 	}
 	
 	public static final String[] COLUMN_TAGS = {
-		Indicator.TAG_LABEL, 
-		Indicator.TAG_PRIORITY, 
-		Indicator.TAG_STATUS, 
-		Indicator.PSEUDO_TAG_METHODS, 
-		Indicator.PSEUDO_TAG_TARGETS, 
-		Indicator.PSEUDO_TAG_DIRECT_THREATS, 
-	};
+		Indicator.TAG_LABEL,
+		Indicator.TAG_MEASUREMENT_STATUS, 
+		};
 	
 	Project project;
 	Indicator indicator;

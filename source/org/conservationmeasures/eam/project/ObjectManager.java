@@ -261,10 +261,27 @@ public class ObjectManager
 				return getTaskPseudoField(objectId, fieldTag);
 			case ObjectType.PROJECT_METADATA:
 				return getProjectMetadataPseudoField(objectId, fieldTag);
+			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
+				return getKeyEcologicalAttributePseudoField(objectId, fieldTag);
 		}
 		throw new RuntimeException("Unknown PseudoTag: " + fieldTag + " for type " + objectType);	
 	}
 	
+	private String getKeyEcologicalAttributePseudoField(BaseId objectId, String fieldTag)
+	{
+		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, objectId));
+		try
+		{
+			if (fieldTag.equals(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS))
+				return computeTNCViability(kea);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		return "";
+	}
+
 	private String getIndicatorPseudoField(int annotationType, BaseId annotationId, String fieldTag)
 	{
 		try
