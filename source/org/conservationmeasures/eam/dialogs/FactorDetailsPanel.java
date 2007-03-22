@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
@@ -35,6 +36,7 @@ import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.questions.TargetStatusQuestion;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
+import org.martus.swing.UiLabel;
 
 public class FactorDetailsPanel extends ObjectDataInputPanel
 {
@@ -71,16 +73,20 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		addField(createMultilineField(Factor.TAG_COMMENT));
 		
 		
-		
 		if(factorToEdit.isTarget())
 		{
 			addField(createChoiceField(ObjectType.FACTOR, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
-			addField(createRatingChoiceField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS)));
+			 targetRatingField = createRatingChoiceField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS));
+			addField(targetRatingField);
+			addLine(new UiLabel(""), new UiLabel(EAM.text("This 'Status of Target' field is only available in Basic mode")));
 			detailIcon = new TargetIcon();
+			updateEditabilityOfTargetStatusField();
 		}
 		
-		
 		updateFieldsFromProject();
+
+		if(factorToEdit.isTarget())
+			updateEditabilityOfTargetStatusField();
 	}
 
 
@@ -110,7 +116,30 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		return false;
 	}
 
-	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		if(getFactor().isTarget() && event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Target.TAG_VIABILITY_MODE))
+		{
+			updateEditabilityOfTargetStatusField();
+		}
+	}
+
+
+	private void updateEditabilityOfTargetStatusField()
+	{
+		Target target = (Target)getFactor();
+		boolean enableRatingField = true;
+		if(target.isViabilityModeTNC())
+			enableRatingField = false;
+		targetRatingField.getComponent().setEnabled(enableRatingField);
+	}
+
+	public Factor getFactor()
+	{
+		return currentDiagramFactor.getUnderlyingObject();
+	}
+
 	public Icon getIcon()
 	{
 		return detailIcon;
@@ -141,4 +170,5 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	
 	private Icon detailIcon;
 	private FactorCell currentDiagramFactor;
+	private ObjectDataInputField targetRatingField;
 }
