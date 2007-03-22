@@ -39,7 +39,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 		GenericTreeTableModel treeTableModel = getModel();
 		
 		final boolean wereActivityNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS);
-		final boolean wereIndicatorNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE , KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+		final boolean wereIndicatorNodesAddedOrRemoved = wereIndicatorNodesAddedOrRemoved(event);
 		final boolean wereTaskNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.TASK , Task.TAG_SUBTASK_IDS);
 		if(	wereActivityNodesAddedOrRemoved || 
 				wereIndicatorNodesAddedOrRemoved ||
@@ -67,6 +67,16 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 				repaint();
 			}
 		}
+	}
+
+	private boolean wereIndicatorNodesAddedOrRemoved(CommandExecutedEvent event)
+	{
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE , KeyEcologicalAttribute.TAG_INDICATOR_IDS))
+			return true;
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Factor.TAG_INDICATOR_IDS))
+			return true;
+		
+		return false;
 	}
 
 	
