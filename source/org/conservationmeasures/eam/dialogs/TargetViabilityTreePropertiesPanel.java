@@ -81,6 +81,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		indicatorThreshold = (ViabilityRatingsTableField)
 			addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new MeasurementStatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
 		
+		ObjectDataInputField goalShortLable = addField(createStringField(ObjectType.GOAL, Goal.TAG_SHORT_LABEL, STD_SHORT));
+		ObjectDataInputField goalLabel = addField(createStringField(ObjectType.GOAL, Goal.TAG_LABEL));
 		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
 		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
 		ObjectDataInputField desiredSummary = addField(createStringField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
@@ -170,19 +172,28 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 
 		Box box7 = Box.createHorizontalBox();
-		box7.add(createColumnJPanel(desiredStatus, col1Model));
+		box7.add(createColumnJPanel(goalShortLable,col1Model));
 		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
-		
-		box7.add(createColumnJPanel(byWhen, col2Model));
-		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
-		
-		box7.add(createColumnJPanelWithIcon(desiredSummary, new GoalIcon(), col3Model));
-		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
-		
-		box7.add(createColumnBox(desiredDetail));
+		box7.add(createColumnBox(goalLabel));
 		mainGridPanel.add(makeBoldLabel(EAM.text("Future Status/Goal")));
 		mainGridPanel.add(box7);
 
+		
+		Box box8 = Box.createHorizontalBox();
+		box8.add(createColumnJPanel(desiredStatus, col1Model));
+		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
+		box8.add(createColumnJPanel(byWhen, col2Model));
+		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
+		box8.add(createColumnJPanelWithIcon(desiredSummary, new GoalIcon(), col3Model));
+		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
+		
+		box8.add(createColumnBox(desiredDetail));
+		mainGridPanel.add(makeBoldLabel(""));
+		mainGridPanel.add(box8);
+		
+		
 		main.add(mainGridPanel);
 
 		addFieldComponent(main);
