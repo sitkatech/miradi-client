@@ -175,7 +175,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box7.add(createColumnJPanel(goalShortLable,col1Model));
 		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box7.add(createColumnBox(goalLabel));
-		mainGridPanel.add(makeBoldLabel(EAM.text("Future Status/Goal")));
+		mainGridPanel.add(createSplitLabel(EAM.text("Future Status"), EAM.text("/Goal")));
 		mainGridPanel.add(box7);
 
 		
@@ -216,6 +216,14 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		Font font = label.getFont();
 		label.setFont(font.deriveFont(Font.BOLD));
 		return label;
+	}
+	
+	private Box createSplitLabel(String text1, String text2)
+	{
+		Box box = Box.createVerticalBox();
+		box.add(makeBoldLabel(text1));
+		box.add(makeBoldLabel(text2));
+		return box;
 	}
 	
 	private Box createOptionGroup()
