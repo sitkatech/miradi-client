@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogfields;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
@@ -200,6 +201,8 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		{
 			setOpaque(false);
 			JTextField field = new JTextField((String)value);
+			field.setFont(field.getFont().deriveFont(Font.BOLD));
+			field.setHorizontalAlignment(JTextField.CENTER);
 			field.setBackground(question.getChoices()[column+1].getColor());
 			return field;
 		}
