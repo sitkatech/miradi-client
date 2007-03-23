@@ -273,7 +273,11 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	{
 		effort.setUnitQuantity(units);
 		effortList.setDateRangeEffort(effort);
-		Command command = new CommandSetObjectData(assignment.getType(), assignment.getId(), assignment.TAG_DATERANGE_EFFORTS, effortList.toString());
+		String newEffortListString = effortList.toString();
+		if(newEffortListString.equals(assignment.getData(assignment.TAG_DATERANGE_EFFORTS)))
+			return;
+		
+		Command command = new CommandSetObjectData(assignment.getType(), assignment.getId(), assignment.TAG_DATERANGE_EFFORTS, newEffortListString);
 		project.executeCommand(command);
 	}
 	
