@@ -16,6 +16,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -51,6 +52,7 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	public UiLabel createLabel(ObjectDataInputField field)
 	{
 		UiLabel label = new UiLabel(EAM.fieldLabel(field.getObjectType(), field.getTag()), JLabel.LEFT);
+		label.setBorder(new EmptyBorder(0,0,0,8));
 		label.setVerticalAlignment(SwingConstants.TOP);
 		return label;
 	}
@@ -68,19 +70,24 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		return box;
 	}
 
+	public JPanel createColumnJPanel(ObjectDataInputField field)
+	{
+		return createColumnJPanel(field, field.getComponent().getPreferredSize());
+	}
+	
 	public JPanel createColumnJPanel(ObjectDataInputField field, Dimension dim)
 	{
 		JPanel box = createGridLayoutPanel(2,1);
+		box.setBorder(new EmptyBorder(0,8,0,0));
 		field.getComponent().setMaximumSize(new Dimension(dim.width, field.getComponent().getPreferredSize().height));
 		box.add(createLabel(field));
 		box.add(field.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
 		return box;
 	}
 	
-	public JPanel createColumnJPanelWithIcon(ObjectDataInputField field, Icon icon, Dimension dim)
+	public JPanel createColumnJPanelWithIcon(ObjectDataInputField field, Icon icon)
 	{
 		JPanel box = createGridLayoutPanel(2,1);
-		field.getComponent().setMaximumSize(new Dimension(dim.width, field.getComponent().getPreferredSize().height));
 		box.add(createLabel(field));
 		
 		JPanel boxIcon = createGridLayoutPanel(1,2);
