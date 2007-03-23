@@ -427,31 +427,7 @@ public class BudgetTotalsCalculator
 		
 		return totalStrategyCost;
 	}
-	
-	
-	private double getIndicatorTotal(Factor factor, DateRange dateRange) throws Exception
-	{
-		double totalIndicatorCost = 0.0;
-		IdList idList = factor.getIndicators();
-		for (int i = 0; i < idList.size(); i++)
-		{
-			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, idList.get(i));
-			IdList taskIds = indicator.getTaskIdList();
-			totalIndicatorCost += getTotalTasksCost(taskIds, dateRange);
-		}
-		return totalIndicatorCost;
-	}
 
-	
-	public double getTotalFactorCost(Factor factor, DateRange dateRange) throws Exception
-	{
-		if (factor.getIndicators().size() > 0)
-			return getIndicatorTotal(factor, dateRange);
-		
-		return getTotalStrategyCost(factor, dateRange);
-	}
-	
-	
 	public double getTotalTasksCost(IdList taskIds, DateRange dateRange) throws Exception
 	{
 		double totalTaskCost = 0.0;
@@ -481,7 +457,7 @@ public class BudgetTotalsCalculator
 				return getTotalIndicatorCost(oRef, dateRange);
 			
 			if (type == ObjectType.FACTOR)
-				return getTotalFactorCost(getFactor(oRef), dateRange);
+				return getTotalStrategyCost(getFactor(oRef), dateRange);
 
 			if (oRef.getObjectType() == ObjectType.TASK)
 				return getTotalTaskCost(new TaskId(oRef.getObjectId().asInt()), dateRange);
