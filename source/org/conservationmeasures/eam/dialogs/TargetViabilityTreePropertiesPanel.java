@@ -16,6 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -74,7 +75,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField measurementTrend = addField(createIconChoiceField(ObjectType.INDICATOR, new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND)));
 		ObjectDataInputField measurementDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DATE));
 		ObjectDataInputField measurementSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_SUMMARY,STD_SHORT));
-		ObjectDataInputField measurementDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,STD_SHORT));
+		ObjectDataInputField measurementDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_MEASUREMENT_DETAIL,NARROW_DETAILS));
 		ObjectDataInputField measureementStatusConfidence = addField(createChoiceField(ObjectType.INDICATOR,  new StatusConfidenceQuestion(Indicator.TAG_MEASUREMENT_STATUS_CONFIDENCE)));
 		ObjectDataInputField ratingSource = addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
 		indicatorThreshold = (ViabilityRatingsTableField)
@@ -85,13 +86,14 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new MeasurementStatusQuestion(Goal.TAG_DESIRED_STATUS)));
 		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
 		ObjectDataInputField desiredSummary = addField(createStringField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
-		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,STD_SHORT));
+		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,NARROW_DETAILS));
 		
 
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
 
 		JPanel mainGridPanel = createGridLayoutPanel(0,2);
 		
+		// KEA Section 
 		Box box1 = Box.createHorizontalBox();
 		box1.add(keaLabel.getComponent());
 		box1.add(Box.createHorizontalStrut(STD_SPACE_20));
@@ -109,28 +111,27 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(keaDescPanel);
 
-		
+		addBlankLine(mainGridPanel);
+
+		// Indicator Section 
 		Box box2 = Box.createHorizontalBox();
 		box2.add(indicatorLabel.getComponent());
 		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(createLabel(indicatorShortLabel));
-		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(indicatorShortLabel.getComponent());
 		mainGridPanel.add(makeBoldLabel(indicatorLabel));
 		mainGridPanel.add(box2);
-		
-		addBlankLine(mainGridPanel);
 
-		JPanel boxIndrPrty = createGridLayoutPanel(1,4);
+		JPanel boxIndrPrty = createGridLayoutPanel(1,5);
 		boxIndrPrty.add(createLabel(indicatorPriority));
 		boxIndrPrty.add(indicatorPriority.getComponent());
+		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
 		boxIndrPrty.add(createLabel(monitoringStatus));
 		boxIndrPrty.add(monitoringStatus.getComponent());
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(boxIndrPrty);
 
-		addBlankLine(mainGridPanel);
-
+		// Indicator Rating Section
 		mainGridPanel.add(makeBoldLabel(indicatorThreshold));
 		JPanel box3 = createGridLayoutPanel(0,2);
 		box3.add(indicatorThreshold.getComponent());
@@ -143,43 +144,46 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		addBlankLine(mainGridPanel);
 
-		
-		
-		JPanel box5 = createGridLayoutPanel(1,4);
+		// Current Status section
+		JPanel box5 = createGridLayoutPanel(1,5);
 		box5.add(createColumnJPanel(measurementStatus));
 		box5.add(createColumnJPanel(measurementDate));
+		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box5.add(createColumnJPanelWithIcon(measurementSummary,new IndicatorIcon()));
 		box5.add(createColumnJPanel(measurementDetail));
-		mainGridPanel.add(makeBoldLabel(EAM.text("Current Status")));
+		mainGridPanel.add(makeSectionLabel(EAM.text("Current Status")));
 		mainGridPanel.add(box5);
 		
-
-		JPanel box6 = createGridLayoutPanel(1,2);
-		box6.add(createColumnJPanel(measureementStatusConfidence));
-		box6.add(createColumnJPanel(measurementTrend));
+		JPanel box6 = createGridLayoutPanel(1,5);
+		box6.add(add(createLabel(measureementStatusConfidence)));
+		box6.add(measureementStatusConfidence.getComponent());
+		box6.add(Box.createHorizontalStrut(STD_SPACE_20));
+		box6.add(add(createLabel(measurementTrend)));
+		box6.add(measurementTrend.getComponent());
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box6);
 		
 		addBlankLine(mainGridPanel);
 
-		JPanel box7 = createGridLayoutPanel(1,3);
+		// Goal section
+		mainGridPanel.add(makeSectionLabel(EAM.text("Future Status")));
+
+		JPanel box7 = createGridLayoutPanel(1,4);
 		box7.add(goalLabel.getComponent());
+		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box7.add(createLabel(goalShortLabel));
 		box7.add(goalShortLabel.getComponent());
-
-		mainGridPanel.add(createSplitLabel(EAM.text("Future Status"), EAM.text("(aka Goal)")));
 		mainGridPanel.add(box7);
 
-		addBlankLine(mainGridPanel);
-		
-		JPanel box8 = createGridLayoutPanel(1,4);
+		JPanel box8 = createGridLayoutPanel(1,5);
 		box8.add(createColumnJPanel(desiredStatus));
 		box8.add(createColumnJPanel(byWhen));
+		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box8.add(createColumnJPanelWithIcon(desiredSummary, new GoalIcon()));
 		box8.add(createColumnJPanel(desiredDetail));
-		mainGridPanel.add(makeBoldLabel(""));
+		UiLabel goalSectionLabel = makeSectionLabel(EAM.text("(Goal)"));
+		mainGridPanel.add(goalSectionLabel);
 		mainGridPanel.add(box8);
-		
 		
 		main.add(mainGridPanel);
 
@@ -193,9 +197,11 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(new UiLabel("  "));
 	}
 	
-	private UiLabel makeBoldLabel(String field)
+	private UiLabel makeSectionLabel(String field)
 	{
-		return makeBold(new UiLabel(field));
+		UiLabel label = new UiLabel(field);
+		label.setVerticalAlignment(SwingConstants.TOP);
+		return makeBold(label);
 	}
 
 	private UiLabel makeBoldLabel(ObjectDataInputField field)
@@ -209,14 +215,6 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		Font font = label.getFont();
 		label.setFont(font.deriveFont(Font.BOLD));
 		return label;
-	}
-	
-	private Box createSplitLabel(String text1, String text2)
-	{
-		Box box = Box.createVerticalBox();
-		box.add(makeBoldLabel(text1));
-		box.add(makeBoldLabel(text2));
-		return box;
 	}
 	
 	private Box createOptionGroup()
@@ -322,5 +320,6 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	
 	private ViabilityRatingsTableField indicatorThreshold;
 	private static final int STD_SPACE_20 = 20;
+	private static final int NARROW_DETAILS = 30;
 
 }
