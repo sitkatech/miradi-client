@@ -87,7 +87,9 @@ public class StratPlanObjective extends TreeTableNode
 		strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
 		Arrays.sort(strategies, new IgnoreCaseStringComparator());
 	}
-	
+
+	// FIXME: I believe this method should be renamed doesChainContainObjective, and
+	// the call to getGoals() can be removed. kbs 2007-03-23
 	private boolean doesChainContainDesire(Factor chainMember, BaseId desireId)
 	{
 		Factor[] chainNodes = project.getDiagramModel().getAllUpstreamDownstreamNodes(chainMember).toNodeArray();
@@ -95,6 +97,7 @@ public class StratPlanObjective extends TreeTableNode
 		{
 			if(chainNodes[i].getObjectives().contains(desireId))
 				return true;
+
 			if(chainNodes[i].getGoals().contains(desireId))
 				return true;
 		}
