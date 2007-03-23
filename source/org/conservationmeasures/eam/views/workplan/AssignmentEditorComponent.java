@@ -50,6 +50,9 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 
 	public void setTaskId(BaseId taskId)
 	{ 
+		scrollTable.stopCellEditing();
+		scrollTable.stopCellEditing();
+
 		lockedTable.setTask(taskId);
 		scrollTable.setTask(taskId);
 		Task task = (Task)project.findObject(ObjectType.TASK, taskId);

@@ -150,6 +150,15 @@ public class BudgetTable extends JTable implements ObjectPicker
 		return (AssignmentTableModelSplittableShell)getModel();
 	}
 	
+	public void stopCellEditing()
+	{
+		TableCellEditor editor = getCellEditor();
+		if (editor == null)
+			return;
+
+		editor.stopCellEditing();
+	}
+	
 	public void cancelCellEditing()
 	{
 		TableCellEditor editor = getCellEditor();
