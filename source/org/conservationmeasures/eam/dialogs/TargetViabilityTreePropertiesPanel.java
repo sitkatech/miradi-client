@@ -51,12 +51,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 {
 	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		this(projectToUse, actions, new FactorId(BaseId.INVALID.asInt()));
-	}
-	
-	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions, BaseId idToShow) throws Exception
-	{
-		super(projectToUse, new ORef(ObjectType.FACTOR, idToShow));
+		super(projectToUse, new ORef(ObjectType.FACTOR, new FactorId(BaseId.INVALID.asInt())));
 		ObjectDataInputField keaLabel = addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
 		ObjectDataInputField keaDesc = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
 		ObjectDataInputField keaType = addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
@@ -82,9 +77,9 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField desiredSummary = addField(createStringField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
 		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,NARROW_DETAILS));
 		
-
+		
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
-
+		
 		JPanel mainGridPanel = createGridLayoutPanel(0,2);
 		
 		// KEA Section 
@@ -96,7 +91,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box1.add(keaType.getComponent());
 		mainGridPanel.add(makeBoldLabel(keaLabel));
 		mainGridPanel.add(box1);
-
+		
 		
 		Box keaDescPanel = Box.createHorizontalBox();
 		keaDescPanel.add(createLabel(keaDesc));
@@ -104,9 +99,9 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		keaDescPanel.add(keaDesc.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(keaDescPanel);
-
+		
 		addBlankLine(mainGridPanel);
-
+		
 		// Indicator Section 
 		Box box2 = Box.createHorizontalBox();
 		box2.add(indicatorLabel.getComponent());
@@ -115,7 +110,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box2.add(indicatorShortLabel.getComponent());
 		mainGridPanel.add(makeBoldLabel(indicatorLabel));
 		mainGridPanel.add(box2);
-
+		
 		JPanel boxIndrPrty = createGridLayoutPanel(1,5);
 		boxIndrPrty.add(createLabel(indicatorPriority));
 		boxIndrPrty.add(indicatorPriority.getComponent());
@@ -124,7 +119,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		boxIndrPrty.add(monitoringStatus.getComponent());
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(boxIndrPrty);
-
+		
 		// Indicator Rating Section
 		mainGridPanel.add(makeBoldLabel(indicatorThreshold));
 		JPanel box3 = createGridLayoutPanel(0,2);
@@ -137,7 +132,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box3);
 		
 		addBlankLine(mainGridPanel);
-
+		
 		// Current Status section
 		JPanel box5 = createGridLayoutPanel(1,5);
 		box5.add(createColumnJPanel(measurementStatus));
@@ -158,17 +153,17 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box6);
 		
 		addBlankLine(mainGridPanel);
-
+		
 		// Goal section
 		mainGridPanel.add(makeSectionLabel(EAM.text("Future Status")));
-
+		
 		JPanel box7 = createGridLayoutPanel(1,4);
 		box7.add(goalLabel.getComponent());
 		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box7.add(createLabel(goalShortLabel));
 		box7.add(goalShortLabel.getComponent());
 		mainGridPanel.add(box7);
-
+		
 		JPanel box8 = createGridLayoutPanel(1,5);
 		box8.add(createColumnJPanel(desiredStatus));
 		box8.add(createColumnJPanel(byWhen));
@@ -180,11 +175,11 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box8);
 		
 		main.add(mainGridPanel);
-
+		
 		addFieldComponent(main);
 		updateFieldsFromProject();
 	}
-
+	
 	private void addBlankLine(JPanel mainGridPanel)
 	{
 		mainGridPanel.add(new UiLabel("  "));
