@@ -31,7 +31,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -53,11 +52,6 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
 		this(projectToUse, actions, new FactorId(BaseId.INVALID.asInt()));
-	}
-	
-	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions, Factor factor) throws Exception
-	{
-		this(projectToUse, actions, factor.getId());
 	}
 	
 	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions, BaseId idToShow) throws Exception
