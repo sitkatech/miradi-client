@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargetStatusStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability2Step;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
@@ -194,7 +194,7 @@ public class Actions
 		registerAction(new ActionJumpDiagramWizardProjectScopeStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardVisionStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardDefineTargetsStep(mainWindow));
-		registerAction(new ActionJumpDescribeTargetStatusStep(mainWindow));
+		registerAction(new ActionJumpTargetViability2Step(mainWindow));
 		registerAction(new ActionJumpDiagramWizardIdentifyDirectThreatStep(mainWindow));
 		registerAction(new ActionJumpThreatMatrixOverviewStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardIdentifyIndirectThreatStep(mainWindow));

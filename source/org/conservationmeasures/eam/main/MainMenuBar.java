@@ -77,7 +77,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivi
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargetStatusStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability2Step;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
@@ -251,7 +251,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu1b, ActionJumpDiagramWizardProjectScopeStep.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu1b, ActionJumpDiagramWizardVisionStep.class, KeyEvent.VK_E);
 		addMenuItem(actions, menu1b, ActionJumpDiagramWizardDefineTargetsStep.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu1b, ActionJumpDescribeTargetStatusStep.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu1b, ActionJumpTargetViability2Step.class, KeyEvent.VK_D);
 		
 		JMenu menu1c = new JMenu("1C. Identify Critical Threats");
 		menu1c.setMnemonic(KeyEvent.VK_U);

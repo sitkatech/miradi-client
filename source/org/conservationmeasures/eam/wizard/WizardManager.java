@@ -60,7 +60,6 @@ import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProj
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability1Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability2Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability3Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability4Step;
@@ -259,18 +258,19 @@ public class WizardManager
 		createStepEntry(new DiagramWizardVisionStep(panel));
 		createStepEntry(new DiagramWizardDefineTargetsStep(panel));
 		createStepEntry(new DiagramWizardReviewAndModifyTargetsStep(panel));
-		createStepEntry(new DescribeTargetStatusStep(panel));
-		//TODO rename TargetViability Classes to reflect
-		createStepEntry(new TargetViability2Step(panel)).createControl("DoneViabilityAnalysis", DiagramWizardIdentifyDirectThreatStep.class);
-		createStepEntry(new TargetViability1Step(panel));
-		createStepEntry(new TargetViability3Step(panel));
+		//TODO rename TargetViability Classes to identif which step is which
+		createStepEntry(new TargetViability2Step(panel)).
+					createControl("DoneViabilityAnalysis", DiagramWizardIdentifyDirectThreatStep.class).
+					createControl("DetailedViability", TargetViability3Step.class);
+		createStepEntry(new DescribeTargetStatusStep(panel)).createControl(CONTROL_NEXT, DiagramWizardIdentifyDirectThreatStep.class);
+		createStepEntry(new TargetViability3Step(panel)).createControl(CONTROL_BACK, TargetViability2Step.class);
 		createStepEntry(new TargetViability4Step(panel));
 		createStepEntry(new TargetViability5Step(panel));
 		createStepEntry(new TargetViability6Step(panel));
 		createStepEntry(new TargetViability7Step(panel));
-		createStepEntry(new TargetViability8Step(panel));
+		createStepEntry(new TargetViability8Step(panel)).createControl(CONTROL_NEXT, TargetViability2Step.class);
 		
-		createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel));
+		createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel)).createControl(CONTROL_BACK, TargetViability2Step.class);
 		createStepEntry(new DiagramWizardLinkDirectThreatsToTargetsStep(panel));
 		createStepEntry(new DiagramWizardIdentifyIndirectThreatStep(panel));		
 		createStepEntry(new DiagramWizardConstructChainsStep(panel));	
@@ -323,9 +323,8 @@ public class WizardManager
 				DiagramWizardVisionStep.class,
 				DiagramWizardDefineTargetsStep.class,
 				DiagramWizardReviewAndModifyTargetsStep.class,
-				DescribeTargetStatusStep.class,
-				TargetViability1Step.class,
 				TargetViability2Step.class,
+				DescribeTargetStatusStep.class,
 				TargetViability3Step.class,
 				TargetViability4Step.class,
 				TargetViability5Step.class,

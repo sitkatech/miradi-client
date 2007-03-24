@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDescribeTargetStatusStep extends MainWindowAction
+public class ActionJumpTargetViability2Step extends MainWindowAction
 {
-	public ActionJumpDescribeTargetStatusStep(MainWindow mainWindowToUse)
+	public ActionJumpTargetViability2Step(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
