@@ -1,1 +1,1 @@
-{"Type":"Target","Comment":"","GoalIds":"{\"Ids\":[38]}","IndicatorId":14,"IndicatorIds":"{\"Ids\":[14]}","Label":"Seabirds","Id":3,"ObjectiveIds":""}
+{"Type":"Target","Comment":"Seabirds nest in colonies on small islets off the main island.","GoalIds":"{\"Ids\":[38]}","IndicatorIds":"{\"Ids\":[14]}","TargetStatus":"1","Label":"Seabirds","Id":3,"ObjectiveIds":""}
