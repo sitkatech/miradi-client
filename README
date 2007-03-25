@@ -5,7 +5,7 @@ Copyright 2005-2007, Wildlife Conservation Society, Bronx, New York
     Beneficent Technology, Inc. ("The Benetech Initiative"), 
     Palo Alto, California. 
 
-VERSION 1.0.1 (Beta)
+VERSION 1.0.2 (Beta)
 
 Not for Redistribution
 This pre-release version is intended for evaluation and feedback only. 
@@ -109,9 +109,9 @@ example project, you must manually delete the Miradi (or eAM) project
 directory before installing Miradi. This Miradi (or eAM) directory is in 
 your HOME directory.
 
-If you installed e-Adaptive Management, we recommend that you uninstall it 
-first, and then install Miradi. Your existing e-Adaptive Management projects 
-(in the eAM directory) will be imported into Miradi. 
+If you installed e-Adaptive Management, and have not used an earlier version 
+of Miradi, your projects will not be migrated automatically. Please contact 
+the Miradi support team for help migrating e-AM projects into Miradi.
 
 
 ---------------------
