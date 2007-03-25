@@ -142,6 +142,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if(!Arrays.asList(args).contains("--nosplash"))
 		{
 			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
+			aboutDoer.setMainWindow(this);
 			aboutDoer.doIt();
 		}
 		
