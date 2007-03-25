@@ -122,6 +122,11 @@ public class DefinitionCommonTerms
 			"precise, consistent, and sensitive.");
 		defs.put("Definition:Indicator", def);
 		
+		def = new Definition("KEA", 
+			"KEA (Key Ecological Attribute) - An aspect of a target's biology or ecology " +
+			"that if present, defines a healthy target and if missing or altered, " +
+			"would lead to the outright loss or extreme degradation of that target over time.");
+		defs.put("Definition:KEA", def);
 
 		def = new Definition("Method",
 			"Method - A specific technique used to collect data to measure an indicator.  " +
@@ -214,7 +219,7 @@ public class DefinitionCommonTerms
 				"severity, and irreversibility criteria. ");
 		defs.put("Definition:OverallThreatRating", def);
 		
-		def = new Definition("Irreversibility", "Irreversibility – The degree to which the effects of a threat can be undone and the biodiversity targets affected by the threat restored, if the threat is stopped.\n" + 
+		def = new Definition("Irreversibility", "Irreversibility ï¿½ The degree to which the effects of a threat can be undone and the biodiversity targets affected by the threat restored, if the threat is stopped.\n" + 
 		"4 = Very High: The effects of the threat cannot be undone, and it is very unlikely the target can be restored (e.g., wetlands converted to a shopping centre). \n" +
 		"3 = High: The effects of the threat can technically be undone and the target restored, but it is not practically affordable (e.g., wetland converted to agriculture).\n" + 
 		"2 = Medium: The effects of the threat can be undone and the target restored with a reasonable commitment of resources (e.g., ditching and draining of wetland). \n" +
