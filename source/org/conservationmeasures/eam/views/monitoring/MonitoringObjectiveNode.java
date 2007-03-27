@@ -11,8 +11,8 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -20,20 +20,22 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringObjectiveNode extends MonitoringNode
 {
-	public MonitoringObjectiveNode(Project projectToUse, Objective objectiveToUse)
+	public MonitoringObjectiveNode(Project projectToUse, Objective objectiveToUse) throws Exception
 	{
 		project = projectToUse;
 		objective = objectiveToUse;
 		children = new Vector();
 		
-		HashSet indicatorIds = new HashSet();
-		indicatorIds.addAll(getAlUpstreamIndicators(getNodesWithThisObjective(objective.getId())));
+		ChainManager chainManager = project.getChainManager();
+		Factor owner = (Factor)chainManager.getOwner(objective.getRef());
+		HashSet indicatorIds = getAllUpstreamIndicators(owner);
 		
 		Iterator iter = indicatorIds.iterator();
 		while(iter.hasNext())
@@ -52,25 +54,28 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		return objective;
 	}
 
-	private HashSet getAlUpstreamIndicators(FactorSet nodes)
+	private HashSet getAllUpstreamIndicators(Factor factor)
 	{
-		HashSet indicatorIds = new HashSet(); 
-		Iterator objectiveNodesIterator = nodes.iterator();
-		while(objectiveNodesIterator.hasNext())
+		HashSet indicatorIds = getFactorIndicatorIds(factor);
+		
+		FactorSet chain = project.getDiagramModel().getAllUpstreamNodes(factor);
+		Iterator chainNodesIterator = chain.iterator();
+		while(chainNodesIterator.hasNext())
 		{
-			Factor nodeWithObjective = (Factor)objectiveNodesIterator.next();
-			for(int i = 0; i < nodeWithObjective.getIndicators().size(); ++i)
-				indicatorIds.add(nodeWithObjective.getIndicators().get(i));
-			FactorSet nodesInChain = project.getDiagramModel().getAllUpstreamNodes(nodeWithObjective);
-			Iterator chainNodesIterator = nodesInChain.iterator();
-			while(chainNodesIterator.hasNext())
-			{
-				Factor nodeInChain = (Factor)chainNodesIterator.next();
-				for(int i = 0; i < nodeInChain.getIndicators().size(); ++i)
-					indicatorIds.add(nodeInChain.getIndicators().get(i));
-			}
+			Factor chainFactor = (Factor)chainNodesIterator.next();
+			indicatorIds.addAll(getFactorIndicatorIds(chainFactor));
 		}
 		indicatorIds.remove(new IndicatorId(BaseId.INVALID.asInt()));
+		return indicatorIds;
+	}
+
+	private HashSet getFactorIndicatorIds(Factor factor)
+	{
+		ChainManager chainManager = project.getChainManager();
+		IdList ids = chainManager.getDirectOrIndirectIndicators(factor);
+		HashSet indicatorIds = new HashSet(); 
+		for(int i = 0; i < ids.size(); ++i)
+			indicatorIds.add(ids.get(i));
 		return indicatorIds;
 	}
 
@@ -105,21 +110,8 @@ public class MonitoringObjectiveNode extends MonitoringNode
 			return objective.getLabel();
 		return "";
 	}
-	
-	// FIXME: Use new ChainManager getOwner method instead (Kevin)
-	private FactorSet getNodesWithThisObjective(BaseId objectiveId)
-	{
-		FactorSet result = new FactorSet();
-		FactorId[] allNodeIds = project.getFactorPool().getModelNodeIds();
-		for(int i = 0; i < allNodeIds.length; ++i)
-		{
-			Factor node = project.findNode(allNodeIds[i]);
-			if(node.getObjectives().contains(objectiveId))
-				result.attemptToAdd(node);
-		}
-		return result;
-	}
-	
+
+	// FIXME: Shouldn't we use this instead of having the logic in the constructor?
 	public void rebuild() throws Exception
 	{
 	}

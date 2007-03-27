@@ -77,7 +77,7 @@ public class MonitoringGoalNode extends MonitoringNode
 		children.addAll(createObjectiveNodes(relatedNodes));
 	}
 	
-	private Vector createObjectiveNodes(FactorSet relatedNodesToUse)
+	private Vector createObjectiveNodes(FactorSet relatedNodesToUse) throws Exception
 	{
 		Vector result = new Vector();
 		Iterator iter = relatedNodesToUse.iterator();
