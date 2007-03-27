@@ -26,6 +26,12 @@ public class TestFactorDataMap extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 	}
+	
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
+	}
 
 	public void testFactorDataMap() throws Exception
 	{

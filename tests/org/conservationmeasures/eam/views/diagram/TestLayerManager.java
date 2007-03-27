@@ -41,10 +41,16 @@ public class TestLayerManager extends EAMTestCase
 		cmIntervention = new Strategy(takeNextModelNodeId());
 		cmIntervention.setLabel("Strategy");
 		
-		ProjectForTesting project = new ProjectForTesting(getName());
+		project = new ProjectForTesting(getName());
 		target = project.createFactorCell(Factor.TYPE_TARGET);
 		factor = project.createFactorCell(Factor.TYPE_CAUSE);
 		intervention = project.createFactorCell(Factor.TYPE_STRATEGY);
+	}
+	
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
 	}
 
 	public void testDefaultAllVisible() throws Exception
@@ -156,6 +162,7 @@ public class TestLayerManager extends EAMTestCase
 	Cause cmFactor;
 	Strategy cmIntervention;
 	
+	ProjectForTesting project;
 	FactorCell target;
 	FactorCell factor;
 	FactorCell intervention;
