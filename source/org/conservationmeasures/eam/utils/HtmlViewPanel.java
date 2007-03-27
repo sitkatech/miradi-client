@@ -10,7 +10,6 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -78,31 +77,41 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		bodyComponent.setFont(Font.getFont("Arial"));
 		dlg.setBackground(bodyComponent.getBackground());
 
+		JComponent buttonBar = createButtonBar(dlg);
+		
 		Container contents = dlg.getContentPane();
 		contents.setLayout(new BorderLayout());
 		contents.add(new FastScrollPane(bodyComponent), BorderLayout.CENTER);
-		contents.add(createButtonBar(dlg), BorderLayout.AFTER_LAST_LINE);
+		contents.add(buttonBar, BorderLayout.AFTER_LAST_LINE);
 		
-		calculateHeight(dlg, contents, bodyComponent);
+		calculateHeight(dlg, contents, bodyComponent, buttonBar);
 		Utilities.centerDlg(dlg);
 		close.requestFocus(true);
 		dlg.setVisible(true);
 	}
 
 
-	private void calculateHeight(EAMDialog dlg, Container contents, HtmlFormViewer bodyComponent)
+	private void calculateHeight(EAMDialog dlg, Container contents, HtmlFormViewer bodyComponent, JComponent buttonBar)
 	{
-		final int buttonBarHeight = 40;
-		final int forcedWidth = 900;
+		// Choose a "reasonable" width, a bit narrower than the screen
+		Dimension availableSize = Utilities.getViewableRectangle().getSize();
+		final int forcedWidth = availableSize.width - 200;
 		
+		// Compute dialog size based on that fixed content width
 		bodyComponent.setFixedWidth(bodyComponent, forcedWidth);
-		Rectangle rectangle = Utilities.getViewableRectangle();
-		Dimension dim = contents.getPreferredSize();
+		Dimension preferredContentSize = contents.getPreferredSize();
+		preferredContentSize.height += buttonBar.getPreferredSize().height;
+		dlg.getContentPane().setPreferredSize(preferredContentSize);
+
+		// Prevent dialog from being larger than the available screen space
+		Dimension candidateDialogSize = dlg.getPreferredSize();
+		candidateDialogSize.width = Math.min(candidateDialogSize.width, availableSize.width);
+		candidateDialogSize.height = Math.min(candidateDialogSize.height, availableSize.width);
 		
-		if (rectangle.height > dim.height)
-			rectangle.height = dim.height + buttonBarHeight;
-//FIXME: method needs to be re thought (Kevin)
-		dlg.setSize(forcedWidth, rectangle.height);
+		// TODO: If the dialog is too wide and not very tall, retry with a narrower width 
+
+		// Make it so
+		dlg.setSize(candidateDialogSize);
 	}
 
 
