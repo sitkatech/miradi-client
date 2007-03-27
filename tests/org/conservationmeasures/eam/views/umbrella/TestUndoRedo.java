@@ -55,7 +55,7 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getFactorCount());
 		
-		project.getDiagramModel().getDiagramFactorByWrappedId(insertedId);
+		project.getDiagramModel().getFactorCellByWrappedId(insertedId);
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();

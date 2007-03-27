@@ -52,7 +52,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	public void testSingleUndo() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		assertTrue("no link?", model.areLinked(model.getDiagramFactorByWrappedId(fromId), model.getDiagramFactorByWrappedId(toId)));
+		assertTrue("no link?", model.areLinked(model.getFactorCellByWrappedId(fromId), model.getFactorCellByWrappedId(toId)));
 		
 		// undo add linkage to diagram
 		project.undo();
@@ -60,7 +60,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		// undo create model linkage
 		project.undo();
 		
-		assertFalse("didn't undo?", model.areLinked(model.getDiagramFactorByWrappedId(fromId), model.getDiagramFactorByWrappedId(toId)));
+		assertFalse("didn't undo?", model.areLinked(model.getFactorCellByWrappedId(fromId), model.getFactorCellByWrappedId(toId)));
 	}
 	
 	public void testMultipleUndo() throws Exception
@@ -76,7 +76,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		// undo create model linkage
 		project.undo();
 		
-		assertFalse("didn't undo?", model.areLinked(model.getDiagramFactorByWrappedId(fromId), model.getDiagramFactorByWrappedId(toId)));
+		assertFalse("didn't undo?", model.areLinked(model.getFactorCellByWrappedId(fromId), model.getFactorCellByWrappedId(toId)));
 		verifyLinkageNotPresent(linkId);
 
 		// undo diagram node add
@@ -203,7 +203,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		
 		EAM.setLogToString();
-		assertNull("Found the deleted factor?", model.getDiagramFactorByWrappedId(cellId));
+		assertNull("Found the deleted factor?", model.getFactorCellByWrappedId(cellId));
 		EAM.setLogToConsole();
 	}
 	

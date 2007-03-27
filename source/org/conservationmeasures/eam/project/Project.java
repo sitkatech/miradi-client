@@ -334,7 +334,7 @@ public class Project
 			FactorId modelNodeId = new FactorId(objectId.asInt());
 			if(model.doesFactorExist(modelNodeId))
 			{
-				FactorCell diagramNode = getDiagramModel().getDiagramFactorByWrappedId(modelNodeId);
+				FactorCell diagramNode = getDiagramModel().getFactorCellByWrappedId(modelNodeId);
 				getDiagramModel().updateCell(diagramNode);
 			}
 		}
@@ -929,7 +929,7 @@ public class Project
 	{
 		try
 		{
-			FactorCell nodeToSelect = diagramModel.getDiagramFactorByWrappedId(idToUse);
+			FactorCell nodeToSelect = diagramModel.getFactorCellByWrappedId(idToUse);
 			selectionModel.setSelectionCell(nodeToSelect);
 		}
 		catch (Exception e)

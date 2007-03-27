@@ -68,7 +68,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	void launchPropertiesEditor(FactorId id) throws Exception, CommandFailedException
 	{
-		FactorCell newFactor = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
+		FactorCell newFactor = getProject().getDiagramModel().getFactorCellByWrappedId(id);
 		getDiagramView().getPropertiesDoer().doFactorProperties(newFactor, null);
 	}
 
