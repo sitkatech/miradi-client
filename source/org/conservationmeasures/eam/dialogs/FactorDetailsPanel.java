@@ -27,13 +27,13 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.StrategyClassificationQuestion;
 import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
-import org.conservationmeasures.eam.questions.TargetStatusQuestion;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.martus.swing.UiLabel;
@@ -76,7 +76,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		if(factorToEdit.isTarget())
 		{
 			addField(createChoiceField(ObjectType.FACTOR, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
-			 targetRatingField = createRatingChoiceField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS));
+			 targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
 			addField(targetRatingField);
 			addLine(new UiLabel(""), new UiLabel(EAM.text("This 'Status of Target' field is only available in Basic mode")));
 			detailIcon = new TargetIcon();

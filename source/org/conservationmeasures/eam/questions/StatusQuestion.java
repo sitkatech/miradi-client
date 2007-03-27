@@ -7,16 +7,14 @@ package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
 
-
-//FIXME: this should be combined wiht  target status question
-public class MeasurementStatusQuestion extends ChoiceQuestion
+public class StatusQuestion extends ChoiceQuestion
 {
-	public MeasurementStatusQuestion(String tagToUse)
+	public StatusQuestion(String tagToUse)
 	{
-		super(tagToUse, "Measurement Status", getTrendStatuses());
+		super(tagToUse, "Measurement Status", getStatuses());
 	}
 
-	static ChoiceItem[] getTrendStatuses()
+	static ChoiceItem[] getStatuses()
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Not Specified", Color.WHITE),

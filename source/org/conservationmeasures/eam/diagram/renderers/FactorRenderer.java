@@ -62,7 +62,7 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.TargetStatusQuestion;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -88,7 +88,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			Target target = (Target)node.getUnderlyingObject();
 			String ratingCode = model.getProject().getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
-			TargetStatusQuestion question = new TargetStatusQuestion("");
+			StatusQuestion question = new StatusQuestion("");
 			rating = question.findChoiceByCode(ratingCode);
 		}
 		

@@ -33,7 +33,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.TargetStatusQuestion;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.martus.swing.UiLabel;
@@ -147,7 +147,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	
 	private ObjectDataInputField createTargetStatusField(Factor factor)
 	{
-		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.FACTOR,new TargetStatusQuestion(Target.PSEUDO_TAG_TARGET_VIABILITY));
+		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.FACTOR,new StatusQuestion(Target.PSEUDO_TAG_TARGET_VIABILITY));
 		return field;
 	}
 	

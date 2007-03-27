@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.TargetStatusQuestion;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeNode extends TreeTableNode
@@ -58,7 +58,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		String rawValue = project.getObjectData(getType(), getObjectReference().getObjectId(), tag);
 		if(tag.equals(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS))
 		{
-			ChoiceItem choice = new TargetStatusQuestion(tag).findChoiceByCode(rawValue);
+			ChoiceItem choice = new StatusQuestion(tag).findChoiceByCode(rawValue);
 			return choice.getLabel();
 		}
 		
