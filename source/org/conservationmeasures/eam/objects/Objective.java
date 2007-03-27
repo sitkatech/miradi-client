@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -14,12 +15,12 @@ public class Objective extends Desire
 {
 	public Objective(BaseId id)
 	{
-		super(id);
+		super(new ObjectiveId(id.asInt()));
 	}
 	
 	public Objective(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(new BaseId(idAsInt), json);
+		super(new ObjectiveId(idAsInt), json);
 	}
 	
 	public int getType()
