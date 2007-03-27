@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.budget;
 
-import java.util.Vector;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -39,13 +38,13 @@ public class BudgetPropertiesInputPanel extends ObjectDataInputPanel
 		return EAM.text("Text|Budget properties");
 	}
 	
-	public void setObjectRefs(Vector orefsToUse)
+	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		if (orefsToUse.size()==0)
+		if (orefsToUse.length==0)
 			tableEditorComponent.setTaskId(BaseId.INVALID);
 		else
-			tableEditorComponent.setTaskId(((ORef)orefsToUse.get(0)).getObjectId());
+			tableEditorComponent.setTaskId(orefsToUse[0].getObjectId());
 	}
 	
 

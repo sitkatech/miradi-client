@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.Arrays;
-import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.Icon;
@@ -33,17 +31,17 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	
 	public ObjectDataInputPanelSpecial(Project projectToUse, int objectType, BaseId idToUse)
 	{
-		this(projectToUse, new Vector(Arrays.asList(new ORef[] {new ORef(objectType, idToUse)})));
+		this(projectToUse, new ORef[] {new ORef(objectType, idToUse)});
 	}
 	
 	
 	public ObjectDataInputPanelSpecial(Project projectToUse, ORef orefToUse)
 	{
-		this(projectToUse, new Vector(Arrays.asList(new ORef[] {orefToUse})));
+		this(projectToUse, new ORef[] {orefToUse});
 	}
 	
 	
-	public ObjectDataInputPanelSpecial(Project projectToUse, Vector orefsToUse)
+	public ObjectDataInputPanelSpecial(Project projectToUse, ORef[] orefsToUse)
 	{
 		super(projectToUse, orefsToUse);
 		setLayout(new BorderLayout());

@@ -41,17 +41,17 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public AbstractObjectDataInputPanel(Project projectToUse, int objectType, BaseId idToUse)
 	{
-		this(projectToUse, new Vector(Arrays.asList(new ORef[] {new ORef(objectType, idToUse)})));
+		this(projectToUse,new ORef(objectType, idToUse));
 	}
 	
 	
 	public AbstractObjectDataInputPanel(Project projectToUse, ORef orefToUse)
 	{
-		this(projectToUse, new Vector(Arrays.asList(new ORef[] {orefToUse})));
+		this(projectToUse, new ORef[] {orefToUse});
 	}
 	
 	
-	public AbstractObjectDataInputPanel(Project projectToUse, Vector orefsToUse)
+	public AbstractObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
 	{
 		project = projectToUse;
 		orefs = orefsToUse;
@@ -73,11 +73,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public void setObjectRef(ORef oref)
 	{
-		setObjectRefs(new Vector(Arrays.asList(new ORef[] {oref})));
+		setObjectRefs(new ORef[] {oref});
 	}
 	
-	//FIXME: the orefs should be an array and not a Vector (Richard)
-	public void setObjectRefs(Vector orefsToUse)
+	//FIXME: the orefs should be an array and not a Vector
+	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		saveModifiedFields();
 		orefs = orefsToUse;
@@ -254,7 +254,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public BaseId getObjectIdForType(int objectType)
 	{
-		for (int i=0; i<orefs.size(); ++i)
+		for (int i=0; i<orefs.length; ++i)
 		{
 			int type = getORef(i).getObjectType();
 			if (objectType == type)
@@ -264,11 +264,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	}
 	
 	
-	public static BaseId getObjectIdForTypeInThisList(int objectType, Vector orefsToUse)
+	public static BaseId getObjectIdForTypeInThisList(int objectType, ORef[] orefsToUse)
 	{
-		for (int i=0; i<orefsToUse.size(); ++i)
+		for (int i=0; i<orefsToUse.length; ++i)
 		{
-			ORef oref = (ORef) orefsToUse.get(i);
+			ORef oref = orefsToUse[i];
 			int type = oref.getObjectType();
 			if (objectType == type)
 				return  oref.getObjectId();
@@ -279,7 +279,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ORef getORef(int index)
 	{
-		return (ORef) orefs.get(index);
+		return orefs[index];
 	}
 	
 	
@@ -326,12 +326,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public void deleteObjectFromList(BaseId baseId)
 	{
-		for (int i=0; i<orefs.size(); ++i)
+		Vector vorefs = new Vector(Arrays.asList(orefs));
+		for (int i=0; i<orefs.length; ++i)
 		{
 			BaseId objectId = getORef(i).getObjectId();
 			if (objectId.equals(baseId))
-				orefs.remove(i);
+				vorefs.remove(i);
 		}
+		orefs = (ORef[])vorefs.toArray(new ORef[0]);
 	}
 
 	boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
@@ -352,13 +354,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public BaseId getObjectId()
 	{
-		return getORef(orefs.size()-1).getObjectId();
+		return getORef(orefs.length-1).getObjectId();
 	}
 
 	public static int STD_SHORT = 5;
 	
 	private Project project;
-	private Vector orefs;
+	private ORef[] orefs;
 	private Vector fields;
 }
 

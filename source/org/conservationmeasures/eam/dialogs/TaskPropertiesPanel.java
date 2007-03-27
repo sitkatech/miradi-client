@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
-import java.util.Vector;
 
 import javax.swing.BorderFactory;
 
@@ -69,13 +68,13 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		super.dispose();
 	}
 
-	public void setObjectRefs(Vector orefsToUse)
+	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		if (orefsToUse.size()==0)
+		if (orefsToUse.length==0)
 			inputPanel.setObjectRef(new ORef(ObjectType.FAKE,BaseId.INVALID));
 		else
-			inputPanel.setObjectRef((ORef)orefsToUse.get(0));
+			inputPanel.setObjectRef(orefsToUse[0]);
 	}
 	
 	

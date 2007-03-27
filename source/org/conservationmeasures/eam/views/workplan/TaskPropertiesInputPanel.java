@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.workplan;
 
-import java.util.Vector;
 
 import javax.swing.BorderFactory;
 
@@ -49,15 +48,15 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	public void setObjectRefs(Vector orefsToUse)
+	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
 		if (editorComponent == null)
 			return;
-		if (orefsToUse.size()==0)
+		if (orefsToUse.length==0)
 			editorComponent.setTaskId(BaseId.INVALID);
 		else
-			editorComponent.setTaskId(((ORef)orefsToUse.get(0)).getObjectId());
+			editorComponent.setTaskId(orefsToUse[0].getObjectId());
 	}
 
 	

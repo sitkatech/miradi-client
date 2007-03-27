@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.util.Arrays;
-import java.util.Vector;
 
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -29,17 +27,17 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel 
 	
 	public ObjectDataInputPanel(Project projectToUse, int objectType, BaseId idToUse)
 	{
-		this(projectToUse, new Vector(Arrays.asList(new ORef[] {new ORef(objectType, idToUse)})));
+		this(projectToUse, new ORef[] {new ORef(objectType, idToUse)});
 	}
 	
 	
 	public ObjectDataInputPanel(Project projectToUse, ORef orefToUse)
 	{
-		this(projectToUse, new Vector(Arrays.asList(new ORef[] {orefToUse})));
+		this(projectToUse, new ORef[] {orefToUse});
 	}
 	
 	
-	public ObjectDataInputPanel(Project projectToUse, Vector orefsToUse)
+	public ObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
 	{
 		super(projectToUse, orefsToUse);
 		GridLayoutPlus layout = new GridLayoutPlus(0, 2, HGAP, VGAP);

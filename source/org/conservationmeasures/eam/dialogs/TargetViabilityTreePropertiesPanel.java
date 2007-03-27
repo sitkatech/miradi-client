@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -247,7 +248,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	}
 	
 
-	public void setObjectRefs(Vector orefsToUse)
+	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		indicatorThreshold.setIconRowObject(null);
 		BaseId objectId = getObjectIdForTypeInThisList(ObjectType.INDICATOR, orefsToUse);
@@ -257,7 +258,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		indicatorThreshold.repaint();
 	}
 
-	private Vector insertIndicatorsGoalIntoCurrentSelectedObjectList(Vector orefsToUse, BaseId objectId)
+	private ORef[] insertIndicatorsGoalIntoCurrentSelectedObjectList(ORef[] orefsToUse, BaseId objectId)
 	{
 		Indicator indicator = (Indicator)getProject().findObject(ObjectType.INDICATOR, objectId);
 		try
@@ -266,10 +267,12 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 			if (list.size()!=0)
 				
 			{
+				Vector vorefs = new Vector(Arrays.asList(orefsToUse));
 				ORef ref = new ORef(ObjectType.GOAL,list.get(0));
-				orefsToUse.insertElementAt(ref,0);
+				vorefs.insertElementAt(ref,0);
 				indicatorThreshold.setIconRowObject(new ORef(ObjectType.INDICATOR, objectId));
 				indicatorThreshold.setIconRowObject(ref);
+				orefsToUse = (ORef[])vorefs.toArray(new ORef[0]);
 			}
 			else
 				EAM.logError("No Goals found for EKA Indicator:" + objectId);
