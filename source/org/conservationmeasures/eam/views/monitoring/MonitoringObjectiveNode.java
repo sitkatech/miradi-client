@@ -33,20 +33,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		objective = objectiveToUse;
 		children = new Vector();
 		
-		ChainManager chainManager = project.getChainManager();
-		Factor owner = (Factor)chainManager.getOwner(objective.getRef());
-		HashSet indicatorIds = getAllUpstreamIndicators(owner);
-		
-		Iterator iter = indicatorIds.iterator();
-		while(iter.hasNext())
-		{
-			BaseId id = (BaseId)iter.next();
-			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, id);
-			if(indicator == null)
-				throw new RuntimeException("Missing Indicator " + id);
-			children.add(new MonitoringIndicatorNode(project, indicator));
-		}
-		Collections.sort(children, new IgnoreCaseStringComparator());
+		rebuild();
 	}
 	
 	public EAMObject getObject()
@@ -111,9 +98,22 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		return "";
 	}
 
-	// FIXME: Shouldn't we use this instead of having the logic in the constructor?
 	public void rebuild() throws Exception
 	{
+		ChainManager chainManager = project.getChainManager();
+		Factor owner = (Factor)chainManager.getOwner(objective.getRef());
+		HashSet indicatorIds = getAllUpstreamIndicators(owner);
+		
+		Iterator iter = indicatorIds.iterator();
+		while(iter.hasNext())
+		{
+			BaseId id = (BaseId)iter.next();
+			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, id);
+			if(indicator == null)
+				throw new RuntimeException("Missing Indicator " + id);
+			children.add(new MonitoringIndicatorNode(project, indicator));
+		}
+		Collections.sort(children, new IgnoreCaseStringComparator());
 	}
 
 
