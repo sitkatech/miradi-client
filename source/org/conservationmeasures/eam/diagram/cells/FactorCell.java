@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
@@ -50,14 +49,6 @@ abstract public class FactorCell extends EAMGraphCell
 		setPreviousSize(size);
 	}
 	
-	//FIXME this method should move or should be deleted (Nima)
-	public static DiagramFactor wrapConceptualModelObject(DiagramFactorId idToUse, FactorId factorId)
-	{
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
-		
-		return new DiagramFactor(idToUse, extraInfo);
-	}
-
 	public Rectangle getRectangle()
 	{
 		return new Rectangle(getLocation(), getSize());
