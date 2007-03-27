@@ -55,6 +55,8 @@ public class FactorPool extends PoolWithIdAssigner
 		return interventionIds;
 	}
 
+	// FIXME: We should encourage getting non-draft strategies (Kevin)
+	// and only give all strategies if the caller insists
 	public Factor[] getStrategies()
 	{
 		return getNodesOfType(new FactorTypeStrategy());
