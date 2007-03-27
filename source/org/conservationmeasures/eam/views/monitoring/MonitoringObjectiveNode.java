@@ -106,7 +106,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		return "";
 	}
 	
-	// FIXME: Use new ChainManager getOwner method instead
+	// FIXME: Use new ChainManager getOwner method instead (Kevin)
 	private FactorSet getNodesWithThisObjective(BaseId objectiveId)
 	{
 		FactorSet result = new FactorSet();

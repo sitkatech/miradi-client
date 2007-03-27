@@ -88,7 +88,7 @@ public class DiagramFactorLink extends EAMBaseObject
 			super.setData(fieldTag, dataValue);
 	}
 
-	//FIXME add bend points to dataMap
+	//FIXME add bend points to dataMap (Kevin)
 	public FactorLinkDataMap createLinkageDataMap() throws Exception
 	{
 		FactorLinkDataMap dataMap = new FactorLinkDataMap();

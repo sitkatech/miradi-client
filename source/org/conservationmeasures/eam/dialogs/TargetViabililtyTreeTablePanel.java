@@ -36,7 +36,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	}
 
 
-	// FIXME: Shouldn't this be in the TreeTable instead of the panel???
+	// FIXME: Shouldn't this be in the TreeTable instead of the panel??? (Kevin)
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		GenericTreeTableModel treeTableModel = getModel();

@@ -49,7 +49,7 @@ public class ThreatMatrixView extends UmbrellaView
 		wizardPanel = new ThreatRatingWizardPanel(this);
 	}
 
-	//FIXME umberall view probably should not store the toolbar
+	//FIXME umberall view probably should not store the toolbar (Kevin)
 	public void recreateToolBar()
 	{
 		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions(), isCellRatingsVisible()));

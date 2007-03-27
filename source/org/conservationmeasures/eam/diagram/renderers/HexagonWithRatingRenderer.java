@@ -26,9 +26,8 @@ public class HexagonWithRatingRenderer extends HexagonRenderer
 		g2.setPaint(oldPaint);
 	}
 	
-	// FIXME: The following method (and very similar methods 
-	// in EllipseWithRatingRenderer and RectangleWithRatingRenderer)
-	// should be pulled up to a base class
+	// FIXME: The following method should be pulled up to a base class (Kevin)
+	// (and very similar methods in EllipseWithRatingRenderer and RectangleWithRatingRenderer)
 	void drawRating(Graphics g, Rectangle rect, Graphics2D g2) 
 	{
 		if(rating == null || rating.getCode().length() == 0)

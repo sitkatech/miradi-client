@@ -46,7 +46,7 @@ public class ValueOption extends EAMBaseObject
 		return numeric;
 	}
 	
-	// FIXME: This is a hack that allows us to override any colors that might
+	// TODO: This is a hack that allows us to override any colors that might
 	// be in the ValueOption objects. Eventually we will completely replace 
 	// ValueOptions and RatingCriteria with the new RatingQuestion classes
 	public Color getColor()

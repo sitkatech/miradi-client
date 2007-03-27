@@ -38,7 +38,7 @@ public class TestLayerManager extends EAMTestCase
 		cmIntervention = new Strategy(takeNextModelNodeId());
 		cmIntervention.setLabel("Strategy");
 		
-		//FIXME create cell using project.createFactorCell() for below code
+		//FIXME create cell using project.createFactorCell() for below code (Nima)
 		DiagramFactorId targetNodeId = new DiagramFactorId(44);
 		FactorId factorId = new FactorId(23);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);

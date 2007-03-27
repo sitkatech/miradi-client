@@ -50,7 +50,7 @@ abstract public class FactorCell extends EAMGraphCell
 		setPreviousSize(size);
 	}
 	
-	//FIXME this method should move or should be deleted
+	//FIXME this method should move or should be deleted (Nima)
 	public static DiagramFactor wrapConceptualModelObject(DiagramFactorId idToUse, FactorId factorId)
 	{
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
@@ -149,7 +149,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return underlyingObject.isCause();
 	}
 
-	//FIXME: should not access static main window.
+	//FIXME: should not access static main window. (Kevin)
 	private ChainManager getChainManager()
 	{
 		return EAM.mainWindow.getProject().getChainManager();

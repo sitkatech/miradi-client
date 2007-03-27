@@ -30,7 +30,7 @@ public class ChainManager
 		project = projectToUse;
 	}
 	
-	// FIXME: Write tests for this!!!
+	// FIXME: Write tests for this!!! (Richard, with Kevin)
 	public Factor getDirectOrIndirectOwningFactor(ORef ref) throws Exception
 	{
 		EAMObject owner = project.findObject(ref);
@@ -46,7 +46,7 @@ public class ChainManager
 		return null;
 	}
 	
-	// FIXME: Write tests for this!!!
+	// FIXME: Write tests for this!!! (Richard, with Kevin)
 	public EAMObject getOwner(ORef ref) throws Exception
 	{
 		switch(ref.getObjectType())

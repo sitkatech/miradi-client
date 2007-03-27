@@ -94,7 +94,7 @@ public class DiagramFactor extends EAMBaseObject
 		dataMap.putString(TAG_SIZE, size.get());
 		
 		
-		// FIXME: This is a crude hack, so we can re-create the node if it gets pasted. 
+		// FIXME: This is a crude hack, so we can re-create the node if it gets pasted. (Kevin)
 		// Really, for each node copied to the clipboard, we should copy 
 		// the json for both the ConceptualModelNode and for the DiagramNode.
 		// That will also fix the current bug that objectives and goals are not copied

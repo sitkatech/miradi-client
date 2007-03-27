@@ -232,7 +232,7 @@ public class ProjectRepairer
 				if(owner == null)
 				{
 					EAM.logWarning("Detected orphan " + annotationType + ":" + annotationId);
-					//FIXME: restore this after ophan detectio nis reliable
+					//FIXME: restore this after ophan detectio nis reliable (Richard)
 					//project.deleteObject(annotationType, annotationId);
 				}
 			}

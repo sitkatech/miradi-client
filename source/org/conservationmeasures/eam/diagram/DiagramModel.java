@@ -322,7 +322,7 @@ public class DiagramModel extends DefaultGraphModel
 		return (rawGetFactorByWrappedId(id) != null);
 	}
 	
-	//FIXME rename method to match return type
+	//FIXME rename method to match return type (Nima)
 	public FactorCell getDiagramFactorById(DiagramFactorId id) throws Exception
 	{
 		FactorCell node = rawGetFactorById(id);
@@ -331,7 +331,7 @@ public class DiagramModel extends DefaultGraphModel
 		return node;
 	}
 
-	//FIXME rename method to match return type
+	//FIXME rename method to match return type (Nima)
 	public FactorCell getDiagramFactorByWrappedId(FactorId id)
 	{
 		FactorCell node = rawGetFactorByWrappedId(id);

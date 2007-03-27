@@ -28,7 +28,7 @@ import org.martus.swing.Utilities;
 public class HtmlViewPanel implements HtmlFormEventHandler
 {
 
-	// FIXME: These constructors are a mess...might want to be multiple classes?
+	// FIXME: These constructors are a mess...might want to be multiple classes? (Richard)
 	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, String htmlTextToUse)
 	{
 		this(mainWindowToUse, titleToUse, htmlTextToUse, new DummyHandler());
@@ -101,7 +101,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		
 		if (rectangle.height > dim.height)
 			rectangle.height = dim.height + buttonBarHeight;
-//FIXME: method needs to be re thought 
+//FIXME: method needs to be re thought (Kevin)
 		dlg.setSize(forcedWidth, rectangle.height);
 	}
 

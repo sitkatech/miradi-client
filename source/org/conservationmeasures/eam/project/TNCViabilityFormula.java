@@ -105,7 +105,7 @@ public class TNCViabilityFormula
 		}
 	}
 
-	// FIXME: These should be shared with the Rating Question classes
+	// FIXME: These should be shared with the Rating Question classes (Richard)
 	public static final String UNSPECIFIED = "";
 	public static final String POOR = "1";
 	public static final String FAIR = "2";

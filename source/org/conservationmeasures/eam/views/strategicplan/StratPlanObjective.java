@@ -88,8 +88,8 @@ public class StratPlanObjective extends TreeTableNode
 		Arrays.sort(strategies, new IgnoreCaseStringComparator());
 	}
 
-	// FIXME: I believe this method should be renamed doesChainContainObjective, and
-	// the call to getGoals() can be removed. kbs 2007-03-23
+	// FIXME: I believe this method should be renamed doesChainContainObjective, (Kevin) 
+	// and the call to getGoals() can be removed. kbs 2007-03-23
 	private boolean doesChainContainDesire(Factor chainMember, BaseId desireId)
 	{
 		Factor[] chainNodes = project.getDiagramModel().getAllUpstreamDownstreamNodes(chainMember).toNodeArray();

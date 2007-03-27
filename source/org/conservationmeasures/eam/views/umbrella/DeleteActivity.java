@@ -60,10 +60,13 @@ public class DeleteActivity extends ObjectsDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			//FIXME we are adding the parentRef during runtime to the tasks.
+			//FIXME we are adding the parentRef during runtime to the tasks. (Nima)
 			//This is done to avoid to having to deal with writing the data
 			//migration code. This method call can be eliminated with a data
 			//migration.
+			// NOTE: Kevin suspects all Miradi 1.0 and later projects WILL have 
+			// valid parents, so this code can go away because we are not going to 
+			// open pre-1.0 projects any more.
 			possiblySetParentRef(project, selectedTask);
 			deleteTaskTree(project, selectedTask);
 		}

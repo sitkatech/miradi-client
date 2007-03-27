@@ -59,7 +59,7 @@ public class DateRange
 	
 	public String toString()
 	{
-		// FIXME: Really crude (but effective) hack!
+		// FIXME: Really crude (but effective) hack! (Kevin)
 		if(startDate.getGregorianYear() == endDate.getGregorianYear())
 		{
 			if(startDate.getGregorianMonth() == 1 && startDate.getGregorianDay() == 1)

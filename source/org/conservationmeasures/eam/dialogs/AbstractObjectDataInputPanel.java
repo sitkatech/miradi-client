@@ -76,7 +76,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		setObjectRefs(new Vector(Arrays.asList(new ORef[] {oref})));
 	}
 	
-	//FIXME: the orefs should be an array and not a Vector
+	//FIXME: the orefs should be an array and not a Vector (Richard)
 	public void setObjectRefs(Vector orefsToUse)
 	{
 		saveModifiedFields();

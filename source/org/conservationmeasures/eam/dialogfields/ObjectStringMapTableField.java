@@ -60,7 +60,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		UiScrollPane pane = new UiScrollPane(table);
 		pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		//FIXME: temp hack to force single row display
+		//FIXME: temp hack to force single row display (Richard)
 		pane.setPreferredSize(new Dimension(table.getPreferredSize().width*2, table.getPreferredSize().height));
 		return pane;
 	}

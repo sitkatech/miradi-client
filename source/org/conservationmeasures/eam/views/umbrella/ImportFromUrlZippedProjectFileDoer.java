@@ -56,7 +56,7 @@ public class ImportFromUrlZippedProjectFileDoer
 	}
 	
 
-	//FIXME: can be coded better
+	//FIXME: can be coded better (Richard, with help from Kevin)
 	static private void cleanUp(OutputStream outputStream, InputStream inputStream, File tempDir)
 	{
 		try

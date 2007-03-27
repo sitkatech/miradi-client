@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
-// FIXME CommanDiagramMove should go away
+// FIXME CommanDiagramMove should go away (Nima)
 public class CommandDiagramMove extends Command
 {
 	public CommandDiagramMove(int deltaX, int deltaY, DiagramFactorId[] idsToMove)
