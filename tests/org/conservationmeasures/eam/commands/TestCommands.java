@@ -182,26 +182,57 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't undo?", oldCount, framework.getCriteria().length);
 	}
 	
-	public void testCommandDiagramMove() throws Exception
+	public void testDiagramFactorsMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);
-		DiagramFactorId[] ids = {insertTarget(), insertContributingFactor(), insertContributingFactor(), insertIntervention()};
-		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
-		project.executeCommand(cmd);
-		
-		for(int i=0; i < ids.length; ++i)
-		{
-			FactorCell node = project.getDiagramModel().getDiagramFactorById(ids[i]);
-			assertEquals("didn't set location?", moveTo, node.getLocation());
-		}
-
 		Point zeroZero = new Point(0, 0);
+
+		DiagramFactorId targetId = insertTarget();
+		DiagramFactor target = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, targetId);
+		Point targetLocation = target.getLocation();
+		String previousLocation = EnhancedJsonObject.convertFromPoint(targetLocation);
+		String newLocation = EnhancedJsonObject.convertFromPoint(moveTo);
+		CommandSetObjectData moveDiagramFactor1 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, target.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newLocation, previousLocation);
+		project.executeCommand(moveDiagramFactor1);
+		
+		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, targetId);
+		assertEquals("didn't set location?", moveTo, diagramFactor1.getLocation());
+		//undo move
 		project.undo();
-		for(int i=0; i < ids.length; ++i)
-		{
-			FactorCell node = project.getDiagramModel().getDiagramFactorById(ids[i]);
-			assertEquals("didn't restore original location?", zeroZero, node.getLocation());
-		}
+		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, targetId);
+		assertEquals("didn't restore original location?", zeroZero, diagramFactor2.getLocation());
+
+		
+		DiagramFactorId factorId = insertContributingFactor();
+		DiagramFactor factor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, factorId);
+		Point factorLocation = factor.getLocation();
+		String previousFactorLocation = EnhancedJsonObject.convertFromPoint(factorLocation);
+		String newFactorLocation = EnhancedJsonObject.convertFromPoint(moveTo);
+		CommandSetObjectData moveDiagramFactor2 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newFactorLocation, previousFactorLocation);
+		project.executeCommand(moveDiagramFactor2);
+		
+		DiagramFactor diagramFactor3 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, factorId);
+		assertEquals("didn't set location?", moveTo, diagramFactor3.getLocation());
+		//undo move
+		project.undo();
+		DiagramFactor diagramFactor4 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, factorId);
+		assertEquals("didn't restore original location?", zeroZero, diagramFactor4.getLocation());
+
+
+		DiagramFactorId interventionId = insertIntervention();
+		DiagramFactor intervention = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, interventionId);
+		Point interventionLocation = intervention.getLocation();
+		String previousInterventionLocation = EnhancedJsonObject.convertFromPoint(interventionLocation);
+		String newInterventionLocation = EnhancedJsonObject.convertFromPoint(moveTo);
+		CommandSetObjectData moveDiagramFactor3 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, intervention.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newInterventionLocation, previousInterventionLocation);
+		project.executeCommand(moveDiagramFactor3);
+		
+		DiagramFactor diagramFactor5 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, interventionId);
+		assertEquals("didn't set location?", moveTo, diagramFactor5.getLocation());
+		//undo move
+		project.undo();
+		DiagramFactor diagramFactor6 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, interventionId);
+		assertEquals("didn't restore original location?", zeroZero, diagramFactor6.getLocation());
 	}
 	
 	public void testCommandSetThreatRating() throws Exception

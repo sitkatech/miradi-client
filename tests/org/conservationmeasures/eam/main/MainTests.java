@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.commands.TestCommandCreateObject;
 import org.conservationmeasures.eam.commands.TestCommandDeleteObject;
 import org.conservationmeasures.eam.commands.TestCommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.TestCommandDiagramAddFactorLink;
-import org.conservationmeasures.eam.commands.TestCommandDiagramMove;
 import org.conservationmeasures.eam.commands.TestCommandDiagramRemoveFactor;
 import org.conservationmeasures.eam.commands.TestCommandDiagramRemoveFactorLink;
 import org.conservationmeasures.eam.commands.TestCommandEndTransaction;
@@ -211,7 +210,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommandDeleteObject.class));
 		suite.addTest(new TestSuite(TestCommandDiagramAddFactor.class));
 		suite.addTest(new TestSuite(TestCommandDiagramAddFactorLink.class));
-		suite.addTest(new TestSuite(TestCommandDiagramMove.class));
 		suite.addTest(new TestSuite(TestCommandDiagramRemoveFactor.class));
 		suite.addTest(new TestSuite(TestCommandDiagramRemoveFactorLink.class));
 		suite.addTest(new TestSuite(TestCommandSetFactorSize.class));
