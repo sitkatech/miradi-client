@@ -162,6 +162,9 @@ public class BudgetTable extends JTable implements ObjectPicker
 	public void valueChanged(ListSelectionEvent e)
 	{
 		super.valueChanged(e);
+		if(selectionListeners == null)	
+			return;
+		
 		for(int i = 0; i < selectionListeners.size(); ++i)
 		{
 			SelectionChangeListener listener = (SelectionChangeListener)selectionListeners.get(i);
