@@ -1,8 +1,0 @@
-<% for column in AccessCode.content_columns %>
-<p>
-  <b><%= column.human_name %>:</b> <%=h @access_code.send(column.name) %>
-</p>
-<% end %>
-
-<%= link_to 'Edit', :action => 'edit', :id => @access_code %> |
-<%= link_to 'Back', :action => 'list' %>
