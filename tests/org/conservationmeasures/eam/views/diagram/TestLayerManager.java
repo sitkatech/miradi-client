@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramCause;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategy;
 import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -17,8 +16,10 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestLayerManager extends EAMTestCase
 {
@@ -30,6 +31,8 @@ public class TestLayerManager extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
+		
+
 		idAssigner = new IdAssigner();
 		cmTarget = new Target(takeNextModelNodeId());
 		cmTarget.setLabel("Target");
@@ -38,27 +41,10 @@ public class TestLayerManager extends EAMTestCase
 		cmIntervention = new Strategy(takeNextModelNodeId());
 		cmIntervention.setLabel("Strategy");
 		
-		//FIXME create cell using project.createFactorCell() for below code (Nima)
-		DiagramFactorId targetNodeId = new DiagramFactorId(44);
-		FactorId factorId = new FactorId(23);
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
-		//Target targetFactor = new Target(factorId);
-		DiagramFactor diagramFactorTarget = new DiagramFactor(targetNodeId, extraInfo);
-		target = new DiagramTarget(cmTarget, diagramFactorTarget);
-		
-		DiagramFactorId factorNodeId = new DiagramFactorId(49);
-		FactorId causeFactorId = new FactorId(26);
-		CreateDiagramFactorParameter causeExtraInfo = new CreateDiagramFactorParameter(causeFactorId);
-		//Target causeFactor = new Target(causeFactorId);
-		DiagramFactor causeDiagramFactor = new DiagramFactor(factorNodeId, causeExtraInfo);
-		factor = new DiagramCause(cmFactor, causeDiagramFactor);
-		
-		DiagramFactorId interventionFactorNodeId = new DiagramFactorId(55);
-		FactorId interventionFactorId = new FactorId(40);
-		CreateDiagramFactorParameter interventionExtraInfo = new CreateDiagramFactorParameter(interventionFactorId);
-		//Target interventionFactor = new Target(interventionFactorId);
-		DiagramFactor interventionDiagramFactor = new DiagramFactor(interventionFactorNodeId, interventionExtraInfo);
-		intervention = new DiagramStrategy(cmIntervention, interventionDiagramFactor);
+		ProjectForTesting project = new ProjectForTesting(getName());
+		target = project.createFactorCell(Factor.TYPE_TARGET);
+		factor = project.createFactorCell(Factor.TYPE_CAUSE);
+		intervention = project.createFactorCell(Factor.TYPE_STRATEGY);
 	}
 
 	public void testDefaultAllVisible() throws Exception
