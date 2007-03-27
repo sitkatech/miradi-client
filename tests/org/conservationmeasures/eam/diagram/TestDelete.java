@@ -31,9 +31,9 @@ public class TestDelete extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		
 		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
-		FactorCell intervention = model.getDiagramFactorByWrappedId(interventionId);
+		FactorCell intervention = model.getFactorCellByWrappedId(interventionId);
 		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
-		FactorCell factor = model.getDiagramFactorByWrappedId(factorId);
+		FactorCell factor = model.getFactorCellByWrappedId(factorId);
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
 		

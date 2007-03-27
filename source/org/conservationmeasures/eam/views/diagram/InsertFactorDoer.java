@@ -83,7 +83,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
 		DiagramFactorId id = (DiagramFactorId) factorCommandHelper.createFactorAndDiagramFactor(factorType).getCreatedId();
 		
-		FactorCell factorCell = project.getDiagramModel().getDiagramFactorById(id);
+		FactorCell factorCell = project.getDiagramModel().getFactorCellById(id);
 		DiagramFactor addedFactor = factorCell.getDiagramFactor();
 
 		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(addedFactor.getWrappedId(), getInitialText());

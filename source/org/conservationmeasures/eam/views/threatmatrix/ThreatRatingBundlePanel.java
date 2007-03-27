@@ -77,7 +77,7 @@ public class ThreatRatingBundlePanel extends JPanel
 	private String getNodeName(FactorId nodeId) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		return model.getDiagramFactorByWrappedId(nodeId).getLabel();
+		return model.getFactorCellByWrappedId(nodeId).getLabel();
 
 	}
 	

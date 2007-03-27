@@ -35,17 +35,17 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
-		FactorCell intervention = model.getDiagramFactorByWrappedId(interventionId);
+		FactorCell intervention = model.getFactorCellByWrappedId(interventionId);
 		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
-		FactorCell factor = model.getDiagramFactorByWrappedId(factorId);
+		FactorCell factor = model.getFactorCellByWrappedId(factorId);
 
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 
-		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(interventionId).getDiagramFactorId();
-		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(factorId).getDiagramFactorId();
+		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(interventionId).getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(factorId).getDiagramFactorId();
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 		
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);

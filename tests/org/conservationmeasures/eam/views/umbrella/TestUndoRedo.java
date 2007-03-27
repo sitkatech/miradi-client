@@ -80,7 +80,7 @@ public class TestUndoRedo extends EAMTestCase
 	public void testUndoRedoNodeSize() throws Exception
 	{
 		DiagramFactorId insertedId = insertFactor(project);
-		FactorCell node = project.getDiagramModel().getDiagramFactorById(insertedId);
+		FactorCell node = project.getDiagramModel().getFactorCellById(insertedId);
 		String originalSize = EnhancedJsonObject.convertFromDimension(node.getSize());
 
 		String newSize1 = EnhancedJsonObject.convertFromDimension(new Dimension(5,10));

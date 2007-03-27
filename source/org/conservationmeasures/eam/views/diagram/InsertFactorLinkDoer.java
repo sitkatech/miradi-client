@@ -115,10 +115,10 @@ public class InsertFactorLinkDoer extends ProjectDoer
 	{
 		DiagramModel diagramModel = projectToUse.getDiagramModel();
 		
-		FactorCell diagramFactorByWrappedFromId = diagramModel.getDiagramFactorByWrappedId(fromId);
+		FactorCell diagramFactorByWrappedFromId = diagramModel.getFactorCellByWrappedId(fromId);
 		DiagramFactorId fromDiagramFactorId = diagramFactorByWrappedFromId.getDiagramFactorId();
 		
-		FactorCell diagramFactorByWrappedToId = diagramModel.getDiagramFactorByWrappedId(toId);
+		FactorCell diagramFactorByWrappedToId = diagramModel.getFactorCellByWrappedId(toId);
 		DiagramFactorId toDiagramFactorId = diagramFactorByWrappedToId.getDiagramFactorId();
 		
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);

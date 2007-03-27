@@ -52,7 +52,7 @@ public class TestDiagramComponent extends EAMTestCase
 		FactorCommandHelper commandHelper = new FactorCommandHelper(project);
 		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createCommand.getCreatedId();
-		FactorCell factorCell = model.getDiagramFactorById(diagramFactorId);
+		FactorCell factorCell = model.getFactorCellById(diagramFactorId);
 		
 		return factorCell;
 	}

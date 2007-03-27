@@ -39,7 +39,7 @@ public class FactorMoveHandler
 			Vector commandsToExecute = new Vector();
 			for(int i = 0 ; i < ids.length; ++i)
 			{
-				FactorCell node = model.getDiagramFactorById(ids[i]);
+				FactorCell node = model.getFactorCellById(ids[i]);
 				if(node.hasMoved())
 					commandsToExecute.add(buildMoveCommand(node));
 

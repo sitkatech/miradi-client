@@ -209,7 +209,7 @@ public class TestProjectServer extends EAMTestCase
 			{
 				FactorCell gotNode = (FactorCell)gotNodes.get(i);
 				DiagramFactorId gotId = gotNode.getDiagramFactorId();
-				FactorCell expectedNode = model.getDiagramFactorById(gotId);
+				FactorCell expectedNode = model.getFactorCellById(gotId);
 				assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
 			}
 		}

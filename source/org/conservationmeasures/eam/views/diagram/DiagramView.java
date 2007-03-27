@@ -298,7 +298,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		for(int i = 0; i < factorIds.size(); ++i)
 		{
 			FactorId nodeId = new FactorId(factorIds.get(i).asInt());
-			Factor node = diagramModel.getDiagramFactorByWrappedId(nodeId).getUnderlyingObject();
+			Factor node = diagramModel.getFactorCellByWrappedId(nodeId).getUnderlyingObject();
 			FactorSet possibleDraftStrategies = diagramModel.getDirectlyLinkedUpstreamNodes(node);
 			Iterator iter = possibleDraftStrategies.iterator();
 			while(iter.hasNext())

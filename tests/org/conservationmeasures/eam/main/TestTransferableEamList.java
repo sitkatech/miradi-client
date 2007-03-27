@@ -82,8 +82,8 @@ public class TestTransferableEamList extends EAMTestCase
 		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
 		DiagramFactorLink diagramFactorLink = model.getDiagramFactorLinkById(diagramFactorLinkId);
 
-		FactorCell factorCell1 = model.getDiagramFactorById(diagramFactorId1);
-		FactorCell factorCell2 = model.getDiagramFactorById(diagramFactorId2);
+		FactorCell factorCell1 = model.getFactorCellById(diagramFactorId1);
+		FactorCell factorCell2 = model.getFactorCellById(diagramFactorId2);
 		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramFactorLink)};
 		TransferableEamList eamList = new TransferableEamList(project.getFilename(), dataCells);
 		TransferableEamList eamTransferData = (TransferableEamList)eamList.getTransferData(TransferableEamList.eamListDataFlavor);

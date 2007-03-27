@@ -33,7 +33,7 @@ public class TestSetFactorSize extends TestCaseEnhanced
 		DiagramModel model = project.getDiagramModel();
 
 		FactorId modelNodeId = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
-		FactorCell found = model.getDiagramFactorByWrappedId(modelNodeId);
+		FactorCell found = model.getFactorCellByWrappedId(modelNodeId);
 		String originalSize = EnhancedJsonObject.convertFromDimension(found.getSize());
 		String newSize = EnhancedJsonObject.convertFromDimension(new Dimension(200,300));
 		

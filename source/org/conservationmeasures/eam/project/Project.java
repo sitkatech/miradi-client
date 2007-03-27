@@ -719,7 +719,7 @@ public class Project
 	public FactorId removeDiagramFactorFromDiagram(DiagramFactorId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		FactorCell nodeToDelete = model.getDiagramFactorById(idToDelete);
+		FactorCell nodeToDelete = model.getFactorCellById(idToDelete);
 		FactorId modelNodeId = nodeToDelete.getWrappedId();
 		model.deleteDiagramFactor(nodeToDelete);
 		return modelNodeId;

@@ -261,7 +261,7 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i = 0; i < ids.length; ++i)
 		{
 			DiagramFactorId id = ids[i];
-			FactorCell factorToMove = getDiagramFactorById(id);
+			FactorCell factorToMove = getFactorCellById(id);
 			Point oldLocation = factorToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
 			EAM.logVerbose("moved Node from:"+ oldLocation +" to:"+ newLocation);
@@ -276,7 +276,7 @@ public class DiagramModel extends DefaultGraphModel
 		{
 			try
 			{
-				FactorCell factor = getDiagramFactorById(ids[0]);
+				FactorCell factor = getFactorCellById(ids[0]);
 				notifyListeners(createDiagramModelEvent(factor), new ModelEventNotifierFactorMoved());
 			}
 			catch (Exception e)
@@ -323,7 +323,7 @@ public class DiagramModel extends DefaultGraphModel
 	}
 	
 	//FIXME rename method to match return type (Nima)
-	public FactorCell getDiagramFactorById(DiagramFactorId id) throws Exception
+	public FactorCell getFactorCellById(DiagramFactorId id) throws Exception
 	{
 		FactorCell node = rawGetFactorById(id);
 		if(node == null)
@@ -478,7 +478,7 @@ public class DiagramModel extends DefaultGraphModel
 		if (! doesDiagramFactorExist(diagramFactorId))
 			return;
 			
-		FactorCell factorCell = getDiagramFactorById(diagramFactorId);
+		FactorCell factorCell = getFactorCellById(diagramFactorId);
 		factorCell.updateFromDiagramFactor();
 		updateCell(factorCell);
 	}

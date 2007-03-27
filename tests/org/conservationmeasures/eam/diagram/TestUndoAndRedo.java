@@ -179,7 +179,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	private void verifyNodePresent(DiagramFactorId cellId) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		assertNotNull("Node not present?", model.getDiagramFactorById(cellId));
+		assertNotNull("Node not present?", model.getFactorCellById(cellId));
 	}
 	
 	private void verifyNodeNotPresent(DiagramFactorId cellId)
@@ -189,7 +189,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToString();
 		try
 		{
-			model.getDiagramFactorById(cellId);
+			model.getFactorCellById(cellId);
 			fail("Cell should be gone: " + cellId);
 		}
 		catch(Exception ignoreExpected)

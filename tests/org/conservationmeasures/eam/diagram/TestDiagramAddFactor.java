@@ -60,7 +60,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
 		DiagramFactorId id = insertedNode.getDiagramFactorId();
-		FactorCell foundNode = model.getDiagramFactorById(id);
+		FactorCell foundNode = model.getFactorCellById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
 		assertEquals(Factor.TYPE_TARGET, foundNode.getUnderlyingFactorType());
@@ -76,7 +76,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
 		DiagramFactorId id = insertedNode.getDiagramFactorId();
-		FactorCell foundNode = model.getDiagramFactorById(id);
+		FactorCell foundNode = model.getFactorCellById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a contributing factor?", foundNode.isContributingFactor());
 		assertEquals(Factor.TYPE_CAUSE, foundNode.getUnderlyingFactorType());
@@ -92,7 +92,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
 		DiagramFactorId id = insertedNode.getDiagramFactorId();
-		FactorCell foundNode = model.getDiagramFactorById(id);
+		FactorCell foundNode = model.getFactorCellById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a strategy?", foundNode.isStrategy());
 		assertEquals(Factor.TYPE_STRATEGY, foundNode.getUnderlyingFactorType());

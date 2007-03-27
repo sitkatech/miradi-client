@@ -101,7 +101,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		{
 			if (!factors[i].isStatusDraft())
 				continue;
-			FactorCell diagramFactor = model.getDiagramFactorByWrappedId(factors[i].getFactorId());
+			FactorCell diagramFactor = model.getFactorCellByWrappedId(factors[i].getFactorId());
 			if (model.getFactorLinks(diagramFactor).size() > 0) 
 				continue;
 			diagramFactors.add(diagramFactor);

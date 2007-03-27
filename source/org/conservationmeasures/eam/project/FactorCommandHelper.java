@@ -131,7 +131,7 @@ public class FactorCommandHelper
 
 	private FactorCell getDiagramFactorById(DiagramFactorId newNodeId) throws Exception
 	{
-		return getDiagramModel().getDiagramFactorById(newNodeId);
+		return getDiagramModel().getFactorCellById(newNodeId);
 	}
 	
 	private void pasteLinksIntoProject(TransferableEamList list, FactorDataHelper dataHelper) throws Exception 

@@ -73,7 +73,7 @@ public class ProjectForTesting extends Project
 	public FactorCell createFactorCell(FactorType nodeType) throws Exception
 	{
 		FactorId insertedId = createNodeAndAddToDiagram(nodeType);
-		return getDiagramModel().getDiagramFactorByWrappedId(insertedId);
+		return getDiagramModel().getFactorCellByWrappedId(insertedId);
 	}
 	
 

@@ -103,7 +103,7 @@ public class SelectChain extends ViewDoer
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			// convert CMNode to DiagramNode
-			FactorCell nodeToSelect = model.getDiagramFactorByWrappedId((FactorId)chainNodes[i].getId());
+			FactorCell nodeToSelect = model.getFactorCellByWrappedId((FactorId)chainNodes[i].getId());
 			diagram.addSelectionCell(nodeToSelect);
 		}
 	}

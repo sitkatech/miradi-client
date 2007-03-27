@@ -603,7 +603,7 @@ public class TestProject extends EAMTestCase
 		CommandDiagramAddFactor factorCommand = new CommandDiagramAddFactor(diagramFactorId2);
 		project.executeCommand(factorCommand);
 		assertEquals(2 + existingCalls, database.callsToWriteObject);
-		FactorCell factor = project.getDiagramModel().getDiagramFactorByWrappedId(factorId);
+		FactorCell factor = project.getDiagramModel().getFactorCellByWrappedId(factorId);
 		
 		// undo the AddNode
 		project.undo();
@@ -852,8 +852,8 @@ public class TestProject extends EAMTestCase
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, id, parameter);
 		
-		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(fromId).getDiagramFactorId();
-		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getDiagramFactorByWrappedId(toId).getDiagramFactorId();
+		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(fromId).getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(toId).getDiagramFactorId();
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(createdId, fromDiagramFactorId, toDiagramFactorId);
 		BaseId	createdRawDiagramFactorLinkId = project.createObject(ObjectType.DIAGRAM_LINK, extraInfo);
 		DiagramFactorLinkId createdDiagramFactorLinkId = new DiagramFactorLinkId(createdRawDiagramFactorLinkId.asInt());

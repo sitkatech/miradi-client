@@ -82,7 +82,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		for(int i = 0; i < factorIds.size(); ++i)
 		{
 			FactorId nodeId = new FactorId(factorIds.get(i).asInt());
-			FactorCell diagramFactor = diagramModel.getDiagramFactorByWrappedId(nodeId);
+			FactorCell diagramFactor = diagramModel.getFactorCellByWrappedId(nodeId);
 			if (glc.isVisible(diagramFactor))
 				diagramComponent.addSelectionCell(diagramFactor);
 		}

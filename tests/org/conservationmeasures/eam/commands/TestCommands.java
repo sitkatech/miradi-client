@@ -258,7 +258,7 @@ public class TestCommands extends EAMTestCase
 		DiagramFactorId id = insertTarget();
 		String defaultSize = EnhancedJsonObject.convertFromDimension(new Dimension(120, 60));
 		DiagramModel diagramModel = project.getDiagramModel();
-		FactorCell node = diagramModel.getDiagramFactorById(id);
+		FactorCell node = diagramModel.getFactorCellById(id);
 		String originalSize = EnhancedJsonObject.convertFromDimension(node.getSize());
 		assertEquals(defaultSize, originalSize);
 		
@@ -273,7 +273,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't change to new size?", newSize, EnhancedJsonObject.convertFromDimension(diagramFactor.getSize()));
 
 		project.undo();
-		Dimension size = diagramModel.getDiagramFactorById(id).getSize();
+		Dimension size = diagramModel.getFactorCellById(id).getSize();
 		String sizeAsString = EnhancedJsonObject.convertFromDimension(size);
 		assertEquals("didn't undo?", originalSize, sizeAsString);
 	}
@@ -306,7 +306,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(add);
 
 		DiagramFactorId insertedId = add.getInsertedId();
-		FactorCell node = project.getDiagramModel().getDiagramFactorById(insertedId);
+		FactorCell node = project.getDiagramModel().getFactorCellById(insertedId);
 		assertEquals("type not right?", type, node.getUnderlyingFactorType());
 		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramFactorId());
 
@@ -320,7 +320,7 @@ public class TestCommands extends EAMTestCase
 		try
 		{
 			EAM.setLogToString();
-			project.getDiagramModel().getDiagramFactorById(insertedId);
+			project.getDiagramModel().getFactorCellById(insertedId);
 			fail("Should have thrown because node didn't exist");
 		}
 		catch(Exception ignoreExpected)
@@ -335,8 +335,8 @@ public class TestCommands extends EAMTestCase
 
 		DiagramFactorId from = insertNode(type);
 		DiagramFactorId to = insertTarget();
-		FactorId fromId = model.getDiagramFactorById(from).getWrappedId();
-		FactorId toId = model.getDiagramFactorById(to).getWrappedId();
+		FactorId fromId = model.getFactorCellById(from).getWrappedId();
+		FactorId toId = model.getFactorCellById(to).getWrappedId();
 		
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromId, toId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
@@ -378,8 +378,8 @@ public class TestCommands extends EAMTestCase
 
 		DiagramFactorId from = insertIntervention();
 		DiagramFactorId to = insertContributingFactor();
-		FactorCell fromNode = model.getDiagramFactorById(from);
-		FactorCell toNode = model.getDiagramFactorById(to);
+		FactorCell fromNode = model.getFactorCellById(from);
+		FactorCell toNode = model.getFactorCellById(to);
 
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
@@ -397,7 +397,7 @@ public class TestCommands extends EAMTestCase
 	public void testDeleteNode() throws Exception
 	{
 		DiagramFactorId id = insertTarget();
-		FactorId modelNodeId = project.getDiagramModel().getDiagramFactorById(id).getWrappedId();
+		FactorId modelNodeId = project.getDiagramModel().getFactorCellById(id).getWrappedId();
 		
 		CommandDiagramRemoveFactor cmd = new CommandDiagramRemoveFactor(id);
 		assertEquals("modelNodeId not invalid?", BaseId.INVALID, cmd.getFactorId());
@@ -406,7 +406,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getFactorId());
 		
 		project.undo();
-		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getDiagramFactorById(id).getUnderlyingFactorType());
+		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getFactorCellById(id).getUnderlyingFactorType());
 	}
 	
 	public void testBeginTransaction() throws Exception
@@ -451,7 +451,7 @@ public class TestCommands extends EAMTestCase
 		project.undo();
 		project.redo();
 		
-		FactorCell inserted = project.getDiagramModel().getDiagramFactorById(insertedId);
+		FactorCell inserted = project.getDiagramModel().getFactorCellById(insertedId);
 		assertTrue("wrong node?", inserted.isTarget());
 		
 	}
