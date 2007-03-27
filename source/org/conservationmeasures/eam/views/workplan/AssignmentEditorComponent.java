@@ -50,7 +50,7 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 
 	public void setTaskId(BaseId taskId)
 	{ 
-		scrollTable.stopCellEditing();
+		lockedTable.stopCellEditing();
 		scrollTable.stopCellEditing();
 
 		lockedTable.setTask(taskId);
