@@ -72,15 +72,11 @@ public class StratPlanObjective extends TreeTableNode
 	{
 		ObjectiveId objectiveId = (ObjectiveId)objective.getId();
 
-		// TODO: When getNonDraftStrategies becomes available, use it
-		Factor[] strategyObjects = project.getFactorPool().getStrategies();
+		Factor[] strategyObjects = project.getFactorPool().getNonDraftStrategies();
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < strategyObjects.length; ++i)
 		{
 			Strategy strategy = (Strategy)strategyObjects[i];
-			if(strategy.isStatusDraft())
-				continue;
-			
 			if(doesChainContainObjective(strategy, objectiveId))
 				strategyVector.add(new StratPlanStrategy(project, strategy));
 		}

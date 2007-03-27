@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Strategy;
 
 public class FactorPool extends PoolWithIdAssigner
 {
@@ -44,11 +45,35 @@ public class FactorPool extends PoolWithIdAssigner
 		return (FactorId[])new HashSet(getRawIds()).toArray(new FactorId[0]);
 	}
 	
-	// FIXME: We should encourage getting non-draft strategies (Kevin)
-	// and only give all strategies if the caller insists
-	public Factor[] getStrategies()
+	public Factor[] getDraftAndNonDraftStrategies()
 	{
 		return getNodesOfType(new FactorTypeStrategy());
+	}
+	
+	public Factor[] getDraftStrategies()
+	{
+		Vector draftStrategies = new Vector();
+		Factor[] allStrategies = getDraftAndNonDraftStrategies();
+		for(int i = 0; i < allStrategies.length; ++i)
+		{
+			Strategy strategy = (Strategy)allStrategies[i];
+			if(strategy.isStatusDraft())
+				draftStrategies.add(strategy);
+		}
+		return (Factor[])draftStrategies.toArray(new Factor[0]);
+	}
+	
+	public Factor[] getNonDraftStrategies()
+	{
+		Vector nonDraftStrategies = new Vector();
+		Factor[] allStrategies = getDraftAndNonDraftStrategies();
+		for(int i = 0; i < allStrategies.length; ++i)
+		{
+			Strategy strategy = (Strategy)allStrategies[i];
+			if(!strategy.isStatusDraft())
+				nonDraftStrategies.add(strategy);
+		}
+		return (Factor[])nonDraftStrategies.toArray(new Factor[0]);
 	}
 	
 	public Factor[] getDirectThreats()

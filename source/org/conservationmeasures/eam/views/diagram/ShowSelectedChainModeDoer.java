@@ -96,11 +96,9 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	{
 		Vector diagramFactors = new Vector();
 		DiagramModel model = project.getDiagramModel();
-		Factor[] factors = project.getFactorPool().getStrategies();
+		Factor[] factors = project.getFactorPool().getDraftStrategies();
 		for (int i=0; i<factors.length; ++i)
 		{
-			if (!factors[i].isStatusDraft())
-				continue;
 			FactorCell diagramFactor = model.getFactorCellByWrappedId(factors[i].getFactorId());
 			if (model.getFactorLinks(diagramFactor).size() > 0) 
 				continue;

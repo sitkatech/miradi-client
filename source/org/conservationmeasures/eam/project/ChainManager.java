@@ -101,7 +101,7 @@ public class ChainManager
 	
 	private EAMObject getTaskOwner(ORef ref) throws Exception
 	{
-		EAMObject strategyOwner = findOwner(ref, getFactorPool().getStrategies(), Strategy.TAG_ACTIVITY_IDS);
+		EAMObject strategyOwner = findOwner(ref, getFactorPool().getDraftAndNonDraftStrategies(), Strategy.TAG_ACTIVITY_IDS);
 		if(strategyOwner != null)
 			return strategyOwner;
 		EAMObject IndicatorOwner = findOwner(ref, getProject().getIndicatorPool().getAllIndicators(), Indicator.TAG_TASK_IDS);
