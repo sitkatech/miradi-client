@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 
@@ -45,16 +44,6 @@ public class FactorPool extends PoolWithIdAssigner
 		return (FactorId[])new HashSet(getRawIds()).toArray(new FactorId[0]);
 	}
 	
-	public IdList getInterventionIds()
-	{
-		Factor[] cmNodeList = getStrategies();
-		IdList interventionIds = new IdList();
-		for (int i = 0; i < cmNodeList.length; i++)
-			interventionIds.add(cmNodeList[i].getId());
-		
-		return interventionIds;
-	}
-
 	// FIXME: We should encourage getting non-draft strategies (Kevin)
 	// and only give all strategies if the caller insists
 	public Factor[] getStrategies()
