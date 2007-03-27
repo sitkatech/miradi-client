@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.budget;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -43,6 +45,8 @@ public class BudgetTable extends JTable implements ObjectPicker
 		super(modelToUse);
 		model = modelToUse;
 		project = projectToUse;
+		selectionListeners = new Vector();
+
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setDefaultRenderer(Object.class, new AlternatingThickBorderedTotalsColoredRenderer());
@@ -145,6 +149,26 @@ public class BudgetTable extends JTable implements ObjectPicker
 		// probably-newly-created object visible
 	}
 
+	public void addSelectionChangeListener(SelectionChangeListener listener)
+	{
+		selectionListeners.add(listener);
+	}
+
+	public void removeSelectionChangeListener(SelectionChangeListener listener)
+	{
+		selectionListeners.remove(listener);
+	}
+
+	public void valueChanged(ListSelectionEvent e)
+	{
+		super.valueChanged(e);
+		for(int i = 0; i < selectionListeners.size(); ++i)
+		{
+			SelectionChangeListener listener = (SelectionChangeListener)selectionListeners.get(i);
+			listener.selectionHasChanged();
+		}
+	}
+
 	public AssignmentTableModelSplittableShell  getBudgetModel()
 	{
 		return (AssignmentTableModelSplittableShell)getModel();
@@ -181,6 +205,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 
 	Project project;
 	AssignmentTableModelSplittableShell model;
+	Vector selectionListeners;
 	
 	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
 }

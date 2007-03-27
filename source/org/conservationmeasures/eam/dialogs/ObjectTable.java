@@ -13,6 +13,7 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
@@ -31,6 +32,7 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 	public ObjectTable(ObjectTableModel modelToUse)
 	{
 		super(modelToUse);
+		selectionListeners = new Vector();
 		currentSortColumn = -1;
 		
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -113,6 +115,16 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		// probably-newly-created object visible
 	}
 
+	public void addSelectionChangeListener(SelectionChangeListener listener)
+	{
+		selectionListeners.add(listener);
+	}
+
+	public void removeSelectionChangeListener(SelectionChangeListener listener)
+	{
+		selectionListeners.remove(listener);
+	}
+
 	private EAMObject getObjectFromRow(int row)
 	{
 		return getObjectTableModel().getObjectFromRow(row);
@@ -180,6 +192,16 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		
 	}
 	
+	public void valueChanged(ListSelectionEvent e)
+	{
+		super.valueChanged(e);
+		for(int i = 0; i < selectionListeners.size(); ++i)
+		{
+			SelectionChangeListener listener = (SelectionChangeListener)selectionListeners.get(i);
+			listener.selectionHasChanged();
+		}
+	}
+
 	static class ColumnSortListener extends MouseAdapter
 	{
 		public ColumnSortListener(ObjectTable tableToManage)
@@ -226,5 +248,6 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		int column;
 	}
 
+	Vector selectionListeners;
 	int currentSortColumn;
 }

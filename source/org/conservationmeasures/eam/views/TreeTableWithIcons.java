@@ -9,10 +9,12 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
@@ -47,6 +49,8 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		super(treeTableModelToUse);
 		treeTableModel = treeTableModelToUse;
 		project = projectToUse;
+		selectionListeners = new Vector();
+
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		getTree().setRootVisible(false);
@@ -254,6 +258,27 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		// probably-newly-created object visible
 	}
 
+	public void addSelectionChangeListener(SelectionChangeListener listener)
+	{
+		selectionListeners.add(listener);
+	}
+
+	public void removeSelectionChangeListener(SelectionChangeListener listener)
+	{
+		selectionListeners.remove(listener);
+	}
+
+	public void valueChanged(ListSelectionEvent e)
+	{
+		super.valueChanged(e);
+		for(int i = 0; i < selectionListeners.size(); ++i)
+		{
+			SelectionChangeListener listener = (SelectionChangeListener)selectionListeners.get(i);
+			listener.selectionHasChanged();
+		}
+	}
+
 	private GenericTreeTableModel treeTableModel;
 	Project project;
+	Vector selectionListeners;
 }

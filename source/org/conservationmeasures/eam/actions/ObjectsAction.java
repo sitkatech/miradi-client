@@ -8,8 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker.SelectionChangeListener;
 
-public class ObjectsAction extends ViewAction
+public class ObjectsAction extends ViewAction implements SelectionChangeListener
 {
 	public ObjectsAction(MainWindow mainWindowToUse, String label)
 	{
@@ -19,6 +20,8 @@ public class ObjectsAction extends ViewAction
 	public void setPicker(ObjectPicker newPicker)
 	{
 		picker = newPicker;
+		if(picker != null)
+			picker.addSelectionChangeListener(this);
 	}
 
 	Doer getDoer()
@@ -27,6 +30,11 @@ public class ObjectsAction extends ViewAction
 		if(doer != null)
 			doer.setPicker(picker);
 		return doer;
+	}
+
+	public void selectionHasChanged()
+	{
+		updateEnabledState();
 	}
 
 	ObjectPicker picker;

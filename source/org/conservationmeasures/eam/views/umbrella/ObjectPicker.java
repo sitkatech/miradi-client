@@ -16,4 +16,12 @@ public interface ObjectPicker
 	public void ensureObjectVisible(ORef ref);
 	//TODO: to be extracted to its own interface (TreeObjectPicker) later
 	public TreeTableNode[] getSelectedTreeNodes();
+	
+	public void addSelectionChangeListener(SelectionChangeListener listener);
+	public void removeSelectionChangeListener(SelectionChangeListener listener);
+	
+	public interface SelectionChangeListener
+	{
+		public void selectionHasChanged();
+	}
 }

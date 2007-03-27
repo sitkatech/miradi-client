@@ -41,9 +41,6 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 	public void valueChanged(ListSelectionEvent event)
 	{
 		updatePropertiesPanel();
-
-		//FIXME: Avoid using static mainwindow!
-		EAM.mainWindow.getActions().updateActionStates();
 	}
 
 	private void updatePropertiesPanel()
