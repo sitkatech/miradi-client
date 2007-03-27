@@ -44,7 +44,6 @@ public class EllipseWithRatingRenderer extends EllipseRenderer
 		String letter = rating.getLabel().substring(0,1);
 		Utility.drawStringCentered(g2, letter, smallRect);
 	}
-
 	
 	private static final int PRIORITY_WIDTH = 20;
 	private static final int PRIORITY_HEIGHT = 10;

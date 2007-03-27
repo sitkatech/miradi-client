@@ -26,6 +26,11 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 		g2.setPaint(oldPaint);
 	}
 	
+	Dimension getInsetDimension()
+	{
+		return new Dimension(0, PRIORITY_HEIGHT);
+	}
+
 	void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
 	{
 		if(priority == null)
@@ -45,13 +50,6 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 		String letter = priority.getLabel().substring(0,1);
 		Utility.drawStringCentered(g2, letter, smallRect);
 	}
-
-	
-	Dimension getInsetDimension()
-	{
-		return new Dimension(0, PRIORITY_HEIGHT);
-	}
-
 	
 	private static final int PRIORITY_WIDTH = 20;
 	private static final int PRIORITY_HEIGHT = 10;
