@@ -8,20 +8,20 @@ package org.conservationmeasures.eam.views.strategicplan;
 import java.util.Arrays;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Desire;
+import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanObjective extends TreeTableNode
 {
-	public StratPlanObjective(Project projectToUse, Desire objectiveToUse)
+	public StratPlanObjective(Project projectToUse, Objective objectiveToUse)
 	{
 		project = projectToUse;
 		if(objectiveToUse == null)
@@ -70,35 +70,30 @@ public class StratPlanObjective extends TreeTableNode
 
 	public void rebuild()
 	{
-		BaseId desireId = objective.getId();
+		ObjectiveId objectiveId = (ObjectiveId)objective.getId();
 
-		Factor[] interventionObjects = project.getFactorPool().getStrategies();
+		// TODO: When getNonDraftStrategies becomes available, use it
+		Factor[] strategyObjects = project.getFactorPool().getStrategies();
 		Vector strategyVector = new Vector();
-		for(int i = 0; i < interventionObjects.length; ++i)
+		for(int i = 0; i < strategyObjects.length; ++i)
 		{
-			Strategy intervention = (Strategy)interventionObjects[i];
-			if(intervention.isStatusDraft())
+			Strategy strategy = (Strategy)strategyObjects[i];
+			if(strategy.isStatusDraft())
 				continue;
 			
-			
-			if(doesChainContainDesire(intervention, desireId))
-				strategyVector.add(new StratPlanStrategy(project, intervention));
+			if(doesChainContainObjective(strategy, objectiveId))
+				strategyVector.add(new StratPlanStrategy(project, strategy));
 		}
 		strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
 		Arrays.sort(strategies, new IgnoreCaseStringComparator());
 	}
 
-	// FIXME: I believe this method should be renamed doesChainContainObjective, (Kevin) 
-	// and the call to getGoals() can be removed. kbs 2007-03-23
-	private boolean doesChainContainDesire(Factor chainMember, BaseId desireId)
+	private boolean doesChainContainObjective(Factor chainMember, ObjectiveId objectiveId)
 	{
 		Factor[] chainNodes = project.getDiagramModel().getAllUpstreamDownstreamNodes(chainMember).toNodeArray();
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
-			if(chainNodes[i].getObjectives().contains(desireId))
-				return true;
-
-			if(chainNodes[i].getGoals().contains(desireId))
+			if(chainNodes[i].getObjectives().contains(objectiveId))
 				return true;
 		}
 		
@@ -106,6 +101,6 @@ public class StratPlanObjective extends TreeTableNode
 	}
 
 	Project project;
-	Desire objective;
+	Objective objective;
 	StratPlanStrategy[] strategies;
 }
