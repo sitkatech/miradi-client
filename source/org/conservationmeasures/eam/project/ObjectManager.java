@@ -267,9 +267,19 @@ public class ObjectManager
 		throw new RuntimeException("Unknown PseudoTag: " + fieldTag + " for type " + objectType);	
 	}
 	
+	EAMObject findObject(ORef ref)
+	{
+		return findObject(ref.getObjectType(), ref.getObjectId());
+	}
+	
+	EAMObject findObject(int objectType, BaseId objectId)
+	{
+		return getPool(objectType).findObject(objectId);
+	}
+	
 	private String getKeyEcologicalAttributePseudoField(BaseId objectId, String fieldTag)
 	{
-		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, objectId));
+		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)findObject(new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, objectId));
 		try
 		{
 			if (fieldTag.equals(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS))
@@ -373,16 +383,21 @@ public class ObjectManager
 		
 	}
 	
+	Factor findNode(FactorId id)
+	{
+		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
+	}
+	
 	private String getStrategyRatingSummary(FactorId factorId)
 	{
-		ChoiceItem rating = ((Strategy)project.findNode(factorId)).getStrategyRating();
+		ChoiceItem rating = ((Strategy)findNode(factorId)).getStrategyRating();
 		return rating.getCode();
 
 	}
 	
 	private String getTargetViability(FactorId factorId)
 	{
-		Target target = (Target)project.findNode(factorId);
+		Target target = (Target)findNode(factorId);
 		if(target.isViabilityModeTNC())
 			return computeTNCViability(target);
 		return target.getBasicTargetStatus();
@@ -395,7 +410,7 @@ public class ObjectManager
 		IdList keas = target.getKeyEcologicalAttributes();
 		for(int i = 0; i < keas.size(); ++i)
 		{
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keas.get(i));
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keas.get(i));
 			String category = kea.getData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 			if(category.equals(TNCViabilityFormula.UNSPECIFIED))
 				continue;
@@ -430,7 +445,7 @@ public class ObjectManager
 		IdList indicatorIds = kea.getIndicatorIds();
 		for(int i = 0; i < indicatorIds.size(); ++i)
 		{
-			String status = project.getObjectData(ObjectType.INDICATOR, indicatorIds.get(i), Indicator.TAG_MEASUREMENT_STATUS);
+			String status = getObjectData(ObjectType.INDICATOR, indicatorIds.get(i), Indicator.TAG_MEASUREMENT_STATUS);
 			statuses.add(status);
 		}
 		String result = TNCViabilityFormula.getAverageRatingCode(statuses);
@@ -450,7 +465,7 @@ public class ObjectManager
 	private String getFactorDesires(FactorId factorId, int desireType, String desireIdsTag) throws ParseException
 	{
 		ChainObject chain = new ChainObject();
-		chain.buildDownstreamChain(project.getDiagramModel(), project.findNode(factorId));
+		chain.buildDownstreamChain(project.getDiagramModel(), findNode(factorId));
 		
 		IdList allDesireIds = new IdList();
 		Factor[] factors = chain.getFactorsArray();
@@ -479,7 +494,7 @@ public class ObjectManager
 			if(result.length() > 0)
 				result.append("\n");
 			
-			result.append(project.getObjectData(desireType, desireIds.get(i), Desire.TAG_LABEL));
+			result.append(getObjectData(desireType, desireIds.get(i), Desire.TAG_LABEL));
 		}
 		
 		return result.toString();
@@ -488,7 +503,7 @@ public class ObjectManager
 	private String getFactorRelatedDirectThreats(FactorId factorId)
 	{
 		ChainObject chain = new ChainObject();
-		chain.buildNormalChain(project.getDiagramModel(), project.findNode(factorId));
+		chain.buildNormalChain(project.getDiagramModel(), findNode(factorId));
 		DirectThreatSet directThreats = new DirectThreatSet(chain.getFactors());
 		
 		return getLabelsAsMultiline(directThreats);
@@ -497,7 +512,7 @@ public class ObjectManager
 	private String getFactorRelatedTargets(FactorId factorId)
 	{
 		ChainObject chain = new ChainObject();
-		chain.buildNormalChain(project.getDiagramModel(), project.findNode(factorId));
+		chain.buildNormalChain(project.getDiagramModel(), findNode(factorId));
 		TargetSet directThreats = new TargetSet(chain.getFactors());
 		
 		return getLabelsAsMultiline(directThreats);
@@ -573,14 +588,14 @@ public class ObjectManager
 	
 	private String getLabelOfTaskParent(BaseId taskId) throws Exception
 	{
-		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
+		Task task = (Task)findObject(ObjectType.TASK, taskId);
 		ORef parentRef = task.getParentRef();
 		if(parentRef == null || parentRef.getObjectType() == ObjectType.FAKE)
 		{
 			EAM.logDebug("Task without parent: " + taskId);
 			return "(none)";
 		}
-		EAMObject parent = project.findObject(parentRef);
+		EAMObject parent = findObject(parentRef);
 		if(parent == null)
 		{
 			EAM.logDebug("Parent of task " + taskId + " not found: " + parentRef);
@@ -665,7 +680,7 @@ public class ObjectManager
 	
 	private String getIndicatorMethodsSingleLine(BaseId indicatorId) throws ParseException
 	{
-		String methodIdsString = project.getObjectData(ObjectType.INDICATOR, indicatorId, Indicator.TAG_TASK_IDS);
+		String methodIdsString = getObjectData(ObjectType.INDICATOR, indicatorId, Indicator.TAG_TASK_IDS);
 		
 		StringBuffer result = new StringBuffer();
 		IdList methodIds = new IdList(methodIdsString);
@@ -675,7 +690,7 @@ public class ObjectManager
 				result.append("; ");
 			
 			BaseId methodId = methodIds.get(i);
-			EAMObject method = project.findObject(ObjectType.TASK, methodId);
+			EAMObject method = findObject(ObjectType.TASK, methodId);
 			result.append(method.getData(Task.TAG_LABEL));
 		}
 		
