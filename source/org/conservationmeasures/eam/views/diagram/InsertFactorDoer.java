@@ -91,7 +91,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, addedFactor);
 		Point snappedPoint  = project.getSnapped(deltaPoint);
-		//Command moveCommand = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, new DiagramFactorId[] {addedFactor.getDiagramFactorId()});
 		DiagramFactorId diagramFactorId = addedFactor.getDiagramFactorId();
 		String newLocation = EnhancedJsonObject.convertFromPoint(snappedPoint);
 		CommandSetObjectData moveCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_LOCATION, newLocation);
