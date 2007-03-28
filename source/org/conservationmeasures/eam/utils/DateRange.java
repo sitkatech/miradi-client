@@ -59,34 +59,43 @@ public class DateRange
 	
 	public String toString()
 	{
-		// FIXME: Really crude (but effective) hack! (Kevin)
-		if(startDate.getGregorianYear() == endDate.getGregorianYear())
-		{
-			if(startDate.getGregorianMonth() == 1 && startDate.getGregorianDay() == 1)
-			{
-				if(endDate.getGregorianMonth() == 12 && endDate.getGregorianDay() == 31)
-					return Integer.toString(startDate.getGregorianYear());
-				else if(endDate.getGregorianMonth() == 3 && endDate.getGregorianDay() == 31)
-					return "Q1 " + Integer.toString(startDate.getGregorianYear());
-			}
-			else if(startDate.getGregorianMonth() == 4 && startDate.getGregorianDay() == 1)
-			{
-				if(endDate.getGregorianMonth() == 6 && endDate.getGregorianDay() == 30)
-					return "Q2 " + Integer.toString(startDate.getGregorianYear());
-			}
-			else if(startDate.getGregorianMonth() == 7 && startDate.getGregorianDay() == 1)
-			{
-				if(endDate.getGregorianMonth() == 9 && endDate.getGregorianDay() == 30)
-					return "Q3 " + Integer.toString(startDate.getGregorianYear());
-			}
-			else if(startDate.getGregorianMonth() == 10 && startDate.getGregorianDay() == 1)
-			{
-				if(endDate.getGregorianMonth() == 12 && endDate.getGregorianDay() == 31)
-					return "Q4 " + Integer.toString(startDate.getGregorianYear());
-			}
-
-		}
+		int year = startDate.getGregorianYear();
 		
+		if(year != endDate.getGregorianYear())
+			return fullDateRangeString();
+
+		MultiCalendar nextDate = new MultiCalendar(endDate);
+		nextDate.addDays(1);
+		
+		int startMonth = startDate.getGregorianMonth();
+		int startDay = startDate.getGregorianDay();
+		int nextMonth = nextDate.getGregorianMonth();
+		int nextDay = nextDate.getGregorianDay();
+		
+		if(startDay != 1 || nextDay != 1)
+			return fullDateRangeString();
+
+		String yearString = Integer.toString(year);
+		if(startMonth == 1 && nextMonth == 1)
+			return yearString;
+		
+		if(endDate.getGregorianMonth() != startMonth + 2)
+			return fullDateRangeString();
+		
+		if(startMonth == 1)
+			return "Q1 " + yearString;
+		if(startMonth == 4)
+			return "Q2 " + yearString;
+		if(startMonth == 7)
+			return "Q3 " + yearString;
+		if(startMonth == 10)
+			return "Q4 " + yearString;
+
+		return fullDateRangeString();
+	}
+	
+	private String fullDateRangeString()
+	{
 		return startDate.toIsoDateString() + " - " + endDate.toIsoDateString();
 	}
 	
