@@ -63,7 +63,10 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 			}
 			else
 			{
-				restoreTreeExpansionState();
+				// FIXME: This was causing an endless loop (Kevin)
+				// when a dropdown value was changed in the Assignment table. Confirm that 
+				// removing it does not have ill effects
+				//restoreTreeExpansionState();
 				repaint();
 			}
 		}
