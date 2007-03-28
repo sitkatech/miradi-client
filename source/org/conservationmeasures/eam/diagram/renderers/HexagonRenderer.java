@@ -29,6 +29,11 @@ public class HexagonRenderer extends FactorRenderer
 	
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
+		fillRawShape(g, rect, color);
+	}
+	
+	public void fillRawShape(Graphics g, Rectangle rect, Color color)
+	{
 		Graphics2D g2 = (Graphics2D)g;
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, rect, color);

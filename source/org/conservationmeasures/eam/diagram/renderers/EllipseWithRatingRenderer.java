@@ -11,8 +11,6 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
 
-import org.conservationmeasures.eam.utils.Utility;
-
 public class EllipseWithRatingRenderer extends EllipseRenderer
 {
 	public void fillShape(Graphics g, Rectangle rect, Color color)
@@ -30,21 +28,6 @@ public class EllipseWithRatingRenderer extends EllipseRenderer
 		if(rating == null || rating.getCode().length() == 0)
 			return;
 
-		Rectangle smallRect = new Rectangle();
-		smallRect.x = rect.x;
-		smallRect.y = rect.y;
-		smallRect.width = PRIORITY_WIDTH;
-		smallRect.height = PRIORITY_HEIGHT;
-		setPaint(g2, smallRect, rating.getColor());
-		g.fillOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
-		g2.setColor(Color.BLACK);
-		g.drawOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
-		
-		setRatingBubbleFont(g2);
-		String letter = rating.getLabel().substring(0,1);
-		Utility.drawStringCentered(g2, letter, smallRect);
+		drawRatingBubble(g2, rect, rating.getColor(), rating.getLabel().substring(0,1));
 	}
-	
-	private static final int PRIORITY_WIDTH = 20;
-	private static final int PRIORITY_HEIGHT = 10;
 }

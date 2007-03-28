@@ -12,8 +12,6 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
 
-import org.conservationmeasures.eam.utils.Utility;
-
 public class RectangleWithRatingRenderer extends RectangleRenderer
 {
 	public void fillShape(Graphics g, Rectangle rect, Color color)
@@ -33,24 +31,9 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 
 	void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
 	{
-		if(priority == null)
+		if(priority == null || priority.getNumericValue() == 0)
 			return;
 
-		Rectangle smallRect = new Rectangle();
-		smallRect.x = rect.x;
-		smallRect.y = rect.y;
-		smallRect.width = PRIORITY_WIDTH;
-		smallRect.height = PRIORITY_HEIGHT;
-		setPaint(g2, smallRect, priority.getColor());
-		g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
-		g2.setColor(Color.BLACK);
-		g.drawRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
-		
-		setRatingBubbleFont(g2);
-		String letter = priority.getLabel().substring(0,1);
-		Utility.drawStringCentered(g2, letter, smallRect);
+		drawRatingBubble(g2, rect, priority.getColor(), priority.getLabel().substring(0,1));
 	}
-	
-	private static final int PRIORITY_WIDTH = 20;
-	private static final int PRIORITY_HEIGHT = 10;
 }

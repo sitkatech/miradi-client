@@ -63,6 +63,7 @@ import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -71,6 +72,7 @@ import org.jgraph.graph.CellViewRenderer;
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
 {
 	abstract public void fillShape(Graphics g, Rectangle rect, Color color);
+	abstract public void fillRawShape(Graphics g, Rectangle rect, Color color);
 	abstract public void drawBorder(Graphics2D g2, Rectangle rect, Color color);
 	
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
@@ -219,7 +221,29 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return new BasicStroke(borderThickness, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, dashes, 0.0f);
 	}
 
+	protected Rectangle getBubbleRect(Rectangle rect)
+	{
+		Rectangle smallRect = new Rectangle();
+		smallRect.x = rect.x;
+		smallRect.y = rect.y;
+		smallRect.width = PRIORITY_WIDTH;
+		smallRect.height = PRIORITY_HEIGHT;
+		return smallRect;
+	}
+
+	protected void drawRatingBubble(Graphics2D g2, Rectangle rect, Color ratingColor, String ratingText)
+	{
+		Rectangle smallRect = getBubbleRect(rect);
+		fillRawShape(g2, smallRect, ratingColor);
+		drawBorder(g2, smallRect, Color.BLACK);
+		setRatingBubbleFont(g2);
+		g2.setColor(Color.BLACK);
+		Utility.drawStringCentered(g2, ratingText, smallRect);
+	}
+
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
+	protected static final int PRIORITY_WIDTH = 20;
+	protected static final int PRIORITY_HEIGHT = 10;
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
 	

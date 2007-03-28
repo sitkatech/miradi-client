@@ -41,7 +41,7 @@ import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
-import org.conservationmeasures.eam.diagram.renderers.HexagonRenderer;
+import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.HexagonWithRatingRenderer;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
@@ -78,6 +78,6 @@ public class HexagonFactorView extends FactorView
 		return getAttributes().createPoint(result);
 	}
 
-	protected static HexagonRenderer hexagonRenderer = new HexagonWithRatingRenderer();
+	protected static FactorRenderer hexagonRenderer = new HexagonWithRatingRenderer();
 	
 }

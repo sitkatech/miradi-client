@@ -9,10 +9,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
-import java.awt.Polygon;
 import java.awt.Rectangle;
 
-import org.conservationmeasures.eam.utils.Utility;
 
 public class HexagonWithRatingRenderer extends HexagonRenderer
 {
@@ -26,29 +24,11 @@ public class HexagonWithRatingRenderer extends HexagonRenderer
 		g2.setPaint(oldPaint);
 	}
 	
-	// FIXME: The following method should be pulled up to a base class (Kevin)
-	// (and very similar methods in EllipseWithRatingRenderer and RectangleWithRatingRenderer)
 	void drawRating(Graphics g, Rectangle rect, Graphics2D g2) 
 	{
 		if(rating == null || rating.getCode().length() == 0)
 			return;
 
-		Rectangle smallRect = new Rectangle();
-		smallRect.x = rect.x;
-		smallRect.y = rect.y;
-		smallRect.width = PRIORITY_WIDTH;
-		smallRect.height = PRIORITY_HEIGHT;
-		setPaint(g2, smallRect, rating.getColor());
-		Polygon smallHex = buildHexagon(smallRect);
-		g.fillPolygon(smallHex);
-		g2.setColor(Color.BLACK);
-		g.drawPolygon(smallHex);
-		
-		setRatingBubbleFont(g2);
-		String letter = rating.getLabel().substring(0,1);
-		Utility.drawStringCentered(g2, letter, smallRect);
+		drawRatingBubble(g2, rect, rating.getColor(), rating.getLabel().substring(0,1));
 	}
-
-	private static final int PRIORITY_WIDTH = 20;
-	private static final int PRIORITY_HEIGHT = 10;
 }
