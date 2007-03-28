@@ -38,7 +38,7 @@ public class DeleteResource extends ObjectsDoer
 
 		//TODO fix dialog text
 		if (allThatUseThisResource.size() > 0)
-			dialogText.add("This project resource is used by Budget resources.");
+			dialogText.add("This project resource is being used in the Work Plan and Financial Budget.");
 		
 		dialogText.add("\nAre you sure you want to delete this resource?");
 		String[] buttons = {"Yes", "No", };
