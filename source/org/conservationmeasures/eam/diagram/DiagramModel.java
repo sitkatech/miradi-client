@@ -128,7 +128,7 @@ public class DiagramModel extends DefaultGraphModel
 		insert(cells, nestedAttributeMap, null, null, null);
 	}
 
-	public Hashtable getNestedAttributeMap(DefaultGraphCell cell)
+	private Hashtable getNestedAttributeMap(DefaultGraphCell cell)
 	{
 		Hashtable nest = new Hashtable();
 		nest.put(cell, cell.getAttributes());
