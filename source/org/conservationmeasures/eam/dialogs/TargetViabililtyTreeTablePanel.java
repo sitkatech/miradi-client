@@ -36,7 +36,10 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	}
 
 
-	// FIXME: Shouldn't this be in the TreeTable instead of the panel??? (Kevin)
+	//FIXME: This code needs to be analyzed (Kevin)
+	// to see if it really needs to rebuld its tree under all these conditions
+	// Also, taskTreeTablePanel and TargetViabilityTreeTablePanel should have very similar 
+	// CommandExecuted methods with very similar structures
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		GenericTreeTableModel treeTableModel = getModel();
