@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramContentsId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -38,6 +39,7 @@ import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.DiagramContentsObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -69,6 +71,9 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory = new CellInventory();
 		projectScopeBox = new ProjectScopeBox(this);
 		insertCellIntoGraph(projectScopeBox);
+		
+		DiagramContentsId contentsId = new DiagramContentsId(BaseId.INVALID.asInt());
+		diagramContents = new DiagramContentsObject(contentsId);
 	}
 	
 	public ProjectScopeBox getProjectScopeBox()
@@ -543,5 +548,7 @@ public class DiagramModel extends DefaultGraphModel
 	CellInventory cellInventory;
 	ProjectScopeBox projectScopeBox;
 	protected List diagramModelListenerList = new ArrayList();
+	
+	DiagramContentsObject diagramContents;
 }
 
