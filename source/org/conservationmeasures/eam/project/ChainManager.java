@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import java.text.ParseException;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -14,6 +15,7 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorPool;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -45,7 +47,34 @@ public class ChainManager
 		}
 		return null;
 	}
+ 
+	public Vector getRefferedInObject(ORef ref)
+	{
+		switch (ref.getObjectType())
+		{
+			case ObjectType.PROJECT_RESOURCE:
+				return getAssignmentsWithResource(ref);
+				
+			default:
+				return new Vector();
+		}
+	}
 	
+	private Vector getAssignmentsWithResource(ORef ref)
+	{
+		Vector vector = new Vector();
+		IdList allAssignments = getProject().getAssignmentPool().getIdList();
+		for (int i = 0; i < allAssignments.size(); i++)
+		{
+			Assignment assignment = (Assignment) getProject().findObject(ObjectType.ASSIGNMENT, allAssignments.get(i));
+			BaseId resourceId = assignment.getResourceId();
+			if (ref.getObjectId().equals(resourceId))
+				vector.add(assignment);
+		}
+		
+		return vector;
+	}
+
 	// FIXME: Write tests for this!!! (Richard, with Kevin)
 	public EAMObject getOwner(ORef ref) throws Exception
 	{

@@ -45,6 +45,16 @@ public class Assignment extends EAMBaseObject
 		return detailListData.getDateRangeEffortList();
 	}
 	
+	public void setResourceId(BaseId resourceIdToUse)
+	{
+		resourceIdData.setId(resourceIdToUse);
+	}
+	
+	public BaseId getResourceId()
+	{
+		return resourceIdData.getId();
+	}
+	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		//TODO create ResourceIdData and TaskIdData classes

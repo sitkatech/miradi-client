@@ -13,7 +13,9 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class DeleteResource extends ObjectsDoer
@@ -30,21 +32,20 @@ public class DeleteResource extends ObjectsDoer
 		
 		ProjectResource resource = (ProjectResource)getObjects()[0];
 		BaseId idToRemove = resource.getId();
-
 		Vector dialogText = new Vector();
-		
-		// FIXME budget code - Needs to look in Assignments (Nima)
-		// also after deleting the resource, update all assignments that refered to it
-//		Task[] tasksThatUseThisResource = getProject().findTasksThatUseThisResource(idToRemove);
-//		if(tasksThatUseThisResource.length > 0)
-//			dialogText.add("This resource is assigned to one or more tasks.");
+		ChainManager chainManager = getProject().getChainManager();
+		Vector allThatUseThisResource = chainManager.getRefferedInObject(resource.getRef());
+
+		//TODO fix dialog text
+		if (allThatUseThisResource.size() > 0)
+			dialogText.add("This project resource is used by Budget resources.");
 		
 		dialogText.add("\nAre you sure you want to delete this resource?");
-
 		String[] buttons = {"Yes", "No", };
 		if(!EAM.confirmDialog("Delete Resource", (String[])dialogText.toArray(new String[0]), buttons))
 			return;
 
+		clearAllAssignmentResources(allThatUseThisResource);
 		try
 		{
 			getProject().executeCommand(new CommandBeginTransaction());
@@ -68,6 +69,15 @@ public class DeleteResource extends ObjectsDoer
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+	}
+
+	private void clearAllAssignmentResources(Vector allThatUseThisResource)
+	{
+		for (int i = 0; i < allThatUseThisResource.size(); i++)
+		{
+			Assignment assignment = (Assignment) allThatUseThisResource.get(i);
+			assignment.setResourceId(BaseId.INVALID);
 		}
 	}
 
