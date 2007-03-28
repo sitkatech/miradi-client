@@ -11,11 +11,14 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.xml.XmlUtilities;
 
@@ -259,6 +262,53 @@ abstract public class BaseObject
 		return shortLabel + "." + Longlabel;
 		
 	}
+	
+	public ORefList getDirectOwners()
+	{
+		ORefList directOwners = new ORefList();
+		int[] objectTypes = getReleventObjectTypes();
+		for (int i=0; i<objectTypes.length; ++i)
+		{
+			ORefList orefs = findReferencesInPool(objectTypes[i]);
+			directOwners.addAll(orefs);
+		}
+		return directOwners;
+	}
+
+	private ORefList findReferencesInPool(int objectType)
+	{
+		ORefList matchList = new ORefList();
+		ORefList orefsInPool = getProject().getPool(objectType).getORefList();
+		for (int i=0; i<orefsInPool.size(); ++i)
+		{
+			BaseObject objectInPool = getProject().findObject(orefsInPool.get(i));
+			ORefList children = objectInPool.getDirectChildren(getType());
+			for (int childIdx=0; childIdx<children.size(); ++i)
+			{
+				if (children.get(childIdx).getObjectId().equals(getId()))
+					matchList.add(children.get(childIdx));
+			}
+		}
+		return matchList;
+	}
+
+	private Project getProject()
+	{
+		return EAM.mainWindow.getProject();
+	}
+	
+	
+	public ORefList getDirectChildren(int objectType)
+	{
+		return new ORefList();
+	}
+	
+	
+	public int[] getReleventObjectTypes()
+	{
+		return new int[0];
+	}
+	
 	
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
