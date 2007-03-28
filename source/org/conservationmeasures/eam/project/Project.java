@@ -729,8 +729,8 @@ public class Project
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramFactor diagramFactor = (DiagramFactor) findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
-		FactorCell factorCell = model.addDiagramFactor(diagramFactor);
-		updateVisibilityOfSingleFactor(factorCell);
+		model.addDiagramFactor(diagramFactor);
+		updateVisibilityOfSingleFactor(diagramFactorId);
 	}
 	
 	public DiagramFactorLinkId removeLinkFromDiagram(DiagramFactorLinkId idToDelete) throws Exception
@@ -890,26 +890,22 @@ public class Project
 
 	public void updateVisibilityOfFactors()
 	{
-		DiagramModel model = getDiagramModel();
-		
-		Vector nodes = model.getAllDiagramFactors();
-		for(int i = 0; i < nodes.size(); ++i)
+		try
 		{
-			FactorCell node = (FactorCell)nodes.get(i);
-			updateVisibilityOfSingleFactor(node);
+			DiagramModel model = getDiagramModel();
+			model.updateVisibilityOfFactors();
+			selectionModel.clearSelection();
 		}
-		LayerManager manager = getLayerManager();
-		getGraphLayoutCache().setVisible(getDiagramModel().getProjectScopeBox(), manager.isScopeBoxVisible());
-		selectionModel.clearSelection();
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 
-	public void updateVisibilityOfSingleFactor(FactorCell node)
+	public void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
 	{
-		LayerManager manager = getLayerManager();
-		boolean isVisible = manager.isVisible(node);
-		getGraphLayoutCache().setVisible(node, isVisible);
+		getDiagramModel().updateVisibilityOfSingleFactor(diagramFactorId);
 	}
-	
 	
 	public ProjectResource[] getAllProjectResources()
 	{

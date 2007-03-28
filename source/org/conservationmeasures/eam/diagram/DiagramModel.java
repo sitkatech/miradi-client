@@ -51,6 +51,7 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
@@ -91,13 +92,11 @@ public class DiagramModel extends DefaultGraphModel
 		return project.getThreatRatingFramework();
 	}
 	
-	public FactorCell addDiagramFactor(DiagramFactor diagramFactor) throws Exception
+	public void addDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
 		Factor factor = project.findNode(diagramFactor.getWrappedId());
 		FactorCell factorCell = createFactorCell(diagramFactor, factor);
 		addFactorCellToModel(factorCell);
-		
-		return factorCell;
 	}
 	
 	private FactorCell createFactorCell(DiagramFactor diagramFactor, Factor factor)
@@ -317,6 +316,27 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getLinkCell(link);
 	}
 	
+	
+	public void updateVisibilityOfFactors() throws Exception
+	{
+		Vector nodes = getAllDiagramFactors();
+		for(int i = 0; i < nodes.size(); ++i)
+		{
+			FactorCell node = (FactorCell)nodes.get(i);
+			updateVisibilityOfSingleFactor(node.getDiagramFactorId());
+		}
+		LayerManager manager = project.getLayerManager();
+		project.getGraphLayoutCache().setVisible(getProjectScopeBox(), manager.isScopeBoxVisible());
+	}	
+	
+	public void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
+	{
+		LayerManager manager = project.getLayerManager();
+		FactorCell factorCell = getFactorCellById(diagramFactorId);
+		boolean isVisible = manager.isVisible(factorCell);
+		project.getGraphLayoutCache().setVisible(factorCell, isVisible);
+	}
+
 	public void updateCell(EAMGraphCell cellToUpdate) throws Exception
 	{
 		edit(getNestedAttributeMap(cellToUpdate), null, null, null);

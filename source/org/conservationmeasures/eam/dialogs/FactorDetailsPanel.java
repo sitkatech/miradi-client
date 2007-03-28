@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
-import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -149,20 +149,22 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	{
 		public void itemStateChanged(ItemEvent event)
 		{
-			getProject().updateVisibilityOfSingleFactor(getCurrentDiagramFactor());
+			try
+			{
+				getProject().updateVisibilityOfSingleFactor(getCurrentDiagramFactorId());
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
 		}
 	}
 	
-	FactorCell getCurrentDiagramFactor()
+	public DiagramFactorId getCurrentDiagramFactorId()
 	{
-		return currentDiagramFactor;
+		return currentDiagramFactor.getDiagramFactorId();
 	}
 	
-	FactorId getCurrentFactorId()
-	{
-		return getCurrentDiagramFactor().getWrappedId();
-	}
-
 	public String getPanelDescription()
 	{
 		return EAM.text("Details");
