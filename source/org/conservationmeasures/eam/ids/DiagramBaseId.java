@@ -5,9 +5,9 @@
 */ 
 package org.conservationmeasures.eam.ids;
 
-public class DiagramContentsId extends BaseId
+public class DiagramBaseId extends BaseId
 {
-	public DiagramContentsId(int idToUse)
+	public DiagramBaseId(int idToUse)
 	{
 		super(idToUse);
 	}
