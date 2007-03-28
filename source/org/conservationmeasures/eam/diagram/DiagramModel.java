@@ -303,7 +303,7 @@ public class DiagramModel extends DefaultGraphModel
 	public int getFactorLinksSize(DiagramFactorId diagramFactorId) throws Exception
 	{
 		FactorCell factorCell = getFactorCellById(diagramFactorId);
-		return getEdges(this, new Object[] {factorCell}).size();
+		return getFactorLinks(factorCell).size();
 	}
 	
 	public Set getFactorLinks(FactorCell node)
