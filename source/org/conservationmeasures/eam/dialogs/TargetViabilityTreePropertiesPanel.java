@@ -267,12 +267,12 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 			if (list.size()!=0)
 				
 			{
-				Vector vorefs = new Vector(Arrays.asList(orefsToUse));
+				Vector orefList = new Vector(Arrays.asList(orefsToUse));
 				ORef ref = new ORef(ObjectType.GOAL,list.get(0));
-				vorefs.insertElementAt(ref,0);
+				orefList.insertElementAt(ref,0);
 				indicatorThreshold.setIconRowObject(new ORef(ObjectType.INDICATOR, objectId));
 				indicatorThreshold.setIconRowObject(ref);
-				orefsToUse = (ORef[])vorefs.toArray(new ORef[0]);
+				orefsToUse = (ORef[])orefList.toArray(new ORef[0]);
 			}
 			else
 				EAM.logError("No Goals found for EKA Indicator:" + objectId);

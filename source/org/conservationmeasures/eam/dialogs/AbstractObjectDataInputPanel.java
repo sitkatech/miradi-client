@@ -325,14 +325,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public void deleteObjectFromList(BaseId baseId)
 	{
-		Vector vorefs = new Vector(Arrays.asList(orefs));
+		Vector orefList = new Vector(Arrays.asList(orefs));
 		for (int i=0; i<orefs.length; ++i)
 		{
 			BaseId objectId = getORef(i).getObjectId();
 			if (objectId.equals(baseId))
-				vorefs.remove(i);
+				orefList.remove(i);
 		}
-		orefs = (ORef[])vorefs.toArray(new ORef[0]);
+		orefs = (ORef[])orefList.toArray(new ORef[0]);
 	}
 
 	boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
