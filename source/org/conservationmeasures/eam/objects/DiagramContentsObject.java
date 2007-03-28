@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramContentsId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -18,7 +19,7 @@ public class DiagramContentsObject extends BaseObject
 	
 	public DiagramContentsObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, json);
+		super(new DiagramContentsId(idToUse.asInt()), json);
 	}
 	
 	public int getType()
@@ -30,5 +31,4 @@ public class DiagramContentsObject extends BaseObject
 	{
 		super.clear();
 	}
-	
 }
