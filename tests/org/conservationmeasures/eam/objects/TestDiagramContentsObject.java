@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+
 public class TestDiagramContentsObject extends ObjectTestCase
 {
 	public TestDiagramContentsObject(String name)
@@ -14,8 +16,6 @@ public class TestDiagramContentsObject extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		//TODO uncomment and use in test
-		//verifyFields(ObjectType.DIAGRAM_CONTENTS);
-		//verifyTagBehavior(DiagramContentsObject.TAG_SOMETHING);
+		verifyFields(ObjectType.DIAGRAM_CONTENTS);
 	}
 }

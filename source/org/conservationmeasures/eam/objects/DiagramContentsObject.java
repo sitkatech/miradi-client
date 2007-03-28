@@ -17,9 +17,9 @@ public class DiagramContentsObject extends BaseObject
 		super(idToUse);
 	}
 	
-	public DiagramContentsObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
+	public DiagramContentsObject(int idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(new DiagramContentsId(idToUse.asInt()), json);
+		super(new DiagramContentsId(idToUse), json);
 	}
 	
 	public int getType()

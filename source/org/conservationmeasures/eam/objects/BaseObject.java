@@ -103,6 +103,9 @@ abstract public class BaseObject
 			case ObjectType.DIAGRAM_FACTOR:
 				return new DiagramFactor(idAsInt, json);
 				
+			case ObjectType.DIAGRAM_CONTENTS:
+				return new DiagramContentsObject(idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
