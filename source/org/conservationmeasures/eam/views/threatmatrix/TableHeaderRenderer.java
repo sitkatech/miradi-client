@@ -40,7 +40,8 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
 	private void createCellSelectionBorders()
 	{
 		Border cellBorder = UIManager.getBorder("TableHeader.cellBorder");
-		//FIXME: for now this code allows the MAC to be tuned independently until a general solution can be found for all (Richard) 
+		//FIXME: for now this code allows the MAC to be tuned independently (Richard) 
+		// until a general solution can be found for all  
 		if (!UIManager.getBorder("TableHeader.cellBorder").getClass().getName().startsWith("javax"))
 		{
 			cellBorder =  BorderFactory.createRaisedBevelBorder();

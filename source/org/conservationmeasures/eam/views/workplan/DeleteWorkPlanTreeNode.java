@@ -34,7 +34,8 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 		if (!isAvailable())
 			return;
 
-		//FIXME: Looks like this code is duplicated in eihter the chain manager and or Delete Annotation Doer (Richard)
+		//FIXME: Looks like this code is duplicated (Richard)
+		// in eihter the chain manager and or Delete Annotation Doer 
 		try
 		{
 			Project project = getProject();
