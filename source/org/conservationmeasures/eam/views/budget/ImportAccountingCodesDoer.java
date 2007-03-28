@@ -109,6 +109,7 @@ public class ImportAccountingCodesDoer extends ViewDoer
 			project.executeCommand(cmd);
 			
 			BaseId baseId = cmd.getCreatedId();
+			// FIXME: This creates a second AccountingCode object (Richard)
 			AccountingCode accountingCode = new AccountingCode(baseId);
 			accountingCodeVector.add(accountingCode);
 
