@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramBaseId;
+import org.conservationmeasures.eam.ids.DiagramContentsId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -72,7 +72,7 @@ public class DiagramModel extends DefaultGraphModel
 		projectScopeBox = new ProjectScopeBox(this);
 		insertCellIntoGraph(projectScopeBox);
 		
-		DiagramBaseId contentsId = new DiagramBaseId(BaseId.INVALID.asInt());
+		DiagramContentsId contentsId = new DiagramContentsId(BaseId.INVALID.asInt());
 		diagramContents = new DiagramContentsObject(contentsId);
 	}
 	
