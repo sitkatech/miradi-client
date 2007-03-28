@@ -193,15 +193,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return getMainWindow().getActions();
 	}
 	
-	public JComponent getToolBar()
-	{
-		return toolBar;
-	}
-	
-	protected void setToolBar(JComponent newToolBar)
-	{
-		toolBar = newToolBar;
-	}
+	abstract public JComponent createToolBar();
 	
 	public BufferedImage getImage()
 	{
@@ -459,7 +451,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
-	private JComponent toolBar;
 	private HashMap actionToDoerMap;
 	private boolean isActive;
 	

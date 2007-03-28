@@ -17,8 +17,6 @@ abstract public class CellRatingsDoer extends ViewDoer
 	
 	public void updateToolBar()
 	{
-		ThreatMatrixView threatMatrixView = (ThreatMatrixView) getView();
-		threatMatrixView.recreateToolBar();
 		getMainWindow().updateToolBar();
 	}
 

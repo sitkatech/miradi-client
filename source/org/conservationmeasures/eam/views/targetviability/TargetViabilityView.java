@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.targetviability;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.MainWindow;
@@ -20,7 +21,6 @@ public class TargetViabilityView extends TabbedView
 	public TargetViabilityView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new TargetViabilityToolBar(mainWindowToUse.getActions()));
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 	
@@ -32,6 +32,11 @@ public class TargetViabilityView extends TabbedView
 	static public String getViewName()
 	{
 		return Project.TARGET_VIABILITY_NAME;
+	}
+
+	public JComponent createToolBar()
+	{
+		return new TargetViabilityToolBar(getActions());
 	}
 
 	public void createTabs() throws Exception

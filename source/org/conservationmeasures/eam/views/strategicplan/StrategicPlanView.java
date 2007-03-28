@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.strategicplan;
 
+import javax.swing.JComponent;
+
 import org.conservationmeasures.eam.dialogs.GoalPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.ObjectivePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.StrategyPoolManagementPanel;
@@ -19,7 +21,6 @@ public class StrategicPlanView extends TabbedView
 	public StrategicPlanView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new StrategicPlanToolBar(mainWindowToUse.getActions()));
 		addStrategicPlanDoersToMap();
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
@@ -32,6 +33,11 @@ public class StrategicPlanView extends TabbedView
 	static public String getViewName()
 	{
 		return Project.STRATEGIC_PLAN_VIEW_NAME;
+	}
+
+	public JComponent createToolBar()
+	{
+		return new StrategicPlanToolBar(getActions());
 	}
 
 	public void createTabs() throws Exception

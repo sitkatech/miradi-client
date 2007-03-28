@@ -199,7 +199,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			UmbrellaView view = getCurrentView();
 			if(view == null)
 				return;
-			JComponent toolBar = view.getToolBar();
+			JComponent toolBar = view.createToolBar();
 			if(toolBar == null)
 				throw new RuntimeException("View must have toolbar");
 			toolBarBox.removeAll();

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.schedule;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -22,7 +23,6 @@ public class ScheduleView extends TabbedView
 	public ScheduleView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new ScheduleToolBar(mainWindowToUse.getActions()));
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
@@ -35,6 +35,11 @@ public class ScheduleView extends TabbedView
 	static public String getViewName()
 	{
 		return Project.SCHEDULE_VIEW_NAME;
+	}
+
+	public JComponent createToolBar()
+	{
+		return new ScheduleToolBar(getActions());
 	}
 
 	public void createTabs() throws Exception

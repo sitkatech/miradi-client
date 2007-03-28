@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
@@ -45,14 +46,12 @@ public class ThreatMatrixView extends UmbrellaView
 		super(mainWindowToUse);
 		
 		addThreatMatrixiewDoersToMap();
-		recreateToolBar();
 		wizardPanel = new ThreatRatingWizardPanel(this);
 	}
 
-	//FIXME umberall view probably should not store the toolbar (Kevin)
-	public void recreateToolBar()
+	public JComponent createToolBar()
 	{
-		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions(), isCellRatingsVisible()));
+		return new ThreatMatrixToolBar(getActions(), isCellRatingsVisible());
 	}
 
 	private boolean isCellRatingsVisible()

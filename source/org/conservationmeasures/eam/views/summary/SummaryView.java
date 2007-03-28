@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.views.summary;
 
 
+import javax.swing.JComponent;
+
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
@@ -30,7 +32,6 @@ public class SummaryView extends TabbedView
 	public SummaryView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new SummaryToolBar(mainWindowToUse.getActions()));
 		addSummaryDoersToMap();
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
@@ -45,6 +46,11 @@ public class SummaryView extends TabbedView
 		return Project.SUMMARY_VIEW_NAME;
 	}
 
+	public JComponent createToolBar()
+	{
+		return new SummaryToolBar(getMainWindow().getActions());
+	}
+	
 	public WizardPanel createWizardPanel() throws Exception 
 	{
 		return wizardPanel;
@@ -116,5 +122,4 @@ public class SummaryView extends TabbedView
 	WCSSummaryPanel wcssSummaryPanel; 
 	RARESummaryPanel rareSummaryPanel;
 	FOSSummaryPanel fosSummaryPanel;
-	
 }

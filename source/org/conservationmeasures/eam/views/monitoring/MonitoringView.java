@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.views.monitoring;
 
 
+import javax.swing.JComponent;
+
 import org.conservationmeasures.eam.dialogs.IndicatorPoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -18,7 +20,6 @@ public class MonitoringView extends TabbedView
 	public MonitoringView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new MonitoringToolBar(mainWindowToUse.getActions()));
 		addMonitoringPlanDoersToMap();
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
@@ -31,6 +32,11 @@ public class MonitoringView extends TabbedView
 	static public String getViewName()
 	{
 		return Project.MONITORING_VIEW_NAME;
+	}
+
+	public JComponent createToolBar()
+	{
+		return new MonitoringToolBar(getActions());
 	}
 
 	public void createTabs() throws Exception

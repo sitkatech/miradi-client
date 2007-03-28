@@ -109,7 +109,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 
 	private void updateToolBar()
 	{
-		setToolBar(new DiagramToolBar(getActions(), mode));
 		getMainWindow().updateToolBar();
 	}
 	
@@ -128,6 +127,11 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		return Project.DIAGRAM_VIEW_NAME;
 	}
 	
+	public JComponent createToolBar()
+	{
+		return new DiagramToolBar(getActions(), mode);
+	}
+
 	public BufferedImage getImage()
 	{
 		return diagram.getImage();

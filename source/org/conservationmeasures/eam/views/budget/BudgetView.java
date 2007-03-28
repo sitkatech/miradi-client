@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.budget;
 
 import java.awt.Component;
 
+import javax.swing.JComponent;
+
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
 import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
@@ -53,7 +55,6 @@ public class BudgetView extends TabbedView
 	{
 		super(mainWindowToUse);
 		addBudgetDoersToMap();
-		setToolBar(new BudgetToolBar(mainWindowToUse.getActions()));
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
@@ -77,6 +78,11 @@ public class BudgetView extends TabbedView
 		resourceManagementPanel.updateSplitterLocation();
 		
 		getMainWindow().setStatusBarIfDataExistsOutOfRange();
+	}
+
+	public JComponent createToolBar()
+	{
+		return new BudgetToolBar(getActions());
 	}
 
 	public void createTabs() throws Exception

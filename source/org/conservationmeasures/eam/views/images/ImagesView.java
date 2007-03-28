@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.images;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -26,7 +27,6 @@ public class ImagesView extends UmbrellaView
 	public ImagesView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new ImagesToolBar(mainWindowToUse.getActions()));
 	}
 
 	public String cardName() 
@@ -37,6 +37,11 @@ public class ImagesView extends UmbrellaView
 	static public String getViewName()
 	{
 		return Project.IMAGES_VIEW_NAME;
+	}
+
+	public JComponent createToolBar()
+	{
+		return new ImagesToolBar(getActions());
 	}
 
 	public void becomeActive() throws Exception

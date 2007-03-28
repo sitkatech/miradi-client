@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -27,7 +28,6 @@ public class MapView extends UmbrellaView
 	public MapView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new MapToolBar(mainWindowToUse.getActions()));
 	}
 
 	public String cardName() 
@@ -49,6 +49,11 @@ public class MapView extends UmbrellaView
 		add(new FastScrollPane(panel));
 	}
 	
+
+	public JComponent createToolBar()
+	{
+		return new MapToolBar(getActions());
+	}
 
 	public void becomeInactive() throws Exception
 	{

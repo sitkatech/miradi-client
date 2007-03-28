@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.workplan;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
+
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
@@ -40,7 +42,6 @@ public class WorkPlanView extends TabbedView
 	{
 		super(mainWindowToUse);
 		mainWindow = mainWindowToUse;
-		setToolBar(new WorkPlanToolBar(mainWindowToUse.getActions()));
 		addWorkPlanDoersToMap();
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
@@ -54,6 +55,11 @@ public class WorkPlanView extends TabbedView
 	static public String getViewName()
 	{
 		return Project.WORK_PLAN_VIEW_NAME;
+	}
+
+	public JComponent createToolBar()
+	{
+		return new WorkPlanToolBar(getActions());
 	}
 
 	public void createTabs() throws Exception
