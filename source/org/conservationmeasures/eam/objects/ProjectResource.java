@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class ProjectResource extends EAMBaseObject
+public class ProjectResource extends BaseObject
 {
 	public ProjectResource(BaseId idToUse)
 	{

@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 
@@ -66,7 +66,7 @@ public class ProjectRepairer
 			IndicatorId indicatorId = new IndicatorId(oldIndicatorIds.get(j).asInt());
 			if(indicatorId.isInvalid())
 				continue;
-			EAMObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
+			BaseObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
 			if(indicator == null)
 				EAM.logWarning("Fixing node " + node.getId() + " ghost indicatorId " + indicatorId);
 			else
@@ -166,7 +166,7 @@ public class ProjectRepairer
 		for(int i = 0; i < teamMemberIds.size(); ++i)
 		{
 			BaseId teamMemberId = teamMemberIds.get(i);
-			EAMObject resource = project.findObject(ObjectType.PROJECT_RESOURCE, teamMemberId);
+			BaseObject resource = project.findObject(ObjectType.PROJECT_RESOURCE, teamMemberId);
 			if(resource == null)
 			{
 				EAM.logWarning("Removing deleted team member " + teamMemberId);
@@ -228,7 +228,7 @@ public class ProjectRepairer
 			BaseId annotationId = allIds.get(i);
 			try
 			{
-				EAMObject owner = chainManager.getOwner(new ORef(annotationType, annotationId));
+				BaseObject owner = chainManager.getOwner(new ORef(annotationType, annotationId));
 				if(owner == null)
 				{
 					EAM.logWarning("Detected orphan " + annotationType + ":" + annotationId);

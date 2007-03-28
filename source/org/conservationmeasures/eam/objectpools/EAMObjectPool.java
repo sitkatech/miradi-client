@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 
 public class EAMObjectPool extends ObjectPool
 {
@@ -15,9 +15,9 @@ public class EAMObjectPool extends ObjectPool
 		objectType = objectTypeToStore;
 	}
 	
-	public EAMObject findObject(BaseId id)
+	public BaseObject findObject(BaseId id)
 	{
-		return (EAMObject)getRawObject(id);
+		return (BaseObject)getRawObject(id);
 	}
 	
 	public int getObjectType()

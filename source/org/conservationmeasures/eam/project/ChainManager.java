@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Assignment;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -35,7 +35,7 @@ public class ChainManager
 	// FIXME: Write tests for this!!! (Richard, with Kevin)
 	public Factor getDirectOrIndirectOwningFactor(ORef ref) throws Exception
 	{
-		EAMObject owner = project.findObject(ref);
+		BaseObject owner = project.findObject(ref);
 		int AVOID_INFINITE_LOOP = 10000;
 		for(int i = 0; i < AVOID_INFINITE_LOOP; ++i)
 		{
@@ -76,7 +76,7 @@ public class ChainManager
 	}
 
 	// FIXME: Write tests for this!!! (Richard, with Kevin)
-	public EAMObject getOwner(ORef ref) throws Exception
+	public BaseObject getOwner(ORef ref) throws Exception
 	{
 		switch(ref.getObjectType())
 		{
@@ -97,49 +97,49 @@ public class ChainManager
 		}
 	}
 	
-	private EAMObject assignmentOwner(ORef ref) throws Exception
+	private BaseObject assignmentOwner(ORef ref) throws Exception
 	{
 		return findOwner(ref, getProject().getTaskPool().getAllTasks(), Task.TAG_ASSIGNMENT_IDS);
 	}
 
-	private EAMObject goalOwner(ORef ref) throws Exception
+	private BaseObject goalOwner(ORef ref) throws Exception
 	{
-		EAMObject factorOwner = findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_GOAL_IDS);
+		BaseObject factorOwner = findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_GOAL_IDS);
 		if(factorOwner != null)
 			return factorOwner;
 		return findOwner(ref, getProject().getIndicatorPool().getAllIndicators(), Indicator.TAG_GOAL_IDS);		
 	}
 	
-	private EAMObject indicatorOwner(ORef ref) throws Exception
+	private BaseObject indicatorOwner(ORef ref) throws Exception
 	{
-		EAMObject factorOwner = findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_INDICATOR_IDS);
+		BaseObject factorOwner = findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_INDICATOR_IDS);
 		if(factorOwner != null)
 			return factorOwner;
 		return findOwner(ref, getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute(), KeyEcologicalAttribute.TAG_INDICATOR_IDS);		
 	}
 	
-	private EAMObject keyEcologicalAttributeOwner(ORef ref) throws Exception
+	private BaseObject keyEcologicalAttributeOwner(ORef ref) throws Exception
 	{
 		return findOwner(ref, getFactorPool().getTargets(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 
-	private EAMObject getObjectiveOwner(ORef ref) throws Exception
+	private BaseObject getObjectiveOwner(ORef ref) throws Exception
 	{
 		return findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_OBJECTIVE_IDS);
 	}
 	
-	private EAMObject getTaskOwner(ORef ref) throws Exception
+	private BaseObject getTaskOwner(ORef ref) throws Exception
 	{
-		EAMObject strategyOwner = findOwner(ref, getFactorPool().getDraftAndNonDraftStrategies(), Strategy.TAG_ACTIVITY_IDS);
+		BaseObject strategyOwner = findOwner(ref, getFactorPool().getDraftAndNonDraftStrategies(), Strategy.TAG_ACTIVITY_IDS);
 		if(strategyOwner != null)
 			return strategyOwner;
-		EAMObject IndicatorOwner = findOwner(ref, getProject().getIndicatorPool().getAllIndicators(), Indicator.TAG_TASK_IDS);
+		BaseObject IndicatorOwner = findOwner(ref, getProject().getIndicatorPool().getAllIndicators(), Indicator.TAG_TASK_IDS);
 		if(IndicatorOwner != null)
 			return IndicatorOwner;
 		return findOwner(ref, getProject().getTaskPool().getAllTasks(), Task.TAG_SUBTASK_IDS);		
 	}
 
-	private EAMObject findOwner(ORef refToFind, EAMObject[] objectsToSearchIn, String tagOfIdListToSearch) throws ParseException
+	private BaseObject findOwner(ORef refToFind, BaseObject[] objectsToSearchIn, String tagOfIdListToSearch) throws ParseException
 	{
 		for(int i = 0; i < objectsToSearchIn.length; ++i)
 		{

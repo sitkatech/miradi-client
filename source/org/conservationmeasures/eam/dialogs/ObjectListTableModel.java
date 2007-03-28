@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
 public class ObjectListTableModel extends ObjectTableModel
@@ -45,7 +45,7 @@ public class ObjectListTableModel extends ObjectTableModel
 		return tagOfIdList;
 	}
 
-	private EAMObject getContainingObject()
+	private BaseObject getContainingObject()
 	{
 		return project.findObject(containingObjectType, containingObjectId);
 	}

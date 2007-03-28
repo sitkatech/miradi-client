@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-abstract public class Desire extends EAMBaseObject
+abstract public class Desire extends BaseObject
 {
 	public Desire(BaseId idToUse)
 	{

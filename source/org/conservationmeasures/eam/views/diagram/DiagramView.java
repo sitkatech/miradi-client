@@ -74,7 +74,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -142,7 +142,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		return diagram.getPrintableComponent();
 	}
 	
-	public EAMObject getSelectedObject()
+	public BaseObject getSelectedObject()
 	{
 		FactorCell node = diagram.getSelectedFactor();
 		if(node == null)

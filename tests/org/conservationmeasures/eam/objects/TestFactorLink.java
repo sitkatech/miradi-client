@@ -27,7 +27,7 @@ public class TestFactorLink extends EAMTestCase
 		FactorLink original = new FactorLink(id, nodeAId, nodeBId);
 		original.setData(FactorLink.TAG_STRESS_LABEL, "What stress!");
 		EnhancedJsonObject json = original.toJson();
-		FactorLink gotBack = (FactorLink)EAMBaseObject.createFromJson(original.getType(), json);
+		FactorLink gotBack = (FactorLink)BaseObject.createFromJson(original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
 		assertEquals("wrong from?", original.getFromFactorId(), gotBack.getFromFactorId());
 		assertEquals("wrong to?", original.getToFactorId(), gotBack.getToFactorId());

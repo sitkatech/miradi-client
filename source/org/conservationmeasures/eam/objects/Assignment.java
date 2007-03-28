@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class Assignment extends EAMBaseObject
+public class Assignment extends BaseObject
 {
 	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfo)
 	{

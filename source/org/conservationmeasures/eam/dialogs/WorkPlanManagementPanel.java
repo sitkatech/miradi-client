@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
 
 public class WorkPlanManagementPanel extends VerticalSplitPanel
@@ -31,7 +31,7 @@ public class WorkPlanManagementPanel extends VerticalSplitPanel
 		super.dispose();
 	}
 
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return treeTableComponent.getSelectedTreeNode().getObject();
 	}

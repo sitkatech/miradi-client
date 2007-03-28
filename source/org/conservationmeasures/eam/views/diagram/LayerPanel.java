@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 
 public class LayerPanel extends ModelessDialogPanel
 {
@@ -17,7 +17,7 @@ public class LayerPanel extends ModelessDialogPanel
 		add(new DiagramLegendPanel(mainWindowToUse));
 	}
 
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return null;
 	}

@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -62,7 +62,7 @@ public abstract class AbstractTaskTreeDoer extends ObjectsDoer
 		throw new RuntimeException("getTaskIdsTag called for non-task container type " + container.getObjectType());
 	}
 
-	public void createTask(Project project, EAMObject object, String containerTag) throws CommandFailedException, ParseException, Exception
+	public void createTask(Project project, BaseObject object, String containerTag) throws CommandFailedException, ParseException, Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try

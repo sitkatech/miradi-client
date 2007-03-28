@@ -36,7 +36,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.Project;
@@ -174,7 +174,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("added to framework?", oldCount, framework.getCriteria().length);
 		RatingCriterion criterion = framework.getCriterion(cmd.getCreatedId());
-		assertEquals("wrong default label?", EAMBaseObject.DEFAULT_LABEL, criterion.getLabel());
+		assertEquals("wrong default label?", BaseObject.DEFAULT_LABEL, criterion.getLabel());
 		
 		assertNotNull("didn't create?", framework.getCriterion(cmd.getCreatedId()));
 		

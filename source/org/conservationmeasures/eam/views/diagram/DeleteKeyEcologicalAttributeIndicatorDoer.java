@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.dialogs.KeyEcologicalAttributeNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
@@ -67,7 +67,7 @@ public class DeleteKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 	public static Command[] createDeleteCommands(Project project, KeyEcologicalAttributeIndicatorNode selectedIndicatorNode) throws Exception
 	{
 		KeyEcologicalAttributeNode  keaNode = (KeyEcologicalAttributeNode)selectedIndicatorNode.getParentNode();
-		EAMBaseObject thisAnnotation = (EAMBaseObject)project.findObject(ObjectType.INDICATOR, selectedIndicatorNode.getObject().getId());
+		BaseObject thisAnnotation = project.findObject(ObjectType.INDICATOR, selectedIndicatorNode.getObject().getId());
 		return DeleteIndicator.buildCommandsToDeleteAnnotation(project, keaNode.getObject(), KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
 	}
 

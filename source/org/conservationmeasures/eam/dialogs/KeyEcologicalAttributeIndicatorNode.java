@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
@@ -23,7 +23,7 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 		keyEcologicalAttributesNode = parent;
 	}
 	
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return indicator;
 	}

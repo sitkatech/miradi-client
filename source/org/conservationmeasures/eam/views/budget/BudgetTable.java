@@ -29,8 +29,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.AccountingCode;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
@@ -111,7 +110,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 		}
 	}
 	
-	private void createComboColumn(EAMBaseObject[] projectResources, int col)
+	private void createComboColumn(BaseObject[] projectResources, int col)
 	{
 		JComboBox resourceCombo = new JComboBox(projectResources);
 		
@@ -125,21 +124,21 @@ public class BudgetTable extends JTable implements ObjectPicker
 		return null;
 	}
 
-	public EAMObject[] getSelectedObjects()
+	public BaseObject[] getSelectedObjects()
 	{
 		int selectedRow = getSelectedRow();
 		if (selectedRow < 0)
-			return new EAMObject[0];
+			return new BaseObject[0];
 		
 		AssignmentTableModelSplittableShell budgetModel = getBudgetModel();
 		selectedRow = budgetModel.getCorrectedRow(selectedRow);
 		
 		BaseId selectedId = budgetModel.getAssignmentForRow(selectedRow);
-		EAMObject selectedObject = project.findObject(ObjectType.ASSIGNMENT, selectedId);
+		BaseObject selectedObject = project.findObject(ObjectType.ASSIGNMENT, selectedId);
 		if (selectedObject == null)
-			return new EAMObject[0];
+			return new BaseObject[0];
 	
-		return new EAMObject[] {selectedObject};
+		return new BaseObject[] {selectedObject};
 	}
 
 	public void ensureObjectVisible(ORef ref)

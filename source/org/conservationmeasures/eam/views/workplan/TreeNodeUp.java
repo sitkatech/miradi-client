@@ -12,14 +12,14 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
 
 public class TreeNodeUp extends AbstractTaskTreeDoer
 {
 	public boolean isAvailable()
 	{
-		EAMObject[] selected = getObjects();
+		BaseObject[] selected = getObjects();
 		if(selected == null || selected.length != 1)
 			return false;
 	

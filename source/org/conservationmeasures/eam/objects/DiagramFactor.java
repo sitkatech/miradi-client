@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class DiagramFactor extends EAMBaseObject
+public class DiagramFactor extends BaseObject
 {
 	public DiagramFactor(DiagramFactorId diagramFactorIdToUse, CreateDiagramFactorParameter extraInfo)
 	{

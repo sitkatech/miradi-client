@@ -10,7 +10,7 @@ import java.awt.LayoutManager2;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 
 abstract public class ModelessDialogPanel extends DisposablePanel
 {
@@ -29,12 +29,12 @@ abstract public class ModelessDialogPanel extends DisposablePanel
 		
 	}
 	
-	public void selectObject(EAMObject objectToSelect)
+	public void selectObject(BaseObject objectToSelect)
 	{
 		EAM.logDebug("selectObject not handled by " + getClass().getName());
 	}
 	
-	abstract public EAMObject getObject();
+	abstract public BaseObject getObject();
 	abstract public String getPanelDescription();
 
 }

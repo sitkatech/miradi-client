@@ -10,7 +10,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
@@ -27,7 +27,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		rebuild();
 	}
 	
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return kea;
 	}

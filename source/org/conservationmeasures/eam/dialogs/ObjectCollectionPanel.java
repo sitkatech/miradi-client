@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -70,7 +70,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements  
 		return project;
 	}
 	
-	abstract public EAMObject getSelectedObject();
+	abstract public BaseObject getSelectedObject();
 	
 	abstract public void commandExecuted(CommandExecutedEvent event);
 	

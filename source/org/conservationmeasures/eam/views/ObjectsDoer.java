@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 abstract public class ObjectsDoer extends ViewDoer
@@ -28,16 +28,16 @@ abstract public class ObjectsDoer extends ViewDoer
 		return picker.getSelectedTreeNodes();
 	}
 	
-	public EAMObject[] getObjects()
+	public BaseObject[] getObjects()
 	{
 		if(picker == null)
-			return new EAMObject[0];
+			return new BaseObject[0];
 		return picker.getSelectedObjects();
 	}
 	
 	public BaseId[] getSelectedIds()
 	{
-		EAMObject[] selectedObjects = getObjects();
+		BaseObject[] selectedObjects = getObjects();
 		if (selectedObjects == null)
 		{
 			BaseId[] emptyIds  = {BaseId.INVALID};
@@ -46,7 +46,7 @@ abstract public class ObjectsDoer extends ViewDoer
 		return getObjectIds(selectedObjects);
 	}
 	
-	private BaseId[] getObjectIds(EAMObject[] selectedObjects)
+	private BaseId[] getObjectIds(BaseObject[] selectedObjects)
 	{
 		BaseId[] objectIds = new BaseId[selectedObjects.length];
 		for (int i = 0; i < selectedObjects.length; i++)
@@ -63,7 +63,7 @@ abstract public class ObjectsDoer extends ViewDoer
 	
 	public BaseId getSelectedId()
 	{
-		EAMObject selected = getObjects()[0];
+		BaseObject selected = getObjects()[0];
 		if(selected == null)
 			return BaseId.INVALID;
 		return selected.getId();

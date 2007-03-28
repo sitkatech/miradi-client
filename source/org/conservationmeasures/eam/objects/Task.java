@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class Task extends EAMBaseObject
+public class Task extends BaseObject
 {
 	public Task(BaseId idToUse, CreateTaskParameter extraInfo) throws Exception
 	{

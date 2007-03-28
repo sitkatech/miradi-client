@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 
-public class DiagramFactorLink extends EAMBaseObject
+public class DiagramFactorLink extends BaseObject
 {
 	public DiagramFactorLink(BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
 	{

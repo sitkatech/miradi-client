@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class KeyEcologicalAttribute extends EAMBaseObject
+public class KeyEcologicalAttribute extends BaseObject
 {
 	public KeyEcologicalAttribute(KeyEcologicalAttributeId idToUse)
 	{

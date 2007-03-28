@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.TestCaseEnhanced;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
@@ -34,7 +34,7 @@ public class ProjectServerForTesting extends ProjectServer
 		openNonDatabaseStore(projectDir);
 	}
 	
-	public void writeObject(EAMObject object) throws IOException, ParseException
+	public void writeObject(BaseObject object) throws IOException, ParseException
 	{
 		super.writeObject(object);
 		++callsToWriteObject;

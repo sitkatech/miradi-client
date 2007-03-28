@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -270,7 +270,7 @@ public class BudgetTotalsCalculator
 		double childrenTotal = 0.0;
 		for (int i = 0; i < node.getChildCount(); i++)
 		{
-			EAMObject object = node.getChild(i).getObject();
+			BaseObject object = node.getChild(i).getObject();
 			Strategy strategy = (Strategy)object;
 			childrenTotal += getTotalStrategyCost(strategy);
 		}
@@ -350,7 +350,7 @@ public class BudgetTotalsCalculator
 		double childrenTotal = 0.0;
 		for (int i = 0; i < node.getChildCount(); i++)
 		{
-			EAMObject object = node.getChild(i).getObject();
+			BaseObject object = node.getChild(i).getObject();
 			Strategy strategy = (Strategy)object;
 			childrenTotal += getTotalStrategyCost(strategy, dateRange);
 		}

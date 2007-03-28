@@ -21,8 +21,8 @@ import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -161,14 +161,14 @@ public class Delete extends ProjectDoer
 		IdList ids = new IdList(factorToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
-			EAMBaseObject thisAnnotation = (EAMBaseObject)getProject().findObject(annotationType, ids.get(annotationIndex));
+			BaseObject thisAnnotation = getProject().findObject(annotationType, ids.get(annotationIndex));
 			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
 			getProject().executeCommands(commands);
 		}
 	}
 	
 
-	private void removeAndDeleteTasksInList(EAMBaseObject objectToDelete, String annotationListTag) throws Exception
+	private void removeAndDeleteTasksInList(BaseObject objectToDelete, String annotationListTag) throws Exception
 	{
 		IdList ids = new IdList(objectToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)

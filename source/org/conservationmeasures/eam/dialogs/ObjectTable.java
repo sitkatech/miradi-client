@@ -21,7 +21,7 @@ import javax.swing.table.JTableHeader;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -99,10 +99,10 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		return null;
 	}
 	
-	public EAMObject[] getSelectedObjects()
+	public BaseObject[] getSelectedObjects()
 	{
 		int[] rows = getSelectedRows();
-		EAMObject[] objects = new EAMObject[rows.length];
+		BaseObject[] objects = new BaseObject[rows.length];
 		for(int i = 0; i < objects.length; ++i)
 			objects[i] = getObjectFromRow(rows[i]);
 		return objects;
@@ -125,7 +125,7 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		selectionListeners.remove(listener);
 	}
 
-	private EAMObject getObjectFromRow(int row)
+	private BaseObject getObjectFromRow(int row)
 	{
 		return getObjectTableModel().getObjectFromRow(row);
 	}

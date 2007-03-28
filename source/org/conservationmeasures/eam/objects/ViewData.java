@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class ViewData extends EAMBaseObject
+public class ViewData extends BaseObject
 {
 	public ViewData(BaseId idToUse)
 	{

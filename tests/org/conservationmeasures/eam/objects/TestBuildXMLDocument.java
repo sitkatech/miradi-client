@@ -121,7 +121,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 		BaseId[] baseIds = pool.getIds();
 		for(int i = 0; i < baseIds.length; ++i)
 		{
-			EAMBaseObject object = (EAMBaseObject) project.findObject(objectType, baseIds[i]);
+			BaseObject object = project.findObject(objectType, baseIds[i]);
 			processTags(elementName, baseIds, i, object);
 		}
 			
@@ -129,7 +129,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 		writeEndELement(GroupElementName);
 	}
 
-	private void processTags(String elementName, BaseId[] baseIds, int i, EAMBaseObject object)
+	private void processTags(String elementName, BaseId[] baseIds, int i, BaseObject object)
 	{
 		writeLineReturn();
 		writeStartELement(elementName, baseIds[i].asInt());
@@ -138,7 +138,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 		writeEndELement(elementName);
 	}
 
-	private void processTags(EAMBaseObject object)
+	private void processTags(BaseObject object)
 	{
 		
 		if (object.getType() == ObjectType.TASK)

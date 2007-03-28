@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.AccountingCode;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 
 public class AccountingCodePool extends EAMNormalObjectPool
 {
@@ -24,7 +24,7 @@ public class AccountingCodePool extends EAMNormalObjectPool
 		return (AccountingCode)findObject(id);
 	}
 
-	EAMObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new AccountingCode(actualId);
 	}

@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StrategyTaxonomyQuestion;
@@ -20,7 +20,7 @@ public class StratPlanStrategy extends TreeTableNode
 		intervention = interventionToUse;
 	}
 	
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return intervention;
 	}

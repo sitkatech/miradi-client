@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -28,7 +28,7 @@ public class WorkPlanTaskNode extends TreeTableNode
 		rebuild();
 	}
 	
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return task;
 	}

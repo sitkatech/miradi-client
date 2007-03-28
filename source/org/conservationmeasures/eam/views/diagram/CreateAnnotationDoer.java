@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -64,7 +64,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	
 	public Factor getSelectedFactor()
 	{
-		EAMObject selected = getView().getSelectedObject();
+		BaseObject selected = getView().getSelectedObject();
 		if(selected == null)
 			return null;
 		

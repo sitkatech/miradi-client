@@ -101,7 +101,7 @@ public class TestValueOption extends EAMTestCase
 		option.setData(ValueOption.TAG_NUMERIC, Integer.toString(numeric));
 		option.setData(ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 		
-		ValueOption loaded = (ValueOption)EAMBaseObject.createFromJson(option.getType(), option.toJson());
+		ValueOption loaded = (ValueOption)BaseObject.createFromJson(option.getType(), option.toJson());
 		assertEquals(option.getId(), loaded.getId());
 		assertEquals(option.getLabel(), loaded.getLabel());
 		assertEquals(option.getNumericValue(), loaded.getNumericValue());

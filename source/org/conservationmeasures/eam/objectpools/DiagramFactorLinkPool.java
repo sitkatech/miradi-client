@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParamet
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 
 public class DiagramFactorLinkPool extends EAMNormalObjectPool
 {
@@ -25,7 +25,7 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 		return (DiagramFactorLink)findObject(id);
 	}
 
-	EAMObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo) throws Exception
+	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new DiagramFactorLink(actualId, (CreateDiagramFactorLinkParameter)extraInfo);
 	}

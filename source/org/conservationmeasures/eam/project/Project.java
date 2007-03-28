@@ -58,7 +58,7 @@ import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -249,12 +249,12 @@ public class Project
 		return graphLayoutCache;
 	}
 	
-	public EAMObject findObject(ORef ref)
+	public BaseObject findObject(ORef ref)
 	{
 		return findObject(ref.getObjectType(), ref.getObjectId());
 	}
 
-	public EAMObject findObject(int objectType, BaseId objectId)
+	public BaseObject findObject(int objectType, BaseId objectId)
 	{
 		EAMObjectPool pool = getPool(objectType);
 		return pool.findObject(objectId);

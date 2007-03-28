@@ -9,7 +9,7 @@ import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTableModel;
@@ -32,7 +32,7 @@ public class WorkPlanTreeTableModel extends TaskTreeTableModel
 		return EAM.fieldLabel(ObjectType.TASK, columnTags[column]);
 	}
 	
-	public EAMObject getParentObject(Task task)
+	public BaseObject getParentObject(Task task)
 	{
 		TreePath interventionPath = getPathOfParent(task.getType(), task.getId());
 		WorkPlanStrategy workPlanStrategy = (WorkPlanStrategy)interventionPath.getLastPathComponent();

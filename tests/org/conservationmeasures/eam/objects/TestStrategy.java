@@ -94,7 +94,7 @@ public class TestStrategy extends ObjectTestCase
 		intervention.insertActivityId(new BaseId(23), 0);
 		intervention.insertActivityId(new BaseId(37), 1);
 		
-		Strategy got = (Strategy)EAMBaseObject.createFromJson(intervention.getType(), intervention.toJson());
+		Strategy got = (Strategy)BaseObject.createFromJson(intervention.getType(), intervention.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());
 		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
 	}

@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.StringMapData;
 
-public class Indicator extends EAMBaseObject
+public class Indicator extends BaseObject
 {
 	public Indicator(IndicatorId idToUse)
 	{

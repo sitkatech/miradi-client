@@ -11,8 +11,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.ProjectInfo;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -206,12 +205,12 @@ public class ProjectServer
 	
 	
 	
-	public EAMObject readObject(int type, BaseId id) throws Exception
+	public BaseObject readObject(int type, BaseId id) throws Exception
 	{
-		return EAMBaseObject.createFromJson(type, JSONFile.read(getObjectFile(type, id)));
+		return BaseObject.createFromJson(type, JSONFile.read(getObjectFile(type, id)));
 	}
 	
-	public void writeObject(EAMObject object) throws IOException, ParseException
+	public void writeObject(BaseObject object) throws IOException, ParseException
 	{
 		getObjectDirectory(object.getType()).mkdirs();
 		JSONFile.write(getObjectFile(object.getType(), object.getId()), object.toJson());	

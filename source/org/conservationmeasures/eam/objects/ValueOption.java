@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class ValueOption extends EAMBaseObject
+public class ValueOption extends BaseObject
 {
 	public ValueOption(BaseId idToUse)
 	{

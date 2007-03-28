@@ -11,7 +11,7 @@ import java.io.StringReader;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.AccountingCode;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
@@ -41,7 +41,7 @@ public class ImportAccountingCodesDoerTest extends EAMTestCase
 		String data = "code1A \t label1A \n code1B \t label1B";
 		AccountingCode[] accountingCodes = ImportAccountingCodesDoer.importCodes(new BufferedReader(new StringReader(data)),project);
 		assertEquals(2, accountingCodes.length);
-		EAMObject object = project.findObject(ObjectType.ACCOUNTING_CODE, accountingCodes[0].getId());
+		BaseObject object = project.findObject(ObjectType.ACCOUNTING_CODE, accountingCodes[0].getId());
 		assertNotNull(object);
 		AccountingCode accountingCode = (AccountingCode) object; 
 		assertEquals("label1A", accountingCode.getLabel());

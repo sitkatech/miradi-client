@@ -42,7 +42,7 @@ public class ObjectTestCase extends EAMTestCase
 		try
 		{
 			BaseId id = project.createObject(objectType, BaseId.INVALID, extraInfo);
-			EAMBaseObject object = (EAMBaseObject)project.findObject(objectType, id);
+			BaseObject object = project.findObject(objectType, id);
 			String[] tags = object.getFieldTags();
 			for(int i = 0; i < tags.length; ++i)
 			{
@@ -76,7 +76,7 @@ public class ObjectTestCase extends EAMTestCase
 		project.createOrOpen(dir);
 		try
 		{
-			EAMBaseObject object = (EAMBaseObject)project.findObject(objectType, id);
+			BaseObject object = project.findObject(objectType, id);
 			assertNotNull("Didn't load pool?", object);
 		}
 		finally
@@ -86,9 +86,9 @@ public class ObjectTestCase extends EAMTestCase
 		DirectoryUtils.deleteEntireDirectoryTree(dir);
 	}
 	
-	private void verifyFieldLifecycle(Project project, EAMBaseObject object, String tag) throws Exception
+	private void verifyFieldLifecycle(Project project, BaseObject object, String tag) throws Exception
 	{
-		if(tag.equals(EAMBaseObject.TAG_ID))
+		if(tag.equals(BaseObject.TAG_ID))
 			return;
 		if (object.getNoneClearedFieldTags().contains(tag))
 			return;
@@ -98,13 +98,13 @@ public class ObjectTestCase extends EAMTestCase
 		assertEquals("didn't default " + tag + " blank?", "", object.getData(tag));
 		object.setData(tag, sampleData);
 		assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
-		EAMObject got = EAMBaseObject.createFromJson(object.getType(), object.toJson());
+		BaseObject got = BaseObject.createFromJson(object.getType(), object.toJson());
 		assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
 		
 		CommandSetObjectData[] commandsToDelete = object.createCommandsToClear();
 		for(int i = 0; i < commandsToDelete.length; ++i)
 		{
-			assertNotEquals("Tried to clear Id?", EAMBaseObject.TAG_ID, commandsToDelete[i].getFieldTag());
+			assertNotEquals("Tried to clear Id?", BaseObject.TAG_ID, commandsToDelete[i].getFieldTag());
 			project.executeCommand(commandsToDelete[i]);
 		}
 		assertEquals("Didn't clear " + tag + "?", "", object.getData(tag));
@@ -114,7 +114,7 @@ public class ObjectTestCase extends EAMTestCase
 
 	}
 
-	private String getSampleData(EAMBaseObject object, String tag)
+	private String getSampleData(BaseObject object, String tag)
 	{
 		ObjectData field = object.getField(tag);
 		if(field instanceof IdListData)

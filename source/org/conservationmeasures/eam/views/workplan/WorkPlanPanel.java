@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
@@ -26,7 +26,7 @@ public class WorkPlanPanel extends TaskTreeTablePanel
 		model = modelToUse;
 	}
 	
-	public EAMObject getParentObject(Task task)
+	public BaseObject getParentObject(Task task)
 	{
 		return ((WorkPlanTreeTableModel)model).getParentObject(task);
 	}

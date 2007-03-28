@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class AccountingCode extends EAMBaseObject
+public class AccountingCode extends BaseObject
 {
 	public AccountingCode(BaseId idToUse)
 	{

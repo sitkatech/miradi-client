@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class ViewPossibleResources extends ObjectsDoer
@@ -16,7 +16,7 @@ public class ViewPossibleResources extends ObjectsDoer
 		if (!getProject().isOpen())
 			return false;
 
-		EAMObject selectedObject = getWorkPlanView().getSelectedObject();
+		BaseObject selectedObject = getWorkPlanView().getSelectedObject();
 		if (selectedObject == null)
 			return false;
 

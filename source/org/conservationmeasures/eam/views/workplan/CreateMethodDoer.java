@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.views.workplan;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 
 //TODO InsertMethodDoer, InsertTaskDoer, InsertActivitDoer have code in common that needs to be refactored
 public class CreateMethodDoer extends AbstractTaskTreeDoer
 {
 	public boolean isAvailable()
 	{
-		EAMObject[] selected = getObjects();
+		BaseObject[] selected = getObjects();
 		if(selected == null || selected.length != 1)
 			return false;
 	
@@ -30,7 +30,7 @@ public class CreateMethodDoer extends AbstractTaskTreeDoer
 		if(!isAvailable())
 			return;
 		
-		EAMObject parent = getObjects()[0];
+		BaseObject parent = getObjects()[0];
 		String tag = AbstractTaskTreeDoer.getTaskIdsTag(parent.getRef());
 		try
 		{

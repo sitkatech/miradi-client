@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -23,7 +23,7 @@ public class StratPlanActivity extends TreeTableNode
 		activity = activityToUse;
 	}
 	
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return activity;
 	}

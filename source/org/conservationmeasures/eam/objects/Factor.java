@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-abstract public class Factor extends EAMBaseObject
+abstract public class Factor extends BaseObject
 {
 	protected Factor(BaseId idToUse, FactorType nodeType)
 	{

@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.xml.XmlUtilities;
 
-abstract public class EAMBaseObject implements EAMObject
+abstract public class BaseObject
 {
-	public EAMBaseObject(BaseId idToUse)
+	public BaseObject(BaseId idToUse)
 	{
 		setId(idToUse);
 		clear();
@@ -32,7 +32,7 @@ abstract public class EAMBaseObject implements EAMObject
 		return new ORef(getType(), getId());
 	}
 	
-	EAMBaseObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
+	BaseObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		setId(idToUse);
 		clear();
@@ -44,7 +44,7 @@ abstract public class EAMBaseObject implements EAMObject
 		}
 	}
 	
-	public static EAMObject createFromJson(int type, EnhancedJsonObject json) throws Exception
+	public static BaseObject createFromJson(int type, EnhancedJsonObject json) throws Exception
 	{
 		int idAsInt = json.getInt(TAG_ID);
 		switch(type)
@@ -109,10 +109,10 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof EAMObject))
+		if(!(rawOther instanceof BaseObject))
 			return false;
 		
-		EAMObject other = (EAMObject)rawOther;
+		BaseObject other = (BaseObject)rawOther;
 		return other.getId().equals(getId());
 	}
 	
@@ -228,7 +228,7 @@ abstract public class EAMBaseObject implements EAMObject
 		return json;
 	}
 	
-	public static String toHtml(EAMObject[] resources)
+	public static String toHtml(BaseObject[] resources)
 	{
 		StringBuffer result = new StringBuffer();
 		result.append("<html>");

@@ -28,7 +28,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
@@ -207,7 +207,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			super.dispose();
 		}
 
-		public EAMObject getObject()
+		public BaseObject getObject()
 		{
 			return realPanel.getObject();
 		}

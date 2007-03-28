@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ValueOption;
 
 public class ValueOptionPool extends EAMNormalObjectPool
@@ -19,7 +19,7 @@ public class ValueOptionPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.VALUE_OPTION);
 	}
 
-	EAMObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ValueOption(actualId);
 	}

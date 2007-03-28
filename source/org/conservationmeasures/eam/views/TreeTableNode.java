@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 
 public abstract class TreeTableNode
 {
@@ -16,7 +16,7 @@ public abstract class TreeTableNode
 	public abstract int getChildCount();
 	public abstract TreeTableNode getChild(int index);
 	public abstract Object getValueAt(int column);
-	public abstract EAMObject getObject();
+	public abstract BaseObject getObject();
 	abstract public void rebuild() throws Exception;
 	public TreeTableNode getParentNode() throws Exception 
 	{

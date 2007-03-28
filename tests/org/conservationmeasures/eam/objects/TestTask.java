@@ -88,7 +88,7 @@ public class TestTask extends ObjectTestCase
 	{
 		Task parent = createBasicTree();
 		
-		Task got = (Task)EAMBaseObject.createFromJson(parent.getType(), parent.toJson());
+		Task got = (Task)BaseObject.createFromJson(parent.getType(), parent.toJson());
 		assertEquals("wrong count?", parent.getSubtaskCount(), got.getSubtaskCount());
 	}
 

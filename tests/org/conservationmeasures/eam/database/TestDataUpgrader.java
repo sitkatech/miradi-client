@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
@@ -97,11 +97,11 @@ public class TestDataUpgrader extends EAMTestCase
 		upgrader.renameNodeTagFromNameToLabel();
 		
 		int nodeType = ObjectType.FACTOR;
-		Target gotTarget = (Target)EAMBaseObject.createFromJson(nodeType, JSONFile.read(targetFile));
+		Target gotTarget = (Target)BaseObject.createFromJson(nodeType, JSONFile.read(targetFile));
 		assertEquals(target.getLabel(), gotTarget.getLabel());
-		Cause gotThreat = (Cause)EAMBaseObject.createFromJson(nodeType, JSONFile.read(threatFile));
+		Cause gotThreat = (Cause)BaseObject.createFromJson(nodeType, JSONFile.read(threatFile));
 		assertEquals(threat.getLabel(), gotThreat.getLabel());
-		Strategy gotIntervention = (Strategy)EAMBaseObject.createFromJson(nodeType, JSONFile.read(interventionFile));
+		Strategy gotIntervention = (Strategy)BaseObject.createFromJson(nodeType, JSONFile.read(interventionFile));
 		assertEquals(intervention.getLabel(), gotIntervention.getLabel());
 	}
 

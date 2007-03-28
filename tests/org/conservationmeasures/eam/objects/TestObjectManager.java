@@ -162,7 +162,7 @@ public class TestObjectManager extends EAMTestCase
 		
 		String tag = RatingCriterion.TAG_LABEL;
 		manager.setObjectData(type, createdId, tag, "data");
-		EAMObject withData = db.readObject(type, createdId);
+		BaseObject withData = db.readObject(type, createdId);
 		assertEquals(type + " didn't write/read data for " + tag + "?", "data", withData.getData(tag));
 		assertEquals(type + " can't get data from project?", "data", manager.getObjectData(type, createdId, tag));
 		
@@ -203,7 +203,7 @@ public class TestObjectManager extends EAMTestCase
 			projectToRead.createOrOpen(tempDirectory);
 			try
 			{
-				projectToRead.getObjectData(type, idToReload, EAMBaseObject.TAG_LABEL);
+				projectToRead.getObjectData(type, idToReload, BaseObject.TAG_LABEL);
 			}
 			catch (NullPointerException e)
 			{
@@ -227,7 +227,7 @@ public class TestObjectManager extends EAMTestCase
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, cop);
 		EAMObjectPool pool = manager.getPool(type);
 		assertNotNull("Missing pool type " + type, pool);
-		EAMObject created = (EAMObject)pool.getRawObject(createdId);
+		BaseObject created = (BaseObject)pool.getRawObject(createdId);
 		assertNotNull("Pool doesn't have object type " + created);
 	}
 	

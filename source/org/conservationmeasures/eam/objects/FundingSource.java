@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class FundingSource extends EAMBaseObject
+public class FundingSource extends BaseObject
 {
 	public FundingSource(BaseId idToUse)
 	{

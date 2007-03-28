@@ -11,7 +11,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.DesirePool;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
@@ -25,7 +25,7 @@ public class MonitoringRootNode extends MonitoringNode
 		rebuild();
 	}
 	
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return null;
 	}

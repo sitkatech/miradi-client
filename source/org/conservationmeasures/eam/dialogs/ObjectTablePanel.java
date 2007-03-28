@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
 
@@ -30,9 +30,9 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		table.addListSelectionListener(this);
 	}
 	
-	public EAMObject getSelectedObject()
+	public BaseObject getSelectedObject()
 	{
-		EAMObject[] selected = table.getSelectedObjects();
+		BaseObject[] selected = table.getSelectedObjects();
 		if(selected.length == 0)
 			return null;
 		return selected[0];
@@ -54,7 +54,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 			int[] row = table.getSelectedRows();
 			if (row.length == 1 )
 			{
-				EAMObject selectedObject = table.getObjectTableModel().getObjectFromRow(row[0]);
+				BaseObject selectedObject = table.getObjectTableModel().getObjectFromRow(row[0]);
 				oref = selectedObject.getRef();
 				
 			}

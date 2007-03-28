@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class FactorLink extends EAMBaseObject
+public class FactorLink extends BaseObject
 {
 	public FactorLink(FactorLinkId id, FactorId fromNodeId, FactorId toNodeId)
 	{

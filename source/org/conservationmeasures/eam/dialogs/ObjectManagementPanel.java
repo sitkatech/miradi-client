@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 abstract public class ObjectManagementPanel extends VerticalSplitPanel
@@ -36,7 +36,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel
 		listComponent.addButton(action);
 	}
 
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		if(listComponent == null)
 			return null;

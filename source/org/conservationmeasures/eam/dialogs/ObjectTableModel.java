@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
 abstract public class ObjectTableModel extends AbstractTableModel
@@ -41,12 +41,12 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		rowObjectIds = newList;
 	}
 
-	public EAMObject getObjectFromRow(int row) throws RuntimeException
+	public BaseObject getObjectFromRow(int row) throws RuntimeException
 	{
 		try
 		{
 			BaseId rowObjectId = getIdList().get(row);
-			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
+			BaseObject rowObject = project.findObject(rowObjectType, rowObjectId);
 			if(rowObject == null)
 				EAM.logDebug("ObjectTableModel.getObjectFromRow: Missing object: " + new ORef(rowObjectType, rowObjectId));
 			return rowObject;

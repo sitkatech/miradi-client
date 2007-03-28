@@ -8,9 +8,8 @@ package org.conservationmeasures.eam.views.workplan;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ChainManager;
@@ -22,7 +21,7 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 {
 	public boolean isAvailable()
 	{
-		EAMObject[] selected = getObjects();
+		BaseObject[] selected = getObjects();
 		if(selected == null || selected.length != 1)
 			return false;
 	
@@ -40,14 +39,14 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 		{
 			Project project = getProject();
 			ChainManager chainManager = new ChainManager(project);
-			EAMObject object = getObjects()[0];
+			BaseObject object = getObjects()[0];
 			if (object.getType() == ObjectType.TASK)
 			{
 				DeleteActivity.deleteTask(project, (Task)object);
 			}
 			else if (object.getType() == ObjectType.INDICATOR)
 			{
-				EAMObject owner = chainManager.getOwner(object.getRef());
+				BaseObject owner = chainManager.getOwner(object.getRef());
 				if (owner.getType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 				{
 					deleteAnnotation(project, object, owner, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
@@ -64,9 +63,9 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 		}
 	}
 
-	private void deleteAnnotation(Project project, EAMObject objectToDelete, EAMObject owner, final String tagOfIdList) throws CommandFailedException
+	private void deleteAnnotation(Project project, BaseObject objectToDelete, BaseObject owner, final String tagOfIdList) throws CommandFailedException
 	{
-		DeleteAnnotationDoer.deleteAnnotationViaCommands(project, owner, (Indicator)objectToDelete, tagOfIdList, getConfirmDialogText());
+		DeleteAnnotationDoer.deleteAnnotationViaCommands(project, owner, objectToDelete, tagOfIdList, getConfirmDialogText());
 	}
 
 	private String[] getConfirmDialogText()

@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public class ViewPool extends EAMNormalObjectPool
@@ -41,7 +41,7 @@ public class ViewPool extends EAMNormalObjectPool
 		return null;
 	}
 
-	EAMObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ViewData(actualId);
 	}

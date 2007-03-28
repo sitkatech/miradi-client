@@ -19,8 +19,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -45,13 +44,13 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		
 		String tag = getAnnotationIdListTag();
 		String[] dialogText = getDialogText();
-		EAMBaseObject annotationToDelete = (EAMBaseObject)getObjects()[0];
+		BaseObject annotationToDelete = getObjects()[0];
 		Factor selectedFactor = getSelectedFactor();
 		
 		deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
 	}
 
-	public static void deleteAnnotationViaCommands(Project project, EAMObject owner, EAMBaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
+	public static void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
 	{
 		String[] buttons = {"Delete", "Retain", };
 		if(!EAM.confirmDialog("Delete", confirmDialogText, buttons))
@@ -75,7 +74,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}
 	}
 	
-	public static Command[] buildCommandsToDeleteAnnotation(Project project, EAMObject owner, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
+	public static Command[] buildCommandsToDeleteAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
 		Vector commands = new Vector();
 	
@@ -93,7 +92,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 
 	public Factor getSelectedFactor()
 	{
-		EAMObject selected = getView().getSelectedObject();
+		BaseObject selected = getView().getSelectedObject();
 		if(selected == null)
 			return null;
 		
@@ -116,7 +115,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		IdList indicatorList = kea.getIndicatorIds();
 		for (int i  = 0; i < indicatorList.size(); i++)
 		{
-			EAMBaseObject thisAnnotation = (EAMBaseObject)project.findObject(ObjectType.INDICATOR,  indicatorList.get(i));
+			BaseObject thisAnnotation = project.findObject(ObjectType.INDICATOR,  indicatorList.get(i));
 			Command[] deleteCommands = DeleteIndicator.buildCommandsToDeleteAnnotation(project, kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
 			commands.addAll(Arrays.asList(deleteCommands));
 		}
@@ -156,7 +155,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		IdList goalList = new IdList(indicator.getData(Indicator.TAG_GOAL_IDS));
 		for (int i  = 0; i < goalList.size(); i++)
 		{
-			EAMBaseObject thisAnnotation = (EAMBaseObject)project.findObject(ObjectType.GOAL,  goalList.get(i));
+			BaseObject thisAnnotation = project.findObject(ObjectType.GOAL,  goalList.get(i));
 			Command[] deleteCommands = DeleteIndicator.buildCommandsToDeleteAnnotation(project, indicator, Indicator.TAG_GOAL_IDS, thisAnnotation);
 			commands.addAll(Arrays.asList(deleteCommands));
 		}

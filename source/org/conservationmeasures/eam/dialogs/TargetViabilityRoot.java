@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
@@ -26,7 +26,7 @@ public class TargetViabilityRoot extends TreeTableNode
 		rebuild();
 	}
 	
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return null;
 	}

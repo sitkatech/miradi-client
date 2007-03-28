@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class RatingCriterion extends EAMBaseObject
+public class RatingCriterion extends BaseObject
 {
 	public RatingCriterion(BaseId idToUse)
 	{

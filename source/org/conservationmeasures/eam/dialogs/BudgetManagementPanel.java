@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.BudgetTreeTablePanel;
 
@@ -26,7 +26,7 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 		createVerticalSplitPane(treeTableComponent, propertiesPanel, getSplitterDescription());
 	}
 
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return treeTableComponent.getSelectedTreeNode().getObject();
 	}

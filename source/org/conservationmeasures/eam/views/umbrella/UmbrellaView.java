@@ -122,7 +122,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
@@ -206,7 +206,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	}
 	
 	
-	public void showResourcePropertiesDialog(EAMObject object) throws Exception
+	public void showResourcePropertiesDialog(BaseObject object) throws Exception
 	{
 		ModelessDialogPanel propertiesPanel = createPanelForDialog(object);
 		if(propertiesPanel == null)
@@ -217,7 +217,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		showFloatingPropertiesDialog(dlg);
 	}
 	
-	public EAMObject getSelectedObject()
+	public BaseObject getSelectedObject()
 	{
 		return null;
 	}
@@ -238,7 +238,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 
 	}
 	
-	private ModelessDialogPanel createPanelForDialog(EAMObject object) throws Exception
+	private ModelessDialogPanel createPanelForDialog(BaseObject object) throws Exception
 	{	
 		return new ResourcePropertiesPanel(getProject(), object.getId());
 	}
@@ -430,7 +430,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 			return;
 		
 		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
-		EAMObject objectBeingEdited = activePropertiesPanel.getObject();
+		BaseObject objectBeingEdited = activePropertiesPanel.getObject();
 		if(objectBeingEdited == null)
 			return;
 		if(cmd.getObjectType() != objectBeingEdited.getType())

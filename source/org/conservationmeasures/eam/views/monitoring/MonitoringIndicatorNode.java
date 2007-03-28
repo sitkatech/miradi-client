@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.monitoring;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
@@ -22,7 +22,7 @@ public class MonitoringIndicatorNode extends MonitoringNode
 		indicator = indicatorToUse;
 	}
 	
-	public EAMObject getObject()
+	public BaseObject getObject()
 	{
 		return indicator;
 	}

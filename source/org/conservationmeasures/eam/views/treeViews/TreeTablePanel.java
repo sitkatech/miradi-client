@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
@@ -77,7 +77,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		super.dispose();
 	}
 	
-	public EAMObject getSelectedObject()
+	public BaseObject getSelectedObject()
 	{
 		return getSelectedTreeNode().getObject();
 	}
@@ -87,7 +87,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return (TreeTableNode)tree.getTree().getLastSelectedPathComponent();
 	}
 
-	public void selectObject(EAMObject objectToSelect)
+	public void selectObject(BaseObject objectToSelect)
 	{
 		tree.selectObject(objectToSelect.getRef());
 	}
@@ -124,7 +124,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		Vector objects = new Vector();
 		for (int i=0; i< selectedObjects.length; ++i)
 		{
-			EAMObject object = ((TreeTableNode)selectedObjects[i]).getObject();
+			BaseObject object = ((TreeTableNode)selectedObjects[i]).getObject();
 			if (object==null) 
 				continue;
 			objects.insertElementAt(new ORef(object.getType(), object.getId()),0);

@@ -49,10 +49,9 @@ import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Desire;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -211,7 +210,7 @@ public class ObjectManager
 			default:
 			{
 				EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
-				EAMObject created = pool.createObject(objectId, extraInfo);
+				BaseObject created = pool.createObject(objectId, extraInfo);
 				getDatabase().writeObject(created);
 				createdId = created.getId();
 				break;
@@ -233,7 +232,7 @@ public class ObjectManager
 
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
-		EAMObject object = getPool(objectType).findObject(objectId);
+		BaseObject object = getPool(objectType).findObject(objectId);
 		object.setData(fieldTag, dataValue);
 		getDatabase().writeObject(object);
 	}
@@ -268,12 +267,12 @@ public class ObjectManager
 		throw new RuntimeException("Unknown PseudoTag: " + fieldTag + " for type " + objectType);	
 	}
 	
-	EAMObject findObject(ORef ref)
+	BaseObject findObject(ORef ref)
 	{
 		return findObject(ref.getObjectType(), ref.getObjectId());
 	}
 	
-	EAMObject findObject(int objectType, BaseId objectId)
+	BaseObject findObject(int objectType, BaseId objectId)
 	{
 		return getPool(objectType).findObject(objectId);
 	}
@@ -596,13 +595,13 @@ public class ObjectManager
 			EAM.logDebug("Task without parent: " + taskId);
 			return "(none)";
 		}
-		EAMObject parent = findObject(parentRef);
+		BaseObject parent = findObject(parentRef);
 		if(parent == null)
 		{
 			EAM.logDebug("Parent of task " + taskId + " not found: " + parentRef);
 			return "(none)";
 		}
-		return parent.getData(EAMBaseObject.TAG_LABEL);
+		return parent.getData(BaseObject.TAG_LABEL);
 	}
 	
 	
@@ -691,7 +690,7 @@ public class ObjectManager
 				result.append("; ");
 			
 			BaseId methodId = methodIds.get(i);
-			EAMObject method = findObject(ObjectType.TASK, methodId);
+			BaseObject method = findObject(ObjectType.TASK, methodId);
 			result.append(method.getData(Task.TAG_LABEL));
 		}
 		
@@ -703,7 +702,7 @@ public class ObjectManager
 		if (isPseudoTag(fieldTag))
 			return getPseudoField(objectType, objectId, fieldTag);
 
-		EAMObject object = getPool(objectType).findObject(objectId);
+		BaseObject object = getPool(objectType).findObject(objectId);
 		if(object == null)
 			EAM.logDebug("getObjectData no such object: " + objectType + ":" + objectId + " fieldTag=" + fieldTag);
 		return object.getData(fieldTag);
@@ -743,7 +742,7 @@ public class ObjectManager
 				EAM.logWarning("Ignoring invalid id of type " + type);
 				continue;
 			}
-			EAMObject object = getDatabase().readObject(type, id);
+			BaseObject object = getDatabase().readObject(type, id);
 			getPool(type).put(object.getId(), object);
 		}
 	}

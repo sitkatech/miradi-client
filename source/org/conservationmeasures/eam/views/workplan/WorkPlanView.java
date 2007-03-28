@@ -26,7 +26,7 @@ import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.WorkPlanManagementPanel;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.AddAssignmentDoer;
@@ -152,7 +152,7 @@ public class WorkPlanView extends TabbedView
 		showFloatingPropertiesDialog(dlg);
 	}
 	
-	public EAMObject getSelectedObject()
+	public BaseObject getSelectedObject()
 	{
 		if (getActivitiesManagementPanel() != null)
 			return getActivitiesManagementPanel().getObject();

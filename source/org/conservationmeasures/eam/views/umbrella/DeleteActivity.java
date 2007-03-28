@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -87,7 +87,7 @@ public class DeleteActivity extends ObjectsDoer
 			return;
 		
 		ChainManager chainManager = new ChainManager(project);
-		EAMObject foundIn = chainManager.getOwner(selectedTask.getRef());
+		BaseObject foundIn = chainManager.getOwner(selectedTask.getRef());
 		selectedTask.setParentRef(foundIn.getRef());
 	}
 
@@ -107,7 +107,7 @@ public class DeleteActivity extends ObjectsDoer
 		Vector commandsToDeleteTasks = new Vector();
 		
 		ORef parentRef = task.getParentRef();
-		EAMObject parentObject = project.findObject(parentRef.getObjectType(), parentRef.getObjectId());
+		BaseObject parentObject = project.findObject(parentRef.getObjectType(), parentRef.getObjectId());
 		CommandSetObjectData commandSetObjectData;
 		if (task.isActivity())
 			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Strategy.TAG_ACTIVITY_IDS, task.getId());

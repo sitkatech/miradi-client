@@ -44,7 +44,7 @@ public class TestProjectResource extends EAMTestCase
 		}
 		expected = expected + "</html>";
 		
-		String resourcesAsHtml = EAMBaseObject.toHtml(projectResources);
+		String resourcesAsHtml = BaseObject.toHtml(projectResources);
 		assertEquals("did not return resources as Html?", expected, resourcesAsHtml);
 	}
 

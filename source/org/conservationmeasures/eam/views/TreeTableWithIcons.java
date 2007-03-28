@@ -31,7 +31,7 @@ import org.conservationmeasures.eam.icons.TaskIcon;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -230,25 +230,25 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 	}
 
 	 //TODO: This method needs review as it seems a bit complex
-	public EAMObject[] getSelectedObjects()
+	public BaseObject[] getSelectedObjects()
 	{
 		TreeTableNode selectedNode = (TreeTableNode)getTree().getLastSelectedPathComponent();
 		
 		if (selectedNode == null)
-			return new EAMObject[0];
+			return new BaseObject[0];
 		
 		ORef oRef = selectedNode.getObjectReference();
 		EAMObjectPool pool = project.getPool(oRef.getObjectType());
 		
 		if (pool == null)
-			return new EAMObject[0];
+			return new BaseObject[0];
 		
-		EAMObject foundObject = pool.findObject(oRef.getObjectId());
+		BaseObject foundObject = pool.findObject(oRef.getObjectId());
 		
 		if (foundObject == null)
-			return new EAMObject[0];
+			return new BaseObject[0];
 		
-		return new EAMObject[] {foundObject};
+		return new BaseObject[] {foundObject};
 	}
 
 	public void ensureObjectVisible(ORef ref)
