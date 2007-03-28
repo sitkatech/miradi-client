@@ -24,7 +24,7 @@ public class ORefList
 	{
 		this(new EnhancedJsonObject(listAsJsonString));
 	}
-	
+
 	public ORefList(EnhancedJsonObject json)
 	{
 		this();
@@ -49,6 +49,14 @@ public class ORefList
 	{
 		data.add(objectReferenceToUse);
 	}
+	
+	
+	public void addAll(ORefList otherList)
+	{
+		for(int i = 0; i < otherList.size(); ++i)
+			data.add(otherList.get(i));
+	}
+	
 	
 	public ORef get(int index)
 	{

@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 
 public class EAMObjectPool extends ObjectPool
@@ -19,6 +21,18 @@ public class EAMObjectPool extends ObjectPool
 	{
 		return (BaseObject)getRawObject(id);
 	}
+	
+	public ORefList getORefList()
+	{
+		ORefList orefList = new ORefList();
+		BaseId[] baseIds = getIds();
+		for (int i=0; i<baseIds.length; ++i)
+		{
+			orefList.add(new ORef(getObjectType(),baseIds[i]));
+		}
+		return orefList;
+	}
+
 	
 	public int getObjectType()
 	{
