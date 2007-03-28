@@ -24,4 +24,11 @@ public class StatusQuestion extends ChoiceQuestion
 				new ChoiceItem("4", "Very Good", COLOR_4_OF_4),
 		};
 	}
+	
+	public static final String UNSPECIFIED = "";
+	public static final String POOR = "1";
+	public static final String FAIR = "2";
+	public static final String GOOD = "3";
+	public static final String VERY_GOOD = "4";
+
 }

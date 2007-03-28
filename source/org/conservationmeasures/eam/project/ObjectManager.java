@@ -62,6 +62,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
@@ -412,7 +413,7 @@ public class ObjectManager
 		{
 			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keas.get(i));
 			String category = kea.getData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
-			if(category.equals(TNCViabilityFormula.UNSPECIFIED))
+			if(category.equals(StatusQuestion.UNSPECIFIED))
 				continue;
 			
 			CodeList codesForCategory = (CodeList)categoryKeaRatings.get(category);
