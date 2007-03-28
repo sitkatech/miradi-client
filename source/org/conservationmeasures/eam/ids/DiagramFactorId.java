@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.ids;
 
-public class DiagramFactorId extends BaseId
+public class DiagramFactorId extends ObjectId
 {
 
 	public DiagramFactorId(int idToUse)
