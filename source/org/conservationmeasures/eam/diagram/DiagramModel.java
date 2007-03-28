@@ -350,7 +350,7 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(cellToUpdate), new ModelEventNotifierFactorChanged());
 	}
 	
-	public boolean doesDiagramFactorExist(DiagramFactorId id)
+	private boolean doesDiagramFactorExist(DiagramFactorId id)
 	{
 		return (rawGetFactorById(id) != null);
 	}
