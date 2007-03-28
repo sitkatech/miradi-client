@@ -51,6 +51,7 @@ import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestAssignment;
 import org.conservationmeasures.eam.objects.TestCause;
 import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
+import org.conservationmeasures.eam.objects.TestDiagramContentsObject;
 import org.conservationmeasures.eam.objects.TestDiagramFactorLink;
 import org.conservationmeasures.eam.objects.TestFactor;
 import org.conservationmeasures.eam.objects.TestFactorLink;
@@ -201,6 +202,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestFundingSource.class));
 		suite.addTest(new TestSuite(TestAccountingCode.class));
 		suite.addTest(new TestSuite(TestPointList.class));
+		suite.addTest(new TestSuite(TestDiagramContentsObject.class));
 		
 		
 		// commands package
