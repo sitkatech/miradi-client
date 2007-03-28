@@ -17,7 +17,9 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 
 
 
@@ -55,8 +57,7 @@ public class ProjectForTesting extends Project
 		return cmTargetId;
 	}
 	
-
-	public FactorId createNodeAndAddToDiagram(FactorType nodeType) throws Exception
+	public DiagramFactorId createAndAddFactorToDiagram(FactorType nodeType) throws Exception
 	{
 		FactorId factorId = createNode(nodeType);
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
@@ -66,8 +67,16 @@ public class ProjectForTesting extends Project
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
 		CommandDiagramAddFactor addDiagramFactorCommand = new CommandDiagramAddFactor(diagramFactorId);
 		executeCommand(addDiagramFactorCommand);
-				
-		return factorId;
+		
+		return diagramFactorId;
+	}
+
+	public FactorId createNodeAndAddToDiagram(FactorType nodeType) throws Exception
+	{
+		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(nodeType);
+		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
+	
+		return diagramFactor.getWrappedId();
 	}
 	
 	public FactorCell createFactorCell(FactorType nodeType) throws Exception

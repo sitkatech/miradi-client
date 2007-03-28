@@ -152,8 +152,8 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testHasLinkage() throws Exception
 	{
-		FactorCell factor = project.createFactorCell(Factor.TYPE_CAUSE);
-		model.deleteDiagramFactor(factor);
+		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		model.deleteDiagramFactor(diagramFactorId);
 		FactorCell newFactor = project.createFactorCell(Factor.TYPE_CAUSE);
 		FactorCell target = project.createFactorCell(Factor.TYPE_TARGET);
 		assertFalse("already linked?", model.areLinked(newFactor, target));
@@ -184,10 +184,10 @@ public class TestDiagramModel extends EAMTestCase
 	public void testCreateNode() throws Exception
 	{
 		project.createFactorCell(Factor.TYPE_TARGET);		
-		FactorCell nodeToDelete = project.createFactorCell(Factor.TYPE_TARGET);
+		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
 		project.createFactorCell(Factor.TYPE_TARGET);
 		FactorCell lastCreated = project.createFactorCell(Factor.TYPE_TARGET);		
-		model.deleteDiagramFactor(nodeToDelete);
+		model.deleteDiagramFactor(diagramFactorId);
 		FactorCell nodeAfterUndo = project.createFactorCell(Factor.TYPE_TARGET);
 		
 		assertTrue("reused an id?", nodeAfterUndo.getDiagramFactorId().asInt() > lastCreated.getDiagramFactorId().asInt());
@@ -239,7 +239,8 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		TestTableModel testModel = new TestTableModel();
 		testModel.addListener(model);
-		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		
 		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
 		assertEquals("node changed already called?", 0, testModel.nodeChanged);
 		assertEquals("node deleted already called?", 0, testModel.nodeDeleted);
@@ -247,7 +248,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("added already called?", 0, testModel.linkAdded);
 		assertEquals("linkage deleted already called?", 0, testModel.linkDeleted);
 		
-		model.updateCell(node1);
+		model.updateDiagramFactor(diagramFactorId);
 		assertEquals("update did a node add notify?", 1, testModel.nodeAdded);
 		assertEquals("update didn't do a node changed notify?", 1, testModel.nodeChanged);
 		assertEquals("test model fired a delete action for a modify?", 0, testModel.nodeDeleted);
@@ -255,7 +256,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("update did a link add notify?", 0, testModel.linkAdded);
 		assertEquals("update did a linkdeleted notify?", 0, testModel.linkDeleted);
 		
-		model.deleteDiagramFactor(node1);
+		model.deleteDiagramFactor(diagramFactorId);
 		assertEquals("delete node didn't notify?", 1, testModel.nodeDeleted);
 		assertEquals("delete node triggered a node add notify?", 1, testModel.nodeAdded);
 		assertEquals("test model modify action called for delete?", 1, testModel.nodeChanged);

@@ -159,15 +159,15 @@ public class DiagramModel extends DefaultGraphModel
         }                
     }
 	
-    public void deleteDiagramFactor(FactorCell diagramFactorToDelete) throws Exception
-	{
-		Object[] cells = new Object[]{diagramFactorToDelete};
+    public void deleteDiagramFactor(DiagramFactorId diagramFactorId) throws Exception
+    {
+    	FactorCell diagramFactorToDelete = getFactorCellById(diagramFactorId);
+    	Object[] cells = new Object[]{diagramFactorToDelete};
 		remove(cells);
 		cellInventory.removeFactor(diagramFactorToDelete);
-
 		notifyListeners(createDiagramModelEvent(diagramFactorToDelete), new ModelEventNotifierFactorDeleted());
-	}
-
+    }
+    
     public DiagramFactorLink addLinkToDiagram(DiagramFactorLink diagramFactorLink) throws Exception
     {
     	CreateDiagramFactorLinkParameter extraInfo = (CreateDiagramFactorLinkParameter) diagramFactorLink.getCreationExtraInfo();
@@ -301,6 +301,12 @@ public class DiagramModel extends DefaultGraphModel
 		return getAllDiagramFactorLinks().size();
 	}
 
+	public int getFactorLinksSize(DiagramFactorId diagramFactorId) throws Exception
+	{
+		FactorCell factorCell = getFactorCellById(diagramFactorId);
+		return getEdges(this, new Object[] {factorCell}).size();
+	}
+	
 	public Set getFactorLinks(FactorCell node)
 	{
 		return getEdges(this, new Object[] {node});
@@ -313,6 +319,13 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void updateCell(EAMGraphCell cellToUpdate) throws Exception
 	{
+		edit(getNestedAttributeMap(cellToUpdate), null, null, null);
+		notifyListeners(createDiagramModelEvent(cellToUpdate), new ModelEventNotifierFactorChanged());
+	}
+	
+	public void updateDiagramFactor(DiagramFactorId diagramFactorId) throws Exception
+	{
+		FactorCell cellToUpdate = getFactorCellById(diagramFactorId);
 		edit(getNestedAttributeMap(cellToUpdate), null, null, null);
 		notifyListeners(createDiagramModelEvent(cellToUpdate), new ModelEventNotifierFactorChanged());
 	}
@@ -364,6 +377,11 @@ public class DiagramModel extends DefaultGraphModel
 	public LinkCell getDiagramFactorLink(DiagramFactorLink diagramFactorLink)
 	{
 		return cellInventory.getLinkCell(diagramFactorLink);
+	}
+	
+	public FactorId getWrappedId(DiagramFactorId diagramFactorId)
+	{
+		return cellInventory.getFactorById(diagramFactorId).getWrappedId();
 	}
 	
 	public DiagramFactorLink getDiagramFactorLinkById(DiagramFactorLinkId id) throws Exception

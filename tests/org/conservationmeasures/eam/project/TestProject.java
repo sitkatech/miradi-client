@@ -269,10 +269,11 @@ public class TestProject extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
-		FactorCell node2 =  project.createFactorCell(Factor.TYPE_STRATEGY);
+		DiagramFactorId diagramFactorId1 = project.createAndAddFactorToDiagram(Factor.TYPE_STRATEGY);
+		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId1));
 		FactorCell node3 =  project.createFactorCell(Factor.TYPE_CAUSE);
 		
-		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), diagramFactor1.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
@@ -280,7 +281,7 @@ public class TestProject extends EAMTestCase
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		assertEquals(3, model.getAllDiagramFactors().size());
 		assertEquals(2, model.getFactorLinks(node1).size());
-		assertEquals(1, model.getFactorLinks(node2).size());
+		assertEquals(1, model.getFactorLinksSize(diagramFactorId1));
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
 		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
@@ -293,7 +294,7 @@ public class TestProject extends EAMTestCase
 		}
 		
 		//Test when a pasted item has linkages to a previously deleted node
-		model.deleteDiagramFactor(node2);
+		model.deleteDiagramFactor(diagramFactorId1);
 		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());
