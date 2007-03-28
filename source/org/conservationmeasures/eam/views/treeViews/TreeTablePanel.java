@@ -15,8 +15,6 @@ import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.ObjectCollectionPanel;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -29,7 +27,7 @@ import org.martus.swing.UiScrollPane;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class TreeTablePanel extends ObjectCollectionPanel  implements TreeSelectionListener, CommandExecutedListener
+abstract public class TreeTablePanel extends ObjectCollectionPanel  implements TreeSelectionListener
 {
 	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] classes, int objectType)
 	{
@@ -135,9 +133,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	}
 	
 	
-	abstract public void commandExecuted(CommandExecutedEvent event);
-	
-
 	//TODO:Is this needed? Is it the right place/mechanism? 
 	public void setSelectedObject(ORef ref)
 	{
