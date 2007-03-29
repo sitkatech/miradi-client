@@ -263,29 +263,39 @@ abstract public class BaseObject
 			return shortLabel;
 		
 		return shortLabel + "." + Longlabel;
-		
 	}
 	
-	public ORefList getDirectOwners()
+	//TODO: methods need to be refactored
+	public ORef getOwner()
 	{
-		ORefList directOwners = new ORefList();
-		int[] objectTypes = getReleventObjectTypes();
+		ORefList oRefList = findObjectWhoOwnesUs();
+		if (oRefList.size()==0)
+			return null;
+		return oRefList.get(0);
+	}
+	
+	
+	public ORefList findObjectWhoOwnesUs()
+	{
+		ORefList owners = new ORefList();
+		int[] objectTypes = getAllObjectTypes();
 		for (int i=0; i<objectTypes.length; ++i)
 		{
-			ORefList orefs = findReferencesInPool(objectTypes[i]);
-			directOwners.addAll(orefs);
+			ORefList orefs = findObjectWhoOwnesUs(objectTypes[i]);
+			owners.addAll(orefs);
 		}
-		return directOwners;
+		return owners;
 	}
 
-	private ORefList findReferencesInPool(int objectType)
+	
+	private ORefList findObjectWhoOwnesUs(int objectType)
 	{
 		ORefList matchList = new ORefList();
 		ORefList orefsInPool = getProject().getPool(objectType).getORefList();
 		for (int i=0; i<orefsInPool.size(); ++i)
 		{
 			BaseObject objectInPool = getProject().findObject(orefsInPool.get(i));
-			ORefList children = objectInPool.getDirectChildren(getType());
+			ORefList children = objectInPool.getOwnedChildren(getType());
 			for (int childIdx=0; childIdx<children.size(); ++i)
 			{
 				if (children.get(childIdx).getObjectId().equals(getId()))
@@ -295,19 +305,53 @@ abstract public class BaseObject
 		return matchList;
 	}
 
+	
+	public ORefList findObjectThatReferToUs()
+	{
+		ORefList owners = new ORefList();
+		int[] objectTypes = getAllObjectTypes();
+		for (int i=0; i<objectTypes.length; ++i)
+		{
+			ORefList orefs = findObjectThatReferToUs(objectTypes[i]);
+			owners.addAll(orefs);
+		}
+		return owners;
+	}
+	
+	
+	private ORefList findObjectThatReferToUs(int objectType)
+	{
+		ORefList matchList = new ORefList();
+		ORefList orefsInPool = getProject().getPool(objectType).getORefList();
+		for (int i=0; i<orefsInPool.size(); ++i)
+		{
+			BaseObject objectInPool = getProject().findObject(orefsInPool.get(i));
+			ORefList children = objectInPool.getNonOwnedChildren(getType());
+			for (int childIdx=0; childIdx<children.size(); ++i)
+			{
+				if (children.get(childIdx).getObjectId().equals(getId()))
+					matchList.add(children.get(childIdx));
+			}
+		}
+		return matchList;
+	}
+	
 	private Project getProject()
 	{
 		return EAM.mainWindow.getProject();
 	}
 	
-	
-	public ORefList getDirectChildren(int objectType)
+	public ORefList getNonOwnedChildren(int objectType)
 	{
 		return new ORefList();
 	}
 	
+	public ORefList getOwnedChildren(int objectType)
+	{
+		return new ORefList();
+	}
 	
-	public int[] getReleventObjectTypes()
+	public int[] getAllObjectTypes()
 	{
 		return new int[0];
 	}
