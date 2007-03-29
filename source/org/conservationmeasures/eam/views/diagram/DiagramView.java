@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
-import java.util.Vector;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -73,8 +72,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -278,11 +277,11 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			ViewData viewData = getProject().getCurrentViewData();
 			IdList visibleFactorIds = new IdList(viewData.getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
 			visibleFactorIds.addAll(getRelatedDraftInterventions(visibleFactorIds));
-			Vector allNodes = getProject().getDiagramModel().getAllDiagramFactors();
-			for (int i = 0; i < allNodes.size(); ++i)
+			DiagramFactor[] allDiagramFactors = getProject().getAllDiagramFactors();
+			for (int i = 0; i < allDiagramFactors.length; ++i)
 			{
-				FactorCell node = (FactorCell) allNodes.get(i);
-				FactorId id = node.getWrappedId();
+				DiagramFactor diagramFactor = allDiagramFactors[i];
+				FactorId id = diagramFactor.getWrappedId();
 				if (!visibleFactorIds.contains(id))
 					idsToHide.add(id);
 			}

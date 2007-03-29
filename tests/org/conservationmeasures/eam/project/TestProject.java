@@ -90,26 +90,23 @@ public class TestProject extends EAMTestCase
 	
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
 	{
-		FactorId factorId = project.createNode(Factor.TYPE_CAUSE);
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
-		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
-		project.executeCommand(createDiagramFactorCommand);
-		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(diagramFactorId);
-		project.executeCommand(cmd);
+		project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
 		
 		DiagramModel model = new DiagramModel(project);
 		project.getDatabase().readDiagram(model);
-		assertEquals("not one node?", 1, model.getAllDiagramFactors().size());
+		assertEquals("not one node?", 1, project.getAllDiagramFactorIds().length);
+
+		//undo add diagramFactor
+		project.undo();
 		
+		//undo create diagramFactor
 		project.undo();
 		project.getDatabase().readDiagram(model);
-		assertEquals("node not removed?", 0, model.getAllDiagramFactors().size());
+		assertEquals("node not removed?", 0, project.getAllDiagramFactorIds().length);
 
 		project.redo();
 		project.getDatabase().readDiagram(model);
-		assertEquals("node not re-added?", 1, model.getAllDiagramFactors().size());
+		assertEquals("node not re-added?", 1, project.getAllDiagramFactorIds().length);
 	}
 	
 	public void testGetViewData() throws Exception
@@ -279,7 +276,7 @@ public class TestProject extends EAMTestCase
 		Vector cellVector = project.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
-		assertEquals(3, model.getAllDiagramFactors().size());
+		assertEquals(3, project.getAllDiagramFactorIds().length);
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(1, model.getFactorLinksSize(diagramFactorId1));
 		assertEquals(1, model.getFactorLinks(node3).size());
@@ -510,23 +507,21 @@ public class TestProject extends EAMTestCase
 		Vector cellVector = project.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
-		assertEquals(3, model.getAllDiagramFactors().size());
+		assertEquals(3, project.getAllDiagramFactorIds().length);
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(1, model.getFactorLinks(node2).size());
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
 		new FactorCommandHelper(project).pasteFactorsOnlyIntoProject(transferableList, new Point(5,5));
-		Vector nodes = model.getAllDiagramFactors();
-		assertEquals(4, nodes.size());
+		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
+		assertEquals(4, diagramFactorIds.length);
 		assertEquals(2, model.getAllDiagramFactorLinks().size());
 	}
 	
 	public void testCutAndPaste() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
-
 		assertEquals("objects already in the pool?", 0, project.getFactorPool().size());
-		assertEquals("nodes  already in the diagram?", 0, model.getAllDiagramFactors().size());
+		assertEquals("nodes  already in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
 		Object[] selectedCells = new FactorCell[] {node1};
@@ -537,14 +532,14 @@ public class TestProject extends EAMTestCase
 		project.deleteObject(ObjectType.DIAGRAM_FACTOR, node1.getDiagramFactorId());
 		
 		assertEquals("objects still in the pool?", 0, project.getFactorPool().size());
-		assertEquals("nodes  still in the diagram?", 0, model.getAllDiagramFactors().size());
+		assertEquals("nodes  still in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		Point pastePoint = new Point(5,5);
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
 		factorCommandHelper.pasteFactorsAndLinksIntoProject(transferableList, pastePoint);
-		Vector nodes = model.getAllDiagramFactors();
-		assertEquals(1, nodes.size());
-		FactorCell pastedNode = (FactorCell)nodes.get(0);
+		DiagramFactor diagramFactors[] = project.getAllDiagramFactors();
+		assertEquals(1, diagramFactors.length);
+		DiagramFactor pastedNode = diagramFactors[0];
 		assertEquals("didn't paste correct size?", node1.getSize(), pastedNode.getSize());
 		assertNotEquals("didn't change id?", node1.getDiagramFactorId(), pastedNode.getDiagramFactorId());
 		assertEquals("didn't snap?", project.getSnapped(pastePoint), pastedNode.getLocation());

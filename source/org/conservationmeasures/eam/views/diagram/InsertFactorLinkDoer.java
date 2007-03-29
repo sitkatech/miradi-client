@@ -44,8 +44,8 @@ public class InsertFactorLinkDoer extends ProjectDoer
 			return;
 		
 		DiagramModel model = getProject().getDiagramModel();
-		DiagramFactor fromDiagramFactor = dialog.getFrom().getDiagramFactor();
-		DiagramFactor toDiagramFactor = dialog.getTo().getDiagramFactor();
+		DiagramFactor fromDiagramFactor = dialog.getFrom();
+		DiagramFactor toDiagramFactor = dialog.getTo();
 		
 		if(fromDiagramFactor.getDiagramFactorId().equals(toDiagramFactor.getDiagramFactorId()))
 		{

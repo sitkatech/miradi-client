@@ -9,16 +9,15 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 
 public class FactorDataHelper 
 {
-	public FactorDataHelper(Vector existingNodesInProject)
+	public FactorDataHelper(DiagramFactorId[] diagramFactorIds)
 	{
-		setInitialMappingOfIdsToOriginalIds(existingNodesInProject);
+		setInitialMappingOfIdsToOriginalIds(diagramFactorIds);
 	}
 
 	public void setNewId(DiagramFactorId originalNodeId, DiagramFactorId newNodeId)
@@ -51,12 +50,11 @@ public class FactorDataHelper
 		return new Point(originalX + delta.x, originalY + delta.y);
 	}
 
-	private void setInitialMappingOfIdsToOriginalIds(Vector existingNodesInProject) 
+	private void setInitialMappingOfIdsToOriginalIds(DiagramFactorId[] diagramFactorIds) 
 	{
-		for (Iterator iter = existingNodesInProject.iterator(); iter.hasNext();) 
+		for (int i = 0; i < diagramFactorIds.length; i++)
 		{
-			DiagramFactorId id = ((FactorCell) iter.next()).getDiagramFactorId();
-			setNewId(id, id);
+			setNewId(diagramFactorIds[i], diagramFactorIds[i]);
 		}
 	}
 	

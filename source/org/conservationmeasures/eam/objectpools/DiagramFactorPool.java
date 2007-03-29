@@ -38,5 +38,18 @@ public class DiagramFactorPool extends EAMNormalObjectPool
 		
 		return new DiagramFactor(diagramFactorId, (CreateDiagramFactorParameter)extraInfo);
 	}
+	
+	public DiagramFactorId[] getDiagramFactorIds()
+	{
+		BaseId[] baseIds = getIds();
+		DiagramFactorId[] diagramFactorIds = new DiagramFactorId[baseIds.length];
+		
+		for (int i = 0; i < baseIds.length; i++)
+		{
+			diagramFactorIds[i] = new DiagramFactorId(baseIds[i].asInt());
+		}
+		
+		return diagramFactorIds;
+	}
 
 }

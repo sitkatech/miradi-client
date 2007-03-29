@@ -70,6 +70,15 @@ public class ProjectForTesting extends Project
 		
 		return diagramFactorId;
 	}
+	
+	//TODO fix method name (remove 2 and come up with better name)
+	public DiagramFactor createNodeAndAddToDiagram2(FactorType nodeType) throws Exception
+	{
+		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(nodeType);
+		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
+
+		return diagramFactor;
+	}
 
 	public FactorId createNodeAndAddToDiagram(FactorType nodeType) throws Exception
 	{

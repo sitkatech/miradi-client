@@ -716,6 +716,24 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
 	
+	public DiagramFactorId[] getAllDiagramFactorIds()
+	{
+		return getDiagramFactorPool().getDiagramFactorIds();
+	}
+	
+	public DiagramFactor[] getAllDiagramFactors()
+	{
+		DiagramFactorId[] diagramFactorIds = getAllDiagramFactorIds();
+		DiagramFactor[] diagramFactors = new DiagramFactor[diagramFactorIds.length];
+		
+		for (int i = 0; i < diagramFactorIds.length; i++)
+		{
+			diagramFactors[i] = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorIds[i]));
+		}
+		
+		return diagramFactors;
+	}
+	
 	public FactorId removeDiagramFactorFromDiagram(DiagramFactorId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();

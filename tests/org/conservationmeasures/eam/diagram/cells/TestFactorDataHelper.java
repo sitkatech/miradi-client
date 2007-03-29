@@ -7,7 +7,6 @@
 package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Point;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -29,57 +28,55 @@ public class TestFactorDataHelper extends EAMTestCase
 	{
 		project = new ProjectForTesting(getName());
 
-		node1 = project.createFactorCell(Factor.TYPE_TARGET); 
+		diagramFactorId1 = project.createAndAddFactorToDiagram(Factor.TYPE_TARGET); 
 		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
 
-		node2 = project.createFactorCell(Factor.TYPE_TARGET);
+		diagramFactorId2 = project.createAndAddFactorToDiagram(Factor.TYPE_TARGET);
 		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
-		node3 = project.createFactorCell(Factor.TYPE_TARGET);
 		
-		nodes = new Vector();
-		nodes.add(node1);
-		nodes.add(node2);
-		nodes.add(node3);
+		diagramFactorId3 = project.createAndAddFactorToDiagram(Factor.TYPE_TARGET);
 		
+		diagramFactorIds = project.getAllDiagramFactorIds(); 
+
 		super.setUp();
 	}
 
 
 	public void testBasics()
 	{
-		FactorDataHelper dataHelper = new FactorDataHelper(nodes);
-		assertEquals(node1.getDiagramFactorId(), dataHelper.getNewId(node1.getDiagramFactorId()));
-		assertEquals(node2.getDiagramFactorId(), dataHelper.getNewId(node2.getDiagramFactorId()));
-		assertEquals(node3.getDiagramFactorId(), dataHelper.getNewId(node3.getDiagramFactorId()));
+		FactorDataHelper dataHelper = new FactorDataHelper(diagramFactorIds);
+		assertEquals(diagramFactorId1, dataHelper.getNewId(diagramFactorId1));
+		assertEquals(diagramFactorId2, dataHelper.getNewId(diagramFactorId2));
+		assertEquals(diagramFactorId3, dataHelper.getNewId(diagramFactorId3));
 		assertEquals(BaseId.INVALID, dataHelper.getNewId(unknownDiagramId));
 	}
 	
 	public void testSetNewId()
 	{
-		FactorDataHelper dataHelper = new FactorDataHelper(nodes);
-		dataHelper.setNewId(node1.getDiagramFactorId(), newNodeId1);
-		dataHelper.setNewId(node2.getDiagramFactorId(), newNodeId2);
-		dataHelper.setNewId(node3.getDiagramFactorId(), newNodeId3);
-		assertEquals(newNodeId1, dataHelper.getNewId(node1.getDiagramFactorId()));
-		assertEquals(newNodeId2, dataHelper.getNewId(node2.getDiagramFactorId()));
-		assertEquals(newNodeId3, dataHelper.getNewId(node3.getDiagramFactorId()));
+		FactorDataHelper dataHelper = new FactorDataHelper(diagramFactorIds);
+		dataHelper.setNewId(diagramFactorId1, newNodeId1);
+		dataHelper.setNewId(diagramFactorId2, newNodeId2);
+		dataHelper.setNewId(diagramFactorId3, newNodeId3);
+		assertEquals(newNodeId1, dataHelper.getNewId(diagramFactorId1));
+		assertEquals(newNodeId2, dataHelper.getNewId(diagramFactorId2));
+		assertEquals(newNodeId3, dataHelper.getNewId(diagramFactorId3));
 	}
 	
 	public void testSetGetLocation()
 	{
-		FactorDataHelper dataHelper = new FactorDataHelper(nodes);
-		dataHelper.setOriginalLocation(node1.getDiagramFactorId(), nodeLocation1);
+		FactorDataHelper dataHelper = new FactorDataHelper(diagramFactorIds);
+		dataHelper.setOriginalLocation(diagramFactorId1, nodeLocation1);
 		int insertX = 0;
 		int insertY = 0;
 		Point insertionPoint = new Point(insertX, insertY);
 		
-		Point newNode1Location = dataHelper.getNewLocation(node1.getDiagramFactorId(), insertionPoint);
+		Point newNode1Location = dataHelper.getNewLocation(diagramFactorId1, insertionPoint);
 		assertEquals(insertX, newNode1Location.x);
 		assertEquals(insertY, newNode1Location.y);
 		
-		dataHelper.setOriginalLocation(node2.getDiagramFactorId(), nodeLocation2);
-		newNode1Location = dataHelper.getNewLocation(node1.getDiagramFactorId(), insertionPoint);
-		Point newNode2Location = dataHelper.getNewLocation(node2.getDiagramFactorId(), insertionPoint);
+		dataHelper.setOriginalLocation(diagramFactorId2, nodeLocation2);
+		newNode1Location = dataHelper.getNewLocation(diagramFactorId1, insertionPoint);
+		Point newNode2Location = dataHelper.getNewLocation(diagramFactorId2, insertionPoint);
 		assertEquals(insertX+(nodeLocation1x-nodeLocation2x), newNode1Location.x);
 		assertEquals(insertY+(nodeLocation1y-nodeLocation2y), newNode1Location.y);
 		assertEquals(insertX, newNode2Location.x);
@@ -88,20 +85,20 @@ public class TestFactorDataHelper extends EAMTestCase
 		insertX = 50;
 		insertY = 50;
 		insertionPoint.setLocation(insertX, insertY); 
-		FactorDataHelper dataHelper2 = new FactorDataHelper(nodes);
-		dataHelper2.setOriginalLocation(node1.getDiagramFactorId(), nodeLocation1);
-		newNode1Location = dataHelper2.getNewLocation(node1.getDiagramFactorId(), insertionPoint);
+		FactorDataHelper dataHelper2 = new FactorDataHelper(diagramFactorIds);
+		dataHelper2.setOriginalLocation(diagramFactorId1, nodeLocation1);
+		newNode1Location = dataHelper2.getNewLocation(diagramFactorId1, insertionPoint);
 		assertEquals(insertX, newNode1Location.x);
 		assertEquals(insertY, newNode1Location.y);
 		
-		dataHelper2.setOriginalLocation(node2.getDiagramFactorId(), nodeLocation2);
-		newNode1Location = dataHelper2.getNewLocation(node1.getDiagramFactorId(), insertionPoint);
+		dataHelper2.setOriginalLocation(diagramFactorId2, nodeLocation2);
+		newNode1Location = dataHelper2.getNewLocation(diagramFactorId1, insertionPoint);
 		int deltaX = 45;
 		int deltaY = 40;
 		assertEquals(nodeLocation1x+deltaX, newNode1Location.x);
 		assertEquals(nodeLocation1y+deltaY, newNode1Location.y);
 
-		newNode2Location = dataHelper2.getNewLocation(node2.getDiagramFactorId(), insertionPoint);
+		newNode2Location = dataHelper2.getNewLocation(diagramFactorId2, insertionPoint);
 		assertEquals(nodeLocation2x+deltaX, newNode2Location.x);
 		assertEquals(nodeLocation2y+deltaY, newNode2Location.y);
 		
@@ -121,11 +118,11 @@ public class TestFactorDataHelper extends EAMTestCase
 	final int nodeLocation2x = 5;
 	final int nodeLocation2y = 10;
 	
-	FactorCell node1;
-	FactorCell node2;
-	FactorCell node3;
+	DiagramFactorId diagramFactorId1;
+	DiagramFactorId diagramFactorId2;
+	DiagramFactorId diagramFactorId3;
 
-	Vector nodes;
+	DiagramFactorId[] diagramFactorIds;
 	Point nodeLocation1;
 	Point nodeLocation2;
 	

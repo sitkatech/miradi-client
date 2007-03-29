@@ -65,7 +65,7 @@ public class FactorCommandHelper
 	public void pasteFactorsAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
-		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllDiagramFactors());
+		FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds());
 		pasteFactorsIntoProject(list, startPoint, dataHelper);
 		pasteLinksIntoProject(list, dataHelper);
 		executeCommand(new CommandEndTransaction());
@@ -74,7 +74,7 @@ public class FactorCommandHelper
 	public void pasteFactorsOnlyIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
-		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllDiagramFactors());
+		FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds());
 		pasteFactorsIntoProject(list, startPoint, dataHelper);
 		executeCommand(new CommandEndTransaction());
 	}

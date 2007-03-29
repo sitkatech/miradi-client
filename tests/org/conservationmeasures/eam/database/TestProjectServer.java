@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.database;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -22,6 +21,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.RatingCriterion;
@@ -203,14 +203,14 @@ public class TestProjectServer extends EAMTestCase
 			
 			DiagramModel got = new DiagramModel(project); 
 			storage.readDiagram(got);
-			Vector gotNodes = got.getAllDiagramFactors();
-			assertEquals("wrong node count?", 2, gotNodes.size());
-			for(int i=0; i < gotNodes.size(); ++i)
+			DiagramFactor[] gotNodes = project.getAllDiagramFactors();
+			assertEquals("wrong node count?", 2, gotNodes.length);
+			for(int i=0; i < gotNodes.length; ++i)
 			{
-				FactorCell gotNode = (FactorCell)gotNodes.get(i);
-				DiagramFactorId gotId = gotNode.getDiagramFactorId();
-				FactorCell expectedNode = model.getFactorCellById(gotId);
-				assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
+				DiagramFactor diagramFactor = gotNodes[i];
+				DiagramFactorId diagramFactorId = diagramFactor.getDiagramFactorId();
+				FactorCell expectedNode = model.getFactorCellById(diagramFactorId);
+				assertEquals("node data not right?", expectedNode.getLocation(), diagramFactor.getLocation());
 			}
 		}
 		finally

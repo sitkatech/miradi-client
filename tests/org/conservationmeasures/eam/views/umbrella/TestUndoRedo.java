@@ -1,6 +1,5 @@
 package org.conservationmeasures.eam.views.umbrella;
 import java.awt.Dimension;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
@@ -65,13 +64,15 @@ public class TestUndoRedo extends EAMTestCase
 		redo.setProject(project);
 		redo.doIt();
 
-		Vector inserted = project.getDiagramModel().getAllDiagramFactors();
+		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
 		
 		assertEquals("Should have 1 node again after redo.", 1, project.getDiagramModel().getFactorCount());
-		assertEquals("wrong number of nodes after redo?", 1, inserted.size());
-		FactorCell node = (FactorCell)inserted.get(0);
+		assertEquals("wrong number of nodes after redo?", 1, diagramFactors.length);
+		DiagramFactor node = diagramFactors[0];
 		assertTrue(project.getDiagramModel().doesDiagramFactorExist(node.getDiagramFactorId()));
-		assertEquals("Incorrect label?", target1Text, node.getLabel());
+		
+		Factor factor = (Factor) project.findObject(new ORef(ObjectType.FACTOR, node.getWrappedId()));
+		assertEquals("Incorrect label?", target1Text, factor.getLabel());
 		
 		undo.doIt();
 		assertEquals("Should have 0 nodes again.", 0, project.getDiagramModel().getFactorCount());

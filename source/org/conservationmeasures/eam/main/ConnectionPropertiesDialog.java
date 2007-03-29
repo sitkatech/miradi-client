@@ -16,10 +16,15 @@ import java.util.Vector;
 import javax.swing.Box;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
@@ -51,12 +56,15 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		linkFromList = createChoices(FactorLink.FROM);
 		linkToList = createChoices(FactorLink.TO);
 		DiagramComponent diagram = mainWindow.getDiagramComponent();
+		
 		FactorCell firstSelected = diagram.getSelectedFactor(0);
 		if(firstSelected != null)
-			linkFromList.setSelectedItem(firstSelected);
+			linkFromList.setSelectedItem(new FactorDropDownItem(firstSelected.getUnderlyingObject(), firstSelected.getDiagramFactor()));
+		
 		FactorCell secondSelected = diagram.getSelectedFactor(1);
 		if(secondSelected != null)
-			linkToList.setSelectedItem(secondSelected);
+			linkToList.setSelectedItem(new FactorDropDownItem(secondSelected.getUnderlyingObject(), secondSelected.getDiagramFactor()));
+
 		Box box = Box.createHorizontalBox();
 		Component[] components = {linkFromList, new UiLabel(EAM.text("Label|affects")), linkToList};
 		Utilities.addComponentsRespectingOrientation(box, components);
@@ -68,20 +76,93 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		boolean acceptStrategies = (linkFromTo == FactorLink.FROM);
 		boolean acceptTargets = (linkFromTo == FactorLink.TO);
 		
-		DiagramModel model = mainWindow.getProject().getDiagramModel();
+		Project project = mainWindow.getProject();
 		UiComboBox comboBox = new UiComboBox();
 		comboBox.addItem(EAM.text("Label|--Select One---"));
 		
-		Vector vectorOfFactors = model.getAllDiagramFactors();
-		FactorCell[] diagramFactors = (FactorCell[])vectorOfFactors.toArray(new FactorCell[0]);
-		Arrays.sort(diagramFactors, new IgnoreCaseStringComparator());
-		for(int i=0; i < diagramFactors.length; ++i)
+		DiagramFactor[] allDiagramFactors = project.getAllDiagramFactors();
+		Factor[] factors = convertToFactorList(project, allDiagramFactors);
+		
+		Vector dropDownItems = new Vector();
+		for(int i = 0; i < factors.length; ++i)
 		{
-			if(( acceptStrategies || !diagramFactors[i].isStrategy()) && 
-				(acceptTargets || !diagramFactors[i].isTarget()))
-				comboBox.addItem(diagramFactors[i]);
+			if(( acceptStrategies || !factors[i].isStrategy()) && 
+				(acceptTargets || !factors[i].isTarget()))
+				dropDownItems.add(new FactorDropDownItem(factors[i], allDiagramFactors[i]));
 		}
+		
+		return addItemsToComboBoxAndSort(comboBox, dropDownItems);
+	}
+
+	private UiComboBox addItemsToComboBoxAndSort(UiComboBox comboBox, Vector dropDownItems)
+	{
+		FactorDropDownItem[] items = (FactorDropDownItem[]) dropDownItems.toArray(new FactorDropDownItem[0]);
+		Arrays.sort(items, new IgnoreCaseStringComparator());
+		for (int i = 0; i < items.length; i++)
+		{
+			comboBox.addItem(items[i]);
+		}
+		
 		return comboBox;
+	}
+
+	private Factor[] convertToFactorList(Project project, DiagramFactor[] allDiagramFactors)
+	{
+		Factor[] factors = new Factor[allDiagramFactors.length];
+		for (int i = 0; i < allDiagramFactors.length; i++)
+		{
+			factors[i] = (Factor) project.findObject(new ORef(ObjectType.FACTOR, allDiagramFactors[i].getWrappedId()));
+		}
+		return factors;
+	}
+	
+	static class FactorDropDownItem
+	{
+
+		public FactorDropDownItem(Factor factorToUse, DiagramFactor diagramFactorToUse)
+		{
+			factor = factorToUse;
+			diagramFactor = diagramFactorToUse;
+		}
+		
+		public DiagramFactor getDiagramFactor()
+		{
+			return diagramFactor;
+		}
+		
+		public Factor getFactor()
+		{
+			return factor;
+		}
+		
+		
+		//FIXME double check to make sure this works.  when two cells are selected
+		// in diagram,  and a link popup dialog is brought up.  sometimes the selected
+		//cells doing appear in the drop down of the create link popup
+		public boolean equals(Object rawOther)
+		{
+			if (! (rawOther instanceof FactorDropDownItem))
+				return false;
+			
+			FactorDropDownItem other = (FactorDropDownItem) rawOther;
+			if (! other.getDiagramFactor().getId().equals(diagramFactor.getId()))
+				return false;
+			
+			BaseId otherFactorId = other.getFactor().getId();
+			BaseId factorId = factor.getId();
+			if (! otherFactorId.equals(factorId))
+				return false;
+			
+			return true;
+		}
+		
+		public String toString()
+		{
+			return factor.getLabel();
+		}
+		
+		private Factor factor;
+		private DiagramFactor diagramFactor;
 	}
 
 	private Box createButtonBar()
@@ -120,14 +201,16 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		return result;
 	}
 	
-	public FactorCell getFrom()
+	public DiagramFactor getFrom()
 	{
-		return (FactorCell)linkFromList.getSelectedItem();
+		FactorDropDownItem item = (FactorDropDownItem)linkFromList.getSelectedItem();
+		return item.getDiagramFactor();
 	}
 	
-	public FactorCell getTo()
+	public DiagramFactor getTo()
 	{
-		return (FactorCell)linkToList.getSelectedItem();
+		FactorDropDownItem item = (FactorDropDownItem)linkFromList.getSelectedItem();
+		return item.getDiagramFactor();
 	}
 	
 	MainWindow mainWindow;

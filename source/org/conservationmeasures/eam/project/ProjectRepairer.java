@@ -6,9 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import java.awt.Point;
-import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -18,6 +16,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 
@@ -187,14 +186,14 @@ public class ProjectRepairer
 
 	private void repairUnsnappedNodes()
 	{
-		Vector diagramNodes = project.getDiagramModel().getAllDiagramFactors();
-		for (int i=0; i<diagramNodes.size(); ++i) 
-			fixLocation((FactorCell) diagramNodes.get(i));
+		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
+		for (int i = 0; i < diagramFactors.length; ++i) 
+			fixLocation(diagramFactors[i]);
 	}
 
-	private void fixLocation(FactorCell diagramNode)
+	private void fixLocation(DiagramFactor diagramFactor)
 	{
-		Point currentLocation = diagramNode.getLocation();
+		Point currentLocation = diagramFactor.getLocation();
 		Point expectedLocation  = project.getSnapped(currentLocation);
 		int deltaX = expectedLocation.x - currentLocation.x;
 		int deltaY = expectedLocation.y - currentLocation.y;
@@ -204,7 +203,7 @@ public class ProjectRepairer
 			
 		try
 		{
-			project.moveFactors(deltaX, deltaY, new DiagramFactorId[] { diagramNode.getDiagramFactorId() });
+			project.moveFactors(deltaX, deltaY, new DiagramFactorId[] { diagramFactor.getDiagramFactorId() });
 		}
 		catch(Exception e)
 		{
