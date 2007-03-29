@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -715,6 +716,21 @@ public class Project
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
+	
+	public DiagramFactorLink[] getToAndFromLinks(DiagramFactorId diagramFactorId)
+	{
+		DiagramFactorLinkId[] allLinkIds = getDiagramFactorLinkPool().getallDiagramFactorLinkIds();
+		Vector fromAndToLinksForFactor = new Vector();
+		for (int i = 0; i < allLinkIds.length; i++)
+		{
+			DiagramFactorLink link = (DiagramFactorLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, allLinkIds[i]));
+			CreateDiagramFactorLinkParameter extraInfo = (CreateDiagramFactorLinkParameter) link.getCreationExtraInfo();
+			if ((extraInfo.getFromFactorId().equals(diagramFactorId) || (extraInfo.getToFactorId().equals(diagramFactorId))))
+				fromAndToLinksForFactor.add(link);
+		}
+		
+		return (DiagramFactorLink[]) fromAndToLinksForFactor.toArray(new DiagramFactorLink[0]);
+	}
 	
 	public DiagramFactorId[] getAllDiagramFactorIds()
 	{

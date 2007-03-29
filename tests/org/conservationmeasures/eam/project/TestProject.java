@@ -282,12 +282,12 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
 		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
-		Vector nodes = model.getAllDiagramFactors();
-		assertEquals(4, nodes.size());
+		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
+		assertEquals(4, diagramFactorIds.length);
 		assertEquals(4, model.getAllDiagramFactorLinks().size());
-		for(int i = 0; i < nodes.size(); ++i)
+		for(int i = 0; i < diagramFactorIds.length; ++i)
 		{
-			assertEquals(2, model.getFactorLinks((FactorCell)nodes.get(i)).size());
+			assertEquals(2, project.getToAndFromLinks(diagramFactorIds[i]).length);
 		}
 		
 		//Test when a pasted item has linkages to a previously deleted node
@@ -569,7 +569,7 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(cmd);
 		DiagramModel copyOfModel = new DiagramModel(project);
 		project.getDatabase().readDiagram(copyOfModel);
-		assertEquals("didn't read back our one node?", 1, copyOfModel.getAllDiagramFactors().size());
+		assertEquals("didn't read back our one node?", 1, project.getAllDiagramFactorIds().length);
 	}
 	
 	public void testNodesDoNotGetWritten() throws Exception

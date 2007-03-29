@@ -6,12 +6,13 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 
 public class DiagramFactorLinkPool extends EAMNormalObjectPool
 {
@@ -28,5 +29,17 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new DiagramFactorLink(actualId, (CreateDiagramFactorLinkParameter)extraInfo);
+	}
+	
+	public DiagramFactorLinkId[] getallDiagramFactorLinkIds()
+	{
+		BaseId[] allBaseIds = getIds();
+		DiagramFactorLinkId[] allDiagramFactorLinkIds = new DiagramFactorLinkId[allBaseIds.length];
+		for (int i = 0; i < allBaseIds.length; i++)
+		{
+			allDiagramFactorLinkIds[i] = new DiagramFactorLinkId(allBaseIds[i].asInt());
+		}
+		
+		return allDiagramFactorLinkIds; 
 	}
 }
