@@ -135,10 +135,6 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 			return factor;
 		}
 		
-		
-		//FIXME double check to make sure this works.  when two cells are selected
-		// in diagram,  and a link popup dialog is brought up.  sometimes the selected
-		//cells doing appear in the drop down of the create link popup
 		public boolean equals(Object rawOther)
 		{
 			if (! (rawOther instanceof FactorDropDownItem))
