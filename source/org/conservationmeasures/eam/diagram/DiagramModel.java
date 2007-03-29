@@ -354,11 +354,6 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(cellToUpdate), new ModelEventNotifierFactorChanged());
 	}
 	
-	public boolean doesDiagramFactorExist(DiagramFactorId id)
-	{
-		return (rawGetFactorById(id) != null);
-	}
-	
 	public boolean doesFactorExist(FactorId id)
 	{
 		return (rawGetFactorByWrappedId(id) != null);
@@ -433,10 +428,10 @@ public class DiagramModel extends DefaultGraphModel
 			throw new Exception("Link doesn't exist, id: " + id);
 		return linkage;
 	}
-	
-	public boolean doesDiagramFactorExist(FactorCell factor)
+
+	public boolean doesDiagramFactorExist(DiagramFactorId id)
 	{
-		return (cellInventory.getFactorById(factor.getDiagramFactorId()) != null);
+		return (rawGetFactorById(id) != null);
 	}
 
 	public boolean doesDiagramFactorLinkExist(DiagramFactorLinkId linkId)
