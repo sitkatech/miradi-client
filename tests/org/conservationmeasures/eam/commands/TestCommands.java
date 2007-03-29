@@ -203,7 +203,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore original location?", zeroZero, diagramFactor2.getLocation());
 
 		
-		DiagramFactorId factorId = insertContributingFactor();
+		DiagramFactorId factorId = insertContributingFactor().getDiagramFactorId();
 		DiagramFactor factor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, factorId);
 		Point factorLocation = factor.getLocation();
 		String previousFactorLocation = EnhancedJsonObject.convertFromPoint(factorLocation);
@@ -333,7 +333,7 @@ public class TestCommands extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		FactorType type = Factor.TYPE_CAUSE;
 
-		DiagramFactorId from = insertNode(type);
+		DiagramFactorId from = insertNode(type).getDiagramFactorId();
 		DiagramFactorId to = insertTarget();
 		FactorId fromId = model.getFactorCellById(from).getWrappedId();
 		FactorId toId = model.getFactorCellById(to).getWrappedId();
@@ -357,16 +357,16 @@ public class TestCommands extends EAMTestCase
 		
 		DiagramFactorLink inserted = model.getDiagramFactorLinkbyWrappedId(modelLinkageId);
 		LinkCell cell = model.findLinkCell(inserted);
-		FactorCell fromNode = cell.getFrom();
-		assertEquals("wrong source?", from, fromNode.getDiagramFactorId());
-		FactorCell toNode = cell.getTo();
-		assertEquals("wrong dest?", to, toNode.getDiagramFactorId());
+		DiagramFactorId fromNodeId = cell.getFrom().getDiagramFactorId();
+		assertEquals("wrong source?", from, fromNodeId);
+		DiagramFactorId toNodeId = cell.getTo().getDiagramFactorId();
+		assertEquals("wrong dest?", to, toNodeId);
 
-		assertTrue("linkage not created?", project.getDiagramModel().areLinked(fromNode, toNode));
+		assertTrue("linkage not created?", project.getDiagramModel().areLinked(fromNodeId, toNodeId));
 		project.undo();
 		
 		project.undo();
-		assertFalse("didn't remove linkage?", project.getDiagramModel().areLinked(fromNode, toNode));
+		assertFalse("didn't remove linkage?", project.getDiagramModel().areLinked(fromNodeId, toNodeId));
 		
 		project.undo();
 		assertNull("didn't delete linkage from pool?", project.getFactorLinkPool().find(modelLinkageId));
@@ -376,12 +376,12 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramFactorId from = insertIntervention();
-		DiagramFactorId to = insertContributingFactor();
-		FactorCell fromNode = model.getFactorCellById(from);
-		FactorCell toNode = model.getFactorCellById(to);
+		DiagramFactorId fromId = insertIntervention();
+		DiagramFactor from = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromId));
+		DiagramFactor to = insertContributingFactor();
+		DiagramFactorId toId = to.getDiagramFactorId();
 
-		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
+		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, from, to);
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
 	
 		CommandDiagramRemoveFactorLink cmd = new CommandDiagramRemoveFactorLink(linkageId);
@@ -389,9 +389,9 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("model id not set?", addLinkageCommand.getFactorLinkId(), cmd.getFactorLinkId());
 
-		assertFalse("linkage not deleted?", model.areLinked(fromNode, toNode));
+		assertFalse("linkage not deleted?", model.areLinked(fromId, toId));
 		project.undo();
-		assertTrue("didn't restore link?", model.areLinked(fromNode, toNode));
+		assertTrue("didn't restore link?", model.areLinked(fromId, toId));
 	}
 
 	public void testDeleteNode() throws Exception
@@ -516,10 +516,10 @@ public class TestCommands extends EAMTestCase
 	private DiagramFactorId insertTarget() throws Exception
 	{
 		FactorType type = Factor.TYPE_TARGET;
-		return insertNode(type);
+		return insertNode(type).getDiagramFactorId();
 	}
 	
-	private DiagramFactorId insertContributingFactor() throws Exception
+	private DiagramFactor insertContributingFactor() throws Exception
 	{
 		FactorType type = Factor.TYPE_CAUSE;
 		return insertNode(type);
@@ -528,10 +528,10 @@ public class TestCommands extends EAMTestCase
 	private DiagramFactorId insertIntervention() throws Exception
 	{
 		FactorType type = Factor.TYPE_STRATEGY;
-		return insertNode(type);
+		return insertNode(type).getDiagramFactorId();
 	}
 
-	private DiagramFactorId insertNode(FactorType type) throws Exception
+	private DiagramFactor insertNode(FactorType type) throws Exception
 	{
 		FactorId factorId = project.createNode(type);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
@@ -542,7 +542,8 @@ public class TestCommands extends EAMTestCase
 		CommandDiagramAddFactor add = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(add);
 		
-		return add.getInsertedId();
+		DiagramFactorId insertedId = add.getInsertedId();
+		return (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, insertedId));
 	}
 	
 	private CreateTaskParameter getTaskExtraInfo()

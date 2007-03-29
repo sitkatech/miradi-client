@@ -18,7 +18,9 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -154,12 +156,16 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
 		model.deleteDiagramFactor(diagramFactorId);
-		FactorCell newFactor = project.createFactorCell(Factor.TYPE_CAUSE);
-		FactorCell target = project.createFactorCell(Factor.TYPE_TARGET);
-		assertFalse("already linked?", model.areLinked(newFactor, target));
-		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), newFactor.getWrappedId(), target.getWrappedId());
-		assertTrue("not linked?", model.areLinked(newFactor, target));
-		assertTrue("reverse link not detected?", model.areLinked(target, newFactor));
+		DiagramFactorId newFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		DiagramFactorId targetId = project.createAndAddFactorToDiagram(Factor.TYPE_TARGET);
+		assertFalse("already linked?", model.areLinked(newFactorId, targetId));
+		
+		DiagramFactor newDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newFactorId));
+		DiagramFactor target = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, targetId));
+		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), newDiagramFactor.getWrappedId(), target.getWrappedId());
+		
+		assertTrue("not linked?", model.areLinked(newFactorId, targetId));
+		assertTrue("reverse link not detected?", model.areLinked(targetId, newFactorId));
 	}
 	
 	public void testGetLinkages() throws Exception

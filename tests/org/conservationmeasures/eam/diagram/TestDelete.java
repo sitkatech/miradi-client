@@ -8,12 +8,14 @@ package org.conservationmeasures.eam.diagram;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
@@ -30,18 +32,19 @@ public class TestDelete extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
-		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
-		FactorCell intervention = model.getFactorCellByWrappedId(interventionId);
-		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
-		FactorCell factor = model.getFactorCellByWrappedId(factorId);
-		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
+		DiagramFactorId interventionId = project.createAndAddFactorToDiagram(Factor.TYPE_STRATEGY);
+		DiagramFactor intervention = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, interventionId));
+		
+		DiagramFactorId causeId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		DiagramFactor cause = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, causeId));
+		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, intervention.getWrappedId(), cause.getWrappedId());
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
 		
-		assertTrue("link not found?", model.areLinked(intervention, factor));
+		assertTrue("link not found?", model.areLinked(interventionId, causeId));
 		
 		CommandDiagramRemoveFactorLink delete = new CommandDiagramRemoveFactorLink(linkageId);
 		delete.execute(project);
-		assertFalse("link not deleted?", model.areLinked(intervention, factor));
+		assertFalse("link not deleted?", model.areLinked(interventionId, causeId));
 		
 		EAM.setLogToString();
 		try
@@ -54,9 +57,9 @@ public class TestDelete extends EAMTestCase
 		}
 		EAM.setLogToConsole();
 		
-		CommandDiagramRemoveFactor deleteNode = new CommandDiagramRemoveFactor(factor.getDiagramFactorId());
+		CommandDiagramRemoveFactor deleteNode = new CommandDiagramRemoveFactor(causeId);
 		deleteNode.execute(project);
-		assertFalse("node not deleted?", model.doesDiagramFactorExist(factor));
+		assertFalse("node not deleted?", model.doesDiagramFactorExist(causeId));
 
 		EAM.setLogToString();
 		try

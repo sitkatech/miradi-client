@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
@@ -198,10 +199,13 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkDeleted());
 	}
 	
-	public boolean areLinked(FactorCell fromFactor, FactorCell toFactor) throws Exception
+	public boolean areLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
 	{
-		FactorId id1 = fromFactor.getWrappedId();
-		FactorId id2 = toFactor.getWrappedId();
+		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
+		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+		
+		FactorId id1 = fromDiagramFactor.getWrappedId();
+		FactorId id2 = toDiagramFactor.getWrappedId();
 		
 		Vector links = cellInventory.getAllFactorLinks();
 		for(int i = 0; i < links.size(); ++i)
@@ -350,7 +354,7 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(cellToUpdate), new ModelEventNotifierFactorChanged());
 	}
 	
-	private boolean doesDiagramFactorExist(DiagramFactorId id)
+	public boolean doesDiagramFactorExist(DiagramFactorId id)
 	{
 		return (rawGetFactorById(id) != null);
 	}
@@ -397,6 +401,16 @@ public class DiagramModel extends DefaultGraphModel
 	public LinkCell getDiagramFactorLink(DiagramFactorLink diagramFactorLink)
 	{
 		return cellInventory.getLinkCell(diagramFactorLink);
+	}
+	
+	public DiagramFactorId getDiagramFactorIdFromWrappedId(FactorId factorId)
+	{
+		return getFactorCellByWrappedId(factorId).getDiagramFactorId();
+	}
+	
+	public DiagramFactor getDiagramFactorFromWrappedId(FactorId factorId)
+	{
+		return getFactorCellByWrappedId(factorId).getDiagramFactor();
 	}
 	
 	public FactorId getWrappedId(DiagramFactorId diagramFactorId)
