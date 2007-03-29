@@ -47,7 +47,13 @@ public class ProjectMetadata extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.PROJECT_RESOURCE: 
+				return true;
+			default:
+				return false;
+		}
 	}
 	
 	public String getProjectName()

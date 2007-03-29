@@ -51,7 +51,13 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	public static boolean canOwnThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.INDICATOR: 
+				return true;
+			default:
+				return false;
+		}
 	}
 	
 	

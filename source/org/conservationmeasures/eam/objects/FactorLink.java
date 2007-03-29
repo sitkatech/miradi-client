@@ -58,8 +58,15 @@ public class FactorLink extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.FACTOR: 
+				return true;
+			default:
+				return false;
+		}
 	}
+	
 	public FactorId getFromFactorId()
 	{
 		return new FactorId(fromId.getId().asInt());

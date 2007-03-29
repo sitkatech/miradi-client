@@ -51,7 +51,21 @@ abstract public class Factor extends BaseObject
 	
 	public static boolean canOwnThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.INDICATOR: 
+				return true;
+			case ObjectType.GOAL: 
+				return true;
+			case ObjectType.OBJECTIVE: 
+				return true;
+			case ObjectType.TASK: 
+				return true;
+			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
+				return true;
+			default:
+				return false;
+		}
 	}
 	
 	

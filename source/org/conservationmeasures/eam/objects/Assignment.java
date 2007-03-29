@@ -54,7 +54,19 @@ public class Assignment extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.PROJECT_RESOURCE: 
+				return true;
+			case ObjectType.ACCOUNTING_CODE: 
+				return true;
+			case ObjectType.FUNDING_SOURCE: 
+				return true;
+			case ObjectType.TASK: 
+				return true;
+			default:
+				return false;
+		}
 	}
 	
 	public DateRangeEffortList getDetails()

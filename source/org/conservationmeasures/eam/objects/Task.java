@@ -78,13 +78,31 @@ public class Task extends BaseObject
 	
 	public static boolean canOwnThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.TASK: 
+				return true;
+			case ObjectType.ASSIGNMENT: 
+				return true;
+			default:
+				return false;
+		}
 	}
 	
 	
 	public static boolean canReferToThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.TASK: 
+				return true;
+			case ObjectType.FACTOR: 
+				return true;
+			case ObjectType.INDICATOR: 
+				return true;
+			default:
+				return false;
+		}
 	}
 	
 	public boolean isTask()

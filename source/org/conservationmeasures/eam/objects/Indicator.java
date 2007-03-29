@@ -99,7 +99,15 @@ public class Indicator extends BaseObject
 	
 	public static boolean canOwnThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.GOAL: 
+				return true;
+			case ObjectType.TASK: 
+				return true;
+			default:
+				return false;
+		}
 	}
 	
 	

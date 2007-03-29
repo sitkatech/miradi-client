@@ -69,7 +69,13 @@ public class DiagramFactor extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.FACTOR: 
+				return true;
+			default:
+				return false;
+		}
 	}
 		
 	public DiagramFactorId getDiagramFactorId()

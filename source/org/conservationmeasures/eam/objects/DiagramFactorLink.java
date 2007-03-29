@@ -68,7 +68,15 @@ public class DiagramFactorLink extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
-		return false;
+		switch(type)
+		{
+			case ObjectType.FACTOR_LINK: 
+				return true;
+			case ObjectType.DIAGRAM_FACTOR: 
+				return true;
+			default:
+				return false;
+		}
 	}
 
 	public DiagramFactorLinkId getDiagramLinkageId()
