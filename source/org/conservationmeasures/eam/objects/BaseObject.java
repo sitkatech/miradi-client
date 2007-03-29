@@ -11,7 +11,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -265,72 +264,68 @@ abstract public class BaseObject
 		return shortLabel + "." + Longlabel;
 	}
 	
-	//TODO: methods need to be refactored
-	public ORef getOwner()
-	{
-		int[] objectTypes = getTypesThatCanOwnUs(getType());
-		for (int i=0; i<objectTypes.length; ++i)
-		{
-			ORef oref = findObjectWhoOwnesUs(objectTypes[i]);
-			if (oref != null)
-				return oref;
-		}
-		return null;
-	}
+	//TODO: commented out until we can pass in project
+//	public ORef getOwner()
+//	{
+//		int[] objectTypes = getTypesThatCanOwnUs(getType());
+//		for (int i=0; i<objectTypes.length; ++i)
+//		{
+//			ORef oref = findObjectWhoOwnesUs(getProject(), objectTypes[i], getRef());
+//			if (oref != null)
+//				return oref;
+//		}
+//		return null;
+//	}
 
 	
-	private ORef findObjectWhoOwnesUs(int objectType)
+	static public ORef findObjectWhoOwnesUs(Project project, int objectType, ORef oref)
 	{
-		ORefList orefsInPool = getProject().getPool(objectType).getORefList();
+		ORefList orefsInPool = project.getPool(objectType).getORefList();
 		for (int i=0; i<orefsInPool.size(); ++i)
 		{
-			BaseObject objectInPool = getProject().findObject(orefsInPool.get(i));
-			ORefList children = objectInPool.getOwnedObjects(getType());
+			BaseObject objectInPool = project.findObject(orefsInPool.get(i));
+			ORefList children = objectInPool.getOwnedObjects(oref.getObjectType());
 			for (int childIdx=0; childIdx<children.size(); ++i)
 			{
-				if (children.get(childIdx).getObjectId().equals(getId()))
+				if (children.get(childIdx).getObjectId().equals(oref.getObjectId()))
 					return children.get(childIdx);
 			}
 		}
 		return null;
 	}
 
+	//TODO: commented out until we can pass in project	
+//	public ORefList findObjectThatReferToUs()
+//	{
+//		ORefList owners = new ORefList();
+//		int[] objectTypes = getTypesThatCanReferToUS(getType());
+//		for (int i=0; i<objectTypes.length; ++i)
+//		{
+//			ORefList orefs = findObjectThatReferToUs(objectTypes[i]);
+//			owners.addAll(orefs);
+//		}
+//		return owners;
+//	}
 	
-	public ORefList findObjectThatReferToUs()
-	{
-		ORefList owners = new ORefList();
-		int[] objectTypes = getTypesThatCanReferToUS(getType());
-		for (int i=0; i<objectTypes.length; ++i)
-		{
-			ORefList orefs = findObjectThatReferToUs(objectTypes[i]);
-			owners.addAll(orefs);
-		}
-		return owners;
-	}
 	
-	
-	private ORefList findObjectThatReferToUs(int objectType)
+	static public ORefList findObjectThatReferToUs(Project project, int objectType, ORef oref)
 	{
 		ORefList matchList = new ORefList();
-		ORefList orefsInPool = getProject().getPool(objectType).getORefList();
+		ORefList orefsInPool = project.getPool(objectType).getORefList();
 		for (int i=0; i<orefsInPool.size(); ++i)
 		{
-			BaseObject objectInPool = getProject().findObject(orefsInPool.get(i));
-			ORefList children = objectInPool.getReferencedObjects(getType());
+			BaseObject objectInPool = project.findObject(orefsInPool.get(i));
+			ORefList children = objectInPool.getReferencedObjects(oref.getObjectType());
 			for (int childIdx=0; childIdx<children.size(); ++i)
 			{
-				if (children.get(childIdx).getObjectId().equals(getId()))
+				if (children.get(childIdx).getObjectId().equals(oref.getObjectId()))
 					matchList.add(children.get(childIdx));
 			}
 		}
 		return matchList;
 	}
 	
-	private Project getProject()
-	{
-		return EAM.mainWindow.getProject();
-	}
-	
+
 	public ORefList getReferencedObjects(int objectType)
 	{
 		return new ORefList();
