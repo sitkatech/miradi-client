@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Arrays;
+
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
@@ -67,6 +69,22 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		
 		assertEquals(true, ViewData.canReferToThisType(ObjectType.FACTOR));
 		assertEquals(false, ViewData.canOwnThisType(ObjectType.FACTOR));
-
 	}
+	
+	
+	public void testGetTypesThatCanXXXUs()
+	{
+		int[] referTypes = BaseObject.getTypesThatCanReferToUs(ObjectType.TASK);
+		assertEquals(false, Arrays.binarySearch(referTypes, ObjectType.ASSIGNMENT)<0);
+		assertEquals(false, Arrays.binarySearch(referTypes, ObjectType.TASK)<0);
+		assertEquals(true, Arrays.binarySearch(referTypes, ObjectType.GOAL)<0);
+		assertEquals(true, Arrays.binarySearch(referTypes, ObjectType.INDICATOR)<0);
+		
+		int[] ownedTypes = BaseObject.getTypesThatCanOwnUs(ObjectType.TASK);
+		assertEquals(false, Arrays.binarySearch(ownedTypes, ObjectType.INDICATOR)<0);
+		assertEquals(false, Arrays.binarySearch(referTypes, ObjectType.TASK)<0);
+		assertEquals(true, Arrays.binarySearch(ownedTypes, ObjectType.GOAL)<0);
+		assertEquals(true, Arrays.binarySearch(ownedTypes, ObjectType.ASSIGNMENT)<0);
+	}
+	
 }

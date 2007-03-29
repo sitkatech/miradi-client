@@ -336,7 +336,7 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 	
-	public int[] getTypesThatCanOwnUs(int type)
+	static public int[] getTypesThatCanOwnUs(int type)
 	{
 		// TODO: get rid of static number
 		int[] objectTypes = new int[300];
@@ -401,7 +401,7 @@ abstract public class BaseObject
 		return outArray;
 	}
 
-	public int[] getTypesThatCanReferToUS(int type)
+	static public int[] getTypesThatCanReferToUs(int type)
 	{
 		// TODO: get rid of static number
 		int[] objectTypes = new int[300];
