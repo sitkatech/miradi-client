@@ -5,10 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 {
@@ -17,18 +15,6 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		super(name);
 	}
 
-	public void setUp() throws Exception
-	{
-		project = new ProjectForTesting(getName());
-		super.setUp();
-	}
-	
-	public void tearDown() throws Exception
-	{
-		super.tearDown();
-		project.close();
-	}
-	
 	public void testCanOwnThisType()
 	{
 		assertEquals(true, Assignment.canReferToThisType(ObjectType.PROJECT_RESOURCE));
@@ -83,16 +69,4 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		assertEquals(false, ViewData.canOwnThisType(ObjectType.FACTOR));
 
 	}
-	
-	class Owner extends Target
-	{
-
-		public Owner(FactorId idToUse)
-		{
-			super(idToUse);
-			// TODO Auto-generated constructor stub
-		}
-	}
-
-	ProjectForTesting project;
 }
