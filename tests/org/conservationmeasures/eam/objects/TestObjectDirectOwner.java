@@ -5,13 +5,10 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestObjectDirectOwner extends EAMTestCase
 {
@@ -20,17 +17,71 @@ public class TestObjectDirectOwner extends EAMTestCase
 		super(name);
 	}
 
-	public void testObjectDirectOwner()
+	public void setUp() throws Exception
 	{
-		ORefList objRefList = new ORefList();
-		ORef objectRef = new ORef(ObjectType.GOAL, BaseId.INVALID);
-		objRefList.add(objectRef);
-		EnhancedJsonObject json = objRefList.toJson();
-		ORefList got = new ORefList(json);
-		assertEquals("lists are equal?", objRefList, got);
+		project = new ProjectForTesting(getName());
+		super.setUp();
+	}
+	
+	public void tearDown() throws Exception
+	{
+		super.tearDown();
+		project.close();
+	}
+	
+	public void testCanOwnThisType()
+	{
+		assertEquals(true, Assignment.canReferToThisType(ObjectType.PROJECT_RESOURCE));
+		assertEquals(true, Assignment.canReferToThisType(ObjectType.ACCOUNTING_CODE));
+		assertEquals(true, Assignment.canReferToThisType(ObjectType.FUNDING_SOURCE));
+		assertEquals(true, Assignment.canReferToThisType(ObjectType.TASK));
+		assertEquals(false, Assignment.canReferToThisType(ObjectType.FACTOR));
+		assertEquals(false, Assignment.canOwnThisType(ObjectType.FACTOR));
 		
-		ORef gotObjRef = objRefList.get(0);
-		assertEquals("object references equal?", objectRef, gotObjRef);
+		assertEquals(true, DiagramFactor.canReferToThisType(ObjectType.FACTOR));
+		assertEquals(false, DiagramFactor.canReferToThisType(ObjectType.FACTOR_LINK));
+		assertEquals(false, DiagramFactor.canOwnThisType(ObjectType.FACTOR));
+		
+		assertEquals(true, DiagramFactorLink.canReferToThisType(ObjectType.FACTOR_LINK));
+		assertEquals(true, DiagramFactorLink.canReferToThisType(ObjectType.DIAGRAM_FACTOR));
+		assertEquals(false, DiagramFactorLink.canReferToThisType(ObjectType.FACTOR));
+		assertEquals(false, DiagramFactorLink.canOwnThisType(ObjectType.FACTOR));
+		
+		assertEquals(true, Factor.canOwnThisType(ObjectType.INDICATOR));
+		assertEquals(true, Factor.canOwnThisType(ObjectType.GOAL));
+		assertEquals(true, Factor.canOwnThisType(ObjectType.OBJECTIVE));
+		assertEquals(true, Factor.canOwnThisType(ObjectType.TASK));
+		assertEquals(true, Factor.canOwnThisType(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE));
+		assertEquals(false, Factor.canOwnThisType(ObjectType.FACTOR));
+		
+		assertEquals(true, FactorLink.canReferToThisType(ObjectType.FACTOR));
+		assertEquals(false, FactorLink.canReferToThisType(ObjectType.FACTOR_LINK));
+		assertEquals(false, FactorLink.canOwnThisType(ObjectType.FACTOR));
+		
+		assertEquals(true, Indicator.canOwnThisType(ObjectType.GOAL));
+		assertEquals(true, Indicator.canOwnThisType(ObjectType.TASK));
+		assertEquals(false, Indicator.canOwnThisType(ObjectType.FACTOR));
+		assertEquals(false, Indicator.canReferToThisType(ObjectType.FACTOR));
+		
+		assertEquals(true, KeyEcologicalAttribute.canOwnThisType(ObjectType.INDICATOR));
+		assertEquals(false, KeyEcologicalAttribute.canOwnThisType(ObjectType.FACTOR));
+		assertEquals(false, KeyEcologicalAttribute.canReferToThisType(ObjectType.FACTOR));
+		
+		assertEquals(true, ProjectMetadata.canReferToThisType(ObjectType.PROJECT_RESOURCE));
+		assertEquals(false, Indicator.canReferToThisType(ObjectType.FACTOR));
+		assertEquals(false, ProjectMetadata.canOwnThisType(ObjectType.FACTOR));
+		
+		assertEquals(true, Task.canOwnThisType(ObjectType.TASK));
+		assertEquals(true, Task.canOwnThisType(ObjectType.ASSIGNMENT));
+		assertEquals(true, Task.canReferToThisType(ObjectType.TASK));
+		assertEquals(true, Task.canReferToThisType(ObjectType.FACTOR));
+		assertEquals(true, Task.canReferToThisType(ObjectType.INDICATOR));
+		assertEquals(false, Task.canOwnThisType(ObjectType.FACTOR));
+		assertEquals(false, Task.canReferToThisType(ObjectType.FACTOR_LINK));
+		
+		assertEquals(true, ViewData.canReferToThisType(ObjectType.FACTOR));
+		assertEquals(false, ViewData.canOwnThisType(ObjectType.FACTOR));
+
 	}
 	
 	class Owner extends Target
@@ -43,4 +94,5 @@ public class TestObjectDirectOwner extends EAMTestCase
 		}
 	}
 
+	ProjectForTesting project;
 }

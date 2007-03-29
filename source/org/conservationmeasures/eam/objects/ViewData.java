@@ -86,7 +86,6 @@ public class ViewData extends BaseObject
 	}
 	
 	
-	//FIXME: refer to ObjectType.FACTOR or ObjectType.DIAGRAM_FACTOR????
 	public static boolean canReferToThisType(int type)
 	{
 		switch(type)

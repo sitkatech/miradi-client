@@ -59,6 +59,7 @@ import org.conservationmeasures.eam.objects.TestFundingSource;
 import org.conservationmeasures.eam.objects.TestGoal;
 import org.conservationmeasures.eam.objects.TestIndicator;
 import org.conservationmeasures.eam.objects.TestKeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.TestObjectDirectOwner;
 import org.conservationmeasures.eam.objects.TestObjectManager;
 import org.conservationmeasures.eam.objects.TestObjectReferenceList;
 import org.conservationmeasures.eam.objects.TestObjective;
@@ -203,6 +204,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestAccountingCode.class));
 		suite.addTest(new TestSuite(TestPointList.class));
 		suite.addTest(new TestSuite(TestDiagramContentsObject.class));
+		suite.addTest(new TestSuite(TestObjectDirectOwner.class));
 		
 		
 		// commands package
