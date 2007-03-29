@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
-public class TestObjectDirectOwner extends EAMTestCase
+public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 {
-	public TestObjectDirectOwner(String name)
+	public TestObjectCanReferAndCanOwnTypeMethods(String name)
 	{
 		super(name);
 	}
