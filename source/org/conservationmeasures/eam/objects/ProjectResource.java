@@ -30,7 +30,24 @@ public class ProjectResource extends BaseObject
 
 	public int getType()
 	{
+		return getObjectType();
+	}
+
+	public static int getObjectType()
+	{
 		return ObjectType.PROJECT_RESOURCE;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
 	}
 
 	public String toString()

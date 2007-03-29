@@ -24,7 +24,24 @@ public class Goal extends Desire
 	
 	public int getType()
 	{
+		return getObjectType();
+	}
+
+	public static int getObjectType()
+	{
 		return ObjectType.GOAL;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
 	}
 
 	public static final String OBJECT_NAME = "Goal";

@@ -37,8 +37,25 @@ public class ValueOption extends BaseObject
 	}
 	
 	public int getType()
+	
+	{	return getObjectType();
+	}
+
+	public static int getObjectType()
 	{
 		return ObjectType.VALUE_OPTION;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
 	}
 	
 	public int getNumericValue()

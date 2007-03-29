@@ -41,9 +41,25 @@ public class FactorLink extends BaseObject
 
 	public int getType()
 	{
+		return getObjectType();
+	}
+
+	public static int getObjectType()
+	{
 		return ObjectType.FACTOR_LINK;
 	}
 	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
+	}
 	public FactorId getFromFactorId()
 	{
 		return new FactorId(fromId.getId().asInt());

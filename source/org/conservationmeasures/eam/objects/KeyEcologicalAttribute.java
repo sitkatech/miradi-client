@@ -40,7 +40,24 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	public int getType()
 	{
+		return getObjectType();
+	}
+
+	public static int getObjectType()
+	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
 	}
 
 	public IdList getIndicatorIds()

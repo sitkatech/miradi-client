@@ -268,48 +268,38 @@ abstract public class BaseObject
 	//TODO: methods need to be refactored
 	public ORef getOwner()
 	{
-		ORefList oRefList = findObjectWhoOwnesUs();
-		if (oRefList.size()==0)
-			return null;
-		return oRefList.get(0);
-	}
-	
-	
-	public ORefList findObjectWhoOwnesUs()
-	{
-		ORefList owners = new ORefList();
-		int[] objectTypes = getAllObjectTypes();
+		int[] objectTypes = getTypesThatCanOwnUs(getType());
 		for (int i=0; i<objectTypes.length; ++i)
 		{
-			ORefList orefs = findObjectWhoOwnesUs(objectTypes[i]);
-			owners.addAll(orefs);
+			ORef oref = findObjectWhoOwnesUs(objectTypes[i]);
+			if (oref != null)
+				return oref;
 		}
-		return owners;
+		return null;
 	}
 
 	
-	private ORefList findObjectWhoOwnesUs(int objectType)
+	private ORef findObjectWhoOwnesUs(int objectType)
 	{
-		ORefList matchList = new ORefList();
 		ORefList orefsInPool = getProject().getPool(objectType).getORefList();
 		for (int i=0; i<orefsInPool.size(); ++i)
 		{
 			BaseObject objectInPool = getProject().findObject(orefsInPool.get(i));
-			ORefList children = objectInPool.getOwnedChildren(getType());
+			ORefList children = objectInPool.getOwnedObjects(getType());
 			for (int childIdx=0; childIdx<children.size(); ++i)
 			{
 				if (children.get(childIdx).getObjectId().equals(getId()))
-					matchList.add(children.get(childIdx));
+					return children.get(childIdx);
 			}
 		}
-		return matchList;
+		return null;
 	}
 
 	
 	public ORefList findObjectThatReferToUs()
 	{
 		ORefList owners = new ORefList();
-		int[] objectTypes = getAllObjectTypes();
+		int[] objectTypes = getTypesThatCanReferToUS(getType());
 		for (int i=0; i<objectTypes.length; ++i)
 		{
 			ORefList orefs = findObjectThatReferToUs(objectTypes[i]);
@@ -326,7 +316,7 @@ abstract public class BaseObject
 		for (int i=0; i<orefsInPool.size(); ++i)
 		{
 			BaseObject objectInPool = getProject().findObject(orefsInPool.get(i));
-			ORefList children = objectInPool.getNonOwnedChildren(getType());
+			ORefList children = objectInPool.getReferencedObjects(getType());
 			for (int childIdx=0; childIdx<children.size(); ++i)
 			{
 				if (children.get(childIdx).getObjectId().equals(getId()))
@@ -341,27 +331,152 @@ abstract public class BaseObject
 		return EAM.mainWindow.getProject();
 	}
 	
-	public ORefList getNonOwnedChildren(int objectType)
+	public ORefList getReferencedObjects(int objectType)
 	{
 		return new ORefList();
 	}
 	
-	public ORefList getOwnedChildren(int objectType)
+	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();
 	}
 	
-	public int[] getAllObjectTypes()
+	public int[] getTypesThatCanOwnUs(int type)
 	{
-		return new int[0];
+		// TODO: get rid of static number
+		int[] objectTypes = new int[300];
+		int i = 0;
+
+		if (RatingCriterion.canOwnThisType(type))
+			objectTypes[i++] = RatingCriterion.getObjectType();
+
+		if (ValueOption.canOwnThisType(type))
+			objectTypes[i++] = ValueOption.getObjectType();
+
+		if (Task.canOwnThisType(type))
+			objectTypes[i++] = Task.getObjectType();
+
+		if (Factor.canOwnThisType(type))
+			objectTypes[i++] = Factor.getObjectType();
+
+		if (ViewData.canOwnThisType(type))
+			objectTypes[i++] = ViewData.getObjectType();
+
+		if (FactorLink.canOwnThisType(type))
+			objectTypes[i++] = FactorLink.getObjectType();
+
+		if (ProjectResource.canOwnThisType(type))
+			objectTypes[i++] = ProjectResource.getObjectType();
+
+		if (Indicator.canOwnThisType(type))
+			objectTypes[i++] = Indicator.getObjectType();
+
+		if (Objective.canOwnThisType(type))
+			objectTypes[i++] = Objective.getObjectType();
+
+		if (Goal.canOwnThisType(type))
+			objectTypes[i++] = Goal.getObjectType();
+
+		if (ProjectMetadata.canOwnThisType(type))
+			objectTypes[i++] = ProjectMetadata.getObjectType();
+		
+		if (DiagramFactorLink.canOwnThisType(type))
+			objectTypes[i++] = DiagramFactorLink.getObjectType();
+
+		if (Assignment.canOwnThisType(type))
+			objectTypes[i++] = Assignment.getObjectType();
+
+		if (AccountingCode.canOwnThisType(type))
+			objectTypes[i++] = AccountingCode.getObjectType();
+		
+		if (FundingSource.canOwnThisType(type))
+			objectTypes[i++] = FundingSource.getObjectType();
+
+		if (KeyEcologicalAttribute.canOwnThisType(type))
+			objectTypes[i++] = KeyEcologicalAttribute.getObjectType();
+
+		if (DiagramFactor.canOwnThisType(type))
+			objectTypes[i++] = DiagramFactor.getObjectType();
+
+		if (DiagramContentsObject.canOwnThisType(type))
+			objectTypes[i++] = DiagramContentsObject.getObjectType();
+
+		int[] outArray = new int[i];
+		System.arraycopy(objectTypes, 0, outArray, 0, i);
+		return outArray;
 	}
-	
+
+	public int[] getTypesThatCanReferToUS(int type)
+	{
+		// TODO: get rid of static number
+		int[] objectTypes = new int[300];
+		int i = 0;
+
+		if (RatingCriterion.canReferToThisType(type))
+			objectTypes[i++] = RatingCriterion.getObjectType();
+
+		if (ValueOption.canReferToThisType(type))
+			objectTypes[i++] = ValueOption.getObjectType();
+
+		if (Task.canReferToThisType(type))
+			objectTypes[i++] = Task.getObjectType();
+
+		if (Factor.canReferToThisType(type))
+			objectTypes[i++] = Factor.getObjectType();
+
+		if (ViewData.canReferToThisType(type))
+			objectTypes[i++] = ViewData.getObjectType();
+
+		if (FactorLink.canReferToThisType(type))
+			objectTypes[i++] = FactorLink.getObjectType();
+
+		if (ProjectResource.canReferToThisType(type))
+			objectTypes[i++] = ProjectResource.getObjectType();
+
+		if (Indicator.canReferToThisType(type))
+			objectTypes[i++] = Indicator.getObjectType();
+
+		if (Objective.canReferToThisType(type))
+			objectTypes[i++] = Objective.getObjectType();
+
+		if (Goal.canReferToThisType(type))
+			objectTypes[i++] = Goal.getObjectType();
+
+		if (ProjectMetadata.canReferToThisType(type))
+			objectTypes[i++] = ProjectMetadata.getObjectType();
+		
+		if (DiagramFactorLink.canReferToThisType(type))
+			objectTypes[i++] = DiagramFactorLink.getObjectType();
+
+		if (Assignment.canReferToThisType(type))
+			objectTypes[i++] = Assignment.getObjectType();
+
+		if (AccountingCode.canReferToThisType(type))
+			objectTypes[i++] = AccountingCode.getObjectType();
+		
+		if (FundingSource.canReferToThisType(type))
+			objectTypes[i++] = FundingSource.getObjectType();
+
+		if (KeyEcologicalAttribute.canReferToThisType(type))
+			objectTypes[i++] = KeyEcologicalAttribute.getObjectType();
+
+		if (DiagramFactor.canReferToThisType(type))
+			objectTypes[i++] = DiagramFactor.getObjectType();
+
+		if (DiagramContentsObject.canReferToThisType(type))
+			objectTypes[i++] = DiagramContentsObject.getObjectType();
+
+		int[] outArray = new int[i];
+		System.arraycopy(objectTypes, 0, outArray, 0, i);
+		return outArray;
+	}
 	
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	
 	public static final String DEFAULT_LABEL = "";
 
+	
 	BaseId id;
 	StringData label;
 

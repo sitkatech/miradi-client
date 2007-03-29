@@ -67,7 +67,24 @@ public class Task extends BaseObject
 
 	public int getType()
 	{
+		return getObjectType();
+	}
+
+	public static int getObjectType()
+	{
 		return ObjectType.TASK;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
 	}
 	
 	public boolean isTask()

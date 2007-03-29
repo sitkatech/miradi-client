@@ -37,7 +37,24 @@ public class Assignment extends BaseObject
 
 	public int getType()
 	{
+		return getObjectType();
+	}
+
+	public static int getObjectType()
+	{
 		return ObjectType.ASSIGNMENT;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
 	}
 	
 	public DateRangeEffortList getDetails()

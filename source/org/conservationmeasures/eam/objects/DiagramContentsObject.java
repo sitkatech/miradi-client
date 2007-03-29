@@ -24,7 +24,24 @@ public class DiagramContentsObject extends BaseObject
 	
 	public int getType()
 	{
+		return getObjectType();
+	}
+
+	public static int getObjectType()
+	{
 		return ObjectType.DIAGRAM_CONTENTS;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
 	}
 	
 	public void clear()

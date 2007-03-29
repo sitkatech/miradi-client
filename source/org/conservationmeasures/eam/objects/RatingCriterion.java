@@ -23,14 +23,31 @@ public class RatingCriterion extends BaseObject
 	
 	public int getType()
 	{
-		return ObjectType.RATING_CRITERION;
+		return getObjectType();
 	}
 
+	public static int getObjectType()
+	{
+		return ObjectType.RATING_CRITERION;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
+	}
+	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = super.toJson();
 
 		return json;
 	}
-	
+
 }

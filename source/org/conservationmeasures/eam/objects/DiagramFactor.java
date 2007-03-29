@@ -52,7 +52,24 @@ public class DiagramFactor extends BaseObject
 	
 	public int getType()
 	{
+		return getObjectType();
+	}
+
+	public static int getObjectType()
+	{
 		return ObjectType.DIAGRAM_FACTOR;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
 	}
 		
 	public DiagramFactorId getDiagramFactorId()

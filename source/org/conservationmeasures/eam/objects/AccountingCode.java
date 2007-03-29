@@ -27,9 +27,25 @@ public class AccountingCode extends BaseObject
 
 	public int getType()
 	{
-		return ObjectType.ACCOUNTING_CODE;
+		return getObjectType();
 	}
 
+	public static int getObjectType()
+	{
+		return ObjectType.ACCOUNTING_CODE;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
+	}
 	public String toString()
 	{
 		String result = getLabel();
