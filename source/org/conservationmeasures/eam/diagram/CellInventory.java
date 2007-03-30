@@ -23,12 +23,14 @@ class CellInventory
 	{
 		factors = new Vector();
 		factorLinks = new HashMap();
+		factorCellIds = new HashMap();
 	}
 	
 	public void clear()
 	{
 		factors.clear();
 		factorLinks.clear();
+		factorCellIds.clear();
 	}
 
 	public void addFactor(FactorCell node)
@@ -39,6 +41,7 @@ class CellInventory
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
 		factors.add(node);
+		factorCellIds.put(realId, node);
 	}
 	
 	public Vector getAllFactors()
@@ -48,13 +51,7 @@ class CellInventory
 	
 	public FactorCell getFactorById(DiagramFactorId id)
 	{
-		for (Iterator iter = factors.iterator(); iter.hasNext();) 
-		{
-			FactorCell factor = (FactorCell)iter.next();
-			if(factor.getDiagramFactorId().equals(id))
-				return factor;
-		}
-		return null;
+		return (FactorCell) factorCellIds.get(id);
 	}
 	
 	public FactorCell getFactorById(FactorId id)
@@ -68,9 +65,11 @@ class CellInventory
 		return null;
 	}
 	
+	//FIXME this methods needs to take in a diagramFactorId instead of a FactorCell
 	public void removeFactor(FactorCell node)
 	{
 		factors.remove(node);
+		factorCellIds.remove(node.getDiagramFactorId());
 	}
 	
 	public void addFactorLink(DiagramFactorLink link, LinkCell cell)
@@ -124,4 +123,5 @@ class CellInventory
 	
 	private Vector factors;
 	private HashMap factorLinks;
+	private HashMap factorCellIds;
 }
