@@ -11,9 +11,6 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.AccountingCodeId;
-import org.conservationmeasures.eam.ids.FundingSourceId;
-import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
@@ -72,11 +69,8 @@ public class AddAssignmentDoer extends ObjectsDoer
 	private CreateAssignmentParameter createExtraInfo(Project project, Task selectedTask)
 	{
 		TaskId  taskId = new TaskId(selectedTask.getId().asInt());
-		ProjectResourceId resourceId = ProjectResourceId.INVALID;
-		AccountingCodeId accountingId = AccountingCodeId.INVALID;
-		FundingSourceId fundingId = FundingSourceId.INVALID;
 		
-		CreateAssignmentParameter extraInfo = new CreateAssignmentParameter(taskId, resourceId, accountingId, fundingId);
+		CreateAssignmentParameter extraInfo = new CreateAssignmentParameter(taskId);
 		
 		return extraInfo;
 	}

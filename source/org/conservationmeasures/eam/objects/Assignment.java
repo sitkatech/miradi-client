@@ -5,10 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.AccountingCodeId;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FundingSourceId;
-import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.DateRangeEffortListData;
@@ -25,9 +22,6 @@ public class Assignment extends BaseObject
 		super(idToUse);
 		clear();
 		taskIdData.setId(extraInfo.getTaskId());
-		resourceIdData.setId(extraInfo.getResourceId());
-		accountingIdData.setId(extraInfo.getAccountingCodeId());
-		fundingIdData.setId(extraInfo.getFundingSourceId());
 	}
 	
 	public Assignment(int idAsInt, EnhancedJsonObject json) throws Exception
@@ -86,13 +80,10 @@ public class Assignment extends BaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		//TODO create ResourceIdData and TaskIdData classes
-		ProjectResourceId resourceId = new ProjectResourceId(resourceIdData.getId().asInt());
+		//TODO create TaskIdData class
 		TaskId taskId = new TaskId(taskIdData.getId().asInt());
-		AccountingCodeId accountingId = new AccountingCodeId(accountingIdData.getId().asInt());
-		FundingSourceId fundingId = new FundingSourceId(fundingIdData.getId().asInt());
 		
-		return new CreateAssignmentParameter(taskId, resourceId, accountingId, fundingId);
+		return new CreateAssignmentParameter(taskId);
 	}
 	
 	public void clear()
@@ -105,10 +96,10 @@ public class Assignment extends BaseObject
 		fundingIdData = new BaseIdData();
 		
 		addNoClearField(TAG_ASSIGNMENT_TASK_ID, taskIdData);
-		addNoClearField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
-		addNoClearField(TAG_DATERANGE_EFFORTS, detailListData);
-		addNoClearField(TAG_ACCOUNTING_CODE, accountingIdData);
-		addNoClearField(TAG_FUNDING_SOURCE, fundingIdData);
+		addField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
+		addField(TAG_DATERANGE_EFFORTS, detailListData);
+		addField(TAG_ACCOUNTING_CODE, accountingIdData);
+		addField(TAG_FUNDING_SOURCE, fundingIdData);
 	}
 	
 	public static final String TAG_ASSIGNMENT_TASK_ID = "TaskId";
