@@ -205,7 +205,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 	
 	public DiagramFactor getTo()
 	{
-		FactorDropDownItem item = (FactorDropDownItem)linkFromList.getSelectedItem();
+		FactorDropDownItem item = (FactorDropDownItem)linkToList.getSelectedItem();
 		return item.getDiagramFactor();
 	}
 	

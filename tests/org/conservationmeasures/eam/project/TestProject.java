@@ -291,7 +291,7 @@ public class TestProject extends EAMTestCase
 		}
 		
 		//Test when a pasted item has linkages to a previously deleted node
-		model.deleteDiagramFactor(diagramFactorId1);
+		model.removeDiagramFactor(diagramFactorId1);
 		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());

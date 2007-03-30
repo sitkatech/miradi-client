@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -76,6 +77,7 @@ public class DiagramModel extends DefaultGraphModel
 		
 		DiagramContentsId contentsId = new DiagramContentsId(BaseId.INVALID.asInt());
 		diagramContents = new DiagramContentsObject(contentsId);
+		factorsToDiagramFactors = new HashMap();
 	}
 	
 	public ProjectScopeBox getProjectScopeBox()
@@ -98,6 +100,7 @@ public class DiagramModel extends DefaultGraphModel
 		Factor factor = project.findNode(diagramFactor.getWrappedId());
 		FactorCell factorCell = createFactorCell(diagramFactor, factor);
 		addFactorCellToModel(factorCell);
+		factorsToDiagramFactors.put(diagramFactor.getWrappedId(), diagramFactor.getDiagramFactorId());
 	}
 	
 	private FactorCell createFactorCell(DiagramFactor diagramFactor, Factor factor)
@@ -158,10 +161,11 @@ public class DiagramModel extends DefaultGraphModel
         	eventNotifier.doNotify((DiagramModelListener)diagramModelListenerList.get(i), event);
         }                
     }
-	
-    public void deleteDiagramFactor(DiagramFactorId diagramFactorId) throws Exception
+
+    public void removeDiagramFactor(DiagramFactorId diagramFactorId) throws Exception
     {
-    	FactorCell diagramFactorToDelete = getFactorCellById(diagramFactorId);
+    	factorsToDiagramFactors.remove(cellInventory.getFactorById(diagramFactorId));
+    	FactorCell diagramFactorToDelete = getFactorCellById(diagramFactorId);	
     	Object[] cells = new Object[]{diagramFactorToDelete};
 		remove(cells);
 		cellInventory.removeFactor(diagramFactorId);
@@ -400,17 +404,13 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public DiagramFactorId getDiagramFactorIdFromWrappedId(FactorId factorId)
 	{
-		return getFactorCellByWrappedId(factorId).getDiagramFactorId();
-	}
-	
-	public DiagramFactor getDiagramFactorFromWrappedId(FactorId factorId)
-	{
-		return getFactorCellByWrappedId(factorId).getDiagramFactor();
+		return (DiagramFactorId) factorsToDiagramFactors.get(factorId);
 	}
 	
 	public FactorId getWrappedId(DiagramFactorId diagramFactorId)
 	{
-		return cellInventory.getFactorById(diagramFactorId).getWrappedId();
+		FactorCell wrappedId = cellInventory.getFactorById(diagramFactorId);
+		return (FactorId) factorsToDiagramFactors.get(wrappedId);
 	}
 	
 	public DiagramFactorLink getDiagramFactorLinkById(DiagramFactorLinkId id) throws Exception
@@ -597,5 +597,7 @@ public class DiagramModel extends DefaultGraphModel
 	protected List diagramModelListenerList = new ArrayList();
 	
 	DiagramContentsObject diagramContents;
+	
+	HashMap factorsToDiagramFactors;
 }
 

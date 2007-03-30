@@ -381,7 +381,7 @@ public class TestCommands extends EAMTestCase
 		DiagramFactor to = insertContributingFactor();
 		DiagramFactorId toId = to.getDiagramFactorId();
 
-		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, from, to);
+		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, from.getWrappedId(), to.getWrappedId());
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
 	
 		CommandDiagramRemoveFactorLink cmd = new CommandDiagramRemoveFactorLink(linkageId);

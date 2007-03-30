@@ -751,7 +751,7 @@ public class Project
 	public FactorId removeDiagramFactorFromDiagram(DiagramFactorId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		model.deleteDiagramFactor(idToDelete);
+		model.removeDiagramFactor(idToDelete);
 		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, idToDelete));
 		
 		return diagramFactor.getWrappedId();

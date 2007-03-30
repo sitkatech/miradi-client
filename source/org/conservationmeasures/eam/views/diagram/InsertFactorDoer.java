@@ -160,10 +160,10 @@ abstract public class InsertFactorDoer extends LocationDoer
 		{
 			int highestYIndex = 0;
 			int highestY = 0;
-			double y;
+			
 			for (int i = 0; i < allTargets.length; i++)
 			{
-				y = allTargets[i].getBounds().getY();
+				double y = allTargets[i].getBounds().getY();
 				if (highestY < y)
 				{
 					highestY = (int) y;
