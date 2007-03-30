@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
@@ -62,7 +63,15 @@ public class ProjectForTesting extends Project
 		return cmTargetId;
 	}
 	
-	
+	public BaseId addItemToFactorList(BaseId factorId, int type, String tag) throws Exception
+	{
+		BaseId baseId = createObject(type);
+		IdList idList = new IdList(new BaseId[] {baseId});
+		setObjectData(ObjectType.FACTOR, factorId, tag, idList.toString());
+		return baseId;
+	}
+
+
 	public TaskId createTask(ORef oref) throws Exception
 	{
 		CreateTaskParameter createTask = new CreateTaskParameter(oref);

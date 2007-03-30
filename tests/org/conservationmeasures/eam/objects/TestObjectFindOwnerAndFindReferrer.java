@@ -38,39 +38,22 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	public void testFactorOwn() throws Exception
 	{
 		BaseId factorId = project.createFactor(Factor.TYPE_STRATEGY);
-		
-		BaseId indicatorId = project.createObject(ObjectType.INDICATOR);
-		IdList indicatorList = new IdList(new BaseId[] {indicatorId});
-		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_INDICATOR_IDS, indicatorList.toString());
-		BaseObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
-
-		BaseId goalId = project.createObject(ObjectType.GOAL);
-		IdList goalList = new IdList(new BaseId[] {goalId});
-		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_GOAL_IDS, goalList.toString());
-		BaseObject goal = project.findObject(ObjectType.GOAL, goalId);
-		
-		BaseId objectiveId = project.createObject(ObjectType.OBJECTIVE);
-		IdList objectiveList = new IdList(new BaseId[] {objectiveId});
-		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_OBJECTIVE_IDS, objectiveList.toString());
-		BaseObject objective = project.findObject(ObjectType.OBJECTIVE, objectiveId);
-		
-		BaseId keaId = project.createObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
-		IdList keaList = new IdList(new BaseId[] {keaId});
-		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaList.toString());
-		BaseObject kea = project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId);
+		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		BaseId goalId = project.addItemToFactorList(factorId, ObjectType.GOAL, Factor.TAG_GOAL_IDS);
+		BaseId objectiveId = project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		BaseId keaId = project.addItemToFactorList(factorId, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		
 		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR, factorId));
 		IdList taskList = new IdList(new BaseId[] {taskId});
 		project.setObjectData(ObjectType.FACTOR, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
-		BaseObject task = project.findObject(ObjectType.TASK, taskId);
 		
 		//----------- start test -----------
 		
-		verifyOwner(factorId, ObjectType.FACTOR, indicator.getRef());
-		verifyOwner(factorId, ObjectType.FACTOR, goal.getRef());
-		verifyOwner(factorId, ObjectType.FACTOR, objective.getRef());
-		verifyOwner(factorId, ObjectType.FACTOR, kea.getRef());
-		verifyOwner(factorId, ObjectType.FACTOR, task.getRef());
+		verifyOwner(factorId, ObjectType.FACTOR, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwner(factorId, ObjectType.FACTOR, new ORef(ObjectType.GOAL, goalId));
+		verifyOwner(factorId, ObjectType.FACTOR, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwner(factorId, ObjectType.FACTOR, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId));
+		verifyOwner(factorId, ObjectType.FACTOR, new ORef(ObjectType.TASK, taskId));
 	}
 
 
