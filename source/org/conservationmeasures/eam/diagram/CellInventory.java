@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.diagram;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
@@ -21,14 +22,12 @@ class CellInventory
 {
 	public CellInventory()
 	{
-		factors = new Vector();
 		factorLinks = new HashMap();
 		factorCellIds = new HashMap();
 	}
 	
 	public void clear()
 	{
-		factors.clear();
 		factorLinks.clear();
 		factorCellIds.clear();
 	}
@@ -40,13 +39,12 @@ class CellInventory
 		if(getFactorById(realId) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		factors.add(node);
 		factorCellIds.put(realId, node);
 	}
 	
 	public Vector getAllFactors()
 	{
-		return factors;
+		return new Vector(factorCellIds.values());
 	}
 	
 	public FactorCell getFactorById(DiagramFactorId id)
@@ -56,22 +54,19 @@ class CellInventory
 	
 	public FactorCell getFactorById(FactorId id)
 	{
-		for (Iterator iter = factors.iterator(); iter.hasNext();) 
+		Collection list = factorCellIds.values();
+		for (Iterator iter = list.iterator(); iter.hasNext();)
 		{
-			FactorCell factor = (FactorCell)iter.next();
-			if(factor.getWrappedId().equals(id))
-				return factor;
+			FactorCell cell = (FactorCell) iter.next();
+			if(cell.getWrappedId().equals(id))
+				return cell;
 		}
+		
 		return null;
 	}
 	
-	//FIXME this methods needs to take in a diagramFactorId instead of a FactorCell
 	public void removeFactor(DiagramFactorId diagramFactorId)
 	{
-		//FIXME The next two lines should go away
-		FactorCell node = (FactorCell) factorCellIds.get(diagramFactorId);
-		factors.remove(node);
-		
 		factorCellIds.remove(diagramFactorId);
 	}
 	
@@ -124,7 +119,6 @@ class CellInventory
 		factorLinks.remove(linkage);
 	}
 	
-	private Vector factors;
 	private HashMap factorLinks;
 	private HashMap factorCellIds;
 }
