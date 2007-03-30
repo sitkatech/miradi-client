@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -73,6 +74,25 @@ abstract public class Factor extends BaseObject
 	{
 		return false;
 	}
+	
+	
+	public ORefList getOwnedObjects(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.INDICATOR: 
+				return new ORefList(objectType, getIndicators());
+			case ObjectType.GOAL: 
+				return new ORefList(objectType, getGoals());
+			case ObjectType.OBJECTIVE: 
+				return new ORefList(objectType, getObjectives());
+			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
+				return new ORefList(objectType, getKeyEcologicalAttributes());
+			default:
+				return new ORefList();
+		}
+	}
+	
 	
 	public FactorType getNodeType()
 	{
@@ -220,6 +240,8 @@ abstract public class Factor extends BaseObject
 	
 	public static Factor createConceptualModelObject(FactorId idToCreate, CreateFactorParameter parameter)
 	{
+		if (parameter==null)
+			throw new RuntimeException("Tried to create factor without factor type");
 		FactorType nodeType = parameter.getNodeType();
 		if(nodeType.isStrategy())
 			return new Strategy(idToCreate);

@@ -15,6 +15,8 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
@@ -124,6 +126,17 @@ public class Strategy extends Factor
 	public String toString()
 	{
 		return combineShortLabelAndLabel(shortLabel.toString(), label.toString());
+	}
+	
+	public ORefList getOwnedObjects(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.TASK: 
+				return new ORefList(objectType, getActivityIds());
+			default:
+				return super.getOwnedObjects(objectType);
+		}
 	}
 	
 	void clear()
