@@ -26,7 +26,7 @@ public class Task extends BaseObject
 {
 	public Task(BaseId idToUse, CreateTaskParameter extraInfo) throws Exception
 	{
-		super(idToUse);
+		super(new TaskId(idToUse.asInt()));
 		clear();
 		parentRef.set(extraInfo.getParentRef().toString());
 	}
