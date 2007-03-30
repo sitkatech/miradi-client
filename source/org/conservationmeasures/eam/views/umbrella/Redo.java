@@ -42,7 +42,7 @@ public class Redo extends ProjectDoer
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error during redo"));
+			throw new CommandFailedException(EAM.text("Error during redo"), e);
 		}
 	}
 }

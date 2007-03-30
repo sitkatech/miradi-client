@@ -45,7 +45,7 @@ public class Undo extends ProjectDoer
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error during undo"));
+			throw new CommandFailedException(EAM.text("Error during undo"), e);
 		}
 	}
 

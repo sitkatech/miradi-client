@@ -16,5 +16,9 @@ public class CommandFailedException extends Exception
 	{
 		super(causedBy);
 	}
-
+	
+	public CommandFailedException(String message, Exception causedBy)
+	{
+		super(message, causedBy);
+	}
 }
