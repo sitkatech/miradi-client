@@ -75,12 +75,14 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 	public void testGetTypesThatCanXXXUs()
 	{
 		int[] referTypes = BaseObject.getTypesThatCanReferToUs(ObjectType.TASK);
+		Arrays.sort(referTypes);
 		assertEquals(false, Arrays.binarySearch(referTypes, ObjectType.ASSIGNMENT)<0);
 		assertEquals(false, Arrays.binarySearch(referTypes, ObjectType.TASK)<0);
 		assertEquals(true, Arrays.binarySearch(referTypes, ObjectType.GOAL)<0);
 		assertEquals(true, Arrays.binarySearch(referTypes, ObjectType.INDICATOR)<0);
 		
 		int[] ownedTypes = BaseObject.getTypesThatCanOwnUs(ObjectType.TASK);
+		Arrays.sort(ownedTypes);
 		assertEquals(false, Arrays.binarySearch(ownedTypes, ObjectType.INDICATOR)<0);
 		assertEquals(false, Arrays.binarySearch(referTypes, ObjectType.TASK)<0);
 		assertEquals(true, Arrays.binarySearch(ownedTypes, ObjectType.GOAL)<0);
