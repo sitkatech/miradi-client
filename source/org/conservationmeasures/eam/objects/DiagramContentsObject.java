@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramContentsId;
+import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -47,5 +48,13 @@ public class DiagramContentsObject extends BaseObject
 	public void clear()
 	{
 		super.clear();
+		
+		allDiagramFactorIds = new IdListData();
+		
+		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
 	}
+	
+	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
+	
+	IdListData allDiagramFactorIds;
 }
