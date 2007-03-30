@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
@@ -99,6 +100,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId factorId = project.createFactor(Factor.TYPE_STRATEGY);
 		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR,factorId));
 		BaseId subTaskId = project.createTask(new ORef(ObjectType.TASK,taskId));
+		BaseId assignmentId = project.createAssignment(new ORef(ObjectType.TASK,taskId));
 		
 		IdList taskList = new IdList(new BaseId[] {taskId});
 		project.setObjectData(ObjectType.FACTOR, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
@@ -106,6 +108,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		IdList subTaskList = new IdList(new BaseId[] {subTaskId});
 		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_SUBTASK_IDS, subTaskList.toString());
 
+		IdList assignmentList = new IdList(new BaseId[] {assignmentId});
+		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_ASSIGNMENT_IDS, assignmentList.toString());
 
 		//----------- start test -----------
 		
@@ -119,30 +123,24 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseObject ownerOfSubTask = project.findObject(orefTask);
 		assertEquals(ownerOfSubTask.getRef(), orefTask);
 		
+		ORef orefAssignment = BaseObject.findObjectWhoOwnesUs(project, ObjectType.TASK, new ORef(ObjectType.ASSIGNMENT, assignmentId));
+		assertNotNull(orefAssignment);
+		BaseObject ownerOfAssignment = project.findObject(orefAssignment);
+		assertEquals(ownerOfAssignment.getRef(), orefTask);
+		
 	}
 	
-//	public void testTaskRefer() throws Exception
-//	{
-//		BaseId factorId = project.createFactor(Factor.TYPE_STRATEGY);
-//		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR,factorId));
-//		BaseId subTaskId = project.createTask(new ORef(ObjectType.TASK,taskId));
-//		
-//		IdList taskList = new IdList(new BaseId[] {taskId});
-//		project.setObjectData(ObjectType.FACTOR, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
-//		
-//		IdList subTaskList = new IdList(new BaseId[] {subTaskId});
-//		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_SUBTASK_IDS, subTaskList.toString());
-//		Task subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
-//		
-//		ORefList orefs = BaseObject.findObjectThatReferToUs(project, ObjectType.TASK, subTask.getParentRef());
-//		assertEquals(1,orefs.size());
-//		assertEquals(subTask.getRef(), orefs.get(0));
-//
-//		orefs = BaseObject.findObjectThatReferToUs(project, ObjectType.TASK, new ORef(ObjectType.FACTOR, factorId));
-//		assertEquals(1,orefs.size());
-//		assertEquals(subTask.getParentRef(), orefs.get(0));
-//
-//	}
+	public void testTaskRefer() throws Exception
+	{
+		BaseId factorId = project.createFactor(Factor.TYPE_STRATEGY);
+		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR,factorId));
+		BaseId subTaskId = project.createTask(new ORef(ObjectType.TASK,taskId));
+		Task subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
+		
+		ORefList orefs = BaseObject.findObjectThatReferToUs(project, ObjectType.TASK, new ORef(ObjectType.TASK, taskId));
+		assertEquals(1,orefs.size());
+		assertEquals(subTask.getRef(), orefs.get(0));
+	}
 	
 	ProjectForTesting project;
 }

@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
@@ -19,7 +20,7 @@ public class Assignment extends BaseObject
 {
 	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfo)
 	{
-		super(idToUse);
+		super(new AssignmentId(idToUse.asInt()));
 		clear();
 		taskIdData.setId(extraInfo.getTaskId());
 	}

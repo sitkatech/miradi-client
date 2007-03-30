@@ -12,10 +12,12 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
+import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.TaskId;
+import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
@@ -68,6 +70,12 @@ public class ProjectForTesting extends Project
 		return cmTaskId;
 	}
 
+	public AssignmentId createAssignment(ORef oref) throws Exception
+	{
+		CreateAssignmentParameter createAssignment = new CreateAssignmentParameter((TaskId)oref.getObjectId());
+		AssignmentId cmAssignmentId = (AssignmentId)createObject(ObjectType.ASSIGNMENT, BaseId.INVALID, createAssignment);
+		return cmAssignmentId;
+	}
 	
 	public DiagramFactorId createAndAddFactorToDiagram(FactorType nodeType) throws Exception
 	{
