@@ -66,10 +66,13 @@ class CellInventory
 	}
 	
 	//FIXME this methods needs to take in a diagramFactorId instead of a FactorCell
-	public void removeFactor(FactorCell node)
+	public void removeFactor(DiagramFactorId diagramFactorId)
 	{
+		//FIXME The next two lines should go away
+		FactorCell node = (FactorCell) factorCellIds.get(diagramFactorId);
 		factors.remove(node);
-		factorCellIds.remove(node.getDiagramFactorId());
+		
+		factorCellIds.remove(diagramFactorId);
 	}
 	
 	public void addFactorLink(DiagramFactorLink link, LinkCell cell)
