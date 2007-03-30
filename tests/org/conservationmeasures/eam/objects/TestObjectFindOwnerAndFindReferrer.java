@@ -39,12 +39,12 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId indicatorId = project.createObject(ObjectType.INDICATOR);
 		IdList indicatorList = new IdList(new BaseId[] {indicatorId});
 		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_INDICATOR_IDS, indicatorList.toString());
-		BaseObject indicatorFound = project.findObject(ObjectType.INDICATOR, indicatorId);
+		BaseObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
 
-		ORef oref = indicatorFound.findObjectWhoOwnesUs(project, ObjectType.FACTOR, indicatorFound.getRef());
+		ORef oref = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, indicator.getRef());
 		assertNotNull(oref);
 		BaseObject factorFound = project.findObject(oref);
-		assertEquals(factorId, factorFound);
+		assertEquals(factorId, factorFound.getId());
 	}
 	
 	ProjectForTesting project;

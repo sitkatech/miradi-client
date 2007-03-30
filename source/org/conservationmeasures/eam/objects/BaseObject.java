@@ -288,7 +288,7 @@ abstract public class BaseObject
 			for (int childIdx=0; childIdx<children.size(); ++i)
 			{
 				if (children.get(childIdx).getObjectId().equals(oref.getObjectId()))
-					return children.get(childIdx);
+					return objectInPool.getRef();
 			}
 		}
 		return null;
