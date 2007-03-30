@@ -78,6 +78,16 @@ public class DiagramFactorLink extends BaseObject
 				return false;
 		}
 	}
+	
+	public DiagramFactorId getFromDiagramFactorId()
+	{
+		return new DiagramFactorId(fromId.getId().asInt());
+	}
+	
+	public DiagramFactorId getToDiagramFactorId()
+	{
+		return new DiagramFactorId(toId.getId().asInt());
+	}
 
 	public DiagramFactorLinkId getDiagramLinkageId()
 	{

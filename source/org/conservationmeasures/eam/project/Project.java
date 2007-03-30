@@ -40,7 +40,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -57,9 +56,9 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -724,8 +723,7 @@ public class Project
 		for (int i = 0; i < allLinkIds.length; i++)
 		{
 			DiagramFactorLink link = (DiagramFactorLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, allLinkIds[i]));
-			CreateDiagramFactorLinkParameter extraInfo = (CreateDiagramFactorLinkParameter) link.getCreationExtraInfo();
-			if ((extraInfo.getFromFactorId().equals(diagramFactorId) || (extraInfo.getToFactorId().equals(diagramFactorId))))
+			if ((link.getFromDiagramFactorId().equals(diagramFactorId) || (link.getToDiagramFactorId().equals(diagramFactorId))))
 				fromAndToLinksForFactor.add(link);
 		}
 		
