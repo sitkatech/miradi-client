@@ -34,6 +34,13 @@ public class ORefList
 			add(new ORef(array.getJson(i)));
 	}
 	
+	public ORefList(ORef[] orefs)
+	{
+		this();
+		for (int i=0; i<orefs.length; ++i)
+			add(orefs[i]);
+	}
+	
 	public ORefList(int objectType, IdList idList)
 	{
 		this();

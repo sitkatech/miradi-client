@@ -316,10 +316,12 @@ abstract public class BaseObject
 		{
 			BaseObject objectInPool = project.findObject(orefsInPool.get(i));
 			ORefList children = objectInPool.getReferencedObjects(oref.getObjectType());
-			for (int childIdx=0; childIdx<children.size(); ++i)
+			for (int childIdx=0; childIdx<children.size(); ++childIdx)
 			{
+				System.out.println("matchingA:" + children.get(childIdx).getObjectId());
+				System.out.println("   matchingB:" + oref.getObjectId());
 				if (children.get(childIdx).getObjectId().equals(oref.getObjectId()))
-					matchList.add(children.get(childIdx));
+					matchList.add(objectInPool.getRef());
 			}
 		}
 		return matchList;

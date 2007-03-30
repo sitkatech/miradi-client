@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -96,12 +97,33 @@ public class Task extends BaseObject
 		{
 			case ObjectType.TASK: 
 				return true;
-			case ObjectType.FACTOR: 
-				return true;
-			case ObjectType.INDICATOR: 
-				return true;
 			default:
 				return false;
+		}
+	}
+	
+
+	public ORefList getReferencedObjects(int objectType)
+	{
+		if ((getParentRef()==null) || (getParentRef().getObjectId().equals(BaseId.INVALID)))
+			return new ORefList();
+		
+		if (getParentRef().getObjectType()==objectType) 
+			return new ORefList(new ORef[] {getParentRef()});
+
+		return new ORefList();
+	}
+	
+	public ORefList getOwnedObjects(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.TASK: 
+				return new ORefList(objectType, getSubtaskIdList());
+			case ObjectType.ASSIGNMENT: 
+				return new ORefList(objectType, getAssignmentIdList());
+			default:
+				return new ORefList();
 		}
 	}
 	

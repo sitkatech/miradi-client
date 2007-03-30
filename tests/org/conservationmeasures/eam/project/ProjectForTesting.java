@@ -67,7 +67,7 @@ public class ProjectForTesting extends Project
 		TaskId cmTaskId = (TaskId)createObject(ObjectType.TASK, BaseId.INVALID, createTask);
 		return cmTaskId;
 	}
-	
+
 	
 	public DiagramFactorId createAndAddFactorToDiagram(FactorType nodeType) throws Exception
 	{

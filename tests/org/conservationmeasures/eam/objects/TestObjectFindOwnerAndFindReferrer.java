@@ -33,19 +33,116 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 
 
 	//TODO: not hooked in to main test as it is still in process of being wrttien
-	public void testTwoElementOneQouted() throws Exception
+	public void testFactorOwn() throws Exception
 	{
-		BaseId factorId = project.createFactor(Factor.TYPE_TARGET);
+		BaseId factorId = project.createFactor(Factor.TYPE_STRATEGY);
+		
 		BaseId indicatorId = project.createObject(ObjectType.INDICATOR);
 		IdList indicatorList = new IdList(new BaseId[] {indicatorId});
 		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_INDICATOR_IDS, indicatorList.toString());
 		BaseObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
 
-		ORef oref = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, indicator.getRef());
-		assertNotNull(oref);
-		BaseObject factorFound = project.findObject(oref);
-		assertEquals(factorId, factorFound.getId());
+		BaseId goalId = project.createObject(ObjectType.GOAL);
+		IdList goalList = new IdList(new BaseId[] {goalId});
+		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_GOAL_IDS, goalList.toString());
+		BaseObject goal = project.findObject(ObjectType.GOAL, goalId);
+		
+		
+		BaseId objectiveId = project.createObject(ObjectType.OBJECTIVE);
+		IdList objectiveList = new IdList(new BaseId[] {objectiveId});
+		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_OBJECTIVE_IDS, objectiveList.toString());
+		BaseObject objective = project.findObject(ObjectType.OBJECTIVE, objectiveId);
+		
+		
+		BaseId keaId = project.createObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+		IdList keaList = new IdList(new BaseId[] {keaId});
+		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaList.toString());
+		BaseObject kea = project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId);
+		
+		
+		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR, factorId));
+		IdList taskList = new IdList(new BaseId[] {taskId});
+		project.setObjectData(ObjectType.FACTOR, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
+		BaseObject task = project.findObject(ObjectType.TASK, taskId);
+		
+		//----------- start test -----------
+		
+		ORef orefIndicator = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, indicator.getRef());
+		assertNotNull(orefIndicator);
+		BaseObject ownerOfIndicator = project.findObject(orefIndicator);
+		assertEquals(factorId, ownerOfIndicator.getId());
+		
+		ORef orefGoal = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, goal.getRef());
+		assertNotNull(orefGoal);
+		BaseObject ownerOfGoal = project.findObject(orefGoal);
+		assertEquals(factorId, ownerOfGoal.getId());
+		
+		ORef orefObjective = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, objective.getRef());
+		assertNotNull(orefObjective);
+		BaseObject ownerOfObjective = project.findObject(orefObjective);
+		assertEquals(factorId, ownerOfObjective.getId());
+		
+		ORef orefKea = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, kea.getRef());
+		assertNotNull(orefKea);
+		BaseObject ownerOfKea = project.findObject(orefKea);
+		assertEquals(factorId, ownerOfKea.getId());
+		
+		ORef orefTask = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, task.getRef());
+		assertNotNull(orefTask);
+		BaseObject ownerOfTask = project.findObject(orefTask);
+		assertEquals(factorId, ownerOfTask.getId());
 	}
+	
+	
+	public void testTaskOwn() throws Exception
+	{
+		BaseId factorId = project.createFactor(Factor.TYPE_STRATEGY);
+		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR,factorId));
+		BaseId subTaskId = project.createTask(new ORef(ObjectType.TASK,taskId));
+		
+		IdList taskList = new IdList(new BaseId[] {taskId});
+		project.setObjectData(ObjectType.FACTOR, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
+		
+		IdList subTaskList = new IdList(new BaseId[] {subTaskId});
+		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_SUBTASK_IDS, subTaskList.toString());
+
+
+		//----------- start test -----------
+		
+		ORef orefFactor = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, new ORef(ObjectType.TASK, taskId));
+		assertNotNull(orefFactor);
+		BaseObject ownerOfTask = project.findObject(orefFactor);
+		assertEquals(ownerOfTask.getRef(), orefFactor);
+		
+		ORef orefTask = BaseObject.findObjectWhoOwnesUs(project, ObjectType.TASK, new ORef(ObjectType.TASK, subTaskId));
+		assertNotNull(orefTask);
+		BaseObject ownerOfSubTask = project.findObject(orefTask);
+		assertEquals(ownerOfSubTask.getRef(), orefTask);
+		
+	}
+	
+//	public void testTaskRefer() throws Exception
+//	{
+//		BaseId factorId = project.createFactor(Factor.TYPE_STRATEGY);
+//		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR,factorId));
+//		BaseId subTaskId = project.createTask(new ORef(ObjectType.TASK,taskId));
+//		
+//		IdList taskList = new IdList(new BaseId[] {taskId});
+//		project.setObjectData(ObjectType.FACTOR, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
+//		
+//		IdList subTaskList = new IdList(new BaseId[] {subTaskId});
+//		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_SUBTASK_IDS, subTaskList.toString());
+//		Task subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
+//		
+//		ORefList orefs = BaseObject.findObjectThatReferToUs(project, ObjectType.TASK, subTask.getParentRef());
+//		assertEquals(1,orefs.size());
+//		assertEquals(subTask.getRef(), orefs.get(0));
+//
+//		orefs = BaseObject.findObjectThatReferToUs(project, ObjectType.TASK, new ORef(ObjectType.FACTOR, factorId));
+//		assertEquals(1,orefs.size());
+//		assertEquals(subTask.getParentRef(), orefs.get(0));
+//
+//	}
 	
 	ProjectForTesting project;
 }
