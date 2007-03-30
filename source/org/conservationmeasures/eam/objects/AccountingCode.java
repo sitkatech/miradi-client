@@ -46,6 +46,7 @@ public class AccountingCode extends BaseObject
 	{
 		return false;
 	}
+	
 	public String toString()
 	{
 		String result = getLabel();

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -48,18 +49,15 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_GOAL_IDS, goalList.toString());
 		BaseObject goal = project.findObject(ObjectType.GOAL, goalId);
 		
-		
 		BaseId objectiveId = project.createObject(ObjectType.OBJECTIVE);
 		IdList objectiveList = new IdList(new BaseId[] {objectiveId});
 		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_OBJECTIVE_IDS, objectiveList.toString());
 		BaseObject objective = project.findObject(ObjectType.OBJECTIVE, objectiveId);
 		
-		
 		BaseId keaId = project.createObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 		IdList keaList = new IdList(new BaseId[] {keaId});
 		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaList.toString());
 		BaseObject kea = project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId);
-		
 		
 		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR, factorId));
 		IdList taskList = new IdList(new BaseId[] {taskId});
@@ -68,32 +66,14 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		
 		//----------- start test -----------
 		
-		ORef orefIndicator = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, indicator.getRef());
-		assertNotNull(orefIndicator);
-		BaseObject ownerOfIndicator = project.findObject(orefIndicator);
-		assertEquals(factorId, ownerOfIndicator.getId());
-		
-		ORef orefGoal = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, goal.getRef());
-		assertNotNull(orefGoal);
-		BaseObject ownerOfGoal = project.findObject(orefGoal);
-		assertEquals(factorId, ownerOfGoal.getId());
-		
-		ORef orefObjective = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, objective.getRef());
-		assertNotNull(orefObjective);
-		BaseObject ownerOfObjective = project.findObject(orefObjective);
-		assertEquals(factorId, ownerOfObjective.getId());
-		
-		ORef orefKea = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, kea.getRef());
-		assertNotNull(orefKea);
-		BaseObject ownerOfKea = project.findObject(orefKea);
-		assertEquals(factorId, ownerOfKea.getId());
-		
-		ORef orefTask = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, task.getRef());
-		assertNotNull(orefTask);
-		BaseObject ownerOfTask = project.findObject(orefTask);
-		assertEquals(factorId, ownerOfTask.getId());
+		verifyOwner(factorId, ObjectType.FACTOR, indicator.getRef());
+		verifyOwner(factorId, ObjectType.FACTOR, goal.getRef());
+		verifyOwner(factorId, ObjectType.FACTOR, objective.getRef());
+		verifyOwner(factorId, ObjectType.FACTOR, kea.getRef());
+		verifyOwner(factorId, ObjectType.FACTOR, task.getRef());
 	}
-	
+
+
 	
 	public void testTaskOwn() throws Exception
 	{
@@ -113,20 +93,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 
 		//----------- start test -----------
 		
-		ORef orefFactor = BaseObject.findObjectWhoOwnesUs(project, ObjectType.FACTOR, new ORef(ObjectType.TASK, taskId));
-		assertNotNull(orefFactor);
-		BaseObject ownerOfTask = project.findObject(orefFactor);
-		assertEquals(ownerOfTask.getRef(), orefFactor);
-		
-		ORef orefTask = BaseObject.findObjectWhoOwnesUs(project, ObjectType.TASK, new ORef(ObjectType.TASK, subTaskId));
-		assertNotNull(orefTask);
-		BaseObject ownerOfSubTask = project.findObject(orefTask);
-		assertEquals(ownerOfSubTask.getRef(), orefTask);
-		
-		ORef orefAssignment = BaseObject.findObjectWhoOwnesUs(project, ObjectType.TASK, new ORef(ObjectType.ASSIGNMENT, assignmentId));
-		assertNotNull(orefAssignment);
-		BaseObject ownerOfAssignment = project.findObject(orefAssignment);
-		assertEquals(ownerOfAssignment.getRef(), orefTask);
+		verifyOwner(taskId, ObjectType.TASK, new ORef(ObjectType.TASK, subTaskId));
+		verifyOwner(taskId, ObjectType.TASK, new ORef(ObjectType.ASSIGNMENT, assignmentId));
 		
 	}
 	
@@ -135,13 +103,10 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId factorId = project.createFactor(Factor.TYPE_STRATEGY);
 		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR,factorId));
 		BaseId subTaskId = project.createTask(new ORef(ObjectType.TASK,taskId));
-		Task subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
 		
 		//----------- start test -----------
 		
-		ORefList orefs = BaseObject.findObjectThatReferToUs(project, ObjectType.TASK, new ORef(ObjectType.TASK, taskId));
-		assertEquals(1,orefs.size());
-		assertEquals(subTask.getRef(), orefs.get(0));
+		vertifyRefer(subTaskId, ObjectType.TASK, new ORef(ObjectType.TASK, taskId));
 	}
 	
 	
@@ -165,22 +130,40 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		
 		//----------- start test -----------
 		
-		ORefList orefsProjectResource = BaseObject.findObjectThatReferToUs(project, ObjectType.ASSIGNMENT, new ORef(ObjectType.PROJECT_RESOURCE, projectResourceId));
-		assertEquals(1,orefsProjectResource.size());
-		assertEquals(assignmentId, orefsProjectResource.get(0).getObjectId());
-		
-		ORefList orefsAccountingCode = BaseObject.findObjectThatReferToUs(project, ObjectType.ASSIGNMENT, new ORef(ObjectType.ACCOUNTING_CODE, accountingCodeId));
-		assertEquals(1,orefsAccountingCode.size());
-		assertEquals(assignmentId, orefsAccountingCode.get(0).getObjectId());
-		
-		ORefList orefsFundingSourceId = BaseObject.findObjectThatReferToUs(project, ObjectType.ASSIGNMENT, new ORef(ObjectType.FUNDING_SOURCE, fundingSourceId));
-		assertEquals(1,orefsFundingSourceId.size());
-		assertEquals(assignmentId, orefsFundingSourceId.get(0).getObjectId());
-		
-		ORefList orefsSubTaskId = BaseObject.findObjectThatReferToUs(project, ObjectType.ASSIGNMENT, new ORef(ObjectType.TASK, subTaskId));
-		assertEquals(1,orefsSubTaskId.size());
-		assertEquals(assignmentId, orefsSubTaskId.get(0).getObjectId());
+		vertifyRefer(assignmentId, ObjectType.ASSIGNMENT, new ORef(ObjectType.PROJECT_RESOURCE, projectResourceId));
+		vertifyRefer(assignmentId, ObjectType.ASSIGNMENT, new ORef(ObjectType.ACCOUNTING_CODE, accountingCodeId));
+		vertifyRefer(assignmentId, ObjectType.ASSIGNMENT, new ORef(ObjectType.FUNDING_SOURCE, fundingSourceId));
+		vertifyRefer(assignmentId, ObjectType.ASSIGNMENT, new ORef(ObjectType.TASK, subTaskId));
 	}
+
+
+	public void testDiagramFactorRefer() throws Exception
+	{
+		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_STRATEGY);
+		DiagramFactor diagramFactor = (DiagramFactor)project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
+		ORef orefFactor = diagramFactor.getReferencedObjects(ObjectType.FACTOR).get(0);
+		
+		//----------- start test -----------
+		
+		vertifyRefer(diagramFactorId, ObjectType.DIAGRAM_FACTOR, orefFactor);
+	}
+	
+	
+	private void vertifyRefer(BaseId assignmentId, final int type, final ORef ref)
+	{
+		ORefList orefsIds = BaseObject.findObjectThatReferToUs(project, type, ref);
+		assertEquals(1,orefsIds.size());
+		assertEquals(assignmentId, orefsIds.get(0).getObjectId());
+	}
+	
+	private void verifyOwner(BaseId factorId, final int vE, final ORef ref)
+	{
+		ORef oref = BaseObject.findObjectWhoOwnesUs(project, vE, ref);
+		assertNotNull(oref);
+		BaseObject owner = project.findObject(oref);
+		assertEquals(factorId, owner.getId());
+	}
+	
 	
 	ProjectForTesting project;
 }

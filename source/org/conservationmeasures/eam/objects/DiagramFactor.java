@@ -16,6 +16,8 @@ import org.conservationmeasures.eam.objectdata.DimensionData;
 import org.conservationmeasures.eam.objectdata.PointData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -78,6 +80,17 @@ public class DiagramFactor extends BaseObject
 		}
 	}
 		
+	public ORefList getReferencedObjects(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.FACTOR: 
+				return new ORefList(new ORef[] {new ORef(objectType, underlyingObjectId.getId())});
+			default:
+				return new ORefList();
+		}
+	}
+	
 	public DiagramFactorId getDiagramFactorId()
 	{
 		return (DiagramFactorId)getId(); 
