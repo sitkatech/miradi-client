@@ -137,9 +137,49 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId subTaskId = project.createTask(new ORef(ObjectType.TASK,taskId));
 		Task subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
 		
+		//----------- start test -----------
+		
 		ORefList orefs = BaseObject.findObjectThatReferToUs(project, ObjectType.TASK, new ORef(ObjectType.TASK, taskId));
 		assertEquals(1,orefs.size());
 		assertEquals(subTask.getRef(), orefs.get(0));
+	}
+	
+	
+	public void testAssignmentRefer() throws Exception
+	{
+		BaseId factorId = project.createFactor(Factor.TYPE_STRATEGY);
+		BaseId taskId = project.createTask(new ORef(ObjectType.FACTOR,factorId));
+		BaseId assignmentId = project.createAssignment(new ORef(ObjectType.TASK,taskId));
+		
+		BaseId projectResourceId = project.createObject(ObjectType.PROJECT_RESOURCE);
+		project.setObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, projectResourceId.toString());
+		
+		BaseId accountingCodeId = project.createObject(ObjectType.ACCOUNTING_CODE);
+		project.setObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId.toString());
+		
+		BaseId fundingSourceId = project.createObject(ObjectType.FUNDING_SOURCE);
+		project.setObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE, fundingSourceId.toString());
+		
+		BaseId subTaskId = project.createObject(ObjectType.PROJECT_RESOURCE);
+		project.setObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_TASK_ID, subTaskId.toString());
+		
+		//----------- start test -----------
+		
+		ORefList orefsProjectResource = BaseObject.findObjectThatReferToUs(project, ObjectType.ASSIGNMENT, new ORef(ObjectType.PROJECT_RESOURCE, projectResourceId));
+		assertEquals(1,orefsProjectResource.size());
+		assertEquals(assignmentId, orefsProjectResource.get(0).getObjectId());
+		
+		ORefList orefsAccountingCode = BaseObject.findObjectThatReferToUs(project, ObjectType.ASSIGNMENT, new ORef(ObjectType.ACCOUNTING_CODE, accountingCodeId));
+		assertEquals(1,orefsAccountingCode.size());
+		assertEquals(assignmentId, orefsAccountingCode.get(0).getObjectId());
+		
+		ORefList orefsFundingSourceId = BaseObject.findObjectThatReferToUs(project, ObjectType.ASSIGNMENT, new ORef(ObjectType.FUNDING_SOURCE, fundingSourceId));
+		assertEquals(1,orefsFundingSourceId.size());
+		assertEquals(assignmentId, orefsFundingSourceId.get(0).getObjectId());
+		
+		ORefList orefsSubTaskId = BaseObject.findObjectThatReferToUs(project, ObjectType.ASSIGNMENT, new ORef(ObjectType.TASK, subTaskId));
+		assertEquals(1,orefsSubTaskId.size());
+		assertEquals(assignmentId, orefsSubTaskId.get(0).getObjectId());
 	}
 	
 	ProjectForTesting project;

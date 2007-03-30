@@ -62,8 +62,6 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		assertEquals(true, Task.canOwnThisType(ObjectType.TASK));
 		assertEquals(true, Task.canOwnThisType(ObjectType.ASSIGNMENT));
 		assertEquals(true, Task.canReferToThisType(ObjectType.TASK));
-		assertEquals(true, Task.canReferToThisType(ObjectType.FACTOR));
-		assertEquals(true, Task.canReferToThisType(ObjectType.INDICATOR));
 		assertEquals(false, Task.canOwnThisType(ObjectType.FACTOR));
 		assertEquals(false, Task.canReferToThisType(ObjectType.FACTOR_LINK));
 		
