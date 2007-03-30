@@ -17,7 +17,7 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		super(name);
 	}
 
-	public void testCanOwnThisType()
+	public void testCanXXXXThisType()
 	{
 		assertEquals(true, Assignment.canReferToThisType(ObjectType.PROJECT_RESOURCE));
 		assertEquals(true, Assignment.canReferToThisType(ObjectType.ACCOUNTING_CODE));
