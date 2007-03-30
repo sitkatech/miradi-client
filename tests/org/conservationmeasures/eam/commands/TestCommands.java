@@ -62,7 +62,7 @@ public class TestCommands extends EAMTestCase
 
 	private void consumeNodeIdZero() throws Exception
 	{
-		project.createNode(new FactorTypeTarget());
+		project.createFactor(new FactorTypeTarget());
 	}
 	
 	public void tearDown() throws Exception
@@ -296,7 +296,7 @@ public class TestCommands extends EAMTestCase
 
 	private void verifyDiagramAddNode(FactorType type) throws Exception, CommandFailedException
 	{
-		FactorId factorId = project.createNode(type);
+		FactorId factorId = project.createFactor(type);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
 		project.executeCommand(createDiagramFactorCommand);
@@ -533,7 +533,7 @@ public class TestCommands extends EAMTestCase
 
 	private DiagramFactor insertNode(FactorType type) throws Exception
 	{
-		FactorId factorId = project.createNode(type);
+		FactorId factorId = project.createFactor(type);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
 		project.executeCommand(createDiagramFactorCommand);

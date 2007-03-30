@@ -50,7 +50,8 @@ public class ProjectForTesting extends Project
 		return (ProjectServerForTesting)getDatabase();
 	}
 	
-	public FactorId createNode(FactorType nodeType) throws Exception
+
+	public FactorId createFactor(FactorType nodeType) throws Exception
 	{
 		CreateFactorParameter createTarget = new CreateFactorParameter(nodeType);
 		FactorId cmTargetId = (FactorId)createObject(ObjectType.FACTOR, BaseId.INVALID, createTarget);
@@ -59,7 +60,7 @@ public class ProjectForTesting extends Project
 	
 	public DiagramFactorId createAndAddFactorToDiagram(FactorType nodeType) throws Exception
 	{
-		FactorId factorId = createNode(nodeType);
+		FactorId factorId = createFactor(nodeType);
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		executeCommand(createDiagramFactorCommand);

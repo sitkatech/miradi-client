@@ -559,7 +559,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
-		FactorId factorId = project.createNode(Factor.TYPE_CAUSE);
+		FactorId factorId = project.createFactor(Factor.TYPE_CAUSE);
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		project.executeCommand(createDiagramFactorCommand);
@@ -576,8 +576,8 @@ public class TestProject extends EAMTestCase
 	{
 		ProjectServerForTesting database = project.getTestDatabase();
 		
-		FactorId targetId = project.createNode(Factor.TYPE_TARGET);
-		FactorId factorId = project.createNode(Factor.TYPE_CAUSE);
+		FactorId targetId = project.createFactor(Factor.TYPE_TARGET);
+		FactorId factorId = project.createFactor(Factor.TYPE_CAUSE);
 		int existingCalls = database.callsToWriteObject;
 		
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(targetId);
@@ -630,7 +630,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testInsertDuplicateNodes() throws Exception
 	{
-		FactorId gotId = project.createNode(Factor.TYPE_CAUSE);
+		FactorId gotId = project.createFactor(Factor.TYPE_CAUSE);
 		try
 		{
 			CreateFactorParameter createTarget = new CreateFactorParameter(Factor.TYPE_CAUSE);

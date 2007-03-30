@@ -5,10 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.io.File;
-import java.io.IOException;
-
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -24,7 +22,6 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
-		loadAndOpenTestProject();
 		super.setUp();
 	}
 	
@@ -33,26 +30,21 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		super.tearDown();
 		project.close();
 	}
-	
 
-	public void loadAndOpenTestProject() throws Exception
-	{
-		File zip = new File("./Marine Example");
-		project.createOrOpen(zip);
-	}
 
 	//TODO: not hooked in to main test as it is still in process of being wrttien
-	public void testTwoElementOneQouted() throws IOException
+	public void testTwoElementOneQouted() throws Exception
 	{
-		//EAMObjectPool pool = project.getPool(ObjectType.INDICATOR);
-		//System.out.println(pool.getIdList());
-		BaseObject indicatorFound = project.findObject(ObjectType.INDICATOR, new BaseId(62));
-		assertNotNull(indicatorFound);
-		assertEquals("Percent of boats with rat control barriers in harbor", indicatorFound.getLabel());
+		BaseId factorId = project.createFactor(Factor.TYPE_TARGET);
+		BaseId indicatorId = project.createObject(ObjectType.INDICATOR);
+		IdList indicatorList = new IdList(new BaseId[] {indicatorId});
+		project.setObjectData(ObjectType.FACTOR, factorId, Factor.TAG_INDICATOR_IDS, indicatorList.toString());
+		BaseObject indicatorFound = project.findObject(ObjectType.INDICATOR, indicatorId);
+
 		ORef oref = indicatorFound.findObjectWhoOwnesUs(project, ObjectType.FACTOR, indicatorFound.getRef());
 		assertNotNull(oref);
 		BaseObject factorFound = project.findObject(oref);
-		assertEquals("Re-introduction of Rats", factorFound.getLabel());
+		assertEquals(factorId, factorFound);
 	}
 	
 	ProjectForTesting project;
