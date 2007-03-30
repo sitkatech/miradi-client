@@ -5,10 +5,15 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -132,14 +137,35 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	}
 	
 	
-	private void vertifyRefer(BaseId assignmentId, final int type, final ORef ref)
+	public void testDiagramFactorLinkRefer() throws Exception
+	{
+		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
+		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
+		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
+		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		DiagramFactorId fromDiagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		DiagramFactorId toDiagramFactorId =  project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+		
+		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
+    	project.executeCommand(createDiagramLinkCommand);
+    	BaseId diagramFactorLinkId = createDiagramLinkCommand.getCreatedId();
+		
+		//----------- start test -----------
+
+		vertifyRefer(diagramFactorLinkId, ObjectType.DIAGRAM_LINK, new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
+		vertifyRefer(diagramFactorLinkId, ObjectType.DIAGRAM_LINK, new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+	}
+	
+	private void vertifyRefer(BaseId assignmentId, int type, ORef ref)
 	{
 		ORefList orefsIds = BaseObject.findObjectThatReferToUs(project, type, ref);
 		assertEquals(1,orefsIds.size());
 		assertEquals(assignmentId, orefsIds.get(0).getObjectId());
 	}
 	
-	private void verifyOwner(BaseId factorId, final int type, final ORef ref)
+	private void verifyOwner(BaseId factorId, int type, ORef ref)
 	{
 		ORef oref = BaseObject.findObjectWhoOwnesUs(project, type, ref);
 		assertEquals(new ORef(type,factorId), oref);
