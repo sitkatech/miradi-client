@@ -141,13 +141,16 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	{
 		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
 		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
+		
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
-		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
-		DiagramFactorId fromDiagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
-		DiagramFactorId toDiagramFactorId =  project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+    	project.executeCommand(createModelLinkage);
+    	FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		
+    	DiagramFactorId fromDiagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		DiagramFactorId toDiagramFactorId =  project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
     	project.executeCommand(createDiagramLinkCommand);
     	BaseId diagramFactorLinkId = createDiagramLinkCommand.getCreatedId();
