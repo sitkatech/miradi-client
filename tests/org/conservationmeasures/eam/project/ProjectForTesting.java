@@ -63,6 +63,15 @@ public class ProjectForTesting extends Project
 		return cmTargetId;
 	}
 	
+	public BaseId addItemToViewDataList(BaseId id, int type, String tag) throws Exception
+	{
+		return addItemToList(ObjectType.VIEW_DATA, id,  type,  tag);
+	}
+	
+	public BaseId addItemToProjectMetaDataList(BaseId id, int type, String tag) throws Exception
+	{
+		return addItemToList(ObjectType.PROJECT_METADATA, id,  type,  tag);
+	}
 	
 	public BaseId addItemToKeyEcologicalAttributeList(BaseId id, int type, String tag) throws Exception
 	{

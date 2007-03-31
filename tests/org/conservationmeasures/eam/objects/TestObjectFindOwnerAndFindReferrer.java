@@ -194,6 +194,29 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	}
 	
 	
+	public void testVeiwDataRefer() throws Exception
+	{
+		BaseId viewDataId = project.createObject(ObjectType.VIEW_DATA);
+		BaseId factorId = project.createFactor(Factor.TYPE_TARGET);
+		IdList idList = new IdList(new BaseId[] {factorId});
+		project.setObjectData(ObjectType.VIEW_DATA, viewDataId, ViewData.TAG_BRAINSTORM_NODE_IDS, idList.toString());
+		
+		//----------- start test -----------
+		
+		vertifyRefer(viewDataId, ObjectType.VIEW_DATA, new ORef(ObjectType.FACTOR, factorId));
+	}
+	
+	public void testProjectMetaDataRefer() throws Exception
+	{
+		BaseId projectMetaDataId = project.createObject(ObjectType.PROJECT_METADATA);
+		BaseId resourceId = project.addItemToProjectMetaDataList(projectMetaDataId, ObjectType.PROJECT_RESOURCE, ProjectMetadata.TAG_TEAM_RESOURCE_IDS);
+		
+		//----------- start test -----------
+		
+		vertifyRefer(projectMetaDataId, ObjectType.PROJECT_METADATA, new ORef(ObjectType.PROJECT_RESOURCE, resourceId));
+	}
+	
+	
 	private void vertifyRefer(BaseId id, int type, ORef ref)
 	{
 		ORefList orefsIds = BaseObject.findObjectThatReferToUs(project, type, ref);

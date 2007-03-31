@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -94,6 +95,18 @@ public class ViewData extends BaseObject
 				return true;
 			default:
 				return false;
+		}
+	}
+	
+	
+	public ORefList getReferencedObjects(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.FACTOR: 
+				return new ORefList(ObjectType.FACTOR, brainstormNodeIds.getIdList());
+			default:
+				return new ORefList();
 		}
 	}
 	

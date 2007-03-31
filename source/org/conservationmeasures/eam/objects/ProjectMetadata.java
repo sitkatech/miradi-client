@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -53,6 +54,18 @@ public class ProjectMetadata extends BaseObject
 				return true;
 			default:
 				return false;
+		}
+	}
+	
+	
+	public ORefList getReferencedObjects(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.PROJECT_RESOURCE: 
+				return new ORefList(objectType,teamResourceIds.getIdList());
+			default:
+				return new ORefList();
 		}
 	}
 	

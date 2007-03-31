@@ -60,6 +60,7 @@ import org.conservationmeasures.eam.objects.TestGoal;
 import org.conservationmeasures.eam.objects.TestIndicator;
 import org.conservationmeasures.eam.objects.TestKeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.TestObjectCanReferAndCanOwnTypeMethods;
+import org.conservationmeasures.eam.objects.TestObjectFindOwnerAndFindReferrer;
 import org.conservationmeasures.eam.objects.TestObjectManager;
 import org.conservationmeasures.eam.objects.TestObjectReferenceList;
 import org.conservationmeasures.eam.objects.TestObjective;
@@ -205,7 +206,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestPointList.class));
 		suite.addTest(new TestSuite(TestDiagramContentsObject.class));
 		suite.addTest(new TestSuite(TestObjectCanReferAndCanOwnTypeMethods.class));
-		
+		suite.addTest(new TestSuite(TestObjectFindOwnerAndFindReferrer.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
