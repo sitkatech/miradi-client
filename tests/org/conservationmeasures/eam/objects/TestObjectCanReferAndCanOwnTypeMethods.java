@@ -69,7 +69,7 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		assertEquals(false, ViewData.canOwnThisType(ObjectType.FACTOR));
 		
 		//FIXME: convert above to look like this, and get rid of method below
-		//assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanOwnUs(ObjectType.FACTOR));
+		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR));
 	}
 	
 	
