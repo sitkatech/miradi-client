@@ -53,9 +53,7 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		assertEquals(true, KeyEcologicalAttribute.canOwnThisType(ObjectType.INDICATOR));
 		assertEquals(false, KeyEcologicalAttribute.canOwnThisType(ObjectType.FACTOR));
 		assertEquals(false, KeyEcologicalAttribute.canReferToThisType(ObjectType.FACTOR));
-		
-		assertContains(ObjectType.PROJECT_METADATA, BaseObject.getTypesThatCanReferToUs(ObjectType.PROJECT_RESOURCE));
-		
+			
 		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
 		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanOwnUs(ObjectType.ASSIGNMENT));
 		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanReferToUs(ObjectType.TASK));

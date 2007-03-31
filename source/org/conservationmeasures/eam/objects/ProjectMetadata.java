@@ -45,13 +45,7 @@ public class ProjectMetadata extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
-		switch(type)
-		{
-			case ObjectType.PROJECT_RESOURCE: 
-				return true;
-			default:
-				return false;
-		}
+		return false;
 	}
 	
 	
