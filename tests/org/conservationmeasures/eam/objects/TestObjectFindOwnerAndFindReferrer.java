@@ -138,7 +138,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	}
 	
 	
-	public void testDiagramFactorLinkRefer() throws Exception
+	public void testDiagramFactorLinkAndLinkFactorRefer() throws Exception
 	{
 		//TODO: look at this method to refactor
 		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
@@ -156,25 +156,28 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
     	project.executeCommand(createDiagramLinkCommand);
     	DiagramFactorLinkId diagramFactorLinkId = (DiagramFactorLinkId)createDiagramLinkCommand.getCreatedId();
-		
+
 		//----------- start test -----------
 
 		vertifyRefer(diagramFactorLinkId, ObjectType.DIAGRAM_LINK, new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
 		vertifyRefer(diagramFactorLinkId, ObjectType.DIAGRAM_LINK, new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
 		vertifyRefer(diagramFactorLinkId, ObjectType.DIAGRAM_LINK, new ORef(ObjectType.FACTOR_LINK, modelLinkageId));
+		
+		vertifyRefer(modelLinkageId, ObjectType.FACTOR_LINK, new ORef(ObjectType.FACTOR, interventionId));
+		vertifyRefer(modelLinkageId, ObjectType.FACTOR_LINK, new ORef(ObjectType.FACTOR, factorId));
 	}
 	
-	private void vertifyRefer(BaseId assignmentId, int type, ORef ref)
+	private void vertifyRefer(BaseId id, int type, ORef ref)
 	{
 		ORefList orefsIds = BaseObject.findObjectThatReferToUs(project, type, ref);
 		assertEquals(1,orefsIds.size());
-		assertEquals(assignmentId, orefsIds.get(0).getObjectId());
+		assertEquals(id, orefsIds.get(0).getObjectId());
 	}
 	
-	private void verifyOwner(BaseId factorId, int type, ORef ref)
+	private void verifyOwner(BaseId id, int type, ORef ref)
 	{
 		ORef oref = BaseObject.findObjectWhoOwnesUs(project, type, ref);
-		assertEquals(new ORef(type,factorId), oref);
+		assertEquals(new ORef(type,id), oref);
 	}
 	
 	

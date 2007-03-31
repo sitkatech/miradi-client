@@ -11,6 +11,8 @@ import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -64,6 +66,19 @@ public class FactorLink extends BaseObject
 				return true;
 			default:
 				return false;
+		}
+	}
+	
+	public ORefList getReferencedObjects(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.FACTOR: 
+				return new ORefList(new ORef[] {
+						new ORef(objectType, fromId.getId()), 
+						new ORef(objectType, toId.getId())});
+			default:
+				return new ORefList();
 		}
 	}
 	
