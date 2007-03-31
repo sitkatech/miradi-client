@@ -63,15 +63,28 @@ public class ProjectForTesting extends Project
 		return cmTargetId;
 	}
 	
-	public BaseId addItemToFactorList(BaseId factorId, int type, String tag) throws Exception
+	
+	public BaseId addItemToIndicatorList(BaseId id, int type, String tag) throws Exception
+	{
+		return addItemToList(ObjectType.INDICATOR, id,  type,  tag);
+	}
+	
+	
+	public BaseId addItemToFactorList(BaseId id, int type, String tag) throws Exception
+	{
+		return addItemToList(ObjectType.FACTOR, id,  type,  tag);
+	}
+	
+	public BaseId addItemToList(int sourceType, BaseId id, int type, String tag) throws Exception
 	{
 		BaseId baseId = createObject(type);
 		IdList idList = new IdList(new BaseId[] {baseId});
-		setObjectData(ObjectType.FACTOR, factorId, tag, idList.toString());
+		setObjectData(sourceType, id, tag, idList.toString());
 		return baseId;
 	}
 
 
+	
 	public TaskId createTask(ORef oref) throws Exception
 	{
 		CreateTaskParameter createTask = new CreateTaskParameter(oref);

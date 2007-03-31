@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.StringMapData;
@@ -116,6 +117,20 @@ public class Indicator extends BaseObject
 		return false;
 	}
 
+	
+	public ORefList getOwnedObjects(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.TASK: 
+				return new ORefList(objectType, getTaskIdList());
+			case ObjectType.GOAL: 
+				return new ORefList(objectType, getGoalIds());
+			default:
+				return new ORefList();
+		}
+	}
+	
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);

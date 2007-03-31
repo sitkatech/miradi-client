@@ -167,6 +167,21 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		vertifyRefer(modelLinkageId, ObjectType.FACTOR_LINK, new ORef(ObjectType.FACTOR, factorId));
 	}
 	
+	public void testIndicatorOwn() throws Exception
+	{
+		BaseId indicatorId = project.createObject(ObjectType.INDICATOR);
+		BaseId goalId = project.addItemToIndicatorList(indicatorId, ObjectType.GOAL, Indicator.TAG_GOAL_IDS);
+	
+		BaseId taskId = project.createTask(new ORef(ObjectType.INDICATOR, indicatorId));
+		IdList taskList = new IdList(new BaseId[] {taskId});
+		project.setObjectData(ObjectType.INDICATOR, indicatorId, Indicator.TAG_TASK_IDS, taskList.toString());
+		
+		//----------- start test -----------
+		
+		verifyOwner(indicatorId, ObjectType.INDICATOR, new ORef(ObjectType.GOAL, goalId));
+		verifyOwner(indicatorId, ObjectType.INDICATOR, new ORef(ObjectType.TASK, taskId));
+	}
+	
 	private void vertifyRefer(BaseId id, int type, ORef ref)
 	{
 		ORefList orefsIds = BaseObject.findObjectThatReferToUs(project, type, ref);
