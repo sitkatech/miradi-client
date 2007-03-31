@@ -182,6 +182,18 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		verifyOwner(indicatorId, ObjectType.INDICATOR, new ORef(ObjectType.TASK, taskId));
 	}
 	
+	
+	public void testKeyEcologicalAttributeOwn() throws Exception
+	{
+		BaseId keaId = project.createObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+		BaseId indicatorId = project.addItemToKeyEcologicalAttributeList(keaId, ObjectType.INDICATOR, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+		
+		//----------- start test -----------
+		
+		verifyOwner(keaId, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new ORef(ObjectType.INDICATOR, indicatorId));
+	}
+	
+	
 	private void vertifyRefer(BaseId id, int type, ORef ref)
 	{
 		ORefList orefsIds = BaseObject.findObjectThatReferToUs(project, type, ref);

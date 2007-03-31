@@ -64,6 +64,12 @@ public class ProjectForTesting extends Project
 	}
 	
 	
+	public BaseId addItemToKeyEcologicalAttributeList(BaseId id, int type, String tag) throws Exception
+	{
+		return addItemToList(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, id,  type,  tag);
+	}
+	
+	
 	public BaseId addItemToIndicatorList(BaseId id, int type, String tag) throws Exception
 	{
 		return addItemToList(ObjectType.INDICATOR, id,  type,  tag);

@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -65,6 +66,19 @@ public class KeyEcologicalAttribute extends BaseObject
 	{
 		return false;
 	}
+	
+	
+	public ORefList getOwnedObjects(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.INDICATOR: 
+				return new ORefList(objectType, getIndicatorIds());
+			default:
+				return new ORefList();
+		}
+	}
+	
 
 	public IdList getIndicatorIds()
 	{
