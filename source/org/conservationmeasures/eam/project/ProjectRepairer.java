@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.ProjectMetadata;
 
 public class ProjectRepairer
 {
@@ -36,7 +35,6 @@ public class ProjectRepairer
 	void repair() throws Exception
 	{
 		fixNodeAnnotationIds();
-		fixDeletedTeamMembers();
 		repairUnsnappedNodes();
 		deleteOrphanAnnotations();
 		//TODO delete factors that are not in the diagram
@@ -155,35 +153,6 @@ public class ProjectRepairer
 		}
 	}
 	
-	void fixDeletedTeamMembers() throws Exception
-	{
-		ProjectMetadata metadata = project.getMetadata();
-		if(metadata == null)
-			return;
-		
-		IdList teamMemberIds = metadata.getTeamResourceIdList();
-		for(int i = 0; i < teamMemberIds.size(); ++i)
-		{
-			BaseId teamMemberId = teamMemberIds.get(i);
-			BaseObject resource = project.findObject(ObjectType.PROJECT_RESOURCE, teamMemberId);
-			if(resource == null)
-			{
-				EAM.logWarning("Removing deleted team member " + teamMemberId);
-				teamMemberIds.removeId(teamMemberId);
-				try
-				{
-					project.setObjectData(metadata.getType(), metadata.getId(), metadata.TAG_TEAM_RESOURCE_IDS, teamMemberIds.toString()); 
-				}
-				catch(Exception e)
-				{
-					EAM.logError("Repair failed");
-					logAndContinue(e);
-				}
-			}
-		}
-	}
-	
-
 	private void repairUnsnappedNodes()
 	{
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();

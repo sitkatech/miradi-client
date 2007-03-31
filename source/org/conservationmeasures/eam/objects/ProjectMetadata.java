@@ -6,13 +6,10 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.DateData;
-import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -57,17 +54,6 @@ public class ProjectMetadata extends BaseObject
 		}
 	}
 	
-	
-	public ORefList getReferencedObjects(int objectType)
-	{
-		switch(objectType)
-		{
-			case ObjectType.PROJECT_RESOURCE: 
-				return new ORefList(objectType,teamResourceIds.getIdList());
-			default:
-				return new ORefList();
-		}
-	}
 	
 	public String getProjectName()
 	{
@@ -114,16 +100,6 @@ public class ProjectMetadata extends BaseObject
 		return sizeInHectares.get();
 	}
 	
-	public String getTeamResourceIds()
-	{
-		return teamResourceIds.get();
-	}
-	
-	public IdList getTeamResourceIdList()
-	{
-		return teamResourceIds.getIdList();
-	}
-	
 	public int getCurrencyDecimalPlaces()
 	{
 		return currencyDecimalPlaces.asInt();
@@ -141,7 +117,6 @@ public class ProjectMetadata extends BaseObject
 		expectedEndDate = new DateData();
 		effectiveDate = new DateData();
 		sizeInHectares = new NumberData();
-		teamResourceIds = new IdListData();
 		currencyDecimalPlaces = new IntegerData();
 		
 		addField(TAG_PROJECT_NAME, projectName);
@@ -153,7 +128,6 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_EXPECTED_END_DATE, expectedEndDate);
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
 		addField(TAG_TNC_SIZE_IN_HECTARES, sizeInHectares);
-		addField(TAG_TEAM_RESOURCE_IDS, teamResourceIds);
 		addField(TAG_CURRENCY_DECIMAL_PLACES, currencyDecimalPlaces);
 		
 		
@@ -184,7 +158,6 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_START_DATE = "StartDate";
 	public static final String TAG_EXPECTED_END_DATE = "ExpectedEndDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
-	public static final String TAG_TEAM_RESOURCE_IDS = "TeamResourceIds";
 	public static final String TAG_CURRENCY_DECIMAL_PLACES = "CurrencyDecimalPlaces";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
@@ -209,7 +182,6 @@ public class ProjectMetadata extends BaseObject
 	DateData expectedEndDate;
 	DateData effectiveDate;
 	NumberData sizeInHectares;
-	IdListData teamResourceIds;
 	IntegerData currencyDecimalPlaces;
 	
 	StringData tncLessonsLearned;

@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.ProjectMetadata;
 
 public class TestProjectRepairer extends EAMTestCase
 {
@@ -129,31 +128,6 @@ public class TestProjectRepairer extends EAMTestCase
 		}
 	}
 
-	public void testDeletedTeamMemberId() throws Exception
-	{
-		Project project = new ProjectForTesting(getName());
-		try
-		{
-			BaseId realResourceId = project.createObject(ObjectType.PROJECT_RESOURCE);
-			IdList oneGoodOneBad = new IdList();
-			oneGoodOneBad.add(realResourceId);
-			oneGoodOneBad.add(new BaseId(2329));
-			project.setMetadata(ProjectMetadata.TAG_TEAM_RESOURCE_IDS, oneGoodOneBad.toString());
-			
-			EAM.setLogToString();
-			ProjectRepairer.repairAnyProblems(project);
-			assertContains("deleted team member", EAM.getLoggedString());
-			IdList fixed = new IdList(project.getMetadata().getData(ProjectMetadata.TAG_TEAM_RESOURCE_IDS));
-			assertEquals("Didn't remove the bad resource?", 1, fixed.size());
-			assertTrue("Lost the good resource?", fixed.contains(realResourceId));
-		}
-		finally
-		{
-			EAM.setLogToConsole();
-			project.close();
-		}
-	}
-	
 	public void testDeleteOrphanObjectives() throws Exception
 	{
 		int annotationType = ObjectType.OBJECTIVE;
