@@ -308,7 +308,7 @@ abstract public class BaseObject
 //	}
 	
 	
-	static public ORefList findObjectThatReferToUs(Project project, int objectType, ORef oref)
+	static public ORefList findObjectsThatReferToUs(Project project, int objectType, ORef oref)
 	{
 		ORefList matchList = new ORefList();
 		ORefList orefsInPool = project.getPool(objectType).getORefList();
