@@ -15,45 +15,32 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		super(name);
 	}
 
-	//FIXME: convert above to look like this, and get rid of method below
+
 	public void testCanXXXXThisType()
 	{
-		assertEquals(true, Assignment.canReferToThisType(ObjectType.PROJECT_RESOURCE));
-		assertEquals(true, Assignment.canReferToThisType(ObjectType.ACCOUNTING_CODE));
-		assertEquals(true, Assignment.canReferToThisType(ObjectType.FUNDING_SOURCE));
-		assertEquals(true, Assignment.canReferToThisType(ObjectType.TASK));
-		assertEquals(false, Assignment.canReferToThisType(ObjectType.FACTOR));
-		assertEquals(false, Assignment.canOwnThisType(ObjectType.FACTOR));
+		assertContains(ObjectType.ASSIGNMENT, BaseObject.getTypesThatCanReferToUs(ObjectType.PROJECT_RESOURCE));
+		assertContains(ObjectType.ASSIGNMENT, BaseObject.getTypesThatCanReferToUs(ObjectType.ACCOUNTING_CODE));
+		assertContains(ObjectType.ASSIGNMENT, BaseObject.getTypesThatCanReferToUs(ObjectType.FUNDING_SOURCE));
+		assertContains(ObjectType.ASSIGNMENT, BaseObject.getTypesThatCanReferToUs(ObjectType.TASK));
 		
-		assertEquals(true, DiagramFactor.canReferToThisType(ObjectType.FACTOR));
-		assertEquals(false, DiagramFactor.canReferToThisType(ObjectType.FACTOR_LINK));
-		assertEquals(false, DiagramFactor.canOwnThisType(ObjectType.FACTOR));
+		assertContains(ObjectType.DIAGRAM_FACTOR, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR));
+
+		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
+		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
+
+		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
+		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.GOAL));
+		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
+		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
+		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE));
+
+		assertContains(ObjectType.FACTOR_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR));
 		
-		assertEquals(true, DiagramFactorLink.canReferToThisType(ObjectType.FACTOR_LINK));
-		assertEquals(true, DiagramFactorLink.canReferToThisType(ObjectType.DIAGRAM_FACTOR));
-		assertEquals(false, DiagramFactorLink.canReferToThisType(ObjectType.FACTOR));
-		assertEquals(false, DiagramFactorLink.canOwnThisType(ObjectType.FACTOR));
+		assertContains(ObjectType.INDICATOR, BaseObject.getTypesThatCanOwnUs(ObjectType.GOAL));
+		assertContains(ObjectType.INDICATOR, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
+
+		assertContains(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
 		
-		assertEquals(true, Factor.canOwnThisType(ObjectType.INDICATOR));
-		assertEquals(true, Factor.canOwnThisType(ObjectType.GOAL));
-		assertEquals(true, Factor.canOwnThisType(ObjectType.OBJECTIVE));
-		assertEquals(true, Factor.canOwnThisType(ObjectType.TASK));
-		assertEquals(true, Factor.canOwnThisType(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE));
-		assertEquals(false, Factor.canOwnThisType(ObjectType.FACTOR));
-		
-		assertEquals(true, FactorLink.canReferToThisType(ObjectType.FACTOR));
-		assertEquals(false, FactorLink.canReferToThisType(ObjectType.FACTOR_LINK));
-		assertEquals(false, FactorLink.canOwnThisType(ObjectType.FACTOR));
-		
-		assertEquals(true, Indicator.canOwnThisType(ObjectType.GOAL));
-		assertEquals(true, Indicator.canOwnThisType(ObjectType.TASK));
-		assertEquals(false, Indicator.canOwnThisType(ObjectType.FACTOR));
-		assertEquals(false, Indicator.canReferToThisType(ObjectType.FACTOR));
-		
-		assertEquals(true, KeyEcologicalAttribute.canOwnThisType(ObjectType.INDICATOR));
-		assertEquals(false, KeyEcologicalAttribute.canOwnThisType(ObjectType.FACTOR));
-		assertEquals(false, KeyEcologicalAttribute.canReferToThisType(ObjectType.FACTOR));
-			
 		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
 		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanOwnUs(ObjectType.ASSIGNMENT));
 		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanReferToUs(ObjectType.TASK));
