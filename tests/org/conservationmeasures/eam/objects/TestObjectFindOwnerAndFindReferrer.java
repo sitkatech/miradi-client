@@ -139,6 +139,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	
 	public void testDiagramFactorLinkRefer() throws Exception
 	{
+		//TODO: look at this method to refactor
 		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
 		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
 		
@@ -159,6 +160,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 
 		vertifyRefer(diagramFactorLinkId, ObjectType.DIAGRAM_LINK, new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
 		vertifyRefer(diagramFactorLinkId, ObjectType.DIAGRAM_LINK, new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+		vertifyRefer(diagramFactorLinkId, ObjectType.DIAGRAM_LINK, new ORef(ObjectType.FACTOR_LINK, modelLinkageId));
 	}
 	
 	private void vertifyRefer(BaseId assignmentId, int type, ORef ref)
