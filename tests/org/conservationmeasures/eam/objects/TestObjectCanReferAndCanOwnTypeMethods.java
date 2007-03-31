@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.util.Arrays;
-
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
@@ -17,6 +15,7 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		super(name);
 	}
 
+	//FIXME: convert above to look like this, and get rid of method below
 	public void testCanXXXXThisType()
 	{
 		assertEquals(true, Assignment.canReferToThisType(ObjectType.PROJECT_RESOURCE));
@@ -55,39 +54,12 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		assertEquals(false, KeyEcologicalAttribute.canOwnThisType(ObjectType.FACTOR));
 		assertEquals(false, KeyEcologicalAttribute.canReferToThisType(ObjectType.FACTOR));
 		
-		assertEquals(true, ProjectMetadata.canReferToThisType(ObjectType.PROJECT_RESOURCE));
-		assertEquals(false, Indicator.canReferToThisType(ObjectType.FACTOR));
-		assertEquals(false, ProjectMetadata.canOwnThisType(ObjectType.FACTOR));
+		assertContains(ObjectType.PROJECT_METADATA, BaseObject.getTypesThatCanReferToUs(ObjectType.PROJECT_RESOURCE));
 		
-		assertEquals(true, Task.canOwnThisType(ObjectType.TASK));
-		assertEquals(true, Task.canOwnThisType(ObjectType.ASSIGNMENT));
-		assertEquals(true, Task.canReferToThisType(ObjectType.TASK));
-		assertEquals(false, Task.canOwnThisType(ObjectType.FACTOR));
-		assertEquals(false, Task.canReferToThisType(ObjectType.FACTOR_LINK));
-		
-		assertEquals(true, ViewData.canReferToThisType(ObjectType.FACTOR));
-		assertEquals(false, ViewData.canOwnThisType(ObjectType.FACTOR));
-		
-		//FIXME: convert above to look like this, and get rid of method below
-		//assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR));
+		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
+		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanOwnUs(ObjectType.ASSIGNMENT));
+		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanReferToUs(ObjectType.TASK));
+
+		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR));
 	}
-	
-	
-	public void testGetTypesThatCanXXXUs()
-	{
-		int[] referTypes = BaseObject.getTypesThatCanReferToUs(ObjectType.TASK);
-		Arrays.sort(referTypes);
-		assertEquals(false, Arrays.binarySearch(referTypes, ObjectType.ASSIGNMENT)<0);
-		assertEquals(false, Arrays.binarySearch(referTypes, ObjectType.TASK)<0);
-		assertEquals(true, Arrays.binarySearch(referTypes, ObjectType.GOAL)<0);
-		assertEquals(true, Arrays.binarySearch(referTypes, ObjectType.INDICATOR)<0);
-		
-		int[] ownedTypes = BaseObject.getTypesThatCanOwnUs(ObjectType.TASK);
-		Arrays.sort(ownedTypes);
-		assertEquals(false, Arrays.binarySearch(ownedTypes, ObjectType.INDICATOR)<0);
-		assertEquals(false, Arrays.binarySearch(referTypes, ObjectType.TASK)<0);
-		assertEquals(true, Arrays.binarySearch(ownedTypes, ObjectType.GOAL)<0);
-		assertEquals(true, Arrays.binarySearch(ownedTypes, ObjectType.ASSIGNMENT)<0);
-	}
-	
 }
