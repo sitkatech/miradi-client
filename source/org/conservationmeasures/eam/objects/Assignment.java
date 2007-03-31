@@ -80,7 +80,7 @@ public class Assignment extends BaseObject
 			case ObjectType.TASK: 
 				return new ORefList(new ORef[] {new ORef(objectType, taskIdData.getId())});
 			default:
-				return new ORefList();
+				return super.getReferencedObjects(objectType);
 		}
 	}
 	

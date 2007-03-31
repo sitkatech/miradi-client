@@ -75,7 +75,7 @@ public class KeyEcologicalAttribute extends BaseObject
 			case ObjectType.INDICATOR: 
 				return new ORefList(objectType, getIndicatorIds());
 			default:
-				return new ORefList();
+				return super.getOwnedObjects(objectType);
 		}
 	}
 	

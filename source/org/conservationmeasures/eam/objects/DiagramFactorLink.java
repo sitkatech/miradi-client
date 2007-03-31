@@ -93,7 +93,7 @@ public class DiagramFactorLink extends BaseObject
 				return new ORefList(new ORef[] {
 						new ORef(objectType, underlyingObjectId.getId())});
 			default:
-				return new ORefList();
+				return super.getReferencedObjects(objectType);
 		}
 	}
 	

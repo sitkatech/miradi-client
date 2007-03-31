@@ -106,7 +106,7 @@ public class ViewData extends BaseObject
 			case ObjectType.FACTOR: 
 				return new ORefList(ObjectType.FACTOR, brainstormNodeIds.getIdList());
 			default:
-				return new ORefList();
+				return super.getReferencedObjects(objectType);
 		}
 	}
 	

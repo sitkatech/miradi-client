@@ -111,7 +111,7 @@ public class Task extends BaseObject
 		if (getParentRef().getObjectType()==objectType) 
 			return new ORefList(new ORef[] {getParentRef()});
 
-		return new ORefList();
+		return super.getReferencedObjects(objectType);
 	}
 	
 	public ORefList getOwnedObjects(int objectType)
@@ -123,7 +123,7 @@ public class Task extends BaseObject
 			case ObjectType.ASSIGNMENT: 
 				return new ORefList(objectType, getAssignmentIdList());
 			default:
-				return new ORefList();
+				return super.getOwnedObjects(objectType);
 		}
 	}
 	

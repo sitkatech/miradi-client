@@ -89,7 +89,7 @@ abstract public class Factor extends BaseObject
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
 				return new ORefList(objectType, getKeyEcologicalAttributes());
 			default:
-				return new ORefList();
+				return super.getOwnedObjects(objectType);
 		}
 	}
 	

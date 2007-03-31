@@ -78,7 +78,7 @@ public class FactorLink extends BaseObject
 						new ORef(objectType, fromId.getId()), 
 						new ORef(objectType, toId.getId())});
 			default:
-				return new ORefList();
+				return super.getReferencedObjects(objectType);
 		}
 	}
 	

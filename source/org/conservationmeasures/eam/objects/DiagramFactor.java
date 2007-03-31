@@ -87,7 +87,7 @@ public class DiagramFactor extends BaseObject
 			case ObjectType.FACTOR: 
 				return new ORefList(new ORef[] {new ORef(objectType, underlyingObjectId.getId())});
 			default:
-				return new ORefList();
+				return super.getReferencedObjects(objectType);
 		}
 	}
 	

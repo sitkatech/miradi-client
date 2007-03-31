@@ -127,7 +127,7 @@ public class Indicator extends BaseObject
 			case ObjectType.GOAL: 
 				return new ORefList(objectType, getGoalIds());
 			default:
-				return new ORefList();
+				return super.getOwnedObjects(objectType);
 		}
 	}
 	
