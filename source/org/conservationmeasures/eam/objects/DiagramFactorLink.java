@@ -83,18 +83,20 @@ public class DiagramFactorLink extends BaseObject
 	
 	public ORefList getReferencedObjects(int objectType)
 	{
+		ORefList list = super.getReferencedObjects(objectType);
+		
 		switch(objectType)
 		{
 			case ObjectType.DIAGRAM_FACTOR: 
-				return new ORefList(new ORef[] {
+				list.addAll(new ORefList(new ORef[] {
 						new ORef(objectType, fromId.getId()), 
-						new ORef(objectType, toId.getId())});
+						new ORef(objectType, toId.getId())}));
 			case ObjectType.FACTOR_LINK: 
-				return new ORefList(new ORef[] {
-						new ORef(objectType, underlyingObjectId.getId())});
-			default:
-				return super.getReferencedObjects(objectType);
+				list.addAll(new ORefList(new ORef[] {
+						new ORef(objectType, underlyingObjectId.getId())}));
 		}
+		
+		return list;
 	}
 	
 	public DiagramFactorId getFromDiagramFactorId()

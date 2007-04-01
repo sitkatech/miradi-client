@@ -101,13 +101,14 @@ public class ViewData extends BaseObject
 	
 	public ORefList getReferencedObjects(int objectType)
 	{
+		ORefList list = super.getReferencedObjects(objectType);
+		
 		switch(objectType)
 		{
 			case ObjectType.FACTOR: 
-				return new ORefList(ObjectType.FACTOR, brainstormNodeIds.getIdList());
-			default:
-				return super.getReferencedObjects(objectType);
+				list.addAll(new ORefList(ObjectType.FACTOR, brainstormNodeIds.getIdList()));
 		}
+		return list;
 	}
 	
 	void clear()

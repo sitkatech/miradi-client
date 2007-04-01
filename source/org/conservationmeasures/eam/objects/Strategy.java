@@ -130,13 +130,14 @@ public class Strategy extends Factor
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
 		switch(objectType)
 		{
 			case ObjectType.TASK: 
-				return new ORefList(objectType, getActivityIds());
-			default:
-				return super.getOwnedObjects(objectType);
+				list.addAll(new ORefList(objectType, getActivityIds()));
 		}
+		return list;
 	}
 	
 	void clear()

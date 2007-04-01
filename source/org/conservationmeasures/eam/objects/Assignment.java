@@ -69,19 +69,20 @@ public class Assignment extends BaseObject
 	
 	public ORefList getReferencedObjects(int objectType)
 	{
+		ORefList list = super.getReferencedObjects(objectType);
+		
 		switch(objectType)
 		{
 			case ObjectType.PROJECT_RESOURCE: 
-				return new ORefList(new ORef[] {new ORef(objectType, resourceIdData.getId())});
+				list.addAll(new ORefList(new ORef[] {new ORef(objectType, resourceIdData.getId())}));
 			case ObjectType.ACCOUNTING_CODE: 
-				return new ORefList(new ORef[] {new ORef(objectType, accountingIdData.getId())});
+				list.addAll(new ORefList(new ORef[] {new ORef(objectType, accountingIdData.getId())}));
 			case ObjectType.FUNDING_SOURCE: 
-				return new ORefList(new ORef[] {new ORef(objectType, fundingIdData.getId())});
+				list.addAll(new ORefList(new ORef[] {new ORef(objectType, fundingIdData.getId())}));
 			case ObjectType.TASK: 
-				return new ORefList(new ORef[] {new ORef(objectType, taskIdData.getId())});
-			default:
-				return super.getReferencedObjects(objectType);
+				list.addAll(new ORefList(new ORef[] {new ORef(objectType, taskIdData.getId())}));
 		}
+		return list;
 	}
 	
 	

@@ -105,26 +105,29 @@ public class Task extends BaseObject
 
 	public ORefList getReferencedObjects(int objectType)
 	{
+		ORefList list = super.getReferencedObjects(objectType);
+		
 		if ((getParentRef()==null) || (getParentRef().getObjectId().equals(BaseId.INVALID)))
-			return new ORefList();
+			return list;
 		
 		if (getParentRef().getObjectType()==objectType) 
-			return new ORefList(new ORef[] {getParentRef()});
+			list.addAll(new ORefList(new ORef[] {getParentRef()}));
 
-		return super.getReferencedObjects(objectType);
+		return list;
 	}
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
 		switch(objectType)
 		{
 			case ObjectType.TASK: 
-				return new ORefList(objectType, getSubtaskIdList());
+				list.addAll(new ORefList(objectType, getSubtaskIdList()));
 			case ObjectType.ASSIGNMENT: 
-				return new ORefList(objectType, getAssignmentIdList());
-			default:
-				return super.getOwnedObjects(objectType);
+				list.addAll(new ORefList(objectType, getAssignmentIdList()));
 		}
+		return list;
 	}
 	
 	public boolean isTask()

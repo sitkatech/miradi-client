@@ -120,15 +120,16 @@ public class Indicator extends BaseObject
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
 		switch(objectType)
 		{
 			case ObjectType.TASK: 
-				return new ORefList(objectType, getTaskIdList());
+				list.addAll(new ORefList(objectType, getTaskIdList()));
 			case ObjectType.GOAL: 
-				return new ORefList(objectType, getGoalIds());
-			default:
-				return super.getOwnedObjects(objectType);
+				list.addAll(new ORefList(objectType, getGoalIds()));
 		}
+		return list;
 	}
 	
 	public String getShortLabel()

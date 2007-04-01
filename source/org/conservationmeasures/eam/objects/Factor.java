@@ -78,19 +78,20 @@ abstract public class Factor extends BaseObject
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
 		switch(objectType)
 		{
 			case ObjectType.INDICATOR: 
-				return new ORefList(objectType, getIndicators());
+				list.addAll(new ORefList(objectType, getIndicators()));
 			case ObjectType.GOAL: 
-				return new ORefList(objectType, getGoals());
+				list.addAll(new ORefList(objectType, getGoals()));
 			case ObjectType.OBJECTIVE: 
-				return new ORefList(objectType, getObjectives());
+				list.addAll(new ORefList(objectType, getObjectives()));
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
-				return new ORefList(objectType, getKeyEcologicalAttributes());
-			default:
-				return super.getOwnedObjects(objectType);
+				list.addAll(new ORefList(objectType, getKeyEcologicalAttributes()));
 		}
+		return list;
 	}
 	
 	

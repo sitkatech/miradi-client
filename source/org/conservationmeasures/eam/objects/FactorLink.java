@@ -71,15 +71,16 @@ public class FactorLink extends BaseObject
 	
 	public ORefList getReferencedObjects(int objectType)
 	{
+		ORefList list = super.getReferencedObjects(objectType);
+		
 		switch(objectType)
 		{
 			case ObjectType.FACTOR: 
-				return new ORefList(new ORef[] {
+				list.addAll(new ORefList(new ORef[] {
 						new ORef(objectType, fromId.getId()), 
-						new ORef(objectType, toId.getId())});
-			default:
-				return super.getReferencedObjects(objectType);
+						new ORef(objectType, toId.getId())}));
 		}
+		return list;
 	}
 	
 	public FactorId getFromFactorId()

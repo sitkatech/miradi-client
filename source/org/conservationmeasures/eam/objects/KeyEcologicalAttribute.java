@@ -70,13 +70,14 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
 		switch(objectType)
 		{
 			case ObjectType.INDICATOR: 
-				return new ORefList(objectType, getIndicatorIds());
-			default:
-				return super.getOwnedObjects(objectType);
+				list.addAll(new ORefList(objectType, getIndicatorIds()));
 		}
+		return list;
 	}
 	
 
