@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -190,18 +189,17 @@ public class ProjectRepairer
 	private void deleteOrphanAnnotations(int annotationType)
 	{
 		IdList allIds = project.getPool(annotationType).getIdList();
-		ChainManager chainManager = new ChainManager(project);
 		for(int i = 0; i < allIds.size(); ++i)
 		{
 			BaseId annotationId = allIds.get(i);
 			try
 			{
-				BaseObject owner = chainManager.getOwner(new ORef(annotationType, annotationId));
+				BaseObject object = project.getObjectManager().findObject(annotationType, annotationId);
+				BaseObject owner = object.getOwner();
 				if(owner == null)
 				{
-					EAM.logWarning("Detected orphan " + annotationType + ":" + annotationId);
-					//FIXME: restore this after ophan detectio nis reliable (Richard)
-					//project.deleteObject(annotationType, annotationId);
+					EAM.logWarning("Deleted orphan " + annotationType + ":" + annotationId);
+					project.deleteObject(annotationType, annotationId);
 				}
 			}
 			catch(Exception e)

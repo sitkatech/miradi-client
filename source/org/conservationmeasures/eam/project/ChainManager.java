@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.project;
 
-import java.text.ParseException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -20,9 +19,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 
 public class ChainManager
@@ -41,7 +38,7 @@ public class ChainManager
 		{
 			if(owner.getType() == ObjectType.FACTOR)
 				return (Factor)owner;
-			owner = getOwner(owner.getRef());
+			owner = owner.getOwner();
 			if(owner == null)
 				break;
 		}
@@ -75,80 +72,6 @@ public class ChainManager
 		return vector;
 	}
 
-	// FIXME: Write tests for this!!! (Richard, with Kevin)
-	public BaseObject getOwner(ORef ref) throws Exception
-	{
-		switch(ref.getObjectType())
-		{
-			case ObjectType.ASSIGNMENT:
-				return assignmentOwner(ref);
-			case ObjectType.GOAL:
-				return goalOwner(ref);
-			case ObjectType.INDICATOR:
-				return indicatorOwner(ref);
-			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
-				return keyEcologicalAttributeOwner(ref);
-			case ObjectType.OBJECTIVE:
-				return getObjectiveOwner(ref);
-			case ObjectType.TASK:
-				return getTaskOwner(ref);
-			default:
-				throw new RuntimeException("getOwner not implemented for object " + ref);
-		}
-	}
-	
-	private BaseObject assignmentOwner(ORef ref) throws Exception
-	{
-		return findOwner(ref, getProject().getTaskPool().getAllTasks(), Task.TAG_ASSIGNMENT_IDS);
-	}
-
-	private BaseObject goalOwner(ORef ref) throws Exception
-	{
-		BaseObject factorOwner = findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_GOAL_IDS);
-		if(factorOwner != null)
-			return factorOwner;
-		return findOwner(ref, getProject().getIndicatorPool().getAllIndicators(), Indicator.TAG_GOAL_IDS);		
-	}
-	
-	private BaseObject indicatorOwner(ORef ref) throws Exception
-	{
-		BaseObject factorOwner = findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_INDICATOR_IDS);
-		if(factorOwner != null)
-			return factorOwner;
-		return findOwner(ref, getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute(), KeyEcologicalAttribute.TAG_INDICATOR_IDS);		
-	}
-	
-	private BaseObject keyEcologicalAttributeOwner(ORef ref) throws Exception
-	{
-		return findOwner(ref, getFactorPool().getTargets(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
-	}
-
-	private BaseObject getObjectiveOwner(ORef ref) throws Exception
-	{
-		return findOwner(ref, getFactorPool().getAllFactors(), Factor.TAG_OBJECTIVE_IDS);
-	}
-	
-	private BaseObject getTaskOwner(ORef ref) throws Exception
-	{
-		BaseObject strategyOwner = findOwner(ref, getFactorPool().getDraftAndNonDraftStrategies(), Strategy.TAG_ACTIVITY_IDS);
-		if(strategyOwner != null)
-			return strategyOwner;
-		BaseObject IndicatorOwner = findOwner(ref, getProject().getIndicatorPool().getAllIndicators(), Indicator.TAG_TASK_IDS);
-		if(IndicatorOwner != null)
-			return IndicatorOwner;
-		return findOwner(ref, getProject().getTaskPool().getAllTasks(), Task.TAG_SUBTASK_IDS);		
-	}
-
-	private BaseObject findOwner(ORef refToFind, BaseObject[] objectsToSearchIn, String tagOfIdListToSearch) throws ParseException
-	{
-		for(int i = 0; i < objectsToSearchIn.length; ++i)
-		{
-			IdList candidates = new IdList(objectsToSearchIn[i].getData(tagOfIdListToSearch));
-			if(candidates.contains(refToFind.getObjectId()))
-				return objectsToSearchIn[i];
-		}
-		return null;
-	}
 	
 	public IdList findAllKeaIndicatorsForTarget(Target target)
 	{
