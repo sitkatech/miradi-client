@@ -16,7 +16,6 @@ import java.util.Iterator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectZipper;
@@ -97,35 +96,32 @@ public class DataUpgrader extends ProjectServer
 	void upgrade() throws Exception
 	{
 		//TODO remove old migration code
-		/*if(readDataVersion(getTopDirectory()) == 1)
-			upgradeToVersion2();
-		if(readDataVersion(getTopDirectory()) == 2)
-			upgradeToVersion3();
-		if(readDataVersion(getTopDirectory()) == 3)
-			upgradeToVersion4();
-		if(readDataVersion(getTopDirectory()) == 4)
-			upgradeToVersion5();
-		if(readDataVersion(getTopDirectory()) == 5)
-			upgradeToVersion6();
-		if(readDataVersion(getTopDirectory()) == 6)
-			upgradeToVersion7();
-		if(readDataVersion(getTopDirectory()) == 7)
-			upgradeToVersion8();
-		if(readDataVersion(getTopDirectory()) == 8)
-			upgradeToVersion9();
-		if(readDataVersion(getTopDirectory()) == 9)
-			upgradeToVersion10();
-		if(readDataVersion(getTopDirectory()) == 10)
-			upgradeToVersion11();
-		if(readDataVersion(getTopDirectory()) == 11)
-			upgradeToVersion12();
-		if(readDataVersion(getTopDirectory()) == 12)
-			upgradeToVersion13();
-		if(readDataVersion(getTopDirectory()) == 13)
-			upgradeToVersion14();
-		if(readDataVersion(getTopDirectory()) == 14)
-			upgradeToVersion15();
-		*/
+//		if(readDataVersion(getTopDirectory()) == 1)
+//			upgradeToVersion2();
+//		if(readDataVersion(getTopDirectory()) == 2)
+//			upgradeToVersion3();
+//		if(readDataVersion(getTopDirectory()) == 3)
+//			upgradeToVersion4();
+//		if(readDataVersion(getTopDirectory()) == 4)
+//			upgradeToVersion5();
+//		if(readDataVersion(getTopDirectory()) == 5)
+//			upgradeToVersion6();
+//		if(readDataVersion(getTopDirectory()) == 6)
+//			upgradeToVersion7();
+//		if(readDataVersion(getTopDirectory()) == 7)
+//			upgradeToVersion8();
+//		if(readDataVersion(getTopDirectory()) == 8)
+//			upgradeToVersion9();
+//		if(readDataVersion(getTopDirectory()) == 9)
+//			upgradeToVersion10();
+//		if(readDataVersion(getTopDirectory()) == 10)
+//			upgradeToVersion11();
+//		if(readDataVersion(getTopDirectory()) == 11)
+//			upgradeToVersion12();
+//		if(readDataVersion(getTopDirectory()) == 12)
+//			upgradeToVersion13();
+//		if(readDataVersion(getTopDirectory()) == 13)
+//			upgradeToVersion14();
 
 		if(readDataVersion(getTopDirectory()) < 15)
 			throw new MigrationTooOldException();
@@ -685,12 +681,6 @@ public class DataUpgrader extends ProjectServer
 		writeVersion(14);
 	}
 	
-	public void upgradeToVersion15() throws Exception
-	{
-		addParentRefToTasks();
-		writeVersion(15);
-	}
-	
 	public void convertTeamListToRoleCodes() throws Exception
 	{
 		File jsonDirectory = new File(getTopDirectory(), "json");
@@ -726,59 +716,6 @@ public class DataUpgrader extends ProjectServer
 		}
 	}
 	
-	public void addParentRefToTasks() throws Exception
-	{
-		File jsonDir = new File(getTopDirectory(), "json");
-		File factorDir = new File(jsonDir, "objects-4");
-		if(! factorDir.exists())
-			return;
-
-		File factorManifestFile = getObjectManifestFile(ObjectType.FACTOR);
-		if(! factorManifestFile.exists())
-			return;
-
-
-		File taskDir = new File(jsonDir, "objects-3");
-		if(! taskDir.exists())
-			return;
-		
-		File taskManifestFile = getObjectManifestFile(ObjectType.TASK);
-		if(! taskManifestFile.exists())
-			return;
-
-		ObjectManifest factorManifest = readObjectManifest(ObjectType.FACTOR);
-		BaseId[] factorIds = factorManifest.getAllKeys();
-		for(int i = 0; i < factorIds.length; ++i)
-		{
-			BaseId id = factorIds[i];
-			File objectFile = new File(factorDir, Integer.toString(id.asInt()));
-			EnhancedJsonObject factorData = JSONFile.read(objectFile);
-			IdList taskIds = new IdList(factorData.optString("ActivityIds"));
-			
-			BaseId parentId = factorData.getId("Id");
-			ORef parentRef = new ORef(ObjectType.FACTOR, parentId);
-			setParentRef(taskDir, parentRef, taskIds);
-		}	
-	}
-
-	private void setParentRef(File taskDir, ORef parentRef, IdList taskIds) throws Exception
-	{
-		ObjectManifest taskManifest = readObjectManifest(ObjectType.TASK);
-		BaseId[] allManifestTaskIds = taskManifest.getAllKeys();
-		for(int i = 0; i < allManifestTaskIds.length; ++i)
-		{
-			BaseId id = allManifestTaskIds[i];
-			File objectFile = new File(taskDir, Integer.toString(id.asInt()));
-			EnhancedJsonObject taskData = JSONFile.read(objectFile);
-		
-			if (taskIds.contains(id))
-			{
-				taskData.put("ParentRef", parentRef.toString());
-				JSONFile.write(objectFile, taskData);
-			}
-		}
-	}
-
 	private static final int NODE_TYPE = 4;
 
 }

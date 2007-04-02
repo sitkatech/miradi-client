@@ -588,63 +588,6 @@ public class TestDataUpgrader extends EAMTestCase
 		assertContains("didn't add to team?", teamCode, inTeam);
 	}
 	
-	public void testAddParentOref() throws Exception
-	{
-		String taskWithoutParentRef  = "{\"AssignmentIds\":\"\",\"SubtaskIds\":\"\",\"Label\":\"4\",\"Id\":0}";
-		String taskWithParentRef = "{\"AssignmentIds\":\"\",\"SubtaskIds\":\"\",\"Label\":\"4\",\"Id\":1,\"ParentRef\":{\"ObjectType\":4,\"ObjectId\":25}}";
-		String taskWithEmptyParentRef = "{\"AssignmentIds\":\"\",\"SubtaskIds\":\"\",\"Label\":\"4\",\"Id\":4,\"ParentRef\":\"\"}";
-		String strategy = "{\"Status\":\"Draft\",\"Type\":\"Intervention\",\"ActivityIds\":{\"Ids\":[0,1,4]},\"Comment\":\"\",\"GoalIds\":\"\",\"IndicatorId\":\"-1\",\"IndicatorIds\":\"\",\"Label\":\"Testing Label\",\"Id\":\"2\",\"ObjectiveIds\":\"\"}";  
-
-		int[] allTaskIds = {0, 1, 4, };
-		int[] allStrategyids = {2, };
-		
-		File jsonDir = new File(tempDirectory, "json");
-		jsonDir.mkdirs();
-		
-		File taskDir = new File(jsonDir, "objects-3");
-		taskDir.mkdirs();
-		
-		File taskManifestFile = new File(taskDir, "manifest");
-		createFile(taskManifestFile, buildManifestContents(allTaskIds));
-		
-		File strategyDir =  new File(jsonDir, "objects-4");
-		strategyDir.mkdirs();
-		
-		File strategyManifestFile = new File(strategyDir, "manifest");
-		createFile(strategyManifestFile, buildManifestContents(allStrategyids));
-
-		createFile(new File(taskDir, Integer.toString(0)), taskWithoutParentRef);
-		createFile(new File(taskDir, Integer.toString(1)), taskWithParentRef);
-		createFile(new File(taskDir, Integer.toString(4)), taskWithEmptyParentRef);
-		createFile(new File(strategyDir, Integer.toString(2)), strategy);
-		
-		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
-		upgrader.addParentRefToTasks();
-		
-		String migratedTask0 = readFile(new File(taskDir, "0"));
-		EnhancedJsonObject migrated0 = new EnhancedJsonObject(migratedTask0);
-		EnhancedJsonObject parentRef0 = new EnhancedJsonObject(migrated0.getString("ParentRef"));
-		
-		assertEquals("same parent type?", 4, parentRef0.getInt("ObjectType"));
-		assertEquals("same parent id?", 2, parentRef0.getInt("ObjectId"));
-		
-		String migratedTask1 = readFile(new File(taskDir, "1"));
-		EnhancedJsonObject migrated1 = new EnhancedJsonObject(migratedTask1);
-		EnhancedJsonObject parentRef1 = new EnhancedJsonObject(migrated1.getString("ParentRef"));
-		
-		assertEquals("same parent type?", 4, parentRef1.getInt("ObjectType"));
-		assertEquals("same parent id?", 2, parentRef1.getInt("ObjectId"));		
-		
-		
-		String migratedTask4 = readFile(new File(taskDir, "4"));
-		EnhancedJsonObject migrated4 = new EnhancedJsonObject(migratedTask4);
-		EnhancedJsonObject parentRef4 = new EnhancedJsonObject(migrated4.getString("ParentRef"));
-		
-		assertEquals("same parent type?", 4, parentRef4.getInt("ObjectType"));
-		assertEquals("same parent id?", 2, parentRef4.getInt("ObjectId"));
-		
-	}
-	
 	public void testUpgradeTo16WithNoObjects6Directory() throws Exception
 	{
 		File jsonDir = new File(tempDirectory, "json");
