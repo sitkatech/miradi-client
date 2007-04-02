@@ -282,7 +282,15 @@ abstract public class BaseObject
 		return shortLabel + "." + Longlabel;
 	}
 	
-	public ORef getOwner()
+	public BaseObject getOwner()
+	{
+		ORef oref = getOwnerRef();
+		if (oref==null)
+			return null;
+		return objectManager.findObject(oref);
+	}
+
+	public ORef getOwnerRef()
 	{
 		int[] objectTypes = getTypesThatCanOwnUs(getType());
 		for (int i=0; i<objectTypes.length; ++i)

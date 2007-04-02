@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
@@ -38,7 +37,6 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 		try
 		{
 			Project project = getProject();
-			ChainManager chainManager = new ChainManager(project);
 			BaseObject object = getObjects()[0];
 			if (object.getType() == ObjectType.TASK)
 			{
@@ -46,7 +44,8 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 			}
 			else if (object.getType() == ObjectType.INDICATOR)
 			{
-				BaseObject owner = chainManager.getOwner(object.getRef());
+				BaseObject owner = object.getOwner();
+				
 				if (owner.getType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 				{
 					deleteAnnotation(project, object, owner, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
