@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class DeleteResource extends ObjectsDoer
@@ -33,8 +33,7 @@ public class DeleteResource extends ObjectsDoer
 		ProjectResource resource = (ProjectResource)getObjects()[0];
 		BaseId idToRemove = resource.getId();
 		Vector dialogText = new Vector();
-		ChainManager chainManager = getProject().getChainManager();
-		Vector allThatUseThisResource = chainManager.getRefferedInObject(resource.getRef());
+		ORefList allThatUseThisResource = resource.findObjectThatReferToUs();
 
 		//TODO fix dialog text
 		if (allThatUseThisResource.size() > 0)
@@ -72,11 +71,12 @@ public class DeleteResource extends ObjectsDoer
 		}
 	}
 
-	private void clearAllAssignmentResources(Vector allThatUseThisResource)
+	private void clearAllAssignmentResources(ORefList allThatUseThisResource)
 	{
+		//TODO: is this assumtion correct, that all resource references are from Assignment objects
 		for (int i = 0; i < allThatUseThisResource.size(); i++)
 		{
-			Assignment assignment = (Assignment) allThatUseThisResource.get(i);
+			Assignment assignment = (Assignment) getProject().getObjectManager().findObject(allThatUseThisResource.get(i));
 			assignment.setResourceId(BaseId.INVALID);
 		}
 	}
