@@ -926,7 +926,10 @@ public class Project
 		{
 			DiagramModel model = getDiagramModel();
 			model.updateVisibilityOfFactors();
-			selectionModel.clearSelection();
+			
+			// TODO: Find a way to avoid the need to test for null here
+			if(selectionModel != null)
+				selectionModel.clearSelection();
 		}
 		catch(Exception e)
 		{

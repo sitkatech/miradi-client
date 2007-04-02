@@ -93,16 +93,10 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	{
 		super(mainWindowToUse);
 		mode = ViewData.MODE_DEFAULT;
-		diagram = new DiagramComponent(getMainWindow());
-		legendDialog = new DiagramLegendPanel(getMainWindow());
-		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
 		
 		addDiagramViewDoersToMap();
 		
-		updateToolBar();
-
-		getProject().addCommandExecutedListener(this);
-		
+		legendDialog = new DiagramLegendPanel(getMainWindow());
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
@@ -209,6 +203,13 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		super.becomeActive();
 		removeAll();
 
+		diagram = new DiagramComponent(getMainWindow());
+		diagram.setModel(getProject().getDiagramModel());
+		diagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
+		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
+		updateToolBar();
+		getProject().addCommandExecutedListener(this);
+		
 		UiScrollPane diagramComponent = createDiagramPanel();
 
 		JSplitPane bottomHalf = new JSplitPane();
@@ -244,6 +245,12 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		// TODO: This should completely tear down the view
 		disposeOfNodePropertiesDialog();
 		diagram.clearSelection();
+
+		getProject().removeCommandExecutedListener(this);
+		getProject().setSelectionModel(null);
+		diagram = null;
+		updateToolBar();
+		
 		super.becomeInactive();
 	}
 	
