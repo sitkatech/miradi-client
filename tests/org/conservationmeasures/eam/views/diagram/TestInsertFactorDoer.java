@@ -55,9 +55,9 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		inserter.doIt();
 
 		FactorId id = project.getFactorPool().getModelNodeIds()[0];
-		FactorCell node = project.getDiagramModel().getFactorCellByWrappedId(id);
-		assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
-		assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
+		FactorCell cell = project.getDiagramModel().getFactorCellByWrappedId(id);
+		assertEquals("didn't set location?", inserter.getLocation(), cell.getDiagramFactor().getLocation());
+		assertEquals("didn't set name?", inserter.getInitialText(), cell.getUnderlyingObject().getLabel());
 		assertTrue("select node was called?", inserter.wasSelectNodeCalled());
 
 		assertTrue("didn't invoke editor?", inserter.wasPropertiesEditorLaunched);
