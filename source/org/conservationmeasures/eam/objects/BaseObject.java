@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.xml.XmlUtilities;
 
@@ -312,27 +311,26 @@ abstract public class BaseObject
 		return null;
 	}
 
-	//TODO: commented out until we can pass in project	
-//	public ORefList findObjectThatReferToUs()
-//	{
-//		ORefList owners = new ORefList();
-//		int[] objectTypes = getTypesThatCanReferToUS(getType());
-//		for (int i=0; i<objectTypes.length; ++i)
-//		{
-//			ORefList orefs = findObjectThatReferToUs(objectTypes[i]);
-//			owners.addAll(orefs);
-//		}
-//		return owners;
-//	}
+	public ORefList findObjectThatReferToUs()
+	{
+		ORefList owners = new ORefList();
+		int[] objectTypes = getTypesThatCanReferToUs(getType());
+		for (int i=0; i<objectTypes.length; ++i)
+		{
+			ORefList orefs = findObjectsThatReferToUs(objectManager, objectTypes[i], getRef());
+			owners.addAll(orefs);
+		}
+		return owners;
+	}
 	
 	
-	static public ORefList findObjectsThatReferToUs(Project project, int objectType, ORef oref)
+	static public ORefList findObjectsThatReferToUs(ObjectManager objectManager, int objectType, ORef oref)
 	{
 		ORefList matchList = new ORefList();
-		ORefList orefsInPool = project.getPool(objectType).getORefList();
+		ORefList orefsInPool = objectManager.getPool(objectType).getORefList();
 		for (int i=0; i<orefsInPool.size(); ++i)
 		{
-			BaseObject objectInPool = project.findObject(orefsInPool.get(i));
+			BaseObject objectInPool = objectManager.findObject(orefsInPool.get(i));
 			ORefList children = objectInPool.getReferencedObjects(oref.getObjectType());
 			for (int childIdx=0; childIdx<children.size(); ++childIdx)
 			{

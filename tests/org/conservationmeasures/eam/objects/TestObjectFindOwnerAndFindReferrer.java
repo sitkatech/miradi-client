@@ -114,7 +114,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId fundingSourceId = project.createObject(ObjectType.FUNDING_SOURCE);
 		project.setObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE, fundingSourceId.toString());
 		
-		BaseId subTaskId = project.createObject(ObjectType.PROJECT_RESOURCE);
+		BaseId subTaskId = project.createTask(new ORef(ObjectType.ASSIGNMENT,assignmentId));
 		project.setObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_TASK_ID, subTaskId.toString());
 		
 		//----------- start test -----------
@@ -208,9 +208,17 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	
 	private void vertifyRefer(BaseId id, int type, ORef ref)
 	{
-		ORefList orefsIds = BaseObject.findObjectsThatReferToUs(project, type, ref);
+		ORefList orefsIds = BaseObject.findObjectsThatReferToUs(project.getObjectManager(), type, ref);
 		assertEquals(1,orefsIds.size());
 		assertEquals(id, orefsIds.get(0).getObjectId());
+
+
+		BaseObject baseObject =  project.getObjectManager().findObject(ref);
+		ORefList orefOwner = baseObject.findObjectThatReferToUs();
+		
+		final ORef referrerOref = new ORef(type, id);
+		assertEquals(referrerOref, orefOwner.get(0));
+		assertNotEquals("Parentage wrong:", ref, orefOwner.get(0));
 	}
 	
 	private void verifyOwner(BaseId id, int type, ORef ref)
