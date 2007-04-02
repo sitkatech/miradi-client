@@ -108,6 +108,11 @@ abstract public class Factor extends BaseObject
 	}
 	
 	
+	public IdList getDirectOrIndirectIndicators()
+	{
+		return getIndicators();
+	}
+	
 	public FactorType getNodeType()
 	{
 		if(isDirectThreat() || isContributingFactor())

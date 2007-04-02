@@ -498,7 +498,7 @@ abstract public class BaseObject
 	
 	BaseId id;
 	StringData label;
-	private ObjectManager objectManager;
+	protected ObjectManager objectManager;
 	private HashMap fields;
 	private Vector noneClearedFieldTags;
 }

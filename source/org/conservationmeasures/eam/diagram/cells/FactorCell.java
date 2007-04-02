@@ -17,11 +17,9 @@ import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
@@ -122,7 +120,7 @@ abstract public class FactorCell extends EAMGraphCell
 
 	public IdList getIndicators()
 	{
-		return getChainManager().getDirectOrIndirectIndicators(underlyingObject);
+		return underlyingObject.getDirectOrIndirectIndicators();
 	}
 
 	public boolean canHaveObjectives()
@@ -138,12 +136,6 @@ abstract public class FactorCell extends EAMGraphCell
 	public boolean isCause()
 	{
 		return underlyingObject.isCause();
-	}
-
-	//FIXME: After chainmanager overhaul, should not access static main window. (Kevin)
-	private ChainManager getChainManager()
-	{
-		return EAM.mainWindow.getProject().getChainManager();
 	}
 
 	public Point getLocation()
@@ -180,7 +172,9 @@ abstract public class FactorCell extends EAMGraphCell
 
 	public IdList getGoals()
 	{
-		return getChainManager().getDirectOrIndirectGoals(underlyingObject);
+		if (underlyingObject.canHaveGoal())
+			return ((Target)underlyingObject).getDirectOrIndirectGoals();
+		return  new IdList();
 	}
 	
 	public IdList getObjectives()

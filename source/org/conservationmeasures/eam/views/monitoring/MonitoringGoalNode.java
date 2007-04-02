@@ -107,7 +107,7 @@ public class MonitoringGoalNode extends MonitoringNode
 			if(!node.isTarget())
 				continue;
 			
-			IdList indicators = project.getChainManager().getDirectOrIndirectIndicators(node);
+			IdList indicators =node.getDirectOrIndirectIndicators();
 			for(int i = 0; i < indicators.size(); ++i)
 			{
 				Indicator indicator = project.getIndicatorPool().find(indicators.get(i));

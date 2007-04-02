@@ -5,8 +5,11 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -50,6 +53,47 @@ public class Target extends Factor
 	{
 		return true;
 	}
+	
+	public IdList getDirectOrIndirectGoals()
+	{
+		IdList goalIds = new IdList();
+
+		if(!isViabilityModeTNC())
+			return getGoals();
+		
+		IdList indicatorIds = getDirectOrIndirectIndicators();
+		for(int i = 0; i < indicatorIds.size(); ++i)
+		{
+			Indicator indicator = (Indicator)objectManager.findObject(ObjectType.INDICATOR, indicatorIds.get(i));
+			goalIds.addAll(indicator.getGoalIds());
+		}
+		
+		return goalIds;
+	}
+	
+	
+	public IdList getDirectOrIndirectIndicators()
+	{
+		if(!isViabilityModeTNC())
+			return super.getIndicators();
+		
+		return findAllKeaIndicators();
+	}
+	
+
+	public IdList findAllKeaIndicators()
+	{
+		IdList list = new IdList();
+		IdList keas = getKeyEcologicalAttributes();
+		for (int j=0; j<keas.size(); ++j)
+		{
+			BaseId keyEcologicalAttributeId = keas.get(j);
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute) objectManager.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keyEcologicalAttributeId);
+			list.addAll(kea.getIndicatorIds());
+		}
+		return list;
+	}
+	
 	
 	public String getBasicTargetStatus()
 	{

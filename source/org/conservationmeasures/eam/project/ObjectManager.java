@@ -279,7 +279,7 @@ public class ObjectManager
 		return findObject(ref.getObjectType(), ref.getObjectId());
 	}
 	
-	BaseObject findObject(int objectType, BaseId objectId)
+	public BaseObject findObject(int objectType, BaseId objectId)
 	{
 		return getPool(objectType).findObject(objectId);
 	}

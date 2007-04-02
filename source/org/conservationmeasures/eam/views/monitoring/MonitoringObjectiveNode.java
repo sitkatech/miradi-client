@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -58,8 +57,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 
 	private HashSet getFactorIndicatorIds(Factor factor)
 	{
-		ChainManager chainManager = project.getChainManager();
-		IdList ids = chainManager.getDirectOrIndirectIndicators(factor);
+		IdList ids = factor.getDirectOrIndirectIndicators();
 		HashSet indicatorIds = new HashSet(); 
 		for(int i = 0; i < ids.size(); ++i)
 			indicatorIds.add(ids.get(i));

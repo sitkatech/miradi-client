@@ -7,17 +7,11 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
-import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 
 public class ChainManager
 {
@@ -29,7 +23,7 @@ public class ChainManager
 	// FIXME: Write tests for this!!! (Richard, with Kevin)
 	public Factor getDirectOrIndirectOwningFactor(ORef ref) throws Exception
 	{
-		BaseObject owner = project.findObject(ref);
+		BaseObject owner = getProject().findObject(ref);
 		int AVOID_INFINITE_LOOP = 10000;
 		for(int i = 0; i < AVOID_INFINITE_LOOP; ++i)
 		{
@@ -43,55 +37,6 @@ public class ChainManager
 	}
  
 
-	public IdList findAllKeaIndicatorsForTarget(Target target)
-	{
-		IdList list = new IdList();
-		IdList keas = target.getKeyEcologicalAttributes();
-		for (int j=0; j<keas.size(); ++j)
-		{
-			BaseId keyEcologicalAttributeId = keas.get(j);
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute) project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keyEcologicalAttributeId);
-			list.addAll(kea.getIndicatorIds());
-		}
-		return list;
-	}
-	
-	
-	public IdList getDirectOrIndirectIndicators(Factor factor)
-	{
-		if (factor.isTarget())
-		{
-			String code = factor.getData(Target.TAG_VIABILITY_MODE);
-			if (code.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
-			{
-				return findAllKeaIndicatorsForTarget((Target)factor);
-			}
-		}
-
-		return factor.getIndicators();
-
-	}
-	
-	public IdList getDirectOrIndirectGoals(Factor factor)
-	{
-		IdList goalIds = new IdList();
-		if (!factor.isTarget())
-			return goalIds;
-
-		Target target = (Target)factor;
-		if(!target.isViabilityModeTNC())
-			return target.getGoals();
-		
-		IdList indicatorIds = getDirectOrIndirectIndicators(factor);
-		for(int i = 0; i < indicatorIds.size(); ++i)
-		{
-			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, indicatorIds.get(i));
-			goalIds.addAll(indicator.getGoalIds());
-		}
-		
-		return goalIds;
-	}
-	
 	public FactorSet findAllFactorsRelatedToThisIndicator(BaseId indicatorId) throws Exception
 	{
 		ORef ref = new ORef(ObjectType.INDICATOR, indicatorId);
@@ -124,11 +69,6 @@ public class ChainManager
 		return relatedFactors;
 	}
 	
-	FactorPool getFactorPool()
-	{
-		return getProject().getFactorPool();
-	}
-	
 	DiagramModel getDiagramModel()
 	{
 		return getProject().getDiagramModel();
@@ -138,8 +78,6 @@ public class ChainManager
 	{
 		return project;
 	}
-	
-	static final String HTML_ERROR = "<html>(Error)</html>";
 	
 	Project project;
 }
