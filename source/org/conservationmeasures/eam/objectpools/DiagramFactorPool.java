@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class DiagramFactorPool extends EAMNormalObjectPool
 {
@@ -32,11 +33,11 @@ public class DiagramFactorPool extends EAMNormalObjectPool
 		return (DiagramFactorLink)findObject(id);
 	}
 	
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)	throws Exception
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)	throws Exception
 	{
 		DiagramFactorId diagramFactorId = new DiagramFactorId(actualId.asInt());
 		
-		return new DiagramFactor(diagramFactorId, (CreateDiagramFactorParameter)extraInfo);
+		return new DiagramFactor(objectManager, diagramFactorId, (CreateDiagramFactorParameter)extraInfo);
 	}
 	
 	public DiagramFactorId[] getDiagramFactorIds()

@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.RatingCriterion;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class RatingCriterionPool extends EAMNormalObjectPool
 {
@@ -19,9 +20,9 @@ public class RatingCriterionPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.RATING_CRITERION);
 	}
 
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new RatingCriterion(actualId);
+		return new RatingCriterion(objectManager, actualId);
 	}
 
 }

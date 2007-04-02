@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class ProjectMetadataPool extends EAMNormalObjectPool
 {
@@ -24,9 +25,9 @@ public class ProjectMetadataPool extends EAMNormalObjectPool
 		return (ProjectMetadata)findObject(id);
 	}
 
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new ProjectMetadata(actualId);
+		return new ProjectMetadata(objectManager, actualId);
 	}
 
 }

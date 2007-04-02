@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class ValueOptionPool extends EAMNormalObjectPool
 {
@@ -19,9 +20,9 @@ public class ValueOptionPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.VALUE_OPTION);
 	}
 
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new ValueOption(actualId);
+		return new ValueOption(objectManager, actualId);
 	}
 
 }

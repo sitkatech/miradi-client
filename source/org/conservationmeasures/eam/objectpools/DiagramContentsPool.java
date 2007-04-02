@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramContentsObject;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class DiagramContentsPool extends EAMNormalObjectPool
 {
@@ -30,8 +31,8 @@ public class DiagramContentsPool extends EAMNormalObjectPool
 		return (DiagramContentsObject)getRawObject(id);
 	}
 
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new DiagramContentsObject(new DiagramContentsId(actualId.asInt()));
+		return new DiagramContentsObject(objectManager, new DiagramContentsId(actualId.asInt()));
 	}	
 }

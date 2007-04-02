@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 abstract public class EAMNormalObjectPool extends PoolWithIdAssigner
 {
@@ -17,13 +18,13 @@ abstract public class EAMNormalObjectPool extends PoolWithIdAssigner
 		super(objectTypeToStore, idAssignerToUse);
 	}
 	
-	public BaseObject createObject(BaseId objectId, CreateObjectParameter extraInfo) throws Exception
+	public BaseObject createObject(ObjectManager objectManager, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId actualId = idAssigner.obtainRealId(objectId);
-		BaseObject created = createRawObject(actualId, extraInfo);
+		BaseObject created = createRawObject(objectManager, actualId, extraInfo);
 		put(actualId, created);
 		return created;
 	}
 	
-	abstract BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo) throws Exception;
+	abstract BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception;
 }

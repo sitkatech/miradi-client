@@ -7,13 +7,24 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class RatingCriterion extends BaseObject
 {
+	public RatingCriterion(ObjectManager objectManager, BaseId idToUse)
+	{
+		super(objectManager, idToUse);
+	}
+	
 	public RatingCriterion(BaseId idToUse)
 	{
 		super(idToUse);
+	}
+	
+	public RatingCriterion(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
 	public RatingCriterion(int idAsInt, EnhancedJsonObject json) throws Exception

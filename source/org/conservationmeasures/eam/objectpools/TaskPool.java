@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class TaskPool extends EAMNormalObjectPool
 {
@@ -30,9 +31,9 @@ public class TaskPool extends EAMNormalObjectPool
 		return (Task)getRawObject(id);
 	}
 
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo) throws Exception
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return new Task(actualId, (CreateTaskParameter)extraInfo);
+		return new Task(objectManager, actualId, (CreateTaskParameter)extraInfo);
 	}
 
 	public BaseObject[] getAllTasks()

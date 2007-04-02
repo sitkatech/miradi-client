@@ -7,16 +7,28 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
 public class Target extends Factor
 {
+	public Target(ObjectManager objectManager, FactorId idToUse)
+	{
+		super(objectManager, idToUse, Factor.TYPE_TARGET);
+		clear();
+	}
+	
 	public Target(FactorId idToUse)
 	{
 		super(idToUse, Factor.TYPE_TARGET);
 		clear();
+	}
+	
+	public Target(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, idToUse, Factor.TYPE_TARGET, json);
 	}
 	
 	public Target(FactorId idToUse, EnhancedJsonObject json) throws Exception

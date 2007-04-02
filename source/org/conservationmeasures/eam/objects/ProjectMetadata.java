@@ -11,16 +11,29 @@ import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ProjectMetadata extends BaseObject
 {
+	public ProjectMetadata(ObjectManager objectManager, BaseId idToUse)
+	{
+		super(objectManager, idToUse);
+		clear();
+	}
+
 	public ProjectMetadata(BaseId idToUse)
 	{
 		super(idToUse);
 		clear();
 	}
-
+	
+	public ProjectMetadata(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new BaseId(idAsInt), json);
+	}
+	
+	
 	public ProjectMetadata(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);

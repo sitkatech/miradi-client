@@ -20,11 +20,19 @@ import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Task extends BaseObject
 {
+	public Task(ObjectManager objectManager, BaseId idToUse, CreateTaskParameter extraInfo) throws Exception
+	{
+		super(objectManager, new TaskId(idToUse.asInt()));
+		clear();
+		parentRef.set(extraInfo.getParentRef().toString());
+	}
+	
 	public Task(BaseId idToUse, CreateTaskParameter extraInfo) throws Exception
 	{
 		super(new TaskId(idToUse.asInt()));
@@ -32,11 +40,19 @@ public class Task extends BaseObject
 		parentRef.set(extraInfo.getParentRef().toString());
 	}
 	
+	public Task(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new TaskId(idAsInt), json);
+		parentRef.set(json.optString(TAG_PARENT_REF));
+	}
+	
+	
 	public Task(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new TaskId(idAsInt), json);
 		parentRef.set(json.optString(TAG_PARENT_REF));
 	}
+	
 	
 	public EnhancedJsonObject toJson()
 	{

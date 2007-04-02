@@ -10,15 +10,28 @@ import org.conservationmeasures.eam.ids.FundingSourceId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FundingSource extends BaseObject
 {
+	public FundingSource(ObjectManager objectManager, BaseId idToUse)
+	{
+		super(objectManager, idToUse);
+		clear();
+	}
+	
 	public FundingSource(BaseId idToUse)
 	{
 		super(idToUse);
 		clear();
 	}
+	
+	public FundingSource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new FundingSourceId(idAsInt), json);
+	}
+
 	
 	public FundingSource(int idAsInt, EnhancedJsonObject json) throws Exception
 	{

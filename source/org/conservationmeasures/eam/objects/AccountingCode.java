@@ -10,15 +10,28 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class AccountingCode extends BaseObject
 {
+	public AccountingCode(ObjectManager objectManager, BaseId idToUse)
+	{
+		super(objectManager, idToUse);
+		clear();
+	}
+	
 	public AccountingCode(BaseId idToUse)
 	{
 		super(idToUse);
 		clear();
 	}
+	
+	public AccountingCode(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new AccountingCodeId(idAsInt), json);
+	}
+
 	
 	public AccountingCode(int idAsInt, EnhancedJsonObject json) throws Exception
 	{

@@ -14,17 +14,28 @@ import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.StringMapData;
 
 public class Indicator extends BaseObject
 {
+	public Indicator(ObjectManager objectManager, IndicatorId idToUse)
+	{
+		super(objectManager, idToUse);
+		clear();
+	}
+
 	public Indicator(IndicatorId idToUse)
 	{
 		super(idToUse);
 		clear();
 	}
-
+	public Indicator(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new BaseId(idAsInt), json);
+	}
+	
 	public Indicator(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);

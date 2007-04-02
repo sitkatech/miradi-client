@@ -17,11 +17,22 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 
 public class DiagramFactorLink extends BaseObject
 {
+	public DiagramFactorLink(ObjectManager objectManager, BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
+	{
+		super(objectManager, new DiagramFactorLinkId(idToUse.asInt()));
+		
+		clear();
+		underlyingObjectId.setId(extraInfo.getFactorLinkId());
+		fromId.setId(extraInfo.getFromFactorId());
+		toId.setId(extraInfo.getToFactorId());
+	}
+	
 	public DiagramFactorLink(BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
 	{
 		super(new DiagramFactorLinkId(idToUse.asInt()));
@@ -30,6 +41,15 @@ public class DiagramFactorLink extends BaseObject
 		underlyingObjectId.setId(extraInfo.getFactorLinkId());
 		fromId.setId(extraInfo.getFromFactorId());
 		toId.setId(extraInfo.getToFactorId());
+	}
+	
+	public DiagramFactorLink(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new DiagramFactorLinkId(idToUse), json);
+		
+		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
+		fromId.setId(json.getId(TAG_FROM_DIAGRAM_FACTOR_ID));
+		toId.setId(json.getId(TAG_TO_DIAGRAM_FACTOR_ID));
 	}
 	
 	public DiagramFactorLink(int idToUse, EnhancedJsonObject json) throws Exception

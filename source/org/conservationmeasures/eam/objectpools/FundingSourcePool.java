@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.FundingSource;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class FundingSourcePool extends EAMNormalObjectPool
 {
@@ -24,9 +25,9 @@ public class FundingSourcePool extends EAMNormalObjectPool
 		return (FundingSource)findObject(id);
 	}
 
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new FundingSource(actualId);
+		return new FundingSource(objectManager, actualId);
 	}
 
 	public FundingSource[] getAllFundingSources()

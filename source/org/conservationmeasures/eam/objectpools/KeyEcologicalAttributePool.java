@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class KeyEcologicalAttributePool extends EAMNormalObjectPool
 {
@@ -30,9 +31,9 @@ public class KeyEcologicalAttributePool extends EAMNormalObjectPool
 		return (KeyEcologicalAttribute)getRawObject(id);
 	}
 
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new KeyEcologicalAttribute(new KeyEcologicalAttributeId(actualId.asInt()));
+		return new KeyEcologicalAttribute(objectManager, new KeyEcologicalAttributeId(actualId.asInt()));
 	}
 	
 	public KeyEcologicalAttribute[] getAllKeyEcologicalAttribute()

@@ -17,27 +17,35 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.xml.XmlUtilities;
 
 abstract public class BaseObject
 {
+
+	public BaseObject(ObjectManager objectManagerToUse, BaseId idToUse)
+	{
+		this(idToUse);
+		objectManager = objectManagerToUse;
+	}
+	
 	public BaseObject(BaseId idToUse)
 	{
 		setId(idToUse);
 		clear();
 	}
 	
-	public ORef getRef()
+	BaseObject(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		return new ORef(getType(), getId());
+		this(idToUse, json);
+		objectManager = objectManagerToUse;
 	}
 	
 	BaseObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		setId(idToUse);
-		clear();
+		this(idToUse);
 		Iterator iter = fields.keySet().iterator();
 		while(iter.hasNext())
 		{
@@ -45,6 +53,12 @@ abstract public class BaseObject
 			setData(tag, json.optString(tag));
 		}
 	}
+	
+	public ORef getRef()
+	{
+		return new ORef(getType(), getId());
+	}
+	
 	
 	public static BaseObject createFromJson(int type, EnhancedJsonObject json) throws Exception
 	{
@@ -474,7 +488,7 @@ abstract public class BaseObject
 	
 	BaseId id;
 	StringData label;
-
+	private ObjectManager objectManager;
 	private HashMap fields;
 	private Vector noneClearedFieldTags;
 }

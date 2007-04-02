@@ -16,15 +16,28 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Assignment extends BaseObject
 {
+	public Assignment(ObjectManager objectManager, BaseId idToUse, CreateAssignmentParameter extraInfo)
+	{
+		super(objectManager, new AssignmentId(idToUse.asInt()));
+		clear();
+		taskIdData.setId(extraInfo.getTaskId());
+	}
+	
 	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfo)
 	{
 		super(new AssignmentId(idToUse.asInt()));
 		clear();
 		taskIdData.setId(extraInfo.getTaskId());
+	}
+	
+	public Assignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager,new TaskId(idAsInt), json);
 	}
 	
 	public Assignment(int idAsInt, EnhancedJsonObject json) throws Exception

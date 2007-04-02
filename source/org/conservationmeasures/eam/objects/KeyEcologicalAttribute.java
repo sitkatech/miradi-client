@@ -12,16 +12,28 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class KeyEcologicalAttribute extends BaseObject
 {
+	public KeyEcologicalAttribute(ObjectManager objectManager, KeyEcologicalAttributeId idToUse)
+	{
+		super(objectManager, idToUse);
+		clear();
+	}
+
 	public KeyEcologicalAttribute(KeyEcologicalAttributeId idToUse)
 	{
 		super(idToUse);
 		clear();
 	}
-
+	
+	public KeyEcologicalAttribute(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new BaseId(idAsInt), json);
+	}
+	
 	public KeyEcologicalAttribute(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);

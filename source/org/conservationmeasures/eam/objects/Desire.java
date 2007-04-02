@@ -8,16 +8,29 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class Desire extends BaseObject
 {
+	public Desire(ObjectManager objectManager, BaseId idToUse)
+	{
+		super(objectManager, idToUse);
+		clear();
+	}
+
 	public Desire(BaseId idToUse)
 	{
 		super(idToUse);
 		clear();
 	}
+	
+	public Desire(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, idToUse, json);
+	}
 
+	
 	public Desire(BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, json);

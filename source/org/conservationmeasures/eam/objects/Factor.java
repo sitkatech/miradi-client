@@ -18,13 +18,26 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class Factor extends BaseObject
 {
+	protected Factor(ObjectManager objectManager, BaseId idToUse, FactorType nodeType)
+	{
+		super(objectManager, idToUse);
+		type = nodeType;
+	}
+	
 	protected Factor(BaseId idToUse, FactorType nodeType)
 	{
 		super(idToUse);
+		type = nodeType;
+	}
+	
+	protected Factor(ObjectManager objectManager, FactorId idToUse, FactorType nodeType, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, idToUse, json);
 		type = nodeType;
 	}
 	
@@ -241,15 +254,20 @@ abstract public class Factor extends BaseObject
 	
 	public static Factor createConceptualModelObject(FactorId idToCreate, CreateFactorParameter parameter)
 	{
+		 return createConceptualModelObject(null, idToCreate, parameter);
+	}
+	
+	public static Factor createConceptualModelObject(ObjectManager objectManager, FactorId idToCreate, CreateFactorParameter parameter)
+	{
 		if (parameter==null)
 			throw new RuntimeException("Tried to create factor without factor type");
 		FactorType nodeType = parameter.getNodeType();
 		if(nodeType.isStrategy())
-			return new Strategy(idToCreate);
+			return new Strategy(objectManager, idToCreate);
 		else if(nodeType.isCause())
-			return new Cause(idToCreate);
+			return new Cause(objectManager, idToCreate);
 		else if(nodeType.isTarget())
-			return new Target(idToCreate);
+			return new Target(objectManager, idToCreate);
 	
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}

@@ -8,14 +8,26 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Cause extends Factor
 {
+	public Cause(ObjectManager objectManager, FactorId idToUse)
+	{
+		super(objectManager, idToUse, new FactorTypeCause());
+		clear();
+	}
+	
 	public Cause(FactorId idToUse)
 	{
 		super(idToUse, new FactorTypeCause());
 		clear();
+	}
+	
+	public Cause(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, idToUse, Factor.TYPE_CAUSE, json);
 	}
 	
 	public Cause(FactorId idToUse, EnhancedJsonObject json) throws Exception

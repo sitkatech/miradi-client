@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class IndicatorPool extends EAMNormalObjectPool
 {
@@ -30,9 +31,9 @@ public class IndicatorPool extends EAMNormalObjectPool
 		return (Indicator)getRawObject(id);
 	}
 
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new Indicator(new IndicatorId(actualId.asInt()));
+		return new Indicator(objectManager, new IndicatorId(actualId.asInt()));
 	}
 	
 	public Indicator[] getAllIndicators()

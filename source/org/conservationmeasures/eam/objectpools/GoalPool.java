@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.project.ObjectManager;
 
 public class GoalPool extends DesirePool
 {
@@ -24,9 +25,9 @@ public class GoalPool extends DesirePool
 		return (Goal)findDesire(id);
 	}
 
-	BaseObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new Goal(actualId);
+		return new Goal(objectManager, actualId);
 	}
 
 }

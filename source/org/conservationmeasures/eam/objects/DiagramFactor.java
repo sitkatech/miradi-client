@@ -19,10 +19,20 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
 {
+	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse, CreateDiagramFactorParameter extraInfo)
+	{
+		super(objectManager, diagramFactorIdToUse);
+		
+		clear();
+		underlyingObjectId.setId(extraInfo.getFactorId());
+		size.setDimension(getDefaultSize());
+	}
+	
 	public DiagramFactor(DiagramFactorId diagramFactorIdToUse, CreateDiagramFactorParameter extraInfo)
 	{
 		super(diagramFactorIdToUse);
@@ -30,6 +40,13 @@ public class DiagramFactor extends BaseObject
 		clear();
 		underlyingObjectId.setId(extraInfo.getFactorId());
 		size.setDimension(getDefaultSize());
+	}
+	
+	public DiagramFactor(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new DiagramFactorId(idToUse), json);
+		
+		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
 	}
 	
 	public DiagramFactor(int idToUse, EnhancedJsonObject json) throws Exception

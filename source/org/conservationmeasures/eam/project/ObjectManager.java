@@ -197,7 +197,7 @@ public class ObjectManager
 			{
 				CreateFactorParameter parameter = (CreateFactorParameter)extraInfo;
 				FactorId nodeId = new FactorId(getProject().obtainRealNodeId(objectId).asInt());
-				Factor node = Factor.createConceptualModelObject(nodeId, parameter);
+				Factor node = Factor.createConceptualModelObject(this, nodeId, parameter);
 				getNodePool().put(node);
 				getDatabase().writeObject(node);
 				createdId = node.getId();
@@ -207,7 +207,7 @@ public class ObjectManager
 			{
 				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
 				FactorLinkId realId = getProject().obtainRealLinkageId(objectId);
-				FactorLink cmLinkage = new FactorLink(realId, parameter.getFromId(), parameter.getToId());
+				FactorLink cmLinkage = new FactorLink(this, realId, parameter.getFromId(), parameter.getToId());
 				getDatabase().writeObject(cmLinkage);
 				EAMObjectPool pool = getPool(objectType);
 				pool.put(realId, cmLinkage);
@@ -217,7 +217,7 @@ public class ObjectManager
 			default:
 			{
 				EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
-				BaseObject created = pool.createObject(objectId, extraInfo);
+				BaseObject created = pool.createObject(this, objectId, extraInfo);
 				getDatabase().writeObject(created);
 				createdId = created.getId();
 				break;

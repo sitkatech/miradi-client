@@ -18,14 +18,26 @@ import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ViewData extends BaseObject
 {
+	public ViewData(ObjectManager objectManager, BaseId idToUse)
+	{
+		super(objectManager, idToUse);
+		clear();
+	}
+
 	public ViewData(BaseId idToUse)
 	{
 		super(idToUse);
 		clear();
+	}
+	
+	public ViewData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new BaseId(idAsInt), json);
 	}
 
 	public ViewData(int idAsInt, EnhancedJsonObject json) throws Exception

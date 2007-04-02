@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
@@ -28,6 +29,14 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Strategy extends Factor
 {
+	
+	public Strategy(ObjectManager objectManager, FactorId idToUse)
+	{
+		super(objectManager, idToUse, Factor.TYPE_STRATEGY);
+		status = STATUS_REAL;
+		clear();
+	}
+	
 	public Strategy(FactorId idToUse)
 	{
 		super(idToUse, Factor.TYPE_STRATEGY);
@@ -35,12 +44,19 @@ public class Strategy extends Factor
 		clear();
 	}
 	
+	public Strategy(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, idToUse, Factor.TYPE_STRATEGY, json);
+		status = json.optString(TAG_STATUS, STATUS_REAL);
+	}
+
+	
 	public Strategy(FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, Factor.TYPE_STRATEGY, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
 	}
-
+	
 	public boolean isStrategy()
 	{
 		return true;

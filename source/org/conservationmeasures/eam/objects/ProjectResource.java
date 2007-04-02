@@ -13,21 +13,34 @@ import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ProjectResource extends BaseObject
 {
+	public ProjectResource(ObjectManager objectManager, BaseId idToUse)
+	{
+		super(objectManager, idToUse);
+		clear();
+	}
+	
 	public ProjectResource(BaseId idToUse)
 	{
 		super(idToUse);
 		clear();
 	}
 	
+	public ProjectResource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new ProjectResourceId(idAsInt), json);
+	}
+
 	public ProjectResource(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new ProjectResourceId(idAsInt), json);
 	}
 
+	
 	public int getType()
 	{
 		return getObjectType();

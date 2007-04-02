@@ -14,10 +14,19 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
 {
+	public FactorLink(ObjectManager objectManager, FactorLinkId id, FactorId fromNodeId, FactorId toNodeId)
+	{
+		super(objectManager, id);
+		clear();
+		setFromId(fromNodeId);
+		setToId(toNodeId);
+	}
+
 	public FactorLink(FactorLinkId id, FactorId fromNodeId, FactorId toNodeId)
 	{
 		super(id);
@@ -25,11 +34,17 @@ public class FactorLink extends BaseObject
 		setFromId(fromNodeId);
 		setToId(toNodeId);
 	}
-
+	
+	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
+	{
+		super(objectManager, new FactorLinkId(idAsInt), jsonObject);
+	}
+	
 	public FactorLink(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
 		super(new FactorLinkId(idAsInt), jsonObject);
 	}
+	
 	
 	public void setFromId(FactorId fromNodeId)
 	{

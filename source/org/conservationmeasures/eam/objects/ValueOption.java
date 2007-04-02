@@ -10,15 +10,31 @@ import java.awt.Color;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ValueOption extends BaseObject
 {
+	public ValueOption(ObjectManager objectManager, BaseId idToUse)
+	{
+		super(objectManager, idToUse);
+		color = Color.BLACK;
+	}
+	
 	public ValueOption(BaseId idToUse)
 	{
 		super(idToUse);
 		color = Color.BLACK;
+	}
+	
+	
+	public ValueOption(ObjectManager objectManager, BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
+	{
+		super(objectManager, idToUse);
+		setData(TAG_LABEL, labelToUse);
+		numeric = numericToUse;
+		color = colorToUse;
 	}
 	
 	public ValueOption(BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
@@ -28,6 +44,14 @@ public class ValueOption extends BaseObject
 		numeric = numericToUse;
 		color = colorToUse;
 	}
+	
+	public ValueOption(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new BaseId(idAsInt), json);
+		numeric = json.getInt(TAG_NUMERIC);
+		color = new Color(json.getInt(TAG_COLOR));
+	}
+	
 	
 	public ValueOption(int idAsInt, EnhancedJsonObject json) throws Exception
 	{

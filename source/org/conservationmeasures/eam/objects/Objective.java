@@ -8,20 +8,33 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
 public class Objective extends Desire
 {
+	public Objective(ObjectManager objectManager, BaseId id)
+	{
+		super(objectManager, new ObjectiveId(id.asInt()));
+	}
+	
+	
 	public Objective(BaseId id)
 	{
 		super(new ObjectiveId(id.asInt()));
+	}
+	
+	public Objective(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new ObjectiveId(idAsInt), json);
 	}
 	
 	public Objective(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new ObjectiveId(idAsInt), json);
 	}
+	
 	
 	public int getType()
 	{
