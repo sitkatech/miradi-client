@@ -176,29 +176,28 @@ public class TestDataUpgrader extends EAMTestCase
 		upgraderWithNoObjects19.upgradeToVersion17();
 		
 		File objects19Dir = new File(jsonDir, "objects-19");
-		assertTrue("objects-19 dir does not exist?", objects19Dir.exists());
+		assertTrue("didn't create objects-19 dir?", objects19Dir.exists());
 		
 		File manifest19File = new File(objects19Dir, "manifest");
-		assertTrue("manifest exists?", manifest19File.exists());
+		assertTrue("didn't create manifest file?", manifest19File.exists());
 		
 		String expectedManifestContent = "{\"Type\":\"ObjectManifest\",\"14\":true}";
 		String migratedManifestContents = readFile(manifest19File);
-		assertTrue("has manifest file?", manifest19File.exists());
-		assertEquals("manifests has same content?", expectedManifestContent.trim(), migratedManifestContents.trim());
+		assertEquals("manifest contents wrong?", expectedManifestContent.trim(), migratedManifestContents.trim());
 		
 		File object14File = new File(objects19Dir, "14");
-		assertTrue("file 14 exists", object14File.exists());
+		assertTrue("didn't create object 14 file?", object14File.exists());
 		
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(object14File));
 		int id = json.getInt("Id");
-		assertEquals("same object id?", id, 14);
+		assertEquals("wrong object id?", id, 14);
 		DiagramContentsObject diagramContents = new DiagramContentsObject(id, json);
 		IdList allDiagramFactorIds = diagramContents.getAllDiagramFactorIds();
-		assertEquals("same id count?", 3, allDiagramFactorIds.size());
+		assertEquals("wrong id count?", 3, allDiagramFactorIds.size());
 		
-		assertTrue("has id 676?", allDiagramFactorIds.contains(new BaseId(676)));
-		assertTrue("has id 691?", allDiagramFactorIds.contains(new BaseId(691)));
-		assertTrue("has id 664?", allDiagramFactorIds.contains(new BaseId(664)));
+		assertTrue("missing 676?", allDiagramFactorIds.contains(new BaseId(676)));
+		assertTrue("missing 691?", allDiagramFactorIds.contains(new BaseId(691)));
+		assertTrue("missing 664?", allDiagramFactorIds.contains(new BaseId(664)));
 	}
 	
 	public void testCreateDiagramFactorLinksFromRawFactorLinks() throws Exception
