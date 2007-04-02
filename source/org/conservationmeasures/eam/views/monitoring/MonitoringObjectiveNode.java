@@ -100,8 +100,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 
 	public void rebuild() throws Exception
 	{
-		ChainManager chainManager = project.getChainManager();
-		Factor owner = (Factor)chainManager.getOwner(objective.getRef());
+		Factor owner = (Factor)objective.getOwner();
 		HashSet indicatorIds = getAllUpstreamIndicators(owner);
 		
 		Iterator iter = indicatorIds.iterator();
