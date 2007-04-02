@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
@@ -86,8 +85,7 @@ public class DeleteActivity extends ObjectsDoer
 		if (selectedTask.getParentRef().getObjectType() != ObjectType.FAKE)
 			return;
 		
-		ChainManager chainManager = new ChainManager(project);
-		BaseObject foundIn = chainManager.getOwner(selectedTask.getRef());
+		BaseObject foundIn = selectedTask.getOwner();
 		selectedTask.setParentRef(foundIn.getRef());
 	}
 
