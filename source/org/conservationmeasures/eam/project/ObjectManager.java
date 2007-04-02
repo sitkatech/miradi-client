@@ -274,7 +274,7 @@ public class ObjectManager
 		throw new RuntimeException("Unknown PseudoTag: " + fieldTag + " for type " + objectType);	
 	}
 	
-	BaseObject findObject(ORef ref)
+	public BaseObject findObject(ORef ref)
 	{
 		return findObject(ref.getObjectType(), ref.getObjectId());
 	}

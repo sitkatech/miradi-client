@@ -283,28 +283,27 @@ abstract public class BaseObject
 		return shortLabel + "." + Longlabel;
 	}
 	
-	//TODO: commented out until we can pass in project
-//	public ORef getOwner()
-//	{
-//		int[] objectTypes = getTypesThatCanOwnUs(getType());
-//		for (int i=0; i<objectTypes.length; ++i)
-//		{
-//			ORef oref = findObjectWhoOwnesUs(getProject(), objectTypes[i], getRef());
-//			if (oref != null)
-//				return oref;
-//		}
-//		return null;
-//	}
+	public ORef getOwner()
+	{
+		int[] objectTypes = getTypesThatCanOwnUs(getType());
+		for (int i=0; i<objectTypes.length; ++i)
+		{
+			ORef oref = findObjectWhoOwnesUs(objectManager, objectTypes[i], getRef());
+			if (oref != null)
+				return oref;
+		}
+		return null;
+	}
 
 	
-	static public ORef findObjectWhoOwnesUs(Project project, int objectType, ORef oref)
+	static public ORef findObjectWhoOwnesUs(ObjectManager objectManager, int objectType, ORef oref)
 	{
-		ORefList orefsInPool = project.getPool(objectType).getORefList();
+		ORefList orefsInPool = objectManager.getPool(objectType).getORefList();
 		for (int i=0; i<orefsInPool.size(); ++i)
 		{
-			BaseObject objectInPool = project.findObject(orefsInPool.get(i));
+			BaseObject objectInPool = objectManager.findObject(orefsInPool.get(i));
 			ORefList children = objectInPool.getOwnedObjects(oref.getObjectType());
-			for (int childIdx=0; childIdx<children.size(); ++i)
+			for (int childIdx=0; childIdx<children.size(); ++childIdx)
 			{
 				if (children.get(childIdx).getObjectId().equals(oref.getObjectId()))
 					return objectInPool.getRef();
