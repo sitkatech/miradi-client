@@ -62,62 +62,67 @@ abstract public class BaseObject
 	
 	public static BaseObject createFromJson(int type, EnhancedJsonObject json) throws Exception
 	{
+		return createFromJson(null, type, json);
+	}
+	
+	public static BaseObject createFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json) throws Exception
+	{
 		int idAsInt = json.getInt(TAG_ID);
 		switch(type)
 		{
 			case ObjectType.RATING_CRITERION:
-				return new RatingCriterion(idAsInt, json);
+				return new RatingCriterion(objectManager, idAsInt, json);
 				
 			case ObjectType.VALUE_OPTION:
-				return new ValueOption(idAsInt, json);
+				return new ValueOption(objectManager, idAsInt, json);
 				
 			case ObjectType.TASK:
-				return new Task(idAsInt, json);
+				return new Task(objectManager, idAsInt, json);
 			
 			case ObjectType.FACTOR:
-				return Factor.createFrom(idAsInt, json);
+				return Factor.createFrom(objectManager, idAsInt, json);
 
 			case ObjectType.VIEW_DATA:
-				return new ViewData(idAsInt, json);
+				return new ViewData(objectManager, idAsInt, json);
 				
 			case ObjectType.FACTOR_LINK:
-				return new FactorLink(idAsInt, json);
+				return new FactorLink(objectManager, idAsInt, json);
 				
 			case ObjectType.PROJECT_RESOURCE:
-				return new ProjectResource(idAsInt, json);
+				return new ProjectResource(objectManager, idAsInt, json);
 				
 			case ObjectType.INDICATOR:
-				return new Indicator(idAsInt, json);
+				return new Indicator(objectManager, idAsInt, json);
 				
 			case ObjectType.OBJECTIVE:
-				return new Objective(idAsInt, json);
+				return new Objective(objectManager, idAsInt, json);
 				
 			case ObjectType.GOAL:
-				return new Goal(idAsInt, json);
+				return new Goal(objectManager, idAsInt, json);
 				
 			case ObjectType.PROJECT_METADATA:
-				return new ProjectMetadata(idAsInt, json);
+				return new ProjectMetadata(objectManager, idAsInt, json);
 				
 			case ObjectType.DIAGRAM_LINK:
-				return new DiagramFactorLink(idAsInt, json);
+				return new DiagramFactorLink(objectManager, idAsInt, json);
 				
 			case ObjectType.ASSIGNMENT:
-				return new Assignment(idAsInt, json);
+				return new Assignment(objectManager, idAsInt, json);
 				
 			case ObjectType.ACCOUNTING_CODE:
-				return new AccountingCode(idAsInt, json);
+				return new AccountingCode(objectManager, idAsInt, json);
 				
 			case ObjectType.FUNDING_SOURCE:
-				return new FundingSource(idAsInt, json);
+				return new FundingSource(objectManager, idAsInt, json);
 				
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
-				return new KeyEcologicalAttribute(idAsInt, json);
+				return new KeyEcologicalAttribute(objectManager, idAsInt, json);
 			
 			case ObjectType.DIAGRAM_FACTOR:
-				return new DiagramFactor(idAsInt, json);
+				return new DiagramFactor(objectManager, idAsInt, json);
 				
 			case ObjectType.DIAGRAM_CONTENTS:
-				return new DiagramContentsObject(idAsInt, json);
+				return new DiagramContentsObject(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

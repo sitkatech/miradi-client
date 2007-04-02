@@ -12,6 +12,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.ProjectInfo;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -204,10 +205,14 @@ public class ProjectServer
 	}
 	
 	
-	
 	public BaseObject readObject(int type, BaseId id) throws Exception
 	{
-		return BaseObject.createFromJson(type, JSONFile.read(getObjectFile(type, id)));
+		return readObject(null, type, id);
+	}
+	
+	public BaseObject readObject(ObjectManager objectManager, int type, BaseId id) throws Exception
+	{
+		return BaseObject.createFromJson(objectManager, type, JSONFile.read(getObjectFile(type, id)));
 	}
 	
 	public void writeObject(BaseObject object) throws IOException, ParseException

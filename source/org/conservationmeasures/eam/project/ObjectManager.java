@@ -750,7 +750,7 @@ public class ObjectManager
 				EAM.logWarning("Ignoring invalid id of type " + type);
 				continue;
 			}
-			BaseObject object = getDatabase().readObject(type, id);
+			BaseObject object = getDatabase().readObject(this, type, id);
 			getPool(type).put(object.getId(), object);
 		}
 	}
