@@ -480,6 +480,12 @@ public class DiagramModel extends DefaultGraphModel
 		return json;
 	}
 	
+	//FIXME this method has to be finished and tested (
+	public void fillFrom(DiagramContentsObject diagramContentsToUse) throws Exception
+	{
+		addFactorsToModel(diagramContentsToUse.toJson());
+	}
+	
 	public void fillFrom(EnhancedJsonObject json) throws Exception
 	{
 		addFactorsToModel(json);
@@ -586,7 +592,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	
 	private static final String TAG_TYPE = "Type";
-	private static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
+	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	
 	
 	private static final String JSON_TYPE_DIAGRAM = "Diagram";

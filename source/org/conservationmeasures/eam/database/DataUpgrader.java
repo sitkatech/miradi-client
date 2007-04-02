@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
@@ -95,6 +96,52 @@ public class DataUpgrader extends ProjectServer
 		
 		if (readDataVersion(getTopDirectory()) == 15)
 			upgradeToVersion16();
+		
+		//FIXME up the version to 16 when done migration code
+		if (readDataVersion(getTopDirectory()) == 16)
+			upgradeToVersion17();
+	}
+	  
+	public void upgradeToVersion17() throws Exception
+	{
+		createObject19DirAndFillFromDiagram();
+		writeVersion(17);
+	}
+
+	private void createObject19DirAndFillFromDiagram() throws Exception
+	{
+		File jsonDir = new File(topDirectory, "json");
+		File objects19Dir = new File(jsonDir, "objects-19");
+		if (objects19Dir.exists())
+			throw new RuntimeException("objects-19 directory already exists " + objects19Dir.getAbsolutePath());
+		
+		objects19Dir.mkdirs();
+		
+		File diagramsDir = new File(jsonDir, "diagrams");
+		if (! diagramsDir.exists())
+			throw new RuntimeException("diagrams directory does not exist " + diagramsDir.getAbsolutePath());
+		
+		File mainDiagram = new File(diagramsDir, "main");
+		if (! mainDiagram.exists())
+			throw new RuntimeException("main file does not exist " + mainDiagram.getAbsolutePath());
+		
+		EnhancedJsonObject mainJson = JSONFile.read(mainDiagram);
+		IdList diagramFactorIds = new IdList(mainJson.getString(DiagramModel.TAG_DIAGRAM_FACTOR_IDS));
+		
+		String manifest19Contents = "{\"Type\":\"ObjectManifest\"";
+		int highestId = readHighestIdInProjectFile(jsonDir);
+		highestId++;
+		manifest19Contents += ",\"" + highestId + "\":true";
+		writeHighestIdToProjectFile(jsonDir, highestId);
+		manifest19Contents += "}";
+		File manifestFile = new File(objects19Dir, "manifest");
+		createFile(manifestFile, manifest19Contents);
+
+		File idFile = new File(objects19Dir, Integer.toString(highestId));
+		EnhancedJsonObject readIn = readFile(mainDiagram);
+		readIn.put("DiagramFactorIds", diagramFactorIds.toJson());
+		readIn.put("Id", highestId);
+		writeJson(idFile, readIn);
 	}
 
 	public void upgradeToVersion16() throws Exception

@@ -9,10 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.DiagramContentsObject;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -152,6 +155,50 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		DataUpgrader upgraderWithNoObjects6 = new DataUpgrader(tempDirectory);
 		upgraderWithNoObjects6.upgradeToVersion16();
+	}
+	
+	public void testUpgradeTo17creatingObjects19FromDiagramsMainFile() throws Exception
+	{
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
+
+		File diagramsDir = new File(jsonDir, "diagrams");
+		diagramsDir.mkdirs();
+		
+		String diagramFactorIds = " {\"Type\":\"Diagram\",\"DiagramFactorIds\":{\"Ids\":[676,691,664]}} ";
+		File diagramMain = new File(diagramsDir, "main");
+		createFile(diagramMain, diagramFactorIds);
+		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":13}");
+		
+		DataUpgrader upgraderWithNoObjects19 = new DataUpgrader(tempDirectory);
+		upgraderWithNoObjects19.upgradeToVersion17();
+		
+		File objects19Dir = new File(jsonDir, "objects-19");
+		assertTrue("objects-19 dir does not exist?", objects19Dir.exists());
+		
+		File manifest19File = new File(objects19Dir, "manifest");
+		assertTrue("manifest exists?", manifest19File.exists());
+		
+		String expectedManifestContent = "{\"Type\":\"ObjectManifest\",\"14\":true}";
+		String migratedManifestContents = readFile(manifest19File);
+		assertTrue("has manifest file?", manifest19File.exists());
+		assertEquals("manifests has same content?", expectedManifestContent.trim(), migratedManifestContents.trim());
+		
+		File object14File = new File(objects19Dir, "14");
+		assertTrue("file 14 exists", object14File.exists());
+		
+		EnhancedJsonObject json = new EnhancedJsonObject(readFile(object14File));
+		int id = json.getInt("Id");
+		assertEquals("same object id?", id, 14);
+		DiagramContentsObject diagramContents = new DiagramContentsObject(id, json);
+		IdList allDiagramFactorIds = diagramContents.getAllDiagramFactorIds();
+		assertEquals("same id count?", 3, allDiagramFactorIds.size());
+		
+		assertTrue("has id 676?", allDiagramFactorIds.contains(new BaseId(676)));
+		assertTrue("has id 691?", allDiagramFactorIds.contains(new BaseId(691)));
+		assertTrue("has id 664?", allDiagramFactorIds.contains(new BaseId(664)));
 	}
 	
 	public void testCreateDiagramFactorLinksFromRawFactorLinks() throws Exception

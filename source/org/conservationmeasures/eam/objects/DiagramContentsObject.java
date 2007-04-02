@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramContentsId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -45,12 +46,15 @@ public class DiagramContentsObject extends BaseObject
 		return ObjectType.DIAGRAM_CONTENTS;
 	}
 	
+	public IdList getAllDiagramFactorIds()
+	{
+		return allDiagramFactorIds.getIdList();
+	}
 	
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
 	}
-	
 	
 	public static boolean canReferToThisType(int type)
 	{
