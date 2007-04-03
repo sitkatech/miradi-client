@@ -61,8 +61,6 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.questions.StatusQuestion;
-import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
 public class ObjectManager
@@ -376,7 +374,7 @@ public class ObjectManager
 			if(fieldTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return getNewPseudoField(ObjectType.FACTOR, factorId, fieldTag);
 			if(fieldTag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
-				return getTargetViability((FactorId)factorId);
+				return getNewPseudoField(ObjectType.FACTOR, factorId, fieldTag);;
 		}
 		catch(Exception e)
 		{
@@ -399,51 +397,6 @@ public class ObjectManager
 		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
 	}
 	
-	private String getTargetViability(FactorId factorId)
-	{
-		Target target = (Target)findNode(factorId);
-		if(target.isViabilityModeTNC())
-			return computeTNCViability(target);
-		return target.getBasicTargetStatus();
-	}
-	
-	private String computeTNCViability(Target target)
-	{
-		HashMap categoryKeaRatings = new HashMap();
-		
-		IdList keas = target.getKeyEcologicalAttributes();
-		for(int i = 0; i < keas.size(); ++i)
-		{
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keas.get(i));
-			String category = kea.getData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
-			if(category.equals(StatusQuestion.UNSPECIFIED))
-				continue;
-			
-			CodeList codesForCategory = (CodeList)categoryKeaRatings.get(category);
-			if(codesForCategory == null)
-			{
-				codesForCategory = new CodeList();
-				categoryKeaRatings.put(category, codesForCategory);
-			}
-
-			String keaViability = kea.getData(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS);
-			codesForCategory.add(keaViability);
-		}
-		
-		CodeList categorySummaryRatings = new CodeList();
-		Iterator iter = categoryKeaRatings.keySet().iterator();
-		while(iter.hasNext())
-		{
-			String category = (String)iter.next();
-			CodeList keaCodes = (CodeList)categoryKeaRatings.get(category);
-			String categoryRating = TNCViabilityFormula.getTotalCategoryRatingCode(keaCodes);
-			categorySummaryRatings.add(categoryRating);
-		}
-		
-		return TNCViabilityFormula.getAverageRatingCode(categorySummaryRatings);
-	}
-	
-
 	private String getFactorGoals(FactorId factorId) throws ParseException
 	{
 		return getFactorDesires(factorId, ObjectType.GOAL, Factor.TAG_GOAL_IDS);

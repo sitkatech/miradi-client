@@ -5,13 +5,19 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.TNCViabilityFormula;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -52,6 +58,14 @@ public class Target extends Factor
 	public boolean canHaveKeyEcologicalAttribures()
 	{
 		return true;
+	}
+	
+	public String getData(String fieldTag)
+	{
+		if(fieldTag.equals(PSEUDO_TAG_TARGET_VIABILITY))
+			return getTargetViability();
+		
+		return super.getData(fieldTag);
 	}
 	
 	public IdList getDirectOrIndirectGoals()
@@ -103,6 +117,49 @@ public class Target extends Factor
 	public boolean isViabilityModeTNC()
 	{
 		return viabiltyMode.get().equals(ViabilityModeQuestion.TNC_STYLE_CODE);
+	}
+	
+	private String getTargetViability()
+	{
+		if(isViabilityModeTNC())
+			return computeTNCViability();
+		return getBasicTargetStatus();
+	}
+	
+	private String computeTNCViability()
+	{
+		HashMap categoryKeaRatings = new HashMap();
+		
+		IdList keas = getKeyEcologicalAttributes();
+		for(int i = 0; i < keas.size(); ++i)
+		{
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)objectManager.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keas.get(i));
+			String category = kea.getData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+			if(category.equals(StatusQuestion.UNSPECIFIED))
+				continue;
+			
+			CodeList codesForCategory = (CodeList)categoryKeaRatings.get(category);
+			if(codesForCategory == null)
+			{
+				codesForCategory = new CodeList();
+				categoryKeaRatings.put(category, codesForCategory);
+			}
+
+			String keaViability = kea.getData(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS);
+			codesForCategory.add(keaViability);
+		}
+		
+		CodeList categorySummaryRatings = new CodeList();
+		Iterator iter = categoryKeaRatings.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String category = (String)iter.next();
+			CodeList keaCodes = (CodeList)categoryKeaRatings.get(category);
+			String categoryRating = TNCViabilityFormula.getTotalCategoryRatingCode(keaCodes);
+			categorySummaryRatings.add(categoryRating);
+		}
+		
+		return TNCViabilityFormula.getAverageRatingCode(categorySummaryRatings);
 	}
 	
 	void clear()
