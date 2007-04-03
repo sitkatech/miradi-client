@@ -33,7 +33,7 @@ public class TaskTreeTableModel extends GenericTreeTableModel
 	{
 		int type = cmd.getObjectType();
 		String tag = cmd.getFieldTag();
-		if(type == ObjectType.FACTOR && tag.equals(Strategy.TAG_ACTIVITY_IDS))
+		if(type == ObjectType.STRATEGY && tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		if(type == ObjectType.INDICATOR && tag.equals(Indicator.TAG_TASK_IDS))
 			return true;

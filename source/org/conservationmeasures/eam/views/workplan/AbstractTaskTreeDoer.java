@@ -53,7 +53,7 @@ public abstract class AbstractTaskTreeDoer extends ObjectsDoer
 		{
 			case ObjectType.TASK:
 				return Task.TAG_SUBTASK_IDS;
-			case ObjectType.FACTOR:
+			case ObjectType.STRATEGY:
 				return Strategy.TAG_ACTIVITY_IDS;
 			case ObjectType.INDICATOR:
 				return Indicator.TAG_TASK_IDS;

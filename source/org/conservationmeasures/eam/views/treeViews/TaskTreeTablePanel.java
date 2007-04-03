@@ -41,7 +41,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	{
 		GenericTreeTableModel treeTableModel = getModel();
 		
-		final boolean wereActivityNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR , Strategy.TAG_ACTIVITY_IDS);
+		final boolean wereActivityNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.STRATEGY , Strategy.TAG_ACTIVITY_IDS);
 		final boolean wereIndicatorNodesAddedOrRemoved = wereIndicatorNodesAddedOrRemoved(event);
 		final boolean wereTaskNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.TASK , Task.TAG_SUBTASK_IDS);
 		if(	wereActivityNodesAddedOrRemoved || 
