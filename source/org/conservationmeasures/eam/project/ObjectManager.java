@@ -601,6 +601,7 @@ public class ObjectManager
 		return getProject().getDatabase();
 	}
 
+	//FIXME: there shold be a better way to get to the Model then having to expose it here
 	public DiagramModel getDiagramModel()
 	{
 		return getProject().getDiagramModel();
