@@ -147,7 +147,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	
 	private ObjectDataInputField createTargetStatusField(Factor factor)
 	{
-		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.FACTOR,new StatusQuestion(Target.PSEUDO_TAG_TARGET_VIABILITY));
+		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.TARGET,new StatusQuestion(Target.PSEUDO_TAG_TARGET_VIABILITY));
 		return field;
 	}
 	
