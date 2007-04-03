@@ -43,7 +43,7 @@ public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 	
 	public static final int labelColumn = 0;
 	
-	static final String[] columnNames = {"Item", EAM.fieldLabel(ObjectType.FACTOR, Strategy.TAG_TAXONOMY_CODE)};
+	static final String[] columnNames = {"Item", EAM.fieldLabel(ObjectType.STRATEGY, Strategy.TAG_TAXONOMY_CODE)};
 	
 	Project project;
 

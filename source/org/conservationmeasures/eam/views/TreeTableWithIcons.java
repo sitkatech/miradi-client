@@ -145,7 +145,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 				renderer  = stringNoIconRenderer;
 			else if(node.getType() == ObjectType.INDICATOR)
 				renderer = indicatorRenderer;
-			else if(node.getType() == ObjectType.FACTOR)
+			else if(node.getType() == ObjectType.STRATEGY)
 				renderer = getStrategyRenderer((Factor)node.getObject());
 			else if(node.getType() == ObjectType.OBJECTIVE)
 				renderer = objectiveRenderer;

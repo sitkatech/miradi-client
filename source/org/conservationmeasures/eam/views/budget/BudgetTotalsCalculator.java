@@ -456,7 +456,7 @@ public class BudgetTotalsCalculator
 			if (type == ObjectType.INDICATOR)
 				return getTotalIndicatorCost(oRef, dateRange);
 			
-			if (type == ObjectType.FACTOR)
+			if (type == ObjectType.STRATEGY)
 				return getTotalStrategyCost(getFactor(oRef), dateRange);
 
 			if (oRef.getObjectType() == ObjectType.TASK)

@@ -25,10 +25,10 @@ public class SampleDiagramBuilder
 		final int targetIndexBase = 41;
 		for(int i = 0; i < itemsPerType; ++i)
 		{
-			project.createObject(ObjectType.FACTOR, new BaseId(interventionIndexBase + i), new CreateFactorParameter(new FactorTypeStrategy()));
-			project.createObject(ObjectType.FACTOR, new BaseId(indirectFactorIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
-			project.createObject(ObjectType.FACTOR, new BaseId(directThreatIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
-			project.createObject(ObjectType.FACTOR, new BaseId(targetIndexBase + i), new CreateFactorParameter(new FactorTypeTarget()));
+			project.createObject(ObjectType.STRATEGY, new BaseId(interventionIndexBase + i), new CreateFactorParameter(new FactorTypeStrategy()));
+			project.createObject(ObjectType.CAUSE, new BaseId(indirectFactorIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
+			project.createObject(ObjectType.CAUSE, new BaseId(directThreatIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
+			project.createObject(ObjectType.TARGET, new BaseId(targetIndexBase + i), new CreateFactorParameter(new FactorTypeTarget()));
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)
 		{

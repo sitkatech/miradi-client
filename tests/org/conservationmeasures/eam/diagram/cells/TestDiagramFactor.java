@@ -43,7 +43,7 @@ public class TestDiagramFactor extends EAMTestCase
 		Cause cmDirectThreat = new Cause(takeNextModelNodeId());
 		cmDirectThreat.increaseTargetCount();
 		CreateFactorParameter createTarget = new CreateFactorParameter(new FactorTypeTarget());
-		BaseId rawTargetId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, createTarget);
+		BaseId rawTargetId = project.createObject(ObjectType.TARGET, BaseId.INVALID, createTarget);
 		FactorId cmTargetId = new FactorId(rawTargetId.asInt());
 		cmTarget = (Target)project.findNode(cmTargetId);
 		
