@@ -119,7 +119,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		//TODO FACTOR SPLIT work remove (after split done) getFactor.isTarget, redundant
 		if(getFactor().isTarget() && event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_VIABILITY_MODE))
 		{
 			updateEditabilityOfTargetStatusField();

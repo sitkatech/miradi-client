@@ -32,7 +32,6 @@ public class StrategyPoolTableModel extends ObjectPoolTableModel
 		{
 			BaseId baseId = strategy.get(i);
 			Factor factor = (Factor) project.findObject(ObjectType.STRATEGY, baseId);
-//			TODO FACTOR SPLIT work remove (after split done) getFactor.isTarget, redundant
 			if (!factor.isStrategy())
 				continue;
 			if (!((Strategy)factor).isStatusDraft())
