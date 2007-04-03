@@ -75,7 +75,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		
 		if(factorToEdit.isTarget())
 		{
-			addField(createChoiceField(ObjectType.FACTOR, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
+			addField(createChoiceField(ObjectType.TARGET, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
 			 targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
 			addField(targetRatingField);
 			addLine(new UiLabel(""), new UiLabel(EAM.text("This 'Status of Target' field is only available in Basic mode")));
@@ -119,7 +119,8 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if(getFactor().isTarget() && event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Target.TAG_VIABILITY_MODE))
+		//TODO FACTOR SPLIT work remove (after split done) getFactor.isTarget, redundant
+		if(getFactor().isTarget() && event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_VIABILITY_MODE))
 		{
 			updateEditabilityOfTargetStatusField();
 		}

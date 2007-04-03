@@ -19,7 +19,7 @@ public class StrategyPoolTableModel extends ObjectPoolTableModel
 {
 	public StrategyPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.FACTOR, COLUMN_TAGS);	
+		super(projectToUse, ObjectType.STRATEGY, COLUMN_TAGS);	
 	}
 
 	
@@ -31,7 +31,8 @@ public class StrategyPoolTableModel extends ObjectPoolTableModel
 		for (int i=0; i<strategy.size(); ++i)
 		{
 			BaseId baseId = strategy.get(i);
-			Factor factor = (Factor) project.findObject(ObjectType.FACTOR, baseId);
+			Factor factor = (Factor) project.findObject(ObjectType.STRATEGY, baseId);
+//			TODO FACTOR SPLIT work remove (after split done) getFactor.isTarget, redundant
 			if (!factor.isStrategy())
 				continue;
 			if (!((Strategy)factor).isStatusDraft())
