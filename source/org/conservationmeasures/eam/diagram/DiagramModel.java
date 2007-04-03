@@ -23,7 +23,6 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramContentsId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -75,8 +74,7 @@ public class DiagramModel extends DefaultGraphModel
 		projectScopeBox = new ProjectScopeBox(this);
 		insertCellIntoGraph(projectScopeBox);
 		
-		DiagramContentsId contentsId = new DiagramContentsId(BaseId.INVALID.asInt());
-		diagramContents = new DiagramContentsObject(contentsId);
+		diagramContents = null;
 		factorsToDiagramFactors = new HashMap();
 	}
 	
@@ -101,6 +99,19 @@ public class DiagramModel extends DefaultGraphModel
 		FactorCell factorCell = createFactorCell(diagramFactor, factor);
 		addFactorCellToModel(factorCell);
 		factorsToDiagramFactors.put(diagramFactor.getWrappedId(), diagramFactor.getDiagramFactorId());
+		addToDiagramContents(diagramFactor);
+	}
+
+	private void addToDiagramContents(DiagramFactor diagramFactor) throws Exception
+	{
+		IdList currentList = diagramContents.getAllDiagramFactorIds();
+		//TODO This if will go away when the model listens for DCO commands
+		if (currentList.contains(diagramFactor.getDiagramFactorId()))
+				return;
+		
+		currentList.add(diagramFactor.getId());
+		diagramContents.setData(DiagramContentsObject.TAG_DIAGRAM_FACTOR_IDS, currentList.toJson().toString());
+		getProject().getDatabase().writeObject(diagramContents);
 	}
 	
 	private FactorCell createFactorCell(DiagramFactor diagramFactor, Factor factor)
@@ -169,8 +180,18 @@ public class DiagramModel extends DefaultGraphModel
     	Object[] cells = new Object[]{diagramFactorToDelete};
 		remove(cells);
 		cellInventory.removeFactor(diagramFactorId);
+		removeFromDiagramContents(diagramFactorId);
 		notifyListeners(createDiagramModelEvent(diagramFactorToDelete), new ModelEventNotifierFactorDeleted());
     }
+
+	private void removeFromDiagramContents(DiagramFactorId diagramFactorId) throws Exception
+	{
+		IdList currentList = diagramContents.getAllDiagramFactorIds();
+		currentList.removeId(diagramFactorId);
+		diagramContents.setData(DiagramContentsObject.TAG_DIAGRAM_FACTOR_IDS, currentList.toJson().toString());
+		
+		getProject().getDatabase().writeObject(diagramContents);
+	}
     
     public DiagramFactorLink addLinkToDiagram(DiagramFactorLink diagramFactorLink) throws Exception
     {
@@ -480,20 +501,17 @@ public class DiagramModel extends DefaultGraphModel
 		return json;
 	}
 	
-	//FIXME this method has to be finished and tested (
+	//FIXME this method has to be finished and tested
 	public void fillFrom(DiagramContentsObject diagramContentsToUse) throws Exception
 	{
+		diagramContents = diagramContentsToUse;
 		addFactorsToModel(diagramContentsToUse.toJson());
-	}
-	
-	public void fillFrom(EnhancedJsonObject json) throws Exception
-	{
-		addFactorsToModel(json);
 		addLinksToModel();
 	}
 
 	private void addFactorsToModel(EnhancedJsonObject json) throws Exception
 	{
+		diagramContents.clear();
 		IdList diagramFactorIds = new IdList(json.getString(TAG_DIAGRAM_FACTOR_IDS));
 		
 		// TODO: Really we should extend JSONObject to have a sane names() method
@@ -590,6 +608,10 @@ public class DiagramModel extends DefaultGraphModel
 		return (FactorCell[])allTargets.toArray(new FactorCell[0]);
 	}
 	
+	public DiagramContentsObject getDiagramContentsObject()
+	{
+		return diagramContents;
+	}
 	
 	private static final String TAG_TYPE = "Type";
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";

@@ -48,9 +48,14 @@ public class ProjectServerForTesting extends ProjectServer
 		++callsToWriteThreatRatingFramework;
 	}
 	
-	public void close() throws IOException
+	public void closeAndDontDelete() throws IOException
 	{
 		super.close();
+	}
+	
+	public void close() throws IOException
+	{
+		closeAndDontDelete();
 		if(eamDir != null)
 			DirectoryUtils.deleteEntireDirectoryTree(eamDir);
 		eamDir = null;

@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import java.awt.Point;
-import java.io.File;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -27,7 +26,6 @@ import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 import org.conservationmeasures.eam.utils.StringMapData;
-import org.martus.util.DirectoryUtils;
 import org.martus.util.MultiCalendar;
 
 public class ObjectTestCase extends EAMTestCase
@@ -44,7 +42,7 @@ public class ObjectTestCase extends EAMTestCase
 	
 	public void verifyFields(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
+		Project project = createAndOpenProject();
 		try
 		{
 			BaseId id = project.createObject(objectType, BaseId.INVALID, extraInfo);
@@ -62,26 +60,21 @@ public class ObjectTestCase extends EAMTestCase
 		
 		verifyLoadPool(objectType, extraInfo);
 	}
-	
+
+	public ProjectForTesting createAndOpenProject() throws Exception
+	{
+		ProjectForTesting project = new ProjectForTesting(getName());
+		return project;
+	}
+	 
 	private void verifyLoadPool(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
-		BaseId id = BaseId.INVALID;
-
-		File dir = createTempDirectory();
-		Project project = new Project();
-		project.createOrOpen(dir);
+		ProjectForTesting project= createAndOpenProject();
 		try
 		{
+			BaseId id = BaseId.INVALID;
 			id = project.createObject(objectType, BaseId.INVALID, extraInfo);
-		}
-		finally
-		{
-			project.close();
-		}
-		
-		project.createOrOpen(dir);
-		try
-		{
+			project.closeAndReopen();
 			BaseObject object = project.findObject(objectType, id);
 			assertNotNull("Didn't load pool?", object);
 		}
@@ -89,7 +82,6 @@ public class ObjectTestCase extends EAMTestCase
 		{
 			project.close();
 		}
-		DirectoryUtils.deleteEntireDirectoryTree(dir);
 	}
 	
 	private void verifyFieldLifecycle(Project project, BaseObject object, String tag) throws Exception

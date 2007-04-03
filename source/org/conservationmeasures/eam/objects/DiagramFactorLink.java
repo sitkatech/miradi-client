@@ -28,7 +28,8 @@ public class DiagramFactorLink extends BaseObject
 		super(objectManager, new DiagramFactorLinkId(idToUse.asInt()));
 		
 		clear();
-		underlyingObjectId.setId(extraInfo.getFactorLinkId());
+		FactorLinkId factorLinkId = extraInfo.getFactorLinkId();
+		underlyingObjectId.setId(factorLinkId);
 		fromId.setId(extraInfo.getFromFactorId());
 		toId.setId(extraInfo.getToFactorId());
 	}

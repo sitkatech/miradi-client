@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -160,21 +159,6 @@ public class ProjectServer
 			info.fillFrom(JSONFile.read(infoFile));
 	}
 	
-	public void writeDiagram(DiagramModel model) throws IOException
-	{
-		getDiagramsDirectory().mkdirs();
-		JSONFile.write(getDiagramFile(), model.toJson());
-	}
-	
-	public void readDiagram(DiagramModel model) throws Exception
-	{
-		File diagramFile = getDiagramFile();
-		model.clear();
-		if(diagramFile.exists())
-			model.fillFrom(JSONFile.read(diagramFile));
-	}
-	
-	
 	public void writeThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
 	{
 		getThreatRatingsDirectory().mkdirs();
@@ -267,11 +251,6 @@ public class ProjectServer
 		return new File(topDirectory, JSON_DIRECTORY);
 	}
 	
-	private File getDiagramsDirectory()
-	{
-		return new File(getJsonDirectory(), DIAGRAMS_DIRECTORY);
-	}
-	
 	private File getObjectDirectory(int type)
 	{
 		return new File(getJsonDirectory(), "objects-" + Integer.toString(type));
@@ -308,11 +287,6 @@ public class ProjectServer
 		return new File(getThreatRatingsDirectory(), bundleKey);
 	}
 	
-	File getDiagramFile()
-	{
-		return new File(getDiagramsDirectory(), DIAGRAM_FILE);
-	}
-	
 	protected File getObjectFile(int type, BaseId id)
 	{
 		return new File(getObjectDirectory(type), Integer.toString(id.asInt()));
@@ -320,22 +294,21 @@ public class ProjectServer
 	
 	protected File getObjectManifestFile(int type)
 	{
+	
 		return new File(getObjectDirectory(type), MANIFEST_FILE);
 	}
 	
 	static String JSON_DIRECTORY = "json";
-	static String DIAGRAMS_DIRECTORY = "diagrams";
 	static String THREATRATINGS_DIRECTORY = "threatratings";
 	static String VERSION_FILE = "version";
 	static String PROJECTINFO_FILE = "project";
 	static String THREATFRAMEWORK_FILE = "threatframework";
 	static String MANIFEST_FILE = "manifest";
-	static String DIAGRAM_FILE = "main";
 
 	static public String OBJECT_TYPE = "Type";
 	static public String TAG_VERSION = "Version";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
-	static public int DATA_VERSION = 16;
+	static public int DATA_VERSION = 17;
 
 	File topDirectory;
 	String name;

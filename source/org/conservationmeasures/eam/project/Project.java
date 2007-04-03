@@ -42,8 +42,10 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
+import org.conservationmeasures.eam.objectpools.DiagramContentsPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -57,6 +59,7 @@ import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramContentsObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -85,7 +88,7 @@ public class Project
 		clear();
 	}
 
-	private void clear() throws IOException
+	protected void clear() throws IOException
 	{
 		if(diagramSaver != null)
 			removeCommandExecutedListener(diagramSaver);
@@ -208,6 +211,11 @@ public class Project
 	public DiagramModel getDiagramModel()
 	{
 		return diagramModel;
+	}
+
+	public DiagramContentsObject getDiagramContentsObject()
+	{
+		return getDiagramModel().getDiagramContentsObject();
 	}
 	
 	public LayerManager getLayerManager()
@@ -453,9 +461,28 @@ public class Project
 		getThreatRatingFramework().load();
 	}
 	
-	private void loadDiagram() throws Exception
+	public void loadDiagram() throws Exception
 	{
-		getDatabase().readDiagram(getDiagramModel());
+		DiagramContentsPool diagramContentsPool = (DiagramContentsPool) getPool(ObjectType.DIAGRAM_CONTENTS);
+		ORefList oRefs = diagramContentsPool.getORefList();
+		DiagramContentsObject diagramContentsObject = getDiagramContentsObject(oRefs);
+		getDiagramModel().fillFrom(diagramContentsObject);
+	}
+
+	private DiagramContentsObject getDiagramContentsObject(ORefList oRefs) throws Exception
+	{
+		if (oRefs.size() == 0)
+		{
+			BaseId id = createObject(ObjectType.DIAGRAM_CONTENTS);
+			return (DiagramContentsObject) findObject(new ORef(ObjectType.DIAGRAM_CONTENTS, id));
+		}
+		if (oRefs.size() > 1)
+		{
+			EAM.logVerbose("Found more than one diagram contents inside pool");
+		}
+
+		ORef oRef = oRefs.get(0);
+		return (DiagramContentsObject) findObject(oRef);
 	}
 
 	protected void finishOpening() throws Exception
@@ -989,7 +1016,6 @@ public class Project
 			try
 			{
 				saveProjectInfo();
-				getDatabase().writeDiagram(getDiagramModel());
 			}
 			catch (IOException e)
 			{

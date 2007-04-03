@@ -43,7 +43,6 @@ public class TestProjectScopeBox extends EAMTestCase
 
 	public void testGetBounds() throws Exception
 	{
-		model.clear();
 		ProjectScopeBox scope = model.getProjectScopeBox();
 		Rectangle2D noTargets = scope.getBounds();
 		Rectangle allZeros = new Rectangle(0,0,0,0);

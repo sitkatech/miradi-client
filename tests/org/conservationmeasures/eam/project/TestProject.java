@@ -92,21 +92,18 @@ public class TestProject extends EAMTestCase
 	{
 		project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
 		
-		DiagramModel model = new DiagramModel(project);
-		project.getDatabase().readDiagram(model);
-		assertEquals("not one node?", 1, project.getAllDiagramFactorIds().length);
-
 		//undo add diagramFactor
 		project.undo();
 		
 		//undo create diagramFactor
 		project.undo();
-		project.getDatabase().readDiagram(model);
-		assertEquals("node not removed?", 0, project.getAllDiagramFactorIds().length);
+		
+		assertEquals("node not removed?", 0, project.getDiagramContentsObject().getAllDiagramFactorIds().size());
 
 		project.redo();
-		project.getDatabase().readDiagram(model);
-		assertEquals("node not re-added?", 1, project.getAllDiagramFactorIds().length);
+		
+		project.redo();
+		assertEquals("node not re-added?", 1, project.getDiagramContentsObject().getAllDiagramFactorIds().size());
 	}
 	
 	public void testGetViewData() throws Exception
@@ -567,8 +564,7 @@ public class TestProject extends EAMTestCase
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
 		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(cmd);
-		DiagramModel copyOfModel = new DiagramModel(project);
-		project.getDatabase().readDiagram(copyOfModel);
+		project.closeAndReopen();
 		assertEquals("didn't read back our one node?", 1, project.getAllDiagramFactorIds().length);
 	}
 	
@@ -588,44 +584,44 @@ public class TestProject extends EAMTestCase
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
 		CommandDiagramAddFactor targetCommand = new CommandDiagramAddFactor(diagramFactorId);
 		project.executeCommand(targetCommand);
-		assertEquals(1 + existingCalls, database.callsToWriteObject);
+		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		
 		CreateDiagramFactorParameter extraDiagramFactorInfo2 = new CreateDiagramFactorParameter(factorId);
 		CommandCreateObject createDiagramFactor2 = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo2);
 		project.executeCommand(createDiagramFactor2);
-		assertEquals(2 + existingCalls, database.callsToWriteObject);
+		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
 		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createDiagramFactor2.getCreatedId();
 		CommandDiagramAddFactor factorCommand = new CommandDiagramAddFactor(diagramFactorId2);
 		project.executeCommand(factorCommand);
-		assertEquals(2 + existingCalls, database.callsToWriteObject);
+		assertEquals(4 + existingCalls, database.callsToWriteObject);
 		FactorCell factor = project.getDiagramModel().getFactorCellByWrappedId(factorId);
 		
 		// undo the AddNode
 		project.undo();
-		assertEquals(2 + existingCalls, database.callsToWriteObject);
+		assertEquals(5 + existingCalls, database.callsToWriteObject);
 		
 		// undo the create diagram factor
 		project.undo();
-		assertEquals(2 + existingCalls, database.callsToWriteObject);
+		assertEquals(5 + existingCalls, database.callsToWriteObject);
 		
 		// redo the created diagram factor
 		project.redo();
-		assertEquals(3 + existingCalls, database.callsToWriteObject);
+		assertEquals(6 + existingCalls, database.callsToWriteObject);
 		
 		// redo the add diagram factor
 		project.redo();
-		assertEquals(3 + existingCalls, database.callsToWriteObject);
+		assertEquals(7 + existingCalls, database.callsToWriteObject);
 
 		String previousLocation = EnhancedJsonObject.convertFromPoint(new Point(5, 5));
 		String newLocation = EnhancedJsonObject.convertFromPoint(new Point(9, 9));
 		CommandSetObjectData moveDiagramFactor = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newLocation, previousLocation);
 		project.executeCommand(moveDiagramFactor);
-		assertEquals(4 + existingCalls, database.callsToWriteObject);
+		assertEquals(8 + existingCalls, database.callsToWriteObject);
 		
 		String newDimension = EnhancedJsonObject.convertFromDimension(new Dimension(50, 75));
 		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_SIZE, newDimension));
-		assertEquals(5 + existingCalls, database.callsToWriteObject);
+		assertEquals(9 + existingCalls, database.callsToWriteObject);
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception

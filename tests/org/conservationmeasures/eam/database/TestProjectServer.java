@@ -8,10 +8,7 @@ package org.conservationmeasures.eam.database;
 import java.io.File;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -19,9 +16,7 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.RatingCriterion;
@@ -159,64 +154,6 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("didn't read?", defaultId, got.getValueId(new BaseId(38838)));
 		
 		assertNull("didn't return null for non-existent bundle?", storage.readThreatRatingBundle(new BaseId(282), new BaseId(2995)));
-	}
-	
-	public void testWriteAndReadDiagram() throws Exception
-	{
-		ProjectForTesting project = new ProjectForTesting(getName());
-		try
-		{
-		
-			try
-			{
-				storage.readDiagram(new DiagramModel(project));
-			}
-			catch(Exception e)
-			{
-				fail("didn't allow reading non-existent diagram?");
-			}
-			
-			DiagramModel model = project.getDiagramModel();
-			FactorPool nodePool = model.getFactorPool();
-			storage.writeDiagram(model);
-	
-			try
-			{
-				storage.readDiagram(new DiagramModel(project));
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-				fail("didn't allow reading an empty diagram?");
-			}
-			
-			Strategy cmIntervention = new Strategy(takeNextModelNodeId());
-			nodePool.put(cmIntervention);
-	
-			Target cmTarget = new Target(takeNextModelNodeId());
-			nodePool.put(cmTarget);
-			
-			project.createFactorCell(Factor.TYPE_CAUSE);
-			project.createFactorCell(Factor.TYPE_CAUSE);
-			
-			storage.writeDiagram(model);
-			
-			DiagramModel got = new DiagramModel(project); 
-			storage.readDiagram(got);
-			DiagramFactor[] gotNodes = project.getAllDiagramFactors();
-			assertEquals("wrong node count?", 2, gotNodes.length);
-			for(int i=0; i < gotNodes.length; ++i)
-			{
-				DiagramFactor diagramFactor = gotNodes[i];
-				DiagramFactorId diagramFactorId = diagramFactor.getDiagramFactorId();
-				FactorCell expectedNode = model.getFactorCellById(diagramFactorId);
-				assertEquals("node data not right?", expectedNode.getLocation(), diagramFactor.getLocation());
-			}
-		}
-		finally
-		{
-			project.close();
-		}
 	}
 	
 	public void testReadAndWriteThreatRatingFramework() throws Exception

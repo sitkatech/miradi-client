@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -36,6 +37,14 @@ public class ProjectForTesting extends Project
 		getTestDatabase().openMemoryDatabase(testName);
 		finishOpening();
 		commandStack = new Vector();
+	}
+	
+	//TODO this is fragile, should do a true close
+	public void closeAndReopen() throws Exception
+	{
+		File topDirectory = getDatabase().getTopDirectory();
+		getTestDatabase().closeAndDontDelete();
+		createOrOpen(topDirectory);
 	}
 
 	void fireCommandExecuted(Command command) 
