@@ -44,7 +44,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	{
 		GenericTreeTableModel treeTableModel = getModel();
 		final boolean wereKEANodesAddedOrRemoved = 
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.FACTOR, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		
 		final boolean wereIndicatorNodesAddedOrRemoved = 
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_INDICATOR_IDS);

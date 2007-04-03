@@ -26,7 +26,7 @@ public class TestProjectRepairer extends EAMTestCase
 		try
 		{
 			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
-			BaseId rawNodeId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
+			BaseId rawNodeId = project.createObject(ObjectType.TARGET, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusIndicators = new IdList();
@@ -53,7 +53,7 @@ public class TestProjectRepairer extends EAMTestCase
 		try
 		{
 			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
-			BaseId rawNodeId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
+			BaseId rawNodeId = project.createObject(ObjectType.TARGET, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusGoals = new IdList();
@@ -80,7 +80,7 @@ public class TestProjectRepairer extends EAMTestCase
 		try
 		{
 			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
-			BaseId rawNodeId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
+			BaseId rawNodeId = project.createObject(ObjectType.TARGET, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusObjectives = new IdList();
@@ -107,7 +107,7 @@ public class TestProjectRepairer extends EAMTestCase
 		try
 		{
 			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
-			BaseId rawNodeId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
+			BaseId rawNodeId = project.createObject(ObjectType.TARGET, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusObjectives = new IdList();

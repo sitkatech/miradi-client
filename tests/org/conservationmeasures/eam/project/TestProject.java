@@ -119,8 +119,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testCreateAndDeleteModelLinkage() throws Exception
 	{
-		FactorId threatId = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
-		FactorId targetId = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
+		FactorId threatId = (FactorId)project.createObject(ObjectType.CAUSE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
+		FactorId targetId = (FactorId)project.createObject(ObjectType.TARGET, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
 		Cause factor = (Cause)project.findNode(threatId);
 		assertFalse("already direct threat?", factor.isDirectThreat());
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
@@ -525,7 +525,7 @@ public class TestProject extends EAMTestCase
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
 		project.removeDiagramFactorFromDiagram(idToDelete);
-		project.deleteObject(ObjectType.FACTOR, node1.getWrappedId());
+		project.deleteObject(ObjectType.TARGET, node1.getWrappedId());
 		project.deleteObject(ObjectType.DIAGRAM_FACTOR, node1.getDiagramFactorId());
 		
 		assertEquals("objects still in the pool?", 0, project.getFactorPool().size());
@@ -630,7 +630,7 @@ public class TestProject extends EAMTestCase
 		try
 		{
 			CreateFactorParameter createTarget = new CreateFactorParameter(Factor.TYPE_CAUSE);
-			project.createObject(ObjectType.FACTOR, gotId, createTarget);
+			project.createObject(ObjectType.CAUSE, gotId, createTarget);
 			fail("Should have thrown for inserting a duplicate id");
 		}
 		catch(RuntimeException ignoreExpected)
@@ -758,8 +758,8 @@ public class TestProject extends EAMTestCase
 			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
 			
 			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_STRATEGY);
-			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
-			diskProject.deleteObject(ObjectType.FACTOR, interventionId);
+			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY, BaseId.INVALID, parameter);
+			diskProject.deleteObject(ObjectType.STRATEGY, interventionId);
 	
 			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, Factor.TYPE_CAUSE);
 			deleteNodeAndRemoveFromDiagram(diskProject, diagramFactor);

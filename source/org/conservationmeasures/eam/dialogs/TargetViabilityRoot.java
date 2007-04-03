@@ -48,7 +48,7 @@ public class TargetViabilityRoot extends TreeTableNode
 	
 	public int getType()
 	{
-		return ObjectType.FACTOR;
+		return ObjectType.TARGET;
 	}
 
 	public Object getValueAt(int column)

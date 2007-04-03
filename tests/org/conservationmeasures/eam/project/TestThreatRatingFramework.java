@@ -143,7 +143,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertFalse("deleted threatId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle1));
 		
 		ThreatRatingBundle bundle2 = createThreatTargetAndBundle();
-		project.deleteObject(ObjectType.FACTOR, bundle2.getTargetId());
+		project.deleteObject(ObjectType.TARGET, bundle2.getTargetId());
 		assertFalse("deleted targetId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle2));
 		
 	}
@@ -215,7 +215,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		FactorId threatId = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
+		FactorId threatId = (FactorId)project.createObject(ObjectType.CAUSE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
 		FactorId targetId = createTarget(project);
 
 		ValueOption none = framework.findValueOptionByNumericValue(0);
@@ -310,13 +310,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private FactorId createTarget(Project projectToUse) throws Exception
 	{
-		FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
+		FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.TARGET, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
 		return targetId;
 	}
 
 	private FactorId createThreat(Project projectToUse) throws Exception
 	{
-		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
+		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.CAUSE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
 		((Cause)projectToUse.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}

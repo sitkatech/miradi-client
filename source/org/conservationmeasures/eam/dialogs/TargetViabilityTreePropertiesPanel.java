@@ -52,7 +52,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 {
 	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		super(projectToUse, new ORef(ObjectType.FACTOR, new FactorId(BaseId.INVALID.asInt())));
+		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));
 		ObjectDataInputField keaLabel = addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
 		ObjectDataInputField keaDesc = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
 		ObjectDataInputField keaType = addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));

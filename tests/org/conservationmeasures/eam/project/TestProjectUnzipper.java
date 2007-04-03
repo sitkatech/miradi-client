@@ -86,7 +86,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		{
 			Project project = new Project();
 			project.createOrOpen(originalDirectory);
-			project.createObject(ObjectType.FACTOR, targetId, new CreateFactorParameter(new FactorTypeTarget()));
+			project.createObject(ObjectType.TARGET, targetId, new CreateFactorParameter(new FactorTypeTarget()));
 			project.close();
 
 			File zip = createTempFile();

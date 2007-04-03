@@ -136,7 +136,7 @@ public class TestUndoRedo extends EAMTestCase
 	private DiagramFactorId insertFactor(Project p) throws Exception 
 	{
 		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_CAUSE);
-		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.FACTOR, extraInfo);
+		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.CAUSE, extraInfo);
 		p.executeCommand(createModelNodeCommand);
 		
 		FactorId factorId = (FactorId)createModelNodeCommand.getCreatedId();
