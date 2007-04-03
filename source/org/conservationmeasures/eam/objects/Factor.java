@@ -234,19 +234,6 @@ abstract public class Factor extends BaseObject
 	{
 		return new CreateFactorParameter(getNodeType());
 	}
-
-	public static Factor createFrom(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		String typeString = json.getString(TAG_NODE_TYPE);
-		if(typeString.equals(FactorTypeStrategy.STRATEGY_TYPE))
-			return new Strategy(objectManager, new FactorId(idAsInt), json);
-		if(typeString.equals(FactorTypeCause.CAUSE_TYPE))
-			return new Cause(objectManager, new FactorId(idAsInt), json);
-		if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
-			return new Target(objectManager, new FactorId(idAsInt), json);
-		
-		throw new RuntimeException("Read unknown node type: " + typeString);
-	}
 	
 	public EnhancedJsonObject toJson()
 	{

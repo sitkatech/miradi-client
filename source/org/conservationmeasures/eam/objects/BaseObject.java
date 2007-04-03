@@ -10,7 +10,11 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -80,7 +84,20 @@ abstract public class BaseObject
 				return new Task(objectManager, idAsInt, json);
 			
 			case ObjectType.FACTOR:
-				return Factor.createFrom(objectManager, idAsInt, json);
+			{
+				String typeString = json.getString(Factor.TAG_NODE_TYPE);
+			
+				if(typeString.equals(FactorTypeStrategy.STRATEGY_TYPE))
+					return new Strategy(objectManager, new FactorId(idAsInt), json);
+				
+				if(typeString.equals(FactorTypeCause.CAUSE_TYPE))
+					return new Cause(objectManager, new FactorId(idAsInt), json);
+				
+				if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
+					return new Target(objectManager, new FactorId(idAsInt), json);
+				
+				throw new RuntimeException("Read unknown node type: " + typeString);
+			}
 
 			case ObjectType.VIEW_DATA:
 				return new ViewData(objectManager, idAsInt, json);
