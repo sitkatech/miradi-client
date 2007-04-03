@@ -64,11 +64,11 @@ public class TestObjectManager extends EAMTestCase
 		}
 		
 		CreateFactorParameter factor = new CreateFactorParameter(new FactorTypeCause());
-		verifyObjectLifecycle(ObjectType.FACTOR, factor);
+		verifyObjectLifecycle(ObjectType.CAUSE, factor);
 		
 		CreateFactorParameter target = new CreateFactorParameter(new FactorTypeTarget());
-		FactorId factorId = (FactorId)manager.createObject(ObjectType.FACTOR, BaseId.INVALID, factor);
-		FactorId targetId = (FactorId)manager.createObject(ObjectType.FACTOR, BaseId.INVALID, target);
+		FactorId factorId = (FactorId)manager.createObject(ObjectType.CAUSE, BaseId.INVALID, factor);
+		FactorId targetId = (FactorId)manager.createObject(ObjectType.TARGET, BaseId.INVALID, target);
 		CreateFactorLinkParameter link = new CreateFactorLinkParameter(factorId, targetId);
 		verifyBasicObjectLifecycle(ObjectType.FACTOR_LINK, link);
 	}
@@ -220,7 +220,7 @@ public class TestObjectManager extends EAMTestCase
 	private void verifyGetPool(int type) throws Exception
 	{
 		CreateObjectParameter cop = null;
-		if(type == ObjectType.FACTOR)
+		if(type == ObjectType.TARGET)
 			cop = new CreateFactorParameter(new FactorTypeTarget());
 		else if(type == ObjectType.FACTOR_LINK)
 			cop = new CreateFactorLinkParameter(new FactorId(1), new FactorId(2));

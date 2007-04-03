@@ -43,12 +43,12 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		model = project.getDiagramModel();
 
 		CreateFactorParameter createIntervention = new CreateFactorParameter(new FactorTypeStrategy());
-		BaseId rawInterventionId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, createIntervention);
+		BaseId rawInterventionId = project.createObject(ObjectType.STRATEGY, BaseId.INVALID, createIntervention);
 		FactorId interventionId = new FactorId(rawInterventionId.asInt());
 		cmIntervention = project.findNode(interventionId);
 		
 		CreateFactorParameter createTarget = new CreateFactorParameter(new FactorTypeTarget());
-		BaseId rawTargetId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, createTarget);
+		BaseId rawTargetId = project.createObject(ObjectType.TARGET, BaseId.INVALID, createTarget);
 		FactorId targetId = new FactorId(rawTargetId.asInt());
 		cmTarget = project.findNode(targetId);
 	}

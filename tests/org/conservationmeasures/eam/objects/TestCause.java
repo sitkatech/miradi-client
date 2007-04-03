@@ -19,7 +19,7 @@ public class TestCause extends ObjectTestCase
 	public void testFields() throws Exception
 	{
 		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_CAUSE);
-		verifyFields(ObjectType.FACTOR, extraInfo);
+		verifyFields(ObjectType.CAUSE, extraInfo);
 	}
 	
 	public void testExtraInfo() throws Exception

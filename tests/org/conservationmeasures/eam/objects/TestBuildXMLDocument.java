@@ -54,11 +54,11 @@ public class TestBuildXMLDocument extends EAMTestCase
 			processObjectPool(project, "Assignments", "Assignment", ObjectType.ASSIGNMENT);
 			processObjectPool(project, "DiagramLinks", "DiagramLink",ObjectType.DIAGRAM_LINK);
 			
-			processFactorObjectPool(project, "Strategys", "Strategy", ObjectType.FACTOR);
-			processFactorObjectPool(project, "DraftStrategys", "Strategy", ObjectType.FACTOR);
-			processFactorObjectPool(project, "Targets", "Target", ObjectType.FACTOR);
+			processFactorObjectPool(project, "Strategys", "Strategy", ObjectType.STRATEGY);
+			processFactorObjectPool(project, "DraftStrategys", "Strategy", ObjectType.STRATEGY);
+			processFactorObjectPool(project, "Targets", "Target", ObjectType.TARGET);
 			processFactorObjectPool(project, "ContributingFactors", "ContributingFactor", ObjectType.FACTOR);
-			processFactorObjectPool(project, "Causes", "Cause", ObjectType.FACTOR);
+			processFactorObjectPool(project, "Causes", "Cause", ObjectType.CAUSE);
 
 			processObjectPool(project, "FactorLinks", "FactorLink",	ObjectType.FACTOR_LINK);
 			processObjectPool(project, "FundingSources", "FundingSource", ObjectType.FUNDING_SOURCE);
