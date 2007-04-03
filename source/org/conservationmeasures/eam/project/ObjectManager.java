@@ -56,7 +56,6 @@ import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
@@ -258,13 +257,13 @@ public class ObjectManager
 			case ObjectType.INDICATOR:
 				return getIndicatorPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.FACTOR:
-				return getNewPseudoField(ObjectType.FACTOR, objectId, fieldTag);
+				return getNewPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.TASK:
 				return getTaskPseudoField(objectId, fieldTag);
 			case ObjectType.PROJECT_METADATA:
 				return getProjectMetadataPseudoField(objectId, fieldTag);
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
-				return getKeyEcologicalAttributePseudoField(objectId, fieldTag);
+				return getNewPseudoField(objectType, objectId, fieldTag);
 		}
 		throw new RuntimeException("Unknown PseudoTag: " + fieldTag + " for type " + objectType);	
 	}
@@ -279,20 +278,6 @@ public class ObjectManager
 		return getPool(objectType).findObject(objectId);
 	}
 	
-	private String getKeyEcologicalAttributePseudoField(BaseId objectId, String fieldTag)
-	{
-		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)findObject(new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, objectId));
-		try
-		{
-			if (fieldTag.equals(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS))
-				return kea.getData(fieldTag);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-		return "";
-	}
 
 	private String getIndicatorPseudoField(int annotationType, BaseId annotationId, String fieldTag)
 	{
