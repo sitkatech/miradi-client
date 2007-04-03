@@ -13,7 +13,6 @@ import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.ChainObject;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -59,8 +58,6 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
-import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
@@ -261,7 +258,7 @@ public class ObjectManager
 			case ObjectType.INDICATOR:
 				return getIndicatorPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.FACTOR:
-				return getFactorPseudoField(objectId, fieldTag);
+				return getNewPseudoField(ObjectType.FACTOR, objectId, fieldTag);
 			case ObjectType.TASK:
 				return getTaskPseudoField(objectId, fieldTag);
 			case ObjectType.PROJECT_METADATA:
@@ -360,31 +357,7 @@ public class ObjectManager
 		return "";
 	}
 	
-	private String getFactorPseudoField(BaseId factorId, String fieldTag)
-	{
-		try
-		{
-			if(fieldTag.equals(Factor.PSEUDO_TAG_GOALS))
-				return getNewPseudoField(ObjectType.FACTOR, factorId, fieldTag);;
-			if(fieldTag.equals(Factor.PSEUDO_TAG_OBJECTIVES))
-				return getNewPseudoField(ObjectType.FACTOR, factorId, fieldTag);;
-			if(fieldTag.equals(Factor.PSEUDO_TAG_DIRECT_THREATS))
-				return getFactorRelatedDirectThreats((FactorId)factorId);
-			if(fieldTag.equals(Factor.PSEUDO_TAG_TARGETS))
-				return getFactorRelatedTargets((FactorId)factorId);
-			if(fieldTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
-				return getNewPseudoField(ObjectType.FACTOR, factorId, fieldTag);
-			if(fieldTag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
-				return getNewPseudoField(ObjectType.FACTOR, factorId, fieldTag);;
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-		return "";
-		
-	}
+
 	
 	private String getNewPseudoField(int objectType, BaseId id, String fieldTag)
 	{
@@ -398,24 +371,6 @@ public class ObjectManager
 		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
 	}
 
-	private String getFactorRelatedDirectThreats(FactorId factorId)
-	{
-		ChainObject chain = new ChainObject();
-		chain.buildNormalChain(project.getDiagramModel(), findNode(factorId));
-		DirectThreatSet directThreats = new DirectThreatSet(chain.getFactors());
-		
-		return getLabelsAsMultiline(directThreats);
-	}
-
-	private String getFactorRelatedTargets(FactorId factorId)
-	{
-		ChainObject chain = new ChainObject();
-		chain.buildNormalChain(project.getDiagramModel(), findNode(factorId));
-		TargetSet directThreats = new TargetSet(chain.getFactors());
-		
-		return getLabelsAsMultiline(directThreats);
-	}
-	
 
 	private String getTaskPseudoField(BaseId taskId, String fieldTag)
 	{

@@ -18,8 +18,10 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -289,9 +291,32 @@ abstract public class Factor extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_OBJECTIVES))
 			return getFactorObjectives();
 		
+		if(fieldTag.equals(Factor.PSEUDO_TAG_DIRECT_THREATS))
+			return getFactorRelatedDirectThreats();
+		
+		if(fieldTag.equals(Factor.PSEUDO_TAG_TARGETS))
+			return getFactorRelatedTargets();
+		
 		return super.getData(fieldTag);
 	}
 	
+	private String getFactorRelatedDirectThreats()
+	{
+		ChainObject chain = new ChainObject();
+		chain.buildNormalChain(objectManager.getDiagramModel(), this);
+		DirectThreatSet directThreats = new DirectThreatSet(chain.getFactors());
+		
+		return getLabelsAsMultiline(directThreats);
+	}
+
+	private String getFactorRelatedTargets()
+	{
+		ChainObject chain = new ChainObject();
+		chain.buildNormalChain(objectManager.getDiagramModel(), this);
+		TargetSet directThreats = new TargetSet(chain.getFactors());
+		
+		return getLabelsAsMultiline(directThreats);
+	}
 	
 	private String getFactorGoals()
 	{

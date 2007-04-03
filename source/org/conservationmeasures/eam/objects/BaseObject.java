@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -269,6 +270,22 @@ abstract public class BaseObject
 	public Vector getNoneClearedFieldTags()
 	{
 		return noneClearedFieldTags;
+	}
+	
+	public String getLabelsAsMultiline(FactorSet factors)
+	{
+		StringBuffer result = new StringBuffer();
+		Iterator iter = factors.iterator();
+		while(iter.hasNext())
+		{
+			if(result.length() > 0)
+				result.append("\n");
+			
+			Factor factor = (Factor)iter.next();
+			result.append(factor.getLabel());
+		}
+		
+		return result.toString();
 	}
 	
 	public String combineShortLabelAndLabel(String shortLabel, String Longlabel)
