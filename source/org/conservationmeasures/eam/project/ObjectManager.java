@@ -14,6 +14,7 @@ import java.util.Iterator;
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.ChainObject;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -364,9 +365,9 @@ public class ObjectManager
 		try
 		{
 			if(fieldTag.equals(Factor.PSEUDO_TAG_GOALS))
-				return getFactorGoals((FactorId)factorId);
+				return getNewPseudoField(ObjectType.FACTOR, factorId, fieldTag);;
 			if(fieldTag.equals(Factor.PSEUDO_TAG_OBJECTIVES))
-				return getFactorObjectives((FactorId)factorId);
+				return getNewPseudoField(ObjectType.FACTOR, factorId, fieldTag);;
 			if(fieldTag.equals(Factor.PSEUDO_TAG_DIRECT_THREATS))
 				return getFactorRelatedDirectThreats((FactorId)factorId);
 			if(fieldTag.equals(Factor.PSEUDO_TAG_TARGETS))
@@ -395,54 +396,6 @@ public class ObjectManager
 	Factor findNode(FactorId id)
 	{
 		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
-	}
-	
-	private String getFactorGoals(FactorId factorId) throws ParseException
-	{
-		return getFactorDesires(factorId, ObjectType.GOAL, Factor.TAG_GOAL_IDS);
-	}
-
-	private String getFactorObjectives(FactorId factorId) throws ParseException
-	{
-		return getFactorDesires(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
-	}
-	
-	private String getFactorDesires(FactorId factorId, int desireType, String desireIdsTag) throws ParseException
-	{
-		ChainObject chain = new ChainObject();
-		chain.buildDownstreamChain(project.getDiagramModel(), findNode(factorId));
-		
-		IdList allDesireIds = new IdList();
-		Factor[] factors = chain.getFactorsArray();
-		for(int i = 0; i < factors.length; ++i)
-		{
-			Factor factor = factors[i];
-			IdList theseDesireIds = new IdList(factor.getData(desireIdsTag));
-			addMissingIds(allDesireIds, theseDesireIds);
-		}
-		
-		return getDesiresAsMultiline(desireType, allDesireIds);
-	}
-	
-	private void addMissingIds(IdList destination, IdList source)
-	{
-		for(int i = 0; i < source.size(); ++i)
-			if(!destination.contains(source.get(i)))
-				destination.add(source.get(i));
-	}
-	
-	private String getDesiresAsMultiline(int desireType, IdList desireIds)
-	{
-		StringBuffer result = new StringBuffer();
-		for(int i = 0; i < desireIds.size(); ++i)
-		{
-			if(result.length() > 0)
-				result.append("\n");
-			
-			result.append(getObjectData(desireType, desireIds.get(i), Desire.TAG_LABEL));
-		}
-		
-		return result.toString();
 	}
 
 	private String getFactorRelatedDirectThreats(FactorId factorId)
@@ -708,6 +661,11 @@ public class ObjectManager
 		return getProject().getDatabase();
 	}
 
+	public DiagramModel getDiagramModel()
+	{
+		return getProject().getDiagramModel();
+	}
+	
 	class FactorLinkMonitor implements FactorLinkListener
 	{
 		public void factorLinkWasCreated(FactorId linkFromId, FactorId linkToId)

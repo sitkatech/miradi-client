@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.diagram.ChainObject;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
@@ -12,6 +13,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
@@ -257,6 +259,7 @@ abstract public class Factor extends BaseObject
 		return getLabel();
 	}
 	
+	
 	public static Factor createConceptualModelObject(FactorId idToCreate, CreateFactorParameter parameter)
 	{
 		 return createConceptualModelObject(null, idToCreate, parameter);
@@ -275,6 +278,80 @@ abstract public class Factor extends BaseObject
 			return new Target(objectManager, idToCreate);
 	
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
+	}
+
+	
+	public String getData(String fieldTag)
+	{
+		if(fieldTag.equals(PSEUDO_TAG_GOALS))
+			return getFactorGoals();
+		
+		if(fieldTag.equals(PSEUDO_TAG_OBJECTIVES))
+			return getFactorObjectives();
+		
+		return super.getData(fieldTag);
+	}
+	
+	
+	private String getFactorGoals()
+	{
+		return getFactorDesires(ObjectType.GOAL, Factor.TAG_GOAL_IDS);
+	}
+
+	private String getFactorObjectives()
+	{
+		return getFactorDesires(ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+	}
+	
+	private String getFactorDesires(int desireType, String desireIdsTag)
+	{
+		ChainObject chain = new ChainObject();
+		chain.buildDownstreamChain(objectManager.getDiagramModel(), this);
+		
+		IdList allDesireIds = new IdList();
+		Factor[] factors = chain.getFactorsArray();
+		for(int i = 0; i < factors.length; ++i)
+		{
+			Factor factor = factors[i];
+			IdList theseDesireIds = getIdList(desireIdsTag, factor);
+			addMissingIds(allDesireIds, theseDesireIds);
+		}
+		
+		return getDesiresAsMultiline(desireType, allDesireIds);
+	}
+
+	private IdList getIdList(String desireIdsTag, Factor factor)
+	{
+		try
+		{
+			return new IdList(factor.getData(desireIdsTag));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new IdList();
+		}
+	}
+	
+	private void addMissingIds(IdList destination, IdList source)
+	{
+		for(int i = 0; i < source.size(); ++i)
+			if(!destination.contains(source.get(i)))
+				destination.add(source.get(i));
+	}
+	
+	private String getDesiresAsMultiline(int desireType, IdList desireIds)
+	{
+		StringBuffer result = new StringBuffer();
+		for(int i = 0; i < desireIds.size(); ++i)
+		{
+			if(result.length() > 0)
+				result.append("\n");
+			
+			result.append(objectManager.getObjectData(desireType, desireIds.get(i), Desire.TAG_LABEL));
+		}
+		
+		return result.toString();
 	}
 
 	void clear()
