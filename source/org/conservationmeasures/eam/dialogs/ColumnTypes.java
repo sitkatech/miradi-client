@@ -35,7 +35,7 @@ public class ColumnTypes
 	{
 		HashMap map = new HashMap();
 		
-		map.put(buildKey(ObjectType.FACTOR, Strategy.TAG_SHORT_LABEL), SHORT_LABEL);
+		map.put(buildKey(ObjectType.STRATEGY, Strategy.TAG_SHORT_LABEL), SHORT_LABEL);
 		map.put(buildKey(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL), SHORT_LABEL);
 		map.put(buildKey(ObjectType.OBJECTIVE, Objective.TAG_SHORT_LABEL), SHORT_LABEL);
 		map.put(buildKey(ObjectType.GOAL, Goal.TAG_SHORT_LABEL), SHORT_LABEL);
