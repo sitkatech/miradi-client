@@ -61,7 +61,6 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
@@ -290,7 +289,7 @@ public class ObjectManager
 		try
 		{
 			if (fieldTag.equals(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS))
-				return computeTNCViability(kea);
+				return kea.getData(fieldTag);
 		}
 		catch(Exception e)
 		{
@@ -374,10 +373,8 @@ public class ObjectManager
 				return getFactorRelatedDirectThreats((FactorId)factorId);
 			if(fieldTag.equals(Factor.PSEUDO_TAG_TARGETS))
 				return getFactorRelatedTargets((FactorId)factorId);
-			// TODO: Enforce isStrategy for this
 			if(fieldTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
-				return getStrategyRatingSummary((FactorId)factorId);
-			// TODO: Enforce isTarget for this
+				return getNewPseudoField(ObjectType.FACTOR, factorId, fieldTag);
 			if(fieldTag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
 				return getTargetViability((FactorId)factorId);
 		}
@@ -390,16 +387,16 @@ public class ObjectManager
 		
 	}
 	
+	private String getNewPseudoField(int objectType, BaseId id, String fieldTag)
+	{
+		BaseObject baseObject = findObject(new ORef(objectType, id));
+		return baseObject.getData(fieldTag);
+	}
+	
+	
 	Factor findNode(FactorId id)
 	{
 		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
-	}
-	
-	private String getStrategyRatingSummary(FactorId factorId)
-	{
-		ChoiceItem rating = ((Strategy)findNode(factorId)).getStrategyRating();
-		return rating.getCode();
-
 	}
 	
 	private String getTargetViability(FactorId factorId)
@@ -410,7 +407,7 @@ public class ObjectManager
 		return target.getBasicTargetStatus();
 	}
 	
-	public String computeTNCViability(Target target)
+	private String computeTNCViability(Target target)
 	{
 		HashMap categoryKeaRatings = new HashMap();
 		
@@ -429,7 +426,7 @@ public class ObjectManager
 				categoryKeaRatings.put(category, codesForCategory);
 			}
 
-			String keaViability = computeTNCViability(kea);
+			String keaViability = kea.getData(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS);
 			codesForCategory.add(keaViability);
 		}
 		
@@ -446,18 +443,6 @@ public class ObjectManager
 		return TNCViabilityFormula.getAverageRatingCode(categorySummaryRatings);
 	}
 	
-	public String computeTNCViability(KeyEcologicalAttribute kea)
-	{
-		CodeList statuses = new CodeList();
-		IdList indicatorIds = kea.getIndicatorIds();
-		for(int i = 0; i < indicatorIds.size(); ++i)
-		{
-			String status = getObjectData(ObjectType.INDICATOR, indicatorIds.get(i), Indicator.TAG_MEASUREMENT_STATUS);
-			statuses.add(status);
-		}
-		String result = TNCViabilityFormula.getAverageRatingCode(statuses);
-		return result;
-	}
 
 	private String getFactorGoals(FactorId factorId) throws ParseException
 	{

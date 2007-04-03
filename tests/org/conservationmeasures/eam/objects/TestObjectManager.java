@@ -144,7 +144,7 @@ public class TestObjectManager extends EAMTestCase
 		Indicator fair = createIndicator(FAIR);
 		Indicator veryGood = createIndicator(VERY_GOOD);
 		KeyEcologicalAttribute kea = createKEA(new Indicator[] {fair, veryGood});
-		assertEquals(GOOD, project.getObjectManager().computeTNCViability(kea));
+		assertEquals(GOOD, kea.getData(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS));
 	}
 	
 	private void verifyObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception

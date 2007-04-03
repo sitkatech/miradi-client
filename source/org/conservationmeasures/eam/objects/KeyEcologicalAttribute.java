@@ -13,6 +13,8 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.TNCViabilityFormula;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class KeyEcologicalAttribute extends BaseObject
@@ -96,6 +98,26 @@ public class KeyEcologicalAttribute extends BaseObject
 	public IdList getIndicatorIds()
 	{
 		return indicatorIds.getIdList();
+	}
+	
+	public String getData(String fieldTag)
+	{
+		if(fieldTag.equals(PSUEDO_TAG_VIABILITY_STATUS))
+			return computeTNCViability();
+		
+		return super.getData(fieldTag);
+	}
+	
+	public String computeTNCViability()
+	{
+		CodeList statuses = new CodeList();
+		for(int i = 0; i < indicatorIds.size(); ++i)
+		{
+			String status = objectManager.getObjectData(ObjectType.INDICATOR, indicatorIds.get(i), Indicator.TAG_MEASUREMENT_STATUS);
+			statuses.add(status);
+		}
+		String result = TNCViabilityFormula.getAverageRatingCode(statuses);
+		return result;
 	}
 	
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";

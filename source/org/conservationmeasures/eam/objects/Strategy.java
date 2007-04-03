@@ -96,6 +96,10 @@ public class Strategy extends Factor
 	{
 		if(TAG_STATUS.equals(fieldTag))
 			return status;
+		
+		if(fieldTag.equals(PSEUDO_TAG_RATING_SUMMARY))
+			return getStrategyRatingSummary();
+		
 		return super.getData(fieldTag);
 	}
 
@@ -105,6 +109,13 @@ public class Strategy extends Factor
 			status = dataValue;
 		else
 			super.setData(fieldTag, dataValue);
+	}
+	
+	private String getStrategyRatingSummary()
+	{
+		ChoiceItem rating = getStrategyRating();
+		return rating.getCode();
+
 	}
 	
 	public ChoiceItem getStrategyRating()
