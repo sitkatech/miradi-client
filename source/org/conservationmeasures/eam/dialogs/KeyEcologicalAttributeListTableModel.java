@@ -15,6 +15,6 @@ public class KeyEcologicalAttributeListTableModel extends ObjectListTableModel
 {
 	public KeyEcologicalAttributeListTableModel(Project projectToUse, FactorId nodeId)
 	{
-		super(projectToUse, ObjectType.FACTOR, nodeId, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL);
+		super(projectToUse, ObjectType.TARGET, nodeId, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL);
 	}
 }

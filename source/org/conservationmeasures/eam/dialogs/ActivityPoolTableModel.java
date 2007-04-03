@@ -33,10 +33,10 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 		{
 			BaseId baseId = tasks.get(i);
 			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
-			if ((task.getParentRef().getObjectType() == ObjectType.FACTOR))
+			if ((task.getParentRef().getObjectType() == ObjectType.STRATEGY))
 			{
 				BaseId objectId = task.getParentRef().getObjectId();
-				Factor factor = (Factor)project.findObject(ObjectType.FACTOR, objectId);
+				Factor factor = (Factor)project.findObject(ObjectType.STRATEGY, objectId);
 				if (factor.isStrategy() && !factor.isStatusDraft())
 					filteredTasks.add(baseId);
 			}

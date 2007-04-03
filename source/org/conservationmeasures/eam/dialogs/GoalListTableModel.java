@@ -15,6 +15,6 @@ public class GoalListTableModel extends ObjectListTableModel
 {
 	public GoalListTableModel(Project projectToUse, FactorId nodeId)
 	{
-		super(projectToUse, ObjectType.FACTOR, nodeId, Factor.TAG_GOAL_IDS, ObjectType.GOAL, Goal.TAG_LABEL);
+		super(projectToUse, ObjectType.TARGET, nodeId, Factor.TAG_GOAL_IDS, ObjectType.GOAL, Goal.TAG_LABEL);
 	}
 }
