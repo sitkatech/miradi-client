@@ -12,6 +12,6 @@ public class StrategyPoolTablePanel extends ObjectPoolTablePanel
 {
 	public StrategyPoolTablePanel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.FACTOR, new StrategyPoolTableModel(projectToUse));
+		super(projectToUse, ObjectType.STRATEGY, new StrategyPoolTableModel(projectToUse));
 	}
 }
