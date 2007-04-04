@@ -261,8 +261,10 @@ public class ProjectServer
 	{
 		if (specificFactorType == ObjectType.STRATEGY)
 			return ObjectType.FACTOR;
+		
 		if (specificFactorType == ObjectType.CAUSE)
 			return ObjectType.FACTOR;
+		
 		if (specificFactorType == ObjectType.TARGET)
 			return ObjectType.FACTOR;
 		
