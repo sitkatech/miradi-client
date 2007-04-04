@@ -74,7 +74,7 @@ public class HexagonFactorView extends FactorView
 	{
 		// TODO: Need better implementation?
 		/* ellipse is close enough for now */
-		Point2D result = EllipseRenderer.getPerimeterPoint(p, getRectangleWithoutAnnotations());
+		Point2D result = EllipseRenderer.getPerimeterPoint(p, getBounds());
 		return getAttributes().createPoint(result);
 	}
 

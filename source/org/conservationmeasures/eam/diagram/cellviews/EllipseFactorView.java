@@ -72,7 +72,7 @@ public class EllipseFactorView extends FactorView
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D source, Point2D p)
 	{
 		// TODO: Need better implementation?
-		Point2D result = EllipseRenderer.getPerimeterPoint(p, getRectangleWithoutAnnotations());
+		Point2D result = EllipseRenderer.getPerimeterPoint(p, getBounds());
 		return getAttributes().createPoint(result);
 	}
 	

@@ -41,7 +41,7 @@ public class RectangleFactorView extends FactorView
 	 */
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D source, Point2D p)
 	{
-		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(p, getRectangleWithoutAnnotations());
+		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(p, getBounds());
 	}
 	
 	protected static RectangleRenderer rectangleRenderer = new RectangleWithRatingRenderer();
