@@ -179,6 +179,20 @@ abstract public class Factor extends BaseObject
 	{
 		goals.set(goalsToUse);
 	}
+	
+	public static boolean isFactor(int typeToUse)
+	{
+		if (typeToUse == ObjectType.CAUSE)
+				return true;
+		
+		if (typeToUse == ObjectType.TARGET)
+				return true;
+		
+		if (typeToUse == ObjectType.STRATEGY)
+				return true;
+		
+		return false;
+	}
 
 	public boolean isStrategy()
 	{

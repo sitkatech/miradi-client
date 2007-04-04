@@ -101,13 +101,7 @@ public class ViewData extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
-		switch(type)
-		{
-			case ObjectType.FACTOR: 
-				return true;
-			default:
-				return false;
-		}
+		return Factor.isFactor(type);
 	}
 	
 	
