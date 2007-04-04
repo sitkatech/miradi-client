@@ -73,15 +73,6 @@ public class TestObjectManager extends EAMTestCase
 		verifyBasicObjectLifecycle(ObjectType.FACTOR_LINK, link);
 	}
 
-	public void testIsPseudoTag() throws Exception
-	{
-		boolean isPseudoTag = manager.isPseudoTag("PseudoTagFactor");
-		assertEquals("pseudo tag?", true, isPseudoTag);
-
-		isPseudoTag = manager.isPseudoTag("notAPseudoField");
-		assertEquals("not pseudo tag?", false, isPseudoTag);
-	}
-	
 	public void testPseudoTagTargetViability() throws Exception
 	{
 		String NOT_SPECIFIED = "";

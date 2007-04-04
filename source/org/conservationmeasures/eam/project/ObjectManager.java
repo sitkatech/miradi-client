@@ -227,14 +227,6 @@ public class ObjectManager
 		getDatabase().writeObject(object);
 	}
 
-	public boolean isPseudoTag(String fieldTag)
-	{
-		if (fieldTag.startsWith("PseudoTag"))
-			return true;
-
-		return false;
-	}
-
 	
 	public BaseObject findObject(ORef ref)
 	{
