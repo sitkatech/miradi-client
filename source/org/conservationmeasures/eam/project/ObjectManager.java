@@ -237,13 +237,6 @@ public class ObjectManager
 	{
 		return getPool(objectType).findObject(objectId);
 	}
-	
-
-	Factor findNode(FactorId id)
-	{
-		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
-	}
-
 
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
