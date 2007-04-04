@@ -401,18 +401,13 @@ public class ObjectManager
 				EAM.logWarning("Ignoring invalid id of type " + type);
 				continue;
 			}
-			
-			putObject(type, id);
-		}
-	}
 
-	private void putObject(int type, BaseId id) throws Exception
-	{
-		BaseObject object = getDatabase().readObject(this, type, id);
-		if (object.getType() != type)
-			return;
-		
-		getPool(type).put(object.getId(), object);
+			BaseObject object = getDatabase().readObject(this, type, id);
+			if (object.getType() != type)
+				continue;
+			
+			getPool(type).put(object.getId(), object);
+		}
 	}
 
 	Project getProject()
