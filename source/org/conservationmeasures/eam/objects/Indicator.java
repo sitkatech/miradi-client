@@ -8,12 +8,17 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.StringMapData;
@@ -66,6 +71,61 @@ public class Indicator extends BaseObject
 		return goalIds.getIdList();
 	}
 
+	
+	public String getData(String fieldTag)
+	{
+		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
+			return getRelatedLabelsAsMultiLine(new TargetSet());
+		
+		if(fieldTag.equals(PSEUDO_TAG_DIRECT_THREATS))
+			return getRelatedLabelsAsMultiLine(new DirectThreatSet());;
+		
+		if(fieldTag.equals(PSEUDO_TAG_STRATEGIES))
+			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
+		
+		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
+			return getRelatedLabelsAsMultiLine(new FactorSet());
+		
+		if(fieldTag.equals(PSEUDO_TAG_METHODS))
+			return getIndicatorMethodsSingleLine();
+		
+		return super.getData(fieldTag);
+	}
+	
+	
+	
+	private String getIndicatorMethodsSingleLine()
+	{
+		StringBuffer result = new StringBuffer();
+		IdList methodIds = getTaskIdList();
+		for(int i = 0; i < methodIds.size(); ++i)
+		{
+			if(i > 0)
+				result.append("; ");
+			
+			BaseId methodId = methodIds.get(i);
+			BaseObject method = objectManager.findObject(ObjectType.TASK, methodId);
+			result.append(method.getData(Task.TAG_LABEL));
+		}
+		
+		return result.toString();
+	}
+	
+	
+	public FactorSet getRelatedFactors()
+	{	
+		try
+		{
+			return objectManager.getChainManager().findAllFactorsRelatedToThisObject(getRef());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new FactorSet();
+		}
+	}
+	
+	
 	void clear()
 	{
 		super.clear();

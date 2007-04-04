@@ -6,8 +6,13 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
+import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -50,6 +55,36 @@ abstract public class Desire extends BaseObject
 		return combineShortLabelAndLabel(shortLabel.toString(), getLabel());
 	}
 
+	public String getData(String fieldTag)
+	{
+		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
+			return getRelatedLabelsAsMultiLine(new TargetSet());
+		
+		if(fieldTag.equals(PSEUDO_TAG_DIRECT_THREATS))
+			return getRelatedLabelsAsMultiLine(new DirectThreatSet());;
+		
+		if(fieldTag.equals(PSEUDO_TAG_STRATEGIES))
+			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
+		
+		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
+			return getRelatedLabelsAsMultiLine(new FactorSet());
+		
+		return super.getData(fieldTag);
+	}
+	
+	public FactorSet getRelatedFactors()
+	{	
+		try
+		{
+			return objectManager.getChainManager().findAllFactorsRelatedToThisObject(getRef());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new FactorSet();
+		}
+	}
+	
 	void clear()
 	{
 		super.clear();

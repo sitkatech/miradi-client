@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
@@ -18,18 +17,13 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
-import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
-import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.DiagramContentsPool;
@@ -52,10 +46,8 @@ import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
@@ -251,11 +243,11 @@ public class ObjectManager
 		switch (objectType)
 		{
 			case ObjectType.GOAL:			
-				return getGoalPseudoField(objectType, objectId, fieldTag);
+				return getNewPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.OBJECTIVE:
-				return getObjectivePseudoField(objectType, objectId, fieldTag);
+				return getNewPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.INDICATOR:
-				return getIndicatorPseudoField(objectType, objectId, fieldTag);
+				return getNewPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.FACTOR:
 				return getNewPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.TASK:
@@ -279,71 +271,6 @@ public class ObjectManager
 	}
 	
 
-	private String getIndicatorPseudoField(int annotationType, BaseId annotationId, String fieldTag)
-	{
-		try
-		{
-			if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
-				return getAnnotationFactorLabel(annotationType, annotationId);
-			if (fieldTag.equals(Indicator.PSEUDO_TAG_TARGETS))
-				return getRelatedTargetLabelsAsMultiLine(annotationType, annotationId);
-			if (fieldTag.equals(Indicator.PSEUDO_TAG_STRATEGIES))
-				return getRelatedStrategyLabelsAsMultiline(annotationType, annotationId);
-			if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(annotationType, annotationId);
-			if (fieldTag.equals(Indicator.PSEUDO_TAG_METHODS))
-				return getIndicatorMethodsSingleLine(annotationId);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-		return "";
-	}
-
-	private String getObjectivePseudoField(int objectType, BaseId objectId, String fieldTag)
-	{
-		try
-		{
-			if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
-				return getAnnotationFactorLabel(objectType, objectId);
-			if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
-				return getRelatedTargetLabelsAsMultiLine(objectType, objectId);
-			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getRelatedStrategyLabelsAsMultiline(objectType, objectId);
-			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(objectType, objectId);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-		return "";
-	}
-
-	private String getGoalPseudoField(int objectType, BaseId objectId, String fieldTag)
-	{
-		try
-		{
-			if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
-				return getAnnotationFactorLabel(objectType, objectId);
-			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getRelatedStrategyLabelsAsMultiline(objectType, objectId);
-			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(objectType, objectId);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-		return "";
-	}
-	
-
-	
 	private String getNewPseudoField(int objectType, BaseId id, String fieldTag)
 	{
 		BaseObject baseObject = findObject(new ORef(objectType, id));
@@ -441,99 +368,6 @@ public class ObjectManager
 		}
 		return parent.getData(BaseObject.TAG_LABEL);
 	}
-	
-	
-	private String getLabelsAsMultiline(FactorSet factors)
-	{
-		StringBuffer result = new StringBuffer();
-		Iterator iter = factors.iterator();
-		while(iter.hasNext())
-		{
-			if(result.length() > 0)
-				result.append("\n");
-			
-			Factor factor = (Factor)iter.next();
-			result.append(factor.getLabel());
-		}
-		
-		return result.toString();
-	}
-	
-	
-	private String getRelatedStrategyLabelsAsMultiline(int annotationType, BaseId annotationId) throws Exception
-	{
-		return getRelatedLabelsAsMultiLine(new NonDraftStrategySet(), annotationType, annotationId);
-	}
-	
-	
-	private String getRelatedTargetLabelsAsMultiLine(int annotationType, BaseId annotationId) throws Exception
-	{
-		return getRelatedLabelsAsMultiLine(new TargetSet(), annotationType, annotationId);
-	}
-	
-	
-	private String getRelatedDirectThreatLabelsAsMultiLine(int annotationType, BaseId annotationId) throws Exception
-	{
-		return getRelatedLabelsAsMultiLine(new DirectThreatSet(), annotationType, annotationId);
-	}
-
-	
-	private String getRelatedLabelsAsMultiLine(FactorSet set, int annotationType, BaseId annotationId) throws Exception
-	{
-		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
-		set.attemptToAddAll(cmNodes);
-		return getLabelsAsMultiline(set);
-	}
-	
-	private FactorSet getFactorsRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
-	{
-		ChainManager chainManager = new ChainManager(project);
-		if (annotationType == ObjectType.GOAL)
-			return chainManager.findAllFactorsRelatedToThisGoal(annotationId);
-		if (annotationType == ObjectType.OBJECTIVE)
-			return  chainManager.findAllFactorsRelatedToThisObjective(annotationId);
-		if (annotationType == ObjectType.INDICATOR)
-			return chainManager.findAllFactorsRelatedToThisIndicator(annotationId);
-		
-		return new FactorSet();
-	}
-
-	private String getAnnotationFactorLabel(int objectType, BaseId objectId)
-	{
-		try
-		{
-			ChainManager chainManager = new ChainManager(project);
-			Factor owner = chainManager.getDirectOrIndirectOwningFactor(new ORef(objectType, objectId)); 
-			if (owner == null)
-				return ""; 
-
-			return owner.getLabel();
-		}
-		catch( Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-	}
-	
-	private String getIndicatorMethodsSingleLine(BaseId indicatorId) throws ParseException
-	{
-		String methodIdsString = getObjectData(ObjectType.INDICATOR, indicatorId, Indicator.TAG_TASK_IDS);
-		
-		StringBuffer result = new StringBuffer();
-		IdList methodIds = new IdList(methodIdsString);
-		for(int i = 0; i < methodIds.size(); ++i)
-		{
-			if(i > 0)
-				result.append("; ");
-			
-			BaseId methodId = methodIds.get(i);
-			BaseObject method = findObject(ObjectType.TASK, methodId);
-			result.append(method.getData(Task.TAG_LABEL));
-		}
-		
-		return result.toString();
-	}
 
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
@@ -550,7 +384,6 @@ public class ObjectManager
 	{
 		loadPool(ObjectType.FACTOR);
 		loadPool(ObjectType.FACTOR_LINK);
-
 		loadPool(ObjectType.TASK);
 		loadPool(ObjectType.VIEW_DATA);
 		loadPool(ObjectType.PROJECT_RESOURCE);
@@ -605,6 +438,12 @@ public class ObjectManager
 	public DiagramModel getDiagramModel()
 	{
 		return getProject().getDiagramModel();
+	}
+	
+	//FIXME: there shold be a better way to get to the chain manager then having to expose it here
+	public ChainManager getChainManager()
+	{
+		return new ChainManager(getProject());
 	}
 	
 	class FactorLinkMonitor implements FactorLinkListener

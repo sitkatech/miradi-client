@@ -289,6 +289,19 @@ abstract public class BaseObject
 		return noneClearedFieldTags;
 	}
 	
+	
+	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
+	{
+		Factor[] cmNodes = getRelatedFactors().toNodeArray();
+		filterSet.attemptToAddAll(cmNodes);
+		return getLabelsAsMultiline(filterSet);
+	}
+	
+	public FactorSet getRelatedFactors()
+	{	
+		return new FactorSet();
+	}
+	
 	public String getLabelsAsMultiline(FactorSet factors)
 	{
 		StringBuffer result = new StringBuffer();
