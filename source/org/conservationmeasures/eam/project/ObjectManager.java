@@ -235,27 +235,6 @@ public class ObjectManager
 		return false;
 	}
 
-	public String getPseudoField(int objectType, BaseId objectId, String fieldTag)
-	{
-		switch (objectType)
-		{
-			case ObjectType.GOAL:			
-				return getNewPseudoField(objectType, objectId, fieldTag);
-			case ObjectType.OBJECTIVE:
-				return getNewPseudoField(objectType, objectId, fieldTag);
-			case ObjectType.INDICATOR:
-				return getNewPseudoField(objectType, objectId, fieldTag);
-			case ObjectType.FACTOR:
-				return getNewPseudoField(objectType, objectId, fieldTag);
-			case ObjectType.TASK:
-				return getNewPseudoField(objectType, objectId, fieldTag);
-			case ObjectType.PROJECT_METADATA:
-				return getNewPseudoField(objectType, objectId, fieldTag);
-			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
-				return getNewPseudoField(objectType, objectId, fieldTag);
-		}
-		throw new RuntimeException("Unknown PseudoTag: " + fieldTag + " for type " + objectType);	
-	}
 	
 	public BaseObject findObject(ORef ref)
 	{
@@ -268,13 +247,6 @@ public class ObjectManager
 	}
 	
 
-	private String getNewPseudoField(int objectType, BaseId id, String fieldTag)
-	{
-		BaseObject baseObject = findObject(new ORef(objectType, id));
-		return baseObject.getData(fieldTag);
-	}
-	
-	
 	Factor findNode(FactorId id)
 	{
 		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
@@ -283,9 +255,6 @@ public class ObjectManager
 
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
-		if (isPseudoTag(fieldTag))
-			return getPseudoField(objectType, objectId, fieldTag);
-
 		BaseObject object = findObject(new ORef(objectType, objectId));
 		if(object == null)
 			EAM.logDebug("getObjectData no such object: " + objectType + ":" + objectId + " fieldTag=" + fieldTag);
