@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
+
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -13,17 +14,19 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 {
-	public KeyEcologicalAttributeTypeNode(Project projectToUse, String typeCodeToUse, IdList keas)
+	public KeyEcologicalAttributeTypeNode(Project projectToUse, String typeCodeToUse, Target targetToUse)
 	{
 		project = projectToUse;
-		keyEcologicalAttributes = keas;
+		target = targetToUse;
 		typeCode = typeCodeToUse;
+		question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 		label = question.findChoiceByCode(typeCode).getLabel();
 		rebuild();
 	}
@@ -35,12 +38,12 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 
 	public TreeTableNode getChild(int index)
 	{
-		return typeNodes[index];
+		return keaNodes[index];
 	}
 
 	public int getChildCount()
 	{
-		return typeNodes.length;
+		return keaNodes.length;
 	}
 
 	public ORef getObjectReference()
@@ -71,6 +74,7 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 	
 	public void rebuild()
 	{
+		IdList keyEcologicalAttributes = target.getKeyEcologicalAttributes();
 		int childCount = keyEcologicalAttributes.size();
 		Vector KeyEcologicalAttributesVector = new Vector();
 		for(int i = 0; i < childCount; ++i)
@@ -81,14 +85,14 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 				KeyEcologicalAttributesVector.add(new KeyEcologicalAttributeNode(project, kea));
 		}
 		
-		typeNodes = (KeyEcologicalAttributeNode[])KeyEcologicalAttributesVector.toArray(new KeyEcologicalAttributeNode[0]);
+		keaNodes = (KeyEcologicalAttributeNode[])KeyEcologicalAttributesVector.toArray(new KeyEcologicalAttributeNode[0]);
 	}
 	
 	Project project;
-	IdList keyEcologicalAttributes;
+	Target target;
 	String typeCode;
-	KeyEcologicalAttributeNode[] typeNodes;
+	KeyEcologicalAttributeNode[] keaNodes;
 	String label;
 	
-	private KeyEcologicalAttributeTypeQuestion question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+	private KeyEcologicalAttributeTypeQuestion question;
 }

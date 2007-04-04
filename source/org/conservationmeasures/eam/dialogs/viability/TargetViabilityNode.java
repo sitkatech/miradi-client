@@ -73,7 +73,7 @@ public class TargetViabilityNode extends TreeTableNode
 		ChoiceItem[] items = question.getChoices();
 		for (int i=0; i< items.length; ++i)
 		{
-			vector.add(new KeyEcologicalAttributeTypeNode(project, items[i].getCode(), target.getKeyEcologicalAttributes()));
+			vector.add(new KeyEcologicalAttributeTypeNode(project, items[i].getCode(), target));
 		}
 		children = vector;
 	}
