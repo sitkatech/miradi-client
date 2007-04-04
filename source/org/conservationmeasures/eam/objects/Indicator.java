@@ -70,7 +70,7 @@ public class Indicator extends BaseObject
 		return goalIds.getIdList();
 	}
 
-	
+	//TODO: several pseudo fields are shared between Indicator and Desires; this may indicate a need for a common super class
 	public String getData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
