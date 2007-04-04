@@ -402,7 +402,8 @@ public class ObjectManager
 				continue;
 			}
 			BaseObject object = getDatabase().readObject(this, type, id);
-			getPool(type).put(object.getId(), object);
+			if (object.getType() == type)
+				getPool(type).put(object.getId(), object);
 		}
 	}
 
