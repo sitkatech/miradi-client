@@ -7,14 +7,18 @@ package org.conservationmeasures.eam.views.targetviability;
 
 import javax.swing.JComponent;
 
+import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
+import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.dialogs.viability.TargetViabilityTreeManagementPanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.diagram.CreateKeyEcologicalAttributeDoer;
 import org.conservationmeasures.eam.views.diagram.CreateKeyEcologicalAttributeIndicatorDoer;
+import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeIndicatorDoer;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -76,8 +80,8 @@ public class TargetViabilityView extends TabbedView
 	
 	private void addDoersToMap()
 	{
-		//addDoerToMap(ActionCreateKeyEcologicalAttribute.class, new CreateKeyEcologicalAttributeDoer());
-		//addDoerToMap(ActionDeleteKeyEcologicalAttribute.class, new DeleteKeyEcologicalAttributeDoer());
+		addDoerToMap(ActionCreateKeyEcologicalAttribute.class, new CreateKeyEcologicalAttributeDoer());
+		addDoerToMap(ActionDeleteKeyEcologicalAttribute.class, new DeleteKeyEcologicalAttributeDoer());
 		addDoerToMap(ActionCreateKeyEcologicalAttributeIndicator.class, new CreateKeyEcologicalAttributeIndicatorDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeIndicator.class, new DeleteKeyEcologicalAttributeIndicatorDoer());
 	}

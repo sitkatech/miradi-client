@@ -28,7 +28,13 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 
 	public boolean isAvailable()
 	{
-		return (getSelectedFactor() != null);
+		if (getObjects().length != 1)
+			return false;
+		
+		if (getSelectedObjectType() != ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+			return false;
+		
+		return true;
 	}
 
 	public void doIt() throws CommandFailedException
