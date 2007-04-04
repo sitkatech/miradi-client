@@ -278,10 +278,10 @@ abstract public class Factor extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_OBJECTIVES))
 			return getFactorObjectives();
 		
-		if(fieldTag.equals(Factor.PSEUDO_TAG_DIRECT_THREATS))
+		if(fieldTag.equals(PSEUDO_TAG_DIRECT_THREATS))
 			return getFactorRelatedDirectThreats();
 		
-		if(fieldTag.equals(Factor.PSEUDO_TAG_TARGETS))
+		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
 			return getFactorRelatedTargets();
 		
 		return super.getData(fieldTag);
