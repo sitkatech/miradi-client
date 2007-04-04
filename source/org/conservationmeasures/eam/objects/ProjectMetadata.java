@@ -62,6 +62,15 @@ public class ProjectMetadata extends BaseObject
 	}
 	
 	
+	public String getData(String fieldTag)
+	{
+		if(fieldTag.equals(PSEUDO_TAG_PROJECT_FILENAME))
+			return objectManager.getFileName();
+
+		return getField(fieldTag).get();
+	}
+	
+	
 	public String getProjectName()
 	{
 		return projectName.get();

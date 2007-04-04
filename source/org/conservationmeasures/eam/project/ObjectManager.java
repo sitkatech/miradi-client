@@ -48,7 +48,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
@@ -253,7 +252,7 @@ public class ObjectManager
 			case ObjectType.TASK:
 				return getTaskPseudoField(objectId, fieldTag);
 			case ObjectType.PROJECT_METADATA:
-				return getProjectMetadataPseudoField(objectId, fieldTag);
+				return getNewPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
 				return getNewPseudoField(objectType, objectId, fieldTag);
 		}
@@ -336,21 +335,7 @@ public class ObjectManager
 		return formater.format(totalTaskCost);
 	}
 
-	private String getProjectMetadataPseudoField(BaseId taskId, String fieldTag)
-	{
-		try
-		{
-			if(fieldTag.equals(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME))
-				return getProject().getFilename();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-		return "";
-	}
-	
+
 	private String getLabelOfTaskParent(BaseId taskId) throws Exception
 	{
 		Task task = (Task)findObject(ObjectType.TASK, taskId);
@@ -445,6 +430,13 @@ public class ObjectManager
 	{
 		return new ChainManager(getProject());
 	}
+	
+	//FIXME: there shold be a better way to get to the chain manager then having to expose it here
+	public String getFileName()
+	{
+		return getProject().getFilename();
+	}
+	
 	
 	class FactorLinkMonitor implements FactorLinkListener
 	{
