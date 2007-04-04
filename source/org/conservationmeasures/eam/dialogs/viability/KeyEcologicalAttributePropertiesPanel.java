@@ -3,9 +3,10 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.dialogs;
+package org.conservationmeasures.eam.dialogs.viability;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
 import org.conservationmeasures.eam.main.EAM;

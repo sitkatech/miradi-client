@@ -66,7 +66,7 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		return getPanelDescription();
 	}
 
-	final static String SPLITTER_TAG = "Splitter";
+	public final static String SPLITTER_TAG = "Splitter";
 	private SplitterPositionSaverAndGetter splitPositionSaver;
 	private ViewSplitPane splitter;
 }
