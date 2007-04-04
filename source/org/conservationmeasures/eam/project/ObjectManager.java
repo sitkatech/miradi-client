@@ -361,7 +361,7 @@ public class ObjectManager
 		if (isPseudoTag(fieldTag))
 			return getPseudoField(objectType, objectId, fieldTag);
 
-		BaseObject object = getPool(objectType).findObject(objectId);
+		BaseObject object = findObject(new ORef(objectType, objectId));
 		if(object == null)
 			EAM.logDebug("getObjectData no such object: " + objectType + ":" + objectId + " fieldTag=" + fieldTag);
 		return object.getData(fieldTag);
