@@ -410,7 +410,7 @@ public class ObjectManager
 		}
 	}
 
-	Project getProject()
+	public Project getProject()
 	{
 		return project;
 	}

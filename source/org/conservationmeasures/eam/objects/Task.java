@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -13,6 +14,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -23,6 +25,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
 public class Task extends BaseObject
 {
@@ -220,10 +223,95 @@ public class Task extends BaseObject
 		if (fieldTag.equals(TAG_PARENT_REF))
 			return parentRef.get();
 		
+		if(fieldTag.equals(PSEUDO_TAG_STRATEGY_LABEL))
+			return getLabelOfTaskParent();
+		
+		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_LABEL))
+			return getLabelOfTaskParent();
+		
+		if (fieldTag.equals(PSEUDO_TAG_SUBTASK_TOTAL))
+			return getSubtaskTotalCost();
+		
+		if (fieldTag.equals(PSEUDO_TAG_TASK_TOTAL))
+			return getTaskTotalCost();
+		
+		if (fieldTag.equals(PSEUDO_TAG_TASK_COST))
+			return getTaskCost();
+		
 		return super.getData(fieldTag);
 	}
 
 
+
+	private String getTaskCost()
+	{
+		try
+		{
+			BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(objectManager.getProject());
+			double taskCost = calculator.getTaskCost((TaskId)getId());
+			return formateResults(taskCost);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "0";
+		}
+	}
+
+	private String getSubtaskTotalCost()
+	{
+		try
+		{
+			BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(objectManager.getProject());
+			double subtaskTotalCost = calculator.getTotalTasksCost(getSubtaskIdList());
+			return formateResults(subtaskTotalCost);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "0";
+		}
+	}
+
+	private String getTaskTotalCost()
+	{		
+		try
+		{
+			BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(objectManager.getProject());
+			double totalTaskCost = calculator.getTotalTaskCost((TaskId)getId());
+			return formateResults(totalTaskCost);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "0";
+		}
+	}
+
+	private String formateResults(double cost)
+	{
+		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
+		return formater.format(cost);
+	}
+
+
+	private String getLabelOfTaskParent()
+	{
+		if(parentRef == null || getParentRef().getObjectType() == ObjectType.FAKE)
+		{
+			EAM.logDebug("Task without parent: " + getId());
+			return "(none)";
+		}
+		BaseObject parent = objectManager.findObject(getParentRef());
+		if(parent == null)
+		{
+			EAM.logDebug("Parent of task " + getId() + " not found: " + parentRef);
+			return "(none)";
+		}
+		return parent.getData(BaseObject.TAG_LABEL);
+	}
+
+	
 	public void clear()
 	{
 		super.clear();
