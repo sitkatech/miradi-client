@@ -8,11 +8,12 @@ package org.conservationmeasures.eam.dialogs.viability;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 
 public class TargetViabilityTree extends TreeTableWithStateSaving 
 {
-	public TargetViabilityTree(Project projectToUse, TargetViabilityTreeModel targetViabilityModelToUse)
+	public TargetViabilityTree(Project projectToUse, GenericTreeTableModel targetViabilityModelToUse)
 	{
 		super(projectToUse, targetViabilityModelToUse);
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);

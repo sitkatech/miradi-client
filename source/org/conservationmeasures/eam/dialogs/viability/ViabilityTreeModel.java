@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
@@ -13,7 +12,7 @@ import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class ViabilityTreeModel extends GenericTreeTableModel
 {
-	public ViabilityTreeModel(Project projectToUse, FactorId targetId)
+	public ViabilityTreeModel(Project projectToUse)
 	{
 		super(new ViabilityRoot(projectToUse));
 		project = projectToUse;

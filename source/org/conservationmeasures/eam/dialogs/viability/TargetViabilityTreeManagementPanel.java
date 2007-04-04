@@ -24,6 +24,13 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 
 	}
 	
+	public TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
+	{
+		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(EAM.mainWindow, projectToUse),
+				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
+
+	}
+	
 	public String getSplitterDescription()
 	{
 		return getPanelDescription() + SPLITTER_TAG;

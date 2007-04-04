@@ -6,21 +6,20 @@
 package org.conservationmeasures.eam.views.targetviability;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.dialogs.viability.TargetViabilityTreeManagementPanel;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.martus.swing.UiScrollPane;
-
-import com.jhlabs.awt.GridLayoutPlus;
 
 public class TargetViabilityView extends TabbedView
 {
 	public TargetViabilityView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
+		addDoersToMap();
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 	
@@ -41,16 +40,50 @@ public class TargetViabilityView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		JPanel panel = new JPanel(new GridLayoutPlus(0,1));
-		addTab(getViewName(), new UiScrollPane(panel));
+		viabilityPanel = new TargetViabilityTreeManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
+		addNonScrollableTab(viabilityPanel);
 	}
 
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+		
+		viabilityPanel.updateSplitterLocation();
+		
+		getMainWindow().setStatusBarIfDataExistsOutOfRange();
+	}
+	
 	public void deleteTabs() throws Exception
 	{
+		viabilityPanel.dispose();
+		viabilityPanel = null;
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
 		return wizardPanel;
 	}
+	
+	public void jump(Class stepMarker) throws Exception
+	{
+		wizardPanel.jump(stepMarker);
+	}
+
+	
+	private void addDoersToMap()
+	{
+
+	}
+	
+	
+	public BaseObject getSelectedObject()
+	{
+		if (viabilityPanel != null)
+			return viabilityPanel.getObject();
+		
+		return null;
+	}
+	
+	
+	TargetViabilityTreeManagementPanel viabilityPanel;
 }

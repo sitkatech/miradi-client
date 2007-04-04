@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.viability;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 {
@@ -18,7 +19,14 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
 	}
 	
-	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTree treeToUse, TargetViabilityTreeModel modelToUse)
+	public static TargetViabililtyTreePanel createTargetViabilityPoolPanel(MainWindow mainWindowToUse, Project projectToUse)
+	{
+		ViabilityTreeModel model = new ViabilityTreeModel(projectToUse);
+		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
+		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
+	}
+	
+	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTree treeToUse, GenericTreeTableModel modelToUse)
 	{
 		super(mainWindowToUse, projectToUse, treeToUse);
 		model = modelToUse;
