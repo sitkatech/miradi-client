@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.ProjectInfo;
@@ -252,8 +253,20 @@ public class ProjectServer
 	}
 	
 	private File getObjectDirectory(int type)
+	{	
+		return new File(getJsonDirectory(), "objects-" + possiblyConvertToGenericFactorType(type));
+	}
+	
+	private int possiblyConvertToGenericFactorType(int specificFactorType)
 	{
-		return new File(getJsonDirectory(), "objects-" + Integer.toString(type));
+		if (specificFactorType == ObjectType.STRATEGY)
+			return ObjectType.FACTOR;
+		if (specificFactorType == ObjectType.CAUSE)
+			return ObjectType.FACTOR;
+		if (specificFactorType == ObjectType.TARGET)
+			return ObjectType.FACTOR;
+		
+		return specificFactorType;
 	}
 	
 	private File getThreatRatingsDirectory()
