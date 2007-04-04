@@ -213,8 +213,10 @@ public class ObjectManager
 		return createdId;
 	}
 
-	public void deleteObject(int objectType, BaseId objectId) throws IOException, ParseException
+	public void deleteObject(BaseObject object) throws IOException, ParseException
 	{
+		int objectType = object.getType();
+		BaseId objectId = object.getId();
 		EAMObjectPool pool = getPool(objectType);
 		if(pool.findObject(objectId) == null)
 			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);

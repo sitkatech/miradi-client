@@ -43,7 +43,7 @@ public class CommandDeleteObject extends Command
 		{
 			BaseObject object = target.findObject(type, id);
 			reverseExtraInfo = object.getCreationExtraInfo();
-			target.deleteObject(type, id);
+			target.deleteObject(object);
 		}
 		catch (Exception e)
 		{

@@ -49,6 +49,7 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
@@ -127,7 +128,8 @@ public class TestProject extends EAMTestCase
 		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		BaseId linkageId = createdId;
 		assertTrue("didn't become direct threat?", factor.isDirectThreat());
-		project.deleteObject(ObjectType.FACTOR_LINK, linkageId);
+		BaseObject object = project.findObject(new ORef(ObjectType.FACTOR_LINK, linkageId));
+		project.deleteObject(object);
 		assertFalse("still a direct threat?", factor.isDirectThreat());
 	}
 	
@@ -525,8 +527,9 @@ public class TestProject extends EAMTestCase
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
 		project.removeDiagramFactorFromDiagram(idToDelete);
-		project.deleteObject(ObjectType.TARGET, node1.getWrappedId());
-		project.deleteObject(ObjectType.DIAGRAM_FACTOR, node1.getDiagramFactorId());
+		BaseObject target = project.findObject(new ORef(ObjectType.TARGET, node1.getWrappedId()));
+		project.deleteObject(target);
+		project.deleteObject(node1.getDiagramFactor());
 		
 		assertEquals("objects still in the pool?", 0, project.getFactorPool().size());
 		assertEquals("nodes  still in the diagram?", 0, project.getAllDiagramFactorIds().length);
@@ -676,7 +679,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("wrong to?", idB, cmLinkage.getToFactorId());
 		assertTrue("not linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 		
-		project.deleteObject(ObjectType.FACTOR_LINK, linkageId);
+		project.deleteObject(cmLinkage);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
 		assertFalse("still linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 	}
@@ -759,7 +762,8 @@ public class TestProject extends EAMTestCase
 			
 			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_STRATEGY);
 			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY, BaseId.INVALID, parameter);
-			diskProject.deleteObject(ObjectType.STRATEGY, interventionId);
+			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
+			diskProject.deleteObject(object);
 	
 			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, Factor.TYPE_CAUSE);
 			deleteNodeAndRemoveFromDiagram(diskProject, diagramFactor);

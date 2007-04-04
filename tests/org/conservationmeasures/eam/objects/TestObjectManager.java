@@ -166,7 +166,7 @@ public class TestObjectManager extends EAMTestCase
 		assertEquals(type + " didn't write/read data for " + tag + "?", "data", withData.getData(tag));
 		assertEquals(type + " can't get data from project?", "data", manager.getObjectData(type, createdId, tag));
 		
-		manager.deleteObject(type, createdId);
+		manager.deleteObject(withData);
 		try
 		{
 			manager.getObjectData(type, createdId, tag);

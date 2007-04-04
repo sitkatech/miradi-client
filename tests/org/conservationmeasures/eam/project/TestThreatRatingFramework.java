@@ -18,7 +18,9 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -139,11 +141,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testBundlesForDeletedNodes() throws Exception
 	{
 		ThreatRatingBundle bundle1 = createThreatTargetAndBundle();
-		project.deleteObject(ObjectType.FACTOR, bundle1.getThreatId());
+		BaseObject object1 = project.findObject(new ORef(ObjectType.FACTOR, bundle1.getThreatId()));
+		project.deleteObject(object1);
 		assertFalse("deleted threatId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle1));
 		
 		ThreatRatingBundle bundle2 = createThreatTargetAndBundle();
-		project.deleteObject(ObjectType.TARGET, bundle2.getTargetId());
+		BaseObject object2 = project.findObject(new ORef(ObjectType.TARGET, bundle2.getTargetId()));
+		project.deleteObject(object2);
 		assertFalse("deleted targetId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle2));
 		
 	}

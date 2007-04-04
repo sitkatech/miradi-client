@@ -328,9 +328,9 @@ public class Project
 		return createdId;
 	}
 	
-	public void deleteObject(int objectType, BaseId objectId) throws IOException, ParseException
+	public void deleteObject(BaseObject object) throws IOException, ParseException
 	{
-		objectManager.deleteObject(objectType, objectId);
+		objectManager.deleteObject(object);
 	}
 	
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception

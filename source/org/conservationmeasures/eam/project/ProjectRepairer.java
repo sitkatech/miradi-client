@@ -199,7 +199,7 @@ public class ProjectRepairer
 				if(owner == null)
 				{
 					EAM.logWarning("Deleted orphan " + annotationType + ":" + annotationId);
-					project.deleteObject(annotationType, annotationId);
+					project.deleteObject(object);
 				}
 			}
 			catch(Exception e)
