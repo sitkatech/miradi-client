@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.project;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.HashMap;
 
@@ -17,7 +16,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
@@ -48,8 +46,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
 public class ObjectManager
 {
@@ -252,7 +248,7 @@ public class ObjectManager
 			case ObjectType.FACTOR:
 				return getNewPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.TASK:
-				return getTaskPseudoField(objectId, fieldTag);
+				return getNewPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.PROJECT_METADATA:
 				return getNewPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
@@ -284,77 +280,6 @@ public class ObjectManager
 		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
 	}
 
-
-	private String getTaskPseudoField(BaseId taskId, String fieldTag)
-	{
-		try
-		{
-			if(fieldTag.equals(Task.PSEUDO_TAG_STRATEGY_LABEL))
-				return getLabelOfTaskParent(taskId);
-			if(fieldTag.equals(Task.PSEUDO_TAG_INDICATOR_LABEL))
-				return getLabelOfTaskParent(taskId);
-			
-			DecimalFormat formater = project.getCurrencyFormatter();
-			if (fieldTag.equals(Task.PSEUDO_TAG_SUBTASK_TOTAL))
-				return getSubtaskTotalCost(taskId, formater);
-			if (fieldTag.equals(Task.PSEUDO_TAG_TASK_TOTAL))
-				return getTaskTotalCost(taskId, formater);
-			if (fieldTag.equals(Task.PSEUDO_TAG_TASK_COST))
-				return getTaskCost(taskId, formater);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-		return "";
-	}
-	
-	private String getTaskCost(BaseId taskId, DecimalFormat formater) throws Exception
-	{
-		BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(project);
-		//TODO switch to TaskId instead of BaseId to TaskId conversion
-		double taskCost = calculator.getTaskCost(new TaskId(taskId.asInt()));
-		
-		return formater.format(taskCost);
-	}
-
-	private String getSubtaskTotalCost(BaseId taskId, DecimalFormat formater) throws Exception
-	{
-		BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(project);
-		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
-		double subtaskTotalCost = calculator.getTotalTasksCost(task.getSubtaskIdList());
-		
-		return formater.format(subtaskTotalCost);
-	}
-
-	private String getTaskTotalCost(BaseId taskId, DecimalFormat formater) throws Exception
-	{
-		BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(project);
-		//TODO switch to TaskId instead of BaseId to TaskId conversion
-		double totalTaskCost = calculator.getTotalTaskCost(new TaskId(taskId.asInt()));
-		
-		return formater.format(totalTaskCost);
-	}
-
-
-	private String getLabelOfTaskParent(BaseId taskId) throws Exception
-	{
-		Task task = (Task)findObject(ObjectType.TASK, taskId);
-		ORef parentRef = task.getParentRef();
-		if(parentRef == null || parentRef.getObjectType() == ObjectType.FAKE)
-		{
-			EAM.logDebug("Task without parent: " + taskId);
-			return "(none)";
-		}
-		BaseObject parent = findObject(parentRef);
-		if(parent == null)
-		{
-			EAM.logDebug("Parent of task " + taskId + " not found: " + parentRef);
-			return "(none)";
-		}
-		return parent.getData(BaseObject.TAG_LABEL);
-	}
 
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
