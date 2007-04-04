@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -299,7 +300,15 @@ abstract public class BaseObject
 	
 	public FactorSet getRelatedFactors()
 	{	
-		return new FactorSet();
+		try
+		{
+			return objectManager.getChainManager().findAllFactorsRelatedToThisObject(getRef());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new FactorSet();
+		}
 	}
 	
 	public String getLabelsAsMultiline(FactorSet factors)

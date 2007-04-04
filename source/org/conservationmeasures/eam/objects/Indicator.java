@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
@@ -109,20 +108,6 @@ public class Indicator extends BaseObject
 		}
 		
 		return result.toString();
-	}
-	
-	
-	public FactorSet getRelatedFactors()
-	{	
-		try
-		{
-			return objectManager.getChainManager().findAllFactorsRelatedToThisObject(getRef());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new FactorSet();
-		}
 	}
 	
 	
