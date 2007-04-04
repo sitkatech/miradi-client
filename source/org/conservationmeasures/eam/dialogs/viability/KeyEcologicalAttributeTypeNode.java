@@ -8,23 +8,23 @@ package org.conservationmeasures.eam.dialogs.viability;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class TargetViabilityRoot extends TreeTableNode
+public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 {
-	public TargetViabilityRoot(Project projectToUse, FactorId targetId)
+	public KeyEcologicalAttributeTypeNode(Project projectToUse, String typeCodeToUse, IdList keas)
 	{
 		project = projectToUse;
-		target = (Target)project.findNode(targetId);
+		keyEcologicalAttributes = keas;
+		typeCode = typeCodeToUse;
+		label = question.findChoiceByCode(typeCode).getLabel();
 		rebuild();
 	}
 	
@@ -35,22 +35,23 @@ public class TargetViabilityRoot extends TreeTableNode
 
 	public TreeTableNode getChild(int index)
 	{
-		return (TreeTableNode)children.get(index);
+		return typeNodes[index];
 	}
 
 	public int getChildCount()
 	{
-		return children.size();
+		return typeNodes.length;
 	}
 
 	public ORef getObjectReference()
 	{
-		return null;
+		final int index = question.findIndexByCode(typeCode);
+		return new ORef(ObjectType.FAKE, new BaseId(index));
 	}
 	
 	public int getType()
 	{
-		return ObjectType.TARGET;
+		return getObjectReference().getObjectType();
 	}
 
 	public Object getValueAt(int column)
@@ -60,7 +61,7 @@ public class TargetViabilityRoot extends TreeTableNode
 
 	public String toString()
 	{
-		return "Target";
+		 return label;
 	}
 	
 	public BaseId getId()
@@ -70,17 +71,24 @@ public class TargetViabilityRoot extends TreeTableNode
 	
 	public void rebuild()
 	{
-		Vector vector = new Vector();
-		ChoiceItem[] items = question.getChoices();
-		for (int i=0; i< items.length; ++i)
+		int childCount = keyEcologicalAttributes.size();
+		Vector KeyEcologicalAttributesVector = new Vector();
+		for(int i = 0; i < childCount; ++i)
 		{
-			vector.add(new KeyEcologicalAttributeTypeNode(project, items[i].getCode(), target.getKeyEcologicalAttributes()));
+			BaseId keaId = keyEcologicalAttributes.get(i);
+			KeyEcologicalAttribute kea = project.getKeyEcologicalAttributePool().find(keaId);
+			if (kea.getKeyEcologicalAttributeType().equals(typeCode))
+				KeyEcologicalAttributesVector.add(new KeyEcologicalAttributeNode(project, kea));
 		}
-		children = vector;
+		
+		typeNodes = (KeyEcologicalAttributeNode[])KeyEcologicalAttributesVector.toArray(new KeyEcologicalAttributeNode[0]);
 	}
 	
 	Project project;
-	Target target;
-	Vector children;
+	IdList keyEcologicalAttributes;
+	String typeCode;
+	KeyEcologicalAttributeNode[] typeNodes;
+	String label;
+	
 	private KeyEcologicalAttributeTypeQuestion question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 }

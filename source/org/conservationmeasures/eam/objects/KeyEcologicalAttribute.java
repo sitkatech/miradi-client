@@ -100,6 +100,11 @@ public class KeyEcologicalAttribute extends BaseObject
 		return indicatorIds.getIdList();
 	}
 	
+	public String getKeyEcologicalAttributeType()
+	{
+		return keyEcologicalAttributeType.toString();
+	}
+	
 	public String getData(String fieldTag)
 	{
 		if(fieldTag.equals(PSUEDO_TAG_VIABILITY_STATUS))

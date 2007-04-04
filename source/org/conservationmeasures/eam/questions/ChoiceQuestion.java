@@ -34,11 +34,18 @@ public class ChoiceQuestion
 	
 	public ChoiceItem findChoiceByCode(String code)
 	{
+		int index = findIndexByCode(code);
+		if (index<0)
+			return null;
+		return choices[index];
+	}
+	
+	public int findIndexByCode(String code)
+	{
 		for(int i = 0; i < choices.length; ++i)
 			if(choices[i].getCode().equals(code))
-				return choices[i];
-		
-		return null;
+				return i;
+		return -1;
 	}
 	
 	public static final Color DARK_YELLOW = new Color(255, 230, 0);
