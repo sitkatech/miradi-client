@@ -26,7 +26,6 @@ public class TargetViabilityTreeModel extends GenericTreeTableModel
 		TreeTableNode node = (TreeTableNode)rawNode;
 		if ((node.getType() == Target.getObjectType()) && (getColumnName(column).equals("Status")))
 		{
-			
 			return ((Target)node.getObject()).computeTNCViability();
 		}
 		return super.getValueAt(rawNode, column);
