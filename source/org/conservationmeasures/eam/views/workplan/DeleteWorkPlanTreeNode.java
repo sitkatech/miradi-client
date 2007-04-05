@@ -50,7 +50,7 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 				{
 					deleteAnnotation(project, object, owner, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
 				}
-				else if(owner.getType() == ObjectType.FACTOR)
+				else if(Factor.isFactor(owner.getType()))
 				{
 					deleteAnnotation(project, object, owner, Factor.TAG_INDICATOR_IDS);
 				}

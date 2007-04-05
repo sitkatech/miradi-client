@@ -23,18 +23,27 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		assertContains(ObjectType.ASSIGNMENT, BaseObject.getTypesThatCanReferToUs(ObjectType.FUNDING_SOURCE));
 		assertContains(ObjectType.ASSIGNMENT, BaseObject.getTypesThatCanReferToUs(ObjectType.TASK));
 		
-		assertContains(ObjectType.DIAGRAM_FACTOR, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR));
+		assertContains(ObjectType.DIAGRAM_FACTOR, BaseObject.getTypesThatCanReferToUs(ObjectType.CAUSE));
+		assertContains(ObjectType.DIAGRAM_FACTOR, BaseObject.getTypesThatCanReferToUs(ObjectType.STRATEGY));
+		assertContains(ObjectType.DIAGRAM_FACTOR, BaseObject.getTypesThatCanReferToUs(ObjectType.TARGET));
 
 		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
 		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
 
-		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
-		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.GOAL));
-		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
-		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
-		assertContains(ObjectType.FACTOR, BaseObject.getTypesThatCanOwnUs(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE));
+		assertContains(ObjectType.CAUSE, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
+		assertContains(ObjectType.CAUSE, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
 
-		assertContains(ObjectType.FACTOR_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR));
+		assertContains(ObjectType.STRATEGY, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
+		assertContains(ObjectType.STRATEGY, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
+		assertContains(ObjectType.STRATEGY, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
+
+		assertContains(ObjectType.TARGET, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
+		assertContains(ObjectType.TARGET, BaseObject.getTypesThatCanOwnUs(ObjectType.GOAL));
+		assertContains(ObjectType.TARGET, BaseObject.getTypesThatCanOwnUs(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE));
+
+		assertContains(ObjectType.FACTOR_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.CAUSE));
+		assertContains(ObjectType.FACTOR_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.STRATEGY));
+		assertContains(ObjectType.FACTOR_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.TARGET));
 		
 		assertContains(ObjectType.INDICATOR, BaseObject.getTypesThatCanOwnUs(ObjectType.GOAL));
 		assertContains(ObjectType.INDICATOR, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
@@ -45,6 +54,8 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanOwnUs(ObjectType.ASSIGNMENT));
 		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanReferToUs(ObjectType.TASK));
 
-		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR));
+		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.CAUSE));
+		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.STRATEGY));
+		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.TARGET));
 	}
 }

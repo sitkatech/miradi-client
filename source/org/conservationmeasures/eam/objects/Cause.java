@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -35,6 +37,33 @@ public class Cause extends Factor
 		super(idToUse, Factor.TYPE_CAUSE, json);
 	}
 
+	public static boolean canOwnThisType(int type)
+	{
+		if (Factor.canOwnThisType(type))
+			return true;
+		
+		switch(type)
+		{
+			case ObjectType.OBJECTIVE: 
+				return true;
+			default:
+				return false;
+		}
+	}
+	
+	public ORefList getOwnedObjects(int objectType)
+	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
+		switch(objectType)
+		{
+			case ObjectType.OBJECTIVE: 
+				list.addAll(new ORefList(objectType, getObjectives()));
+		}
+		return list;
+	}
+
+	
 	public boolean isCause()
 	{
 		return true;
@@ -63,6 +92,16 @@ public class Cause extends Factor
 	public boolean canHaveObjectives()
 	{
 		return true;
+	}
+	
+	public int getType()
+	{
+		return getObjectType();
+	}
+	
+	public static int getObjectType()
+	{
+		return ObjectType.CAUSE;
 	}
 	
 	void clear()

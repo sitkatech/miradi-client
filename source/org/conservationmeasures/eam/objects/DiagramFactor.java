@@ -90,7 +90,11 @@ public class DiagramFactor extends BaseObject
 	{
 		switch(type)
 		{
-			case ObjectType.FACTOR: 
+			case ObjectType.CAUSE: 
+				return true;
+			case ObjectType.STRATEGY: 
+				return true;
+			case ObjectType.TARGET: 
 				return true;
 			default:
 				return false;
@@ -103,8 +107,14 @@ public class DiagramFactor extends BaseObject
 		
 		switch(objectType)
 		{
-			case ObjectType.FACTOR: 
-				list.addAll(new ORefList(new ORef[] {new ORef(objectType, underlyingObjectId.getId())}));
+			case ObjectType.TARGET:
+			case ObjectType.STRATEGY:
+			case ObjectType.CAUSE:
+			{
+				Factor factor = objectManager.findNode(new FactorId(underlyingObjectId.getId().asInt()));
+				if (factor.getType() == objectType)
+					list.add(factor.getRef());
+			}
 		}
 		return list;
 	}
@@ -119,6 +129,12 @@ public class DiagramFactor extends BaseObject
 		return new FactorId(underlyingObjectId.getId().asInt());
 	}
 	
+	public ORef getWrappedORef()
+	{
+		Factor foundFactor = objectManager.findNode(getWrappedId());
+		return foundFactor.getRef();
+	}
+
 	public Dimension getSize()
 	{
 		return size.getDimension();

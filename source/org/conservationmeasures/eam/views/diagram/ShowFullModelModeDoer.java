@@ -14,8 +14,8 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -49,7 +49,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 
 		try
 		{
-			IdList factorsToMakeSelected = getFactorsToMakeSelected();
+			ORefList factorsToMakeSelected = getFactorsToMakeSelected();
 			
 			BaseId viewId = getCurrentViewId();
 			getProject().executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
@@ -65,23 +65,23 @@ public class ShowFullModelModeDoer extends ViewDoer
 		}
 	}
 
-	private IdList getFactorsToMakeSelected() throws Exception, ParseException
+	private ORefList getFactorsToMakeSelected() throws Exception, ParseException
 	{
 		Project project = getMainWindow().getProject();
-		String listOfIds = project.getCurrentViewData().getData(ViewData.TAG_BRAINSTORM_NODE_IDS);
-		IdList factorsToMakeVisible = new IdList(listOfIds);
+		String listOfORefs = project.getCurrentViewData().getData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS);
+		ORefList factorsToMakeVisible = new ORefList(listOfORefs);
 		return factorsToMakeVisible;
 	}
 
-	private void selectFactors(IdList factorIds) throws Exception
+	private void selectFactors(ORefList factorORefs) throws Exception
 	{
 		DiagramComponent diagramComponent  = ((DiagramView)getView()).getDiagramComponent();
 		GraphLayoutCache glc  = diagramComponent.getGraphLayoutCache();
 		DiagramModel diagramModel = getProject().getDiagramModel();
 		
-		for(int i = 0; i < factorIds.size(); ++i)
+		for(int i = 0; i < factorORefs.size(); ++i)
 		{
-			FactorId nodeId = new FactorId(factorIds.get(i).asInt());
+			FactorId nodeId = new FactorId(factorORefs.get(i).getObjectId().asInt());
 			FactorCell diagramFactor = diagramModel.getFactorCellByWrappedId(nodeId);
 			if (glc.isVisible(diagramFactor))
 				diagramComponent.addSelectionCell(diagramFactor);

@@ -9,8 +9,10 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class TestViewData extends EAMTestCase
 {
@@ -62,61 +64,64 @@ public class TestViewData extends EAMTestCase
 	public void testBrainstormNodeIds() throws Exception
 	{
 		ViewData vd = new ViewData(new BaseId(33));
-		String idsTag = ViewData.TAG_BRAINSTORM_NODE_IDS;
-		assertEquals("didn't start with empty id list?", 0, new IdList(vd.getData(idsTag)).size());
-		IdList sampleIds = createSampleIdList();
-		vd.setData(idsTag, sampleIds.toString());
-		assertEquals("Set/get didn't work?", sampleIds, new IdList(vd.getData(idsTag)));
+		String ORefsTag = ViewData.TAG_CHAIN_MODE_FACTOR_REFS;
+		assertEquals("didn't start with empty id list?", 0, new ORefList(vd.getData(ORefsTag)).size());
+		ORefList sampleORefs = createSampleORefList();
+		vd.setData(ORefsTag, sampleORefs.toString());
+		assertEquals("Set/get didn't work?", sampleORefs, new ORefList(vd.getData(ORefsTag)));
 
 		ViewData got = (ViewData)BaseObject.createFromJson(vd.getType(), vd.toJson());
-		assertEquals("json didn't preserve ids?", vd.getData(idsTag), got.getData(idsTag));
+		assertEquals("json didn't preserve ids?", vd.getData(ORefsTag), got.getData(ORefsTag));
 	}
 
-	private IdList createSampleIdList()
+	private ORefList createSampleORefList()
 	{
-		IdList sampleIds = new IdList();
-		sampleIds.add(7);
-		sampleIds.add(41);
-		return sampleIds;
+		ORefList sampleRefs = new ORefList();
+		sampleRefs.add(new ORef(ObjectType.TARGET, new BaseId(4)));
+		sampleRefs.add(new ORef(ObjectType.TARGET, new BaseId(5)));
+		
+		return sampleRefs;
 	}
 	
 	public void testBuildCommandsToInsertNode() throws Exception
 	{
 		ViewData vd = new ViewData(new BaseId(33));
-		IdList sampleIds = createSampleIdList();
-		vd.setData(ViewData.TAG_BRAINSTORM_NODE_IDS, sampleIds.toString());
+		ORefList sampleORefs = createSampleORefList();
+		vd.setData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS, sampleORefs.toString());
 		FactorId idToAdd = new FactorId(983);
-		Command[] inNormalMode = vd.buildCommandsToAddNode(idToAdd);
+		ORef oRefToAdd = new ORef(ObjectType.TARGET, idToAdd);
+		Command[] inNormalMode = vd.buildCommandsToAddNode(oRefToAdd);
 		assertEquals("added when not in brainstorm mode?", 0, inNormalMode.length);
 		
 		vd.setData(ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM);
-		Command[] inBrainstormMode = vd.buildCommandsToAddNode(idToAdd);
+		Command[] inBrainstormMode = vd.buildCommandsToAddNode(oRefToAdd);
 		assertEquals("didn't add when in brainstorm mode?", 1, inBrainstormMode.length);
 		CommandSetObjectData cmd = (CommandSetObjectData)inBrainstormMode[0];
-		IdList expected = new IdList(sampleIds);
-		expected.add(idToAdd);
+		ORefList expected = new ORefList(sampleORefs);
+		expected.add(oRefToAdd);
 		assertEquals("command wrong id?", vd.getId(), cmd.getObjectId());
-		assertEquals("command wrong field?", ViewData.TAG_BRAINSTORM_NODE_IDS, cmd.getFieldTag());
+		assertEquals("command wrong field?", ViewData.TAG_CHAIN_MODE_FACTOR_REFS, cmd.getFieldTag());
 		assertEquals("didn't create proper command?", expected.toString(), cmd.getDataValue());
 	}
 	
 	public void testBuildCommandsToRemoveNode() throws Exception
 	{
 		ViewData vd = new ViewData(new BaseId(33));
-		IdList sampleIds = createSampleIdList();
-		vd.setData(ViewData.TAG_BRAINSTORM_NODE_IDS, sampleIds.toString());
-		FactorId idToRemove = new FactorId(sampleIds.get(0).asInt());
-		Command[] inNormalMode = vd.buildCommandsToRemoveNode(idToRemove);
+		ORefList sampleORefs = createSampleORefList();
+		vd.setData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS, sampleORefs.toString());
+		ORef oRefToRemove = sampleORefs.get(0);
+		
+		Command[] inNormalMode = vd.buildCommandsToRemoveNode(oRefToRemove);
 		assertEquals("removed when not in brainstorm mode?", 0, inNormalMode.length);
 		
 		vd.setData(ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM);
-		Command[] inBrainstormMode = vd.buildCommandsToRemoveNode(idToRemove);
+		Command[] inBrainstormMode = vd.buildCommandsToRemoveNode(oRefToRemove);
 		assertEquals("didn't remove when in brainstorm mode?", 1, inBrainstormMode.length);
 		CommandSetObjectData cmd = (CommandSetObjectData)inBrainstormMode[0];
-		IdList expected = new IdList(sampleIds);
-		expected.removeId(idToRemove);
+		ORefList expected = new ORefList(sampleORefs);
+		expected.remove(oRefToRemove);
 		assertEquals("command wrong id?", vd.getId(), cmd.getObjectId());
-		assertEquals("command wrong field?", ViewData.TAG_BRAINSTORM_NODE_IDS, cmd.getFieldTag());
+		assertEquals("command wrong field?", ViewData.TAG_CHAIN_MODE_FACTOR_REFS, cmd.getFieldTag());
 		assertEquals("didn't create proper command?", expected.toString(), cmd.getDataValue());
 	}
 }

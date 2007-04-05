@@ -519,7 +519,9 @@ public class TestProject extends EAMTestCase
 	
 	public void testCutAndPaste() throws Exception
 	{
-		assertEquals("objects already in the pool?", 0, project.getFactorPool().size());
+		assertEquals("objects already in the cause pool?", 0, project.getCausePool().size());
+		assertEquals("objects already in the strategy pool?", 0, project.getStrategyPool().size());
+		assertEquals("objects already in the target pool?", 0, project.getTargetPool().size());
 		assertEquals("nodes  already in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
@@ -531,7 +533,7 @@ public class TestProject extends EAMTestCase
 		project.deleteObject(target);
 		project.deleteObject(node1.getDiagramFactor());
 		
-		assertEquals("objects still in the pool?", 0, project.getFactorPool().size());
+		assertEquals("objects still in the target pool?", 0, project.getTargetPool().size());
 		assertEquals("nodes  still in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		Point pastePoint = new Point(5,5);
@@ -544,7 +546,7 @@ public class TestProject extends EAMTestCase
 		assertNotEquals("didn't change id?", node1.getDiagramFactorId(), pastedNode.getDiagramFactorId());
 		assertEquals("didn't snap?", project.getSnapped(pastePoint), pastedNode.getLocation());
 
-		assertEquals("not just one object in the pool?", 1, project.getFactorPool().size());
+		assertEquals("not just one object in the target pool?", 1, project.getTargetPool().size());
 	}
 
 	public void testCloseClearsCurrentView() throws Exception
@@ -777,7 +779,11 @@ public class TestProject extends EAMTestCase
 		loadedProject.createOrOpen(tempDir);
 		try
 		{
-			assertEquals("didn't read node pool?", 2, loadedProject.getFactorPool().size());
+			assertEquals("didn't read cause pool?", 1, loadedProject.getCausePool().size());
+			assertEquals("didn't read strategy pool?", 0, loadedProject.getStrategyPool().size());
+			assertEquals("didn't read target pool?", 1, loadedProject.getTargetPool().size());
+			
+			
 			assertEquals("didn't read link pool?", 1, loadedProject.getFactorLinkPool().size());
 			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getFactorCount());
 			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
@@ -798,7 +804,9 @@ public class TestProject extends EAMTestCase
 		diskProject.createOrOpen(emptyDir);
 		try
 		{
-			assertEquals("didn't clear node pool?", 0, diskProject.getFactorPool().size());
+			assertEquals("didn't clear node cause pool?", 0, diskProject.getCausePool().size());
+			assertEquals("didn't clear node strategy pool?", 0, diskProject.getStrategyPool().size());
+			assertEquals("didn't clear node target pool?", 0, diskProject.getTargetPool().size());
 			assertEquals("didn't clear link pool?", 0, diskProject.getFactorLinkPool().size());
 			assertEquals("didn't clear diagram?", 0, diskProject.getDiagramModel().getFactorCount());
 			assertTrue("didn't clear next annotation id?", diskProject.getAnnotationIdAssigner().getHighestAssignedId() < highestAnnotationIdBeforeClearing);

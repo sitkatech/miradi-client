@@ -103,7 +103,7 @@ public class BudgetTotalsCalculator
 			if (type == ObjectType.INDICATOR)
 				return getTotalIndicatorCost(oRef);
 			
-			if (type == ObjectType.FACTOR)
+			if (Factor.isFactor(type))
 				return getTotalFactorCost(getFactor(oRef));
 
 			if (oRef.getObjectType() == ObjectType.TASK)
@@ -228,7 +228,7 @@ public class BudgetTotalsCalculator
 			return 0.0;
 		
 		int type = child.getObjectReference().getObjectType();
-		if (type == ObjectType.FACTOR)
+		if (Factor.isFactor(type))
 			return getFactorTotal(node);
 		
 		if (type == ObjectType.INDICATOR)
@@ -380,7 +380,7 @@ public class BudgetTotalsCalculator
 			return 0.0;
 		
 		int type = child.getObjectReference().getObjectType();
-		if (type == ObjectType.FACTOR)
+		if (Factor.isFactor(type))
 			return getFactorTotal(node, dateRange);
 		if (type == ObjectType.INDICATOR)
 			return getIndicatorTotal(node, dateRange);

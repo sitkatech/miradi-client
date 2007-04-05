@@ -84,6 +84,9 @@ abstract public class BaseObject
 			case ObjectType.TASK:
 				return new Task(objectManager, idAsInt, json);
 			
+			case ObjectType.CAUSE:
+			case ObjectType.STRATEGY:
+			case ObjectType.TARGET:
 			case ObjectType.FACTOR:
 			{
 				String typeString = json.getString(Factor.TAG_NODE_TYPE);
@@ -431,9 +434,15 @@ abstract public class BaseObject
 		if (Task.canOwnThisType(type))
 			objectTypes[i++] = Task.getObjectType();
 
-		if (Factor.canOwnThisType(type))
-			objectTypes[i++] = Factor.getObjectType();
-
+		if (Cause.canOwnThisType(type))
+			objectTypes[i++] = Cause.getObjectType();
+		
+		if (Strategy.canOwnThisType(type))
+			objectTypes[i++] = Strategy.getObjectType();
+		
+		if (Target.canOwnThisType(type))
+			objectTypes[i++] = Target.getObjectType();
+		
 		if (ViewData.canOwnThisType(type))
 			objectTypes[i++] = ViewData.getObjectType();
 
@@ -496,9 +505,15 @@ abstract public class BaseObject
 		if (Task.canReferToThisType(type))
 			objectTypes[i++] = Task.getObjectType();
 
-		if (Factor.canReferToThisType(type))
-			objectTypes[i++] = Factor.getObjectType();
-
+		if (Cause.canReferToThisType(type))
+			objectTypes[i++] = Cause.getObjectType();
+		
+		if (Strategy.canReferToThisType(type))
+			objectTypes[i++] = Strategy.getObjectType();
+		
+		if (Target.canReferToThisType(type))
+			objectTypes[i++] = Target.getObjectType();
+		
 		if (ViewData.canReferToThisType(type))
 			objectTypes[i++] = ViewData.getObjectType();
 

@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 
@@ -19,7 +18,7 @@ public class CreateActivityDoer extends AbstractTaskTreeDoer
 		if(selected == null || selected.length != 1)
 			return false;
 	
-		if(selected[0].getType() != ObjectType.FACTOR)
+		if(! Factor.isFactor(selected[0].getType()))
 			return false;
 		
 		if(!((Factor)selected[0]).isStrategy())

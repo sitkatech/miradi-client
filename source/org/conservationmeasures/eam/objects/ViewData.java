@@ -10,12 +10,10 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -45,25 +43,25 @@ public class ViewData extends BaseObject
 		super(new BaseId(idAsInt), json);
 	}
 
-	public Command[] buildCommandsToAddNode(FactorId idToAdd) throws ParseException
+	public Command[] buildCommandsToAddNode(ORef oRefToAdd) throws ParseException
 	{
 		if(getCurrentMode().equals(MODE_DEFAULT))
 			return new Command[0];
 		
-		CommandSetObjectData cmd = CommandSetObjectData.createAppendIdCommand(this, TAG_BRAINSTORM_NODE_IDS, idToAdd);
+		CommandSetObjectData cmd = CommandSetObjectData.createAppendORefCommand(this, TAG_CHAIN_MODE_FACTOR_REFS, oRefToAdd);
 		return new Command[] {cmd};
 	}
 
-	public Command[] buildCommandsToRemoveNode(FactorId idToRemove) throws ParseException
+	public Command[] buildCommandsToRemoveNode(ORef oRefToRemove) throws ParseException
 	{
 		if(getCurrentMode().equals(MODE_DEFAULT))
 			return new Command[0];
 		
-		IdList currentIds = new IdList(getData(TAG_BRAINSTORM_NODE_IDS));
-		if(!currentIds.contains(idToRemove))
+		ORefList currentORefs = new ORefList(getData(TAG_CHAIN_MODE_FACTOR_REFS));
+		if(!currentORefs.contains(oRefToRemove))
 			return new Command[0];
 		
-		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(this, TAG_BRAINSTORM_NODE_IDS, idToRemove);
+		CommandSetObjectData cmd = CommandSetObjectData.createRemoveORefCommand(this, TAG_CHAIN_MODE_FACTOR_REFS, oRefToRemove);
 		return new Command[] {cmd};
 	}
 	
@@ -111,8 +109,10 @@ public class ViewData extends BaseObject
 		
 		switch(objectType)
 		{
-			case ObjectType.FACTOR: 
-				list.addAll(new ORefList(ObjectType.FACTOR, brainstormNodeIds.getIdList()));
+			case ObjectType.CAUSE:
+			case ObjectType.STRATEGY:
+			case ObjectType.TARGET: 
+				list.addAll(chainModeFactorRefs.getORefList());
 		}
 		return list;
 	}
@@ -121,14 +121,14 @@ public class ViewData extends BaseObject
 	{
 		super.clear();
 		currentMode = new StringData();
-		brainstormNodeIds = new IdListData();
+		chainModeFactorRefs = new ORefListData();
 		currentTab = new IntegerData();
 		currentSortBy = new StringData();
 		currentSortDirecton = new StringData();
 		expandedNodesList = new ORefListData();
 		
 		addField(TAG_CURRENT_MODE, currentMode);
-		addField(TAG_BRAINSTORM_NODE_IDS, brainstormNodeIds);
+		addField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
 		addField(TAG_CURRENT_TAB, currentTab);
 		addField(TAG_CURRENT_SORT_BY, currentSortBy);
 		addField(TAG_CURRENT_SORT_DIRECTION, currentSortDirecton);
@@ -136,7 +136,7 @@ public class ViewData extends BaseObject
 	}
 	
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
-	public static final String TAG_BRAINSTORM_NODE_IDS = "BrainstormNodeIds";
+	public static final String TAG_CHAIN_MODE_FACTOR_REFS = "ChainModeFactorRefs";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
 	public static final String TAG_CURRENT_SORT_BY = "CurrentSortBy";
 	public static final String TAG_CURRENT_SORT_DIRECTION = "CurrentSortDirecton";
@@ -155,7 +155,7 @@ public class ViewData extends BaseObject
 	
 	private IntegerData currentTab;
 	private StringData currentMode;
-	private IdListData brainstormNodeIds;
+	private ORefListData chainModeFactorRefs;
 	private StringData currentSortBy;
 	private StringData currentSortDirecton;
 	

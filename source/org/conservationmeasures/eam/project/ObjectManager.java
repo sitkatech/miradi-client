@@ -12,6 +12,7 @@ import java.util.HashMap;
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -24,6 +25,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
+import org.conservationmeasures.eam.objectpools.CausePool;
 import org.conservationmeasures.eam.objectpools.DiagramContentsPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
@@ -39,6 +41,8 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
+import org.conservationmeasures.eam.objectpools.StrategyPool;
+import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
@@ -46,6 +50,8 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 
 public class ObjectManager
 {
@@ -55,7 +61,6 @@ public class ObjectManager
 
 		pools = new HashMap();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
-		pools.put(new Integer(ObjectType.FACTOR), new FactorPool(factorAndLinkIdAssigner));
 		pools.put(new Integer(ObjectType.FACTOR_LINK), new FactorLinkPool(factorAndLinkIdAssigner, new FactorLinkMonitor()));
 
 		IdAssigner ida = getAnnotationIdAssigner();
@@ -75,6 +80,9 @@ public class ObjectManager
 		addNormalPool(new KeyEcologicalAttributePool(ida));
 		addNormalPool(new DiagramFactorPool(ida));
 		addNormalPool(new DiagramContentsPool(ida));
+		addNormalPool(new CausePool(ida));
+		addNormalPool(new StrategyPool(ida));
+		addNormalPool(new TargetPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -177,9 +185,12 @@ public class ObjectManager
 			case ObjectType.FACTOR:
 			{
 				CreateFactorParameter parameter = (CreateFactorParameter)extraInfo;
+				FactorType factorType = parameter.getNodeType();
 				FactorId nodeId = new FactorId(getProject().obtainRealNodeId(objectId).asInt());
-				Factor node = Factor.createConceptualModelObject(this, nodeId, parameter);
-				getNodePool().put(node);
+				Factor node = Factor.createFactor(this, nodeId, factorType);
+				int nodeType = node.getType();
+				EAMObjectPool pool = getPool(nodeType);
+				pool.put(node.getId(), node);
 				getDatabase().writeObject(node);
 				createdId = node.getId();
 				break;
@@ -222,7 +233,7 @@ public class ObjectManager
 
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
-		BaseObject object = getPool(objectType).findObject(objectId);
+		BaseObject object = findObject(objectType, objectId);
 		object.setData(fieldTag, dataValue);
 		getDatabase().writeObject(object);
 	}
@@ -235,8 +246,32 @@ public class ObjectManager
 	
 	public BaseObject findObject(int objectType, BaseId objectId)
 	{
-		return getPool(objectType).findObject(objectId);
+		if (Factor.isFactor(objectType))
+		{
+			BaseObject cause = getPool(Cause.getObjectType()).findObject(objectId);
+			if (cause != null)
+				return cause;
+			
+			BaseObject strategy = getPool(Strategy.getObjectType()).findObject(objectId);
+			if (strategy != null)
+				return strategy;
+
+			BaseObject target = getPool(Target.getObjectType()).findObject(objectId);
+			if (target != null)
+				return target;
+			
+			return null;
+		}
+		
+		EAMObjectPool pool = getPool(objectType);
+		return pool.findObject(objectId);
 	}
+	
+	public Factor findNode(FactorId id)
+	{
+		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
+	}
+	
 
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
@@ -246,9 +281,12 @@ public class ObjectManager
 		return object.getData(fieldTag);
 	}
 
+	//FIXME iterate through all the pools
 	public void loadFromDatabase() throws Exception
 	{
-		loadPool(ObjectType.FACTOR);
+		loadPool(ObjectType.CAUSE);
+		loadPool(ObjectType.STRATEGY);
+		loadPool(ObjectType.TARGET);
 		loadPool(ObjectType.FACTOR_LINK);
 		loadPool(ObjectType.TASK);
 		loadPool(ObjectType.VIEW_DATA);
@@ -327,16 +365,16 @@ public class ObjectManager
 	{
 		public void factorLinkWasCreated(FactorId linkFromId, FactorId linkToId)
 		{
-			Factor from = getNodePool().find(linkFromId); 
-			Factor to = getNodePool().find(linkToId);
+			Factor from = findNode(linkFromId); 
+			Factor to = findNode(linkToId);
 			if(from.isCause() && to.isTarget())
 				((Cause)from).increaseTargetCount();
 		}
 
 		public void factorLinkWasDeleted(FactorId linkFromId, FactorId linkToId)
 		{
-			Factor from = getNodePool().find(linkFromId);
-			Factor to = getNodePool().find(linkToId);
+			Factor from = findNode(linkFromId);
+			Factor to = findNode(linkToId);
 			if(from.isCause() && to.isTarget())
 				((Cause)from).decreaseTargetCount();
 		}		

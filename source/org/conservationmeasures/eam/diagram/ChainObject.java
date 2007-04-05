@@ -117,7 +117,7 @@ public class ChainObject
 			if(thisLink.getNodeId(direction).equals(startingFactor.getId()))
 			{
 				attempToAdd(thisLink);
-				Factor linkedFactor = diagramModel.getFactorPool().find(thisLink.getOppositeNodeId(direction));
+				Factor linkedFactor = diagramModel.getProject().findNode(thisLink.getOppositeNodeId(direction));
 				unprocessedFactors.attemptToAdd(linkedFactor);
 			}
 		}		
@@ -132,7 +132,7 @@ public class ChainObject
 				if(thisLinkage.getNodeId(direction).equals(thisFactor.getId()))
 				{
 					attempToAdd(thisLinkage);
-					Factor linkedNode = diagramModel.getFactorPool().find(thisLinkage.getOppositeNodeId(direction));
+					Factor linkedNode = diagramModel.getProject().findNode(thisLinkage.getOppositeNodeId(direction));
 					unprocessedFactors.attemptToAdd(linkedNode);
 				}
 			}
@@ -155,7 +155,7 @@ public class ChainObject
 			{
 				attempToAdd(thisLink);
 				FactorId downstreamFactorId = thisLink.getOppositeNodeId(direction);
-				Factor downstreamFactor = diagramModel.getFactorPool().find(downstreamFactorId);
+				Factor downstreamFactor = diagramModel.getProject().findNode(downstreamFactorId);
 				results.attemptToAdd(downstreamFactor);
 			}
 		}

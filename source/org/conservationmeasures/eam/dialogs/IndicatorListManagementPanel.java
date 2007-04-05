@@ -9,16 +9,16 @@ import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class IndicatorListManagementPanel extends ObjectListManagementPanel
 {
-	public IndicatorListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
+	public IndicatorListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef ref, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new IndicatorListTablePanel(projectToUse, actions, nodeId),
+		super(splitPositionSaverToUse, new IndicatorListTablePanel(projectToUse, actions, ref),
 				new IndicatorPropertiesPanel(projectToUse, actions));
 	}
 	

@@ -120,7 +120,8 @@ public class Delete extends ProjectDoer
 
 	private void removeFromView(FactorId id) throws ParseException, Exception, CommandFailedException
 	{
-		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(id);
+		Factor factor = getProject().findNode(id);
+		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(factor.getRef());
 		for(int i = 0; i < commandsToRemoveFromView.length; ++i)
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}

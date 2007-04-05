@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -121,7 +120,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	private Component createLabelBar(FactorCell diagramFactor)
 	{
 		Factor factor = diagramFactor.getUnderlyingObject();
-		grid = new FactorInputPanel(getProject(), factor.getId());
+		grid = new FactorInputPanel(getProject(), factor.getRef());
 		
 		grid.addFieldWithCustomLabel(grid.createStringField(Factor.TAG_LABEL), createFactorTypeLabel(factor));
 		
@@ -160,24 +159,24 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
 
-		indicatorsTab = new IndicatorListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+		indicatorsTab = new IndicatorListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 		tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
 		
 		if(diagramFactor.canHaveObjectives())
 		{
-			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
 		}
 		
 		if(diagramFactor.canHaveGoal())
 		{
-			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
 		}
 		
 		if(diagramFactor.isStrategy())
 		{
-			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentFactorId(), mainWindow.getActions());
+			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
 		
@@ -231,9 +230,9 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	class FactorInputPanel extends ObjectDataInputPanel
 	{
 
-		public FactorInputPanel(Project projectToUse, BaseId idToUse)
+		public FactorInputPanel(Project projectToUse, ORef oRefToUse)
 		{
-			super(projectToUse, ObjectType.FACTOR, idToUse);
+			super(projectToUse, oRefToUse);
 		}
 
 		public String getPanelDescription()

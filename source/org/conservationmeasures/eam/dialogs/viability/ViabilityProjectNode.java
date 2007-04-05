@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusQuestion;
@@ -76,7 +75,7 @@ public class ViabilityProjectNode extends TreeTableNode
 	public void rebuild()
 	{
 		Vector vector = new Vector();
-		Factor[] factors  = project.getFactorPool().getTargets();
+		Target[] factors  = project.getTargetPool().getTargets();
 		for (int i=0; i< factors.length; ++i)
 		{
 			vector.add(new TargetViabilityNode(project, (FactorId) factors[i].getId()));

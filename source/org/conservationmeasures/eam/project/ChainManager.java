@@ -27,7 +27,7 @@ public class ChainManager
 		int AVOID_INFINITE_LOOP = 10000;
 		for(int i = 0; i < AVOID_INFINITE_LOOP; ++i)
 		{
-			if(owner.getType() == ObjectType.FACTOR)
+			if(Factor.isFactor(owner.getType()))
 				return (Factor)owner;
 			owner = owner.getOwner();
 			if(owner == null)

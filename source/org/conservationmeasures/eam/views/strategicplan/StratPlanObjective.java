@@ -72,7 +72,7 @@ public class StratPlanObjective extends TreeTableNode
 	{
 		ObjectiveId objectiveId = (ObjectiveId)objective.getId();
 
-		Factor[] strategyObjects = project.getFactorPool().getNonDraftStrategies();
+		Factor[] strategyObjects = project.getStrategyPool().getNonDraftStrategies();
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < strategyObjects.length; ++i)
 		{

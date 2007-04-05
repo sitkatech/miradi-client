@@ -5,18 +5,10 @@
 */ 
 package org.conservationmeasures.eam.objectpools;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Vector;
-
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Strategy;
 
 public class FactorPool extends PoolWithIdAssigner
 {
@@ -38,86 +30,5 @@ public class FactorPool extends PoolWithIdAssigner
 	public void remove(FactorId id)
 	{
 		super.remove(id);
-	}
-
-	public FactorId[] getModelNodeIds()
-	{
-		return (FactorId[])new HashSet(getRawIds()).toArray(new FactorId[0]);
-	}
-	
-	public Factor[] getDraftAndNonDraftStrategies()
-	{
-		return getNodesOfType(new FactorTypeStrategy());
-	}
-	
-	public Factor[] getDraftStrategies()
-	{
-		Vector draftStrategies = new Vector();
-		Factor[] allStrategies = getDraftAndNonDraftStrategies();
-		for(int i = 0; i < allStrategies.length; ++i)
-		{
-			Strategy strategy = (Strategy)allStrategies[i];
-			if(strategy.isStatusDraft())
-				draftStrategies.add(strategy);
-		}
-		return (Factor[])draftStrategies.toArray(new Factor[0]);
-	}
-	
-	public Factor[] getNonDraftStrategies()
-	{
-		Vector nonDraftStrategies = new Vector();
-		Factor[] allStrategies = getDraftAndNonDraftStrategies();
-		for(int i = 0; i < allStrategies.length; ++i)
-		{
-			Strategy strategy = (Strategy)allStrategies[i];
-			if(!strategy.isStatusDraft())
-				nonDraftStrategies.add(strategy);
-		}
-		return (Factor[])nonDraftStrategies.toArray(new Factor[0]);
-	}
-	
-	public Factor[] getDirectThreats()
-	{
-		Vector cmNodes = new Vector();
-		FactorId[] ids = getModelNodeIds();
-		Arrays.sort(ids);
-		for(int i = 0; i < ids.length; ++i)
-		{
-			Factor cmNode = (Factor)getRawObject(ids[i]);
-			if(cmNode.isDirectThreat())
-				cmNodes.add(cmNode);
-		}
-		return (Factor[])cmNodes.toArray(new Factor[0]);
-	}
-
-	public Factor[] getTargets()
-	{
-		return getNodesOfType(new FactorTypeTarget());
-	}
-
-	private Factor[] getNodesOfType(FactorType type)
-	{
-		Vector cmNodes = new Vector();
-		FactorId[] ids = getModelNodeIds();
-		Arrays.sort(ids);
-		for(int i = 0; i < ids.length; ++i)
-		{
-			Factor cmNode = (Factor)getRawObject(ids[i]);
-			if(cmNode.getNodeType().equals(type))
-				cmNodes.add(cmNode);
-		}
-		return (Factor[])cmNodes.toArray(new Factor[0]);
-	}
-	
-	public Factor[] getAllFactors()
-	{
-		Vector cmNodes = new Vector();
-		FactorId[] ids = getModelNodeIds();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			cmNodes.add(getRawObject(ids[i]));
-		}
-		return (Factor[])cmNodes.toArray(new Factor[0]);
-	}
-	
+	}	
 }

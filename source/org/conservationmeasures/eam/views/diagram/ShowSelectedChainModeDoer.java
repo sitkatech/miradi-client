@@ -15,8 +15,8 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -64,14 +64,14 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			FactorCell[] selectedNodes = project.getOnlySelectedFactors();
 			
 			BaseId viewId = getCurrentViewId();
-			IdList nodeIdsToProcess = new IdList();
+			ORefList nodeORefsToProcess = new ORefList();
 			
-			addFactorsToList(selectedNodes, nodeIdsToProcess);
-			addFactorsToList(orphanedDaftStrats, nodeIdsToProcess);
+			addFactorsToList(selectedNodes, nodeORefsToProcess);
+			addFactorsToList(orphanedDaftStrats, nodeORefsToProcess);
 			
 			project.executeCommand(new CommandBeginTransaction());
 			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
-					ViewData.TAG_BRAINSTORM_NODE_IDS, nodeIdsToProcess.toString()));
+					ViewData.TAG_CHAIN_MODE_FACTOR_REFS, nodeORefsToProcess.toString()));
 			
 			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
 					ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM));
@@ -84,11 +84,11 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		}
 	}
 
-	private void addFactorsToList(FactorCell[] orphanedDaftStrats, IdList selectedNodeIds)
+	private void addFactorsToList(FactorCell[] orphanedDaftStrats, ORefList selectedNodeORefs)
 	{
 		for(int i = 0; i < orphanedDaftStrats.length; ++i)
 		{
-			selectedNodeIds.add(orphanedDaftStrats[i].getWrappedId());
+			selectedNodeORefs.add(orphanedDaftStrats[i].getWrappedORef());
 		}
 	}
 
@@ -96,7 +96,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	{
 		Vector diagramFactors = new Vector();
 		DiagramModel model = project.getDiagramModel();
-		Factor[] factors = project.getFactorPool().getDraftStrategies();
+		Factor[] factors = project.getStrategyPool().getDraftStrategies();
 		for (int i=0; i<factors.length; ++i)
 		{
 			FactorCell diagramFactor = model.getFactorCellByWrappedId(factors[i].getFactorId());

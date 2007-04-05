@@ -26,10 +26,8 @@ public class ObjectType
 	public static final int KEY_ECOLOGICAL_ATTRIBUTE = 17;
 	public static final int DIAGRAM_FACTOR = 18;
 	public static final int DIAGRAM_CONTENTS = 19;
-	
-	//FIXME these should have unique ints after the refactor.
-	public static final int STRATEGY = 4;
-	public static final int CAUSE = 4;
-	public static final int TARGET = 4;
+	public static final int CAUSE = 20;
+	public static final int STRATEGY = 21;
+	public static final int TARGET = 22;
 }
 

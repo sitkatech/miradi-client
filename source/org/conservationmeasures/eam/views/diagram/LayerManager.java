@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public class LayerManager
@@ -17,7 +17,7 @@ public class LayerManager
 	public LayerManager()
 	{
 		hiddenNodeTypes = new HashSet();
-		hiddenIds = new IdList();
+		hiddenORefs = new ORefList();
 		mode = ViewData.MODE_DEFAULT;
 		contributingFactorsVisibleFlag = true;
 		directThreatsVisibleFlag = true;
@@ -31,7 +31,7 @@ public class LayerManager
 	
 	public boolean isVisible(FactorCell node)
 	{
-		if(hiddenIds.contains(node.getWrappedId()))
+		if(hiddenORefs.contains(node.getWrappedORef()))
 			return false;
 		
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
@@ -68,12 +68,12 @@ public class LayerManager
 	
 	public boolean areAllNodesVisible()
 	{
-		return hiddenNodeTypes.isEmpty() && hiddenIds.isEmpty();
+		return hiddenNodeTypes.isEmpty() && hiddenORefs.isEmpty();
 	}
 	
-	public void setHiddenIds(IdList idsToHide)
+	public void setHiddenORefs(ORefList oRefsToHide)
 	{
-		hiddenIds = new IdList(idsToHide);
+		hiddenORefs = new ORefList(oRefsToHide);
 	}
 	
 	public void setMode(String newMode)
@@ -162,7 +162,7 @@ public class LayerManager
 	}
 	
 	Set hiddenNodeTypes;
-	IdList hiddenIds;
+	ORefList hiddenORefs;
 	String mode;
 	boolean contributingFactorsVisibleFlag;
 	boolean directThreatsVisibleFlag;

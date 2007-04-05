@@ -15,10 +15,9 @@ import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objects.Factor;
@@ -190,7 +189,7 @@ public class ThreatRatingFramework
 	
 	public ValueOption getProjectMajorityRating()
 	{
-		Factor[] targets = getProject().getFactorPool().getTargets();
+		Factor[] targets = getProject().getTargetPool().getTargets();
 		int[] highestValues = new int[targets.length];
 		for(int i = 0; i < targets.length; ++i)
 			highestValues[i] = getHighestValueForTarget(targets[i].getId()).getNumericValue();
@@ -251,7 +250,7 @@ public class ThreatRatingFramework
 	
 	public ValueOption getProjectRollupRating()
 	{
-		Factor[] threats = getProject().getFactorPool().getDirectThreats();
+		Factor[] threats = getProject().getCausePool().getDirectThreats();
 		int[] numericValues = new int[threats.length];
 		for(int i = 0; i < threats.length; ++i)
 		{
@@ -263,14 +262,13 @@ public class ThreatRatingFramework
 
 	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
-		FactorPool nodePool = project.getFactorPool();
 		FactorId threatId = bundle.getThreatId();
-		Factor threat = nodePool.find(threatId);
+		Factor threat = project.findNode(threatId);
 		if(threat == null || !threat.isDirectThreat())
 			return false;
 		
 		FactorId targetId = bundle.getTargetId();
-		Factor target = nodePool.find(targetId);
+		Factor target = project.findNode(targetId);
 		if(target == null || !target.isTarget())
 			return false;
 

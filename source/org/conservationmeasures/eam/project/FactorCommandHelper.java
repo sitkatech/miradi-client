@@ -55,7 +55,8 @@ public class FactorCommandHelper
 		CommandDiagramAddFactor commandInsertNode = new CommandDiagramAddFactor(diagramFactorId);
 		executeCommand(commandInsertNode);
 		
-		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(modelNodeId);
+		Factor factor = project.findNode(modelNodeId);
+		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(factor.getRef());
 		for(int i = 0; i < commandsToAddToView.length; ++i)
 			executeCommand(commandsToAddToView[i]);
 		
@@ -159,6 +160,9 @@ public class FactorCommandHelper
 	
 	public static CommandSetObjectData createSetLabelCommand(FactorId id, String newLabel)
 	{
+		
+		//FIXME should get node from project and get type from node instead of using FACTOR
+		//ask kevin (nima)
 		int type = ObjectType.FACTOR;
 		String tag = Factor.TAG_LABEL;
 		CommandSetObjectData cmd = new CommandSetObjectData(type, id, tag, newLabel);

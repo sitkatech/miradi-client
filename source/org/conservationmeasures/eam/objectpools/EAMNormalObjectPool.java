@@ -22,7 +22,7 @@ abstract public class EAMNormalObjectPool extends PoolWithIdAssigner
 	{
 		BaseId actualId = idAssigner.obtainRealId(objectId);
 		BaseObject created = createRawObject(objectManager, actualId, extraInfo);
-		put(actualId, created);
+		put(created.getId(), created);
 		return created;
 	}
 	

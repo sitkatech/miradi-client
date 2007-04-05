@@ -23,6 +23,7 @@ public class ShowCellRatingsDoer extends CellRatingsDoer
 		if (!isAvailable())
 			return;
 		
+		//FIXME diagramComponent no longer exists in other views (Kevin)
 		getMainWindow().setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, true);
 		updateToolBar();
 	}

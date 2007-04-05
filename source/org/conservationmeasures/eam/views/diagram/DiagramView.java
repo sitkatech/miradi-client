@@ -65,12 +65,13 @@ import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -257,17 +258,17 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	public void setMode(String newMode)
 	{
-		IdList hiddenIds = new IdList();
+		ORefList hiddenORefs = new ORefList();
 		getDiagramComponent().setToDefaultBackgroundColor();
 		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
 		{
-			hiddenIds = getIdsToHide();
+			hiddenORefs = getORefsToHide();
 			getDiagramComponent().setBackground(Color.LIGHT_GRAY);
 		}
 			
 
 		LayerManager manager = getProject().getLayerManager();
-		manager.setHiddenIds(hiddenIds);
+		manager.setHiddenORefs(hiddenORefs);
 		manager.setMode(newMode);
 		mode = newMode;
 		updateToolBar();
@@ -276,49 +277,49 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		getProject().updateVisibilityOfFactors();
 	}
 
-	private IdList getIdsToHide()
+	private ORefList getORefsToHide()
 	{
-		IdList idsToHide = new IdList();
+		ORefList oRefsToHide = new ORefList();
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			IdList visibleFactorIds = new IdList(viewData.getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
-			visibleFactorIds.addAll(getRelatedDraftInterventions(visibleFactorIds));
+			ORefList visibleFactorORefs = new ORefList(viewData.getData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS));
+			visibleFactorORefs.addAll(getRelatedDraftInterventions(visibleFactorORefs));
 			DiagramFactor[] allDiagramFactors = getProject().getAllDiagramFactors();
 			for (int i = 0; i < allDiagramFactors.length; ++i)
 			{
 				DiagramFactor diagramFactor = allDiagramFactors[i];
-				FactorId id = diagramFactor.getWrappedId();
-				if (!visibleFactorIds.contains(id))
-					idsToHide.add(id);
+				ORef ref = diagramFactor.getWrappedORef();
+				if (!visibleFactorORefs.contains(ref))
+					oRefsToHide.add(ref);
 			}
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
-		return idsToHide;
+		return oRefsToHide;
 	}
 	
-	IdList getRelatedDraftInterventions(IdList factorIds) throws Exception
+	ORefList getRelatedDraftInterventions(ORefList factorORefs) throws Exception
 	{
-		IdList draftsToAdd = new IdList();
+		ORefList draftsToAdd = new ORefList();
 		
 		DiagramModel diagramModel = getProject().getDiagramModel();
-		for(int i = 0; i < factorIds.size(); ++i)
+		for(int i = 0; i < factorORefs.size(); ++i)
 		{
-			FactorId nodeId = new FactorId(factorIds.get(i).asInt());
+			FactorId nodeId = new FactorId(factorORefs.get(i).getObjectId().asInt());
 			Factor node = diagramModel.getFactorCellByWrappedId(nodeId).getUnderlyingObject();
 			FactorSet possibleDraftStrategies = diagramModel.getDirectlyLinkedUpstreamNodes(node);
 			Iterator iter = possibleDraftStrategies.iterator();
 			while(iter.hasNext())
 			{
-				FactorId possibleStrategyId = ((Factor)iter.next()).getFactorId();
-				if(factorIds.contains(possibleStrategyId))
+				ORef possibleStrategyORef = ((Factor)iter.next()).getRef();
+				if(factorORefs.contains(possibleStrategyORef))
 					continue;
-				Factor possibleIntervention = getProject().findNode(possibleStrategyId);
+				Factor possibleIntervention = getProject().findNode(new FactorId(possibleStrategyORef.getObjectId().asInt()));
 				if(possibleIntervention.isStrategy() && possibleIntervention.isStatusDraft())
-					draftsToAdd.add(possibleIntervention.getId());
+					draftsToAdd.add(possibleIntervention.getRef());
 			}
 		}
 		

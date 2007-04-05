@@ -12,6 +12,8 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
@@ -54,6 +56,20 @@ public class CommandSetObjectData extends Command
 		IdList newList = new IdList(object.getData(idListTag));
 		newList.removeId(idToRemove);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
+	}
+	
+	static public CommandSetObjectData createRemoveORefCommand(BaseObject object, String oRefListTag, ORef oRefToRemove) throws ParseException
+	{
+		ORefList newList = new ORefList(object.getData(oRefListTag));
+		newList.remove(oRefToRemove);
+		return new CommandSetObjectData(object.getType(), object.getId(), oRefListTag, newList.toString());
+	}
+	
+	static public CommandSetObjectData createAppendORefCommand(BaseObject object, String oRefListTag, ORef oRefToAppend) throws ParseException
+	{
+		ORefList newList = new ORefList(object.getData(oRefListTag));
+		newList.add(oRefToAppend);
+		return new CommandSetObjectData(object.getType(), object.getId(), oRefListTag, newList.toString());
 	}
 	
 	public CommandSetObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue)

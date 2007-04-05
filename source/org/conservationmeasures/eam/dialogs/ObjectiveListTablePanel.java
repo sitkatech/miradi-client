@@ -10,16 +10,16 @@ import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.actions.ObjectsAction;
-import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class ObjectiveListTablePanel extends ObjectListTablePanel
 {
-	public ObjectiveListTablePanel(Project projectToUse, Actions actions, FactorId nodeId)
+	public ObjectiveListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
 	{
 		super(projectToUse, ObjectType.OBJECTIVE, 
-				new ObjectiveListTableModel(projectToUse, nodeId), 
+				new ObjectiveListTableModel(projectToUse, nodeRef), 
 				(MainWindowAction)actions.get(ActionCreateObjective.class), 
 				(ObjectsAction)actions.get(ActionDeleteObjective.class));
 	}

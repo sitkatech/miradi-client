@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
-import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.Cause;
@@ -572,11 +571,6 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramFactorLinkPool getDiagramFactorLinkPool()
 	{
 		return project.getDiagramFactorLinkPool();
-	}
-	
-	public FactorPool getFactorPool()
-	{
-		return project.getFactorPool();
 	}
 	
 	FactorLinkPool getFactorLinkPool()

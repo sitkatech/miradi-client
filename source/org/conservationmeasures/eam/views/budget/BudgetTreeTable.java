@@ -92,7 +92,7 @@ public class BudgetTreeTable extends BoldedStrategyIndicatorTableTree
 			if(node.getType() == ObjectType.INDICATOR)
 				return boldFont;
 			
-			if(node.getType() == ObjectType.FACTOR)
+			if(Factor.isFactor(node.getType()))
 				return getFactorFont((Factor)node.getObject());
 			
 			if(node.getType() == ObjectType.TASK)

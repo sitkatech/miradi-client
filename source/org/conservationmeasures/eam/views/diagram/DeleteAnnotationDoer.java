@@ -96,7 +96,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		if(selected == null)
 			return null;
 		
-		if(selected.getType() != ObjectType.FACTOR)
+		if(! Factor.isFactor(selected.getType()))
 			return null;
 		
 		return (Factor)selected;

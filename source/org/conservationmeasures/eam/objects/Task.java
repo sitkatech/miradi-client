@@ -156,7 +156,7 @@ public class Task extends BaseObject
 
 	public boolean isActivity()
 	{
-		return getParentRef().getObjectType() == ObjectType.FACTOR;
+		return Factor.isFactor(getParentRef().getObjectType());
 	}
 
 	public boolean isMethod()

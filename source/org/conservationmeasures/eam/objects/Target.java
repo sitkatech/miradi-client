@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.TNCViabilityFormula;
@@ -45,6 +46,38 @@ public class Target extends Factor
 		super(idToUse, Factor.TYPE_TARGET, json);
 	}
 
+	public static boolean canOwnThisType(int type)
+	{
+		if (Factor.canOwnThisType(type))
+			return true;
+		
+		switch(type)
+		{
+			case ObjectType.GOAL: 
+				return true;
+			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
+				return true;
+			default:
+				return false;
+		}
+	}
+	
+	public ORefList getOwnedObjects(int objectType)
+	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
+		switch(objectType)
+		{
+			case ObjectType.GOAL: 
+				list.addAll(new ORefList(objectType, getGoals()));
+			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
+				list.addAll(new ORefList(objectType, getKeyEcologicalAttributes()));
+
+		}
+		return list;
+	}
+
+	
 	public boolean isTarget()
 	{
 		return true;
@@ -162,7 +195,7 @@ public class Target extends Factor
 		return TNCViabilityFormula.getAverageRatingCode(categorySummaryRatings);
 	}
 	
-	static public String computeTNCViability(KeyEcologicalAttribute[] keas)
+		static public String computeTNCViability(KeyEcologicalAttribute[] keas)
 	{
 		CodeList codes = new CodeList();
 		for(int i = 0; i < keas.length; ++i)
@@ -181,6 +214,17 @@ public class Target extends Factor
 			codes.add(targets[i].computeTNCViability());
 		}
 		return TNCViabilityFormula.getAverageRatingCode(codes);
+	}
+	
+	
+	public int getType()
+	{
+		return getObjectType();
+	}
+	
+	public static int getObjectType()
+	{
+		return ObjectType.TARGET;
 	}
 	
 	void clear()

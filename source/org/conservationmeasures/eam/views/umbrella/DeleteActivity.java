@@ -111,9 +111,11 @@ public class DeleteActivity extends ObjectsDoer
 			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Strategy.TAG_ACTIVITY_IDS, task.getId());
 		else if (task.isMethod())
 			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Indicator.TAG_TASK_IDS, task.getId());
-		else 
+		else if (task.isTask())
 			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Task.TAG_SUBTASK_IDS, task.getId());
-
+		else
+			throw new RuntimeException("uknown task type "+task.getId());
+		
 		commandsToDeleteTasks.add(commandSetObjectData);
 		Vector returnedDeleteTaskCommands = task.getDeleteSelfAndSubtasksCommands(project);
 		commandsToDeleteTasks.addAll(returnedDeleteTaskCommands);

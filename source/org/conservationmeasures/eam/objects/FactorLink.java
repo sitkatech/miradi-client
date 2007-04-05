@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -77,7 +76,9 @@ public class FactorLink extends BaseObject
 	{
 		switch(type)
 		{
-			case ObjectType.FACTOR: 
+			case ObjectType.CAUSE:
+			case ObjectType.STRATEGY:
+			case ObjectType.TARGET:
 				return true;
 			default:
 				return false;
@@ -90,10 +91,18 @@ public class FactorLink extends BaseObject
 		
 		switch(objectType)
 		{
-			case ObjectType.FACTOR: 
-				list.addAll(new ORefList(new ORef[] {
-						new ORef(objectType, fromId.getId()), 
-						new ORef(objectType, toId.getId())}));
+			case ObjectType.CAUSE:
+			case ObjectType.STRATEGY:
+			case ObjectType.TARGET:
+			{
+				Factor toFactor = objectManager.findNode(getToFactorId());
+				if (toFactor.getType() == objectType)
+					list.add(toFactor.getRef());
+				
+				Factor fromFactor = objectManager.findNode(getFromFactorId());
+				if (fromFactor.getType() == objectType)
+					list.add(fromFactor.getRef());
+			}
 		}
 		return list;
 	}

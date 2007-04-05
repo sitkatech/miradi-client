@@ -64,7 +64,7 @@ public class ORef
 	
 	public int hashCode()
 	{
-		return toJson().hashCode();
+		return objectId.hashCode();
 	}
 	
 	public String toString()

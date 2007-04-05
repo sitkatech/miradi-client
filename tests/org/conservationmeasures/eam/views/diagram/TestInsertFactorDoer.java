@@ -54,7 +54,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		inserter.setLocation(at);
 		inserter.doIt();
 
-		FactorId id = project.getFactorPool().getModelNodeIds()[0];
+		FactorId id = project.getStrategyPool().getAllStrategies()[0].getFactorId();
 		FactorCell cell = project.getDiagramModel().getFactorCellByWrappedId(id);
 		assertEquals("didn't set location?", inserter.getLocation(), cell.getDiagramFactor().getLocation());
 		assertEquals("didn't set name?", inserter.getInitialText(), cell.getUnderlyingObject().getLabel());

@@ -9,14 +9,11 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.Factor;
 
 public class ProjectRepairer
 {
@@ -38,119 +35,121 @@ public class ProjectRepairer
 		deleteOrphanAnnotations();
 		//TODO delete factors that are not in the diagram
 	}
-	
+
+	 
+	//FIXME believe that this method is no longer needed. 
 	void fixNodeAnnotationIds() throws Exception
 	{
-		FactorId[] nodeIds = project.getFactorPool().getModelNodeIds();
-		for(int i = 0; i < nodeIds.length; ++i)
-		{
-			FactorId nodeId = nodeIds[i];
-			Factor node = project.findNode(nodeId);
-			fixGhostIndicatorIds(node);
-			removeInvalidGoalIds(node);
-			removeInvalidObjectiveIds(node);
-			removeMissingObjectiveIds(node);
-		}
+//		FactorId[] nodeIds = project.getFactorPool().getModelNodeIds();
+//		for(int i = 0; i < nodeIds.length; ++i)
+//		{
+//			FactorId nodeId = nodeIds[i];
+//			Factor node = project.findNode(nodeId);
+//			fixGhostIndicatorIds(node);
+//			removeInvalidGoalIds(node);
+//			removeInvalidObjectiveIds(node);
+//			removeMissingObjectiveIds(node);
+//		}
 	}
 	
-	private void fixGhostIndicatorIds(Factor node)
-	{
-		IdList newIndicatorIds = new IdList();
-		IdList oldIndicatorIds = node.getIndicators();
-		for(int j = 0; j < oldIndicatorIds.size(); ++j)
-		{
-			IndicatorId indicatorId = new IndicatorId(oldIndicatorIds.get(j).asInt());
-			if(indicatorId.isInvalid())
-				continue;
-			BaseObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
-			if(indicator == null)
-				EAM.logWarning("Fixing node " + node.getId() + " ghost indicatorId " + indicatorId);
-			else
-				newIndicatorIds.add(indicatorId);
-		}
-		if(newIndicatorIds.equals(oldIndicatorIds))
-			return;
-		
-		try
-		{
-			node.setIndicators(newIndicatorIds);
-			project.writeFactor(node.getFactorId());
-		}
-		catch (Exception logAndContinue)
-		{
-			EAM.logError("Repair failed");
-			logAndContinue(logAndContinue);
-		}
-
-	}
-	
-	private void removeInvalidGoalIds(Factor node)
-	{
-		IdList ids = node.getGoals();
-		if(!ids.contains(BaseId.INVALID))
-			return;
-		
-		EAM.logWarning("Removing invalid goal id for " + node.getId());
-		ids.removeId(BaseId.INVALID);
-		node.setGoals(ids);
-		try
-		{
-			project.writeFactor(node.getFactorId());
-		}
-		catch(Exception logAndContinue)
-		{
-			EAM.logError("Repair failed");
-			logAndContinue(logAndContinue);
-		}
-	}
-	
-	private void removeInvalidObjectiveIds(Factor node)
-	{
-		IdList ids = node.getObjectives();
-		if(!ids.contains(BaseId.INVALID))
-			return;
-		
-		EAM.logWarning("Removing invalid objective id for " + node.getId());
-		ids.removeId(BaseId.INVALID);
-		node.setObjectives(ids);
-		try
-		{
-			project.writeFactor(node.getFactorId());
-		}
-		catch(Exception logAndContinue)
-		{
-			EAM.logError("Repair failed");
-			logAndContinue(logAndContinue);
-		}
-	}
-	
-	private void removeMissingObjectiveIds(Factor node)
-	{
-		IdList newIds = new IdList();
-		IdList oldIds = node.getObjectives();
-		for(int i = 0; i < oldIds.size(); ++i)
-		{
-			BaseId id = oldIds.get(i);
-			if(project.findObject(ObjectType.OBJECTIVE, id) == null)
-				EAM.logWarning("Removing missing objective id " + id + " for " + node.getId());
-			else
-				newIds.add(id);
-		}
-
-		if(newIds.size() == oldIds.size())
-			return;
-		
-		node.setObjectives(newIds);
-		try
-		{
-			project.writeFactor(node.getFactorId());
-		}
-		catch(Exception logAndContinue)
-		{
-			EAM.logError("Repair failed");
-			logAndContinue(logAndContinue);
-		}
-	}
+//	private void fixGhostIndicatorIds(Factor node)
+//	{
+//		IdList newIndicatorIds = new IdList();
+//		IdList oldIndicatorIds = node.getIndicators();
+//		for(int j = 0; j < oldIndicatorIds.size(); ++j)
+//		{
+//			IndicatorId indicatorId = new IndicatorId(oldIndicatorIds.get(j).asInt());
+//			if(indicatorId.isInvalid())
+//				continue;
+//			BaseObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
+//			if(indicator == null)
+//				EAM.logWarning("Fixing node " + node.getId() + " ghost indicatorId " + indicatorId);
+//			else
+//				newIndicatorIds.add(indicatorId);
+//		}
+//		if(newIndicatorIds.equals(oldIndicatorIds))
+//			return;
+//		
+//		try
+//		{
+//			node.setIndicators(newIndicatorIds);
+//			project.writeFactor(node.getFactorId());
+//		}
+//		catch (Exception logAndContinue)
+//		{
+//			EAM.logError("Repair failed");
+//			logAndContinue(logAndContinue);
+//		}
+//
+//	}
+//	
+//	private void removeInvalidGoalIds(Factor node)
+//	{
+//		IdList ids = node.getGoals();
+//		if(!ids.contains(BaseId.INVALID))
+//			return;
+//		
+//		EAM.logWarning("Removing invalid goal id for " + node.getId());
+//		ids.removeId(BaseId.INVALID);
+//		node.setGoals(ids);
+//		try
+//		{
+//			project.writeFactor(node.getFactorId());
+//		}
+//		catch(Exception logAndContinue)
+//		{
+//			EAM.logError("Repair failed");
+//			logAndContinue(logAndContinue);
+//		}
+//	}
+//	
+//	private void removeInvalidObjectiveIds(Factor node)
+//	{
+//		IdList ids = node.getObjectives();
+//		if(!ids.contains(BaseId.INVALID))
+//			return;
+//		
+//		EAM.logWarning("Removing invalid objective id for " + node.getId());
+//		ids.removeId(BaseId.INVALID);
+//		node.setObjectives(ids);
+//		try
+//		{
+//			project.writeFactor(node.getFactorId());
+//		}
+//		catch(Exception logAndContinue)
+//		{
+//			EAM.logError("Repair failed");
+//			logAndContinue(logAndContinue);
+//		}
+//	}
+//	
+//	private void removeMissingObjectiveIds(Factor node)
+//	{
+//		IdList newIds = new IdList();
+//		IdList oldIds = node.getObjectives();
+//		for(int i = 0; i < oldIds.size(); ++i)
+//		{
+//			BaseId id = oldIds.get(i);
+//			if(project.findObject(ObjectType.OBJECTIVE, id) == null)
+//				EAM.logWarning("Removing missing objective id " + id + " for " + node.getId());
+//			else
+//				newIds.add(id);
+//		}
+//
+//		if(newIds.size() == oldIds.size())
+//			return;
+//		
+//		node.setObjectives(newIds);
+//		try
+//		{
+//			project.writeFactor(node.getFactorId());
+//		}
+//		catch(Exception logAndContinue)
+//		{
+//			EAM.logError("Repair failed");
+//			logAndContinue(logAndContinue);
+//		}
+//	}
 	
 	private void repairUnsnappedNodes()
 	{

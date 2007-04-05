@@ -10,10 +10,10 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -56,6 +56,23 @@ public class Strategy extends Factor
 		super(idToUse, Factor.TYPE_STRATEGY, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
 	}
+	
+	public static boolean canOwnThisType(int type)
+	{
+		if (Factor.canOwnThisType(type))
+			return true;
+		
+		switch(type)
+		{
+			case ObjectType.OBJECTIVE: 
+				return true;
+			case ObjectType.TASK: 
+				return true;
+			default:
+				return false;
+		}
+	}
+	
 	
 	public boolean isStrategy()
 	{
@@ -161,10 +178,23 @@ public class Strategy extends Factor
 		
 		switch(objectType)
 		{
+			case ObjectType.OBJECTIVE: 
+				list.addAll(new ORefList(objectType, getObjectives()));
 			case ObjectType.TASK: 
 				list.addAll(new ORefList(objectType, getActivityIds()));
+
 		}
 		return list;
+	}
+
+	public int getType()
+	{
+		return getObjectType();
+	}
+	
+	public static int getObjectType()
+	{
+		return ObjectType.STRATEGY;
 	}
 	
 	void clear()

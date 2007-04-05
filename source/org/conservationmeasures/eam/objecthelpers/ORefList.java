@@ -21,6 +21,11 @@ public class ORefList
 		this(new Vector());
 	}
 	
+	public ORefList(ORefList copyFrom)
+	{
+		this(copyFrom.toJson());
+	}
+	
 	public ORefList(String listAsJsonString) throws ParseException
 	{
 		this(new EnhancedJsonObject(listAsJsonString));
@@ -72,6 +77,10 @@ public class ORefList
 			data.add(otherList.get(i));
 	}
 	
+	public void remove(ORef oRefToRemove)
+	{
+		data.remove(oRefToRemove);
+	}
 	
 	public ORef get(int index)
 	{
@@ -83,6 +92,11 @@ public class ORefList
 		data = new Vector(listToUse);
 	}
 		
+	public ORef[] toArray()
+	{
+		return (ORef[]) data.toArray(new ORef[0]);
+	}
+	
 	public String toString()
 	{
 		return toJson().toString();
@@ -109,6 +123,11 @@ public class ORefList
 	public int size()
 	{
 		return data.size();
+	}
+	
+	public boolean isEmpty()
+	{
+		return (size() == 0);
 	}
 	
 	private Vector data;

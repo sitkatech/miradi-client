@@ -82,29 +82,37 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		
 		model.resetMatrix();
 		
+		assertEquals("wrong lenght?", targetNames.length, model.getTargetCount());
 		for(int i = 0; i < targetNames.length; ++i)
 		{
 			Object thisName = model.getTargetName(i);
-			assertEquals("bad target name " + i + "? ", targetNames[i], thisName);
+			assertContains(thisName, targetNames);
 		}
 	}
 	
 	public void testIsActiveCell() throws Exception
 	{
-		FactorId threat1 = createThreat("threat one");
-		FactorId threat2 = createThreat("threat two");
-		createThreat("threat three");
-		FactorId target1 = createTarget("target one");
-		FactorId target2 = createTarget("target two");
-		createTarget("target three");
+		FactorId threat1 = createThreat("threat a");
+		FactorId threat2 = createThreat("threat b");
+		createThreat("threat c");
+		
+		FactorId target1 = createTarget("target A");
+		FactorId target2 = createTarget("target B");
+		createTarget("target C");
+		
 		CreateFactorLinkParameter link1to1 = new CreateFactorLinkParameter(threat1, target1);
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link1to1);
+		
 		CreateFactorLinkParameter link1to2 = new CreateFactorLinkParameter(threat1, target2);
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link1to2);
+		
 		CreateFactorLinkParameter link2to2 = new CreateFactorLinkParameter(threat2, target2);
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link2to2);
 		
 		model.resetMatrix();
+		
+		assertEquals(threat2, model.getDirectThreats()[1].getId());
+		assertEquals(target2, model.getTargets()[1].getId());
 		
 		assertFalse(model.isActiveCell(-1, -1));
 		int row1 = 0;
@@ -126,22 +134,23 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	
 	private FactorId createThreat(String name) throws Exception
 	{
-		FactorId createdId = createNode(new FactorTypeCause(), name);
+		FactorId createdId = createNode(new FactorTypeCause(), ObjectType.CAUSE, name);
 		((Cause)project.findNode(createdId)).increaseTargetCount();
 		return createdId;
 	}
 
 	private FactorId createTarget(String name) throws Exception
 	{
-		return createNode(new FactorTypeTarget(), name);
+		return createNode(new FactorTypeTarget(), ObjectType.TARGET, name);
 	}
 
-	private FactorId createNode(FactorType type, String name) throws Exception
+	private FactorId createNode(FactorType factorType, int objectType, String name) throws Exception
 	{
-		FactorId id = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(type));
+		FactorId id = (FactorId)project.createObject(objectType, BaseId.INVALID, new CreateFactorParameter(factorType));
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
 		Factor node = project.findNode(id);
 		node.setLabel(name);
+		
 		return id;
 	}
 	

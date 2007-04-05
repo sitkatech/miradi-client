@@ -124,8 +124,8 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 
 	public void resetMatrix() 
 	{
-		threatRows =  getProject().getFactorPool().getDirectThreats();
-		targetColumns =  getProject().getFactorPool().getTargets();
+		threatRows =  getProject().getCausePool().getDirectThreats();
+		targetColumns =  getProject().getTargetPool().getTargets();
 	}
 	
 	public void setThreatRows(Factor threatRowsToUse[] ) 

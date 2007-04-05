@@ -45,17 +45,19 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
+import org.conservationmeasures.eam.objectpools.CausePool;
 import org.conservationmeasures.eam.objectpools.DiagramContentsPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
-import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
+import org.conservationmeasures.eam.objectpools.StrategyPool;
+import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -148,6 +150,21 @@ public class Project
 		return objectManager.getPool(objectType);
 	}
 	
+	public CausePool getCausePool()
+	{
+		return (CausePool) getPool(ObjectType.CAUSE);
+	}
+	
+	public StrategyPool getStrategyPool()
+	{
+		return (StrategyPool) getPool(ObjectType.STRATEGY);
+	}
+	
+	public TargetPool getTargetPool()
+	{
+		return (TargetPool) getPool(ObjectType.TARGET);
+	}
+	
 	public DiagramFactorPool getDiagramFactorPool()
 	{
 		return objectManager.getDiagramFactorPool();
@@ -156,11 +173,6 @@ public class Project
 	public DiagramFactorLinkPool getDiagramFactorLinkPool()
 	{
 		return objectManager.getDiagramFactorLinkPool();
-	}
-	
-	public FactorPool getFactorPool()
-	{
-		return objectManager.getNodePool();
 	}
 	
 	public FactorLinkPool getFactorLinkPool()
@@ -264,13 +276,12 @@ public class Project
 
 	public BaseObject findObject(int objectType, BaseId objectId)
 	{
-		EAMObjectPool pool = getPool(objectType);
-		return pool.findObject(objectId);
+		return objectManager.findObject(new ORef(objectType, objectId));
 	}
 	
 	public Factor findNode(FactorId nodeId)
 	{
-		return (Factor)findObject(ObjectType.FACTOR, nodeId);
+		return objectManager.findNode(nodeId);
 	}
 	
 	public ProjectInfo getProjectInfo()
@@ -336,7 +347,7 @@ public class Project
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
 		objectManager.setObjectData(objectType, objectId, fieldTag, dataValue);
-		if(objectType == ObjectType.FACTOR)
+		if(Factor.isFactor(ObjectType.FACTOR))
 		{
 			DiagramModel model = getDiagramModel();
 			FactorId modelNodeId = new FactorId(objectId.asInt());
@@ -812,7 +823,7 @@ public class Project
 	
 	protected void writeFactor(FactorId factorId) throws IOException, ParseException
 	{
-		Factor cmNode = getFactorPool().find(factorId);
+		Factor cmNode = findNode(factorId);
 		database.writeObject(cmNode);
 	}
 

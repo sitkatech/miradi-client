@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -31,7 +30,6 @@ public class TestProjectScopeBox extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 		model = project.getDiagramModel();
-		nodePool = model.getFactorPool();
 		idAssigner = new IdAssigner();
 	}
 	
@@ -74,7 +72,6 @@ public class TestProjectScopeBox extends EAMTestCase
 	}
 
 	ProjectForTesting project;
-	FactorPool nodePool;
 	DiagramModel model;
 	IdAssigner idAssigner;
 }

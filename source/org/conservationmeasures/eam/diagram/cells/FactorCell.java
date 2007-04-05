@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
@@ -72,6 +73,11 @@ abstract public class FactorCell extends EAMGraphCell
 		return diagramFactor;
 	}
 
+	public ORef getWrappedORef()
+	{
+		return underlyingObject.getRef();
+	}
+	
 	public int getType()
 	{
 		return getWrappedType();

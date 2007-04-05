@@ -56,16 +56,10 @@ abstract public class Factor extends BaseObject
 		return new FactorId(getId().asInt());
 	}
 	
-	public int getType()
+	public static boolean canReferToThisType(int type)
 	{
-		return getObjectType();
+		return false;
 	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.FACTOR;
-	}
-	
 	
 	public static boolean canOwnThisType(int type)
 	{
@@ -73,25 +67,10 @@ abstract public class Factor extends BaseObject
 		{
 			case ObjectType.INDICATOR: 
 				return true;
-			case ObjectType.GOAL: 
-				return true;
-			case ObjectType.OBJECTIVE: 
-				return true;
-			case ObjectType.TASK: 
-				return true;
-			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
-				return true;
 			default:
 				return false;
 		}
 	}
-	
-	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
@@ -101,12 +80,6 @@ abstract public class Factor extends BaseObject
 		{
 			case ObjectType.INDICATOR: 
 				list.addAll(new ORefList(objectType, getIndicators()));
-			case ObjectType.GOAL: 
-				list.addAll(new ORefList(objectType, getGoals()));
-			case ObjectType.OBJECTIVE: 
-				list.addAll(new ORefList(objectType, getObjectives()));
-			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
-				list.addAll(new ORefList(objectType, getKeyEcologicalAttributes()));
 		}
 		return list;
 	}
@@ -183,13 +156,16 @@ abstract public class Factor extends BaseObject
 	public static boolean isFactor(int typeToUse)
 	{
 		if (typeToUse == ObjectType.CAUSE)
-				return true;
+			return true;
 		
 		if (typeToUse == ObjectType.TARGET)
-				return true;
+			return true;
 		
 		if (typeToUse == ObjectType.STRATEGY)
-				return true;
+			return true;
+		
+		if (typeToUse == ObjectType.FACTOR)
+			return true;
 		
 		return false;
 	}
@@ -273,6 +249,11 @@ abstract public class Factor extends BaseObject
 		if (parameter==null)
 			throw new RuntimeException("Tried to create factor without factor type");
 		FactorType nodeType = parameter.getNodeType();
+		return createFactor(objectManager, idToCreate, nodeType);
+	}
+
+	public static Factor createFactor(ObjectManager objectManager, FactorId idToCreate, FactorType nodeType)
+	{
 		if(nodeType.isStrategy())
 			return new Strategy(objectManager, idToCreate);
 		else if(nodeType.isCause())

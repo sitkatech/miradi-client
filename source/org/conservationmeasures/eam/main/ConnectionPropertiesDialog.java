@@ -19,8 +19,6 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -86,9 +84,9 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		Vector dropDownItems = new Vector();
 		for(int i = 0; i < factors.length; ++i)
 		{
-			if(( acceptStrategies || !factors[i].isStrategy()) && 
-				(acceptTargets || !factors[i].isTarget()))
-				dropDownItems.add(new FactorDropDownItem(factors[i], allDiagramFactors[i]));
+			Factor factor = factors[i];
+			if(( acceptStrategies || !factor.isStrategy()) && (acceptTargets || !factor.isTarget()))
+				dropDownItems.add(new FactorDropDownItem(factor, allDiagramFactors[i]));
 		}
 		
 		return addItemsToComboBoxAndSort(comboBox, dropDownItems);
@@ -111,7 +109,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		Factor[] factors = new Factor[allDiagramFactors.length];
 		for (int i = 0; i < allDiagramFactors.length; i++)
 		{
-			factors[i] = (Factor) project.findObject(new ORef(ObjectType.FACTOR, allDiagramFactors[i].getWrappedId()));
+			factors[i] = (Factor) project.findObject(allDiagramFactors[i].getWrappedORef());
 		}
 		return factors;
 	}

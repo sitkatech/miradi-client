@@ -63,7 +63,7 @@ public class WorkPlanStrategyRoot extends TreeTableNode
 	
 	public void rebuild()
 	{
-		Factor[] interventionObjects = project.getFactorPool().getNonDraftStrategies();
+		Factor[] interventionObjects = project.getStrategyPool().getNonDraftStrategies();
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < interventionObjects.length; ++i)
 		{

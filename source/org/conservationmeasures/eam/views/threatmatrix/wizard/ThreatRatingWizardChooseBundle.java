@@ -44,7 +44,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 
 	private String getName(FactorId nodeId)
 	{
-		return getView().getProject().getFactorPool().find(nodeId).getLabel();
+		return getView().getProject().findNode(nodeId).getLabel();
 	}
 	
 	

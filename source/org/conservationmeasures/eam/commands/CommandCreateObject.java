@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.project.Project;
 
@@ -59,6 +60,7 @@ public class CommandCreateObject extends Command
 		}
 		catch (Exception e)
 		{
+			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
 	}

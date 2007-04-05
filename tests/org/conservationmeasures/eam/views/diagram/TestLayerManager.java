@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
@@ -96,12 +96,12 @@ public class TestLayerManager extends EAMTestCase
 	{
 		LayerManager manager = new LayerManager();
 		assertTrue("all nodes not visible to start?", manager.areAllNodesVisible());
-		IdList idsToHide = new IdList();
-		idsToHide.add(target.getWrappedId());
-		idsToHide.add(factor.getWrappedId());
-		manager.setHiddenIds(idsToHide);
+		ORefList ORefsToHide = new ORefList();
+		ORefsToHide.add(target.getWrappedORef());
+		ORefsToHide.add(factor.getWrappedORef());
+		manager.setHiddenORefs(ORefsToHide);
 		assertFalse("thinks all nodes are visible?", manager.areAllNodesVisible());
-		for(int i = 0; i < idsToHide.size(); ++i)
+		for(int i = 0; i < ORefsToHide.size(); ++i)
 		{
 			verifyNodeVisibility("hide ids", false, target, manager);
 			verifyNodeVisibility("hide ids", false, factor, manager);
