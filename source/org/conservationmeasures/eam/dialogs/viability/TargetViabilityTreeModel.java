@@ -8,8 +8,10 @@ package org.conservationmeasures.eam.dialogs.viability;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class TargetViabilityTreeModel extends GenericTreeTableModel
 {
@@ -17,6 +19,17 @@ public class TargetViabilityTreeModel extends GenericTreeTableModel
 	{
 		super(new TargetViabilityRoot(projectToUse, targetId));
 		project = projectToUse;
+	}
+	
+	public Object getValueAt(Object rawNode, int column)
+	{
+		TreeTableNode node = (TreeTableNode)rawNode;
+		if ((node.getType() == Target.getObjectType()) && (getColumnName(column).equals("Status")))
+		{
+			
+			return ((Target)node.getObject()).computeTNCViability();
+		}
+		return super.getValueAt(rawNode, column);
 	}
 
 	public int getColumnCount()

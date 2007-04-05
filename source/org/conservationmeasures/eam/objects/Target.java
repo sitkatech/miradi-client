@@ -126,7 +126,7 @@ public class Target extends Factor
 		return getBasicTargetStatus();
 	}
 	
-	private String computeTNCViability()
+	public String computeTNCViability()
 	{
 		HashMap categoryKeaRatings = new HashMap();
 		
