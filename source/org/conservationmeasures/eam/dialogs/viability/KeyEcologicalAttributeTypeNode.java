@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeTypeNode extends TreeTableNode
@@ -28,12 +29,13 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 		typeCode = typeCodeToUse;
 		question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 		label = question.findChoiceByCode(typeCode).getLabel();
+		statusQuestion = new StatusQuestion(Target.TAG_TARGET_STATUS);
 		rebuild();
 	}
 	
 	public BaseObject getObject()
 	{
-		return null;
+		return target;
 	}
 
 	public TreeTableNode getChild(int index)
@@ -59,6 +61,12 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 
 	public Object getValueAt(int column)
 	{
+		if (ViabilityTreeModel.columnTags[column].equals("Status"))
+		{
+			String code = Target.computeTNCViability(getKeaList());
+			if (!code.equals(""))
+				return statusQuestion.findChoiceByCode(code);
+		}
 		return "";
 	}
 
@@ -70,6 +78,12 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 	public BaseId getId()
 	{
 		return null;
+	}
+	
+	
+	public String getTypeCode()
+	{
+		return typeCode;
 	}
 	
 	public void rebuild()
@@ -88,11 +102,22 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 		keaNodes = (KeyEcologicalAttributeNode[])KeyEcologicalAttributesVector.toArray(new KeyEcologicalAttributeNode[0]);
 	}
 	
-	Project project;
-	Target target;
-	String typeCode;
-	KeyEcologicalAttributeNode[] keaNodes;
-	String label;
+	private KeyEcologicalAttribute[] getKeaList()
+	{
+		KeyEcologicalAttribute[] keas = new KeyEcologicalAttribute[keaNodes.length];
+		for(int i = 0; i < keaNodes.length; ++i)
+		{
+			keas[i] = (KeyEcologicalAttribute)keaNodes[i].getObject();
+		}
+		return keas;
+	}
 	
+	private Project project;
+	private Target target;
+	private String typeCode;
+	private KeyEcologicalAttributeNode[] keaNodes;
+	private String label;
+	
+	private StatusQuestion statusQuestion;
 	private KeyEcologicalAttributeTypeQuestion question;
 }

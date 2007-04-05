@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class ViabilityProjectNode extends TreeTableNode
@@ -22,6 +23,7 @@ public class ViabilityProjectNode extends TreeTableNode
 	public ViabilityProjectNode(Project projectToUse)
 	{
 		project = projectToUse;
+		statusQuestion = new StatusQuestion(Target.TAG_TARGET_STATUS);
 		rebuild();
 	}
 	
@@ -52,6 +54,13 @@ public class ViabilityProjectNode extends TreeTableNode
 
 	public Object getValueAt(int column)
 	{
+		if (ViabilityTreeModel.columnTags[column].equals("Status"))
+		{
+			String code = Target.computeTNCViability(getTargetList());
+			if (!code.equals(""))
+				return statusQuestion.findChoiceByCode(code);
+		}
+		
 		return "";
 	}
 
@@ -76,6 +85,18 @@ public class ViabilityProjectNode extends TreeTableNode
 		children = vector;
 	}
 	
-	Project project;
-	Vector children;
+	
+	private Target[] getTargetList()
+	{
+		Target[] targets = new Target[children.size()];
+		for(int i = 0; i < children.size(); ++i)
+		{
+			targets[i] = (Target)((TargetViabilityNode)children.get(i)).getObject();
+		}
+		return targets;
+	}
+	
+	private StatusQuestion statusQuestion;
+	private Project project;
+	private Vector children;
 }

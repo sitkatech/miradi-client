@@ -162,6 +162,27 @@ public class Target extends Factor
 		return TNCViabilityFormula.getAverageRatingCode(categorySummaryRatings);
 	}
 	
+	static public String computeTNCViability(KeyEcologicalAttribute[] keas)
+	{
+		CodeList codes = new CodeList();
+		for(int i = 0; i < keas.length; ++i)
+		{
+			codes.add(keas[i].computeTNCViability());
+		}
+		return TNCViabilityFormula.getAverageRatingCode(codes);
+	}
+	
+	
+	static public String computeTNCViability(Target[] targets)
+	{
+		CodeList codes = new CodeList();
+		for(int i = 0; i < targets.length; ++i)
+		{
+			codes.add(targets[i].computeTNCViability());
+		}
+		return TNCViabilityFormula.getAverageRatingCode(codes);
+	}
+	
 	void clear()
 	{
 		super.clear();

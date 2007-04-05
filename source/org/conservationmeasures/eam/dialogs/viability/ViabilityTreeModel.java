@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class ViabilityTreeModel extends GenericTreeTableModel
 {
-	public ViabilityTreeModel(Project projectToUse)
+	public ViabilityTreeModel(Project projectToUse, Object root)
 	{
-		super(new ViabilityRoot(projectToUse));
+		super(root);
 		project = projectToUse;
 	}
 
