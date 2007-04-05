@@ -18,7 +18,7 @@ public class ActionViewTargetViability extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Target Viability") + DEMO_INDICATOR;
+		return EAM.text("Action|Target Viability");
 	}
 
 	public String getToolTipText()
