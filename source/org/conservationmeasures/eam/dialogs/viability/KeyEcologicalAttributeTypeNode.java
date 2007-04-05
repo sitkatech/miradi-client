@@ -64,8 +64,7 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 		if (ViabilityTreeModel.columnTags[column].equals("Status"))
 		{
 			String code = Target.computeTNCViability(getKeaList());
-			if (!code.equals(""))
-				return statusQuestion.findChoiceByCode(code);
+			return statusQuestion.findChoiceByCode(code);
 		}
 		return "";
 	}
