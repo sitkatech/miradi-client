@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
+import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.martus.swing.ResourceImageIcon;
 
 
@@ -18,7 +19,7 @@ public class TrendQuestion extends ChoiceQuestion
 	static ChoiceItem[] getTrends()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified"),
+				new ChoiceItem("", "Not Specified", new IndicatorIcon()),
 				new ChoiceItem("Unknown", "Unknown", new ResourceImageIcon("images/arrows/va_unknown16.png")),
 				new ChoiceItem("StrongIncrease", "Strong Increase", new ResourceImageIcon("images/arrows/va_strongup16.png")),
 				new ChoiceItem("MildIncrease", "Mild Increase", new ResourceImageIcon("images/arrows/va_mildup16.png")),
