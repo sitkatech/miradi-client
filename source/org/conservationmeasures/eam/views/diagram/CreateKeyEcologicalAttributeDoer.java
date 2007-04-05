@@ -10,6 +10,17 @@ import org.conservationmeasures.eam.objects.Factor;
 
 public class CreateKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 {
+	public boolean isAvailable()
+	{
+		if (getObjects().length != 1)
+			return false;
+		
+		if (getSelectedObjectType() != ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+			return false;
+		
+		return true;
+	}
+	
 	int getAnnotationType()
 	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
