@@ -25,6 +25,7 @@ public class TargetViabilityNode extends TreeTableNode
 	{
 		project = projectToUse;
 		target = (Target)project.findNode(targetId);
+		question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 		statusQuestion = new StatusQuestion(Target.TAG_TARGET_STATUS);
 		rebuild();
 	}
@@ -90,5 +91,5 @@ public class TargetViabilityNode extends TreeTableNode
 	private Target target;
 	private Vector children;
 	private StatusQuestion statusQuestion;
-	private KeyEcologicalAttributeTypeQuestion question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+	private KeyEcologicalAttributeTypeQuestion question;
 }
