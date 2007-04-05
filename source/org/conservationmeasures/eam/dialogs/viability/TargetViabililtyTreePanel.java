@@ -15,21 +15,24 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, FactorId targetId)
 	{
 		TargetViabilityTreeModel model = new TargetViabilityTreeModel(projectToUse, targetId);
-		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
-		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
+		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
 	}
-	
+
 	public static TargetViabililtyTreePanel createTargetViabilityPoolPanel(MainWindow mainWindowToUse, Project projectToUse)
 	{
 		ViabilityTreeModel model = new ViabilityTreeModel(projectToUse);
+		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
+	}
+
+	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericTreeTableModel model)
+	{
 		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
 	}
-	
+
 	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTree treeToUse, GenericTreeTableModel modelToUse)
 	{
 		super(mainWindowToUse, projectToUse, treeToUse);
 		model = modelToUse;
 	}
-	
 }
