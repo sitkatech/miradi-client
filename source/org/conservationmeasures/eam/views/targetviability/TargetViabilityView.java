@@ -57,8 +57,6 @@ public class TargetViabilityView extends TabbedView
 		super.becomeActive();
 		
 		viabilityPanel.updateSplitterLocation();
-		
-		getMainWindow().setStatusBarIfDataExistsOutOfRange();
 	}
 	
 	public void deleteTabs() throws Exception
