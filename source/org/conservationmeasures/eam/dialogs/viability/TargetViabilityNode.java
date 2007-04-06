@@ -67,7 +67,7 @@ public class TargetViabilityNode extends TreeTableNode
 
 	public String toString()
 	{
-		return "Target";
+		return target.getLabel();
 	}
 	
 	public BaseId getId()
