@@ -119,17 +119,6 @@ public class TestDiagramFactor extends EAMTestCase
 		assertEquals("node size height incorrect?", 50.0, target.getSize().getHeight(), TOLERANCE);
 	}
 	
-	//TODO diagramFactor conversion - remove commented code since DiagramFactor is cleared automatically
-	//public void testBuildCommandsToClear() throws Exception
-	//{
-	//	Command[] commands = target.buildCommandsToClear();
-	//	assertEquals(3, commands.length);
-	//	int next = 0;
-	//	assertEquals(CommandSetFactorSize.COMMAND_NAME, commands[next++].getCommandName());
-	//	assertEquals(CommandDiagramMove.COMMAND_NAME, commands[next++].getCommandName());
-	//	assertEquals(CommandSetObjectData.COMMAND_NAME, commands[next++].getCommandName());
-	//}
-	
 	public void testJson() throws Exception
 	{
 		FactorCell factorCell = project.createFactorCell(Factor.TYPE_CAUSE);
