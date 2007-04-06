@@ -34,8 +34,6 @@ public class FactorMoveHandler
 			DiagramModel model = getProject().getDiagramModel();
 			model.factorsWereMoved(ids);
 
-			//TODO remove commandsToRecode code,  no longer used
-			Vector commandsToRecord = new Vector();
 			Vector commandsToExecute = new Vector();
 			for(int i = 0 ; i < ids.length; ++i)
 			{
@@ -47,11 +45,8 @@ public class FactorMoveHandler
 					commandsToExecute.add(buildResizeCommand(node));
 			}
 
-			if(commandsToRecord.size() > 0 || commandsToExecute.size() > 0)
+			if(commandsToExecute.size() > 0)
 			{
-				for(int i=0; i < commandsToRecord.size(); ++i)
-					getProject().recordCommand((Command)commandsToRecord.get(i));
-				
 				for(int i=0; i < commandsToExecute.size(); ++i)
 				{
 					getProject().executeCommand((Command)commandsToExecute.get(i));
