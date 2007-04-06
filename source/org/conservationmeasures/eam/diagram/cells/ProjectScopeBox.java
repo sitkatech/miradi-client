@@ -12,7 +12,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.Hashtable;
-import java.util.Vector;
 
 import javax.swing.JTextPane;
 
@@ -113,11 +112,10 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public Rectangle2D computeCurrentTargetBounds()
 	{
 		Rectangle2D bounds = null;
-		// TODO: Use getAllDiagramTargets instead of getAllDiagramFactors
-		Vector nodes = model.getAllDiagramFactors();
-		for(int i=0; i < nodes.size(); ++i)
+		FactorCell[] factorCells = model.getAllDiagramTargets();
+		for(int i=0; i < factorCells.length; ++i)
 		{
-			FactorCell node = (FactorCell)nodes.get(i);
+			FactorCell node = factorCells[i];
 			if(node.isTarget())
 			{
 				if(bounds == null)
