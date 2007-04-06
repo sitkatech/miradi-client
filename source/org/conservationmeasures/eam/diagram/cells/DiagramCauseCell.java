@@ -13,10 +13,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 
-//TODO rename to DiagramCauseCell. and the same for sibling classes.  class names should end with Cell
-public class DiagramCause extends FactorCell
+public class DiagramCauseCell extends FactorCell
 {
-	public DiagramCause(Cause cmFactor, DiagramFactor diagramFactorToUse)
+	public DiagramCauseCell(Cause cmFactor, DiagramFactor diagramFactorToUse)
 	{
 		super(cmFactor, diagramFactorToUse);
 	}

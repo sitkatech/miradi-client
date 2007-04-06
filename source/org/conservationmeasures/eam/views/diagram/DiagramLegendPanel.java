@@ -28,8 +28,8 @@ import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.diagram.cells.DiagramStrategy;
-import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
+import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
@@ -146,15 +146,15 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 
 		
 		if (property.equals(Strategy.OBJECT_NAME))
-			manager.setVisibility(DiagramStrategy.class, checkBox.isSelected());
+			manager.setVisibility(DiagramStrategyCell.class, checkBox.isSelected());
 		else if (property.equals(Target.OBJECT_NAME))
-			manager.setVisibility(DiagramTarget.class, checkBox.isSelected());
+			manager.setVisibility(DiagramTargetCell.class, checkBox.isSelected());
 		else if (property.equals(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR))
 			manager.setContributingFactorsVisible(checkBox.isSelected());
 		else if (property.equals(Factor.OBJECT_NAME_THREAT))
 			manager.setDirectThreatsVisible(checkBox.isSelected());
 		else if (property.equals(Target.OBJECT_NAME))
-			manager.setVisibility(DiagramTarget.class, checkBox.isSelected());
+			manager.setVisibility(DiagramTargetCell.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME))
 		{
 			manager.setFactorLinksVisible(checkBox.isSelected());

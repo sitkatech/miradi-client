@@ -9,8 +9,8 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramCause;
-import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
+import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
@@ -98,8 +98,8 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	
 	public void testIds() throws Exception
 	{
-		DiagramCause factor = (DiagramCause) project.createFactorCell(Factor.TYPE_CAUSE);
-		DiagramTarget diagramTarget = (DiagramTarget) project.createFactorCell(Factor.TYPE_TARGET);
+		DiagramCauseCell factor = (DiagramCauseCell) project.createFactorCell(Factor.TYPE_CAUSE);
+		DiagramTargetCell diagramTarget = (DiagramTargetCell) project.createFactorCell(Factor.TYPE_TARGET);
 		
 		FactorLinkId linkId = new FactorLinkId(5);
 		DiagramFactorLinkId id = new DiagramFactorLinkId(17);

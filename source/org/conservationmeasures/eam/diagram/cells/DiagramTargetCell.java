@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Target;
 
-public class DiagramTarget extends FactorCell
+public class DiagramTargetCell extends FactorCell
 {
-	public DiagramTarget(Target targetToWrap, DiagramFactor diagramFactor)
+	public DiagramTargetCell(Target targetToWrap, DiagramFactor diagramFactor)
 	{
 		super(targetToWrap, diagramFactor);
 	}

@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramStrategy;
-import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
+import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -66,18 +66,18 @@ public class TestLayerManager extends EAMTestCase
 	public void testHide() throws Exception
 	{
 		LayerManager manager = new LayerManager();
-		manager.setVisibility(DiagramStrategy.class, false);
+		manager.setVisibility(DiagramStrategyCell.class, false);
 		
 		DiagramFactor strategyDiagramFactor = getDiagramFactor(45);
 		DiagramFactor targetDiagramFactor = getDiagramFactor(67);
 		DiagramFactor targetDiagramFactor2 = getDiagramFactor(98);
 		
-		verifyVisibility("hidden type", false, new DiagramStrategy(cmIntervention, strategyDiagramFactor), manager);
-		verifyVisibility("non-hidden type", true, new DiagramTarget(cmTarget, targetDiagramFactor), manager);
+		verifyVisibility("hidden type", false, new DiagramStrategyCell(cmIntervention, strategyDiagramFactor), manager);
+		verifyVisibility("non-hidden type", true, new DiagramTargetCell(cmTarget, targetDiagramFactor), manager);
 		assertFalse("All layers still visible?", manager.areAllNodesVisible());
 		
-		manager.setVisibility(DiagramStrategy.class, true);
-		verifyVisibility("unhidden type", true, new DiagramTarget(cmTarget, targetDiagramFactor2), manager);
+		manager.setVisibility(DiagramStrategyCell.class, true);
+		verifyVisibility("unhidden type", true, new DiagramTargetCell(cmTarget, targetDiagramFactor2), manager);
 		assertTrue("All layers not visible again?", manager.areAllNodesVisible());
 	}
 

@@ -34,7 +34,7 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
+import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
@@ -186,7 +186,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public boolean isProjectScopeVisible()
 	{
-		return project.getLayerManager().isTypeVisible(DiagramTarget.class);
+		return project.getLayerManager().isTypeVisible(DiagramTargetCell.class);
 	}
 
 	public boolean areGoalsVisible()

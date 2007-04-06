@@ -14,9 +14,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramCause;
-import org.conservationmeasures.eam.diagram.cells.DiagramStrategy;
-import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
+import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
@@ -117,13 +117,13 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		FactorType factorType = factor.getNodeType();
 		if (factorType.isCause())
-			return new DiagramCause((Cause) factor, diagramFactor);
+			return new DiagramCauseCell((Cause) factor, diagramFactor);
 	
 		if (factorType.isStrategy())
-			return new DiagramStrategy((Strategy) factor, diagramFactor);
+			return new DiagramStrategyCell((Strategy) factor, diagramFactor);
 		
 		if (factorType.isTarget())
-			return new DiagramTarget((Target) factor, diagramFactor);
+			return new DiagramTargetCell((Target) factor, diagramFactor);
 	
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}

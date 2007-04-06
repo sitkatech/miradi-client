@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramCause;
+import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -64,10 +64,10 @@ public class TestDiagramComponent extends EAMTestCase
 		diagramComponent.setModel(project.getDiagramModel());
 		diagramComponent.setGraphLayoutCache(project.getGraphLayoutCache());
 		
-		DiagramCause hiddenNode = (DiagramCause) createNode(Factor.TYPE_CAUSE);
+		DiagramCauseCell hiddenNode = (DiagramCauseCell) createNode(Factor.TYPE_CAUSE);
 		FactorId hiddenId = hiddenNode.getWrappedId();
 
-		DiagramCause visibleNode = (DiagramCause) createNode(Factor.TYPE_CAUSE);
+		DiagramCauseCell visibleNode = (DiagramCauseCell) createNode(Factor.TYPE_CAUSE);
 		FactorId visibleId = visibleNode.getWrappedId();
 		
 		FactorLink cmLinkage = new FactorLink(new FactorLinkId(100), hiddenId, visibleId);
