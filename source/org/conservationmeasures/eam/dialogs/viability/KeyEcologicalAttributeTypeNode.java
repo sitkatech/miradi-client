@@ -56,7 +56,7 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 	
 	public int getType()
 	{
-		return getObjectReference().getObjectType();
+		return target.getObjectType();
 	}
 
 	public Object getValueAt(int column)
@@ -76,7 +76,7 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 	
 	public BaseId getId()
 	{
-		return null;
+		return target.getId();
 	}
 	
 	
