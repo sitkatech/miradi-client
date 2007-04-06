@@ -64,7 +64,7 @@ public class ViabilityProjectNode extends TreeTableNode
 
 	public String toString()
 	{
-		return "Project";
+		return project.getFilename();
 	}
 	
 	public BaseId getId()
