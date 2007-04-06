@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.List;
 import java.util.Vector;
 
@@ -35,7 +35,7 @@ import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.GraphConstants;
 
 
-public class MouseEventHandler implements MouseListener, GraphSelectionListener
+public class MouseEventHandler extends MouseAdapter implements GraphSelectionListener
 {
 	public MouseEventHandler(MainWindow mainWindowToUse)
 	{
@@ -153,15 +153,6 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			getProject().recordCommand(new CommandEndTransaction());
 		}
 
-	}
-
-	//TODO these empty methods can away if class extends MouseAdapater
-	public void mouseEntered(MouseEvent arg0)
-	{
-	}
-
-	public void mouseExited(MouseEvent arg0)
-	{
 	}
 
 	public void mouseClicked(MouseEvent event)
