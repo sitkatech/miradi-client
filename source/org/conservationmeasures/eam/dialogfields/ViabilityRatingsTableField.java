@@ -46,6 +46,8 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		table.setShowHorizontalLines(false);
 		table.setIntercellSpacing(new Dimension(3,0));
 		currentRowHeight = table.getRowHeight();
+		showThreshold = true;
+		showStatus = true;
 	}
 
 
@@ -68,29 +70,31 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	
 	public void showThreshold(boolean show)
 	{
-			if (show)
-			{
-				table.setRowHeight(0, currentRowHeight);
-			}
-			else
-			{
-				table.setRowHeight(0, 1);
-			}
+		showThreshold = show;
+		if (show)
+		{
+			table.setRowHeight(0, currentRowHeight);
+		}
+		else
+		{
+			table.setRowHeight(0, 1);
+		}
 	}
 	
 
 	public void showStatus(boolean show)
 	{
-			if (show)
-			{
-				table.setRowHeight(1, currentRowHeight);
-				table.setRowHeight(2, currentRowHeight);
-			}
-			else
-			{
-				table.setRowHeight(1, 1);
-				table.setRowHeight(2, 1);
-			}
+		showStatus = show;
+		if (show)
+		{
+			table.setRowHeight(1, currentRowHeight);
+			table.setRowHeight(2, currentRowHeight);
+		}
+		else
+		{
+			table.setRowHeight(1, 1);
+			table.setRowHeight(2, 1);
+		}
 	}
 	
 	public void setIconRowObject(ORef oref)
@@ -133,12 +137,14 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			
 			if ((row==1) && validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
 			{
-				comp =  new JLabel(measurementSummary, getTrendIcon(), JLabel.CENTER);
+				if (showStatus) 
+					comp =  new JLabel(measurementSummary, getTrendIcon(), JLabel.CENTER);
 			}
 			
 			if ((row==2) && validCode(detailStatusCode)  && Integer.parseInt(detailStatusCode)-1 == column)
 			{
-				comp =  new JLabel(detailSummary, new GoalIcon(), JLabel.CENTER);
+				if (showStatus) 
+					comp =  new JLabel(detailSummary, new GoalIcon(), JLabel.CENTER);
 			}
 
 			if (row!=0)
@@ -211,7 +217,8 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	
 	
 
-	
+	boolean showThreshold;
+	boolean showStatus;
 	String measurementStatusCode;
 	String measurementSummary;
 	String measurementTrendCode;
