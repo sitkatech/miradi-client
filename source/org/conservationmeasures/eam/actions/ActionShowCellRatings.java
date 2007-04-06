@@ -12,7 +12,6 @@ public class ActionShowCellRatings extends MainWindowAction
 {
 	public ActionShowCellRatings(MainWindow mainWindowToUse)
 	{
-		//TODO change Icon to somehting that makes sense, this is just for development
 		super(mainWindowToUse, getLabel(), "icons/showRatings.png");
 	}
 	

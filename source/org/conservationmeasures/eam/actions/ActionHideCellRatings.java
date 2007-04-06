@@ -12,7 +12,6 @@ public class ActionHideCellRatings extends MainWindowAction
 {
 	public ActionHideCellRatings(MainWindow mainWindowToUse)
 	{
-		//TODO change Icon to somehting that makes sense, this is just for development
 		super(mainWindowToUse, getLabel(), "icons/hideRatings.png");
 	}
 	
