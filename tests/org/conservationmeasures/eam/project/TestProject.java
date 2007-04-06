@@ -866,7 +866,6 @@ public class TestProject extends EAMTestCase
 		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
 	}
 
-	//TODO remove baseid as a method arg.  no longer used
 	public DiagramFactor createNodeAndAddToDiagram(Project projectToUse, FactorType nodeType) throws Exception
 	{
 		FactorCommandHelper commandHelper = new FactorCommandHelper(projectToUse);
