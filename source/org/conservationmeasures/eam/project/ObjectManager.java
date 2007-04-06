@@ -32,7 +32,6 @@ import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
-import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.FundingSourcePool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
@@ -98,11 +97,6 @@ public class ObjectManager
 	public EAMObjectPool getPool(int objectType)
 	{
 		return (EAMObjectPool)pools.get(new Integer(objectType));
-	}
-
-	public FactorPool getNodePool()
-	{
-		return (FactorPool)getPool(ObjectType.FACTOR);
 	}
 
 	public FactorLinkPool getLinkagePool()
