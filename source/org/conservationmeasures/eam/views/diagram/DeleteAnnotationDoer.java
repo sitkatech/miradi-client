@@ -45,7 +45,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		String tag = getAnnotationIdListTag();
 		String[] dialogText = getDialogText();
 		BaseObject annotationToDelete = getObjects()[0];
-		Factor selectedFactor = getSelectedFactor();
+		Factor selectedFactor = (Factor)annotationToDelete.getOwner();
 		
 		deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
 	}
