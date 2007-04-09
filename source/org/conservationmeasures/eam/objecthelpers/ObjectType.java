@@ -29,5 +29,6 @@ public class ObjectType
 	public static final int CAUSE = 20;
 	public static final int STRATEGY = 21;
 	public static final int TARGET = 22;
+	public static final int INTERMEDIATE_RESULT = 23;
 }
 

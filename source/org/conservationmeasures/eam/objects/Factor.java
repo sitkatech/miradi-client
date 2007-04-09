@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.diagram.ChainObject;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -162,12 +163,20 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.STRATEGY)
 			return true;
 		
+		if (typeToUse == ObjectType.INTERMEDIATE_RESULT)
+			return true;
+		
 		if (typeToUse == ObjectType.FACTOR)
 			return true;
 		
 		return false;
 	}
 
+	public boolean isIntermediateResult()
+	{
+		return false;
+	}
+	
 	public boolean isStrategy()
 	{
 		return false;
@@ -246,11 +255,16 @@ abstract public class Factor extends BaseObject
 	{
 		if(objectType == ObjectType.STRATEGY)
 			return new Strategy(objectManager, idToCreate);
+
 		else if(objectType == ObjectType.CAUSE)
 			return new Cause(objectManager, idToCreate);
+		
 		else if(objectType == ObjectType.TARGET)
 			return new Target(objectManager, idToCreate);
 	
+		else if (objectType == ObjectType.INTERMEDIATE_RESULT)
+			return new IntermediateResult(objectManager, idToCreate);
+		
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
 
@@ -367,6 +381,7 @@ abstract public class Factor extends BaseObject
 		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributes);
 	}
 
+	public static final FactorType TYPE_INTERMEDIATE_RESULT = new FactorTypeIntermediateResult();
 	public static final FactorType TYPE_TARGET = new FactorTypeTarget();
 	public static final FactorType TYPE_CAUSE = new FactorTypeCause();
 	public static final FactorType TYPE_STRATEGY = new FactorTypeStrategy();

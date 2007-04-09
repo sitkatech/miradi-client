@@ -11,6 +11,11 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public abstract class FactorType
 {
+	public boolean isIntermediateResult()
+	{
+		return false;
+	}
+	
 	public boolean isStrategy()
 	{
 		return false;
