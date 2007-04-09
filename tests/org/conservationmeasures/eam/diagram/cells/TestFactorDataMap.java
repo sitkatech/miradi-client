@@ -10,6 +10,7 @@ import java.awt.Point;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -35,7 +36,7 @@ public class TestFactorDataMap extends EAMTestCase
 
 	public void testFactorDataMap() throws Exception
 	{
-		FactorCell target = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell target = project.createFactorCell(ObjectType.TARGET);
 		DiagramFactor diagramFactor = target.getDiagramFactor();
 		DiagramFactorId diagramFactorId = target.getDiagramFactorId();
 		FactorId wrappedId = target.getWrappedId();

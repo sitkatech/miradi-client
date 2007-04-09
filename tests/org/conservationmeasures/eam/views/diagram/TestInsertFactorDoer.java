@@ -15,8 +15,8 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
@@ -88,7 +88,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 	{
 		InsertInterventionWithFakePropertiesEditing inserter = createInserter(mainWindow);
 
-		FactorCell dNode1 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell dNode1 = project.createFactorCell(ObjectType.TARGET);
 
 		final Rectangle visibleRect = new Rectangle(0, 0, DIAGRAM_WIDTH, DIAGRAM_HEIGHT);
 		DiagramFactor diagramFactor = dNode1.getDiagramFactor();
@@ -101,7 +101,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		Point firstPoint = new Point(x, y);
 		assertEquals("first target location wrong?", firstPoint, newNodeLocation1);
 
-		FactorCell dNode2 = project.createFactorCell(Factor.TYPE_TARGET);	
+		FactorCell dNode2 = project.createFactorCell(ObjectType.TARGET);	
 
 		y = InsertFactorDoer.TARGET_TOP_LOCATION + (int)dNode1.getRectangle().getHeight() + InsertFactorDoer.TARGET_BETWEEN_SPACING;
 
@@ -116,7 +116,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		Point someSecondPoint = project.getSnapped(0, 500);
 		InsertInterventionWithFakePropertiesEditing inserter = createInserter(mainWindow);
 		
-		FactorCell diagramNode = project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell diagramNode = project.createFactorCell(ObjectType.CAUSE);
 		int x = (int)diagramNode.getBounds().getWidth() / 2 + InsertFactorDoer.DEFAULT_MOVE;
 		Point someThirdPoint = project.getSnapped(x , 500);
 

@@ -98,8 +98,8 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	
 	public void testIds() throws Exception
 	{
-		DiagramCauseCell factor = (DiagramCauseCell) project.createFactorCell(Factor.TYPE_CAUSE);
-		DiagramTargetCell diagramTarget = (DiagramTargetCell) project.createFactorCell(Factor.TYPE_TARGET);
+		DiagramCauseCell factor = (DiagramCauseCell) project.createFactorCell(ObjectType.CAUSE);
+		DiagramTargetCell diagramTarget = (DiagramTargetCell) project.createFactorCell(ObjectType.TARGET);
 		
 		FactorLinkId linkId = new FactorLinkId(5);
 		DiagramFactorLinkId id = new DiagramFactorLinkId(17);

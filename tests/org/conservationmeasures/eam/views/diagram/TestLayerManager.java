@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -42,9 +42,9 @@ public class TestLayerManager extends EAMTestCase
 		cmIntervention.setLabel("Strategy");
 		
 		project = new ProjectForTesting(getName());
-		target = project.createFactorCell(Factor.TYPE_TARGET);
-		factor = project.createFactorCell(Factor.TYPE_CAUSE);
-		intervention = project.createFactorCell(Factor.TYPE_STRATEGY);
+		target = project.createFactorCell(ObjectType.TARGET);
+		factor = project.createFactorCell(ObjectType.CAUSE);
+		intervention = project.createFactorCell(ObjectType.STRATEGY);
 	}
 	
 	public void tearDown() throws Exception

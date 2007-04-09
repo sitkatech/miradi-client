@@ -202,20 +202,11 @@ public class ProjectForTesting extends Project
 	}
 
 	
-	
-	//TODO remove parallel method
-	public FactorCell createFactorCell(FactorType nodeType) throws Exception
-	{
-		FactorId insertedId = createNodeAndAddToDiagram(nodeType);
-		return getDiagramModel().getFactorCellByWrappedId(insertedId);
-	}
 	public FactorCell createFactorCell(int objectType) throws Exception
 	{
 		FactorId insertedId = createNodeAndAddToDiagram(objectType);
 		return getDiagramModel().getFactorCellByWrappedId(insertedId);
 	}
 	
-
-
 	Vector commandStack;
 }

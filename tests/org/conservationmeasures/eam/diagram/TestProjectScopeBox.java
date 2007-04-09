@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
@@ -46,11 +46,11 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle allZeros = new Rectangle(0,0,0,0);
 		assertEquals("not all zeros to start?", allZeros, noTargets);
 		
-		project.createFactorCell(Factor.TYPE_CAUSE);
+		project.createFactorCell(ObjectType.CAUSE);
 		Rectangle2D oneNonTarget = scope.getBounds();
 		assertEquals("not all zeros with one non-target?", allZeros, oneNonTarget);
 
-		FactorCell target1 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell target1 = project.createFactorCell(ObjectType.TARGET);
 		project.setMetadata(ProjectMetadata.TAG_PROJECT_VISION, "Sample Vision");
 		Dimension targetSize = target1.getSize();
 		Rectangle2D oneTarget = scope.getBounds();
@@ -63,7 +63,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertNotEquals("still at y zero?", 0, (int)movedTarget.getY());
 		assertEquals("affected target?", targetSize, target1.getSize());
 		
-		FactorCell target2 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell target2 = project.createFactorCell(ObjectType.TARGET);
 		model.moveFactors(200, 200, new DiagramFactorId[] {target2.getDiagramFactorId()});
 		model.updateCell(target2);
 		Rectangle2D twoTargets = scope.getBounds();

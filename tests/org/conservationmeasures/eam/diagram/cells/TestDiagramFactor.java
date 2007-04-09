@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.jgraph.graph.GraphConstants;
@@ -47,10 +46,10 @@ public class TestDiagramFactor extends EAMTestCase
 		FactorId cmTargetId = new FactorId(rawTargetId.asInt());
 		cmTarget = (Target)project.findNode(cmTargetId);
 		
-		intervention = project.createFactorCell(Factor.TYPE_STRATEGY);
-		indirectFactor = project.createFactorCell(Factor.TYPE_CAUSE);
-		directThreat  = project.createFactorCell(Factor.TYPE_CAUSE);
-		target = project.createFactorCell(Factor.TYPE_TARGET);
+		intervention = project.createFactorCell(ObjectType.STRATEGY);
+		indirectFactor = project.createFactorCell(ObjectType.CAUSE);
+		directThreat  = project.createFactorCell(ObjectType.CAUSE);
+		target = project.createFactorCell(ObjectType.TARGET);
 		targetAttributeMap = target.getAttributes();
 	}
 	
@@ -121,7 +120,7 @@ public class TestDiagramFactor extends EAMTestCase
 	
 	public void testJson() throws Exception
 	{
-		FactorCell factorCell = project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell factorCell = project.createFactorCell(ObjectType.CAUSE);
 		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
 		diagramFactor.setLocation(new Point(100, 200));
 		diagramFactor.setSize(new Dimension(50, 75));

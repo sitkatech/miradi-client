@@ -209,9 +209,9 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
-		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
-		FactorCell node2 =  project.createFactorCell(Factor.TYPE_STRATEGY);
-		FactorCell node3 =  project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
+		FactorCell node2 =  project.createFactorCell(ObjectType.STRATEGY);
+		FactorCell node3 =  project.createFactorCell(ObjectType.CAUSE);
 		
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		DiagramFactorLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -239,8 +239,8 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedNodes() throws Exception
 	{
-		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
-		FactorCell node2 =  project.createFactorCell(Factor.TYPE_STRATEGY);
+		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
+		FactorCell node2 =  project.createFactorCell(ObjectType.STRATEGY);
 		
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
@@ -264,10 +264,10 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		DiagramFactorId diagramFactorId1 = project.createAndAddFactorToDiagram(Factor.TYPE_STRATEGY);
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId1));
-		FactorCell node3 =  project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell node3 =  project.createFactorCell(ObjectType.CAUSE);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), diagramFactor1.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -298,7 +298,7 @@ public class TestProject extends EAMTestCase
 
 	public void testDiagramMoveOnly() throws Exception
 	{
-		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		
 		// reset command stack to empty
 		assertNotNull(project.getLastCommand());
@@ -334,7 +334,7 @@ public class TestProject extends EAMTestCase
 		Point deltaLocation = new Point(55, 88);
 		node1.setLocation(deltaLocation);
 		
-		FactorCell node2 =  project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell node2 =  project.createFactorCell(ObjectType.CAUSE);
 		node2.setPreviousLocation(new Point(10,10));
 		Point node2Location = new Point(20,30);
 		node2.setLocation(node2Location);
@@ -365,7 +365,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testResizeNodesOnly() throws Exception
 	{
-		FactorCell node1 =  project.createFactorCell(Factor.TYPE_STRATEGY);
+		FactorCell node1 =  project.createFactorCell(ObjectType.STRATEGY);
 		DiagramFactor diagramFactor1 = node1.getDiagramFactor();
 		node1.setSize(new Dimension(5,10));
 		node1.setPreviousSize((new Dimension(55, 80)));
@@ -374,7 +374,7 @@ public class TestProject extends EAMTestCase
 		diagramFactor1.setSize(node1.getPreviousSize());
 		diagramFactor1.setLocation(node1.getPreviousLocation());
 
-		FactorCell node2 =  project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell node2 =  project.createFactorCell(ObjectType.CAUSE);
 		DiagramFactor diagramFactor2 = node2.getDiagramFactor();
 		node2.setSize(new Dimension(15,15));
 		node2.setPreviousSize((new Dimension(52, 33)));
@@ -421,7 +421,7 @@ public class TestProject extends EAMTestCase
 		Dimension position2 = new Dimension(95, 88);
 		
 		
-		FactorCell nodeResizedAndMoved =  project.createFactorCell(Factor.TYPE_STRATEGY);
+		FactorCell nodeResizedAndMoved =  project.createFactorCell(ObjectType.STRATEGY);
 		nodeResizedAndMoved.setSize(position1);
 		nodeResizedAndMoved.setPreviousSize(position2);
 		nodeResizedAndMoved.setPreviousLocation(new Point(x,y));
@@ -430,7 +430,7 @@ public class TestProject extends EAMTestCase
 		diagramFactorResizedAndMoved.setLocation(nodeResizedAndMoved.getPreviousLocation());
 		diagramFactorResizedAndMoved.setSize(nodeResizedAndMoved.getPreviousSize());
 
-		FactorCell nodeMovedOnly =  project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell nodeMovedOnly =  project.createFactorCell(ObjectType.CAUSE);
 		nodeMovedOnly.setSize(position1);
 		nodeMovedOnly.setPreviousSize(position1);
 		nodeMovedOnly.setPreviousLocation(new Point(x,y));
@@ -439,7 +439,7 @@ public class TestProject extends EAMTestCase
 		diagramFactorMovedOnly.setLocation(nodeMovedOnly.getPreviousLocation());
 		diagramFactorMovedOnly.setSize(nodeMovedOnly.getPreviousSize());
 		
-		FactorCell nodeResizedOnly = project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell nodeResizedOnly = project.createFactorCell(ObjectType.CAUSE);
 		nodeResizedOnly.setSize(position1);
 		nodeResizedOnly.setPreviousSize(position2);
 		nodeResizedOnly.setPreviousLocation(new Point(x,y));
@@ -448,7 +448,7 @@ public class TestProject extends EAMTestCase
 		diagramFactorResizedOnly.setLocation(nodeResizedOnly.getPreviousLocation());
 		diagramFactorResizedOnly.setSize(nodeResizedOnly.getPreviousSize());
 		
-		FactorCell nodeNotMovedOrResized =  project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell nodeNotMovedOrResized =  project.createFactorCell(ObjectType.CAUSE);
 		nodeNotMovedOrResized.setSize(position1);
 		nodeNotMovedOrResized.setPreviousSize(position1);
 		nodeNotMovedOrResized.setPreviousLocation(new Point(x,y));
@@ -496,9 +496,9 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
-		FactorCell node2 = project.createFactorCell(Factor.TYPE_STRATEGY);
-		FactorCell node3 = project.createFactorCell(Factor.TYPE_CAUSE);
+		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
+		FactorCell node2 = project.createFactorCell(ObjectType.STRATEGY);
+		FactorCell node3 = project.createFactorCell(ObjectType.CAUSE);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -524,7 +524,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("objects already in the target pool?", 0, project.getTargetPool().size());
 		assertEquals("nodes  already in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
-		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		Object[] selectedCells = new FactorCell[] {node1};
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
@@ -666,8 +666,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testLinkagePool() throws Exception
 	{
-		FactorCell nodeA = project.createFactorCell(new FactorTypeCause());
-		FactorCell nodeB = project.createFactorCell(new FactorTypeTarget());
+		FactorCell nodeA = project.createFactorCell(ObjectType.CAUSE);
+		FactorCell nodeB = project.createFactorCell(ObjectType.TARGET);
 		FactorId idA = nodeA.getWrappedId();
 		FactorId idB = nodeB.getWrappedId();
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(idA, idB);
@@ -687,8 +687,8 @@ public class TestProject extends EAMTestCase
 
 	public void testFindAllNodesRelatedToThisObjective() throws Exception
 	{
-		FactorCell nodeContributingFactor = project.createFactorCell(new FactorTypeCause());
-		FactorCell nodeDirectThreat = project.createFactorCell(new FactorTypeCause());
+		FactorCell nodeContributingFactor = project.createFactorCell(ObjectType.CAUSE);
+		FactorCell nodeDirectThreat = project.createFactorCell(ObjectType.CAUSE);
 		
 		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
 		
@@ -710,8 +710,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testFindAllNodesRelatedToThisIndicator() throws Exception
 	{
-		FactorCell nodeContributingFactor = project.createFactorCell(new FactorTypeCause());
-		FactorCell nodeDirectThreat = project.createFactorCell(new FactorTypeCause());
+		FactorCell nodeContributingFactor = project.createFactorCell(ObjectType.CAUSE);
+		FactorCell nodeDirectThreat = project.createFactorCell(ObjectType.CAUSE);
 		
 		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		IdList indicators1 = new IdList();
@@ -731,10 +731,10 @@ public class TestProject extends EAMTestCase
 	
 	public void testDirectThreatSet() throws Exception
 	{
-		FactorCell nodeContributingFactor = project.createFactorCell(new FactorTypeCause());
-		FactorCell nodeDirectThreatA = project.createFactorCell(new FactorTypeCause());	
+		FactorCell nodeContributingFactor = project.createFactorCell(ObjectType.CAUSE);
+		FactorCell nodeDirectThreatA = project.createFactorCell(ObjectType.CAUSE);	
 		((Cause)nodeDirectThreatA.getUnderlyingObject()).increaseTargetCount();
-		FactorCell nodeDirectThreatB = project.createFactorCell(new FactorTypeCause());
+		FactorCell nodeDirectThreatB = project.createFactorCell(ObjectType.CAUSE);
 		((Cause)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
 		
 		FactorSet allNodes = new FactorSet();
