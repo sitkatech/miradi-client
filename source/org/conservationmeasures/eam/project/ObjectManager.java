@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FundingSourcePool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
+import org.conservationmeasures.eam.objectpools.IntermediateResultPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
@@ -80,6 +81,7 @@ public class ObjectManager
 		addNormalPool(new CausePool(ida));
 		addNormalPool(new StrategyPool(ida));
 		addNormalPool(new TargetPool(ida));
+		addNormalPool(new IntermediateResultPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
