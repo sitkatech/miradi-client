@@ -166,8 +166,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	public void testDiagramFactorLinkAndLinkFactorRefer() throws Exception
 	{
 		//TODO: look at this method to refactor
-		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
-		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
+		FactorId interventionId = project.createNodeAndAddToDiagram(ObjectType.STRATEGY);
+		FactorId factorId = project.createNodeAndAddToDiagram(ObjectType.CAUSE);
 		
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);

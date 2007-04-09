@@ -184,15 +184,6 @@ public class ProjectForTesting extends Project
 		return diagramFactor;
 	}
 
-
-	//TODO remove parallel method
-	public FactorId createNodeAndAddToDiagram(FactorType nodeType) throws Exception
-	{
-		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(nodeType);
-		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
-	
-		return diagramFactor.getWrappedId();
-	}
 	public FactorId createNodeAndAddToDiagram(int objectType) throws Exception
 	{
 		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(objectType);

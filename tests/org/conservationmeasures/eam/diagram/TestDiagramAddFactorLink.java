@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParamet
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestDiagramAddFactorLink extends EAMTestCase
@@ -34,9 +33,9 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
+		FactorId interventionId = project.createNodeAndAddToDiagram(ObjectType.STRATEGY);
 		FactorCell intervention = model.getFactorCellByWrappedId(interventionId);
-		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
+		FactorId factorId = project.createNodeAndAddToDiagram(ObjectType.CAUSE);
 		FactorCell factor = model.getFactorCellByWrappedId(factorId);
 
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);

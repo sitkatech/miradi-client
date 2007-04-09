@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestInsertFactorLinkDoer extends EAMTestCase
@@ -37,9 +36,9 @@ public class TestInsertFactorLinkDoer extends EAMTestCase
 	
 	public void testwouldCreateLinkageLoop() throws Exception
 	{
-		FactorId node1 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
-		FactorId node2 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
-		FactorId node3 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
+		FactorId node1 = project.createNodeAndAddToDiagram(ObjectType.TARGET);
+		FactorId node2 = project.createNodeAndAddToDiagram(ObjectType.TARGET);
+		FactorId node3 = project.createNodeAndAddToDiagram(ObjectType.TARGET);
 		
 		CreateFactorLinkParameter parameter12 = new CreateFactorLinkParameter(node1, node2);
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter12);
@@ -59,9 +58,9 @@ public class TestInsertFactorLinkDoer extends EAMTestCase
 		try
 		{
 			assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
-			project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
+			project.createNodeAndAddToDiagram(ObjectType.TARGET);
 			assertFalse("Enabled when only 1 node?", doer.isAvailable());
-			project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
+			project.createNodeAndAddToDiagram(ObjectType.CAUSE);
 			assertTrue("not enabled when 2 nodes?", doer.isAvailable());
 		}
 		finally

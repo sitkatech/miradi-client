@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.jgraph.graph.GraphConstants;
@@ -52,7 +53,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 
 	public void testInsertTarget() throws Exception
 	{
-		project.createNodeAndAddToDiagram(Factor.TYPE_TARGET);
+		project.createNodeAndAddToDiagram(ObjectType.TARGET);
 		DiagramModel model = project.getDiagramModel();
 		FactorCell insertedNode = (FactorCell)model.getAllDiagramFactors().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
@@ -68,7 +69,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 
 	public void testInsertFactor() throws Exception
 	{
-		project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE);
+		project.createNodeAndAddToDiagram(ObjectType.CAUSE);
 		DiagramModel model = project.getDiagramModel();
 		FactorCell insertedNode = (FactorCell)model.getAllDiagramFactors().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
@@ -84,7 +85,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 
 	public void testInsertIntervention() throws Exception
 	{
-		project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY);
+		project.createNodeAndAddToDiagram(ObjectType.STRATEGY);
 		DiagramModel model = project.getDiagramModel();
 		FactorCell insertedNode = (FactorCell)model.getAllDiagramFactors().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
