@@ -561,7 +561,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
-		FactorId factorId = project.createFactor(Factor.TYPE_CAUSE);
+		FactorId factorId = project.createFactor(ObjectType.CAUSE);
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		project.executeCommand(createDiagramFactorCommand);
@@ -577,8 +577,8 @@ public class TestProject extends EAMTestCase
 	{
 		ProjectServerForTesting database = project.getTestDatabase();
 		
-		FactorId targetId = project.createFactor(Factor.TYPE_TARGET);
-		FactorId factorId = project.createFactor(Factor.TYPE_CAUSE);
+		FactorId targetId = project.createFactor(ObjectType.TARGET);
+		FactorId factorId = project.createFactor(ObjectType.CAUSE);
 		int existingCalls = database.callsToWriteObject;
 		
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(targetId);
@@ -631,11 +631,10 @@ public class TestProject extends EAMTestCase
 	
 	public void testInsertDuplicateNodes() throws Exception
 	{
-		FactorId gotId = project.createFactor(Factor.TYPE_CAUSE);
+		FactorId gotId = project.createFactor(ObjectType.CAUSE);
 		try
 		{
-			CreateFactorParameter createTarget = new CreateFactorParameter(Factor.TYPE_CAUSE);
-			project.createObject(ObjectType.CAUSE, gotId, createTarget);
+			project.createObject(ObjectType.CAUSE, gotId);
 			fail("Should have thrown for inserting a duplicate id");
 		}
 		catch(RuntimeException ignoreExpected)

@@ -117,7 +117,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		project.undo();
 		
-		FactorId factorId = project.createFactor(Factor.TYPE_CAUSE);
+		FactorId factorId = project.createFactor(ObjectType.CAUSE);
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		project.executeCommand(createDiagramFactorCommand);

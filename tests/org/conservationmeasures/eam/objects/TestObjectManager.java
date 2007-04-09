@@ -79,7 +79,7 @@ public class TestObjectManager extends EAMTestCase
 		String FAIR = "2";
 		String sampleStatusCode = FAIR;
 
-		FactorId targetId = project.createFactor(Factor.TYPE_TARGET);
+		FactorId targetId = project.createFactor(ObjectType.TARGET);
 		Target target = (Target)project.findNode(targetId);
 		target.setData(Target.TAG_TARGET_STATUS, sampleStatusCode);
 		

@@ -71,10 +71,10 @@ public class ProjectForTesting extends Project
 		FactorId cmTargetId = (FactorId)createObject(ObjectType.FACTOR, BaseId.INVALID, createTarget);
 		return cmTargetId;
 	}
-	public FactorId createFactor(int type) throws Exception
+	public FactorId createFactor(int objectType) throws Exception
 	{
-		FactorId cmTargetId = (FactorId)createObject(ObjectType.TARGET);
-		return cmTargetId;
+		FactorId factorId = (FactorId)createObject(objectType);
+		return factorId;
 	}
 	
 	

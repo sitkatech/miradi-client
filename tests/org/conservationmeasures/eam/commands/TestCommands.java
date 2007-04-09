@@ -12,10 +12,6 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -34,9 +30,9 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.Project;
@@ -62,7 +58,7 @@ public class TestCommands extends EAMTestCase
 
 	private void consumeNodeIdZero() throws Exception
 	{
-		project.createFactor(new FactorTypeTarget());
+		project.createFactor(ObjectType.TARGET);
 	}
 	
 	public void tearDown() throws Exception
@@ -281,20 +277,20 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandAddTarget() throws Exception
 	{
-		verifyDiagramAddNode(new FactorTypeTarget());
+		verifyDiagramAddNode(ObjectType.TARGET);
 	}
 
 	public void testCommandInsertFactor() throws Exception
 	{
-		verifyDiagramAddNode(new FactorTypeCause());
+		verifyDiagramAddNode(ObjectType.CAUSE);
 	}
 
 	public void testCommandInsertIntervention() throws Exception
 	{
-		verifyDiagramAddNode(new FactorTypeStrategy());
+		verifyDiagramAddNode(ObjectType.STRATEGY);
 	}
 
-	private void verifyDiagramAddNode(FactorType type) throws Exception, CommandFailedException
+	private void verifyDiagramAddNode(int type) throws Exception, CommandFailedException
 	{
 		FactorId factorId = project.createFactor(type);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
@@ -307,7 +303,7 @@ public class TestCommands extends EAMTestCase
 
 		DiagramFactorId insertedId = add.getInsertedId();
 		FactorCell node = project.getDiagramModel().getFactorCellById(insertedId);
-		assertEquals("type not right?", type, node.getUnderlyingFactorType());
+		assertEquals("type not right?", type, node.getWrappedType());
 		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramFactorId());
 
 		verifyUndoDiagramAddNode(add);
@@ -331,9 +327,8 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramAddLinkage() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		FactorType type = Factor.TYPE_CAUSE;
 
-		DiagramFactorId from = insertNode(type).getDiagramFactorId();
+		DiagramFactorId from = insertNode(ObjectType.CAUSE).getDiagramFactorId();
 		DiagramFactorId to = insertTarget();
 		FactorId fromId = model.getFactorCellById(from).getWrappedId();
 		FactorId toId = model.getFactorCellById(to).getWrappedId();
@@ -515,23 +510,20 @@ public class TestCommands extends EAMTestCase
 	
 	private DiagramFactorId insertTarget() throws Exception
 	{
-		FactorType type = Factor.TYPE_TARGET;
-		return insertNode(type).getDiagramFactorId();
+		return insertNode(ObjectType.TARGET).getDiagramFactorId();
 	}
 	
 	private DiagramFactor insertContributingFactor() throws Exception
 	{
-		FactorType type = Factor.TYPE_CAUSE;
-		return insertNode(type);
+		return insertNode(ObjectType.CAUSE);
 	}
 
 	private DiagramFactorId insertIntervention() throws Exception
 	{
-		FactorType type = Factor.TYPE_STRATEGY;
-		return insertNode(type).getDiagramFactorId();
+		return insertNode(ObjectType.STRATEGY).getDiagramFactorId();
 	}
 
-	private DiagramFactor insertNode(FactorType type) throws Exception
+	private DiagramFactor insertNode(int type) throws Exception
 	{
 		FactorId factorId = project.createFactor(type);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
