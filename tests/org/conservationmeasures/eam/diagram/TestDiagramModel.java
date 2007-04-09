@@ -137,16 +137,16 @@ public class TestDiagramModel extends EAMTestCase
 
 	public void testIsNode() throws Exception
 	{
-		FactorCell factor = project.createFactorCell(Factor.TYPE_CAUSE);
-		FactorCell target = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell factor = project.createFactorCell(ObjectType.CAUSE);
+		FactorCell target = project.createFactorCell(ObjectType.TARGET);
 		assertTrue("factor isn't a node?", factor.isFactor());
 		assertTrue("target isn't a node?", target.isFactor());
 	}
 	
 	public void testCounts()throws Exception
 	{
-		FactorCell factor = project.createFactorCell(Factor.TYPE_CAUSE);
-		FactorCell target = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell factor = project.createFactorCell(ObjectType.CAUSE);
+		FactorCell target = project.createFactorCell(ObjectType.TARGET);
 		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertEquals(2, model.getFactorCount());
 		assertEquals(1, model.getFactorLinkCount());
@@ -170,9 +170,9 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testGetLinkages() throws Exception
 	{
-		FactorCell factor1 = project.createFactorCell(Factor.TYPE_CAUSE);
-		FactorCell factor2 = project.createFactorCell(Factor.TYPE_CAUSE);
-		FactorCell target = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell factor1 = project.createFactorCell(ObjectType.CAUSE);
+		FactorCell factor2 = project.createFactorCell(ObjectType.CAUSE);
+		FactorCell target = project.createFactorCell(ObjectType.TARGET);
 		DiagramFactorLink linkage1 = createLinkage(takeNextLinkageId(), factor1.getWrappedId(), target.getWrappedId());
 		DiagramFactorLink linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
 		Set found = model.getFactorLinks(target);
@@ -189,12 +189,12 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testCreateNode() throws Exception
 	{
-		project.createFactorCell(Factor.TYPE_TARGET);		
+		project.createFactorCell(ObjectType.TARGET);		
 		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
-		project.createFactorCell(Factor.TYPE_TARGET);
-		FactorCell lastCreated = project.createFactorCell(Factor.TYPE_TARGET);		
+		project.createFactorCell(ObjectType.TARGET);
+		FactorCell lastCreated = project.createFactorCell(ObjectType.TARGET);		
 		model.removeDiagramFactor(diagramFactorId);
-		FactorCell nodeAfterUndo = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell nodeAfterUndo = project.createFactorCell(ObjectType.TARGET);
 		
 		assertTrue("reused an id?", nodeAfterUndo.getDiagramFactorId().asInt() > lastCreated.getDiagramFactorId().asInt());
 	}
@@ -215,10 +215,10 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testGetAllLinkages() throws Exception
 	{
-		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);		
-		FactorCell node2 = project.createFactorCell(Factor.TYPE_TARGET);		
+		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);		
+		FactorCell node2 = project.createFactorCell(ObjectType.TARGET);		
 		DiagramFactorLink link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
-		FactorCell node3 = project.createFactorCell(Factor.TYPE_TARGET);		
+		FactorCell node3 = project.createFactorCell(ObjectType.TARGET);		
 		DiagramFactorLink link2 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		Vector linkages = model.getAllDiagramFactorLinks();
@@ -229,8 +229,8 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testFillFrom() throws Exception
 	{
-		FactorCell node1 = project.createFactorCell(Factor.TYPE_TARGET);		
-		FactorCell node2 = project.createFactorCell(Factor.TYPE_TARGET);		
+		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);		
+		FactorCell node2 = project.createFactorCell(ObjectType.TARGET);		
 		DiagramFactorLink link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
 
 		DiagramModel copy = new DiagramModel(project);
@@ -270,8 +270,8 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("delete node did a link add notify?", 0, testModel.linkAdded);
 		assertEquals("delete node did a link delete notify?", 0, testModel.linkDeleted);
 
-		FactorCell node2 = project.createFactorCell(Factor.TYPE_TARGET);
-		FactorCell node3 = project.createFactorCell(Factor.TYPE_TARGET);
+		FactorCell node2 = project.createFactorCell(ObjectType.TARGET);
+		FactorCell node3 = project.createFactorCell(ObjectType.TARGET);
 		DiagramFactorLink link1 = createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), node2.getWrappedId(), node3.getWrappedId());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
