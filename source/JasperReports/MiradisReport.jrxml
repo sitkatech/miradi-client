@@ -27,7 +27,6 @@
 	<field name="ProjectName" class="java.lang.String"/>
 	<field name="ProjectScope" class="java.lang.String"/>
 	<field name="ShortProjectScope" class="java.lang.String"/>
-	<field name="ProjectMetadata.ShortProjectScope" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -54,7 +53,7 @@
 			<band height="50"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="36"
+						x="28"
 						y="10"
 						width="168"
 						height="25"
@@ -75,8 +74,8 @@
 			<band height="100"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="36"
-						y="-20"
+						x="28"
+						y="-18"
 						width="248"
 						height="27"
 						key="ShortProjectScope"/>
@@ -84,7 +83,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectMetadata.ShortProjectScope}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortProjectScope}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>
