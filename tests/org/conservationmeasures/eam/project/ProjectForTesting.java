@@ -115,20 +115,12 @@ public class ProjectForTesting extends Project
 
 
 	
-	//TODO remove parallel method and rename this (remove 2)
 	public TaskId createTask(ORef oref) throws Exception
 	{
 		CreateTaskParameter createTask = new CreateTaskParameter(oref);
 		TaskId cmTaskId = (TaskId)createObject(ObjectType.TASK, BaseId.INVALID, createTask);
 		return cmTaskId;
 	}
-	public TaskId createTask2(ORef oref) throws Exception
-	{
-		TaskId cmTaskId = (TaskId)createObject(oref.getObjectType());
-		return cmTaskId;
-	}
-
-
 
 	public AssignmentId createAssignment(ORef oref) throws Exception
 	{
