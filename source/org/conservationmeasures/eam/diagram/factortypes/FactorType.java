@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.diagram.factortypes;
 
-import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 
 
@@ -51,14 +51,14 @@ public abstract class FactorType
 		return getClass().getName().hashCode();
 	}
 	
-	public static FactorType getFactorTypeFromString(String factorType) throws Exception
+	public static int getFactorTypeFromString(String factorType) throws Exception
 	{
 		if (factorType.equals(FactorTypeTarget.TARGET_TYPE))
-			return Factor.TYPE_TARGET;
+			return ObjectType.TARGET;
 		else if (factorType.equals(FactorTypeCause.CAUSE_TYPE))
-			return Factor.TYPE_CAUSE;
+			return ObjectType.CAUSE;
 		else if (factorType.equals(FactorTypeStrategy.STRATEGY_TYPE))
-			return Factor.TYPE_STRATEGY;
+			return ObjectType.STRATEGY;
 		
 		throw new RuntimeException("Unknown factor type: " + factorType);
 	}

@@ -12,14 +12,12 @@ import java.util.HashMap;
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -176,19 +174,20 @@ public class ObjectManager
 		BaseId createdId = BaseId.INVALID;
 		switch(objectType)
 		{
-			case ObjectType.FACTOR:
-			{
-				CreateFactorParameter parameter = (CreateFactorParameter)extraInfo;
-				FactorType factorType = parameter.getNodeType();
-				FactorId nodeId = new FactorId(getProject().obtainRealNodeId(objectId).asInt());
-				Factor node = Factor.createFactor(this, nodeId, factorType);
-				int nodeType = node.getType();
-				EAMObjectPool pool = getPool(nodeType);
-				pool.put(node.getId(), node);
-				getDatabase().writeObject(node);
-				createdId = node.getId();
-				break;
-			}
+		//TODO remove commented code
+//			case ObjectType.FACTOR:
+//			{
+//				CreateFactorParameter parameter = (CreateFactorParameter)extraInfo;
+//				FactorType factorType = parameter.getNodeType();
+//				FactorId nodeId = new FactorId(getProject().obtainRealNodeId(objectId).asInt());
+//				Factor node = Factor.createFactor(this, nodeId, factorType);
+//				int nodeType = node.getType();
+//				EAMObjectPool pool = getPool(nodeType);
+//				pool.put(node.getId(), node);
+//				getDatabase().writeObject(node);
+//				createdId = node.getId();
+//				break;
+//			}
 			case ObjectType.FACTOR_LINK:
 			{
 				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;

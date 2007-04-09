@@ -14,21 +14,19 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class InsertFactorDoer extends LocationDoer
 {
-	abstract public FactorType getTypeToInsert();
+	abstract public int getTypeToInsert();
 	abstract public String getInitialText();
 	abstract public void forceVisibleInLayerManager();
 
@@ -46,7 +44,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		{
 			FactorCell[] selectedFactors = getProject().getOnlySelectedFactors();
 			FactorId id = insertFactorItself();
-			if((selectedFactors.length > 0) && (getTypeToInsert()!= Factor.TYPE_TARGET))
+			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET))
 				linkToPreviouslySelectedFactors(id, selectedFactors);
 			else
 				notLinkingToAnyFactors();
@@ -79,7 +77,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		FactorCell[] selectedNodes = project.getOnlySelectedFactors();
 
 		project.executeCommand(new CommandBeginTransaction());
-		FactorType factorType = getTypeToInsert();
+		int factorType = getTypeToInsert();
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
 		DiagramFactorId id = (DiagramFactorId) factorCommandHelper.createFactorAndDiagramFactor(factorType).getCreatedId();
 		
@@ -106,20 +104,20 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return factorId;
 	}
 	
-	private Point getDeltaPoint(Point createAt, FactorCell[] selectedFactors, FactorType factorType, DiagramFactor newFactor)
+	private Point getDeltaPoint(Point createAt, FactorCell[] selectedFactors, int factorType, DiagramFactor newFactor)
 	{
 		if (createAt != null)
 			return createAt;
 		
-		if (factorType.isTarget())
+		if (factorType == ObjectType.TARGET)
 			return getTargetLocation(newFactor, getDiagramVisibleRect());
 		
 		return getNonTargetDeltaPoint(selectedFactors, factorType, newFactor);
 	}
 	
-	private Point getNonTargetDeltaPoint(FactorCell[] selectedFactors, FactorType factorType, DiagramFactor newFactor)
+	private Point getNonTargetDeltaPoint(FactorCell[] selectedFactors, int factorType, DiagramFactor newFactor)
 	{
-		if (selectedFactors.length > 0 && !factorType.isTarget())
+		if (selectedFactors.length > 0 && !(factorType == ObjectType.TARGET))
 			return getLocationSelectedNonTargetNode(selectedFactors, (int)newFactor.getSize().getWidth());
 		
 		return getCenterLocation(getDiagramVisibleRect());

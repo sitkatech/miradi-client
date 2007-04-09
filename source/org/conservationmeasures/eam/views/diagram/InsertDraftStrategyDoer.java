@@ -7,13 +7,11 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public class InsertDraftStrategyDoer extends InsertFactorDoer
@@ -39,9 +37,9 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 		return false;
 	}
 	
-	public FactorType getTypeToInsert()
+	public int getTypeToInsert()
 	{
-		return Factor.TYPE_STRATEGY;
+		return ObjectType.STRATEGY;
 	}
 
 	public String getInitialText()

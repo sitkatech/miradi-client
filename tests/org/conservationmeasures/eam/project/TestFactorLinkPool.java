@@ -5,14 +5,13 @@
  */
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
-import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestFactorLinkPool extends TestCaseEnhanced
@@ -31,10 +30,9 @@ public class TestFactorLinkPool extends TestCaseEnhanced
 	public void testHasLinkage() throws Exception
 	{
 		FactorLinkPool pool = new FactorLinkPool(idAssigner, new LinkageMonitor());
-		CreateFactorParameter parameter = new CreateFactorParameter(new FactorTypeCause());
-		Factor node1 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
-		Factor node2 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
-		Factor node3 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
+		Factor node1 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);
+		Factor node2 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);
+		Factor node3 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);
 		
 		FactorLinkId linkageId = new FactorLinkId(idAssigner.takeNextId().asInt());
 		FactorLink linkage = new FactorLink(linkageId, node1.getFactorId(), node2.getFactorId());

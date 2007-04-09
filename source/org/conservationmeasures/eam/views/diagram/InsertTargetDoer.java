@@ -6,15 +6,14 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class InsertTargetDoer extends InsertFactorDoer
 {
-	public FactorType getTypeToInsert()
+	public int getTypeToInsert()
 	{
-		return Factor.TYPE_TARGET;
+		return ObjectType.TARGET;
 	}
 
 	public String getInitialText()

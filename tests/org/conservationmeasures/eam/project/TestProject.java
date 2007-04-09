@@ -24,7 +24,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -754,15 +753,15 @@ public class TestProject extends EAMTestCase
 		diskProject.createOrOpen(tempDir);
 		try
 		{
-			factorId = createNodeAndAddToDiagram(diskProject, Factor.TYPE_CAUSE).getWrappedId();
-			FactorId targetId = createNodeAndAddToDiagram(diskProject, Factor.TYPE_TARGET).getWrappedId();
+			factorId = createNodeAndAddToDiagram(diskProject, ObjectType.CAUSE).getWrappedId();
+			FactorId targetId = createNodeAndAddToDiagram(diskProject, ObjectType.TARGET).getWrappedId();
 			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
 			
 			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY);
 			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
 			diskProject.deleteObject(object);
 	
-			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, Factor.TYPE_CAUSE);
+			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, ObjectType.CAUSE);
 			deleteNodeAndRemoveFromDiagram(diskProject, diagramFactor);
 		}
 		finally
@@ -861,7 +860,7 @@ public class TestProject extends EAMTestCase
 		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
 	}
 
-	public DiagramFactor createNodeAndAddToDiagram(Project projectToUse, FactorType nodeType) throws Exception
+	public DiagramFactor createNodeAndAddToDiagram(Project projectToUse, int nodeType) throws Exception
 	{
 		FactorCommandHelper commandHelper = new FactorCommandHelper(projectToUse);
 		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);

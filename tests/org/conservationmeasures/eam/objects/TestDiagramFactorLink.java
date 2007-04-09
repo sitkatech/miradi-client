@@ -69,12 +69,12 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	public void testBasics() throws Exception
 	{
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
-		CommandCreateObject createObject1 = factorCommandHelper.createFactorAndDiagramFactor(Factor.TYPE_CAUSE);
+		CommandCreateObject createObject1 = factorCommandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId1 = (DiagramFactorId) createObject1.getCreatedId();
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId1);
 		FactorCell factorCell1 = model.getFactorCellById(diagramFactorId1);
 		
-		CommandCreateObject createObject2 = factorCommandHelper.createFactorAndDiagramFactor(Factor.TYPE_CAUSE);
+		CommandCreateObject createObject2 = factorCommandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createObject2.getCreatedId();
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
 		FactorCell factorCell2 = model.getFactorCellById(diagramFactorId2);

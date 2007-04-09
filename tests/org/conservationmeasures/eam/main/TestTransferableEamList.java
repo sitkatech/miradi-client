@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
@@ -65,14 +64,14 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		Point node1Location = new Point(1,2);
 		FactorCommandHelper commandHelper = new FactorCommandHelper(project);
-		CommandCreateObject createCommand1 = commandHelper.createFactorAndDiagramFactor(Factor.TYPE_CAUSE);
+		CommandCreateObject createCommand1 = commandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId1 = (DiagramFactorId) createCommand1.getCreatedId();
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId1);
 		FactorId factorId1 = diagramFactor1.getWrappedId();
 		diagramFactor1.setLocation(node1Location);
 		
 		Point node2Location = new Point(2,3);
-		CommandCreateObject createCommand2 = commandHelper.createFactorAndDiagramFactor(Factor.TYPE_CAUSE);
+		CommandCreateObject createCommand2 = commandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createCommand2.getCreatedId();
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
 		FactorId factorId2 = diagramFactor2.getWrappedId();

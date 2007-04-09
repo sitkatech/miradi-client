@@ -6,17 +6,17 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 
 public class InsertDirectThreatDoer extends InsertFactorDoer
 {
-	public FactorType getTypeToInsert()
+	public int getTypeToInsert()
 	{
-		return Factor.TYPE_CAUSE;
+		return ObjectType.CAUSE;
 	}
 
 	public String getInitialText()

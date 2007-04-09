@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -14,7 +12,6 @@ import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -63,12 +60,10 @@ public class TestObjectManager extends EAMTestCase
 			verifyObjectLifecycle(types[i], null);
 		}
 		
-		CreateFactorParameter factor = new CreateFactorParameter(new FactorTypeCause());
-		verifyObjectLifecycle(ObjectType.CAUSE, factor);
+		verifyObjectLifecycle(ObjectType.CAUSE);
 		
-		CreateFactorParameter target = new CreateFactorParameter(new FactorTypeTarget());
-		FactorId factorId = (FactorId)manager.createObject(ObjectType.CAUSE, BaseId.INVALID, factor);
-		FactorId targetId = (FactorId)manager.createObject(ObjectType.TARGET, BaseId.INVALID, target);
+		FactorId factorId = (FactorId)manager.createObject(ObjectType.CAUSE, BaseId.INVALID, null);
+		FactorId targetId = (FactorId)manager.createObject(ObjectType.TARGET, BaseId.INVALID, null);
 		CreateFactorLinkParameter link = new CreateFactorLinkParameter(factorId, targetId);
 		verifyBasicObjectLifecycle(ObjectType.FACTOR_LINK, link);
 	}
@@ -136,6 +131,13 @@ public class TestObjectManager extends EAMTestCase
 		Indicator veryGood = createIndicator(VERY_GOOD);
 		KeyEcologicalAttribute kea = createKEA(new Indicator[] {fair, veryGood});
 		assertEquals(GOOD, kea.getData(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS));
+	}
+	
+	private void verifyObjectLifecycle(int type) throws Exception
+	{
+		verifyBasicObjectLifecycle(type, null);
+		verifyObjectWriteAndRead(type, null);
+		verifyGetPool(type);
 	}
 	
 	private void verifyObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception
@@ -211,9 +213,7 @@ public class TestObjectManager extends EAMTestCase
 	private void verifyGetPool(int type) throws Exception
 	{
 		CreateObjectParameter cop = null;
-		if(type == ObjectType.TARGET)
-			cop = new CreateFactorParameter(new FactorTypeTarget());
-		else if(type == ObjectType.FACTOR_LINK)
+		if(type == ObjectType.FACTOR_LINK)
 			cop = new CreateFactorLinkParameter(new FactorId(1), new FactorId(2));
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, cop);
 		EAMObjectPool pool = manager.getPool(type);

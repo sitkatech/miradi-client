@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -18,7 +17,7 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -46,7 +45,7 @@ public class TestDiagramComponent extends EAMTestCase
 		project.close();
 	}
 	
-	private FactorCell createNode(FactorType nodeType) throws Exception
+	private FactorCell createNode(int nodeType) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
 		FactorCommandHelper commandHelper = new FactorCommandHelper(project);
@@ -64,10 +63,10 @@ public class TestDiagramComponent extends EAMTestCase
 		diagramComponent.setModel(project.getDiagramModel());
 		diagramComponent.setGraphLayoutCache(project.getGraphLayoutCache());
 		
-		DiagramCauseCell hiddenNode = (DiagramCauseCell) createNode(Factor.TYPE_CAUSE);
+		DiagramCauseCell hiddenNode = (DiagramCauseCell) createNode(ObjectType.CAUSE);
 		FactorId hiddenId = hiddenNode.getWrappedId();
 
-		DiagramCauseCell visibleNode = (DiagramCauseCell) createNode(Factor.TYPE_CAUSE);
+		DiagramCauseCell visibleNode = (DiagramCauseCell) createNode(ObjectType.CAUSE);
 		FactorId visibleId = visibleNode.getWrappedId();
 		
 		FactorLink cmLinkage = new FactorLink(new FactorLinkId(100), hiddenId, visibleId);

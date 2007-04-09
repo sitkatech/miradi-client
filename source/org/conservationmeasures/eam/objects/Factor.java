@@ -16,8 +16,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -220,11 +218,6 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
-	public CreateObjectParameter getCreationExtraInfo()
-	{
-		return new CreateFactorParameter(getNodeType());
-	}
-	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject superJson = super.toJson();
@@ -239,29 +232,26 @@ abstract public class Factor extends BaseObject
 	}
 	
 	
-	public static Factor createConceptualModelObject(FactorId idToCreate, CreateFactorParameter parameter)
+	public static Factor createConceptualModelObject(FactorId idToCreate, int objectType)
 	{
-		 return createConceptualModelObject(null, idToCreate, parameter);
+		 return createConceptualModelObject(null, idToCreate, objectType);
 	}
 	
-	public static Factor createConceptualModelObject(ObjectManager objectManager, FactorId idToCreate, CreateFactorParameter parameter)
+	public static Factor createConceptualModelObject(ObjectManager objectManager, FactorId idToCreate, int objectType)
 	{
-		if (parameter==null)
-			throw new RuntimeException("Tried to create factor without factor type");
-		FactorType nodeType = parameter.getNodeType();
-		return createFactor(objectManager, idToCreate, nodeType);
+		return createFactor(objectManager, idToCreate, objectType);
 	}
 
-	public static Factor createFactor(ObjectManager objectManager, FactorId idToCreate, FactorType nodeType)
+	public static Factor createFactor(ObjectManager objectManager, FactorId idToCreate, int objectType)
 	{
-		if(nodeType.isStrategy())
+		if(objectType == ObjectType.STRATEGY)
 			return new Strategy(objectManager, idToCreate);
-		else if(nodeType.isCause())
+		else if(objectType == ObjectType.CAUSE)
 			return new Cause(objectManager, idToCreate);
-		else if(nodeType.isTarget())
+		else if(objectType == ObjectType.TARGET)
 			return new Target(objectManager, idToCreate);
 	
-		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
+		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
 
 	

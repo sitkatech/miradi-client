@@ -22,12 +22,11 @@ public class TestCause extends ObjectTestCase
 		verifyFields(ObjectType.CAUSE, extraInfo);
 	}
 	
+	//TODO rename method.  Factors no longer have extraInfo (CreateFactorParameter)
 	public void testExtraInfo() throws Exception
 	{
 		FactorId idToCreate = new FactorId(17);
-		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_CAUSE);
-		Factor node = Factor.createConceptualModelObject(idToCreate, extraInfo);
-		CreateFactorParameter gotExtraInfo = (CreateFactorParameter)node.getCreationExtraInfo();
-		assertEquals(extraInfo.getNodeType(), gotExtraInfo.getNodeType());
+		Factor node = Factor.createConceptualModelObject(idToCreate, ObjectType.CAUSE);
+		assertEquals(ObjectType.CAUSE, node.getType());
 	}
 }

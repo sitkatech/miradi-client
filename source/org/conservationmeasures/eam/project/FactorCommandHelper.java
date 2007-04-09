@@ -40,7 +40,7 @@ public class FactorCommandHelper
 		project = projectToUse;
 	}
 
-	public CommandCreateObject createFactorAndDiagramFactor(FactorType nodeType) throws Exception
+	public CommandCreateObject createFactorAnd3333DiagramFactor(FactorType nodeType) throws Exception
 	{
 		CreateFactorParameter extraInfo = new CreateFactorParameter(nodeType);
 		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.FACTOR, extraInfo);
@@ -62,6 +62,29 @@ public class FactorCommandHelper
 		
 		return createDiagramFactor;
 	}
+	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
+	{
+		CommandCreateObject createModelNode = new CommandCreateObject(objectType);
+		executeCommand(createModelNode);
+
+		FactorId modelNodeId = new FactorId(createModelNode.getCreatedId().asInt());
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(modelNodeId);
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		executeCommand(createDiagramFactor);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
+		CommandDiagramAddFactor commandInsertNode = new CommandDiagramAddFactor(diagramFactorId);
+		executeCommand(commandInsertNode);
+		
+		Factor factor = project.findNode(modelNodeId);
+		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(factor.getRef());
+		for(int i = 0; i < commandsToAddToView.length; ++i)
+			executeCommand(commandsToAddToView[i]);
+		
+		return createDiagramFactor;
+	}
+
+	
 
 	public void pasteFactorsAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
@@ -88,7 +111,7 @@ public class FactorCommandHelper
 			FactorDataMap nodeData = nodes[i];
 			DiagramFactorId originalDiagramNodeId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
 			
-			FactorType type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE)); 
+			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE)); 
 			CommandCreateObject addCommand = createFactorAndDiagramFactor(type);
 			DiagramFactorId newNodeId = (DiagramFactorId) addCommand.getCreatedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
