@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestFactorDataHelper extends EAMTestCase 
@@ -28,13 +28,13 @@ public class TestFactorDataHelper extends EAMTestCase
 	{
 		project = new ProjectForTesting(getName());
 
-		diagramFactorId1 = project.createAndAddFactorToDiagram(Factor.TYPE_TARGET); 
+		diagramFactorId1 = project.createAndAddFactorToDiagram(ObjectType.TARGET); 
 		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
 
-		diagramFactorId2 = project.createAndAddFactorToDiagram(Factor.TYPE_TARGET);
+		diagramFactorId2 = project.createAndAddFactorToDiagram(ObjectType.TARGET);
 		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
 		
-		diagramFactorId3 = project.createAndAddFactorToDiagram(Factor.TYPE_TARGET);
+		diagramFactorId3 = project.createAndAddFactorToDiagram(ObjectType.TARGET);
 		
 		diagramFactorIds = project.getAllDiagramFactorIds(); 
 

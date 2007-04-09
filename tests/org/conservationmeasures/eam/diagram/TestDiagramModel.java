@@ -154,10 +154,10 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testHasLinkage() throws Exception
 	{
-		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
 		model.removeDiagramFactor(diagramFactorId);
-		DiagramFactorId newFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
-		DiagramFactorId targetId = project.createAndAddFactorToDiagram(Factor.TYPE_TARGET);
+		DiagramFactorId newFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
+		DiagramFactorId targetId = project.createAndAddFactorToDiagram(ObjectType.TARGET);
 		assertFalse("already linked?", model.areLinked(newFactorId, targetId));
 		
 		DiagramFactor newDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newFactorId));
@@ -190,7 +190,7 @@ public class TestDiagramModel extends EAMTestCase
 	public void testCreateNode() throws Exception
 	{
 		project.createFactorCell(ObjectType.TARGET);		
-		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
 		project.createFactorCell(ObjectType.TARGET);
 		FactorCell lastCreated = project.createFactorCell(ObjectType.TARGET);		
 		model.removeDiagramFactor(diagramFactorId);
@@ -245,7 +245,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		TestTableModel testModel = new TestTableModel();
 		testModel.addListener(model);
-		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
 		
 		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
 		assertEquals("node changed already called?", 0, testModel.nodeChanged);

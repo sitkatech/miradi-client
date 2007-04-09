@@ -91,7 +91,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
 	{
-		project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		project.createAndAddFactorToDiagram(ObjectType.CAUSE);
 		
 		//undo add diagramFactor
 		project.undo();
@@ -265,7 +265,7 @@ public class TestProject extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
-		DiagramFactorId diagramFactorId1 = project.createAndAddFactorToDiagram(Factor.TYPE_STRATEGY);
+		DiagramFactorId diagramFactorId1 = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId1));
 		FactorCell node3 =  project.createFactorCell(ObjectType.CAUSE);
 		

@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -21,7 +20,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -64,19 +62,11 @@ public class ProjectForTesting extends Project
 		return (ProjectServerForTesting)getDatabase();
 	}
 	
-	//TODO remove old parallel method
-	public FactorId createFactor(FactorType nodeType) throws Exception
-	{
-		CreateFactorParameter createTarget = new CreateFactorParameter(nodeType);
-		FactorId cmTargetId = (FactorId)createObject(ObjectType.FACTOR, BaseId.INVALID, createTarget);
-		return cmTargetId;
-	}
 	public FactorId createFactor(int objectType) throws Exception
 	{
 		FactorId factorId = (FactorId)createObject(objectType);
 		return factorId;
 	}
-	
 	
 	public BaseId addItemToViewDataList(BaseId id, int type, String tag) throws Exception
 	{
@@ -113,8 +103,6 @@ public class ProjectForTesting extends Project
 		return baseId;
 	}
 
-
-	
 	public TaskId createTask(ORef oref) throws Exception
 	{
 		CreateTaskParameter createTask = new CreateTaskParameter(oref);
@@ -129,21 +117,6 @@ public class ProjectForTesting extends Project
 		return cmAssignmentId;
 	}
 	
-	
-	//TODO remove parallel code
-	public DiagramFactorId createAndAddFactorToDiagram(FactorType nodeType) throws Exception
-	{
-		FactorId factorId = createFactor(nodeType);
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
-		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
-		executeCommand(createDiagramFactorCommand);
-		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor addDiagramFactorCommand = new CommandDiagramAddFactor(diagramFactorId);
-		executeCommand(addDiagramFactorCommand);
-		
-		return diagramFactorId;
-	}
 	public DiagramFactorId createAndAddFactorToDiagram(int nodeType) throws Exception
 	{
 		FactorId factorId = createFactor(nodeType);
@@ -157,7 +130,6 @@ public class ProjectForTesting extends Project
 		
 		return diagramFactorId;
 	}
-
 	
 	//TODO fix method name (remove 2 and come up with better name)
 	public DiagramFactor createNodeAndAddToDiagram2(int objectType) throws Exception

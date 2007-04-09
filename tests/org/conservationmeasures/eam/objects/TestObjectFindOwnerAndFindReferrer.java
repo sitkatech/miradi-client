@@ -152,7 +152,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 
 	public void testDiagramFactorRefer() throws Exception
 	{
-		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_STRATEGY);
+		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
 		DiagramFactor diagramFactor = (DiagramFactor)project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
 		ORef orefFactor = diagramFactor.getReferencedObjects(ObjectType.STRATEGY).get(0);
 		
@@ -174,8 +174,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
     	project.executeCommand(createModelLinkage);
     	FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		
-    	DiagramFactorId fromDiagramFactorId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
-		DiagramFactorId toDiagramFactorId =  project.createAndAddFactorToDiagram(Factor.TYPE_TARGET);
+    	DiagramFactorId fromDiagramFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
+		DiagramFactorId toDiagramFactorId =  project.createAndAddFactorToDiagram(ObjectType.TARGET);
 		
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);

@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
@@ -32,10 +31,10 @@ public class TestDelete extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
-		DiagramFactorId interventionId = project.createAndAddFactorToDiagram(Factor.TYPE_STRATEGY);
+		DiagramFactorId interventionId = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
 		DiagramFactor intervention = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, interventionId));
 		
-		DiagramFactorId causeId = project.createAndAddFactorToDiagram(Factor.TYPE_CAUSE);
+		DiagramFactorId causeId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
 		DiagramFactor cause = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, causeId));
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, intervention.getWrappedId(), cause.getWrappedId());
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
