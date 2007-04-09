@@ -5,13 +5,9 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
@@ -134,19 +130,19 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	
 	private FactorId createThreat(String name) throws Exception
 	{
-		FactorId createdId = createNode(new FactorTypeCause(), ObjectType.CAUSE, name);
+		FactorId createdId = createNode(ObjectType.CAUSE, name);
 		((Cause)project.findNode(createdId)).increaseTargetCount();
 		return createdId;
 	}
 
 	private FactorId createTarget(String name) throws Exception
 	{
-		return createNode(new FactorTypeTarget(), ObjectType.TARGET, name);
+		return createNode(ObjectType.TARGET, name);
 	}
 
-	private FactorId createNode(FactorType factorType, int objectType, String name) throws Exception
+	private FactorId createNode(int objectType, String name) throws Exception
 	{
-		FactorId id = (FactorId)project.createObject(objectType, BaseId.INVALID, new CreateFactorParameter(factorType));
+		FactorId id = (FactorId)project.createObject(objectType);
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
 		Factor node = project.findNode(id);
 		node.setLabel(name);

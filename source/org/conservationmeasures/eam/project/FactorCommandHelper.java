@@ -26,7 +26,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
@@ -40,28 +39,6 @@ public class FactorCommandHelper
 		project = projectToUse;
 	}
 
-	public CommandCreateObject createFactorAnd3333DiagramFactor(FactorType nodeType) throws Exception
-	{
-		CreateFactorParameter extraInfo = new CreateFactorParameter(nodeType);
-		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.FACTOR, extraInfo);
-		executeCommand(createModelNode);
-
-		FactorId modelNodeId = new FactorId(createModelNode.getCreatedId().asInt());
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(modelNodeId);
-		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
-		executeCommand(createDiagramFactor);
-		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
-		CommandDiagramAddFactor commandInsertNode = new CommandDiagramAddFactor(diagramFactorId);
-		executeCommand(commandInsertNode);
-		
-		Factor factor = project.findNode(modelNodeId);
-		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(factor.getRef());
-		for(int i = 0; i < commandsToAddToView.length; ++i)
-			executeCommand(commandsToAddToView[i]);
-		
-		return createDiagramFactor;
-	}
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
 	{
 		CommandCreateObject createModelNode = new CommandCreateObject(objectType);

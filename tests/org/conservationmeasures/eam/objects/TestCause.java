@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class TestCause extends ObjectTestCase
@@ -18,8 +17,7 @@ public class TestCause extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_CAUSE);
-		verifyFields(ObjectType.CAUSE, extraInfo);
+		verifyFields(ObjectType.CAUSE);
 	}
 	
 	//TODO rename method.  Factors no longer have extraInfo (CreateFactorParameter)
