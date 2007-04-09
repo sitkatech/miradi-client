@@ -33,7 +33,6 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -401,7 +400,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getFactorId());
 		
 		project.undo();
-		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getFactorCellById(id).getUnderlyingFactorType());
+		assertEquals("didn't undo delete?", ObjectType.TARGET, project.getDiagramModel().getFactorCellById(id).getUnderlyingFactorType());
 	}
 	
 	public void testBeginTransaction() throws Exception

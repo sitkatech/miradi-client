@@ -55,8 +55,10 @@ public abstract class FactorType
 	{
 		if (factorType.equals(FactorTypeTarget.TARGET_TYPE))
 			return ObjectType.TARGET;
+		
 		else if (factorType.equals(FactorTypeCause.CAUSE_TYPE))
 			return ObjectType.CAUSE;
+		
 		else if (factorType.equals(FactorTypeStrategy.STRATEGY_TYPE))
 			return ObjectType.STRATEGY;
 		

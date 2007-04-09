@@ -9,8 +9,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -59,10 +57,10 @@ public class StrategyPool extends EAMNormalObjectPool
 	
 	public Factor[] getDraftAndNonDraftStrategies()
 	{
-		return getNodesOfType(new FactorTypeStrategy());
+		return getNodesOfType(ObjectType.STRATEGY);
 	}
 	
-	private Factor[] getNodesOfType(FactorType type)
+	private Factor[] getNodesOfType(int type)
 	{
 		Vector cmNodes = new Vector();
 		FactorId[] ids = getModelNodeIds();
@@ -70,7 +68,7 @@ public class StrategyPool extends EAMNormalObjectPool
 		for(int i = 0; i < ids.length; ++i)
 		{
 			Factor cmNode = (Factor)getRawObject(ids[i]);
-			if(cmNode.getNodeType().equals(type))
+			if(cmNode.getType() == type)
 				cmNodes.add(cmNode);
 		}
 		return (Factor[])cmNodes.toArray(new Factor[0]);

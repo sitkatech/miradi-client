@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandJump;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -19,7 +18,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
@@ -36,8 +34,8 @@ public class TestUndoAndRedo extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 
-		fromId = createModelAndDiagramNodeWithCommands(Factor.TYPE_CAUSE);
-		toId = createModelAndDiagramNodeWithCommands(Factor.TYPE_STRATEGY);
+		fromId = createModelAndDiagramNodeWithCommands(ObjectType.CAUSE);
+		toId = createModelAndDiagramNodeWithCommands(ObjectType.STRATEGY);
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
 		linkId = addLinkageCommand.getDiagramFactorLinkId();
 	}
@@ -222,7 +220,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private FactorId createModelAndDiagramNodeWithCommands(FactorType type) throws Exception
+	private FactorId createModelAndDiagramNodeWithCommands(int type) throws Exception
 	{
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.CAUSE);
 		project.executeCommand(createModelNodeCommand);

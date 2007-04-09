@@ -83,9 +83,9 @@ abstract public class FactorCell extends EAMGraphCell
 		return getWrappedType();
 	}
 	
-	public FactorType getUnderlyingFactorType()
+	public int getUnderlyingFactorType()
 	{
-		return underlyingObject.getNodeType();
+		return underlyingObject.getType();
 	}
 	
 	public FactorId getWrappedId()
@@ -108,14 +108,14 @@ abstract public class FactorCell extends EAMGraphCell
 		underlyingObject.setLabel(name);
 	}
 
-	public FactorType getFactorType()
+//FIXME this class has two methods with identical returns.  
+	public int getFactorType()
 	{
-		return underlyingObject.getNodeType();
+		return underlyingObject.getType();
 	}
 
 	public void setNodeType(FactorType typeToUse)
 	{
-		underlyingObject.setNodeType(typeToUse);
 		setColors();
 	}
 	

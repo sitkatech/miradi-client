@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.jgraph.graph.GraphConstants;
 
@@ -64,7 +63,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		FactorCell foundNode = model.getFactorCellById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
-		assertEquals(Factor.TYPE_TARGET, foundNode.getUnderlyingFactorType());
+		assertEquals(ObjectType.TARGET, foundNode.getUnderlyingFactorType());
 	}
 
 	public void testInsertFactor() throws Exception
@@ -80,7 +79,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		FactorCell foundNode = model.getFactorCellById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a contributing factor?", foundNode.isContributingFactor());
-		assertEquals(Factor.TYPE_CAUSE, foundNode.getUnderlyingFactorType());
+		assertEquals(ObjectType.CAUSE, foundNode.getWrappedType());
 	}
 
 	public void testInsertIntervention() throws Exception
@@ -96,7 +95,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		FactorCell foundNode = model.getFactorCellById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a strategy?", foundNode.isStrategy());
-		assertEquals(Factor.TYPE_STRATEGY, foundNode.getUnderlyingFactorType());
+		assertEquals(ObjectType.STRATEGY, foundNode.getUnderlyingFactorType());
 	}
 	
 	ProjectForTesting project;

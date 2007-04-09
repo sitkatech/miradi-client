@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -115,14 +114,14 @@ public class DiagramModel extends DefaultGraphModel
 	
 	private FactorCell createFactorCell(DiagramFactor diagramFactor, Factor factor)
 	{
-		FactorType factorType = factor.getNodeType();
-		if (factorType.isCause())
+		int factorType = factor.getType();
+		if (factorType == ObjectType.CAUSE)
 			return new DiagramCauseCell((Cause) factor, diagramFactor);
 	
-		if (factorType.isStrategy())
+		if (factorType == ObjectType.STRATEGY)
 			return new DiagramStrategyCell((Strategy) factor, diagramFactor);
 		
-		if (factorType.isTarget())
+		if (factorType == ObjectType.TARGET)
 			return new DiagramTargetCell((Target) factor, diagramFactor);
 	
 		throw new RuntimeException("Unknown factor type "+factorType);
