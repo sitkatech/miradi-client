@@ -106,13 +106,12 @@ public class DataUpgrader extends ProjectServer
 	
 	public void upgradeToVersion18() throws Exception
 	{
-		fillObject19WithListOfLinks();
+		addLinksToDiagramContentsObject();
 		writeVersion(18);
 	}
 	  
-	private void fillObject19WithListOfLinks() throws Exception
+	private void addLinksToDiagramContentsObject() throws Exception
 	{
-		System.out.println("upgrading to 18");
 		File jsonDir = new File(topDirectory, "json");
 		
 		File objects13Dir = new File(jsonDir, "objects-13");
