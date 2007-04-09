@@ -13,8 +13,6 @@ import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -23,7 +21,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -42,13 +39,11 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		project = new ProjectForTesting(getName());
 		model = project.getDiagramModel();
 
-		CreateFactorParameter createIntervention = new CreateFactorParameter(new FactorTypeStrategy());
-		BaseId rawInterventionId = project.createObject(ObjectType.STRATEGY, BaseId.INVALID, createIntervention);
+		BaseId rawInterventionId = project.createObject(ObjectType.STRATEGY);
 		FactorId interventionId = new FactorId(rawInterventionId.asInt());
 		cmIntervention = project.findNode(interventionId);
 		
-		CreateFactorParameter createTarget = new CreateFactorParameter(new FactorTypeTarget());
-		BaseId rawTargetId = project.createObject(ObjectType.TARGET, BaseId.INVALID, createTarget);
+		BaseId rawTargetId = project.createObject(ObjectType.TARGET);
 		FactorId targetId = new FactorId(rawTargetId.asInt());
 		cmTarget = project.findNode(targetId);
 	}

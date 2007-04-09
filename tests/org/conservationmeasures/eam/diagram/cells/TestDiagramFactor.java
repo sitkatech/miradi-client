@@ -10,7 +10,6 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -18,7 +17,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -41,8 +39,7 @@ public class TestDiagramFactor extends EAMTestCase
 
 		Cause cmDirectThreat = new Cause(takeNextModelNodeId());
 		cmDirectThreat.increaseTargetCount();
-		CreateFactorParameter createTarget = new CreateFactorParameter(new FactorTypeTarget());
-		BaseId rawTargetId = project.createObject(ObjectType.TARGET, BaseId.INVALID, createTarget);
+		BaseId rawTargetId = project.createObject(ObjectType.TARGET);
 		FactorId cmTargetId = new FactorId(rawTargetId.asInt());
 		cmTarget = (Target)project.findNode(cmTargetId);
 		

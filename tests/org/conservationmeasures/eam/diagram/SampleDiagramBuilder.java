@@ -5,13 +5,9 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
@@ -25,10 +21,10 @@ public class SampleDiagramBuilder
 		final int targetIndexBase = 41;
 		for(int i = 0; i < itemsPerType; ++i)
 		{
-			project.createObject(ObjectType.STRATEGY, new BaseId(interventionIndexBase + i), new CreateFactorParameter(new FactorTypeStrategy()));
-			project.createObject(ObjectType.CAUSE, new BaseId(indirectFactorIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
-			project.createObject(ObjectType.CAUSE, new BaseId(directThreatIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
-			project.createObject(ObjectType.TARGET, new BaseId(targetIndexBase + i), new CreateFactorParameter(new FactorTypeTarget()));
+			project.createObject(ObjectType.STRATEGY, new BaseId(interventionIndexBase + i));
+			project.createObject(ObjectType.CAUSE, new BaseId(indirectFactorIndexBase + i));
+			project.createObject(ObjectType.CAUSE, new BaseId(directThreatIndexBase + i));
+			project.createObject(ObjectType.TARGET, new BaseId(targetIndexBase + i));
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)
 		{
