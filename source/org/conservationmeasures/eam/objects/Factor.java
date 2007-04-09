@@ -367,7 +367,6 @@ abstract public class Factor extends BaseObject
 		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributes);
 	}
 
-	public static final FactorType TYPE_INVALID = null;
 	public static final FactorType TYPE_TARGET = new FactorTypeTarget();
 	public static final FactorType TYPE_CAUSE = new FactorTypeCause();
 	public static final FactorType TYPE_STRATEGY = new FactorTypeStrategy();
