@@ -21,11 +21,10 @@ public class MiardiReport
 		project = projectToUse;
 	}
 	
-	public void getReport()
+	public void getReport(String type)
 	{
 		try
 		{
-			String type = "PDF";
 			JasperPrint print = JasperFillManager.fillReport("D:/Projects/workspace/miradi/source/JasperReports/MiradisReport.jasper",new HashMap(),new MardisDataSource());
 			if (type.equals("PDF"))
 			{
