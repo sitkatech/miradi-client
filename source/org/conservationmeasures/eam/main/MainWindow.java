@@ -465,7 +465,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void setBooleanPreference(String genericTag, boolean state)
 	{
 		preferences.setBoolean(genericTag, state);
-		getDiagramComponent().updateDiagramComponent(this);
+		if (getDiagramComponent()!=null)
+			getDiagramComponent().updateDiagramComponent(this);
 		repaint();
 	}
 	
