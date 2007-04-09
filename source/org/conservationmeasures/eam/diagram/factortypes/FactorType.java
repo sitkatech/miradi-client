@@ -67,6 +67,9 @@ public abstract class FactorType
 		else if (factorType.equals(FactorTypeStrategy.STRATEGY_TYPE))
 			return ObjectType.STRATEGY;
 		
+		else if (factorType.equals(FactorTypeIntermediateResult.INTERMEDIATE_RESULT))
+			return ObjectType.INTERMEDIATE_RESULT;
+		
 		throw new RuntimeException("Unknown factor type: " + factorType);
 	}
 

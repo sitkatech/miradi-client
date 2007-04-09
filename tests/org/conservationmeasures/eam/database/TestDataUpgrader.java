@@ -156,6 +156,45 @@ public class TestDataUpgrader extends EAMTestCase
 		DataUpgrader upgraderWithNoObjects6 = new DataUpgrader(tempDirectory);
 		upgraderWithNoObjects6.upgradeToVersion16();
 	}
+
+	public void testUpgradeTo18AddingLinksToObject19() throws Exception
+	{
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
+
+		File objects13 = new File(jsonDir, "objects-13");
+		objects13.mkdirs();
+		
+		String objects13ManifestContent = " {\"Type\":\"ObjectManifest\",\"20\":true,\"21\":true}";
+		File objects13ManifestFile = new File(objects13, "manifest");
+		createFile(objects13ManifestFile, objects13ManifestContent);
+		assertTrue("manifest doesnt exist?", objects13ManifestFile.exists());
+		
+		File objects19 = new File(jsonDir, "objects-19");
+		objects19.mkdirs();
+		
+		String objects19Content = " {\"Label\":\"\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[1,2,3]}\",\"Id\":30}";
+		File file30 = new File(objects19, "30");
+		createFile(file30, objects19Content);
+		
+		String objects19ManifestContent = " {\"Type\":\"ObjectManifest\",\"30\":true}";
+		File objects19ManifestFile = new File(objects19, "manifest");
+		createFile(objects19ManifestFile, objects19ManifestContent);
+		
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		upgrader.upgradeToVersion18();
+		
+		File newFile30 = new File(objects19, "30");
+		EnhancedJsonObject readIn30 = JSONFile.read(newFile30);
+
+		String factorIdsAsString = readIn30.getString("DiagramFactorIds");
+		IdList diagramFactorIds = new IdList(factorIdsAsString);
+		assertEquals("same size?", 3, diagramFactorIds.size());
+		
+		String linkIdsAsString = readIn30.getString("DiagramFactorLinkIds");
+		IdList diagramFactorLinkIds = new IdList(linkIdsAsString);
+		assertEquals("same size?", 2, diagramFactorLinkIds.size());
+	}
 	
 	public void testUpgradeTo17creatingObjects19FromDiagramsMainFile() throws Exception
 	{

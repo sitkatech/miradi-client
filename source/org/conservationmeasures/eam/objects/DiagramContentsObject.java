@@ -51,6 +51,11 @@ public class DiagramContentsObject extends BaseObject
 		return allDiagramFactorIds.getIdList();
 	}
 	
+	public IdList getAllDiagramFactorLinkIds()
+	{
+		return allDiagramFactorLinkIds.getIdList();
+	}
+	
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
@@ -66,11 +71,15 @@ public class DiagramContentsObject extends BaseObject
 		super.clear();
 		
 		allDiagramFactorIds = new IdListData();
+		allDiagramFactorLinkIds = new IdListData();
 		
 		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
+		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
 	}
 	
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
+	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
 	
 	IdListData allDiagramFactorIds;
+	IdListData allDiagramFactorLinkIds;
 }

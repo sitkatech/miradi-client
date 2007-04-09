@@ -97,11 +97,53 @@ public class DataUpgrader extends ProjectServer
 		if (readDataVersion(getTopDirectory()) == 15)
 			upgradeToVersion16();
 		
-		//FIXME up the version to 16 when done migration code
 		if (readDataVersion(getTopDirectory()) == 16)
 			upgradeToVersion17();
+		
+		if (readDataVersion(getTopDirectory()) == 17)
+			upgradeToVersion18();
+	}
+	
+	public void upgradeToVersion18() throws Exception
+	{
+		fillObject19WithListOfLinks();
+		writeVersion(18);
 	}
 	  
+	private void fillObject19WithListOfLinks() throws Exception
+	{
+		System.out.println("upgrading to 18");
+		File jsonDir = new File(topDirectory, "json");
+		
+		File objects13Dir = new File(jsonDir, "objects-13");
+		if (! objects13Dir.exists())
+			throw new RuntimeException("objects-13 directory does not exist " + objects13Dir.getAbsolutePath());
+
+		File manifest13File = new File(objects13Dir, "manifest");
+		if (! manifest13File.exists())
+			throw new RuntimeException("manifest for objects-13 directory does not exist " + manifest13File.getAbsolutePath());
+		
+		File objects19Dir = new File(jsonDir, "objects-19");
+		if (! objects19Dir.exists())
+			throw new RuntimeException("objects-19 directory does not exist " + objects19Dir.getAbsolutePath());
+	
+		File manifest19File = new File(objects19Dir, "manifest");
+		if (! manifest19File.exists())
+			throw new RuntimeException("manifest for objects-19 directory does not exist " + manifest19File.getAbsolutePath());
+		
+		ObjectManifest manifest19 = new ObjectManifest(JSONFile.read(manifest19File));
+		BaseId[] linkIds = manifest19.getAllKeys();
+		File onlyFile = new File(objects19Dir, Integer.toString(linkIds[0].asInt()));
+		EnhancedJsonObject readInOnlyFile = readFile(onlyFile);
+		
+		ObjectManifest manifest13 = new ObjectManifest(JSONFile.read(manifest13File));
+		BaseId[] ids = manifest13.getAllKeys();
+		IdList idList = new IdList(ids);
+		readInOnlyFile.put("DiagramFactorLinkIds", idList.toString());
+							
+		writeJson(onlyFile, readInOnlyFile);
+	}
+
 	public void upgradeToVersion17() throws Exception
 	{
 		createObject19DirAndFillFromDiagram();

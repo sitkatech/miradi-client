@@ -205,12 +205,25 @@ public class DiagramModel extends DefaultGraphModel
 
 		insert(newLinks, nestedMap, cs, null, null);
 		cellInventory.addFactorLink(diagramFactorLink, cell);
+		addLinkToDiagramContents(diagramFactorLink.getDiagramLinkageId());
 		
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkAdded());
 		
     	return diagramFactorLink;
     }
     
+    private void addLinkToDiagramContents(DiagramFactorLinkId diagramFactorLinkId) throws Exception
+	{
+		IdList currentList = diagramContents.getAllDiagramFactorLinkIds();
+		//TODO This if will go away when the model listens for DCO commands
+		if (currentList.contains(diagramFactorLinkId))
+				return;
+		
+		currentList.add(diagramFactorLinkId);
+		diagramContents.setData(DiagramContentsObject.TAG_DIAGRAM_FACTOR_LINK_IDS, currentList.toJson().toString());
+		getProject().getDatabase().writeObject(diagramContents);
+	}
+	
 	public void deleteDiagramFactorLink(DiagramFactorLink diagramFactorLinkToDelete) throws Exception
 	{
 		LinkCell cell = cellInventory.getLinkCell(diagramFactorLinkToDelete);
@@ -218,9 +231,19 @@ public class DiagramModel extends DefaultGraphModel
 		
 		remove(links);
 		cellInventory.removeFactorLink(diagramFactorLinkToDelete);
+		removeLinkFromDiagramContents(diagramFactorLinkToDelete.getDiagramLinkageId());
 		
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkDeleted());
 	}
+	
+    private void removeLinkFromDiagramContents(DiagramFactorLinkId diagramFactorLinkId) throws Exception
+    {
+    	IdList currentList = diagramContents.getAllDiagramFactorLinkIds();
+		currentList.removeId(diagramFactorLinkId);
+		diagramContents.setData(DiagramContentsObject.TAG_DIAGRAM_FACTOR_LINK_IDS, currentList.toJson().toString());
+		
+		getProject().getDatabase().writeObject(diagramContents);
+    }
 	
 	public boolean areLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
 	{
@@ -504,14 +527,12 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		diagramContents = diagramContentsToUse;
 		addFactorsToModel(diagramContentsToUse.toJson());
-		addLinksToModel();
+		addLinksToModel(diagramContentsToUse.toJson());
 	}
 
 	private void addFactorsToModel(EnhancedJsonObject json) throws Exception
 	{
-		diagramContents.clear();
 		IdList diagramFactorIds = new IdList(json.getString(TAG_DIAGRAM_FACTOR_IDS));
-		
 		// TODO: Really we should extend JSONObject to have a sane names() method
 		// that returns an empty array if there are no names
 		
@@ -522,14 +543,13 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	public void addLinksToModel() throws Exception
+	public void addLinksToModel(EnhancedJsonObject json) throws Exception
 	{
-		DiagramFactorLinkPool diagramFactorLinkPool = (DiagramFactorLinkPool) project.getPool(ObjectType.DIAGRAM_LINK);
-		IdList allDiagramFactorLinkIds = diagramFactorLinkPool.getIdList();
+		IdList allDiagramFactorLinkIds = new IdList(json.getString(TAG_DIAGRAM_FACTOR_LINK_IDS));
 		for (int i = 0; i < allDiagramFactorLinkIds.size(); i++)
 		{
 			BaseId factorLinkId = allDiagramFactorLinkIds.get(i);
-			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) diagramFactorLinkPool.getRawObject(factorLinkId);
+			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, factorLinkId));
 			addLinkToDiagram(diagramFactorLink);
 		}
 	}
@@ -608,6 +628,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	private static final String TAG_TYPE = "Type";
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
+	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
 	
 	
 	private static final String JSON_TYPE_DIAGRAM = "Diagram";
