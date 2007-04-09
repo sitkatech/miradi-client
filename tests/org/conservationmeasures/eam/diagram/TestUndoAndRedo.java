@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
@@ -225,8 +224,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private FactorId createModelAndDiagramNodeWithCommands(FactorType type) throws Exception
 	{
-		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_CAUSE);
-		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.CAUSE, extraInfo);
+		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.CAUSE);
 		project.executeCommand(createModelNodeCommand);
 		
 		FactorId factorId = (FactorId) createModelNodeCommand.getCreatedId();

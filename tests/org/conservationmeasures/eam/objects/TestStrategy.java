@@ -6,9 +6,8 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class TestStrategy extends ObjectTestCase
@@ -20,8 +19,7 @@ public class TestStrategy extends ObjectTestCase
 
 	public void testFields() throws Exception
 	{
-		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_STRATEGY);
-		verifyFields(ObjectType.FACTOR, extraInfo);
+		verifyFields(ObjectType.STRATEGY);
 	}
 	
 	public void testBasics()

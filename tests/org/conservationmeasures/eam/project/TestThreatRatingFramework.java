@@ -10,14 +10,11 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -219,7 +216,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		FactorId threatId = (FactorId)project.createObject(ObjectType.CAUSE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
+		FactorId threatId = (FactorId)project.createObject(ObjectType.CAUSE);
 		FactorId targetId = createTarget(project);
 
 		ValueOption none = framework.findValueOptionByNumericValue(0);
@@ -314,13 +311,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private FactorId createTarget(Project projectToUse) throws Exception
 	{
-		FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.TARGET, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
+		FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.TARGET);
 		return targetId;
 	}
 
 	private FactorId createThreat(Project projectToUse) throws Exception
 	{
-		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.CAUSE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
+		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.CAUSE);
 		((Cause)projectToUse.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}

@@ -25,8 +25,6 @@ import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -43,7 +41,6 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -120,8 +117,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testCreateAndDeleteModelLinkage() throws Exception
 	{
-		FactorId threatId = (FactorId)project.createObject(ObjectType.CAUSE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
-		FactorId targetId = (FactorId)project.createObject(ObjectType.TARGET, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
+		FactorId threatId = (FactorId)project.createObject(ObjectType.CAUSE);
+		FactorId targetId = (FactorId)project.createObject(ObjectType.TARGET);
 		Cause factor = (Cause)project.findNode(threatId);
 		assertFalse("already direct threat?", factor.isDirectThreat());
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
@@ -761,8 +758,7 @@ public class TestProject extends EAMTestCase
 			FactorId targetId = createNodeAndAddToDiagram(diskProject, Factor.TYPE_TARGET).getWrappedId();
 			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
 			
-			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_STRATEGY);
-			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY, BaseId.INVALID, parameter);
+			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY);
 			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
 			diskProject.deleteObject(object);
 	

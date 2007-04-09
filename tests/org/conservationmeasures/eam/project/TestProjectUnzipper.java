@@ -12,11 +12,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.martus.util.DirectoryUtils;
@@ -86,7 +84,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		{
 			Project project = new Project();
 			project.createOrOpen(originalDirectory);
-			project.createObject(ObjectType.TARGET, targetId, new CreateFactorParameter(new FactorTypeTarget()));
+			project.createObject(ObjectType.TARGET, targetId);
 			project.close();
 
 			File zip = createTempFile();

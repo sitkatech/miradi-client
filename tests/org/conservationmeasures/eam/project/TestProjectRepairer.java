@@ -1,12 +1,10 @@
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 
@@ -22,7 +20,7 @@ public class TestProjectRepairer extends EAMTestCase
 		int annotationType = ObjectType.OBJECTIVE;
 		String nodeTagForAnnotationList = Factor.TAG_OBJECTIVE_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, Factor.TYPE_CAUSE, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, ObjectType.CAUSE, nodeTagForAnnotationList);
 		
 	}
 
@@ -31,7 +29,7 @@ public class TestProjectRepairer extends EAMTestCase
 		int annotationType = ObjectType.GOAL;
 		String nodeTagForAnnotationList = Factor.TAG_GOAL_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, Factor.TYPE_TARGET, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, ObjectType.TARGET, nodeTagForAnnotationList);
 		
 	}
 
@@ -40,19 +38,18 @@ public class TestProjectRepairer extends EAMTestCase
 		int annotationType = ObjectType.INDICATOR;
 		String nodeTagForAnnotationList = Factor.TAG_INDICATOR_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, Factor.TYPE_CAUSE, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, ObjectType.CAUSE, nodeTagForAnnotationList);
 		
 	}
 
-	private void verifyDeleteOrphanAnnotations(int annotationType, FactorType nodeType, String nodeTagForAnnotationList) throws Exception
+	private void verifyDeleteOrphanAnnotations(int annotationType, int nodeType, String nodeTagForAnnotationList) throws Exception
 	{
 		Project project = new ProjectForTesting(getName());
 		try
 		{
 			//BaseId orphan = project.createObject(annotationType);
 			BaseId nonOrphan = project.createObject(annotationType);
-			CreateFactorParameter extraInfo = new CreateFactorParameter(nodeType);
-			FactorId nodeId = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, extraInfo);
+			FactorId nodeId = (FactorId)project.createObject(nodeType, BaseId.INVALID);
 			IdList annotationIds = new IdList();
 			annotationIds.add(nonOrphan);
 			project.setObjectData(ObjectType.FACTOR, nodeId, nodeTagForAnnotationList, annotationIds.toString());
