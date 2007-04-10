@@ -262,6 +262,8 @@ public class Actions
 		registerAction(new ActionWizardPrevious(mainWindow));
 		registerAction(new ActionShowCellRatings(mainWindow));
 		registerAction(new ActionHideCellRatings(mainWindow));
+		registerAction(new ActionCreateResultsChain(mainWindow));
+		registerAction(new ActionShowResultsChain(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
