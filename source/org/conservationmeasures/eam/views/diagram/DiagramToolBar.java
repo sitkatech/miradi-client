@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
+import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
@@ -62,6 +63,7 @@ public class DiagramToolBar extends EAMToolBar
 			},
 			{
 				getModeSwitchButton(actions, mode),
+				new ToolBarButton(actions, ActionShowResultsChain.class),
 			},
 		};
 		
