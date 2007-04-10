@@ -5,14 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
@@ -81,16 +79,15 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.Utilities;
 
 
-public class DiagramView extends UmbrellaView implements CommandExecutedListener
+public class DiagramView extends TabbedView implements CommandExecutedListener
 {
 	public DiagramView(MainWindow mainWindowToUse) throws Exception
 	{
@@ -203,11 +200,8 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionShowResultsChain.class, new ShowResultsChainDoer());
 	}
 	
-	public void becomeActive() throws Exception
+	public void createTabs() throws Exception
 	{
-		super.becomeActive();
-		removeAll();
-
 		diagram = new DiagramComponent(getMainWindow());
 		diagram.setModel(getProject().getDiagramModel());
 		diagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
@@ -216,15 +210,30 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		getProject().addCommandExecutedListener(this);
 		
 		UiScrollPane diagramComponent = createDiagramPanel();
-
 		JSplitPane bottomHalf = new JSplitPane();
 		bottomHalf.setRightComponent(diagramComponent);
 		bottomHalf.setLeftComponent(legendDialog);
 		bottomHalf.setDividerLocation(legendDialog.getPreferredSize().width);
-		
-		bigSplitter = new ViewSplitPane(this, getMainWindow(), getProject().getCurrentView(), createWizard(), bottomHalf);
-		add(bigSplitter, BorderLayout.CENTER);
-		
+
+		//TODO fix tab name
+		addTab("Main Diagram", bottomHalf);
+	}
+
+	public WizardPanel createWizardPanel() throws Exception
+	{
+		return wizardPanel;
+	}
+
+	public void deleteTabs() throws Exception
+	{
+	}
+	
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+
+		updateToolBar();
+		getProject().addCommandExecutedListener(this);
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 	}
 	
@@ -238,15 +247,10 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		return uiScrollPane;
 	}
 
-
-	public JPanel createWizard() throws Exception
-	{
-		return wizardPanel;
-	}
-	
-
 	public void becomeInactive() throws Exception
 	{
+		super.becomeInactive();
+		
 		// TODO: This should completely tear down the view
 		disposeOfNodePropertiesDialog();
 		diagram.clearSelection();
@@ -255,8 +259,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		getProject().setSelectionModel(null);
 		diagram = null;
 		updateToolBar();
-		
-		super.becomeInactive();
 	}
 	
 	
@@ -485,5 +487,4 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	ModelessDialogWithClose nodePropertiesDlg;
 	FactorPropertiesPanel nodePropertiesPanel;
-
 }
