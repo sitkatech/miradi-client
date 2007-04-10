@@ -22,12 +22,12 @@ public class SummaryTeamData implements Iterator
 	
 	public boolean hasNext() 
 	{
-		return (--count>=0);
-		
+		return (count>0);
 	}
 
 	public Object next() 
 	{
+		--count;
 		return this;
 	}
 
