@@ -12,6 +12,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRRtfExporter;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 
 public class MiardiReport
@@ -21,34 +22,44 @@ public class MiardiReport
 		project = projectToUse;
 	}
 	
-	public void getReport(String type)
+	public void getPDFReport(String reportFile, String fileOut)
 	{
 		try
 		{
-			JasperPrint print = JasperFillManager.fillReport("D:/Projects/workspace/miradi/source/JasperReports/MiradisReport.jasper",new HashMap(),new MardisDataSource());
-			if (type.equals("PDF"))
-			{
-				JasperExportManager.exportReportToPdfFile(print,"C:/MardisReport.pdf");
-			}
-			else if (type.equals("RTF"))
-			{
-				JRRtfExporter exporter = new JRRtfExporter();
-				exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
-				exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, "C:/MardisReport.rtf");		    		   
-				exporter.exportReport();
-			}
+			HashMap parameters = new HashMap();
+			//parameters.put("MyDatasource", new MiradiDataSource());
+			JasperPrint print = JasperFillManager.fillReport(reportFile, parameters, new MiradiDataSource());
+			JasperExportManager.exportReportToPdfFile(print,fileOut);
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();	
+			EAM.logException(e);
 		}
 	}
 	
-	public class MardisDataSource implements JRDataSource
+	public void getRTFReport(String reportFile, String fileOut)
+	{
+		try
+		{
+			HashMap parameters = new HashMap();
+			//parameters.put("MyDatasource", new MiradiDataSource());
+			JasperPrint print = JasperFillManager.fillReport(reportFile ,parameters, new MiradiDataSource());
+			JRRtfExporter exporter = new JRRtfExporter();
+			exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
+			exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, fileOut);		    		   
+			exporter.exportReport();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	public class MiradiDataSource implements JRDataSource
 	{
 		public Object getFieldValue(JRField field) throws JRException
 		{
-			System.out.println(field.getName());
+			System.out.println(field.getName() + "==" + ((ProjectMetadata)data).getData(field.getName()));
 			return ((ProjectMetadata)data).getData(field.getName());
 		}
 
@@ -64,13 +75,13 @@ public class MiardiReport
 			return false;
 		}
 
-		MardisProjectData iterator = new MardisProjectData();
+		MiradiProjectData iterator = new MiradiProjectData();
 
 		Object data;
 	} 
 	
 
-	public class MardisProjectData implements Iterator
+	public class MiradiProjectData implements Iterator
 	{
 		public boolean hasNext() 
 		{
