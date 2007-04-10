@@ -65,6 +65,7 @@ public class CommandSetObjectData extends Command
 		return new CommandSetObjectData(object.getType(), object.getId(), oRefListTag, newList.toString());
 	}
 	
+	//TODO find a better method name
 	static public CommandSetObjectData createAppendListCommand(BaseObject object, String idListTag, IdList listToAppend) throws ParseException
 	{
 		IdList newList = new IdList(object.getData(idListTag));

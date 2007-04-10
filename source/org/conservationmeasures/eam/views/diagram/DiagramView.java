@@ -65,6 +65,7 @@ import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -77,6 +78,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
@@ -215,6 +217,32 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 		//TODO fix tab name
 		addTab("Main Diagram", bottomHalf);
+		addResultsChainTabs();
+	}
+
+	private void addResultsChainTabs() throws Exception
+	{
+		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
+		for (int i = 0; i < resultsChains.size(); i++)
+		{
+			DiagramModel diagramModel = new DiagramModel(getProject());
+			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChains.get(i)));
+			diagramModel.fillFrom(resultsChain);
+			
+			DiagramComponent resultsChaindiagram = new DiagramComponent(getMainWindow());
+			resultsChaindiagram.setModel(diagramModel);
+			//FIXME need to create selectionModel and cache
+			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
+			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
+			
+			JSplitPane bottomHalf = new JSplitPane();
+			bottomHalf.setRightComponent(resultsChaindiagram);
+			bottomHalf.setLeftComponent(legendDialog);
+			bottomHalf.setDividerLocation(legendDialog.getPreferredSize().width);
+
+			//TODO fix tab name
+			addTab("Results Chain "+i, bottomHalf);
+		}
 	}
 
 	public WizardPanel createWizardPanel() throws Exception

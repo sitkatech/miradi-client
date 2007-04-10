@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -57,7 +58,7 @@ public class CreateResultsChainDoer extends ViewDoer
 	
 	private void createResultsChain() throws Exception
 	{
-		FactorId[] factorIds = createChainBasedOnFactorSelection();
+		DiagramFactor[] diagramFactors = createChainBasedOnFactorSelection();
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
@@ -67,19 +68,9 @@ public class CreateResultsChainDoer extends ViewDoer
 			
 			BaseId createId = createResultsChain.getCreatedId();
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, createId);
-
-			Vector createdDiagramFactorIds = new Vector();
-			for (int i  = 0; i < factorIds.length; i++)
-			{
-				CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorIds[0]);
-				CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
-				getProject().executeCommand(createDiagramFactor);
 				
-				createdDiagramFactorIds.add(new DiagramFactorId(createDiagramFactor.getCreatedId().asInt()));
-			}
-			
-			DiagramFactorId[] ids = (DiagramFactorId[]) createdDiagramFactorIds.toArray(new DiagramFactorId[0]);
-			IdList idList = new IdList(ids);
+			DiagramFactorId[] clonedDiagramFactorIds = cloneDiagramFactors(diagramFactors);
+			IdList idList = new IdList(clonedDiagramFactorIds);
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			getProject().executeCommand(addFactorsToChain);
 		}
@@ -89,14 +80,41 @@ public class CreateResultsChainDoer extends ViewDoer
 		}
 	}
 	
-	private FactorId[] createChainBasedOnFactorSelection() throws Exception
+	private DiagramFactorId[] cloneDiagramFactors(DiagramFactor[] diagramFactors) throws CommandFailedException
+	{
+		Vector createdDiagramFactorIds = new Vector();
+		for (int i  = 0; i < diagramFactors.length; i++)
+		{
+			DiagramFactor diagramFactor = diagramFactors[i];
+			FactorId factorId = diagramFactor.getWrappedId();
+			CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+			CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+			getProject().executeCommand(createDiagramFactor);
+			//FIXME size and location have to be set for new diagramFactor
+//			DiagramFactorId newlyCreatedId = (DiagramFactorId) createDiagramFactor.getCreatedId();
+//			String size = EnhancedJsonObject.convertFromDimension(diagramFactor.getSize());
+//			CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_SIZE, size);
+//			getProject().executeCommand(setSizeCommand);
+//			
+//			String location = EnhancedJsonObject.convertFromPoint(diagramFactor.getLocation());
+//			CommandSetObjectData setLocationCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_SIZE, location);
+//			getProject().executeCommand(setLocationCommand);
+//			
+			createdDiagramFactorIds.add(new DiagramFactorId(createDiagramFactor.getCreatedId().asInt()));
+		}
+		
+		DiagramFactorId[] ids = (DiagramFactorId[]) createdDiagramFactorIds.toArray(new DiagramFactorId[0]);
+		return ids;
+	}
+	
+	private DiagramFactor[] createChainBasedOnFactorSelection() throws Exception
 	{
 		FactorCell[] selectedFactorCells = getProject().getOnlySelectedFactorCells();
 		Vector selectedFactorIds = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
-			selectedFactorIds.add(selectedFactorCells[i].getWrappedId());
+			selectedFactorIds.add(selectedFactorCells[i].getDiagramFactor());
 	
-		return (FactorId[]) selectedFactorIds.toArray(new FactorId[0]);
+		return (DiagramFactor[]) selectedFactorIds.toArray(new DiagramFactor[0]);
 	}
 
 	private boolean areAllStrategies(BaseObject[] selectedObjects)
