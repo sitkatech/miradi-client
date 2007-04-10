@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 
-public class CreateResultsChainDoer extends MainWindowDoer
+public class CreateResultsChainDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
