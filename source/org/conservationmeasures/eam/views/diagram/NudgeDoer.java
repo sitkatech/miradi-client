@@ -27,7 +27,7 @@ public class NudgeDoer extends LocationDoer
 	
 	public boolean isAvailable()
 	{
-		return getProject().getOnlySelectedFactors().length > 0;
+		return getProject().getOnlySelectedFactorCells().length > 0;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -67,7 +67,7 @@ public class NudgeDoer extends LocationDoer
 	
 	private void moveSelectedNodes(int deltaX, int deltaY) throws CommandFailedException
 	{
-		FactorCell[] cells = getProject().getOnlySelectedFactors();
+		FactorCell[] cells = getProject().getOnlySelectedFactorCells();
 		DiagramFactorLink[] links = getProject().getOnlySelectedLinks();
 		DiagramFactorId[] ids = new DiagramFactorId[cells.length];
 		for(int i = 0; i < cells.length; ++i)

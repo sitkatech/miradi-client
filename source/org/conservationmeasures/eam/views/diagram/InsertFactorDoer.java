@@ -42,7 +42,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		
 		try
 		{
-			FactorCell[] selectedFactors = getProject().getOnlySelectedFactors();
+			FactorCell[] selectedFactors = getProject().getOnlySelectedFactorCells();
 			FactorId id = insertFactorItself();
 			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET))
 				linkToPreviouslySelectedFactors(id, selectedFactors);
@@ -74,7 +74,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 		Point createAt = getLocation();
 		Project project = getProject();
-		FactorCell[] selectedNodes = project.getOnlySelectedFactors();
+		FactorCell[] selectedNodes = project.getOnlySelectedFactorCells();
 
 		project.executeCommand(new CommandBeginTransaction());
 		int factorType = getTypeToInsert();

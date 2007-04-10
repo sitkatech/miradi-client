@@ -61,7 +61,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 				SelectChain.selectAllChainsRelatedToAllSelectedCells(diagram);
 
 			FactorCell[] orphanedDaftStrats = getOrphanedDraftStrategies(project, view, diagram);
-			FactorCell[] selectedNodes = project.getOnlySelectedFactors();
+			FactorCell[] selectedNodes = project.getOnlySelectedFactorCells();
 			
 			BaseId viewId = getCurrentViewId();
 			ORefList nodeORefsToProcess = new ORefList();

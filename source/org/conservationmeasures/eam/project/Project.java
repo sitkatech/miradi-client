@@ -56,6 +56,7 @@ import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
+import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
@@ -149,6 +150,11 @@ public class Project
 	public EAMObjectPool getPool(int objectType)
 	{
 		return objectManager.getPool(objectType);
+	}
+	
+	public ResultsChainDiagramPool getResultsChainDiagramPool()
+	{
+		return (ResultsChainDiagramPool) getPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
 	public CausePool getCausePool()
@@ -886,16 +892,42 @@ public class Project
 		return cells;
 	}
 	
-	public FactorCell[] getOnlySelectedFactors()
+	public Factor[] getOnlySelectedFactors()
+	{
+		if (selectionModel == null)
+			return new Factor[0];
+		
+		Object[] rawCells = selectionModel.getSelectionCells();
+		return getOnlySelectedFactors(rawCells);
+	}
+	
+	private Factor[] getOnlySelectedFactors(Object[] allSelectedFactors)
+	{
+		Vector nodes = new Vector();
+		for(int i = 0; i < allSelectedFactors.length; ++i)
+		{
+			EAMGraphCell graphCell = ((EAMGraphCell)allSelectedFactors[i]);
+			if(graphCell.isFactor())
+			{
+				ORef ref = graphCell.getDiagramFactor().getWrappedORef();
+				Factor factor = (Factor) findObject(ref);
+				nodes.add(factor);
+			}
+		}
+		return (Factor[])nodes.toArray(new Factor[0]);
+
+	}
+
+	public FactorCell[] getOnlySelectedFactorCells()
 	{
 		if(selectionModel == null)
 			return new FactorCell[0];
 		
 		Object[] rawCells = selectionModel.getSelectionCells();
-		return getOnlySelectedFactors(rawCells);
+		return getOnlySelectedFactorCells(rawCells);
 	}
 
-	public FactorCell[] getOnlySelectedFactors(Object[] allSelectedCells)
+	public FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
 	{
 		Vector nodes = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)

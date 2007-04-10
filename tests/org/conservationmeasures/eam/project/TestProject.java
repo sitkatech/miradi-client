@@ -243,16 +243,16 @@ public class TestProject extends EAMTestCase
 		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
 
 		EAMGraphCell[] selectedCells = {cell1};
-		EAMGraphCell[] selectedItems = project.getOnlySelectedFactors(selectedCells);
+		EAMGraphCell[] selectedItems = project.getOnlySelectedFactorCells(selectedCells);
 		assertEquals(0, selectedItems.length);
 		
 		selectedCells[0] = node2;
-		selectedItems = project.getOnlySelectedFactors(selectedCells);
+		selectedItems = project.getOnlySelectedFactorCells(selectedCells);
 		assertEquals(1, selectedItems.length);
 		assertEquals(node2, selectedItems[0]);
 		
 		EAMGraphCell[] selectedCellsTwo = {node2, cell1, node1};
-		selectedItems = project.getOnlySelectedFactors(selectedCellsTwo);
+		selectedItems = project.getOnlySelectedFactorCells(selectedCellsTwo);
 		assertEquals(2, selectedItems.length);
 	}
 	
