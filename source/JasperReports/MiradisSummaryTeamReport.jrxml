@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="MiradisReport"
+		 name="MiradisSummaryTeamReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -24,6 +24,8 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
+	<field name="Name" class="java.lang.String"/>
+
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -42,16 +44,19 @@
 		</columnHeader>
 		<detail>
 			<band height="100"  isSplitAllowed="true" >
-				<subreport  isUsingCache="true">
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="49"
-						y="27"
-						width="402"
-						height="39"
-						key="subreport"/>
-					<dataSourceExpression><![CDATA[((MiradiDataSource)$P{REPORT_DATA_SOURCE}).getSummaryGeneranlDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA["D:/Projects/workspace/miradi/source/JasperReports/MiradisSummaryGeneralReport.jasper"]]></subreportExpression>
-				</subreport>
+						x="28"
+						y="-114"
+						width="126"
+						height="21"
+						key="TeamName"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Name}]]></textFieldExpression>
+				</textField>
 			</band>
 		</detail>
 		<columnFooter>

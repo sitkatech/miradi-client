@@ -3,9 +3,11 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.project;
+package org.conservationmeasures.eam.reports;
 
 import java.util.Iterator;
+
+import org.conservationmeasures.eam.project.Project;
 
 public class MiradiProjectData implements Iterator
 {
@@ -16,8 +18,7 @@ public class MiradiProjectData implements Iterator
 	
 	public boolean hasNext() 
 	{
-		--count;
-		return (count>=0);
+		return (--count>=0);
 		
 	}
 
@@ -30,6 +31,6 @@ public class MiradiProjectData implements Iterator
 	{
 	}
 	
-	int count = 2;
+	int count = 1;
 	Project project;
 }

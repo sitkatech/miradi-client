@@ -3,33 +3,27 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.project;
+package org.conservationmeasures.eam.reports;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.project.Project;
 
-public class MiradiDataSource implements JRDataSource
+public class SummaryTeamDataSource implements JRDataSource
 {
-	public MiradiDataSource(Project projectToUse)
+	public SummaryTeamDataSource(Project projectToUse)
 	{
 		project = projectToUse;
-		iterator = new MiradiProjectData(project);
-	}
-	
-	public JRDataSource getDataSource()
-	{
-		return new MiradiDataSource(project);
+		iterator = new SummaryTeamData(project);
 	}
 	
 	public Object getFieldValue(JRField field) throws JRException
 	{
-		System.out.println(field.getName() + "==" + ((ProjectMetadata)data).getData(field.getName()));
-		return ((ProjectMetadata)data).getData(field.getName());
+		System.out.println("HERE SummaryTeamDataSource:" + field.getName() + " value =:" +((SummaryTeamData)data).getData(field.getName()));
+		return ((SummaryTeamData)data).getData(field.getName());
 	}
-
 
 	public boolean next() throws JRException 
 	{
@@ -42,7 +36,7 @@ public class MiradiDataSource implements JRDataSource
 		return false;
 	}
 
-	MiradiProjectData iterator;
+	SummaryTeamData iterator;
 	Project project;
 	Object data;
 } 

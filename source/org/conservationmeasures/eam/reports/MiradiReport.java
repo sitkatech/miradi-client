@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.project;
+package org.conservationmeasures.eam.reports;
 
 import java.util.HashMap;
 
@@ -10,6 +10,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRRtfExporter;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 
 public class MiradiReport
 {
@@ -51,7 +52,6 @@ public class MiradiReport
 	private JasperPrint getJasperPrint(String reportFile) throws JRException
 	{
 		HashMap parameters = new HashMap();
-	//	parameters.put("MiradiSubReportDataSource", new MiradiDataSource(project));
 		JasperPrint print = JasperFillManager.fillReport(reportFile, parameters, new MiradiDataSource(project));
 		return print;
 	}
