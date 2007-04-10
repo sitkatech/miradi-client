@@ -95,12 +95,12 @@ public class TestProject extends EAMTestCase
 		//undo create diagramFactor
 		project.undo();
 		
-		assertEquals("node not removed?", 0, project.getDiagramContentsObject().getAllDiagramFactorIds().size());
+		assertEquals("node not removed?", 0, project.getDiagramObject().getAllDiagramFactorIds().size());
 
 		project.redo();
 		
 		project.redo();
-		assertEquals("node not re-added?", 1, project.getDiagramContentsObject().getAllDiagramFactorIds().size());
+		assertEquals("node not re-added?", 1, project.getDiagramObject().getAllDiagramFactorIds().size());
 	}
 	
 	public void testGetViewData() throws Exception

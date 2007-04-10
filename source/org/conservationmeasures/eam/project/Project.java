@@ -64,6 +64,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -225,9 +226,9 @@ public class Project
 		return diagramModel;
 	}
 
-	public ConceptualModelDiagram getDiagramContentsObject()
+	public DiagramObject getDiagramObject()
 	{
-		return getDiagramModel().getDiagramContentsObject();
+		return getDiagramModel().getDiagramObject();
 	}
 	
 	public LayerManager getLayerManager()
