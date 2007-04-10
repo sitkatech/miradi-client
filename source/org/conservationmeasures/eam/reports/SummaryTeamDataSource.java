@@ -9,34 +9,35 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.summary.TeamModel;
 
 public class SummaryTeamDataSource implements JRDataSource
 {
-	public SummaryTeamDataSource(Project projectToUse)
+	public SummaryTeamDataSource(Project project)
 	{
-		project = projectToUse;
-		iterator = new SummaryTeamData(project);
+		teamModel = new TeamModel(project);
+		count = teamModel.getRowCount();
 	}
 	
 	public Object getFieldValue(JRField field) throws JRException
 	{
-		System.out.println("HERE SummaryTeamDataSource:" + field.getName() + " value =:" +((SummaryTeamData)data).getData(field.getName()));
-		return ((SummaryTeamData)data).getData(field.getName());
+		return getData(field.getName());
 	}
 
 	public boolean next() throws JRException 
 	{
-		if (iterator.hasNext()) 
-		{
-			data = iterator.next();
-			return true;
-		}
-
-		return false;
+		return (--count>=0);
 	}
-
-	SummaryTeamData iterator;
-	Project project;
-	Object data;
+	
+	public String getData(String name)
+	{
+		if (name.equals(ProjectResource.TAG_NAME))
+			return (String)teamModel.getValueAt(count, 0);
+		return "";
+	}
+	
+	TeamModel teamModel;
+	int count;
 } 
