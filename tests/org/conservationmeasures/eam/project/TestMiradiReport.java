@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.project;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.martus.util.TestCaseEnhanced;
 
-public class MiardiReportTest  extends TestCaseEnhanced
+public class TestMiradiReport  extends TestCaseEnhanced
 {
-	public MiardiReportTest(String name)
+	public TestMiradiReport(String name)
 	{
 		super(name);
 	}
@@ -32,7 +32,7 @@ public class MiardiReportTest  extends TestCaseEnhanced
 	{
 		//TODO: harded paths are here during initl developement and will be replaced 
 		project.setMetadata(ProjectMetadata.TAG_PROJECT_NAME, "xxxxxxxxx");
-		new MiardiReport(project).getPDFReport(
+		new MiradiReport(project).getPDFReport(
 				"D:/Projects/workspace/miradi/source/JasperReports/MiradisReport.jasper", 
 				"C:/JasperReports/MardisReport.pdf");
 	}

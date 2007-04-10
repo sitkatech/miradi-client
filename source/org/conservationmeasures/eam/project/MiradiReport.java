@@ -15,9 +15,9 @@ import net.sf.jasperreports.engine.export.JRRtfExporter;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 
-public class MiardiReport
+public class MiradiReport
 {
-	public MiardiReport(Project projectToUse)
+	public MiradiReport(Project projectToUse)
 	{
 		project = projectToUse;
 	}
@@ -26,9 +26,7 @@ public class MiardiReport
 	{
 		try
 		{
-			HashMap parameters = new HashMap();
-			//parameters.put("MyDatasource", new MiradiDataSource());
-			JasperPrint print = JasperFillManager.fillReport(reportFile, parameters, new MiradiDataSource());
+			JasperPrint print = getJasperPrint(reportFile);
 			JasperExportManager.exportReportToPdfFile(print,fileOut);
 		}
 		catch (Exception e)
@@ -36,14 +34,13 @@ public class MiardiReport
 			EAM.logException(e);
 		}
 	}
-	
+
+
 	public void getRTFReport(String reportFile, String fileOut)
 	{
 		try
 		{
-			HashMap parameters = new HashMap();
-			//parameters.put("MyDatasource", new MiradiDataSource());
-			JasperPrint print = JasperFillManager.fillReport(reportFile ,parameters, new MiradiDataSource());
+			JasperPrint print = getJasperPrint(reportFile);
 			JRRtfExporter exporter = new JRRtfExporter();
 			exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
 			exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, fileOut);		    		   
@@ -54,6 +51,15 @@ public class MiardiReport
 			EAM.logException(e);
 		}
 	}
+	
+	private JasperPrint getJasperPrint(String reportFile) throws JRException
+	{
+		HashMap parameters = new HashMap();
+		//parameters.put("MyDatasource", new MiradiDataSource());
+		JasperPrint print = JasperFillManager.fillReport(reportFile, parameters, new MiradiDataSource());
+		return print;
+	}
+	
 	
 	public class MiradiDataSource implements JRDataSource
 	{
