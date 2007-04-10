@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.DiagramContentsObject;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -233,7 +233,7 @@ public class TestDataUpgrader extends EAMTestCase
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(object14File));
 		int id = json.getInt("Id");
 		assertEquals("wrong object id?", id, 14);
-		DiagramContentsObject diagramContents = new DiagramContentsObject(id, json);
+		DiagramObject diagramContents = new DiagramObject(id, json);
 		IdList allDiagramFactorIds = diagramContents.getAllDiagramFactorIds();
 		assertEquals("wrong id count?", 3, allDiagramFactorIds.size());
 		

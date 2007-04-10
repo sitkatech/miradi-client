@@ -13,25 +13,25 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class DiagramContentsObject extends BaseObject
+public class DiagramObject extends BaseObject
 {
-	public DiagramContentsObject(ObjectManager objectManager, BaseId idToUse)
+	public DiagramObject(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager,idToUse);
 	}
 	
-	public DiagramContentsObject(BaseId idToUse)
+	public DiagramObject(BaseId idToUse)
 	{
 		super(idToUse);
 	}
 	
-	public DiagramContentsObject(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
+	public DiagramObject(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new DiagramContentsId(idToUse), json);
 	}
 	
 	
-	public DiagramContentsObject(int idToUse, EnhancedJsonObject json) throws Exception
+	public DiagramObject(int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(new DiagramContentsId(idToUse), json);
 	}

@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.DiagramContentsObject;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.ObjectManager;
 
 public class DiagramContentsPool extends EAMNormalObjectPool
@@ -21,18 +21,18 @@ public class DiagramContentsPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.DIAGRAM_CONTENTS);
 	}
 	
-	public void put(DiagramContentsObject diagramContents)
+	public void put(DiagramObject diagramContents)
 	{
 		put(diagramContents.getId(), diagramContents);
 	}
 	
-	public DiagramContentsObject find(BaseId id)
+	public DiagramObject find(BaseId id)
 	{
-		return (DiagramContentsObject)getRawObject(id);
+		return (DiagramObject)getRawObject(id);
 	}
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new DiagramContentsObject(objectManager, new DiagramContentsId(actualId.asInt()));
+		return new DiagramObject(objectManager, new DiagramContentsId(actualId.asInt()));
 	}	
 }

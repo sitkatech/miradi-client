@@ -61,7 +61,7 @@ import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.DiagramContentsObject;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -225,7 +225,7 @@ public class Project
 		return diagramModel;
 	}
 
-	public DiagramContentsObject getDiagramContentsObject()
+	public DiagramObject getDiagramContentsObject()
 	{
 		return getDiagramModel().getDiagramContentsObject();
 	}
@@ -476,16 +476,16 @@ public class Project
 	{
 		DiagramContentsPool diagramContentsPool = (DiagramContentsPool) getPool(ObjectType.DIAGRAM_CONTENTS);
 		ORefList oRefs = diagramContentsPool.getORefList();
-		DiagramContentsObject diagramContentsObject = getDiagramContentsObject(oRefs);
+		DiagramObject diagramContentsObject = getDiagramContentsObject(oRefs);
 		getDiagramModel().fillFrom(diagramContentsObject);
 	}
 
-	private DiagramContentsObject getDiagramContentsObject(ORefList oRefs) throws Exception
+	private DiagramObject getDiagramContentsObject(ORefList oRefs) throws Exception
 	{
 		if (oRefs.size() == 0)
 		{
 			BaseId id = createObject(ObjectType.DIAGRAM_CONTENTS);
-			return (DiagramContentsObject) findObject(new ORef(ObjectType.DIAGRAM_CONTENTS, id));
+			return (DiagramObject) findObject(new ORef(ObjectType.DIAGRAM_CONTENTS, id));
 		}
 		if (oRefs.size() > 1)
 		{
@@ -493,7 +493,7 @@ public class Project
 		}
 
 		ORef oRef = oRefs.get(0);
-		return (DiagramContentsObject) findObject(oRef);
+		return (DiagramObject) findObject(oRef);
 	}
 
 	protected void finishOpening() throws Exception
