@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.CausePool;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
-import org.conservationmeasures.eam.objectpools.DiagramContentsPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
@@ -79,7 +78,6 @@ public class ObjectManager
 		addNormalPool(new FundingSourcePool(ida));
 		addNormalPool(new KeyEcologicalAttributePool(ida));
 		addNormalPool(new DiagramFactorPool(ida));
-		addNormalPool(new DiagramContentsPool(ida));
 		addNormalPool(new CausePool(ida));
 		addNormalPool(new StrategyPool(ida));
 		addNormalPool(new TargetPool(ida));
@@ -170,9 +168,9 @@ public class ObjectManager
 		return (DiagramFactorLinkPool) getPool(ObjectType.DIAGRAM_LINK);
 	}
 	
-	public DiagramContentsPool getDiagramContentsPool()
+	public ConceptualModelDiagramPool getConceptualModelDiagramPool()
 	{
-		return (DiagramContentsPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		return (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
@@ -180,20 +178,6 @@ public class ObjectManager
 		BaseId createdId = BaseId.INVALID;
 		switch(objectType)
 		{
-		//TODO remove commented code
-//			case ObjectType.FACTOR:
-//			{
-//				CreateFactorParameter parameter = (CreateFactorParameter)extraInfo;
-//				FactorType factorType = parameter.getNodeType();
-//				FactorId nodeId = new FactorId(getProject().obtainRealNodeId(objectId).asInt());
-//				Factor node = Factor.createFactor(this, nodeId, factorType);
-//				int nodeType = node.getType();
-//				EAMObjectPool pool = getPool(nodeType);
-//				pool.put(node.getId(), node);
-//				getDatabase().writeObject(node);
-//				createdId = node.getId();
-//				break;
-//			}
 			case ObjectType.FACTOR_LINK:
 			{
 				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
@@ -303,6 +287,7 @@ public class ObjectManager
 		loadPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 		loadPool(ObjectType.DIAGRAM_FACTOR);
 		loadPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		loadPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

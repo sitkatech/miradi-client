@@ -144,6 +144,9 @@ abstract public class BaseObject
 				
 			case ObjectType.CONCEPTUAL_MODEL_DIAGRAM:
 				return new ConceptualModelDiagram(objectManager, idAsInt, json);
+			
+			case ObjectType.RESULTS_CHAIN_DIAGRAM:
+				return new ResultsChainDiagram(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

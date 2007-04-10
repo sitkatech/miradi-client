@@ -46,7 +46,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.CausePool;
-import org.conservationmeasures.eam.objectpools.DiagramContentsPool;
+import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -474,7 +474,7 @@ public class Project
 	
 	public void loadDiagram() throws Exception
 	{
-		DiagramContentsPool diagramContentsPool = (DiagramContentsPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		ORefList oRefs = diagramContentsPool.getORefList();
 		ConceptualModelDiagram diagramContentsObject = getDiagramContentsObject(oRefs);
 		getDiagramModel().fillFrom(diagramContentsObject);

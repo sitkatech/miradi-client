@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.ResultsChainDiagram;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.project.ObjectManager;
 
 public class ConceptualModelDiagramPool extends EAMNormalObjectPool
@@ -21,18 +21,18 @@ public class ConceptualModelDiagramPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 	
-	public void put(ResultsChainDiagram resultsChainDiagram)
+	public void put(ConceptualModelDiagram conceptualModelDiagram)
 	{
-		put(resultsChainDiagram.getId(), resultsChainDiagram);
+		put(conceptualModelDiagram.getId(), conceptualModelDiagram);
 	}
 	
-	public ResultsChainDiagram find(BaseId id)
+	public ConceptualModelDiagramPool find(BaseId id)
 	{
-		return (ResultsChainDiagram)getRawObject(id);
+		return (ConceptualModelDiagramPool)getRawObject(id);
 	}
 	
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return new ResultsChainDiagram(objectManager ,new DiagramContentsId(actualId.asInt()));
+		return new ConceptualModelDiagram(objectManager ,new DiagramContentsId(actualId.asInt()));
 	}
 }

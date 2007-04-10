@@ -46,6 +46,7 @@ import org.conservationmeasures.eam.objects.TestAccountingCode;
 import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestAssignment;
 import org.conservationmeasures.eam.objects.TestCause;
+import org.conservationmeasures.eam.objects.TestConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
 import org.conservationmeasures.eam.objects.TestDiagramContentsObject;
 import org.conservationmeasures.eam.objects.TestDiagramFactorLink;
@@ -63,6 +64,7 @@ import org.conservationmeasures.eam.objects.TestObjective;
 import org.conservationmeasures.eam.objects.TestProjectMetadata;
 import org.conservationmeasures.eam.objects.TestProjectResource;
 import org.conservationmeasures.eam.objects.TestRatingCriterion;
+import org.conservationmeasures.eam.objects.TestResultsChainDiagram;
 import org.conservationmeasures.eam.objects.TestStrategy;
 import org.conservationmeasures.eam.objects.TestTask;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
@@ -199,6 +201,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDiagramContentsObject.class));
 		suite.addTest(new TestSuite(TestObjectCanReferAndCanOwnTypeMethods.class));
 		suite.addTest(new TestSuite(TestObjectFindOwnerAndFindReferrer.class));
+		suite.addTest(new TestSuite(TestConceptualModelDiagram.class));
+		suite.addTest(new TestSuite(TestResultsChainDiagram.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
