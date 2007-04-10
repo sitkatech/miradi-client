@@ -116,7 +116,7 @@ public class DataUpgrader extends ProjectServer
 		
 		File objects13Dir = new File(jsonDir, "objects-13");
 		if (! objects13Dir.exists())
-			throw new RuntimeException("objects-13 directory does not exist " + objects13Dir.getAbsolutePath());
+			return;
 
 		File manifest13File = new File(objects13Dir, "manifest");
 		if (! manifest13File.exists())
