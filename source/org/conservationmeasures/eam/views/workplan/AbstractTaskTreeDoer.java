@@ -53,6 +53,10 @@ public abstract class AbstractTaskTreeDoer extends ObjectsDoer
 		{
 			case ObjectType.TASK:
 				return Task.TAG_SUBTASK_IDS;
+				
+			// TODO: If we migrate all Task parents to have the 
+			// correct object type, we can remove the FACTOR case
+			case ObjectType.FACTOR:
 			case ObjectType.STRATEGY:
 				return Strategy.TAG_ACTIVITY_IDS;
 			case ObjectType.INDICATOR:
