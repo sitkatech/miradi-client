@@ -55,7 +55,7 @@ public class MiradiReport
 	private JasperPrint getJasperPrint(String reportFile) throws JRException
 	{
 		HashMap parameters = new HashMap();
-		//parameters.put("MyDatasource", new MiradiDataSource());
+		parameters.put("MyDatasource", new MiradiDataSource());
 		JasperPrint print = JasperFillManager.fillReport(reportFile, parameters, new MiradiDataSource());
 		return print;
 	}
@@ -106,6 +106,6 @@ public class MiradiReport
 		}
 	}
 	
-	static int count = 2;
+	int count = 2;
 	Project project;
 }
