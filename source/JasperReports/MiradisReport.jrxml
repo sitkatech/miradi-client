@@ -51,10 +51,31 @@
 		</title>
 		<pageHeader>
 			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="30"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="28"
-						y="10"
+						y="0"
+						width="248"
+						height="21"
+						key="ShortProjectScope"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortProjectScope}]]></textFieldExpression>
+				</textField>
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="100"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="28"
+						y="-70"
 						width="168"
 						height="25"
 						key="ProjectScope"/>
@@ -64,27 +85,16 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectScope}]]></textFieldExpression>
 				</textField>
-			</band>
-		</pageHeader>
-		<columnHeader>
-			<band height="30"  isSplitAllowed="true" >
-			</band>
-		</columnHeader>
-		<detail>
-			<band height="100"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<subreport  isUsingCache="true">
 					<reportElement
-						x="28"
-						y="-18"
-						width="248"
-						height="27"
-						key="ShortProjectScope"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortProjectScope}]]></textFieldExpression>
-				</textField>
+						x="49"
+						y="27"
+						width="402"
+						height="39"
+						key="subreport"/>
+					<dataSourceExpression><![CDATA[((MiradiDataSource)$P{REPORT_DATA_SOURCE}).getDataSource()]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA["D:/Projects/workspace/miradi/source/JasperReports/MiardisSubReport.jasper"]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
