@@ -11,28 +11,28 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.project.ObjectManager;
 
-public class DiagramContentsPool extends EAMNormalObjectPool
+public class ResultsChainDiagramPool extends EAMNormalObjectPool
 {
-	public DiagramContentsPool(IdAssigner idAssignerToUse)
+	public ResultsChainDiagramPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		super(idAssignerToUse, ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
-	public void put(ConceptualModelDiagram diagramContents)
+	public void put(ResultsChainDiagram resultsChainDiagram)
 	{
-		put(diagramContents.getId(), diagramContents);
+		put(resultsChainDiagram.getId(), resultsChainDiagram);
 	}
 	
-	public ConceptualModelDiagram find(BaseId id)
+	public ResultsChainDiagram find(BaseId id)
 	{
-		return (ConceptualModelDiagram)getRawObject(id);
+		return (ResultsChainDiagram)getRawObject(id);
 	}
-
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
+	
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return new ConceptualModelDiagram(objectManager, new DiagramContentsId(actualId.asInt()));
-	}	
+		return new ResultsChainDiagram(objectManager ,new DiagramContentsId(actualId.asInt()));
+	}
 }

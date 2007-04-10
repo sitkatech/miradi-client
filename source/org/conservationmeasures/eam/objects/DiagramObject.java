@@ -43,7 +43,7 @@ public class DiagramObject extends BaseObject
 
 	public static int getObjectType()
 	{
-		return ObjectType.DIAGRAM_CONTENTS;
+		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
 	}
 	
 	public IdList getAllDiagramFactorIds()

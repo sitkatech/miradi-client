@@ -168,7 +168,7 @@ public class ObjectManager
 	
 	public DiagramContentsPool getDiagramContentsPool()
 	{
-		return (DiagramContentsPool) getPool(ObjectType.DIAGRAM_CONTENTS);
+		return (DiagramContentsPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
@@ -298,7 +298,7 @@ public class ObjectManager
 		loadPool(ObjectType.FUNDING_SOURCE);
 		loadPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 		loadPool(ObjectType.DIAGRAM_FACTOR);
-		loadPool(ObjectType.DIAGRAM_CONTENTS);
+		loadPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

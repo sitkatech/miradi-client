@@ -206,8 +206,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		diagram.setModel(getProject().getDiagramModel());
 		diagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
 		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
-		updateToolBar();
-		getProject().addCommandExecutedListener(this);
 		
 		UiScrollPane diagramComponent = createDiagramPanel();
 		JSplitPane bottomHalf = new JSplitPane();

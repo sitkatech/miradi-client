@@ -38,7 +38,7 @@ import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -108,7 +108,7 @@ public class DiagramModel extends DefaultGraphModel
 				return;
 		
 		currentList.add(diagramFactor.getId());
-		diagramContents.setData(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, currentList.toJson().toString());
+		diagramContents.setData(ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS, currentList.toJson().toString());
 		getProject().getDatabase().writeObject(diagramContents);
 	}
 	
@@ -186,7 +186,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		IdList currentList = diagramContents.getAllDiagramFactorIds();
 		currentList.removeId(diagramFactorId);
-		diagramContents.setData(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, currentList.toJson().toString());
+		diagramContents.setData(ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS, currentList.toJson().toString());
 		
 		getProject().getDatabase().writeObject(diagramContents);
 	}
@@ -220,7 +220,7 @@ public class DiagramModel extends DefaultGraphModel
 				return;
 		
 		currentList.add(diagramFactorLinkId);
-		diagramContents.setData(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, currentList.toJson().toString());
+		diagramContents.setData(ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, currentList.toJson().toString());
 		getProject().getDatabase().writeObject(diagramContents);
 	}
 	
@@ -240,7 +240,7 @@ public class DiagramModel extends DefaultGraphModel
     {
     	IdList currentList = diagramContents.getAllDiagramFactorLinkIds();
 		currentList.removeId(diagramFactorLinkId);
-		diagramContents.setData(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, currentList.toJson().toString());
+		diagramContents.setData(ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, currentList.toJson().toString());
 		
 		getProject().getDatabase().writeObject(diagramContents);
     }
@@ -523,7 +523,7 @@ public class DiagramModel extends DefaultGraphModel
 	}
 	
 	//FIXME this method has to be finished and tested
-	public void fillFrom(DiagramObject diagramContentsToUse) throws Exception
+	public void fillFrom(ConceptualModelDiagram diagramContentsToUse) throws Exception
 	{
 		diagramContents = diagramContentsToUse;
 		addFactorsToModel(diagramContentsToUse.toJson());
@@ -621,7 +621,7 @@ public class DiagramModel extends DefaultGraphModel
 		return (FactorCell[])allTargets.toArray(new FactorCell[0]);
 	}
 	
-	public DiagramObject getDiagramContentsObject()
+	public ConceptualModelDiagram getDiagramContentsObject()
 	{
 		return diagramContents;
 	}
@@ -638,7 +638,7 @@ public class DiagramModel extends DefaultGraphModel
 	ProjectScopeBox projectScopeBox;
 	protected List diagramModelListenerList = new ArrayList();
 	
-	DiagramObject diagramContents;
+	ConceptualModelDiagram diagramContents;
 	
 	HashMap factorsToDiagramFactors;
 }

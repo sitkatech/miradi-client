@@ -142,8 +142,8 @@ abstract public class BaseObject
 			case ObjectType.DIAGRAM_FACTOR:
 				return new DiagramFactor(objectManager, idAsInt, json);
 				
-			case ObjectType.DIAGRAM_CONTENTS:
-				return new DiagramObject(objectManager, idAsInt, json);
+			case ObjectType.CONCEPTUAL_MODEL_DIAGRAM:
+				return new ConceptualModelDiagram(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
@@ -482,8 +482,8 @@ abstract public class BaseObject
 		if (DiagramFactor.canOwnThisType(type))
 			objectTypes[i++] = DiagramFactor.getObjectType();
 
-		if (DiagramObject.canOwnThisType(type))
-			objectTypes[i++] = DiagramObject.getObjectType();
+		if (ConceptualModelDiagram.canOwnThisType(type))
+			objectTypes[i++] = ConceptualModelDiagram.getObjectType();
 
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);
@@ -553,8 +553,8 @@ abstract public class BaseObject
 		if (DiagramFactor.canReferToThisType(type))
 			objectTypes[i++] = DiagramFactor.getObjectType();
 
-		if (DiagramObject.canReferToThisType(type))
-			objectTypes[i++] = DiagramObject.getObjectType();
+		if (ConceptualModelDiagram.canReferToThisType(type))
+			objectTypes[i++] = ConceptualModelDiagram.getObjectType();
 
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);

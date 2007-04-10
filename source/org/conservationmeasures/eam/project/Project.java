@@ -61,7 +61,7 @@ import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -225,7 +225,7 @@ public class Project
 		return diagramModel;
 	}
 
-	public DiagramObject getDiagramContentsObject()
+	public ConceptualModelDiagram getDiagramContentsObject()
 	{
 		return getDiagramModel().getDiagramContentsObject();
 	}
@@ -474,18 +474,18 @@ public class Project
 	
 	public void loadDiagram() throws Exception
 	{
-		DiagramContentsPool diagramContentsPool = (DiagramContentsPool) getPool(ObjectType.DIAGRAM_CONTENTS);
+		DiagramContentsPool diagramContentsPool = (DiagramContentsPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		ORefList oRefs = diagramContentsPool.getORefList();
-		DiagramObject diagramContentsObject = getDiagramContentsObject(oRefs);
+		ConceptualModelDiagram diagramContentsObject = getDiagramContentsObject(oRefs);
 		getDiagramModel().fillFrom(diagramContentsObject);
 	}
 
-	private DiagramObject getDiagramContentsObject(ORefList oRefs) throws Exception
+	private ConceptualModelDiagram getDiagramContentsObject(ORefList oRefs) throws Exception
 	{
 		if (oRefs.size() == 0)
 		{
-			BaseId id = createObject(ObjectType.DIAGRAM_CONTENTS);
-			return (DiagramObject) findObject(new ORef(ObjectType.DIAGRAM_CONTENTS, id));
+			BaseId id = createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+			return (ConceptualModelDiagram) findObject(new ORef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, id));
 		}
 		if (oRefs.size() > 1)
 		{
@@ -493,7 +493,7 @@ public class Project
 		}
 
 		ORef oRef = oRefs.get(0);
-		return (DiagramObject) findObject(oRef);
+		return (ConceptualModelDiagram) findObject(oRef);
 	}
 
 	protected void finishOpening() throws Exception

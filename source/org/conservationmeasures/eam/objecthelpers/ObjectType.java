@@ -25,10 +25,11 @@ public class ObjectType
 	public static final int FUNDING_SOURCE = 16;
 	public static final int KEY_ECOLOGICAL_ATTRIBUTE = 17;
 	public static final int DIAGRAM_FACTOR = 18;
-	public static final int DIAGRAM_CONTENTS = 19;
+	public static final int CONCEPTUAL_MODEL_DIAGRAM = 19;
 	public static final int CAUSE = 20;
 	public static final int STRATEGY = 21;
 	public static final int TARGET = 22;
 	public static final int INTERMEDIATE_RESULT = 23;
+	public static final int RESULTS_CHAIN_DIAGRAM = 24;
 }
 

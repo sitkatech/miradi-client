@@ -16,6 +16,6 @@ public class TestDiagramContentsObject extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(ObjectType.DIAGRAM_CONTENTS);
+		verifyFields(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 }
