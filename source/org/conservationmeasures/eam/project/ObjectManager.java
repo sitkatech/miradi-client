@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.CausePool;
+import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objectpools.DiagramContentsPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
@@ -39,6 +40,7 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
+import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
@@ -82,6 +84,8 @@ public class ObjectManager
 		addNormalPool(new StrategyPool(ida));
 		addNormalPool(new TargetPool(ida));
 		addNormalPool(new IntermediateResultPool(ida));
+		addNormalPool(new ResultsChainDiagramPool(ida));
+		addNormalPool(new ConceptualModelDiagramPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)

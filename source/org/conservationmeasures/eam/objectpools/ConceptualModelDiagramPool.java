@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.project.ObjectManager;
 
-public class ConceptualModelDiagram extends EAMNormalObjectPool
+public class ConceptualModelDiagramPool extends EAMNormalObjectPool
 {
-	public ConceptualModelDiagram(IdAssigner idAssignerToUse)
+	public ConceptualModelDiagramPool(IdAssigner idAssignerToUse)
 	{
 		super(idAssignerToUse, ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
