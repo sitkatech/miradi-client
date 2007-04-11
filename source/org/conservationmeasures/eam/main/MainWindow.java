@@ -82,6 +82,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		project = projectToUse;
 		setFocusCycleRoot(true);
 		wizardManager = new WizardManager();
+		actions = new Actions(this);
 	}
 	
 	public void start(String[] args) throws Exception
@@ -93,7 +94,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
 		setIconImage(new ResourceImageIcon("images/appIcon.png").getImage());
 		
-		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
 		toolBarBox = new ToolBarContainer();
 		mainStatusBar = new MainStatusBar();
