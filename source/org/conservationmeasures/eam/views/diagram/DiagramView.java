@@ -99,7 +99,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDiagramViewDoersToMap();
 		
-		legendDialog = new DiagramLegendPanel(getMainWindow());
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
@@ -211,6 +210,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		diagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
 		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
 		
+		DiagramLegendPanel legendDialog = new DiagramLegendPanel(getMainWindow());
 		UiScrollPane diagramComponent = createDiagramPanel();
 		JSplitPane bottomHalf = new JSplitPane();
 		bottomHalf.setRightComponent(diagramComponent);
@@ -512,7 +512,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	DiagramComponent diagram;
 	Properties propertiesDoer;
 	String mode;
-	DiagramLegendPanel legendDialog;
 	
 	ModelessDialogWithClose nodePropertiesDlg;
 	FactorPropertiesPanel nodePropertiesPanel;
