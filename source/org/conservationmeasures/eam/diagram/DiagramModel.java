@@ -63,6 +63,7 @@ public class DiagramModel extends DefaultGraphModel
 		clear();
 	}
 	
+	//FIXME should remove command listener here (after we're a commandListener)
 	public void dispose()
 	{
 	}
