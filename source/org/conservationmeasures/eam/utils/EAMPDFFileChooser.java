@@ -44,7 +44,7 @@ public class EAMPDFFileChooser extends EAMFileSaveChooser
 
 	public FileFilter getFileFilter()
 	{
-		return new RTFFileFilter();
+		return new PDFFileFilter();
 	}
 
 	public String getFileExtension()
