@@ -141,7 +141,8 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 				selectedFactorIds[i] = ((FactorCell)selectedFactors.get(i)).getDiagramFactorId();
 			}
 			
-			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(selectedFactorIds);
+			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
+			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIds);
 		}
 		catch (Exception e)
 		{

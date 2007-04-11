@@ -22,16 +22,16 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorMoveHandler
 {
-	public FactorMoveHandler(Project projectToUse)
+	public FactorMoveHandler(Project projectToUse, DiagramModel modelToUse)
 	{
 		project = projectToUse;
+		model = modelToUse;
 	}
 
 	public void factorsWereMovedOrResized(DiagramFactorId[] ids) throws CommandFailedException
 	{
 		try 
 		{
-			DiagramModel model = getProject().getDiagramModel();
 			model.factorsWereMoved(ids);
 
 			Vector commandsToExecute = new Vector();
@@ -97,4 +97,5 @@ public class FactorMoveHandler
 	}
 
 	Project project;
+	DiagramModel model;
 }

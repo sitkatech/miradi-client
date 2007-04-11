@@ -308,7 +308,7 @@ public class TestProject extends EAMTestCase
 		noNodesMoved[0] = node1.getDiagramFactorId();
 	
 		project.recordCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project).factorsWereMovedOrResized(noNodesMoved);
+		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(noNodesMoved);
 		project.recordCommand(new CommandEndTransaction());
 		
 		//begin transaction
@@ -341,7 +341,7 @@ public class TestProject extends EAMTestCase
 		
 		
 		project.recordCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project).factorsWereMovedOrResized(ids);
+		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(ids);
 		project.recordCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
@@ -385,7 +385,7 @@ public class TestProject extends EAMTestCase
 		ids[1] = node2.getDiagramFactorId();
 		
 		project.recordCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project).factorsWereMovedOrResized(ids);
+		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(ids);
 		project.recordCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
@@ -460,7 +460,7 @@ public class TestProject extends EAMTestCase
 		ids[3] = nodeNotMovedOrResized.getDiagramFactorId();
 
 		project.recordCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project).factorsWereMovedOrResized(ids);
+		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(ids);
 		project.recordCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction

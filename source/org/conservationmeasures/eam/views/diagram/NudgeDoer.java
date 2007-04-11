@@ -82,7 +82,8 @@ public class NudgeDoer extends LocationDoer
 		{
 			getProject().moveFactors(deltaX, deltaY, ids);
 			
-			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(ids);
+			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
+			factorMoveHandler.factorsWereMovedOrResized(ids);
 			new LinkBendPointsMoveHandler(getProject()).moveLinkBendPoints(links, deltaX, deltaY);
 		}
 		catch (Exception e)
