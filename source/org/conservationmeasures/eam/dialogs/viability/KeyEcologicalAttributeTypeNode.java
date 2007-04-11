@@ -47,6 +47,7 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 		return keaNodes.length;
 	}
 
+	// TODO: Is it ok to have multiple nodes in the tree with the same ref?
 	public ORef getObjectReference()
 	{
 		return target.getRef();
