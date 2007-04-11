@@ -38,9 +38,9 @@ import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
@@ -63,6 +63,10 @@ public class DiagramModel extends DefaultGraphModel
 		clear();
 	}
 	
+	public void dispose()
+	{
+	}
+	
 	public void clear()
 	{
 		while(getRootCount() > 0)
@@ -72,10 +76,9 @@ public class DiagramModel extends DefaultGraphModel
 		projectScopeBox = new ProjectScopeBox(this);
 		insertCellIntoGraph(projectScopeBox);
 		
-		diagramContents = null;
 		factorsToDiagramFactors = new HashMap();
 	}
-	
+
 	public ProjectScopeBox getProjectScopeBox()
 	{
 		return projectScopeBox;
@@ -526,8 +529,10 @@ public class DiagramModel extends DefaultGraphModel
 	public void fillFrom(DiagramObject diagramContentsToUse) throws Exception
 	{
 		diagramContents = diagramContentsToUse;
-		addFactorsToModel(diagramContentsToUse.toJson());
-		addLinksToModel(diagramContentsToUse.toJson());
+		
+		clear();
+		addFactorsToModel(diagramContents.toJson());
+		addLinksToModel(diagramContents.toJson());
 	}
 
 	private void addFactorsToModel(EnhancedJsonObject json) throws Exception
@@ -625,7 +630,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		return diagramContents;
 	}
-	
+		
 	private static final String TAG_TYPE = "Type";
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";

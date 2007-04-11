@@ -98,7 +98,7 @@ public class Project
 			removeCommandExecutedListener(diagramSaver);
 		
 		if(diagramModel != null)
-			removeCommandExecutedListener(diagramModel);
+			diagramModel.dispose();
 		
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
