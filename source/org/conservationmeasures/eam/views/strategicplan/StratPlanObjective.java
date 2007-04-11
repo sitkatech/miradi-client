@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -86,7 +87,9 @@ public class StratPlanObjective extends TreeTableNode
 
 	private boolean doesChainContainObjective(Factor chainMember, ObjectiveId objectiveId)
 	{
-		Factor[] chainNodes = project.getDiagramModel().getAllUpstreamDownstreamNodes(chainMember).toNodeArray();
+		ProjectChainObject chainObject = new ProjectChainObject();
+		chainObject.buildUpstreamDownstreamChain(chainMember);
+		Factor[] chainNodes = chainObject.getFactorsArray();
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			if(chainNodes[i].getObjectives().contains(objectiveId))
