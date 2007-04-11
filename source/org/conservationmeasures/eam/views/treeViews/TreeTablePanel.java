@@ -46,7 +46,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		addButtonsToBox(classes, buttonBox, mainWindow.getActions());
 
 		tree.getTree().addSelectionRow(0);
-		getProject().addCommandExecutedListener(this);
 		tree.getTree().addTreeSelectionListener(this);
 	}
 	
@@ -70,7 +69,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public void dispose()
 	{
-		getProject().removeCommandExecutedListener(this);
 		tree.dispose();
 		super.dispose();
 	}
