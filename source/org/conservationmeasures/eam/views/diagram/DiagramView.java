@@ -256,7 +256,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.becomeActive();
 
 		updateToolBar();
-		getProject().addCommandExecutedListener(this);
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 	}
 
@@ -268,7 +267,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		disposeOfNodePropertiesDialog();
 		diagram.clearSelection();
 
-		getProject().removeCommandExecutedListener(this);
 		getProject().setSelectionModel(null);
 		diagram = null;
 		updateToolBar();
