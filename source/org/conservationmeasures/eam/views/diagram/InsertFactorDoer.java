@@ -81,8 +81,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
 		DiagramFactorId id = (DiagramFactorId) factorCommandHelper.createFactorAndDiagramFactor(factorType).getCreatedId();
 		
-		FactorCell factorCell = getDiagramView().getDiagramModel().getFactorCellById(id);
-		DiagramFactor addedFactor = factorCell.getDiagramFactor();
+		DiagramFactor addedFactor = (DiagramFactor)getProject().findObject(DiagramFactor.getObjectType(), id);
 
 		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(addedFactor.getWrappedId(), getInitialText());
 		project.executeCommand(setNameCommand);
@@ -110,7 +109,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return createAt;
 		
 		if (factorType == ObjectType.TARGET)
-			return getTargetLocation(newFactor, getDiagramVisibleRect());
+			return getTargetLocation(getDiagramView().getDiagramModel(), newFactor, getDiagramVisibleRect());
 		
 		return getNonTargetDeltaPoint(selectedFactors, factorType, newFactor);
 	}
@@ -142,10 +141,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getTargetLocation(DiagramFactor addedNode, Rectangle visibleRectangle) throws Exception
+	public Point getTargetLocation(DiagramModel diagramModel, DiagramFactor addedNode, Rectangle visibleRectangle) throws Exception
 	{
 		Point deltaPoint = new Point();
-		DiagramModel diagramModel = getDiagramView().getDiagramModel();
 		FactorCell[] allTargets = diagramModel.getAllDiagramTargets();
 
 		if (allTargets.length == 1)

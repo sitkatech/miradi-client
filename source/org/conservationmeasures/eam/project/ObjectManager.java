@@ -11,7 +11,6 @@ import java.util.HashMap;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -326,12 +325,6 @@ public class ObjectManager
 		return getProject().getDatabase();
 	}
 
-	//FIXME: there shold be a better way to get to the Model then having to expose it here
-	public DiagramModel getDiagramModel()
-	{
-		return getProject().getDiagramModel();
-	}
-	
 	//FIXME: there shold be a better way to get to the chain manager then having to expose it here
 	public ChainManager getChainManager()
 	{

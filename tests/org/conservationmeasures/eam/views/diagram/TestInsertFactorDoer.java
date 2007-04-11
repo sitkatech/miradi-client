@@ -92,7 +92,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 
 		final Rectangle visibleRect = new Rectangle(0, 0, DIAGRAM_WIDTH, DIAGRAM_HEIGHT);
 		DiagramFactor diagramFactor = dNode1.getDiagramFactor();
-		Point newNodeLocation1 = inserter.getTargetLocation(diagramFactor, visibleRect);
+		Point newNodeLocation1 = inserter.getTargetLocation(project.getDiagramModel(), diagramFactor, visibleRect);
 		dNode1.setLocation(newNodeLocation1);
 		
 		int node1BoudsWidth = (int)dNode1.getBounds().getWidth();
@@ -106,7 +106,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		y = InsertFactorDoer.TARGET_TOP_LOCATION + (int)dNode1.getRectangle().getHeight() + InsertFactorDoer.TARGET_BETWEEN_SPACING;
 
 		Point secondPoint  = new Point(x, y);
-		Point newNodeLocation2 = inserter.getTargetLocation(dNode2.getDiagramFactor(), visibleRect);
+		Point newNodeLocation2 = inserter.getTargetLocation(project.getDiagramModel(), dNode2.getDiagramFactor(), visibleRect);
 		assertEquals("second target location wrong?", secondPoint, newNodeLocation2);
 	}
 	
