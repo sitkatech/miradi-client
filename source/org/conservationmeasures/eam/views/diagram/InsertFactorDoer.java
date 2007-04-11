@@ -104,7 +104,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return factorId;
 	}
 	
-	private Point getDeltaPoint(Point createAt, FactorCell[] selectedFactors, int factorType, DiagramFactor newFactor)
+	private Point getDeltaPoint(Point createAt, FactorCell[] selectedFactors, int factorType, DiagramFactor newFactor) throws Exception
 	{
 		if (createAt != null)
 			return createAt;
@@ -142,7 +142,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getTargetLocation(DiagramFactor addedNode, Rectangle visibleRectangle)
+	public Point getTargetLocation(DiagramFactor addedNode, Rectangle visibleRectangle) throws Exception
 	{
 		Point deltaPoint = new Point();
 		DiagramModel diagramModel = getDiagramView().getDiagramModel();
@@ -203,11 +203,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 	void doExtraSetup(FactorId id) throws CommandFailedException
 	{
 
-	}
-
-	public DiagramView getDiagramView()
-	{
-		return (DiagramView)getView();
 	}
 	
 	public static final int TARGET_TOP_LOCATION = 150;
