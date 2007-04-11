@@ -235,6 +235,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			addTab("Results Chain "+i, splitPane);
 		}
 	}
+	
+	//FIXME should return the model of the currently selected tab
+	public DiagramModel getDiagramModel()
+	{
+		return diagram.getDiagramModel();
+	}
 
 	public WizardPanel createWizardPanel() throws Exception
 	{

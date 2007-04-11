@@ -66,7 +66,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	void launchPropertiesEditor(FactorId id) throws Exception, CommandFailedException
 	{
-		FactorCell newFactor = getProject().getDiagramModel().getFactorCellByWrappedId(id);
+		FactorCell newFactor = getDiagramView().getDiagramModel().getFactorCellByWrappedId(id);
 		getDiagramView().getPropertiesDoer().doFactorProperties(newFactor, null);
 	}
 
@@ -81,7 +81,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
 		DiagramFactorId id = (DiagramFactorId) factorCommandHelper.createFactorAndDiagramFactor(factorType).getCreatedId();
 		
-		FactorCell factorCell = project.getDiagramModel().getFactorCellById(id);
+		FactorCell factorCell = getDiagramView().getDiagramModel().getFactorCellById(id);
 		DiagramFactor addedFactor = factorCell.getDiagramFactor();
 
 		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(addedFactor.getWrappedId(), getInitialText());
@@ -145,7 +145,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	public Point getTargetLocation(DiagramFactor addedNode, Rectangle visibleRectangle)
 	{
 		Point deltaPoint = new Point();
-		DiagramModel diagramModel = getProject().getDiagramModel();
+		DiagramModel diagramModel = getDiagramView().getDiagramModel();
 		FactorCell[] allTargets = diagramModel.getAllDiagramTargets();
 
 		if (allTargets.length == 1)

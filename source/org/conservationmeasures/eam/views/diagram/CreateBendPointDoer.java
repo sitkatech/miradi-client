@@ -57,7 +57,8 @@ public class CreateBendPointDoer extends LocationDoer
 		
 		try
 		{
-			diagramModel = getProject().getDiagramModel();
+			DiagramView view = (DiagramView) getView();
+			diagramModel = view.getDiagramModel();
 			diagram = getMainWindow().getDiagramComponent();
 			cache = diagram.getGraphLayoutCache();
 			
