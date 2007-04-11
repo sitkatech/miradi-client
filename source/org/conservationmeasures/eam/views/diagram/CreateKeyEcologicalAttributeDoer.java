@@ -25,6 +25,8 @@ public class CreateKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 		return false;
 	}
 	
+	// FIXME: Should not trust that the selected object is a target or KEA
+	// (should test for those specifically)
 	public Factor getSelectedFactor()
 	{
 		BaseObject selected = getView().getSelectedObject();
