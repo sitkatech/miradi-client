@@ -15,7 +15,6 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -76,9 +75,7 @@ public class ThreatRatingBundlePanel extends JPanel
 	
 	private String getNodeName(FactorId nodeId) throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
-		return model.getFactorCellByWrappedId(nodeId).getLabel();
-
+		return project.findNode(nodeId).getLabel();
 	}
 	
 	private JPanel createHeader() throws Exception
