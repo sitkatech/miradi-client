@@ -225,6 +225,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
 		for (int i = 0; i < resultsChains.size(); i++)
 		{
+			ResultsChainDiagramLegendPanel resultsChainLegend = new ResultsChainDiagramLegendPanel(getMainWindow());
 			DiagramModel diagramModel = new DiagramModel(getProject());
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChains.get(i)));
 			diagramModel.fillFrom(resultsChain);
@@ -237,8 +238,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			
 			JSplitPane bottomHalf = new JSplitPane();
 			bottomHalf.setRightComponent(resultsChaindiagram);
-			bottomHalf.setLeftComponent(legendDialog);
-			bottomHalf.setDividerLocation(legendDialog.getPreferredSize().width);
+			bottomHalf.setLeftComponent(resultsChainLegend );
+			bottomHalf.setDividerLocation(resultsChainLegend.getPreferredSize().width);
 
 			//TODO fix tab name
 			addTab("Results Chain "+i, bottomHalf);

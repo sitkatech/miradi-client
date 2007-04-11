@@ -72,7 +72,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		setMinimumSize(new Dimension(0,0));
 	}
 	
-	private JPanel createLegendButtonPanel(Actions actions)
+	protected JPanel createLegendButtonPanel(Actions actions)
 	{
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
 		
@@ -93,7 +93,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		return jpanel;
 	}
 	
-	private void addTargetLinkLine(JPanel panel, String text)
+	protected void addTargetLinkLine(JPanel panel, String text)
 	{
 		panel.add(new JLabel(""));
 		panel.add(new UiLabel(EAM.text(text)));
@@ -101,7 +101,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		panel.add(targetLinkCheckBox);
 	}
 	
-	private void addButtonLineWithCheckBox(JPanel jpanel, String text, EAMAction action)
+	protected void addButtonLineWithCheckBox(JPanel jpanel, String text, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
 		jpanel.add(button);
@@ -109,13 +109,13 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		jpanel.add(createCheckBox(text));
 	}
 	
-	private void addIconLineWithCheckBox(JPanel jpanel, String text, Icon icon)
+	protected void addIconLineWithCheckBox(JPanel jpanel, String text, Icon icon)
 	{
 		addIconLine(jpanel, text, icon, createCheckBox(text));
 	}
 
 
-	private void addIconLineWithoutCheckBox(JPanel jpanel, String text, Icon icon)
+	protected void addIconLineWithoutCheckBox(JPanel jpanel, String text, Icon icon)
 	{
 		addIconLine(jpanel, text, icon, new UiLabel(""));
 	}
