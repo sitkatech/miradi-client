@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.DiagramChainObject;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
@@ -22,6 +21,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class Factor extends BaseObject
@@ -288,8 +288,8 @@ abstract public class Factor extends BaseObject
 	
 	private String getFactorRelatedDirectThreats()
 	{
-		DiagramChainObject chain = new DiagramChainObject();
-		chain.buildNormalChain(objectManager.getDiagramModel(), this);
+		ProjectChainObject chain = new ProjectChainObject();
+		chain.buildNormalChain(this);
 		DirectThreatSet directThreats = new DirectThreatSet(chain.getFactors());
 		
 		return getLabelsAsMultiline(directThreats);
@@ -297,8 +297,8 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedTargets()
 	{
-		DiagramChainObject chain = new DiagramChainObject();
-		chain.buildNormalChain(objectManager.getDiagramModel(), this);
+		ProjectChainObject chain = new ProjectChainObject();
+		chain.buildNormalChain(this);
 		TargetSet directThreats = new TargetSet(chain.getFactors());
 		
 		return getLabelsAsMultiline(directThreats);
@@ -316,8 +316,8 @@ abstract public class Factor extends BaseObject
 	
 	private String getFactorDesires(int desireType, String desireIdsTag)
 	{
-		DiagramChainObject chain = new DiagramChainObject();
-		chain.buildDownstreamChain(objectManager.getDiagramModel(), this);
+		ProjectChainObject chain = new ProjectChainObject();
+		chain.buildDownstreamChain(this);
 		
 		IdList allDesireIds = new IdList();
 		Factor[] factors = chain.getFactorsArray();
