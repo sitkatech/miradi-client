@@ -26,12 +26,15 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.Delete;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
@@ -177,11 +180,10 @@ public class ThreatMatrixTable extends JTable
 			col = colToUse;
 		}
 		
-		public void actionPerformed(ActionEvent e)
+		public void actionPerformed(ActionEvent event)
 		{
 			ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
 			Project project = model.getProject();
-			DiagramModel diagramModel = project.getDiagramModel();
 			FactorId threatId = model.getThreatId(row); 
 			FactorId targetId = model.getTargetId(col);
 			FactorLinkId modelLinkageId = project.getFactorLinkPool().getLinkedId(threatId, targetId);
@@ -197,17 +199,44 @@ public class ThreatMatrixTable extends JTable
 			
 			try
 			{
-				DiagramFactorLink linkageToDelete = diagramModel.getDiagramFactorLinkbyWrappedId(modelLinkageId);
-				project.executeCommand(new CommandBeginTransaction());
-				Delete.deleteFactorLink(project, linkageToDelete);
-				project.executeCommand(new CommandEndTransaction());
+				doDelete(project, modelLinkageId);
 			}
-			catch (Exception ex)
+			catch(CommandFailedException e)
 			{
-				ex.printStackTrace();
+				EAM.logException(e);
+			}
+
+		}
+
+		private void doDelete(Project project, FactorLinkId modelLinkageId) throws CommandFailedException
+		{
+			project.executeCommand(new CommandBeginTransaction());
+			try
+			{
+				FactorLink link = (FactorLink)project.findObject(FactorLink.getObjectType(), modelLinkageId);
+				ORefList referrers = link.findObjectThatReferToUs();
+				for(int i = 0; i < referrers.size(); ++i)
+				{
+					ORef diagramFactorLinkRef = referrers.get(i);
+					if(diagramFactorLinkRef.getObjectType() != DiagramFactorLink.getObjectType())
+					{
+						EAM.logWarning("ThreatMatrixTable.doDelete ignoring reference to deleted link: " + diagramFactorLinkRef);
+						continue;
+					}
+
+					// FIXME: With Results Chains, this should only delete the DiagramFactorLink here,
+					// and then should delete the FactorLink itself below this loop
+					DiagramFactorLink linkageToDelete = (DiagramFactorLink)project.findObject(diagramFactorLinkRef);
+					Delete.deleteFactorLink(project, linkageToDelete);
+				}
+			}
+			finally
+			{
+				project.executeCommand(new CommandEndTransaction());
 			}
 		}
 		
+	
 		int row;
 		int col;
 	}
