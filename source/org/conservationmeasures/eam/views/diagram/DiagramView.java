@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
+import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
@@ -200,6 +201,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeIndicator.class, new DeleteKeyEcologicalAttributeIndicatorDoer());
 		addDoerToMap(ActionCreateResultsChain.class, new CreateResultsChainDoer());
 		addDoerToMap(ActionShowResultsChain.class, new ShowResultsChainDoer());
+		addDoerToMap(ActionDeleteResultsChain.class, new DeleteResultsChainDoer());
 	}
 	
 	public void createTabs() throws Exception
