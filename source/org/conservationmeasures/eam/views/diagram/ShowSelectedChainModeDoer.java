@@ -95,7 +95,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	private FactorCell[] getOrphanedDraftStrategies(Project project, DiagramView view, DiagramComponent diagram)
 	{
 		Vector diagramFactors = new Vector();
-		DiagramModel model = project.getDiagramModel();
+		DiagramModel model = view.getDiagramModel();
 		Factor[] factors = project.getStrategyPool().getDraftStrategies();
 		for (int i=0; i<factors.length; ++i)
 		{

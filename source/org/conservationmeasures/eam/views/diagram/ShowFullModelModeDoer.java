@@ -77,7 +77,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 	{
 		DiagramComponent diagramComponent  = ((DiagramView)getView()).getDiagramComponent();
 		GraphLayoutCache glc  = diagramComponent.getGraphLayoutCache();
-		DiagramModel diagramModel = getProject().getDiagramModel();
+		DiagramModel diagramModel = getDiagramView().getDiagramModel();
 		
 		for(int i = 0; i < factorORefs.size(); ++i)
 		{

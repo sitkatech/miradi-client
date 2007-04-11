@@ -11,11 +11,11 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 import org.martus.swing.PrintPage;
 import org.martus.swing.PrintPageFormat;
 
-abstract public class PrintDoer extends MainWindowDoer
+abstract public class PrintDoer extends ViewDoer
 {
 	public void doIt() throws CommandFailedException 
 	{

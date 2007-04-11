@@ -15,6 +15,6 @@ public class Print extends PrintDoer
 		Project project = getMainWindow().getProject();
 		if(!project.isOpen())
 			return false;
-		return project.getDiagramModel().getFactorCount() > 0;
+		return getDiagramView().getDiagramModel().getFactorCount() > 0;
 	}
 }

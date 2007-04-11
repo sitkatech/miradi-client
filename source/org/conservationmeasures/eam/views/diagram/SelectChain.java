@@ -62,7 +62,7 @@ public class SelectChain extends ViewDoer
 		for(int i = 0; i < selectedFactors.length; ++i)
 		{
 			FactorCell selectedFactor = selectedFactors[i];
-			DiagramModel model = project.getDiagramModel();
+			DiagramModel model = diagram.getDiagramModel();
 			DiagramChainObject chainObject = new DiagramChainObject();
 			chainObject.buildNormalChain(model, selectedFactor.getUnderlyingObject());
 			Factor[] chainNodes = chainObject.getFactors().toNodeArray();
@@ -78,7 +78,7 @@ public class SelectChain extends ViewDoer
 		for(int i = 0; i < onlySelectedLinkages.length; ++i)
 		{
 			DiagramFactorLink selectedLinkage = onlySelectedLinkages[i];
-			DiagramModel diagramModel = project.getDiagramModel();
+			DiagramModel diagramModel = diagram.getDiagramModel();
 			LinkCell cell = diagramModel.findLinkCell(selectedLinkage);
 			
 			DiagramChainObject upstreamChain = new DiagramChainObject();
