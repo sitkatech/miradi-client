@@ -48,7 +48,7 @@ public class TestDiagramComponent extends EAMTestCase
 	private FactorCell createNode(int nodeType) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		FactorCommandHelper commandHelper = new FactorCommandHelper(project);
+		FactorCommandHelper commandHelper = new FactorCommandHelper(project, project.getDiagramModel());
 		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createCommand.getCreatedId();
 		FactorCell factorCell = model.getFactorCellById(diagramFactorId);

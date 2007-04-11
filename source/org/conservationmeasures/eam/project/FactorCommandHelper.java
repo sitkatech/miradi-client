@@ -34,9 +34,10 @@ import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class FactorCommandHelper
 {
-	public FactorCommandHelper(Project projectToUse)
+	public FactorCommandHelper(Project projectToUse, DiagramModel modelToUse)
 	{
 		project = projectToUse;
+		model = modelToUse;
 	}
 
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
@@ -181,8 +182,9 @@ public class FactorCommandHelper
 	
 	private DiagramModel getDiagramModel()
 	{
-		return getProject().getDiagramModel();
+		return model;
 	}
 
 	Project project;
+	DiagramModel model;
 }

@@ -63,7 +63,7 @@ public class TestTransferableEamList extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		
 		Point node1Location = new Point(1,2);
-		FactorCommandHelper commandHelper = new FactorCommandHelper(project);
+		FactorCommandHelper commandHelper = new FactorCommandHelper(project, model);
 		CommandCreateObject createCommand1 = commandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId1 = (DiagramFactorId) createCommand1.getCreatedId();
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId1);

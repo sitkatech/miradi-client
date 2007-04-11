@@ -276,7 +276,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinksSize(diagramFactorId1));
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project, project.getDiagramModel()).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(4, model.getAllDiagramFactorLinks().size());
@@ -287,7 +287,7 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.removeDiagramFactor(diagramFactorId1);
-		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project, project.getDiagramModel()).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());
 	}
@@ -507,7 +507,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinks(node2).size());
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new FactorCommandHelper(project).pasteFactorsOnlyIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project, project.getDiagramModel()).pasteFactorsOnlyIntoProject(transferableList, new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(2, model.getAllDiagramFactorLinks().size());
@@ -533,7 +533,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("nodes  still in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		Point pastePoint = new Point(5,5);
-		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project);
+		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, project.getDiagramModel());
 		factorCommandHelper.pasteFactorsAndLinksIntoProject(transferableList, pastePoint);
 		DiagramFactor diagramFactors[] = project.getAllDiagramFactors();
 		assertEquals(1, diagramFactors.length);
@@ -862,7 +862,7 @@ public class TestProject extends EAMTestCase
 
 	public DiagramFactor createNodeAndAddToDiagram(Project projectToUse, int nodeType) throws Exception
 	{
-		FactorCommandHelper commandHelper = new FactorCommandHelper(projectToUse);
+		FactorCommandHelper commandHelper = new FactorCommandHelper(projectToUse, projectToUse.getDiagramModel());
 		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createCommand.getCreatedId();
 		DiagramFactor diagramFactor = (DiagramFactor) projectToUse.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);

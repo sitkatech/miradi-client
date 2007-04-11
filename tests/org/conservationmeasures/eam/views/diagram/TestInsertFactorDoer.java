@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -175,6 +176,8 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 			actions = new Actions(this);
 			diagramComponent = new DiagramComponent(this);
 			diagramComponent.setBounds(new Rectangle(0, 0, DIAGRAM_WIDTH, DIAGRAM_HEIGHT));
+			DiagramModel model = new DiagramModel(projectToUse);
+			diagramComponent.setModel(model);
 		}
 
 		public DiagramComponent getDiagramComponent()
