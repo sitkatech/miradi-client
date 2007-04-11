@@ -11,7 +11,6 @@ import java.awt.image.BufferedImage;
 import java.util.Iterator;
 
 import javax.swing.JComponent;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
@@ -86,7 +85,6 @@ import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.martus.swing.UiScrollPane;
 import org.martus.swing.Utilities;
 
 
@@ -209,16 +207,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		diagram.setModel(getProject().getDiagramModel());
 		diagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
 		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
-		
-		DiagramLegendPanel legendDialog = new DiagramLegendPanel(getMainWindow());
-		UiScrollPane diagramComponent = createDiagramPanel();
-		JSplitPane bottomHalf = new JSplitPane();
-		bottomHalf.setRightComponent(diagramComponent);
-		bottomHalf.setLeftComponent(legendDialog);
-		bottomHalf.setDividerLocation(legendDialog.getPreferredSize().width);
+		ConceptualModelDiagramSplitPane splitPane = new ConceptualModelDiagramSplitPane(getMainWindow(), diagram);
 
 		//TODO fix tab name
-		addTab("Main Diagram", bottomHalf);
+		addTab("Main Diagram", splitPane);
 		addResultsChainTabs();
 	}
 
@@ -227,7 +219,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
 		for (int i = 0; i < resultsChains.size(); i++)
 		{
-			ResultsChainDiagramLegendPanel resultsChainLegend = new ResultsChainDiagramLegendPanel(getMainWindow());
 			DiagramModel diagramModel = new DiagramModel(getProject());
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChains.get(i)));
 			diagramModel.fillFrom(resultsChain);
@@ -238,13 +229,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
 			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
 			
-			JSplitPane bottomHalf = new JSplitPane();
-			bottomHalf.setRightComponent(resultsChaindiagram);
-			bottomHalf.setLeftComponent(resultsChainLegend );
-			bottomHalf.setDividerLocation(resultsChainLegend.getPreferredSize().width);
+			ResultsChainDiagramSplitPane splitPane = new ResultsChainDiagramSplitPane(getMainWindow(), resultsChaindiagram);
 
 			//TODO fix tab name
-			addTab("Results Chain "+i, bottomHalf);
+			addTab("Results Chain "+i, splitPane);
 		}
 	}
 
@@ -264,16 +252,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		updateToolBar();
 		getProject().addCommandExecutedListener(this);
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
-	}
-	
-	private UiScrollPane createDiagramPanel()
-	{
-		UiScrollPane uiScrollPane = new UiScrollPane(diagram);
-		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(getProject().getGridSize());
-		uiScrollPane.getVerticalScrollBar().setUnitIncrement(getProject().getGridSize());
-		return uiScrollPane;
 	}
 
 	public void becomeInactive() throws Exception
