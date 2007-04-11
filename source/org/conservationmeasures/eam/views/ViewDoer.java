@@ -22,7 +22,7 @@ abstract public class ViewDoer extends MainWindowDoer
 	
 	public DiagramView getDiagramView() throws Exception
 	{
-		if (view.getName().equals(DiagramView.getViewName()))
+		if (view.cardName().equals(DiagramView.getViewName()))
 			return (DiagramView)getView();
 		
 		throw new Exception("Not in DiagramView");
