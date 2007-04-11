@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class InsertFactorLinkDoer extends ProjectDoer
@@ -83,7 +84,9 @@ public class InsertFactorLinkDoer extends ProjectDoer
 	boolean wouldCreateLinkageLoop(DiagramModel dModel, FactorId fromId, FactorId toId)
     {
 		Factor fromFactor = dModel.getProject().findNode(fromId);
-		Factor[] upstreamFactors = dModel.getAllUpstreamNodes(fromFactor).toNodeArray();
+		ProjectChainObject chainObject = new ProjectChainObject();
+		chainObject.buildUpstreamChain(fromFactor);
+		Factor[] upstreamFactors = chainObject.getFactorsArray();
 		
 		for (int i  = 0; i < upstreamFactors.length; i++)
 			if (upstreamFactors[i].getId().equals(toId))

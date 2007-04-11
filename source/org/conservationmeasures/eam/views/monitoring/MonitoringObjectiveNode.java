@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -44,7 +45,9 @@ public class MonitoringObjectiveNode extends MonitoringNode
 	{
 		HashSet indicatorIds = getFactorIndicatorIds(factor);
 		
-		FactorSet chain = project.getDiagramModel().getAllUpstreamNodes(factor);
+		ProjectChainObject chainObject = new ProjectChainObject();
+		chainObject.buildUpstreamChain(factor);
+		FactorSet chain = chainObject.getFactors();
 		Iterator chainNodesIterator = chain.iterator();
 		while(chainNodesIterator.hasNext())
 		{
