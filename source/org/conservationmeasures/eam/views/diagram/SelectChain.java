@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.ChainObject;
+import org.conservationmeasures.eam.diagram.DiagramChainObject;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -63,7 +63,7 @@ public class SelectChain extends ViewDoer
 		{
 			FactorCell selectedFactor = selectedFactors[i];
 			DiagramModel model = project.getDiagramModel();
-			ChainObject chainObject = new ChainObject();
+			DiagramChainObject chainObject = new DiagramChainObject();
 			chainObject.buildNormalChain(model, selectedFactor.getUnderlyingObject());
 			Factor[] chainNodes = chainObject.getFactors().toNodeArray();
 		
@@ -81,11 +81,11 @@ public class SelectChain extends ViewDoer
 			DiagramModel diagramModel = project.getDiagramModel();
 			LinkCell cell = diagramModel.findLinkCell(selectedLinkage);
 			
-			ChainObject upstreamChain = new ChainObject();
+			DiagramChainObject upstreamChain = new DiagramChainObject();
 			Factor from = project.findNode(cell.getFrom().getWrappedId());
 			upstreamChain.buildUpstreamChain(diagramModel, from);
 			
-			ChainObject downstreamChain = new ChainObject();
+			DiagramChainObject downstreamChain = new DiagramChainObject();
 			Factor to = project.findNode(cell.getTo().getWrappedId());
 			downstreamChain.buildDownstreamChain(diagramModel, to);
 			

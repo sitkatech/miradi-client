@@ -271,35 +271,35 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public FactorSet getDirectThreatChainNodes(Factor directThreat)
 	{
-		ChainObject chainObject = new ChainObject();
+		DiagramChainObject chainObject = new DiagramChainObject();
 		chainObject.buildDirectThreatChain(this, directThreat);
 		return chainObject.getFactors();
 	}
 	
 	public FactorSet getNodesInChain(Factor startingFactor)
 	{
-		ChainObject chainObject = new ChainObject();
+		DiagramChainObject chainObject = new DiagramChainObject();
 		chainObject.buildNormalChain(this, startingFactor);
 		return chainObject.getFactors();
 	}
 		
 	public FactorSet getAllUpstreamDownstreamNodes(Factor startingFactor)
 	{
-		ChainObject chainObject = new ChainObject();
+		DiagramChainObject chainObject = new DiagramChainObject();
 		chainObject.buildUpstreamDownstreamChain(this, startingFactor);
 		return chainObject.getFactors();
 	}
 
 	public FactorSet getAllUpstreamNodes(Factor startingFactor)
 	{
-		ChainObject chainObject = new ChainObject();
+		DiagramChainObject chainObject = new DiagramChainObject();
 		chainObject.buildUpstreamChain(this, startingFactor);
 		return chainObject.getFactors();
 	}
 
 	public FactorSet getDirectlyLinkedUpstreamNodes(Factor startingFactor)
 	{
-		ChainObject chainObject = new ChainObject();
+		DiagramChainObject chainObject = new DiagramChainObject();
 		chainObject.buildDirectlyLinkedUpstreamChain(this, startingFactor);
 		return chainObject.getFactors();
 	}

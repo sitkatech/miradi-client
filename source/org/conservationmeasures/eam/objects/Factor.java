@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.ChainObject;
+import org.conservationmeasures.eam.diagram.DiagramChainObject;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
@@ -288,7 +288,7 @@ abstract public class Factor extends BaseObject
 	
 	private String getFactorRelatedDirectThreats()
 	{
-		ChainObject chain = new ChainObject();
+		DiagramChainObject chain = new DiagramChainObject();
 		chain.buildNormalChain(objectManager.getDiagramModel(), this);
 		DirectThreatSet directThreats = new DirectThreatSet(chain.getFactors());
 		
@@ -297,7 +297,7 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedTargets()
 	{
-		ChainObject chain = new ChainObject();
+		DiagramChainObject chain = new DiagramChainObject();
 		chain.buildNormalChain(objectManager.getDiagramModel(), this);
 		TargetSet directThreats = new TargetSet(chain.getFactors());
 		
@@ -316,7 +316,7 @@ abstract public class Factor extends BaseObject
 	
 	private String getFactorDesires(int desireType, String desireIdsTag)
 	{
-		ChainObject chain = new ChainObject();
+		DiagramChainObject chain = new DiagramChainObject();
 		chain.buildDownstreamChain(objectManager.getDiagramModel(), this);
 		
 		IdList allDesireIds = new IdList();

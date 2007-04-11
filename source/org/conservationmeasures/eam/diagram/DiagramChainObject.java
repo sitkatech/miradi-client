@@ -14,7 +14,9 @@ import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 
-public class ChainObject
+// TODO: Hopefully this can be eliminated when everyone 
+// is using ProjectChainObject instead
+public class DiagramChainObject
 {
 	public FactorSet getFactors()
 	{
