@@ -20,12 +20,12 @@ abstract public class ViewDoer extends MainWindowDoer
 		return view;
 	}
 	
-	public DiagramView getDiagramView() throws Exception
+	public DiagramView getDiagramView() throws RuntimeException
 	{
 		if (view.cardName().equals(DiagramView.getViewName()))
 			return (DiagramView)getView();
 		
-		throw new Exception("Not in DiagramView");
+		throw new RuntimeException("Not in DiagramView");
 	}
 
 	private UmbrellaView view;
