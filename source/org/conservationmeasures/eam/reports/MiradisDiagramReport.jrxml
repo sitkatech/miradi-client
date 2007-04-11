@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="MiradisReport"
+		 name="MiradisDiagramReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -24,12 +24,14 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
+	<field name="DiagramImage" class="java.lang.String"/>
+
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</background>
 		<title>
-			<band height="50"  isSplitAllowed="true" >
+			<band height="68"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -42,26 +44,17 @@
 		</columnHeader>
 		<detail>
 			<band height="100"  isSplitAllowed="true" >
-				<subreport  isUsingCache="true">
+				<image  evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="45"
-						y="11"
-						width="402"
-						height="26"
-						key="subreport"/>
-					<dataSourceExpression><![CDATA[((MiradiDataSource)$P{REPORT_DATA_SOURCE}).getSummaryGeneranlDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisSummaryGeneralReport.jasper")]]></subreportExpression>
-				</subreport>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="45"
-						y="50"
-						width="403"
-						height="26"
-						key="subreport-1"/>
-					<dataSourceExpression><![CDATA[((MiradiDataSource)$P{REPORT_DATA_SOURCE}).getDiagramDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisDiagramReport.jasper")]]></subreportExpression>
-				</subreport>
+						x="60"
+						y="8"
+						width="204"
+						height="84"
+						key="Image"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.awt.Image"><![CDATA[(java.awt.Image)((DiagramDataSource)$P{REPORT_DATA_SOURCE}).getDiagramImage()]]></imageExpression>
+				</image>
 			</band>
 		</detail>
 		<columnFooter>

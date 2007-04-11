@@ -21,6 +21,12 @@ public class MiradiDataSource extends JREmptyDataSource
 	{
 		return new SummaryGeneralDataSource(project);
 	}
+	
+	public JRDataSource getDiagramDataSource()
+	{
+		return new DiagramDataSource(project);
+	}
 
+	
 	Project project;
 } 

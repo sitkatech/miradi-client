@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.reports;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
@@ -49,7 +50,7 @@ public class TestMiradiReport  extends TestCaseEnhanced
 		
 		//TODO: harded paths are here during initl developement and will be replaced 
 		new MiradiReport(project).getPDFReport(
-				"D:/Projects/workspace/miradi/source/JasperReports/MiradisReport.jasper", 
+				EAM.getResourcePath(MiradiReport.class, "MiradisReport.jasper"),
 				"C:/JasperReports/MardisReport.pdf");
 	}
 
