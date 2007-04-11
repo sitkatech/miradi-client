@@ -267,6 +267,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		disposeOfNodePropertiesDialog();
 		diagram.clearSelection();
 
+		getDiagramModel().dispose();
 		getProject().setSelectionModel(null);
 		diagram = null;
 		updateToolBar();
