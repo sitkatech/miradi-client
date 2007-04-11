@@ -97,6 +97,9 @@ public class Project
 		if(diagramSaver != null)
 			removeCommandExecutedListener(diagramSaver);
 		
+		if(diagramModel != null)
+			removeCommandExecutedListener(diagramModel);
+		
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
 		undoRedoState = new UndoRedoState();
