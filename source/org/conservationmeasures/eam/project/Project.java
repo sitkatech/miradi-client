@@ -667,6 +667,8 @@ public class Project
 
 	public void addCommandExecutedListener(CommandExecutedListener listener)
 	{
+		if(commandExecutedListeners.contains(listener))
+			throw new RuntimeException("Attempted to add listener twice: " + listener.getClass());
 		EAM.logVerbose("addCommandExecutedListener: " + listener.getClass());
 		commandExecutedListeners.add(listener);
 	}
