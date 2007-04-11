@@ -77,7 +77,7 @@ public class TestTransferableEamList extends EAMTestCase
 		FactorId factorId2 = diagramFactor2.getWrappedId();
 		diagramFactor2.setLocation(node2Location);
 		
-		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, factorId1, factorId2);
+		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), factorId1, factorId2);
 		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
 		DiagramFactorLink diagramFactorLink = model.getDiagramFactorLinkById(diagramFactorLinkId);
 

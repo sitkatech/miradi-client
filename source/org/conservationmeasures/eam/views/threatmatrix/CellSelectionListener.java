@@ -8,13 +8,9 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 
 class CellSelectionListener implements ListSelectionListener
@@ -62,30 +58,32 @@ class CellSelectionListener implements ListSelectionListener
 
 	private void offerToCreateLink(int row, int column) throws CommandFailedException
 	{
-		ThreatMatrixTableModel model = (ThreatMatrixTableModel) threatTable.getModel();
-		String[] body = new String[] {
-				EAM.text("Do you want to create a link between these this Threat and Target?"),
-				(model).getThreatName(row),
-				(model).getTargetName(column),
-				};
-		String[] buttons = new String[] {EAM.text("Create Link"), EAM.text("Cancel")};
-		if(!EAM.confirmDialog(EAM.text("Create a link?"), body, buttons))
-			return;
-		
-		
-		Project project = model.getProject();
-		project.executeCommand(new CommandBeginTransaction());
-		try
-		{
-			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(
-				project, 
-				model.getThreatId(row), 
-				model.getTargetId(column));
-		}
-		finally
-		{
-			project.executeCommand(new CommandEndTransaction());
-		}
+// FIXME: This needs major overhaul to work with Results Chains
+// Also, note lots of code duplication with ThreatMatrixTable!
+//		ThreatMatrixTableModel model = (ThreatMatrixTableModel) threatTable.getModel();
+//		String[] body = new String[] {
+//				EAM.text("Do you want to create a link between these this Threat and Target?"),
+//				(model).getThreatName(row),
+//				(model).getTargetName(column),
+//				};
+//		String[] buttons = new String[] {EAM.text("Create Link"), EAM.text("Cancel")};
+//		if(!EAM.confirmDialog(EAM.text("Create a link?"), body, buttons))
+//			return;
+//		
+//		
+//		Project project = model.getProject();
+//		project.executeCommand(new CommandBeginTransaction());
+//		try
+//		{
+//			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(
+//				project, 
+//				model.getThreatId(row), 
+//				model.getTargetId(column));
+//		}
+//		finally
+//		{
+//			project.executeCommand(new CommandEndTransaction());
+//		}
 	}
 
 	

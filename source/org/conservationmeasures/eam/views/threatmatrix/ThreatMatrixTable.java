@@ -37,7 +37,6 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.Delete;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class ThreatMatrixTable extends JTable
 {
@@ -251,21 +250,23 @@ public class ThreatMatrixTable extends JTable
 		
 		public void actionPerformed(ActionEvent e)
 		{
-			ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
-			Project project = model.getProject();
-			try
-			{
-				project.executeCommand(new CommandBeginTransaction());
-				InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(
-					project, 
-					model.getThreatId(row), 
-					model.getTargetId(col));
-				project.executeCommand(new CommandEndTransaction());
-			}
-			catch (Exception ex)
-			{
-				ex.printStackTrace();
-			}
+// FIXME: This needs major overhaul to work with Results Chains
+// Also, note lots of code duplication with CellSelectionListener!
+//			ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
+//			Project project = model.getProject();
+//			try
+//			{
+//				project.executeCommand(new CommandBeginTransaction());
+//				InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(
+//					project, 
+//					model.getThreatId(row), 
+//					model.getTargetId(col));
+//				project.executeCommand(new CommandEndTransaction());
+//			}
+//			catch (Exception ex)
+//			{
+//				ex.printStackTrace();
+//			}
 		}
 		
 		int row;
