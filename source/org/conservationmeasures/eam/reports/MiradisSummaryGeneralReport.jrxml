@@ -93,7 +93,7 @@
 						height="39"
 						key="subreport"/>
 					<dataSourceExpression><![CDATA[((SummaryGeneralDataSource)$P{REPORT_DATA_SOURCE}).getSummaryTeamDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA["D:/Projects/workspace/miradi/source/JasperReports/MiradisSummaryTeamReport.jasper"]]></subreportExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisSummaryTeamReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>

@@ -276,14 +276,7 @@ public class EAM
 
 	public static String loadResourceFile(Class thisClass, String resourceFileName) throws Exception
 	{
-		URL url = thisClass.getResource(resourceFileName);
-
-		if (doesTestDirectoryExist())
-		{
-			final String relativePackagePath = convertToPath(thisClass.getPackage().getName());
-			String relativePath = new File(relativePackagePath, resourceFileName).getPath();
-			url = findAlternateResource(relativePath, url);
-		}
+		URL url = getResourceURL(thisClass, resourceFileName);
 		
 		InputStream inputStream = url.openStream();
 		UnicodeReader reader = new UnicodeReader(inputStream);
@@ -295,6 +288,26 @@ public class EAM
 		{
 			reader.close();
 		}
+	}
+
+	public static String getResourcePath(Class thisClass, String resourceFileName) throws Exception
+	{
+		URL url = getResourceURL(thisClass, resourceFileName);
+		return url.getPath();
+	}
+
+
+	private static URL getResourceURL(Class thisClass, String resourceFileName) throws MalformedURLException
+	{
+		URL url = thisClass.getResource(resourceFileName);
+
+		if (doesTestDirectoryExist())
+		{
+			final String relativePackagePath = convertToPath(thisClass.getPackage().getName());
+			String relativePath = new File(relativePackagePath, resourceFileName).getPath();
+			url = findAlternateResource(relativePath, url);
+		}
+		return url;
 	}
 
 	public static String convertToPath(String path)
