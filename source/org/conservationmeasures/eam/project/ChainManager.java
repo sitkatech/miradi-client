@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -72,11 +71,6 @@ public class ChainManager
 		return relatedFactors;
 	}
 	
-	DiagramModel getDiagramModel()
-	{
-		return getProject().getDiagramModel();
-	}
-
 	Project getProject()
 	{
 		return project;
