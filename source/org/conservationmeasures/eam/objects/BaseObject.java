@@ -64,6 +64,11 @@ abstract public class BaseObject
 		return new ORef(getType(), getId());
 	}
 	
+	public ObjectManager getObjectManager()
+	{
+		return objectManager;
+	}
+	
 	
 	public static BaseObject createFromJson(int type, EnhancedJsonObject json) throws Exception
 	{
