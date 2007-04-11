@@ -25,16 +25,13 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectChainObject;
-import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 
-public class InsertFactorLinkDoer extends ProjectDoer
+public class InsertFactorLinkDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		if(!getProject().isOpen())
-			return false;
-		
-		return (getProject().getDiagramModel().getFactorCount() >= 2);
+		return (getMainWindow().getDiagramComponent().getDiagramModel().getFactorCount() >= 2);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -44,7 +41,7 @@ public class InsertFactorLinkDoer extends ProjectDoer
 		if(!dialog.getResult())
 			return;
 		
-		DiagramModel model = getProject().getDiagramModel();
+		DiagramModel model = getMainWindow().getDiagramComponent().getDiagramModel();
 		DiagramFactor fromDiagramFactor = dialog.getFrom();
 		DiagramFactor toDiagramFactor = dialog.getTo();
 		
