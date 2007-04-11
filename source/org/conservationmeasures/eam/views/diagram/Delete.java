@@ -83,6 +83,7 @@ public class Delete extends ProjectDoer
 		}
 	}
 
+	// FIXME: This will not work with Results Chains!
 	public static void deleteFactorLink(Project project, DiagramFactorLink linkageToDelete) throws CommandFailedException
 	{	
 		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
