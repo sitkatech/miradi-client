@@ -16,6 +16,9 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.TNCViabilityFormula;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -150,6 +153,16 @@ public class Target extends Factor
 	public boolean isViabilityModeTNC()
 	{
 		return viabiltyMode.get().equals(ViabilityModeQuestion.TNC_STYLE_CODE);
+	}
+	
+	public ChoiceItem[] getKeyEcologicalAttributesTypes()
+	{
+		if (isViabilityModeTNC())
+		{
+			ChoiceQuestion question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+			return question.getChoices();
+		}
+		return new ChoiceItem[0];
 	}
 	
 	private String getTargetViability()

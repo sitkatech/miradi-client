@@ -11,11 +11,9 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -25,7 +23,6 @@ public class TargetViabilityNode extends TreeTableNode
 	{
 		project = projectToUse;
 		target = (Target)project.findNode(targetId);
-		question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 		statusQuestion = new StatusQuestion(Target.TAG_TARGET_STATUS);
 		rebuild();
 	}
@@ -78,11 +75,10 @@ public class TargetViabilityNode extends TreeTableNode
 	public void rebuild()
 	{
 		Vector vector = new Vector();
-		ChoiceItem[] items = question.getChoices();
+		ChoiceItem[] items = target.getKeyEcologicalAttributesTypes();
 		for (int i=0; i< items.length; ++i)
 		{
-			if (target.isViabilityModeTNC())
-				vector.add(new KeyEcologicalAttributeTypeNode(project, items[i].getCode(), target));
+			vector.add(new KeyEcologicalAttributeTypeNode(project, items[i].getCode(), target));
 		}
 		children = vector;
 	}
@@ -91,5 +87,4 @@ public class TargetViabilityNode extends TreeTableNode
 	private Target target;
 	private Vector children;
 	private StatusQuestion statusQuestion;
-	private KeyEcologicalAttributeTypeQuestion question;
 }
