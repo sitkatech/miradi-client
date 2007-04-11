@@ -11,7 +11,6 @@ import java.awt.event.ItemListener;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
 
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
@@ -22,6 +21,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
@@ -40,23 +40,23 @@ import org.martus.swing.UiLabel;
 
 public class FactorDetailsPanel extends ObjectDataInputPanel
 {
-	public FactorDetailsPanel(Project projectToUse, FactorCell factorToEdit) throws Exception
+	public FactorDetailsPanel(Project projectToUse, DiagramFactor factorToEdit) throws Exception
 	{
-		super(projectToUse, factorToEdit.getType(), factorToEdit.getWrappedId());
+		super(projectToUse, factorToEdit.getWrappedORef());
 		currentDiagramFactor = factorToEdit;
 
-		if(factorToEdit.isDirectThreat())
+		if (getFactor().isDirectThreat())
 		{
 			addField(createClassificationChoiceField(new ThreatClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
 			detailIcon = new DirectThreatIcon();
 		}
 		
-		if(factorToEdit.isContributingFactor())
+		if(getFactor().isContributingFactor())
 		{
 			detailIcon = new ContributingFactorIcon();
 		}
 
-		if(factorToEdit.isStrategy())
+		if(getFactor().isStrategy())
 		{
 			addField(createStringField(Strategy.TAG_SHORT_LABEL));
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
@@ -73,7 +73,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		addField(createMultilineField(Factor.TAG_COMMENT));
 		
 		
-		if(factorToEdit.isTarget())
+		if(getFactor().isTarget())
 		{
 			addField(createChoiceField(ObjectType.TARGET, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
 			 targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
@@ -85,7 +85,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		
 		updateFieldsFromProject();
 
-		if(factorToEdit.isTarget())
+		if(getFactor().isTarget())
 			updateEditabilityOfTargetStatusField();
 	}
 
@@ -137,7 +137,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 	public Factor getFactor()
 	{
-		return currentDiagramFactor.getUnderlyingObject();
+		return (Factor) getProject().findObject(currentDiagramFactor.getWrappedORef());
 	}
 
 	public Icon getIcon()
@@ -171,6 +171,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	}
 	
 	private Icon detailIcon;
-	private FactorCell currentDiagramFactor;
+	private DiagramFactor currentDiagramFactor;
 	private ObjectDataInputField targetRatingField;
 }

@@ -31,6 +31,9 @@ public class InsertFactorLinkDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
+		if (!isDiagramView())
+			return false;
+		
 		return (getMainWindow().getDiagramComponent().getDiagramModel().getFactorCount() >= 2);
 	}
 

@@ -9,15 +9,13 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ProjectScopePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 
 public class Properties extends LocationDoer
@@ -53,14 +51,15 @@ public class Properties extends LocationDoer
 
 		EAMGraphCell selected = getProject().getOnlySelectedCells()[0];
 		if(selected.isFactor())
-			doFactorProperties((FactorCell)selected, getLocation());
+			doFactorProperties(selected.getDiagramFactor(), getLocation());
+		
 		else if(selected.isProjectScope())
-			doProjectScopeProperties((ProjectScopeBox)selected);
+			doProjectScopeProperties();
 		else if(selected.isFactorLink())
 			doFactorLinkProperties(selected.getDiagramFactorLink());
 	}
 	
-	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
+	void doProjectScopeProperties() throws CommandFailedException
 	{
 		ProjectScopePanel projectScopePanel = new ProjectScopePanel(getProject(), getProject().getMetadata());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), projectScopePanel, projectScopePanel.getPanelDescription()); 
@@ -74,40 +73,42 @@ public class Properties extends LocationDoer
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	void doFactorProperties(FactorCell selectedFactor, Point at) throws CommandFailedException
+	void doFactorProperties(DiagramFactor selectedFactor, Point at) throws CommandFailedException
 	{
 		DiagramView view = (DiagramView)getView();
 		view.showNodeProperties(selectedFactor, getTabToStartOn(selectedFactor, at));
 	}
 
-	private int getTabToStartOn(FactorCell factor, Point at)
+	private int getTabToStartOn(DiagramFactor factor, Point at)
 	{
-		if(at == null)
-			return FactorPropertiesPanel.TAB_DETAILS;
 		
-		Point cellOrigin = factor.getLocation();
-		at.translate(-cellOrigin.x, -cellOrigin.y);
-		EAM.logDebug(at.toString());
-		if(factor.isPointInObjective(at))
-		{
-			EAM.logDebug("Objective");
-			return FactorPropertiesPanel.TAB_OBJECTIVES;
-		}
-		if (factor.isPointInViability(at))
-		{
-			EAM.logDebug("ViabilityModeTNC");
-			return FactorPropertiesPanel.TAB_VIABILITY;
-		}
-		if(factor.isPointInIndicator(at))
-		{
-			EAM.logDebug("Indicator");
-			return FactorPropertiesPanel.TAB_INDICATORS;
-		}
-		if(factor.isPointInGoal(at))
-		{
-			EAM.logDebug("Goal");
-			return FactorPropertiesPanel.TAB_GOALS;
-		}
+//FIXME should be done else where		
+//		if(at == null)
+//			return FactorPropertiesPanel.TAB_DETAILS;
+//		
+//		Point cellOrigin = factor.getLocation();
+//		at.translate(-cellOrigin.x, -cellOrigin.y);
+//		EAM.logDebug(at.toString());
+//		if(factor.isPointInObjective(at))
+//		{
+//			EAM.logDebug("Objective");
+//			return FactorPropertiesPanel.TAB_OBJECTIVES;
+//		}
+//		if (factor.isPointInViability(at))
+//		{
+//			EAM.logDebug("ViabilityModeTNC");
+//			return FactorPropertiesPanel.TAB_VIABILITY;
+//		}
+//		if(factor.isPointInIndicator(at))
+//		{
+//			EAM.logDebug("Indicator");
+//			return FactorPropertiesPanel.TAB_INDICATORS;
+//		}
+//		if(factor.isPointInGoal(at))
+//		{
+//			EAM.logDebug("Goal");
+//			return FactorPropertiesPanel.TAB_GOALS;
+//		}
 		
 		return FactorPropertiesPanel.TAB_DETAILS;
 	}

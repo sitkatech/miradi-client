@@ -61,7 +61,7 @@ public class TestDiagramComponent extends EAMTestCase
 		EAM.mainWindow = new MainWindow(project);
 		DiagramComponent diagramComponent = new DiagramComponent();
 		diagramComponent.setModel(project.getDiagramModel());
-		diagramComponent.setGraphLayoutCache(project.getGraphLayoutCache());
+		diagramComponent.setGraphLayoutCache(project.getDiagramModel().getGraphLayoutCache());
 		
 		DiagramCauseCell hiddenNode = (DiagramCauseCell) createNode(ObjectType.CAUSE);
 		FactorId hiddenId = hiddenNode.getWrappedId();

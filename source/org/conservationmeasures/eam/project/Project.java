@@ -23,7 +23,6 @@ import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
-import org.conservationmeasures.eam.diagram.PartialGraphLayoutCache;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
@@ -42,11 +41,9 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.CausePool;
-import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -62,7 +59,6 @@ import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -73,7 +69,6 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
-import org.jgraph.graph.GraphLayoutCache;
 
 
 public class Project
@@ -104,11 +99,10 @@ public class Project
 		objectManager = new ObjectManager(this);
 		undoRedoState = new UndoRedoState();
 		
-		diagramModel = new DiagramModel(this);
 		diagramClipboard = new DiagramClipboard(this);
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(this);
-		graphLayoutCache = new PartialGraphLayoutCache(diagramModel);
+		
 		
 		diagramSaver = new DiagramSaver();
 		addCommandExecutedListener(diagramSaver);
@@ -234,6 +228,12 @@ public class Project
 	{
 		return diagramModel;
 	}
+	
+	//FIXME this is not the way the model should be set.
+	public void setDiagramModel(DiagramModel modelToUse)
+	{
+		diagramModel = modelToUse;
+	}
 
 	public DiagramObject getDiagramObject()
 	{
@@ -272,11 +272,6 @@ public class Project
 	public ThreatRatingFramework getThreatRatingFramework()
 	{
 		return threatRatingFramework;
-	}
-	
-	public GraphLayoutCache getGraphLayoutCache()
-	{
-		return graphLayoutCache;
 	}
 	
 	public BaseObject findObject(ORef ref)
@@ -361,7 +356,7 @@ public class Project
 		{
 			DiagramModel model = getDiagramModel();
 			FactorId modelNodeId = new FactorId(objectId.asInt());
-			if(model.doesFactorExist(modelNodeId))
+			if(model != null && model.doesFactorExist(modelNodeId))
 			{
 				FactorCell diagramNode = getDiagramModel().getFactorCellByWrappedId(modelNodeId);
 				getDiagramModel().updateCell(diagramNode);
@@ -482,37 +477,12 @@ public class Project
 		getThreatRatingFramework().load();
 	}
 	
-	public void loadDiagram() throws Exception
-	{
-		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		ORefList oRefs = diagramContentsPool.getORefList();
-		ConceptualModelDiagram diagramContentsObject = getDiagramContentsObject(oRefs);
-		getDiagramModel().fillFrom(diagramContentsObject);
-	}
-
-	private ConceptualModelDiagram getDiagramContentsObject(ORefList oRefs) throws Exception
-	{
-		if (oRefs.size() == 0)
-		{
-			BaseId id = createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-			return (ConceptualModelDiagram) findObject(new ORef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, id));
-		}
-		if (oRefs.size() > 1)
-		{
-			EAM.logVerbose("Found more than one diagram contents inside pool");
-		}
-
-		ORef oRef = oRefs.get(0);
-		return (ConceptualModelDiagram) findObject(oRef);
-	}
-
 	protected void finishOpening() throws Exception
 	{
 		if(getMetadataId().isInvalid())
 			createProjectMetadata();
 		
 		loadThreatRatingFramework();
-		loadDiagram();
 		
 		createDefaultObjectsIfNeeded();
 		database.writeVersion();
@@ -1135,7 +1105,6 @@ public class Project
 	
 	LayerManager layerManager;
 	EAMGraphSelectionModel selectionModel;
-	GraphLayoutCache graphLayoutCache;
 	DiagramSaver diagramSaver;
 	
 }

@@ -14,7 +14,6 @@ import javax.swing.SwingUtilities;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.viability.TargetViabilityTreeManagementPanel;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
@@ -29,6 +28,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
@@ -90,7 +90,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		}
 	}
 
-	public void setCurrentDiagramFactor(DiagramComponent diagram, FactorCell diagramFactor)
+	public void setCurrentDiagramFactor(DiagramComponent diagram, DiagramFactor diagramFactor)
 	{
 		setLayout(new BorderLayout());
 		removeAll();
@@ -107,7 +107,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		}
 	}
 
-	public FactorCell getCurrentDiagramFactor()
+	public DiagramFactor getCurrentDiagramFactor()
 	{
 		return currentDiagramFactor;
 	}
@@ -117,10 +117,11 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		return getCurrentDiagramFactor().getWrappedId();
 	}
 
-	private Component createLabelBar(FactorCell diagramFactor)
+	private Component createLabelBar(DiagramFactor diagramFactor)
 	{
-		Factor factor = diagramFactor.getUnderlyingObject();
-		grid = new FactorInputPanel(getProject(), factor.getRef());
+		ORef factorORef = diagramFactor.getWrappedORef();
+		Factor factor = (Factor) getProject().findObject(factorORef);
+		grid = new FactorInputPanel(getProject(), factorORef);
 		
 		grid.addFieldWithCustomLabel(grid.createStringField(Factor.TAG_LABEL), createFactorTypeLabel(factor));
 		
@@ -151,7 +152,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		return field;
 	}
 	
-	private Component createTabbedPane(FactorCell diagramFactor) throws Exception
+	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
 	{
 		tabs = new JTabbedPane();
 		tabs.setFocusable(false);
@@ -162,28 +163,29 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		indicatorsTab = new IndicatorListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 		tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
 		
-		if(diagramFactor.canHaveObjectives())
+		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
+		
+		if(factor.canHaveObjectives())
 		{
 			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
 		}
 		
-		if(diagramFactor.canHaveGoal())
+		if(factor.canHaveGoal())
 		{
 			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
 		}
 		
-		if(diagramFactor.isStrategy())
+		if(factor.isStrategy())
 		{
 			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
 		
-		if (diagramFactor.isTarget())
+		if (factor.isTarget())
 		{
 			viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-			Factor factor = diagramFactor.getUnderlyingObject();
 			if (factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE))
 			{
 				handleViabilityTabON();
@@ -195,7 +197,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	
 	class FactorDetailsTab extends ModelessDialogPanel
 	{
-		public FactorDetailsTab(Project projectToUse, FactorCell diagramFactor) throws Exception
+		public FactorDetailsTab(Project projectToUse, DiagramFactor diagramFactor) throws Exception
 		{
 			realPanel = new FactorDetailsPanel(projectToUse, diagramFactor);
 			add(new FastScrollPane(realPanel));
@@ -324,7 +326,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	ActivityListManagementPanel activitiesTab;
 	MainWindow mainWindow;
 	DiagramComponent diagram;
-	FactorCell currentDiagramFactor;
+	DiagramFactor currentDiagramFactor;
 	UiTextField textField;
 	boolean ignoreObjectiveChanges;
 	FactorInputPanel grid;

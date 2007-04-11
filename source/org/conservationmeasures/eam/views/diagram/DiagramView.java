@@ -62,6 +62,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -74,7 +75,9 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -203,15 +206,44 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public void createTabs() throws Exception
 	{
+		DiagramModel diagramModel = new DiagramModel(getProject());
+		getProject().setDiagramModel(diagramModel);
+		ConceptualModelDiagram conceptualModelDiagram = getDiagramObject();
+		diagramModel.fillFrom(conceptualModelDiagram);
+		diagramModel.updateProjectScopeBox();
+		
 		diagram = new DiagramComponent(getMainWindow());
-		diagram.setModel(getProject().getDiagramModel());
-		diagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
+		diagram.setModel(diagramModel);
+		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
 		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
 		ConceptualModelDiagramSplitPane splitPane = new ConceptualModelDiagramSplitPane(getMainWindow(), diagram);
 
 		//TODO fix tab name
 		addTab("Main Diagram", splitPane);
 		addResultsChainTabs();
+	}
+
+	private ConceptualModelDiagram getDiagramObject() throws Exception
+	{
+		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) getProject().getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		ORefList oRefs = diagramContentsPool.getORefList();
+		return getDiagramContentsObject(oRefs);
+	}
+	
+	private ConceptualModelDiagram getDiagramContentsObject(ORefList oRefs) throws Exception
+	{
+		if (oRefs.size() == 0)
+		{
+			BaseId id = getProject().createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+			return (ConceptualModelDiagram) getProject().findObject(new ORef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, id));
+		}
+		if (oRefs.size() > 1)
+		{
+			EAM.logVerbose("Found more than one diagram contents inside pool");
+		}
+
+		ORef oRef = oRefs.get(0);
+		return (ConceptualModelDiagram) getProject().findObject(oRef);
 	}
 
 	private void addResultsChainTabs() throws Exception
@@ -448,7 +480,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.showFloatingPropertiesDialog(newDialog);
 	}
 
-	public void showNodeProperties(FactorCell node, int startingTabIdentifier)
+	public void showNodeProperties(DiagramFactor node, int startingTabIdentifier)
 	{
 		closeActivePropertiesDialog();
 		if(nodePropertiesDlg != null)

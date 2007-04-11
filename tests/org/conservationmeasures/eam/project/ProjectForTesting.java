@@ -11,6 +11,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -18,11 +19,15 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 
 
@@ -32,10 +37,19 @@ public class ProjectForTesting extends Project
 	public ProjectForTesting(String testName) throws Exception
 	{
 		super(new ProjectServerForTesting());
+		
+		diagramModel = new DiagramModel(this);
 		getTestDatabase().openMemoryDatabase(testName);
 		finishOpening();
 		commandStack = new Vector();
 	}
+	
+	protected void finishOpening() throws Exception
+	{
+		super.finishOpening();
+		loadDiagram();
+	}
+
 	
 	//TODO this is fragile, should do a true close
 	public void closeAndReopen() throws Exception
@@ -153,6 +167,31 @@ public class ProjectForTesting extends Project
 		FactorId insertedId = createNodeAndAddToDiagram(objectType);
 		return getDiagramModel().getFactorCellByWrappedId(insertedId);
 	}
+	
+	public void loadDiagram() throws Exception
+	{
+		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		ORefList oRefs = diagramContentsPool.getORefList();
+		ConceptualModelDiagram diagramContentsObject = getDiagramContentsObject(oRefs);
+		getDiagramModel().fillFrom(diagramContentsObject);
+	}
+
+	private ConceptualModelDiagram getDiagramContentsObject(ORefList oRefs) throws Exception
+	{
+		if (oRefs.size() == 0)
+		{
+			BaseId id = createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+			return (ConceptualModelDiagram) findObject(new ORef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, id));
+		}
+		if (oRefs.size() > 1)
+		{
+			EAM.logVerbose("Found more than one diagram contents inside pool");
+		}
+
+		ORef oRef = oRefs.get(0);
+		return (ConceptualModelDiagram) findObject(oRef);
+	}
+
 	
 	Vector commandStack;
 }

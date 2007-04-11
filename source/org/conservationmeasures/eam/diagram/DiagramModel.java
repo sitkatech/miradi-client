@@ -54,6 +54,7 @@ import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
+import org.jgraph.graph.GraphLayoutCache;
 
 public class DiagramModel extends DefaultGraphModel
 {
@@ -75,6 +76,7 @@ public class DiagramModel extends DefaultGraphModel
 
 		cellInventory = new CellInventory();
 		projectScopeBox = new ProjectScopeBox(this);
+		graphLayoutCache = new PartialGraphLayoutCache(this);
 		insertCellIntoGraph(projectScopeBox);
 		
 		factorsToDiagramFactors = new HashMap();
@@ -380,7 +382,7 @@ public class DiagramModel extends DefaultGraphModel
 			updateVisibilityOfSingleFactor(node.getDiagramFactorId());
 		}
 		LayerManager manager = project.getLayerManager();
-		project.getGraphLayoutCache().setVisible(getProjectScopeBox(), manager.isScopeBoxVisible());
+		getGraphLayoutCache().setVisible(getProjectScopeBox(), manager.isScopeBoxVisible());
 	}	
 	
 	public void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
@@ -388,7 +390,7 @@ public class DiagramModel extends DefaultGraphModel
 		LayerManager manager = project.getLayerManager();
 		FactorCell factorCell = getFactorCellById(diagramFactorId);
 		boolean isVisible = manager.isVisible(factorCell);
-		project.getGraphLayoutCache().setVisible(factorCell, isVisible);
+		getGraphLayoutCache().setVisible(factorCell, isVisible);
 	}
 
 	public void updateCell(EAMGraphCell cellToUpdate) throws Exception
@@ -631,6 +633,12 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		return diagramContents;
 	}
+	
+	public GraphLayoutCache getGraphLayoutCache()
+	{
+		return graphLayoutCache;
+	}
+	
 		
 	private static final String TAG_TYPE = "Type";
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
@@ -647,5 +655,6 @@ public class DiagramModel extends DefaultGraphModel
 	DiagramObject diagramContents;
 	
 	HashMap factorsToDiagramFactors;
+	GraphLayoutCache graphLayoutCache;
 }
 

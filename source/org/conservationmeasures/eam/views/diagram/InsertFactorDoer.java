@@ -43,14 +43,15 @@ abstract public class InsertFactorDoer extends LocationDoer
 		try
 		{
 			FactorCell[] selectedFactors = getProject().getOnlySelectedFactorCells();
-			FactorId id = insertFactorItself();
+			DiagramFactor diagramFactor = insertFactorItself();
+			FactorId id = diagramFactor.getWrappedId();
 			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET))
 				linkToPreviouslySelectedFactors(id, selectedFactors);
 			else
 				notLinkingToAnyFactors();
 			
 			selectNewFactor(id);
-			launchPropertiesEditor(id);
+			launchPropertiesEditor(diagramFactor);
 		}
 		catch (Exception e)
 		{
@@ -64,13 +65,12 @@ abstract public class InsertFactorDoer extends LocationDoer
 		getProject().selectFactor(idToUse);
 	}
 	
-	void launchPropertiesEditor(FactorId id) throws Exception, CommandFailedException
+	void launchPropertiesEditor(DiagramFactor diagramFactor) throws Exception, CommandFailedException
 	{
-		FactorCell newFactor = getDiagramView().getDiagramModel().getFactorCellByWrappedId(id);
-		getDiagramView().getPropertiesDoer().doFactorProperties(newFactor, null);
+		getDiagramView().getPropertiesDoer().doFactorProperties(diagramFactor, null);
 	}
 
-	private FactorId insertFactorItself() throws Exception
+	private DiagramFactor insertFactorItself() throws Exception
 	{
 		Point createAt = getLocation();
 		Project project = getProject();
@@ -100,7 +100,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		forceVisibleInLayerManager();
 		project.updateVisibilityOfFactors();
 		
-		return factorId;
+		return diagramFactor;
 	}
 	
 	private Point getDeltaPoint(Point createAt, FactorCell[] selectedFactors, int factorType, DiagramFactor newFactor) throws Exception

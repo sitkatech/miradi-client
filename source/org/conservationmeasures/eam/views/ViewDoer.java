@@ -28,5 +28,19 @@ abstract public class ViewDoer extends MainWindowDoer
 		throw new RuntimeException("Not in DiagramView");
 	}
 
+	public boolean isDiagramView()
+	{
+		if (! getView().cardName().equals(DiagramView.getViewName()))
+			return false;
+		
+		if (getDiagramView().getDiagramComponent() == null)
+			return false;
+		
+		if (getDiagramView().getDiagramModel() == null)
+			return false;
+		
+		return true;
+	}
+
 	private UmbrellaView view;
 }
