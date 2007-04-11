@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Target;
 
 public class CreateKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 {
@@ -17,7 +18,7 @@ public class CreateKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 			return false;
 		
 		if (getSelectedObjectType() == ObjectType.TARGET)
-			return true;
+			return ((Target)getObjects()[0]).isViabilityModeTNC();
 		
 		if (getSelectedObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			return true;
