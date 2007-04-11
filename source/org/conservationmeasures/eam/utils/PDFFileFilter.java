@@ -23,7 +23,7 @@ public class PDFFileFilter extends FileFilter
 
 	public String getDescription()
 	{
-		return EAM.text("FileFilter|RTF (*.pdf)");
+		return EAM.text("FileFilter|PDF (*.pdf)");
 	}
 
 	public static final String EXTENSION = ".pdf";
