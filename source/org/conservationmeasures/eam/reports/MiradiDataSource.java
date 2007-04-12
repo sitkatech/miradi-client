@@ -12,10 +12,9 @@ import org.conservationmeasures.eam.project.Project;
 
 public class MiradiDataSource extends CommonDataSource
 {
-	public MiradiDataSource(Project projectToUse)
+	public MiradiDataSource(Project project)
 	{
-		super();
-		project = projectToUse;
+		super(project);
 	}
 
 	public JRDataSource getSummaryGeneranlDataSource()
@@ -38,6 +37,4 @@ public class MiradiDataSource extends CommonDataSource
 	{
 		return "";
 	}
-	
-	Project project;
 } 

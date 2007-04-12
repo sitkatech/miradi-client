@@ -18,11 +18,11 @@ public class ViabilityTargetsDataSource extends CommonDataSource
 {
 	public ViabilityTargetsDataSource(Project projectToUse)
 	{
-		super();
+		super(projectToUse);
 		project = projectToUse;
 		TargetPool pool = project.getTargetPool();
-		rowCount = pool.size();
 		list = pool.getORefList();
+		setRowCount(list.size());
 	}
 	
 	public JRDataSource getKeyEcologicalAttrubutesDataSource()
@@ -39,7 +39,7 @@ public class ViabilityTargetsDataSource extends CommonDataSource
 	{
 		if (super.next())
 		{
-			currentTarget = (Target)project.findObject(list.get(rowCount));
+			currentTarget = (Target)project.findObject(list.get(getCurrentRow()));
 			return true;
 		}
 		return false;

@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.project.Project;
 
 public class DiagramDataSource extends CommonDataSource
 {
-	public DiagramDataSource(Project projectToUse)
+	public DiagramDataSource(Project project)
 	{
-		super();
+		super(project);
 	}
 	
 	public Object getFieldValue(JRField field)

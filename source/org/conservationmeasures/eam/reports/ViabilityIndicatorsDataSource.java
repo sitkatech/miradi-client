@@ -12,16 +12,14 @@ import net.sf.jasperreports.engine.JRField;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
-import org.conservationmeasures.eam.project.Project;
 
 public class ViabilityIndicatorsDataSource extends CommonDataSource
 {
 	public ViabilityIndicatorsDataSource(KeyEcologicalAttribute kea)
 	{
-		super();
-		project = kea.getObjectManager().getProject();
+		super(kea.getObjectManager().getProject());
 		list = new ORefList(Indicator.getObjectType(), kea.getIndicatorIds());
-		rowCount = list.size();
+		setRowCount(list.size());
 	}
 
 	public JRDataSource getViabilityGoalsDataSourceDataSource()
@@ -38,7 +36,7 @@ public class ViabilityIndicatorsDataSource extends CommonDataSource
 	{
 		if (super.next())
 		{
-			currentIndicator = (Indicator)project.findObject(list.get(rowCount));
+			currentIndicator = (Indicator)project.findObject(list.get(getCurrentRow()));
 			return true;
 		}
 		return false;
@@ -46,5 +44,4 @@ public class ViabilityIndicatorsDataSource extends CommonDataSource
 
 	ORefList list;
 	Indicator currentIndicator;
-	Project project;
 } 

@@ -15,9 +15,9 @@ public class SummaryTeamDataSource extends CommonDataSource
 {
 	public SummaryTeamDataSource(Project project)
 	{
-		super();
+		super(project);
 		teamModel = new TeamModel(project);
-		rowCount = teamModel.getRowCount();
+		setRowCount(teamModel.getRowCount());
 	}
 	
 	public Object getFieldValue(JRField field)
@@ -28,7 +28,7 @@ public class SummaryTeamDataSource extends CommonDataSource
 	public String getData(String name)
 	{
 		if (name.equals(ProjectResource.TAG_NAME))
-			return (String)teamModel.getValueAt(rowCount, 0);
+			return (String)teamModel.getValueAt(getCurrentRow(), 0);
 		return "";
 	}
 	

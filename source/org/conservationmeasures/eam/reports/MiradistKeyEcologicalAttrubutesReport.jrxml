@@ -69,7 +69,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="32"  isSplitAllowed="true" >
+			<band height="82"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="138"
@@ -83,6 +83,14 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
 				</textField>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="137"
+						y="39"
+						width="281"
+						height="22"
+						key="subreport-1"/>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>

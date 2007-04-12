@@ -41,7 +41,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="263"  isSplitAllowed="true" >
+			<band height="197"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="38"

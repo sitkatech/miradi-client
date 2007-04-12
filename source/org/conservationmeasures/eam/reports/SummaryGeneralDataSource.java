@@ -14,10 +14,9 @@ import org.conservationmeasures.eam.project.Project;
 
 public class SummaryGeneralDataSource extends CommonDataSource
 {
-	public SummaryGeneralDataSource(Project projectToUse)
+	public SummaryGeneralDataSource(Project project)
 	{
-		super();
-		project = projectToUse;
+		super(project);
 	}
 	
 	public JRDataSource getSummaryTeamDataSource()
@@ -33,6 +32,5 @@ public class SummaryGeneralDataSource extends CommonDataSource
 		return project.getMetadata().getData(name);
 	}
 	
-	Project project;
 	private static String LABEL_PREFIX = "Label:";
 } 

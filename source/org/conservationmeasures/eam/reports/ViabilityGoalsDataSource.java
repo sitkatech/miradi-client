@@ -11,16 +11,14 @@ import net.sf.jasperreports.engine.JRField;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.project.Project;
 
 public class ViabilityGoalsDataSource extends CommonDataSource
 {
 	public ViabilityGoalsDataSource(Indicator indicator)
 	{
-		super();
-		project = indicator.getObjectManager().getProject();
+		super(indicator.getObjectManager().getProject());
 		list = new ORefList(Indicator.getObjectType(), indicator.getGoalIds());
-		rowCount = list.size();
+		setRowCount(list.size());
 	}
 
 	public Object getFieldValue(JRField field)
@@ -32,7 +30,7 @@ public class ViabilityGoalsDataSource extends CommonDataSource
 	{
 		if (super.next())
 		{
-			currentGoal = (Goal)project.findObject(list.get(rowCount));
+			currentGoal = (Goal)project.findObject(list.get(getCurrentRow()));
 			return true;
 		}
 		return false;
@@ -41,5 +39,4 @@ public class ViabilityGoalsDataSource extends CommonDataSource
 	ORefList list;
 	Indicator currentIndicator;
 	Goal currentGoal;
-	Project project;
 } 

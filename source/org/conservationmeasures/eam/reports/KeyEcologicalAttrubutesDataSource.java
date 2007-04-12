@@ -15,24 +15,22 @@ import net.sf.jasperreports.engine.JRField;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 
 public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 {
 	public KeyEcologicalAttrubutesDataSource(Target target)
 	{
-		super();
-		project = target.getObjectManager().getProject();
+		super(target.getObjectManager().getProject());
 		if (target.isViabilityModeTNC())
 		{
 			ORefList list = new ORefList(KeyEcologicalAttribute.getObjectType(), target.getKeyEcologicalAttributes());
-			rowCount = list.size();
+			setRowCount(list.size());
 			keas = loadSortedKeas(list);
 		}
 		else
 		{
-			rowCount = 0;
+			setRowCount(0);
 			keas = new KeyEcologicalAttribute[0];
 		}
 	}
@@ -50,13 +48,13 @@ public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 	
 	public JRDataSource getViabilityIndicatorsDataSource()
 	{
-		return new ViabilityIndicatorsDataSource(keas[rowCount]);
+		return new ViabilityIndicatorsDataSource(keas[getCurrentRow()]);
 	}
 	
 	public Object getFieldValue(JRField field)
 	{
 		String name =field.getName();
-		String value = keas[rowCount].getData(name);
+		String value = keas[getCurrentRow()].getData(name);
 		if (name.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
 		{
 			value = translateCode(value);
@@ -83,5 +81,4 @@ public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 	}
 	
 	KeyEcologicalAttribute[] keas;
-	Project project;
 } 
