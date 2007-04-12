@@ -13,8 +13,6 @@ import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -811,33 +809,6 @@ public class Project
 	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
 	{
 		selectionModel = selectionModelToUse;
-	}
-
-	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
-	{
-		DiagramModel model = getDiagramModel();
-		Vector selectedCellsWithLinkages = new Vector();
-		for(int i=0; i < selectedCells.length; ++i)
-		{
-			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
-			if(cell.isFactorLink())
-			{
-				if(!selectedCellsWithLinkages.contains(cell))
-					selectedCellsWithLinkages.add(cell);
-			}
-			else if(cell.isFactor())
-			{
-				Set linkages = model.getFactorLinks((FactorCell)cell);
-				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
-				{
-					EAMGraphCell link = (EAMGraphCell) iter.next();
-					if(!selectedCellsWithLinkages.contains(link))
-						selectedCellsWithLinkages.add(link);
-				}
-				selectedCellsWithLinkages.add(cell);
-			}
-		}
-		return selectedCellsWithLinkages;
 	}
 	
 	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
