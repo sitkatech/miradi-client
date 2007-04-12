@@ -235,6 +235,8 @@ public class DiagramPanel extends ObjectDataInputPanel
 	{
 		super.dispose();
 		//FIXME dispose properly
+		getDiagramModel().dispose();
+
 		diagram = null;
 		selectionModel = null;
 	}
