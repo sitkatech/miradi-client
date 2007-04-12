@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -208,6 +209,11 @@ public class DiagramPanel extends ObjectDataInputPanel
 		for(int i=0; i < cells.length; ++i)
 			cells[i] = (EAMGraphCell)rawCells[i];
 		return cells;
+	}
+	
+	public void moveFactors(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception 
+	{
+		getDiagramModel().moveFactors(deltaX, deltaY, ids);
 	}
 
 	public DiagramModel getDiagramModel()

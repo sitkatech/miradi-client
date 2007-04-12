@@ -798,11 +798,6 @@ public class Project
 		database.writeObject(cmNode);
 	}
 
-	public void moveFactors(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception 
-	{
-		getDiagramModel().moveFactors(deltaX, deltaY, ids);
-	}
-
 	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
 	{
 		return getFactorLinkPool().isLinked(nodeId1, nodeId2);

@@ -80,7 +80,7 @@ public class NudgeDoer extends LocationDoer
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
 		{
-			getProject().moveFactors(deltaX, deltaY, ids);
+			getDiagramView().getDiagramPanel().moveFactors(deltaX, deltaY, ids);
 			
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
 			factorMoveHandler.factorsWereMovedOrResized(ids);

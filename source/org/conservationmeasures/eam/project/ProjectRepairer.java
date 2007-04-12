@@ -8,12 +8,12 @@ package org.conservationmeasures.eam.project;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
 {
@@ -170,7 +170,8 @@ public class ProjectRepairer
 			
 		try
 		{
-			project.moveFactors(deltaX, deltaY, new DiagramFactorId[] { diagramFactor.getDiagramFactorId() });
+			String moveToLocation = EnhancedJsonObject.convertFromPoint(new Point(deltaX, deltaY));
+			project.setObjectData(diagramFactor.getType(), diagramFactor.getId(), DiagramFactor.TAG_LOCATION, moveToLocation);
 		}
 		catch(Exception e)
 		{
