@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesPanel;
@@ -20,11 +19,6 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 
 public class Properties extends LocationDoer
 {
-	public Properties(DiagramComponent diagramToUse)
-	{
-		diagram = diagramToUse;
-	}
-	
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
@@ -112,6 +106,4 @@ public class Properties extends LocationDoer
 		
 		return FactorPropertiesPanel.TAB_DETAILS;
 	}
-
-	DiagramComponent diagram;
 }

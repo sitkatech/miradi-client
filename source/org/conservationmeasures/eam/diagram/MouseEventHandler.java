@@ -163,7 +163,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			try 
 			{
 				Point at = event.getPoint();
-				Properties doer = new Properties(getDiagram());
+				Properties doer = new Properties();
 				doer.setMainWindow(mainWindow);
 				doer.setView(mainWindow.getCurrentView());
 				doer.setLocation(at);

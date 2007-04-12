@@ -64,11 +64,9 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -77,13 +75,10 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
-import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
@@ -112,7 +107,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public DiagramComponent getDiagramComponent()
 	{
-		return diagram;
+		return diagramPanel.getdiagramComponent();
 	}
 
 	public String cardName()
@@ -155,7 +150,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void addDiagramViewDoersToMap()
 	{
-		propertiesDoer = new Properties(getDiagramComponent());
+		propertiesDoer = new Properties();
 
 		addDoerToMap(ActionInsertTarget.class, new InsertTargetDoer());
 		addDoerToMap(ActionInsertContributingFactor.class, new InsertContributingFactorDoer());
@@ -208,67 +203,36 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public void createTabs() throws Exception
 	{
-		DiagramModel diagramModel = new DiagramModel(getProject());
-		getProject().setDiagramModel(diagramModel);
-		ConceptualModelDiagram conceptualModelDiagram = getDiagramObject();
-		diagramModel.fillFrom(conceptualModelDiagram);
-		diagramModel.updateProjectScopeBox();
+		//FIXME dont pass in null
+		diagramPanel = new DiagramPanel(getMainWindow(), getProject(), null);
 		
-		diagram = new DiagramComponent(getMainWindow());
-		diagram.setModel(diagramModel);
-		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
-		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
-		ConceptualModelDiagramSplitPane splitPane = new ConceptualModelDiagramSplitPane(getMainWindow(), diagram);
-
 		//TODO fix tab name
-		addTab("Main Diagram", splitPane);
-		addResultsChainTabs();
+		addTab(diagramPanel.getPanelDescription(), diagramPanel);
+		//addResultsChainTabs();
 	}
 
-	private ConceptualModelDiagram getDiagramObject() throws Exception
-	{
-		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) getProject().getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		ORefList oRefs = diagramContentsPool.getORefList();
-		return getDiagramContentsObject(oRefs);
-	}
-	
-	private ConceptualModelDiagram getDiagramContentsObject(ORefList oRefs) throws Exception
-	{
-		if (oRefs.size() == 0)
-		{
-			BaseId id = getProject().createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-			return (ConceptualModelDiagram) getProject().findObject(new ORef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, id));
-		}
-		if (oRefs.size() > 1)
-		{
-			EAM.logVerbose("Found more than one diagram contents inside pool");
-		}
-
-		ORef oRef = oRefs.get(0);
-		return (ConceptualModelDiagram) getProject().findObject(oRef);
-	}
-
-	private void addResultsChainTabs() throws Exception
-	{
-		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
-		for (int i = 0; i < resultsChains.size(); i++)
-		{
-			DiagramModel diagramModel = new DiagramModel(getProject());
-			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChains.get(i)));
-			diagramModel.fillFrom(resultsChain);
-			
-			DiagramComponent resultsChaindiagram = new DiagramComponent(getMainWindow());
-			resultsChaindiagram.setModel(diagramModel);
-			//FIXME need to create selectionModel and cache
-			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
-			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
-			
-			ResultsChainDiagramSplitPane splitPane = new ResultsChainDiagramSplitPane(getMainWindow(), resultsChaindiagram);
-
-			//TODO fix tab name
-			addTab("Results Chain "+i, splitPane);
-		}
-	}
+	//FIXME need to add results chains
+//	private void addResultsChainTabs() throws Exception
+//	{
+//		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
+//		for (int i = 0; i < resultsChains.size(); i++)
+//		{
+//			DiagramModel diagramModel = new DiagramModel(getProject());
+//			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChains.get(i)));
+//			diagramModel.fillFrom(resultsChain);
+//			
+//			DiagramComponent resultsChaindiagram = new DiagramComponent(getMainWindow());
+//			resultsChaindiagram.setModel(diagramModel);
+//			//FIXME need to create selectionModel and cache
+//			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
+//			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
+//			
+//			ResultsChainDiagramSplitPane splitPane = new ResultsChainDiagramSplitPane(getMainWindow(), resultsChaindiagram);
+//
+//			//TODO fix tab name
+//			addTab("Results Chain "+i, splitPane);
+//		}
+//	}
 	
 	//FIXME should return the model of the currently selected tab
 	public DiagramModel getDiagramModel()
@@ -303,7 +267,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 		getDiagramModel().dispose();
 		getProject().setSelectionModel(null);
-		diagram = null;
+		diagramPanel.dispose();
 		updateToolBar();
 	}
 	
@@ -548,7 +512,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	
 	JSplitPane bigSplitter;
-	DiagramComponent diagram;
+	
 	Properties propertiesDoer;
 	String mode;
 	
