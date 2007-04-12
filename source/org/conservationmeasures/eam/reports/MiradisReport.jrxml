@@ -29,19 +29,19 @@
 			</band>
 		</background>
 		<title>
-			<band height="50"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
-			<band height="50"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</pageHeader>
 		<columnHeader>
-			<band height="30"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="196"  isSplitAllowed="true" >
+			<band height="263"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="38"
@@ -54,40 +54,55 @@
 				</subreport>
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="38"
-						y="79"
+						x="45"
+						y="142"
 						width="403"
 						height="26"
-						key="subreport-1"/>
+						key="subreport-1"
+						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((MiradiDataSource)$P{REPORT_DATA_SOURCE}).getDiagramDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisDiagramReport.jasper")]]></subreportExpression>
 				</subreport>
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="38"
-						y="122"
+						y="78"
 						width="403"
 						height="22"
 						key="subreport-2"/>
 					<dataSourceExpression><![CDATA[((MiradiDataSource)$P{REPORT_DATA_SOURCE}).getViabilityTargetsDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisViabilityTargetsReport.jasper")]]></subreportExpression>
 				</subreport>
+				<break>
+					<reportElement
+						x="0"
+						y="63"
+						width="535"
+						height="0"
+						key="element-1"/>
+				</break>
+				<break>
+					<reportElement
+						x="0"
+						y="122"
+						width="535"
+						height="0"
+						key="element-2"
+						positionType="Float"
+						isPrintWhenDetailOverflows="true"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>
-			<band height="30"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</columnFooter>
 		<pageFooter>
-			<band height="50"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</pageFooter>
-		<lastPageFooter>
-			<band height="50"  isSplitAllowed="true" >
-			</band>
-		</lastPageFooter>
 		<summary>
-			<band height="50"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</summary>
 </jasperReport>
