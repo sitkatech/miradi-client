@@ -48,7 +48,6 @@ public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 	
 	public JRDataSource getViabilityIndicatorsDataSource()
 	{
-		System.out.println("HERE getViabilityIndicatorsDataSource");
 		return new ViabilityIndicatorsDataSource(keas[getCurrentRow()]);
 	}
 	
