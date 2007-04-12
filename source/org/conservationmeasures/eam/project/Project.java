@@ -786,7 +786,7 @@ public class Project
 	public DiagramFactorLinkId addLinkToDiagram(DiagramFactorLinkId diagramFactorLinkId) throws Exception
 	{
 		DiagramFactorLink diagramFactorLink = (DiagramFactorLink) findObject(ObjectType.DIAGRAM_LINK, diagramFactorLinkId);
-		DiagramFactorLink addedDiagramFactorLink = diagramModel.addLinkToDiagram(diagramFactorLink);
+		DiagramFactorLink addedDiagramFactorLink = getDiagramModel().addLinkToDiagram(diagramFactorLink);
 		DiagramFactorLinkId diagramLinkageId = addedDiagramFactorLink.getDiagramLinkageId();
 		
 		return diagramLinkageId;

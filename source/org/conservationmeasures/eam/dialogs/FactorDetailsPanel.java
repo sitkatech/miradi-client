@@ -5,11 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
 import javax.swing.Icon;
-import javax.swing.JCheckBox;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
@@ -96,7 +92,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			return;
 		
 		ObjectDataInputField field = createCheckBoxField(tag, Strategy.STATUS_DRAFT, Strategy.STATUS_REAL);
-		((JCheckBox)field.getComponent()).addItemListener(new StatusChangeHandler());
 		addField(field);
 	}
 
@@ -145,21 +140,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		return detailIcon;
 	}
 
-	class StatusChangeHandler implements ItemListener
-	{
-		public void itemStateChanged(ItemEvent event)
-		{
-			try
-			{
-				getProject().updateVisibilityOfSingleFactor(getCurrentDiagramFactorId());
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
-	}
-	
 	public DiagramFactorId getCurrentDiagramFactorId()
 	{
 		return currentDiagramFactor.getDiagramFactorId();
