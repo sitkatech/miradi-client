@@ -79,6 +79,15 @@ public class TestLogging extends EAMTestCase
 	
 	public void testLogException()
 	{
-		// TODO
+		EAM.setLogToString();
+		try
+		{
+			throw new RuntimeException();
+		}
+		catch(RuntimeException expected)
+		{
+			EAM.logException(expected);
+		}
+		assertContains("Exception", EAM.getLoggedString());
 	}
 }
