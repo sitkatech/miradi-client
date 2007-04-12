@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionShowSelectedChainMode extends MainWindowAction
+public class ActionShowSelectedChainMode extends ViewAction
 {
 	public ActionShowSelectedChainMode(MainWindow mainWindow)
 	{

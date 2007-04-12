@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionNudgeLeft extends MainWindowAction
+public class ActionNudgeLeft extends ViewAction
 {
 	public ActionNudgeLeft(MainWindow mainWindowToUse)
 	{

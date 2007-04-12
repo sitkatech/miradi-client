@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionZoomIn extends MainWindowAction
+public class ActionZoomIn extends ViewAction
 {
 	public ActionZoomIn(MainWindow mainWindow)
 	{

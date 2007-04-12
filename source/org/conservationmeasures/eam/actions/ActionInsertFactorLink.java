@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.icons.FactorLinkIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertFactorLink extends MainWindowAction
+public class ActionInsertFactorLink extends ViewAction
 {
 	public ActionInsertFactorLink(MainWindow mainWindow)
 	{

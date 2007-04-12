@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
 
-public class ActionShowResultsChain extends MainWindowAction
+public class ActionShowResultsChain extends ViewAction
 {
 	public ActionShowResultsChain(MainWindow mainWindow)
 	{

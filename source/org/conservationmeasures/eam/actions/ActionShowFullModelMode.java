@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionShowFullModelMode extends MainWindowAction
+public class ActionShowFullModelMode extends ViewAction
 {
 	public ActionShowFullModelMode(MainWindow mainWindow)
 	{

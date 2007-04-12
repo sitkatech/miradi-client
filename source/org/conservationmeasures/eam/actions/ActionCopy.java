@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCopy extends MainWindowAction
+public class ActionCopy extends ViewAction
 {
 	public ActionCopy(MainWindow mainWindow)
 	{

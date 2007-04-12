@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionZoomOut extends MainWindowAction
+public class ActionZoomOut extends ViewAction
 {
 	public ActionZoomOut(MainWindow mainWindow)
 	{

@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCut extends MainWindowAction
+public class ActionCut extends ViewAction
 {
 	public ActionCut(MainWindow mainWindow)
 	{

@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionSelectAll extends MainWindowAction
+public class ActionSelectAll extends ViewAction
 {
 	public ActionSelectAll(MainWindow mainWindow)
 	{
