@@ -210,6 +210,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addTab(diagramPanel.getPanelDescription(), diagramPanel);
 		//addResultsChainTabs();
 	}
+	
+	public DiagramPanel getDiagramPanel()
+	{
+		return diagramPanel;
+	}
+
 
 	//FIXME need to add results chains
 //	private void addResultsChainTabs() throws Exception
@@ -264,9 +270,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		// TODO: This should completely tear down the view
 		disposeOfNodePropertiesDialog();
 		getDiagramComponent().clearSelection();
-
+		
+		
 		getDiagramModel().dispose();
-		getProject().setSelectionModel(null);
+		
 		diagramPanel.dispose();
 		updateToolBar();
 	}

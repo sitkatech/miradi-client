@@ -29,10 +29,10 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
-public class Delete extends ProjectDoer
+public class Delete extends ViewDoer
 {
 	public Delete()
 	{
@@ -49,13 +49,13 @@ public class Delete extends ProjectDoer
 		if(!getProject().isOpen())
 			return false;
 
-		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
+		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		return (selected.length > 0);
 	}
 
 	public void doIt() throws CommandFailedException
 	{
-		EAMGraphCell[] selectedRelatedCells = getProject().getSelectedAndRelatedCells();
+		EAMGraphCell[] selectedRelatedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{

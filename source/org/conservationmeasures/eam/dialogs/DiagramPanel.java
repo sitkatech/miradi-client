@@ -5,8 +5,15 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Vector;
+
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -42,7 +49,10 @@ public class DiagramPanel extends ObjectDataInputPanel
 		diagram = new DiagramComponent(mainWindow);
 		diagram.setModel(diagramModel);
 		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
-		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
+		selectionModel = diagram.getEAMGraphSelectionModel();
+		
+		//FIXME remove project dependency on selection model
+		getProject().setSelectionModel(selectionModel);
 	}
 	
 	private static ConceptualModelDiagram getDiagramObject(Project project) throws Exception
@@ -67,6 +77,47 @@ public class DiagramPanel extends ObjectDataInputPanel
 		ORef oRef = oRefs.get(0);
 		return (ConceptualModelDiagram) project.findObject(oRef);
 	}
+	
+	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
+	{
+		selectionModel = selectionModelToUse;
+	}
+	
+	public EAMGraphCell[] getSelectedAndRelatedCells()
+	{
+		Object[] selectedCells = selectionModel.getSelectionCells();
+		Vector cellVector = getAllSelectedCellsWithRelatedLinkages(selectedCells);
+		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
+	}
+	
+	//FIXME this same method exists inside project
+	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
+	{
+		DiagramModel model = getDiagramModel();
+		Vector selectedCellsWithLinkages = new Vector();
+		for(int i=0; i < selectedCells.length; ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			if(cell.isFactorLink())
+			{
+				if(!selectedCellsWithLinkages.contains(cell))
+					selectedCellsWithLinkages.add(cell);
+			}
+			else if(cell.isFactor())
+			{
+				Set linkages = model.getFactorLinks((FactorCell)cell);
+				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+				{
+					EAMGraphCell link = (EAMGraphCell) iter.next();
+					if(!selectedCellsWithLinkages.contains(link))
+						selectedCellsWithLinkages.add(link);
+				}
+				selectedCellsWithLinkages.add(cell);
+			}
+		}
+		return selectedCellsWithLinkages;
+	}
+
 
 	public DiagramModel getDiagramModel()
 	{
@@ -85,10 +136,13 @@ public class DiagramPanel extends ObjectDataInputPanel
 
 	public void dispose()
 	{
+		super.dispose();
 		//FIXME dispose properly
 		diagram = null;
+		selectionModel = null;
 	}
 	
+	private EAMGraphSelectionModel selectionModel;
 	private DiagramComponent diagram;
 	private MainWindow mainWindow;
 }
