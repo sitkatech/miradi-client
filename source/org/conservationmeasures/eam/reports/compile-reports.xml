@@ -5,6 +5,7 @@
 	<property name="rootdir" value="../../../../../.."/>
 	<property name="miradi-classes" value="${rootdir}/miradi/bin"/>
 	<property name="thirdparty"  value="${rootdir}/miradi-thirdparty"/>
+	<property name="tempdir" value="${rootdir}/miradi/temp"/>
 	<path id="classpath">
 		<pathelement location="${miradi-classes}"/>
 		<fileset dir="${thirdparty}/Jasper">
@@ -30,7 +31,7 @@
 		<jrc 
 				srcdir="."
 				destdir="."
-				tempdir="./temp"
+				tempdir="${tempdir}"
 				keepjava="true"
 				xmlvalidation="true">
 			<classpath refid="runClasspath"/>
@@ -39,7 +40,7 @@
 	</target> 
 
 	<target name="clean" description="Deletes all the generated files.">
-		<delete dir="./temp" />
+		<delete dir="${tempdir}" />
 	</target>
 
 </project>
