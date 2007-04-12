@@ -824,32 +824,6 @@ public class Project
 		return cells;
 	}
 	
-	public Factor[] getOnlySelectedFactors()
-	{
-		if (selectionModel == null)
-			return new Factor[0];
-		
-		Object[] rawCells = selectionModel.getSelectionCells();
-		return getOnlySelectedFactors(rawCells);
-	}
-	
-	private Factor[] getOnlySelectedFactors(Object[] allSelectedFactors)
-	{
-		Vector nodes = new Vector();
-		for(int i = 0; i < allSelectedFactors.length; ++i)
-		{
-			EAMGraphCell graphCell = ((EAMGraphCell)allSelectedFactors[i]);
-			if(graphCell.isFactor())
-			{
-				ORef ref = graphCell.getDiagramFactor().getWrappedORef();
-				Factor factor = (Factor) findObject(ref);
-				nodes.add(factor);
-			}
-		}
-		return (Factor[])nodes.toArray(new Factor[0]);
-
-	}
-
 	public int getGridSize()
 	{
 		return DEFAULT_GRID_SIZE;

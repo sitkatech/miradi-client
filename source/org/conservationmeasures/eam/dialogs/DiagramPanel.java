@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.ConceptualModelDiagramSplitPane;
 
@@ -176,8 +177,32 @@ public class DiagramPanel extends ObjectDataInputPanel
 		}
 		return (FactorCell[])nodes.toArray(new FactorCell[0]);
 	}
+	
+	public Factor[] getOnlySelectedFactors()
+	{
+		if (selectionModel == null)
+			return new Factor[0];
+		
+		Object[] rawCells = selectionModel.getSelectionCells();
+		return getOnlySelectedFactors(rawCells);
+	}
+	
+	private Factor[] getOnlySelectedFactors(Object[] allSelectedFactors)
+	{
+		Vector nodes = new Vector();
+		for(int i = 0; i < allSelectedFactors.length; ++i)
+		{
+			EAMGraphCell graphCell = ((EAMGraphCell)allSelectedFactors[i]);
+			if(graphCell.isFactor())
+			{
+				ORef ref = graphCell.getDiagramFactor().getWrappedORef();
+				Factor factor = (Factor) getProject().findObject(ref);
+				nodes.add(factor);
+			}
+		}
+		return (Factor[])nodes.toArray(new Factor[0]);
 
-
+	}
 
 	public DiagramModel getDiagramModel()
 	{
