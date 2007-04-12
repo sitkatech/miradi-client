@@ -44,6 +44,11 @@ public class ProjectForTesting extends Project
 		commandStack = new Vector();
 	}
 	
+	public DiagramModel getDiagramModel()
+	{
+		return diagramModel;
+	}
+	
 	protected void finishOpening() throws Exception
 	{
 		super.finishOpening();
