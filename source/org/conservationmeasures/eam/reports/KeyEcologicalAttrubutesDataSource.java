@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 
 public class KeyEcologicalAttrubutesDataSource implements JRDataSource
 {
@@ -64,7 +65,19 @@ public class KeyEcologicalAttrubutesDataSource implements JRDataSource
 
 	public String getData(String name)
 	{
-		return keas[count].getData(name);
+		String value = keas[count].getData(name);
+		if (name.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
+		{
+			value = translateCode(value);
+		}
+		return value;
+	}
+
+	private String translateCode(String value)
+	{
+		KeyEcologicalAttributeTypeQuestion question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+		value =  question.findChoiceByCode(value).getLabel();
+		return value;
 	}
 	
 	class KeaTypeComparator implements Comparator

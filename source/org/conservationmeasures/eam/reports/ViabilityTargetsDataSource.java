@@ -36,7 +36,6 @@ public class ViabilityTargetsDataSource implements JRDataSource
 
 	public boolean next() throws JRException 
 	{
-		System.out.println("HERE next:" );
 		if (--count>=0)
 		{
 			currentTarget = (Target)project.findObject(list.get(count));

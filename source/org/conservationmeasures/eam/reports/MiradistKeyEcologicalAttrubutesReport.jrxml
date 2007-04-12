@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="MiradisViabilityTargetsReport"
+		 name="MiradistKeyEcologicalAttrubutesReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -25,7 +25,33 @@
 
 
 	<field name="Label" class="java.lang.String"/>
+	<field name="KeyEcologicalAttributeType" class="java.lang.String"/>
 
+
+		<group  name="KeyEcologicalAttributeTypeGroup" >
+			<groupExpression><![CDATA[$F{KeyEcologicalAttributeType}]]></groupExpression>
+			<groupHeader>
+			<band height="50"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="86"
+						y="13"
+						width="260"
+						height="16"
+						key="KeyEcologicalAttributeType"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{KeyEcologicalAttributeType}]]></textFieldExpression>
+				</textField>
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -46,27 +72,17 @@
 			<band height="100"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="67"
-						y="19"
-						width="260"
+						x="107"
+						y="22"
+						width="173"
 						height="16"
-						key="Label"/>
+						key="textField-1"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
 				</textField>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="73"
-						y="48"
-						width="260"
-						height="23"
-						key="subreport-1"/>
-					<dataSourceExpression><![CDATA[((ViabilityTargetsDataSource)$P{REPORT_DATA_SOURCE}).getKeyEcologicalAttrubutesDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradistKeyEcologicalAttrubutesReport.jasper")]]></subreportExpression>
-				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
