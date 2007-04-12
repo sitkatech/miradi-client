@@ -29,7 +29,7 @@ public class ViabilityIndicatorsDataSource extends CommonDataSource
 	
 	public Object getFieldValue(JRField field)
 	{
-		return currentIndicator.getData(field.getName());
+		return getValue(field, currentIndicator);
 	}
 
 	public boolean next() throws JRException 

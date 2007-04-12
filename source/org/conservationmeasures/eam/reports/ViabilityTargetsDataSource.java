@@ -32,7 +32,7 @@ public class ViabilityTargetsDataSource extends CommonDataSource
 	
 	public Object getFieldValue(JRField field)
 	{
-		return currentTarget.getData(field.getName());
+		return getValue(field, currentTarget);
 	}
 
 	public boolean next() throws JRException 

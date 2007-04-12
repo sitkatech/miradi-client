@@ -53,13 +53,12 @@ public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 	
 	public Object getFieldValue(JRField field)
 	{
-		String name =field.getName();
-		String value = keas[getCurrentRow()].getData(name);
-		if (name.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
+		if (field.getName().equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
 		{
-			value = translateCode(value);
+			String value = keas[getCurrentRow()].getData(field.getName());
+			return  translateCode(value);
 		}
-		return value;
+		return getValue(field, keas[getCurrentRow()]);
 	}
 
 	private String translateCode(String value)

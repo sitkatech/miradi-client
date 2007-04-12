@@ -23,7 +23,7 @@ public class ViabilityGoalsDataSource extends CommonDataSource
 
 	public Object getFieldValue(JRField field)
 	{
-		return currentGoal.getData(field.getName());
+		return getValue(field, currentGoal);
 	}
 
 	public boolean next() throws JRException 
@@ -37,6 +37,5 @@ public class ViabilityGoalsDataSource extends CommonDataSource
 	}
 
 	ORefList list;
-	Indicator currentIndicator;
 	Goal currentGoal;
 } 
