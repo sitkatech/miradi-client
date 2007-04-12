@@ -206,9 +206,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		//FIXME dont pass in null
 		diagramPanel = new DiagramPanel(getMainWindow(), getProject(), null);
 		
-		//TODO fix tab name
 		addTab(diagramPanel.getPanelDescription(), diagramPanel);
 		//addResultsChainTabs();
+		
+		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 	}
 	
 	public DiagramPanel getDiagramPanel()
@@ -253,31 +254,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	public void deleteTabs() throws Exception
 	{
-	}
-	
-	public void becomeActive() throws Exception
-	{
-		super.becomeActive();
-
-		updateToolBar();
-		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
-	}
-
-	public void becomeInactive() throws Exception
-	{
-		super.becomeInactive();
-		
 		// TODO: This should completely tear down the view
 		disposeOfNodePropertiesDialog();
-		getDiagramComponent().clearSelection();
-		
-		
-		getDiagramModel().dispose();
 		
 		diagramPanel.dispose();
-		updateToolBar();
+		diagramPanel = null;
 	}
-	
 	
 	public void setMode(String newMode)
 	{
