@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
@@ -803,12 +802,7 @@ public class Project
 	{
 		getDiagramModel().moveFactors(deltaX, deltaY, ids);
 	}
-	
-	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
-	{
-		selectionModel = selectionModelToUse;
-	}
-	
+
 	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
 	{
 		return getFactorLinkPool().isLinked(nodeId1, nodeId2);
@@ -952,7 +946,6 @@ public class Project
 	Vector commandExecutedListeners;
 	
 	LayerManager layerManager;
-	EAMGraphSelectionModel selectionModel;
 	DiagramSaver diagramSaver;
 	
 }

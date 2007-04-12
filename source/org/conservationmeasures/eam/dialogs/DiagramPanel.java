@@ -54,9 +54,6 @@ public class DiagramPanel extends ObjectDataInputPanel
 		diagram.setModel(diagramModel);
 		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
 		selectionModel = diagram.getEAMGraphSelectionModel();
-		
-		//FIXME remove project dependency on selection model
-		getProject().setSelectionModel(selectionModel);
 	}
 	
 	private static ConceptualModelDiagram getDiagramObject(Project project) throws Exception
