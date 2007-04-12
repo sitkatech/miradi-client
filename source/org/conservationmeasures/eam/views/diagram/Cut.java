@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -22,8 +24,10 @@ public class Cut extends ViewDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		new Copy(getProject()).copySelectedItemsToClipboard();
-		new Delete(getProject()).doIt();
+		Copy copyDoer = (Copy)getView().getDoer(ActionCopy.class);
+		Delete deleteDoer = (Delete)getView().getDoer(ActionDelete.class);
+		copyDoer.doIt();
+		deleteDoer.doIt();
 	}
 
 }
