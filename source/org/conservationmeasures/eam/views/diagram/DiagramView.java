@@ -355,7 +355,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		ORefList draftsToAdd = new ORefList();
 		
-		DiagramModel diagramModel = getProject().getDiagramModel();
+		DiagramModel diagramModel = getDiagramModel();
 		for(int i = 0; i < factorORefs.size(); ++i)
 		{
 			FactorId nodeId = new FactorId(factorORefs.get(i).getObjectId().asInt());
@@ -404,7 +404,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			return;
 		
 		DiagramFactorLinkId diagramFactorLinkId = (DiagramFactorLinkId) cmd.getObjectId();
-		DiagramModel diagramModel = getProject().getDiagramModel();
+		DiagramModel diagramModel = getDiagramModel();
 		diagramModel.updateCellFromDiagramFactorLink(diagramFactorLinkId);
 	}
 	
@@ -414,7 +414,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			return;
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) cmd.getObjectId();
-		DiagramModel diagramModel = getProject().getDiagramModel();
+		DiagramModel diagramModel = getDiagramModel();
 		diagramModel.updateCellFromDiagramFactor(diagramFactorId);
 	}
 
@@ -448,7 +448,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	void updateScopeIfNeeded(CommandSetObjectData cmd)
 	{
 		if (isScopeTextChange(cmd) || isFactorBoundsChange(cmd))
-			getProject().getDiagramModel().updateProjectScopeBox();
+			getDiagramModel().updateProjectScopeBox();
 	}
 
 	private boolean isScopeTextChange(CommandSetObjectData cmd)
