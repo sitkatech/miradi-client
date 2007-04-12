@@ -12,11 +12,11 @@ import net.sf.jasperreports.engine.JRField;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
-public class DiagramDataSource extends SingleRowDataSource
+public class DiagramDataSource extends CommonDataSource
 {
 	public DiagramDataSource(Project projectToUse)
 	{
-		project = projectToUse;
+		super();
 	}
 	
 	public Object getFieldValue(JRField field)
@@ -31,6 +31,4 @@ public class DiagramDataSource extends SingleRowDataSource
 			return EAM.mainWindow.getDiagramComponent().getImage();
 		return null;
 	}
-	
-	Project project;
 } 

@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -19,20 +18,21 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 
-public class KeyEcologicalAttrubutesDataSource implements JRDataSource
+public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 {
 	public KeyEcologicalAttrubutesDataSource(Target target)
 	{
+		super();
 		project = target.getObjectManager().getProject();
 		if (target.isViabilityModeTNC())
 		{
 			ORefList list = new ORefList(KeyEcologicalAttribute.getObjectType(), target.getKeyEcologicalAttributes());
-			count = list.size();
+			rowCount = list.size();
 			keas = loadSortedKeas(list);
 		}
 		else
 		{
-			count = 0;
+			rowCount = 0;
 			keas = new KeyEcologicalAttribute[0];
 		}
 	}
@@ -50,22 +50,13 @@ public class KeyEcologicalAttrubutesDataSource implements JRDataSource
 	
 	public JRDataSource getViabilityIndicatorsDataSource()
 	{
-		return new ViabilityIndicatorsDataSource(keas[count]);
+		return new ViabilityIndicatorsDataSource(keas[rowCount]);
 	}
 	
-	public Object getFieldValue(JRField field) throws JRException
+	public Object getFieldValue(JRField field)
 	{
-		return getData(field.getName());
-	}
-
-	public boolean next() throws JRException 
-	{
-		return (--count>=0);
-	}
-
-	public String getData(String name)
-	{
-		String value = keas[count].getData(name);
+		String name =field.getName();
+		String value = keas[rowCount].getData(name);
 		if (name.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
 		{
 			value = translateCode(value);
@@ -91,7 +82,6 @@ public class KeyEcologicalAttrubutesDataSource implements JRDataSource
 		}
 	}
 	
-	int count;
 	KeyEcologicalAttribute[] keas;
 	Project project;
 } 

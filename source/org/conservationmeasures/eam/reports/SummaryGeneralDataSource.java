@@ -12,10 +12,11 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 
-public class SummaryGeneralDataSource extends SingleRowDataSource
+public class SummaryGeneralDataSource extends CommonDataSource
 {
 	public SummaryGeneralDataSource(Project projectToUse)
 	{
+		super();
 		project = projectToUse;
 	}
 	
@@ -31,7 +32,7 @@ public class SummaryGeneralDataSource extends SingleRowDataSource
 			return EAM.fieldLabel(ProjectMetadata.getObjectType(), name.substring(LABEL_PREFIX.length()));
 		return project.getMetadata().getData(name);
 	}
-
+	
 	Project project;
 	private static String LABEL_PREFIX = "Label:";
 } 

@@ -14,13 +14,14 @@ import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 
-public class ViabilityTargetsDataSource implements JRDataSource
+public class ViabilityTargetsDataSource extends CommonDataSource
 {
 	public ViabilityTargetsDataSource(Project projectToUse)
 	{
+		super();
 		project = projectToUse;
 		TargetPool pool = project.getTargetPool();
-		count = pool.size();
+		rowCount = pool.size();
 		list = pool.getORefList();
 	}
 	
@@ -29,27 +30,22 @@ public class ViabilityTargetsDataSource implements JRDataSource
 		return new KeyEcologicalAttrubutesDataSource(currentTarget);
 	}
 	
-	public Object getFieldValue(JRField field) throws JRException
+	public Object getFieldValue(JRField field)
 	{
-		return getData(field.getName());
+		return currentTarget.getData(field.getName());
 	}
 
 	public boolean next() throws JRException 
 	{
-		if (--count>=0)
+		if (super.next())
 		{
-			currentTarget = (Target)project.findObject(list.get(count));
+			currentTarget = (Target)project.findObject(list.get(rowCount));
 			return true;
 		}
 		return false;
 	}
 	
-	public String getData(String name)
-	{
-		return currentTarget.getData(name);
-	}
 	
-	int count;
 	ORefList list;
 	Project project;
 	Target currentTarget;

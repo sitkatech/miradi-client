@@ -6,14 +6,15 @@
 package org.conservationmeasures.eam.reports;
 
 import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRField;
 
 import org.conservationmeasures.eam.project.Project;
 
-public class MiradiDataSource extends JREmptyDataSource
+public class MiradiDataSource extends CommonDataSource
 {
 	public MiradiDataSource(Project projectToUse)
 	{
+		super();
 		project = projectToUse;
 	}
 
@@ -32,6 +33,11 @@ public class MiradiDataSource extends JREmptyDataSource
 		return new ViabilityTargetsDataSource(project);
 	}
 
+
+	public Object getFieldValue(JRField field)
+	{
+		return "";
+	}
 	
 	Project project;
 } 

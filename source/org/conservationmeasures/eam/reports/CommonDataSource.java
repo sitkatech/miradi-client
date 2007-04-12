@@ -5,10 +5,23 @@
 */ 
 package org.conservationmeasures.eam.reports;
 
-import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-abstract public class SingleRowDataSource extends JREmptyDataSource
+abstract public class CommonDataSource implements JRDataSource
 {
+	public CommonDataSource()
+	{
+		rowCount=1;
+	}
+	
 	abstract public Object getFieldValue(JRField field);
+	
+	public boolean next() throws JRException 
+	{
+		return (--rowCount>=0);
+	}
+	
+	public int rowCount;
 }

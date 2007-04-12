@@ -5,40 +5,34 @@
 */ 
 package org.conservationmeasures.eam.reports;
 
-import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 
-public class ViabilityIndicatorsDataSource extends CommonDataSource
+public class ViabilityGoalsDataSource extends CommonDataSource
 {
-	public ViabilityIndicatorsDataSource(KeyEcologicalAttribute kea)
+	public ViabilityGoalsDataSource(Indicator indicator)
 	{
 		super();
-		project = kea.getObjectManager().getProject();
-		list = new ORefList(Indicator.getObjectType(), kea.getIndicatorIds());
+		project = indicator.getObjectManager().getProject();
+		list = new ORefList(Indicator.getObjectType(), indicator.getGoalIds());
 		rowCount = list.size();
 	}
 
-	public JRDataSource getViabilityGoalsDataSourceDataSource()
-	{
-		return new ViabilityGoalsDataSource(currentIndicator);
-	}
-	
 	public Object getFieldValue(JRField field)
 	{
-		return currentIndicator.getData(field.getName());
+		return currentGoal.getData(field.getName());
 	}
 
 	public boolean next() throws JRException 
 	{
 		if (super.next())
 		{
-			currentIndicator = (Indicator)project.findObject(list.get(rowCount));
+			currentGoal = (Goal)project.findObject(list.get(rowCount));
 			return true;
 		}
 		return false;
@@ -46,5 +40,6 @@ public class ViabilityIndicatorsDataSource extends CommonDataSource
 
 	ORefList list;
 	Indicator currentIndicator;
+	Goal currentGoal;
 	Project project;
 } 
