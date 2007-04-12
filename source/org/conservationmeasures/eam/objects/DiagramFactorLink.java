@@ -164,7 +164,7 @@ public class DiagramFactorLink extends BaseObject
 			super.setData(fieldTag, dataValue);
 	}
 
-	//FIXME add bend points to dataMap (Kevin)
+	//TODO: Maybe add bend points to dataMap 
 	public FactorLinkDataMap createLinkageDataMap() throws Exception
 	{
 		FactorLinkDataMap dataMap = new FactorLinkDataMap();
