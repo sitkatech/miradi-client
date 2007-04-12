@@ -59,6 +59,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
@@ -324,8 +325,30 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		updateToolBar();
 		getMainWindow().updateStatusBar();
 		getDiagramComponent().clearSelection();
-		getProject().updateVisibilityOfFactors();
+		updateVisibilityOfFactors();
 	}
+	
+	public void updateVisibilityOfFactors()
+	{
+		if (!getMainWindow().getCurrentView().cardName().equals(getViewName()))
+				return;
+		
+		try
+		{
+			DiagramModel model = getDiagramModel();
+			model.updateVisibilityOfFactors();
+			
+			EAMGraphSelectionModel selectionModel = (EAMGraphSelectionModel) getDiagramComponent().getSelectionModel();
+			// TODO: Find a way to avoid the need to test for null here
+			if(selectionModel != null)
+				selectionModel.clearSelection();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
 
 	private ORefList getORefsToHide()
 	{

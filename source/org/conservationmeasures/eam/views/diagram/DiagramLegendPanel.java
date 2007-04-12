@@ -171,7 +171,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		else if (property.equals(SCOPE_BOX_TEXT))
 			manager.setScopeBoxVisible(checkBox.isSelected());
 		
-		mainWindow.getProject().updateVisibilityOfFactors();
+		mainWindow.getDiagramView().updateVisibilityOfFactors();
 		mainWindow.updateStatusBar();
 			
 	}

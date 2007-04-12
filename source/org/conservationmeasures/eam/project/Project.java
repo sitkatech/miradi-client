@@ -965,24 +965,7 @@ public class Project
 		valueToRound -= (valueToRound % incrementToRoundTo);
 		return valueToRound * sign;
 	}
-
-	public void updateVisibilityOfFactors()
-	{
-		try
-		{
-			DiagramModel model = getDiagramModel();
-			model.updateVisibilityOfFactors();
-			
-			// TODO: Find a way to avoid the need to test for null here
-			if(selectionModel != null)
-				selectionModel.clearSelection();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-
+	
 	public void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
 	{
 		getDiagramModel().updateVisibilityOfSingleFactor(diagramFactorId);

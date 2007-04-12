@@ -98,7 +98,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		project.executeCommand(new CommandEndTransaction());
 
 		forceVisibleInLayerManager();
-		project.updateVisibilityOfFactors();
+		getDiagramView().updateVisibilityOfFactors();
 		
 		return diagramFactor;
 	}

@@ -243,7 +243,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			validate();
 			updateTitle();
 			updateStatusBar();
-			getProject().updateVisibilityOfFactors();
+			getDiagramView().updateVisibilityOfFactors();
 		}
 		catch(UnknownCommandException e)
 		{
@@ -272,6 +272,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 	}
 	
+	public DiagramView getDiagramView()
+	{
+		return diagramView;
+	}
+
 	private void fakeViewSwitchForMainWindow()
 	{
 		String currentProjectView = project.getCurrentView();
