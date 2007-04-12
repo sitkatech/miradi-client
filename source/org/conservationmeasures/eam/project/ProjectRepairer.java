@@ -170,7 +170,7 @@ public class ProjectRepairer
 			
 		try
 		{
-			String moveToLocation = EnhancedJsonObject.convertFromPoint(new Point(deltaX, deltaY));
+			String moveToLocation = EnhancedJsonObject.convertFromPoint(expectedLocation);
 			project.setObjectData(diagramFactor.getType(), diagramFactor.getId(), DiagramFactor.TAG_LOCATION, moveToLocation);
 		}
 		catch(Exception e)
