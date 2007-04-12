@@ -346,7 +346,7 @@ public class Project
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
 		objectManager.setObjectData(objectType, objectId, fieldTag, dataValue);
-		if(Factor.isFactor(ObjectType.FACTOR))
+		if(Factor.isFactor(objectType))
 		{
 			DiagramModel model = getDiagramModel();
 			FactorId modelNodeId = new FactorId(objectId.asInt());
