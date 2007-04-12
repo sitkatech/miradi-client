@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
-import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -828,7 +827,7 @@ public class TestProject extends EAMTestCase
 	public void testCreateNewProject() throws Exception
 	{
 		File tempDir = createTempDirectory();
-		Project newProject = new Project(new ProjectServer());
+		ProjectForTesting newProject = new ProjectForTesting(getName());
 		newProject.createOrOpen(tempDir);
 		
 		try
@@ -858,7 +857,7 @@ public class TestProject extends EAMTestCase
 		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
 	}
 
-	public DiagramFactor createNodeAndAddToDiagram(Project projectToUse, int nodeType) throws Exception
+	public DiagramFactor createNodeAndAddToDiagram(ProjectForTesting projectToUse, int nodeType) throws Exception
 	{
 		FactorCommandHelper commandHelper = new FactorCommandHelper(projectToUse, projectToUse.getDiagramModel());
 		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);
