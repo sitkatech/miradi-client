@@ -263,7 +263,8 @@ public class ObjectManager
 		return object.getData(fieldTag);
 	}
 
-	//FIXME iterate through all the pools
+	//NOTE: Can't just iterate through all the pools because 
+	// they have to be loaded in a specific sequence
 	public void loadFromDatabase() throws Exception
 	{
 		loadPool(ObjectType.CAUSE);
