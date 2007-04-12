@@ -107,6 +107,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public DiagramComponent getDiagramComponent()
 	{
+		if(diagramPanel == null)
+			return null;
 		return diagramPanel.getdiagramComponent();
 	}
 
