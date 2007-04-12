@@ -9,6 +9,8 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
 abstract public class CommonDataSource implements JRDataSource
@@ -28,6 +30,23 @@ abstract public class CommonDataSource implements JRDataSource
 		return (currentRow < rowCount);
 	}
 	
+	public Object getValue(JRField field, BaseObject baseObject)
+	{
+		if (isLabelFiedl(field.getName()))
+			return translateToLabel(baseObject.getType(), field.getName());
+		return baseObject.getData(field.getName());
+	}
+	
+	public boolean isLabelFiedl(String name)
+	{
+		return (name.startsWith(LABEL_PREFIX));
+	}
+	
+	public String translateToLabel(int objectType, String name)
+	{
+		return EAM.fieldLabel(objectType, name.substring(LABEL_PREFIX.length()));
+	}
+	
 	public int setCurrentRow(int row)
 	{
 		return currentRow = row;
@@ -43,6 +62,8 @@ abstract public class CommonDataSource implements JRDataSource
 		return rowCount = rows;
 	}
 
+	private static String LABEL_PREFIX = "Label:";
+	
 	private int currentRow;
 	private int rowCount;
 	public Project project;

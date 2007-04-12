@@ -90,6 +90,8 @@
 						width="281"
 						height="22"
 						key="subreport-1"/>
+					<dataSourceExpression><![CDATA[((KeyEcologicalAttrubutesDataSource)$P{REPORT_DATA_SOURCE}).getViabilityIndicatorsDataSource()]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradistViabilityIndicatorReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
