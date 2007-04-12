@@ -44,7 +44,7 @@ public class TNCViabilityFormula
 	public static String getAverageRatingCode(CodeList codes)
 	{
 		int validCount = 0;
-		int total = 0;
+		double total = 0;
 		for(int i = 0; i < codes.size(); ++i)
 		{
 			String code = codes.get(i);
@@ -57,7 +57,7 @@ public class TNCViabilityFormula
 		if(validCount == 0)
 			return StatusQuestion.UNSPECIFIED;
 		
-		double average = ((double)total)/validCount;
+		double average = total/validCount;
 		return getRatingCodeFromValue(average);
 	}
 

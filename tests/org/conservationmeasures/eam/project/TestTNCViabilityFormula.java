@@ -57,18 +57,21 @@ public class TestTNCViabilityFormula extends TestCaseEnhanced
 				new CodeList(new String[] {StatusQuestion.POOR})));
 		assertEquals(StatusQuestion.POOR, TNCViabilityFormula.getAverageRatingCode(
 				new CodeList(new String[] {StatusQuestion.POOR, StatusQuestion.UNSPECIFIED})));
-		assertEquals(StatusQuestion.POOR, TNCViabilityFormula.getAverageRatingCode(
+		assertEquals(StatusQuestion.FAIR, TNCViabilityFormula.getAverageRatingCode(
 				new CodeList(new String[] {StatusQuestion.POOR, StatusQuestion.FAIR})));
 		assertEquals(StatusQuestion.FAIR, TNCViabilityFormula.getAverageRatingCode(
 				new CodeList(new String[] {StatusQuestion.POOR, StatusQuestion.FAIR, 
 						StatusQuestion.FAIR, StatusQuestion.FAIR})));
 		assertEquals(StatusQuestion.FAIR, TNCViabilityFormula.getAverageRatingCode(
 				new CodeList(new String[] {StatusQuestion.FAIR})));
-		assertEquals(StatusQuestion.FAIR, TNCViabilityFormula.getAverageRatingCode(
+		assertEquals(StatusQuestion.GOOD, TNCViabilityFormula.getAverageRatingCode(
 				new CodeList(new String[] {StatusQuestion.FAIR, StatusQuestion.GOOD})));
 		assertEquals(StatusQuestion.GOOD, TNCViabilityFormula.getAverageRatingCode(
-				new CodeList(new String[] {StatusQuestion.GOOD})));
+				new CodeList(new String[] {StatusQuestion.GOOD, StatusQuestion.GOOD, 
+						StatusQuestion.GOOD, StatusQuestion.FAIR})));
 		assertEquals(StatusQuestion.GOOD, TNCViabilityFormula.getAverageRatingCode(
+				new CodeList(new String[] {StatusQuestion.GOOD})));
+		assertEquals(StatusQuestion.VERY_GOOD, TNCViabilityFormula.getAverageRatingCode(
 				new CodeList(new String[] {StatusQuestion.GOOD, StatusQuestion.VERY_GOOD})));
 		assertEquals(StatusQuestion.VERY_GOOD, TNCViabilityFormula.getAverageRatingCode(
 				new CodeList(new String[] {StatusQuestion.GOOD, StatusQuestion.VERY_GOOD, 
