@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -117,6 +118,20 @@ public class DiagramPanel extends ObjectDataInputPanel
 		}
 		return selectedCellsWithLinkages;
 	}
+	
+	public void selectFactor(FactorId idToUse)
+	{
+		try
+		{
+			FactorCell nodeToSelect = getDiagramModel().getFactorCellByWrappedId(idToUse);
+			selectionModel.setSelectionCell(nodeToSelect);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
 
 
 	public DiagramModel getDiagramModel()

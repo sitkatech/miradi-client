@@ -62,7 +62,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
     protected void selectNewFactor(FactorId idToUse)
 	{
-		getProject().selectFactor(idToUse);
+		getDiagramView().getDiagramPanel().selectFactor(idToUse);
 	}
 	
 	void launchPropertiesEditor(DiagramFactor diagramFactor) throws Exception, CommandFailedException

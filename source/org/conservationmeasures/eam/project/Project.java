@@ -812,13 +812,6 @@ public class Project
 	{
 		selectionModel = selectionModelToUse;
 	}
-	
-	public EAMGraphCell[] getSelectedAndRelatedCells()
-	{
-		Object[] selectedCells = selectionModel.getSelectionCells();
-		Vector cellVector = getAllSelectedCellsWithRelatedLinkages(selectedCells);
-		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
-	}
 
 	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
 	{

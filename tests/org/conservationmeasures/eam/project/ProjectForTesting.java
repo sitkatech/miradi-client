@@ -6,12 +6,15 @@
 package org.conservationmeasures.eam.project;
 
 import java.io.File;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -202,7 +205,34 @@ public class ProjectForTesting extends Project
 		ORef oRef = oRefs.get(0);
 		return (ConceptualModelDiagram) findObject(oRef);
 	}
-
+	
+	//FIXME there is a duplicate of this method inside DiagraPanel
+	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
+	{
+		DiagramModel model = getDiagramModel();
+		Vector selectedCellsWithLinkages = new Vector();
+		for(int i=0; i < selectedCells.length; ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			if(cell.isFactorLink())
+			{
+				if(!selectedCellsWithLinkages.contains(cell))
+					selectedCellsWithLinkages.add(cell);
+			}
+			else if(cell.isFactor())
+			{
+				Set linkages = model.getFactorLinks((FactorCell)cell);
+				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+				{
+					EAMGraphCell link = (EAMGraphCell) iter.next();
+					if(!selectedCellsWithLinkages.contains(link))
+						selectedCellsWithLinkages.add(link);
+				}
+				selectedCellsWithLinkages.add(cell);
+			}
+		}
+		return selectedCellsWithLinkages;
+	}
 	
 	Vector commandStack;
 }

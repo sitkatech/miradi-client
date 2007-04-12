@@ -7,16 +7,16 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 
-public class Cut extends ProjectDoer
+public class Cut extends ViewDoer
 {
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
 			return false;
 
-		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
+		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		return (selected.length > 0);
 	}
 

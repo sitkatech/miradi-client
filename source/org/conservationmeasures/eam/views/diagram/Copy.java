@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 
-public class Copy extends ProjectDoer
+public class Copy extends ViewDoer
 {
 	public Copy()
 	{
@@ -29,7 +29,7 @@ public class Copy extends ProjectDoer
 		if(!getProject().isOpen())
 			return false;
 
-		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
+		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		return (selected.length > 0);
 	}
 
@@ -41,7 +41,7 @@ public class Copy extends ProjectDoer
 
 	public void copySelectedItemsToClipboard()
 	{
-		EAMGraphCell[] selectedCells = getProject().getSelectedAndRelatedCells();
+		EAMGraphCell[] selectedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		if(selectedCells.length == 0)
 			return;
 		TransferableEamList eamList = new TransferableEamList(getProject().getFilename(), selectedCells);
