@@ -11,6 +11,9 @@
 		<fileset dir="${thirdparty}/Jasper">
 			<include name="**/*.jar"/>
 		</fileset>
+		<fileset dir="${thirdparty}/Jasper-compile">
+			<include name="**/*.jar"/>
+		</fileset>
 	</path>
 	
 	<path id="runClasspath">
