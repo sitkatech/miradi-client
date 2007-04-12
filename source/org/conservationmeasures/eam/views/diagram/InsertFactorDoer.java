@@ -42,7 +42,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		
 		try
 		{
-			FactorCell[] selectedFactors = getProject().getOnlySelectedFactorCells();
+			FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 			DiagramFactor diagramFactor = insertFactorItself();
 			FactorId id = diagramFactor.getWrappedId();
 			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET))
@@ -74,7 +74,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 		Point createAt = getLocation();
 		Project project = getProject();
-		FactorCell[] selectedNodes = project.getOnlySelectedFactorCells();
+		FactorCell[] selectedNodes = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 
 		project.executeCommand(new CommandBeginTransaction());
 		int factorType = getTypeToInsert();

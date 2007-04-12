@@ -22,7 +22,7 @@ public class SelectChain extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		FactorCell[] selectedFactors = getProject().getOnlySelectedFactorCells();
+		FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 		DiagramFactorLink[] selectedLinks = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		int combinedLengths = selectedLinks.length + selectedFactors.length;
 		
@@ -57,8 +57,7 @@ public class SelectChain extends ViewDoer
 
 	private static void selectChainBasedOnFactorSelection(DiagramPanel diagramPanel) throws Exception
 	{
-		Project project = diagramPanel.getProject();
-		FactorCell[] selectedFactors = project.getOnlySelectedFactorCells();
+		FactorCell[] selectedFactors = diagramPanel.getOnlySelectedFactorCells();
 		for(int i = 0; i < selectedFactors.length; ++i)
 		{
 			FactorCell selectedFactor = selectedFactors[i];

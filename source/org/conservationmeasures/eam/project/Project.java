@@ -850,15 +850,7 @@ public class Project
 
 	}
 
-	public FactorCell[] getOnlySelectedFactorCells()
-	{
-		if(selectionModel == null)
-			return new FactorCell[0];
-		
-		Object[] rawCells = selectionModel.getSelectionCells();
-		return getOnlySelectedFactorCells(rawCells);
-	}
-
+	//FIXME duplicate code exists inside DiagramPanel.  remove this copy when done
 	public FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
 	{
 		Vector nodes = new Vector();
@@ -879,6 +871,7 @@ public class Project
 	{
 		return getSnapped(new Point(x, y));
 	}
+	
 	
 	public Point getSnapped(Point point)
 	{

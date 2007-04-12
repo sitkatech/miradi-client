@@ -110,7 +110,7 @@ public class CreateResultsChainDoer extends ViewDoer
 	//TODO use chain instead of just selected
 	private DiagramFactor[] createChainBasedOnFactorSelection() throws Exception
 	{
-		FactorCell[] selectedFactorCells = getProject().getOnlySelectedFactorCells();
+		FactorCell[] selectedFactorCells = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 		Vector selectedFactorIds = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 			selectedFactorIds.add(selectedFactorCells[i].getDiagramFactor());

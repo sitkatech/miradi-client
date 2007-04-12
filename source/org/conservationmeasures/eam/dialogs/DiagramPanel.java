@@ -156,6 +156,28 @@ public class DiagramPanel extends ObjectDataInputPanel
 		}
 		return (DiagramFactorLink[])linkages.toArray(new DiagramFactorLink[0]);
 	}
+	
+	public FactorCell[] getOnlySelectedFactorCells()
+	{
+		if(selectionModel == null)
+			return new FactorCell[0];
+		
+		Object[] rawCells = selectionModel.getSelectionCells();
+		return getOnlySelectedFactorCells(rawCells);
+	}
+	
+	public FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
+	{
+		Vector nodes = new Vector();
+		for(int i = 0; i < allSelectedCells.length; ++i)
+		{
+			if(((EAMGraphCell)allSelectedCells[i]).isFactor())
+				nodes.add(allSelectedCells[i]);
+		}
+		return (FactorCell[])nodes.toArray(new FactorCell[0]);
+	}
+
+
 
 	public DiagramModel getDiagramModel()
 	{
