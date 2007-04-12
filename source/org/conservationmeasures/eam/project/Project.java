@@ -942,19 +942,6 @@ public class Project
 			availableResources[i] = getResourcePool().find(resourceIds.get(i));
 		return availableResources;
 	}
-
-	public void selectFactor(FactorId idToUse)
-	{
-		try
-		{
-			FactorCell nodeToSelect = diagramModel.getFactorCellByWrappedId(idToUse);
-			selectionModel.setSelectionCell(nodeToSelect);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
 	
 	public DiagramClipboard getDiagramClipboard()
 	{
