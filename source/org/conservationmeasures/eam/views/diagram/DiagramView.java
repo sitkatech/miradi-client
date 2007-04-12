@@ -61,6 +61,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -131,17 +132,17 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	public BufferedImage getImage()
 	{
-		return diagram.getImage();
+		return getDiagramComponent().getImage();
 	}
 	
 	public JComponent getPrintableComponent()
 	{
-		return diagram.getPrintableComponent();
+		return getDiagramComponent().getPrintableComponent();
 	}
 	
 	public BaseObject getSelectedObject()
 	{
-		FactorCell node = diagram.getSelectedFactor();
+		FactorCell node = getDiagramComponent().getSelectedFactor();
 		if(node == null)
 			return null;
 		return node.getUnderlyingObject();
@@ -154,7 +155,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void addDiagramViewDoersToMap()
 	{
-		propertiesDoer = new Properties(diagram);
+		propertiesDoer = new Properties(getDiagramComponent());
 
 		addDoerToMap(ActionInsertTarget.class, new InsertTargetDoer());
 		addDoerToMap(ActionInsertContributingFactor.class, new InsertContributingFactorDoer());
@@ -272,7 +273,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	//FIXME should return the model of the currently selected tab
 	public DiagramModel getDiagramModel()
 	{
-		return diagram.getDiagramModel();
+		return getDiagramComponent().getDiagramModel();
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
@@ -298,7 +299,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		// TODO: This should completely tear down the view
 		disposeOfNodePropertiesDialog();
-		diagram.clearSelection();
+		getDiagramComponent().clearSelection();
 
 		getDiagramModel().dispose();
 		getProject().setSelectionModel(null);
@@ -465,7 +466,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private void refreshIfNeeded(CommandSetObjectData cmd)
 	{
 		// may have added or removed a stress, modified an Annotation short label, etc.
-		diagram.repaint(diagram.getBounds());
+		getDiagramComponent().repaint(getDiagramComponent().getBounds());
 	}
 	
 	void updateScopeIfNeeded(CommandSetObjectData cmd)
@@ -509,11 +510,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(nodePropertiesDlg != null)
 			disposeOfNodePropertiesDialog();
 		
-		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), diagram);
+		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getDiagramComponent());
 		String title = EAM.text("Title|Factor Properties");
 		nodePropertiesDlg = new ModelessDialogWithClose(getMainWindow(), nodePropertiesPanel, title);
 		
-		nodePropertiesPanel.setCurrentDiagramFactor(diagram, node);
+		nodePropertiesPanel.setCurrentDiagramFactor(getDiagramComponent(), node);
 		nodePropertiesPanel.selectTab(startingTabIdentifier);
 		nodePropertiesDlg.pack();
 		
@@ -535,7 +536,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(nodePropertiesDlg == null)
 			return;
 		
-		FactorCell selectedNode = diagram.getSelectedFactor();
+		FactorCell selectedNode = getDiagramComponent().getSelectedFactor();
 		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentDiagramFactor()))
 			disposeOfNodePropertiesDialog();
 	}
@@ -551,6 +552,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	Properties propertiesDoer;
 	String mode;
 	
+	DiagramPanel diagramPanel;
 	ModelessDialogWithClose nodePropertiesDlg;
 	FactorPropertiesPanel nodePropertiesPanel;
 }
