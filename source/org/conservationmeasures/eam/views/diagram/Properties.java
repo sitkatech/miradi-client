@@ -8,12 +8,14 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ProjectScopePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 
@@ -45,7 +47,7 @@ public class Properties extends LocationDoer
 
 		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
 		if(selected.isFactor())
-			doFactorProperties(selected.getDiagramFactor(), getLocation());
+			doFactorProperties((FactorCell)selected, getLocation());
 		
 		else if(selected.isProjectScope())
 			doProjectScopeProperties();
@@ -67,42 +69,49 @@ public class Properties extends LocationDoer
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	void doFactorProperties(DiagramFactor selectedFactor, Point at) throws CommandFailedException
+	void doFactorProperties(FactorCell selectedFactorCell, Point at) throws CommandFailedException
 	{
-		DiagramView view = (DiagramView)getView();
-		view.showNodeProperties(selectedFactor, getTabToStartOn(selectedFactor, at));
+		int tabToStartOn = getTabToStartOn(selectedFactorCell, at);
+		DiagramFactor diagramFactor = selectedFactorCell.getDiagramFactor();
+		doFactorProperties(diagramFactor, tabToStartOn);
 	}
 
-	private int getTabToStartOn(DiagramFactor factor, Point at)
+	void doFactorProperties(DiagramFactor diagramFactor, int tabToStartOn)
 	{
+		DiagramView view = (DiagramView)getView();
+		view.showNodeProperties(diagramFactor, tabToStartOn);
+	}
+
+	// TODO: The tab should probably be computed elsewhere?
+	private int getTabToStartOn(FactorCell factorCell, Point at)
+	{
+		DiagramFactor factor = factorCell.getDiagramFactor();
+		if(at == null)
+			return FactorPropertiesPanel.TAB_DETAILS;
 		
-//FIXME should be done else where		
-//		if(at == null)
-//			return FactorPropertiesPanel.TAB_DETAILS;
-//		
-//		Point cellOrigin = factor.getLocation();
-//		at.translate(-cellOrigin.x, -cellOrigin.y);
-//		EAM.logDebug(at.toString());
-//		if(factor.isPointInObjective(at))
-//		{
-//			EAM.logDebug("Objective");
-//			return FactorPropertiesPanel.TAB_OBJECTIVES;
-//		}
-//		if (factor.isPointInViability(at))
-//		{
-//			EAM.logDebug("ViabilityModeTNC");
-//			return FactorPropertiesPanel.TAB_VIABILITY;
-//		}
-//		if(factor.isPointInIndicator(at))
-//		{
-//			EAM.logDebug("Indicator");
-//			return FactorPropertiesPanel.TAB_INDICATORS;
-//		}
-//		if(factor.isPointInGoal(at))
-//		{
-//			EAM.logDebug("Goal");
-//			return FactorPropertiesPanel.TAB_GOALS;
-//		}
+		Point cellOrigin = factor.getLocation();
+		at.translate(-cellOrigin.x, -cellOrigin.y);
+		EAM.logDebug(at.toString());
+		if(factorCell.isPointInObjective(at))
+		{
+			EAM.logDebug("Objective");
+			return FactorPropertiesPanel.TAB_OBJECTIVES;
+		}
+		if (factorCell.isPointInViability(at))
+		{
+			EAM.logDebug("ViabilityModeTNC");
+			return FactorPropertiesPanel.TAB_VIABILITY;
+		}
+		if(factorCell.isPointInIndicator(at))
+		{
+			EAM.logDebug("Indicator");
+			return FactorPropertiesPanel.TAB_INDICATORS;
+		}
+		if(factorCell.isPointInGoal(at))
+		{
+			EAM.logDebug("Goal");
+			return FactorPropertiesPanel.TAB_GOALS;
+		}
 		
 		return FactorPropertiesPanel.TAB_DETAILS;
 	}

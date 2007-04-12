@@ -67,7 +67,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	void launchPropertiesEditor(DiagramFactor diagramFactor) throws Exception, CommandFailedException
 	{
-		getDiagramView().getPropertiesDoer().doFactorProperties(diagramFactor, null);
+		getDiagramView().getPropertiesDoer().doFactorProperties(diagramFactor, 0);
 	}
 
 	private DiagramFactor insertFactorItself() throws Exception
