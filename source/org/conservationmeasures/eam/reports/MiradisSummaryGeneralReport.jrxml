@@ -27,6 +27,7 @@
 	<field name="ProjectName" class="java.lang.String"/>
 	<field name="ProjectScope" class="java.lang.String"/>
 	<field name="ShortProjectScope" class="java.lang.String"/>
+	<field name="Label:ProjectName" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -61,8 +62,8 @@
 			<band height="255"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="59"
-						y="47"
+						x="260"
+						y="46"
 						width="126"
 						height="21"
 						key="ProjectName"/>
@@ -108,6 +109,19 @@
 					<dataSourceExpression><![CDATA[((SummaryGeneralDataSource)$P{REPORT_DATA_SOURCE}).getSummaryTeamDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisSummaryTeamReport.jasper")]]></subreportExpression>
 				</subreport>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="59"
+						y="46"
+						width="163"
+						height="21"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:ProjectName}]]></textFieldExpression>
+				</textField>
 			</band>
 		</detail>
 		<columnFooter>

@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.reports;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRField;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 
 public class SummaryGeneralDataSource extends SingleRowDataSource
@@ -24,8 +26,12 @@ public class SummaryGeneralDataSource extends SingleRowDataSource
 	
 	public Object getFieldValue(JRField field)
 	{
-		return project.getMetadata().getData(field.getName());
+		String name = field.getName();
+		if (name.startsWith(LABEL_PREFIX))
+			return EAM.fieldLabel(ProjectMetadata.getObjectType(), name.substring(LABEL_PREFIX.length()));
+		return project.getMetadata().getData(name);
 	}
 
 	Project project;
+	private static String LABEL_PREFIX = "Label:";
 } 
