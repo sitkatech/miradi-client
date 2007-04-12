@@ -61,7 +61,6 @@ import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -235,11 +234,6 @@ public class Project
 		diagramModel = modelToUse;
 	}
 
-	public DiagramObject getDiagramObject()
-	{
-		return getDiagramModel().getDiagramObject();
-	}
-	
 	public LayerManager getLayerManager()
 	{
 		return layerManager;

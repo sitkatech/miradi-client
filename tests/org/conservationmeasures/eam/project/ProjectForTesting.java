@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramObject;
 
 
 
@@ -47,6 +48,11 @@ public class ProjectForTesting extends Project
 	public DiagramModel getDiagramModel()
 	{
 		return diagramModel;
+	}
+	
+	public DiagramObject getDiagramObject()
+	{
+		return getDiagramModel().getDiagramObject();
 	}
 	
 	protected void finishOpening() throws Exception
