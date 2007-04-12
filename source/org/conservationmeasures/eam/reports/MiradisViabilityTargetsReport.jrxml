@@ -56,7 +56,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="81"  isSplitAllowed="true" >
+			<band height="83"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="67"
@@ -72,13 +72,13 @@
 				</textField>
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="73"
-						y="48"
+						x="67"
+						y="43"
 						width="260"
 						height="23"
 						key="subreport-1"/>
 					<dataSourceExpression><![CDATA[((ViabilityTargetsDataSource)$P{REPORT_DATA_SOURCE}).getKeyEcologicalAttrubutesDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradistKeyEcologicalAttrubutesReport.jasper")]]></subreportExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisKeyEcologicalAttrubutesReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
