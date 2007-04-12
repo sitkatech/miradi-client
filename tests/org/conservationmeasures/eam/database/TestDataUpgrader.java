@@ -195,8 +195,7 @@ public class TestDataUpgrader extends EAMTestCase
 		String linkIdsAsString = readIn30.getString("DiagramFactorLinkIds");
 		IdList diagramFactorLinkIds = new IdList(linkIdsAsString);
 		assertEquals("same size?", 2, diagramFactorLinkIds.size());
-		//TODO rename to more understandable names
-		//FIXME write test to check the content of both lists (nima)
+		//FIXME: write test to check the content of both lists (nima)
 	}
 	
 	public void testUpgradeTo17creatingObjects19FromDiagramsMainFile() throws Exception
