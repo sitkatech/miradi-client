@@ -5,8 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -15,6 +14,7 @@ import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TNCViabilityFormula;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -174,53 +174,51 @@ public class Target extends Factor
 	
 	public String computeTNCViability()
 	{
-		HashMap categoryKeaRatings = new HashMap();
+		CodeList ratingForEachType = new CodeList();
 		
-		IdList keas = getKeyEcologicalAttributes();
-		for(int i = 0; i < keas.size(); ++i)
+		CodeList allCodes = getActiveKeyEcologicalAttributeTypes();
+		for(int i = 0; i < allCodes.size(); ++i)
 		{
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)objectManager.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keas.get(i));
-			String category = kea.getData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
-			if(category.equals(StatusQuestion.UNSPECIFIED))
+			String code = allCodes.get(i);
+			if(code.equals(StatusQuestion.UNSPECIFIED))
 				continue;
-			
-			CodeList codesForCategory = (CodeList)categoryKeaRatings.get(category);
-			if(codesForCategory == null)
-			{
-				codesForCategory = new CodeList();
-				categoryKeaRatings.put(category, codesForCategory);
-			}
+			ratingForEachType.add(computeTNCViabilityOfKEAType(allCodes.get(i)));
+		}
 
-			String keaViability = kea.getData(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS);
-			codesForCategory.add(keaViability);
-		}
-		
-		CodeList categorySummaryRatings = new CodeList();
-		Iterator iter = categoryKeaRatings.keySet().iterator();
-		while(iter.hasNext())
-		{
-			String category = (String)iter.next();
-			CodeList keaCodes = (CodeList)categoryKeaRatings.get(category);
-			String categoryRating = TNCViabilityFormula.getTotalCategoryRatingCode(keaCodes);
-			categorySummaryRatings.add(categoryRating);
-		}
-		
-		return TNCViabilityFormula.getAverageRatingCode(categorySummaryRatings);
+		return TNCViabilityFormula.getAverageRatingCode(ratingForEachType);
 	}
 	
-		static public String computeTNCViability(KeyEcologicalAttribute[] keas)
+	public String computeTNCViabilityOfKEAType(String typeCode)
 	{
+		KeyEcologicalAttribute[] keas = getKeasForType(typeCode);
 		CodeList codes = new CodeList();
 		for(int i = 0; i < keas.length; ++i)
 		{
 			codes.add(keas[i].computeTNCViability());
 		}
-		return TNCViabilityFormula.getAverageRatingCode(codes);
+		return TNCViabilityFormula.getTotalCategoryRatingCode(codes);
 	}
 	
 	
-	static public String computeTNCViability(Target[] targets)
+	public KeyEcologicalAttribute[] getKeasForType(String typeCode)
 	{
+		IdList keyEcologicalAttributes = getKeyEcologicalAttributes();
+		int childCount = keyEcologicalAttributes.size();
+		Vector KeyEcologicalAttributes = new Vector();
+		for(int i = 0; i < childCount; ++i)
+		{
+			BaseId keaId = keyEcologicalAttributes.get(i);
+			KeyEcologicalAttribute kea = objectManager.getKeyEcologicalAttributePool().find(keaId);
+			if (kea.getKeyEcologicalAttributeType().equals(typeCode))
+				KeyEcologicalAttributes.add(kea);
+		}
+		
+		return (KeyEcologicalAttribute[])KeyEcologicalAttributes.toArray(new KeyEcologicalAttribute[0]);
+	}
+	
+	static public String computeTNCViability(Project project)
+	{
+		Target[] targets = project.getTargetPool().getTargets();
 		CodeList codes = new CodeList();
 		for(int i = 0; i < targets.length; ++i)
 		{
@@ -228,6 +226,22 @@ public class Target extends Factor
 		}
 		return TNCViabilityFormula.getAverageRatingCode(codes);
 	}
+	
+	public CodeList getActiveKeyEcologicalAttributeTypes()
+	{
+		CodeList allCodes = new CodeList();
+		IdList keas = getKeyEcologicalAttributes();
+		for(int i = 0; i < keas.size(); ++i)
+		{
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)objectManager.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keas.get(i));
+			String category = kea.getData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+			if(!allCodes.contains(category))
+				allCodes.add(category);
+		}
+
+		return allCodes;
+	}
+	
 	
 	
 	public int getType()

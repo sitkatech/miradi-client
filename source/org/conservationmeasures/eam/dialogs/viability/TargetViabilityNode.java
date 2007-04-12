@@ -13,8 +13,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class TargetViabilityNode extends TreeTableNode
@@ -75,10 +75,10 @@ public class TargetViabilityNode extends TreeTableNode
 	public void rebuild()
 	{
 		Vector vector = new Vector();
-		ChoiceItem[] items = target.getKeyEcologicalAttributesTypes();
-		for (int i=0; i< items.length; ++i)
+		CodeList types = target.getActiveKeyEcologicalAttributeTypes();
+		for (int i=0; i< types.size(); ++i)
 		{
-			vector.add(new KeyEcologicalAttributeTypeNode(project, items[i].getCode(), target));
+			vector.add(new KeyEcologicalAttributeTypeNode(project, target, types.get(i)));
 		}
 		children = vector;
 	}

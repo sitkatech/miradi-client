@@ -55,7 +55,7 @@ public class ViabilityProjectNode extends TreeTableNode
 	{
 		if (ViabilityTreeModel.columnTags[column].equals("Status"))
 		{
-			String code = Target.computeTNCViability(getTargetList());
+			String code = Target.computeTNCViability(project);
 			return statusQuestion.findChoiceByCode(code);
 		}
 		
@@ -83,16 +83,6 @@ public class ViabilityProjectNode extends TreeTableNode
 		children = vector;
 	}
 	
-	
-	private Target[] getTargetList()
-	{
-		Target[] targets = new Target[children.size()];
-		for(int i = 0; i < children.size(); ++i)
-		{
-			targets[i] = (Target)((TargetViabilityNode)children.get(i)).getObject();
-		}
-		return targets;
-	}
 	
 	private StatusQuestion statusQuestion;
 	private Project project;

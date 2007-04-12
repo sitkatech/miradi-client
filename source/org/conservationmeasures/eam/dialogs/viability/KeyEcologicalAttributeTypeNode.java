@@ -9,7 +9,6 @@ package org.conservationmeasures.eam.dialogs.viability;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -21,7 +20,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 {
-	public KeyEcologicalAttributeTypeNode(Project projectToUse, String typeCodeToUse, Target targetToUse)
+	public KeyEcologicalAttributeTypeNode(Project projectToUse, Target targetToUse, String typeCodeToUse)
 	{
 		project = projectToUse;
 		target = targetToUse;
@@ -62,7 +61,7 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 	{
 		if (ViabilityTreeModel.columnTags[column].equals("Status"))
 		{
-			String code = Target.computeTNCViability(getKeaList());
+			String code = target.computeTNCViabilityOfKEAType(typeCode);
 			return statusQuestion.findChoiceByCode(code);
 		}
 		return "";
@@ -86,28 +85,13 @@ public class KeyEcologicalAttributeTypeNode extends TreeTableNode
 	
 	public void rebuild()
 	{
-		IdList keyEcologicalAttributes = target.getKeyEcologicalAttributes();
-		int childCount = keyEcologicalAttributes.size();
+		KeyEcologicalAttribute[] keas = target.getKeasForType(typeCode);
+		
 		Vector KeyEcologicalAttributesVector = new Vector();
-		for(int i = 0; i < childCount; ++i)
-		{
-			BaseId keaId = keyEcologicalAttributes.get(i);
-			KeyEcologicalAttribute kea = project.getKeyEcologicalAttributePool().find(keaId);
-			if (kea.getKeyEcologicalAttributeType().equals(typeCode))
-				KeyEcologicalAttributesVector.add(new KeyEcologicalAttributeNode(project, kea));
-		}
+		for(int i = 0; i < keas.length; ++i)
+			KeyEcologicalAttributesVector.add(new KeyEcologicalAttributeNode(project, keas[i]));
 		
 		keaNodes = (KeyEcologicalAttributeNode[])KeyEcologicalAttributesVector.toArray(new KeyEcologicalAttributeNode[0]);
-	}
-	
-	private KeyEcologicalAttribute[] getKeaList()
-	{
-		KeyEcologicalAttribute[] keas = new KeyEcologicalAttribute[keaNodes.length];
-		for(int i = 0; i < keaNodes.length; ++i)
-		{
-			keas[i] = (KeyEcologicalAttribute)keaNodes[i].getObject();
-		}
-		return keas;
 	}
 	
 	private Project project;
