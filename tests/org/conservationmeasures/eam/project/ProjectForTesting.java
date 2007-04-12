@@ -206,6 +206,18 @@ public class ProjectForTesting extends Project
 		return (ConceptualModelDiagram) findObject(oRef);
 	}
 	
+//	FIXME duplicate code exists inside DiagramPanel.  remove this copy when done
+	public FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
+	{
+		Vector nodes = new Vector();
+		for(int i = 0; i < allSelectedCells.length; ++i)
+		{
+			if(((EAMGraphCell)allSelectedCells[i]).isFactor())
+				nodes.add(allSelectedCells[i]);
+		}
+		return (FactorCell[])nodes.toArray(new FactorCell[0]);
+	}
+	
 	//FIXME there is a duplicate of this method inside DiagraPanel
 	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
 	{
