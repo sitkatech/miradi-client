@@ -203,6 +203,15 @@ public class DiagramPanel extends ObjectDataInputPanel
 		return (Factor[])nodes.toArray(new Factor[0]);
 
 	}
+	
+	public EAMGraphCell[] getOnlySelectedCells()
+	{
+		Object[] rawCells = selectionModel.getSelectionCells();
+		EAMGraphCell[] cells = new EAMGraphCell[rawCells.length];
+		for(int i=0; i < cells.length; ++i)
+			cells[i] = (EAMGraphCell)rawCells[i];
+		return cells;
+	}
 
 	public DiagramModel getDiagramModel()
 	{

@@ -41,7 +41,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			return false;
 		}
 
-		if(getProject().getOnlySelectedCells().length < 1)
+		if(getDiagramView().getDiagramPanel().getOnlySelectedCells().length < 1)
 			return false;
 		
 		return true;
@@ -59,7 +59,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			DiagramPanel diagramPanel = view.getDiagramPanel();
 			DiagramComponent diagram = view.getDiagramComponent();
 			
-			if (project.getOnlySelectedCells().length == 1)
+			if (diagramPanel.getOnlySelectedCells().length == 1)
 				SelectChain.selectAllChainsRelatedToAllSelectedCells(diagramPanel);
 
 			FactorCell[] orphanedDaftStrats = getOrphanedDraftStrategies(project, view, diagram);

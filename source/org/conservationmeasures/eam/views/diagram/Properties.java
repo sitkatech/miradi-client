@@ -24,7 +24,7 @@ public class Properties extends LocationDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		EAMGraphCell[] selected = getProject().getOnlySelectedCells();
+		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getOnlySelectedCells();
 		if(selected.length != 1)
 			return false;
 		if(selected[0].isFactor() || selected[0].isProjectScope())
@@ -43,7 +43,7 @@ public class Properties extends LocationDoer
 		if(!isAvailable())
 			return;
 
-		EAMGraphCell selected = getProject().getOnlySelectedCells()[0];
+		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
 		if(selected.isFactor())
 			doFactorProperties(selected.getDiagramFactor(), getLocation());
 		

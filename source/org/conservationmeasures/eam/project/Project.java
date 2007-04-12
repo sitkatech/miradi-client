@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
-import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
@@ -813,15 +812,6 @@ public class Project
 	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
 	{
 		return getFactorLinkPool().isLinked(nodeId1, nodeId2);
-	}
-
-	public EAMGraphCell[] getOnlySelectedCells()
-	{
-		Object[] rawCells = selectionModel.getSelectionCells();
-		EAMGraphCell[] cells = new EAMGraphCell[rawCells.length];
-		for(int i=0; i < cells.length; ++i)
-			cells[i] = (EAMGraphCell)rawCells[i];
-		return cells;
 	}
 	
 	public int getGridSize()
