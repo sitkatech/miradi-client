@@ -30,7 +30,7 @@ public class CreateBendPointDoer extends LocationDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		DiagramFactorLink[] selectedLinks = getProject().getOnlySelectedLinks();
+		DiagramFactorLink[] selectedLinks = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		if (selectedLinks.length != 1)
 			return false;
 		
@@ -61,7 +61,7 @@ public class CreateBendPointDoer extends LocationDoer
 			diagram = getDiagramView().getDiagramComponent();
 			cache = diagram.getGraphLayoutCache();
 			
-			DiagramFactorLink selectedLink = getProject().getOnlySelectedLinks()[0];
+			DiagramFactorLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
 			Point newBendPoint = getNewBendPointLocation(selectedLink);
 			PointList newListWithBendPoint = getNewBendPointList(selectedLink, newBendPoint);
 			

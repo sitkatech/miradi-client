@@ -21,7 +21,7 @@ public class DeleteBendPointDoer extends LocationDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		DiagramFactorLink[] links = getProject().getOnlySelectedLinks();
+		DiagramFactorLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		if (links.length != 1)
 			return false;
 		
@@ -42,7 +42,7 @@ public class DeleteBendPointDoer extends LocationDoer
 	
 	private void deleteBendPoint() throws CommandFailedException
 	{
-		DiagramFactorLink[] links = getProject().getOnlySelectedLinks();
+		DiagramFactorLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		DiagramFactorLink diagramFactorLink = links[0];
 		DiagramFactorLinkId linkId = diagramFactorLink.getDiagramLinkageId();
 		

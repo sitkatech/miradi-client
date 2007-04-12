@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -55,10 +56,11 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		{	
 			Project project = getMainWindow().getProject();
 			DiagramView view = (DiagramView)getView();
+			DiagramPanel diagramPanel = view.getDiagramPanel();
 			DiagramComponent diagram = view.getDiagramComponent();
 			
 			if (project.getOnlySelectedCells().length == 1)
-				SelectChain.selectAllChainsRelatedToAllSelectedCells(diagram);
+				SelectChain.selectAllChainsRelatedToAllSelectedCells(diagramPanel);
 
 			FactorCell[] orphanedDaftStrats = getOrphanedDraftStrategies(project, view, diagram);
 			FactorCell[] selectedNodes = project.getOnlySelectedFactorCells();

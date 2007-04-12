@@ -23,7 +23,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
@@ -870,31 +869,7 @@ public class Project
 		}
 		return (FactorCell[])nodes.toArray(new FactorCell[0]);
 	}
-	
-	public DiagramFactorLink[] getOnlySelectedLinks()
-	{
-		if(selectionModel == null)
-			return new DiagramFactorLink[0];
-		
-		Object[] rawCells = selectionModel.getSelectionCells();
-		return getOnlySelectedLinks(rawCells);
-	}
-	
-	public DiagramFactorLink[] getOnlySelectedLinks(Object [] allSelectedCells)
-	{
-		Vector linkages = new Vector();
-		for(int i = 0; i < allSelectedCells.length; ++i)
-		{
-			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
-			{
-				LinkCell cell = (LinkCell)allSelectedCells[i];
-				linkages.add(cell.getDiagramFactorLink());
-			}
-		}
-		return (DiagramFactorLink[])linkages.toArray(new DiagramFactorLink[0]);
-	}
-
-	
+			
 	public int getGridSize()
 	{
 		return DEFAULT_GRID_SIZE;
