@@ -26,7 +26,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 		setLeftComponent(legendPanel);
 		setDividerLocation(legendPanel.getPreferredSize().width);
 		
-		//FIXME this should be be here
+		//FIXME this should not be here
 		Dimension dimension = new Dimension(900, 600);
 		setMinimumSize(dimension);
 		setPreferredSize(dimension);

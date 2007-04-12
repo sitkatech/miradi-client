@@ -177,7 +177,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File file30 = new File(objects19, "30");
 		createFile(file30, objects19Content);
 		
-		//TODO when fixing the below FIXME use the method to build the manigest instead of the below 
+		//TODO when fixing the below FIXME use the method to build the manifest instead of the below 
 		String objects19ManifestContent = " {\"Type\":\"ObjectManifest\",\"30\":true}";
 		File objects19ManifestFile = new File(objects19, "manifest");
 		createFile(objects19ManifestFile, objects19ManifestContent);
