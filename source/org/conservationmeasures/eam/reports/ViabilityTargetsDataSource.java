@@ -16,8 +16,9 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ViabilityTargetsDataSource implements JRDataSource
 {
-	public ViabilityTargetsDataSource(Project project)
+	public ViabilityTargetsDataSource(Project projectToUse)
 	{
+		project = projectToUse;
 		TargetPool pool = project.getTargetPool();
 		count = pool.size();
 		list = pool.getORefList();
@@ -35,6 +36,7 @@ public class ViabilityTargetsDataSource implements JRDataSource
 
 	public boolean next() throws JRException 
 	{
+		System.out.println("HERE next:" );
 		if (--count>=0)
 		{
 			currentTarget = (Target)project.findObject(list.get(count));

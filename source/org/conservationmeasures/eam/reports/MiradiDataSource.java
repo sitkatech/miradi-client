@@ -26,6 +26,11 @@ public class MiradiDataSource extends JREmptyDataSource
 	{
 		return new DiagramDataSource(project);
 	}
+	
+	public JRDataSource getViabilityTargetsDataSource()
+	{
+		return new ViabilityTargetsDataSource(project);
+	}
 
 	
 	Project project;

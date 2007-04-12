@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="MiradisReport"
+		 name="MiradisViabilityTargetsReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -24,6 +24,8 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
+	<field name="Label" class="java.lang.String"/>
+
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -41,37 +43,20 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="196"  isSplitAllowed="true" >
-				<subreport  isUsingCache="true">
+			<band height="100"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="38"
-						y="28"
-						width="402"
-						height="26"
-						key="subreport"/>
-					<dataSourceExpression><![CDATA[((MiradiDataSource)$P{REPORT_DATA_SOURCE}).getSummaryGeneranlDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisSummaryGeneralReport.jasper")]]></subreportExpression>
-				</subreport>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="38"
-						y="79"
-						width="403"
-						height="26"
-						key="subreport-1"/>
-					<dataSourceExpression><![CDATA[((MiradiDataSource)$P{REPORT_DATA_SOURCE}).getDiagramDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisDiagramReport.jasper")]]></subreportExpression>
-				</subreport>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="38"
-						y="122"
-						width="403"
-						height="22"
-						key="subreport-2"/>
-					<dataSourceExpression><![CDATA[((MiradiDataSource)$P{REPORT_DATA_SOURCE}).getViabilityTargetsDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisViabilityTargetsReport.jasper")]]></subreportExpression>
-				</subreport>
+						x="67"
+						y="19"
+						width="260"
+						height="16"
+						key="Label"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
+				</textField>
 			</band>
 		</detail>
 		<columnFooter>
