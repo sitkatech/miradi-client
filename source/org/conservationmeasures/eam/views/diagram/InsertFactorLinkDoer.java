@@ -34,7 +34,8 @@ public class InsertFactorLinkDoer extends ViewDoer
 		if (!isDiagramView())
 			return false;
 		
-		return (getMainWindow().getDiagramComponent().getDiagramModel().getFactorCount() >= 2);
+		
+		return (getDiagramView().getDiagramModel().getFactorCount() >= 2);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -44,7 +45,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		if(!dialog.getResult())
 			return;
 		
-		DiagramModel model = getMainWindow().getDiagramComponent().getDiagramModel();
+		DiagramModel model = getDiagramView().getDiagramModel();
 		DiagramFactor fromDiagramFactor = dialog.getFrom();
 		DiagramFactor toDiagramFactor = dialog.getTo();
 		

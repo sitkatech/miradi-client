@@ -78,7 +78,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 
 		project.executeCommand(new CommandBeginTransaction());
 		int factorType = getTypeToInsert();
-		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getMainWindow().getDiagramComponent().getDiagramModel());
+		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getDiagramView().getDiagramModel());
 		DiagramFactorId id = (DiagramFactorId) factorCommandHelper.createFactorAndDiagramFactor(factorType).getCreatedId();
 		
 		DiagramFactor addedFactor = (DiagramFactor)getProject().findObject(DiagramFactor.getObjectType(), id);
@@ -124,7 +124,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	private Rectangle getDiagramVisibleRect()
 	{
-		DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
+		DiagramComponent diagramComponent = getDiagramView().getDiagramComponent();
 		Rectangle visibleRectangle = diagramComponent.getVisibleRect();
 		return visibleRectangle;
 	}
