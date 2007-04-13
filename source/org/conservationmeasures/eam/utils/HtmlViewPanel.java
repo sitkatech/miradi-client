@@ -55,8 +55,16 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		initVars(mainWindowToUse, titleToUse, handlerToUse);
 	}
 	
+	public HtmlViewPanel(MainWindow mainWindowToUse, String title, String text, int width)
+	{
+		this(mainWindowToUse, title, text);
+		forcedWidth = width;
+	}
+
 	private void initVars(MainWindow mainWindowToUse, String titleToUse, HtmlFormEventHandler handlerToUse)
 	{
+		// Choose a "reasonable" width, a bit narrower than the screen
+		forcedWidth = getAvailableSize().width - 200;
 		viewTitle = titleToUse;
 		delegateFormHandler = handlerToUse;
 		mainWindow = mainWindowToUse;
@@ -93,10 +101,6 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 	private void calculateHeight(EAMDialog dlg, Container contents, HtmlFormViewer bodyComponent, JComponent buttonBar)
 	{
-		// Choose a "reasonable" width, a bit narrower than the screen
-		Dimension availableSize = Utilities.getViewableRectangle().getSize();
-		final int forcedWidth = availableSize.width - 200;
-		
 		// Compute dialog size based on that fixed content width
 		bodyComponent.setFixedWidth(bodyComponent, forcedWidth);
 		Dimension preferredContentSize = contents.getPreferredSize();
@@ -105,13 +109,18 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 		// Prevent dialog from being larger than the available screen space
 		Dimension candidateDialogSize = dlg.getPreferredSize();
-		candidateDialogSize.width = Math.min(candidateDialogSize.width, availableSize.width);
-		candidateDialogSize.height = Math.min(candidateDialogSize.height, availableSize.width);
+		candidateDialogSize.width = Math.min(candidateDialogSize.width, getAvailableSize().width);
+		candidateDialogSize.height = Math.min(candidateDialogSize.height, getAvailableSize().width);
 		
 		// TODO: If the dialog is too wide and not very tall, retry with a narrower width 
 
 		// Make it so
 		dlg.setSize(candidateDialogSize);
+	}
+
+	private Dimension getAvailableSize()
+	{
+		return Utilities.getViewableRectangle().getSize();
 	}
 
 
@@ -226,6 +235,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		
 	}
 
+	private int forcedWidth;
 	private String viewTitle;
 	private Class resourceClass;
 	private String htmlText;
