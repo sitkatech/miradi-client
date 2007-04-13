@@ -74,12 +74,12 @@ abstract public class CommonDataSource implements JRDataSource
 	
 	public Object getValue(JRField field, BaseObject baseObject)
 	{
-		if (isLabelFiedl(field.getName()))
+		if (isLabelField(field.getName()))
 			return translateToLabel(baseObject.getType(), field.getName());
 		return baseObject.getData(field.getName());
 	}
-	
-	public boolean isLabelFiedl(String name)
+
+	public boolean isLabelField(String name)
 	{
 		return (name.startsWith(LABEL_PREFIX));
 	}
@@ -104,7 +104,7 @@ abstract public class CommonDataSource implements JRDataSource
 		return rowCount = rows;
 	}
 	
-	//FIXME: The special case logic can be simplified is we can support a dummy object...Fake()
+	// This would be simpler if we made two base classes this one, and one for where the objects are managed outside the the class.
 	public BaseObject getCurrentObject()
 	{
 		if (objectList==null)
