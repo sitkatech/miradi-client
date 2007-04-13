@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.TNCViabilityFormula;
+import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -47,10 +48,14 @@ public class KeyEcologicalAttribute extends BaseObject
 		indicatorIds = new IdListData();
 		description = new StringData();
 		keyEcologicalAttributeType = new StringData();
+		psuedoViabilityStatus = new PsuedoStringData(PSEUDO_TAG_VIABILITY_STATUS);
+		keyEcologicalAttributeTypeLabel = new PsuedoStringData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL);
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);
 		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, keyEcologicalAttributeType);
+		addField(PSEUDO_TAG_VIABILITY_STATUS, psuedoViabilityStatus);
+		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL, keyEcologicalAttributeTypeLabel);
 	}
 	
 	public int getType()
@@ -105,12 +110,19 @@ public class KeyEcologicalAttribute extends BaseObject
 		return keyEcologicalAttributeType.toString();
 	}
 	
-	public String getData(String fieldTag)
+	public Object getPsuedoData(String fieldTag)
 	{
-		if(fieldTag.equals(PSUEDO_TAG_VIABILITY_STATUS))
+		if(fieldTag.equals(PSEUDO_TAG_VIABILITY_STATUS))
 			return computeTNCViability();
-		
-		return super.getData(fieldTag);
+		if (fieldTag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL))
+			return translateStatusCode();
+		return "";
+	}
+	
+	private String translateStatusCode()
+	{
+		KeyEcologicalAttributeTypeQuestion question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+		return  question.findChoiceByCode(keyEcologicalAttributeType.get()).getLabel();
 	}
 	
 	public String computeTNCViability()
@@ -128,11 +140,15 @@ public class KeyEcologicalAttribute extends BaseObject
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_DESCRIPTION = "Description";
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
-	public static final String PSUEDO_TAG_VIABILITY_STATUS = "PseudoTagViabilityStatus";
-	
+	//TODO: not sure if we need the work Pseudo in the label any longer
+	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL = "KeyEcologicalAttributeTypeLabel";
+	public static final String PSEUDO_TAG_VIABILITY_STATUS = "PseudoTagViabilityStatus";
+
 	public static final String OBJECT_NAME = "Key Ecological Attribute";
 	
 	IdListData indicatorIds;
 	StringData description;
 	StringData keyEcologicalAttributeType;
+	PsuedoStringData keyEcologicalAttributeTypeLabel;
+	PsuedoStringData psuedoViabilityStatus;
 }

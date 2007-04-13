@@ -25,26 +25,39 @@
 
 
 	<field name="Label" class="java.lang.String"/>
-	<field name="KeyEcologicalAttributeType" class="java.lang.String"/>
+	<field name="KeyEcologicalAttributeTypeLabel" class="java.lang.String"/>
 
 
 		<group  name="KeyEcologicalAttributeTypeGroup" >
-			<groupExpression><![CDATA[$F{KeyEcologicalAttributeType}]]></groupExpression>
+			<groupExpression><![CDATA[$F{KeyEcologicalAttributeTypeLabel}]]></groupExpression>
 			<groupHeader>
 			<band height="35"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="86"
+						x="191"
 						y="13"
-						width="260"
+						width="193"
 						height="16"
 						key="KeyEcologicalAttributeType"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{KeyEcologicalAttributeType}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{KeyEcologicalAttributeTypeLabel}]]></textFieldExpression>
 				</textField>
+				<staticText>
+					<reportElement
+						x="34"
+						y="10"
+						width="99"
+						height="18"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[KEA TYPE:]]></text>
+				</staticText>
 			</band>
 			</groupHeader>
 			<groupFooter>

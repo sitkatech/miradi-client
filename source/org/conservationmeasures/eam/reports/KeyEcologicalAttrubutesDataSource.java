@@ -9,12 +9,10 @@ import java.text.Collator;
 import java.util.Comparator;
 
 import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JRField;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 
 public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 {
@@ -36,24 +34,6 @@ public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 	public JRDataSource getViabilityIndicatorsDataSource()
 	{
 		return new ViabilityIndicatorsDataSource((KeyEcologicalAttribute)getCurrentObject());
-	}
-	
-	//TODO: if we put psuedo fields int the objects for direct question code translation then this method and traslateCode method can go aways here and else where.
-	public Object getFieldValue(JRField field)
-	{
-		if (field.getName().equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
-		{
-			String value = getCurrentObject().getData(field.getName());
-			return  translateCode(value);
-		}
-		return getValue(field, getCurrentObject());
-	}
-
-	private String translateCode(String value)
-	{
-		KeyEcologicalAttributeTypeQuestion question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
-		value =  question.findChoiceByCode(value).getLabel();
-		return value;
 	}
 	
 	class KeaTypeComparator implements Comparator

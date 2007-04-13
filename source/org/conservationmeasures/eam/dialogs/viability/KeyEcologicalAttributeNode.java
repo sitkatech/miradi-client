@@ -56,7 +56,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 	{
 		String tag = COLUMN_TAGS[column];
 		String rawValue = project.getObjectData(getType(), getObjectReference().getObjectId(), tag);
-		if(tag.equals(KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS))
+		if(tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS))
 		{
 			ChoiceItem choice = new StatusQuestion(tag).findChoiceByCode(rawValue);
 			return choice.getLabel();
@@ -91,7 +91,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 	
 	public static final String[] COLUMN_TAGS = {
 		KeyEcologicalAttribute.TAG_LABEL,
-		KeyEcologicalAttribute.PSUEDO_TAG_VIABILITY_STATUS, 
+		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS, 
 		};
 	
 

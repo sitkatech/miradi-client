@@ -569,6 +569,46 @@ abstract public class BaseObject
 		return outArray;
 	}
 	
+	
+	public Object getPsuedoData(String fieldTag)
+	{
+		return "";
+	}
+	
+	public class PsuedoStringData  extends StringData
+	{
+
+		public PsuedoStringData(String tag)
+		{
+			psuedoTag = tag;
+		}
+
+		public void set(String newValue) throws Exception
+		{
+		}
+
+		public String get()
+		{
+			return (String) getPsuedoData(psuedoTag);
+		}
+		
+		public boolean equals(Object rawOther)
+		{
+			if(!(rawOther instanceof StringData))
+				return false;
+			
+			StringData other = (StringData)rawOther;
+			return getPsuedoData(psuedoTag).equals(other.toString());
+		}
+
+		public int hashCode()
+		{
+			return getPsuedoData(psuedoTag).hashCode();
+		}
+		
+		String psuedoTag;
+	}
+	
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	
