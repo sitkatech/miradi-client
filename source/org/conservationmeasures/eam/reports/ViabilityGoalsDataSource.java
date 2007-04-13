@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.reports;
 
-import net.sf.jasperreports.engine.JRField;
-
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Indicator;
 
@@ -17,10 +15,5 @@ public class ViabilityGoalsDataSource extends CommonDataSource
 		super(indicator.getObjectManager().getProject());
 		ORefList list = new ORefList(Indicator.getObjectType(), indicator.getGoalIds());
 		setObjectList(list);
-	}
-
-	public Object getFieldValue(JRField field)
-	{
-		return getValue(field, getCurrentObject());
 	}
 } 
