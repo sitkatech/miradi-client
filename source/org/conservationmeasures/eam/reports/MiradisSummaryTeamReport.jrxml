@@ -31,7 +31,7 @@
 			</band>
 		</background>
 		<title>
-			<band height="51"  isSplitAllowed="true" >
+			<band height="41"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="40"
@@ -56,14 +56,16 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="40"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+			<band height="19"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="77"
-						y="14"
+						x="0"
+						y="0"
 						width="126"
 						height="15"
-						key="TeamName"/>
+						key="TeamName"
+						positionType="Float"
+						isRemoveLineWhenBlank="true"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
