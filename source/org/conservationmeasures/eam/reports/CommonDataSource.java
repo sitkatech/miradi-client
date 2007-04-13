@@ -35,10 +35,9 @@ abstract public class CommonDataSource implements JRDataSource
 	
 	public void setSingleObject(ORef oref)
 	{
-		setRowCount(1);
 		ORefList list = new ORefList();
 		list.add(oref);
-		objectList = loadObjects(list);
+		setObjectList(list);
 	}
 	
 	public BaseObject[] loadObjects(ORefList list)
@@ -105,7 +104,7 @@ abstract public class CommonDataSource implements JRDataSource
 		return rowCount = rows;
 	}
 	
-	//FIXME: The special case logic for row management where the objects are not managed here can be better
+	//FIXME: The special case logic can be simplified is we can support a dummy object...Fake()
 	public BaseObject getCurrentObject()
 	{
 		if (objectList==null)
