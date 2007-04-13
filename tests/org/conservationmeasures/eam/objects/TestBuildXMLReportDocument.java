@@ -107,7 +107,6 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 		String[] tags = object.getFieldTags();
 		for(int i = 0; i < tags.length; ++i)
 		{
-			//TODO: needs to call translation on tag first
 			writeData(getTextFieldElement("Label:"+tags[i]));
 			fieldDefs.add(getTextFieldDefElement("Label:"+tags[i]));
 			writeLineReturn();
