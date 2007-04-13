@@ -5,17 +5,14 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import java.io.File;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.reports.MiradiReport;
-import org.conservationmeasures.eam.utils.EAMPDFFileChooser;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
-public class ExportPDFProjectReportFileDoer extends MainWindowDoer
+public class ExportProjectReportFileDoer extends MainWindowDoer
 {
 	public boolean isAvailable() 
 	{
@@ -33,15 +30,10 @@ public class ExportPDFProjectReportFileDoer extends MainWindowDoer
 
 	static public void perform(MainWindow mainWindow) throws CommandFailedException
 	{
-		EAMPDFFileChooser eamFileChooser = new EAMPDFFileChooser(mainWindow);
-		File chosen = eamFileChooser.displayChooser();
-		if (chosen==null) return;
-		
 		try 
 		{
-			new MiradiReport(mainWindow.getProject()).getPDFReport(
-					EAM.getResourcePath(MiradiReport.class, "MiradisReport.jasper"),
-					chosen.getPath());
+			new MiradiReport(mainWindow.getProject()).getReport(
+					EAM.getResourcePath(MiradiReport.class, "MiradisReport.jasper"));
 		} 
 		catch (Exception e) 
 		{

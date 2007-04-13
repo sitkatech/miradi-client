@@ -114,8 +114,7 @@ public class Actions
 		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionCopyProjectTo(mainWindow));
 		registerAction(new ActionExportZippedProjectFile(mainWindow));
-		registerAction(new ActionExportRTFProjectReportFile(mainWindow));
-		registerAction(new ActionExportPDFProjectReportFile(mainWindow));
+		registerAction(new ActionExportProjectReportFile(mainWindow));
 		registerAction(new ActionImportZippedProjectFile(mainWindow));
 		registerAction(new ActionImportTncCapWorkbook(mainWindow));
 		registerAction(new ActionProperties(mainWindow));

@@ -29,8 +29,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportBudgetTableTree;
-import org.conservationmeasures.eam.actions.ActionExportPDFProjectReportFile;
-import org.conservationmeasures.eam.actions.ActionExportRTFProjectReportFile;
+import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
 import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
@@ -151,8 +150,7 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_E);
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
-		addMenuItem(actions, menu, ActionExportRTFProjectReportFile.class, KeyEvent.VK_R);
-		addMenuItem(actions, menu, ActionExportPDFProjectReportFile.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionExportProjectReportFile.class, KeyEvent.VK_P);
 		
 		addMenuItem(actions, menu, ActionExportBudgetTableTree.class, KeyEvent.VK_F);
 		

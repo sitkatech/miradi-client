@@ -1,13 +1,14 @@
 package org.conservationmeasures.eam.reports;
 
+import java.awt.Dialog;
+import java.awt.Dimension;
 import java.util.HashMap;
 
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRExporterParameter;
-import net.sf.jasperreports.engine.JasperExportManager;
+import javax.swing.JDialog;
+
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.export.JRRtfExporter;
+import net.sf.jasperreports.view.JRViewer;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -18,13 +19,14 @@ public class MiradiReport
 	{
 		project = projectToUse;
 	}
-	
-	public void getPDFReport(String reportFile, String fileOut)
+
+	public void getReport(String reportFile)
 	{
 		try
 		{
-			JasperPrint print = getJasperPrint(reportFile);
-			JasperExportManager.exportReportToPdfFile(print,fileOut);
+			HashMap parameters = new HashMap();
+			JasperPrint print = JasperFillManager.fillReport(reportFile, parameters, new MiradiDataSource(project));
+			getReport(print);
 		}
 		catch (Exception e)
 		{
@@ -32,30 +34,15 @@ public class MiradiReport
 		}
 	}
 
-
-	public void getRTFReport(String reportFile, String fileOut)
+	private void getReport(JasperPrint jPrint)
 	{
-		try
-		{
-			JasperPrint print = getJasperPrint(reportFile);
-			JRRtfExporter exporter = new JRRtfExporter();
-			exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
-			exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, fileOut);		    		   
-			exporter.exportReport();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+        Dialog g = new JDialog();
+        g.setUndecorated(false);
+        g.add(new JRViewer(jPrint));
+        g.pack();
+        g.setSize(new Dimension(900,600));
+        g.setVisible(true);
 	}
-	
-	private JasperPrint getJasperPrint(String reportFile) throws JRException
-	{
-		HashMap parameters = new HashMap();
-		JasperPrint print = JasperFillManager.fillReport(reportFile, parameters, new MiradiDataSource(project));
-		return print;
-	}
-	
 	
 	Project project;
 }

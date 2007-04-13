@@ -8,21 +8,21 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionExportPDFProjectReportFile extends MainWindowAction
+public class ActionExportProjectReportFile extends MainWindowAction
 {
-	public ActionExportPDFProjectReportFile(MainWindow mainWindowToUse)
+	public ActionExportProjectReportFile(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Miradi PDF Report File");
+		return EAM.text("Action|MiradiReport File");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Miradi PDF Report File");
+		return EAM.text("TT|MiradiReport File");
 	}
 
 }
