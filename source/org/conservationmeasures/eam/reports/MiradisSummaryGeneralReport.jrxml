@@ -106,8 +106,8 @@
 						width="402"
 						height="22"
 						key="subreport"/>
-					<dataSourceExpression><![CDATA[((SummaryGeneralDataSource)$P{REPORT_DATA_SOURCE}).getSummaryTeamDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisSummaryTeamReport.jasper")]]></subreportExpression>
+					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.SummaryGeneralDataSource)$P{REPORT_DATA_SOURCE}).getSummaryTeamDataSource()]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisSummaryTeamReport.jasper")]]></subreportExpression>
 				</subreport>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement

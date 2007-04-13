@@ -77,8 +77,8 @@
 						width="260"
 						height="23"
 						key="subreport-1"/>
-					<dataSourceExpression><![CDATA[((ViabilityTargetsDataSource)$P{REPORT_DATA_SOURCE}).getKeyEcologicalAttrubutesDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[EAM.getResourcePath(MiradiReport.class, "MiradisKeyEcologicalAttrubutesReport.jasper")]]></subreportExpression>
+					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.ViabilityTargetsDataSource)$P{REPORT_DATA_SOURCE}).getKeyEcologicalAttrubutesDataSource()]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisKeyEcologicalAttrubutesReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
