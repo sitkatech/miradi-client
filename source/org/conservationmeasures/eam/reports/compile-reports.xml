@@ -31,6 +31,7 @@
 	</target> 
 -->
 	<target name="compile1" description="Compiles report designs specified using the &quot;srcdir&quot; in the &lt;jrc&gt; tag. Generated .jasper files keep their relative location and are placed in directory structure similar to the source files structure."> 
+		<mkdir dir="${tempdir}"/>
 		<jrc 
 				srcdir="."
 				destdir="."
