@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.reports;
 
 import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JRField;
 
 import org.conservationmeasures.eam.project.Project;
 
@@ -21,10 +20,5 @@ public class SummaryGeneralDataSource extends CommonDataSource
 	public JRDataSource getSummaryTeamDataSource()
 	{
 		return new SummaryTeamDataSource(project);
-	}
-	
-	public Object getFieldValue(JRField field)
-	{
-		return getValue(field, getCurrentObject());
 	}
 } 
