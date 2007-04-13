@@ -5,11 +5,9 @@
 */ 
 package org.conservationmeasures.eam.reports;
 
-import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 
 public class ViabilityGoalsDataSource extends CommonDataSource
@@ -17,25 +15,12 @@ public class ViabilityGoalsDataSource extends CommonDataSource
 	public ViabilityGoalsDataSource(Indicator indicator)
 	{
 		super(indicator.getObjectManager().getProject());
-		list = new ORefList(Indicator.getObjectType(), indicator.getGoalIds());
-		setRowCount(list.size());
+		ORefList list = new ORefList(Indicator.getObjectType(), indicator.getGoalIds());
+		setObjectList(list);
 	}
 
 	public Object getFieldValue(JRField field)
 	{
-		return getValue(field, currentGoal);
+		return getValue(field, getCurrentObject());
 	}
-
-	public boolean next() throws JRException 
-	{
-		if (super.next())
-		{
-			currentGoal = (Goal)project.findObject(list.get(getCurrentRow()));
-			return true;
-		}
-		return false;
-	}
-
-	ORefList list;
-	Goal currentGoal;
 } 

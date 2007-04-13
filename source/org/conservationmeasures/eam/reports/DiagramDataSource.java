@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.reports;
 
 import java.awt.Image;
 
-import net.sf.jasperreports.engine.JRField;
-
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
@@ -18,12 +16,7 @@ public class DiagramDataSource extends CommonDataSource
 	{
 		super(project);
 	}
-	
-	public Object getFieldValue(JRField field)
-	{
-		return "";
-	}
-	
+
 	public Image getDiagramImage()
 	{
 		//FIXME: currently getDiagramComponent returns null if not in the diagram view

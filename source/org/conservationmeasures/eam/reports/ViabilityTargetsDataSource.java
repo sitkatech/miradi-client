@@ -6,8 +6,6 @@
 package org.conservationmeasures.eam.reports;
 
 import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRField;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.TargetPool;
@@ -21,32 +19,12 @@ public class ViabilityTargetsDataSource extends CommonDataSource
 		super(projectToUse);
 		project = projectToUse;
 		TargetPool pool = project.getTargetPool();
-		list = pool.getORefList();
-		setRowCount(list.size());
+		ORefList list = pool.getORefList();
+		setObjectList(list);
 	}
 	
 	public JRDataSource getKeyEcologicalAttrubutesDataSource()
 	{
-		return new KeyEcologicalAttrubutesDataSource(currentTarget);
+		return new KeyEcologicalAttrubutesDataSource((Target)getCurrentObject());
 	}
-	
-	public Object getFieldValue(JRField field)
-	{
-		return getValue(field, currentTarget);
-	}
-
-	public boolean next() throws JRException 
-	{
-		if (super.next())
-		{
-			currentTarget = (Target)project.findObject(list.get(getCurrentRow()));
-			return true;
-		}
-		return false;
-	}
-	
-	
-	ORefList list;
-	Project project;
-	Target currentTarget;
 } 

@@ -15,6 +15,7 @@ public class SummaryGeneralDataSource extends CommonDataSource
 	public SummaryGeneralDataSource(Project project)
 	{
 		super(project);
+		setSingleObject(project.getMetadata().getRef());
 	}
 	
 	public JRDataSource getSummaryTeamDataSource()
@@ -24,6 +25,6 @@ public class SummaryGeneralDataSource extends CommonDataSource
 	
 	public Object getFieldValue(JRField field)
 	{
-		return getValue(field, project.getMetadata());
+		return getValue(field, getCurrentObject());
 	}
 } 
