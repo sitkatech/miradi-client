@@ -38,6 +38,7 @@ public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 		return new ViabilityIndicatorsDataSource((KeyEcologicalAttribute)getCurrentObject());
 	}
 	
+	//TODO: if we put psuedo fields int the objects for direct question code translation then this method and traslateCode method can go aways here and else where.
 	public Object getFieldValue(JRField field)
 	{
 		if (field.getName().equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
