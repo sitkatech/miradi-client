@@ -585,6 +585,7 @@ abstract public class BaseObject
 
 		public void set(String newValue) throws Exception
 		{
+			throw new RuntimeException("set can not be issued on a psuedo field");
 		}
 
 		public String get()
