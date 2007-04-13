@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -72,23 +71,15 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		CommandCreateObject createObject1 = factorCommandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId1 = (DiagramFactorId) createObject1.getCreatedId();
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId1);
-		FactorCell factorCell1 = model.getFactorCellById(diagramFactorId1);
 		
 		CommandCreateObject createObject2 = factorCommandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createObject2.getCreatedId();
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
-		FactorCell factorCell2 = model.getFactorCellById(diagramFactorId2);
 		
-		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1.getWrappedId(), diagramFactor2.getWrappedId());
-		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
-		DiagramFactorLink diagramFactorLink = model.getDiagramFactorLinkById(diagramFactorLinkId);
+		DiagramFactorLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
 		
-		LinkCell cell = model.findLinkCell(diagramFactorLink);
-		assertEquals("didn't remember from?", diagramFactor1, cell.getFrom().getDiagramFactor());
-		assertEquals("didn't remember to?", diagramFactor2, cell.getTo().getDiagramFactor());
-
-		assertEquals("source not the port of from?", factorCell1.getPort(), cell.getSource());
-		assertEquals("target not the port of to?", factorCell2.getPort(), cell.getTarget());
+		assertEquals("didn't remember from?", diagramFactor1.getId(), diagramFactorLink.getFromDiagramFactorId());
+		assertEquals("didn't remember to?", diagramFactor2.getId(), diagramFactorLink.getToDiagramFactorId());
 	}
 	
 	public void testIds() throws Exception

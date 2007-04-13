@@ -12,7 +12,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -22,9 +21,10 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -33,15 +33,17 @@ import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 
 
 
-public class ProjectForTesting extends Project
+public class ProjectForTesting extends Project implements CommandExecutedListener
 {
 	public ProjectForTesting(String testName) throws Exception
 	{
 		super(new ProjectServerForTesting());
 		
+		addCommandExecutedListener(this);
 		diagramModel = new DiagramModel(this);
 		getTestDatabase().openMemoryDatabase(testName);
 		finishOpening();
@@ -147,16 +149,10 @@ public class ProjectForTesting extends Project
 	
 	public DiagramFactorId createAndAddFactorToDiagram(int nodeType) throws Exception
 	{
-		FactorId factorId = createFactor(nodeType);
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
-		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
-		executeCommand(createDiagramFactorCommand);
+		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getDiagramModel());
+		CommandCreateObject command = factorHelper.createFactorAndDiagramFactor(nodeType);
 		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor addDiagramFactorCommand = new CommandDiagramAddFactor(diagramFactorId);
-		executeCommand(addDiagramFactorCommand);
-		
-		return diagramFactorId;
+		return new DiagramFactorId(command.getCreatedId().asInt());
 	}
 	
 	//TODO fix method name (remove 2 and come up with better name)
@@ -246,5 +242,18 @@ public class ProjectForTesting extends Project
 		return selectedCellsWithLinkages;
 	}
 	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		try
+		{
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(this, getDiagramModel(), getDiagramObject());
+			modelUpdater.commandExecuted(event);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
 	Vector commandStack;
 }

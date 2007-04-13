@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 
 public class InsertDirectThreatDoer extends InsertFactorDoer
@@ -24,10 +24,10 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 		return EAM.text("Label|New Factor");
 	}
 
-	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, FactorCell[] factorsToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] factorsToLinkTo) throws Exception
 	{
-		super.linkToPreviouslySelectedFactors(newlyInsertedId, factorsToLinkTo);
-		Factor insertedNode = getProject().findNode(newlyInsertedId);
+		super.linkToPreviouslySelectedFactors(newlyInserted, factorsToLinkTo);
+		Factor insertedNode = getProject().findNode(newlyInserted.getWrappedId());
 		if(!insertedNode.isDirectThreat())
 			warnNotDirectThreat();
 	}

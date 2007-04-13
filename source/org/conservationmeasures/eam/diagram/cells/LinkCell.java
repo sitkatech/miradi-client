@@ -39,6 +39,14 @@ public class LinkCell extends EAMGraphCell implements Edge
 		updateBendPoints();
 	}
 	
+	public void markAsRemoved()
+	{
+		link = null;
+		diagramLink = null;
+		from = null;
+		to = null;
+	}
+	
 	public boolean isFactorLink()
 	{
 		return true;

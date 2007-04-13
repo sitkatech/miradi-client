@@ -5,17 +5,16 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
@@ -36,12 +35,11 @@ public class TestDelete extends EAMTestCase
 		
 		DiagramFactorId causeId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
 		DiagramFactor cause = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, causeId));
-		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), intervention.getWrappedId(), cause.getWrappedId());
-		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
+		DiagramFactorLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), intervention, cause);
 		
 		assertTrue("link not found?", model.areLinked(interventionId, causeId));
 		
-		CommandDiagramRemoveFactorLink delete = new CommandDiagramRemoveFactorLink(linkageId);
+		CommandDiagramRemoveFactorLink delete = new CommandDiagramRemoveFactorLink(diagramFactorLink.getDiagramLinkageId());
 		delete.execute(project);
 		assertFalse("link not deleted?", model.areLinked(interventionId, causeId));
 		

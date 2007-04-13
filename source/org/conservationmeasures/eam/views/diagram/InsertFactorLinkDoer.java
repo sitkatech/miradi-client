@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -20,8 +20,11 @@ import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectChainObject;
@@ -55,7 +58,8 @@ public class InsertFactorLinkDoer extends ViewDoer
 			EAM.okDialog(EAM.text("Can't Create Link"), body);
 			return;
 		}
-					
+		
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			if(model.areLinked(dialog.getFrom().getDiagramFactorId(), dialog.getTo().getDiagramFactorId()))
@@ -70,16 +74,18 @@ public class InsertFactorLinkDoer extends ViewDoer
 				EAM.okDialog(EAM.text("Error"), body);
 				return;
 			}
+			
+			createModelLinkageAndAddToDiagramUsingCommands(model, fromDiagramFactor, toDiagramFactor);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
-		
-		getProject().executeCommand(new CommandBeginTransaction());
-		createModelLinkageAndAddToDiagramUsingCommands(model, fromDiagramFactor.getWrappedId(), toDiagramFactor.getWrappedId());
-		getProject().executeCommand(new CommandEndTransaction());
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());	
+		}
 	}
 	
 	boolean wouldCreateLinkageLoop(DiagramModel dModel, FactorId fromId, FactorId toId)
@@ -96,31 +102,28 @@ public class InsertFactorLinkDoer extends ViewDoer
 		return false;
     }
 	
-	public static CommandDiagramAddFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, FactorId from, FactorId to) throws CommandFailedException
+	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
 		Project project = model.getProject();
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(from, to);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(diagramFactorFrom.getWrappedId(), diagramFactorTo.getWrappedId());
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
-		DiagramFactorId fromDiagramFactorId = convertWrappedId(model, from);
-		DiagramFactorId toDiagramFactorId = convertWrappedId(model, to);
+		DiagramFactorId fromDiagramFactorId = diagramFactorFrom.getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = diagramFactorTo.getDiagramFactorId();
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(project, fromDiagramFactorId, toDiagramFactorId, modelLinkageId);
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		project.executeCommand(createDiagramLinkCommand);
     	
     	BaseId rawId = createDiagramLinkCommand.getCreatedId();
 		DiagramFactorLinkId createdDiagramLinkId = new DiagramFactorLinkId(rawId.asInt());
-    	CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(createdDiagramLinkId);
-    	project.executeCommand(command);
 		
-		return command;
-	}
-
-	private static DiagramFactorId convertWrappedId(DiagramModel model, FactorId factorId)
-	{
-		return model.getDiagramFactorIdFromWrappedId(factorId);
+		DiagramObject diagramObject = model.getDiagramObject();
+		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramLinkId);
+		project.executeCommand(addDiagramLink);
+		
+		return (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, createdDiagramLinkId));
 	}
 
 	private static CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(Project projectToUse, DiagramFactorId fromId, DiagramFactorId toId, FactorLinkId modelLinkageId)

@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -29,6 +30,7 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.ConceptualModelDiagramSplitPane;
+import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 
 public class DiagramPanel extends ObjectDataInputPanel
 {
@@ -241,6 +243,23 @@ public class DiagramPanel extends ObjectDataInputPanel
 		selectionModel = null;
 	}
 	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		
+		try
+		{
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(getProject(), getDiagramModel(), getDiagramObject(getProject()));
+			modelUpdater.commandExecuted(event);
+			getDiagramModel().updateVisibilityOfFactors();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+	}
+
 	private EAMGraphSelectionModel selectionModel;
 	private DiagramComponent diagram;
 	private MainWindow mainWindow;

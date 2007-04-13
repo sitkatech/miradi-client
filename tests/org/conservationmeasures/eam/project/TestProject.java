@@ -46,6 +46,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -292,6 +293,7 @@ public class TestProject extends EAMTestCase
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		
 		// reset command stack to empty
+		assertNotNull(project.getLastCommand());
 		assertNotNull(project.getLastCommand());
 		assertNotNull(project.getLastCommand());
 		
@@ -578,8 +580,9 @@ public class TestProject extends EAMTestCase
 		assertEquals(1 + existingCalls, database.callsToWriteObject);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
-		CommandDiagramAddFactor targetCommand = new CommandDiagramAddFactor(diagramFactorId);
-		project.executeCommand(targetCommand);
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
+		project.executeCommand(addDiagramFactor);
 		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		
 		CreateDiagramFactorParameter extraDiagramFactorInfo2 = new CreateDiagramFactorParameter(factorId);
@@ -588,8 +591,8 @@ public class TestProject extends EAMTestCase
 		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
 		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createDiagramFactor2.getCreatedId();
-		CommandDiagramAddFactor factorCommand = new CommandDiagramAddFactor(diagramFactorId2);
-		project.executeCommand(factorCommand);
+		CommandSetObjectData addDiagramFactor2 = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId2);
+		project.executeCommand(addDiagramFactor2);
 		assertEquals(4 + existingCalls, database.callsToWriteObject);
 		FactorCell factor = project.getDiagramModel().getFactorCellByWrappedId(factorId);
 		
@@ -854,6 +857,7 @@ public class TestProject extends EAMTestCase
 		DiagramFactorLinkId createdDiagramFactorLinkId = new DiagramFactorLinkId(createdRawDiagramFactorLinkId.asInt());
 		
 		DiagramFactorLinkId diagramLinkageId = project.addLinkToDiagram(createdDiagramFactorLinkId);
+
 		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
 	}
 

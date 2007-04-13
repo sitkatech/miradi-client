@@ -7,9 +7,8 @@ package org.conservationmeasures.eam.diagram;
 
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandJump;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -17,7 +16,11 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
@@ -34,10 +37,13 @@ public class TestUndoAndRedo extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 
-		fromId = createModelAndDiagramNodeWithCommands(ObjectType.CAUSE);
-		toId = createModelAndDiagramNodeWithCommands(ObjectType.STRATEGY);
-		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), fromId, toId);
-		linkId = addLinkageCommand.getDiagramFactorLinkId();
+		DiagramFactor fromDiagramFactor = createModelAndDiagramNodeWithCommands(ObjectType.CAUSE); 
+		fromId = fromDiagramFactor.getWrappedId();
+		
+		DiagramFactor toDiagramFactor = createModelAndDiagramNodeWithCommands(ObjectType.STRATEGY);
+		toId = toDiagramFactor.getWrappedId();
+		DiagramFactorLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor); 
+		linkId = diagramFactorLink.getDiagramLinkageId();
 	}
 	
 	public void tearDown() throws Exception
@@ -120,14 +126,15 @@ public class TestUndoAndRedo extends EAMTestCase
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor insert = new CommandDiagramAddFactor(diagramFactorId);
-		project.executeCommand(insert);
 		
-		verifyNodePresent(insert.getInsertedId());
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
+		project.executeCommand(addDiagramFactor);
+		verifyNodePresent(diagramFactorId);
 		project.undo();
 		project.undo();
 		
-		verifyNodeNotPresent(insert.getInsertedId());
+		verifyNodeNotPresent(diagramFactorId);
 		project.undo();
 		
 		verifyLinkageNotPresent(linkId);
@@ -220,7 +227,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private FactorId createModelAndDiagramNodeWithCommands(int type) throws Exception
+	private DiagramFactor createModelAndDiagramNodeWithCommands(int type) throws Exception
 	{
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.CAUSE);
 		project.executeCommand(createModelNodeCommand);
@@ -231,11 +238,13 @@ public class TestUndoAndRedo extends EAMTestCase
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor addToDiagramCommand = new CommandDiagramAddFactor(diagramFactorId);
-		project.executeCommand(addToDiagramCommand);
+		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
 		
-		return factorId;
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
+		project.executeCommand(addDiagramFactor);
 		
+		return diagramFactor;
 	}
 	
 	ProjectForTesting project;

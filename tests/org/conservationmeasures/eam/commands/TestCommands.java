@@ -38,7 +38,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.conservationmeasures.eam.views.map.MapView;
 
 public class TestCommands extends EAMTestCase
@@ -364,28 +363,6 @@ public class TestCommands extends EAMTestCase
 		
 		project.undo();
 		assertNull("didn't delete linkage from pool?", project.getFactorLinkPool().find(modelLinkageId));
-	}
-	
-	public void testDeleteLinkage() throws Exception
-	{
-		DiagramModel model = project.getDiagramModel();
-
-		DiagramFactorId fromId = insertIntervention();
-		DiagramFactor from = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromId));
-		DiagramFactor to = insertContributingFactor();
-		DiagramFactorId toId = to.getDiagramFactorId();
-
-		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), from.getWrappedId(), to.getWrappedId());
-		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
-	
-		CommandDiagramRemoveFactorLink cmd = new CommandDiagramRemoveFactorLink(linkageId);
-		assertEquals("model id not invalid?", BaseId.INVALID, cmd.getFactorLinkId());
-		project.executeCommand(cmd);
-		assertEquals("model id not set?", addLinkageCommand.getFactorLinkId(), cmd.getFactorLinkId());
-
-		assertFalse("linkage not deleted?", model.areLinked(fromId, toId));
-		project.undo();
-		assertTrue("didn't restore link?", model.areLinked(fromId, toId));
 	}
 
 	public void testDeleteNode() throws Exception

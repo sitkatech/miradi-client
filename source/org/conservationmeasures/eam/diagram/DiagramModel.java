@@ -74,12 +74,33 @@ public class DiagramModel extends DefaultGraphModel
 		while(getRootCount() > 0)
 			remove(new Object[] {getRootAt(0)});
 
+		damageAllFactorsAndLinks();
 		cellInventory = new CellInventory();
 		projectScopeBox = new ProjectScopeBox(this);
 		graphLayoutCache = new PartialGraphLayoutCache(this);
 		insertCellIntoGraph(projectScopeBox);
 		
 		factorsToDiagramFactors = new HashMap();
+	}
+
+	private void damageAllFactorsAndLinks()
+	{
+		if (cellInventory == null)
+			return;
+		
+		Vector allFactors = cellInventory.getAllFactors();
+		for (int i = 0 ; i < allFactors.size(); i++)
+		{
+			FactorCell factorCell = (FactorCell) allFactors.get(i);
+			factorCell.markAsRemoved();
+		}
+		
+		Vector allFactorLinks = cellInventory.getAllFactorLinks();
+		for (int i = 0; i < allFactorLinks.size(); i++)
+		{
+			LinkCell linkCell = (LinkCell) allFactorLinks.get(i);
+			linkCell.markAsRemoved();
+		}
 	}
 
 	public ProjectScopeBox getProjectScopeBox()
@@ -103,21 +124,8 @@ public class DiagramModel extends DefaultGraphModel
 		FactorCell factorCell = createFactorCell(diagramFactor, factor);
 		addFactorCellToModel(factorCell);
 		factorsToDiagramFactors.put(diagramFactor.getWrappedId(), diagramFactor.getDiagramFactorId());
-		addToDiagramContents(diagramFactor);
 	}
 
-	private void addToDiagramContents(DiagramFactor diagramFactor) throws Exception
-	{
-		IdList currentList = diagramContents.getAllDiagramFactorIds();
-		//TODO This if will go away when the model listens for DCO commands
-		if (currentList.contains(diagramFactor.getDiagramFactorId()))
-				return;
-		
-		currentList.add(diagramFactor.getId());
-		diagramContents.setData(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, currentList.toJson().toString());
-		getProject().getDatabase().writeObject(diagramContents);
-	}
-	
 	private FactorCell createFactorCell(DiagramFactor diagramFactor, Factor factor)
 	{
 		int factorType = factor.getType();
@@ -184,19 +192,9 @@ public class DiagramModel extends DefaultGraphModel
     	Object[] cells = new Object[]{diagramFactorToDelete};
 		remove(cells);
 		cellInventory.removeFactor(diagramFactorId);
-		removeFromDiagramContents(diagramFactorId);
 		notifyListeners(createDiagramModelEvent(diagramFactorToDelete), new ModelEventNotifierFactorDeleted());
     }
 
-	private void removeFromDiagramContents(DiagramFactorId diagramFactorId) throws Exception
-	{
-		IdList currentList = diagramContents.getAllDiagramFactorIds();
-		currentList.removeId(diagramFactorId);
-		diagramContents.setData(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, currentList.toJson().toString());
-		
-		getProject().getDatabase().writeObject(diagramContents);
-	}
-    
     public DiagramFactorLink addLinkToDiagram(DiagramFactorLink diagramFactorLink) throws Exception
     {
     	CreateDiagramFactorLinkParameter extraInfo = (CreateDiagramFactorLinkParameter) diagramFactorLink.getCreationExtraInfo();
@@ -211,25 +209,12 @@ public class DiagramModel extends DefaultGraphModel
 
 		insert(newLinks, nestedMap, cs, null, null);
 		cellInventory.addFactorLink(diagramFactorLink, cell);
-		addLinkToDiagramContents(diagramFactorLink.getDiagramLinkageId());
 		
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkAdded());
 		
     	return diagramFactorLink;
     }
     
-    private void addLinkToDiagramContents(DiagramFactorLinkId diagramFactorLinkId) throws Exception
-	{
-		IdList currentList = diagramContents.getAllDiagramFactorLinkIds();
-		//TODO This if will go away when the model listens for DCO commands
-		if (currentList.contains(diagramFactorLinkId))
-				return;
-		
-		currentList.add(diagramFactorLinkId);
-		diagramContents.setData(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, currentList.toJson().toString());
-		getProject().getDatabase().writeObject(diagramContents);
-	}
-	
 	public void deleteDiagramFactorLink(DiagramFactorLink diagramFactorLinkToDelete) throws Exception
 	{
 		LinkCell cell = cellInventory.getLinkCell(diagramFactorLinkToDelete);
@@ -237,19 +222,9 @@ public class DiagramModel extends DefaultGraphModel
 		
 		remove(links);
 		cellInventory.removeFactorLink(diagramFactorLinkToDelete);
-		removeLinkFromDiagramContents(diagramFactorLinkToDelete.getDiagramLinkageId());
 		
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkDeleted());
 	}
-	
-    private void removeLinkFromDiagramContents(DiagramFactorLinkId diagramFactorLinkId) throws Exception
-    {
-    	IdList currentList = diagramContents.getAllDiagramFactorLinkIds();
-		currentList.removeId(diagramFactorLinkId);
-		diagramContents.setData(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, currentList.toJson().toString());
-		
-		getProject().getDatabase().writeObject(diagramContents);
-    }
 	
 	public boolean areLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
 	{

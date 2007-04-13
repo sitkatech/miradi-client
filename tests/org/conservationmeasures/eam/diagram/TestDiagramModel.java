@@ -8,11 +8,9 @@ package org.conservationmeasures.eam.diagram;
 import java.util.Set;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -147,7 +145,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		FactorCell factor = project.createFactorCell(ObjectType.CAUSE);
 		FactorCell target = project.createFactorCell(ObjectType.TARGET);
-		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
+		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), factor.getDiagramFactor(), target.getDiagramFactor());
 		assertEquals(2, model.getFactorCount());
 		assertEquals(1, model.getFactorLinkCount());
 	}
@@ -162,7 +160,7 @@ public class TestDiagramModel extends EAMTestCase
 		
 		DiagramFactor newDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newFactorId));
 		DiagramFactor target = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, targetId));
-		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), newDiagramFactor.getWrappedId(), target.getWrappedId());
+		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), newDiagramFactor, target);
 		
 		assertTrue("not linked?", model.areLinked(newFactorId, targetId));
 		assertTrue("reverse link not detected?", model.areLinked(targetId, newFactorId));
@@ -173,8 +171,8 @@ public class TestDiagramModel extends EAMTestCase
 		FactorCell factor1 = project.createFactorCell(ObjectType.CAUSE);
 		FactorCell factor2 = project.createFactorCell(ObjectType.CAUSE);
 		FactorCell target = project.createFactorCell(ObjectType.TARGET);
-		DiagramFactorLink linkage1 = createLinkage(takeNextLinkageId(), factor1.getWrappedId(), target.getWrappedId());
-		DiagramFactorLink linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
+		DiagramFactorLink linkage1 = createLinkage(takeNextLinkageId(), factor1.getDiagramFactor(), target.getDiagramFactor());
+		DiagramFactorLink linkage2 = createLinkage(takeNextLinkageId(), factor2.getDiagramFactor(), target.getDiagramFactor());
 		Set found = model.getFactorLinks(target);
 		assertEquals("Didn't see both links?", 2, found.size());
 		assertTrue("missed first?", found.contains(model.findLinkCell(linkage1)));
@@ -203,7 +201,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramFactor node1 = project.createNodeAndAddToDiagram2(ObjectType.TARGET);
 		DiagramFactor node2 = project.createNodeAndAddToDiagram2(ObjectType.TARGET);		
-		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), node1.getWrappedId(), node2.getWrappedId());
+		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), node1, node2);
 		DiagramFactor node3 = project.createNodeAndAddToDiagram2(ObjectType.TARGET);		
 		
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
@@ -217,9 +215,9 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);		
 		FactorCell node2 = project.createFactorCell(ObjectType.TARGET);		
-		DiagramFactorLink link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramFactorLink link1 = createLinkage(takeNextLinkageId(), node1.getDiagramFactor(), node2.getDiagramFactor());
 		FactorCell node3 = project.createFactorCell(ObjectType.TARGET);		
-		DiagramFactorLink link2 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node3.getWrappedId());
+		DiagramFactorLink link2 = createLinkage(takeNextLinkageId(), node1.getDiagramFactor(), node3.getDiagramFactor());
 		
 		Vector linkages = model.getAllDiagramFactorLinks();
 		assertEquals(2, linkages.size());
@@ -231,7 +229,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);		
 		FactorCell node2 = project.createFactorCell(ObjectType.TARGET);		
-		DiagramFactorLink link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramFactorLink link1 = createLinkage(takeNextLinkageId(), node1.getDiagramFactor(), node2.getDiagramFactor());
 
 		DiagramModel copy = new DiagramModel(project);
 		copy.fillFrom(model.getDiagramObject());
@@ -272,7 +270,7 @@ public class TestDiagramModel extends EAMTestCase
 
 		FactorCell node2 = project.createFactorCell(ObjectType.TARGET);
 		FactorCell node3 = project.createFactorCell(ObjectType.TARGET);
-		DiagramFactorLink link1 = createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), node2.getWrappedId(), node3.getWrappedId());
+		DiagramFactorLink link1 = createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), node2.getDiagramFactor(), node3.getDiagramFactor());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("add link did a node change notify?", 1, testModel.nodeChanged);
@@ -298,12 +296,11 @@ public class TestDiagramModel extends EAMTestCase
 		
 	}
 	
-	private DiagramFactorLink createLinkage(FactorLinkId id, FactorId fromId, FactorId toId) throws Exception
+	private DiagramFactorLink createLinkage(FactorLinkId id, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
-		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), fromId, toId);
-		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
+		DiagramFactorLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
 		
-		return model.getDiagramFactorLinkById(diagramFactorLinkId);
+		return diagramFactorLink;
 	}
 	
 	static class TestTableModel implements DiagramModelListener

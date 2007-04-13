@@ -10,15 +10,12 @@ import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
@@ -67,20 +64,16 @@ public class TestTransferableEamList extends EAMTestCase
 		CommandCreateObject createCommand1 = commandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId1 = (DiagramFactorId) createCommand1.getCreatedId();
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId1);
-		FactorId factorId1 = diagramFactor1.getWrappedId();
 		diagramFactor1.setLocation(node1Location);
 		
 		Point node2Location = new Point(2,3);
 		CommandCreateObject createCommand2 = commandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createCommand2.getCreatedId();
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
-		FactorId factorId2 = diagramFactor2.getWrappedId();
 		diagramFactor2.setLocation(node2Location);
 		
-		CommandDiagramAddFactorLink commandDiagramAddFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), factorId1, factorId2);
-		DiagramFactorLinkId diagramFactorLinkId = commandDiagramAddFactorLink.getDiagramFactorLinkId();
-		DiagramFactorLink diagramFactorLink = model.getDiagramFactorLinkById(diagramFactorLinkId);
-
+		DiagramFactorLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
+		
 		FactorCell factorCell1 = model.getFactorCellById(diagramFactorId1);
 		FactorCell factorCell2 = model.getFactorCellById(diagramFactorId2);
 		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramFactorLink)};

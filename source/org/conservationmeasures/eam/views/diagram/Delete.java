@@ -10,9 +10,9 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -57,20 +58,25 @@ public class Delete extends ViewDoer
 	{
 		EAMGraphCell[] selectedRelatedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		getProject().executeCommand(new CommandBeginTransaction());
+		
+		DiagramView diagramView = getDiagramView();
+		DiagramModel model = diagramView.getDiagramModel();
+		DiagramObject diagramObject = model.getDiagramObject();
+
 		try
 		{
 			for(int i=0; i < selectedRelatedCells.length; ++i)
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactorLink())
-					deleteFactorLink(getProject(), cell.getDiagramFactorLink());	
+					deleteFactorLink(getProject(), diagramObject,  cell.getDiagramFactorLink());	
 			}
 			
 			for(int i=0; i < selectedRelatedCells.length; ++i)
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactor())
-					deleteFactor((FactorCell)cell);
+					deleteFactor((FactorCell)cell, diagramObject);
 			}
 		}
 		catch (Exception e)
@@ -84,12 +90,11 @@ public class Delete extends ViewDoer
 	}
 
 	// FIXME: This will not work with Results Chains!
-	public static void deleteFactorLink(Project project, DiagramFactorLink linkageToDelete) throws CommandFailedException
+	public static void deleteFactorLink(Project project, DiagramObject diagramObject, DiagramFactorLink linkageToDelete) throws Exception
 	{	
 		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
-		
-		CommandDiagramRemoveFactorLink removeCommand = new CommandDiagramRemoveFactorLink(id);
-		project.executeCommand(removeCommand);
+		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, id);
+		project.executeCommand(removeDiagramFactorLink);
 		
 		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId()).createCommandsToClear();
 		project.executeCommands(commandsToClear);
@@ -102,10 +107,10 @@ public class Delete extends ViewDoer
 	}
 
 	// TODO: This method should be inside Project and should have unit tests
-	private void deleteFactor(FactorCell factorToDelete) throws Exception
+	private void deleteFactor(FactorCell factorToDelete, DiagramObject diagramObject) throws Exception
 	{
 		removeFromView(factorToDelete.getWrappedId());
-		removeNodeFromDiagram(factorToDelete);
+		removeNodeFromDiagram(factorToDelete, diagramObject);
 		deleteDiagramFactor(factorToDelete.getDiagramFactorId());
 		
 		Factor underlyingNode = factorToDelete.getUnderlyingObject();
@@ -127,9 +132,12 @@ public class Delete extends ViewDoer
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	private void removeNodeFromDiagram(FactorCell factorToDelete) throws CommandFailedException
+	private void removeNodeFromDiagram(FactorCell factorToDelete, DiagramObject diagramObject) throws CommandFailedException, ParseException
 	{
-		getProject().executeCommand(new CommandDiagramRemoveFactor(factorToDelete.getDiagramFactorId()));
+		DiagramFactorId idToDelete = factorToDelete.getDiagramFactorId();
+		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
+		getProject().executeCommand(removeDiagramFactor);
+		
 		Command[] commandsToClear = factorToDelete.getDiagramFactor().createCommandsToClear();
 		getProject().executeCommands(commandsToClear);
 	}

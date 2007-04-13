@@ -99,6 +99,11 @@ public class CommandSetObjectData extends Command
 		oldValue = oldValueToUse;
 	}
 	
+	public ORef getObjectORef()
+	{
+		return new ORef(getObjectType(), getObjectId());
+	}
+	
 	public int getObjectType()
 	{
 		return type;

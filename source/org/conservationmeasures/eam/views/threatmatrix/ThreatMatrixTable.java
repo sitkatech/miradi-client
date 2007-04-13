@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.diagram.Delete;
 
 public class ThreatMatrixTable extends JTable
 {
@@ -225,8 +224,9 @@ public class ThreatMatrixTable extends JTable
 
 					// FIXME: With Results Chains, this should only delete the DiagramFactorLink here,
 					// and then should delete the FactorLink itself below this loop
-					DiagramFactorLink linkageToDelete = (DiagramFactorLink)project.findObject(diagramFactorLinkRef);
-					Delete.deleteFactorLink(project, linkageToDelete);
+					//FIXME fix me
+					//DiagramFactorLink linkageToDelete = (DiagramFactorLink)project.findObject(diagramFactorLinkRef);
+					//Delete.deleteFactorLink(project, linkageToDelete);
 				}
 			}
 			finally

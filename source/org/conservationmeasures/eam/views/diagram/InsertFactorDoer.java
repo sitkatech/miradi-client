@@ -46,7 +46,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			DiagramFactor diagramFactor = insertFactorItself();
 			FactorId id = diagramFactor.getWrappedId();
 			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET))
-				linkToPreviouslySelectedFactors(id, selectedFactors);
+				linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
 			else
 				notLinkingToAnyFactors();
 			
@@ -182,13 +182,13 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return new Point(x, nodeLocation.y);
 	}
 	
-	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, FactorCell[] nodesToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] nodesToLinkTo) throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
 		{
-			FactorId toId = nodesToLinkTo[i].getWrappedId();
-			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(getDiagramView().getDiagramModel(), newlyInsertedId, toId);
+			DiagramFactor toDiagramFactor = nodesToLinkTo[i].getDiagramFactor();
+			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(getDiagramView().getDiagramModel(), newlyInserted, toDiagramFactor);
 		}
 		getProject().executeCommand(new CommandEndTransaction());
 	}
