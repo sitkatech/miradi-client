@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.xml.XmlUtilities;
 
@@ -575,6 +576,37 @@ abstract public class BaseObject
 		return "";
 	}
 	
+	public class PseudoQuestionValue  extends ObjectData
+	{
+	
+		public PseudoQuestionValue(ChoiceQuestion questionToUse)
+		{
+			question = questionToUse;
+		}
+
+		public boolean equals(Object rawOther)
+		{
+			return false;
+		}
+
+		public String get()
+		{
+			return  question.findChoiceByCode((String)getPsuedoData(question.getTag())).getLabel();
+		}
+
+		public int hashCode()
+		{
+			return 0;
+		}
+
+		public void set(String newValue) throws Exception
+		{
+		}
+		
+		ChoiceQuestion question;
+	}
+	
+	
 	public class PsuedoStringData  extends StringData
 	{
 
@@ -585,7 +617,6 @@ abstract public class BaseObject
 
 		public void set(String newValue) throws Exception
 		{
-			throw new RuntimeException("set can not be issued on a psuedo field");
 		}
 
 		public String get()
