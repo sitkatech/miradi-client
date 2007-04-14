@@ -121,7 +121,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	private String translateStatusCode()
 	{
-		KeyEcologicalAttributeTypeQuestion question = new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+		KeyEcologicalAttributeTypeQuestion question = new KeyEcologicalAttributeTypeQuestion("");
 		return  question.findChoiceByCode(keyEcologicalAttributeType.get()).getLabel();
 	}
 	
@@ -133,8 +133,7 @@ public class KeyEcologicalAttribute extends BaseObject
 			String status = objectManager.getObjectData(ObjectType.INDICATOR, indicatorIds.get(i), Indicator.TAG_MEASUREMENT_STATUS);
 			statuses.add(status);
 		}
-		String result = TNCViabilityFormula.getAverageRatingCode(statuses);
-		return result;
+		return TNCViabilityFormula.getAverageRatingCode(statuses);
 	}
 	
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
