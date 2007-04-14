@@ -56,7 +56,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		{
 			addField(createStringField(Strategy.TAG_SHORT_LABEL));
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
-			addField(createClassificationChoiceField(new StrategyClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
+			addField(createClassificationChoiceField(new StrategyClassificationQuestion(Strategy.TAG_TAXONOMY_CODE)));
 			addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
 			addField(createRatingChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
 			addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
