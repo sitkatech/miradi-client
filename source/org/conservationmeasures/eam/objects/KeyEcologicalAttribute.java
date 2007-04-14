@@ -49,13 +49,13 @@ public class KeyEcologicalAttribute extends BaseObject
 		description = new StringData();
 		keyEcologicalAttributeType = new StringData();
 		psuedoViabilityStatus = new PsuedoStringData(PSEUDO_TAG_VIABILITY_STATUS);
-		keyEcologicalAttributeTypeLabel = new PsuedoStringData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL);
+		keyEcologicalAttributeTypeLabel = new PsuedoStringData(PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL);
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);
 		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, keyEcologicalAttributeType);
 		addField(PSEUDO_TAG_VIABILITY_STATUS, psuedoViabilityStatus);
-		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL, keyEcologicalAttributeTypeLabel);
+		addField(PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL, keyEcologicalAttributeTypeLabel);
 	}
 	
 	public int getType()
@@ -114,7 +114,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	{
 		if(fieldTag.equals(PSEUDO_TAG_VIABILITY_STATUS))
 			return computeTNCViability();
-		if (fieldTag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL))
+		if (fieldTag.equals(PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL))
 			return translateStatusCode();
 		return "";
 	}
@@ -139,8 +139,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_DESCRIPTION = "Description";
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
-	//TODO: not sure if we need the work Pseudo in the label any longer
-	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL = "KeyEcologicalAttributeTypeLabel";
+	public static final String PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_LABEL = "KeyEcologicalAttributeTypeLabel";
 	public static final String PSEUDO_TAG_VIABILITY_STATUS = "PseudoTagViabilityStatus";
 
 	public static final String OBJECT_NAME = "Key Ecological Attribute";
