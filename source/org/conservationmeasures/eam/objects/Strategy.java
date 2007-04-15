@@ -5,10 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.util.Arrays;
-import java.util.Vector;
-
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -33,28 +29,24 @@ public class Strategy extends Factor
 	public Strategy(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, Factor.TYPE_STRATEGY);
-		status = STATUS_REAL;
 		clear();
 	}
 	
 	public Strategy(FactorId idToUse)
 	{
 		super(idToUse, Factor.TYPE_STRATEGY);
-		status = STATUS_REAL;
 		clear();
 	}
 	
 	public Strategy(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, Factor.TYPE_STRATEGY, json);
-		status = json.optString(TAG_STATUS, STATUS_REAL);
 	}
 
 	
 	public Strategy(FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, Factor.TYPE_STRATEGY, json);
-		status = json.optString(TAG_STATUS, STATUS_REAL);
 	}
 	
 	public static boolean canOwnThisType(int type)
@@ -91,7 +83,7 @@ public class Strategy extends Factor
 	
 	public boolean isStatusDraft()
 	{
-		return STATUS_DRAFT.equals(status);
+		return STATUS_DRAFT.equals(status.get());
 	}
 	
 	public void insertActivityId(BaseId activityId, int insertAt)
@@ -109,25 +101,13 @@ public class Strategy extends Factor
 		return activityIds.getIdList();
 	}
 	
-	public String getData(String fieldTag)
+	public Object getPseudoData(String fieldTag)
 	{
-		if(TAG_STATUS.equals(fieldTag))
-			return status;
-		
 		if(fieldTag.equals(PSEUDO_TAG_RATING_SUMMARY))
 			return getStrategyRatingSummary();
-		
-		return super.getData(fieldTag);
+		return getPseudoData(fieldTag);
 	}
 
-	public void setData(String fieldTag, String dataValue) throws Exception
-	{
-		if(TAG_STATUS.equals(fieldTag))
-			status = dataValue;
-		else
-			super.setData(fieldTag, dataValue);
-	}
-	
 	private String getStrategyRatingSummary()
 	{
 		ChoiceItem rating = getStrategyRating();
@@ -152,21 +132,6 @@ public class Strategy extends Factor
 		return result;
 	}
 
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_STATUS, status);
-		return json;
-	}
-	
-	public CommandSetObjectData[] createCommandsToClear()
-	{
-		CommandSetObjectData[] commandSetObjectData = super.createCommandsToClear();
-		Vector commands = new Vector(Arrays.asList(commandSetObjectData));
-		commands.add(new CommandSetObjectData(getType(), getId(), TAG_STATUS, STATUS_REAL));
-		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
-	}
-	
 	public String toString()
 	{
 		return combineShortLabelAndLabel(shortLabel.toString(), label.toString());
@@ -200,6 +165,7 @@ public class Strategy extends Factor
 	void clear()
 	{
 		super.clear();
+		status = new StringData(STATUS_REAL);
 		activityIds = new IdListData();
 		taxonomyCode = new StringData();
 		impactRating = new ChoiceData();
@@ -207,7 +173,10 @@ public class Strategy extends Factor
 		feasibilityRating = new ChoiceData();
 		costRating = new ChoiceData();
 		shortLabel = new StringData();
+		tagRatingSummary = new PsuedoStringData(PSEUDO_TAG_RATING_SUMMARY);
+		tagRatingSummaryLabel = new PseudoQuestionData(new StrategyRatingSummaryQuestion(PSEUDO_TAG_RATING_SUMMARY));
 		
+		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(TAG_IMPACT_RATING, impactRating);
@@ -215,6 +184,8 @@ public class Strategy extends Factor
 		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
 		addField(TAG_COST_RATING, costRating);
 		addField(TAG_SHORT_LABEL, shortLabel);
+		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
+		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -228,9 +199,12 @@ public class Strategy extends Factor
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_COST_RATING = "CostRating";
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "PseudoTagRatingSummary";
+	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "PseudoTagRatingSummaryValue";
+
+	
 	public static final String OBJECT_NAME = "Strategy";
 	
-	String status;
+	StringData status;
 	StringData shortLabel;
 	IdListData activityIds;
 	StringData taxonomyCode;
@@ -238,4 +212,6 @@ public class Strategy extends Factor
 	ChoiceData durationRating;
 	ChoiceData feasibilityRating;
 	ChoiceData costRating;
+	PsuedoStringData tagRatingSummary;
+	PseudoQuestionData tagRatingSummaryLabel;
 }

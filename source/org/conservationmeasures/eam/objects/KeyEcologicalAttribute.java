@@ -49,7 +49,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		description = new StringData();
 		keyEcologicalAttributeType = new StringData();
 		psuedoViabilityStatus = new PsuedoStringData(PSEUDO_TAG_VIABILITY_STATUS);
-		keyEcologicalAttributeTypeValue = new PseudoQuestionValue(new KeyEcologicalAttributeTypeQuestion(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE));
+		keyEcologicalAttributeTypeValue = new PseudoQuestionData(new KeyEcologicalAttributeTypeQuestion(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE));
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);
@@ -139,6 +139,6 @@ public class KeyEcologicalAttribute extends BaseObject
 	IdListData indicatorIds;
 	StringData description;
 	StringData keyEcologicalAttributeType;
-	PseudoQuestionValue keyEcologicalAttributeTypeValue;
+	PseudoQuestionData keyEcologicalAttributeTypeValue;
 	PsuedoStringData psuedoViabilityStatus;
 }

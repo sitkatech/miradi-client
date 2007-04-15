@@ -572,20 +572,19 @@ abstract public class BaseObject
 
 	public Object getPseudoData(String fieldTag)
 	{
-		return getData(fieldTag);
+		return "";
 	}
 	
-	public class PseudoQuestionValue  extends ObjectData
+	public class PseudoQuestionData  extends ObjectData
 	{
 	
-		public PseudoQuestionValue(ChoiceQuestion questionToUse)
+		public PseudoQuestionData(ChoiceQuestion questionToUse)
 		{
 			question = questionToUse;
 		}
-
-		public boolean equals(Object rawOther)
+		
+		public void set(String newValue) throws Exception
 		{
-			return false;
 		}
 
 		public String get()
@@ -593,13 +592,18 @@ abstract public class BaseObject
 			return  question.findChoiceByCode((String)getPseudoData(question.getTag())).getLabel();
 		}
 
-		public int hashCode()
+		public boolean equals(Object rawOther)
 		{
-			return 0;
+			if(!(rawOther instanceof PseudoQuestionData))
+				return false;
+			
+			PseudoQuestionData other = (PseudoQuestionData)rawOther;
+			return get().equals(other.get());
 		}
 
-		public void set(String newValue) throws Exception
+		public int hashCode()
 		{
+			return get().hashCode();
 		}
 		
 		ChoiceQuestion question;
@@ -616,6 +620,8 @@ abstract public class BaseObject
 
 		public void set(String newValue) throws Exception
 		{
+			if (newValue.length()!=0)
+				throw new RuntimeException("Set not allowed in a pseuod field");
 		}
 
 		public String get()
@@ -629,12 +635,12 @@ abstract public class BaseObject
 				return false;
 			
 			StringData other = (StringData)rawOther;
-			return getPseudoData(psuedoTag).equals(other.toString());
+			return get().equals(other.get());
 		}
 
 		public int hashCode()
 		{
-			return getPseudoData(psuedoTag).hashCode();
+			return get().hashCode();
 		}
 		
 		String psuedoTag;
