@@ -128,7 +128,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		if (factor.isTarget())
 			grid.addField(createTargetStatusField(factor));
 		
-		grid.setObjectRef(new ORef(diagramFactor.getType(), diagramFactor.getWrappedId()));
+		grid.setObjectRef(factorORef);
 		return grid;
 	}
 	
