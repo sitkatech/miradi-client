@@ -46,6 +46,7 @@ public class DiagramModelUpdater
 			
 			updateDiagramFactorInDiagramObject(dataValueBefore, dataValueAfter, dataTag);
 			updateDiagramFactorLinkInDiagramObject(dataValueBefore, dataValueAfter, dataTag);
+			model.updateVisibilityOfFactors();
 		}
 		catch (Exception e)
 		{

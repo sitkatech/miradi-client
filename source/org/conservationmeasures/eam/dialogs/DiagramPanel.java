@@ -251,7 +251,6 @@ public class DiagramPanel extends ObjectDataInputPanel
 		{
 			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(getProject(), getDiagramModel(), getDiagramObject(getProject()));
 			modelUpdater.commandExecuted(event);
-			getDiagramModel().updateVisibilityOfFactors();
 		}
 		catch(Exception e)
 		{
