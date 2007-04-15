@@ -569,11 +569,10 @@ abstract public class BaseObject
 		System.arraycopy(objectTypes, 0, outArray, 0, i);
 		return outArray;
 	}
-	
-	
-	public Object getPsuedoData(String fieldTag)
+
+	public Object getPseudoData(String fieldTag)
 	{
-		return "";
+		return getData(fieldTag);
 	}
 	
 	public class PseudoQuestionValue  extends ObjectData
@@ -591,7 +590,7 @@ abstract public class BaseObject
 
 		public String get()
 		{
-			return  question.findChoiceByCode((String)getPsuedoData(question.getTag())).getLabel();
+			return  question.findChoiceByCode((String)getPseudoData(question.getTag())).getLabel();
 		}
 
 		public int hashCode()
@@ -621,7 +620,7 @@ abstract public class BaseObject
 
 		public String get()
 		{
-			return (String) getPsuedoData(psuedoTag);
+			return (String) getPseudoData(psuedoTag);
 		}
 		
 		public boolean equals(Object rawOther)
@@ -630,12 +629,12 @@ abstract public class BaseObject
 				return false;
 			
 			StringData other = (StringData)rawOther;
-			return getPsuedoData(psuedoTag).equals(other.toString());
+			return getPseudoData(psuedoTag).equals(other.toString());
 		}
 
 		public int hashCode()
 		{
-			return getPsuedoData(psuedoTag).hashCode();
+			return getPseudoData(psuedoTag).hashCode();
 		}
 		
 		String psuedoTag;
