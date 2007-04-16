@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-logging-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-logging-api-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-collections-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Projects/workspace/miradi-thirdparty/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

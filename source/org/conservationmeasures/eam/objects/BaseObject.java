@@ -56,7 +56,8 @@ abstract public class BaseObject
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
-			setData(tag, json.optString(tag));
+			if (!getField(tag).isPseudoField())
+				setData(tag, json.optString(tag));
 		}
 	}
 	
@@ -186,12 +187,17 @@ abstract public class BaseObject
 		{
 			id = new BaseId(Integer.parseInt(dataValue));
 			return;
-		}
+		} 
 		
 		if(!fields.containsKey(fieldTag))
 			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
 
 		getField(fieldTag).set(dataValue);
+	}
+	
+	public boolean isPseudoField(String fieldTag)
+	{
+		return getField(fieldTag).isPseudoField();
 	}
 	
 	public String getData(String fieldTag)
@@ -301,7 +307,7 @@ abstract public class BaseObject
 	{
 		return noneClearedFieldTags;
 	}
-	
+
 	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
 	{
@@ -583,6 +589,11 @@ abstract public class BaseObject
 			question = questionToUse;
 		}
 		
+		public boolean isPseudoField()
+		{
+			return true;
+		}
+		
 		public void set(String newValue) throws Exception
 		{
 		}
@@ -618,6 +629,11 @@ abstract public class BaseObject
 			psuedoTag = tag;
 		}
 
+		public boolean isPseudoField()
+		{
+			return true;
+		}
+		
 		public void set(String newValue) throws Exception
 		{
 			if (newValue.length()!=0)

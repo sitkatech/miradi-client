@@ -17,4 +17,9 @@ abstract public class ObjectData
 	{
 		return get();
 	}
+	
+	public boolean isPseudoField()
+	{
+		return false;
+	}
 }

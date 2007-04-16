@@ -21,6 +21,8 @@ import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
+import org.conservationmeasures.eam.objects.BaseObject.PseudoQuestionData;
+import org.conservationmeasures.eam.objects.BaseObject.PsuedoStringData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.DateRange;
@@ -88,9 +90,13 @@ public class ObjectTestCase extends EAMTestCase
 	{
 		if(tag.equals(BaseObject.TAG_ID))
 			return;
+		
 		if (object.getNoneClearedFieldTags().contains(tag))
 			return;
 				
+		if (object.isPseudoField(tag))
+			return;
+		
 		String sampleData = getSampleData(object, tag);
 		String emptyData = getEmptyData(object, tag);
 
@@ -171,6 +177,14 @@ public class ObjectTestCase extends EAMTestCase
 		else if(field instanceof StringData)
 		{
 			return tag + tag;
+		}
+		else if(field instanceof PseudoQuestionData)
+		{
+			return "";
+		}
+		else if(field instanceof PsuedoStringData)
+		{
+			return "";
 		}
 		else
 		{

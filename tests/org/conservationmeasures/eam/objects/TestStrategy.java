@@ -70,7 +70,6 @@ public class TestStrategy extends ObjectTestCase
 		Strategy intervention = new Strategy(interventionId);
 		assertTrue("didn't default to real status?", intervention.isStatusReal());
 		assertFalse("defaulted to draft status?", intervention.isStatusDraft());
-		assertEquals("Didn't default to valid status?", Strategy.STATUS_REAL, intervention.getData(Strategy.TAG_STATUS));
 		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		assertEquals("set/get didn't work?", Strategy.STATUS_DRAFT, intervention.getData(Strategy.TAG_STATUS));
 		assertFalse("didn't unset real status?", intervention.isStatusReal());
