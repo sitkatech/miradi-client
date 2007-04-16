@@ -756,32 +756,6 @@ public class Project
 		
 		return diagramFactors;
 	}
-	
-	public FactorId removeDiagramFactorFromDiagram(DiagramFactorId idToDelete) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		model.removeDiagramFactor(idToDelete);
-		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, idToDelete));
-		
-		return diagramFactor.getWrappedId();
-	}
-
-	public void addFactorToDiagram(DiagramFactorId diagramFactorId) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramFactor diagramFactor = (DiagramFactor) findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
-		model.addDiagramFactor(diagramFactor);
-		updateVisibilityOfSingleFactor(diagramFactorId);
-	}
-	
-	public DiagramFactorLinkId removeLinkFromDiagram(DiagramFactorLinkId idToDelete) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramFactorLink linkageToDelete = model.getDiagramFactorLinkById(idToDelete);
-		model.deleteDiagramFactorLink(linkageToDelete);
-		
-		return linkageToDelete.getDiagramLinkageId();
-	}
 
 	public DiagramFactorLinkId addLinkToDiagram(DiagramFactorLinkId diagramFactorLinkId) throws Exception
 	{

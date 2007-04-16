@@ -518,8 +518,12 @@ public class TestProject extends EAMTestCase
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		Object[] selectedCells = new FactorCell[] {node1};
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
+		
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
-		project.removeDiagramFactorFromDiagram(idToDelete);
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData removeFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
+		project.executeCommand(removeFactor);
+
 		BaseObject target = project.findObject(new ORef(ObjectType.TARGET, node1.getWrappedId()));
 		project.deleteObject(target);
 		project.deleteObject(node1.getDiagramFactor());
