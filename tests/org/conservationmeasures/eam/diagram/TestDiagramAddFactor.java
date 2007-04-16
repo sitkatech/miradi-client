@@ -7,13 +7,8 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -36,20 +31,6 @@ public class TestDiagramAddFactor extends EAMTestCase
 		project.close();
 	}
 	
-	public void testBadInsert() throws Exception
-	{
-		Command insertCommand = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()));
-		try
-		{
-			EAM.setLogToString();
-			insertCommand.execute(project);
-			fail("should have thrown");
-		}
-		catch(CommandFailedException ignoreExpected)
-		{
-		}
-	}
-
 	public void testInsertTarget() throws Exception
 	{
 		project.createNodeAndAddToDiagram(ObjectType.TARGET);
