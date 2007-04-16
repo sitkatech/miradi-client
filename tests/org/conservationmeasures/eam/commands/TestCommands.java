@@ -295,9 +295,10 @@ public class TestCommands extends EAMTestCase
     	project.executeCommand(createDiagramLinkCommand);
     	
     	BaseId createdId = createDiagramLinkCommand.getCreatedId();
-		DiagramFactorLinkId diagramFactorLinkId = new DiagramFactorLinkId(createdId.asInt());
-    	CommandDiagramAddFactorLink addLinkageCommand = new CommandDiagramAddFactorLink(diagramFactorLinkId);
-		project.executeCommand(addLinkageCommand);
+		DiagramFactorLinkId diagramFactorLinkId = new DiagramFactorLinkId(createdId.asInt()); 
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
+		project.executeCommand(addLink);
 		
 		DiagramFactorLink inserted = model.getDiagramFactorLinkbyWrappedId(modelLinkageId);
 		LinkCell cell = model.findLinkCell(inserted);
