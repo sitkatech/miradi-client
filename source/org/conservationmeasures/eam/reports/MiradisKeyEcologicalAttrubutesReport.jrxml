@@ -34,11 +34,12 @@
 			<band height="35"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="191"
+						x="73"
 						y="13"
 						width="193"
 						height="16"
-						key="KeyEcologicalAttributeType"/>
+						key="KeyEcologicalAttributeType"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
@@ -47,11 +48,12 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="34"
-						y="10"
-						width="99"
-						height="18"
-						key="staticText-1"/>
+						x="10"
+						y="13"
+						width="56"
+						height="16"
+						key="staticText-1"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
@@ -82,27 +84,29 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="82"  isSplitAllowed="true" >
+			<band height="65"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="120"
-						y="11"
+						x="10"
+						y="8"
 						width="173"
 						height="16"
-						key="textField-1"/>
+						key="textField-1"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
 				</textField>
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="120"
-						y="43"
+						x="35"
+						y="33"
 						width="281"
 						height="22"
-						key="subreport-1"/>
+						key="subreport-1"
+						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.KeyEcologicalAttrubutesDataSource)$P{REPORT_DATA_SOURCE}).getViabilityIndicatorsDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisViabilityIndicatorsReport.jasper")]]></subreportExpression>
 				</subreport>
