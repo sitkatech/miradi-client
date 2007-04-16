@@ -13,7 +13,6 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
@@ -31,7 +30,6 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -622,42 +620,7 @@ public class TestProject extends EAMTestCase
 		String newDimension = EnhancedJsonObject.convertFromDimension(new Dimension(50, 75));
 		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_SIZE, newDimension));
 		assertEquals(9 + existingCalls, database.callsToWriteObject);
-	}
-	
-	public void testInsertDuplicateNodes() throws Exception
-	{
-		FactorId gotId = project.createFactor(ObjectType.CAUSE);
-		try
-		{
-			project.createObject(ObjectType.CAUSE, gotId);
-			fail("Should have thrown for inserting a duplicate id");
-		}
-		catch(RuntimeException ignoreExpected)
-		{
-		}
-		
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(gotId);
-		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
-		project.executeCommand(createDiagramFactorCommand);
-		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(diagramFactorId);
-		project.executeCommand(cmd);
-		try
-		{
-			EAM.setLogToString();
-			cmd.execute(project);
-			fail("Should have thrown for replaying an insert over an existing node");
-		}
-		catch(CommandFailedException ignoreExpected)
-		{
-		}
-		finally
-		{
-			EAM.setLogToConsole();
-		}
-		
-	}
+	}	
 	
 	public void testLinkagePool() throws Exception
 	{
