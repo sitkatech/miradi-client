@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParamet
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestDiagramAddFactorLink extends EAMTestCase
@@ -52,10 +53,11 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		
     	BaseId createdId = createDiagramLinkCommand.getCreatedId();
 		DiagramFactorLinkId diagramFactorLinkId = new DiagramFactorLinkId(createdId.asInt());
-		CommandDiagramAddFactorLink addLinkageCommand = new CommandDiagramAddFactorLink(diagramFactorLinkId);
-		project.executeCommand(addLinkageCommand);
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
+		project.executeCommand(addLink);
 
-		DiagramFactorLink linkage = model.getDiagramFactorLinkById(addLinkageCommand.getDiagramFactorLinkId());
+		DiagramFactorLink linkage = model.getDiagramFactorLinkById(diagramFactorLinkId);
 		LinkCell cell = project.getDiagramModel().findLinkCell(linkage);
 
 		assertEquals("not from intervention?", intervention, cell.getFrom());
