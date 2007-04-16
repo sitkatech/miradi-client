@@ -78,15 +78,13 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 
 	private void processObject(Project project, BaseObject object) throws Exception
 	{
-		ypos = new Integer(-25);
-		
 		writeLineReturn();
 		writeStartELement(object.getClass().getSimpleName());
 
 		writeLineReturn();
 		writeLineReturn();
 		
-		processTags(object);
+		processTags(object, 0);
 
 		writeLineReturn();
 		writeLineReturn();
@@ -99,19 +97,19 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 	}
 
 
-	private void processTags(BaseObject object)
+	private void processTags(BaseObject object, int lineNumber)
 	{
 		String[] tags = object.getFieldTags();
 		for(int i = 0; i < tags.length; ++i)
 		{
 			if (object.getField(tags[i]) instanceof IdListData)
 				continue;
-			ypos = ypos + 10;
-			writeData(getTextFieldElement("Label:"+tags[i],ypos));
+			lineNumber = lineNumber + 10;
+			writeData(getTextFieldElement("Label:"+tags[i],lineNumber));
 			fieldDefs.add(getTextFieldDefElement("Label:"+tags[i]));
 			writeLineReturn();
 			writeLineReturn();
-			writeData(getTextFieldElement(tags[i],ypos));
+			writeData(getTextFieldElement(tags[i],lineNumber));
 			fieldDefs.add(getTextFieldDefElement(tags[i]));
 			writeLineReturn();
 			writeLineReturn();
@@ -165,7 +163,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 	}
 
 	
-	private String getTextFieldElement(String name, Integer yposOffset)
+	private String getTextFieldElement(String name, int lineNumber)
 	{
 		String newLine = field_line_part1;
 		if (name.startsWith("Label:"))
@@ -181,7 +179,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 			newLine = newLine.replaceAll("XPOS", new Integer(170).toString());
 		}
 		
-		newLine = newLine.replaceAll("YPOS", yposOffset.toString());
+		newLine = newLine.replaceAll("YPOS", Integer.toString(lineNumber));
 		return newLine + name + field_line_part2;
 	}
 	
@@ -211,7 +209,5 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 	private static String field_line_part2 =
 			"}]]></textFieldExpression>" +
 			"</textField>";
-	
-	
-	private Integer ypos = new Integer(-25);
+
 }
