@@ -39,13 +39,9 @@ public class DiagramModelUpdater
 			
 			if (! setCommand.getObjectORef().equals(diagramObject.getRef()))
 				return;
-			
-			String dataValueBefore = setCommand.getPreviousDataValue();
-			String dataValueAfter = setCommand.getDataValue();
-			String dataTag = setCommand.getFieldTag();
-			
-			updateDiagramFactorInDiagramObject(dataValueBefore, dataValueAfter, dataTag);
-			updateDiagramFactorLinkInDiagramObject(dataValueBefore, dataValueAfter, dataTag);
+						
+			updateFactors(setCommand);
+			updateLinks(setCommand);
 			model.updateVisibilityOfFactors();
 		}
 		catch (Exception e)
@@ -54,23 +50,43 @@ public class DiagramModelUpdater
 		}
 	}
 	
-	private void updateDiagramFactorLinkInDiagramObject(String dataValueBefore, String dataValueAfter, String dataTag) throws Exception
+	private void updateFactors(CommandSetObjectData setCommand) throws Exception
 	{
-		if (! dataTag.equals(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS))
+		if (! setCommand.getFieldTag().equals(DiagramObject.TAG_DIAGRAM_FACTOR_IDS))
 			return;
+
+		String dataValueBefore = setCommand.getPreviousDataValue();
+		String dataValueAfter = setCommand.getDataValue();
+		IdList factorIdsBefore = new IdList(dataValueBefore);
+		IdList factorIdsAfter = new IdList(dataValueAfter);
+
+		IdList factorIdsToAdd = getAddedIds(factorIdsBefore, factorIdsAfter); 
+		addDiagramFactor(factorIdsToAdd);
+		
+		IdList factorIdsToRemove = getRemovedIds(factorIdsBefore, factorIdsAfter);
+		removeDiagramFactor(factorIdsToRemove);
+	}
+	
+	private void updateLinks(CommandSetObjectData setCommand) throws Exception
+	{
+		if (! setCommand.getFieldTag().equals(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS))
+			return;
+		
+		String dataValueBefore = setCommand.getPreviousDataValue();
+		String dataValueAfter = setCommand.getDataValue();
 		
 		IdList factorLinkIdsBefore = new IdList(dataValueBefore);
 		IdList factorLinkIdsAfter = new IdList(dataValueAfter);
 
-		possiblyAddDiagramFactorLink(factorLinkIdsBefore, factorLinkIdsAfter);
-		possiblyRemoveDiagramFactorLink(factorLinkIdsBefore, factorLinkIdsAfter);
+		IdList addedLinkIds = getAddedIds(factorLinkIdsBefore, factorLinkIdsAfter);
+		addDiagamLink(addedLinkIds);
+		
+		IdList removedLinkIds = getRemovedIds(factorLinkIdsBefore, factorLinkIdsAfter);
+		removeDiagramLink(removedLinkIds);
 	}
 
-	private void possiblyRemoveDiagramFactorLink(IdList factorLinkIdsBefore, IdList factorLinkIdsAfter) throws Exception
+	private void removeDiagramLink(IdList removedFactorLinkIds) throws Exception
 	{
-		IdList removedFactorLinkIds = new IdList(factorLinkIdsBefore);
-		removedFactorLinkIds.subtract(factorLinkIdsAfter);
-				
 		for (int i = 0; i < removedFactorLinkIds.size(); i++)
 		{
 			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, removedFactorLinkIds.get(i)));
@@ -78,53 +94,46 @@ public class DiagramModelUpdater
 		}
 	}
 
-	private void possiblyAddDiagramFactorLink(IdList factorLinkIdsBefore, IdList factorLinkIdsAfter) throws Exception
+	private void addDiagamLink(IdList addedLinkids) throws Exception
 	{
-		IdList addedFactorLinkIds = new IdList(factorLinkIdsAfter);
-		addedFactorLinkIds.subtract(factorLinkIdsBefore);
-				
-		for (int i = 0; i < addedFactorLinkIds.size(); i++)
+		for (int i = 0; i < addedLinkids.size(); i++)
 		{
-			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, addedFactorLinkIds.get(i)));
+			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, addedLinkids.get(i)));
 			model.addLinkToDiagram(diagramFactorLink);
 		}
 	}
 
-	private void updateDiagramFactorInDiagramObject(String dataValueBefore, String dataValueAfter, String dataTag) throws Exception
+	private void removeDiagramFactor(IdList factorIdsToRemove) throws Exception
 	{
-		if (! dataTag.equals(DiagramObject.TAG_DIAGRAM_FACTOR_IDS))
-			return;
-		
-		IdList factorIdsBefore = new IdList(dataValueBefore);
-		IdList factorIdsAfter = new IdList(dataValueAfter);
-
-		possiblyAddDiagramFactorToModel(factorIdsBefore, factorIdsAfter);
-		possiblyRemoveDiagramFactorFromModel(factorIdsBefore, factorIdsAfter);
-	}
-
-	private void possiblyRemoveDiagramFactorFromModel(IdList factorIdsBefore, IdList factorIdsAfter) throws Exception
-	{
-		IdList factorIdsToRemove = new IdList(factorIdsBefore);
-		factorIdsToRemove.subtract(factorIdsAfter);
-
 		for (int i = 0; i < factorIdsToRemove.size(); i++)
 		{
 			model.removeDiagramFactor(new DiagramFactorId(factorIdsToRemove.get(i).asInt()));
 		}
 	}
-
-	private void possiblyAddDiagramFactorToModel(IdList factorIdsBefore, IdList factorIdsAfter) throws Exception
+	
+	private void addDiagramFactor(IdList addedFactorIds) throws Exception
 	{
-		IdList addedFactorIds = new IdList(factorIdsAfter);
-		addedFactorIds.subtract(factorIdsBefore);
-
 		for (int i = 0; i < addedFactorIds.size(); i++)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, addedFactorIds.get(i)));
 			model.addDiagramFactor(diagramFactor);
 		}
 	}
+
+	private IdList getAddedIds(IdList factorIdsBefore, IdList factorIdsAfter)
+	{
+		IdList addedFactorIds = new IdList(factorIdsAfter);
+		addedFactorIds.subtract(factorIdsBefore);
+		return addedFactorIds;
+	}
 	
+	private IdList getRemovedIds(IdList factorIdsBefore, IdList factorIdsAfter)
+	{
+		IdList factorIdsToRemove = new IdList(factorIdsBefore);
+		factorIdsToRemove.subtract(factorIdsAfter);
+		return factorIdsToRemove;
+	}
+		
 	private Project project;
 	private DiagramModel model;
 	private DiagramObject diagramObject;
