@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
@@ -54,20 +55,10 @@ public class TestDelete extends EAMTestCase
 		}
 		EAM.setLogToConsole();
 		
-		CommandDiagramRemoveFactor deleteNode = new CommandDiagramRemoveFactor(causeId);
-		deleteNode.execute(project);
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData removeFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, causeId);
+		project.executeCommand(removeFactor);
 		assertFalse("node not deleted?", model.doesDiagramFactorExist(causeId));
-
-		EAM.setLogToString();
-		try
-		{
-			deleteNode.execute(project);
-			fail("should have thrown for deleting non-existant link");
-		}
-		catch(CommandFailedException ignoreExpected)
-		{
-		}
-		EAM.setLogToConsole();
 		
 		project.close();
 	}
