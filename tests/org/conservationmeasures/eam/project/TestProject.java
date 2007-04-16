@@ -560,8 +560,9 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(diagramFactorId);
-		project.executeCommand(cmd);
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
+		project.executeCommand(addDiagramFactor);
 		project.closeAndReopen();
 		assertEquals("didn't read back our one node?", 1, project.getAllDiagramFactorIds().length);
 	}

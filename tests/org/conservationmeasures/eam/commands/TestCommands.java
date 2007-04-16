@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -271,56 +272,6 @@ public class TestCommands extends EAMTestCase
 		String sizeAsString = EnhancedJsonObject.convertFromDimension(size);
 		assertEquals("didn't undo?", originalSize, sizeAsString);
 	}
-	
-
-	public void testCommandAddTarget() throws Exception
-	{
-		verifyDiagramAddNode(ObjectType.TARGET);
-	}
-
-	public void testCommandInsertFactor() throws Exception
-	{
-		verifyDiagramAddNode(ObjectType.CAUSE);
-	}
-
-	public void testCommandInsertIntervention() throws Exception
-	{
-		verifyDiagramAddNode(ObjectType.STRATEGY);
-	}
-
-	private void verifyDiagramAddNode(int type) throws Exception, CommandFailedException
-	{
-		FactorId factorId = project.createFactor(type);
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
-		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
-		project.executeCommand(createDiagramFactorCommand);
-		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor add = new CommandDiagramAddFactor(diagramFactorId);
-		project.executeCommand(add);
-
-		DiagramFactorId insertedId = add.getInsertedId();
-		FactorCell node = project.getDiagramModel().getFactorCellById(insertedId);
-		assertEquals("type not right?", type, node.getWrappedType());
-		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramFactorId());
-
-		verifyUndoDiagramAddNode(add);
-	}
-
-	private void verifyUndoDiagramAddNode(CommandDiagramAddFactor cmd) throws CommandFailedException
-	{
-		DiagramFactorId insertedId = cmd.getInsertedId();
-		project.undo();
-		try
-		{
-			EAM.setLogToString();
-			project.getDiagramModel().getFactorCellById(insertedId);
-			fail("Should have thrown because node didn't exist");
-		}
-		catch(Exception ignoreExpected)
-		{
-		}
-	}
 
 	public void testCommandDiagramAddLinkage() throws Exception
 	{
@@ -507,11 +458,11 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor add = new CommandDiagramAddFactor(diagramFactorId);
-		project.executeCommand(add);
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
+		project.executeCommand(addDiagramFactor);
 		
-		DiagramFactorId insertedId = add.getInsertedId();
-		return (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, insertedId));
+		return (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
 	}
 	
 	private CreateTaskParameter getTaskExtraInfo()
