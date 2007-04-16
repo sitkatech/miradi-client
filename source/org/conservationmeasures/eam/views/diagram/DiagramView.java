@@ -56,6 +56,7 @@ import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -67,6 +68,7 @@ import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -79,6 +81,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
@@ -209,7 +212,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		diagramPanel = new DiagramPanel(getMainWindow(), getProject(), null);
 		
 		addTab(diagramPanel.getPanelDescription(), diagramPanel);
-		//addResultsChainTabs();
+		addResultsChainTabs();
 		
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 	}
@@ -220,30 +223,40 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	}
 
 
-	//FIXME need to add results chains
-//	private void addResultsChainTabs() throws Exception
-//	{
-//		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
-//		for (int i = 0; i < resultsChains.size(); i++)
-//		{
-//			DiagramModel diagramModel = new DiagramModel(getProject());
-//			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChains.get(i)));
-//			diagramModel.fillFrom(resultsChain);
-//			
-//			DiagramComponent resultsChaindiagram = new DiagramComponent(getMainWindow());
-//			resultsChaindiagram.setModel(diagramModel);
-//			//FIXME need to create selectionModel and cache
-//			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
-//			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
-//			
-//			ResultsChainDiagramSplitPane splitPane = new ResultsChainDiagramSplitPane(getMainWindow(), resultsChaindiagram);
-//
-//			//TODO fix tab name
-//			addTab("Results Chain "+i, splitPane);
-//		}
-//	}
+	//FIXME RC need to add results chains
+	private void addResultsChainTabs() throws Exception
+	{
+		removeAllTabs();
+		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
+		for (int i = 0; i < resultsChains.size(); i++)
+		{
+			DiagramModel diagramModel = new DiagramModel(getProject());
+			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChains.get(i)));
+			diagramModel.fillFrom(resultsChain);
+			
+			DiagramComponent resultsChaindiagram = new DiagramComponent(getMainWindow());
+			resultsChaindiagram.setModel(diagramModel);
+			//FIXME RC need to create selectionModel and cache
+			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
+			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
+			
+			ResultsChainDiagramSplitPane splitPane = new ResultsChainDiagramSplitPane(getMainWindow(), resultsChaindiagram);
+
+			//TODO RC fix tab name
+			addTab("Results Chain "+i, splitPane);
+		}
+	}
 	
-	//FIXME should return the model of the currently selected tab
+	private void removeAllTabs()
+	{
+		final int NONE_RESULTS_CHAIN_INDEX = 1;
+		for (int i = NONE_RESULTS_CHAIN_INDEX; i < getTabCount(); i++)
+		{
+			removeTab(i);
+		}
+	}
+
+	//FIXME RC should return the model of the currently selected tab
 	public DiagramModel getDiagramModel()
 	{
 		return getDiagramComponent().getDiagramModel();
@@ -358,6 +371,19 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		Command rawCommand = event.getCommand();
+		
+		if (isResultsChain(rawCommand))
+		{
+			try
+			{
+				addResultsChainTabs();
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+		
 		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			return;
 
@@ -375,6 +401,18 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		{
 			EAM.logException(e);
 		}
+	}
+
+	private boolean isResultsChain(Command rawCommand)
+	{
+		if (!rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+			return false;
+		
+		if ( ObjectType.RESULTS_CHAIN_DIAGRAM != ((CommandCreateObject)rawCommand).getObjectType())   
+			return false;
+		
+		return true;
+			
 	}
 
 	private void updateFactorLinkIfRelevant(CommandSetObjectData cmd) throws Exception

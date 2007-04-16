@@ -90,7 +90,7 @@ public class CreateResultsChainDoer extends ViewDoer
 			CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
 			CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 			getProject().executeCommand(createDiagramFactor);
-			//FIXME size and location have to be set for new diagramFactor
+			//FIXME RC size and location have to be set for new diagramFactor
 //			DiagramFactorId newlyCreatedId = (DiagramFactorId) createDiagramFactor.getCreatedId();
 //			String size = EnhancedJsonObject.convertFromDimension(diagramFactor.getSize());
 //			CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_SIZE, size);
@@ -107,7 +107,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		return ids;
 	}
 	
-	//TODO use chain instead of just selected
+	//TODO RC use chain instead of just selected
 	private DiagramFactor[] createChainBasedOnFactorSelection() throws Exception
 	{
 		FactorCell[] selectedFactorCells = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();

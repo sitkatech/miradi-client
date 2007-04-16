@@ -89,6 +89,16 @@ abstract public class TabbedView extends UmbrellaView
 		super.becomeInactive();
 	}
 	
+	public void removeTab(int index)
+	{
+		tabs.removeTabAt(index);
+	}
+	
+	public int getTabCount()
+	{
+		return tabs.getTabCount();
+	}
+	
 	public void addTab(String name, Component contents)
 	{
 		tabs.add(name, contents);
