@@ -52,6 +52,8 @@ public class ObjectTestCase extends EAMTestCase
 			String[] tags = object.getFieldTags();
 			for(int i = 0; i < tags.length; ++i)
 			{
+				if(object.isPseudoField(tags[i]))
+					continue;
 				verifyFieldLifecycle(project, object, tags[i]);
 			}
 		}
