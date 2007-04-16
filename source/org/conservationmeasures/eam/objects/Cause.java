@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Cause extends Factor
@@ -108,13 +109,26 @@ public class Cause extends Factor
 	{
 		super.clear();
 		taxonomyCode = new StringData();
+		try
+		{
+			taxonomyCodeLabel = new PseudoQuestionData(new ThreatClassificationQuestion(TAG_TAXONOMY_CODE));
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException("Cause failed to initializ:" + e.getMessage());
+		}
+		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
+		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
 	}	
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
+	
 	public static final String OBJECT_NAME = "Cause";
+	
 	StringData taxonomyCode; 
+	PseudoQuestionData taxonomyCodeLabel;
 	
 	private int targetCount;
-
 }
