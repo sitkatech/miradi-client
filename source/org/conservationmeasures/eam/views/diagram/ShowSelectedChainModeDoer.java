@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -41,7 +42,13 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			return false;
 		}
 
-		if(getDiagramView().getDiagramPanel().getOnlySelectedCells().length < 1)
+		if (!isDiagramView())
+			return false;
+		
+		DiagramView view = getDiagramView();
+		DiagramPanel diagramPanel = view.getDiagramPanel();
+		EAMGraphCell[] selectedCells = diagramPanel.getOnlySelectedCells();
+		if(selectedCells.length < 1)
 			return false;
 		
 		return true;

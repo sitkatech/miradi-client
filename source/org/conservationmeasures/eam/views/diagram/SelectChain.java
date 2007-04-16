@@ -22,6 +22,9 @@ public class SelectChain extends ViewDoer
 {
 	public boolean isAvailable()
 	{
+		if (! isDiagramView())
+			return false;
+		
 		FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 		DiagramFactorLink[] selectedLinks = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		int combinedLengths = selectedLinks.length + selectedFactors.length;

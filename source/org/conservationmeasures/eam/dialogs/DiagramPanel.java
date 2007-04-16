@@ -15,18 +15,14 @@ import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
-import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.ConceptualModelDiagramSplitPane;
@@ -34,10 +30,11 @@ import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 
 public class DiagramPanel extends ObjectDataInputPanel
 {
-	public DiagramPanel(MainWindow mainWindowToUse, Project project, ORef orefToUse) throws Exception
+	public DiagramPanel(MainWindow mainWindowToUse, Project project, DiagramObject diagramObjectToUse) throws Exception
 	{
-		super(project, getDiagramObject(project).getRef());
+		super(project, diagramObjectToUse.getRef());
 		mainWindow = mainWindowToUse;
+		diagramObject = diagramObjectToUse;
 	
 		createAndAddDiagram();
 		ConceptualModelDiagramSplitPane splitPane = new ConceptualModelDiagramSplitPane(mainWindow, diagram);
@@ -48,8 +45,7 @@ public class DiagramPanel extends ObjectDataInputPanel
 	private void createAndAddDiagram() throws Exception
 	{
 		DiagramModel diagramModel = new DiagramModel(getProject());
-		ConceptualModelDiagram conceptualModelDiagram = getDiagramObject(getProject());
-		diagramModel.fillFrom(conceptualModelDiagram);
+		diagramModel.fillFrom(diagramObject);
 		diagramModel.updateProjectScopeBox();
 		
 		diagram = new DiagramComponent(mainWindow);
@@ -58,29 +54,11 @@ public class DiagramPanel extends ObjectDataInputPanel
 		selectionModel = diagram.getEAMGraphSelectionModel();
 	}
 	
-	private static ConceptualModelDiagram getDiagramObject(Project project) throws Exception
+	public DiagramObject getDiagramObject()
 	{
-		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) project.getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		ORefList oRefs = diagramContentsPool.getORefList();
-		return getDiagramContentsObject(project, oRefs);
+		return diagramObject;
 	}
-	
-	private static ConceptualModelDiagram getDiagramContentsObject(Project project, ORefList oRefs) throws Exception
-	{
-		if (oRefs.size() == 0)
-		{
-			BaseId id = project.createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-			return (ConceptualModelDiagram) project.findObject(new ORef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, id));
-		}
-		if (oRefs.size() > 1)
-		{
-			EAM.logVerbose("Found more than one diagram contents inside pool");
-		}
-
-		ORef oRef = oRefs.get(0);
-		return (ConceptualModelDiagram) project.findObject(oRef);
-	}
-	
+		
 	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
 	{
 		selectionModel = selectionModelToUse;
@@ -248,7 +226,7 @@ public class DiagramPanel extends ObjectDataInputPanel
 		
 		try
 		{
-			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(getProject(), getDiagramModel(), getDiagramObject(getProject()));
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(getProject(), getDiagramModel(), diagramObject);
 			modelUpdater.commandExecuted(event);
 		}
 		catch(Exception e)
@@ -258,6 +236,7 @@ public class DiagramPanel extends ObjectDataInputPanel
 		
 	}
 
+	private DiagramObject diagramObject;
 	private EAMGraphSelectionModel selectionModel;
 	private DiagramComponent diagram;
 	private MainWindow mainWindow;

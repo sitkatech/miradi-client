@@ -99,6 +99,11 @@ abstract public class TabbedView extends UmbrellaView
 		return tabs.getTabCount();
 	}
 	
+	public int getSelectedTabIndex()
+	{
+		return tabs.getSelectedIndex();
+	}
+	
 	public void addTab(String name, Component contents)
 	{
 		tabs.add(name, contents);

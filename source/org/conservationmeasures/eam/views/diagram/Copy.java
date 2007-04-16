@@ -26,9 +26,12 @@ public class Copy extends ViewDoer
 	
 	public boolean isAvailable()
 	{
-		if(!getProject().isOpen())
+		if (! getProject().isOpen())
 			return false;
 
+		if (! isDiagramView())
+			return false;
+		
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		return (selected.length > 0);
 	}

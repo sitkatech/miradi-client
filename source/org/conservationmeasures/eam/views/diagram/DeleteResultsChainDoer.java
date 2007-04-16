@@ -5,13 +5,18 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteResultsChainDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
+		if (getDiagramView().isResultsChainTab())
+			return true;
+		
 		return false;
 	}
 
@@ -19,5 +24,11 @@ public class DeleteResultsChainDoer extends ViewDoer
 	{
 		if (! isAvailable())
 			return;
+		
+		DiagramView view = getDiagramView();
+		
+		DiagramObject diagramObject = view.getCurrentDiagramPanel().getDiagramObject();
+		CommandDeleteObject deleteResultsChain = new CommandDeleteObject(diagramObject.getRef());
+		getProject().executeCommand(deleteResultsChain);
 	}
 }

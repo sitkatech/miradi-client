@@ -27,6 +27,9 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 
 	public boolean isAvailable()
 	{
+		if (! isDiagramView())
+			return false;
+		
 		return (getSelectedFactor() != null);
 	}
 

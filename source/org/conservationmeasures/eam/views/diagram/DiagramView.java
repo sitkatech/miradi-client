@@ -57,6 +57,7 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -65,6 +66,7 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -77,7 +79,9 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -110,9 +114,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public DiagramComponent getDiagramComponent()
 	{
-		if(diagramPanel == null)
+		if(getCurrentDiagramPanel() == null)
 			return null;
-		return diagramPanel.getdiagramComponent();
+		
+		return getCurrentDiagramPanel().getdiagramComponent();
 	}
 
 	public String cardName()
@@ -208,25 +213,55 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public void createTabs() throws Exception
 	{
-		//FIXME dont pass in null
-		diagramPanel = new DiagramPanel(getMainWindow(), getProject(), null);
-		
-		addTab(diagramPanel.getPanelDescription(), diagramPanel);
+		addConceptualModelDiagramTab();
 		addResultsChainTabs();
 		
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 	}
-	
-	public DiagramPanel getDiagramPanel()
+
+	private void addConceptualModelDiagramTab() throws Exception
 	{
-		return diagramPanel;
+		DiagramPanel diagramPanel = new DiagramPanel(getMainWindow(), getProject(), getDiagramObject());
+		addTab(diagramPanel.getPanelDescription(), diagramPanel);
+	}
+	
+	private ConceptualModelDiagram getDiagramObject() throws Exception
+	{
+		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) getProject().getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		ORefList oRefs = diagramContentsPool.getORefList();
+		return getDiagramContentsObject(oRefs);
+	}
+	
+	private ConceptualModelDiagram getDiagramContentsObject(ORefList oRefs) throws Exception
+	{
+		if (oRefs.size() == 0)
+		{
+			BaseId id = getProject().createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+			return (ConceptualModelDiagram) getProject().findObject(new ORef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, id));
+		}
+		if (oRefs.size() > 1)
+		{
+			EAM.logVerbose("Found more than one diagram contents inside pool");
+		}
+
+		ORef oRef = oRefs.get(0);
+		return (ConceptualModelDiagram) getProject().findObject(oRef);
 	}
 
+	public DiagramPanel getDiagramPanel()
+	{
+		return getCurrentDiagramPanel();
+	}
+
+	public DiagramPanel getCurrentDiagramPanel()
+	{
+		return (DiagramPanel) getCurrentTabContents();
+	}
 
 	//FIXME RC need to add results chains
 	private void addResultsChainTabs() throws Exception
 	{
-		removeAllTabs();
+		removeAllResultsChainTabs();
 		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
 		for (int i = 0; i < resultsChains.size(); i++)
 		{
@@ -234,20 +269,35 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChains.get(i)));
 			diagramModel.fillFrom(resultsChain);
 			
-			DiagramComponent resultsChaindiagram = new DiagramComponent(getMainWindow());
-			resultsChaindiagram.setModel(diagramModel);
+			DiagramComponent resultsChainDiagram = new DiagramComponent(getMainWindow());
+			resultsChainDiagram.setModel(diagramModel);
 			//FIXME RC need to create selectionModel and cache
 			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
 			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
 			
-			ResultsChainDiagramSplitPane splitPane = new ResultsChainDiagramSplitPane(getMainWindow(), resultsChaindiagram);
+			//ResultsChainDiagramSplitPane splitPane = new ResultsChainDiagramSplitPane(getMainWindow(), resultsChainDiagram);
+			
+			DiagramPanel diagramPanel = new DiagramPanel(getMainWindow(), getProject(), resultsChain);
+			//FIXME RC fix name
+			addTab("Results Chain " + i, diagramPanel);
+			
 
 			//TODO RC fix tab name
-			addTab("Results Chain "+i, splitPane);
+			//addTab("Results Chain "+i, splitPane);
 		}
 	}
 	
-	private void removeAllTabs()
+	public boolean isResultsChainTab()
+	{
+		final int DIAGRAM_INDEX = 0;
+		int index = getSelectedTabIndex();
+		if (index == DIAGRAM_INDEX)
+			return false;
+		
+		return true;
+	}
+	
+	private void removeAllResultsChainTabs()
 	{
 		final int NONE_RESULTS_CHAIN_INDEX = 1;
 		for (int i = NONE_RESULTS_CHAIN_INDEX; i < getTabCount(); i++)
@@ -255,7 +305,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			removeTab(i);
 		}
 	}
-
+	
 	//FIXME RC should return the model of the currently selected tab
 	public DiagramModel getDiagramModel()
 	{
@@ -272,8 +322,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		// TODO: This should completely tear down the view
 		disposeOfNodePropertiesDialog();
 		
-		diagramPanel.dispose();
-		diagramPanel = null;
+		DiagramPanel panel = getCurrentDiagramPanel();
+		if (panel != null)
+			panel.dispose();
 	}
 	
 	public void setMode(String newMode)
@@ -405,6 +456,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private boolean isResultsChain(Command rawCommand)
 	{
+		return isAddResultsChainCommand(rawCommand) || isDeleteResultsChainCommand(rawCommand);
+	}
+
+	private boolean isAddResultsChainCommand(Command rawCommand)
+	{
 		if (!rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
 			return false;
 		
@@ -412,9 +468,19 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			return false;
 		
 		return true;
-			
 	}
 
+	private boolean isDeleteResultsChainCommand(Command rawCommand)
+	{
+		if (!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			return false;
+		
+		if ( ObjectType.RESULTS_CHAIN_DIAGRAM != ((CommandDeleteObject)rawCommand).getObjectType())   
+			return false;
+		
+		return true;
+	}
+	
 	private void updateFactorLinkIfRelevant(CommandSetObjectData cmd) throws Exception
 	{
 		if (cmd.getObjectType() != ObjectType.DIAGRAM_LINK)
@@ -545,7 +611,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	Properties propertiesDoer;
 	String mode;
 	
-	DiagramPanel diagramPanel;
 	ModelessDialogWithClose nodePropertiesDlg;
 	FactorPropertiesPanel nodePropertiesPanel;
 }

@@ -31,6 +31,9 @@ public class CreateResultsChainDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
+		if (! isDiagramView())
+			return false;
+		
 		Factor[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactors();
 		if (selectedFactors.length == 0)
 			return false;

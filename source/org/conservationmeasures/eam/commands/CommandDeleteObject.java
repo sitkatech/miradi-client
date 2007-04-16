@@ -10,11 +10,17 @@ import java.util.HashMap;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDeleteObject extends Command
 {
+	public CommandDeleteObject(ORef ref)
+	{
+		this(ref.getObjectType(), ref.getObjectId());
+	}
+	
 	public CommandDeleteObject(int objectType, BaseId objectId)
 	{
 		type = objectType;

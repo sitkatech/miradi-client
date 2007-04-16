@@ -27,6 +27,9 @@ public class NudgeDoer extends LocationDoer
 	
 	public boolean isAvailable()
 	{
+		if (!isDiagramView())
+			return false;
+		
 		return getDiagramView().getDiagramPanel().getOnlySelectedFactorCells().length > 0;
 	}
 
