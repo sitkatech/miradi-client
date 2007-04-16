@@ -582,7 +582,7 @@ abstract public class BaseObject
 		return outArray;
 	}
 
-	public Object getPseudoData(String fieldTag)
+	public String getPseudoData(String fieldTag)
 	{
 		return "";
 	}
@@ -606,7 +606,7 @@ abstract public class BaseObject
 
 		public String get()
 		{
-			return  question.findChoiceByCode((String)getPseudoData(question.getTag())).getLabel();
+			return  question.findChoiceByCode(getPseudoData(question.getTag())).getLabel();
 		}
 
 		public boolean equals(Object rawOther)
@@ -648,7 +648,7 @@ abstract public class BaseObject
 
 		public String get()
 		{
-			return (String) getPseudoData(psuedoTag);
+			return getPseudoData(psuedoTag);
 		}
 		
 		public boolean equals(Object rawOther)

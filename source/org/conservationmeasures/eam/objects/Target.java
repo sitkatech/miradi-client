@@ -96,7 +96,7 @@ public class Target extends Factor
 		return true;
 	}
 	
-	public Object getPseudoData(String fieldTag)
+	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_TARGET_VIABILITY))
 			return getTargetViability();

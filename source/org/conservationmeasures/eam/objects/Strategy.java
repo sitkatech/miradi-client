@@ -102,7 +102,7 @@ public class Strategy extends Factor
 		return activityIds.getIdList();
 	}
 	
-	public Object getPseudoData(String fieldTag)
+	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_RATING_SUMMARY))
 			return getStrategyRatingSummary();

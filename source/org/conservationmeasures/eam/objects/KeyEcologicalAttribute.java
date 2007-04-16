@@ -110,7 +110,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		return keyEcologicalAttributeType.toString();
 	}
 
-	public Object getPseudoData(String fieldTag)
+	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_VIABILITY_STATUS))
 			return computeTNCViability();
