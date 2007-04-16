@@ -107,7 +107,7 @@ public class Strategy extends Factor
 	{
 		if(fieldTag.equals(PSEUDO_TAG_RATING_SUMMARY))
 			return getStrategyRatingSummary();
-		return getPseudoData(fieldTag);
+		return super.getPseudoData(fieldTag);
 	}
 
 	private String getStrategyRatingSummary()
