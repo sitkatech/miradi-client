@@ -209,7 +209,7 @@ public class Task extends BaseObject
 		return getLabel();
 	}
 	
-	
+	//TODO: look to see if we can get rid of this now we have a get owner:
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if (fieldTag.equals(TAG_PARENT_REF))
@@ -222,7 +222,11 @@ public class Task extends BaseObject
 	{
 		if (fieldTag.equals(TAG_PARENT_REF))
 			return parentRef.get();
-		
+		return super.getData(fieldTag);
+	}
+	
+	public String getPseudoData(String fieldTag)
+	{
 		if(fieldTag.equals(PSEUDO_TAG_STRATEGY_LABEL))
 			return getLabelOfTaskParent();
 		
@@ -238,7 +242,7 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_TASK_COST))
 			return getTaskCost();
 		
-		return super.getData(fieldTag);
+		return super.getPseudoData(fieldTag);
 	}
 
 
@@ -248,8 +252,8 @@ public class Task extends BaseObject
 		try
 		{
 			BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(objectManager.getProject());
-			double taskCost = calculator.getTaskCost((TaskId)getId());
-			return formateResults(taskCost);
+			double cost = calculator.getTaskCost((TaskId)getId());
+			return formateResults(cost);
 		}
 		catch (Exception e)
 		{
@@ -318,9 +322,19 @@ public class Task extends BaseObject
 		parentRef = new ORefData();
 		subtaskIds = new IdListData();
 		assignmentIds = new IdListData();
+		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
+		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
+		subtaskTotal = new PseudoStringData(PSEUDO_TAG_SUBTASK_TOTAL);
+		taskTotal = new PseudoStringData(PSEUDO_TAG_TASK_TOTAL);
+		taskCost = new PseudoStringData(PSEUDO_TAG_TASK_COST);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
+		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
+		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
+		addField(PSEUDO_TAG_SUBTASK_TOTAL, subtaskTotal);
+		addField(PSEUDO_TAG_TASK_TOTAL, taskTotal);
+		addField(PSEUDO_TAG_TASK_COST, taskCost);
 	}
 
 	public final static String TAG_PARENT_REF = "ParentRef";
@@ -335,4 +349,9 @@ public class Task extends BaseObject
 	IdListData subtaskIds;
 	IdListData assignmentIds;
 	ORefData parentRef;
+	PseudoStringData strategyLabel;
+	PseudoStringData indicatorLabel;
+	PseudoStringData subtaskTotal;
+	PseudoStringData taskTotal;
+	PseudoStringData taskCost;
 }
