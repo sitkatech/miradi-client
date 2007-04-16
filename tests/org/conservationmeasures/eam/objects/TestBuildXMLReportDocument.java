@@ -40,7 +40,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 		
 		try
 		{
-			int BASE_INT = BaseId.INVALID.asInt();
+			//int BASE_INT = BaseId.INVALID.asInt();
 			
 			File projectFile = new File(EAM.getHomeDirectory(),projectName);
 			Project project = new Project();
