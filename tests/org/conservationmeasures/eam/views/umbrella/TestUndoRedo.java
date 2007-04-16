@@ -3,7 +3,6 @@ import java.awt.Dimension;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -14,6 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
@@ -143,10 +143,11 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		CommandDiagramAddFactor addToDiagramCommand = new CommandDiagramAddFactor(diagramFactorId);
-		p.executeCommand(addToDiagramCommand);
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
+		project.executeCommand(addDiagramFactor);
 		
-		return addToDiagramCommand.getInsertedId();
+		return diagramFactorId;
 	}
 
 	ProjectForTesting project;
