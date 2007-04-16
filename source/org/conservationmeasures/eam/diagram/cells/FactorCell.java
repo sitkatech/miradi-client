@@ -84,12 +84,7 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		return underlyingObject.getRef();
 	}
-	
-	public int getType()
-	{
-		return getWrappedType();
-	}
-	
+
 	public int getUnderlyingFactorType()
 	{
 		return underlyingObject.getType();
