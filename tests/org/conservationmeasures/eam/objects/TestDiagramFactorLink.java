@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
@@ -111,13 +111,14 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		
 		DiagramFactorLinkId createdDiagramFactorLinkId = createDiagramFactorLink(project, interventionId, factorId, modelLinkageId);		
-		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(createdDiagramFactorLinkId);
-		project.executeCommand(command);
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramFactorLinkId);
+		project.executeCommand(addLink);
 		
-		assertNotNull("link not in model?", model.getDiagramFactorLinkById(command.getDiagramFactorLinkId()));
+		assertNotNull("link not in model?", model.getDiagramFactorLinkById(createdDiagramFactorLinkId));
 		
 		ProjectServer server = project.getTestDatabase();
-		DiagramFactorLink dfl = project.getDiagramModel().getDiagramFactorLinkById(command.getDiagramFactorLinkId());
+		DiagramFactorLink dfl = project.getDiagramModel().getDiagramFactorLinkById(createdDiagramFactorLinkId);
 		FactorLink linkage = (FactorLink)server.readObject(ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from id?", interventionId, linkage.getFromFactorId());
 		assertEquals("Didn't load to id?", factorId, linkage.getToFactorId());
