@@ -757,15 +757,6 @@ public class Project
 		return diagramFactors;
 	}
 
-	public DiagramFactorLinkId addLinkToDiagram(DiagramFactorLinkId diagramFactorLinkId) throws Exception
-	{
-		DiagramFactorLink diagramFactorLink = (DiagramFactorLink) findObject(ObjectType.DIAGRAM_LINK, diagramFactorLinkId);
-		DiagramFactorLink addedDiagramFactorLink = getDiagramModel().addLinkToDiagram(diagramFactorLink);
-		DiagramFactorLinkId diagramLinkageId = addedDiagramFactorLink.getDiagramLinkageId();
-		
-		return diagramLinkageId;
-	}
-	
 	protected void writeFactor(FactorId factorId) throws IOException, ParseException
 	{
 		Factor cmNode = findNode(factorId);

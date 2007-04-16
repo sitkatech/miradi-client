@@ -824,9 +824,11 @@ public class TestProject extends EAMTestCase
 		BaseId	createdRawDiagramFactorLinkId = project.createObject(ObjectType.DIAGRAM_LINK, extraInfo);
 		DiagramFactorLinkId createdDiagramFactorLinkId = new DiagramFactorLinkId(createdRawDiagramFactorLinkId.asInt());
 		
-		DiagramFactorLinkId diagramLinkageId = project.addLinkToDiagram(createdDiagramFactorLinkId);
+		DiagramObject diagramObject = project.getDiagramObject();
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramFactorLinkId);
+		project.executeCommand(addLink);
 
-		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
+		return project.getDiagramModel().getDiagramFactorLinkById(createdDiagramFactorLinkId);
 	}
 
 	public DiagramFactor createNodeAndAddToDiagram(ProjectForTesting projectToUse, int nodeType) throws Exception
