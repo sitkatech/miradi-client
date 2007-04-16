@@ -267,8 +267,12 @@ abstract public class BaseObject
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
-			if (!noneClearedFieldTags.contains(tag))
-				commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
+			if (noneClearedFieldTags.contains(tag))
+				continue;
+			if(isPseudoField(tag))
+				continue;
+
+			commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
 		}
 		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
 	}
@@ -281,6 +285,8 @@ abstract public class BaseObject
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
+			if(isPseudoField(tag))
+				continue;
 			ObjectData data = getField(tag);
 			json.put(tag, data.get());
 		}

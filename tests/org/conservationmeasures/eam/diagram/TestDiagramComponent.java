@@ -58,7 +58,7 @@ public class TestDiagramComponent extends EAMTestCase
 	public void testSelectAll() throws Exception
 	{
 		EAM.mainWindow = new MainWindow(project);
-		DiagramComponent diagramComponent = new DiagramComponent();
+		DiagramComponent diagramComponent = new DiagramComponent(EAM.mainWindow);
 		diagramComponent.setModel(project.getDiagramModel());
 		diagramComponent.setGraphLayoutCache(project.getDiagramModel().getGraphLayoutCache());
 		

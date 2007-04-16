@@ -30,7 +30,8 @@ abstract public class ViewAction extends MainWindowAction
 	Doer getDoer()
 	{
 		Doer doer = super.getDoer();
-		doer.setView(mainWindow.getCurrentView());
+		if(doer != null)
+			doer.setView(mainWindow.getCurrentView());
 		return doer;
 	}
 

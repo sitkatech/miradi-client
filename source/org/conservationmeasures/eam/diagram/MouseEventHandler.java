@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.Properties;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.GraphConstants;
@@ -187,10 +188,13 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	public void selectionChanged(GraphSelectionEvent event)
 	{
-		selectedCells = getDiagram().getSelectionCells();
 		getActions().updateActionStates();
-		if(mainWindow.getCurrentView().cardName().equals(DiagramView.getViewName()))
+		UmbrellaView currentView = mainWindow.getCurrentView();
+		if(currentView == null)
+			return;
+		if(currentView.cardName().equals(DiagramView.getViewName()))
 		{
+			selectedCells = getDiagram().getSelectionCells();
 			DiagramView view = (DiagramView)mainWindow.getCurrentView();
 			view.selectionWasChanged();
 		}
