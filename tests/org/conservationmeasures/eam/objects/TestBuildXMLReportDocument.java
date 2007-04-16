@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EAMFileSaveChooser;
@@ -103,6 +104,8 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 		for(int i = 0; i < tags.length; ++i)
 		{
 			if (object.getField(tags[i]) instanceof IdListData)
+				continue;
+			if (object.getField(tags[i]) instanceof ChoiceData)
 				continue;
 			lineNumber = lineNumber + 10;
 			writeData(getTextFieldElement("Label:"+tags[i],lineNumber));

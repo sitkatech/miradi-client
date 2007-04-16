@@ -278,7 +278,7 @@ public class Target extends Factor
 	public static final String PSEUDO_TAG_TARGET_VIABILITY = "TargetViability";
 	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
 	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
-	public static final String PSEUDO_TAG_TARGET_VIABILITY_VALUE = "ViabilityModeValue";
+	public static final String PSEUDO_TAG_TARGET_VIABILITY_VALUE = "ViabilityValue";
 	
 	ChoiceData targetStatus;
 	ChoiceData viabiltyMode;
