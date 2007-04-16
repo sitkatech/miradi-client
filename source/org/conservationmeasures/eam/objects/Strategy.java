@@ -166,7 +166,7 @@ public class Strategy extends Factor
 	void clear()
 	{
 		super.clear();
-		status = new StringData(STATUS_REAL);
+		status = new StringData();
 		activityIds = new IdListData();
 		shortLabel = new StringData();
 	
