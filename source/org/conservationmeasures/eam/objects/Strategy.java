@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -15,6 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.StrategyClassificationQuestion;
 import org.conservationmeasures.eam.questions.StrategyCostQuestion;
 import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
@@ -167,39 +169,68 @@ public class Strategy extends Factor
 		super.clear();
 		status = new StringData(STATUS_REAL);
 		activityIds = new IdListData();
+		shortLabel = new StringData();
+	
 		taxonomyCode = new StringData();
 		impactRating = new ChoiceData();
 		durationRating = new ChoiceData();
 		feasibilityRating = new ChoiceData();
 		costRating = new ChoiceData();
-		shortLabel = new StringData();
 		tagRatingSummary = new PsuedoStringData(PSEUDO_TAG_RATING_SUMMARY);
-		tagRatingSummaryLabel = new PseudoQuestionData(new StrategyRatingSummaryQuestion(PSEUDO_TAG_RATING_SUMMARY));
+		
+		try
+		{
+			taxonomyCodeLabel = new PseudoQuestionData(new StrategyClassificationQuestion(TAG_TAXONOMY_CODE));
+			impactRatingLabel = new PseudoQuestionData(new StrategyImpactQuestion(TAG_IMPACT_RATING));
+			durationRatingLabel = new PseudoQuestionData(new  StrategyDurationQuestion(TAG_DURATION_RATING));
+			feasibilityRatingLabel = new PseudoQuestionData(new StrategyFeasibilityQuestion(TAG_FEASIBILITY_RATING));
+			costRatingLabel = new PseudoQuestionData(new StrategyCostQuestion(TAG_COST_RATING));
+			tagRatingSummaryLabel = new PseudoQuestionData(new StrategyRatingSummaryQuestion(PSEUDO_TAG_RATING_SUMMARY));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+
 		
 		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);
+		addField(TAG_SHORT_LABEL, shortLabel);
+		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(TAG_IMPACT_RATING, impactRating);
 		addField(TAG_DURATION_RATING, durationRating);
 		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
 		addField(TAG_COST_RATING, costRating);
-		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
+		
+		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
+		addField(PSEUDO_TAG_IMPACT_RATING_VALUE, impactRatingLabel);
+		addField(PSEUDO_TAG_DURATION_RATING_VALUE, durationRatingLabel);
+		addField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, feasibilityRatingLabel);
+		addField(PSEUDO_TAG_COST_RATING_VALUE, costRatingLabel);
 		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
-	public static final String STATUS_DRAFT = "Draft";
-	public static final String STATUS_REAL = "Real";
+	public static final String     STATUS_DRAFT = "Draft";
+	public static final String     STATUS_REAL = "Real";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
+	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_DURATION_RATING = "DurationRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_COST_RATING = "CostRating";
-	public static final String PSEUDO_TAG_RATING_SUMMARY = "PseudoTagRatingSummary";
-	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "PseudoTagRatingSummaryValue";
+	public static final String PSEUDO_TAG_RATING_SUMMARY = "TagRatingSummary";
+	
+	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TagTaxonomyCodeValue";
+	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "TagImpactRatingValue";
+	public static final String PSEUDO_TAG_DURATION_RATING_VALUE = "TagDurationRatingValue";
+	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "TagFeasibilityRatingValue";
+	public static final String PSEUDO_TAG_COST_RATING_VALUE = "TagCostRatingValue";
+	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "TagRatingSummaryValue";
 
 	
 	public static final String OBJECT_NAME = "Strategy";
@@ -207,11 +238,18 @@ public class Strategy extends Factor
 	StringData status;
 	StringData shortLabel;
 	IdListData activityIds;
+	
 	StringData taxonomyCode;
 	ChoiceData impactRating;
 	ChoiceData durationRating;
 	ChoiceData feasibilityRating;
 	ChoiceData costRating;
 	PsuedoStringData tagRatingSummary;
+	
+	PseudoQuestionData taxonomyCodeLabel;
+	PseudoQuestionData impactRatingLabel;
+	PseudoQuestionData durationRatingLabel;
+	PseudoQuestionData feasibilityRatingLabel;
+	PseudoQuestionData costRatingLabel;
 	PseudoQuestionData tagRatingSummaryLabel;
 }
