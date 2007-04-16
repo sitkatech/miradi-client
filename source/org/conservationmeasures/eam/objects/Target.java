@@ -96,12 +96,11 @@ public class Target extends Factor
 		return true;
 	}
 	
-	public String getData(String fieldTag)
+	public Object getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_TARGET_VIABILITY))
 			return getTargetViability();
-		
-		return super.getData(fieldTag);
+		return super.getPseudoData(fieldTag);
 	}
 	
 	public IdList getDirectOrIndirectGoals()
@@ -238,10 +237,8 @@ public class Target extends Factor
 			if(!allCodes.contains(category))
 				allCodes.add(category);
 		}
-
 		return allCodes;
 	}
-	
 	
 	
 	public int getType()
@@ -259,17 +256,34 @@ public class Target extends Factor
 		super.clear();
 		targetStatus = new ChoiceData();
 		viabiltyMode = new ChoiceData();
+		targetViability = new PsuedoStringData(PSEUDO_TAG_TARGET_VIABILITY);
+		
+		targetStatusLabel = new PseudoQuestionData(new StatusQuestion(TAG_TARGET_STATUS));
+		viabiltyModeLabel = new PseudoQuestionData(new ViabilityModeQuestion(TAG_VIABILITY_MODE));
+		targetViabilityLabel = new PseudoQuestionData(new StatusQuestion(PSEUDO_TAG_TARGET_VIABILITY));
 		
 		addField(TAG_TARGET_STATUS, targetStatus);
 		addField(TAG_VIABILITY_MODE, viabiltyMode);
+		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
+		
+		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
+		addField(PSEUDO_TAG_VIABILITY_MODE_VALUE, targetStatusLabel);
+		addField(PSEUDO_TAG_TARGET_VIABILITY_VALUE, targetViabilityLabel);
 	}
 	
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
 	public static final String TAG_VIABILITY_MODE = "ViabilityMode";
 	public static final String OBJECT_NAME = "Target";
 	
-	public static final String PSEUDO_TAG_TARGET_VIABILITY = "PseudoTagTargetViability";
+	public static final String PSEUDO_TAG_TARGET_VIABILITY = "TargetViability";
+	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
+	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
+	public static final String PSEUDO_TAG_TARGET_VIABILITY_VALUE = "ViabilityModeValue";
 	
 	ChoiceData targetStatus;
 	ChoiceData viabiltyMode;
+	PsuedoStringData targetViability;
+	PseudoQuestionData targetStatusLabel;
+	PseudoQuestionData viabiltyModeLabel;
+	PseudoQuestionData targetViabilityLabel;
 }
