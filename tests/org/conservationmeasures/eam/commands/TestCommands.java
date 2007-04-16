@@ -316,21 +316,6 @@ public class TestCommands extends EAMTestCase
 		assertNull("didn't delete linkage from pool?", project.getFactorLinkPool().find(modelLinkageId));
 	}
 
-	public void testDeleteNode() throws Exception
-	{
-		DiagramFactorId id = insertTarget();
-		FactorId modelNodeId = project.getDiagramModel().getFactorCellById(id).getWrappedId();
-		
-		CommandDiagramRemoveFactor cmd = new CommandDiagramRemoveFactor(id);
-		assertEquals("modelNodeId not invalid?", BaseId.INVALID, cmd.getFactorId());
-		project.executeCommand(cmd);
-		
-		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getFactorId());
-		
-		project.undo();
-		assertEquals("didn't undo delete?", ObjectType.TARGET, project.getDiagramModel().getFactorCellById(id).getUnderlyingFactorType());
-	}
-	
 	public void testBeginTransaction() throws Exception
 	{
 		CommandBeginTransaction cmd = new CommandBeginTransaction();
