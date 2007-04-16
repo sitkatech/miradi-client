@@ -61,10 +61,10 @@ public class DiagramModelUpdater
 		IdList factorIdsAfter = new IdList(dataValueAfter);
 
 		IdList factorIdsToAdd = getAddedIds(factorIdsBefore, factorIdsAfter); 
-		addDiagramFactor(factorIdsToAdd);
+		addDiagramFactors(factorIdsToAdd);
 		
 		IdList factorIdsToRemove = getRemovedIds(factorIdsBefore, factorIdsAfter);
-		removeDiagramFactor(factorIdsToRemove);
+		removeDiagramFactors(factorIdsToRemove);
 	}
 	
 	private void updateLinks(CommandSetObjectData setCommand) throws Exception
@@ -79,13 +79,13 @@ public class DiagramModelUpdater
 		IdList factorLinkIdsAfter = new IdList(dataValueAfter);
 
 		IdList addedLinkIds = getAddedIds(factorLinkIdsBefore, factorLinkIdsAfter);
-		addDiagamLink(addedLinkIds);
+		addDiagamLinks(addedLinkIds);
 		
 		IdList removedLinkIds = getRemovedIds(factorLinkIdsBefore, factorLinkIdsAfter);
-		removeDiagramLink(removedLinkIds);
+		removeDiagramLinks(removedLinkIds);
 	}
 
-	private void removeDiagramLink(IdList removedFactorLinkIds) throws Exception
+	private void removeDiagramLinks(IdList removedFactorLinkIds) throws Exception
 	{
 		for (int i = 0; i < removedFactorLinkIds.size(); i++)
 		{
@@ -94,16 +94,16 @@ public class DiagramModelUpdater
 		}
 	}
 
-	private void addDiagamLink(IdList addedLinkids) throws Exception
+	private void addDiagamLinks(IdList addedLinkIds) throws Exception
 	{
-		for (int i = 0; i < addedLinkids.size(); i++)
+		for (int i = 0; i < addedLinkIds.size(); i++)
 		{
-			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, addedLinkids.get(i)));
+			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, addedLinkIds.get(i)));
 			model.addLinkToDiagram(diagramFactorLink);
 		}
 	}
 
-	private void removeDiagramFactor(IdList factorIdsToRemove) throws Exception
+	private void removeDiagramFactors(IdList factorIdsToRemove) throws Exception
 	{
 		for (int i = 0; i < factorIdsToRemove.size(); i++)
 		{
@@ -111,7 +111,7 @@ public class DiagramModelUpdater
 		}
 	}
 	
-	private void addDiagramFactor(IdList addedFactorIds) throws Exception
+	private void addDiagramFactors(IdList addedFactorIds) throws Exception
 	{
 		for (int i = 0; i < addedFactorIds.size(); i++)
 		{
@@ -122,16 +122,16 @@ public class DiagramModelUpdater
 
 	private IdList getAddedIds(IdList factorIdsBefore, IdList factorIdsAfter)
 	{
-		IdList addedFactorIds = new IdList(factorIdsAfter);
-		addedFactorIds.subtract(factorIdsBefore);
-		return addedFactorIds;
+		IdList addedIds = new IdList(factorIdsAfter);
+		addedIds.subtract(factorIdsBefore);
+		return addedIds;
 	}
 	
 	private IdList getRemovedIds(IdList factorIdsBefore, IdList factorIdsAfter)
 	{
-		IdList factorIdsToRemove = new IdList(factorIdsBefore);
-		factorIdsToRemove.subtract(factorIdsAfter);
-		return factorIdsToRemove;
+		IdList removedIds = new IdList(factorIdsBefore);
+		removedIds.subtract(factorIdsAfter);
+		return removedIds;
 	}
 		
 	private Project project;
