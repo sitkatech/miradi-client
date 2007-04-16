@@ -48,7 +48,6 @@ public class DiagramPanel extends ObjectDataInputPanel
 	private void createAndAddDiagram() throws Exception
 	{
 		DiagramModel diagramModel = new DiagramModel(getProject());
-		getProject().setDiagramModel(diagramModel);
 		ConceptualModelDiagram conceptualModelDiagram = getDiagramObject(getProject());
 		diagramModel.fillFrom(conceptualModelDiagram);
 		diagramModel.updateProjectScopeBox();

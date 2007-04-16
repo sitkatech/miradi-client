@@ -255,5 +255,6 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		}
 	}
 
+	DiagramModel diagramModel;
 	Vector commandStack;
 }

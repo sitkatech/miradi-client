@@ -19,8 +19,6 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
@@ -85,9 +83,6 @@ public class Project
 	{
 		if(diagramSaver != null)
 			removeCommandExecutedListener(diagramSaver);
-		
-		if(diagramModel != null)
-			diagramModel.dispose();
 		
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
@@ -217,17 +212,6 @@ public class Project
 	{
 		return objectManager.getAssignmentPool();
 	}
-	
-	public DiagramModel getDiagramModel()
-	{
-		return diagramModel;
-	}
-	
-	//FIXME this is not the way the model should be set.
-	public void setDiagramModel(DiagramModel modelToUse)
-	{
-		diagramModel = modelToUse;
-	}
 
 	public LayerManager getLayerManager()
 	{
@@ -341,16 +325,6 @@ public class Project
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
 		objectManager.setObjectData(objectType, objectId, fieldTag, dataValue);
-		if(Factor.isFactor(objectType))
-		{
-			DiagramModel model = getDiagramModel();
-			FactorId modelNodeId = new FactorId(objectId.asInt());
-			if(model != null && model.doesFactorExist(modelNodeId))
-			{
-				FactorCell diagramNode = getDiagramModel().getFactorCellByWrappedId(modelNodeId);
-				getDiagramModel().updateCell(diagramNode);
-			}
-		}
 	}
 	
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
@@ -798,11 +772,6 @@ public class Project
 		return valueToRound * sign;
 	}
 	
-	public void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
-	{
-		getDiagramModel().updateVisibilityOfSingleFactor(diagramFactorId);
-	}
-	
 	public ProjectResource[] getAllProjectResources()
 	{
 		IdList allResourceIds = getResourcePool().getIdList();
@@ -900,7 +869,6 @@ public class Project
 	ThreatRatingFramework threatRatingFramework;
 	
 	ProjectServer database;
-	DiagramModel diagramModel;
 	DiagramClipboard diagramClipboard;
 
 	Vector commandExecutedListeners;
