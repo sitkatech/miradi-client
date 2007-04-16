@@ -5,11 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -39,24 +36,14 @@ public class TestDelete extends EAMTestCase
 		DiagramFactorLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), intervention, cause);
 		
 		assertTrue("link not found?", model.areLinked(interventionId, causeId));
+
+		DiagramObject diagramObject1 = project.getDiagramObject();
+		CommandSetObjectData removeLink = CommandSetObjectData.createRemoveIdCommand(diagramObject1, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLink.getDiagramLinkageId());
+		project.executeCommand(removeLink);
 		
-		CommandDiagramRemoveFactorLink delete = new CommandDiagramRemoveFactorLink(diagramFactorLink.getDiagramLinkageId());
-		delete.execute(project);
-		assertFalse("link not deleted?", model.areLinked(interventionId, causeId));
-		
-		EAM.setLogToString();
-		try
-		{
-			delete.execute(project);
-			fail("should have thrown for deleting non-existant link");
-		}
-		catch(CommandFailedException ignoreExpected)
-		{
-		}
-		EAM.setLogToConsole();
-		
-		DiagramObject diagramObject = project.getDiagramObject();
-		CommandSetObjectData removeFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, causeId);
+	
+		DiagramObject diagramObject2 = project.getDiagramObject();
+		CommandSetObjectData removeFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject2, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, causeId);
 		project.executeCommand(removeFactor);
 		assertFalse("node not deleted?", model.doesDiagramFactorExist(causeId));
 		
