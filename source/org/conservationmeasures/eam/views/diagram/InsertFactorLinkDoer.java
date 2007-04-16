@@ -59,7 +59,6 @@ public class InsertFactorLinkDoer extends ViewDoer
 			return;
 		}
 		
-		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			if(model.areLinked(dialog.getFrom().getDiagramFactorId(), dialog.getTo().getDiagramFactorId()))
@@ -74,7 +73,15 @@ public class InsertFactorLinkDoer extends ViewDoer
 				EAM.okDialog(EAM.text("Error"), body);
 				return;
 			}
-			
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
 			createModelLinkageAndAddToDiagramUsingCommands(model, fromDiagramFactor, toDiagramFactor);
 		}
 		catch (Exception e)
