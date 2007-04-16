@@ -124,6 +124,11 @@ public class DiagramFactor extends BaseObject
 		return (DiagramFactorId)getId(); 
 	}
 	
+	public int getWrappedType()
+	{
+		return getWrappedORef().getObjectType();
+	}
+	
 	public FactorId getWrappedId()
 	{
 		return new FactorId(underlyingObjectId.getId().asInt());
