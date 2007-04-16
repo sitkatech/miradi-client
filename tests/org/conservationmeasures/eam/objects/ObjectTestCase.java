@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoQuestionData;
-import org.conservationmeasures.eam.objects.BaseObject.PsuedoStringData;
+import org.conservationmeasures.eam.objects.BaseObject.PseudoStringData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.DateRange;
@@ -184,7 +184,7 @@ public class ObjectTestCase extends EAMTestCase
 		{
 			return "";
 		}
-		else if(field instanceof PsuedoStringData)
+		else if(field instanceof PseudoStringData)
 		{
 			return "";
 		}

@@ -256,7 +256,7 @@ public class Target extends Factor
 		super.clear();
 		targetStatus = new ChoiceData();
 		viabiltyMode = new ChoiceData();
-		targetViability = new PsuedoStringData(PSEUDO_TAG_TARGET_VIABILITY);
+		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		
 		targetStatusLabel = new PseudoQuestionData(new StatusQuestion(TAG_TARGET_STATUS));
 		viabiltyModeLabel = new PseudoQuestionData(new ViabilityModeQuestion(TAG_VIABILITY_MODE));
@@ -282,7 +282,7 @@ public class Target extends Factor
 	
 	ChoiceData targetStatus;
 	ChoiceData viabiltyMode;
-	PsuedoStringData targetViability;
+	PseudoStringData targetViability;
 	PseudoQuestionData targetStatusLabel;
 	PseudoQuestionData viabiltyModeLabel;
 	PseudoQuestionData targetViabilityLabel;

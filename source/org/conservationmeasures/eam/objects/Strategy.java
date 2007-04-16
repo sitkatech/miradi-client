@@ -175,7 +175,7 @@ public class Strategy extends Factor
 		durationRating = new ChoiceData();
 		feasibilityRating = new ChoiceData();
 		costRating = new ChoiceData();
-		tagRatingSummary = new PsuedoStringData(PSEUDO_TAG_RATING_SUMMARY);
+		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		
 		try
 		{
@@ -243,7 +243,7 @@ public class Strategy extends Factor
 	ChoiceData durationRating;
 	ChoiceData feasibilityRating;
 	ChoiceData costRating;
-	PsuedoStringData tagRatingSummary;
+	PseudoStringData tagRatingSummary;
 	
 	PseudoQuestionData taxonomyCodeLabel;
 	PseudoQuestionData impactRatingLabel;

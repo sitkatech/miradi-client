@@ -627,10 +627,10 @@ abstract public class BaseObject
 	}
 	
 	
-	public class PsuedoStringData  extends StringData
+	public class PseudoStringData  extends StringData
 	{
 
-		public PsuedoStringData(String tag)
+		public PseudoStringData(String tag)
 		{
 			psuedoTag = tag;
 		}
