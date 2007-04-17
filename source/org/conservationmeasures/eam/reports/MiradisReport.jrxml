@@ -48,7 +48,7 @@
 						y="28"
 						width="402"
 						height="26"
-						key="subreport"/>
+						key="MiradisSummaryGeneralReport"/>
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getSummaryGeneranlDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisSummaryGeneralReport.jasper")]]></subreportExpression>
 				</subreport>
@@ -58,7 +58,7 @@
 						y="142"
 						width="410"
 						height="26"
-						key="subreport-1"
+						key="MiradisDiagramReport"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getDiagramDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisDiagramReport.jasper")]]></subreportExpression>
@@ -69,7 +69,7 @@
 						y="78"
 						width="403"
 						height="22"
-						key="subreport-2"/>
+						key="MiradisViabilityTargetsReport"/>
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getViabilityTargetsDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisViabilityTargetsReport.jasper")]]></subreportExpression>
 				</subreport>

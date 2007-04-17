@@ -269,7 +269,7 @@ abstract public class Factor extends BaseObject
 	}
 
 	
-	public String getData(String fieldTag)
+	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_GOALS))
 			return getFactorGoals();
@@ -283,7 +283,7 @@ abstract public class Factor extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
 			return getFactorRelatedTargets();
 		
-		return super.getData(fieldTag);
+		return super.getPseudoData(fieldTag);
 	}
 	
 	private String getFactorRelatedDirectThreats()
@@ -373,12 +373,20 @@ abstract public class Factor extends BaseObject
 		objectives = new IdListData();
 		goals = new IdListData();
 		keyEcologicalAttributes = new IdListData();
+		multiLineGoals = new PseudoStringData(PSEUDO_TAG_GOALS);
+		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);
+		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
+		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		
 		addField(TAG_COMMENT, comment);
 		addField(TAG_INDICATOR_IDS, indicators);
 		addField(TAG_OBJECTIVE_IDS, objectives);
 		addField(TAG_GOAL_IDS, goals);
 		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributes);
+		addField(PSEUDO_TAG_GOALS, multiLineGoals);
+		addField(PSEUDO_TAG_OBJECTIVES, multiLineObjectives);
+		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDeirectThreats);
+		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 	}
 
 	public static final FactorType TYPE_INTERMEDIATE_RESULT = new FactorTypeIntermediateResult();
@@ -408,4 +416,9 @@ abstract public class Factor extends BaseObject
 	private IdListData objectives;
 	private IdListData goals;
 	private IdListData keyEcologicalAttributes;
+	
+	PseudoStringData multiLineGoals;
+	PseudoStringData multiLineObjectives;
+	PseudoStringData multiLineDeirectThreats;
+	PseudoStringData multiLineTargets;
 }

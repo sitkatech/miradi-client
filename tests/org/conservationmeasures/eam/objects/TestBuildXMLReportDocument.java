@@ -10,7 +10,6 @@ import java.io.PrintStream;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -19,6 +18,7 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EAMFileSaveChooser;
 import org.conservationmeasures.eam.utils.EAMXmlFileChooser;
+import org.conservationmeasures.eam.utils.StringMapData;
 
 
 public class TestBuildXMLReportDocument extends EAMTestCase
@@ -54,17 +54,19 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 			
 //			processObject(project, new AccountingCode(BaseId.INVALID));
 //			processObject(project, new Assignment(BaseId.INVALID, new CreateAssignmentParameter(new TaskId(BASE_INT))));
-//			processObject(project, new Strategy(new FactorId(BaseId.INVALID.asInt())));
-			processObject(project, new Target(new FactorId(BaseId.INVALID.asInt())));
-//			processObject(project, new Cause(new FactorId(BaseId.INVALID.asInt())));
+//			processObject(project, new Strategy(new FactorId(BASE_INT)));
+//*			processObject(project, new Target(new FactorId(BASE_INT)));
+//			processObject(project, new Cause(new FactorId(BASE_INT)));
 //			processObject(project, new FactorLink(new FactorLinkId(BASE_INT), new FactorId(BASE_INT), new FactorId(BASE_INT)));
 //			processObject(project, new FundingSource(BaseId.INVALID));
-//			processObject(project, new Goal(BaseId.INVALID));
-//			processObject(project, new Indicator(new IndicatorId(BASE_INT)));
+//*			processObject(project, new Goal(BaseId.INVALID));
+//*			processObject(project, new Indicator(new IndicatorId(BASE_INT)));
 //			processObject(project, new Objective(BaseId.INVALID));
-//			processObject(project, new ProjectMetadata(BaseId.INVALID));
+//*			processObject(project, new ProjectMetadata(BaseId.INVALID));
 //			processObject(project, new Task(BaseId.INVALID, new CreateTaskParameter(new ORef(Task.getObjectType(), BaseId.INVALID))));
-//			processObject(project, new ViewData(BaseId.INVALID));
+			processObject(project, new ViewData(BaseId.INVALID));
+//*			processObject(project, new KeyEcologicalAttribute(new KeyEcologicalAttributeId(BASE_INT)));
+			
 			
 			writeLineReturn();
 			writeEndELement("Miradi");
@@ -107,6 +109,9 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 				continue;
 			if (object.getField(tags[i]) instanceof ChoiceData)
 				continue;
+			if (object.getField(tags[i]) instanceof StringMapData)
+				continue;
+			
 			lineNumber = lineNumber + 10;
 			writeData(getTextFieldElement("Label:"+tags[i],lineNumber));
 			fieldDefs.add(getTextFieldDefElement("Label:"+tags[i]));
@@ -169,6 +174,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 	private String getTextFieldElement(String name, int lineNumber)
 	{
 		String newLine = field_line_part1;
+		newLine = newLine.replaceAll("KEYKEY", name);
 		if (name.startsWith("Label:"))
 		{
 			newLine = newLine.replaceAll("ISBOLD", "true");
@@ -203,7 +209,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 			" width=\"150\"" +
 			" height=\"20\"" +
 			" positionType=\"Float\"" +
-			" key=\"textField-1\"/>" +
+			" key=\"KEYKEY\"/>" +
 			"<box topBorder=\"None\" topBorderColor=\"#000000\" leftBorder=\"None\" leftBorderColor=\"#000000\" rightBorder=\"None\" rightBorderColor=\"#000000\" bottomBorder=\"None\" bottomBorderColor=\"#000000\"/>" +
 			"<textElement>" +
 			"<font pdfFontName=\"FONTNAME\" isBold=\"ISBOLD\"/>" +

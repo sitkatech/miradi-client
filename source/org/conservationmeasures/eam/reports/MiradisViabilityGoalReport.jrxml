@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="MiradisViabilityTargetsReport"
+		 name="MiradisViabilityGoalReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -24,46 +24,35 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
-	<field name="Label:Comment" class="java.lang.String"/>
-	<field name="Comment" class="java.lang.String"/>
-	<field name="Label:PseudoTagGoals" class="java.lang.String"/>
-	<field name="PseudoTagGoals" class="java.lang.String"/>
-	<field name="Label:TargetStatusValue" class="java.lang.String"/>
-	<field name="TargetStatusValue" class="java.lang.String"/>
-	<field name="Label:PseudoTagObjectives" class="java.lang.String"/>
-	<field name="PseudoTagObjectives" class="java.lang.String"/>
-	<field name="Label:TargetViability" class="java.lang.String"/>
-	<field name="TargetViability" class="java.lang.String"/>
-	<field name="Label:Label" class="java.lang.String"/>
-	<field name="Label" class="java.lang.String"/>
-	<field name="Label:ViabilityValue" class="java.lang.String"/>
-	<field name="ViabilityValue" class="java.lang.String"/>
+	<field name="Label:PseudoTagFactor" class="java.lang.String"/>
+	<field name="PseudoTagFactor" class="java.lang.String"/>
+	<field name="Label:ShortLabel" class="java.lang.String"/>
+	<field name="ShortLabel" class="java.lang.String"/>
 	<field name="Label:PseudoTagDirectThreats" class="java.lang.String"/>
 	<field name="PseudoTagDirectThreats" class="java.lang.String"/>
 	<field name="Label:PseudoTagTargets" class="java.lang.String"/>
 	<field name="PseudoTagTargets" class="java.lang.String"/>
-	<field name="Label:ViabilityModeValue" class="java.lang.String"/>
-	<field name="ViabilityModeValue" class="java.lang.String"/>
+	<field name="Label:FullText" class="java.lang.String"/>
+	<field name="FullText" class="java.lang.String"/>
+	<field name="Label:PseudoTagStrategies" class="java.lang.String"/>
+	<field name="PseudoTagStrategies" class="java.lang.String"/>
+	<field name="Label:ByWhen" class="java.lang.String"/>
+	<field name="ByWhen" class="java.lang.String"/>
+	<field name="Label:DesiredStatusValue" class="java.lang.String"/>
+	<field name="DesiredStatusValue" class="java.lang.String"/>
+	<field name="Label:DesiredDetail" class="java.lang.String"/>
+	<field name="DesiredDetail" class="java.lang.String"/>
+	<field name="Label:Label" class="java.lang.String"/>
+	<field name="Label" class="java.lang.String"/>
+	<field name="Label:DesiredSummary" class="java.lang.String"/>
+	<field name="DesiredSummary" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</background>
 		<title>
-			<band height="50"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="15"
-						y="10"
-						width="450"
-						height="22"
-						key="staticText-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center">
-						<font size="14"/>
-					</textElement>
-				<text><![CDATA[********  Viability Target Section **********]]></text>
-				</staticText>
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -75,10 +64,38 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="129"  isSplitAllowed="true" >
+			<band height="130"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="46"
+						x="10"
+						y="10"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:PseudoTagFactor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="170"
+						y="10"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PseudoTagFactor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
 						y="20"
 						width="150"
 						height="20"
@@ -88,11 +105,11 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Comment}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:ShortLabel}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="206"
+						x="170"
 						y="20"
 						width="150"
 						height="20"
@@ -102,11 +119,11 @@
 					<textElement>
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Comment}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortLabel}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="46"
+						x="10"
 						y="30"
 						width="150"
 						height="20"
@@ -116,11 +133,11 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:PseudoTagGoals}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:PseudoTagDirectThreats}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="206"
+						x="170"
 						y="30"
 						width="150"
 						height="20"
@@ -130,11 +147,11 @@
 					<textElement>
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PseudoTagGoals}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PseudoTagDirectThreats}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="46"
+						x="10"
 						y="40"
 						width="150"
 						height="20"
@@ -144,11 +161,11 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:TargetStatusValue}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:PseudoTagTargets}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="206"
+						x="170"
 						y="40"
 						width="150"
 						height="20"
@@ -158,11 +175,11 @@
 					<textElement>
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{TargetStatusValue}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PseudoTagTargets}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="46"
+						x="10"
 						y="50"
 						width="150"
 						height="20"
@@ -172,11 +189,11 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:PseudoTagObjectives}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:FullText}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="206"
+						x="170"
 						y="50"
 						width="150"
 						height="20"
@@ -186,12 +203,124 @@
 					<textElement>
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PseudoTagObjectives}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{FullText}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="15"
-						y="0"
+						x="10"
+						y="60"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:PseudoTagStrategies}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="170"
+						y="60"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PseudoTagStrategies}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="70"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:ByWhen}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="170"
+						y="70"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ByWhen}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="80"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:DesiredStatusValue}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="170"
+						y="80"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DesiredStatusValue}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="90"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:DesiredDetail}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="170"
+						y="90"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DesiredDetail}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="100"
 						width="150"
 						height="20"
 						key="textField-1"
@@ -205,7 +334,7 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="170"
-						y="0"
+						y="100"
 						width="150"
 						height="20"
 						key="textField-1"
@@ -218,8 +347,8 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="46"
-						y="60"
+						x="10"
+						y="110"
 						width="150"
 						height="20"
 						key="textField-1"
@@ -228,12 +357,12 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:ViabilityValue}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:DesiredSummary}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="206"
-						y="60"
+						x="170"
+						y="110"
 						width="150"
 						height="20"
 						key="textField-1"
@@ -242,103 +371,8 @@
 					<textElement>
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ViabilityValue}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DesiredSummary}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="46"
-						y="70"
-						width="150"
-						height="20"
-						key="textField-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:PseudoTagDirectThreats}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="206"
-						y="70"
-						width="150"
-						height="20"
-						key="textField-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PseudoTagDirectThreats}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="46"
-						y="80"
-						width="150"
-						height="20"
-						key="textField-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:PseudoTagTargets}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="206"
-						y="80"
-						width="150"
-						height="20"
-						key="textField-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PseudoTagTargets}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="46"
-						y="90"
-						width="150"
-						height="20"
-						key="textField-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:ViabilityModeValue}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="206"
-						y="90"
-						width="150"
-						height="20"
-						key="textField-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ViabilityModeValue}]]></textFieldExpression>
-				</textField>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="46"
-						y="115"
-						width="260"
-						height="14"
-						key="subreport-1"
-						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.ViabilityTargetsDataSource)$P{REPORT_DATA_SOURCE}).getKeyEcologicalAttrubutesDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisKeyEcologicalAttrubutesReport.jasper")]]></subreportExpression>
-				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
