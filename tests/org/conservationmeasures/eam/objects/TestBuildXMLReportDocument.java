@@ -10,6 +10,7 @@ import java.io.PrintStream;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -41,7 +42,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 		
 		try
 		{
-			//int BASE_INT = BaseId.INVALID.asInt();
+			int BASE_INT = BaseId.INVALID.asInt();
 			
 			File projectFile = new File(EAM.getHomeDirectory(),projectName);
 			Project project = new Project();
@@ -64,7 +65,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 //			processObject(project, new Objective(BaseId.INVALID));
 //*			processObject(project, new ProjectMetadata(BaseId.INVALID));
 //			processObject(project, new Task(BaseId.INVALID, new CreateTaskParameter(new ORef(Task.getObjectType(), BaseId.INVALID))));
-			processObject(project, new ViewData(BaseId.INVALID));
+//*			processObject(project, new ViewData(BaseId.INVALID));
 //*			processObject(project, new KeyEcologicalAttribute(new KeyEcologicalAttributeId(BASE_INT)));
 			
 			

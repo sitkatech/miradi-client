@@ -30,4 +30,9 @@ public class MiradiDataSource extends CommonDataSource
 	{
 		return new ViabilityTargetsDataSource(project);
 	}
+	
+	public JRDataSource getStrategicPlanDataSource()
+	{
+		return new StrategicPlanDataSource(project);
+	}
 } 

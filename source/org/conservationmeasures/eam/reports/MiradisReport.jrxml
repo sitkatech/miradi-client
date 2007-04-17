@@ -41,7 +41,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="197"  isSplitAllowed="true" >
+			<band height="217"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="38"
@@ -56,7 +56,7 @@
 					<reportElement
 						x="38"
 						y="142"
-						width="410"
+						width="402"
 						height="26"
 						key="MiradisDiagramReport"
 						positionType="Float"/>
@@ -91,6 +91,27 @@
 						positionType="Float"
 						isPrintWhenDetailOverflows="true"/>
 				</break>
+				<break>
+					<reportElement
+						x="0"
+						y="180"
+						width="535"
+						height="0"
+						key="element-3"
+						positionType="Float"
+						isPrintWhenDetailOverflows="true"/>
+				</break>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="38"
+						y="191"
+						width="402"
+						height="26"
+						key="MiradisDiagramReport-1"
+						positionType="Float"/>
+					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getStrategicPlanDataSource()]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisStrategicPlanReport.jasper")]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
