@@ -258,7 +258,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return (DiagramPanel) getCurrentTabContents();
 	}
 
-	//FIXME RC need to add results chains
 	private void addResultsChainTabs() throws Exception
 	{
 		removeAllResultsChainTabs();
@@ -275,15 +274,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
 			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
 			
-			//ResultsChainDiagramSplitPane splitPane = new ResultsChainDiagramSplitPane(getMainWindow(), resultsChainDiagram);
-			
 			DiagramPanel diagramPanel = new DiagramPanel(getMainWindow(), getProject(), resultsChain);
 			//FIXME RC fix name
 			addTab("Results Chain " + i, diagramPanel);
-			
-
-			//TODO RC fix tab name
-			//addTab("Results Chain "+i, splitPane);
 		}
 	}
 	
@@ -306,7 +299,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 	
-	//FIXME RC should return the model of the currently selected tab
 	public DiagramModel getDiagramModel()
 	{
 		return getDiagramComponent().getDiagramModel();
