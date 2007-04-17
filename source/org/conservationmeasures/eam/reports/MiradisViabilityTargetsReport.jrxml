@@ -34,11 +34,8 @@
 	<field name="Label" class="java.lang.String"/>
 	<field name="Label:ViabilityModeValue" class="java.lang.String"/>
 	<field name="ViabilityModeValue" class="java.lang.String"/>
-	<field name="Label:ViabilityValue" class="java.lang.String" /> 
-	<field name="ViabilityValue" class="java.lang.String" /> 
-
-
-
+	<field name="Label:ViabilityValue" class="java.lang.String"/>
+	<field name="ViabilityValue" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -70,35 +67,151 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="93"  isSplitAllowed="true" >
-	<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="10" y="10" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica-Bold" isBold="true"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:ViabilityValue}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="170" y="10" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica" isBold="false"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{ViabilityValue}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="10" y="20" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica-Bold" isBold="true"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Comment}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="170" y="20" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica" isBold="false"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{Comment}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="10" y="30" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica-Bold" isBold="true"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:TargetStatusValue}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="170" y="30" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica" isBold="false"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{TargetStatusValue}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="10" y="40" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica-Bold" isBold="true"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:TargetViability}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="170" y="40" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica" isBold="false"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{TargetViability}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="10" y="50" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica-Bold" isBold="true"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Label}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="170" y="50" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica" isBold="false"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="10" y="60" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica-Bold" isBold="true"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:ViabilityModeValue}]]></textFieldExpression></textField>
-
-<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" ><reportElement x="170" y="60" width="150" height="20" positionType="Float" key="textField-1"/><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/><textElement><font pdfFontName="Helvetica" isBold="false"/></textElement><textFieldExpression   class="java.lang.String"><![CDATA[$F{ViabilityModeValue}]]></textFieldExpression></textField>
-
+			<band height="83"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="30"
+						y="20"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:ViabilityValue}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="190"
+						y="20"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ViabilityValue}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="30"
+						y="30"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Comment}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="190"
+						y="30"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Comment}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="30"
+						y="40"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:TargetStatusValue}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="190"
+						y="40"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{TargetStatusValue}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="9"
+						y="0"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Label}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="169"
+						y="0"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="30"
+						y="50"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:ViabilityModeValue}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="190"
+						y="50"
+						width="150"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ViabilityModeValue}]]></textFieldExpression>
+				</textField>
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="31"
-						y="79"
+						x="30"
+						y="65"
 						width="260"
 						height="14"
 						key="subreport-1"
