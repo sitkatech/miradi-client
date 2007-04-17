@@ -26,7 +26,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -41,17 +40,19 @@ public class CreateResultsChainDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		if (! isDiagramView())
-			return false;
-		
-		Factor[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactors();
-		if (selectedFactors.length == 0)
-			return false;
-		
-		if (! areAllStrategies(selectedFactors))
-			return false;
-		
-		return true;
+		return false;
+		//FIXME this is just for the build
+//		if (! isDiagramView())
+//			return false;
+//		
+//		Factor[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactors();
+//		if (selectedFactors.length == 0)
+//			return false;
+//		
+//		if (! areAllStrategies(selectedFactors))
+//			return false;
+//		
+//		return true;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -233,15 +234,16 @@ public class CreateResultsChainDoer extends ViewDoer
 		return vector;
 	}
 	
-	private boolean areAllStrategies(BaseObject[] selectedObjects)
-	{
-		for (int i = 0; i < selectedObjects.length; i++)
-		{
-			ORef ref = selectedObjects[i].getRef();
-			if (ref.getObjectType() != ObjectType.STRATEGY)
-				return false;
-		}
-		
-		return true;
-	}
+	//FIXME isAvailable uses this method but isAvaiblabl has been commted out for the build
+//	private boolean areAllStrategies(BaseObject[] selectedObjects)
+//	{
+//		for (int i = 0; i < selectedObjects.length; i++)
+//		{
+//			ORef ref = selectedObjects[i].getRef();
+//			if (ref.getObjectType() != ObjectType.STRATEGY)
+//				return false;
+//		}
+//		
+//		return true;
+//	}
 }
