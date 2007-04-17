@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Component;
-import java.awt.Dimension;
 
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -22,14 +21,9 @@ abstract public class DiagramSplitPane extends JSplitPane
 	{
 		Component legendPanel = createLegendPanel(mainWindow);
 		UiScrollPane scrollPane = createDiagramPanel(mainWindow.getProject(), diagramComponentToAdd);
-		setRightComponent(scrollPane);
 		setLeftComponent(legendPanel);
+		setRightComponent(scrollPane);
 		setDividerLocation(legendPanel.getPreferredSize().width);
-		
-		//FIXME this should not be here
-		Dimension dimension = new Dimension(900, 600);
-		setMinimumSize(dimension);
-		setPreferredSize(dimension);
 	}
 	
 	private UiScrollPane createDiagramPanel(Project project, DiagramComponent diagram)

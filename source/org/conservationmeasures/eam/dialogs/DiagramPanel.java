@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import java.awt.Component;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
@@ -28,7 +29,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.ConceptualModelDiagramSplitPane;
 import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 
-public class DiagramPanel extends ObjectDataInputPanel
+public class DiagramPanel extends AbstractObjectDataInputPanel
 {
 	public DiagramPanel(MainWindow mainWindowToUse, Project project, DiagramObject diagramObjectToUse) throws Exception
 	{
@@ -220,6 +221,11 @@ public class DiagramPanel extends ObjectDataInputPanel
 		selectionModel = null;
 	}
 	
+	public void addFieldComponent(Component component)
+	{
+		throw new RuntimeException("Not yet implemented");
+	}
+
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
