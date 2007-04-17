@@ -299,8 +299,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	private void removeAllResultsChainTabs()
 	{
-		final int NONE_RESULTS_CHAIN_INDEX = 1;
-		for (int i = NONE_RESULTS_CHAIN_INDEX; i < getTabCount(); i++)
+		final int FIRST_RESULTS_CHAIN_INDEX = 1;
+		for (int i = FIRST_RESULTS_CHAIN_INDEX; i < getTabCount(); i++)
 		{
 			removeTab(i);
 		}
@@ -423,7 +423,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		Command rawCommand = event.getCommand();
 		
-		if (isResultsChain(rawCommand))
+		if (isCreateResultsChain(rawCommand))
 		{
 			try
 			{
@@ -454,7 +454,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 
-	private boolean isResultsChain(Command rawCommand)
+	private boolean isCreateResultsChain(Command rawCommand)
 	{
 		return isAddResultsChainCommand(rawCommand) || isDeleteResultsChainCommand(rawCommand);
 	}
