@@ -2,6 +2,7 @@ package org.conservationmeasures.eam.reports;
 
 import net.sf.jasperreports.engine.JRDataSource;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 
@@ -11,6 +12,8 @@ public class RelatedObjectDataSource extends CommonDataSource
 	{
 		super(object.getObjectManager().getProject());
 		ORefList list = object.findObjectThatReferToUs();
+		ORef oref = object.getOwnerRef();
+		list.add(oref);
 		ORefList newList = new ORefList();
 		for (int i=0; i<list.size(); ++i)
 		{
