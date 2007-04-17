@@ -19,6 +19,11 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.RatingSourceQuestion;
+import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
+import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.StringMapData;
 
@@ -73,6 +78,9 @@ public class Indicator extends BaseObject
 	//TODO: several pseudo fields are shared between Indicator and Desires; this may indicate a need for a common super class
 	public String getPseudoData(String fieldTag)
 	{
+		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE))
+			return new StatusQuestion("").findChoiceByCode(indicatorThreshold.get()).getLabel();
+			
 		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
 			return getRelatedLabelsAsMultiLine(new TargetSet());
 		
@@ -125,20 +133,30 @@ public class Indicator extends BaseObject
 		measurementDate= new DateData();;
 		measurementSummary= new StringData();
 		measurementDetail= new StringData();
-		measurementStatusConfidence = new StringData();
+		measurementStatusConfidence = new ChoiceData();
 		ratingSource= new ChoiceData();
+		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);
 		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
 		multiLineMethods = new PseudoStringData(PSEUDO_TAG_METHODS);
-
+		indicatorThresholdLabel = new PseudoStringData(TAG_INDICATOR_THRESHOLD);
+		priorityLabel = new PseudoQuestionData(new PriorityRatingQuestion(TAG_PRIORITY));
+		statusLabel = new PseudoQuestionData(new StatusQuestion(TAG_STATUS));
+		measurementTrendLabel = new PseudoQuestionData(new TrendQuestion(TAG_MEASUREMENT_TREND));
+		measurementStatusLabel = new PseudoQuestionData(new StatusQuestion(TAG_MEASUREMENT_STATUS));
+		ratingSourceLabel = new PseudoQuestionData(new RatingSourceQuestion(TAG_RATING_SOURCE));
+		measurementStatusConfidenceLabel = new PseudoQuestionData(new StatusConfidenceQuestion(TAG_MEASUREMENT_STATUS_CONFIDENCE));
+		
+		
+		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
 		addField(TAG_TASK_IDS, taskIds);
 		addField(TAG_GOAL_IDS, goalIds);
-		addField(TAG_INDICATOR_THRESHOLDS, indicatorThreshold);
+		addField(TAG_INDICATOR_THRESHOLD, indicatorThreshold);
 		addField(TAG_MEASUREMENT_TREND, measurementTrend);
 		addField(TAG_MEASUREMENT_STATUS, measurementStatus);
 		addField(TAG_MEASUREMENT_DATE, measurementDate);
@@ -146,11 +164,19 @@ public class Indicator extends BaseObject
 		addField(TAG_MEASUREMENT_DETAIL, measurementDetail);
 		addField(TAG_MEASUREMENT_STATUS_CONFIDENCE, measurementStatusConfidence);
 		addField(TAG_RATING_SOURCE, ratingSource);
+		
+		addField(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE, indicatorThresholdLabel);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
 		addField(PSEUDO_TAG_STRATEGIES, multiLineStrategies);
 		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
 		addField(PSEUDO_TAG_METHODS, multiLineMethods);
+		addField(PSEUDO_TAG_PRIORITY_VALUE, priorityLabel);
+		addField(PSEUDO_TAG_STATUS_VALUE, statusLabel);
+		addField(PSEUDO_TAG_MEASUREMENT_TREND_VALUE, measurementTrendLabel);
+		addField(PSEUDO_TAG_MEASUREMENT_STATUS_VALUE, measurementStatusLabel);
+		addField(PSEUDO_TAG_RATING_SOURCE_VALUE, ratingSourceLabel);
+		addField(PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE, measurementStatusConfidenceLabel);
 	}
 	
 	public int getType()
@@ -215,7 +241,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_STATUS = "Status";
 	public final static String TAG_TASK_IDS = "TaskIds";
 	public final static String TAG_GOAL_IDS = "GoalIds";
-	public static final String TAG_INDICATOR_THRESHOLDS = "IndicatorThresholds";
+	public static final String TAG_INDICATOR_THRESHOLD = "IndicatorThresholds";
 	public static final String TAG_MEASUREMENT_TREND = "MeasurementTrend";
 	public static final String TAG_MEASUREMENT_STATUS  = "MeasurementStatus";
 	public static final String TAG_MEASUREMENT_DATE = "MeasurementDate";
@@ -223,13 +249,21 @@ public class Indicator extends BaseObject
 	public static final String TAG_MEASUREMENT_DETAIL = "MeasurementDetail";
 	public static final String TAG_MEASUREMENT_STATUS_CONFIDENCE = "MeasurementStatusConfidence";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
-	
 
-	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
-	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
-	public static final String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
-	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
-	public static final String PSEUDO_TAG_METHODS = "PseudoTagMethods";
+	public static final String PSEUDO_TAG_TARGETS = "Targets";
+	public static final String PSEUDO_TAG_DIRECT_THREATS = "DirectThreats";
+	public static final String PSEUDO_TAG_STRATEGIES = "Strategies";
+	public static final String PSEUDO_TAG_FACTOR = "Factor";
+	public static final String PSEUDO_TAG_METHODS = "Methods";
+	
+	public static final String PSEUDO_TAG_PRIORITY_VALUE = "PriorityValue";
+	public static final String PSEUDO_TAG_STATUS_VALUE  = "MeasurementStatusValue";
+	public static final String PSEUDO_TAG_MEASUREMENT_TREND_VALUE = "MeasurementTrendValue";
+	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_VALUE  = "MeasurementStatusValue";
+	public static final String PSEUDO_TAG_RATING_SOURCE_VALUE = "RatingSourceValue";
+	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE = "MeasurementStatusConfidenceValue";
+	public static final String PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE = "IndicatorThresholdValue";
+
 
 	
 	public static final String OBJECT_NAME = "Indicator";
@@ -244,7 +278,7 @@ public class Indicator extends BaseObject
 	DateData measurementDate;
 	StringData measurementSummary;
 	StringData measurementDetail;
-	StringData measurementStatusConfidence;
+	ChoiceData measurementStatusConfidence;
 	ChoiceData ratingSource;
 	IdListData goalIds;
 	
@@ -253,4 +287,13 @@ public class Indicator extends BaseObject
 	PseudoStringData multiLineStrategies;
 	PseudoStringData multiLineFactor;
 	PseudoStringData multiLineMethods;
+	PseudoStringData indicatorThresholdLabel;
+	
+	PseudoQuestionData priorityLabel;
+	PseudoQuestionData statusLabel;
+	PseudoQuestionData measurementTrendLabel;
+	PseudoQuestionData measurementStatusLabel;
+	PseudoQuestionData ratingSourceLabel;
+	PseudoQuestionData measurementStatusConfidenceLabel;
+	
 }

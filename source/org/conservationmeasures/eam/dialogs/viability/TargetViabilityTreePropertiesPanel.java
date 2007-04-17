@@ -70,7 +70,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		ObjectDataInputField measureementStatusConfidence = addField(createChoiceField(ObjectType.INDICATOR,  new StatusConfidenceQuestion(Indicator.TAG_MEASUREMENT_STATUS_CONFIDENCE)));
 		ObjectDataInputField ratingSource = addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
 		indicatorThreshold = (ViabilityRatingsTableField)
-			addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLDS)));
+			addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD)));
 		
 		ObjectDataInputField goalShortLabel = addField(createStringField(ObjectType.GOAL, Goal.TAG_SHORT_LABEL, STD_SHORT));
 		ObjectDataInputField goalLabel = addField(createStringField(ObjectType.GOAL, Goal.TAG_LABEL));
