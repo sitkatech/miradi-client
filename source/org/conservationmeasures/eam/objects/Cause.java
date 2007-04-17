@@ -109,14 +109,7 @@ public class Cause extends Factor
 	{
 		super.clear();
 		taxonomyCode = new StringData();
-		try
-		{
-			taxonomyCodeLabel = new PseudoQuestionData(new ThreatClassificationQuestion(TAG_TAXONOMY_CODE));
-		}
-		catch(Exception e)
-		{
-			throw new RuntimeException("Cause failed to initializ:" + e.getMessage());
-		}
+		taxonomyCodeLabel = new PseudoQuestionData(new ThreatClassificationQuestion(TAG_TAXONOMY_CODE));
 		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);

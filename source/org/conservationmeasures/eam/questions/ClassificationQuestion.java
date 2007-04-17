@@ -12,12 +12,12 @@ import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
 public abstract class ClassificationQuestion extends ChoiceQuestion
 {
-	public ClassificationQuestion(String tag, String fileName) throws Exception
+	public ClassificationQuestion(String tag, String fileName)
 	{
 		super(tag, "Taxonomy Classifications", getImpactChoices(fileName));
 	}
 	
-	private static ChoiceItem[] getImpactChoices(String fileName) throws Exception
+	private static ChoiceItem[] getImpactChoices(String fileName)
 	{
 		try 
 		{
@@ -38,7 +38,7 @@ public abstract class ClassificationQuestion extends ChoiceQuestion
 		}
 		catch (Exception e)
 		{
-			throw new Exception("error processing classifications:" + fileName);
+			throw new RuntimeException("error processing classifications:" + fileName);
 		}
 	}
 }

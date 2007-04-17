@@ -177,19 +177,14 @@ public class Strategy extends Factor
 		costRating = new ChoiceData();
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		
-		try
-		{
-			taxonomyCodeLabel = new PseudoQuestionData(new StrategyClassificationQuestion(TAG_TAXONOMY_CODE));
-			impactRatingLabel = new PseudoQuestionData(new StrategyImpactQuestion(TAG_IMPACT_RATING));
-			durationRatingLabel = new PseudoQuestionData(new  StrategyDurationQuestion(TAG_DURATION_RATING));
-			feasibilityRatingLabel = new PseudoQuestionData(new StrategyFeasibilityQuestion(TAG_FEASIBILITY_RATING));
-			costRatingLabel = new PseudoQuestionData(new StrategyCostQuestion(TAG_COST_RATING));
-			tagRatingSummaryLabel = new PseudoQuestionData(new StrategyRatingSummaryQuestion(PSEUDO_TAG_RATING_SUMMARY));
-		}
-		catch(Exception e)
-		{
-			throw new RuntimeException("Strategy failed to initializ:" + e.getMessage());
-		}
+
+		taxonomyCodeLabel = new PseudoQuestionData(new StrategyClassificationQuestion(TAG_TAXONOMY_CODE));
+		impactRatingLabel = new PseudoQuestionData(new StrategyImpactQuestion(TAG_IMPACT_RATING));
+		durationRatingLabel = new PseudoQuestionData(new  StrategyDurationQuestion(TAG_DURATION_RATING));
+		feasibilityRatingLabel = new PseudoQuestionData(new StrategyFeasibilityQuestion(TAG_FEASIBILITY_RATING));
+		costRatingLabel = new PseudoQuestionData(new StrategyCostQuestion(TAG_COST_RATING));
+		tagRatingSummaryLabel = new PseudoQuestionData(new StrategyRatingSummaryQuestion(PSEUDO_TAG_RATING_SUMMARY));
+
 
 		
 		addField(TAG_STATUS, status);
