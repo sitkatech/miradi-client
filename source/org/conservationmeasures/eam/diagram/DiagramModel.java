@@ -394,6 +394,11 @@ public class DiagramModel extends DefaultGraphModel
 		return node;
 	}
 
+	public DiagramFactor getDiagramFactor(FactorId id)
+	{
+		return rawGetFactorByWrappedId(id).getDiagramFactor();	
+	}
+	
 	public FactorCell getFactorCellByWrappedId(FactorId id)
 	{
 		FactorCell node = rawGetFactorByWrappedId(id);

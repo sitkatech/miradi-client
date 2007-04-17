@@ -117,6 +117,11 @@ public class FactorLink extends BaseObject
 		return new FactorId(toId.getId().asInt());
 	}
 	
+	public FactorLinkId getFactorLinkId()
+	{
+		return new FactorLinkId(getId().asInt());
+	}
+	
 	public String getStressLabel()
 	{
 		return stressLabel.get();

@@ -50,6 +50,9 @@ public class Delete extends ViewDoer
 		if(!getProject().isOpen())
 			return false;
 
+		if (! isDiagramView())
+			return false;
+		
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		return (selected.length > 0);
 	}

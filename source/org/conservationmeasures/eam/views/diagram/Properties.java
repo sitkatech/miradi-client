@@ -26,11 +26,16 @@ public class Properties extends LocationDoer
 		if(!getProject().isOpen())
 			return false;
 		
+		if (! isDiagramView())
+			return false;
+		
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getOnlySelectedCells();
 		if(selected.length != 1)
 			return false;
+		
 		if(selected[0].isFactor() || selected[0].isProjectScope())
 			return true;
+		
 		if(selected[0].isFactorLink())
 		{
 			LinkCell cell = (LinkCell)selected[0];

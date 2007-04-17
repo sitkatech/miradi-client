@@ -20,6 +20,9 @@ public class SelectAllDoer extends ViewDoer
 		if(!getProject().isOpen())
 			return false;
 		
+		if (! isDiagramView())
+			return false;
+		
 		int nSize = getProject().getAllDiagramFactorIds().length;
 		return (nSize > 0);
 	}

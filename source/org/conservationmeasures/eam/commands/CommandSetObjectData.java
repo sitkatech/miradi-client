@@ -29,6 +29,13 @@ public class CommandSetObjectData extends Command
 		return new CommandSetObjectData(object.getType(), object.getId(), listTag, newListAsString, oldListAsString);
 	}
 	
+	static public CommandSetObjectData createNewPointList(BaseObject object, String listTag, PointList newList)
+	{
+		String newListAsString = newList.toJson().toString();
+		
+		return new CommandSetObjectData(object.getType(), object.getId(), listTag, newListAsString);
+	}
+	
 	static public CommandSetObjectData createAppendIdsCommand(BaseObject object, String idListTag, IdList idsToAppend) throws ParseException
 	{
 		IdList newList = new IdList(object.getData(idListTag));

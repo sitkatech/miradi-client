@@ -20,6 +20,10 @@ public class Paste extends LocationDoer
 	{
 		if(!getProject().isOpen())
 			return false;
+		
+		if (! isDiagramView())
+			return false;
+		
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		Transferable contents = clipboard.getContents(null);
 		if(contents == null)

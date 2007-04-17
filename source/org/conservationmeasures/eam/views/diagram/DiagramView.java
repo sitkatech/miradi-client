@@ -325,6 +325,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		DiagramPanel panel = getCurrentDiagramPanel();
 		if (panel != null)
 			panel.dispose();
+		
+		panel = null;
 	}
 	
 	public void setMode(String newMode)
