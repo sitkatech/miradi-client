@@ -10,7 +10,8 @@ import java.io.PrintStream;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IndicatorId;
+import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -58,7 +59,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 //			processObject(project, new Strategy(new FactorId(BASE_INT)));
 //*			processObject(project, new Target(new FactorId(BASE_INT)));
 //			processObject(project, new Cause(new FactorId(BASE_INT)));
-//			processObject(project, new FactorLink(new FactorLinkId(BASE_INT), new FactorId(BASE_INT), new FactorId(BASE_INT)));
+			processObject(project, new FactorLink(new FactorLinkId(BASE_INT), new FactorId(BASE_INT), new FactorId(BASE_INT)));
 //			processObject(project, new FundingSource(BaseId.INVALID));
 //*			processObject(project, new Goal(BaseId.INVALID));
 //*			processObject(project, new Indicator(new IndicatorId(BASE_INT)));
