@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -166,6 +167,9 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.INTERMEDIATE_RESULT)
 			return true;
 		
+		if (typeToUse == ObjectType.THREAT_REDUCTION_RESULT)
+			return true;
+		
 		if (typeToUse == ObjectType.FACTOR)
 			return true;
 		
@@ -264,6 +268,9 @@ abstract public class Factor extends BaseObject
 	
 		else if (objectType == ObjectType.INTERMEDIATE_RESULT)
 			return new IntermediateResult(objectManager, idToCreate);
+		
+		else if (objectType == ObjectType.THREAT_REDUCTION_RESULT)
+			return new ThreatReductionResult(objectManager, idToCreate);
 		
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
@@ -389,6 +396,7 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 	}
 
+	public static final FactorType TYPE_THREAT_REDUCTION_RESULT = new FactorTypeThreatReductionResult();
 	public static final FactorType TYPE_INTERMEDIATE_RESULT = new FactorTypeIntermediateResult();
 	public static final FactorType TYPE_TARGET = new FactorTypeTarget();
 	public static final FactorType TYPE_CAUSE = new FactorTypeCause();

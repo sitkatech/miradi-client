@@ -51,6 +51,7 @@ import org.conservationmeasures.eam.objects.TestFactorLink;
 import org.conservationmeasures.eam.objects.TestFundingSource;
 import org.conservationmeasures.eam.objects.TestGoal;
 import org.conservationmeasures.eam.objects.TestIndicator;
+import org.conservationmeasures.eam.objects.TestIntermediateResult;
 import org.conservationmeasures.eam.objects.TestKeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.TestObjectCanReferAndCanOwnTypeMethods;
 import org.conservationmeasures.eam.objects.TestObjectFindOwnerAndFindReferrer;
@@ -63,6 +64,7 @@ import org.conservationmeasures.eam.objects.TestRatingCriterion;
 import org.conservationmeasures.eam.objects.TestResultsChainDiagram;
 import org.conservationmeasures.eam.objects.TestStrategy;
 import org.conservationmeasures.eam.objects.TestTask;
+import org.conservationmeasures.eam.objects.TestThreatReductionResult;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
@@ -199,6 +201,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestObjectFindOwnerAndFindReferrer.class));
 		suite.addTest(new TestSuite(TestConceptualModelDiagram.class));
 		suite.addTest(new TestSuite(TestResultsChainDiagram.class));
+		suite.addTest(new TestSuite(TestThreatReductionResult.class));
+		suite.addTest(new TestSuite(TestIntermediateResult.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

@@ -5,17 +5,17 @@
 */ 
 package org.conservationmeasures.eam.diagram.factortypes;
 
-public class FactorTypeIntermediateResult extends FactorType
+public class FactorTypeThreatReductionResult extends FactorType
 {
-	public boolean isIntermediateResult()
+	public boolean isThreatReductionResult()
 	{
 		return true;
 	}
 	
 	public String toString()
 	{
-		return INTERMEDIATE_RESULT;
+		return THREAT_REDUCTION_RESULT;
 	}
 
-	public static final String INTERMEDIATE_RESULT = "Intermediate Result";
+	public static final String THREAT_REDUCTION_RESULT = "Threat Reduction Result";
 }

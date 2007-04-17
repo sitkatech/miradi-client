@@ -42,14 +42,17 @@ import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
+import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 
 public class ObjectManager
 {
@@ -83,6 +86,7 @@ public class ObjectManager
 		addNormalPool(new IntermediateResultPool(ida));
 		addNormalPool(new ResultsChainDiagramPool(ida));
 		addNormalPool(new ConceptualModelDiagramPool(ida));
+		addNormalPool(new ThreatReductionResultPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -242,6 +246,14 @@ public class ObjectManager
 			if (target != null)
 				return target;
 			
+			BaseObject threatReduction = getPool(ThreatReductionResult.getObjectType()).findObject(objectId);
+			if (threatReduction != null)
+				return threatReduction;
+			
+			BaseObject intermediateResult = getPool(IntermediateResult.getObjectType()).findObject(objectId);
+			if (intermediateResult != null)
+				return intermediateResult;
+			
 			return null;
 		}
 		
@@ -288,6 +300,8 @@ public class ObjectManager
 		loadPool(ObjectType.DIAGRAM_FACTOR);
 		loadPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		loadPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
+		loadPool(ObjectType.INTERMEDIATE_RESULT);
+		loadPool(ObjectType.THREAT_REDUCTION_RESULT);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

@@ -11,8 +11,10 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -91,6 +93,8 @@ abstract public class BaseObject
 			case ObjectType.TASK:
 				return new Task(objectManager, idAsInt, json);
 			
+			case ObjectType.THREAT_REDUCTION_RESULT:
+			case ObjectType.INTERMEDIATE_RESULT:	
 			case ObjectType.CAUSE:
 			case ObjectType.STRATEGY:
 			case ObjectType.TARGET:
@@ -106,6 +110,12 @@ abstract public class BaseObject
 				
 				if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
 					return new Target(objectManager, new FactorId(idAsInt), json);
+				
+				if (typeString.equals(FactorTypeIntermediateResult.INTERMEDIATE_RESULT))
+					return new IntermediateResult(objectManager, new FactorId(idAsInt), json);
+				
+				if (typeString.equals(FactorTypeThreatReductionResult.THREAT_REDUCTION_RESULT))
+					return new ThreatReductionResult(objectManager, new FactorId(idAsInt), json);
 				
 				throw new RuntimeException("Read unknown node type: " + typeString);
 			}

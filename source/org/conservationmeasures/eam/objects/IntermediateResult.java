@@ -37,7 +37,7 @@ public class IntermediateResult extends Factor
 
 	public boolean isIntermediateResult()
 	{
-		return false;
+		return true;
 	}
 	
 	public int getType()

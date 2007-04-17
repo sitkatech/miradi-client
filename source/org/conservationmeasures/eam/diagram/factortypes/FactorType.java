@@ -11,6 +11,11 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public abstract class FactorType
 {
+	public boolean isThreatReductionResult()
+	{
+		return false;
+	}
+	
 	public boolean isIntermediateResult()
 	{
 		return false;
@@ -69,6 +74,9 @@ public abstract class FactorType
 		
 		else if (factorType.equals(FactorTypeIntermediateResult.INTERMEDIATE_RESULT))
 			return ObjectType.INTERMEDIATE_RESULT;
+		
+		else if (factorType.equals(FactorTypeThreatReductionResult.THREAT_REDUCTION_RESULT))
+			return ObjectType.THREAT_REDUCTION_RESULT;
 		
 		throw new RuntimeException("Unknown factor type: " + factorType);
 	}
