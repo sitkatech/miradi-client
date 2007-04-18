@@ -94,7 +94,7 @@
 						height="10"
 						key="MiradisDiagramReport-1"
 						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.StrategicPlanDataSource)$P{REPORT_DATA_SOURCE}).getRelatedFactorsToThisGoalDataSource()]]></dataSourceExpression>
+					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.StrategicPlanDataSource)$P{REPORT_DATA_SOURCE}).getRelatedObectivesToThisGoalDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisRelatedObjectiveReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
