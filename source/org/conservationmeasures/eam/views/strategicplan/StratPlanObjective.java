@@ -71,6 +71,11 @@ public class StratPlanObjective extends TreeTableNode
 
 	public void rebuild()
 	{
+		strategies = getStrategyNodes(project, objective);
+	}
+
+	static public StratPlanStrategy[] getStrategyNodes(Project project, Objective objective)
+	{
 		ObjectiveId objectiveId = (ObjectiveId)objective.getId();
 
 		Factor[] strategyObjects = project.getStrategyPool().getNonDraftStrategies();
@@ -81,11 +86,12 @@ public class StratPlanObjective extends TreeTableNode
 			if(doesChainContainObjective(strategy, objectiveId))
 				strategyVector.add(new StratPlanStrategy(project, strategy));
 		}
-		strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
+		StratPlanStrategy[] strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
 		Arrays.sort(strategies, new IgnoreCaseStringComparator());
+		return strategies;
 	}
 
-	private boolean doesChainContainObjective(Factor chainMember, ObjectiveId objectiveId)
+	static private boolean doesChainContainObjective(Factor chainMember, ObjectiveId objectiveId)
 	{
 		ProjectChainObject chainObject = new ProjectChainObject();
 		chainObject.buildUpstreamDownstreamChain(chainMember);

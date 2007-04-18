@@ -8,6 +8,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.strategicplan.StratPlanGoal;
 import org.conservationmeasures.eam.views.strategicplan.StratPlanObjective;
 
@@ -34,8 +35,8 @@ public class RelatedFactorsToThisGoalDataSource extends CommonDataSource
 		}
 	}
 	
-	public JRDataSource getRelatedObjectDataSource(int relatedObjectTypeToFind)
+	public JRDataSource getStrategiesContainingObjectiveInChainDataSource()
 	{
-		return new RelatedObjectDataSource(getCurrentObject(), relatedObjectTypeToFind);
+		return new StrategiesContainingObjectiveInChainDataSource((Objective)getCurrentObject());
 	}
 } 

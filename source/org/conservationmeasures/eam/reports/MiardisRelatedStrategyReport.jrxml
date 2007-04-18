@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="MiardisRelatedObjectiveReport"
+		 name="MiardisRelatedStrategyReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -17,7 +17,7 @@
 		 whenNoDataType="NoPages"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
-	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.scriptlethandling" value="2" />
 	<property name="ireport.encoding" value="UTF-8" />
 	<import value="java.util.*" />
 	<import value="net.sf.jasperreports.engine.*" />
@@ -32,7 +32,7 @@
 			</band>
 		</background>
 		<title>
-			<band height="0"  isSplitAllowed="true" >
+			<band height="36"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -44,11 +44,11 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="65"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="137"
-						y="7"
+						x="147"
+						y="-19"
 						width="109"
 						height="13"
 						key="Label"
@@ -61,8 +61,8 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="12"
-						y="7"
+						x="22"
+						y="-19"
 						width="110"
 						height="13"
 						key="Label:Label"
@@ -73,17 +73,6 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Label}]]></textFieldExpression>
 				</textField>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="12"
-						y="28"
-						width="402"
-						height="26"
-						key="MiradisDiagramReport-1"
-						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.RelatedFactorsToThisGoalDataSource)$P{REPORT_DATA_SOURCE}).getStrategiesContainingObjectiveInChainDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisRelatedStrategyReport.jasper")]]></subreportExpression>
-				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
