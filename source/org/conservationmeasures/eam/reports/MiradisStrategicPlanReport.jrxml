@@ -32,11 +32,11 @@
 			</band>
 		</background>
 		<title>
-			<band height="50"  isSplitAllowed="true" >
+			<band height="24"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
-						x="79"
-						y="24"
+						x="69"
+						y="0"
 						width="402"
 						height="23"
 						key="staticText-1"/>
@@ -57,14 +57,15 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="55"  isSplitAllowed="true" >
+			<band height="27"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="136"
 						y="0"
 						width="109"
-						height="20"
-						key="Label"/>
+						height="17"
+						key="Label"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
@@ -77,19 +78,20 @@
 						y="0"
 						width="110"
 						height="17"
-						key="Label:Label"/>
+						key="Label:Label"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Label}]]></textFieldExpression>
 				</textField>
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="25"
+						y="17"
 						width="402"
-						height="26"
+						height="10"
 						key="MiradisDiagramReport-1"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.StrategicPlanDataSource)$P{REPORT_DATA_SOURCE}).getRelatedFactorsToThisGoalDataSource()]]></dataSourceExpression>
