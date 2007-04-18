@@ -15,8 +15,13 @@ public class MonitoringPlanDataSource extends CommonDataSource
 		setObjectList(list);
 	}
 	
-	public JRDataSource getRelatedFactorsToThisGoalDataSource()
+	public JRDataSource getRelatedIndicatorsToThisGoalDataSource() throws Exception
 	{
-		return new StrategicPlanRelatedObectivesToThisGoalDataSource((Goal)getCurrentObject());
+		return new MonitoringPlanRelatedIndicatorsToThisGoalDataSource((Goal)getCurrentObject());
+	}
+	
+	public JRDataSource getRelatedObectivesToThisGoalDataSource() throws Exception
+	{
+		return new MonitoringPlanRelatedObectivesToThisGoalDataSource((Goal)getCurrentObject());
 	}
 } 

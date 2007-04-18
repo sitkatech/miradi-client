@@ -73,11 +73,11 @@ public class MonitoringGoalNode extends MonitoringNode
 	{
 		children = new Vector();
 		FactorSet relatedNodes = new ChainManager(project).findAllFactorsRelatedToThisGoal(goal.getId());
-		children.addAll(createIndicatorNodes(relatedNodes));
-		children.addAll(createObjectiveNodes(relatedNodes));
+		children.addAll(createIndicatorNodes(project, relatedNodes));
+		children.addAll(createObjectiveNodes(project, relatedNodes));
 	}
 	
-	private Vector createObjectiveNodes(FactorSet relatedNodesToUse) throws Exception
+	static public Vector createObjectiveNodes(Project project, FactorSet relatedNodesToUse) throws Exception
 	{
 		Vector result = new Vector();
 		Iterator iter = relatedNodesToUse.iterator();
@@ -97,7 +97,7 @@ public class MonitoringGoalNode extends MonitoringNode
 		return result;
 	}
 
-	private Vector createIndicatorNodes(FactorSet relatedNodesToUse)
+	static public Vector createIndicatorNodes(Project project, FactorSet relatedNodesToUse)
 	{
 		Iterator iter = relatedNodesToUse.iterator();
 		Vector result = new Vector();

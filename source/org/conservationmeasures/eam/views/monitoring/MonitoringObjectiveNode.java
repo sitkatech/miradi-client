@@ -41,7 +41,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		return objective;
 	}
 
-	private HashSet getAllUpstreamIndicators(Factor factor)
+	public static HashSet getAllUpstreamIndicators(Factor factor)
 	{
 		HashSet indicatorIds = getFactorIndicatorIds(factor);
 		
@@ -58,7 +58,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		return indicatorIds;
 	}
 
-	private HashSet getFactorIndicatorIds(Factor factor)
+	static public HashSet getFactorIndicatorIds(Factor factor)
 	{
 		IdList ids = factor.getDirectOrIndirectIndicators();
 		HashSet indicatorIds = new HashSet(); 
@@ -101,6 +101,13 @@ public class MonitoringObjectiveNode extends MonitoringNode
 
 	public void rebuild() throws Exception
 	{
+		children = getAllUpstreamIndicatorsForObjectiveOwner(objective);
+	}
+
+	static public Vector getAllUpstreamIndicatorsForObjectiveOwner(Objective objective)
+	{
+		Vector children = new Vector();
+		Project project = objective.getObjectManager().getProject();
 		Factor owner = (Factor)objective.getOwner();
 		HashSet indicatorIds = getAllUpstreamIndicators(owner);
 		
@@ -114,6 +121,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 			children.add(new MonitoringIndicatorNode(project, indicator));
 		}
 		Collections.sort(children, new IgnoreCaseStringComparator());
+		return children;
 	}
 
 
