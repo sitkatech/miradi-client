@@ -6,9 +6,9 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
 
-public class StrategicPlanDataSource extends CommonDataSource
+public class MonitoringPlanDataSource extends CommonDataSource
 {
-	public StrategicPlanDataSource(Project project)
+	public MonitoringPlanDataSource(Project project)
 	{
 		super(project);
 		ORefList list = project.getPool(Goal.getObjectType()).getORefList();

@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.strategicplan.StratPlanGoal;
 import org.conservationmeasures.eam.views.strategicplan.StratPlanObjective;
 
-public class RelatedFactorsToThisGoalDataSource extends CommonDataSource
+public class StrategicPlanRelatedObectivesToThisGoalDataSource extends CommonDataSource
 {
-	public RelatedFactorsToThisGoalDataSource(Goal goal)
+	public StrategicPlanRelatedObectivesToThisGoalDataSource(Goal goal)
 	{
 		super(goal.getObjectManager().getProject());
 		try
@@ -37,6 +37,6 @@ public class RelatedFactorsToThisGoalDataSource extends CommonDataSource
 	
 	public JRDataSource getStrategiesContainingObjectiveInChainDataSource()
 	{
-		return new StrategiesContainingObjectiveInChainDataSource((Objective)getCurrentObject());
+		return new StrategicPlanStrategiesContainingObjectiveInChainDataSource((Objective)getCurrentObject());
 	}
 } 

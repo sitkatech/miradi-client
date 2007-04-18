@@ -7,9 +7,9 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.strategicplan.StratPlanObjective;
 import org.conservationmeasures.eam.views.strategicplan.StratPlanStrategy;
 
-public class StrategiesContainingObjectiveInChainDataSource extends CommonDataSource
+public class StrategicPlanStrategiesContainingObjectiveInChainDataSource extends CommonDataSource
 {
-	public StrategiesContainingObjectiveInChainDataSource(Objective objective)
+	public StrategicPlanStrategiesContainingObjectiveInChainDataSource(Objective objective)
 	{
 		super(objective.getObjectManager().getProject());
 		try
