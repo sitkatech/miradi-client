@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.questions.RatingSourceQuestion;
 import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
@@ -143,7 +144,7 @@ public class Indicator extends BaseObject
 		multiLineMethods = new PseudoStringData(PSEUDO_TAG_METHODS);
 		indicatorThresholdLabel = new PseudoStringData(TAG_INDICATOR_THRESHOLD);
 		priorityLabel = new PseudoQuestionData(new PriorityRatingQuestion(TAG_PRIORITY));
-		statusLabel = new PseudoQuestionData(new StatusQuestion(TAG_STATUS));
+		statusLabel = new PseudoQuestionData(new IndicatorStatusRatingQuestion(TAG_STATUS));
 		measurementTrendLabel = new PseudoQuestionData(new TrendQuestion(TAG_MEASUREMENT_TREND));
 		measurementStatusLabel = new PseudoQuestionData(new StatusQuestion(TAG_MEASUREMENT_STATUS));
 		ratingSourceLabel = new PseudoQuestionData(new RatingSourceQuestion(TAG_RATING_SOURCE));
