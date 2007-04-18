@@ -32,6 +32,6 @@ public class MonitoringPlanRelatedObectivesToThisGoalDataSource extends CommonDa
 	
 	public JRDataSource getUpstreamIndicatorsForObjectiveOwnerDataSource()
 	{
-		return new UpstreamIndicatorsForObjectiveOwnerDataSource((Objective)getCurrentObject());
+		return new MonitoringPlanRUpstreamIndicatorsForObjectiveOwnerDataSource((Objective)getCurrentObject());
 	}
 }

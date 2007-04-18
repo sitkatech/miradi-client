@@ -8,9 +8,9 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.monitoring.MonitoringIndicatorNode;
 import org.conservationmeasures.eam.views.monitoring.MonitoringObjectiveNode;
 
-public class UpstreamIndicatorsForObjectiveOwnerDataSource extends CommonDataSource
+public class MonitoringPlanRUpstreamIndicatorsForObjectiveOwnerDataSource extends CommonDataSource
 {
-	public UpstreamIndicatorsForObjectiveOwnerDataSource(Objective objective)
+	public MonitoringPlanRUpstreamIndicatorsForObjectiveOwnerDataSource(Objective objective)
 	{
 		super(objective.getObjectManager().getProject());
 		Vector indicatorVector = MonitoringObjectiveNode.getAllUpstreamIndicatorsForObjectiveOwner(objective);
