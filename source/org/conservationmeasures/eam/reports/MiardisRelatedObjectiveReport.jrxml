@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="MiradisStrategicPlanReport"
+		 name="MiardisRelatedObjectiveReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -24,28 +24,15 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
-	<field name="Label" class="java.lang.String"/>
 	<field name="Label:Label" class="java.lang.String"/>
+	<field name="Label" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</background>
 		<title>
-			<band height="50"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="79"
-						y="24"
-						width="402"
-						height="23"
-						key="staticText-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" lineSpacing="Single">
-						<font pdfFontName="Helvetica-Bold" size="14" isBold="true" isUnderline="false"/>
-					</textElement>
-				<text><![CDATA[************  Strategic Plan  ******************]]></text>
-				</staticText>
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -57,14 +44,15 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="55"  isSplitAllowed="true" >
+			<band height="28"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="136"
-						y="0"
+						x="137"
+						y="7"
 						width="109"
-						height="20"
-						key="Label"/>
+						height="13"
+						key="Label"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
@@ -73,28 +61,18 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
-						y="0"
+						x="12"
+						y="7"
 						width="110"
-						height="17"
-						key="Label:Label"/>
+						height="13"
+						key="Label:Label"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Label}]]></textFieldExpression>
 				</textField>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="0"
-						y="25"
-						width="402"
-						height="26"
-						key="MiradisDiagramReport-1"
-						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.StrategicPlanDataSource)$P{REPORT_DATA_SOURCE}).getRelatedFactorsToThisGoalDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisRelatedObjectiveReport.jasper")]]></subreportExpression>
-				</subreport>
 			</band>
 		</detail>
 		<columnFooter>

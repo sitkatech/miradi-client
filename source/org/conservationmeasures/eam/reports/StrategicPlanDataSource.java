@@ -15,8 +15,8 @@ public class StrategicPlanDataSource extends CommonDataSource
 		setObjectList(list);
 	}
 	
-	public JRDataSource getRelatedObjectDataSource(int relatedObjectTypeToFind)
+	public JRDataSource getRelatedFactorsToThisGoalDataSource()
 	{
-		return new RelatedObjectDataSource(getCurrentObject(), relatedObjectTypeToFind);
+		return new RelatedFactorsToThisGoalDataSource((Goal)getCurrentObject());
 	}
 } 

@@ -80,7 +80,12 @@ public class StratPlanGoal extends TreeTableNode
 
 	public void rebuild() throws Exception
 	{
-		objectiveVector = new Vector();
+		objectiveVector = getObjectiveNodes(project, goal);
+	}
+
+	static public Vector getObjectiveNodes(Project project, Goal goal) throws Exception
+	{
+		Vector objectiveVector = new Vector();
 		FactorSet relatedNodes = new ChainManager(project).findAllFactorsRelatedToThisGoal(goal.getId());
 		Iterator iter = relatedNodes.iterator();
 		while(iter.hasNext())
@@ -96,6 +101,7 @@ public class StratPlanGoal extends TreeTableNode
 			}
 		}
 		Collections.sort(objectiveVector, new IgnoreCaseStringComparator());
+		return 	objectiveVector;
 	}
 
 	Project project;
