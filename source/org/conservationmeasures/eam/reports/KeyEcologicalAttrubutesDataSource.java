@@ -5,11 +5,10 @@
 */ 
 package org.conservationmeasures.eam.reports;
 
-import java.text.Collator;
-import java.util.Comparator;
-
 import net.sf.jasperreports.engine.JRDataSource;
 
+import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeNode;
+import org.conservationmeasures.eam.dialogs.viability.TargetViabilityNode;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
@@ -21,9 +20,11 @@ public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 		super(target.getObjectManager().getProject());
 		if (target.isViabilityModeTNC())
 		{
-			ORefList list = new ORefList(KeyEcologicalAttribute.getObjectType(), target.getKeyEcologicalAttributes());
+			KeyEcologicalAttributeNode[] keas = TargetViabilityNode.getKeaNodes(target);
+			ORefList list = new ORefList();
+			for (int i=0; i<keas.length; ++i)
+				list.add(keas[i].getObject().getRef());
 			setObjectList(list);
-			sortObjectList(new KeaTypeComparator());
 		}
 		else
 		{
@@ -34,16 +35,5 @@ public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 	public JRDataSource getViabilityIndicatorsDataSource()
 	{
 		return new ViabilityIndicatorsDataSource((KeyEcologicalAttribute)getCurrentObject());
-	}
-	
-	class KeaTypeComparator implements Comparator
-	{
-		public int compare(Object kea1, Object kea2)
-		{
-			String type1 =((KeyEcologicalAttribute) kea1).getKeyEcologicalAttributeType();
-			String type2 =((KeyEcologicalAttribute) kea2).getKeyEcologicalAttributeType();
-			Collator myCollator = Collator.getInstance();
-			return myCollator.compare(type1, type2);
-		}
 	}
 } 

@@ -5,16 +5,19 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusQuestion;
-import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class TargetViabilityNode extends TreeTableNode
@@ -34,12 +37,12 @@ public class TargetViabilityNode extends TreeTableNode
 
 	public TreeTableNode getChild(int index)
 	{
-		return (TreeTableNode)children.get(index);
+		return children[index];
 	}
 
 	public int getChildCount()
 	{
-		return children.size();
+		return children.length;
 	}
 
 	public ORef getObjectReference()
@@ -74,17 +77,33 @@ public class TargetViabilityNode extends TreeTableNode
 	
 	public void rebuild()
 	{
-		Vector vector = new Vector();
-		CodeList types = target.getActiveKeyEcologicalAttributeTypes();
-		for (int i=0; i< types.size(); ++i)
-		{
-			vector.add(new KeyEcologicalAttributeTypeNode(project, target, types.get(i)));
-		}
-		children = vector;
+		children = getKeaNodes(target);
 	}
+
+	static public KeyEcologicalAttributeNode[] getKeaNodes(Target target)
+	{
+		Project project = target.getObjectManager().getProject();
+		IdList keas = target.getKeyEcologicalAttributes();
+		Vector keyEcologicalAttributesVector = new Vector();
+		for(int i = 0; i < keas.size(); ++i)
+		{
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(new ORef(KeyEcologicalAttribute.getObjectType(),keas.get(i)));
+			keyEcologicalAttributesVector.add(new KeyEcologicalAttributeNode(project, kea));
+		}
+		
+		KeyEcologicalAttributeNode[] keaNodes = (KeyEcologicalAttributeNode[])keyEcologicalAttributesVector.toArray(new KeyEcologicalAttributeNode[0]);
+		sortObjectList(keaNodes, new KeaNodeComparator());
+		return keaNodes;
+	}
+	
+	static public void sortObjectList(KeyEcologicalAttributeNode[] objectList, Comparator comparator)
+	{
+		Arrays.sort(objectList, comparator);
+	}
+	
 	
 	private Project project;
 	private Target target;
-	private Vector children;
+	private KeyEcologicalAttributeNode[] children;
 	private StatusQuestion statusQuestion;
 }
