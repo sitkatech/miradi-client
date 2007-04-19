@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
 import javax.swing.JSplitPane;
@@ -36,11 +38,17 @@ abstract public class TabbedView extends UmbrellaView
 		tabs = new JTabbedPane();
 		tabs.addChangeListener(new TabChangeListener());
 		tabs.setFocusable(false);
+		tabs.addMouseListener(new MouseHandler());
 	}
 
 	public abstract void createTabs() throws Exception;
 	public abstract void deleteTabs() throws Exception;
 	public abstract WizardPanel createWizardPanel() throws Exception;
+	
+	public void handleRightClick(int tab)
+	{
+		EAM.logDebug("Ignoring right-click for " + tab);
+	}
 	
 	public void becomeActive() throws Exception
 	{
@@ -208,6 +216,29 @@ abstract public class TabbedView extends UmbrellaView
 			return cmd;
 		}
 
+	}
+	
+	public class MouseHandler extends MouseAdapter
+	{
+		public void mousePressed(MouseEvent event)
+		{
+			if(event.isPopupTrigger())
+				doRightClickMenu(event);
+		}
+
+		public void mouseReleased(MouseEvent event)
+		{
+			if(event.isPopupTrigger())
+				doRightClickMenu(event);
+		}
+		
+		private void doRightClickMenu(MouseEvent event)
+		{
+			int tab = tabs.indexAtLocation(event.getX(), event.getY());
+			if(tab < 0)
+				return;
+			handleRightClick(tab);
+		}
 	}
 	
 	JSplitPane bigSplitter;
