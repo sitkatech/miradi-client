@@ -217,14 +217,14 @@ public class Strategy extends Factor
 	public static final String TAG_DURATION_RATING = "DurationRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_COST_RATING = "CostRating";
-	public static final String PSEUDO_TAG_RATING_SUMMARY = "TagRatingSummary";
+	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
 	
-	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TagTaxonomyCodeValue";
-	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "TagImpactRatingValue";
-	public static final String PSEUDO_TAG_DURATION_RATING_VALUE = "TagDurationRatingValue";
-	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "TagFeasibilityRatingValue";
-	public static final String PSEUDO_TAG_COST_RATING_VALUE = "TagCostRatingValue";
-	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "TagRatingSummaryValue";
+	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
+	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
+	public static final String PSEUDO_TAG_DURATION_RATING_VALUE = "DurationRatingValue";
+	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
+	public static final String PSEUDO_TAG_COST_RATING_VALUE = "CostRatingValue";
+	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "RatingSummaryValue";
 
 	
 	public static final String OBJECT_NAME = "Strategy";
