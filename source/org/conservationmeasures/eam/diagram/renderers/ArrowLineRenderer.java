@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -22,6 +23,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
@@ -149,17 +151,26 @@ public class ArrowLineRenderer extends EdgeRenderer
 	}
 
 	
-	private Rectangle calcalateCenteredAndCushioned(Rectangle2D graphBounds, String text)
+	private Rectangle calcalateCenteredAndCushioned(Rectangle2D linkBounds, String text)
 	{
 		Graphics2D g2 = (Graphics2D)fontGraphics;
 		
+		Rectangle2D centerStressWithin = linkBounds;
+		PointList points = getLinkCell().getDiagramFactorLink().getBendPoints();
+		if(points.size() > 0)
+		{
+			int centerPointIndex = points.size() / 2;
+			Point point = points.get(centerPointIndex);
+			centerStressWithin = new Rectangle(point, new Dimension(1,1));
+		}
+
 		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
 		Rectangle textBounds = textLayout.getBounds().getBounds();
 		
 		textBounds.width = textBounds.width + 2*CUSHION;
 		textBounds.height = textBounds.height +2*CUSHION;
 		
-		Point upperLeftToDrawText = Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
+		Point upperLeftToDrawText = Utilities.center(textBounds.getSize(), centerStressWithin.getBounds().getBounds());
 		textBounds.setLocation(upperLeftToDrawText);
 		return textBounds;
 	}
@@ -175,11 +186,12 @@ public class ArrowLineRenderer extends EdgeRenderer
 		if(stressText == null || stressText.length() < 1)
 			return;
 		
-		Graphics2D g2 = (Graphics2D)g;
-		Rectangle rectangle = calcalateCenteredAndCushioned(getBounds(), stressText);
+		
+		Rectangle rectangle = calcalateCenteredAndCushioned(getPaintBounds(view), stressText);
 
 		int arc = 5;
 
+		Graphics2D g2 = (Graphics2D)g;
 		g2.setColor(DiagramConstants.COLOR_STRESS);
 		g2.fillRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
 		g2.setColor(Color.BLACK);
