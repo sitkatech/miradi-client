@@ -26,6 +26,11 @@ public class MiradiDataSource extends CommonDataSource
 		return new DiagramDataSource(project);
 	}
 	
+	public JRDataSource getThreatTableDataSource()
+	{
+		return new ThreatTableDataSource(project);
+	}
+	
 	public JRDataSource getViabilityTargetsDataSource()
 	{
 		return new ViabilityTargetsDataSource(project);

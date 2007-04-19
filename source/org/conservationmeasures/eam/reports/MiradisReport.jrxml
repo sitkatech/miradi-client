@@ -41,7 +41,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="179"  isSplitAllowed="true" >
+			<band height="213"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="38"
@@ -154,6 +154,27 @@
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getBudgetPlanDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisBudgetPlanReport.jasper")]]></subreportExpression>
 				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="38"
+						y="199"
+						width="402"
+						height="13"
+						key="MiardisThreatTableReport"
+						positionType="Float"/>
+					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getThreatTableDataSource()]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisThreatTableReport.jasper")]]></subreportExpression>
+				</subreport>
+				<break>
+					<reportElement
+						x="0"
+						y="190"
+						width="535"
+						height="0"
+						key="element-6"
+						positionType="Float"
+						isPrintWhenDetailOverflows="true"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>
