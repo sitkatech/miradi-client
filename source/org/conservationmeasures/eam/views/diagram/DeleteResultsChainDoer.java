@@ -5,9 +5,11 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.project.ResultsChainDeleteHelper;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteResultsChainDoer extends ViewDoer
@@ -25,10 +27,20 @@ public class DeleteResultsChainDoer extends ViewDoer
 		if (! isAvailable())
 			return;
 		
-		DiagramView view = getDiagramView();
-		
-		DiagramObject diagramObject = view.getCurrentDiagramPanel().getDiagramObject();
-		CommandDeleteObject deleteResultsChain = new CommandDeleteObject(diagramObject.getRef());
-		getProject().executeCommand(deleteResultsChain);
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			DiagramPanel diagramPanel = getDiagramView().getCurrentDiagramPanel();
+			ResultsChainDeleteHelper deleteHelper = new ResultsChainDeleteHelper(getProject(), diagramPanel);
+			deleteHelper.deleteResultsChain();
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 }
