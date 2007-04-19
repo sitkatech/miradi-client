@@ -15,7 +15,7 @@ public class CreateKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 	public boolean isAvailable()
 	{
 		if (getObjects().length != 1)
-			return false;
+			return true;
 		
 		if (getSelectedObjectType() == ObjectType.TARGET)
 			return ((Target)getObjects()[0]).isViabilityModeTNC();
