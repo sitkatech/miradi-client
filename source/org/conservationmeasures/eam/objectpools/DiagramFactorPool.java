@@ -11,9 +11,8 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.project.ObjectManager;
 
 public class DiagramFactorPool extends EAMNormalObjectPool
@@ -28,9 +27,9 @@ public class DiagramFactorPool extends EAMNormalObjectPool
 		put(diagramFactor.getDiagramFactorId(), diagramFactor);
 	}
 	
-	public DiagramFactorLink find(BaseId id)
+	public DiagramFactor find(BaseId id)
 	{
-		return (DiagramFactorLink)findObject(id);
+		return (DiagramFactor)findObject(id);
 	}
 	
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)	throws Exception

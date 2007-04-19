@@ -11,6 +11,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.DiagramChainObject;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
@@ -139,10 +140,7 @@ public class ResultsChainCreatorHelper
 		Vector allDiagramFactors = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			//FIXME RC use DiagramChainObject 
-			ProjectChainObject chainObject = new ProjectChainObject();
-			Factor factor = selectedFactorCells[i].getUnderlyingObject();
-			chainObject.buildNormalChain(factor);
+			DiagramChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
 			Factor[] factorsArray = chainObject.getFactorsArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
@@ -158,15 +156,21 @@ public class ResultsChainCreatorHelper
 		Vector allDiagramLinks = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			//FIXME RC use DiagramChainObject
-			ProjectChainObject chainObject = new ProjectChainObject();
-			Factor factor = selectedFactorCells[i].getUnderlyingObject();
-			chainObject.buildNormalChain(factor);
+			DiagramChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
 			Vector diagramLinks = convertToDiagramLinks(chainObject.getFactorLinksArray());
 			allDiagramLinks.addAll(diagramLinks);
 		}
 		
 		return (DiagramFactorLink[]) allDiagramLinks.toArray(new DiagramFactorLink[0]);
+	}
+
+	private DiagramChainObject createDiagramChainObject(FactorCell[] selectedFactorCells, int i)
+	{
+		DiagramChainObject chainObject = new DiagramChainObject();
+		Factor factor = selectedFactorCells[i].getUnderlyingObject();
+		chainObject.buildNormalChain(model, factor);
+		
+		return chainObject;
 	}
 
 	private Vector convertToDiagramLinks(FactorLink[] links) throws Exception

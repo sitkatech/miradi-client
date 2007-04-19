@@ -7,12 +7,15 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
-import org.conservationmeasures.eam.objectpools.FactorLinkPool;
-import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.project.Project;
 
 // TODO: Hopefully this can be eliminated when everyone 
 // is using ProjectChainObject instead
@@ -110,16 +113,16 @@ public class DiagramChainObject
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
 		linkedFactors.attemptToAdd(startingFactor);
-		FactorLinkPool factorLinkPool = diagramModel.getFactorLinkPool();
+		DiagramFactorLink[] allDiagramLinks = diagramModel.getAllDiagramLinkAsArray();
 		
-		FactorLinkId[] linkIds = factorLinkPool.getFactorLinkIds();
-		for(int i = 0; i < linkIds.length; ++i)
+		for(int i = 0; i < allDiagramLinks.length; ++i)
 		{
-			FactorLink thisLink = factorLinkPool.find(linkIds[i]);
+			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
+			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
 			if(thisLink.getNodeId(direction).equals(startingFactor.getId()))
 			{
 				attempToAdd(thisLink);
-				Factor linkedFactor = diagramModel.getProject().findNode(thisLink.getOppositeNodeId(direction));
+				Factor linkedFactor = getProject().findNode(thisLink.getOppositeNodeId(direction));
 				unprocessedFactors.attemptToAdd(linkedFactor);
 			}
 		}		
@@ -128,20 +131,27 @@ public class DiagramChainObject
 		{
 			Factor thisFactor = (Factor)unprocessedFactors.toArray()[0];
 			linkedFactors.attemptToAdd(thisFactor);
-			for(int i = 0; i < linkIds.length; ++i)
+			for(int i = 0; i < allDiagramLinks.length; ++i)
 			{
-				FactorLink thisLinkage = factorLinkPool.find(linkIds[i]);
-				if(thisLinkage.getNodeId(direction).equals(thisFactor.getId()))
+				FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
+				FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
+				if(thisLink.getNodeId(direction).equals(thisFactor.getId()))
 				{
-					attempToAdd(thisLinkage);
-					Factor linkedNode = diagramModel.getProject().findNode(thisLinkage.getOppositeNodeId(direction));
+					attempToAdd(thisLink);
+					Factor linkedNode = getProject().findNode(thisLink.getOppositeNodeId(direction));
 					unprocessedFactors.attemptToAdd(linkedNode);
 				}
 			}
+			
 			unprocessedFactors.remove(thisFactor);
 		}
 		
 		return linkedFactors;
+	}
+
+	private Project getProject()
+	{
+		return diagramModel.getProject();
 	}
 
 	private FactorSet getDirectlyLinkedFactors(int direction)
@@ -149,15 +159,16 @@ public class DiagramChainObject
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
 		
-		FactorLinkPool factorLinkPool = diagramModel.getFactorLinkPool();
-		for(int i = 0; i < factorLinkPool.getFactorLinkIds().length; ++i)
+		DiagramFactorLink[] allDiagramLinks = diagramModel.getAllDiagramLinkAsArray();
+		for(int i = 0; i < allDiagramLinks.length; ++i)
 		{
-			FactorLink thisLink = factorLinkPool.find(factorLinkPool.getFactorLinkIds()[i]);
+			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
+			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
 			if(thisLink.getNodeId(direction).equals(startingFactor.getId()))
 			{
 				attempToAdd(thisLink);
 				FactorId downstreamFactorId = thisLink.getOppositeNodeId(direction);
-				Factor downstreamFactor = diagramModel.getProject().findNode(downstreamFactorId);
+				Factor downstreamFactor = getProject().findNode(downstreamFactorId);
 				results.attemptToAdd(downstreamFactor);
 			}
 		}

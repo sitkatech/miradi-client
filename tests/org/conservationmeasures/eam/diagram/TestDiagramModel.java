@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
@@ -54,13 +55,27 @@ public class TestDiagramModel extends EAMTestCase
 		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
-			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
-			Factor cmNode = (Factor)project.findObject(ObjectType.FACTOR, threatId);
+			String label = Integer.toString(expectedChainNodeIds[0]);
+			Factor cmNode = findFactor(label);
 			
 			FactorSet gotChainNodes = model.getNodesInChain(cmNode);
-			
-			assertEquals("wrong direct threat chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
+			FactorSet foundNodes = findNodes(expectedChainNodeIds);
+			assertEquals("wrong direct threat chain nodes for " + expectedChainNodeIds[0] + "?", foundNodes, gotChainNodes);
 		}
+	}
+	
+	private Factor findFactor(String label)
+	{
+		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
+		for (int i = 0; i < diagramFactors.length; ++i)
+		{
+			FactorId factorId = diagramFactors[i].getWrappedId();
+			Factor factor = (Factor) project.findObject(ObjectType.FACTOR, factorId);
+			if (factor.getLabel().equals(label))
+				return factor;
+		}
+		
+		return null;
 	}
 
 	private int[][] getExpectedNodesInChain()
@@ -100,10 +115,11 @@ public class TestDiagramModel extends EAMTestCase
 		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
-			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
-			Factor cmNode = (Factor)project.findObject(ObjectType.FACTOR, threatId);
+			String label = Integer.toString(expectedChainNodeIds[0]);
+			Factor cmNode = findFactor(label);
 			FactorSet gotChainNodes = model.getDirectThreatChainNodes(cmNode);
-			assertEquals("wrong direct threat chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
+			Set gotLabels = getLabelSet(gotChainNodes);
+			assertEquals("wrong direct threat chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels);
 		}
 
 		int[][] expectedNodesInFullChain = {
@@ -118,18 +134,46 @@ public class TestDiagramModel extends EAMTestCase
 		for(int nodeIndex = 0; nodeIndex < expectedNodesInFullChain.length; ++nodeIndex)
 		{
 			int[] expectedChainNodeIds = expectedNodesInFullChain[nodeIndex];
-			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
-			Factor cmNode = (Factor)project.findObject(ObjectType.FACTOR, threatId);
+			String label = Integer.toString(expectedChainNodeIds[0]);
+			Factor cmNode = findFactor(label);
 			FactorSet gotChainNodes = model.getAllUpstreamDownstreamNodes(cmNode);
-			assertEquals("wrong chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
+			Set gotLabels = getLabelSet(gotChainNodes);
+			assertEquals("wrong chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels);
 		}
 	}
 	
+	private Set toSet(int[] ints)
+	{
+		HashSet set = new HashSet();
+		for (int i = 0; i < ints.length; ++i)
+		{
+			set.add(Integer.toString(ints[i]));
+		}
+		
+		return set;
+	}
+	
+	private Set getLabelSet(FactorSet gotChainNodes)
+	{
+		Factor[] factors = gotChainNodes.toNodeArray();
+		HashSet set = new HashSet();
+		for (int i = 0; i < factors.length; ++i)
+		{
+			set.add(factors[i].getLabel());
+		}
+		
+		return set;
+	}
+
 	public FactorSet findNodes(int[] values)
 	{
 		FactorSet result = new FactorSet();
 		for(int i = 0; i < values.length; ++i)
-			result.attemptToAdd(project.findNode(new FactorId(values[i])));
+		{	
+			String valueAsString = Integer.toString(values[i]);
+			result.attemptToAdd(findFactor(valueAsString));
+		}
+		
 		return result;
 	}
 

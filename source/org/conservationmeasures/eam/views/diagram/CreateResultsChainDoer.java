@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -46,7 +45,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		}
 		catch (Exception e) 
 		{
-			EAM.logException(e);
+			throw new CommandFailedException(e);
 		}
 		finally
 		{

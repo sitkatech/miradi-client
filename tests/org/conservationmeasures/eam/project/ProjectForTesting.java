@@ -18,13 +18,17 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -253,6 +257,18 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	public DiagramFactorLinkId createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
+	{
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(from.getWrappedId(), to.getWrappedId());
+		BaseId baseId = createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
+		FactorLinkId factorLinkId = new FactorLinkId(baseId.asInt());
+		
+		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
+		BaseId diagramFactorLinkId = createObject(ObjectType.DIAGRAM_LINK, extraInfo);
+
+		return new DiagramFactorLinkId(diagramFactorLinkId.asInt());
 	}
 
 	DiagramModel diagramModel;
