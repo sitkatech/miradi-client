@@ -73,6 +73,12 @@ public class WorkPlanStrategyNode extends TreeTableNode
 
 	public void rebuild()
 	{
+		activities = getWorkPlanActivitiesTask(intervention);
+	}
+
+	static public WorkPlanTaskNode[] getWorkPlanActivitiesTask(Strategy intervention)
+	{
+		Project project = intervention.getObjectManager().getProject();
 		int childCount = intervention.getActivityIds().size();
 		Vector activityVector = new Vector();
 		for(int i = 0; i < childCount; ++i)
@@ -81,7 +87,8 @@ public class WorkPlanStrategyNode extends TreeTableNode
 			Task activity = project.getTaskPool().find(activityId);
 			activityVector.add(new WorkPlanTaskNode(project, activity));
 		}
-		activities = (WorkPlanTaskNode[])activityVector.toArray(new WorkPlanTaskNode[0]);
+		WorkPlanTaskNode[] activities = (WorkPlanTaskNode[])activityVector.toArray(new WorkPlanTaskNode[0]);
+		return activities;
 	}
 
 	

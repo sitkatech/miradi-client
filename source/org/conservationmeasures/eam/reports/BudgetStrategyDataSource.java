@@ -4,6 +4,7 @@ import net.sf.jasperreports.engine.JRDataSource;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.workplan.WorkPlanStrategyNode;
 import org.conservationmeasures.eam.views.workplan.WorkPlanStrategyRoot;
@@ -24,9 +25,9 @@ public class BudgetStrategyDataSource extends CommonDataSource
 		setObjectList(list);
 	}
 	
-	public JRDataSource getxxxxDataSource() throws Exception
+	public JRDataSource getBudgetStrategiesDataSource() throws Exception
 	{
-		return null;
+		return new BudgetStrategiesDataSource((Strategy)getCurrentObject());
 	}
 
 } 
