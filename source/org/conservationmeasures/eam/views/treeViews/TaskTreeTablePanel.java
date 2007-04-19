@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
@@ -64,12 +65,12 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 			{
 				rebuildEntireTree();
 			}
+			if(cmd.getFieldTag().equals(ViewData.TAG_CURRENT_EXPANSION_LIST))
+			{
+				restoreTreeExpansionState();
+			}
 			else
 			{
-				// FIXME: This was causing an endless loop (Kevin)
-				// when a dropdown value was changed in the Assignment table. Confirm that 
-				// removing it does not have ill effects
-				//restoreTreeExpansionState();
 				repaint();
 			}
 		}
