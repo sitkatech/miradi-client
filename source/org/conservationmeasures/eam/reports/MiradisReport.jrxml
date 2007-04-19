@@ -41,7 +41,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="153"  isSplitAllowed="true" >
+			<band height="179"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="38"
@@ -133,6 +133,27 @@
 						positionType="Float"
 						isPrintWhenDetailOverflows="true"/>
 				</break>
+				<break>
+					<reportElement
+						x="0"
+						y="157"
+						width="535"
+						height="0"
+						key="element-5"
+						positionType="Float"
+						isPrintWhenDetailOverflows="true"/>
+				</break>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="38"
+						y="167"
+						width="402"
+						height="12"
+						key="MiradisBudgetReport"
+						positionType="Float"/>
+					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getBudgetPlanDataSource()]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisBudgetPlanReport.jasper")]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
