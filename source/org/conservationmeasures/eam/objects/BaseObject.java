@@ -216,7 +216,7 @@ abstract public class BaseObject
 			return id.toString();
 		
 		if(!fields.containsKey(fieldTag))
-			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag);
+			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag + " in object type: " + getClass().getSimpleName());
 
 		return getField(fieldTag).get();
 	}
