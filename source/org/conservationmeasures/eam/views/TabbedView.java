@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
+import javax.swing.JPopupMenu;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -45,9 +46,9 @@ abstract public class TabbedView extends UmbrellaView
 	public abstract void deleteTabs() throws Exception;
 	public abstract WizardPanel createWizardPanel() throws Exception;
 	
-	public void handleRightClick(int tab)
+	public JPopupMenu getTabPopupMenu()
 	{
-		EAM.logDebug("Ignoring right-click for " + tab);
+		return null;
 	}
 	
 	public void becomeActive() throws Exception
@@ -173,6 +174,20 @@ abstract public class TabbedView extends UmbrellaView
 		addTab(panel.getPanelDescription(), panel);
 	}
 	
+	void handleRightClick(MouseEvent event)
+	{
+		int tab = tabs.indexAtLocation(event.getX(), event.getY());
+		if(tab < 0)
+			return;
+		
+		JPopupMenu menu = getTabPopupMenu();
+		if(menu == null)
+			return;
+		
+		getMainWindow().updateActionsAndStatusBar();
+		menu.show(tabs, event.getX(), event.getY());
+	}
+	
 	class TabChangeListener implements ChangeListener
 	{
 		public void stateChanged(ChangeEvent event)
@@ -234,10 +249,7 @@ abstract public class TabbedView extends UmbrellaView
 		
 		private void doRightClickMenu(MouseEvent event)
 		{
-			int tab = tabs.indexAtLocation(event.getX(), event.getY());
-			if(tab < 0)
-				return;
-			handleRightClick(tab);
+			handleRightClick(event);
 		}
 	}
 	

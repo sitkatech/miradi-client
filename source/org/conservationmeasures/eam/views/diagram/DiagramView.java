@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.util.Iterator;
 
 import javax.swing.JComponent;
+import javax.swing.JPopupMenu;
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
@@ -417,6 +418,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return draftsToAdd;
 	}
 	
+	public JPopupMenu getTabPopupMenu()
+	{
+		DiagramTabMouseMenuHandler handler = new DiagramTabMouseMenuHandler(this);
+		return handler.getPopupMenu();
+	}
+
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		Command rawCommand = event.getCommand();
