@@ -71,11 +71,12 @@ public class StratPlanObjective extends TreeTableNode
 
 	public void rebuild()
 	{
-		strategies = getStrategyNodes(project, objective);
+		strategies = getStrategyNodes(objective);
 	}
 
-	static public StratPlanStrategy[] getStrategyNodes(Project project, Objective objective)
+	static public StratPlanStrategy[] getStrategyNodes(Objective objective)
 	{
+		Project project = objective.getObjectManager().getProject();
 		ObjectiveId objectiveId = (ObjectiveId)objective.getId();
 
 		Factor[] strategyObjects = project.getStrategyPool().getNonDraftStrategies();

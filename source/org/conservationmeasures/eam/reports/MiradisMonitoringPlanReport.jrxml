@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="MiradisStrategicPlanReport"
+		 name="MardisMonitoringPlanReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -24,31 +24,32 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
-	<field name="Label" class="java.lang.String"/>
 	<field name="Label:Label" class="java.lang.String"/>
+	<field name="Label" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</background>
 		<title>
-			<band height="24"  isSplitAllowed="true" >
+			<band height="36"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
 			<band height="0"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
-						x="69"
-						y="-24"
+						x="79"
+						y="-26"
 						width="402"
 						height="23"
-						key="staticText-1"/>
+						key="staticText-1"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" lineSpacing="Single">
 						<font pdfFontName="Helvetica-Bold" size="14" isBold="true" isUnderline="false"/>
 					</textElement>
-				<text><![CDATA[************  Strategic Plan  ******************]]></text>
+				<text><![CDATA[************  Monitoring Plan  ****************]]></text>
 				</staticText>
 			</band>
 		</pageHeader>
@@ -57,11 +58,11 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="27"  isSplitAllowed="true" >
+			<band height="91"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="136"
-						y="0"
+						x="189"
+						y="19"
 						width="109"
 						height="17"
 						key="Label"
@@ -74,8 +75,8 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
-						y="0"
+						x="53"
+						y="19"
 						width="110"
 						height="17"
 						key="Label:Label"
@@ -88,14 +89,25 @@
 				</textField>
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="0"
-						y="17"
+						x="17"
+						y="43"
 						width="402"
 						height="10"
 						key="MiradisDiagramReport-1"
 						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.StrategicPlanDataSource)$P{REPORT_DATA_SOURCE}).getRelatedObectivesToThisGoalDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisRelatedObjectiveReport.jasper")]]></subreportExpression>
+					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MonitoringPlanDataSource)$P{REPORT_DATA_SOURCE}).getRelatedIndicatorsToThisGoalDataSource()]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisMonitoringIndicatorsReport.jasper")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="17"
+						y="65"
+						width="402"
+						height="10"
+						key="MiradisDiagramReport-2"
+						positionType="Float"/>
+					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MonitoringPlanDataSource)$P{REPORT_DATA_SOURCE}).getRelatedObectivesToThisGoalDataSource()]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisMonitoringObjectivesReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>

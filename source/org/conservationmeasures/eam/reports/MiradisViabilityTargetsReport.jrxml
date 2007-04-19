@@ -56,13 +56,13 @@
 						x="15"
 						y="10"
 						width="450"
-						height="22"
+						height="19"
 						key="staticText-1"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
 						<font size="14"/>
 					</textElement>
-				<text><![CDATA[********  Viability Target Section **********]]></text>
+				<text><![CDATA[********  Viability Targets **********]]></text>
 				</staticText>
 			</band>
 		</title>

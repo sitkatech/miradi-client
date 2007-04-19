@@ -20,7 +20,7 @@ public class StrategicPlanRelatedObectivesToThisGoalDataSource extends CommonDat
 		try
 		{
 			ORefList list = new ORefList();
-			Vector objectiveVector = StratPlanGoal.getObjectiveNodes(project, goal);
+			Vector objectiveVector = StratPlanGoal.getObjectiveNodes(goal);
 			for (int i=0; i<objectiveVector.size(); ++i)
 			{
 				BaseObject ss = ((StratPlanObjective)objectiveVector.get(i)).getObject();
