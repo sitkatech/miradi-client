@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -52,9 +53,13 @@ public class ResultsChainDeleteHelper
 	private void deleteDiagramFactorAndFactor(DiagramFactor diagramFactor) throws Exception
 	{
 		FactorId factorId = diagramFactor.getWrappedId();
+		
 		DiagramObject diagramObject = diagramPanel.getDiagramObject();
 		CommandSetObjectData removeFactorFromChain = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactor.getDiagramFactorId());
 		project.executeCommand(removeFactorFromChain);
+	
+		Command[] commandsToClear = diagramFactor.createCommandsToClear();
+		project.executeCommands(commandsToClear);
 		
 		CommandDeleteObject deleteDiagramFactor = new CommandDeleteObject(diagramFactor.getRef());
 		project.executeCommand(deleteDiagramFactor);
@@ -84,9 +89,13 @@ public class ResultsChainDeleteHelper
 	private void deleteDiagramLinkAndFactorLink(DiagramFactorLink diagramLink) throws Exception
 	{
 		FactorLinkId factorLinkId = diagramLink.getWrappedId();
+		
 		DiagramObject diagramObject = diagramPanel.getDiagramObject();
 		CommandSetObjectData removeFactorLinkFromChain = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkageId());
 		project.executeCommand(removeFactorLinkFromChain);
+	
+		Command[] commandsToClear = diagramLink.createCommandsToClear();
+		project.executeCommands(commandsToClear);
 		
 		CommandDeleteObject deleteDiagramLink = new CommandDeleteObject(diagramLink.getRef());
 		project.executeCommand(deleteDiagramLink);
