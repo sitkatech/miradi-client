@@ -278,6 +278,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		return diagramView;
 	}
+	
+	public ThreatMatrixView getThreatView()
+	{
+		return threatMatrixView;
+	}
 
 	private void fakeViewSwitchForMainWindow()
 	{
