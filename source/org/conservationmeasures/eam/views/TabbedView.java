@@ -79,8 +79,8 @@ abstract public class TabbedView extends UmbrellaView
 		ignoreTabChanges = true;
 		try
 		{
-			tabs.removeAll();
 			deleteTabs();
+			tabs.removeAll();
 		}
 		finally
 		{
@@ -117,6 +117,11 @@ abstract public class TabbedView extends UmbrellaView
 	public void setTab(int newTab)
 	{
 		tabs.setSelectedIndex(newTab);
+	}
+	
+	public Component getTabContents(int index)
+	{
+		return tabs.getComponent(index);
 	}
 	
 	public Component getCurrentTabContents()
