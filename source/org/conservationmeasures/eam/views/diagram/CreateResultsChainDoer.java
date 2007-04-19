@@ -5,7 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -37,15 +38,19 @@ public class CreateResultsChainDoer extends ViewDoer
 		if (! isAvailable())
 			return;
 
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			DiagramModel model = getDiagramView().getDiagramModel();
-			ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(getProject(), getDiagramView());
-			creatorHelper.createResultsChain(model);
+			ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(getProject(), getDiagramView().getDiagramPanel());
+			creatorHelper.createResultsChain();
 		}
 		catch (Exception e) 
 		{
 			EAM.logException(e);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}	
 	

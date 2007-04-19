@@ -9,12 +9,11 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -34,44 +33,36 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.utils.PointList;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class ResultsChainCreatorHelper
 {
-	public ResultsChainCreatorHelper(Project projectToUse, DiagramView diagramViewToUse)
+	public ResultsChainCreatorHelper(Project projectToUse, DiagramPanel diagramPanelToUse)
 	{
 		project = projectToUse;
-		diagramView = diagramViewToUse;
+		diagramPanel = diagramPanelToUse;
+		model = diagramPanel.getDiagramModel();
 	}
 		
-	public void createResultsChain(DiagramModel model) throws Exception
+	public void createResultsChain() throws Exception
 	{
-		project.executeCommand(new CommandBeginTransaction());
-		try
-		{
 			CommandCreateObject createResultsChain = new CommandCreateObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
 			project.executeCommand(createResultsChain);
 			
 			BaseId createId = createResultsChain.getCreatedId();
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, createId);
 
-			DiagramFactor[] diagramFactors = getDiagramFactorsInChain(model);
+			DiagramFactor[] diagramFactors = getDiagramFactorsInChain();
 			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
 			DiagramFactorId[] clonedDiagramFactorIds = extractClonedDiagramFactors(clonedDiagramFactors);
 			IdList idList = new IdList(clonedDiagramFactorIds);
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			project.executeCommand(addFactorsToChain);
 
-			DiagramFactorLink[] diagramLinks = getDiagramLinksInChain(model);
-			DiagramFactorLinkId[] clonedDiagramLinkIds = cloneDiagramLinks(model, diagramLinks, clonedDiagramFactors);
+			DiagramFactorLink[] diagramLinks = getDiagramLinksInChain();
+			DiagramFactorLinkId[] clonedDiagramLinkIds = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
 			IdList diagramLinkList = new IdList(clonedDiagramLinkIds);
 			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
 			project.executeCommand(addLinksToChain);
-		}
-		finally
-		{
-			project.executeCommand(new CommandEndTransaction());
-		}
 	}
 
 	private DiagramFactorId[] extractClonedDiagramFactors(HashMap clonedDiagramFactors)
@@ -94,7 +85,7 @@ public class ResultsChainCreatorHelper
 		for (int i  = 0; i < diagramFactors.length; i++)
 		{
 			DiagramFactor diagramFactorToBeCloned = diagramFactors[i];
-			FactorId factorId = getCorrectType(diagramFactorToBeCloned);
+			FactorId factorId = createOrReuseWrappedObject(diagramFactorToBeCloned);
 			
 			CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
 			CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
@@ -111,7 +102,7 @@ public class ResultsChainCreatorHelper
 		return originalAndClonedDiagramFactors;
 	}
 	
-	private FactorId getCorrectType(DiagramFactor diagramFactor) throws Exception
+	private FactorId createOrReuseWrappedObject(DiagramFactor diagramFactor) throws Exception
 	{
 		if (diagramFactor.getWrappedType() == ObjectType.TARGET)
 			return diagramFactor.getWrappedId();
@@ -142,9 +133,9 @@ public class ResultsChainCreatorHelper
 		throw new Exception("cannot create object for type " + factor.getType());
 	}
 
-	private DiagramFactor[] getDiagramFactorsInChain(DiagramModel model)
+	private DiagramFactor[] getDiagramFactorsInChain()
 	{
-		FactorCell[] selectedFactorCells = diagramView.getDiagramPanel().getOnlySelectedFactorCells();
+		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
 		Vector allDiagramFactors = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
@@ -154,16 +145,16 @@ public class ResultsChainCreatorHelper
 			chainObject.buildNormalChain(factor);
 			Factor[] factorsArray = chainObject.getFactorsArray();
 			
-			Vector diagramFactors = convertToDiagramFactors(factorsArray, model);
+			Vector diagramFactors = convertToDiagramFactors(factorsArray);
 			allDiagramFactors.addAll(diagramFactors);
 		}
 		
 		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);
 	}
 	
-	private DiagramFactorLink[] getDiagramLinksInChain(DiagramModel model) throws Exception
+	private DiagramFactorLink[] getDiagramLinksInChain() throws Exception
 	{
-		FactorCell[] selectedFactorCells = diagramView.getDiagramPanel().getOnlySelectedFactorCells();
+		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
 		Vector allDiagramLinks = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
@@ -171,14 +162,14 @@ public class ResultsChainCreatorHelper
 			ProjectChainObject chainObject = new ProjectChainObject();
 			Factor factor = selectedFactorCells[i].getUnderlyingObject();
 			chainObject.buildNormalChain(factor);
-			Vector diagramLinks = convertToDiagramLinks(model, chainObject.getFactorLinksArray());
+			Vector diagramLinks = convertToDiagramLinks(chainObject.getFactorLinksArray());
 			allDiagramLinks.addAll(diagramLinks);
 		}
 		
 		return (DiagramFactorLink[]) allDiagramLinks.toArray(new DiagramFactorLink[0]);
 	}
 
-	private Vector convertToDiagramLinks(DiagramModel model, FactorLink[] links) throws Exception
+	private Vector convertToDiagramLinks(FactorLink[] links) throws Exception
 	{
 		 Vector vector = new Vector();
 		 for (int i  = 0; i < links.length; i++)
@@ -191,7 +182,7 @@ public class ResultsChainCreatorHelper
 		 return vector;
 	}
 	
-	private DiagramFactorLinkId[] cloneDiagramLinks(DiagramModel model, DiagramFactorLink[] diagramLinks, HashMap diagramFactors) throws Exception
+	private DiagramFactorLinkId[] cloneDiagramLinks(DiagramFactorLink[] diagramLinks, HashMap diagramFactors) throws Exception
 	{
 		Vector createdDiagramLinkIds = new Vector();
 		
@@ -243,7 +234,7 @@ public class ResultsChainCreatorHelper
 		return from.getWrappedId().equals(fromCloned.getWrappedId()) && to.getWrappedId().equals(toCloned.getWrappedId());
 	}
 	
-	private Vector convertToDiagramFactors(Factor[] factors, DiagramModel model)
+	private Vector convertToDiagramFactors(Factor[] factors)
 	{
 		Vector vector = new Vector();
 		for (int i = 0; i < factors.length; i++)
@@ -256,6 +247,7 @@ public class ResultsChainCreatorHelper
 		return vector;
 	}
 
-	private DiagramView diagramView;
+	private DiagramModel model;
+	private DiagramPanel diagramPanel;
 	private Project project;
 }
