@@ -139,7 +139,7 @@ public class ResultsChainCreatorHelper
 		Vector allDiagramFactors = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			//FIXME RC use only strategies and also use DiagramChainObject 
+			//FIXME RC use DiagramChainObject 
 			ProjectChainObject chainObject = new ProjectChainObject();
 			Factor factor = selectedFactorCells[i].getUnderlyingObject();
 			chainObject.buildNormalChain(factor);
@@ -158,7 +158,7 @@ public class ResultsChainCreatorHelper
 		Vector allDiagramLinks = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			//FIXME RC use only strategies and also use DiagramChainObject
+			//FIXME RC use DiagramChainObject
 			ProjectChainObject chainObject = new ProjectChainObject();
 			Factor factor = selectedFactorCells[i].getUnderlyingObject();
 			chainObject.buildNormalChain(factor);
