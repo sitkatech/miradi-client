@@ -4,6 +4,7 @@ import net.sf.jasperreports.engine.JRDataSource;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.workplan.WorkPlanMonitoringIndicator;
 import org.conservationmeasures.eam.views.workplan.WorkPlanMonitoringRoot;
@@ -24,10 +25,9 @@ public class BudgetMonitoringDataSource extends CommonDataSource
 		setObjectList(list);
 	}
 	
-	public JRDataSource getxxxxDataSource() throws Exception
+	public JRDataSource getBugetMontiroingIndicatorDataSource() throws Exception
 	{
-		return null;
+		return new MontiroingIndicatorDataSource((Indicator)getCurrentObject());
 	}
-
 } 
 
