@@ -71,6 +71,9 @@ public class ResultsChainDeleteHelper
 		if (referrers.size() > 0)
 			return;
 
+		Command[] commandsToClearFactor = factor.createCommandsToClear();
+		project.executeCommands(commandsToClearFactor);
+		
 		CommandDeleteObject deleteFactor = new CommandDeleteObject(factor.getRef());
 		project.executeCommand(deleteFactor);
 	}
@@ -106,6 +109,9 @@ public class ResultsChainDeleteHelper
 		
 		if (referrers.size() > 0)
 			return;
+		
+		Command[] commandsToClearFactorLink = factorLink.createCommandsToClear();
+		project.executeCommands(commandsToClearFactorLink);
 		
 		CommandDeleteObject deleteFactorLink = new CommandDeleteObject(factorLink.getRef());
 		project.executeCommand(deleteFactorLink);
