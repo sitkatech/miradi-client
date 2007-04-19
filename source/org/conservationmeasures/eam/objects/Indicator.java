@@ -258,7 +258,7 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_METHODS = "Methods";
 	
 	public static final String PSEUDO_TAG_PRIORITY_VALUE = "PriorityValue";
-	public static final String PSEUDO_TAG_STATUS_VALUE  = "MeasurementStatusValue";
+	public static final String PSEUDO_TAG_STATUS_VALUE  = "StatusValue";
 	public static final String PSEUDO_TAG_MEASUREMENT_TREND_VALUE = "MeasurementTrendValue";
 	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_VALUE  = "MeasurementStatusValue";
 	public static final String PSEUDO_TAG_RATING_SOURCE_VALUE = "RatingSourceValue";
