@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
@@ -33,10 +34,13 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 		{
 			BaseId baseId = tasks.get(i);
 			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
-			if ((task.getParentRef().getObjectType() == ObjectType.STRATEGY))
+			ORef parentRef = task.getParentRef();
+
+			// FIXME: legacy Activities have parent refs with Factor type instead of Strategy
+			// We should migrate them so we could specifically check for Strategy here
+			if (Factor.isFactor(parentRef.getObjectType()))
 			{
-				BaseId objectId = task.getParentRef().getObjectId();
-				Factor factor = (Factor)project.findObject(ObjectType.STRATEGY, objectId);
+				Factor factor = (Factor)project.findObject(parentRef);
 				if (factor.isStrategy() && !factor.isStatusDraft())
 					filteredTasks.add(baseId);
 			}
