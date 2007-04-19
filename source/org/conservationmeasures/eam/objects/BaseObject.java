@@ -594,7 +594,7 @@ abstract public class BaseObject
 
 	public String getPseudoData(String fieldTag)
 	{
-		return "";
+		return getData(fieldTag);
 	}
 	
 	public class PseudoQuestionData  extends ObjectData

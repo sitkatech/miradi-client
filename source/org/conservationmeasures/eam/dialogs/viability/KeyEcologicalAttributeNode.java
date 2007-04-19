@@ -14,8 +14,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeNode extends TreeTableNode
@@ -55,14 +53,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
-		String rawValue = project.getObjectData(getType(), getObjectReference().getObjectId(), tag);
-		if(tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS))
-		{
-			ChoiceItem choice = new StatusQuestion(tag).findChoiceByCode(rawValue);
-			return choice.getLabel();
-		}
-		
-		return rawValue;
+		return kea.getData(tag);
 	}
 
 
@@ -90,8 +81,9 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 	}
 	
 	public static final String[] COLUMN_TAGS = {
-		KeyEcologicalAttribute.TAG_LABEL,
-		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS, 
+		KeyEcologicalAttribute.TAG_LABEL, 
+		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS_VALUE, 
+		KeyEcologicalAttribute.PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE
 		};
 	
 

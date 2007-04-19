@@ -28,7 +28,7 @@ public class ViabilityTreeModel extends GenericTreeTableModel
 		return EAM.fieldLabel(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, columnTags[column]);
 	}
 	
-	public static String[] columnTags = {"Item", "Status"};
+	public static String[] columnTags = {"Item", "Status", "Kea Type"};
 	Project project;
 
 }

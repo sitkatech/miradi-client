@@ -61,6 +61,8 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
+		if (tag.equals(""))
+			return tag;
 		String rawValue = project.getObjectData(getType(), getObjectReference().getObjectId(), tag);
 		if(tag.equals(Indicator.TAG_MEASUREMENT_STATUS))
 		{
@@ -83,6 +85,7 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 	public static final String[] COLUMN_TAGS = {
 		Indicator.TAG_LABEL,
 		Indicator.TAG_MEASUREMENT_STATUS, 
+		""
 		};
 	
 	Project project;
