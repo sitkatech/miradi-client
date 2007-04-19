@@ -35,7 +35,7 @@ public class WorkPlanTreeTableModel extends TaskTreeTableModel
 	public BaseObject getParentObject(Task task)
 	{
 		TreePath interventionPath = getPathOfParent(task.getType(), task.getId());
-		WorkPlanStrategy workPlanStrategy = (WorkPlanStrategy)interventionPath.getLastPathComponent();
+		WorkPlanStrategyNode workPlanStrategy = (WorkPlanStrategyNode)interventionPath.getLastPathComponent();
 		return workPlanStrategy.getIntervention();
 	}
 

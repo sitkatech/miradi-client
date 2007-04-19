@@ -66,17 +66,17 @@ public class WorkPlanStrategyRoot extends TreeTableNode
 		strategies = getWorkPlanStrategies(project);
 	}
 
-	static public WorkPlanStrategy[] getWorkPlanStrategies(Project project)
+	static public WorkPlanStrategyNode[] getWorkPlanStrategies(Project project)
 	{
 		Factor[] interventionObjects = project.getStrategyPool().getNonDraftStrategies();
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < interventionObjects.length; ++i)
 		{
 			Strategy intervention = (Strategy)interventionObjects[i];
-			WorkPlanStrategy workPlanStrategy = new WorkPlanStrategy(project, intervention);
+			WorkPlanStrategyNode workPlanStrategy = new WorkPlanStrategyNode(project, intervention);
 			strategyVector.add(workPlanStrategy);
 		}
-		WorkPlanStrategy strategies[] = (WorkPlanStrategy[])strategyVector.toArray(new WorkPlanStrategy[0]);
+		WorkPlanStrategyNode strategies[] = (WorkPlanStrategyNode[])strategyVector.toArray(new WorkPlanStrategyNode[0]);
 		Arrays.sort(strategies, new IgnoreCaseStringComparator());
 		return strategies;
 	}
@@ -88,6 +88,6 @@ public class WorkPlanStrategyRoot extends TreeTableNode
 	}
 	
 	Project project;
-	WorkPlanStrategy[] strategies;
+	WorkPlanStrategyNode[] strategies;
 	private static final String STRATEGIC_LABEL = "Strategies";
 }

@@ -73,6 +73,12 @@ public class WorkPlanMonitoringIndicator extends TreeTableNode
 
 	public void rebuild()
 	{	
+		tasks = getWorkPlanTask(indicator);
+	}
+
+	public static WorkPlanTaskNode[] getWorkPlanTask(Indicator indicator)
+	{
+		Project project = indicator.getObjectManager().getProject();
 		int childCount = indicator.getTaskCount();
 		Vector taskVector = new Vector();
 		for(int i = 0; i < childCount; ++i)
@@ -86,8 +92,8 @@ public class WorkPlanMonitoringIndicator extends TreeTableNode
 			}
 			taskVector.add(new WorkPlanTaskNode(project, task));
 		}
-		tasks = (WorkPlanTaskNode[])taskVector.toArray(new WorkPlanTaskNode[0]);
-
+		WorkPlanTaskNode[] tasks = (WorkPlanTaskNode[])taskVector.toArray(new WorkPlanTaskNode[0]);
+		return tasks;
 	}
 
 	WorkPlanTaskNode[] tasks;
