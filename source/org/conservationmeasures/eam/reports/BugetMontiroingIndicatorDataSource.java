@@ -6,12 +6,12 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.workplan.WorkPlanMonitoringIndicator;
 import org.conservationmeasures.eam.views.workplan.WorkPlanTaskNode;
 
-public class MontiroingIndicatorDataSource extends CommonDataSource
+public class BugetMontiroingIndicatorDataSource extends CommonDataSource
 {
-	public MontiroingIndicatorDataSource(Indicator indicator)
+	public BugetMontiroingIndicatorDataSource(Indicator indicator)
 	{
 		super(indicator.getObjectManager().getProject());
-		WorkPlanTaskNode[] nodes =  WorkPlanMonitoringIndicator.getWorkPlanTask(indicator);
+		WorkPlanTaskNode[] nodes =  WorkPlanMonitoringIndicator.getWorkPlanIndicatorTask(indicator);
 		ORefList list = new ORefList();
 		for (int i=0; i<nodes.length; ++i)
 		{

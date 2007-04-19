@@ -73,10 +73,10 @@ public class WorkPlanMonitoringIndicator extends TreeTableNode
 
 	public void rebuild()
 	{	
-		tasks = getWorkPlanTask(indicator);
+		tasks = getWorkPlanIndicatorTask(indicator);
 	}
 
-	public static WorkPlanTaskNode[] getWorkPlanTask(Indicator indicator)
+	public static WorkPlanTaskNode[] getWorkPlanIndicatorTask(Indicator indicator)
 	{
 		Project project = indicator.getObjectManager().getProject();
 		int childCount = indicator.getTaskCount();
