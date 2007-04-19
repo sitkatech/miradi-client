@@ -11,6 +11,7 @@ public class MonitoringPlanDataSource extends CommonDataSource
 	public MonitoringPlanDataSource(Project project)
 	{
 		super(project);
+		//TODO: should get the list from the TreeNodeRoot
 		ORefList list = project.getPool(Goal.getObjectType()).getORefList();
 		setObjectList(list);
 	}

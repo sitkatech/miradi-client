@@ -11,6 +11,7 @@ public class StrategicPlanDataSource extends CommonDataSource
 	public StrategicPlanDataSource(Project project)
 	{
 		super(project);
+		//TODO: should get the list from the TreeNodeRoot
 		ORefList list = project.getPool(Goal.getObjectType()).getORefList();
 		setObjectList(list);
 	}
