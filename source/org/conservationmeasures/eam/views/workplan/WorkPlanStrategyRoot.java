@@ -63,6 +63,11 @@ public class WorkPlanStrategyRoot extends TreeTableNode
 	
 	public void rebuild()
 	{
+		strategies = getWorkPlanStrategies(project);
+	}
+
+	static public WorkPlanStrategy[] getWorkPlanStrategies(Project project)
+	{
 		Factor[] interventionObjects = project.getStrategyPool().getNonDraftStrategies();
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < interventionObjects.length; ++i)
@@ -71,8 +76,9 @@ public class WorkPlanStrategyRoot extends TreeTableNode
 			WorkPlanStrategy workPlanStrategy = new WorkPlanStrategy(project, intervention);
 			strategyVector.add(workPlanStrategy);
 		}
-		strategies = (WorkPlanStrategy[])strategyVector.toArray(new WorkPlanStrategy[0]);
+		WorkPlanStrategy strategies[] = (WorkPlanStrategy[])strategyVector.toArray(new WorkPlanStrategy[0]);
 		Arrays.sort(strategies, new IgnoreCaseStringComparator());
+		return strategies;
 	}
 	
 

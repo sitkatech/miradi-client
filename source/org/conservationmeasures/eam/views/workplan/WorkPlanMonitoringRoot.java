@@ -61,12 +61,18 @@ public class WorkPlanMonitoringRoot extends TreeTableNode
 
 	public void rebuild()
 	{
+		indicatorsNodes = getWorkPlanIndicators(project);
+	}
+
+	static public WorkPlanMonitoringIndicator[] getWorkPlanIndicators(Project project)
+	{
 		Indicator[] indicators = project.getIndicatorPool().getAllIndicators();
-		indicatorsNodes = new WorkPlanMonitoringIndicator[indicators.length];
+		WorkPlanMonitoringIndicator[] indicatorsNodes = new WorkPlanMonitoringIndicator[indicators.length];
 		for(int i = 0; i < indicators.length; i++)
 			indicatorsNodes[i] = new WorkPlanMonitoringIndicator(project, indicators[i]);
 		
 		Arrays.sort(indicatorsNodes, new IgnoreCaseStringComparator());
+		return indicatorsNodes;
 	}
 	
 	public BaseId getId()

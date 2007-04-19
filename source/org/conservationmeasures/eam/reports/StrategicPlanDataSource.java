@@ -16,7 +16,7 @@ public class StrategicPlanDataSource extends CommonDataSource
 		setObjectList(list);
 	}
 	
-	public JRDataSource getRelatedObectivesToThisGoalDataSource()
+	public JRDataSource getRelatedObectivesToThisGoalDataSource() throws Exception
 	{
 		return new StrategicPlanRelatedObectivesToThisGoalDataSource((Goal)getCurrentObject());
 	}

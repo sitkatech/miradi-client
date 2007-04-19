@@ -1,6 +1,5 @@
 package org.conservationmeasures.eam.reports;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Objective;
@@ -12,21 +11,14 @@ public class StrategicPlanStrategiesContainingObjectiveInChainDataSource extends
 	public StrategicPlanStrategiesContainingObjectiveInChainDataSource(Objective objective)
 	{
 		super(objective.getObjectManager().getProject());
-		try
+		ORefList list = new ORefList();
+		StratPlanStrategy[] objectiveVector = StratPlanObjective.getStrategyNodes(objective);
+		for (int i=0; i<objectiveVector.length; ++i)
 		{
-			ORefList list = new ORefList();
-			StratPlanStrategy[] objectiveVector = StratPlanObjective.getStrategyNodes(objective);
-			for (int i=0; i<objectiveVector.length; ++i)
-			{
-				BaseObject ss = objectiveVector[i].getObject();
-				list.add(ss.getRef());
-			}
+			BaseObject ss = objectiveVector[i].getObject();
+			list.add(ss.getRef());
+		}
 
-			setObjectList(list);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
+		setObjectList(list);
 	}
 }
