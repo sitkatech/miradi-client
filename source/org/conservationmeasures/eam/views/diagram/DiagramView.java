@@ -318,11 +318,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		// TODO: This should completely tear down the view
 		disposeOfNodePropertiesDialog();
 		
-		DiagramPanel panel = getCurrentDiagramPanel();
-		if (panel != null)
+		for(int i = 0; i < getTabCount(); ++i)
+		{
+			DiagramPanel panel = (DiagramPanel)getTabContents(i);
 			panel.dispose();
-		
-		panel = null;
+		}
 	}
 	
 	public void setMode(String newMode)
