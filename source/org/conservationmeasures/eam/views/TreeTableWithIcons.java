@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
+import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.icons.TaskIcon;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -88,6 +89,12 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		{
 			factorRenderer = new DefaultTreeCellRenderer();
 			
+			targetRenderer = new DefaultTreeCellRenderer();
+			targetRenderer.setClosedIcon(new TargetIcon());
+			targetRenderer.setOpenIcon(new TargetIcon());
+			targetRenderer.setLeafIcon(new TargetIcon());
+			targetRenderer.setFont(getBoldFont());
+
 			objectiveRenderer = new DefaultTreeCellRenderer();
 			objectiveRenderer.setClosedIcon(new ObjectiveIcon());
 			objectiveRenderer.setOpenIcon(new ObjectiveIcon());
@@ -143,6 +150,8 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			TreeTableNode node = (TreeTableNode) value;
 			if (node.getType() == ObjectType.FAKE)
 				renderer  = stringNoIconRenderer;
+			else if(node.getType() == ObjectType.TARGET)
+				renderer = targetRenderer;
 			else if(node.getType() == ObjectType.INDICATOR)
 				renderer = indicatorRenderer;
 			else if(node.getType() == ObjectType.STRATEGY)
@@ -198,6 +207,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			return defaultFont.deriveFont(Font.ITALIC);
 		}
 
+		DefaultTreeCellRenderer targetRenderer;
 		DefaultTreeCellRenderer objectiveRenderer;
 		DefaultTreeCellRenderer goalRenderer;
 		DefaultTreeCellRenderer indicatorRenderer;
