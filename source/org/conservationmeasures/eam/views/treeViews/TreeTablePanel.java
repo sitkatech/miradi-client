@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.util.Vector;
 
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
@@ -45,6 +46,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		add(buttonBox,BorderLayout.AFTER_LINE_ENDS);
 		addButtonsToBox(classes, buttonBox, mainWindow.getActions());
 
+		tree.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tree.getTree().addSelectionRow(0);
 		tree.getTree().addTreeSelectionListener(this);
 	}
