@@ -65,7 +65,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 			{
 				rebuildEntireTree();
 			}
-			if(cmd.getFieldTag().equals(ViewData.TAG_CURRENT_EXPANSION_LIST))
+			else if(cmd.getFieldTag().equals(ViewData.TAG_CURRENT_EXPANSION_LIST))
 			{
 				restoreTreeExpansionState();
 			}
