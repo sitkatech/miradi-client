@@ -176,6 +176,11 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 
+	public boolean isThreatReductionResult()
+	{
+		return false;
+	}
+	
 	public boolean isIntermediateResult()
 	{
 		return false;

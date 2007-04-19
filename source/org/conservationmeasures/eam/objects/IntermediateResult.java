@@ -49,4 +49,6 @@ public class IntermediateResult extends Factor
 	{
 		return ObjectType.INTERMEDIATE_RESULT;
 	}
+	
+	public static final String OBJECT_NAME = "Intermediate Result";
 }

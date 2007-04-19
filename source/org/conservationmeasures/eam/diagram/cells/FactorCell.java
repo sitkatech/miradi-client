@@ -200,6 +200,16 @@ abstract public class FactorCell extends EAMGraphCell
 
 	abstract public Color getColor();
 
+	public boolean isIntermediateResult()
+	{
+		return underlyingObject.isIntermediateResult();
+	}
+	
+	public boolean isThreatRedectionResult()
+	{
+		return underlyingObject.isThreatReductionResult();
+	}
+	
 	public boolean isTarget()
 	{
 		return underlyingObject.isTarget();

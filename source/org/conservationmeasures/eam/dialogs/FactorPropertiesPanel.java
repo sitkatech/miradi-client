@@ -18,8 +18,10 @@ import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.viability.TargetViabilityTreeManagementPanel;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
+import org.conservationmeasures.eam.icons.IntermediateResultIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
+import org.conservationmeasures.eam.icons.ThreatReductionResultIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -30,8 +32,10 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
@@ -142,6 +146,13 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			return new UiLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING);
 		if (factor.isTarget())
 			return new UiLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING);
+		
+		//FIXME RC make sure properties work correctly
+		if (factor.isIntermediateResult())
+			return new UiLabel(IntermediateResult.OBJECT_NAME, new IntermediateResultIcon(), UiLabel.LEADING);
+
+		if (factor.isThreatReductionResult())
+			return new UiLabel(ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon(), UiLabel.LEADING);
 		
 		throw new RuntimeException("Unknown factor type");
 	}

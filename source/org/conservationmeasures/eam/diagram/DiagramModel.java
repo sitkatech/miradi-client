@@ -15,8 +15,10 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramIntermediateResultCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramThreatReductionResultCell;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
@@ -44,9 +46,11 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -138,6 +142,12 @@ public class DiagramModel extends DefaultGraphModel
 		if (factorType == ObjectType.TARGET)
 			return new DiagramTargetCell((Target) factor, diagramFactor);
 	
+		if (factorType == ObjectType.INTERMEDIATE_RESULT)
+			return new DiagramIntermediateResultCell((IntermediateResult) factor, diagramFactor);
+		
+		if (factorType == ObjectType.THREAT_REDUCTION_RESULT)
+			return new DiagramThreatReductionResultCell((ThreatReductionResult) factor, diagramFactor);
+		
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}
 

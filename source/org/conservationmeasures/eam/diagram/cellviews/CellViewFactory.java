@@ -45,7 +45,16 @@ public class CellViewFactory extends DefaultCellViewFactory
 		{
 			return new HexagonFactorView(diagramFactor);
 		}
-		throw new RuntimeException("Unknown node type");
+		if (diagramFactor.isIntermediateResult())
+		{
+			return new RectangleFactorView(diagramFactor);
+		}
+		if (diagramFactor.isThreatRedectionResult())
+		{
+			return new RectangleFactorView(diagramFactor);
+		}
+		
+		throw new RuntimeException("Unknown node type " + diagramFactor.getWrappedType());
 	}
 
 	protected EdgeView createEdgeView(Object edge)

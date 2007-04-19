@@ -105,6 +105,8 @@ public class Actions
 		registerAction(new ActionDelete(mainWindow));
 		registerAction(new ActionExit(mainWindow));
 		registerAction(new ActionPrint(mainWindow));
+		registerAction(new ActionInsertIntermediateResult(mainWindow));
+		registerAction(new ActionInsertThreatReductionResult(mainWindow));
 		registerAction(new ActionInsertFactorLink(mainWindow));
 		registerAction(new ActionInsertTarget(mainWindow));
 		registerAction(new ActionInsertDraftStrategy(mainWindow));

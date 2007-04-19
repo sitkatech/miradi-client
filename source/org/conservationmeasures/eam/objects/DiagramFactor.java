@@ -7,7 +7,10 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -179,6 +182,20 @@ public class DiagramFactor extends BaseObject
 		return dataMap;
 	}
 
+	public Command[] createCommandsToClone(DiagramFactorId newlyCreatedId)
+	{
+		Vector commands = new Vector();
+		String sizeAsString = EnhancedJsonObject.convertFromDimension(getSize());
+		CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_SIZE, sizeAsString);
+		commands.add(setSizeCommand);
+		
+		String locationAsString = EnhancedJsonObject.convertFromPoint(getLocation());
+		CommandSetObjectData setLocationCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_LOCATION, locationAsString);
+		commands.add(setLocationCommand);
+		
+		return (Command[]) commands.toArray(new Command[0]);
+	}
+	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateDiagramFactorParameter(getWrappedId());

@@ -44,4 +44,11 @@ public class ThreatReductionResult extends Factor
 	{
 		return ObjectType.THREAT_REDUCTION_RESULT;
 	}
+	
+	public boolean isThreatReductionResult()
+	{
+		return true;
+	}
+	
+	public static final String OBJECT_NAME = "Threat Reduction Result";
 }
