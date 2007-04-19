@@ -15,16 +15,25 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class ResultsChainCreatorHelper
@@ -47,72 +56,23 @@ public class ResultsChainCreatorHelper
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, createId);
 
 			DiagramFactor[] diagramFactors = getDiagramFactorsInChain(model);
-			HashMap clonedDiagramFactor = cloneDiagramFactors(diagramFactors);
-			DiagramFactorId[] clonedDiagramFactorsId = extractClonedDiagramFactors(clonedDiagramFactor);
-			IdList idList = new IdList(clonedDiagramFactorsId);
+			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
+			DiagramFactorId[] clonedDiagramFactorIds = extractClonedDiagramFactors(clonedDiagramFactors);
+			IdList idList = new IdList(clonedDiagramFactorIds);
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			project.executeCommand(addFactorsToChain);
-//FIXME RC add links to chain results
-//			DiagramFactorLink[] diagramLinks = getDiagramLinksInChain(model);
-//			DiagramFactorLinkId[] clonedDiagramLinkIds = cloneDiagramLinks(model, diagramLinks, clonedDiagramFactorIds);
-//			IdList diagramLinkList = new IdList(clonedDiagramLinkIds);
-//			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
-//			getProject().executeCommand(addLinksToChain);
 
+			DiagramFactorLink[] diagramLinks = getDiagramLinksInChain(model);
+			DiagramFactorLinkId[] clonedDiagramLinkIds = cloneDiagramLinks(model, diagramLinks, clonedDiagramFactors);
+			IdList diagramLinkList = new IdList(clonedDiagramLinkIds);
+			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
+			project.executeCommand(addLinksToChain);
 		}
 		finally
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
 	}
-
-	//FIXME RC
-//	private DiagramFactorLinkId[] cloneDiagramLinks(DiagramModel model, DiagramFactorLink[] diagramLinks, DiagramFactorId[] clonedDiagramFactorIds) throws Exception
-//	{
-//		Vector createdDiagramLinkIds = new Vector();
-//		
-//		for (int i = 0; i < diagramLinks.length; i++)
-//		{
-//			DiagramFactorLink diagramLink = diagramLinks[i];
-//			//TODO RC needs refactoring
-//			DiagramFactorId fromDiagramFactorId = diagramLink.getFromDiagramFactorId();
-//			DiagramFactor fromDiagramFactor = (DiagramFactor) getProject().findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
-//			FactorId fromFactorId = fromDiagramFactor.getWrappedId();
-//			DiagramFactorId clonedFromId = findDiagramFactor(fromFactorId, clonedDiagramFactorIds);
-//			 
-//			DiagramFactorId toDiagramFactorId = diagramLink.getToDiagramFactorId();
-//			DiagramFactor toDiagramFactor = (DiagramFactor) getProject().findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
-//			FactorId toFactorId = toDiagramFactor.getWrappedId();
-//			DiagramFactorId clonedToId = findDiagramFactor(toFactorId, clonedDiagramFactorIds);
-//			
-//			CreateObjectParameter extraInfo = new CreateDiagramFactorLinkParameter(diagramLink.getWrappedId(), clonedFromId, clonedToId);
-//			CommandCreateObject createDiagramLink = new CommandCreateObject(ObjectType.DIAGRAM_LINK, extraInfo);
-//			getProject().executeCommand(createDiagramLink);
-//
-//			DiagramFactorLinkId newlyCreatedLinkId = (DiagramFactorLinkId) createDiagramLink.getCreatedId();
-//			DiagramFactorLink newlyCreated = (DiagramFactorLink) getProject().findObject(new ORef(ObjectType.DIAGRAM_LINK, newlyCreatedLinkId));
-//			PointList bendPoints = diagramLink.getBendPoints();
-//			CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
-//			getProject().executeCommand(setBendPoints);
-//
-//			createdDiagramLinkIds.add(newlyCreatedLinkId);
-//		}
-//		
-//		return (DiagramFactorLinkId[]) createdDiagramLinkIds.toArray(new DiagramFactorLinkId[0]);
-//	}
-
-//	private DiagramFactorId findDiagramFactor(FactorId factorId, DiagramFactorId[] clonedDiagramFactorIds) throws Exception
-//	{
-//		for (int i = 0; i < clonedDiagramFactorIds.length; i++)
-//		{
-//			DiagramFactorId diagramFactorId = clonedDiagramFactorIds[i];
-//			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
-//			if (factorId.equals(diagramFactor.getWrappedId()))
-//				return diagramFactor.getDiagramFactorId();
-//		}
-//		
-//		throw new Exception("Cloned DiagramFactor not found");
-//	}
 
 	private DiagramFactorId[] extractClonedDiagramFactors(HashMap clonedDiagramFactors)
 	{
@@ -188,6 +148,7 @@ public class ResultsChainCreatorHelper
 		Vector allDiagramFactors = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
+			//FIXME RC use only strategies and also use DiagramChainObject 
 			ProjectChainObject chainObject = new ProjectChainObject();
 			Factor factor = selectedFactorCells[i].getUnderlyingObject();
 			chainObject.buildNormalChain(factor);
@@ -199,35 +160,88 @@ public class ResultsChainCreatorHelper
 		
 		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);
 	}
-//FIXME RC under construction	
-//	private DiagramFactorLink[] getDiagramLinksInChain(DiagramModel model) throws Exception
-//	{
-//		FactorCell[] selectedFactorCells = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
-//		Vector allDiagramLinks = new Vector();
-//		for (int i = 0; i < selectedFactorCells.length; i++)
-//		{
-//			ProjectChainObject chainObject = new ProjectChainObject();
-//			Factor factor = selectedFactorCells[i].getUnderlyingObject();
-//			chainObject.buildNormalChain(factor);
-//			Vector diagramLinks = convertToDiagramLinks(model, chainObject.getFactorLinksArray());
-//			allDiagramLinks.addAll(diagramLinks);
-//		}
-//		
-//		return (DiagramFactorLink[]) allDiagramLinks.toArray(new DiagramFactorLink[0]);
-//	}
+	
+	private DiagramFactorLink[] getDiagramLinksInChain(DiagramModel model) throws Exception
+	{
+		FactorCell[] selectedFactorCells = diagramView.getDiagramPanel().getOnlySelectedFactorCells();
+		Vector allDiagramLinks = new Vector();
+		for (int i = 0; i < selectedFactorCells.length; i++)
+		{
+			//FIXME RC use only strategies and also use DiagramChainObject
+			ProjectChainObject chainObject = new ProjectChainObject();
+			Factor factor = selectedFactorCells[i].getUnderlyingObject();
+			chainObject.buildNormalChain(factor);
+			Vector diagramLinks = convertToDiagramLinks(model, chainObject.getFactorLinksArray());
+			allDiagramLinks.addAll(diagramLinks);
+		}
+		
+		return (DiagramFactorLink[]) allDiagramLinks.toArray(new DiagramFactorLink[0]);
+	}
 
-//	private Vector convertToDiagramLinks(DiagramModel model, FactorLink[] links) throws Exception
-//	{
-//		 Vector vector = new Vector();
-//		 for (int i  = 0; i < links.length; i++)
-//		 {
-//			 FactorLinkId id = links[i].getFactorLinkId();
-//			 DiagramFactorLink link = model.getDiagramFactorLinkbyWrappedId(id);
-//			 vector.add(link);
-//		 }
-//		 
-//		 return vector;
-//	}
+	private Vector convertToDiagramLinks(DiagramModel model, FactorLink[] links) throws Exception
+	{
+		 Vector vector = new Vector();
+		 for (int i  = 0; i < links.length; i++)
+		 {
+			 FactorLinkId id = links[i].getFactorLinkId();
+			 DiagramFactorLink link = model.getDiagramFactorLinkbyWrappedId(id);
+			 vector.add(link);
+		 }
+		 
+		 return vector;
+	}
+	
+	private DiagramFactorLinkId[] cloneDiagramLinks(DiagramModel model, DiagramFactorLink[] diagramLinks, HashMap diagramFactors) throws Exception
+	{
+		Vector createdDiagramLinkIds = new Vector();
+		
+		for (int i = 0; i < diagramLinks.length; i++)
+		{
+			DiagramFactorLink diagramLink = diagramLinks[i];
+			
+			//TODO RC needs refactoring
+			DiagramFactorId fromDiagramFactorId = diagramLink.getFromDiagramFactorId();
+			DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
+			DiagramFactor fromClonedDiagramFactor = (DiagramFactor) diagramFactors.get(fromDiagramFactor);
+			 
+			DiagramFactorId toDiagramFactorId = diagramLink.getToDiagramFactorId();
+			DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+			DiagramFactor toClonedDiagramFactor = (DiagramFactor) diagramFactors.get(toDiagramFactor);
+			
+			CreateObjectParameter extraInfo = createDiagramLinkExtraInfo(diagramLink, fromDiagramFactor, fromClonedDiagramFactor, toDiagramFactor, toClonedDiagramFactor);
+			CommandCreateObject createDiagramLink = new CommandCreateObject(ObjectType.DIAGRAM_LINK, extraInfo);
+			project.executeCommand(createDiagramLink);
+
+			DiagramFactorLinkId newlyCreatedLinkId = (DiagramFactorLinkId) createDiagramLink.getCreatedId();
+			DiagramFactorLink newlyCreated = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, newlyCreatedLinkId));
+			PointList bendPoints = diagramLink.getBendPoints();
+			CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
+			project.executeCommand(setBendPoints);
+
+			createdDiagramLinkIds.add(newlyCreatedLinkId);
+		}
+		
+		return (DiagramFactorLinkId[]) createdDiagramLinkIds.toArray(new DiagramFactorLinkId[0]);
+	}
+	
+	
+	private CreateObjectParameter createDiagramLinkExtraInfo(DiagramFactorLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws CommandFailedException
+	{
+		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
+			return new CreateDiagramFactorLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
+	
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromCloned.getWrappedId(), toCloned.getWrappedId());
+		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
+		project.executeCommand(createFactorLink);
+		
+		FactorLinkId factorLinkId = (FactorLinkId) createFactorLink.getCreatedId();
+		return new CreateDiagramFactorLinkParameter(factorLinkId, fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
+	}
+
+	private boolean areSharingTheSameFactor(DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned)
+	{
+		return from.getWrappedId().equals(fromCloned.getWrappedId()) && to.getWrappedId().equals(toCloned.getWrappedId());
+	}
 	
 	private Vector convertToDiagramFactors(Factor[] factors, DiagramModel model)
 	{
