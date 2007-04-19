@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.project;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
@@ -45,8 +47,9 @@ public class ResultsChainCreatorHelper
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, createId);
 
 			DiagramFactor[] diagramFactors = getDiagramFactorsInChain(model);
-			DiagramFactorId[] clonedDiagramFactorIds = cloneDiagramFactors(diagramFactors);
-			IdList idList = new IdList(clonedDiagramFactorIds);
+			HashMap clonedDiagramFactor = cloneDiagramFactors(diagramFactors);
+			DiagramFactorId[] clonedDiagramFactorsId = extractClonedDiagramFactors(clonedDiagramFactor);
+			IdList idList = new IdList(clonedDiagramFactorsId);
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			project.executeCommand(addFactorsToChain);
 //FIXME RC add links to chain results
@@ -111,26 +114,41 @@ public class ResultsChainCreatorHelper
 //		throw new Exception("Cloned DiagramFactor not found");
 //	}
 
-	private DiagramFactorId[] cloneDiagramFactors(DiagramFactor[] diagramFactors) throws Exception
+	private DiagramFactorId[] extractClonedDiagramFactors(HashMap clonedDiagramFactors)
 	{
-		Vector createdDiagramFactorIds = new Vector();
+		Vector diagramFactorIds = new Vector();
+		Vector diagramFactors = new Vector(clonedDiagramFactors.values());
+		
+		for (int i = 0; i < diagramFactors.size(); i ++)
+		{
+			DiagramFactor diagramFactor = ((DiagramFactor) diagramFactors.get(i));
+			diagramFactorIds.add(diagramFactor.getDiagramFactorId());
+		}
+		
+		return (DiagramFactorId[]) diagramFactorIds.toArray(new DiagramFactorId[0]);
+	}
+
+	private HashMap cloneDiagramFactors(DiagramFactor[] diagramFactors) throws Exception
+	{
+		HashMap originalAndClonedDiagramFactors = new HashMap();
 		for (int i  = 0; i < diagramFactors.length; i++)
 		{
-			DiagramFactor diagramFactor = diagramFactors[i];
-			FactorId factorId = getCorrectType(diagramFactor);
+			DiagramFactor diagramFactorToBeCloned = diagramFactors[i];
+			FactorId factorId = getCorrectType(diagramFactorToBeCloned);
 			
 			CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
 			CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 			project.executeCommand(createDiagramFactor);
 			
 			DiagramFactorId newlyCreatedId = (DiagramFactorId) createDiagramFactor.getCreatedId();
-			Command[] commandsToClone = diagramFactor.createCommandsToClone(newlyCreatedId);
+			Command[] commandsToClone = diagramFactorToBeCloned.createCommandsToMirror(newlyCreatedId);
 			project.executeCommands(commandsToClone);
 			
-			createdDiagramFactorIds.add(newlyCreatedId);
+			DiagramFactor clonedDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newlyCreatedId));
+			originalAndClonedDiagramFactors.put(diagramFactorToBeCloned, clonedDiagramFactor);
 		}
 		 
-		return (DiagramFactorId[]) createdDiagramFactorIds.toArray(new DiagramFactorId[0]);
+		return originalAndClonedDiagramFactors;
 	}
 	
 	private FactorId getCorrectType(DiagramFactor diagramFactor) throws Exception

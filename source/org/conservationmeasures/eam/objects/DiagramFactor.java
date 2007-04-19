@@ -182,7 +182,7 @@ public class DiagramFactor extends BaseObject
 		return dataMap;
 	}
 
-	public Command[] createCommandsToClone(DiagramFactorId newlyCreatedId)
+	public Command[] createCommandsToMirror(DiagramFactorId newlyCreatedId)
 	{
 		Vector commands = new Vector();
 		String sizeAsString = EnhancedJsonObject.convertFromDimension(getSize());
