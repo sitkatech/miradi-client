@@ -26,10 +26,14 @@
 
 		<background>
 			<band height="46"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="0"
-						y="20"
+						y="-26"
 						width="535"
 						height="23"
 						key="staticText-1"
@@ -40,10 +44,6 @@
 					</textElement>
 				<text><![CDATA[************  Budget Plan  ****************]]></text>
 				</staticText>
-			</band>
-		</background>
-		<title>
-			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>

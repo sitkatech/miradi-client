@@ -24,8 +24,11 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
+	<field name="Label:Label" class="java.lang.String"/>
+	<field name="Label" class="java.lang.String"/>
+
 		<background>
-			<band height="0"  isSplitAllowed="true" >
+			<band height="37"  isSplitAllowed="true" >
 			</band>
 		</background>
 		<title>
@@ -34,6 +37,20 @@
 		</title>
 		<pageHeader>
 			<band height="0"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="11"
+						y="-37"
+						width="535"
+						height="23"
+						key="staticText-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" lineSpacing="Single">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true" isUnderline="false"/>
+					</textElement>
+				<text><![CDATA[************  Budget Monitoring  ****************]]></text>
+				</staticText>
 			</band>
 		</pageHeader>
 		<columnHeader>
@@ -41,11 +58,39 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="10"  isSplitAllowed="true" >
-				<subreport  isUsingCache="true">
+			<band height="33"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="136"
+						y="0"
+						width="109"
+						height="17"
+						key="Label"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
 						y="0"
+						width="110"
+						height="17"
+						key="Label:Label"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Label}]]></textFieldExpression>
+				</textField>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="0"
+						y="23"
 						width="402"
 						height="10"
 						key="BudgetMontiroingIndicatorReport"
