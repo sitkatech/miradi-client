@@ -25,9 +25,9 @@ public class BudgetMonitoringDataSource extends CommonDataSource
 		setObjectList(list);
 	}
 	
-	public JRDataSource getBugetMontiroingIndicatorDataSource() throws Exception
+	public JRDataSource getBudgetMontiroingIndicatorDataSource() throws Exception
 	{
-		return new BugetMontiroingIndicatorDataSource((Indicator)getCurrentObject());
+		return new BudgetMontiroingIndicatorDataSource((Indicator)getCurrentObject());
 	}
 } 
 

@@ -2,16 +2,16 @@ package org.conservationmeasures.eam.reports;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.views.workplan.WorkPlanMonitoringIndicator;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.views.workplan.WorkPlanStrategyNode;
 import org.conservationmeasures.eam.views.workplan.WorkPlanTaskNode;
 
-public class BugetMontiroingIndicatorDataSource extends CommonDataSource
+public class BudgetStrategyActivitiesDataSource extends CommonDataSource
 {
-	public BugetMontiroingIndicatorDataSource(Indicator indicator)
+	public BudgetStrategyActivitiesDataSource(Strategy strategy)
 	{
-		super(indicator.getObjectManager().getProject());
-		WorkPlanTaskNode[] nodes =  WorkPlanMonitoringIndicator.getWorkPlanIndicatorTask(indicator);
+		super(strategy.getObjectManager().getProject());
+		WorkPlanTaskNode[] nodes = WorkPlanStrategyNode.getWorkPlanActivitiesTask(strategy);
 		ORefList list = new ORefList();
 		for (int i=0; i<nodes.length; ++i)
 		{

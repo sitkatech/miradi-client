@@ -25,9 +25,9 @@ public class BudgetStrategyDataSource extends CommonDataSource
 		setObjectList(list);
 	}
 	
-	public JRDataSource getBudgetStrategiesDataSource() throws Exception
+	public JRDataSource getBudgetStategyActivitiesDataSource() throws Exception
 	{
-		return new BudgetStrategiesDataSource((Strategy)getCurrentObject());
+		return new BudgetStrategyActivitiesDataSource((Strategy)getCurrentObject());
 	}
 
 } 
