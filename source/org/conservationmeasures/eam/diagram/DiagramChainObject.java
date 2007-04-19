@@ -113,7 +113,7 @@ public class DiagramChainObject
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
 		linkedFactors.attemptToAdd(startingFactor);
-		DiagramFactorLink[] allDiagramLinks = diagramModel.getAllDiagramLinkAsArray();
+		DiagramFactorLink[] allDiagramLinks = diagramModel.getAllDiagramLinksAsArray();
 		
 		for(int i = 0; i < allDiagramLinks.length; ++i)
 		{
@@ -159,7 +159,7 @@ public class DiagramChainObject
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
 		
-		DiagramFactorLink[] allDiagramLinks = diagramModel.getAllDiagramLinkAsArray();
+		DiagramFactorLink[] allDiagramLinks = diagramModel.getAllDiagramLinksAsArray();
 		for(int i = 0; i < allDiagramLinks.length; ++i)
 		{
 			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();

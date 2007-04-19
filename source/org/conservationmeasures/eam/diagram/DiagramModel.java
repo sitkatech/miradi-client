@@ -486,8 +486,21 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		return cellInventory.getAllFactors();
 	}
+	
+	public DiagramFactor[] getAllDiagramFactorsAsArray()
+	{
+		Vector allDiagramFactors = new Vector();
+		Vector allFactorCells = getAllDiagramFactors();
+		for (int i = 0; i < allFactorCells.size(); i++)
+		{
+			FactorCell factorCell = (FactorCell) allFactorCells.get(i);
+			allDiagramFactors.add(factorCell.getDiagramFactor());
+		}
+		
+		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);
+	}
 
-	public DiagramFactorLink[] getAllDiagramLinkAsArray()
+	public DiagramFactorLink[] getAllDiagramLinksAsArray()
 	{
 		return (DiagramFactorLink[]) getAllDiagramFactorLinks().toArray(new DiagramFactorLink[0]);
 	}
