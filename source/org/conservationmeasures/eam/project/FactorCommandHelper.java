@@ -30,17 +30,10 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class FactorCommandHelper
 {
-	public FactorCommandHelper(DiagramView diagramViewToUse)
-	{
-		this(diagramViewToUse.getProject(), diagramViewToUse.getDiagramModel());
-		diagramview = diagramViewToUse;
-	}
-	
 	public FactorCommandHelper(Project projectToUse, DiagramModel modelToUse)
 	{
 		project = projectToUse;
@@ -159,35 +152,49 @@ public class FactorCommandHelper
 
 	private boolean canPasteTypeInCurrentTab(int type)
 	{
-		if (diagramview.isResultsChainTab() && (isResultsChainPastableType(type) || isCommonType(type)))
+		if (isResultsChain() && containsType(getResultsChainPastableTypes(), type))
 			return true;
 		
-		if (! diagramview.isResultsChainTab() && (!isResultsChainPastableType(type) || isCommonType(type)))
-			return true;
-		
-		return false;
-	}
-
-	private boolean isCommonType(int type)
-	{
-		if (type == ObjectType.STRATEGY)
-			return true;
-		
-		if (type == ObjectType.TARGET)
+		if (! isResultsChain() && containsType(getConceptualDiagramPastableTypes(), type))
 			return true;
 		
 		return false;
 	}
 
-	private boolean isResultsChainPastableType(int type)
+	private boolean isResultsChain()
 	{
-		if (type == ObjectType.INTERMEDIATE_RESULT)
-			return true;
-		
-		if (type == ObjectType.THREAT_REDUCTION_RESULT)
+		DiagramObject diagramObject = model.getDiagramObject();
+		if (diagramObject.getType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
 			return true;
 		
 		return false;
+	}
+
+	private boolean containsType(int[] listOfTypes, int type)
+	{
+		for (int i = 0 ; i < listOfTypes.length; ++i)
+		{
+			if (listOfTypes[i] == type)
+				return true;
+		}
+		
+		return false;
+	}
+	
+	private int[] getResultsChainPastableTypes()
+	{
+		return new int[] {
+				ObjectType.INTERMEDIATE_RESULT, 
+				ObjectType.STRATEGY, 
+				ObjectType.TARGET, };
+	}
+	
+	private int[] getConceptualDiagramPastableTypes()
+	{
+		return new int[] {
+				ObjectType.CAUSE, 
+				ObjectType.STRATEGY, 
+				ObjectType.TARGET, };
 	}
 
 	private FactorCell getDiagramFactorById(DiagramFactorId newNodeId) throws Exception
@@ -210,7 +217,10 @@ public class FactorCommandHelper
 				EAM.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromId() + " to OriginalId:" + linkageData.getToId()+" node deleted?");	
 				continue;
 			}
-			
+
+			if (! model.containsDiagramFactorLink(newFromId) || ! model.containsDiagramFactorLink(newToId))
+				continue;
+				
 			FactorCell newFromNode = getDiagramFactorById(newFromId);
 			FactorCell newToNode = getDiagramFactorById(newToId);
 			DiagramFactorLink newlyAddedLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor());
@@ -246,5 +256,4 @@ public class FactorCommandHelper
 
 	Project project;
 	DiagramModel model;
-	DiagramView diagramview;
 }

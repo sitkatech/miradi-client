@@ -417,6 +417,15 @@ public class DiagramModel extends DefaultGraphModel
 		return node;
 	}
 
+	public boolean containsDiagramFactorLink(DiagramFactorId diagramFactorId)
+	{
+		FactorCell node = rawGetFactorById(diagramFactorId);
+		if(node == null)
+			return false;
+		
+		return true;
+	}
+	
 	public FactorLink getRawFactorLink(DiagramFactorLink diagramFactorLink)
 	{
 		FactorLinkId wrappedId = diagramFactorLink.getWrappedId();
