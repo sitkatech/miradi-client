@@ -7,6 +7,11 @@ package org.conservationmeasures.eam.views.diagram;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
+import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
+import org.conservationmeasures.eam.actions.ActionInsertStrategy;
+import org.conservationmeasures.eam.actions.ActionInsertTarget;
+import org.conservationmeasures.eam.actions.ActionInsertThreatReductionResult;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -14,9 +19,14 @@ import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ProjectScopeIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -31,13 +41,12 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	{
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
 		
-		addIconLineWithCheckBox(jpanel, SCOPE_BOX_TEXT, new ProjectScopeIcon());
-//FIXME add the right buttons to this legent panel		
-//		addButtonLineWithCheckBox(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
-//		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
-//		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
-//		addButtonLineWithCheckBox(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
-//		addButtonLineWithCheckBox(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
+		addIconLineWithCheckBox(jpanel, SCOPE_BOX_TEXT, new ProjectScopeIcon());	
+		addButtonLineWithCheckBox(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
+		addButtonLineWithCheckBox(jpanel, ThreatReductionResult.OBJECT_NAME, actions.get(ActionInsertThreatReductionResult.class));
+		addButtonLineWithCheckBox(jpanel, IntermediateResult.OBJECT_NAME, actions.get(ActionInsertIntermediateResult.class));
+		addButtonLineWithCheckBox(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
+		addButtonLineWithCheckBox(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
 		addTargetLinkLine(jpanel, TARGET_LINKS_TEXT);
 		
 		addIconLineWithCheckBox(jpanel, Goal.OBJECT_NAME, new GoalIcon());
