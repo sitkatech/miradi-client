@@ -19,16 +19,21 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
@@ -79,7 +84,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactor())
-					deleteFactor((FactorCell)cell, diagramObject);
+					deleteFactor(getProject(), (FactorCell)cell, diagramObject);
 			}
 		}
 		catch (Exception e)
@@ -99,26 +104,54 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, id);
 		project.executeCommand(removeDiagramFactorLink);
 		
+		CommandDeleteObject removeFactorLinkCommand = new CommandDeleteObject(ObjectType.DIAGRAM_LINK, id);
+		project.executeCommand(removeFactorLinkCommand);
+
+		if (!canDeleteFactorLink(project, linkageToDelete))
+				return;
+
 		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId()).createCommandsToClear();
 		project.executeCommands(commandsToClear);
 		
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId());
 		project.executeCommand(deleteLinkage);
+	}
+
+	private static boolean canDeleteFactorLink(Project project, DiagramFactorLink linkageToDelete)
+	{
+		ObjectManager objectManager = project.getObjectManager();
+		FactorLinkId factorLinkId = linkageToDelete.getWrappedId();
+		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
+		ORefList referrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
+		if (referrers.size() > 0)
+			return false;
 		
-		CommandDeleteObject removeFactorLinkCommand = new CommandDeleteObject(ObjectType.DIAGRAM_LINK, id);
-		project.executeCommand(removeFactorLinkCommand);
+		return true;
 	}
 
 	// TODO: This method should be inside Project and should have unit tests
-	private void deleteFactor(FactorCell factorToDelete, DiagramObject diagramObject) throws Exception
+	private void deleteFactor(Project project, FactorCell factorToDelete, DiagramObject diagramObject) throws Exception
 	{
 		removeFromView(factorToDelete.getWrappedId());
 		removeNodeFromDiagram(factorToDelete, diagramObject);
 		deleteDiagramFactor(factorToDelete.getDiagramFactorId());
-		
+	
 		Factor underlyingNode = factorToDelete.getUnderlyingObject();
+		if (! canDeleteFactor(project, underlyingNode))
+			return;
+
 		deleteAnnotations(underlyingNode);
 		deleteUnderlyingNode(underlyingNode);
+	}
+
+	private boolean canDeleteFactor(Project project, Factor factorToDelete)
+	{
+		ObjectManager objectManager = project.getObjectManager();
+		ORefList referrers = factorToDelete.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_FACTOR, factorToDelete.getRef());
+		if (referrers.size() > 0)
+			return false;
+		
+		return true;
 	}
 
 	private void deleteDiagramFactor(DiagramFactorId diagramFactorId) throws CommandFailedException
