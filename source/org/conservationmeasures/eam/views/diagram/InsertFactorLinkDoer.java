@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -112,11 +113,22 @@ public class InsertFactorLinkDoer extends ViewDoer
 	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
 		Project project = model.getProject();
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(diagramFactorFrom.getWrappedId(), diagramFactorTo.getWrappedId());
-		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
-		project.executeCommand(createModelLinkage);
-		
-		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
+		FactorId toFactorId = diagramFactorTo.getWrappedId();
+		FactorLinkId modelLinkageId = project.getFactorLinkPool().getLinkedId(fromFactorId, toFactorId);
+		if(modelLinkageId != null)
+		{
+			FactorLink link = (FactorLink)project.findObject(FactorLink.getObjectType(), modelLinkageId);
+			if(!link.getFromFactorId().equals(fromFactorId))
+				throw new RuntimeException(EAM.text("Link in opposite direction already exists"));
+		}
+		if(modelLinkageId == null)
+		{
+			CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorId, toFactorId);
+			CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
+			project.executeCommand(createModelLinkage);
+			modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		}
 		DiagramFactorId fromDiagramFactorId = diagramFactorFrom.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = diagramFactorTo.getDiagramFactorId();
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(project, fromDiagramFactorId, toDiagramFactorId, modelLinkageId);
