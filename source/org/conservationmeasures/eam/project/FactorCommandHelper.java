@@ -218,7 +218,7 @@ public class FactorCommandHelper
 				continue;
 			}
 
-			if (! model.containsDiagramFactorLink(newFromId) || ! model.containsDiagramFactorLink(newToId))
+			if (! model.containsDiagramFactor(newFromId) || ! model.containsDiagramFactor(newToId))
 				continue;
 				
 			FactorCell newFromNode = getDiagramFactorById(newFromId);

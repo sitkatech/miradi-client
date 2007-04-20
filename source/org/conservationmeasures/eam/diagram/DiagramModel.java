@@ -417,7 +417,7 @@ public class DiagramModel extends DefaultGraphModel
 		return node;
 	}
 
-	public boolean containsDiagramFactorLink(DiagramFactorId diagramFactorId)
+	public boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
 	{
 		FactorCell node = rawGetFactorById(diagramFactorId);
 		if(node == null)
