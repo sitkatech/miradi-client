@@ -112,19 +112,27 @@ public class ResultsChainCreatorHelper
 			return diagramFactor.getWrappedId();
 		
 		if (diagramFactor.getWrappedType() == ObjectType.CAUSE)
-		{
-			CommandCreateObject createCommand = createNewFactorCommand(diagramFactor);
-			project.executeCommand(createCommand);
-			
-			return new FactorId(createCommand.getCreatedId().asInt());
-		}
+			return createNewFactorAndSetLabel(diagramFactor);
 		
 		throw new Exception("wrapped type not found "+diagramFactor.getWrappedType());
 	}
 
-	private CommandCreateObject createNewFactorCommand(DiagramFactor diagramFactor) throws Exception
+	private FactorId createNewFactorAndSetLabel(DiagramFactor diagramFactor) throws Exception, CommandFailedException
 	{
 		Factor factor = (Factor) project.findObject(diagramFactor.getWrappedORef());
+		CommandCreateObject createCommand = createNewFactorCommand(factor);
+		project.executeCommand(createCommand);
+		
+		FactorId newlyCreatedId = new FactorId(createCommand.getCreatedId().asInt());
+		String clonedLabel = new String("[ " + factor.getLabel() + " ]");
+		CommandSetObjectData setLabelCommand = new CommandSetObjectData(ObjectType.FACTOR, newlyCreatedId, Factor.TAG_LABEL, clonedLabel);
+		project.executeCommand(setLabelCommand);
+		
+		return newlyCreatedId;
+	}
+
+	private CommandCreateObject createNewFactorCommand(Factor factor) throws Exception
+	{
 		if (factor.isDirectThreat())
 			return new CommandCreateObject(ObjectType.THREAT_REDUCTION_RESULT);
 		
