@@ -10,8 +10,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
@@ -58,19 +56,11 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 		return keyEcologicalAttributesNode;
 	}
 
+	//TODO: this method could be pulled up to the supper
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
-		if (tag.equals(""))
-			return tag;
-		String rawValue = project.getObjectData(getType(), getObjectReference().getObjectId(), tag);
-		if(tag.equals(Indicator.TAG_MEASUREMENT_STATUS))
-		{
-			ChoiceItem choice = new StatusQuestion(tag).findChoiceByCode(rawValue);
-			return choice.getLabel();
-		}
-		
-		return rawValue;
+		return getObject().getData(tag);
 	}
 
 	ChainManager getChainManager()
@@ -84,8 +74,8 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 	
 	public static final String[] COLUMN_TAGS = {
 		Indicator.TAG_LABEL,
-		Indicator.TAG_MEASUREMENT_STATUS, 
-		""
+		Indicator.PSEUDO_TAG_MEASUREMENT_STATUS_VALUE, 
+		Indicator.TAG_EMPTY,
 		};
 	
 	Project project;

@@ -215,6 +215,9 @@ abstract public class BaseObject
 		if(TAG_ID.equals(fieldTag))
 			return id.toString();
 		
+		if (TAG_EMPTY.equals(fieldTag))
+			return "";
+		
 		if(!fields.containsKey(fieldTag))
 			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag + " in object type: " + getClass().getSimpleName());
 
@@ -680,8 +683,10 @@ abstract public class BaseObject
 	
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
+	public static final String TAG_EMPTY = "EMPTY";
 	
 	public static final String DEFAULT_LABEL = "";
+
 
 	
 	BaseId id;
