@@ -135,7 +135,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public JComponent createToolBar()
 	{
-		return new DiagramToolBar(getActions(), mode);
+		return new DiagramToolBar(getActions(), this);
 	}
 
 	public BufferedImage getImage()

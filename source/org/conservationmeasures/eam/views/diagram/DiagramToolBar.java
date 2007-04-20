@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
+import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionPaste;
@@ -32,17 +33,17 @@ import org.conservationmeasures.eam.utils.ToolBarButton;
 
 public class DiagramToolBar extends EAMToolBar
 {
-	public DiagramToolBar(Actions actions, String mode)
+	public DiagramToolBar(Actions actions, DiagramView diagramView)
 	{
-		super(actions, ActionViewDiagram.class, createButtons(actions, mode));
+		super(actions, ActionViewDiagram.class, createButtons(actions, diagramView));
 	}
 	
-	static JComponent[][] createButtons(Actions actions, String mode)
+	static JComponent[][] createButtons(Actions actions, DiagramView diagramView)
 	{
 		JComponent[][] buttons = new JComponent[][] {
 			{
-				getInsertInterventionButton(actions, mode),
-				new ToolBarButton(actions, ActionInsertContributingFactor.class),
+				getInsertInterventionButton(actions, diagramView),
+				getContributionFactorButton(actions, diagramView),
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),
 				new ToolBarButton(actions, ActionInsertTarget.class),
 				new ToolBarButton(actions, ActionInsertFactorLink.class),
@@ -62,7 +63,7 @@ public class DiagramToolBar extends EAMToolBar
 				new ToolBarButton(actions, ActionZoomOut.class),
 			},
 			{
-				getModeSwitchButton(actions, mode),
+				getModeSwitchButton(actions, diagramView),
 				new ToolBarButton(actions, ActionShowResultsChain.class),
 			},
 		};
@@ -70,18 +71,25 @@ public class DiagramToolBar extends EAMToolBar
 		return buttons;
 	}
 	
-	static ToolBarButton getInsertInterventionButton(Actions actions, String mode)
+	static ToolBarButton getInsertInterventionButton(Actions actions, DiagramView diagramView)
 	{
-		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+		if(diagramView.getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM))
 			return new ToolBarButton(actions, ActionInsertDraftStrategy.class);
 		return new ToolBarButton(actions, ActionInsertStrategy.class);
 	}
 
-	static ToolBarButton getModeSwitchButton(Actions actions, String mode)
+	static ToolBarButton getModeSwitchButton(Actions actions, DiagramView diagramView)
 	{
-		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+		if(diagramView.getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM))
 			return new ToolBarButton(actions, ActionShowFullModelMode.class);
 		return new ToolBarButton(actions, ActionShowSelectedChainMode.class);
+	}
+	
+	static ToolBarButton getContributionFactorButton(Actions actions, DiagramView diagramView)
+	{
+		if(diagramView.isResultsChainTab())
+			return new ToolBarButton(actions, ActionInsertIntermediateResult.class);
+		return new ToolBarButton(actions, ActionInsertContributingFactor.class);
 	}
 }
 

@@ -31,7 +31,7 @@ public class StrategyIcon extends EamIcon
 		return new StrategyIconDisabledIcon();
 	}
 	
-	private static final class StrategyIconDisabledIcon extends ContributingFactorIcon
+	private static final class StrategyIconDisabledIcon extends StrategyIcon
 	{
 		Color getIconColor()
 		{

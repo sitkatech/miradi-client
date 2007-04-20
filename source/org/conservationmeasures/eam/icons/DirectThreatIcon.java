@@ -32,7 +32,7 @@ public class DirectThreatIcon extends EamIcon
 		return new DirectThreatIconDisabledIcon();
 	}
 	
-	private static final class DirectThreatIconDisabledIcon extends ContributingFactorIcon
+	private static final class DirectThreatIconDisabledIcon extends DirectThreatIcon
 	{
 		Color getIconColor()
 		{
