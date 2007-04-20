@@ -25,9 +25,12 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.ConceptualModelDiagramSplitPane;
 import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
+import org.conservationmeasures.eam.views.diagram.DiagramSplitPane;
+import org.conservationmeasures.eam.views.diagram.ResultsChainDiagramSplitPane;
 
 public class DiagramPanel extends AbstractObjectDataInputPanel
 {
@@ -38,7 +41,13 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		diagramObject = diagramObjectToUse;
 	
 		createAndAddDiagram();
-		ConceptualModelDiagramSplitPane splitPane = new ConceptualModelDiagramSplitPane(mainWindow, diagram);
+		
+		DiagramSplitPane splitPane;
+		
+		if (diagramObject.getType()== ResultsChainDiagram.getObjectType())
+			splitPane = new ResultsChainDiagramSplitPane(mainWindow, diagram);
+		else
+			splitPane = new ConceptualModelDiagramSplitPane(mainWindow, diagram);
 		
 		add(splitPane);
 	}
