@@ -304,6 +304,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		final int CONCEPTUAL_MODEL_TAB_COUNT = 1;
 		while(getTabCount() > CONCEPTUAL_MODEL_TAB_COUNT)
 		{
+			disposeOfTabPriorToRemovingIt(CONCEPTUAL_MODEL_TAB_COUNT);
 			removeTab(CONCEPTUAL_MODEL_TAB_COUNT);
 		}
 	}
@@ -341,9 +342,14 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		for(int i = 0; i < getTabCount(); ++i)
 		{
-			DiagramPanel panel = (DiagramPanel)getTabContents(i);
-			panel.dispose();
+			disposeOfTabPriorToRemovingIt(i);
 		}
+	}
+
+	private void disposeOfTabPriorToRemovingIt(int i)
+	{
+		DiagramPanel panel = (DiagramPanel)getTabContents(i);
+		panel.dispose();
 	}
 	
 	public void setMode(String newMode)
