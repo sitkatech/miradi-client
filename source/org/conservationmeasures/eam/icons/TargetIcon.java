@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -22,5 +24,18 @@ public class TargetIcon extends EamIcon
 	Color getIconColor()
 	{
 		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET);
+	}
+	
+	static public Icon createDisabledIcon()
+	{
+		return new TargetIconDisabledIcon();
+	}
+	
+	private static final class TargetIconDisabledIcon extends TargetIcon
+	{
+		Color getIconColor()
+		{
+			return Color.LIGHT_GRAY;
+		}
 	}
 }

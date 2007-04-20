@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -26,5 +28,9 @@ public class ActionInsertTarget extends LocationAction
 		return EAM.text("TT|Insert a Target");
 	}
 
+	public Icon getDisabledIcon()
+	{
+		return TargetIcon.createDisabledIcon();
+	}
 }
 
