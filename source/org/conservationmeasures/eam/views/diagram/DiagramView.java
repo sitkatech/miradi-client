@@ -216,6 +216,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public void tabWasSelected()
 	{
+		super.tabWasSelected();
 		updateVisibilityOfFactors();
 	}
 

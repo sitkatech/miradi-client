@@ -69,7 +69,7 @@ abstract public class TabbedView extends UmbrellaView
 				EAM.logDebug("Ignoring setting tab selection, setting selection to 0");
 				desiredTab = 0;
 			}
-			tabs.setSelectedIndex(desiredTab);
+			setTab(desiredTab);
 		}
 		catch (Exception e)
 		{
@@ -130,7 +130,8 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void tabWasSelected()
 	{
-		// overrideable
+		getMainWindow().getActions().updateActionStates();
+		getMainWindow().updateToolBar();
 	}
 	
 	public Component getTabContents(int index)
@@ -160,7 +161,6 @@ abstract public class TabbedView extends UmbrellaView
 				return;
 			EAM.logVerbose("TabbedView.commandExecuted: " + cmd.toString());
 			setTab(new Integer(cmd.getDataValue()).intValue());
-			getMainWindow().updateToolBar();
 		}
 		catch(Exception e)
 		{
@@ -205,7 +205,6 @@ abstract public class TabbedView extends UmbrellaView
 				recordTabChangeCommand(newTab);
 
 			currentTab = newTab;
-			getMainWindow().getActions().updateActionStates();
 			tabWasSelected();
 		}
 
