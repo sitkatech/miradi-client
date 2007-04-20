@@ -105,7 +105,7 @@ public class ObjectTestCase extends EAMTestCase
 		assertEquals("didn't default " + tag + " empty?", emptyData, object.getData(tag));
 		object.setData(tag, sampleData);
 		assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
-		BaseObject got = BaseObject.createFromJson(object.getType(), object.toJson());
+		BaseObject got = BaseObject.createFromJson(project.getObjectManager(), object.getType(), object.toJson());
 		assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
 		
 		CommandSetObjectData[] commandsToDelete = object.createCommandsToClear();

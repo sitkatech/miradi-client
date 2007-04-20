@@ -9,12 +9,25 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestValueOption extends EAMTestCase
 {
 	public TestValueOption(String name)
 	{
 		super(name);
+	}
+	
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
+
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
 	}
 	
 	public void testBasics() throws Exception
@@ -101,7 +114,7 @@ public class TestValueOption extends EAMTestCase
 		option.setData(ValueOption.TAG_NUMERIC, Integer.toString(numeric));
 		option.setData(ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 		
-		ValueOption loaded = (ValueOption)BaseObject.createFromJson(option.getType(), option.toJson());
+		ValueOption loaded = (ValueOption)BaseObject.createFromJson(project.getObjectManager(), option.getType(), option.toJson());
 		assertEquals(option.getId(), loaded.getId());
 		assertEquals(option.getLabel(), loaded.getLabel());
 		assertEquals(option.getNumericValue(), loaded.getNumericValue());
@@ -109,4 +122,5 @@ public class TestValueOption extends EAMTestCase
 		
 	}
 	
+	ProjectForTesting project;
 }

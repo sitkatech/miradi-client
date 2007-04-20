@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -227,12 +227,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
-		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
+		BaseId linkId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
 
-		((Cause)project.findNode(threatId)).decreaseTargetCount();
+		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, linkId));
+		project.deleteObject(factorLink);
 		assertEquals("threat value included contributing factor?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("target value included contributing factor?", none, framework.getTargetThreatRatingValue(targetId));
 	}
@@ -318,7 +319,6 @@ public class TestThreatRatingFramework extends EAMTestCase
 	private FactorId createThreat(Project projectToUse) throws Exception
 	{
 		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.CAUSE);
-		((Cause)projectToUse.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}
 	

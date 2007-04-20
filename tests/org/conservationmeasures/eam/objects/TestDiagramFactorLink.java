@@ -119,7 +119,7 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		
 		ProjectServer server = project.getTestDatabase();
 		DiagramFactorLink dfl = project.getDiagramModel().getDiagramFactorLinkById(createdDiagramFactorLinkId);
-		FactorLink linkage = (FactorLink)server.readObject(ObjectType.FACTOR_LINK, dfl.getWrappedId());
+		FactorLink linkage = (FactorLink)server.readObject(project.getObjectManager(), ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from id?", interventionId, linkage.getFromFactorId());
 		assertEquals("Didn't load to id?", factorId, linkage.getToFactorId());
 	}

@@ -29,7 +29,7 @@ public class TestFactorLinkPool extends TestCaseEnhanced
 
 	public void testHasLinkage() throws Exception
 	{
-		FactorLinkPool pool = new FactorLinkPool(idAssigner, new LinkageMonitor());
+		FactorLinkPool pool = new FactorLinkPool(idAssigner);
 		Factor node1 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);
 		Factor node2 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);
 		Factor node3 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);

@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
@@ -130,9 +129,12 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	
 	private FactorId createThreat(String name) throws Exception
 	{
-		FactorId createdId = createNode(ObjectType.CAUSE, name);
-		((Cause)project.findNode(createdId)).increaseTargetCount();
-		return createdId;
+		FactorId threatId = createNode(ObjectType.CAUSE, name);
+		FactorId targetId = createNode(ObjectType.TARGET, name);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
+		
+		return threatId;
 	}
 
 	private FactorId createTarget(String name) throws Exception

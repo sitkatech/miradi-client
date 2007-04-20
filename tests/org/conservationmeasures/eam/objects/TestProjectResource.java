@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.xml.XmlUtilities;
 
 public class TestProjectResource extends EAMTestCase
@@ -16,6 +17,19 @@ public class TestProjectResource extends EAMTestCase
 	{
 		super(name);
 	}
+	
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
+
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
+	}
+
 	
 	public void testGetResourcesAsHtml()
 	{
@@ -62,7 +76,9 @@ public class TestProjectResource extends EAMTestCase
 		ProjectResource resource = new ProjectResource(new BaseId(22));
 		assertEquals(tag + " didn't default properly?", "", resource.getData(tag));
 		resource.setData(tag, value);
-		ProjectResource got = (ProjectResource)ProjectResource.createFromJson(resource.getType(), resource.toJson());
+		ProjectResource got = (ProjectResource)ProjectResource.createFromJson(project.getObjectManager(), resource.getType(), resource.toJson());
 		assertEquals(tag + " didn't survive json?", resource.getData(tag), got.getData(tag));
 	}
+	
+	ProjectForTesting project;
 }

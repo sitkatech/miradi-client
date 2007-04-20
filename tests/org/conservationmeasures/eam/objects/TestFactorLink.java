@@ -5,6 +5,7 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestFactorLink extends EAMTestCase
@@ -22,12 +23,24 @@ public class TestFactorLink extends EAMTestCase
 		assertEquals("To Node Ids don't match", nodeBId, linkageData.getToFactorId());
 	}
 
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
+
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
+	}
+
 	public void testToJson() throws Exception
 	{
 		FactorLink original = new FactorLink(id, nodeAId, nodeBId);
 		original.setData(FactorLink.TAG_STRESS_LABEL, "What stress!");
 		EnhancedJsonObject json = original.toJson();
-		FactorLink gotBack = (FactorLink)BaseObject.createFromJson(original.getType(), json);
+		FactorLink gotBack = (FactorLink)BaseObject.createFromJson(project.getObjectManager(), original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
 		assertEquals("wrong from?", original.getFromFactorId(), gotBack.getFromFactorId());
 		assertEquals("wrong to?", original.getToFactorId(), gotBack.getToFactorId());
@@ -58,5 +71,5 @@ public class TestFactorLink extends EAMTestCase
 	static final FactorLinkId id = new FactorLinkId(1);
 	static final FactorId nodeAId = new FactorId(2);
 	static final FactorId nodeBId = new FactorId(3);
-
+	ProjectForTesting project;
 }

@@ -62,7 +62,7 @@ public class ObjectManager
 
 		pools = new HashMap();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
-		pools.put(new Integer(ObjectType.FACTOR_LINK), new FactorLinkPool(factorAndLinkIdAssigner, new FactorLinkMonitor()));
+		pools.put(new Integer(ObjectType.FACTOR_LINK), new FactorLinkPool(factorAndLinkIdAssigner));
 
 		IdAssigner ida = getAnnotationIdAssigner();
 		addNormalPool(new RatingCriterionPool(ida));
@@ -352,26 +352,6 @@ public class ObjectManager
 		return getProject().getFilename();
 	}
 	
-	
-	class FactorLinkMonitor implements FactorLinkListener
-	{
-		public void factorLinkWasCreated(FactorId linkFromId, FactorId linkToId)
-		{
-			Factor from = findNode(linkFromId); 
-			Factor to = findNode(linkToId);
-			if(from.isCause() && to.isTarget())
-				((Cause)from).increaseTargetCount();
-		}
-
-		public void factorLinkWasDeleted(FactorId linkFromId, FactorId linkToId)
-		{
-			Factor from = findNode(linkFromId);
-			Factor to = findNode(linkToId);
-			if(from.isCause() && to.isTarget())
-				((Cause)from).decreaseTargetCount();
-		}		
-	}
-
 	Project project;
 
 	HashMap pools;

@@ -11,14 +11,12 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.project.FactorLinkListener;
 
 public class FactorLinkPool extends PoolWithIdAssigner
 {
-	public FactorLinkPool(IdAssigner idAssignerToUse, FactorLinkListener listenerToNotify)
+	public FactorLinkPool(IdAssigner idAssignerToUse)
 	{
 		super(ObjectType.FACTOR_LINK, idAssignerToUse);
-		listener = listenerToNotify;
 	}
 	
 	public void put(FactorLink linkage)
@@ -26,20 +24,6 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		put(linkage.getId(), linkage);
 	}
 	
-	public void put(BaseId id, Object object)
-	{
-		super.put(id, object);
-		FactorLink linkage = (FactorLink)object;
-		listener.factorLinkWasCreated(linkage.getFromFactorId(), linkage.getToFactorId());
-	}
-
-	public void remove(BaseId id)
-	{
-		FactorLink linkage = find((FactorLinkId)id);
-		super.remove(id);
-		listener.factorLinkWasDeleted(linkage.getFromFactorId(), linkage.getToFactorId());
-	}
-
 	public FactorLink find(FactorLinkId id)
 	{
 		return (FactorLink)getRawObject(id);
@@ -79,6 +63,4 @@ public class FactorLinkPool extends PoolWithIdAssigner
 	{
 		return find((FactorLinkId)getIds()[index]);
 	}
-	
-	FactorLinkListener listener;
 }

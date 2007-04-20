@@ -189,12 +189,6 @@ public class ProjectServer
 		return JSONFile.read(getThreatRatingFrameworkFile());
 	}
 	
-	
-	public BaseObject readObject(int type, BaseId id) throws Exception
-	{
-		return readObject(null, type, id);
-	}
-	
 	public BaseObject readObject(ObjectManager objectManager, int type, BaseId id) throws Exception
 	{
 		return BaseObject.createFromJson(objectManager, type, JSONFile.read(getObjectFile(type, id)));

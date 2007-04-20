@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -22,22 +23,11 @@ public class Cause extends Factor
 		clear();
 	}
 	
-	public Cause(FactorId idToUse)
-	{
-		super(idToUse, new FactorTypeCause());
-		clear();
-	}
-	
 	public Cause(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, Factor.TYPE_CAUSE, json);
 	}
 	
-	public Cause(FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, Factor.TYPE_CAUSE, json);
-	}
-
 	public static boolean canOwnThisType(int type)
 	{
 		if (Factor.canOwnThisType(type))
@@ -77,17 +67,15 @@ public class Cause extends Factor
 	
 	public boolean isDirectThreat()
 	{
-		return (targetCount > 0);
-	}
-	
-	public void increaseTargetCount()
-	{
-		++targetCount;
-	}
-	
-	public void decreaseTargetCount()
-	{
-		--targetCount;
+		ORefList oRefLinks = findObjectsThatReferToUs(objectManager, ObjectType.FACTOR_LINK, getRef());
+		for (int i = 0; i < oRefLinks.size(); ++i)
+		{
+			FactorLink link = (FactorLink) objectManager.findObject(oRefLinks.get(i));
+			Factor toFactor = (Factor) objectManager.findObject(new ORef(ObjectType.FACTOR, link.getToFactorId()));
+			if (toFactor.getType() == ObjectType.TARGET)
+				return true;
+		}
+		return false;
 	}
 	
 	public boolean canHaveObjectives()
@@ -122,6 +110,4 @@ public class Cause extends Factor
 	
 	StringData taxonomyCode; 
 	PseudoQuestionData taxonomyCodeLabel;
-	
-	private int targetCount;
 }

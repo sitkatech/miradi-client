@@ -695,9 +695,14 @@ public class TestProject extends EAMTestCase
 	{
 		FactorCell nodeContributingFactor = project.createFactorCell(ObjectType.CAUSE);
 		FactorCell nodeDirectThreatA = project.createFactorCell(ObjectType.CAUSE);	
-		((Cause)nodeDirectThreatA.getUnderlyingObject()).increaseTargetCount();
+		
+		FactorCell target = project.createFactorCell(ObjectType.TARGET);
+		CreateFactorLinkParameter parameter1 = new CreateFactorLinkParameter(nodeDirectThreatA.getWrappedId(), target.getWrappedId());
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter1);
+		
 		FactorCell nodeDirectThreatB = project.createFactorCell(ObjectType.CAUSE);
-		((Cause)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
+		CreateFactorLinkParameter parameter2 = new CreateFactorLinkParameter(nodeDirectThreatB.getWrappedId(), target.getWrappedId());
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter2);
 		
 		FactorSet allNodes = new FactorSet();
 		allNodes.attemptToAdd(nodeContributingFactor.getUnderlyingObject());

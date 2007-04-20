@@ -10,16 +10,12 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
@@ -60,49 +56,6 @@ public class TestDataUpgrader extends EAMTestCase
 		}
 		catch(DataUpgrader.MigrationTooOldException ignoreExpected)
 		{
-		}
-	}
-
-	static class Version2ConceptualModelTarget extends Target
-	{
-		public Version2ConceptualModelTarget(String label) throws Exception
-		{
-			super(new FactorId(idAssigner.takeNextId().asInt()));
-			setLabel(label);
-		}
-		
-		public EnhancedJsonObject toJson()
-		{
-			return TestDataUpgrader.makeOld(super.toJson());
-		}
-		
-	}
-	
-	static class Version2ConceptualModelThreat extends Cause
-	{
-		public Version2ConceptualModelThreat(String label) throws Exception
-		{
-			super(new FactorId(idAssigner.takeNextId().asInt()));
-			setLabel(label);
-		}
-		
-		public EnhancedJsonObject toJson()
-		{
-			return TestDataUpgrader.makeOld(super.toJson());
-		}
-	}
-	
-	static class Version2ConceptualModelIntervention extends Strategy
-	{
-		public Version2ConceptualModelIntervention(String label) throws Exception
-		{
-			super(new FactorId(idAssigner.takeNextId().asInt()));
-			setLabel(label);
-		}
-		
-		public EnhancedJsonObject toJson()
-		{
-			return TestDataUpgrader.makeOld(super.toJson());
 		}
 	}
 	

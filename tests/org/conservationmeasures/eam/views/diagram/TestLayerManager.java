@@ -32,16 +32,15 @@ public class TestLayerManager extends EAMTestCase
 	{
 		super.setUp();
 		
-
+		project = new ProjectForTesting(getName());
 		idAssigner = new IdAssigner();
 		cmTarget = new Target(takeNextModelNodeId());
 		cmTarget.setLabel("Target");
-		cmFactor = new Cause(takeNextModelNodeId());
+		cmFactor = new Cause(project.getObjectManager(), takeNextModelNodeId());
 		cmFactor.setLabel("Factor");
 		cmIntervention = new Strategy(takeNextModelNodeId());
 		cmIntervention.setLabel("Strategy");
 		
-		project = new ProjectForTesting(getName());
 		target = project.createFactorCell(ObjectType.TARGET);
 		factor = project.createFactorCell(ObjectType.CAUSE);
 		intervention = project.createFactorCell(ObjectType.STRATEGY);

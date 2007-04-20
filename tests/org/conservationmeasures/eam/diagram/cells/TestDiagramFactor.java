@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -37,8 +36,6 @@ public class TestDiagramFactor extends EAMTestCase
 		project = new ProjectForTesting(getName());
 		idAssigner = new IdAssigner();
 
-		Cause cmDirectThreat = new Cause(takeNextModelNodeId());
-		cmDirectThreat.increaseTargetCount();
 		BaseId rawTargetId = project.createObject(ObjectType.TARGET);
 		FactorId cmTargetId = new FactorId(rawTargetId.asInt());
 		cmTarget = (Target)project.findNode(cmTargetId);
@@ -129,12 +126,6 @@ public class TestDiagramFactor extends EAMTestCase
 		assertEquals("id", diagramFactor.getDiagramFactorId(), diagramFactor2.getDiagramFactorId());
 		assertEquals("wrapped id", diagramFactor.getWrappedId(), diagramFactor2.getWrappedId());
 	}
-
-	private FactorId takeNextModelNodeId()
-	{
-		return new FactorId(idAssigner.takeNextId().asInt());
-	}
-	
 
 	static final double TOLERANCE = 0.00;
 	

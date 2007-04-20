@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.InvalidDateException;
 
 public class TestProjectMetadata extends EAMTestCase
@@ -15,6 +16,19 @@ public class TestProjectMetadata extends EAMTestCase
 	{
 		super(name);
 	}
+	
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
+
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
+	}
+
 
 	public void testDataFields() throws Exception
 	{
@@ -70,8 +84,9 @@ public class TestProjectMetadata extends EAMTestCase
 		info.setData(tag, data);
 		assertEquals(data, info.getData(tag));
 		
-		ProjectMetadata got = (ProjectMetadata)ProjectMetadata.createFromJson(info.getType(), info.toJson());
+		ProjectMetadata got = (ProjectMetadata)ProjectMetadata.createFromJson(project.getObjectManager(), info.getType(), info.toJson());
 		assertEquals("Didn't jsonize " + tag + "?", info.getData(tag), got.getData(tag));
 	}
 	
+	ProjectForTesting project;
 }

@@ -11,12 +11,25 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestTask extends ObjectTestCase
 {
 	public TestTask(String name)
 	{
 		super(name);
+	}
+	
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
+
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
 	}
 
 	public void testBasics() throws Exception
@@ -88,7 +101,7 @@ public class TestTask extends ObjectTestCase
 	{
 		Task parent = createBasicTree();
 		
-		Task got = (Task)BaseObject.createFromJson(parent.getType(), parent.toJson());
+		Task got = (Task)BaseObject.createFromJson(project.getObjectManager(), parent.getType(), parent.toJson());
 		assertEquals("wrong count?", parent.getSubtaskCount(), got.getSubtaskCount());
 	}
 
@@ -117,4 +130,5 @@ public class TestTask extends ObjectTestCase
 		return extraInfo;
 	}
 	
+	ProjectForTesting project;
 }

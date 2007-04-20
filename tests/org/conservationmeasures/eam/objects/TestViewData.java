@@ -13,12 +13,25 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestViewData extends EAMTestCase
 {
 	public TestViewData(String name)
 	{
 		super(name);
+	}
+	
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
+
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
 	}
 	
 	public void testCurrentTab() throws Exception
@@ -57,7 +70,7 @@ public class TestViewData extends EAMTestCase
 		vd.setData(modeTag, sampleMode);
 		assertEquals("Set/get didn't work?", sampleMode, vd.getData(modeTag));
 		
-		ViewData got = (ViewData)BaseObject.createFromJson(vd.getType(), vd.toJson());
+		ViewData got = (ViewData)BaseObject.createFromJson(project.getObjectManager(), vd.getType(), vd.toJson());
 		assertEquals("json didn't preserve mode?", vd.getData(modeTag), got.getData(modeTag));
 	}
 	
@@ -70,7 +83,7 @@ public class TestViewData extends EAMTestCase
 		vd.setData(ORefsTag, sampleORefs.toString());
 		assertEquals("Set/get didn't work?", sampleORefs, new ORefList(vd.getData(ORefsTag)));
 
-		ViewData got = (ViewData)BaseObject.createFromJson(vd.getType(), vd.toJson());
+		ViewData got = (ViewData)BaseObject.createFromJson(project.getObjectManager(), vd.getType(), vd.toJson());
 		assertEquals("json didn't preserve ids?", vd.getData(ORefsTag), got.getData(ORefsTag));
 	}
 
@@ -124,4 +137,6 @@ public class TestViewData extends EAMTestCase
 		assertEquals("command wrong field?", ViewData.TAG_CHAIN_MODE_FACTOR_REFS, cmd.getFieldTag());
 		assertEquals("didn't create proper command?", expected.toString(), cmd.getDataValue());
 	}
+	
+	ProjectForTesting project;
 }

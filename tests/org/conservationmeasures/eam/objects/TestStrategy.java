@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestStrategy extends ObjectTestCase
 {
@@ -16,7 +17,19 @@ public class TestStrategy extends ObjectTestCase
 	{
 		super(name);
 	}
+	
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
 
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
+	}
+	
 	public void testFields() throws Exception
 	{
 		verifyFields(ObjectType.STRATEGY);
@@ -91,7 +104,7 @@ public class TestStrategy extends ObjectTestCase
 		intervention.insertActivityId(new BaseId(23), 0);
 		intervention.insertActivityId(new BaseId(37), 1);
 		
-		Strategy got = (Strategy)BaseObject.createFromJson(intervention.getType(), intervention.toJson());
+		Strategy got = (Strategy)BaseObject.createFromJson(project.getObjectManager(), intervention.getType(), intervention.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());
 		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
 	}
@@ -103,5 +116,6 @@ public class TestStrategy extends ObjectTestCase
 	static final BaseId valueId1 = new BaseId(85);
 	static final BaseId valueId2 = new BaseId(2398);
 	static final BaseId defaultValueId = new BaseId(7272);
-
+	
+	ProjectForTesting project;
 }

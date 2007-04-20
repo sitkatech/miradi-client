@@ -72,13 +72,7 @@ abstract public class BaseObject
 	{
 		return objectManager;
 	}
-	
-	
-	public static BaseObject createFromJson(int type, EnhancedJsonObject json) throws Exception
-	{
-		return createFromJson(null, type, json);
-	}
-	
+		
 	public static BaseObject createFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json) throws Exception
 	{
 		int idAsInt = json.getInt(TAG_ID);

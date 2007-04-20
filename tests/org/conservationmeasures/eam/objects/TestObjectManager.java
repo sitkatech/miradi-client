@@ -151,11 +151,11 @@ public class TestObjectManager extends EAMTestCase
 	{
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, parameter);
 		assertNotEquals(type + " Created with invalid id", BaseId.INVALID, createdId);
-		db.readObject(type, createdId);
+		db.readObject(manager, type, createdId);
 		
 		String tag = RatingCriterion.TAG_LABEL;
 		manager.setObjectData(type, createdId, tag, "data");
-		BaseObject withData = db.readObject(type, createdId);
+		BaseObject withData = db.readObject(manager, type, createdId);
 		assertEquals(type + " didn't write/read data for " + tag + "?", "data", withData.getData(tag));
 		assertEquals(type + " can't get data from project?", "data", manager.getObjectData(type, createdId, tag));
 		
@@ -171,7 +171,7 @@ public class TestObjectManager extends EAMTestCase
 		
 		try
 		{
-			db.readObject(type, createdId);
+			db.readObject(manager, type, createdId);
 			fail(type + " Should have thrown reading deleted object");
 		}
 		catch(Exception ignoreExpected)

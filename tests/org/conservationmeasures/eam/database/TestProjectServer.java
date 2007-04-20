@@ -42,11 +42,12 @@ public class TestProjectServer extends EAMTestCase
 		storage = new ProjectServerForTesting();
 		storage.openMemoryDatabase(getName());
 		idAssigner = new IdAssigner();
-
+		project = new ProjectForTesting(getName());
 	}
 	
 	public void tearDown() throws Exception
 	{
+		project.close();
 		storage.close();
 	}
 	
@@ -82,7 +83,7 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("not a strategy?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
-		Cause factor = new Cause(takeNextModelNodeId());
+		Cause factor = new Cause(project.getObjectManager(), takeNextModelNodeId());
 		
 		storage.writeObject(factor);
 		Cause gotContributingFactor = (Cause)readNode(factor.getId());
@@ -106,14 +107,14 @@ public class TestProjectServer extends EAMTestCase
 	
 	private Factor readNode(BaseId id) throws Exception
 	{
-		return (Factor)storage.readObject(ObjectType.FACTOR, id);
+		return (Factor)storage.readObject(project.getObjectManager(), ObjectType.FACTOR, id);
 	}
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
 		FactorLink original = new FactorLink(new FactorLinkId(1), new FactorId(2), new FactorId(3));
 		storage.writeObject(original);
-		FactorLink got = (FactorLink)storage.readObject(original.getType(), original.getId());
+		FactorLink got = (FactorLink)storage.readObject(project.getObjectManager(), original.getType(), original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
 		assertEquals("wrong from?", original.getFromFactorId(), got.getFromFactorId());
 		assertEquals("wrong to?", original.getToFactorId(), got.getToFactorId());
@@ -135,7 +136,7 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("didn't delete?", 0, storage.readObjectManifest(original.getType()).size());
 		try
 		{
-			storage.readObject(original.getType(), original.getId());
+			storage.readObject(project.getObjectManager(), original.getType(), original.getId());
 		}
 		catch(IOException ignoreExpected)
 		{
@@ -158,7 +159,6 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testReadAndWriteThreatRatingFramework() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		ProjectServerForTesting db = project.getTestDatabase();
 		db.writeThreatRatingFramework(project.getThreatRatingFramework());
 		JSONObject got = db.readRawThreatRatingFramework();
@@ -225,4 +225,5 @@ public class TestProjectServer extends EAMTestCase
 
 	IdAssigner idAssigner;
 	private ProjectServerForTesting storage;
+	private ProjectForTesting project;
 }
