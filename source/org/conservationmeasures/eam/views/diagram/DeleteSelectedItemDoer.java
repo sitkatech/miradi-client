@@ -33,14 +33,14 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
-public class Delete extends ViewDoer
+public class DeleteSelectedItemDoer extends ViewDoer
 {
-	public Delete()
+	public DeleteSelectedItemDoer()
 	{
 		super();
 	}
 	
-	public Delete(Project project)
+	public DeleteSelectedItemDoer(Project project)
 	{
 		setProject(project);
 	}
