@@ -45,6 +45,9 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		if (!isDiagramView())
 			return false;
 		
+		if (getDiagramView().isResultsChainTab())
+			return false;
+		
 		DiagramView view = getDiagramView();
 		DiagramPanel diagramPanel = view.getDiagramPanel();
 		EAMGraphCell[] selectedCells = diagramPanel.getOnlySelectedCells();
