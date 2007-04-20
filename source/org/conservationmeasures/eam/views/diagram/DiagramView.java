@@ -301,10 +301,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	private void removeAllResultsChainTabs()
 	{
-		final int FIRST_RESULTS_CHAIN_INDEX = 1;
-		for (int i = FIRST_RESULTS_CHAIN_INDEX; i < getTabCount(); i++)
+		final int CONCEPTUAL_MODEL_TAB_COUNT = 1;
+		while(getTabCount() > CONCEPTUAL_MODEL_TAB_COUNT)
 		{
-			removeTab(i);
+			removeTab(CONCEPTUAL_MODEL_TAB_COUNT);
 		}
 	}
 	
