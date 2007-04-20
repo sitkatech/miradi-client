@@ -42,6 +42,7 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 		super(mainWindowToUse);
 	}
 	
+	//FIXME: eleminate dup code in this method and actionPerformed below, wtih this class and DiagramLedendPanel 
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));

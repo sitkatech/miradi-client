@@ -27,8 +27,8 @@ public class LayerManager
 		objectivesVisibleFlag = true;
 		indicatorsVisibleFlag = true;
 		scopeBoxVisibleFlag = true;
-		intermediateResult = true;
-		threatReductionResult = true;
+		intermediateResultFlag = true;
+		threatReductionResultFlag = true;
 	}
 	
 	public boolean isVisible(FactorCell node)
@@ -171,22 +171,22 @@ public class LayerManager
 	
 	public boolean isIntermediateResultVisible()
 	{
-		return intermediateResult;
+		return intermediateResultFlag;
 	}
 	
 	public void setIntermediateResultVisible(boolean newSetting)
 	{
-		intermediateResult = newSetting;
+		intermediateResultFlag = newSetting;
 	}
 	
 	public boolean isThreatReductionResultVisible()
 	{
-		return threatReductionResult;
+		return threatReductionResultFlag;
 	}
 	
 	public void setThreatReductionResultVisible(boolean newSetting)
 	{
-		threatReductionResult = newSetting;
+		threatReductionResultFlag = newSetting;
 	}
 	
 	
@@ -201,6 +201,6 @@ public class LayerManager
 	boolean objectivesVisibleFlag;
 	boolean indicatorsVisibleFlag;
 	boolean scopeBoxVisibleFlag;
-	boolean intermediateResult;
-	boolean threatReductionResult;
+	boolean intermediateResultFlag;
+	boolean threatReductionResultFlag;
 }
