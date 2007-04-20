@@ -304,6 +304,19 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 	
+	public int getResultsChainTabIndex(BaseId resultsChainId)
+	{
+		for (int i = 0; i < getTabCount(); ++i)
+		{
+			DiagramPanel panel = (DiagramPanel)getTabContents(i);
+			BaseId id = panel.getDiagramObject().getId();
+			if (id.equals(resultsChainId))
+				return i;
+		}
+		
+		return 0;
+	}
+	
 	public DiagramModel getDiagramModel()
 	{
 		return getDiagramComponent().getDiagramModel();

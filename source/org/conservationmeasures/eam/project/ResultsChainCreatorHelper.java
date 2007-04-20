@@ -44,10 +44,11 @@ public class ResultsChainCreatorHelper
 		model = diagramPanel.getDiagramModel();
 	}
 		
-	public void createResultsChain() throws Exception
+	public BaseId createResultsChain() throws Exception
 	{
 			CommandCreateObject createResultsChain = new CommandCreateObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
 			project.executeCommand(createResultsChain);
+			BaseId newResultsChainId = createResultsChain.getCreatedId();
 			
 			BaseId createId = createResultsChain.getCreatedId();
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, createId);
@@ -64,6 +65,8 @@ public class ResultsChainCreatorHelper
 			IdList diagramLinkList = new IdList(clonedDiagramLinkIds);
 			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
 			project.executeCommand(addLinksToChain);
+			
+			return newResultsChainId;
 	}
 
 	private DiagramFactorId[] extractClonedDiagramFactors(HashMap clonedDiagramFactors)

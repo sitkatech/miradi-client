@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -43,8 +44,13 @@ public class CreateResultsChainDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(getProject(), getDiagramView().getDiagramPanel());
-			creatorHelper.createResultsChain();
+			DiagramView diagramView = getDiagramView();
+			ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(getProject(), diagramView.getDiagramPanel());
+
+			BaseId newResultsChainId = creatorHelper.createResultsChain();
+			int newTabIndex = diagramView.getResultsChainTabIndex(newResultsChainId);
+			//TODO RC can/should this be done by executing a command instead
+			diagramView.setTab(newTabIndex);
 		}
 		catch (Exception e) 
 		{
