@@ -11,6 +11,14 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class InsertIntermediateResultDoer extends InsertFactorDoer
 {
+	
+	public boolean isAvailable()
+	{
+		if (!getProject().isOpen()) 
+			return false;
+		return getDiagramView().isResultsChainTab();
+	}
+	
 	public void forceVisibleInLayerManager()
 	{
 		getProject().getLayerManager().setVisibility(DiagramIntermediateResultCell.class, true);

@@ -41,7 +41,6 @@ import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
-import org.conservationmeasures.eam.actions.ActionInsertThreatReductionResult;
 import org.conservationmeasures.eam.actions.ActionNudgeDown;
 import org.conservationmeasures.eam.actions.ActionNudgeLeft;
 import org.conservationmeasures.eam.actions.ActionNudgeRight;
@@ -166,7 +165,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		propertiesDoer = new Properties();
 
 		addDoerToMap(ActionInsertIntermediateResult.class, new InsertIntermediateResultDoer());
-		addDoerToMap(ActionInsertThreatReductionResult.class, new InsertThreatReductionDoer());
 		addDoerToMap(ActionInsertTarget.class, new InsertTargetDoer());
 		addDoerToMap(ActionInsertContributingFactor.class, new InsertContributingFactorDoer());
 		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreatDoer());
