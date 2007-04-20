@@ -30,7 +30,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		if (selectedFactors.length == 0)
 			return false;
 		
-		if (! areAllStrategies(selectedFactors))
+		if (! atLeastOneStrategy(selectedFactors))
 			return false;
 		
 		return true;
@@ -62,15 +62,15 @@ public class CreateResultsChainDoer extends ViewDoer
 		}
 	}	
 	
-	private boolean areAllStrategies(BaseObject[] selectedObjects)
+	private boolean atLeastOneStrategy(BaseObject[] selectedObjects)
 	{
 		for (int i = 0; i < selectedObjects.length; i++)
 		{
 			ORef ref = selectedObjects[i].getRef();
-			if (ref.getObjectType() != ObjectType.STRATEGY)
-				return false;
+			if (ref.getObjectType() == ObjectType.STRATEGY)
+				return true;
 		}
 		
-		return true;
+		return false;
 	}
 }
