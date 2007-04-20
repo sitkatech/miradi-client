@@ -30,10 +30,17 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class FactorCommandHelper
 {
+	public FactorCommandHelper(DiagramView diagramViewToUse)
+	{
+		this(diagramViewToUse.getProject(), diagramViewToUse.getDiagramModel());
+		diagramview = diagramViewToUse;
+	}
+	
 	public FactorCommandHelper(Project projectToUse, DiagramModel modelToUse)
 	{
 		project = projectToUse;
@@ -83,14 +90,18 @@ public class FactorCommandHelper
 	}
 
 	private void pasteFactorsIntoProject(TransferableEamList list, Point startPoint, FactorDataHelper dataHelper) throws Exception 
-	{
+	{	
+		//TODO RC possible refactoring 
+		if (!canPaste(list))
+			return;
+		
 		FactorDataMap[] nodes = list.getArrayOfFactorDataMaps();
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			FactorDataMap nodeData = nodes[i];
 			DiagramFactorId originalDiagramNodeId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
 			
-			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE)); 
+			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE));
 			CommandCreateObject addCommand = createFactorAndDiagramFactor(type);
 			DiagramFactorId newNodeId = (DiagramFactorId) addCommand.getCreatedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
@@ -130,6 +141,53 @@ public class FactorCommandHelper
 			CommandSetObjectData setLabel = new CommandSetObjectData(ObjectType.FACTOR, newNode.getWrappedId(), Factor.TAG_LABEL, nodeData.getLabel()); 
 			executeCommand(setLabel);
 		}
+	}
+
+	private boolean canPaste(TransferableEamList list) throws Exception
+	{
+		FactorDataMap[] nodes = list.getArrayOfFactorDataMaps();
+		for (int i = 0; i < nodes.length; i++) 
+		{
+			FactorDataMap nodeData = nodes[i];
+			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE));
+			if (! canPasteTypeInCurrentTab(type))
+				return false;
+		}
+		
+		return true;
+	}
+
+	private boolean canPasteTypeInCurrentTab(int type)
+	{
+		if (diagramview.isResultsChainTab() && (isResultsChainPastableType(type) || isCommonType(type)))
+			return true;
+		
+		if (! diagramview.isResultsChainTab() && (!isResultsChainPastableType(type) || isCommonType(type)))
+			return true;
+		
+		return false;
+	}
+
+	private boolean isCommonType(int type)
+	{
+		if (type == ObjectType.STRATEGY)
+			return true;
+		
+		if (type == ObjectType.TARGET)
+			return true;
+		
+		return false;
+	}
+
+	private boolean isResultsChainPastableType(int type)
+	{
+		if (type == ObjectType.INTERMEDIATE_RESULT)
+			return true;
+		
+		if (type == ObjectType.THREAT_REDUCTION_RESULT)
+			return true;
+		
+		return false;
 	}
 
 	private FactorCell getDiagramFactorById(DiagramFactorId newNodeId) throws Exception
@@ -188,4 +246,5 @@ public class FactorCommandHelper
 
 	Project project;
 	DiagramModel model;
+	DiagramView diagramview;
 }
