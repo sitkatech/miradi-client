@@ -27,6 +27,8 @@ public class LayerManager
 		objectivesVisibleFlag = true;
 		indicatorsVisibleFlag = true;
 		scopeBoxVisibleFlag = true;
+		intermediateResult = true;
+		threatReductionResult = true;
 	}
 	
 	public boolean isVisible(FactorCell node)
@@ -43,6 +45,12 @@ public class LayerManager
 		
 		if(node.isDirectThreat())
 			return areDirectThreatsVisible();
+		
+		if (node.isIntermediateResult())
+			return isIntermediateResultVisible();
+		
+		if (node.isThreatRedectionResult())
+			return isThreatReductionResultVisible();
 		
 		if(isTypeVisible(node.getClass()))
 			return true;
@@ -161,6 +169,27 @@ public class LayerManager
 		scopeBoxVisibleFlag = newSetting;
 	}
 	
+	public boolean isIntermediateResultVisible()
+	{
+		return intermediateResult;
+	}
+	
+	public void setIntermediateResultVisible(boolean newSetting)
+	{
+		intermediateResult = newSetting;
+	}
+	
+	public boolean isThreatReductionResultVisible()
+	{
+		return threatReductionResult;
+	}
+	
+	public void setThreatReductionResultVisible(boolean newSetting)
+	{
+		threatReductionResult = newSetting;
+	}
+	
+	
 	Set hiddenNodeTypes;
 	ORefList hiddenORefs;
 	String mode;
@@ -172,4 +201,6 @@ public class LayerManager
 	boolean objectivesVisibleFlag;
 	boolean indicatorsVisibleFlag;
 	boolean scopeBoxVisibleFlag;
+	boolean intermediateResult;
+	boolean threatReductionResult;
 }
