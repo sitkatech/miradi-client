@@ -324,7 +324,12 @@ public class Project
 	
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
-		objectManager.setObjectData(objectType, objectId, fieldTag, dataValue);
+		setObjectData(new ORef(objectType, objectId), fieldTag, dataValue);
+	}
+	
+	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
+	{
+		objectManager.setObjectData(objectRef, fieldTag, dataValue);
 	}
 	
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
