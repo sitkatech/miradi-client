@@ -155,6 +155,7 @@ abstract public class TabbedView extends UmbrellaView
 				return;
 			EAM.logVerbose("TabbedView.commandExecuted: " + cmd.toString());
 			setTab(new Integer(cmd.getDataValue()).intValue());
+			getMainWindow().updateToolBar();
 		}
 		catch(Exception e)
 		{

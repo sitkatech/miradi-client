@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -22,5 +24,18 @@ public class ContributingFactorIcon extends EamIcon
 	Color getIconColor()
 	{
 		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
+	}
+	
+	static public Icon createDisabledIcon()
+	{
+		return new ContributingFactorDisabledIcon();
+	}
+	
+	private static final class ContributingFactorDisabledIcon extends ContributingFactorIcon
+	{
+		Color getIconColor()
+		{
+			return Color.LIGHT_GRAY;
+		}
 	}
 }

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -24,6 +26,11 @@ public class ActionInsertContributingFactor extends LocationAction
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Contributing Factor");
+	}
+	
+	public Icon getDisabledIcon()
+	{
+		return ContributingFactorIcon.createDisabledIcon();
 	}
 
 }

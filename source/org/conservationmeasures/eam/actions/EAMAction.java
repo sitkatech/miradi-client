@@ -28,6 +28,11 @@ public abstract class EAMAction extends AbstractAction
 
 	public abstract void doAction() throws CommandFailedException;
 	
+	public Icon getDisabledIcon()
+	{
+		return null;
+	}
+	
 	public Icon getIcon()
 	{
 		Object icon = getValue("icon");
