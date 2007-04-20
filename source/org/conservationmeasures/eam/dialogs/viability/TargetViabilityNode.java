@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class TargetViabilityNode extends TreeTableNode
@@ -26,7 +25,6 @@ public class TargetViabilityNode extends TreeTableNode
 	{
 		project = projectToUse;
 		target = (Target)project.findNode(targetId);
-		statusQuestion = new StatusQuestion(Target.TAG_TARGET_STATUS);
 		rebuild();
 	}
 	
@@ -57,12 +55,11 @@ public class TargetViabilityNode extends TreeTableNode
 
 	public Object getValueAt(int column)
 	{
-		if (ViabilityTreeModel.columnTags[column].equals("Status"))
-		{
-			String code = target.computeTNCViability();
-			return statusQuestion.findChoiceByCode(code);
-		}
-		return "";
+		String tag = COLUMN_TAGS[column];
+		if (tag.equals(""))
+			return tag;
+		
+		return target.getData(tag);
 	}
 
 	public String toString()
@@ -101,9 +98,13 @@ public class TargetViabilityNode extends TreeTableNode
 		Arrays.sort(objectList, comparator);
 	}
 	
+	public static final String[] COLUMN_TAGS = {
+		"", 
+		Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE, 
+		""
+		};
 	
 	private Project project;
 	private Target target;
 	private KeyEcologicalAttributeNode[] children;
-	private StatusQuestion statusQuestion;
 }
