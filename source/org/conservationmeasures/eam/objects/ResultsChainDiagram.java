@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -41,4 +42,25 @@ public class ResultsChainDiagram extends DiagramObject
 	{
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
+
+	public static boolean canReferToThisType(int type)
+	{
+		switch(type)
+		{
+			case ObjectType.DIAGRAM_FACTOR:
+			case ObjectType.DIAGRAM_LINK:
+				return true;
+		}
+		
+		return false;
+	}
+
+	public ORefList getReferencedObjects(int objectType)
+	{
+		ORefList results = new ORefList();
+		results.addAll(new ORefList(DiagramFactor.getObjectType(), getAllDiagramFactorIds()));
+		results.addAll(new ORefList(DiagramFactorLink.getObjectType(), getAllDiagramFactorLinkIds()));
+		return results;
+	}
+	
 }

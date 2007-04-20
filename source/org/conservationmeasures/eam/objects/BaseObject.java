@@ -584,6 +584,9 @@ abstract public class BaseObject
 		if (ConceptualModelDiagram.canReferToThisType(type))
 			objectTypes[i++] = ConceptualModelDiagram.getObjectType();
 
+		if (ResultsChainDiagram.canReferToThisType(type))
+			objectTypes[i++] = ResultsChainDiagram.getObjectType();
+
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);
 		return outArray;

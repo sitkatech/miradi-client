@@ -217,13 +217,17 @@ public class ObjectManager
 		getDatabase().deleteObject(objectType, objectId);
 	}
 
-	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
+	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
 	{
-		BaseObject object = findObject(objectType, objectId);
+		BaseObject object = findObject(objectRef);
 		object.setData(fieldTag, dataValue);
 		getDatabase().writeObject(object);
 	}
 
+	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
+	{
+		setObjectData(new ORef(objectType, objectId), fieldTag, dataValue);
+	}
 	
 	public BaseObject findObject(ORef ref)
 	{

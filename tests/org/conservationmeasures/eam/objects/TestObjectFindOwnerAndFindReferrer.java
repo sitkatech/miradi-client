@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -235,6 +236,46 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		
 		ORef owner = new ORef(ObjectType.VIEW_DATA, viewDataId);
 		vertifyRefer(owner, new ORef(ObjectType.TARGET, factorId));
+	}
+	
+	public void testResultsChainRefer() throws Exception
+	{
+		BaseId resultsChainId = project.createObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
+		ORef diagramRef = new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChainId);
+
+		DiagramFactor strategy = createFactorAndDiagramFactor(Strategy.getObjectType());
+		DiagramFactor cause = createFactorAndDiagramFactor(Cause.getObjectType());
+		DiagramFactor target = createFactorAndDiagramFactor(Target.getObjectType());
+		IdList factorList = new IdList(new BaseId[] {strategy.getId(), cause.getId(), target.getId()});
+		
+		DiagramFactorLink link = createDiagramFactorLink(strategy, cause);
+		IdList linkList = new IdList(new BaseId[] {link.getId()});
+		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, factorList.toString());
+		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, linkList.toString());
+		
+		//----------- start test -----------
+		
+		vertifyRefer(diagramRef, strategy.getRef());
+		vertifyRefer(diagramRef, cause.getRef());
+		vertifyRefer(diagramRef, target.getRef());
+		vertifyRefer(diagramRef, link.getRef());
+	}
+	
+	private DiagramFactor createFactorAndDiagramFactor(int type) throws Exception
+	{
+		FactorId factorId = (FactorId)project.createObject(type);
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
+		DiagramFactorId diagramFactorId = (DiagramFactorId)project.createObject(DiagramFactor.getObjectType(), extraInfo);
+		return (DiagramFactor)project.findObject(DiagramFactor.getObjectType(), diagramFactorId);
+	}
+	
+	private DiagramFactorLink createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
+	{
+		CreateFactorLinkParameter linkExtraInfo = new CreateFactorLinkParameter(from.getWrappedId(), to.getWrappedId());
+		FactorLinkId linkId = (FactorLinkId)project.createObject(FactorLink.getObjectType(), linkExtraInfo);
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(linkId, from.getDiagramFactorId(), to.getDiagramFactorId());
+		DiagramFactorLinkId diagramLinkId = (DiagramFactorLinkId)project.createObject(DiagramFactorLink.getObjectType(), diagramLinkExtraInfo);
+		return (DiagramFactorLink)project.findObject(DiagramFactorLink.getObjectType(), diagramLinkId);
 	}
 	
 	private void vertifyRefer(ORef referrer, ORef referred)
