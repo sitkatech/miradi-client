@@ -207,7 +207,10 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 
 	public DiagramModel getDiagramModel()
 	{
-		return getdiagramComponent().getDiagramModel();
+		DiagramComponent diagramComponent = getdiagramComponent();
+		if (diagramComponent==null)
+			return null;
+		return diagramComponent.getDiagramModel();
 	}
 	
 	public DiagramComponent getdiagramComponent()
