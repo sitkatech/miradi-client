@@ -14,6 +14,13 @@ import org.conservationmeasures.eam.objects.Factor;
 
 public class InsertDirectThreatDoer extends InsertFactorDoer
 {
+	public boolean isAvailable()
+	{
+		if (!getProject().isOpen()) 
+			return false;
+		return !getDiagramView().isResultsChainTab();
+	}
+	
 	public int getTypeToInsert()
 	{
 		return ObjectType.CAUSE;

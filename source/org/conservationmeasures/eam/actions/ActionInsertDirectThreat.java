@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -26,5 +28,9 @@ public class ActionInsertDirectThreat extends LocationAction
 		return EAM.text("TT|Insert a Direct Threat");
 	}
 
+	public Icon getDisabledIcon()
+	{
+		return DirectThreatIcon.createDisabledIcon();
+	}
 }
 

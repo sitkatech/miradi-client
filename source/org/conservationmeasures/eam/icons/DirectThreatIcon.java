@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -24,5 +26,17 @@ public class DirectThreatIcon extends EamIcon
 	{
 		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT);
 	}
-
+	
+	static public Icon createDisabledIcon()
+	{
+		return new DirectThreatIconDisabledIcon();
+	}
+	
+	private static final class DirectThreatIconDisabledIcon extends ContributingFactorIcon
+	{
+		Color getIconColor()
+		{
+			return Color.LIGHT_GRAY;
+		}
+	}
 }
