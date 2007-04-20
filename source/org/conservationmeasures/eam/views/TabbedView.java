@@ -128,6 +128,11 @@ abstract public class TabbedView extends UmbrellaView
 		tabs.setSelectedIndex(newTab);
 	}
 	
+	public void tabWasSelected()
+	{
+		// overrideable
+	}
+	
 	public Component getTabContents(int index)
 	{
 		return tabs.getComponent(index);
@@ -201,6 +206,7 @@ abstract public class TabbedView extends UmbrellaView
 
 			currentTab = newTab;
 			getMainWindow().getActions().updateActionStates();
+			tabWasSelected();
 		}
 
 		private void recordTabChangeCommand(int newTab)

@@ -216,6 +216,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteResultsChain.class, new DeleteResultsChainDoer());
 	}
 	
+	public void tabWasSelected()
+	{
+		updateVisibilityOfFactors();
+	}
+
 	public void createTabs() throws Exception
 	{
 		addConceptualModelDiagramTab();
@@ -319,7 +324,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public DiagramModel getDiagramModel()
 	{
-		return getDiagramComponent().getDiagramModel();
+		DiagramComponent diagramComponent = getDiagramComponent();
+		if(diagramComponent == null)
+			return null;
+		return diagramComponent.getDiagramModel();
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
@@ -368,6 +376,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		try
 		{
 			DiagramModel model = getDiagramModel();
+			if(model == null)
+				return;
 			model.updateVisibilityOfFactors();
 			
 			EAMGraphSelectionModel selectionModel = (EAMGraphSelectionModel) getDiagramComponent().getSelectionModel();
