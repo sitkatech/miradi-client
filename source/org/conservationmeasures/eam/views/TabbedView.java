@@ -126,6 +126,7 @@ abstract public class TabbedView extends UmbrellaView
 	public void setTab(int newTab)
 	{
 		tabs.setSelectedIndex(newTab);
+		tabWasSelected();
 	}
 	
 	public void tabWasSelected()

@@ -448,6 +448,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		super.commandExecuted(event);
 		Command rawCommand = event.getCommand();
 		
 		if (isCreateResultsChain(rawCommand))
