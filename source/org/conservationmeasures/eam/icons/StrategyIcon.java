@@ -7,8 +7,10 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.renderers.IconHexagonRenderer;
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
+import org.conservationmeasures.eam.diagram.renderers.IconHexagonRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
@@ -22,5 +24,18 @@ public class StrategyIcon extends EamIcon
 	Color getIconColor()
 	{
 		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
+	}
+	
+	static public Icon createDisabledIcon()
+	{
+		return new StrategyIconDisabledIcon();
+	}
+	
+	private static final class StrategyIconDisabledIcon extends ContributingFactorIcon
+	{
+		Color getIconColor()
+		{
+			return Color.LIGHT_GRAY;
+		}
 	}
 }

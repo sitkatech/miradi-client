@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -25,6 +27,10 @@ public class ActionInsertStrategy extends LocationAction
 	{
 		return EAM.text("TT|Insert a Strategy");
 	}
-
+	
+	public Icon getDisabledIcon()
+	{
+		return StrategyIcon.createDisabledIcon();
+	}
 }
 

@@ -11,6 +11,13 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class InsertStrategyDoer extends InsertFactorDoer
 {
+	public boolean isAvailable()
+	{
+		if (!getProject().isOpen()) 
+			return false;
+		return !getDiagramView().isResultsChainTab();
+	}
+	
 	public int getTypeToInsert()
 	{
 		return ObjectType.STRATEGY;
