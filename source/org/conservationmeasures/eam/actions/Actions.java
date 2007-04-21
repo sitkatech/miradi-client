@@ -261,6 +261,7 @@ public class Actions
 		registerAction(new ActionExportBudgetTableTree(mainWindow));
 		registerAction(new ActionCreateBendPoint(mainWindow));
 		registerAction(new ActionDeleteBendPoint(mainWindow));
+		registerAction(new ActionUpdateTabLabel(mainWindow));
 		registerAction(new ActionWizardNext(mainWindow));
 		registerAction(new ActionWizardPrevious(mainWindow));
 		registerAction(new ActionShowCellRatings(mainWindow));

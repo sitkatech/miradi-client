@@ -55,6 +55,7 @@ import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
+import org.conservationmeasures.eam.actions.ActionUpdateTabLabel;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.commands.Command;
@@ -85,6 +86,7 @@ import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
@@ -173,6 +175,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertFactorLink.class, new InsertFactorLinkDoer());
 		addDoerToMap(ActionCreateBendPoint.class, new CreateBendPointDoer());
 		addDoerToMap(ActionDeleteBendPoint.class, new DeleteBendPointDoer());
+		addDoerToMap(ActionUpdateTabLabel.class, new UpdateTabLabelDoer());
 		addDoerToMap(ActionCopy.class, new Copy());
 		addDoerToMap(ActionSelectAll.class, new SelectAllDoer());
 		addDoerToMap(ActionCut.class, new Cut());
@@ -284,8 +287,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
 			
 			DiagramPanel diagramPanel = new DiagramPanel(getMainWindow(), getProject(), resultsChain);
-			//FIXME RC fix name
-			addTab("Results Chain " + i, diagramPanel);
+			String text = resultsChain.getData(DiagramObject.TAG_LABEL);
+			if (text.length()==0)
+				text = "Unspecified";
+			addTab(text, diagramPanel);
 		}
 	}
 	
@@ -480,6 +485,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			updateFactorBoundsIfRelevant(cmd);
 			updateFactorLinkIfRelevant(cmd);
 			updateScopeIfNeeded(cmd);
+			updateTabTitleIfNeeded(cmd);
 			refreshIfNeeded(cmd);
 		}
 		catch (Exception e)
@@ -560,6 +566,22 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		// may have added or removed a stress, modified an Annotation short label, etc.
 		getDiagramComponent().repaint(getDiagramComponent().getBounds());
+	}
+	
+	
+	void updateTabTitleIfNeeded(CommandSetObjectData cmd)
+	{
+		if (isTabTitleTextChange(cmd))
+			setCurrentSelectedTitle(cmd.getDataValue());
+	}
+	
+	
+	private boolean isTabTitleTextChange(CommandSetObjectData cmd)
+	{
+		if (cmd.getObjectType() != ObjectType.RESULTS_CHAIN_DIAGRAM)
+			return false;
+		
+		return (cmd.getFieldTag().equals(DiagramObject.TAG_LABEL));
 	}
 	
 	void updateScopeIfNeeded(CommandSetObjectData cmd)
