@@ -26,6 +26,9 @@ public class RenameResultsChainDoer extends ViewDoer
 	
 	public void doIt() throws CommandFailedException 
 	{
+		if (!isAvailable())
+			return;
+		
 		DiagramView diagramView = (DiagramView)getView();
 		DiagramObject diagramObject = diagramView.getDiagramPanel().getDiagramObject();
 		ResultChainTabLabelPropertiesPanel panel = new ResultChainTabLabelPropertiesPanel(getProject(), diagramObject.getId());
