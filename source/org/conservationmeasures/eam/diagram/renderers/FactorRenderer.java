@@ -47,6 +47,7 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 
+import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -69,6 +70,7 @@ import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
+import org.martus.swing.ResourceImageIcon;
 
 
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
@@ -189,6 +191,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		if(indicatorText != null)
 			drawIndicator(rect, g2);
+		
+		if(stragetyInResultsChain)
+			drawChainIcon(rect, g2);
 	}
 	
 	public static Dimension getSizeWithoutAnnotations(Dimension size, int annotationCount)
@@ -213,6 +218,22 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		drawLabel(g2, smallTriangle, indicatorText, smallTriangle.getSize());
 	}
+	
+	private void drawChainIcon(Rectangle rect, Graphics2D g2) 
+	{
+		//TODO: rather then pull icon names from action class or harding coding it wuld be better if we pulled them from a property file by name for common resource paths.
+		ResourceImageIcon icon = new ResourceImageIcon(ActionShowResultsChain.getIconName());
+		Rectangle rectangle = getResultChainRectWithinNode();
+		rectangle.translate(rect.x, rect.y);
+		icon.paintIcon(null, g2,rectangle.x, rectangle.y );
+	}
+	
+	
+	private Rectangle getResultChainRectWithinNode()
+	{
+		return node.getResultChainRectWithinNode();
+	}
+	
 	
 	private Rectangle getIndicatorRectWithinNode()
 	{

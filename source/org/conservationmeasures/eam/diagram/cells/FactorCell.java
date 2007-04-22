@@ -383,6 +383,14 @@ abstract public class FactorCell extends EAMGraphCell
 		return smallTriangle;
 	}
 
+	//TODO: this logic should not refere to INDICATOR_WIDTH...but maybe indicator width should be general annoation box width?
+	public Rectangle getResultChainRectWithinNode()
+	{
+		Rectangle annotationsRectangle = getAnnotationsRect();
+		annotationsRectangle.x =  getSize().width - MultilineCellRenderer.INDICATOR_WIDTH ;
+		return annotationsRectangle;
+	}
+	
 	DefaultPort port;
 	Dimension previousSize;
 	Point previousLocation;

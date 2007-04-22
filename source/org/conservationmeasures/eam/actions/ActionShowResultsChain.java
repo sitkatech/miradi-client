@@ -16,7 +16,7 @@ public class ActionShowResultsChain extends ViewAction
 		super(mainWindow, getLabel(), getIconName());
 	}
 	
-	private static String getIconName()
+	public static String getIconName()
 	{
 		return "icons/showResultsChain.png";
 	}
