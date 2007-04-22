@@ -412,10 +412,15 @@ abstract public class BaseObject
 		int[] objectTypes = getTypesThatCanReferToUs(getType());
 		for (int i=0; i<objectTypes.length; ++i)
 		{
-			ORefList orefs = findObjectsThatReferToUs(objectManager, objectTypes[i], getRef());
+			ORefList orefs = findObjectsThatReferToUs(objectTypes[i]);
 			owners.addAll(orefs);
 		}
 		return owners;
+	}
+	
+	public ORefList findObjectsThatReferToUs(int objectType)
+	{
+		return findObjectsThatReferToUs(objectManager, objectType, getRef());
 	}
 	
 	
@@ -512,6 +517,9 @@ abstract public class BaseObject
 
 		if (ConceptualModelDiagram.canOwnThisType(type))
 			objectTypes[i++] = ConceptualModelDiagram.getObjectType();
+		
+		if (ResultsChainDiagram.canOwnThisType(type))
+			objectTypes[i++] = ResultsChainDiagram.getObjectType();
 
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);

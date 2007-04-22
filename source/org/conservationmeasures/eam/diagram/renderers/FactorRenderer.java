@@ -52,10 +52,13 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -94,8 +97,19 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		}
 		
 		if(node.isStrategy())
-			rating = ((Strategy)node.getUnderlyingObject()).getStrategyRating();
-
+		{
+			Strategy strategy = (Strategy)node.getUnderlyingObject();
+			rating = strategy.getStrategyRating();
+			//FIXME: the only other way to get to the DiagramView or Object is via mainWindow there shold be a better way.
+			// does the code below work as well? or should the view data have a isXXXX call?
+			//strategy.getObjectManager().getProject().getCurrentViewData().getCurrentTab()==0
+			if (!EAM.mainWindow.getDiagramView().isResultsChainTab())
+			{
+				stragetyInResultsChain = isStrategyInResultsChain(model, strategy);
+				System.out.println("HERE:" + stragetyInResultsChain);
+			}
+		}
+		
 		DiagramComponent diagram = (DiagramComponent)graph;
 
 		indicatorText = null;
@@ -135,6 +149,19 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		}
 	
 		return this;
+	}
+	
+	private boolean isStrategyInResultsChain(DiagramModel model, Strategy strategy)
+	{
+		ORefList diagramFactorList = strategy.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for (int i=0; i<diagramFactorList.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor)model.getProject().findObject(diagramFactorList.get(i));
+			ORefList diagramObjectList = diagramFactor.findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
+			if (diagramObjectList.size()>0);
+				return true;
+		}
+		return false;
 	}
 
 	public void setRatingBubbleFont(Graphics2D g2)
@@ -251,4 +278,5 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	String indicatorText;
 	String objectivesText;
 	String goalsText;
+	boolean stragetyInResultsChain;
 }
