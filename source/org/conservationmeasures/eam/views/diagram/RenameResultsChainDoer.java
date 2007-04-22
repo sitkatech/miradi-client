@@ -6,9 +6,9 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.views.ViewDoer;
 
-public class UpdateTabLabelDoer extends ViewDoer 
+public class RenameResultsChainDoer extends ViewDoer 
 {
-	public UpdateTabLabelDoer()
+	public RenameResultsChainDoer()
 	{
 		super();
 	}

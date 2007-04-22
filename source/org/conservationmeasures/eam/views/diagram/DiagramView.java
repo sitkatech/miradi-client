@@ -55,7 +55,7 @@ import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
-import org.conservationmeasures.eam.actions.ActionUpdateTabLabel;
+import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.commands.Command;
@@ -175,7 +175,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertFactorLink.class, new InsertFactorLinkDoer());
 		addDoerToMap(ActionCreateBendPoint.class, new CreateBendPointDoer());
 		addDoerToMap(ActionDeleteBendPoint.class, new DeleteBendPointDoer());
-		addDoerToMap(ActionUpdateTabLabel.class, new UpdateTabLabelDoer());
+		addDoerToMap(ActionRenameResultsChain.class, new RenameResultsChainDoer());
 		addDoerToMap(ActionCopy.class, new Copy());
 		addDoerToMap(ActionSelectAll.class, new SelectAllDoer());
 		addDoerToMap(ActionCut.class, new Cut());

@@ -17,6 +17,6 @@ public class ResultChainTabLabelPropertiesPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Diagram Tab Properties");
+		return EAM.text("Results Chain Properties");
 	}
 }
