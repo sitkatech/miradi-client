@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
-import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.LocationAction;
 import org.conservationmeasures.eam.actions.MainWindowAction;
@@ -68,7 +67,6 @@ public class DiagramContextMenuHandler
 		MainWindowAction objectsAction = actions.getMainWindowAction(ActionDeleteBendPoint.class);
 		if (objectsAction.isEnabled())
 			menu.add(createMenuItem(ActionDeleteBendPoint.class, menuInvokedAt));
-		menu.add(new MenuItemWithoutLocation(actions.getMainWindowAction(ActionRenameResultsChain.class)));
 		
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionUndo.class)));
