@@ -224,7 +224,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		//TODO: rather then pulling the icon resource path from the action class or harding code it , it would be better if we pulled them from a property file by name for common resource paths.
 		ResourceImageIcon icon = new ResourceImageIcon(ActionShowResultsChain.getIconName());
 		Rectangle rectangle = getResultChainRectWithinNode();
-		rectangle.translate(rect.x, rect.y);
 		icon.paintIcon(null, g2,rectangle.x, rectangle.y );
 	}
 	
