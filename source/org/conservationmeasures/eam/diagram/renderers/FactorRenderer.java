@@ -102,13 +102,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			Strategy strategy = (Strategy)node.getUnderlyingObject();
 			rating = strategy.getStrategyRating();
-			//FIXME: the only other way to get to the DiagramView or Object is via mainWindow there shold be a better way.
-			// does the code below work as well? or should the view data have a isXXXX call?
-			//strategy.getObjectManager().getProject().getCurrentViewData().getCurrentTab()==0
-			if (!EAM.mainWindow.getDiagramView().isResultsChainTab())
-			{
-				stragetyInResultsChain = isStrategyInResultsChain(model, strategy);
-			}
+			stragetyInResultsChain = isStrategyInResultsChain(model, strategy);
 		}
 		
 		DiagramComponent diagram = (DiagramComponent)graph;
@@ -154,6 +148,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private boolean isStrategyInResultsChain(DiagramModel model, Strategy strategy)
 	{
+		//FIXME: the only other way to get to the DiagramView or Object is via mainWindow there shold be a better way.
+		// does the code below work as well? or should the view data have a isXXXX call?
+		//strategy.getObjectManager().getProject().getCurrentViewData().getCurrentTab()==0
+		if (EAM.mainWindow.getDiagramView().isResultsChainTab())
+			return false;
+		
 		ORefList diagramFactorList = strategy.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for (int i=0; i<diagramFactorList.size(); ++i)
 		{
