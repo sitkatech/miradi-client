@@ -106,7 +106,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if (!EAM.mainWindow.getDiagramView().isResultsChainTab())
 			{
 				stragetyInResultsChain = isStrategyInResultsChain(model, strategy);
-				System.out.println("HERE:" + stragetyInResultsChain);
 			}
 		}
 		
@@ -158,7 +157,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			DiagramFactor diagramFactor = (DiagramFactor)model.getProject().findObject(diagramFactorList.get(i));
 			ORefList diagramObjectList = diagramFactor.findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
-			if (diagramObjectList.size()>0);
+			if (diagramObjectList.size()>0)
 				return true;
 		}
 		return false;
