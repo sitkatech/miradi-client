@@ -221,7 +221,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private void drawChainIcon(Rectangle rect, Graphics2D g2) 
 	{
-		//TODO: rather then pull icon names from action class or harding coding it wuld be better if we pulled them from a property file by name for common resource paths.
+		//TODO: rather then pulling the icon resource path from the action class or harding code it , it would be better if we pulled them from a property file by name for common resource paths.
 		ResourceImageIcon icon = new ResourceImageIcon(ActionShowResultsChain.getIconName());
 		Rectangle rectangle = getResultChainRectWithinNode();
 		rectangle.translate(rect.x, rect.y);
