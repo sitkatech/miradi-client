@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.DeleteSelectedItemDoer;
@@ -223,13 +224,9 @@ public class ThreatMatrixTable extends JTable
 						continue;
 					}
 
-					ConceptualModelDiagramPool conceptualDiagramPool = project.getConceptualModelDiagramPool();
-					ORefList oRefList = conceptualDiagramPool.getORefList();
-					final int ONLY_CONCEPTUAL_MODEL = 0;
-					ORef ref = oRefList.get(ONLY_CONCEPTUAL_MODEL);
-					ConceptualModelDiagram diagram = (ConceptualModelDiagram) project.findObject(ref);
+					DiagramObject diagramObject = getDiagramObject(project);
 					DiagramFactorLink linkageToDelete = (DiagramFactorLink)project.findObject(diagramFactorLinkRef);
-					DeleteSelectedItemDoer.deleteFactorLink(project, diagram, linkageToDelete);
+					DeleteSelectedItemDoer.deleteFactorLink(project, diagramObject, linkageToDelete);
 				}
 			}
 			finally
@@ -238,6 +235,15 @@ public class ThreatMatrixTable extends JTable
 			}
 		}
 		
+		private DiagramObject getDiagramObject(Project project)
+		{
+			ConceptualModelDiagramPool conceptualDiagramPool = project.getConceptualModelDiagramPool();
+			ORefList oRefList = conceptualDiagramPool.getORefList();
+			final int ONLY_CONCEPTUAL_MODEL = 0;
+			ORef ref = oRefList.get(ONLY_CONCEPTUAL_MODEL);
+			
+			return (ConceptualModelDiagram) project.findObject(ref);
+		}
 	
 		int row;
 		int col;
