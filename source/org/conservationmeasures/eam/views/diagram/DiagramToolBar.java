@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
+import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
@@ -64,7 +65,9 @@ public class DiagramToolBar extends EAMToolBar
 			},
 			{
 				getModeSwitchButton(actions, diagramView),
+//				TODO RC make into toggle button
 				new ToolBarButton(actions, ActionShowResultsChain.class),
+				new ToolBarButton(actions, ActionShowConceptualModel.class),
 			},
 		};
 		

@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
+import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
@@ -81,7 +82,9 @@ public class DiagramContextMenuHandler
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectChain.class)));
 		menu.add(getModeSwitchMenuItem());
+		//TODO RC make into toggle
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionShowResultsChain.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionShowConceptualModel.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionCreateResultsChain.class)));
 		menu.addSeparator();
 		menu.add(createMenuItem(ActionProperties.class, menuInvokedAt));

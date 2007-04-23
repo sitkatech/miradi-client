@@ -52,6 +52,7 @@ import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
+import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
@@ -215,6 +216,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateResultsChain.class, new CreateResultsChainDoer());
 		addDoerToMap(ActionShowResultsChain.class, new ShowResultsChainDoer());
 		addDoerToMap(ActionDeleteResultsChain.class, new DeleteResultsChainDoer());
+		addDoerToMap(ActionShowConceptualModel.class, new ShowConceptualModelDoer());
 	}
 	
 	public void tabWasSelected()
@@ -326,6 +328,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 		
 		return 0;
+	}
+
+	public void setTabToConceptualModel()
+	{
+		final int CONCEPTUAL_MODEL_INDEX = 0;
+		setTab(CONCEPTUAL_MODEL_INDEX);
 	}
 	
 	public void setResultsChainTab(BaseId resultsChainId)

@@ -58,6 +58,7 @@ import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
+import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
@@ -217,6 +218,8 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionDeleteBendPoint.class, KeyEvent.VK_DELETE);
 		
 		menu.addSeparator();
+		//TODO RC make into toggle button
+		addMenuItem(actions, menu, ActionShowConceptualModel.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionShowResultsChain.class, KeyEvent.VK_S);
 		addMenuItem(actions, menu, ActionCreateResultsChain.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionDeleteResultsChain.class, KeyEvent.VK_D);

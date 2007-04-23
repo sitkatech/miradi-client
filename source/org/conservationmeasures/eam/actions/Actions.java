@@ -269,6 +269,7 @@ public class Actions
 		registerAction(new ActionCreateResultsChain(mainWindow));
 		registerAction(new ActionShowResultsChain(mainWindow));
 		registerAction(new ActionDeleteResultsChain(mainWindow));
+		registerAction(new ActionShowConceptualModel(mainWindow));
 		
 	}
 	
