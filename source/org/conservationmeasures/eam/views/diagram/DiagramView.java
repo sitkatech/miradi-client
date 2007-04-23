@@ -327,6 +327,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return 0;
 	}
 	
+	public void setResultsChainTab(BaseId resultsChainId)
+	{
+		setTab(getResultsChainTabIndex(resultsChainId));
+	}
+	
 	public DiagramModel getDiagramModel()
 	{
 		DiagramComponent diagramComponent = getDiagramComponent();

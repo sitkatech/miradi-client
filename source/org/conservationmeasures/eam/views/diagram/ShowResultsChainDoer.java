@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -39,7 +41,14 @@ public class ShowResultsChainDoer extends ViewDoer
 		if (! isAvailable())
 			return;
 		
+		DiagramView diagramView = getDiagramView();
+		DiagramPanel diagramPanel = diagramView.getDiagramPanel();
+		Factor[] selectedFactors = diagramPanel.getOnlySelectedFactors();
 		
-		
+		Strategy strategy = (Strategy) selectedFactors[0];
+		ORefList resultsChains = strategy.getResultsChain(diagramPanel.getDiagramModel());
+		final int FIRST_IN_LIST = 0;
+		ORef firstChain = resultsChains.get(FIRST_IN_LIST);
+		diagramView.setResultsChainTab(firstChain.getObjectId());
 	}
 }
