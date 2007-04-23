@@ -56,6 +56,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -102,7 +103,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			Strategy strategy = (Strategy)node.getUnderlyingObject();
 			rating = strategy.getStrategyRating();
-			stragetyInResultsChain = isStrategyInResultsChain(model, strategy);
+			stragetyInResultsChain = strategyInResultsChain(model, strategy);
 		}
 		
 		DiagramComponent diagram = (DiagramComponent)graph;
@@ -146,12 +147,10 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return this;
 	}
 	
-	private boolean isStrategyInResultsChain(DiagramModel model, Strategy strategy)
+	private boolean strategyInResultsChain(DiagramModel model, Strategy strategy)
 	{
-		//FIXME: the only other way to get to the DiagramView or Object is via mainWindow there shold be a better way.
-		// does the code below work as well? or should the view data have a isXXXX call?
-		//strategy.getObjectManager().getProject().getCurrentViewData().getCurrentTab()==0
-		if (EAM.mainWindow.getDiagramView().isResultsChainTab())
+		DiagramObject diagramObject =  model.getDiagramObject();
+		if (diagramObject.getType() == ResultsChainDiagram.getObjectType())
 			return false;
 		
 		ORefList diagramFactorList = strategy.findObjectsThatReferToUs(DiagramFactor.getObjectType());
