@@ -11,7 +11,6 @@ import javax.swing.JPopupMenu;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.martus.swing.UiPopupMenu;
 
 public class DiagramTabMouseMenuHandler
@@ -25,8 +24,8 @@ public class DiagramTabMouseMenuHandler
 	{
 		UiPopupMenu menu = new UiPopupMenu();
 		Actions actions = view.getMainWindow().getActions();
+		menu.add(actions.getMainWindowAction(ActionRenameResultsChain.class));
 		menu.add(actions.get(ActionDeleteResultsChain.class));
-		menu.add(new MenuItemWithoutLocation(actions.getMainWindowAction(ActionRenameResultsChain.class)));
 		return menu;
 	}
 
