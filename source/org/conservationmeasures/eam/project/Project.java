@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.CausePool;
+import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -136,6 +137,11 @@ public class Project
 	public EAMObjectPool getPool(int objectType)
 	{
 		return objectManager.getPool(objectType);
+	}
+	
+	public ConceptualModelDiagramPool getConceptualModelDiagramPool()
+	{
+		return (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 	
 	public ResultsChainDiagramPool getResultsChainDiagramPool()

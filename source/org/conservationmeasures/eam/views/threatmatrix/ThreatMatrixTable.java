@@ -26,16 +26,18 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.diagram.DeleteSelectedItemDoer;
 
 public class ThreatMatrixTable extends JTable
 {
@@ -199,14 +201,13 @@ public class ThreatMatrixTable extends JTable
 			{
 				doDelete(project, modelLinkageId);
 			}
-			catch(CommandFailedException e)
+			catch(Exception e)
 			{
 				EAM.logException(e);
 			}
-
 		}
 
-		private void doDelete(Project project, FactorLinkId modelLinkageId) throws CommandFailedException
+		private void doDelete(Project project, FactorLinkId modelLinkageId) throws Exception
 		{
 			project.executeCommand(new CommandBeginTransaction());
 			try
@@ -222,11 +223,13 @@ public class ThreatMatrixTable extends JTable
 						continue;
 					}
 
-					// FIXME: With Results Chains, this should only delete the DiagramFactorLink here,
-					// and then should delete the FactorLink itself below this loop
-					//FIXME fix me
-					//DiagramFactorLink linkageToDelete = (DiagramFactorLink)project.findObject(diagramFactorLinkRef);
-					//Delete.deleteFactorLink(project, linkageToDelete);
+					ConceptualModelDiagramPool conceptualDiagramPool = project.getConceptualModelDiagramPool();
+					ORefList oRefList = conceptualDiagramPool.getORefList();
+					final int ONLY_CONCEPTUAL_MODEL = 0;
+					ORef ref = oRefList.get(ONLY_CONCEPTUAL_MODEL);
+					ConceptualModelDiagram diagram = (ConceptualModelDiagram) project.findObject(ref);
+					DiagramFactorLink linkageToDelete = (DiagramFactorLink)project.findObject(diagramFactorLinkRef);
+					DeleteSelectedItemDoer.deleteFactorLink(project, diagram, linkageToDelete);
 				}
 			}
 			finally

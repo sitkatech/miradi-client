@@ -97,7 +97,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	// FIXME: This will not work with Results Chains!
+	// FIXME: RC This will not work with Results Chains!
 	public static void deleteFactorLink(Project project, DiagramObject diagramObject, DiagramFactorLink linkageToDelete) throws Exception
 	{	
 		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
