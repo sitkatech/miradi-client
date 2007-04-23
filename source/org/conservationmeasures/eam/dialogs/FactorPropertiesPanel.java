@@ -140,14 +140,16 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	{
 		if(factor.isDirectThreat())
 			return new UiLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING);
+		
 		if (factor.isContributingFactor())
 			return new UiLabel(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING);
+		
 		if (factor.isStrategy()) 
 			return new UiLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING);
+		
 		if (factor.isTarget())
 			return new UiLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING);
 		
-		//FIXME RC make sure properties work correctly
 		if (factor.isIntermediateResult())
 			return new UiLabel(IntermediateResult.OBJECT_NAME, new IntermediateResultIcon(), UiLabel.LEADING);
 
