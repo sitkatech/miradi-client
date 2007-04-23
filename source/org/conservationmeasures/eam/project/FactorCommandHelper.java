@@ -84,10 +84,6 @@ public class FactorCommandHelper
 
 	private void pasteFactorsIntoProject(TransferableEamList list, Point startPoint, FactorDataHelper dataHelper) throws Exception 
 	{	
-		//TODO RC possible refactoring 
-		if (!canPaste(list))
-			return;
-		
 		FactorDataMap[] nodes = list.getArrayOfFactorDataMaps();
 		for (int i = 0; i < nodes.length; i++) 
 		{
@@ -136,7 +132,7 @@ public class FactorCommandHelper
 		}
 	}
 
-	private boolean canPaste(TransferableEamList list) throws Exception
+	public boolean canPaste(TransferableEamList list) throws Exception
 	{
 		FactorDataMap[] nodes = list.getArrayOfFactorDataMaps();
 		for (int i = 0; i < nodes.length; i++) 

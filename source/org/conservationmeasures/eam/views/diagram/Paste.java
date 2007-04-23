@@ -45,7 +45,16 @@ public class Paste extends LocationDoer
 				EAM.notifyDialog(EAM.text("Paste between different Miradi projects not yet supported"));
 				return;
 			}
-			pasteCellsIntoProject(list);
+			
+			FactorCommandHelper factorCommandHelper = new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel());
+			if (! factorCommandHelper.canPaste(list))
+			{
+				EAM.notifyDialog(EAM.text("Contributing Factors and Direct Threats cannot be pasted into a Results Chain; " +
+											"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
+				return;
+			}
+			
+			pasteCellsIntoProject(list, factorCommandHelper);
 			clipboard.incrementPasteCount();
 		} 
 		catch (Exception e) 
@@ -55,8 +64,10 @@ public class Paste extends LocationDoer
 		} 
 	}
 
-	public void pasteCellsIntoProject(TransferableEamList list) throws Exception 
+	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
 	{
-		new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel()).pasteFactorsAndLinksIntoProject(list, getLocation());
+		factorCommandHelper.pasteFactorsAndLinksIntoProject(list, getLocation());
 	}
+	
+	
 }
