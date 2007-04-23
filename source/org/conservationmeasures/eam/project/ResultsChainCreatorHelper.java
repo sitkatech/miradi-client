@@ -204,30 +204,34 @@ public class ResultsChainCreatorHelper
 		for (int i = 0; i < diagramLinks.length; i++)
 		{
 			DiagramFactorLink diagramLink = diagramLinks[i];
-			
-			//TODO RC needs refactoring
-			DiagramFactorId fromDiagramFactorId = diagramLink.getFromDiagramFactorId();
-			DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
-			DiagramFactor fromClonedDiagramFactor = (DiagramFactor) diagramFactors.get(fromDiagramFactor);
-			 
-			DiagramFactorId toDiagramFactorId = diagramLink.getToDiagramFactorId();
-			DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
-			DiagramFactor toClonedDiagramFactor = (DiagramFactor) diagramFactors.get(toDiagramFactor);
-			
-			CreateObjectParameter extraInfo = createDiagramLinkExtraInfo(diagramLink, fromDiagramFactor, fromClonedDiagramFactor, toDiagramFactor, toClonedDiagramFactor);
-			CommandCreateObject createDiagramLink = new CommandCreateObject(ObjectType.DIAGRAM_LINK, extraInfo);
-			project.executeCommand(createDiagramLink);
-
-			DiagramFactorLinkId newlyCreatedLinkId = (DiagramFactorLinkId) createDiagramLink.getCreatedId();
-			DiagramFactorLink newlyCreated = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, newlyCreatedLinkId));
-			PointList bendPoints = diagramLink.getBendPoints();
-			CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
-			project.executeCommand(setBendPoints);
+			DiagramFactorLinkId newlyCreatedLinkId = cloneDiagramFactorLink(diagramFactors, diagramLink);
 
 			createdDiagramLinkIds.add(newlyCreatedLinkId);
 		}
 		
 		return (DiagramFactorLinkId[]) createdDiagramLinkIds.toArray(new DiagramFactorLinkId[0]);
+	}
+
+	private DiagramFactorLinkId cloneDiagramFactorLink(HashMap diagramFactors, DiagramFactorLink diagramLink) throws CommandFailedException
+	{
+		DiagramFactorId fromDiagramFactorId = diagramLink.getFromDiagramFactorId();
+		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
+		DiagramFactor fromClonedDiagramFactor = (DiagramFactor) diagramFactors.get(fromDiagramFactor);
+		 
+		DiagramFactorId toDiagramFactorId = diagramLink.getToDiagramFactorId();
+		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+		DiagramFactor toClonedDiagramFactor = (DiagramFactor) diagramFactors.get(toDiagramFactor);
+		
+		CreateObjectParameter extraInfo = createDiagramLinkExtraInfo(diagramLink, fromDiagramFactor, fromClonedDiagramFactor, toDiagramFactor, toClonedDiagramFactor);
+		CommandCreateObject createDiagramLink = new CommandCreateObject(ObjectType.DIAGRAM_LINK, extraInfo);
+		project.executeCommand(createDiagramLink);
+
+		DiagramFactorLinkId newlyCreatedLinkId = (DiagramFactorLinkId) createDiagramLink.getCreatedId();
+		DiagramFactorLink newlyCreated = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, newlyCreatedLinkId));
+		PointList bendPoints = diagramLink.getBendPoints();
+		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
+		project.executeCommand(setBendPoints);
+		return newlyCreatedLinkId;
 	}
 	
 	
