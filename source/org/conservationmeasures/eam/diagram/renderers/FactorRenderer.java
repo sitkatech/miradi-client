@@ -108,6 +108,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		indicatorText = null;
 		if(diagram.areIndicatorsVisible())
 		{
+			//FIXME RC HIGHT Priority.  IRs and TRRs with indicators fails after reopneing project
 			IdList indicators = node.getUnderlyingObject().getDirectOrIndirectIndicators();
 			if(indicators.size() == 1)
 				indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
