@@ -120,7 +120,7 @@ public class AppPreferences
 		return value.intValue();
 	}
 	
-	//TODO: need to add logic to allow saving of values other then integers
+	//TODO: once we are able to save the zoom setting in app pref.
 	public void setTaggedDouble(String tag, double value)
 	{
 		diagramZoomSetting = value;
@@ -148,7 +148,6 @@ public class AppPreferences
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
 		json.put(TAG_GRID_VISIBLE, isGridVisible);
 		json.put(TAG_CELL_RATINGS_VISIBLE, isCellRatingsVisible);
-		json.put(TAG_DIAGRAM_ZOOM, diagramZoomSetting);
 		
 		EnhancedJsonObject taggedIntJson = new EnhancedJsonObject();
 		Iterator iter = taggedIntMap.keySet().iterator();
