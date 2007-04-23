@@ -49,6 +49,7 @@ import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionProperties;
+import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
@@ -56,7 +57,6 @@ import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
-import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.commands.Command;
@@ -223,6 +223,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		super.tabWasSelected();
 		updateVisibilityOfFactors();
+		if (getDiagramComponent()!=null)
+			getDiagramComponent().updateDiagramZoomSetting(getMainWindow());
 	}
 
 	public void createTabs() throws Exception

@@ -100,6 +100,13 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		zoom(EAM.mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM));
     }
     	
+    
+    public void updateDiagramZoomSetting(MainWindow mainWindow)
+    {
+    	setScale(mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM));
+    }
+    
+    
 	public EAMGraphSelectionModel getEAMGraphSelectionModel()
 	{
 		return (EAMGraphSelectionModel)getSelectionModel();
@@ -262,7 +269,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public void zoom(double proportion)
 	{
 		setScale(getScale() * proportion);
-		EAM.mainWindow.saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, proportion);
+		EAM.mainWindow.saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, getScale() * proportion);
 	}
 	
 	public boolean hasLocation()
