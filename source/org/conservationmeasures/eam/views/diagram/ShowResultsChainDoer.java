@@ -5,19 +5,41 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ShowResultsChainDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		return false;
+		if (! isDiagramView())
+			return false;
+
+		if (getDiagramView().isResultsChainTab())
+			return false;
+
+		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
+		Factor[] selectedFactors = diagramPanel.getOnlySelectedFactors();
+		if (selectedFactors.length != 1)
+			return false;
+		
+		if (! selectedFactors[0].isStrategy())
+			return false;
+			
+		Strategy strategy = (Strategy) selectedFactors[0];	
+		
+		return strategy.getResultsChain(diagramPanel.getDiagramModel()).size() >= 1;
 	}
 
 	public void doIt() throws CommandFailedException
 	{
 		if (! isAvailable())
 			return;
+		
+		
+		
 	}
 }

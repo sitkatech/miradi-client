@@ -55,12 +55,9 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -103,7 +100,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			Strategy strategy = (Strategy)node.getUnderlyingObject();
 			rating = strategy.getStrategyRating();
-			stragetyInResultsChain = strategyInResultsChain(model, strategy);
+			ORefList resultsChains = strategy.getResultsChain(model);
+			stragetyInResultsChain = resultsChains.size() > 0;
 		}
 		
 		DiagramComponent diagram = (DiagramComponent)graph;
@@ -147,23 +145,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return this;
 	}
 	
-	private boolean strategyInResultsChain(DiagramModel model, Strategy strategy)
-	{
-		DiagramObject diagramObject =  model.getDiagramObject();
-		if (diagramObject.getType() == ResultsChainDiagram.getObjectType())
-			return false;
-		
-		ORefList diagramFactorList = strategy.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		for (int i=0; i<diagramFactorList.size(); ++i)
-		{
-			DiagramFactor diagramFactor = (DiagramFactor)model.getProject().findObject(diagramFactorList.get(i));
-			ORefList diagramObjectList = diagramFactor.findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
-			if (diagramObjectList.size()>0)
-				return true;
-		}
-		return false;
-	}
-
 	public void setRatingBubbleFont(Graphics2D g2)
 	{
 		g2.setFont(g2.getFont().deriveFont(9.0f).deriveFont(Font.BOLD));
