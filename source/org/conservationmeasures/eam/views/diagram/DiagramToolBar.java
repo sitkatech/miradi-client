@@ -65,13 +65,19 @@ public class DiagramToolBar extends EAMToolBar
 			},
 			{
 				getModeSwitchButton(actions, diagramView),
-//				TODO RC make into toggle button
-				new ToolBarButton(actions, ActionShowResultsChain.class),
-				new ToolBarButton(actions, ActionShowConceptualModel.class),
+				getDiagramSwitchButton(actions, diagramView),
 			},
 		};
 		
 		return buttons;
+	}
+	
+	static ToolBarButton getDiagramSwitchButton(Actions actions, DiagramView diagramView)
+	{
+		if (diagramView.isResultsChainTab())
+			return new ToolBarButton(actions, ActionShowConceptualModel.class);
+		
+		return new ToolBarButton(actions, ActionShowResultsChain.class);
 	}
 	
 	static ToolBarButton getInsertInterventionButton(Actions actions, DiagramView diagramView)

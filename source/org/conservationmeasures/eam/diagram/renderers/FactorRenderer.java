@@ -100,7 +100,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			Strategy strategy = (Strategy)node.getUnderlyingObject();
 			rating = strategy.getStrategyRating();
-			ORefList resultsChains = strategy.getResultsChain(model);
+			ORefList resultsChains = strategy.getResultsChains(model);
 			stragetyInResultsChain = resultsChains.size() > 0;
 		}
 		

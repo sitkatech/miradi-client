@@ -67,7 +67,7 @@ public class Strategy extends Factor
 		}
 	}
 	
-	public ORefList getResultsChain(DiagramModel model)
+	public ORefList getResultsChains(DiagramModel model)
 	{
 		DiagramObject diagramObject =  model.getDiagramObject();
 		if (diagramObject.getType() == ResultsChainDiagram.getObjectType())

@@ -33,7 +33,7 @@ public class ShowResultsChainDoer extends ViewDoer
 			
 		Strategy strategy = (Strategy) selectedFactors[0];	
 		
-		return strategy.getResultsChain(diagramPanel.getDiagramModel()).size() >= 1;
+		return strategy.getResultsChains(diagramPanel.getDiagramModel()).size() >= 1;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -46,7 +46,7 @@ public class ShowResultsChainDoer extends ViewDoer
 		Factor[] selectedFactors = diagramPanel.getOnlySelectedFactors();
 		
 		Strategy strategy = (Strategy) selectedFactors[0];
-		ORefList resultsChains = strategy.getResultsChain(diagramPanel.getDiagramModel());
+		ORefList resultsChains = strategy.getResultsChains(diagramPanel.getDiagramModel());
 		final int FIRST_IN_LIST = 0;
 		ORef firstChain = resultsChains.get(FIRST_IN_LIST);
 		diagramView.setResultsChainTab(firstChain.getObjectId());

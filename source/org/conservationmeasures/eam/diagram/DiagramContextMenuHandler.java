@@ -82,9 +82,7 @@ public class DiagramContextMenuHandler
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectChain.class)));
 		menu.add(getModeSwitchMenuItem());
-		//TODO RC make into toggle
-		menu.add(new MenuItemWithoutLocation(actions.get(ActionShowResultsChain.class)));
-		menu.add(new MenuItemWithoutLocation(actions.get(ActionShowConceptualModel.class)));
+		menu.add(getDiagamModeSwitchItem());
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionCreateResultsChain.class)));
 		menu.addSeparator();
 		menu.add(createMenuItem(ActionProperties.class, menuInvokedAt));
@@ -124,6 +122,15 @@ public class DiagramContextMenuHandler
 		JPopupMenu menu = getPopupMenu(scaledPoint);
 		mainWindow.updateActionsAndStatusBar();
 		menu.show(diagramComponent, e.getX(), e.getY());
+	}
+	
+	private MenuItemWithoutLocation getDiagamModeSwitchItem()
+	{
+		DiagramView diagramView = (DiagramView) mainWindow.getCurrentView();
+		if (diagramView.isResultsChainTab())
+			return new MenuItemWithoutLocation(actions.get(ActionShowConceptualModel.class));
+		
+		return new MenuItemWithoutLocation(actions.get(ActionShowResultsChain.class));
 	}
 	
 	private MenuItemWithoutLocation getModeSwitchMenuItem()
