@@ -110,7 +110,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 			avoidSaveDuringInternalSet = false;
 		}
 	}
-
+	
 	public void updateEditableState()
 	{
 		boolean editable = allowEdits() && isValidObject();
@@ -139,6 +139,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		{
 			super(model);
 			setSingleCellEditor();
+			putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 		}
 
 		public Component prepareEditor(TableCellEditor editor, int row, int column)
