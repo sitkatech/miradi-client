@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.LocationAction;
 import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
@@ -82,7 +83,8 @@ public class DiagramContextMenuHandler
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectChain.class)));
 		menu.add(getModeSwitchMenuItem());
-		menu.add(getDiagamModeSwitchItem());
+		DiagramView diagramView = (DiagramView) mainWindow.getCurrentView();
+		menu.add(getDiagamModeSwitchItem(diagramView, actions));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionCreateResultsChain.class)));
 		menu.addSeparator();
 		menu.add(createMenuItem(ActionProperties.class, menuInvokedAt));
@@ -124,13 +126,12 @@ public class DiagramContextMenuHandler
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 	
-	private MenuItemWithoutLocation getDiagamModeSwitchItem()
+	public static EAMAction getDiagamModeSwitchItem(DiagramView diagramView, Actions actions)
 	{
-		DiagramView diagramView = (DiagramView) mainWindow.getCurrentView();
 		if (diagramView.isResultsChainTab())
-			return new MenuItemWithoutLocation(actions.get(ActionShowConceptualModel.class));
+			return actions.get(ActionShowConceptualModel.class);
 		
-		return new MenuItemWithoutLocation(actions.get(ActionShowResultsChain.class));
+		return actions.get(ActionShowResultsChain.class);
 	}
 	
 	private MenuItemWithoutLocation getModeSwitchMenuItem()

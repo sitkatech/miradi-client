@@ -20,14 +20,13 @@ import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
-import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
-import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
+import org.conservationmeasures.eam.diagram.DiagramContextMenuHandler;
 import org.conservationmeasures.eam.main.EAMToolBar;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.ToolBarButton;
@@ -65,19 +64,11 @@ public class DiagramToolBar extends EAMToolBar
 			},
 			{
 				getModeSwitchButton(actions, diagramView),
-				getDiagramSwitchButton(actions, diagramView),
+				new ToolBarButton(DiagramContextMenuHandler.getDiagamModeSwitchItem(diagramView, actions), ""),
 			},
 		};
 		
 		return buttons;
-	}
-	
-	static ToolBarButton getDiagramSwitchButton(Actions actions, DiagramView diagramView)
-	{
-		if (diagramView.isResultsChainTab())
-			return new ToolBarButton(actions, ActionShowConceptualModel.class);
-		
-		return new ToolBarButton(actions, ActionShowResultsChain.class);
 	}
 	
 	static ToolBarButton getInsertInterventionButton(Actions actions, DiagramView diagramView)

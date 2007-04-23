@@ -299,6 +299,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public boolean isResultsChainTab()
 	{
 		int index = getSelectedTabIndex();
+		if (index  < 0)
+			return false;
+		
 		DiagramPanel panel = (DiagramPanel)getTabContents(index);
 		DiagramObject diagramObject = panel.getDiagramObject();
 		if (diagramObject.getType() == ResultsChainDiagram.getObjectType())
