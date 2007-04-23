@@ -26,19 +26,24 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.DeleteSelectedItemDoer;
+import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class ThreatMatrixTable extends JTable
 {
@@ -126,6 +131,15 @@ public class ThreatMatrixTable extends JTable
 		return model.getProject().isLinked(model.getThreatId(row), model.getTargetId(column));
 	}
 	
+	public DiagramObject getTheOnlyConceptualModelDiagram(Project project)
+	{
+		ConceptualModelDiagramPool conceptualDiagramPool = project.getConceptualModelDiagramPool();
+		ORefList oRefList = conceptualDiagramPool.getORefList();
+		final int ONLY_CONCEPTUAL_MODEL = 0;
+		ORef ref = oRefList.get(ONLY_CONCEPTUAL_MODEL);
+		
+		return (ConceptualModelDiagram) project.findObject(ref);
+	}
 	
 	class TableMouseAdapter extends MouseAdapter
 	{
@@ -224,7 +238,7 @@ public class ThreatMatrixTable extends JTable
 						continue;
 					}
 
-					DiagramObject diagramObject = getDiagramObject(project);
+					DiagramObject diagramObject = getTheOnlyConceptualModelDiagram(project);
 					DiagramFactorLink linkageToDelete = (DiagramFactorLink)project.findObject(diagramFactorLinkRef);
 					DeleteSelectedItemDoer.deleteFactorLink(project, diagramObject, linkageToDelete);
 				}
@@ -235,16 +249,6 @@ public class ThreatMatrixTable extends JTable
 			}
 		}
 		
-		private DiagramObject getDiagramObject(Project project)
-		{
-			ConceptualModelDiagramPool conceptualDiagramPool = project.getConceptualModelDiagramPool();
-			ORefList oRefList = conceptualDiagramPool.getORefList();
-			final int ONLY_CONCEPTUAL_MODEL = 0;
-			ORef ref = oRefList.get(ONLY_CONCEPTUAL_MODEL);
-			
-			return (ConceptualModelDiagram) project.findObject(ref);
-		}
-	
 		int row;
 		int col;
 	}
@@ -261,21 +265,54 @@ public class ThreatMatrixTable extends JTable
 		{
 // FIXME: This needs major overhaul to work with Results Chains
 // Also, note lots of code duplication with CellSelectionListener!
-//			ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
-//			Project project = model.getProject();
-//			try
-//			{
-//				project.executeCommand(new CommandBeginTransaction());
-//				InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(
-//					project, 
-//					model.getThreatId(row), 
-//					model.getTargetId(col));
-//				project.executeCommand(new CommandEndTransaction());
-//			}
-//			catch (Exception ex)
-//			{
-//				ex.printStackTrace();
-//			}
+			try
+			{
+				ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
+				Project project = model.getProject();
+				DiagramObject diagramObject = getTheOnlyConceptualModelDiagram(project);
+				
+				createLink(project, diagramObject, model);
+			}
+			catch (Exception ex)
+			{
+				EAM.logException(ex);
+			}
+		}
+
+		private void createLink(Project project, DiagramObject diagramObject, ThreatMatrixTableModel model) throws CommandFailedException
+		{
+			project.executeCommand(new CommandBeginTransaction());
+			try
+			{
+				FactorId fromThreatId = model.getThreatId(row);
+				FactorId toTargetId = model.getTargetId(col);
+
+				DiagramFactor fromDiagramFactor = getDiagramFactor(project, diagramObject, fromThreatId);
+				DiagramFactor toDiagramFactor = getDiagramFactor(project, diagramObject, toTargetId);
+
+				InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, diagramObject, fromDiagramFactor, toDiagramFactor);
+			}
+			catch (Exception ex)
+			{
+				throw new CommandFailedException(ex);
+			}
+			finally
+			{
+				project.executeCommand(new CommandEndTransaction());
+			}
+		}
+		
+		private DiagramFactor getDiagramFactor(Project project, DiagramObject diagramObject, FactorId factorId)
+		{
+			IdList diagramFactorIds = diagramObject.getAllDiagramFactorIds();
+			for (int i = 0; i < diagramFactorIds.size(); i++)
+			{
+				DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorIds.get(i)));
+				if (diagramFactor.getWrappedId().equals(factorId))
+					return diagramFactor;
+			}
+			
+			return null;
 		}
 		
 		int row;
