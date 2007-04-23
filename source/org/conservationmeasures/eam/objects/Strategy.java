@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -67,17 +66,14 @@ public class Strategy extends Factor
 		}
 	}
 	
-	public ORefList getResultsChains(DiagramModel model)
+	public ORefList getResultsChains()
 	{
-		DiagramObject diagramObject =  model.getDiagramObject();
-		if (diagramObject.getType() == ResultsChainDiagram.getObjectType())
-			return new ORefList();
-		
+
 		ORefList diagramObjects = new ORefList();
 		ORefList diagramFactorList = findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for (int i=0; i<diagramFactorList.size(); ++i)
 		{
-			DiagramFactor diagramFactor = (DiagramFactor)model.getProject().findObject(diagramFactorList.get(i));
+			DiagramFactor diagramFactor = (DiagramFactor) objectManager.getProject().findObject(diagramFactorList.get(i));
 			ORefList diagramObjectList = diagramFactor.findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
 			diagramObjects.addAll(diagramObjectList);
 		}

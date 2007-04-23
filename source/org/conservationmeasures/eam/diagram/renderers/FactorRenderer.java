@@ -100,8 +100,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			Strategy strategy = (Strategy)node.getUnderlyingObject();
 			rating = strategy.getStrategyRating();
-			ORefList resultsChains = strategy.getResultsChains(model);
-			stragetyInResultsChain = resultsChains.size() > 0;
+			stragetyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 		}
 		
 		DiagramComponent diagram = (DiagramComponent)graph;
@@ -143,6 +142,15 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		}
 	
 		return this;
+	}
+	
+	private boolean shouldDisplayResultsChainIcon(DiagramModel model, Strategy strategy)
+	{
+		ORefList resultsChains = strategy.getResultsChains();
+		if (model.isResultsChain())
+			return  false;
+		
+		return resultsChains.size() > 0;
 	}
 	
 	public void setRatingBubbleFont(Graphics2D g2)

@@ -48,6 +48,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
@@ -258,6 +259,11 @@ public class DiagramModel extends DefaultGraphModel
 		}
 		
 		return false;
+	}
+	
+	public boolean isResultsChain()
+	{
+		return diagramContents.getType() == ResultsChainDiagram.getObjectType();
 	}
 	
 	public FactorSet getDirectThreatChainNodes(Factor directThreat)

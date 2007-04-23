@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -30,10 +31,15 @@ public class ShowResultsChainDoer extends ViewDoer
 		
 		if (! selectedFactors[0].isStrategy())
 			return false;
-			
+
+		DiagramModel diagramModel = diagramPanel.getDiagramModel();
+		
+		if (diagramModel.isResultsChain())
+			return false;
+		
 		Strategy strategy = (Strategy) selectedFactors[0];	
 		
-		return strategy.getResultsChains(diagramPanel.getDiagramModel()).size() >= 1;
+		return strategy.getResultsChains().size() >= 1;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -46,7 +52,7 @@ public class ShowResultsChainDoer extends ViewDoer
 		Factor[] selectedFactors = diagramPanel.getOnlySelectedFactors();
 		
 		Strategy strategy = (Strategy) selectedFactors[0];
-		ORefList resultsChains = strategy.getResultsChains(diagramPanel.getDiagramModel());
+		ORefList resultsChains = strategy.getResultsChains();
 		final int FIRST_IN_LIST = 0;
 		ORef firstChain = resultsChains.get(FIRST_IN_LIST);
 		diagramView.setResultsChainTab(firstChain.getObjectId());
