@@ -25,4 +25,8 @@ public class ActionShowConceptualModel extends ViewAction
 		return EAM.text("Action|Show Conceptual Model");
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("Action|Show Conceptual Model");
+	}
 }

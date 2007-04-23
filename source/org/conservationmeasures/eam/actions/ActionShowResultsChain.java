@@ -25,4 +25,9 @@ public class ActionShowResultsChain extends ViewAction
 	{
 		return EAM.text("Action|Show Results Chain");
 	}
+	
+	public String getToolTipText()
+	{
+		return EAM.text("Action|Show Results Chain");
+	}
 }
