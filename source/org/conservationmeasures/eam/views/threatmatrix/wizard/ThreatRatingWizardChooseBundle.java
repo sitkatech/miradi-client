@@ -73,7 +73,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 		}
 				
 		((JComboBox)component).addItemListener(new RatingItemListener());

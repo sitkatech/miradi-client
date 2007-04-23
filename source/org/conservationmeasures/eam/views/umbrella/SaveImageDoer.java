@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EAMJPGFileChooser;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -45,7 +46,7 @@ public class SaveImageDoer extends ViewDoer
 		} 
 		catch (Exception e) 
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 		} 
 	}
 

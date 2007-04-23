@@ -78,7 +78,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 		}
 	}
 
@@ -187,7 +187,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 		}
 	}
 

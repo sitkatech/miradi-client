@@ -820,7 +820,7 @@ public class Project
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
+				EAM.logException(e);
 				EAM.errorDialog(EAM.text("Error|Error writing to project"));
 			}
 		}

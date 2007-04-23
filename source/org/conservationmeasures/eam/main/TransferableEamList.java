@@ -55,7 +55,7 @@ public class TransferableEamList implements Transferable
 			} 
 			catch (Exception e) 
 			{
-				e.printStackTrace();
+				EAM.logException(e);
 			}
 		}
 	}

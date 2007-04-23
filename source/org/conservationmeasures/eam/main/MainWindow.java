@@ -396,7 +396,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			EAM.errorDialog("Unexpected error switching view");
 		}
 		

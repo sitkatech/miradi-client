@@ -91,7 +91,7 @@ public class NudgeDoer extends LocationDoer
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			throw new CommandFailedException("Unable to move factors");
 		}
 		finally

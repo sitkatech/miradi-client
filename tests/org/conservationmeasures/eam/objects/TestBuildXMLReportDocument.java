@@ -76,7 +76,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 		}
 	}
 

@@ -59,7 +59,7 @@ public class Paste extends LocationDoer
 		} 
 		catch (Exception e) 
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			throw new CommandFailedException(e);
 		} 
 	}

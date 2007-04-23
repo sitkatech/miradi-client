@@ -1,6 +1,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
 import org.conservationmeasures.eam.wizard.WizardManager;
@@ -32,7 +33,7 @@ abstract public class WizardNavigationDoer extends ViewDoer
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			throw new CommandFailedException("Error going to wizard step");
 		}
 	}

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
@@ -34,7 +35,7 @@ public class ViewPossibleResources extends ObjectsDoer
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
 	}

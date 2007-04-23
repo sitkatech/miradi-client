@@ -90,7 +90,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 		}
 
 		return defaultValueOption;

@@ -37,7 +37,7 @@ public class ExportProjectReportFileDoer extends MainWindowDoer
 		} 
 		catch (Exception e) 
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			throw new CommandFailedException(EAM.text("Error Export To Report: Possible Write Protected: ") + e);
 		}
 	}

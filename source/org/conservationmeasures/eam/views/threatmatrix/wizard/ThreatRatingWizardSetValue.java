@@ -92,7 +92,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 		}
 				
 		((JComboBox)component).addItemListener(new ValueItemListener());
