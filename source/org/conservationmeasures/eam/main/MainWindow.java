@@ -507,6 +507,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return preferences.getTaggedInt(name);
 	}
 	
+	public void saveDiagramZoomSetting(String name, double setting)
+	{
+		preferences.setTaggedDouble(name, setting);
+	}
+	
+	public double getDiagramZoomSetting(String name)
+	{
+		return preferences.getTaggedDouble(name);
+	}
+	
 	public void lostOwnership(Clipboard clipboard, Transferable contents) 
 	{
 	}

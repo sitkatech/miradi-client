@@ -120,6 +120,22 @@ public class AppPreferences
 		return value.intValue();
 	}
 	
+	//TODO: need to add logic to allow saving of values other then integers
+	public void setTaggedDouble(String tag, double value)
+	{
+		diagramZoomSetting = value;
+	//	taggedValueMap.put(tag, new Double(value));
+	}
+	
+	public double getTaggedDouble(String tag)
+	{
+		return diagramZoomSetting;
+//		Double value = (Double)taggedValueMap.get(tag);
+//		if(value == null)
+//			return 0;
+//		return value.doubleValue();
+	}
+
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
@@ -180,6 +196,7 @@ public class AppPreferences
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
 	public static final String TAG_TAGGED_INTS = "TaggedInts";
+	public static final String TAG_DIAGRAM_ZOOM = "DiagramZoom";
 	
 	private static final Color DEFAULT_TARGET_COLOR = new Color(153, 255, 153);
 	private static final Color DEFAULT_DIRECT_THREAT_COLOR = new Color(255, 150, 150);
@@ -199,5 +216,7 @@ public class AppPreferences
 	private boolean isCellRatingsVisible;
 	private boolean isMaximized;
 	
+	
+	private double diagramZoomSetting;
 	HashMap taggedIntMap;
 }

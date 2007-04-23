@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
@@ -96,6 +97,8 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
     {
     		boolean isGridVisible = mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE);
     		setGridVisible(isGridVisible);
+    		//TODO: once we are able to save the zoom setting in app pref...we could append the tab label to the preference key to allow different setting to be save for each tab
+    		zoom(EAM.mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM));
     }
     	
 	public EAMGraphSelectionModel getEAMGraphSelectionModel()
@@ -260,6 +263,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public void zoom(double proportion)
 	{
 		setScale(getScale() * proportion);
+		EAM.mainWindow.saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, proportion);
 	}
 	
 	public boolean hasLocation()
