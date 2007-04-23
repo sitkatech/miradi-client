@@ -16,6 +16,9 @@ public class DeleteResultsChainDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
+		if (! isDiagramView())
+			return false;
+		
 		if (getDiagramView().isResultsChainTab())
 			return true;
 		
