@@ -95,10 +95,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
     	
     public void updateDiagramComponent(MainWindow mainWindow)
     {
-    		boolean isGridVisible = mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE);
-    		setGridVisible(isGridVisible);
-    		//TODO: once we are able to save the zoom setting in app pref...we could append the tab label to the preference key to allow different setting to be save for each tab
-    		zoom(EAM.mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM));
+		boolean isGridVisible = mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE);
+		setGridVisible(isGridVisible);
+		zoom(EAM.mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM));
     }
     	
 	public EAMGraphSelectionModel getEAMGraphSelectionModel()
