@@ -83,7 +83,7 @@ public class ProjectRepairer
 				BaseObject owner = object.getOwner();
 				if(owner == null)
 				{
-					EAM.logWarning("Deleted orphan " + annotationType + ":" + annotationId);
+					EAM.logWarning("Found orphan " + annotationType + ":" + annotationId);
 					//FIXME no longer need to delete orphans, remove commented code
 					//project.deleteObject(object);
 				}
