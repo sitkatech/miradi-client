@@ -192,7 +192,7 @@ abstract public class FactorCell extends EAMGraphCell
 
 	public int getAnnotationRows()
 	{
-		if(getGoals().size() > 0 || getObjectives().size() > 0 || getIndicators().size() > 0 || stragetyInResultsChain)
+		if(getGoals().size() > 0 || getObjectives().size() > 0 || getIndicators().size() > 0 || strategyInResultsChain)
 			return 1;
 
 		return 0;
@@ -386,13 +386,13 @@ abstract public class FactorCell extends EAMGraphCell
 	//TODO: this logic should not refere to INDICATOR_WIDTH...but maybe indicator width should be general annoation box width?
 	public Rectangle getResultChainRectWithinNode()
 	{
-		stragetyInResultsChain = true;
+		strategyInResultsChain = true;
 		Rectangle annotationsRectangle = getAnnotationsRect();
 		annotationsRectangle.x =  getSize().width - MultilineCellRenderer.INDICATOR_WIDTH ;
 		return annotationsRectangle;
 	}
 	
-	boolean stragetyInResultsChain;
+	boolean strategyInResultsChain;
 	
 	DefaultPort port;
 	Dimension previousSize;
