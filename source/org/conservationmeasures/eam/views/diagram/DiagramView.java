@@ -292,14 +292,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
 			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
 			
+
 			DiagramPanel diagramPanel = new DiagramPanel(getMainWindow(), getProject(), resultsChain);
-			String text = resultsChain.getData(DiagramObject.TAG_LABEL);
-			if (text.length()==0)
-				text = "Unspecified";
-			addTab(text, diagramPanel);
+			String resultsChainLabel = resultsChain.getData(DiagramObject.TAG_LABEL);
+			addTab(resultsChainLabel, diagramPanel);
 		}
 	}
-	
+
 	public boolean isResultsChainTab()
 	{
 		int index = getSelectedTabIndex();
@@ -324,13 +323,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 	
-	public int getResultsChainTabIndex(BaseId resultsChainId)
+	public int getTabIndex(ORef ref)
 	{
 		for (int i = 0; i < getTabCount(); ++i)
 		{
 			DiagramPanel panel = (DiagramPanel)getTabContents(i);
-			BaseId id = panel.getDiagramObject().getId();
-			if (id.equals(resultsChainId))
+			DiagramObject diagramObject = panel.getDiagramObject();
+			if (diagramObject.getRef().equals(ref))
 				return i;
 		}
 		
@@ -343,9 +342,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		setTab(CONCEPTUAL_MODEL_INDEX);
 	}
 	
-	public void setResultsChainTab(BaseId resultsChainId)
+	public void setResultsChainTab(ORef resultsChainRef)
 	{
-		setTab(getResultsChainTabIndex(resultsChainId));
+		setTab(getTabIndex(resultsChainRef));
 	}
 	
 	public DiagramModel getDiagramModel()
@@ -593,9 +592,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	void updateTabTitleIfNeeded(CommandSetObjectData cmd)
 	{
 		if (isTabTitleTextChange(cmd))
-			setCurrentSelectedTitle(cmd.getDataValue());
-	}
-	
+		{
+			int tabIndex = getTabIndex(cmd.getObjectORef());
+			setTabTitle(cmd.getDataValue(), tabIndex);
+		}
+	}	
 	
 	private boolean isTabTitleTextChange(CommandSetObjectData cmd)
 	{

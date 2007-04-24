@@ -48,7 +48,7 @@ public class CreateResultsChainDoer extends ViewDoer
 			ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(getProject(), diagramView.getDiagramPanel());
 
 			BaseId newResultsChainId = creatorHelper.createResultsChain();
-			int newTabIndex = diagramView.getResultsChainTabIndex(newResultsChainId);
+			int newTabIndex = diagramView.getTabIndex(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId));
 			//TODO RC can/should this be done by executing a command instead
 			diagramView.setTab(newTabIndex);
 		}

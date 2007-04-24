@@ -30,9 +30,11 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.utils.PointList;
 
 public class ResultsChainCreatorHelper
@@ -48,11 +50,10 @@ public class ResultsChainCreatorHelper
 	{
 			CommandCreateObject createResultsChain = new CommandCreateObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
 			project.executeCommand(createResultsChain);
-			BaseId newResultsChainId = createResultsChain.getCreatedId();
 			
-			BaseId createId = createResultsChain.getCreatedId();
-			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, createId);
-
+			BaseId newResultsChainId = createResultsChain.getCreatedId();
+			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId);
+			
 			DiagramFactor[] diagramFactors = getDiagramFactorsInChain();
 			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
 			DiagramFactorId[] clonedDiagramFactorIds = extractClonedDiagramFactors(clonedDiagramFactors);
@@ -66,8 +67,28 @@ public class ResultsChainCreatorHelper
 			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
 			project.executeCommand(addLinksToChain);
 			
+			String label = getFirstStrategyShortLabel(diagramFactors); 
+			CommandSetObjectData setLabelCommand = new CommandSetObjectData(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId, DiagramObject.TAG_LABEL, label);
+			project.executeCommand(setLabelCommand);
+
 			return newResultsChainId;
 	}
+	
+	private String getFirstStrategyShortLabel(DiagramFactor[] diagramFactors)
+	{
+		for (int i = 0; i < diagramFactors.length; ++i)
+		{
+			DiagramFactor diagramFactor = diagramFactors[i];
+			if (diagramFactor.getWrappedType() == ObjectType.STRATEGY)
+			{
+				Strategy strategy = (Strategy) project.findObject(new ORef(ObjectType.STRATEGY, diagramFactor.getWrappedId()));
+				return strategy.getShortLabel();
+			}
+		}
+		
+		return "";
+	}
+
 
 	private DiagramFactorId[] extractClonedDiagramFactors(HashMap clonedDiagramFactors)
 	{

@@ -178,6 +178,11 @@ public class Strategy extends Factor
 		return ObjectType.STRATEGY;
 	}
 	
+	public String getShortLabel()
+	{
+		return shortLabel.toString();
+	}
+	
 	void clear()
 	{
 		super.clear();

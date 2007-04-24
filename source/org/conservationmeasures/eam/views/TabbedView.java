@@ -131,7 +131,13 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void setCurrentSelectedTitle(String text)
 	{
-		tabs.setTitleAt(getSelectedTabIndex(), text);
+		int selectedTabIndex = getSelectedTabIndex();
+		setTabTitle(text, selectedTabIndex);
+	}
+
+	public void setTabTitle(String text, int selectedTabIndex)
+	{
+		tabs.setTitleAt(selectedTabIndex, text);
 	}
 	
 	public void tabWasSelected()
