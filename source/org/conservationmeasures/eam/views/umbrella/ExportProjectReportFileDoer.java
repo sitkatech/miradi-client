@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
+import java.io.InputStream;
+import java.net.URL;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -32,12 +35,26 @@ public class ExportProjectReportFileDoer extends MainWindowDoer
 	{
 		try 
 		{
-			new MiradiReport(mainWindow.getProject()).getReport(
-					EAM.getResourcePath(MiradiReport.class, "MiradisReport.jasper"));
+// For debugging
+//			URL resourcePath = new URL("jar:file:/home/kevins/work/eam/binaries-miradi/dist/miradi.jar!" +
+//			//"/version.txt");
+//			"/org/conservationmeasures/eam/reports/MiradisReport.jasper");
+			URL resourcePath = EAM.getResourceURL(MiradiReport.class, "MiradisReport.jasper");
+			Project project = mainWindow.getProject();
+			MiradiReport miradiReport = new MiradiReport(project);
+			InputStream input = resourcePath.openStream();
+			
+//			 For debugging
+//			ObjectInputStream ois = new ObjectInputStream(input);
+//			Object obj = ois.readObject();
+
+			
+			miradiReport.getReport(input);
+			input.close();
 		} 
 		catch (Exception e) 
 		{
-			EAM.logException(e);
+			e.printStackTrace();
 			throw new CommandFailedException(EAM.text("Error Export To Report: Possible Write Protected: ") + e);
 		}
 	}
