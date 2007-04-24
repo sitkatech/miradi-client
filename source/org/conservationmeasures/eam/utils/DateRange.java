@@ -31,7 +31,7 @@ public class DateRange
 		if (startDate.before(endDate))
 			return;
 		
-		throw new Exception();
+		throw new Exception("Start " + startDate + "date is after end date " + endDate);
 	}
 
 	public MultiCalendar getStartDate()
