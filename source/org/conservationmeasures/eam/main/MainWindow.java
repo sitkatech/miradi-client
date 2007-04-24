@@ -350,7 +350,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		catch (InvalidDateRangeException e)
 		{
 			mainStatusBar.setStatus(e.getMessage());
-			EAM.logException(e);
+			EAM.logError(e.getMessage());
 		}
 	}
 
