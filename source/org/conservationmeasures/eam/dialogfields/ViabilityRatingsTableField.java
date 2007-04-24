@@ -89,6 +89,13 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		}
 	}
 	
+	public void setObjectId(BaseId newId)
+	{
+		super.setObjectId(newId);
+		if (newId!=BaseId.INVALID)
+			setIconRowObject(new ORef(Indicator.getObjectType(), newId));
+	}
+	
 	public void setIconRowObject(ORef oref)
 	{
 		if (oref==null)
@@ -122,7 +129,6 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
 				boolean isSelected, boolean hasFocus, int row, int column)
 		{
-			
 			JComponent comp =  new JTextField((String)value);
 			((JTextField)comp).setHorizontalAlignment(JTextField.CENTER);
 
