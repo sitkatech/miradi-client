@@ -94,6 +94,8 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		super.setObjectId(newId);
 		if (newId!=BaseId.INVALID)
 			setIconRowObject(new ORef(Indicator.getObjectType(), newId));
+		else 
+			setIconRowObject(null);
 	}
 	
 	public void setIconRowObject(ORef oref)
