@@ -22,12 +22,16 @@ import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.wizard.DescribeTargetStatusStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramOverviewStep;
+import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardCompleteResultsChainLinks;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardConstructChainsStep;
+import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardConstructInitialResultsChain;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardDefineTargetsStep;
+import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardGoodResultsChainCriteriaReview;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardLinkDirectThreatsToTargetsStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardProjectScopeStep;
+import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardReviewAndModifyTargetsStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardReviewModelAndAdjustStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardVisionStep;
@@ -283,6 +287,11 @@ public class WizardManager
 		createStepEntry(new StrategicPlanDevelopObjectivesStep(panel));		
 		createStepEntry(new MonitoringWizardFocusStep(panel));		
 		createStepEntry(new MonitoringWizardDefineIndicatorsStep(panel));
+	
+		createStepEntry(new DiagramWizardResultsChainStep(panel));
+		createStepEntry(new DiagramWizardConstructInitialResultsChain(panel));
+		createStepEntry(new DiagramWizardCompleteResultsChainLinks(panel));
+		createStepEntry(new DiagramWizardGoodResultsChainCriteriaReview(panel));
 	}
 
 
@@ -356,6 +365,11 @@ public class WizardManager
 				DevelopDraftStrategiesStep.class,
 				RankDraftStrategiesStep.class,
 				EditAllStrategiesStep.class,
+				
+				DiagramWizardResultsChainStep.class,
+				DiagramWizardConstructInitialResultsChain.class,
+				DiagramWizardCompleteResultsChainLinks.class,
+				DiagramWizardGoodResultsChainCriteriaReview.class,
 
 				MonitoringPlanOverviewStep.class,
 				MonitoringWizardFocusStep.class,
