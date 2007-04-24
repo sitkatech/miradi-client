@@ -2,6 +2,7 @@ package org.conservationmeasures.eam.reports;
 
 import java.awt.Dialog;
 import java.awt.Dimension;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import javax.swing.JDialog;
@@ -10,7 +11,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JRViewer;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class MiradiReport
@@ -20,18 +20,11 @@ public class MiradiReport
 		project = projectToUse;
 	}
 
-	public void getReport(String reportFile)
+	public void getReport(InputStream reportInput) throws Exception
 	{
-		try
-		{
-			HashMap parameters = new HashMap();
-			JasperPrint print = JasperFillManager.fillReport(reportFile, parameters, new MiradiDataSource(project));
-			getReport(print);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		HashMap parameters = new HashMap();
+		JasperPrint print = JasperFillManager.fillReport(reportInput, parameters, new MiradiDataSource(project));
+		getReport(print);
 	}
 
 	private void getReport(JasperPrint jPrint)
