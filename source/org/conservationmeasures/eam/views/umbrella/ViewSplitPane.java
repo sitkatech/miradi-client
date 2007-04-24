@@ -59,10 +59,10 @@ public class ViewSplitPane extends JSplitPane
 		if (getMainHeight()==0)
 			return;
 		
-		int splitPercent = location * 100 / getMainHeight();
-		int splitPercentFromMiddle = splitPercent * 2 - 100;
-		
-		splitPositionSaver.saveSplitterLocation(splitterName, splitPercentFromMiddle);
+		double splitPercent = (double)location * 100 / getMainHeight();
+		double splitPercentFromMiddle = splitPercent * 2 - 100;
+		long roundedPercent = Math.round(splitPercentFromMiddle);
+		splitPositionSaver.saveSplitterLocation(splitterName, (int)roundedPercent);
 	}
 	
 	public int getSplitterLocation(String name)
