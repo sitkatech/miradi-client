@@ -91,7 +91,7 @@ public class CreateBendPointDoer extends LocationDoer
 		allLinkPoints.add(targetLocation);
 		
 		double closestDistance = Double.MAX_VALUE;
-		int insertionIndex = -1;
+		int insertionIndex = 0;
 		for (int i = 0; i < allLinkPoints.size() - 1; i++)
 		{
 			Line2D.Double lineSegment = createLineSegment(allLinkPoints, i);
