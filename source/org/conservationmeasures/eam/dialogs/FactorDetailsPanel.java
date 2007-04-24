@@ -147,7 +147,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Details");
+		return EAM.text("Summary");
 	}
 	
 	private Icon detailIcon;
