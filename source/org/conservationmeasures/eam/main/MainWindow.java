@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
+import org.conservationmeasures.eam.exceptions.InvalidDateRangeException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -338,29 +339,40 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void setStatusBarIfDataExistsOutOfRange()
 	{
-		final String dataOutOfRange = EAM.text("" +
-				"WorkPlan/Financial data outside project begin/end dates will not be shown");
-		if (isDataOutsideOfcurrentProjectDateRange())
-			mainStatusBar.setStatus(dataOutOfRange);
-		else
-			mainStatusBar.setStatusReady();
-		
+		try
+		{
+			final String dataOutOfRange = EAM.text("WorkPlan/Financial data outside project begin/end dates will not be shown");
+			if (isDataOutsideOfcurrentProjectDateRange())
+				mainStatusBar.setStatus(dataOutOfRange);
+			else
+				mainStatusBar.setStatusReady();
+		}
+		catch (InvalidDateRangeException e)
+		{
+			mainStatusBar.setStatus(e.getMessage());
+			EAM.logException(e);
+		}
 	}
 
 	//TODO refactor this method (nested for loops)
-	private boolean isDataOutsideOfcurrentProjectDateRange()
+	private boolean isDataOutsideOfcurrentProjectDateRange() throws InvalidDateRangeException
 	{
+		
+		ProjectMetadata metadata = getProject().getMetadata();
+		String startDate = metadata.getStartDate();
+		String endDate = metadata.getExpectedEndDate();
+
+		if (startDate.trim().length() <= 0 || endDate.trim().length() <= 0)
+			return false;
+		
+		MultiCalendar multiStartDate = MultiCalendar.createFromIsoDateString(startDate);
+		MultiCalendar multiEndDate = MultiCalendar.createFromIsoDateString(endDate);
+		
+		if (multiStartDate.after(multiEndDate))
+			throw new InvalidDateRangeException(EAM.text("WARNING: Project end date before start date."));
+
 		try
 		{
-			ProjectMetadata metadata = getProject().getMetadata();
-			String startDate = metadata.getStartDate();
-			String endDate = metadata.getExpectedEndDate();
-
-			if (startDate.trim().length() <= 0 || endDate.trim().length() <= 0)
-				return false;
-			
-			MultiCalendar multiStartDate = MultiCalendar.createFromIsoDateString(startDate);
-			MultiCalendar multiEndDate = MultiCalendar.createFromIsoDateString(endDate);
 			DateRange projectDateRange = new DateRange(multiStartDate, multiEndDate);
 			
 			BaseId[] assignmentIds = getProject().getAssignmentPool().getIds();
