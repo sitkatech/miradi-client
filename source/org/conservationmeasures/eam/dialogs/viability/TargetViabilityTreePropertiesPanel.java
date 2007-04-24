@@ -111,11 +111,11 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box2);
 		
 		JPanel boxIndrPrty = createGridLayoutPanel(1,5);
-		boxIndrPrty.add(createLabel(indicatorPriority));
-		boxIndrPrty.add(indicatorPriority.getComponent());
+		boxIndrPrty.add(createColumnJPanel(indicatorPriority));
+		//boxIndrPrty.add(indicatorPriority.getComponent());
 		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
-		boxIndrPrty.add(createLabel(monitoringStatus));
-		boxIndrPrty.add(monitoringStatus.getComponent());
+		boxIndrPrty.add(createColumnJPanel(monitoringStatus));
+		//boxIndrPrty.add(monitoringStatus.getComponent());
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(boxIndrPrty);
 		
