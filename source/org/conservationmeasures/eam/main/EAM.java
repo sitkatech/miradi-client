@@ -297,7 +297,7 @@ public class EAM
 	}
 
 
-	private static URL getResourceURL(Class thisClass, String resourceFileName) throws MalformedURLException
+	public static URL getResourceURL(Class thisClass, String resourceFileName) throws MalformedURLException
 	{
 		URL url = thisClass.getResource(resourceFileName);
 
