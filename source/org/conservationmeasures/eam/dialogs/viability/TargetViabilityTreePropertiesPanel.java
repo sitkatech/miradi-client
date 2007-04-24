@@ -29,7 +29,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
@@ -249,13 +248,11 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		final boolean areIndicatorMeasurementFields = 
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_SUMMARY) ||
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_STATUS) ||
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_TREND);
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_TREND) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_FUTURE_STATUS_SUMMARY) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_FUTURE_STATUS_RATING);
 		
-		final boolean areGoalDesireFields = 
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.GOAL,Goal.TAG_DESIRED_SUMMARY) ||
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.GOAL,Goal.TAG_DESIRED_STATUS);
-		
-		if (areIndicatorMeasurementFields || areGoalDesireFields)
+		if (areIndicatorMeasurementFields)
 		{
 			CommandSetObjectData  command = (CommandSetObjectData) event.getCommand();
 			ORef ref = new ORef(command.getObjectType(), command.getObjectId());

@@ -23,9 +23,7 @@ import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -55,17 +53,11 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	private void setIconRow(ORef oref)
 	{	
 		BaseObject object = getProject().findObject(oref);
-		if (object.getType() == ObjectType.GOAL)
-		{
-			detailSummary = object.getData(Goal.TAG_DESIRED_SUMMARY);
-			detailStatusCode = object.getData(Goal.TAG_DESIRED_STATUS);
-		}
-		else if (object.getType() == ObjectType.INDICATOR)
-		{
-			measurementSummary = object.getData(Indicator.TAG_MEASUREMENT_SUMMARY);
-			measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
-			measurementTrendCode = object.getData(Indicator.TAG_MEASUREMENT_TREND);
-		}
+		futureStatusSummary = object.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		futureStatusCode = object.getData(Indicator.TAG_FUTURE_STATUS_RATING);
+		measurementSummary = object.getData(Indicator.TAG_MEASUREMENT_SUMMARY);
+		measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
+		measurementTrendCode = object.getData(Indicator.TAG_MEASUREMENT_TREND);
 	}
 	
 	public void showThreshold(boolean show)
@@ -110,7 +102,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	private void clearIconRows()
 	{
 		measurementStatusCode = "";
-		detailStatusCode = "";
+		futureStatusCode = "";
 		
 		for (int i=0; i<4; ++i)
 		{
@@ -141,10 +133,10 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 					comp =  new JLabel(measurementSummary, getTrendIcon(), JLabel.CENTER);
 			}
 			
-			if ((row==2) && validCode(detailStatusCode)  && Integer.parseInt(detailStatusCode)-1 == column)
+			if ((row==2) && validCode(futureStatusCode)  && Integer.parseInt(futureStatusCode)-1 == column)
 			{
 				if (showStatus) 
-					comp =  new JLabel(detailSummary, new GoalIcon(), JLabel.CENTER);
+					comp =  new JLabel(futureStatusSummary, new GoalIcon(), JLabel.CENTER);
 			}
 
 			if (row!=0)
@@ -222,8 +214,8 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	String measurementStatusCode;
 	String measurementSummary;
 	String measurementTrendCode;
-	String detailStatusCode;
-	String detailSummary;
+	String futureStatusCode;
+	String futureStatusSummary;
 	ChoiceQuestion question;
 	DefaultTableModel model;
 	int currentRowHeight;
