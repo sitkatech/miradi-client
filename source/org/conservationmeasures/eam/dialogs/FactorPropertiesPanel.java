@@ -313,13 +313,11 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	{
 		tabs.remove(tabs.indexOfComponent(viabilityTab));
 		tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab);
-		tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
 	}
 
 	private void handleViabilityTabON()
 	{
 		tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
-		tabs.remove(tabs.indexOfComponent(goalsTab));
 		tabs.remove(tabs.indexOfComponent(indicatorsTab));
 	}
 
