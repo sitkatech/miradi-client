@@ -18,6 +18,23 @@ public class ManagementPanelSplitPane extends ViewSplitPane
 		setDividerSize(DIVIDER_SIZE);
 	}
 	
+	public void setDividerLocation(int location)
+	{
+		location = getMinimumViewableLocation(location);
+		super.setDividerLocation(location);
+	}
+
+	private int getMinimumViewableLocation(int location)
+	{
+		final int MINIMUM_SPLITTER_LOCATION = 45;
+		if (location < MINIMUM_SPLITTER_LOCATION)
+			return MINIMUM_SPLITTER_LOCATION;
+		
+		return location;
+	}
+
+
+
 	static final int DIVIDER_SIZE = 5;
 }
 
