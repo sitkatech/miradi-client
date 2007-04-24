@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanelSpecial;
+import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -68,12 +69,12 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		indicatorThreshold = (ViabilityRatingsTableField)
 			addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD)));
 		
-//		ObjectDataInputField goalShortLabel = addField(createStringField(ObjectType.GOAL, Goal.TAG_SHORT_LABEL, STD_SHORT));
-//		ObjectDataInputField goalLabel = addField(createStringField(ObjectType.GOAL, Goal.TAG_LABEL));
-//		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new StatusQuestion(Goal.TAG_DESIRED_STATUS)));
-//		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
-//		ObjectDataInputField desiredSummary = addField(createStringField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
-//		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,NARROW_DETAILS));
+
+
+		ObjectDataInputField futureStatusRating = addField(createRatingChoiceField(ObjectType.INDICATOR, new StatusQuestion(Indicator.TAG_FUTURE_STATUS_RATING)));
+		ObjectDataInputField futureStatusDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DATE));
+		ObjectDataInputField futureStatusSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_SUMMARY,STD_SHORT));
+		ObjectDataInputField futureStatusDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DETAIL,NARROW_DETAILS));
 		
 		
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
@@ -131,6 +132,10 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		addBlankLine(mainGridPanel);
 		
+		mainGridPanel.add(makeSectionLabel(EAM.text("Current Status")));
+		JPanel boxx = createGridLayoutPanel(1,4);
+		mainGridPanel.add(boxx);
+		
 		// Current Status section
 		JPanel box5 = createGridLayoutPanel(1,5);
 		box5.add(createColumnJPanel(measurementStatus));
@@ -138,39 +143,35 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box5.add(createColumnJPanelWithIcon(measurementSummary,new IndicatorIcon()));
 		box5.add(createColumnJPanel(measurementDetail));
-		mainGridPanel.add(makeSectionLabel(EAM.text("Current Status")));
+
+		UiLabel currentStatusSectionLabel = makeSectionLabel(EAM.text("(CS)"));
+		mainGridPanel.add(currentStatusSectionLabel);
 		mainGridPanel.add(box5);
 		
 		JPanel box6 = createGridLayoutPanel(1,5);
-		box6.add(add(createLabel(measureementStatusConfidence)));
-		box6.add(measureementStatusConfidence.getComponent());
+		box6.add(createColumnJPanel(measurementTrend));
 		box6.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box6.add(add(createLabel(measurementTrend)));
-		box6.add(measurementTrend.getComponent());
+		box6.add(add(createColumnJPanel(measureementStatusConfidence)));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(box6);
 		
 		addBlankLine(mainGridPanel);
 		
-		// Goal section
+		// Future Status section
 		mainGridPanel.add(makeSectionLabel(EAM.text("Future Status")));
 		
-//		JPanel box7 = createGridLayoutPanel(1,4);
-//		box7.add(goalLabel.getComponent());
-//		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
-//		box7.add(createLabel(goalShortLabel));
-//		box7.add(goalShortLabel.getComponent());
-//		mainGridPanel.add(box7);
-//		
-//		JPanel box8 = createGridLayoutPanel(1,5);
-//		box8.add(createColumnJPanel(desiredStatus));
-//		box8.add(createColumnJPanel(byWhen));
-//		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
-//		box8.add(createColumnJPanelWithIcon(desiredSummary, new GoalIcon()));
-//		box8.add(createColumnJPanel(desiredDetail));
-//		UiLabel goalSectionLabel = makeSectionLabel(EAM.text("(Goal)"));
-//		mainGridPanel.add(goalSectionLabel);
-//		mainGridPanel.add(box8);
+		JPanel box7 = createGridLayoutPanel(1,4);
+		mainGridPanel.add(box7);
+		
+		JPanel box8 = createGridLayoutPanel(1,5);
+		box8.add(createColumnJPanel(futureStatusRating));
+		box8.add(createColumnJPanel(futureStatusDate));
+		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
+		box8.add(createColumnJPanelWithIcon(futureStatusSummary, new GoalIcon()));
+		box8.add(createColumnJPanel(futureStatusDetail));
+		UiLabel futureStatusSectionLabel = makeSectionLabel(EAM.text("(FS)"));
+		mainGridPanel.add(futureStatusSectionLabel);
+		mainGridPanel.add(box8);
 		
 		main.add(mainGridPanel);
 		
