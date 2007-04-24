@@ -134,7 +134,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			if(node.canHaveGoal())
 			{
-				IdList goalIds = ((Target)node.getUnderlyingObject()).getDirectOrIndirectGoals();
+				IdList goalIds = ((Target)node.getUnderlyingObject()).getGoals();
 				if(goalIds.size() == 1)
 					goalsText = EAM.text("Goal") + " " + model.getProject().getObjectData(ObjectType.GOAL, goalIds.get(0), Goal.TAG_SHORT_LABEL);
 				else if(goalIds.size() > 1)

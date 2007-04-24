@@ -74,7 +74,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="194"  isSplitAllowed="true" >
+			<band height="180"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="10"
@@ -523,17 +523,6 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{MeasurementStatusConfidenceValue}]]></textFieldExpression>
 				</textField>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="10"
-						y="180"
-						width="260"
-						height="14"
-						key="subreport-1"
-						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.ViabilityIndicatorsDataSource)$P{REPORT_DATA_SOURCE}).getViabilityGoalsDataSourceDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisViabilityGoalReport.jasper")]]></subreportExpression>
-				</subreport>
 			</band>
 		</detail>
 		<columnFooter>

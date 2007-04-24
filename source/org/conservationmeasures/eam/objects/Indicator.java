@@ -71,11 +71,6 @@ public class Indicator extends BaseObject
 		taskIds.add(taskId);
 	}
 	
-	public IdList getGoalIds()
-	{
-		return goalIds.getIdList();
-	}
-
 	//TODO: several pseudo fields are shared between Indicator and Desires; this may indicate a need for a common super class
 	public String getPseudoData(String fieldTag)
 	{
@@ -127,7 +122,6 @@ public class Indicator extends BaseObject
 		priority = new ChoiceData();
 		status = new ChoiceData();
 		taskIds = new IdListData();
-		goalIds = new IdListData();
 		indicatorThreshold = new StringMapData();
 		measurementTrend= new ChoiceData();
 		measurementStatus= new ChoiceData();
@@ -156,7 +150,6 @@ public class Indicator extends BaseObject
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
 		addField(TAG_TASK_IDS, taskIds);
-		addField(TAG_GOAL_IDS, goalIds);
 		addField(TAG_INDICATOR_THRESHOLD, indicatorThreshold);
 		addField(TAG_MEASUREMENT_TREND, measurementTrend);
 		addField(TAG_MEASUREMENT_STATUS, measurementStatus);
@@ -219,8 +212,6 @@ public class Indicator extends BaseObject
 		{
 			case ObjectType.TASK: 
 				list.addAll(new ORefList(objectType, getTaskIdList()));
-			case ObjectType.GOAL: 
-				list.addAll(new ORefList(objectType, getGoalIds()));
 		}
 		return list;
 	}
@@ -241,7 +232,6 @@ public class Indicator extends BaseObject
 	public static final String TAG_PRIORITY = "Priority";
 	public static final String TAG_STATUS = "Status";
 	public final static String TAG_TASK_IDS = "TaskIds";
-	public final static String TAG_GOAL_IDS = "GoalIds";
 	public static final String TAG_INDICATOR_THRESHOLD = "IndicatorThresholds";
 	public static final String TAG_MEASUREMENT_TREND = "MeasurementTrend";
 	public static final String TAG_MEASUREMENT_STATUS  = "MeasurementStatus";
@@ -281,7 +271,6 @@ public class Indicator extends BaseObject
 	StringData measurementDetail;
 	ChoiceData measurementStatusConfidence;
 	ChoiceData ratingSource;
-	IdListData goalIds;
 	
 	PseudoStringData multiLineTargets;
 	PseudoStringData multiLineDirectThreats;

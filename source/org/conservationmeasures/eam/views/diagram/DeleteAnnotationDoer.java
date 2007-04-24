@@ -83,7 +83,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationIdListTag, idToRemove));
 		commands.addAll(buildCommandsToDeleteSubTasks(project, type, idToRemove));
 		commands.addAll(buildCommandsToDeleteKEAIndicators(project, type, idToRemove));
-		commands.addAll(buildCommandsToDeleteSubGoals(project, type, idToRemove));
 		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 		commands.add(new CommandDeleteObject(type, idToRemove));
 		
@@ -141,25 +140,5 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		
 		return commands;
 	}
-	
-	
-	private static Vector buildCommandsToDeleteSubGoals(Project project, int type, BaseId id) throws Exception
-	{
-		Vector commands = new Vector();
-		if (!(type == ObjectType.INDICATOR))
-			return commands;
-		
-		Indicator indicator = (Indicator)project.findObject(type, id);
-		commands.addAll(Arrays.asList(indicator.createCommandsToClear()));
-		
-		IdList goalList = new IdList(indicator.getData(Indicator.TAG_GOAL_IDS));
-		for (int i  = 0; i < goalList.size(); i++)
-		{
-			BaseObject thisAnnotation = project.findObject(ObjectType.GOAL,  goalList.get(i));
-			Command[] deleteCommands = DeleteIndicator.buildCommandsToDeleteAnnotation(project, indicator, Indicator.TAG_GOAL_IDS, thisAnnotation);
-			commands.addAll(Arrays.asList(deleteCommands));
-		}
 
-		return commands;
-	}
 }

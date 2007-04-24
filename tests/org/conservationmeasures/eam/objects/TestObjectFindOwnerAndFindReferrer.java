@@ -199,7 +199,6 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	public void testIndicatorOwn() throws Exception
 	{
 		BaseId indicatorId = project.createObject(ObjectType.INDICATOR);
-		BaseId goalId = project.addItemToIndicatorList(indicatorId, ObjectType.GOAL, Indicator.TAG_GOAL_IDS);
 	
 		BaseId taskId = project.createTask(new ORef(ObjectType.INDICATOR, indicatorId));
 		IdList taskList = new IdList(new BaseId[] {taskId});
@@ -208,7 +207,6 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 		ORef owner = new ORef(ObjectType.INDICATOR, indicatorId);
-		verifyOwner(owner, new ORef(ObjectType.GOAL, goalId));
 		verifyOwner(owner, new ORef(ObjectType.TASK, taskId));
 	}
 	

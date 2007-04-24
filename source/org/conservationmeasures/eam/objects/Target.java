@@ -103,23 +103,6 @@ public class Target extends Factor
 		return super.getPseudoData(fieldTag);
 	}
 	
-	public IdList getDirectOrIndirectGoals()
-	{
-		IdList goalIds = new IdList();
-
-		if(!isViabilityModeTNC())
-			return getGoals();
-		
-		IdList indicatorIds = getDirectOrIndirectIndicators();
-		for(int i = 0; i < indicatorIds.size(); ++i)
-		{
-			Indicator indicator = (Indicator)objectManager.findObject(ObjectType.INDICATOR, indicatorIds.get(i));
-			goalIds.addAll(indicator.getGoalIds());
-		}
-		
-		return goalIds;
-	}
-	
 	
 	public IdList getDirectOrIndirectIndicators()
 	{

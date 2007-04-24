@@ -10,8 +10,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.Arrays;
-import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -24,11 +22,9 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanelSpecial;
-import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -40,10 +36,10 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
-import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.questions.RatingSourceQuestion;
 import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.martus.swing.UiLabel;
 
@@ -72,12 +68,12 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		indicatorThreshold = (ViabilityRatingsTableField)
 			addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD)));
 		
-		ObjectDataInputField goalShortLabel = addField(createStringField(ObjectType.GOAL, Goal.TAG_SHORT_LABEL, STD_SHORT));
-		ObjectDataInputField goalLabel = addField(createStringField(ObjectType.GOAL, Goal.TAG_LABEL));
-		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new StatusQuestion(Goal.TAG_DESIRED_STATUS)));
-		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
-		ObjectDataInputField desiredSummary = addField(createStringField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
-		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,NARROW_DETAILS));
+//		ObjectDataInputField goalShortLabel = addField(createStringField(ObjectType.GOAL, Goal.TAG_SHORT_LABEL, STD_SHORT));
+//		ObjectDataInputField goalLabel = addField(createStringField(ObjectType.GOAL, Goal.TAG_LABEL));
+//		ObjectDataInputField desiredStatus = addField(createRatingChoiceField(ObjectType.GOAL, new StatusQuestion(Goal.TAG_DESIRED_STATUS)));
+//		ObjectDataInputField byWhen = addField(createDateChooserField(ObjectType.GOAL, Goal.TAG_BY_WHEN));
+//		ObjectDataInputField desiredSummary = addField(createStringField(ObjectType.GOAL, Goal.TAG_DESIRED_SUMMARY,STD_SHORT));
+//		ObjectDataInputField desiredDetail = addField(createMultilineField(ObjectType.GOAL, Goal.TAG_DESIRED_DETAIL,NARROW_DETAILS));
 		
 		
 		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
@@ -159,22 +155,22 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		// Goal section
 		mainGridPanel.add(makeSectionLabel(EAM.text("Future Status")));
 		
-		JPanel box7 = createGridLayoutPanel(1,4);
-		box7.add(goalLabel.getComponent());
-		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box7.add(createLabel(goalShortLabel));
-		box7.add(goalShortLabel.getComponent());
-		mainGridPanel.add(box7);
-		
-		JPanel box8 = createGridLayoutPanel(1,5);
-		box8.add(createColumnJPanel(desiredStatus));
-		box8.add(createColumnJPanel(byWhen));
-		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box8.add(createColumnJPanelWithIcon(desiredSummary, new GoalIcon()));
-		box8.add(createColumnJPanel(desiredDetail));
-		UiLabel goalSectionLabel = makeSectionLabel(EAM.text("(Goal)"));
-		mainGridPanel.add(goalSectionLabel);
-		mainGridPanel.add(box8);
+//		JPanel box7 = createGridLayoutPanel(1,4);
+//		box7.add(goalLabel.getComponent());
+//		box7.add(Box.createHorizontalStrut(STD_SPACE_20));
+//		box7.add(createLabel(goalShortLabel));
+//		box7.add(goalShortLabel.getComponent());
+//		mainGridPanel.add(box7);
+//		
+//		JPanel box8 = createGridLayoutPanel(1,5);
+//		box8.add(createColumnJPanel(desiredStatus));
+//		box8.add(createColumnJPanel(byWhen));
+//		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
+//		box8.add(createColumnJPanelWithIcon(desiredSummary, new GoalIcon()));
+//		box8.add(createColumnJPanel(desiredDetail));
+//		UiLabel goalSectionLabel = makeSectionLabel(EAM.text("(Goal)"));
+//		mainGridPanel.add(goalSectionLabel);
+//		mainGridPanel.add(box8);
 		
 		main.add(mainGridPanel);
 		
@@ -246,46 +242,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	public ObjectDataInputField createViabilityRatingsTableField(int objectType, ChoiceQuestion question)
 	{
 		return new ViabilityRatingsTableField(getProject(), objectType, getObjectIdForType(objectType), question);
-	}
-	
-
-	public void setObjectRefs(ORef[] orefsToUse)
-	{
-		indicatorThreshold.setIconRowObject(null);
-		BaseId objectId = getObjectIdForTypeInThisList(ObjectType.INDICATOR, orefsToUse);
-		if (!objectId.isInvalid())
-			orefsToUse = insertIndicatorsGoalIntoCurrentSelectedObjectList(orefsToUse, objectId);
-		super.setObjectRefs(orefsToUse);
-		indicatorThreshold.repaint();
-	}
-
-	private ORef[] insertIndicatorsGoalIntoCurrentSelectedObjectList(ORef[] orefsToUse, BaseId objectId)
-	{
-		Indicator indicator = (Indicator)getProject().findObject(ObjectType.INDICATOR, objectId);
-		try
-		{
-			IdList list = new IdList(indicator.getData(Indicator.TAG_GOAL_IDS));
-			if (list.size()!=0)
-				
-			{
-				Vector orefList = new Vector(Arrays.asList(orefsToUse));
-				ORef ref = new ORef(ObjectType.GOAL,list.get(0));
-				orefList.insertElementAt(ref,0);
-				indicatorThreshold.setIconRowObject(new ORef(ObjectType.INDICATOR, objectId));
-				indicatorThreshold.setIconRowObject(ref);
-				orefsToUse = (ORef[])orefList.toArray(new ORef[0]);
-			}
-			else
-				EAM.logError("No Goals found for EKA Indicator:" + objectId);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		
-		return orefsToUse;
-	}
-	
+	}	
 	
 	public String getPanelDescription()
 	{
