@@ -532,7 +532,7 @@
 						key="subreport-1"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.ViabilityIndicatorsDataSource)$P{REPORT_DATA_SOURCE}).getViabilityGoalsDataSourceDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisViabilityGoalReport.jasper")]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisViabilityGoalReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>

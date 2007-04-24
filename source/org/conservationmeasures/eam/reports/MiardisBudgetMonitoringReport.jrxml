@@ -96,7 +96,7 @@
 						key="BudgetMontiroingIndicatorReport"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.BudgetMonitoringDataSource)$P{REPORT_DATA_SOURCE}).getBudgetMontiroingIndicatorDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "getBudgetMontiroingIndicatorReport.jasper")]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "getBudgetMontiroingIndicatorReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>

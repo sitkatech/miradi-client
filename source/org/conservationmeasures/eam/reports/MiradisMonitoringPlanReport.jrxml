@@ -96,7 +96,7 @@
 						key="MiradisDiagramReport-1"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MonitoringPlanDataSource)$P{REPORT_DATA_SOURCE}).getRelatedIndicatorsToThisGoalDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisMonitoringIndicatorsReport.jasper")]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisMonitoringIndicatorsReport.jasper")]]></subreportExpression>
 				</subreport>
 				<subreport  isUsingCache="true">
 					<reportElement
@@ -107,7 +107,7 @@
 						key="MiradisDiagramReport-2"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MonitoringPlanDataSource)$P{REPORT_DATA_SOURCE}).getRelatedObectivesToThisGoalDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourcePath(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisMonitoringObjectivesReport.jasper")]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisMonitoringObjectivesReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
