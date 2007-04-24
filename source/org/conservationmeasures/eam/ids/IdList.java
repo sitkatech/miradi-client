@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.ids;
 
 import java.text.ParseException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -155,6 +156,11 @@ public class IdList
 	public IdList createClone()
 	{
 		return new IdList(this);
+	}
+	
+	public void sort()
+	{
+		Collections.sort(data);
 	}
 
 	private static final String TAG_IDS = "Ids";

@@ -278,6 +278,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		removeAllResultsChainTabs();
 		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
+		resultsChains.sort();
+		
 		for (int i = 0; i < resultsChains.size(); i++)
 		{
 			DiagramModel diagramModel = new DiagramModel(getProject());
