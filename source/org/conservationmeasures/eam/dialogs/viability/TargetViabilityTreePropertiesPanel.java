@@ -85,7 +85,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box1.add(createColumnJPanel(keaLabel));
 		box1.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box1.add(createColumnJPanel(keaType));
-		mainGridPanel.add(makeBoldLabel(keaLabel));
+		mainGridPanel.add(makeSectionLabel("KEA"));
 		mainGridPanel.add(box1);
 		
 		
@@ -101,7 +101,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box2.add(createColumnJPanel(indicatorLabel));
 		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(createColumnJPanel(indicatorShortLabel));
-		mainGridPanel.add(makeBoldLabel(indicatorLabel));
+		mainGridPanel.add(makeSectionLabel("Indicator"));
 		mainGridPanel.add(box2);
 		
 		JPanel boxIndrPrty = createGridLayoutPanel(1,5);
@@ -110,6 +110,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		boxIndrPrty.add(createColumnJPanel(monitoringStatus));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(boxIndrPrty);
+		
+		boxIndrPrty.add(Box.createVerticalStrut((3*STD_SPACE_20)));
 		
 		// Indicator Rating Section
 		mainGridPanel.add(makeBoldLabel(indicatorThreshold));
