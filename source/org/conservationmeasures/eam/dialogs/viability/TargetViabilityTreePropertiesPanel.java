@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
@@ -83,19 +82,15 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		// KEA Section 
 		Box box1 = Box.createHorizontalBox();
-		box1.add(keaLabel.getComponent());
+		box1.add(createColumnJPanel(keaLabel));
 		box1.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box1.add(createLabel(keaType));
-		box1.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box1.add(keaType.getComponent());
+		box1.add(createColumnJPanel(keaType));
 		mainGridPanel.add(makeBoldLabel(keaLabel));
 		mainGridPanel.add(box1);
 		
 		
 		Box keaDescPanel = Box.createHorizontalBox();
-		keaDescPanel.add(createLabel(keaDesc));
-		keaDescPanel.add(Box.createHorizontalStrut(STD_SPACE_20));
-		keaDescPanel.add(keaDesc.getComponent(), BorderLayout.BEFORE_LINE_BEGINS);
+		keaDescPanel.add(createColumnJPanel(keaDesc));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(keaDescPanel);
 		
@@ -103,19 +98,16 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		// Indicator Section 
 		Box box2 = Box.createHorizontalBox();
-		box2.add(indicatorLabel.getComponent());
+		box2.add(createColumnJPanel(indicatorLabel));
 		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box2.add(createLabel(indicatorShortLabel));
-		box2.add(indicatorShortLabel.getComponent());
+		box2.add(createColumnJPanel(indicatorShortLabel));
 		mainGridPanel.add(makeBoldLabel(indicatorLabel));
 		mainGridPanel.add(box2);
 		
 		JPanel boxIndrPrty = createGridLayoutPanel(1,5);
 		boxIndrPrty.add(createColumnJPanel(indicatorPriority));
-		//boxIndrPrty.add(indicatorPriority.getComponent());
 		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
 		boxIndrPrty.add(createColumnJPanel(monitoringStatus));
-		//boxIndrPrty.add(monitoringStatus.getComponent());
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(boxIndrPrty);
 		
