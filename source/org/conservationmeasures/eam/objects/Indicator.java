@@ -131,6 +131,12 @@ public class Indicator extends BaseObject
 		measurementStatusConfidence = new ChoiceData();
 		ratingSource= new ChoiceData();
 		
+		futureStatusRating = new ChoiceData();
+		futureStatusDate = new DateData();;
+		futureStatusSummary = new StringData();
+		futureStatusDetail = new StringData();
+		
+		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);
@@ -144,6 +150,7 @@ public class Indicator extends BaseObject
 		ratingSourceLabel = new PseudoQuestionData(new RatingSourceQuestion(TAG_RATING_SOURCE));
 		measurementStatusConfidenceLabel = new PseudoQuestionData(new StatusConfidenceQuestion(TAG_MEASUREMENT_STATUS_CONFIDENCE));
 		
+		futureStatusRatingLabel = new PseudoQuestionData(new StatusQuestion(TAG_FUTURE_STATUS_RATING));
 		
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
@@ -159,6 +166,11 @@ public class Indicator extends BaseObject
 		addField(TAG_MEASUREMENT_STATUS_CONFIDENCE, measurementStatusConfidence);
 		addField(TAG_RATING_SOURCE, ratingSource);
 		
+		addField(TAG_FUTURE_STATUS_RATING, futureStatusRating);
+		addField(TAG_FUTURE_STATUS_DATE, futureStatusDate);
+		addField(TAG_FUTURE_STATUS_SUMMARY, futureStatusSummary);
+		addField(TAG_FUTURE_STATUS_DETAIL, futureStatusDetail);
+		
 		addField(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE, indicatorThresholdLabel);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
@@ -171,6 +183,8 @@ public class Indicator extends BaseObject
 		addField(PSEUDO_TAG_MEASUREMENT_STATUS_VALUE, measurementStatusLabel);
 		addField(PSEUDO_TAG_RATING_SOURCE_VALUE, ratingSourceLabel);
 		addField(PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE, measurementStatusConfidenceLabel);
+		
+		addField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, futureStatusRatingLabel);
 	}
 	
 	public int getType()
@@ -188,8 +202,6 @@ public class Indicator extends BaseObject
 	{
 		switch(type)
 		{
-			case ObjectType.GOAL: 
-				return true;
 			case ObjectType.TASK: 
 				return true;
 			default:
@@ -240,6 +252,11 @@ public class Indicator extends BaseObject
 	public static final String TAG_MEASUREMENT_DETAIL = "MeasurementDetail";
 	public static final String TAG_MEASUREMENT_STATUS_CONFIDENCE = "MeasurementStatusConfidence";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
+	
+	public static final String TAG_FUTURE_STATUS_RATING  = "FutureStatusRating";
+	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";
+	public static final String TAG_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
+	public static final String TAG_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
 
 	public static final String PSEUDO_TAG_TARGETS = "Targets";
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "DirectThreats";
@@ -254,6 +271,8 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_RATING_SOURCE_VALUE = "RatingSourceValue";
 	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE = "MeasurementStatusConfidenceValue";
 	public static final String PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE = "IndicatorThresholdValue";
+	
+	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "FutureStatusRatingValue";
 
 
 	
@@ -272,6 +291,11 @@ public class Indicator extends BaseObject
 	ChoiceData measurementStatusConfidence;
 	ChoiceData ratingSource;
 	
+	ChoiceData futureStatusRating;
+	DateData futureStatusDate;
+	StringData futureStatusSummary;
+	StringData futureStatusDetail;
+	
 	PseudoStringData multiLineTargets;
 	PseudoStringData multiLineDirectThreats;
 	PseudoStringData multiLineStrategies;
@@ -285,5 +309,7 @@ public class Indicator extends BaseObject
 	PseudoQuestionData measurementStatusLabel;
 	PseudoQuestionData ratingSourceLabel;
 	PseudoQuestionData measurementStatusConfidenceLabel;
+	
+	PseudoQuestionData futureStatusRatingLabel;
 	
 }
