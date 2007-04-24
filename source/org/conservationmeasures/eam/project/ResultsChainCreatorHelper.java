@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
@@ -74,7 +75,7 @@ public class ResultsChainCreatorHelper
 			return newResultsChainId;
 	}
 	
-	private String getFirstStrategyShortLabel(DiagramFactor[] diagramFactors)
+	private String getFirstStrategyShortLabel(DiagramFactor[] diagramFactors) throws Exception
 	{
 		for (int i = 0; i < diagramFactors.length; ++i)
 		{
@@ -82,13 +83,21 @@ public class ResultsChainCreatorHelper
 			if (diagramFactor.getWrappedType() == ObjectType.STRATEGY)
 			{
 				Strategy strategy = (Strategy) project.findObject(new ORef(ObjectType.STRATEGY, diagramFactor.getWrappedId()));
-				return strategy.getShortLabel();
+				return getLabel(strategy);
 			}
 		}
 		
-		return "";
+		throw new Exception("No strategy found in results chain");
 	}
 
+	private String getLabel(Strategy strategy)
+	{
+		String shortLabel = strategy.getShortLabel();
+		if (shortLabel.trim().length() > 0)
+			return shortLabel;
+		
+		return EAM.text("Results Chain");
+	}
 
 	private DiagramFactorId[] extractClonedDiagramFactors(HashMap clonedDiagramFactors)
 	{
