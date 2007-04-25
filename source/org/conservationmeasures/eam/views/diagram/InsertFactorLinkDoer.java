@@ -46,12 +46,13 @@ public class InsertFactorLinkDoer extends ViewDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		ConnectionPropertiesDialog dialog = new ConnectionPropertiesDialog(EAM.mainWindow);
+		DiagramView diagramView = getDiagramView();
+		ConnectionPropertiesDialog dialog = new ConnectionPropertiesDialog(getMainWindow(), diagramView.getDiagramPanel());
 		dialog.setVisible(true);
 		if(!dialog.getResult())
 			return;
-		
-		DiagramModel model = getDiagramView().getDiagramModel();
+			
+		DiagramModel model = diagramView.getDiagramModel();
 		DiagramFactor fromDiagramFactor = dialog.getFrom();
 		DiagramFactor toDiagramFactor = dialog.getTo();
 		

@@ -16,7 +16,9 @@ import java.util.Vector;
 import javax.swing.Box;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -32,10 +34,11 @@ import org.martus.swing.Utilities;
 
 public class ConnectionPropertiesDialog extends EAMDialog implements ActionListener
 {
-	public ConnectionPropertiesDialog(MainWindow parent) throws HeadlessException
+	public ConnectionPropertiesDialog(MainWindow parent, DiagramPanel panelToUse) throws HeadlessException
 	{
 		super(parent, EAM.text("Title|Link Properties"));
-		mainWindow = parent;
+		
+		diagramPanel = panelToUse;
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createFromToBox());
 		bigBox.addSpace();
@@ -53,8 +56,8 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 	{
 		linkFromList = createChoices(FactorLink.FROM);
 		linkToList = createChoices(FactorLink.TO);
-		DiagramComponent diagram = mainWindow.getDiagramComponent();
-		
+		DiagramComponent diagram = diagramPanel.getdiagramComponent();
+
 		FactorCell firstSelected = diagram.getSelectedFactor(0);
 		if(firstSelected != null)
 			linkFromList.setSelectedItem(new FactorDropDownItem(firstSelected.getUnderlyingObject(), firstSelected.getDiagramFactor()));
@@ -74,12 +77,12 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		boolean acceptStrategies = (linkFromTo == FactorLink.FROM);
 		boolean acceptTargets = (linkFromTo == FactorLink.TO);
 		
-		Project project = mainWindow.getProject();
 		UiComboBox comboBox = new UiComboBox();
 		comboBox.addItem(EAM.text("Label|--Select One---"));
 		
-		DiagramFactor[] allDiagramFactors = project.getAllDiagramFactors();
-		Factor[] factors = convertToFactorList(project, allDiagramFactors);
+		DiagramModel model = diagramPanel.getDiagramModel();
+		DiagramFactor[] allDiagramFactors = model.getAllDiagramFactorsAsArray();
+		Factor[] factors = convertToFactorList(model.getProject(), allDiagramFactors);
 		
 		Vector dropDownItems = new Vector();
 		for(int i = 0; i < factors.length; ++i)
@@ -207,7 +210,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		return item.getDiagramFactor();
 	}
 	
-	MainWindow mainWindow;
+	DiagramPanel diagramPanel;
 	boolean result;
 	UiComboBox linkFromList;
 	UiComboBox linkToList;
