@@ -65,18 +65,8 @@ public class InsertFactorLinkDoer extends ViewDoer
 		
 		try
 		{
-			if(model.areLinked(dialog.getFrom().getDiagramFactorId(), dialog.getTo().getDiagramFactorId()))
-			{
-				String[] body = {EAM.text("Those items are already linked"), };
-				EAM.okDialog(EAM.text("Can't Create Link"), body);
+			if (linkWasRejected(model, fromDiagramFactor, toDiagramFactor))
 				return;
-			}
-			if (wouldCreateLinkageLoop(model, fromDiagramFactor.getWrappedId(), toDiagramFactor.getWrappedId()))
-			{
-				String[] body = {EAM.text("Cannot create that link because it would cause a loop."), };
-				EAM.okDialog(EAM.text("Error"), body);
-				return;
-			}
 		}
 		catch (Exception e)
 		{
@@ -98,10 +88,46 @@ public class InsertFactorLinkDoer extends ViewDoer
 			getProject().executeCommand(new CommandEndTransaction());	
 		}
 	}
+
+	public static boolean linkWasRejected(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
+	{
+		Project project = model.getProject();
+		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
+		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+		
+		return linkWasRejected(model, fromDiagramFactor, toDiagramFactor);
+	}
 	
-	boolean wouldCreateLinkageLoop(DiagramModel dModel, FactorId fromId, FactorId toId)
+	public static boolean linkWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	{
+		
+		if(model.areLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
+		{
+			String[] body = {EAM.text("Those items are already linked"), };
+			EAM.okDialog(EAM.text("Can't Create Link"), body);
+			return true;
+		}
+		if (wouldCreateLinkageLoop(model, fromDiagramFactor.getWrappedId(), toDiagramFactor.getWrappedId()))
+		{
+			String[] body = {EAM.text("Cannot create that link because it would cause a loop."), };
+			EAM.okDialog(EAM.text("Error"), body);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public static boolean wouldCreateLinkageLoop(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId)
+	{
+		FactorId fromId = model.getWrappedId(fromDiagramFactorId);
+		FactorId toId = model.getWrappedId(toDiagramFactorId);
+	
+		return wouldCreateLinkageLoop(model, fromId, toId);
+	}
+	
+	public static boolean wouldCreateLinkageLoop(DiagramModel model, FactorId fromId, FactorId toId)
     {
-		Factor fromFactor = dModel.getProject().findNode(fromId);
+		Factor fromFactor = model.getProject().findNode(fromId);
 		ProjectChainObject chainObject = new ProjectChainObject();
 		chainObject.buildUpstreamChain(fromFactor);
 		Factor[] upstreamFactors = chainObject.getFactorsArray();

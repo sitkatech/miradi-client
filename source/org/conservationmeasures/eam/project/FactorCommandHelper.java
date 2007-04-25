@@ -208,13 +208,9 @@ public class FactorCommandHelper
 			DiagramFactorId oldFromDiagramId = linkageData.getFromId();
 			DiagramFactorId newFromId = dataHelper.getNewId(oldFromDiagramId);
 			DiagramFactorId newToId = dataHelper.getNewId(linkageData.getToId());
-			
-			if(model.areLinked(newFromId, newToId))
-			{
-				String[] body = {EAM.text("Those items are already linked"), };
-				EAM.okDialog(EAM.text("Can't Create Link"), body);
+
+			if (InsertFactorLinkDoer.linkWasRejected(model, newFromId, newToId))
 				return;
-			}
 
 			if(newFromId.isInvalid() || newToId.isInvalid())
 			{
