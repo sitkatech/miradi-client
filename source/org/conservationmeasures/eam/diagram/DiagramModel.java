@@ -210,7 +210,11 @@ public class DiagramModel extends DefaultGraphModel
     {
     	CreateDiagramFactorLinkParameter extraInfo = (CreateDiagramFactorLinkParameter) diagramFactorLink.getCreationExtraInfo();
 		FactorCell from = rawGetFactorById(extraInfo.getFromFactorId());
+		if(from == null)
+			EAM.logError("Missing from, DFL=" + diagramFactorLink.getId() + ", From=" + extraInfo.getFromFactorId());
 		FactorCell to = rawGetFactorById(extraInfo.getToFactorId());
+		if(to == null)
+			EAM.logError("Missing to, DFL=" + diagramFactorLink.getId() + ", To=" + extraInfo.getToFactorId());
 		FactorLink factorLink = getRawFactorLink(diagramFactorLink); 
 		LinkCell cell = new LinkCell(factorLink, diagramFactorLink, from, to);
 		
