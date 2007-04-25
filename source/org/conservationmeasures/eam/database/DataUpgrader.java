@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -102,6 +103,87 @@ public class DataUpgrader extends ProjectServer
 		
 		if (readDataVersion(getTopDirectory()) == 17)
 			upgradeToVersion18();
+		
+		if (readDataVersion(getTopDirectory()) == 18)
+			upgradeToVersion19();
+	}
+	
+	public void upgradeToVersion19() throws Exception
+	{
+		possiblyNotifyUserAfterUpgradingToVersion19();
+		writeVersion(19);
+	}
+
+	private void possiblyNotifyUserAfterUpgradingToVersion19() throws Exception
+	{
+		BaseId[] newGoalIds = removeGoalsFromIndicators(); 
+		if (newGoalIds.length > 0)
+		{
+			EAM.notifyDialog(EAM.text("One or more Goals that were associated with KEA Indicators have been deleted. " +
+									"Please create new Goals as needed, or use the new Future Status section " +
+									"of the Target Viability to store the same data."));
+		}
+	}
+	
+	public BaseId[] removeGoalsFromIndicators() throws Exception
+	{
+		File jsonDir = new File(topDirectory, "json");
+		
+		File objects8Dir = new File(jsonDir, "objects-8");
+		if (! objects8Dir.exists())
+			return new BaseId[0];
+		
+		File manifest8File = new File(objects8Dir, "manifest");
+		if (! manifest8File.exists())
+			throw new RuntimeException("manifest for objects-8 directory does not exist " + manifest8File.getAbsolutePath());
+
+		
+		File objects10Dir = new File(jsonDir, "objects-10");
+		if (! objects10Dir.exists())
+			return new BaseId[0];
+
+		File manifest10File = new File(objects10Dir, "manifest");
+		if (! manifest10File.exists())
+			throw new RuntimeException("manifest for objects-10 directory does not exist " + manifest10File.getAbsolutePath());
+
+		ObjectManifest manifest8 = new ObjectManifest(JSONFile.read(manifest8File));
+		BaseId[] allIndicatorIds = manifest8.getAllKeys();
+		
+		IdList goalIdsToBeRemoved = new IdList();
+		for (int i = 0; i < allIndicatorIds.length; ++i)
+		{
+			File nodeFile = new File(objects8Dir, Integer.toString(allIndicatorIds[i].asInt()));
+			JSONObject indicatorJson = JSONFile.read(nodeFile);
+			IdList goalIds = new IdList(indicatorJson.optString("GoalIds"));
+			goalIdsToBeRemoved.addAll(goalIds);
+			
+			EnhancedJsonObject readIn = readFile(nodeFile);
+			readIn.put("GoalIds", "");
+			writeJson(nodeFile, readIn);
+		}
+		
+		ObjectManifest manifest10 = new ObjectManifest(JSONFile.read(manifest10File));
+		BaseId[] allGoalIds = manifest10.getAllKeys();
+		BaseId[] newGoalIds = removeGoalIdsFoundInIndicators(goalIdsToBeRemoved, allGoalIds);
+		int[] goalIdsAsInts = new IdList(newGoalIds).toIntArray();
+		String manifestContent = buildManifestContents(goalIdsAsInts);
+		File manifestFile = new File(objects10Dir, "manifest");
+		createFile(manifestFile, manifestContent);
+		
+		return newGoalIds;
+	}
+
+	private BaseId[] removeGoalIdsFoundInIndicators(IdList goalIdsToBeRemoved, BaseId[] allGoalIds)
+	{
+		Vector newGoalIds = new Vector();
+		for (int i = 0; i < allGoalIds.length; ++i)
+		{
+			BaseId id = allGoalIds[i];
+			if (! goalIdsToBeRemoved.contains(id))
+				newGoalIds.add(id);
+		}
+		
+		return (BaseId[]) newGoalIds.toArray(new BaseId[0]);
 	}
 	
 	public void upgradeToVersion18() throws Exception
@@ -341,11 +423,28 @@ public class DataUpgrader extends ProjectServer
 		JSONFile.write(file, jsonToWrite);
 	}
 	
-	void createFile(File file, String contents) throws Exception
+	public static File createManifestFile(File parent, int[] ids) throws Exception
+	{
+		File manifestFile = new File(parent, "manifest");
+		createFile(manifestFile, buildManifestContents(ids));
+		return manifestFile;
+	}
+	
+	public static String buildManifestContents(int[] ids)
+	{
+		String contents = "{\"Type\":\"ObjectManifest\"";
+		for(int i = 0; i < ids.length; ++i)
+		{
+			contents += ",\"" + ids[i] + "\":true";
+		}
+		contents += "}";
+		return contents;
+	}
+	
+	public static void createFile(File file, String contents) throws Exception
 	{
 		UnicodeWriter writer = new UnicodeWriter(file);
 		writer.writeln(contents);
 		writer.close();
 	}
-
 }

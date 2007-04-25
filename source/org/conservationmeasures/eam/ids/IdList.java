@@ -162,6 +162,17 @@ public class IdList
 	{
 		Collections.sort(data);
 	}
+	
+	public int[] toIntArray()
+	{
+		int[] intArray = new int[size()];
+		for (int i = 0; i < size(); ++i)
+		{
+			intArray[i] = get(i).asInt();
+		}
+			
+		return intArray;
+	}
 
 	private static final String TAG_IDS = "Ids";
 

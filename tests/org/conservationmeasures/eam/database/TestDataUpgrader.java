@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
-import org.martus.util.UnicodeWriter;
 
 public class TestDataUpgrader extends EAMTestCase
 {
@@ -110,6 +109,48 @@ public class TestDataUpgrader extends EAMTestCase
 		upgraderWithNoObjects6.upgradeToVersion16();
 	}
 
+	public void testUpgradeTo19RemovingGoalIdsFromIndicators() throws Exception
+	{
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
+		
+		File objectsIndicator = new File(jsonDir, "objects-8");
+		objectsIndicator.mkdirs();
+
+		int[] indicatorIds = {33};
+		File objectsIndicatorManifestFile = createManifestFile(objectsIndicator, indicatorIds);
+		assertTrue("indicator manifest doesnt exist?", objectsIndicatorManifestFile.exists());
+
+		File objectsGoals = new File(jsonDir, "objects-10");
+		objectsGoals.mkdirs();
+		
+		int[] rawGoalIds = {44, 55};
+		File objectsGoalManifestFile = createManifestFile(objectsGoals, rawGoalIds);
+		assertTrue("goal manifest doesnt exist?", objectsGoalManifestFile.exists());
+
+		String indicator33 = " {\"Status\":\"\",\"MeasurementDate\":\"\",\"RatingSource\":\"\",\"MeasurementStatus\":\"\",\"ShortLabel\":\"\",\"GoalIds\":\"{\\\"Ids\\\":[44]}\",\"MeasurementDetail\":\"\",\"Priority\":\"\",\"Label\":\"24\",\"MeasurementTrend\":\"\",\"MeasurementStatusConfidence\":\"\",\"MeasurementSummary\":\"\",\"TaskIds\":\"\",\"IndicatorThresholds\":\"\",\"Id\":33} ";
+		File indicator33File = new File(objectsIndicator, "33");
+		createFile(indicator33File, indicator33);
+		
+		String goal44 = "{\"ShortLabel\":\"\",\"FullText\":\"\",\"ByWhen\":\"\",\"DesiredStatus\":\"\",\"DesiredDetail\":\"\",\"Label\":\"\",\"DesiredSummary\":\"\",\"Id\":44}";
+		File goal44File = new File(objectsGoals, "44");
+		createFile(goal44File, goal44);
+		
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		upgrader.removeGoalsFromIndicators();
+		
+		EnhancedJsonObject json = new EnhancedJsonObject(readFile(indicator33File));
+		String goalIdsAsString = json.getString("GoalIds");
+		IdList goalIds = new IdList(goalIdsAsString);
+		assertEquals("has no goals", 0, goalIds.size());
+		
+		File goalDirManifest = new File(objectsGoals, "Manifest");
+		ObjectManifest manifest10 = new ObjectManifest(JSONFile.read(goalDirManifest));
+		BaseId[] allGoalIds = manifest10.getAllKeys();
+		assertEquals("failed to delete one goal?", 1, allGoalIds.length);
+		assertEquals("failed to delete correct goal?", 55, allGoalIds[0].asInt());
+	}
+	
 	public void testUpgradeTo18AddingLinksToObject19() throws Exception
 	{
 		File jsonDir = new File(tempDirectory, "json");
@@ -315,23 +356,20 @@ public class TestDataUpgrader extends EAMTestCase
 		reader.close();
 		return contents;
 	}
-		
-	private String buildManifestContents(int[] ids)
+	
+	private File createManifestFile(File parent, int[] ids) throws Exception
 	{
-		String contents = "{\"Type\":\"NodeManifest\"";
-		for(int i = 0; i < ids.length; ++i)
-		{
-			contents += ",\"" + ids[i] + "\":true";
-		}
-		contents += "}";
-		return contents;
+		return DataUpgrader.createManifestFile(parent, ids);
 	}
 	
-	void createFile(File file, String contents) throws Exception
+	private String buildManifestContents(int[] ids)
 	{
-		UnicodeWriter writer = new UnicodeWriter(file);
-		writer.writeln(contents);
-		writer.close();
+		return DataUpgrader.buildManifestContents(ids);
+	}
+	
+	private void createFile(File file, String contents) throws Exception
+	{
+		DataUpgrader.createFile(file, contents);
 	}
 
 	public static IdAssigner idAssigner = new IdAssigner();
