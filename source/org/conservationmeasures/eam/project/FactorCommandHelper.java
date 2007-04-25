@@ -210,15 +210,6 @@ public class FactorCommandHelper
 			DiagramFactorId newToId = dataHelper.getNewId(linkageData.getToId());
 
 			if (InsertFactorLinkDoer.linkWasRejected(model, newFromId, newToId))
-				return;
-
-			if(newFromId.isInvalid() || newToId.isInvalid())
-			{
-				EAM.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromId() + " to OriginalId:" + linkageData.getToId()+" node deleted?");	
-				continue;
-			}
-
-			if (! model.containsDiagramFactor(newFromId) || ! model.containsDiagramFactor(newToId))
 				continue;
 				
 			FactorCell newFromNode = getDiagramFactorById(newFromId);

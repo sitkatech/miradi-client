@@ -56,13 +56,6 @@ public class InsertFactorLinkDoer extends ViewDoer
 		DiagramFactor fromDiagramFactor = dialog.getFrom();
 		DiagramFactor toDiagramFactor = dialog.getTo();
 		
-		if(fromDiagramFactor.getDiagramFactorId().equals(toDiagramFactor.getDiagramFactorId()))
-		{
-			String[] body = {EAM.text("Can't link an item to itself"), };
-			EAM.okDialog(EAM.text("Can't Create Link"), body);
-			return;
-		}
-		
 		try
 		{
 			if (linkWasRejected(model, fromDiagramFactor, toDiagramFactor))
@@ -100,6 +93,12 @@ public class InsertFactorLinkDoer extends ViewDoer
 	
 	public static boolean linkWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
+		if(fromDiagramFactor.getDiagramFactorId().equals(toDiagramFactor.getDiagramFactorId()))
+		{
+			String[] body = {EAM.text("Can't link an item to itself"), };
+			EAM.okDialog(EAM.text("Can't Create Link"), body);
+			return true;
+		}
 		
 		if(model.areLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
 		{
@@ -107,12 +106,23 @@ public class InsertFactorLinkDoer extends ViewDoer
 			EAM.okDialog(EAM.text("Can't Create Link"), body);
 			return true;
 		}
+		
 		if (wouldCreateLinkageLoop(model, fromDiagramFactor.getWrappedId(), toDiagramFactor.getWrappedId()))
 		{
 			String[] body = {EAM.text("Cannot create that link because it would cause a loop."), };
 			EAM.okDialog(EAM.text("Error"), body);
 			return true;
 		}
+		
+		if(fromDiagramFactor.getDiagramFactorId().isInvalid() || toDiagramFactor.getDiagramFactorId().isInvalid())
+		{
+			EAM.logWarning("Unable to Paste Link : from " + fromDiagramFactor.getDiagramFactorId() + " to OriginalId:" + toDiagramFactor.getDiagramFactorId()+" node deleted?");	
+			return true;
+		}
+
+		if (! model.containsDiagramFactor(fromDiagramFactor.getDiagramFactorId()) || ! model.containsDiagramFactor(toDiagramFactor.getDiagramFactorId()))
+			return true;
+
 		
 		return false;
 	}
