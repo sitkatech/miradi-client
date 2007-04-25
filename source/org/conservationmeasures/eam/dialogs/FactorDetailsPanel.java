@@ -72,8 +72,12 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		{
 			targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
 			ratingFieldLabel = new UiLabel(EAM.fieldLabel(targetRatingField.getObjectType(), targetRatingField.getTag()));
-			addLabel(ratingFieldLabel);
-			addFieldComponent(targetRatingField.getComponent());
+			addFieldWithCustomLabel(targetRatingField, ratingFieldLabel);
+			
+			justificationField = createStringField(Target.TAG_CURRENT_STATUS_JUSTIFICATION);
+			justificationFieldLabel = new UiLabel(EAM.fieldLabel(justificationField.getObjectType(), justificationField.getTag()));
+			addFieldWithCustomLabel(justificationField, justificationFieldLabel);
+			
 			detailIcon = new TargetIcon();
 			updateEditabilityOfTargetStatusField();
 		}
@@ -126,9 +130,10 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		boolean enableRatingField = true;
 		if(target.isViabilityModeTNC())
 			enableRatingField = false;
-		targetRatingField.getComponent().setEnabled(enableRatingField);
 		targetRatingField.getComponent().setVisible(enableRatingField);
 		ratingFieldLabel.setVisible(enableRatingField);
+		justificationField.getComponent().setVisible(enableRatingField);
+		justificationFieldLabel.setVisible(enableRatingField);
 	}
 
 	public Factor getFactor()
@@ -155,4 +160,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	private DiagramFactor currentDiagramFactor;
 	private UiLabel ratingFieldLabel;
 	private ObjectDataInputField targetRatingField;
+	private UiLabel justificationFieldLabel;
+	private ObjectDataInputField justificationField;
 }
