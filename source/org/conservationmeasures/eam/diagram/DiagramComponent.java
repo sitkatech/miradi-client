@@ -97,7 +97,8 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
     {
 		boolean isGridVisible = mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE);
 		setGridVisible(isGridVisible);
-		zoom(EAM.mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM));
+		// TODO: No need to use EAM.mainWindow here
+		updateDiagramZoomSetting(EAM.mainWindow);
     }
     	
     
@@ -269,7 +270,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public void zoom(double proportion)
 	{
 		setScale(getScale() * proportion);
-		EAM.mainWindow.saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, getScale() * proportion);
+		EAM.mainWindow.saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, getScale());
 	}
 	
 	public boolean hasLocation()
