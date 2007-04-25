@@ -70,9 +70,10 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		
 		if(getFactor().isTarget())
 		{
-			 targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
-			addField(targetRatingField);
-			addLine(new UiLabel(""), new UiLabel(EAM.text("This 'Status of Target' field is only available in Basic mode")));
+			targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
+			ratingFieldLabel = new UiLabel(EAM.fieldLabel(targetRatingField.getObjectType(), targetRatingField.getTag()));
+			addLabel(ratingFieldLabel);
+			addFieldComponent(targetRatingField.getComponent());
 			detailIcon = new TargetIcon();
 			updateEditabilityOfTargetStatusField();
 		}
@@ -126,6 +127,8 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		if(target.isViabilityModeTNC())
 			enableRatingField = false;
 		targetRatingField.getComponent().setEnabled(enableRatingField);
+		targetRatingField.getComponent().setVisible(enableRatingField);
+		ratingFieldLabel.setVisible(enableRatingField);
 	}
 
 	public Factor getFactor()
@@ -150,5 +153,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	
 	private Icon detailIcon;
 	private DiagramFactor currentDiagramFactor;
+	private UiLabel ratingFieldLabel;
 	private ObjectDataInputField targetRatingField;
 }

@@ -79,7 +79,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel 
 	}
 
 
-	private void addLabel(UiLabel label)
+	public void addLabel(UiLabel label)
 	{
 		label.setVerticalAlignment(SwingConstants.TOP);
 		add(label);
