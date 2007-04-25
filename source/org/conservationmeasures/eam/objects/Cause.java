@@ -6,11 +6,13 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -67,13 +69,19 @@ public class Cause extends Factor
 	
 	public boolean isDirectThreat()
 	{
-		ORefList oRefLinks = findObjectsThatReferToUs(objectManager, ObjectType.FACTOR_LINK, getRef());
-		for (int i = 0; i < oRefLinks.size(); ++i)
+		// NOTE: This was optimized for speed because doing it "the right way"
+		// was causing significant slowness for users
+		FactorLinkPool factorLinkPool = objectManager.getLinkagePool();
+		BaseId[] ids = factorLinkPool.getIds();
+		for(int i = 0; i < ids.length; ++i)
 		{
-			FactorLink link = (FactorLink) objectManager.findObject(oRefLinks.get(i));
-			Factor toFactor = (Factor) objectManager.findObject(new ORef(ObjectType.FACTOR, link.getToFactorId()));
-			if (toFactor.getType() == ObjectType.TARGET)
-				return true;
+			FactorLink link = (FactorLink)factorLinkPool.getRawObject(ids[i]);
+			if(link.getFromFactorId().equals(getId()))
+			{
+				Factor toFactor = (Factor) objectManager.findObject(new ORef(ObjectType.FACTOR, link.getToFactorId()));
+				if (toFactor.getType() == ObjectType.TARGET)
+					return true;
+			}
 		}
 		return false;
 	}
