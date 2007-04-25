@@ -66,7 +66,8 @@ public class CreateBendPointDoer extends LocationDoer
 			
 			DiagramFactorLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
 			Point newBendPoint = getNewBendPointLocation(selectedLink);
-			PointList newListWithBendPoint = getNewBendPointList(selectedLink, newBendPoint);
+			Point snapped = getProject().getSnapped(newBendPoint);
+			PointList newListWithBendPoint = getNewBendPointList(selectedLink, snapped);
 			
 			CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint, selectedLink.getBendPoints());
 			getProject().executeCommand(setBendPointsCommand);
