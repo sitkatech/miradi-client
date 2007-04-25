@@ -130,7 +130,10 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		grid.addFieldWithCustomLabel(grid.createStringField(Factor.TAG_LABEL), createFactorTypeLabel(factor));
 		
 		if (factor.isTarget())
+		{
 			grid.addField(createTargetStatusField(factor));
+			grid.addField(grid.createChoiceField(ObjectType.TARGET, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
+		}
 		
 		grid.setObjectRef(factorORef);
 		return grid;

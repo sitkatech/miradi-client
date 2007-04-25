@@ -31,7 +31,6 @@ import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
-import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.martus.swing.UiLabel;
 
 public class FactorDetailsPanel extends ObjectDataInputPanel
@@ -71,7 +70,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		
 		if(getFactor().isTarget())
 		{
-			addField(createChoiceField(ObjectType.TARGET, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
 			 targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
 			addField(targetRatingField);
 			addLine(new UiLabel(""), new UiLabel(EAM.text("This 'Status of Target' field is only available in Basic mode")));
