@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
@@ -287,6 +288,7 @@ abstract public class BaseObject
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
+		json.put(TAG_TIME_STAMP_MODIFIED, Long.toString(new Date().getTime()));
 		json.put(TAG_ID, id.asInt());
 		Iterator iter = fields.keySet().iterator();
 		while(iter.hasNext())
@@ -686,6 +688,7 @@ abstract public class BaseObject
 		String psuedoTag;
 	}
 	
+	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	public static final String TAG_EMPTY = "EMPTY";
