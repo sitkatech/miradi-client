@@ -129,45 +129,45 @@ public class DataUpgrader extends ProjectServer
 	{
 		File jsonDir = new File(topDirectory, "json");
 		
-		File objects8Dir = new File(jsonDir, "objects-8");
-		if (! objects8Dir.exists())
+		File indicatorDir = new File(jsonDir, "objects-8");
+		if (! indicatorDir.exists())
 			return new BaseId[0];
 		
-		File manifest8File = new File(objects8Dir, "manifest");
-		if (! manifest8File.exists())
-			throw new RuntimeException("manifest for objects-8 directory does not exist " + manifest8File.getAbsolutePath());
+		File indicatrorManifestFile = new File(indicatorDir, "manifest");
+		if (! indicatrorManifestFile.exists())
+			throw new RuntimeException("manifest for objects-8 directory does not exist " + indicatrorManifestFile.getAbsolutePath());
 
 		
-		File objects10Dir = new File(jsonDir, "objects-10");
-		if (! objects10Dir.exists())
+		File goalsDir = new File(jsonDir, "objects-10");
+		if (! goalsDir.exists())
 			return new BaseId[0];
 
-		File manifest10File = new File(objects10Dir, "manifest");
-		if (! manifest10File.exists())
-			throw new RuntimeException("manifest for objects-10 directory does not exist " + manifest10File.getAbsolutePath());
+		File goalManifestFile = new File(goalsDir, "manifest");
+		if (! goalManifestFile.exists())
+			throw new RuntimeException("manifest for objects-10 directory does not exist " + goalManifestFile.getAbsolutePath());
 
-		ObjectManifest manifest8 = new ObjectManifest(JSONFile.read(manifest8File));
-		BaseId[] allIndicatorIds = manifest8.getAllKeys();
+		ObjectManifest indicatorManifestObject = new ObjectManifest(JSONFile.read(indicatrorManifestFile));
+		BaseId[] allIndicatorIds = indicatorManifestObject.getAllKeys();
 		
 		IdList goalIdsToBeRemoved = new IdList();
 		for (int i = 0; i < allIndicatorIds.length; ++i)
 		{
-			File nodeFile = new File(objects8Dir, Integer.toString(allIndicatorIds[i].asInt()));
-			JSONObject indicatorJson = JSONFile.read(nodeFile);
+			File indicatorFile = new File(indicatorDir, Integer.toString(allIndicatorIds[i].asInt()));
+			JSONObject indicatorJson = JSONFile.read(indicatorFile);
 			IdList goalIds = new IdList(indicatorJson.optString("GoalIds"));
 			goalIdsToBeRemoved.addAll(goalIds);
 			
-			EnhancedJsonObject readIn = readFile(nodeFile);
+			EnhancedJsonObject readIn = readFile(indicatorFile);
 			readIn.put("GoalIds", "");
-			writeJson(nodeFile, readIn);
+			writeJson(indicatorFile, readIn);
 		}
 		
-		ObjectManifest manifest10 = new ObjectManifest(JSONFile.read(manifest10File));
-		BaseId[] allGoalIds = manifest10.getAllKeys();
+		ObjectManifest goalManifestObject = new ObjectManifest(JSONFile.read(goalManifestFile));
+		BaseId[] allGoalIds = goalManifestObject.getAllKeys();
 		BaseId[] newGoalIds = removeGoalIdsFoundInIndicators(goalIdsToBeRemoved, allGoalIds);
 		int[] goalIdsAsInts = new IdList(newGoalIds).toIntArray();
 		String manifestContent = buildManifestContents(goalIdsAsInts);
-		File manifestFile = new File(objects10Dir, "manifest");
+		File manifestFile = new File(goalsDir, "manifest");
 		createFile(manifestFile, manifestContent);
 		
 		return newGoalIds;
