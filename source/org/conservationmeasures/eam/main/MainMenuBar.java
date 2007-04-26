@@ -94,7 +94,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocus
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
@@ -306,7 +306,7 @@ public class MainMenuBar extends JMenuBar
 		
 		addMenuItem(actions, menu2b, ActionJumpSelectChainStep.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu2b, ActionJumpRankDraftStrategiesStep.class, KeyEvent.VK_R);
-		addMenuItem(actions, menu2b, ActionJumpResultsChains.class, KeyEvent.VK_R);
+		addMenuItem(actions, menu2b, ActionJumpDiagramWizardResultsChainStep.class, KeyEvent.VK_R);
 		addMenuItem(actions, menu2b, ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);
 
 		menu2.add(menu2a);

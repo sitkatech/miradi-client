@@ -47,7 +47,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardSelec
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
@@ -210,7 +210,7 @@ public class Actions
 		registerAction(new ActionJumpSelectChainStep(mainWindow));
 		registerAction(new ActionJumpStrategicPlanDevelopObjectivesStep(mainWindow));
 		registerAction(new ActionJumpRankDraftStrategiesStep(mainWindow));
-		registerAction(new ActionJumpResultsChains(mainWindow));
+		registerAction(new ActionJumpDiagramWizardResultsChainStep(mainWindow));
 		registerAction(new ActionJumpActivitiesAndActionPlan(mainWindow));
 		registerAction(new ActionJumpAnalyzeResourcesFeasibilityAndRisk(mainWindow));
 		registerAction(new ActionJumpMonitoringWizardFocusStep(mainWindow));

@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpResultsChains extends MainWindowAction
+public class ActionJumpDiagramWizardResultsChainStep extends MainWindowAction
 {
-	public ActionJumpResultsChains(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardResultsChainStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
