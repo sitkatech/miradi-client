@@ -17,12 +17,12 @@ public class ActionExportProjectReportFile extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|MiradiReport File");
+		return EAM.text("Action|To Report File");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|MiradiReport File");
+		return EAM.text("TT|To Report File");
 	}
 
 }
