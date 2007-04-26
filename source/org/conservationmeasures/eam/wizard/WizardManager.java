@@ -332,6 +332,8 @@ public class WizardManager
 				DiagramWizardVisionStep.class,
 				DiagramWizardDefineTargetsStep.class,
 				DiagramWizardReviewAndModifyTargetsStep.class,
+
+				TargetViabilityOverviewStep.class,				
 				TargetViability2Step.class,
 				DescribeTargetStatusStep.class,
 				TargetViability3Step.class,
@@ -390,8 +392,6 @@ public class WizardManager
 				BudgetWizardDemo.class, 
 				
 				ScheduleOverviewStep.class,
-				
-				TargetViabilityOverviewStep.class,				
 		};
 		
 		return entries;
