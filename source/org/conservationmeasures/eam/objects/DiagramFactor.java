@@ -99,6 +99,11 @@ public class DiagramFactor extends BaseObject
 				return true;
 			case ObjectType.TARGET: 
 				return true;
+			case ObjectType.INTERMEDIATE_RESULT:
+				return true;
+			case ObjectType.THREAT_REDUCTION_RESULT:
+				return true;
+				
 			default:
 				return false;
 		}
