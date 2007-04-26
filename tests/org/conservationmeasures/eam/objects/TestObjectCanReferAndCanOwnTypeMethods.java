@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-
+//FIXME rename or otherwise split it up so it is consistent with our other test names
 public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 {
 	public TestObjectCanReferAndCanOwnTypeMethods(String name)
@@ -59,5 +59,11 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		
 		assertContains(ObjectType.RESULTS_CHAIN_DIAGRAM, BaseObject.getTypesThatCanReferToUs(ObjectType.DIAGRAM_FACTOR));
 		assertContains(ObjectType.RESULTS_CHAIN_DIAGRAM, BaseObject.getTypesThatCanReferToUs(ObjectType.DIAGRAM_LINK));
+		
+		assertContains(ObjectType.INTERMEDIATE_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
+		assertContains(ObjectType.INTERMEDIATE_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
+		
+		assertContains(ObjectType.THREAT_REDUCTION_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
+		assertContains(ObjectType.THREAT_REDUCTION_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
 	}
 }

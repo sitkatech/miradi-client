@@ -57,8 +57,6 @@ public class ThreatReductionResult extends Factor
 		
 		switch(type)
 		{
-			case ObjectType.INDICATOR: 
-				return true;
 			case ObjectType.OBJECTIVE:
 				return true;
 				

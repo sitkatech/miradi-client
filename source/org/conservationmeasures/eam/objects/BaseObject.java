@@ -523,6 +523,12 @@ abstract public class BaseObject
 		if (ResultsChainDiagram.canOwnThisType(type))
 			objectTypes[i++] = ResultsChainDiagram.getObjectType();
 
+		if (IntermediateResult.canOwnThisType(type))
+			objectTypes[i++] = IntermediateResult.getObjectType();
+		
+		if (ThreatReductionResult.canOwnThisType(type))
+			objectTypes[i++] = ThreatReductionResult.getObjectType();
+		
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);
 		return outArray;
@@ -596,7 +602,7 @@ abstract public class BaseObject
 
 		if (ResultsChainDiagram.canReferToThisType(type))
 			objectTypes[i++] = ResultsChainDiagram.getObjectType();
-
+		
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);
 		return outArray;
