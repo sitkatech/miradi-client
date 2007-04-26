@@ -65,5 +65,10 @@ public class IntermediateResult extends Factor
 		}
 	}
 	
+	public boolean canHaveObjectives()
+	{
+		return true;
+	}
+	
 	public static final String OBJECT_NAME = "Intermediate Result";
 }

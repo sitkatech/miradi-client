@@ -65,6 +65,10 @@ public class ThreatReductionResult extends Factor
 		}
 	}
 	
+	public boolean canHaveObjectives()
+	{
+		return true;
+	}
 	
 	public static final String OBJECT_NAME = "Threat Reduction Result";
 }
