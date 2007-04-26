@@ -37,7 +37,7 @@ public class MiradiReport
 		Dialog g = new JDialog();
 		g.setUndecorated(false);
 		JPanel panel = new JPanel(new BorderLayout());
-		panel.add(getBudgetComponent(),BorderLayout.BEFORE_FIRST_LINE);
+		panel.add(getExplanatoryTextComponent(),BorderLayout.BEFORE_FIRST_LINE);
 		panel.add(new JRViewer(jPrint));
 		g.add(panel);
 		g.pack();
@@ -45,14 +45,16 @@ public class MiradiReport
 		g.setVisible(true);
 	}
 	
-	private Component getBudgetComponent()
+	private Component getExplanatoryTextComponent()
 	{
 		UiLabel label= new UiLabel();
 		label.setText("<html>" +
-		"Tools to enter actual expenditures <P></P> and to match these up to budget line items " +
-		"and report on them by programmatic objectives and activities, " +
-		"by accounting codes, or by funding sources, " +
-		"using a Quicken or Quickbooks style interface.</html>");
+		"<p><strong><em>This feature is still under development</em></strong></p>" +
+		"<br><p>A preview of the project report is shown below. " +
+		"To generate this report as a PDF, RTF, or other format file, " +
+		"click on the 'disk' icon below.</p>" +
+		"<br>" +
+		"</html>");
 		return label;
 	}
 	
