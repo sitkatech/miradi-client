@@ -40,6 +40,32 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		project.close();
 	}
 
+	public void testIntermediateOwn() throws Exception
+	{
+		BaseId factorId = project.createFactor(ObjectType.INTERMEDIATE_RESULT);
+		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		BaseId objectiveId = project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		
+		//----------- start test -----------
+		
+	   	ORef owner = new ORef(ObjectType.INTERMEDIATE_RESULT, factorId);
+		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+	}
+
+	public void testThreatReductionResultOwn() throws Exception
+	{
+		BaseId factorId = project.createFactor(ObjectType.THREAT_REDUCTION_RESULT);
+		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		BaseId objectiveId = project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		
+		//----------- start test -----------
+		
+	   	ORef owner = new ORef(ObjectType.THREAT_REDUCTION_RESULT, factorId);
+		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+	}
+
 	public void testCauseOwn() throws Exception
 	{
 		BaseId factorId = project.createFactor(ObjectType.CAUSE);

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -70,5 +71,17 @@ public class IntermediateResult extends Factor
 		return true;
 	}
 	
+	public ORefList getOwnedObjects(int objectType)
+	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
+		switch(objectType)
+		{
+			case ObjectType.OBJECTIVE: 
+				list.addAll(new ORefList(objectType, getObjectives()));
+		}
+		return list;
+	}
+
 	public static final String OBJECT_NAME = "Intermediate Result";
 }
