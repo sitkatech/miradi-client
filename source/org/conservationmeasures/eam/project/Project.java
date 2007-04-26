@@ -103,7 +103,7 @@ public class Project
 	{
 		File newFile = new File(EAM.getHomeDirectory(),newName);
 		if(ProjectServer.isExistingProject(newFile))
-			throw new Exception(EAM.text("Project by this name already exists:") + newName);
+			throw new Exception(EAM.text(" A project by this name already exists: ") + newName);
 		
 		if (!EAM.mainWindow.getProject().isValidProjectFilename(newName))
 			throw new Exception(EAM.text("Invalid project name:") + newName);
