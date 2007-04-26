@@ -37,19 +37,28 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	public DiagramPanel(MainWindow mainWindowToUse, Project project, DiagramObject diagramObjectToUse) throws Exception
 	{
 		super(project, diagramObjectToUse.getRef());
-		mainWindow = mainWindowToUse;
-		diagramObject = diagramObjectToUse;
-	
-		createAndAddDiagram();
-		
-		DiagramSplitPane splitPane;
-		
-		if (diagramObject.getType()== ResultsChainDiagram.getObjectType())
-			splitPane = new ResultsChainDiagramSplitPane(mainWindow, diagram);
-		else
-			splitPane = new ConceptualModelDiagramSplitPane(mainWindow, diagram);
-		
-		add(splitPane);
+		try
+		{
+			mainWindow = mainWindowToUse;
+			diagramObject = diagramObjectToUse;
+
+			createAndAddDiagram();
+
+			DiagramSplitPane splitPane;
+
+			if (diagramObject.getType()== ResultsChainDiagram.getObjectType())
+				splitPane = new ResultsChainDiagramSplitPane(mainWindow, diagram);
+			else
+				splitPane = new ConceptualModelDiagramSplitPane(mainWindow, diagram);
+
+			add(splitPane);
+		}
+		catch (Exception e)
+		{
+			//TODO should we call dispose instead
+			project.removeCommandExecutedListener(this);
+			throw e;
+		}
 	}
 	
 	private void createAndAddDiagram() throws Exception
