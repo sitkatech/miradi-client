@@ -50,5 +50,22 @@ public class IntermediateResult extends Factor
 		return ObjectType.INTERMEDIATE_RESULT;
 	}
 	
+	public static boolean canOwnThisType(int type)
+	{
+		if (Factor.canOwnThisType(type))
+			return true;
+		
+		switch(type)
+		{
+			case ObjectType.INDICATOR: 
+				return true;
+			case ObjectType.OBJECTIVE:
+				return true;
+				
+			default:
+				return false;
+		}
+	}
+	
 	public static final String OBJECT_NAME = "Intermediate Result";
 }

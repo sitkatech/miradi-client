@@ -50,5 +50,23 @@ public class ThreatReductionResult extends Factor
 		return true;
 	}
 	
+	public static boolean canOwnThisType(int type)
+	{
+		if (Factor.canOwnThisType(type))
+			return true;
+		
+		switch(type)
+		{
+			case ObjectType.INDICATOR: 
+				return true;
+			case ObjectType.OBJECTIVE:
+				return true;
+				
+			default:
+				return false;
+		}
+	}
+	
+	
 	public static final String OBJECT_NAME = "Threat Reduction Result";
 }
