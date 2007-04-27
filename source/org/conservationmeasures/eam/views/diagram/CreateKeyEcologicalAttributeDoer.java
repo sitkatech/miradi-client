@@ -6,38 +6,22 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 
-public class CreateKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
+public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 {
-	public boolean isAvailable()
+	public boolean isAvailable() 
 	{
-		if (getObjects().length != 1)
+		if (!super.isAvailable())
 			return false;
 		
-		if (getSelectedObjectType() == ObjectType.TARGET)
-			return ((Target)getObjects()[0]).isViabilityModeTNC();
-		
-		if (getSelectedObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
-			return true;
-		
+		if (getSelectedFactor().isTarget())
+			return ((Target)getSelectedFactor()).isViabilityModeTNC();
+
 		return false;
 	}
-	
-	public Factor getSelectedFactor()
-	{
-		BaseObject selected = getView().getSelectedObject();
-		if(selected == null)
-			return null;
-		
-		if(! Factor.isFactor(selected.getType()))
-			selected = selected.getOwner();
-		
-		return (Factor)selected;
-	}
-	
+
 	int getAnnotationType()
 	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
