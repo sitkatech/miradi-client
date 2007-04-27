@@ -1,6 +1,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 
@@ -14,25 +15,31 @@ public class CreateViabilityKeyEcologicalAttributeDoer  extends CreateAnnotation
 		if (getPicker().getSelectedObjects().length != 1)
 			return false;
 		
-		if (getPicker().getSelectedObjects()[0].getType() == ObjectType.TARGET)
-			return ((Target)getPicker().getSelectedObjects()[0]).isViabilityModeTNC();
+		if (selectedObject().getType() == ObjectType.TARGET)
+			return ((Target)selectedObject()).isViabilityModeTNC();
 		
-		if (getPicker().getSelectedObjects()[0].getType()  == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+		if (selectedObject().getType()  == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			return true;
 		
 		return false;
 	}
-	
+
 	public Factor getSelectedFactor()
 	{
-		if (getPicker().getSelectedObjects()[0].getType() == ObjectType.TARGET)
-			return (Factor) getPicker().getSelectedObjects()[0];
+		if (selectedObject().getType() == ObjectType.TARGET)
+			return (Factor) selectedObject();
 		
-		if (getPicker().getSelectedObjects()[0].getType()  == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
-			return (Factor) getPicker().getSelectedObjects()[0].getOwner();
+		if (selectedObject().getType()  == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+			return (Factor) selectedObject().getOwner();
 		
 		return null;
 	}
+	
+	private BaseObject selectedObject()
+	{
+		return getPicker().getSelectedObjects()[0];
+	}
+	
 	
 	int getAnnotationType()
 	{
