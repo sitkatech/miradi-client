@@ -5,6 +5,8 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 
+//TODO: this class needs to be moved to the dialogs viabilty package : need first to resolve dependecny 
+// issue with CreateAnnotationDoer abstract method signitures
 public class CreateViabilityKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 {
 	public boolean isAvailable()
