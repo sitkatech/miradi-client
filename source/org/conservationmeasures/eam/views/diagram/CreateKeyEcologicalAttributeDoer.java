@@ -15,7 +15,7 @@ public class CreateKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 	public boolean isAvailable()
 	{
 		if (getObjects().length != 1)
-			return true;
+			return false;
 		
 		if (getSelectedObjectType() == ObjectType.TARGET)
 			return ((Target)getObjects()[0]).isViabilityModeTNC();
@@ -26,8 +26,6 @@ public class CreateKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 		return false;
 	}
 	
-	// TODO: Should not trust that the selected object is a target or KEA
-	// (should test for those specifically)
 	public Factor getSelectedFactor()
 	{
 		BaseObject selected = getView().getSelectedObject();
