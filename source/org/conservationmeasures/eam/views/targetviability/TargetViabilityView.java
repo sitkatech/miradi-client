@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.diagram.CreateKeyEcologicalAttributeIndicatorDoer;
-import org.conservationmeasures.eam.views.diagram.CreateViabiltiyKeyEcologicalAttributeDoer;
+import org.conservationmeasures.eam.views.diagram.CreateViabilityKeyEcologicalAttributeDoer;
 import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeIndicatorDoer;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -78,7 +78,7 @@ public class TargetViabilityView extends TabbedView
 	
 	private void addDoersToMap()
 	{
-		addDoerToMap(ActionCreateKeyEcologicalAttribute.class, new CreateViabiltiyKeyEcologicalAttributeDoer());
+		addDoerToMap(ActionCreateKeyEcologicalAttribute.class, new CreateViabilityKeyEcologicalAttributeDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttribute.class, new DeleteKeyEcologicalAttributeDoer());
 		addDoerToMap(ActionCreateKeyEcologicalAttributeIndicator.class, new CreateKeyEcologicalAttributeIndicatorDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeIndicator.class, new DeleteKeyEcologicalAttributeIndicatorDoer());

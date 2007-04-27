@@ -4,7 +4,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 
-public class CreateViabiltiyKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
+public class CreateViabilityKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 {
 	public boolean isAvailable()
 	{
