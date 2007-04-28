@@ -238,7 +238,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private void addConceptualModelDiagramTab() throws Exception
 	{
 		DiagramPanel diagramPanel = new DiagramPanel(getMainWindow(), getProject(), getDiagramObject());
-		addTab(diagramPanel.getPanelDescription(), diagramPanel);
+		addTab(EAM.text("Conceptual Model"), diagramPanel);
 	}
 	
 	private ConceptualModelDiagram getDiagramObject() throws Exception
