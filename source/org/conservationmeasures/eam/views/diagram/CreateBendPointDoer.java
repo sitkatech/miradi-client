@@ -69,7 +69,7 @@ public class CreateBendPointDoer extends LocationDoer
 			Point snapped = getProject().getSnapped(newBendPoint);
 			PointList newListWithBendPoint = getNewBendPointList(selectedLink, snapped);
 			
-			CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint, selectedLink.getBendPoints());
+			CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint);
 			getProject().executeCommand(setBendPointsCommand);
 		}
 		catch (Exception e)
@@ -84,7 +84,7 @@ public class CreateBendPointDoer extends LocationDoer
 		LinkCell linkCell = diagramModel.getDiagramFactorLink(selectedLink);
 		Point sourceLocation = getSourceLocation(linkCell);
 		Point targetLocation = getTargetLocation(linkCell);
-		PointList bendPointsOnly = selectedLink.getBendPoints();
+		PointList bendPointsOnly = new PointList(selectedLink.getBendPoints());
 		
 		PointList allLinkPoints = new PointList();
 		allLinkPoints.add(sourceLocation);
