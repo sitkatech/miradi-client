@@ -245,6 +245,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		super.commandExecuted(event);
 		final boolean areIndicatorMeasurementFields = 
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_SUMMARY) ||
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_STATUS) ||
