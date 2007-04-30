@@ -44,7 +44,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 				"a yellow hexagon as a strategy"), BorderLayout.AFTER_LAST_LINE);
 		bottomText.setBorder(BorderFactory.createEmptyBorder(25, 5, 25, 5));
 
-		add(new UiLabel("Choose the colors that look best on your system:"), BorderLayout.BEFORE_FIRST_LINE);
+		add(new UiLabel(EAM.text("Choose the colors that look best on your system:")), BorderLayout.BEFORE_FIRST_LINE);
 		add(createColorPreferencesPanel(), BorderLayout.CENTER);
 		add(bottomText, BorderLayout.AFTER_LAST_LINE);
 	}
@@ -53,60 +53,59 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		DialogGridPanel panel = new DialogGridPanel();
 
-		//TODO change all string to user EAM.test();
-		panel.add(new UiLabel("Strategy (Yellow)"));
+		panel.add(new UiLabel(EAM.text("Strategy (Yellow)")));
 		interventionDropdown = createColorsDropdown(interventionColorChoices);
 		interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY));
 		interventionDropdown.addActionListener(this);
 		panel.add(interventionDropdown);
 
-		panel.add(new UiLabel("Direct Threat (Pink)"));
+		panel.add(new UiLabel(EAM.text("Direct Threat (Pink)")));
 		directThreatDropdown = createColorsDropdown(directThreatColorChoices);
 		directThreatDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT));
 		directThreatDropdown.addActionListener(this);
 		panel.add(directThreatDropdown);
 
-		panel.add(new UiLabel("Contributing Factor (Orange)"));
+		panel.add(new UiLabel(EAM.text("Contributing Factor (Orange)")));
 		indirectFactorDropdown = createColorsDropdown(indirectFactorColorChoices);
 		indirectFactorDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR));
 		indirectFactorDropdown.addActionListener(this);
 		panel.add(indirectFactorDropdown);
 
-		panel.add(new UiLabel("Target (Light Green)"));
+		panel.add(new UiLabel(EAM.text("Target (Light Green)")));
 		targetDropdown = createColorsDropdown(targetColorChoices);
 		targetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
 		targetDropdown.addActionListener(this);
 		panel.add(targetDropdown);
 
-		panel.add(new UiLabel("Project Scope (Dark Green)"));
+		panel.add(new UiLabel(EAM.text("Project Scope (Dark Green)")));
 		scopeDropdown = createColorsDropdown(scopeColorChoices);
 		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
 		scopeDropdown.addActionListener(this);
 		panel.add(scopeDropdown);
 		
-		panel.add(new UiLabel("Intermediate Result (Blue)"));
+		panel.add(new UiLabel(EAM.text("Intermediate Result (Blue)")));
 		intermediateResultDropDown = createColorsDropdown(intermediateResultChoices);
 		intermediateResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT));
 		intermediateResultDropDown.addActionListener(this);
 		panel.add(intermediateResultDropDown);
 		
-		panel.add(new UiLabel("Threat Reduction Result (Purpule)"));
+		panel.add(new UiLabel(EAM.text("Threat Reduction Result (Purpule)")));
 		threatReductionResultDropDown = createColorsDropdown(threatReductionResultChoices);
 		threatReductionResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT));
 		threatReductionResultDropDown.addActionListener(this);
 		panel.add(threatReductionResultDropDown);
 		
-		panel.add(new UiLabel(" "));
-		panel.add(new UiLabel(" "));
+		panel.add(new UiLabel(EAM.text(" ")));
+		panel.add(new UiLabel(EAM.text(" ")));
 
-		panel.add(new UiLabel("Show Diagram Grid"));
+		panel.add(new UiLabel(EAM.text("Show Diagram Grid")));
 		gridVisibleCheckBox = new UiCheckBox();
 		gridVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
 		gridVisibleCheckBox.addActionListener(this);
 		panel.add(gridVisibleCheckBox);
 
 		
-		panel.add(new UiLabel("Show Ratings in Cell"));
+		panel.add(new UiLabel(EAM.text("Show Ratings in Cell")));
 		cellRatingsVisibleCheckBox = new UiCheckBox();
 		cellRatingsVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
 		cellRatingsVisibleCheckBox.addActionListener(this);
@@ -156,7 +155,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog("Unable to save preferences");
+			EAM.errorDialog(EAM.text("Unable to save preferences"));
 		}
 	}
 
