@@ -288,10 +288,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			
 			DiagramComponent resultsChainDiagram = new DiagramComponent(getMainWindow());
 			resultsChainDiagram.setModel(diagramModel);
-			//FIXME RC need to create selectionModel and cache
-			//resultsChaindiagram.setGraphLayoutCache(getProject().getGraphLayoutCache());
-			//getProject().setSelectionModel(resultsChaindiagram.getEAMGraphSelectionModel());
-			
 
 			DiagramPanel diagramPanel = new DiagramPanel(getMainWindow(), getProject(), resultsChain);
 			String resultsChainLabel = resultsChain.getData(DiagramObject.TAG_LABEL);
