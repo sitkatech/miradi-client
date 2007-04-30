@@ -43,6 +43,8 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		super.commandExecuted(event);
+		
 		if(!event.isSetDataCommandWithThisTypeAndTag(ObjectType.PROJECT_RESOURCE, ProjectResource.TAG_ROLE_CODES))
 			return;
 			

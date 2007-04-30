@@ -175,6 +175,7 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		super.commandExecuted(event);
 		updateAfterCommand(event.getCommand());
 	}
 
