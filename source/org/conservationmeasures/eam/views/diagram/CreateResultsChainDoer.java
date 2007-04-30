@@ -50,6 +50,7 @@ public class CreateResultsChainDoer extends ViewDoer
 			BaseId newResultsChainId = creatorHelper.createResultsChain();
 			int newTabIndex = diagramView.getTabIndex(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId));
 			//TODO RC can/should this be done by executing a command instead
+			//i dont think this should be done as a command, since undo will delete the results chain
 			diagramView.setTab(newTabIndex);
 		}
 		catch (Exception e) 
