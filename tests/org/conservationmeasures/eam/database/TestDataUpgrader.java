@@ -182,11 +182,15 @@ public class TestDataUpgrader extends EAMTestCase
 		String factorIdsAsString = readIn30.getString("DiagramFactorIds");
 		IdList diagramFactorIds = new IdList(factorIdsAsString);
 		assertEquals("same size?", 3, diagramFactorIds.size());
+		assertContains(1, diagramFactorIds.toIntArray());
+		assertContains(2, diagramFactorIds.toIntArray());
+		assertContains(3, diagramFactorIds.toIntArray());
 		
 		String linkIdsAsString = readIn30.getString("DiagramFactorLinkIds");
 		IdList diagramFactorLinkIds = new IdList(linkIdsAsString);
 		assertEquals("same size?", 2, diagramFactorLinkIds.size());
-		//FIXME: write test to check the content of both lists (nima)
+		assertContains(20, diagramFactorLinkIds.toIntArray());
+		assertContains(21, diagramFactorLinkIds.toIntArray());
 	}
 	
 	public void testUpgradeTo17creatingObjects19FromDiagramsMainFile() throws Exception
