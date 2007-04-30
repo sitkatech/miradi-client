@@ -7,9 +7,10 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 
 public class ThreatReductionResultIcon extends EamIcon
 {
@@ -20,6 +21,6 @@ public class ThreatReductionResultIcon extends EamIcon
 	
 	Color getIconColor()
 	{
-		return DiagramConstants.COLOR_THREAT_REDUCTION_RESULT; 
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT); 
 	}
 }

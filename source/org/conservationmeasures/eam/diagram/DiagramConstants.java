@@ -9,10 +9,6 @@ import java.awt.Color;
 
 public class DiagramConstants
 {
-	//FIXME RC the colors should be chosen by user like other factors
-	public static final Color COLOR_INTERMEDIATE_RESULT = new Color(100, 222, 255);
-	public static final Color COLOR_THREAT_REDUCTION_RESULT = new Color(222, 100, 255);
-	
 	public static final Color COLOR_STRESS = new Color(150, 150, 255);
 	public static final Color COLOR_DRAFT_STRATEGY = new Color(255, 255, 190);
 	public static final Color COLOR_FACTOR_CLUSTER = Color.LIGHT_GRAY;

@@ -7,7 +7,8 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.DiagramConstants;
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 
@@ -21,6 +22,6 @@ public class DiagramIntermediateResultCell extends FactorCell
 
 	public Color getColor()
 	{
-		return DiagramConstants.COLOR_INTERMEDIATE_RESULT;
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
 	}
 }

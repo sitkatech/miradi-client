@@ -53,7 +53,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		DialogGridPanel panel = new DialogGridPanel();
 
-
+		//TODO change all string to user EAM.test();
 		panel.add(new UiLabel("Strategy (Yellow)"));
 		interventionDropdown = createColorsDropdown(interventionColorChoices);
 		interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY));
@@ -83,6 +83,18 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
 		scopeDropdown.addActionListener(this);
 		panel.add(scopeDropdown);
+		
+		panel.add(new UiLabel("Intermediate Result (Blue)"));
+		intermediateResultDropDown = createColorsDropdown(intermediateResultChoices);
+		intermediateResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT));
+		intermediateResultDropDown.addActionListener(this);
+		panel.add(intermediateResultDropDown);
+		
+		panel.add(new UiLabel("Threat Reduction Result (Purpule)"));
+		threatReductionResultDropDown = createColorsDropdown(threatReductionResultChoices);
+		threatReductionResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT));
+		threatReductionResultDropDown.addActionListener(this);
+		panel.add(threatReductionResultDropDown);
 		
 		panel.add(new UiLabel(" "));
 		panel.add(new UiLabel(" "));
@@ -127,6 +139,12 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		Color scopeColor = (Color)scopeDropdown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE, scopeColor);
 
+		Color intermediateResultColor = (Color) intermediateResultDropDown.getSelectedItem();
+		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
+		
+		Color threatReductionResultColor = (Color) threatReductionResultDropDown.getSelectedItem();
+		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
+		
 		mainWindow.setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
 		
 		mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
@@ -202,6 +220,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	UiComboBox indirectFactorDropdown;
 	UiComboBox targetDropdown;
 	UiComboBox scopeDropdown;
+	UiComboBox intermediateResultDropDown;
+	UiComboBox threatReductionResultDropDown;
 	UiCheckBox gridVisibleCheckBox; 
 	UiCheckBox cellRatingsVisibleCheckBox;
 
@@ -210,4 +230,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	static final Color[] indirectFactorColorChoices = {new Color(255, 190, 0), new Color(255, 128, 0), new Color(200, 128, 0), new Color(255, 220, 0), new Color(255, 190, 64), new Color(255, 240, 200)};
 	static final Color[] targetColorChoices = {new Color(153, 255, 153), new Color(200, 255, 200), new Color(80, 255, 80), new Color(64, 220, 64)};
 	static final Color[] scopeColorChoices = {new Color(0, 255, 0), new Color(128, 255, 128), new Color(0, 220, 0), new Color(0, 180, 0), new Color(0, 128, 0)};
+	static final Color[] intermediateResultChoices = {new Color(150, 150, 255), new Color(130, 130, 235), new Color(110, 110, 215), new Color(90, 90, 195)};
+	static final Color[] threatReductionResultChoices = {new Color(222, 100, 255), new Color(202, 80, 235), new Color(182, 60, 215), new Color(162, 40, 195)};
 }

@@ -65,6 +65,10 @@ public class AppPreferences
 			return targetColor;
 		if(tag.equals(TAG_COLOR_SCOPE))
 			return scopeColor;
+		if(tag.equals(TAG_COLOR_INTERMEDIATE_RESULT))
+			return intermediateResultColor;
+		if(tag.equals(TAG_COLOR_THREAT_REDUCTION_RESULT))
+			return threatReductionResultColor;
 			
 		throw new RuntimeException(tag);
 	}
@@ -83,6 +87,10 @@ public class AppPreferences
 			targetColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_SCOPE))
 			scopeColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_INTERMEDIATE_RESULT))
+			intermediateResultColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_THREAT_REDUCTION_RESULT))
+			threatReductionResultColor = colorToUse;
 		else
 			throw new RuntimeException(tag);
 	}
@@ -145,6 +153,8 @@ public class AppPreferences
 		json.put(TAG_COLOR_DIRECT_THREAT, directThreatColor);
 		json.put(TAG_COLOR_TARGET, targetColor);
 		json.put(TAG_COLOR_SCOPE, scopeColor);
+		json.put(TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
+		json.put(TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
 		json.put(TAG_GRID_VISIBLE, isGridVisible);
 		json.put(TAG_CELL_RATINGS_VISIBLE, isCellRatingsVisible);
@@ -170,6 +180,8 @@ public class AppPreferences
 		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DEFAULT_DIRECT_THREAT_COLOR);
 		targetColor = json.optColor(TAG_COLOR_TARGET, DEFAULT_TARGET_COLOR);
 		scopeColor = json.optColor(TAG_COLOR_SCOPE, DEFAULT_SCOPE_COLOR);
+		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DEFAULT_INTERMEDIATE_RESULT_COLOR);
+		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
 		
 		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, true);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
@@ -192,6 +204,8 @@ public class AppPreferences
 	public static final String TAG_COLOR_DIRECT_THREAT = "ColorDirectThreat";
 	public static final String TAG_COLOR_TARGET = "ColorTarget";
 	public static final String TAG_COLOR_SCOPE = "ColorScope";
+	public static final String TAG_COLOR_INTERMEDIATE_RESULT = "ColorIntermediateResult";
+	public static final String TAG_COLOR_THREAT_REDUCTION_RESULT = "ColorThreatReductionResult";
 	public static final String TAG_IS_MAXIMIZED = "IsMaximized";
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
@@ -204,6 +218,8 @@ public class AppPreferences
 	private static final Color DEFAULT_STRATEGY_COLOR = new Color(255, 255, 0);
 	private static final Color DEFAULT_ACTIVITIES_COLOR = new Color(255, 255, 0);
 	private static final Color DEFAULT_SCOPE_COLOR = new Color(0, 255, 0);
+	private static final Color DEFAULT_INTERMEDIATE_RESULT_COLOR = new Color(100, 222, 255);
+	private static final Color DEFAULT_THREAT_REDUCTION_RESULT_COLOR = new Color(222, 100, 255);
 	
 	public Color strategyColor;
 	public Color activitiesColor;
@@ -211,6 +227,8 @@ public class AppPreferences
 	public Color directThreatColor;
 	public Color targetColor;
 	public Color scopeColor;
+	public Color intermediateResultColor;
+	public Color threatReductionResultColor;
 	
 	private boolean isGridVisible; 
 	private boolean isCellRatingsVisible;
