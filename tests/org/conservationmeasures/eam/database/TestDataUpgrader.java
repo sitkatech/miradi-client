@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.database;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -338,7 +340,24 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("file 91 exists?", file1.exists());
 		assertTrue("file 92 exists?", file2.exists());
 		
-		//TODO create the Json and compare each item within the json.
+		EnhancedJsonObject readIn1 = JSONFile.read(file1);
+		String factorIdsAsString = readIn1.getString("WrappedFactorId");
+		BaseId wrappedId1 = new BaseId(factorIdsAsString);
+		Dimension size1 = EnhancedJsonObject.convertToDimension(readIn1.getString("Size"));
+		Point location1 = EnhancedJsonObject.convertToPoint(readIn1.getString("Location")); 
+		assertEquals(wrappedId1.asInt(),  28);
+		assertEquals(new Dimension(120,60),	size1);
+		assertEquals(new Point(120, 270), location1);
+
+		EnhancedJsonObject readIn2 = JSONFile.read(file2);
+		String factorIdsAsString2 = readIn2.getString("WrappedFactorId");
+		BaseId wrappedId2 = new BaseId(factorIdsAsString2);
+		Dimension size2 = EnhancedJsonObject.convertToDimension(readIn2.getString("Size"));
+		Point location2 = EnhancedJsonObject.convertToPoint(readIn2.getString("Location")); 
+		assertEquals(wrappedId2.asInt(), 29);
+		assertEquals(new Dimension(151,60),	size2);
+		assertEquals(new Point(375, 15), location2);
+		
 		String file91Content = readFile(file1);
 		String file92Content = readFile(file2);
 		assertEquals("file 91 content the same?", expected91Content.trim(), file91Content.trim());
