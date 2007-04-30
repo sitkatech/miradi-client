@@ -159,8 +159,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		return new DiagramFactorId(command.getCreatedId().asInt());
 	}
 	
-	//TODO fix method name (remove 2 and come up with better name)
-	public DiagramFactor createNodeAndAddToDiagram2(int objectType) throws Exception
+	public DiagramFactor createDiagramFactorAndAddToDiagram(int objectType) throws Exception
 	{
 		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(objectType);
 		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));

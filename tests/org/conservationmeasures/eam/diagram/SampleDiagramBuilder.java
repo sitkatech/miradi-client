@@ -75,7 +75,7 @@ public class SampleDiagramBuilder
 
 	private static void createObjectAndSetLabel(ProjectForTesting project, int type, final int interventionIndex) throws Exception, CommandFailedException
 	{
-		DiagramFactor diagramFactor = project.createNodeAndAddToDiagram2(type);
+		DiagramFactor diagramFactor = project.createDiagramFactorAndAddToDiagram(type);
 		Factor factor = (Factor) project.findObject(new ORef(type, diagramFactor.getWrappedId()));
 		CommandSetObjectData addLabelCommand = new CommandSetObjectData(factor.getRef(), Factor.TAG_LABEL, Integer.toString(interventionIndex));
 		project.executeCommand(addLabelCommand);

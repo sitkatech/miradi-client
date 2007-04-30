@@ -243,10 +243,10 @@ public class TestDiagramModel extends EAMTestCase
 
 	public void testGetAllNodes() throws Exception
 	{
-		DiagramFactor node1 = project.createNodeAndAddToDiagram2(ObjectType.TARGET);
-		DiagramFactor node2 = project.createNodeAndAddToDiagram2(ObjectType.TARGET);		
+		DiagramFactor node1 = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
+		DiagramFactor node2 = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);		
 		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), node1, node2);
-		DiagramFactor node3 = project.createNodeAndAddToDiagram2(ObjectType.TARGET);		
+		DiagramFactor node3 = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);		
 		
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
 		assertEquals(3, diagramFactors.length);
