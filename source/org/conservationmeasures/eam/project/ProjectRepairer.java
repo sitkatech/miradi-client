@@ -84,8 +84,6 @@ public class ProjectRepairer
 				if(owner == null)
 				{
 					EAM.logWarning("Found orphan " + annotationType + ":" + annotationId);
-					//FIXME no longer need to delete orphans, remove commented code
-					//project.deleteObject(object);
 				}
 			}
 			catch(Exception e)
