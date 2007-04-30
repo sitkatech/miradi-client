@@ -79,8 +79,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		addIconLineWithCheckBox(jpanel, SCOPE_BOX_TEXT, new ProjectScopeIcon());
 		
 		addButtonLineWithCheckBox(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
-		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
-		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
+		createCustomLegendPanelSection(actions, jpanel);
 		addButtonLineWithCheckBox(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		addButtonLineWithCheckBox(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
 		addTargetLinkLine(jpanel, TARGET_LINKS_TEXT);
@@ -91,6 +90,12 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		addIconLineWithoutCheckBox(jpanel, "Stress", new StressIcon());
 		
 		return jpanel;
+	}
+
+	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
+	{
+		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
+		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 	}
 	
 	protected void addTargetLinkLine(JPanel panel, String text)
