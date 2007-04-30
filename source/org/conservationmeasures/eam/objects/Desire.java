@@ -6,14 +6,12 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class Desire extends BaseObject
@@ -77,11 +75,6 @@ abstract public class Desire extends BaseObject
 		super.clear();
 		shortLabel = new StringData();
 		fullText = new StringData();	
-		desiredStatus = new ChoiceData();;
-		byWhen = new StringData();
-		desiredSummary = new StringData();
-		desiredDetail = new StringData();
-		desiredStatusLabel = new PseudoQuestionData(new StatusQuestion(Goal.TAG_DESIRED_STATUS));
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);
@@ -89,11 +82,6 @@ abstract public class Desire extends BaseObject
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_FULL_TEXT, fullText);
-		addField(TAG_DESIRED_STATUS, desiredStatus);
-		addField(TAG_BY_WHEN, byWhen);
-		addField(TAG_DESIRED_SUMMARY, desiredSummary);
-		addField(TAG_DESIRED_DETAIL, desiredDetail);
-		addField(PSEUDO_TAG_DESIRED_STATUS_VALUE, desiredStatusLabel);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
 		addField(PSEUDO_TAG_STRATEGIES, multiLineStrategies);
@@ -102,11 +90,6 @@ abstract public class Desire extends BaseObject
 	
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
-	public final static String TAG_DESIRED_STATUS = "DesiredStatus";
-	public final static String TAG_BY_WHEN = "ByWhen";
-	public final static String TAG_DESIRED_SUMMARY = "DesiredSummary";
-	public final static String TAG_DESIRED_DETAIL = "DesiredDetail";
-	public final static String PSEUDO_TAG_DESIRED_STATUS_VALUE = "DesiredStatusValue";
 	public final static String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public final static String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public final static String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
@@ -117,11 +100,6 @@ abstract public class Desire extends BaseObject
 
 	StringData shortLabel;
 	StringData fullText;
-	ChoiceData desiredStatus;
-	StringData byWhen;
-	StringData desiredSummary;
-	StringData desiredDetail;
-	PseudoQuestionData desiredStatusLabel;
 	PseudoStringData multiLineTargets;
 	PseudoStringData multiLineDirectThreats;
 	PseudoStringData multiLineStrategies;
