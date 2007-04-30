@@ -53,17 +53,16 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		project.close();
 	}
 
-//FIXME fails because extraInfo is specific to a project and verify fields creates its own project.
-//	public void testAsObject() throws Exception
-//	{
-//		DiagramFactor diagramFactor1 = project.createNodeAndAddToDiagram2(Factor.TYPE_CAUSE);
-//		DiagramFactor diagramFactor2 = project.createNodeAndAddToDiagram2(Factor.TYPE_CAUSE);
-//		FactorLinkId factorLinkId = new FactorLinkId(44);
-//		createDiagramFactorLink(project, diagramFactor1.getWrappedId(), diagramFactor2.getWrappedId(), factorLinkId);
-//		extraInfo = new CreateDiagramFactorLinkParameter(factorLinkId, diagramFactor1.getDiagramFactorId(), diagramFactor2.getDiagramFactorId());
-//
-//		verifyFields(ObjectType.DIAGRAM_LINK, extraInfo);
-//	}
+	public void testAsObject() throws Exception
+	{
+		DiagramFactor diagramFactor1 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor diagramFactor2 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		FactorLinkId factorLinkId = new FactorLinkId(44);
+		createDiagramFactorLink(project, diagramFactor1.getWrappedId(), diagramFactor2.getWrappedId(), factorLinkId);
+		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLinkId, diagramFactor1.getDiagramFactorId(), diagramFactor2.getDiagramFactorId());
+
+		verifyFields(ObjectType.DIAGRAM_LINK, extraInfo);
+	}
 
 	public void testBasics() throws Exception
 	{
