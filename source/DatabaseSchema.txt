@@ -1,30 +1,58 @@
 Database Schema
-2007-05-01
+2007-05-02
 Kevin Smith
 
-These are rough notes. Need to do more research into proven 
-approaches and solutions, especially with network databases, 
-and perhaps to a lesser degree, with object databases.
+These are rough notes. Our system is very similar to a 
+Network Database Model, except that our associations are 
+sometimes stored in the owner, sometimes in the member, 
+and about half the time are not stored at all (they are 
+implicit).
 
-I propose these relationships:
+Our system is unlike most Object Databases, because those 
+focus on transparent persistence, and storing behavior 
+(methods) along with the data. They also do not have any 
+great solutions to inheritance, which we also struggle with.
 
-A owns B
-C requires D
-E refers to F
+Based on CODASYL Network Database standards, I propose these 
+possible associations:
 
-If A owns B:
-  "A refers to B" is also implied
-  Deleting A automatically deletes B
-  Deleting B removes it from A (see refers, below)
-  
-If C require D:
-  Deleting C has no effect on D
-  Deleting D automatically deletes C
-  
-If E refers to F:
-  Deleting E has no effect on F
-  Deleting F removes it from E
-  
+Owner A has Members B, C, D
+Owner E refers to Members F, G, H
+
+An association may be marked as "Mandatory", meaning that 
+a member cannot be removed from the association. In that 
+case, it must be deleted, which implicitly removes it. 
+This is known as a "has" relationship.
+
+Alternatively, an association may be "Optional", meaning that 
+a member may be removed without being deleted. This is known 
+as a "refers to" relationship.
+
+An object cannot be removed if it has any members in any 
+association where it is the owner. Those members mus be 
+deleted or removed first.
+
+
+Cause has Indicator(s)
+Cause has Objective(s)
+Target has Goal(s)
+Target has KEA(s)
+Target has DiagramFactor(s)
+Target has FactorLink(s)
+FactorLink has DiagramFactorLink(s)
+DiagramFactor has DiagramFactorLink(s)
+Task has Task(s)
+Strategy has Task(s)
+Indicator has Task(s)
+Task refers to Resource(s)
+DiagramObject has DiagramFactor(s)
+DiagramObject has DiagramFactorLink(s)
+KEA has Indicator(s)
+
+
+
+Here is a GREAT site about CODASYL and Network Databases:
+http://coronet.iicm.edu/wbtmaster/allcoursescontent/netlib/library.htm  
   
   
 RelationshipManager
@@ -39,3 +67,4 @@ Any questions about object relationships (owns/owned by,
 depends on/is depended on by, refers to/referred to by) can 
 be answered immediately by the RelationshipManager. It is 
 responsible for handling loops sanely.
+
