@@ -184,10 +184,8 @@ public class TestCommands extends EAMTestCase
 
 		DiagramFactorId targetId = insertTarget();
 		DiagramFactor target = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, targetId);
-		Point targetLocation = target.getLocation();
-		String previousLocation = EnhancedJsonObject.convertFromPoint(targetLocation);
 		String newLocation = EnhancedJsonObject.convertFromPoint(moveTo);
-		CommandSetObjectData moveDiagramFactor1 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, target.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newLocation, previousLocation);
+		CommandSetObjectData moveDiagramFactor1 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, target.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newLocation);
 		project.executeCommand(moveDiagramFactor1);
 		
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, targetId);
@@ -200,10 +198,8 @@ public class TestCommands extends EAMTestCase
 		
 		DiagramFactorId factorId = insertContributingFactor().getDiagramFactorId();
 		DiagramFactor factor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, factorId);
-		Point factorLocation = factor.getLocation();
-		String previousFactorLocation = EnhancedJsonObject.convertFromPoint(factorLocation);
 		String newFactorLocation = EnhancedJsonObject.convertFromPoint(moveTo);
-		CommandSetObjectData moveDiagramFactor2 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newFactorLocation, previousFactorLocation);
+		CommandSetObjectData moveDiagramFactor2 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newFactorLocation);
 		project.executeCommand(moveDiagramFactor2);
 		
 		DiagramFactor diagramFactor3 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, factorId);
@@ -216,10 +212,8 @@ public class TestCommands extends EAMTestCase
 
 		DiagramFactorId interventionId = insertIntervention();
 		DiagramFactor intervention = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, interventionId);
-		Point interventionLocation = intervention.getLocation();
-		String previousInterventionLocation = EnhancedJsonObject.convertFromPoint(interventionLocation);
 		String newInterventionLocation = EnhancedJsonObject.convertFromPoint(moveTo);
-		CommandSetObjectData moveDiagramFactor3 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, intervention.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newInterventionLocation, previousInterventionLocation);
+		CommandSetObjectData moveDiagramFactor3 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, intervention.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newInterventionLocation);
 		project.executeCommand(moveDiagramFactor3);
 		
 		DiagramFactor diagramFactor5 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, interventionId);
@@ -260,7 +254,7 @@ public class TestCommands extends EAMTestCase
 		String newSize = EnhancedJsonObject.convertFromDimension(new Dimension(88, 22));
 		
 		DiagramFactorId diagramFactorId = node.getDiagramFactorId();
-		CommandSetObjectData cmd = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_SIZE, newSize, originalSize);
+		CommandSetObjectData cmd = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_SIZE, newSize);
 		project.executeCommand(cmd);
 
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);

@@ -85,7 +85,7 @@ public class TestUndoRedo extends EAMTestCase
 
 		String newSize1 = EnhancedJsonObject.convertFromDimension(new Dimension(5,10));
 		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, insertedId, DiagramFactor.TAG_SIZE, newSize1, originalSize));
+		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, insertedId, DiagramFactor.TAG_SIZE, newSize1));
 		project.executeCommand(new CommandEndTransaction());
 
 		String foundSizeAsString = getSizeAsString(insertedId);
@@ -93,7 +93,7 @@ public class TestUndoRedo extends EAMTestCase
 
 		String newSize2 = EnhancedJsonObject.convertFromDimension(new Dimension(20,30));
 		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, insertedId, DiagramFactor.TAG_SIZE, newSize2, newSize1));
+		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, insertedId, DiagramFactor.TAG_SIZE, newSize2));
 		project.executeCommand(new CommandEndTransaction());
 		
 		String foundSizeAsString2 = getSizeAsString(insertedId);
