@@ -36,5 +36,14 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 		
 		super.setLegendVisibilityOfFacactorCheckBoxes(manager, property, checkBox);
 	}
-
+	
+	public void updateCheckBoxes(LayerManager manager, String property, JCheckBox checkBox)
+	{
+		super.updateCheckBoxes(manager, property, checkBox);
+		if (property.equals(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR))
+			checkBox.setSelected(manager.areContributingFactorsVisible());
+	
+		else if (property.equals(Factor.OBJECT_NAME_THREAT))
+			checkBox.setSelected(manager.areDirectThreatsVisible());
+	}
 }

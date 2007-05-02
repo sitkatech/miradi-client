@@ -55,19 +55,20 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	public DiagramLegendPanel(MainWindow mainWindowToUse)
 	{
 		super(new BasicGridLayout(0, 1));
-		setBorder(new EmptyBorder(5,5,5,5));
-		
 		mainWindow = mainWindowToUse;
-		
+		addAllComponents();
+	}
+
+	private void addAllComponents()
+	{
+		setBorder(new EmptyBorder(5,5,5,5));
 		UiLabel title = new UiLabel(EAM.text("LEGEND"));
 		title.setFont(title.getFont().deriveFont(Font.BOLD));
 		title.setBorder(new LineBorder(Color.BLACK, 2));
 		title.setHorizontalAlignment(UiLabel.CENTER);
 		add(title);
-
 		
 		add(createLegendButtonPanel(mainWindow.getActions()));
-
 		setMinimumSize(new Dimension(0,0));
 	}
 	
@@ -121,9 +122,11 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	private JCheckBox createCheckBox(String text)
 	{
 		JCheckBox component = new JCheckBox();
-		component.setSelected(true);
 		component.putClientProperty(LAYER, new String(text));
 		component.addActionListener(this);
+		
+		updateCheckBoxes(mainWindow.getProject().getLayerManager(), component.getClientProperty(LAYER).toString(), component);
+		
 		return component;
 	}
 	
@@ -168,6 +171,39 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
 		mainWindow.updateStatusBar();
+	}
+	
+	public void resetCheckBoxes()
+	{
+		removeAll();
+		addAllComponents();
+	}
+	
+	public void updateCheckBoxes(LayerManager manager, String property, JCheckBox checkBox)
+	{
+		if (property.equals(SCOPE_BOX_TEXT))
+			checkBox.setSelected(manager.isScopeBoxVisible());
+	
+		else if (property.equals(Target.OBJECT_NAME))
+			checkBox.setSelected(manager.isTypeVisible(DiagramTargetCell.class));
+		
+		else if (property.equals(Strategy.OBJECT_NAME))
+			checkBox.setSelected(manager.isTypeVisible(DiagramStrategyCell.class));
+		
+		else if (property.equals(FactorLink.OBJECT_NAME))
+			checkBox.setSelected(manager.areFactorLinksVisible());
+		
+		else if (property.equals(TARGET_LINKS_TEXT))
+			checkBox.setSelected(manager.areTargetLinksVisible());
+		
+		else if (property.equals(Goal.OBJECT_NAME))
+			checkBox.setSelected(manager.areGoalsVisible());
+		
+		else if (property.equals(Objective.OBJECT_NAME))
+			checkBox.setSelected(manager.areObjectivesVisible());
+		
+		else if (property.equals(Indicator.OBJECT_NAME))
+			checkBox.setSelected(manager.areIndicatorsVisible());
 	}
 	
 	class LocationButton extends UiButton implements LocationHolder

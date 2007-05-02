@@ -47,10 +47,10 @@ public class LayerManager
 			return areDirectThreatsVisible();
 		
 		if (node.isIntermediateResult())
-			return isIntermediateResultVisible();
+			return areIntermediateResultsVisible();
 		
 		if (node.isThreatRedectionResult())
-			return isThreatReductionResultVisible();
+			return areThreatReductionResultsVisible();
 		
 		if(isTypeVisible(node.getClass()))
 			return true;
@@ -169,7 +169,7 @@ public class LayerManager
 		scopeBoxVisibleFlag = newSetting;
 	}
 	
-	public boolean isIntermediateResultVisible()
+	public boolean areIntermediateResultsVisible()
 	{
 		return intermediateResultFlag;
 	}
@@ -179,7 +179,7 @@ public class LayerManager
 		intermediateResultFlag = newSetting;
 	}
 	
-	public boolean isThreatReductionResultVisible()
+	public boolean areThreatReductionResultsVisible()
 	{
 		return threatReductionResultFlag;
 	}

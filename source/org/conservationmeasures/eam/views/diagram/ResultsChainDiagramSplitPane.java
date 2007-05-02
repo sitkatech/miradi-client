@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.Component;
-
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -17,7 +15,7 @@ public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 		super(mainWindow, diagramComponent);
 	}
 
-	public Component createLegendPanel(MainWindow mainWindow)
+	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow)
 	{
 		return new ResultsChainDiagramLegendPanel(mainWindow);
 	}

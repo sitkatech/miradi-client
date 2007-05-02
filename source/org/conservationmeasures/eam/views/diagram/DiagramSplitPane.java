@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.Component;
-
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
@@ -19,7 +17,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 {
 	public DiagramSplitPane(MainWindow mainWindow, DiagramComponent diagramComponentToAdd)
 	{
-		Component legendPanel = createLegendPanel(mainWindow);
+		legendPanel = createLegendPanel(mainWindow);
 		UiScrollPane scrollPane = createDiagramPanel(mainWindow.getProject(), diagramComponentToAdd);
 		setLeftComponent(legendPanel);
 		setRightComponent(scrollPane);
@@ -36,6 +34,13 @@ abstract public class DiagramSplitPane extends JSplitPane
 		
 		return uiScrollPane;
 	}
+	
+	public DiagramLegendPanel getLegendPanel()
+	{
+		return legendPanel;
+	}
 
-	abstract public Component createLegendPanel(MainWindow mainWindow);
+	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindow);
+	
+	private DiagramLegendPanel legendPanel;
 }
