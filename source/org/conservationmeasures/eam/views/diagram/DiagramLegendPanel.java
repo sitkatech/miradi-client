@@ -21,8 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
-import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
@@ -37,7 +35,6 @@ import org.conservationmeasures.eam.icons.ProjectScopeIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -51,8 +48,10 @@ import org.martus.swing.UiLabel;
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class DiagramLegendPanel extends JPanel implements ActionListener
+abstract public class DiagramLegendPanel extends JPanel implements ActionListener
 {
+	abstract protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel);
+	
 	public DiagramLegendPanel(MainWindow mainWindowToUse)
 	{
 		super(new BasicGridLayout(0, 1));
@@ -90,12 +89,6 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		addIconLineWithoutCheckBox(jpanel, "Stress", new StressIcon());
 		
 		return jpanel;
-	}
-
-	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
-	{
-		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
-		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 	}
 	
 	protected void addTargetLinkLine(JPanel panel, String text)
@@ -144,20 +137,17 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent event)
 	{
 		JCheckBox checkBox = (JCheckBox)event.getSource();
-
 		String property = (String) checkBox.getClientProperty(LAYER);
-
 		LayerManager manager = mainWindow.getProject().getLayerManager();
+		setLegendVisibilityOfFacactorCheckBoxes(manager, property, checkBox);			
+	}
 
-		
+	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property, JCheckBox checkBox)
+	{
 		if (property.equals(Strategy.OBJECT_NAME))
 			manager.setVisibility(DiagramStrategyCell.class, checkBox.isSelected());
 		else if (property.equals(Target.OBJECT_NAME))
 			manager.setVisibility(DiagramTargetCell.class, checkBox.isSelected());
-		else if (property.equals(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR))
-			manager.setContributingFactorsVisible(checkBox.isSelected());
-		else if (property.equals(Factor.OBJECT_NAME_THREAT))
-			manager.setDirectThreatsVisible(checkBox.isSelected());
 		else if (property.equals(Target.OBJECT_NAME))
 			manager.setVisibility(DiagramTargetCell.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME))
@@ -178,7 +168,6 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
 		mainWindow.updateStatusBar();
-			
 	}
 	
 	class LocationButton extends UiButton implements LocationHolder

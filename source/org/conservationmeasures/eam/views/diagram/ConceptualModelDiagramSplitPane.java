@@ -19,6 +19,6 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 
 	public Component createLegendPanel(MainWindow mainWindow)
 	{
-		return new DiagramLegendPanel(mainWindow);
+		return new ConceptualModelDiagramLegendPanel(mainWindow);
 	}
 }

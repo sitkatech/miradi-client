@@ -14,7 +14,8 @@ public class LayerPanel extends ModelessDialogPanel
 {
 	public LayerPanel(MainWindow mainWindowToUse)
 	{
-		add(new DiagramLegendPanel(mainWindowToUse));
+		//FIXME RC should not create either CM or RC legend
+		add(new ConceptualModelDiagramLegendPanel(mainWindowToUse));
 	}
 
 	public BaseObject getObject()
