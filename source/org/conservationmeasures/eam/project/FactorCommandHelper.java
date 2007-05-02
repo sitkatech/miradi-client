@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
@@ -107,19 +108,20 @@ public class FactorCommandHelper
 		{
 			FactorDataMap nodeData = nodes[i];
 			DiagramFactorId originalDiagramNodeId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
-			
-			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
+			DiagramFactor originalDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, originalDiagramNodeId));
 			
 			int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
+			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
 			newNodeLocation.setLocation(newNodeLocation.x + offsetToAvoidOverlaying, newNodeLocation.y + offsetToAvoidOverlaying);
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
 			
 			DiagramFactorId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			FactorCell newNode = getDiagramFactorById(newNodeId);
 			
-			String currentSize = EnhancedJsonObject.convertFromDimension(newNode.getSize());
-			String previousSize = EnhancedJsonObject.convertFromDimension(newNode.getPreviousSize());
-			CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newNode.getDiagramFactorId(), DiagramFactor.TAG_SIZE, currentSize, previousSize);
+			String currentSize = EnhancedJsonObject.convertFromDimension(originalDiagramFactor.getSize());
+			//FIXME remove previous no longer used 
+			//String previousSize = EnhancedJsonObject.convertFromDimension(newNode.getPreviousSize());
+			CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newNode.getDiagramFactorId(), DiagramFactor.TAG_SIZE, currentSize);
 			executeCommand(setSizeCommand);
 			
 			DiagramFactorId newDiagramNodeId = getDiagramFactorById(newNodeId).getDiagramFactorId();
