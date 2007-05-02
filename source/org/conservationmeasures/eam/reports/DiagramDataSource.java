@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.reports;
 import java.awt.Image;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -20,13 +20,18 @@ public class DiagramDataSource extends CommonDataSource
 	public DiagramDataSource(Project project)
 	{
 		super(project);
+		ORefList list = new ORefList();
+		EAMNormalObjectPool diagramContentsPool = (EAMNormalObjectPool) project.getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		list.addAll(diagramContentsPool.getORefList());
+		diagramContentsPool = (EAMNormalObjectPool) project.getPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
+		list.addAll(diagramContentsPool.getORefList());
+		setObjectList(list);
 	}
 
 	public Image getDiagramImage()
 	{
-		EAMNormalObjectPool diagramContentsPool = (EAMNormalObjectPool) project.getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		ORef oref = diagramContentsPool.getORefList().get(0);
-		DiagramObject diagramObject = (DiagramObject) project.findObject(oref);
+		DiagramObject diagramObject = (DiagramObject)getCurrentObject();
 		return DiagramImageCreator.getImage(EAM.mainWindow, diagramObject);
 	}
+	
 } 
