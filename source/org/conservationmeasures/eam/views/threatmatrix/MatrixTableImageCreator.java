@@ -5,21 +5,45 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import javax.swing.table.*; 
-import javax.swing.*; 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ValueOption;
-
-import java.awt.image.BufferedImage; 
-import java.awt.Color;
-import java.awt.Graphics2D; 
+import org.conservationmeasures.eam.project.Project;
+import org.martus.swing.UiScrollPane;
 
 
 public class MatrixTableImageCreator  
-{ 
+{  
+	
+	static public BufferedImage getImage(Project project)
+	{
+		try
+		{
+			ThreatMatrixTableModel model = new ThreatMatrixTableModel(project);
+			ThreatGridPanel grid = new ThreatGridPanel(null, model);
+			//TODO: is there a better way to do this
+			JFrame frame = new JFrame();
+			frame.add(new UiScrollPane(grid));
+			frame.pack();
+			return createImage(grid.getThreatMatrixTable(), grid.getRowHeaderTable());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new BufferedImage(0, 0, BufferedImage.TYPE_INT_RGB);  
+		}
+	}
 
+	
     public static BufferedImage createImage(JTable table, JTable rowHeaderTable) 
     { 
 		try

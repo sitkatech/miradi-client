@@ -62,15 +62,15 @@ public class ThreatGridPanel extends JPanel
 		repaint();
 	}
 	
-	public Project getProject() 
+	public Project getProject()
 	{
-		return view.getProject();
+		return getThreatMatrixTable().getProject();
 	}
 	
 	
 	public ThreatRatingFramework getThreatRatingFramework() 
 	{
-		return view.getThreatRatingFramework();
+		return getProject().getThreatRatingFramework();
 	}
 	
 	

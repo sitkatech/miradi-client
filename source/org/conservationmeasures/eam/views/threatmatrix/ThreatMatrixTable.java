@@ -22,7 +22,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -47,7 +46,7 @@ import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class ThreatMatrixTable extends JTable
 {
-	public ThreatMatrixTable(TableModel model, ThreatGridPanel panel)
+	public ThreatMatrixTable(ThreatMatrixTableModel model, ThreatGridPanel panel)
 	{
 		super(model);
 		setIntercellSpacing(new Dimension(0, 0));
@@ -73,7 +72,6 @@ public class ThreatMatrixTable extends JTable
 		
 		addMouseListener(new TableMouseAdapter());
 	}
-
 
 	public void columnMoved(TableColumnModelEvent event)
 	{
@@ -141,6 +139,12 @@ public class ThreatMatrixTable extends JTable
 		return (ConceptualModelDiagram) project.findObject(ref);
 	}
 	
+	public Project getProject()
+	{
+		ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
+		return model.getProject();
+	}
+	
 	class TableMouseAdapter extends MouseAdapter
 	{
 	    public void mousePressed(MouseEvent event)
@@ -186,6 +190,7 @@ public class ThreatMatrixTable extends JTable
 			return menu;
 		}
 	}
+	
 	
 	class ActionDeleteModelLinkage extends AbstractAction
 	{

@@ -2,8 +2,8 @@ package org.conservationmeasures.eam.reports;
 
 import java.awt.Image;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.threatmatrix.MatrixTableImageCreator;
 
 public class ThreatTableDataSource extends CommonDataSource
 {
@@ -14,6 +14,6 @@ public class ThreatTableDataSource extends CommonDataSource
 
 	public Image getThreatTableImage()
 	{
-		return EAM.mainWindow.getThreatView().getImage();
+		return MatrixTableImageCreator.getImage(project);
 	}
 } 

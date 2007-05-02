@@ -93,12 +93,13 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	
 	private MainWindow getMainWindow()
 	{
-		return threatGridPanel.getThreatMatrixView().getMainWindow();
+		//TODO: shold be a better way to get to main window, instead of this , or going in via the view which we can not use here do to image print
+		return EAM.mainWindow;
 	}
 
 	private ThreatRatingFramework getThreatRatingFramework()
 	{
-		return threatGridPanel.getThreatMatrixView().getThreatRatingFramework();
+		return threatGridPanel.getProject().getThreatRatingFramework();
 	}
 
 	private boolean isOverallRatingCell(JTable table, int row, int column)
