@@ -12,6 +12,6 @@ public class PasteWithoutLinks extends Paste
 {
 	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
 	{
-		new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel()).pasteFactorsOnlyIntoProject(list, getLocation());
+		factorCommandHelper.pasteFactorsOnlyIntoProject(list, getLocation());
 	}
 }
