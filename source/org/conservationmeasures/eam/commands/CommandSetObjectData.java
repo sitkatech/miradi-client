@@ -20,15 +20,6 @@ import org.conservationmeasures.eam.utils.PointList;
 
 public class CommandSetObjectData extends Command
 {
-	
-	static public CommandSetObjectData createNewPointList(BaseObject object, String listTag, PointList newList, PointList oldList)
-	{
-		String newListAsString = newList.toJson().toString();
-		String oldListAsString = oldList.toJson().toString();
-		
-		return new CommandSetObjectData(object.getType(), object.getId(), listTag, newListAsString, oldListAsString);
-	}
-	
 	static public CommandSetObjectData createNewPointList(BaseObject object, String listTag, PointList newList)
 	{
 		String newListAsString = newList.toJson().toString();

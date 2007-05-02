@@ -40,7 +40,7 @@ public class LinkBendPointsMoveHandler
 			movedPoints.add(movedPoint);
 		}
 		
-		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, movedPoints, pointsToMove);
+		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, movedPoints);
 		project.executeCommand(bendPointMoveCommand);
 	}
 	
