@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ResultsChainCreatorHelper;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -44,14 +45,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			DiagramView diagramView = getDiagramView();
-			ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(getProject(), diagramView.getDiagramPanel());
-
-			BaseId newResultsChainId = creatorHelper.createResultsChain();
-			int newTabIndex = diagramView.getTabIndex(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId));
-			//TODO RC can/should this be done by executing a command instead
-			//i dont think this should be done as a command, since undo will delete the results chain
-			diagramView.setTab(newTabIndex);
+			createResultsChain(getProject(), getDiagramView());
 		}
 		catch (Exception e) 
 		{
@@ -61,9 +55,20 @@ public class CreateResultsChainDoer extends ViewDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	public static void createResultsChain(Project project, DiagramView diagramView) throws Exception
+	{
+		ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(project, diagramView.getDiagramPanel());
+
+		BaseId newResultsChainId = creatorHelper.createResultsChain();
+		int newTabIndex = diagramView.getTabIndex(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId));
+		//TODO RC can/should this be done by executing a command instead
+		//i dont think this should be done as a command, since undo will delete the results chain
+		diagramView.setTab(newTabIndex);
 	}	
 	
-	private boolean atLeastOneStrategy(BaseObject[] selectedObjects)
+	public static boolean atLeastOneStrategy(BaseObject[] selectedObjects)
 	{
 		for (int i = 0; i < selectedObjects.length; i++)
 		{

@@ -9,6 +9,7 @@ import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
+import org.conservationmeasures.eam.actions.ActionCreateOrShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
@@ -26,7 +27,6 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
-import org.conservationmeasures.eam.diagram.DiagramContextMenuHandler;
 import org.conservationmeasures.eam.main.EAMToolBar;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.ToolBarButton;
@@ -64,7 +64,7 @@ public class DiagramToolBar extends EAMToolBar
 			},
 			{
 				getModeSwitchButton(actions, diagramView),
-				new ToolBarButton(DiagramContextMenuHandler.getDiagamModeSwitchItem(diagramView, actions), ""),
+				new ToolBarButton(actions, ActionCreateOrShowResultsChain.class),
 			},
 		};
 		

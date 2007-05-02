@@ -47,7 +47,11 @@ public class ShowResultsChainDoer extends ViewDoer
 		if (! isAvailable())
 			return;
 		
-		DiagramView diagramView = getDiagramView();
+		showResultsChain(getDiagramView());
+	}
+
+	public static void showResultsChain(DiagramView diagramView)
+	{
 		DiagramPanel diagramPanel = diagramView.getDiagramPanel();
 		Factor[] selectedFactors = diagramPanel.getOnlySelectedFactors();
 		
