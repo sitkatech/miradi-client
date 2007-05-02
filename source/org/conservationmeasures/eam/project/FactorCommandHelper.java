@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.project;
 
+import java.awt.Dimension;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -24,7 +25,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
@@ -108,7 +108,6 @@ public class FactorCommandHelper
 		{
 			FactorDataMap nodeData = nodes[i];
 			DiagramFactorId originalDiagramNodeId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
-			DiagramFactor originalDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, originalDiagramNodeId));
 			
 			int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
 			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
@@ -118,9 +117,8 @@ public class FactorCommandHelper
 			DiagramFactorId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			FactorCell newNode = getDiagramFactorById(newNodeId);
 			
-			String currentSize = EnhancedJsonObject.convertFromDimension(originalDiagramFactor.getSize());
-			//FIXME remove previous no longer used 
-			//String previousSize = EnhancedJsonObject.convertFromDimension(newNode.getPreviousSize());
+			Dimension originalSize = nodeData.getDimension(DiagramFactor.TAG_SIZE);
+			String currentSize = EnhancedJsonObject.convertFromDimension(originalSize);
 			CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newNode.getDiagramFactorId(), DiagramFactor.TAG_SIZE, currentSize);
 			executeCommand(setSizeCommand);
 			
