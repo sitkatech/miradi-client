@@ -8,7 +8,12 @@ package org.conservationmeasures.eam.reports;
 import java.awt.Image;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
 
 public class DiagramDataSource extends CommonDataSource
 {
@@ -19,9 +24,9 @@ public class DiagramDataSource extends CommonDataSource
 
 	public Image getDiagramImage()
 	{
-		//FIXME: currently getDiagramComponent returns null if not in the diagram view
-		if (EAM.mainWindow.getDiagramComponent()!=null)
-			return EAM.mainWindow.getDiagramComponent().getImage();
-		return null;
+		EAMNormalObjectPool diagramContentsPool = (EAMNormalObjectPool) project.getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		ORef oref = diagramContentsPool.getORefList().get(0);
+		DiagramObject diagramObject = (DiagramObject) project.findObject(oref);
+		return DiagramImageCreator.getImage(EAM.mainWindow, diagramObject);
 	}
 } 

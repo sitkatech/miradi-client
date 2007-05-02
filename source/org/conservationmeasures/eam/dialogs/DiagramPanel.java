@@ -61,15 +61,20 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		}
 	}
 	
-	private void createAndAddDiagram() throws Exception
+	static public DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
-		DiagramModel diagramModel = new DiagramModel(getProject());
+		DiagramModel diagramModel = new DiagramModel(diagramObject.getObjectManager().getProject());
 		diagramModel.fillFrom(diagramObject);
 		diagramModel.updateProjectScopeBox();
-		
-		diagram = new DiagramComponent(mainWindow);
+		DiagramComponent diagram = new DiagramComponent(mainWindow);
 		diagram.setModel(diagramModel);
 		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
+		return diagram;
+	}
+	
+	private void createAndAddDiagram() throws Exception
+	{
+		diagram = createDiagram(mainWindow, diagramObject);
 		selectionModel = diagram.getEAMGraphSelectionModel();
 	}
 	
