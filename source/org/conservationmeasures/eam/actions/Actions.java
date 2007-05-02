@@ -270,7 +270,7 @@ public class Actions
 		registerAction(new ActionShowResultsChain(mainWindow));
 		registerAction(new ActionDeleteResultsChain(mainWindow));
 		registerAction(new ActionShowConceptualModel(mainWindow));
-		
+		registerAction(new ActionCreateOrShowResultsChain(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

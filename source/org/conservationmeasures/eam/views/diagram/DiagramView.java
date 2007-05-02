@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
+import org.conservationmeasures.eam.actions.ActionCreateOrShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionCreateResultsChain;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
@@ -109,7 +110,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDiagramViewDoersToMap();
 		
-		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	private void updateToolBar()
@@ -217,6 +217,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionShowResultsChain.class, new ShowResultsChainDoer());
 		addDoerToMap(ActionDeleteResultsChain.class, new DeleteResultsChainDoer());
 		addDoerToMap(ActionShowConceptualModel.class, new ShowConceptualModelDoer());
+		addDoerToMap(ActionCreateOrShowResultsChain.class, new CreateOrShowResultsChainDoer());
 	}
 	
 	public void tabWasSelected()
