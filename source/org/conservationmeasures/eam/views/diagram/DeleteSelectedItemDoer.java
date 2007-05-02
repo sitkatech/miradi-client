@@ -103,6 +103,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, id);
 		project.executeCommand(removeDiagramFactorLink);
 		
+		Command[] commandsToClearDiagramLink = linkageToDelete.createCommandsToClear();
+		project.executeCommands(commandsToClearDiagramLink);
+		
 		CommandDeleteObject removeFactorLinkCommand = new CommandDeleteObject(ObjectType.DIAGRAM_LINK, id);
 		project.executeCommand(removeFactorLinkCommand);
 
