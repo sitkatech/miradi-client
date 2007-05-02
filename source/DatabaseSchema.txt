@@ -1,0 +1,41 @@
+Database Schema
+2007-05-01
+Kevin Smith
+
+These are rough notes. Need to do more research into proven 
+approaches and solutions, especially with network databases, 
+and perhaps to a lesser degree, with object databases.
+
+I propose these relationships:
+
+A owns B
+C requires D
+E refers to F
+
+If A owns B:
+  "A refers to B" is also implied
+  Deleting A automatically deletes B
+  Deleting B removes it from A (see refers, below)
+  
+If C require D:
+  Deleting C has no effect on D
+  Deleting D automatically deletes C
+  
+If E refers to F:
+  Deleting E has no effect on F
+  Deleting F removes it from E
+  
+  
+  
+RelationshipManager
+
+At the time the db is opened, all objects are scanned, and 
+the RelationshipManager is populated. From then on, the 
+RelationshipManager listens for any object creations, 
+deletions, or reference changes, and updates itself as 
+needed.
+
+Any questions about object relationships (owns/owned by, 
+depends on/is depended on by, refers to/referred to by) can 
+be answered immediately by the RelationshipManager. It is 
+responsible for handling loops sanely.
