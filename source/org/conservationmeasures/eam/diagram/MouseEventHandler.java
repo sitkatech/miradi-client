@@ -205,10 +205,9 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		List points = GraphConstants.getPoints(linkCell.getAttributes());
 		PointList currentBendPoints = LinkCell.extractBendPointsOnly(points);
 		String newList = currentBendPoints.toJson().toString();
-		String previousList = previousBendPointList.toString();
 		DiagramFactorLinkId linkId = linkCell.getDiagramFactorLinkId();
 		
-		CommandSetObjectData setBendPointsCommand= new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newList, previousList);
+		CommandSetObjectData setBendPointsCommand = new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newList);
 		getProject().executeCommand(setBendPointsCommand);
 	}
 

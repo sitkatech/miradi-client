@@ -91,12 +91,6 @@ public class CommandSetObjectData extends Command
 		newValue = dataValue;
 	}
 	
-	public CommandSetObjectData(int objectType, BaseId objectId, String fieldTag, String newValueToUse, String oldValueToUse)
-	{
-		this(objectType, objectId, fieldTag, newValueToUse);
-		oldValue = oldValueToUse;
-	}
-	
 	public ORef getObjectORef()
 	{
 		return new ORef(getObjectType(), getObjectId());
@@ -158,7 +152,10 @@ public class CommandSetObjectData extends Command
 
 	public Command getReverseCommand() throws CommandFailedException
 	{
-		return new CommandSetObjectData(type, id, tag, oldValue, newValue);
+		CommandSetObjectData commandSetObjectData = new CommandSetObjectData(type, id, tag, oldValue);
+		commandSetObjectData.setPreviousDataValue(newValue);
+		
+		return commandSetObjectData;
 	}
 
 	public HashMap getLogData()

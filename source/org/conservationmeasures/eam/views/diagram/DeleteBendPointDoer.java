@@ -52,9 +52,8 @@ public class DeleteBendPointDoer extends LocationDoer
 		PointList bendPoints = diagramFactorLink.getBendPoints();
 		PointList newBendPoints = getBendPointListMinusDeletedPoint(bendPoints);
 		String newBendPointList = newBendPoints.toJson().toString();
-		String oldBendPointList = bendPoints.toJson().toString();
 		
-		CommandSetObjectData removeBendPointCommand = new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newBendPointList, oldBendPointList);
+		CommandSetObjectData removeBendPointCommand = new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newBendPointList);
 		getProject().executeCommand(removeBendPointCommand);
 	}
 	

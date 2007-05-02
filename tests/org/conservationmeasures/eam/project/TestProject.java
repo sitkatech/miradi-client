@@ -617,7 +617,8 @@ public class TestProject extends EAMTestCase
 
 		String previousLocation = EnhancedJsonObject.convertFromPoint(new Point(5, 5));
 		String newLocation = EnhancedJsonObject.convertFromPoint(new Point(9, 9));
-		CommandSetObjectData moveDiagramFactor = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newLocation, previousLocation);
+		CommandSetObjectData moveDiagramFactor = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newLocation);
+		moveDiagramFactor.setPreviousDataValue(previousLocation);
 		project.executeCommand(moveDiagramFactor);
 		assertEquals(8 + existingCalls, database.callsToWriteObject);
 		
