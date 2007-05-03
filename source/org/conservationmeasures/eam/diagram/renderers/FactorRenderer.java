@@ -253,7 +253,10 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	{
 		Rectangle smallRect = new Rectangle();
 		smallRect.x = rect.x;
-		smallRect.y = getSize().height/2 - PRIORITY_HEIGHT/2;
+		if (node.isCause())
+			smallRect.y  = rect.y;
+		else
+			smallRect.y = getSize().height/2 - PRIORITY_HEIGHT/2;
 		smallRect.width = PRIORITY_WIDTH;
 		smallRect.height = PRIORITY_HEIGHT;
 		return smallRect;
