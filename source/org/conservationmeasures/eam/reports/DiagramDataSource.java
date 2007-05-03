@@ -21,10 +21,10 @@ public class DiagramDataSource extends CommonDataSource
 	{
 		super(project);
 		ORefList list = new ORefList();
-		EAMNormalObjectPool diagramContentsPool = (EAMNormalObjectPool) project.getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		list.addAll(diagramContentsPool.getORefList());
-		diagramContentsPool = (EAMNormalObjectPool) project.getPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
-		list.addAll(diagramContentsPool.getORefList());
+		EAMNormalObjectPool conceptualPool = (EAMNormalObjectPool) project.getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		list.addAll(conceptualPool.getORefList());
+		EAMNormalObjectPool resultchainPool = (EAMNormalObjectPool) project.getPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
+		list.addAll(resultchainPool.getORefList());
 		setObjectList(list);
 	}
 
