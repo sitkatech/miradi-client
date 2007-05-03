@@ -26,7 +26,12 @@ public class TreeNodeDown extends AbstractTaskTreeDoer
 			return false;
 		
 		Task task = (Task)selected[0];
-		IdList siblings = getTaskIds(task.getParentRef());
+		
+		ORef oref = task.getParentRef();
+		if (oref==null)
+			return false;
+		
+		IdList siblings = getTaskIds(oref);
 		if(!siblings.contains(task.getId()))
 			return false;
 		int at = siblings.find(task.getId());

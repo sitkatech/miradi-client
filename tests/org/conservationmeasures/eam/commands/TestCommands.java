@@ -27,7 +27,6 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -407,7 +406,7 @@ public class TestCommands extends EAMTestCase
 	{
 		UndoListener undoListener = new UndoListener();
 		project.addCommandExecutedListener(undoListener);
-		CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK, getTaskExtraInfo());
+		CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK);
 		project.executeCommand(cmd);
 		project.undo();
 		assertEquals("didn't undo one command?", 2, undoListener.undoneCommands.size());
@@ -443,13 +442,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(addDiagramFactor);
 		
 		return (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
-	}
-	
-	private CreateTaskParameter getTaskExtraInfo()
-	{
-		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
-		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
-		return extraInfo;
 	}
 	
 	ProjectForTesting project;

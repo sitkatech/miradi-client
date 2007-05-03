@@ -16,9 +16,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.conservationmeasures.eam.objectdata.ORefData;
-import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -29,41 +26,29 @@ import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
 public class Task extends BaseObject
 {
-	public Task(ObjectManager objectManager, BaseId idToUse, CreateTaskParameter extraInfo) throws Exception
+	public Task(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
 		super(objectManager, new TaskId(idToUse.asInt()));
 		clear();
-		parentRef.set(extraInfo.getParentRef().toString());
 	}
 	
-	public Task(BaseId idToUse, CreateTaskParameter extraInfo) throws Exception
+	public Task(BaseId idToUse) throws Exception
 	{
 		super(new TaskId(idToUse.asInt()));
 		clear();
-		parentRef.set(extraInfo.getParentRef().toString());
 	}
 	
 	public Task(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new TaskId(idAsInt), json);
-		parentRef.set(json.optString(TAG_PARENT_REF));
 	}
 	
 	
 	public Task(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new TaskId(idAsInt), json);
-		parentRef.set(json.optString(TAG_PARENT_REF));
 	}
 	
-	
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject jsonObject = super.toJson();
-		jsonObject.put(TAG_PARENT_REF, parentRef.toString());
-		
-		return jsonObject;
-	}
 	
 	public Vector getDeleteSelfAndSubtasksCommands(Project project) throws Exception
 	{
@@ -112,29 +97,10 @@ public class Task extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
-		switch(type)
-		{
-			case ObjectType.TASK: 
-				return true;
-			default:
-				return false;
-		}
+		return false;
 	}
 	
 
-	public ORefList getReferencedObjects(int objectType)
-	{
-		ORefList list = super.getReferencedObjects(objectType);
-		
-		if ((getParentRef()==null) || (getParentRef().getObjectId().equals(BaseId.INVALID)))
-			return list;
-		
-		if (getParentRef().getObjectType()==objectType) 
-			list.addAll(new ORefList(new ORef[] {getParentRef()}));
-
-		return list;
-	}
-	
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
@@ -189,19 +155,9 @@ public class Task extends BaseObject
 		return assignmentIds.getIdList().createClone();
 	}
 	
-	public CreateObjectParameter getCreationExtraInfo()
-	{
-		return new CreateTaskParameter(parentRef.getRawRef());
-	}
-	
-	public void setParentRef(ORef parentRefToUse) throws Exception
-	{
-		parentRef.set(parentRefToUse);
-	}
-	
 	public ORef getParentRef()
 	{
-		return parentRef.getRawRef();
+		return getOwnerRef();
 	}
 
 	public String toString()
@@ -209,21 +165,6 @@ public class Task extends BaseObject
 		return getLabel();
 	}
 	
-	//TODO: look to see if we can get rid of this now we have a get owner:
-	public void setData(String fieldTag, String dataValue) throws Exception
-	{
-		if (fieldTag.equals(TAG_PARENT_REF))
-			parentRef.set(dataValue);
-		else
-			super.setData(fieldTag, dataValue);
-	}
-	
-	public String getData(String fieldTag)
-	{
-		if (fieldTag.equals(TAG_PARENT_REF))
-			return parentRef.get();
-		return super.getData(fieldTag);
-	}
 	
 	public String getPseudoData(String fieldTag)
 	{
@@ -301,15 +242,11 @@ public class Task extends BaseObject
 
 	private String getLabelOfTaskParent()
 	{
-		if(parentRef == null || getParentRef().getObjectType() == ObjectType.FAKE)
-		{
-			EAM.logDebug("Task without parent: " + getId());
-			return "(none)";
-		}
-		BaseObject parent = objectManager.findObject(getParentRef());
+
+		BaseObject parent = objectManager.findObject(getOwnerRef());
 		if(parent == null)
 		{
-			EAM.logDebug("Parent of task " + getId() + " not found: " + parentRef);
+			EAM.logDebug("Parent of task " + getId() + " not found: " + getOwnerRef());
 			return "(none)";
 		}
 		return parent.getData(BaseObject.TAG_LABEL);
@@ -319,7 +256,6 @@ public class Task extends BaseObject
 	public void clear()
 	{
 		super.clear();
-		parentRef = new ORefData();
 		subtaskIds = new IdListData();
 		assignmentIds = new IdListData();
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
@@ -337,7 +273,7 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_TASK_COST, taskCost);
 	}
 
-	public final static String TAG_PARENT_REF = "ParentRef";
+
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_ASSIGNMENT_IDS = "AssignmentIds";
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
@@ -348,7 +284,6 @@ public class Task extends BaseObject
 	
 	IdListData subtaskIds;
 	IdListData assignmentIds;
-	ORefData parentRef;
 	PseudoStringData strategyLabel;
 	PseudoStringData indicatorLabel;
 	PseudoStringData subtaskTotal;

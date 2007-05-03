@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
@@ -34,20 +32,19 @@ public class TestTask extends ObjectTestCase
 
 	public void testBasics() throws Exception
 	{
-		CreateTaskParameter extraInfo = getTaskExtraInfo();
-		verifyFields(ObjectType.TASK, extraInfo);
+		verifyFields(ObjectType.TASK);
 		BaseId id = new BaseId(5);
 		
-		Task task = new Task(id, extraInfo);
+		Task task = new Task(id);
 		assertEquals("bad id?", id, task.getId());
 		
 		String label = "Name of task";
 		task.setData(Task.TAG_LABEL, label);
 		assertEquals("bad label?", label, task.getData(Task.TAG_LABEL));
 		
-		Task sameTask = new Task(id, extraInfo);
+		Task sameTask = new Task(id);
 		assertEquals("same ids not equal?", task, sameTask);
-		Task otherTask = new Task(new BaseId(id.asInt()+1), extraInfo);
+		Task otherTask = new Task(new BaseId(id.asInt()+1));
 		otherTask.setData(Task.TAG_LABEL, label);
 		assertNotEquals("different ids are equal?", task, otherTask);
 	}
@@ -55,23 +52,21 @@ public class TestTask extends ObjectTestCase
 	public void testData() throws Exception
 	{
 		IdList sampleIds = new IdList();
-		CreateTaskParameter extraInfo = getTaskExtraInfo();
 		sampleIds.add(1);
 		sampleIds.add(1527);
 		String sampleIdData = sampleIds.toString(); 
-		Task task = new Task(new BaseId(0), extraInfo);
+		Task task = new Task(new BaseId(0));
 		task.setData(Task.TAG_SUBTASK_IDS, sampleIdData);
 		assertEquals("bad data?", sampleIdData, task.getData(Task.TAG_SUBTASK_IDS));
 	}
 	
 	public void testNesting() throws Exception
 	{
-		CreateTaskParameter extraInfo = getTaskExtraInfo();
 		IdAssigner idAssigner = new IdAssigner();
-		Task top = new Task(idAssigner.takeNextId(), extraInfo);
-		Task child1 = new Task(idAssigner.takeNextId(), extraInfo);
-		Task child2 = new Task(idAssigner.takeNextId(), extraInfo);
-		Task grandchild21 = new Task(idAssigner.takeNextId(), extraInfo);
+		Task top = new Task(idAssigner.takeNextId());
+		Task child1 = new Task(idAssigner.takeNextId());
+		Task child2 = new Task(idAssigner.takeNextId());
+		Task grandchild21 = new Task(idAssigner.takeNextId());
 		
 		top.addSubtaskId(child1.getId());
 		top.addSubtaskId(child2.getId());
@@ -107,27 +102,12 @@ public class TestTask extends ObjectTestCase
 
 	private Task createBasicTree() throws Exception
 	{
-		CreateTaskParameter extraInfo = getTaskExtraInfo();
-		Task parent = new Task(new BaseId(1), extraInfo);
-		Task child1 = new Task(new BaseId(2), extraInfo);
-		Task child2 = new Task(new BaseId(3), extraInfo);
+		Task parent = new Task(new BaseId(1));
+		Task child1 = new Task(new BaseId(2));
+		Task child2 = new Task(new BaseId(3));
 		parent.addSubtaskId(child1.getId());
 		parent.addSubtaskId(child2.getId());
 		return parent;
-	}
-	
-	public void testExtraInfo() throws Exception
-	{
-		Task task = new Task(BaseId.INVALID, getTaskExtraInfo());
-		ORef parentRef = ((CreateTaskParameter)task.getCreationExtraInfo()).getParentRef();
-		assertEquals("not same parent?", getTaskExtraInfo().getParentRef(), parentRef);
-	}
-
-	private CreateTaskParameter getTaskExtraInfo()
-	{
-		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
-		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
-		return extraInfo;
 	}
 	
 	ProjectForTesting project;

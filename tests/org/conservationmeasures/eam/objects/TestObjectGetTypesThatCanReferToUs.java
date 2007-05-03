@@ -36,8 +36,6 @@ public class TestObjectGetTypesThatCanReferToUs extends EAMTestCase
 		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
 		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
 
-		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanReferToUs(ObjectType.TASK));
-
 		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.CAUSE));
 		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.STRATEGY));
 		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.TARGET));

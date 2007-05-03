@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -35,17 +34,14 @@ public class TestDeleteActivity extends EAMTestCase
 			BaseId rawStrategyId = project.createObject(ObjectType.STRATEGY);
 			FactorId strategyId = new FactorId(rawStrategyId.asInt());
 			Strategy strategy = (Strategy)project.findNode(strategyId);
-				
-			CreateTaskParameter extraInfo = new CreateTaskParameter(strategy.getRef());
-			
-			BaseId parentHasChildId = project.createObject(ObjectType.TASK, BaseId.INVALID, extraInfo);
+
+			BaseId parentHasChildId = project.createObject(ObjectType.TASK, BaseId.INVALID);
 			Task parentHasChild = (Task)project.findObject(ObjectType.TASK, parentHasChildId);
 			
-			BaseId parentHasNoChildId  = project.createObject(ObjectType.TASK, BaseId.INVALID, extraInfo);
+			BaseId parentHasNoChildId  = project.createObject(ObjectType.TASK, BaseId.INVALID);
 			Task parentNoChild = (Task)project.findObject(ObjectType.TASK, parentHasNoChildId);
 			
-			CreateTaskParameter leafChildExtraInfo = new CreateTaskParameter(parentHasChild.getRef());
-			BaseId leafChildId = project.createObject(ObjectType.TASK, BaseId.INVALID, leafChildExtraInfo);
+			BaseId leafChildId = project.createObject(ObjectType.TASK, BaseId.INVALID);
 			Task leafChild = (Task)project.findObject(ObjectType.TASK, leafChildId);
 			
 			CommandSetObjectData addResource1 = CommandSetObjectData.createAppendIdCommand(strategy, Strategy.TAG_ACTIVITY_IDS, parentNoChild.getId());

@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
@@ -55,8 +54,7 @@ public class CreateActivityDoer extends ViewDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			CreateTaskParameter parentRef = new CreateTaskParameter(strategy.getRef());
-			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK, parentRef);
+			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
 			project.executeCommand(create);
 			BaseId createdId = create.getCreatedId();
 	
