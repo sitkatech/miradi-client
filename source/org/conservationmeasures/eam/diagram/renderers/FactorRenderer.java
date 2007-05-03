@@ -164,7 +164,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	{
 		int originalHeight = getSize().height;
 		int originalWidth = getSize().width; 
-		setSize(getSizeWithoutAnnotations(getSize(), 0));
+		setSize(getSizeWithoutAnnotations(getSize()));
 		super.paint(g1);
 		setSize(originalWidth, originalHeight);
 
@@ -186,14 +186,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			drawChainIcon(rect, g2);
 	}
 	
-	//TODO: remove annotationCount no longer used
-	public static Dimension getSizeWithoutAnnotations(Dimension size, int annotationCount)
+
+	public static Dimension getSizeWithoutAnnotations(Dimension size)
 	{
-		return new Dimension(size.width, size.height - (annotationCount * (INDICATOR_HEIGHT / 2)));
+		return new Dimension(size.width, size.height);
 	}
 
 	
-
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
 	{
 		if(indicatorText == null)
