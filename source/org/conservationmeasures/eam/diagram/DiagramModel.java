@@ -68,12 +68,7 @@ public class DiagramModel extends DefaultGraphModel
 		project = projectToUse;
 		clear();
 	}
-	
-	//FIXME should remove command listener here (after we're a commandListener)
-	public void dispose()
-	{
-	}
-	
+		
 	public void clear()
 	{
 		while(getRootCount() > 0)

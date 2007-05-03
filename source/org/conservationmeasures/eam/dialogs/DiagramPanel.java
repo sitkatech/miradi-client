@@ -239,11 +239,10 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	public void dispose()
 	{
 		super.dispose();
-		//FIXME dispose properly
-		getDiagramModel().dispose();
 
 		diagram = null;
 		selectionModel = null;
+		diagramObject = null;
 	}
 	
 	public void addFieldComponent(Component component)
