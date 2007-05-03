@@ -22,16 +22,17 @@ public class TestCausePool extends TestFactorPool
 	{
 		super.setUp();
 		pool = project.getCausePool();
-		for(int i = 0; i < 3; ++i)
-		{
-			addNewlyCreatedNodeToPool(ObjectType.CAUSE);
-		}
 	}
 	
 	public void testBasics() throws Exception
 	{
-		assertEquals("wrong Cuase count?", 3, pool.getIds().length);
+		assertEquals("wrong Cuase count?", FACTOR_COUNT, pool.getIds().length);
 		assertEquals("wrong direct threat count?", 0, pool.getDirectThreats().length);
+	}
+	
+	public int getObjectType()
+	{
+		return ObjectType.CAUSE;
 	}
 	
 	public void testDirectThreats() throws Exception

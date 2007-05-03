@@ -19,16 +19,16 @@ public class TestTargetPool extends TestFactorPool
 	{
 		super.setUp();
 		pool = project.getTargetPool();
-
-		for(int i = 0; i < 4; ++i)
-		{
-			addNewlyCreatedNodeToPool(ObjectType.TARGET);
-		}
+	}
+	
+	public int getObjectType()
+	{
+		return ObjectType.TARGET;
 	}
 
 	public void testBasics() throws Exception
 	{
-		assertEquals("wrong target count?", 4, pool.getTargets().length);
+		assertEquals("wrong target count?", FACTOR_COUNT, pool.getTargets().length);
 	}
 	
 	TargetPool pool;

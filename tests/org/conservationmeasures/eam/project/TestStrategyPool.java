@@ -23,15 +23,16 @@ public class TestStrategyPool extends TestFactorPool
 	{
 		super.setUp();
 		pool = project.getStrategyPool();
-		for(int i = 0; i < 3; ++i)
-		{
-			addNewlyCreatedNodeToPool(ObjectType.STRATEGY);
-		}
+	}
+	
+	public int getObjectType()
+	{
+		return ObjectType.STRATEGY;
 	}
 	
 	public void testBasics() throws Exception
 	{
-		assertEquals("wrong strategy count?", 3, pool.getAllStrategies().length);
+		assertEquals("wrong strategy count?", FACTOR_COUNT, pool.getAllStrategies().length);
 		assertEquals("wrong draft strategy count", 0, pool.getDraftStrategies().length);
 	}
 	
