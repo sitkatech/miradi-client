@@ -7,16 +7,15 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-//FIXME rename or otherwise split it up so it is consistent with our other test names
-public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
+
+public class TestObjectGetTypesThatCanReferToUs extends EAMTestCase
 {
-	public TestObjectCanReferAndCanOwnTypeMethods(String name)
+	public TestObjectGetTypesThatCanReferToUs(String name)
 	{
 		super(name);
 	}
 
-
-	public void testCanXXXXThisType()
+	public void testGetTypesThatCanReferToUs()
 	{
 		assertContains(ObjectType.ASSIGNMENT, BaseObject.getTypesThatCanReferToUs(ObjectType.PROJECT_RESOURCE));
 		assertContains(ObjectType.ASSIGNMENT, BaseObject.getTypesThatCanReferToUs(ObjectType.ACCOUNTING_CODE));
@@ -28,32 +27,15 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		assertContains(ObjectType.DIAGRAM_FACTOR, BaseObject.getTypesThatCanReferToUs(ObjectType.TARGET));
 		assertContains(ObjectType.DIAGRAM_FACTOR, BaseObject.getTypesThatCanReferToUs(ObjectType.INTERMEDIATE_RESULT));
 		assertContains(ObjectType.DIAGRAM_FACTOR, BaseObject.getTypesThatCanReferToUs(ObjectType.THREAT_REDUCTION_RESULT));
-		
-
-		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
-		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
-
-		assertContains(ObjectType.CAUSE, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
-		assertContains(ObjectType.CAUSE, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
-
-		assertContains(ObjectType.STRATEGY, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
-		assertContains(ObjectType.STRATEGY, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
-		assertContains(ObjectType.STRATEGY, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
-
-		assertContains(ObjectType.TARGET, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
-		assertContains(ObjectType.TARGET, BaseObject.getTypesThatCanOwnUs(ObjectType.GOAL));
-		assertContains(ObjectType.TARGET, BaseObject.getTypesThatCanOwnUs(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE));
 
 		assertContains(ObjectType.FACTOR_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.CAUSE));
 		assertContains(ObjectType.FACTOR_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.STRATEGY));
 		assertContains(ObjectType.FACTOR_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.TARGET));
+	
 		
-		assertContains(ObjectType.INDICATOR, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
+		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
+		assertContains(ObjectType.DIAGRAM_LINK, BaseObject.getTypesThatCanReferToUs(ObjectType.FACTOR_LINK));
 
-		assertContains(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
-		
-		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
-		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanOwnUs(ObjectType.ASSIGNMENT));
 		assertContains(ObjectType.TASK, BaseObject.getTypesThatCanReferToUs(ObjectType.TASK));
 
 		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.CAUSE));
@@ -62,11 +44,5 @@ public class TestObjectCanReferAndCanOwnTypeMethods extends EAMTestCase
 		
 		assertContains(ObjectType.RESULTS_CHAIN_DIAGRAM, BaseObject.getTypesThatCanReferToUs(ObjectType.DIAGRAM_FACTOR));
 		assertContains(ObjectType.RESULTS_CHAIN_DIAGRAM, BaseObject.getTypesThatCanReferToUs(ObjectType.DIAGRAM_LINK));
-		
-		assertContains(ObjectType.INTERMEDIATE_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
-		assertContains(ObjectType.INTERMEDIATE_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
-		
-		assertContains(ObjectType.THREAT_REDUCTION_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
-		assertContains(ObjectType.THREAT_REDUCTION_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
 	}
 }
