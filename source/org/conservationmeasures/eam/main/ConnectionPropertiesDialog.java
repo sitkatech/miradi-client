@@ -74,7 +74,6 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 	
 	private UiComboBox createChoices(int linkFromTo)
 	{
-		boolean acceptStrategies = (linkFromTo == FactorLink.FROM);
 		boolean acceptTargets = (linkFromTo == FactorLink.TO);
 		
 		UiComboBox comboBox = new UiComboBox();
@@ -88,7 +87,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		for(int i = 0; i < factors.length; ++i)
 		{
 			Factor factor = factors[i];
-			if(( acceptStrategies || !factor.isStrategy()) && (acceptTargets || !factor.isTarget()))
+			if((acceptTargets || !factor.isTarget()))
 				dropDownItems.add(new FactorDropDownItem(factor, allDiagramFactors[i]));
 		}
 		
