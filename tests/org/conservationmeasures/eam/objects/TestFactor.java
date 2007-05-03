@@ -67,26 +67,6 @@ public class TestFactor extends TestCaseEnhanced
 			target.setData(tags[i], sampleData[i]);
 			assertEquals("didn't set/get for " + tags[i], sampleData[i], target.getData(tags[i]));
 		}
-		
-		//FIXME verfiy the need for this assert
-		//String nodeTypeTag = Factor.TAG_NODE_TYPE;
-//		try
-//		{
-//			target.setData(nodeTypeTag, "This won't be used anyway");
-//			fail("Should have thrown attempting to setData for node type");
-//		}
-//		catch(RuntimeException ignoreExpected)
-//		{
-//		}
-		
-//		try
-//		{
-//			target.getData(nodeTypeTag);
-//			fail("Should have thrown attempting to getData for node type");
-//		}
-//		catch(RuntimeException ignoreExpected)
-//		{
-//		}
 	}
 
 	public void testJson() throws Exception
