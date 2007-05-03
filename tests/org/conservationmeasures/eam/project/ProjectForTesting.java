@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -201,11 +200,6 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 
 		ORef oRef = oRefs.get(0);
 		return (ConceptualModelDiagram) findObject(oRef);
-	}
-	
-	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
-	{
-		return DiagramPanel.getAllSelectedCellsWithRelatedLinkages(getDiagramModel(), selectedCells);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)

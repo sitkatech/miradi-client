@@ -210,18 +210,19 @@ public class TestProject extends EAMTestCase
 		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
 		LinkCell cell2 = project.getDiagramModel().findLinkCell(linkage2);
 		EAMGraphCell[] selectedCells = {cell1};
-		Vector selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
+		DiagramModel model = project.getDiagramModel();
+		Vector selectedItems = model.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(1, selectedItems.size());
 		assertContains(cell1, selectedItems);
 		
 		selectedCells[0] = node2;
-		selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
+		selectedItems = model.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(2, selectedItems.size());
 		assertContains(node2, selectedItems);
 		assertContains(cell1, selectedItems);
 		
 		selectedCells[0] = node1;
-		selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
+		selectedItems = model.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(3, selectedItems.size());
 		assertContains(node1, selectedItems);
 		assertContains(cell1, selectedItems);
@@ -263,7 +264,7 @@ public class TestProject extends EAMTestCase
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), diagramFactor1.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
-		Vector cellVector = project.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
+		Vector cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
@@ -495,7 +496,7 @@ public class TestProject extends EAMTestCase
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
-		Vector cellVector = project.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
+		Vector cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);

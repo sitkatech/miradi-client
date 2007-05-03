@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -517,6 +518,32 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramFactorLink[] getAllDiagramLinksAsArray()
 	{
 		return (DiagramFactorLink[]) getAllDiagramFactorLinks().toArray(new DiagramFactorLink[0]);
+	}
+	
+	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
+	{
+		Vector selectedCellsWithLinkages = new Vector();
+		for(int i=0; i < selectedCells.length; ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			if(cell.isFactorLink())
+			{
+				if(!selectedCellsWithLinkages.contains(cell))
+					selectedCellsWithLinkages.add(cell);
+			}
+			else if(cell.isFactor())
+			{
+				Set linkages = getFactorLinks((FactorCell)cell);
+				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+				{
+					EAMGraphCell link = (EAMGraphCell) iter.next();
+					if(!selectedCellsWithLinkages.contains(link))
+						selectedCellsWithLinkages.add(link);
+				}
+				selectedCellsWithLinkages.add(cell);
+			}
+		}
+		return selectedCellsWithLinkages;
 	}
 	
 	public Vector getAllDiagramFactorLinks()

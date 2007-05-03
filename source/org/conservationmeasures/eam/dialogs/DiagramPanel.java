@@ -6,8 +6,6 @@
 package org.conservationmeasures.eam.dialogs;
 
 import java.awt.Component;
-import java.util.Iterator;
-import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -90,34 +88,8 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	public EAMGraphCell[] getSelectedAndRelatedCells()
 	{
 		Object[] selectedCells = selectionModel.getSelectionCells();
-		Vector cellVector = getAllSelectedCellsWithRelatedLinkages(getDiagramModel(), selectedCells);
+		Vector cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
-	}
-	
-	public static Vector getAllSelectedCellsWithRelatedLinkages(DiagramModel model, Object[] selectedCells) 
-	{
-		Vector selectedCellsWithLinkages = new Vector();
-		for(int i=0; i < selectedCells.length; ++i)
-		{
-			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
-			if(cell.isFactorLink())
-			{
-				if(!selectedCellsWithLinkages.contains(cell))
-					selectedCellsWithLinkages.add(cell);
-			}
-			else if(cell.isFactor())
-			{
-				Set linkages = model.getFactorLinks((FactorCell)cell);
-				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
-				{
-					EAMGraphCell link = (EAMGraphCell) iter.next();
-					if(!selectedCellsWithLinkages.contains(link))
-						selectedCellsWithLinkages.add(link);
-				}
-				selectedCellsWithLinkages.add(cell);
-			}
-		}
-		return selectedCellsWithLinkages;
 	}
 	
 	public void selectFactor(FactorId idToUse)
