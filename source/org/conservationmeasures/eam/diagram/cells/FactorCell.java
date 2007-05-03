@@ -110,12 +110,6 @@ abstract public class FactorCell extends EAMGraphCell
 		underlyingObject.setLabel(name);
 	}
 
-//FIXME this class has two methods with identical returns.  
-	public int getFactorType()
-	{
-		return underlyingObject.getType();
-	}
-
 	public void setNodeType(FactorType typeToUse)
 	{
 		setColors();
