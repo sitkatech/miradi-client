@@ -69,8 +69,8 @@ import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
 import org.conservationmeasures.eam.objects.TestThreatReductionResult;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
+import org.conservationmeasures.eam.project.TestCausePool;
 import org.conservationmeasures.eam.project.TestFactorLinkPool;
-import org.conservationmeasures.eam.project.TestFactorPool;
 import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestProjectInfo;
@@ -78,8 +78,10 @@ import org.conservationmeasures.eam.project.TestProjectRepairer;
 import org.conservationmeasures.eam.project.TestProjectUnzipper;
 import org.conservationmeasures.eam.project.TestProjectZipper;
 import org.conservationmeasures.eam.project.TestRealProject;
+import org.conservationmeasures.eam.project.TestStrategyPool;
 import org.conservationmeasures.eam.project.TestTNCThreatFormula;
 import org.conservationmeasures.eam.project.TestTNCViabilityFormula;
+import org.conservationmeasures.eam.project.TestTargetPool;
 import org.conservationmeasures.eam.project.TestThreatRatingFramework;
 import org.conservationmeasures.eam.project.TestTncCapWorkbookImporter;
 import org.conservationmeasures.eam.ratings.TestRatingChoice;
@@ -128,7 +130,9 @@ public class MainTests extends TestCase
 		
 		// project package
 		suite.addTest(new TestSuite(TestFactorLinkPool.class));
-		suite.addTest(new TestSuite(TestFactorPool.class));
+		suite.addTest(new TestSuite(TestStrategyPool.class));
+		suite.addTest(new TestSuite(TestTargetPool.class));
+		suite.addTest(new TestSuite(TestCausePool.class));
 		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestProjectRepairer.class));
 		suite.addTest(new TestSuite(TestRealProject.class));
