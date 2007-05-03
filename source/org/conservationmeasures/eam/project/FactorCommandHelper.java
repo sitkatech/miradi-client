@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
@@ -237,15 +238,9 @@ public class FactorCommandHelper
 		return movedPoints;
 	}
 
-	public static CommandSetObjectData createSetLabelCommand(FactorId id, String newLabel)
+	public static CommandSetObjectData createSetLabelCommand(ORef ref, String newLabel)
 	{
-		
-		//FIXME should get node from project and get type from node instead of using FACTOR
-		//ask kevin (nima)
-		int type = ObjectType.FACTOR;
-		String tag = Factor.TAG_LABEL;
-		CommandSetObjectData cmd = new CommandSetObjectData(type, id, tag, newLabel);
-		return cmd;
+		return new CommandSetObjectData(ref, Factor.TAG_LABEL, newLabel);
 	}
 
 	private Project getProject()

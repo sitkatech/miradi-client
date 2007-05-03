@@ -47,13 +47,14 @@ public class TestUndoRedo extends EAMTestCase
 		
 		DiagramFactorId diagramFactorId = insertFactor(project);
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
-		FactorId insertedId = diagramFactor.getWrappedId();
-		project.executeCommand(FactorCommandHelper.createSetLabelCommand(insertedId, target1Text));
+		ORef insertedRef = diagramFactor.getWrappedORef();
+		project.executeCommand(FactorCommandHelper.createSetLabelCommand(insertedRef, target1Text));
 		
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getFactorCount());
 		
-		project.getDiagramModel().getFactorCellByWrappedId(insertedId);
+		FactorId factorId = new FactorId(insertedRef.getObjectId().asInt());
+		project.getDiagramModel().getFactorCellByWrappedId(factorId);
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();

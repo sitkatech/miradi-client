@@ -83,7 +83,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		
 		DiagramFactor addedFactor = (DiagramFactor)getProject().findObject(DiagramFactor.getObjectType(), id);
 
-		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(addedFactor.getWrappedId(), getInitialText());
+		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(addedFactor.getWrappedORef(), getInitialText());
 		project.executeCommand(setNameCommand);
 
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, addedFactor);
