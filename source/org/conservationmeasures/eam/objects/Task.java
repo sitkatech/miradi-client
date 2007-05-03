@@ -115,6 +115,8 @@ public class Task extends BaseObject
 		return list;
 	}
 	
+	//NOTE: this is not testing if this isa Task object...
+	//but if it is a user level task as opposed to a method or an activity
 	public boolean isTask()
 	{
 		return getParentRef().getObjectType() == ObjectType.TASK;
