@@ -27,7 +27,7 @@ public class TreeNodeDown extends AbstractTaskTreeDoer
 		
 		Task task = (Task)selected[0];
 		
-		ORef oref = task.getParentRef();
+		ORef oref = task.getOwnerRef();
 		if (oref==null)
 			return false;
 		
@@ -45,7 +45,7 @@ public class TreeNodeDown extends AbstractTaskTreeDoer
 		
 		Task selected = (Task)getObjects()[0];
 		
-		ORef parentRef = selected.getParentRef();
+		ORef parentRef = selected.getOwnerRef();
 		String tag = getTaskIdsTag(parentRef);
 		IdList siblings = getTaskIds(parentRef);
 		BaseId id = selected.getId();

@@ -87,7 +87,7 @@ public class DeleteActivity extends ObjectsDoer
 	{
 		Vector commandsToDeleteTasks = new Vector();
 		
-		ORef parentRef = task.getParentRef();
+		ORef parentRef = task.getOwnerRef();
 		BaseObject parentObject = project.findObject(parentRef.getObjectType(), parentRef.getObjectId());
 		CommandSetObjectData commandSetObjectData;
 		if (task.isActivity())

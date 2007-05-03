@@ -143,7 +143,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 		
 		if (object.getType() == ObjectType.TASK)
 		{
-			BaseId parentRefId = ((Task)object).getParentRef().getObjectId();
+			BaseId parentRefId = ((Task)object).getOwnerRef().getObjectId();
 			if (parentRefId!=null)
 			{
 				int parentRef = parentRefId.asInt();

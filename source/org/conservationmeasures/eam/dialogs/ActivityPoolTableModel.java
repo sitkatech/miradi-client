@@ -34,7 +34,7 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 		{
 			BaseId baseId = tasks.get(i);
 			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
-			ORef parentRef = task.getParentRef();
+			ORef parentRef = task.getOwnerRef();
 
 			// FIXME: legacy Activities have parent refs with Factor type instead of Strategy
 			// We should migrate them so we could specifically check for Strategy here

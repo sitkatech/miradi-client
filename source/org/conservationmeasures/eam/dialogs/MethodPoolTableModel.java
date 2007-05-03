@@ -32,7 +32,7 @@ public class MethodPoolTableModel extends ObjectPoolTableModel
 		{
 			BaseId baseId = indicator.get(i);
 			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
-			if ((task.getParentRef().getObjectType() == ObjectType.INDICATOR))
+			if ((task.getOwnerRef().getObjectType() == ObjectType.INDICATOR))
 				filteredIndicators.add(baseId);
 		}
 		return filteredIndicators;

@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -119,17 +118,17 @@ public class Task extends BaseObject
 	//but if it is a user level task as opposed to a method or an activity
 	public boolean isTask()
 	{
-		return getParentRef().getObjectType() == ObjectType.TASK;
+		return getOwnerRef().getObjectType() == ObjectType.TASK;
 	}
 
 	public boolean isActivity()
 	{
-		return Factor.isFactor(getParentRef().getObjectType());
+		return Factor.isFactor(getOwnerRef().getObjectType());
 	}
 
 	public boolean isMethod()
 	{
-		return getParentRef().getObjectType() == ObjectType.INDICATOR;
+		return getOwnerRef().getObjectType() == ObjectType.INDICATOR;
 	}
 
 	public void addSubtaskId(BaseId subtaskId)
@@ -157,11 +156,6 @@ public class Task extends BaseObject
 		return assignmentIds.getIdList().createClone();
 	}
 	
-	public ORef getParentRef()
-	{
-		return getOwnerRef();
-	}
-
 	public String toString()
 	{
 		return getLabel();
