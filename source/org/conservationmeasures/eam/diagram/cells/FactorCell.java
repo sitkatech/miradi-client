@@ -350,24 +350,23 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public Rectangle getGoalRectWithinNode()
 	{
-		Rectangle smallTriangle = new Rectangle();
-		smallTriangle.x = MultilineCellRenderer.INDICATOR_WIDTH;
-		smallTriangle.y = getSize().height - MultilineCellRenderer.INDICATOR_HEIGHT;
-		smallTriangle.width = getSize().width;
-		smallTriangle.height = 2*MultilineCellRenderer.INDICATOR_HEIGHT;
-		return smallTriangle;
+		return getAnnotationRectWithinNode();
 	}
 
 	public Rectangle getObjectiveRectWithinNode()
 	{
-		Rectangle smallTriangle = new Rectangle();
-		smallTriangle.x = MultilineCellRenderer.INDICATOR_WIDTH;
-		smallTriangle.y = getSize().height - MultilineCellRenderer.INDICATOR_HEIGHT;
-		smallTriangle.width = getSize().width;
-		smallTriangle.height = 2*MultilineCellRenderer.INDICATOR_HEIGHT;
-		return smallTriangle;
+		return getAnnotationRectWithinNode();
 	}
 	
+	private Rectangle getAnnotationRectWithinNode()
+	{
+		Rectangle rect = new Rectangle();
+		rect.x = MultilineCellRenderer.INDICATOR_WIDTH;
+		rect.y = getSize().height - MultilineCellRenderer.ANNOTATIONS_HEIGHT;
+		rect.width = getSize().width -  2*MultilineCellRenderer.INDICATOR_WIDTH;
+		rect.height = MultilineCellRenderer.ANNOTATIONS_HEIGHT;
+		return rect;
+	}
 	
 	public Rectangle getIndicatorRectWithinNode()
 	{
