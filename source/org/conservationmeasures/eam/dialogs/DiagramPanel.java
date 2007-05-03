@@ -240,7 +240,6 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 
 		diagram = null;
 		selectionModel = null;
-		diagramObject = null;
 	}
 	
 	public void addFieldComponent(Component component)
