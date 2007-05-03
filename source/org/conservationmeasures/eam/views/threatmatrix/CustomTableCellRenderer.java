@@ -20,7 +20,6 @@ import javax.swing.table.TableCellRenderer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -91,10 +90,10 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		return (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
 	}
 	
-	private MainWindow getMainWindow()
+	private AppPreferences getAppPreferences()
 	{
-		//TODO: shold be a better way to get to main window, instead of this , or going in via the view which we can not use here do to image print
-		return EAM.mainWindow;
+		//TODO: shold be a better way to get preferences, instead of this , or going in via the view which we can not use here do to image print
+		return EAM.mainWindow.getAppPreferences();
 	}
 
 	private ThreatRatingFramework getThreatRatingFramework()
@@ -128,7 +127,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		super.paintBorder(g);
 		int height = getHeight();
 
-		boolean isCellRatingVisible = getMainWindow().getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
+		boolean isCellRatingVisible = getAppPreferences().getBoolean(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
 		if (isCellRatingVisible &&  (bundle!=null))
 		{
 			drawMainCellBody(g, INNER_CELL_RATING_BOX_WIDTH, height);
