@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class FactorCommandHelper
@@ -71,7 +72,7 @@ public class FactorCommandHelper
 		executeCommand(new CommandBeginTransaction());
 		FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds());
 		pasteFactorsIntoProject(list, startPoint, dataHelper);
-		pasteLinksIntoProject(list, dataHelper);
+		pasteLinksIntoProject(list, dataHelper, startPoint);
 		executeCommand(new CommandEndTransaction());
 	}
 	
@@ -198,13 +199,14 @@ public class FactorCommandHelper
 		return getDiagramModel().getFactorCellById(newNodeId);
 	}
 	
-	private void pasteLinksIntoProject(TransferableEamList list, FactorDataHelper dataHelper) throws Exception 
+	private void pasteLinksIntoProject(TransferableEamList list, FactorDataHelper dataHelper, Point startPoint) throws Exception 
 	{
 		FactorLinkDataMap[] links = list.getArrayOfFactorLinkDataMaps();
 		for (int i = 0; i < links.length; i++) 
 		{
 			FactorLinkDataMap linkageData = links[i];
-			
+			PointList originalBendPoints = linkageData.getBendPoints();
+			PointList movedPoints = movePoints(dataHelper, startPoint, originalBendPoints);
 			DiagramFactorId oldFromDiagramId = linkageData.getFromId();
 			DiagramFactorId newFromId = dataHelper.getNewId(oldFromDiagramId);
 			DiagramFactorId newToId = dataHelper.getNewId(linkageData.getToId());
@@ -214,11 +216,27 @@ public class FactorCommandHelper
 				
 			FactorCell newFromNode = getDiagramFactorById(newFromId);
 			FactorCell newToNode = getDiagramFactorById(newToId);
-			DiagramFactorLink newlyAddedLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor());
+			DiagramFactorLink newlyAddedLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
 			EAM.logDebug("Paste Link : " + newlyAddedLink.getDiagramLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}
 	
+	private PointList movePoints(FactorDataHelper dataHelper, Point startPoint, PointList originalBendPoints)
+	{
+		int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
+		PointList movedPoints = new PointList();
+		for (int i = 0; i < originalBendPoints.size(); ++i)
+		{
+			Point originalPoint = originalBendPoints.get(i);
+			Point movedPoint = dataHelper.getNewLocation(originalPoint, startPoint);
+			movedPoint.setLocation(movedPoint.x + offsetToAvoidOverlaying, movedPoint.y + offsetToAvoidOverlaying);
+			movedPoint = getProject().getSnapped(movedPoint);
+			movedPoints.add(movedPoint);
+		}
+		
+		return movedPoints;
+	}
+
 	public static CommandSetObjectData createSetLabelCommand(FactorId id, String newLabel)
 	{
 		

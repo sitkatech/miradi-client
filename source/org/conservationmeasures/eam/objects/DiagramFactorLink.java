@@ -163,15 +163,14 @@ public class DiagramFactorLink extends BaseObject
 		else 
 			super.setData(fieldTag, dataValue);
 	}
-
-	//TODO: Maybe add bend points to dataMap 
+ 
 	public FactorLinkDataMap createLinkageDataMap() throws Exception
 	{
 		FactorLinkDataMap dataMap = new FactorLinkDataMap();
 		dataMap.setId(getDiagramLinkageId());
 		dataMap.setFromId(new DiagramFactorId(fromId.getId().asInt()));
 		dataMap.setToId(new DiagramFactorId(toId.getId().asInt()));
-		
+		dataMap.setBendPoints(new PointList(getBendPoints()));
 		
 		return dataMap;
 	}

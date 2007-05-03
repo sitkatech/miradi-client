@@ -37,19 +37,38 @@ public class FactorDataHelper
 	{
 		mapNodeLocations.put(getKey(originalNodeId), originalLocation);
 	}
-	
-	public Point getNewLocation(DiagramFactorId originalNodeId, Point insertionPoint)
+
+	public Point getNewLocation(Point originalLocation, Point insertionPoint)
 	{
-		if (insertionPoint == null)
-			insertionPoint = getLeftmostUppermostCorner();
-		
-		Point delta = computeDeltas(insertionPoint);
-		Point originalNodeLocation = (Point)mapNodeLocations.get(getKey(originalNodeId));
-		int originalX = originalNodeLocation.x;
-		int originalY = originalNodeLocation.y;
-		return new Point(originalX + delta.x, originalY + delta.y);
+		insertionPoint = getValidatedInsertionPoint(insertionPoint);
+		return getLocation(originalLocation, insertionPoint);
 	}
 
+	public Point getNewLocation(DiagramFactorId originalNodeId, Point insertionPoint)
+	{
+		insertionPoint = getValidatedInsertionPoint(insertionPoint);
+		Point originalNodeLocation = (Point)mapNodeLocations.get(getKey(originalNodeId));
+		
+		return getLocation(originalNodeLocation, insertionPoint);
+	}
+	
+	private Point getValidatedInsertionPoint(Point insertionPoint)
+	{
+		if (insertionPoint == null)
+			return  getLeftmostUppermostCorner();
+		
+		return insertionPoint;
+	}
+
+	private Point getLocation(Point originalLocation, Point insertionPoint)
+	{
+		Point delta = computeDeltas(insertionPoint);
+		int originalX = originalLocation.x;
+		int originalY = originalLocation.y;
+		
+		return new Point(originalX + delta.x, originalY + delta.y);
+	}
+	
 	private void setInitialMappingOfIdsToOriginalIds(DiagramFactorId[] diagramFactorIds) 
 	{
 		for (int i = 0; i < diagramFactorIds.length; i++)
@@ -78,7 +97,7 @@ public class FactorDataHelper
 		return new Integer(value);
 	}
 	
-	private Point computeDeltas(Point insertionPoint)
+	public Point computeDeltas(Point insertionPoint)
 	{
 		Point upperLeft = getLeftmostUppermostCorner();
 		

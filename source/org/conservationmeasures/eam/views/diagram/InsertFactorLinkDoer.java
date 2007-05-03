@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectChainObject;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class InsertFactorLinkDoer extends ViewDoer
@@ -148,6 +149,14 @@ public class InsertFactorLinkDoer extends ViewDoer
 		
 		return false;
     }
+
+	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
+	{
+		DiagramObject diagramObject = model.getDiagramObject();
+		Project project = model.getProject();
+		
+		return createModelLinkageAndAddToDiagramUsingCommands(project, diagramObject, diagramFactorFrom, diagramFactorTo, bendPoints);
+	}
 	
 	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
@@ -157,6 +166,15 @@ public class InsertFactorLinkDoer extends ViewDoer
 		return createModelLinkageAndAddToDiagramUsingCommands(project, diagramObject, diagramFactorFrom, diagramFactorTo);
 	}
 
+	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(Project project, DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws CommandFailedException, ParseException
+	{
+		DiagramFactorLink diagramLink = createModelLinkageAndAddToDiagramUsingCommands(project, diagramObject, diagramFactorFrom, diagramFactorTo);
+		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
+		project.executeCommand(setBendPoints);
+		
+		return diagramLink;
+	}
+	
 	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(Project project, DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws CommandFailedException, ParseException
 	{
 		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
