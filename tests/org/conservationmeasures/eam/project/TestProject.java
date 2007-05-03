@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -237,16 +238,16 @@ public class TestProject extends EAMTestCase
 		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
 
 		EAMGraphCell[] selectedCells = {cell1};
-		EAMGraphCell[] selectedItems = project.getOnlySelectedFactorCells(selectedCells);
+		EAMGraphCell[] selectedItems = DiagramPanel.getOnlySelectedFactorCells(selectedCells);
 		assertEquals(0, selectedItems.length);
 		
 		selectedCells[0] = node2;
-		selectedItems = project.getOnlySelectedFactorCells(selectedCells);
+		selectedItems = DiagramPanel.getOnlySelectedFactorCells(selectedCells);
 		assertEquals(1, selectedItems.length);
 		assertEquals(node2, selectedItems[0]);
 		
 		EAMGraphCell[] selectedCellsTwo = {node2, cell1, node1};
-		selectedItems = project.getOnlySelectedFactorCells(selectedCellsTwo);
+		selectedItems = DiagramPanel.getOnlySelectedFactorCells(selectedCellsTwo);
 		assertEquals(2, selectedItems.length);
 	}
 	

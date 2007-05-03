@@ -6,15 +6,13 @@
 package org.conservationmeasures.eam.project;
 
 import java.io.File;
-import java.util.Iterator;
-import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -205,44 +203,9 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		return (ConceptualModelDiagram) findObject(oRef);
 	}
 	
-//	FIXME duplicate code exists inside DiagramPanel.  remove this copy when done
-	public FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
-	{
-		Vector nodes = new Vector();
-		for(int i = 0; i < allSelectedCells.length; ++i)
-		{
-			if(((EAMGraphCell)allSelectedCells[i]).isFactor())
-				nodes.add(allSelectedCells[i]);
-		}
-		return (FactorCell[])nodes.toArray(new FactorCell[0]);
-	}
-	
-	//FIXME there is a duplicate of this method inside DiagraPanel
 	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
 	{
-		DiagramModel model = getDiagramModel();
-		Vector selectedCellsWithLinkages = new Vector();
-		for(int i=0; i < selectedCells.length; ++i)
-		{
-			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
-			if(cell.isFactorLink())
-			{
-				if(!selectedCellsWithLinkages.contains(cell))
-					selectedCellsWithLinkages.add(cell);
-			}
-			else if(cell.isFactor())
-			{
-				Set linkages = model.getFactorLinks((FactorCell)cell);
-				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
-				{
-					EAMGraphCell link = (EAMGraphCell) iter.next();
-					if(!selectedCellsWithLinkages.contains(link))
-						selectedCellsWithLinkages.add(link);
-				}
-				selectedCellsWithLinkages.add(cell);
-			}
-		}
-		return selectedCellsWithLinkages;
+		return DiagramPanel.getAllSelectedCellsWithRelatedLinkages(getDiagramModel(), selectedCells);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)

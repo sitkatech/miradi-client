@@ -90,14 +90,12 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	public EAMGraphCell[] getSelectedAndRelatedCells()
 	{
 		Object[] selectedCells = selectionModel.getSelectionCells();
-		Vector cellVector = getAllSelectedCellsWithRelatedLinkages(selectedCells);
+		Vector cellVector = getAllSelectedCellsWithRelatedLinkages(getDiagramModel(), selectedCells);
 		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
 	}
 	
-	//FIXME this same method exists inside project
-	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
+	public static Vector getAllSelectedCellsWithRelatedLinkages(DiagramModel model, Object[] selectedCells) 
 	{
-		DiagramModel model = getDiagramModel();
 		Vector selectedCellsWithLinkages = new Vector();
 		for(int i=0; i < selectedCells.length; ++i)
 		{
@@ -167,7 +165,7 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		return getOnlySelectedFactorCells(rawCells);
 	}
 	
-	public FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
+	public static FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
 	{
 		Vector nodes = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
