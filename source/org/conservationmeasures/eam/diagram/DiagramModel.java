@@ -577,7 +577,6 @@ public class DiagramModel extends DefaultGraphModel
 		return json;
 	}
 	
-	//FIXME this method has to be finished and tested
 	public void fillFrom(DiagramObject diagramContentsToUse) throws Exception
 	{
 		diagramContents = diagramContentsToUse;
