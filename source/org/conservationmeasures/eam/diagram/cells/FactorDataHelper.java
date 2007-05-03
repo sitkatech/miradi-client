@@ -100,6 +100,8 @@ public class FactorDataHelper
 	public Point computeDeltas(Point insertionPoint)
 	{
 		Point upperLeft = getLeftmostUppermostCorner();
+		if (upperLeft == null)
+			return new Point(0, 0);
 		
 		int deltaX = insertionPoint.x - upperLeft.x;
 		int deltaY = insertionPoint.y - upperLeft.y;
@@ -108,7 +110,11 @@ public class FactorDataHelper
 
 	public Point getLeftmostUppermostCorner()
 	{
+		if (mapNodeLocations.size() == 0)
+			return null;
+		
 		Rectangle rect = null;
+		
 		for (Iterator iter = mapNodeLocations.values().iterator(); iter.hasNext();) 
 		{
 			Point nodeLocation = (Point) iter.next();
