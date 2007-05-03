@@ -164,7 +164,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	{
 		int originalHeight = getSize().height;
 		int originalWidth = getSize().width; 
-		setSize(getSizeWithoutAnnotations(getSize(), node.getAnnotationRows()));
+		setSize(getSizeWithoutAnnotations(getSize(), 0));
 		super.paint(g1);
 		setSize(originalWidth, originalHeight);
 
@@ -186,6 +186,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			drawChainIcon(rect, g2);
 	}
 	
+	//TODO: remove annotationCount no longer used
 	public static Dimension getSizeWithoutAnnotations(Dimension size, int annotationCount)
 	{
 		return new Dimension(size.width, size.height - (annotationCount * (INDICATOR_HEIGHT / 2)));
@@ -214,7 +215,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		//TODO: rather then pulling the icon resource path from the action class or harding code it , it would be better if we pulled them from a property file by name for common resource paths.
 		ResourceImageIcon icon = new ResourceImageIcon(ActionShowResultsChain.getIconName());
 		Rectangle rectangle = getResultChainRectWithinNode();
-		icon.paintIcon(null, g2,rectangle.x, rectangle.y );
+		icon.paintIcon(null, g2,rectangle.x, rectangle.y);
 	}
 	
 	
@@ -229,13 +230,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return node.getIndicatorRectWithinNode();
 	}
 	
-	Rectangle getAnnotationsRectFromCellRect(Rectangle rect, int numberLines) 
-	{
-		Rectangle annotationsRect = node.getAnnotationsRect();
-		annotationsRect.translate(rect.x, rect.y);
-		return annotationsRect;
-	}
-	
+
 	Color getFillColor()
 	{
 		return node.getColor();

@@ -33,7 +33,7 @@ public class FactorView extends VertexView
 	public Rectangle2D getRectangleWithoutAnnotations()
 	{
 		Rectangle2D rectangleCopy = (Rectangle2D)getBounds().clone();
-		Dimension sizeWithoutAnnotations = FactorRenderer.getSizeWithoutAnnotations(rectangleCopy.getBounds().getSize(), factor.getAnnotationRows());
+		Dimension sizeWithoutAnnotations = FactorRenderer.getSizeWithoutAnnotations(rectangleCopy.getBounds().getSize(), 0);
 		rectangleCopy.setRect(getBounds().getX(), getBounds().getY(), sizeWithoutAnnotations.getWidth(), sizeWithoutAnnotations.getHeight());
 		return rectangleCopy;
 	}

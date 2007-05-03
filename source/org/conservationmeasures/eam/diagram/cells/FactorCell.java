@@ -190,14 +190,6 @@ abstract public class FactorCell extends EAMGraphCell
 		return underlyingObject.getObjectives();
 	}
 
-	public int getAnnotationRows()
-	{
-		if(getGoals().size() > 0 || getObjectives().size() > 0 || getIndicators().size() > 0 || strategyInResultsChain)
-			return 1;
-
-		return 0;
-	}
-
 	abstract public Color getColor();
 
 	public boolean isIntermediateResult()
@@ -309,7 +301,7 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		if(getObjectives().size() == 0)
 			return false;
-		return getAnnotationsRect().contains(p);
+		return getObjectiveRectWithinNode().contains(p);
 	}
 	
 	public boolean isPointInIndicator(Point p)
@@ -321,7 +313,7 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		if(getGoals().size() == 0)
 			return false;
-		return getAnnotationsRect().contains(p);
+		return getGoalRectWithinNode().contains(p);
 	}
 	
 	public boolean isPointInViability(Point p)
@@ -333,21 +325,6 @@ abstract public class FactorCell extends EAMGraphCell
 		return false;
 	}
 	
-	public Rectangle getAnnotationsRect()
-	{
-		
-		Rectangle rect = new Rectangle(getSize());
-		
-		Rectangle annotationsRectangle = new Rectangle();
-		int annotationLeftInset = getAnnotationLeftOffset();
-		annotationsRectangle.x = rect.x + annotationLeftInset;
-		int annotationsHeight = getAnnotationRows() * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
-		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
-		int avoidGoingPastClippingEdge = 1;
-		annotationsRectangle.width = rect.width - annotationLeftInset - getAnnotationRightInset() - avoidGoingPastClippingEdge;
-		annotationsRectangle.height = annotationsHeight - avoidGoingPastClippingEdge;
-		return annotationsRectangle;
-	}
 
 	int getAnnotationLeftOffset()
 	{
@@ -371,12 +348,32 @@ abstract public class FactorCell extends EAMGraphCell
 		return new Dimension(0, 0);
 	}
 	
+	public Rectangle getGoalRectWithinNode()
+	{
+		Rectangle smallTriangle = new Rectangle();
+		smallTriangle.x = MultilineCellRenderer.INDICATOR_WIDTH;
+		smallTriangle.y = getSize().height - MultilineCellRenderer.INDICATOR_HEIGHT;
+		smallTriangle.width = getSize().width;
+		smallTriangle.height = 2*MultilineCellRenderer.INDICATOR_HEIGHT;
+		return smallTriangle;
+	}
+
+	public Rectangle getObjectiveRectWithinNode()
+	{
+		Rectangle smallTriangle = new Rectangle();
+		smallTriangle.x = MultilineCellRenderer.INDICATOR_WIDTH;
+		smallTriangle.y = getSize().height - MultilineCellRenderer.INDICATOR_HEIGHT;
+		smallTriangle.width = getSize().width;
+		smallTriangle.height = 2*MultilineCellRenderer.INDICATOR_HEIGHT;
+		return smallTriangle;
+	}
+	
+	
 	public Rectangle getIndicatorRectWithinNode()
 	{
-		Rectangle annotationsRectangle = getAnnotationsRect();
 		Rectangle smallTriangle = new Rectangle();
-		smallTriangle.x = annotationsRectangle.x-MultilineCellRenderer.INDICATOR_WIDTH;
-		smallTriangle.y = annotationsRectangle.y;
+		smallTriangle.x = 0;
+		smallTriangle.y = getSize().height - MultilineCellRenderer.INDICATOR_HEIGHT;
 		int avoidGoingPastClippingEdge = 1;
 		smallTriangle.width = MultilineCellRenderer.INDICATOR_WIDTH - avoidGoingPastClippingEdge;
 		smallTriangle.height = MultilineCellRenderer.INDICATOR_HEIGHT - avoidGoingPastClippingEdge;
@@ -387,8 +384,9 @@ abstract public class FactorCell extends EAMGraphCell
 	public Rectangle getResultChainRectWithinNode()
 	{
 		strategyInResultsChain = true;
-		Rectangle annotationsRectangle = getAnnotationsRect();
+		Rectangle annotationsRectangle = getIndicatorRectWithinNode();
 		annotationsRectangle.x =  getSize().width - MultilineCellRenderer.INDICATOR_WIDTH ;
+		annotationsRectangle.y =  getSize().height/2 - MultilineCellRenderer.INDICATOR_HEIGHT/2;
 		return annotationsRectangle;
 	}
 	
