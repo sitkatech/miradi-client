@@ -127,6 +127,11 @@ public class FactorLink extends BaseObject
 		return stressLabel.get();
 	}
 	
+	public boolean isBiDirectional()
+	{
+		return biDirectionalLink.equals(BI_DIRECTIONAL_LINK);
+	}
+	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateFactorLinkParameter(getFromFactorId(), getToFactorId());
@@ -151,28 +156,35 @@ public class FactorLink extends BaseObject
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
+
 	void clear()
 	{
 		super.clear();
 		fromId = new BaseIdData();
 		toId = new BaseIdData();
 		stressLabel = new StringData();
+		biDirectionalLink = new StringData();
 		
 		addNoClearField(TAG_FROM_ID, fromId);
 		addNoClearField(TAG_TO_ID, toId);
 		addField(TAG_STRESS_LABEL, stressLabel);
+		addField(TAG_BI_DRECTIONAL_LINK, biDirectionalLink);
 	}
 	
 	
 	private static String TAG_FROM_ID = "FromId";
 	private static String TAG_TO_ID = "ToId";
 	public static String TAG_STRESS_LABEL = "StressLabel";
+	public static String TAG_BI_DRECTIONAL_LINK = "BiDirectionalLink";
+
 	public static final String OBJECT_NAME = "Link";
 	
 	public static final int FROM = 1;
 	public static final int TO = 2;
+	public static final String BI_DIRECTIONAL_LINK = "Y";
 	
 	private BaseIdData fromId;
 	private BaseIdData toId;
 	private StringData stressLabel;
+	private StringData biDirectionalLink;
 }
