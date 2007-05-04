@@ -96,7 +96,7 @@ public class ResultsChainCreatorHelper
 			return false;
 		
 		Strategy strategy = (Strategy) project.findObject(new ORef(ObjectType.STRATEGY, diagramFactor.getWrappedId()));
-		if (!strategy.isStatusDraft())
+		if (strategy.isStatusDraft())
 			return false;
 		
 		return true;
