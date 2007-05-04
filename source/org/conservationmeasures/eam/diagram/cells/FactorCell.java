@@ -40,13 +40,6 @@ abstract public class FactorCell extends EAMGraphCell
 		updateFromDiagramFactor();
 	}
 	
-	public void markAsRemoved()
-	{
-		id = null;
-		diagramFactor = null;
-		underlyingObject = null;
-	}
-	
 	public void updateFromDiagramFactor()
 	{
 		setLocation(diagramFactor.getLocation());

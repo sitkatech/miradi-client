@@ -75,33 +75,12 @@ public class DiagramModel extends DefaultGraphModel
 		while(getRootCount() > 0)
 			remove(new Object[] {getRootAt(0)});
 
-		damageAllFactorsAndLinks();
 		cellInventory = new CellInventory();
 		projectScopeBox = new ProjectScopeBox(this);
 		graphLayoutCache = new PartialGraphLayoutCache(this);
 		insertCellIntoGraph(projectScopeBox);
 		
 		factorsToDiagramFactors = new HashMap();
-	}
-
-	private void damageAllFactorsAndLinks()
-	{
-		if (cellInventory == null)
-			return;
-		
-		Vector allFactors = cellInventory.getAllFactors();
-		for (int i = 0 ; i < allFactors.size(); i++)
-		{
-			FactorCell factorCell = (FactorCell) allFactors.get(i);
-			factorCell.markAsRemoved();
-		}
-		
-		Vector allFactorLinks = cellInventory.getAllFactorLinks();
-		for (int i = 0; i < allFactorLinks.size(); i++)
-		{
-			LinkCell linkCell = (LinkCell) allFactorLinks.get(i);
-			linkCell.markAsRemoved();
-		}
 	}
 
 	public ProjectScopeBox getProjectScopeBox()

@@ -46,10 +46,12 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.martus.util.DirectoryUtils;
 
 public class TestProject extends EAMTestCase
@@ -718,90 +720,82 @@ public class TestProject extends EAMTestCase
 		assertContains("missing nodeDirectThreatA? ", nodeDirectThreatA.getUnderlyingObject(), foundNodes);
 		assertContains("missing nodeDirectThreatB?", nodeDirectThreatB.getUnderlyingObject(), foundNodes);
 	}
+	  
+	public void testOpenProject() throws Exception
+	{
+		FactorId factorId;
+		File tempDir = createTempDirectory();
+		ProjectForTesting diskProject = new ProjectForTesting(getName());
+		diskProject.createOrOpen(tempDir);
+		try
+		{
+			DiagramFactor cause = createNodeAndAddToDiagram(diskProject, ObjectType.CAUSE);
+			factorId = cause.getWrappedId();
+			DiagramFactor target = createNodeAndAddToDiagram(diskProject, ObjectType.TARGET);
+			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject.getDiagramModel(), cause, target);
+			
+			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY);
+			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
+			diskProject.deleteObject(object);
 	
-	//FIXME should uncomment and make it work  
-//	public void testOpenProject() throws Exception
-//	{
-//		FactorId factorId;
-//		File tempDir = createTempDirectory();
-//		Project diskProject = new Project();
-//		diskProject.createOrOpen(tempDir);
-//		try
-//		{
-//			factorId = createNodeAndAddToDiagram(diskProject, ObjectType.CAUSE).getWrappedId();
-//			FactorId targetId = createNodeAndAddToDiagram(diskProject, ObjectType.TARGET).getWrappedId();
-//			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject.getDiagramModel(), factorId, targetId);
-//			
-//			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY);
-//			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
-//			diskProject.deleteObject(object);
-//	
-//			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, ObjectType.CAUSE);
-//			deleteNodeAndRemoveFromDiagram(diskProject, diagramFactor);
-//		}
-//		finally
-//		{
-//			diskProject.close();
-//		}
-//		
-//		Project loadedProject = new Project(new ProjectServer());
-//		loadedProject.createOrOpen(tempDir);
-//		try
-//		{
-//			assertEquals("didn't read cause pool?", 1, loadedProject.getCausePool().size());
-//			assertEquals("didn't read strategy pool?", 0, loadedProject.getStrategyPool().size());
-//			assertEquals("didn't read target pool?", 1, loadedProject.getTargetPool().size());
-//			
-//			
-//			assertEquals("didn't read link pool?", 1, loadedProject.getFactorLinkPool().size());
-//			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getFactorCount());
-//			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
-//			BaseId expectedAnnotationId = diskProject.getAnnotationIdAssigner().takeNextId();
-//			assertEquals("didn't preserve next annotation id?", expectedAnnotationId, loadedProject.getAnnotationIdAssigner().takeNextId());
-//			Cause factor = (Cause)loadedProject.findNode(factorId);
-//			assertTrue("didn't update factor target count?", factor.isDirectThreat());
-//		}
-//		finally
-//		{
-//			loadedProject.close();
-//			DirectoryUtils.deleteEntireDirectoryTree(tempDir);
-//		}
-//		
-//		int highestAnnotationIdBeforeClearing = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
-//		
-//		File emptyDir = createTempDirectory();
-//		diskProject.createOrOpen(emptyDir);
-//		try
-//		{
-//			assertEquals("didn't clear node cause pool?", 0, diskProject.getCausePool().size());
-//			assertEquals("didn't clear node strategy pool?", 0, diskProject.getStrategyPool().size());
-//			assertEquals("didn't clear node target pool?", 0, diskProject.getTargetPool().size());
-//			assertEquals("didn't clear link pool?", 0, diskProject.getFactorLinkPool().size());
-//			assertEquals("didn't clear diagram?", 0, diskProject.getDiagramModel().getFactorCount());
-//			assertTrue("didn't clear next annotation id?", diskProject.getAnnotationIdAssigner().getHighestAssignedId() < highestAnnotationIdBeforeClearing);
-//		}
-//		finally
-//		{
-//			diskProject.close();
-//			DirectoryUtils.deleteEntireDirectoryTree(emptyDir);
-//		}
-//		
-//	}
-//	
-//	private void deleteNodeAndRemoveFromDiagram(Project diskProject, DiagramFactor diagramFactor) throws CommandFailedException
-//	{
-//		DiagramFactorId diagramFactorId = diagramFactor.getDiagramFactorId();
-//		FactorId factorId = diagramFactor.getWrappedId();
-//		CommandDiagramRemoveFactor commandRemoveDiagramFactor = new CommandDiagramRemoveFactor(diagramFactorId);
-//		diskProject.executeCommand(commandRemoveDiagramFactor);
-//		
-//		CommandDeleteObject commandDeleteDiagramFactor = new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
-//		diskProject.executeCommand(commandDeleteDiagramFactor);
-//		
-//		CommandDeleteObject commandDeleteFactor = new CommandDeleteObject(ObjectType.FACTOR, factorId);
-//		diskProject.executeCommand(commandDeleteFactor);
-//	}
-
+			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, ObjectType.CAUSE);
+			deleteNodeAndRemoveFromDiagram(diskProject, diagramFactor);
+		}
+		finally
+		{
+			diskProject.close();
+		}
+		
+		ProjectForTesting loadedProject = new ProjectForTesting(getName());
+		loadedProject.createOrOpen(tempDir);
+		try
+		{
+			assertEquals("didn't read cause pool?", 1, loadedProject.getCausePool().size());
+			assertEquals("didn't read strategy pool?", 0, loadedProject.getStrategyPool().size());
+			assertEquals("didn't read target pool?", 1, loadedProject.getTargetPool().size());
+			
+			
+			assertEquals("didn't read link pool?", 1, loadedProject.getFactorLinkPool().size());
+			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getFactorCount());
+			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
+			BaseId expectedAnnotationId = diskProject.getAnnotationIdAssigner().takeNextId();
+			assertEquals("didn't preserve next annotation id?", expectedAnnotationId, loadedProject.getAnnotationIdAssigner().takeNextId());
+			Cause factor = (Cause)loadedProject.findNode(factorId);
+			assertTrue("didn't update factor target count?", factor.isDirectThreat());
+		}
+		finally
+		{
+			loadedProject.close();
+			DirectoryUtils.deleteEntireDirectoryTree(tempDir);
+		}
+		
+		int highestAnnotationIdBeforeClearing = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
+		
+		File emptyDir = createTempDirectory();
+		diskProject.createOrOpen(emptyDir);
+		try
+		{
+			assertEquals("didn't clear node cause pool?", 0, diskProject.getCausePool().size());
+			assertEquals("didn't clear node strategy pool?", 0, diskProject.getStrategyPool().size());
+			assertEquals("didn't clear node target pool?", 0, diskProject.getTargetPool().size());
+			assertEquals("didn't clear link pool?", 0, diskProject.getFactorLinkPool().size());
+			assertEquals("didn't clear diagram?", 0, diskProject.getDiagramModel().getFactorCount());
+			assertTrue("didn't clear next annotation id?", diskProject.getAnnotationIdAssigner().getHighestAssignedId() < highestAnnotationIdBeforeClearing);
+		}
+		finally
+		{
+			diskProject.close();
+			DirectoryUtils.deleteEntireDirectoryTree(emptyDir);
+		}
+		
+	}
+	
+	private void deleteNodeAndRemoveFromDiagram(ProjectForTesting diskProject, DiagramFactor diagramFactor) throws Exception
+	{
+		DiagramModel model = diskProject.getDiagramModel();
+		FactorCommandHelper factorHelper = new FactorCommandHelper(diskProject, model);
+		factorHelper.deleteFactor(model.getFactorCellById(diagramFactor.getDiagramFactorId()), diskProject.getDiagramObject());
+	}
 	
 	public void testCreateNewProject() throws Exception
 	{
