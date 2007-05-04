@@ -84,9 +84,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 		boolean isVisible = isThisLinkVisible(diagram);
 		if(isVisible)
-			setTail(GraphConstants.ARROW_NONE);
+			setTail(GraphConstants.ARROW_NONE, false);
+		else if (link.isBiDirectional())
+			setTail(GraphConstants.ARROW_TECHNICAL, true);
 		else
-			setTail(ArrowLineRenderer.ARROW_JUST_LINE);
+			setTail(ArrowLineRenderer.ARROW_JUST_LINE, false);
 		
 		updateBendPoints();
 	}
@@ -106,12 +108,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return layerManager.areTargetLinksVisible();
 	}
 	
-	private void setTail(int arrowStyle)
+	private void setTail(int arrowStyle, boolean fill)
 	{
 		GraphConstants.setLineBegin(getAttributes(), arrowStyle);
-		GraphConstants.setBeginFill(getAttributes(), false);
+		GraphConstants.setBeginFill(getAttributes(), fill);
 		GraphConstants.setBeginSize(getAttributes(), 10);
-		
 	}
 
 	public Point getFromLocation()
@@ -148,7 +149,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	private void fillConnectorAttributeMap(String label)
 	{
-	    GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_SIMPLE);
 	    GraphConstants.setValue(getAttributes(), label);
 	    GraphConstants.setOpaque(getAttributes(), true);
 	    GraphConstants.setBackground(getAttributes(), Color.BLACK);
