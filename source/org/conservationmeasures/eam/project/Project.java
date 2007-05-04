@@ -45,6 +45,7 @@ import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
+import org.conservationmeasures.eam.objectpools.IntermediateResultPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
@@ -52,6 +53,7 @@ import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
+import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -153,6 +155,16 @@ public class Project
 	public CausePool getCausePool()
 	{
 		return (CausePool) getPool(ObjectType.CAUSE);
+	}
+	
+	public IntermediateResultPool getIntermediateResultPool()
+	{
+		return (IntermediateResultPool) getPool(ObjectType.INTERMEDIATE_RESULT);
+	}
+	
+	public ThreatReductionResultPool getThreatReductionResultPool()
+	{
+		 return (ThreatReductionResultPool) getPool(ObjectType.THREAT_REDUCTION_RESULT);
 	}
 	
 	public StrategyPool getStrategyPool()

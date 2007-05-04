@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objects.Factor;
 import org.martus.util.TestCaseEnhanced;
-//FIXME add tests for IR and TRR pools
+
 public class TestFactorPool extends TestCaseEnhanced
 {
 	public TestFactorPool(String name)
@@ -29,6 +29,12 @@ public class TestFactorPool extends TestCaseEnhanced
 		}
 	}	
 	
+	protected void tearDown() throws Exception
+	{
+		super.tearDown();
+		project.close();
+	}
+
 	public int getObjectType() throws Exception
 	{
 		throw new Exception();
