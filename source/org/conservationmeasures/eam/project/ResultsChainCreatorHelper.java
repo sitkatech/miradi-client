@@ -90,6 +90,7 @@ public class ResultsChainCreatorHelper
 		throw new Exception("No strategy found in results chain");
 	}
 	
+	//TODO RC this test should go away once Draft Strategies are excluded from list
 	private boolean isNonDraftStrategy(DiagramFactor diagramFactor)
 	{
 		if (diagramFactor.getWrappedType() != ObjectType.STRATEGY)
