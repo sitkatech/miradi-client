@@ -54,8 +54,16 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 			switch(ColumnTypes.getColumnType(model.getRowObjectType(), model.getColumnTag(col)))
 			{
 				case ColumnTypes.COLUMN_TYPE_SHORT_LABEL:
-					setColumnWidth(col, 72);
+				{
+					String name = model.getColumnName(col);
+					//FIXME: This is a crapy way to do this....
+					//we should be able to calculate the relationship of pix to characters based on font size and style.
+					if (name.length() > 7)
+						setColumnWidth(col, name.length() * 7);
+					else
+						setColumnWidth(col, 72);
 					break;
+				}
 				case ColumnTypes.COLUMN_TYPE_ITEM_LIST:
 					setColumnWidth(col, 300);
 					break;
