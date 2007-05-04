@@ -223,6 +223,16 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 
 		return new DiagramFactorLinkId(diagramFactorLinkId.asInt());
 	}
+	
+	public FactorId createThreat() throws Exception
+	{
+		FactorId threatId = createFactor(ObjectType.CAUSE);
+		FactorId targetId = createFactor(ObjectType.TARGET);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
+		createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
+		
+		return threatId;
+	}
 
 	DiagramModel diagramModel;
 	Vector commandStack;

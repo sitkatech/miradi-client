@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objects.Factor;
 import org.martus.util.TestCaseEnhanced;
 //FIXME add tests for IR and TRR pools
-abstract public class TestFactorPool extends TestCaseEnhanced
+public class TestFactorPool extends TestCaseEnhanced
 {
 	public TestFactorPool(String name)
 	{
@@ -29,7 +29,15 @@ abstract public class TestFactorPool extends TestCaseEnhanced
 		}
 	}	
 	
-	abstract public int getObjectType();
+	public int getObjectType() throws Exception
+	{
+		throw new Exception();
+	}
+	
+	public void testBasics() throws Exception
+	{
+		assertEquals("wrong target count?", FACTOR_COUNT, project.getPool(getObjectType()).getIds().length);
+	}
 
 	protected FactorId addNewlyCreatedNodeToPool(int type)
 	{

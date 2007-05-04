@@ -5,9 +5,6 @@
 */ 
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.CausePool;
 
@@ -26,7 +23,7 @@ public class TestCausePool extends TestFactorPool
 	
 	public void testBasics() throws Exception
 	{
-		assertEquals("wrong Cuase count?", FACTOR_COUNT, pool.getIds().length);
+		super.testBasics();
 		assertEquals("wrong direct threat count?", 0, pool.getDirectThreats().length);
 	}
 	
@@ -37,19 +34,9 @@ public class TestCausePool extends TestFactorPool
 	
 	public void testDirectThreats() throws Exception
 	{
-		createThreat();
+		project.createThreat();
 		assertEquals("wrong direct threat count?", 1, pool.getDirectThreats().length);
 	}
 	
-	private FactorId createThreat() throws Exception
-	{
-		FactorId threatId = project.createFactor(ObjectType.CAUSE);
-		FactorId targetId = project.createFactor(ObjectType.TARGET);
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
-		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
-		
-		return threatId;
-	}
-
 	CausePool pool;
 }

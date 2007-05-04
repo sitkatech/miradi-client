@@ -26,10 +26,5 @@ public class TestTargetPool extends TestFactorPool
 		return ObjectType.TARGET;
 	}
 
-	public void testBasics() throws Exception
-	{
-		assertEquals("wrong target count?", FACTOR_COUNT, pool.getTargets().length);
-	}
-	
 	TargetPool pool;
 }

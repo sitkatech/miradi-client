@@ -32,7 +32,7 @@ public class TestStrategyPool extends TestFactorPool
 	
 	public void testBasics() throws Exception
 	{
-		assertEquals("wrong strategy count?", FACTOR_COUNT, pool.getAllStrategies().length);
+		super.testBasics();
 		assertEquals("wrong draft strategy count", 0, pool.getDraftStrategies().length);
 	}
 	
