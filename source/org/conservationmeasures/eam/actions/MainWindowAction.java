@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.util.EventObject;
 
@@ -68,8 +69,10 @@ public abstract class MainWindowAction extends EAMAction
 
 	public void doAction(EventObject event) throws CommandFailedException
 	{
+		EAM.mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		getDoer().doIt(event);
 		getMainWindow().getActions().updateActionStates();
+		EAM.mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 	
 	public boolean shouldBeEnabled()
