@@ -46,6 +46,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		if(getMainWindow().mainLinkFunction(linkDescription))
 			return;
 		
+		Cursor prevCursor = EAM.mainWindow.getCursor();
 		EAM.mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		
 		try 
@@ -99,8 +100,10 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("Unable to process request: ") + e);
 		}
-		
-		EAM.mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		finally
+		{
+			EAM.mainWindow.setCursor(prevCursor);
+		}
 	}
 	
 

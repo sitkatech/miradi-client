@@ -69,10 +69,18 @@ public abstract class MainWindowAction extends EAMAction
 
 	public void doAction(EventObject event) throws CommandFailedException
 	{
+		Cursor prevCursor = EAM.mainWindow.getCursor();
 		EAM.mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		getDoer().doIt(event);
-		getMainWindow().getActions().updateActionStates();
-		EAM.mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		
+		try
+		{
+			getDoer().doIt(event);
+			getMainWindow().getActions().updateActionStates();
+		}
+		finally
+		{
+			EAM.mainWindow.setCursor(prevCursor);
+		}
 	}
 	
 	public boolean shouldBeEnabled()
