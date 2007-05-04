@@ -58,7 +58,7 @@ class CellSelectionListener implements ListSelectionListener
 
 	private void offerToCreateLink(int row, int column) throws CommandFailedException
 	{
-// FIXME: This needs major overhaul to work with Results Chains
+// FIXME: This needs major overhaul to work with Results Chains (Nima)
 // Also, note lots of code duplication with ThreatMatrixTable!
 //		ThreatMatrixTableModel model = (ThreatMatrixTableModel) threatTable.getModel();
 //		String[] body = new String[] {

@@ -268,7 +268,7 @@ public class ThreatMatrixTable extends JTable
 		
 		public void actionPerformed(ActionEvent e)
 		{
-// FIXME: This needs major overhaul to work with Results Chains
+// FIXME: This needs major overhaul to work with Results Chains (Nima)
 // Also, note lots of code duplication with CellSelectionListener!
 			try
 			{
