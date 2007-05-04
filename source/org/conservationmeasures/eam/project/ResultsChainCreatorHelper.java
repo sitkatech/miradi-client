@@ -125,6 +125,7 @@ public class ResultsChainCreatorHelper
 		return (DiagramFactorId[]) diagramFactorIds.toArray(new DiagramFactorId[0]);
 	}
 
+	//FIXME RC hight priority,  Draft strategies should be excluded
 	private HashMap cloneDiagramFactors(DiagramFactor[] diagramFactors) throws Exception
 	{
 		HashMap originalAndClonedDiagramFactors = new HashMap();
