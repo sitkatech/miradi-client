@@ -80,7 +80,7 @@ public class ResultsChainCreatorHelper
 		for (int i = 0; i < diagramFactors.length; ++i)
 		{
 			DiagramFactor diagramFactor = diagramFactors[i];
-			if (diagramFactor.getWrappedType() == ObjectType.STRATEGY)
+			if (isNonDraftStrategy(diagramFactor))
 			{
 				Strategy strategy = (Strategy) project.findObject(new ORef(ObjectType.STRATEGY, diagramFactor.getWrappedId()));
 				return getLabel(strategy);
@@ -88,6 +88,18 @@ public class ResultsChainCreatorHelper
 		}
 		
 		throw new Exception("No strategy found in results chain");
+	}
+	
+	private boolean isNonDraftStrategy(DiagramFactor diagramFactor)
+	{
+		if (diagramFactor.getWrappedType() != ObjectType.STRATEGY)
+			return false;
+		
+		Strategy strategy = (Strategy) project.findObject(new ORef(ObjectType.STRATEGY, diagramFactor.getWrappedId()));
+		if (!strategy.isStatusDraft())
+			return false;
+		
+		return true;
 	}
 
 	private String getLabel(Strategy strategy)
