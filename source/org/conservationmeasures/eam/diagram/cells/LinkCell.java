@@ -84,9 +84,12 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 		boolean isVisible = isThisLinkVisible(diagram);
 		if(isVisible)
-			setTail(GraphConstants.ARROW_NONE, false);
-		else if (link.isBiDirectional())
-			setTail(GraphConstants.ARROW_TECHNICAL, true);
+		{
+			if (link.isBiDirectional())
+				setTail(GraphConstants.ARROW_TECHNICAL, true);
+			else
+				setTail(GraphConstants.ARROW_NONE, false);
+		}
 		else
 			setTail(ArrowLineRenderer.ARROW_JUST_LINE, false);
 		

@@ -129,7 +129,7 @@ public class FactorLink extends BaseObject
 	
 	public boolean isBiDirectional()
 	{
-		return biDirectionalLink.equals(BI_DIRECTIONAL_LINK);
+		return biDirectionalLink.get().equals(BI_DIRECTIONAL_LINK);
 	}
 	
 	public CreateObjectParameter getCreationExtraInfo()

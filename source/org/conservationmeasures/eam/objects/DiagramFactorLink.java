@@ -140,6 +140,11 @@ public class DiagramFactorLink extends BaseObject
 		return new FactorLinkId(underlyingObjectId.getId().asInt());
 	}
 	
+	public boolean isBiDirectional()
+	{
+		return getData(TAG_BI_DRECTIONAL_LINK).equals(FactorLink.BI_DIRECTIONAL_LINK);
+	}
+	
 	public String getData(String fieldTag)
 	{
 		if(fieldTag.equals(TAG_WRAPPED_ID))
