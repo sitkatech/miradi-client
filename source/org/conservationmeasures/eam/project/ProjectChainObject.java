@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 
-// TODO: ProjectChainObject and DiagramChainObject should be have a common super class for dup code
+//FIXME: ProjectChainObject and DiagramChainObject should be have a common super class for dup code
 public class ProjectChainObject
 {
 	public FactorSet getFactors()
