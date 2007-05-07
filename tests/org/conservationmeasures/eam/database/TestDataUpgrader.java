@@ -146,7 +146,7 @@ public class TestDataUpgrader extends EAMTestCase
 		IdList goalIds = new IdList(goalIdsAsString);
 		assertEquals("has no goals", 0, goalIds.size());
 		
-		File goalDirManifest = new File(objectsGoals, "Manifest");
+		File goalDirManifest = new File(objectsGoals, "manifest");
 		ObjectManifest manifest10 = new ObjectManifest(JSONFile.read(goalDirManifest));
 		BaseId[] allGoalIds = manifest10.getAllKeys();
 		assertEquals("failed to delete one goal?", 1, allGoalIds.length);
