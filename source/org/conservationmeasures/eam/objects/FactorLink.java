@@ -193,7 +193,7 @@ public class FactorLink extends BaseObject
 	
 	public static final int FROM = 1;
 	public static final int TO = 2;
-	public static final String BI_DIRECTIONAL_LINK = Boolean.toString(true);
+	public static final String BI_DIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
 	
 	private BaseIdData fromId;
 	private BaseIdData toId;

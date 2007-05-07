@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -19,7 +20,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 
 		if (link.isTargetLink())
 			addField(createStringField(FactorLink.TAG_STRESS_LABEL));
-		addField(createCheckBoxField(FactorLink.TAG_BI_DRECTIONAL_LINK, Boolean.toString(true), Boolean.toString(false)));
+		addField(createCheckBoxField(FactorLink.TAG_BI_DRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 		
 		updateFieldsFromProject();
 	}
