@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
+import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
@@ -64,11 +65,19 @@ public class DiagramToolBar extends EAMToolBar
 			},
 			{
 				getModeSwitchButton(actions, diagramView),
-				new ToolBarButton(actions, ActionCreateOrShowResultsChain.class),
+				getDiagramObjectSwitchButton(actions, diagramView),
 			},
 		};
 		
 		return buttons;
+	}
+	
+	static ToolBarButton getDiagramObjectSwitchButton(Actions actions, DiagramView diagramView)
+	{
+		if (diagramView.isResultsChainTab())
+			return new ToolBarButton(actions, ActionShowConceptualModel.class);
+			
+		return new ToolBarButton(actions, ActionCreateOrShowResultsChain.class);
 	}
 	
 	static ToolBarButton getInsertInterventionButton(Actions actions, DiagramView diagramView)
