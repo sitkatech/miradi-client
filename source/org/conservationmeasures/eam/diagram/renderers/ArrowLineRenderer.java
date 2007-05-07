@@ -28,7 +28,6 @@ import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
-import org.jgraph.graph.GraphConstants;
 import org.martus.swing.Utilities;
 
 public class ArrowLineRenderer extends EdgeRenderer
@@ -73,6 +72,11 @@ public class ArrowLineRenderer extends EdgeRenderer
 		if(isArrowBodyVisible())
 			return shape;
 		
+		return createStubLineShape(shape);
+	}
+
+	private Shape createStubLineShape(Shape shape)
+	{
 		GeneralPath pathShape = (GeneralPath)shape;
 		pathShape.reset();
 		if(view.beginShape != null)
@@ -80,12 +84,12 @@ public class ArrowLineRenderer extends EdgeRenderer
 		if(view.endShape != null)
 			pathShape.append(view.endShape, false);
 		view.lineShape = null;
-		return shape;
+		return pathShape;
 	}
 
 	private boolean isArrowBodyVisible()
 	{
-		return !(GraphConstants.getLineBegin(getLinkCell().getAttributes()) == ARROW_JUST_LINE);
+		return getLinkCell().isThisLinkBodyVisible(getDiagram());
 	}
 
 	private DiagramComponent getDiagram()
@@ -115,9 +119,14 @@ public class ArrowLineRenderer extends EdgeRenderer
 	protected Shape createLineEnd(int size, int style, Point2D src, Point2D dst)
 	{
 		DiagramComponent diagram = getDiagram();
-		if(style != ARROW_JUST_LINE || src == null || dst == null || diagram == null)
+		if(style != ARROW_STUB_LINE || src == null || dst == null || diagram == null)
 			return super.createLineEnd(size, style, src, dst);
 		
+		return createStubLine(size, src, dst);
+	}
+
+	private Shape createStubLine(int size, Point2D src, Point2D dst)
+	{
 		int d = (int) Math.max(1, dst.distance(src));
 		int ax = (int) -(size * (dst.getX() - src.getX()) / d);
 		int ay = (int) -(size * (dst.getY() - src.getY()) / d);
@@ -200,7 +209,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	}
 	
 	private static final int CUSHION = 5;
-	public static final int ARROW_JUST_LINE = 23253;
+	public static final int ARROW_STUB_LINE = 23253;
 	
 	boolean isVisible;
 	String stressText;
