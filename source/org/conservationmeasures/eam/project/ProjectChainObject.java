@@ -14,8 +14,7 @@ import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 
-// NOTE: This class started as an exact copy of DiagramChainObject,
-// and this should be used instead of that whenever possible.
+// TODO: ProjectChainObject and DiagramChainObject should be have a common super class for dup code
 public class ProjectChainObject
 {
 	public FactorSet getFactors()

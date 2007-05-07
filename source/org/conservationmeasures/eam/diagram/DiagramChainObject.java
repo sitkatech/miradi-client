@@ -16,8 +16,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 
-// TODO: Hopefully this can be eliminated when everyone 
-// is using ProjectChainObject instead
+//TODO: ProjectChainObject and DiagramChainObject should be have a common super class for dup code
 public class DiagramChainObject
 {
 	public FactorSet getFactors()
