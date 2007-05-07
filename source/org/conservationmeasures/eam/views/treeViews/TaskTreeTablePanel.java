@@ -90,7 +90,6 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	//TODO: should pull up to super class
 	private void rebuildEntireTree()
 	{
-		System.out.println("here");
 		//TODO: Is it the right place/mechanism?
 		int currentSelectedRow = tree.getSelectedRow();
 		model.rebuildEntireTree();
