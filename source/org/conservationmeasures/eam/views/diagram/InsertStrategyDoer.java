@@ -15,7 +15,8 @@ public class InsertStrategyDoer extends InsertFactorDoer
 	{
 		if (!getProject().isOpen()) 
 			return false;
-		return !getDiagramView().isResultsChainTab();
+		
+		return true;
 	}
 	
 	public int getTypeToInsert()
