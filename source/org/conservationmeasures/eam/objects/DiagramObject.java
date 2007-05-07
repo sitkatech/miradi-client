@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramContentsId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -33,6 +34,11 @@ abstract public class DiagramObject extends BaseObject
 	public DiagramObject(int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(new DiagramContentsId(idToUse), json);
+	}
+	
+	public boolean isResultsChain()
+	{
+		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
 	public IdList getAllDiagramFactorIds()

@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public class LayerManager
@@ -31,12 +32,15 @@ public class LayerManager
 		threatReductionResultFlag = true;
 	}
 	
-	public boolean isVisible(FactorCell node)
+	public boolean isVisible(DiagramObject diagramObject, FactorCell node)
 	{
 		if(hiddenORefs.contains(node.getWrappedORef()))
 			return false;
 		
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
+		if (isResultsChain(diagramObject) && isDraft)
+			return true;
+		
 		if(mode.equals(ViewData.MODE_DEFAULT) && isDraft)
 			return false;
 		
@@ -59,6 +63,14 @@ public class LayerManager
 			return true;
 		
 		return false;
+	}
+
+	private boolean isResultsChain(DiagramObject diagramObject)
+	{
+		if (diagramObject == null)
+			return false;
+		
+		return diagramObject.isResultsChain();
 	}
 
 	public boolean isTypeVisible(Class nodeClass)
@@ -188,7 +200,6 @@ public class LayerManager
 	{
 		threatReductionResultFlag = newSetting;
 	}
-	
 	
 	Set hiddenNodeTypes;
 	ORefList hiddenORefs;

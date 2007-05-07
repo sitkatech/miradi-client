@@ -147,7 +147,7 @@ public class TestLayerManager extends EAMTestCase
 
 	private void verifyNodeVisibility(String text, boolean expected, FactorCell node, LayerManager manager)
 	{
-		assertEquals("node: " + text + " (" + node.getLabel() + ") ",expected, manager.isVisible(node));
+		assertEquals("node: " + text + " (" + node.getLabel() + ") ",expected, manager.isVisible(project.getDiagramObject(), node));
 	}
 	
 	private FactorId takeNextModelNodeId()

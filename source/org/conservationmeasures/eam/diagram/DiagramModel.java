@@ -49,7 +49,6 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
@@ -242,7 +241,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean isResultsChain()
 	{
-		return diagramContents.getType() == ResultsChainDiagram.getObjectType();
+		return diagramContents.isResultsChain();
 	}
 	
 	public FactorSet getDirectThreatChainNodes(Factor directThreat)
@@ -359,7 +358,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		LayerManager manager = project.getLayerManager();
 		FactorCell factorCell = getFactorCellById(diagramFactorId);
-		boolean isVisible = manager.isVisible(factorCell);
+		boolean isVisible = manager.isVisible(getDiagramObject(), factorCell);
 		getGraphLayoutCache().setVisible(factorCell, isVisible);
 	}
 
