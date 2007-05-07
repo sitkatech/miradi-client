@@ -128,9 +128,9 @@ public class FactorLink extends BaseObject
 		return stressLabel.get();
 	}
 	
-	public boolean isBiDirectional()
+	public boolean isBidirectional()
 	{
-		return biDirectionalLink.get().equals(BI_DIRECTIONAL_LINK);
+		return bidirectionalLink.get().equals(BIDIRECTIONAL_LINK);
 	}
 	
 	public boolean isTargetLink()
@@ -138,7 +138,7 @@ public class FactorLink extends BaseObject
 		 if (objectManager.findNode(getToFactorId()).isTarget())
 			 return true;
 		 
-		 if (!isBiDirectional())
+		 if (!isBidirectional())
 			 return false;
 			 
 		 return (objectManager.findNode(getFromFactorId()).isTarget());
@@ -175,28 +175,28 @@ public class FactorLink extends BaseObject
 		fromId = new BaseIdData();
 		toId = new BaseIdData();
 		stressLabel = new StringData();
-		biDirectionalLink = new BooleanData();
+		bidirectionalLink = new BooleanData();
 		
 		addNoClearField(TAG_FROM_ID, fromId);
 		addNoClearField(TAG_TO_ID, toId);
 		addField(TAG_STRESS_LABEL, stressLabel);
-		addField(TAG_BI_DRECTIONAL_LINK, biDirectionalLink);
+		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
 	}
 	
 	
 	private static String TAG_FROM_ID = "FromId";
 	private static String TAG_TO_ID = "ToId";
 	public static String TAG_STRESS_LABEL = "StressLabel";
-	public static String TAG_BI_DRECTIONAL_LINK = "BiDirectionalLink";
+	public static String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 
 	public static final String OBJECT_NAME = "Link";
 	
 	public static final int FROM = 1;
 	public static final int TO = 2;
-	public static final String BI_DIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
+	public static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
 	
 	private BaseIdData fromId;
 	private BaseIdData toId;
 	private StringData stressLabel;
-	private BooleanData biDirectionalLink;
+	private BooleanData bidirectionalLink;
 }

@@ -20,7 +20,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 
 		if (link.isTargetLink())
 			addField(createStringField(FactorLink.TAG_STRESS_LABEL));
-		addField(createCheckBoxField(FactorLink.TAG_BI_DRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
+		addField(createCheckBoxField(FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 		
 		updateFieldsFromProject();
 	}

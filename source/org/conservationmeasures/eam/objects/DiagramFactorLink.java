@@ -140,9 +140,9 @@ public class DiagramFactorLink extends BaseObject
 		return new FactorLinkId(underlyingObjectId.getId().asInt());
 	}
 	
-	public boolean isBiDirectional()
+	public boolean isBidirectional()
 	{
-		return getUnderlyingLink().isBiDirectional();
+		return getUnderlyingLink().isBidirectional();
 	}
 	
 	public boolean isTargetLink()

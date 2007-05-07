@@ -150,7 +150,7 @@ public class DiagramChainObject
 			return;
 		}
 		
-		if (!thisLink.isBiDirectional())
+		if (!thisLink.isBidirectional())
 			return;
 		
 		if(thisLink.getOppositeNodeId(direction).equals(thisFactor.getId()))

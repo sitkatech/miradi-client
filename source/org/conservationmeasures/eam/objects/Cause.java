@@ -113,7 +113,7 @@ public class Cause extends Factor
 				return true;
 		}
 		
-		if (!link.isBiDirectional())
+		if (!link.isBidirectional())
 			return false;
 		
 		if(link.getToFactorId().equals(getId()))
