@@ -118,7 +118,7 @@ public class DiagramChainObject
 		{
 			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
 			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-			processLink(direction, unprocessedFactors, startingFactor, thisLink);
+			processLink(unprocessedFactors, startingFactor, thisLink, direction);
 		}		
 		
 		while(unprocessedFactors.size() > 0)
@@ -131,7 +131,7 @@ public class DiagramChainObject
 				{
 					FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
 					FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-					processLink(direction, unprocessedFactors, thisFactor, thisLink);
+					processLink(unprocessedFactors, thisFactor, thisLink, direction);
 				}
 			}
 			unprocessedFactors.remove(thisFactor);
@@ -140,7 +140,7 @@ public class DiagramChainObject
 		return linkedFactors;
 	}
 
-	private void processLink(int direction, FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink)
+	private void processLink(FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
 	{
 		if(thisLink.getNodeId(direction).equals(thisFactor.getId()))
 		{
@@ -176,7 +176,7 @@ public class DiagramChainObject
 		{
 			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
 			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-			processLink(direction, results, startingFactor, thisLink);
+			processLink(results, startingFactor, thisLink, direction);
 		}
 		return results;
 	}

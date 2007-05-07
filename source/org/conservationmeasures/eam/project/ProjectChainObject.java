@@ -116,7 +116,7 @@ public class ProjectChainObject
 		for(int i = 0; i < linkIds.length; ++i)
 		{
 			FactorLink thisLink = factorLinkPool.find(linkIds[i]);
-			processLink(direction, unprocessedFactors, startingFactor, thisLink);
+			processLink(unprocessedFactors, startingFactor, thisLink, direction);
 		}		
 		
 		while(unprocessedFactors.size() > 0)
@@ -128,7 +128,7 @@ public class ProjectChainObject
 				for(int i = 0; i < linkIds.length; ++i)
 				{
 					FactorLink thisLinkage = factorLinkPool.find(linkIds[i]);
-					processLink(direction, unprocessedFactors, thisFactor, thisLinkage);
+					processLink(unprocessedFactors, thisFactor, thisLinkage, direction);
 				}
 			}
 			unprocessedFactors.remove(thisFactor);
@@ -137,7 +137,7 @@ public class ProjectChainObject
 		return linkedFactors;
 	}
 
-	private void processLink(int direction, FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink)
+	private void processLink(FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
 	{
 		if(thisLink.getNodeId(direction).equals(thisFactor.getId()))
 		{
@@ -167,7 +167,7 @@ public class ProjectChainObject
 		for(int i = 0; i < factorLinkPool.getFactorLinkIds().length; ++i)
 		{
 			FactorLink thisLink = factorLinkPool.find(factorLinkPool.getFactorLinkIds()[i]);
-			processLink(direction, results, startingFactor, thisLink);
+			processLink(results, startingFactor, thisLink, direction);
 		}
 		return results;
 	}
