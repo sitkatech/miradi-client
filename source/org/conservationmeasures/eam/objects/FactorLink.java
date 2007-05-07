@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
+import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -174,7 +175,7 @@ public class FactorLink extends BaseObject
 		fromId = new BaseIdData();
 		toId = new BaseIdData();
 		stressLabel = new StringData();
-		biDirectionalLink = new StringData();
+		biDirectionalLink = new BooleanData();
 		
 		addNoClearField(TAG_FROM_ID, fromId);
 		addNoClearField(TAG_TO_ID, toId);
@@ -192,10 +193,10 @@ public class FactorLink extends BaseObject
 	
 	public static final int FROM = 1;
 	public static final int TO = 2;
-	public static final String BI_DIRECTIONAL_LINK = "Y";
+	public static final String BI_DIRECTIONAL_LINK = Boolean.toString(true);
 	
 	private BaseIdData fromId;
 	private BaseIdData toId;
 	private StringData stressLabel;
-	private StringData biDirectionalLink;
+	private BooleanData biDirectionalLink;
 }
