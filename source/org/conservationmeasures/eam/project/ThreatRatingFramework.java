@@ -17,10 +17,12 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
@@ -263,16 +265,26 @@ public class ThreatRatingFramework
 	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
 		FactorId threatId = bundle.getThreatId();
+		FactorId targetId = bundle.getTargetId();
 		Factor threat = project.findNode(threatId);
-		if(threat == null || !threat.isDirectThreat())
+		if(threat == null)
 			return false;
 		
-		FactorId targetId = bundle.getTargetId();
-		Factor target = project.findNode(targetId);
-		if(target == null || !target.isTarget())
-			return false;
+		ORefList links = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
+		for(int i = 0; i < links.size(); ++i)
+		{
+			FactorLink link = (FactorLink)project.findObject(links.get(i));
+			if(link.getFromFactorId().equals(threatId) && 
+					link.getToFactorId().equals(targetId))
+				return true;
 
-		return project.isLinked(threatId, targetId);
+			if(link.isBidirectional() && 
+					link.getFromFactorId().equals(targetId) && 
+					link.getToFactorId().equals(threatId))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	public ValueOption getSummaryOfBundles(ThreatRatingBundle[] bundlesToSummarize)
