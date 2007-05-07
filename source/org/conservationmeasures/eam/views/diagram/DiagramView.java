@@ -68,6 +68,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
@@ -75,6 +76,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -88,6 +90,7 @@ import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -551,12 +554,25 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	private void updateFactorLinkIfRelevant(CommandSetObjectData cmd) throws Exception
 	{
-		if (cmd.getObjectType() != ObjectType.DIAGRAM_LINK)
-			return;
+		DiagramFactorLinkId diagramFactorLinkId = null;
 		
-		DiagramFactorLinkId diagramFactorLinkId = (DiagramFactorLinkId) cmd.getObjectId();
-		DiagramModel diagramModel = getDiagramModel();
-		diagramModel.updateCellFromDiagramFactorLink(diagramFactorLinkId);
+		if(cmd.getObjectType() == ObjectType.DIAGRAM_LINK)
+		{
+			diagramFactorLinkId = (DiagramFactorLinkId) cmd.getObjectId();
+		}
+		else if(cmd.getObjectType() == ObjectType.FACTOR_LINK)
+		{
+			FactorLinkId factorLinkId = (FactorLinkId) cmd.getObjectId();
+			DiagramFactorLink link = getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
+			diagramFactorLinkId = link.getDiagramLinkageId();
+		}
+		
+		if(diagramFactorLinkId != null)
+		{
+			LinkCell cell = getDiagramModel().updateCellFromDiagramFactorLink(diagramFactorLinkId);
+			cell.update(getDiagramComponent());
+			getDiagramModel().updateCell(cell);
+		}
 	}
 	
 	private void updateFactorBoundsIfRelevant(CommandSetObjectData cmd) throws Exception

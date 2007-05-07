@@ -588,15 +588,16 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	public void updateCellFromDiagramFactorLink(DiagramFactorLinkId diagramFactorLinkId) throws Exception
+	public LinkCell updateCellFromDiagramFactorLink(DiagramFactorLinkId diagramFactorLinkId) throws Exception
 	{
 		if (! doesDiagramFactorLinkExist(diagramFactorLinkId))
-			return;
+			return null;
 		
 		DiagramFactorLink diagramFactorLink  = getDiagramFactorLinkById(diagramFactorLinkId);
 		LinkCell linkCell = getDiagramFactorLink(diagramFactorLink);
 		linkCell.updateFromDiagramFactorLink();
 		updateCell(linkCell);
+		return linkCell;
 	}
 
 	public void updateCellFromDiagramFactor(DiagramFactorId diagramFactorId) throws Exception
