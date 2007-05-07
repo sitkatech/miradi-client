@@ -132,6 +132,17 @@ public class FactorLink extends BaseObject
 		return biDirectionalLink.get().equals(BI_DIRECTIONAL_LINK);
 	}
 	
+	public boolean isTargetLink()
+	{
+		 if (objectManager.findNode(getToFactorId()).isTarget())
+			 return true;
+		 
+		 if (!isBiDirectional())
+			 return false;
+			 
+		 return (objectManager.findNode(getFromFactorId()).isTarget());
+	}
+	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateFactorLinkParameter(getFromFactorId(), getToFactorId());

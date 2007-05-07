@@ -9,9 +9,7 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesWithoutStressPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ProjectScopePanel;
@@ -55,13 +53,7 @@ public class Properties extends LocationDoer
 		else if(selected.isProjectScope())
 			doProjectScopeProperties();
 		else if(selected.isFactorLink())
-		{
-			LinkCell cell = (LinkCell)selected;
-			if(cell.getTo().isTarget())
-				doFactorLinkProperties(selected.getDiagramFactorLink());
-			else
-				doFactorLinkPropertiesWithoutStress(selected.getDiagramFactorLink());
-		}
+			doFactorLinkProperties(selected.getDiagramFactorLink());
 	}
 	
 	void doProjectScopeProperties() throws CommandFailedException
@@ -73,18 +65,10 @@ public class Properties extends LocationDoer
 	
 	void doFactorLinkProperties(DiagramFactorLink linkage) throws CommandFailedException
 	{
-		FactorLinkPropertiesPanel panel = new FactorLinkPropertiesPanel(getProject(), linkage.getWrappedId());
+		FactorLinkPropertiesPanel panel = new FactorLinkPropertiesPanel(getProject(), linkage);
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
-	
-	void doFactorLinkPropertiesWithoutStress(DiagramFactorLink linkage) throws CommandFailedException
-	{
-		FactorLinkPropertiesWithoutStressPanel panel = new FactorLinkPropertiesWithoutStressPanel(getProject(), linkage.getWrappedId());
-		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
-		getView().showFloatingPropertiesDialog(dlg);
-	}
-	
 	
 	void doFactorProperties(FactorCell selectedFactorCell, Point at) throws CommandFailedException
 	{

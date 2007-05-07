@@ -5,19 +5,20 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 
 public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 {
-	public FactorLinkPropertiesPanel(Project projectToUse, FactorLinkId objectIdToUse)
+	public FactorLinkPropertiesPanel(Project projectToUse, DiagramFactorLink link)
 	{
-		super(projectToUse, ObjectType.FACTOR_LINK, objectIdToUse);
+		super(projectToUse, ObjectType.FACTOR_LINK, link.getWrappedId());
 
-		addField(createStringField(FactorLink.TAG_STRESS_LABEL));
+		if (link.isTargetLink())
+			addField(createStringField(FactorLink.TAG_STRESS_LABEL));
 		addField(createCheckBoxField(FactorLink.TAG_BI_DRECTIONAL_LINK,"Y","N"));
 		
 		updateFieldsFromProject();

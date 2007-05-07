@@ -142,7 +142,17 @@ public class DiagramFactorLink extends BaseObject
 	
 	public boolean isBiDirectional()
 	{
-		return getData(TAG_BI_DRECTIONAL_LINK).equals(FactorLink.BI_DIRECTIONAL_LINK);
+		return getUnderlyingLink().isBiDirectional();
+	}
+	
+	public boolean isTargetLink()
+	{
+		return getUnderlyingLink().isTargetLink();
+	}
+	
+	private FactorLink getUnderlyingLink()
+	{
+		return (FactorLink)getObjectManager().getProject().findObject(new ORef(FactorLink.getObjectType(), underlyingObjectId.getId()));
 	}
 	
 	public String getData(String fieldTag)
@@ -193,17 +203,6 @@ public class DiagramFactorLink extends BaseObject
 		return bendPoints.getPointList();
 	}
 	
-	public String getPseudoData(String fieldTag)
-	{
-		if (fieldTag.equals(TAG_BI_DRECTIONAL_LINK))
-		{
-			BaseObject link = getObjectManager().getProject().findObject(new ORef(FactorLink.getObjectType(), underlyingObjectId.getId()));
-			return link.getData(FactorLink.TAG_BI_DRECTIONAL_LINK);
-		}
-		return super.getPseudoData(fieldTag);
-	}
-	
-	
 	void clear()
 	{
 		super.clear();
@@ -212,21 +211,17 @@ public class DiagramFactorLink extends BaseObject
 		fromId = new BaseIdData();
 		toId = new BaseIdData();
 		bendPoints = new PointListData();
-		biDirectionalLink = new PseudoStringData(TAG_BI_DRECTIONAL_LINK);
 		
 		addField(TAG_BEND_POINTS, bendPoints);
-		addField(TAG_BI_DRECTIONAL_LINK, biDirectionalLink);
 	}
 	
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
 	public static final String TAG_FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TAG_TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
 	public static final String TAG_BEND_POINTS = "BendPoints";
-	public static final String TAG_BI_DRECTIONAL_LINK = "BiDirectionalLink";
 	
 	private BaseIdData underlyingObjectId;
 	private BaseIdData fromId;
 	private BaseIdData toId;
 	private PointListData bendPoints;
-	private PseudoStringData biDirectionalLink;
 }
