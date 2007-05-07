@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.project;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
@@ -117,26 +116,19 @@ public class ProjectChainObject
 		for(int i = 0; i < linkIds.length; ++i)
 		{
 			FactorLink thisLink = factorLinkPool.find(linkIds[i]);
-			if(thisLink.getNodeId(direction).equals(startingFactor.getId()))
-			{
-				attempToAdd(thisLink);
-				Factor linkedFactor = getObjectManager().findNode(thisLink.getOppositeNodeId(direction));
-				unprocessedFactors.attemptToAdd(linkedFactor);
-			}
+			processLink(direction, unprocessedFactors, startingFactor, thisLink);
 		}		
 		
 		while(unprocessedFactors.size() > 0)
 		{
 			Factor thisFactor = (Factor)unprocessedFactors.toArray()[0];
-			linkedFactors.attemptToAdd(thisFactor);
-			for(int i = 0; i < linkIds.length; ++i)
+			if (!linkedFactors.contains(thisFactor))
 			{
-				FactorLink thisLinkage = factorLinkPool.find(linkIds[i]);
-				if(thisLinkage.getNodeId(direction).equals(thisFactor.getId()))
+				linkedFactors.attemptToAdd(thisFactor);
+				for(int i = 0; i < linkIds.length; ++i)
 				{
-					attempToAdd(thisLinkage);
-					Factor linkedNode = getObjectManager().findNode(thisLinkage.getOppositeNodeId(direction));
-					unprocessedFactors.attemptToAdd(linkedNode);
+					FactorLink thisLinkage = factorLinkPool.find(linkIds[i]);
+					processLink(direction, unprocessedFactors, thisFactor, thisLinkage);
 				}
 			}
 			unprocessedFactors.remove(thisFactor);
@@ -145,6 +137,27 @@ public class ProjectChainObject
 		return linkedFactors;
 	}
 
+	private void processLink(int direction, FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink)
+	{
+		if(thisLink.getNodeId(direction).equals(thisFactor.getId()))
+		{
+			attempToAdd(thisLink);
+			Factor linkedNode = getObjectManager().findNode(thisLink.getOppositeNodeId(direction));
+			unprocessedFactors.attemptToAdd(linkedNode);
+			return;
+		}
+		
+		if (!thisLink.isBiDirectional())
+			return;
+		
+		if(thisLink.getOppositeNodeId(direction).equals(thisFactor.getId()))
+		{
+			attempToAdd(thisLink);
+			Factor linkedNode = getObjectManager().findNode(thisLink.getNodeId(direction));
+			unprocessedFactors.attemptToAdd(linkedNode);
+		}
+	}
+	
 	private FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
@@ -154,13 +167,7 @@ public class ProjectChainObject
 		for(int i = 0; i < factorLinkPool.getFactorLinkIds().length; ++i)
 		{
 			FactorLink thisLink = factorLinkPool.find(factorLinkPool.getFactorLinkIds()[i]);
-			if(thisLink.getNodeId(direction).equals(startingFactor.getId()))
-			{
-				attempToAdd(thisLink);
-				FactorId downstreamFactorId = thisLink.getOppositeNodeId(direction);
-				Factor downstreamFactor = getObjectManager().findNode(downstreamFactorId);
-				results.attemptToAdd(downstreamFactor);
-			}
+			processLink(direction, results, startingFactor, thisLink);
 		}
 		return results;
 	}

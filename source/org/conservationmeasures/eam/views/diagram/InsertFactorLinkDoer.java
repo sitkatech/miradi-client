@@ -27,10 +27,8 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -108,12 +106,12 @@ public class InsertFactorLinkDoer extends ViewDoer
 			return true;
 		}
 		
-		if (wouldCreateLinkageLoop(model, fromDiagramFactor.getWrappedId(), toDiagramFactor.getWrappedId()))
-		{
-			String[] body = {EAM.text("Cannot create that link because it would cause a loop."), };
-			EAM.okDialog(EAM.text("Error"), body);
-			return true;
-		}
+//		if (wouldCreateLinkageLoop(model, fromDiagramFactor.getWrappedId(), toDiagramFactor.getWrappedId()))
+//		{
+//			String[] body = {EAM.text("Cannot create that link because it would cause a loop."), };
+//			EAM.okDialog(EAM.text("Error"), body);
+//			return true;
+//		}
 		
 		if(fromDiagramFactor.getDiagramFactorId().isInvalid() || toDiagramFactor.getDiagramFactorId().isInvalid())
 		{
@@ -128,27 +126,27 @@ public class InsertFactorLinkDoer extends ViewDoer
 		return false;
 	}
 	
-	public static boolean wouldCreateLinkageLoop(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId)
-	{
-		FactorId fromId = model.getWrappedId(fromDiagramFactorId);
-		FactorId toId = model.getWrappedId(toDiagramFactorId);
-	
-		return wouldCreateLinkageLoop(model, fromId, toId);
-	}
-	
-	public static boolean wouldCreateLinkageLoop(DiagramModel model, FactorId fromId, FactorId toId)
-    {
-		Factor fromFactor = model.getProject().findNode(fromId);
-		ProjectChainObject chainObject = new ProjectChainObject();
-		chainObject.buildUpstreamChain(fromFactor);
-		Factor[] upstreamFactors = chainObject.getFactorsArray();
-		
-		for (int i  = 0; i < upstreamFactors.length; i++)
-			if (upstreamFactors[i].getId().equals(toId))
-				return true;
-		
-		return false;
-    }
+//	private static boolean wouldCreateLinkageLoop(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId)
+//	{
+//		FactorId fromId = model.getWrappedId(fromDiagramFactorId);
+//		FactorId toId = model.getWrappedId(toDiagramFactorId);
+//	
+//		return wouldCreateLinkageLoop(model, fromId, toId);
+//	}
+//	
+//	private static boolean wouldCreateLinkageLoop(DiagramModel model, FactorId fromId, FactorId toId)
+//    {
+//		Factor fromFactor = model.getProject().findNode(fromId);
+//		ProjectChainObject chainObject = new ProjectChainObject();
+//		chainObject.buildUpstreamChain(fromFactor);
+//		Factor[] upstreamFactors = chainObject.getFactorsArray();
+//		
+//		for (int i  = 0; i < upstreamFactors.length; i++)
+//			if (upstreamFactors[i].getId().equals(toId))
+//				return true;
+//		
+//		return false;
+//    }
 
 	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
 	{

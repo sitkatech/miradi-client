@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -119,34 +118,47 @@ public class DiagramChainObject
 		{
 			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
 			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-			if(thisLink.getNodeId(direction).equals(startingFactor.getId()))
-			{
-				attempToAdd(thisLink);
-				Factor linkedFactor = getProject().findNode(thisLink.getOppositeNodeId(direction));
-				unprocessedFactors.attemptToAdd(linkedFactor);
-			}
+			processLink(direction, unprocessedFactors, startingFactor, thisLink);
 		}		
 		
 		while(unprocessedFactors.size() > 0)
 		{
 			Factor thisFactor = (Factor)unprocessedFactors.toArray()[0];
-			linkedFactors.attemptToAdd(thisFactor);
-			for(int i = 0; i < allDiagramLinks.length; ++i)
+			if (!linkedFactors.contains(thisFactor))
 			{
-				FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
-				FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-				if(thisLink.getNodeId(direction).equals(thisFactor.getId()))
+				linkedFactors.attemptToAdd(thisFactor);
+				for(int i = 0; i < allDiagramLinks.length; ++i)
 				{
-					attempToAdd(thisLink);
-					Factor linkedNode = getProject().findNode(thisLink.getOppositeNodeId(direction));
-					unprocessedFactors.attemptToAdd(linkedNode);
+					FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
+					FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
+					processLink(direction, unprocessedFactors, thisFactor, thisLink);
 				}
 			}
-			
 			unprocessedFactors.remove(thisFactor);
 		}
 		
 		return linkedFactors;
+	}
+
+	private void processLink(int direction, FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink)
+	{
+		if(thisLink.getNodeId(direction).equals(thisFactor.getId()))
+		{
+			attempToAdd(thisLink);
+			Factor linkedNode = getProject().findNode(thisLink.getOppositeNodeId(direction));
+			unprocessedFactors.attemptToAdd(linkedNode);
+			return;
+		}
+		
+		if (!thisLink.isBiDirectional())
+			return;
+		
+		if(thisLink.getOppositeNodeId(direction).equals(thisFactor.getId()))
+		{
+			attempToAdd(thisLink);
+			Factor linkedNode = getProject().findNode(thisLink.getNodeId(direction));
+			unprocessedFactors.attemptToAdd(linkedNode);
+		}
 	}
 
 	private Project getProject()
@@ -164,13 +176,7 @@ public class DiagramChainObject
 		{
 			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
 			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-			if(thisLink.getNodeId(direction).equals(startingFactor.getId()))
-			{
-				attempToAdd(thisLink);
-				FactorId downstreamFactorId = thisLink.getOppositeNodeId(direction);
-				Factor downstreamFactor = getProject().findNode(downstreamFactorId);
-				results.attemptToAdd(downstreamFactor);
-			}
+			processLink(direction, results, startingFactor, thisLink);
 		}
 		return results;
 	}
