@@ -77,12 +77,6 @@ public class FactorCommandHelper
 	
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
 	{
-		DiagramObject diagramObject = model.getDiagramObject();
-		return createFactorAndDiagramFactor(diagramObject, objectType);
-	}
-	
-	public CommandCreateObject createFactorAndDiagramFactor(DiagramObject diagramObject, int objectType) throws Exception
-	{
 		CommandCreateObject createModelNode = new CommandCreateObject(objectType);
 		executeCommand(createModelNode);
 
@@ -92,6 +86,7 @@ public class FactorCommandHelper
 		executeCommand(createDiagramFactor);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
+		DiagramObject diagramObject = model.getDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		executeCommand(addDiagramFactor);
 		
