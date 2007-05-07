@@ -96,7 +96,7 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() != ObjectType.STRATEGY)
 			return false;
 		
-		Strategy strategy = (Strategy) project.findObject(new ORef(ObjectType.STRATEGY, diagramFactor.getWrappedId()));
+		Strategy strategy = (Strategy) project.findObject(diagramFactor.getWrappedORef());
 		if (strategy.isStatusDraft())
 			return false;
 		
