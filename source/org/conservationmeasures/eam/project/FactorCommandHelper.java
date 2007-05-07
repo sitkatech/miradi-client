@@ -55,7 +55,33 @@ public class FactorCommandHelper
 		model = modelToUse;
 	}
 
+	private void addCreatedFactorToConceptualModel(int typeToCreate, FactorId modelNodeId) throws Exception
+	{
+    	if (!model.getDiagramObject().isResultsChain())
+    		return;
+    	
+    	if (typeToCreate != ObjectType.STRATEGY)
+    		return;
+    	
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(modelNodeId);
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		executeCommand(createDiagramFactor);
+		
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
+    	final int ONLY_CONCEPTUAL_MODEL_INDEX = 0;
+    	ORefList refList = getProject().getConceptualModelDiagramPool().getORefList();
+    	DiagramObject diagramObject = (DiagramObject) getProject().findObject(refList.get(ONLY_CONCEPTUAL_MODEL_INDEX));
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
+		executeCommand(addDiagramFactor);
+	}
+	
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
+	{
+		DiagramObject diagramObject = model.getDiagramObject();
+		return createFactorAndDiagramFactor(diagramObject, objectType);
+	}
+	
+	public CommandCreateObject createFactorAndDiagramFactor(DiagramObject diagramObject, int objectType) throws Exception
 	{
 		CommandCreateObject createModelNode = new CommandCreateObject(objectType);
 		executeCommand(createModelNode);
@@ -66,9 +92,10 @@ public class FactorCommandHelper
 		executeCommand(createDiagramFactor);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
-		DiagramObject diagramObject = model.getDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		executeCommand(addDiagramFactor);
+		
+		addCreatedFactorToConceptualModel(objectType, modelNodeId);
 		
 		Factor factor = project.findNode(modelNodeId);
 		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(factor.getRef());
