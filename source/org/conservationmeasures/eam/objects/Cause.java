@@ -67,6 +67,7 @@ public class Cause extends Factor
 		return !isDirectThreat();
 	}
 	
+	// FIXME: (Richard): Clean this up before release
 	public boolean isDirectThreatx()
 	{
 		// NOTE: This was optimized for speed because doing it "the right way"
