@@ -48,7 +48,7 @@ public class HexagonRenderer extends FactorRenderer
 		setPaint(g2, rect, color);
 		if(isDraft())
 		{
-			BasicStroke dashedStroke = getDashedStroke();
+			BasicStroke dashedStroke = getDashedStroke((BasicStroke)originalStroke);
 			g2.setStroke(dashedStroke);
 		}
 		g2.drawPolygon(buildHexagon(rect));
@@ -61,12 +61,12 @@ public class HexagonRenderer extends FactorRenderer
 		return node.isStatusDraft();
 	}
 
-	BasicStroke getDashedStroke()
+	BasicStroke getDashedStroke(BasicStroke originalStroke)
 	{
 		BasicStroke defaultStroke = new BasicStroke();
 		float[] dashes = {2, 7};
 		BasicStroke dashedStroke = new BasicStroke(
-				defaultStroke.getLineWidth(), defaultStroke.getEndCap(), 
+				originalStroke.getLineWidth(), defaultStroke.getEndCap(), 
 				defaultStroke.getLineJoin(), defaultStroke.getMiterLimit(),
 				dashes, 0);
 		return dashedStroke;
