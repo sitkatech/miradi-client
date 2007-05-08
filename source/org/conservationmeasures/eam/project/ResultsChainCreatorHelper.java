@@ -189,6 +189,8 @@ public class ResultsChainCreatorHelper
 		throw new Exception("cannot create object for type " + factor.getType());
 	}
 
+	//FIXME RC : if only strats are selected use chain other wise only 
+	//use selected diagram factors
 	private DiagramFactor[] getSelectedAndRelatedDiagramFactors()
 	{
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
@@ -209,6 +211,7 @@ public class ResultsChainCreatorHelper
 		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);
 	}
 	
+	//FIXME RC, fix before release
 	private Vector getAllFactorsNotInChain(FactorCell[] selectedFactorCells, Vector allDiagramFactors)
 	{
 		Vector allNonChainFactors = new Vector();
