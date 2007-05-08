@@ -189,56 +189,64 @@ public class ResultsChainCreatorHelper
 		throw new Exception("cannot create object for type " + factor.getType());
 	}
 
-	//FIXME RC : if only strats are selected use chain other wise only 
-	//use selected diagram factors
 	private DiagramFactor[] getSelectedAndRelatedDiagramFactors()
 	{
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
-		FactorCell[] selectedStrategyCells = extractStrategies(selectedFactorCells);
-		Vector allDiagramFactors = new Vector();
-		for (int i = 0; i < selectedStrategyCells.length; i++)
+		if (containsOnlyStrategies(selectedFactorCells))
+			return getRelatedDiagramFactors(selectedFactorCells);
+			
+		return extractDiagramFactors(selectedFactorCells);
+	}
+	
+	private DiagramFactor[] extractDiagramFactors(FactorCell[] selectedFactorCells)
+	{
+		DiagramFactor diagramFactors[] = new DiagramFactor[selectedFactorCells.length];
+		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
-			DiagramChainObject chainObject = createDiagramChainObject(selectedStrategyCells, i);
+			diagramFactors[i] = selectedFactorCells[i].getDiagramFactor();
+		}
+		
+		return diagramFactors;
+	}
+
+	private DiagramFactor[] getRelatedDiagramFactors(FactorCell[] selectedFactorCells)
+	{
+		Vector allDiagramFactors = new Vector();
+		for (int i = 0; i < selectedFactorCells.length; i++)
+		{
+			DiagramChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
 			Factor[] factorsArray = chainObject.getFactorsArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
 			allDiagramFactors.addAll(diagramFactors);
 		}
 	
-		Vector allNonChainFactors = getAllFactorsNotInChain(selectedFactorCells, allDiagramFactors);
-		allDiagramFactors.addAll(allNonChainFactors);
-		
-		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);
-	}
-	
-	//FIXME RC, fix before release
-	private Vector getAllFactorsNotInChain(FactorCell[] selectedFactorCells, Vector allDiagramFactors)
-	{
-		Vector allNonChainFactors = new Vector();
-		for (int i = 0; i < selectedFactorCells.length; ++i)
-		{
-			if (! selectedFactorCells[i].isStatusDraft())
-				allDiagramFactors.contains(selectedFactorCells[i]);
-		}
-		
-		return allNonChainFactors;
+		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);	
 	}
 
-	private FactorCell[] extractStrategies(FactorCell[] selectedFactorCells)
+	private boolean containsOnlyStrategies(FactorCell[] selectedFactorCells)
 	{
-		Vector strategies = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
-			if (selectedFactorCells[i].isStrategy())
-				strategies.add(selectedFactorCells[i]);
+			if (!isNonDraftStrategy(selectedFactorCells[i].getDiagramFactor()))
+				return false;
 		}
 		
-		return (FactorCell[]) strategies.toArray(new FactorCell[0]);
+		return true;
 	}
 
 	private DiagramFactorLink[] getDiagramLinksInChain() throws Exception
 	{
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
+		if (containsOnlyStrategies(selectedFactorCells))
+			return getLinksInRelatedFactors(selectedFactorCells);
+		//FIXME the user has to select the chain otherwise if a factor is selected, the link appers to be selected as well
+		//however it does not appear in the list returned from getOnlySlectedLinks() below
+		return diagramPanel.getOnlySelectedLinks();
+	}
+	
+	private DiagramFactorLink[] getLinksInRelatedFactors(FactorCell[] selectedFactorCells) throws Exception
+	{
 		Vector allDiagramLinks = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
