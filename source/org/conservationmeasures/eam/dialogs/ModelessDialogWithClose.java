@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.dialogs;
+package org.conservationmeasures.eam.dialogs; 
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.FastScrollPane;
@@ -31,11 +30,6 @@ public class ModelessDialogWithClose extends EAMDialog
 		wrappedPanel = panel;
 	
 		JPanel mainPanel = new JPanel(new BorderLayout());
-		
-		JToolBar toolBar = new JToolBar("Still draggable");
-		toolBar.add(new UiButton("xxxxxxxx"));
-		mainPanel.add(toolBar, BorderLayout.BEFORE_FIRST_LINE);
-		
 		mainPanel.add(wrappedPanel, BorderLayout.CENTER);
 		mainPanel.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		getContentPane().add(new FastScrollPane(mainPanel));
