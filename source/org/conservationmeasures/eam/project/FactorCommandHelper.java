@@ -138,19 +138,12 @@ public class FactorCommandHelper
 			dataHelper.setOriginalLocation(originalDiagramNodeId, point);
 			
 			EAM.logDebug("Paste Node: " + newNodeId);
-		}
-		
-		for (int i = 0; i < nodes.length; i++) 
-		{
-			FactorDataMap nodeData = nodes[i];
-			DiagramFactorId originalDiagramNodeId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
 			
 			int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
 			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
 			newNodeLocation.setLocation(newNodeLocation.x + offsetToAvoidOverlaying, newNodeLocation.y + offsetToAvoidOverlaying);
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
 			
-			DiagramFactorId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			FactorCell newNode = getDiagramFactorById(newNodeId);
 			
 			Dimension originalSize = nodeData.getDimension(DiagramFactor.TAG_SIZE);
