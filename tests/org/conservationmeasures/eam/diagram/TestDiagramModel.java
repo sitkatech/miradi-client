@@ -106,6 +106,44 @@ public class TestDiagramModel extends EAMTestCase
 		return linkagePairs;
 	}
 	
+	
+	private int[] getLoopLinkagePairs()
+	{
+		int[] linkagePairs = {
+				11, 21,		21, 31, 	31, 41,		41, 11,  	31,11
+		};
+		return linkagePairs;
+	}
+	
+	private int[][] getExpectedNodesInLoopChain()
+	{
+		int[][] expectedNodesInLoopChain = {
+				{ 11, 21, 31, 41,}
+		};
+		return expectedNodesInLoopChain;
+	}
+	
+	public void testLoopChainIds() throws Exception
+	{
+		int[] linkagePairs = getLoopLinkagePairs();
+		SampleDiagramBuilder.buildNodeGrid(project, 1, linkagePairs);
+		int[][] expectedNodesInChain = getExpectedNodesInLoopChain();
+
+		for(int nodeIndex = 0; nodeIndex < expectedNodesInChain.length; ++nodeIndex)
+		{
+			int[] expectedChainNodeIds = expectedNodesInChain[nodeIndex];
+			int middleNodeInLoop = 2;
+			String label = Integer.toString(expectedChainNodeIds[middleNodeInLoop]);
+			Factor cmNode = findFactor(label);
+			
+			FactorSet gotChainNodes = model.getAllUpstreamNodes(cmNode);
+			Set gotLabels = getLabelSet(gotChainNodes);
+			assertEquals("wrong chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels);
+		}
+	}
+	
+	
+	
 	public void testGetChainIds() throws Exception
 	{
 		int[] linkagePairs = getLinkagePairs();
