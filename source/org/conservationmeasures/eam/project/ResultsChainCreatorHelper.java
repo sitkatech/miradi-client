@@ -192,19 +192,47 @@ public class ResultsChainCreatorHelper
 	private DiagramFactor[] getDiagramFactorsInChain()
 	{
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
+		FactorCell[] selectedStrategyCells = extractStrategies(selectedFactorCells);
 		Vector allDiagramFactors = new Vector();
-		for (int i = 0; i < selectedFactorCells.length; i++)
+		for (int i = 0; i < selectedStrategyCells.length; i++)
 		{
-			DiagramChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
+			DiagramChainObject chainObject = createDiagramChainObject(selectedStrategyCells, i);
 			Factor[] factorsArray = chainObject.getFactorsArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
 			allDiagramFactors.addAll(diagramFactors);
 		}
+	
+		Vector allNonChainFactors = getAllFactorsNotInChain(selectedFactorCells, allDiagramFactors);
+		allDiagramFactors.addAll(allNonChainFactors);
 		
 		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);
 	}
 	
+	private Vector getAllFactorsNotInChain(FactorCell[] selectedFactorCells, Vector allDiagramFactors)
+	{
+		Vector allNonChainFactors = new Vector();
+		for (int i = 0; i < selectedFactorCells.length; ++i)
+		{
+			if (! selectedFactorCells[i].isStatusDraft())
+				allDiagramFactors.contains(selectedFactorCells[i]);
+		}
+		
+		return allNonChainFactors;
+	}
+
+	private FactorCell[] extractStrategies(FactorCell[] selectedFactorCells)
+	{
+		Vector strategies = new Vector();
+		for (int i = 0; i < selectedFactorCells.length; ++i)
+		{
+			if (selectedFactorCells[i].isStrategy())
+				strategies.add(selectedFactorCells[i]);
+		}
+		
+		return (FactorCell[]) strategies.toArray(new FactorCell[0]);
+	}
+
 	private DiagramFactorLink[] getDiagramLinksInChain() throws Exception
 	{
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
@@ -235,7 +263,8 @@ public class ResultsChainCreatorHelper
 		 {
 			 FactorLinkId id = links[i].getFactorLinkId();
 			 DiagramFactorLink link = model.getDiagramFactorLinkbyWrappedId(id);
-			 vector.add(link);
+			 if (canAddLinkToResultsChain((link)))
+				 vector.add(link);
 		 }
 		 
 		 return vector;
@@ -249,12 +278,35 @@ public class ResultsChainCreatorHelper
 		{
 			DiagramFactorLink diagramLink = diagramLinks[i];
 			DiagramFactorLinkId newlyCreatedLinkId = cloneDiagramFactorLink(diagramFactors, diagramLink);
-
-			createdDiagramLinkIds.add(newlyCreatedLinkId);
+			if (canAddLinkToResultsChain(diagramLink))
+				createdDiagramLinkIds.add(newlyCreatedLinkId);
 		}
 		
 		return (DiagramFactorLinkId[]) createdDiagramLinkIds.toArray(new DiagramFactorLinkId[0]);
 	}
+	
+	private boolean canAddTypeToResultsChain(DiagramFactor diagramFactor)
+	{
+		if (diagramFactor.getWrappedType() == ObjectType.TARGET)
+			return true;
+		
+		if (diagramFactor.getWrappedType() == ObjectType.CAUSE)
+			return true;
+		
+		if (isNonDraftStrategy(diagramFactor))
+			return true;
+		
+		return false;
+	}
+	
+	private boolean canAddLinkToResultsChain(DiagramFactorLink link)
+	{
+		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, link.getFromDiagramFactorId()));
+		DiagramFactor toDiatramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, link.getToDiagramFactorId()));
+		
+		return (canAddTypeToResultsChain(fromDiagramFactor) && canAddTypeToResultsChain(toDiatramFactor));
+	}
+
 
 	private DiagramFactorLinkId cloneDiagramFactorLink(HashMap diagramFactors, DiagramFactorLink diagramLink) throws CommandFailedException
 	{
@@ -275,6 +327,7 @@ public class ResultsChainCreatorHelper
 		PointList bendPoints = diagramLink.getBendPoints();
 		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
 		project.executeCommand(setBendPoints);
+
 		return newlyCreatedLinkId;
 	}
 	
@@ -304,7 +357,8 @@ public class ResultsChainCreatorHelper
 		{
 			FactorId id = factors[i].getFactorId();
 			DiagramFactor diagramFactor = model.getDiagramFactor(id);
-			vector.add(diagramFactor);
+			if (canAddTypeToResultsChain(diagramFactor))
+				vector.add(diagramFactor);
 		}
 		
 		return vector;
