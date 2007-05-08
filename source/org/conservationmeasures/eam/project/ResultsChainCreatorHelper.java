@@ -240,8 +240,7 @@ public class ResultsChainCreatorHelper
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
 		if (containsOnlyStrategies(selectedFactorCells))
 			return getLinksInRelatedFactors(selectedFactorCells);
-		//FIXME the user has to select the chain otherwise if a factor is selected, the link appers to be selected as well
-		//however it does not appear in the list returned from getOnlySlectedLinks() below
+		//FIXME if a single factor is selected, the link appears to be selected but is not returned from the below method.
 		return diagramPanel.getOnlySelectedLinks();
 	}
 	
