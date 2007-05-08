@@ -71,6 +71,7 @@ public class FactorCommandHelper
     	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, factorId).getCreatedId();
     	DiagramFactor createddiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, createdDiagramFactorId));
 		
+    	//FIXME RC urgent the CM diagram is not updated to reflect the changes.  
     	setDiagramFactorSize(createdDiagramFactorId, size);
 		setDiagramFactorLocation(createdDiagramFactorId, insertionLocation);
 		setDiagramFactorLabel(createddiagramFactor.getWrappedId(), label);
