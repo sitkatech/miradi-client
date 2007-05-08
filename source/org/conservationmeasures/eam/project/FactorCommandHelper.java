@@ -55,49 +55,68 @@ public class FactorCommandHelper
 		model = modelToUse;
 	}
 
-	private void addCreatedFactorToConceptualModel(int typeToCreate, FactorId modelNodeId) throws Exception
+	private void addCreatedFactorToConceptualModel(int objectType, FactorId factorId, Point insertionLocation, Dimension size, String label) throws Exception
 	{
     	if (!model.getDiagramObject().isResultsChain())
     		return;
     	
-    	if (typeToCreate != ObjectType.STRATEGY)
+    	if (objectType != ObjectType.STRATEGY)
     		return;
     	
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(modelNodeId);
-		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
-		executeCommand(createDiagramFactor);
-		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
     	final int ONLY_CONCEPTUAL_MODEL_INDEX = 0;
     	ORefList refList = getProject().getConceptualModelDiagramPool().getORefList();
     	DiagramObject diagramObject = (DiagramObject) getProject().findObject(refList.get(ONLY_CONCEPTUAL_MODEL_INDEX));
-		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
-		executeCommand(addDiagramFactor);
+		
+
+    	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, factorId).getCreatedId();
+    	DiagramFactor createddiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, createdDiagramFactorId));
+		
+    	setDiagramFactorSize(createdDiagramFactorId, size);
+		setDiagramFactorLocation(createdDiagramFactorId, insertionLocation);
+		setDiagramFactorLabel(createddiagramFactor.getWrappedId(), label);
+	}
+	
+	public CommandCreateObject createDiagramFactor(int objectType, Point insertionLocation, Dimension size, String label) throws Exception
+	{
+		CommandCreateObject createObjectCommand = createFactorAndDiagramFactor(objectType);
+		DiagramFactorId diagramFactorId = (DiagramFactorId) createObjectCommand.getCreatedId();
+		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
+		
+		addCreatedFactorToConceptualModel(objectType, diagramFactor.getWrappedId(), insertionLocation, size, label);
+		
+		return createObjectCommand;
 	}
 	
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
 	{
-		CommandCreateObject createModelNode = new CommandCreateObject(objectType);
-		executeCommand(createModelNode);
-
-		FactorId modelNodeId = new FactorId(createModelNode.getCreatedId().asInt());
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(modelNodeId);
+		FactorId factorId = createFactor(objectType);
+		return createDiagramFactor(model.getDiagramObject(), factorId);
+	}
+	
+	public CommandCreateObject createDiagramFactor(DiagramObject diagramObject, FactorId factorId) throws Exception
+	{
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		executeCommand(createDiagramFactor);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
-		DiagramObject diagramObject = model.getDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		executeCommand(addDiagramFactor);
 		
-		addCreatedFactorToConceptualModel(objectType, modelNodeId);
-		
-		Factor factor = project.findNode(modelNodeId);
+		Factor factor = project.findNode(factorId);
 		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(factor.getRef());
 		for(int i = 0; i < commandsToAddToView.length; ++i)
 			executeCommand(commandsToAddToView[i]);
 		
 		return createDiagramFactor;
+	}
+
+	private FactorId createFactor(int objectType) throws CommandFailedException
+	{
+		CommandCreateObject createFactorCommand = new CommandCreateObject(objectType);
+		executeCommand(createFactorCommand);
+		
+		return (FactorId) createFactorCommand.getCreatedId();
 	}
 
 	
@@ -125,40 +144,50 @@ public class FactorCommandHelper
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			FactorDataMap nodeData = nodes[i];
-			DiagramFactorId originalDiagramNodeId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
-			
-			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE));
-			CommandCreateObject addCommand = createFactorAndDiagramFactor(type);
-			DiagramFactorId newNodeId = (DiagramFactorId) addCommand.getCreatedId();
-			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
+			String label = nodeData.getLabel();
+			Dimension originalSize = nodeData.getDimension(DiagramFactor.TAG_SIZE);
+			DiagramFactorId originalDiagramFactorId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
 			
 			Point point = nodeData.getPoint(DiagramFactor.TAG_LOCATION);
-			point.setLocation(point.x, point.y);
-			
-			dataHelper.setOriginalLocation(originalDiagramNodeId, point);
-			
-			EAM.logDebug("Paste Node: " + newNodeId);
-			
 			int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
-			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
-			newNodeLocation.setLocation(newNodeLocation.x + offsetToAvoidOverlaying, newNodeLocation.y + offsetToAvoidOverlaying);
-			newNodeLocation = getProject().getSnapped(newNodeLocation);
+			point.setLocation(point.x, point.y);
+			dataHelper.setOriginalLocation(originalDiagramFactorId, point);
+			Point newLocation = dataHelper.getNewLocation(originalDiagramFactorId, startPoint);
+			newLocation.setLocation(newLocation.x + offsetToAvoidOverlaying, newLocation.y + offsetToAvoidOverlaying);
+			newLocation = getProject().getSnapped(newLocation);
 			
-			FactorCell newNode = getDiagramFactorById(newNodeId);
+			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE));
+			CommandCreateObject addCommand = createDiagramFactor(type, newLocation, originalSize, label);
+			DiagramFactorId newDiagramFactorId = (DiagramFactorId) addCommand.getCreatedId();
+			dataHelper.setNewId(originalDiagramFactorId, newDiagramFactorId);
+			EAM.logDebug("Paste Node: " + newDiagramFactorId);
 			
-			Dimension originalSize = nodeData.getDimension(DiagramFactor.TAG_SIZE);
-			String currentSize = EnhancedJsonObject.convertFromDimension(originalSize);
-			CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newNode.getDiagramFactorId(), DiagramFactor.TAG_SIZE, currentSize);
-			executeCommand(setSizeCommand);
+			FactorCell newFactorCell = getDiagramFactorById(newDiagramFactorId);
 			
-			DiagramFactorId newDiagramNodeId = getDiagramFactorById(newNodeId).getDiagramFactorId();
-			String newMoveLocation = EnhancedJsonObject.convertFromPoint(new Point(newNodeLocation.x, newNodeLocation.y));
-			CommandSetObjectData moveCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newDiagramNodeId, DiagramFactor.TAG_LOCATION, newMoveLocation);
-			executeCommand(moveCommand);
-			
-			CommandSetObjectData setLabel = new CommandSetObjectData(ObjectType.FACTOR, newNode.getWrappedId(), Factor.TAG_LABEL, nodeData.getLabel()); 
-			executeCommand(setLabel);
+			setDiagramFactorSize(newDiagramFactorId, originalSize);
+			setDiagramFactorLocation(newDiagramFactorId, newLocation);
+			setDiagramFactorLabel(newFactorCell.getWrappedId(), label);
 		}
+	}
+
+	private void setDiagramFactorSize(DiagramFactorId diagramFactorId, Dimension originalSize) throws CommandFailedException
+	{
+		String currentSize = EnhancedJsonObject.convertFromDimension(originalSize);
+		CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_SIZE, currentSize);
+		executeCommand(setSizeCommand);
+	}
+
+	private void setDiagramFactorLabel(FactorId factorId, String label) throws CommandFailedException
+	{
+		CommandSetObjectData setLabel = new CommandSetObjectData(ObjectType.FACTOR, factorId, Factor.TAG_LABEL, label); 
+		executeCommand(setLabel);
+	}
+	
+	private void setDiagramFactorLocation(DiagramFactorId diagramFactorId, Point newNodeLocation) throws Exception
+	{
+		String newMoveLocation = EnhancedJsonObject.convertFromPoint(new Point(newNodeLocation.x, newNodeLocation.y));
+		CommandSetObjectData moveCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_LOCATION, newMoveLocation);
+		executeCommand(moveCommand);
 	}
 
 	public boolean canPaste(TransferableEamList list) throws Exception
