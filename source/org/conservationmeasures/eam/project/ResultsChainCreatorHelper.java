@@ -55,7 +55,7 @@ public class ResultsChainCreatorHelper
 			BaseId newResultsChainId = createResultsChain.getCreatedId();
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId);
 			
-			DiagramFactor[] diagramFactors = getDiagramFactorsInChain();
+			DiagramFactor[] diagramFactors = getSelectedAndRelatedDiagramFactors();
 			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
 			DiagramFactorId[] clonedDiagramFactorIds = extractClonedDiagramFactors(clonedDiagramFactors);
 			IdList idList = new IdList(clonedDiagramFactorIds);
@@ -189,7 +189,7 @@ public class ResultsChainCreatorHelper
 		throw new Exception("cannot create object for type " + factor.getType());
 	}
 
-	private DiagramFactor[] getDiagramFactorsInChain()
+	private DiagramFactor[] getSelectedAndRelatedDiagramFactors()
 	{
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
 		FactorCell[] selectedStrategyCells = extractStrategies(selectedFactorCells);
