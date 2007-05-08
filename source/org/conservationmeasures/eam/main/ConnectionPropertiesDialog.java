@@ -74,8 +74,6 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 	
 	private UiComboBox createChoices(int linkFromTo)
 	{
-		boolean acceptTargets = (linkFromTo == FactorLink.TO);
-		
 		UiComboBox comboBox = new UiComboBox();
 		comboBox.addItem(EAM.text("Label|--Select One---"));
 		
@@ -87,8 +85,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		for(int i = 0; i < factors.length; ++i)
 		{
 			Factor factor = factors[i];
-			if((acceptTargets || !factor.isTarget()))
-				dropDownItems.add(new FactorDropDownItem(factor, allDiagramFactors[i]));
+			dropDownItems.add(new FactorDropDownItem(factor, allDiagramFactors[i]));
 		}
 		
 		return addItemsToComboBoxAndSort(comboBox, dropDownItems);
