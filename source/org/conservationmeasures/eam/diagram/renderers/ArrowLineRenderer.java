@@ -189,16 +189,8 @@ public class ArrowLineRenderer extends EdgeRenderer
 
 	private void drawStress(Graphics g)
 	{
-		if(!getLinkCell().getTo().isTarget())
-		{
-			if (getLinkCell().getFactorLink().isBidirectional())
-			{
-				if(!getLinkCell().getFrom().isTarget())
-					return;
-			}
-			else
-				return;
-		}
+		if (!getLinkCell().getFactorLink().isTargetLink())
+			return;
 		
 		if(stressText == null || stressText.length() < 1)
 			return;
