@@ -132,13 +132,20 @@ public class TestDiagramModel extends EAMTestCase
 		for(int nodeIndex = 0; nodeIndex < expectedNodesInChain.length; ++nodeIndex)
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[nodeIndex];
-			int middleNodeInLoop = 2;
-			String label = Integer.toString(expectedChainNodeIds[middleNodeInLoop]);
-			Factor cmNode = findFactor(label);
-			
-			FactorSet gotChainNodes = model.getAllUpstreamNodes(cmNode);
-			Set gotLabels = getLabelSet(gotChainNodes);
-			assertEquals("wrong chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels);
+			for (int i=0; i<expectedChainNodeIds.length; ++i) 
+			{
+				String label = Integer.toString(expectedChainNodeIds[i]);
+				Factor cmNode = findFactor(label);
+				
+				FactorSet gotUpChainNodes = model.getAllUpstreamNodes(cmNode);
+				Set gotLabels1 = getLabelSet(gotUpChainNodes);
+				assertEquals("wrong upstream chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels1);
+				
+				FactorSet gotDownChainNodes = model.getAllDownstreamNodes(cmNode);
+				Set gotLabels2 = getLabelSet(gotDownChainNodes);
+				assertEquals("wrong downstream chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels2);
+				
+			}
 		}
 	}
 	
