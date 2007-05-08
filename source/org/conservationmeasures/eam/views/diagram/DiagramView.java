@@ -562,19 +562,32 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 		else if(cmd.getObjectType() == ObjectType.FACTOR_LINK)
 		{
-			FactorLinkId factorLinkId = (FactorLinkId) cmd.getObjectId();
-			DiagramFactorLink link = getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
-			diagramFactorLinkId = link.getDiagramLinkageId();
+			diagramFactorLinkId = getDiagramFactorLinkIdFromFactorLinkId((FactorLinkId)cmd.getObjectId());
 		}
 		
-		if(diagramFactorLinkId != null)
-		{
-			LinkCell cell = getDiagramModel().updateCellFromDiagramFactorLink(diagramFactorLinkId);
-			cell.update(getDiagramComponent());
-			getDiagramModel().updateCell(cell);
-		}
+		if(diagramFactorLinkId == null)
+			return;
+		
+		LinkCell cell = getDiagramModel().updateCellFromDiagramFactorLink(diagramFactorLinkId);
+		if(cell == null)
+			return;
+
+		cell.update(getDiagramComponent());
+		getDiagramModel().updateCell(cell);
 	}
 	
+	private DiagramFactorLinkId getDiagramFactorLinkIdFromFactorLinkId(FactorLinkId factorLinkId) throws Exception
+	{
+		if(!getDiagramModel().doesDiagramFactorLinkExist(factorLinkId))
+			return null;
+		
+		DiagramFactorLink link = getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
+		if(link == null)
+			return null;
+		
+		return link.getDiagramLinkageId();
+	}
+
 	private void updateFactorBoundsIfRelevant(CommandSetObjectData cmd) throws Exception
 	{
 		if (cmd.getObjectType() != ObjectType.DIAGRAM_FACTOR)
