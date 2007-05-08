@@ -460,6 +460,12 @@ public class DiagramModel extends DefaultGraphModel
 		return linkage;
 	}
 
+	public boolean doesDiagramFactorLinkExist(FactorLinkId id)
+	{
+		DiagramFactorLink linkage = cellInventory.getFactorLinkById(id);
+		return (linkage != null);
+	}
+
 	public boolean doesDiagramFactorExist(DiagramFactorId id)
 	{
 		return (rawGetFactorById(id) != null);
