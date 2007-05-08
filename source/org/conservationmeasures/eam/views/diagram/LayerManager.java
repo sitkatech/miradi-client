@@ -39,7 +39,7 @@ public class LayerManager
 		
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
 		if (isResultsChain(diagramObject) && isDraft)
-			return true;
+			return false;
 		
 		if(mode.equals(ViewData.MODE_DEFAULT) && isDraft)
 			return false;
