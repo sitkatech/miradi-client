@@ -141,7 +141,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		Point deltaPoint = new Point();
 		FactorCell[] allTargets = diagramModel.getAllDiagramTargets();
 
-		if (allTargets.length == 1)
+		if (allTargets.length == 0)
 		{
 			deltaPoint.x = visibleRectangle.width - TARGET_RIGHT_SPACING - factorWidth;
 			deltaPoint.y = TARGET_TOP_LOCATION;
@@ -161,8 +161,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 				}
 			}
 			
-			deltaPoint.x = (int)allTargets[highestYIndex].getBounds().getX();
-			deltaPoint.y = highestY + (int)allTargets[highestYIndex].getBounds().getHeight() + TARGET_BETWEEN_SPACING;
+			FactorCell targetCell = allTargets[highestYIndex];
+			deltaPoint.x = (int)targetCell.getBounds().getX();
+			deltaPoint.y = highestY + (int)targetCell.getBounds().getHeight() + TARGET_BETWEEN_SPACING;
 		}
 		
 		return deltaPoint;
