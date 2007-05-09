@@ -100,14 +100,6 @@ public class InsertFactorLinkDoer extends ViewDoer
 			return true;
 		}
 		
-//		if(model.areLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
-//		{
-//			String[] body = {EAM.text("Those items are already linked"), };
-//			EAM.okDialog(EAM.text("Can't Create Link"), body);
-//			return true;
-//		}
-
-		
 		if(fromDiagramFactor.getDiagramFactorId().isInvalid() || toDiagramFactor.getDiagramFactorId().isInvalid())
 		{
 			EAM.logWarning("Unable to Paste Link : from " + fromDiagramFactor.getDiagramFactorId() + " to OriginalId:" + toDiagramFactor.getDiagramFactorId()+" node deleted?");	
