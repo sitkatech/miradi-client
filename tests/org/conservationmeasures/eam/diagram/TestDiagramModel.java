@@ -139,12 +139,11 @@ public class TestDiagramModel extends EAMTestCase
 				
 				FactorSet gotUpChainNodes = model.getAllUpstreamNodes(cmNode);
 				Set gotLabels1 = getLabelSet(gotUpChainNodes);
-				assertEquals("wrong upstream chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels1);
+				assertEquals("wrong upstream chain nodes for " + expectedChainNodeIds[i] + "?", toSet(expectedChainNodeIds), gotLabels1);
 				
 				FactorSet gotDownChainNodes = model.getAllDownstreamNodes(cmNode);
 				Set gotLabels2 = getLabelSet(gotDownChainNodes);
-				assertEquals("wrong downstream chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels2);
-				
+				assertEquals("wrong downstream chain nodes for " + expectedChainNodeIds[i] + "?", toSet(expectedChainNodeIds), gotLabels2);
 			}
 		}
 	}
