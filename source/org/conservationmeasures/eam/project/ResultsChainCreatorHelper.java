@@ -239,10 +239,38 @@ public class ResultsChainCreatorHelper
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
 		if (containsOnlyStrategies(selectedFactorCells))
 			return getLinksInRelatedFactors(selectedFactorCells);
-		//FIXME if a single factor is selected, the link appears to be selected but is not returned from the below method.
-		return diagramPanel.getOnlySelectedLinks();
+
+		return getDiagramLinksInSelection();
 	}
 	
+	private DiagramFactorLink[] getDiagramLinksInSelection()
+	{
+		DiagramFactorLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
+		Vector containedDiagramLinks = new Vector();
+		for (int i = 0; i < allDiagramLinks.length; ++i)
+		{
+			DiagramFactorId fromId = allDiagramLinks[i].getFromDiagramFactorId();
+			DiagramFactorId toId = allDiagramLinks[i].getToDiagramFactorId();
+			if (containsDiagramFactor(fromId) && containsDiagramFactor(toId))
+				containedDiagramLinks.add(allDiagramLinks[i]);
+		}
+		
+		return (DiagramFactorLink[]) containedDiagramLinks.toArray(new DiagramFactorLink[0]);
+	}
+	
+	private boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
+	{
+		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
+		for (int i = 0; i < selectedFactorCells.length; ++i)
+		{
+			DiagramFactorId selectedDiagramFactorId = selectedFactorCells[i].getDiagramFactorId();
+			if (selectedDiagramFactorId.equals(diagramFactorId))
+				return true;
+		}
+		
+		return false;
+	}
+
 	private DiagramFactorLink[] getLinksInRelatedFactors(FactorCell[] selectedFactorCells) throws Exception
 	{
 		Vector allDiagramLinks = new Vector();
