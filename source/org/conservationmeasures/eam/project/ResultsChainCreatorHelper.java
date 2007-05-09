@@ -82,7 +82,7 @@ public class ResultsChainCreatorHelper
 			DiagramFactor diagramFactor = diagramFactors[i];
 			if (isNonDraftStrategy(diagramFactor))
 			{
-				Strategy strategy = (Strategy) project.findObject(new ORef(ObjectType.STRATEGY, diagramFactor.getWrappedId()));
+				Strategy strategy = (Strategy) project.findObject(diagramFactor.getWrappedORef());
 				return getLabel(strategy);
 			}
 		}
