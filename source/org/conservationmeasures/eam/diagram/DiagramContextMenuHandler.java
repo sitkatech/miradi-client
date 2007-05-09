@@ -43,7 +43,6 @@ import org.conservationmeasures.eam.actions.LocationAction;
 import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -136,8 +135,7 @@ public class DiagramContextMenuHandler
 	
 	private MenuItemWithoutLocation getModeSwitchMenuItem()
 	{
-		String mode = ((DiagramView)mainWindow.getCurrentView()).getCurrentMode();
-		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+		if (((DiagramView)mainWindow.getCurrentView()).isStategyBrainstormMode())
 			return new MenuItemWithoutLocation(actions.get(ActionShowFullModelMode.class));
 		
 		return new MenuItemWithoutLocation(actions.get(ActionShowSelectedChainMode.class));

@@ -406,6 +406,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		updateToolBar();
 		getMainWindow().updateStatusBar();
 		getDiagramComponent().clearSelection();
+		updateLegendPanelCheckBoxes();
 		updateVisibilityOfFactors();
 	}
 	
@@ -720,6 +721,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return mode;
 	}
 
+	public boolean isStategyBrainstormMode()
+	{
+		return getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM);
+	}
 	
 	JSplitPane bigSplitter;
 	

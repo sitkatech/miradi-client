@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
@@ -80,7 +81,17 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		
 		addButtonLineWithCheckBox(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		createCustomLegendPanelSection(actions, jpanel);
-		addButtonLineWithCheckBox(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
+		
+		if (mainWindow.getDiagramView().isStategyBrainstormMode())
+		{
+			addButtonLineWithCheckBox(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
+			addButtonLineWithoutCheckBox(jpanel, "Draft " + Strategy.OBJECT_NAME, actions.get(ActionInsertDraftStrategy.class));
+		}
+		else
+		{
+			addButtonLineWithCheckBox(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
+		}
+		
 		addButtonLineWithCheckBox(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
 		addTargetLinkLine(jpanel, TARGET_LINKS_TEXT);
 		
@@ -88,7 +99,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		addIconLineWithCheckBox(jpanel, Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(jpanel, Indicator.OBJECT_NAME, new IndicatorIcon());
 		addIconLineWithoutCheckBox(jpanel, "Stress", new StressIcon());
-		
+
 		return jpanel;
 	}
 	
@@ -106,6 +117,14 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		jpanel.add(button);
 		jpanel.add(new UiLabel(EAM.text(text)));
 		jpanel.add(createCheckBox(text));
+	}
+	
+	protected void addButtonLineWithoutCheckBox(JPanel jpanel, String text, EAMAction action)
+	{
+		JButton button = new LocationButton(action);
+		jpanel.add(button);
+		jpanel.add(new UiLabel(EAM.text(text)));
+		jpanel.add(new UiLabel(""));
 	}
 	
 	protected void addIconLineWithCheckBox(JPanel jpanel, String text, Icon icon)

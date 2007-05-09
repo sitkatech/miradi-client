@@ -29,7 +29,6 @@ import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.main.EAMToolBar;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.ToolBarButton;
 
 public class DiagramToolBar extends EAMToolBar
@@ -82,14 +81,14 @@ public class DiagramToolBar extends EAMToolBar
 	
 	static ToolBarButton getInsertInterventionButton(Actions actions, DiagramView diagramView)
 	{
-		if(diagramView.getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+		if(diagramView.isStategyBrainstormMode())
 			return new ToolBarButton(actions, ActionInsertDraftStrategy.class);
 		return new ToolBarButton(actions, ActionInsertStrategy.class);
 	}
 
 	static ToolBarButton getModeSwitchButton(Actions actions, DiagramView diagramView)
 	{
-		if(diagramView.getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+		if(diagramView.isStategyBrainstormMode())
 			return new ToolBarButton(actions, ActionShowFullModelMode.class);
 		return new ToolBarButton(actions, ActionShowSelectedChainMode.class);
 	}
