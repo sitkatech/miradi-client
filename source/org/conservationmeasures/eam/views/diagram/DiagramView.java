@@ -511,20 +511,64 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 		try
 		{
-			CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-			String newValue = cmd.getDataValue();
-			setModeIfRelevant(cmd, newValue);
-			updateFactorBoundsIfRelevant(cmd);
-			updateFactorLinkIfRelevant(cmd);
-			updateScopeIfNeeded(cmd);
-			updateTabTitleIfNeeded(cmd);
-			refreshIfNeeded(cmd);
+			updateAllTabs(rawCommand);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
 	}
+
+	private void updateAllTabs(Command rawCommand) throws Exception
+	{
+		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+		String newValue = cmd.getDataValue();
+		setModeIfRelevant(cmd, newValue);
+		
+		DiagramModel[] models = getAllDiagramModels();
+		for (int i = 0; i < models.length; ++i)
+		{
+			updateFactorBoundsIfRelevant(models[i], cmd);
+			updateFactorLinkIfRelevant(models[i], cmd);
+			updateScopeIfNeeded(models[i], cmd);
+			
+		}
+		
+		updateTabTitleIfNeeded(cmd);
+		
+		DiagramComponent[] diagramComponents = getAllDiagramComponents();
+		for (int i = 0; i < diagramComponents.length; ++i)
+		{
+			refreshIfNeeded(diagramComponents[i], cmd);
+		}
+	}
+
+	private DiagramModel[] getAllDiagramModels()
+	{
+		int tabCount = getTabCount();
+		DiagramModel[] models = new DiagramModel[tabCount];
+		for (int i = 0; i < models.length; ++i)
+		{
+			DiagramPanel panel = (DiagramPanel) getTabContents(i);
+			models[i] = panel.getDiagramModel();
+		}
+
+		return models;
+	}
+	
+	private DiagramComponent[] getAllDiagramComponents()
+	{
+		int tabCount = getTabCount();
+		DiagramComponent[] diagramComponents = new DiagramComponent[tabCount];
+		for (int i = 0; i < diagramComponents.length; ++i)
+		{
+			DiagramPanel panel = (DiagramPanel) getTabContents(i);
+			diagramComponents[i] = panel.getdiagramComponent();
+		}
+
+		return diagramComponents;
+	}
+
 
 	private boolean isCreateResultsChain(Command rawCommand)
 	{
@@ -553,7 +597,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return true;
 	}
 	
-	private void updateFactorLinkIfRelevant(CommandSetObjectData cmd) throws Exception
+	private void updateFactorLinkIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception
 	{
 		DiagramFactorLinkId diagramFactorLinkId = null;
 		
@@ -569,12 +613,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(diagramFactorLinkId == null)
 			return;
 		
-		LinkCell cell = getDiagramModel().updateCellFromDiagramFactorLink(diagramFactorLinkId);
+		LinkCell cell = model.updateCellFromDiagramFactorLink(diagramFactorLinkId);
 		if(cell == null)
 			return;
 
 		cell.update(getDiagramComponent());
-		getDiagramModel().updateCell(cell);
+		model.updateCell(cell);
 	}
 	
 	private DiagramFactorLinkId getDiagramFactorLinkIdFromFactorLinkId(FactorLinkId factorLinkId) throws Exception
@@ -589,14 +633,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return link.getDiagramLinkageId();
 	}
 
-	private void updateFactorBoundsIfRelevant(CommandSetObjectData cmd) throws Exception
+	private void updateFactorBoundsIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception
 	{
 		if (cmd.getObjectType() != ObjectType.DIAGRAM_FACTOR)
 			return;
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) cmd.getObjectId();
-		DiagramModel diagramModel = getDiagramModel();
-		diagramModel.updateCellFromDiagramFactor(diagramFactorId);
+		model.updateCellFromDiagramFactor(diagramFactorId);
 	}
 
 	private void setModeIfRelevant(CommandSetObjectData cmd, String newMode)
@@ -620,10 +663,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 	
-	private void refreshIfNeeded(CommandSetObjectData cmd)
+	private void refreshIfNeeded(DiagramComponent diagramComponent, CommandSetObjectData cmd)
 	{
 		// may have added or removed a stress, modified an Annotation short label, etc.
-		getDiagramComponent().repaint(getDiagramComponent().getBounds());
+		diagramComponent.repaint(diagramComponent.getBounds());
 	}
 	
 	
@@ -644,10 +687,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return (cmd.getFieldTag().equals(DiagramObject.TAG_LABEL));
 	}
 	
-	void updateScopeIfNeeded(CommandSetObjectData cmd)
+	void updateScopeIfNeeded(DiagramModel model, CommandSetObjectData cmd)
 	{
 		if (isScopeTextChange(cmd) || isFactorBoundsChange(cmd))
-			getDiagramModel().updateProjectScopeBox();
+			model.updateProjectScopeBox();
 	}
 
 	private boolean isScopeTextChange(CommandSetObjectData cmd)
