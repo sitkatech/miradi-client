@@ -55,12 +55,9 @@ public class FactorCommandHelper
 		model = modelToUse;
 	}
 
-	private void addCreatedFactorToConceptualModel(int objectType, FactorId factorId, Point insertionLocation, Dimension size, String label) throws Exception
+	private void addCreatedFactorToConceptualModel(FactorId factorId, Point insertionLocation, Dimension size, String label) throws Exception
 	{
     	if (!model.getDiagramObject().isResultsChain())
-    		return;
-    	
-    	if (objectType != ObjectType.STRATEGY)
     		return;
     	
     	final int ONLY_CONCEPTUAL_MODEL_INDEX = 0;
@@ -82,7 +79,8 @@ public class FactorCommandHelper
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createObjectCommand.getCreatedId();
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
 		
-		addCreatedFactorToConceptualModel(objectType, diagramFactor.getWrappedId(), insertionLocation, size, label);
+		if (shouldTypeBeCopiedToConceptualModel(objectType))
+			addCreatedFactorToConceptualModel(diagramFactor.getWrappedId(), insertionLocation, size, label);
 		
 		return createObjectCommand;
 	}
@@ -119,7 +117,10 @@ public class FactorCommandHelper
 		return (FactorId) createFactorCommand.getCreatedId();
 	}
 
-	
+	private boolean shouldTypeBeCopiedToConceptualModel(int objectType)
+	{
+		return ObjectType.STRATEGY == objectType;
+	}
 
 	public void pasteFactorsAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
