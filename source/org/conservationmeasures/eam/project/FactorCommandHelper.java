@@ -67,7 +67,7 @@ public class FactorCommandHelper
 
     	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, factorId).getCreatedId();
     	DiagramFactor createdDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, createdDiagramFactorId));
-    	setLocationSizeLabel(insertionLocation, size, label, createdDiagramFactor);
+    	setLocationSizeLabel(createdDiagramFactor, insertionLocation, size, label);
 	}
 	
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType, Point insertionLocation, Dimension size, String label) throws Exception
@@ -75,7 +75,7 @@ public class FactorCommandHelper
 		CommandCreateObject createObjectCommand = createFactorAndDiagramFactor(objectType);
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createObjectCommand.getCreatedId();
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
-		setLocationSizeLabel(insertionLocation, size, label, diagramFactor);
+		setLocationSizeLabel(diagramFactor, insertionLocation, size, label);
 		
 		if (shouldTypeBeCopiedToConceptualModel(objectType))
 			addCreatedFactorToConceptualModel(diagramFactor.getWrappedId(), insertionLocation, size, label);
@@ -120,7 +120,7 @@ public class FactorCommandHelper
 		return ObjectType.STRATEGY == objectType;
 	}
 	
-	private void setLocationSizeLabel(Point insertionLocation, Dimension size, String label, DiagramFactor diagramFactor) throws CommandFailedException, Exception
+	private void setLocationSizeLabel(DiagramFactor diagramFactor, Point insertionLocation, Dimension size, String label) throws CommandFailedException, Exception
 	{
 		setDiagramFactorSize(diagramFactor.getDiagramFactorId(), size);
 		setDiagramFactorLocation(diagramFactor.getDiagramFactorId(), insertionLocation);
@@ -170,7 +170,7 @@ public class FactorCommandHelper
 			
 			FactorCell newFactorCell = getDiagramFactorById(newDiagramFactorId);
 			
-			setLocationSizeLabel(newLocation, originalSize, label, newFactorCell.getDiagramFactor());
+			setLocationSizeLabel(newFactorCell.getDiagramFactor(), newLocation, originalSize, label);
 		}
 	}
 
