@@ -40,6 +40,8 @@ abstract public class InsertFactorDoer extends LocationDoer
 		if (!isAvailable())
 			return;
 		
+		Project project = getProject();
+		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
 			FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
@@ -57,6 +59,10 @@ abstract public class InsertFactorDoer extends LocationDoer
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+		finally 
+		{
+			project.executeCommand(new CommandEndTransaction());
 		}
 	}
 	
@@ -79,8 +85,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, DiagramFactor.getDefaultSize().width);
 		Point snappedPoint  = project.getSnapped(deltaPoint);
 		
-		project.executeCommand(new CommandBeginTransaction());
-		
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getDiagramView().getDiagramModel());
 		DiagramFactorId id = (DiagramFactorId) factorCommandHelper.createFactorAndDiagramFactor(factorType).getCreatedId();
 		
@@ -96,7 +100,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, id);
 		FactorId factorId = diagramFactor.getWrappedId();
 		doExtraSetup(factorId);
-		project.executeCommand(new CommandEndTransaction());
 
 		forceVisibleInLayerManager();
 		getDiagramView().updateVisibilityOfFactors();
