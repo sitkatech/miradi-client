@@ -69,15 +69,14 @@ public class FactorCommandHelper
 		
 
     	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, factorId).getCreatedId();
-    	DiagramFactor createddiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, createdDiagramFactorId));
-		
-    	//FIXME RC urgent the CM diagram is not updated to reflect the changes.  
+    	DiagramFactor createdDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, createdDiagramFactorId));
+		  
     	setDiagramFactorSize(createdDiagramFactorId, size);
 		setDiagramFactorLocation(createdDiagramFactorId, insertionLocation);
-		setDiagramFactorLabel(createddiagramFactor.getWrappedId(), label);
+		setDiagramFactorLabel(createdDiagramFactor.getWrappedId(), label);
 	}
 	
-	public CommandCreateObject createDiagramFactor(int objectType, Point insertionLocation, Dimension size, String label) throws Exception
+	public CommandCreateObject createFactorAndDiagramFactor(int objectType, Point insertionLocation, Dimension size, String label) throws Exception
 	{
 		CommandCreateObject createObjectCommand = createFactorAndDiagramFactor(objectType);
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createObjectCommand.getCreatedId();
@@ -158,7 +157,7 @@ public class FactorCommandHelper
 			newLocation = getProject().getSnapped(newLocation);
 			
 			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE));
-			CommandCreateObject addCommand = createDiagramFactor(type, newLocation, originalSize, label);
+			CommandCreateObject addCommand = createFactorAndDiagramFactor(type, newLocation, originalSize, label);
 			DiagramFactorId newDiagramFactorId = (DiagramFactorId) addCommand.getCreatedId();
 			dataHelper.setNewId(originalDiagramFactorId, newDiagramFactorId);
 			EAM.logDebug("Paste Node: " + newDiagramFactorId);
