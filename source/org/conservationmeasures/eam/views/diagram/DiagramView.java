@@ -525,37 +525,18 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		String newValue = cmd.getDataValue();
 		setModeIfRelevant(cmd, newValue);
 		
-		DiagramModel[] models = getAllDiagramModels();
-		for (int i = 0; i < models.length; ++i)
-		{
-			updateFactorBoundsIfRelevant(models[i], cmd);
-			updateFactorLinkIfRelevant(models[i], cmd);
-			updateScopeIfNeeded(models[i], cmd);
-			
-		}
-		
-		updateTabTitleIfNeeded(cmd);
-		
 		DiagramComponent[] diagramComponents = getAllDiagramComponents();
 		for (int i = 0; i < diagramComponents.length; ++i)
 		{
+			DiagramModel model = diagramComponents[i].getDiagramModel();
+			updateFactorBoundsIfRelevant(model, cmd);
+			updateFactorLinkIfRelevant(model, cmd);
+			updateScopeIfNeeded(model, cmd);
+			updateTabTitleIfNeeded(cmd);
 			refreshIfNeeded(diagramComponents[i], cmd);
 		}
 	}
 
-	private DiagramModel[] getAllDiagramModels()
-	{
-		int tabCount = getTabCount();
-		DiagramModel[] models = new DiagramModel[tabCount];
-		for (int i = 0; i < models.length; ++i)
-		{
-			DiagramPanel panel = (DiagramPanel) getTabContents(i);
-			models[i] = panel.getDiagramModel();
-		}
-
-		return models;
-	}
-	
 	private DiagramComponent[] getAllDiagramComponents()
 	{
 		int tabCount = getTabCount();
