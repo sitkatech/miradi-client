@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -245,32 +246,30 @@ public class ResultsChainCreatorHelper
 	
 	private DiagramFactorLink[] getDiagramLinksInSelection()
 	{
+		HashSet diagramFactorIdSet = extractDiagramFactorIds();
 		DiagramFactorLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
 		Vector containedDiagramLinks = new Vector();
 		for (int i = 0; i < allDiagramLinks.length; ++i)
 		{
 			DiagramFactorId fromId = allDiagramLinks[i].getFromDiagramFactorId();
 			DiagramFactorId toId = allDiagramLinks[i].getToDiagramFactorId();
-			if (containsDiagramFactor(fromId) && containsDiagramFactor(toId))
+			if (diagramFactorIdSet.contains(fromId) && diagramFactorIdSet.contains(toId))
 				containedDiagramLinks.add(allDiagramLinks[i]);
 		}
 		
 		return (DiagramFactorLink[]) containedDiagramLinks.toArray(new DiagramFactorLink[0]);
 	}
 	
-	private boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
+	private HashSet extractDiagramFactorIds()
 	{
-		//TODO build set of diagramFactorIds from selectedFactorCells and ask set if it contains the id, instead of
-		// looping through all the cells for each link
+		HashSet selectedDiagramFactorSet = new HashSet();
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
-			DiagramFactorId selectedDiagramFactorId = selectedFactorCells[i].getDiagramFactorId();
-			if (selectedDiagramFactorId.equals(diagramFactorId))
-				return true;
+			selectedDiagramFactorSet.add(selectedFactorCells[i].getDiagramFactorId());
 		}
 		
-		return false;
+		return selectedDiagramFactorSet;
 	}
 
 	private DiagramFactorLink[] getLinksInRelatedFactors(FactorCell[] selectedFactorCells) throws Exception
