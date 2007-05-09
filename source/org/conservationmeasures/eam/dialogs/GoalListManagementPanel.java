@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs;
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllGoals;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -35,6 +36,11 @@ public class GoalListManagementPanel extends ObjectListManagementPanel
 	public Icon getIcon()
 	{
 		return new GoalIcon();
+	}
+	
+	public Class getJumpActionClass()
+	{
+		return ActionJumpStrategicPlanViewAllGoals.class;
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Goals"); 

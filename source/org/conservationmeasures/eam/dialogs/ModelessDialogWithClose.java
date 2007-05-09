@@ -42,7 +42,7 @@ public class ModelessDialogWithClose extends EAMDialog
 		return wrappedPanel;
 	}
 	
-	private Box createButtonBar()
+	public Box createButtonBar()
 	{
 		UiButton closeButton = new UiButton(EAM.text("Button|Close"));
 		closeButton.setSelected(true);

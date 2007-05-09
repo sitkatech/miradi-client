@@ -70,6 +70,7 @@ import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
+import org.conservationmeasures.eam.dialogs.FactorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -711,7 +712,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getDiagramComponent());
 		String title = EAM.text("Title|Factor Properties");
-		nodePropertiesDlg = new ModelessDialogWithClose(getMainWindow(), nodePropertiesPanel, title);
+		nodePropertiesDlg = new FactorPropertiesDialog(getMainWindow(), nodePropertiesPanel, title);
 		
 		nodePropertiesPanel.setCurrentDiagramFactor(getDiagramComponent(), node);
 		nodePropertiesPanel.selectTab(startingTabIdentifier);

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
@@ -42,6 +43,12 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel
 			return null;
 		return listComponent.getSelectedObject();
 	}
+	
+	public Class getJumpActionClass()
+	{
+		return ActionJumpDiagramOverviewStep.class;
+	}
+	
 
 	ObjectCollectionPanel listComponent;
 	AbstractObjectDataInputPanel propertiesPanel;
