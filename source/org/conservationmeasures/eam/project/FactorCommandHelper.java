@@ -67,7 +67,7 @@ public class FactorCommandHelper
 
     	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, factorId).getCreatedId();
     	DiagramFactor createdDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, createdDiagramFactorId));
-    	setLocationSizeLabel(insertionLocation, size, label, createdDiagramFactorId, createdDiagramFactor);
+    	setLocationSizeLabel(insertionLocation, size, label, createdDiagramFactor);
 	}
 	
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType, Point insertionLocation, Dimension size, String label) throws Exception
@@ -75,7 +75,7 @@ public class FactorCommandHelper
 		CommandCreateObject createObjectCommand = createFactorAndDiagramFactor(objectType);
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createObjectCommand.getCreatedId();
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
-		setLocationSizeLabel(insertionLocation, size, label, diagramFactorId, diagramFactor);
+		setLocationSizeLabel(insertionLocation, size, label, diagramFactor);
 		
 		if (shouldTypeBeCopiedToConceptualModel(objectType))
 			addCreatedFactorToConceptualModel(diagramFactor.getWrappedId(), insertionLocation, size, label);
@@ -120,10 +120,10 @@ public class FactorCommandHelper
 		return ObjectType.STRATEGY == objectType;
 	}
 	
-	private void setLocationSizeLabel(Point insertionLocation, Dimension size, String label, DiagramFactorId diagramFactorId, DiagramFactor diagramFactor) throws CommandFailedException, Exception
+	private void setLocationSizeLabel(Point insertionLocation, Dimension size, String label, DiagramFactor diagramFactor) throws CommandFailedException, Exception
 	{
-		setDiagramFactorSize(diagramFactorId, size);
-		setDiagramFactorLocation(diagramFactorId, insertionLocation);
+		setDiagramFactorSize(diagramFactor.getDiagramFactorId(), size);
+		setDiagramFactorLocation(diagramFactor.getDiagramFactorId(), insertionLocation);
 		setDiagramFactorLabel(diagramFactor.getWrappedId(), label);
 	}
 	
@@ -170,7 +170,7 @@ public class FactorCommandHelper
 			
 			FactorCell newFactorCell = getDiagramFactorById(newDiagramFactorId);
 			
-			setLocationSizeLabel(newLocation, originalSize, label, newDiagramFactorId, newFactorCell.getDiagramFactor());
+			setLocationSizeLabel(newLocation, originalSize, label, newFactorCell.getDiagramFactor());
 		}
 	}
 
