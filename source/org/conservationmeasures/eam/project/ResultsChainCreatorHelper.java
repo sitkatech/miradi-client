@@ -260,6 +260,8 @@ public class ResultsChainCreatorHelper
 	
 	private boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
 	{
+		//TODO build set of diagramFactorIds from selectedFactorCells and ask set if it contains the id, instead of
+		// looping through all the cells for each link
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
@@ -405,3 +407,4 @@ public class ResultsChainCreatorHelper
 	private DiagramPanel diagramPanel;
 	private Project project;
 }
+ 
