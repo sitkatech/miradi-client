@@ -35,6 +35,23 @@ public class ProjectServer
 		lock.close();
 	}
 
+	private void writeJsonFile(File file, JSONObject json) throws IOException
+	{
+		JSONFile.write(file, json);
+	}
+	
+	private EnhancedJsonObject readJsonFile(File file) throws IOException, ParseException
+	{
+		return JSONFile.read(file);
+	}
+	
+	private boolean deleteJsonFile(File objectFile)
+	{
+		return objectFile.delete();
+	}
+	
+
+	
 	public static boolean doesProjectExist(File directoryToCheck)
 	{
 		return isExistingProject(directoryToCheck);
@@ -111,7 +128,7 @@ public class ProjectServer
 	{
 		JSONObject version = new JSONObject();
 		version.put(TAG_VERSION, versionToWrite);
-		JSONFile.write(getVersionFile(), version);
+		writeJsonFile(getVersionFile(), version);
 	}
 
 	protected void openNonDatabaseStore(File directory) throws IOException, AlreadyLockedException
@@ -149,21 +166,21 @@ public class ProjectServer
 	
 	public void writeProjectInfo(ProjectInfo info) throws IOException
 	{
-		JSONFile.write(getProjectInfoFile(), info.toJson());
+		writeJsonFile(getProjectInfoFile(), info.toJson());
 	}
-	
+
 	public void readProjectInfo(ProjectInfo info) throws IOException, ParseException
 	{
 		File infoFile = getProjectInfoFile();
 		info.clear();
 		if(infoFile.exists())
-			info.fillFrom(JSONFile.read(infoFile));
+			info.fillFrom(readJsonFile(infoFile));
 	}
-	
+
 	public void writeThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
 	{
 		getThreatRatingsDirectory().mkdirs();
-		JSONFile.write(getThreatBundleFile(bundle.getThreatId(), bundle.getTargetId()), bundle.toJson());
+		writeJsonFile(getThreatBundleFile(bundle.getThreatId(), bundle.getTargetId()), bundle.toJson());
 	}
 	
 	public ThreatRatingBundle readThreatRatingBundle(BaseId threatId, BaseId targetId) throws Exception
@@ -171,14 +188,14 @@ public class ProjectServer
 		File threatBundleFile = getThreatBundleFile(threatId, targetId);
 		if(!threatBundleFile.exists())
 			return null;
-		return new ThreatRatingBundle(JSONFile.read(threatBundleFile));
+		return new ThreatRatingBundle(readJsonFile(threatBundleFile));
 	}
 	
 	
 	public void writeThreatRatingFramework(ThreatRatingFramework framework) throws IOException
 	{
 		getJsonDirectory().mkdirs();
-		JSONFile.write(getThreatRatingFrameworkFile(), framework.toJson());
+		writeJsonFile(getThreatRatingFrameworkFile(), framework.toJson());
 	}
 	
 	public EnhancedJsonObject readRawThreatRatingFramework() throws IOException, ParseException
@@ -186,33 +203,34 @@ public class ProjectServer
 		if(!getThreatRatingFrameworkFile().exists())
 			return null;
 		
-		return JSONFile.read(getThreatRatingFrameworkFile());
+		return readJsonFile(getThreatRatingFrameworkFile());
 	}
 	
 	public BaseObject readObject(ObjectManager objectManager, int type, BaseId id) throws Exception
 	{
-		return BaseObject.createFromJson(objectManager, type, JSONFile.read(getObjectFile(type, id)));
+		return BaseObject.createFromJson(objectManager, type, readJsonFile(getObjectFile(type, id)));
 	}
 	
 	public void writeObject(BaseObject object) throws IOException, ParseException
 	{
 		getObjectDirectory(object.getType()).mkdirs();
-		JSONFile.write(getObjectFile(object.getType(), object.getId()), object.toJson());	
+		writeJsonFile(getObjectFile(object.getType(), object.getId()), object.toJson());	
 		addToObjectManifest(object.getType(), object.getId());
 	}
 	
 	public void deleteObject(int type, BaseId id) throws IOException, ParseException
 	{
 		removeFromObjectManifest(type, id);
-		getObjectFile(type, id).delete();
+		File objectFile = getObjectFile(type, id);
+		deleteJsonFile(objectFile);
 	}
-	
+
 	public ObjectManifest readObjectManifest(int type) throws IOException, ParseException
 	{
 		File manifestFile = getObjectManifestFile(type);
 		if(!manifestFile.exists())
 			return new ObjectManifest();
-		JSONObject rawManifest = JSONFile.read(manifestFile);
+		JSONObject rawManifest = readJsonFile(manifestFile);
 		return new ObjectManifest(rawManifest);
 	}
 	
