@@ -9,8 +9,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class InsertFactorDoer extends LocationDoer
 {
@@ -86,17 +85,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 		Point snappedPoint  = project.getSnapped(deltaPoint);
 		
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getDiagramView().getDiagramModel());
-		DiagramFactorId id = (DiagramFactorId) factorCommandHelper.createFactorAndDiagramFactor(factorType).getCreatedId();
-		
-		DiagramFactor addedFactor = (DiagramFactor)getProject().findObject(DiagramFactor.getObjectType(), id);
-
-		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(addedFactor.getWrappedORef(), getInitialText());
-		project.executeCommand(setNameCommand);
-
-		DiagramFactorId diagramFactorId = addedFactor.getDiagramFactorId();
-		String newLocation = EnhancedJsonObject.convertFromPoint(snappedPoint);
-		CommandSetObjectData moveCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_LOCATION, newLocation);
-		project.executeCommand(moveCommand);
+		CommandCreateObject createCommand = factorCommandHelper.createFactorAndDiagramFactor(factorType, snappedPoint, DiagramFactor.getDefaultSize(), getInitialText());
+		DiagramFactorId id = (DiagramFactorId) createCommand.getCreatedId();
+				
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, id);
 		FactorId factorId = diagramFactor.getWrappedId();
 		doExtraSetup(factorId);

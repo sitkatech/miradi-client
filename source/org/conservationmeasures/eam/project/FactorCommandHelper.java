@@ -79,6 +79,11 @@ public class FactorCommandHelper
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createObjectCommand.getCreatedId();
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
 		
+		//TODO refactor into method
+		setDiagramFactorSize(diagramFactorId, size);
+		setDiagramFactorLocation(diagramFactorId, insertionLocation);
+		setDiagramFactorLabel(diagramFactor.getWrappedId(), label);
+		
 		if (shouldTypeBeCopiedToConceptualModel(objectType))
 			addCreatedFactorToConceptualModel(diagramFactor.getWrappedId(), insertionLocation, size, label);
 		
