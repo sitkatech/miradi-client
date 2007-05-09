@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -43,4 +44,26 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 		
 		return allDiagramFactorLinkIds; 
 	}
+	
+	
+	public DiagramFactorLinkId getLinkedId(DiagramFactorId nodeId1, DiagramFactorId nodeId2)
+	{
+		for(int i = 0; i < getIds().length; ++i)
+		{
+			DiagramFactorLink thisLinkage = getLinkage(i);
+			DiagramFactorId fromId = thisLinkage.getFromDiagramFactorId();
+			DiagramFactorId toId = thisLinkage.getToDiagramFactorId();
+			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
+				return (DiagramFactorLinkId) thisLinkage.getId();
+			if(fromId.equals(nodeId2) && toId.equals(nodeId1))
+				return (DiagramFactorLinkId) thisLinkage.getId();
+		}
+		return null;
+	}
+	
+	private DiagramFactorLink getLinkage(int index)
+	{
+		return find(getIds()[index]);
+	}
+	
 }

@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -99,12 +100,12 @@ public class InsertFactorLinkDoer extends ViewDoer
 			return true;
 		}
 		
-		if(model.areLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
-		{
-			String[] body = {EAM.text("Those items are already linked"), };
-			EAM.okDialog(EAM.text("Can't Create Link"), body);
-			return true;
-		}
+//		if(model.areLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
+//		{
+//			String[] body = {EAM.text("Those items are already linked"), };
+//			EAM.okDialog(EAM.text("Can't Create Link"), body);
+//			return true;
+//		}
 
 		
 		if(fromDiagramFactor.getDiagramFactorId().isInvalid() || toDiagramFactor.getDiagramFactorId().isInvalid())
@@ -150,21 +151,44 @@ public class InsertFactorLinkDoer extends ViewDoer
 		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
 		FactorId toFactorId = diagramFactorTo.getWrappedId();
 		FactorLinkId modelLinkageId = project.getFactorLinkPool().getLinkedId(fromFactorId, toFactorId);
+		
 		if(modelLinkageId != null)
-		{
-			FactorLink link = (FactorLink)project.findObject(FactorLink.getObjectType(), modelLinkageId);
-			if(!link.getFromFactorId().equals(fromFactorId))
-				throw new RuntimeException(EAM.text("Link in opposite direction already exists"));
-		}
-		if(modelLinkageId == null)
-		{
-			CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorId, toFactorId);
-			CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
-			project.executeCommand(createModelLinkage);
-			modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
-		}
+			makeFactorLinkBidirectional(project, fromFactorId, modelLinkageId);
+		else
+			modelLinkageId = createFactorLink(project, fromFactorId, toFactorId);
+
 		DiagramFactorId fromDiagramFactorId = diagramFactorFrom.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = diagramFactorTo.getDiagramFactorId();
+		DiagramFactorLinkId diagramFactorLinkId = project.getDiagramFactorLinkPool().getLinkedId(fromDiagramFactorId, toDiagramFactorId);
+	
+		if (diagramFactorLinkId != null)
+			return (DiagramFactorLink)project.findObject(DiagramFactorLink.getObjectType(), diagramFactorLinkId);
+		
+		return createDiagramLink(project, diagramObject, modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+	}
+
+	private static void makeFactorLinkBidirectional(Project project, FactorId fromFactorId, FactorLinkId modelLinkageId) throws CommandFailedException
+	{
+		FactorLink link = (FactorLink)project.findObject(FactorLink.getObjectType(), modelLinkageId);
+		if(!link.isBidirectional() && !link.getFromFactorId().equals(fromFactorId))
+		{
+			CommandSetObjectData command = new CommandSetObjectData(link.getRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+			project.executeCommand(command);
+		}
+	}
+
+	private static FactorLinkId createFactorLink(Project project, FactorId fromFactorId, FactorId toFactorId) throws CommandFailedException
+	{
+		FactorLinkId modelLinkageId;
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorId, toFactorId);
+		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
+		project.executeCommand(createModelLinkage);
+		modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		return modelLinkageId;
+	}
+
+	private static DiagramFactorLink createDiagramLink(Project project, DiagramObject diagramObject, FactorLinkId modelLinkageId, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws CommandFailedException, ParseException
+	{
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(project, fromDiagramFactorId, toDiagramFactorId, modelLinkageId);
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		project.executeCommand(createDiagramLinkCommand);
