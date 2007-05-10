@@ -24,7 +24,7 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 	
 	public void addAdditoinalButtons(Box buttonBar)
 	{
-		UiButton  help = new UiButton(new JumpAction("Help",null));
+		UiButton  help = new UiButton(new ActionDirections("Help",null));
 		Component[] components = new Component[] {help};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 	}
@@ -34,10 +34,10 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 		return ((ObjectManagementPanel)factorPanel.tabs.getSelectedComponent()).getJumpActionClass();
 	}
 
-	class JumpAction extends EAMAction
+	class ActionDirections extends EAMAction
 	{
 
-		public JumpAction(String label, Icon icon)
+		public ActionDirections(String label, Icon icon)
 		{
 			super(label, icon);
 		}
@@ -57,7 +57,7 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 			}
 			catch(CommandFailedException e1)
 			{
-				e1.printStackTrace();
+				EAM.logException(e1);
 			}
 		}
 	}
