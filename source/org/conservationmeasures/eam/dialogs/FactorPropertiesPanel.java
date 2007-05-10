@@ -169,7 +169,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	{
 		tabs = new JTabbedPane();
 		tabs.setFocusable(false);
-		detailsTab = new FactorSummaryTabPanel(getProject(), diagramFactor);
+		detailsTab = new FactorSummaryPanel(getProject(), diagramFactor);
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
 
@@ -296,7 +296,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	public static final int TAB_VIABILITY = 4;
 
 	JTabbedPane tabs;
-	FactorSummaryTabPanel detailsTab;
+	FactorSummaryPanel detailsTab;
 	ObjectiveListManagementPanel objectivesTab;
 	IndicatorListManagementPanel indicatorsTab;
 	GoalListManagementPanel goalsTab;

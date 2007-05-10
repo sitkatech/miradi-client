@@ -7,6 +7,12 @@ package org.conservationmeasures.eam.dialogs;
 
 import javax.swing.Icon;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
@@ -154,6 +160,24 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Summary");
+	}
+	
+	public Class getJumpActionClass()
+	{
+		Factor factor = getFactor();
+		if (factor.isContributingFactor())
+			return ActionJumpDiagramWizardIdentifyIndirectThreatStep.class;
+		else if (factor.isDirectThreat())
+			return ActionJumpDiagramWizardIdentifyDirectThreatStep.class;
+		else if (factor.isStrategy())
+			return ActionJumpDevelopDraftStrategiesStep.class;
+		else if (factor.isTarget())
+			return ActionJumpDiagramWizardDefineTargetsStep.class;
+		else if (factor.isIntermediateResult())
+			return ActionJumpDiagramWizardResultsChainStep.class;
+		else if (factor.isThreatReductionResult())
+			return ActionJumpDiagramWizardResultsChainStep.class;
+		return ActionJumpDiagramOverviewStep.class;
 	}
 	
 	private Icon detailIcon;
