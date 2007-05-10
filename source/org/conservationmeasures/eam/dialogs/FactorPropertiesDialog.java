@@ -32,7 +32,7 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 
 	private Class getJumpAction()
 	{
-		return ((ObjectManagementPanel)factorPanel.tabs.getSelectedComponent()).getJumpActionClass();
+		return ((ModelessDialogPanel)factorPanel.tabs.getSelectedComponent()).getJumpActionClass();
 	}
 
 	class ActionDirections extends EAMAction

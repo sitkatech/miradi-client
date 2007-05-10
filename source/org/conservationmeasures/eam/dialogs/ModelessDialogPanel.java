@@ -34,6 +34,11 @@ abstract public class ModelessDialogPanel extends DisposablePanel
 		EAM.logDebug("selectObject not handled by " + getClass().getName());
 	}
 	
+	public Class getJumpActionClass()
+	{
+		return null;
+	}
+
 	abstract public BaseObject getObject();
 	abstract public String getPanelDescription();
 

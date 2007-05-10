@@ -14,13 +14,13 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
-public class FactorSummaryTabPanel extends ObjectManagementPanel
+public class FactorSummaryTabPanel extends ModelessDialogPanel
 {
 
 	public FactorSummaryTabPanel(Project projectToUse,SplitterPositionSaverAndGetter splitPositionSaverToUse,DiagramFactor diagramFactor) throws Exception
 	{
-		super(splitPositionSaverToUse, new FakeCollectionPanel(projectToUse), new FactorSummaryPanel(projectToUse, diagramFactor));
-		realPanel = (FactorSummaryPanel) propertiesPanel;
+		realPanel = new FactorSummaryPanel(projectToUse, diagramFactor);
+		add(realPanel);
 	}
 
 	public void dispose()
