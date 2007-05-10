@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs;
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -35,6 +36,11 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 	public Icon getIcon()
 	{
 		return new ActivityIcon();
+	}
+	
+	public Class getJumpActionClass()
+	{
+		return ActionJumpActivitiesAndActionPlan.class;
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Activities"); 
