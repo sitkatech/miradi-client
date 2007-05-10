@@ -40,7 +40,7 @@ public class AboutDoer extends MainWindowDoer
 			text += loadHtmlFile("HelpAboutExtra.html");
 		}
 		
-		HtmlViewPanel dialog = new HtmlViewPanel(getMainWindow(), title, text, 800);
+		HtmlViewPanel dialog = new HtmlViewPanel(getMainWindow(), title, text, 900);
 		if(initialSplash)
 			dialog.setCloseButtonText(EAM.text("Continue"));
 		dialog.showOkDialog();
