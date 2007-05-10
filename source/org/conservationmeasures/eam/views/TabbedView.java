@@ -12,7 +12,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
 import javax.swing.JPopupMenu;
-import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -49,6 +48,17 @@ abstract public class TabbedView extends UmbrellaView
 	public JPopupMenu getTabPopupMenu()
 	{
 		return null;
+	}
+	
+	public void jump(Class stepMarker) throws Exception
+	{
+		super.jump(stepMarker);
+		setSplitterLocationToMiddle();
+	}
+	
+	public void setSplitterLocationToMiddle()
+	{
+		bigSplitter.setSplitterLocationToMiddle(getProject().getCurrentView());
 	}
 	
 	public void becomeActive() throws Exception
@@ -271,7 +281,7 @@ abstract public class TabbedView extends UmbrellaView
 		}
 	}
 	
-	JSplitPane bigSplitter;
+	ViewSplitPane bigSplitter;
 
 	JTabbedPane tabs;
 	int currentTab;
