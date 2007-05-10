@@ -12,12 +12,11 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class FactorSummaryTabPanel extends ModelessDialogPanel
 {
 
-	public FactorSummaryTabPanel(Project projectToUse,SplitterPositionSaverAndGetter splitPositionSaverToUse,DiagramFactor diagramFactor) throws Exception
+	public FactorSummaryTabPanel(Project projectToUse, DiagramFactor diagramFactor) throws Exception
 	{
 		realPanel = new FactorSummaryPanel(projectToUse, diagramFactor);
 		add(realPanel);
