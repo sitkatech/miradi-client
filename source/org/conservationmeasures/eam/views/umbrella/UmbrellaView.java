@@ -459,6 +459,10 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		activePropertiesDlg = null;
 	}
 
+	public void setSplitterLocationToMiddle()
+	{
+	}
+
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
 	private HashMap actionToDoerMap;

@@ -50,17 +50,6 @@ abstract public class TabbedView extends UmbrellaView
 		return null;
 	}
 	
-	public void jump(Class stepMarker) throws Exception
-	{
-		super.jump(stepMarker);
-		setSplitterLocationToMiddle();
-	}
-	
-	public void setSplitterLocationToMiddle()
-	{
-		bigSplitter.setSplitterLocationToMiddle(getProject().getCurrentView());
-	}
-	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
@@ -202,6 +191,12 @@ abstract public class TabbedView extends UmbrellaView
 		addTab(panel.getPanelDescription(), panel);
 	}
 	
+	public void setSplitterLocationToMiddle()
+	{
+		if(bigSplitter != null)
+			bigSplitter.setSplitterLocationToMiddle(cardName());
+	}
+
 	void handleRightClick(MouseEvent event)
 	{
 		int tab = tabs.indexAtLocation(event.getX(), event.getY());
@@ -281,7 +276,7 @@ abstract public class TabbedView extends UmbrellaView
 		}
 	}
 	
-	ViewSplitPane bigSplitter;
+	public ViewSplitPane bigSplitter;
 
 	JTabbedPane tabs;
 	int currentTab;

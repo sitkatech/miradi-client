@@ -161,7 +161,8 @@ public class WizardManager
 		if (newStepClass==null) 
 			return currentStepName;
 		
-		String viewNameNew = newStepClass.getWizard().getView().cardName();
+		UmbrellaView newView = newStepClass.getWizard().getView();
+		String viewNameNew = newView.cardName();
 
 		if (!viewNameNew.equals(viewNameCur))
 		{
@@ -171,6 +172,7 @@ public class WizardManager
 
 		newStepClass.refresh();
 		newStepClass.getWizard().setContents(newStepClass);
+		newView.setSplitterLocationToMiddle();
 		return newStep;
 	}
 
