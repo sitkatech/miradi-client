@@ -42,7 +42,7 @@ public class ModelessDialogWithClose extends EAMDialog
 		return wrappedPanel;
 	}
 	
-	public Box createButtonBar()
+	private Box createButtonBar()
 	{
 		UiButton closeButton = new UiButton(EAM.text("Button|Close"));
 		closeButton.setSelected(true);
@@ -51,9 +51,15 @@ public class ModelessDialogWithClose extends EAMDialog
 		getRootPane().setDefaultButton(closeButton);
 		Box buttonBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {Box.createHorizontalGlue(), closeButton};
+		addAdditoinalButtons(buttonBar);
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 		return buttonBar;
 	}
+	
+	public void addAdditoinalButtons(Box buttonBar)
+	{
+	}
+	
 	
 	private final class DialogCloseListener implements ActionListener
 	{

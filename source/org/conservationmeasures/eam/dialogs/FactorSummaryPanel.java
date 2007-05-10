@@ -33,9 +33,9 @@ import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 import org.martus.swing.UiLabel;
 
-public class FactorDetailsPanel extends ObjectDataInputPanel
+public class FactorSummaryPanel extends ObjectDataInputPanel
 {
-	public FactorDetailsPanel(Project projectToUse, DiagramFactor factorToEdit) throws Exception
+	public FactorSummaryPanel(Project projectToUse, DiagramFactor factorToEdit) throws Exception
 	{
 		super(projectToUse, factorToEdit.getWrappedORef());
 		currentDiagramFactor = factorToEdit;

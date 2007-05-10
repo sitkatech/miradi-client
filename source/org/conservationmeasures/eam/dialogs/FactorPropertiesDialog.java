@@ -22,13 +22,11 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 		factorPanel = panel;
 	}
 	
-	public Box createButtonBar()
+	public void addAdditoinalButtons(Box buttonBar)
 	{
-		Box buttonBar =  super.createButtonBar();
 		UiButton  help = new UiButton(new JumpAction("Help",null));
 		Component[] components = new Component[] {help};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
-		return buttonBar;
 	}
 
 	private Class getJumpAction()
