@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.JSONFile;
+import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class AppPreferences
@@ -174,14 +175,14 @@ public class AppPreferences
 	
 	public void loadFrom(EnhancedJsonObject json)
 	{
-		strategyColor = json.optColor(TAG_COLOR_STRATEGY, DEFAULT_STRATEGY_COLOR);
-		activitiesColor = json.optColor(TAG_COLOR_ACTIVITIES, DEFAULT_ACTIVITIES_COLOR);
-		contributingFactorColor = json.optColor(TAG_COLOR_CONTRIBUTING_FACTOR, DEFAULT_CONTRIBUTING_FACTOR_COLOR);
-		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DEFAULT_DIRECT_THREAT_COLOR);
-		targetColor = json.optColor(TAG_COLOR_TARGET, DEFAULT_TARGET_COLOR);
-		scopeColor = json.optColor(TAG_COLOR_SCOPE, DEFAULT_SCOPE_COLOR);
-		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DEFAULT_INTERMEDIATE_RESULT_COLOR);
-		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
+		strategyColor = json.optColor(TAG_COLOR_STRATEGY, DiagramConstants.DEFAULT_STRATEGY_COLOR);
+		activitiesColor = json.optColor(TAG_COLOR_ACTIVITIES, DiagramConstants.DEFAULT_ACTIVITIES_COLOR);
+		contributingFactorColor = json.optColor(TAG_COLOR_CONTRIBUTING_FACTOR, DiagramConstants.DEFAULT_CONTRIBUTING_FACTOR_COLOR);
+		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DiagramConstants.DEFAULT_DIRECT_THREAT_COLOR);
+		targetColor = json.optColor(TAG_COLOR_TARGET, DiagramConstants.DEFAULT_TARGET_COLOR);
+		scopeColor = json.optColor(TAG_COLOR_SCOPE, DiagramConstants.DEFAULT_SCOPE_COLOR);
+		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DiagramConstants.DEFAULT_INTERMEDIATE_RESULT_COLOR);
+		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DiagramConstants.DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
 		
 		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, true);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
@@ -211,15 +212,6 @@ public class AppPreferences
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
 	public static final String TAG_TAGGED_INTS = "TaggedInts";
 	public static final String TAG_DIAGRAM_ZOOM = "DiagramZoom";
-	
-	private static final Color DEFAULT_TARGET_COLOR = new Color(153, 255, 153);
-	private static final Color DEFAULT_DIRECT_THREAT_COLOR = new Color(255, 150, 150);
-	private static final Color DEFAULT_CONTRIBUTING_FACTOR_COLOR = new Color(255, 190, 0);
-	private static final Color DEFAULT_STRATEGY_COLOR = new Color(255, 255, 0);
-	private static final Color DEFAULT_ACTIVITIES_COLOR = new Color(255, 255, 0);
-	private static final Color DEFAULT_SCOPE_COLOR = new Color(0, 255, 0);
-	private static final Color DEFAULT_INTERMEDIATE_RESULT_COLOR = new Color(100, 222, 255);
-	private static final Color DEFAULT_THREAT_REDUCTION_RESULT_COLOR = new Color(222, 100, 255);
 	
 	public Color strategyColor;
 	public Color activitiesColor;

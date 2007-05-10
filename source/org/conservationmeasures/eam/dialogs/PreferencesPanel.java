@@ -18,6 +18,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
+import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -54,43 +55,43 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		DialogGridPanel panel = new DialogGridPanel();
 
 		panel.add(new UiLabel(EAM.text("Strategy (Yellow)")));
-		interventionDropdown = createColorsDropdown(interventionColorChoices);
+		interventionDropdown = createColorsDropdown(DiagramConstants.strategyColorChoices);
 		interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY));
 		interventionDropdown.addActionListener(this);
 		panel.add(interventionDropdown);
 
 		panel.add(new UiLabel(EAM.text("Direct Threat (Pink)")));
-		directThreatDropdown = createColorsDropdown(directThreatColorChoices);
+		directThreatDropdown = createColorsDropdown(DiagramConstants.directThreatColorChoices);
 		directThreatDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT));
 		directThreatDropdown.addActionListener(this);
 		panel.add(directThreatDropdown);
 
 		panel.add(new UiLabel(EAM.text("Contributing Factor (Orange)")));
-		indirectFactorDropdown = createColorsDropdown(indirectFactorColorChoices);
+		indirectFactorDropdown = createColorsDropdown(DiagramConstants.contributingFactorColorChoices);
 		indirectFactorDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR));
 		indirectFactorDropdown.addActionListener(this);
 		panel.add(indirectFactorDropdown);
 
 		panel.add(new UiLabel(EAM.text("Target (Light Green)")));
-		targetDropdown = createColorsDropdown(targetColorChoices);
+		targetDropdown = createColorsDropdown(DiagramConstants.targetColorChoices);
 		targetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
 		targetDropdown.addActionListener(this);
 		panel.add(targetDropdown);
 
 		panel.add(new UiLabel(EAM.text("Project Scope (Dark Green)")));
-		scopeDropdown = createColorsDropdown(scopeColorChoices);
+		scopeDropdown = createColorsDropdown(DiagramConstants.scopeColorChoices);
 		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
 		scopeDropdown.addActionListener(this);
 		panel.add(scopeDropdown);
 		
-		panel.add(new UiLabel(EAM.text("Intermediate Result (Blue)")));
-		intermediateResultDropDown = createColorsDropdown(intermediateResultChoices);
+		panel.add(new UiLabel(EAM.text("Intermediate Result (Light Blue)")));
+		intermediateResultDropDown = createColorsDropdown(DiagramConstants.intermediateResultChoices);
 		intermediateResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT));
 		intermediateResultDropDown.addActionListener(this);
 		panel.add(intermediateResultDropDown);
 		
-		panel.add(new UiLabel(EAM.text("Threat Reduction Result (Purpule)")));
-		threatReductionResultDropDown = createColorsDropdown(threatReductionResultChoices);
+		panel.add(new UiLabel(EAM.text("Threat Reduction Result (Light Purple)")));
+		threatReductionResultDropDown = createColorsDropdown(DiagramConstants.threatReductionResultChoices);
 		threatReductionResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT));
 		threatReductionResultDropDown.addActionListener(this);
 		panel.add(threatReductionResultDropDown);
@@ -223,12 +224,4 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	UiComboBox threatReductionResultDropDown;
 	UiCheckBox gridVisibleCheckBox; 
 	UiCheckBox cellRatingsVisibleCheckBox;
-
-	static final Color[] interventionColorChoices = {new Color(255, 255, 0), new Color(240, 240, 0), new Color(255, 255, 128)};
-	static final Color[] directThreatColorChoices = {new Color(255, 150, 150), new Color(255, 128, 128), new Color(220, 150, 150), new Color(255, 200, 200)};
-	static final Color[] indirectFactorColorChoices = {new Color(255, 190, 0), new Color(255, 128, 0), new Color(200, 128, 0), new Color(255, 220, 0), new Color(255, 190, 64), new Color(255, 240, 200)};
-	static final Color[] targetColorChoices = {new Color(153, 255, 153), new Color(200, 255, 200), new Color(80, 255, 80), new Color(64, 220, 64)};
-	static final Color[] scopeColorChoices = {new Color(0, 255, 0), new Color(128, 255, 128), new Color(0, 220, 0), new Color(0, 180, 0), new Color(0, 128, 0)};
-	static final Color[] intermediateResultChoices = {new Color(150, 150, 255), new Color(130, 130, 235), new Color(110, 110, 215), new Color(90, 90, 195)};
-	static final Color[] threatReductionResultChoices = {new Color(222, 100, 255), new Color(202, 80, 235), new Color(182, 60, 215), new Color(162, 40, 195)};
 }
