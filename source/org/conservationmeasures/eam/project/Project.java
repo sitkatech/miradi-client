@@ -18,6 +18,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.DataUpgrader;
+import org.conservationmeasures.eam.database.FileBasedProjectServer;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
@@ -72,7 +73,7 @@ public class Project
 
 	public Project() throws IOException
 	{
-		this(new ProjectServer());
+		this(new FileBasedProjectServer());
 	}
 	
 	public Project(ProjectServer databaseToUse) throws IOException
@@ -419,13 +420,13 @@ public class Project
 
 	private void openProject(File projectDirectory) throws Exception
 	{
-		if(ProjectServer.readDataVersion(projectDirectory) > ProjectServer.DATA_VERSION)
+		if(getDatabase().readDataVersion(projectDirectory) > ProjectServer.DATA_VERSION)
 			throw new FutureVersionException();
 
-		if(ProjectServer.readDataVersion(projectDirectory) < ProjectServer.DATA_VERSION)
+		if(getDatabase().readDataVersion(projectDirectory) < ProjectServer.DATA_VERSION)
 			DataUpgrader.attemptUpgrade(projectDirectory);
 		
-		if(ProjectServer.readDataVersion(projectDirectory) < ProjectServer.DATA_VERSION)
+		if(getDatabase().readDataVersion(projectDirectory) < ProjectServer.DATA_VERSION)
 			throw new OldVersionException();
 
 		ProjectServer db = getDatabase();

@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
 import org.martus.util.UnicodeWriter;
 
-public class DataUpgrader extends ProjectServer
+public class DataUpgrader extends FileBasedProjectServer
 {
 	public class MigrationTooOldException extends Exception
 	{
@@ -60,7 +60,7 @@ public class DataUpgrader extends ProjectServer
 			
 			DataUpgrader upgrader = new DataUpgrader(projectDirectory);
 			upgrader.upgrade();
-			versionAfterUpgrading = readDataVersion(projectDirectory);
+			versionAfterUpgrading = upgrader.readDataVersion(projectDirectory);
 		}
 		catch (DataUpgrader.MigrationTooOldException e)
 		{

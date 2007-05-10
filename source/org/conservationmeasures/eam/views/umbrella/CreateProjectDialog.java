@@ -216,7 +216,7 @@ public class CreateProjectDialog extends EAMDialog implements ActionListener,
 				return;
 			}
 
-			if (!ProjectServer.doesProjectExist(getSelectedFile())) 
+			if (!ProjectServer.isExistingProject(getSelectedFile())) 
 			{
 				String body = EAM.text("File exists: Cannot overwrite a non project directory");
 				EAM.errorDialog(body);

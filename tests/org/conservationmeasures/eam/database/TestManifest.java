@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.database;
 
-import java.io.File;
-
 import org.json.JSONObject;
 import org.martus.util.TestCaseEnhanced;
 
@@ -23,10 +21,8 @@ public class TestManifest extends TestCaseEnhanced
 		Manifest m = new Manifest(sampleType);
 		assertEquals(sampleType, m.getObjectType());
 		m.put(12);
-		File temp = createTempFile();
-		m.write(temp);
 		
-		JSONObject json = JSONFile.read(temp);
+		JSONObject json = m.toJson();
 		Manifest got = new Manifest(json);
 		assertEquals("wrong type?", m.getObjectType(), got.getObjectType());
 		assertEquals("not just one entry?", 1, got.getAllKeys().length);

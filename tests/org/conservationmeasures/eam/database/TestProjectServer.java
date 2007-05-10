@@ -191,8 +191,8 @@ public class TestProjectServer extends EAMTestCase
 			writer.writeln("nothing");
 			writer.close();
 			
-			assertFalse("project exists?", ProjectServer.doesProjectExist(tempDirectory));
-			ProjectServer anotherStorage = new ProjectServer();
+			assertFalse("project exists?", ProjectServer.isExistingProject(tempDirectory));
+			ProjectServer anotherStorage = new FileBasedProjectServer();
 			try
 			{
 				anotherStorage.open(tempDirectory);

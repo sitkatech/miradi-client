@@ -21,101 +21,49 @@ import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 
-public class ProjectServer
+abstract public class ProjectServer
 {
 	public ProjectServer() throws IOException
 	{
-		lock = new DirectoryLock();
 	}
 
-	public void close() throws IOException
-	{
-		topDirectory = null;
-		name = null;
-		lock.close();
-	}
+	abstract public void create(File directory) throws Exception;
+	abstract public void open(File directory) throws IOException, AlreadyLockedException;
+	abstract public void close() throws IOException;
+	abstract public boolean isOpen();
+	abstract public boolean doesFileExist(File infoFile);
 
-	private void writeJsonFile(File file, JSONObject json) throws IOException
-	{
-		JSONFile.write(file, json);
-	}
-	
-	private EnhancedJsonObject readJsonFile(File file) throws IOException, ParseException
-	{
-		return JSONFile.read(file);
-	}
-	
-	private boolean deleteJsonFile(File objectFile)
-	{
-		return objectFile.delete();
-	}
+	abstract void writeJsonFile(File file, JSONObject json) throws IOException;
+	abstract EnhancedJsonObject readJsonFile(File file) throws IOException, ParseException;
+	abstract boolean deleteJsonFile(File objectFile);
 	
 
-	
-	public static boolean doesProjectExist(File directoryToCheck)
-	{
-		return isExistingProject(directoryToCheck);
-	}
-	
-	public boolean isOpen()
-	{
-		return lock.isLocked();
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-	
-	public File getTopDirectory()
-	{
-		if(topDirectory == null)
-			throw new RuntimeException("ERROR: ProjectServer must be opened before use");
-		return topDirectory;
-	}
-	
-	public void create(File directory) throws Exception
-	{
-		if(!isEmpty(directory))
-			throw new RuntimeException("Can't create project in non-empty directory");
-		
-		openNonDatabaseStore(directory);
-		writeVersion();
-	}
-
-	public void open(File directory) throws IOException, AlreadyLockedException
-	{
-		if(!doesProjectExist(directory))
-			throw new IOException("Can't open non-project, non-empty directory");
-
-		openNonDatabaseStore(directory);
-	}
-	
-	private boolean isEmpty(File directory)
-	{
-		String[] files = directory.list();
-		if(files == null)
-			return true;
-		return (files.length == 0);
-	}
-	
-	public static boolean isCurrentVersion(File projectDirectory) throws IOException, ParseException
-	{
-		int dataVersion = readDataVersion(projectDirectory);
-		if(dataVersion != DATA_VERSION)
-			return false;
-		
-		return true;
-	}
-
-	public static int readDataVersion(File projectDirectory) throws IOException, ParseException
+	public int readDataVersion(File projectDirectory) throws IOException, ParseException
 	{
 		File versionFile = getVersionFile(projectDirectory);
-		if(!versionFile.exists())
+		if(!doesFileExist(versionFile))
 			throw new RuntimeException("No version file");
 		JSONObject version = JSONFile.read(versionFile);
 		int dataVersion = version.getInt(TAG_VERSION);
 		return dataVersion;
+	}
+	
+	public static boolean isExistingProject(File projectDirectory)
+	{
+		if(projectDirectory == null)
+			return false;
+		
+		if(!projectDirectory.isDirectory())
+			return false;
+		
+		return (getVersionFile(projectDirectory).exists());
+	}
+	
+
+	
+	public String getName()
+	{
+		return name;
 	}
 	
 	public void writeVersion() throws IOException
@@ -131,36 +79,20 @@ public class ProjectServer
 		writeJsonFile(getVersionFile(), version);
 	}
 
-	protected void openNonDatabaseStore(File directory) throws IOException, AlreadyLockedException
-	{
-		directory.mkdirs();
-		lock.lock(directory);
-		setTopDirectory(directory);
-		createJsonDirectories();
-		name = topDirectory.getName();
-	}
+	abstract void openNonDatabaseStore(File directory) throws IOException, AlreadyLockedException;
 
+	public File getTopDirectory()
+	{
+		if(topDirectory == null)
+			throw new RuntimeException("ERROR: ProjectServer must be opened before use");
+		return topDirectory;
+	}
+	
 	void setTopDirectory(File directory)
 	{
 		topDirectory = directory;
 	}
 
-	private void createJsonDirectories()
-	{
-		getJsonDirectory().mkdirs();
-	}
-
-	public static boolean isExistingProject(File projectDirectory)
-	{
-		if(projectDirectory == null)
-			return false;
-		
-		if(!projectDirectory.isDirectory())
-			return false;
-		
-		return (getVersionFile(projectDirectory).exists());
-	}
-	
 	
 	
 	
@@ -173,20 +105,19 @@ public class ProjectServer
 	{
 		File infoFile = getProjectInfoFile();
 		info.clear();
-		if(infoFile.exists())
+		if(doesFileExist(infoFile))
 			info.fillFrom(readJsonFile(infoFile));
 	}
 
 	public void writeThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
 	{
-		getThreatRatingsDirectory().mkdirs();
 		writeJsonFile(getThreatBundleFile(bundle.getThreatId(), bundle.getTargetId()), bundle.toJson());
 	}
 	
 	public ThreatRatingBundle readThreatRatingBundle(BaseId threatId, BaseId targetId) throws Exception
 	{
 		File threatBundleFile = getThreatBundleFile(threatId, targetId);
-		if(!threatBundleFile.exists())
+		if(!doesFileExist(threatBundleFile))
 			return null;
 		return new ThreatRatingBundle(readJsonFile(threatBundleFile));
 	}
@@ -194,13 +125,12 @@ public class ProjectServer
 	
 	public void writeThreatRatingFramework(ThreatRatingFramework framework) throws IOException
 	{
-		getJsonDirectory().mkdirs();
 		writeJsonFile(getThreatRatingFrameworkFile(), framework.toJson());
 	}
 	
 	public EnhancedJsonObject readRawThreatRatingFramework() throws IOException, ParseException
 	{
-		if(!getThreatRatingFrameworkFile().exists())
+		if(!doesFileExist(getThreatRatingFrameworkFile()))
 			return null;
 		
 		return readJsonFile(getThreatRatingFrameworkFile());
@@ -213,7 +143,6 @@ public class ProjectServer
 	
 	public void writeObject(BaseObject object) throws IOException, ParseException
 	{
-		getObjectDirectory(object.getType()).mkdirs();
 		writeJsonFile(getObjectFile(object.getType(), object.getId()), object.toJson());	
 		addToObjectManifest(object.getType(), object.getId());
 	}
@@ -228,7 +157,7 @@ public class ProjectServer
 	public ObjectManifest readObjectManifest(int type) throws IOException, ParseException
 	{
 		File manifestFile = getObjectManifestFile(type);
-		if(!manifestFile.exists())
+		if(!doesFileExist(manifestFile))
 			return new ObjectManifest();
 		JSONObject rawManifest = readJsonFile(manifestFile);
 		return new ObjectManifest(rawManifest);
@@ -250,11 +179,11 @@ public class ProjectServer
 	
 	protected void writeObjectManifest(int type, ObjectManifest manifest) throws IOException
 	{
-		manifest.write(getObjectManifestFile(type));
+		writeJsonFile(getObjectManifestFile(type), manifest.toJson());
 	}
 	
 
-	private File getJsonDirectory()
+	protected File getJsonDirectory()
 	{
 		return getJsonDirectory(getTopDirectory());
 	}

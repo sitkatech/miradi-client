@@ -5,11 +5,10 @@
 */ 
 package org.conservationmeasures.eam.database;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
 
 public class Manifest
@@ -95,10 +94,11 @@ public class Manifest
 		return data.length() - 1;
 	}
 	
-	public void write(File dest) throws IOException
+	public EnhancedJsonObject toJson()
 	{
-		JSONFile.write(dest, data);
+		return new EnhancedJsonObject(data);
 	}
+	
 	
 	JSONObject data;
 }
