@@ -7,6 +7,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -54,6 +55,10 @@ public class FactorSummaryTabPanel extends ModelessDialogPanel
 			return ActionJumpDevelopDraftStrategiesStep.class;
 		else if (factor.isTarget())
 			return ActionJumpDiagramWizardDefineTargetsStep.class;
+		else if (factor.isIntermediateResult())
+			return ActionJumpDiagramWizardResultsChainStep.class;
+		else if (factor.isThreatReductionResult())
+			return ActionJumpDiagramWizardResultsChainStep.class;
 		return ActionJumpDiagramOverviewStep.class;
 	}
 	
