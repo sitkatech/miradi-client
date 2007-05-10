@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Component;
 
-import javax.swing.Icon;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 
@@ -29,7 +28,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.IntermediateResult;
@@ -39,7 +37,6 @@ import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
-import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
 
@@ -172,7 +169,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	{
 		tabs = new JTabbedPane();
 		tabs.setFocusable(false);
-		detailsTab = new FactorDetailsTab(getProject(), diagramFactor);
+		detailsTab = new FactorDetailManagementPanel(getProject(), mainWindow, diagramFactor);
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
 
@@ -211,39 +208,6 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		return tabs;
 	}
 	
-	class FactorDetailsTab extends ModelessDialogPanel
-	{
-		public FactorDetailsTab(Project projectToUse, DiagramFactor diagramFactor) throws Exception
-		{
-			realPanel = new FactorDetailsPanel(projectToUse, diagramFactor);
-			add(new FastScrollPane(realPanel));
-		}
-
-		public void dispose()
-		{
-			realPanel.dispose();
-			super.dispose();
-		}
-
-		public BaseObject getObject()
-		{
-			return realPanel.getObject();
-		}
-
-		public String getPanelDescription()
-		{
-			return realPanel.getPanelDescription();
-		}
-		
-		public Icon getIcon()
-		{
-			return realPanel.getIcon();
-		}
-		
-		FactorDetailsPanel realPanel;
-	}
-
-
 
 	class FactorInputPanel extends ObjectDataInputPanel
 	{
@@ -332,7 +296,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	public static final int TAB_VIABILITY = 4;
 
 	JTabbedPane tabs;
-	FactorDetailsTab detailsTab;
+	FactorDetailManagementPanel detailsTab;
 	ObjectiveListManagementPanel objectivesTab;
 	IndicatorListManagementPanel indicatorsTab;
 	GoalListManagementPanel goalsTab;

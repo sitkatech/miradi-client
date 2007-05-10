@@ -8,7 +8,6 @@ import javax.swing.Icon;
 import javax.swing.JFrame;
 
 import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel.FactorDetailsTab;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.UiButton;
@@ -34,9 +33,6 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 
 	private Class getJumpAction()
 	{
-		//TODO: Have the factorPanel a use ObjectManagementPanel and DataInputPanel
-		if (factorPanel.tabs.getSelectedComponent() instanceof FactorDetailsTab)
-			return null;
 		return ((ObjectManagementPanel)factorPanel.tabs.getSelectedComponent()).getJumpActionClass();
 	}
 

@@ -51,6 +51,6 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel
 	
 
 	ObjectCollectionPanel listComponent;
-	AbstractObjectDataInputPanel propertiesPanel;
+	public AbstractObjectDataInputPanel propertiesPanel;
 
 }
