@@ -8,6 +8,7 @@ import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.UiButton;
@@ -25,7 +26,7 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 	
 	public void addAdditoinalButtons(Box buttonBar)
 	{
-		UiButton  help = new UiButton(new ActionDirections("Help",null));
+		UiButton  help = new UiButton(new ActionDirections("Directions", new StressIcon()));
 		Component[] components = new Component[] {help};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 	}
