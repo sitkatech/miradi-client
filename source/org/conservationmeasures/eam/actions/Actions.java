@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability2Step;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
@@ -60,6 +61,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllG
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
+import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotalsStep;
@@ -198,6 +200,7 @@ public class Actions
 		registerAction(new ActionJumpDiagramWizardVisionStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardDefineTargetsStep(mainWindow));
 		registerAction(new ActionJumpTargetViability2Step(mainWindow));
+		registerAction(new ActionJumpTargetViability3Step(mainWindow));
 		registerAction(new ActionJumpDiagramWizardIdentifyDirectThreatStep(mainWindow));
 		registerAction(new ActionJumpThreatMatrixOverviewStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardIdentifyIndirectThreatStep(mainWindow));
@@ -212,6 +215,7 @@ public class Actions
 		registerAction(new ActionJumpRankDraftStrategiesStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardResultsChainStep(mainWindow));
 		registerAction(new ActionJumpActivitiesAndActionPlan(mainWindow));
+		registerAction(new ActionJumpDevelopDraftStrategiesStep(mainWindow));
 		registerAction(new ActionJumpAnalyzeResourcesFeasibilityAndRisk(mainWindow));
 		registerAction(new ActionJumpMonitoringWizardFocusStep(mainWindow));
 		registerAction(new ActionJumpDefineAudiences(mainWindow));

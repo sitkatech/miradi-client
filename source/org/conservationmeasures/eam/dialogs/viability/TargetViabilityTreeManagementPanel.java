@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs.viability;
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
 import org.conservationmeasures.eam.dialogs.ObjectListManagementPanel;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -49,7 +49,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	
 	public Class getJumpActionClass()
 	{
-		return ActionJumpDiagramWizardDefineTargetsStep.class;
+		return ActionJumpTargetViability3Step.class;
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Viability"); 

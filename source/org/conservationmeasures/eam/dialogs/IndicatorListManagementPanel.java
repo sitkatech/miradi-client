@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs;
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringPlanOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -40,7 +40,7 @@ public class IndicatorListManagementPanel extends ObjectListManagementPanel
 	
 	public Class getJumpActionClass()
 	{
-		return ActionJumpMonitoringPlanOverviewStep.class;
+		return ActionJumpMonitoringWizardDefineIndicatorsStep.class;
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Indicators"); 

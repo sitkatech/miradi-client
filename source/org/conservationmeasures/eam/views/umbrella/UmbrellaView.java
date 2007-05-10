@@ -61,6 +61,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
@@ -96,6 +97,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllO
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability2Step;
+import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardCheckTotalsStep;
@@ -320,6 +322,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpDiagramWizardVisionStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardDefineTargetsStep.class);
 		addJumpDoerToMap(ActionJumpTargetViability2Step.class);
+		addJumpDoerToMap(ActionJumpTargetViability3Step.class);
 		
 		addJumpDoerToMap(ActionJumpDiagramWizardIdentifyDirectThreatStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class);
@@ -377,6 +380,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpStrategicPlanViewAllObjectives.class);
 		addJumpDoerToMap(ActionJumpStrategicPlanHowToConstructStep.class);
 		
+		addJumpDoerToMap(ActionJumpDevelopDraftStrategiesStep.class);
+		
+		
 		addJumpDoerToMap(ActionJumpWorkPlanAssignResourcesStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardReviewModelAndAdjustStep.class);
 		addJumpDoerToMap(ActionJumpThreatRatingWizardCheckTotalsStep.class);
@@ -389,6 +395,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpBudgetFutureDemo.class);
 		addJumpDoerToMap(ActionJumpDiagramOverviewStep.class);
 		addJumpDoerToMap(ActionJumpWorkPlanOverviewStep.class);
+		
+		
 	}
 	
 	private void addJumpDoerToMap(Class actionClass)
