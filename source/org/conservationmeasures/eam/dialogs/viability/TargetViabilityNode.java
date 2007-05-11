@@ -61,7 +61,10 @@ public class TargetViabilityNode extends TreeTableNode
 
 	public String toString()
 	{
-		return target.getLabel();
+		String label = target.getLabel();
+		if (!target.isViabilityModeTNC())
+			label = label + " (Basic Method)";
+		return label;
 	}
 	
 	public BaseId getId()
