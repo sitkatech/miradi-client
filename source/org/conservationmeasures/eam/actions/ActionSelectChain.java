@@ -17,7 +17,7 @@ public class ActionSelectChain extends ViewAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Select Chain");
+		return EAM.text("Action|Select Factor Chain");
 	}
 
 	public String getToolTipText()
