@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
 
 public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 {
@@ -35,11 +36,18 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(Indicator.TAG_LABEL));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_FACTOR));
 		addField(createRatingChoiceField(new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
-		addField(createRatingChoiceField(new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));			// Rating
+		addField(createRatingChoiceField(new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
+		
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_METHODS));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_TARGETS));
+		
+		addField(createDateChooserField(Indicator.TAG_MEASUREMENT_DATE));
+		addField(createStringField(Indicator.TAG_MEASUREMENT_SUMMARY));
+		addField(createMultilineField(Indicator.TAG_MEASUREMENT_DETAIL));
+		addField(createMultilineField(Indicator.TAG_MEASUREMENT_TREND));
+		addField(createChoiceField(Indicator.getObjectType(), new StatusConfidenceQuestion(Indicator.TAG_MEASUREMENT_STATUS_CONFIDENCE)));
 				
 		updateFieldsFromProject();
 	}
