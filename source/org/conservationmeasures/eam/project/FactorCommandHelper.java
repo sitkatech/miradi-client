@@ -267,7 +267,7 @@ public class FactorCommandHelper
 		{
 			FactorLinkDataMap linkageData = links[i];
 			PointList originalBendPoints = linkageData.getBendPoints();
-			PointList movedPoints = movePoints(dataHelper, startPoint, originalBendPoints);
+			PointList movedPoints = movePoints(list, dataHelper, startPoint, originalBendPoints);
 			DiagramFactorId oldFromDiagramId = linkageData.getFromId();
 			DiagramFactorId newFromId = dataHelper.getNewId(oldFromDiagramId);
 			DiagramFactorId newToId = dataHelper.getNewId(linkageData.getToId());
@@ -282,9 +282,9 @@ public class FactorCommandHelper
 		}
 	}
 	
-	private PointList movePoints(FactorDataHelper dataHelper, Point startPoint, PointList originalBendPoints)
+	private PointList movePoints(TransferableEamList list, FactorDataHelper dataHelper, Point startPoint, PointList originalBendPoints)
 	{
-		int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
+		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying(list);
 		PointList movedPoints = new PointList();
 		for (int i = 0; i < originalBendPoints.size(); ++i)
 		{
@@ -296,6 +296,16 @@ public class FactorCommandHelper
 		}
 		
 		return movedPoints;
+	}
+
+	private int getOffsetToAvoidOverlaying(TransferableEamList list)
+	{
+		int DONT_PASTE_LINKS_WITH_OFFSET = 0;
+		FactorDataMap[] factorDataMaps = list.getArrayOfFactorDataMaps();
+		if (factorDataMaps.length > 0)
+			return getProject().getDiagramClipboard().getPasteOffset();
+		
+		return DONT_PASTE_LINKS_WITH_OFFSET;
 	}
 
 	public static CommandSetObjectData createSetLabelCommand(ORef ref, String newLabel)
