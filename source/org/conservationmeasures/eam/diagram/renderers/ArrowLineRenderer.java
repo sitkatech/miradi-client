@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -209,7 +210,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 			apex = apexAt;
 
 			double segmentLength = apexAt.distance(segmentStart);
-			double curveLength = Math.min(20, segmentLength/2);
+			double curveLength = Math.min(Project.DEFAULT_GRID_SIZE, segmentLength/2);
 			double curveRatio = curveLength / segmentLength;
 			
 			double startX = computeStart(apex.getX(), segmentStart.getX(), curveRatio);
