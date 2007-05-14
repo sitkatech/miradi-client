@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
@@ -35,13 +34,15 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 		{
 			BaseId baseId = tasks.get(i);
 			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
+			if (! task.isActivity())
+				continue;
+			
 			ORef parentRef = task.getOwnerRef();
-			if (parentRef.getObjectType()==Strategy.getObjectType())
-			{
-				Factor factor = (Factor)project.findObject(parentRef);
-				if (!factor.isStatusDraft())
-					filteredTasks.add(baseId);
-			}
+			Factor factor = (Factor)project.findObject(parentRef);
+			if (factor.isStatusDraft())
+				continue;
+			
+			filteredTasks.add(baseId);
 		}
 		return filteredTasks;
 	}

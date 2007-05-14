@@ -114,20 +114,29 @@ public class Task extends BaseObject
 		return list;
 	}
 	
-	//NOTE: this is not testing if this isa Task object...
+	//NOTE: this is not testing if this is a Task object...
 	//but if it is a user level task as opposed to a method or an activity
 	public boolean isTask()
 	{
+		if (getOwnerRef() == null)
+			return false;
+		
 		return getOwnerRef().getObjectType() == ObjectType.TASK;
 	}
 
 	public boolean isActivity()
 	{
+		if (getOwnerRef() == null)
+			return false;
+		
 		return Factor.isFactor(getOwnerRef().getObjectType());
 	}
 
 	public boolean isMethod()
 	{
+		if (getOwnerRef() == null)
+			return false;
+		
 		return getOwnerRef().getObjectType() == ObjectType.INDICATOR;
 	}
 
