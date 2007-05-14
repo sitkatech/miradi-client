@@ -22,12 +22,12 @@ public class ActionShowSelectedChainMode extends ViewAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Show Only Selected Chain");
+		return EAM.text("Action|Show Selected Factor Chain");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Show only the selected chain");
+		return EAM.text("TT|Show only the selected factor chain");
 	}
 
 }
