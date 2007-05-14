@@ -300,7 +300,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			field.updateFromObject();
 		}
 		
-		setFocusOnFirstField();
 	}
 	
 	public void setFieldObjectIds()
