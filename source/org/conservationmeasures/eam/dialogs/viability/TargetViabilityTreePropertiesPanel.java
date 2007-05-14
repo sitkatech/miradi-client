@@ -80,7 +80,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		JPanel mainGridPanel = createGridLayoutPanel(0,2);
 		
 		// KEA Section 
-		Box box1 = Box.createHorizontalBox();
+		JPanel box1 = createGridLayoutPanel(1,2);
 		box1.add(createColumnJPanel(keaLabel));
 		box1.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box1.add(createColumnJPanel(keaType));
@@ -88,7 +88,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainGridPanel.add(box1);
 		
 		
-		Box keaDescPanel = Box.createHorizontalBox();
+		JPanel keaDescPanel = createGridLayoutPanel(1,2);
 		keaDescPanel.add(createColumnJPanel(keaDesc));
 		mainGridPanel.add(new UiLabel(""));
 		mainGridPanel.add(keaDescPanel);
@@ -96,7 +96,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		addBlankLine(mainGridPanel);
 		
 		// Indicator Section 
-		Box box2 = Box.createHorizontalBox();
+		JPanel box2 = createGridLayoutPanel(1,2);
 		box2.add(createColumnJPanel(indicatorLabel));
 		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(createColumnJPanel(indicatorShortLabel));

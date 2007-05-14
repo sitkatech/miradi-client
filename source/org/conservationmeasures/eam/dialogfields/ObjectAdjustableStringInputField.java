@@ -14,19 +14,17 @@ import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiTextField;
 
-public class ObjectAdjustableStringInputField extends ObjectTextInputField
+public class ObjectAdjustableStringInputField extends ObjectStringInputField
 {
 	public ObjectAdjustableStringInputField(Project projectToUse, int objectType, BaseId objectId, String tag, int columnsToUse)
 	{
-		super(projectToUse, objectType, objectId, tag,  new UiTextField());
-		setupFixedSizeTextField(0,columnsToUse);
+		super(projectToUse, objectType, objectId, tag, columnsToUse);
 		DocumentEventHandler handler = new DocumentEventHandler();
 		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
-		getComponent().setMaximumSize(getComponent().getPreferredSize());
 		columns = columnsToUse;
 	}
+
 
 	class DocumentEventHandler implements  UndoableEditListener
 	{

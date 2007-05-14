@@ -5,16 +5,60 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiTextField;
+import java.awt.Toolkit;
 
+import javax.swing.event.UndoableEditEvent;
+import javax.swing.event.UndoableEditListener;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.JTextComponent;
+
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
+import org.martus.swing.UiTextArea;
 
 public class ObjectStringInputField extends ObjectTextInputField
 {
-	public ObjectStringInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
+	public ObjectStringInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
-		super(projectToUse, objectType, objectId, tag, new UiTextField());
-		setupFixedSizeTextField(1,50);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new UiTextArea(0, columnsToUse));
+		DocumentEventHandler handler = new DocumentEventHandler();
+		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
+		((UiTextArea)getComponent()).setWrapStyleWord(true);
+		((UiTextArea)getComponent()).setLineWrap(true);
+	}
+
+
+	class DocumentEventHandler implements  UndoableEditListener
+	{
+		public void undoableEditHappened(UndoableEditEvent e)
+		{
+			Document document = (Document)e.getSource();
+			try
+			{
+				if (document.getLength()==0)
+					return;
+			
+				String text = document.getText(0, document.getLength());
+				int index = text.indexOf('\n');
+				if (index>=0)
+				{
+					e.getEdit().undo();
+					Toolkit.getDefaultToolkit().beep();
+				}
+			}
+			catch(BadLocationException e1)
+			{
+				EAM.logException(e1);
+			}
+		}
+	}
+
+	public void setText(String newValue)
+	{
+		newValue.replaceAll("\n", " ");
+		super.setText(newValue);
 	}
 }
+
