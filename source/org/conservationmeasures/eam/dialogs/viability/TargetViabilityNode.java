@@ -12,6 +12,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -63,7 +64,7 @@ public class TargetViabilityNode extends TreeTableNode
 	{
 		String label = target.getLabel();
 		if (!target.isViabilityModeTNC())
-			label = label + " (Basic Method)";
+			label = label + EAM.text(" (Basic Method)");
 		return label;
 	}
 	
