@@ -166,9 +166,18 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 
 	public void testDiagramFactorRefer() throws Exception
 	{
-		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
+		verifyReference(ObjectType.CAUSE);
+		verifyReference(ObjectType.STRATEGY);
+		verifyReference(ObjectType.TARGET);
+		verifyReference(ObjectType.INTERMEDIATE_RESULT);
+		verifyReference(ObjectType.THREAT_REDUCTION_RESULT);
+	}
+
+	private void verifyReference(int type) throws Exception
+	{
+		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(type);
 		DiagramFactor diagramFactor = (DiagramFactor)project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
-		ORef orefFactor = diagramFactor.getReferencedObjects(ObjectType.STRATEGY).get(0);
+		ORef orefFactor = diagramFactor.getReferencedObjects(type).get(0);
 		
 		//----------- start test -----------
 		

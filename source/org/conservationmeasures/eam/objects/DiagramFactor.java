@@ -118,6 +118,8 @@ public class DiagramFactor extends BaseObject
 			case ObjectType.TARGET:
 			case ObjectType.STRATEGY:
 			case ObjectType.CAUSE:
+			case ObjectType.INTERMEDIATE_RESULT:
+			case ObjectType.THREAT_REDUCTION_RESULT:
 			{
 				Factor factor = objectManager.findNode(new FactorId(underlyingObjectId.getId().asInt()));
 				if (factor.getType() == objectType)
