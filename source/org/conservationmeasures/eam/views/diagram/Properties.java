@@ -9,6 +9,7 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
@@ -66,7 +67,7 @@ public class Properties extends LocationDoer
 	void doFactorLinkProperties(DiagramFactorLink linkage) throws CommandFailedException
 	{
 		FactorLinkPropertiesPanel panel = new FactorLinkPropertiesPanel(getProject(), linkage);
-		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
+		FactorLinkPropertiesDialog dlg = new FactorLinkPropertiesDialog(getMainWindow(), panel, panel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	

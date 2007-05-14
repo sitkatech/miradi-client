@@ -4,10 +4,10 @@ import javax.swing.Box;
 
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class FactorPropertiesDialog extends ModelessDialogWithClose
+public class FactorLinkPropertiesDialog extends ModelessDialogWithClose
 {
 
-	public FactorPropertiesDialog(MainWindow parent, FactorPropertiesPanel panel, String headingText)
+	public FactorLinkPropertiesDialog(MainWindow parent, ModelessDialogPanel panel, String headingText)
 	{
 		super(parent, panel, headingText);
 		factorPanel = panel;
@@ -20,8 +20,8 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 
 	protected Class getJumpAction()
 	{
-		return ((ModelessDialogPanel)factorPanel.tabs.getSelectedComponent()).getJumpActionClass();
+		return factorPanel.getJumpActionClass();
 	}
 	
-	FactorPropertiesPanel factorPanel;
+	ModelessDialogPanel factorPanel;
 }

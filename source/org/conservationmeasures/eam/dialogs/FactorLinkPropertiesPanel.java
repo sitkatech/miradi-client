@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -28,5 +29,10 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Link Properties");
+	}
+	
+	public Class getJumpActionClass()
+	{
+		return ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class;
 	}
 }

@@ -11,22 +11,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.martus.swing.UiButton;
 import org.martus.swing.Utilities;
 
 public class ModelessDialogWithClose extends EAMDialog
 {
-	public ModelessDialogWithClose(JFrame parent, DisposablePanel panel, String headingText)
+	public ModelessDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
 	{
 		super(parent);
 		setModal(false);
 		setTitle(headingText);
-		
+		mainWindow = parent;
 		wrappedPanel = panel;
 	
 		JPanel mainPanel = new JPanel(new BorderLayout());
@@ -78,7 +80,48 @@ public class ModelessDialogWithClose extends EAMDialog
 		wrappedPanel = null;
 		super.dispose();
 	}
+	
+	protected void createDirectionsButton(Box buttonBar)
+	{
+		UiButton  help = new UiButton(new ActionDirections(EAM.text("Directions")));
+		Component[] components = new Component[] {help};
+		Utilities.addComponentsRespectingOrientation(buttonBar, components);
+	}
+	
+	protected Class getJumpAction()
+	{
+		return null;
+	}
+	
+	
+	
+	protected class ActionDirections extends EAMAction
+	{
 
+		public ActionDirections(String label)
+		{
+			super(label, "icons/directions.png");
+		}
+		
+		public void doAction() throws CommandFailedException
+		{
+			if (getJumpAction()!=null)
+				mainWindow.getActions().get(getJumpAction()).doAction();
+		}
 
+		public void actionPerformed(ActionEvent e)
+		{
+			try
+			{
+				doAction();
+			}
+			catch(CommandFailedException e1)
+			{
+				EAM.logException(e1);
+			}
+		}
+	}
+
+	MainWindow mainWindow;
 	DisposablePanel wrappedPanel;
 }
