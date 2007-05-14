@@ -300,12 +300,12 @@ public class FactorCommandHelper
 
 	private int getOffsetToAvoidOverlaying(TransferableEamList list)
 	{
-		int DONT_PASTE_LINKS_WITH_OFFSET = 0;
+		int NO_OFFSET = 0;
 		FactorDataMap[] factorDataMaps = list.getArrayOfFactorDataMaps();
 		if (factorDataMaps.length > 0)
 			return getProject().getDiagramClipboard().getPasteOffset();
 		
-		return DONT_PASTE_LINKS_WITH_OFFSET;
+		return NO_OFFSET;
 	}
 
 	public static CommandSetObjectData createSetLabelCommand(ORef ref, String newLabel)
