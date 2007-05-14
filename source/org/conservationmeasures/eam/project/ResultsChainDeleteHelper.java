@@ -35,6 +35,8 @@ public class ResultsChainDeleteHelper
 		DiagramObject diagramObject = diagramPanel.getDiagramObject();
 		deleteAllDiagramFactorLinks();
 		deleteAllDiagramFactors();
+		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
+		project.executeCommands(commands);
 		CommandDeleteObject deleteResultsChain = new CommandDeleteObject(diagramObject.getRef());
 		project.executeCommand(deleteResultsChain);
 	}
