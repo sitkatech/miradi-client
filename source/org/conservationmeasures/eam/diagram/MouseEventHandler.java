@@ -188,7 +188,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	public void selectionChanged(GraphSelectionEvent event)
 	{
-		getActions().updateActionStates();
+		mainWindow.updateActionStates();
 		UmbrellaView currentView = mainWindow.getCurrentView();
 		if(currentView == null)
 			return;

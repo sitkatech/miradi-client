@@ -141,7 +141,7 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void tabWasSelected()
 	{
-		getMainWindow().getActions().updateActionStates();
+		getMainWindow().updateActionStates();
 		getMainWindow().updateToolBar();
 	}
 	

@@ -129,7 +129,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		}
 		
 		getPropertiesPanel().setObjectRefs((ORef[])objects.toArray(new ORef[0]));
-		mainWindow.getActions().updateActionStates();
+		mainWindow.updateActionStates();
 	}
 	
 	

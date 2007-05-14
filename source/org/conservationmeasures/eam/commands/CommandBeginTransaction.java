@@ -19,6 +19,7 @@ public class CommandBeginTransaction extends Command
 	
 	public void execute(Project target) throws CommandFailedException 
 	{
+		target.beginTransaction();
 	}
 
 	public Command getReverseCommand() throws CommandFailedException

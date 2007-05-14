@@ -75,7 +75,7 @@ public abstract class MainWindowAction extends EAMAction
 		try
 		{
 			getDoer().doIt(event);
-			getMainWindow().getActions().updateActionStates();
+			getMainWindow().updateActionStates();
 		}
 		finally
 		{

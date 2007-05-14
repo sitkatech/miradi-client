@@ -683,7 +683,22 @@ public class Project
 		return undoRedoState.canRedo();
 	}
 	
-
+	public void beginTransaction() throws CommandFailedException
+	{
+		if(inTransaction)
+			throw new CommandFailedException("Attempted to nest transactions");
+		inTransaction = true;
+	}
+	
+	public void endTransaction()
+	{
+		inTransaction = false;
+	}
+	
+	public boolean isInTransaction()
+	{
+		return inTransaction;
+	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	// views
@@ -900,6 +915,6 @@ public class Project
 	
 	LayerManager layerManager;
 	DiagramSaver diagramSaver;
-	
+	boolean inTransaction;
 }
 

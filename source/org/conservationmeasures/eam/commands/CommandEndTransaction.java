@@ -20,6 +20,7 @@ public class CommandEndTransaction extends Command
 	
 	public void execute(Project target) throws CommandFailedException 
 	{
+		target.endTransaction();
 	}
 	
 	public Command getReverseCommand() throws CommandFailedException

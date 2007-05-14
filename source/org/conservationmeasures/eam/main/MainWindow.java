@@ -138,7 +138,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
-		actions.updateActionStates();
+		updateActionStates();
 
 		if(!Arrays.asList(args).contains("--nosplash"))
 		{
@@ -271,7 +271,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			EAM.errorDialog(EAM.text("Unknown error prevented opening that project"));
 		}
 		
-		actions.updateActionStates();
+		updateActionStates();
 		
 	}
 	
@@ -417,8 +417,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void updateActionsAndStatusBar()
 	{
-		SwingUtilities.invokeLater(new ActionUpdater());
+		updateActionStates();
 		updateStatusBar();
+	}
+
+	public void updateActionStates()
+	{
+		if(getProject().isInTransaction())
+			return;
+		SwingUtilities.invokeLater(new ActionUpdater());
 	}
 	
 	class ActionUpdater implements Runnable
