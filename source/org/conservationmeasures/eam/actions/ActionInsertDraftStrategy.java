@@ -18,7 +18,7 @@ public class ActionInsertDraftStrategy extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Draft Strategy");
+		return EAM.text("Action|Insert|Insert Draft Strategy");
 	}
 
 	public String getToolTipText()

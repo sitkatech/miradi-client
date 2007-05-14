@@ -18,7 +18,7 @@ public class ActionInsertFactorLink extends ViewAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Link...");
+		return EAM.text("Action|Insert|Insert Link...");
 	}
 
 	public String getToolTipText()

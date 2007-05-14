@@ -18,7 +18,7 @@ public class ActionInsertThreatReductionResult extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Threat Reduction Result");
+		return EAM.text("Action|Insert|Insert Threat Reduction Result");
 	}
 
 	public String getToolTipText()

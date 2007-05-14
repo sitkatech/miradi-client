@@ -18,7 +18,7 @@ public class ActionInsertIntermediateResult extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Intermediate Result");
+		return EAM.text("Action|Insert|Insert Intermediate Result");
 	}
 
 	public String getToolTipText()

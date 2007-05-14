@@ -20,7 +20,7 @@ public class ActionInsertDirectThreat extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Direct Threat");
+		return EAM.text("Action|Insert|Insert Direct Threat");
 	}
 
 	public String getToolTipText()

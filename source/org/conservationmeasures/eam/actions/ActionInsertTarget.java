@@ -20,7 +20,7 @@ public class ActionInsertTarget extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Target");
+		return EAM.text("Action|Insert|Insert Target");
 	}
 
 	public String getToolTipText()

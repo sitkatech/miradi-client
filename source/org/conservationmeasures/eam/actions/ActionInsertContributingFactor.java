@@ -20,7 +20,7 @@ public class ActionInsertContributingFactor extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Contributing Factor");
+		return EAM.text("Action|Insert|Insert Contributing Factor");
 	}
 
 	public String getToolTipText()

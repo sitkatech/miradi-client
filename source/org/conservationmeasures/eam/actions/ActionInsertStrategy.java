@@ -20,7 +20,7 @@ public class ActionInsertStrategy extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Strategy");
+		return EAM.text("Action|Insert|Insert Strategy");
 	}
 
 	public String getToolTipText()

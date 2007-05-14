@@ -203,7 +203,7 @@ public class MainMenuBar extends JMenuBar
 	
 	private JMenu createInsertMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("MenuBar|Insert"));
+		JMenu menu = new JMenu(EAM.text("MenuBar|Actions"));
 		menu.setMnemonic(KeyEvent.VK_I);
 		
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDraftStrategy.class),KeyEvent.VK_D));
