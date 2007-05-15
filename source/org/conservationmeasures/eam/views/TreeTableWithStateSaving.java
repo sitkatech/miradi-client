@@ -74,7 +74,7 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 	public void selectObject(ORef ref)
 	{
 		TreePath path = getTreeTableModel().getPathOfNode(ref.getObjectType(), ref.getObjectId());
-		tree.addSelectionPath(path);
+		tree.setSelectionPath(path);
 	}
 
 	void updateTreeExpansion(ORefList expandedList)

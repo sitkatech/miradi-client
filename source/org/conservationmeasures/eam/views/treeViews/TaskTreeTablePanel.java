@@ -41,6 +41,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		GenericTreeTableModel treeTableModel = getModel();
+		int currentSelectedRow = tree.getSelectedRow();
 		
 		final boolean wereActivityNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.STRATEGY , Strategy.TAG_ACTIVITY_IDS);
 		final boolean wereIndicatorNodesAddedOrRemoved = wereIndicatorNodesAddedOrRemoved(event);
@@ -74,6 +75,8 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 				repaint();
 			}
 		}
+		
+		tree.getSelectionModel().setSelectionInterval(currentSelectedRow, currentSelectedRow);
 	}
 
 	private boolean wereIndicatorNodesAddedOrRemoved(CommandExecutedEvent event)
@@ -91,12 +94,12 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 	private void rebuildEntireTree()
 	{
 		//TODO: Is it the right place/mechanism?
-		int currentSelectedRow = tree.getSelectedRow();
+		//int currentSelectedRow = tree.getSelectedRow();
 		model.rebuildEntireTree();
 		restoreTreeExpansionState();
 		
 		//TODO: Is it the right place/mechanism?
-		tree.getSelectionModel().setSelectionInterval(currentSelectedRow, currentSelectedRow);
+		//tree.getSelectionModel().setSelectionInterval(currentSelectedRow, currentSelectedRow);
 	}
 	
 
