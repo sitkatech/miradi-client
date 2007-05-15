@@ -40,19 +40,13 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return;
 		
 		Project project = getProject();
+		FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
+
+		DiagramFactor diagramFactor = null;
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
-			DiagramFactor diagramFactor = insertFactorItself();
-			FactorId id = diagramFactor.getWrappedId();
-			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET))
-				linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
-			else
-				notLinkingToAnyFactors();
-			
-			selectNewFactor(id);
-			launchPropertiesEditor(diagramFactor);
+			diagramFactor = insertFactorItself();
 		}
 		catch (Exception e)
 		{
@@ -62,6 +56,36 @@ abstract public class InsertFactorDoer extends LocationDoer
 		finally 
 		{
 			project.executeCommand(new CommandEndTransaction());
+		}
+
+		try
+		{
+			FactorId id = diagramFactor.getWrappedId();
+			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET))
+			{
+				// NOTE: Set up a second transaction, so the link creation is independently undoable
+				project.executeCommand(new CommandBeginTransaction());
+				try
+				{
+					linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
+				}
+				finally
+				{
+					project.executeCommand(new CommandEndTransaction());
+				}
+			}
+			else
+			{
+				notLinkingToAnyFactors();
+			}
+			
+			selectNewFactor(id);
+			launchPropertiesEditor(diagramFactor);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException(e);
 		}
 	}
 	
@@ -179,13 +203,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] nodesToLinkTo) throws Exception
 	{
-		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
 		{
 			DiagramFactor toDiagramFactor = nodesToLinkTo[i].getDiagramFactor();
 			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(getDiagramView().getDiagramModel(), newlyInserted, toDiagramFactor);
 		}
-		getProject().executeCommand(new CommandEndTransaction());
 	}
 
 	void notLinkingToAnyFactors() throws CommandFailedException
