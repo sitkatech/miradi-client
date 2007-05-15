@@ -39,6 +39,8 @@ public class TaskTreeTableModel extends GenericTreeTableModel
 			return true;
 		if(type == ObjectType.TASK && tag.equals(Task.TAG_SUBTASK_IDS))
 			return true;
+		if (tag == Task.TAG_LABEL)
+			return true;
 		
 		return false;
 	}
