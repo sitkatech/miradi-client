@@ -81,6 +81,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			addFactorsToList(selectedNodes, nodeORefsToProcess);
 			addFactorsToList(orphanedDaftStrats, nodeORefsToProcess);
 			
+			// FIXME: Should be in try/finally!
 			project.executeCommand(new CommandBeginTransaction());
 			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
 					ViewData.TAG_CHAIN_MODE_FACTOR_REFS, nodeORefsToProcess.toString()));

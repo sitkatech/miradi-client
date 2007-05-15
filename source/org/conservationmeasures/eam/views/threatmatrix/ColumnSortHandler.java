@@ -88,6 +88,7 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 			String order = (sortDirection) ? ViewData.SORT_ASCENDING: ViewData.SORT_DESCENDING;
 			ViewData viewData = threatGridPanel.getProject().getCurrentViewData();
 
+			// FIXME: Should be in try/finally
 			executeCommand(new CommandBeginTransaction());
 			
 			saveSortDirection(order, viewData);

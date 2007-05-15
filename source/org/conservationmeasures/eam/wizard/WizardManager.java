@@ -182,6 +182,7 @@ public class WizardManager
 		MainWindow mainWindow = currentStepClass.getWizard().getMainWindow();
 		try
 		{
+			// FIXME: begin transaction should be before try
 			mainWindow.getProject().executeCommand(new CommandBeginTransaction());
 			mainWindow.saveSplitterLocation(viewNameNew, ViewSplitPane.SPLITTER_MIDDLE_LOCATION);
 			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
