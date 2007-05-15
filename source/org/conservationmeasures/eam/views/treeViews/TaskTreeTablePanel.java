@@ -76,6 +76,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 			}
 		}
 		
+		//TODO use path instead of row for selecting nodes
 		tree.getSelectionModel().setSelectionInterval(currentSelectedRow, currentSelectedRow);
 	}
 
