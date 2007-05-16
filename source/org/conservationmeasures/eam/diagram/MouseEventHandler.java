@@ -69,12 +69,13 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 
 		dragStartedAt = event.getPoint();
-		Object cellBeingPressed = getDiagram().getFirstCellForLocation(dragStartedAt.getX(), dragStartedAt.getY());
-		if(cellBeingPressed == null)
-		{
-			dragStartedAt = null;
-			return;
-		}
+//TODO commented by Nima - consult with kevin - getFirstCellForLocation does not return a bend point.
+//		Object cellBeingPressed = getDiagram().getFirstCellForLocation(dragStartedAt.getX(), dragStartedAt.getY());
+//		if(cellBeingPressed == null)
+//		{
+//			dragStartedAt = null;
+//			return;
+//		}
 		try
 		{
 			for(int i = 0; i < selectedCells.length; ++i)
