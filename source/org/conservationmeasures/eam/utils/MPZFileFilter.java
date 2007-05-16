@@ -18,7 +18,7 @@ public class MPZFileFilter extends FileFilter implements MiradiFileFilter
 
 	public String getDescription()
 	{
-		return EAM.text("FileFilter|MPZ (*.mpz)");
+		return EAM.text("FileFilter|Miradi Project Zip (*.mpz)");
 	}
 	
 	public String getFileExtension()
