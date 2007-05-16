@@ -42,14 +42,8 @@ public class EAMXmlFileChooser extends EAMFileSaveChooser
 		return "This will replace the existing file.";
 	}
 
-	public FileFilter getFileFilter()
+	public FileFilter[] getFileFilter()
 	{
-		return new XMLFileFilter();
+		return new FileFilter[] {new XMLFileFilter()};
 	}
-
-	public String getFileExtension()
-	{
-		return XMLFileFilter.EXTENSION;
-	}
-
 }

@@ -42,14 +42,8 @@ public class EAMJPGFileChooser extends EAMFileSaveChooser
 		return "This will replace the existing file.";
 	}
 
-	public FileFilter getFileFilter()
+	public FileFilter[] getFileFilter()
 	{
-		return new JPEGFileFilter();
+		return new FileFilter[] {new JPEGFileFilter()};
 	}
-
-	public String getFileExtension()
-	{
-		return JPEGFileFilter.EXTENSION;
-	}
-
 }

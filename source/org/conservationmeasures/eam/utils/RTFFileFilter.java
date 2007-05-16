@@ -11,7 +11,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class RTFFileFilter extends FileFilter
+public class RTFFileFilter extends FileFilter implements MiradiFileFilter
 {
 
 	public boolean accept(File pathname)
@@ -26,5 +26,11 @@ public class RTFFileFilter extends FileFilter
 		return EAM.text("FileFilter|RTF (*.rtf)");
 	}
 
+	public String getFileExtension()
+	{
+		return EXTENSION;
+	}
+	
 	public static final String EXTENSION = ".rtf";
+
 }

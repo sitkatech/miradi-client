@@ -41,16 +41,9 @@ public class ImportTncCapWorkbookDoer extends ImportProjectDoer
 			project.close();
 		}
 	}
-	
-	
-	public FileFilter getFileFilter()
+
+	public FileFilter[] getFileFilter()
 	{
-		return new XLSFileFilter();
+		return new FileFilter[] {new XLSFileFilter()};
 	}
-	
-	public String getFileExtension()
-	{
-		return XLSFileFilter.EXTENSION;
-	}
-	
 }

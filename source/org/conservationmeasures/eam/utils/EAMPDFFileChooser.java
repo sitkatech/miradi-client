@@ -42,14 +42,8 @@ public class EAMPDFFileChooser extends EAMFileSaveChooser
 		return "This will replace the existing file.";
 	}
 
-	public FileFilter getFileFilter()
+	public FileFilter[] getFileFilter()
 	{
-		return new PDFFileFilter();
+		return new FileFilter[] {new PDFFileFilter()};
 	}
-
-	public String getFileExtension()
-	{
-		return PDFFileFilter.EXTENSION;
-	}
-
 }

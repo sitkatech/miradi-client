@@ -41,13 +41,8 @@ public class TreeExportFileChooser extends EAMFileSaveChooser
 		return "This will replace the existing file.";
 	}
 
-	public FileFilter getFileFilter()
+	public FileFilter[] getFileFilter()
 	{
-		return new TreeExportFileFilter();
-	}
-
-	public String getFileExtension()
-	{
-		return TreeExportFileFilter.MIRADI_TREE_EXPORT_EXTENSION;
+		return new FileFilter[] {new TreeExportFileFilter()};
 	}
 }

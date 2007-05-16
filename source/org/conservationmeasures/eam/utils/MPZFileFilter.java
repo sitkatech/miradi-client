@@ -1,8 +1,3 @@
-/* 
-* Copyright 2005-2007, Wildlife Conservation Society, 
-* Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
-* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
-*/ 
 package org.conservationmeasures.eam.utils;
 
 import java.io.File;
@@ -11,7 +6,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class XMLFileFilter extends FileFilter implements MiradiFileFilter
+public class MPZFileFilter extends FileFilter implements MiradiFileFilter
 {
 
 	public boolean accept(File pathname)
@@ -23,7 +18,7 @@ public class XMLFileFilter extends FileFilter implements MiradiFileFilter
 
 	public String getDescription()
 	{
-		return EAM.text("FileFilter|XML (*.xml)");
+		return EAM.text("FileFilter|MPZ (*.mpz)");
 	}
 	
 	public String getFileExtension()
@@ -31,5 +26,5 @@ public class XMLFileFilter extends FileFilter implements MiradiFileFilter
 		return EXTENSION;
 	}
 
-	public static final String EXTENSION = ".xml";
+	public static final String EXTENSION = ".mpz";
 }

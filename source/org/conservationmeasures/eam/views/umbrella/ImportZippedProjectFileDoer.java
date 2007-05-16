@@ -10,6 +10,7 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.project.ProjectUnzipper;
+import org.conservationmeasures.eam.utils.MPZFileFilter;
 import org.conservationmeasures.eam.utils.ZIPFileFilter;
 
 public class ImportZippedProjectFileDoer  extends ImportProjectDoer
@@ -19,13 +20,8 @@ public class ImportZippedProjectFileDoer  extends ImportProjectDoer
 		ProjectUnzipper.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
 	}
 
-	public FileFilter getFileFilter()
+	public FileFilter[] getFileFilter()
 	{
-		return new ZIPFileFilter();
-	}
-	
-	public String getFileExtension()
-	{
-		return ZIPFileFilter.EXTENSION;
+		return new FileFilter[] {new ZIPFileFilter(), new MPZFileFilter()};
 	}
 }

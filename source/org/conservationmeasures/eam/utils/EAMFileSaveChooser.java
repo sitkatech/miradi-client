@@ -31,15 +31,18 @@ public abstract class EAMFileSaveChooser
 		JFileChooser dlg = new JFileChooser(currentDirectory);
 
 		dlg.setDialogTitle(EAM.text(getDialogApproveTitleText()));
-		dlg.setFileFilter(getFileFilter());
+		FileFilter[] filters = getFileFilter();
+		for (int i=0; i<filters.length; ++i)
+			dlg.addChoosableFileFilter(filters[i]);
 		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
 		dlg.setApproveButtonToolTipText(EAM.text(getApproveButtonToolTipText()));
 		if (dlg.showDialog(mainWindow, EAM.text(getDialogApprovelButtonText())) != JFileChooser.APPROVE_OPTION)
 			return null;
 
 		File chosen = dlg.getSelectedFile();
-		if (!chosen.getName().toLowerCase().endsWith(getFileExtension()))
-			chosen = new File(chosen.getAbsolutePath() + getFileExtension());
+		String ext = ((MiradiFileFilter)dlg.getFileFilter()).getFileExtension();
+		if (!chosen.getName().toLowerCase().endsWith(ext))
+			chosen = new File(chosen.getAbsolutePath() + ext);
 
 		if (chosen.exists())
 		{
@@ -65,9 +68,7 @@ public abstract class EAMFileSaveChooser
 
 	public abstract String getDialogOverwriteBodyText();
 
-	public abstract String getFileExtension();
-
-	public abstract FileFilter getFileFilter();
+	public abstract FileFilter[] getFileFilter();
 	
 	private static String currentDirectory;
 

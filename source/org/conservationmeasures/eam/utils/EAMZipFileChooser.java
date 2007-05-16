@@ -43,14 +43,8 @@ public class EAMZipFileChooser extends EAMFileSaveChooser
 		return "This will replace the existing file.";
 	}
 
-	public FileFilter getFileFilter()
+	public FileFilter[] getFileFilter()
 	{
-		return new ZIPFileFilter();
+		return new FileFilter[] {new ZIPFileFilter(), new MPZFileFilter()};
 	}
-
-	public String getFileExtension()
-	{
-		return ZIPFileFilter.EXTENSION;
-	}
-
 }

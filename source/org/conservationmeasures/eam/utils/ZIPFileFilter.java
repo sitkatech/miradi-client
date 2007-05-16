@@ -11,7 +11,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class ZIPFileFilter extends FileFilter
+public class ZIPFileFilter extends FileFilter implements MiradiFileFilter
 {
 
 	public boolean accept(File pathname)
@@ -24,6 +24,11 @@ public class ZIPFileFilter extends FileFilter
 	public String getDescription()
 	{
 		return EAM.text("FileFilter|ZIP (*.zip)");
+	}
+	
+	public String getFileExtension()
+	{
+		return EXTENSION;
 	}
 
 	public static final String EXTENSION = ".zip";

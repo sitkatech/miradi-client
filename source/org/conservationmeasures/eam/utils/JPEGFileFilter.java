@@ -11,7 +11,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class JPEGFileFilter extends FileFilter 
+public class JPEGFileFilter extends FileFilter implements MiradiFileFilter
 {
 	public JPEGFileFilter() 
 	{
@@ -28,6 +28,11 @@ public class JPEGFileFilter extends FileFilter
 	public String getDescription()
 	{
 		return EAM.text("FileFilter|JPEG (*.jpg)");
+	}
+	
+	public String getFileExtension()
+	{
+		return EXTENSION;
 	}
 
 	public static final String EXTENSION = ".jpg";

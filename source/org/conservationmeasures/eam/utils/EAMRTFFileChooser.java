@@ -42,15 +42,9 @@ public class EAMRTFFileChooser extends EAMFileSaveChooser
 		return "This will replace the existing file.";
 	}
 
-	public FileFilter getFileFilter()
+	public FileFilter[] getFileFilter()
 	{
-		return new RTFFileFilter();
+		return new FileFilter[] {new RTFFileFilter()};
 	}
-
-	public String getFileExtension()
-	{
-		return RTFFileFilter.EXTENSION;
-	}
-
 }
 

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.io.File;
 
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -21,9 +22,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 {
 	public abstract void createProject(File importFile, File homeDirectory, String newProjectFilename)  throws Exception;
 	
-	public abstract String getFileExtension();
-	
-	public abstract FileFilter getFileFilter();
+	public abstract FileFilter[] getFileFilter();
 
 	public boolean isAvailable() 
 	{
@@ -35,15 +34,19 @@ public abstract class ImportProjectDoer extends ViewDoer
 	{
 		try
 		{
-			File startingDirectory = new File(currentDirectory);
 			String windowTitle = EAM.text("Import Project");
-			UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(
-					getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory, null, getFileFilter());
-			
-			if (results.wasCancelChoosen())
+			JFileChooser dlg = new JFileChooser(currentDirectory);
+
+			dlg.setDialogTitle(windowTitle);
+			FileFilter[] filters = getFileFilter();
+			for (int i=0; i<filters.length; ++i)
+				dlg.addChoosableFileFilter(filters[i]);
+			dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
+			dlg.setApproveButtonToolTipText(EAM.text(getApproveButtonToolTipText()));
+			if (dlg.showDialog(getMainWindow(), getDialogApprovelButtonText()) != JFileChooser.APPROVE_OPTION)
 				return;
 			
-			File fileToImport = results.getChosenFile();
+			File fileToImport = dlg.getSelectedFile();
 			String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
 			projectName = Project.makeProjectFilenameLegal(projectName);
 			Project.validateNewProject(projectName);
@@ -59,6 +62,16 @@ public abstract class ImportProjectDoer extends ViewDoer
 		}
 	}
 
+	private String getApproveButtonToolTipText()
+	{
+		return "Import";
+	}
+	
+	private String getDialogApprovelButtonText()
+	{
+		return "Import";
+	}
+	
 	private void refreshNoProjectPanel() throws Exception
 	{
 		NoProjectView noProjectView = (NoProjectView)getView();

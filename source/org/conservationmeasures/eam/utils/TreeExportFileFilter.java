@@ -11,13 +11,13 @@ import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class TreeExportFileFilter extends FileFilter
+public class TreeExportFileFilter extends FileFilter implements MiradiFileFilter
 {
 	public boolean accept(File pathname)
 	{
 		if (pathname.isDirectory())
 			return true;
-		return (pathname.getName().toLowerCase().endsWith(MIRADI_TREE_EXPORT_EXTENSION));
+		return (pathname.getName().toLowerCase().endsWith(EXTENSION));
 	}
 
 	public String getDescription()
@@ -25,5 +25,11 @@ public class TreeExportFileFilter extends FileFilter
 		return EAM.text("FileFilter|MTE (*.mte)");
 	}
 
-	public static final String MIRADI_TREE_EXPORT_EXTENSION = ".mte";
+
+	public String getFileExtension()
+	{
+		return EXTENSION;
+	}
+	
+	public static final String EXTENSION = ".mte";
 }
