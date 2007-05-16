@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -72,7 +73,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 			}
 			else
 			{
-				repaint();
+				repaintObjectRow(cmd.getObjectORef());
 			}
 		}
 		
@@ -101,6 +102,12 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 		
 		//TODO: Is it the right place/mechanism?
 		//tree.getSelectionModel().setSelectionInterval(currentSelectedRow, currentSelectedRow);
+	}
+	
+	//TODO: should pull up to super class
+	private void repaintObjectRow(ORef objectToRepaint)
+	{
+		model.repaintObjectRow(objectToRepaint);
 	}
 	
 

@@ -9,6 +9,7 @@ import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
 import com.java.sun.jtreetable.TreeTableModel;
@@ -62,6 +63,21 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 	{
 		rebuildNode();
 		fireTreeStructureChanged(getRoot(), new Object[] {getPathToRoot()}, null, null);
+	}
+	
+	public void repaintObjectRow(ORef ref)
+	{
+		TreePath pathToRoot = getPathToRoot();
+		TreePath pathToRepaint = findObject(pathToRoot, ref.getObjectType(), ref.getObjectId());
+		if(pathToRepaint == null)
+			return;
+		
+		TreeTableNode nodeToRepaint = (TreeTableNode)pathToRepaint.getLastPathComponent();
+		TreePath pathToParent = pathToRepaint.getParentPath();
+		TreeTableNode parentNode = (TreeTableNode)pathToParent.getLastPathComponent();
+		int[] childIndex = new int[] {parentNode.getIndex(nodeToRepaint)};
+		Object[] childObject = new Object[] {nodeToRepaint};
+		fireTreeNodesChanged(nodeToRepaint, pathToParent.getPath(), childIndex, childObject);
 	}
 	
 
