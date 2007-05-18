@@ -77,6 +77,10 @@ public class ProjectResource extends BaseObject
 		if(result.length() > 0)
 			return result;
 		
+		result = label.get();
+		if (result.length() > 0)
+			return result;
+		
 		return EAM.text("Label|(Undefined Resource)");
 	}
 	

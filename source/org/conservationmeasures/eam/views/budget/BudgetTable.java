@@ -96,23 +96,26 @@ public class BudgetTable extends JTable implements ObjectPicker
 		if (model.isResourceColumn(column))
 		{
 			ProjectResource[] resources = project.getAllProjectResources();
-			createComboColumn(resources, column);
+			ProjectResource invalidResource = new ProjectResource(project.getObjectManager(), BaseId.INVALID);
+			createComboColumn(resources, column, invalidResource);
 		}
 		else if (model.isFundingSourceColumn(column))
 		{
 			FundingSource[] fundingSources = project.getObjectManager().getFundingSourcePool().getAllFundingSources();
-			createComboColumn(fundingSources, column);
+			FundingSource invalidFundintSource = new FundingSource(project.getObjectManager(), BaseId.INVALID);
+			createComboColumn(fundingSources, column, invalidFundintSource);
 		}
 		else if (model.isAccountingCodeColumn(column))
 		{
 			AccountingCode[] accountingCodes = project.getObjectManager().getAccountingCodePool().getAllAccountingCodes();
-			createComboColumn(accountingCodes, column);
+			AccountingCode invalidAccountingCode = new AccountingCode(project.getObjectManager(), BaseId.INVALID);
+			createComboColumn(accountingCodes, column, invalidAccountingCode);
 		}
 	}
 	
-	private void createComboColumn(BaseObject[] content, int col)
+	private void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
 	{
-		BaseObject[] comboContent = addEmptySpaceAtStart(content);
+		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
 		JComboBox resourceCombo = new JComboBox(comboContent);
 		
 		TableColumn resourceCol = getColumnModel().getColumn(col);
@@ -120,13 +123,22 @@ public class BudgetTable extends JTable implements ObjectPicker
 		resourceCol.setCellRenderer(new ComboBoxRenderer(comboContent));
 	}
 
-	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content)
+	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
 	{
-		final BaseObject EMPTY_SPACE = null;
+		final int EMPTY_SPACE = 0;
 		BaseObject[]  comboContent = new BaseObject[content.length + 1];
-		comboContent[0] = EMPTY_SPACE;
-		
-		System.arraycopy(content, 0, comboContent, 1, content.length);
+		comboContent[EMPTY_SPACE] = invalidObject;
+
+		try
+		{
+			invalidObject.setLabel(" ");
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	
+		System.arraycopy(content, 0, comboContent, 1, content.length);	
 		return comboContent;
 	}
 	
