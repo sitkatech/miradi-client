@@ -110,13 +110,24 @@ public class BudgetTable extends JTable implements ObjectPicker
 		}
 	}
 	
-	private void createComboColumn(BaseObject[] projectResources, int col)
+	private void createComboColumn(BaseObject[] content, int col)
 	{
-		JComboBox resourceCombo = new JComboBox(projectResources);
+		BaseObject[] comboContent = addEmptySpaceAtStart(content);
+		JComboBox resourceCombo = new JComboBox(comboContent);
 		
 		TableColumn resourceCol = getColumnModel().getColumn(col);
 		resourceCol.setCellEditor(new DefaultCellEditor(resourceCombo));
-		resourceCol.setCellRenderer(new ComboBoxRenderer(projectResources));
+		resourceCol.setCellRenderer(new ComboBoxRenderer(comboContent));
+	}
+
+	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content)
+	{
+		final BaseObject EMPTY_SPACE = null;
+		BaseObject[]  comboContent = new BaseObject[content.length + 1];
+		comboContent[0] = EMPTY_SPACE;
+		
+		System.arraycopy(content, 0, comboContent, 1, content.length);
+		return comboContent;
 	}
 	
 	public TreeTableNode[] getSelectedTreeNodes()

@@ -116,7 +116,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 	{
 		if (value == null)
 		{
-			EAM.logDebug("value in setValueAt is null");
+			EAM.logDebug("value in BudgetTableUnitsModel.setValueAt is null");
 			return;
 		}
 		BaseId assignmentId = getAssignmentForRow(row);

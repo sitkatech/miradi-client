@@ -7,15 +7,19 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class DeleteResource extends ObjectsDoer
@@ -44,20 +48,21 @@ public class DeleteResource extends ObjectsDoer
 		if(!EAM.confirmDialog("Delete Resource", (String[])dialogText.toArray(new String[0]), buttons))
 			return;
 
-		clearAllAssignmentResources(allThatUseThisResource);
 		try
 		{
-			getProject().executeCommand(new CommandBeginTransaction());
+			Project project = getProject();
+			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
+				project.executeCommands(getClearAssignmentResourcesCommands(allThatUseThisResource));
 				int type = resource.getType();
 				BaseId id = idToRemove;
-				getProject().executeCommands(resource.createCommandsToClear());
-				getProject().executeCommand(new CommandDeleteObject(type, id));
+				project.executeCommands(resource.createCommandsToClear());
+				project.executeCommand(new CommandDeleteObject(type, id));
 			}
 			finally
 			{
-				getProject().executeCommand(new CommandEndTransaction());
+				project.executeCommand(new CommandEndTransaction());
 			}
 		}
 		catch(CommandFailedException e)
@@ -71,14 +76,18 @@ public class DeleteResource extends ObjectsDoer
 		}
 	}
 
-	private void clearAllAssignmentResources(ORefList allThatUseThisResource)
+	private Command[] getClearAssignmentResourcesCommands(ORefList allThatUseThisResource) throws CommandFailedException
 	{
+		Command[] commands = new Command[allThatUseThisResource.size()];
 		//TODO: is this assumtion correct, that all resource references are from Assignment objects
 		for (int i = 0; i < allThatUseThisResource.size(); i++)
 		{
 			Assignment assignment = (Assignment) getProject().getObjectManager().findObject(allThatUseThisResource.get(i));
-			assignment.setResourceId(BaseId.INVALID);
+			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignment.getId(), Assignment.TAG_ASSIGNMENT_RESOURCE_ID, BaseId.INVALID.toString());
+			commands[i] = command;
 		}
+		
+		return commands;
 	}
 
 }
