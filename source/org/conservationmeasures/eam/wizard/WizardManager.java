@@ -64,7 +64,7 @@ import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProj
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability2Step;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityMethodChoiceStep;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability3Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability4Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability5Step;
@@ -72,6 +72,7 @@ import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability7Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability8Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewStep;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewAfterDetailedModeStep;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
@@ -230,7 +231,10 @@ public class WizardManager
 	
 	public void createTargetViabilityStepEntries(WizardPanel panel)
 	{
-		createStepEntry(new TargetViabilityOverviewStep(panel));
+		createStepEntry(new TargetViabilityOverviewStep(panel)).
+				createControl(CONTROL_NEXT, TargetViabilityMethodChoiceStep.class);
+		createStepEntry(new TargetViabilityOverviewAfterDetailedModeStep(panel)).
+				createControl(CONTROL_NEXT, TargetViabilityMethodChoiceStep.class);
 	}
 	
 	public void createSummaryStepEntries(WizardPanel panel)
@@ -266,18 +270,18 @@ public class WizardManager
 		createStepEntry(new DiagramWizardDefineTargetsStep(panel));
 		createStepEntry(new DiagramWizardReviewAndModifyTargetsStep(panel));
 		//TODO rename TargetViability Classes to identif which step is which
-		createStepEntry(new TargetViability2Step(panel)).
+		createStepEntry(new TargetViabilityMethodChoiceStep(panel)).
 					createControl("DoneViabilityAnalysis", DiagramWizardIdentifyDirectThreatStep.class).
 					createControl("DetailedViability", TargetViability3Step.class);
-		createStepEntry(new DescribeTargetStatusStep(panel)).createControl(CONTROL_NEXT, DiagramWizardIdentifyDirectThreatStep.class);
-		createStepEntry(new TargetViability3Step(panel)).createControl(CONTROL_BACK, TargetViability2Step.class);
+		createStepEntry(new DescribeTargetStatusStep(panel)).createControl(CONTROL_NEXT, TargetViabilityOverviewStep.class);
+		createStepEntry(new TargetViability3Step(panel)).createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
 		createStepEntry(new TargetViability4Step(panel));
 		createStepEntry(new TargetViability5Step(panel));
 		createStepEntry(new TargetViability6Step(panel));
 		createStepEntry(new TargetViability7Step(panel));
-		createStepEntry(new TargetViability8Step(panel)).createControl(CONTROL_NEXT, TargetViability2Step.class);
+		createStepEntry(new TargetViability8Step(panel));
 		
-		createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel)).createControl(CONTROL_BACK, TargetViability2Step.class);
+		createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel)).createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
 		createStepEntry(new DiagramWizardLinkDirectThreatsToTargetsStep(panel));
 		createStepEntry(new DiagramWizardIdentifyIndirectThreatStep(panel));		
 		createStepEntry(new DiagramWizardConstructChainsStep(panel));	
@@ -336,15 +340,18 @@ public class WizardManager
 				DiagramWizardDefineTargetsStep.class,
 				DiagramWizardReviewAndModifyTargetsStep.class,
 
-				TargetViabilityOverviewStep.class,				
-				TargetViability2Step.class,
+				TargetViabilityMethodChoiceStep.class,
 				DescribeTargetStatusStep.class,
+				TargetViabilityOverviewStep.class,
+				
 				TargetViability3Step.class,
 				TargetViability4Step.class,
 				TargetViability5Step.class,
 				TargetViability6Step.class,
 				TargetViability7Step.class,
 				TargetViability8Step.class,
+				TargetViabilityOverviewAfterDetailedModeStep.class,			
+
 				DiagramWizardIdentifyDirectThreatStep.class,
 				DiagramWizardLinkDirectThreatsToTargetsStep.class,
 				
