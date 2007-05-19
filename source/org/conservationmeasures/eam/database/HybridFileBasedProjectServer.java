@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
 
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
