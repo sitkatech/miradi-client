@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -87,7 +86,7 @@ public class Indicator extends BaseObject
 			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
 		
 		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
-			return getRelatedLabelsAsMultiLine(new FactorSet());
+			return getOwner().getLabel();
 		
 		if(fieldTag.equals(PSEUDO_TAG_METHODS))
 			return getIndicatorMethodsSingleLine();

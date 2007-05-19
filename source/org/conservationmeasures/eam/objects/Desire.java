@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -65,7 +64,7 @@ abstract public class Desire extends BaseObject
 			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
 		
 		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
-			return getRelatedLabelsAsMultiLine(new FactorSet());
+			return getOwner().getLabel();
 		
 		return super.getPseudoData(fieldTag);
 	}
