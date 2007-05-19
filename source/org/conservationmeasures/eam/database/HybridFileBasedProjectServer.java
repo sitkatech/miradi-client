@@ -19,15 +19,11 @@ public class HybridFileBasedProjectServer extends FileBasedProjectServer
 		objects = new HashMap();
 	}
 
-	static EnhancedJsonObject vo = new ValueOption(new BaseId(1)).toJson();
 	void writeJsonFile(File file, JSONObject json) throws IOException
 	{
 		objects.put(file.getAbsoluteFile(), json);
 		file.getParentFile().mkdirs();
-		//NOTE: the write here is to make the manefest work
-		if (json instanceof EnhancedJsonObject)
-			JSONFile.write(file, vo);
-		else
+		if (!(json instanceof EnhancedJsonObject))
 			JSONFile.write(file, json);
 	}
 	
@@ -45,6 +41,15 @@ public class HybridFileBasedProjectServer extends FileBasedProjectServer
 		return objectFile.delete();
 	}
 	
+	
+	 public boolean doesFileExist(File infoFile)
+	 {
+		 if (objects.containsKey(infoFile))
+			 return true;
+		 return super.doesFileExist(infoFile);
+	 }
+	 
+	 
 	DirectoryLock lock;
 	HashMap objects;
 }
