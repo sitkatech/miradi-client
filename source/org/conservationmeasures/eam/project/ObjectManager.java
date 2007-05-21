@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
+import org.conservationmeasures.eam.objectpools.TextBoxPool;
 import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
@@ -87,6 +88,7 @@ public class ObjectManager
 		addNormalPool(new ResultsChainDiagramPool(ida));
 		addNormalPool(new ConceptualModelDiagramPool(ida));
 		addNormalPool(new ThreatReductionResultPool(ida));
+		addNormalPool(new TextBoxPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -306,6 +308,7 @@ public class ObjectManager
 		loadPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
 		loadPool(ObjectType.INTERMEDIATE_RESULT);
 		loadPool(ObjectType.THREAT_REDUCTION_RESULT);
+		loadPool(ObjectType.TEXT_BOX);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
