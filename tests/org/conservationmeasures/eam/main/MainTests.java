@@ -65,6 +65,7 @@ import org.conservationmeasures.eam.objects.TestRatingCriterion;
 import org.conservationmeasures.eam.objects.TestResultsChainDiagram;
 import org.conservationmeasures.eam.objects.TestStrategy;
 import org.conservationmeasures.eam.objects.TestTask;
+import org.conservationmeasures.eam.objects.TestTextBox;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
 import org.conservationmeasures.eam.objects.TestThreatReductionResult;
 import org.conservationmeasures.eam.objects.TestValueOption;
@@ -72,6 +73,7 @@ import org.conservationmeasures.eam.objects.TestViewData;
 import org.conservationmeasures.eam.project.TestCausePool;
 import org.conservationmeasures.eam.project.TestFactorLinkPool;
 import org.conservationmeasures.eam.project.TestIdAssigner;
+import org.conservationmeasures.eam.project.TestIntermediateResultPool;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestProjectInfo;
 import org.conservationmeasures.eam.project.TestProjectRepairer;
@@ -82,7 +84,9 @@ import org.conservationmeasures.eam.project.TestStrategyPool;
 import org.conservationmeasures.eam.project.TestTNCThreatFormula;
 import org.conservationmeasures.eam.project.TestTNCViabilityFormula;
 import org.conservationmeasures.eam.project.TestTargetPool;
+import org.conservationmeasures.eam.project.TestTextBoxPool;
 import org.conservationmeasures.eam.project.TestThreatRatingFramework;
+import org.conservationmeasures.eam.project.TestThreatReductionResultPool;
 import org.conservationmeasures.eam.project.TestTncCapWorkbookImporter;
 import org.conservationmeasures.eam.ratings.TestRatingChoice;
 import org.conservationmeasures.eam.ratings.TestRatingQuestion;
@@ -129,6 +133,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTransferableEamList.class));
 		
 		// project package
+		suite.addTest(new TestSuite(TestThreatReductionResultPool.class));
+		suite.addTest(new TestSuite(TestTextBoxPool.class));
+		suite.addTest(new TestSuite(TestIntermediateResultPool.class));
 		suite.addTest(new TestSuite(TestFactorLinkPool.class));
 		suite.addTest(new TestSuite(TestStrategyPool.class));
 		suite.addTest(new TestSuite(TestTargetPool.class));
@@ -209,6 +216,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestResultsChainDiagram.class));
 		suite.addTest(new TestSuite(TestThreatReductionResult.class));
 		suite.addTest(new TestSuite(TestIntermediateResult.class));
+		suite.addTest(new TestSuite(TestTextBox.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

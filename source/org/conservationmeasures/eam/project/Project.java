@@ -54,6 +54,7 @@ import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
+import org.conservationmeasures.eam.objectpools.TextBoxPool;
 import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -151,6 +152,11 @@ public class Project
 	public ResultsChainDiagramPool getResultsChainDiagramPool()
 	{
 		return (ResultsChainDiagramPool) getPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
+	}
+	
+	public TextBoxPool getTextBoxPool()
+	{
+		return (TextBoxPool) getPool(ObjectType.TEXT_BOX);
 	}
 	
 	public CausePool getCausePool()

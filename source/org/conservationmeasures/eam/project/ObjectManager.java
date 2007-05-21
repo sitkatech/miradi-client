@@ -53,6 +53,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 
 public class ObjectManager
@@ -259,6 +260,10 @@ public class ObjectManager
 			BaseObject intermediateResult = getPool(IntermediateResult.getObjectType()).findObject(objectId);
 			if (intermediateResult != null)
 				return intermediateResult;
+			
+			BaseObject textBox = getPool(TextBox.getObjectType()).findObject(objectId);
+			if (textBox != null)
+				return textBox;
 			
 			return null;
 		}

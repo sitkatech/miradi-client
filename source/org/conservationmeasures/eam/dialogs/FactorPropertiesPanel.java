@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IntermediateResultIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
+import org.conservationmeasures.eam.icons.TextBoxIcon;
 import org.conservationmeasures.eam.icons.ThreatReductionResultIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -33,6 +34,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusQuestion;
@@ -156,6 +158,9 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		if (factor.isThreatReductionResult())
 			return new UiLabel(ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon(), UiLabel.LEADING);
 		
+		if (factor.isTextBox())
+			return new UiLabel(TextBox.OBJECT_NAME, new TextBoxIcon(), UiLabel.LEADING);
+		
 		throw new RuntimeException("Unknown factor type");
 	}
 	
@@ -172,11 +177,13 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		detailsTab = new FactorSummaryPanel(getProject(), diagramFactor);
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
-
-		indicatorsTab = new IndicatorListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-		tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
-		
 		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
+
+		if (factor.canHaveIndicatros())
+		{
+			indicatorsTab = new IndicatorListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
+		}
 		
 		if(factor.canHaveObjectives())
 		{

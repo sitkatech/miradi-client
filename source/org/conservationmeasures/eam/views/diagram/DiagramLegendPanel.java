@@ -25,10 +25,12 @@ import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
+import org.conservationmeasures.eam.actions.ActionInsertTextBox;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramTextBoxCell;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
@@ -42,6 +44,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
@@ -99,7 +102,8 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		addIconLineWithCheckBox(jpanel, Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(jpanel, Indicator.OBJECT_NAME, new IndicatorIcon());
 		addIconLineWithoutCheckBox(jpanel, "Stress", new StressIcon());
-
+		addButtonLineWithCheckBox(jpanel, TextBox.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
+		
 		return jpanel;
 	}
 	
@@ -188,6 +192,9 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		else if (property.equals(SCOPE_BOX_TEXT))
 			manager.setScopeBoxVisible(checkBox.isSelected());
 		
+		else if (property.equals(TextBox.OBJECT_NAME))
+			manager.setVisibility(DiagramTextBoxCell.class, checkBox.isSelected());
+		
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
 		mainWindow.updateStatusBar();
 	}
@@ -223,6 +230,9 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		
 		else if (property.equals(Indicator.OBJECT_NAME))
 			checkBox.setSelected(manager.areIndicatorsVisible());
+		
+		else if (property.equals(TextBox.OBJECT_NAME))
+			checkBox.setSelected(manager.areTextBoxesVisible());
 	}
 	
 	class LocationButton extends UiButton implements LocationHolder

@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramIntermediateResultCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramTextBoxCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramThreatReductionResultCell;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -51,6 +52,7 @@ import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -122,6 +124,9 @@ public class DiagramModel extends DefaultGraphModel
 		
 		if (factorType == ObjectType.THREAT_REDUCTION_RESULT)
 			return new DiagramThreatReductionResultCell((ThreatReductionResult) factor, diagramFactor);
+		
+		if (factorType == ObjectType.TEXT_BOX)
+			return new DiagramTextBoxCell((TextBox)factor, diagramFactor);
 		
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}

@@ -83,6 +83,9 @@ public abstract class FactorType
 		else if (factorType.equals(FactorTypeThreatReductionResult.THREAT_REDUCTION_RESULT))
 			return ObjectType.THREAT_REDUCTION_RESULT;
 		
+		else if (factorType.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
+			return ObjectType.TEXT_BOX;
+		
 		throw new RuntimeException("Unknown factor type: " + factorType);
 	}
 

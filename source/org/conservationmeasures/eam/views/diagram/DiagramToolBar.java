@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
+import org.conservationmeasures.eam.actions.ActionInsertTextBox;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
@@ -42,6 +43,7 @@ public class DiagramToolBar extends EAMToolBar
 	{
 		JComponent[][] buttons = new JComponent[][] {
 			{
+				new ToolBarButton(actions, ActionInsertTextBox.class),
 				getInsertInterventionButton(actions, diagramView),
 				getContributionFactorButton(actions, diagramView),
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),

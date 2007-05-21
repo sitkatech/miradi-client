@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import org.conservationmeasures.eam.icons.TextBoxIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionInsertTextBox extends LocationAction
 {
 	public ActionInsertTextBox(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), "icons/textBox.png");
+		super(mainWindow, getLabel(), new TextBoxIcon());
 	}
 
 	private static String getLabel()

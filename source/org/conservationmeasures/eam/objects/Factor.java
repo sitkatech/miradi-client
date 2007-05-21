@@ -173,10 +173,18 @@ abstract public class Factor extends BaseObject
 		
 		if (typeToUse == ObjectType.FACTOR)
 			return true;
+	
+		if (typeToUse == ObjectType.TEXT_BOX)
+			return true;
 		
 		return false;
 	}
 
+	public boolean isTextBox()
+	{
+		return false;
+	}
+	
 	public boolean isThreatReductionResult()
 	{
 		return false;
@@ -220,6 +228,11 @@ abstract public class Factor extends BaseObject
 	public boolean isFactorCluster()
 	{
 		return false;
+	}
+	
+	public boolean canHaveIndicatros()
+	{
+		return true;
 	}
 	
 	public boolean canHaveObjectives()

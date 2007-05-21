@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTextBox;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -37,7 +38,34 @@ public class TextBox extends Factor
 
 	public int getType()
 	{
+		return getObjectType();
+	}
+	
+	public static int getObjectType()
+	{
 		return ObjectType.TEXT_BOX;
 	}
+	
+	public boolean isTextBox()
+	{
+		return true;
+	}
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	public boolean canHaveIndicatros()
+	{
+		return false;
+	}
+
+	public ORefList getOwnedObjects(int objectType)
+	{
+		return new ORefList();
+	}
+
+	public static final String OBJECT_NAME = "Text Box";
 
 }
