@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -32,7 +33,7 @@ public class TextBoxPool extends EAMNormalObjectPool
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new TextBox(objectManager, actualId);
+		return new TextBox(objectManager, new FactorId(actualId.asInt()));
 	}
 	
 	public TextBox[] getAllTextBoxes()

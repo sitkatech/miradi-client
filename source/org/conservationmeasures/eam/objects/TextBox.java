@@ -5,31 +5,34 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTextBox;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class TextBox extends BaseObject
+public class TextBox extends Factor
 {
-	public TextBox(ObjectManager objectManagerToUse, BaseId idToUse)
+	public TextBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManagerToUse, idToUse);
+		super(objectManager, idToUse, new FactorTypeTextBox());
+		clear();
 	}
-
-	public TextBox(BaseId idToUse)
+	
+	public TextBox(FactorId idToUse)
 	{
-		super(idToUse);
+		super(idToUse, new FactorTypeTextBox());
+		clear();
 	}
-
-	public TextBox(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
+	
+	public TextBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManagerToUse, idToUse, json);
+		super(objectManager, idToUse, Factor.TYPE_TEXT_BOX, json);
 	}
-
-	public TextBox(BaseId idToUse, EnhancedJsonObject json) throws Exception
+	
+	public TextBox(FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, json);
+		super(idToUse, Factor.TYPE_TEXT_BOX, json);
 	}
 
 	public int getType()

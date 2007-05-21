@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
+import org.conservationmeasures.eam.actions.ActionInsertTextBox;
 import org.conservationmeasures.eam.actions.ActionNudgeDown;
 import org.conservationmeasures.eam.actions.ActionNudgeLeft;
 import org.conservationmeasures.eam.actions.ActionNudgeRight;
@@ -222,6 +223,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteResultsChain.class, new DeleteResultsChainDoer());
 		addDoerToMap(ActionShowConceptualModel.class, new ShowConceptualModelDoer());
 		addDoerToMap(ActionCreateOrShowResultsChain.class, new CreateOrShowResultsChainDoer());
+		addDoerToMap(ActionInsertTextBox.class, new InsertTextBoxDoer());
 	}
 	
 	public void tabWasSelected()

@@ -275,6 +275,7 @@ public class Actions
 		registerAction(new ActionDeleteResultsChain(mainWindow));
 		registerAction(new ActionShowConceptualModel(mainWindow));
 		registerAction(new ActionCreateOrShowResultsChain(mainWindow));
+		registerAction(new ActionInsertTextBox(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
