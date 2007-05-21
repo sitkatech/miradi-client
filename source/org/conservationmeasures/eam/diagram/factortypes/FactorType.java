@@ -46,6 +46,11 @@ public abstract class FactorType
 		return false;
 	}
 	
+	public boolean isTextBox()
+	{
+		return false;
+	}
+	
 	public boolean isFactorCluster()
 	{
 		return false;
