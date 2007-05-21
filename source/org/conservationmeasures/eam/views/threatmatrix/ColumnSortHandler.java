@@ -70,6 +70,10 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 		return threatGridPanel.getThreatMatrixTable().getSummaryColumn();
 	}
 
+	// TODO: We should not have to DO the sort here...we should be 
+	// able to just save the new sort state, and then the view's 
+	// command listener should repaint...but it didn't seem to work 
+	// when I tried it. kbs. 2007-05-21
 	private void sortBySelectedColumn(int sortColumn) throws Exception
 	{
 		sort(sortColumn);

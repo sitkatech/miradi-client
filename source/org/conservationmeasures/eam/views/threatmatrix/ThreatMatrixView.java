@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.actions.ActionShowCellRatings;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSetThreatRating;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -29,6 +30,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -181,13 +183,16 @@ public class ThreatMatrixView extends UmbrellaView
 
 	private void updateAfterCommand(Command rawCommand)
 	{
-		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-			updateAfterCreateOrUndo((CommandCreateObject)rawCommand);
-		if(rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-			updateAfterDeleteOrUndo((CommandDeleteObject)rawCommand);
-		
 		try
 		{
+			String commandName = rawCommand.getCommandName();
+			if(commandName.equals(CommandCreateObject.COMMAND_NAME))
+				updateAfterCreateOrUndo((CommandCreateObject)rawCommand);
+			if(rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+				updateAfterDeleteOrUndo((CommandDeleteObject)rawCommand);
+			if(rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+				updateSortIfNeeded((CommandSetObjectData)rawCommand);
+		
 			snapUiToExecutedCommand(rawCommand);
 			if(grid != null)
 			{
@@ -200,6 +205,19 @@ public class ThreatMatrixView extends UmbrellaView
 		}
 	}
 	
+	private void updateSortIfNeeded(CommandSetObjectData data) throws Exception
+	{
+		if(data.getObjectType() != ViewData.getObjectType())
+			return;
+		
+		String tag = data.getFieldTag();
+		if(tag.equals(ViewData.TAG_CURRENT_SORT_BY) || 
+				data.getFieldTag().equals(ViewData.TAG_CURRENT_SORT_DIRECTION))
+		{
+			grid.establishPriorSortState();
+		}
+	}
+
 	private void updateAfterCreateOrUndo(CommandCreateObject commandDoneOrUndone)
 	{
 		model.fireTableDataChanged();
