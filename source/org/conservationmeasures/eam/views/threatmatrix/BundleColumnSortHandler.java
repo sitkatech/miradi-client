@@ -19,7 +19,7 @@ public class BundleColumnSortHandler extends ColumnSortHandler
 	}
 
 
-	public void saveState(int sortColumn)
+	public void saveState(int sortColumn) throws Exception
 	{
 		ThreatMatrixTableModel mainTableModel = (ThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel();
 		if(isSummaryColumn(sortColumn, mainTableModel))

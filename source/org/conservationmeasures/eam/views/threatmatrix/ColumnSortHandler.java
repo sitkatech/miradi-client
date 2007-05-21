@@ -34,11 +34,18 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 
 	public void mouseClicked(MouseEvent e) 
 	{
-		int clickedColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
-		if (clickedColumn >= 0)
+		try
 		{
-			int sortColumn = ((JTableHeader)e.getSource()).getTable().convertColumnIndexToModel(clickedColumn);
-			sortBySelectedColumn(sortColumn);
+			int clickedColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
+			if (clickedColumn >= 0)
+			{
+				int sortColumn = ((JTableHeader)e.getSource()).getTable().convertColumnIndexToModel(clickedColumn);
+				sortBySelectedColumn(sortColumn);
+			}
+		}
+		catch(Exception e1)
+		{
+			EAM.logException(e1);
 		}
 	}
 
@@ -63,9 +70,11 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 		return threatGridPanel.getThreatMatrixTable().getSummaryColumn();
 	}
 
-	private void sortBySelectedColumn(int sortColumn)
+	private void sortBySelectedColumn(int sortColumn) throws Exception
 	{
 		sort(sortColumn);
+		saveState(sortColumn);
+
 		threatGridPanel.revalidate();
 		threatGridPanel.repaint();
 	}
@@ -81,24 +90,20 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 	
 
 	
-	void saveSortState(boolean sortDirection, String sortColumnId)
+	void saveSortState(boolean sortDirection, String sortColumnId) throws Exception
 	{
+		String order = (sortDirection) ? ViewData.SORT_ASCENDING: ViewData.SORT_DESCENDING;
+		ViewData viewData = threatGridPanel.getProject().getCurrentViewData();
+
+		executeCommand(new CommandBeginTransaction());
 		try
 		{
-			String order = (sortDirection) ? ViewData.SORT_ASCENDING: ViewData.SORT_DESCENDING;
-			ViewData viewData = threatGridPanel.getProject().getCurrentViewData();
-
-			// FIXME: Should be in try/finally
-			executeCommand(new CommandBeginTransaction());
-			
 			saveSortDirection(order, viewData);
 			saveSortByColumn(sortColumnId, viewData);
-
-			executeCommand(new CommandEndTransaction());
 		}
-		catch(Exception e)
+		finally
 		{
-			EAM.logError("Unable to save sort state:" + e);
+			executeCommand(new CommandEndTransaction());
 		}
 	}
 
@@ -139,13 +144,11 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 			threatList = reverseSort(threatList);
 
 		mainTableModel.setThreatRows(threatList);
-		
-		saveState(sortColumn);
 	}
 	
 	
 	public abstract Comparator getComparator(int sortColumn);
-	public abstract void saveState(int sortColumn);
+	public abstract void saveState(int sortColumn) throws Exception;
 	public abstract boolean getToggle();
 	
 	protected ThreatGridPanel threatGridPanel;

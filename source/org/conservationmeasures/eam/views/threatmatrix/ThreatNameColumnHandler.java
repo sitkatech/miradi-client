@@ -20,7 +20,7 @@ public class ThreatNameColumnHandler extends ColumnSortHandler
 	}
 
 
-	public void saveState(int sortColumn)
+	public void saveState(int sortColumn) throws Exception
 	{
 		saveSortState(sortToggle, ViewData.SORT_THREATS);
 	}
