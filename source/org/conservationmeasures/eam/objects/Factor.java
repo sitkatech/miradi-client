@@ -230,7 +230,7 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
-	public boolean canHaveIndicatros()
+	public boolean canHaveIndicators()
 	{
 		return true;
 	}

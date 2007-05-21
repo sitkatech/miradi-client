@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.TextBox;
 
@@ -19,7 +20,6 @@ public class DiagramTextBoxCell extends FactorCell
 
 	public Color getColor()
 	{
-		//FIXME TextBox - change color
-		return Color.gray.brighter();
+		return DiagramConstants.TEXT_BOX_COLOR;
 	}
 }

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
@@ -18,8 +19,7 @@ public class TextBoxIcon extends EamIcon
 	}
 	
 	Color getIconColor()
-	{
-		//TODO change color 
-		return Color.gray.brighter();
+	{ 
+		return DiagramConstants.TEXT_BOX_COLOR;
 	}
 }

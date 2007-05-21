@@ -56,7 +56,7 @@ public class TextBox extends Factor
 		return false;
 	}
 	
-	public boolean canHaveIndicatros()
+	public boolean canHaveIndicators()
 	{
 		return false;
 	}

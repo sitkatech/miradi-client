@@ -179,7 +179,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
 		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
 
-		if (factor.canHaveIndicatros())
+		if (factor.canHaveIndicators())
 		{
 			indicatorsTab = new IndicatorListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
