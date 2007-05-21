@@ -17,12 +17,4 @@ public class ThreatRatingWizardScopeStep extends ThreatRatingWizardSetValue
 	{
 		super(wizardToUse, critertion);
 	}
-
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-
-	String HTML_FILENAME = "ThreatRatingWizardScopeStep";
-
 }

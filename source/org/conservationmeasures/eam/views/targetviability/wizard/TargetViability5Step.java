@@ -14,12 +14,4 @@ public class TargetViability5Step extends WizardStep
 	{
 		super(wizardToUse);
 	}
-
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-
-	String HTML_FILENAME = "TargetViability5Step";
-
 }

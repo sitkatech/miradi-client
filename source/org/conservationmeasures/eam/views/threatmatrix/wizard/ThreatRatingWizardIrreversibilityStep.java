@@ -17,13 +17,4 @@ public class ThreatRatingWizardIrreversibilityStep extends ThreatRatingWizardSet
 	{
 		super(wizardToUse, critertion);
 	}
-
-
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-
-	String HTML_FILENAME = "ThreatRatingWizardIrreversibilityStep";
-
 }

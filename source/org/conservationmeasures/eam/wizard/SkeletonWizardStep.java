@@ -34,7 +34,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 
 	public String getText() throws Exception
 	{
-		String resourceFileName = getResourceFileName() + ".html";
+		String resourceFileName = getResourceFileName();
 		if(resourceFileName == null)
 			return "Missing text";
 		
@@ -43,7 +43,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 
 	public String getResourceFileName()
 	{
-		return null;
+		return getClass().getSimpleName() + ".html";
 	}
 	
 	public void buttonPressed(String buttonName)

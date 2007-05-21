@@ -12,14 +12,6 @@ public class ThreatMatrixOverviewStep extends ThreatRatingWizardStep
 	{
 		super(wizardToUse);
 	}
-
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-
-	String HTML_FILENAME = "ThreatMatrixOverviewStep";
-
 }
 
 

@@ -25,7 +25,6 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		super(wizardToUse);
 	}
 
-
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
 		ThreatMatrixTableModel model = getView().getModel();
@@ -97,13 +96,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		choices[0] = SELECT_A_THREAT;
 		return choices;
 	}
-	
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
 
-	
 	public void buttonPressed(String buttonName)
 	{
 		if (buttonName.equals("Next"))
@@ -147,11 +140,6 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		}
 		ThreatRatingWizardChooseBundle wizard;
 	}
-	
-
-	
-	String HTML_FILENAME = "ThreatRatingWizardChooseBundle";
-
 
 	static final String SELECT_A_TARGET = "--Select a Target";
 	static final String SELECT_A_THREAT = "--Select a Threat";

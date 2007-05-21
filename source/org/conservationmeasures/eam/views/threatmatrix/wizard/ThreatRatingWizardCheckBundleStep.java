@@ -33,16 +33,9 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 	{
 		return HTML_EXPLANATION_OF_CALCULATION_FILENAME;
 	}
-	
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
 
 	String HTML_EXPLANATION_OF_CALCULATION_FILENAME = "ThreatRatingExplanationOfCalculation.html";
-	String HTML_FILENAME = "ThreatRatingWizardCheckBundleStep";
 	
 	static final String SHOW_RULES = "ShowRules";
-
 }
 

@@ -14,11 +14,4 @@ public class MonitoringPlanOverviewStep extends WizardStep
 	{
 		super(wizardToUse);
 	}
-
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-
-	String HTML_FILENAME = "MonitoringPlanOverviewStep";
 }

@@ -15,11 +15,4 @@ public class DiagramWizardReviewModelAndAdjustStep extends WizardStep
 	{
 		super(panelToUse);
 	}
-
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-	
-	String HTML_FILENAME = "DiagramWizardReviewModelAndAdjustStep";
 }

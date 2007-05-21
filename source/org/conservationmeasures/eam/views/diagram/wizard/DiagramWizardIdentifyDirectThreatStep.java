@@ -15,10 +15,4 @@ public class DiagramWizardIdentifyDirectThreatStep extends WizardStep
 	{
 		super(panelToUse);
 	}
-	
-	public String getResourceFileName()
-	{
-		return "DiagramWizardIdentifyDirectThreatStep";
-	}
-
 }

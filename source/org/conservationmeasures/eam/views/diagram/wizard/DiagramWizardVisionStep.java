@@ -14,10 +14,4 @@ public class DiagramWizardVisionStep extends WizardStep
 	{
 		super(wizardToUse);
 	}
-
-	public String getResourceFileName()
-	{
-		return "DiagramWizardVisionStep";
-	}
-	
 }

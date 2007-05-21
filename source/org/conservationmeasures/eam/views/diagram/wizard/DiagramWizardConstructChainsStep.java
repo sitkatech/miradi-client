@@ -15,9 +15,4 @@ public class DiagramWizardConstructChainsStep extends WizardStep
 	{
 		super(panelToUse);
 	}
-	
-	public String getResourceFileName()
-	{
-		return "DiagramWizardConstructChainsStep";
-	}
 }

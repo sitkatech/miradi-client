@@ -14,11 +14,4 @@ public class ScheduleOverviewStep extends WizardStep
 	{
 		super(wizardToUse);
 	}
-
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-
-	String HTML_FILENAME = "ScheduleOverviewStep";
 }

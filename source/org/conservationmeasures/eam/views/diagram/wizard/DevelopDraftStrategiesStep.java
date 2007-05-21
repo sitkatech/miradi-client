@@ -14,10 +14,4 @@ public class DevelopDraftStrategiesStep extends WizardStep
 	{
 		super(panelToUse);
 	}
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-	
-	String HTML_FILENAME = "DevelopDraftStrategiesStep";
 }

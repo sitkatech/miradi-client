@@ -14,9 +14,4 @@ public class DiagramWizardProjectScopeStep extends WizardStep
 	{
 		super(panelToUse);
 	}
-
-	public String getResourceFileName()
-	{
-		return "DiagramWizardProjectScopeStep";
-	}
 }

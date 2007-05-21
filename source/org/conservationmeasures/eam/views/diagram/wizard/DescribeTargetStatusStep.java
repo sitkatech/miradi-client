@@ -14,10 +14,4 @@ public class DescribeTargetStatusStep extends WizardStep
 	{
 		super(panelToUse);
 	}
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-	
-	String HTML_FILENAME = "DescribeTargetStatusStep";
 }

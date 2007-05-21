@@ -14,12 +14,5 @@ public class StrategicPlanDevelopGoalStep extends WizardStep
 	{
 		super(wizardToUse);
 	}
-	
-	public String getResourceFileName()
-	{
-		return HTML_FILE_NAME;
-	}
-	
-	private static final String HTML_FILE_NAME = "StrategicPlanDevelopGoalStep";
 }
 

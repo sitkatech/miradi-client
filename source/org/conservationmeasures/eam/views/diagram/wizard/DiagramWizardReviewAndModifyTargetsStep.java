@@ -15,10 +15,4 @@ public class DiagramWizardReviewAndModifyTargetsStep extends WizardStep
 	{
 		super(panelToUse);
 	}
-
-	public String getResourceFileName()
-	{
-		return "DiagramWizardReviewAndModifyTargetsStep";
-	}
-
 }

@@ -15,11 +15,4 @@ public class BudgetWizardDemo extends WizardStep
 	{
 		super(wizardToUse);
 	}
-	
-	public String getResourceFileName()
-	{
-		return HTML_FILENAME;
-	}
-
-	String HTML_FILENAME = "BudgetWizardDemo";
 }
