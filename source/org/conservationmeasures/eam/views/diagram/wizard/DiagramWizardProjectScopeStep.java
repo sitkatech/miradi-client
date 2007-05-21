@@ -17,6 +17,6 @@ public class DiagramWizardProjectScopeStep extends WizardStep
 
 	public String getResourceFileName()
 	{
-		return "ProjectScopeStep.html";
+		return "DiagramWizardProjectScopeStep";
 	}
 }

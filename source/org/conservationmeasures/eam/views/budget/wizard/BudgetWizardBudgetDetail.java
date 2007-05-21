@@ -20,5 +20,5 @@ public class BudgetWizardBudgetDetail extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "BudgetDetail.html";
+	String HTML_FILENAME = "BudgetWizardBudgetDetail";
 }

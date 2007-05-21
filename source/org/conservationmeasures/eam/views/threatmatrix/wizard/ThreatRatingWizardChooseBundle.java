@@ -150,7 +150,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	
 
 	
-	String HTML_FILENAME = "ThreatRatingSelectTarget.html";
+	String HTML_FILENAME = "ThreatRatingWizardChooseBundle";
 
 
 	static final String SELECT_A_TARGET = "--Select a Target";

@@ -17,7 +17,7 @@ public class DiagramWizardVisionStep extends WizardStep
 
 	public String getResourceFileName()
 	{
-		return "VisionStep.html";
+		return "DiagramWizardVisionStep";
 	}
 	
 }

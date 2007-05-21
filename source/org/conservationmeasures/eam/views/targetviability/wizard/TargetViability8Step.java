@@ -20,6 +20,6 @@ public class TargetViability8Step extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "viability-8.html";
+	String HTML_FILENAME = "TargetViability8Step";
 
 }

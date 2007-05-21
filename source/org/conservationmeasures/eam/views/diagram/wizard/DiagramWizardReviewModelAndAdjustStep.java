@@ -21,5 +21,5 @@ public class DiagramWizardReviewModelAndAdjustStep extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "ReviewModelAndAdjust.html";
+	String HTML_FILENAME = "DiagramWizardReviewModelAndAdjustStep";
 }

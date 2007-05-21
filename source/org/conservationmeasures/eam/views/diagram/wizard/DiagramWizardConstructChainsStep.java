@@ -18,6 +18,6 @@ public class DiagramWizardConstructChainsStep extends WizardStep
 	
 	public String getResourceFileName()
 	{
-		return "ConstructChainsHowto.html";
+		return "DiagramWizardConstructChainsStep";
 	}
 }

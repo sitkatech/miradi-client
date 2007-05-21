@@ -19,5 +19,5 @@ public class DiagramWizardResultsChainStep extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "DiagramWizardResultsChain.html";
+	String HTML_FILENAME = "DiagramWizardResultsChainStep";
 }

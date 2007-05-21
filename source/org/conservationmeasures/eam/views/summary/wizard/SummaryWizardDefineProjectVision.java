@@ -20,5 +20,5 @@ public class SummaryWizardDefineProjectVision extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "SummaryDefineProjectVisionStep.html";
+	String HTML_FILENAME = "SummaryWizardDefineProjectVision";
 }

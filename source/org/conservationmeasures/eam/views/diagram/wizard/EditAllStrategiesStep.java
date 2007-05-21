@@ -20,5 +20,5 @@ public class EditAllStrategiesStep extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "EditAllStrategies.html";
+	String HTML_FILENAME = "EditAllStrategiesStep";
 }

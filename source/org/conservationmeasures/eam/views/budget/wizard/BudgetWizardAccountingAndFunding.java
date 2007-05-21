@@ -20,6 +20,6 @@ public class BudgetWizardAccountingAndFunding extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "AccountingCodesAndFundingSources.html";
+	String HTML_FILENAME = "BudgetWizardAccountingAndFunding";
 
 }

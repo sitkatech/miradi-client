@@ -20,7 +20,7 @@ public class SummaryWizardDefineProjectLeader extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "SummaryDefineProjectLeaderStep.html";
+	String HTML_FILENAME = "SummaryWizardDefineProjectLeader";
 }
 
 

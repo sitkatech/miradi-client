@@ -41,7 +41,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "ThreatRatingCheckTotals.html";
+	String HTML_FILENAME = "ThreatRatingWizardCheckTotalsStep";
 	String HTML_BUNDLE_RULES_FILENAME = "ThreatRatingBundleRules.html";
 	static final String SHOW_RULES = "ShowRules";
 }

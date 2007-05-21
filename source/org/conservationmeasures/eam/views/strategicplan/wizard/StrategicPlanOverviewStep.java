@@ -20,5 +20,5 @@ public class StrategicPlanOverviewStep extends WizardStep
 		return HTML_FILE_NAME;
 	}
 	
-	private static final String HTML_FILE_NAME = "HowToConstructStratPlan.html";
+	private static final String HTML_FILE_NAME = "StrategicPlanOverviewStep";
 }

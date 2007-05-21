@@ -19,5 +19,5 @@ public class SelectChainStep extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "SelectChain.html";
+	String HTML_FILENAME = "SelectChainStep";
 }

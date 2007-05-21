@@ -18,7 +18,7 @@ public class ThreatMatrixOverviewStep extends ThreatRatingWizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "ThreatRatingOverview.html";
+	String HTML_FILENAME = "ThreatMatrixOverviewStep";
 
 }
 

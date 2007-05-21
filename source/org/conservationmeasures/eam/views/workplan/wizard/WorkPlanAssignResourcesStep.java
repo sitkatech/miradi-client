@@ -20,5 +20,5 @@ public class WorkPlanAssignResourcesStep extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "WorkPlanAssignResources.html";
+	String HTML_FILENAME = "WorkPlanAssignResourcesStep";
 }

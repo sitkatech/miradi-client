@@ -20,5 +20,5 @@ public class ScheduleOverviewStep extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "WelcomeStep.html";
+	String HTML_FILENAME = "ScheduleOverviewStep";
 }

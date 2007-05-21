@@ -20,6 +20,6 @@ public class MonitoringWizardFocusStep extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "MonitoringFocusStep.html";
+	String HTML_FILENAME = "MonitoringWizardFocusStep";
 }
 

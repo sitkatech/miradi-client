@@ -20,6 +20,6 @@ public class SummaryWizardDefineTeamMembers extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "SummaryDefineTeamMembersStep.html";
+	String HTML_FILENAME = "SummaryWizardDefineTeamMembers";
 }
 

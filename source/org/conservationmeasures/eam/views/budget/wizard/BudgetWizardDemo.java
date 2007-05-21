@@ -21,5 +21,5 @@ public class BudgetWizardDemo extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "Demo.html";
+	String HTML_FILENAME = "BudgetWizardDemo";
 }

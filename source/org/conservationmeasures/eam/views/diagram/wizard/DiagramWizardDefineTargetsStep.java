@@ -18,7 +18,7 @@ public class DiagramWizardDefineTargetsStep extends WizardStep
 
 	public String getResourceFileName()
 	{
-		return "DefineTargetsStep.html";
+		return "DiagramWizardDefineTargetsStep";
 	}
 
 }

@@ -20,6 +20,6 @@ public class TargetViabilityMethodChoiceStep extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "ViabilityMethodChoice.html";
+	String HTML_FILENAME = "TargetViabilityMethodChoiceStep";
 
 }

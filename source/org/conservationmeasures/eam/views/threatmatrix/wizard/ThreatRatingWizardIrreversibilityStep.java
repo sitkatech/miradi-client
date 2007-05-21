@@ -24,6 +24,6 @@ public class ThreatRatingWizardIrreversibilityStep extends ThreatRatingWizardSet
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "ThreatRatingIrreversibility.html";
+	String HTML_FILENAME = "ThreatRatingWizardIrreversibilityStep";
 
 }

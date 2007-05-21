@@ -40,7 +40,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 	}
 
 	String HTML_EXPLANATION_OF_CALCULATION_FILENAME = "ThreatRatingExplanationOfCalculation.html";
-	String HTML_FILENAME = "ThreatRatingCheckBundle.html";
+	String HTML_FILENAME = "ThreatRatingWizardCheckBundleStep";
 	
 	static final String SHOW_RULES = "ShowRules";
 

@@ -18,7 +18,7 @@ public class DiagramWizardReviewAndModifyTargetsStep extends WizardStep
 
 	public String getResourceFileName()
 	{
-		return "ReviewAndModifyTargetsStep.html";
+		return "DiagramWizardReviewAndModifyTargetsStep";
 	}
 
 }

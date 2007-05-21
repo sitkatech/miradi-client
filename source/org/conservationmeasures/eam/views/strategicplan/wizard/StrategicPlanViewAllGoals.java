@@ -20,5 +20,5 @@ public class StrategicPlanViewAllGoals extends WizardStep
 		return HTML_FILE_NAME;
 	}
 	
-	private static final String HTML_FILE_NAME = "ViewAllGoals.html";
+	private static final String HTML_FILE_NAME = "StrategicPlanViewAllGoals";
 }

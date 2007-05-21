@@ -15,5 +15,5 @@ public class TargetViabilityOverviewAfterDetailedModeStep extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "ViabilityViewOverviewStep.html";
+	String HTML_FILENAME = "TargetViabilityOverviewStep";
 }

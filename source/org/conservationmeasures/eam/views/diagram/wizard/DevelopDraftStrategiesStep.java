@@ -19,5 +19,5 @@ public class DevelopDraftStrategiesStep extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "DevelopDraftStrategies.html";
+	String HTML_FILENAME = "DevelopDraftStrategiesStep";
 }

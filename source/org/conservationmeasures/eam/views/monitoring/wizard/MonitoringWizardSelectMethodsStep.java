@@ -20,5 +20,5 @@ public class MonitoringWizardSelectMethodsStep extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "MonitoringSelectMethodsStep.html";
+	String HTML_FILENAME = "MonitoringWizardSelectMethodsStep";
 }

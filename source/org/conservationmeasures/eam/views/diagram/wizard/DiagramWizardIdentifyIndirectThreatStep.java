@@ -18,7 +18,7 @@ public class DiagramWizardIdentifyIndirectThreatStep extends WizardStep
 
 	public String getResourceFileName()
 	{
-		return "IdentifyIndirectThreatAndOpportunities.html";
+		return "DiagramWizardIdentifyIndirectThreatStep";
 	}
 
 }

@@ -20,5 +20,5 @@ public class MonitoringPlanOverviewStep extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "MonitoringOverviewStep.html";
+	String HTML_FILENAME = "MonitoringPlanOverviewStep";
 }

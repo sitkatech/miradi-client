@@ -20,6 +20,6 @@ public class MonitoringWizardDefineIndicatorsStep extends WizardStep
 		return HTML_FILENAME;
 	}
 
-	String HTML_FILENAME = "MonitoringDefineIndicatorsStep.html";
+	String HTML_FILENAME = "MonitoringWizardDefineIndicatorsStep";
 }
 

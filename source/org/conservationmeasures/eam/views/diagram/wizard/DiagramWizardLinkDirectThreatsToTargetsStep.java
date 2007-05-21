@@ -18,7 +18,7 @@ public class DiagramWizardLinkDirectThreatsToTargetsStep extends WizardStep
 
 	public String getResourceFileName()
 	{
-		return "LinkDirectThreatsToTargets.html";
+		return "DiagramWizardLinkDirectThreatsToTargetsStep";
 	}
 
 }

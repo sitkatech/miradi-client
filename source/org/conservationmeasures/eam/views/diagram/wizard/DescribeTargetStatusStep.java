@@ -19,5 +19,5 @@ public class DescribeTargetStatusStep extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "DescribeTargetStatusStep.html";
+	String HTML_FILENAME = "DescribeTargetStatusStep";
 }

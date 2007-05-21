@@ -22,6 +22,6 @@ public class SummaryOverviewStep extends WizardStep
 	}
 	
 
-	String HTML_FILENAME = "SummaryOverviewStep.html";
+	String HTML_FILENAME = "SummaryOverviewStep";
 }
 
