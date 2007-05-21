@@ -11,9 +11,14 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.EventObject;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -31,12 +36,19 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.ImageView;
 import javax.swing.text.html.StyleSheet;
 
+import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCut;
+import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionPaste;
+import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMResourceImageIcon;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiEditorPane;
 
 
-public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
+public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, MouseListener
 {
 	public HtmlFormViewer(String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
@@ -45,7 +57,9 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 		setEditable(false);
 		setText(htmlSource);
 		addHyperlinkListener(this);
+		addMouseListener(this);
 	}
+
 	
 	public void setText(String text)
 	{
@@ -84,6 +98,75 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 
 	}
 	
+	
+	
+	
+	public void mouseClicked(MouseEvent e)
+	{
+	}
+
+	public void mouseEntered(MouseEvent e)
+	{
+	}
+
+	public void mouseExited(MouseEvent e)
+	{	
+	}
+
+	public void mousePressed(MouseEvent e)
+	{
+		if(e.isPopupTrigger())
+			fireRightClick(e);
+	}
+
+	public void mouseReleased(MouseEvent e)
+	{
+		if(e.isPopupTrigger())
+			fireRightClick(e);
+	}
+	
+	void fireRightClick(MouseEvent e)
+	{
+		getRightClickMenu(EAM.mainWindow.getActions()).show(this, e.getX(), e.getY());
+	}
+	
+	public JPopupMenu getRightClickMenu(Actions actions)
+	{
+		JPopupMenu menu = new JPopupMenu();
+		
+		JMenuItem menuItemCopy = new JMenuItem(new EditorActionCopy());
+		menu.add(menuItemCopy);
+		
+		JMenuItem menuItemCut = new JMenuItem(actions.get(ActionCut.class));
+		menuItemCut.setEnabled(false);
+		menu.add(menuItemCut);
+		
+		JMenuItem menuItemPaste = new JMenuItem(actions.get(ActionPaste.class));
+		menuItemPaste.setEnabled(false);
+		menu.add(menuItemPaste);
+		
+		JMenuItem menuItemDelete = new JMenuItem(actions.get(ActionDelete.class));
+		menuItemDelete.setEnabled(false);
+		menu.add(menuItemDelete);
+		
+		return menu;
+	}
+	
+	
+	class EditorActionCopy extends ActionCopy
+	{
+		public EditorActionCopy()
+		{
+			super(EAM.mainWindow);
+		}
+		
+		public void doAction(EventObject event) throws CommandFailedException
+		{
+			copy();
+		}
+	}
+	
+
 	class OurHtmlEditorKit extends HTMLEditorKit
 	{
 		public OurHtmlEditorKit(HyperlinkHandler handler)
@@ -298,6 +381,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener
 		String name;
 		Image image;
 	}
+	
 	
 	HyperlinkHandler linkHandler;
 }
