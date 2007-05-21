@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.wizard;
 
-import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
@@ -17,18 +17,24 @@ public class WizardStep extends SkeletonWizardStep
 	{
 		super(wizardToUse);
 
-		htmlViewer = new WizardHtmlViewer(this);
-		JScrollPane scrollPane = new FastScrollPane(htmlViewer);
-		add(scrollPane);
+		htmlViewerLeft = new WizardHtmlViewer(this);
+		htmlViewerRight = new WizardHtmlViewer(this);
+		JSplitPane splitPane = new JSplitPane();
+		splitPane.setLeftComponent(new FastScrollPane(htmlViewerLeft));
+		splitPane.setRightComponent(new FastScrollPane(htmlViewerRight));
+		splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
+		splitPane.setDividerLocation(1000); //TEMP CODE until conversion is complete; force left side open fully
+		add(splitPane);
 	}
 
 	public void refresh() throws Exception
 	{
-		String htmlText = getText();
-		htmlViewer.setText(htmlText);
+		htmlViewerLeft.setText(getTextLeft());
+		htmlViewerRight.setText(getTextRight());
 		invalidate();
 		validate();
 	}
 	
-	private HtmlFormViewer htmlViewer;
+	private HtmlFormViewer htmlViewerLeft;
+	private HtmlFormViewer htmlViewerRight;
 }

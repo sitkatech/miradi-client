@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.wizard;
 
 import java.awt.BorderLayout;
+import java.net.URL;
 import java.util.Hashtable;
 
 import javax.swing.JComponent;
@@ -32,18 +33,38 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		return wizard;
 	}
 
-	public String getText() throws Exception
+	public String getTextLeft() throws Exception
 	{
-		String resourceFileName = getResourceFileName();
-		if(resourceFileName == null)
-			return "Missing text";
-		
-		return EAM.loadResourceFile(getClass(), resourceFileName);
+		if (!doesExisits("Left"))
+			return getText("");
+		return getText("Left");
 	}
 
-	public String getResourceFileName()
+	public String getTextRight() throws Exception
 	{
-		return getClass().getSimpleName() + ".html";
+		if (!doesExisits("Right"))
+			return "";
+		return getText("Right");
+	}
+	
+	private String getText(String ext) throws Exception
+	{
+		String resourceFileName = getResourceFileName(ext);
+		if(resourceFileName == null)
+			return "Missing text";
+		return EAM.loadResourceFile(getClass(), resourceFileName);
+	}
+	
+	//NOTE: Temp code to allow check in during wizard conversion
+	private boolean doesExisits(String ext) throws Exception
+	{
+		URL url = EAM.getResourceURL(getClass(), getResourceFileName(ext));
+		return (url!=null);
+	}
+	
+	private String getResourceFileName(String ext)
+	{
+		return getClass().getSimpleName() + ext + ".html";
 	}
 	
 	public void buttonPressed(String buttonName)
