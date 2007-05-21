@@ -9,13 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.database.FileBasedProjectServer;
+import org.conservationmeasures.eam.database.HybridFileBasedProjectServer;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.TestCaseEnhanced;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 
-public class ProjectServerForTesting extends FileBasedProjectServer
+public class ProjectServerForTesting extends HybridFileBasedProjectServer
 {
 	public ProjectServerForTesting() throws IOException
 	{

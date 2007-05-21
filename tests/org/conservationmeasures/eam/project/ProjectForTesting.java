@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.AssignmentId;
@@ -41,11 +42,16 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 {
 	public ProjectForTesting(String testName) throws Exception
 	{
-		super(new ProjectServerForTesting());
-		
+		this(new ProjectServerForTesting());
+	}
+	
+	public ProjectForTesting(ProjectServer server) throws Exception
+	{
+		super(server);
+		String filename = getFilename();
 		addCommandExecutedListener(this);
 		diagramModel = new DiagramModel(this);
-		getTestDatabase().openMemoryDatabase(testName);
+		getTestDatabase().openMemoryDatabase(filename);
 		finishOpening();
 		commandStack = new Vector();
 	}

@@ -746,7 +746,7 @@ public class TestProject extends EAMTestCase
 			diskProject.close();
 		}
 		
-		ProjectForTesting loadedProject = new ProjectForTesting(getName());
+		ProjectForTesting loadedProject = new ProjectForTesting(diskProject.getDatabase());
 		loadedProject.createOrOpen(tempDir);
 		try
 		{
