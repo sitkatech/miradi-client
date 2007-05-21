@@ -35,7 +35,11 @@ public class HybridFileBasedProjectServer extends FileBasedProjectServer
 	
 	boolean deleteJsonFile(File objectFile)
 	{
-		objects.remove(objectFile);
+		if (objects.containsKey(objectFile))
+		{
+			objects.remove(objectFile);
+			return true;
+		}
 		return objectFile.delete();
 	}
 	
