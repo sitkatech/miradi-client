@@ -127,6 +127,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	void fireRightClick(MouseEvent e)
 	{
+		//FIXME: should not reference static mainwindow var here
 		getRightClickMenu(EAM.mainWindow.getActions()).show(this, e.getX(), e.getY());
 	}
 	
@@ -157,7 +158,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	{
 		public EditorActionCopy()
 		{
-			super(EAM.mainWindow);
+			super(null);
 		}
 		
 		public void doAction(EventObject event) throws CommandFailedException
