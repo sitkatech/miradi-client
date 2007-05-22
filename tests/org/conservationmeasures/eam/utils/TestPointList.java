@@ -116,5 +116,20 @@ public class TestPointList extends EAMTestCase
 		return list;
 	}
 	
+	public void testGetClosestPoint()
+	{
+		PointList sampleList = createSamplePointList();
+		Point point = new Point(4, 4);
+		assertEquals(sampleList.get(2), sampleList.getClosestPoint(point));
+		
+		Point point2 = new Point(0, 0);
+		assertEquals(sampleList.get(0), sampleList.getClosestPoint(point2));
+		
+		assertEquals("not the same point?", sampleList.get(1), sampleList.getClosestPoint(sampleList.get(1)));
+		
+		PointList emptyList = new PointList();
+		assertEquals(new Point(0, 0), emptyList.getClosestPoint(point2));
+	}
+	
 	
 }
