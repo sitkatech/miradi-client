@@ -14,8 +14,10 @@ import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ProjectScopePanel;
+import org.conservationmeasures.eam.dialogs.TextBoxPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 
@@ -41,6 +43,7 @@ public class Properties extends LocationDoer
 
 		return false;
 	}
+	
 
 	public void doIt() throws CommandFailedException
 	{
@@ -48,15 +51,31 @@ public class Properties extends LocationDoer
 			return;
 
 		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
-		if(selected.isFactor())
+		
+		if(selected.isFactor() && !isTextBoxFactor(selected))
 			doFactorProperties((FactorCell)selected, getLocation());
 		
+		if (isTextBoxFactor(selected))
+			doTextBoxProperties((FactorCell) selected);
+	
 		else if(selected.isProjectScope())
 			doProjectScopeProperties();
 		else if(selected.isFactorLink())
 			doFactorLinkProperties(selected.getDiagramFactorLink());
 	}
 	
+	private boolean isTextBoxFactor(EAMGraphCell selected)
+	{
+		if (!selected.isFactor())
+			return false;
+		
+		FactorCell factorCell = (FactorCell)selected;
+		if (factorCell.getWrappedType() == ObjectType.TEXT_BOX)
+			return true;
+		
+		return false;
+	}
+
 	void doProjectScopeProperties() throws CommandFailedException
 	{
 		ProjectScopePanel projectScopePanel = new ProjectScopePanel(getProject(), getProject().getMetadata());
@@ -76,6 +95,14 @@ public class Properties extends LocationDoer
 		int tabToStartOn = getTabToStartOn(selectedFactorCell, at);
 		DiagramFactor diagramFactor = selectedFactorCell.getDiagramFactor();
 		doFactorProperties(diagramFactor, tabToStartOn);
+	}
+
+	private void doTextBoxProperties(FactorCell selectedFactorCell)
+	{
+		DiagramFactor diagramFactor = selectedFactorCell.getDiagramFactor();
+		TextBoxPropertiesPanel panel = new TextBoxPropertiesPanel(getProject(), diagramFactor);
+		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
+		getView().showFloatingPropertiesDialog(propertiesDialog);
 	}
 
 	void doFactorProperties(DiagramFactor diagramFactor, int tabToStartOn)
