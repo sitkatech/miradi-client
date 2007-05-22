@@ -67,6 +67,14 @@ public class DiagramFactor extends BaseObject
 		return jsonObject;
 	}
 	
+	public static Dimension getDefaultSize(int type)
+	{
+		if (type == ObjectType.TEXT_BOX)
+			return new Dimension(180, 30);
+		
+		return getDefaultSize();
+	}
+	
 	public static Dimension getDefaultSize()
 	{
 		return new Dimension(120, 60);

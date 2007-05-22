@@ -105,11 +105,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 		Project project = getProject();
 		int factorType = getTypeToInsert();
 		FactorCell[] selectedNodes = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
-		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, DiagramFactor.getDefaultSize().width);
+		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, DiagramFactor.getDefaultSize(factorType).width);
 		Point snappedPoint  = project.getSnapped(deltaPoint);
 		
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getDiagramView().getDiagramModel());
-		CommandCreateObject createCommand = factorCommandHelper.createFactorAndDiagramFactor(factorType, snappedPoint, DiagramFactor.getDefaultSize(), getInitialText());
+		CommandCreateObject createCommand = factorCommandHelper.createFactorAndDiagramFactor(factorType, snappedPoint, DiagramFactor.getDefaultSize(factorType), getInitialText());
 		DiagramFactorId id = (DiagramFactorId) createCommand.getCreatedId();
 				
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, id);
