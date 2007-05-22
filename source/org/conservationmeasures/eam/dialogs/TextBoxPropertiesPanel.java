@@ -15,7 +15,7 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 {
 	public TextBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
 	{
-		super(projectToUse, ObjectType.FACTOR, diagramFactor.getWrappedId());
+		super(projectToUse, ObjectType.TEXT_BOX, diagramFactor.getWrappedId());
 
 		addField(createStringField(TextBox.TAG_LABEL));
 		updateFieldsFromProject();

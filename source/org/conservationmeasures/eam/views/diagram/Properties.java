@@ -52,25 +52,19 @@ public class Properties extends LocationDoer
 
 		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
 		
-		if(selected.isFactor() && !isTextBoxFactor(selected))
+		if(selected.isFactor())
 			doFactorProperties((FactorCell)selected, getLocation());
-		
-		if (isTextBoxFactor(selected))
-			doTextBoxProperties((FactorCell) selected);
-	
+
 		else if(selected.isProjectScope())
 			doProjectScopeProperties();
+		
 		else if(selected.isFactorLink())
 			doFactorLinkProperties(selected.getDiagramFactorLink());
 	}
 	
-	private boolean isTextBoxFactor(EAMGraphCell selected)
+	private boolean isTextBoxFactor(DiagramFactor selected)
 	{
-		if (!selected.isFactor())
-			return false;
-		
-		FactorCell factorCell = (FactorCell)selected;
-		if (factorCell.getWrappedType() == ObjectType.TEXT_BOX)
+		if (selected.getWrappedType() == ObjectType.TEXT_BOX)
 			return true;
 		
 		return false;
@@ -97,18 +91,20 @@ public class Properties extends LocationDoer
 		doFactorProperties(diagramFactor, tabToStartOn);
 	}
 
-	private void doTextBoxProperties(FactorCell selectedFactorCell)
-	{
-		DiagramFactor diagramFactor = selectedFactorCell.getDiagramFactor();
-		TextBoxPropertiesPanel panel = new TextBoxPropertiesPanel(getProject(), diagramFactor);
-		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
-		getView().showFloatingPropertiesDialog(propertiesDialog);
-	}
-
 	void doFactorProperties(DiagramFactor diagramFactor, int tabToStartOn)
 	{
 		DiagramView view = (DiagramView)getView();
-		view.showNodeProperties(diagramFactor, tabToStartOn);
+		if (isTextBoxFactor(diagramFactor))
+			doTextBoxProperties(diagramFactor);
+		else
+			view.showNodeProperties(diagramFactor, tabToStartOn);
+	}
+	
+	private void doTextBoxProperties(DiagramFactor diagramFactor)
+	{
+		TextBoxPropertiesPanel panel = new TextBoxPropertiesPanel(getProject(), diagramFactor);
+		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
+		getView().showFloatingPropertiesDialog(propertiesDialog);
 	}
 
 	// TODO: The tab should probably be computed elsewhere?
