@@ -29,7 +29,7 @@ import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
-import org.conservationmeasures.eam.views.diagram.Properties;
+import org.conservationmeasures.eam.views.diagram.PropertiesDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
@@ -165,7 +165,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			try 
 			{
 				Point at = event.getPoint();
-				Properties doer = new Properties();
+				PropertiesDoer doer = new PropertiesDoer();
 				doer.setMainWindow(mainWindow);
 				doer.setView(mainWindow.getCurrentView());
 				doer.setLocation(at);

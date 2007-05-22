@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 
-public class Properties extends LocationDoer
+public class PropertiesDoer extends LocationDoer
 {
 	public boolean isAvailable()
 	{

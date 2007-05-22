@@ -163,14 +163,14 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return node.getUnderlyingObject();
 	}
 
-	public Properties getPropertiesDoer()
+	public PropertiesDoer getPropertiesDoer()
 	{
 		return propertiesDoer;
 	}
 
 	private void addDiagramViewDoersToMap()
 	{
-		propertiesDoer = new Properties();
+		propertiesDoer = new PropertiesDoer();
 
 		addDoerToMap(ActionInsertIntermediateResult.class, new InsertIntermediateResultDoer());
 		addDoerToMap(ActionInsertTarget.class, new InsertTargetDoer());
@@ -755,7 +755,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	JSplitPane bigSplitter;
 	
-	Properties propertiesDoer;
+	PropertiesDoer propertiesDoer;
 	String mode;
 	
 	ModelessDialogWithClose nodePropertiesDlg;
