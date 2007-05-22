@@ -203,6 +203,12 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] nodesToLinkTo) throws Exception
 	{
+		if (! linkableType(newlyInserted.getWrappedType()))
+			return;
+		
+		if (! containsLikableType(nodesToLinkTo))
+			return;
+		
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
 		{
 			DiagramFactor toDiagramFactor = nodesToLinkTo[i].getDiagramFactor();
@@ -210,6 +216,22 @@ abstract public class InsertFactorDoer extends LocationDoer
 		}
 	}
 
+	private boolean containsLikableType(FactorCell[] nodesToLinkTo)
+	{
+		for (int i = 0; i < nodesToLinkTo.length; ++i)
+		{
+			if (!linkableType(nodesToLinkTo[i].getWrappedType()))
+					return false;
+		}
+		return true;
+	}
+	private boolean linkableType(int type)
+	{
+		if (type == ObjectType.TEXT_BOX)
+			return false;
+		
+		return true; 
+	}
 	void notLinkingToAnyFactors() throws CommandFailedException
 	{
 

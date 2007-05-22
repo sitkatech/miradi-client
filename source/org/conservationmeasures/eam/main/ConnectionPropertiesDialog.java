@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -79,16 +80,29 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		
 		DiagramModel model = diagramPanel.getDiagramModel();
 		DiagramFactor[] allDiagramFactors = model.getAllDiagramFactorsAsArray();
-		Factor[] factors = convertToFactorList(model.getProject(), allDiagramFactors);
+		DiagramFactor[] filteredDiagramFactors = getFilteredDiagramFactors(allDiagramFactors);
+		Factor[] factors = convertToFactorList(model.getProject(), filteredDiagramFactors);
 		
 		Vector dropDownItems = new Vector();
 		for(int i = 0; i < factors.length; ++i)
 		{
 			Factor factor = factors[i];
-			dropDownItems.add(new FactorDropDownItem(factor, allDiagramFactors[i]));
+			dropDownItems.add(new FactorDropDownItem(factor, filteredDiagramFactors[i]));
 		}
 		
 		return addItemsToComboBoxAndSort(comboBox, dropDownItems);
+	}
+
+	private DiagramFactor[] getFilteredDiagramFactors(DiagramFactor[] allDiagramFactors)
+	{
+		Vector filterdDiagramFactors = new Vector();
+		for (int i = 0; i < allDiagramFactors.length; ++i)
+		{
+			if (allDiagramFactors[i].getWrappedType() != ObjectType.TEXT_BOX)
+				filterdDiagramFactors.add(allDiagramFactors[i]);
+		}
+			
+		return (DiagramFactor[]) filterdDiagramFactors.toArray(new DiagramFactor[0]);
 	}
 
 	private UiComboBox addItemsToComboBoxAndSort(UiComboBox comboBox, Vector dropDownItems)
