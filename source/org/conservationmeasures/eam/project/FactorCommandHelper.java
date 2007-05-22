@@ -244,7 +244,8 @@ public class FactorCommandHelper
 		return new int[] {
 				ObjectType.INTERMEDIATE_RESULT, 
 				ObjectType.STRATEGY, 
-				ObjectType.TARGET, };
+				ObjectType.TARGET, 
+				ObjectType.TEXT_BOX, };
 	}
 	
 	private int[] getConceptualDiagramPastableTypes()
@@ -252,7 +253,8 @@ public class FactorCommandHelper
 		return new int[] {
 				ObjectType.CAUSE, 
 				ObjectType.STRATEGY, 
-				ObjectType.TARGET, };
+				ObjectType.TARGET,
+				ObjectType.TEXT_BOX, };
 	}
 
 	private FactorCell getDiagramFactorById(DiagramFactorId newNodeId) throws Exception
