@@ -13,7 +13,7 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 		factorPanel = panel;
 	}
 	
-	public void addAdditoinalButtons(Box buttonBar)
+	public void addAdditionalButtons(Box buttonBar)
 	{
 		createDirectionsButton(buttonBar);
 	}
