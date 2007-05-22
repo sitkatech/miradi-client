@@ -23,7 +23,6 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		super(new BorderLayout());
 		wizard = wizardToUse;
 		controls = new Hashtable();
-
 	}
 	
 	abstract public void refresh() throws Exception;
@@ -35,36 +34,36 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 
 	public String getTextLeft() throws Exception
 	{
-		if (!doesExisits("Left"))
-			return getText("");
-		return getText("Left");
+		if (!doesExist(LEFT))
+			return getText(NEITHER);
+		return getText(LEFT);
 	}
 
 	public String getTextRight() throws Exception
 	{
-		if (!doesExisits("Right"))
+		if (!doesExist(RIGHT))
 			return "";
-		return getText("Right");
+		return getText(RIGHT);
 	}
 	
-	private String getText(String ext) throws Exception
+	private String getText(String sideLabel) throws Exception
 	{
-		String resourceFileName = getResourceFileName(ext);
+		String resourceFileName = getResourceFileName(sideLabel);
 		if(resourceFileName == null)
 			return "Missing text";
 		return EAM.loadResourceFile(getClass(), resourceFileName);
 	}
 	
 	//NOTE: Temp code to allow check in during wizard conversion
-	private boolean doesExisits(String ext) throws Exception
+	private boolean doesExist(String ext) throws Exception
 	{
 		URL url = EAM.getResourceURL(getClass(), getResourceFileName(ext));
 		return (url!=null);
 	}
 	
-	private String getResourceFileName(String ext)
+	private String getResourceFileName(String sideLabel)
 	{
-		return getClass().getSimpleName() + ext + ".html";
+		return getClass().getSimpleName() + sideLabel + ".html";
 	}
 	
 	public void buttonPressed(String buttonName)
@@ -137,6 +136,10 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		controls.put(controlName, targetStepp);
 	}
 
+	private static final String RIGHT = "Right";
+	private static final String LEFT = "Left";
+	private static final String NEITHER = "";
+	
 	private Hashtable controls;
 	private WizardPanel wizard;
 }
