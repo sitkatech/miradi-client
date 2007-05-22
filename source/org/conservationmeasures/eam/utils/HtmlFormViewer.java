@@ -135,6 +135,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	{
 		JPopupMenu menu = new JPopupMenu();
 		
+		//FIXME: should not need to create a class here, but pass in the copy acton from JEditorPane
 		JMenuItem menuItemCopy = new JMenuItem(new EditorActionCopy());
 		menu.add(menuItemCopy);
 		
@@ -158,7 +159,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	{
 		public EditorActionCopy()
 		{
-			super(null);
+			super(EAM.mainWindow);
 		}
 		
 		public void doAction(EventObject event) throws CommandFailedException
