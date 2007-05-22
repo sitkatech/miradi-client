@@ -18,7 +18,6 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, ObjectType.FACTOR, diagramFactor.getWrappedId());
 
 		addField(createStringField(TextBox.TAG_LABEL));
-		addField(createMultilineField(TextBox.TAG_DESCRIPTION));
 		updateFieldsFromProject();
 	}
 

@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTextBox;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -67,17 +66,5 @@ public class TextBox extends Factor
 		return new ORefList();
 	}
 	
-	void clear()
-	{
-		super.clear();
-		
-		description = new StringData();
-		
-		addField(TAG_DESCRIPTION, description);
-	}
-
 	public static final String OBJECT_NAME = "Text Box";
-	public static String TAG_DESCRIPTION = "description";
-	
-	StringData description;
 }
