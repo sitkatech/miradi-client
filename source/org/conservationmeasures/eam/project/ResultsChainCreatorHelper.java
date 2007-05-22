@@ -161,6 +161,9 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.CAUSE)
 			return createNewFactorAndSetLabel(diagramFactor);
 		
+		if (diagramFactor.getWrappedType() == ObjectType.TEXT_BOX)
+			return createNewFactorAndSetLabel(diagramFactor);
+		
 		throw new Exception("wrapped type not found "+diagramFactor.getWrappedType());
 	}
 
@@ -185,6 +188,9 @@ public class ResultsChainCreatorHelper
 		
 		if (factor.isContributingFactor())
 			return new CommandCreateObject(ObjectType.INTERMEDIATE_RESULT);
+		
+		if (factor.isTextBox())
+			return new CommandCreateObject(ObjectType.TEXT_BOX);
 		
 		throw new Exception("cannot create object for type " + factor.getType());
 	}
