@@ -11,7 +11,9 @@ import javax.swing.Action;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-public class EAMenuItem extends JMenuItem
+import org.conservationmeasures.eam.utils.LocationHolder;
+
+public class EAMenuItem extends JMenuItem implements LocationHolder
 {
     public EAMenuItem(Action action, int mnemonic, KeyStroke accelerator)
     {
@@ -35,6 +37,11 @@ public class EAMenuItem extends JMenuItem
     {
         super(action);
     }
+    
+	public boolean hasLocation()
+	{
+		return false;
+	}
     
 	final static KeyStroke KEY_CTL_P = KeyStroke.getKeyStroke(KeyEvent.VK_P ,KeyEvent.CTRL_MASK,true);
 }
