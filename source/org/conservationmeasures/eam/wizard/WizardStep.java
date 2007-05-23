@@ -23,7 +23,7 @@ public class WizardStep extends SkeletonWizardStep
 		splitPane.setLeftComponent(new FastScrollPane(htmlViewerLeft));
 		splitPane.setRightComponent(new FastScrollPane(htmlViewerRight));
 		splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
-		splitPane.setDividerLocation(.6);
+		splitPane.setDividerLocation(600);
 		add(splitPane);
 	}
 
