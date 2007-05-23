@@ -44,7 +44,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	public void dispose()
 	{
-		//diagramPreferencesODIP.dispose();
+		diagramPreferencesODIP.dispose();
+		diagramPreferencesODIP = null;
 		super.dispose();
 	}
 	
@@ -142,8 +143,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramTab.add(diagramTabPreferences);
 		diagramTab.add(bottomText);
 
-		//diagramPreferencesODIP = new DiagramPreferencesPanel(project, project.getProjectInfo());
-		//diagramTab.add(diagramPreferencesODIP);
+		diagramPreferencesODIP = new DiagramPreferencesPanel(project, project.getProjectInfo());
+		diagramTab.add(diagramPreferencesODIP);
 		
 		return diagramTab;
 	}
