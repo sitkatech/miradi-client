@@ -511,6 +511,11 @@ public class DiagramModel extends DefaultGraphModel
 		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);
 	}
 
+	public LinkCell[] getAllFactorLinkCells()
+	{
+		return (LinkCell[]) cellInventory.getAllFactorLinkCells().toArray(new LinkCell[0]);
+	}
+	
 	public DiagramFactorLink[] getAllDiagramLinksAsArray()
 	{
 		return (DiagramFactorLink[]) getAllDiagramFactorLinks().toArray(new DiagramFactorLink[0]);

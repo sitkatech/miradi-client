@@ -80,6 +80,11 @@ class CellInventory
 		factorLinks.put(link, cell);
 	}
 
+	public Vector getAllFactorLinkCells()
+	{
+		return new Vector(factorLinks.values());
+	}
+	
 	public Vector getAllFactorLinks()
 	{
 		return new Vector(factorLinks.keySet());

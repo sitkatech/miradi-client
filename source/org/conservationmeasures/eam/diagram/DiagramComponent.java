@@ -42,7 +42,6 @@ import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
@@ -243,11 +242,14 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public void selectAllFactorLinks()
 	{
 		GraphLayoutCache glc = getGraphLayoutCache();
-		Vector allDiagramFactorLinks = getDiagramModel().getAllDiagramFactorLinks();
-		for (int i = 0 ; i < allDiagramFactorLinks.size(); i++){
-			DiagramFactorLink diagramFactorLink = (DiagramFactorLink)allDiagramFactorLinks.elementAt(i);
-			if (glc.isVisible(diagramFactorLink))
-				addSelectionCell(diagramFactorLink);
+		LinkCell[] allLinkCells = getDiagramModel().getAllFactorLinkCells();
+		for (int i = 0 ; i < allLinkCells.length; i++)
+		{
+			LinkCell linkCell = allLinkCells[i];
+			if (glc.isVisible(linkCell))
+			{
+				addSelectionCell(linkCell);
+			}
 		}
 	}
 	
