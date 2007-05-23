@@ -41,7 +41,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		ArrowLineRenderer renderer = 
 			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		
-		if(sel)
+		if(sel || isAttachedToSelectedFactor())
 		{
 			renderer.lineWidth = 4;
 		}
@@ -250,6 +250,22 @@ public class ArrowLineRenderer extends EdgeRenderer
 			return null;
 		DiagramComponent diagram = (DiagramComponent)graph.get();
 		return diagram;
+	}
+
+	private boolean isAttachedToSelectedFactor()
+	{
+		DiagramComponent diagram = getDiagram();
+		if(diagram == null)
+			return false;
+		
+		boolean isFromFactorSelected = diagram.isCellSelected(getLinkCell().getFrom());
+		boolean isToFactorSelected = diagram.isCellSelected(getLinkCell().getTo());
+		
+		boolean onlyOneFactorSelected = (diagram.getSelectionCount() == 1);
+		if(onlyOneFactorSelected)
+			return (isFromFactorSelected || isToFactorSelected);
+
+		return (isFromFactorSelected && isToFactorSelected);
 	}
 
 	protected Shape createLineEnd(int size, int style, Point2D src, Point2D dst)

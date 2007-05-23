@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
@@ -224,6 +225,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		clearSelection();
 		selectAllFactors();
+		selectAllFactorLinks();
 	}
 	
 	public void selectAllFactors()
@@ -235,6 +237,17 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			FactorCell diagramFactor = (FactorCell)allDiagramFactors.elementAt(i);
 			if (glc.isVisible(diagramFactor))
 				addSelectionCell(diagramFactor);
+		}
+	}
+	
+	public void selectAllFactorLinks()
+	{
+		GraphLayoutCache glc = getGraphLayoutCache();
+		Vector allDiagramFactorLinks = getDiagramModel().getAllDiagramFactorLinks();
+		for (int i = 0 ; i < allDiagramFactorLinks.size(); i++){
+			DiagramFactorLink diagramFactorLink = (DiagramFactorLink)allDiagramFactorLinks.elementAt(i);
+			if (glc.isVisible(diagramFactorLink))
+				addSelectionCell(diagramFactorLink);
 		}
 	}
 	
@@ -342,7 +355,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			CellView view = glc.getMapping(link, false);
 			if(view != null)
 			{
-				link.autoSelect(this);
 				repaint(view.getBounds().getBounds());
 				link.update(this);
 				view.update();
