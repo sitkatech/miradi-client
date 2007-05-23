@@ -361,6 +361,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 				link.update(this);
 				view.update();
 				repaint(view.getBounds().getBounds());
+				link.autoSelect(this);
 			}
 		}
 		// TODO: This shouldn't be necessary, but merely repainting the bounds of
