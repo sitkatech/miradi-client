@@ -16,17 +16,21 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.ListCellRenderer;
 
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.HyperlinkLabel;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
+
+import com.jhlabs.awt.BasicGridLayout;
 
 public class PreferencesPanel extends DataInputPanel implements ActionListener
 {
@@ -34,8 +38,98 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
+		project = mainWindow.getProject();
+		add(createColorPreferencesPanel(), BorderLayout.CENTER);
+	}
 
+	public void dispose()
+	{
+		//diagramPreferencesODIP.dispose();
+		super.dispose();
+	}
+	
+	DialogGridPanel createColorPreferencesPanel()
+	{
+		DialogGridPanel grid = new DialogGridPanel();
 
+		JTabbedPane tabpane = new JTabbedPane();
+		tabpane.addTab("Diagram View", createDiagramTab());
+		tabpane.addTab("Threat Rating View", createThreatRatingTab());
+		
+		grid.add(tabpane);
+		return grid;
+	}
+
+	private JPanel createThreatRatingTab()
+	{
+		JPanel threatTab = new JPanel(new BasicGridLayout(0,2));
+		threatTab.add(new UiLabel(EAM.text("Show Ratings in Cell")));
+		cellRatingsVisibleCheckBox = new UiCheckBox();
+		cellRatingsVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
+		cellRatingsVisibleCheckBox.addActionListener(this);
+		threatTab.add(cellRatingsVisibleCheckBox);
+		return threatTab;
+	}
+
+	private JPanel createDiagramTab()
+	{
+		JPanel diagramTab = new JPanel(new BasicGridLayout(1,1));
+		JPanel diagramTabPreferences = new JPanel(new BasicGridLayout(0,2));
+		
+		diagramTab.add(new UiLabel(" "));
+		diagramTab.add(new UiLabel(EAM.text("Choose the colors that look best on your system:")));
+
+		diagramTabPreferences.add(new UiLabel(EAM.text("Strategy (Yellow)")));
+		interventionDropdown = createColorsDropdown(DiagramConstants.strategyColorChoices);
+		interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY));
+		interventionDropdown.addActionListener(this);
+		diagramTabPreferences.add(interventionDropdown);
+
+		diagramTabPreferences.add(new UiLabel(EAM.text("Direct Threat (Pink)")));
+		directThreatDropdown = createColorsDropdown(DiagramConstants.directThreatColorChoices);
+		directThreatDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT));
+		directThreatDropdown.addActionListener(this);
+		diagramTabPreferences.add(directThreatDropdown);
+
+		diagramTabPreferences.add(new UiLabel(EAM.text("Contributing Factor (Orange)")));
+		indirectFactorDropdown = createColorsDropdown(DiagramConstants.contributingFactorColorChoices);
+		indirectFactorDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR));
+		indirectFactorDropdown.addActionListener(this);
+		diagramTabPreferences.add(indirectFactorDropdown);
+
+		diagramTabPreferences.add(new UiLabel(EAM.text("Target (Light Green)")));
+		targetDropdown = createColorsDropdown(DiagramConstants.targetColorChoices);
+		targetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
+		targetDropdown.addActionListener(this);
+		diagramTabPreferences.add(targetDropdown);
+
+		diagramTabPreferences.add(new UiLabel(EAM.text("Project Scope (Dark Green)")));
+		scopeDropdown = createColorsDropdown(DiagramConstants.scopeColorChoices);
+		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
+		scopeDropdown.addActionListener(this);
+		diagramTabPreferences.add(scopeDropdown);
+
+		diagramTabPreferences.add(new UiLabel(EAM.text("Intermediate Result (Light Blue)")));
+		intermediateResultDropDown = createColorsDropdown(DiagramConstants.intermediateResultChoices);
+		intermediateResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT));
+		intermediateResultDropDown.addActionListener(this);
+		diagramTabPreferences.add(intermediateResultDropDown);
+
+		diagramTabPreferences.add(new UiLabel(EAM.text("Threat Reduction Result (Light Purple)")));
+		threatReductionResultDropDown = createColorsDropdown(DiagramConstants.threatReductionResultChoices);
+		threatReductionResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT));
+		threatReductionResultDropDown.addActionListener(this);
+		diagramTabPreferences.add(threatReductionResultDropDown);
+
+		diagramTabPreferences.add(new UiLabel(EAM.text("Show Diagram Grid")));
+		gridVisibleCheckBox = new UiCheckBox();
+		gridVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
+		gridVisibleCheckBox.addActionListener(this);
+		diagramTabPreferences.add(gridVisibleCheckBox);
+		
+		diagramTab.add(new UiLabel(" "));
+		diagramTab.add(new UiLabel(" "));
+		
 		JPanel bottomText = new JPanel();
 		bottomText.add(new HyperlinkLabel( 
 				"<p>Why are my choices limited to one color family for each type of factor?</p>",
@@ -44,75 +138,14 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 				"stop sign, we hope that they will recognize a green oval as a target or " +
 				"a yellow hexagon as a strategy"), BorderLayout.AFTER_LAST_LINE);
 		bottomText.setBorder(BorderFactory.createEmptyBorder(25, 5, 25, 5));
-
-		add(new UiLabel(EAM.text("Choose the colors that look best on your system:")), BorderLayout.BEFORE_FIRST_LINE);
-		add(createColorPreferencesPanel(), BorderLayout.CENTER);
-		add(bottomText, BorderLayout.AFTER_LAST_LINE);
-	}
-
-	DialogGridPanel createColorPreferencesPanel()
-	{
-		DialogGridPanel panel = new DialogGridPanel();
-
-		panel.add(new UiLabel(EAM.text("Strategy (Yellow)")));
-		interventionDropdown = createColorsDropdown(DiagramConstants.strategyColorChoices);
-		interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY));
-		interventionDropdown.addActionListener(this);
-		panel.add(interventionDropdown);
-
-		panel.add(new UiLabel(EAM.text("Direct Threat (Pink)")));
-		directThreatDropdown = createColorsDropdown(DiagramConstants.directThreatColorChoices);
-		directThreatDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT));
-		directThreatDropdown.addActionListener(this);
-		panel.add(directThreatDropdown);
-
-		panel.add(new UiLabel(EAM.text("Contributing Factor (Orange)")));
-		indirectFactorDropdown = createColorsDropdown(DiagramConstants.contributingFactorColorChoices);
-		indirectFactorDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR));
-		indirectFactorDropdown.addActionListener(this);
-		panel.add(indirectFactorDropdown);
-
-		panel.add(new UiLabel(EAM.text("Target (Light Green)")));
-		targetDropdown = createColorsDropdown(DiagramConstants.targetColorChoices);
-		targetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
-		targetDropdown.addActionListener(this);
-		panel.add(targetDropdown);
-
-		panel.add(new UiLabel(EAM.text("Project Scope (Dark Green)")));
-		scopeDropdown = createColorsDropdown(DiagramConstants.scopeColorChoices);
-		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
-		scopeDropdown.addActionListener(this);
-		panel.add(scopeDropdown);
 		
-		panel.add(new UiLabel(EAM.text("Intermediate Result (Light Blue)")));
-		intermediateResultDropDown = createColorsDropdown(DiagramConstants.intermediateResultChoices);
-		intermediateResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT));
-		intermediateResultDropDown.addActionListener(this);
-		panel.add(intermediateResultDropDown);
-		
-		panel.add(new UiLabel(EAM.text("Threat Reduction Result (Light Purple)")));
-		threatReductionResultDropDown = createColorsDropdown(DiagramConstants.threatReductionResultChoices);
-		threatReductionResultDropDown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT));
-		threatReductionResultDropDown.addActionListener(this);
-		panel.add(threatReductionResultDropDown);
-		
-		panel.add(new UiLabel(EAM.text(" ")));
-		panel.add(new UiLabel(EAM.text(" ")));
+		diagramTab.add(diagramTabPreferences);
+		diagramTab.add(bottomText);
 
-		panel.add(new UiLabel(EAM.text("Show Diagram Grid")));
-		gridVisibleCheckBox = new UiCheckBox();
-		gridVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
-		gridVisibleCheckBox.addActionListener(this);
-		panel.add(gridVisibleCheckBox);
-
+		//diagramPreferencesODIP = new DiagramPreferencesPanel(project, project.getProjectInfo());
+		//diagramTab.add(diagramPreferencesODIP);
 		
-		panel.add(new UiLabel(EAM.text("Show Ratings in Cell")));
-		cellRatingsVisibleCheckBox = new UiCheckBox();
-		cellRatingsVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
-		cellRatingsVisibleCheckBox.addActionListener(this);
-		panel.add(cellRatingsVisibleCheckBox);
-		
-		return panel;
+		return diagramTab;
 	}
 
 	private UiComboBox createColorsDropdown(Color[] colorChoices)
@@ -214,7 +247,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		update();
 	}
 
+	
+	Project project;
 	MainWindow mainWindow;
+	DiagramPreferencesPanel diagramPreferencesODIP;
+	
 	UiComboBox interventionDropdown;
 	UiComboBox directThreatDropdown;
 	UiComboBox indirectFactorDropdown;

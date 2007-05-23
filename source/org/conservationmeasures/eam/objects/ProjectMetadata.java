@@ -155,7 +155,7 @@ public class ProjectMetadata extends BaseObject
 		tncEcoregion = new StringData();
 		tncCountry = new StringData();
 		tncOperatingUnits = new StringData();
-		
+
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
 		addField(TAG_TNC_WORKBOOK_VERSION_DATE, tncWorkbookVersionDate);
@@ -164,6 +164,16 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_ECOREGION, tncEcoregion);
 		addField(TAG_TNC_COUNTRY, tncCountry);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
+		
+		
+		
+		diagramFontSize = new IntegerData();
+		diagramFontStyle = new StringData();
+		diagramFontWeight = new StringData();
+		
+		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
+		addField(TAG_DIAGRAM_FONT_STYLE, diagramFontStyle);
+		addField(TAG_DIAGRAM_FONT_WEIGHT, diagramFontWeight);
 	}
 
 	public static final String TAG_PROJECT_NAME = "ProjectName";
@@ -187,6 +197,10 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_ECOREGION = "TNC.Ecoregion";
 	public static final String TAG_TNC_COUNTRY = "TNC.Country";
 	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
+	
+	public static final String TAG_DIAGRAM_FONT_STYLE = "DiagramFontStyle";
+	public static final String TAG_DIAGRAM_FONT_SIZE= "DiagramFontSize";
+	public static final String TAG_DIAGRAM_FONT_WEIGHT= "DiagramFontWeight";
 
 
 	StringData projectName;
@@ -208,4 +222,8 @@ public class ProjectMetadata extends BaseObject
 	StringData tncEcoregion;
 	StringData tncCountry;
 	StringData tncOperatingUnits;
+	
+	StringData diagramFontStyle;
+	IntegerData diagramFontSize;
+	StringData diagramFontWeight;
 }
