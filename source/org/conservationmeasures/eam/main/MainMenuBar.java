@@ -84,6 +84,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTa
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardVisionStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
@@ -95,7 +96,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocus
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
@@ -103,7 +103,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopG
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
-import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability2Step;
+import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
@@ -266,7 +266,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu1b, ActionJumpDiagramWizardProjectScopeStep.class, KeyEvent.VK_D);
 		addMenuItem(actions, menu1b, ActionJumpDiagramWizardVisionStep.class, KeyEvent.VK_E);
 		addMenuItem(actions, menu1b, ActionJumpDiagramWizardDefineTargetsStep.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu1b, ActionJumpTargetViability2Step.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu1b, ActionJumpTargetViabilityMethodChoiceStep.class, KeyEvent.VK_D);
 		
 		JMenu menu1c = new JMenu("1C. Identify Critical Threats");
 		menu1c.setMnemonic(KeyEvent.VK_U);
