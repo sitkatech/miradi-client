@@ -41,6 +41,11 @@ public class ArrowLineRenderer extends EdgeRenderer
 		ArrowLineRenderer renderer = 
 			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		
+		if(sel)
+		{
+			renderer.lineWidth = 4;
+		}
+
 		stressText = getLinkCell().getFactorLink().getStressLabel();
 
 		return renderer;
@@ -245,7 +250,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 			return null;
 		DiagramComponent diagram = (DiagramComponent)graph.get();
 		return diagram;
-	}	
+	}
 
 	protected Shape createLineEnd(int size, int style, Point2D src, Point2D dst)
 	{
