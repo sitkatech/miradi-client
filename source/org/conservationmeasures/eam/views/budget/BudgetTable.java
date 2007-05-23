@@ -34,10 +34,11 @@ import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
+import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-public class BudgetTable extends JTable implements ObjectPicker 
+public class BudgetTable extends TableWithHelperMethods implements ObjectPicker 
 {	
 	public BudgetTable(Project projectToUse, AssignmentTableModelSplittableShell modelToUse)
 	{
@@ -49,8 +50,6 @@ public class BudgetTable extends JTable implements ObjectPicker
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setDefaultRenderer(Object.class, new AlternatingThickBorderedTotalsColoredRenderer());
-		// this property is set due to a JTable bug#4724980 
-		putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 
 		//TODO remove the addition of two pixels.  the + 2 is becuase dropdowns cut off 'g's.
 		// must figure out a way to do this right.  

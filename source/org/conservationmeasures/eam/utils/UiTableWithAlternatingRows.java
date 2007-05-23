@@ -14,9 +14,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import org.martus.swing.UiTable;
-
-public class UiTableWithAlternatingRows extends UiTable
+public class UiTableWithAlternatingRows extends TableWithHelperMethods
 {
 	public UiTableWithAlternatingRows()
 	{

@@ -41,10 +41,11 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.diagram.DeleteSelectedItemDoer;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
-public class ThreatMatrixTable extends JTable
+public class ThreatMatrixTable extends TableWithHelperMethods
 {
 	public ThreatMatrixTable(ThreatMatrixTableModel model, ThreatGridPanel panel)
 	{
