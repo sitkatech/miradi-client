@@ -176,9 +176,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 	public void autoSelect(DiagramComponent diagram)
 	{
 		if (diagram.isCellSelected(from) || diagram.isCellSelected(to))
-			diagram.addSelectionCell(link);
+			diagram.addSelectionCell(this);
 		else
-			diagram.removeSelectionCell(link);
+			diagram.removeSelectionCell(this);
 	}
 
 	FactorLink link;
