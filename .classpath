@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="source"/>
 	<classpathentry kind="src" path="tests"/>
 	<classpathentry exported="true" kind="var" path="JUNIT_HOME/junit.jar"/>
-	<classpathentry kind="src" path="/martus-swing"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/jcalendar-1.3.2/jcalendar-1.3.2.jar"/>
@@ -16,6 +15,7 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-logging-api-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-collections-2.1.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/JUnit/bin/junit.jar"/>
-	<classpathentry kind="lib" path="/miradi-thirdparty/martus-utils/bin/martus-utils.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/martus-utils/bin/martus-utils.jar" sourcepath="/miradi-thirdparty/martus-utils/source/martus-utils-src.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/martus-swing/bin/martus-swing.jar" sourcepath="/miradi-thirdparty/martus-swing/source/martus-swing-src.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
