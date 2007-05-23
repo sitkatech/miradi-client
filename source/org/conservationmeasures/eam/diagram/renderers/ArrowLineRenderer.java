@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.diagram.renderers;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -14,6 +15,7 @@ import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
+import java.awt.Stroke;
 import java.awt.font.TextLayout;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
@@ -41,6 +43,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		ArrowLineRenderer renderer = 
 			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		
+		linkSelected = sel;
 		if(sel || isAttachedToSelectedFactor())
 		{
 			renderer.lineWidth = 4;
@@ -59,9 +62,27 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public void paint(Graphics g)
 	{
 		super.paint(g);
+		
+		Graphics2D g2 = (Graphics2D) g;
 		if(isArrowBodyVisible())
 			drawStress(g);
+		
+		if (linkSelected)
+		{
+			g2.setColor(Color.BLACK);
+			Stroke stroke = getSelectionStroke();
+			g2.setStroke(stroke);
+			if (view.lineShape != null)
+				g2.draw(view.lineShape);
+		}
 	}
+	
+	Stroke getSelectionStroke()
+	{
+		float[] dash = { 20f, 5f };
+		return new BasicStroke(6, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 5.0f, dash, 0.0f);
+	}
+
 	
 	
 	protected Shape createShape()
@@ -362,7 +383,8 @@ public class ArrowLineRenderer extends EdgeRenderer
 	
 	private static final int CUSHION = 5;
 	public static final int ARROW_STUB_LINE = 23253;
-	
+
+	boolean linkSelected;
 	boolean isVisible;
 	String stressText;
 }
