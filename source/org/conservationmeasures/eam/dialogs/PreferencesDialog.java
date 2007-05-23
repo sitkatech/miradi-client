@@ -17,9 +17,8 @@ public class PreferencesDialog extends ModelessDialogWithClose
 	
 	public void dispose()
 	{
-		disposablePanel.dispose();
-		disposablePanel = null;
 		super.dispose();
+		disposablePanel = null;
 	}
 	
 	DisposablePanel disposablePanel;
