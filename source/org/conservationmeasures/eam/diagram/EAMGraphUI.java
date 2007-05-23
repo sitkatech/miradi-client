@@ -41,6 +41,10 @@ public class EAMGraphUI extends BasicGraphUI
 
 		public void mouseReleased(MouseEvent event)
 		{
+			// JGraph calls this with a null event if you press Escape
+			if(event == null)
+				return;
+			
 			if(!SwingUtilities.isRightMouseButton(event))
 				super.mouseReleased(event);
 		}
