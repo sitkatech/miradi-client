@@ -33,7 +33,7 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 	
 	private void clickWithNoModifiers(BendPointSelectionHelper selectionHelper)
 	{
-		MouseEvent mouseEvent = getMouseEvent(InputEvent.SHIFT_DOWN_MASK);
+		MouseEvent mouseEvent = getMouseEvent(0);
 		Point currentBendPoint1 = new Point(1, 1);
 		
 		pressMouseButton(selectionHelper, mouseEvent, currentBendPoint1);
@@ -51,23 +51,20 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 	
 	public void testShouldRemove()
 	{
-		MouseEvent mouseEvent = getMouseEvent(InputEvent.SHIFT_DOWN_MASK);
+		MouseEvent mouseEvent = getMouseEvent(0);
 		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
 		Point selectedPoint1 = new Point(1, 1);
-		
 		assertEquals("can remove?", false, selectionHelper.canRemove(mouseEvent, selectedPoint1));
 		
 		selectionHelper.addToSelection(selectedPoint1);		
-		assertEquals("can not remove?", true, selectionHelper.canRemove(mouseEvent, selectedPoint1));
-		
+		assertEquals("can not remove?", true, selectionHelper.canRemove(mouseEvent, selectedPoint1));	
 	}
 	
 	public void testShouldAdd()
 	{
-		MouseEvent mouseEvent = getMouseEvent(InputEvent.SHIFT_DOWN_MASK);
+		MouseEvent mouseEvent = getMouseEvent(0);
 		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
 		Point selectedPoint1 = new Point(1, 1);
-		
 		assertEquals("selection not remove?", true, selectionHelper.canAdd(mouseEvent, selectedPoint1));
 		
 		selectionHelper.addToSelection(selectedPoint1);
