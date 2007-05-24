@@ -3,9 +3,8 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectInfo;
+import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
-import org.conservationmeasures.eam.questions.FontStyleQuestion;
-import org.conservationmeasures.eam.questions.FontWeightQuestion;
 
 public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 {
@@ -13,8 +12,7 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ProjectMetadata.getObjectType(), projectInfo.getMetadataId());
 		addField(createChoiceField(ProjectMetadata.getObjectType(), new FontSizeQuestion(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE)));
-		addField(createChoiceField(ProjectMetadata.getObjectType(), new FontStyleQuestion(ProjectMetadata.TAG_DIAGRAM_FONT_STYLE)));
-		addField(createChoiceField(ProjectMetadata.getObjectType(), new FontWeightQuestion(ProjectMetadata.TAG_DIAGRAM_FONT_WEIGHT)));
+		addField(createChoiceField(ProjectMetadata.getObjectType(), new FontFamiliyQuestion(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY)));
 		updateFieldsFromProject();
 	}
 
