@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 public class BendPointSelectionHelper
@@ -15,9 +16,9 @@ public class BendPointSelectionHelper
 		selectionList = new Vector();
 	}
 	
-	public void mousePressed(MouseEventHelper mouseEventHelper)
+	public void mousePressed(MouseEvent mouseEvent)
 	{
-		Point clickPoint = mouseEventHelper.getClickPoint();
+		Point clickPoint = mouseEvent.getPoint();
 		
 		if (! shouldRemove(clickPoint))
 			selectionList.add(clickPoint);
