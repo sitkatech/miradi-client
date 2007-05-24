@@ -15,6 +15,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -22,11 +23,12 @@ import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
+import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.utils.HtmlFormViewer;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -38,7 +40,8 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 {
 	public MultilineCellRenderer()
 	{
-		label = new JLabel();
+		htmlFormViewer = new HtmlFormViewer("",null);
+		htmlFormViewer.setOpaque(true);
 	}
 
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
@@ -47,7 +50,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		String text = cell.toString();
 		String formattedLabel = HTML_BEFORE_TEXT + XmlUtilities.getXmlEncoded(text) + HTML_AFTER_TEXT;
-		label.setText(formattedLabel);
+		htmlFormViewer.setText(formattedLabel);
 		graph = graphToUse;
 		selected = sel;
 		preview = previewMode;
@@ -82,11 +85,21 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		
 		int xInset = getInsetDimension().width;
 		int yInset = getInsetDimension().height;
-		label.setBorder(new EmptyBorder(yInset, xInset, yInset, xInset));
-		label.setSize(getSize());
-		label.setHorizontalAlignment(JLabel.CENTER);
-		label.setVerticalAlignment(getVerticalAlignmentOfText());
-		label.paint(g2);
+
+		
+		Dimension dim = getNonBorderBounds().getSize();
+		dim.height = dim.height-2*yInset;
+		dim.width = dim.width-2*xInset;
+		htmlFormViewer.setSize(dim);
+		htmlFormViewer.setMaximumSize(dim);
+		
+		g2.translate(xInset, yInset);
+		Shape clip = g2.getClip();
+		g2.clipRect(0, 0, dim.width, dim.height);
+		htmlFormViewer.paint(g2);
+		g2.setClip(clip);
+		g2.translate(-xInset, -yInset);
+		
 		
 		if (bordercolor != null)
 		{
@@ -230,7 +243,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		Color background = GraphConstants.getBackground(attributes);
 		setBackground((background != null) ? background : graph.getBackground());
 		Font font = GraphConstants.getFont(attributes);
-		label.setFont((font != null) ? font : graph.getFont());
+		htmlFormViewer.setFont((font != null) ? font : graph.getFont());
 		Border border = GraphConstants.getBorder(attributes);
 		bordercolor = GraphConstants.getBorderColor(attributes);
 		if (border != null)
@@ -322,7 +335,14 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	}
 	
 	public static final String HTML_AFTER_TEXT = "</font></div></html>";
-	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4'>";
+	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4' face='serif'>";
+	
+//	public static final String HTML_CSS_TEXT = "<STYLE TYPE='text/css'> " +
+//	"<!-- body {  color:green;   font-size:30pt;   font-style:italic;   font-family=serif}" +
+//	" --> </STYLE>";
+
+//	public static final String HTML_BEFORE_TEXT = "<html><div align='center'> " + HTML_CSS_TEXT;
+	
 
 	public static final int INDICATOR_WIDTH = 20;
 	public static final int INDICATOR_HEIGHT = 20;
@@ -333,7 +353,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	public static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
 
 	JGraph graph;
-	JLabel label;
+	JEditorPane htmlFormViewer;
 	int borderThickness;
 	Color bordercolor;
 	Color gradientColor;
