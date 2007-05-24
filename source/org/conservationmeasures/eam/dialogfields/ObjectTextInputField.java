@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogfields;
 
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -27,7 +26,6 @@ import org.conservationmeasures.eam.views.umbrella.CopyTextAction;
 import org.conservationmeasures.eam.views.umbrella.CutTextAction;
 import org.conservationmeasures.eam.views.umbrella.PasteTextAction;
 import org.martus.swing.ResourceImageIcon;
-import org.martus.swing.UiTextArea;
 
 public class ObjectTextInputField extends ObjectDataInputField
 {
@@ -95,19 +93,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 			setNeedsSave();
 		}
 	}
-	
-	public void setupFixedSizeTextField(int row, int column)
-	{
-		JTextComponent textComponent = (JTextComponent)getComponent();
-		UiTextArea textArea = new UiTextArea(row,column);
-		textComponent.setBorder(textArea.getBorder());
-		textComponent.setFont(textArea.getFont());
-		int preferredHeight = textComponent.getPreferredSize().height;
-		int preferredWidth = textArea.getPreferredSize().width;
-		Dimension preferredSize = new Dimension(preferredWidth, preferredHeight);
-		textComponent.setPreferredSize(preferredSize);
-	}
-	
+
 	public class MouseHandler extends MouseAdapter
 	{
 		public void mousePressed(MouseEvent e)
