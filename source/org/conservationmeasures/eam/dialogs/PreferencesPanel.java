@@ -39,7 +39,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
 		project = mainWindow.getProject();
-		add(createColorPreferencesPanel(), BorderLayout.CENTER);
+		add(createTabs(), BorderLayout.CENTER);
 	}
 
 	public void dispose()
@@ -49,7 +49,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		super.dispose();
 	}
 	
-	DialogGridPanel createColorPreferencesPanel()
+	DialogGridPanel createTabs()
 	{
 		DialogGridPanel grid = new DialogGridPanel();
 
@@ -143,7 +143,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramTab.add(diagramTabPreferences);
 		diagramTab.add(bottomText);
 
-		diagramPreferencesODIP = new DiagramPreferencesPanel(project, project.getProjectInfo());
+		diagramPreferencesODIP = new DiagramProjectPreferencesPanel(project, project.getProjectInfo());
 		diagramTab.add(diagramPreferencesODIP);
 		
 		return diagramTab;
@@ -251,7 +251,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	
 	Project project;
 	MainWindow mainWindow;
-	DiagramPreferencesPanel diagramPreferencesODIP;
+	DiagramProjectPreferencesPanel diagramPreferencesODIP;
 	
 	UiComboBox interventionDropdown;
 	UiComboBox directThreatDropdown;

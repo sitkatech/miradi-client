@@ -7,11 +7,11 @@ import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.questions.FontStyleQuestion;
 import org.conservationmeasures.eam.questions.FontWeightQuestion;
 
-public class DiagramPreferencesPanel extends ObjectDataInputPanel
+public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 {
-	public DiagramPreferencesPanel(Project projectToUse, ProjectInfo pInfo)
+	public DiagramProjectPreferencesPanel(Project projectToUse, ProjectInfo projectInfo)
 	{
-		super(projectToUse, ProjectMetadata.getObjectType(), pInfo.getMetadataId());
+		super(projectToUse, ProjectMetadata.getObjectType(), projectInfo.getMetadataId());
 		addField(createChoiceField(ProjectMetadata.getObjectType(), new FontSizeQuestion(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE)));
 		addField(createChoiceField(ProjectMetadata.getObjectType(), new FontStyleQuestion(ProjectMetadata.TAG_DIAGRAM_FONT_STYLE)));
 		addField(createChoiceField(ProjectMetadata.getObjectType(), new FontWeightQuestion(ProjectMetadata.TAG_DIAGRAM_FONT_WEIGHT)));
