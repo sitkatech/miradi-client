@@ -33,7 +33,7 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 	
 	private void clickWithNoModifiers(BendPointSelectionHelper selectionHelper)
 	{
-		MouseEvent mouseEvent = getMouseEvent(new Point(1, 1), InputEvent.SHIFT_DOWN_MASK);
+		MouseEvent mouseEvent = getMouseEvent(InputEvent.SHIFT_DOWN_MASK);
 		Point currentBendPoint1 = new Point(1, 1);
 		
 		pressMouseButton(selectionHelper, mouseEvent, currentBendPoint1);
@@ -51,30 +51,45 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 	
 	public void testShouldRemove()
 	{
+		MouseEvent mouseEvent = getMouseEvent(InputEvent.SHIFT_DOWN_MASK);
+		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
+		Point selectedPoint1 = new Point(1, 1);
+		
+		assertEquals("can remove?", false, selectionHelper.canRemove(mouseEvent, selectedPoint1));
+		
+		selectionHelper.addToSelection(selectedPoint1);		
+		assertEquals("can not remove?", true, selectionHelper.canRemove(mouseEvent, selectedPoint1));
 		
 	}
 	
 	public void testShouldAdd()
 	{
+		MouseEvent mouseEvent = getMouseEvent(InputEvent.SHIFT_DOWN_MASK);
+		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
+		Point selectedPoint1 = new Point(1, 1);
 		
+		assertEquals("selection not remove?", true, selectionHelper.canAdd(mouseEvent, selectedPoint1));
+		
+		selectionHelper.addToSelection(selectedPoint1);
+		assertEquals("selection not remove?", false, selectionHelper.canAdd(mouseEvent, selectedPoint1));
 	}
 
 	public void testMouseEvent()
 	{
-		MouseEvent mouseEvent = getMouseEvent(new Point(1, 1), InputEvent.SHIFT_DOWN_MASK);
+		MouseEvent mouseEvent = getMouseEvent(InputEvent.SHIFT_DOWN_MASK);
 		assertEquals("shift not down?", true, mouseEvent.isShiftDown());
-		assertEquals("wrong click location?", new Point(1, 1), mouseEvent.getPoint());
+		assertEquals("wrong click location?", new Point(0, 0), mouseEvent.getPoint());
 		assertEquals("control down?", false, mouseEvent.isControlDown());
 	}
 	
-	private MouseEvent getMouseEvent(Point point, int modifiersToUse)
+	private MouseEvent getMouseEvent(int modifiersToUse)
 	{
 		Component source = new JButton();
 		int id = 0;
 		long when = 0;
 		int modifiers = modifiersToUse;
-        int x = point.x;
-        int y = point.y;
+        int x = 0;
+        int y = 0;
         int clickCount = 1;
         boolean popupTrigger = false;
         int button = 0;

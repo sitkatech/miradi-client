@@ -19,14 +19,24 @@ public class BendPointSelectionHelper
 	
 	public void mousePressed(MouseEvent mouseEvent, Point currentBendPoint)
 	{	
-		if (shouldAdd(mouseEvent, currentBendPoint))
-			selectionList.add(currentBendPoint);
+		if (canAdd(mouseEvent, currentBendPoint))
+			addToSelection(currentBendPoint);
 		
-		else if (shouldRemove(mouseEvent, currentBendPoint))
-			selectionList.remove(currentBendPoint);
+		else if (canRemove(mouseEvent, currentBendPoint))
+			removeFromSelection(currentBendPoint);
 	}
 
-	public boolean shouldRemove(MouseEvent mouseEvent, Point clickPoint)
+	public void addToSelection(Point pointToAdd)
+	{
+		selectionList.add(pointToAdd);
+	}
+	
+	public void removeFromSelection(Point pointToRemove)
+	{
+		selectionList.remove(pointToRemove);
+	}
+	
+	public boolean canRemove(MouseEvent mouseEvent, Point clickPoint)
 	{
 		if( clickPoint == null)
 			return false;
@@ -34,7 +44,7 @@ public class BendPointSelectionHelper
 		return selectionList.contains(clickPoint);
 	}
 	
-	public boolean shouldAdd(MouseEvent mouseEvent, Point clickPoint)
+	public boolean canAdd(MouseEvent mouseEvent, Point clickPoint)
 	{
 		if( clickPoint == null)
 			return false;
