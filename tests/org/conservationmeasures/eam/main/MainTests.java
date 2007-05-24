@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.commands.TestCommandSwitchView;
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDataUpgrader;
 import org.conservationmeasures.eam.database.TestProjectServer;
+import org.conservationmeasures.eam.diagram.TestBendPointSelectionHelper;
 import org.conservationmeasures.eam.diagram.TestDelete;
 import org.conservationmeasures.eam.diagram.TestDiagramAddFactor;
 import org.conservationmeasures.eam.diagram.TestDiagramAddFactorLink;
@@ -166,6 +167,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDiagramView.class));
 		suite.addTest(new TestSuite(TestProjectScopeBox.class));
 		suite.addTest(new TestSuite(TestDiagramComponent.class));
+		suite.addTest(new TestSuite(TestBendPointSelectionHelper.class));
 
 		// nodes package
 		suite.addTest(new TestSuite(TestDiagramAddFactorLink.class));
