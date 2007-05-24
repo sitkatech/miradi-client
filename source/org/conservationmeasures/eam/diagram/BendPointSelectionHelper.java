@@ -15,21 +15,23 @@ public class BendPointSelectionHelper
 		selectionList = new Vector();
 	}
 	
-	public void mousePressed(Point pressedPoints)
+	public void mousePressed(MouseEventHelper mouseEventHelper)
 	{
-		if (! shouldRemove(pressedPoints))
-			selectionList.add(pressedPoints);
+		Point clickPoint = mouseEventHelper.getClickPoint();
 		
-		else if (shouldRemove(pressedPoints))
-			selectionList.remove(pressedPoints);
+		if (! shouldRemove(clickPoint))
+			selectionList.add(clickPoint);
+		
+		else if (shouldRemove(clickPoint))
+			selectionList.remove(clickPoint);
 	}
 
-	private boolean shouldRemove(Point pressedPoints)
+	private boolean shouldRemove(Point clickPoint)
 	{
-		if( pressedPoints == null)
+		if( clickPoint == null)
 			return false;
 		
-		return selectionList.contains(pressedPoints);
+		return selectionList.contains(clickPoint);
 	}
 	
 	Vector selectionList;
