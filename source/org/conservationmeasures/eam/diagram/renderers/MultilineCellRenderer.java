@@ -23,12 +23,10 @@ import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
-import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.utils.HtmlFormViewer;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -40,7 +38,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 {
 	public MultilineCellRenderer()
 	{
-		htmlFormViewer = new HtmlFormViewer("",null);
+		htmlFormViewer = new FactorHtmlViewer();
 		htmlFormViewer.setOpaque(true);
 	}
 
@@ -49,13 +47,15 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	{
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		String text = cell.toString();
+		
 		String formattedLabel = HTML_BEFORE_TEXT + XmlUtilities.getXmlEncoded(text) + HTML_AFTER_TEXT;
+		htmlFormViewer.setFactorCell(cell);
 		htmlFormViewer.setText(formattedLabel);
+		
 		graph = graphToUse;
 		selected = sel;
 		preview = previewMode;
 		installAttributes(view.getAllAttributes());
-		
 		return this;
 	}
 	
@@ -335,13 +335,8 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	}
 	
 	public static final String HTML_AFTER_TEXT = "</font></div></html>";
-	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4' face='serif'>";
-	
-//	public static final String HTML_CSS_TEXT = "<STYLE TYPE='text/css'> " +
-//	"<!-- body {  color:green;   font-size:30pt;   font-style:italic;   font-family=serif}" +
-//	" --> </STYLE>";
 
-//	public static final String HTML_BEFORE_TEXT = "<html><div align='center'> " + HTML_CSS_TEXT;
+	public static final String HTML_BEFORE_TEXT = "<html><div align='center'> ";
 	
 
 	public static final int INDICATOR_WIDTH = 20;
@@ -353,7 +348,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	public static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
 
 	JGraph graph;
-	JEditorPane htmlFormViewer;
+	FactorHtmlViewer htmlFormViewer;
 	int borderThickness;
 	Color bordercolor;
 	Color gradientColor;
