@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.diagram.cellviews;
 
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
 
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.jgraph.graph.CellHandle;
@@ -31,28 +29,5 @@ public class FactorLinkView extends EdgeView
 		return new EdgeHandle(this, context);
 	}
 
-	public static class EdgeHandle extends EdgeView.EdgeHandle
-	{
-		public EdgeHandle(EdgeView edge, GraphContext ctx)
-		{
-			super(edge, ctx);
-		}
-		
-		public void mousePressed(MouseEvent event)
-		{
-			super.mousePressed(event);
-		}
-
-		public void mouseReleased(MouseEvent e)
-		{
-			super.mouseReleased(e);
-		}
-
-		public void paint(Graphics g)
-		{
-			super.paint(g);
-		}
-	}
-		
 	protected static ArrowLineRenderer arrowLineRenderer = new ArrowLineRenderer();
 }
