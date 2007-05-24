@@ -24,7 +24,6 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.HyperlinkLabel;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
@@ -49,16 +48,12 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		super.dispose();
 	}
 	
-	DialogGridPanel createTabs()
+	JTabbedPane createTabs()
 	{
-		DialogGridPanel grid = new DialogGridPanel();
-
-		JTabbedPane tabpane = new JTabbedPane();
-		tabpane.addTab("Diagram View", createDiagramTab());
-		tabpane.addTab("Threat Rating View", createThreatRatingTab());
-		
-		grid.add(tabpane);
-		return grid;
+		JTabbedPane tabPane = new JTabbedPane();
+		tabPane.addTab("Diagram View", createDiagramTab());
+		tabPane.addTab("Threat Rating View", createThreatRatingTab());
+		return tabPane;
 	}
 
 	private JPanel createThreatRatingTab()
