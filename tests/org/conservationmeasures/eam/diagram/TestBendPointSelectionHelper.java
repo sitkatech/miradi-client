@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 
 import javax.swing.JButton;
 
@@ -23,9 +24,41 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 
 	public void testMousePressed()
 	{
+		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
+		Point2D[] selectionList = selectionHelper.getSelectionList();
+		assertEquals("selection list not empty?", 0, selectionList.length);
+		
+		clickWithNoModifiers(selectionHelper);
+	}
+	
+	private void clickWithNoModifiers(BendPointSelectionHelper selectionHelper)
+	{
+		MouseEvent mouseEvent = getMouseEvent(new Point(1, 1), InputEvent.SHIFT_DOWN_MASK);
+		Point currentBendPoint1 = new Point(1, 1);
+		
+		pressMouseButton(selectionHelper, mouseEvent, currentBendPoint1);
+		assertEquals("not added selection?", 1, selectionHelper.getSelectionList().length);
+		assertEquals("wrong selection added?", currentBendPoint1, selectionHelper.getSelectionList()[0]);
+		
+		pressMouseButton(selectionHelper, mouseEvent, currentBendPoint1);
+		assertEquals("not removed selection?", 0, selectionHelper.getSelectionList().length);
+	}
+
+	private void pressMouseButton(BendPointSelectionHelper selectionHelper, MouseEvent mouseEvent, Point currentBendPoint1)
+	{
+		selectionHelper.mousePressed(mouseEvent, currentBendPoint1);
+	}
+	
+	public void testShouldRemove()
+	{
 		
 	}
 	
+	public void testShouldAdd()
+	{
+		
+	}
+
 	public void testMouseEvent()
 	{
 		MouseEvent mouseEvent = getMouseEvent(new Point(1, 1), InputEvent.SHIFT_DOWN_MASK);

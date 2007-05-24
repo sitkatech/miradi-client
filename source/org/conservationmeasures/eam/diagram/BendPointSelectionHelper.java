@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 import java.util.Vector;
 
 public class BendPointSelectionHelper
@@ -16,23 +17,34 @@ public class BendPointSelectionHelper
 		selectionList = new Vector();
 	}
 	
-	public void mousePressed(MouseEvent mouseEvent)
-	{
-		Point clickPoint = mouseEvent.getPoint();
+	public void mousePressed(MouseEvent mouseEvent, Point currentBendPoint)
+	{	
+		if (shouldAdd(mouseEvent, currentBendPoint))
+			selectionList.add(currentBendPoint);
 		
-		if (! shouldRemove(clickPoint))
-			selectionList.add(clickPoint);
-		
-		else if (shouldRemove(clickPoint))
-			selectionList.remove(clickPoint);
+		else if (shouldRemove(mouseEvent, currentBendPoint))
+			selectionList.remove(currentBendPoint);
 	}
 
-	private boolean shouldRemove(Point clickPoint)
+	public boolean shouldRemove(MouseEvent mouseEvent, Point clickPoint)
 	{
 		if( clickPoint == null)
 			return false;
 		
 		return selectionList.contains(clickPoint);
+	}
+	
+	public boolean shouldAdd(MouseEvent mouseEvent, Point clickPoint)
+	{
+		if( clickPoint == null)
+			return false;
+		
+		return ! selectionList.contains(clickPoint);
+	}
+	
+	public Point2D[] getSelectionList()
+	{
+		return (Point2D[]) selectionList.toArray(new Point2D[0]);
 	}
 	
 	Vector selectionList;
