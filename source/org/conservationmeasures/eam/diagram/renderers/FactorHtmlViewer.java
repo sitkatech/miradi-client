@@ -35,7 +35,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		if (graphCell!=null && graphCell.isFactor())
 		{
 			Color color = ((FactorCell)graphCell).getColor();
-			return "body {background-color:"+getHTMLColor(color)+";}";
+			return "body {background-color:"+convertColorToHTMLColor(color)+";}";
 		}
 
 		//FIXME: ProjectScopeBox should implement getColor()
@@ -48,11 +48,8 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		
 	}
 	
-	public static String getHTMLColor(Color c) {
-		String red = calcHex(c.getRed());
-		String green = calcHex(c.getGreen());
-		String blue = calcHex(c.getBlue());
-		return "#" + red + green + blue;
+	public static String convertColorToHTMLColor(Color c) {
+		return "#" + calcHex(c.getRed()) + calcHex(c.getGreen()) + calcHex(c.getBlue());
 	}
 
 	private static String calcHex(int red2)
