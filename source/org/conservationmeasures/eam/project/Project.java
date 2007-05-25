@@ -509,6 +509,7 @@ public class Project
 		try
 		{
 			getDatabase().close();
+			clear();
 		}
 		catch (IOException e)
 		{
