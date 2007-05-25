@@ -10,8 +10,8 @@ public class FontFamiliyQuestion extends ChoiceQuestion
 	static ChoiceItem[] getFamilyChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Sans Serif"),
-			new ChoiceItem("Serif", "Serif"),
+			new ChoiceItem("", "sans-serif"),
+			new ChoiceItem("serif", "serif"),
 		};
 	}
 }

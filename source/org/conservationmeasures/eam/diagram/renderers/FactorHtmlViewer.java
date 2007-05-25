@@ -7,6 +7,8 @@ import javax.swing.text.html.StyleSheet;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
 public class FactorHtmlViewer extends HtmlFormViewer
@@ -23,11 +25,30 @@ public class FactorHtmlViewer extends HtmlFormViewer
 			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
 		
 		style.addRule(makeSureRuleHasRightPrefix(getFactorCellBackgroundColor()));
+		style.addRule(makeSureRuleHasRightPrefix(getFactorCellFontFamily()));
+		style.addRule(makeSureRuleHasRightPrefix(getFactorCellFontSize()));
 	}
 	
 	public void setFactorCell(EAMGraphCell cell)
 	{
 			graphCell = cell;
+	}
+	
+	public String getFactorCellFontSize()
+	{
+		String fontSize = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_SIZE);
+		return "body {font-size:"+fontSize+"pt; }";
+	}
+	
+	public String getFactorCellFontFamily()
+	{
+		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
+		return "body {font-family="+fontFamily+";}";
+	}
+
+	private Project getProject()
+	{
+		return EAM.mainWindow.getProject();
 	}
 	
 	public String getFactorCellBackgroundColor()
@@ -92,7 +113,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	 * GRRRR!
 	 */
 	final static String[] rules = {
-		"body {  font-size:10pt;   font-style:italic;   font-family=serif}",
+		"body { font-style:italic; }",
 		"code {font-family: sans-serif; }",
 		"  .viewname { font-size: 125%; font-weight: bold }",
 		"  .appname { font-size: 200%; font-weight: bold }",

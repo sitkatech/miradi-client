@@ -12,6 +12,8 @@ import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
+import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ProjectMetadata extends BaseObject
@@ -167,9 +169,13 @@ public class ProjectMetadata extends BaseObject
 		
 		diagramFontSize = new IntegerData();
 		diagramFontFamily = new StringData();
+		diagramFontSizeValue = new PseudoQuestionData(new FontSizeQuestion(TAG_DIAGRAM_FONT_SIZE));
+		diagramFontFamilyValue = new PseudoQuestionData(new FontFamiliyQuestion(TAG_DIAGRAM_FONT_FAMILY));
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
+		addField(PSEUDO_TAG_DIAGRAM_FONT_FAMILY, diagramFontFamilyValue);
+		addField(PSEUDO_TAG_DIAGRAM_FONT_SIZE, diagramFontSizeValue);
 	}
 
 	public static final String TAG_PROJECT_NAME = "ProjectName";
@@ -196,6 +202,9 @@ public class ProjectMetadata extends BaseObject
 	
 	public static final String TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamily";
 	public static final String TAG_DIAGRAM_FONT_SIZE = "DiagramFontSize";
+	
+	public static final String PSEUDO_TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamilyValue";
+	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
 
 
 	StringData projectName;
@@ -220,4 +229,7 @@ public class ProjectMetadata extends BaseObject
 	
 	StringData diagramFontFamily;
 	IntegerData diagramFontSize;
+	
+	PseudoQuestionData diagramFontFamilyValue;
+	PseudoQuestionData diagramFontSizeValue;
 }
