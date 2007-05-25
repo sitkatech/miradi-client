@@ -10,7 +10,7 @@ public class FontSizeQuestion extends ChoiceQuestion
 	static ChoiceItem[] getSizeChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "System Default"),
+			new ChoiceItem("0", "System Default"),
 			new ChoiceItem("6", "6"),
 			new ChoiceItem("8", "8"),
 			new ChoiceItem("10", "10"),
