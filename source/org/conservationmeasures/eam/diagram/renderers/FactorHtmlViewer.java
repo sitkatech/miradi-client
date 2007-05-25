@@ -43,8 +43,10 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	public void addRuleFactorCellFontSize(StyleSheet style)
 	{
 		String fontSize = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
-		if (!fontSize.equals("0"))
-			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));			
+		if (fontSize.equals("0"))
+			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
+		else
+			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
 	}
 	
 	public void addRuleFactorCellFontFamily(StyleSheet style)
@@ -112,7 +114,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	EAMGraphCell graphCell;
 
 	final static String[] rules = {
-		"body {text-align:center; background-color:white; font-size:6pt;}",
+		"body {text-align:center;}",
 	};
 
 }
