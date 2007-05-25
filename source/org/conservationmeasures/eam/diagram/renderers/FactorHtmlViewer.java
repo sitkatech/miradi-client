@@ -36,7 +36,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	
 	public String getFactorCellFontSize()
 	{
-		String fontSize = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_SIZE);
+		String fontSize = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
 		return "body {font-size:"+fontSize+"pt; }";
 	}
 	
