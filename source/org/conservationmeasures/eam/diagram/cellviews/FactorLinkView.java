@@ -26,7 +26,7 @@ public class FactorLinkView extends EdgeView
 	
 	public CellHandle getHandle(GraphContext context)
 	{
-		return new EdgeHandle(this, context);
+		return new EdgeHandleWithBendPointSelection(this, context);
 	}
 
 	protected static ArrowLineRenderer arrowLineRenderer = new ArrowLineRenderer();

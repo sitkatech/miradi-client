@@ -10,20 +10,57 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.utils.Utility;
+
 public class BendPointSelectionHelper
 {
 	public BendPointSelectionHelper()
 	{
-		selectionList = new Vector();
+		clearSelection();
 	}
 	
-	public void mousePressed(MouseEvent mouseEvent, Point currentBendPoint)
+	public void clearSelection()
+	{
+		selectionList = new Vector();	
+	}
+	
+	public void mousePressed(MouseEvent mouseEvent, Point2D currentBendPoint)
 	{	
-		if (canAdd(mouseEvent, currentBendPoint))
-			addToSelection(currentBendPoint);
+		updateSelectionList(mouseEvent, currentBendPoint);			
+	}
+
+	public void updateSelectionList(MouseEvent mouseEvent, Point2D point2D)
+	{
+		if (point2D == null)
+			return;
+		//TODO all isShiftDown()s should be isControlDown()s
+		Point point = Utility.convertToPoint(point2D);
+		if (! selectionList.contains(point) && ! mouseEvent.isShiftDown())
+		{
+			clearSelection();
+			addToSelection(point);
+			return;
+		}
 		
-		else if (canRemove(mouseEvent, currentBendPoint))
-			removeFromSelection(currentBendPoint);
+		if (! selectionList.contains(point) && mouseEvent.isShiftDown())
+		{
+			addToSelection(point);
+			return;
+		}
+		
+		if (selectionList.contains(point) && mouseEvent.isShiftDown())
+		{
+			removeFromSelection(point);
+			return;
+		}
+		
+		if (selectionList.contains(point) && ! mouseEvent.isShiftDown())
+		{
+			clearSelection();
+			addToSelection(point);
+			return;
+		}
+		
 	}
 
 	public void addToSelection(Point pointToAdd)

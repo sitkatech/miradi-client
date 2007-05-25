@@ -28,11 +28,13 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 		Point2D[] selectionList = selectionHelper.getSelectionList();
 		assertEquals("selection list not empty?", 0, selectionList.length);
 		
-		clickWithNoModifiers(selectionHelper);
+		clickWithNoModifiers();
+		clickWithCtrlModifier();
 	}
 	
-	private void clickWithNoModifiers(BendPointSelectionHelper selectionHelper)
+	private void clickWithNoModifiers()
 	{
+		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
 		MouseEvent mouseEvent = getMouseEvent(0);
 		Point currentBendPoint1 = new Point(1, 1);
 		
@@ -41,7 +43,24 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 		assertEquals("wrong selection added?", currentBendPoint1, selectionHelper.getSelectionList()[0]);
 		
 		pressMouseButton(selectionHelper, mouseEvent, currentBendPoint1);
-		assertEquals("not removed selection?", 0, selectionHelper.getSelectionList().length);
+		assertEquals("not removed selection?", 1, selectionHelper.getSelectionList().length);
+	}
+	
+	private void clickWithCtrlModifier()
+	{
+		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
+		MouseEvent mouseEventCtrl = getMouseEvent(InputEvent.CTRL_DOWN_MASK);
+		Point point1 = new Point(1, 1);
+		Point point2 = new Point(2, 2);
+		Point point3 = new Point(3, 3);
+		pressMouseButton(selectionHelper, mouseEventCtrl, point1);
+		pressMouseButton(selectionHelper, mouseEventCtrl, point2);
+		pressMouseButton(selectionHelper, mouseEventCtrl, point3);
+		assertEquals("not added selected point?", 3, selectionHelper.getSelectionList().length);
+		
+		MouseEvent mouseEventNoCtrl = getMouseEvent(0);
+		pressMouseButton(selectionHelper, mouseEventNoCtrl, point1);
+		assertEquals("not added selected point?", 1, selectionHelper.getSelectionList().length);
 	}
 
 	private void pressMouseButton(BendPointSelectionHelper selectionHelper, MouseEvent mouseEvent, Point currentBendPoint1)
