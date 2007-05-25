@@ -117,7 +117,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	 * GRRRR!
 	 */
 	final static String[] rules = {
-		"body { background-color:white; font-size:10pt;}",
+		"body { background-color:white; font-size:6pt;}",
 	};
 
 }
