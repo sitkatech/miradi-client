@@ -44,7 +44,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	public String getFactorCellFontFamily()
 	{
 		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
-		return "body {font-family="+fontFamily+";}";
+		return "body {font-family:"+fontFamily+";}";
 	}
 
 	//FIXME: We could get project from cell for a factor cell the underlying factor; and from the project scope box
