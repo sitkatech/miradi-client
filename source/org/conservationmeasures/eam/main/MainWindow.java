@@ -531,22 +531,28 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void setTaggedInt(String name, int value)
 	{
+		System.out.println("setTaggedInt:"+ value);
 		preferences.setTaggedInt(name, value);
 	}
 	
 	public int getTaggedInt(String name)
 	{
-		return preferences.getTaggedInt(name);
+		int taggedInt = preferences.getTaggedInt(name);
+		System.out.println("getTaggedInt:"+ taggedInt);
+		return taggedInt;
 	}
 	
 	public void setTaggedString(String name, String value)
 	{
+		System.out.println("setTaggedString:"+ value);
 		preferences.setTaggedString(name, value);
 	}
 	
 	public String getTaggedString(String name)
 	{
-		return preferences.getTaggedString(name);
+		String taggedString = preferences.getTaggedString(name);
+		System.out.println("getTaggedString:"+ taggedString);
+		return taggedString;
 	}
 	
 	public void saveDiagramZoomSetting(String name, double setting)
