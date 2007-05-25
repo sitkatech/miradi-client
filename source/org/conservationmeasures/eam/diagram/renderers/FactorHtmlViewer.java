@@ -26,6 +26,9 @@ public class FactorHtmlViewer extends HtmlFormViewer
 
 	public void customizeStyleSheet(StyleSheet style)
 	{
+		if (graphCell==null)
+			return;
+		
 		super.customizeStyleSheet(style);
 		for(int i = 0; i < rules.length; ++i)			
 			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
@@ -55,16 +58,15 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
 	}
 
-	//FIXME: the null check needs to be investigated as to why it is null at this point in time
 	public void addRuleFactorCellBackgroundColor(StyleSheet style)
 	{
-		if (graphCell!=null && graphCell.isFactor())
+		if (graphCell.isFactor())
 		{
 			Color color = ((FactorCell)graphCell).getColor();
 			style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
 		}
 
-		if (graphCell!=null && graphCell.isProjectScope())
+		if (graphCell.isProjectScope())
 		{
 			Color color = ((ProjectScopeBox)graphCell).getColor();
 			style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
