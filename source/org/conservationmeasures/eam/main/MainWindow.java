@@ -22,6 +22,7 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
 
@@ -190,7 +191,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void updateToolBar()
 	{
-		toolBarBox.dispose();
+		toolBarBox.clear();
 		SwingUtilities.invokeLater(new ToolBarUpdater());
 	}
 	
@@ -201,7 +202,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			UmbrellaView view = getCurrentView();
 			if(view == null)
 				return;
-			JComponent toolBar = view.createToolBar();
+			JToolBar toolBar = view.createToolBar();
 			if(toolBar == null)
 				throw new RuntimeException("View must have toolbar");
 

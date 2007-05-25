@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 public class ToolBarContainer extends JPanel
 {
@@ -17,19 +18,19 @@ public class ToolBarContainer extends JPanel
 		super(new BorderLayout());
 	}
 	
-	public void addToolBar(JComponent compToUse)
+	public void addToolBar(JToolBar toolBarToUse)
 	{
-		comp = compToUse;
-		add(comp);
+		toolBar = toolBarToUse;
+		add(toolBar);
 	}
 	
-	public void dispose()
+	public void clear()
 	{
-		if (comp!=null) 
-			comp.removeAll();
-		comp = null;
+		if (toolBar!=null) 
+			toolBar.removeAll();
+		toolBar = null;
 		removeAll();
 	}
 
-	JComponent comp;
+	JComponent toolBar;
 }
