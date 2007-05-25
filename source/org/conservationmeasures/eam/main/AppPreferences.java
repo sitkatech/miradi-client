@@ -129,6 +129,19 @@ public class AppPreferences
 		return value.intValue();
 	}
 	
+	public void setTaggedString(String tag, String value)
+	{
+		taggedStringMap.put(tag, new String(value));
+	}
+	
+	public String getTaggedString(String tag)
+	{
+		String value = (String) taggedStringMap.get(tag);
+		if(value == null)
+			return "";
+		return value;
+	}
+	
 	//TODO: once we are able to save the zoom setting in app pref.
 	public void setTaggedDouble(String tag, double value)
 	{
@@ -160,6 +173,27 @@ public class AppPreferences
 		json.put(TAG_GRID_VISIBLE, isGridVisible);
 		json.put(TAG_CELL_RATINGS_VISIBLE, isCellRatingsVisible);
 		
+		json.put(TAG_TAGGED_INTS, putIntegerMapToJson());
+		json.put(TAG_TAGGED_STRINGS, putStringMapToJson());
+		
+		return json;
+	}
+	
+	private EnhancedJsonObject putStringMapToJson()
+	{
+		EnhancedJsonObject taggedStringJson = new EnhancedJsonObject();
+		Iterator iter = taggedStringMap.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String key = (String)iter.next();
+			String value = (String)taggedStringMap.get(key);
+			taggedStringJson.put(key, value);
+		}
+		return taggedStringJson;
+	}
+
+	private EnhancedJsonObject putIntegerMapToJson()
+	{
 		EnhancedJsonObject taggedIntJson = new EnhancedJsonObject();
 		Iterator iter = taggedIntMap.keySet().iterator();
 		while(iter.hasNext())
@@ -168,9 +202,7 @@ public class AppPreferences
 			Integer value = (Integer)taggedIntMap.get(key);
 			taggedIntJson.put(key, value.intValue());
 		}
-		json.put(TAG_TAGGED_INTS, taggedIntJson);
-		
-		return json;
+		return taggedIntJson;
 	}
 	
 	public void loadFrom(EnhancedJsonObject json)
@@ -188,15 +220,38 @@ public class AppPreferences
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
 		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, false);
 		
-		taggedIntMap = new HashMap();
+		taggedIntMap = loadTagIntegerMap(json);
+		taggedStringMap = loadTagStringMap(json);
+	}
+
+	
+	private HashMap loadTagStringMap(EnhancedJsonObject json)
+	{
+		HashMap map = new HashMap();
+		EnhancedJsonObject taggedStringJson = json.optJson(TAG_TAGGED_STRINGS);
+		Iterator iter = taggedStringJson.keys();
+		while(iter.hasNext())
+		{
+			String key = (String)iter.next();
+			String value = taggedStringJson.getString(key);
+			map.put(key, value);
+		}
+		return map;
+	}
+	
+	
+	private HashMap loadTagIntegerMap(EnhancedJsonObject json)
+	{
+		HashMap map = new HashMap();
 		EnhancedJsonObject taggedIntJson = json.optJson(TAG_TAGGED_INTS);
 		Iterator iter = taggedIntJson.keys();
 		while(iter.hasNext())
 		{
 			String key = (String)iter.next();
 			int value = taggedIntJson.getInt(key);
-			taggedIntMap.put(key, new Integer(value));
+			map.put(key, new Integer(value));
 		}
+		return map;
 	}
 	
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
@@ -211,7 +266,11 @@ public class AppPreferences
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
 	public static final String TAG_TAGGED_INTS = "TaggedInts";
+	public static final String TAG_TAGGED_STRINGS = "TaggedStrings";
 	public static final String TAG_DIAGRAM_ZOOM = "DiagramZoom";
+	
+	public static final String TAG_WIZARD_FONT_FAMILY = "WizardFontFamily";
+	public static final String TAG_WIZARD_FONT_SIZE = "WizardFontSize";
 	
 	public Color strategyColor;
 	public Color activitiesColor;
@@ -229,4 +288,5 @@ public class AppPreferences
 	
 	private double diagramZoomSetting;
 	HashMap taggedIntMap;
+	HashMap taggedStringMap;
 }

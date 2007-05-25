@@ -24,6 +24,9 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
+import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.utils.HyperlinkLabel;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
@@ -60,10 +63,39 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private JPanel createSystemwideTab()
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
-		//htmlTab.add(new UiLabel(EAM.text("Show Ratings in Cell")));
-		//threatTab.add(cellRatingsVisibleCheckBox);
+		htmlTab.add(new UiLabel(EAM.text("Wizard Font Size")));
+		int fontSize = mainWindow.getTaggedInt(AppPreferences.TAG_WIZARD_FONT_SIZE);
+		wizardFontSize = new UiComboBox(new FontSizeQuestion("").getChoices());
+		setSelectedItemQuestionBox(wizardFontSize, Integer.toString(fontSize));
+		wizardFontSize.addActionListener(this);
+		htmlTab.add(wizardFontSize);
+		
+		htmlTab.add(new UiLabel(EAM.text("Wizard Font Family")));
+		String fontFamily = mainWindow.getTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY);
+		wizardFontFamily = new UiComboBox(new FontFamiliyQuestion("").getChoices());
+		setSelectedItemQuestionBox(wizardFontFamily, fontFamily);
+		wizardFontFamily.addActionListener(this);
+		htmlTab.add(wizardFontFamily);
+		
 		return htmlTab;
 	}
+	
+
+	public void setSelectedItemQuestionBox(UiComboBox combo, String code)
+	{
+		for(int i = 0; i < combo.getItemCount(); ++i)
+		{
+			ChoiceItem choice = (ChoiceItem)combo.getItemAt(i);
+			//System.out.println("HERE: choice=" + choice.getCode() + "  codein=" + code);
+			if(choice.getCode().equals(code))
+			{
+				combo.setSelectedIndex(i);
+				return;
+			}
+		}
+		combo.setSelectedIndex(-1);
+	}
+	
 
 	private JPanel createThreatRatingTab()
 	{
@@ -186,6 +218,12 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		mainWindow.setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
 		
 		mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
+		
+		String wizardFontSizeValue = getSelectedItemQuestionBox(wizardFontSize);
+		mainWindow.setTaggedString(AppPreferences.TAG_WIZARD_FONT_SIZE, wizardFontSizeValue);
+		
+		String wizardFontFamilyValue = getSelectedItemQuestionBox(wizardFontFamily);
+		mainWindow.setTaggedString(AppPreferences.TAG_WIZARD_FONT_SIZE, wizardFontFamilyValue);
 
 		try
 		{
@@ -197,6 +235,16 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			EAM.errorDialog(EAM.text("Unable to save preferences"));
 		}
 	}
+	
+	public String getSelectedItemQuestionBox(UiComboBox combo)
+	{
+		ChoiceItem selected = (ChoiceItem)combo.getSelectedItem();
+		if(selected == null)
+			return "";
+		//System.out.println("Setting:" + selected.getCode());
+		return selected.getCode();
+	}
+	
 
 	static class ColorItemRenderer extends Component implements ListCellRenderer
 	{
@@ -266,4 +314,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	UiComboBox threatReductionResultDropDown;
 	UiCheckBox gridVisibleCheckBox; 
 	UiCheckBox cellRatingsVisibleCheckBox;
+	
+	UiComboBox wizardFontSize;
+	UiComboBox wizardFontFamily;
 }
