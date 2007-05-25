@@ -9,11 +9,12 @@ import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Point2D;
 
 import javax.swing.JButton;
 
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestBendPointSelectionHelper extends EAMTestCase
 {
@@ -21,75 +22,69 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 	{
 		super(name);
 	}
-
-	public void testMousePressed()
+	
+	public void setUp() throws Exception
 	{
-		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
-		Point2D[] selectionList = selectionHelper.getSelectionList();
-		assertEquals("selection list not empty?", 0, selectionList.length);
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
+
+	public void tearDown() throws Exception
+	{
+		super.tearDown();
+		project.close();
+	}
+
+	public void testMousePressed() throws Exception
+	{
+		LinkCell linkCell = project.createLinkCell();
+		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper(linkCell);
+		int[] selectionIndexes = selectionHelper.getSelectedIndexes();
+		assertEquals("selection list not empty?", 0, selectionIndexes.length);
 		
 		clickWithNoModifiers();
 		clickWithShiftModifier();
 	}
 	
-	private void clickWithNoModifiers()
+	private void clickWithNoModifiers() throws Exception
 	{
-		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
+		LinkCell linkCell = project.createLinkCell();
+		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper(linkCell);
 		MouseEvent mouseEvent = getMouseEvent(0);
-		Point currentBendPoint1 = new Point(1, 1);
+		int selectionIndex = 1;
 		
-		pressMouseButton(selectionHelper, mouseEvent, currentBendPoint1);
-		assertEquals("not added selection?", 1, selectionHelper.getSelectionList().length);
-		assertEquals("wrong selection added?", currentBendPoint1, selectionHelper.getSelectionList()[0]);
+		pressMouseButton(selectionHelper, mouseEvent, selectionIndex);
+		assertEquals("not added selection?", 1, selectionHelper.getSelectedIndexes().length);
+		int i = selectionHelper.getSelectedIndexes()[0];
+		assertEquals("wrong selection added?", 0, i);
 		
-		pressMouseButton(selectionHelper, mouseEvent, currentBendPoint1);
-		assertEquals("not removed selection?", 1, selectionHelper.getSelectionList().length);
+		pressMouseButton(selectionHelper, mouseEvent, selectionIndex);
+		assertEquals("not removed selection?", 1, selectionHelper.getSelectedIndexes().length);
 	}
 	
-	private void clickWithShiftModifier()
+	private void clickWithShiftModifier() throws Exception
 	{
-		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
+		LinkCell linkCell = project.createLinkCell();
+		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper(linkCell);
 		MouseEvent mouseEventShift = getMouseEvent(InputEvent.SHIFT_DOWN_MASK);
-		Point point1 = new Point(1, 1);
-		Point point2 = new Point(2, 2);
-		Point point3 = new Point(3, 3);
-		pressMouseButton(selectionHelper, mouseEventShift, point1);
-		pressMouseButton(selectionHelper, mouseEventShift, point2);
-		pressMouseButton(selectionHelper, mouseEventShift, point3);
-		assertEquals("not added selected point?", 3, selectionHelper.getSelectionList().length);
+		int index1 = 1;
+		int index2 = 2;
+		int index3 = 3;
+		pressMouseButton(selectionHelper, mouseEventShift, index1);
+		pressMouseButton(selectionHelper, mouseEventShift, index2);
+		pressMouseButton(selectionHelper, mouseEventShift, index3);
+		assertEquals("not added selected point?", 3, selectionHelper.getSelectedIndexes().length);
 		
 		MouseEvent mouseEventNoShift = getMouseEvent(0);
-		pressMouseButton(selectionHelper, mouseEventNoShift, point1);
-		assertEquals("not added selected point?", 1, selectionHelper.getSelectionList().length);
+		pressMouseButton(selectionHelper, mouseEventNoShift, index1);
+		assertEquals("not added selected point?", 1, selectionHelper.getSelectedIndexes().length);
 	}
 
-	private void pressMouseButton(BendPointSelectionHelper selectionHelper, MouseEvent mouseEvent, Point currentBendPoint1)
+	private void pressMouseButton(BendPointSelectionHelper selectionHelper, MouseEvent mouseEvent, int selectionIndex)
 	{
-		selectionHelper.mousePressed(mouseEvent, currentBendPoint1);
+		selectionHelper.mousePressed(mouseEvent, selectionIndex);
 	}
 	
-	public void testShouldRemove()
-	{
-		MouseEvent mouseEvent = getMouseEvent(0);
-		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
-		Point selectedPoint1 = new Point(1, 1);
-		assertEquals("can remove?", false, selectionHelper.canRemove(mouseEvent, selectedPoint1));
-		
-		selectionHelper.addToSelection(selectedPoint1);		
-		assertEquals("can not remove?", true, selectionHelper.canRemove(mouseEvent, selectedPoint1));	
-	}
-	
-	public void testShouldAdd()
-	{
-		MouseEvent mouseEvent = getMouseEvent(0);
-		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper();
-		Point selectedPoint1 = new Point(1, 1);
-		assertEquals("selection not remove?", true, selectionHelper.canAdd(mouseEvent, selectedPoint1));
-		
-		selectionHelper.addToSelection(selectedPoint1);
-		assertEquals("selection not remove?", false, selectionHelper.canAdd(mouseEvent, selectedPoint1));
-	}
-
 	public void testMouseEvent()
 	{
 		MouseEvent mouseEvent = getMouseEvent(InputEvent.SHIFT_DOWN_MASK);
@@ -112,4 +107,6 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 
 		return new MouseEvent(source, id, when, modifiers, x, y, clickCount, popupTrigger, button);
 	}
+	
+	ProjectForTesting project;
 }

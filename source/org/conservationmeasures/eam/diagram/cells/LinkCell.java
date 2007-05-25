@@ -11,6 +11,7 @@ import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.BendPointSelectionHelper;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -30,6 +31,8 @@ public class LinkCell extends EAMGraphCell implements Edge
 		diagramLink = diagramLinkToUse;
 		from = fromToUse;
 		to = toToUse;
+		bendSelectionHelper = new BendPointSelectionHelper(this);
+		
 		updateFromDiagramFactorLink();
 	}
 	
@@ -37,6 +40,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 		fillConnectorAttributeMap("");
 		updateBendPoints();
+	}
+	
+	public BendPointSelectionHelper getBendPointSelectionHelper()
+	{
+		return bendSelectionHelper;
 	}
 	
 	public boolean isFactorLink()
@@ -185,6 +193,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 			diagram.removeSelectionCell(this);
 	}
 
+	BendPointSelectionHelper bendSelectionHelper;
 	FactorLink link;
 	DiagramFactorLink diagramLink;
 	FactorCell from;

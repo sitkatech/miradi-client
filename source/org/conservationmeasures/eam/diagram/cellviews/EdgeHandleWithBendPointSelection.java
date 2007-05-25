@@ -7,10 +7,12 @@ package org.conservationmeasures.eam.diagram.cellviews;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.diagram.BendPointSelectionHelper;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.JGraph;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphContext;
@@ -22,13 +24,15 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		super(edge, ctx);
 		
 		graph = ctx.getGraph();
-		bendSelectionHelper = new BendPointSelectionHelper();
+		linkCell = (LinkCell) edge.getCell();
+		bendSelectionHelper = linkCell.getBendPointSelectionHelper();
 	}
 	
 	public void mousePressed(MouseEvent event)
 	{
 		super.mousePressed(event);
-		bendSelectionHelper.mousePressed(event, currentPoint);
+		bendSelectionHelper.mousePressed(event, currentIndex);
+		//TODO repaint the rect thats needed not the whole thing
 		graph.repaint();
 	}
 
@@ -42,16 +46,17 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		super.paint(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		Point2D[] selectionList = bendSelectionHelper.getSelectionList();
-		for (int i = 0; i < selectionList.length; ++i)
+		PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+		int[] selectedIndexes = bendSelectionHelper.getSelectedIndexes();
+		for (int i = 0; i < selectedIndexes.length; ++i)
 		{
+			Point point = bendPoints.get(selectedIndexes[i]);
 			g2.setColor(graph.getHighlightColor());
-			g2.drawRect((int)selectionList[i].getX() - 10, (int)selectionList[i].getY() - 10, 18, 18);
+			g2.drawRect((int)point.getX() - 10, (int)point.getY() - 10, 18, 18);
 		}
-		
-		
 	}
 	
 	JGraph graph;
 	BendPointSelectionHelper bendSelectionHelper;
+	LinkCell linkCell;
 }

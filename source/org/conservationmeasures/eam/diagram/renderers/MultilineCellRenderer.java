@@ -109,9 +109,10 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			drawBorder(g2, rect, Color.BLACK);
 		}
 		
-		if (graph.getSelectionCount()>1) 
-			graph.setHandleSize(0);
-		else 
+		//TODO temporarly disable for bend point seleciton dev
+		//if (graph.getSelectionCount()>3) 
+		//	graph.setHandleSize(0);
+		//else 
 			graph.setHandleSize(4);
 		
 		if (selected)

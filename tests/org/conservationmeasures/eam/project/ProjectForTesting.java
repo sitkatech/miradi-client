@@ -10,9 +10,11 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -33,6 +35,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 
@@ -216,6 +219,28 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	public LinkCell createLinkCell() throws Exception
+	{
+		DiagramFactorLinkId diagramLinkId = createDiagramFactorLink();
+		DiagramFactorLink diagramLink = (DiagramFactorLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramLinkId));
+		addDiagramLinkToMode(diagramLink);
+		
+		return getDiagramModel().getDiagramFactorLink(diagramLink);	
+	}
+	
+	public void addDiagramLinkToMode(DiagramFactorLink diagramLink) throws Exception 
+	{
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkageId());
+		executeCommand(addLink);
+	}
+	
+	public DiagramFactorLinkId createDiagramFactorLink() throws Exception
+	{
+		DiagramFactor from = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor to = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		return createDiagramFactorLink(from, to);
 	}
 	
 	public DiagramFactorLinkId createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
