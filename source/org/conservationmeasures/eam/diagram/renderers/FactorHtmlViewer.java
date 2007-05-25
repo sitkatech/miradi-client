@@ -11,6 +11,7 @@ import javax.swing.text.html.StyleSheet;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
@@ -60,10 +61,10 @@ public class FactorHtmlViewer extends HtmlFormViewer
 			style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
 		}
 
-		//FIXME: ProjectScopeBox should implement getColor()
 		if (graphCell!=null && graphCell.isProjectScope())
 		{
-			style.addRule(makeSureRuleHasRightPrefix("body {background-color:#00FF00;}"));
+			Color color = ((ProjectScopeBox)graphCell).getColor();
+			style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
 		}
 	}
 
@@ -110,12 +111,6 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	
 	EAMGraphCell graphCell;
 
-	/*
-	 * NOTE! In Java 1.4 the CSS class reverses the meanings of #xxx and .xxx
-	 * so if you want to affect a _class_ use #xxx 
-	 * and if you want to affect an _id_ use .xxx
-	 * GRRRR!
-	 */
 	final static String[] rules = {
 		"body {text-align:center; background-color:white; font-size:6pt;}",
 	};

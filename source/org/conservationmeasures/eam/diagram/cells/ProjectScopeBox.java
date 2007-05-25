@@ -19,6 +19,8 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.DiagramModelEvent;
 import org.conservationmeasures.eam.diagram.DiagramModelListener;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.jgraph.graph.GraphConstants;
@@ -46,6 +48,12 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 		return (String)getUserObject();
 	}
+	
+	public Color getColor()
+	{
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
+	}
+
 
 	public boolean isProjectScope()
 	{

@@ -13,8 +13,6 @@ import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
-import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 
@@ -22,7 +20,7 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 {
 	Color getFillColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
+		return projectScopeBox.getColor();
 	}
 
 	public void paint(Graphics g1)
@@ -54,13 +52,15 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		if(cell.isProjectScope())
 		{
-			vision = ((ProjectScopeBox)(view.getCell())).getVision();
+			projectScopeBox = (ProjectScopeBox)(view.getCell());
+			vision = projectScopeBox.getVision();
 			shortScopeHeight = ((ProjectScopeBox)(view.getCell())).getShortScopeHeight();
 		}
 		
 		return super.getRendererComponent(graphToUse, view, sel, focus, previewMode);
 	}
 	
+	ProjectScopeBox projectScopeBox;
 	String vision;
 	int shortScopeHeight;
 }
