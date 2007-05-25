@@ -1,3 +1,8 @@
+/* 
+* Copyright 2005-2007, Wildlife Conservation Society, 
+* Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
 package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
@@ -38,7 +43,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	{
 		String fontSize = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
 		if (!fontSize.equals("0"))
-			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));
+			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));			
 	}
 	
 	public void addRuleFactorCellFontFamily(StyleSheet style)
@@ -49,23 +54,17 @@ public class FactorHtmlViewer extends HtmlFormViewer
 
 	public void addRuleFactorCellBackgroundColor(StyleSheet style)
 	{
-		String rule;
 		if (graphCell!=null && graphCell.isFactor())
 		{
 			Color color = ((FactorCell)graphCell).getColor();
-			rule = "body {background-color:"+convertColorToHTMLColor(color)+";}";
+			style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
 		}
-		else
+
 		//FIXME: ProjectScopeBox should implement getColor()
-			if (graphCell!=null && graphCell.isProjectScope())
-			{
-				rule = "body {background-color:#00FF00;}";
-			}
-		else
-			rule = "body {background-color:white;}";
-		
-		style.addRule(makeSureRuleHasRightPrefix(rule));
-		
+		if (graphCell!=null && graphCell.isProjectScope())
+		{
+			style.addRule(makeSureRuleHasRightPrefix("body {background-color:#00FF00;}"));
+		}
 	}
 
 	//FIXME: We could get project from cell for a factor cell the underlying factor; and from the project scope box
@@ -118,21 +117,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	 * GRRRR!
 	 */
 	final static String[] rules = {
-		"body { font-style:italic; font-size:10pt;}",
-		"code {font-family: sans-serif; }",
-		"  .viewname { font-size: 125%; font-weight: bold }",
-		"  .appname { font-size: 200%; font-weight: bold }",
-		"  .apptagline { font-size: 110%; font-weight: bold }",
-		"  .processsection { font-size: 120%; }",
-		"  .taskheading { font-size: 110%; font-weight: bold; font-style: italics; }",
-		"  .nextsteps { font-weight: 700; }",
-		"  .navigation { background-color: #eeeeee; " +
-			"border-width: 1; border-color: black; font-size: small; }",
-		"  .hintheading { font-style: italics; font-weight: bold; }",
-		"  .task {font-weight: bold; }",
-		"  .toolbarbutton {color: #A06020; font-weight: bold;}",
-		"  .hint {font-style: italics; }",
-		"  .definition {font-style: italics; }",
+		"body { background-color:white; font-size:10pt;}",
 	};
 
 }
