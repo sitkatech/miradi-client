@@ -1,8 +1,11 @@
 package org.conservationmeasures.eam.diagram.renderers;
 
+import java.awt.Color;
+
 import javax.swing.text.html.StyleSheet;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
@@ -31,12 +34,11 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	{
 		if (graphCell!=null && graphCell.isFactor())
 		{
-			//Color color = ((FactorCell)graphCell).getColor();
-			//String colorString = color.toString();
-			//System.out.println(colorString);
-			return "body {background-color:yellow;}";
+			Color color = ((FactorCell)graphCell).getColor();
+			return "body {background-color:"+getHTMLColor(color)+";}";
 		}
 
+		//FIXME: ProjectScopeBox should implement getColor()
 		if (graphCell!=null && graphCell.isProjectScope())
 		{
 			return "body {background-color:#00FF00;}";
@@ -46,7 +48,18 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		
 	}
 	
-	
+	public static String getHTMLColor(Color c) {
+		String red = calcHex(c.getRed());
+		String green = calcHex(c.getGreen());
+		String blue = calcHex(c.getBlue());
+		return "#" + red + green + blue;
+	}
+
+	private static String calcHex(int red2)
+	{
+		String red = "0" + Integer.toHexString(red2);
+		return red.substring(red.length() - 2);
+	}
 	
 	
 	private String makeSureRuleHasRightPrefix(String rule)
