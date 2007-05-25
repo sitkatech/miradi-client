@@ -48,7 +48,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		String text = cell.toString();
 		
-		String formattedLabel = HTML_BEFORE_TEXT + XmlUtilities.getXmlEncoded(text) + HTML_AFTER_TEXT;
+		String formattedLabel =  XmlUtilities.getXmlEncoded(text);
 		htmlFormViewer.setFactorCell(cell);
 		htmlFormViewer.setText(formattedLabel);
 		
@@ -334,11 +334,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		return new Point2D.Double(xout, yout);
 	}
 	
-	public static final String HTML_AFTER_TEXT = "</font></div></html>";
-
-	public static final String HTML_BEFORE_TEXT = "<html><div align='center'> ";
-	
-
 	public static final int INDICATOR_WIDTH = 20;
 	public static final int INDICATOR_HEIGHT = 20;
 	public static final int ANNOTATIONS_HEIGHT = 20;
