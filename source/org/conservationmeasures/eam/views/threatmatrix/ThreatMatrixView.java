@@ -9,9 +9,9 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionHideCellRatings;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
@@ -51,7 +51,7 @@ public class ThreatMatrixView extends UmbrellaView
 		wizardPanel = new ThreatRatingWizardPanel(this);
 	}
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new ThreatMatrixToolBar(getActions(), isCellRatingsVisible());
 	}

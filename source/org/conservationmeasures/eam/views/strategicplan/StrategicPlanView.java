@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.strategicplan;
 
-import javax.swing.JComponent;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.dialogs.GoalPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.ObjectivePoolManagementPanel;
@@ -35,7 +35,7 @@ public class StrategicPlanView extends TabbedView
 		return Project.STRATEGIC_PLAN_VIEW_NAME;
 	}
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new StrategicPlanToolBar(getActions());
 	}

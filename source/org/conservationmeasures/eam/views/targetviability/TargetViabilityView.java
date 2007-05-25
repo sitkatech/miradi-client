@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.targetviability;
 
-import javax.swing.JComponent;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
@@ -41,7 +41,7 @@ public class TargetViabilityView extends TabbedView
 		return Project.TARGET_VIABILITY_NAME;
 	}
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new TargetViabilityToolBar(getActions());
 	}

@@ -9,10 +9,10 @@ import java.awt.BorderLayout;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -50,7 +50,7 @@ public class MapView extends UmbrellaView
 	}
 	
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new MapToolBar(getActions());
 	}

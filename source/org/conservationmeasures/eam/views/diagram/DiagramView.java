@@ -13,6 +13,7 @@ import java.util.Iterator;
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
@@ -140,7 +141,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return Project.DIAGRAM_VIEW_NAME;
 	}
 	
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new DiagramToolBar(getActions(), this);
 	}

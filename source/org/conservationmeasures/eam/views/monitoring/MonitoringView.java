@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.monitoring;
 
 
-import javax.swing.JComponent;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.dialogs.IndicatorPoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -34,7 +34,7 @@ public class MonitoringView extends TabbedView
 		return Project.MONITORING_VIEW_NAME;
 	}
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new MonitoringToolBar(getActions());
 	}

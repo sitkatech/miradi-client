@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.summary;
 
 
-import javax.swing.JComponent;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
@@ -46,7 +46,7 @@ public class SummaryView extends TabbedView
 		return Project.SUMMARY_VIEW_NAME;
 	}
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new SummaryToolBar(getMainWindow().getActions());
 	}

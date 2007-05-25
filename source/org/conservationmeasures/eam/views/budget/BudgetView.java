@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.budget;
 
 import java.awt.Component;
 
-import javax.swing.JComponent;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
@@ -80,7 +80,7 @@ public class BudgetView extends TabbedView
 		getMainWindow().setStatusBarIfDataExistsOutOfRange();
 	}
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new BudgetToolBar(getActions());
 	}

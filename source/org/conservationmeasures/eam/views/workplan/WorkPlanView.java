@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.workplan;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JComponent;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
@@ -57,7 +57,7 @@ public class WorkPlanView extends TabbedView
 		return Project.WORK_PLAN_VIEW_NAME;
 	}
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new WorkPlanToolBar(getActions());
 	}

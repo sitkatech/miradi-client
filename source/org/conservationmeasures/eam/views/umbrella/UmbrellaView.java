@@ -14,6 +14,7 @@ import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -196,7 +197,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return getMainWindow().getActions();
 	}
 	
-	abstract public JComponent createToolBar();
+	abstract public JToolBar createToolBar();
 	
 	public BufferedImage getImage()
 	{

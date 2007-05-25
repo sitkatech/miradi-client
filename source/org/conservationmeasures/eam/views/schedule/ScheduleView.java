@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.views.schedule;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -37,7 +37,7 @@ public class ScheduleView extends TabbedView
 		return Project.SCHEDULE_VIEW_NAME;
 	}
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new ScheduleToolBar(getActions());
 	}

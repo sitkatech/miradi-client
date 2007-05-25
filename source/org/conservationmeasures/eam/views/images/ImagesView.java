@@ -7,10 +7,10 @@ package org.conservationmeasures.eam.views.images;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -39,7 +39,7 @@ public class ImagesView extends UmbrellaView
 		return Project.IMAGES_VIEW_NAME;
 	}
 
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new ImagesToolBar(getActions());
 	}

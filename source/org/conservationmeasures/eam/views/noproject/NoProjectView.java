@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.noproject;
 
-import javax.swing.JComponent;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -20,7 +20,7 @@ public class NoProjectView extends UmbrellaView
 		wizard = new NoProjectWizardPanel(this);
 	}
 	
-	public JComponent createToolBar()
+	public JToolBar createToolBar()
 	{
 		return new NoProjectToolBar(getActions());
 	}
