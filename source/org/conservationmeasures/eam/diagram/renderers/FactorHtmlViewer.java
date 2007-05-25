@@ -24,9 +24,9 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		for(int i = 0; i < rules.length; ++i)			
 			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
 		
-		style.addRule(makeSureRuleHasRightPrefix(getFactorCellBackgroundColor()));
-		style.addRule(makeSureRuleHasRightPrefix(getFactorCellFontFamily()));
-		style.addRule(makeSureRuleHasRightPrefix(getFactorCellFontSize()));
+		addRuleFactorCellBackgroundColor(style);
+		addRuleFactorCellFontFamily(style);
+		addRuleFactorCellFontSize(style);
 	}
 	
 	public void setFactorCell(EAMGraphCell cell)
@@ -34,17 +34,38 @@ public class FactorHtmlViewer extends HtmlFormViewer
 			graphCell = cell;
 	}
 	
-	public String getFactorCellFontSize()
+	public void addRuleFactorCellFontSize(StyleSheet style)
 	{
-		//FIXME: system default not working; Need to not write bad size when default requested
 		String fontSize = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
-		return "body {font-size:"+fontSize+"pt; }";
+		if (!fontSize.equals("0"))
+			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));
 	}
 	
-	public String getFactorCellFontFamily()
+	public void addRuleFactorCellFontFamily(StyleSheet style)
 	{
 		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
-		return "body {font-family:"+fontFamily+";}";
+		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
+	}
+
+	public void addRuleFactorCellBackgroundColor(StyleSheet style)
+	{
+		String rule;
+		if (graphCell!=null && graphCell.isFactor())
+		{
+			Color color = ((FactorCell)graphCell).getColor();
+			rule = "body {background-color:"+convertColorToHTMLColor(color)+";}";
+		}
+		else
+		//FIXME: ProjectScopeBox should implement getColor()
+			if (graphCell!=null && graphCell.isProjectScope())
+			{
+				rule = "body {background-color:#00FF00;}";
+			}
+		else
+			rule = "body {background-color:white;}";
+		
+		style.addRule(makeSureRuleHasRightPrefix(rule));
+		
 	}
 
 	//FIXME: We could get project from cell for a factor cell the underlying factor; and from the project scope box
@@ -52,25 +73,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	{
 		return EAM.mainWindow.getProject();
 	}
-	
-	public String getFactorCellBackgroundColor()
-	{
-		if (graphCell!=null && graphCell.isFactor())
-		{
-			Color color = ((FactorCell)graphCell).getColor();
-			return "body {background-color:"+convertColorToHTMLColor(color)+";}";
-		}
 
-		//FIXME: ProjectScopeBox should implement getColor()
-		if (graphCell!=null && graphCell.isProjectScope())
-		{
-			return "body {background-color:#00FF00;}";
-		}
-		
-		return "body {background-color:white;}";
-		
-	}
-	
 	public static String convertColorToHTMLColor(Color c) {
 		return "#" + calcHex(c.getRed()) + calcHex(c.getGreen()) + calcHex(c.getBlue());
 	}
@@ -115,7 +118,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	 * GRRRR!
 	 */
 	final static String[] rules = {
-		"body { font-style:italic; }",
+		"body { font-style:italic; font-size:10pt;}",
 		"code {font-family: sans-serif; }",
 		"  .viewname { font-size: 125%; font-weight: bold }",
 		"  .appname { font-size: 200%; font-weight: bold }",
