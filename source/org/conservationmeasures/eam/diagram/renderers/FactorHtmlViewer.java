@@ -47,6 +47,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		return "body {font-family="+fontFamily+";}";
 	}
 
+	//FIXME: We could get project from cell for a factor cell the underlying factor; and from the project scope box
 	private Project getProject()
 	{
 		return EAM.mainWindow.getProject();
