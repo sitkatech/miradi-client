@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class ToolBarContainer extends JPanel
@@ -15,5 +16,20 @@ public class ToolBarContainer extends JPanel
 	{
 		super(new BorderLayout());
 	}
+	
+	public void addToolBar(JComponent compToUse)
+	{
+		comp = compToUse;
+		add(comp);
+	}
+	
+	public void dispose()
+	{
+		if (comp!=null) 
+			comp.removeAll();
+		comp = null;
+		removeAll();
+	}
 
+	JComponent comp;
 }

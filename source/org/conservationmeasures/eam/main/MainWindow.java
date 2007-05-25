@@ -190,6 +190,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void updateToolBar()
 	{
+		toolBarBox.dispose();
 		SwingUtilities.invokeLater(new ToolBarUpdater());
 	}
 	
@@ -200,13 +201,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			UmbrellaView view = getCurrentView();
 			if(view == null)
 				return;
-			toolBar = view.createToolBar();
+			JComponent toolBar = view.createToolBar();
 			if(toolBar == null)
 				throw new RuntimeException("View must have toolbar");
-			//FIXME: Temp solution ... toolbarBox needs save its usb component and implement and deligate  dispose() 
-			if (toolBar!=null) toolBar.removeAll();
-			toolBarBox.removeAll();
-			toolBarBox.add(toolBar);
+
+			toolBarBox.addToolBar(toolBar);
 			toolBarBox.invalidate();
 			toolBarBox.validate();
 			invalidate();
@@ -214,8 +213,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			repaint();
 		}
 	}
-	
-	JComponent toolBar;
 
 	public Project getProject()
 	{
@@ -630,7 +627,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
-	private JPanel toolBarBox;
+	private ToolBarContainer toolBarBox;
 	private MainMenuBar mainMenuBar;
 	private MainStatusBar mainStatusBar;
 	
