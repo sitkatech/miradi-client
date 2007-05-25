@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.Box;
 import javax.swing.JPanel;
@@ -21,7 +23,7 @@ import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.martus.swing.UiButton;
 import org.martus.swing.Utilities;
 
-public class ModelessDialogWithClose extends EAMDialog
+public class ModelessDialogWithClose extends EAMDialog implements WindowListener
 {
 	public ModelessDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
 	{
@@ -37,6 +39,7 @@ public class ModelessDialogWithClose extends EAMDialog
 		getContentPane().add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		pack();
 		Utilities.fitInScreen(this);
+		addWindowListener(this);
 	}
 	
 	public JPanel getWrappedPanel()
@@ -51,6 +54,7 @@ public class ModelessDialogWithClose extends EAMDialog
 		closeButton.addActionListener(new DialogCloseListener());
 		
 		getRootPane().setDefaultButton(closeButton);
+		
 		Box buttonBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {Box.createHorizontalGlue(), closeButton};
 		addAdditionalButtons(buttonBar);
@@ -121,6 +125,36 @@ public class ModelessDialogWithClose extends EAMDialog
 			}
 		}
 	}
+
+	public void windowActivated(WindowEvent arg0)
+	{
+	}
+
+	public void windowClosed(WindowEvent arg0)
+	{
+	}
+
+	public void windowClosing(WindowEvent arg0)
+	{
+		dispose();
+	}
+
+	public void windowDeactivated(WindowEvent arg0)
+	{
+	}
+
+	public void windowDeiconified(WindowEvent arg0)
+	{
+	}
+
+	public void windowIconified(WindowEvent arg0)
+	{
+	}
+
+	public void windowOpened(WindowEvent arg0)
+	{
+	}
+	
 
 	MainWindow mainWindow;
 	DisposablePanel wrappedPanel;
