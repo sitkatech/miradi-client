@@ -55,6 +55,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
 	}
 
+	//FIXME: the null check needs to be investigated as to why it is null at this point in time
 	public void addRuleFactorCellBackgroundColor(StyleSheet style)
 	{
 		if (graphCell!=null && graphCell.isFactor())
