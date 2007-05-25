@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Insets;
 import java.awt.Paint;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -40,6 +41,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	{
 		htmlFormViewer = new FactorHtmlViewer();
 		htmlFormViewer.setOpaque(true);
+		htmlFormViewer.setMargin(new Insets(0,0,0,0));
 	}
 
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
