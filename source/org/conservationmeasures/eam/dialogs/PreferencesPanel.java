@@ -53,11 +53,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		JTabbedPane tabPane = new JTabbedPane();
 		tabPane.addTab("Diagram View", createDiagramTab());
 		tabPane.addTab("Threat Rating View", createThreatRatingTab());
-		tabPane.addTab("Wizard And Html Forms", createWizardAndHtmlFormTab());
+		tabPane.addTab("Systemwide", createSystemwideTab());
 		return tabPane;
 	}
 	
-	private JPanel createWizardAndHtmlFormTab()
+	private JPanel createSystemwideTab()
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
 		//htmlTab.add(new UiLabel(EAM.text("Show Ratings in Cell")));
