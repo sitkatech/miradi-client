@@ -36,15 +36,14 @@ import org.martus.util.xml.XmlUtilities;
 
 public class MultilineCellRenderer extends JComponent implements CellViewRenderer
 {
-	public MultilineCellRenderer()
-	{
-		htmlFormViewer = new FactorHtmlViewer();
-		htmlFormViewer.setOpaque(false);
-	}
-
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
 			boolean sel, boolean focus, boolean previewMode)
 	{
+		if (htmlFormViewer==null)
+		{
+			htmlFormViewer = new FactorHtmlViewer();
+			htmlFormViewer.setOpaque(false);
+		}
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		String text = cell.toString();
 		
