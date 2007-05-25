@@ -36,6 +36,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	
 	public String getFactorCellFontSize()
 	{
+		//FIXME: system default not working; Need to not write bad size when default requested
 		String fontSize = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
 		return "body {font-size:"+fontSize+"pt; }";
 	}
