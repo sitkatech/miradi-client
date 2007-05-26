@@ -14,28 +14,12 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.project.ChainObject;
 import org.conservationmeasures.eam.project.Project;
 
 //FIXME: ProjectChainObject and DiagramChainObject should be have a common super class for dup code
-public class DiagramChainObject
+public class DiagramChainObject extends ChainObject
 {
-	public FactorSet getFactors()
-	{
-		return factorSet;
-	}
-	
-	public Factor[] getFactorsArray()
-	{	
-		Factor[] cmNodes = (Factor[])factorSet.toArray(new Factor[0]);
-		return cmNodes;
-	}
-	
-	public FactorLink[] getFactorLinksArray()
-	{
-		FactorLink[] cmLinks = (FactorLink[])processedLinks.toArray(new FactorLink[0]);
-		return cmLinks;
-	} 
-		
 	public void buildDirectThreatChain(DiagramModel model, Factor factor)
 	{
 		initializeChain(model, factor);
@@ -86,27 +70,7 @@ public class DiagramChainObject
 		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
-	private FactorSet getDirectlyLinkedDownstreamFactors()
-	{
-		return getDirectlyLinkedFactors(FactorLink.FROM);
-	}
-	
-	private FactorSet getDirectlyLinkedUpstreamFactors()
-	{
-		return getDirectlyLinkedFactors(FactorLink.TO);
-	}
-	
-	private FactorSet getAllUpstreamFactors()
-	{
-		return getAllLinkedFactors(FactorLink.TO);
-	}
-
-	private FactorSet getAllDownstreamFactors()
-	{
-		return getAllLinkedFactors(FactorLink.FROM);
-	}
-	
-	private FactorSet getAllLinkedFactors(int direction)
+	public FactorSet getAllLinkedFactors(int direction)
 	{
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
@@ -165,7 +129,7 @@ public class DiagramChainObject
 		return diagramModel.getProject();
 	}
 
-	private FactorSet getDirectlyLinkedFactors(int direction)
+	public FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
@@ -194,8 +158,6 @@ public class DiagramChainObject
 			processedLinks.add(thisLinkage);
 	}
 
-	private FactorSet factorSet;
 	private Factor startingFactor;
 	private DiagramModel diagramModel;
-	private Vector processedLinks;
 }

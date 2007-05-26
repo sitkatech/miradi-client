@@ -220,7 +220,7 @@ public class ResultsChainCreatorHelper
 		Vector allDiagramFactors = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			DiagramChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
+			ChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
 			Factor[] factorsArray = chainObject.getFactorsArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
@@ -283,7 +283,7 @@ public class ResultsChainCreatorHelper
 		Vector allDiagramLinks = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			DiagramChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
+			ChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
 			Vector diagramLinks = convertToDiagramLinks(chainObject.getFactorLinksArray());
 			allDiagramLinks.addAll(diagramLinks);
 		}
@@ -291,7 +291,7 @@ public class ResultsChainCreatorHelper
 		return (DiagramFactorLink[]) allDiagramLinks.toArray(new DiagramFactorLink[0]);
 	}
 
-	private DiagramChainObject createDiagramChainObject(FactorCell[] selectedFactorCells, int i)
+	private ChainObject createDiagramChainObject(FactorCell[] selectedFactorCells, int i)
 	{
 		DiagramChainObject chainObject = new DiagramChainObject();
 		Factor factor = selectedFactorCells[i].getUnderlyingObject();
