@@ -7,7 +7,9 @@ package org.conservationmeasures.eam.wizard;
 
 import javax.swing.text.html.StyleSheet;
 
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
 import org.martus.swing.HyperlinkHandler;
 
@@ -23,6 +25,34 @@ public class WizardHtmlViewer extends HtmlFormViewer
 		super.customizeStyleSheet(style);
 		for(int i = 0; i < rules.length; ++i)			
 			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
+		
+		addRuleFontFamily(style);
+		addRuleFontSize(style);
+	}
+	
+	public void addRuleFontSize(StyleSheet style)
+	{
+		String fontSize = getMainWindow().getTaggedString(AppPreferences.TAG_WIZARD_FONT_SIZE);
+		if (fontSize.equals("0"))
+			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
+		else
+			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
+		
+		System.out.println("addRuleFontSize:" + fontSize );
+	}
+	
+	public void addRuleFontFamily(StyleSheet style)
+	{
+		String fontFamily = getMainWindow().getTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY);
+		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
+		System.out.println("addRuleFontSize:" +fontFamily);
+	}
+	
+
+	//FIXME: should not use static ref here
+	private MainWindow getMainWindow()
+	{
+		return EAM.mainWindow;
 	}
 	
 	private String makeSureRuleHasRightPrefix(String rule)

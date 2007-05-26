@@ -222,7 +222,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		mainWindow.setTaggedInt(AppPreferences.TAG_WIZARD_FONT_SIZE, new Integer(wizardFontSizeValue).intValue());
 		
 		String wizardFontFamilyValue = getSelectedItemQuestionBox(wizardFontFamily);
-		mainWindow.setTaggedString(AppPreferences.TAG_WIZARD_FONT_SIZE, wizardFontFamilyValue);
+		mainWindow.setTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY, wizardFontFamilyValue);
 
 		try
 		{
