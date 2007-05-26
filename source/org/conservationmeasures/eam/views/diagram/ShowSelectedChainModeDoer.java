@@ -80,15 +80,20 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			
 			addFactorsToList(selectedNodes, nodeORefsToProcess);
 			addFactorsToList(orphanedDaftStrats, nodeORefsToProcess);
-			
-			// FIXME: Should be in try/finally!
+
 			project.executeCommand(new CommandBeginTransaction());
-			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
-					ViewData.TAG_CHAIN_MODE_FACTOR_REFS, nodeORefsToProcess.toString()));
-			
-			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
-					ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM));
-			project.executeCommand(new CommandEndTransaction());
+			try 
+			{
+				project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
+						ViewData.TAG_CHAIN_MODE_FACTOR_REFS, nodeORefsToProcess.toString()));
+				
+				project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
+						ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM));
+			}
+			finally
+			{
+				project.executeCommand(new CommandEndTransaction());
+			}
 		}
 		catch (Exception e)
 		{
