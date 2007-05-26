@@ -16,9 +16,7 @@ abstract public class ChainObject
 {	
 	abstract public FactorSet getAllLinkedFactors(int direction);
 	abstract public FactorSet getDirectlyLinkedFactors(int direction);
-	
-	protected FactorSet factorSet;
-	protected Vector processedLinks;
+
 
 	public FactorSet getFactors()
 	{
@@ -34,21 +32,60 @@ abstract public class ChainObject
 	{
 		return (FactorLink[])processedLinks.toArray(new FactorLink[0]);
 	}
+	
 	protected FactorSet getDirectlyLinkedDownstreamFactors()
 	{
 		return getDirectlyLinkedFactors(FactorLink.FROM);
 	}
+	
 	protected FactorSet getDirectlyLinkedUpstreamFactors()
 	{
 		return getDirectlyLinkedFactors(FactorLink.TO);
 	}
+	
 	protected FactorSet getAllUpstreamFactors()
 	{
 		return getAllLinkedFactors(FactorLink.TO);
 	}
+	
 	protected FactorSet getAllDownstreamFactors()
 	{
 		return getAllLinkedFactors(FactorLink.FROM);
 	}
-
+	
+	protected Project getProject()
+	{
+		return startingFactor.getObjectManager().getProject();
+	}
+	
+	protected void attempToAdd(FactorLink thisLinkage)
+	{
+		if (!processedLinks.contains(thisLinkage))
+			processedLinks.add(thisLinkage);
+	}
+	
+	protected void processLink(FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
+	{
+		if(thisLink.getNodeId(direction).equals(thisFactor.getId()))
+		{
+			attempToAdd(thisLink);
+			Factor linkedNode = getProject().findNode(thisLink.getOppositeNodeId(direction));
+			unprocessedFactors.attemptToAdd(linkedNode);
+			return;
+		}
+		
+		if (!thisLink.isBidirectional())
+			return;
+		
+		if(thisLink.getOppositeNodeId(direction).equals(thisFactor.getId()))
+		{
+			attempToAdd(thisLink);
+			Factor linkedNode = getProject().findNode(thisLink.getNodeId(direction));
+			unprocessedFactors.attemptToAdd(linkedNode);
+		}
+	}
+	
+	protected FactorSet factorSet;
+	protected Vector processedLinks;
+	protected Factor startingFactor;
 }

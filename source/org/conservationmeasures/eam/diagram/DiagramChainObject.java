@@ -15,9 +15,10 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.ChainObject;
-import org.conservationmeasures.eam.project.Project;
 
-//FIXME: ProjectChainObject and DiagramChainObject should be have a common super class for dup code
+//TODO: If the methods took a diagram factor instead of a 
+//factor we shold be able to get to both the model and 
+//factor so that many of these methods could be moved to the super
 public class DiagramChainObject extends ChainObject
 {
 	public void buildDirectThreatChain(DiagramModel model, Factor factor)
@@ -103,32 +104,6 @@ public class DiagramChainObject extends ChainObject
 		return linkedFactors;
 	}
 
-	private void processLink(FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
-	{
-		if(thisLink.getNodeId(direction).equals(thisFactor.getId()))
-		{
-			attempToAdd(thisLink);
-			Factor linkedNode = getProject().findNode(thisLink.getOppositeNodeId(direction));
-			unprocessedFactors.attemptToAdd(linkedNode);
-			return;
-		}
-		
-		if (!thisLink.isBidirectional())
-			return;
-		
-		if(thisLink.getOppositeNodeId(direction).equals(thisFactor.getId()))
-		{
-			attempToAdd(thisLink);
-			Factor linkedNode = getProject().findNode(thisLink.getNodeId(direction));
-			unprocessedFactors.attemptToAdd(linkedNode);
-		}
-	}
-
-	private Project getProject()
-	{
-		return diagramModel.getProject();
-	}
-
 	public FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
@@ -152,12 +127,5 @@ public class DiagramChainObject extends ChainObject
 		processedLinks = new Vector();
 	}
 	
-	private void attempToAdd(FactorLink thisLinkage)
-	{
-		if (!processedLinks.contains(thisLinkage))
-			processedLinks.add(thisLinkage);
-	}
-
-	private Factor startingFactor;
 	private DiagramModel diagramModel;
 }

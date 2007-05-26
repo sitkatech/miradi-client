@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 
-//FIXME: ProjectChainObject and DiagramChainObject should be have a common super class for dup code
 public class ProjectChainObject  extends ChainObject
 {
 	public void buildDirectThreatChain(Factor factor)
@@ -72,7 +71,7 @@ public class ProjectChainObject  extends ChainObject
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
 		linkedFactors.attemptToAdd(startingFactor);
-		FactorLinkPool factorLinkPool = getObjectManager().getLinkagePool();
+		FactorLinkPool factorLinkPool = getProject().getFactorLinkPool();
 		
 		FactorLinkId[] linkIds = factorLinkPool.getFactorLinkIds();
 		for(int i = 0; i < linkIds.length; ++i)
@@ -99,33 +98,12 @@ public class ProjectChainObject  extends ChainObject
 		return linkedFactors;
 	}
 
-	private void processLink(FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
-	{
-		if(thisLink.getNodeId(direction).equals(thisFactor.getId()))
-		{
-			attempToAdd(thisLink);
-			Factor linkedNode = getObjectManager().findNode(thisLink.getOppositeNodeId(direction));
-			unprocessedFactors.attemptToAdd(linkedNode);
-			return;
-		}
-		
-		if (!thisLink.isBidirectional())
-			return;
-		
-		if(thisLink.getOppositeNodeId(direction).equals(thisFactor.getId()))
-		{
-			attempToAdd(thisLink);
-			Factor linkedNode = getObjectManager().findNode(thisLink.getNodeId(direction));
-			unprocessedFactors.attemptToAdd(linkedNode);
-		}
-	}
-	
 	public FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
 		
-		FactorLinkPool factorLinkPool = getObjectManager().getLinkagePool();
+		FactorLinkPool factorLinkPool = getProject().getFactorLinkPool();
 		for(int i = 0; i < factorLinkPool.getFactorLinkIds().length; ++i)
 		{
 			FactorLink thisLink = factorLinkPool.find(factorLinkPool.getFactorLinkIds()[i]);
@@ -140,17 +118,4 @@ public class ProjectChainObject  extends ChainObject
 		factorSet = new FactorSet();
 		processedLinks = new Vector();
 	}
-	
-	private void attempToAdd(FactorLink thisLinkage)
-	{
-		if (!processedLinks.contains(thisLinkage))
-			processedLinks.add(thisLinkage);
-	}
-	
-	private ObjectManager getObjectManager()
-	{
-		return startingFactor.getObjectManager();
-	}
-
-	private Factor startingFactor;
 }
