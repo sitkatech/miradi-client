@@ -86,7 +86,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		for(int i = 0; i < combo.getItemCount(); ++i)
 		{
 			ChoiceItem choice = (ChoiceItem)combo.getItemAt(i);
-			//System.out.println("HERE: choice=" + choice.getCode() + "  codein=" + code);
 			if(choice.getCode().equals(code))
 			{
 				combo.setSelectedIndex(i);
@@ -241,7 +240,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		ChoiceItem selected = (ChoiceItem)combo.getSelectedItem();
 		if(selected == null)
 			return "";
-		//System.out.println("Setting:" + selected.getCode());
 		return selected.getCode();
 	}
 	
