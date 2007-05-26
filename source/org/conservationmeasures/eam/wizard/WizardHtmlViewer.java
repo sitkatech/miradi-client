@@ -32,20 +32,17 @@ public class WizardHtmlViewer extends HtmlFormViewer
 	
 	public void addRuleFontSize(StyleSheet style)
 	{
-		String fontSize = getMainWindow().getTaggedString(AppPreferences.TAG_WIZARD_FONT_SIZE);
-		if (fontSize.equals("0"))
+		int fontSize = getMainWindow().getTaggedInt(AppPreferences.TAG_WIZARD_FONT_SIZE);
+		if (fontSize == 0)
 			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
 		else
 			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
-		
-		//System.out.println("addRuleFontSize:" + fontSize );
 	}
 	
 	public void addRuleFontFamily(StyleSheet style)
 	{
 		String fontFamily = getMainWindow().getTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY);
 		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
-		//System.out.println("addRuleFontFamily:" +fontFamily);
 	}
 	
 
