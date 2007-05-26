@@ -12,7 +12,6 @@ import javax.swing.text.html.StyleSheet;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
@@ -71,10 +70,9 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		}
 	}
 
-	//FIXME: We could get project from cell for a factor cell the underlying factor; and from the project scope box
 	private Project getProject()
 	{
-		return EAM.mainWindow.getProject();
+		return getMainWindow().getProject();
 	}
 
 	public static String convertColorToHTMLColor(Color c) {
