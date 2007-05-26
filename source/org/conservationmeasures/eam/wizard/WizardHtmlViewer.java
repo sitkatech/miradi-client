@@ -7,9 +7,6 @@ package org.conservationmeasures.eam.wizard;
 
 import javax.swing.text.html.StyleSheet;
 
-import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
 import org.martus.swing.HyperlinkHandler;
 
@@ -25,55 +22,6 @@ public class WizardHtmlViewer extends HtmlFormViewer
 		super.customizeStyleSheet(style);
 		for(int i = 0; i < rules.length; ++i)			
 			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
-		
-		addRuleFontFamily(style);
-		addRuleFontSize(style);
-	}
-	
-	public void addRuleFontSize(StyleSheet style)
-	{
-		int fontSize = getMainWindow().getTaggedInt(AppPreferences.TAG_WIZARD_FONT_SIZE);
-		if (fontSize == 0)
-			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
-		else
-			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
-	}
-	
-	public void addRuleFontFamily(StyleSheet style)
-	{
-		String fontFamily = getMainWindow().getTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY);
-		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
-	}
-	
-
-	//FIXME: should not use static ref here
-	private MainWindow getMainWindow()
-	{
-		return EAM.mainWindow;
-	}
-	
-	private String makeSureRuleHasRightPrefix(String rule)
-	{
-		if (cssDotPrefixWorksCorrectly())
-			return rule;
-
-		return replaceDotWithPoundSign(rule);
-	}
-	
-	private String replaceDotWithPoundSign(String rule)
-	{
-		if (rule.trim().startsWith("."))
-			return rule.trim().replaceFirst(".", "#");
-
-		return rule;
-	}
-
-	private boolean cssDotPrefixWorksCorrectly()
-	{
-		String javaVersion = EAM.getJavaVersion();
-		if (javaVersion.startsWith("1.4"))
-			return false;
-		return true;
 	}
 
 	/*
@@ -83,16 +31,15 @@ public class WizardHtmlViewer extends HtmlFormViewer
 	 * GRRRR!
 	 */
 	final static String[] rules = {
-		"body {font-family: sans-serif, arial; margin: 10}",
-		"code {font-family: sans-serif; }",
+		"body {margin: 10}",
+		"code {}",
 		"  .viewname { font-size: 125%; font-weight: bold }",
 		"  .appname { font-size: 200%; font-weight: bold }",
 		"  .apptagline { font-size: 110%; font-weight: bold }",
 		"  .processsection { font-size: 120%; }",
 		"  .taskheading { font-size: 110%; font-weight: bold; font-style: italics; }",
 		"  .nextsteps { font-weight: 700; }",
-		"  .navigation { background-color: #eeeeee; " +
-			"border-width: 1; border-color: black; font-size: small; }",
+		"  .navigation { background-color: #eeeeee; border-width: 1; border-color: black; font-size: 100%; }",
 		"  .hintheading { font-style: italics; font-weight: bold; }",
 		"  .task {font-weight: bold; }",
 		"  .toolbarbutton {color: #A06020; font-weight: bold;}",

@@ -42,8 +42,11 @@ import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMResourceImageIcon;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiEditorPane;
 
@@ -86,8 +89,55 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	protected void customizeStyleSheet(StyleSheet style)
 	{
 		style.addRule("body {background: #ffffff;}");
+		addRuleFontFamily(style);
+		addRuleFontSize(style);
 	}
 
+	public void addRuleFontSize(StyleSheet style)
+	{
+		int fontSize = getMainWindow().getTaggedInt(AppPreferences.TAG_WIZARD_FONT_SIZE);
+		if (fontSize == 0)
+			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
+		else
+			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
+	}
+	
+	public void addRuleFontFamily(StyleSheet style)
+	{
+		String fontFamily = getMainWindow().getTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY);
+		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+new FontFamiliyQuestion("").findChoiceByCode(fontFamily)+";}"));
+	}
+	
+	public String makeSureRuleHasRightPrefix(String rule)
+	{
+		if (cssDotPrefixWorksCorrectly())
+			return rule;
+
+		return replaceDotWithPoundSign(rule);
+	}
+	
+	public boolean cssDotPrefixWorksCorrectly()
+	{
+		String javaVersion = EAM.getJavaVersion();
+		if (javaVersion.startsWith("1.4"))
+			return false;
+		return true;
+	}
+	
+	private String replaceDotWithPoundSign(String rule)
+	{
+		if (rule.trim().startsWith("."))
+			return rule.trim().replaceFirst(".", "#");
+
+		return rule;
+	}
+
+	//FIXME: should not use static ref here
+	private MainWindow getMainWindow()
+	{
+		return EAM.mainWindow;
+	}
+	
 	public void hyperlinkUpdate(HyperlinkEvent e)
 	{
 		if(e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED))

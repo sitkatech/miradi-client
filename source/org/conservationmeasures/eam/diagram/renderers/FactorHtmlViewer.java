@@ -33,9 +33,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		for(int i = 0; i < rules.length; ++i)			
 			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
 		
-		addRuleFactorCellBackgroundColor(style);
-		addRuleFactorCellFontFamily(style);
-		addRuleFactorCellFontSize(style);
+		addRulelBackgroundColor(style);
 	}
 	
 	public void setFactorCell(EAMGraphCell cell)
@@ -43,7 +41,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 			graphCell = cell;
 	}
 	
-	public void addRuleFactorCellFontSize(StyleSheet style)
+	public void addRuleFontSize(StyleSheet style)
 	{
 		String fontSize = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
 		if (fontSize.equals("0"))
@@ -52,13 +50,13 @@ public class FactorHtmlViewer extends HtmlFormViewer
 			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
 	}
 	
-	public void addRuleFactorCellFontFamily(StyleSheet style)
+	public void addRuleFontFamily(StyleSheet style)
 	{
 		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
 		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
 	}
 
-	public void addRuleFactorCellBackgroundColor(StyleSheet style)
+	public void addRulelBackgroundColor(StyleSheet style)
 	{
 		if (graphCell.isFactor())
 		{
@@ -87,31 +85,6 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	{
 		String red = "0" + Integer.toHexString(red2);
 		return red.substring(red.length() - 2);
-	}
-	
-	
-	private String makeSureRuleHasRightPrefix(String rule)
-	{
-		if (cssDotPrefixWorksCorrectly())
-			return rule;
-
-		return replaceDotWithPoundSign(rule);
-	}
-	
-	private String replaceDotWithPoundSign(String rule)
-	{
-		if (rule.trim().startsWith("."))
-			return rule.trim().replaceFirst(".", "#");
-
-		return rule;
-	}
-
-	private boolean cssDotPrefixWorksCorrectly()
-	{
-		String javaVersion = EAM.getJavaVersion();
-		if (javaVersion.startsWith("1.4"))
-			return false;
-		return true;
 	}
 	
 	EAMGraphCell graphCell;
