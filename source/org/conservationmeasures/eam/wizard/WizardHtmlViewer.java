@@ -38,14 +38,14 @@ public class WizardHtmlViewer extends HtmlFormViewer
 		else
 			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
 		
-		System.out.println("addRuleFontSize:" + fontSize );
+		//System.out.println("addRuleFontSize:" + fontSize );
 	}
 	
 	public void addRuleFontFamily(StyleSheet style)
 	{
 		String fontFamily = getMainWindow().getTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY);
 		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
-		System.out.println("addRuleFontSize:" +fontFamily);
+		//System.out.println("addRuleFontFamily:" +fontFamily);
 	}
 	
 
