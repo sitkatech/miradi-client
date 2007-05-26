@@ -66,30 +66,7 @@ public class Cause extends Factor
 	{
 		return !isDirectThreat();
 	}
-	
-	// FIXME: (Richard): Clean this up before release
-	public boolean isDirectThreatx()
-	{
-		// NOTE: This was optimized for speed because doing it "the right way"
-		// was causing significant slowness for users
-		FactorLinkPool factorLinkPool = objectManager.getLinkagePool();
-		BaseId[] ids = factorLinkPool.getIds();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			FactorLink link = (FactorLink)factorLinkPool.getRawObject(ids[i]);
-			if(link.getFromFactorId().equals(getId()))
-			{
-				Factor toFactor = (Factor) objectManager.findObject(new ORef(ObjectType.FACTOR, link.getToFactorId()));
-				if (toFactor.getType() == ObjectType.TARGET)
-					return true;
-			}
-		}
-		return false;
-	}
-	
-	
-	
-	
+		
 	public boolean isDirectThreat()
 	{
 		// NOTE: This was optimized for speed because doing it "the right way"
