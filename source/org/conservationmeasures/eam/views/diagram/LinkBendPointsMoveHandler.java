@@ -26,15 +26,15 @@ public class LinkBendPointsMoveHandler
 	{
 		for (int i = 0; i < linkCells.length; i++)
 		{
-			moveBendPoints(linkCells[i], deltaX, deltaY);
+			LinkCell linkCell = linkCells[i];
+			int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
+			moveBendPoints(linkCell, selectionIndexes, deltaX, deltaY);
 		}
 	}
 	
-	//TODO needs test
-	public void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws CommandFailedException
+	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws CommandFailedException
 	{
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
-		int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
 		PointList pointsToMove = diagramLink.getBendPoints();
 		PointList movedPoints = new PointList();
 		

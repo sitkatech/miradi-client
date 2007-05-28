@@ -57,6 +57,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return diagramLink.getDiagramLinkageId();
 	}
 	
+	//TODO rename to getDiagramLink()
 	public DiagramFactorLink getDiagramFactorLink()
 	{
 		return diagramLink;
