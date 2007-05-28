@@ -36,11 +36,6 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		graph.repaint();
 	}
 
-	public void mouseReleased(MouseEvent e)
-	{
-		super.mouseReleased(e);
-	}
-
 	public void paint(Graphics g)
 	{
 		super.paint(g);
