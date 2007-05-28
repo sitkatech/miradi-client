@@ -103,6 +103,7 @@ import org.conservationmeasures.eam.utils.TestStringMapData;
 import org.conservationmeasures.eam.utils.TestTaxonomyLoader;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.budget.ImportAccountingCodesDoerTest;
+import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
 import org.conservationmeasures.eam.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
@@ -168,6 +169,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProjectScopeBox.class));
 		suite.addTest(new TestSuite(TestDiagramComponent.class));
 		suite.addTest(new TestSuite(TestBendPointSelectionHelper.class));
+		suite.addTest(new TestSuite(TestLinkBendPointsMoveHandler.class));
 
 		// nodes package
 		suite.addTest(new TestSuite(TestDiagramAddFactorLink.class));
