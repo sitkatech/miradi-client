@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
@@ -21,27 +22,44 @@ public class LinkBendPointsMoveHandler
 		project = projectToUse;
 	}
 
-	public void moveLinkBendPoints(DiagramFactorLink[] diagramLinks, int deltaX, int deltaY) throws CommandFailedException
+	public void moveLinkBendPoints(LinkCell[] linkCells, int deltaX, int deltaY) throws CommandFailedException
 	{
-		for (int i = 0; i < diagramLinks.length; i++)
+		for (int i = 0; i < linkCells.length; i++)
 		{
-			moveBendPoints(diagramLinks[i], deltaX, deltaY);
+			moveBendPoints(linkCells[i], deltaX, deltaY);
 		}
 	}
 	
-	private void moveBendPoints(DiagramFactorLink diagramLink, int deltaX, int deltaY) throws CommandFailedException
+	//TODO needs test
+	public void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws CommandFailedException
 	{
+		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
 		PointList pointsToMove = diagramLink.getBendPoints();
 		PointList movedPoints = new PointList();
+		
 		for (int i = 0; i < pointsToMove.size(); i++)
 		{
 			Point originalPoint = pointsToMove.get(i);
-			Point movedPoint = new Point(originalPoint.x + deltaX, originalPoint.y + deltaY);
-			movedPoints.add(movedPoint);
+			Point movedPoint = moveSelectedBendPoint(selectionIndexes, i, originalPoint, deltaX, deltaY);
+			movedPoints.add(movedPoint);			
 		}
 		
 		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, movedPoints);
 		project.executeCommand(bendPointMoveCommand);
+	}
+	
+	private Point moveSelectedBendPoint(int[] selectionIndexes, int bendPointListIndex, Point originalPoint, int deltaX, int deltaY)
+	{
+		for (int k = 0; k < selectionIndexes.length; ++k)
+		{
+			if (bendPointListIndex == selectionIndexes[k])
+			{
+				return new Point(originalPoint.x + deltaX, originalPoint.y + deltaY);
+			}
+		}
+		
+		return originalPoint;
 	}
 	
 	Project project;

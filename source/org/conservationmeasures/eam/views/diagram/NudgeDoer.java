@@ -11,10 +11,10 @@ import java.awt.event.KeyEvent;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.FactorMoveHandler;
 
 public class NudgeDoer extends LocationDoer
@@ -71,7 +71,7 @@ public class NudgeDoer extends LocationDoer
 	private void moveSelectedNodes(int deltaX, int deltaY) throws CommandFailedException
 	{
 		FactorCell[] cells = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
-		DiagramFactorLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
+		LinkCell[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinkCells();
 		DiagramFactorId[] ids = new DiagramFactorId[cells.length];
 		for(int i = 0; i < cells.length; ++i)
 		{

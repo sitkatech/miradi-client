@@ -105,6 +105,15 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		}
 	}
 	
+	public LinkCell[] getOnlySelectedLinkCells()
+	{
+		if(selectionModel == null)
+			return new LinkCell[0];
+	
+		Object[] rawCells = selectionModel.getSelectionCells();
+		return getOnlySelectedLinkCells(rawCells);
+	}
+	
 	public DiagramFactorLink[] getOnlySelectedLinks()
 	{
 		if(selectionModel == null)
@@ -128,6 +137,20 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		return (DiagramFactorLink[])linkages.toArray(new DiagramFactorLink[0]);
 	}
 	
+	public LinkCell[] getOnlySelectedLinkCells(Object [] allSelectedCells)
+	{
+		Vector linkages = new Vector();
+		for(int i = 0; i < allSelectedCells.length; ++i)
+		{
+			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
+			{
+				LinkCell cell = (LinkCell)allSelectedCells[i];
+				linkages.add(cell);
+			}
+		}
+		return (LinkCell[])linkages.toArray(new LinkCell[0]);
+	}
+
 	public FactorCell[] getOnlySelectedFactorCells()
 	{
 		if(selectionModel == null)
