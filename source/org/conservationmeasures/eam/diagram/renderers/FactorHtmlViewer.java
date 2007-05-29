@@ -32,7 +32,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		for(int i = 0; i < rules.length; ++i)			
 			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
 		
-		addRulelBackgroundColor(style);
+		addRuleBackgroundColor(style);
 	}
 	
 	public void setFactorCell(EAMGraphCell cell)
@@ -55,7 +55,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
 	}
 
-	public void addRulelBackgroundColor(StyleSheet style)
+	public void addRuleBackgroundColor(StyleSheet style)
 	{
 		if (graphCell.isFactor())
 		{
