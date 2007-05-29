@@ -21,12 +21,8 @@ public class ProjectListPanel extends JPanel
 		super(new BorderLayout());
 		projectList = new ProjectList(handlerToUse);
 		
-		WizardHtmlViewer intro = new WizardHtmlViewer(handlerToUse);
-
-		intro.setText("<p>To <strong>continue working on an existing project</strong>, " +
-				"click on the name in the list below. To <strong>copy, rename, export " +
-				"to zip, or delete a file</strong>, right click (alt-click) on the name.</p>");
-		
+		intro = new WizardHtmlViewer(handlerToUse);
+		intro.setText(Text);
 		
 		add(intro, BorderLayout.BEFORE_FIRST_LINE);
 		add(new FastScrollPane(projectList), BorderLayout.CENTER);
@@ -36,7 +32,14 @@ public class ProjectListPanel extends JPanel
 	public void refresh()
 	{
 		projectList.refresh();
+		intro.setText(Text);
 	}
 	
+	
+	static final String Text = "<p>To <strong>continue working on an existing project</strong>, " +
+	"click on the name in the list below. To <strong>copy, rename, export " +
+	"to zip, or delete a file</strong>, right click (alt-click) on the name.</p>";
+	
 	ProjectList projectList;
+	WizardHtmlViewer intro;
 }

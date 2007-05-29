@@ -17,7 +17,7 @@ public class NoProjectView extends UmbrellaView
 	public NoProjectView(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-		wizard = new NoProjectWizardPanel(this);
+		wizardPanel = new NoProjectWizardPanel(this);
 	}
 	
 	public JToolBar createToolBar()
@@ -28,8 +28,8 @@ public class NoProjectView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
-		wizard.refresh();
-		add(wizard);
+		wizardPanel.refresh();
+		add(wizardPanel);
 	}
 
 	public void becomeInactive() throws Exception
@@ -40,7 +40,7 @@ public class NoProjectView extends UmbrellaView
 	
 	public void refreshText() throws Exception
 	{
-		wizard.refresh();
+		wizardPanel.refresh();
 	}
 
 	public String cardName()
@@ -53,6 +53,5 @@ public class NoProjectView extends UmbrellaView
 		return Project.NO_PROJECT_VIEW_NAME;
 	}
 
-	NoProjectWizardPanel wizard;
 }
 

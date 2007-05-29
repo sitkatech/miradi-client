@@ -485,13 +485,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 
-	public void savePreferences() throws IOException
+	public void savePreferences() throws Exception
 	{
 		boolean isMaximized = false;
 		if((getExtendedState() & MAXIMIZED_BOTH) != 0)
 			isMaximized = true;
 		preferences.setIsMaximized(isMaximized);
 		preferences.save(getPreferencesFile());
+		getCurrentView().getWizardPanel().refresh();
 	}
 	
 	public void setBooleanPreference(String genericTag, boolean state)

@@ -15,14 +15,22 @@ import org.martus.swing.HyperlinkHandler;
 
 public class LeftSideTextPanel extends JPanel
 {
-	public LeftSideTextPanel(String html, HyperlinkHandler wizardToUse)
+	public LeftSideTextPanel(String htmlToUse, HyperlinkHandler wizardToUse)
 	{
 		super(new BorderLayout());
-		
+		html = htmlToUse;
 		setBackground(Color.WHITE);
-		WizardHtmlViewer viewer = new WizardHtmlViewer(wizardToUse);
+		viewer = new WizardHtmlViewer(wizardToUse);
 		viewer.setText(html);
 
 		add(viewer, BorderLayout.BEFORE_FIRST_LINE);
 	}
+	
+	public void refresh() throws Exception
+	{
+		viewer.setText(html);
+	}
+	
+	WizardHtmlViewer viewer;
+	String html;
 }
