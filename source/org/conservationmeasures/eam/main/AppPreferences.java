@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.database.JSONFile;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
+//TODO: look into replace individual fields with MapList or hash maps
 public class AppPreferences
 {
 	public AppPreferences()
@@ -118,11 +119,17 @@ public class AppPreferences
 	
 	public void setTaggedInt(String tag, int value)
 	{
-		taggedIntMap.put(tag, new Integer(value));
+		if(tag.equals(TAG_WIZARD_FONT_SIZE))
+			wizardFontSize = value;
+		else
+			taggedIntMap.put(tag, new Integer(value));
 	}
 	
 	public int getTaggedInt(String tag)
 	{
+		if(tag.equals(TAG_WIZARD_FONT_SIZE))
+			return wizardFontSize;
+		
 		Integer value = (Integer)taggedIntMap.get(tag);
 		if(value == null)
 			return 0;
@@ -131,11 +138,18 @@ public class AppPreferences
 	
 	public void setTaggedString(String tag, String value)
 	{
-		taggedStringMap.put(tag, new String(value));
-	}
+		if(tag.equals(TAG_WIZARD_FONT_FAMILY))
+			wizardFontFamily = value;
+		else
+			taggedStringMap.put(tag, new String(value));
+	}	
 	
 	public String getTaggedString(String tag)
 	{
+		if(tag.equals(TAG_WIZARD_FONT_FAMILY))
+			return wizardFontFamily;
+		
+		
 		String value = (String) taggedStringMap.get(tag);
 		if(value == null)
 			return "";
@@ -172,6 +186,9 @@ public class AppPreferences
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
 		json.put(TAG_GRID_VISIBLE, isGridVisible);
 		json.put(TAG_CELL_RATINGS_VISIBLE, isCellRatingsVisible);
+		
+		json.put(TAG_WIZARD_FONT_FAMILY, wizardFontFamily);
+		json.put(TAG_WIZARD_FONT_SIZE, Integer.toString(wizardFontSize));
 		
 		json.put(TAG_TAGGED_INTS, putIntegerMapToJson());
 		json.put(TAG_TAGGED_STRINGS, putStringMapToJson());
@@ -219,6 +236,9 @@ public class AppPreferences
 		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, true);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
 		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, false);
+		
+		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
+		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
 		
 		taggedIntMap = loadTagIntegerMap(json);
 		taggedStringMap = loadTagStringMap(json);
@@ -285,8 +305,11 @@ public class AppPreferences
 	private boolean isCellRatingsVisible;
 	private boolean isMaximized;
 	
-	
 	private double diagramZoomSetting;
+	
+	private String wizardFontFamily;
+	private int wizardFontSize;
+	
 	HashMap taggedIntMap;
 	HashMap taggedStringMap;
 }
