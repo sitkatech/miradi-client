@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -30,11 +31,20 @@ public class NudgeDoer extends LocationDoer
 		if (!isDiagramView())
 			return false;
 		
-		return getDiagramView().getDiagramPanel().getOnlySelectedFactorCells().length > 0;
+		return isAnythingSelectedInDiagram();
+	}
+
+	private boolean isAnythingSelectedInDiagram()
+	{
+		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
+		return diagramPanel.getOnlySelectedFactorCells().length > 0 || diagramPanel.getOnlySelectedLinkCells().length > 0;
 	}
 
 	public void doIt() throws CommandFailedException
 	{
+		if (! isAvailable())
+			return;
+		
 		int deltaX = 0;
 		int deltaY = 0;
 		switch(direction)
