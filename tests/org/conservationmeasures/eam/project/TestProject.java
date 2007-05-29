@@ -723,6 +723,8 @@ public class TestProject extends EAMTestCase
 	  
 	public void testOpenProject() throws Exception
 	{
+		int memorizedHighestId = -1;
+		
 		FactorId factorId;
 		File tempDir = createTempDirectory();
 		ProjectForTesting diskProject = new ProjectForTesting(getName());
@@ -743,6 +745,7 @@ public class TestProject extends EAMTestCase
 		}
 		finally
 		{
+			memorizedHighestId = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
 			diskProject.close();
 		}
 		
@@ -757,9 +760,8 @@ public class TestProject extends EAMTestCase
 			
 			assertEquals("didn't read link pool?", 1, loadedProject.getFactorLinkPool().size());
 			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getFactorCount());
-			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
-			BaseId expectedAnnotationId = diskProject.getAnnotationIdAssigner().takeNextId();
-			assertEquals("didn't preserve next annotation id?", expectedAnnotationId, loadedProject.getAnnotationIdAssigner().takeNextId());
+			assertEquals("didn't preserve next node id?", memorizedHighestId, loadedProject.getNodeIdAssigner().getHighestAssignedId());
+			assertEquals("didn't preserve next annotation id?", memorizedHighestId, loadedProject.getAnnotationIdAssigner().getHighestAssignedId());
 			Cause factor = (Cause)loadedProject.findNode(factorId);
 			assertTrue("didn't update factor target count?", factor.isDirectThreat());
 		}
@@ -769,25 +771,13 @@ public class TestProject extends EAMTestCase
 			DirectoryUtils.deleteEntireDirectoryTree(tempDir);
 		}
 		
-		int highestAnnotationIdBeforeClearing = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
+		assertEquals("didn't clear node cause pool?", 0, diskProject.getCausePool().size());
+		assertEquals("didn't clear node strategy pool?", 0, diskProject.getStrategyPool().size());
+		assertEquals("didn't clear node target pool?", 0, diskProject.getTargetPool().size());
+		assertEquals("didn't clear link pool?", 0, diskProject.getFactorLinkPool().size());
+		assertTrue("didn't clear next annotation id?", diskProject.getAnnotationIdAssigner().getHighestAssignedId() < memorizedHighestId);
 		
-		File emptyDir = createTempDirectory();
-		diskProject.createOrOpen(emptyDir);
-		try
-		{
-			assertEquals("didn't clear node cause pool?", 0, diskProject.getCausePool().size());
-			assertEquals("didn't clear node strategy pool?", 0, diskProject.getStrategyPool().size());
-			assertEquals("didn't clear node target pool?", 0, diskProject.getTargetPool().size());
-			assertEquals("didn't clear link pool?", 0, diskProject.getFactorLinkPool().size());
-			assertEquals("didn't clear diagram?", 0, diskProject.getDiagramModel().getFactorCount());
-			assertTrue("didn't clear next annotation id?", diskProject.getAnnotationIdAssigner().getHighestAssignedId() < highestAnnotationIdBeforeClearing);
-		}
-		finally
-		{
-			diskProject.close();
-			DirectoryUtils.deleteEntireDirectoryTree(emptyDir);
-		}
-		
+		assertEquals("didn't clear diagram (for testing)?", null, diskProject.getDiagramModel());
 	}
 	
 	private void deleteNodeAndRemoveFromDiagram(ProjectForTesting diskProject, DiagramFactor diagramFactor) throws Exception

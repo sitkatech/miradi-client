@@ -75,6 +75,13 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		loadDiagram();
 	}
 
+	public void close() throws Exception
+	{
+		super.close();
+		
+		diagramModel = null;
+	}
+
 	
 	//TODO this is fragile, should do a true close
 	public void closeAndReopen() throws Exception
