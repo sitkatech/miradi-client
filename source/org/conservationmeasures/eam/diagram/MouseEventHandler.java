@@ -125,26 +125,20 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
 		{
-			Vector selectedFactors = new Vector();
+			Vector selectedFactorIds = new Vector();
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
 				EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
 				if(selectedCell.isFactor())
-					selectedFactors.add(selectedCells[i]);
+					selectedFactorIds.add(((FactorCell)selectedCells[i]).getDiagramFactorId());
 
 				if(selectedCell.isFactorLink())
 					setDiagramFactorLinkBendPoints((LinkCell) selectedCells[i]);
 			}
 
-			//TODO this loop can go away if the list is build in the above loop
-			DiagramFactorId[] selectedFactorIds = new DiagramFactorId[selectedFactors.size()];
-			for(int i = 0; i < selectedFactors.size(); ++i)
-			{
-				selectedFactorIds[i] = ((FactorCell)selectedFactors.get(i)).getDiagramFactorId();
-			}
-			
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
-			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIds);
+			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
+			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
 		}
 		catch (Exception e)
 		{
