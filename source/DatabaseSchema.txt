@@ -8,6 +8,9 @@ sometimes stored in the owner, sometimes in the member,
 and about half the time are not stored at all (they are 
 implicit).
 
+Network DB model is sometimes known as CODASYL, or as 
+DBTG. Perhaps also IDMS.
+
 Our system is unlike most Object Databases, because those 
 focus on transparent persistence, and storing behavior 
 (methods) along with the data. They also do not have any 
@@ -54,6 +57,9 @@ KEA has Indicator(s)
 Here is a GREAT site about CODASYL and Network Databases:
 http://coronet.iicm.edu/wbtmaster/allcoursescontent/netlib/library.htm  
   
+  
+Here is a GREAT slide show about DBTG databases:
+http://nlp.postech.ac.kr/Course/ITEC521/dbslide-5thedition/appA.ppt
   
 RelationshipManager
 
