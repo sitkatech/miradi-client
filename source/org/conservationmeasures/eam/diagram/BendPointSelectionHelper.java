@@ -31,7 +31,6 @@ public class BendPointSelectionHelper
 	public void updateSelectionList(MouseEvent mouseEvent, int index)
 	{
 		Integer bendPointIndex = new Integer(index - 1);
-		linkCell.getDiagramFactorLink().getBendPoints();
 		
 		if (bendPointIndex.intValue() < 0)
 			return;

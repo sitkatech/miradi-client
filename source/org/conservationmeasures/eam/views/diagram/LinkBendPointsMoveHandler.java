@@ -36,31 +36,17 @@ public class LinkBendPointsMoveHandler
 	{
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
 		PointList pointsToMove = diagramLink.getBendPoints();
-		PointList movedPoints = new PointList();
 		
-		for (int i = 0; i < pointsToMove.size(); i++)
+		for (int i = 0; i < selectionIndexes.length; ++i)
 		{
-			Point originalPoint = pointsToMove.get(i);
-			Point movedPoint = moveSelectedBendPoint(selectionIndexes, i, originalPoint, deltaX, deltaY);
-			movedPoints.add(movedPoint);			
+			Point pointToMove = pointsToMove.get(selectionIndexes[i]);
+			pointToMove.x = pointToMove.x + deltaX;
+			pointToMove.y = pointToMove.y + deltaY;		
 		}
 		
-		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, movedPoints);
+		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, pointsToMove);
 		project.executeCommand(bendPointMoveCommand);
 	}
-	
-	private Point moveSelectedBendPoint(int[] selectionIndexes, int bendPointListIndex, Point originalPoint, int deltaX, int deltaY)
-	{
-		for (int k = 0; k < selectionIndexes.length; ++k)
-		{
-			if (bendPointListIndex == selectionIndexes[k])
-			{
-				return new Point(originalPoint.x + deltaX, originalPoint.y + deltaY);
-			}
-		}
 		
-		return originalPoint;
-	}
-	
 	Project project;
 }
