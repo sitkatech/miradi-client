@@ -109,11 +109,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			drawBorder(g2, rect, Color.BLACK);
 		}
 		
-		//TODO temporarly disable for bend point seleciton dev
-		//if (graph.getSelectionCount()>3) 
-		//	graph.setHandleSize(0);
-		//else 
-			graph.setHandleSize(4);
+		graph.setHandleSize(HANDLE_SIZE);
 		
 		if (selected)
 		{
@@ -338,6 +334,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	public static final int INDICATOR_HEIGHT = 20;
 	public static final int ANNOTATIONS_HEIGHT = 20;
 	private static final int CORNER_SIZE = 20;
+	private static final int HANDLE_SIZE = 4;
 
 	private static final Color LIGHT_BLUE = new Color(204,238,255);
 	public static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
