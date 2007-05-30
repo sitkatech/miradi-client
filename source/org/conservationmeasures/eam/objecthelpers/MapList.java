@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objecthelpers;
 
 import java.text.ParseException;
-import java.util.NoSuchElementException;
 
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -49,14 +48,7 @@ public class MapList
 	
 	public String get(String key)
 	{
-		try
-		{
-			return data.getString(key);
-		}
-		catch (NoSuchElementException e)
-		{
-			return null;
-		}
+		return data.getString(key);
 	}
 	
 	public boolean contains(String key)

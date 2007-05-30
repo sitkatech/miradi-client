@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objecthelpers;
 
 import java.text.ParseException;
+import java.util.NoSuchElementException;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
 
@@ -25,7 +26,14 @@ public class TestMapList extends EAMTestCase
 		assertEquals("Simple get/add failed?", value2, map.get("TAG1"));
 		
 		map.remove("TAG1");
-		assertNull(map.get("TAG1"));
+		try
+		{
+			map.get("TAG1");
+			fail();
+		}
+		catch (NoSuchElementException e)
+		{
+		}
 		
 		assertFalse(map.contains("TAG1"));
 		assertTrue(map.contains("TAG2"));
