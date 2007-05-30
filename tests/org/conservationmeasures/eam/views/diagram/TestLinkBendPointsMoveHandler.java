@@ -7,11 +7,11 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.utils.BendPointList;
 import org.conservationmeasures.eam.utils.PointList;
 
 public class TestLinkBendPointsMoveHandler extends EAMTestCase
@@ -36,15 +36,9 @@ public class TestLinkBendPointsMoveHandler extends EAMTestCase
 	public void testMoveBendPoints() throws Exception
 	{
 		LinkBendPointsMoveHandler handler = new LinkBendPointsMoveHandler(project);
-		PointList bendPoints = new PointList();
-		Point bendPoint1 = new Point(1, 1);
-		Point bendPoint2 = new Point(2, 2);
-		Point bendPoint3 = new Point(3, 3);
-		bendPoints.add(bendPoint1);
-		bendPoints.add(bendPoint2);
-		bendPoints.add(bendPoint3);
+		PointList bendPoints = createBendPointList();
 	
-		LinkCell linkCell = createLinkCellWithBendPoints(bendPoints);
+		LinkCell linkCell = project.createLinkCellWithBendPoints(bendPoints);
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
 		assertEquals("bend points not set?", 3, diagramLink.getBendPoints().size());
 		
@@ -63,15 +57,18 @@ public class TestLinkBendPointsMoveHandler extends EAMTestCase
 		Point movedPoint2 = movedBendPoints.get(selectionIndexes[1]);
 		assertEquals("selected bend point not moved?", movedPoint2, new Point(12, 12));
 	}
-	
-	private LinkCell createLinkCellWithBendPoints(PointList bendPoints) throws Exception
+
+	public static BendPointList createBendPointList()
 	{
-		LinkCell linkCell = project.createLinkCell();
-	
-		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(linkCell.getDiagramFactorLink(), DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
-		project.executeCommand(bendPointMoveCommand);
+		BendPointList bendPoints = new BendPointList();
+		Point bendPoint1 = new Point(1, 1);
+		Point bendPoint2 = new Point(2, 2);
+		Point bendPoint3 = new Point(3, 3);
+		bendPoints.add(bendPoint1);
+		bendPoints.add(bendPoint2);
+		bendPoints.add(bendPoint3);
 		
-		return linkCell;
+		return bendPoints;
 	}
 	
 	ProjectForTesting project;

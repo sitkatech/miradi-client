@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 
 
@@ -260,6 +261,16 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		BaseId diagramFactorLinkId = createObject(ObjectType.DIAGRAM_LINK, extraInfo);
 
 		return new DiagramFactorLinkId(diagramFactorLinkId.asInt());
+	}
+	
+	public LinkCell createLinkCellWithBendPoints(PointList bendPoints) throws Exception
+	{
+		LinkCell linkCell = createLinkCell();
+	
+		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(linkCell.getDiagramFactorLink(), DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
+		executeCommand(bendPointMoveCommand);
+		
+		return linkCell;
 	}
 	
 	public FactorId createThreat() throws Exception

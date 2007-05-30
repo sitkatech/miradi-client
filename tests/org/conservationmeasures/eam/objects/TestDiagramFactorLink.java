@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.awt.Point;
+
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.database.ProjectServer;
@@ -12,6 +14,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -23,7 +26,9 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.utils.BendPointList;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
 
 public class TestDiagramFactorLink extends ObjectTestCase
 {
@@ -138,6 +143,17 @@ public class TestDiagramFactorLink extends ObjectTestCase
     	return diagramFactorLinkId;
 	}
 	
+	public void testBendPointAlreadyExists() throws Exception
+	{
+		BendPointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
+		LinkCell linkCell = project.createLinkCellWithBendPoints(bendPointList);	
+		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		
+		assertEquals("bend points not added?", 3, diagramLink.getBendPoints().size());
+		assertEquals("bend point doestn exist?", true, diagramLink.bendPointAlreadyExists(new Point(1, 1)));
+		assertEquals("bend point doestn exist?", false, diagramLink.bendPointAlreadyExists(new Point(4, 4)));
+	}
+
 	ProjectForTesting project;
 	DiagramModel model;
 	Factor cmIntervention;
