@@ -66,13 +66,20 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
 
-		int fontSize = mainWindow.getWizardFontSize();
-		String sizeAsString = Integer.toString(fontSize);
-		wizardFontSize = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(""), sizeAsString);
+		int wFontSize = mainWindow.getWizardFontSize();
+		String wSizeAsString = Integer.toString(wFontSize);
+		wizardFontSize = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(EAM.text("Wizard ")), wSizeAsString);
 			
-		String fontFamily = mainWindow.getWizardFontFamily();
-		wizardFontFamily = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(""), fontFamily);
+		String wFontFamily = mainWindow.getWizardFontFamily();
+		wizardFontFamily = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(EAM.text("Wizard ")), wFontFamily);
+		
+		int pFontSize = mainWindow.getDataPanelFontSize();
+		String pSizeAsString = Integer.toString(pFontSize);
+		panelFontSize = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(EAM.text("Panel ")), pSizeAsString);
 			
+		String pFontFamily = mainWindow.getDataPanelFontFamily();
+		panelFontFamily = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(EAM.text("Panel ")), pFontFamily);
+		
 		return htmlTab;
 	}
 
@@ -81,7 +88,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		UiComboBox combo = new UiComboBox(question.getChoices());
 		setSelectedItemQuestionBox(combo, sizeAsString);
 		combo.addActionListener(this);
-		htmlTab.add(new PanelTitleLabel(question.getLabel()));
+		htmlTab.add(new PanelTitleLabel(question.getTag() + question.getLabel()));
 		htmlTab.add(combo);
 		return combo;
 	}
@@ -228,6 +235,12 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		String wizardFontFamilyValue = getSelectedItemQuestionBox(wizardFontFamily);
 		mainWindow.setWizardFontFamily(wizardFontFamilyValue);
+		
+		String panelFontSizeValue = getSelectedItemQuestionBox(panelFontSize);
+		mainWindow.setDataPanelFontSize(Integer.parseInt(panelFontSizeValue));
+		
+		String panelFontFamilyValue = getSelectedItemQuestionBox(panelFontFamily);
+		mainWindow.setDataPanelFontFamily(panelFontFamilyValue);
 
 		try
 		{
@@ -320,4 +333,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	
 	UiComboBox wizardFontSize;
 	UiComboBox wizardFontFamily;
+	
+	UiComboBox panelFontSize;
+	UiComboBox panelFontFamily;
 }

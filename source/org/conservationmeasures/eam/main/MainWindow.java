@@ -528,27 +528,25 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		return preferences.getTaggedInt(name);
 	}
-	
-	
-	//TODO: Currenly defaults to wizard font
+
 	public int getDataPanelFontSize()
 	{
-		return preferences.getWizardFontSize();
+		return preferences.getPanelFontSize();
 	}
 	
 	public void setDataPanelFontSize(int fontSize)
 	{
-		preferences.setWizardFontSize(fontSize);
+		preferences.setPanelFontSize(fontSize);
 	}
 	
 	public String getDataPanelFontFamily()
 	{
-		return preferences.getWizardFontFamily();
+		return preferences.getPanelFontFamily();
 	}
 	
 	public void setDataPanelFontFamily(String fontFamily)
 	{
-		preferences.setWizardFontFamily(fontFamily);
+		preferences.setPanelFontFamily(fontFamily);
 	}
 	
 	public int getWizardFontSize()

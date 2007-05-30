@@ -144,6 +144,26 @@ public class AppPreferences
 	}
 	
 	
+	public int getPanelFontSize()
+	{
+		return panelFontSize;
+	}
+	
+	public void setPanelFontSize(int fontSize)
+	{
+		panelFontSize = fontSize;
+	}
+	
+	public String getPanelFontFamily()
+	{
+		return panelFontFamily;
+	}
+	
+	public void setPanelFontFamily(String fontFamily)
+	{
+		panelFontFamily = fontFamily;
+	}
+	
 	public int getWizardFontSize()
 	{
 		return wizardFontSize;
@@ -198,6 +218,9 @@ public class AppPreferences
 		json.put(TAG_WIZARD_FONT_FAMILY, wizardFontFamily);
 		json.put(TAG_WIZARD_FONT_SIZE, Integer.toString(wizardFontSize));
 		
+		json.put(TAG_PANEL_FONT_FAMILY, panelFontFamily);
+		json.put(TAG_PANEL_FONT_SIZE, Integer.toString(panelFontSize));
+		
 		json.put(TAG_TAGGED_INTS, putIntegerMapToJson());
 		json.put(TAG_TAGGED_STRINGS, putStringMapToJson());
 		
@@ -247,6 +270,9 @@ public class AppPreferences
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
 		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
+		
+		panelFontFamily = json.optString(TAG_PANEL_FONT_FAMILY);
+		panelFontSize = json.optInt(TAG_PANEL_FONT_SIZE);
 		
 		taggedIntMap = loadTagIntegerMap(json);
 		taggedStringMap = loadTagStringMap(json);
@@ -300,6 +326,9 @@ public class AppPreferences
 	public static final String TAG_WIZARD_FONT_FAMILY = "WizardFontFamily";
 	public static final String TAG_WIZARD_FONT_SIZE = "WizardFontSize";
 	
+	public static final String TAG_PANEL_FONT_FAMILY = "PanelFontFamily";
+	public static final String TAG_PANEL_FONT_SIZE = "PanelFontSize";
+	
 	public Color strategyColor;
 	public Color activitiesColor;
 	public Color contributingFactorColor;
@@ -317,6 +346,9 @@ public class AppPreferences
 	
 	private String wizardFontFamily;
 	private int wizardFontSize;
+	
+	private String panelFontFamily;
+	private int panelFontSize;
 	
 	HashMap taggedIntMap;
 	HashMap taggedStringMap;
