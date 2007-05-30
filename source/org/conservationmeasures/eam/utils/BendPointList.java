@@ -5,6 +5,10 @@
 */ 
 package org.conservationmeasures.eam.utils;
 
+import java.awt.Point;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+
 public class BendPointList extends PointList
 {
 	public BendPointList()
@@ -25,5 +29,13 @@ public class BendPointList extends PointList
 	public BendPointList(String listAsJsonString) throws Exception
 	{
 		super(new EnhancedJsonObject(listAsJsonString));
+	}
+	
+	public Line2D.Double createLineSegment(Point2D fromBendPoint, Point2D toBendPoint)
+	{
+		Point point1 = Utility.convertToPoint(fromBendPoint);
+		Point point2 = Utility.convertToPoint(toBendPoint);
+		
+		return new Line2D.Double(point1, point2);
 	}
 }

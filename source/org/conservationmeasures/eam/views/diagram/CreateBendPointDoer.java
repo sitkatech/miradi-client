@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.utils.BendPointList;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.graph.EdgeView;
@@ -86,7 +87,7 @@ public class CreateBendPointDoer extends LocationDoer
 		Point targetLocation = getTargetLocation(linkCell);
 		PointList bendPointsOnly = new PointList(selectedLink.getBendPoints());
 		
-		PointList allLinkPoints = new PointList();
+		BendPointList allLinkPoints = new BendPointList();
 		allLinkPoints.add(sourceLocation);
 		allLinkPoints.addAll(bendPointsOnly.getAllPoints());
 		allLinkPoints.add(targetLocation);
@@ -95,7 +96,9 @@ public class CreateBendPointDoer extends LocationDoer
 		int insertionIndex = 0;
 		for (int i = 0; i < allLinkPoints.size() - 1; i++)
 		{
-			Line2D.Double lineSegment = createLineSegment(allLinkPoints, i);
+			Point fromBendPoint = allLinkPoints.get(i);
+			Point toBendPoint = allLinkPoints.get(i + 1);
+			Line2D.Double lineSegment = allLinkPoints.createLineSegment(fromBendPoint, toBendPoint);
 			Point2D convertedPoint = Utility.convertToPoint2D(newBendPoint);
 			
 			Rectangle bound = lineSegment.getBounds();
@@ -133,14 +136,6 @@ public class CreateBendPointDoer extends LocationDoer
 		return sourceLocation;
 	}
 
-	private Line2D.Double createLineSegment(PointList allLinkPoints, int index)
-	{
-		Point point1 = Utility.convertToPoint(allLinkPoints.get(index));
-		Point point2 = Utility.convertToPoint(allLinkPoints.get(index + 1));
-		
-		return new Line2D.Double(point1, point2);
-	}
-	
 	private Point getNewBendPointLocation(DiagramFactorLink selectedLink)
 	{
 		Point newBendPoint = getLocation();
