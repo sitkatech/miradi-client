@@ -55,7 +55,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 		}
 		if (diagramFactor.isTextBox())
 		{
-			return new RectangleFactorView(diagramFactor);
+			return new RectangleCellView(diagramFactor);
 		}
 		
 		throw new RuntimeException("Unknown node type " + diagramFactor.getWrappedType());
