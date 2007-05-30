@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.Box;
+import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -32,6 +33,8 @@ import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
+
+import com.jhlabs.awt.BasicGridLayout;
 
 public class ConnectionPropertiesDialog extends EAMDialog implements ActionListener
 {
@@ -53,7 +56,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		
 	}
 	
-	private Box createFromToBox()
+	private JPanel createFromToBox()
 	{
 		linkFromList = createChoices(FactorLink.FROM);
 		linkToList = createChoices(FactorLink.TO);
@@ -67,10 +70,18 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		if(secondSelected != null)
 			linkToList.setSelectedItem(new FactorDropDownItem(secondSelected.getUnderlyingObject(), secondSelected.getDiagramFactor()));
 
+		JPanel vbox = new JPanel(new BasicGridLayout(2,1));
+		
 		Box box = Box.createHorizontalBox();
-		Component[] components = {linkFromList, new UiLabel(EAM.text("Label|affects")), linkToList};
+		Component[] components = {linkFromList, new UiLabel(EAM.text("Label| affects ")), linkToList};
 		Utilities.addComponentsRespectingOrientation(box, components);
-		return box;
+		vbox.add(box);
+
+		if (firstSelected==null || secondSelected==null)
+			vbox.add(new UiLabel(EAM.text("  HINT: You can quickly add links by selecting the first factor, " +
+					"holding Ctrl while selecting the second factor, and then hitting the add link button.  ")));
+			
+		return vbox;
 	}
 	
 	private UiComboBox createChoices(int linkFromTo)
