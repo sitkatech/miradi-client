@@ -25,7 +25,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep
 		WizardHtmlViewer headerHtmlViewer = new WizardHtmlViewer(wizardToUse);
 		headerHtmlViewer.setText(header);
 
-		introText = EAM.loadResourceFile(getClass(), "WelcomeIntroduction.html");
+		String introText = EAM.loadResourceFile(getClass(), "WelcomeIntroduction.html");
 		introHtmlViewer = new WizardHtmlViewer(wizardToUse);
 		introHtmlViewer.setText(introText);
 
@@ -42,11 +42,10 @@ public class NoProjectWizardStep extends SkeletonWizardStep
 	
 	public void refresh() throws Exception
 	{
-		introHtmlViewer.setText(introText);
+		introHtmlViewer.setText(introHtmlViewer.getText());
 		projectList.refresh();
 	}
 	
 	WizardHtmlViewer introHtmlViewer;
-	String introText;
 	ProjectListPanel projectList;
 }

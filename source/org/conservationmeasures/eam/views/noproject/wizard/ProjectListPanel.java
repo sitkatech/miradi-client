@@ -10,6 +10,7 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 import org.martus.swing.HyperlinkHandler;
@@ -22,7 +23,7 @@ public class ProjectListPanel extends JPanel
 		projectList = new ProjectList(handlerToUse);
 		
 		intro = new WizardHtmlViewer(handlerToUse);
-		intro.setText(Text);
+		intro.setText(TEXT);
 		
 		add(intro, BorderLayout.BEFORE_FIRST_LINE);
 		add(new FastScrollPane(projectList), BorderLayout.CENTER);
@@ -32,13 +33,12 @@ public class ProjectListPanel extends JPanel
 	public void refresh()
 	{
 		projectList.refresh();
-		intro.setText(Text);
+		intro.setText(TEXT);
 	}
 	
-	
-	static final String Text = "<p>To <strong>continue working on an existing project</strong>, " +
+	static final String TEXT = EAM.text("<p>To <strong>continue working on an existing project</strong>, " +
 	"click on the name in the list below. To <strong>copy, rename, export " +
-	"to zip, or delete a file</strong>, right click (alt-click) on the name.</p>";
+	"to zip, or delete a file</strong>, right click (alt-click) on the name.</p>");
 	
 	ProjectList projectList;
 	WizardHtmlViewer intro;
