@@ -161,7 +161,7 @@ public class PointList
 		return data.hashCode();
 	}
 		
-	private static final String TAG_POINTS = "Points";
+	protected static final String TAG_POINTS = "Points";
 
 	Vector data;
 }
