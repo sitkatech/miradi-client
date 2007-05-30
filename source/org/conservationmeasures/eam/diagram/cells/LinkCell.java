@@ -7,21 +7,28 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.BendPointSelectionHelper;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.utils.BendPointList;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.graph.Edge;
+import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphConstants;
+import org.jgraph.graph.GraphLayoutCache;
+import org.jgraph.graph.PortView;
 
 public class LinkCell extends EAMGraphCell implements Edge
 {
@@ -197,6 +204,87 @@ public class LinkCell extends EAMGraphCell implements Edge
 		
 		else 
 			diagram.removeSelectionCell(this);
+	}
+	
+	public PointList getNewBendPointList(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
+	{
+		Point sourceLocation = getSourceLocation(cache);
+		Point targetLocation = getTargetLocation(cache);
+		PointList bendPointsOnly = new PointList(diagramLink.getBendPoints());
+		
+		BendPointList allLinkPoints = new BendPointList();
+		allLinkPoints.add(sourceLocation);
+		allLinkPoints.addAll(bendPointsOnly.getAllPoints());
+		allLinkPoints.add(targetLocation);
+		
+		double closestDistance = Double.MAX_VALUE;
+		int insertionIndex = 0;
+		for (int i = 0; i < allLinkPoints.size() - 1; i++)
+		{
+			Point fromBendPoint = allLinkPoints.get(i);
+			Point toBendPoint = allLinkPoints.get(i + 1);
+			Line2D.Double lineSegment = allLinkPoints.createLineSegment(fromBendPoint, toBendPoint);
+			Point2D convertedPoint = Utility.convertToPoint2D(newBendPoint);
+			
+			Rectangle bound = lineSegment.getBounds();
+			bound.grow(5, 5);
+			if (! bound.contains(newBendPoint))
+			{
+				continue;
+			}
+			
+			double distance = lineSegment.ptLineDist(convertedPoint);
+			if (distance < closestDistance )
+			{
+				closestDistance = distance;
+				insertionIndex = i;
+			}
+		}
+		bendPointsOnly.insertAt(newBendPoint, insertionIndex);
+	
+		return bendPointsOnly;
+	}
+
+	public Point getTargetLocation(GraphLayoutCache cache)
+	{
+		PortView targetView = (PortView) cache.getMapping(getTarget(), false);
+		Point targetLocation = Utility.convertToPoint(targetView.getLocation());
+		
+		return targetLocation;
+	}
+
+	public Point getSourceLocation(GraphLayoutCache cache)
+	{
+		PortView sourceView = (PortView) cache.getMapping(getSource(), false);
+		Point sourceLocation = Utility.convertToPoint(sourceView.getLocation());
+	
+		return sourceLocation;
+	}
+
+	public Point getNewBendPointLocation(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
+	{
+		//Point newBendPoint = getLocation();
+		if (newBendPoint != null)
+			return newBendPoint;
+	
+		EdgeView view = (EdgeView) cache.getMapping(this, false);
+		PointList currentBendPoints = diagramLink.getBendPoints();
+		
+		//TODO getTargetLocation returs the center of the factor box, which
+		//causes the calcuation on the first bendpoint to be wrong.  must get the 
+		//point where the link interestects the factor box.  
+		Point firstBendPoint = getTargetLocation(cache);
+		if (currentBendPoints.size() > 0)
+			firstBendPoint = currentBendPoints.get(0);
+		
+		//note : view.getPoint(0) is not return the same thing as view.getpoints().get(0)
+		Point2D point = view.getPoint(0);
+		Point sourceLocation = Utility.convertToPoint(point);
+		
+		int middleX = (sourceLocation.x + firstBendPoint.x) / 2; 
+		int middleY = (sourceLocation.y + firstBendPoint.y) / 2;
+		
+		return new Point(middleX, middleY);
 	}
 
 	BendPointSelectionHelper bendSelectionHelper;

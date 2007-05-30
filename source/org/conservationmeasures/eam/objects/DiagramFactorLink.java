@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.awt.Point;
+
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -188,6 +190,14 @@ public class DiagramFactorLink extends BaseObject
 		dataMap.setBendPoints(new PointList(getBendPoints()));
 		
 		return dataMap;
+	}
+	
+	public boolean bendPointAlreadyExists(Point location)
+	{
+		if (location == null)
+			return false;
+		
+		return getBendPoints().contains(location);
 	}
 
 	public CreateObjectParameter getCreationExtraInfo()
