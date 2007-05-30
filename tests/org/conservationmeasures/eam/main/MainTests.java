@@ -93,6 +93,7 @@ import org.conservationmeasures.eam.project.TestTncCapWorkbookImporter;
 import org.conservationmeasures.eam.ratings.TestRatingChoice;
 import org.conservationmeasures.eam.ratings.TestRatingQuestion;
 import org.conservationmeasures.eam.ratings.TestStrategyRatingSummary;
+import org.conservationmeasures.eam.utils.TestBendPointList;
 import org.conservationmeasures.eam.utils.TestCodeList;
 import org.conservationmeasures.eam.utils.TestDateRange;
 import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
@@ -217,6 +218,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestFundingSource.class));
 		suite.addTest(new TestSuite(TestAccountingCode.class));
 		suite.addTest(new TestSuite(TestPointList.class));
+		suite.addTest(new TestSuite(TestBendPointList.class));
 		suite.addTest(new TestSuite(TestDiagramContentsObject.class));
 		suite.addTest(new TestSuite(TestObjectGetTypesThatCanReferToUs.class));
 		suite.addTest(new TestSuite(TestObjectGetTypesThatCanOwnUs.class));
