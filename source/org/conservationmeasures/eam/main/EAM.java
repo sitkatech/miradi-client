@@ -205,6 +205,7 @@ public class EAM
 			catch(Exception e)
 			{
 				EAM.logException(e);
+				errorDialog("Unexpected error: " + e.getMessage());
 			}
 		}
 		
