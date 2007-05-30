@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.diagram.cells.TestDiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.TestFactorDataMap;
 import org.conservationmeasures.eam.ids.TestIdList;
 import org.conservationmeasures.eam.objectdata.TestDateData;
+import org.conservationmeasures.eam.objecthelpers.TestMapList;
 import org.conservationmeasures.eam.objects.TestAccountingCode;
 import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestAssignment;
@@ -183,6 +184,9 @@ public class MainTests extends TestCase
 		
 		//objectdata package
 		suite.addTest(new TestSuite(TestDateData.class));
+		
+		//objecthelpers package
+		suite.addTest(new TestSuite(TestMapList.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestActivityInsertionPoint.class));

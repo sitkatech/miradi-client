@@ -6,13 +6,15 @@
 package org.conservationmeasures.eam.objecthelpers;
 
 import java.text.ParseException;
+import java.util.NoSuchElementException;
+
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class MapList
 {
-	public MapList()
+	public MapList() throws ParseException
 	{
-		this(new EnhancedJsonObject());
+		this("");
 	}
 	
 	public MapList(String listAsJsonString) throws ParseException
@@ -40,14 +42,21 @@ public class MapList
 		return (size() == 0);
 	}
 	
-	public void add(String key, String object)
+	public void put(String key, String object)
 	{
 		data.put(key, object);
 	}
 	
 	public String get(String key)
 	{
-		return data.getString(key);
+		try
+		{
+			return data.getString(key);
+		}
+		catch (NoSuchElementException e)
+		{
+			return null;
+		}
 	}
 	
 	public boolean contains(String key)
@@ -76,6 +85,9 @@ public class MapList
 		return data.equals(other.data);
 	}
 	
+	//FIXME: hasCode() must return hasCode of the internal hasMap and not the JsonObject;
+	// data.hashCode reuturn Object.hasCode and not hasCode of the map
+	// this is because the JsonObject does not delegate the hasCode to the underlying hashmap
 	public int hashCode()
 	{
 		return data.hashCode();
