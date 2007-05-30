@@ -263,7 +263,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 
 	public Point getNewBendPointLocation(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
 	{
-		//Point newBendPoint = getLocation();
 		if (newBendPoint != null)
 			return newBendPoint;
 	
