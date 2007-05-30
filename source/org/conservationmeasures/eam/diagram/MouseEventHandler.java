@@ -85,13 +85,6 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 					factor.setPreviousLocation(factor.getLocation());
 					factor.setPreviousSize(factor.getSize());
 				}
-				if((selectedCell).isFactorLink())
-				{
-					LinkCell linkCell = (LinkCell)selectedCells[i];
-					DiagramFactorLink diagramFactorLink = linkCell.getDiagramFactorLink();
-					previousBendPointList = diagramFactorLink.getBendPoints();
-				}
-
 			}
 		}
 		catch (Exception e)
@@ -217,5 +210,4 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	MainWindow mainWindow;
 	Point dragStartedAt;
 	Object[] selectedCells;
-	PointList previousBendPointList;
 }
