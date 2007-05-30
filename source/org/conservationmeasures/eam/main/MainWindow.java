@@ -492,7 +492,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			isMaximized = true;
 		preferences.setIsMaximized(isMaximized);
 		preferences.save(getPreferencesFile());
-		getCurrentView().getWizardPanel().refresh();
+		getCurrentView().refresh();
 	}
 	
 	public void setBooleanPreference(String genericTag, boolean state)

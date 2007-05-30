@@ -149,6 +149,12 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	abstract public String cardName();
 	
+	
+	public void refresh() throws Exception
+	{
+		getWizardPanel().refresh();
+	}
+	
 	public WizardPanel getWizardPanel()
 	{
 		return wizardPanel;
