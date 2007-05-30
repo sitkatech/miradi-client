@@ -42,7 +42,6 @@ import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMResourceImageIcon;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -95,7 +94,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 
 	public void addRuleFontSize(StyleSheet style)
 	{
-		int fontSize = getMainWindow().getTaggedInt(AppPreferences.TAG_WIZARD_FONT_SIZE);
+		int fontSize = getMainWindow().getWizardFontSize();
 		if (fontSize == 0)
 			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
 		else
@@ -104,7 +103,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	public void addRuleFontFamily(StyleSheet style)
 	{
-		String fontFamily = getMainWindow().getTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY);
+		String fontFamily = getMainWindow().getWizardFontFamily();
 		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+new FontFamiliyQuestion("").findChoiceByCode(fontFamily)+";}"));
 	}
 	

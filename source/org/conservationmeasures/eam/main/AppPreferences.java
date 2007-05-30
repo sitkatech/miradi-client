@@ -119,17 +119,11 @@ public class AppPreferences
 	
 	public void setTaggedInt(String tag, int value)
 	{
-		if(tag.equals(TAG_WIZARD_FONT_SIZE))
-			wizardFontSize = value;
-		else
-			taggedIntMap.put(tag, new Integer(value));
+		taggedIntMap.put(tag, new Integer(value));
 	}
 	
 	public int getTaggedInt(String tag)
 	{
-		if(tag.equals(TAG_WIZARD_FONT_SIZE))
-			return wizardFontSize;
-		
 		Integer value = (Integer)taggedIntMap.get(tag);
 		if(value == null)
 			return 0;
@@ -138,22 +132,36 @@ public class AppPreferences
 	
 	public void setTaggedString(String tag, String value)
 	{
-		if(tag.equals(TAG_WIZARD_FONT_FAMILY))
-			wizardFontFamily = value;
-		else
-			taggedStringMap.put(tag, new String(value));
+		taggedStringMap.put(tag, new String(value));
 	}	
 	
 	public String getTaggedString(String tag)
 	{
-		if(tag.equals(TAG_WIZARD_FONT_FAMILY))
-			return wizardFontFamily;
-		
-		
 		String value = (String) taggedStringMap.get(tag);
 		if(value == null)
 			return "";
 		return value;
+	}
+	
+	
+	public int getWizardFontSize()
+	{
+		return wizardFontSize;
+	}
+	
+	public void setWizardFontSize(int fontSize)
+	{
+		wizardFontSize = fontSize;
+	}
+	
+	public String getWizardFontFamily()
+	{
+		return wizardFontFamily;
+	}
+	
+	public void setWizardFontFamily(String fontFamily)
+	{
+		wizardFontFamily = fontFamily;
 	}
 	
 	//TODO: once we are able to save the zoom setting in app pref.

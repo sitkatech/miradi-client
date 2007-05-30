@@ -529,7 +529,26 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return preferences.getTaggedInt(name);
 	}
 	
-
+	public int getWizardFontSize()
+	{
+		return preferences.getWizardFontSize();
+	}
+	
+	public void setWizardFontSize(int fontSize)
+	{
+		preferences.setWizardFontSize(fontSize);
+	}
+	
+	public String getWizardFontFamily()
+	{
+		return preferences.getWizardFontFamily();
+	}
+	
+	public void setWizardFontFamily(String fontFamily)
+	{
+		preferences.setWizardFontFamily(fontFamily);
+	}
+	
 	public void setTaggedInt(String name, int value)
 	{
 		preferences.setTaggedInt(name, value);

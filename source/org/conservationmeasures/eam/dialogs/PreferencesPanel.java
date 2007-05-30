@@ -65,11 +65,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
 
-		int fontSize = mainWindow.getTaggedInt(AppPreferences.TAG_WIZARD_FONT_SIZE);
+		int fontSize = mainWindow.getWizardFontSize();
 		String sizeAsString = Integer.toString(fontSize);
 		wizardFontSize = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(""), sizeAsString);
 			
-		String fontFamily = mainWindow.getTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY);
+		String fontFamily = mainWindow.getWizardFontFamily();
 		wizardFontFamily = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(""), fontFamily);
 			
 		return htmlTab;
@@ -223,10 +223,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
 		
 		String wizardFontSizeValue = getSelectedItemQuestionBox(wizardFontSize);
-		mainWindow.setTaggedInt(AppPreferences.TAG_WIZARD_FONT_SIZE, new Integer(wizardFontSizeValue).intValue());
+		mainWindow.setWizardFontSize(new Integer(wizardFontSizeValue).intValue());
 		
 		String wizardFontFamilyValue = getSelectedItemQuestionBox(wizardFontFamily);
-		mainWindow.setTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY, wizardFontFamilyValue);
+		mainWindow.setWizardFontFamily(wizardFontFamilyValue);
 
 		try
 		{
