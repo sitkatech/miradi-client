@@ -84,10 +84,7 @@ public class MapList
 		MapList other = (MapList)rawOther;
 		return data.equals(other.data);
 	}
-	
-	//FIXME: hasCode() must return hasCode of the internal hasMap and not the JsonObject;
-	// data.hashCode reuturn Object.hasCode and not hasCode of the map
-	// this is because the JsonObject does not delegate the hasCode to the underlying hashmap
+
 	public int hashCode()
 	{
 		return data.hashCode();

@@ -41,9 +41,7 @@ public class TestMapList extends EAMTestCase
 		MapList map1 = createTestData();
 		MapList map2 = createTestData();
 		assertEquals(map1.toString(), map2.toString());
-
-		//FIXME: hasCode() must return hasCode of the internal hasMap and not the JsonObject
-		//assertEquals(map1.hashCode(), map2.hashCode());
+		assertEquals(map1.hashCode(), map2.hashCode());
 		
 		map1.remove("TAG2");
 		assertNotEquals(map1.toString(), map2.toString());

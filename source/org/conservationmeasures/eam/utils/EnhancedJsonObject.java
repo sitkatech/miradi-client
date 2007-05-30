@@ -215,6 +215,12 @@ public class EnhancedJsonObject extends JSONObject
 		return BaseId.INVALID;
 	}
 
+	  //TODO should be improved at some point, but this works
+	public int hashCode()
+	{
+		return length();
+	}
+	
 	private static String handleEmptyString(String possiblyEmptyJsonString)
 	{
 		if(possiblyEmptyJsonString.length() == 0)
