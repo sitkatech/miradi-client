@@ -131,7 +131,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		return rule;
 	}
 
-	//FIXME: should not use static ref here
+	//FIXME: Richard: should not use static ref here
 	protected MainWindow getMainWindow()
 	{
 		return EAM.mainWindow;
@@ -176,7 +176,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	void fireRightClick(MouseEvent e)
 	{
-		//FIXME: should not reference static mainwindow var here
+		//FIXME: Richard: should not reference static mainwindow var here
 		getRightClickMenu(EAM.mainWindow.getActions()).show(this, e.getX(), e.getY());
 	}
 	
@@ -184,7 +184,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	{
 		JPopupMenu menu = new JPopupMenu();
 		
-		//FIXME: should not need to create a class here, but pass in the copy acton from JEditorPane
+		//FIXME: Richard: should not need to create a class here, but pass in the copy acton from JEditorPane
 		JMenuItem menuItemCopy = new JMenuItem(new EditorActionCopy());
 		menu.add(menuItemCopy);
 		

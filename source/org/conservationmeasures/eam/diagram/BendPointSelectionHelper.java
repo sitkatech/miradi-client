@@ -35,7 +35,7 @@ public class BendPointSelectionHelper
 		if (bendPointIndex.intValue() < 0)
 			return;
 		
-		//FIXME all isShiftDown()s should be isControlDown()s (do the test for this class as well)
+		//FIXME: Nima: all isShiftDown()s should be isControlDown()s (do the test for this class as well)
 		if (! selectionIndexes.contains(bendPointIndex) && ! mouseEvent.isShiftDown())
 		{
 			clearSelection();
@@ -43,21 +43,21 @@ public class BendPointSelectionHelper
 			return;
 		}
 		
-		//FIXME all isShiftDown()s should be isControlDown()s (do the test for this class as well)
+		//FIXME: Nima: all isShiftDown()s should be isControlDown()s (do the test for this class as well)
 		if (! selectionIndexes.contains(bendPointIndex) && mouseEvent.isShiftDown())
 		{
 			selectionIndexes.add(bendPointIndex);
 			return;
 		}
 		
-		//FIXME all isShiftDown()s should be isControlDown()s (do the test for this class as well)
+		//FIXME: Nima: all isShiftDown()s should be isControlDown()s (do the test for this class as well)
 		if (selectionIndexes.contains(bendPointIndex) && mouseEvent.isShiftDown())
 		{
 			selectionIndexes.remove(bendPointIndex);
 			return;
 		}
 		
-		//FIXME all isShiftDown()s should be isControlDown()s (do the test for this class as well)
+		//FIXME: Nima: all isShiftDown()s should be isControlDown()s (do the test for this class as well)
 		if (selectionIndexes.contains(bendPointIndex) && ! mouseEvent.isShiftDown())
 		{
 			clearSelection();

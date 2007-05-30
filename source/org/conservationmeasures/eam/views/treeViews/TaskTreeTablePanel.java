@@ -35,7 +35,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 		super(mainWindowToUse, treeToUse, buttonActions, ObjectType.TASK);
 	}
 
-	//FIXME: This code needs to be analyzed (Kevin)
+	//FIXME: Kevin: This code needs to be analyzed
 	// to see if it really needs to rebuld its tree under all these conditions
 	// Also, taskTreeTablePanel and TargetViabilityTreeTablePanel should have very similar 
 	// CommandExecuted methods with very similar structures

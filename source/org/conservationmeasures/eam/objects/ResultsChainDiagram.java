@@ -43,7 +43,7 @@ public class ResultsChainDiagram extends DiagramObject
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
 
-	//FIXME: need to verify if this should be can be owner rather then can be referer
+	//FIXME: Richard: need to verify if this should be can be owner rather then can be referer
 	public static boolean canReferToThisType(int type)
 	{
 		switch(type)

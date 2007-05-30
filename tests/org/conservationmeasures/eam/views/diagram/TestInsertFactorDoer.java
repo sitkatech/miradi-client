@@ -19,7 +19,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		
 	}
 
-	// FIXME: If we are going to test doers like this, we 
+	// TODO: If we are going to test doers like this, we 
 	// really need to have a true main window with real views
 	// and everything. None of this half-way stuff.
 	// Alternative: Delete this test class.

@@ -32,7 +32,8 @@ public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 		if (!isAvailable())
 			return;
 
-		//FIXME: After overhaul of object update management: Looks like this code is duplicated (Richard)
+		//FIXME: Richard: After overhaul of object update management: 
+		// Looks like this code is duplicated
 		// in eihter the chain manager and or Delete Annotation Doer 
 		try
 		{

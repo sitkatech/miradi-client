@@ -27,7 +27,7 @@ import org.martus.swing.Utilities;
 public class HtmlViewPanel implements HtmlFormEventHandler
 {
 
-	// FIXME: These constructors are a mess...might want to be multiple classes? (Richard)
+	// FIXME: Richard: These constructors are a mess...might want to be multiple classes? (Richard)
 	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, String htmlTextToUse)
 	{
 		this(mainWindowToUse, titleToUse, htmlTextToUse, new DummyHandler());
