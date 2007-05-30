@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -33,7 +32,6 @@ import org.conservationmeasures.eam.views.diagram.PropertiesDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
-import org.jgraph.graph.GraphConstants;
 
 
 public class MouseEventHandler extends MouseAdapter implements GraphSelectionListener
@@ -133,7 +131,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 					selectedFactorIds.add(((FactorCell)selectedCells[i]).getDiagramFactorId());
 
 				if(selectedCell.isFactorLink())
-					setDiagramFactorLinkBendPoints((LinkCell) selectedCells[i]);
+					setDiagramFactorLinkBendPoints((LinkCell) selectedCells[i], deltaX, deltaY);
 			}
 
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
@@ -195,11 +193,21 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 	}
 	
-	private void setDiagramFactorLinkBendPoints(LinkCell linkCell) throws CommandFailedException
+	private void setDiagramFactorLinkBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws CommandFailedException
 	{
-		List points = GraphConstants.getPoints(linkCell.getAttributes());
-		PointList currentBendPoints = LinkCell.extractBendPointsOnly(points);
-		String newList = currentBendPoints.toJson().toString();
+		int[] selectedBendPointIndexes = linkCell.getSelectedBendPointIndexes();
+		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		PointList bendPoints = diagramLink.getBendPoints();
+
+		//TODO use LinkBendPointsMoveHandler (nima)
+		for (int i = 0; i < selectedBendPointIndexes.length; ++i)
+		{
+			Point pointToMove = bendPoints.get(selectedBendPointIndexes[i]);
+			pointToMove.x = pointToMove.x + deltaX;
+			pointToMove.y = pointToMove.y + deltaY;	
+		}
+		
+		String newList = bendPoints.toJson().toString();
 		DiagramFactorLinkId linkId = linkCell.getDiagramFactorLinkId();
 		
 		CommandSetObjectData setBendPointsCommand = new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newList);

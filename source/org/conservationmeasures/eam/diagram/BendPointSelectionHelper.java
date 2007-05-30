@@ -23,7 +23,7 @@ public class BendPointSelectionHelper
 		selectionIndexes = new Vector();
 	}
 	
-	public void mousePressed(MouseEvent mouseEvent, int currentIndex)
+	public void mouseReleased(MouseEvent mouseEvent, int currentIndex)
 	{	
 		updateSelectionList(mouseEvent, currentIndex);
 	}
