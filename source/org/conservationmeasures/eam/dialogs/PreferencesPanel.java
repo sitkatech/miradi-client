@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.utils.HyperlinkLabel;
@@ -63,23 +64,26 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private JPanel createSystemwideTab()
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
-		htmlTab.add(new UiLabel(EAM.text("Wizard Font Size")));
+
 		int fontSize = mainWindow.getTaggedInt(AppPreferences.TAG_WIZARD_FONT_SIZE);
-		wizardFontSize = new UiComboBox(new FontSizeQuestion("").getChoices());
-		setSelectedItemQuestionBox(wizardFontSize, Integer.toString(fontSize));
-		wizardFontSize.addActionListener(this);
-		htmlTab.add(wizardFontSize);
-		
-		htmlTab.add(new UiLabel(EAM.text("Wizard Font Family")));
+		String sizeAsString = Integer.toString(fontSize);
+		wizardFontSize = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(""), sizeAsString);
+			
 		String fontFamily = mainWindow.getTaggedString(AppPreferences.TAG_WIZARD_FONT_FAMILY);
-		wizardFontFamily = new UiComboBox(new FontFamiliyQuestion("").getChoices());
-		setSelectedItemQuestionBox(wizardFontFamily, fontFamily);
-		wizardFontFamily.addActionListener(this);
-		htmlTab.add(wizardFontFamily);
-		
+		wizardFontFamily = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(""), fontFamily);
+			
 		return htmlTab;
 	}
-	
+
+	private UiComboBox createAndAddLabelAndCombo(JPanel htmlTab, ChoiceQuestion question, String sizeAsString)
+	{
+		UiComboBox combo = new UiComboBox(question.getChoices());
+		setSelectedItemQuestionBox(combo, sizeAsString);
+		combo.addActionListener(this);
+		htmlTab.add(new UiLabel(question.getLabel()));
+		htmlTab.add(combo);
+		return combo;
+	}
 
 	public void setSelectedItemQuestionBox(UiComboBox combo, String code)
 	{
