@@ -10,8 +10,6 @@ import java.awt.Color;
 import javax.swing.text.html.StyleSheet;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlFormViewer;
@@ -57,17 +55,8 @@ public class FactorHtmlViewer extends HtmlFormViewer
 
 	public void addRuleBackgroundColor(StyleSheet style)
 	{
-		if (graphCell.isFactor())
-		{
-			Color color = ((FactorCell)graphCell).getColor();
-			style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
-		}
-
-		if (graphCell.isProjectScope())
-		{
-			Color color = ((ProjectScopeBox)graphCell).getColor();
-			style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
-		}
+		Color color = graphCell.getColor();
+		style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
 	}
 
 	private Project getProject()

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.diagram.cells;
 
+import java.awt.Color;
+
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.jgraph.graph.DefaultGraphCell;
@@ -39,4 +41,10 @@ public class EAMGraphCell extends DefaultGraphCell
 	{
 		return null;
 	}
+	
+	public Color getColor()
+	{
+		return Color.BLACK;
+	}
+	
 }
