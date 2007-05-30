@@ -18,7 +18,7 @@ public class LeftSideTextPanel extends JPanel
 	public LeftSideTextPanel(String htmlToUse, HyperlinkHandler wizardToUse)
 	{
 		super(new BorderLayout());
-		html = htmlToUse;
+		String html = htmlToUse;
 		setBackground(Color.WHITE);
 		viewer = new WizardHtmlViewer(wizardToUse);
 		viewer.setText(html);
@@ -28,9 +28,8 @@ public class LeftSideTextPanel extends JPanel
 	
 	public void refresh() throws Exception
 	{
-		viewer.setText(html);
+		viewer.setText(viewer.getText());
 	}
 	
 	WizardHtmlViewer viewer;
-	String html;
 }
