@@ -223,7 +223,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
 		
 		String wizardFontSizeValue = getSelectedItemQuestionBox(wizardFontSize);
-		mainWindow.setWizardFontSize(new Integer(wizardFontSizeValue).intValue());
+		mainWindow.setWizardFontSize(Integer.parseInt(wizardFontSizeValue));
 		
 		String wizardFontFamilyValue = getSelectedItemQuestionBox(wizardFontFamily);
 		mainWindow.setWizardFontFamily(wizardFontFamilyValue);
