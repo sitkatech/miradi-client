@@ -30,7 +30,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
-import org.martus.swing.UiLabel;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 
@@ -73,13 +72,13 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		JPanel vbox = new JPanel(new BasicGridLayout(2,1));
 		
 		Box box = Box.createHorizontalBox();
-		Component[] components = {linkFromList, new UiLabel(EAM.text("Label| affects ")), linkToList};
+		Component[] components = {linkFromList, new PanelTitleLabel(EAM.text("Label| affects ")), linkToList};
 		Utilities.addComponentsRespectingOrientation(box, components);
 		vbox.add(box);
 
 		if (firstSelected==null || secondSelected==null)
-			vbox.add(new UiLabel(EAM.text("  HINT: You can quickly add links by selecting the first factor, " +
-					"holding Ctrl while selecting the second factor, and then hitting the add link button.  ")));
+			vbox.add(new PanelTitleLabel(EAM.text("  HINT: You can quickly add links by selecting the first factor, " +
+			"holding Ctrl while selecting the second factor, and then hitting the add link button.  ")));
 			
 		return vbox;
 	}

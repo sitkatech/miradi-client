@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -80,7 +81,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		UiComboBox combo = new UiComboBox(question.getChoices());
 		setSelectedItemQuestionBox(combo, sizeAsString);
 		combo.addActionListener(this);
-		htmlTab.add(new UiLabel(question.getLabel()));
+		htmlTab.add(new PanelTitleLabel(question.getLabel()));
 		htmlTab.add(combo);
 		return combo;
 	}
@@ -103,7 +104,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private JPanel createThreatRatingTab()
 	{
 		JPanel threatTab = new JPanel(new BasicGridLayout(0,2));
-		threatTab.add(new UiLabel(EAM.text("Show Ratings in Cell")));
+		threatTab.add(new PanelTitleLabel(EAM.text("Show Ratings in Cell")));
 		cellRatingsVisibleCheckBox = new UiCheckBox();
 		cellRatingsVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
 		cellRatingsVisibleCheckBox.addActionListener(this);

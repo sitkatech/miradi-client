@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.PanelFieldLabel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -77,11 +78,11 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		if(getFactor().isTarget())
 		{
 			targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
-			ratingFieldLabel = new UiLabel(EAM.fieldLabel(targetRatingField.getObjectType(), targetRatingField.getTag()));
+			ratingFieldLabel = new PanelFieldLabel(targetRatingField.getObjectType(), targetRatingField.getTag());
 			addFieldWithCustomLabel(targetRatingField, ratingFieldLabel);
 			
 			justificationField = createStringField(Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			justificationFieldLabel = new UiLabel(EAM.fieldLabel(justificationField.getObjectType(), justificationField.getTag()));
+			justificationFieldLabel = new PanelFieldLabel(justificationField.getObjectType(), justificationField.getTag());
 			addFieldWithCustomLabel(justificationField, justificationFieldLabel);
 			
 			detailIcon = new TargetIcon();

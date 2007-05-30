@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.PanelFieldLabel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;
@@ -49,7 +49,7 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	
 	public UiLabel createLabel(ObjectDataInputField field)
 	{
-		UiLabel label = new UiLabel(EAM.fieldLabel(field.getObjectType(), field.getTag()), JLabel.LEFT);
+		UiLabel label = new PanelFieldLabel(field.getObjectType(), field.getTag(), JLabel.LEFT);
 		label.setBorder(new EmptyBorder(0,0,0,8));
 		label.setVerticalAlignment(SwingConstants.TOP);
 		return label;

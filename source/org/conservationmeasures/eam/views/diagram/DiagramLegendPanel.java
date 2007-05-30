@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.icons.ProjectScopeIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -66,7 +67,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	private void addAllComponents()
 	{
 		setBorder(new EmptyBorder(5,5,5,5));
-		UiLabel title = new UiLabel(EAM.text("LEGEND"));
+		UiLabel title = new PanelTitleLabel(EAM.text("LEGEND"));
 		title.setFont(title.getFont().deriveFont(Font.BOLD));
 		title.setBorder(new LineBorder(Color.BLACK, 2));
 		title.setHorizontalAlignment(UiLabel.CENTER);
@@ -110,7 +111,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	protected void addTargetLinkLine(JPanel panel, String text)
 	{
 		panel.add(new JLabel(""));
-		panel.add(new UiLabel(EAM.text(text)));
+		panel.add(new PanelTitleLabel(EAM.text(text)));
 		targetLinkCheckBox = createCheckBox(text);
 		panel.add(targetLinkCheckBox);
 	}
@@ -127,7 +128,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	{
 		JButton button = new LocationButton(action);
 		jpanel.add(button);
-		jpanel.add(new UiLabel(EAM.text(text)));
+		jpanel.add(new PanelTitleLabel(EAM.text(text)));
 		jpanel.add(new UiLabel(""));
 	}
 	

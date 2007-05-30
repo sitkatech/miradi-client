@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.icons.AccountCodeIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
-import org.martus.swing.UiLabel;
 
 public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 {
@@ -24,7 +24,7 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 		super(splitPositionSaverToUse, new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
 				new AccountingCodePropertiesPanel(projectToUse, BaseId.INVALID));
 
-		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
+		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
 	}
 
 	public String getPanelDescription()

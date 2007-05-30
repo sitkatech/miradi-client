@@ -8,13 +8,13 @@ package org.conservationmeasures.eam.views.budget;
 import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
-import org.martus.swing.UiLabel;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 
 public class BudgetPanel extends DisposablePanel
 {
 	public BudgetPanel()
 	{
 		super(new BorderLayout());
-		add(new UiLabel("Not Implemented Yet"));
+		add(new PanelTitleLabel("Not Implemented Yet"));
 	}	
 }

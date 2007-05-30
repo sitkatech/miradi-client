@@ -126,6 +126,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -266,7 +267,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	protected UiLabel createScreenShotLabel()
 	{
-		UiLabel label = new UiLabel("Demo Screen Shot");
+		UiLabel label = new PanelTitleLabel("Demo Screen Shot");
 		label.setBorder(new LineBorder(Color.BLACK));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		return label;

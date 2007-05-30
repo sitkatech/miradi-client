@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -36,7 +37,7 @@ public class ThreatGridPanel extends JPanel
 	private JComponent createHeading()
 	{
 		String targetLabelText = "<html><h2>TARGETS</h2></html>";
-		UiLabel targetLabel = new UiLabel(EAM.text(targetLabelText));
+		UiLabel targetLabel = new PanelTitleLabel(EAM.text(targetLabelText));
 		targetLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		return targetLabel;
 	}

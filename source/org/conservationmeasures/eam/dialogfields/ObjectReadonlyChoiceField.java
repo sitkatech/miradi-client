@@ -17,6 +17,7 @@ import javax.swing.border.LineBorder;
 import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -29,7 +30,7 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
 		question = questionToUse;
 		
-		component = new UiLabel();
+		component = new PanelTitleLabel("");
 		Border lineBorder = new LineBorder(Color.BLACK);
 		Border emptyBorder = new EmptyBorder(3, 3, 3, 3);
 		CompoundBorder border = new CompoundBorder(lineBorder, emptyBorder);

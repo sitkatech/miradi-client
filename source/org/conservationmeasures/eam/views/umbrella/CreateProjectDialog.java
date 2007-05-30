@@ -25,9 +25,9 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
-import org.martus.swing.UiLabel;
 import org.martus.swing.UiList;
 import org.martus.swing.UiParagraphPanel;
 import org.martus.swing.UiScrollPane;
@@ -49,14 +49,14 @@ public class CreateProjectDialog extends EAMDialog implements ActionListener,
 
 		UiParagraphPanel panel = new UiParagraphPanel();
 		panel
-				.addOnNewLine(new UiLabel(EAM.getHomeDirectory()
-						.getAbsolutePath()));
+				.addOnNewLine(new PanelTitleLabel(EAM.getHomeDirectory()
+				.getAbsolutePath()));
 		UiScrollPane uiScrollPane = new UiScrollPane(existingProjectList);
 		uiScrollPane.setPreferredSize(new Dimension(projectFilenameField
 				.getPreferredSize().width, 200));
-		panel.addComponents(new UiLabel(EAM.text("Label|Existing Projects:")),
+		panel.addComponents(new PanelTitleLabel(EAM.text("Label|Existing Projects:")),
 				uiScrollPane);
-		panel.addComponents(new UiLabel(EAM.text("New Project Filename: ")),
+		panel.addComponents(new PanelTitleLabel(EAM.text("New Project Filename: ")),
 				projectFilenameField);
 		panel.addOnNewLine(createButtonBar());
 		getContentPane().add(panel);

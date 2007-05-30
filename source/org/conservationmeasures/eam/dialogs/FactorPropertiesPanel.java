@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -141,25 +142,25 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	private UiLabel createFactorTypeLabel(Factor factor)
 	{
 		if(factor.isDirectThreat())
-			return new UiLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING);
 		
 		if (factor.isContributingFactor())
-			return new UiLabel(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING);
 		
-		if (factor.isStrategy()) 
-			return new UiLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING);
+		if (factor.isStrategy())
+			return new PanelTitleLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING);
 		
 		if (factor.isTarget())
-			return new UiLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING);
 		
 		if (factor.isIntermediateResult())
-			return new UiLabel(IntermediateResult.OBJECT_NAME, new IntermediateResultIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(IntermediateResult.OBJECT_NAME, new IntermediateResultIcon(), UiLabel.LEADING);
 
 		if (factor.isThreatReductionResult())
-			return new UiLabel(ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon(), UiLabel.LEADING);
 		
 		if (factor.isTextBox())
-			return new UiLabel(TextBox.OBJECT_NAME, new TextBoxIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(TextBox.OBJECT_NAME, new TextBoxIcon(), UiLabel.LEADING);
 		
 		throw new RuntimeException("Unknown factor type");
 	}

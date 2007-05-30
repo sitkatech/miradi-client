@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -180,7 +181,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	
 	private UiLabel makeSectionLabel(String field)
 	{
-		UiLabel label = new UiLabel(field);
+		UiLabel label = new PanelTitleLabel(field);
 		label.setVerticalAlignment(SwingConstants.TOP);
 		return makeBold(label);
 	}
@@ -202,7 +203,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	{
 		Box box = Box.createVerticalBox();
 		box.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		box.add(new UiLabel(EAM.text("OPTIONS")));
+		box.add(new PanelTitleLabel(EAM.text("OPTIONS")));
 		box.add(createCheckBox(EAM.text("Show Thresholds"), new OptionThresholdChangeListener()));
 		box.add(createCheckBox(EAM.text("Show Status"), new OptionStatusChangeListener()));
 		return box;

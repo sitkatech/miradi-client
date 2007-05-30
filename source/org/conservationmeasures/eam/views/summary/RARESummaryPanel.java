@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiLabel;
 
 public class RARESummaryPanel extends ObjectDataInputPanel
 {
@@ -17,7 +17,7 @@ public class RARESummaryPanel extends ObjectDataInputPanel
 	public RARESummaryPanel(Project projectToUse, ProjectMetadata metadata)
 	{
 		super(projectToUse, metadata.getType(), metadata.getId());
-		add(new UiLabel("Not implemented yet"));
+		add(new PanelTitleLabel("Not implemented yet"));
 	}
 
 	public String getPanelDescription()

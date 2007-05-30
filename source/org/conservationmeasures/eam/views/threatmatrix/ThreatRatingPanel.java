@@ -25,6 +25,7 @@ import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -87,7 +88,7 @@ public class ThreatRatingPanel extends Box
 		{
 			RatingCriterion criterion = criterionItems[i];
 
-			UiLabel criterionLabel = new UiLabel(criterion.getLabel());
+			UiLabel criterionLabel = new PanelTitleLabel(criterion.getLabel());
 			criterionLabel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
 			criterionLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
 			criterionLabel.setFont(criterionLabel.getFont().deriveFont(Font.BOLD));

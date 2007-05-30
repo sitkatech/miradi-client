@@ -16,9 +16,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -84,9 +84,9 @@ public class ThreatRatingBundlePanel extends JPanel
 		threatName = createNameArea();
 
 		JPanel headerBox = new JPanel(new BasicGridLayout(2, 2));		
-		headerBox.add(new UiLabel("Threat:"));
+		headerBox.add(new PanelTitleLabel("Threat:"));
 		headerBox.add(threatName);
-		headerBox.add(new UiLabel("Target:"));
+		headerBox.add(new PanelTitleLabel("Target:"));
 		headerBox.add(targetName);
 		
 		JPanel panel = new JPanel();

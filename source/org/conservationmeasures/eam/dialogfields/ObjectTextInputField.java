@@ -21,6 +21,7 @@ import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.CopyTextAction;
 import org.conservationmeasures.eam.views.umbrella.CutTextAction;
@@ -37,6 +38,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
 		field.addMouseListener(new MouseHandler());
+		field.setFont(new PanelTitleLabel("").getFont());
 	}	
 
 	public JComponent getComponent()
