@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.utils;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
+import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
+
 public class TestBendPointList extends TestPointList
 {
 	public TestBendPointList(String name)
@@ -25,5 +27,24 @@ public class TestBendPointList extends TestPointList
 		Line2D createdLine = bendPointList.createLineSegment(point1, point2);
 		//TODO double to make sure this bounds test comparison is enough
 		assertEquals("not same line?", expectedLine.getBounds(), createdLine.getBounds());
+	}
+	
+	public void testConvertToLineSegments()
+	{
+		BendPointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
+		Line2D.Double[] segments = bendPointList.convertToLineSegments();
+		
+		assertEquals("wrong number of segments?", 2, segments.length);
+		assertEquals("wrong x1 for segment 1?", 1, (int)segments[0].getX1());
+		assertEquals("wrong y1 for segment 1?", 1, (int)segments[0].getY1());
+		
+		assertEquals("wrong x2 for segment 1?", 2, (int)segments[0].getX2());
+		assertEquals("wrong y2 for segment 1?", 2, (int)segments[0].getY2());
+		
+		assertEquals("wrong x1 for segment 2?", 2, (int)segments[1].getX1());
+		assertEquals("wrong y1 for segment 2?", 2, (int)segments[1].getY1());
+		
+		assertEquals("wrong x2 for segment 2?", 3, (int)segments[1].getX2());
+		assertEquals("wrong y2 for segment 2?", 3, (int)segments[1].getY2());
 	}
 }

@@ -61,12 +61,10 @@ public class TestLinkBendPointsMoveHandler extends EAMTestCase
 	public static BendPointList createBendPointList()
 	{
 		BendPointList bendPoints = new BendPointList();
-		Point bendPoint1 = new Point(1, 1);
-		Point bendPoint2 = new Point(2, 2);
-		Point bendPoint3 = new Point(3, 3);
-		bendPoints.add(bendPoint1);
-		bendPoints.add(bendPoint2);
-		bendPoints.add(bendPoint3);
+		
+		bendPoints.add(new Point(1, 1));
+		bendPoints.add(new Point(2, 2));
+		bendPoints.add(new Point(3, 3));
 		
 		return bendPoints;
 	}
