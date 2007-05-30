@@ -5,9 +5,6 @@
 */ 
 package org.conservationmeasures.eam.utils;
 
-import java.awt.Point;
-
-
 public class BendPointList extends PointList
 {
 	public BendPointList()
@@ -22,16 +19,7 @@ public class BendPointList extends PointList
 	
 	public BendPointList(EnhancedJsonObject json) throws Exception
 	{
-		super();
-		EnhancedJsonArray array = json.optJsonArray(TAG_POINTS);
-		if(array == null)
-			array = new EnhancedJsonArray();
-		
-		for(int i = 0; i < array.length(); ++i)
-		{
-			Point point = EnhancedJsonObject.convertToPoint(array.getString(i));
-			add(point);
-		}
+		super(json);
 	}
 	
 	public BendPointList(String listAsJsonString) throws Exception
