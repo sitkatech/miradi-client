@@ -232,12 +232,12 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	{
 		DiagramFactorLinkId diagramLinkId = createDiagramFactorLink();
 		DiagramFactorLink diagramLink = (DiagramFactorLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramLinkId));
-		addDiagramLinkToMode(diagramLink);
+		addDiagramLinkToModel(diagramLink);
 		
 		return getDiagramModel().getDiagramFactorLink(diagramLink);	
 	}
 	
-	public void addDiagramLinkToMode(DiagramFactorLink diagramLink) throws Exception 
+	public void addDiagramLinkToModel(DiagramFactorLink diagramLink) throws Exception 
 	{
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkageId());
 		executeCommand(addLink);
