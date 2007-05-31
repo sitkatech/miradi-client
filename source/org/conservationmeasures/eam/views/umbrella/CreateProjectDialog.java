@@ -23,6 +23,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -168,11 +169,11 @@ public class CreateProjectDialog extends EAMDialog implements ActionListener,
 
 	private Box createButtonBar()
 	{
-		okButton = new UiButton("");
+		okButton = new PanelButton("");
 		okButton.addActionListener(this);
 		okButton.setEnabled(false);
 		getRootPane().setDefaultButton(okButton);
-		cancelButton = new UiButton(EAM.text("Button|Cancel"));
+		cancelButton = new PanelButton(EAM.text("Button|Cancel"));
 		cancelButton.addActionListener(this);
 
 		Box buttonBar = Box.createHorizontalBox();

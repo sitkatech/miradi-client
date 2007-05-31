@@ -15,10 +15,10 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.actions.ActionWizardNext;
 import org.conservationmeasures.eam.actions.ActionWizardPrevious;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.martus.swing.UiButton;
 
 public class WizardPanel extends JPanel
 {
@@ -116,9 +116,9 @@ public class WizardPanel extends JPanel
 		Actions actions = mainWindow.getActions();
 		Box box = Box.createHorizontalBox();
 		box.add(Box.createHorizontalStrut(10));
-		box.add(new UiButton(actions.get(ActionWizardPrevious.class)));
+		box.add(new PanelButton(actions.get(ActionWizardPrevious.class)));
 		box.add(Box.createHorizontalStrut(20));
-		box.add(new UiButton(actions.get(ActionWizardNext.class)));
+		box.add(new PanelButton(actions.get(ActionWizardNext.class)));
 		box.add(Box.createHorizontalGlue());
 		return box;
 	}

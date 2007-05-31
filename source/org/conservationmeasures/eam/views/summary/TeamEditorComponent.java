@@ -17,12 +17,12 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ObjectPoolTable;
 import org.conservationmeasures.eam.dialogs.ObjectTableModel;
 import org.conservationmeasures.eam.dialogs.ObjectTablePanel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiButton;
 
 public class TeamEditorComponent extends ObjectTablePanel implements KeyListener
 {
@@ -42,10 +42,10 @@ public class TeamEditorComponent extends ObjectTablePanel implements KeyListener
 	
 	void createButtonBar(Actions actionsToUse)
 	{
-		addButton(new UiButton(actionsToUse.get(ActionTeamCreateMember.class)));
+		addButton(new PanelButton(actionsToUse.get(ActionTeamCreateMember.class)));
 		addButton(actionsToUse.getObjectsAction(ActionTeamRemoveMember.class));
 		addButton(actionsToUse.getObjectsAction(ActionModifyResource.class));
-		addButton(new UiButton(actionsToUse.get(ActionViewPossibleTeamMembers.class)));
+		addButton(new PanelButton(actionsToUse.get(ActionViewPossibleTeamMembers.class)));
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)

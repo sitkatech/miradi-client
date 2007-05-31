@@ -6,10 +6,10 @@
 package org.conservationmeasures.eam.utils;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.martus.swing.UiButton;
 
-public class ObjectsActionButton extends UiButton 
+public class ObjectsActionButton extends PanelButton 
 {
 	public ObjectsActionButton(ObjectsAction action, ObjectPicker picker)
 	{

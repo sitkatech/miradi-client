@@ -16,6 +16,7 @@ import javax.swing.Box;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -49,7 +50,7 @@ public class ModelessDialogWithClose extends EAMDialog implements WindowListener
 	
 	private Box createButtonBar()
 	{
-		UiButton closeButton = new UiButton(EAM.text("Button|Close"));
+		UiButton closeButton = new PanelButton(EAM.text("Button|Close"));
 		closeButton.setSelected(true);
 		closeButton.addActionListener(new DialogCloseListener());
 		
@@ -87,7 +88,7 @@ public class ModelessDialogWithClose extends EAMDialog implements WindowListener
 	
 	protected void createDirectionsButton(Box buttonBar)
 	{
-		UiButton  help = new UiButton(new ActionDirections(EAM.text("Directions")));
+		UiButton  help = new PanelButton(new ActionDirections(EAM.text("Directions")));
 		Component[] components = new Component[] {help};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 	}

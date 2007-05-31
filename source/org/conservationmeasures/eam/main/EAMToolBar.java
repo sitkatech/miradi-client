@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.actions.ActionHelpButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.utils.ToolBarButton;
 import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
-import org.martus.swing.UiButton;
 
 public class EAMToolBar extends JToolBar
 {
@@ -54,7 +54,7 @@ public class EAMToolBar extends JToolBar
 	
 }
 
-abstract class HelpButton extends UiButton
+abstract class HelpButton extends PanelButton
 {
 	public HelpButton(Action action, Color color)
 	{

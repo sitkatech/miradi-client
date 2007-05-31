@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTextBoxCell;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -47,7 +48,6 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.utils.LocationHolder;
-import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -236,7 +236,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 			checkBox.setSelected(manager.areTextBoxesVisible());
 	}
 	
-	class LocationButton extends UiButton implements LocationHolder
+	class LocationButton extends PanelButton implements LocationHolder
 	{
 		LocationButton(EAMAction action)
 		{
