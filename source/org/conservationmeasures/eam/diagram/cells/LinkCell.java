@@ -10,7 +10,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.util.List;
 import java.util.Vector;
 
@@ -179,6 +178,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		GraphConstants.setEndFill(getAttributes(), true);
 	}
 	
+	//TODO remove method, its not being used by anyone
 	public static BendPointList extractBendPointsOnly(List points)
 	{
 		BendPointList pointList = new BendPointList();
@@ -286,50 +286,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return new Point(middleX, middleY);
 	}
 	
-	public LinkCell[] getNearbyLinks(DiagramModel model, GraphLayoutCache cache, Point point)
-	{
-		final double WITHIN_RANGE_PIXEL_COUNT = 2;
-		LinkCell[] allCells = model.getAllFactorLinkCells();
-		Vector nearbyLinks = new Vector();
-		
-		for (int i = 0; i < allCells.length; ++i)
-		{
-			LinkCell linkCell = allCells[i];
-			
-			if (!isWithinBounds(cache, linkCell, point))
-				continue;
-		
-			BendPointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
-			Line2D.Double[] lineSegments = bendPoints.convertToLineSegments();
-			if (isWithinRange(lineSegments, point, WITHIN_RANGE_PIXEL_COUNT))
-				nearbyLinks.add(linkCell);
-		}
-		
-		return (LinkCell[]) nearbyLinks.toArray(new LinkCell[0]);
-	}
-	
-	private boolean isWithinBounds(GraphLayoutCache cache, LinkCell linkCell, Point point)
-	{
-		EdgeView view = (EdgeView) cache.getMapping(linkCell, false);
-		Rectangle2D bounds = view.getBounds();
-		
-		return bounds.contains(point);
-	}
-
-	private boolean isWithinRange(Line2D.Double[] lineSegments, Point point, final double range)
-	{
-		for (int i = 0; i < lineSegments.length; ++i)
-		{
-			Line2D.Double line = lineSegments[i];
-			Point2D point2D = Utility.convertToPoint2D(point);
-			double distance = line.ptLineDist(point2D);
-			if (distance < range)
-				return true;
-		}
-		
-		return false;
-	}
-
 	BendPointSelectionHelper bendSelectionHelper;
 	FactorLink link;
 	DiagramFactorLink diagramLink;

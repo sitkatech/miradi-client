@@ -26,9 +26,9 @@ public class TestLinkCell extends EAMTestCase
 		super.tearDown();
 	}
 	
-	public void testGetNearbyLinks()
+	public void testGetNewBendPointList() throws Exception
 	{
-	//TODO add test.  this method has failed.
+		fail();
 	}
 	
 	ProjectForTesting project;
