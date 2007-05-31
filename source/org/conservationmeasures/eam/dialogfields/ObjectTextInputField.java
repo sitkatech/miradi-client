@@ -23,10 +23,10 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextArea;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.views.umbrella.CopyTextAction;
 import org.conservationmeasures.eam.views.umbrella.CutTextAction;
 import org.conservationmeasures.eam.views.umbrella.PasteTextAction;
-import org.martus.swing.ResourceImageIcon;
 
 public class ObjectTextInputField extends ObjectDataInputField
 {
@@ -136,7 +136,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		private JMenuItem createMenuItem(Action action, String iconLocation)
 		{
 			JMenuItem menuItem = new JMenuItem(action);
-			ResourceImageIcon icon = new ResourceImageIcon(iconLocation);
+			MiradiResourceImageIcon icon = new MiradiResourceImageIcon(iconLocation);
 			menuItem.setIcon(icon);
 			
 			return menuItem;

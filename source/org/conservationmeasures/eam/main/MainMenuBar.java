@@ -109,9 +109,9 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourc
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
+import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.martus.swing.ResourceImageIcon;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -346,7 +346,7 @@ public class MainMenuBar extends JMenuBar
 
 		JMenu menu4a = new JMenu("4A. Develop Detailed Short-Term Work Plan");
 		menu4a.setMnemonic(KeyEvent.VK_D);
-		menu4a.setIcon(new ResourceImageIcon("icons/blankicon.png"));
+		menu4a.setIcon(new MiradiResourceImageIcon("icons/blankicon.png"));
 		
 		addMenuItem(actions, menu4a, ActionJumpWorkPlanDevelopActivitiesAndTasksStep.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu4a, ActionJumpWorkPlanDevelopMethodsAndTasksStep.class, KeyEvent.VK_M);

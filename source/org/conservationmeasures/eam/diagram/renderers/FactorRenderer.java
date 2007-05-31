@@ -64,11 +64,11 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
-import org.martus.swing.ResourceImageIcon;
 
 
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
@@ -210,7 +210,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private void drawChainIcon(Rectangle rect, Graphics2D g2) 
 	{
 		//TODO: rather then pulling the icon resource path from the action class or harding code it , it would be better if we pulled them from a property file by name for common resource paths.
-		ResourceImageIcon icon = new ResourceImageIcon(ActionShowResultsChain.getIconName());
+		MiradiResourceImageIcon icon = new MiradiResourceImageIcon(ActionShowResultsChain.getIconName());
 		Rectangle rectangle = getResultChainRectWithinNode();
 		icon.paintIcon(null, g2,rectangle.x, rectangle.y);
 	}

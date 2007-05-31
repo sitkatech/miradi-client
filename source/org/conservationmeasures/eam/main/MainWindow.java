@@ -45,6 +45,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectRepairer;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
+import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.TabbedView;
@@ -64,7 +65,6 @@ import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.wizard.WizardManager;
-import org.martus.swing.ResourceImageIcon;
 import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
 
@@ -94,7 +94,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		project.addCommandExecutedListener(this);
 		
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
-		setIconImage(new ResourceImageIcon("images/appIcon.png").getImage());
+		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
 		
 		mainMenuBar = new MainMenuBar(actions);
 		toolBarBox = new ToolBarContainer();
