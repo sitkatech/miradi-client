@@ -14,11 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
-import org.conservationmeasures.eam.utils.HtmlFormViewer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 import com.jhlabs.awt.GridLayoutPlus;

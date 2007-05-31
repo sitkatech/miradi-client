@@ -13,11 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
 import com.jhlabs.awt.BasicGridLayout;
 

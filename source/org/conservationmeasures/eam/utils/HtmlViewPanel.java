@@ -20,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.dialogs.EAMDialog;
+import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.Utilities;

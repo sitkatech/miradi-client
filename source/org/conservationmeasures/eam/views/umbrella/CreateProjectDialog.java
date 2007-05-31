@@ -23,9 +23,9 @@ import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiList;

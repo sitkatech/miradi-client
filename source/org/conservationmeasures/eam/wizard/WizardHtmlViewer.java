@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.wizard;
 
 import javax.swing.text.html.StyleSheet;
 
-import org.conservationmeasures.eam.utils.HtmlFormViewer;
+import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.martus.swing.HyperlinkHandler;
 
 public class WizardHtmlViewer extends HtmlFormViewer

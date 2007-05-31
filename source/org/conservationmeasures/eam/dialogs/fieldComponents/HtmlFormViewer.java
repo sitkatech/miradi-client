@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.utils;
+package org.conservationmeasures.eam.dialogs.fieldComponents;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -46,6 +46,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMResourceImageIcon;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
+import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiEditorPane;
 

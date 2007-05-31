@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 

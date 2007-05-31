@@ -3,12 +3,14 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.dialogs.fieldComponents;
 
 import java.awt.Font;
 
 import javax.swing.Icon;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.UiLabel;
 
 public class PanelTitleLabel extends UiLabel

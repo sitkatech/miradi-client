@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.budget;
 import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
-import org.conservationmeasures.eam.main.PanelTitleLabel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 
 public class BudgetPanel extends DisposablePanel
 {

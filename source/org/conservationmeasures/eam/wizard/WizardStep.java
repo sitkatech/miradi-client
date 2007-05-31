@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.wizard;
 
 import javax.swing.JSplitPane;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.utils.FastScrollPane;
-import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
 
 public class WizardStep extends SkeletonWizardStep

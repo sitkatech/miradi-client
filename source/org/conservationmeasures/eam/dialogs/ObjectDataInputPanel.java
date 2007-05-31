@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
-import org.conservationmeasures.eam.main.PanelFieldLabel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;

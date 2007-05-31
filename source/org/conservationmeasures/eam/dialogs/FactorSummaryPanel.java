@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentify
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
@@ -21,7 +22,6 @@ import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.PanelFieldLabel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;

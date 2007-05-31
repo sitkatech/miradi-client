@@ -17,8 +17,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.PanelFieldLabel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;

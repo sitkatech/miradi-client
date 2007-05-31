@@ -10,9 +10,9 @@ import java.awt.Color;
 import javax.swing.text.html.StyleSheet;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
 public class FactorHtmlViewer extends HtmlFormViewer
 {
