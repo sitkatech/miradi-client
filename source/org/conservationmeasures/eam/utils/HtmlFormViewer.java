@@ -52,15 +52,35 @@ import org.martus.swing.UiEditorPane;
 
 public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, MouseListener
 {
-	public HtmlFormViewer(String htmlSource, HyperlinkHandler hyperLinkHandler)
+
+	public static HtmlFormViewer createHtmlViewerWithPanelFont(String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
+		String fontFamily = getMainWindow().getWizardFontFamily();
+		int fontSize = getMainWindow().getWizardFontSize();
+		return new HtmlFormViewer(fontSize, fontFamily, htmlSource, hyperLinkHandler);
+	}
+	
+	public static HtmlFormViewer createHtmlViewerWithWizardFont(String htmlSource, HyperlinkHandler hyperLinkHandler)
+	{
+		return new HtmlFormViewer(htmlSource, hyperLinkHandler);
+	}
+
+	protected HtmlFormViewer(String htmlSource, HyperlinkHandler hyperLinkHandler)
+	{
+		this(getMainWindow().getWizardFontSize(), getMainWindow().getWizardFontFamily(), htmlSource, hyperLinkHandler);
+	}
+
+	protected HtmlFormViewer(int size, String family, String htmlSource, HyperlinkHandler hyperLinkHandler)
+	{
+		fontSize = size;
+		fontFamily = family;
 		linkHandler = hyperLinkHandler;
-		
 		setEditable(false);
 		setText(htmlSource);
 		addHyperlinkListener(this);
 		addMouseListener(this);
 	}
+	
 
 	
 	public void setText(String text)
@@ -94,7 +114,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 
 	public void addRuleFontSize(StyleSheet style)
 	{
-		int fontSize = getMainWindow().getWizardFontSize();
+
 		if (fontSize == 0)
 			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
 		else
@@ -103,7 +123,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	public void addRuleFontFamily(StyleSheet style)
 	{
-		String fontFamily = getMainWindow().getWizardFontFamily();
+
 		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+new FontFamiliyQuestion("").findChoiceByCode(fontFamily)+";}"));
 	}
 	
@@ -132,7 +152,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	}
 
 	//FIXME: Richard: should not use static ref here
-	protected MainWindow getMainWindow()
+	public static MainWindow getMainWindow()
 	{
 		return EAM.mainWindow;
 	}
@@ -203,6 +223,8 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		return menu;
 	}
 	
+	String fontFamily;
+	int fontSize;
 	
 	class EditorActionCopy extends ActionCopy
 	{

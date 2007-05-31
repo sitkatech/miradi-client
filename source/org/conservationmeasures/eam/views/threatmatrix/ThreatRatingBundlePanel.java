@@ -7,11 +7,9 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 
 import javax.swing.Box;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -19,6 +17,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.PanelTitleLabel;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
+import org.conservationmeasures.eam.utils.HtmlFormViewer;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -98,13 +97,12 @@ public class ThreatRatingBundlePanel extends JPanel
 
 
 
-	private JTextArea createNameArea()
+	private HtmlFormViewer createNameArea()
 	{
-		JTextArea area = new JTextArea("");
-		area.setWrapStyleWord(true);
-		area.setLineWrap(true);
+		HtmlFormViewer area = HtmlFormViewer.createHtmlViewerWithPanelFont("",null);
 		area.setOpaque(false);
-		area.setFont(new Font(null,Font.BOLD,12));
+		// TODO: must add style to constructor; setting style here is too late
+		//area.setFont(new Font(null,Font.BOLD,12));
 		area.setPreferredSize(new Dimension(150, 60));
 		area.setEditable(false);
 		return area;
@@ -121,6 +119,6 @@ public class ThreatRatingBundlePanel extends JPanel
 	ThreatRatingBundle workingBundle;
 	ThreatRatingPanel ratingPanel;
 
-	JTextArea threatName;
-	JTextArea targetName;
+	HtmlFormViewer threatName;
+	HtmlFormViewer targetName;
 }
