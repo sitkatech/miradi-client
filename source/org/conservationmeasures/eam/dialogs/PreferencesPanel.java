@@ -66,19 +66,19 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
 
-		int wFontSize = mainWindow.getWizardFontSize();
-		String wSizeAsString = Integer.toString(wFontSize);
-		wizardFontSize = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(EAM.text("Wizard ")), wSizeAsString);
+		int wizardFontSize = mainWindow.getWizardFontSize();
+		String wizardSizeAsString = Integer.toString(wizardFontSize);
+		wizardFontSizeCombo = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(EAM.text("Wizard ")), wizardSizeAsString);
 			
-		String wFontFamily = mainWindow.getWizardFontFamily();
-		wizardFontFamily = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(EAM.text("Wizard ")), wFontFamily);
+		String wizardFontFamily = mainWindow.getWizardFontFamily();
+		wizardFontFamilyCombo = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(EAM.text("Wizard ")), wizardFontFamily);
 		
-		int pFontSize = mainWindow.getDataPanelFontSize();
-		String pSizeAsString = Integer.toString(pFontSize);
-		panelFontSize = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(EAM.text("Panel ")), pSizeAsString);
+		int panelFontSize = mainWindow.getDataPanelFontSize();
+		String panelSizeAsString = Integer.toString(panelFontSize);
+		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(EAM.text("Panel ")), panelSizeAsString);
 			
-		String pFontFamily = mainWindow.getDataPanelFontFamily();
-		panelFontFamily = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(EAM.text("Panel ")), pFontFamily);
+		String panelFontFamily = mainWindow.getDataPanelFontFamily();
+		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(EAM.text("Panel ")), panelFontFamily);
 		
 		return htmlTab;
 	}
@@ -230,16 +230,16 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
 		
-		String wizardFontSizeValue = getSelectedItemQuestionBox(wizardFontSize);
+		String wizardFontSizeValue = getSelectedItemQuestionBox(wizardFontSizeCombo);
 		mainWindow.setWizardFontSize(Integer.parseInt(wizardFontSizeValue));
 		
-		String wizardFontFamilyValue = getSelectedItemQuestionBox(wizardFontFamily);
+		String wizardFontFamilyValue = getSelectedItemQuestionBox(wizardFontFamilyCombo);
 		mainWindow.setWizardFontFamily(wizardFontFamilyValue);
 		
-		String panelFontSizeValue = getSelectedItemQuestionBox(panelFontSize);
+		String panelFontSizeValue = getSelectedItemQuestionBox(panelFontSizeCombo);
 		mainWindow.setDataPanelFontSize(Integer.parseInt(panelFontSizeValue));
 		
-		String panelFontFamilyValue = getSelectedItemQuestionBox(panelFontFamily);
+		String panelFontFamilyValue = getSelectedItemQuestionBox(panelFontFamilyCombo);
 		mainWindow.setDataPanelFontFamily(panelFontFamilyValue);
 
 		try
@@ -331,9 +331,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	UiCheckBox gridVisibleCheckBox; 
 	UiCheckBox cellRatingsVisibleCheckBox;
 	
-	UiComboBox wizardFontSize;
-	UiComboBox wizardFontFamily;
+	UiComboBox wizardFontSizeCombo;
+	UiComboBox wizardFontFamilyCombo;
 	
-	UiComboBox panelFontSize;
-	UiComboBox panelFontFamily;
+	UiComboBox panelFontSizeCombo;
+	UiComboBox panelFontFamilyCombo;
 }
