@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent;
 
 import org.conservationmeasures.eam.diagram.BendPointSelectionHelper;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.BendPointList;
 import org.jgraph.JGraph;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphContext;
@@ -61,7 +61,7 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		super.paint(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+		BendPointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
 		int[] selectedIndexes = bendSelectionHelper.getSelectedIndexes();
 		for (int i = 0; i < selectedIndexes.length; ++i)
 		{

@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.BendPointList;
 
 public class DeleteBendPointDoer extends LocationDoer
 {
@@ -28,7 +28,7 @@ public class DeleteBendPointDoer extends LocationDoer
 		if (links.length != 1)
 			return false;
 		
-		PointList bendPoints = links[0].getBendPoints();
+		BendPointList bendPoints = links[0].getBendPoints();
 		if (bendPoints.size() <= 0)
 			return false;
 
@@ -49,17 +49,17 @@ public class DeleteBendPointDoer extends LocationDoer
 		DiagramFactorLink diagramFactorLink = links[0];
 		DiagramFactorLinkId linkId = diagramFactorLink.getDiagramLinkageId();
 		
-		PointList bendPoints = diagramFactorLink.getBendPoints();
-		PointList newBendPoints = getBendPointListMinusDeletedPoint(bendPoints);
+		BendPointList bendPoints = diagramFactorLink.getBendPoints();
+		BendPointList newBendPoints = getBendPointListMinusDeletedPoint(bendPoints);
 		String newBendPointList = newBendPoints.toJson().toString();
 		
 		CommandSetObjectData removeBendPointCommand = new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newBendPointList);
 		getProject().executeCommand(removeBendPointCommand);
 	}
 	
-	private PointList getBendPointListMinusDeletedPoint(PointList currentBendPoints)
+	private BendPointList getBendPointListMinusDeletedPoint(BendPointList currentBendPoints)
 	{
-		PointList newBendPoints = new PointList();
+		BendPointList newBendPoints = new BendPointList();
 		Point clickLocation = getLocation();
 		if (clickLocation == null)
 			return removeFirstPoint(currentBendPoints, newBendPoints);
@@ -71,7 +71,7 @@ public class DeleteBendPointDoer extends LocationDoer
 		return newBendPoints;
 	}
 
-	private PointList removeFirstPoint(PointList currentBendPoints, PointList newBendPoints)
+	private BendPointList removeFirstPoint(BendPointList currentBendPoints, BendPointList newBendPoints)
 	{
 		newBendPoints.addAll(currentBendPoints.getAllPoints());
 		newBendPoints.removePoint(0);

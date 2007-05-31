@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.BendPointList;
-import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.graph.Edge;
@@ -92,7 +91,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	private void updateBendPoints()
 	{
-		PointList bendPoints = getDiagramFactorLink().getBendPoints();
+		BendPointList bendPoints = getDiagramFactorLink().getBendPoints();
 		Vector bendPointList = new Vector(bendPoints.getAllPoints());
 		Vector newList = new Vector();
 		newList.add(to.getLocation());
@@ -179,9 +178,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 		GraphConstants.setEndFill(getAttributes(), true);
 	}
 	
-	public static PointList extractBendPointsOnly(List points)
+	public static BendPointList extractBendPointsOnly(List points)
 	{
-		PointList pointList = new PointList();
+		BendPointList pointList = new BendPointList();
 		
 		int FROM_INDEX = 1;
 		int TO_INDEX = points.size() - 1;
@@ -206,11 +205,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 			diagram.removeSelectionCell(this);
 	}
 	
-	public PointList getNewBendPointList(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
+	public BendPointList getNewBendPointList(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
 	{
 		Point sourceLocation = getSourceLocation(cache);
 		Point targetLocation = getTargetLocation(cache);
-		PointList bendPointsOnly = new PointList(diagramLink.getBendPoints());
+		BendPointList bendPointsOnly = new BendPointList(diagramLink.getBendPoints());
 		
 		BendPointList allLinkPoints = new BendPointList();
 		allLinkPoints.add(sourceLocation);
@@ -267,7 +266,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 			return newBendPoint;
 	
 		EdgeView view = (EdgeView) cache.getMapping(this, false);
-		PointList currentBendPoints = diagramLink.getBendPoints();
+		BendPointList currentBendPoints = diagramLink.getBendPoints();
 		
 		//TODO getTargetLocation returs the center of the factor box, which
 		//causes the calcuation on the first bendpoint to be wrong.  must get the 

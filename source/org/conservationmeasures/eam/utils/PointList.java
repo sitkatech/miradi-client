@@ -75,23 +75,6 @@ public class PointList
 		return data;
 	}
 	
-	public Point getClosestPoint(Point point)
-	{
-		if (size() == 0)
-			return new Point(0, 0);
-		
-		Point closestPoint = (Point) data.get(0);
-		for (int i = 0; i < data.size(); ++i)
-		{
-			Point currentPoint = (Point) data.get(i);
-			double currentDistance2Point = currentPoint.distance(point);
-			double closestDistance2Point = closestPoint.distance(point);
-			if (currentDistance2Point < closestDistance2Point)
-				closestPoint = currentPoint;
-		}
-		return closestPoint;
-	}
-	
 	public boolean contains(Point point)
 	{
 		return data.contains(point);
@@ -160,8 +143,25 @@ public class PointList
 	{
 		return data.hashCode();
 	}
+	
+	public Point getClosestPoint(Point point)
+	{
+		if (size() == 0)
+			return new Point(0, 0);
 		
+		Point closestPoint = (Point) data.get(0);
+		for (int i = 0; i < data.size(); ++i)
+		{
+			Point currentPoint = (Point) data.get(i);
+			double currentDistance2Point = currentPoint.distance(point);
+			double closestDistance2Point = closestPoint.distance(point);
+			if (currentDistance2Point < closestDistance2Point)
+				closestPoint = currentPoint;
+		}
+		return closestPoint;
+	}
+			
 	protected static final String TAG_POINTS = "Points";
-
 	Vector data;
+
 }

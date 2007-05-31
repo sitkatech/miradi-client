@@ -37,7 +37,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.BendPointList;
 
 public class ResultsChainCreatorHelper
 {
@@ -368,7 +368,7 @@ public class ResultsChainCreatorHelper
 
 		DiagramFactorLinkId newlyCreatedLinkId = (DiagramFactorLinkId) createDiagramLink.getCreatedId();
 		DiagramFactorLink newlyCreated = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, newlyCreatedLinkId));
-		PointList bendPoints = diagramLink.getBendPoints();
+		BendPointList bendPoints = diagramLink.getBendPoints();
 		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
 		project.executeCommand(setBendPoints);
 

@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.BendPointList;
 import org.jgraph.graph.GraphLayoutCache;
 
 public class CreateBendPointDoer extends LocationDoer
@@ -53,7 +53,7 @@ public class CreateBendPointDoer extends LocationDoer
 			LinkCell linkCell = diagramModel.getDiagramFactorLink(selectedLink);
 			Point newBendPoint = linkCell.getNewBendPointLocation(diagramModel, cache, getLocation());
 			Point snapped = getProject().getSnapped(newBendPoint);
-			PointList newListWithBendPoint = linkCell.getNewBendPointList(diagramModel, cache, snapped);
+			BendPointList newListWithBendPoint = linkCell.getNewBendPointList(diagramModel, cache, snapped);
 			
 			CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint);
 			getProject().executeCommand(setBendPointsCommand);
@@ -67,8 +67,9 @@ public class CreateBendPointDoer extends LocationDoer
 	
 	public DiagramFactorLink[] getAllLinksWithinRange(DiagramModel model, Point newBendPoint)
 	{
+		//TODO finish implementing method
 		Vector linksWithinRange = new Vector();
-		DiagramFactorLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
+		//DiagramFactorLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
 		
 		
 		

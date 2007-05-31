@@ -106,9 +106,9 @@ public class TestPointList extends EAMTestCase
 
 	
 	
-	private PointList createSamplePointList()
+	private BendPointList createSamplePointList()
 	{
-		PointList list = new PointList();
+		BendPointList list = new BendPointList();
 		list.add(new Point(1, 1));
 		list.add(new Point(2, 2));
 		list.add(new Point(3, 3));
@@ -127,7 +127,7 @@ public class TestPointList extends EAMTestCase
 		
 		assertEquals("not the same point?", sampleList.get(1), sampleList.getClosestPoint(sampleList.get(1)));
 		
-		PointList emptyList = new PointList();
+		BendPointList emptyList = new BendPointList();
 		assertEquals(new Point(0, 0), emptyList.getClosestPoint(point2));
 	}
 	

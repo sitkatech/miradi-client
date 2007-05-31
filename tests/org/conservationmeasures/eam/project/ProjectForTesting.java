@@ -37,7 +37,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.BendPointList;
 import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 
 
@@ -263,7 +263,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		return new DiagramFactorLinkId(diagramFactorLinkId.asInt());
 	}
 	
-	public LinkCell createLinkCellWithBendPoints(PointList bendPoints) throws Exception
+	public LinkCell createLinkCellWithBendPoints(BendPointList bendPoints) throws Exception
 	{
 		LinkCell linkCell = createLinkCell();
 	

@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram.cells;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.utils.DataMap;
-import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.BendPointList;
 
 public class FactorLinkDataMap extends DataMap
 {
@@ -47,14 +47,14 @@ public class FactorLinkDataMap extends DataMap
 		return new DiagramFactorId(getId(TAG_TO_ID).asInt());
 	}
 	
-	public void setBendPoints(PointList list)
+	public void setBendPoints(BendPointList list)
 	{
 		putString(TAG_BEND_POINTS, list.toJson().toString());
 	}
 	
-	public PointList getBendPoints() throws Exception
+	public BendPointList getBendPoints() throws Exception
 	{
-		return new PointList(getString(TAG_BEND_POINTS));
+		return new BendPointList(getString(TAG_BEND_POINTS));
 	}
 
 	public static final String TAG_ID = "Id";

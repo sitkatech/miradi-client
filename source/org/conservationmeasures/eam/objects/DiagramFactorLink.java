@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.BendPointList;
 
 public class DiagramFactorLink extends BaseObject
 {
@@ -187,7 +187,7 @@ public class DiagramFactorLink extends BaseObject
 		dataMap.setId(getDiagramLinkageId());
 		dataMap.setFromId(new DiagramFactorId(fromId.getId().asInt()));
 		dataMap.setToId(new DiagramFactorId(toId.getId().asInt()));
-		dataMap.setBendPoints(new PointList(getBendPoints()));
+		dataMap.setBendPoints(new BendPointList(getBendPoints()));
 		
 		return dataMap;
 	}
@@ -208,7 +208,7 @@ public class DiagramFactorLink extends BaseObject
 				new DiagramFactorId(toId.getId().asInt()));
 	}
 	
-	public PointList getBendPoints()
+	public BendPointList getBendPoints()
 	{
 		return bendPoints.getPointList();
 	}

@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.BendPointList;
-import org.conservationmeasures.eam.utils.PointList;
 
 public class TestLinkBendPointsMoveHandler extends EAMTestCase
 {
@@ -36,7 +35,7 @@ public class TestLinkBendPointsMoveHandler extends EAMTestCase
 	public void testMoveBendPoints() throws Exception
 	{
 		LinkBendPointsMoveHandler handler = new LinkBendPointsMoveHandler(project);
-		PointList bendPoints = createBendPointList();
+		BendPointList bendPoints = createBendPointList();
 	
 		LinkCell linkCell = project.createLinkCellWithBendPoints(bendPoints);
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
@@ -48,7 +47,7 @@ public class TestLinkBendPointsMoveHandler extends EAMTestCase
 		handler.moveBendPoints(linkCell, selectionIndexes, deltaX, deltaY);
 		
 		DiagramFactorLink diagramLinkWithMovedPoints = linkCell.getDiagramFactorLink();
-		PointList movedBendPoints = diagramLinkWithMovedPoints.getBendPoints();
+		BendPointList movedBendPoints = diagramLinkWithMovedPoints.getBendPoints();
 		assertEquals("lost bendpoint in move?", 3, movedBendPoints.size());
 		
 		Point movedPoint1 = movedBendPoints.get(selectionIndexes[0]);

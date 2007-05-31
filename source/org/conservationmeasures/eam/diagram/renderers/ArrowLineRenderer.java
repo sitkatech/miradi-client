@@ -26,7 +26,7 @@ import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.BendPointList;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
@@ -334,7 +334,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		Graphics2D g2 = (Graphics2D)fontGraphics;
 		
 		Rectangle2D centerStressWithin = linkBounds;
-		PointList points = getLinkCell().getDiagramFactorLink().getBendPoints();
+		BendPointList points = getLinkCell().getDiagramFactorLink().getBendPoints();
 		if(points.size() > 0)
 		{
 			int centerPointIndex = points.size() / 2;
