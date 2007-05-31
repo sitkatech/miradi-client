@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.diagram.TestSetFactorSize;
 import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
 import org.conservationmeasures.eam.diagram.cells.TestDiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.TestFactorDataMap;
+import org.conservationmeasures.eam.diagram.cells.TestLinkCell;
 import org.conservationmeasures.eam.ids.TestIdList;
 import org.conservationmeasures.eam.objectdata.TestDateData;
 import org.conservationmeasures.eam.objecthelpers.TestMapList;
@@ -182,6 +183,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestFactorDataMap.class));
 		suite.addTest(new TestSuite(TestSetFactorSize.class));
 		suite.addTest(new TestSuite(TestUndoAndRedo.class));
+		suite.addTest(new TestSuite(TestLinkCell.class));
 		
 		//objectdata package
 		suite.addTest(new TestSuite(TestDateData.class));
