@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
@@ -251,6 +252,12 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 				addSelectionCell(linkCell);
 			}
 		}
+	}
+	
+	public void clearBendPointSelection(DiagramFactorLink diagramLink)
+	{
+		LinkCell linkCell = getDiagramModel().getDiagramFactorLink(diagramLink);
+		linkCell.clearBendPointSelectionList();
 	}
 	
 	public void zoom(double proportion)

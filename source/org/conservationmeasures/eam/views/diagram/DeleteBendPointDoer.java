@@ -48,6 +48,7 @@ public class DeleteBendPointDoer extends LocationDoer
 		DiagramFactorLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		DiagramFactorLink diagramFactorLink = links[0];
 		DiagramFactorLinkId linkId = diagramFactorLink.getDiagramLinkageId();
+		getDiagramView().getDiagramComponent().clearBendPointSelection(diagramFactorLink);
 		
 		PointList bendPoints = diagramFactorLink.getBendPoints();
 		PointList newBendPoints = getBendPointListMinusDeletedPoint(bendPoints);

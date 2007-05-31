@@ -57,6 +57,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return bendSelectionHelper.getSelectedIndexes();
 	}
 	
+	public void clearBendPointSelectionList()
+	{
+		bendSelectionHelper.clearSelection();
+	}
+	
 	public boolean isFactorLink()
 	{
 		return true;
