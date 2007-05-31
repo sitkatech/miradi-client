@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -65,17 +64,6 @@ public class CreateBendPointDoer extends LocationDoer
 		}
 	}
 	
-	public DiagramFactorLink[] getAllLinksWithinRange(DiagramModel model, Point newBendPoint)
-	{
-		//TODO finish implementing method
-		Vector linksWithinRange = new Vector();
-		//DiagramFactorLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
-		
-		
-		
-		return (DiagramFactorLink[]) linksWithinRange.toArray(new DiagramFactorLink[0]);
-	}
-
 	DiagramComponent diagram;
 	GraphLayoutCache cache;
 	DiagramModel diagramModel;
