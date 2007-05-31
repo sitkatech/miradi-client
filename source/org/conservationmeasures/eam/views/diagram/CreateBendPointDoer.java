@@ -85,7 +85,6 @@ public class CreateBendPointDoer extends LocationDoer
 	
 	public LinkCell[] getNearbyLinks(Point point, LinkCell selectedLinkCell)
 	{
-		final double WITHIN_RANGE_PIXEL_COUNT = 500;
 		LinkCell[] allCells = model.getAllFactorLinkCells();
 		Vector nearbyLinks = new Vector();
 		
@@ -100,7 +99,7 @@ public class CreateBendPointDoer extends LocationDoer
 		
 			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
 			Line2D.Double[] lineSegments = bendPoints.convertToLineSegments();
-			if (isWithinRange(lineSegments, point, WITHIN_RANGE_PIXEL_COUNT))
+			if (isWithinRange(lineSegments, point))
 				nearbyLinks.add(linkCell);
 		}
 		
@@ -117,14 +116,14 @@ public class CreateBendPointDoer extends LocationDoer
 		return bounds.contains(point);
 	}
 
-	private boolean isWithinRange(Line2D.Double[] lineSegments, Point point, final double range)
+	private boolean isWithinRange(Line2D.Double[] lineSegments, Point point)
 	{
 		for (int i = 0; i < lineSegments.length; ++i)
 		{
 			Line2D.Double line = lineSegments[i];
 			Point2D point2D = Utility.convertToPoint2D(point);
 			double distance = line.ptLineDist(point2D);
-			if (distance < range)
+			if (distance < getProject().DEFAULT_GRID_SIZE)
 				return true;
 		}
 		
