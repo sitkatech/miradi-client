@@ -18,8 +18,9 @@ public class ToolBarContainer extends JPanel
 		super(new BorderLayout());
 	}
 	
-	public void addToolBar(JToolBar toolBarToUse)
+	public void setToolBar(JToolBar toolBarToUse)
 	{
+		clear();
 		toolBar = toolBarToUse;
 		add(toolBar);
 	}
