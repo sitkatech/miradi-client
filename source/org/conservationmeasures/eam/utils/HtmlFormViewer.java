@@ -55,9 +55,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 
 	public static HtmlFormViewer createHtmlViewerWithPanelFont(String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
-		String fontFamily = getMainWindow().getWizardFontFamily();
-		int fontSize = getMainWindow().getWizardFontSize();
-		return new HtmlFormViewer(fontSize, fontFamily, htmlSource, hyperLinkHandler);
+		return new HtmlFormViewer(false, htmlSource, hyperLinkHandler);
 	}
 	
 	public static HtmlFormViewer createHtmlViewerWithWizardFont(String htmlSource, HyperlinkHandler hyperLinkHandler)
@@ -67,13 +65,12 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 
 	protected HtmlFormViewer(String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
-		this(getMainWindow().getWizardFontSize(), getMainWindow().getWizardFontFamily(), htmlSource, hyperLinkHandler);
+		this(true, htmlSource, hyperLinkHandler);
 	}
 
-	protected HtmlFormViewer(int size, String family, String htmlSource, HyperlinkHandler hyperLinkHandler)
+	protected HtmlFormViewer(boolean fontToUse, String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
-		fontSize = size;
-		fontFamily = family;
+		fontTest = fontToUse;
 		linkHandler = hyperLinkHandler;
 		setEditable(false);
 		setText(htmlSource);
@@ -82,9 +79,26 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	}
 	
 
+	public void setFontAsPanelFont()
+	{
+		fontFamily = getMainWindow().getDataPanelFontFamily();
+		fontSize = getMainWindow().getDataPanelFontSize();
+	}
+	
+	public void setFontAsWizardFont()
+	{
+		fontFamily = getMainWindow().getWizardFontFamily();
+		fontSize = getMainWindow().getWizardFontSize();
+	}
+	
 	
 	public void setText(String text)
 	{
+		if (fontTest)
+			setFontAsWizardFont();
+		else 
+			setFontAsPanelFont();
+		
 		HTMLEditorKit htmlKit = new OurHtmlEditorKit(linkHandler);
 		StyleSheet style = htmlKit.getStyleSheet();
 		customizeStyleSheet(style);
@@ -114,7 +128,6 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 
 	public void addRuleFontSize(StyleSheet style)
 	{
-
 		if (fontSize == 0)
 			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
 		else
@@ -225,6 +238,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	String fontFamily;
 	int fontSize;
+	boolean fontTest;
 	
 	class EditorActionCopy extends ActionCopy
 	{
