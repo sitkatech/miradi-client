@@ -13,6 +13,11 @@ import org.martus.swing.UiLabel;
 
 public class PanelTitleLabel extends UiLabel
 {
+	public PanelTitleLabel()
+	{
+		super();
+	}
+	
 	public PanelTitleLabel(String text)
 	{
 		super(text);

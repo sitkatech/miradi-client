@@ -44,7 +44,7 @@ public class ThreatRatingPanel extends Box
 		
 		dropdowns = new HashMap();
 		
-		ratingSummaryLabel = new UiLabel();
+		ratingSummaryLabel = new PanelTitleLabel();
 		ratingSummaryLabel.setVerticalAlignment(JLabel.CENTER);
 		ratingSummaryLabel.setHorizontalAlignment(JLabel.CENTER);
 		ratingSummaryLabel.setPreferredSize(new Dimension(50,100));
@@ -94,6 +94,7 @@ public class ThreatRatingPanel extends Box
 			criterionLabel.setFont(criterionLabel.getFont().deriveFont(Font.BOLD));
 
 			UiComboBox dropdown = createRatingDropdown(framework.getValueOptions());
+			dropdown.setFont(criterionLabel.getFont());
 			dropdown.addActionListener(new ValueListener(this, criterion));
 			dropdowns.put(criterion, dropdown);
 
