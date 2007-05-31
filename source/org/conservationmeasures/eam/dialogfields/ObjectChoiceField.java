@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComponent;
 
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -23,8 +23,7 @@ public class ObjectChoiceField extends ObjectDataInputField
 	public ObjectChoiceField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, questionToUse.getTag());
-		combo = new UiComboBox(questionToUse.getChoices());
-		combo.setFont(new PanelTitleLabel("").getFont());
+		combo = new PanelComboBox(questionToUse.getChoices());
 		addFocusListener();
 		combo.addActionListener(new ComboChangeHandler());
 	}

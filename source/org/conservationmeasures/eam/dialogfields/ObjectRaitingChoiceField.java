@@ -10,7 +10,6 @@ import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
@@ -33,7 +32,6 @@ public class ObjectRaitingChoiceField extends ObjectChoiceField
 			ChoiceItem thisOption = (ChoiceItem)value;
 			if (value!=null)
 				setIcon(RatingIcon.createFromChoice(thisOption));
-			list.setFont(new PanelTitleLabel("").getFont());
 			return cell;
 		}
 	}

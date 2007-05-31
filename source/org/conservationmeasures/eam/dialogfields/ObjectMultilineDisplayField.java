@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextArea;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiTextArea;
@@ -13,7 +14,7 @@ public class ObjectMultilineDisplayField extends ObjectTextInputField
 {
 	public ObjectMultilineDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new UiTextArea(1, 50));
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(1, 50));
 		((UiTextArea)getComponent()).setWrapStyleWord(true);
 		((UiTextArea)getComponent()).setLineWrap(true);
 		setEditable(false);

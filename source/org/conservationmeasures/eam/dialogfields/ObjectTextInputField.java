@@ -19,7 +19,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.JTextComponent;
 
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextArea;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -30,7 +30,7 @@ import org.martus.swing.ResourceImageIcon;
 
 public class ObjectTextInputField extends ObjectDataInputField
 {
-	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse)
+	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, PanelTextArea componentToUse)
 	{
 		super(projectToUse, objectType, objectId, tag);
 		field = componentToUse;
@@ -38,7 +38,6 @@ public class ObjectTextInputField extends ObjectDataInputField
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
 		field.addMouseListener(new MouseHandler());
-		field.setFont(new PanelTitleLabel("").getFont());
 	}	
 
 	public JComponent getComponent()
