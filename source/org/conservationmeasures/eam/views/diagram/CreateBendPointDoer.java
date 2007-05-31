@@ -50,18 +50,20 @@ public class CreateBendPointDoer extends LocationDoer
 		
 		try
 		{
-			diagramModel = getDiagramView().getDiagramModel();
+			model = getDiagramView().getDiagramModel();
 			diagram = getDiagramView().getDiagramComponent();
 			cache = diagram.getGraphLayoutCache();
 			
 			DiagramFactorLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
-			LinkCell linkCell = diagramModel.getDiagramFactorLink(selectedLink);
-			Point newBendPoint = linkCell.getNewBendPointLocation(diagramModel, cache, getLocation());
-			Point snapped = getProject().getSnapped(newBendPoint);
-			BendPointList newListWithBendPoint = linkCell.getNewBendPointList(diagramModel, cache, snapped);
-			
-			CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint);
-			getProject().executeCommand(setBendPointsCommand);
+			LinkCell selectedLinkCell = model.getDiagramFactorLink(selectedLink);
+			insertBendPointForLink(selectedLinkCell);
+//FIXME repair commented code below.  this code looks to see if it should create
+// a bend point on any nearby link
+//			LinkCell[] nearbyLinks = getNearbyLinks(getLocation(), selectedLinkCell);
+//			for (int i = 0; i < nearbyLinks.length; ++i)
+//			{
+//				insertBendPointForLink(nearbyLinks[i]);
+//			}
 		}
 		catch (Exception e)
 		{
@@ -69,16 +71,29 @@ public class CreateBendPointDoer extends LocationDoer
 			throw new CommandFailedException(e);
 		}
 	}
-	
-	public LinkCell[] getNearbyLinks(DiagramModel model, Point point)
+
+	private void insertBendPointForLink(LinkCell linkCell) throws CommandFailedException
 	{
-		final double WITHIN_RANGE_PIXEL_COUNT = 2;
+		DiagramFactorLink selectedLink = linkCell.getDiagramFactorLink();
+		Point newBendPoint = linkCell.getNewBendPointLocation(model, cache, getLocation());
+		Point snapped = getProject().getSnapped(newBendPoint);
+		BendPointList newListWithBendPoint = linkCell.getNewBendPointList(model, cache, snapped);
+		
+		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint);
+		getProject().executeCommand(setBendPointsCommand);
+	}
+	
+	public LinkCell[] getNearbyLinks(Point point, LinkCell selectedLinkCell)
+	{
+		final double WITHIN_RANGE_PIXEL_COUNT = 500;
 		LinkCell[] allCells = model.getAllFactorLinkCells();
 		Vector nearbyLinks = new Vector();
 		
 		for (int i = 0; i < allCells.length; ++i)
 		{
 			LinkCell linkCell = allCells[i];
+			if (selectedLinkCell.equals(linkCell))
+				continue; 
 			
 			if (!isWithinBounds(linkCell, point))
 				continue;
@@ -96,6 +111,8 @@ public class CreateBendPointDoer extends LocationDoer
 	{
 		EdgeView view = (EdgeView) cache.getMapping(linkCell, false);
 		Rectangle2D bounds = view.getBounds();
+		if (point == null)
+			return false;
 		
 		return bounds.contains(point);
 	}
@@ -116,5 +133,5 @@ public class CreateBendPointDoer extends LocationDoer
 	
 	DiagramComponent diagram;
 	GraphLayoutCache cache;
-	DiagramModel diagramModel;
+	DiagramModel model;
 }
