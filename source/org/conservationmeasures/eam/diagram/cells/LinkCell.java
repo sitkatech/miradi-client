@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.utils.BendPointList;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.graph.Edge;
@@ -90,7 +90,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	private void updateBendPoints()
 	{
-		BendPointList bendPoints = getDiagramFactorLink().getBendPoints();
+		PointList bendPoints = getDiagramFactorLink().getBendPoints();
 		Vector bendPointList = new Vector(bendPoints.getAllPoints());
 		Vector newList = new Vector();
 		newList.add(to.getLocation());
@@ -189,13 +189,13 @@ public class LinkCell extends EAMGraphCell implements Edge
 			diagram.removeSelectionCell(this);
 	}
 	
-	public BendPointList getNewBendPointList(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
+	public PointList getNewBendPointList(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
 	{
 		Point sourceLocation = getSourceLocation(cache);
 		Point targetLocation = getTargetLocation(cache);
-		BendPointList bendPointsOnly = new BendPointList(diagramLink.getBendPoints());
+		PointList bendPointsOnly = new PointList(diagramLink.getBendPoints());
 		
-		BendPointList allLinkPoints = new BendPointList();
+		PointList allLinkPoints = new PointList();
 		allLinkPoints.add(sourceLocation);
 		allLinkPoints.addAll(bendPointsOnly.getAllPoints());
 		allLinkPoints.add(targetLocation);
@@ -250,7 +250,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 			return newBendPoint;
 	
 		EdgeView view = (EdgeView) cache.getMapping(this, false);
-		BendPointList currentBendPoints = diagramLink.getBendPoints();
+		PointList currentBendPoints = diagramLink.getBendPoints();
 		
 		//TODO getTargetLocation returs the center of the factor box, which
 		//causes the calcuation on the first bendpoint to be wrong.  must get the 

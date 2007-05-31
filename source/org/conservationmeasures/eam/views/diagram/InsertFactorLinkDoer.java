@@ -30,7 +30,7 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.BendPointList;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class InsertFactorLinkDoer extends ViewDoer
@@ -113,7 +113,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		return false;
 	}
 
-	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, BendPointList bendPoints) throws Exception
+	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
 	{
 		DiagramObject diagramObject = model.getDiagramObject();
 		Project project = model.getProject();
@@ -129,7 +129,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		return createModelLinkageAndAddToDiagramUsingCommands(project, diagramObject, diagramFactorFrom, diagramFactorTo);
 	}
 
-	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(Project project, DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, BendPointList bendPoints) throws CommandFailedException, ParseException
+	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(Project project, DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws CommandFailedException, ParseException
 	{
 		DiagramFactorLink diagramLink = createModelLinkageAndAddToDiagramUsingCommands(project, diagramObject, diagramFactorFrom, diagramFactorTo);
 		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);

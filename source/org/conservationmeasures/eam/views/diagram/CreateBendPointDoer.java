@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
-import org.conservationmeasures.eam.utils.BendPointList;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphLayoutCache;
@@ -77,7 +77,7 @@ public class CreateBendPointDoer extends LocationDoer
 		DiagramFactorLink selectedLink = linkCell.getDiagramFactorLink();
 		Point newBendPoint = linkCell.getNewBendPointLocation(model, cache, getLocation());
 		Point snapped = getProject().getSnapped(newBendPoint);
-		BendPointList newListWithBendPoint = linkCell.getNewBendPointList(model, cache, snapped);
+		PointList newListWithBendPoint = linkCell.getNewBendPointList(model, cache, snapped);
 		
 		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint);
 		getProject().executeCommand(setBendPointsCommand);
@@ -98,7 +98,7 @@ public class CreateBendPointDoer extends LocationDoer
 			if (!isWithinBounds(linkCell, point))
 				continue;
 		
-			BendPointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
 			Line2D.Double[] lineSegments = bendPoints.convertToLineSegments();
 			if (isWithinRange(lineSegments, point, WITHIN_RANGE_PIXEL_COUNT))
 				nearbyLinks.add(linkCell);

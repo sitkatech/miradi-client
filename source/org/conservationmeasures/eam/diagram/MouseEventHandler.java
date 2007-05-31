@@ -26,7 +26,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.BendPointList;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.PropertiesDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -190,7 +190,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	{
 		int[] selectedBendPointIndexes = linkCell.getSelectedBendPointIndexes();
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
-		BendPointList bendPoints = diagramLink.getBendPoints();
+		PointList bendPoints = diagramLink.getBendPoints();
 
 		//TODO use LinkBendPointsMoveHandler (nima)
 		for (int i = 0; i < selectedBendPointIndexes.length; ++i)

@@ -19,7 +19,7 @@ public class TestBendPointList extends TestPointList
 	
 	public void testCreateLineSegment()
 	{
-		BendPointList bendPointList = new BendPointList();
+		PointList bendPointList = new PointList();
 		Point2D point1 = new Point2D.Double(0, 0);
 		Point2D point2 = new Point2D.Double(10, 0);
 		Line2D expectedLine = new Line2D.Double(point1, point2);
@@ -31,7 +31,7 @@ public class TestBendPointList extends TestPointList
 	
 	public void testConvertToLineSegments()
 	{
-		BendPointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
+		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
 		Line2D.Double[] segments = bendPointList.convertToLineSegments();
 		
 		assertEquals("wrong number of segments?", 2, segments.length);

@@ -26,7 +26,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.utils.BendPointList;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
 
@@ -145,7 +145,7 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	
 	public void testBendPointAlreadyExists() throws Exception
 	{
-		BendPointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
+		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
 		LinkCell linkCell = project.createLinkCellWithBendPoints(bendPointList);	
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
 		

@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.utils;
 
 import java.awt.Point;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Vector;
 
@@ -160,7 +162,31 @@ public class PointList
 		}
 		return closestPoint;
 	}
-			
+	
+	public Line2D.Double createLineSegment(Point2D fromBendPoint, Point2D toBendPoint)
+	{
+		Point point1 = Utility.convertToPoint(fromBendPoint);
+		Point point2 = Utility.convertToPoint(toBendPoint);
+		
+		return new Line2D.Double(point1, point2);
+	}
+	
+	public Line2D.Double[] convertToLineSegments()
+	{
+		if (size() <= 0)
+			return new Line2D.Double[0];
+		
+		Line2D.Double[] allLineSegments = new Line2D.Double[size() - 1];
+		for (int i = 0 ; i < size() - 1; ++i)
+		{
+			Point fromPoint = get(i);
+			Point toPoint = get(i + 1);
+			allLineSegments[i] = createLineSegment(fromPoint, toPoint);
+		}
+		
+		return allLineSegments;
+	}
+	
 	protected static final String TAG_POINTS = "Points";
 	Vector data;
 

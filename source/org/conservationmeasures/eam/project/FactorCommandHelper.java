@@ -41,7 +41,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.conservationmeasures.eam.utils.BendPointList;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
 import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
@@ -268,8 +268,8 @@ public class FactorCommandHelper
 		for (int i = 0; i < links.length; i++) 
 		{
 			FactorLinkDataMap linkageData = links[i];
-			BendPointList originalBendPoints = linkageData.getBendPoints();
-			BendPointList movedPoints = movePoints(list, dataHelper, startPoint, originalBendPoints);
+			PointList originalBendPoints = linkageData.getBendPoints();
+			PointList movedPoints = movePoints(list, dataHelper, startPoint, originalBendPoints);
 			DiagramFactorId oldFromDiagramId = linkageData.getFromId();
 			DiagramFactorId newFromId = dataHelper.getNewId(oldFromDiagramId);
 			DiagramFactorId newToId = dataHelper.getNewId(linkageData.getToId());
@@ -284,10 +284,10 @@ public class FactorCommandHelper
 		}
 	}
 	
-	private BendPointList movePoints(TransferableEamList list, FactorDataHelper dataHelper, Point startPoint, BendPointList originalBendPoints)
+	private PointList movePoints(TransferableEamList list, FactorDataHelper dataHelper, Point startPoint, PointList originalBendPoints)
 	{
 		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying(list);
-		BendPointList movedPoints = new BendPointList();
+		PointList movedPoints = new PointList();
 		for (int i = 0; i < originalBendPoints.size(); ++i)
 		{
 			Point originalPoint = originalBendPoints.get(i);

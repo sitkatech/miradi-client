@@ -9,14 +9,13 @@ import java.awt.Point;
 import java.util.List;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.utils.BendPointList;
+import org.conservationmeasures.eam.utils.PointList;
 
-//FIXME sub class this for BendPointList
 public class PointListData extends ObjectData
 {
 	public PointListData()
 	{
-		points = new BendPointList();
+		points = new PointList();
 	}
 	
 	public PointListData(String valueToUse)
@@ -34,7 +33,7 @@ public class PointListData extends ObjectData
 
 	public void set(String newValue) throws Exception
 	{
-		set(new BendPointList(newValue));
+		set(new PointList(newValue));
 	}
 	
 	public String get()
@@ -42,12 +41,12 @@ public class PointListData extends ObjectData
 		return points.toString();
 	}
 	
-	public void set(BendPointList newPoints)
+	public void set(PointList newPoints)
 	{
 		points = newPoints;
 	}
 	
-	public BendPointList getPointList()
+	public PointList getPointList()
 	{
 		return points;
 	}
@@ -91,5 +90,5 @@ public class PointListData extends ObjectData
 		return points.hashCode();
 	}
 	
-	BendPointList points;
+	PointList points;
 }

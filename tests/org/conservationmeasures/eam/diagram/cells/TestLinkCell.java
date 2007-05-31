@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.utils.BendPointList;
+import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.graph.GraphLayoutCache;
 
 public class TestLinkCell extends EAMTestCase
@@ -33,6 +33,7 @@ public class TestLinkCell extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		super.tearDown();
+		project.close();
 	}
 	
 	public void testGetNewBendPointList() throws Exception
@@ -49,7 +50,7 @@ public class TestLinkCell extends EAMTestCase
 		
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
 		assertEquals("has bend point?", 0, diagramLink.getBendPoints().size());
-		BendPointList bendPoints = linkCell.getNewBendPointList(model, cache, bendPoint1);
+		PointList bendPoints = linkCell.getNewBendPointList(model, cache, bendPoint1);
 		assertEquals("bend point not added?", 1, bendPoints.size());
 	}
 	

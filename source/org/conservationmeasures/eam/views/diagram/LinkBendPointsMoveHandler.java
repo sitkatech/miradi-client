@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.BendPointList;
+import org.conservationmeasures.eam.utils.PointList;
 
 public class LinkBendPointsMoveHandler
 {
@@ -35,7 +35,7 @@ public class LinkBendPointsMoveHandler
 	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws CommandFailedException
 	{
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
-		BendPointList pointsToMove = diagramLink.getBendPoints();
+		PointList pointsToMove = diagramLink.getBendPoints();
 		
 		for (int i = 0; i < selectionIndexes.length; ++i)
 		{
