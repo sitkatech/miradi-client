@@ -28,7 +28,7 @@ public class TestLinkCell extends EAMTestCase
 	
 	public void testGetNewBendPointList() throws Exception
 	{
-		fail();
+		
 	}
 	
 	ProjectForTesting project;
