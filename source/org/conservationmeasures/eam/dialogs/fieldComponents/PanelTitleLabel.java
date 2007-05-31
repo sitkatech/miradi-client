@@ -23,7 +23,7 @@ public class PanelTitleLabel extends UiLabel
 	public PanelTitleLabel(String text)
 	{
 		super(text);
-		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize()));
+		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize(this)));
 	}
 	
 	public PanelTitleLabel(String text, int horizontalAlignment)

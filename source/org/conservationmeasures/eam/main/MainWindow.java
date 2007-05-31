@@ -529,6 +529,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return preferences.getTaggedInt(name);
 	}
 
+	public int getDataPanelFontSize(JComponent comp)
+	{
+		int size = preferences.getPanelFontSize();
+		if (size == 0)
+			size = comp.getFont().getSize();
+		return size;
+	}
+	
 	public int getDataPanelFontSize()
 	{
 		return preferences.getPanelFontSize();

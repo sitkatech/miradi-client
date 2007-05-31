@@ -15,13 +15,13 @@ public class PanelComboBox extends UiComboBox
 {
 	public PanelComboBox()
 	{
-		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize()));
+		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize(this)));
 	}
 
 	public PanelComboBox(Object[] items)
 	{
 		super(items);
-		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize()));
+		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize(this)));
 	}
 	
 	public MainWindow getMainWindow()

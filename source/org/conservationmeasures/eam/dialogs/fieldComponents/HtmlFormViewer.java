@@ -83,7 +83,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	public void setFontAsPanelFont()
 	{
 		fontFamily = getMainWindow().getDataPanelFontFamily();
-		fontSize = getMainWindow().getDataPanelFontSize();
+		fontSize = getMainWindow().getDataPanelFontSize(this);
 	}
 	
 	public void setFontAsWizardFont()
