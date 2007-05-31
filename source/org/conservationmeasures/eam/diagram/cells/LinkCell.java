@@ -10,7 +10,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
-import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.BendPointSelectionHelper;
@@ -178,22 +177,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 		GraphConstants.setEndFill(getAttributes(), true);
 	}
 	
-	//TODO remove method, its not being used by anyone
-	public static BendPointList extractBendPointsOnly(List points)
-	{
-		BendPointList pointList = new BendPointList();
-		
-		int FROM_INDEX = 1;
-		int TO_INDEX = points.size() - 1;
-		for (int index = FROM_INDEX; index < TO_INDEX; index++)
-		{
-			Point convertedPoint = Utility.convertToPoint((Point2D) points.get(index));
-			pointList.add(convertedPoint);
-		}
-
-		return pointList;
-	}
-
 	public void autoSelect(DiagramComponent diagram)
 	{
 		if (diagram.isCellSelected(from) && diagram.isCellSelected(to))
