@@ -31,31 +31,10 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 	public void mousePressed(MouseEvent event)
 	{
 		super.mousePressed(event);
-		mousePressedX = event.getX();
-		mousePressedY = event.getY();
+		bendSelectionHelper.mousePressed(event, currentIndex);
+		graph.repaint();
 	}
 	
-	public void mouseReleased(MouseEvent event)
-	{
-		if (!wasDrag(event.getX(), event.getY()))
-		{
-			bendSelectionHelper.mouseReleased(event, currentIndex);
-			graph.repaint();
-		}
-		super.mouseReleased(event);
-	}
-
-	private boolean wasDrag(int x, int y)
-	{
-		if (x != mousePressedX)
-			return true;
-		
-		if (y != mousePressedY)
-			return true;
-		
-		return false;
-	}
-
 	public void paint(Graphics g)
 	{
 		super.paint(g);
@@ -74,6 +53,4 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 	JGraph graph;
 	BendPointSelectionHelper bendSelectionHelper;
 	LinkCell linkCell;
-	int mousePressedX;
-	int mousePressedY;
 }
