@@ -229,8 +229,15 @@ public class LinkCell extends EAMGraphCell implements Edge
 			}
 		}
 		bendPointsOnly.insertAt(newBendPoint, insertionIndex);
-	
+		selectNewBendPoint(insertionIndex);
+		
 		return bendPointsOnly;
+	}
+
+	private void selectNewBendPoint(int insertionIndex)
+	{
+		bendSelectionHelper.clearSelection();
+		bendSelectionHelper.addToSelectionIndexList(new Integer(insertionIndex));
 	}
 
 	public Point getTargetLocation(GraphLayoutCache cache)

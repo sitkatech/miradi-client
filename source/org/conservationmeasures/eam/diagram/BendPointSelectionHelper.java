@@ -40,14 +40,14 @@ public class BendPointSelectionHelper
 		if (! selectionIndexes.contains(bendPointIndex) && ! shiftDown)
 		{
 			clearSelection();
-			selectionIndexes.add(bendPointIndex);
+			addToSelectionIndexList(bendPointIndex);
 			return;
 		}
 		
 		//FIXME: Nima: all isShiftDown()s should be isControlDown()s (do the test for this class as well)
 		if (! selectionIndexes.contains(bendPointIndex) && shiftDown)
 		{
-			selectionIndexes.add(bendPointIndex);
+			addToSelectionIndexList(bendPointIndex);
 			return;
 		}
 
@@ -57,6 +57,11 @@ public class BendPointSelectionHelper
 			selectionIndexes.remove(bendPointIndex);
 			return;
 		}
+	}
+
+	public void addToSelectionIndexList(Integer bendPointIndex)
+	{
+		selectionIndexes.add(bendPointIndex);
 	}
 	
 	public int[] getSelectedIndexes()
