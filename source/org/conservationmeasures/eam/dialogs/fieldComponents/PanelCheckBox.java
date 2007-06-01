@@ -25,7 +25,7 @@ public class PanelCheckBox extends UiCheckBox
 	public PanelCheckBox(String fieldLabel)
 	{
 		super(fieldLabel);
-		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
 	public MainWindow getMainWindow()

@@ -45,8 +45,8 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		columnHeader.addMouseListener(sortListener);
 		resizeTable(4);
 		setColumnWidths();
-		columnHeader.setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
-		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		columnHeader.setFont(getMainWindow().getUserDataPanelFont());
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
 	private MainWindow getMainWindow()

@@ -14,7 +14,7 @@ public class PanelTabbedPane extends UiTabbedPane
 	public PanelTabbedPane()
 	{
 		super();
-		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
 	public MainWindow getMainWindow()

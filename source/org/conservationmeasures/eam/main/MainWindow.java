@@ -532,17 +532,17 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return preferences.getTaggedInt(name);
 	}
 
-	public Font getUserDataPanelFont(int defualtSize)
+	public Font getUserDataPanelFont()
 	{
 		ChoiceItem fontFamily = new FontFamiliyQuestion("").findChoiceByCode(getDataPanelFontFamily());
-		return new Font(fontFamily.getLabel(),Font.PLAIN, getDataPanelFontSize(defualtSize));
+		return new Font(fontFamily.getLabel(),Font.PLAIN, getDataPanelFontSizeWithDefault());
 	}
 	
-	public int getDataPanelFontSize(int defualtSize)
+	public int getDataPanelFontSizeWithDefault()
 	{
 		int size = preferences.getPanelFontSize();
 		if (size == 0)
-			return defualtSize;
+			return getFont().getSize();
 		return size;
 	}
 	

@@ -17,19 +17,19 @@ public class PanelButton extends UiButton
 	public PanelButton(String text)
 	{
 		super(text);
-		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 
 	public PanelButton(Action action)
 	{
 		super(action);
-		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
 	public PanelButton(Icon icon)
 	{
 		super(icon);
-		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
 	public MainWindow getMainWindow()

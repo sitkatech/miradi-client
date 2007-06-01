@@ -14,13 +14,13 @@ public class PanelTextArea extends UiTextArea
 	public PanelTextArea(int rows, int cols)
 	{
 		super(rows, cols);
-		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 
 	public PanelTextArea(String text)
 	{
 		super(text);
-		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
 	public MainWindow getMainWindow()

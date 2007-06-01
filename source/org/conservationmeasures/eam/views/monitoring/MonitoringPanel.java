@@ -27,7 +27,7 @@ public class MonitoringPanel extends JPanel
 		restoreTreeExpansionState();
 		UiScrollPane scrollPane = new FastScrollPane(tree);
 		TitledBorder titileBorder = BorderFactory.createTitledBorder("Indicators linked to goals and objectives." );
-		titileBorder.setTitleFont(EAM.mainWindow.getUserDataPanelFont(getFont().getSize()));
+		titileBorder.setTitleFont(EAM.mainWindow.getUserDataPanelFont());
 		scrollPane.setBorder(titileBorder);
 		add(scrollPane, BorderLayout.CENTER);
 	}

@@ -21,7 +21,7 @@ public class PanelTitleLabel extends UiLabel
 	public PanelTitleLabel(String text)
 	{
 		super(text);
-		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
 	public PanelTitleLabel(String text, int horizontalAlignment)
