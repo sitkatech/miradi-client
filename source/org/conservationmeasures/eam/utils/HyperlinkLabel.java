@@ -12,11 +12,11 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPopupMenu;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.HyperlinkHandler;
-import org.martus.swing.UiLabel;
 
-public class HyperlinkLabel extends UiLabel implements MouseListener
+public class HyperlinkLabel extends PanelTitleLabel implements MouseListener
 {
 	
 	public HyperlinkLabel(String linkText, String popUpTextToUse)
