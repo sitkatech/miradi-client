@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.dialogs.viability.TargetViabilityTreeManagementPanel;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
@@ -173,7 +174,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	
 	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
 	{
-		tabs = new JTabbedPane();
+		tabs = new PanelTabbedPane();
 		tabs.setFocusable(false);
 		detailsTab = new FactorSummaryPanel(getProject(), diagramFactor);
 		

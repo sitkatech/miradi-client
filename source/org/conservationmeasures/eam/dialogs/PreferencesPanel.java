@@ -22,6 +22,7 @@ import javax.swing.ListCellRenderer;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
@@ -57,7 +58,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	
 	JTabbedPane createTabs()
 	{
-		JTabbedPane tabPane = new JTabbedPane();
+		JTabbedPane tabPane = new PanelTabbedPane();
 		tabPane.addTab("Systemwide", createSystemwideTab());
 		tabPane.addTab("Diagram View", createDiagramTab());
 		tabPane.addTab("Threat Rating View", createThreatRatingTab());

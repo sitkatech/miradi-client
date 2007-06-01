@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ObjectPoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -35,7 +36,7 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 
-		tabs = new JTabbedPane();
+		tabs = new PanelTabbedPane();
 		tabs.addChangeListener(new TabChangeListener());
 		tabs.setFocusable(false);
 		tabs.addMouseListener(new MouseHandler());
