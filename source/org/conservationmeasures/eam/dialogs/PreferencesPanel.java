@@ -58,9 +58,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	JTabbedPane createTabs()
 	{
 		JTabbedPane tabPane = new JTabbedPane();
+		tabPane.addTab("Systemwide", createSystemwideTab());
 		tabPane.addTab("Diagram View", createDiagramTab());
 		tabPane.addTab("Threat Rating View", createThreatRatingTab());
-		tabPane.addTab("Systemwide", createSystemwideTab());
 		return tabPane;
 	}
 	
