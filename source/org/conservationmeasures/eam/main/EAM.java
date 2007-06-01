@@ -23,8 +23,8 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.MiradiLogger;
+import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.utils.Translation;
-import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiNotifyDlg;
 import org.martus.util.UnicodeReader;
 
@@ -320,7 +320,8 @@ public class EAM
 	{
 		try
 		{
-			URL url = ResourceImageIcon.class.getClassLoader().getResource(resourceFileName);
+			// TODO: There should be a cleaner way to do this:
+			URL url = MiradiResourceImageIcon.class.getClassLoader().getResource(resourceFileName);
 
 			if (doesTestDirectoryExist())
 			{
