@@ -87,7 +87,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	private UiComboBox createAndAddLabelAndCombo(JPanel htmlTab, ChoiceQuestion question, String sizeAsString)
 	{
-		UiComboBox combo = new UiComboBox(question.getChoices());
+		UiComboBox combo = new PanelComboBox(question.getChoices());
 		setSelectedItemQuestionBox(combo, sizeAsString);
 		combo.addActionListener(this);
 		htmlTab.add(new PanelTitleLabel(question.getTag() + question.getLabel()));
