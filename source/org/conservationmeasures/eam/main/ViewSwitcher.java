@@ -24,8 +24,9 @@ import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewTargetViability;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
 
-public class ViewSwitcher extends JComboBox
+public class ViewSwitcher extends PanelComboBox
 {
 	static public ViewSwitcher create(Actions actions, Class defaultActionClass)
 	{
