@@ -20,6 +20,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.ListCellRenderer;
 
 import org.conservationmeasures.eam.diagram.DiagramConstants;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
@@ -112,7 +113,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		JPanel threatTab = new JPanel(new BasicGridLayout(0,2));
 		threatTab.add(new PanelTitleLabel(EAM.text("Show Ratings in Cell")));
-		cellRatingsVisibleCheckBox = new UiCheckBox();
+		cellRatingsVisibleCheckBox = new PanelCheckBox();
 		cellRatingsVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
 		cellRatingsVisibleCheckBox.addActionListener(this);
 		threatTab.add(cellRatingsVisibleCheckBox);
