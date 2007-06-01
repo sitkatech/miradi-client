@@ -10,6 +10,7 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JComponent;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -20,7 +21,7 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	public ObjectCheckBoxField(Project projectToUse, int objectType, BaseId objectId, String tag, String valueWhenChecked, String valueWhenUnchecked)
 	{
 		super(projectToUse, objectType, objectId, tag);
-		checkBox = new UiCheckBox();
+		checkBox = new PanelCheckBox();
 		checkBox.addItemListener(new StatusChangeHandler());
 		addFocusListener();
 		checkedValue = valueWhenChecked;

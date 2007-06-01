@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -29,11 +30,11 @@ public class CodeListComponent extends JPanel implements ItemListener
 		listSelectionListener = listener;
 		ChoiceItem[] choices = questionToUse.getChoices();
 		choiceItems = new ChoiceItem[choices.length];
-		checkBoxes = new JCheckBox[choices.length];
+		checkBoxes = new PanelCheckBox[choices.length];
 		
 		for (int i=0; i<choices.length; ++i)
 		{
-			JCheckBox checkBox = new JCheckBox(choices[i].getLabel());
+			JCheckBox checkBox = new PanelCheckBox(choices[i].getLabel());
 			checkBox.addItemListener(this);
 			choiceItems[i] = choices[i];
 			checkBoxes[i] = checkBox;

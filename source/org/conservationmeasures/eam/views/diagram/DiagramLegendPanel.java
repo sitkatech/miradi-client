@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTextBoxCell;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -145,7 +146,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 
 	private JCheckBox createCheckBox(String text)
 	{
-		JCheckBox component = new JCheckBox();
+		JCheckBox component = new PanelCheckBox();
 		component.putClientProperty(LAYER, new String(text));
 		component.addActionListener(this);
 		
@@ -157,7 +158,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	private void addIconLine(JPanel jpanel, String text, Icon icon, JComponent component)
 	{
 		jpanel.add(new JLabel(icon));
-		jpanel.add(new UiLabel(EAM.text(text)));
+		jpanel.add(new PanelTitleLabel(EAM.text(text)));
 		jpanel.add(component);
 	}
 

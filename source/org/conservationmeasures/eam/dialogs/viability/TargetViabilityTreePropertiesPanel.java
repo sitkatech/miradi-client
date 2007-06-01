@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanelSpecial;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -211,7 +212,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 
 	private JCheckBox createCheckBox(String text, ItemListener listener)
 	{
-		JCheckBox check = new JCheckBox(text,true);
+		JCheckBox check = new PanelCheckBox(text,true);
 		check.addItemListener(listener);
 		return check;
 	}
