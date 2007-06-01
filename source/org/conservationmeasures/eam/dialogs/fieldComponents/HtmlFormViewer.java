@@ -113,7 +113,6 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	public void addRuleFontFamily(StyleSheet style)
 	{
-
 		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+new FontFamiliyQuestion("").findChoiceByCode(getFontFamily())+";}"));
 	}
 	

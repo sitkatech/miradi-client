@@ -44,6 +44,8 @@ import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectRepairer;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
@@ -532,7 +534,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public Font getUserDataPanelFont(int defualtSize)
 	{
-		return new Font(getDataPanelFontFamily(),Font.PLAIN, getDataPanelFontSize(defualtSize));
+		ChoiceItem fontFamily = new FontFamiliyQuestion("").findChoiceByCode(getDataPanelFontFamily());
+		return new Font(fontFamily.getLabel(),Font.PLAIN, getDataPanelFontSize(defualtSize));
 	}
 	
 	public int getDataPanelFontSize(int defualtSize)

@@ -17,12 +17,12 @@ public class HtmlPanelLabel extends HtmlFormViewer
 
 	public int getFontSize()
 	{
-		return getMainWindow().getWizardFontSize();
+		return getMainWindow().getDataPanelFontSize();
 	}
 	
 	public String getFontFamily()
 	{
-		return getMainWindow().getWizardFontFamily();
+		return getMainWindow().getDataPanelFontFamily();
 	}
 	
 }
