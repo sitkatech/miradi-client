@@ -7,18 +7,17 @@ package org.conservationmeasures.eam.main;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
 import org.conservationmeasures.eam.project.Project;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
-import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class TaskTree extends JTreeTable
+public class TaskTree extends PanelTreeTable
 {
 	public TaskTree(Project project, int interventionId)
 	{
 		super(new TaskTreeModel(project, interventionId));
-		//setRootVisible(true);
 	}
 }
 

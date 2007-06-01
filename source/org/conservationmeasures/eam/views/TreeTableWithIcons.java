@@ -20,6 +20,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.FactorIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
@@ -29,6 +30,7 @@ import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.icons.TaskIcon;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -37,14 +39,11 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.martus.swing.UiLabel;
 
-import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
+public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 {
-
 	public TreeTableWithIcons(Project projectToUse, GenericTreeTableModel treeTableModelToUse)
 	{
 		super(treeTableModelToUse);
@@ -63,7 +62,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		if (getRowCount()>0)
 			setRowSelectionInterval(0,0);
 	}
-	
+
 	public Project getProject()
 	{
 		return project;
@@ -105,6 +104,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			indicatorRenderer.setClosedIcon(new IndicatorIcon());
 			indicatorRenderer.setOpenIcon(new IndicatorIcon());
 			indicatorRenderer.setLeafIcon(new IndicatorIcon());
+			indicatorRenderer.setFont(getPlainFont());
 			
 			goalRenderer = new DefaultTreeCellRenderer();
 			goalRenderer.setClosedIcon(new GoalIcon());
@@ -116,16 +116,19 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			activityRenderer.setClosedIcon(new ActivityIcon());
 			activityRenderer.setOpenIcon(new ActivityIcon());
 			activityRenderer.setLeafIcon(new ActivityIcon());
+			activityRenderer.setFont(getPlainFont());
 
 			keyEcologicalAttributeRenderer = new DefaultTreeCellRenderer();
 			keyEcologicalAttributeRenderer.setClosedIcon(new KeyEcologicalAttributeIcon());
 			keyEcologicalAttributeRenderer.setOpenIcon(new KeyEcologicalAttributeIcon());
 			keyEcologicalAttributeRenderer.setLeafIcon(new KeyEcologicalAttributeIcon());
+			keyEcologicalAttributeRenderer.setFont(getPlainFont());
 			
 			methodRenderer = new DefaultTreeCellRenderer();
 			methodRenderer.setClosedIcon(new MethodIcon());
 			methodRenderer.setOpenIcon(new MethodIcon());
 			methodRenderer.setLeafIcon(new MethodIcon());
+			methodRenderer.setFont(getPlainFont());
 
 			taskRenderer = new DefaultTreeCellRenderer();
 			taskRenderer.setClosedIcon(new TaskIcon());
@@ -137,10 +140,11 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			stringNoIconRenderer.setClosedIcon(null);
 			stringNoIconRenderer.setOpenIcon(null);
 			stringNoIconRenderer.setLeafIcon(null);
-			Font customFont = createFristLevelFont(getDefaultFont());
+			Font customFont = createFristLevelFont(getPlainFont());
 			stringNoIconRenderer.setFont(customFont);
 			
 			defaultRenderer = new DefaultTreeCellRenderer();
+			defaultRenderer.setFont(getPlainFont());
 		}
 
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
@@ -189,21 +193,20 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			return renderer;
 		}
 		
-		public static Font getDefaultFont()
-		{
-			Font defaultFont = new UiLabel().getFont();
-			return defaultFont;
-		}
-		
 		public static Font getBoldFont()
 		{
-			Font defaultFont = getDefaultFont();
+			Font defaultFont = EAM.mainWindow.getUserDataPanelFont();
 			return defaultFont.deriveFont(Font.BOLD);
 		}
 
+		public static Font getPlainFont()
+		{
+			return EAM.mainWindow.getUserDataPanelFont();
+		}
+		
 		public static Font getItalicFont()
 		{
-			Font defaultFont = getDefaultFont();
+			Font defaultFont = EAM.mainWindow.getUserDataPanelFont();
 			return defaultFont.deriveFont(Font.ITALIC);
 		}
 
