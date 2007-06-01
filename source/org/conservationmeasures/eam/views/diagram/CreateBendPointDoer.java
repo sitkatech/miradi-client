@@ -94,7 +94,7 @@ public class CreateBendPointDoer extends LocationDoer
 			if (selectedLinkCell.equals(linkCell))
 				continue; 
 			
-			if (!isWithinBounds(linkCell, point))
+			if (! getBounds(linkCell).contains(point))
 				continue;
 		
 			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
@@ -106,14 +106,11 @@ public class CreateBendPointDoer extends LocationDoer
 		return (LinkCell[]) nearbyLinks.toArray(new LinkCell[0]);
 	}
 	
-	private boolean isWithinBounds(LinkCell linkCell, Point point)
+	private Rectangle2D getBounds(LinkCell linkCell)
 	{
 		EdgeView view = (EdgeView) cache.getMapping(linkCell, false);
-		Rectangle2D bounds = view.getBounds();
-		if (point == null)
-			return false;
 		
-		return bounds.contains(point);
+		return view.getBounds(); 
 	}
 
 	private boolean isWithinRange(Line2D.Double[] lineSegments, Point point)
@@ -123,7 +120,7 @@ public class CreateBendPointDoer extends LocationDoer
 			Line2D.Double line = lineSegments[i];
 			Point2D point2D = Utility.convertToPoint2D(point);
 			double distance = line.ptLineDist(point2D);
-			if (distance < getProject().DEFAULT_GRID_SIZE)
+			if (distance < getProject().getGridSize())
 				return true;
 		}
 		

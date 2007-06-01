@@ -23,14 +23,14 @@ public class BendPointSelectionHelper
 		selectionIndexes = new Vector();
 	}
 	
-	public void mousePressed(MouseEvent mouseEvent, int currentIndex)
+	public void mousePressed(MouseEvent mouseEvent, int pointIndexPressed)
 	{	
-		updateSelectionList(mouseEvent, currentIndex);
+		updateSelectionList(mouseEvent, pointIndexPressed);
 	}
 	
-	public void updateSelectionList(MouseEvent mouseEvent, int index)
+	public void updateSelectionList(MouseEvent mouseEvent, int pointIndexPressed)
 	{
-		Integer bendPointIndex = new Integer(index - 1);
+		Integer bendPointIndex = new Integer(pointIndexPressed - 1);
 		
 		if (bendPointIndex.intValue() < 0)
 			return;
