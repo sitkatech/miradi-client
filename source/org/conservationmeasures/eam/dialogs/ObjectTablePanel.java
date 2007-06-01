@@ -47,7 +47,6 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 	{
 		if (getPropertiesPanel()==null)
 			return;
-		
 		try
 		{
 			ORef oref = new ORef(ObjectType.FAKE,BaseId.INVALID);
@@ -68,16 +67,19 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		}
 	}
 	
-	public void setPropertiesPanel(ObjectDataInputPanel panel)
+	public void setPropertiesPanel(AbstractObjectDataInputPanel panel)
 	{
 		super.setPropertiesPanel(panel);
+		//TODO: the following two lines should be called after a tab switch and not here. 
+		// THis works for now but the updatePropertiesPanel call has not effect becuase foucs is lost, so the fist field
+		// of the sub panel is not given fouse.
 		selectFirstRow();
+		updatePropertiesPanel();
 	}
 
 	private void selectFirstRow()
 	{
-		if(table.getRowCount()>0)
-			table.setRowSelectionInterval(0, 0);
+		table.scrollToAndSelectRow(0);
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)

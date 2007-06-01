@@ -87,7 +87,7 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		}
 	}
 
-	private void scrollToAndSelectRow(int row)
+	void scrollToAndSelectRow(int row)
 	{
 		if (getRowCount() <= row)
 			return;
