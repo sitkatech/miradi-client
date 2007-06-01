@@ -9,9 +9,11 @@ import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.martus.swing.UiScrollPane;
 
@@ -23,8 +25,10 @@ public class MonitoringPanel extends JPanel
 		model = new MonitoringModel(projectToUse);
 		tree = new MonitoringTreeTable(projectToUse, model);
 		restoreTreeExpansionState();
-		UiScrollPane scrollPane = new UiScrollPane(tree);
-		scrollPane.setBorder(BorderFactory.createTitledBorder("Indicators linked to goals and objectives." ));
+		UiScrollPane scrollPane = new FastScrollPane(tree);
+		TitledBorder titileBorder = BorderFactory.createTitledBorder("Indicators linked to goals and objectives." );
+		titileBorder.setTitleFont(EAM.mainWindow.getUserDataPanelFont(getFont().getSize()));
+		scrollPane.setBorder(titileBorder);
 		add(scrollPane, BorderLayout.CENTER);
 	}
 	
