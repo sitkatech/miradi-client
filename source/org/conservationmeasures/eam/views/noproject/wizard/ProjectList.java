@@ -12,11 +12,11 @@ import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HyperlinkLabel;
 import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
 import org.martus.swing.HyperlinkHandler;
-import org.martus.swing.UiLabel;
 import org.martus.util.MultiCalendar;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -51,7 +51,7 @@ public class ProjectList extends JPanel
 			MultiCalendar date = new MultiCalendar(new Date(projectFile.lastModified()));
 			String isoDate = date.toIsoDateString();
 			add(new HyperlinkLabel(name, NoProjectWizardPanel.OPEN_PREFIX+name, handler));
-			add(new HtmlLabel("<font size='+0'>" + isoDate + "</font>"));
+			add(new HtmlLabel("<font size='%100'>" + isoDate + "</font>"));
 		}
 		
 		// NOTE: invalidate() is not strong enough to blank the bottom row after delete
@@ -66,7 +66,7 @@ public class ProjectList extends JPanel
 
 	}
 	
-	class HtmlLabel extends UiLabel
+	class HtmlLabel extends PanelTitleLabel
 	{
 		public HtmlLabel(String text)
 		{
