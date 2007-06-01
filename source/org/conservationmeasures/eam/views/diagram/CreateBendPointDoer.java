@@ -57,7 +57,7 @@ public class CreateBendPointDoer extends LocationDoer
 			DiagramFactorLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
 			LinkCell selectedLinkCell = model.getDiagramFactorLink(selectedLink);
 			insertBendPointForLink(selectedLinkCell);
-//FIXME repair commented code below.  this code looks to see if it should create
+//FIXME: Nima: repair commented code below.  this code looks to see if it should create
 // a bend point on any nearby link
 //			LinkCell[] nearbyLinks = getNearbyLinks(getLocation(), selectedLinkCell);
 //			for (int i = 0; i < nearbyLinks.length; ++i)

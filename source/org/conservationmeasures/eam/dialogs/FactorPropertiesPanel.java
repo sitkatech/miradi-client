@@ -262,7 +262,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		//FIXME: Richard: refactor entire tab add remove mechisisim (with Kevin)
+		//TODO: refactor entire tab add remove mechisisim
 		if (event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_VIABILITY_MODE))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
