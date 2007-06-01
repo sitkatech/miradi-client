@@ -60,7 +60,7 @@ public class ImagesView extends UmbrellaView
 	
 	private HtmlFormViewer getIntroText() throws Exception
 	{
-		HtmlFormViewer htmlViewer = HtmlFormViewer.createHtmlViewerWithWizardFont("", null);
+		HtmlFormViewer htmlViewer = new HtmlFormViewer("", null);
 		htmlViewer.setText(EAM.loadResourceFile(this.getClass(), OVERVIEW_HTML));
 		
 		//TODO: Find a better way to calculate scroll bar width to subtract

@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
+import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlPanelLabel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.project.Project;
@@ -99,7 +100,7 @@ public class ThreatRatingBundlePanel extends JPanel
 
 	private HtmlFormViewer createNameArea()
 	{
-		HtmlFormViewer area = HtmlFormViewer.createHtmlViewerWithPanelFont("",null);
+		HtmlFormViewer area = new HtmlPanelLabel("", null);
 		area.setOpaque(false);
 		area.setPreferredSize(new Dimension(150, 60));
 		area.setEditable(false);

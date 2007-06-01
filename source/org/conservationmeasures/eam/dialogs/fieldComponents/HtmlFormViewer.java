@@ -53,25 +53,8 @@ import org.martus.swing.UiEditorPane;
 
 public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, MouseListener
 {
-
-	public static HtmlFormViewer createHtmlViewerWithPanelFont(String htmlSource, HyperlinkHandler hyperLinkHandler)
+	public HtmlFormViewer(String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
-		return new HtmlFormViewer(false, htmlSource, hyperLinkHandler);
-	}
-	
-	public static HtmlFormViewer createHtmlViewerWithWizardFont(String htmlSource, HyperlinkHandler hyperLinkHandler)
-	{
-		return new HtmlFormViewer(htmlSource, hyperLinkHandler);
-	}
-
-	protected HtmlFormViewer(String htmlSource, HyperlinkHandler hyperLinkHandler)
-	{
-		this(true, htmlSource, hyperLinkHandler);
-	}
-
-	protected HtmlFormViewer(boolean fontToUse, String htmlSource, HyperlinkHandler hyperLinkHandler)
-	{
-		fontTest = fontToUse;
 		linkHandler = hyperLinkHandler;
 		setEditable(false);
 		setText(htmlSource);
@@ -79,27 +62,20 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		addMouseListener(this);
 	}
 	
-
-	public void setFontAsPanelFont()
+	public int getFontSize()
 	{
-		fontFamily = getMainWindow().getDataPanelFontFamily();
-		fontSize = getMainWindow().getDataPanelFontSize(this);
+		return getMainWindow().getWizardFontSize();
 	}
 	
-	public void setFontAsWizardFont()
+	public String getFontFamily()
 	{
-		fontFamily = getMainWindow().getWizardFontFamily();
-		fontSize = getMainWindow().getWizardFontSize();
+		return getMainWindow().getWizardFontFamily();
 	}
 	
 	
 	public void setText(String text)
 	{
-		if (fontTest)
-			setFontAsWizardFont();
-		else 
-			setFontAsPanelFont();
-		
+
 		HTMLEditorKit htmlKit = new OurHtmlEditorKit(linkHandler);
 		StyleSheet style = htmlKit.getStyleSheet();
 		customizeStyleSheet(style);
@@ -129,16 +105,16 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 
 	public void addRuleFontSize(StyleSheet style)
 	{
-		if (fontSize == 0)
+		if (getFontSize() == 0)
 			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
 		else
-			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
+			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFontSize()+"pt;}"));		
 	}
 	
 	public void addRuleFontFamily(StyleSheet style)
 	{
 
-		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+new FontFamiliyQuestion("").findChoiceByCode(fontFamily)+";}"));
+		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+new FontFamiliyQuestion("").findChoiceByCode(getFontFamily())+";}"));
 	}
 	
 	public String makeSureRuleHasRightPrefix(String rule)
@@ -236,10 +212,6 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		
 		return menu;
 	}
-	
-	String fontFamily;
-	int fontSize;
-	boolean fontTest;
 	
 	class EditorActionCopy extends ActionCopy
 	{
