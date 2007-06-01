@@ -22,7 +22,7 @@ public class PanelTreeTable extends JTreeTable
 		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
-	//TODO: find a better way to get to main window
+	//TODO: Richard: should not use static ref here
 	public MainWindow getMainWindow()
 	{
 		return EAM.mainWindow;

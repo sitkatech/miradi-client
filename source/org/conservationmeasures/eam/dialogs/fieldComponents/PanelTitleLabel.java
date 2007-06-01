@@ -36,6 +36,7 @@ public class PanelTitleLabel extends UiLabel
 		setIcon(icon);
 	}
 	
+	//TODO: Richard: should not use static ref here
 	public MainWindow getMainWindow()
 	{
 		return EAM.mainWindow;

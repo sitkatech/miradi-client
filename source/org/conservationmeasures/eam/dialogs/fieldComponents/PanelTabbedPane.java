@@ -17,6 +17,7 @@ public class PanelTabbedPane extends UiTabbedPane
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
+	//TODO: Richard: should not use static ref here
 	public MainWindow getMainWindow()
 	{
 		return EAM.mainWindow;

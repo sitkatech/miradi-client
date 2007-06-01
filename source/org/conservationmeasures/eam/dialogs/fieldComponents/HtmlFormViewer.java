@@ -140,7 +140,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		return rule;
 	}
 
-	//FIXME: Richard: should not use static ref here
+	//TODO: Richard: should not use static ref here
 	public static MainWindow getMainWindow()
 	{
 		return EAM.mainWindow;
