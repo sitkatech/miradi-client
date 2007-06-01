@@ -20,6 +20,8 @@ import javax.swing.table.JTableHeader;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
@@ -43,6 +45,13 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		columnHeader.addMouseListener(sortListener);
 		resizeTable(4);
 		setColumnWidths();
+		columnHeader.setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
+	}
+	
+	private MainWindow getMainWindow()
+	{
+		return EAM.mainWindow;
 	}
 	
 	public void setColumnWidths()
