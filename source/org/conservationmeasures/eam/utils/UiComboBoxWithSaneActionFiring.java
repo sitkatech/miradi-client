@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.utils;
 
 import javax.swing.event.EventListenerList;
 
-import org.martus.swing.UiComboBox;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
 
-public class UiComboBoxWithSaneActionFiring extends UiComboBox
+public class UiComboBoxWithSaneActionFiring extends PanelComboBox
 {
 	public void setSelectedItemWithoutFiring(Object anObject)
 	{

@@ -94,7 +94,6 @@ public class ThreatRatingPanel extends Box
 			criterionLabel.setFont(criterionLabel.getFont().deriveFont(Font.BOLD));
 
 			UiComboBox dropdown = createRatingDropdown(framework.getValueOptions());
-			dropdown.setFont(criterionLabel.getFont());
 			dropdown.addActionListener(new ValueListener(this, criterion));
 			dropdowns.put(criterion, dropdown);
 
