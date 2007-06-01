@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.fieldComponents;
 
-import java.awt.Font;
-
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.UiComboBox;
@@ -15,13 +13,13 @@ public class PanelComboBox extends UiComboBox
 {
 	public PanelComboBox()
 	{
-		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize(this)));
+		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
 	}
 
 	public PanelComboBox(Object[] items)
 	{
 		super(items);
-		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize(this)));
+		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
 	}
 	
 	public MainWindow getMainWindow()

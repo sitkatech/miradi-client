@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.fieldComponents;
 
-import java.awt.Font;
-
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -23,7 +21,7 @@ public class PanelTitleLabel extends UiLabel
 	public PanelTitleLabel(String text)
 	{
 		super(text);
-		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize(this)));
+		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
 	}
 	
 	public PanelTitleLabel(String text, int horizontalAlignment)

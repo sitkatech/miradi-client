@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
@@ -529,11 +530,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return preferences.getTaggedInt(name);
 	}
 
-	public int getDataPanelFontSize(JComponent comp)
+	public Font getUserDataPanelFont(int defualtSize)
+	{
+		return new Font(getDataPanelFontFamily(),Font.PLAIN, getDataPanelFontSize(defualtSize));
+	}
+	
+	public int getDataPanelFontSize(int defualtSize)
 	{
 		int size = preferences.getPanelFontSize();
 		if (size == 0)
-			size = comp.getFont().getSize();
+			return defualtSize;
 		return size;
 	}
 	

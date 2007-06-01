@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.fieldComponents;
 
-import java.awt.Font;
-
 import javax.swing.Action;
 import javax.swing.Icon;
 
@@ -19,21 +17,20 @@ public class PanelButton extends UiButton
 	public PanelButton(String text)
 	{
 		super(text);
-		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize(this)));
+		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
 	}
 
 	public PanelButton(Action action)
 	{
 		super(action);
-		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize(this)));
+		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
 	}
 	
 	public PanelButton(Icon icon)
 	{
 		super(icon);
-		setFont(new Font(getMainWindow().getDataPanelFontFamily(),Font.PLAIN, getMainWindow().getDataPanelFontSize(this)));
+		setFont(getMainWindow().getUserDataPanelFont(getFont().getSize()));
 	}
-	
 	
 	public MainWindow getMainWindow()
 	{
