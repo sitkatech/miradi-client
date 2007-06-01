@@ -184,11 +184,21 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private void setCurrentView(UmbrellaView view) throws Exception
 	{
 		if(currentView != null)
+		{
 			currentView.becomeInactive();
+			if(getProject().getCommandListenerCount() != existingCommandListenerCount)
+			{
+				EAM.logError("CommandListener orphaned by " + getClass());
+				getProject().logCommandListeners(System.err);
+			}
+		}
+
 		CardLayout layout = (CardLayout)viewHolder.getLayout();
 		layout.show(viewHolder, view.cardName());
 		currentView = view;
+		existingCommandListenerCount = getProject().getCommandListenerCount();
 		currentView.becomeActive();
+
 		updateToolBar();
 	}
 
@@ -711,5 +721,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private MainStatusBar mainStatusBar;
 	
 	private WizardManager wizardManager;
+	
+	private int existingCommandListenerCount;
 	
 }
