@@ -48,6 +48,7 @@ import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
+import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.Doer;
@@ -656,7 +657,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if (linkDescription.startsWith("Definition:"))
 		{
 			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
-			EAM.okDialog(def.term, new String[] {def.definition});
+			HtmlViewPanel htmlViewPanel = new HtmlViewPanel(this, def.term,  def.definition);
+			htmlViewPanel.showOkDialog();
 		} 
 		else if (isBrowserProtocol(linkDescription))
 		{

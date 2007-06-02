@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
+import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
 import org.conservationmeasures.eam.views.noproject.RenameProject;
@@ -84,7 +85,8 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 			else if(linkDescription.startsWith(DEFINITION_PREFIX))
 			{
 				Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
-				EAM.okDialog(def.term, new String[] {def.definition});
+				HtmlViewPanel htmlViewPanel = new HtmlViewPanel(getMainWindow(), def.term,  def.definition);
+				htmlViewPanel.showOkDialog();
 			}
 			else if(linkDescription.startsWith(DOWNLOAD_PREFIX))
 			{
