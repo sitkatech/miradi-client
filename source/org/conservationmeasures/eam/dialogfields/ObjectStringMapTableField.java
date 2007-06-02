@@ -20,6 +20,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
 import javax.swing.text.JTextComponent;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextField;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -166,7 +167,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 			for (int i = 0; i < colCount; i++)
 			{
 				TableColumn column = getColumnModel().getColumn(i);
-				column.setCellEditor(new SingleClickAutoSelectCellEditor(new JTextField()));
+				column.setCellEditor(new SingleClickAutoSelectCellEditor(new PanelTextField()));
 			}
 		}
 		

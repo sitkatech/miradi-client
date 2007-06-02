@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextField;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -131,7 +132,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
 				boolean isSelected, boolean hasFocus, int row, int column)
 		{
-			JComponent comp =  new JTextField((String)value);
+			JComponent comp =  new PanelTextField(value.toString());
 			((JTextField)comp).setHorizontalAlignment(JTextField.CENTER);
 
 			
@@ -206,7 +207,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 				boolean isSelected, boolean hasFocus, int row, int column)
 		{
 			setOpaque(false);
-			JTextField field = new JTextField((String)value);
+			JTextField field = new PanelTextField((String)value);
 			field.setFont(field.getFont().deriveFont(Font.BOLD));
 			field.setHorizontalAlignment(JTextField.CENTER);
 			field.setBackground(question.getChoices()[column+1].getColor());

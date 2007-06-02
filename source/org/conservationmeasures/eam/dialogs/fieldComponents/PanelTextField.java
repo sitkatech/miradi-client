@@ -17,6 +17,12 @@ public class PanelTextField extends UiTextField
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
+	public PanelTextField(String text)
+	{
+		super(text);
+		setFont(getMainWindow().getUserDataPanelFont());
+	}
+	
 	//TODO: Richard: should not use static ref here
 	public MainWindow getMainWindow()
 	{
