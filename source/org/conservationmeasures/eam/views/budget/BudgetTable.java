@@ -13,7 +13,6 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -24,6 +23,9 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.text.JTextComponent;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextField;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -78,7 +80,7 @@ public class BudgetTable extends TableWithHelperMethods implements ObjectPicker
 			if (model.isCostTotalsColumn(i) || model.isUnitsTotalColumn(i) || model.isYearlyTotalColumn(i))
 			    column.setHeaderRenderer(new CustomColumnHeaderRenederer());
 			if (model.isUnitsColumn(i))
-				column.setCellEditor(new SingleClickAutoSelectCellEditor(new JTextField()));
+				column.setCellEditor(new SingleClickAutoSelectCellEditor(new PanelTextField()));
 		}
 	}
 
@@ -115,7 +117,7 @@ public class BudgetTable extends TableWithHelperMethods implements ObjectPicker
 	private void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
 	{
 		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
-		JComboBox resourceCombo = new JComboBox(comboContent);
+		JComboBox resourceCombo = new PanelComboBox(comboContent);
 		
 		TableColumn resourceCol = getColumnModel().getColumn(col);
 		resourceCol.setCellEditor(new DefaultCellEditor(resourceCombo));
@@ -234,7 +236,7 @@ public class BudgetTable extends TableWithHelperMethods implements ObjectPicker
 	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
 }
 
-class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
+class ComboBoxRenderer extends PanelComboBox implements TableCellRenderer 
 {
     public ComboBoxRenderer(Object[] items) 
     {
@@ -250,7 +252,7 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
         
         AssignmentTableModelSplittableShell budgetModel = ((BudgetTable)table).getBudgetModel();
 		if (! budgetModel.isCellEditable(row, col))
-        	return new JLabel("");
+        	return new PanelTitleLabel("");
         
         setSelectedItem(value);
         return this;

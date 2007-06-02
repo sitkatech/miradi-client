@@ -11,10 +11,15 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.table.TableModel;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+
 public class TableWithSunBugWorkarounds extends JTable
 {
 	public TableWithSunBugWorkarounds()
 	{
+		super();
+		setFontData();
 	}
 
 	public TableWithSunBugWorkarounds(TableModel model)
@@ -23,6 +28,20 @@ public class TableWithSunBugWorkarounds extends JTable
 		
 		// this property is set due to a JTable bug#4724980 
 		putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+		setFontData();
+	}
+	
+	private void setFontData()
+	{
+		setFont(getMainWindow().getUserDataPanelFont());
+		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
+		setRowHeight(getFontMetrics(getFont()).getHeight());
+	}
+
+	//TODO: Richard: should not use static ref here
+	private MainWindow getMainWindow()
+	{
+		return EAM.mainWindow;
 	}
 	
 	// this is overridden to work around JTable bug#4330950
