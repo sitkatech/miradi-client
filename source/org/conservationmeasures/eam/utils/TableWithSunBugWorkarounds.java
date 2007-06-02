@@ -6,44 +6,27 @@
 
 package org.conservationmeasures.eam.utils;
 
-import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
 
-public class TableWithSunBugWorkarounds extends JTable
+public class TableWithSunBugWorkarounds extends PanelTable
 {
 	public TableWithSunBugWorkarounds()
 	{
 		super();
-		setFontData();
 	}
-
+	
 	public TableWithSunBugWorkarounds(TableModel model)
 	{
 		super(model);
 		
 		// this property is set due to a JTable bug#4724980 
 		putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-		setFontData();
-	}
-	
-	private void setFontData()
-	{
-		setFont(getMainWindow().getUserDataPanelFont());
-		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
-		setRowHeight(getFontMetrics(getFont()).getHeight());
 	}
 
-	//TODO: Richard: should not use static ref here
-	private MainWindow getMainWindow()
-	{
-		return EAM.mainWindow;
-	}
-	
 	// this is overridden to work around JTable bug#4330950
 	// where if you click on a heading during a cell edit, the 
 	// edits are silently discarded

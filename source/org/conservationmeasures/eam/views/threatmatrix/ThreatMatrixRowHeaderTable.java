@@ -13,7 +13,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
-public class ThreatMatrixRowHeaderTable extends JTable
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
+
+public class ThreatMatrixRowHeaderTable extends PanelTable
 {
 	public ThreatMatrixRowHeaderTable(TableModel rowHeaderData, ThreatGridPanel panel)
 	{
