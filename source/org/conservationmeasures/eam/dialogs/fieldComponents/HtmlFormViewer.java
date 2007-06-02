@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.EventObject;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -306,6 +307,13 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 			handler = handlerToUse;
 		}
 
+		protected Component createComponent()
+		{
+			JButton buttonName = ((JButton)super.createComponent());
+			buttonName.setFont(new PanelButton("").getFont());
+			return buttonName;
+		}
+		
 		protected void submitData(String data)
 		{
 			String buttonName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
@@ -325,7 +333,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 
 		protected Component createComponent()
 		{
-			comboBox = (JComboBox)super.createComponent();
+			comboBox = new PanelComboBox();
 			comboBox.addItemListener(this);
 			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
 			((HtmlFormEventHandler)handler).setComponent(fieldName, comboBox);
@@ -355,6 +363,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		{
 			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
 			textField = (JTextComponent)super.createComponent();
+			textField.setFont(new PanelTextArea("").getFont());
 			textField.getDocument().addDocumentListener(this);
 			((HtmlFormEventHandler)handler).setComponent(fieldName, textField);
 			return textField;
@@ -403,7 +412,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		protected Component createComponent()
 		{
 			String fieldName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
-			JLabel label = new JLabel("");
+			JLabel label = new PanelTitleLabel("");
 			label.setBorder(new EmptyBorder(new Insets(0,0,10,0)));
 			((HtmlFormEventHandler)handler).setComponent(fieldName, label);
 			return label;

@@ -38,12 +38,12 @@ public class WizardHtmlViewer extends HtmlFormViewer
 		"  .apptagline { font-size: 110%; font-weight: bold }",
 		"  .processsection { font-size: 120%; }",
 		"  .taskheading { font-size: 110%; font-weight: bold; font-style: italics; }",
-		"  .nextsteps { font-weight: 700; }",
+		"  .nextsteps { font-weight: 700; font-size: 100%;}",
 		"  .navigation { background-color: #eeeeee; border-width: 1; border-color: black; font-size: 100%; }",
-		"  .hintheading { font-style: italics; font-weight: bold; }",
-		"  .task {font-weight: bold; }",
+		"  .hintheading { font-style: italics; font-weight: bold; font-size: 100%;}",
+		"  .task {font-weight: bold; font-size: 100%;}",
 		"  .toolbarbutton {color: #A06020; font-weight: bold; font-size: 100%;}",
-		"  .hint {font-style: italics; }",
-		"  .definition {font-style: italics; }",
+		"  .hint {font-style: italics; font-size: 100%;}",
+		"  .definition {font-style: italics; font-size: 100%;}",
 	};
 }
