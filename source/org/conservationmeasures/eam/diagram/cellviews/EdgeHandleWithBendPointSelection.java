@@ -44,7 +44,7 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		int[] selectedIndexes = bendSelectionHelper.getSelectedIndexes();
 		for (int i = 0; i < selectedIndexes.length; ++i)
 		{
-			//TODO this to deal with undoing a created(selected) bend point
+			//FIXME this to deal with undoing a created(selected) bend point
 			//the undo deletes the bend point but does not remove it from the selection list
 			//and we try to paint it. 
 			if (selectedIndexes[i] >= bendPoints.size())
