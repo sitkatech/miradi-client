@@ -51,10 +51,14 @@ public class TestLinkBendPointsMoveHandler extends EAMTestCase
 		assertEquals("lost bendpoint in move?", 3, movedBendPoints.size());
 		
 		Point movedPoint1 = movedBendPoints.get(selectionIndexes[0]);
-		assertEquals("selected bend point not moved?", movedPoint1, new Point(11, 11));
+		Point snapped1 = project.getSnapped(movedPoint1);
+		Point expectedSnappedPoint1 = project.getSnapped(new Point(11, 11));
+		assertEquals("selected bend point not moved?", snapped1, expectedSnappedPoint1);
 		
 		Point movedPoint2 = movedBendPoints.get(selectionIndexes[1]);
-		assertEquals("selected bend point not moved?", movedPoint2, new Point(12, 12));
+		Point snapped2 = project.getSnapped(movedPoint2);
+		Point expectedSnappedPoint2 = project.getSnapped(new Point(12, 12));
+		assertEquals("selected bend point not moved?", snapped2, expectedSnappedPoint2);
 	}
 
 	public static PointList createBendPointList()

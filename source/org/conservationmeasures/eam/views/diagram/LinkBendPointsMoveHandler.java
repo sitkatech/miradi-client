@@ -27,9 +27,14 @@ public class LinkBendPointsMoveHandler
 		for (int i = 0; i < linkCells.length; i++)
 		{
 			LinkCell linkCell = linkCells[i];
-			int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
-			moveBendPoints(linkCell, selectionIndexes, deltaX, deltaY);
+			moveBendPoints(linkCell, deltaX, deltaY);
 		}
+	}
+	
+	public void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws CommandFailedException
+	{
+		int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
+		moveBendPoints(linkCell, selectionIndexes, deltaX, deltaY);
 	}
 	
 	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws CommandFailedException
@@ -41,7 +46,10 @@ public class LinkBendPointsMoveHandler
 		{
 			Point pointToMove = pointsToMove.get(selectionIndexes[i]);
 			pointToMove.x = pointToMove.x + deltaX;
-			pointToMove.y = pointToMove.y + deltaY;		
+			pointToMove.y = pointToMove.y + deltaY;
+			Point snapped = project.getSnapped(pointToMove);
+			pointToMove.x = snapped.x;
+			pointToMove.y = snapped.y;
 		}
 		
 		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, pointsToMove);
