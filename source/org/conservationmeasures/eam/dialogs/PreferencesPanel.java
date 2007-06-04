@@ -69,19 +69,12 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
 
-		int wizardFontSize = mainWindow.getWizardFontSize();
-		String wizardSizeAsString = Integer.toString(wizardFontSize);
-		wizardFontSizeCombo = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(EAM.text("Wizard ")), wizardSizeAsString);
-			
-		String wizardFontFamily = mainWindow.getWizardFontFamily();
-		wizardFontFamilyCombo = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(EAM.text("Wizard ")), wizardFontFamily);
-		
 		int panelFontSize = mainWindow.getDataPanelFontSize();
 		String panelSizeAsString = Integer.toString(panelFontSize);
-		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(EAM.text("Panel ")), panelSizeAsString);
+		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(""), panelSizeAsString);
 			
 		String panelFontFamily = mainWindow.getDataPanelFontFamily();
-		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(EAM.text("Panel ")), panelFontFamily);
+		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(""), panelFontFamily);
 		
 		return htmlTab;
 	}
@@ -232,13 +225,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		mainWindow.setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
 		
 		mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
-		
-		String wizardFontSizeValue = getSelectedItemQuestionBox(wizardFontSizeCombo);
-		mainWindow.setWizardFontSize(Integer.parseInt(wizardFontSizeValue));
-		
-		String wizardFontFamilyValue = getSelectedItemQuestionBox(wizardFontFamilyCombo);
-		mainWindow.setWizardFontFamily(wizardFontFamilyValue);
-		
+
 		String panelFontSizeValue = getSelectedItemQuestionBox(panelFontSizeCombo);
 		mainWindow.setDataPanelFontSize(Integer.parseInt(panelFontSizeValue));
 		
@@ -333,9 +320,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	UiComboBox threatReductionResultDropDown;
 	UiCheckBox gridVisibleCheckBox; 
 	UiCheckBox cellRatingsVisibleCheckBox;
-	
-	UiComboBox wizardFontSizeCombo;
-	UiComboBox wizardFontFamilyCombo;
 	
 	UiComboBox panelFontSizeCombo;
 	UiComboBox panelFontFamilyCombo;

@@ -166,7 +166,7 @@ public class AppPreferences
 	
 	public int getWizardFontSize()
 	{
-		return wizardFontSize;
+		return panelFontSize;
 	}
 	
 	public void setWizardFontSize(int fontSize)
@@ -176,7 +176,7 @@ public class AppPreferences
 	
 	public String getWizardFontFamily()
 	{
-		return wizardFontFamily;
+		return panelFontFamily;
 	}
 	
 	public void setWizardFontFamily(String fontFamily)
