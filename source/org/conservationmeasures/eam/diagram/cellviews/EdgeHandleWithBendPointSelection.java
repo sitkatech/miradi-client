@@ -30,7 +30,7 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 	
 	public void mousePressed(MouseEvent event)
 	{
-		super.mousePressed(event);
+		super.mousePressed(event);	
 		bendSelectionHelper.mousePressed(event, currentIndex);
 		graph.repaint();
 	}
@@ -44,6 +44,12 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		int[] selectedIndexes = bendSelectionHelper.getSelectedIndexes();
 		for (int i = 0; i < selectedIndexes.length; ++i)
 		{
+			//TODO this to deal with undoing a created(selected) bend point
+			//the undo deletes the bend point but does not remove it from the selection list
+			//and we try to paint it. 
+			if (selectedIndexes[i] >= bendPoints.size())
+				continue;
+			
 			Point point = bendPoints.get(selectedIndexes[i]);
 			g2.setColor(graph.getHighlightColor());
 			g2.drawRect((int)point.getX() - 10, (int)point.getY() - 10, 18, 18);

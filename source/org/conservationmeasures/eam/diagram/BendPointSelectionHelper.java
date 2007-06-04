@@ -9,6 +9,8 @@ import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.utils.PointList;
 
 public class BendPointSelectionHelper
 {
@@ -78,6 +80,17 @@ public class BendPointSelectionHelper
 		}
 		
 		return selection;
+	}
+	
+	public void selectAll()
+	{
+		clearSelection();
+		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		PointList allBendPoints = diagramLink.getBendPoints();
+		for (int i = 0; i < allBendPoints.size(); ++i)
+		{
+			selectionIndexes.add(new Integer(i));
+		}
 	}
 	
 	Vector selectionIndexes;

@@ -69,6 +69,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setGridEnabled(true);
 		setGridMode(JGraph.CROSS_GRID_MODE);
 		setSelectionModel(new EAMGraphSelectionModel(this));
+		setMarqueeHandler(new CustomMarqueeHandler(this));
 		defaultBackgroundColor = getBackground();
 		addGraphSelectionListener(this);
 		ensureCellPerimetersAreRespectedByLinksWithBendPoints();

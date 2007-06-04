@@ -11,6 +11,8 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -48,6 +50,7 @@ public class CreateBendPointDoer extends LocationDoer
 		if (!isAvailable())
 			return;
 		
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			model = getDiagramView().getDiagramModel();
@@ -56,27 +59,28 @@ public class CreateBendPointDoer extends LocationDoer
 			
 			DiagramFactorLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
 			LinkCell selectedLinkCell = model.getDiagramFactorLink(selectedLink);
-			insertBendPointForLink(selectedLinkCell);
-//FIXME: Nima: repair commented code below.  this code looks to see if it should create
-// a bend point on any nearby link
-//			LinkCell[] nearbyLinks = getNearbyLinks(getLocation(), selectedLinkCell);
-//			for (int i = 0; i < nearbyLinks.length; ++i)
-//			{
-//				insertBendPointForLink(nearbyLinks[i]);
-//			}
+			Point insertPoint = selectedLinkCell.getNewBendPointLocation(model, cache, getLocation());
+			LinkCell[] nearbyLinks = getNearbyLinks(insertPoint, selectedLinkCell);
+			for (int i = 0; i < nearbyLinks.length; ++i)
+			{
+				insertBendPointForLink(nearbyLinks[i], insertPoint);
+			}
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 
-	private void insertBendPointForLink(LinkCell linkCell) throws CommandFailedException
+	private void insertBendPointForLink(LinkCell linkCell, Point insertPoint) throws CommandFailedException
 	{
 		DiagramFactorLink selectedLink = linkCell.getDiagramFactorLink();
-		Point newBendPoint = linkCell.getNewBendPointLocation(model, cache, getLocation());
-		Point snapped = getProject().getSnapped(newBendPoint);
+		Point snapped = getProject().getSnapped(insertPoint);
 		PointList newListWithBendPoint = linkCell.getNewBendPointList(model, cache, snapped);
 		
 		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint);
@@ -91,19 +95,27 @@ public class CreateBendPointDoer extends LocationDoer
 		for (int i = 0; i < allCells.length; ++i)
 		{
 			LinkCell linkCell = allCells[i];
-			if (selectedLinkCell.equals(linkCell))
-				continue; 
-			
 			if (! getBounds(linkCell).contains(point))
 				continue;
-		
-			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
-			Line2D.Double[] lineSegments = bendPoints.convertToLineSegments();
+		 
+			PointList pointList = getAllLinkPoints(linkCell);
+			Line2D.Double[] lineSegments = pointList.convertToLineSegments();
 			if (isWithinRange(lineSegments, point))
 				nearbyLinks.add(linkCell);
 		}
 		
 		return (LinkCell[]) nearbyLinks.toArray(new LinkCell[0]);
+	}
+
+	private PointList getAllLinkPoints(LinkCell linkCell)
+	{
+		PointList pointList = new PointList();
+		pointList.add(linkCell.getSourceLocation(cache));
+		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		pointList.addAll(diagramLink.getBendPoints().getAllPoints());
+		pointList.add(linkCell.getTargetLocation(cache));
+		
+		return pointList;
 	}
 	
 	private Rectangle2D getBounds(LinkCell linkCell)
