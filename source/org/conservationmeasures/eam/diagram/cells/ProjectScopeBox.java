@@ -110,9 +110,11 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public int calculateShortScopeHeight(int width) 
 	{
 		JTextPane ja = new JTextPane();
-		ja.setText(getText());
-		ja.setFont(new Font("Arial", Font.PLAIN, 14));
+		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
+		String fontSize = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_SIZE);
+		ja.setFont(new Font(fontFamily, Font.PLAIN, Integer.parseInt(fontSize)));
 		ja.setSize(width, ja.getMaximumSize().height);
+		ja.setText(getText());
 		return ja.getPreferredSize().height;
 	}
 	
