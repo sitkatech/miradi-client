@@ -64,6 +64,11 @@ public class BendPointSelectionHelper
 		selectionIndexes.add(bendPointIndex);
 	}
 	
+	public void removeSelectionIndex(int bendPointIndex)
+	{
+		selectionIndexes.remove(new Integer(bendPointIndex));
+	}
+	
 	public int[] getSelectedIndexes()
 	{
 		int[] selection = new int[selectionIndexes.size()];
