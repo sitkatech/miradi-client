@@ -133,7 +133,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	}
 	
 	CustomDateChooser dateChooser;
-	private static final int EXTRA_PADDING = 10;
+	private static final int EXTRA_PADDING = 20;
 }
 
 

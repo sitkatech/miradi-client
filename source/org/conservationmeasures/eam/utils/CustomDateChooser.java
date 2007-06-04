@@ -11,6 +11,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Calendar;
 
+import org.conservationmeasures.eam.main.EAM;
+
 import com.toedter.calendar.IDateEditor;
 import com.toedter.calendar.JDateChooser;
 
@@ -22,6 +24,7 @@ public class CustomDateChooser extends JDateChooser
 		calendarButton.addMouseListener(new CustomMouseListener());
 		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
+		setFont(EAM.mainWindow.getUserDataPanelFont());
 	}
 
 	class MonthChangeListener implements PropertyChangeListener
