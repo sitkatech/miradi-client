@@ -553,7 +553,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		int size = preferences.getPanelFontSize();
 		if (size == 0)
-			return getFont().getSize();
+			return getContentPane().getFont().getSize();
 		return size;
 	}
 	
