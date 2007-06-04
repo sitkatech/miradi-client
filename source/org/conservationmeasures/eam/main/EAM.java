@@ -206,6 +206,7 @@ public class EAM
 			{
 				EAM.logException(e);
 				errorDialog("Unexpected error: " + e.getMessage());
+				System.exit(1);
 			}
 		}
 		
