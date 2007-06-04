@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -40,11 +42,19 @@ public class DeleteBendPointDoer extends LocationDoer
 	{
 		if (! isAvailable())
 			return;
-		//FIXME this must be done as a transaction.   also rename method
-		deleteBendPoint();
+
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			deleteBendPoints();
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 	
-	private void deleteBendPoint() throws CommandFailedException
+	private void deleteBendPoints() throws CommandFailedException
 	{
 		DiagramFactorLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		
