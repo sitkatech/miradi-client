@@ -179,9 +179,24 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			selectedCells = getDiagram().getSelectionCells();
 			DiagramView view = (DiagramView)mainWindow.getCurrentView();
 			view.selectionWasChanged();
+			updateBendPointSelection(event);
 		}
 	}
 	
+	private void updateBendPointSelection(GraphSelectionEvent event)
+	{
+		Object[] selectionTransitionCells = event.getCells();
+		for(int i = 0; i < selectionTransitionCells.length; ++i)
+		{
+			EAMGraphCell selectedCell = (EAMGraphCell)selectionTransitionCells[i];
+			if(selectedCell.isFactorLink() && ! event.isAddedCell(selectionTransitionCells[i]))
+			{
+				LinkCell  link = (LinkCell)selectedCell;
+				link.clearBendPointSelectionList();
+			}
+		}
+	}
+
 	private void setDiagramFactorLinkBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws CommandFailedException
 	{
 		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
