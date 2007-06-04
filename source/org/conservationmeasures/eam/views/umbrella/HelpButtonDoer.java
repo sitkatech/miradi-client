@@ -33,7 +33,7 @@ public class HelpButtonDoer extends MainWindowDoer
 		if (data.resourceClass != null)
 			defaultResouceClass = data.resourceClass;
 			
-		new HtmlViewPanel(getMainWindow(), data.title, defaultResouceClass, data.htmlFile).showOkDialog();
+		new HtmlViewPanel(getMainWindow(), data.title, defaultResouceClass, data.htmlFile).showAsOkDialog();
 	}
 	
 	public void doIt() throws CommandFailedException

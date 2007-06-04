@@ -9,9 +9,9 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.martus.swing.UiTable;
+import org.conservationmeasures.eam.utils.TableWithSunBugWorkarounds;
 
-public class PanelTable extends UiTable
+public class PanelTable extends TableWithSunBugWorkarounds
 {
 	public PanelTable()
 	{

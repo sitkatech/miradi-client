@@ -10,9 +10,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
+import org.martus.swing.UiTable;
 
-public class TableWithSunBugWorkarounds extends PanelTable
+public class TableWithSunBugWorkarounds extends UiTable
 {
 	public TableWithSunBugWorkarounds()
 	{

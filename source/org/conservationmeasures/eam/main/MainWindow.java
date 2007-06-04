@@ -658,7 +658,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
 			HtmlViewPanel htmlViewPanel = new HtmlViewPanel(this, def.term,  def.definition);
-			htmlViewPanel.showOkDialog();
+			htmlViewPanel.showAsOkDialog();
 		} 
 		else if (isBrowserProtocol(linkDescription))
 		{

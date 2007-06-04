@@ -43,7 +43,7 @@ public class AboutDoer extends MainWindowDoer
 		HtmlViewPanel dialog = new HtmlViewPanel(getMainWindow(), title, text, 900);
 		if(initialSplash)
 			dialog.setCloseButtonText(EAM.text("Continue"));
-		dialog.showOkDialog();
+		dialog.showAsOkDialog();
 	}
 
 	

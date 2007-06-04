@@ -13,9 +13,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.utils.TableWithSunBugWorkarounds;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
 
-public class ThreatMatrixRowHeaderTable extends TableWithSunBugWorkarounds
+public class ThreatMatrixRowHeaderTable extends PanelTable
 {
 	public ThreatMatrixRowHeaderTable(TableModel rowHeaderData, ThreatGridPanel panel)
 	{

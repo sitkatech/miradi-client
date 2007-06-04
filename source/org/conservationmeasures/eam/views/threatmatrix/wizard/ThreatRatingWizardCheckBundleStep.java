@@ -23,7 +23,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 			MainWindow mainWindow = getWizard().getMainWindow();
 			HtmlViewPanel htmlViewPanel = 
 				new HtmlViewPanel(mainWindow, EAM.text("Threat Calcualtions"), this.getClass(), getResourceBundleRulesFileName());
-			htmlViewPanel.showOkDialog();
+			htmlViewPanel.showAsOkDialog();
 		}
 		else 
 			super.linkClicked(linkDescription);

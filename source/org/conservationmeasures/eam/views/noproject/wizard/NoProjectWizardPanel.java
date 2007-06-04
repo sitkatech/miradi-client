@@ -86,7 +86,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 			{
 				Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
 				HtmlViewPanel htmlViewPanel = new HtmlViewPanel(getMainWindow(), def.term,  def.definition);
-				htmlViewPanel.showOkDialog();
+				htmlViewPanel.showAsOkDialog();
 			}
 			else if(linkDescription.startsWith(DOWNLOAD_PREFIX))
 			{
