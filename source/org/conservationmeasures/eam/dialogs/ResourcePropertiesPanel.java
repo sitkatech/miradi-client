@@ -33,6 +33,9 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		addField(createNumericField(ProjectResource.TAG_COST_PER_UNIT));
 		addField(createMultilineField(ProjectResource.TAG_COMMENTS));
 		
+		addField(createStringField(ProjectResource.TAG_CUSTOM_FIELD_1));
+		addField(createStringField(ProjectResource.TAG_CUSTOM_FIELD_2));
+		
 		updateFieldsFromProject();
 	}
 

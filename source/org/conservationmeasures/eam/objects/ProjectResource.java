@@ -117,6 +117,11 @@ public class ProjectResource extends BaseObject
 		addField(TAG_ROLE_CODES, roleCodes);
 		addField(TAG_COMMENTS, comments);
 		
+		customUserField1 = new StringData();
+		customUserField2 = new StringData();
+		addField(TAG_CUSTOM_FIELD_1, customUserField1);
+		addField(TAG_CUSTOM_FIELD_2, customUserField2);
+		
 	}
 	
 	public static final String TAG_INITIALS = "Initials";
@@ -129,6 +134,9 @@ public class ProjectResource extends BaseObject
 	public static final String TAG_ORGANIZATION = "Organization";
 	public static final String TAG_ROLE_CODES = "RoleCodes";
 	public static final String TAG_COMMENTS = "Comments";
+	
+	public static final String TAG_CUSTOM_FIELD_1 = "Custom.Custom1";
+	public static final String TAG_CUSTOM_FIELD_2 = "Custom.Custom2";
 
 	StringData initials;
 	StringData name;
@@ -140,4 +148,7 @@ public class ProjectResource extends BaseObject
 	StringData organization;
 	CodeListData roleCodes;
 	StringData comments;
+	
+	StringData customUserField1;
+	StringData customUserField2;
 }
