@@ -137,6 +137,8 @@ public class ProjectMetadata extends BaseObject
 		effectiveDate = new DateData();
 		sizeInHectares = new NumberData();
 		currencyDecimalPlaces = new IntegerData();
+		latitude = new FloatData();
+		longitude = new FloatData();
 		
 		addField(TAG_PROJECT_NAME, projectName);
 		addField(TAG_PROJECT_SCOPE, projectScope);
@@ -148,7 +150,8 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
 		addField(TAG_TNC_SIZE_IN_HECTARES, sizeInHectares);
 		addField(TAG_CURRENCY_DECIMAL_PLACES, currencyDecimalPlaces);
-		
+		addField(TAG_LATITUE, latitude);
+		addField(TAG_LONGITUDE, longitude);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -158,8 +161,7 @@ public class ProjectMetadata extends BaseObject
 		tncEcoregion = new StringData();
 		tncCountry = new StringData();
 		tncOperatingUnits = new StringData();
-		latitude = new FloatData();
-		longitude = new FloatData();
+
 
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
@@ -169,9 +171,6 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_ECOREGION, tncEcoregion);
 		addField(TAG_TNC_COUNTRY, tncCountry);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
-		
-		addField(TAG_LATITUE, latitude);
-		addField(TAG_LONGITUDE, longitude);
 		
 		diagramFontSize = new IntegerData();
 		diagramFontFamily = new StringData();
@@ -193,6 +192,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_EXPECTED_END_DATE = "ExpectedEndDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 	public static final String TAG_CURRENCY_DECIMAL_PLACES = "CurrencyDecimalPlaces";
+	public static final String TAG_LATITUE = "Latitude";
+	public static final String TAG_LONGITUDE = "Longitude";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -205,9 +206,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_ECOREGION = "TNC.Ecoregion";
 	public static final String TAG_TNC_COUNTRY = "TNC.Country";
 	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
-	
-	public static final String TAG_LATITUE = "Latitude";
-	public static final String TAG_LONGITUDE = "Longitude";
+
 	
 	public static final String TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamily";
 	public static final String TAG_DIAGRAM_FONT_SIZE = "DiagramFontSize";
@@ -226,6 +225,8 @@ public class ProjectMetadata extends BaseObject
 	DateData effectiveDate;
 	NumberData sizeInHectares;
 	IntegerData currencyDecimalPlaces;
+	FloatData latitude;
+	FloatData longitude;
 	
 	StringData tncLessonsLearned;
 	StringData tncWorkbookVersionNumber;
@@ -235,8 +236,7 @@ public class ProjectMetadata extends BaseObject
 	StringData tncEcoregion;
 	StringData tncCountry;
 	StringData tncOperatingUnits;
-	FloatData latitude;
-	FloatData longitude;
+
 	
 	StringData diagramFontFamily;
 	IntegerData diagramFontSize;
