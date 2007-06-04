@@ -187,6 +187,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	void fireRightClick(MouseEvent e)
 	{
 		//FIXME: Richard: should not reference static mainwindow var here
+		// Pass in on constructor..
 		getRightClickMenu(EAM.mainWindow.getActions()).show(this, e.getX(), e.getY());
 	}
 	
