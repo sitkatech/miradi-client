@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.DateData;
+import org.conservationmeasures.eam.objectdata.FloatData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -157,6 +158,8 @@ public class ProjectMetadata extends BaseObject
 		tncEcoregion = new StringData();
 		tncCountry = new StringData();
 		tncOperatingUnits = new StringData();
+		latitude = new FloatData();
+		longitude = new FloatData();
 
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
@@ -166,6 +169,9 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_ECOREGION, tncEcoregion);
 		addField(TAG_TNC_COUNTRY, tncCountry);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
+		
+		addField(TAG_LATITUE, latitude);
+		addField(TAG_LONGITUDE, longitude);
 		
 		diagramFontSize = new IntegerData();
 		diagramFontFamily = new StringData();
@@ -200,6 +206,9 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_COUNTRY = "TNC.Country";
 	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
 	
+	public static final String TAG_LATITUE = "Latitude";
+	public static final String TAG_LONGITUDE = "Longitude";
+	
 	public static final String TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamily";
 	public static final String TAG_DIAGRAM_FONT_SIZE = "DiagramFontSize";
 	
@@ -226,6 +235,8 @@ public class ProjectMetadata extends BaseObject
 	StringData tncEcoregion;
 	StringData tncCountry;
 	StringData tncOperatingUnits;
+	FloatData latitude;
+	FloatData longitude;
 	
 	StringData diagramFontFamily;
 	IntegerData diagramFontSize;

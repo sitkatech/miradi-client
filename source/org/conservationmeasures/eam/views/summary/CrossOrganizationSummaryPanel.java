@@ -32,6 +32,9 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 		addField(createMultilineField(metadata.TAG_PROJECT_VISION));
 		addField(createNumericField(metadata.TAG_CURRENCY_DECIMAL_PLACES, 2));
 
+		addField(createNumericField(metadata.TAG_LATITUE, 10));
+		addField(createNumericField(metadata.TAG_LONGITUDE, 10));
+		
 		updateFieldsFromProject();
 	}
 
