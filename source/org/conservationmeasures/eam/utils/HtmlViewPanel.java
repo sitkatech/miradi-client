@@ -27,33 +27,25 @@ import org.martus.swing.Utilities;
 
 public class HtmlViewPanel implements HtmlFormEventHandler
 {
+	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, String htmlTextToUse, HtmlFormEventHandler handlerToUse)
+	{
+		super();
+		initVars(mainWindowToUse, titleToUse, handlerToUse, htmlTextToUse);
+	}
 
-	// FIXME: Richard: These constructors are a mess...might want to be multiple classes? (Richard)
 	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, String htmlTextToUse)
 	{
 		this(mainWindowToUse, titleToUse, htmlTextToUse, new DummyHandler());
 	}
 	
-	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, String htmlTextToUse, HtmlFormEventHandler handlerToUse)
-	{
-		super();
-		htmlText = htmlTextToUse;
-		initVars(mainWindowToUse, titleToUse, handlerToUse);
-	}
-
-
 	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse)
 	{
 		this(mainWindowToUse, titleToUse,  classToUse,  htmlFileNameToUse, new DummyHandler());
 	}
 
-	
 	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse, HtmlFormEventHandler handlerToUse)
 	{
-		super();
-		resourceClass = classToUse;
-		htmlFileName = htmlFileNameToUse;
-		initVars(mainWindowToUse, titleToUse, handlerToUse);
+		this(mainWindowToUse, titleToUse, loadResourceFile(classToUse, htmlFileNameToUse), handlerToUse);
 	}
 	
 	public HtmlViewPanel(MainWindow mainWindowToUse, String title, String text, int width)
@@ -62,9 +54,10 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		forcedWidth = width;
 	}
 
-	private void initVars(MainWindow mainWindowToUse, String titleToUse, HtmlFormEventHandler handlerToUse)
+	private void initVars(MainWindow mainWindowToUse, String titleToUse, HtmlFormEventHandler handlerToUse, String text)
 	{
 		// Choose a "reasonable" width, a bit narrower than the screen
+		htmlText = text;
 		forcedWidth = getAvailableSize().width - 200;
 		viewTitle = titleToUse;
 		delegateFormHandler = handlerToUse;
@@ -79,7 +72,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		EAMDialog dlg = new EAMDialog(mainWindow, title);
 		dlg.setModal(true);
 
-		String body = loadHtml();
+		String body = htmlText;
 		if (body == null)
 			return;
 		HtmlFormViewer bodyComponent =  new HtmlFormViewer(body, this);
@@ -136,12 +129,8 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	}
 	
 
-	
-	private String loadHtml()
+	private static String loadResourceFile(Class resourceClass, String htmlFileName)
 	{
-		if (htmlText!=null)
-			return htmlText;
-		
 		try
 		{
 			return EAM.loadResourceFile(resourceClass, htmlFileName);
@@ -238,9 +227,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 	private int forcedWidth;
 	private String viewTitle;
-	private Class resourceClass;
 	private String htmlText;
-	private String htmlFileName;
 	private HtmlFormEventHandler delegateFormHandler;
 	private JButton close;
 	private MainWindow mainWindow;
