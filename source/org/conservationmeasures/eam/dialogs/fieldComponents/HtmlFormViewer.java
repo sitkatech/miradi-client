@@ -61,6 +61,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		setText(htmlSource);
 		addHyperlinkListener(this);
 		addMouseListener(this);
+		copyAction = new EditorActionCopy();
 	}
 	
 	public int getFontSize()
@@ -196,7 +197,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		JPopupMenu menu = new JPopupMenu();
 		
 		//FIXME: Richard: make loacal var and set in constructor
-		JMenuItem menuItemCopy = new JMenuItem(new EditorActionCopy());
+		JMenuItem menuItemCopy = new JMenuItem(copyAction);
 		menu.add(menuItemCopy);
 		
 		JMenuItem menuItemCut = new JMenuItem(actions.get(ActionCut.class));
@@ -454,5 +455,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	
 	HyperlinkHandler linkHandler;
+	EditorActionCopy copyAction;
+	
 }
 
