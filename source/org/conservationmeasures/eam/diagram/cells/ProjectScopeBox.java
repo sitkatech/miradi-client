@@ -111,8 +111,11 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 		JTextPane ja = new JTextPane();
 		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
-		String fontSize = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_SIZE);
-		ja.setFont(new Font(fontFamily, Font.PLAIN, Integer.parseInt(fontSize)));
+		String fontSize = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
+		int size = Integer.parseInt(fontSize);
+		if (size==0)
+			size = ja.getFont().getSize();
+		ja.setFont(new Font(fontFamily, Font.PLAIN, size));
 		ja.setSize(width, ja.getMaximumSize().height);
 		ja.setText(getText());
 		return ja.getPreferredSize().height;
