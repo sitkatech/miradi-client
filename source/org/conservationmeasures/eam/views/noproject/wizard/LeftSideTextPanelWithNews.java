@@ -54,7 +54,7 @@ public class LeftSideTextPanelWithNews extends LeftSideTextPanel
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			return "news unavaiable";
+			return "news unavailable";
 		}
 	}
 	
