@@ -150,8 +150,8 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
 		addField(TAG_TNC_SIZE_IN_HECTARES, sizeInHectares);
 		addField(TAG_CURRENCY_DECIMAL_PLACES, currencyDecimalPlaces);
-		addField(TAG_LATITUE, latitude);
-		addField(TAG_LONGITUDE, longitude);
+		addField(TAG_PROJECT_LATITUDE, latitude);
+		addField(TAG_PROJECT_LONGITUDE, longitude);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -192,8 +192,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_EXPECTED_END_DATE = "ExpectedEndDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 	public static final String TAG_CURRENCY_DECIMAL_PLACES = "CurrencyDecimalPlaces";
-	public static final String TAG_LATITUE = "Latitude";
-	public static final String TAG_LONGITUDE = "Longitude";
+	public static final String TAG_PROJECT_LATITUDE = "ProjectLatitude";
+	public static final String TAG_PROJECT_LONGITUDE = "ProjectLongitude";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
