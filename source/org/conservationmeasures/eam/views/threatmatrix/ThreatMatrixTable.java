@@ -193,6 +193,29 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 	}
 	
 	
+	public void setSelectedThreat(FactorId factorId)
+	{
+		selectedThreatFactorId = factorId;
+	}
+	
+	public FactorId getSelectedThreat()
+	{
+		return selectedThreatFactorId;
+	}
+	
+	public void setSelectedTarget(FactorId factorId)
+	{
+		selectedTargetFactorId = factorId;
+	}
+	
+	public FactorId getSelectedTarget()
+	{
+		return selectedTargetFactorId;
+	}
+	
+
+	
+	
 	class ActionDeleteModelLinkage extends AbstractAction
 	{
 		public ActionDeleteModelLinkage(int rowToUse, int colToUse)
@@ -323,6 +346,8 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		int col;
 	}
 	
+	private FactorId selectedThreatFactorId;
+	private FactorId selectedTargetFactorId;
 	private BundleColumnSortHandler bundleColumnSortHandler;
 	private final static Graphics staticGraphics = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
 }

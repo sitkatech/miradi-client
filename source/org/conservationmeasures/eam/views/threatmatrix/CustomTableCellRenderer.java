@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.RatingCriterion;
@@ -41,13 +42,13 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		valueOption = (ValueOption)value;
 		renderingRow = row;
 		renderingCol = column;
-		setBorders(table, row, column);
+		setBorders(table, row, column, hasFocus);
 		
 		return this;
 	}
 
 	
-	private void setBorders(JTable table, int row, int column)
+	private void setBorders(JTable table, int row, int column, boolean hasFoucs)
 	{
 		if (isOverallRatingCell(table, row, column))
 			setBorder(BorderFactory.createMatteBorder(5,5,1,1,Color.DARK_GRAY));
@@ -56,27 +57,32 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		else if (isSummaryColumnCell(table, row, column))
 			setBorder(BorderFactory.createMatteBorder(1,5,1,1,Color.DARK_GRAY));
 		else 
-			setBorderForNormalCell(row, column);
+			setBorderForNormalCell(row, column, hasFoucs);
 	}
 
 
-	private void setBorderForNormalCell(int row, int column)
+	private void setBorderForNormalCell(int row, int column, boolean hasFoucs)
 	{
 		try 
 		{
-			int indirectColumn = threatGridPanel.getThreatMatrixTable().convertColumnIndexToModel(column);
+			ThreatMatrixTable threatMatrixTable = threatGridPanel.getThreatMatrixTable();
+			int indirectColumn = threatMatrixTable.convertColumnIndexToModel(column);
+			//TODO: should not set selection bundle here as part of setBoarder...either that or this mehtod is miss named
 			bundle = getThreatTableModel().getBundle(row, indirectColumn);
 			
-			if(bundle != null && threatGridPanel.getSelectedBundle()!= null)
+			if (hasFoucs)
 			{
-				if(threatGridPanel.getSelectedBundle().equals(bundle))
-				{
-					setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
-					return;
-				}
+				FactorId threatId = getThreatTableModel().getDirectThreats()[row].getFactorId();
+				FactorId targetId = getThreatTableModel().getTargets()[indirectColumn].getFactorId();
+				threatMatrixTable.setSelectedThreat(threatId);
+				threatMatrixTable.setSelectedTarget(targetId);
+				setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
 			}
+			else
+				setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1));
+			
 
-			setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1));
+			
 		}
 		catch (Exception e)
 		{
