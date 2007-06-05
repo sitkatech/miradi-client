@@ -39,7 +39,6 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
@@ -271,7 +270,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public void zoom(double proportion)
 	{
 		setScale(getScale() * proportion);
-		EAM.mainWindow.saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, getScale());
+		getMainWindow().saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, getScale());
 	}
 	
 	public boolean hasLocation()
