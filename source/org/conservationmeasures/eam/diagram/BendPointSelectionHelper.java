@@ -6,10 +6,10 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.awt.event.MouseEvent;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.utils.IntVector;
 import org.conservationmeasures.eam.utils.PointList;
 
 public class BendPointSelectionHelper
@@ -22,7 +22,7 @@ public class BendPointSelectionHelper
 	
 	public void clearSelection()
 	{
-		selectionIndexes = new Vector();
+		selectionIndexes = new IntVector();
 	}
 	
 	public void mouseWasPressed(MouseEvent mouseEvent, int pointIndexPressed)
@@ -32,9 +32,9 @@ public class BendPointSelectionHelper
 	
 	public void updateSelectionList(MouseEvent mouseEvent, int pointIndexPressed)
 	{
-		Integer bendPointIndex = new Integer(pointIndexPressed - 1);
+		int bendPointIndex = pointIndexPressed - 1;
 		
-		if (bendPointIndex.intValue() < 0)
+		if (bendPointIndex < 0)
 			return;
 		
 		boolean shiftDown = mouseEvent.isShiftDown();
@@ -61,14 +61,14 @@ public class BendPointSelectionHelper
 		}
 	}
 
-	public void addToSelectionIndexList(Integer bendPointIndex)
+	public void addToSelectionIndexList(int bendPointIndex)
 	{
 		selectionIndexes.add(bendPointIndex);
 	}
 	
 	public void removeSelectionIndex(int bendPointIndex)
 	{
-		selectionIndexes.remove(new Integer(bendPointIndex));
+		selectionIndexes.remove(bendPointIndex);
 	}
 	
 	public int[] getSelectedIndexes()
@@ -76,7 +76,7 @@ public class BendPointSelectionHelper
 		int[] selection = new int[selectionIndexes.size()];
 		for (int i = 0; i < selectionIndexes.size(); ++i)
 		{
-			selection[i] = ((Integer) selectionIndexes.get(i)).intValue();
+			selection[i] = selectionIndexes.get(i);
 		}
 		
 		return selection;
@@ -89,10 +89,10 @@ public class BendPointSelectionHelper
 		PointList allBendPoints = diagramLink.getBendPoints();
 		for (int i = 0; i < allBendPoints.size(); ++i)
 		{
-			selectionIndexes.add(new Integer(i));
+			selectionIndexes.add(i);
 		}
 	}
 	
-	Vector selectionIndexes;
+	IntVector selectionIndexes;
 	LinkCell linkCell;
 }

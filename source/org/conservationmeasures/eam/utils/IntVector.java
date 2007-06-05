@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.utils;
 
 import java.util.Vector;
 
-public class IntVector extends Vector
+public class IntVector
 {
 	public IntVector()
 	{
@@ -19,15 +19,25 @@ public class IntVector extends Vector
 		integers.add(new Integer(intToAdd));
 	}
 	
-	public int getInt(int index)
+	public void remove(int item)
+	{
+		integers.remove(new Integer(item));
+	}
+	
+	public int get(int index)
 	{
 		return ((Integer) integers.get(index)).intValue();
 	}
 	
+	public int size()
+	{
+		return integers.size();
+	}
+	
 	public boolean contains(int item)
 	{
-		return super.contains(new Integer(item));
+		return integers.contains(new Integer(item));
 	}
-
+	
 	Vector integers;
 }
