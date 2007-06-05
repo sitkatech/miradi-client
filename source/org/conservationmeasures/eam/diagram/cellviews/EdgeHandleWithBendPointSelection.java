@@ -13,7 +13,6 @@ import java.awt.event.MouseEvent;
 import org.conservationmeasures.eam.diagram.BendPointSelectionHelper;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphContext;
@@ -33,9 +32,7 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 	{
 		super.mousePressed(event);	
 		bendSelectionHelper.mouseWasPressed(event, currentIndex);
-		//FIXME use this commented code to get main window instaed of using EAM.mainWindow.updateActionStates();
-		//diagram.getMainWindow().updateActionStates();
-		EAM.mainWindow.updateActionStates();
+		diagram.getMainWindow().updateActionStates();
 		diagram.repaint();
 	}
 	
