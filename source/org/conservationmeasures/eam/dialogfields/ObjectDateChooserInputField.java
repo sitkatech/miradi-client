@@ -38,6 +38,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	private void setDateChooserPreferredSizeWithPadding()
 	{
 		Dimension preferredDimension = dateChooser.getPreferredSize();
+		//FIXME: Why do we need EXTRA PADDING....how can we calc width for this component
 		preferredDimension.width = preferredDimension.width + EXTRA_PADDING;
 		dateChooser.setMinimumSize(preferredDimension);
 		dateChooser.setPreferredSize(preferredDimension);
