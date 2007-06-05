@@ -11,9 +11,10 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 import org.conservationmeasures.eam.diagram.BendPointSelectionHelper;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.PointList;
-import org.jgraph.JGraph;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphContext;
 
@@ -23,7 +24,7 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 	{
 		super(edge, ctx);
 		
-		graph = ctx.getGraph();
+		diagram = (DiagramComponent) ctx.getGraph();
 		linkCell = (LinkCell) edge.getCell();
 		bendSelectionHelper = linkCell.getBendPointSelectionHelper();
 	}
@@ -31,8 +32,11 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 	public void mousePressed(MouseEvent event)
 	{
 		super.mousePressed(event);	
-		bendSelectionHelper.mousePressed(event, currentIndex);
-		graph.repaint();
+		bendSelectionHelper.mouseWasPressed(event, currentIndex);
+		//FIXME use this commented code to get main window instaed of using EAM.mainWindow.updateActionStates();
+		//diagram.getMainWindow().updateActionStates();
+		EAM.mainWindow.updateActionStates();
+		diagram.repaint();
 	}
 	
 	public void paint(Graphics g)
@@ -51,12 +55,12 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 				continue;
 			
 			Point point = bendPoints.get(selectedIndexes[i]);
-			g2.setColor(graph.getHighlightColor());
+			g2.setColor(diagram.getHighlightColor());
 			g2.drawRect((int)point.getX() - 10, (int)point.getY() - 10, 18, 18);
 		}
 	}
 	
-	JGraph graph;
+	DiagramComponent diagram;
 	BendPointSelectionHelper bendSelectionHelper;
 	LinkCell linkCell;
 }

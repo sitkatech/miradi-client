@@ -30,12 +30,24 @@ public class DeleteBendPointDoer extends LocationDoer
 		DiagramFactorLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		if (links.length == 0)
 			return false;
-		
-		PointList bendPoints = links[0].getBendPoints();
-		if (bendPoints.size() <= 0)
-			return false;
 
+		if (! hasSelectedBendPoint(links))
+			return false;
+			
 		return true;
+	}
+
+	private boolean hasSelectedBendPoint(DiagramFactorLink[] links)
+	{
+		for (int i = 0; i < links.length; ++i)
+		{
+			LinkCell linkCell = getDiagramView().getDiagramModel().getDiagramFactorLink(links[i]);
+			int bendPointSelectionCount = linkCell.getSelectedBendPointIndexes().length;
+			if (bendPointSelectionCount > 0)
+				return true;
+		}
+		
+		return false;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -60,10 +72,8 @@ public class DeleteBendPointDoer extends LocationDoer
 		
 		for (int i = 0; i < links.length; ++i)
 		{
-			DiagramFactorLink diagramFactorLink = links[i];
-			LinkCell linkCell = getDiagramView().getDiagramModel().getDiagramFactorLink(diagramFactorLink);
-			PointList bendPoints = diagramFactorLink.getBendPoints();
-			PointList newBendPoints = getBendPointListMinusDeletedPoint(bendPoints, linkCell);
+			DiagramFactorLink diagramFactorLink = links[i];			
+			PointList newBendPoints = getBendPointListMinusDeletedPoint(diagramFactorLink);
 			
 			String newBendPointList = newBendPoints.toJson().toString();
 			DiagramFactorLinkId linkId = diagramFactorLink.getDiagramLinkageId();
@@ -72,8 +82,10 @@ public class DeleteBendPointDoer extends LocationDoer
 		}
 	}
 	
-	private PointList getBendPointListMinusDeletedPoint(PointList currentBendPoints, LinkCell linkCell)
+	private PointList getBendPointListMinusDeletedPoint(DiagramFactorLink diagramFactorLink)
 	{
+		LinkCell linkCell = getDiagramView().getDiagramModel().getDiagramFactorLink(diagramFactorLink);
+		PointList currentBendPoints = diagramFactorLink.getBendPoints();
 		int[] selectedBendPointIndexes = linkCell.getSelectedBendPointIndexes();
 		PointList newBendPoints = new PointList();
 		newBendPoints.addAll(currentBendPoints.getAllPoints());

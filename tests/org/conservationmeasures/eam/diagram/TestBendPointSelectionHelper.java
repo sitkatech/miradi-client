@@ -82,7 +82,7 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 
 	private void pressMouseButton(BendPointSelectionHelper selectionHelper, MouseEvent mouseEvent, int selectionIndex)
 	{
-		selectionHelper.mousePressed(mouseEvent, selectionIndex);
+		selectionHelper.mouseWasPressed(mouseEvent, selectionIndex);
 	}
 	
 	public void testMouseEvent()
