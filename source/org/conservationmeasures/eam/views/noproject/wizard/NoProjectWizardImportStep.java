@@ -20,7 +20,7 @@ public class NoProjectWizardImportStep extends NoProjectWizardStep
 		super(wizardToUse);
 		
 		String html = EAM.loadResourceFile(getClass(), "WelcomeImport.html");
-		LeftSideTextPanel left = new LeftSideTextPanel(html, wizardToUse);
+		LeftSideTextPanel left = new LeftSideTextPanel(wizardToUse.getMainWindow(), html, wizardToUse);
 		
 		JPanel panel = new JPanel(new GridLayout(1, 2));
 		panel.add(left);

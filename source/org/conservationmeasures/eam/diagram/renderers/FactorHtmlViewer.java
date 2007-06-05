@@ -11,14 +11,15 @@ import javax.swing.text.html.StyleSheet;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 
 public class FactorHtmlViewer extends HtmlFormViewer
 {
-	public FactorHtmlViewer()
+	public FactorHtmlViewer(MainWindow mainWindow)
 	{
-		super("", null);
+		super(mainWindow,"", null);
 	}
 
 	public void customizeStyleSheet(StyleSheet style)

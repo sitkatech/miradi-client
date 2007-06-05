@@ -47,8 +47,8 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		if(getMainWindow().mainLinkFunction(linkDescription))
 			return;
 		
-		Cursor prevCursor = EAM.mainWindow.getCursor();
-		EAM.mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		Cursor prevCursor = view.getMainWindow().getCursor();
+		view.getMainWindow().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		
 		try 
 		{
@@ -104,7 +104,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		}
 		finally
 		{
-			EAM.mainWindow.setCursor(prevCursor);
+			view.getMainWindow().setCursor(prevCursor);
 		}
 	}
 	

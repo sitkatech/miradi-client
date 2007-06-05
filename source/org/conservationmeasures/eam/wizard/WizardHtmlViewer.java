@@ -8,13 +8,14 @@ package org.conservationmeasures.eam.wizard;
 import javax.swing.text.html.StyleSheet;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.HyperlinkHandler;
 
 public class WizardHtmlViewer extends HtmlFormViewer
 {
-	public WizardHtmlViewer(HyperlinkHandler hyperLinkHandler)
+	public WizardHtmlViewer(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler)
 	{
-		super("", hyperLinkHandler);
+		super(mainWindow, "", hyperLinkHandler);
 	}
 
 	public void customizeStyleSheet(StyleSheet style)

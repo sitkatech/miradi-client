@@ -62,7 +62,7 @@ public class MapView extends UmbrellaView
 
 	private HtmlFormViewer getIntroText() throws Exception
 	{
-		HtmlFormViewer htmlViewer = new HtmlFormViewer("", null);
+		HtmlFormViewer htmlViewer = new HtmlFormViewer(getMainWindow(),"", null);
 		htmlViewer.setText(EAM.loadResourceFile(this.getClass(), OVERVIEW_HTML));
 		
 		//TODO: Find a better way to calculate scroll bar width to subtract

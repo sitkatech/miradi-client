@@ -232,7 +232,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.tabWasSelected();
 		updateVisibilityOfFactors();
 		if (getDiagramComponent()!=null)
-			getDiagramComponent().updateDiagramZoomSetting(getMainWindow());
+			getDiagramComponent().updateDiagramZoomSetting();
 	}
 
 	public void createTabs() throws Exception

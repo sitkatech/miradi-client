@@ -5,14 +5,15 @@
 */ 
 package org.conservationmeasures.eam.dialogs.fieldComponents;
 
+import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.HyperlinkHandler;
 
 public class HtmlPanelLabel extends HtmlFormViewer
 {
 
-	public HtmlPanelLabel(String htmlSource, HyperlinkHandler hyperLinkHandler)
+	public HtmlPanelLabel(MainWindow mainWindow, String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
-		super(htmlSource, hyperLinkHandler);
+		super(mainWindow, htmlSource, hyperLinkHandler);
 	}
 
 	public int getFontSize()

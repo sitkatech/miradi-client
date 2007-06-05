@@ -75,7 +75,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		String body = htmlText;
 		if (body == null)
 			return;
-		HtmlFormViewer bodyComponent =  new HtmlFormViewer(body, this);
+		HtmlFormViewer bodyComponent =  new HtmlFormViewer(mainWindow, body, this);
 		bodyComponent.setFont(Font.getFont("Arial"));
 		dlg.setBackground(bodyComponent.getBackground());
 

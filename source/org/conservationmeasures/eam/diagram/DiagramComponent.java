@@ -56,10 +56,24 @@ import org.martus.swing.Utilities;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder, GraphSelectionListener
 {
-	public DiagramComponent()
+	public DiagramComponent(MainWindow mainWindowToUse)
+	{
+		super();
+		mainWindow = mainWindowToUse;
+		setUp();
+		project = mainWindow.getProject();
+		updateDiagramComponent();
+		Actions actions = mainWindow.getActions();
+		installKeyBindings(actions);
+		diagramContextMenuHandler = new DiagramContextMenuHandler(mainWindow, this, actions);
+		MouseEventHandler mouseHandler = new MouseEventHandler(mainWindow);
+		addMouseListener(mouseHandler);
+		addGraphSelectionListener(mouseHandler);
+	}
+	
+	public void setUp()
 	{
 		setUI(new EAMGraphUI());
-
 		setAntiAliased(true);
 		disableInPlaceEditing();
 		setDisconnectable(false);
@@ -75,34 +89,22 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		ensureCellPerimetersAreRespectedByLinksWithBendPoints();
 	}    
 
+
 	private void ensureCellPerimetersAreRespectedByLinksWithBendPoints()
 	{
 		PortView.allowPortMagic = false;
 	}
 
-	public DiagramComponent(MainWindow mainWindow)
-	{
-		this();
-		project = mainWindow.getProject();
-		updateDiagramComponent(mainWindow);
-		Actions actions = mainWindow.getActions();
-		installKeyBindings(actions);
-		diagramContextMenuHandler = new DiagramContextMenuHandler(mainWindow, this, actions);
-		MouseEventHandler mouseHandler = new MouseEventHandler(mainWindow);
-		addMouseListener(mouseHandler);
-		addGraphSelectionListener(mouseHandler);
-	}
     	
-    public void updateDiagramComponent(MainWindow mainWindow)
+    public void updateDiagramComponent()
     {
 		boolean isGridVisible = mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE);
 		setGridVisible(isGridVisible);
-		// TODO: No need to use EAM.mainWindow here
-		updateDiagramZoomSetting(EAM.mainWindow);
+		updateDiagramZoomSetting();
     }
     	
     
-    public void updateDiagramZoomSetting(MainWindow mainWindow)
+    public void updateDiagramZoomSetting()
     {
     	setScale(mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM));
     }
@@ -167,6 +169,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	private void disableInPlaceEditing() 
 	{
 		setEditClickCount(0);
+	}
+	
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
 	}
 	
 	public Project getProject()
@@ -434,6 +441,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 //		return first;
 //	}
 	
+	MainWindow mainWindow;
 	Color defaultBackgroundColor;
 	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;

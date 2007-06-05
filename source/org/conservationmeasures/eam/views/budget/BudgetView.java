@@ -164,7 +164,7 @@ public class BudgetView extends TabbedView
 
 	private Component getBudgetComponent()
 	{
-		HtmlFormViewer htmlViewer= new WizardHtmlViewer(null);
+		HtmlFormViewer htmlViewer= new WizardHtmlViewer(wizardPanel.getMainWindow(),null);
 		htmlViewer.setText(
 				"<h2>Coming soon</h2>" +
 				"<STRONG>Tracking of Actual Expenses</STRONG> -&nbsp;" +

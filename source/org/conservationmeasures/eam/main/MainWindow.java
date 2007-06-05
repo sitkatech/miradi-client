@@ -513,7 +513,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		preferences.setBoolean(genericTag, state);
 		if (getDiagramComponent()!=null)
-			getDiagramComponent().updateDiagramComponent(this);
+			getDiagramComponent().updateDiagramComponent();
 		repaint();
 	}
 	

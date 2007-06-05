@@ -10,17 +10,18 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 
 public class LeftSideTextPanel extends JPanel
 {
-	public LeftSideTextPanel(String htmlToUse, HyperlinkHandler wizardToUse)
+	public LeftSideTextPanel(MainWindow mainWindow, String htmlToUse, HyperlinkHandler wizardToUse)
 	{
 		super(new BorderLayout());
 		String html = htmlToUse;
 		setBackground(Color.WHITE);
-		viewer = new WizardHtmlViewer(wizardToUse);
+		viewer = new WizardHtmlViewer(mainWindow, wizardToUse);
 		viewer.setText(html);
 
 		add(viewer, BorderLayout.BEFORE_FIRST_LINE);

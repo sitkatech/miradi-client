@@ -11,18 +11,19 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 
 public class ProjectListPanel extends JPanel
 {
-	public ProjectListPanel(HyperlinkHandler handlerToUse)
+	public ProjectListPanel(MainWindow mainWindow, HyperlinkHandler handlerToUse)
 	{
 		super(new BorderLayout());
 		projectList = new ProjectList(handlerToUse);
 		
-		intro = new WizardHtmlViewer(handlerToUse);
+		intro = new WizardHtmlViewer(mainWindow, handlerToUse);
 		intro.setText(TEXT);
 		
 		add(intro, BorderLayout.BEFORE_FIRST_LINE);

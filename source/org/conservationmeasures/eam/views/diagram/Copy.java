@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -50,7 +49,7 @@ public class Copy extends ViewDoer
 		TransferableEamList eamList = new TransferableEamList(getProject().getFilename(), selectedCells);
 		
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();
-		clipboard.setContents(eamList, EAM.mainWindow);
+		clipboard.setContents(eamList, getMainWindow());
 	}
 
 	

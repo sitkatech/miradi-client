@@ -54,14 +54,15 @@ import org.martus.swing.UiEditorPane;
 
 public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, MouseListener
 {
-	public HtmlFormViewer(String htmlSource, HyperlinkHandler hyperLinkHandler)
+	public HtmlFormViewer(MainWindow mainWindowToUse, String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
+		mainWindow = mainWindowToUse;
 		linkHandler = hyperLinkHandler;
 		setEditable(false);
 		setText(htmlSource);
 		addHyperlinkListener(this);
 		addMouseListener(this);
-		copyAction = new EditorActionCopy();
+		copyAction = new EditorActionCopy(mainWindow);
 	}
 	
 	public int getFontSize()
@@ -74,6 +75,10 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		return getMainWindow().getWizardFontFamily();
 	}
 	
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
 	
 	public void setText(String text)
 	{
@@ -142,11 +147,6 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		return rule;
 	}
 
-	//TODO: Richard: should not use static ref here
-	public static MainWindow getMainWindow()
-	{
-		return EAM.mainWindow;
-	}
 	
 	public void hyperlinkUpdate(HyperlinkEvent e)
 	{
@@ -157,10 +157,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		}
 
 	}
-	
-	
-	
-	
+
 	public void mouseClicked(MouseEvent e)
 	{
 	}
@@ -187,16 +184,13 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	void fireRightClick(MouseEvent e)
 	{
-		//FIXME: Richard: should not reference static mainwindow var here
-		// Pass in on constructor..
-		getRightClickMenu(EAM.mainWindow.getActions()).show(this, e.getX(), e.getY());
+		getRightClickMenu(getMainWindow().getActions()).show(this, e.getX(), e.getY());
 	}
 	
 	public JPopupMenu getRightClickMenu(Actions actions)
 	{
 		JPopupMenu menu = new JPopupMenu();
 		
-		//FIXME: Richard: make loacal var and set in constructor
 		JMenuItem menuItemCopy = new JMenuItem(copyAction);
 		menu.add(menuItemCopy);
 		
@@ -217,10 +211,9 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	class EditorActionCopy extends ActionCopy
 	{
-		public EditorActionCopy()
+		public EditorActionCopy(MainWindow mainWindow)
 		{
-			//FIXME: Richard: use one passed in on constructor form other fixme
-			super(EAM.mainWindow);
+			super(mainWindow);
 		}
 		
 		public void doAction(EventObject event) throws CommandFailedException
@@ -453,7 +446,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		Image image;
 	}
 	
-	
+	MainWindow mainWindow;
 	HyperlinkHandler linkHandler;
 	EditorActionCopy copyAction;
 	

@@ -100,7 +100,7 @@ public class ThreatRatingBundlePanel extends JPanel
 
 	private HtmlFormViewer createNameArea()
 	{
-		HtmlFormViewer area = new HtmlPanelLabel("", null);
+		HtmlFormViewer area = new HtmlPanelLabel(view.getMainWindow(),"", null);
 		area.setOpaque(false);
 		area.setPreferredSize(new Dimension(150, 60));
 		area.setEditable(false);

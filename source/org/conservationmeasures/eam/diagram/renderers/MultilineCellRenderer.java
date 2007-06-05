@@ -26,7 +26,9 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
 
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -41,7 +43,8 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	{
 		if (htmlFormViewer==null)
 		{
-			htmlFormViewer = new FactorHtmlViewer();
+			MainWindow mainWindow = ((DiagramComponent)graphToUse).getMainWindow();
+			htmlFormViewer = new FactorHtmlViewer(mainWindow);
 			htmlFormViewer.setOpaque(false);
 		}
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
