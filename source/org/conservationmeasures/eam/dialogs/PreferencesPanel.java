@@ -51,8 +51,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	public void dispose()
 	{
-		diagramPreferencesODIP.dispose();
-		diagramPreferencesODIP = null;
+		diagramProjectPreferencesPanel.dispose();
+		diagramProjectPreferencesPanel = null;
 		super.dispose();
 	}
 	
@@ -186,8 +186,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramTab.add(diagramSystemPreferencesTab);
 		diagramTab.add(bottomText);
 
-		diagramPreferencesODIP = new DiagramProjectPreferencesPanel(mainWindow, project, project.getProjectInfo());
-		diagramTab.add(diagramPreferencesODIP);
+		diagramProjectPreferencesPanel = new DiagramProjectPreferencesPanel(mainWindow, project, project.getProjectInfo());
+		diagramTab.add(diagramProjectPreferencesPanel);
 		
 		return diagramTab;
 	}
@@ -309,7 +309,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	
 	Project project;
 	MainWindow mainWindow;
-	DiagramProjectPreferencesPanel diagramPreferencesODIP;
+	DiagramProjectPreferencesPanel diagramProjectPreferencesPanel;
 	
 	UiComboBox interventionDropdown;
 	UiComboBox directThreatDropdown;
