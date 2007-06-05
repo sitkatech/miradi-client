@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.Box;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
