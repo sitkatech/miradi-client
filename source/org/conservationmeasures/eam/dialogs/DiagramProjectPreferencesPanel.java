@@ -1,5 +1,6 @@
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -24,8 +25,10 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 		return null;
 	}
 	
-	public void updateFieldsFromProject()
+	public void commandExecuted(CommandExecutedEvent event)
 	{
+		super.commandExecuted(event);
+		
 		try
 		{
 			mainWindow.getCurrentView().refresh();
