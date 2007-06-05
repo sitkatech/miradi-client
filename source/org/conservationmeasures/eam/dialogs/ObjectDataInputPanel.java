@@ -8,11 +8,14 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Component;
 
+import javax.swing.Box;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -64,6 +67,18 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel 
 		super.addField(field);
 		addLabel(label);
 		addFieldComponent(field.getComponent());
+		return field;
+	}
+	
+	public ObjectDataInputField addFieldWithCustomLabelAndHint(ObjectDataInputField field, String hint)
+	{
+		super.addField(field);
+		addLabel(field.getObjectType(), field.getTag());
+		Box box = Box.createHorizontalBox();
+		box.add(field.getComponent());
+		box.add(Box.createHorizontalStrut(20));
+		box.add(new PanelTitleLabel(hint));
+		addFieldComponent(box);
 		return field;
 	}
 
