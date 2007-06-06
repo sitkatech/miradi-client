@@ -19,7 +19,7 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		super(wizardToUse);
 		
 		String html = EAM.loadResourceFile(getClass(), "WelcomeNew.html");
-		left = new LeftSideTextPanelWithNews(wizardToUse.getMainWindow(), html, wizardToUse);
+		left = new LeftSideTextPanelWithNews(getMainWindow(), html, wizardToUse);
 		
 		JPanel panel = new JPanel(new GridLayout(1, 2));
 		panel.add(left);

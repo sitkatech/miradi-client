@@ -180,7 +180,7 @@ public class WizardManager
 	//TODO: view switch should not happen here (Richard, with Kevin)
 	private void doJump(SkeletonWizardStep currentStepClass, SkeletonWizardStep newStepClass, String viewNameNew) throws CommandFailedException, Exception
 	{
-		MainWindow mainWindow = currentStepClass.getWizard().getMainWindow();
+		MainWindow mainWindow = currentStepClass.getMainWindow();
 		mainWindow.getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{

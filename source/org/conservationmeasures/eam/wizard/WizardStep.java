@@ -17,8 +17,8 @@ public class WizardStep extends SkeletonWizardStep
 	{
 		super(wizardToUse);
 
-		htmlViewerLeft = new WizardHtmlViewer(wizardToUse.getMainWindow(),this);
-		htmlViewerRight = new WizardHtmlViewer(wizardToUse.getMainWindow(),this);
+		htmlViewerLeft = new WizardHtmlViewer(getMainWindow(),this);
+		htmlViewerRight = new WizardHtmlViewer(getMainWindow(),this);
 		JSplitPane splitPane = new JSplitPane();
 		splitPane.setLeftComponent(new FastScrollPane(htmlViewerLeft));
 		splitPane.setRightComponent(new FastScrollPane(htmlViewerRight));
@@ -34,6 +34,7 @@ public class WizardStep extends SkeletonWizardStep
 		invalidate();
 		validate();
 	}
+	
 	
 	private HtmlFormViewer htmlViewerLeft;
 	private HtmlFormViewer htmlViewerRight;

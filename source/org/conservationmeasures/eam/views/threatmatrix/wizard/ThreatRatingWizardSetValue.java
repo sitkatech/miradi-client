@@ -29,7 +29,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 
 	public void refresh() throws Exception
 	{
-		ThreatRatingFramework framework = getWizard().getMainWindow().getProject().getThreatRatingFramework();
+		ThreatRatingFramework framework = getMainWindow().getProject().getThreatRatingFramework();
 		BaseId criterionId = framework.findCriterionByLabel(critertionName).getId();
 		ThreatRatingBundle bundle = getThreatRatingWizard().getSelectedBundle();
 		criterion = getFramework().getCriterion(criterionId);

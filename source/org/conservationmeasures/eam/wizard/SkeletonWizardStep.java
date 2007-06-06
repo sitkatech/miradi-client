@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
@@ -73,7 +74,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 
 	public void linkClicked(String linkDescription)
 	{
-		if (getWizard().getMainWindow().mainLinkFunction(linkDescription))
+		if (getMainWindow().mainLinkFunction(linkDescription))
 			return;
 			
 		if(linkDescription.startsWith("View:"))
@@ -82,6 +83,10 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		}
 	}
 	
+	public MainWindow getMainWindow()
+	{
+		return getWizard().getMainWindow();
+	}
 
 	private void control(String controlName)
 	{
