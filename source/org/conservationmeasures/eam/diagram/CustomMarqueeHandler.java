@@ -8,8 +8,9 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.JGraph;
 import org.jgraph.graph.BasicMarqueeHandler;
 
@@ -29,24 +30,34 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 	public void handleMarqueeEvent(MouseEvent e, JGraph graph, Rectangle2D bounds)
 	{
 		super.handleMarqueeEvent(e, graph, bounds);
-		selectBendPointInBounds();
+		selectAllBendPointsInBouds();
 	}
 
-	private void selectBendPointInBounds()
+	private void selectAllBendPointsInBouds()
 	{
-
-		Object[] selectedCells = diagram.getSelectionCells();
-		for (int i = 0; i < selectedCells.length; ++i)
+		DiagramModel model = diagram.getDiagramModel();
+		DiagramFactorLink[] allLinks = model.getAllDiagramLinksAsArray();
+		
+		for (int i = 0 ; i < allLinks.length; ++i)
 		{
-			EAMGraphCell rawCell = (EAMGraphCell) selectedCells[i];
-			if (rawCell.isFactorLink())
+			selectBendPointsAndLinksInBounds(model, allLinks[i]);
+		}
+	}
+
+	private void selectBendPointsAndLinksInBounds(DiagramModel model, DiagramFactorLink diagramLink)
+	{
+		LinkCell linkCell = model.getDiagramFactorLink(diagramLink);
+		PointList bendPoints = diagramLink.getBendPoints();
+		
+		for (int k = 0; k < bendPoints.size(); ++k)
+		{
+			if (marqueeBounds.contains(bendPoints.get(k)))
 			{
-				LinkCell linkCell = (LinkCell) rawCell;
-				//FIXME dont select all but only those bend points withiin bounds (must select the link first)
-				linkCell.getBendPointSelectionHelper().selectAll();
+				diagram.addSelectionCell(linkCell);
+				linkCell.getBendPointSelectionHelper().addToSelectionIndexList(k);
 			}
 		}
 	}
-	
+
 	private DiagramComponent diagram;
 }
