@@ -43,27 +43,40 @@ public class BendPointSelectionHelper
 		if (shiftDown && controlDown)
 			return;
 		
-		//FIXME: Nima: all isShiftDown()s should be isControlDown()s (do the test for this class as well)
-		if (! selectionIndexes.contains(bendPointIndex) && ! controlDown)
+		if (! containsBendPoint(bendPointIndex) && ! controlDown && ! shiftDown)
 		{
-			clearSelection();
-			addToSelectionIndexList(bendPointIndex);
+			addToClearedList(bendPointIndex);
 			return;
 		}
 		
-		//FIXME: Nima: all isShiftDown()s should be isControlDown()s (do the test for this class as well)
-		if (! selectionIndexes.contains(bendPointIndex) && controlDown)
+		if (! containsBendPoint(bendPointIndex) && (controlDown || shiftDown))
 		{
 			addToSelectionIndexList(bendPointIndex);
 			return;
 		}
 
-		//FIXME: Nima: all isShiftDown()s should be isControlDown()s (do the test for this class as well)
-		if (selectionIndexes.contains(bendPointIndex) && controlDown)
+		if (containsBendPoint(bendPointIndex) && controlDown)
 		{
-			selectionIndexes.remove(bendPointIndex);
+			removeSelectionIndex(bendPointIndex);
 			return;
 		}
+		
+		if (containsBendPoint(bendPointIndex) && ! controlDown && ! shiftDown)
+		{
+			addToClearedList(bendPointIndex);
+			return;	
+		}
+	}
+
+	private boolean containsBendPoint(int bendPointIndex)
+	{
+		return selectionIndexes.contains(bendPointIndex);
+	}
+
+	private void addToClearedList(int bendPointIndex)
+	{
+		clearSelection();
+		addToSelectionIndexList(bendPointIndex);
 	}
 
 	public void addToSelectionIndexList(int bendPointIndex)
