@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -87,9 +88,16 @@ public class BendPointCreator
 	
 	private Rectangle2D getBounds(LinkCell linkCell)
 	{
-		EdgeView view = (EdgeView) getCache().getMapping(linkCell, false);
+		GraphLayoutCache cache = getCache();
+		EdgeView view = (EdgeView) cache.getMapping(linkCell, false);
+	
+		//TODO shoud check to see if the link is first visible outside of this method, in order to 
+		// avoid the null test below.  the null test exists becuase if there are draft starts in a
+		// project,  you cant create a bend point, exceptions are thrown.  view is null
+		if (view != null)
+			return view.getBounds();
 		
-		return view.getBounds(); 
+		return new Rectangle(-1, -1, -1, -1);
 	}
 	
 	private boolean isWithinRange(Line2D.Double[] lineSegments, Point point)
