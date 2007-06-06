@@ -27,7 +27,7 @@ public class BendPointSelectionHelper
 	
 	public void mouseClicked(MouseEvent event, int bendPointIndex)
 	{	
-		int adjustBendPointIndex = adjustBendPointIndex(bendPointIndex);
+		int adjustBendPointIndex = getBendPointIndexForControlPointIndex(bendPointIndex);
 		
 		if (adjustBendPointIndex < 0)
 			return;
@@ -38,22 +38,23 @@ public class BendPointSelectionHelper
 		if (event.isShiftDown())
 			return;
 		
-		if (! containsBendPoint(bendPointIndex))
+		if (! selectionIndexes.contains(bendPointIndex))
 			return;
-		
-		addToClearedList(adjustBendPointIndex);
+
+		clearSelection();
+		selectionIndexes.add(bendPointIndex);
 	}
 
 	public void mouseWasPressed(MouseEvent mouseEvent, int pointIndexPressed)
 	{	
-		int adjustBendPointIndex = adjustBendPointIndex(pointIndexPressed);
+		int adjustBendPointIndex = getBendPointIndexForControlPointIndex(pointIndexPressed);
 		if (adjustBendPointIndex < 0)
 			return;
 		
 		updateSelectionList(mouseEvent, adjustBendPointIndex);
 	}
 	
-	private int adjustBendPointIndex(int currentIndex)
+	private int getBendPointIndexForControlPointIndex(int currentIndex)
 	{
 		return currentIndex - 1;
 	}
@@ -62,45 +63,38 @@ public class BendPointSelectionHelper
 	{	
 		boolean shiftDown = mouseEvent.isShiftDown();
 		boolean controlDown = mouseEvent.isControlDown();
+		boolean contains = selectionIndexes.contains(bendPointIndex);
 		
-		if (! containsBendPoint(bendPointIndex) && ! controlDown && ! shiftDown)
-		{
-			addToClearedList(bendPointIndex);
-			return;
-		}
+		if (contains)
+			updateSelectionWasAlreadySelected(bendPointIndex, controlDown);
+		else
+			updateSelectionWasNotAlreadySelected(bendPointIndex, controlDown, shiftDown);
+	}
+	
+	private void updateSelectionWasNotAlreadySelected(int bendPointIndex, boolean controlDown, boolean shiftDown)
+	{
+		if (!controlDown && !shiftDown)
+			clearSelection();
 		
-		if (! containsBendPoint(bendPointIndex) && (controlDown || shiftDown))
-		{
-			addToSelectionIndexList(bendPointIndex);
-			return;
-		}
-
-		if (containsBendPoint(bendPointIndex) && controlDown)
-		{
-			removeSelectionIndex(bendPointIndex);
-			return;
-		}
+		selectionIndexes.add(bendPointIndex);
 	}
 
-	private boolean containsBendPoint(int bendPointIndex)
+	private void updateSelectionWasAlreadySelected(int bendPointIndex, boolean controlDown)
 	{
-		return selectionIndexes.contains(bendPointIndex);
+		if (! controlDown)
+			return;
+		
+		removeSelectionIndex(bendPointIndex);
 	}
 
-	private void addToClearedList(int bendPointIndex)
+	public void removeSelectionIndex(int bendPointIndex)
 	{
-		clearSelection();
-		addToSelectionIndexList(bendPointIndex);
+		selectionIndexes.remove(bendPointIndex);
 	}
 
 	public void addToSelectionIndexList(int bendPointIndex)
 	{
 		selectionIndexes.add(bendPointIndex);
-	}
-	
-	public void removeSelectionIndex(int bendPointIndex)
-	{
-		selectionIndexes.remove(bendPointIndex);
 	}
 	
 	//TODO move this method to IntVector and name it toIntArray
