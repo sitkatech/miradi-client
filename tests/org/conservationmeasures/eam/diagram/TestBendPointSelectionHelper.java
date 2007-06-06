@@ -78,7 +78,7 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 		
 		MouseEvent mouseEventNoShift = getMouseEvent(0);
 		pressMouseButton(selectionHelper, mouseEventNoShift, index1);
-		assertEquals("not added selected point?", 1, selectionHelper.getSelectedIndexes().length);
+		assertEquals("not added selected point?", 3, selectionHelper.getSelectedIndexes().length);
 	}
 	
 	private void clickWithControlModifier() throws Exception
@@ -103,7 +103,7 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 		
 		MouseEvent noModifierEvent = getMouseEvent(0);
 		pressMouseButton(selectionHelper, noModifierEvent, index1);
-		assertEquals("not cleared selection and added?", 1, selectionHelper.getSelectedIndexes().length);
+		assertEquals("not cleared selection and added?", 3, selectionHelper.getSelectedIndexes().length);
 	}
 
 	private void pressMouseButton(BendPointSelectionHelper selectionHelper, MouseEvent mouseEvent, int selectionIndex)

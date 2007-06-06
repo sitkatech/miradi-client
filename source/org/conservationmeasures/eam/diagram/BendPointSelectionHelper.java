@@ -60,12 +60,6 @@ public class BendPointSelectionHelper
 			removeSelectionIndex(bendPointIndex);
 			return;
 		}
-		
-		if (containsBendPoint(bendPointIndex) && ! controlDown && ! shiftDown)
-		{
-			addToClearedList(bendPointIndex);
-			return;	
-		}
 	}
 
 	private boolean containsBendPoint(int bendPointIndex)
