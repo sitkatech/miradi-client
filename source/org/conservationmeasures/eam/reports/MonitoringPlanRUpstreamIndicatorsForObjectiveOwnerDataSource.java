@@ -12,7 +12,7 @@ public class MonitoringPlanRUpstreamIndicatorsForObjectiveOwnerDataSource extend
 {
 	public MonitoringPlanRUpstreamIndicatorsForObjectiveOwnerDataSource(Objective objective)
 	{
-		super(objective.getObjectManager().getProject());
+		super(objective.getProject());
 		Vector indicatorVector = MonitoringObjectiveNode.getAllUpstreamIndicatorsForObjectiveOwner(objective);
 		ORefList list = new ORefList();
 		for (int i=0; i<indicatorVector.size(); ++i)

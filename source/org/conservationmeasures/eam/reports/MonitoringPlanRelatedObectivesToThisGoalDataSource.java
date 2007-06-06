@@ -17,7 +17,7 @@ public class MonitoringPlanRelatedObectivesToThisGoalDataSource extends CommonDa
 
 	public MonitoringPlanRelatedObectivesToThisGoalDataSource(Goal goal) throws Exception
 	{
-		super(goal.getObjectManager().getProject());
+		super(goal.getProject());
 		FactorSet relatedNodes = goal.getObjectManager().getChainManager().findAllFactorsRelatedToThisGoal(goal.getId());
 		Vector objectiveVector = MonitoringGoalNode.createObjectiveNodes(project, relatedNodes);
 		ORefList list = new ORefList();

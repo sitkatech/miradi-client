@@ -10,7 +10,7 @@ public class BudgetMontiroingIndicatorDataSource extends CommonDataSource
 {
 	public BudgetMontiroingIndicatorDataSource(Indicator indicator)
 	{
-		super(indicator.getObjectManager().getProject());
+		super(indicator.getProject());
 		WorkPlanTaskNode[] nodes =  WorkPlanMonitoringIndicator.getWorkPlanIndicatorTask(indicator);
 		ORefList list = new ORefList();
 		for (int i=0; i<nodes.length; ++i)

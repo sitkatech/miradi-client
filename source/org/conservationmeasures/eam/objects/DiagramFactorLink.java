@@ -154,7 +154,7 @@ public class DiagramFactorLink extends BaseObject
 	
 	private FactorLink getUnderlyingLink()
 	{
-		return (FactorLink)getObjectManager().getProject().findObject(new ORef(FactorLink.getObjectType(), underlyingObjectId.getId()));
+		return (FactorLink)getProject().findObject(new ORef(FactorLink.getObjectType(), underlyingObjectId.getId()));
 	}
 	
 	public String getData(String fieldTag)

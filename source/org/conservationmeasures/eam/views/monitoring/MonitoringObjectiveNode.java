@@ -107,7 +107,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 	static public Vector getAllUpstreamIndicatorsForObjectiveOwner(Objective objective)
 	{
 		Vector children = new Vector();
-		Project project = objective.getObjectManager().getProject();
+		Project project = objective.getProject();
 		Factor owner = (Factor)objective.getOwner();
 		HashSet indicatorIds = getAllUpstreamIndicators(owner);
 		

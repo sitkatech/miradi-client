@@ -80,7 +80,7 @@ public class TargetViabilityNode extends TreeTableNode
 
 	static public KeyEcologicalAttributeNode[] getKeaNodes(Target target)
 	{
-		Project project = target.getObjectManager().getProject();
+		Project project = target.getProject();
 		IdList keas = target.getKeyEcologicalAttributes();
 		Vector keyEcologicalAttributesVector = new Vector();
 		for(int i = 0; i < keas.size(); ++i)

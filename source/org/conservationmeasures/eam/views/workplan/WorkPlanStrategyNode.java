@@ -78,7 +78,7 @@ public class WorkPlanStrategyNode extends TreeTableNode
 
 	static public WorkPlanTaskNode[] getWorkPlanActivitiesTask(Strategy intervention)
 	{
-		Project project = intervention.getObjectManager().getProject();
+		Project project = intervention.getProject();
 		int childCount = intervention.getActivityIds().size();
 		Vector activityVector = new Vector();
 		for(int i = 0; i < childCount; ++i)

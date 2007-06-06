@@ -55,7 +55,7 @@ abstract public class ChainObject
 	
 	protected Project getProject()
 	{
-		return startingFactor.getObjectManager().getProject();
+		return startingFactor.getProject();
 	}
 	
 	protected void attempToAdd(FactorLink thisLinkage)

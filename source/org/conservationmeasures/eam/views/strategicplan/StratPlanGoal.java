@@ -85,7 +85,7 @@ public class StratPlanGoal extends TreeTableNode
 
 	static public Vector getObjectiveNodes(Goal goal) throws Exception
 	{
-		Project project = goal.getObjectManager().getProject();
+		Project project = goal.getProject();
 		Vector objectiveVector = new Vector();
 		FactorSet relatedNodes = new ChainManager(project).findAllFactorsRelatedToThisGoal(goal.getId());
 		Iterator iter = relatedNodes.iterator();

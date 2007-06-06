@@ -10,7 +10,7 @@ public class BudgetStrategyActivitiesDataSource extends CommonDataSource
 {
 	public BudgetStrategyActivitiesDataSource(Strategy strategy)
 	{
-		super(strategy.getObjectManager().getProject());
+		super(strategy.getProject());
 		WorkPlanTaskNode[] nodes = WorkPlanStrategyNode.getWorkPlanActivitiesTask(strategy);
 		ORefList list = new ORefList();
 		for (int i=0; i<nodes.length; ++i)

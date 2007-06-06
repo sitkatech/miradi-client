@@ -76,7 +76,7 @@ public class StratPlanObjective extends TreeTableNode
 
 	static public StratPlanStrategy[] getStrategyNodes(Objective objective)
 	{
-		Project project = objective.getObjectManager().getProject();
+		Project project = objective.getProject();
 		ObjectiveId objectiveId = (ObjectiveId)objective.getId();
 
 		Factor[] strategyObjects = project.getStrategyPool().getNonDraftStrategies();

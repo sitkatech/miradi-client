@@ -14,7 +14,7 @@ public class MonitoringPlanRelatedIndicatorsToThisGoalDataSource extends CommonD
 
 	public MonitoringPlanRelatedIndicatorsToThisGoalDataSource(Goal goal) throws Exception
 	{
-		super(goal.getObjectManager().getProject());
+		super(goal.getProject());
 		FactorSet relatedNodes = goal.getObjectManager().getChainManager().findAllFactorsRelatedToThisGoal(goal.getId());
 		MonitoringGoalNode.createIndicatorNodes(project, relatedNodes);
 		Vector indicatorVector = MonitoringGoalNode.createIndicatorNodes(project, relatedNodes);

@@ -60,7 +60,7 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	
 	static public DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
-		DiagramModel diagramModel = new DiagramModel(diagramObject.getObjectManager().getProject());
+		DiagramModel diagramModel = new DiagramModel(diagramObject.getProject());
 		diagramModel.fillFrom(diagramObject);
 		diagramModel.updateProjectScopeBox();
 		DiagramComponent diagram = new DiagramComponent(mainWindow);

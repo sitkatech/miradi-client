@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.xml.XmlUtilities;
@@ -73,6 +74,11 @@ abstract public class BaseObject
 	public ObjectManager getObjectManager()
 	{
 		return objectManager;
+	}
+	
+	public Project getProject()
+	{
+		return objectManager.getProject();
 	}
 		
 	public static BaseObject createFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json) throws Exception

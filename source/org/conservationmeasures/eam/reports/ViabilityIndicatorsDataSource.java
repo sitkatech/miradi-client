@@ -13,7 +13,7 @@ public class ViabilityIndicatorsDataSource extends CommonDataSource
 {
 	public ViabilityIndicatorsDataSource(KeyEcologicalAttribute kea)
 	{
-		super(kea.getObjectManager().getProject());
+		super(kea.getProject());
 		ORefList list = new ORefList(Indicator.getObjectType(), kea.getIndicatorIds());
 		setObjectList(list);
 	}

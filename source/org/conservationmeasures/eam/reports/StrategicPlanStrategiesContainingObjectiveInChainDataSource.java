@@ -10,7 +10,7 @@ public class StrategicPlanStrategiesContainingObjectiveInChainDataSource extends
 {
 	public StrategicPlanStrategiesContainingObjectiveInChainDataSource(Objective objective)
 	{
-		super(objective.getObjectManager().getProject());
+		super(objective.getProject());
 		ORefList list = new ORefList();
 		StratPlanStrategy[] objectiveVector = StratPlanObjective.getStrategyNodes(objective);
 		for (int i=0; i<objectiveVector.length; ++i)

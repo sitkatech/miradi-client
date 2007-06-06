@@ -17,7 +17,7 @@ public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
 {
 	public KeyEcologicalAttrubutesDataSource(Target target)
 	{
-		super(target.getObjectManager().getProject());
+		super(target.getProject());
 		if (target.isViabilityModeTNC())
 		{
 			KeyEcologicalAttributeNode[] keas = TargetViabilityNode.getKeaNodes(target);

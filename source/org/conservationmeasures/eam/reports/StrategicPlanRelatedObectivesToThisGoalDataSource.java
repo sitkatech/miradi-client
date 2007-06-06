@@ -15,7 +15,7 @@ public class StrategicPlanRelatedObectivesToThisGoalDataSource extends CommonDat
 {
 	public StrategicPlanRelatedObectivesToThisGoalDataSource(Goal goal) throws Exception
 	{
-		super(goal.getObjectManager().getProject());
+		super(goal.getProject());
 		ORefList list = new ORefList();
 		Vector objectiveVector = StratPlanGoal.getObjectiveNodes(goal);
 		for (int i=0; i<objectiveVector.size(); ++i)
