@@ -434,9 +434,20 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 //		return first;
 //	}
 	
+	public void setMarquee(boolean isMarqueeToUse)
+	{
+		isMarquee = isMarqueeToUse;
+	}
+	
+	public boolean isMarquee()
+	{
+		return isMarquee;
+	}
+	
 	MainWindow mainWindow;
 	Color defaultBackgroundColor;
 	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
+	boolean isMarquee;
 }
 

@@ -19,6 +19,12 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 	{
 		diagram = diagramToUse;
 	}
+	
+	public void mousePressed(MouseEvent e)
+	{
+		super.mousePressed(e);
+		diagram.setMarquee(true);
+	}
 
 	public void handleMarqueeEvent(MouseEvent e, JGraph graph, Rectangle2D bounds)
 	{
@@ -28,10 +34,7 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 
 	private void selectBendPointInBounds()
 	{
-		//FIXME enable and make it work (nima)
-		//just tring to fool the compiler
-		if(false)
-			return;
+
 		Object[] selectedCells = diagram.getSelectionCells();
 		for (int i = 0; i < selectedCells.length; ++i)
 		{
@@ -39,6 +42,7 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 			if (rawCell.isFactorLink())
 			{
 				LinkCell linkCell = (LinkCell) rawCell;
+				//FIXME dont select all but only those bend points withiin bounds (must select the link first)
 				linkCell.getBendPointSelectionHelper().selectAll();
 			}
 		}
