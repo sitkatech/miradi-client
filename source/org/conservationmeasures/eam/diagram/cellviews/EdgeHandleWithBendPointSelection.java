@@ -31,24 +31,13 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 	public void mouseReleased(MouseEvent event)
 	{
 		Point mouseEnd = event.getPoint();
-		if (sameLocationAsStart(mouseEnd))
-			fakeMouseClicked(event);
+		if (mouseStart.equals(mouseEnd))
+			generateMouseWasClicked(event);
 		
 		super.mouseReleased(event);
 	}
 
-	private boolean sameLocationAsStart(Point endLocation)
-	{
-		if (mouseStart.x != endLocation.x)
-			return false;
-		
-		if (mouseStart.y != endLocation.y)
-			return false;
-		
-		return true;
-	}
-
-	public void fakeMouseClicked(MouseEvent event)
+	public void generateMouseWasClicked(MouseEvent event)
 	{
 		bendSelectionHelper.mouseClicked(event, currentIndex);
 		bendPointSelectionChanged();
