@@ -28,10 +28,42 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		bendSelectionHelper = linkCell.getBendPointSelectionHelper();
 	}
 	
+	public void mouseReleased(MouseEvent event)
+	{
+		Point mouseEnd = event.getPoint();
+		if (sameLocationAsStart(mouseEnd))
+			fakeMouseClicked(event);
+		
+		super.mouseReleased(event);
+	}
+
+	private boolean sameLocationAsStart(Point endLocation)
+	{
+		if (mouseStart.x != endLocation.x)
+			return false;
+		
+		if (mouseStart.y != endLocation.y)
+			return false;
+		
+		return true;
+	}
+
+	public void fakeMouseClicked(MouseEvent event)
+	{
+		bendSelectionHelper.mouseClicked(event, currentIndex);
+		bendPointSelectionChanged();
+	}
+
 	public void mousePressed(MouseEvent event)
 	{
-		super.mousePressed(event);	
+		super.mousePressed(event);
+		mouseStart = event.getPoint();
 		bendSelectionHelper.mouseWasPressed(event, currentIndex);
+		bendPointSelectionChanged();
+	}
+	
+	private void bendPointSelectionChanged()
+	{
 		diagram.getMainWindow().updateActionStates();
 		diagram.repaint();
 	}
@@ -60,4 +92,5 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 	DiagramComponent diagram;
 	BendPointSelectionHelper bendSelectionHelper;
 	LinkCell linkCell;
+	Point mouseStart;
 }

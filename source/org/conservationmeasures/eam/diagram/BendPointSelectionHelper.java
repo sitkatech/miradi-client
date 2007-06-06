@@ -25,23 +25,40 @@ public class BendPointSelectionHelper
 		selectionIndexes = new IntVector();
 	}
 	
+	public void mouseClicked(MouseEvent event, int bendPointIndex)
+	{	
+		int adjustBendPointIndex = adjustBendPointIndex(bendPointIndex);
+		if (adjustBendPointIndex < 0)
+			return;
+		
+		boolean shiftDown = event.isShiftDown();
+		boolean controlDown = event.isControlDown();
+		
+		if (containsBendPoint(adjustBendPointIndex) && ! controlDown && ! shiftDown)
+		{
+			addToClearedList(adjustBendPointIndex);
+			return;	
+		}
+	}
+
 	public void mouseWasPressed(MouseEvent mouseEvent, int pointIndexPressed)
 	{	
-		updateSelectionList(mouseEvent, pointIndexPressed);
+		int adjustBendPointIndex = adjustBendPointIndex(pointIndexPressed);
+		if (adjustBendPointIndex < 0)
+			return;
+		
+		updateSelectionList(mouseEvent, adjustBendPointIndex);
 	}
 	
-	public void updateSelectionList(MouseEvent mouseEvent, int pointIndexPressed)
+	private int adjustBendPointIndex(int currentIndex)
 	{
-		int bendPointIndex = pointIndexPressed - 1;
-		
-		if (bendPointIndex < 0)
-			return;
-		
+		return currentIndex - 1;
+	}
+	
+	public void updateSelectionList(MouseEvent mouseEvent, int bendPointIndex)
+	{	
 		boolean shiftDown = mouseEvent.isShiftDown();
 		boolean controlDown = mouseEvent.isControlDown();
-		
-		if (shiftDown && controlDown)
-			return;
 		
 		if (! containsBendPoint(bendPointIndex) && ! controlDown && ! shiftDown)
 		{
@@ -83,6 +100,7 @@ public class BendPointSelectionHelper
 		selectionIndexes.remove(bendPointIndex);
 	}
 	
+	//TODO move this method to IntVector and name it toIntArray
 	public int[] getSelectedIndexes()
 	{
 		int[] selection = new int[selectionIndexes.size()];
