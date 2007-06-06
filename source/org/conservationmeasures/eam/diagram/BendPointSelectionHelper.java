@@ -28,17 +28,20 @@ public class BendPointSelectionHelper
 	public void mouseClicked(MouseEvent event, int bendPointIndex)
 	{	
 		int adjustBendPointIndex = adjustBendPointIndex(bendPointIndex);
+		
 		if (adjustBendPointIndex < 0)
 			return;
 		
-		boolean shiftDown = event.isShiftDown();
-		boolean controlDown = event.isControlDown();
+		if (event.isControlDown())
+			return;
 		
-		if (containsBendPoint(adjustBendPointIndex) && ! controlDown && ! shiftDown)
-		{
-			addToClearedList(adjustBendPointIndex);
-			return;	
-		}
+		if (event.isShiftDown())
+			return;
+		
+		if (! containsBendPoint(bendPointIndex))
+			return;
+		
+		addToClearedList(adjustBendPointIndex);
 	}
 
 	public void mouseWasPressed(MouseEvent mouseEvent, int pointIndexPressed)
