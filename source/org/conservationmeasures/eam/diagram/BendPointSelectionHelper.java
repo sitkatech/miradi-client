@@ -25,11 +25,11 @@ public class BendPointSelectionHelper
 		selectionIndexes = new IntVector();
 	}
 	
-	public void mouseClicked(MouseEvent event, int bendPointIndex)
+	public void mouseClicked(MouseEvent event, int controlPointIndex)
 	{	
-		int adjustBendPointIndex = getBendPointIndexForControlPointIndex(bendPointIndex);
+		int bendPointIndex = getBendPointIndexForControlPointIndex(controlPointIndex);
 		
-		if (adjustBendPointIndex < 0)
+		if (bendPointIndex < 0)
 			return;
 		
 		if (event.isControlDown())
@@ -38,20 +38,20 @@ public class BendPointSelectionHelper
 		if (event.isShiftDown())
 			return;
 		
-		if (! selectionIndexes.contains(bendPointIndex))
+		if (! selectionIndexes.contains(controlPointIndex))
 			return;
 
 		clearSelection();
-		selectionIndexes.add(adjustBendPointIndex);
+		selectionIndexes.add(bendPointIndex);
 	}
 
-	public void mouseWasPressed(MouseEvent mouseEvent, int pointIndexPressed)
+	public void mouseWasPressed(MouseEvent mouseEvent, int controlPointIndex)
 	{	
-		int adjustBendPointIndex = getBendPointIndexForControlPointIndex(pointIndexPressed);
-		if (adjustBendPointIndex < 0)
+		int bendPointIndex = getBendPointIndexForControlPointIndex(controlPointIndex);
+		if (bendPointIndex < 0)
 			return;
 		
-		updateSelectionList(mouseEvent, adjustBendPointIndex);
+		updateSelectionList(mouseEvent, bendPointIndex);
 	}
 	
 	private int getBendPointIndexForControlPointIndex(int currentIndex)
