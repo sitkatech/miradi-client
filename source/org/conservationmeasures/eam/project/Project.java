@@ -36,6 +36,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.VersionConstants;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.CausePool;
@@ -58,8 +59,10 @@ import org.conservationmeasures.eam.objectpools.TextBoxPool;
 import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -745,6 +748,17 @@ public class Project
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
+	
+	public DiagramObject getConceptualModelDiagram()
+	{
+		ConceptualModelDiagramPool conceptualDiagramPool = getConceptualModelDiagramPool();
+		ORefList oRefList = conceptualDiagramPool.getORefList();
+		final int ONLY_CONCEPTUAL_MODEL = 0;
+		ORef ref = oRefList.get(ONLY_CONCEPTUAL_MODEL);
+		
+		return (ConceptualModelDiagram) findObject(ref);
+	}
+	
 	
 	public DiagramFactorLink[] getToAndFromLinks(DiagramFactorId diagramFactorId)
 	{

@@ -7,8 +7,10 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramContentsId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -36,6 +38,18 @@ abstract public class DiagramObject extends BaseObject
 		super(new DiagramContentsId(idToUse), json);
 	}
 	
+	public DiagramFactor getDiagramFactor(FactorId factorId)
+	{
+		IdList diagramFactorIds = getAllDiagramFactorIds();
+		for (int i = 0; i < diagramFactorIds.size(); i++)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor) getObjectManager().findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorIds.get(i)));
+			if (diagramFactor.getWrappedId().equals(factorId))
+				return diagramFactor;
+		}
+		
+		return null;
+	}
 	public boolean isResultsChain()
 	{
 		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);

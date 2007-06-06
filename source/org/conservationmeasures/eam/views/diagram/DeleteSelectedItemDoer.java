@@ -67,7 +67,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactorLink())
-					deleteFactorLink(project, diagramObject,  cell.getDiagramFactorLink());	
+					deleteFactorLink(diagramObject,  cell.getDiagramFactorLink());	
 			}
 			
 			for(int i=0; i < selectedRelatedCells.length; ++i)
@@ -89,8 +89,15 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	public static void deleteFactorLink(Project project, DiagramObject diagramObject, DiagramFactorLink linkageToDelete) throws Exception
+	public static void deleteFactorLink(DiagramObject diagramObject, ORef diagramFactorLinkRef) throws Exception
+	{
+		DiagramFactorLink linkageToDelete = (DiagramFactorLink)getProject(diagramObject).findObject(diagramFactorLinkRef);
+		DeleteSelectedItemDoer.deleteFactorLink(diagramObject, linkageToDelete);
+	}
+	
+	public static void deleteFactorLink(DiagramObject diagramObject, DiagramFactorLink linkageToDelete) throws Exception
 	{	
+		Project project = getProject(diagramObject);
 		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
 		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, id);
 		project.executeCommand(removeDiagramFactorLink);
@@ -121,5 +128,10 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			return false;
 		
 		return true;
+	}
+	
+	private static Project getProject(DiagramObject diagramObject)
+	{
+		return diagramObject.getObjectManager().getProject();
 	}
 }

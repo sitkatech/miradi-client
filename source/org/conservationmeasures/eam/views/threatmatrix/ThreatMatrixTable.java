@@ -28,15 +28,10 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
-import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
-import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -130,15 +125,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		return model.getProject().isLinked(model.getThreatId(row), model.getTargetId(column));
 	}
 	
-	public DiagramObject getTheOnlyConceptualModelDiagram(Project project)
-	{
-		ConceptualModelDiagramPool conceptualDiagramPool = project.getConceptualModelDiagramPool();
-		ORefList oRefList = conceptualDiagramPool.getORefList();
-		final int ONLY_CONCEPTUAL_MODEL = 0;
-		ORef ref = oRefList.get(ONLY_CONCEPTUAL_MODEL);
-		
-		return (ConceptualModelDiagram) project.findObject(ref);
-	}
+
 	
 	public Project getProject()
 	{
@@ -267,9 +254,8 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 						continue;
 					}
 
-					DiagramObject diagramObject = getTheOnlyConceptualModelDiagram(project);
-					DiagramFactorLink linkageToDelete = (DiagramFactorLink)project.findObject(diagramFactorLinkRef);
-					DeleteSelectedItemDoer.deleteFactorLink(project, diagramObject, linkageToDelete);
+					DiagramObject diagramObject = project.getConceptualModelDiagram();
+					DeleteSelectedItemDoer.deleteFactorLink(diagramObject, diagramFactorLinkRef);
 				}
 			}
 			finally
@@ -294,11 +280,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		{
 			try
 			{
-				ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
-				Project project = model.getProject();
-				DiagramObject diagramObject = getTheOnlyConceptualModelDiagram(project);
-				
-				createLink(project, diagramObject, model);
+				createLink((ThreatMatrixTableModel)getModel());
 			}
 			catch (Exception ex)
 			{
@@ -306,18 +288,15 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			}
 		}
 
-		private void createLink(Project project, DiagramObject diagramObject, ThreatMatrixTableModel model) throws CommandFailedException
+		private void createLink(ThreatMatrixTableModel model) throws CommandFailedException
 		{
-			project.executeCommand(new CommandBeginTransaction());
+			DiagramObject diagramObject = model.getProject().getConceptualModelDiagram();
+			model.getProject().executeCommand(new CommandBeginTransaction());
 			try
 			{
 				FactorId fromThreatId = model.getThreatId(row);
 				FactorId toTargetId = model.getTargetId(col);
-
-				DiagramFactor fromDiagramFactor = getDiagramFactor(project, diagramObject, fromThreatId);
-				DiagramFactor toDiagramFactor = getDiagramFactor(project, diagramObject, toTargetId);
-
-				InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, diagramObject, fromDiagramFactor, toDiagramFactor);
+				InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diagramObject, fromThreatId, toTargetId);
 			}
 			catch (Exception ex)
 			{
@@ -325,21 +304,8 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			}
 			finally
 			{
-				project.executeCommand(new CommandEndTransaction());
+				model.getProject().executeCommand(new CommandEndTransaction());
 			}
-		}
-		
-		private DiagramFactor getDiagramFactor(Project project, DiagramObject diagramObject, FactorId factorId)
-		{
-			IdList diagramFactorIds = diagramObject.getAllDiagramFactorIds();
-			for (int i = 0; i < diagramFactorIds.size(); i++)
-			{
-				DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorIds.get(i)));
-				if (diagramFactor.getWrappedId().equals(factorId))
-					return diagramFactor;
-			}
-			
-			return null;
 		}
 		
 		int row;
