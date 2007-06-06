@@ -109,6 +109,11 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		if(deltaX == 0 && deltaY == 0)
 			return;
 		
+		moveHasHappened(deltaX, deltaY);
+	}
+
+	private void moveHasHappened(int deltaX, int deltaY)
+	{
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
 		{
