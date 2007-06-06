@@ -42,7 +42,7 @@ public class BendPointSelectionHelper
 			return;
 
 		clearSelection();
-		selectionIndexes.add(bendPointIndex);
+		selectionIndexes.add(adjustBendPointIndex);
 	}
 
 	public void mouseWasPressed(MouseEvent mouseEvent, int pointIndexPressed)
