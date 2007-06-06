@@ -59,19 +59,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		super();
 		mainWindow = mainWindowToUse;
-		setUp();
-		project = mainWindow.getProject();
-		updateDiagramComponent();
-		Actions actions = mainWindow.getActions();
-		installKeyBindings(actions);
-		diagramContextMenuHandler = new DiagramContextMenuHandler(mainWindow, this, actions);
-		MouseEventHandler mouseHandler = new MouseEventHandler(mainWindow);
-		addMouseListener(mouseHandler);
-		addGraphSelectionListener(mouseHandler);
-	}
-	
-	public void setUp()
-	{
 		setUI(new EAMGraphUI());
 		setAntiAliased(true);
 		disableInPlaceEditing();
@@ -86,9 +73,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		defaultBackgroundColor = getBackground();
 		addGraphSelectionListener(this);
 		ensureCellPerimetersAreRespectedByLinksWithBendPoints();
-	}    
-
-
+		project = mainWindow.getProject();
+		updateDiagramComponent();
+		Actions actions = mainWindow.getActions();
+		installKeyBindings(actions);
+		diagramContextMenuHandler = new DiagramContextMenuHandler(mainWindow, this, actions);
+		MouseEventHandler mouseHandler = new MouseEventHandler(mainWindow);
+		addMouseListener(mouseHandler);
+		addGraphSelectionListener(mouseHandler);
+	}
+	
 	private void ensureCellPerimetersAreRespectedByLinksWithBendPoints()
 	{
 		PortView.allowPortMagic = false;
