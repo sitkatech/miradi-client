@@ -47,7 +47,8 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 	private void selectBendPointsAndLinksInBounds(DiagramModel model, DiagramFactorLink diagramLink)
 	{
 		LinkCell linkCell = model.getDiagramFactorLink(diagramLink);
-		if (marqueeBounds.intersects(diagram.getBounds(linkCell)))
+		Rectangle2D linkcellBounds = diagram.getBounds(linkCell);
+		if (! marqueeBounds.intersects(linkcellBounds))
 				return;
 		
 		PointList bendPoints = diagramLink.getBendPoints();

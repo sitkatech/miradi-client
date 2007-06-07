@@ -448,7 +448,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public Rectangle2D getBounds(LinkCell linkCell)
 	{
-		EdgeView view = (EdgeView) getGraphLayoutCache().getMapping(this, false);
+		EdgeView view = (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);
 		return view.getBounds();
 	}
 
