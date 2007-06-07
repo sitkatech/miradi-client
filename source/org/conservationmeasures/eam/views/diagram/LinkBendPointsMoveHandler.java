@@ -40,7 +40,7 @@ public class LinkBendPointsMoveHandler
 	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws CommandFailedException
 	{
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
-		PointList pointsToMove = diagramLink.getBendPoints();
+		PointList pointsToMove = diagramLink.getBendPoints().createClone();
 		
 		for (int i = 0; i < selectionIndexes.length; ++i)
 		{

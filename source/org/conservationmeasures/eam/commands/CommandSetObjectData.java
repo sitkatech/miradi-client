@@ -141,7 +141,7 @@ public class CommandSetObjectData extends Command
 		try
 		{
 			oldValue = target.getObjectData(type, id, tag);
-			target.setObjectData(type, id, tag, newValue);
+			target.setObjectData(type, id, tag, newValue);		
 		}
 		catch (Exception e)
 		{
@@ -165,6 +165,8 @@ public class CommandSetObjectData extends Command
 		dataPairs.put(BaseId.class.getSimpleName(), id);
 		dataPairs.put("TAG", tag);
 		dataPairs.put("NEW_VALUE", newValue);
+		dataPairs.put("PREVIOUS_VALUE", oldValue);
+		
 		return dataPairs;
 	}
 	
