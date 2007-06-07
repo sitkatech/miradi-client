@@ -47,6 +47,9 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 	private void selectBendPointsAndLinksInBounds(DiagramModel model, DiagramFactorLink diagramLink)
 	{
 		LinkCell linkCell = model.getDiagramFactorLink(diagramLink);
+		if (marqueeBounds.intersects(diagram.getBounds(linkCell)))
+				return;
+		
 		PointList bendPoints = diagramLink.getBendPoints();
 		
 		for (int k = 0; k < bendPoints.size(); ++k)
