@@ -38,7 +38,7 @@ public class BendPointSelectionHelper
 		if (event.isShiftDown())
 			return;
 		
-		if (! selectionIndexes.contains(controlPointIndex))
+		if (! selectionIndexes.contains(bendPointIndex))
 			return;
 
 		clearSelection();
