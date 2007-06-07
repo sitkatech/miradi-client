@@ -65,6 +65,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		try 
 		{
 			int indirectColumn = threatGridPanel.getThreatMatrixTable().convertColumnIndexToModel(column);
+			//TODO: should not set selection bundle here as part of setBoarder...either that or this mehtod is miss named
 			bundle = getThreatTableModel().getBundle(row, indirectColumn);
 			
 			if(bundle != null && threatGridPanel.getSelectedBundle()!= null)
