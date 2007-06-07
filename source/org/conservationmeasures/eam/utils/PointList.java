@@ -152,9 +152,7 @@ public class PointList
 		for (int i = 0; i < size(); ++i)
 		{
 			Point pointToClone = get(i);
-			Point clonedPoint = new Point();
-			clonedPoint.x = pointToClone.x;
-			clonedPoint.y = pointToClone.y;
+			Point clonedPoint = new Point(pointToClone);
 			
 			clonedList.add(clonedPoint);
 		}
