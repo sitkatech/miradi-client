@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramContentsId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -38,6 +39,19 @@ abstract public class DiagramObject extends BaseObject
 		super(new DiagramContentsId(idToUse), json);
 	}
 	
+	public DiagramFactorLink getDiagramFactorLink(FactorLinkId factorLinkId)
+	{
+		IdList diagramFactorLinkIds = getAllDiagramFactorLinkIds();
+		for (int i = 0; i < diagramFactorLinkIds.size(); i++)
+		{
+			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) getObjectManager().findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkIds.get(i)));
+			if (diagramFactorLink.getWrappedId().equals(factorLinkId))
+				return diagramFactorLink;
+		}
+		
+		return null;
+	}
+	
 	public DiagramFactor getDiagramFactor(FactorId factorId)
 	{
 		IdList diagramFactorIds = getAllDiagramFactorIds();
@@ -50,6 +64,7 @@ abstract public class DiagramObject extends BaseObject
 		
 		return null;
 	}
+	
 	public boolean isResultsChain()
 	{
 		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);

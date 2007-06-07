@@ -30,11 +30,8 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.diagram.DeleteSelectedItemDoer;
@@ -243,20 +240,9 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				FactorLink link = (FactorLink)project.findObject(FactorLink.getObjectType(), modelLinkageId);
-				ORefList referrers = link.findObjectThatReferToUs();
-				for(int i = 0; i < referrers.size(); ++i)
-				{
-					ORef diagramFactorLinkRef = referrers.get(i);
-					if(diagramFactorLinkRef.getObjectType() != DiagramFactorLink.getObjectType())
-					{
-						EAM.logWarning("ThreatMatrixTable.doDelete ignoring reference to deleted link: " + diagramFactorLinkRef);
-						continue;
-					}
-
-					DiagramObject diagramObject = project.getConceptualModelDiagram();
-					DeleteSelectedItemDoer.deleteFactorLink(diagramObject, diagramFactorLinkRef);
-				}
+				DiagramObject diagramObject = project.getConceptualModelDiagram();
+				DiagramFactorLink diagramFactorLink = diagramObject.getDiagramFactorLink(modelLinkageId);
+				DeleteSelectedItemDoer.deleteFactorLink(diagramObject, diagramFactorLink);
 			}
 			finally
 			{
