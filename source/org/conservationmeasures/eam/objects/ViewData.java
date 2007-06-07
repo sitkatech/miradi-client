@@ -114,6 +114,7 @@ public class ViewData extends BaseObject
 			case ObjectType.STRATEGY:
 			case ObjectType.TARGET: 
 				list.addAll(chainModeFactorRefs.getORefList());
+				break;
 		}
 		return list;
 	}

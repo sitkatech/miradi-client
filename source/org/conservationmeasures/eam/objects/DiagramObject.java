@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -82,12 +83,36 @@ abstract public class DiagramObject extends BaseObject
 	
 	public static boolean canOwnThisType(int type)
 	{
+		switch(type)
+		{
+			case ObjectType.DIAGRAM_FACTOR:
+			case ObjectType.DIAGRAM_LINK:
+				return true;
+		}
+		
 		return false;
 	}
+	
 	
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
+	}
+	
+
+	public ORefList getOwnedObjects(int objectType)
+	{
+		ORefList list = super.getOwnedObjects(objectType);
+		switch(objectType)
+		{
+			case ObjectType.DIAGRAM_FACTOR: 
+				list.addAll(new ORefList(DiagramFactor.getObjectType(), getAllDiagramFactorIds()));
+				break;
+			case ObjectType.DIAGRAM_LINK: 
+				list.addAll(new ORefList(DiagramFactorLink.getObjectType(), getAllDiagramFactorLinkIds()));
+				break;
+		}
+		return list;
 	}
 	
 	public void clear()

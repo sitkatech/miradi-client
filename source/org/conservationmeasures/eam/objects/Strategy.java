@@ -161,8 +161,10 @@ public class Strategy extends Factor
 		{
 			case ObjectType.OBJECTIVE: 
 				list.addAll(new ORefList(objectType, getObjectives()));
+				break;
 			case ObjectType.TASK: 
 				list.addAll(new ORefList(objectType, getActivityIds()));
+				break;
 
 		}
 		return list;

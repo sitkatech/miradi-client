@@ -74,9 +74,10 @@ public class Target extends Factor
 		{
 			case ObjectType.GOAL: 
 				list.addAll(new ORefList(objectType, getGoals()));
+				break;
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
 				list.addAll(new ORefList(objectType, getKeyEcologicalAttributes()));
-
+				break;
 		}
 		return list;
 	}

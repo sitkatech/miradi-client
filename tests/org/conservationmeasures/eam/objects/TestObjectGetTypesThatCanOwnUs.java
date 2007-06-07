@@ -40,6 +40,12 @@ public class TestObjectGetTypesThatCanOwnUs extends EAMTestCase
 		
 		assertContains(ObjectType.THREAT_REDUCTION_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
 		assertContains(ObjectType.THREAT_REDUCTION_RESULT, BaseObject.getTypesThatCanOwnUs(ObjectType.OBJECTIVE));
+	
+		assertContains(ObjectType.RESULTS_CHAIN_DIAGRAM, BaseObject.getTypesThatCanOwnUs(ObjectType.DIAGRAM_FACTOR));
+		assertContains(ObjectType.RESULTS_CHAIN_DIAGRAM, BaseObject.getTypesThatCanOwnUs(ObjectType.DIAGRAM_LINK));
+		
+		assertContains(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, BaseObject.getTypesThatCanOwnUs(ObjectType.DIAGRAM_FACTOR));
+		assertContains(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, BaseObject.getTypesThatCanOwnUs(ObjectType.DIAGRAM_LINK));
 	}
 
 }

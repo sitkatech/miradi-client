@@ -81,6 +81,7 @@ abstract public class Factor extends BaseObject
 		{
 			case ObjectType.INDICATOR: 
 				list.addAll(new ORefList(objectType, getIndicators()));
+				break;
 		}
 		return list;
 	}

@@ -98,6 +98,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		{
 			case ObjectType.INDICATOR: 
 				list.addAll(new ORefList(objectType, getIndicatorIds()));
+				break;
 		}
 		return list;
 	}

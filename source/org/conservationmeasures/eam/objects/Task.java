@@ -108,8 +108,10 @@ public class Task extends BaseObject
 		{
 			case ObjectType.TASK: 
 				list.addAll(new ORefList(objectType, getSubtaskIdList()));
+				break;
 			case ObjectType.ASSIGNMENT: 
 				list.addAll(new ORefList(objectType, getAssignmentIdList()));
+				break;
 		}
 		return list;
 	}

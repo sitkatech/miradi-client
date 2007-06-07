@@ -88,12 +88,16 @@ public class Assignment extends BaseObject
 		{
 			case ObjectType.PROJECT_RESOURCE: 
 				list.addAll(new ORefList(new ORef[] {new ORef(objectType, resourceIdData.getId())}));
+				break;
 			case ObjectType.ACCOUNTING_CODE: 
 				list.addAll(new ORefList(new ORef[] {new ORef(objectType, accountingIdData.getId())}));
+				break;
 			case ObjectType.FUNDING_SOURCE: 
 				list.addAll(new ORefList(new ORef[] {new ORef(objectType, fundingIdData.getId())}));
+				break;
 			case ObjectType.TASK: 
 				list.addAll(new ORefList(new ORef[] {new ORef(objectType, taskIdData.getId())}));
+				break;
 		}
 		return list;
 	}

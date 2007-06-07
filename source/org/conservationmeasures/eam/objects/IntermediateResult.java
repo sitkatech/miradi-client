@@ -79,6 +79,7 @@ public class IntermediateResult extends Factor
 		{
 			case ObjectType.OBJECTIVE: 
 				list.addAll(new ORefList(objectType, getObjectives()));
+				break;
 		}
 		return list;
 	}

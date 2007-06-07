@@ -114,6 +114,7 @@ public class DiagramFactorLink extends BaseObject
 				list.addAll(new ORefList(new ORef[] {
 						new ORef(objectType, fromId.getId()), 
 						new ORef(objectType, toId.getId())}));
+				break;
 			case ObjectType.FACTOR_LINK: 
 				list.addAll(new ORefList(new ORef[] {
 						new ORef(objectType, underlyingObjectId.getId())}));

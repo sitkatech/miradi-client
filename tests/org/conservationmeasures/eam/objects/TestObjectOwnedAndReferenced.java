@@ -21,9 +21,9 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
-public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
+public class TestObjectOwnedAndReferenced extends EAMTestCase
 {
-	public TestObjectFindOwnerAndFindReferrer(String name)
+	public TestObjectOwnedAndReferenced(String name)
 	{
 		super(name);
 	}
@@ -49,8 +49,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.INTERMEDIATE_RESULT, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwner(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwner(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
 	}
 
 	public void testThreatReductionResultOwn() throws Exception
@@ -62,8 +62,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.THREAT_REDUCTION_RESULT, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwner(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwner(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
 	}
 
 	public void testCauseOwn() throws Exception
@@ -75,8 +75,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.CAUSE, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwner(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwner(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
 	}
 	
 	public void testStrategyOwn() throws Exception
@@ -92,9 +92,9 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.STRATEGY, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
-		verifyOwner(owner, new ORef(ObjectType.TASK, taskId));
+		verifyOwner(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwner(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwner(1,owner, new ORef(ObjectType.TASK, taskId));
 	}
 
 	public void testTargetOwn() throws Exception
@@ -107,9 +107,9 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.TARGET, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.GOAL, goalId));
-		verifyOwner(owner, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId));
+		verifyOwner(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwner(1,owner, new ORef(ObjectType.GOAL, goalId));
+		verifyOwner(1,owner, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId));
 	}
 	
 	public void testTaskOwn() throws Exception
@@ -131,8 +131,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.TASK, taskId);
-		verifyOwner(owner, new ORef(ObjectType.TASK, subTaskId));
-		verifyOwner(owner, new ORef(ObjectType.ASSIGNMENT, assignmentId));
+		verifyOwner(1,owner, new ORef(ObjectType.TASK, subTaskId));
+		verifyOwner(1,owner, new ORef(ObjectType.ASSIGNMENT, assignmentId));
 		
 	}
 	
@@ -229,7 +229,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 		ORef owner = new ORef(ObjectType.INDICATOR, indicatorId);
-		verifyOwner(owner, new ORef(ObjectType.TASK, taskId));
+		verifyOwner(1,owner, new ORef(ObjectType.TASK, taskId));
 	}
 	
 	
@@ -241,7 +241,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 		ORef owner = new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwner(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
 	}
 	
 	
@@ -270,15 +270,16 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		
 		DiagramFactorLink link = createDiagramFactorLink(strategy, cause);
 		IdList linkList = new IdList(new BaseId[] {link.getId()});
+		
 		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, factorList.toString());
 		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, linkList.toString());
 		
 		//----------- start test -----------
 		
-		verifyOwner(diagramRef, strategy.getRef());
-		verifyOwner(diagramRef, cause.getRef());
-		verifyOwner(diagramRef, target.getRef());
-		verifyOwner(diagramRef, link.getRef());
+		verifyOwner(3,diagramRef, strategy.getRef());
+		verifyOwner(3,diagramRef, cause.getRef());
+		verifyOwner(3,diagramRef, target.getRef());
+		verifyOwner(1,diagramRef, link.getRef());
 	}
 	
 	private DiagramFactor createFactorAndDiagramFactor(int type) throws Exception
@@ -304,31 +305,21 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		assertEquals(1,foundReferrers1.size());
 		assertEquals(referrer.getObjectId(), foundReferrers1.get(0).getObjectId());
 
-
 		BaseObject referredObject =  project.getObjectManager().findObject(referred);
 		ORefList foundReferrers2 = referredObject.findObjectThatReferToUs();
 		
-		
 		assertContains(referrer, foundReferrers2.toArray());
-		
-		
-		//TODO following assert seems invalid
-		//assertNotEquals("Parentage wrong:", referred, foundReferrers2.get(0));
 	}
 	
-	private void verifyOwner(ORef owner, ORef ref)
+	private void verifyOwner(int size, ORef owner, ORef ref)
 	{
-		ORef oref = BaseObject.findObjectWhoOwnesUs(project.getObjectManager(), owner.getObjectType(), ref);
-		assertEquals(owner, oref);
-		
-		BaseObject baseObject =  project.getObjectManager().findObject(ref);
-		ORef orefOwner = baseObject.getOwnerRef();
-		
-		assertEquals(oref, orefOwner);
-		assertNotEquals("Parentage wrong:", oref, ref);
-		assertNotEquals("Parentage wrong:", oref, baseObject.getRef());
+		BaseObject ownerObject = project.findObject(owner);
+		ORefList ownedObjects = ownerObject.getOwnedObjects(ref.getObjectType());
+		assertEquals(size, ownedObjects.size());
+		assertEquals(true, ownedObjects.contains(ref));
 	}
 	
 	
 	ProjectForTesting project;
 }
+

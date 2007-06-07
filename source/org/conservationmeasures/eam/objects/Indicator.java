@@ -223,6 +223,7 @@ public class Indicator extends BaseObject
 		{
 			case ObjectType.TASK: 
 				list.addAll(new ORefList(objectType, getTaskIdList()));
+				break;
 		}
 		return list;
 	}
