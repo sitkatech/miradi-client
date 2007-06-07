@@ -41,13 +41,13 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		valueOption = (ValueOption)value;
 		renderingRow = row;
 		renderingCol = column;
-		setBorders(table, row, column, hasFocus);
+		setBorders(table, row, column);
 		
 		return this;
 	}
 
 	
-	private void setBorders(JTable table, int row, int column, boolean hasFoucs)
+	private void setBorders(JTable table, int row, int column)
 	{
 		if (isOverallRatingCell(table, row, column))
 			setBorder(BorderFactory.createMatteBorder(5,5,1,1,Color.DARK_GRAY));
@@ -56,24 +56,27 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		else if (isSummaryColumnCell(table, row, column))
 			setBorder(BorderFactory.createMatteBorder(1,5,1,1,Color.DARK_GRAY));
 		else 
-			setBorderForNormalCell(row, column, hasFoucs);
+			setBorderForNormalCell(row, column);
 	}
 
 
-	private void setBorderForNormalCell(int row, int column, boolean hasFoucs)
+	private void setBorderForNormalCell(int row, int column)
 	{
 		try 
 		{
-			ThreatMatrixTable threatMatrixTable = threatGridPanel.getThreatMatrixTable();
-			int indirectColumn = threatMatrixTable.convertColumnIndexToModel(column);
-			//TODO: should not set selection bundle here as part of setBoarder...either that or this mehtod is miss named
+			int indirectColumn = threatGridPanel.getThreatMatrixTable().convertColumnIndexToModel(column);
 			bundle = getThreatTableModel().getBundle(row, indirectColumn);
 			
-			if (hasFoucs)
-				setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
-			else
-				setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1));
-			
+			if(bundle != null && threatGridPanel.getSelectedBundle()!= null)
+			{
+				if(threatGridPanel.getSelectedBundle().equals(bundle))
+				{
+					setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
+					return;
+				}
+			}
+
+			setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1));
 		}
 		catch (Exception e)
 		{
