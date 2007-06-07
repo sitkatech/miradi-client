@@ -107,7 +107,7 @@ public class ViewData extends BaseObject
 	{
 		ORefList list = super.getReferencedObjects(objectType);
 		
-		// TODO: Should only return objects of the specific requested type
+		//FIXME: Should only return objects of the specific requested type
 		switch(objectType)
 		{
 			case ObjectType.CAUSE:
