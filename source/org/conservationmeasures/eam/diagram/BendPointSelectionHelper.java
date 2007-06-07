@@ -92,6 +92,9 @@ public class BendPointSelectionHelper
 
 	public void addToSelectionIndexList(int bendPointIndex)
 	{
+		if (selectionIndexes.contains(bendPointIndex))
+			return;
+		
 		selectionIndexes.add(bendPointIndex);
 	}
 	
@@ -103,7 +106,7 @@ public class BendPointSelectionHelper
 		{
 			selection[i] = selectionIndexes.get(i);
 		}
-		
+	
 		return selection;
 	}
 	
