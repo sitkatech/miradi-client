@@ -296,6 +296,34 @@ abstract public class BaseObject
 		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
 	}
 	
+	
+	//Note: this method works only with a subclasses that do not own referenced objects other then objects in list
+	// and in that the objects in list are not copied.
+	public CommandSetObjectData[] createCommandsToClone(BaseId baseId)
+	{
+		Vector commands = new Vector();
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			if (noneClearedFieldTags.contains(tag))
+				continue;
+			if(isPseudoField(tag))
+				continue;
+			if(isaIdList(tag))
+				continue;
+
+			commands.add(new CommandSetObjectData(getType(), baseId, tag, getData(tag)));
+		}
+		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
+	}
+
+	private boolean isaIdList(String tag)
+	{
+		return tag.indexOf("_IDS")>0;
+	}
+	
+	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();

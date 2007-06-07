@@ -43,8 +43,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			CommandCreateObject create = new CommandCreateObject(getAnnotationType());
-			getProject().executeCommand(create);
+			CommandCreateObject create = createObject();
 			BaseId createdId = create.getCreatedId();
 			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(factor, getAnnotationIdListTag(), createdId));
 			
@@ -62,6 +61,22 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+	
+	protected CommandCreateObject createObject() throws CommandFailedException
+	{
+		CommandCreateObject create = new CommandCreateObject(getAnnotationType());
+		getProject().executeCommand(create);
+		return create;
+	}
+	
+	protected CommandCreateObject cloneObject(BaseObject objectToClone) throws CommandFailedException
+	{
+		CommandCreateObject create = new CommandCreateObject(getAnnotationType());
+		getProject().executeCommand(create);
+		CommandSetObjectData[]  commands = objectToClone.createCommandsToClone(create.getCreatedId());
+		getProject().executeCommands(commands);
+		return create;
 	}
 	
 	public Factor getSelectedFactor()
