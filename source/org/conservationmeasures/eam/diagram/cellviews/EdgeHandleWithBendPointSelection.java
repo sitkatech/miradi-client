@@ -9,13 +9,17 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.diagram.BendPointSelectionHelper;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.utils.PointList;
+import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphContext;
+import org.jgraph.plaf.basic.BasicGraphUI;
+import org.jgraph.plaf.basic.BasicGraphUI.RootHandle;
 
 public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 {
@@ -76,6 +80,17 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 			g2.setColor(diagram.getHighlightColor());
 			g2.drawRect((int)point.getX() - 10, (int)point.getY() - 10, 18, 18);
 		}
+	}
+
+	public void updatePoints(Point2D currentPointToUse, Point2D p)
+	{
+		BasicGraphUI graphUi = (BasicGraphUI) graph.getUI();
+		RootHandle rootHandle =  (RootHandle) graphUi.getHandle();
+
+		int deltaX = (int) p.getX() - (int) currentPointToUse.getX();
+		int deltaY = (int) p.getY() - (int) currentPointToUse.getY();
+		CellView[] cellView = {edge};
+		rootHandle.updateControlPoints(cellView, deltaX, deltaY);
 	}
 	
 	DiagramComponent diagram;

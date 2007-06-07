@@ -7,11 +7,23 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Point2D;
+import java.util.List;
+import java.util.Vector;
 
 import javax.swing.SwingUtilities;
 
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.diagram.cellviews.FactorLinkView;
+import org.conservationmeasures.eam.diagram.cellviews.RectangleFactorView;
+import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.JGraph;
+import org.jgraph.graph.CellHandle;
 import org.jgraph.graph.CellView;
+import org.jgraph.graph.EdgeView;
+import org.jgraph.graph.GraphContext;
+import org.jgraph.graph.GraphLayoutCache;
+import org.jgraph.graph.AttributeMap.SerializablePoint2D;
 import org.jgraph.plaf.basic.BasicGraphUI;
 
 public class EAMGraphUI extends BasicGraphUI
@@ -30,7 +42,103 @@ public class EAMGraphUI extends BasicGraphUI
 	{
 		return focus;
 	}
+	
+	public CellHandle createHandle(GraphContext context) 
+	{
+		if (context != null && !context.isEmpty() && graph.isEnabled()) 
+		{
+			try 
+			{
+				return new CustomRootHandle(context);
+			} 
+			catch (NullPointerException e) 
+			{
+				EAM.logException(e);
+			}
+		}
+		
+		return null;
+	}
 
+
+	class CustomRootHandle extends BasicGraphUI.RootHandle
+	{
+		public CustomRootHandle(GraphContext ctx)
+		{
+			super(ctx);
+		}
+
+		public void updateControlPoints(CellView[] viewsToUse, double deltaX, double deltaY)
+		{			
+			Vector allToTranslate = new Vector();
+			for (int i = 0; i < viewsToUse.length; ++i)
+			{
+				if (isFactorView(viewsToUse[i]))
+				{
+					allToTranslate.add(viewsToUse[i]);
+				}
+
+				if (isFactorLinkView(viewsToUse[i]))
+				{	 
+					EdgeView edge = (EdgeView) viewsToUse[i];
+					LinkCell linkCell = (LinkCell) edge.getCell();
+					List points = edge.getPoints();
+					BendPointSelectionHelper bendSelectionHelper = linkCell.getBendPointSelectionHelper();
+					int[] selectedIndexes = bendSelectionHelper.getSelectedIndexes();
+
+					if (selectedIndexes.length > 0)
+					{
+
+						Point2D.Double startPoint = convertToPoint(points.get(0));
+						if (startPoint != null)
+						{
+							startPoint.x = (int) startPoint.x + deltaX;
+							startPoint.y = (int) startPoint.y + deltaY;
+						}
+
+						for (int j = 0; j < selectedIndexes.length; ++j)
+						{
+							Point2D.Double point = convertToPoint(points.get(selectedIndexes[j] + 1));
+							if (point == null)
+								continue;
+
+							point.x = (int) (point.getX() + deltaX);
+							point.y = (int) point.getY() + deltaY;
+						}
+						
+						Point2D.Double endPoint = convertToPoint(points.get(points.size() - 1));
+						if (endPoint != null)
+						{
+							endPoint.x = (int) endPoint.x + deltaX;
+							endPoint.y = (int) endPoint.y + deltaY;
+						}
+					}
+				}
+			}
+			
+			CellView[] viewsToTranslate = (CellView[]) allToTranslate.toArray(new CellView[0]);
+			GraphLayoutCache.translateViews(viewsToTranslate, deltaX, deltaY);
+		}
+		
+		private boolean isFactorView(CellView view)
+		{
+			return view instanceof RectangleFactorView;
+		}
+
+		private boolean isFactorLinkView(CellView view)
+		{
+			return view instanceof FactorLinkView;
+		}
+
+		private Point2D.Double convertToPoint(Object object)
+		{
+			if(object instanceof SerializablePoint2D)
+				return (Point2D.Double) object;
+			
+			return null;
+		}
+	}
+	
 	class DiagramMouseHandler extends BasicGraphUI.MouseHandler
 	{
         public void mousePressed(MouseEvent event)
