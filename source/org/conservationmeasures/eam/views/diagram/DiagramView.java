@@ -15,6 +15,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionCloneGoal;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCreateActivity;
@@ -213,6 +214,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
 		
 		addDoerToMap(ActionCreateGoal.class, new CreateGoal());
+		addDoerToMap(ActionCloneGoal.class, new CloneGoalDoer());
 		addDoerToMap(ActionDeleteGoal.class, new DeleteGoal());
 		
 		addDoerToMap(ActionCreateKeyEcologicalAttribute.class, new CreateKeyEcologicalAttributeDoer());

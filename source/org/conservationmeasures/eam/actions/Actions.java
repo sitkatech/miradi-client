@@ -159,11 +159,15 @@ public class Actions
 		registerAction(new ActionCreateResource(mainWindow));
 		registerAction(new ActionModifyResource(mainWindow));
 		registerAction(new ActionDeleteResource(mainWindow));
+		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionDeleteIndicator(mainWindow));
+		
 		registerAction(new ActionCreateObjective(mainWindow));
 		registerAction(new ActionDeleteObjective(mainWindow));
+		
 		registerAction(new ActionCreateGoal(mainWindow));
+		registerAction(new ActionCloneGoal(mainWindow));
 		registerAction(new ActionDeleteGoal(mainWindow));
 		
 		registerAction(new ActionCreateKeyEcologicalAttribute(mainWindow));
