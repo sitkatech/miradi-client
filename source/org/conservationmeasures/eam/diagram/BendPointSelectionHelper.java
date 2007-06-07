@@ -61,27 +61,25 @@ public class BendPointSelectionHelper
 	
 	public void updateSelectionList(MouseEvent mouseEvent, int bendPointIndex)
 	{	
-		boolean shiftDown = mouseEvent.isShiftDown();
-		boolean controlDown = mouseEvent.isControlDown();
 		boolean contains = selectionIndexes.contains(bendPointIndex);
 		
 		if (contains)
-			updateSelectionWasAlreadySelected(bendPointIndex, controlDown);
+			updateSelectionWasAlreadySelected(bendPointIndex, mouseEvent);
 		else
-			updateSelectionWasNotAlreadySelected(bendPointIndex, controlDown, shiftDown);
+			updateSelectionWasNotAlreadySelected(bendPointIndex, mouseEvent);
 	}
 	
-	private void updateSelectionWasNotAlreadySelected(int bendPointIndex, boolean controlDown, boolean shiftDown)
+	private void updateSelectionWasNotAlreadySelected(int bendPointIndex, MouseEvent event)
 	{
-		if (!controlDown && !shiftDown)
+		if (!event.isControlDown() && !event.isShiftDown())
 			clearSelection();
 		
 		selectionIndexes.add(bendPointIndex);
 	}
 
-	private void updateSelectionWasAlreadySelected(int bendPointIndex, boolean controlDown)
+	private void updateSelectionWasAlreadySelected(int bendPointIndex, MouseEvent event)
 	{
-		if (! controlDown)
+		if (! event.isControlDown())
 			return;
 		
 		removeSelectionIndex(bendPointIndex);
