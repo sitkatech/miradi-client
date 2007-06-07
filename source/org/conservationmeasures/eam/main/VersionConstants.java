@@ -32,6 +32,6 @@ public class VersionConstants
 		}
 	}
 	
-	private static final String VERSION_FILENAME = "/version.txt";
+	private static final String VERSION_FILENAME = "/miradi.version.txt";
 	public static String VERSION_STRING;
 }
