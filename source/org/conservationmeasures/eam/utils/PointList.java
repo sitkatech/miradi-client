@@ -146,6 +146,21 @@ public class PointList
 		return data.hashCode();
 	}
 	
+	public PointList createClone()
+	{
+		PointList clonedList = new PointList();
+		for (int i = 0; i < size(); ++i)
+		{
+			Point pointToClone = get(i);
+			Point clonedPoint = new Point();
+			clonedPoint.x = pointToClone.x;
+			clonedPoint.y = pointToClone.y;
+			
+			clonedList.add(clonedPoint);
+		}
+		return clonedList;
+	}
+	
 	public Point getClosestPoint(Point point)
 	{
 		if (size() == 0)
