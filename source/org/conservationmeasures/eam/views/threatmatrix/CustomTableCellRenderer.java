@@ -18,7 +18,6 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.RatingCriterion;
@@ -71,17 +70,9 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 			bundle = getThreatTableModel().getBundle(row, indirectColumn);
 			
 			if (hasFoucs)
-			{
-				FactorId threatId = getThreatTableModel().getDirectThreats()[row].getFactorId();
-				FactorId targetId = getThreatTableModel().getTargets()[indirectColumn].getFactorId();
-				threatMatrixTable.setSelectedThreat(threatId);
-				threatMatrixTable.setSelectedTarget(targetId);
 				setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
-			}
 			else
 				setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1));
-			
-
 			
 		}
 		catch (Exception e)
