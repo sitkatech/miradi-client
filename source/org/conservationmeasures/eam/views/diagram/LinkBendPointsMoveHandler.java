@@ -64,7 +64,7 @@ public class LinkBendPointsMoveHandler
 		if (moreThanOneBendPointSelected())
 			return;
 		
-		BendPointCreator bendPointCreator = new BendPointCreator(project, diagram);
+		BendPointCreator bendPointCreator = new BendPointCreator(diagram);
 		LinkCell[] nearbyLinkCells = bendPointCreator.getNearbyLinks(pointToMove, linkCell);
 		for (int i = 0; i < nearbyLinkCells.length; ++i)
 		{

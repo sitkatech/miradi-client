@@ -42,7 +42,7 @@ public class CreateBendPointDoer extends LocationDoer
 		try
 		{
 			DiagramFactorLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
-			BendPointCreator bendPointCreator = new BendPointCreator(project, getDiagramView().getDiagramComponent());
+			BendPointCreator bendPointCreator = new BendPointCreator(getDiagramView().getDiagramComponent());
 			bendPointCreator.createBendPoint(getLocation(), selectedLink);
 		}
 		catch (Exception e)

@@ -22,10 +22,10 @@ import org.jgraph.graph.GraphLayoutCache;
 
 public class BendPointCreator
 {
-	public BendPointCreator(Project projectToUse, DiagramComponent diagramToUse)
+	public BendPointCreator(DiagramComponent diagramToUse)
 	{
-		project = projectToUse;
 		diagram = diagramToUse;
+		project = diagram.getProject();
 		model = diagram.getDiagramModel();
 	}
 	
