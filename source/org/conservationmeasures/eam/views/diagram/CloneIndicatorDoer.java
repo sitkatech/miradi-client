@@ -18,7 +18,7 @@ public class CloneIndicatorDoer extends CreateIndicator
 		if (!isAvailable())
 			return;
 	
-		objectToClone = displayAnnotationList(EAM.text("Indicator Selection List"), new IndicatorPoolTablePanel(getProject()));	
+		objectToClone = displayAnnotationList(EAM.text("Choose Indicator to Clone"), new IndicatorPoolTablePanel(getProject()));	
 		
 		if (objectToClone == null)
 			return;

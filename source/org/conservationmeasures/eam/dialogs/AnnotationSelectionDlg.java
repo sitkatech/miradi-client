@@ -14,29 +14,36 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.JComponent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.martus.swing.Utilities;
 
-public class AnnotationSelectionDlg extends EAMDialog
+public class AnnotationSelectionDlg extends EAMDialog implements ListSelectionListener
 {
-	public AnnotationSelectionDlg(MainWindow mainWindow, ObjectTablePanel poolTable)
+	public AnnotationSelectionDlg(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{
 		super(mainWindow);
 		list = poolTable;
-		add(list);
+		list.getTable().addListSelectionListener(this);
+		Box box = Box.createVerticalBox();
+		box.add(new PanelTitleLabel("Please select which item should be cloned into this factor, then press the Clone but"));
+		box.add(list, BorderLayout.AFTER_LAST_LINE);
 		
+		setTitle(title);
 		JComponent buttonBar = createButtonBar();
 		Container contents = getContentPane();
 		contents.setLayout(new BorderLayout());
-		contents.add(new FastScrollPane(list), BorderLayout.CENTER);
+		contents.add(new FastScrollPane(box), BorderLayout.CENTER);
 		contents.add(buttonBar, BorderLayout.AFTER_LAST_LINE);
 		setModal(true);
-		setPreferredSize(new Dimension(600,400));
+		setPreferredSize(new Dimension(900,400));
 		Utilities.centerDlg(this);
 	}
 	
@@ -54,13 +61,19 @@ public class AnnotationSelectionDlg extends EAMDialog
 
 	private Box createButtonBar()
 	{
-		PanelButton cancel = new PanelButton(new CancelAction());
-		PanelButton clone = new PanelButton(new CloneAction());
-		getRootPane().setDefaultButton(cancel);
+		PanelButton cancelButton = new PanelButton(new CancelAction());
+		cloneButton = new PanelButton(new CloneAction());
+		cloneButton.setEnabled(false);
+		getRootPane().setDefaultButton(cancelButton);
 		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), cancel, clone, Box.createHorizontalStrut(10)};
+		Component[] components = new Component[] {Box.createHorizontalGlue(), cloneButton,  Box.createHorizontalStrut(10), cancelButton};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 		return buttonBar;
+	}
+	
+	public void valueChanged(ListSelectionEvent e)
+	{
+		cloneButton.setEnabled(true);
 	}
 	
 	class CloneAction extends AbstractAction
@@ -92,11 +105,11 @@ public class AnnotationSelectionDlg extends EAMDialog
 
 		public void actionPerformed(ActionEvent arg0)
 		{
-			list.getTable().clearSelection();
 			dispose();
 		}
 	}
 	
+	PanelButton cloneButton;
 	ObjectTablePanel list;
 	BaseObject objectSelected;
 }

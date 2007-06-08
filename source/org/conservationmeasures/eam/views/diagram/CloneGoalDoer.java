@@ -18,7 +18,7 @@ public class CloneGoalDoer extends CreateGoal
 		if (!isAvailable())
 			return;
 	
-		objectToClone = displayAnnotationList(EAM.text("Goal Selection List"), new GoalPoolTablePanel(getProject()));	
+		objectToClone = displayAnnotationList(EAM.text("Choose Goal to Clone"), new GoalPoolTablePanel(getProject()));	
 		
 		if (objectToClone == null)
 			return;

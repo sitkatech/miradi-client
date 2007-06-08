@@ -83,7 +83,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	
 	protected BaseObject displayAnnotationList(String title, ObjectTablePanel tablePanel)
 	{
-		AnnotationSelectionDlg list = new AnnotationSelectionDlg(getMainWindow(), tablePanel);
+		AnnotationSelectionDlg list = new AnnotationSelectionDlg(getMainWindow(), title, tablePanel);
 		list.setVisible(true);
 		return list.getSelectedAnnotaton();
 	}
