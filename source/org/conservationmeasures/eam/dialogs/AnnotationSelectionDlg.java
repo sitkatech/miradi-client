@@ -33,7 +33,7 @@ public class AnnotationSelectionDlg extends EAMDialog implements ListSelectionLi
 		list = poolTable;
 		list.getTable().addListSelectionListener(this);
 		Box box = Box.createVerticalBox();
-		box.add(new PanelTitleLabel("Please select which item should be cloned into this factor, then press the Clone but"));
+		box.add(new PanelTitleLabel(EAM.text("Please select which item should be cloned into this factor, then press the Clone but")));
 		box.add(list, BorderLayout.AFTER_LAST_LINE);
 		
 		setTitle(title);
