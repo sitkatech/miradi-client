@@ -5,78 +5,30 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import java.util.Vector;
-
-import javax.swing.JList;
-
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelList;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 
 public class AnnotationSelectionList extends DisposablePanel
 {
-	public AnnotationSelectionList(Project projectToUse, int annotationType, EAMObjectPool pool)
+	public AnnotationSelectionList(Project projectToUse, ObjectTablePanel poolTable)
 	{
 		project = projectToUse;
-		list = new PanelList(getData(annotationType, pool));
+		list = poolTable;
 		add(list);
-	}
-
-	private Object[] getData(int annotationType, EAMObjectPool pool)
-	{
-		Vector items = new Vector();
-		ORefList orefList = pool.getORefList();
-		for (int i=0; i<orefList.size(); ++i)
-		{
-			ORef oref = orefList.get(i);
-			Factor factor = (Factor)project.findObject(oref);
-			ORefList annotations = factor.getOwnedObjects(annotationType);
-			for (int j=0; j<annotations.size(); ++j)
-			{
-				BaseObject annotation = project.findObject(annotations.get(j));
-				items.add(new Data(annotation, factor));
-			}
-		}
-		
-		return items.toArray(new Data[0]);
 	}
 	
 	public BaseObject getSelectedAnnotaton()
 	{
-		Data data = (Data) list.getSelectedValue();
-		if (data==null)
-			return null;
-		return data.getAnnotationObject();
+		return list.getSelectedObject();
 	}
 	
-	class Data extends Object
+	public void dispose()
 	{
-		public Data(BaseObject annotationObjectToUse, Factor factorToUse)
-		{
-			annotationObject = annotationObjectToUse;
-			factor = factorToUse;
-		}
-		
-		public String toString()
-		{
-			return factor.getLabel() +  ":" + annotationObject.getLabel();
-		}
-		
-		public BaseObject getAnnotationObject()
-		{
-			return annotationObject;
-		}
-		
-		BaseObject annotationObject;
-		Factor factor;
-		
+		super.dispose();
+		list.dispose();
 	}
 	
 	Project project;
-	JList list;
+	ObjectTablePanel list;
 }
 

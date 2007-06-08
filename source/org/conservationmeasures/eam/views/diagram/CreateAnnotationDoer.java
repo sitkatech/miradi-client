@@ -11,11 +11,11 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.AnnotationSelectionList;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.ObjectTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.views.ObjectsDoer;
@@ -83,15 +83,16 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		return create;
 	}
 	
-	protected AnnotationSelectionList displayAnnotationList(String title, int annotationType)
+	protected AnnotationSelectionList displayAnnotationList(String title, ObjectTablePanel tablePanel)
 	{
-		EAMObjectPool pool = getProject().getPool(getSelectedFactor().getType());
-		AnnotationSelectionList list = new AnnotationSelectionList(getProject(),annotationType, pool);
+		AnnotationSelectionList list = new AnnotationSelectionList(getProject(), tablePanel);
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), list, title);
 		dlg.setModal(true);
 		dlg.pack();
+		dlg.setPreferredSize(list.getMaximumSize());
 		Utilities.centerDlg(dlg);
 		dlg.setVisible(true);
+		tablePanel.dispose();
 		return list;
 	}
 	public Factor getSelectedFactor()
