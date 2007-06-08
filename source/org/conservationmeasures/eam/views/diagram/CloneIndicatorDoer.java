@@ -18,9 +18,9 @@ public class CloneIndicatorDoer extends CreateIndicator
 		if (!isAvailable())
 			return;
 	
-		objectToClone = displayAnnotationList(EAM.text("Choose Indicator to Clone"), new IndicatorPoolTablePanel(getProject()));	
+		cloneAnnotation = displayAnnotationList(EAM.text("Choose Indicator to Clone"), new IndicatorPoolTablePanel(getProject()));	
 		
-		if (objectToClone == null)
+		if (cloneAnnotation == null)
 			return;
 		
 		super.doIt();
@@ -28,8 +28,8 @@ public class CloneIndicatorDoer extends CreateIndicator
 	
 	protected CommandCreateObject createObject() throws CommandFailedException
 	{
-		return cloneObject(objectToClone);
+		return cloneObject(cloneAnnotation);
 	}
 	
-	BaseObject objectToClone;
+	BaseObject cloneAnnotation;
 }

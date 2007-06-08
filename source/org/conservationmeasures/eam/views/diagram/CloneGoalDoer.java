@@ -18,9 +18,9 @@ public class CloneGoalDoer extends CreateGoal
 		if (!isAvailable())
 			return;
 	
-		objectToClone = displayAnnotationList(EAM.text("Choose Goal to Clone"), new GoalPoolTablePanel(getProject()));	
+		cloneAnnotation = displayAnnotationList(EAM.text("Choose Goal to Clone"), new GoalPoolTablePanel(getProject()));	
 		
-		if (objectToClone == null)
+		if (cloneAnnotation == null)
 			return;
 		
 		super.doIt();
@@ -28,8 +28,8 @@ public class CloneGoalDoer extends CreateGoal
 	
 	protected CommandCreateObject createObject() throws CommandFailedException
 	{
-		return cloneObject(objectToClone);
+		return cloneObject(cloneAnnotation);
 	}
 	
-	BaseObject objectToClone;
+	BaseObject cloneAnnotation;
 }

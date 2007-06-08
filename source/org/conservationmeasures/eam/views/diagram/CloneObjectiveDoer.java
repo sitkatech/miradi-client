@@ -18,9 +18,9 @@ public class CloneObjectiveDoer extends CreateObjective
 		if (!isAvailable())
 			return;
 	
-		objectToClone = displayAnnotationList(EAM.text("Choose Objective to Clone"), new ObjectivePoolTablePanel(getProject()));	
+		cloneAnnotation = displayAnnotationList(EAM.text("Choose Objective to Clone"), new ObjectivePoolTablePanel(getProject()));	
 		
-		if (objectToClone == null)
+		if (cloneAnnotation == null)
 			return;
 		
 		super.doIt();
@@ -28,8 +28,8 @@ public class CloneObjectiveDoer extends CreateObjective
 	
 	protected CommandCreateObject createObject() throws CommandFailedException
 	{
-		return cloneObject(objectToClone);
+		return cloneObject(cloneAnnotation);
 	}
 	
-	BaseObject objectToClone;
+	BaseObject cloneAnnotation;
 }
