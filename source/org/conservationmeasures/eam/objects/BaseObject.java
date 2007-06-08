@@ -310,7 +310,7 @@ abstract public class BaseObject
 				continue;
 			if(isPseudoField(tag))
 				continue;
-			if(isaIdList(tag))
+			if(isIdListField(tag))
 				continue;
 
 			commands.add(new CommandSetObjectData(getType(), baseId, tag, getData(tag)));
@@ -318,7 +318,7 @@ abstract public class BaseObject
 		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
 	}
 
-	private boolean isaIdList(String tag)
+	private boolean isIdListField(String tag)
 	{
 		return tag.indexOf("_IDS")>0;
 	}

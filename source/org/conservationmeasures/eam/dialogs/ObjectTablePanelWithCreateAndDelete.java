@@ -13,13 +13,13 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ObjectTablePanelWithCreateAndDelete extends ObjectTablePanel
 {
-	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, int objectTypeToUse, ObjectTable tableToUse, Actions actions, Class[] buttons)
+	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, int objectTypeToUse, ObjectTable tableToUse, Actions actions, Class[] buttonActionClasses)
 	{
 		super(projectToUse, objectTypeToUse, tableToUse);
 
-		for (int i=0; i<buttons.length; ++i)
+		for (int i=0; i<buttonActionClasses.length; ++i)
 		{
-			EAMAction action = actions.get(buttons[i]);
+			EAMAction action = actions.get(buttonActionClasses[i]);
 			if (action.isObjectAction())
 				addButton((ObjectsAction) action);
 			else

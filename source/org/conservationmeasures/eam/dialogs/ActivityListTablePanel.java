@@ -18,10 +18,10 @@ public class ActivityListTablePanel extends ObjectListTablePanel
 	{
 		super(projectToUse, ObjectType.TASK, 
 				new ActivityListTableModel(projectToUse, nodeRef), 
-				actions, buttons);
+				actions, buttonActionClasses);
 	}
 	
-	static Class[] buttons = new Class[] {
+	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateActivity.class,
 		ActionDeleteActivity.class
 	};

@@ -19,10 +19,10 @@ public class IndicatorListTablePanel extends ObjectListTablePanel
 	{
 		super(projectToUse, ObjectType.INDICATOR, 
 				new IndicatorListTableModel(projectToUse, ref), 
-				actions, buttons);
+				actions, buttonActionClasses);
 	}
 	
-	static Class[] buttons = new Class[] {
+	static Class[] buttonActionClasses = new Class[] {
 			ActionCreateIndicator.class,
 			ActionDeleteIndicator.class,
 			ActionCloneIndicator.class

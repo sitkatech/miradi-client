@@ -19,10 +19,10 @@ public class KeyEcologicalAttributeListTablePanel extends ObjectListTablePanel
 	{
 		super(projectToUse, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, 
 				new KeyEcologicalAttributeListTableModel(projectToUse, nodeId), 
-				actions, buttons);
+				actions, buttonActionClasses);
 	}
 	
-	static Class[] buttons = new Class[] {
+	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateKeyEcologicalAttribute.class,
 		ActionDeleteKeyEcologicalAttribute.class
 	};

@@ -19,10 +19,10 @@ public class GoalListTablePanel extends ObjectListTablePanel
 	{
 		super(projectToUse, ObjectType.GOAL, 
 				new GoalListTableModel(projectToUse, nodeRef), 
-				actions, buttons);
+				actions, buttonActionClasses);
 	}
 	
-	static Class[] buttons = new Class[] {
+	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateGoal.class,
 		ActionDeleteGoal.class,
 		ActionCloneGoal.class

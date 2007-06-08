@@ -19,10 +19,10 @@ public class ObjectiveListTablePanel extends ObjectListTablePanel
 	{
 		super(projectToUse, ObjectType.OBJECTIVE, 
 				new ObjectiveListTableModel(projectToUse, nodeRef), 
-				actions, buttons);
+				actions, buttonActionClasses);
 	}
 	
-	static Class[] buttons = new Class[] {
+	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateObjective.class,
 		ActionDeleteObjective.class,
 		ActionCloneObjective.class

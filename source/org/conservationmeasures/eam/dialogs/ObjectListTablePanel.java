@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.project.Project;
 
 abstract public class ObjectListTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public ObjectListTablePanel(Project projectToUse, int objectTypeToUse, ObjectTableModel model, Actions actions, Class[] buttons)
+	public ObjectListTablePanel(Project projectToUse, int objectTypeToUse, ObjectTableModel model, Actions actions, Class[] buttonActionClasses)
 	{
-		super(projectToUse, objectTypeToUse, new ObjectListTable(model),actions, buttons);
+		super(projectToUse, objectTypeToUse, new ObjectListTable(model),actions, buttonActionClasses);
 	}
 
 	public void dispose()
