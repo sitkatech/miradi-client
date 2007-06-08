@@ -48,6 +48,8 @@ public class AnnotationSelectionList extends DisposablePanel
 	public BaseObject getSelectedAnnotaton()
 	{
 		Data data = (Data) list.getSelectedValue();
+		if (data==null)
+			return null;
 		return data.getAnnotationObject();
 	}
 	
