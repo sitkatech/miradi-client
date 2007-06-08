@@ -16,6 +16,8 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCloneGoal;
+import org.conservationmeasures.eam.actions.ActionCloneIndicator;
+import org.conservationmeasures.eam.actions.ActionCloneObjective;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCreateActivity;
@@ -208,9 +210,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity());
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
+		addDoerToMap(ActionCloneObjective.class, new CloneObjectiveDoer());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
 		
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
+		addDoerToMap(ActionCloneIndicator.class, new CloneIndicatorDoer());
 		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
 		
 		addDoerToMap(ActionCreateGoal.class, new CreateGoal());

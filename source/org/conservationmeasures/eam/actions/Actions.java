@@ -161,9 +161,11 @@ public class Actions
 		registerAction(new ActionDeleteResource(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
+		registerAction(new ActionCloneIndicator(mainWindow));
 		registerAction(new ActionDeleteIndicator(mainWindow));
 		
 		registerAction(new ActionCreateObjective(mainWindow));
+		registerAction(new ActionCloneObjective(mainWindow));
 		registerAction(new ActionDeleteObjective(mainWindow));
 		
 		registerAction(new ActionCreateGoal(mainWindow));
