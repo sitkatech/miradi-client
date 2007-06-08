@@ -66,7 +66,6 @@ public class AnnotationSelectionList extends DisposablePanel
 		
 		public BaseObject getAnnotationObject()
 		{
-			System.out.println(annotationObject);
 			return annotationObject;
 		}
 		
