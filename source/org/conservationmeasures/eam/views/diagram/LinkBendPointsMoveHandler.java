@@ -45,14 +45,14 @@ public class LinkBendPointsMoveHandler
 		
 		for (int i = 0; i < selectionIndexes.length; ++i)
 		{
-			Point pointToMove = pointsToMove.get(selectionIndexes[i]);
-			pointToMove.x = pointToMove.x + deltaX;
-			pointToMove.y = pointToMove.y + deltaY;
-			Point snapped = project.getSnapped(pointToMove);
-			pointToMove.x = snapped.x;
-			pointToMove.y = snapped.y;
+			Point newPointLocation = pointsToMove.get(selectionIndexes[i]);
+			newPointLocation.x = newPointLocation.x + deltaX;
+			newPointLocation.y = newPointLocation.y + deltaY;
+			Point snapped = project.getSnapped(newPointLocation);
+			newPointLocation.x = snapped.x;
+			newPointLocation.y = snapped.y;
 			
-			createBendPointOnNeabyLinks(linkCell, pointToMove);
+			createBendPointOnNeabyLinks(linkCell, newPointLocation);
 		}
 		
 		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, pointsToMove);
