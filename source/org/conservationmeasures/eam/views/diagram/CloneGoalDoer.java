@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.dialogs.AnnotationSelectionList;
 import org.conservationmeasures.eam.dialogs.GoalPoolTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -18,9 +17,8 @@ public class CloneGoalDoer extends CreateGoal
 	{
 		if (!isAvailable())
 			return;
-		
-		AnnotationSelectionList list = displayAnnotationList(EAM.text("Goal Selection List"), new GoalPoolTablePanel(getProject()));	
-		objectToClone = list.getSelectedAnnotaton();
+	
+		objectToClone = displayAnnotationList(EAM.text("Goal Selection List"), new GoalPoolTablePanel(getProject()));	
 		
 		if (objectToClone == null)
 			return;
