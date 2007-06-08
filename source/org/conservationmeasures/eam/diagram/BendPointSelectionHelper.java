@@ -99,8 +99,9 @@ public class BendPointSelectionHelper
 		selectionIndexes.add(bendPointIndex);
 	}
 	
-	public void addToSelection(PointList bendPoints, Point pointToSelect)
+	public void addToSelection(Point pointToSelect)
 	{
+		PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
 		for (int i = 0; i < bendPoints.size(); ++i)
 		{
 			Point point = bendPoints.get(i);

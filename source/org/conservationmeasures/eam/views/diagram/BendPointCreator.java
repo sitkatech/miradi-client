@@ -52,7 +52,7 @@ public class BendPointCreator
 		project.executeCommand(setBendPointsCommand);
 		
 		diagram.addSelectionCell(linkCell);
-		linkCell.getBendPointSelectionHelper().addToSelection(selectedLink.getBendPoints(), insertPoint);
+		linkCell.getBendPointSelectionHelper().addToSelection(insertPoint);
 	}
 	
 	public LinkCell[] getNearbyLinks(Point point, LinkCell selectedLinkCell)
