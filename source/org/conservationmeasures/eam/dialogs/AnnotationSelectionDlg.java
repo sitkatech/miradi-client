@@ -22,9 +22,9 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.martus.swing.Utilities;
 
-public class AnnotationSelectionList extends EAMDialog
+public class AnnotationSelectionDlg extends EAMDialog
 {
-	public AnnotationSelectionList(MainWindow mainWindow, ObjectTablePanel poolTable)
+	public AnnotationSelectionDlg(MainWindow mainWindow, ObjectTablePanel poolTable)
 	{
 		super(mainWindow);
 		list = poolTable;
@@ -38,7 +38,6 @@ public class AnnotationSelectionList extends EAMDialog
 		setModal(true);
 		setPreferredSize(new Dimension(600,400));
 		Utilities.centerDlg(this);
-		setVisible(true);
 	}
 	
 	public BaseObject getSelectedAnnotaton()

@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.AnnotationSelectionList;
+import org.conservationmeasures.eam.dialogs.AnnotationSelectionDlg;
 import org.conservationmeasures.eam.dialogs.ObjectTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -83,11 +83,10 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	
 	protected BaseObject displayAnnotationList(String title, ObjectTablePanel tablePanel)
 	{
-		AnnotationSelectionList list = new AnnotationSelectionList(getMainWindow(), tablePanel);
+		AnnotationSelectionDlg list = new AnnotationSelectionDlg(getMainWindow(), tablePanel);
+		list.setVisible(true);
 		return list.getSelectedAnnotaton();
 	}
-	
-
 	
 	public Factor getSelectedFactor()
 	{
