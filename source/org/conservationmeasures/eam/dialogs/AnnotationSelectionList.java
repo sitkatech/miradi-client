@@ -22,6 +22,11 @@ public class AnnotationSelectionList extends DisposablePanel
 		return list.getSelectedObject();
 	}
 	
+	public void clearSelectedAnnotaton()
+	{
+		list.getTable().clearSelection();
+	}
+	
 	public void dispose()
 	{
 		super.dispose();
