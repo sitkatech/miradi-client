@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.MainWindowAction;
-import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
@@ -19,8 +17,11 @@ public class ResourcePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 	{
 		super(project, ObjectType.PROJECT_RESOURCE, 
 				new ResourcePoolTable(new ResourcePoolTableModel(project)),
-				(MainWindowAction)actions.get(ActionCreateResource.class),
-				(ObjectsAction)actions.get(ActionDeleteResource.class));
+				actions, buttons);
 	}
 	
+	static Class[] buttons = new Class[] {
+		ActionCreateResource.class,
+		ActionDeleteResource.class
+	};
 }

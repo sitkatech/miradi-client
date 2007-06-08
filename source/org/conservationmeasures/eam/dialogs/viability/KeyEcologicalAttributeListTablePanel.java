@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.dialogs.viability;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.MainWindowAction;
-import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.dialogs.ObjectListTablePanel;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -21,8 +19,12 @@ public class KeyEcologicalAttributeListTablePanel extends ObjectListTablePanel
 	{
 		super(projectToUse, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, 
 				new KeyEcologicalAttributeListTableModel(projectToUse, nodeId), 
-				(MainWindowAction)actions.get(ActionCreateKeyEcologicalAttribute.class), 
-				(ObjectsAction)actions.get(ActionDeleteKeyEcologicalAttribute.class));
+				actions, buttons);
 	}
+	
+	static Class[] buttons = new Class[] {
+		ActionCreateKeyEcologicalAttribute.class,
+		ActionDeleteKeyEcologicalAttribute.class
+	};
 
 }

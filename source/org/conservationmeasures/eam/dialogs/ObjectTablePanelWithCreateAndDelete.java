@@ -5,19 +5,26 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.actions.MainWindowAction;
+import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.project.Project;
 
 public class ObjectTablePanelWithCreateAndDelete extends ObjectTablePanel
 {
-	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, int objectTypeToUse, ObjectTable tableToUse, MainWindowAction createAction, ObjectsAction deleteAction)
+	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, int objectTypeToUse, ObjectTable tableToUse, Actions actions, Class[] buttons)
 	{
 		super(projectToUse, objectTypeToUse, tableToUse);
 
-		addButton(new PanelButton(createAction));
-		addButton(deleteAction);
+		for (int i=0; i<buttons.length; ++i)
+		{
+			EAMAction action = actions.get(buttons[i]);
+			if (action.isObjectAction())
+				addButton((ObjectsAction) action);
+			else
+				addButton(new PanelButton(action));
+		}
 	}
 	
 }

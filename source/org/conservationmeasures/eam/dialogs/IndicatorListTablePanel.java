@@ -9,9 +9,6 @@ import org.conservationmeasures.eam.actions.ActionCloneIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.MainWindowAction;
-import org.conservationmeasures.eam.actions.ObjectsAction;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
@@ -22,11 +19,13 @@ public class IndicatorListTablePanel extends ObjectListTablePanel
 	{
 		super(projectToUse, ObjectType.INDICATOR, 
 				new IndicatorListTableModel(projectToUse, ref), 
-				(MainWindowAction)actions.get(ActionCreateIndicator.class), 
-				(ObjectsAction)actions.get(ActionDeleteIndicator.class));
-		//TODO: this class should be refactored to take a action list...EAMAction can have a isObjectAction and isMainWindowAction so it can be
-		// handeled in a loop at the parent level
-		addButton(new PanelButton(actions.get(ActionCloneIndicator.class)));
+				actions, buttons);
 	}
+	
+	static Class[] buttons = new Class[] {
+			ActionCreateIndicator.class,
+			ActionDeleteIndicator.class,
+			ActionCloneIndicator.class
+	};
 
 }

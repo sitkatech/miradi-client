@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
 import org.conservationmeasures.eam.actions.ActionDeleteFundingSource;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.MainWindowAction;
-import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
@@ -19,8 +17,12 @@ public class FundingSourcePoolTablePanel extends ObjectTablePanelWithCreateAndDe
 	{
 		super(project, ObjectType.FUNDING_SOURCE, 
 				new FundingSourcePoolTable(new FundingSourcePoolTableModel(project)),
-				(MainWindowAction)actions.get(ActionCreateFundingSource.class),
-				(ObjectsAction)actions.get(ActionDeleteFundingSource.class));
+				actions, buttons);
 	}
+	
+	static Class[] buttons = new Class[] {
+		ActionCreateFundingSource.class,
+		ActionDeleteFundingSource.class
+	};
 	
 }
