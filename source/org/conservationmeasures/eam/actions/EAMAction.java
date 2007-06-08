@@ -30,7 +30,7 @@ public abstract class EAMAction extends AbstractAction
 	
 	public boolean isObjectAction()
 	{
-		return (this instanceof ObjectsAction);
+		return false;
 	}
 
 	public Icon getDisabledIcon()

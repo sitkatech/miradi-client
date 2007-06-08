@@ -17,6 +17,11 @@ public class ObjectsAction extends ViewAction implements SelectionChangeListener
 		super(mainWindowToUse, label);
 	}
 	
+	public boolean isObjectAction()
+	{
+		return true;
+	}
+	
 	public void setPicker(ObjectPicker newPicker)
 	{
 		picker = newPicker;
