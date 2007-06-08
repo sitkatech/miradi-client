@@ -64,20 +64,16 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
-	
+
 	protected CommandCreateObject createObject() throws CommandFailedException
 	{
 		CommandCreateObject create = new CommandCreateObject(getAnnotationType());
 		getProject().executeCommand(create);
-		return create;
-	}
-	
-	protected CommandCreateObject cloneObject(BaseObject objectToClone) throws CommandFailedException
-	{
-		CommandCreateObject create = new CommandCreateObject(getAnnotationType());
-		getProject().executeCommand(create);
-		CommandSetObjectData[]  commands = objectToClone.createCommandsToClone(create.getCreatedId());
-		getProject().executeCommands(commands);
+		if (objectToClone!=null)
+		{
+			CommandSetObjectData[]  commands = objectToClone.createCommandsToClone(create.getCreatedId());
+			getProject().executeCommands(commands);
+		}
 		return create;
 	}
 	
@@ -86,6 +82,11 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		AnnotationSelectionDlg list = new AnnotationSelectionDlg(getMainWindow(), title, tablePanel);
 		list.setVisible(true);
 		return list.getSelectedAnnotaton();
+	}
+	
+	protected void setAnnotationToClone(BaseObject baseObject)
+	{
+		objectToClone = baseObject;
 	}
 	
 	public Factor getSelectedFactor()
@@ -100,5 +101,6 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		return (Factor)selected;
 	}
 	
+	BaseObject objectToClone;
 
 }

@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.dialogs.IndicatorPoolTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -18,18 +17,14 @@ public class CloneIndicatorDoer extends CreateIndicator
 		if (!isAvailable())
 			return;
 	
-		cloneAnnotation = displayAnnotationList(EAM.text("Choose Indicator to Clone"), new IndicatorPoolTablePanel(getProject()));	
-		
+		BaseObject cloneAnnotation = displayAnnotationList(EAM.text("Choose Indicator to Clone"), new IndicatorPoolTablePanel(getProject()));	
+	
 		if (cloneAnnotation == null)
 			return;
 		
+		setAnnotationToClone(cloneAnnotation);
+		
 		super.doIt();
 	}
-	
-	protected CommandCreateObject createObject() throws CommandFailedException
-	{
-		return cloneObject(cloneAnnotation);
-	}
-	
-	BaseObject cloneAnnotation;
+
 }
