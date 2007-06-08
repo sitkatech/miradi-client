@@ -85,11 +85,6 @@ public class AnnotationSelectionDlg extends EAMDialog implements ListSelectionLi
 
 		public void actionPerformed(ActionEvent arg0)
 		{
-			if (list.getSelectedObject()==null)
-			{
-				EAM.okDialog(EAM.text("Notice"), new String[] {EAM.text("Please make a selection")});
-				return;
-			}
 			objectSelected = list.getSelectedObject();
 			dispose();
 		}
