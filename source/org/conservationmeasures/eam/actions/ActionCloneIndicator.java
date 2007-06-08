@@ -17,7 +17,7 @@ public class ActionCloneIndicator extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Clone Indicator");
+		return EAM.text("Action|Manage|Clone Indicator...");
 	}
 
 	public String getToolTipText()

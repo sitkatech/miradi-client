@@ -17,7 +17,7 @@ public class ActionCloneGoal extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Clone Goal");
+		return EAM.text("Action|Manage|Clone Goal...");
 	}
 
 	public String getToolTipText()
