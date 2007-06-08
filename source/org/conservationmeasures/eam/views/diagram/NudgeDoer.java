@@ -80,8 +80,9 @@ public class NudgeDoer extends LocationDoer
 	
 	private void moveSelectedNodes(int deltaX, int deltaY) throws CommandFailedException
 	{
-		FactorCell[] cells = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
-		LinkCell[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinkCells();
+		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
+		FactorCell[] cells = diagramPanel.getOnlySelectedFactorCells();
+		LinkCell[] links = diagramPanel.getOnlySelectedLinkCells();
 		DiagramFactorId[] ids = new DiagramFactorId[cells.length];
 		for(int i = 0; i < cells.length; ++i)
 		{
@@ -93,11 +94,11 @@ public class NudgeDoer extends LocationDoer
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
 		{
-			getDiagramView().getDiagramPanel().moveFactors(deltaX, deltaY, ids);
+			diagramPanel.moveFactors(deltaX, deltaY, ids);
 			
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
 			factorMoveHandler.factorsWereMovedOrResized(ids);
-			new LinkBendPointsMoveHandler(getProject()).moveLinkBendPoints(links, deltaX, deltaY);
+			new LinkBendPointsMoveHandler(diagramPanel.getdiagramComponent(), getProject()).moveLinkBendPoints(links, deltaX, deltaY);
 		}
 		catch (Exception e)
 		{

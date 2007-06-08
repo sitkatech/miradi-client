@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
@@ -96,6 +97,16 @@ public class BendPointSelectionHelper
 			return;
 		
 		selectionIndexes.add(bendPointIndex);
+	}
+	
+	public void addToSelection(PointList bendPoints, Point pointToSelect)
+	{
+		for (int i = 0; i < bendPoints.size(); ++i)
+		{
+			Point point = bendPoints.get(i);
+			if (point.equals(pointToSelect))
+				addToSelectionIndexList(i);
+		}
 	}
 	
 	//TODO move this method to IntVector and name it toIntArray

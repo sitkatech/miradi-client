@@ -203,12 +203,13 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 	}
 
-	private void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws CommandFailedException
+	private void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws Exception
 	{
-		if (mainWindow.getDiagramComponent().isMarquee())
+		DiagramComponent diagram = mainWindow.getDiagramComponent();
+		if (diagram.isMarquee())
 			return;
 		
-		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
+		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(diagram, getProject());
 		moveHandler.moveBendPoints(linkCell, deltaX, deltaY);
 	}
 

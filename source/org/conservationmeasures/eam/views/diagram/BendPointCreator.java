@@ -6,10 +6,8 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -20,7 +18,6 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
-import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphLayoutCache;
 
 public class BendPointCreator
@@ -45,7 +42,7 @@ public class BendPointCreator
 	
 	}
 	
-	private void insertBendPointForLink(LinkCell linkCell, Point insertPoint) throws Exception
+	public void insertBendPointForLink(LinkCell linkCell, Point insertPoint) throws Exception
 	{
 		DiagramFactorLink selectedLink = linkCell.getDiagramFactorLink();
 		Point snapped = project.getSnapped(insertPoint);
@@ -53,6 +50,9 @@ public class BendPointCreator
 		
 		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint);
 		project.executeCommand(setBendPointsCommand);
+		
+		diagram.addSelectionCell(linkCell);
+		linkCell.getBendPointSelectionHelper().addToSelection(selectedLink.getBendPoints(), insertPoint);
 	}
 	
 	public LinkCell[] getNearbyLinks(Point point, LinkCell selectedLinkCell)
@@ -63,12 +63,11 @@ public class BendPointCreator
 		for (int i = 0; i < allCells.length; ++i)
 		{
 			LinkCell linkCell = allCells[i];
-			if (! getBounds(linkCell).contains(point))
+			if (! diagram.getBounds(linkCell).contains(point))
 				continue;
 		 
 			PointList pointList = getAllLinkPoints(linkCell);
-			Line2D.Double[] lineSegments = pointList.convertToLineSegments();
-			if (isWithinRange(lineSegments, point))
+			if (isWithinRange(pointList, point))
 				nearbyLinks.add(linkCell);
 		}
 		
@@ -86,22 +85,9 @@ public class BendPointCreator
 		return pointList;
 	}
 	
-	private Rectangle2D getBounds(LinkCell linkCell)
+	public boolean isWithinRange(PointList pointList, Point point)
 	{
-		GraphLayoutCache cache = getCache();
-		EdgeView view = (EdgeView) cache.getMapping(linkCell, false);
-	
-		//TODO shoud check to see if the link is first visible outside of this method, in order to 
-		// avoid the null test below.  the null test exists becuase if there are draft starts in a
-		// project,  you cant create a bend point, exceptions are thrown.  view is null
-		if (view != null)
-			return view.getBounds();
-		
-		return new Rectangle(-1, -1, -1, -1);
-	}
-	
-	private boolean isWithinRange(Line2D.Double[] lineSegments, Point point)
-	{
+		Line2D.Double[] lineSegments = pointList.convertToLineSegments();
 		for (int i = 0; i < lineSegments.length; ++i)
 		{
 			Line2D.Double line = lineSegments[i];

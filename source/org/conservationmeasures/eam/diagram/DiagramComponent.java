@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
@@ -449,9 +450,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public Rectangle2D getBounds(LinkCell linkCell)
 	{
 		EdgeView view = (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);
-		return view.getBounds();
+	
+		//TODO shoud check to see if the link is first visible outside of this method, in order to 
+		// avoid the null test below.  the null test exists becuase if there are draft starts in a
+		// project,  you cant create a bend point, exceptions are thrown.  view is null
+		if (view != null)
+			return view.getBounds();
+		
+		return new Rectangle(-1, -1, -1, -1);
 	}
-
+	
 	MainWindow mainWindow;
 	Color defaultBackgroundColor;
 	Project project;

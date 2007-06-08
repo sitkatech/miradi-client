@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
@@ -17,12 +17,13 @@ import org.conservationmeasures.eam.utils.PointList;
 public class LinkBendPointsMoveHandler
 {
 
-	public LinkBendPointsMoveHandler(Project projectToUse)
+	public LinkBendPointsMoveHandler(DiagramComponent diagramToUse, Project projectToUse)
 	{
+		diagram = diagramToUse;
 		project = projectToUse;
 	}
 
-	public void moveLinkBendPoints(LinkCell[] linkCells, int deltaX, int deltaY) throws CommandFailedException
+	public void moveLinkBendPoints(LinkCell[] linkCells, int deltaX, int deltaY) throws Exception
 	{
 		for (int i = 0; i < linkCells.length; i++)
 		{
@@ -31,13 +32,13 @@ public class LinkBendPointsMoveHandler
 		}
 	}
 	
-	public void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws CommandFailedException
+	public void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws Exception
 	{
 		int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
 		moveBendPoints(linkCell, selectionIndexes, deltaX, deltaY);
 	}
 	
-	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws CommandFailedException
+	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws Exception
 	{
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
 		PointList pointsToMove = diagramLink.getBendPoints().createClone();
@@ -50,11 +51,50 @@ public class LinkBendPointsMoveHandler
 			Point snapped = project.getSnapped(pointToMove);
 			pointToMove.x = snapped.x;
 			pointToMove.y = snapped.y;
+			
+			createBendPointOnNeabyLinks(linkCell, pointToMove);
 		}
 		
 		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, pointsToMove);
 		project.executeCommand(bendPointMoveCommand);
 	}
 		
+	private void createBendPointOnNeabyLinks(LinkCell linkCell, Point pointToMove) throws Exception
+	{
+		if (moreThanOneBendPointSelected())
+			return;
+		
+		BendPointCreator bendPointCreator = new BendPointCreator(project, diagram);
+		LinkCell[] nearbyLinkCells = bendPointCreator.getNearbyLinks(pointToMove, linkCell);
+		for (int i = 0; i < nearbyLinkCells.length; ++i)
+		{
+			LinkCell nearByLinkCell = nearbyLinkCells[i];
+			DiagramFactorLink nearbyDiagramLink = nearByLinkCell.getDiagramFactorLink();
+			if (nearByLinkCell.equals(linkCell))
+				continue;
+			
+			PointList bendPoints = nearbyDiagramLink.getBendPoints();
+			if (! bendPoints.contains(pointToMove))
+				bendPointCreator.createBendPoint(pointToMove, nearbyDiagramLink);
+		}
+	}
+
+	private boolean moreThanOneBendPointSelected()
+	{
+		LinkCell[] allCells = diagram.getDiagramModel().getAllFactorLinkCells();
+		int totalSelectedBendPointCount = 0;
+		for (int i = 0; i < allCells.length; ++i)
+		{
+			LinkCell linkCell = allCells[i];
+			int[] selectedBendPointIndexes = linkCell.getSelectedBendPointIndexes();
+			totalSelectedBendPointCount += selectedBendPointIndexes.length;
+			if (totalSelectedBendPointCount > 1)
+				return true;
+		}
+		
+		return false;
+	}
+
+	DiagramComponent diagram;
 	Project project;
 }
