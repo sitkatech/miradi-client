@@ -103,6 +103,7 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
@@ -608,10 +609,26 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(cell == null)
 			return;
 
+		clearBendPointSelectionList(cell, cmd);
+		
 		cell.update(getDiagramComponent());
 		model.updateCell(cell);
 	}
 	
+	private void clearBendPointSelectionList(LinkCell cell, CommandSetObjectData cmd) throws Exception
+	{
+		if (! cmd.getFieldTag().equals(DiagramFactorLink.TAG_BEND_POINTS))
+			return;
+		
+		PointList newPointList = new PointList(cmd.getDataValue());
+		PointList oldPointList = new PointList(cmd.getPreviousDataValue());
+		
+		if (newPointList.size() == oldPointList.size())
+			return;
+			
+		cell.getBendPointSelectionHelper().clearSelection();
+	}
+
 	private DiagramFactorLinkId getDiagramFactorLinkIdFromFactorLinkId(FactorLinkId factorLinkId) throws Exception
 	{
 		if(!getDiagramModel().doesDiagramFactorLinkExist(factorLinkId))
