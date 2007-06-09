@@ -16,6 +16,6 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/JUnit/bin/junit.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/martus-utils/bin/martus-utils.jar" sourcepath="/miradi-thirdparty/martus-utils/source/martus-utils-src.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/martus-swing/bin/martus-swing.jar" sourcepath="/miradi-thirdparty/martus-swing/source/martus-swing-src.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/miradi-jgraph"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jgraph/miradi-jgraph.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
