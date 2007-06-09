@@ -19,7 +19,6 @@ public class ChainManager
 		project = projectToUse;
 	}
 	
-	// FIXME: Richard: Write tests for this!!!
 	public Factor getDirectOrIndirectOwningFactor(ORef ref) throws Exception
 	{
 		BaseObject owner = getProject().findObject(ref);
