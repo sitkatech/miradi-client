@@ -50,9 +50,9 @@ public class BendPointCreator
 		
 		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint);
 		project.executeCommand(setBendPointsCommand);
-		
+					
 		diagram.addSelectionCell(linkCell);
-		linkCell.getBendPointSelectionHelper().addToSelection(insertPoint);
+		linkCell.getBendPointSelectionHelper().addToSelection(snapped);
 	}
 	
 	public LinkCell[] getNearbyLinks(Point point, LinkCell selectedLinkCell)
