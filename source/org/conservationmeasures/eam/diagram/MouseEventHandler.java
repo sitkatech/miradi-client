@@ -36,6 +36,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	{
 		mainWindow = mainWindowToUse;
 		selectedCells = new Object[0];
+		linksWithSelectedBendPoints = new LinkCell[0];
 	}
 
 	Project getProject()
@@ -70,6 +71,8 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 //			dragStartedAt = null;
 //			return;
 //		}
+		
+		updateLinksWithSelectedBendPoints();
 		try
 		{
 			for(int i = 0; i < selectedCells.length; ++i)
@@ -123,11 +126,9 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 				EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
 				if(selectedCell.isFactor())
 					selectedFactorIds.add(((FactorCell)selectedCells[i]).getDiagramFactorId());
-
-				if(selectedCell.isFactorLink())
-					moveBendPoints((LinkCell) selectedCells[i], deltaX, deltaY);
 			}
-
+			
+			moveSelectedBendPoints(deltaX, deltaY);
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
 			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
@@ -143,6 +144,14 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 		
 		mainWindow.getDiagramComponent().setMarquee(false);
+	}
+
+	private void moveSelectedBendPoints(int deltaX, int deltaY) throws Exception
+	{
+		for (int i = 0; i < linksWithSelectedBendPoints.length; ++i)
+		{
+			moveBendPoints(linksWithSelectedBendPoints[i], deltaX, deltaY);
+		}
 	}
 
 	public void mouseClicked(MouseEvent event)
@@ -212,8 +221,26 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(diagram, getProject());
 		moveHandler.moveBendPoints(linkCell, deltaX, deltaY);
 	}
+	
+	private void updateLinksWithSelectedBendPoints()
+	{
+		Vector linksWithSelectedbendPoints = new Vector();
+		for(int i = 0; i < selectedCells.length; ++i)
+		{
+			EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
+			if(! selectedCell.isFactorLink())
+				continue;
+
+			LinkCell linkCell = (LinkCell) selectedCells[i];
+			if (linkCell.getSelectedBendPointIndexes().length > 0)
+				linksWithSelectedbendPoints.add(linkCell);
+		}
+		
+		linksWithSelectedBendPoints = (LinkCell[]) linksWithSelectedbendPoints.toArray(new LinkCell[0]);
+	}
 
 	MainWindow mainWindow;
 	Point dragStartedAt;
 	Object[] selectedCells;
+	LinkCell[] linksWithSelectedBendPoints;
 }

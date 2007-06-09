@@ -75,7 +75,7 @@ public class LinkBendPointsMoveHandler
 			
 			PointList bendPoints = nearbyDiagramLink.getBendPoints();
 			if (! bendPoints.contains(pointToMove))
-				bendPointCreator.createBendPoint(pointToMove, nearbyDiagramLink);
+				bendPointCreator.insertBendPointForLink(nearByLinkCell, pointToMove);
 		}
 	}
 
