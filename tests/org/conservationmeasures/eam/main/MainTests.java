@@ -60,7 +60,6 @@ import org.conservationmeasures.eam.objects.TestObjectFindOwnerAndFindReferrer;
 import org.conservationmeasures.eam.objects.TestObjectGetTypesThatCanOwnUs;
 import org.conservationmeasures.eam.objects.TestObjectGetTypesThatCanReferToUs;
 import org.conservationmeasures.eam.objects.TestObjectManager;
-import org.conservationmeasures.eam.objects.TestObjectOwnedAndReferenced;
 import org.conservationmeasures.eam.objects.TestObjectReferenceList;
 import org.conservationmeasures.eam.objects.TestObjective;
 import org.conservationmeasures.eam.objects.TestProjectMetadata;
@@ -226,7 +225,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestObjectGetTypesThatCanReferToUs.class));
 		suite.addTest(new TestSuite(TestObjectGetTypesThatCanOwnUs.class));
 		suite.addTest(new TestSuite(TestObjectFindOwnerAndFindReferrer.class));
-		suite.addTest(new TestSuite(TestObjectOwnedAndReferenced.class));
 		suite.addTest(new TestSuite(TestConceptualModelDiagram.class));
 		suite.addTest(new TestSuite(TestResultsChainDiagram.class));
 		suite.addTest(new TestSuite(TestThreatReductionResult.class));
