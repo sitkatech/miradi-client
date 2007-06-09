@@ -49,10 +49,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.INTERMEDIATE_RESULT, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
-		verifyOwned(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwned(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
 	}
 
 	public void testThreatReductionResultOwn() throws Exception
@@ -64,10 +62,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.THREAT_REDUCTION_RESULT, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
-		verifyOwned(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwned(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
 	}
 
 	public void testCauseOwn() throws Exception
@@ -79,10 +75,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.CAUSE, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
-		verifyOwned(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwned(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
 	}
 	
 	public void testStrategyOwn() throws Exception
@@ -98,12 +92,9 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.STRATEGY, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
-		verifyOwner(owner, new ORef(ObjectType.TASK, taskId));
-		verifyOwned(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwned(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
-		verifyOwned(1,owner, new ORef(ObjectType.TASK, taskId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.TASK, taskId));
 	}
 
 	public void testTargetOwn() throws Exception
@@ -116,12 +107,9 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.TARGET, factorId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwner(owner, new ORef(ObjectType.GOAL, goalId));
-		verifyOwner(owner, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId));
-		verifyOwned(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwned(1,owner, new ORef(ObjectType.GOAL, goalId));
-		verifyOwned(1,owner, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.GOAL, goalId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId));
 	}
 	
 	public void testTaskOwn() throws Exception
@@ -143,11 +131,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.TASK, taskId);
-		verifyOwner(owner, new ORef(ObjectType.TASK, subTaskId));
-		verifyOwner(owner, new ORef(ObjectType.ASSIGNMENT, assignmentId));
-		verifyOwned(1,owner, new ORef(ObjectType.TASK, subTaskId));
-		verifyOwned(1,owner, new ORef(ObjectType.ASSIGNMENT, assignmentId));
-		
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.TASK, subTaskId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.ASSIGNMENT, assignmentId));
 	}
 	
 	
@@ -171,14 +156,10 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.ASSIGNMENT, assignmentId);
-		verifyRefer(owner, new ORef(ObjectType.PROJECT_RESOURCE, projectResourceId));
-		verifyRefer(owner, new ORef(ObjectType.ACCOUNTING_CODE, accountingCodeId));
-		verifyRefer(owner, new ORef(ObjectType.FUNDING_SOURCE, fundingSourceId));
-		verifyRefer(owner, new ORef(ObjectType.TASK, subTaskId));
-		verifyReferenced(1,owner, new ORef(ObjectType.PROJECT_RESOURCE, projectResourceId));
-		verifyReferenced(1,owner, new ORef(ObjectType.ACCOUNTING_CODE, accountingCodeId));
-		verifyReferenced(1,owner, new ORef(ObjectType.FUNDING_SOURCE, fundingSourceId));
-		verifyReferenced(1,owner, new ORef(ObjectType.TASK, subTaskId));
+		verifyReferenceFunctions(1,owner, new ORef(ObjectType.PROJECT_RESOURCE, projectResourceId));
+		verifyReferenceFunctions(1,owner, new ORef(ObjectType.ACCOUNTING_CODE, accountingCodeId));
+		verifyReferenceFunctions(1,owner, new ORef(ObjectType.FUNDING_SOURCE, fundingSourceId));
+		verifyReferenceFunctions(1,owner, new ORef(ObjectType.TASK, subTaskId));
 	}
 
 
@@ -200,8 +181,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
-		verifyRefer(owner, orefFactor);
-		verifyReferenced(1,owner, orefFactor);
+		verifyReferenceFunctions(1,owner, orefFactor);
 	}
 	
 	
@@ -228,18 +208,13 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 
     	
     	ORef linkRef = new ORef(ObjectType.FACTOR_LINK, modelLinkageId);
-		verifyRefer(linkRef, new ORef(ObjectType.STRATEGY, interventionId));
-		verifyRefer(linkRef, new ORef(ObjectType.CAUSE, factorId));
-		verifyReferenced(1,linkRef, new ORef(ObjectType.STRATEGY, interventionId));
-		verifyReferenced(1,linkRef, new ORef(ObjectType.CAUSE, factorId));
+		verifyReferenceFunctions(1,linkRef, new ORef(ObjectType.STRATEGY, interventionId));
+		verifyReferenceFunctions(1,linkRef, new ORef(ObjectType.CAUSE, factorId));
     	
 		ORef diagramLinkRef = new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkId);
-		verifyRefer(diagramLinkRef, new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
-		verifyRefer(diagramLinkRef, new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
-		verifyRefer(diagramLinkRef, new ORef(ObjectType.FACTOR_LINK, modelLinkageId));
-		verifyReferenced(2,diagramLinkRef, new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
-		verifyReferenced(2,diagramLinkRef, new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
-		verifyReferenced(1,diagramLinkRef, new ORef(ObjectType.FACTOR_LINK, modelLinkageId));
+		verifyReferenceFunctions(2,diagramLinkRef, new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
+		verifyReferenceFunctions(2,diagramLinkRef, new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+		verifyReferenceFunctions(1,diagramLinkRef, new ORef(ObjectType.FACTOR_LINK, modelLinkageId));
 	}
 	
 	public void testIndicatorOwn() throws Exception
@@ -253,8 +228,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 		ORef owner = new ORef(ObjectType.INDICATOR, indicatorId);
-		verifyOwner(owner, new ORef(ObjectType.TASK, taskId));
-		verifyOwned(1,owner, new ORef(ObjectType.TASK, taskId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.TASK, taskId));
 	}
 	
 	
@@ -266,8 +240,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 		ORef owner = new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId);
-		verifyOwner(owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwned(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
 	}
 	
 	
@@ -281,8 +254,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		//----------- start test -----------
 		
 		ORef owner = new ORef(ObjectType.VIEW_DATA, viewDataId);
-		verifyRefer(owner, new ORef(ObjectType.TARGET, factorId));
-		verifyReferenced(1,owner, new ORef(ObjectType.TARGET, factorId));
+		verifyReferenceFunctions(1,owner, new ORef(ObjectType.TARGET, factorId));
 	}
 	
 	public void testResultsChainRefer() throws Exception
@@ -302,14 +274,10 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		
 		//----------- start test -----------
 		
-		verifyOwner(diagramRef, strategy.getRef());
-		verifyOwner(diagramRef, cause.getRef());
-		verifyOwner(diagramRef, target.getRef());
-		verifyOwner(diagramRef, link.getRef());
-		verifyOwned(3,diagramRef, strategy.getRef());
-		verifyOwned(3,diagramRef, cause.getRef());
-		verifyOwned(3,diagramRef, target.getRef());
-		verifyOwned(1,diagramRef, link.getRef());
+		verifyOwnershipFunctions(3,diagramRef, strategy.getRef());
+		verifyOwnershipFunctions(3,diagramRef, cause.getRef());
+		verifyOwnershipFunctions(3,diagramRef, target.getRef());
+		verifyOwnershipFunctions(1,diagramRef, link.getRef());
 	}
 	
 	private DiagramFactor createFactorAndDiagramFactor(int type) throws Exception
@@ -350,6 +318,14 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		assertEquals(true, ownedObjects.contains(referred));
 	}
 	
+	
+	private void verifyReferenceFunctions(int size, ORef owner, ORef ref)
+	{
+		verifyReferenced(size, owner, ref);
+		verifyRefer(owner, ref);
+	}
+
+	
 
 	private void verifyOwner(ORef owner, ORef ref)
 	{
@@ -372,6 +348,11 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		assertEquals(true, ownedObjects.contains(ref));
 	}
 	
+	private void verifyOwnershipFunctions(int size, ORef owner, ORef ref)
+	{
+		verifyOwned(size, owner, ref);
+		verifyOwner(owner, ref);
+	}
 
 	
 	
