@@ -63,7 +63,7 @@ public class NudgeDoer extends LocationDoer
 				break;
 		}
 		EAM.logVerbose("NudgeNodes ("+deltaX + ","+deltaY+")");
-		moveSelectedNodes(deltaX, deltaY);
+		moveSelectedItems(deltaX, deltaY);
 	}
 
 	private boolean isFutureCellLocationInsideDiagramBounds(FactorCell factorCell, int deltaX, int deltaY)
@@ -78,7 +78,7 @@ public class NudgeDoer extends LocationDoer
 		return true;
 	}
 	
-	private void moveSelectedNodes(int deltaX, int deltaY) throws CommandFailedException
+	private void moveSelectedItems(int deltaX, int deltaY) throws CommandFailedException
 	{
 		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
 		FactorCell[] cells = diagramPanel.getOnlySelectedFactorCells();
@@ -103,7 +103,7 @@ public class NudgeDoer extends LocationDoer
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			throw new CommandFailedException("Unable to move factors");
+			throw new CommandFailedException("Unable to move selected items");
 		}
 		finally
 		{
