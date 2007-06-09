@@ -137,6 +137,12 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	}
 	
 	
+	public BaseId addItemToTaskList(BaseId id, int type, String tag) throws Exception
+	{
+		return addItemToList(ObjectType.TASK, id,  type,  tag);
+	}
+	
+	
 	public BaseId addItemToFactorList(BaseId id, int type, String tag) throws Exception
 	{
 		return addItemToList(ObjectType.FACTOR, id,  type,  tag);
