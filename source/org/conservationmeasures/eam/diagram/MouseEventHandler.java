@@ -157,7 +157,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	public void mouseClicked(MouseEvent event)
 	{
-		if(event.getClickCount() == 2)
+		if(isPropertiesEvent(event))
 		{
 			try 
 			{
@@ -174,6 +174,17 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			}
 			event.consume();
 		}
+	}
+
+	private boolean isPropertiesEvent(MouseEvent event)
+	{
+		if (event.getClickCount() != 2)
+			return false;
+		
+		if (event.isControlDown())
+			return false;
+		
+		return true;
 	}
 
 	// valueChanged is part of the GraphSelectionListener interface.
