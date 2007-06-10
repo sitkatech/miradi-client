@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
@@ -17,6 +18,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cellviews.FactorLinkView;
 import org.conservationmeasures.eam.diagram.cellviews.RectangleFactorView;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellHandle;
 import org.jgraph.graph.CellView;
@@ -60,6 +62,10 @@ public class EAMGraphUI extends BasicGraphUI
 		return null;
 	}
 
+	public boolean isFactorLinkView(CellView view)
+	{
+		return view instanceof FactorLinkView;
+	}
 
 	class CustomRootHandle extends BasicGraphUI.RootHandle
 	{
@@ -125,11 +131,6 @@ public class EAMGraphUI extends BasicGraphUI
 			return view instanceof RectangleFactorView;
 		}
 
-		private boolean isFactorLinkView(CellView view)
-		{
-			return view instanceof FactorLinkView;
-		}
-
 		private Point2D.Double convertToPoint(Object object)
 		{
 			if(object instanceof SerializablePoint2D)
@@ -145,6 +146,9 @@ public class EAMGraphUI extends BasicGraphUI
 		{
 			if(!this.processMouseEvent(event))
 				super.mousePressed(event);
+			
+			if (SwingUtilities.isRightMouseButton(event))
+				updateBendPointSelection(event);
 		}
 
 		public void mouseReleased(MouseEvent event)
@@ -186,7 +190,34 @@ public class EAMGraphUI extends BasicGraphUI
 		{
 			cell = thisCell;
 		}
+		
+		private void updateBendPointSelection(MouseEvent event)
+		{
+			CellView thisCell = getGraph().getNextSelectableViewAt(getFocus(), event.getX(), event.getY());
+			if (! isFactorLinkView(thisCell))
+				return;
+			
+			FactorLinkView linkView = (FactorLinkView) thisCell;
+			LinkCell linkCell = (LinkCell) linkView.getCell();
+			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+			BendPointSelectionHelper selectionHelper = linkCell.getBendPointSelectionHelper();
+			for (int i = 0; i < bendPoints.size(); ++i)
+			{
+				Point bendPoint = bendPoints.get(i);
+				//TODO nima is this range ok, what is the bend point height/2? 
+				if (bendPoint.distance(event.getPoint()) < 20)
+				{
+					selectionHelper.addToSelectionIndexList(i);
+					repaintGraph();
+					return;
+				}
+			}
+			
+		}
 
+		private void repaintGraph()
+		{
+			getGraph().paint(getGraph().getGraphics());
+		}
 	}
-
 }
