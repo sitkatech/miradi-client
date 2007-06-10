@@ -60,7 +60,6 @@ public class WorkPlanMonitoringIndicator extends TreeTableNode
 		if (column == 0)
 			return toString();
 		
-		//TODO should this be HTML?
 		if (column == 1)
 			return toString();
 		return "";
