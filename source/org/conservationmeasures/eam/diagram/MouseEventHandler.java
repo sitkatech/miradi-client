@@ -116,10 +116,10 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		if(deltaX == 0 && deltaY == 0)
 			return;
 		
-		moveHasHappened(deltaX, deltaY);
+		moveHasHappened();
 	}
 
-	private void moveHasHappened(int deltaX, int deltaY)
+	private void moveHasHappened()
 	{
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
@@ -132,7 +132,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 					selectedFactorIds.add(((FactorCell)selectedCells[i]).getDiagramFactorId());
 			}
 			
-			moveSelectedBendPoints(deltaX, deltaY);
+			moveSelectedBendPoints();
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
 			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
@@ -150,11 +150,11 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		mainWindow.getDiagramComponent().setMarquee(false);
 	}
 
-	private void moveSelectedBendPoints(int deltaX, int deltaY) throws Exception
+	private void moveSelectedBendPoints() throws Exception
 	{
 		for (int i = 0; i < linksWithSelectedBendPoints.length; ++i)
 		{
-			moveBendPoints(linksWithSelectedBendPoints[i], deltaX, deltaY);
+			moveBendPoints(linksWithSelectedBendPoints[i]);
 		}
 	}
 
@@ -230,7 +230,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 	}
 
-	private void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws Exception
+	private void moveBendPoints(LinkCell linkCell) throws Exception
 	{
 		DiagramComponent diagram = mainWindow.getDiagramComponent();
 		if (diagram.isMarquee())
