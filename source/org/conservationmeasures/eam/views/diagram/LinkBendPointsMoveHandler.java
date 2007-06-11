@@ -6,13 +6,16 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
+import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.utils.Utility;
 
 public class LinkBendPointsMoveHandler
 {
@@ -32,12 +35,39 @@ public class LinkBendPointsMoveHandler
 		}
 	}
 	
+	public void moveBendPoints(LinkCell linkCell, Point2D[] bendPoints) throws Exception
+	{
+		int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
+		moveBendPoints(linkCell, selectionIndexes, bendPoints);
+	}
+	
 	public void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws Exception
 	{
 		int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
 		moveBendPoints(linkCell, selectionIndexes, deltaX, deltaY);
 	}
-	
+
+	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, Point2D[] bendPoints) throws Exception
+	{
+		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		PointList pointsToMove = diagramLink.getBendPoints().createClone();
+		
+		for (int i = 0; i < selectionIndexes.length; ++i)
+		{
+			int selectionIndex = selectionIndexes[i];
+			Point newPointLocation = Utility.convertToPoint(bendPoints[selectionIndex]);
+			Point snapped = project.getSnapped(newPointLocation);
+			newPointLocation.setLocation(snapped.x, snapped.y);
+			
+			Point point = pointsToMove.get(selectionIndex);
+			point.setLocation(newPointLocation);
+			
+			createBendPointOnNeabyLinks(linkCell, newPointLocation);
+		}
+		
+		executeBendPointMoveCommand(diagramLink, pointsToMove);
+	}
+
 	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws Exception
 	{
 		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
@@ -46,15 +76,18 @@ public class LinkBendPointsMoveHandler
 		for (int i = 0; i < selectionIndexes.length; ++i)
 		{
 			Point newPointLocation = pointsToMove.get(selectionIndexes[i]);
-			newPointLocation.x = newPointLocation.x + deltaX;
-			newPointLocation.y = newPointLocation.y + deltaY;
+			newPointLocation.setLocation(newPointLocation.x + deltaX, newPointLocation.y + deltaY);
 			Point snapped = project.getSnapped(newPointLocation);
-			newPointLocation.x = snapped.x;
-			newPointLocation.y = snapped.y;
-			
+			newPointLocation.setLocation(snapped);
+		
 			createBendPointOnNeabyLinks(linkCell, newPointLocation);
 		}
 		
+		executeBendPointMoveCommand(diagramLink, pointsToMove);
+	}
+	
+	private void executeBendPointMoveCommand(DiagramFactorLink diagramLink, PointList pointsToMove) throws CommandFailedException
+	{
 		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, pointsToMove);
 		project.executeCommand(bendPointMoveCommand);
 	}

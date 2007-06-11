@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
+import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -28,6 +30,7 @@ import org.conservationmeasures.eam.views.diagram.PropertiesDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
+import org.jgraph.graph.EdgeView;
 
 
 public class MouseEventHandler extends MouseAdapter implements GraphSelectionListener
@@ -232,9 +235,24 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		DiagramComponent diagram = mainWindow.getDiagramComponent();
 		if (diagram.isMarquee())
 			return;
-		
+	
+		EdgeView edge = diagram.getEdgeView(linkCell);
+		Point2D[] bendPoints = extractBendPoints(edge);
 		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(diagram, getProject());
-		moveHandler.moveBendPoints(linkCell, deltaX, deltaY);
+		moveHandler.moveBendPoints(linkCell, bendPoints);
+	}
+
+	private Point2D[] extractBendPoints(EdgeView edge)
+	{
+		List controlPoints = edge.getPoints();
+		
+		final int FIRST_PORT_INDEX = 0;
+		controlPoints.remove(FIRST_PORT_INDEX);
+
+		final int LAST_PORT_INDEX = controlPoints.size() - 1;
+		controlPoints.remove(LAST_PORT_INDEX);
+		
+		return (Point2D[]) controlPoints.toArray(new Point2D[0]);
 	}
 	
 	private void updateLinksWithSelectedBendPoints()

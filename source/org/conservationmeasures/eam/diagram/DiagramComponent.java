@@ -447,6 +447,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return isMarquee;
 	}
 	
+	public EdgeView getEdgeView(LinkCell linkCell)
+	{
+		return (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);
+	}
+	
 	public Rectangle2D getBounds(LinkCell linkCell)
 	{
 		EdgeView view = (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);
