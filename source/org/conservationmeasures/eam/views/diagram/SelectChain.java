@@ -5,7 +5,11 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.util.Arrays;
+import java.util.Vector;
+
 import org.conservationmeasures.eam.diagram.DiagramChainObject;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
@@ -15,7 +19,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class SelectChain extends ViewDoer
@@ -54,60 +57,67 @@ public class SelectChain extends ViewDoer
 
 	public static void selectAllChainsRelatedToAllSelectedCells(DiagramPanel diagramPanel) throws Exception
 	{
-		selectChainBasedOnFactorSelection(diagramPanel);
-		selectChainBasedOnLinkSelection(diagramPanel);
+		FactorCell[] selectedFactors = diagramPanel.getOnlySelectedFactorCells();
+		DiagramFactorLink[] selectedLinks = diagramPanel.getOnlySelectedLinks();
+		selectAllChainsRelatedToAllSelectedCells(diagramPanel.getdiagramComponent(), diagramPanel.getDiagramModel(), selectedFactors, selectedLinks);
+	}
+	
+	public static void selectAllChainsRelatedToAllSelectedCells(DiagramComponent diagramComponent, DiagramModel model, FactorCell[] x, DiagramFactorLink[] y) throws Exception
+	{
+		Factor[] factorReleatedFactors = getChainBasedOnFactorSelection(model, x);
+		Factor[] linkRelatedFactors = getChainBasedOnLinkSelection(model, y);
+		Vector nodes = new Vector();
+		nodes.addAll(Arrays.asList(factorReleatedFactors));
+		nodes.addAll(Arrays.asList(linkRelatedFactors));
+		selectFactorsInChain(diagramComponent, model, (Factor[])nodes.toArray(new Factor[0]));
 	}
 
-	private static void selectChainBasedOnFactorSelection(DiagramPanel diagramPanel) throws Exception
+	private static Factor[] getChainBasedOnFactorSelection(DiagramModel diagramModel, FactorCell[] selectedFactors) throws Exception
 	{
-		FactorCell[] selectedFactors = diagramPanel.getOnlySelectedFactorCells();
+		Vector nodes = new Vector();
 		for(int i = 0; i < selectedFactors.length; ++i)
 		{
 			FactorCell selectedFactor = selectedFactors[i];
-			DiagramModel model = diagramPanel.getDiagramModel();
 			DiagramChainObject chainObject = new DiagramChainObject();
-			chainObject.buildNormalChain(model, selectedFactor.getUnderlyingObject());
+			chainObject.buildNormalChain(diagramModel, selectedFactor.getUnderlyingObject());
 			Factor[] chainNodes = chainObject.getFactors().toNodeArray();
-		
-			selectFactorsInChain(diagramPanel, chainNodes);
+			nodes.addAll(Arrays.asList(chainNodes));
 		}
+		return (Factor[])nodes.toArray(new Factor[0]);
 	}
 	
-	private static void selectChainBasedOnLinkSelection(DiagramPanel diagramPanel) throws Exception
+	private static Factor[] getChainBasedOnLinkSelection(DiagramModel diagramModel, DiagramFactorLink[] onlySelectedLinkages) throws Exception
 	{
-		Project project = diagramPanel.getProject();
-		DiagramFactorLink[] onlySelectedLinkages = diagramPanel.getOnlySelectedLinks();
+		Vector nodes = new Vector();
 		for(int i = 0; i < onlySelectedLinkages.length; ++i)
 		{
 			DiagramFactorLink selectedLinkage = onlySelectedLinkages[i];
-			DiagramModel diagramModel = diagramPanel.getDiagramModel();
 			LinkCell cell = diagramModel.findLinkCell(selectedLinkage);
 			
 			DiagramChainObject upstreamChain = new DiagramChainObject();
-			Factor from = project.findNode(cell.getFrom().getWrappedId());
+			Factor from = diagramModel.getProject().findNode(cell.getFrom().getWrappedId());
 			upstreamChain.buildUpstreamChain(diagramModel, from);
 			
 			DiagramChainObject downstreamChain = new DiagramChainObject();
-			Factor to = project.findNode(cell.getTo().getWrappedId());
+			Factor to = diagramModel.getProject().findNode(cell.getTo().getWrappedId());
 			downstreamChain.buildDownstreamChain(diagramModel, to);
 			
 			Factor[] upstreamFactors = upstreamChain.getFactorsArray();
 			Factor[] downstreamFactors = downstreamChain.getFactorsArray();
 			
-			selectFactorsInChain(diagramPanel, upstreamFactors);
-			selectFactorsInChain(diagramPanel, downstreamFactors);
+			nodes.addAll(Arrays.asList(upstreamFactors));
+			nodes.addAll(Arrays.asList(downstreamFactors));
 		}
+		return (Factor[])nodes.toArray(new Factor[0]);
 	}
 
-	private static void selectFactorsInChain(DiagramPanel diagramPanel, Factor[] chainNodes) throws Exception
+	private static void selectFactorsInChain(DiagramComponent diagaramComponent, DiagramModel model, Factor[] chainNodes) throws Exception
 	{
-		DiagramModel model = diagramPanel.getDiagramModel();
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			// convert CMNode to DiagramNode
 			FactorCell nodeToSelect = model.getFactorCellByWrappedId((FactorId)chainNodes[i].getId());
-			diagramPanel.getdiagramComponent().addSelectionCell(nodeToSelect);
+			diagaramComponent.addSelectionCell(nodeToSelect);
 		}
 	}
-
 }
