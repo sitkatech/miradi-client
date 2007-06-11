@@ -16,7 +16,6 @@ import javax.swing.SwingUtilities;
 
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cellviews.FactorLinkView;
-import org.conservationmeasures.eam.diagram.cellviews.RectangleFactorView;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.JGraph;
@@ -25,6 +24,7 @@ import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphContext;
 import org.jgraph.graph.GraphLayoutCache;
+import org.jgraph.graph.VertexView;
 import org.jgraph.graph.AttributeMap.SerializablePoint2D;
 import org.jgraph.plaf.basic.BasicGraphUI;
 
@@ -64,6 +64,7 @@ public class EAMGraphUI extends BasicGraphUI
 
 	public boolean isFactorLinkView(CellView view)
 	{
+		// FIXME: instanceof is horrible and should almost never be used! 
 		return view instanceof FactorLinkView;
 	}
 
@@ -128,7 +129,8 @@ public class EAMGraphUI extends BasicGraphUI
 		
 		private boolean isFactorView(CellView view)
 		{
-			return view instanceof RectangleFactorView;
+			// FIXME: instanceof is horrible and should almost never be used! 
+			return (view instanceof VertexView);
 		}
 
 		private Point2D.Double convertToPoint(Object object)
