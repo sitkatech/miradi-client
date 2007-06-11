@@ -93,23 +93,23 @@ public class EAMGraphUI extends BasicGraphUI
 				{	 
 					EdgeView edge = (EdgeView) viewsToUse[i];
 					LinkCell linkCell = (LinkCell) edge.getCell();
-					List points = edge.getPoints();
+					List controlPoints = edge.getPoints();
 					BendPointSelectionHelper bendSelectionHelper = linkCell.getBendPointSelectionHelper();
-					int[] selectedIndexes = bendSelectionHelper.getSelectedIndexes();
+					int[] selectedBendPointIndexes = bendSelectionHelper.getSelectedIndexes();
 
-					if (selectedIndexes.length > 0)
+					if (selectedBendPointIndexes.length > 0)
 					{
 
-						Point2D.Double startPoint = convertToPoint(points.get(0));
+						Point2D.Double startPoint = convertToPoint(controlPoints.get(0));
 						if (startPoint != null)
 						{
 							startPoint.x = (int) startPoint.x + deltaX;
 							startPoint.y = (int) startPoint.y + deltaY;
 						}
 
-						for (int j = 0; j < selectedIndexes.length; ++j)
+						for (int j = 0; j < selectedBendPointIndexes.length; ++j)
 						{
-							Point2D.Double point = convertToPoint(points.get(selectedIndexes[j] + 1));
+							Point2D.Double point = convertToPoint(controlPoints.get(selectedBendPointIndexes[j] + 1));
 							if (point == null)
 								continue;
 
@@ -117,7 +117,7 @@ public class EAMGraphUI extends BasicGraphUI
 							point.y = (int) point.getY() + deltaY;
 						}
 						
-						Point2D.Double endPoint = convertToPoint(points.get(points.size() - 1));
+						Point2D.Double endPoint = convertToPoint(controlPoints.get(controlPoints.size() - 1));
 						if (endPoint != null)
 						{
 							endPoint.x = (int) endPoint.x + deltaX;
