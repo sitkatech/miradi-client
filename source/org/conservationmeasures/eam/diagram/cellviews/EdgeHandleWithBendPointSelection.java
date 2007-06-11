@@ -97,10 +97,17 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 				continue;
 			
 			Point point = bendPoints.get(selectedIndexes[i]);
+			setZoomingScale(g2);
 			g2.setColor(Color.BLACK);
 			g2.setStroke(getSelectionStroke());
 			g2.drawRect((int)point.getX() - 10, (int)point.getY() - 10, 20, 20);
 		}
+	}
+
+	private void setZoomingScale(Graphics2D g2)
+	{
+		double scale = diagram.getScale();
+		g2.scale(scale, scale);
 	}
 
 	Stroke getSelectionStroke()
