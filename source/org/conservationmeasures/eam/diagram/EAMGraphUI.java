@@ -14,6 +14,7 @@ import java.util.Vector;
 
 import javax.swing.SwingUtilities;
 
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cellviews.FactorLinkView;
 import org.conservationmeasures.eam.main.EAM;
@@ -24,7 +25,6 @@ import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphContext;
 import org.jgraph.graph.GraphLayoutCache;
-import org.jgraph.graph.VertexView;
 import org.jgraph.graph.AttributeMap.SerializablePoint2D;
 import org.jgraph.plaf.basic.BasicGraphUI;
 
@@ -64,8 +64,8 @@ public class EAMGraphUI extends BasicGraphUI
 
 	public boolean isFactorLinkView(CellView view)
 	{
-		// FIXME: instanceof is horrible and should almost never be used! 
-		return view instanceof FactorLinkView;
+		EAMGraphCell cell = (EAMGraphCell) view.getCell();
+		return cell.isFactorLink();
 	}
 
 	class CustomRootHandle extends BasicGraphUI.RootHandle
@@ -84,7 +84,8 @@ public class EAMGraphUI extends BasicGraphUI
 				{
 					allToTranslate.add(viewsToUse[i]);
 				}
-
+				
+				//TODO nima refactor this code
 				if (isFactorLinkView(viewsToUse[i]))
 				{	 
 					EdgeView edge = (EdgeView) viewsToUse[i];
@@ -129,8 +130,8 @@ public class EAMGraphUI extends BasicGraphUI
 		
 		private boolean isFactorView(CellView view)
 		{
-			// FIXME: instanceof is horrible and should almost never be used! 
-			return (view instanceof VertexView);
+			EAMGraphCell cell = (EAMGraphCell) view.getCell();
+			return cell.isFactor();
 		}
 
 		private Point2D.Double convertToPoint(Object object)
