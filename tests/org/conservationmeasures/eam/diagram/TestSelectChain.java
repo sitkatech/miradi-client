@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
 
-import junit.framework.TestCase;
-
 public class TestSelectChain extends EAMTestCase
 {
 	public TestSelectChain(String name)
