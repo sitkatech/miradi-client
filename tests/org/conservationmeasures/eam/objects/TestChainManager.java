@@ -47,9 +47,8 @@ public class TestChainManager extends EAMTestCase
 		IdList idList = new IdList(new BaseId[] {loopTaskId1});
 		project.setObjectData(ObjectType.TASK, loopTaskId2, Task.TAG_SUBTASK_IDS, idList.toString());
 		
-		//TODO: the code for a timeout threat to wait for a second threat and time it out is known 
-		// but I am not sure if we wish to go that far here.
-		cm.getDirectOrIndirectOwningFactor(new ORef(ObjectType.TASK, loopTaskId2));
+		Factor ownerLoop = cm.getDirectOrIndirectOwningFactor(new ORef(ObjectType.TASK, loopTaskId2));
+		assertEquals(null,ownerLoop);
 		
 	}
 
