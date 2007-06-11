@@ -95,21 +95,23 @@ public class TestDiagramFactor extends EAMTestCase
 	
 	public void testSize()
 	{
+		//Note: the expceted sizes are expected to be in even incr of the DefaultGridSize.
+		//TODO: test code shuold be converted to use the DefaultGridSize
 		target.setLocation(new Point(3, 4));
 		target.setSize(new Dimension(300, 200));
 		Rectangle2D bounds = GraphConstants.getBounds(targetAttributeMap);
 		assertEquals("wrong x?", 3.0, bounds.getX(), TOLERANCE);
 		assertEquals("wrong y?", 4.0, bounds.getY(), TOLERANCE);
 		assertEquals("wrong width", 300.0, bounds.getWidth(), TOLERANCE);
-		assertEquals("wrong height", 200.0, bounds.getHeight(), TOLERANCE);
+		assertEquals("wrong height", 210.0, bounds.getHeight(), TOLERANCE);
 		target.setSize(new Dimension(100, 50));
 		bounds = GraphConstants.getBounds(targetAttributeMap);
 		assertEquals("x changed?", 3.0, bounds.getX(), TOLERANCE);
 		assertEquals("y changed?", 4.0, bounds.getY(), TOLERANCE);
-		assertEquals("wrong new width", 100.0, bounds.getWidth(), TOLERANCE);
-		assertEquals("wrong new height", 50.0, bounds.getHeight(), TOLERANCE);
-		assertEquals("node size width incorrect?", 100.0, target.getSize().getWidth(), TOLERANCE);
-		assertEquals("node size height incorrect?", 50.0, target.getSize().getHeight(), TOLERANCE);
+		assertEquals("wrong new width", 120.0, bounds.getWidth(), TOLERANCE);
+		assertEquals("wrong new height", 60.0, bounds.getHeight(), TOLERANCE);
+		assertEquals("node size width incorrect?", 120.0, target.getSize().getWidth(), TOLERANCE);
+		assertEquals("node size height incorrect?", 60.0, target.getSize().getHeight(), TOLERANCE);
 	}
 	
 	public void testJson() throws Exception

@@ -412,8 +412,10 @@ public class TestProject extends EAMTestCase
 		int y = 10;
 		int deltaX = 20;
 		int deltaY = 30;
-		Dimension position1 = new Dimension(45, 65);
-		Dimension position2 = new Dimension(95, 88);
+		//Note: the expceted sizes are expected to be in even incr of the DefaultGridSize.
+		//TODO: test code shuold be converted to use the DefaultGridSize
+		Dimension position1 = new Dimension(30, 60);
+		Dimension position2 = new Dimension(60, 90);
 		
 		
 		FactorCell nodeResizedAndMoved =  project.createFactorCell(ObjectType.STRATEGY);

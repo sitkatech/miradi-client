@@ -142,6 +142,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return new Point((int)bounds.getX(), (int)bounds.getY());
 	}
 
+	
 	public void setLocation(Point2D snappedLocation)
 	{
 		Rectangle2D bounds = GraphConstants.getBounds(getAttributes());
@@ -250,8 +251,21 @@ abstract public class FactorCell extends EAMGraphCell
 	public void setSize(Dimension size)
 	{
 		Point location = getLocation();
-		Rectangle bounds = new Rectangle(location, size);
+
+		Dimension newSize = new Dimension(forceEvenSnap(size.width), forceEvenSnap(size.height));
+		Rectangle bounds = new Rectangle(location, newSize);
 		GraphConstants.setBounds(getAttributes(), bounds);
+	}
+
+	private int forceEvenSnap(int value)
+	{
+		//TODO this null check is here for test code
+		if (getUnderlyingObject().getObjectManager()==null)
+			return value;
+		int gridSize = getUnderlyingObject().getProject().getGridSize()*2;
+		if (value%gridSize ==0)
+			return value;
+		return (value-(value%gridSize) + gridSize);
 	}
 	
 	public Dimension getPreviousSize()
