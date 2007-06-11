@@ -245,7 +245,8 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	private Point2D[] extractBendPoints(EdgeView edge)
 	{
 		List controlPoints = edge.getPoints();
-		
+		//TODO nima could use arrayCopy like
+		//System.arrayCopy( oldpoints starting at 1 to new points at 0, len -2)
 		final int FIRST_PORT_INDEX = 0;
 		controlPoints.remove(FIRST_PORT_INDEX);
 
