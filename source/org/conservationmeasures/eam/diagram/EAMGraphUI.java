@@ -213,6 +213,7 @@ public class EAMGraphUI extends BasicGraphUI
 				//TODO nima is this range ok, what is the bend point height/2? 
 				if (bendPoint.distance(event.getPoint()) < 20)
 				{
+					selectionHelper.clearSelection();
 					selectionHelper.addToSelectionIndexList(i);
 					repaintGraph();
 					return;
