@@ -184,6 +184,9 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		if (event.isControlDown())
 			return false;
 		
+		if (event.isShiftDown())
+			return false;
+		
 		return true;
 	}
 
