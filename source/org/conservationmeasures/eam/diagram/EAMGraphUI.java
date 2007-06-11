@@ -197,6 +197,8 @@ public class EAMGraphUI extends BasicGraphUI
 			cell = thisCell;
 		}
 		
+		//FIXME nima this method seems to have a duplicate some where else.  
+		//a normal click selects the bend point (EdgeHandleWithBendPointSelection is good candidate)
 		private void updateBendPointSelection(MouseEvent event)
 		{
 			CellView thisCell = getGraph().getNextSelectableViewAt(getFocus(), event.getX(), event.getY());
