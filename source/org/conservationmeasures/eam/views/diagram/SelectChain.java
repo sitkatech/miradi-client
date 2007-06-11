@@ -69,7 +69,7 @@ public class SelectChain extends ViewDoer
 		Vector nodes = new Vector();
 		nodes.addAll(Arrays.asList(factorReleatedFactors));
 		nodes.addAll(Arrays.asList(linkRelatedFactors));
-		selectFactorsInChain(diagramComponent, model, (Factor[])nodes.toArray(new Factor[0]));
+		selectFactors(diagramComponent, model, (Factor[])nodes.toArray(new Factor[0]));
 	}
 
 	private static Factor[] getChainBasedOnFactorSelection(DiagramModel diagramModel, FactorCell[] selectedFactors) throws Exception
@@ -111,7 +111,7 @@ public class SelectChain extends ViewDoer
 		return (Factor[])nodes.toArray(new Factor[0]);
 	}
 
-	private static void selectFactorsInChain(DiagramComponent diagaramComponent, DiagramModel model, Factor[] chainNodes) throws Exception
+	private static void selectFactors(DiagramComponent diagaramComponent, DiagramModel model, Factor[] chainNodes) throws Exception
 	{
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
