@@ -108,9 +108,9 @@ public class TestDiagramFactor extends EAMTestCase
 		bounds = GraphConstants.getBounds(targetAttributeMap);
 		assertEquals("x changed?", 3.0, bounds.getX(), TOLERANCE);
 		assertEquals("y changed?", 4.0, bounds.getY(), TOLERANCE);
-		assertEquals("wrong new width", 120.0, bounds.getWidth(), TOLERANCE);
+		assertEquals("wrong new width", 90.0, bounds.getWidth(), TOLERANCE);
 		assertEquals("wrong new height", 60.0, bounds.getHeight(), TOLERANCE);
-		assertEquals("node size width incorrect?", 120.0, target.getSize().getWidth(), TOLERANCE);
+		assertEquals("node size width incorrect?", 90.0, target.getSize().getWidth(), TOLERANCE);
 		assertEquals("node size height incorrect?", 60.0, target.getSize().getHeight(), TOLERANCE);
 	}
 	
