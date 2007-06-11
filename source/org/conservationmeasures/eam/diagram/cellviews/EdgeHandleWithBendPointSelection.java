@@ -5,9 +5,12 @@
 */ 
 package org.conservationmeasures.eam.diagram.cellviews;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Stroke;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 
@@ -78,11 +81,18 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 				continue;
 			
 			Point point = bendPoints.get(selectedIndexes[i]);
-			g2.setColor(diagram.getHighlightColor());
-			g2.drawRect((int)point.getX() - 10, (int)point.getY() - 10, 18, 18);
+			g2.setColor(Color.BLACK);
+			g2.setStroke(getSelectionStroke());
+			g2.drawRect((int)point.getX() - 10, (int)point.getY() - 10, 20, 20);
 		}
 	}
 
+	Stroke getSelectionStroke()
+	{
+		float[] dash = {5f};
+		return new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 5.0f, dash, 0.0f);
+	}
+	
 	public void updatePoints(Point2D currentPointToUse, Point2D p)
 	{
 		BasicGraphUI graphUi = (BasicGraphUI) graph.getUI();
