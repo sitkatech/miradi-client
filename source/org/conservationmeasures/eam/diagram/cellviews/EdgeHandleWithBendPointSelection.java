@@ -54,10 +54,26 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 	{
 		super.mousePressed(event);
 		mouseStart = event.getPoint();
+		if (isPortPoint(event))
+			return;
+		
 		bendSelectionHelper.mouseWasPressed(event, currentIndex);
 		bendPointSelectionChanged();
 	}
 	
+	private boolean isPortPoint(MouseEvent event)
+	{	
+		final int FIRST_INDEX = 0;
+		if (r[FIRST_INDEX].contains(event.getPoint()))
+			return true;
+		
+		final int LAST_INDEX = r.length - 1;
+		if (r[LAST_INDEX].contains(event.getPoint()))
+			return true;
+		
+		return false;
+	}
+
 	private void bendPointSelectionChanged()
 	{
 		diagram.getMainWindow().updateActionStates();
