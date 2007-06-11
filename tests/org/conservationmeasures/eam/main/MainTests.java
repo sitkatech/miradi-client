@@ -91,7 +91,6 @@ import org.conservationmeasures.eam.project.TestTargetPool;
 import org.conservationmeasures.eam.project.TestTextBoxPool;
 import org.conservationmeasures.eam.project.TestThreatRatingFramework;
 import org.conservationmeasures.eam.project.TestThreatReductionResultPool;
-import org.conservationmeasures.eam.project.TestTncCapWorkbookImporter;
 import org.conservationmeasures.eam.ratings.TestRatingChoice;
 import org.conservationmeasures.eam.ratings.TestRatingQuestion;
 import org.conservationmeasures.eam.ratings.TestStrategyRatingSummary;
@@ -157,7 +156,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTNCViabilityFormula.class));
 		suite.addTest(new TestSuite(TestProjectZipper.class));
 		suite.addTest(new TestSuite(TestProjectUnzipper.class));
-		suite.addTest(new TestSuite(TestTncCapWorkbookImporter.class));
 		
 		// utils package
 		suite.addTest(new TestSuite(TestEnhancedJsonObject.class));

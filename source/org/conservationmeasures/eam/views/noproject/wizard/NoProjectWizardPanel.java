@@ -16,7 +16,6 @@ import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import javax.swing.text.JTextComponent;
 
-import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -30,8 +29,8 @@ import org.conservationmeasures.eam.views.noproject.RenameProject;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
-import org.conservationmeasures.eam.views.umbrella.UrlZippedProjectFileImporter;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.umbrella.UrlZippedProjectFileImporter;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
 
@@ -188,11 +187,6 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 				EAMAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
 				action.doAction();
 			}
-			else if(buttonName.equals(IMPORT_CAP))
-			{
-				EAMAction action = getMainWindow().getActions().get(ActionImportTncCapWorkbook.class);
-				action.doAction();
-			}
 			else control(buttonName);
 		}
 		catch(Exception e)
@@ -251,7 +245,6 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	
 	JTextComponent newProjectNameField;
 	
-	private static final String IMPORT_CAP = "ImportCAP";
 	private static final String IMPORT_ZIP = "ImportZip";
 	private static final String NEW_PROJECT_NAME = "NewProjectName";
 	private static final String CREATE_PROJECT = "CreateProject";

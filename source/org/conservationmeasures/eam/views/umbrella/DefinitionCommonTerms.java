@@ -275,13 +275,6 @@ public class DefinitionCommonTerms
 		defs.put("Definition:ImportZip", def);
 
 		
-		def = new Definition("ImportCAP",
-				"TNC CAP Workbook - An Excel-based software program used by The Nature Conservancy. " +
-				"Miradi will currently import basic info from a CAP Workbook; in the future it will " +
-				"import the entire workbook contents.");
-		defs.put("Definition:ImportCAP", def);
-		
-		
 		def = new Definition("Budget", "Budget - A forward looking projection of the " +
 				"expenses and anticipated funding sources for the activities/methods and " +
 				"tasks you need to implement your strategic and monitoring plans.");

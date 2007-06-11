@@ -120,7 +120,6 @@ public class Actions
 		registerAction(new ActionExportZippedProjectFile(mainWindow));
 		registerAction(new ActionExportProjectReportFile(mainWindow));
 		registerAction(new ActionImportZippedProjectFile(mainWindow));
-		registerAction(new ActionImportTncCapWorkbook(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImage(mainWindow));
 		registerAction(new ActionPaste(mainWindow));

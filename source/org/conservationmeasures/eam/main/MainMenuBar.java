@@ -40,7 +40,6 @@ import org.conservationmeasures.eam.actions.ActionHelpButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionHelpCMPStandards;
 import org.conservationmeasures.eam.actions.ActionHelpComingAttractions;
 import org.conservationmeasures.eam.actions.ActionHelpCredits;
-import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
@@ -171,7 +170,6 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_I);
 		
 		addMenuItem(actions, menu, ActionImportZippedProjectFile.class, KeyEvent.VK_P);
-		addMenuItem(actions, menu, ActionImportTncCapWorkbook.class, KeyEvent.VK_C);
 		
 		JMenuItem item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
 		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
