@@ -262,10 +262,9 @@ abstract public class FactorCell extends EAMGraphCell
 		//TODO this null check is here for test code
 		if (getUnderlyingObject().getObjectManager()==null)
 			return value;
-		int gridSize = getUnderlyingObject().getProject().getGridSize()*2;
-		if (value%gridSize ==0)
-			return value;
-		return (value-(value%gridSize) + gridSize);
+		int gridSize = getUnderlyingObject().getProject().getGridSize();
+		return (value + gridSize) - (value + gridSize) % (gridSize * 2);
+
 	}
 	
 	public Dimension getPreviousSize()
