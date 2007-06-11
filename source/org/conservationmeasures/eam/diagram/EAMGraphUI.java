@@ -64,6 +64,9 @@ public class EAMGraphUI extends BasicGraphUI
 
 	public boolean isFactorLinkView(CellView view)
 	{
+		if (view == null)
+			return false;
+		
 		EAMGraphCell cell = (EAMGraphCell) view.getCell();
 		return cell.isFactorLink();
 	}
