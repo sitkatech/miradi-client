@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -74,8 +75,14 @@ public class Strategy extends Factor
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorList.get(i));
 			DiagramObject diagramObject = (DiagramObject)diagramFactor.getOwner();
-			if (diagramObject.isResultsChain())
-				diagramObjects.add(diagramObject.getRef());
+			if (diagramObject!=null)
+			{
+				if (diagramObject.isResultsChain())
+					diagramObjects.add(diagramObject.getRef());
+			}
+			{
+				EAM.logError("getResultsChains:Owner not found for diagram factor:" +diagramFactor.getId());
+			}
 		}
 		return diagramObjects;
 	}
