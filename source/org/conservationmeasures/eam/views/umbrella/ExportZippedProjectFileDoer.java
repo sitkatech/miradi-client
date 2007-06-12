@@ -47,7 +47,7 @@ public class ExportZippedProjectFileDoer extends MainWindowDoer
 		catch (Exception e) 
 		{
 			EAM.logException(e);
-			throw new CommandFailedException(EAM.text("Error Export To Zip: Possible Write Protected: ") + e);
+			throw new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: ") + e);
 		}
 	}
 

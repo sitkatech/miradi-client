@@ -39,7 +39,7 @@ public class ProjectListPanel extends JPanel
 	
 	static final String TEXT = EAM.text("<p>To <strong>continue working on an existing project</strong>, " +
 	"click on the name in the list below. To <strong>copy, rename, export " +
-	"to zip, or delete a file</strong>, right click (alt-click) on the name.</p>");
+	"to Miradi zip, or delete a file</strong>, right click (alt-click) on the name.</p>");
 	
 	ProjectList projectList;
 	WizardHtmlViewer intro;
