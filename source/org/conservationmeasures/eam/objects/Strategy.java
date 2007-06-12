@@ -68,16 +68,14 @@ public class Strategy extends Factor
 	
 	public ORefList getResultsChains()
 	{
-
 		ORefList diagramObjects = new ORefList();
 		ORefList diagramFactorList = findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for (int i=0; i<diagramFactorList.size(); ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) objectManager.getProject().findObject(diagramFactorList.get(i));
-			ORefList diagramObjectList = diagramFactor.findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
-			diagramObjects.addAll(diagramObjectList);
+			BaseObject diagramObject = diagramFactor.getOwner();
+			diagramObjects.add(diagramObject.getRef());
 		}
-		
 		return diagramObjects;
 	}
 
