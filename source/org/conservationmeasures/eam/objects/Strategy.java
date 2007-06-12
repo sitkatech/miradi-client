@@ -80,6 +80,7 @@ public class Strategy extends Factor
 				if (diagramObject.isResultsChain())
 					diagramObjects.add(diagramObject.getRef());
 			}
+			else
 			{
 				EAM.logError("getResultsChains:Owner not found for diagram factor:" +diagramFactor.getId());
 			}
