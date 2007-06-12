@@ -76,7 +76,7 @@ public class Strategy extends Factor
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorList.get(i));
 			DiagramObject diagramObject = (DiagramObject)diagramFactor.getOwner();
 			if (diagramObject==null)
-				EAM.logError("getResultsChains:Owner not found for diagram factor:" +diagramFactor.getId());
+				EAM.logError("getResultsChains:Owner not found for diagram factor:" +diagramFactor.getRef());
 			if (diagramObject.isResultsChain())
 				diagramObjects.add(diagramObject.getRef());
 		}

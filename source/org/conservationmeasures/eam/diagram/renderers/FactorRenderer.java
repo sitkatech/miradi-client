@@ -81,83 +81,82 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			boolean sel, boolean focus, boolean previewMode)
 	{
 		super.getRendererComponent(graphToUse, view, sel, focus, previewMode);
-
-		node = (FactorCell)view.getCell();
-		DiagramModel model = (DiagramModel)graphToUse.getModel();
-		ThreatRatingFramework framework = model.getThreatRatingFramework();
-		priority = null;
-		if(node.isDirectThreat())
-			priority = framework.getThreatThreatRatingValue(node.getWrappedId());
-		if(node.isTarget())
-		{
-			Target target = (Target)node.getUnderlyingObject();
-			String ratingCode = model.getProject().getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
-			StatusQuestion question = new StatusQuestion("");
-			rating = question.findChoiceByCode(ratingCode);
-		}
 		
-		if(node.isStrategy())
+		try
 		{
-			Strategy strategy = (Strategy)node.getUnderlyingObject();
-			rating = strategy.getStrategyRating();
-			stragetyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
-		}
-		
-		DiagramComponent diagram = (DiagramComponent)graph;
-
-		indicatorText = null;
-		if(diagram.areIndicatorsVisible())
-		{
-			IdList indicators = node.getUnderlyingObject().getDirectOrIndirectIndicators();
-			if(indicators.size() == 1)
-				indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
-			else if(indicators.size() > 1)
-				indicatorText = "+";
-		}
-		
-		objectivesText = null;
-		if(diagram.areObjectivesVisible())
-		{
-			if(node.canHaveObjectives())
+			node = (FactorCell)view.getCell();
+			DiagramModel model = (DiagramModel)graphToUse.getModel();
+			ThreatRatingFramework framework = model.getThreatRatingFramework();
+			priority = null;
+			if(node.isDirectThreat())
+				priority = framework.getThreatThreatRatingValue(node.getWrappedId());
+			if(node.isTarget())
 			{
-				IdList objectiveIds = node.getObjectives();
-				if(objectiveIds.size() == 1)
-					objectivesText = EAM.text("Obj") + " " + model.getProject().getObjectData(ObjectType.OBJECTIVE, objectiveIds.get(0), Objective.TAG_SHORT_LABEL);
-				else if(objectiveIds.size() > 1)
-					objectivesText = "" + objectiveIds.size() + " " + EAM.text("Objs");
+				Target target = (Target)node.getUnderlyingObject();
+				String ratingCode = model.getProject().getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
+				StatusQuestion question = new StatusQuestion("");
+				rating = question.findChoiceByCode(ratingCode);
 			}
-		}
-		
-		goalsText = null;
-		if(diagram.areGoalsVisible())
-		{
-			if(node.canHaveGoal())
+			
+			if(node.isStrategy())
 			{
-				IdList goalIds = ((Target)node.getUnderlyingObject()).getGoals();
-				if(goalIds.size() == 1)
-					goalsText = EAM.text("Goal") + " " + model.getProject().getObjectData(ObjectType.GOAL, goalIds.get(0), Goal.TAG_SHORT_LABEL);
-				else if(goalIds.size() > 1)
-					goalsText = "" + goalIds.size() + " " + EAM.text("Goals");
+				Strategy strategy = (Strategy)node.getUnderlyingObject();
+				rating = strategy.getStrategyRating();
+				stragetyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 			}
-		}
+			
+			DiagramComponent diagram = (DiagramComponent)graph;
 	
+			indicatorText = null;
+			if(diagram.areIndicatorsVisible())
+			{
+				IdList indicators = node.getUnderlyingObject().getDirectOrIndirectIndicators();
+				if(indicators.size() == 1)
+					indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
+				else if(indicators.size() > 1)
+					indicatorText = "+";
+			}
+			
+			objectivesText = null;
+			if(diagram.areObjectivesVisible())
+			{
+				if(node.canHaveObjectives())
+				{
+					IdList objectiveIds = node.getObjectives();
+					if(objectiveIds.size() == 1)
+						objectivesText = EAM.text("Obj") + " " + model.getProject().getObjectData(ObjectType.OBJECTIVE, objectiveIds.get(0), Objective.TAG_SHORT_LABEL);
+					else if(objectiveIds.size() > 1)
+						objectivesText = "" + objectiveIds.size() + " " + EAM.text("Objs");
+				}
+			}
+			
+			goalsText = null;
+			if(diagram.areGoalsVisible())
+			{
+				if(node.canHaveGoal())
+				{
+					IdList goalIds = ((Target)node.getUnderlyingObject()).getGoals();
+					if(goalIds.size() == 1)
+						goalsText = EAM.text("Goal") + " " + model.getProject().getObjectData(ObjectType.GOAL, goalIds.get(0), Goal.TAG_SHORT_LABEL);
+					else if(goalIds.size() > 1)
+						goalsText = "" + goalIds.size() + " " + EAM.text("Goals");
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		
 		return this;
 	}
 	
 	private boolean shouldDisplayResultsChainIcon(DiagramModel model, Strategy strategy)
 	{
-		try
-		{
-			ORefList resultsChains = strategy.getResultsChains();
-			if (model.isResultsChain())
-				return  false;
-			return resultsChains.size() > 0;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
+		ORefList resultsChains = strategy.getResultsChains();
+		if (model.isResultsChain())
+			return  false;
+		return resultsChains.size() > 0;
 	}
 	
 	public void setRatingBubbleFont(Graphics2D g2)
