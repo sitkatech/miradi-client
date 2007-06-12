@@ -146,11 +146,18 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private boolean shouldDisplayResultsChainIcon(DiagramModel model, Strategy strategy)
 	{
-		ORefList resultsChains = strategy.getResultsChains();
-		if (model.isResultsChain())
-			return  false;
-		
-		return resultsChains.size() > 0;
+		try
+		{
+			ORefList resultsChains = strategy.getResultsChains();
+			if (model.isResultsChain())
+				return  false;
+			return resultsChains.size() > 0;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
 	}
 	
 	public void setRatingBubbleFont(Graphics2D g2)
