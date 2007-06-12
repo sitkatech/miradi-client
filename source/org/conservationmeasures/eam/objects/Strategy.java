@@ -73,8 +73,9 @@ public class Strategy extends Factor
 		for (int i=0; i<diagramFactorList.size(); ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorList.get(i));
-			BaseObject diagramObject = diagramFactor.getOwner();
-			diagramObjects.add(diagramObject.getRef());
+			DiagramObject diagramObject = (DiagramObject)diagramFactor.getOwner();
+			if (diagramObject.isResultsChain())
+				diagramObjects.add(diagramObject.getRef());
 		}
 		return diagramObjects;
 	}
