@@ -237,17 +237,33 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public void tabWasSelected()
 	{
 		super.tabWasSelected();
-		updateVisibilityOfFactors();
-		if (getDiagramComponent()!=null)
-			getDiagramComponent().updateDiagramZoomSetting();
+		try
+		{
+			getMainWindow().preventActionUpdates();
+			updateVisibilityOfFactors();
+			if (getDiagramComponent()!=null)
+				getDiagramComponent().updateDiagramZoomSetting();
+		}
+		finally
+		{
+			getMainWindow().allowActionUpdates();
+		}
 	}
 
 	public void createTabs() throws Exception
 	{
-		addConceptualModelDiagramTab();
-		addResultsChainTabs();
-		
-		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
+		getMainWindow().preventActionUpdates();
+		try
+		{
+			addConceptualModelDiagramTab();
+			addResultsChainTabs();
+			
+			setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
+		}
+		finally
+		{
+			getMainWindow().allowActionUpdates();
+		}
 	}
 
 	private void addConceptualModelDiagramTab() throws Exception

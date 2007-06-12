@@ -18,6 +18,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -89,6 +90,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		setFocusCycleRoot(true);
 		wizardManager = new WizardManager();
 		actions = new Actions(this);
+		preventActionUpdateStack = new Vector();
 	}
 	
 	public void start(String[] args) throws Exception
@@ -439,11 +441,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void updateActionStates()
 	{
-		if(getProject().isInTransaction())
+		if(shouldPreventActionUpdates())
 			return;
 		SwingUtilities.invokeLater(new ActionUpdater());
 	}
-	
+
 	class ActionUpdater implements Runnable
 	{
 		public void run()
@@ -452,6 +454,27 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 	
+	private boolean shouldPreventActionUpdates()
+	{
+		if(preventActionUpdatesFlag)
+			return true;
+		
+		return getProject().isInTransaction();
+	}
+	
+	public void preventActionUpdates()
+	{
+		preventActionUpdateStack.insertElementAt(new Boolean(preventActionUpdatesFlag), 0);
+		preventActionUpdatesFlag = true;
+	}
+	
+	public void allowActionUpdates()
+	{
+		boolean restoreTo = ((Boolean)preventActionUpdateStack.remove(0)).booleanValue();
+		preventActionUpdatesFlag = restoreTo;
+		updateActionStates();
+	}
+
 	public void updateView() throws Exception
 	{
 		String viewName = getProject().getCurrentView();
@@ -725,5 +748,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private WizardManager wizardManager;
 	
 	private int existingCommandListenerCount;
+	private boolean preventActionUpdatesFlag;
+	private Vector preventActionUpdateStack;
 	
 }
