@@ -99,6 +99,9 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	public void mouseReleased(MouseEvent event)
 	{
+		if (getDiagram().isMarquee())
+			return;
+	
 		if(event.isPopupTrigger())
 		{
 			getDiagram().showContextMenu(event);
@@ -132,10 +135,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 					selectedFactorIds.add(((FactorCell)selectedCells[i]).getDiagramFactorId());
 			}
 			
-			
-			if (!getDiagram().isMarquee())
-				moveSelectedBendPoints();
-			
+			moveSelectedBendPoints();
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
 			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
@@ -235,7 +235,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private void moveBendPoints(LinkCell linkCell) throws Exception
 	{
-		DiagramComponent diagram = getDiagram();
+		DiagramComponent diagram = mainWindow.getDiagramComponent();
 		EdgeView edge = diagram.getEdgeView(linkCell);
 		Point2D[] bendPoints = extractBendPoints(edge);
 		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(diagram, getProject());
