@@ -9,7 +9,9 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -36,6 +38,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		if (! isAvailable())
 			return;
 	
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			Assignment selectedObject = (Assignment)getObjects()[0];
@@ -44,6 +47,10 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		catch (Exception e)
 		{
 			EAM.logException(e);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
 
