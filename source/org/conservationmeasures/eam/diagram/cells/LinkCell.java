@@ -187,7 +187,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		if (diagram.isCellSelected(from) && diagram.isCellSelected(to))
 		{
 			diagram.addSelectionCell(this);
-			bendSelectionHelper.selectAll();
+			autoSelectAllBendPoints();
 		}
 		
 		else if (diagram.isCellSelected(this))
@@ -195,6 +195,14 @@ public class LinkCell extends EAMGraphCell implements Edge
 		
 		else 
 			diagram.removeSelectionCell(this);
+	}
+
+	private void autoSelectAllBendPoints()
+	{
+		if (bendSelectionHelper.getSelectedIndexes().length != 0)
+			return;
+		
+		bendSelectionHelper.selectAll();
 	}
 	
 	public PointList getNewBendPointList(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
