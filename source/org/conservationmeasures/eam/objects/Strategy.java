@@ -75,7 +75,7 @@ public class Strategy extends Factor
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorList.get(i));
 			DiagramObject diagramObject = (DiagramObject)diagramFactor.getOwner();
-			//Note: Detection of ophaned DFs....do not remove
+			//NOTE: Orphan DF's were seen in a real project on Kevin's machine
 			if (diagramObject==null)
 			{
 				EAM.logError("getResultsChains:Owner not found for diagram factor:" +diagramFactor.getRef());
