@@ -70,7 +70,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			DiagramComponent diagram = view.getDiagramComponent();
 			
 			if (diagramPanel.getOnlySelectedCells().length == 1)
-				SelectChain.selectAllChainsRelatedToAllSelectedCells(diagramPanel);
+				SelectChain.selectChainsRelatedToSelectedFactorsAndLinks(diagramPanel);
 
 			FactorCell[] orphanedDaftStrats = getOrphanedDraftStrategies(project, view, diagram);
 			FactorCell[] selectedNodes = diagramPanel.getOnlySelectedFactorCells();
