@@ -9,12 +9,14 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.util.List;
 import java.util.Vector;
 
 import javax.swing.SwingUtilities;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cellviews.FactorLinkView;
 import org.conservationmeasures.eam.main.EAM;
@@ -80,12 +82,72 @@ public class EAMGraphUI extends BasicGraphUI
 		
 		protected double getDxToStayAboveZero(double dx, double totDx)
 		{
-			
+			for (int i = 0; i < views.length; ++i)
+			{
+				CellView cellView = views[i];
+				EAMGraphCell cell = (EAMGraphCell) cellView.getCell();
+				if (cell.isFactor())
+				{
+					FactorCell factorCell = (FactorCell) cell;
+					Rectangle2D bounds = factorCell.getBounds();
+					double proposedX = bounds.getX() + totDx; 
+					if (proposedX < 0)
+					{
+						dx = Math.min(0, dx - proposedX);
+					}
+				}
+				else if (cell.isFactorLink())
+				{
+					LinkCell linkCell = (LinkCell) cell;
+					PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+					int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
+					for (int j = 0 ; j < selectedIndexes.length; ++j)
+					{
+						Point bendPoint = bendPoints.get(selectedIndexes[j]);
+						double proposedX = bendPoint.x + totDx; 
+						if (proposedX < 0)
+						{
+							dx = Math.min(0, dx - proposedX);
+						}				
+					}
+				}
+			}
+		
 			return dx;
 		}
 
 		protected double getDyToStayAboveZero(double dy, double totDy)
 		{
+			for (int i = 0; i < views.length; ++i)
+			{
+				CellView cellView = views[i];
+				EAMGraphCell cell = (EAMGraphCell) cellView.getCell();
+				if (cell.isFactor())
+				{
+					FactorCell factorCell = (FactorCell) cell;
+					Rectangle2D bounds = factorCell.getBounds();
+					double proposedY = bounds.getY() + totDy; 
+					if (proposedY < 0)
+					{
+						dy = Math.min(0, dy - proposedY);
+					}
+				}
+				else if (cell.isFactorLink())
+				{
+					LinkCell linkCell = (LinkCell) cell;
+					PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+					int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
+					for (int j = 0 ; j < selectedIndexes.length; ++j)
+					{
+						Point bendPoint = bendPoints.get(selectedIndexes[j]);
+						double proposedY = bendPoint.y + totDy; 
+						if (proposedY < 0)
+						{
+							dy = Math.min(0, dy - proposedY);
+						}		
+					}
+				}		
+			}
 			
 			return dy;
 		}
@@ -111,8 +173,6 @@ public class EAMGraphUI extends BasicGraphUI
 
 					if (selectedBendPointIndexes.length > 0)
 					{
-
-						System.out.println("udating control points = "+deltaX + "  "+deltaY);
 						Point2D.Double startPoint = convertToPoint(controlPoints.get(0));
 						if (startPoint != null)
 						{
