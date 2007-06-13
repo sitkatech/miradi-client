@@ -77,6 +77,18 @@ public class EAMGraphUI extends BasicGraphUI
 		{
 			super(ctx);
 		}
+		
+		protected double getDxToStayAboveZero(double dx, double totDx)
+		{
+			
+			return dx;
+		}
+
+		protected double getDyToStayAboveZero(double dy, double totDy)
+		{
+			
+			return dy;
+		}
 
 		public void updateControlPoints(CellView[] viewsToUse, double deltaX, double deltaY)
 		{			
@@ -100,6 +112,7 @@ public class EAMGraphUI extends BasicGraphUI
 					if (selectedBendPointIndexes.length > 0)
 					{
 
+						System.out.println("udating control points = "+deltaX + "  "+deltaY);
 						Point2D.Double startPoint = convertToPoint(controlPoints.get(0));
 						if (startPoint != null)
 						{
