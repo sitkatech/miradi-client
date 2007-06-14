@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.Color;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -60,7 +59,8 @@ public class ShowFullModelModeDoer extends ViewDoer
 			selectFactors(factorsToMakeSelected);
 			
 			final int CONCEPTUAL_MODEL_INDEX = 0;
-			((DiagramPanel) getDiagramView().getTabContents(CONCEPTUAL_MODEL_INDEX)).getdiagramComponent().setBackground(Color.WHITE);
+			 //TODO this should be handled more cleanly
+			((DiagramPanel) getDiagramView().getTabContents(CONCEPTUAL_MODEL_INDEX)).getdiagramComponent().setToDefaultBackgroundColor();
 			
 		}
 		catch (Exception e)
