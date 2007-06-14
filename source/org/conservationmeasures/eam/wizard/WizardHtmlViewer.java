@@ -46,5 +46,7 @@ public class WizardHtmlViewer extends HtmlFormViewer
 		"  .toolbarbutton {color: #A06020; font-weight: bold; font-size: 100%;}",
 		"  .hint {font-style: italics; font-size: 100%;}",
 		"  .definition {font-style: italics; font-size: 100%;}",
+		"  .intro {font-size: 120%;}",
+		"  .introdefinition {font-style: italics; font-size: 120%;}",
 	};
 }
