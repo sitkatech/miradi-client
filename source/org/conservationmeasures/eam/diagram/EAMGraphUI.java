@@ -167,10 +167,10 @@ public class EAMGraphUI extends BasicGraphUI
 			return dy;
 		}
 		
-		private double getProposedDelta(double delta, double proposedDelta)
+		private double getProposedDelta(double delta, double proposedPosition)
 		{
-			if (proposedDelta < 0)
-				return Math.min(0, delta - proposedDelta);
+			if (proposedPosition < 0)
+				return Math.min(0, delta - proposedPosition);
 			
 			return delta;
 		}
