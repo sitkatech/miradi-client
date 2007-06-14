@@ -88,34 +88,17 @@ public class EAMGraphUI extends BasicGraphUI
 				EAMGraphCell cell = (EAMGraphCell) cellView.getCell();
 				if (cell.isFactor())
 				{
-					FactorCell factorCell = (FactorCell) cell;
-					Rectangle2D bounds = factorCell.getBounds();
-					double proposedX = bounds.getX() + totDx; 
-					if (proposedX < 0)
-					{
-						dx = Math.min(0, dx - proposedX);
-					}
+					dx = calculateDeltaXForFactor(dx, totDx, cell);
 				}
 				else if (cell.isFactorLink())
 				{
-					LinkCell linkCell = (LinkCell) cell;
-					PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
-					int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
-					for (int j = 0 ; j < selectedIndexes.length; ++j)
-					{
-						Point bendPoint = bendPoints.get(selectedIndexes[j]);
-						double proposedX = bendPoint.x + totDx; 
-						if (proposedX < 0)
-						{
-							dx = Math.min(0, dx - proposedX);
-						}				
-					}
+					dx = calculateDeltaXForLink(dx, totDx, cell);
 				}
 			}
 		
 			return dx;
 		}
-
+		
 		protected double getDyToStayAboveZero(double dy, double totDy)
 		{
 			for (int i = 0; i < views.length; ++i)
@@ -124,32 +107,72 @@ public class EAMGraphUI extends BasicGraphUI
 				EAMGraphCell cell = (EAMGraphCell) cellView.getCell();
 				if (cell.isFactor())
 				{
-					FactorCell factorCell = (FactorCell) cell;
-					Rectangle2D bounds = factorCell.getBounds();
-					double proposedY = bounds.getY() + totDy; 
-					if (proposedY < 0)
-					{
-						dy = Math.min(0, dy - proposedY);
-					}
+					dy = calculateDeltaYForFactor(dy, totDy, cell);
 				}
 				else if (cell.isFactorLink())
 				{
-					LinkCell linkCell = (LinkCell) cell;
-					PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
-					int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
-					for (int j = 0 ; j < selectedIndexes.length; ++j)
-					{
-						Point bendPoint = bendPoints.get(selectedIndexes[j]);
-						double proposedY = bendPoint.y + totDy; 
-						if (proposedY < 0)
-						{
-							dy = Math.min(0, dy - proposedY);
-						}		
-					}
+					dy = calculateDeltaYForLink(dy, totDy, cell);
 				}		
 			}
 			
 			return dy;
+		}
+
+		private double calculateDeltaXForLink(double dx, double totDx, EAMGraphCell cell)
+		{
+			LinkCell linkCell = (LinkCell) cell;
+			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+			int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
+			for (int j = 0 ; j < selectedIndexes.length; ++j)
+			{
+				Point bendPoint = bendPoints.get(selectedIndexes[j]);
+				double proposedX = bendPoint.x + totDx; 
+				dx = getProposedDelta(dx, proposedX);				
+			}
+			return dx;
+		}
+
+		private double calculateDeltaXForFactor(double dx, double totDx, EAMGraphCell cell)
+		{
+			FactorCell factorCell = (FactorCell) cell;
+			Rectangle2D bounds = factorCell.getBounds();
+			double proposedX = bounds.getX() + totDx; 
+			dx = getProposedDelta(dx, proposedX);
+
+			return dx;
+		}
+
+		private double calculateDeltaYForLink(double dy, double totDy, EAMGraphCell cell)
+		{
+			LinkCell linkCell = (LinkCell) cell;
+			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+			int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
+			for (int j = 0 ; j < selectedIndexes.length; ++j)
+			{
+				Point bendPoint = bendPoints.get(selectedIndexes[j]);
+				double proposedY = bendPoint.y + totDy; 
+				dy = getProposedDelta(dy, proposedY);		
+			}
+			
+			return dy;
+		}
+
+		private double calculateDeltaYForFactor(double dy, double totDy, EAMGraphCell cell)
+		{
+			FactorCell factorCell = (FactorCell) cell;
+			Rectangle2D bounds = factorCell.getBounds();
+			double proposedY = bounds.getY() + totDy; 
+			dy = getProposedDelta(dy, proposedY);
+
+			return dy;
+		}
+		
+		private double getProposedDelta(double delta, double proposedDelta)
+		{
+			if (proposedDelta < 0)
+				return Math.min(0, delta - proposedDelta);
+			
+			return delta;
 		}
 
 		public void updateControlPoints(CellView[] viewsToUse, double deltaX, double deltaY)
