@@ -65,6 +65,7 @@ import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -236,6 +237,18 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public void tabWasSelected()
 	{
+		if (isStategyBrainstormMode())
+		{
+			try
+			{
+				EAMAction actionShowFullModelMode = getActions().get(ActionShowFullModelMode.class);
+				actionShowFullModelMode.doAction();
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
 		super.tabWasSelected();
 		try
 		{

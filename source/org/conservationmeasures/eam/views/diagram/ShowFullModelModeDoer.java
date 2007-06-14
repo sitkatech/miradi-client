@@ -5,12 +5,14 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.awt.Color;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -56,6 +58,9 @@ public class ShowFullModelModeDoer extends ViewDoer
 					ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT));
 			
 			selectFactors(factorsToMakeSelected);
+			
+			final int CONCEPTUAL_MODEL_INDEX = 0;
+			((DiagramPanel) getDiagramView().getTabContents(CONCEPTUAL_MODEL_INDEX)).getdiagramComponent().setBackground(Color.WHITE);
 			
 		}
 		catch (Exception e)
