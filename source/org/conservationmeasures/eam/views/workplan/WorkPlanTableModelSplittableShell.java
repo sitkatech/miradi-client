@@ -20,5 +20,10 @@ abstract public class WorkPlanTableModelSplittableShell extends AssignmentTableM
 		return false;
 	}
 	
+	public int getCorrectedRow(int row)
+	{
+		return row;
+	}
+	
 	protected final static int LOCKED_COLUMN_COUNT = 2;
 }
