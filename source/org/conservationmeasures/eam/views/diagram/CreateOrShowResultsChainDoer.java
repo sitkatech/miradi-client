@@ -22,6 +22,11 @@ public class CreateOrShowResultsChainDoer extends ViewDoer
 
 		if (getDiagramView().isResultsChainTab())
 			return false;
+		
+		
+		if (getDiagramView().isStategyBrainstormMode())
+			return false;
+		
 
 		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
 		Factor[] selectedFactors = diagramPanel.getOnlySelectedFactors();
