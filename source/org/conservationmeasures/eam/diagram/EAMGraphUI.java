@@ -80,6 +80,19 @@ public class EAMGraphUI extends BasicGraphUI
 			super(ctx);
 		}
 		
+		protected void setHandle(MouseEvent event)
+		{
+			for (int i = 0; i < views.length; ++i)
+			{
+				CellView cellView = views[i];
+				EAMGraphCell cell = (EAMGraphCell) cellView.getCell();
+				if (cell.isFactorLink())
+				{
+					activeHandle = null;
+				}
+			}
+		}
+
 		protected double getDxToStayAboveZero(double dx, double totDx)
 		{
 			for (int i = 0; i < views.length; ++i)
