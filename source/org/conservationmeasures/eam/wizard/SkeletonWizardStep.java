@@ -64,9 +64,14 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	private String getResourceFileName(String sideLabel)
 	{
-		return getClass().getSimpleName() + sideLabel + ".html";
+		return getHtmlBaseName() + sideLabel + ".html";
 	}
-	
+
+	public String getHtmlBaseName()
+	{
+		return getClass().getSimpleName();
+	}
+
 	public void buttonPressed(String buttonName)
 	{
 		control(buttonName);
