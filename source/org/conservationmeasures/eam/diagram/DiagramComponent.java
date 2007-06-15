@@ -452,6 +452,18 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);
 	}
 	
+	//FIXME nima check to see if this code appears anywhere else and combine
+	public Rectangle2D.Double getScaledBounds(LinkCell linkCell)
+	{
+		Rectangle2D rect = getBounds(linkCell);
+		double scaledX = rect.getX() * scale; 
+		double scaledY = rect.getY() * scale;
+		double scaledWidth = rect.getWidth() * scale;
+		double scaledHight = rect.getHeight() * scale;
+		
+		return new Rectangle2D.Double(scaledX, scaledY, scaledWidth, scaledHight);
+	}
+	
 	public Rectangle2D getBounds(LinkCell linkCell)
 	{
 		EdgeView view = (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);

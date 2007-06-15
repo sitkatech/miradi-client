@@ -5,7 +5,9 @@
 */ 
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
@@ -47,20 +49,28 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 	private void selectBendPointsAndLinksInBounds(DiagramModel model, DiagramFactorLink diagramLink)
 	{
 		LinkCell linkCell = model.getDiagramFactorLink(diagramLink);
-		Rectangle2D linkcellBounds = diagram.getBounds(linkCell);
-		if (! marqueeBounds.intersects(linkcellBounds))
+		Rectangle2D.Double scaledBounds = diagram.getScaledBounds(linkCell);
+		if (! marqueeBounds.intersects(scaledBounds))
 				return;
 		
 		PointList bendPoints = diagramLink.getBendPoints();
-		
-		for (int k = 0; k < bendPoints.size(); ++k)
+		for (int i = 0; i < bendPoints.size(); ++i)
 		{
-			if (marqueeBounds.contains(bendPoints.get(k)))
+			Point bendPoint = bendPoints.get(i);
+			Point2D.Double scaledBendPoint = getScaledBendPoint(bendPoint);
+			if (marqueeBounds.contains(scaledBendPoint))
 			{
 				diagram.addSelectionCell(linkCell);
-				linkCell.getBendPointSelectionHelper().addToSelectionIndexList(k);
+				linkCell.getBendPointSelectionHelper().addToSelectionIndexList(i);
 			}
 		}
+	}
+
+	//FIXME nima check to see if this code appears anywhere else and combine
+	private Point2D.Double getScaledBendPoint(Point bendPoint)
+	{
+		double scale = diagram.getScale();
+		return new Point2D.Double((bendPoint.x * scale), (bendPoint.y * scale));
 	}
 
 	private DiagramComponent diagram;
