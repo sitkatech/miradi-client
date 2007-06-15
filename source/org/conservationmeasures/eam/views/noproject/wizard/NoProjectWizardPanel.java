@@ -115,7 +115,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		menu.addSeparator();
 		menu.add(new FakeHyperlinkAction("Rename...", this, RENAME_PREFIX + itemText));
 		menu.add(new FakeHyperlinkAction("Copy to...", this, COPY_PREFIX + itemText));
-		menu.add(new FakeHyperlinkAction("Export to Zip...", this, EXPORT_PREFIX + itemText));
+		menu.add(new FakeHyperlinkAction("Export to Miradi Zip...", this, EXPORT_PREFIX + itemText));
 		menu.addSeparator();
 		menu.add(new FakeHyperlinkAction("Delete...", this, DELETE_PREFIX + itemText));
 		return menu;
