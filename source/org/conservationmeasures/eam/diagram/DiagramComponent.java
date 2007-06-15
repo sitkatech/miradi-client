@@ -47,7 +47,6 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
-import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.JGraph;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
@@ -451,11 +450,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public EdgeView getEdgeView(LinkCell linkCell)
 	{
 		return (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);
-	}
-	
-	public Point2D.Double getSnappedScaledPoint(Point2D pointToScale)
-	{
-		return getScaledPoint(Utility.convertToPoint(pointToScale));
 	}
 	
 	//FIXME nima check to see if this code appears anywhere else and combine
