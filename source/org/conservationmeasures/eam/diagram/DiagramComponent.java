@@ -47,6 +47,7 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
+import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.JGraph;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
@@ -452,16 +453,33 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);
 	}
 	
-	//FIXME nima check to see if this code appears anywhere else and combine
-	public Rectangle2D.Double getScaledBounds(LinkCell linkCell)
+	public Point2D.Double getSnappedScaledPoint(Point2D pointToScale)
 	{
-		Rectangle2D rect = getBounds(linkCell);
+		return getScaledPoint(Utility.convertToPoint(pointToScale));
+	}
+	
+	//FIXME nima check to see if this code appears anywhere else and combine
+	public Point2D.Double getScaledPoint(Point pointToScale)
+	{
+		return new Point2D.Double((pointToScale.x * scale), (pointToScale.y * scale));
+	}
+	
+	public Rectangle2D.Double getScaledRectangle(Rectangle2D rect)
+	{
 		double scaledX = rect.getX() * scale; 
 		double scaledY = rect.getY() * scale;
 		double scaledWidth = rect.getWidth() * scale;
 		double scaledHight = rect.getHeight() * scale;
 		
 		return new Rectangle2D.Double(scaledX, scaledY, scaledWidth, scaledHight);
+	}
+	
+	//FIXME nima check to see if this code appears anywhere else and combine
+	public Rectangle2D.Double getScaledBounds(LinkCell linkCell)
+	{
+		Rectangle2D rect = getBounds(linkCell);
+
+		return getScaledRectangle(rect);
 	}
 	
 	public Rectangle2D getBounds(LinkCell linkCell)

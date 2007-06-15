@@ -139,16 +139,22 @@ public class EAMGraphUI extends BasicGraphUI
 			for (int j = 0 ; j < selectedIndexes.length; ++j)
 			{
 				Point bendPoint = bendPoints.get(selectedIndexes[j]);
-				double proposedX = bendPoint.x + totDx; 
+				Point2D.Double scaledBendPoint = getDiagram().getScaledPoint(bendPoint);
+				double proposedX = scaledBendPoint.x + totDx; 
 				dx = getProposedDelta(dx, proposedX);				
 			}
 			return dx;
 		}
 
+		private DiagramComponent getDiagram()
+		{
+			return (DiagramComponent)getGraph();
+		}
+
 		private double calculateDeltaXForFactor(double dx, double totDx, EAMGraphCell cell)
 		{
 			FactorCell factorCell = (FactorCell) cell;
-			Rectangle2D bounds = factorCell.getBounds();
+			Rectangle2D bounds = getDiagram().getScaledRectangle(factorCell.getBounds());
 			double proposedX = bounds.getX() + totDx; 
 			dx = getProposedDelta(dx, proposedX);
 
@@ -163,7 +169,8 @@ public class EAMGraphUI extends BasicGraphUI
 			for (int j = 0 ; j < selectedIndexes.length; ++j)
 			{
 				Point bendPoint = bendPoints.get(selectedIndexes[j]);
-				double proposedY = bendPoint.y + totDy; 
+				Point2D.Double scaledBendPoint = getDiagram().getScaledPoint(bendPoint);
+				double proposedY = scaledBendPoint.y + totDy; 
 				dy = getProposedDelta(dy, proposedY);		
 			}
 			
@@ -173,7 +180,7 @@ public class EAMGraphUI extends BasicGraphUI
 		private double calculateDeltaYForFactor(double dy, double totDy, EAMGraphCell cell)
 		{
 			FactorCell factorCell = (FactorCell) cell;
-			Rectangle2D bounds = factorCell.getBounds();
+			Rectangle2D bounds = getDiagram().getScaledRectangle(factorCell.getBounds());
 			double proposedY = bounds.getY() + totDy; 
 			dy = getProposedDelta(dy, proposedY);
 
@@ -221,7 +228,7 @@ public class EAMGraphUI extends BasicGraphUI
 							Point2D.Double point = convertToPoint(controlPoints.get(selectedBendPointIndexes[j] + 1));
 							if (point == null)
 								continue;
-
+								
 							point.x = (int) (point.getX() + deltaX);
 							point.y = (int) point.getY() + deltaY;
 						}
