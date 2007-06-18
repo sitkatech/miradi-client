@@ -106,16 +106,7 @@ public class ViewData extends BaseObject
 	public ORefList getReferencedObjects(int objectType)
 	{
 		ORefList list = super.getReferencedObjects(objectType);
-		
-		//FIXME: Should only return objects of the specific requested type
-		switch(objectType)
-		{
-			case ObjectType.CAUSE:
-			case ObjectType.STRATEGY:
-			case ObjectType.TARGET: 
-				list.addAll(chainModeFactorRefs.getORefList());
-				break;
-		}
+		list.addAll(chainModeFactorRefs.getORefList(objectType));
 		return list;
 	}
 	

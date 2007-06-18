@@ -92,6 +92,17 @@ public class ORefList
 		data = new Vector(listToUse);
 	}
 		
+	public ORefList extract(int objectTypeToFilterOn)
+	{
+		ORefList newList = new ORefList();
+		for(int i = 0; i < data.size(); ++i)
+		{
+			if (get(i).getObjectType() == objectTypeToFilterOn)
+				newList.add((ORef)data.get(i));
+		}
+		return newList;
+	}
+	
 	public ORef[] toArray()
 	{
 		return (ORef[]) data.toArray(new ORef[0]);
