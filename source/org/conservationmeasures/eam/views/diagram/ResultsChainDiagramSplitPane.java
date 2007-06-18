@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 
 public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 {
@@ -25,9 +26,9 @@ public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 		return new ResultsChainDiagramLegendPanel(mainWindow);
 	}
 	
-	public JComponent createSelectionPanel()
+	public JComponent createSelectionPanel(Project project)
 	{
-		return new ResultsChainSelectionPanel();
+		return new ResultsChainPageList();
 	}
 	
 	protected JPanel createLeftPanel()

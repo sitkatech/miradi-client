@@ -9,6 +9,7 @@ import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 
 public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 {
@@ -22,8 +23,8 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 		return new ConceptualModelDiagramLegendPanel(mainWindow);
 	}
 	
-	public JComponent createSelectionPanel()
+	public JComponent createSelectionPanel(Project project)
 	{
-		return new ConceptualModelSelectionPanel();
+		return new ConceptualModelPageList(project);
 	}
 }

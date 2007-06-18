@@ -5,14 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import javax.swing.BorderFactory;
-
-
-public class ConceptualModelSelectionPanel extends DiagramObjectSelectionPanel
+public class ResultsChainPageList extends DiagramPageList
 {
-	public ConceptualModelSelectionPanel()
-	{
-		super();
-		setBorder(BorderFactory.createEtchedBorder());
-	}
 }
