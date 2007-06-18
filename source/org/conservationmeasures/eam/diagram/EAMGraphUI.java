@@ -18,7 +18,6 @@ import javax.swing.SwingUtilities;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.diagram.cellviews.FactorLinkView;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.JGraph;
@@ -266,11 +265,8 @@ public class EAMGraphUI extends BasicGraphUI
 	{
         public void mousePressed(MouseEvent event)
 		{
-			if(!this.processMouseEvent(event))
-				super.mousePressed(event);
-			
-			if (SwingUtilities.isRightMouseButton(event))
-				updateBendPointSelection(event);
+        	super.mousePressed(event);
+			processMouseEvent(event);
 		}
 
 		public void mouseReleased(MouseEvent event)
@@ -311,38 +307,6 @@ public class EAMGraphUI extends BasicGraphUI
 		private void replaceSelectionWithThisCell(CellView thisCell)
 		{
 			cell = thisCell;
-		}
-		
-		//FIXME nima this method seems to have a duplicate some where else.  
-		//a normal click selects the bend point (EdgeHandleWithBendPointSelection is good candidate)
-		private void updateBendPointSelection(MouseEvent event)
-		{
-			CellView thisCell = getGraph().getNextSelectableViewAt(getFocus(), event.getX(), event.getY());
-			if (! isFactorLinkView(thisCell))
-				return;
-			
-			FactorLinkView linkView = (FactorLinkView) thisCell;
-			LinkCell linkCell = (LinkCell) linkView.getCell();
-			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
-			BendPointSelectionHelper selectionHelper = linkCell.getBendPointSelectionHelper();
-			for (int i = 0; i < bendPoints.size(); ++i)
-			{
-				Point bendPoint = bendPoints.get(i);
-				//TODO nima is this range ok, what is the bend point height/2? 
-				if (bendPoint.distance(event.getPoint()) < 20)
-				{
-					selectionHelper.clearSelection();
-					selectionHelper.addToSelectionIndexList(i);
-					repaintGraph();
-					return;
-				}
-			}
-			
-		}
-
-		private void repaintGraph()
-		{
-			getGraph().paint(getGraph().getGraphics());
 		}
 	}
 }
