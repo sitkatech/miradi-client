@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -452,23 +453,29 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);
 	}
 	
-	//FIXME nima check to see if this code appears anywhere else and combine
 	public Point2D.Double getScaledPoint(Point pointToScale)
+	{
+		return new Point2D.Double((pointToScale.x * scale), (pointToScale.y * scale));
+	}
+	
+	public Point2D.Double getScaledPoint(Point2D.Double pointToScale)
 	{
 		return new Point2D.Double((pointToScale.x * scale), (pointToScale.y * scale));
 	}
 	
 	public Rectangle2D.Double getScaledRectangle(Rectangle2D rect)
 	{
-		double scaledX = rect.getX() * scale; 
-		double scaledY = rect.getY() * scale;
-		double scaledWidth = rect.getWidth() * scale;
-		double scaledHeight = rect.getHeight() * scale;
+		Point2D.Double scaledPoint = getScaledPoint(new Point2D.Double(rect.getX(), rect.getY()));
+		Dimension scaledSize = getScaledDimension(rect.getWidth(), rect.getHeight());
 		
-		return new Rectangle2D.Double(scaledX, scaledY, scaledWidth, scaledHeight);
+		return new Rectangle2D.Double(scaledPoint.x, scaledPoint.y, scaledSize.width, scaledSize.height);
 	}
 	
-	//FIXME nima check to see if this code appears anywhere else and combine
+	public Dimension getScaledDimension(double width, double height)
+	{
+		return new Dimension((int)(width * scale), (int)(height * scale));
+	}
+	
 	public Rectangle2D.Double getScaledBounds(LinkCell linkCell)
 	{
 		Rectangle2D rect = getBounds(linkCell);
