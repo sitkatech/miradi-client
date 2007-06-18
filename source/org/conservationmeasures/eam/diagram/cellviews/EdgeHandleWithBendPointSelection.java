@@ -89,13 +89,6 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		int[] selectedIndexes = bendSelectionHelper.getSelectedIndexes();
 		for (int i = 0; i < selectedIndexes.length; ++i)
 		{
-			//FIXME nima this to deal with undoing a created(selected) bend point
-			//the undo deletes the bend point but does not remove it from the selection list
-			//and we try to paint it.
-			// update : now if an undo/redo changes the size of the selection list, it clears selections then adds
-			if (selectedIndexes[i] >= bendPoints.size())
-				continue;
-			
 			Point point = bendPoints.get(selectedIndexes[i]);
 			Point2D scaledPoint = diagram.getScaledPoint(point);
 			g2.setColor(Color.BLACK);
