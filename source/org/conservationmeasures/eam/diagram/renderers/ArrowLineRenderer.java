@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
@@ -364,6 +365,9 @@ public class ArrowLineRenderer extends EdgeRenderer
 		if(stressText == null || stressText.length() < 1)
 			return;
 		
+		LayerManager layerManager = getLinkCell().getFactorLink().getProject().getLayerManager();
+		if (!layerManager.areStressesVisible())
+			return;
 		
 		Rectangle rectangle = calcalateCenteredAndCushioned(getPaintBounds(view), stressText);
 

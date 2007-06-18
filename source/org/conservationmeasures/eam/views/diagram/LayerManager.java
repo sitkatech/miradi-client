@@ -28,6 +28,7 @@ public class LayerManager
 		objectivesVisibleFlag = true;
 		indicatorsVisibleFlag = true;
 		scopeBoxVisibleFlag = true;
+		stressesVisibleFlag = true;
 		intermediateResultFlag = true;
 		threatReductionResultFlag = true;
 		textBoxesVisibleFlag = true;
@@ -187,6 +188,16 @@ public class LayerManager
 		scopeBoxVisibleFlag = newSetting;
 	}
 	
+	public boolean areStressesVisible()
+	{
+		return stressesVisibleFlag;
+	}
+	
+	public void setStressesVisible(boolean newSetting)
+	{
+		stressesVisibleFlag = newSetting;
+	}
+	
 	public boolean areIntermediateResultsVisible()
 	{
 		return intermediateResultFlag;
@@ -218,6 +229,7 @@ public class LayerManager
 	boolean objectivesVisibleFlag;
 	boolean indicatorsVisibleFlag;
 	boolean scopeBoxVisibleFlag;
+	boolean stressesVisibleFlag;
 	boolean intermediateResultFlag;
 	boolean threatReductionResultFlag;
 	boolean textBoxesVisibleFlag;

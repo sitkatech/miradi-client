@@ -103,7 +103,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		addIconLineWithCheckBox(jpanel, Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jpanel, Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(jpanel, Indicator.OBJECT_NAME, new IndicatorIcon());
-		addIconLineWithoutCheckBox(jpanel, "Stress", new StressIcon());
+		addIconLineWithCheckBox(jpanel, STRESS, new StressIcon());
 		addButtonLineWithCheckBox(jpanel, TextBox.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
 		
 		return jpanel;
@@ -121,7 +121,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	{
 		JButton button = new LocationButton(action);
 		jpanel.add(button);
-		jpanel.add(new UiLabel(EAM.text(text)));
+		jpanel.add(new PanelTitleLabel(EAM.text(text)));
 		jpanel.add(createCheckBox(text));
 	}
 	
@@ -193,9 +193,10 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 			manager.setIndicatorsVisible(checkBox.isSelected());
 		else if (property.equals(SCOPE_BOX_TEXT))
 			manager.setScopeBoxVisible(checkBox.isSelected());
-		
 		else if (property.equals(TextBox.OBJECT_NAME))
 			manager.setVisibility(DiagramTextBoxCell.class, checkBox.isSelected());
+		else if (property.equals(STRESS))
+			manager.setStressesVisible(checkBox.isSelected());
 		
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
 		mainWindow.updateStatusBar();
@@ -235,6 +236,9 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		
 		else if (property.equals(TextBox.OBJECT_NAME))
 			checkBox.setSelected(manager.areTextBoxesVisible());
+		
+		else if (property.equals(STRESS))
+			checkBox.setSelected(manager.areStressesVisible());
 	}
 	
 	class LocationButton extends PanelButton implements LocationHolder
@@ -252,6 +256,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		}
 	}
 	
+	final static String STRESS = "Stress";
 	final static String LAYER = "LAYER";
 	final static String TARGET_LINKS_TEXT = "Target link";
 	final static String SCOPE_BOX_TEXT = "Scope Box";
