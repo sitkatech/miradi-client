@@ -57,14 +57,15 @@
 			<band height="387"  isSplitAllowed="true" >
 				<image  evaluationTime="Band" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
-						y="0"
-						width="534"
-						height="384"
+						x="34"
+						y="5"
+						width="467"
+						height="382"
 						key="Image"
+						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<graphicElement stretchType="NoStretch"/>
+					<graphicElement stretchType="RelativeToTallestObject"/>
 					<imageExpression class="java.awt.Image"><![CDATA[(java.awt.Image)((org.conservationmeasures.eam.reports.DiagramDataSource)$P{REPORT_DATA_SOURCE}).getDiagramImage()]]></imageExpression>
 				</image>
 			</band>
