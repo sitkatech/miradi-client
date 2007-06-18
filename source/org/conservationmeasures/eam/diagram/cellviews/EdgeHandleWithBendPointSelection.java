@@ -35,6 +35,16 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		bendSelectionHelper = linkCell.getBendPointSelectionHelper();
 	}
 	
+	public boolean isAddPointEvent(MouseEvent event)
+	{
+		return false;
+	}
+
+	public boolean isRemovePointEvent(MouseEvent event)
+	{
+		return false;
+	}
+
 	public void mouseReleased(MouseEvent event)
 	{
 		Point mouseEnd = event.getPoint();
