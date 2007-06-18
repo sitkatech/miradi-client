@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCreateActivity;
 import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
+import org.conservationmeasures.eam.actions.ActionCreateConceptualModel;
 import org.conservationmeasures.eam.actions.ActionCreateGoal;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
@@ -33,6 +34,7 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
+import org.conservationmeasures.eam.actions.ActionDeleteConceptualModel;
 import org.conservationmeasures.eam.actions.ActionDeleteGoal;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
@@ -233,6 +235,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionShowConceptualModel.class, new ShowConceptualModelDoer());
 		addDoerToMap(ActionCreateOrShowResultsChain.class, new CreateOrShowResultsChainDoer());
 		addDoerToMap(ActionInsertTextBox.class, new InsertTextBoxDoer());
+		addDoerToMap(ActionCreateConceptualModel.class, new CreateConceptualModelDoer());
+		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelDoer());
 	}
 	
 	public void tabWasSelected()
