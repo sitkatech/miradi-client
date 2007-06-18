@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
@@ -63,6 +64,12 @@ public class DiagramContextMenuHandler
 	public UiPopupMenu getPopupMenu(Point menuInvokedAt)
 	{
 		UiPopupMenu menu = new UiPopupMenu();
+
+		JMenuItem propMenuItem = createMenuItem(ActionProperties.class, menuInvokedAt);
+		propMenuItem.setFont(propMenuItem.getFont().deriveFont(Font.BOLD));
+		menu.add(propMenuItem);
+		
+		menu.addSeparator();
 		menu.add(getInsertMenu(menuInvokedAt));
 		menu.add(createMenuItem(ActionCreateBendPoint.class, menuInvokedAt));
 		
@@ -86,8 +93,6 @@ public class DiagramContextMenuHandler
 		DiagramView diagramView = (DiagramView) mainWindow.getCurrentView();
 		menu.add(getDiagamModeSwitchItem(diagramView, actions));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionCreateResultsChain.class)));
-		menu.addSeparator();
-		menu.add(createMenuItem(ActionProperties.class, menuInvokedAt));
 		return menu;
 	}
 

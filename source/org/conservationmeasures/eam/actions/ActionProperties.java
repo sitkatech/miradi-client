@@ -17,7 +17,7 @@ public class ActionProperties extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Properties...");
+		return EAM.text("Action|Open...");
 	}
 
 }
