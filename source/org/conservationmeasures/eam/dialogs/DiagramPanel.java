@@ -33,15 +33,13 @@ import org.conservationmeasures.eam.views.diagram.ResultsChainDiagramSplitPane;
 
 public class DiagramPanel extends AbstractObjectDataInputPanel
 {
-	public DiagramPanel(MainWindow mainWindowToUse, Project project, DiagramObject diagramObjectToUse) throws Exception
+	public DiagramPanel(MainWindow mainWindowToUse, Project project, DiagramObject diagramObject) throws Exception
 	{
-		super(project, diagramObjectToUse.getRef());
+		super(project, diagramObject.getRef());
 		try
 		{
 			mainWindow = mainWindowToUse;
-			diagramObject = diagramObjectToUse;
-
-			createAndAddDiagram();
+			createAndAddDiagram(diagramObject);
 
 			if (diagramObject.getType()== ResultsChainDiagram.getObjectType())
 				splitPane = new ResultsChainDiagramSplitPane(mainWindow, diagram);
@@ -69,7 +67,7 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		return diagram;
 	}
 	
-	private void createAndAddDiagram() throws Exception
+	private void createAndAddDiagram(DiagramObject diagramObject) throws Exception
 	{
 		diagram = createDiagram(mainWindow, diagramObject);
 		selectionModel = diagram.getEAMGraphSelectionModel();
@@ -77,7 +75,7 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	
 	public DiagramObject getDiagramObject()
 	{
-		return diagramObject;
+		return getDiagramModel().getDiagramObject();
 	}
 		
 	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
@@ -248,7 +246,7 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		
 		try
 		{
-			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(getProject(), getDiagramModel(), diagramObject);
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(getProject(), getDiagramModel(), getDiagramObject());
 			modelUpdater.commandExecuted(event);
 		}
 		catch(Exception e)
@@ -264,7 +262,6 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	}
 
 	private DiagramSplitPane splitPane;
-	private DiagramObject diagramObject;
 	private EAMGraphSelectionModel selectionModel;
 	private DiagramComponent diagram;
 	private MainWindow mainWindow;
