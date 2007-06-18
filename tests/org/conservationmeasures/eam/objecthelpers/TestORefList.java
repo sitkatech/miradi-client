@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.objects;
+package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class TestObjectReferenceList extends EAMTestCase
+public class TestORefList extends EAMTestCase
 {
-	public TestObjectReferenceList(String name)
+	public TestORefList(String name)
 	{
 		super(name);
 	}
