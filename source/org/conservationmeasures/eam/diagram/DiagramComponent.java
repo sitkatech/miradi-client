@@ -463,9 +463,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		double scaledX = rect.getX() * scale; 
 		double scaledY = rect.getY() * scale;
 		double scaledWidth = rect.getWidth() * scale;
-		double scaledHight = rect.getHeight() * scale;
+		double scaledHeight = rect.getHeight() * scale;
 		
-		return new Rectangle2D.Double(scaledX, scaledY, scaledWidth, scaledHight);
+		return new Rectangle2D.Double(scaledX, scaledY, scaledWidth, scaledHeight);
 	}
 	
 	//FIXME nima check to see if this code appears anywhere else and combine
