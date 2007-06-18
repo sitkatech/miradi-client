@@ -11,7 +11,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.JGraph;
 import org.jgraph.graph.BasicMarqueeHandler;
@@ -38,7 +38,7 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 	private void selectAllBendPointsInBouds()
 	{
 		DiagramModel model = diagram.getDiagramModel();
-		DiagramFactorLink[] allLinks = model.getAllDiagramLinksAsArray();
+		DiagramLink[] allLinks = model.getAllDiagramLinksAsArray();
 		
 		for (int i = 0 ; i < allLinks.length; ++i)
 		{
@@ -46,7 +46,7 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 		}
 	}
 
-	private void selectBendPointsAndLinksInBounds(DiagramModel model, DiagramFactorLink diagramLink)
+	private void selectBendPointsAndLinksInBounds(DiagramModel model, DiagramLink diagramLink)
 	{
 		LinkCell linkCell = model.getDiagramFactorLink(diagramLink);
 		Rectangle2D.Double scaledBounds = diagram.getScaledBounds(linkCell);

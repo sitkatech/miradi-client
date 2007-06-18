@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
@@ -50,7 +50,7 @@ public class LinkBendPointsMoveHandler
 	//TODO nima check for possible duplicate code in this class
 	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, Point2D[] bendPoints) throws Exception
 	{
-		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
 		PointList pointsToMove = diagramLink.getBendPoints().createClone();
 		
 		for (int i = 0; i < selectionIndexes.length; ++i)
@@ -71,7 +71,7 @@ public class LinkBendPointsMoveHandler
 
 	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws Exception
 	{
-		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
 		PointList pointsToMove = diagramLink.getBendPoints().createClone();
 		
 		for (int i = 0; i < selectionIndexes.length; ++i)
@@ -87,9 +87,9 @@ public class LinkBendPointsMoveHandler
 		executeBendPointMoveCommand(diagramLink, pointsToMove);
 	}
 	
-	private void executeBendPointMoveCommand(DiagramFactorLink diagramLink, PointList pointsToMove) throws CommandFailedException
+	private void executeBendPointMoveCommand(DiagramLink diagramLink, PointList pointsToMove) throws CommandFailedException
 	{
-		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, pointsToMove);
+		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramLink.TAG_BEND_POINTS, pointsToMove);
 		project.executeCommand(bendPointMoveCommand);
 	}
 		
@@ -103,7 +103,7 @@ public class LinkBendPointsMoveHandler
 		for (int i = 0; i < nearbyLinkCells.length; ++i)
 		{
 			LinkCell nearByLinkCell = nearbyLinkCells[i];
-			DiagramFactorLink nearbyDiagramLink = nearByLinkCell.getDiagramFactorLink();
+			DiagramLink nearbyDiagramLink = nearByLinkCell.getDiagramFactorLink();
 			if (nearByLinkCell.equals(linkCell))
 				continue;
 			

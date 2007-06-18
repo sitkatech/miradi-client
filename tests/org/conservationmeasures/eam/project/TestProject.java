@@ -44,7 +44,7 @@ import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -206,8 +206,8 @@ public class TestProject extends EAMTestCase
 		FactorCell node2 =  project.createFactorCell(ObjectType.STRATEGY);
 		FactorCell node3 =  project.createFactorCell(ObjectType.CAUSE);
 		
-		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
-		DiagramFactorLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
+		DiagramLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
 		LinkCell cell2 = project.getDiagramModel().findLinkCell(linkage2);
@@ -236,7 +236,7 @@ public class TestProject extends EAMTestCase
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		FactorCell node2 =  project.createFactorCell(ObjectType.STRATEGY);
 		
-		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
 		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
 
@@ -807,7 +807,7 @@ public class TestProject extends EAMTestCase
 		}
 	}
 	
-	private DiagramFactorLink createLinkage(BaseId id, FactorId fromId, FactorId toId) throws Exception
+	private DiagramLink createLinkage(BaseId id, FactorId fromId, FactorId toId) throws Exception
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, id, parameter);

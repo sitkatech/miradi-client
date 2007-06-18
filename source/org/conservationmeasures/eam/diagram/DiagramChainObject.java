@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.ChainObject;
@@ -76,7 +76,7 @@ public class DiagramChainObject extends ChainObject
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
 		linkedFactors.attemptToAdd(startingFactor);
-		DiagramFactorLink[] allDiagramLinks = diagramModel.getAllDiagramLinksAsArray();
+		DiagramLink[] allDiagramLinks = diagramModel.getAllDiagramLinksAsArray();
 		
 		for(int i = 0; i < allDiagramLinks.length; ++i)
 		{
@@ -109,7 +109,7 @@ public class DiagramChainObject extends ChainObject
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
 		
-		DiagramFactorLink[] allDiagramLinks = diagramModel.getAllDiagramLinksAsArray();
+		DiagramLink[] allDiagramLinks = diagramModel.getAllDiagramLinksAsArray();
 		for(int i = 0; i < allDiagramLinks.length; ++i)
 		{
 			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();

@@ -40,12 +40,12 @@ abstract public class DiagramObject extends BaseObject
 		super(new DiagramContentsId(idToUse), json);
 	}
 	
-	public DiagramFactorLink getDiagramFactorLink(FactorLinkId factorLinkId)
+	public DiagramLink getDiagramFactorLink(FactorLinkId factorLinkId)
 	{
 		IdList diagramFactorLinkIds = getAllDiagramFactorLinkIds();
 		for (int i = 0; i < diagramFactorLinkIds.size(); i++)
 		{
-			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) getObjectManager().findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkIds.get(i)));
+			DiagramLink diagramFactorLink = (DiagramLink) getObjectManager().findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkIds.get(i)));
 			if (diagramFactorLink.getWrappedId().equals(factorLinkId))
 				return diagramFactorLink;
 		}
@@ -109,7 +109,7 @@ abstract public class DiagramObject extends BaseObject
 				list.addAll(new ORefList(DiagramFactor.getObjectType(), getAllDiagramFactorIds()));
 				break;
 			case ObjectType.DIAGRAM_LINK: 
-				list.addAll(new ORefList(DiagramFactorLink.getObjectType(), getAllDiagramFactorLinkIds()));
+				list.addAll(new ORefList(DiagramLink.getObjectType(), getAllDiagramFactorLinkIds()));
 				break;
 		}
 		return list;

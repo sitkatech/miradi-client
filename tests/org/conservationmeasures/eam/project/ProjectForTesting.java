@@ -35,7 +35,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
@@ -238,13 +238,13 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	public LinkCell createLinkCell() throws Exception
 	{
 		DiagramFactorLinkId diagramLinkId = createDiagramFactorLink();
-		DiagramFactorLink diagramLink = (DiagramFactorLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramLinkId));
+		DiagramLink diagramLink = (DiagramLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramLinkId));
 		addDiagramLinkToModel(diagramLink);
 		
 		return getDiagramModel().getDiagramFactorLink(diagramLink);	
 	}
 	
-	public void addDiagramLinkToModel(DiagramFactorLink diagramLink) throws Exception 
+	public void addDiagramLinkToModel(DiagramLink diagramLink) throws Exception 
 	{
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkageId());
 		executeCommand(addLink);
@@ -273,7 +273,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	{
 		LinkCell linkCell = createLinkCell();
 	
-		CommandSetObjectData createBendPointsCommand =	CommandSetObjectData.createNewPointList(linkCell.getDiagramFactorLink(), DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
+		CommandSetObjectData createBendPointsCommand =	CommandSetObjectData.createNewPointList(linkCell.getDiagramFactorLink(), DiagramLink.TAG_BEND_POINTS, bendPoints);
 		executeCommand(createBendPointsCommand);
 		
 		return linkCell;

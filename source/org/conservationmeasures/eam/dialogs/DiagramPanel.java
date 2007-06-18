@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
@@ -114,16 +114,16 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		return getOnlySelectedLinkCells(rawCells);
 	}
 	
-	public DiagramFactorLink[] getOnlySelectedLinks()
+	public DiagramLink[] getOnlySelectedLinks()
 	{
 		if(selectionModel == null)
-			return new DiagramFactorLink[0];
+			return new DiagramLink[0];
 		
 		Object[] rawCells = selectionModel.getSelectionCells();
 		return getOnlySelectedLinks(rawCells);
 	}
 	
-	public DiagramFactorLink[] getOnlySelectedLinks(Object [] allSelectedCells)
+	public DiagramLink[] getOnlySelectedLinks(Object [] allSelectedCells)
 	{
 		Vector linkages = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
@@ -134,7 +134,7 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 				linkages.add(cell.getDiagramFactorLink());
 			}
 		}
-		return (DiagramFactorLink[])linkages.toArray(new DiagramFactorLink[0]);
+		return (DiagramLink[])linkages.toArray(new DiagramLink[0]);
 	}
 	
 	public LinkCell[] getOnlySelectedLinkCells(Object [] allSelectedCells)

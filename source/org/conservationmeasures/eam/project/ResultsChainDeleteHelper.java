@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -83,7 +83,7 @@ public class ResultsChainDeleteHelper
 	private void deleteAllDiagramFactorLinks() throws Exception
 	{
 		DiagramModel model = diagramPanel.getDiagramModel();
-		DiagramFactorLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
+		DiagramLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
 		
 		for (int i = 0; i < allDiagramLinks.length; i++)
 		{ 
@@ -91,7 +91,7 @@ public class ResultsChainDeleteHelper
 		}
 	}
 	
-	private void deleteDiagramLinkAndFactorLink(DiagramFactorLink diagramLink) throws Exception
+	private void deleteDiagramLinkAndFactorLink(DiagramLink diagramLink) throws Exception
 	{
 		FactorLinkId factorLinkId = diagramLink.getWrappedId();
 		

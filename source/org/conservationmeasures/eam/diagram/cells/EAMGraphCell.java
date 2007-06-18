@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram.cells;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.jgraph.graph.DefaultGraphCell;
 
 public class EAMGraphCell extends DefaultGraphCell
@@ -32,7 +32,7 @@ public class EAMGraphCell extends DefaultGraphCell
 		return false;
 	}
 	
-	public DiagramFactorLink getDiagramFactorLink()
+	public DiagramLink getDiagramFactorLink()
 	{
 		return null;
 	}

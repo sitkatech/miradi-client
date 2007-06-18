@@ -80,7 +80,7 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createObject2.getCreatedId();
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
 		
-		DiagramFactorLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
+		DiagramLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
 		
 		assertEquals("didn't remember from?", diagramFactor1.getId(), diagramFactorLink.getFromDiagramFactorId());
 		assertEquals("didn't remember to?", diagramFactor2.getId(), diagramFactorLink.getToDiagramFactorId());
@@ -95,7 +95,7 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		DiagramFactorLinkId id = new DiagramFactorLinkId(17);
 		CreateDiagramFactorLinkParameter extraInfoForTestIds = new CreateDiagramFactorLinkParameter(
 				linkId, factor.getDiagramFactorId(), diagramTarget.getDiagramFactorId());
-		DiagramFactorLink linkage = new DiagramFactorLink(id, extraInfoForTestIds);
+		DiagramLink linkage = new DiagramLink(id, extraInfoForTestIds);
 		assertEquals(id, linkage.getDiagramLinkageId());
 		assertEquals(linkId, linkage.getWrappedId());
 		
@@ -122,7 +122,7 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		assertNotNull("link not in model?", model.getDiagramFactorLinkById(createdDiagramFactorLinkId));
 		
 		ProjectServer server = project.getTestDatabase();
-		DiagramFactorLink dfl = project.getDiagramModel().getDiagramFactorLinkById(createdDiagramFactorLinkId);
+		DiagramLink dfl = project.getDiagramModel().getDiagramFactorLinkById(createdDiagramFactorLinkId);
 		FactorLink linkage = (FactorLink)server.readObject(project.getObjectManager(), ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from id?", interventionId, linkage.getFromFactorId());
 		assertEquals("Didn't load to id?", factorId, linkage.getToFactorId());
@@ -147,7 +147,7 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	{
 		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
 		LinkCell linkCell = project.createLinkCellWithBendPoints(bendPointList);	
-		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
 		
 		assertEquals("bend points not added?", 3, diagramLink.getBendPoints().size());
 		assertEquals("bend point doestn exist?", true, diagramLink.bendPointAlreadyExists(new Point(1, 1)));

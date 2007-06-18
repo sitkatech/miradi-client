@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 
 class CellInventory
 {
@@ -70,7 +70,7 @@ class CellInventory
 		factorCellIds.remove(diagramFactorId);
 	}
 	
-	public void addFactorLink(DiagramFactorLink link, LinkCell cell)
+	public void addFactorLink(DiagramLink link, LinkCell cell)
 	{
 		DiagramFactorLinkId realId = link.getDiagramLinkageId();
 		
@@ -90,36 +90,36 @@ class CellInventory
 		return new Vector(factorLinks.keySet());
 	}
 	
-	public DiagramFactorLink getFactorLinkById(DiagramFactorLinkId id)
+	public DiagramLink getFactorLinkById(DiagramFactorLinkId id)
 	{
 		Iterator iter = factorLinks.keySet().iterator();
 		while(iter.hasNext()) 
 		{
-			DiagramFactorLink link = (DiagramFactorLink) iter.next();
+			DiagramLink link = (DiagramLink) iter.next();
 			if(link.getDiagramLinkageId().equals(id))
 				return link;
 		}
 		return null;
 	}
 	
-	public DiagramFactorLink getFactorLinkById(FactorLinkId id)
+	public DiagramLink getFactorLinkById(FactorLinkId id)
 	{
 		Iterator iter = factorLinks.keySet().iterator();
 		while(iter.hasNext())
 		{
-			DiagramFactorLink link = (DiagramFactorLink) iter.next();
+			DiagramLink link = (DiagramLink) iter.next();
 			if(link.getWrappedId().equals(id))
 				return link;
 		}
 		return null;
 	}
 	
-	public LinkCell getLinkCell(DiagramFactorLink link)
+	public LinkCell getLinkCell(DiagramLink link)
 	{
 		return (LinkCell)factorLinks.get(link);
 	}
 	
-	public void removeFactorLink(DiagramFactorLink linkage)
+	public void removeFactorLink(DiagramLink linkage)
 	{
 		factorLinks.remove(linkage);
 	}

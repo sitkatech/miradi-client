@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 
@@ -89,7 +89,7 @@ public class DiagramModelUpdater
 	{
 		for (int i = 0; i < removedFactorLinkIds.size(); i++)
 		{
-			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, removedFactorLinkIds.get(i)));
+			DiagramLink diagramFactorLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, removedFactorLinkIds.get(i)));
 			model.deleteDiagramFactorLink(diagramFactorLink);
 		}
 	}
@@ -98,7 +98,7 @@ public class DiagramModelUpdater
 	{
 		for (int i = 0; i < addedLinkIds.size(); i++)
 		{
-			DiagramFactorLink diagramFactorLink = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, addedLinkIds.get(i)));
+			DiagramLink diagramFactorLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, addedLinkIds.get(i)));
 			model.addLinkToDiagram(diagramFactorLink);
 		}
 	}

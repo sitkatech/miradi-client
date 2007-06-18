@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
@@ -57,7 +57,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
 		project.executeCommand(addLink);
 
-		DiagramFactorLink linkage = model.getDiagramFactorLinkById(diagramFactorLinkId);
+		DiagramLink linkage = model.getDiagramFactorLinkById(diagramFactorLinkId);
 		LinkCell cell = project.getDiagramModel().findLinkCell(linkage);
 
 		assertEquals("not from intervention?", intervention, cell.getFrom());

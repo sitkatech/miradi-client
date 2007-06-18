@@ -267,7 +267,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		DiagramFactor target = createFactorAndDiagramFactor(Target.getObjectType());
 		IdList factorList = new IdList(new BaseId[] {strategy.getId(), cause.getId(), target.getId()});
 		
-		DiagramFactorLink link = createDiagramFactorLink(strategy, cause);
+		DiagramLink link = createDiagramFactorLink(strategy, cause);
 		IdList linkList = new IdList(new BaseId[] {link.getId()});
 		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, factorList.toString());
 		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, linkList.toString());
@@ -288,13 +288,13 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		return (DiagramFactor)project.findObject(DiagramFactor.getObjectType(), diagramFactorId);
 	}
 	
-	private DiagramFactorLink createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
+	private DiagramLink createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		CreateFactorLinkParameter linkExtraInfo = new CreateFactorLinkParameter(from.getWrappedId(), to.getWrappedId());
 		FactorLinkId linkId = (FactorLinkId)project.createObject(FactorLink.getObjectType(), linkExtraInfo);
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(linkId, from.getDiagramFactorId(), to.getDiagramFactorId());
-		DiagramFactorLinkId diagramLinkId = (DiagramFactorLinkId)project.createObject(DiagramFactorLink.getObjectType(), diagramLinkExtraInfo);
-		return (DiagramFactorLink)project.findObject(DiagramFactorLink.getObjectType(), diagramLinkId);
+		DiagramFactorLinkId diagramLinkId = (DiagramFactorLinkId)project.createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
+		return (DiagramLink)project.findObject(DiagramLink.getObjectType(), diagramLinkId);
 	}
 	
 

@@ -31,7 +31,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.Project;
@@ -293,7 +293,7 @@ public class TestCommands extends EAMTestCase
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
 		project.executeCommand(addLink);
 		
-		DiagramFactorLink inserted = model.getDiagramFactorLinkbyWrappedId(modelLinkageId);
+		DiagramLink inserted = model.getDiagramFactorLinkbyWrappedId(modelLinkageId);
 		LinkCell cell = model.findLinkCell(inserted);
 		DiagramFactorId fromNodeId = cell.getFrom().getDiagramFactorId();
 		assertEquals("wrong source?", from, fromNodeId);

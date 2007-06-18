@@ -23,9 +23,9 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 
-public class DiagramFactorLink extends BaseObject
+public class DiagramLink extends BaseObject
 {
-	public DiagramFactorLink(ObjectManager objectManager, BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
+	public DiagramLink(ObjectManager objectManager, BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
 	{
 		super(objectManager, new DiagramFactorLinkId(idToUse.asInt()));
 		
@@ -36,7 +36,7 @@ public class DiagramFactorLink extends BaseObject
 		toId.setId(extraInfo.getToFactorId());
 	}
 	
-	public DiagramFactorLink(BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
+	public DiagramLink(BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
 	{
 		super(new DiagramFactorLinkId(idToUse.asInt()));
 		
@@ -46,7 +46,7 @@ public class DiagramFactorLink extends BaseObject
 		toId.setId(extraInfo.getToFactorId());
 	}
 	
-	public DiagramFactorLink(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
+	public DiagramLink(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new DiagramFactorLinkId(idToUse), json);
 		
@@ -55,7 +55,7 @@ public class DiagramFactorLink extends BaseObject
 		toId.setId(json.getId(TAG_TO_DIAGRAM_FACTOR_ID));
 	}
 	
-	public DiagramFactorLink(int idToUse, EnhancedJsonObject json) throws Exception
+	public DiagramLink(int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(new DiagramFactorLinkId(idToUse), json);
 		

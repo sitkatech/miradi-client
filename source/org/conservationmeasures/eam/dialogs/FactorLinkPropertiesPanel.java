@@ -9,13 +9,13 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDire
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 
 public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 {
-	public FactorLinkPropertiesPanel(Project projectToUse, DiagramFactorLink link)
+	public FactorLinkPropertiesPanel(Project projectToUse, DiagramLink link)
 	{
 		super(projectToUse, ObjectType.FACTOR_LINK, link.getWrappedId());
 

@@ -148,7 +148,7 @@ abstract public class BaseObject
 				return new ProjectMetadata(objectManager, idAsInt, json);
 				
 			case ObjectType.DIAGRAM_LINK:
-				return new DiagramFactorLink(objectManager, idAsInt, json);
+				return new DiagramLink(objectManager, idAsInt, json);
 				
 			case ObjectType.ASSIGNMENT:
 				return new Assignment(objectManager, idAsInt, json);
@@ -538,8 +538,8 @@ abstract public class BaseObject
 		if (ProjectMetadata.canOwnThisType(type))
 			objectTypes[i++] = ProjectMetadata.getObjectType();
 		
-		if (DiagramFactorLink.canOwnThisType(type))
-			objectTypes[i++] = DiagramFactorLink.getObjectType();
+		if (DiagramLink.canOwnThisType(type))
+			objectTypes[i++] = DiagramLink.getObjectType();
 
 		if (Assignment.canOwnThisType(type))
 			objectTypes[i++] = Assignment.getObjectType();
@@ -618,8 +618,8 @@ abstract public class BaseObject
 		if (ProjectMetadata.canReferToThisType(type))
 			objectTypes[i++] = ProjectMetadata.getObjectType();
 		
-		if (DiagramFactorLink.canReferToThisType(type))
-			objectTypes[i++] = DiagramFactorLink.getObjectType();
+		if (DiagramLink.canReferToThisType(type))
+			objectTypes[i++] = DiagramLink.getObjectType();
 
 		if (Assignment.canReferToThisType(type))
 			objectTypes[i++] = Assignment.getObjectType();

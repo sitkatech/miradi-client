@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
@@ -91,11 +91,11 @@ public class DeleteSelectedItemDoer extends ViewDoer
 
 	public static void deleteFactorLink(DiagramObject diagramObject, ORef diagramFactorLinkRef) throws Exception
 	{
-		DiagramFactorLink linkageToDelete = (DiagramFactorLink)diagramObject.getProject().findObject(diagramFactorLinkRef);
+		DiagramLink linkageToDelete = (DiagramLink)diagramObject.getProject().findObject(diagramFactorLinkRef);
 		deleteFactorLink(diagramObject, linkageToDelete);
 	}
 	
-	public static void deleteFactorLink(DiagramObject diagramObject, DiagramFactorLink linkageToDelete) throws Exception
+	public static void deleteFactorLink(DiagramObject diagramObject, DiagramLink linkageToDelete) throws Exception
 	{	
 		Project project = diagramObject.getProject();
 		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
@@ -118,7 +118,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		project.executeCommand(deleteLinkage);
 	}
 
-	private static boolean canDeleteFactorLink(Project project, DiagramFactorLink linkageToDelete)
+	private static boolean canDeleteFactorLink(Project project, DiagramLink linkageToDelete)
 	{
 		ObjectManager objectManager = project.getObjectManager();
 		FactorLinkId factorLinkId = linkageToDelete.getWrappedId();

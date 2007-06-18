@@ -33,7 +33,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -279,7 +279,7 @@ public class FactorCommandHelper
 				
 			FactorCell newFromNode = getDiagramFactorById(newFromId);
 			FactorCell newToNode = getDiagramFactorById(newToId);
-			DiagramFactorLink newlyAddedLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
+			DiagramLink newlyAddedLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
 			EAM.logDebug("Paste Link : " + newlyAddedLink.getDiagramLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}

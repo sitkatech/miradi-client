@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.DirectoryUtils;
@@ -288,10 +288,10 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("diagram link file 135 exists?", file1.exists());
 		
 		EnhancedJsonObject json1 = new EnhancedJsonObject(readFile(file1));
-		DiagramFactorLink diagramLink = new DiagramFactorLink(135, json1);
+		DiagramLink diagramLink = new DiagramLink(135, json1);
 		assertEquals("same wrapped id?", 57, diagramLink.getWrappedId().asInt());
-		String fromDiagramLinkId = diagramLink.getData(DiagramFactorLink.TAG_FROM_DIAGRAM_FACTOR_ID);
-		String toDiagramLinkId = diagramLink.getData(DiagramFactorLink.TAG_TO_DIAGRAM_FACTOR_ID);
+		String fromDiagramLinkId = diagramLink.getData(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+		String toDiagramLinkId = diagramLink.getData(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 		assertEquals("same from diagram link id?", Integer.toString(93), fromDiagramLinkId);
 		assertEquals("same from diagram link id?", Integer.toString(94), toDiagramLinkId);
 	
@@ -300,10 +300,10 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("diagram link file 136 exists?", file2.exists());
 		
 		EnhancedJsonObject json2 = new EnhancedJsonObject(readFile(file2));
-		DiagramFactorLink diagramLink2 = new DiagramFactorLink(136, json2);
+		DiagramLink diagramLink2 = new DiagramLink(136, json2);
 		assertEquals("same wrapped id?", 56, diagramLink2.getWrappedId().asInt());
-		String fromDiagramLinkId2 = diagramLink2.getData(DiagramFactorLink.TAG_FROM_DIAGRAM_FACTOR_ID);
-		String toDiagramLinkId2 = diagramLink2.getData(DiagramFactorLink.TAG_TO_DIAGRAM_FACTOR_ID);
+		String fromDiagramLinkId2 = diagramLink2.getData(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+		String toDiagramLinkId2 = diagramLink2.getData(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 		assertEquals("same from diagram link id?", Integer.toString(91), fromDiagramLinkId2);
 		assertEquals("same from diagram link id?", Integer.toString(92), toDiagramLinkId2);
 	

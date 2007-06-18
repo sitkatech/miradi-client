@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.project.Project;
 
 public class CreateBendPointDoer extends LocationDoer
@@ -22,7 +22,7 @@ public class CreateBendPointDoer extends LocationDoer
 		if (! isDiagramView())
 			return false;
 		
-		DiagramFactorLink[] selectedLinks = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
+		DiagramLink[] selectedLinks = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		if (selectedLinks.length != 1)
 			return false;
 		
@@ -41,7 +41,7 @@ public class CreateBendPointDoer extends LocationDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			DiagramFactorLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
+			DiagramLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
 			BendPointCreator bendPointCreator = new BendPointCreator(getDiagramView().getDiagramComponent());
 			bendPointCreator.createBendPoint(getLocation(), selectedLink);
 		}

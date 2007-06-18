@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.utils.PointList;
 
 public class DeleteBendPointDoer extends LocationDoer
@@ -27,7 +27,7 @@ public class DeleteBendPointDoer extends LocationDoer
 		if (! isDiagramView())
 			return false;
 		
-		DiagramFactorLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
+		DiagramLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		if (links.length == 0)
 			return false;
 
@@ -37,7 +37,7 @@ public class DeleteBendPointDoer extends LocationDoer
 		return true;
 	}
 
-	private boolean hasSelectedBendPoint(DiagramFactorLink[] links)
+	private boolean hasSelectedBendPoint(DiagramLink[] links)
 	{
 		for (int i = 0; i < links.length; ++i)
 		{
@@ -68,21 +68,21 @@ public class DeleteBendPointDoer extends LocationDoer
 	
 	private void deleteBendPoints() throws CommandFailedException
 	{
-		DiagramFactorLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
+		DiagramLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		
 		for (int i = 0; i < links.length; ++i)
 		{
-			DiagramFactorLink diagramFactorLink = links[i];			
+			DiagramLink diagramFactorLink = links[i];			
 			PointList newBendPoints = getBendPointListMinusDeletedPoint(diagramFactorLink);
 			
 			String newBendPointList = newBendPoints.toJson().toString();
 			DiagramFactorLinkId linkId = diagramFactorLink.getDiagramLinkageId();
-			CommandSetObjectData removeBendPointCommand = new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramFactorLink.TAG_BEND_POINTS, newBendPointList);
+			CommandSetObjectData removeBendPointCommand = new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramLink.TAG_BEND_POINTS, newBendPointList);
 			getProject().executeCommand(removeBendPointCommand);
 		}
 	}
 	
-	private PointList getBendPointListMinusDeletedPoint(DiagramFactorLink diagramFactorLink)
+	private PointList getBendPointListMinusDeletedPoint(DiagramLink diagramFactorLink)
 	{
 		LinkCell linkCell = getDiagramView().getDiagramModel().getDiagramFactorLink(diagramFactorLink);
 		PointList currentBendPoints = diagramFactorLink.getBendPoints();

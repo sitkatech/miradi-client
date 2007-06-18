@@ -26,7 +26,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
@@ -113,7 +113,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		return false;
 	}
 
-	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
+	public static DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
 	{
 		DiagramObject diagramObject = model.getDiagramObject();
 		Project project = model.getProject();
@@ -121,22 +121,22 @@ public class InsertFactorLinkDoer extends ViewDoer
 		return createModelLinkageAndAddToDiagramUsingCommands(project, diagramObject, diagramFactorFrom, diagramFactorTo, bendPoints);
 	}
 	
-	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
+	public static DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
 		DiagramObject diagramObject = model.getDiagramObject();
 		return createModelLinkageAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
 	}
 
-	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(Project project, DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws CommandFailedException, ParseException
+	public static DiagramLink createModelLinkageAndAddToDiagramUsingCommands(Project project, DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws CommandFailedException, ParseException
 	{
-		DiagramFactorLink diagramLink = createModelLinkageAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
-		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(diagramLink, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
+		DiagramLink diagramLink = createModelLinkageAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
+		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(diagramLink, DiagramLink.TAG_BEND_POINTS, bendPoints);
 		project.executeCommand(setBendPoints);
 		
 		return diagramLink;
 	}
 	
-	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws CommandFailedException, ParseException
+	public static DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws CommandFailedException, ParseException
 	{
 		DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(fromThreatId);
 		DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(toTargetId);
@@ -145,7 +145,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 	}
 	
 	
-	public static DiagramFactorLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws CommandFailedException, ParseException
+	public static DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws CommandFailedException, ParseException
 	{
 		Project project = diagramObject.getProject();
 		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
@@ -162,7 +162,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		DiagramFactorLinkId diagramFactorLinkId = project.getDiagramFactorLinkPool().getLinkedId(fromDiagramFactorId, toDiagramFactorId);
 	
 		if (diagramFactorLinkId != null)
-			return (DiagramFactorLink)project.findObject(DiagramFactorLink.getObjectType(), diagramFactorLinkId);
+			return (DiagramLink)project.findObject(DiagramLink.getObjectType(), diagramFactorLinkId);
 		
 		return createDiagramLink(diagramObject, modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 	}
@@ -188,7 +188,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		return modelLinkageId;
 	}
 
-	private static DiagramFactorLink createDiagramLink(DiagramObject diagramObject, FactorLinkId modelLinkageId, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws CommandFailedException, ParseException
+	private static DiagramLink createDiagramLink(DiagramObject diagramObject, FactorLinkId modelLinkageId, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws CommandFailedException, ParseException
 	{
 		Project project = diagramObject.getProject();
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(project, fromDiagramFactorId, toDiagramFactorId, modelLinkageId);
@@ -201,7 +201,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramLinkId);
 		project.executeCommand(addDiagramLink);
 		
-		return (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, createdDiagramLinkId));
+		return (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, createdDiagramLinkId));
 	}
 
 	private static CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(Project projectToUse, DiagramFactorId fromId, DiagramFactorId toId, FactorLinkId modelLinkageId)

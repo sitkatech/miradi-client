@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -29,7 +29,7 @@ public class SelectChain extends ViewDoer
 			return false;
 		
 		FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
-		DiagramFactorLink[] selectedLinks = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
+		DiagramLink[] selectedLinks = getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 		int combinedLengths = selectedLinks.length + selectedFactors.length;
 		
 		if (combinedLengths == 0)
@@ -58,11 +58,11 @@ public class SelectChain extends ViewDoer
 	public static void selectChainsRelatedToSelectedFactorsAndLinks(DiagramPanel diagramPanel) throws Exception
 	{
 		FactorCell[] selectedFactors = diagramPanel.getOnlySelectedFactorCells();
-		DiagramFactorLink[] selectedLinks = diagramPanel.getOnlySelectedLinks();
+		DiagramLink[] selectedLinks = diagramPanel.getOnlySelectedLinks();
 		getChainsBasedOnFactorsAndLinks(diagramPanel.getdiagramComponent(), diagramPanel.getDiagramModel(), selectedFactors, selectedLinks);
 	}
 	
-	public static void getChainsBasedOnFactorsAndLinks(DiagramComponent diagramComponent, DiagramModel model, FactorCell[] factorCells, DiagramFactorLink[] linkageCells) throws Exception
+	public static void getChainsBasedOnFactorsAndLinks(DiagramComponent diagramComponent, DiagramModel model, FactorCell[] factorCells, DiagramLink[] linkageCells) throws Exception
 	{
 		Factor[] factorReleatedFactors = getChainsBasedOnFactors(model, factorCells);
 		Factor[] linkRelatedFactors = getChainsBasedOnLinks(model, linkageCells);
@@ -86,12 +86,12 @@ public class SelectChain extends ViewDoer
 		return (Factor[])nodes.toArray(new Factor[0]);
 	}
 	
-	private static Factor[] getChainsBasedOnLinks(DiagramModel diagramModel, DiagramFactorLink[] linkages) throws Exception
+	private static Factor[] getChainsBasedOnLinks(DiagramModel diagramModel, DiagramLink[] linkages) throws Exception
 	{
 		Vector nodes = new Vector();
 		for(int i = 0; i < linkages.length; ++i)
 		{
-			DiagramFactorLink selectedLinkage = linkages[i];
+			DiagramLink selectedLinkage = linkages[i];
 			LinkCell cell = diagramModel.findLinkCell(selectedLinkage);
 			
 			DiagramChainObject upstreamChain = new DiagramChainObject();

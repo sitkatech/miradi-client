@@ -31,7 +31,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -63,7 +63,7 @@ public class ResultsChainCreatorHelper
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			project.executeCommand(addFactorsToChain);
 
-			DiagramFactorLink[] diagramLinks = getDiagramLinksInChain();
+			DiagramLink[] diagramLinks = getDiagramLinksInChain();
 			DiagramFactorLinkId[] clonedDiagramLinkIds = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
 			IdList diagramLinkList = new IdList(clonedDiagramLinkIds);
 			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
@@ -241,7 +241,7 @@ public class ResultsChainCreatorHelper
 		return true;
 	}
 
-	private DiagramFactorLink[] getDiagramLinksInChain() throws Exception
+	private DiagramLink[] getDiagramLinksInChain() throws Exception
 	{
 		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
 		if (containsOnlyStrategies(selectedFactorCells))
@@ -250,10 +250,10 @@ public class ResultsChainCreatorHelper
 		return getDiagramLinksInSelection();
 	}
 	
-	private DiagramFactorLink[] getDiagramLinksInSelection()
+	private DiagramLink[] getDiagramLinksInSelection()
 	{
 		HashSet diagramFactorIdSet = extractDiagramFactorIds();
-		DiagramFactorLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
+		DiagramLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
 		Vector containedDiagramLinks = new Vector();
 		for (int i = 0; i < allDiagramLinks.length; ++i)
 		{
@@ -263,7 +263,7 @@ public class ResultsChainCreatorHelper
 				containedDiagramLinks.add(allDiagramLinks[i]);
 		}
 		
-		return (DiagramFactorLink[]) containedDiagramLinks.toArray(new DiagramFactorLink[0]);
+		return (DiagramLink[]) containedDiagramLinks.toArray(new DiagramLink[0]);
 	}
 	
 	private HashSet extractDiagramFactorIds()
@@ -278,7 +278,7 @@ public class ResultsChainCreatorHelper
 		return selectedDiagramFactorSet;
 	}
 
-	private DiagramFactorLink[] getLinksInRelatedFactors(FactorCell[] selectedFactorCells) throws Exception
+	private DiagramLink[] getLinksInRelatedFactors(FactorCell[] selectedFactorCells) throws Exception
 	{
 		Vector allDiagramLinks = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
@@ -288,7 +288,7 @@ public class ResultsChainCreatorHelper
 			allDiagramLinks.addAll(diagramLinks);
 		}
 		
-		return (DiagramFactorLink[]) allDiagramLinks.toArray(new DiagramFactorLink[0]);
+		return (DiagramLink[]) allDiagramLinks.toArray(new DiagramLink[0]);
 	}
 
 	private ChainObject createDiagramChainObject(FactorCell[] selectedFactorCells, int i)
@@ -306,7 +306,7 @@ public class ResultsChainCreatorHelper
 		 for (int i  = 0; i < links.length; i++)
 		 {
 			 FactorLinkId id = links[i].getFactorLinkId();
-			 DiagramFactorLink link = model.getDiagramFactorLinkbyWrappedId(id);
+			 DiagramLink link = model.getDiagramFactorLinkbyWrappedId(id);
 			 if (canAddLinkToResultsChain((link)))
 				 vector.add(link);
 		 }
@@ -314,13 +314,13 @@ public class ResultsChainCreatorHelper
 		 return vector;
 	}
 	
-	private DiagramFactorLinkId[] cloneDiagramLinks(DiagramFactorLink[] diagramLinks, HashMap diagramFactors) throws Exception
+	private DiagramFactorLinkId[] cloneDiagramLinks(DiagramLink[] diagramLinks, HashMap diagramFactors) throws Exception
 	{
 		Vector createdDiagramLinkIds = new Vector();
 		
 		for (int i = 0; i < diagramLinks.length; i++)
 		{
-			DiagramFactorLink diagramLink = diagramLinks[i];
+			DiagramLink diagramLink = diagramLinks[i];
 			DiagramFactorLinkId newlyCreatedLinkId = cloneDiagramFactorLink(diagramFactors, diagramLink);
 			if (canAddLinkToResultsChain(diagramLink))
 				createdDiagramLinkIds.add(newlyCreatedLinkId);
@@ -343,7 +343,7 @@ public class ResultsChainCreatorHelper
 		return false;
 	}
 	
-	private boolean canAddLinkToResultsChain(DiagramFactorLink link)
+	private boolean canAddLinkToResultsChain(DiagramLink link)
 	{
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, link.getFromDiagramFactorId()));
 		DiagramFactor toDiatramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, link.getToDiagramFactorId()));
@@ -352,7 +352,7 @@ public class ResultsChainCreatorHelper
 	}
 
 
-	private DiagramFactorLinkId cloneDiagramFactorLink(HashMap diagramFactors, DiagramFactorLink diagramLink) throws CommandFailedException
+	private DiagramFactorLinkId cloneDiagramFactorLink(HashMap diagramFactors, DiagramLink diagramLink) throws CommandFailedException
 	{
 		DiagramFactorId fromDiagramFactorId = diagramLink.getFromDiagramFactorId();
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
@@ -367,16 +367,16 @@ public class ResultsChainCreatorHelper
 		project.executeCommand(createDiagramLink);
 
 		DiagramFactorLinkId newlyCreatedLinkId = (DiagramFactorLinkId) createDiagramLink.getCreatedId();
-		DiagramFactorLink newlyCreated = (DiagramFactorLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, newlyCreatedLinkId));
+		DiagramLink newlyCreated = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, newlyCreatedLinkId));
 		PointList bendPoints = diagramLink.getBendPoints();
-		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramFactorLink.TAG_BEND_POINTS, bendPoints);
+		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramLink.TAG_BEND_POINTS, bendPoints);
 		project.executeCommand(setBendPoints);
 
 		return newlyCreatedLinkId;
 	}
 	
 	
-	private CreateObjectParameter createDiagramLinkExtraInfo(DiagramFactorLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws CommandFailedException
+	private CreateObjectParameter createDiagramLinkExtraInfo(DiagramLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws CommandFailedException
 	{
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
 			return new CreateDiagramFactorLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());

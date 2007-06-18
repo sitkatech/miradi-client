@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParamet
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.project.ObjectManager;
 
 public class DiagramFactorLinkPool extends EAMNormalObjectPool
@@ -23,14 +23,14 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.DIAGRAM_LINK);
 	}
 	
-	public DiagramFactorLink find(BaseId id)
+	public DiagramLink find(BaseId id)
 	{
-		return (DiagramFactorLink)findObject(id);
+		return (DiagramLink)findObject(id);
 	}
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return new DiagramFactorLink(objectManager, actualId, (CreateDiagramFactorLinkParameter)extraInfo);
+		return new DiagramLink(objectManager, actualId, (CreateDiagramFactorLinkParameter)extraInfo);
 	}
 	
 	public DiagramFactorLinkId[] getallDiagramFactorLinkIds()
@@ -50,7 +50,7 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 	{
 		for(int i = 0; i < getIds().length; ++i)
 		{
-			DiagramFactorLink thisLinkage = getLinkage(i);
+			DiagramLink thisLinkage = getLinkage(i);
 			DiagramFactorId fromId = thisLinkage.getFromDiagramFactorId();
 			DiagramFactorId toId = thisLinkage.getToDiagramFactorId();
 			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
@@ -61,7 +61,7 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 		return null;
 	}
 	
-	private DiagramFactorLink getLinkage(int index)
+	private DiagramLink getLinkage(int index)
 	{
 		return find(getIds()[index]);
 	}

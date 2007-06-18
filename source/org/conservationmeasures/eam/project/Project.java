@@ -61,7 +61,7 @@ import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -760,18 +760,18 @@ public class Project
 	}
 	
 	
-	public DiagramFactorLink[] getToAndFromLinks(DiagramFactorId diagramFactorId)
+	public DiagramLink[] getToAndFromLinks(DiagramFactorId diagramFactorId)
 	{
 		DiagramFactorLinkId[] allLinkIds = getDiagramFactorLinkPool().getallDiagramFactorLinkIds();
 		Vector fromAndToLinksForFactor = new Vector();
 		for (int i = 0; i < allLinkIds.length; i++)
 		{
-			DiagramFactorLink link = (DiagramFactorLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, allLinkIds[i]));
+			DiagramLink link = (DiagramLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, allLinkIds[i]));
 			if ((link.getFromDiagramFactorId().equals(diagramFactorId) || (link.getToDiagramFactorId().equals(diagramFactorId))))
 				fromAndToLinksForFactor.add(link);
 		}
 		
-		return (DiagramFactorLink[]) fromAndToLinksForFactor.toArray(new DiagramFactorLink[0]);
+		return (DiagramLink[]) fromAndToLinksForFactor.toArray(new DiagramLink[0]);
 	}
 	
 	public DiagramFactorId[] getAllDiagramFactorIds()

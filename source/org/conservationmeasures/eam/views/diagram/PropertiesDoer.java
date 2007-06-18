@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 
 public class PropertiesDoer extends LocationDoer
 {
@@ -77,7 +77,7 @@ public class PropertiesDoer extends LocationDoer
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	void doFactorLinkProperties(DiagramFactorLink linkage) throws CommandFailedException
+	void doFactorLinkProperties(DiagramLink linkage) throws CommandFailedException
 	{
 		FactorLinkPropertiesPanel panel = new FactorLinkPropertiesPanel(getProject(), linkage);
 		FactorLinkPropertiesDialog dlg = new FactorLinkPropertiesDialog(getMainWindow(), panel, panel.getPanelDescription()); 

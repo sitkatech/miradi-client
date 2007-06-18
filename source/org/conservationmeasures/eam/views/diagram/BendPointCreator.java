@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
@@ -30,7 +30,7 @@ public class BendPointCreator
 	}
 	
 	//TODO write test for this method (nima)
-	public void createBendPoint(Point insertionLocation, DiagramFactorLink selectedLink) throws Exception
+	public void createBendPoint(Point insertionLocation, DiagramLink selectedLink) throws Exception
 	{
 		LinkCell selectedLinkCell = model.getDiagramFactorLink(selectedLink);
 		Point insertPoint = selectedLinkCell.getNewBendPointLocation(model, getCache(), insertionLocation);
@@ -44,11 +44,11 @@ public class BendPointCreator
 	
 	public void insertBendPointForLink(LinkCell linkCell, Point insertPoint) throws Exception
 	{
-		DiagramFactorLink selectedLink = linkCell.getDiagramFactorLink();
+		DiagramLink selectedLink = linkCell.getDiagramFactorLink();
 		Point snapped = project.getSnapped(insertPoint);
 		PointList newListWithBendPoint = linkCell.getNewBendPointList(model, getCache(), snapped);
 		
-		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramFactorLink.TAG_BEND_POINTS, newListWithBendPoint);
+		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramLink.TAG_BEND_POINTS, newListWithBendPoint);
 		project.executeCommand(setBendPointsCommand);
 					
 		diagram.addSelectionCell(linkCell);
@@ -78,7 +78,7 @@ public class BendPointCreator
 	{
 		PointList pointList = new PointList();
 		pointList.add(linkCell.getSourceLocation(getCache()));
-		DiagramFactorLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
 		pointList.addAll(diagramLink.getBendPoints().getAllPoints());
 		pointList.add(linkCell.getTargetLocation(getCache()));
 		

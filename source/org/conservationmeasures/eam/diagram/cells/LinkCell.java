@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
-import org.conservationmeasures.eam.objects.DiagramFactorLink;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
@@ -30,7 +30,7 @@ import org.jgraph.graph.PortView;
 
 public class LinkCell extends EAMGraphCell implements Edge
 {
-	public LinkCell(FactorLink linkToUse, DiagramFactorLink diagramLinkToUse, FactorCell fromToUse, FactorCell toToUse)
+	public LinkCell(FactorLink linkToUse, DiagramLink diagramLinkToUse, FactorCell fromToUse, FactorCell toToUse)
 	{
 		link = linkToUse;
 		diagramLink = diagramLinkToUse;
@@ -73,7 +73,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	}
 	
 	//TODO rename to getDiagramLink()
-	public DiagramFactorLink getDiagramFactorLink()
+	public DiagramLink getDiagramFactorLink()
 	{
 		return diagramLink;
 	}
@@ -294,7 +294,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	BendPointSelectionHelper bendSelectionHelper;
 	FactorLink link;
-	DiagramFactorLink diagramLink;
+	DiagramLink diagramLink;
 	FactorCell from;
 	FactorCell to;
 }
