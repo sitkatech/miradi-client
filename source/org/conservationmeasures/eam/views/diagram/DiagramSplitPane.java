@@ -5,6 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.awt.GridLayout;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
@@ -18,8 +22,9 @@ abstract public class DiagramSplitPane extends JSplitPane
 	public DiagramSplitPane(MainWindow mainWindow, DiagramComponent diagramComponentToAdd)
 	{
 		legendPanel = createLegendPanel(mainWindow);
+		selectionPanel = createSelectionPanel();
 		UiScrollPane scrollPane = createDiagramPanel(mainWindow.getProject(), diagramComponentToAdd);
-		setLeftComponent(legendPanel);
+		setLeftComponent(createLeftPanel());
 		setRightComponent(scrollPane);
 		setDividerLocation(legendPanel.getPreferredSize().width);
 	}
@@ -35,12 +40,24 @@ abstract public class DiagramSplitPane extends JSplitPane
 		return uiScrollPane;
 	}
 	
+	protected JPanel createLeftPanel()
+	{
+		JPanel leftPanel = new JPanel(new GridLayout(2, 1));
+		leftPanel.add(selectionPanel);
+		leftPanel.add(legendPanel);
+		
+		return leftPanel;
+	}
+	
 	public DiagramLegendPanel getLegendPanel()
 	{
 		return legendPanel;
 	}
 
+	abstract public JComponent createSelectionPanel();
+	
 	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindow);
 	
-	private DiagramLegendPanel legendPanel;
+	protected DiagramLegendPanel legendPanel;
+	private JComponent selectionPanel;
 }

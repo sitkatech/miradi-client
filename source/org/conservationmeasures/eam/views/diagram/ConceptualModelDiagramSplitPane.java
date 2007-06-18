@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import javax.swing.JComponent;
+
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -18,5 +20,10 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow)
 	{
 		return new ConceptualModelDiagramLegendPanel(mainWindow);
+	}
+	
+	public JComponent createSelectionPanel()
+	{
+		return new ConceptualModelSelectionPanel();
 	}
 }
