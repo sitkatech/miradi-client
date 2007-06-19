@@ -34,7 +34,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
-import org.conservationmeasures.eam.views.diagram.wizard.LinkDeletor;
+import org.conservationmeasures.eam.views.diagram.LinkDeletor;
 
 public class ThreatMatrixTable extends TableWithHelperMethods
 {

@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
-import org.conservationmeasures.eam.views.diagram.wizard.LinkDeletor;
 
 public class DeleteSelectedItemDoer extends ViewDoer
 {
