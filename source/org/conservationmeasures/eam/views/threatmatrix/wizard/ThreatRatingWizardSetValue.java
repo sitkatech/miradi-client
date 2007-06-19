@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 
 abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 {
@@ -29,9 +30,9 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 
 	public void refresh() throws Exception
 	{
-		ThreatRatingFramework framework = getMainWindow().getProject().getThreatRatingFramework();
+		ThreatRatingFramework framework = getFramework();
 		BaseId criterionId = framework.findCriterionByLabel(critertionName).getId();
-		ThreatRatingBundle bundle = getThreatRatingWizard().getSelectedBundle();
+		ThreatRatingBundle bundle = ((ThreatRatingWizardPanel)getWizard()).getSelectedBundle();
 		criterion = getFramework().getCriterion(criterionId);
 		if(bundle == null)
 		{
@@ -54,7 +55,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 
 	private ThreatRatingFramework getFramework()
 	{
-		return getThreatRatingWizard().getFramework();
+		return getMainWindow().getProject().getThreatRatingFramework();
 	}
 	
 	public void valueChanged(String widget, String newValue)
@@ -80,7 +81,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 	{
 		try
 		{
-			ThreatRatingBundle bundle = getThreatRatingWizard().getSelectedBundle();
+			ThreatRatingBundle bundle = ((ThreatRatingWizardPanel)getWizard()).getSelectedBundle();
 			if (name.equals("value"))
 			{
 				valueBox = (JComboBox)component;
@@ -106,7 +107,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 			try
 			{
 				setValue(valueBox.getSelectedItem().toString());
-				getThreatRatingWizard().getThreatMatrixView().setBundleValue(criterion, value);
+				((ThreatMatrixView)getView()).setBundleValue(criterion, value);
 			}
 			catch(Exception e)
 			{

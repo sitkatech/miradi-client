@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -38,22 +37,6 @@ public class ThreatRatingWizardPanel extends WizardPanel
 		return selectedBundle;
 	}
 	
-	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
-	{
-		view.selectBundle(bundle);
-	}
-	
-	public ThreatMatrixView getThreatMatrixView()
-	{
-		return view;
-	}
-	
-	ThreatRatingFramework getFramework()
-	{
-		return mainWindow.getProject().getThreatRatingFramework();
-	}
-
-	ThreatMatrixView view;
 	ThreatRatingBundle selectedBundle;
 
 }

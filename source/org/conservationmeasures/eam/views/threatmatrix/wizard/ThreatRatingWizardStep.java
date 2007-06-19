@@ -5,18 +5,14 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
+import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WizardStep;
 
 public abstract class ThreatRatingWizardStep extends WizardStep
 {
-	public ThreatRatingWizardStep(ThreatRatingWizardPanel wizardToUse)
+	public ThreatRatingWizardStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
-	}
-	
-	ThreatRatingWizardPanel getThreatRatingWizard()
-	{
-		return (ThreatRatingWizardPanel)getWizard();
 	}
 
 }

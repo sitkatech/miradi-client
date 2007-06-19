@@ -17,27 +17,22 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
+import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 {
-	public ThreatRatingWizardChooseBundle(ThreatRatingWizardPanel wizardToUse)
+	public ThreatRatingWizardChooseBundle(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
-		ThreatMatrixTableModel model = getView().getModel();
+		ThreatMatrixTableModel model = ((ThreatMatrixView)getView()).getModel();
 		FactorId threatId = model.findThreatByName(threatBox.getSelectedItem().toString());
 		FactorId targetId = model.findTargetByName(targetBox.getSelectedItem().toString());
 		ThreatRatingBundle bundle = model.getBundle(threatId, targetId);
 		return bundle;
-	}
-	
-	
-	ThreatMatrixView getView()
-	{
-		return getThreatRatingWizard().getThreatMatrixView();
 	}
 	
 
@@ -51,7 +46,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	{
 		try
 		{
-			ThreatRatingBundle bundle = getThreatRatingWizard().getSelectedBundle();
+			ThreatRatingBundle bundle = ((ThreatRatingWizardPanel)getWizard()).getSelectedBundle();
 			if (name.equals("Threat"))
 			{
 				threatBox = (JComboBox)component;
@@ -81,7 +76,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	
 	private String[] getTargetNames()
 	{
-		String[] targetNames = getView().getModel().getTargetNames();
+		String[] targetNames = ((ThreatMatrixView)getView()).getModel().getTargetNames();
 		String[] choices = new String[targetNames.length+ 1];
 		System.arraycopy(targetNames, 0, choices, 1, targetNames.length);
 		choices[0] = SELECT_A_TARGET;
@@ -90,7 +85,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 
 	private String[] getThreatNames()
 	{
-		String[] threatNames = getView().getModel().getThreatNames();
+		String[] threatNames = ((ThreatMatrixView)getView()).getModel().getThreatNames();
 		String[] choices = new String[threatNames.length + 1];
 		System.arraycopy(threatNames, 0, choices, 1, threatNames.length);
 		choices[0] = SELECT_A_THREAT;
@@ -130,7 +125,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 			{
 				 ThreatRatingBundle bundle = getSelectedBundle();
 				if (bundle!=null)
-					getThreatRatingWizard().bundleWasClicked(bundle);
+					((ThreatMatrixView)getView()).selectBundle(bundle);
 			}
 			catch(Exception e)
 			{
