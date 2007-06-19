@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.FactorMoveHandler;
+import org.conservationmeasures.eam.utils.PointList;
 
 public class NudgeDoer extends LocationDoer
 {
@@ -66,11 +67,10 @@ public class NudgeDoer extends LocationDoer
 		moveSelectedItems(deltaX, deltaY);
 	}
 
-	private boolean isFutureCellLocationInsideDiagramBounds(FactorCell factorCell, int deltaX, int deltaY)
+	private boolean isFutureCellLocationInsideDiagramBounds(Point currentLocation, int deltaX, int deltaY)
 	{
-		Point cellLocation = factorCell.getLocation();
-		int futureX = cellLocation.x + deltaX;
-		int futureY = cellLocation.y + deltaY;
+		int futureX = currentLocation.x + deltaX;
+		int futureY = currentLocation.y + deltaY;
 		
 		if (futureX < 0 || futureY < 0)
 			return false;
@@ -84,12 +84,16 @@ public class NudgeDoer extends LocationDoer
 		FactorCell[] cells = diagramPanel.getOnlySelectedFactorCells();
 		LinkCell[] links = diagramPanel.getOnlySelectedLinkCells();
 		DiagramFactorId[] ids = new DiagramFactorId[cells.length];
+		//TODO nima refactor extract this loop in a method
 		for(int i = 0; i < cells.length; ++i)
 		{
 			ids[i] = cells[i].getDiagramFactorId();
-			if (!isFutureCellLocationInsideDiagramBounds(cells[i], deltaX, deltaY))
-				return;
+			if (!isFutureCellLocationInsideDiagramBounds(cells[i].getLocation(), deltaX, deltaY))
+				return;			
 		}
+		
+		if (containsBendPointsMovableOutSideBounds(links, deltaX, deltaY))
+			return;
 		
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
@@ -98,7 +102,7 @@ public class NudgeDoer extends LocationDoer
 			
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
 			factorMoveHandler.factorsWereMovedOrResized(ids);
-			new LinkBendPointsMoveHandler(diagramPanel.getdiagramComponent(), getProject()).moveLinkBendPoints(links, deltaX, deltaY);
+			moveBendPoints(diagramPanel, links, deltaY, deltaX);
 		}
 		catch (Exception e)
 		{
@@ -111,6 +115,34 @@ public class NudgeDoer extends LocationDoer
 		}
 		
 		
+	}
+
+	private void moveBendPoints(DiagramPanel diagramPanel, LinkCell[] links, int deltaY, int deltaX) throws Exception
+	{
+		LinkBendPointsMoveHandler bendPointsMoveHandler = new LinkBendPointsMoveHandler(diagramPanel.getdiagramComponent(), getProject());
+		bendPointsMoveHandler.moveLinkBendPoints(links, deltaX, deltaY);
+	}
+
+	private boolean containsBendPointsMovableOutSideBounds(LinkCell[] links, int deltaX, int deltaY)
+	{
+		for (int i = 0; i < links.length; ++i)
+		{
+			LinkCell linkCell = links[i];
+			if (containsOutOfBoundsMovableBendPoint(linkCell, deltaX, deltaY))
+				return true;
+		}
+		return false;
+	}
+
+	private boolean containsOutOfBoundsMovableBendPoint(LinkCell linkCell, int deltaX, int deltaY)
+	{
+		PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+		for (int i = 0; i < bendPoints.size(); ++i)
+		{
+			if (!isFutureCellLocationInsideDiagramBounds(bendPoints.get(i), deltaX, deltaY))
+				return true;
+		}
+		return false;
 	}
 
 	int direction;
