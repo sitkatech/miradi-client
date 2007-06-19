@@ -89,12 +89,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	public static void deleteFactorLink(DiagramObject diagramObject, ORef diagramFactorLinkRef) throws Exception
-	{
-		DiagramLink linkageToDelete = (DiagramLink)diagramObject.getProject().findObject(diagramFactorLinkRef);
-		deleteFactorLink(diagramObject, linkageToDelete);
-	}
-	
 	public static void deleteFactorLink(DiagramObject diagramObject, DiagramLink linkageToDelete) throws Exception
 	{	
 		Project project = diagramObject.getProject();
