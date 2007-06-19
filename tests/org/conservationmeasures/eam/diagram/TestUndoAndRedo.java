@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 
 public class TestUndoAndRedo extends EAMTestCase
 {
@@ -42,7 +42,8 @@ public class TestUndoAndRedo extends EAMTestCase
 		
 		DiagramFactor toDiagramFactor = createModelAndDiagramNodeWithCommands(ObjectType.STRATEGY);
 		toId = toDiagramFactor.getWrappedId();
-		DiagramLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor); 
+		LinkCreator linkCreator = new LinkCreator(project);
+		DiagramLink diagramFactorLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor); 
 		linkId = diagramFactorLink.getDiagramLinkageId();
 	}
 	

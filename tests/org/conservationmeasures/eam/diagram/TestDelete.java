@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 
 public class TestDelete extends EAMTestCase
 {
@@ -33,7 +33,8 @@ public class TestDelete extends EAMTestCase
 		
 		DiagramFactorId causeId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
 		DiagramFactor cause = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, causeId));
-		DiagramLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), intervention, cause);
+		LinkCreator linkCreator = new LinkCreator(project);
+		DiagramLink diagramFactorLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), intervention, cause);
 		
 		assertTrue("link not found?", model.areLinked(interventionId, causeId));
 

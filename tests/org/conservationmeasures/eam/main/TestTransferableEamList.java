@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 
 public class TestTransferableEamList extends EAMTestCase 
 {
@@ -72,7 +72,8 @@ public class TestTransferableEamList extends EAMTestCase
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
 		diagramFactor2.setLocation(node2Location);
 		
-		DiagramLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
+		LinkCreator linkCreator = new LinkCreator(project);
+		DiagramLink diagramFactorLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
 		
 		FactorCell factorCell1 = model.getFactorCellById(diagramFactorId1);
 		FactorCell factorCell2 = model.getFactorCellById(diagramFactorId2);

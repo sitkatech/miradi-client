@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.jgraph.graph.GraphLayoutCache;
 
 public class TestDiagramComponent extends EAMTestCase
@@ -70,7 +70,8 @@ public class TestDiagramComponent extends EAMTestCase
 		
 		FactorLink cmLinkage = new FactorLink(new FactorLinkId(100), hiddenId, visibleId);
 		
-		DiagramLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), hiddenNode.getDiagramFactor(), visibleNode.getDiagramFactor());
+		LinkCreator linkCreator = new LinkCreator(project);
+		DiagramLink diagramFactorLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), hiddenNode.getDiagramFactor(), visibleNode.getDiagramFactor());
 		
 		GraphLayoutCache graphLayoutCache = diagramComponent.getGraphLayoutCache();
 		graphLayoutCache.setVisible(cmLinkage, false);

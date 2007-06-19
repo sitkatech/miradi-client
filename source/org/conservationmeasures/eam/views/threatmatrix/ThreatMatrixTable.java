@@ -33,7 +33,7 @@ import org.conservationmeasures.eam.main.EAMenuItem;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.conservationmeasures.eam.views.diagram.LinkDeletor;
 
 public class ThreatMatrixTable extends TableWithHelperMethods
@@ -255,7 +255,8 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			{
 				FactorId fromThreatId = model.getThreatId(row);
 				FactorId toTargetId = model.getTargetId(col);
-				InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diagramObject, fromThreatId, toTargetId);
+				LinkCreator linkCreator = new LinkCreator(getProject());
+				linkCreator.createModelLinkageAndAddToDiagramUsingCommands(diagramObject, fromThreatId, toTargetId);
 			}
 			catch (Exception ex)
 			{

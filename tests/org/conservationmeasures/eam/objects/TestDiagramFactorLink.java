@@ -27,7 +27,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.PointList;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
 
 public class TestDiagramFactorLink extends ObjectTestCase
@@ -80,7 +80,8 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createObject2.getCreatedId();
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
 		
-		DiagramLink diagramFactorLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
+		LinkCreator linkCreator = new LinkCreator(project);
+		DiagramLink diagramFactorLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
 		
 		assertEquals("didn't remember from?", diagramFactor1.getId(), diagramFactorLink.getFromDiagramFactorId());
 		assertEquals("didn't remember to?", diagramFactor2.getId(), diagramFactorLink.getToDiagramFactorId());

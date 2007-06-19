@@ -44,7 +44,7 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
 import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeDoer;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
 public class FactorCommandHelper
@@ -274,12 +274,13 @@ public class FactorCommandHelper
 			DiagramFactorId newFromId = dataHelper.getNewId(oldFromDiagramId);
 			DiagramFactorId newToId = dataHelper.getNewId(linkageData.getToId());
 
-			if (InsertFactorLinkDoer.linkWasRejected(model, newFromId, newToId))
+			LinkCreator linkCreator = new LinkCreator(project);
+			if (linkCreator.linkWasRejected(model, newFromId, newToId))
 				continue;
 				
 			FactorCell newFromNode = getDiagramFactorById(newFromId);
 			FactorCell newToNode = getDiagramFactorById(newToId);
-			DiagramLink newlyAddedLink = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
+			DiagramLink newlyAddedLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
 			EAM.logDebug("Paste Link : " + newlyAddedLink.getDiagramLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}

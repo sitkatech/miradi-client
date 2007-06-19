@@ -51,7 +51,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
-import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.martus.util.DirectoryUtils;
 
 public class TestProject extends EAMTestCase
@@ -736,7 +736,9 @@ public class TestProject extends EAMTestCase
 			DiagramFactor cause = createNodeAndAddToDiagram(diskProject, ObjectType.CAUSE);
 			factorId = cause.getWrappedId();
 			DiagramFactor target = createNodeAndAddToDiagram(diskProject, ObjectType.TARGET);
-			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject.getDiagramModel(), cause, target);
+			
+			LinkCreator linkCreator = new LinkCreator(diskProject);
+			linkCreator.createModelLinkageAndAddToDiagramUsingCommands(diskProject.getDiagramModel(), cause, target);
 			
 			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY);
 			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
