@@ -48,7 +48,7 @@ public class ORefListData extends ObjectData
 	
 	public ORefList getORefList(int objectTypeToFilterOn)
 	{
-		return objectReferenceList.extract(objectTypeToFilterOn);
+		return objectReferenceList.extractByType(objectTypeToFilterOn);
 	}
 	
 	public int hashCode()
