@@ -129,7 +129,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	}
 	
 
-	private static String loadResourceFile(Class resourceClass, String htmlFileName)
+	public static String loadResourceFile(Class resourceClass, String htmlFileName)
 	{
 		try
 		{

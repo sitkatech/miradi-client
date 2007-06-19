@@ -7,6 +7,9 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.util.Hashtable;
 
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
+import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckTotalsStep;
+
 public class DefinitionCommonTerms
 {
     static
@@ -303,6 +306,12 @@ public class DefinitionCommonTerms
 		def = new Definition("Funding Sources", "Funding Sources - The sources of money available to your project.");
 		defs.put("Definition:FundingSources", def);
 		
+		def = new Definition("Threat Calculations", ThreatRatingWizardCheckBundleStep.class, "ThreatRatingExplanationOfCalculation.html");
+		defs.put("Definition:ShowRulesCalculations", def);
+		
+		def = new Definition("Bundle Rules", ThreatRatingWizardCheckTotalsStep.class, "ThreatRatingBundleRules.html");
+		defs.put("Definition:ShowRulesBundles", def);
+		
 		
 		definitions = defs;
     }
@@ -311,7 +320,7 @@ public class DefinitionCommonTerms
     {
     	Definition def = (Definition)definitions.get(key);
     	if (def==null)
-    		return new Definition("Undefined", "Undefined");
+    		return new Definition(key, "Undefined");
     	return def;
     }
     

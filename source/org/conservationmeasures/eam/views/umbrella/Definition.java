@@ -4,6 +4,9 @@
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
 package org.conservationmeasures.eam.views.umbrella;
+
+import org.conservationmeasures.eam.utils.HtmlViewPanel;
+
 public class Definition
 {
 	public Definition(String termToUse, String defintionToUse)
@@ -12,6 +15,23 @@ public class Definition
 		term = termToUse;
 	}
 	
+	public Definition(String termToUse, Class resourceClassToUse, String htmlFileNameToUse)
+	{
+		htmlFileName = htmlFileNameToUse;
+		resourceClass = resourceClassToUse;
+		term = termToUse;
+	}
+	
+	public String getDefintion()
+	{
+		if (resourceClass==null)
+			return definition;
+		return HtmlViewPanel.loadResourceFile(resourceClass, htmlFileName);
+	}
+	
+	
 	public String term;
-	public String definition;
+	private String definition;
+	public Class resourceClass;
+	public String htmlFileName;
 }
