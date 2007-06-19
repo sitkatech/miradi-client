@@ -22,7 +22,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 	public DiagramSplitPane(MainWindow mainWindow, DiagramComponent diagramComponentToAdd)
 	{
 		legendPanel = createLegendPanel(mainWindow);
-		selectionPanel = createSelectionPanel(mainWindow.getProject());
+		selectionPanel = createPageList(mainWindow.getProject());
 		UiScrollPane scrollPane = createDiagramPanel(mainWindow.getProject(), diagramComponentToAdd);
 		setLeftComponent(createLeftPanel());
 		setRightComponent(scrollPane);
@@ -54,7 +54,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 		return legendPanel;
 	}
 
-	abstract public JComponent createSelectionPanel(Project project);
+	abstract public JComponent createPageList(Project project);
 	
 	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindow);
 	

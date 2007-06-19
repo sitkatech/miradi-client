@@ -23,7 +23,7 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 		return new ConceptualModelDiagramLegendPanel(mainWindow);
 	}
 	
-	public JComponent createSelectionPanel(Project project)
+	public JComponent createPageList(Project project)
 	{
 		return new ConceptualModelPageList(project);
 	}

@@ -26,7 +26,7 @@ public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 		return new ResultsChainDiagramLegendPanel(mainWindow);
 	}
 	
-	public JComponent createSelectionPanel(Project project)
+	public JComponent createPageList(Project project)
 	{
 		return new ResultsChainPageList();
 	}
