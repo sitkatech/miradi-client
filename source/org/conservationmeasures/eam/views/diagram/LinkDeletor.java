@@ -48,19 +48,19 @@ public class LinkDeletor
 	{
 		ObjectManager objectManager = project.getObjectManager();
 		ORefList diagramLinkreferrers = link.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, link.getRef());
-		deleteDiagramLinks(diagramLinkreferrers, ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		deleteDiagramLinks(diagramLinkreferrers);
 	}
 
-	private void deleteDiagramLinks(ORefList diagramLinkORefs, int type) throws Exception
+	private void deleteDiagramLinks(ORefList diagramLinkORefs) throws Exception
 	{
 		for (int i = 0; i < diagramLinkORefs.size(); ++i)
 		{
 			DiagramLink diagramLink = (DiagramLink) project.findObject(diagramLinkORefs.get(i));
-			deleteDiagramLink(diagramLink, type);
+			deleteDiagramLink(diagramLink);
 		}
 	}
 	
-	private void deleteDiagramLink(DiagramLink diagramLink, int type) throws Exception
+	private void deleteDiagramLink(DiagramLink diagramLink) throws Exception
 	{
 		BaseObject owner = diagramLink.getOwner();
 		DiagramObject diagramObject = (DiagramObject) owner;
