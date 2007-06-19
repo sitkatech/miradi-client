@@ -147,10 +147,10 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	private JCheckBox createCheckBox(String text)
 	{
 		JCheckBox component = new PanelCheckBox();
-		component.putClientProperty(constantLAYER(), new String(text));
+		component.putClientProperty(LAYER, new String(text));
 		component.addActionListener(this);
 		
-		updateCheckBoxes(mainWindow.getProject().getLayerManager(), component.getClientProperty(constantLAYER()).toString(), component);
+		updateCheckBoxes(mainWindow.getProject().getLayerManager(), component.getClientProperty(LAYER).toString(), component);
 		
 		return component;
 	}
@@ -165,7 +165,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	public void actionPerformed(ActionEvent event)
 	{
 		JCheckBox checkBox = (JCheckBox)event.getSource();
-		String property = (String) checkBox.getClientProperty(constantLAYER());
+		String property = (String) checkBox.getClientProperty(LAYER);
 		LayerManager manager = mainWindow.getProject().getLayerManager();
 		setLegendVisibilityOfFacactorCheckBoxes(manager, property, checkBox);			
 	}
@@ -247,11 +247,6 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		return EAM.text("Stress");
 	}
 	
-	private String constantLAYER()
-	{
-		return EAM.text("LAYER");
-	}
-
 	private String constantTARGETLINK()
 	{
 		return EAM.text("Target link");
@@ -278,7 +273,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		}
 	}
 	
-
+	private static final String LAYER = "LAYER";
 	MainWindow mainWindow;
 	JCheckBox targetLinkCheckBox;
 }
