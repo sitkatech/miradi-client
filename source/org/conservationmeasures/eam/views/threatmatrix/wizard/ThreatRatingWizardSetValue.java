@@ -32,7 +32,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 	{
 		ThreatRatingFramework framework = getFramework();
 		BaseId criterionId = framework.findCriterionByLabel(critertionName).getId();
-		ThreatRatingBundle bundle = ((ThreatRatingWizardPanel)getWizard()).getSelectedBundle();
+		ThreatRatingBundle bundle = ((ThreatMatrixView)getView()).getBundle();
 		criterion = getFramework().getCriterion(criterionId);
 		if(bundle == null)
 		{
@@ -81,7 +81,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 	{
 		try
 		{
-			ThreatRatingBundle bundle = ((ThreatRatingWizardPanel)getWizard()).getSelectedBundle();
+			ThreatRatingBundle bundle = ((ThreatMatrixView)getView()).getBundle();
 			if (name.equals("value"))
 			{
 				valueBox = (JComboBox)component;

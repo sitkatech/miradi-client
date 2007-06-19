@@ -138,11 +138,16 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
-		((ThreatRatingWizardPanel)wizardPanel).selectBundle(bundle);
 		details.selectBundle(bundle);
 		grid.selectBundle(bundle);
+		((ThreatRatingWizardPanel)wizardPanel).refresh();
 		invalidate();
 		validate();
+	}
+	
+	public ThreatRatingBundle getBundle()
+	{
+		return details.getBundle();
 	}
 	
 	public void setBundleValue(RatingCriterion criterion, ValueOption value) throws Exception

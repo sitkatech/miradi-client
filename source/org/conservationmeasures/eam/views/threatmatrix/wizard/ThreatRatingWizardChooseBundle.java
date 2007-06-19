@@ -46,7 +46,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	{
 		try
 		{
-			ThreatRatingBundle bundle = ((ThreatRatingWizardPanel)getWizard()).getSelectedBundle();
+			ThreatRatingBundle bundle = ((ThreatMatrixView)getView()).getBundle();
 			if (name.equals("Threat"))
 			{
 				threatBox = (JComboBox)component;
