@@ -66,6 +66,14 @@ public class LinkCreator
 		return false;
 	}
 
+	public DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws CommandFailedException, ParseException
+	{
+		DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(fromThreatId);
+		DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(toTargetId);
+
+		return createModelLinkageAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
+	}
+	
 	public DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
 	{
 		DiagramObject diagramObject = model.getDiagramObject();
@@ -79,7 +87,7 @@ public class LinkCreator
 		return createModelLinkageAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
 	}
 
-	public DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws CommandFailedException, ParseException
+	private DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws CommandFailedException, ParseException
 	{
 		DiagramLink diagramLink = createModelLinkageAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
 		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(diagramLink, DiagramLink.TAG_BEND_POINTS, bendPoints);
@@ -87,17 +95,8 @@ public class LinkCreator
 		
 		return diagramLink;
 	}
-	
-	public DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws CommandFailedException, ParseException
-	{
-		DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(fromThreatId);
-		DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(toTargetId);
-
-		return createModelLinkageAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
-	}
-	
-	
-	public DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws CommandFailedException, ParseException
+		
+	private DiagramLink createModelLinkageAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws CommandFailedException, ParseException
 	{
 		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
 		FactorId toFactorId = diagramFactorTo.getWrappedId();
@@ -118,7 +117,6 @@ public class LinkCreator
 		return createDiagramLink(diagramObject, modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 	}
 
-	
 	private void makeFactorLinkBidirectional(FactorId fromFactorId, FactorLinkId modelLinkageId) throws CommandFailedException
 	{
 		FactorLink link = (FactorLink)project.findObject(FactorLink.getObjectType(), modelLinkageId);
