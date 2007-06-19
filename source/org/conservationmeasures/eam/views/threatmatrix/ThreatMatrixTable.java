@@ -34,8 +34,8 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
-import org.conservationmeasures.eam.views.diagram.DeleteSelectedItemDoer;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
+import org.conservationmeasures.eam.views.diagram.wizard.LinkDeletor;
 
 public class ThreatMatrixTable extends TableWithHelperMethods
 {
@@ -218,7 +218,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			{
 				DiagramObject diagramObject = project.getConceptualModelDiagram();
 				DiagramLink diagramFactorLink = diagramObject.getDiagramFactorLink(modelLinkageId);
-				DeleteSelectedItemDoer.deleteFactorLink(diagramObject, diagramFactorLink);
+				new LinkDeletor().deleteFactorLink(diagramObject, diagramFactorLink);
 			}
 			finally
 			{
