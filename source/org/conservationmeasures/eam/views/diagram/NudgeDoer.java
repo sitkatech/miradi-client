@@ -91,7 +91,7 @@ public class NudgeDoer extends LocationDoer
 				return;			
 		}
 		
-		if (containsBendPointsMovableOutSideBounds(links, deltaX, deltaY))
+		if (wouldMoveBendPointsOutOfBounds(links, deltaX, deltaY))
 			return;
 		
 		getProject().recordCommand(new CommandBeginTransaction());
@@ -122,23 +122,26 @@ public class NudgeDoer extends LocationDoer
 		bendPointsMoveHandler.moveLinkBendPoints(links, deltaX, deltaY);
 	}
 
-	private boolean containsBendPointsMovableOutSideBounds(LinkCell[] links, int deltaX, int deltaY)
+	private boolean wouldMoveBendPointsOutOfBounds(LinkCell[] links, int deltaX, int deltaY)
 	{
 		for (int i = 0; i < links.length; ++i)
 		{
 			LinkCell linkCell = links[i];
-			if (containsOutOfBoundsMovableBendPoint(linkCell, deltaX, deltaY))
+			if (wouldMoveBendPointsOutOfBounds(linkCell, deltaX, deltaY))
 				return true;
 		}
 		return false;
 	}
 
-	private boolean containsOutOfBoundsMovableBendPoint(LinkCell linkCell, int deltaX, int deltaY)
+	private boolean wouldMoveBendPointsOutOfBounds(LinkCell linkCell, int deltaX, int deltaY)
 	{
 		PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
-		for (int i = 0; i < bendPoints.size(); ++i)
+		int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
+		for (int i = 0; i < selectedIndexes.length; ++i)
 		{
-			if (!isFutureCellLocationInsideDiagramBounds(bendPoints.get(i), deltaX, deltaY))
+			int selectionIndex = selectedIndexes[i];
+			Point selectedBendPoint = bendPoints.get(selectionIndex);
+			if (!isFutureCellLocationInsideDiagramBounds(selectedBendPoint, deltaX, deltaY))
 				return true;
 		}
 		return false;
