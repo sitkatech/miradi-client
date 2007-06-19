@@ -84,7 +84,6 @@ public class NudgeDoer extends LocationDoer
 		FactorCell[] cells = diagramPanel.getOnlySelectedFactorCells();
 		LinkCell[] links = diagramPanel.getOnlySelectedLinkCells();
 		DiagramFactorId[] ids = new DiagramFactorId[cells.length];
-		//TODO nima refactor extract this loop in a method
 		for(int i = 0; i < cells.length; ++i)
 		{
 			ids[i] = cells[i].getDiagramFactorId();
