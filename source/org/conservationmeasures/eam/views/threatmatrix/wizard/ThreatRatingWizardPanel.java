@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -14,16 +13,6 @@ public class ThreatRatingWizardPanel extends WizardPanel
 	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse)
 	{
 		super(viewToUse.getMainWindow(), viewToUse);
-		view = viewToUse;
-		try
-		{
-			refresh();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
 	}
-
 }
 
