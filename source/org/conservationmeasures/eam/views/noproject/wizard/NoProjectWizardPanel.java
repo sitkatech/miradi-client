@@ -93,7 +93,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 			}
 			else
 			{
-				EAM.okDialog("Not implemented yet", new String[] {"Not implemented yet"});
+				EAM.okDialog(EAM.text("Not implemented yet"), new String[] {EAM.text("Not implemented yet")});
 			}
 		}
 		catch (Exception e)
@@ -111,13 +111,13 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 	public JPopupMenu getRightClickMenu(String itemText)
 	{
 		JPopupMenu menu = new JPopupMenu();
-		menu.add(new FakeHyperlinkAction("Open", this, OPEN_PREFIX + itemText));
+		menu.add(new FakeHyperlinkAction(EAM.text("Open"), this, OPEN_PREFIX + itemText));
 		menu.addSeparator();
-		menu.add(new FakeHyperlinkAction("Rename...", this, RENAME_PREFIX + itemText));
-		menu.add(new FakeHyperlinkAction("Copy to...", this, COPY_PREFIX + itemText));
-		menu.add(new FakeHyperlinkAction("Export to Miradi Zip...", this, EXPORT_PREFIX + itemText));
+		menu.add(new FakeHyperlinkAction(EAM.text("Rename..."), this, RENAME_PREFIX + itemText));
+		menu.add(new FakeHyperlinkAction(EAM.text("Copy to..."), this, COPY_PREFIX + itemText));
+		menu.add(new FakeHyperlinkAction(EAM.text("Export to Miradi Zip..."), this, EXPORT_PREFIX + itemText));
 		menu.addSeparator();
-		menu.add(new FakeHyperlinkAction("Delete...", this, DELETE_PREFIX + itemText));
+		menu.add(new FakeHyperlinkAction(EAM.text("Delete..."), this, DELETE_PREFIX + itemText));
 		return menu;
 	}
 	
@@ -209,7 +209,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HtmlFormEventHa
 		}
 		catch (Exception e)
 		{
-			EAM.notifyDialog("Create Failed:" +e.getMessage());
+			EAM.notifyDialog(EAM.text("Create Failed:") +e.getMessage());
 		}
 	}
 
