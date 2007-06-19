@@ -256,7 +256,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 				FactorId fromThreatId = model.getThreatId(row);
 				FactorId toTargetId = model.getTargetId(col);
 				LinkCreator linkCreator = new LinkCreator(getProject());
-				linkCreator.createModelLinkageAndAddToDiagramUsingCommands(diagramObject, fromThreatId, toTargetId);
+				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromThreatId, toTargetId);
 			}
 			catch (Exception ex)
 			{

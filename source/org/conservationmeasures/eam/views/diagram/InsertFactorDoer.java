@@ -213,7 +213,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		{
 			DiagramFactor toDiagramFactor = nodesToLinkTo[i].getDiagramFactor();
 			LinkCreator linkCreator = new LinkCreator(getProject());
-			linkCreator.createModelLinkageAndAddToDiagramUsingCommands(getDiagramView().getDiagramModel(), newlyInserted, toDiagramFactor);
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramView().getDiagramModel(), newlyInserted, toDiagramFactor);
 		}
 	}
 

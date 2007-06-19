@@ -50,7 +50,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			linkCreator.createModelLinkageAndAddToDiagramUsingCommands(model, fromDiagramFactor, toDiagramFactor);
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(model, fromDiagramFactor, toDiagramFactor);
 		}
 		catch (Exception e)
 		{

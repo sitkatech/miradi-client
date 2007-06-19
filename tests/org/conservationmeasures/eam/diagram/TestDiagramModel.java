@@ -387,7 +387,7 @@ public class TestDiagramModel extends EAMTestCase
 	private DiagramLink createLinkage(FactorLinkId id, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		LinkCreator linkCreator = new LinkCreator(project);
-		DiagramLink diagramFactorLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
+		DiagramLink diagramFactorLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
 		
 		return diagramFactorLink;
 	}

@@ -280,7 +280,7 @@ public class FactorCommandHelper
 				
 			FactorCell newFromNode = getDiagramFactorById(newFromId);
 			FactorCell newToNode = getDiagramFactorById(newToId);
-			DiagramLink newlyAddedLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
+			DiagramLink newlyAddedLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
 			EAM.logDebug("Paste Link : " + newlyAddedLink.getDiagramLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}

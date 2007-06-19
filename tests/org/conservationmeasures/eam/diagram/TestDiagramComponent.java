@@ -71,7 +71,7 @@ public class TestDiagramComponent extends EAMTestCase
 		FactorLink cmLinkage = new FactorLink(new FactorLinkId(100), hiddenId, visibleId);
 		
 		LinkCreator linkCreator = new LinkCreator(project);
-		DiagramLink diagramFactorLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), hiddenNode.getDiagramFactor(), visibleNode.getDiagramFactor());
+		DiagramLink diagramFactorLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), hiddenNode.getDiagramFactor(), visibleNode.getDiagramFactor());
 		
 		GraphLayoutCache graphLayoutCache = diagramComponent.getGraphLayoutCache();
 		graphLayoutCache.setVisible(cmLinkage, false);

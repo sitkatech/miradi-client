@@ -73,7 +73,7 @@ public class TestTransferableEamList extends EAMTestCase
 		diagramFactor2.setLocation(node2Location);
 		
 		LinkCreator linkCreator = new LinkCreator(project);
-		DiagramLink diagramFactorLink = linkCreator.createModelLinkageAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
+		DiagramLink diagramFactorLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
 		
 		FactorCell factorCell1 = model.getFactorCellById(diagramFactorId1);
 		FactorCell factorCell2 = model.getFactorCellById(diagramFactorId2);

@@ -738,7 +738,7 @@ public class TestProject extends EAMTestCase
 			DiagramFactor target = createNodeAndAddToDiagram(diskProject, ObjectType.TARGET);
 			
 			LinkCreator linkCreator = new LinkCreator(diskProject);
-			linkCreator.createModelLinkageAndAddToDiagramUsingCommands(diskProject.getDiagramModel(), cause, target);
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(diskProject.getDiagramModel(), cause, target);
 			
 			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY);
 			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
