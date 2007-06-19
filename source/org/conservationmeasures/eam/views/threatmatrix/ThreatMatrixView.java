@@ -140,7 +140,7 @@ public class ThreatMatrixView extends UmbrellaView
 	{
 		details.selectBundle(bundle);
 		grid.selectBundle(bundle);
-		((ThreatRatingWizardPanel)wizardPanel).refresh();
+		wizardPanel.refresh();
 		invalidate();
 		validate();
 	}
