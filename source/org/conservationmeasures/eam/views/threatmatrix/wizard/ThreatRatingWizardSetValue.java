@@ -19,10 +19,11 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
+import org.conservationmeasures.eam.wizard.WizardPanel;
 
 abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 {
-	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse, String critertionNameToUse) throws Exception
+	public ThreatRatingWizardSetValue(WizardPanel wizardToUse, String critertionNameToUse) throws Exception
 	{
 		super(wizardToUse);
 		critertionName = critertionNameToUse;

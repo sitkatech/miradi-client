@@ -5,15 +5,17 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
+import org.conservationmeasures.eam.wizard.WizardPanel;
+
 
 public class ThreatRatingWizardIrreversibilityStep extends ThreatRatingWizardSetValue
 {
-	public ThreatRatingWizardIrreversibilityStep(ThreatRatingWizardPanel wizardToUse) throws Exception
+	public ThreatRatingWizardIrreversibilityStep(WizardPanel panel) throws Exception
 	{
-		super(wizardToUse, "Irreversibility");
+		super(panel, "Irreversibility");
 	}
 	
-	public ThreatRatingWizardIrreversibilityStep(ThreatRatingWizardPanel wizardToUse, String critertion) throws Exception
+	public ThreatRatingWizardIrreversibilityStep(WizardPanel wizardToUse, String critertion) throws Exception
 	{
 		super(wizardToUse, critertion);
 	}

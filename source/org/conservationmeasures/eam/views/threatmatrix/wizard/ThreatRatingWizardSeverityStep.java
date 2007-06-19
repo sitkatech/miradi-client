@@ -5,15 +5,17 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
+import org.conservationmeasures.eam.wizard.WizardPanel;
+
 
 public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 {
-	public ThreatRatingWizardSeverityStep(ThreatRatingWizardPanel wizardToUse) throws Exception
+	public ThreatRatingWizardSeverityStep(WizardPanel wizardToUse) throws Exception
 	{
 		super(wizardToUse, "Severity");
 	}
 	
-	public ThreatRatingWizardSeverityStep(ThreatRatingWizardPanel wizardToUse,  String critertion) throws Exception
+	public ThreatRatingWizardSeverityStep(WizardPanel wizardToUse,  String critertion) throws Exception
 	{
 		super(wizardToUse, critertion);
 	}

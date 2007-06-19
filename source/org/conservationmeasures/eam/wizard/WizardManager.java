@@ -64,22 +64,21 @@ import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProj
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityMethodChoiceStep;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability3Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability4Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability5Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability6Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability7Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability8Step;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewStep;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityMethodChoiceStep;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewAfterDetailedModeStep;
+import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckTotalsStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardChooseBundle;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardIrreversibilityStep;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardSeverityStep;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -105,7 +104,7 @@ public class WizardManager
 		String currentView = view.cardName();
 		
 		if (currentView.equals(ThreatMatrixView.getViewName()))
-			createThreatMatrixViewStepEntries((ThreatRatingWizardPanel)panel);
+			createThreatMatrixViewStepEntries(panel);
 			
 		if (currentView.equals(DiagramView.getViewName()))
 			createDigramViewStepEntries(panel);
@@ -301,7 +300,7 @@ public class WizardManager
 	}
 
 
-	public void createThreatMatrixViewStepEntries(ThreatRatingWizardPanel panel) throws Exception
+	public void createThreatMatrixViewStepEntries(WizardPanel panel) throws Exception
 	{
 		//TODO: View:Diagram...should be Step:StepName or support both
 		

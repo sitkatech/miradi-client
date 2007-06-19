@@ -34,10 +34,10 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
+import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.UiScrollPane;
 
 
@@ -48,7 +48,7 @@ public class ThreatMatrixView extends UmbrellaView
 		super(mainWindowToUse);
 		
 		addThreatMatrixiewDoersToMap();
-		wizardPanel = new ThreatRatingWizardPanel(this);
+		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public JToolBar createToolBar()
@@ -114,9 +114,9 @@ public class ThreatMatrixView extends UmbrellaView
 	}
 
 	
-	private ThreatRatingWizardPanel createWizardPanel() throws Exception
+	private WizardPanel createWizardPanel() throws Exception
 	{
-		return (ThreatRatingWizardPanel)wizardPanel;
+		return wizardPanel;
 	}
 	
 	public void becomeInactive() throws Exception
