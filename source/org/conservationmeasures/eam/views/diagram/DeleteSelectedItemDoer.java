@@ -58,7 +58,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactorLink())
 				{
-					new LinkDeletor().deleteFactorLink(diagramObject,  cell.getDiagramFactorLink());
+					new LinkDeletor(project).deleteFactorLink(cell.getDiagramFactorLink().getWrappedId());
 				}
 			}
 			

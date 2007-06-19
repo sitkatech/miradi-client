@@ -30,7 +30,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
-import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
@@ -216,9 +215,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				DiagramObject diagramObject = project.getConceptualModelDiagram();
-				DiagramLink diagramFactorLink = diagramObject.getDiagramFactorLink(modelLinkageId);
-				new LinkDeletor().deleteFactorLink(diagramObject, diagramFactorLink);
+				new LinkDeletor(project).deleteFactorLink(modelLinkageId);
 			}
 			finally
 			{
