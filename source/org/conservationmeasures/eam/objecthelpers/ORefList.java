@@ -110,6 +110,8 @@ public class ORefList
 	
 	public String toString()
 	{
+		if(size() == 0)
+			return "";
 		return toJson().toString();
 	}
 	

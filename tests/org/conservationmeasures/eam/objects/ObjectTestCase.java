@@ -139,9 +139,6 @@ public class ObjectTestCase extends EAMTestCase
 		if(field instanceof ORefData)
 			return ORef.INVALID.toString();
 		
-		else if(field instanceof ORefListData)
-			return new ORefListData().toString();
-		
 		return "";
 	}
 	
