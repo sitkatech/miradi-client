@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramContentsId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -79,6 +80,12 @@ abstract public class DiagramObject extends BaseObject
 	public IdList getAllDiagramFactorLinkIds()
 	{
 		return allDiagramFactorLinkIds.getIdList();
+	}
+	
+	//TODO nima write test for this method
+	public boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
+	{
+		return allDiagramFactorIds.getIdList().contains(diagramFactorId);
 	}
 	
 	public static boolean canOwnThisType(int type)

@@ -21,10 +21,12 @@ import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
@@ -95,7 +97,7 @@ public class LinkCreator
 		
 		return diagramLink;
 	}
-		
+	
 	private DiagramLink createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws CommandFailedException, ParseException
 	{
 		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
@@ -136,7 +138,51 @@ public class LinkCreator
 		factorlLinkId = (FactorLinkId)createFactorLink.getCreatedId();
 		return factorlLinkId;
 	}
+	
+	//FIXME nima use this method instead of the currecnt method
+	public void createDiagramLinks(FactorLinkId factorLinkId) throws Exception
+	{
+		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
+		Factor toFactor = getFactor(factorLink.getToFactorId());
+		Factor fromFactor = getFactor(factorLink.getFromFactorId());
+		
+		ORefList toDiagramFactors = toFactor.findObjectsThatReferToUs(ObjectType.DIAGRAM_FACTOR);  
+		ORefList fromDiagramFactors = fromFactor.findObjectsThatReferToUs(ObjectType.DIAGRAM_FACTOR);
+		
+		ORefList allDiagramObjects = project.getAllDiagramObjects();
+		for (int i = 0; i < allDiagramObjects.size(); ++i)
+		{
+			ORef diagramObjectORef = allDiagramObjects.get(i);
+			DiagramObject diagramObject = (DiagramObject) project.findObject(diagramObjectORef);
+			ORef toORef = createLink(diagramObject, toDiagramFactors); 
+			if (toORef == null)
+				continue;
+			
+			ORef fromORef = createLink(diagramObject, fromDiagramFactors);
+			if (fromORef == null)
+				continue;
+			
+			createDiagramLink(diagramObject, factorLinkId, (DiagramFactorId)fromORef.getObjectId(), (DiagramFactorId)toORef.getObjectId());
+		}
+	}
 
+	private ORef createLink(DiagramObject diagramObject, ORefList diagramFactors)
+	{
+		for (int i = 0 ; i < diagramFactors.size(); ++i)
+		{
+			ORef diagramFactorORef = diagramFactors.get(i);
+			if (diagramObject.containsDiagramFactor((DiagramFactorId) diagramFactorORef.getObjectId()))
+				return diagramFactorORef;
+		}
+		
+		return null;
+	}
+
+	private Factor getFactor(FactorId toFactorId)
+	{
+		return (Factor) project.findObject(new ORef(ObjectType.FACTOR, toFactorId));
+	}
+	
 	private DiagramLink createDiagramLink(DiagramObject diagramObject, FactorLinkId factorlLinkId, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws CommandFailedException, ParseException
 	{
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(fromDiagramFactorId, toDiagramFactorId, factorlLinkId);
