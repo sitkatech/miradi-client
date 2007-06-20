@@ -53,12 +53,12 @@ public class FactorCommandHelper
 	public FactorCommandHelper(Project projectToUse, DiagramModel modelToUse)
 	{
 		project = projectToUse;
-		model = modelToUse;
+		currentModel = modelToUse;
 	}
 
 	private void addCreatedFactorToConceptualModel(FactorId factorId, Point insertionLocation, Dimension size, String label) throws Exception
 	{
-    	if (!model.getDiagramObject().isResultsChain())
+    	if (!currentModel.getDiagramObject().isResultsChain())
     		return;
     	
     	final int ONLY_CONCEPTUAL_MODEL_INDEX = 0;
@@ -87,7 +87,7 @@ public class FactorCommandHelper
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
 	{
 		FactorId factorId = createFactor(objectType);
-		return createDiagramFactor(model.getDiagramObject(), factorId);
+		return createDiagramFactor(currentModel.getDiagramObject(), factorId);
 	}
 	
 	public CommandCreateObject createDiagramFactor(DiagramObject diagramObject, FactorId factorId) throws Exception
@@ -222,7 +222,7 @@ public class FactorCommandHelper
 
 	private boolean isResultsChain()
 	{
-		DiagramObject diagramObject = model.getDiagramObject();
+		DiagramObject diagramObject = currentModel.getDiagramObject();
 		if (diagramObject.getType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
 			return true;
 		
@@ -276,13 +276,16 @@ public class FactorCommandHelper
 			DiagramFactorId newToId = dataHelper.getNewId(linkageData.getToId());
 
 			LinkCreator linkCreator = new LinkCreator(project);
-			if (linkCreator.linkWasRejected(model, newFromId, newToId))
+			if (linkCreator.linkWasRejected(currentModel, newFromId, newToId))
 				continue;
 				
 			FactorCell newFromNode = getDiagramFactorById(newFromId);
 			FactorCell newToNode = getDiagramFactorById(newToId);
-			FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
-			DiagramLink diagramLink = model.getDiagramFactorLinkbyWrappedId(factorLinkId);
+			FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(currentModel, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor());
+			DiagramLink diagramLink = currentModel.getDiagramFactorLinkbyWrappedId(factorLinkId);
+			CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(diagramLink, DiagramLink.TAG_BEND_POINTS, movedPoints);
+			project.executeCommand(setBendPoints);
+			
 			EAM.logDebug("Paste Link : " + diagramLink.getDiagramLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}
@@ -330,7 +333,7 @@ public class FactorCommandHelper
 	
 	private DiagramModel getDiagramModel()
 	{
-		return model;
+		return currentModel;
 	}
 	
 	// TODO: This method should have unit tests
@@ -438,5 +441,5 @@ public class FactorCommandHelper
 	}
 
 	Project project;
-	DiagramModel model;
+	DiagramModel currentModel;
 }

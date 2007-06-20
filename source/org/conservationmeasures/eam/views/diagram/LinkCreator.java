@@ -24,12 +24,10 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.PointList;
 
 public class LinkCreator
 {
@@ -76,39 +74,12 @@ public class LinkCreator
 		createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
 	}
 	
-	public FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
-	{
-		DiagramObject diagramObject = model.getDiagramObject();
-		
-		return createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo, bendPoints);
-	}
-	
 	public FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
 		DiagramObject diagramObject = model.getDiagramObject();
 		return createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
 	}
-
-	private FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
-	{
-		FactorLinkId factorLinkId = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
-		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
-		ORefList diagramLinkORefs = factorLink.findObjectThatReferToUs();
-		addBendPointsToFoundDiagramLinks(diagramLinkORefs, bendPoints);
-		
-		return factorLinkId;
-	}
 	
-	private void addBendPointsToFoundDiagramLinks(ORefList diagramLinkORefs, PointList bendPoints) throws CommandFailedException
-	{
-		for (int i = 0; i < diagramLinkORefs.size(); ++i)
-		{
-			DiagramLink diagramLink = (DiagramLink) project.findObject(diagramLinkORefs.get(i));
-			CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(diagramLink, DiagramLink.TAG_BEND_POINTS, bendPoints);
-			project.executeCommand(setBendPoints);
-		}
-	}
-
 	private FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
 		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
