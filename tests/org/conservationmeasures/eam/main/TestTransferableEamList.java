@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
@@ -73,11 +74,12 @@ public class TestTransferableEamList extends EAMTestCase
 		diagramFactor2.setLocation(node2Location);
 		
 		LinkCreator linkCreator = new LinkCreator(project);
-		DiagramLink diagramFactorLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
+		FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
+		DiagramLink diagramLink = project.getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
 		
 		FactorCell factorCell1 = model.getFactorCellById(diagramFactorId1);
 		FactorCell factorCell2 = model.getFactorCellById(diagramFactorId2);
-		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramFactorLink)};
+		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramLink)};
 		TransferableEamList eamList = new TransferableEamList(project.getFilename(), dataCells);
 		TransferableEamList eamTransferData = (TransferableEamList)eamList.getTransferData(TransferableEamList.eamListDataFlavor);
 		assertNotNull(eamTransferData);
@@ -97,7 +99,7 @@ public class TestTransferableEamList extends EAMTestCase
 
 		assertEquals(1, linkagesData.length);
 		
-		assertEquals(diagramFactorLink.getId(), linkagesData[0].getId());
+		assertEquals(diagramLink.getId(), linkagesData[0].getId());
 		assertEquals(diagramFactorId1, linkagesData[0].getFromId());
 		assertEquals(diagramFactorId2, linkagesData[0].getToId());
 		

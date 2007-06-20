@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
@@ -280,8 +281,9 @@ public class FactorCommandHelper
 				
 			FactorCell newFromNode = getDiagramFactorById(newFromId);
 			FactorCell newToNode = getDiagramFactorById(newToId);
-			DiagramLink newlyAddedLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
-			EAM.logDebug("Paste Link : " + newlyAddedLink.getDiagramLinkageId() + " from:" + newFromId + " to:" + newToId);
+			FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(model, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor(), movedPoints);
+			DiagramLink diagramLink = model.getDiagramFactorLinkbyWrappedId(factorLinkId);
+			EAM.logDebug("Paste Link : " + diagramLink.getDiagramLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}
 	
