@@ -68,7 +68,7 @@ public class LinkCreator
 		return false;
 	}
 
-	public void createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws CommandFailedException, ParseException
+	public void createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws Exception
 	{
 		DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(fromThreatId);
 		DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(toTargetId);
@@ -89,7 +89,7 @@ public class LinkCreator
 		return createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
 	}
 
-	private FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws CommandFailedException, ParseException
+	private FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
 	{
 		FactorLinkId factorLinkId = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
@@ -109,7 +109,7 @@ public class LinkCreator
 		}
 	}
 
-	private FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws CommandFailedException, ParseException
+	private FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
 		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
 		FactorId toFactorId = diagramFactorTo.getWrappedId();
@@ -125,7 +125,7 @@ public class LinkCreator
 		DiagramFactorLinkId diagramFactorLinkId = project.getDiagramFactorLinkPool().getLinkedId(fromDiagramFactorId, toDiagramFactorId);
 	
 		if (diagramFactorLinkId == null)
-			createDiagramLink(diagramObject, factorLinkId, fromDiagramFactorId, toDiagramFactorId);
+			createDiagramLinks(factorLinkId);			
 		
 		return factorLinkId;
 	}
