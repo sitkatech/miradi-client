@@ -125,11 +125,14 @@ public class LinkCreator
 			return;
 		
 		FactorLink link = (FactorLink)project.findObject(FactorLink.getObjectType(), factorlLinkId);
-		if(!link.isBidirectional() && !link.getFromFactorId().equals(fromFactorId))
-		{
-			CommandSetObjectData command = new CommandSetObjectData(link.getRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
-			project.executeCommand(command);
-		}
+		if (link.isBidirectional())
+			return;
+		
+		if(link.getFromFactorId().equals(fromFactorId))
+			return;
+		
+		CommandSetObjectData command = new CommandSetObjectData(link.getRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		project.executeCommand(command);
 	}
 
 	private FactorLinkId createFactorLink(FactorId fromFactorId, FactorId toFactorId) throws Exception
@@ -169,6 +172,7 @@ public class LinkCreator
 		}
 	}
 
+	//TODO nima check to see if this method occurs else where
 	private ORef findDiagramFactor(DiagramObject diagramObject, ORefList diagramFactors)
 	{
 		for (int i = 0 ; i < diagramFactors.size(); ++i)
