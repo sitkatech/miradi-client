@@ -33,7 +33,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 	{
 		ThreatRatingFramework framework = getFramework();
 		BaseId criterionId = framework.findCriterionByLabel(critertionName).getId();
-		ThreatRatingBundle bundle = ((ThreatMatrixView)getView()).getBundle();
+		ThreatRatingBundle bundle = getThreatView().getBundle();
 		criterion = getFramework().getCriterion(criterionId);
 		if(bundle == null)
 		{
@@ -43,6 +43,11 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 		value = getFramework().getValueOption(valueId);
 		
 		super.refresh();
+	}
+
+	private ThreatMatrixView getThreatView()
+	{
+		return ((ThreatMatrixView)getView());
 	}
 
 	protected String[] getValueOptionLabels()
@@ -82,7 +87,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 	{
 		try
 		{
-			ThreatRatingBundle bundle = ((ThreatMatrixView)getView()).getBundle();
+			ThreatRatingBundle bundle = getThreatView().getBundle();
 			if (name.equals("value"))
 			{
 				valueBox = (JComboBox)component;
@@ -108,7 +113,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 			try
 			{
 				setValue(valueBox.getSelectedItem().toString());
-				((ThreatMatrixView)getView()).setBundleValue(criterion, value);
+				getThreatView().setBundleValue(criterion, value);
 			}
 			catch(Exception e)
 			{
