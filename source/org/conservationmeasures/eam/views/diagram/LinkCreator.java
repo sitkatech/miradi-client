@@ -152,7 +152,7 @@ public class LinkCreator
 		ORefList toDiagramFactors = toFactor.findObjectsThatReferToUs(ObjectType.DIAGRAM_FACTOR);  
 		ORefList fromDiagramFactors = fromFactor.findObjectsThatReferToUs(ObjectType.DIAGRAM_FACTOR);
 		
-		ORefList allDiagramObjects = project.getAllDiagramObjects();
+		ORefList allDiagramObjects = project.getAllDiagramObjectRefs();
 		for (int i = 0; i < allDiagramObjects.size(); ++i)
 		{
 			ORef diagramObjectORef = allDiagramObjects.get(i);

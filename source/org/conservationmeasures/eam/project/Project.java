@@ -147,7 +147,7 @@ public class Project
 		return objectManager.getPool(objectType);
 	}
 	
-	public ORefList getAllDiagramObjects()
+	public ORefList getAllDiagramObjectRefs()
 	{
 		ORefList conceptualModels = getConceptualModelDiagramPool().getORefList();
 		ORefList resultsChains = getResultsChainDiagramPool().getORefList();
