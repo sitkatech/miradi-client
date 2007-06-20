@@ -40,12 +40,6 @@ public class FactorLink extends BaseObject
 		super(objectManager, new FactorLinkId(idAsInt), jsonObject);
 	}
 	
-	public FactorLink(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(new FactorLinkId(idAsInt), jsonObject);
-	}
-	
-	
 	public void setFromId(FactorId fromNodeId)
 	{
 		fromId.setId(fromNodeId);
