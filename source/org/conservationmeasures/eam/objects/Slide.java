@@ -62,8 +62,8 @@ public class Slide extends BaseObject
 	public ORefList getReferencedObjects(int objectType)
 	{
 		ORefList list = super.getReferencedObjects(objectType);
-		if (diagramObject.getRawRef().getObjectType()==objectType)
-			list.add(diagramObject.getRawRef());
+		if (diagramObjectRef.getRawRef().getObjectType()==objectType)
+			list.add(diagramObjectRef.getRawRef());
 		return list;
 	}
 	
@@ -71,16 +71,16 @@ public class Slide extends BaseObject
 	void clear()
 	{
 		super.clear();
-		diagramObject = new ORefData();
-		addField(TAG_DIAGRAM_OBJECT_ID, diagramObject);
+		diagramObjectRef = new ORefData();
+		addField(TAG_DIAGRAM_OBJECT_REF, diagramObjectRef);
 	}
 	
 	
-	private static String TAG_DIAGRAM_OBJECT_ID = "diagramObjectId";
+	private static String TAG_DIAGRAM_OBJECT_REF = "diagramObjectRef";
 
 
 	public static final String OBJECT_NAME = "Slide";
 
 	
-	private ORefData diagramObject;
+	private ORefData diagramObjectRef;
 }
