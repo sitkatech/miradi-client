@@ -86,6 +86,9 @@ abstract public class BaseObject
 		int idAsInt = json.getInt(TAG_ID);
 		switch(type)
 		{
+			case ObjectType.SLIDESHOW:
+				return new SlideShow(objectManager, idAsInt, json);
+				
 			case ObjectType.SLIDE:
 				return new Slide(objectManager, idAsInt, json);
 				
@@ -574,6 +577,9 @@ abstract public class BaseObject
 		if (Slide.canOwnThisType(type))
 			objectTypes[i++] = Slide.getObjectType();
 		
+		if (SlideShow.canOwnThisType(type))
+			objectTypes[i++] = SlideShow.getObjectType();
+		
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);
 		return outArray;
@@ -650,6 +656,9 @@ abstract public class BaseObject
 		
 		if (Slide.canReferToThisType(type))
 			objectTypes[i++] = Slide.getObjectType();
+		
+		if (SlideShow.canReferToThisType(type))
+			objectTypes[i++] = SlideShow.getObjectType();
 		
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);

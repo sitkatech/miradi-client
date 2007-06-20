@@ -34,5 +34,6 @@ public class ObjectType
 	public static final int THREAT_REDUCTION_RESULT = 25;
 	public static final int TEXT_BOX = 26;
 	public static final int SLIDE = 27;
+	public static final int SLIDESHOW = 28;
 }
 

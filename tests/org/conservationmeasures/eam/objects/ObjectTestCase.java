@@ -18,12 +18,14 @@ import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.DateRangeEffortListData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ORefData;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoQuestionData;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoStringData;
@@ -136,7 +138,9 @@ public class ObjectTestCase extends EAMTestCase
 		
 		if(field instanceof ORefData)
 			return ORef.INVALID.toString();
-
+		
+		else if(field instanceof ORefListData)
+			return new ORefListData().toString();
 		
 		return "";
 	}
@@ -199,6 +203,14 @@ public class ObjectTestCase extends EAMTestCase
 		else if(field instanceof ORefData)
 		{
 			return new ORef(ObjectType.TASK, new TaskId(283)).toString();
+		}
+		else if(field instanceof ORefListData)
+		{
+			ORef test = new ORef(ObjectType.TASK, new TaskId(283));
+			ORefList list = new ORefList(new ORef[] {test});
+			ORefListData listData = new ORefListData();
+			listData.set(list.toString());
+			return listData.toString();
 		}
 		else
 		{

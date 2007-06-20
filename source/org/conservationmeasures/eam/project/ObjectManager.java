@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.SlidePool;
+import org.conservationmeasures.eam.objectpools.SlideShowPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
@@ -92,6 +93,7 @@ public class ObjectManager
 		addNormalPool(new ThreatReductionResultPool(ida));
 		addNormalPool(new TextBoxPool(ida));
 		addNormalPool(new SlidePool(ida));
+		addNormalPool(new SlideShowPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -184,6 +186,11 @@ public class ObjectManager
 	public SlidePool getSlidePool()
 	{
 		return (SlidePool)getPool(ObjectType.SLIDE);
+	}
+	
+	public SlideShowPool getSlideShowPool()
+	{
+		return (SlideShowPool)getPool(ObjectType.SLIDESHOW);
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
@@ -322,6 +329,7 @@ public class ObjectManager
 		loadPool(ObjectType.THREAT_REDUCTION_RESULT);
 		loadPool(ObjectType.TEXT_BOX);
 		loadPool(ObjectType.SLIDE);
+		loadPool(ObjectType.SLIDESHOW);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

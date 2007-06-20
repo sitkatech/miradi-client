@@ -66,6 +66,8 @@ import org.conservationmeasures.eam.objects.TestProjectMetadata;
 import org.conservationmeasures.eam.objects.TestProjectResource;
 import org.conservationmeasures.eam.objects.TestRatingCriterion;
 import org.conservationmeasures.eam.objects.TestResultsChainDiagram;
+import org.conservationmeasures.eam.objects.TestSlide;
+import org.conservationmeasures.eam.objects.TestSlideShow;
 import org.conservationmeasures.eam.objects.TestStrategy;
 import org.conservationmeasures.eam.objects.TestTask;
 import org.conservationmeasures.eam.objects.TestTextBox;
@@ -230,6 +232,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestIntermediateResult.class));
 		suite.addTest(new TestSuite(TestTextBox.class));
 		suite.addTest(new TestSuite(TestChainManager.class));
+		suite.addTest(new TestSuite(TestSlide.class));
+		suite.addTest(new TestSuite(TestSlideShow.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
