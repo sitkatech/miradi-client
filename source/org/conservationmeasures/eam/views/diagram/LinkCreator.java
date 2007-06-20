@@ -89,7 +89,7 @@ public class LinkCreator
 		if(factorLinkId != null)
 			ensureLinkGoesOurWay(factorLinkId, fromFactorId, factorLinkId);
 		else
-			createFactorLink(fromFactorId, toFactorId);
+			factorLinkId = createFactorLink(fromFactorId, toFactorId);
 		
 		createDiagramLinks(factorLinkId);
 		return factorLinkId; 
