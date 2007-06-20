@@ -157,11 +157,11 @@ public class LinkCreator
 		{
 			ORef diagramObjectORef = allDiagramObjects.get(i);
 			DiagramObject diagramObject = (DiagramObject) project.findObject(diagramObjectORef);
-			ORef toORef = createLink(diagramObject, toDiagramFactors); 
+			ORef toORef = findDiagramFactor(diagramObject, toDiagramFactors); 
 			if (toORef == null)
 				continue;
 			
-			ORef fromORef = createLink(diagramObject, fromDiagramFactors);
+			ORef fromORef = findDiagramFactor(diagramObject, fromDiagramFactors);
 			if (fromORef == null)
 				continue;
 			
@@ -169,7 +169,7 @@ public class LinkCreator
 		}
 	}
 
-	private ORef createLink(DiagramObject diagramObject, ORefList diagramFactors)
+	private ORef findDiagramFactor(DiagramObject diagramObject, ORefList diagramFactors)
 	{
 		for (int i = 0 ; i < diagramFactors.size(); ++i)
 		{
