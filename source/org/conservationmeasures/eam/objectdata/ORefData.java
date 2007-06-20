@@ -5,16 +5,14 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ORefData extends ObjectData
 {
 	public ORefData()
 	{
-		ref = new ORef(ObjectType.FAKE, BaseId.INVALID);
+		ref = ORef.INVALID;
 	}
 	
 	public ORefData(String data) throws Exception
@@ -58,7 +56,10 @@ public class ORefData extends ObjectData
 	 
 	public void set(String newValue) throws Exception
 	{
-		ref = new ORef(new EnhancedJsonObject(newValue));
+		if(newValue.length() == 0)
+			ref = ORef.INVALID;
+		else
+			ref = new ORef(new EnhancedJsonObject(newValue));
 	}
 
 	ORef ref;

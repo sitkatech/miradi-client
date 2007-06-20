@@ -10,6 +10,7 @@ import java.awt.Point;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
@@ -22,6 +23,8 @@ import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoQuestionData;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoStringData;
 import org.conservationmeasures.eam.project.Project;
@@ -131,6 +134,10 @@ public class ObjectTestCase extends EAMTestCase
 		if(field instanceof DateRangeEffortListData)
 			return new DateRangeEffortList().toString();
 		
+		if(field instanceof ORefData)
+			return ORef.INVALID.toString();
+
+		
 		return "";
 	}
 	
@@ -191,7 +198,7 @@ public class ObjectTestCase extends EAMTestCase
 		}
 		else if(field instanceof ORefData)
 		{
-			return "";
+			return new ORef(ObjectType.TASK, new TaskId(283)).toString();
 		}
 		else
 		{

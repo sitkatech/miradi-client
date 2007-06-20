@@ -74,6 +74,8 @@ public class ORef
 		return toJson().toString();
 	}
 	
+	public static ORef INVALID = new ORef(ObjectType.FAKE, BaseId.INVALID);
+	
 	private static final String TAG_OBJECT_TYPE = "ObjectType";
 	private static final String TAG_OBJECT_ID = "ObjectId";
 	
