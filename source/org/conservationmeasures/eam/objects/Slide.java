@@ -76,7 +76,7 @@ public class Slide extends BaseObject
 	}
 	
 	
-	private static String TAG_DIAGRAM_OBJECT_REF = "diagramObjectRef";
+	private static String TAG_DIAGRAM_OBJECT_REF = "DiagramObjectRef";
 
 
 	public static final String OBJECT_NAME = "Slide";
