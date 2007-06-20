@@ -68,12 +68,12 @@ public class LinkCreator
 		return false;
 	}
 
-	public DiagramLink createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws CommandFailedException, ParseException
+	public void createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws CommandFailedException, ParseException
 	{
 		DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(fromThreatId);
 		DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(toTargetId);
 
-		return createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
+		createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
 	}
 	
 	public DiagramLink createFactorLinkAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo, PointList bendPoints) throws Exception
