@@ -140,7 +140,9 @@ public class FactorLink extends BaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateFactorLinkParameter(getFromFactorId(), getToFactorId());
+		Factor fromFactor = objectManager.findNode(getFromFactorId());
+		Factor toFactor = objectManager.findNode(getToFactorId());
+		return new CreateFactorLinkParameter(fromFactor.getRef(), toFactor.getRef());
 	}
 
 

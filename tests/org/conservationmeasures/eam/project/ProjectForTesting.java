@@ -259,7 +259,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	
 	public DiagramFactorLinkId createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(from.getWrappedId(), to.getWrappedId());
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
 		BaseId baseId = createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		FactorLinkId factorLinkId = new FactorLinkId(baseId.asInt());
 		
@@ -281,12 +281,12 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	
 	public FactorId createThreat() throws Exception
 	{
-		FactorId threatId = createFactor(ObjectType.CAUSE);
-		FactorId targetId = createFactor(ObjectType.TARGET);
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
+		DiagramFactor threat = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor target = createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		
-		return threatId;
+		return threat.getWrappedId();
 	}
 
 	DiagramModel diagramModel;

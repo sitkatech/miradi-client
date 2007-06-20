@@ -113,11 +113,11 @@ public class TestProject extends EAMTestCase
 	
 	public void testCreateAndDeleteModelLinkage() throws Exception
 	{
-		FactorId threatId = (FactorId)project.createObject(ObjectType.CAUSE);
-		FactorId targetId = (FactorId)project.createObject(ObjectType.TARGET);
-		Cause factor = (Cause)project.findNode(threatId);
+		DiagramFactor threat = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
+		Cause factor = (Cause)project.findNode(threat.getWrappedId());
 		assertFalse("already direct threat?", factor.isDirectThreat());
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		BaseId linkageId = createdId;
 		assertTrue("didn't become direct threat?", factor.isDirectThreat());
@@ -639,7 +639,7 @@ public class TestProject extends EAMTestCase
 		FactorCell nodeB = project.createFactorCell(ObjectType.TARGET);
 		FactorId idA = nodeA.getWrappedId();
 		FactorId idB = nodeB.getWrappedId();
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(idA, idB);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(nodeA.getWrappedORef(), nodeB.getWrappedORef());
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, idAssigner.takeNextId(), parameter);
 		FactorLinkId linkageId = createdId;
 		FactorLinkPool linkagePool = project.getFactorLinkPool();
@@ -704,11 +704,11 @@ public class TestProject extends EAMTestCase
 		FactorCell nodeDirectThreatA = project.createFactorCell(ObjectType.CAUSE);	
 		
 		FactorCell target = project.createFactorCell(ObjectType.TARGET);
-		CreateFactorLinkParameter parameter1 = new CreateFactorLinkParameter(nodeDirectThreatA.getWrappedId(), target.getWrappedId());
+		CreateFactorLinkParameter parameter1 = new CreateFactorLinkParameter(nodeDirectThreatA.getWrappedORef(), target.getWrappedORef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter1);
 		
 		FactorCell nodeDirectThreatB = project.createFactorCell(ObjectType.CAUSE);
-		CreateFactorLinkParameter parameter2 = new CreateFactorLinkParameter(nodeDirectThreatB.getWrappedId(), target.getWrappedId());
+		CreateFactorLinkParameter parameter2 = new CreateFactorLinkParameter(nodeDirectThreatB.getWrappedORef(), target.getWrappedORef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter2);
 		
 		FactorSet allNodes = new FactorSet();
@@ -811,12 +811,12 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramLink createLinkage(BaseId id, FactorId fromId, FactorId toId) throws Exception
 	{
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
+		DiagramFactor fromDiagramFactor = project.getDiagramModel().getFactorCellByWrappedId(fromId).getDiagramFactor();
+		DiagramFactor toDiagramFactor = project.getDiagramModel().getFactorCellByWrappedId(toId).getDiagramFactor();
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, id, parameter);
 		
-		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(fromId).getDiagramFactorId();
-		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(toId).getDiagramFactorId();
-		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(createdId, fromDiagramFactorId, toDiagramFactorId);
+		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(createdId, fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
 		BaseId	createdRawDiagramFactorLinkId = project.createObject(ObjectType.DIAGRAM_LINK, extraInfo);
 		DiagramFactorLinkId createdDiagramFactorLinkId = new DiagramFactorLinkId(createdRawDiagramFactorLinkId.asInt());
 		

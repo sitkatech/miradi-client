@@ -39,7 +39,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		FactorId factorId = project.createNodeAndAddToDiagram(ObjectType.CAUSE);
 		FactorCell factor = model.getFactorCellByWrappedId(factorId);
 
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(intervention.getWrappedORef(), factor.getWrappedORef());
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();

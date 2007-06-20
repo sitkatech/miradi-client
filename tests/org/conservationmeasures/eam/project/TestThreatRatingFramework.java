@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -151,8 +152,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private ThreatRatingBundle createThreatTargetAndBundle() throws Exception
 	{
-		FactorId threatId = createThreat(project);
-		FactorId targetId = createTarget(project);
+		FactorId threatId = createThreat(project).getWrappedId();
+		FactorId targetId = createTarget(project).getWrappedId();
 		populateBundle(framework, threatId, targetId, framework.getValueOptions()[0]);
 		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
 		assertFalse("normal case failed?", framework.isBundleForLinkedThreatAndTarget(bundle));
@@ -180,45 +181,46 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		framework.createDefaultObjectsIfNeeded();
 		
-		FactorId threatId1 = createThreat(project);
-		FactorId threatId2 = createThreat(project);
-		FactorId targetId1 = createTarget(project);
-		FactorId targetId2 = createTarget(project);
+		DiagramFactor threat1 = createThreat(project);
+		DiagramFactor threat2 = createThreat(project);
+		DiagramFactor target1 = createTarget(project);
+		DiagramFactor target2 = createTarget(project);
 
 		ValueOption none = framework.findValueOptionByNumericValue(0);
 		ValueOption high = framework.findValueOptionByNumericValue(3);
 		ValueOption veryHigh = framework.findValueOptionByNumericValue(4);
 		
-		assertEquals("threat1 not none?", none, framework.getThreatThreatRatingValue(threatId1));
-		assertEquals("threat2 not none?", none, framework.getThreatThreatRatingValue(threatId2));
-		assertEquals("target1 not none?", none, framework.getTargetThreatRatingValue(targetId1));
-		assertEquals("target2 not none?", none, framework.getTargetThreatRatingValue(targetId2));
+		assertEquals("threat1 not none?", none, framework.getThreatThreatRatingValue(threat1.getWrappedId()));
+		assertEquals("threat2 not none?", none, framework.getThreatThreatRatingValue(threat2.getWrappedId()));
+		assertEquals("target1 not none?", none, framework.getTargetThreatRatingValue(target1.getWrappedId()));
+		assertEquals("target2 not none?", none, framework.getTargetThreatRatingValue(target2.getWrappedId()));
 
-		createLinkageAndBundle(project, threatId1, targetId1, veryHigh);
-		createLinkageAndBundle(project, threatId1, targetId2, veryHigh);
-		assertEquals("target1 not high?", high, framework.getTargetThreatRatingValue(targetId1));
-		createLinkageAndBundle(project, threatId2, targetId1, veryHigh);
-		assertEquals("threat2 not high?", high, framework.getThreatThreatRatingValue(threatId2));
-		createLinkageAndBundle(project, threatId2, targetId2, veryHigh);
+		createLinkageAndBundle(project, threat1, target1, veryHigh);
+		createLinkageAndBundle(project, threat1, target2, veryHigh);
+		assertEquals("target1 not high?", high, framework.getTargetThreatRatingValue(target1.getWrappedId()));
+		createLinkageAndBundle(project, threat2, target1, veryHigh);
+		assertEquals("threat2 not high?", high, framework.getThreatThreatRatingValue(threat2.getWrappedId()));
+		createLinkageAndBundle(project, threat2, target2, veryHigh);
 		
-		assertEquals("threat1 not very high?", veryHigh, framework.getThreatThreatRatingValue(threatId1));
-		assertEquals("threat2 not very high?", veryHigh, framework.getThreatThreatRatingValue(threatId2));
-		assertEquals("target1 not very high?", veryHigh, framework.getTargetThreatRatingValue(targetId1));
-		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(targetId2));
+		assertEquals("threat1 not very high?", veryHigh, framework.getThreatThreatRatingValue(threat1.getWrappedId()));
+		assertEquals("threat2 not very high?", veryHigh, framework.getThreatThreatRatingValue(threat2.getWrappedId()));
+		assertEquals("target1 not very high?", veryHigh, framework.getTargetThreatRatingValue(target1.getWrappedId()));
+		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(target2.getWrappedId()));
 	}
 	
-	void createLinkageAndBundle(Project projectToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
+	void createLinkageAndBundle(Project projectToUse, DiagramFactor threat, DiagramFactor target, ValueOption value) throws Exception
 	{
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		projectToUse.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
-		populateBundle(projectToUse.getThreatRatingFramework(), threatId, targetId, value);
+		populateBundle(projectToUse.getThreatRatingFramework(), threat.getWrappedId(), target.getWrappedId(), value);
 	}
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		FactorId threatId = (FactorId)project.createObject(ObjectType.CAUSE);
-		FactorId targetId = createTarget(project);
-
+		DiagramFactor threat = createThreat(project);
+		DiagramFactor target = createTarget(project);
+		FactorId threatId = threat.getWrappedId();
+		FactorId targetId = target.getWrappedId();
 		ValueOption none = framework.findValueOptionByNumericValue(0);
 		ValueOption high = framework.findValueOptionByNumericValue(3);
 		ValueOption veryHigh = framework.findValueOptionByNumericValue(4);
@@ -226,7 +228,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		populateBundle(framework, threatId, targetId, veryHigh);
 		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		BaseId linkId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
@@ -310,16 +312,18 @@ public class TestThreatRatingFramework extends EAMTestCase
 		}
 	}
 
-	private FactorId createTarget(Project projectToUse) throws Exception
+	private DiagramFactor createTarget(ProjectForTesting projectToUse) throws Exception
 	{
-		FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.TARGET);
-		return targetId;
+		return projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
+		//FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.TARGET);
+		//return targetId;
 	}
 
-	private FactorId createThreat(Project projectToUse) throws Exception
+	private DiagramFactor createThreat(ProjectForTesting projectToUse) throws Exception
 	{
-		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.CAUSE);
-		return threatId;
+		return projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+//		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.CAUSE);
+//		return threatId;
 	}
 	
 	void populateBundle(ThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
@@ -332,18 +336,18 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	private ThreatRatingFramework createFramework(int[][] bundleValues) throws Exception
 	{
-		Project tempProject = new ProjectForTesting(getName());
+		ProjectForTesting tempProject = new ProjectForTesting(getName());
 		ThreatRatingFramework trf = tempProject.getThreatRatingFramework();
 		
 		int threatCount = bundleValues.length;
-		FactorId[] threatIds = new FactorId[threatCount];
+		DiagramFactor[] threats = new DiagramFactor[threatCount];
 		for(int i = 0; i < threatCount; ++i)
-			threatIds[i] = createThreat(tempProject);
+			threats[i] = createThreat(tempProject);
 		
 		int targetCount = bundleValues[0].length;
-		FactorId[] targetIds = new FactorId[targetCount];
+		DiagramFactor[] targets = new DiagramFactor[targetCount];
 		for(int i = 0; i < targetCount; ++i)
-			targetIds[i] = createTarget(tempProject);
+			targets[i] = createTarget(tempProject);
 
 		for(int threatIndex = 0; threatIndex < threatCount; ++threatIndex)
 		{
@@ -354,10 +358,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 				if(numericValue < 0)
 					continue;
 				ValueOption valueOption = trf.findValueOptionByNumericValue(numericValue);
-				FactorId threatId = threatIds[threatIndex];
-				FactorId targetId = targetIds[targetIndex];
-				createLinkageAndBundle(tempProject, threatId, targetId, valueOption);
-				
+				createLinkageAndBundle(tempProject, threats[threatIndex], targets[targetIndex], valueOption);				
 			}
 		}
 		return trf;

@@ -89,7 +89,7 @@ public class LinkCreator
 		if(factorLinkId != null)
 			ensureLinkGoesOurWay(factorLinkId, fromFactorId, factorLinkId);
 		else
-			factorLinkId = createFactorLink(fromFactorId, toFactorId);
+			factorLinkId = createFactorLink(diagramFactorFrom, diagramFactorTo);
 		
 		createDiagramLinks(factorLinkId);
 		return factorLinkId; 
@@ -108,9 +108,9 @@ public class LinkCreator
 		project.executeCommand(command);
 	}
 
-	private FactorLinkId createFactorLink(FactorId fromFactorId, FactorId toFactorId) throws Exception
+	private FactorLinkId createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorId, toFactorId);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createFactorLink);
 		FactorLinkId factorLinkId = (FactorLinkId)createFactorLink.getCreatedId();

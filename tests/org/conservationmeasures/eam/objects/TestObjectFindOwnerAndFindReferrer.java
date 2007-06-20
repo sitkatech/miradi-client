@@ -188,10 +188,10 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	public void testDiagramFactorLinkAndLinkFactorRefer() throws Exception
 	{
 		//TODO: look at this method to refactor
-		FactorId interventionId = project.createNodeAndAddToDiagram(ObjectType.STRATEGY);
-		FactorId factorId = project.createNodeAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor intervention = project.createDiagramFactorAndAddToDiagram(ObjectType.STRATEGY);
+		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(intervention.getWrappedORef(), cause.getWrappedORef());
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
     	project.executeCommand(createModelLinkage);
     	FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
@@ -208,8 +208,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 
     	
     	ORef linkRef = new ORef(ObjectType.FACTOR_LINK, modelLinkageId);
-		verifyReferenceFunctions(1,linkRef, new ORef(ObjectType.STRATEGY, interventionId));
-		verifyReferenceFunctions(1,linkRef, new ORef(ObjectType.CAUSE, factorId));
+		verifyReferenceFunctions(1,linkRef, new ORef(ObjectType.STRATEGY, intervention.getWrappedId()));
+		verifyReferenceFunctions(1,linkRef, new ORef(ObjectType.CAUSE, cause.getWrappedId()));
     	
 		ORef diagramLinkRef = new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkId);
 		verifyReferenceFunctions(2,diagramLinkRef, new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
@@ -290,7 +290,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	
 	private DiagramLink createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		CreateFactorLinkParameter linkExtraInfo = new CreateFactorLinkParameter(from.getWrappedId(), to.getWrappedId());
+		CreateFactorLinkParameter linkExtraInfo = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
 		FactorLinkId linkId = (FactorLinkId)project.createObject(FactorLink.getObjectType(), linkExtraInfo);
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(linkId, from.getDiagramFactorId(), to.getDiagramFactorId());
 		DiagramFactorLinkId diagramLinkId = (DiagramFactorLinkId)project.createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);

@@ -381,7 +381,7 @@ public class ResultsChainCreatorHelper
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
 			return new CreateDiagramFactorLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
 	
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromCloned.getWrappedId(), toCloned.getWrappedId());
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromCloned.getWrappedORef(), toCloned.getWrappedORef());
 		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createFactorLink);
 		

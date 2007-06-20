@@ -109,14 +109,14 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	
 	public void testLinkNodes() throws Exception
 	{
-		FactorId interventionId = project.createNodeAndAddToDiagram(ObjectType.STRATEGY);
-		FactorId factorId = 	project.createNodeAndAddToDiagram(ObjectType.CAUSE);
-		CreateFactorLinkParameter extraInfoForLinkParameters = new CreateFactorLinkParameter(interventionId, factorId);
+		DiagramFactor intervention = project.createDiagramFactorAndAddToDiagram(ObjectType.STRATEGY);
+		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		CreateFactorLinkParameter extraInfoForLinkParameters = new CreateFactorLinkParameter(intervention.getWrappedORef(), cause.getWrappedORef());
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfoForLinkParameters);
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		
-		DiagramFactorLinkId createdDiagramFactorLinkId = createDiagramFactorLink(project, interventionId, factorId, modelLinkageId);		
+		DiagramFactorLinkId createdDiagramFactorLinkId = createDiagramFactorLink(project, intervention.getWrappedId(), cause.getWrappedId(), modelLinkageId);		
 		DiagramObject diagramObject = project.getDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramFactorLinkId);
 		project.executeCommand(addLink);
@@ -126,8 +126,8 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		ProjectServer server = project.getTestDatabase();
 		DiagramLink dfl = project.getDiagramModel().getDiagramFactorLinkById(createdDiagramFactorLinkId);
 		FactorLink linkage = (FactorLink)server.readObject(project.getObjectManager(), ObjectType.FACTOR_LINK, dfl.getWrappedId());
-		assertEquals("Didn't load from id?", interventionId, linkage.getFromFactorId());
-		assertEquals("Didn't load to id?", factorId, linkage.getToFactorId());
+		assertEquals("Didn't load from id?", intervention.getWrappedId(), linkage.getFromFactorId());
+		assertEquals("Didn't load to id?", cause.getWrappedId(), linkage.getToFactorId());
 	}
 
 	private static DiagramFactorLinkId createDiagramFactorLink(ProjectForTesting projectForTesting, FactorId interventionId, FactorId factorId, FactorLinkId modelLinkageId) throws CommandFailedException

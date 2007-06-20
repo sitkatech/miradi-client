@@ -11,30 +11,30 @@ import org.conservationmeasures.eam.ids.FactorId;
 
 public class CreateFactorLinkParameter extends CreateObjectParameter
 {
-	public CreateFactorLinkParameter(FactorId from, FactorId to)
+	public CreateFactorLinkParameter(ORef fromRefToUse, ORef toRefToUse)
 	{
-		fromId = from;
-		toId = to;
+		fromRef = fromRefToUse;
+		toRef = toRefToUse;
 	}
-
+	
 	public FactorId getFromId()
 	{
-		return fromId;
+		return (FactorId) fromRef.getObjectId();
 	}
 	
 	public FactorId getToId()
 	{
-		return toId;
+		return (FactorId) toRef.getObjectId();
 	}
 	
 	public String getFormatedDataString()
 	{
 		HashMap dataPairs = new HashMap();
-		dataPairs.put("FactorFromId", fromId);
-		dataPairs.put("FactorToId", toId);
+		dataPairs.put("FactorFromRef", fromRef);
+		dataPairs.put("FactorToRef", toRef);
 		return formatDataString(dataPairs);
 	}
 	
-	FactorId fromId;
-	FactorId toId;
+	ORef fromRef;
+	ORef toRef;
 }

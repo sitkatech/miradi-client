@@ -57,14 +57,14 @@ public class TestObjectManager extends EAMTestCase
 		
 		for(int i = 0; i < types.length; ++i)
 		{
-			verifyObjectLifecycle(types[i], null);
+			verifyObjectLifecycle(types[i]);
 		}
 		
 		verifyObjectLifecycle(ObjectType.CAUSE);
 		
-		FactorId factorId = (FactorId)manager.createObject(ObjectType.CAUSE, BaseId.INVALID, null);
-		FactorId targetId = (FactorId)manager.createObject(ObjectType.TARGET, BaseId.INVALID, null);
-		CreateFactorLinkParameter link = new CreateFactorLinkParameter(factorId, targetId);
+		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);		
+		CreateFactorLinkParameter link = new CreateFactorLinkParameter(cause.getWrappedORef(), target.getWrappedORef());
 		verifyBasicObjectLifecycle(ObjectType.FACTOR_LINK, link);
 	}
 
@@ -140,13 +140,6 @@ public class TestObjectManager extends EAMTestCase
 		verifyGetPool(type);
 	}
 	
-	private void verifyObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception
-	{
-		verifyBasicObjectLifecycle(type, parameter);
-		verifyObjectWriteAndRead(type, parameter);
-		verifyGetPool(type);
-	}
-
 	private void verifyBasicObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception, IOException, ParseException
 	{
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, parameter);
@@ -214,7 +207,12 @@ public class TestObjectManager extends EAMTestCase
 	{
 		CreateObjectParameter cop = null;
 		if(type == ObjectType.FACTOR_LINK)
-			cop = new CreateFactorLinkParameter(new FactorId(1), new FactorId(2));
+		{
+			DiagramFactor cause1 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+			DiagramFactor cause2 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+			cop = new CreateFactorLinkParameter(cause1.getWrappedORef(), cause2.getWrappedORef());			
+		}
+			
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, cop);
 		EAMObjectPool pool = manager.getPool(type);
 		assertNotNull("Missing pool type " + type, pool);

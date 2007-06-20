@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
@@ -87,27 +87,27 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	
 	public void testIsActiveCell() throws Exception
 	{
-		FactorId threat1 = createThreat("threat a");
-		FactorId threat2 = createThreat("threat b");
+		DiagramFactor threat1 = createThreat("threat a");
+		DiagramFactor threat2 = createThreat("threat b");
 		createThreat("threat c");
 		
-		FactorId target1 = createTarget("target A");
-		FactorId target2 = createTarget("target B");
+		DiagramFactor target1 = createTarget("target A");
+		DiagramFactor target2 = createTarget("target B");
 		createTarget("target C");
 		
-		CreateFactorLinkParameter link1to1 = new CreateFactorLinkParameter(threat1, target1);
+		CreateFactorLinkParameter link1to1 = new CreateFactorLinkParameter(threat1.getWrappedORef(), target1.getWrappedORef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link1to1);
 		
-		CreateFactorLinkParameter link1to2 = new CreateFactorLinkParameter(threat1, target2);
+		CreateFactorLinkParameter link1to2 = new CreateFactorLinkParameter(threat1.getWrappedORef(), target2.getWrappedORef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link1to2);
 		
-		CreateFactorLinkParameter link2to2 = new CreateFactorLinkParameter(threat2, target2);
+		CreateFactorLinkParameter link2to2 = new CreateFactorLinkParameter(threat2.getWrappedORef(), target2.getWrappedORef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link2to2);
 		
 		model.resetMatrix();
 		
-		assertEquals(threat2, model.getDirectThreats()[1].getId());
-		assertEquals(target2, model.getTargets()[1].getId());
+		assertEquals(threat2.getWrappedId(), model.getDirectThreats()[1].getId());
+		assertEquals(target2.getWrappedId(), model.getTargets()[1].getId());
 		
 		assertFalse(model.isActiveCell(-1, -1));
 		int row1 = 0;
@@ -127,31 +127,30 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		assertFalse(model.isActiveCell(row3, col3));
 	}
 	
-	private FactorId createThreat(String name) throws Exception
-	{
-		FactorId threatId = createNode(ObjectType.CAUSE, name);
-		FactorId targetId = createNode(ObjectType.TARGET, name);
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
-		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
-		
-		return threatId;
-	}
-
-	private FactorId createTarget(String name) throws Exception
+	
+	private DiagramFactor createTarget(String name) throws Exception
 	{
 		return createNode(ObjectType.TARGET, name);
 	}
-
-	private FactorId createNode(int objectType, String name) throws Exception
-	{
-		FactorId id = (FactorId)project.createObject(objectType);
-		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
-		Factor node = project.findNode(id);
-		node.setLabel(name);
-		
-		return id;
-	}
 	
+	private DiagramFactor createThreat(String name) throws Exception
+	{
+		DiagramFactor threat = createNode(ObjectType.CAUSE, name);
+		DiagramFactor target = createTarget(name);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
+		
+		return threat;
+	}
+
+	private DiagramFactor createNode(int type, String name) throws Exception
+	{
+		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(type);
+		Factor targetNode = project.findNode(target.getWrappedId());
+		targetNode.setLabel(name);
+		return target;
+	}
+
 	ProjectForTesting project;
 	ThreatMatrixTableModel model;
 }

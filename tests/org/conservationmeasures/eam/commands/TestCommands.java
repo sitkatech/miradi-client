@@ -255,7 +255,7 @@ public class TestCommands extends EAMTestCase
 		DiagramFactorId diagramFactorId = node.getDiagramFactorId();
 		CommandSetObjectData cmd = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_SIZE, newSize);
 		project.executeCommand(cmd);
-
+ 
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
 		assertEquals("didn't memorize old size?", originalSize, cmd.getPreviousDataValue());
 		assertEquals("didn't change to new size?", newSize, EnhancedJsonObject.convertFromDimension(diagramFactor.getSize()));
@@ -270,18 +270,16 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramFactorId from = insertNode(ObjectType.CAUSE).getDiagramFactorId();
-		DiagramFactorId to = insertTarget();
-		FactorId fromId = model.getFactorCellById(from).getWrappedId();
-		FactorId toId = model.getFactorCellById(to).getWrappedId();
+		DiagramFactor from = insertNode(ObjectType.CAUSE);
+		DiagramFactor to = insertNode(ObjectType.TARGET);
 		
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromId, toId);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
-		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(fromId).getDiagramFactorId();
-		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(toId).getDiagramFactorId();
+		DiagramFactorId fromDiagramFactorId = from.getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = to.getDiagramFactorId();
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 		
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
@@ -296,9 +294,9 @@ public class TestCommands extends EAMTestCase
 		DiagramLink inserted = model.getDiagramFactorLinkbyWrappedId(modelLinkageId);
 		LinkCell cell = model.findLinkCell(inserted);
 		DiagramFactorId fromNodeId = cell.getFrom().getDiagramFactorId();
-		assertEquals("wrong source?", from, fromNodeId);
+		assertEquals("wrong source?", from.getDiagramFactorId(), fromNodeId);
 		DiagramFactorId toNodeId = cell.getTo().getDiagramFactorId();
-		assertEquals("wrong dest?", to, toNodeId);
+		assertEquals("wrong dest?", to.getDiagramFactorId(), toNodeId);
 
 		assertTrue("linkage not created?", project.getDiagramModel().areLinked(fromNodeId, toNodeId));
 		project.undo();
