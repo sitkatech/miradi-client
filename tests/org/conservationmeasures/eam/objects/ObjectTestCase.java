@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.DateRangeEffortListData;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -126,7 +127,7 @@ public class ObjectTestCase extends EAMTestCase
 		ObjectData field = object.getField(tag);
 		if(field instanceof BaseIdData)
 			return BaseId.INVALID.toString();
-		
+
 		if(field instanceof DateRangeEffortListData)
 			return new DateRangeEffortList().toString();
 		
@@ -185,6 +186,10 @@ public class ObjectTestCase extends EAMTestCase
 			return "";
 		}
 		else if(field instanceof PseudoStringData)
+		{
+			return "";
+		}
+		else if(field instanceof ORefData)
 		{
 			return "";
 		}

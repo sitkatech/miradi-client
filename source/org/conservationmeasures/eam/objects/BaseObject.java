@@ -86,6 +86,9 @@ abstract public class BaseObject
 		int idAsInt = json.getInt(TAG_ID);
 		switch(type)
 		{
+			case ObjectType.SLIDE:
+				return new Slide(objectManager, idAsInt, json);
+				
 			case ObjectType.RATING_CRITERION:
 				return new RatingCriterion(objectManager, idAsInt, json);
 				
@@ -568,6 +571,9 @@ abstract public class BaseObject
 		if (ThreatReductionResult.canOwnThisType(type))
 			objectTypes[i++] = ThreatReductionResult.getObjectType();
 		
+		if (Slide.canOwnThisType(type))
+			objectTypes[i++] = Slide.getObjectType();
+		
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);
 		return outArray;
@@ -641,6 +647,9 @@ abstract public class BaseObject
 
 		if (ResultsChainDiagram.canReferToThisType(type))
 			objectTypes[i++] = ResultsChainDiagram.getObjectType();
+		
+		if (Slide.canReferToThisType(type))
+			objectTypes[i++] = Slide.getObjectType();
 		
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);

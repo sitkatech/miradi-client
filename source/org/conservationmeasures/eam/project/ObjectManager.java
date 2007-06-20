@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
+import org.conservationmeasures.eam.objectpools.SlidePool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
@@ -90,6 +91,7 @@ public class ObjectManager
 		addNormalPool(new ConceptualModelDiagramPool(ida));
 		addNormalPool(new ThreatReductionResultPool(ida));
 		addNormalPool(new TextBoxPool(ida));
+		addNormalPool(new SlidePool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -177,6 +179,11 @@ public class ObjectManager
 	public ConceptualModelDiagramPool getConceptualModelDiagramPool()
 	{
 		return (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+	}
+	
+	public SlidePool getSlidePool()
+	{
+		return (SlidePool)getPool(ObjectType.SLIDE);
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
@@ -314,6 +321,7 @@ public class ObjectManager
 		loadPool(ObjectType.INTERMEDIATE_RESULT);
 		loadPool(ObjectType.THREAT_REDUCTION_RESULT);
 		loadPool(ObjectType.TEXT_BOX);
+		loadPool(ObjectType.SLIDE);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
