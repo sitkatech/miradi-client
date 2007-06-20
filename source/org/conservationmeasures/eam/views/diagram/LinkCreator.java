@@ -119,13 +119,6 @@ public class LinkCreator
 			makeFactorLinkBidirectional(fromFactorId, factorLinkId);
 		else
 			factorLinkId = createFactorLink(fromFactorId, toFactorId);
-
-		DiagramFactorId fromDiagramFactorId = diagramFactorFrom.getDiagramFactorId();
-		DiagramFactorId toDiagramFactorId = diagramFactorTo.getDiagramFactorId();
-		DiagramFactorLinkId diagramFactorLinkId = project.getDiagramFactorLinkPool().getLinkedId(fromDiagramFactorId, toDiagramFactorId);
-	
-		if (diagramFactorLinkId == null)
-			createDiagramLinks(factorLinkId);			
 		
 		return factorLinkId;
 	}
@@ -140,14 +133,15 @@ public class LinkCreator
 		}
 	}
 
-	private FactorLinkId createFactorLink(FactorId fromFactorId, FactorId toFactorId) throws CommandFailedException
+	private FactorLinkId createFactorLink(FactorId fromFactorId, FactorId toFactorId) throws Exception
 	{
-		FactorLinkId factorlLinkId;
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorId, toFactorId);
 		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createFactorLink);
-		factorlLinkId = (FactorLinkId)createFactorLink.getCreatedId();
-		return factorlLinkId;
+		FactorLinkId factorLinkId = (FactorLinkId)createFactorLink.getCreatedId();
+		
+		createDiagramLinks(factorLinkId);
+		return factorLinkId;
 	}
 	
 	//FIXME nima use this method instead of the currecnt method
