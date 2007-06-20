@@ -66,7 +66,7 @@ public class SlideShow extends BaseObject
 		switch(objectType)
 		{
 			case ObjectType.SLIDE: 
-				list.addAll(slideRefList.getORefList());
+				list.addAll(slideRefs.getORefList());
 				break;
 		}
 		return list;
@@ -76,16 +76,16 @@ public class SlideShow extends BaseObject
 	void clear()
 	{
 		super.clear();
-		slideRefList = new ORefListData();
-		addField(TAG_SLIDE_REF_LIST, slideRefList);
+		slideRefs = new ORefListData();
+		addField(TAG_SLIDE_REFS, slideRefs);
 	}
 	
 	
-	private static String TAG_SLIDE_REF_LIST = "SlideRefList";
+	private static String TAG_SLIDE_REFS = "SlideRefs";
 
 
 	public static final String OBJECT_NAME = "SlideShow";
 
 	
-	private ORefListData slideRefList;
+	private ORefListData slideRefs;
 }
