@@ -144,7 +144,6 @@ public class LinkCreator
 		return factorLinkId;
 	}
 	
-	//FIXME nima use this method instead of the currecnt method
 	public void createDiagramLinks(FactorLinkId factorLinkId) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
