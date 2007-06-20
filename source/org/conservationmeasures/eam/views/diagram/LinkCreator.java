@@ -114,17 +114,16 @@ public class LinkCreator
 		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
 		FactorId toFactorId = diagramFactorTo.getWrappedId();
 		FactorLinkId factorLinkId = project.getFactorLinkPool().getLinkedId(fromFactorId, toFactorId);
-		
-		if(factorLinkId != null)
-			makeFactorLinkBidirectional(fromFactorId, factorLinkId);
-		else
-			factorLinkId = createFactorLink(fromFactorId, toFactorId);
-		
-		return factorLinkId;
+		makeFactorLinkBidirectional(factorLinkId, fromFactorId, factorLinkId);
+			
+		return createFactorLink(fromFactorId, toFactorId);
 	}
 
-	private void makeFactorLinkBidirectional(FactorId fromFactorId, FactorLinkId factorlLinkId) throws CommandFailedException
+	private void makeFactorLinkBidirectional(FactorLinkId factorLinkId, FactorId fromFactorId, FactorLinkId factorlLinkId) throws CommandFailedException
 	{
+		if(factorLinkId == null)
+			return;
+		
 		FactorLink link = (FactorLink)project.findObject(FactorLink.getObjectType(), factorlLinkId);
 		if(!link.isBidirectional() && !link.getFromFactorId().equals(fromFactorId))
 		{
