@@ -115,6 +115,7 @@ public class TestDataUpgrader extends EAMTestCase
 
 	public void testUpgradeTo20AddORefsInFactorLinks() throws Exception
 	{
+		//FIXME nima add tests for all factor types
 		File jsonDir = new File(tempDirectory, "json");
 		jsonDir.mkdirs();
 		
