@@ -47,7 +47,6 @@ import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardSele
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectOverviewStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardImportStep;
-import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardPanel;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardProjectCreateStep;
 import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.views.schedule.wizard.ScheduleOverviewStep;
@@ -129,7 +128,7 @@ public class WizardManager
 			createBudgetStepEntries(panel);
 		
 		if (currentView.equals(NoProjectView.getViewName()))
-			createNoProjectStepEntries((NoProjectWizardPanel)panel);
+			createNoProjectStepEntries(panel);
 		
 		if (currentView.equals(TargetViabilityView.getViewName()))
 			createTargetViabilityStepEntries(panel);
@@ -199,7 +198,7 @@ public class WizardManager
 		}
 	}
 	
-	public void createNoProjectStepEntries(NoProjectWizardPanel panel) throws Exception
+	public void createNoProjectStepEntries(WizardPanel panel) throws Exception
 	{	
 		createStepEntry(new NoProjectOverviewStep(panel))
 			.createControl("Import",NoProjectWizardImportStep.class)

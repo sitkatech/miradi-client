@@ -117,10 +117,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		addWindowListener(new WindowEventHandler());
 
 		//FIXME: need to move view creation back after init problem fixed
-		monitoringView = new MonitoringView(this);
-		wizardPanel = createWizardPanel(monitoringView);
-		
+
 		noProjectView = new NoProjectView(this);
+		wizardPanel = createWizardPanel(noProjectView);
+
 		summaryView = new SummaryView(this);
 		diagramView = new DiagramView(this);
 		threatMatrixView = new ThreatMatrixView(this);
@@ -130,6 +130,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		calendarView = new ScheduleView(this);
 		imagesView = new ImagesView(this);
 		strategicPlanView = new StrategicPlanView(this);
+		monitoringView = new MonitoringView(this);
 		targetViabilityView = new TargetViabilityView(this);
 
 		viewHolder = new JPanel();

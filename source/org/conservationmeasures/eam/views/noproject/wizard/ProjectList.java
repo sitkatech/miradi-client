@@ -50,7 +50,7 @@ public class ProjectList extends JPanel
 			String name = projectFile.getName();
 			MultiCalendar date = new MultiCalendar(new Date(projectFile.lastModified()));
 			String isoDate = date.toIsoDateString();
-			add(new HyperlinkLabel(name, NoProjectWizardPanel.OPEN_PREFIX+name, handler));
+			add(new HyperlinkLabel(name, NoProjectWizardStep.OPEN_PREFIX+name, handler));
 			add(new HtmlLabel("<font size='%100'>" + isoDate + "</font>"));
 		}
 		

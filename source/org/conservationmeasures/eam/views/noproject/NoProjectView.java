@@ -11,7 +11,6 @@ import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -20,7 +19,7 @@ public class NoProjectView extends UmbrellaView
 	public NoProjectView(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-		wizardPanel = new NoProjectWizardPanel(this);
+		wizardPanel = new WizardPanel(mainWindow, this);
 	}
 	
 	public JToolBar createToolBar()

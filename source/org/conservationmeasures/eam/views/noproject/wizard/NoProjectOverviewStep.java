@@ -11,15 +11,16 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class NoProjectOverviewStep extends NoProjectWizardStep
 {
-	public NoProjectOverviewStep(NoProjectWizardPanel wizardToUse) throws Exception
+	public NoProjectOverviewStep(WizardPanel wizardToUse) throws Exception
 	{
 		super(wizardToUse);
 		
 		String html = EAM.loadResourceFile(getClass(), "WelcomeNew.html");
-		left = new LeftSideTextPanelWithNews(getMainWindow(), html, wizardToUse);
+		left = new LeftSideTextPanelWithNews(getMainWindow(), html, this);
 		
 		JPanel panel = new JPanel(new GridLayout(1, 2));
 		panel.add(left);
