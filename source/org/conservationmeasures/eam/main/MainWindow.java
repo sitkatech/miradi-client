@@ -116,6 +116,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		addWindowListener(new WindowEventHandler());
 
+		//FIXME: need to move view creation back after init problem fixed
 		monitoringView = new MonitoringView(this);
 		wizardPanel = createWizardPanel(monitoringView);
 		
