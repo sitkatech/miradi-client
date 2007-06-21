@@ -19,20 +19,20 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
 {
-	public FactorLink(ObjectManager objectManager, FactorLinkId id, ORef fromNodeRef, ORef toNodeRef)
+	public FactorLink(ObjectManager objectManager, FactorLinkId id, ORef fromFactorRef, ORef toFactorRef)
 	{
 		super(objectManager, id);
 		clear();
-		setFromRef(fromNodeRef);
-		setToRef(toNodeRef);
+		setFromRef(fromFactorRef);
+		setToRef(toFactorRef);
 	}
 
-	public FactorLink(FactorLinkId id, ORef fromNodeRef, ORef toNodeRef)
+	public FactorLink(FactorLinkId id, ORef fromFactorRef, ORef toFactorRef)
 	{
 		super(id);
 		clear();
-		setFromRef(fromNodeRef);
-		setToRef(toNodeRef);
+		setFromRef(fromFactorRef);
+		setToRef(toFactorRef);
 	}
 	
 	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
@@ -40,14 +40,14 @@ public class FactorLink extends BaseObject
 		super(objectManager, new FactorLinkId(idAsInt), jsonObject);
 	}
 	
-	public void setFromRef(ORef fromNodeRef)
+	public void setFromRef(ORef fromFactorRef)
 	{
-		fromRef.set(fromNodeRef);
+		fromRef.set(fromFactorRef);
 	}
 	
-	public void setToRef(ORef toNodeRef)
+	public void setToRef(ORef toFactorRef)
 	{
-		toRef.set(toNodeRef);
+		toRef.set(toFactorRef);
 	}
 
 	public int getType()
@@ -146,7 +146,7 @@ public class FactorLink extends BaseObject
 	}
 
 
-	public ORef getNodeRef(int direction)
+	public ORef getFactorRef(int direction)
 	{
 		if(direction == FROM)
 			return getFromFactorRef();
@@ -155,12 +155,12 @@ public class FactorLink extends BaseObject
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
-	public ORef getOppositeNodeRef(int direction)
+	public ORef getOppositeFactorRef(int direction)
 	{
 		if(direction == FROM)
-			return getNodeRef(TO);
+			return getFactorRef(TO);
 		if(direction == TO)
-			return getNodeRef(FROM);
+			return getFactorRef(FROM);
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	

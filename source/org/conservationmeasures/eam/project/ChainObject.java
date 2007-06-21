@@ -66,10 +66,10 @@ abstract public class ChainObject
 	
 	protected void processLink(FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
 	{
-		if(thisLink.getNodeRef(direction).equals(thisFactor.getRef()))
+		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
 		{
 			attempToAdd(thisLink);
-			Factor linkedNode = (Factor) getProject().findObject(thisLink.getOppositeNodeRef(direction));
+			Factor linkedNode = (Factor) getProject().findObject(thisLink.getOppositeFactorRef(direction));
 			unprocessedFactors.attemptToAdd(linkedNode);
 			return;
 		}
@@ -77,10 +77,10 @@ abstract public class ChainObject
 		if (!thisLink.isBidirectional())
 			return;
 		
-		if(thisLink.getOppositeNodeRef(direction).equals(thisFactor.getRef()))
+		if(thisLink.getOppositeFactorRef(direction).equals(thisFactor.getRef()))
 		{
 			attempToAdd(thisLink);
-			Factor linkedNode = (Factor) getProject().findObject(thisLink.getNodeRef(direction));
+			Factor linkedNode = (Factor) getProject().findObject(thisLink.getFactorRef(direction));
 			unprocessedFactors.attemptToAdd(linkedNode);
 		}
 	}
