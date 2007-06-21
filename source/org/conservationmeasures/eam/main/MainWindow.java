@@ -68,8 +68,10 @@ import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.wizard.WizardManager;
+import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
 
@@ -88,7 +90,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		preferences = new AppPreferences();
 		project = projectToUse;
 		setFocusCycleRoot(true);
-		wizardManager = new WizardManager();
+		wizardManager = new WizardManager(this);
 		actions = new Actions(this);
 		preventActionUpdateStack = new Vector();
 	}
@@ -114,6 +116,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		addWindowListener(new WindowEventHandler());
 
+		monitoringView = new MonitoringView(this);
+		wizardPanel = createWizardPanel(monitoringView);
+		
 		noProjectView = new NoProjectView(this);
 		summaryView = new SummaryView(this);
 		diagramView = new DiagramView(this);
@@ -124,7 +129,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		calendarView = new ScheduleView(this);
 		imagesView = new ImagesView(this);
 		strategicPlanView = new StrategicPlanView(this);
-		monitoringView = new MonitoringView(this);
 		targetViabilityView = new TargetViabilityView(this);
 
 		viewHolder = new JPanel();
@@ -142,7 +146,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		
-		getContentPane().add(viewHolder, BorderLayout.CENTER);
+		ViewSplitPane outterPanel = new ViewSplitPane(this, this, "WIZARDSPLITER" ,wizardPanel, viewHolder);
+		getContentPane().add(outterPanel, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
 		updateActionStates();
@@ -157,6 +162,19 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		setVisible(true);
 		if(preferences.getIsMaximized())
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
+	}
+
+	private WizardPanel createWizardPanel(UmbrellaView view)
+	{
+		//FIXME: ****** should pass in a no project view default page
+		return new WizardPanel(this, view);
+	}
+	
+	WizardPanel wizardPanel;
+	
+	public WizardPanel getWizard()
+	{
+		return wizardPanel;
 	}
 
 	public AppPreferences getAppPreferences()

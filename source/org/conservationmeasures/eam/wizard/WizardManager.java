@@ -94,9 +94,10 @@ import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanOverviewStep;
 public class WizardManager
 {
 	
-	public WizardManager()
+	public WizardManager(MainWindow mainWindowToUse)
 	{
 		stepEntries = new Hashtable();
+		mainWindow = mainWindowToUse;
 	}
 	
 	public void setUpSteps(UmbrellaView view, WizardPanel panel) throws Exception
@@ -171,15 +172,29 @@ public class WizardManager
 		}
 
 		newStepClass.refresh();
-		newStepClass.getWizard().setContents(newStepClass);
 		newView.setSplitterLocationToMiddle();
+		
+		//FIXME:  bootstrap and workaround for no project
+		if (newStepClass instanceof NoProjectOverviewStep)
+		{
+			newStepClass.getWizard().setContents(newStepClass);
+		}
+
+		//FIXME:  bootstrap and workaround for no project
+		if (mainWindow.getWizard()!=null)
+		{
+			if (!(newStepClass instanceof NoProjectOverviewStep))
+			{
+				mainWindow.getWizard().setContents(newStepClass);
+				mainWindow.getWizard().refresh();
+			}
+		}
 		return newStep;
 	}
 
 	//TODO: view switch should not happen here (Richard, with Kevin)
 	private void doJump(SkeletonWizardStep currentStepClass, SkeletonWizardStep newStepClass, String viewNameNew) throws CommandFailedException, Exception
 	{
-		MainWindow mainWindow = currentStepClass.getMainWindow();
 		mainWindow.getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
@@ -489,6 +504,7 @@ public class WizardManager
 	
 	public static String CONTROL_NEXT = "Next";
 	public static String CONTROL_BACK = "Back";
+	MainWindow mainWindow;
 	Hashtable stepEntries;
 }
 

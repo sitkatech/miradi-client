@@ -38,8 +38,7 @@ public class WizardPanel extends JPanel
 		try
 		{
 			wizardManager.setUpSteps(view,this);
-			String defaultStepName = removeSpaces(view.cardName()) + "OverviewStep";
-			currentStepName = wizardManager.setStep(defaultStepName, defaultStepName);
+			setOverViewStep(view);
 		}
 		catch (Exception e)
 		{
@@ -48,6 +47,12 @@ public class WizardPanel extends JPanel
 			EAM.logError(body);
 			EAM.logException(e);
 		}
+	}
+
+	public void setOverViewStep(UmbrellaView view) throws Exception
+	{
+		String defaultStepName = removeSpaces(view.cardName()) + "OverviewStep";
+		currentStepName = wizardManager.setStep(defaultStepName, defaultStepName);
 	}
 
 	public void setContents(JPanel contents)
