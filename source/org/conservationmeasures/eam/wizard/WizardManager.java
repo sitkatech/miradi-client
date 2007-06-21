@@ -177,7 +177,6 @@ public class WizardManager
 		{
 				mainWindow.getWizard().setContents(newStepClass);
 				mainWindow.getWizard().refresh();
-				mainWindow.setDividerLocaton();
 		}
 		return newStep;
 	}

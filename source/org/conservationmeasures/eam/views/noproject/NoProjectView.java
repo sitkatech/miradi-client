@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.noproject;
 
-import java.awt.Toolkit;
-
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.main.MainWindow;
@@ -30,7 +28,6 @@ public class NoProjectView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
-		getMainWindow().setDividerLocationWithoutNotifications(Toolkit.getDefaultToolkit().getScreenSize().height);
 	}
 	
 	public WizardPanel createWizardPanel() throws Exception

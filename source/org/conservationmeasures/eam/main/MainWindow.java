@@ -24,6 +24,7 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
@@ -68,7 +69,6 @@ import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -148,7 +148,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		
-		spliterPane = new ViewSplitPane(this, this, "WIZARDSPLITER" ,wizardPanel, viewHolder);
+		//FIXME: this code should be extracted to a ViewSplitPane...note currently the old VIewSPlitPane is used by none view and shold be renamed
+		spliterPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		spliterPane.setTopComponent(wizardPanel);
+		spliterPane.setBottomComponent(viewHolder);
+		spliterPane.setOneTouchExpandable(true);
+		spliterPane.setDividerSize(15);
+		spliterPane.setResizeWeight(.5);
 		getContentPane().add(spliterPane, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -165,23 +171,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if(preferences.getIsMaximized())
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 	}
-
-	public void setDividerLocaton()
-	{
-		if (spliterPane!=null)
-		{
-			int location = spliterPane.getSplitterLocation("WIZARDSPLITER");
-			spliterPane.setDividerLocation(location);
-		}
-	}
-	
-
-	public void setDividerLocationWithoutNotifications(int location)
-	{
-		if (spliterPane!=null)
-			spliterPane.setDividerLocationWithoutNotifications(location);
-	}
-	
 	
 	private WizardPanel createWizardPanel(UmbrellaView view)
 	{
@@ -782,7 +771,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private MainMenuBar mainMenuBar;
 	private MainStatusBar mainStatusBar;
 	
-	private ViewSplitPane spliterPane;
+	private JSplitPane spliterPane;
 	private WizardManager wizardManager;
 	
 	private int existingCommandListenerCount;
