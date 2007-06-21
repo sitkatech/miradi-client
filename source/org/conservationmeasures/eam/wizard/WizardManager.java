@@ -173,21 +173,12 @@ public class WizardManager
 
 		newStepClass.refresh();
 		newView.setSplitterLocationToMiddle();
-		
-		//FIXME:  bootstrap and workaround for no project
-		if (newStepClass instanceof NoProjectOverviewStep)
-		{
-			newStepClass.getWizard().setContents(newStepClass);
-		}
+		newStepClass.getWizard().setContents(newStepClass);
 
-		//FIXME:  bootstrap and workaround for no project
 		if (mainWindow.getWizard()!=null)
 		{
-			if (!(newStepClass instanceof NoProjectOverviewStep))
-			{
 				mainWindow.getWizard().setContents(newStepClass);
 				mainWindow.getWizard().refresh();
-			}
 		}
 		return newStep;
 	}

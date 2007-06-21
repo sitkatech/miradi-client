@@ -10,7 +10,6 @@ import java.awt.Container;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionHideCellRatings;
@@ -36,7 +35,6 @@ import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.UiScrollPane;
 
@@ -90,10 +88,8 @@ public class ThreatMatrixView extends UmbrellaView
 		removeAll();
 
 		model = new ThreatMatrixTableModel(getProject());
-		
-		bigSplitter = new ViewSplitPane(this, getMainWindow(), getProject().getCurrentView(),createWizardPanel(), createThreatMatrixPanel());
-		
-		add(bigSplitter);
+
+		add(createThreatMatrixPanel());
 			
 		selectBundle(null);
 		
@@ -113,11 +109,6 @@ public class ThreatMatrixView extends UmbrellaView
 		return bottomHalf;
 	}
 
-	
-	private WizardPanel createWizardPanel() throws Exception
-	{
-		return wizardPanel;
-	}
 	
 	public void becomeInactive() throws Exception
 	{
@@ -248,7 +239,6 @@ public class ThreatMatrixView extends UmbrellaView
 		wizardPanel.jump(stepMarker);
 	}
 	
-	JSplitPane bigSplitter;
 	ThreatMatrixTableModel model;
 	ThreatGridPanel grid;
 	ThreatRatingBundlePanel details;

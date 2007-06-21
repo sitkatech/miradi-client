@@ -147,8 +147,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		
-		ViewSplitPane outterPanel = new ViewSplitPane(this, this, "WIZARDSPLITER" ,wizardPanel, viewHolder);
-		getContentPane().add(outterPanel, BorderLayout.CENTER);
+		spliterPane = new ViewSplitPane(this, this, "WIZARDSPLITER" ,wizardPanel, viewHolder);
+		getContentPane().add(spliterPane, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
 		updateActionStates();
@@ -165,6 +165,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 	}
 
+	public ViewSplitPane getViewSplitPane()
+	{
+		return spliterPane;
+	}
+	
 	private WizardPanel createWizardPanel(UmbrellaView view)
 	{
 		//FIXME: ****** should pass in a no project view default page
@@ -764,6 +769,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private MainMenuBar mainMenuBar;
 	private MainStatusBar mainStatusBar;
 	
+	private ViewSplitPane spliterPane;
 	private WizardManager wizardManager;
 	
 	private int existingCommandListenerCount;

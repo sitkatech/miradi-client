@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class NoProjectView extends UmbrellaView
 {
@@ -28,8 +29,12 @@ public class NoProjectView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
-		wizardPanel.refresh();
-		add(wizardPanel);
+		getMainWindow().getViewSplitPane().setDividerLocation(getMainWindow().getHeight());
+	}
+	
+	public WizardPanel createWizardPanel() throws Exception
+	{
+		return wizardPanel;
 	}
 
 	public void becomeInactive() throws Exception
