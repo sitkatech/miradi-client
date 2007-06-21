@@ -80,8 +80,8 @@ import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizard
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardIrreversibilityStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardSeverityStep;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.PersistentSplitPane;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanCreateResourcesStep;
@@ -175,11 +175,10 @@ public class WizardManager
 		//TODO: this belongs in mainWindow
 		if (mainWindow.getWizard()!=null)
 		{
-				int location = mainWindow.getDividerLocation();
 				mainWindow.getWizard().setContents(newStepClass);
 				mainWindow.getWizard().refresh();
 				mainWindow.validate();
-				mainWindow.setDividerLocation(location);
+				mainWindow.restorePreviousDividerLocation();
 		}
 		return newStep;
 	}

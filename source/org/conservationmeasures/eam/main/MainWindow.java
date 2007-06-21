@@ -174,6 +174,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			spliterPane.setDividerLocation(location);
 	}
 	
+	public void restorePreviousDividerLocation()
+	{
+		if (spliterPane!=null)
+			 spliterPane.setDividerLocation(spliterPane.getLastDividerLocation());
+	}
+	
 	public int getDividerLocation()
 	{
 		if (spliterPane!=null)
