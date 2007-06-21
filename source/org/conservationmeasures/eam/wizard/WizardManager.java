@@ -171,7 +171,6 @@ public class WizardManager
 		}
 
 		newStepClass.refresh();
-		newStepClass.getWizard().setContents(newStepClass);
 
 		//TODO: this belongs in mainWindow
 		if (mainWindow.getWizard()!=null)
