@@ -165,10 +165,22 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 	}
 
-	public ViewSplitPane getViewSplitPane()
+	public void setDividerLocaton()
 	{
-		return spliterPane;
+		if (spliterPane!=null)
+		{
+			int location = spliterPane.getSplitterLocation("WIZARDSPLITER");
+			spliterPane.setDividerLocation(location);
+		}
 	}
+	
+
+	public void setDividerLocationWithoutNotifications(int location)
+	{
+		if (spliterPane!=null)
+			spliterPane.setDividerLocationWithoutNotifications(location);
+	}
+	
 	
 	private WizardPanel createWizardPanel(UmbrellaView view)
 	{

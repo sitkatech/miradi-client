@@ -172,13 +172,13 @@ public class WizardManager
 		}
 
 		newStepClass.refresh();
-		newView.setSplitterLocationToMiddle();
 		newStepClass.getWizard().setContents(newStepClass);
 
 		if (mainWindow.getWizard()!=null)
 		{
 				mainWindow.getWizard().setContents(newStepClass);
 				mainWindow.getWizard().refresh();
+				mainWindow.setDividerLocaton();
 		}
 		return newStep;
 	}

@@ -44,7 +44,7 @@ public class ViewSplitPane extends JSplitPane
 		saveLocation(location);
 	}
 
-	private void setDividerLocationWithoutNotifications(int location)
+	public void setDividerLocationWithoutNotifications(int location)
 	{
 		super.setDividerLocation(location);
 	}
