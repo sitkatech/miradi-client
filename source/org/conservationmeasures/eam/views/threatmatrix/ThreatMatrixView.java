@@ -33,10 +33,10 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.martus.swing.UiScrollPane;
 
 
 public class ThreatMatrixView extends UmbrellaView
@@ -103,7 +103,7 @@ public class ThreatMatrixView extends UmbrellaView
 		details = new ThreatRatingBundlePanel(this);
 		
 		Container bottomHalf = new JPanel(new BorderLayout());
-		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
+		bottomHalf.add(new FastScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
 		bottomHalf.add(grid, BorderLayout.CENTER); 
 
 		return bottomHalf;
