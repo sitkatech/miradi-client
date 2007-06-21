@@ -25,19 +25,22 @@ public class NoProjectView extends UmbrellaView
 		return new NoProjectToolBar(getActions());
 	}
 
-	public void becomeActive() throws Exception
-	{
-		super.becomeActive();
-	}
 	
 	public WizardPanel createWizardPanel() throws Exception
 	{
 		return wizardPanel;
 	}
 
+	
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+		getMainWindow().setDividerLocation(Integer.MAX_VALUE);
+	}
+
 	public void becomeInactive() throws Exception
 	{
-		// nothing to do...would clear all view data
+		getMainWindow().setDividerLocation(getMainWindow().getHeight()/2);
 		super.becomeInactive();
 	}
 	

@@ -168,6 +168,19 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 	}
 	
+	public void setDividerLocation(int location)
+	{
+		if (spliterPane!=null)
+			spliterPane.setDividerLocation(location);
+	}
+	
+	public int getDividerLocation()
+	{
+		if (spliterPane!=null)
+			return spliterPane.getDividerLocation();
+		return 0;
+	}
+
 	private WizardPanel createWizardPanel(UmbrellaView view)
 	{
 		//FIXME: ****** should pass in a no project view default page

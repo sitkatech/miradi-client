@@ -175,8 +175,11 @@ public class WizardManager
 
 		if (mainWindow.getWizard()!=null)
 		{
+				int location = mainWindow.getDividerLocation();
 				mainWindow.getWizard().setContents(newStepClass);
 				mainWindow.getWizard().refresh();
+				mainWindow.validate();
+				mainWindow.setDividerLocation(location);
 		}
 		return newStep;
 	}
