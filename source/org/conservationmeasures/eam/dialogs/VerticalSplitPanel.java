@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.umbrella.ManagementPanelSplitPane;
-import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
+import org.conservationmeasures.eam.views.umbrella.PersistentSplitPane;
 
 abstract public class VerticalSplitPanel extends ModelessDialogPanel
 {
@@ -68,5 +68,5 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 
 	public final static String SPLITTER_TAG = "Splitter";
 	private SplitterPositionSaverAndGetter splitPositionSaver;
-	private ViewSplitPane splitter;
+	private PersistentSplitPane splitter;
 }

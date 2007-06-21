@@ -69,6 +69,7 @@ import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -149,12 +150,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		
 		//FIXME: this code should be extracted to a ViewSplitPane...note currently the old VIewSPlitPane is used by none view and shold be renamed
-		spliterPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		spliterPane.setTopComponent(wizardPanel);
-		spliterPane.setBottomComponent(viewHolder);
-		spliterPane.setOneTouchExpandable(true);
-		spliterPane.setDividerSize(15);
-		spliterPane.setResizeWeight(.5);
+		spliterPane = new ViewSplitPane(wizardPanel, viewHolder);
 		getContentPane().add(spliterPane, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);

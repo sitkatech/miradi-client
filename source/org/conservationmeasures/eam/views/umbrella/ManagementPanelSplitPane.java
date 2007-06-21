@@ -9,7 +9,7 @@ import java.awt.Component;
 
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
-public class ManagementPanelSplitPane extends ViewSplitPane
+public class ManagementPanelSplitPane extends PersistentSplitPane
 {
 	public ManagementPanelSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel)
 	{
