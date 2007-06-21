@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.StringData;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
@@ -85,9 +84,9 @@ public class Cause extends Factor
 
 	private boolean doesLinkPointToTargetFactor(FactorLink link)
 	{
-		if(link.getFromFactorId().equals(getId()))
+		if(link.getFromFactorRef().equals(getRef()))
 		{
-			Factor toFactor = (Factor) objectManager.findObject(new ORef(ObjectType.FACTOR, link.getToFactorId()));
+			Factor toFactor = (Factor) objectManager.findObject(link.getToFactorRef());
 			if (toFactor.getType() == ObjectType.TARGET)
 				return true;
 		}
@@ -95,9 +94,9 @@ public class Cause extends Factor
 		if (!link.isBidirectional())
 			return false;
 		
-		if(link.getToFactorId().equals(getId()))
+		if(link.getToFactorRef().equals(getRef()))
 		{
-			Factor fromFactor = (Factor) objectManager.findObject(new ORef(ObjectType.FACTOR, link.getFromFactorId()));
+			Factor fromFactor = (Factor) objectManager.findObject(link.getFromFactorRef());
 			if (fromFactor.getType() == ObjectType.TARGET)
 				return true;
 		}

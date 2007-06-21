@@ -40,8 +40,8 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		for(int i = 0; i < getIds().length; ++i)
 		{
 			FactorLink thisLinkage = getLinkage(i);
-			FactorId fromId = thisLinkage.getFromFactorId();
-			FactorId toId = thisLinkage.getToFactorId();
+			FactorId fromId = new FactorId(thisLinkage.getFromFactorRef().getObjectId().asInt());
+			FactorId toId = new FactorId( thisLinkage.getToFactorRef().getObjectId().asInt());
 			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
 				return (FactorLinkId) thisLinkage.getId();
 			if(fromId.equals(nodeId2) && toId.equals(nodeId1))

@@ -18,10 +18,10 @@ public class TestFactorLink extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
-		FactorLink linkageData = new FactorLink(id, nodeA.getWrappedId(), nodeB.getWrappedId());
+		FactorLink linkageData = new FactorLink(id, nodeA.getWrappedORef(), nodeB.getWrappedORef());
 		assertEquals("Id not the same?", id, linkageData.getId());
-		assertEquals("From Node Ids don't match", nodeA.getWrappedId(), linkageData.getFromFactorId());
-		assertEquals("To Node Ids don't match", nodeB.getWrappedId(), linkageData.getToFactorId());
+		assertEquals("From Node refs don't match", nodeA.getWrappedORef(), linkageData.getFromFactorRef());
+		assertEquals("To Node refs don't match", nodeB.getWrappedORef(), linkageData.getToFactorRef());
 	}
 
 	public void setUp() throws Exception
@@ -40,20 +40,20 @@ public class TestFactorLink extends EAMTestCase
 
 	public void testToJson() throws Exception
 	{
-		FactorLink original = new FactorLink(id, nodeA.getWrappedId(), nodeB.getWrappedId());
+		FactorLink original = new FactorLink(id, nodeA.getWrappedORef(), nodeB.getWrappedORef());
 		original.setData(FactorLink.TAG_STRESS_LABEL, "What stress!");
 		EnhancedJsonObject json = original.toJson();
 		FactorLink gotBack = (FactorLink)BaseObject.createFromJson(project.getObjectManager(), original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
-		assertEquals("wrong from?", original.getFromFactorId(), gotBack.getFromFactorId());
-		assertEquals("wrong to?", original.getToFactorId(), gotBack.getToFactorId());
+		assertEquals("wrong from?", original.getFromFactorRef(), gotBack.getFromFactorRef());
+		assertEquals("wrong to?", original.getToFactorRef(), gotBack.getToFactorRef());
 		assertEquals("wrong stress label?", original.getStressLabel(), gotBack.getStressLabel());
 	}
 	
 	public void testStressLabel() throws Exception
 	{
 		String sampleStressLabel = "A Stress";
-		FactorLink linkage = new FactorLink(id, nodeA.getWrappedId(), nodeB.getWrappedId());
+		FactorLink linkage = new FactorLink(id, nodeA.getWrappedORef(), nodeB.getWrappedORef());
 		assertEquals("Didn't default to blank stress?", "", linkage.getStressLabel());
 		linkage.setData(FactorLink.TAG_STRESS_LABEL, sampleStressLabel);
 		assertEquals("Didn't set stress?", sampleStressLabel, linkage.getStressLabel());
@@ -69,8 +69,8 @@ public class TestFactorLink extends EAMTestCase
 		
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(nodeA.getWrappedORef(), nodeB.getWrappedORef());
 		CreateFactorLinkParameter gotExtraInfo = (CreateFactorLinkParameter)linkage.getCreationExtraInfo();
-		assertEquals(extraInfo.getFromId(), gotExtraInfo.getFromId());
-		assertEquals(extraInfo.getToId(), gotExtraInfo.getToId());
+		assertEquals(extraInfo.getFromRef(), gotExtraInfo.getFromRef());
+		assertEquals(extraInfo.getToRef(), gotExtraInfo.getToRef());
 	}
 
 	static final FactorLinkId id = new FactorLinkId(1);

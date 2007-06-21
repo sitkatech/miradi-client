@@ -637,16 +637,16 @@ public class TestProject extends EAMTestCase
 	{
 		FactorCell nodeA = project.createFactorCell(ObjectType.CAUSE);
 		FactorCell nodeB = project.createFactorCell(ObjectType.TARGET);
-		FactorId idA = nodeA.getWrappedId();
-		FactorId idB = nodeB.getWrappedId();
+		ORef refA = nodeA.getWrappedORef();
+		ORef refB = nodeB.getWrappedORef();
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(nodeA.getWrappedORef(), nodeB.getWrappedORef());
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, idAssigner.takeNextId(), parameter);
 		FactorLinkId linkageId = createdId;
 		FactorLinkPool linkagePool = project.getFactorLinkPool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		FactorLink cmLinkage = linkagePool.find(linkageId);
-		assertEquals("wrong from?", idA, cmLinkage.getFromFactorId());
-		assertEquals("wrong to?", idB, cmLinkage.getToFactorId());
+		assertEquals("wrong from?", refA, cmLinkage.getFromFactorRef());
+		assertEquals("wrong to?", refB, cmLinkage.getToFactorRef());
 		assertTrue("not linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 		
 		project.deleteObject(cmLinkage);

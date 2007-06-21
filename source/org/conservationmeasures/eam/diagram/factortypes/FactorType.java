@@ -68,6 +68,7 @@ public abstract class FactorType
 	
 	public static int getFactorTypeFromString(String factorType) throws Exception
 	{
+		//Note : if you change this method you could effect the migration from 19 -> 20
 		if (factorType.equals(FactorTypeTarget.TARGET_TYPE))
 			return ObjectType.TARGET;
 		

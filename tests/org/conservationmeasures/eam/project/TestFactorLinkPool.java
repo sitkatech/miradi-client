@@ -35,11 +35,13 @@ public class TestFactorLinkPool extends TestCaseEnhanced
 		Factor node3 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);
 		
 		FactorLinkId linkageId = new FactorLinkId(idAssigner.takeNextId().asInt());
-		FactorLink linkage = new FactorLink(linkageId, node1.getFactorId(), node2.getFactorId());
+		FactorLink linkage = new FactorLink(linkageId, node1.getRef(), node2.getRef());
 		pool.put(linkage);
 		
-		assertTrue("Didn't find link 1->2?", pool.isLinked(linkage.getFromFactorId(), linkage.getToFactorId()));
-		assertTrue("Didn't find link 2->1?", pool.isLinked(linkage.getToFactorId(), linkage.getFromFactorId()));
+		FactorId fromId = (FactorId) linkage.getFromFactorRef().getObjectId();
+		FactorId toId = (FactorId) linkage.getToFactorRef().getObjectId();
+		assertTrue("Didn't find link 1->2?", pool.isLinked(fromId, toId));
+		assertTrue("Didn't find link 2->1?", pool.isLinked(toId, fromId));
 		assertFalse("Found link 1->3?", pool.isLinked((FactorId)node1.getId(), (FactorId)node3.getId()));
 	}
 	

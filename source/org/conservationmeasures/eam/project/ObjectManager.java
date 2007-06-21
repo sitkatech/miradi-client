@@ -202,7 +202,7 @@ public class ObjectManager
 			{
 				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
 				FactorLinkId realId = getProject().obtainRealLinkageId(objectId);
-				FactorLink cmLinkage = new FactorLink(this, realId, parameter.getFromId(), parameter.getToId());
+				FactorLink cmLinkage = new FactorLink(this, realId, parameter.getFromRef(), parameter.getToRef());
 				getDatabase().writeObject(cmLinkage);
 				EAMObjectPool pool = getPool(objectType);
 				pool.put(realId, cmLinkage);

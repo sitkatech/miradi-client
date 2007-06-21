@@ -274,13 +274,12 @@ public class ThreatRatingFramework
 		for(int i = 0; i < links.size(); ++i)
 		{
 			FactorLink link = (FactorLink)project.findObject(links.get(i));
-			if(link.getFromFactorId().equals(threatId) && 
-					link.getToFactorId().equals(targetId))
+			FactorId fromId = new FactorId(link.getFromFactorRef().getObjectId().asInt());
+			FactorId toId = new FactorId(link.getToFactorRef().getObjectId().asInt());
+			if(fromId.equals(threatId) && toId.equals(targetId))
 				return true;
 
-			if(link.isBidirectional() && 
-					link.getFromFactorId().equals(targetId) && 
-					link.getToFactorId().equals(threatId))
+			if(link.isBidirectional() && fromId.equals(targetId) && toId.equals(threatId))
 				return true;
 		}
 		

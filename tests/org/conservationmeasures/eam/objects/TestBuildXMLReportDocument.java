@@ -17,6 +17,8 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EAMFileSaveChooser;
 import org.conservationmeasures.eam.utils.EAMXmlFileChooser;
@@ -52,14 +54,15 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 			writeXMLVersionLine();
 			writeLineReturn();
 			writeStartElementWithNamedAttr("Miradi", "project", projectName);
-
 			
-//			processObject(project, new AccountingCode(BaseId.INVALID));
+			//			processObject(project, new AccountingCode(BaseId.INVALID));
 //			processObject(project, new Assignment(BaseId.INVALID, new CreateAssignmentParameter(new TaskId(BASE_INT))));
 //			processObject(project, new Strategy(new FactorId(BASE_INT)));
 //*			processObject(project, new Target(new FactorId(BASE_INT)));
 //			processObject(project, new Cause(new FactorId(BASE_INT)));
-			processObject(project, new FactorLink(new FactorLinkId(BASE_INT), new FactorId(BASE_INT), new FactorId(BASE_INT)));
+			ORef toRef = new ORef(ObjectType.CAUSE, new FactorId( BASE_INT));
+			ORef fromRef = new ORef(ObjectType.CAUSE, new FactorId( BASE_INT));
+			processObject(project, new FactorLink(new FactorLinkId(BASE_INT), fromRef, toRef ));
 //			processObject(project, new FundingSource(BaseId.INVALID));
 //*			processObject(project, new Goal(BaseId.INVALID));
 //*			processObject(project, new Indicator(new IndicatorId(BASE_INT)));

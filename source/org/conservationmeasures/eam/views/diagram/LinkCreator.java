@@ -101,7 +101,7 @@ public class LinkCreator
 		if (link.isBidirectional())
 			return;
 		
-		if(link.getFromFactorId().equals(fromFactorId))
+		if(link.getFromFactorRef().getObjectId().equals(fromFactorId))
 			return;
 		
 		CommandSetObjectData command = new CommandSetObjectData(link.getRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
@@ -121,8 +121,8 @@ public class LinkCreator
 	public void createDiagramLinks(FactorLinkId factorLinkId) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
-		Factor toFactor = getFactor(factorLink.getToFactorId());
-		Factor fromFactor = getFactor(factorLink.getFromFactorId());
+		Factor toFactor = getFactor(factorLink.getToFactorRef());
+		Factor fromFactor = getFactor(factorLink.getFromFactorRef());
 		
 		ORefList toDiagramFactors = toFactor.findObjectsThatReferToUs(ObjectType.DIAGRAM_FACTOR);  
 		ORefList fromDiagramFactors = fromFactor.findObjectsThatReferToUs(ObjectType.DIAGRAM_FACTOR);
@@ -157,9 +157,9 @@ public class LinkCreator
 		return null;
 	}
 
-	private Factor getFactor(FactorId toFactorId)
+	private Factor getFactor(ORef factorRef)
 	{
-		return (Factor) project.findObject(new ORef(ObjectType.FACTOR, toFactorId));
+		return (Factor) project.findObject(factorRef);
 	}
 	
 	private void createDiagramLink(DiagramObject diagramObject, FactorLinkId factorlLinkId, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws CommandFailedException, ParseException

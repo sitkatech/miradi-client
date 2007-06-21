@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import java.util.HashMap;
 
-import org.conservationmeasures.eam.ids.FactorId;
-
 public class CreateFactorLinkParameter extends CreateObjectParameter
 {
 	public CreateFactorLinkParameter(ORef fromRefToUse, ORef toRefToUse)
@@ -17,14 +15,14 @@ public class CreateFactorLinkParameter extends CreateObjectParameter
 		toRef = toRefToUse;
 	}
 	
-	public FactorId getFromId()
+	public ORef getFromRef()
 	{
-		return (FactorId) fromRef.getObjectId();
+		return fromRef;
 	}
 	
-	public FactorId getToId()
+	public ORef getToRef()
 	{
-		return (FactorId) toRef.getObjectId();
+		return toRef;
 	}
 	
 	public String getFormatedDataString()

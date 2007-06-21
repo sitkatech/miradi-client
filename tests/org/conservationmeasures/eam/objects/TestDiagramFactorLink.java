@@ -126,8 +126,8 @@ public class TestDiagramFactorLink extends ObjectTestCase
 		ProjectServer server = project.getTestDatabase();
 		DiagramLink dfl = project.getDiagramModel().getDiagramFactorLinkById(createdDiagramFactorLinkId);
 		FactorLink linkage = (FactorLink)server.readObject(project.getObjectManager(), ObjectType.FACTOR_LINK, dfl.getWrappedId());
-		assertEquals("Didn't load from id?", intervention.getWrappedId(), linkage.getFromFactorId());
-		assertEquals("Didn't load to id?", cause.getWrappedId(), linkage.getToFactorId());
+		assertEquals("Didn't load from ref?", intervention.getWrappedORef(), linkage.getFromFactorRef());
+		assertEquals("Didn't load to ref?", cause.getWrappedORef(), linkage.getToFactorRef());
 	}
 
 	private static DiagramFactorLinkId createDiagramFactorLink(ProjectForTesting projectForTesting, FactorId interventionId, FactorId factorId, FactorLinkId modelLinkageId) throws CommandFailedException

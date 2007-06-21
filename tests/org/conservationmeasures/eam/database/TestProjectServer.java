@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
@@ -108,12 +109,14 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		FactorLink original = new FactorLink(new FactorLinkId(1), new FactorId(2), new FactorId(3));
+		ORef fromRef = new ORef(ObjectType.FACTOR, new FactorId(2));
+		ORef toRef = new ORef(ObjectType.FACTOR, new FactorId(3));
+		FactorLink original = new FactorLink(new FactorLinkId(1), fromRef, toRef);
 		storage.writeObject(original);
 		FactorLink got = (FactorLink)storage.readObject(project.getObjectManager(), original.getType(), original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
-		assertEquals("wrong from?", original.getFromFactorId(), got.getFromFactorId());
-		assertEquals("wrong to?", original.getToFactorId(), got.getToFactorId());
+		assertEquals("wrong from?", original.getFromFactorRef(), got.getFromFactorRef());
+		assertEquals("wrong to?", original.getToFactorRef(), got.getToFactorRef());
 		
 		ObjectManifest linkageIds = storage.readObjectManifest(original.getType());
 		assertEquals("not one link?", 1, linkageIds.size());
@@ -126,7 +129,9 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		FactorLink original = new FactorLink(new FactorLinkId(1), new FactorId(2), new FactorId(3));
+		ORef fromRef = new ORef(ObjectType.FACTOR, new FactorId(2));
+		ORef toRef = new ORef(ObjectType.FACTOR, new FactorId(3));
+		FactorLink original = new FactorLink(new FactorLinkId(1), fromRef, toRef);
 		storage.writeObject(original);
 		storage.deleteObject(original.getType(), original.getId());
 		assertEquals("didn't delete?", 0, storage.readObjectManifest(original.getType()).size());

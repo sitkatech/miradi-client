@@ -14,9 +14,12 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectZipper;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
@@ -106,8 +109,97 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		if (readDataVersion(getTopDirectory()) == 18)
 			upgradeToVersion19();
+		
+		if (readDataVersion(getTopDirectory()) == 19)
+			upgradeToVersion20();
 	}
 	
+	public void upgradeToVersion20() throws Exception
+	{
+		changeLinkFromToIdsToORefs();
+		writeVersion(20);
+	}
+	
+	public void changeLinkFromToIdsToORefs() throws Exception
+	{
+		File jsonDir = new File(topDirectory, "json");
+		
+		File factorLinkDir = new File(jsonDir, "objects-6");
+		if (! factorLinkDir.exists())
+			return;
+		
+		File linkManifestFile = new File(factorLinkDir, "manifest");
+		if (! linkManifestFile.exists())
+			throw new RuntimeException("manifest for objects-6 directory does not exist " + linkManifestFile.getAbsolutePath());
+		
+		Vector allFactorTypeDirs = new Vector();
+		Vector allManifestFiles = new Vector();
+		int[] typesToConsider = {ObjectType.FACTOR, ObjectType.TARGET, ObjectType.STRATEGY, ObjectType.CAUSE, ObjectType.INTERMEDIATE_RESULT, ObjectType.THREAT_REDUCTION_RESULT, ObjectType.TEXT_BOX};
+		for (int i = 0; i < typesToConsider.length; ++i)
+		{
+			
+			File factorDir = new File(jsonDir, "objects-" + typesToConsider[i]);
+			if (! factorDir.exists())
+				continue;
+					
+			File factorManifestFile = new File(factorDir, "manifest");
+			if (! factorManifestFile.exists())
+				throw new RuntimeException("manifest for objects-" + typesToConsider[i] + " directory does not exist " + factorManifestFile.getAbsolutePath());
+			
+			allFactorTypeDirs.add(factorDir);
+			allManifestFiles.add(new ObjectManifest(JSONFile.read(factorManifestFile)));
+		}
+		 
+		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(linkManifestFile));
+		BaseId[] allFactorLinkIds = factorLinkManifest.getAllKeys();
+		
+		
+		for (int i = 0; i < allFactorLinkIds.length; ++i)
+		{
+			File factorLinkFile = new File(factorLinkDir, Integer.toString(allFactorLinkIds[i].asInt()));
+			
+			EnhancedJsonObject factorLinkJson = readFile(factorLinkFile);
+			BaseId fromId = new BaseId(factorLinkJson.optString("FromId"));
+			ORef fromRef = getORefForFactorId(allFactorTypeDirs, allManifestFiles, fromId);
+			
+			BaseId toId = new BaseId(factorLinkJson.optString("ToId"));
+			ORef toRef = getORefForFactorId(allFactorTypeDirs, allManifestFiles, toId);
+			
+			factorLinkJson.put("FromRef", fromRef.toJson());
+			factorLinkJson.put("ToRef", toRef.toJson());
+			writeJson(factorLinkFile, factorLinkJson);
+		}
+	}
+
+	private ORef getORefForFactorId(Vector allFactorTypeDirs, Vector allManifestFiles, BaseId id) throws Exception
+	{
+		for (int i = 0; i < allFactorTypeDirs.size(); ++i)
+		{
+			ObjectManifest manifest = (ObjectManifest) allManifestFiles.get(i);
+			File factorDir = (File) allFactorTypeDirs.get(i);
+			BaseId[] allFactorIds = manifest.getAllKeys();
+			
+			for (int j = 0; j < allFactorIds.length; ++j)
+			{
+				if (allFactorIds[j].equals(id))
+				{
+					return getORefFromId(factorDir, allFactorIds[j]);
+				}
+			}
+		}
+		
+		return ORef.INVALID;
+	}
+
+	private ORef getORefFromId(File factorDir, BaseId id) throws Exception
+	{
+		File factorFile = new File(factorDir, Integer.toString(id.asInt()));
+		JSONObject factorJson = JSONFile.read(factorFile);
+		int type = FactorType.getFactorTypeFromString(factorJson.getString("Type"));
+		
+		return new ORef(type, id);
+	}
+
 	public void upgradeToVersion19() throws Exception
 	{
 		possiblyNotifyUserAfterUpgradingToVersion19();

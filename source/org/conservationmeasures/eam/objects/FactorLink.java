@@ -5,13 +5,13 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.BooleanData;
+import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -19,20 +19,20 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
 {
-	public FactorLink(ObjectManager objectManager, FactorLinkId id, FactorId fromNodeId, FactorId toNodeId)
+	public FactorLink(ObjectManager objectManager, FactorLinkId id, ORef fromNodeRef, ORef toNodeRef)
 	{
 		super(objectManager, id);
 		clear();
-		setFromId(fromNodeId);
-		setToId(toNodeId);
+		setFromRef(fromNodeRef);
+		setToRef(toNodeRef);
 	}
 
-	public FactorLink(FactorLinkId id, FactorId fromNodeId, FactorId toNodeId)
+	public FactorLink(FactorLinkId id, ORef fromNodeRef, ORef toNodeRef)
 	{
 		super(id);
 		clear();
-		setFromId(fromNodeId);
-		setToId(toNodeId);
+		setFromRef(fromNodeRef);
+		setToRef(toNodeRef);
 	}
 	
 	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
@@ -40,14 +40,14 @@ public class FactorLink extends BaseObject
 		super(objectManager, new FactorLinkId(idAsInt), jsonObject);
 	}
 	
-	public void setFromId(FactorId fromNodeId)
+	public void setFromRef(ORef fromNodeRef)
 	{
-		fromId.setId(fromNodeId);
+		fromRef.set(fromNodeRef);
 	}
 	
-	public void setToId(FactorId toNodeId)
+	public void setToRef(ORef toNodeRef)
 	{
-		toId.setId(toNodeId);
+		toRef.set(toNodeRef);
 	}
 
 	public int getType()
@@ -90,11 +90,11 @@ public class FactorLink extends BaseObject
 			case ObjectType.STRATEGY:
 			case ObjectType.TARGET:
 			{
-				Factor toFactor = objectManager.findNode(getToFactorId());
+				Factor toFactor = (Factor) objectManager.findObject(getToFactorRef());
 				if (toFactor.getType() == objectType)
 					list.add(toFactor.getRef());
 				
-				Factor fromFactor = objectManager.findNode(getFromFactorId());
+				Factor fromFactor = (Factor) objectManager.findObject(getFromFactorRef());
 				if (fromFactor.getType() == objectType)
 					list.add(fromFactor.getRef());
 			}
@@ -102,14 +102,14 @@ public class FactorLink extends BaseObject
 		return list;
 	}
 	
-	public FactorId getFromFactorId()
+	public ORef getFromFactorRef()
 	{
-		return new FactorId(fromId.getId().asInt());
+		return fromRef.getRawRef();
 	}
 	
-	public FactorId getToFactorId()
+	public ORef getToFactorRef()
 	{
-		return new FactorId(toId.getId().asInt());
+		return toRef.getRawRef();
 	}
 	
 	public FactorLinkId getFactorLinkId()
@@ -129,38 +129,38 @@ public class FactorLink extends BaseObject
 	
 	public boolean isTargetLink()
 	{
-		 if (objectManager.findNode(getToFactorId()).isTarget())
+		 if (((Factor) objectManager.findObject(getToFactorRef())).isTarget())
 			 return true;
 		 
 		 if (!isBidirectional())
 			 return false;
 			 
-		 return (objectManager.findNode(getFromFactorId()).isTarget());
+		 return (((Factor) objectManager.findObject(getFromFactorRef())).isTarget());
 	}
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		Factor fromFactor = objectManager.findNode(getFromFactorId());
-		Factor toFactor = objectManager.findNode(getToFactorId());
+		Factor fromFactor = (Factor) objectManager.findObject(getFromFactorRef());
+		Factor toFactor = (Factor) objectManager.findObject(getToFactorRef());
 		return new CreateFactorLinkParameter(fromFactor.getRef(), toFactor.getRef());
 	}
 
 
-	public FactorId getNodeId(int direction)
+	public ORef getNodeRef(int direction)
 	{
 		if(direction == FROM)
-			return getFromFactorId();
+			return getFromFactorRef();
 		if(direction == TO)
-			return getToFactorId();
+			return getToFactorRef();
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
-	public FactorId getOppositeNodeId(int direction)
+	public ORef getOppositeNodeRef(int direction)
 	{
 		if(direction == FROM)
-			return getNodeId(TO);
+			return getNodeRef(TO);
 		if(direction == TO)
-			return getNodeId(FROM);
+			return getNodeRef(FROM);
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
@@ -168,20 +168,20 @@ public class FactorLink extends BaseObject
 	void clear()
 	{
 		super.clear();
-		fromId = new BaseIdData();
-		toId = new BaseIdData();
+		fromRef = new ORefData();
+		toRef = new ORefData();
 		stressLabel = new StringData();
 		bidirectionalLink = new BooleanData();
 		
-		addNoClearField(TAG_FROM_ID, fromId);
-		addNoClearField(TAG_TO_ID, toId);
+		addNoClearField(TAG_FROM_REF, fromRef);
+		addNoClearField(TAG_TO_REF, toRef);
 		addField(TAG_STRESS_LABEL, stressLabel);
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
 	}
 	
 	
-	private static String TAG_FROM_ID = "FromId";
-	private static String TAG_TO_ID = "ToId";
+	private static String TAG_FROM_REF = "FromRef";
+	private static String TAG_TO_REF = "ToRef";
 	public static String TAG_STRESS_LABEL = "StressLabel";
 	public static String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 
@@ -191,8 +191,8 @@ public class FactorLink extends BaseObject
 	public static final int TO = 2;
 	public static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
 	
-	private BaseIdData fromId;
-	private BaseIdData toId;
+	private ORefData fromRef;
+	private ORefData toRef;
 	private StringData stressLabel;
 	private BooleanData bidirectionalLink;
 }

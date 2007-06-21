@@ -10,11 +10,13 @@ import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -111,6 +113,68 @@ public class TestDataUpgrader extends EAMTestCase
 		upgraderWithNoObjects6.upgradeToVersion16();
 	}
 
+	public void testUpgradeTo20AddORefsInFactorLinks() throws Exception
+	{
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
+		
+		File factorObjects = new File(jsonDir, "objects-4");
+		factorObjects.mkdirs();
+		
+		ORef expectedFromRef = new ORef(22, new BaseId(23));
+		ORef expectedToRef = new ORef(22, new BaseId(45));
+		int[] factorIds = {23, 45};
+		File factorObjectsManifest = createManifestFile(factorObjects, factorIds);
+		assertTrue("factor manifest doesnt exist?", factorObjectsManifest.exists());
+		
+		String targetString =" {\"Type\":\"Target\",\"CurrentStatusJustification\":\"\",\"ViabilityMode\":\"\",\"Comment\":\"\",\"TimeStampModified\":\"1181599939359\",\"GoalIds\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"TargetStatus\":\"\",\"IndicatorIds\":\"\",\"Label\":\"New Target\",\"Id\":23,\"ObjectiveIds\":\"\"} ";
+		String causeString =" {\"Type\":\"Target\",\"CurrentStatusJustification\":\"\",\"ViabilityMode\":\"\",\"Comment\":\"\",\"TimeStampModified\":\"1181599939359\",\"GoalIds\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"TargetStatus\":\"\",\"IndicatorIds\":\"\",\"Label\":\"New Target\",\"Id\":45,\"ObjectiveIds\":\"\"} ";
+		
+		File targetFile = new File(factorObjects, "23");
+		createFile(targetFile, targetString);
+		
+		File causeFile = new File(factorObjects, "45");
+		createFile(causeFile, causeString);
+	
+		
+		File linkObjects = new File(jsonDir, "objects-6");
+		linkObjects.mkdirs();
+		
+		int[] linkIds = {2};
+		File linkObjectsManifest = createManifestFile(linkObjects, linkIds);
+		assertTrue("link manifest doesnt exist?", linkObjectsManifest.exists());
+		
+		String linkString = " {\"FromId\":\"23\",\"ToId\":\"45\",\"TimeStampModified\":\"1181600089796\",\"Label\":\"\",\"StressLabel\":\"\",\"BidirectionalLink\":\"0\",\"Id\":2}  ";
+		File linkFile = new File(linkObjects, "2");
+		createFile(linkFile, linkString);
+		
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		upgrader.changeLinkFromToIdsToORefs();
+		
+		EnhancedJsonObject json = new EnhancedJsonObject(readFile(linkFile));
+		try
+		{
+			EnhancedJsonObject fromRefAsString = json.getJson("FromRef");
+			ORef retreivedFromRef = new ORef(fromRefAsString);
+			assertEquals("wrong ref", retreivedFromRef, expectedFromRef);
+		}
+		catch (NoSuchElementException ignore)
+		{
+			fail("FromRef does not exist in link?");	
+		}		
+		
+		try
+		{
+			EnhancedJsonObject toRefAsString = json.getJson("ToRef");
+			ORef retreivedToRef = new ORef(toRefAsString);
+			assertEquals("wrong ref", retreivedToRef, expectedToRef);
+		}
+		catch (NoSuchElementException ignore)
+		{
+			fail("toRef does not exist in link?");
+		}		
+	}
+	
 	public void testUpgradeTo19RemovingGoalIdsFromIndicators() throws Exception
 	{
 		File jsonDir = new File(tempDirectory, "json");
