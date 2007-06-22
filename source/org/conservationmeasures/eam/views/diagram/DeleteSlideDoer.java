@@ -35,8 +35,8 @@ public class DeleteSlideDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		Slide resource = (Slide)getObjects()[0];
-		BaseId idToRemove = resource.getId();
+		Slide slide = (Slide)getObjects()[0];
+		BaseId idToRemove = slide.getId();
 		
 		Vector dialogText = new Vector();
 		
@@ -53,7 +53,7 @@ public class DeleteSlideDoer extends ObjectsDoer
 			{
 				BaseObject object = getSlideShow();
 				getProject().executeCommand(CommandSetObjectData.createRemoveIdCommand(object, SlideShow.TAG_SLIDE_REFS, idToRemove));
-				getProject().executeCommands(resource.createCommandsToClear());
+				getProject().executeCommands(slide.createCommandsToClear());
 				getProject().executeCommand(new CommandDeleteObject(Slide.getObjectType(), idToRemove));
 			}
 			finally
