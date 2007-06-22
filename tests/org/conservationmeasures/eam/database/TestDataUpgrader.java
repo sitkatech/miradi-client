@@ -115,9 +115,21 @@ public class TestDataUpgrader extends EAMTestCase
 
 	public void testUpgradeTo20AddORefsInFactorLinks() throws Exception
 	{
-		//FIXME nima add tests for all factor types
 		File jsonDir = new File(tempDirectory, "json");
 		jsonDir.mkdirs();
+		
+		File intermediateResultsObjects = new File(jsonDir, "objects-23");
+		intermediateResultsObjects.mkdirs();		
+		
+		ORef expectedFromRef2 = new ORef(23, new BaseId(115));
+		int[] intermerdiateResultsIds = {115};
+		File intermediateResultsObjectsManifest = createManifestFile(intermediateResultsObjects, intermerdiateResultsIds);
+		assertTrue("factor manifest doesnt exist?", intermediateResultsObjectsManifest.exists());
+
+		String intermediateResult =" {\"Type\":\"Intermediate Result\",\"Comment\":\"\",\"TimeStampModified\":\"1181600089656\",\"GoalIds\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"IndicatorIds\":\"\",\"Label\":\"[ New Factor ]\",\"Id\":115,\"ObjectiveIds\":\"\"} ";
+		File intermediateResultsFile = new File(intermediateResultsObjects, "115");
+		createFile(intermediateResultsFile, intermediateResult);
+
 		
 		File factorObjects = new File(jsonDir, "objects-4");
 		factorObjects.mkdirs();
@@ -141,39 +153,42 @@ public class TestDataUpgrader extends EAMTestCase
 		File linkObjects = new File(jsonDir, "objects-6");
 		linkObjects.mkdirs();
 		
-		int[] linkIds = {2};
+		int[] linkIds = {2, 3};
 		File linkObjectsManifest = createManifestFile(linkObjects, linkIds);
 		assertTrue("link manifest doesnt exist?", linkObjectsManifest.exists());
 		
 		String linkString = " {\"FromId\":\"23\",\"ToId\":\"45\",\"TimeStampModified\":\"1181600089796\",\"Label\":\"\",\"StressLabel\":\"\",\"BidirectionalLink\":\"0\",\"Id\":2}  ";
+		String link115to45 = " {\"FromId\":\"115\",\"ToId\":\"45\",\"TimeStampModified\":\"1181600089796\",\"Label\":\"\",\"StressLabel\":\"\",\"BidirectionalLink\":\"0\",\"Id\":3}  ";
 		File linkFile = new File(linkObjects, "2");
 		createFile(linkFile, linkString);
+		
+		File linkFile2 = new File(linkObjects, "3");
+		createFile(linkFile2, link115to45);
+
 		
 		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
 		upgrader.changeLinkFromToIdsToORefs();
 		
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(linkFile));
+		checkNewlyWrittenORef(expectedFromRef, json, "FromRef");		
+		checkNewlyWrittenORef(expectedToRef, json, "ToRef");
+		
+		EnhancedJsonObject json2 = new EnhancedJsonObject(readFile(linkFile2));
+		checkNewlyWrittenORef(expectedFromRef2, json2, "FromRef");
+	}
+
+	private void checkNewlyWrittenORef(ORef expectedFromRef, EnhancedJsonObject json, String tag)
+	{
 		try
 		{
-			EnhancedJsonObject fromRefAsString = json.getJson("FromRef");
+			EnhancedJsonObject fromRefAsString = json.getJson(tag);
 			ORef retreivedFromRef = new ORef(fromRefAsString);
 			assertEquals("wrong ref", retreivedFromRef, expectedFromRef);
 		}
 		catch (NoSuchElementException ignore)
 		{
-			fail("FromRef does not exist in link?");	
-		}		
-		
-		try
-		{
-			EnhancedJsonObject toRefAsString = json.getJson("ToRef");
-			ORef retreivedToRef = new ORef(toRefAsString);
-			assertEquals("wrong ref", retreivedToRef, expectedToRef);
+			fail("ref does not exist in link?");	
 		}
-		catch (NoSuchElementException ignore)
-		{
-			fail("toRef does not exist in link?");
-		}		
 	}
 	
 	public void testUpgradeTo19RemovingGoalIdsFromIndicators() throws Exception
