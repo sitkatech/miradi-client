@@ -123,8 +123,9 @@ public class DataUpgrader extends FileBasedProjectServer
 		if (readDataVersion(getTopDirectory()) == 19)
 			upgradeToVersion20();
 		
-		if (readDataVersion(getTopDirectory()) == 20)
-			upgradeToVersion21();
+// Commented out until this migration is really working
+//		if (readDataVersion(getTopDirectory()) == 20)
+//			upgradeToVersion21();
 	}
 	
 	public void upgradeToVersion21() throws Exception
