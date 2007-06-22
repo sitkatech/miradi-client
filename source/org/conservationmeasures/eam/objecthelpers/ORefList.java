@@ -77,6 +77,12 @@ public class ORefList
 			data.add(otherList.get(i));
 	}
 	
+	public void addAll(ORef[] otherList)
+	{
+		for(int i = 0; i < otherList.length; ++i)
+			data.add(otherList[i]);
+		
+	}
 	public void remove(ORef oRefToRemove)
 	{
 		data.remove(oRefToRemove);

@@ -8,7 +8,10 @@ package org.conservationmeasures.eam.dialogs.slideshow;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.project.Project;
@@ -18,10 +21,25 @@ public class SlideShowPropertiesPanel extends ObjectDataInputPanel
 	public SlideShowPropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.SLIDE, idToEdit);
-		//Note: Currentl thinking , the setObjectsRef will be overiden to add in the slidshow singlelton object id to the ref list
-		addField(createStringField(SlideShow.TAG_LABEL));
-		addField(createStringField(Slide.TAG_LABEL));
+		addField(createStringField(SlideShow.getObjectType(),SlideShow.TAG_LABEL));
+		addField(createStringField(Slide.getObjectType(), Slide.TAG_LABEL));
 		updateFieldsFromProject();
+	}
+	
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		ORefList list = new ORefList();
+		addSlideShowRef(list);
+		list.addAll(orefsToUse);
+		super.setObjectRefs(list.toArray());
+	}
+	
+	public void addSlideShowRef(ORefList list)
+	{
+		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
+		if (pool.size()==0)
+			return;
+		list.add(new ORef(SlideShow.getObjectType(),pool.getIds()[0]));
 	}
 
 	public String getPanelDescription()

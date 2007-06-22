@@ -86,6 +86,7 @@ import org.conservationmeasures.eam.project.TestProjectRepairer;
 import org.conservationmeasures.eam.project.TestProjectUnzipper;
 import org.conservationmeasures.eam.project.TestProjectZipper;
 import org.conservationmeasures.eam.project.TestRealProject;
+import org.conservationmeasures.eam.project.TestSlidePool;
 import org.conservationmeasures.eam.project.TestStrategyPool;
 import org.conservationmeasures.eam.project.TestTNCThreatFormula;
 import org.conservationmeasures.eam.project.TestTNCViabilityFormula;
@@ -158,6 +159,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTNCViabilityFormula.class));
 		suite.addTest(new TestSuite(TestProjectZipper.class));
 		suite.addTest(new TestSuite(TestProjectUnzipper.class));
+		suite.addTest(new TestSuite(TestSlidePool.class));
 		
 		// utils package
 		suite.addTest(new TestSuite(TestEnhancedJsonObject.class));

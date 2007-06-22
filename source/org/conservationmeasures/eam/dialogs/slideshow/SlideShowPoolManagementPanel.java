@@ -36,6 +36,6 @@ public class SlideShowPoolManagementPanel extends ObjectPoolManagementPanel
 	{
 		return new SlideShowIcon();
 	}
-	private static String PANEL_DESCRIPTION = EAM.text("Title|SlideShow"); 
+	private static String PANEL_DESCRIPTION = EAM.text("Title|Slide Show"); 
 }
 
