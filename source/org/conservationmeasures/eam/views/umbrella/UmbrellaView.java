@@ -154,7 +154,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	{
 		becomeInactive();
 		becomeActive();
-		wizardPanel.refresh();
 	}
 	
 	public WizardPanel getWizardPanel()
