@@ -35,14 +35,12 @@ public class NoProjectView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
-		getMainWindow().setDividerLocation(Integer.MAX_VALUE);
-		getMainWindow().setDividerSize(0);
+		getMainWindow().hideDivider();
 	}
 
 	public void becomeInactive() throws Exception
 	{
-		getMainWindow().setDividerLocation(getMainWindow().getHeight()/2);
-		getMainWindow().setDividerSize(15);
+		getMainWindow().showDivider();
 		super.becomeInactive();
 	}
 	

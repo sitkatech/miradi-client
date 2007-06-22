@@ -168,22 +168,25 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 	}
 	
-	public void setDividerLocation(int location)
-	{
-		if (spliterPane!=null)
-			spliterPane.setDividerLocation(location);
-	}
 	
-	public void setDividerSize(int newSize)
+	//TODO: these methods are candiates to be moved to ViewSplitPane
+	public void hideDivider()
 	{
 		if (spliterPane!=null)
 		{
-			if (newSize==0)
-				spliterPane.setResizeWeight(0);
-			else
-				spliterPane.setResizeWeight(1);
-			
-			spliterPane.setDividerSize(newSize);
+			spliterPane.setResizeWeight(1);
+			spliterPane.setDividerSize(0);
+			spliterPane.setDividerLocation(Integer.MAX_VALUE);
+		}
+	}
+	
+	public void showDivider()
+	{
+		if (spliterPane!=null)
+		{
+			spliterPane.setResizeWeight(.5);
+			spliterPane.setDividerSize(15);
+			spliterPane.setDividerLocation(getHeight()/2);
 		}
 	}
 	
