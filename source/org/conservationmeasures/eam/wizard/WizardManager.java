@@ -80,7 +80,6 @@ import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizard
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardIrreversibilityStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardSeverityStep;
-import org.conservationmeasures.eam.views.umbrella.PersistentSplitPane;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanAssignResourcesStep;
@@ -189,7 +188,6 @@ public class WizardManager
 		mainWindow.getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			mainWindow.saveSplitterLocation(viewNameNew, PersistentSplitPane.SPLITTER_MIDDLE_LOCATION);
 			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
 			newStepClass.getWizard().jump(newStepClass.getClass());
 		}
