@@ -140,6 +140,15 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 		super.becomeActive();
 	}
 	
+	//FIXME: Should just implement a dispose for project close only
+	public void becomeInactive() throws Exception
+	{
+		slideShowPoolManagementPanel.dispose();
+		remove(slideShowPoolManagementPanel);
+		slideShowPoolManagementPanel = null;
+		super.becomeInactive();
+	}
+	
 	private SlideListManagementPanel createSlideShowPanel() throws Exception
 	{
 		ORef oref = createSlideShowIfNeeded().getRef(); 
