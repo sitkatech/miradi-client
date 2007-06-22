@@ -41,8 +41,10 @@ public class CreateSlideDoer extends ObjectsDoer
 			
 			BaseObject createdSlide = createObject();
 			BaseId createdId = createdSlide.getId();
-			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(object, SlideShow.TAG_SLIDE_REFS, createdId));
-			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(createdSlide, Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getId()));
+			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(object, SlideShow.TAG_SLIDE_REFS, createdSlide.getRef()));
+			
+			//FIXME: this next line is incorrect: How to save an oref that is not in a list????...why do we not have a helper method
+			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(createdSlide, Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getRef()));
 			
 			ORef ref = new ORef(createdSlide.getType(), createdId);
 			ObjectPicker picker = getPicker();
