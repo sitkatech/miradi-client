@@ -63,7 +63,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			DataUpgrader upgrader = new DataUpgrader(projectDirectory);
 			upgrader.upgrade();
-			versionAfterUpgrading = upgrader.readDataVersion(projectDirectory);
+			versionAfterUpgrading = upgrader.readDataVersion(projectDirectory);			
 		}
 		catch (DataUpgrader.MigrationTooOldException e)
 		{
@@ -97,7 +97,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	{
 		if(readDataVersion(getTopDirectory()) < 15)
 			throw new MigrationTooOldException();
-		
+				
 		if (readDataVersion(getTopDirectory()) == 15)
 			upgradeToVersion16();
 		
@@ -112,8 +112,16 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		if (readDataVersion(getTopDirectory()) == 19)
 			upgradeToVersion20();
+		
+		if (readDataVersion(getTopDirectory()) == 20)
+			upgradeToVersion21();
 	}
 	
+	public void upgradeToVersion21() throws Exception
+	{
+		//FIXME nima,  compelte migration to add links to applicatple cells
+	}
+
 	public void upgradeToVersion20() throws Exception
 	{
 		changeLinkFromToIdsToORefs();
