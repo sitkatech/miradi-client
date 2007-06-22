@@ -20,12 +20,12 @@ abstract public class TabbedViewWithSidePanel extends TabbedView
 		super(mainWindowToUse);
 	}
 	
-	public void hideSidePanel() throws Exception
+	public void hideSlideShowPanel() throws Exception
 	{
 		sidePanel.setVisible(false);
 	}
 	
-	public void showSidePanel() throws Exception
+	public void showSlideShowPanel() throws Exception
 	{
 		sidePanel.setVisible(true);
 	}
