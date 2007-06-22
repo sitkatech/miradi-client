@@ -30,6 +30,11 @@ abstract public class TabbedViewWithSidePanel extends TabbedView
 		sidePanel.setVisible(true);
 	}
 	
+	public boolean isSlideShowPanelVisible() throws Exception
+	{
+		return sidePanel.isVisible();
+	}
+	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();

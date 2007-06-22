@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
+import org.conservationmeasures.eam.actions.ActionToggleSlideShowPanel;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
@@ -50,6 +51,7 @@ public class DiagramToolBar extends EAMToolBar
 				new ToolBarButton(actions, ActionInsertTarget.class),
 				new ToolBarButton(actions, ActionInsertFactorLink.class),
 				new ToolBarButton(actions, ActionCreateBendPoint.class),
+				new ToolBarButton(actions, ActionToggleSlideShowPanel.class),
 			},
 			{
 				new ToolBarButton(actions, ActionCut.class),

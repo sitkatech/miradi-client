@@ -67,9 +67,11 @@ import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
+import org.conservationmeasures.eam.actions.ActionToggleSlideShowPanel;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.actions.ToggleSlideShowPanelDoer;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -143,7 +145,7 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 		ORef oref = createSlideShowIfNeeded().getRef(); 
 		slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), oref, getActions());
 		setSidePanel(slideShowPoolManagementPanel);
-		showSlideShowPanel();
+		hideSlideShowPanel();
 		return slideShowPoolManagementPanel;
 	}
 
@@ -278,6 +280,7 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 		
 		addDoerToMap(ActionCreateSlide.class, new CreateSlideDoer());
 		addDoerToMap(ActionDeleteSlide.class, new DeleteSlideDoer());
+		addDoerToMap(ActionToggleSlideShowPanel.class, new ToggleSlideShowPanelDoer());
 	}
 	
 	public void tabWasSelected()

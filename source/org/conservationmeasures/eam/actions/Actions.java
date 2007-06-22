@@ -143,6 +143,7 @@ public class Actions
 		
 		registerAction(new ActionCreateSlide(mainWindow));
 		registerAction(new ActionDeleteSlide(mainWindow));
+		registerAction(new ActionToggleSlideShowPanel(mainWindow));
 		
 		registerAction(new ActionConfigureLayers(mainWindow));
 		registerAction(new ActionShowSelectedChainMode(mainWindow));
