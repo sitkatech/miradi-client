@@ -141,6 +141,9 @@ public class Actions
 		registerAction(new ActionViewMonitoring(mainWindow));
 		registerAction(new ActionViewTargetViability(mainWindow));
 		
+		registerAction(new ActionCreateSlide(mainWindow));
+		registerAction(new ActionDeleteSlide(mainWindow));
+		
 		registerAction(new ActionConfigureLayers(mainWindow));
 		registerAction(new ActionShowSelectedChainMode(mainWindow));
 		registerAction(new ActionShowFullModelMode(mainWindow));

@@ -81,6 +81,7 @@ import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.slideshow.SlideShowPoolManagementPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -107,14 +108,14 @@ import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
-import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.TabbedViewWithSidePanel;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.Utilities;
 
 
-public class DiagramView extends TabbedView implements CommandExecutedListener
+public class DiagramView extends TabbedViewWithSidePanel implements CommandExecutedListener
 {
 	public DiagramView(MainWindow mainWindowToUse) throws Exception
 	{
@@ -123,6 +124,14 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDiagramViewDoersToMap();
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
+		slideShowPoolManagementPanel = createSlideShowPanel();
+		setSidePanel(slideShowPoolManagementPanel);
+		hideSidePanel();
+	}
+
+	private SlideShowPoolManagementPanel createSlideShowPanel() throws Exception
+	{
+		return new SlideShowPoolManagementPanel(getProject(), getMainWindow(), getActions(), "");
 	}
 
 	private void updateToolBar()
@@ -815,6 +824,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	PropertiesDoer propertiesDoer;
 	String mode;
 	
+	SlideShowPoolManagementPanel slideShowPoolManagementPanel;
 	ModelessDialogWithClose nodePropertiesDlg;
 	FactorPropertiesPanel nodePropertiesPanel;
 }
