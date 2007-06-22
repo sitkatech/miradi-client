@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.views.ObjectsDoer;
@@ -35,13 +36,15 @@ public class CreateSlideDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			BaseObject object = createSlideShowIfNeeded();
+			BaseObject object = getSlideShow();
+			DiagramObject diagramObject = getDiagramView().getDiagramPanel().getDiagramObject();
 			
-			CommandCreateObject create = createObject();
-			BaseId createdId = create.getCreatedId();
+			BaseObject createdSlide = createObject();
+			BaseId createdId = createdSlide.getId();
 			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(object, SlideShow.TAG_SLIDE_REFS, createdId));
+			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(createdSlide, Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getId()));
 			
-			ORef ref = new ORef(create.getObjectType(), createdId);
+			ORef ref = new ORef(createdSlide.getType(), createdId);
 			ObjectPicker picker = getPicker();
 			if(picker != null)
 				picker.ensureObjectVisible(ref);
@@ -57,27 +60,22 @@ public class CreateSlideDoer extends ObjectsDoer
 		}
 	}
 
-	protected CommandCreateObject createObject() throws CommandFailedException
+	protected BaseObject createObject() throws CommandFailedException
 	{
 		CommandCreateObject create = new CommandCreateObject(Slide.getObjectType());
 		getProject().executeCommand(create);
-		return create;
+		return getProject().findObject(new ORef(Slide.getObjectType(),create.getCreatedId()));
 	}
 	
 	
-	private BaseObject createSlideShowIfNeeded() throws CommandFailedException
+	private BaseObject getSlideShow() throws CommandFailedException
 	{
-		BaseId baseId = BaseId.INVALID;
 		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
 		if (pool.size()==0)
 		{
-			CommandCreateObject cmd = new CommandCreateObject(SlideShow.getObjectType());
-			getProject().executeCommand(cmd);
-			baseId = cmd.getCreatedId();
+			throw new CommandFailedException("Slide Show not found in pool");
 		}
-		else
-			baseId = pool.getIds()[0];
-		
-		return getProject().findObject(SlideShow.getObjectType(), baseId);
+
+		return getProject().findObject(SlideShow.getObjectType(), pool.getIds()[0]);
 	}
 }

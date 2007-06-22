@@ -83,7 +83,8 @@ import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.slideshow.SlideShowPoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.slideshow.SlideListManagementPanel;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -99,6 +100,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -107,6 +109,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
+import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
@@ -126,16 +129,41 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 		
 		addDiagramViewDoersToMap();
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
-		slideShowPoolManagementPanel = createSlideShowPanel();
+	}
+
+	public void becomeActive() throws Exception
+	{
+		if (slideShowPoolManagementPanel == null)
+			createSlideShowPanel();
+		super.becomeActive();
+	}
+	
+	
+	private SlideListManagementPanel createSlideShowPanel() throws Exception
+	{
+		ORef oref = createSlideShowIfNeeded().getRef(); 
+		slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), oref, getActions());
 		setSidePanel(slideShowPoolManagementPanel);
 		hideSidePanel();
+		return slideShowPoolManagementPanel;
 	}
 
-	private SlideShowPoolManagementPanel createSlideShowPanel() throws Exception
+	private BaseObject createSlideShowIfNeeded() throws CommandFailedException
 	{
-		return new SlideShowPoolManagementPanel(getProject(), getMainWindow(), getActions(), "");
+		BaseId baseId = BaseId.INVALID;
+		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
+		if (pool.size()==0)
+		{
+			CommandCreateObject cmd = new CommandCreateObject(SlideShow.getObjectType());
+			getProject().executeCommand(cmd);
+			baseId = cmd.getCreatedId();
+		}
+		else
+			baseId = pool.getIds()[0];
+		
+		return getProject().findObject(SlideShow.getObjectType(), baseId);
 	}
-
+	
 	private void updateToolBar()
 	{
 		getMainWindow().updateToolBar();
@@ -829,7 +857,7 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 	PropertiesDoer propertiesDoer;
 	String mode;
 	
-	SlideShowPoolManagementPanel slideShowPoolManagementPanel;
+	SlideListManagementPanel slideShowPoolManagementPanel;
 	ModelessDialogWithClose nodePropertiesDlg;
 	FactorPropertiesPanel nodePropertiesPanel;
 }

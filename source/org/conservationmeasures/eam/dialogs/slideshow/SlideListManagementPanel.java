@@ -5,26 +5,23 @@
 */ 
 package org.conservationmeasures.eam.dialogs.slideshow;
 
-import java.awt.BorderLayout;
-
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogs.ObjectPoolManagementPanel;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.dialogs.ObjectListManagementPanel;
 import org.conservationmeasures.eam.icons.SlideShowIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
-public class SlideShowPoolManagementPanel extends ObjectPoolManagementPanel
+public class SlideListManagementPanel extends ObjectListManagementPanel
 {
-	public SlideShowPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
+	public SlideListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new SlidePoolTablePanel(projectToUse, actionsToUse),
-				new SlideShowPropertiesPanel(projectToUse, BaseId.INVALID));
-		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
+		super(splitPositionSaverToUse, new SlideListTablePanel(projectToUse, actions, nodeRef),
+				new SlidePropertiesPanel(projectToUse, BaseId.INVALID));
 	}
 
 	public String getPanelDescription()
@@ -36,6 +33,7 @@ public class SlideShowPoolManagementPanel extends ObjectPoolManagementPanel
 	{
 		return new SlideShowIcon();
 	}
+	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Slide Show"); 
 }
 

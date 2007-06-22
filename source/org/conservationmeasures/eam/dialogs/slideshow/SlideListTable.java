@@ -5,13 +5,12 @@
  */
 package org.conservationmeasures.eam.dialogs.slideshow;
 
-import org.conservationmeasures.eam.dialogs.ObjectPoolTable;
-import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
+import org.conservationmeasures.eam.dialogs.ObjectListTable;
 
-public class SlidePoolTable extends ObjectPoolTable
+public class SlideListTable extends ObjectListTable
 {
-	public SlidePoolTable(ObjectPoolTableModel modelToUse)
+	public SlideListTable(SlideListTableModel model)
 	{
-		super(modelToUse);
+		super(model);
 	}
 }

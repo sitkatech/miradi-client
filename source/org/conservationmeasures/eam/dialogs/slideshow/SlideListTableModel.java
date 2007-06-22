@@ -5,16 +5,17 @@
 */ 
 package org.conservationmeasures.eam.dialogs.slideshow;
 
-import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.dialogs.ObjectListTableModel;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Slide;
+import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.project.Project;
 
-public class SlidePoolTableModel extends ObjectPoolTableModel
+public class SlideListTableModel extends ObjectListTableModel
 {
-	public SlidePoolTableModel(Project project)
+	public SlideListTableModel(Project project, ORef containingOref)
 	{
-		super(project, ObjectType.SLIDE, COLUMN_TAGS);
+		super(project, containingOref.getObjectType(), containingOref.getObjectId(), SlideShow.TAG_SLIDE_REFS, Slide.getObjectType(), COLUMN_TAGS);
 	}
 
 	private static final String[] COLUMN_TAGS = new String[] {
