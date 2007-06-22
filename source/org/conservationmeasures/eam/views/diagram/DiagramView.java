@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIn
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCreateOrShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionCreateResultsChain;
+import org.conservationmeasures.eam.actions.ActionCreateSlide;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
@@ -41,6 +42,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
+import org.conservationmeasures.eam.actions.ActionDeleteSlide;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
@@ -246,6 +248,9 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 		addDoerToMap(ActionInsertTextBox.class, new InsertTextBoxDoer());
 		addDoerToMap(ActionCreateConceptualModel.class, new CreateConceptualModelDoer());
 		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelDoer());
+		
+		addDoerToMap(ActionCreateSlide.class, new CreateSlideDoer());
+		addDoerToMap(ActionDeleteSlide.class, new DeleteSlideDoer());
 	}
 	
 	public void tabWasSelected()
