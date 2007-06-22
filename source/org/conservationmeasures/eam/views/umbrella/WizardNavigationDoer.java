@@ -47,7 +47,7 @@ abstract public class WizardNavigationDoer extends ViewDoer
 
 	private WizardPanel getWizardPanel()
 	{
-		return getView().getWizardPanel();
+		return getMainWindow().getWizard();
 	}
 
 	private WizardManager getWizardManager()
