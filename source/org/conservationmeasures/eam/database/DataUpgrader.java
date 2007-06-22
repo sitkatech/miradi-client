@@ -23,7 +23,9 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectZipper;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
+import org.martus.util.DirectoryLock;
 import org.martus.util.UnicodeWriter;
+import org.martus.util.DirectoryLock.AlreadyLockedException;
 
 public class DataUpgrader extends FileBasedProjectServer
 {
@@ -31,7 +33,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	{
 	}
 
-	public static void attemptUpgrade(File projectDirectory)
+	public static void attemptUpgrade(File projectDirectory) throws AlreadyLockedException
 	{
 		String[] migrationText = {
 				"This project was created with an older version of the app, " +
@@ -72,6 +74,11 @@ public class DataUpgrader extends FileBasedProjectServer
 					"and after that it can be opened and migrated by this version."));
 			return;
 		}
+		catch (DirectoryLock.AlreadyLockedException e)
+		{
+			EAM.logException(e);
+			throw e;
+		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
@@ -97,6 +104,9 @@ public class DataUpgrader extends FileBasedProjectServer
 	{
 		if(readDataVersion(getTopDirectory()) < 15)
 			throw new MigrationTooOldException();
+		
+		if (isOpen())
+			throw new DirectoryLock.AlreadyLockedException();
 				
 		if (readDataVersion(getTopDirectory()) == 15)
 			upgradeToVersion16();
@@ -119,7 +129,23 @@ public class DataUpgrader extends FileBasedProjectServer
 	
 	public void upgradeToVersion21() throws Exception
 	{
-		//FIXME nima,  compelte migration to add links to applicatple cells
+		addLinksInAllDOsWhereNeeded();
+		writeVersion(21);
+	}
+
+	private void addLinksInAllDOsWhereNeeded()
+	{
+		//FIXME nima finish migration
+		File jsonDir = new File(topDirectory, "json");
+		
+		File factorLinkDir = new File(jsonDir, "objects-6");
+		if (! factorLinkDir.exists())
+			return;
+		
+		File linkManifestFile = new File(factorLinkDir, "manifest");
+		if (! linkManifestFile.exists())
+			throw new RuntimeException("manifest for objects-6 directory does not exist " + linkManifestFile.getAbsolutePath());
+
 	}
 
 	public void upgradeToVersion20() throws Exception

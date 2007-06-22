@@ -70,7 +70,6 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
-import org.martus.util.DirectoryLock;
 
 
 public class Project
@@ -442,9 +441,6 @@ public class Project
 
 	private void openProject(File projectDirectory) throws Exception
 	{
-		if (getDatabase().isOpen())
-			throw new DirectoryLock.AlreadyLockedException();
-		
 		if(getDatabase().readDataVersion(projectDirectory) > ProjectServer.DATA_VERSION)
 			throw new FutureVersionException();
 

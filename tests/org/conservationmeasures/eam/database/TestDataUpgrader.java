@@ -113,6 +113,10 @@ public class TestDataUpgrader extends EAMTestCase
 		upgraderWithNoObjects6.upgradeToVersion16();
 	}
 
+	public void testUpgradeTo21AddLinksInAllDOsWhereNeeded() throws Exception
+	{
+	}
+	
 	public void testUpgradeTo20AddORefsInFactorLinks() throws Exception
 	{
 		File jsonDir = new File(tempDirectory, "json");
