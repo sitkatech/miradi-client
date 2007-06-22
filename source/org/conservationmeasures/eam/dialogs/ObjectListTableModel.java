@@ -45,11 +45,12 @@ public class ObjectListTableModel extends ObjectTableModel
 		return tagOfIdList;
 	}
 
-	private BaseObject getContainingObject()
+	public BaseObject getContainingObject()
 	{
 		return project.findObject(containingObjectType, containingObjectId);
 	}
 
+	//TODO: the general model shold handle different list data types.
 	public IdList getLatestIdListFromProject()
 	{
 		try
