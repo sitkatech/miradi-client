@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ToggleSlideShowPanelDoer extends ViewDoer
@@ -28,8 +29,7 @@ public class ToggleSlideShowPanelDoer extends ViewDoer
 		}
 		catch(Exception e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			EAM.logException(e);
 		}
 	}
 }
