@@ -10,16 +10,23 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Slide;
+import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class DeleteSlideDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
+		if (!isDiagramView())
+			return false;
+		
 		return (getObjects().length == 1);
 	}
 
@@ -44,10 +51,10 @@ public class DeleteSlideDoer extends ObjectsDoer
 			getProject().executeCommand(new CommandBeginTransaction());
 			try
 			{
-				int type = resource.getType();
-				BaseId id = idToRemove;
+				BaseObject object = getSlideShow();
+				getProject().executeCommand(CommandSetObjectData.createRemoveIdCommand(object, SlideShow.TAG_SLIDE_REFS, idToRemove));
 				getProject().executeCommands(resource.createCommandsToClear());
-				getProject().executeCommand(new CommandDeleteObject(type, id));
+				getProject().executeCommand(new CommandDeleteObject(Slide.getObjectType(), idToRemove));
 			}
 			finally
 			{
@@ -63,6 +70,17 @@ public class DeleteSlideDoer extends ObjectsDoer
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
+	}
+	
+	
+	private BaseObject getSlideShow() throws CommandFailedException
+	{
+		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
+		if (pool.size()==0)
+		{
+			throw new CommandFailedException("Slide Show not found: no objects in pool");
+		}
+		return getProject().findObject(SlideShow.getObjectType(), pool.getIds()[0]);
 	}
 
 }

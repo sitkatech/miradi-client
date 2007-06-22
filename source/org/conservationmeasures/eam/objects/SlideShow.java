@@ -81,7 +81,7 @@ public class SlideShow extends BaseObject
 	}
 	
 	
-	private static String TAG_SLIDE_REFS = "SlideRefs";
+	public static String TAG_SLIDE_REFS = "SlideRefs";
 
 
 	public static final String OBJECT_NAME = "SlideShow";
