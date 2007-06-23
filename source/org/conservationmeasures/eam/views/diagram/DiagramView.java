@@ -160,18 +160,18 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 
 	private BaseObject createSlideShowIfNeeded() throws CommandFailedException
 	{
-		BaseId baseId = BaseId.INVALID;
+		ORef oref = ORef.INVALID;
 		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
 		if (pool.size()==0)
 		{
 			CommandCreateObject cmd = new CommandCreateObject(SlideShow.getObjectType());
 			getProject().executeCommand(cmd);
-			baseId = cmd.getCreatedId();
+			oref = cmd.getObjectRef();
 		}
 		else
-			baseId = pool.getIds()[0];
+			oref = pool.getORefList().toArray()[0];
 		
-		return getProject().findObject(SlideShow.getObjectType(), baseId);
+		return getProject().findObject(oref);
 	}
 	
 	private void updateToolBar()
