@@ -39,7 +39,7 @@ public class CreateSlideDoer extends ObjectsDoer
 			
 			ORef slideRef = createSlide();
 			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(object, SlideShow.TAG_SLIDE_REFS, slideRef));
-			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getRef().toString()));
+			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getRef()));
 			
 			getPicker().ensureObjectVisible(slideRef);
 		}
