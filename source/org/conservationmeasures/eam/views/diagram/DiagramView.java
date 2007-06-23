@@ -154,7 +154,7 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 		ORef oref = createSlideShowIfNeeded().getRef(); 
 		slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), oref, getActions());
 		setSidePanel(slideShowPoolManagementPanel);
-		hideSlideShowPanel();
+		hideSidePanel();
 		return slideShowPoolManagementPanel;
 	}
 
