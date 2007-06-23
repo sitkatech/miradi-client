@@ -144,7 +144,6 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 	public void becomeInactive() throws Exception
 	{
 		slideShowPoolManagementPanel.dispose();
-		remove(slideShowPoolManagementPanel);
 		slideShowPoolManagementPanel = null;
 		super.becomeInactive();
 	}
@@ -152,7 +151,9 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 	private SlideListManagementPanel createSlideShowPanel() throws Exception
 	{
 		ORef oref = createSlideShowIfNeeded().getRef(); 
+		//FIXME: need a different spliter then mainWindow.....
 		slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), oref, getActions());
+		slideShowPoolManagementPanel.updateSplitterLocationToMiddle();
 		setSidePanel(slideShowPoolManagementPanel);
 		hideSidePanel();
 		return slideShowPoolManagementPanel;
