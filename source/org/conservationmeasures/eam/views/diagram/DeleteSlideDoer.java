@@ -73,7 +73,7 @@ public class DeleteSlideDoer extends ObjectsDoer
 		{
 			throw new CommandFailedException("Slide Show not found: no objects in pool");
 		}
-		return getProject().findObject(pool.getORefList().toArray()[0]);
+		return getProject().findObject(pool.getORefList().get(0));
 	}
 
 }

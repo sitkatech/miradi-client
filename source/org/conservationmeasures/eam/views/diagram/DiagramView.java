@@ -169,7 +169,7 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 			oref = cmd.getObjectRef();
 		}
 		else
-			oref = pool.getORefList().toArray()[0];
+			oref = pool.getORefList().get(0);
 		
 		return getProject().findObject(oref);
 	}
