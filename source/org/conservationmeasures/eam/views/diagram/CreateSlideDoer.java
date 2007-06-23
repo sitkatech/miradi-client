@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -19,7 +18,6 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.views.ObjectsDoer;
-import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class CreateSlideDoer extends ObjectsDoer
 {
@@ -39,16 +37,11 @@ public class CreateSlideDoer extends ObjectsDoer
 			BaseObject object = getSlideShow();
 			DiagramObject diagramObject = getDiagramView().getDiagramPanel().getDiagramObject();
 			
-			BaseObject createdSlide = createObject();
-			BaseId createdId = createdSlide.getId();
-
-			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(object, SlideShow.TAG_SLIDE_REFS, createdSlide.getRef()));
-			getProject().executeCommand(new CommandSetObjectData(createdSlide.getType(), createdSlide.getId(), Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getRef().toString()));
+			ORef slideRef = createSlide();
+			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(object, SlideShow.TAG_SLIDE_REFS, slideRef));
+			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getRef().toString()));
 			
-			ORef ref = new ORef(createdSlide.getType(), createdId);
-			ObjectPicker picker = getPicker();
-			if(picker != null)
-				picker.ensureObjectVisible(ref);
+			getPicker().ensureObjectVisible(slideRef);
 		}
 		catch(Exception e)
 		{
@@ -61,11 +54,11 @@ public class CreateSlideDoer extends ObjectsDoer
 		}
 	}
 
-	protected BaseObject createObject() throws CommandFailedException
+	protected ORef createSlide() throws CommandFailedException
 	{
 		CommandCreateObject create = new CommandCreateObject(Slide.getObjectType());
 		getProject().executeCommand(create);
-		return getProject().findObject(new ORef(Slide.getObjectType(),create.getCreatedId()));
+		return create.getObjectRef();
 	}
 	
 	

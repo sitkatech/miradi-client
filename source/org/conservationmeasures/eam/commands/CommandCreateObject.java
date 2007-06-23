@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandCreateObject extends Command
@@ -30,6 +31,11 @@ public class CommandCreateObject extends Command
 	void setCreatedId(BaseId id)
 	{
 		createdId = id;
+	}
+	
+	public ORef getObjectRef()
+	{
+		return new ORef(getObjectType(), getCreatedId());
 	}
 	
 	public int getObjectType()

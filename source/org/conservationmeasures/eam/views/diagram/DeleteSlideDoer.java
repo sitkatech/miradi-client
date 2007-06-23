@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -36,7 +35,7 @@ public class DeleteSlideDoer extends ObjectsDoer
 			return;
 		
 		Slide slide = (Slide)getObjects()[0];
-		BaseId idToRemove = slide.getId();
+
 		
 		Vector dialogText = new Vector();
 		
@@ -46,29 +45,23 @@ public class DeleteSlideDoer extends ObjectsDoer
 		if(!EAM.confirmDialog("Delete Slide", (String[])dialogText.toArray(new String[0]), buttons))
 			return;
 
+		getProject().executeCommand(new CommandBeginTransaction());
+		
 		try
 		{
-			getProject().executeCommand(new CommandBeginTransaction());
-			try
-			{
-				BaseObject object = getSlideShow();
-				getProject().executeCommand(CommandSetObjectData.createRemoveIdCommand(object, SlideShow.TAG_SLIDE_REFS, idToRemove));
-				getProject().executeCommands(slide.createCommandsToClear());
-				getProject().executeCommand(new CommandDeleteObject(Slide.getObjectType(), idToRemove));
-			}
-			finally
-			{
-				getProject().executeCommand(new CommandEndTransaction());
-			}
-		}
-		catch(CommandFailedException e)
-		{
-			throw(e);
+			BaseObject slideShow = getSlideShow();
+			getProject().executeCommand(CommandSetObjectData.createRemoveORefCommand(slideShow, SlideShow.TAG_SLIDE_REFS, slide.getRef()));
+			getProject().executeCommands(slide.createCommandsToClear());
+			getProject().executeCommand(new CommandDeleteObject(slide.getRef()));
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
 	
@@ -80,7 +73,7 @@ public class DeleteSlideDoer extends ObjectsDoer
 		{
 			throw new CommandFailedException("Slide Show not found: no objects in pool");
 		}
-		return getProject().findObject(SlideShow.getObjectType(), pool.getIds()[0]);
+		return getProject().findObject(pool.getORefList().toArray()[0]);
 	}
 
 }
