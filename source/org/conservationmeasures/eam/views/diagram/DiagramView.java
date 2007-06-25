@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -115,14 +116,14 @@ import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
-import org.conservationmeasures.eam.views.TabbedViewWithSidePanel;
+import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.Utilities;
 
 
-public class DiagramView extends TabbedViewWithSidePanel implements CommandExecutedListener
+public class DiagramView extends TabbedView implements CommandExecutedListener
 {
 	public DiagramView(MainWindow mainWindowToUse) throws Exception
 	{
@@ -135,26 +136,43 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 
 	public void becomeActive() throws Exception
 	{
-		if (slideShowPoolManagementPanel == null)
-			createSlideShowPanel();
 		super.becomeActive();
+		createSlideShowPanel();
+		add(slideShowPoolManagementPanel, BorderLayout.AFTER_LINE_ENDS);
+		hideSidePanel();
 	}
 	
-	//FIXME: Should just implement a dispose for project close only
+	//FIXME: need a dispose for project close...then there will  be not need to create/delete the panel each time 
 	public void becomeInactive() throws Exception
 	{
 		slideShowPoolManagementPanel.dispose();
+		remove(slideShowPoolManagementPanel);
 		slideShowPoolManagementPanel = null;
 		super.becomeInactive();
 	}
+	
+	
+	public void hideSidePanel() throws Exception
+	{
+		slideShowPoolManagementPanel.setVisible(false);
+	}
+	
+	public void showSidePanel() throws Exception
+	{
+		slideShowPoolManagementPanel.setVisible(true);
+	}
+	
+	public boolean isSidePanelVisible() throws Exception
+	{
+		return slideShowPoolManagementPanel.isVisible();
+	}
+	
 	
 	private SlideListManagementPanel createSlideShowPanel() throws Exception
 	{
 		ORef slideShowRef = createSlideShowIfNeeded().getRef(); 
 		slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), slideShowRef, getActions());
 		slideShowPoolManagementPanel.updateSplitterLocationToMiddle();
-		setSidePanel(slideShowPoolManagementPanel);
-		hideSidePanel();
 		return slideShowPoolManagementPanel;
 	}
 

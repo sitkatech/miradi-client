@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.SlideId;
 import org.conservationmeasures.eam.objectdata.ORefData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -73,6 +74,11 @@ public class Slide extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL))
 			return getDiagramObjectLabel();
 		return super.getPseudoData(fieldTag);
+	}
+	
+	public ORef getDiagramRef()
+	{
+		return diagramObjectRef.getRawRef();
 	}
 	
 	public String getDiagramObjectLabel()
