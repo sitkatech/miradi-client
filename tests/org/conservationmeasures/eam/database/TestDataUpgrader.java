@@ -155,26 +155,26 @@ public class TestDataUpgrader extends EAMTestCase
 		createObjectFile(factorLinksDir, Integer.toString(factorLink18), factorLinkStrat16_target12str);
 		createObjectFile(factorLinksDir, Integer.toString(factorLink24), factorLinkStrat16_target14str);
 		
-		final int diagramFactor13 = 13;
-		final int diagramFactor15 = 15;
-		final int diagramFactor17 = 17;
-		final int diagramFactor27 = 27;
-		final int diagramFactor28 = 28;
-		final int diagramFactor29 = 29;
-		int[] diagramFactorIds = {diagramFactor13, diagramFactor15, diagramFactor17, diagramFactor27, diagramFactor28, diagramFactor29, };
+		final int cmTarget13Wrapper = 13;
+		final int cmTarget15Wrapper = 15;
+		final int cmStrat17Wrapper = 17;
+		final int rcTarget27Wrapper = 27;
+		final int rcTarget28Wrapper = 28;
+		final int rcStrat29Wrapper = 29;
+		int[] diagramFactorIds = {cmTarget13Wrapper, cmTarget15Wrapper, cmStrat17Wrapper, rcTarget27Wrapper, rcTarget28Wrapper, rcStrat29Wrapper, };
 		File diagramFactorManifest = createManifestFile(diagramFactorDir, diagramFactorIds);
-		String cmTarget13Wrapper = "{\"TimeStampModified\":\"1182273035046\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"12\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":945}\",\"Id\":13}";
-		String cmTarget15Wrapper = "{\"TimeStampModified\":\"1182273035609\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"14\",\"Location\":\"{\\\"Y\\\":225,\\\"X\\\":945}\",\"Id\":15}";
-		String cmStrategy17Wrapper = "{\"TimeStampModified\":\"1182273040468\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"16\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":675}\",\"Id\":17}";
-		String rcTarget28 = "{\"TimeStampModified\":\"1182273074250\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"14\",\"Location\":\"{\\\"Y\\\":225,\\\"X\\\":945}\",\"Id\":28}";
-		String rcTarget29Wrapper = "{\"TimeStampModified\":\"1182273074296\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"12\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":945}\",\"Id\":29}";
-		String rcStrategy27Wrapper = "{\"TimeStampModified\":\"1182273074218\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"16\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":675}\",\"Id\":27}";
-		createObjectFile(diagramFactorDir, Integer.toString(diagramFactor13), cmTarget13Wrapper);
-		createObjectFile(diagramFactorDir, Integer.toString(diagramFactor15), cmTarget15Wrapper);
-		createObjectFile(diagramFactorDir, Integer.toString(diagramFactor17), cmStrategy17Wrapper);
-		createObjectFile(diagramFactorDir, Integer.toString(diagramFactor27), rcStrategy27Wrapper);
-		createObjectFile(diagramFactorDir, Integer.toString(diagramFactor28), rcTarget28);
-		createObjectFile(diagramFactorDir, Integer.toString(diagramFactor29), rcTarget29Wrapper);
+		String diagramFactorTargetCM13str = "{\"TimeStampModified\":\"1182273035046\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"12\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":945}\",\"Id\":13}";
+		String diagramFactorTargetCM15str = "{\"TimeStampModified\":\"1182273035609\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"14\",\"Location\":\"{\\\"Y\\\":225,\\\"X\\\":945}\",\"Id\":15}";
+		String diagramFactorStrategyCM17str = "{\"TimeStampModified\":\"1182273040468\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"16\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":675}\",\"Id\":17}";
+		String diagramFactorTargetRC28str = "{\"TimeStampModified\":\"1182273074250\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"14\",\"Location\":\"{\\\"Y\\\":225,\\\"X\\\":945}\",\"Id\":28}";
+		String diagramFactorTargetRC29str = "{\"TimeStampModified\":\"1182273074296\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"12\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":945}\",\"Id\":29}";
+		String diagramFactorStrategyRC27str = "{\"TimeStampModified\":\"1182273074218\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"16\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":675}\",\"Id\":27}";
+		createObjectFile(diagramFactorDir, Integer.toString(cmTarget13Wrapper), diagramFactorTargetCM13str);
+		createObjectFile(diagramFactorDir, Integer.toString(cmTarget15Wrapper), diagramFactorTargetCM15str);
+		createObjectFile(diagramFactorDir, Integer.toString(cmStrat17Wrapper), diagramFactorStrategyCM17str);
+		createObjectFile(diagramFactorDir, Integer.toString(rcTarget27Wrapper), diagramFactorStrategyRC27str);
+		createObjectFile(diagramFactorDir, Integer.toString(rcTarget28Wrapper), diagramFactorTargetRC28str);
+		createObjectFile(diagramFactorDir, Integer.toString(rcStrat29Wrapper), diagramFactorTargetRC29str);
 
 		final int diagramLink25 = 25;
 		final int diagramLink30 = 30;
@@ -222,11 +222,11 @@ public class TestDataUpgrader extends EAMTestCase
 			int fromId = diagramLink.getFromDiagramFactorId().asInt();
 			int toId = diagramLink.getToDiagramFactorId().asInt();
 
-			if (toId == diagramFactor28)
-				assertEquals("the from is not correct?", diagramFactor27, fromId);
+			if (toId == rcTarget28Wrapper)
+				assertEquals("the from is not correct?", rcTarget27Wrapper, fromId);
 			
-			if (toId == diagramFactor13)
-				assertEquals("the to is not correct?", diagramFactor17, fromId);
+			if (toId == cmTarget13Wrapper)
+				assertEquals("the to is not correct?", cmStrat17Wrapper, fromId);
 		}
 	
 		File resultsChainFile26 = new File(resultsChainDir, resutlsChainIdAsString);
