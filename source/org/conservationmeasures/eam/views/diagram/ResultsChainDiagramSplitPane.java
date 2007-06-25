@@ -5,10 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.GridLayout;
-
 import javax.swing.JComponent;
-import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -31,11 +29,11 @@ public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 		return new ResultsChainPageList();
 	}
 	
-	protected JPanel createLeftPanel()
+	protected JSplitPane createLeftPanel()
 	{
-		JPanel leftPanel = new JPanel(new GridLayout(1, 1));
-		leftPanel.add(legendPanel);
+		JSplitPane leftSideSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		leftSideSplit.setBottomComponent(legendPanel);
 		
-		return leftPanel;
+		return leftSideSplit;
 	}
 }

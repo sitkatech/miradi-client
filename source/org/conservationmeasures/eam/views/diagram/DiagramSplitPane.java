@@ -5,10 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.GridLayout;
-
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
@@ -22,11 +19,12 @@ abstract public class DiagramSplitPane extends JSplitPane
 	public DiagramSplitPane(MainWindow mainWindow, DiagramComponent diagramComponentToAdd)
 	{
 		legendPanel = createLegendPanel(mainWindow);
+		scrollableLegendPanel = new JScrollPane(legendPanel);
 		selectionPanel = createPageList(mainWindow.getProject());
 		UiScrollPane scrollPane = createDiagramPanel(mainWindow.getProject(), diagramComponentToAdd);
 		setLeftComponent(createLeftPanel());
 		setRightComponent(scrollPane);
-		setDividerLocation(legendPanel.getPreferredSize().width);
+		setDividerLocation(scrollableLegendPanel.getPreferredSize().width + 50);
 	}
 	
 	private UiScrollPane createDiagramPanel(Project project, DiagramComponent diagram)
@@ -40,13 +38,13 @@ abstract public class DiagramSplitPane extends JSplitPane
 		return uiScrollPane;
 	}
 	
-	protected JPanel createLeftPanel()
+	protected JSplitPane createLeftPanel()
 	{
-		JPanel leftPanel = new JPanel(new GridLayout(2, 1));
-		leftPanel.add(selectionPanel);
-		leftPanel.add(legendPanel);
+		JSplitPane leftSideSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		leftSideSplit.setTopComponent(selectionPanel);
+		leftSideSplit.setBottomComponent(scrollableLegendPanel);
 		
-		return leftPanel;
+		return leftSideSplit;
 	}
 	
 	public DiagramLegendPanel getLegendPanel()
@@ -60,4 +58,5 @@ abstract public class DiagramSplitPane extends JSplitPane
 	
 	protected DiagramLegendPanel legendPanel;
 	private JComponent selectionPanel;
+	private JScrollPane scrollableLegendPanel;
 }
