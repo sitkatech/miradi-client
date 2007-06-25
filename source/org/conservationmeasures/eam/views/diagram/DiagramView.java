@@ -450,7 +450,7 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 		setTab(CONCEPTUAL_MODEL_INDEX);
 	}
 	
-	public void setResultsChainTab(ORef resultsChainRef)
+	public void setDiagramTab(ORef resultsChainRef)
 	{
 		setTab(getTabIndex(resultsChainRef));
 	}

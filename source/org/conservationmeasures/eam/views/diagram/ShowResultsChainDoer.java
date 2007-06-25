@@ -59,6 +59,6 @@ public class ShowResultsChainDoer extends ViewDoer
 		ORefList resultsChains = strategy.getResultsChains();
 		final int FIRST_IN_LIST = 0;
 		ORef firstChain = resultsChains.get(FIRST_IN_LIST);
-		diagramView.setResultsChainTab(firstChain);
+		diagramView.setDiagramTab(firstChain);
 	}
 }
