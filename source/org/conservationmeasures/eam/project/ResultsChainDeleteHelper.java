@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Slide;
 
 public class ResultsChainDeleteHelper
 {
@@ -35,11 +36,22 @@ public class ResultsChainDeleteHelper
 		DiagramObject diagramObject = diagramPanel.getDiagramObject();
 		deleteAllDiagramFactorLinks();
 		deleteAllDiagramFactors();
+		deleteAllSlideReferences(diagramObject);
 		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
 		project.executeCommands(commands);
 		CommandDeleteObject deleteResultsChain = new CommandDeleteObject(diagramObject.getRef());
 		project.executeCommand(deleteResultsChain);
 	}
+	
+	private void deleteAllSlideReferences(DiagramObject diagramObject) throws Exception
+	{
+		ORefList list = diagramObject.findObjectsThatReferToUs(Slide.getObjectType());
+		for (int i=0; i<list.size(); ++i)
+		{
+			project.executeCommand(new CommandSetObjectData(list.get(i), Slide.TAG_DIAGRAM_OBJECT_REF, ORef.INVALID));
+		}
+	}
+	
 	
 	private void deleteAllDiagramFactors() throws Exception
 	{

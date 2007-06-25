@@ -83,6 +83,9 @@ public class Slide extends BaseObject
 	
 	public String getDiagramObjectLabel()
 	{
+		if (!diagramObjectRef.isValid())
+			return "*Diagram was deleted*";
+
 		BaseObject object = getObjectManager().findObject(diagramObjectRef.getRawRef());
 		return object.getLabel();
 	}

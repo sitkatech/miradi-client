@@ -25,6 +25,11 @@ public class ORefData extends ObjectData
 		return ref;
 	}
 	
+	public boolean isValid()
+	{
+		return !ref.equals(ORef.INVALID);
+	}
+	
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof ORefData))
