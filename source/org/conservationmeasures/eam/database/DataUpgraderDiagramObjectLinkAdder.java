@@ -27,7 +27,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		topDirectory = topDirectoryToUse;
 	}
 	
-	public void addLinksInAllDOsWhereNeeded() throws Exception
+	public void addLinksInAllDiagramsWhereNeeded() throws Exception
 	{
 		File jsonDir = new File(topDirectory, "json");
 		

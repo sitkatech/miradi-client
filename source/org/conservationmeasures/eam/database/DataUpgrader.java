@@ -129,7 +129,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	
 	public void upgradeToVersion21() throws Exception
 	{
-		new DataUpgraderDiagramObjectLinkAdder(topDirectory).addLinksInAllDOsWhereNeeded();
+		new DataUpgraderDiagramObjectLinkAdder(topDirectory).addLinksInAllDiagramsWhereNeeded();
 		writeVersion(21);
 	}
 
