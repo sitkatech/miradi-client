@@ -91,8 +91,8 @@ public class DataUpgraderDiagramObjectLinkAdder
 			EnhancedJsonObject factorLinkJson = DataUpgrader.readFile(factorLinkFile);
 			ORef fromRef = new ORef(factorLinkJson.getJson(FactorLink.TAG_FROM_REF));
 			ORef toRef = new ORef(factorLinkJson.getJson(FactorLink.TAG_TO_REF));
-			BaseId[] fromDiagramFactorIds = findDiagramFactor(diagramFactorDir, diagramFactorManifestFile, fromRef);
-			BaseId[] toDiagramFactorIds = findDiagramFactor(diagramFactorDir, diagramFactorManifestFile, toRef);
+			BaseId[] fromDiagramFactorIds = findDiagramFactorsThatWrap(diagramFactorDir, diagramFactorManifestFile, fromRef);
+			BaseId[] toDiagramFactorIds = findDiagramFactorsThatWrap(diagramFactorDir, diagramFactorManifestFile, toRef);
 
 			possiblyLinkToAndFrom(jsonDir, diagramObjectJsons, factorLinkId, diagramLinkDir, allDiagramLinks, diagramLinkManifestFile, fromDiagramFactorIds, toDiagramFactorIds);
 		}	
@@ -106,8 +106,8 @@ public class DataUpgraderDiagramObjectLinkAdder
 			EnhancedJsonObject diagramObjectJson = diagramObjects[i];
 			String diagramFactorIdsAsString = diagramObjectJson.getString(DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 			IdList allDiagramFactorIds = new IdList(diagramFactorIdsAsString);
-			BaseId from = findDiagramFactor(fromDiagramFactorIds, allDiagramFactorIds);
-			BaseId to = findDiagramFactor(toDiagramFactorIds, allDiagramFactorIds);
+			BaseId from = findDiagramFactorByFromAndToIds(fromDiagramFactorIds, allDiagramFactorIds);
+			BaseId to = findDiagramFactorByFromAndToIds(toDiagramFactorIds, allDiagramFactorIds);
 			
 			if (to == null || from == null)
 				continue;
@@ -119,7 +119,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		}
 	}
 
-	private BaseId findDiagramFactor(BaseId[] diagramFactorIds, IdList allDiagramFactorIds)
+	private BaseId findDiagramFactorByFromAndToIds(BaseId[] diagramFactorIds, IdList allDiagramFactorIds)
 	{
 		for (int i = 0; i < diagramFactorIds.length; ++i)
 		{
@@ -240,7 +240,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		return allDiagramObjectJsons;
 	}
 
-	private BaseId[] findDiagramFactor(File diagramFactorDir, File diagramFactorManifestFile, ORef wrappedRef) throws Exception
+	private BaseId[] findDiagramFactorsThatWrap(File diagramFactorDir, File diagramFactorManifestFile, ORef wrappedRef) throws Exception
 	{
 		ObjectManifest diagramFactorManifest = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
 		BaseId[] diagramFactorIds = diagramFactorManifest.getAllKeys();
