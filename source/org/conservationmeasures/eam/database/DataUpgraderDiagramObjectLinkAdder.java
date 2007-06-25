@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.database;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -213,26 +215,30 @@ public class DataUpgraderDiagramObjectLinkAdder
 	private EnhancedJsonObject[] getAllDiagramObjects(File conceptualModelDir, File conceptualModelManifestFile, File resultsChainDir, File resultsChainManifestFile) throws Exception
 	{
 		Vector allDiagramObjects = new Vector();
-		
-		ObjectManifest conceptualModelManifest = new ObjectManifest(JSONFile.read(conceptualModelManifestFile));
-		BaseId conceptualModelId = conceptualModelManifest.getAllKeys()[0];
-		String idAsString = Integer.toString(conceptualModelId.asInt());
-		File conceptualModelFile = new File(conceptualModelDir, idAsString);
-		EnhancedJsonObject conceptualModelJson = DataUpgrader.readFile(conceptualModelFile);
-		allDiagramObjects.add(conceptualModelJson);
+		Vector conceptualModelJsons = getDiagramObject(conceptualModelDir, conceptualModelManifestFile);
+		allDiagramObjects.addAll(conceptualModelJsons);
 
-		ObjectManifest resultsChainManifest = new ObjectManifest(JSONFile.read(resultsChainManifestFile));
-		BaseId[] resultsChainIds = resultsChainManifest.getAllKeys();
-		for (int i = 0; i < resultsChainIds.length; ++i)
+		Vector resultsChainJsons = getDiagramObject(resultsChainDir, resultsChainManifestFile);
+		allDiagramObjects.addAll(resultsChainJsons);
+
+		return (EnhancedJsonObject[]) allDiagramObjects.toArray(new EnhancedJsonObject[0]);
+	}
+
+	private Vector getDiagramObject(File diagramObjectDir, File diagramObjectManifestFile) throws IOException, ParseException, Exception
+	{
+		Vector allDiagramObjectJsons = new Vector();
+		ObjectManifest diagramObjectManifest = new ObjectManifest(JSONFile.read(diagramObjectManifestFile));
+		BaseId[] diagramObjectIds = diagramObjectManifest.getAllKeys();
+		for (int i = 0; i < diagramObjectIds.length; ++i)
 		{
-			BaseId resultsChainId = resultsChainIds[i];
-			String asString = Integer.toString(resultsChainId.asInt());
-			File resultsChainFile = new File(resultsChainDir, asString);
-			EnhancedJsonObject resultsChainJson = DataUpgrader.readFile(resultsChainFile);
-			allDiagramObjects.add(resultsChainJson);
+			BaseId diagramObjectId = diagramObjectIds[i];
+			String idAsString = Integer.toString(diagramObjectId.asInt());
+			File diagramObjectFile = new File(diagramObjectDir, idAsString);
+			EnhancedJsonObject diagramObjectJson = DataUpgrader.readFile(diagramObjectFile);
+			allDiagramObjectJsons.add(diagramObjectJson);
 		}
 		
-		return (EnhancedJsonObject[]) allDiagramObjects.toArray(new EnhancedJsonObject[0]);
+		return allDiagramObjectJsons;
 	}
 
 	private BaseId[] findDiagramFactor(File diagramFactorDir, File diagramFactorManifestFile, ORef wrappedRef) throws Exception
