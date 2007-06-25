@@ -14,10 +14,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramLink;
-import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DataUpgraderDiagramObjectLinkAdder
@@ -89,8 +85,8 @@ public class DataUpgraderDiagramObjectLinkAdder
 			String idAsString = Integer.toString(factorLinkId.asInt());
 			File factorLinkFile = new File(factorLinkDir, idAsString);
 			EnhancedJsonObject factorLinkJson = DataUpgrader.readFile(factorLinkFile);
-			ORef fromRef = new ORef(factorLinkJson.getJson(FactorLink.TAG_FROM_REF));
-			ORef toRef = new ORef(factorLinkJson.getJson(FactorLink.TAG_TO_REF));
+			ORef fromRef = new ORef(factorLinkJson.getJson("FromRef"));
+			ORef toRef = new ORef(factorLinkJson.getJson("ToRef"));
 			BaseId[] fromDiagramFactorIds = findDiagramFactorsThatWrap(diagramFactorDir, diagramFactorManifestFile, fromRef);
 			BaseId[] toDiagramFactorIds = findDiagramFactorsThatWrap(diagramFactorDir, diagramFactorManifestFile, toRef);
 
@@ -104,10 +100,10 @@ public class DataUpgraderDiagramObjectLinkAdder
 		for (int i = 0; i < diagramObjects.length; ++i)
 		{
 			EnhancedJsonObject diagramObjectJson = diagramObjects[i];
-			String diagramFactorIdsAsString = diagramObjectJson.getString(DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
-			IdList allDiagramFactorIds = new IdList(diagramFactorIdsAsString);
-			BaseId from = findDiagramFactorByFromAndToIds(fromDiagramFactorIds, allDiagramFactorIds);
-			BaseId to = findDiagramFactorByFromAndToIds(toDiagramFactorIds, allDiagramFactorIds);
+			String diagramFactorIdsAsString = diagramObjectJson.getString("DiagramFactorIds");
+			IdList diagramFactorIdsInDiagram = new IdList(diagramFactorIdsAsString);
+			BaseId from = findAnIdInDiagram(fromDiagramFactorIds, diagramFactorIdsInDiagram);
+			BaseId to = findAnIdInDiagram(toDiagramFactorIds, diagramFactorIdsInDiagram);
 			
 			if (to == null || from == null)
 				continue;
@@ -119,12 +115,12 @@ public class DataUpgraderDiagramObjectLinkAdder
 		}
 	}
 
-	private BaseId findDiagramFactorByFromAndToIds(BaseId[] diagramFactorIds, IdList allDiagramFactorIds)
+	private BaseId findAnIdInDiagram(BaseId[] diagramFactorIdsInDiagram, IdList allDiagramFactorIds)
 	{
-		for (int i = 0; i < diagramFactorIds.length; ++i)
+		for (int i = 0; i < diagramFactorIdsInDiagram.length; ++i)
 		{
-			if (allDiagramFactorIds.contains(diagramFactorIds[i]))
-				return diagramFactorIds[i];
+			if (allDiagramFactorIds.contains(diagramFactorIdsInDiagram[i]))
+				return diagramFactorIdsInDiagram[i];
 		}
 		return null;
 	}
@@ -137,10 +133,10 @@ public class DataUpgraderDiagramObjectLinkAdder
 		diagramLinkManifest.put(new BaseId(highestId));
 		
 		EnhancedJsonObject diagramFactorLinkJson = new EnhancedJsonObject();
-		diagramFactorLinkJson.put(DiagramLink.TAG_WRAPPED_ID, wrappedLinkId.toString());
-		diagramFactorLinkJson.put(DiagramLink.TAG_ID, highestId);
-		diagramFactorLinkJson.put(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.toString());
-		diagramFactorLinkJson.put(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.toString());
+		diagramFactorLinkJson.put("WrappedLinkId", wrappedLinkId.toString());
+		diagramFactorLinkJson.put("Id", highestId);
+		diagramFactorLinkJson.put("ToDiagramFactorId", to.toString());
+		diagramFactorLinkJson.put("FromDiagramFactorId", from.toString());
 		
 		File idFile = new File(diagramLinkDir, Integer.toString(highestId));
 		DataUpgrader.createFile(idFile, diagramFactorLinkJson.toString());
@@ -150,11 +146,11 @@ public class DataUpgraderDiagramObjectLinkAdder
 		DataUpgrader.writeJson(idFile, diagramFactorLinkJson);
 		DataUpgrader.writeJson(diagramLinkManifestFile, diagramLinkManifest.toJson());
 		
-		String diagramObjectFileName = diagramObjectJson.getString(DiagramObject.TAG_ID);
-		String diagramObjectLinksAsString = diagramObjectJson.getString(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+		String diagramObjectFileName = diagramObjectJson.getString("Id");
+		String diagramObjectLinksAsString = diagramObjectJson.getString("DiagramFactorLinkIds");
 		IdList diagramObjectLinks = new IdList(diagramObjectLinksAsString);
 		diagramObjectLinks.add(new BaseId(highestId));
-		diagramObjectJson.put(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramObjectLinks.toJson());
+		diagramObjectJson.put("DiagramFactorLinkIds", diagramObjectLinks.toJson());
 		File diagramObjectDir = findCorrectDiagramObjectDir(jsonDir, diagramObjectJson, diagramObjectFileName);
 		File diagramObjectFile = new File(diagramObjectDir, diagramObjectFileName);
 		DataUpgrader.writeJson(diagramObjectFile, diagramObjectJson);
@@ -181,8 +177,8 @@ public class DataUpgraderDiagramObjectLinkAdder
 		{
 			
 			EnhancedJsonObject diagramLinkJson = allDiagramLinkJsons[i];
-			BaseId fromId = new BaseId(diagramLinkJson.getString(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID));
-			BaseId toId = new BaseId(diagramLinkJson.getString(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID));
+			BaseId fromId = new BaseId(diagramLinkJson.getString("FromDiagramFactorId"));
+			BaseId toId = new BaseId(diagramLinkJson.getString("ToDiagramFactorId"));
 			if (from.equals(fromId) && to.equals(toId))
 				return true;
 		}
@@ -251,7 +247,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 			String idAsString = Integer.toString(diagramFactorId.asInt());
 			File diagramFactorFile = new File(diagramFactorDir, idAsString);
 			EnhancedJsonObject diagramFactorJson = DataUpgrader.readFile(diagramFactorFile);
-			BaseId wrappedId = diagramFactorJson.getId(DiagramFactor.TAG_WRAPPED_ID);
+			BaseId wrappedId = diagramFactorJson.getId("WrappedFactorId");
 			if (wrappedId.equals(wrappedRef.getObjectId()))
 				allDiagramFactorsThatWrap.add(diagramFactorId);
 		}
@@ -271,8 +267,8 @@ public class DataUpgraderDiagramObjectLinkAdder
 			File factorLinkFile = new File(factorLinkDir, idAsString);
 			EnhancedJsonObject factorLinkJson = DataUpgrader.readFile(factorLinkFile);
 			
-			ORef fromRef = new ORef(factorLinkJson.getJson(FactorLink.TAG_FROM_REF));
-			ORef toRef = new ORef(factorLinkJson.getJson(FactorLink.TAG_TO_REF));
+			ORef fromRef = new ORef(factorLinkJson.getJson("FromRef"));
+			ORef toRef = new ORef(factorLinkJson.getJson("ToRef"));
 			if (fromRef.getObjectType() == ObjectType.STRATEGY && toRef.getObjectType() == ObjectType.TARGET)
 				allLinksBetweenStratsAndTargets.add(factorLinkId);
 			
