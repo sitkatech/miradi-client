@@ -134,19 +134,6 @@ public class TestDataUpgrader extends EAMTestCase
 		File conceptualModelDir = createObjectsDir(jsonDir, "objects-19");
 		File resultsChainDir = createObjectsDir(jsonDir, "objects-24");
 		
-		int [] resultsChainIds = {26};
-		String resutlsChainIdAsString = Integer.toString(resultsChainIds[0]);
-		File resultsChainManifest = createManifestFile(resultsChainDir, resultsChainIds);
-		String resultsChainString ="{\"TimeStampModified\":\"1182273078281\",\"DiagramFactorLinkIds\":\"{\\\"Ids\\\":[30]}\",\"Label\":\"Results Chain\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[29,28,27]}\",\"Id\":26}";
-		createObjectFile(resultsChainDir, resutlsChainIdAsString, resultsChainString);
-
-
-		int[] conceptualModelIds = {10};
-		String conceptualModelIdAsString = Integer.toString(conceptualModelIds[0]);
-		File conceptualModelManifest = createManifestFile(conceptualModelDir, conceptualModelIds);
-		String conceptualModelString = "{\"TimeStampModified\":\"1182273085703\",\"DiagramFactorLinkIds\":\"{\\\"Ids\\\":[25]}\",\"Label\":\"\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[13,15,17]}\",\"Id\":10}";
-		createObjectFile(conceptualModelDir, conceptualModelIdAsString, conceptualModelString);
-
 		final int factor12 = 12;
 		final int factor14 = 14;
 		final int factor16 = 16;
@@ -168,15 +155,6 @@ public class TestDataUpgrader extends EAMTestCase
 		createObjectFile(factorLinksDir, Integer.toString(factorLink18), factorLink16_12str);
 		createObjectFile(factorLinksDir, Integer.toString(factorLink24), factorLink16_14str);
 		
-		final int diagramLink25 = 25;
-		final int diagramLink30 = 30;
-		int[] diagramLinkIds = {diagramLink25, diagramLink30, };
-		File diagramLinkManifest = createManifestFile(diagramLinkDir, diagramLinkIds);
-		String diagramLink17_15str = "{\"FromDiagramFactorId\":17,\"TimeStampModified\":\"1182273069437\",\"ToDiagramFactorId\":15,\"BendPoints\":\"\",\"WrappedLinkId\":24,\"Label\":\"\",\"Id\":25}";
-		String diagramLink27_29str = "{\"FromDiagramFactorId\":27,\"TimeStampModified\":\"1182273074343\",\"ToDiagramFactorId\":29,\"BendPoints\":\"\",\"WrappedLinkId\":18,\"Label\":\"\",\"Id\":30}";
-		createObjectFile(diagramLinkDir, Integer.toString(diagramLink25), diagramLink17_15str);
-		createObjectFile(diagramLinkDir, Integer.toString(diagramLink30), diagramLink27_29str);
-		
 		final int diagramFactor13 = 13;
 		final int diagramFactor15 = 15;
 		final int diagramFactor17 = 17;
@@ -197,6 +175,28 @@ public class TestDataUpgrader extends EAMTestCase
 		createObjectFile(diagramFactorDir, Integer.toString(diagramFactor27), diagramFactor27str);
 		createObjectFile(diagramFactorDir, Integer.toString(diagramFactor28), diagramFactor28str);
 		createObjectFile(diagramFactorDir, Integer.toString(diagramFactor29), diagramFactor29str);
+
+		final int diagramLink25 = 25;
+		final int diagramLink30 = 30;
+		int[] diagramLinkIds = {diagramLink25, diagramLink30, };
+		File diagramLinkManifest = createManifestFile(diagramLinkDir, diagramLinkIds);
+		String diagramLink17_15str = "{\"FromDiagramFactorId\":17,\"TimeStampModified\":\"1182273069437\",\"ToDiagramFactorId\":15,\"BendPoints\":\"\",\"WrappedLinkId\":24,\"Label\":\"\",\"Id\":25}";
+		String diagramLink27_29str = "{\"FromDiagramFactorId\":27,\"TimeStampModified\":\"1182273074343\",\"ToDiagramFactorId\":29,\"BendPoints\":\"\",\"WrappedLinkId\":18,\"Label\":\"\",\"Id\":30}";
+		createObjectFile(diagramLinkDir, Integer.toString(diagramLink25), diagramLink17_15str);
+		createObjectFile(diagramLinkDir, Integer.toString(diagramLink30), diagramLink27_29str);
+		
+		int [] resultsChainIds = {26};
+		String resutlsChainIdAsString = Integer.toString(resultsChainIds[0]);
+		File resultsChainManifest = createManifestFile(resultsChainDir, resultsChainIds);
+		String resultsChainString ="{\"TimeStampModified\":\"1182273078281\",\"DiagramFactorLinkIds\":\"{\\\"Ids\\\":[30]}\",\"Label\":\"Results Chain\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[29,28,27]}\",\"Id\":26}";
+		createObjectFile(resultsChainDir, resutlsChainIdAsString, resultsChainString);
+
+
+		int[] conceptualModelIds = {10};
+		String conceptualModelIdAsString = Integer.toString(conceptualModelIds[0]);
+		File conceptualModelManifest = createManifestFile(conceptualModelDir, conceptualModelIds);
+		String conceptualModelString = "{\"TimeStampModified\":\"1182273085703\",\"DiagramFactorLinkIds\":\"{\\\"Ids\\\":[25]}\",\"Label\":\"\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[13,15,17]}\",\"Id\":10}";
+		createObjectFile(conceptualModelDir, conceptualModelIdAsString, conceptualModelString);
 		
 		assertTrue("results chain manifest doesnt exist?", resultsChainManifest.exists());
 		assertTrue("concpetual model manifest doesnt exist?", conceptualModelManifest.exists());
