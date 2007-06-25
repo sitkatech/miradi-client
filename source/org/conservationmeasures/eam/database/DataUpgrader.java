@@ -105,26 +105,33 @@ public class DataUpgrader extends FileBasedProjectServer
 		if(readDataVersion(getTopDirectory()) < 15)
 			throw new MigrationTooOldException();
 		
-		if (isOpen())
-			throw new DirectoryLock.AlreadyLockedException();
-				
-		if (readDataVersion(getTopDirectory()) == 15)
-			upgradeToVersion16();
-		
-		if (readDataVersion(getTopDirectory()) == 16)
-			upgradeToVersion17();
-		
-		if (readDataVersion(getTopDirectory()) == 17)
-			upgradeToVersion18();
-		
-		if (readDataVersion(getTopDirectory()) == 18)
-			upgradeToVersion19();
-		
-		if (readDataVersion(getTopDirectory()) == 19)
-			upgradeToVersion20();
+		DirectoryLock migrationLock = new DirectoryLock();
+		migrationLock.lock(getTopDirectory());
+		try
+		{
+			if (readDataVersion(getTopDirectory()) == 15)
+				upgradeToVersion16();
+			
+			if (readDataVersion(getTopDirectory()) == 16)
+				upgradeToVersion17();
+			
+			if (readDataVersion(getTopDirectory()) == 17)
+				upgradeToVersion18();
+			
+			if (readDataVersion(getTopDirectory()) == 18)
+				upgradeToVersion19();
+			
+			if (readDataVersion(getTopDirectory()) == 19)
+				upgradeToVersion20();
 
-		if (readDataVersion(getTopDirectory()) == 20)
-			upgradeToVersion21();
+			if (readDataVersion(getTopDirectory()) == 20)
+				upgradeToVersion21();
+		}
+		finally 
+		{
+			migrationLock.close();
+		}
+				
 	}
 	
 	public void upgradeToVersion21() throws Exception
