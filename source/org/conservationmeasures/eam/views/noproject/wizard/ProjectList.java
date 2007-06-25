@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.noproject.wizard;
 
-import java.awt.Color;
 import java.io.File;
 import java.util.Date;
 
@@ -13,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HyperlinkLabel;
 import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
@@ -33,7 +33,7 @@ public class ProjectList extends JPanel
 		setLayout(layout);
 		
 		setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		setBackground(Color.WHITE);
+		setBackground(AppPreferences.WIZARD_BACKGROUND);
 		refresh();
 	}
 	
@@ -70,7 +70,7 @@ public class ProjectList extends JPanel
 	{
 		public HtmlLabel(String text)
 		{
-			super("<html><span style='background-color: white;'" + text + "</span></html>");
+			super("<html><span style='background-color: " + AppPreferences.WIZARD_BACKGROUND_FOR_CSS + ";'" + text + "</span></html>");
 		}
 	}
 	

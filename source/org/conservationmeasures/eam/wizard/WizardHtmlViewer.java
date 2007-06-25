@@ -5,9 +5,11 @@
 */ 
 package org.conservationmeasures.eam.wizard;
 
+
 import javax.swing.text.html.StyleSheet;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.HyperlinkHandler;
 
@@ -16,6 +18,7 @@ public class WizardHtmlViewer extends HtmlFormViewer
 	public WizardHtmlViewer(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler)
 	{
 		super(mainWindow, "", hyperLinkHandler);
+		setBackground(AppPreferences.WIZARD_BACKGROUND);
 	}
 
 	public void customizeStyleSheet(StyleSheet style)
@@ -32,7 +35,7 @@ public class WizardHtmlViewer extends HtmlFormViewer
 	 * GRRRR!
 	 */
 	final static String[] rules = {
-		"body {margin: 10}",
+		"body {margin: 10; background-color: " + AppPreferences.WIZARD_BACKGROUND_FOR_CSS + ";}",
 		"code {}",
 		"  .viewname { font-size: 125%; font-weight: bold }",
 		"  .appname { font-size: 200%; font-weight: bold }",

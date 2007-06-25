@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.HyperlinkHandler;
 
@@ -35,11 +36,14 @@ public class HyperlinkLabel extends PanelTitleLabel implements MouseListener
 	private HyperlinkLabel(String linkText)
 	{
 		super("<html>" +
-				"<span style='background-color: light-gray;" +
+				"<span style='" +
 				"color: blue;" +
 				"font-size: 120%; " +
-				"text-decoration: underline;'>" + 
-				linkText + "</span></html>");
+				"text-decoration: underline;" +
+				"'>" + 
+				linkText + 
+				"</span>" +
+				"</html>");
 		text = linkText;
 		setBackground(NORMAL_BACKGROUND);
 		setOpaque(true);
@@ -94,7 +98,7 @@ public class HyperlinkLabel extends PanelTitleLabel implements MouseListener
 		}
 	}
 	
-	Color NORMAL_BACKGROUND = Color.WHITE;
+	Color NORMAL_BACKGROUND = AppPreferences.WIZARD_BACKGROUND;
 	Color HOVER_BACKGROUND = Color.LIGHT_GRAY;
 	String url;
 	String text;

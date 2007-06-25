@@ -329,6 +329,9 @@ public class AppPreferences
 	public static final String TAG_PANEL_FONT_FAMILY = "PanelFontFamily";
 	public static final String TAG_PANEL_FONT_SIZE = "PanelFontSize";
 	
+	public static final Color WIZARD_BACKGROUND = new Color(0xd7, 0xfa, 0x92);
+	public static final String WIZARD_BACKGROUND_FOR_CSS = "#D7FA92";
+	
 	public Color strategyColor;
 	public Color activitiesColor;
 	public Color contributingFactorColor;
