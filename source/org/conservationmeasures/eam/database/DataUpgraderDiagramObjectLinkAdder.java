@@ -31,51 +31,45 @@ public class DataUpgraderDiagramObjectLinkAdder
 	{
 		File jsonDir = new File(topDirectory, "json");
 		
-		//factor
-		File factorDir = new File(jsonDir, "objects-4");
+		File factorDir = getFactorDir(jsonDir);
 		if (!factorDir.exists())
 			return;		
-		File factorManifestFile = new File(factorDir, "manifest");
+		File factorManifestFile = getManifestFile(factorDir);
 		if (! factorManifestFile.exists())
 			throw new RuntimeException("manifest for objects-4 directory does not exist " + factorManifestFile.getAbsolutePath());
 		
-		//factorLink
-		File factorLinkDir = new File(jsonDir, "objects-6");
+		File factorLinkDir = getFactorLinkDir(jsonDir);
 		if (! factorLinkDir.exists())
 			return;
-		File factorLinkManifestFile = new File(factorLinkDir, "manifest");
+		File factorLinkManifestFile = getManifestFile(factorLinkDir);
 		if (! factorLinkManifestFile.exists())
 			throw new RuntimeException("manifest for objects-6 directory does not exist " + factorLinkManifestFile.getAbsolutePath());
 		
-		//diagramLink
-		File diagramLinkDir = new File(jsonDir, "objects-13");
+		File diagramLinkDir = getDiagramLinkDir(jsonDir);
 		if (! diagramLinkDir.exists())
 			return;
-		File diagramLinkManifestFile = new File(diagramLinkDir, "manifest");
+		File diagramLinkManifestFile = getManifestFile(diagramLinkDir);
 		if (! diagramLinkManifestFile.exists())
 			throw new RuntimeException("manifest for objects-13 directory does not exist " + diagramLinkManifestFile.getAbsolutePath());
 
-		//diagramFactor
-		File diagramFactorDir = new File(jsonDir, "objects-18");
+		File diagramFactorDir = getDiagramFactor(jsonDir);
 		if (! diagramFactorDir.exists())
 			return;
-		File diagramFactorManifestFile = new File(diagramFactorDir, "manifest");
+		File diagramFactorManifestFile = getManifestFile(diagramFactorDir);
 		if (! diagramFactorManifestFile.exists())
 			throw new RuntimeException("manifest for objects-18 directory does not exist " + diagramFactorManifestFile.getAbsolutePath());
 
-		//conceptualModel
-		File conceptualModelDir = new File(jsonDir, "objects-19");
+		File conceptualModelDir = getConceptualModelDir(jsonDir);
 		if (! conceptualModelDir.exists())
 			throw new RuntimeException("manifest for objects-19 directory does not exist " + conceptualModelDir.getAbsolutePath());
-		File conceptualModelManifestFile = new File(conceptualModelDir, "manifest");
+		File conceptualModelManifestFile = getManifestFile(conceptualModelDir);
 		if (! conceptualModelManifestFile.exists())
 			throw new RuntimeException("manifest for objects-19 directory does not exist " + conceptualModelManifestFile.getAbsolutePath());
 
-		//resultsChain
-		File resultsChainDir = new File(jsonDir, "objects-24");
+		File resultsChainDir = getResultsChainDir(jsonDir);
 		if (! resultsChainDir.exists())
 			return;
-		File resultsChainManifestFile = new File(resultsChainDir, "manifest");
+		File resultsChainManifestFile = getManifestFile(resultsChainDir);
 		if (! resultsChainManifestFile.exists())
 			throw new RuntimeException("manifest for objects-24 directory does not exist " + resultsChainManifestFile.getAbsolutePath());
 
@@ -286,6 +280,41 @@ public class DataUpgraderDiagramObjectLinkAdder
 		}	
 		
 		return (BaseId[]) allLinksBetweenStratsAndTargets.toArray(new BaseId[0]);		
+	}
+	
+	private File getManifestFile(File factorDir)
+	{
+		return new File(factorDir, "manifest");
+	}
+
+	private File getResultsChainDir(File jsonDir)
+	{
+		return new File(jsonDir, "objects-24");
+	}
+
+	private File getConceptualModelDir(File jsonDir)
+	{
+		return new File(jsonDir, "objects-19");
+	}
+
+	private File getDiagramFactor(File jsonDir)
+	{
+		return new File(jsonDir, "objects-18");
+	}
+
+	private File getDiagramLinkDir(File jsonDir)
+	{
+		return new File(jsonDir, "objects-13");
+	}
+
+	private File getFactorLinkDir(File jsonDir)
+	{
+		return new File(jsonDir, "objects-6");
+	}
+
+	private File getFactorDir(File jsonDir)
+	{
+		return new File(jsonDir, "objects-4");
 	}
 
 	private File topDirectory;
