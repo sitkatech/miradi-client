@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.actions.ActionWizardNext;
 import org.conservationmeasures.eam.actions.ActionWizardPrevious;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -25,6 +26,7 @@ public class WizardPanel extends JPanel
 	public WizardPanel(MainWindow mainWindowToUse, UmbrellaView viewToUse)
 	{
 		super(new BorderLayout());
+		setBackground(AppPreferences.WIZARD_BACKGROUND);
 		mainWindow = mainWindowToUse;
 		wizardManager = mainWindow.getWizardManager();
 		setFocusCycleRoot(true);

@@ -6,10 +6,10 @@
 package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 import org.martus.swing.HyperlinkHandler;
@@ -20,7 +20,7 @@ public class LeftSideTextPanel extends JPanel
 	{
 		super(new BorderLayout());
 		String html = htmlToUse;
-		setBackground(Color.WHITE);
+		setBackground(AppPreferences.WIZARD_BACKGROUND);
 		viewer = new WizardHtmlViewer(mainWindow, wizardToUse);
 		viewer.setText(html);
 

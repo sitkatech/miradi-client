@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -23,6 +22,7 @@ import javax.swing.text.JTextComponent;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlViewPanel;
@@ -58,7 +58,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 
 		projectList = new ProjectListPanel(getMainWindow(), this);
 		
-		setBackground(Color.WHITE);
+		setBackground(AppPreferences.WIZARD_BACKGROUND);
 		setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 	}
 	
