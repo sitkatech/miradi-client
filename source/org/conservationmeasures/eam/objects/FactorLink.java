@@ -180,8 +180,8 @@ public class FactorLink extends BaseObject
 	}
 	
 	
-	private static String TAG_FROM_REF = "FromRef";
-	private static String TAG_TO_REF = "ToRef";
+	public static String TAG_FROM_REF = "FromRef";
+	public static String TAG_TO_REF = "ToRef";
 	public static String TAG_STRESS_LABEL = "StressLabel";
 	public static String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 
