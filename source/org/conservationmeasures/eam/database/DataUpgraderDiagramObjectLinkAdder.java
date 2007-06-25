@@ -106,19 +106,8 @@ public class DataUpgraderDiagramObjectLinkAdder
 			EnhancedJsonObject diagramObjectJson = diagramObjects[i];
 			String diagramFactorIdsAsString = diagramObjectJson.getString(DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 			IdList allDiagramFactorIds = new IdList(diagramFactorIdsAsString);
-			BaseId from = null;
-			BaseId to = null;
-			for (int fromIndex = 0; fromIndex < fromDiagramFactorIds.length; ++fromIndex)
-			{
-				if (allDiagramFactorIds.contains(fromDiagramFactorIds[fromIndex]))
-					from = fromDiagramFactorIds[fromIndex];
-			}
-			
-			for (int toIndex = 0; toIndex < toDiagramFactorIds.length; ++toIndex)
-			{
-				if (allDiagramFactorIds.contains(toDiagramFactorIds[toIndex]))
-					to = toDiagramFactorIds[toIndex];
-			}
+			BaseId from = findDiagramFactor(fromDiagramFactorIds, allDiagramFactorIds);
+			BaseId to = findDiagramFactor(toDiagramFactorIds, allDiagramFactorIds);
 			
 			if (to == null || from == null)
 				continue;
@@ -128,6 +117,16 @@ public class DataUpgraderDiagramObjectLinkAdder
 			
 			linkThem(jsonDir, diagramObjectJson, diagramLinkDir, wrappedLinkId, diagramLinkManifestFile, from, to);
 		}
+	}
+
+	private BaseId findDiagramFactor(BaseId[] diagramFactorIds, IdList allDiagramFactorIds)
+	{
+		for (int i = 0; i < diagramFactorIds.length; ++i)
+		{
+			if (allDiagramFactorIds.contains(diagramFactorIds[i]))
+				return diagramFactorIds[i];
+		}
+		return null;
 	}
 	
 	private void linkThem(File jsonDir, EnhancedJsonObject diagramObjectJson, File diagramLinkDir, BaseId wrappedLinkId, File diagramLinkManifestFile, BaseId from, BaseId to) throws Exception
