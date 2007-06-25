@@ -5,6 +5,13 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.Project;
+
 public class ResultsChainPageList extends DiagramPageList
 {
+	public ResultsChainPageList(Project project)
+	{
+		super(project, ObjectType.RESULTS_CHAIN_DIAGRAM);
+	}
 }

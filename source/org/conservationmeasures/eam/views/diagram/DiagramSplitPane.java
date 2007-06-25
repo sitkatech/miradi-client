@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.UIManager;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -19,12 +20,23 @@ abstract public class DiagramSplitPane extends JSplitPane
 	public DiagramSplitPane(MainWindow mainWindow, DiagramComponent diagramComponentToAdd)
 	{
 		legendPanel = createLegendPanel(mainWindow);
-		scrollableLegendPanel = new JScrollPane(legendPanel);
+		scrollableLegendPanel = createLegendScrollPane();
 		selectionPanel = createPageList(mainWindow.getProject());
 		UiScrollPane scrollPane = createDiagramPanel(mainWindow.getProject(), diagramComponentToAdd);
 		setLeftComponent(createLeftPanel());
 		setRightComponent(scrollPane);
-		setDividerLocation(scrollableLegendPanel.getPreferredSize().width + 50);
+		
+		int scrollBarWidth = ((Integer)UIManager.get("ScrollBar.width")).intValue();
+		setDividerLocation(scrollableLegendPanel.getPreferredSize().width + scrollBarWidth);
+	}
+
+	private JScrollPane createLegendScrollPane()
+	{
+		JScrollPane scrollPane = new JScrollPane(legendPanel);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
+		return scrollPane;
 	}
 	
 	private UiScrollPane createDiagramPanel(Project project, DiagramComponent diagram)

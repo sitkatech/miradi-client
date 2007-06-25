@@ -15,10 +15,6 @@ import org.conservationmeasures.eam.project.Project;
 
 abstract public class DiagramPageList extends JList implements ListSelectionListener
 {
-	public DiagramPageList()
-	{
-	}
-	
 	public DiagramPageList(Project project, int objectType)
 	{
 		super();

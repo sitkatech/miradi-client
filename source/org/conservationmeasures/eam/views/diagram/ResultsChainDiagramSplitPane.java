@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import javax.swing.JComponent;
-import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -26,14 +25,6 @@ public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 	
 	public JComponent createPageList(Project project)
 	{
-		return new ResultsChainPageList();
-	}
-	
-	protected JSplitPane createLeftPanel()
-	{
-		JSplitPane leftSideSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		leftSideSplit.setBottomComponent(legendPanel);
-		
-		return leftSideSplit;
+		return new ResultsChainPageList(project);
 	}
 }
