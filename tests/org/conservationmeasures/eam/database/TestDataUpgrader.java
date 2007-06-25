@@ -120,8 +120,7 @@ public class TestDataUpgrader extends EAMTestCase
 		return objectsDir;
 	}
 	
-	//FIXME nima finish the migration testing and see why its failing
-	public void DontrightNowtestUpgradeTo21AddLinksInAllDOsWhereNeeded() throws Exception
+	public void testUpgradeTo21AddLinksInAllDOsWhereNeeded() throws Exception
 	{
 		File jsonDir = createObjectsDir(tempDirectory, "json");
 		
@@ -203,15 +202,29 @@ public class TestDataUpgrader extends EAMTestCase
 		{
 			BaseId baseId = diagramLinks[i];
 			String idAsString = Integer.toString(baseId.asInt());
-			EnhancedJsonObject diagramLinkJson = DataUpgrader.readFile(new File(idAsString));
+			EnhancedJsonObject diagramLinkJson = DataUpgrader.readFile(new File(diagramLinkDir, idAsString));
 			DiagramLink diagramLink = new DiagramLink(baseId.asInt(), diagramLinkJson);
 			int fromId = diagramLink.getFromDiagramFactorId().asInt();
 			int toId = diagramLink.getToDiagramFactorId().asInt();
+
 			if (toId == 28)
 				assertEquals("the from is not correct?", 27, fromId);
-			if (toId ==15)
-				assertEquals("the from is not correct?", 13, fromId);
+			
+			if (toId ==13)
+				assertEquals("the to is not correct?", 17, fromId);
 		}
+	
+		File resultsChainFile26 = new File(resultsChainDir, "26");
+		EnhancedJsonObject resultsChainJSon = DataUpgrader.readFile(resultsChainFile26);
+		String resultsChainLinksAsString = resultsChainJSon.getString("DiagramFactorLinkIds");
+		IdList resultsChainLinks = new IdList(resultsChainLinksAsString);
+		assertEquals("wrong results chain link size?", 2, resultsChainLinks.size());
+		
+		File conceptualModelFile = new File(conceptualModelDir, "10");
+		EnhancedJsonObject conceptualModelJson = DataUpgrader.readFile(conceptualModelFile);
+		String conceptualModelLinksAsString = conceptualModelJson.getString("DiagramFactorLinkIds");
+		IdList conceptualModelLinks = new IdList(conceptualModelLinksAsString);
+		assertEquals("wrong conceptual model link size?", 2, conceptualModelLinks.size());
 	}
 
 	private void createObjectFile(File objectDir, String fileName, String objectString) throws Exception

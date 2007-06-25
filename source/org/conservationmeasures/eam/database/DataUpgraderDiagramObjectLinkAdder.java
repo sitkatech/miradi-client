@@ -146,14 +146,40 @@ public class DataUpgraderDiagramObjectLinkAdder
 		EnhancedJsonObject diagramFactorLinkJson = new EnhancedJsonObject();
 		diagramFactorLinkJson.put("WrappedLinkId", wrappedLinkId.toString());
 		diagramFactorLinkJson.put("Id", highestId);
-		diagramFactorLinkJson.put("ToDiagramFactorId", from.toString());
-		diagramFactorLinkJson.put("FromDiagramFactorId", to.toString());
+		diagramFactorLinkJson.put("ToDiagramFactorId", to.toString());
+		diagramFactorLinkJson.put("FromDiagramFactorId", from.toString());
 		
 		File idFile = new File(diagramLinkDir, Integer.toString(highestId));
 		DataUpgrader.createFile(idFile, diagramFactorLinkJson.toString());
-		DataUpgrader.writeJson(idFile, diagramFactorLinkJson);
+		
 		
 		DataUpgrader.writeHighestIdToProjectFile(jsonDir, highestId);
+		DataUpgrader.writeJson(idFile, diagramFactorLinkJson);
+		DataUpgrader.writeJson(diagramLinkManifestFile, diagramLinkManifest.toJson());
+		
+		String diagramObjectFileName = diagramObjectJson.getString("Id");
+		String diagramObjectLinksAsString = diagramObjectJson.getString("DiagramFactorLinkIds");
+		IdList diagramObjectLinks = new IdList(diagramObjectLinksAsString);
+		diagramObjectLinks.add(new BaseId(highestId));
+		diagramObjectJson.put("DiagramFactorLinkIds", diagramObjectLinks.toJson());
+		File diagramObjectDir = findCorrectDiagramObjectDir(jsonDir, diagramObjectJson, diagramObjectFileName);
+		File diagramObjectFile = new File(diagramObjectDir, diagramObjectFileName);
+		DataUpgrader.writeJson(diagramObjectFile, diagramObjectJson);
+	}
+
+	private File findCorrectDiagramObjectDir(File jsonDir, EnhancedJsonObject diagramObjectJson, String diagramObjectFileName) throws Exception
+	{ 
+		File conceptualModelDir = new File(jsonDir, "objects-19");
+		File possibleConceptualModel = new File(conceptualModelDir, diagramObjectFileName);
+		if (possibleConceptualModel.exists())
+			return conceptualModelDir;
+		
+		File resultsChainDir = new File(jsonDir, "objects-24");
+		File possibleResultsChain = new File(resultsChainDir, diagramObjectFileName);
+		if (possibleResultsChain.exists())
+			return resultsChainDir;
+		
+		throw new RuntimeException("could not find diagram object file " +  diagramObjectFileName + " in either the Conceptual model or Results chain diagram");
 	}
 
 	private boolean areLinked(DiagramLink[] allDiagramLinks, BaseId from, BaseId to)

@@ -122,16 +122,15 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		if (readDataVersion(getTopDirectory()) == 19)
 			upgradeToVersion20();
-//FIXME nima finish migrations code
-//		if (readDataVersion(getTopDirectory()) == 20)
-//			upgradeToVersion21();
+
+		if (readDataVersion(getTopDirectory()) == 20)
+			upgradeToVersion21();
 	}
 	
 	public void upgradeToVersion21() throws Exception
 	{
-		//FIXME nima finish migrations code
-		//addLinksInAllDOsWhereNeeded();
-		//writeVersion(21);
+		new DataUpgraderDiagramObjectLinkAdder(topDirectory).addLinksInAllDOsWhereNeeded();
+		writeVersion(21);
 	}
 
 
