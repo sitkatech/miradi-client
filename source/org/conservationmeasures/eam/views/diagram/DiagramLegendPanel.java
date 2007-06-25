@@ -250,12 +250,12 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	
 	private String constantTARGETLINK()
 	{
-		return EAM.text("Target link");
+		return EAM.text("Targetlink");
 	}
 	
 	private String constantSCOPEBOX()
 	{
-		return EAM.text("Scope Box");
+		return EAM.text("ScopeBox");
 	}
 	
 	
