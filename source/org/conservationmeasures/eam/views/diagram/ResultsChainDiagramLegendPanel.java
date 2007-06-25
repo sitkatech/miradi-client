@@ -24,8 +24,8 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	
 	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
 	{
-		addButtonLineWithCheckBox(jpanel, ThreatReductionResult.OBJECT_NAME, actions.get(ActionInsertThreatReductionResult.class));
-		addButtonLineWithCheckBox(jpanel, IntermediateResult.OBJECT_NAME, actions.get(ActionInsertIntermediateResult.class));
+		addButtonLineWithCheckBox(jpanel, ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME, actions.get(ActionInsertThreatReductionResult.class));
+		addButtonLineWithCheckBox(jpanel, IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME, actions.get(ActionInsertIntermediateResult.class));
 	}
 	
 	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property, JCheckBox checkBox)

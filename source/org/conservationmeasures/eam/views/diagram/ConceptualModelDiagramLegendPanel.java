@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 
 public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
@@ -23,8 +24,8 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	
 	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
 	{
-		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
-		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
+		addButtonLineWithCheckBox(jpanel, Cause.getObjectType(), Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
+		addButtonLineWithCheckBox(jpanel, Cause.getObjectType(),  Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 	}
 	
 	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property, JCheckBox checkBox)
