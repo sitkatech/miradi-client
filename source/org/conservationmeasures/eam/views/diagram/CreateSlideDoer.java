@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -39,6 +40,8 @@ public class CreateSlideDoer extends ObjectsDoer
 			
 			ORef slideRef = createSlide();
 			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(object, SlideShow.TAG_SLIDE_REFS, slideRef));
+			int position = new ORefList(object.getData(SlideShow.TAG_SLIDE_REFS)).size();
+			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_LABEL, "[SLIDE-"+position+"]"));
 			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getRef()));
 			
 			getPicker().ensureObjectVisible(slideRef);
