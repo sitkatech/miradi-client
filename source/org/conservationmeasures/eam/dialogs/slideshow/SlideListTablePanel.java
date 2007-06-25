@@ -33,6 +33,8 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	public void valueChanged(ListSelectionEvent event)
 	{
 		super.valueChanged(event);
+		if (getSelectedObject()==null)
+			return;
 		ORef oref = ((Slide)getSelectedObject()).getDiagramRef();
 		if (!oref.equals(ORef.INVALID))
 			((DiagramView)EAM.mainWindow.getCurrentView()).setDiagramTab(oref);
