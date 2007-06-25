@@ -39,10 +39,10 @@ public class CreateSlideDoer extends ObjectsDoer
 			DiagramObject diagramObject = getDiagramView().getDiagramPanel().getDiagramObject();
 			
 			ORef slideRef = createSlide();
-			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(object, SlideShow.TAG_SLIDE_REFS, slideRef));
-			int position = new ORefList(object.getData(SlideShow.TAG_SLIDE_REFS)).size();
+			int position = new ORefList(object.getData(SlideShow.TAG_SLIDE_REFS)).size()+1;
 			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_LABEL, "[SLIDE-"+position+"]"));
 			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getRef()));
+			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(object, SlideShow.TAG_SLIDE_REFS, slideRef));
 			
 			getPicker().ensureObjectVisible(slideRef);
 		}

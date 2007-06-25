@@ -67,20 +67,36 @@ public class Slide extends BaseObject
 		return list;
 	}
 	
+	
+	public String getPseudoData(String fieldTag)
+	{
+		if(fieldTag.equals(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL))
+			return getDiagramObjectLabel();
+		return super.getPseudoData(fieldTag);
+	}
+	
+	public String getDiagramObjectLabel()
+	{
+		BaseObject object = getObjectManager().findObject(diagramObjectRef.getRawRef());
+		return object.getLabel();
+	}
 
 	void clear()
 	{
 		super.clear();
 		diagramObjectRef = new ORefData();
+		diagramObjectLabel = new PseudoStringData(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL);
 		addField(TAG_DIAGRAM_OBJECT_REF, diagramObjectRef);
+		addField(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL, diagramObjectLabel);
 	}
 	
 	
 	public static String TAG_DIAGRAM_OBJECT_REF = "DiagramObjectRef";
-
+	public static String PSEUDO_TAG_DIAGRAM_OBJECT_LABEL = "DiagramObjectLabel";
 
 	public static final String OBJECT_NAME = "Slide";
 
 	
 	private ORefData diagramObjectRef;
+	PseudoStringData diagramObjectLabel;
 }

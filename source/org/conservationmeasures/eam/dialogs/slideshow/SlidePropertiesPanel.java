@@ -18,6 +18,7 @@ public class SlidePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.SLIDE, idToEdit);
 		addField(createStringField(Slide.getObjectType(), Slide.TAG_LABEL));
+		addField(createStringField(Slide.getObjectType(), Slide.PSEUDO_TAG_DIAGRAM_OBJECT_LABEL));
 		updateFieldsFromProject();
 	}
 
