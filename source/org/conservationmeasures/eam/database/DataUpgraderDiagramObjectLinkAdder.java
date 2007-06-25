@@ -9,15 +9,10 @@ import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramLink;
-import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DataUpgraderDiagramObjectLinkAdder
@@ -73,19 +68,19 @@ public class DataUpgraderDiagramObjectLinkAdder
 		if (! resultsChainManifestFile.exists())
 			throw new RuntimeException("manifest for objects-24 directory does not exist " + resultsChainManifestFile.getAbsolutePath());
 
-		BaseId[] linksStratsAndTargets = areStratsDirectlyLinkedToTargets(factorLinkDir, factorLinkManifestFile); 
-		if (linksStratsAndTargets.length == 0)
+		BaseId[] strategyToTargetLinkIds = getLinksBetweenStrategiesAndTargets(factorLinkDir, factorLinkManifestFile); 
+		if (strategyToTargetLinkIds.length == 0)
 			return;
 		
-		DiagramObject[] diagramObjects = getAllDiagramObjects(conceptualModelDir, conceptualModelManifestFile, resultsChainDir, resultsChainManifestFile);
-		if (hasNoResultsChainObjects(diagramObjects))
+		EnhancedJsonObject[] diagramObjectJsons = getAllDiagramObjects(conceptualModelDir, conceptualModelManifestFile, resultsChainDir, resultsChainManifestFile);
+		if (hasOnlyOneDiagram(diagramObjectJsons))
 			return;
 		
-		DiagramLink[] allDiagramLinks = getAllDiagramLinks(diagramLinkDir, diagramLinkManifestFile);
+		EnhancedJsonObject[] allDiagramLinks = getAllDiagramLinks(diagramLinkDir, diagramLinkManifestFile);
 		
-		for (int i = 0; i < linksStratsAndTargets.length; ++i)
+		for (int i = 0; i < strategyToTargetLinkIds.length; ++i)
 		{
-			BaseId factorLinkId = linksStratsAndTargets[i];
+			BaseId factorLinkId = strategyToTargetLinkIds[i];
 			String idAsString = Integer.toString(factorLinkId.asInt());
 			File factorLinkFile = new File(factorLinkDir, idAsString);
 			EnhancedJsonObject factorLinkJson = DataUpgrader.readFile(factorLinkFile);
@@ -94,17 +89,18 @@ public class DataUpgraderDiagramObjectLinkAdder
 			BaseId[] fromDiagramFactorIds = findDiagramFactor(diagramFactorDir, diagramFactorManifestFile, fromRef);
 			BaseId[] toDiagramFactorIds = findDiagramFactor(diagramFactorDir, diagramFactorManifestFile, toRef);
 
-			possiblyLinkToAndFrom(jsonDir, diagramObjects, factorLinkId, diagramLinkDir, allDiagramLinks, diagramLinkManifestFile, fromDiagramFactorIds, toDiagramFactorIds);
+			possiblyLinkToAndFrom(jsonDir, diagramObjectJsons, factorLinkId, diagramLinkDir, allDiagramLinks, diagramLinkManifestFile, fromDiagramFactorIds, toDiagramFactorIds);
 		}	
 		
 	}
 	
-	private void possiblyLinkToAndFrom(File jsonDir, DiagramObject[] diagramObjects, BaseId wrappedLinkId, File diagramLinkDir, DiagramLink[] allDiagramLinks, File diagramLinkManifestFile, BaseId[] fromDiagramFactorIds, BaseId[] toDiagramFactorIds) throws Exception
+	private void possiblyLinkToAndFrom(File jsonDir, EnhancedJsonObject[] diagramObjects, BaseId wrappedLinkId, File diagramLinkDir, EnhancedJsonObject[] allDiagramLinks, File diagramLinkManifestFile, BaseId[] fromDiagramFactorIds, BaseId[] toDiagramFactorIds) throws Exception
 	{
 		for (int i = 0; i < diagramObjects.length; ++i)
 		{
-			DiagramObject diagramObject = diagramObjects[i];
-			IdList allDiagramFactorIds = diagramObject.getAllDiagramFactorIds();
+			EnhancedJsonObject diagramObjectJson = diagramObjects[i];
+			String diagramFactorIdsAsString = diagramObjectJson.getString("DiagramFactorIds");
+			IdList allDiagramFactorIds = new IdList(diagramFactorIdsAsString);
 			BaseId from = null;
 			BaseId to = null;
 			for (int fromIndex = 0; fromIndex < fromDiagramFactorIds.length; ++fromIndex)
@@ -125,7 +121,6 @@ public class DataUpgraderDiagramObjectLinkAdder
 			if (areLinked(allDiagramLinks, from, to))
 				continue;
 			
-			EnhancedJsonObject diagramObjectJson = diagramObject.toJson();
 			linkThem(jsonDir, diagramObjectJson, diagramLinkDir, wrappedLinkId, diagramLinkManifestFile, from, to);
 		}
 	}
@@ -176,13 +171,14 @@ public class DataUpgraderDiagramObjectLinkAdder
 		throw new RuntimeException("could not find diagram object file " +  diagramObjectFileName + " in either the Conceptual model or Results chain diagram");
 	}
 
-	private boolean areLinked(DiagramLink[] allDiagramLinks, BaseId from, BaseId to)
+	private boolean areLinked(EnhancedJsonObject[] allDiagramLinkJsons, BaseId from, BaseId to)
 	{
-		for (int i = 0; i < allDiagramLinks.length; ++i)
+		for (int i = 0; i < allDiagramLinkJsons.length; ++i)
 		{
-			DiagramLink diagramLink = allDiagramLinks[i];
-			DiagramFactorId fromId = diagramLink.getFromDiagramFactorId();
-			DiagramFactorId toId = diagramLink.getToDiagramFactorId();
+			
+			EnhancedJsonObject diagramLinkJson = allDiagramLinkJsons[i];
+			BaseId fromId = new BaseId(diagramLinkJson.getString("FromDiagramFactorId"));
+			BaseId toId = new BaseId(diagramLinkJson.getString("ToDiagramFactorId"));
 			if (from.equals(fromId) && to.equals(toId))
 				return true;
 		}
@@ -190,29 +186,28 @@ public class DataUpgraderDiagramObjectLinkAdder
 		return false;
 	}
 
-	private DiagramLink[] getAllDiagramLinks(File diagramLinkDir, File diagramLinkManifestFile) throws Exception
+	private EnhancedJsonObject[] getAllDiagramLinks(File diagramLinkDir, File diagramLinkManifestFile) throws Exception
 	{
 		ObjectManifest diagramLinkManifest = new ObjectManifest(JSONFile.read(diagramLinkManifestFile));
 		BaseId[] diagramLinkIds = diagramLinkManifest.getAllKeys();
-		DiagramLink[] allDiagramLinks = new DiagramLink[diagramLinkIds.length];
+		EnhancedJsonObject[] allDiagramLinkJsons = new EnhancedJsonObject[diagramLinkIds.length];
 		for (int i = 0; i < diagramLinkIds.length; ++i)
 		{
 			BaseId diagramLinkId = diagramLinkIds[i];
 			String idAsString = Integer.toString(diagramLinkId.asInt());
 			File diagramLinkFile = new File(diagramLinkDir, idAsString);
-			EnhancedJsonObject diagramLinkJson = DataUpgrader.readFile(diagramLinkFile);
-			allDiagramLinks[i] = new DiagramLink(diagramLinkId.asInt(), diagramLinkJson);
+			allDiagramLinkJsons[i] = DataUpgrader.readFile(diagramLinkFile);
 		}
 		
-		return allDiagramLinks;
+		return allDiagramLinkJsons;
 	}
 
-	private boolean hasNoResultsChainObjects(DiagramObject[] diagramObjects)
+	private boolean hasOnlyOneDiagram(EnhancedJsonObject[] diagramObjects)
 	{
 		return diagramObjects.length == 1;
 	}
 
-	private DiagramObject[] getAllDiagramObjects(File conceptualModelDir, File conceptualModelManifestFile, File resultsChainDir, File resultsChainManifestFile) throws Exception
+	private EnhancedJsonObject[] getAllDiagramObjects(File conceptualModelDir, File conceptualModelManifestFile, File resultsChainDir, File resultsChainManifestFile) throws Exception
 	{
 		Vector allDiagramObjects = new Vector();
 		
@@ -221,8 +216,8 @@ public class DataUpgraderDiagramObjectLinkAdder
 		String idAsString = Integer.toString(conceptualModelId.asInt());
 		File conceptualModelFile = new File(conceptualModelDir, idAsString);
 		EnhancedJsonObject conceptualModelJson = DataUpgrader.readFile(conceptualModelFile);
-		ConceptualModelDiagram conceptualModel = new ConceptualModelDiagram(conceptualModelId.asInt(), conceptualModelJson);
-		allDiagramObjects.add(conceptualModel);
+		//ConceptualModelDiagram conceptualModel = new ConceptualModelDiagram(conceptualModelId.asInt(), conceptualModelJson);
+		allDiagramObjects.add(conceptualModelJson);
 
 		ObjectManifest resultsChainManifest = new ObjectManifest(JSONFile.read(resultsChainManifestFile));
 		BaseId[] resultsChainIds = resultsChainManifest.getAllKeys();
@@ -232,11 +227,11 @@ public class DataUpgraderDiagramObjectLinkAdder
 			String asString = Integer.toString(resultsChainId.asInt());
 			File resultsChainFile = new File(resultsChainDir, asString);
 			EnhancedJsonObject resultsChainJson = DataUpgrader.readFile(resultsChainFile);
-			ResultsChainDiagram resultsChain = new ResultsChainDiagram(resultsChainId.asInt(), resultsChainJson);
-			allDiagramObjects.add(resultsChain);
+			//ResultsChainDiagram resultsChain = new ResultsChainDiagram(resultsChainId.asInt(), resultsChainJson);
+			allDiagramObjects.add(resultsChainJson);
 		}
 		
-		return (DiagramObject[]) allDiagramObjects.toArray(new DiagramObject[0]);
+		return (EnhancedJsonObject[]) allDiagramObjects.toArray(new EnhancedJsonObject[0]);
 	}
 
 	private BaseId[] findDiagramFactor(File diagramFactorDir, File diagramFactorManifestFile, ORef wrappedRef) throws Exception
@@ -258,7 +253,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		return (BaseId[]) allDiagramFactorsThatWrap.toArray(new BaseId[0]);
 	}
 
-	private BaseId[] areStratsDirectlyLinkedToTargets(File factorLinkDir, File factorLinkManifestFile) throws Exception
+	private BaseId[] getLinksBetweenStrategiesAndTargets(File factorLinkDir, File factorLinkManifestFile) throws Exception
 	{
 		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
 		BaseId[] factorLinkIds = factorLinkManifest.getAllKeys();
@@ -275,7 +270,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 			if (fromRef.getObjectType() == ObjectType.STRATEGY && toRef.getObjectType() == ObjectType.TARGET)
 				allLinksBetweenStratsAndTargets.add(factorLinkId);
 			
-			if (toRef.getObjectType() == ObjectType.STRATEGY && fromRef.getObjectType() == ObjectType.TARGET)
+			if (fromRef.getObjectType() == ObjectType.TARGET && toRef.getObjectType() == ObjectType.STRATEGY)
 				allLinksBetweenStratsAndTargets.add(factorLinkId);
 		}	
 		
