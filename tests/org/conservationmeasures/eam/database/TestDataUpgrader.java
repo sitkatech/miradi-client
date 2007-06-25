@@ -193,7 +193,7 @@ public class TestDataUpgrader extends EAMTestCase
 
 		
 		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
-		upgrader.addLinksInAllDOsWhereNeeded();
+		upgrader.upgradeToVersion21();
 		
 		ObjectManifest diagramLinkManifestObject = new ObjectManifest(JSONFile.read(diagramLinkManifest));
 		assertEquals("diagram links not created?", 4, diagramLinkManifestObject.size());
