@@ -14,11 +14,4 @@ abstract public class ObjectListTablePanel extends ObjectTablePanelWithCreateAnd
 	{
 		super(projectToUse, objectTypeToUse, new ObjectListTable(model),actions, buttonActionClasses);
 	}
-
-	public void dispose()
-	{
-		super.dispose();
-	}
-
-
 }
