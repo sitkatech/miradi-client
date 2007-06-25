@@ -150,8 +150,8 @@ public class DiagramView extends TabbedViewWithSidePanel implements CommandExecu
 	
 	private SlideListManagementPanel createSlideShowPanel() throws Exception
 	{
-		ORef oref = createSlideShowIfNeeded().getRef(); 
-		slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), oref, getActions());
+		ORef slideShowRef = createSlideShowIfNeeded().getRef(); 
+		slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), slideShowRef, getActions());
 		slideShowPoolManagementPanel.updateSplitterLocationToMiddle();
 		setSidePanel(slideShowPoolManagementPanel);
 		hideSidePanel();
