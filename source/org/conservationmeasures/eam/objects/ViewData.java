@@ -128,7 +128,7 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 	}
 	
-	public static final String TAG_CURRENT_CONCEPTUAL_MODEL = "CurrentConceptualModel";
+	public static final String TAG_CURRENT_DIAGRAMOBJECT = "CurrentDiagramObject";
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_CHAIN_MODE_FACTOR_REFS = "ChainModeFactorRefs";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
