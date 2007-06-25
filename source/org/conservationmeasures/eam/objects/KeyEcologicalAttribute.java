@@ -139,7 +139,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	public static final String PSEUDO_TAG_VIABILITY_STATUS = "ViabilityStatus";
 	public static final String PSEUDO_TAG_VIABILITY_STATUS_VALUE = "ViabilityStatusValue";
 
-	public static final String OBJECT_NAME = "Key Ecological Attribute";
+	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
 	
 	IdListData indicatorIds;
 	StringData description;

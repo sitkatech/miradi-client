@@ -66,5 +66,5 @@ public class TextBox extends Factor
 		return new ORefList();
 	}
 	
-	public static final String OBJECT_NAME = "Text Box";
+	public static final String OBJECT_NAME = "TextBox";
 }

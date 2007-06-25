@@ -84,5 +84,5 @@ public class IntermediateResult extends Factor
 		return list;
 	}
 
-	public static final String OBJECT_NAME = "Intermediate Result";
+	public static final String OBJECT_NAME = "IntermediateResult";
 }

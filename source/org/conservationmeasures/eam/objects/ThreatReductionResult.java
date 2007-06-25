@@ -84,5 +84,5 @@ public class ThreatReductionResult extends Factor
 		return list;
 	}
 
-	public static final String OBJECT_NAME = "Threat Reduction Result";
+	public static final String OBJECT_NAME = "ThreatReductionResult";
 }

@@ -136,4 +136,7 @@ public class Cause extends Factor
 	
 	StringData taxonomyCode; 
 	PseudoQuestionData taxonomyCodeLabel;
+	
+	public static final String OBJECT_NAME_THREAT = "DirectThreat";
+	public static final String OBJECT_NAME_CONTRIBUTING_FACTOR = "ContributingFactor";
 }

@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.IntermediateResult;
@@ -143,10 +144,10 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	private UiLabel createFactorTypeLabel(Factor factor)
 	{
 		if(factor.isDirectThreat())
-			return new PanelTitleLabel(Factor.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(Cause.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING);
 		
 		if (factor.isContributingFactor())
-			return new PanelTitleLabel(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING);
 		
 		if (factor.isStrategy())
 			return new PanelTitleLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING);
