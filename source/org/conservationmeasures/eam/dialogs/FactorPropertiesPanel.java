@@ -144,25 +144,25 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	private UiLabel createFactorTypeLabel(Factor factor)
 	{
 		if(factor.isDirectThreat())
-			return new PanelTitleLabel(Cause.OBJECT_NAME_THREAT, new DirectThreatIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(EAM.fieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT), new DirectThreatIcon(), UiLabel.LEADING);
 		
 		if (factor.isContributingFactor())
-			return new PanelTitleLabel(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(EAM.fieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR), new ContributingFactorIcon(), UiLabel.LEADING);
 		
 		if (factor.isStrategy())
-			return new PanelTitleLabel(Strategy.OBJECT_NAME, new StrategyIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(EAM.fieldLabel(Strategy.getObjectType(), Strategy.OBJECT_NAME), new StrategyIcon(), UiLabel.LEADING);
 		
 		if (factor.isTarget())
-			return new PanelTitleLabel(Target.OBJECT_NAME, new TargetIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(EAM.fieldLabel(Target.getObjectType(), Target.OBJECT_NAME), new TargetIcon(), UiLabel.LEADING);
 		
 		if (factor.isIntermediateResult())
-			return new PanelTitleLabel(IntermediateResult.OBJECT_NAME, new IntermediateResultIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(EAM.fieldLabel(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME), new IntermediateResultIcon(), UiLabel.LEADING);
 
 		if (factor.isThreatReductionResult())
-			return new PanelTitleLabel(ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(EAM.fieldLabel(ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME), new ThreatReductionResultIcon(), UiLabel.LEADING);
 		
 		if (factor.isTextBox())
-			return new PanelTitleLabel(TextBox.OBJECT_NAME, new TextBoxIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME), new TextBoxIcon(), UiLabel.LEADING);
 		
 		throw new RuntimeException("Unknown factor type");
 	}
