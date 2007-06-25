@@ -147,9 +147,9 @@ public class TestDataUpgrader extends EAMTestCase
 		String conceptualModelString = "{\"TimeStampModified\":\"1182273085703\",\"DiagramFactorLinkIds\":\"{\\\"Ids\\\":[25]}\",\"Label\":\"\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[13,15,17]}\",\"Id\":10}";
 		createObjectFile(conceptualModelDir, conceptualModelIdAsString, conceptualModelString);
 
-		final int factor12 = 13;
-		final int factor14 = 13;
-		final int factor16 = 13;
+		final int factor12 = 12;
+		final int factor14 = 14;
+		final int factor16 = 16;
 		int[] factorIds = {factor12, factor14, factor16, };
 		File factorManifest = createManifestFile(factorDir, factorIds);
 		String target12str = "{\"Type\":\"Target\",\"CurrentStatusJustification\":\"\",\"ViabilityMode\":\"\",\"Comment\":\"\",\"TimeStampModified\":\"1182273035062\",\"GoalIds\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"TargetStatus\":\"\",\"IndicatorIds\":\"\",\"Label\":\"New Target\",\"Id\":12,\"ObjectiveIds\":\"\"}";
