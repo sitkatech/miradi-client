@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.DateRangeEffortListData;
 import org.conservationmeasures.eam.objectdata.IdListData;
@@ -208,6 +209,10 @@ public class ObjectTestCase extends EAMTestCase
 			ORefListData listData = new ORefListData();
 			listData.set(list.toString());
 			return listData.toString();
+		}
+		else if(field instanceof CodeListData)
+		{
+			return new CodeListData().toString();
 		}
 		else
 		{

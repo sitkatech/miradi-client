@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.SlideId;
+import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -95,11 +96,14 @@ public class Slide extends BaseObject
 		super.clear();
 		diagramObjectRef = new ORefData();
 		diagramObjectLabel = new PseudoStringData(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL);
+		legendSettings = new CodeListData();
+		
 		addField(TAG_DIAGRAM_OBJECT_REF, diagramObjectRef);
 		addField(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL, diagramObjectLabel);
+		addField(TAG_DIAGRAM_LEGEND_SETTINGS, legendSettings);
 	}
 	
-	
+	public static String TAG_DIAGRAM_LEGEND_SETTINGS = "DiagramLegendSettings";
 	public static String TAG_DIAGRAM_OBJECT_REF = "DiagramObjectRef";
 	public static String PSEUDO_TAG_DIAGRAM_OBJECT_LABEL = "DiagramObjectLabel";
 
@@ -108,4 +112,5 @@ public class Slide extends BaseObject
 	
 	private ORefData diagramObjectRef;
 	PseudoStringData diagramObjectLabel;
+	CodeListData legendSettings;
 }
