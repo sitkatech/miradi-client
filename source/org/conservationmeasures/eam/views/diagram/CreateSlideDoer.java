@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Slide;
@@ -38,7 +37,7 @@ public class CreateSlideDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			BaseObject object = getSlideShow();
+			BaseObject object = getDiagramView().getSlideShow();
 			DiagramObject diagramObject = getDiagramView().getDiagramPanel().getDiagramObject();
 			
 			ORef slideRef = createSlide();
@@ -81,15 +80,4 @@ public class CreateSlideDoer extends ObjectsDoer
 		return create.getObjectRef();
 	}
 	
-	
-	private BaseObject getSlideShow() throws CommandFailedException
-	{
-		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
-		if (pool.size()==0)
-		{
-			throw new CommandFailedException("Slide Show not found in pool");
-		}
-
-		return getProject().findObject(SlideShow.getObjectType(), pool.getIds()[0]);
-	}
 }

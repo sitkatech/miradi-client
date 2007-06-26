@@ -195,6 +195,17 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return slideShowPoolManagementPanel;
 	}
 
+	public SlideShow getSlideShow() throws CommandFailedException
+	{
+		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
+		if (pool.size()==0)
+		{
+			throw new CommandFailedException("Slide Show not found in pool");
+		}
+
+		return (SlideShow) getProject().findObject(SlideShow.getObjectType(), pool.getIds()[0]);
+	}
+	
 	private BaseObject createSlideShowIfNeeded() throws CommandFailedException
 	{
 		ORef oref = ORef.INVALID;

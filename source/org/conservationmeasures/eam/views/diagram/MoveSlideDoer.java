@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
@@ -28,7 +27,7 @@ abstract public class MoveSlideDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			SlideShow object = getSlideShow();
+			SlideShow object = getDiagramView().getSlideShow();
 			ORefList list = new ORefList(object.getData(SlideShow.TAG_SLIDE_REFS));
 			ORef slideRef = getObjects()[0].getRef();
 			moveInList(list, slideRef);
@@ -53,14 +52,4 @@ abstract public class MoveSlideDoer extends ObjectsDoer
 		list.add(index + getDirection(),oref);
 	}
 
-	private SlideShow getSlideShow() throws CommandFailedException
-	{
-		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
-		if (pool.size()==0)
-		{
-			throw new CommandFailedException("Slide Show not found in pool");
-		}
-
-		return (SlideShow) getProject().findObject(SlideShow.getObjectType(), pool.getIds()[0]);
-	}
 }

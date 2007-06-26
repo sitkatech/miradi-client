@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.SlideShow;
@@ -49,7 +48,7 @@ public class DeleteSlideDoer extends ObjectsDoer
 		
 		try
 		{
-			BaseObject slideShow = getSlideShow();
+			BaseObject slideShow = getDiagramView().getSlideShow();
 			getProject().executeCommand(CommandSetObjectData.createRemoveORefCommand(slideShow, SlideShow.TAG_SLIDE_REFS, slide.getRef()));
 			getProject().executeCommands(slide.createCommandsToClear());
 			getProject().executeCommand(new CommandDeleteObject(slide.getRef()));
@@ -64,16 +63,4 @@ public class DeleteSlideDoer extends ObjectsDoer
 			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
-	
-	
-	private BaseObject getSlideShow() throws CommandFailedException
-	{
-		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
-		if (pool.size()==0)
-		{
-			throw new CommandFailedException("Slide Show not found: no objects in pool");
-		}
-		return getProject().findObject(pool.getORefList().get(0));
-	}
-
 }
