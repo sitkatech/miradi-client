@@ -55,7 +55,6 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		return EAM.loadResourceFile(getClass(), resourceFileName);
 	}
 	
-	//NOTE: Temp code to allow check in during wizard conversion
 	private boolean doesExist(String ext) throws Exception
 	{
 		URL url = EAM.getResourceURL(getClass(), getResourceFileName(ext));
