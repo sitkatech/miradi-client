@@ -145,7 +145,7 @@ public class WizardManager
 	{
 		String name = stripJumpPrefix(step);
 		SkeletonWizardStep newStepClass = findStep(name);
-		String viewNameNew = newStepClass.getWizard().getView().cardName();
+		String viewNameNew = newStepClass.getWizard().getViewName();
 		doJump(newStepClass, newStepClass, viewNameNew);
 		return "";
 	}
@@ -153,15 +153,14 @@ public class WizardManager
 	public String setStep(String newStep, String currentStepName) throws Exception
 	{	
 		SkeletonWizardStep currentStepClass = findStep(currentStepName);
-		String viewNameCur = currentStepClass.getWizard().getView().cardName();
+		String viewNameCur = currentStepClass.getWizard().getViewName();
 		
 		SkeletonWizardStep newStepClass = findStep(newStep);
 		
 		if (newStepClass==null) 
 			return currentStepName;
 		
-		UmbrellaView newView = newStepClass.getWizard().getView();
-		String viewNameNew = newView.cardName();
+		String viewNameNew = newStepClass.getWizard().getViewName();
 
 		if (!viewNameNew.equals(viewNameCur))
 		{

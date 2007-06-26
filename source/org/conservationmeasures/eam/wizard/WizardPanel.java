@@ -113,9 +113,9 @@ public class WizardPanel extends JPanel
 		setMinimumSize(new Dimension(0, 0));
 	}
 	
-	public UmbrellaView getView()
+	public String getViewName()
 	{
-		return view;
+		return view.cardName();
 	}
 	
 	Component createNavigationButtons()
