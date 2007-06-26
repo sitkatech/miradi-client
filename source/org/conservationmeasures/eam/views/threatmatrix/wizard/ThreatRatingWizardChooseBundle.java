@@ -37,13 +37,13 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 
 	private ThreatMatrixView getThreatView()
 	{
-		return ((ThreatMatrixView)getView());
+		return getMainWindow().getThreatView();
 	}
 	
 
 	private String getName(FactorId nodeId)
 	{
-		return getView().getProject().findNode(nodeId).getLabel();
+		return getMainWindow().getProject().findNode(nodeId).getLabel();
 	}
 	
 	

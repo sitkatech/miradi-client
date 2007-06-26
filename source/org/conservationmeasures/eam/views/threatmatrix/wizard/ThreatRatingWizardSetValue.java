@@ -46,7 +46,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 
 	private ThreatMatrixView getThreatView()
 	{
-		return ((ThreatMatrixView)getView());
+		return getMainWindow().getThreatView();
 	}
 
 	protected String[] getValueOptionLabels()

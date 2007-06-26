@@ -16,7 +16,6 @@ import javax.swing.JPopupMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
 {
@@ -34,11 +33,6 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		return wizard;
 	}
 
-	public UmbrellaView getView()
-	{
-		return wizard.getView();
-	}
-	
 	public String getTextLeft() throws Exception
 	{
 		if (!doesExist(LEFT))
