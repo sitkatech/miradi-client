@@ -35,14 +35,13 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 		BaseId criterionId = framework.findCriterionByLabel(critertionName).getId();
 		ThreatRatingBundle bundle = getThreatView().getBundle();
 		criterion = getFramework().getCriterion(criterionId);
-		if(bundle == null)
+		if(bundle != null)
 		{
-			return;
+			BaseId valueId = bundle.getValueId(criterion.getId());
+			value = getFramework().getValueOption(valueId);
 		}
-		BaseId valueId = bundle.getValueId(criterion.getId());
-		value = getFramework().getValueOption(valueId);
-		
 		super.refresh();
+
 	}
 
 	private ThreatMatrixView getThreatView()
