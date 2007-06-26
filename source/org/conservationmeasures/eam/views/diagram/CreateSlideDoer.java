@@ -18,6 +18,9 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.SlideShow;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.DiagramLegendQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class CreateSlideDoer extends ObjectsDoer
@@ -42,6 +45,7 @@ public class CreateSlideDoer extends ObjectsDoer
 			int position = new ORefList(object.getData(SlideShow.TAG_SLIDE_REFS)).size()+1;
 			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_LABEL, "[SLIDE-"+position+"]"));
 			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_DIAGRAM_OBJECT_REF, diagramObject.getRef()));
+			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_DIAGRAM_LEGEND_SETTINGS, getLegendSettings()));
 			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(object, SlideShow.TAG_SLIDE_REFS, slideRef));
 			
 			getPicker().ensureObjectVisible(slideRef);
@@ -55,6 +59,19 @@ public class CreateSlideDoer extends ObjectsDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private String getLegendSettings()
+	{
+		CodeList list = new CodeList();
+		DiagramLegendPanel panel = getDiagramView().getDiagramPanel().getDiagramLegendPanel();
+		ChoiceItem[] choices = new DiagramLegendQuestion("").getChoices();
+		for (int i=0; i<choices.length; ++i)
+		{
+			if (panel.isSelected(choices[i].getCode()))
+				list.add(choices[i].getCode());
+		}
+		return list.toString();
 	}
 
 	protected ORef createSlide() throws CommandFailedException

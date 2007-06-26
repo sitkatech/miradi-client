@@ -253,7 +253,12 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 
 	public boolean isSelected(String property)
 	{
-		return ((JCheckBox)checkBoxes.get(property)).isSelected();
+		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
+		
+		if (checkBox==null)
+			return false;
+		
+		return checkBox.isSelected();
 	}
 	
 	class LocationButton extends PanelButton implements LocationHolder
