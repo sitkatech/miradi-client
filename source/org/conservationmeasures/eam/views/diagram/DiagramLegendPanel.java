@@ -185,8 +185,6 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 			manager.setVisibility(DiagramStrategyCell.class, checkBox.isSelected());
 		else if (property.equals(Target.OBJECT_NAME))
 			manager.setVisibility(DiagramTargetCell.class, checkBox.isSelected());
-		else if (property.equals(Target.OBJECT_NAME))
-			manager.setVisibility(DiagramTargetCell.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME))
 		{
 			manager.setFactorLinksVisible(checkBox.isSelected());
