@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -81,9 +82,10 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
+		checkBoxes = new Hashtable();
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
 		
-		addIconLineWithCheckBox(jpanel, ConceptualModelDiagram.getObjectType(), constantSCOPEBOX(), new ProjectScopeIcon());
+		addIconLineWithCheckBox(jpanel, ConceptualModelDiagram.getObjectType(), SCOPE_BOX, new ProjectScopeIcon());
 		
 		addButtonLineWithCheckBox(jpanel, Target.getObjectType(), Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		createCustomLegendPanelSection(actions, jpanel);
@@ -91,7 +93,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		if (mainWindow.getDiagramView().isStategyBrainstormMode())
 		{
 			addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
-			addButtonLineWithoutCheckBox(jpanel, Strategy.getObjectType(), "Draft " + Strategy.OBJECT_NAME, actions.get(ActionInsertDraftStrategy.class));
+			addButtonLineWithoutCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
 		}
 		else
 		{
@@ -99,12 +101,12 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		}
 		
 		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
-		addTargetLinkLine(jpanel, FactorLink.getObjectType(), constantTARGETLINK());
+		addTargetLinkLine(jpanel, FactorLink.getObjectType(), TARGETLINK);
 		
 		addIconLineWithCheckBox(jpanel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jpanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(jpanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
-		addIconLineWithCheckBox(jpanel, FactorLink.getObjectType(), constantSTRESS(), new StressIcon());
+		addIconLineWithCheckBox(jpanel, FactorLink.getObjectType(), STRESS, new StressIcon());
 		addButtonLineWithCheckBox(jpanel, TextBox.getObjectType(), TextBox.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
 		
 		return jpanel;
@@ -148,10 +150,13 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	private JCheckBox createCheckBox(String objectName)
 	{
 		JCheckBox component = new PanelCheckBox();
+		checkBoxes.put(objectName, component);
+		
 		component.putClientProperty(LAYER, new String(objectName));
 		component.addActionListener(this);
 		
-		updateCheckBoxes(mainWindow.getProject().getLayerManager(), component.getClientProperty(LAYER).toString(), component);
+		component.setSelected(true);
+		updateCheckBoxes(mainWindow.getProject().getLayerManager(), component.getClientProperty(LAYER).toString());
 		
 		return component;
 	}
@@ -168,12 +173,14 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		JCheckBox checkBox = (JCheckBox)event.getSource();
 		String property = (String) checkBox.getClientProperty(LAYER);
 		LayerManager manager = mainWindow.getProject().getLayerManager();
-		setLegendVisibilityOfFacactorCheckBoxes(manager, property, checkBox);			
+		setLegendVisibilityOfFacactorCheckBoxes(manager, property);			
 	}
 
 
-	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property, JCheckBox checkBox)
+	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)
 	{
+		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
+		
 		if (property.equals(Strategy.OBJECT_NAME))
 			manager.setVisibility(DiagramStrategyCell.class, checkBox.isSelected());
 		else if (property.equals(Target.OBJECT_NAME))
@@ -185,7 +192,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 			manager.setFactorLinksVisible(checkBox.isSelected());
 			targetLinkCheckBox.setEnabled(checkBox.isSelected());
 		}
-		else if (property.equals(constantTARGETLINK()))
+		else if (property.equals(TARGETLINK))
 			manager.setTargetLinksVisible(checkBox.isSelected());
 		else if (property.equals(Goal.OBJECT_NAME))
 			manager.setGoalsVisible(checkBox.isSelected());
@@ -193,11 +200,11 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 			manager.setObjectivesVisible(checkBox.isSelected());
 		else if (property.equals(Indicator.OBJECT_NAME))
 			manager.setIndicatorsVisible(checkBox.isSelected());
-		else if (property.equals(constantSCOPEBOX()))
+		else if (property.equals(SCOPE_BOX))
 			manager.setScopeBoxVisible(checkBox.isSelected());
 		else if (property.equals(TextBox.OBJECT_NAME))
 			manager.setVisibility(DiagramTextBoxCell.class, checkBox.isSelected());
-		else if (property.equals(constantSTRESS()))
+		else if (property.equals(STRESS))
 			manager.setStressesVisible(checkBox.isSelected());
 		
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
@@ -207,12 +214,15 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	public void resetCheckBoxes()
 	{
 		removeAll();
+		checkBoxes.clear();
 		addAllComponents();
 	}
 	
-	public void updateCheckBoxes(LayerManager manager, String property, JCheckBox checkBox)
+	public void updateCheckBoxes(LayerManager manager, String property)
 	{
-		if (property.equals(constantSCOPEBOX()))
+		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
+		
+		if (property.equals(SCOPE_BOX))
 			checkBox.setSelected(manager.isScopeBoxVisible());
 	
 		else if (property.equals(Target.OBJECT_NAME))
@@ -224,7 +234,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		else if (property.equals(FactorLink.OBJECT_NAME))
 			checkBox.setSelected(manager.areFactorLinksVisible());
 		
-		else if (property.equals(constantTARGETLINK()))
+		else if (property.equals(TARGETLINK))
 			checkBox.setSelected(manager.areTargetLinksVisible());
 		
 		else if (property.equals(Goal.OBJECT_NAME))
@@ -239,25 +249,14 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		else if (property.equals(TextBox.OBJECT_NAME))
 			checkBox.setSelected(manager.areTextBoxesVisible());
 		
-		else if (property.equals(constantSTRESS()))
+		else if (property.equals(STRESS))
 			checkBox.setSelected(manager.areStressesVisible());
 	}
 
-	private String constantSTRESS()
+	public boolean isSelected(String property)
 	{
-		return EAM.text("Stress");
+		return ((JCheckBox)checkBoxes.get(property)).isSelected();
 	}
-	
-	private String constantTARGETLINK()
-	{
-		return EAM.text("Targetlink");
-	}
-	
-	private String constantSCOPEBOX()
-	{
-		return EAM.text("ScopeBox");
-	}
-	
 	
 	class LocationButton extends PanelButton implements LocationHolder
 	{
@@ -274,7 +273,11 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		}
 	}
 	
+	public static final String SCOPE_BOX = "ScopeBox";
+	public static final String TARGETLINK = "Targetlink";
+	public static final String STRESS = "Stress";
 	private static final String LAYER = "LAYER";
 	MainWindow mainWindow;
-	JCheckBox targetLinkCheckBox;
+	JCheckBox targetLinkCheckBox; 
+	Hashtable checkBoxes;
 }

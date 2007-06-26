@@ -1,0 +1,47 @@
+/* 
+* Copyright 2005-2007, Wildlife Conservation Society, 
+* Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.conservationmeasures.eam.questions;
+
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.IntermediateResult;
+import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.TextBox;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
+import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
+
+public class DiagramLegendQuestion extends ChoiceQuestion
+{
+	public DiagramLegendQuestion(String tagToUse)
+	{
+		super(tagToUse, "Legend", getLegendChoices());
+	}
+
+	static ChoiceItem[] getLegendChoices()
+	{
+		return new ChoiceItem[] {
+				new ChoiceItem(Strategy.OBJECT_NAME, Strategy.OBJECT_NAME),
+				new ChoiceItem(Strategy.OBJECT_NAME_DRAFT, Strategy.OBJECT_NAME_DRAFT),
+				new ChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, Cause.OBJECT_NAME_CONTRIBUTING_FACTOR),
+				new ChoiceItem(Cause.OBJECT_NAME_THREAT, Cause.OBJECT_NAME_THREAT),
+				new ChoiceItem(Target.OBJECT_NAME, Target.OBJECT_NAME),
+				new ChoiceItem(FactorLink.OBJECT_NAME, FactorLink.OBJECT_NAME),
+				new ChoiceItem(Goal.OBJECT_NAME, Goal.OBJECT_NAME),
+				new ChoiceItem(Objective.OBJECT_NAME, Objective.OBJECT_NAME),
+				new ChoiceItem(Indicator.OBJECT_NAME, Indicator.OBJECT_NAME),
+				new ChoiceItem(TextBox.OBJECT_NAME, TextBox.OBJECT_NAME),
+				new ChoiceItem(DiagramLegendPanel.SCOPE_BOX, DiagramLegendPanel.SCOPE_BOX),
+				new ChoiceItem(DiagramLegendPanel.TARGETLINK, DiagramLegendPanel.TARGETLINK),
+				new ChoiceItem(DiagramLegendPanel.STRESS, DiagramLegendPanel.STRESS),
+				new ChoiceItem(IntermediateResult.OBJECT_NAME, IntermediateResult.OBJECT_NAME),
+				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, ThreatReductionResult.OBJECT_NAME),
+		};
+	}
+}

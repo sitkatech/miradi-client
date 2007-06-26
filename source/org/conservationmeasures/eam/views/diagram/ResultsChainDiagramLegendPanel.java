@@ -28,19 +28,24 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 		addButtonLineWithCheckBox(jpanel, IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME, actions.get(ActionInsertIntermediateResult.class));
 	}
 	
-	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property, JCheckBox checkBox)
+	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)
 	{		
+		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
+		
 		if (property.equals(IntermediateResult.OBJECT_NAME))
 			manager.setIntermediateResultVisible(checkBox.isSelected());
 		else if (property.equals(ThreatReductionResult.OBJECT_NAME))
 			manager.setThreatReductionResultVisible(checkBox.isSelected());
 		
-		super.setLegendVisibilityOfFacactorCheckBoxes(manager, property, checkBox);
+		super.setLegendVisibilityOfFacactorCheckBoxes(manager, property);
 	}
 	
-	public void updateCheckBoxes(LayerManager manager, String property, JCheckBox checkBox)
+	public void updateCheckBoxes(LayerManager manager, String property)
 	{
-		super.updateCheckBoxes(manager, property, checkBox);
+		super.updateCheckBoxes(manager, property);
+		
+		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
+		
 		if (property.equals(IntermediateResult.OBJECT_NAME))
 			checkBox.setSelected(manager.areIntermediateResultsVisible());
 	
