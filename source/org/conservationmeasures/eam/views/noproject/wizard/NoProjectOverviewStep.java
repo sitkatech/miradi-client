@@ -33,6 +33,7 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 	{
 		super.refresh();
 		left.refresh();
+		getMainWindow().hideDivider();
 	}
 	
 	LeftSideTextPanel left;
