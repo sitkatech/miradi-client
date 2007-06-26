@@ -70,6 +70,10 @@ public class ORefList
 		data.add(objectReferenceToUse);
 	}
 	
+	public void add(int index, ORef objectReferenceToUse)
+	{
+		data.add(index, objectReferenceToUse);
+	}
 	
 	public void addAll(ORefList otherList)
 	{
@@ -131,6 +135,16 @@ public class ORefList
 	public boolean contains(ORef objectRef)
 	{
 		return data.contains(objectRef);
+	}
+	
+	public int find(ORef oref)
+	{
+	  for (int i=0; i<data.size(); ++i)
+	  {
+		  if (data.get(i).equals(oref))
+			  return i;
+	  }
+	  return -1;
 	}
 	
 	public int hashCode()

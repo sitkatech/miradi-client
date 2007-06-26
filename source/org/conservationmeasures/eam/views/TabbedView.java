@@ -44,6 +44,8 @@ abstract public class TabbedView extends UmbrellaView
 
 	public abstract void createTabs() throws Exception;
 	public abstract void deleteTabs() throws Exception;
+	
+	//FIXME: THis method is no longer used and should be deleted from all views 
 	public abstract WizardPanel createWizardPanel() throws Exception;
 	
 	public JPopupMenu getTabPopupMenu()

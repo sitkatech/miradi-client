@@ -9,6 +9,8 @@ import javax.swing.event.ListSelectionEvent;
 
 import org.conservationmeasures.eam.actions.ActionCreateSlide;
 import org.conservationmeasures.eam.actions.ActionDeleteSlide;
+import org.conservationmeasures.eam.actions.ActionMoveSlideDown;
+import org.conservationmeasures.eam.actions.ActionMoveSlideUp;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.ObjectListTablePanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -28,6 +30,8 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	static Class[] buttons = new Class[] {
 		ActionCreateSlide.class,
 		ActionDeleteSlide.class,
+		ActionMoveSlideUp.class,
+		ActionMoveSlideDown.class
 	};
 	
 	public void valueChanged(ListSelectionEvent event)

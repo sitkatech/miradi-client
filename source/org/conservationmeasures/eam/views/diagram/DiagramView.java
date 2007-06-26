@@ -52,6 +52,8 @@ import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertTextBox;
+import org.conservationmeasures.eam.actions.ActionMoveSlideDown;
+import org.conservationmeasures.eam.actions.ActionMoveSlideUp;
 import org.conservationmeasures.eam.actions.ActionNudgeDown;
 import org.conservationmeasures.eam.actions.ActionNudgeLeft;
 import org.conservationmeasures.eam.actions.ActionNudgeRight;
@@ -134,6 +136,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
+	public WizardPanel createWizardPanel() throws Exception
+	{
+		return wizardPanel;
+	}
+	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
@@ -149,6 +156,16 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		remove(slideShowPoolManagementPanel);
 		slideShowPoolManagementPanel = null;
 		super.becomeInactive();
+	}
+	
+	//FIXME: there should be a way to cause the table to redisplay without handling it here, 
+	// but in the command listner of SlideTablePanel
+	public void resetSlideShowPanel() throws Exception
+	{
+		slideShowPoolManagementPanel.dispose();
+		remove(slideShowPoolManagementPanel);
+		createSlideShowPanel();
+		add(slideShowPoolManagementPanel, BorderLayout.AFTER_LINE_ENDS);
 	}
 	
 	
@@ -307,6 +324,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionCreateSlide.class, new CreateSlideDoer());
 		addDoerToMap(ActionDeleteSlide.class, new DeleteSlideDoer());
+		addDoerToMap(ActionMoveSlideDown.class, new MoveSlideDownDoer());
+		addDoerToMap(ActionMoveSlideUp.class, new MoveSlideUpDoer());
 		addDoerToMap(ActionToggleSlideShowPanel.class, new ToggleSlideShowPanelDoer());
 	}
 	
@@ -479,11 +498,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(diagramComponent == null)
 			return null;
 		return diagramComponent.getDiagramModel();
-	}
-
-	public WizardPanel createWizardPanel() throws Exception
-	{
-		return wizardPanel;
 	}
 
 	public void deleteTabs() throws Exception
@@ -889,4 +903,5 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	SlideListManagementPanel slideShowPoolManagementPanel;
 	ModelessDialogWithClose nodePropertiesDlg;
 	FactorPropertiesPanel nodePropertiesPanel;
+
 }
