@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.slideshow;
 
+import java.text.ParseException;
+
 import javax.swing.event.ListSelectionEvent;
 
 import org.conservationmeasures.eam.actions.ActionCreateSlide;
@@ -18,6 +20,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class SlideListTablePanel extends ObjectListTablePanel
@@ -36,11 +40,51 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	
 	public void valueChanged(ListSelectionEvent event)
 	{
+		if (!getDiagramView().isSidePanelVisible())
+			return;
+		
 		super.valueChanged(event);
 		if (getSelectedObject()==null)
 			return;
 		ORef oref = ((Slide)getSelectedObject()).getDiagramRef();
 		if (!oref.equals(ORef.INVALID))
-			((DiagramView)EAM.mainWindow.getCurrentView()).setDiagramTab(oref);
+		{
+			getDiagramView().setDiagramTab(oref);
+			updateLegendPanel();
+		}
 	}
+
+	public void updateLegendPanel()
+	{
+		Slide slide = (Slide)getSelectedObject();
+		CodeList list = getDiagarmLegendSettings(slide);
+		DiagramLegendPanel panel = getDiagramView().getDiagramPanel().getDiagramLegendPanel();
+		for (int i=0; i<list.size(); ++i)
+		{
+			//FIXME: UI not updated to reflect new check boxe settings??
+			panel.updateCheckBoxes(getProject().getLayerManager(), list.get(i));
+		}
+		//FIXME: UI not udpated to reflect new settings??
+		getDiagramView().updateVisibilityOfFactors();
+	}
+	
+	
+	private CodeList getDiagarmLegendSettings(Slide slide)
+	{
+		try
+		{
+			return  new CodeList(slide.getData(Slide.TAG_DIAGRAM_LEGEND_SETTINGS));
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
+	}
+
+	private DiagramView getDiagramView()
+	{
+		return ((DiagramView)EAM.mainWindow.getCurrentView());
+	}
+	
 }

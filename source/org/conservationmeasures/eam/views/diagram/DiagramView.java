@@ -169,18 +169,20 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	}
 	
 	
-	public void hideSidePanel() throws Exception
+	public void hideSidePanel()
 	{
 		slideShowPoolManagementPanel.setVisible(false);
 	}
 	
-	public void showSidePanel() throws Exception
+	public void showSidePanel()
 	{
 		slideShowPoolManagementPanel.setVisible(true);
 	}
 	
-	public boolean isSidePanelVisible() throws Exception
+	public boolean isSidePanelVisible()
 	{
+		if (slideShowPoolManagementPanel==null)
+			return false;
 		return slideShowPoolManagementPanel.isVisible();
 	}
 	
