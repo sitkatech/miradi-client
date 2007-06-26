@@ -175,7 +175,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if (spliterPane!=null)
 		{
 			spliterPane.setResizeWeight(1);
-			spliterPane.setDividerSize(0);
+			//FIXME: for some reason if this call is issued the size can not be restored in showDivider
+			//spliterPane.setDividerSize(0);
 			spliterPane.setDividerLocation(Integer.MAX_VALUE);
 		}
 	}
