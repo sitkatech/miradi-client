@@ -60,10 +60,10 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 	private DiagramSplitPane createDiagramSplitter(int objectType) throws Exception
 	{
 		if (objectType == ResultsChainDiagram.getObjectType())
-			return  new ResultsChainDiagramSplitPane(mainWindow, objectType);
+			return  new ResultsChainDiagramSplitPane(mainWindow);
 
 		if (objectType == ConceptualModelDiagram.getObjectType())
-			return new ConceptualModelDiagramSplitPane(mainWindow, objectType);
+			return new ConceptualModelDiagramSplitPane(mainWindow);
 
 		throw new Exception("Found wrong type for splitter " +objectType);
 	}

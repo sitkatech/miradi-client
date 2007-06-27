@@ -8,13 +8,14 @@ package org.conservationmeasures.eam.views.diagram;
 import javax.swing.JList;
 
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 {
-	public ResultsChainDiagramSplitPane(MainWindow mainWindow, int objectType) throws Exception
+	public ResultsChainDiagramSplitPane(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow, objectType);
+		super(mainWindow, ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 
 	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow)
