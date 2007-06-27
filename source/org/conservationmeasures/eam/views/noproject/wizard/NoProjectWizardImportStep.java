@@ -10,7 +10,10 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class NoProjectWizardImportStep extends NoProjectWizardStep
@@ -36,6 +39,35 @@ public class NoProjectWizardImportStep extends NoProjectWizardStep
 		super.refresh();
 	}
 	
+	public Class getControl(String controlName)
+	{
+		if(controlName.equals(WizardManager.CONTROL_NEXT))
+			return getClass();
+		return super.getControl(controlName);
+	}
+
+
+	public void buttonPressed(String buttonName)
+	{
+		try
+		{
+			if(buttonName.equals(WizardManager.CONTROL_NEXT))
+			{
+				EAMAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
+				action.doAction();
+			}
+			else 
+			{
+				getMainWindow().getWizard().control(buttonName);
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Unable to process request: ") + e);
+		}
+	}
+
 	LeftSideTextPanel left;
 	
 

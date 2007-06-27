@@ -14,17 +14,12 @@ import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.text.JTextComponent;
 
-import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
-import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
@@ -35,6 +30,7 @@ import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
 import org.conservationmeasures.eam.views.umbrella.UrlZippedProjectFileImporter;
 import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
+import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
 
@@ -171,20 +167,11 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	}
 
 	
-	public void setComponent(String name, JComponent component)
-	{
-		if (name.equals(NEW_PROJECT_NAME))
-		{
-			newProjectNameField = (JTextComponent)component;
-			newProjectNameField.addKeyListener(this);
-		}
-	}
-	
 	public void keyPressed(KeyEvent keyEvent)
 	{
 		if (keyEvent.getKeyCode() ==KeyEvent.VK_ENTER)
 		{
-			buttonPressed(CREATE_PROJECT);
+			buttonPressed(WizardManager.CONTROL_NEXT);
 		}
 	}
 
@@ -196,50 +183,6 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	{
 	}
 	
-	public String getValue(String name)
-	{
-		return newProjectNameField.getText();
-	}
-
-	public void buttonPressed(String buttonName)
-	{
-		try
-		{
-			if(buttonName.equals(CREATE_PROJECT))
-			{
-				createProject();
-			}
-			if(buttonName.equals(IMPORT_ZIP))
-			{
-				EAMAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
-				action.doAction();
-			}
-			else getMainWindow().getWizard().control(buttonName);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Unable to process request: ") + e);
-		}
-	}
-
-	private void createProject()
-	{
-		String newName = getValue(NEW_PROJECT_NAME);
-		if (newName.length()<=0)
-			return;
-		try 
-		{
-			Project.validateNewProject(newName);
-			File newFile = new File(EAM.getHomeDirectory(),newName);
-			getMainWindow().createOrOpenProject(newFile);
-		}
-		catch (Exception e)
-		{
-			EAM.notifyDialog(EAM.text("Create Failed:") +e.getMessage());
-		}
-	}
-
 	private void renameProject(File projectDirectory) throws Exception
 	{
 		RenameProject.doIt(getMainWindow(), projectDirectory);
@@ -270,11 +213,6 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	}
 	
 	
-	JTextComponent newProjectNameField;
-	
-	private static final String IMPORT_ZIP = "ImportZip";
-	private static final String NEW_PROJECT_NAME = "NewProjectName";
-	private static final String CREATE_PROJECT = "CreateProject";
 	public static final String OPEN_PREFIX = "OPEN:";
 	private static final String COPY_PREFIX = "COPY:";
 	private static final String RENAME_PREFIX = "RENAME:";
