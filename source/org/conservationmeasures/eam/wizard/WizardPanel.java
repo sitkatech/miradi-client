@@ -101,6 +101,7 @@ public class WizardPanel extends JPanel
 	public void jump(Class stepMarker) throws Exception
 	{
 		currentStepName = wizardManager.setStep(stepMarker, currentStepName);
+		getMainWindow().updateActionsAndStatusBar();
 	}
 
 	public MainWindow getMainWindow()
