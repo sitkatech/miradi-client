@@ -72,6 +72,7 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		catch(ParseException e)
 		{
 			EAM.logException(e);
+			EAM.errorDialog("Unable to read slide settings:" + e.getMessage());
 			return new CodeList();
 		}
 	}
