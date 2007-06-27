@@ -41,6 +41,11 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		rowObjectIds = newList;
 	}
 
+	public void resetRows()
+	{
+		rowObjectIds = getLatestIdListFromProject();
+	}
+	
 	public BaseObject getObjectFromRow(int row) throws RuntimeException
 	{
 		try

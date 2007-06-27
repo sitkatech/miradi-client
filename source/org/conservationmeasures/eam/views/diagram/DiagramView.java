@@ -158,17 +158,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.becomeInactive();
 	}
 	
-	//FIXME: there should be a way to cause the table to redisplay without handling it here, 
-	// but in the command listner of SlideTablePanel
-	public void resetSlideShowPanel() throws Exception
-	{
-		slideShowPoolManagementPanel.dispose();
-		remove(slideShowPoolManagementPanel);
-		createSlideShowPanel();
-		add(slideShowPoolManagementPanel, BorderLayout.AFTER_LINE_ENDS);
-	}
-	
-	
 	public void hideSidePanel()
 	{
 		slideShowPoolManagementPanel.setVisible(false);

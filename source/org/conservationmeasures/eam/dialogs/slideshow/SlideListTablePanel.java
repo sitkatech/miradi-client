@@ -14,10 +14,14 @@ import org.conservationmeasures.eam.actions.ActionDeleteSlide;
 import org.conservationmeasures.eam.actions.ActionMoveSlideDown;
 import org.conservationmeasures.eam.actions.ActionMoveSlideUp;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ObjectListTablePanel;
+import org.conservationmeasures.eam.dialogs.ObjectTableModel;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -74,6 +78,23 @@ public class SlideListTablePanel extends ObjectListTablePanel
 			EAM.logException(e);
 			EAM.errorDialog("Unable to read slide settings:" + e.getMessage());
 			return new CodeList();
+		}
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+		{
+			BaseObject object = getTable().getObjectTableModel().getObjectFromRow(getTable().getSelectedRow());
+			ObjectTableModel model = getTable().getObjectTableModel();
+			model.resetRows();
+			model.fireTableDataChanged();
+			int newRow = model.findRowObject(object.getId());
+			getTable().setRowSelectionInterval(newRow, newRow);
+		}
+		else
+		{
+			super.commandExecuted(event);
 		}
 	}
 

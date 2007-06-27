@@ -32,7 +32,6 @@ abstract public class MoveSlideDoer extends ObjectsDoer
 			ORef slideRef = getObjects()[0].getRef();
 			moveInList(list, slideRef);
 			getProject().executeCommand(new CommandSetObjectData(object.getRef(), SlideShow.TAG_SLIDE_REFS, list.toString()));
-			getDiagramView().resetSlideShowPanel();
 		}
 		catch(Exception e)
 		{
