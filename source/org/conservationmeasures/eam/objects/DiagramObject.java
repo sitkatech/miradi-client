@@ -133,6 +133,11 @@ abstract public class DiagramObject extends BaseObject
 		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
 	}
 	
+	public String toString()
+	{
+		return getLabel() + Integer.toString(id.asInt());
+	}
+	
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
 	

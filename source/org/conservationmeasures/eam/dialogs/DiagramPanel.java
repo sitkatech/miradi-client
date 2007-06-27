@@ -51,8 +51,7 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 		}
 		catch (Exception e)
 		{
-			//TODO should we call dispose instead
-			project.removeCommandExecutedListener(this);
+			dispose();
 			throw e;
 		}
 	}
@@ -233,6 +232,7 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 	public void dispose()
 	{
 		super.dispose();
+		project.removeCommandExecutedListener(this);
 	}
 	
 	public void addFieldComponent(Component component)

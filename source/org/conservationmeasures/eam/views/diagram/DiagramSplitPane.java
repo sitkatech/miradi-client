@@ -19,12 +19,12 @@ import javax.swing.event.ListSelectionListener;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -60,8 +60,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 			DiagramObject diagramObject = (DiagramObject) project.findObject(diagramObjectRef);
 			DiagramComponent diagramComponentToAdd = createDiagram(mainWindow, diagramObject);
 
-			//TODO nima correct give name
-			diagramComponentCards.add(diagramComponentToAdd, Integer.toString(diagramObject.getId().asInt()));
+			diagramComponentCards.add(diagramComponentToAdd, diagramObject.toString());
 		}
 	
 		return diagramComponentCards;
@@ -166,8 +165,8 @@ abstract public class DiagramSplitPane extends JSplitPane
 		{
 			try
 			{
-				BaseId selectedDiagramObject = (BaseId) selectionPanel.getSelectedValue();
-				ORef selectedRef = new ORef(diagramObjectType, selectedDiagramObject);
+				BaseObject selectedDiagramObject = (BaseObject) selectionPanel.getSelectedValue();
+				ORef selectedRef = selectedDiagramObject.getRef();
 				
 				ViewData currentViewDat = project.getViewData(DiagramView.getViewName());
 				CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(currentViewDat.getRef(), ViewData.TAG_CURRENT_DIAGRAM_OBJECT, selectedRef);
@@ -175,7 +174,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 				project.executeCommand(setCurrentDiagramObject);
 				
 				CardLayout cardLayout = (CardLayout) diagramCards.getLayout();
-				String cardName = Integer.toString(selectedDiagramObject.asInt());
+				String cardName = selectedDiagramObject.toString();
 				cardLayout.show(diagramCards, cardName);
 				mainWindow.getDiagramView().updateVisibilityOfFactors();
 			}

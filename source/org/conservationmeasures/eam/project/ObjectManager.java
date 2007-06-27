@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
@@ -378,6 +379,17 @@ public class ObjectManager
 	public String getFileName()
 	{
 		return getProject().getFilename();
+	}
+	
+	public BaseObject[] findObjects(ORefList refList)
+	{
+		BaseObject[] foundObjects = new BaseObject[refList.size()];
+		for (int i = 0; i < refList.size(); ++i)
+		{
+			foundObjects[i] = findObject(refList.get(i));
+		}
+		
+		return foundObjects;
 	}
 	
 	Project project;

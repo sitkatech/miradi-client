@@ -9,7 +9,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
 abstract public class DiagramPageList extends JList
@@ -25,6 +27,8 @@ abstract public class DiagramPageList extends JList
 	private void fillList(Project project, int objectType)
 	{
 		EAMObjectPool pool = project.getPool(objectType);
-		setListData(pool.getIds());
+		ORefList refList = pool.getORefList();
+		BaseObject[] diagramObjects = project.getObjectManager().findObjects(refList);
+		setListData(diagramObjects);
 	}
 }
