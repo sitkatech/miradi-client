@@ -212,7 +212,11 @@ public class ObjectTestCase extends EAMTestCase
 		}
 		else if(field instanceof CodeListData)
 		{
-			return new CodeListData().toString();
+			CodeListData codeList = new CodeListData();
+			codeList.add("A1");
+			codeList.add("B1");
+			return codeList.toString();
+			
 		}
 		else
 		{

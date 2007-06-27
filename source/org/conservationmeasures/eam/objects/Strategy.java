@@ -256,7 +256,7 @@ public class Strategy extends Factor
 
 	
 	public static final String OBJECT_NAME = "Strategy";
-	public static final String OBJECT_NAME_DRAFT = "Draft " + Strategy.OBJECT_NAME;
+	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
 	
 	StringData status;
 	StringData shortLabel;
