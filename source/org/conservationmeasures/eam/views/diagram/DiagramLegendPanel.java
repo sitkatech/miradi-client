@@ -219,7 +219,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	public void updateCheckBoxes(LayerManager manager, String property)
 	{
 		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
-		
+
 		if (property.equals(SCOPE_BOX))
 			checkBox.setSelected(manager.isScopeBoxVisible());
 	
@@ -249,6 +249,15 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		
 		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
 			checkBox.setSelected(manager.areStressesVisible());
+	}
+	
+	public void turnOFFCheckBoxs()
+	{
+		Object[] keys = checkBoxes.keySet().toArray();
+		for (int i=0; i<keys.length; ++i)
+		{
+			((JCheckBox)checkBoxes.get(keys[i])).setSelected(false);
+		}
 	}
 
 	public boolean isSelected(String property)
