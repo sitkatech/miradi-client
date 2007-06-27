@@ -158,7 +158,6 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		component.putClientProperty(LAYER, new String(objectName));
 		component.addActionListener(this);
 		
-		component.setSelected(true);
 		updateCheckBoxes(getLayerManager(), component.getClientProperty(LAYER).toString());
 		
 		return component;
