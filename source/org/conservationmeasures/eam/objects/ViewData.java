@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.IntegerData;
+import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -63,6 +64,11 @@ public class ViewData extends BaseObject
 		
 		CommandSetObjectData cmd = CommandSetObjectData.createRemoveORefCommand(this, TAG_CHAIN_MODE_FACTOR_REFS, oRefToRemove);
 		return new Command[] {cmd};
+	}
+	
+	public ORef getCurrentDiagramObject()
+	{
+		return currentDiagramObject.getRawRef();
 	}
 	
 	public void setCurrentTab(int newTab) throws Exception
@@ -119,7 +125,9 @@ public class ViewData extends BaseObject
 		currentSortBy = new StringData();
 		currentSortDirecton = new StringData();
 		expandedNodesList = new ORefListData();
+		currentDiagramObject = new ORefData();
 		
+		addField(TAG_CURRENT_DIAGRAM_OBJECT, currentDiagramObject);
 		addField(TAG_CURRENT_MODE, currentMode);
 		addField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
 		addField(TAG_CURRENT_TAB, currentTab);
@@ -128,7 +136,7 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 	}
 	
-	public static final String TAG_CURRENT_DIAGRAMOBJECT = "CurrentDiagramObject";
+	public static final String TAG_CURRENT_DIAGRAM_OBJECT = "CurrentDiagramObject";
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_CHAIN_MODE_FACTOR_REFS = "ChainModeFactorRefs";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
@@ -152,6 +160,6 @@ public class ViewData extends BaseObject
 	private ORefListData chainModeFactorRefs;
 	private StringData currentSortBy;
 	private StringData currentSortDirecton;
-	
+	private ORefData currentDiagramObject;
 	private ORefListData expandedNodesList;
 }

@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -17,7 +16,7 @@ public class DiagramImageCreator
 	{
 		try
 		{
-			DiagramComponent comp =  DiagramPanel.createDiagram(mainWindow, diagramObject);
+			DiagramComponent comp =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
 			comp.getDiagramModel().updateVisibilityOfFactors();
 			//TODO: is there a better way to do this
 			JFrame frame = new JFrame();

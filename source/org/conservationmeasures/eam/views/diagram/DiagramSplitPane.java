@@ -5,29 +5,77 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import javax.swing.JComponent;
+import java.awt.CardLayout;
+import java.util.Vector;
+
+import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
+import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiScrollPane;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 
 abstract public class DiagramSplitPane extends JSplitPane
 {
-	public DiagramSplitPane(MainWindow mainWindow, DiagramComponent diagramComponentToAdd)
+	public DiagramSplitPane(MainWindow mainWindowToUse, int objectType) throws Exception
 	{
+		mainWindow = mainWindowToUse;
+		project = mainWindow.getProject();
 		legendPanel = createLegendPanel(mainWindow);
 		scrollableLegendPanel = createLegendScrollPane();
 		selectionPanel = createPageList(mainWindow.getProject());
-		UiScrollPane scrollPane = createDiagramPanel(mainWindow.getProject(), diagramComponentToAdd);
+		selectionPanel.addListSelectionListener(new DiagramObjectListSelectionListener(project, objectType));
+		
+		diagramCards = createDiagramCards(objectType);
 		setLeftComponent(createLeftPanel());
-		setRightComponent(scrollPane);
+		setRightComponent(new FastScrollPane(diagramCards));
 		
 		int scrollBarWidth = ((Integer)UIManager.get("ScrollBar.width")).intValue();
 		setDividerLocation(scrollableLegendPanel.getPreferredSize().width + scrollBarWidth);
+	}
+
+	private DiagramCards createDiagramCards(int objectType) throws Exception
+	{
+		EAMObjectPool pool = project.getPool(objectType);
+		ORefList diagramObjectRefList = pool.getORefList();
+		DiagramCards diagramComponentCards = new DiagramCards(new CardLayout());
+		for (int i = 0; i < diagramObjectRefList.size(); ++i)
+		{
+			ORef diagramObjectRef = diagramObjectRefList.get(i);
+			DiagramObject diagramObject = (DiagramObject) project.findObject(diagramObjectRef);
+			DiagramComponent diagramComponentToAdd = createDiagram(mainWindow, diagramObject);
+
+			//TODO nima correct give name
+			diagramComponentCards.add(diagramComponentToAdd, Integer.toString(diagramObject.getId().asInt()));
+		}
+	
+		return diagramComponentCards;
+	}
+	
+	public static DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	{
+		DiagramModel diagramModel = new DiagramModel(diagramObject.getProject());
+		diagramModel.fillFrom(diagramObject);
+		diagramModel.updateProjectScopeBox();
+		DiagramComponent diagram = new DiagramComponent(mainWindow);
+		diagram.setModel(diagramModel);
+		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
+		return diagram;
 	}
 
 	private JScrollPane createLegendScrollPane()
@@ -37,17 +85,6 @@ abstract public class DiagramSplitPane extends JSplitPane
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
 		return scrollPane;
-	}
-	
-	private UiScrollPane createDiagramPanel(Project project, DiagramComponent diagram)
-	{
-		UiScrollPane uiScrollPane = new UiScrollPane(diagram);
-		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(project.getGridSize());
-		uiScrollPane.getVerticalScrollBar().setUnitIncrement(project.getGridSize());
-		
-		return uiScrollPane;
 	}
 	
 	protected JSplitPane createLeftPanel()
@@ -63,12 +100,109 @@ abstract public class DiagramSplitPane extends JSplitPane
 	{
 		return legendPanel;
 	}
-
-	abstract public JComponent createPageList(Project project);
 	
-	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindow);
+	public DiagramComponent getDiagramComponent()
+	{
+		return diagramCards.findCardIndex(getCurrentDiagramObjectRef());
+	}
+	
+	public ORef getCurrentDiagramObjectRef()
+	{
+		return currentRef;
+	}
+	
+	public class DiagramCards extends JPanel
+	{
+		public DiagramCards(CardLayout layout)
+		{
+			super(layout);
+			cards = new Vector();
+		}
+		
+		public void add(DiagramComponent diagramComponent, String name)
+		{
+			super.add(diagramComponent, name);
+			
+			cards.add(diagramComponent);
+		}
+
+		public DiagramComponent findCardIndex(ORef ref)
+		{
+			for (int i = 0; i < cards.size(); ++i)
+			{
+				DiagramComponent diagramComponent = (DiagramComponent) cards.get(i);
+				ORef diagramObjectRef = diagramComponent.getDiagramModel().getDiagramObject().getRef();
+				if (diagramObjectRef.equals(ref))
+				{
+					return diagramComponent;
+				}
+			}
+
+			return ((DiagramComponent) cards.get(0));
+		}
+		
+		public int getCardCount()
+		{
+			return cards.size();
+		}
+		
+		Vector cards;
+	}
+	
+	public class DiagramObjectListSelectionListener  implements ListSelectionListener
+	{
+		public DiagramObjectListSelectionListener(Project projectToUse, int objectType)
+		{
+			project = projectToUse;
+			diagramObjectType = objectType;
+		}
+
+		public void valueChanged(ListSelectionEvent event)
+		{
+			setCurrentDiagram();
+		}
+
+		private void setCurrentDiagram()
+		{
+			try
+			{
+				BaseId selectedDiagramObject = (BaseId) selectionPanel.getSelectedValue();
+				ORef selectedRef = new ORef(diagramObjectType, selectedDiagramObject);
+				
+				ViewData currentViewDat = project.getViewData(DiagramView.getViewName());
+				CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(currentViewDat.getRef(), ViewData.TAG_CURRENT_DIAGRAM_OBJECT, selectedRef);
+				
+				project.executeCommand(setCurrentDiagramObject);
+				
+				CardLayout cardLayout = (CardLayout) diagramCards.getLayout();
+				String cardName = Integer.toString(selectedDiagramObject.asInt());
+				cardLayout.show(diagramCards, cardName);
+				mainWindow.getDiagramView().updateVisibilityOfFactors();
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+		
+		Project project;
+		int diagramObjectType;
+	}
+	
+	public void setCurrentDiagramObjectRef(ORef currentDiagramObjectRef)
+	{
+		currentRef = currentDiagramObjectRef;
+	}
+
+	abstract public JList createPageList(Project projectToUse);
+	
+	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindowToUse);
 	
 	protected DiagramLegendPanel legendPanel;
-	private JComponent selectionPanel;
+	private JList selectionPanel;
 	private JScrollPane scrollableLegendPanel;
+	private MainWindow mainWindow;
+	private Project project;
+	private DiagramCards diagramCards;
+	private ORef currentRef;
 }

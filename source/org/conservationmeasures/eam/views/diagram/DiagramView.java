@@ -77,7 +77,6 @@ import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.ToggleSlideShowPanelDoer;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -90,12 +89,10 @@ import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.slideshow.SlideListManagementPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -104,10 +101,8 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -364,8 +359,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		getMainWindow().preventActionUpdates();
 		try
 		{
-			addConceptualModelDiagramTab();
-			addResultsChainTabs();
+			createConceptualModelDiagramTab();
+			createResultsChainTab();
 			
 			setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 		}
@@ -375,35 +370,18 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 
-	private void addConceptualModelDiagramTab() throws Exception
+	private void createResultsChainTab() throws Exception
 	{
-		DiagramPanel diagramPanel = new DiagramPanel(getMainWindow(), getProject(), getDiagramObject());
-		addTab(EAM.text("Conceptual Model"), diagramPanel);
-	}
-	
-	private ConceptualModelDiagram getDiagramObject() throws Exception
-	{
-		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) getProject().getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		ORefList oRefs = diagramContentsPool.getORefList();
-		return getDiagramContentsObject(oRefs);
-	}
-	
-	private ConceptualModelDiagram getDiagramContentsObject(ORefList oRefs) throws Exception
-	{
-		if (oRefs.size() == 0)
-		{
-			BaseId id = getProject().createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-			return (ConceptualModelDiagram) getProject().findObject(new ORef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, id));
-		}
-		if (oRefs.size() > 1)
-		{
-			EAM.logVerbose("Found more than one diagram contents inside pool");
-		}
-
-		ORef oRef = oRefs.get(0);
-		return (ConceptualModelDiagram) getProject().findObject(oRef);
+		DiagramPanel resultsChainPanel = new DiagramPanel(getMainWindow(), ObjectType.RESULTS_CHAIN_DIAGRAM);
+		addTab(EAM.text("Results Chain"), resultsChainPanel);
 	}
 
+	private void createConceptualModelDiagramTab() throws Exception
+	{
+		DiagramPanel conceptualDiagramPanel = new DiagramPanel(getMainWindow(), ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		addTab(EAM.text("Conceptual Model"), conceptualDiagramPanel);
+	}
+	
 	public DiagramPanel getDiagramPanel()
 	{
 		return getCurrentDiagramPanel();
@@ -412,27 +390,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public DiagramPanel getCurrentDiagramPanel()
 	{
 		return (DiagramPanel) getCurrentTabContents();
-	}
-
-	private void addResultsChainTabs() throws Exception
-	{
-		removeAllResultsChainTabs();
-		IdList resultsChains = getProject().getResultsChainDiagramPool().getIdList();
-		resultsChains.sort();
-		
-		for (int i = 0; i < resultsChains.size(); i++)
-		{
-			DiagramModel diagramModel = new DiagramModel(getProject());
-			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChains.get(i)));
-			diagramModel.fillFrom(resultsChain);
-			
-			DiagramComponent resultsChainDiagram = new DiagramComponent(getMainWindow());
-			resultsChainDiagram.setModel(diagramModel);
-
-			DiagramPanel diagramPanel = new DiagramPanel(getMainWindow(), getProject(), resultsChain);
-			String resultsChainLabel = resultsChain.getData(DiagramObject.TAG_LABEL);
-			addTab(resultsChainLabel, diagramPanel);
-		}
 	}
 
 	public boolean isResultsChainTab()
@@ -448,17 +405,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		return false;
 	}
-	
-	private void removeAllResultsChainTabs()
-	{
-		final int CONCEPTUAL_MODEL_TAB_COUNT = 1;
-		while(getTabCount() > CONCEPTUAL_MODEL_TAB_COUNT)
-		{
-			disposeOfTabPriorToRemovingIt(CONCEPTUAL_MODEL_TAB_COUNT);
-			removeTab(CONCEPTUAL_MODEL_TAB_COUNT);
-		}
-	}
-	
+		
 	public int getTabIndex(ORef ref)
 	{
 		for (int i = 0; i < getTabCount(); ++i)
@@ -522,11 +469,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public void setMode(String newMode)
 	{
 		ORefList hiddenORefs = new ORefList();
-		getDiagramComponent().setToDefaultBackgroundColor();
+		DiagramComponent diagramComponent = getDiagramComponent();
+		diagramComponent.setToDefaultBackgroundColor();
 		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
 		{
 			hiddenORefs = getORefsToHide();
-			getDiagramComponent().setBackground(Color.LIGHT_GRAY);
+			diagramComponent.setBackground(Color.LIGHT_GRAY);
 		}
 			
 
@@ -536,7 +484,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		mode = newMode;
 		updateToolBar();
 		getMainWindow().updateStatusBar();
-		getDiagramComponent().clearSelection();
+		diagramComponent.clearSelection();
 		updateLegendPanelCheckBoxes();
 		updateVisibilityOfFactors();
 	}
@@ -625,18 +573,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.commandExecuted(event);
 		Command rawCommand = event.getCommand();
 		
-		if (isCreateResultsChain(rawCommand))
-		{
-			try
-			{
-				addResultsChainTabs();
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
-		
 		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			return;
 
@@ -681,34 +617,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return diagramComponents;
 	}
 
-
-	private boolean isCreateResultsChain(Command rawCommand)
-	{
-		return isAddResultsChainCommand(rawCommand) || isDeleteResultsChainCommand(rawCommand);
-	}
-
-	private boolean isAddResultsChainCommand(Command rawCommand)
-	{
-		if (!rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-			return false;
-		
-		if ( ObjectType.RESULTS_CHAIN_DIAGRAM != ((CommandCreateObject)rawCommand).getObjectType())   
-			return false;
-		
-		return true;
-	}
-
-	private boolean isDeleteResultsChainCommand(Command rawCommand)
-	{
-		if (!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-			return false;
-		
-		if ( ObjectType.RESULTS_CHAIN_DIAGRAM != ((CommandDeleteObject)rawCommand).getObjectType())   
-			return false;
-		
-		return true;
-	}
-	
 	private void updateFactorLinkIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception
 	{
 		DiagramFactorLinkId diagramFactorLinkId = null;

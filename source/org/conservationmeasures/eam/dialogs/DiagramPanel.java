@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.Component;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
@@ -17,13 +19,16 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.ConceptualModelDiagramSplitPane;
 import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
@@ -31,22 +36,18 @@ import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 import org.conservationmeasures.eam.views.diagram.DiagramSplitPane;
 import org.conservationmeasures.eam.views.diagram.ResultsChainDiagramSplitPane;
 
-public class DiagramPanel extends AbstractObjectDataInputPanel
+public class DiagramPanel extends DisposablePanel implements CommandExecutedListener
 {
-	public DiagramPanel(MainWindow mainWindowToUse, Project project, DiagramObject diagramObject) throws Exception
+	
+	public DiagramPanel(MainWindow mainWindowToUse, int objectType) throws Exception
 	{
-		super(project, diagramObject.getRef());
 		try
 		{
 			mainWindow = mainWindowToUse;
-			createAndAddDiagram(diagramObject);
-
-			if (diagramObject.getType()== ResultsChainDiagram.getObjectType())
-				splitPane = new ResultsChainDiagramSplitPane(mainWindow, diagram);
-			else
-				splitPane = new ConceptualModelDiagramSplitPane(mainWindow, diagram);
-
-			add(splitPane);
+			project = mainWindow.getProject();
+			diagramSplitter = createDiagramSplitter(objectType);
+			add(diagramSplitter);
+			project.addCommandExecutedListener(this);
 		}
 		catch (Exception e)
 		{
@@ -56,36 +57,37 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		}
 	}
 	
-	static public DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	private DiagramSplitPane createDiagramSplitter(int objectType) throws Exception
 	{
-		DiagramModel diagramModel = new DiagramModel(diagramObject.getProject());
-		diagramModel.fillFrom(diagramObject);
-		diagramModel.updateProjectScopeBox();
-		DiagramComponent diagram = new DiagramComponent(mainWindow);
-		diagram.setModel(diagramModel);
-		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
-		return diagram;
-	}
-	
-	private void createAndAddDiagram(DiagramObject diagramObject) throws Exception
-	{
-		diagram = createDiagram(mainWindow, diagramObject);
-		selectionModel = diagram.getEAMGraphSelectionModel();
+		if (objectType == ResultsChainDiagram.getObjectType())
+			return  new ResultsChainDiagramSplitPane(mainWindow, objectType);
+
+		if (objectType == ConceptualModelDiagram.getObjectType())
+			return new ConceptualModelDiagramSplitPane(mainWindow, objectType);
+
+		throw new Exception("Found wrong type for splitter " +objectType);
 	}
 	
 	public DiagramObject getDiagramObject()
 	{
 		return getDiagramModel().getDiagramObject();
 	}
-		
+
+	private EAMGraphSelectionModel getSelectionModel()
+	{
+		DiagramComponent diagram = getDiagramSplitPane().getDiagramComponent();
+		return (EAMGraphSelectionModel) diagram.getSelectionModel();
+	}
+	
 	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
 	{
-		selectionModel = selectionModelToUse;
+		DiagramComponent diagram = getDiagramSplitPane().getDiagramComponent();
+		diagram.setSelectionModel(selectionModelToUse);
 	}
 	
 	public EAMGraphCell[] getSelectedAndRelatedCells()
 	{
-		Object[] selectedCells = selectionModel.getSelectionCells();
+		Object[] selectedCells = getSelectionModel().getSelectionCells();
 		Vector cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
 	}
@@ -95,7 +97,7 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 		try
 		{
 			FactorCell nodeToSelect = getDiagramModel().getFactorCellByWrappedId(idToUse);
-			selectionModel.setSelectionCell(nodeToSelect);
+			getSelectionModel().setSelectionCell(nodeToSelect);
 		}
 		catch (Exception e)
 		{
@@ -105,19 +107,19 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	
 	public LinkCell[] getOnlySelectedLinkCells()
 	{
-		if(selectionModel == null)
+		if(getSelectionModel() == null)
 			return new LinkCell[0];
 	
-		Object[] rawCells = selectionModel.getSelectionCells();
+		Object[] rawCells = getSelectionModel().getSelectionCells();
 		return getOnlySelectedLinkCells(rawCells);
 	}
 	
 	public DiagramLink[] getOnlySelectedLinks()
 	{
-		if(selectionModel == null)
+		if(getSelectionModel() == null)
 			return new DiagramLink[0];
 		
-		Object[] rawCells = selectionModel.getSelectionCells();
+		Object[] rawCells = getSelectionModel().getSelectionCells();
 		return getOnlySelectedLinks(rawCells);
 	}
 	
@@ -151,10 +153,10 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 
 	public FactorCell[] getOnlySelectedFactorCells()
 	{
-		if(selectionModel == null)
+		if(getSelectionModel() == null)
 			return new FactorCell[0];
 		
-		Object[] rawCells = selectionModel.getSelectionCells();
+		Object[] rawCells = getSelectionModel().getSelectionCells();
 		return getOnlySelectedFactorCells(rawCells);
 	}
 	
@@ -171,10 +173,10 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	
 	public Factor[] getOnlySelectedFactors()
 	{
-		if (selectionModel == null)
+		if (getSelectionModel() == null)
 			return new Factor[0];
 		
-		Object[] rawCells = selectionModel.getSelectionCells();
+		Object[] rawCells = getSelectionModel().getSelectionCells();
 		return getOnlySelectedFactors(rawCells);
 	}
 	
@@ -187,7 +189,7 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 			if(graphCell.isFactor())
 			{
 				ORef ref = graphCell.getDiagramFactor().getWrappedORef();
-				Factor factor = (Factor) getProject().findObject(ref);
+				Factor factor = (Factor) project.findObject(ref);
 				nodes.add(factor);
 			}
 		}
@@ -197,7 +199,7 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	
 	public EAMGraphCell[] getOnlySelectedCells()
 	{
-		Object[] rawCells = selectionModel.getSelectionCells();
+		Object[] rawCells = getSelectionModel().getSelectionCells();
 		EAMGraphCell[] cells = new EAMGraphCell[rawCells.length];
 		for(int i=0; i < cells.length; ++i)
 			cells[i] = (EAMGraphCell)rawCells[i];
@@ -219,7 +221,8 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	
 	public DiagramComponent getdiagramComponent()
 	{
-		return diagram;
+		DiagramComponent diagramComponent = getDiagramSplitPane().getDiagramComponent();
+		return diagramComponent;
 	}
 
 	public String getPanelDescription()
@@ -230,9 +233,6 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 	public void dispose()
 	{
 		super.dispose();
-
-		diagram = null;
-		selectionModel = null;
 	}
 	
 	public void addFieldComponent(Component component)
@@ -242,27 +242,45 @@ public class DiagramPanel extends AbstractObjectDataInputPanel
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		super.commandExecuted(event);
-		
 		try
 		{
-			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(getProject(), getDiagramModel(), getDiagramObject());
+			updateCurrentDiagramObject(event);
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, getDiagramModel(), getDiagramObject());
 			modelUpdater.commandExecuted(event);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	private void updateCurrentDiagramObject(CommandExecutedEvent event)
+	{
+		Command command = event.getCommand();
+		if (! command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
 		
+		CommandSetObjectData commandSetObjectData = (CommandSetObjectData) command;
+		if (commandSetObjectData.getFieldTag() == ViewData.TAG_CURRENT_DIAGRAM_OBJECT)
+		{	
+			ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
+			ORef currentDiagramObjectRef = viewData.getCurrentDiagramObject();
+			getDiagramSplitPane().setCurrentDiagramObjectRef(currentDiagramObjectRef);
+		}
+
+	}
+
+	private DiagramSplitPane getDiagramSplitPane()
+	{
+		return diagramSplitter;
 	}
 	
 	public DiagramLegendPanel getDiagramLegendPanel()
 	{
-		return splitPane.getLegendPanel();
+		return getDiagramSplitPane().getLegendPanel();
 	}
-
-	private DiagramSplitPane splitPane;
-	private EAMGraphSelectionModel selectionModel;
-	private DiagramComponent diagram;
+	
+	DiagramSplitPane diagramSplitter;
+	private Project project;
 	private MainWindow mainWindow;
 }

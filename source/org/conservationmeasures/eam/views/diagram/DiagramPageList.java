@@ -7,30 +7,24 @@ package org.conservationmeasures.eam.views.diagram;
 
 import javax.swing.BorderFactory;
 import javax.swing.JList;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.ListSelectionModel;
 
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.Project;
 
-abstract public class DiagramPageList extends JList implements ListSelectionListener
+abstract public class DiagramPageList extends JList
 {
 	public DiagramPageList(Project project, int objectType)
 	{
 		super();
+		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
 		fillList(project, objectType);
 	}
 	
 	private void fillList(Project project, int objectType)
 	{
-		//FIXME nima add real data to list instead of ids
 		EAMObjectPool pool = project.getPool(objectType);
 		setListData(pool.getIds());
-	}
-
-	public void valueChanged(ListSelectionEvent event)
-	{
-	
 	}
 }

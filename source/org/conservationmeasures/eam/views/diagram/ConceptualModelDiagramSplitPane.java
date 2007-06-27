@@ -5,17 +5,17 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import javax.swing.JComponent;
+import javax.swing.JList;
 
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 
 public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 {
-	public ConceptualModelDiagramSplitPane(MainWindow mainWindow, DiagramComponent diagramComponentToAdd)
+	//TODO nima dont pass type
+	public ConceptualModelDiagramSplitPane(MainWindow mainWindow, int objectType) throws Exception
 	{
-		super(mainWindow, diagramComponentToAdd);
+		super(mainWindow, objectType);
 	}
 
 	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow)
@@ -23,7 +23,7 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 		return new ConceptualModelDiagramLegendPanel(mainWindow);
 	}
 	
-	public JComponent createPageList(Project project)
+	public JList createPageList(Project project)
 	{
 		return new ConceptualModelPageList(project);
 	}
