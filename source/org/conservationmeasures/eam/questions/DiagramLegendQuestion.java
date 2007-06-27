@@ -38,8 +38,8 @@ public class DiagramLegendQuestion extends ChoiceQuestion
 				new ChoiceItem(Indicator.OBJECT_NAME, Indicator.OBJECT_NAME),
 				new ChoiceItem(TextBox.OBJECT_NAME, TextBox.OBJECT_NAME),
 				new ChoiceItem(DiagramLegendPanel.SCOPE_BOX, DiagramLegendPanel.SCOPE_BOX),
-				new ChoiceItem(DiagramLegendPanel.TARGETLINK, DiagramLegendPanel.TARGETLINK),
-				new ChoiceItem(DiagramLegendPanel.STRESS, DiagramLegendPanel.STRESS),
+				new ChoiceItem(FactorLink.OBJECT_NAME_TARGETLINK, FactorLink.OBJECT_NAME_TARGETLINK),
+				new ChoiceItem(FactorLink.OBJECT_NAME_STRESS, FactorLink.OBJECT_NAME_STRESS),
 				new ChoiceItem(IntermediateResult.OBJECT_NAME, IntermediateResult.OBJECT_NAME),
 				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, ThreatReductionResult.OBJECT_NAME),
 		};
