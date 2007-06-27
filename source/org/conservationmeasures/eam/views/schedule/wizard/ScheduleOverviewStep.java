@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.schedule.wizard;
 
+import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WizardStep;
 
@@ -12,6 +13,6 @@ public class ScheduleOverviewStep extends WizardStep
 {
 	public ScheduleOverviewStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse);
+		super(wizardToUse, ScheduleView.getViewName());
 	}
 }

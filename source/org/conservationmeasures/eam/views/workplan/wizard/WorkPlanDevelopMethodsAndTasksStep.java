@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.views.workplan.wizard;
 
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
+import org.conservationmeasures.eam.wizard.WorkPlanWizardStep;
 
-public class WorkPlanDevelopMethodsAndTasksStep extends WizardStep
+public class WorkPlanDevelopMethodsAndTasksStep extends WorkPlanWizardStep
 {
 	public WorkPlanDevelopMethodsAndTasksStep(WizardPanel wizardToUse)
 	{

@@ -19,10 +19,11 @@ import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
 {
-	public SkeletonWizardStep(WizardPanel wizardToUse)
+	public SkeletonWizardStep(WizardPanel wizardToUse, String viewNameToUse)
 	{
 		super(new BorderLayout());
 		wizard = wizardToUse;
+		viewName = viewNameToUse;
 		controls = new Hashtable();
 	}
 	
@@ -35,7 +36,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 
 	public String getViewName()
 	{
-		return getWizard().getViewName();
+		return viewName;
 	}
 	
 	public String getTextLeft() throws Exception
@@ -156,4 +157,5 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	private Hashtable controls;
 	private WizardPanel wizard;
+	private String viewName;
 }

@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.targetviability.wizard;
 
+import org.conservationmeasures.eam.wizard.TargetViabilityWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
 
-public class TargetViabilityOverviewStep extends WizardStep
+public class TargetViabilityOverviewStep extends TargetViabilityWizardStep
 {
 	public TargetViabilityOverviewStep(WizardPanel wizardToUse)
 	{

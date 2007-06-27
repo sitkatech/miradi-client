@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.strategicplan.wizard;
 
+import org.conservationmeasures.eam.wizard.StrategicPlanWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
 
-public class StrategicPlanViewAllGoals extends WizardStep
+public class StrategicPlanViewAllGoals extends StrategicPlanWizardStep
 {
 	public StrategicPlanViewAllGoals(WizardPanel wizardToUse)
 	{

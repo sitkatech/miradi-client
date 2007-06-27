@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
+import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.noproject.RenameProject;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
@@ -38,7 +39,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 {
 	public NoProjectWizardStep(WizardPanel wizardToUse) throws Exception
 	{
-		super(wizardToUse);
+		super(wizardToUse, NoProjectView.getViewName());
 		String header = EAM.loadResourceFile(getClass(), "WelcomeHeader.html");
 		WizardHtmlViewer headerHtmlViewer = new WizardHtmlViewer(getMainWindow(), this);
 		headerHtmlViewer.setText(header);

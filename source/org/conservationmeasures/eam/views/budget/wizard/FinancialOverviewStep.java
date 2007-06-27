@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.budget.wizard;
 
+import org.conservationmeasures.eam.wizard.FinancialWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
 
-public class FinancialOverviewStep extends WizardStep
+public class FinancialOverviewStep extends FinancialWizardStep
 {
 	public FinancialOverviewStep(WizardPanel wizardToUse)
 	{

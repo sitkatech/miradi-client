@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
+import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
 

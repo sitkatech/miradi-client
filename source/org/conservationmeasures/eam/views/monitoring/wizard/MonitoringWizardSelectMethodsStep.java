@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.views.monitoring.wizard;
 
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
+import org.conservationmeasures.eam.wizard.WorkPlanWizardStep;
 
-public class MonitoringWizardSelectMethodsStep extends WizardStep
+public class MonitoringWizardSelectMethodsStep extends WorkPlanWizardStep
 {
 	public MonitoringWizardSelectMethodsStep(WizardPanel wizardToUse)
 	{

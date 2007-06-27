@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.summary.wizard;
 
+import org.conservationmeasures.eam.wizard.SummaryWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
 
-public class SummaryWizardDefineProjecScope extends WizardStep
+public class SummaryWizardDefineProjecScope extends SummaryWizardStep
 {
 	public SummaryWizardDefineProjecScope(WizardPanel panelToUse) 
 	{

@@ -1,9 +1,9 @@
 package org.conservationmeasures.eam.views.targetviability.wizard;
 
+import org.conservationmeasures.eam.wizard.TargetViabilityWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
 
-public class TargetViabilityOverviewAfterDetailedModeStep extends WizardStep
+public class TargetViabilityOverviewAfterDetailedModeStep extends TargetViabilityWizardStep
 {
 	public TargetViabilityOverviewAfterDetailedModeStep(WizardPanel wizardToUse)
 	{

@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
+import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
 abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep

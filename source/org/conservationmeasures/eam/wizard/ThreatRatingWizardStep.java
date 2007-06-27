@@ -3,16 +3,15 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.threatmatrix.wizard;
+package org.conservationmeasures.eam.wizard;
 
-import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
+import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 
 public abstract class ThreatRatingWizardStep extends WizardStep
 {
 	public ThreatRatingWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse);
+		super(wizardToUse, ThreatMatrixView.getViewName());
 	}
 
 }

@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.utils.FastScrollPane;
 
 public class WizardStep extends SkeletonWizardStep
 {
-	public WizardStep(WizardPanel wizardToUse)
+	public WizardStep(WizardPanel wizardToUse, String viewNameToUse)
 	{
-		super(wizardToUse);
+		super(wizardToUse, viewNameToUse);
 
 		htmlViewerLeft = new WizardHtmlViewer(getMainWindow(),this);
 		htmlViewerRight = new WizardHtmlViewer(getMainWindow(),this);

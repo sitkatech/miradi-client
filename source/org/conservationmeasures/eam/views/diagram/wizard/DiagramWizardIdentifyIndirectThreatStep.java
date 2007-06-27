@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.wizard;
 
+import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
 
-public class DiagramWizardIdentifyIndirectThreatStep extends WizardStep
+public class DiagramWizardIdentifyIndirectThreatStep extends DiagramWizardStep
 {
 
 	public DiagramWizardIdentifyIndirectThreatStep(WizardPanel panelToUse)
