@@ -206,8 +206,7 @@ public class WizardManager
 			.createBackControl(NoProjectOverviewStep.class);
 		
 		createStepEntry(new NoProjectWizardProjectCreateStep(panel))
-			.createBackControl(NoProjectOverviewStep.class)
-			.createControl("CreateProject",NoProjectWizardProjectCreateStep.class);
+			.createBackControl(NoProjectOverviewStep.class);
 	}
 	
 	public void createBudgetStepEntries(WizardPanel panel)
