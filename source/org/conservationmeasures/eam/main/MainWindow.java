@@ -149,10 +149,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		
-		//FIXME: this code should be extracted to a ViewSplitPane...note currently the old VIewSPlitPane is used by none view and shold be renamed
-		spliterPane = new ViewSplitPane(wizardPanel, viewHolder);
-		getContentPane().add(spliterPane, BorderLayout.CENTER);
-		
 		setCurrentView(noProjectView);
 		updateActionStates();
 
@@ -169,26 +165,26 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	}
 	
 	
-	//TODO: these methods are candiates to be moved to ViewSplitPane
 	public void hideDivider()
 	{
 		if (spliterPane!=null)
 		{
-			spliterPane.setResizeWeight(1);
-			//FIXME: for some reason if this call is issued the size can not be restored in showDivider
-			//spliterPane.setDividerSize(0);
-			spliterPane.setDividerLocation(Integer.MAX_VALUE);
+			getContentPane().remove(spliterPane);
+			spliterPane = null;
 		}
+		
+		getContentPane().add(wizardPanel, BorderLayout.CENTER);
 	}
 	
 	public void showDivider()
 	{
-		if (spliterPane!=null)
-		{
-			spliterPane.setResizeWeight(.5);
-			spliterPane.setDividerSize(15);
-			spliterPane.setDividerLocation(getHeight()/2);
-		}
+		getContentPane().remove(wizardPanel);
+
+		spliterPane = new ViewSplitPane(wizardPanel, viewHolder);
+		spliterPane.setResizeWeight(.5);
+		spliterPane.setDividerSize(15);
+		spliterPane.setDividerLocation(getHeight()/2);
+		getContentPane().add(spliterPane, BorderLayout.CENTER);
 	}
 	
 	public void restorePreviousDividerLocation()

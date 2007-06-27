@@ -34,7 +34,6 @@ public class NoProjectWizardImportStep extends NoProjectWizardStep
 	{
 		left.refresh();
 		super.refresh();
-		getMainWindow().hideDivider();
 	}
 	
 	LeftSideTextPanel left;
