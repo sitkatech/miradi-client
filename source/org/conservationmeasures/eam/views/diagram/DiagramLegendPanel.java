@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.Hashtable;
 
 import javax.swing.Icon;
@@ -29,12 +30,14 @@ import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertTextBox;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTextBoxCell;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
@@ -42,14 +45,19 @@ import org.conservationmeasures.eam.icons.ProjectScopeIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.DiagramLegendQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -67,9 +75,12 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	{
 		super(new BasicGridLayout(0, 1));
 		mainWindow = mainWindowToUse;
+		
+		createLegendCheckBoxes();
 		addAllComponents();
+		updateLegendPanel(getDiagarmLegendSettingsForSlide());
 	}
-
+	
 	private void addAllComponents()
 	{
 		setBorder(new EmptyBorder(5,5,5,5));
@@ -79,13 +90,38 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		title.setHorizontalAlignment(UiLabel.CENTER);
 		add(title);
 		
-		add(createLegendButtonPanel(mainWindow.getActions()));
+		add(addLegendButtonPanel(mainWindow.getActions()));
 		setMinimumSize(new Dimension(0,0));
 	}
 	
-	protected JPanel createLegendButtonPanel(Actions actions)
+	
+	private void createLegendCheckBoxes()
 	{
 		checkBoxes = new Hashtable();
+		
+		createCheckBox(SCOPE_BOX);
+		createCheckBox( Target.OBJECT_NAME);
+		
+		createCheckBox(Cause.OBJECT_NAME_THREAT);
+		createCheckBox(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
+		createCheckBox(ThreatReductionResult.OBJECT_NAME);
+		createCheckBox(IntermediateResult.OBJECT_NAME);
+		createCheckBox(Strategy.OBJECT_NAME);
+		createCheckBox(Strategy.OBJECT_NAME_DRAFT);
+		createCheckBox(TextBox.OBJECT_NAME);
+		
+		createCheckBox(FactorLink.OBJECT_NAME);
+		createCheckBox(FactorLink.OBJECT_NAME_TARGETLINK);
+		createCheckBox(FactorLink.OBJECT_NAME_STRESS);
+		
+		createCheckBox(Goal.OBJECT_NAME);
+		createCheckBox(Objective.OBJECT_NAME);
+		createCheckBox(Indicator.OBJECT_NAME);
+
+	}
+	
+	protected JPanel addLegendButtonPanel(Actions actions)
+	{
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
 		
 		addIconLineWithCheckBox(jpanel, ConceptualModelDiagram.getObjectType(), SCOPE_BOX, new ProjectScopeIcon());
@@ -95,14 +131,10 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		
 		if (mainWindow.getDiagramView().isStategyBrainstormMode())
 		{
-			addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 			addButtonLineWithoutCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
 		}
-		else
-		{
-			addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(),Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
-		}
-		
+
+		addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(),Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
 		addTargetLinkLine(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME_TARGETLINK);
 		
@@ -119,7 +151,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	{
 		jpanel.add(new JLabel(""));
 		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		targetLinkCheckBox = createCheckBox(objectName);
+		targetLinkCheckBox = assocateCheckBox(objectName);
 		jpanel.add(targetLinkCheckBox);
 	}
 	
@@ -128,7 +160,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		JButton button = new LocationButton(action);
 		jpanel.add(button);
 		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		jpanel.add(createCheckBox(objectName));
+		jpanel.add(assocateCheckBox(objectName));
 	}
 	
 	protected void addButtonLineWithoutCheckBox(JPanel jpanel, int objectType, String objectName, EAMAction action)
@@ -141,7 +173,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	
 	protected void addIconLineWithCheckBox(JPanel jpanel, int objectType, String objectName, Icon icon)
 	{
-		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, createCheckBox(objectName));
+		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, assocateCheckBox(objectName));
 	}
 
 
@@ -150,6 +182,13 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, new UiLabel(""));
 	}
 
+	private JCheckBox assocateCheckBox(String objectName)
+	{
+		JCheckBox component = findCheckBox(objectName);
+		updateCheckBoxes(getLayerManager(), component.getClientProperty(LAYER).toString());
+		return component;
+	}
+	
 	private JCheckBox createCheckBox(String objectName)
 	{
 		JCheckBox component = new PanelCheckBox();
@@ -157,9 +196,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		
 		component.putClientProperty(LAYER, new String(objectName));
 		component.addActionListener(this);
-		
-		updateCheckBoxes(getLayerManager(), component.getClientProperty(LAYER).toString());
-		
+
 		return component;
 	}
 	
@@ -175,7 +212,8 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		JCheckBox checkBox = (JCheckBox)event.getSource();
 		String property = (String) checkBox.getClientProperty(LAYER);
 		LayerManager manager = getLayerManager();
-		setLegendVisibilityOfFacactorCheckBoxes(manager, property);			
+		setLegendVisibilityOfFacactorCheckBoxes(manager, property);
+		updateProjectLegendSettings(property);
 	}
 
 
@@ -213,9 +251,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	
 	public void resetCheckBoxes()
 	{
-		removeAll();
-		checkBoxes.clear();
-		addAllComponents();
+		updateLegendPanel(getDiagarmLegendSettingsForSlide());
 	}
 	
 	public void updateCheckBoxes(LayerManager manager, String property)
@@ -252,18 +288,20 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
 			checkBox.setSelected(manager.areStressesVisible());
 	}
+	
 
-	private JCheckBox findCheckBox(String property)
+	private JCheckBox findCheckBox(Object property)
 	{
 		return (JCheckBox)checkBoxes.get(property);
 	}
+	
 	
 	public void turnOFFCheckBoxs()
 	{
 		Object[] keys = checkBoxes.keySet().toArray();
 		for (int i=0; i<keys.length; ++i)
 		{
-			((JCheckBox)checkBoxes.get(keys[i])).setSelected(false);
+			findCheckBox(keys[i]).setSelected(false);
 		}
 	}
 
@@ -274,7 +312,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		ChoiceItem[] choices = new DiagramLegendQuestion("").getChoices();
 		for (int i=0; i<choices.length; ++i)
 		{
-			if (isSelected(choices[i].getCode()))
+			if (!isSelected(choices[i].getCode()))
 				list.add(choices[i].getCode());
 		}
 		return list;
@@ -286,22 +324,59 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		Object[] keys = checkBoxes.keySet().toArray();
 		for (int i1=0; i1<keys.length; ++i1)
 		{
-			((JCheckBox)checkBoxes.get(keys[i1])).setSelected(false);
+			findCheckBox(keys[i1]).setSelected(true);
 			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), keys[i1].toString());
 		}
 		
 		for (int i=0; i<list.size(); ++i)
 		{
-			((JCheckBox)checkBoxes.get(list.get(i))).setSelected(true);
+			findCheckBox(list.get(i)).setSelected(false);
 			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), list.get(i));
 		}
 
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
 	}
+	
+	
+	private void updateProjectLegendSettings(String property)
+	{
+		try
+		{
+			ProjectMetadata data = getProject().getMetadata();
+			getProject().executeCommand(new CommandSetObjectData(data.getRef(), ProjectMetadata.TAG_DIAGRAM_LEGEND_SETTINGS, getLegendSettings().toString()));
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unable to update project legend settings:" + e.getMessage());
+		}
+	}
+
+	
+	private CodeList getDiagarmLegendSettingsForSlide()
+	{
+		try
+		{
+			ProjectMetadata data = getProject().getMetadata();
+			return  new CodeList(data.getData(ProjectMetadata.TAG_DIAGRAM_LEGEND_SETTINGS));
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unable to read project settings:" + e.getMessage());
+			return new CodeList();
+		}
+	}
+	
 
 	private LayerManager getLayerManager()
 	{
 		return mainWindow.getProject().getLayerManager();
+	}
+	
+	private Project getProject()
+	{
+		return mainWindow.getProject();
 	}
 	
 	public boolean isSelected(String property)
