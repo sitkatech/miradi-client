@@ -57,20 +57,13 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	public void updateLegendPanel()
 	{
 		Slide slide = (Slide)getSelectedObject();
-		CodeList list = getDiagarmLegendSettings(slide);
+		CodeList list = getDiagarmLegendSettingsForSlide(slide);
 		DiagramLegendPanel panel = getDiagramView().getDiagramPanel().getDiagramLegendPanel();
-		
-		panel.turnOFFCheckBoxs();
-		for (int i=0; i<list.size(); ++i)
-		{
-			panel.updateCheckBoxes(getProject().getLayerManager(), list.get(i));
-		}
-		//FIXME: UI not udpated to reflect new settings??
-		getDiagramView().updateVisibilityOfFactors();
+		panel.updateLegendPanel(list);
 	}
 	
 	
-	private CodeList getDiagarmLegendSettings(Slide slide)
+	private CodeList getDiagarmLegendSettingsForSlide(Slide slide)
 	{
 		try
 		{

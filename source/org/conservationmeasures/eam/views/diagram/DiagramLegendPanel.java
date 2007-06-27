@@ -50,6 +50,9 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.DiagramLegendQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.martus.swing.UiLabel;
 
@@ -156,7 +159,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		component.addActionListener(this);
 		
 		component.setSelected(true);
-		updateCheckBoxes(mainWindow.getProject().getLayerManager(), component.getClientProperty(LAYER).toString());
+		updateCheckBoxes(getLayerManager(), component.getClientProperty(LAYER).toString());
 		
 		return component;
 	}
@@ -172,7 +175,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	{
 		JCheckBox checkBox = (JCheckBox)event.getSource();
 		String property = (String) checkBox.getClientProperty(LAYER);
-		LayerManager manager = mainWindow.getProject().getLayerManager();
+		LayerManager manager = getLayerManager();
 		setLegendVisibilityOfFacactorCheckBoxes(manager, property);			
 	}
 
@@ -265,6 +268,43 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		}
 	}
 
+	
+	public CodeList getLegendSettings()
+	{
+		CodeList list = new CodeList();
+		ChoiceItem[] choices = new DiagramLegendQuestion("").getChoices();
+		for (int i=0; i<choices.length; ++i)
+		{
+			if (isSelected(choices[i].getCode()))
+				list.add(choices[i].getCode());
+		}
+		return list;
+	}
+	
+	
+	public void updateLegendPanel(CodeList list)
+	{
+		Object[] keys = checkBoxes.keySet().toArray();
+		for (int i1=0; i1<keys.length; ++i1)
+		{
+			((JCheckBox)checkBoxes.get(keys[i1])).setSelected(false);
+			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), keys[i1].toString());
+		}
+		
+		for (int i=0; i<list.size(); ++i)
+		{
+			((JCheckBox)checkBoxes.get(list.get(i))).setSelected(true);
+			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), list.get(i));
+		}
+
+		mainWindow.getDiagramView().updateVisibilityOfFactors();
+	}
+
+	private LayerManager getLayerManager()
+	{
+		return mainWindow.getProject().getLayerManager();
+	}
+	
 	public boolean isSelected(String property)
 	{
 		JCheckBox checkBox = findCheckBox(property);
@@ -274,6 +314,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		
 		return checkBox.isSelected();
 	}
+	
 	
 	class LocationButton extends PanelButton implements LocationHolder
 	{

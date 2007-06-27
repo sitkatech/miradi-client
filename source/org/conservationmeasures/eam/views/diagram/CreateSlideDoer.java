@@ -17,9 +17,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.SlideShow;
-import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.DiagramLegendQuestion;
-import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class CreateSlideDoer extends ObjectsDoer
@@ -60,17 +57,9 @@ public class CreateSlideDoer extends ObjectsDoer
 		}
 	}
 
-	private String getLegendSettings()
+	public String getLegendSettings()
 	{
-		CodeList list = new CodeList();
-		DiagramLegendPanel panel = getDiagramView().getDiagramPanel().getDiagramLegendPanel();
-		ChoiceItem[] choices = new DiagramLegendQuestion("").getChoices();
-		for (int i=0; i<choices.length; ++i)
-		{
-			if (panel.isSelected(choices[i].getCode()))
-				list.add(choices[i].getCode());
-		}
-		return list.toString();
+		return getDiagramView().getDiagramPanel().getDiagramLegendPanel().getLegendSettings().toString();
 	}
 
 	protected ORef createSlide() throws CommandFailedException
