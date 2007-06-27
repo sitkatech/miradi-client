@@ -16,13 +16,17 @@ import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -30,12 +34,13 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 
-abstract public class DiagramSplitPane extends JSplitPane
+abstract public class DiagramSplitPane extends JSplitPane implements CommandExecutedListener
 {
 	public DiagramSplitPane(MainWindow mainWindowToUse, int objectType) throws Exception
 	{
 		mainWindow = mainWindowToUse;
 		project = mainWindow.getProject();
+		project.addCommandExecutedListener(this);
 		legendPanel = createLegendPanel(mainWindow);
 		scrollableLegendPanel = createLegendScrollPane();
 		selectionPanel = createPageList(mainWindow.getProject());
@@ -53,7 +58,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 	{
 		EAMObjectPool pool = project.getPool(objectType);
 		ORefList diagramObjectRefList = pool.getORefList();
-		DiagramCards diagramComponentCards = new DiagramCards(new CardLayout());
+		DiagramCards diagramComponentCards = new DiagramCards();
 		for (int i = 0; i < diagramObjectRefList.size(); ++i)
 		{
 			ORef diagramObjectRef = diagramObjectRefList.get(i);
@@ -102,7 +107,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 	
 	public DiagramComponent getDiagramComponent()
 	{
-		return diagramCards.findCardIndex(getCurrentDiagramObjectRef());
+		return diagramCards.findByRef(getCurrentDiagramObjectRef());
 	}
 	
 	public ORef getCurrentDiagramObjectRef()
@@ -112,9 +117,9 @@ abstract public class DiagramSplitPane extends JSplitPane
 	
 	public class DiagramCards extends JPanel
 	{
-		public DiagramCards(CardLayout layout)
+		public DiagramCards()
 		{
-			super(layout);
+			super(new CardLayout());
 			cards = new Vector();
 		}
 		
@@ -125,7 +130,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 			cards.add(diagramComponent);
 		}
 
-		public DiagramComponent findCardIndex(ORef ref)
+		public DiagramComponent findByRef(ORef ref)
 		{
 			for (int i = 0; i < cards.size(); ++i)
 			{
@@ -169,14 +174,9 @@ abstract public class DiagramSplitPane extends JSplitPane
 				ORef selectedRef = selectedDiagramObject.getRef();
 				
 				ViewData currentViewDat = project.getViewData(DiagramView.getViewName());
-				CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(currentViewDat.getRef(), ViewData.TAG_CURRENT_DIAGRAM_OBJECT, selectedRef);
+				CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(currentViewDat.getRef(), ViewData.TAG_CURRENT_DIAGRAM_REF, selectedRef);
 				
-				project.executeCommand(setCurrentDiagramObject);
-				
-				CardLayout cardLayout = (CardLayout) diagramCards.getLayout();
-				String cardName = selectedDiagramObject.toString();
-				cardLayout.show(diagramCards, cardName);
-				mainWindow.getDiagramView().updateVisibilityOfFactors();
+				project.executeCommand(setCurrentDiagramObject);				
 			}
 			catch(Exception e)
 			{
@@ -186,6 +186,28 @@ abstract public class DiagramSplitPane extends JSplitPane
 		
 		Project project;
 		int diagramObjectType;
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		Command command = event.getCommand();
+		if (! command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+		
+		CommandSetObjectData commandSetObjectData = (CommandSetObjectData) command;
+		if (commandSetObjectData.getObjectType()!= ObjectType.VIEW_DATA)
+			return;
+		
+		if (commandSetObjectData.getFieldTag() == ViewData.TAG_CURRENT_DIAGRAM_REF)
+		{	
+			ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
+			DiagramComponent diagramComponent = diagramCards.findByRef(viewData.getCurrentDiagramRef());
+			DiagramObject diagramObject = diagramComponent.getDiagramModel().getDiagramObject();
+			CardLayout cardLayout = (CardLayout) diagramCards.getLayout();
+			String cardName = diagramObject.toString();
+			cardLayout.show(diagramCards, cardName);
+			mainWindow.getDiagramView().updateVisibilityOfFactors();
+		}
 	}
 	
 	public void setCurrentDiagramObjectRef(ORef currentDiagramObjectRef)

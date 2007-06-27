@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -54,6 +55,12 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 			dispose();
 			throw e;
 		}
+	}
+	
+	public void dispose()
+	{
+		super.dispose();
+		project.removeCommandExecutedListener(this);
 	}
 	
 	private DiagramSplitPane createDiagramSplitter(int objectType) throws Exception
@@ -229,12 +236,6 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 		return EAM.text("Title|Diagram Panel");
 	}
 
-	public void dispose()
-	{
-		super.dispose();
-		project.removeCommandExecutedListener(this);
-	}
-	
 	public void addFieldComponent(Component component)
 	{
 		throw new RuntimeException("Not yet implemented");
@@ -261,10 +262,13 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 			return;
 		
 		CommandSetObjectData commandSetObjectData = (CommandSetObjectData) command;
-		if (commandSetObjectData.getFieldTag() == ViewData.TAG_CURRENT_DIAGRAM_OBJECT)
+		if (commandSetObjectData.getObjectType()!= ObjectType.VIEW_DATA)
+			return;
+		
+		if (commandSetObjectData.getFieldTag() == ViewData.TAG_CURRENT_DIAGRAM_REF)
 		{	
 			ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
-			ORef currentDiagramObjectRef = viewData.getCurrentDiagramObject();
+			ORef currentDiagramObjectRef = viewData.getCurrentDiagramRef();
 			getDiagramSplitPane().setCurrentDiagramObjectRef(currentDiagramObjectRef);
 		}
 

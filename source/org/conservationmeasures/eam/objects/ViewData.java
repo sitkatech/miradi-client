@@ -66,7 +66,7 @@ public class ViewData extends BaseObject
 		return new Command[] {cmd};
 	}
 	
-	public ORef getCurrentDiagramObject()
+	public ORef getCurrentDiagramRef()
 	{
 		return currentDiagramObject.getRawRef();
 	}
@@ -127,7 +127,7 @@ public class ViewData extends BaseObject
 		expandedNodesList = new ORefListData();
 		currentDiagramObject = new ORefData();
 		
-		addField(TAG_CURRENT_DIAGRAM_OBJECT, currentDiagramObject);
+		addField(TAG_CURRENT_DIAGRAM_REF, currentDiagramObject);
 		addField(TAG_CURRENT_MODE, currentMode);
 		addField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
 		addField(TAG_CURRENT_TAB, currentTab);
@@ -136,7 +136,7 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 	}
 	
-	public static final String TAG_CURRENT_DIAGRAM_OBJECT = "CurrentDiagramObject";
+	public static final String TAG_CURRENT_DIAGRAM_REF = "CurrentDiagramRef";
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_CHAIN_MODE_FACTOR_REFS = "ChainModeFactorRefs";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
