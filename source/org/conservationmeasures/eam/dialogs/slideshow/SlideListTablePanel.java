@@ -48,7 +48,7 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	
 	public void valueChanged(ListSelectionEvent event)
 	{
-		if (!getDiagramView().isSidePanelVisible())
+		if (!getDiagramView().isSlideShowPanelVisible())
 			return;
 		
 		super.valueChanged(event);

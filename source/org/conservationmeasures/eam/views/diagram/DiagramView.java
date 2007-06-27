@@ -141,7 +141,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.becomeActive();
 		createSlideShowPanel();
 		add(slideShowPoolManagementPanel, BorderLayout.AFTER_LINE_ENDS);
-		hideSidePanel();
+		hideSlideShowPanel();
 	}
 	
 	//FIXME: need a dispose for project close...then there will  be not need to create/delete the panel each time 
@@ -153,17 +153,17 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.becomeInactive();
 	}
 	
-	public void hideSidePanel()
+	public void hideSlideShowPanel()
 	{
 		slideShowPoolManagementPanel.setVisible(false);
 	}
 	
-	public void showSidePanel()
+	public void showSlideShowPanel()
 	{
 		slideShowPoolManagementPanel.setVisible(true);
 	}
 	
-	public boolean isSidePanelVisible()
+	public boolean isSlideShowPanelVisible()
 	{
 		if (slideShowPoolManagementPanel==null)
 			return false;

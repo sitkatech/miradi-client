@@ -22,10 +22,10 @@ public class ToggleSlideShowPanelDoer extends ViewDoer
 		
 		try
 		{
-			if (getDiagramView().isSidePanelVisible())
-				getDiagramView().hideSidePanel();
+			if (getDiagramView().isSlideShowPanelVisible())
+				getDiagramView().hideSlideShowPanel();
 			else
-				getDiagramView().showSidePanel();
+				getDiagramView().showSlideShowPanel();
 		}
 		catch(Exception e)
 		{
