@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.slideshow;
 
+import java.awt.Image;
 import java.text.ParseException;
 
 import javax.swing.event.ListSelectionEvent;
@@ -19,14 +20,17 @@ import org.conservationmeasures.eam.dialogs.ObjectListTablePanel;
 import org.conservationmeasures.eam.dialogs.ObjectTableModel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
 import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+
 
 public class SlideListTablePanel extends ObjectListTablePanel
 {
@@ -58,6 +62,17 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		}
 	}
 
+	public Image createImage()
+	{
+		return  DiagramImageCreator.getImage(getMainWindow(), getDiagramView().getDiagramModel().getDiagramObject());
+	}
+
+	private MainWindow getMainWindow()
+	{
+		return EAM.mainWindow;
+	}
+	
+	
 	public void updateLegendPanel()
 	{
 		Slide slide = (Slide)getSelectedObject();
@@ -100,7 +115,7 @@ public class SlideListTablePanel extends ObjectListTablePanel
 
 	private DiagramView getDiagramView()
 	{
-		return ((DiagramView)EAM.mainWindow.getCurrentView());
+		return ((DiagramView)getMainWindow().getCurrentView());
 	}
 	
 }
