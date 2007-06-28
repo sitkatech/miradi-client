@@ -40,9 +40,9 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 		super.setLegendVisibilityOfFacactorCheckBoxes(manager, property);
 	}
 	
-	public void updateCheckBoxes(LayerManager manager, String property)
+	public void updateCheckBox(LayerManager manager, String property)
 	{
-		super.updateCheckBoxes(manager, property);
+		super.updateCheckBox(manager, property);
 		
 		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
 		

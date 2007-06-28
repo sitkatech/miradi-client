@@ -73,6 +73,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	{
 		super(new BasicGridLayout(0, 1));
 		mainWindow = mainWindowToUse;
+		checkBoxes = new Hashtable();
 		
 		createLegendCheckBoxes();
 		addAllComponents();
@@ -89,14 +90,13 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		add(title);
 		
 		add(createLegendButtonPanel(mainWindow.getActions()));
+		updateCheckBoxs();
 		setMinimumSize(new Dimension(0,0));
 	}
 	
 	
 	private void createLegendCheckBoxes()
 	{
-		checkBoxes = new Hashtable();
-		
 		createCheckBox(SCOPE_BOX);
 		createCheckBox( Target.OBJECT_NAME);
 		
@@ -149,7 +149,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	{
 		jpanel.add(new JLabel(""));
 		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		targetLinkCheckBox = assocateCheckBox(objectName);
+		targetLinkCheckBox = findCheckBox(objectName);
 		jpanel.add(targetLinkCheckBox);
 	}
 	
@@ -158,7 +158,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		JButton button = new LocationButton(action);
 		jpanel.add(button);
 		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		jpanel.add(assocateCheckBox(objectName));
+		jpanel.add(findCheckBox(objectName));
 	}
 	
 	protected void addButtonLineWithoutCheckBox(JPanel jpanel, int objectType, String objectName, EAMAction action)
@@ -171,7 +171,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	
 	protected void addIconLineWithCheckBox(JPanel jpanel, int objectType, String objectName, Icon icon)
 	{
-		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, assocateCheckBox(objectName));
+		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, findCheckBox(objectName));
 	}
 
 
@@ -180,12 +180,15 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, new UiLabel(""));
 	}
 
-	private JCheckBox assocateCheckBox(String objectName)
+	private void updateCheckBoxs()
 	{
-		JCheckBox component = findCheckBox(objectName);
-		updateCheckBoxes(getLayerManager(), component.getClientProperty(LAYER).toString());
-		return component;
+		Object[] keys = checkBoxes.keySet().toArray();
+		for (int i=0; i<keys.length; ++i)
+		{
+			updateCheckBox(getLayerManager(), ((JCheckBox)checkBoxes.get(keys[i])).getClientProperty(LAYER).toString());
+		}
 	}
+	
 	
 	private JCheckBox createCheckBox(String objectName)
 	{
@@ -252,7 +255,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		updateLegendPanel(getDiagarmLegendSettingsForSlide());
 	}
 	
-	public void updateCheckBoxes(LayerManager manager, String property)
+	public void updateCheckBox(LayerManager manager, String property)
 	{
 		JCheckBox checkBox = findCheckBox(property);
 
