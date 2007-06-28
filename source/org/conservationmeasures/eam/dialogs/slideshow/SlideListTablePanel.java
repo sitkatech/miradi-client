@@ -77,10 +77,12 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	
 	public void updateLegendPanel()
 	{
+		updatingLegendPanel = true;
 		Slide slide = (Slide)getSelectedObject();
 		CodeList list = getDiagarmLegendSettingsForSlide(slide);
 		DiagramLegendPanel panel = getDiagramView().getDiagramPanel().getDiagramLegendPanel();
 		panel.updateLegendPanel(list);
+		updatingLegendPanel = false;
 	}
 	
 	
@@ -112,13 +114,30 @@ public class SlideListTablePanel extends ObjectListTablePanel
 			int newRow = model.findRowObject(object.getId());
 			if (newRow>=0)
 				getTable().setRowSelectionInterval(newRow, newRow);
+			return;
 		}
-		else
+
+		if (isLegendPanelUpdate())
 		{
-			super.commandExecuted(event);
+			updateCurrentSelectedSlidesLegendSettings();
+			return;
 		}
+		
+		super.commandExecuted(event);
+	}
+	
+	private void updateCurrentSelectedSlidesLegendSettings()
+	{
+		//TODO: update slides legend settings
 	}
 
+	private boolean isLegendPanelUpdate()
+	{
+		if (updatingLegendPanel)
+			return false;
+		//TODO: is this a legend panel update?
+		return false;
+	}
 	
 	private boolean isSetDataForSlideShow(CommandExecutedEvent event)
 	{
@@ -134,4 +153,5 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		return ((DiagramView)getMainWindow().getCurrentView());
 	}
 	
+	boolean updatingLegendPanel;
 }
