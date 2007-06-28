@@ -88,7 +88,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		title.setHorizontalAlignment(UiLabel.CENTER);
 		add(title);
 		
-		add(addLegendButtonPanel(mainWindow.getActions()));
+		add(createLegendButtonPanel(mainWindow.getActions()));
 		setMinimumSize(new Dimension(0,0));
 	}
 	
@@ -118,7 +118,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 
 	}
 	
-	protected JPanel addLegendButtonPanel(Actions actions)
+	protected JPanel createLegendButtonPanel(Actions actions)
 	{
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
 		
