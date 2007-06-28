@@ -320,10 +320,10 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	public void updateLegendPanel(CodeList hiddenTypes)
 	{
 		Object[] keys = checkBoxes.keySet().toArray();
-		for (int i1=0; i1<keys.length; ++i1)
+		for (int i=0; i<keys.length; ++i)
 		{
-			findCheckBox(keys[i1]).setSelected(true);
-			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), keys[i1].toString());
+			findCheckBox(keys[i]).setSelected(true);
+			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), keys[i].toString());
 		}
 		
 		for (int i=0; i<hiddenTypes.size(); ++i)
