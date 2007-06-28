@@ -143,6 +143,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	public void showSlideShowPanel() throws Exception
 	{
+		disposeOfSlideShowDialog();
 		ORef slideShowRef = createSlideShowIfNeeded().getRef(); 
 		SlideListManagementPanel slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), slideShowRef, getActions());
 		slideShowPoolManagementPanel.updateSplitterLocationToMiddle();
@@ -427,6 +428,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		// TODO: This should completely tear down the view
 		disposeOfNodePropertiesDialog();
+		disposeOfSlideShowDialog();
 		
 		for(int i = 0; i < getTabCount(); ++i)
 		{
@@ -763,7 +765,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		if(slideShowDlg != null)
 			slideShowDlg.dispose();
-		slideShowDlg = null;
 		slideShowDlg = null;
 	}
 	
