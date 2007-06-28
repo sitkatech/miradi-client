@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.SlideShow;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
@@ -134,15 +135,22 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	private void updateCurrentSelectedSlide(CommandExecutedEvent event)
 	{
 		//TODO: update slides legend settings and/or tab change
-		//NOTE: if event oreflist is <> original then do not update as this is addition or deletetion
 	}
 
 	private boolean doesSlideNeedToBeUpdated(CommandExecutedEvent event)
 	{
 		if (inSelectionLogic)
 			return false;
-		//TODO: is this a legend panel update or tab change?
-		return false;
+		
+		if (!event.isSetDataCommand())
+			return false;
+		
+		CommandSetObjectData cmd = ((CommandSetObjectData)event.getCommand());
+		if (cmd.getObjectType()!=ViewData.getObjectType())
+			return false;
+		
+		return cmd.getFieldTag().equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES) ||
+			cmd.getFieldTag().equals(ViewData.TAG_CURRENT_DIAGRAM_REF);
 	}
 	
 	private boolean isSetDataForSlideShow(CommandExecutedEvent event)
