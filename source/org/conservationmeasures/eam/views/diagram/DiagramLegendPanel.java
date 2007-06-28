@@ -306,18 +306,18 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	
 	public CodeList getLegendSettings()
 	{
-		CodeList list = new CodeList();
+		CodeList hiddenTypes = new CodeList();
 		ChoiceItem[] choices = new DiagramLegendQuestion("").getChoices();
 		for (int i=0; i<choices.length; ++i)
 		{
 			if (!isSelected(choices[i].getCode()))
-				list.add(choices[i].getCode());
+				hiddenTypes.add(choices[i].getCode());
 		}
-		return list;
+		return hiddenTypes;
 	}
 	
 	
-	public void updateLegendPanel(CodeList list)
+	public void updateLegendPanel(CodeList hiddenTypes)
 	{
 		Object[] keys = checkBoxes.keySet().toArray();
 		for (int i1=0; i1<keys.length; ++i1)
@@ -326,10 +326,10 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), keys[i1].toString());
 		}
 		
-		for (int i=0; i<list.size(); ++i)
+		for (int i=0; i<hiddenTypes.size(); ++i)
 		{
-			findCheckBox(list.get(i)).setSelected(false);
-			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), list.get(i));
+			findCheckBox(hiddenTypes.get(i)).setSelected(false);
+			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), hiddenTypes.get(i));
 		}
 
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
