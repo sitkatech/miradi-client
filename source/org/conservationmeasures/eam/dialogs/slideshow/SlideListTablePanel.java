@@ -55,9 +55,16 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		ORef oref = ((Slide)getSelectedObject()).getDiagramRef();
 		if (!oref.equals(ORef.INVALID))
 		{
-			getDiagramView().setDiagramTab(oref);
-			updateLegendPanel();
+			processSelection(oref);
 		}
+	}
+
+	private void processSelection(ORef oref)
+	{
+		inSelectionLogic = true;
+		getDiagramView().setDiagramTab(oref);
+		updateLegendPanel();
+		inSelectionLogic = false;
 	}
 	
 	protected void selectFirstRow()
@@ -77,12 +84,10 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	
 	public void updateLegendPanel()
 	{
-		updatingLegendPanel = true;
 		Slide slide = (Slide)getSelectedObject();
 		CodeList list = getDiagarmLegendSettingsForSlide(slide);
 		DiagramLegendPanel panel = getDiagramView().getDiagramPanel().getDiagramLegendPanel();
 		panel.updateLegendPanel(list);
-		updatingLegendPanel = false;
 	}
 	
 	
@@ -117,25 +122,26 @@ public class SlideListTablePanel extends ObjectListTablePanel
 			return;
 		}
 
-		if (isLegendPanelUpdate())
+		if (doesSlideNeedToBeUpdated(event))
 		{
-			updateCurrentSelectedSlidesLegendSettings();
+			updateCurrentSelectedSlide(event);
 			return;
 		}
 		
 		super.commandExecuted(event);
 	}
 	
-	private void updateCurrentSelectedSlidesLegendSettings()
+	private void updateCurrentSelectedSlide(CommandExecutedEvent event)
 	{
-		//TODO: update slides legend settings
+		//TODO: update slides legend settings and/or tab change
+		//NOTE: if event oreflist is <> original then do not update as this is addition or deletetion
 	}
 
-	private boolean isLegendPanelUpdate()
+	private boolean doesSlideNeedToBeUpdated(CommandExecutedEvent event)
 	{
-		if (updatingLegendPanel)
+		if (inSelectionLogic)
 			return false;
-		//TODO: is this a legend panel update?
+		//TODO: is this a legend panel update or tab change?
 		return false;
 	}
 	
@@ -153,5 +159,5 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		return ((DiagramView)getMainWindow().getCurrentView());
 	}
 	
-	boolean updatingLegendPanel;
+	boolean inSelectionLogic;
 }
