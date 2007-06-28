@@ -44,6 +44,7 @@ public class CreateSlideDoer extends ObjectsDoer
 			getProject().executeCommand(new CommandSetObjectData(slideRef, Slide.TAG_DIAGRAM_LEGEND_SETTINGS, getLegendSettings()));
 			getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(object, SlideShow.TAG_SLIDE_REFS, slideRef));
 			
+			//TODO: for this to work...we need to implment a SlideTable and over ride this funtion to select the newly inserted row
 			getPicker().ensureObjectVisible(slideRef);
 		}
 		catch(Exception e)
