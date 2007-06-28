@@ -133,20 +133,31 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	}
 	
 	private void updateCurrentSelectedSlide(CommandExecutedEvent event)
+
 	{
-		int selectedRow = getTable().getSelectedRow();
-		if (selectedRow<0)
+		Slide slide = (Slide)getSelectedObject();
+		if (slide==null)
 			return;
 		
 		CommandSetObjectData cmd = ((CommandSetObjectData)event.getCommand());
-		if (cmd.getFieldTag().equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES))
+		
+		try
 		{
-			//TODO: copy codelist from this command to slide
+			if (cmd.getFieldTag().equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES))
+			{
+				getProject().executeCommand(new CommandSetObjectData(slide.getRef(), Slide.TAG_DIAGRAM_LEGEND_SETTINGS, cmd.getDataValue()));
+			}
+				
+			if (cmd.getFieldTag().equals(ViewData.TAG_CURRENT_DIAGRAM_REF))
+			{
+				//FIXME: seems to be using TAG_CURRENT_TAB and not TAG_CURRENT_DIAGRAM_REF for a tab switch????
+				getProject().executeCommand(new CommandSetObjectData(slide.getRef(), Slide.TAG_DIAGRAM_OBJECT_REF, cmd.getDataValue()));
+			}
 		}
-			
-		if (cmd.getFieldTag().equals(ViewData.TAG_CURRENT_DIAGRAM_REF))
+		catch (Exception e)
 		{
-			//TODO: copy diag ref to slide diag ref
+			EAM.logException(e);
+			EAM.errorDialog("Unable to update slide:" + e.getMessage());
 		}
 	}
 
