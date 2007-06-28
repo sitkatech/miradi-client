@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -74,7 +73,6 @@ import org.conservationmeasures.eam.actions.ActionToggleSlideShowPanel;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.actions.ToggleSlideShowPanelDoer;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -88,6 +86,7 @@ import org.conservationmeasures.eam.dialogs.FactorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.slideshow.SlideListManagementPanel;
+import org.conservationmeasures.eam.dialogs.slideshow.SlideShowDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -136,47 +135,22 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return wizardPanel;
 	}
 	
-	public void becomeActive() throws Exception
+	
+	public boolean isSlideShowVisible()
 	{
-		super.becomeActive();
-		createSlideShowPanel();
-		add(slideShowPoolManagementPanel, BorderLayout.AFTER_LINE_ENDS);
-		hideSlideShowPanel();
+		return (slideShowDlg!=null) && (slideShowDlg.isVisible());
 	}
-	
-	//FIXME: need a dispose for project close...then there will  be not need to create/delete the panel each time 
-	public void becomeInactive() throws Exception
-	{
-		slideShowPoolManagementPanel.dispose();
-		remove(slideShowPoolManagementPanel);
-		slideShowPoolManagementPanel = null;
-		super.becomeInactive();
-	}
-	
-	public void hideSlideShowPanel()
-	{
-		slideShowPoolManagementPanel.setVisible(false);
-	}
-	
-	public void showSlideShowPanel()
-	{
-		slideShowPoolManagementPanel.setVisible(true);
-	}
-	
-	public boolean isSlideShowPanelVisible()
-	{
-		if (slideShowPoolManagementPanel==null)
-			return false;
-		return slideShowPoolManagementPanel.isVisible();
-	}
-	
-	
-	private SlideListManagementPanel createSlideShowPanel() throws Exception
+
+	public void showSlideShowPanel() throws Exception
 	{
 		ORef slideShowRef = createSlideShowIfNeeded().getRef(); 
-		slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), slideShowRef, getActions());
+		SlideListManagementPanel slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), slideShowRef, getActions());
 		slideShowPoolManagementPanel.updateSplitterLocationToMiddle();
-		return slideShowPoolManagementPanel;
+		slideShowDlg = new SlideShowDialog(getMainWindow(), slideShowPoolManagementPanel, slideShowPoolManagementPanel.getPanelDescription());
+		slideShowDlg.pack();
+		
+		Utilities.centerDlg(slideShowDlg);
+		slideShowDlg.setVisible(true);
 	}
 
 	public SlideShow getSlideShow() throws CommandFailedException
@@ -785,6 +759,15 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		nodePropertiesPanel = null;
 	}
 	
+	public void disposeOfSlideShowDialog()
+	{
+		if(slideShowDlg != null)
+			slideShowDlg.dispose();
+		slideShowDlg = null;
+		slideShowDlg = null;
+	}
+	
+	
 	public void selectionWasChanged()
 	{
 		if(nodePropertiesDlg == null)
@@ -810,7 +793,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	PropertiesDoer propertiesDoer;
 	String mode;
 	
-	SlideListManagementPanel slideShowPoolManagementPanel;
+	SlideShowDialog slideShowDlg;
 	ModelessDialogWithClose nodePropertiesDlg;
 	FactorPropertiesPanel nodePropertiesPanel;
 

@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.actions;
+package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -22,8 +22,8 @@ public class ToggleSlideShowPanelDoer extends ViewDoer
 		
 		try
 		{
-			if (getDiagramView().isSlideShowPanelVisible())
-				getDiagramView().hideSlideShowPanel();
+			if (getDiagramView().isSlideShowVisible())
+				getDiagramView().disposeOfSlideShowDialog();
 			else
 				getDiagramView().showSlideShowPanel();
 		}

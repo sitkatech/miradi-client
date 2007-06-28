@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Slide;
+import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
@@ -48,9 +49,6 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	
 	public void valueChanged(ListSelectionEvent event)
 	{
-		if (!getDiagramView().isSlideShowPanelVisible())
-			return;
-		
 		super.valueChanged(event);
 		if (getSelectedObject()==null)
 			return;
@@ -60,6 +58,10 @@ public class SlideListTablePanel extends ObjectListTablePanel
 			getDiagramView().setDiagramTab(oref);
 			updateLegendPanel();
 		}
+	}
+	
+	protected void selectFirstRow()
+	{
 	}
 
 	public Image createImage()
@@ -99,8 +101,8 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		int selectedRow = getTable().getSelectedRow();
-
-		if ((selectedRow >= 0) && (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME)))
+		
+		if (((selectedRow >= 0) && isSetDataForSlideShow(event)))
 		{
 			BaseObject object = getTable().getObjectTableModel().getObjectFromRow(selectedRow);
 			ObjectTableModel model = getTable().getObjectTableModel();
@@ -117,6 +119,16 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		}
 	}
 
+	
+	private boolean isSetDataForSlideShow(CommandExecutedEvent event)
+	{
+		if (!event.isSetDataCommand())
+			return false;
+		CommandSetObjectData cmd = ((CommandSetObjectData)event.getCommand());
+		return (cmd.getObjectType()==SlideShow.getObjectType());
+	}
+	
+	
 	private DiagramView getDiagramView()
 	{
 		return ((DiagramView)getMainWindow().getCurrentView());

@@ -14,6 +14,9 @@ public class MoveSlideDownDoer extends MoveSlideDoer
 		if (!isDiagramView())
 			return false;
 		
+		if (getPicker()==null)
+			return false;
+		
 		int rowCount = ((JTable)getPicker()).getRowCount();
 		int selectedRow = ((JTable)getPicker()).getSelectedRow();
 		

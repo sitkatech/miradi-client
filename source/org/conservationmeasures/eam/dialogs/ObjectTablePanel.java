@@ -73,7 +73,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		selectFirstRow();
 	}
 
-	private void selectFirstRow()
+	protected void selectFirstRow()
 	{
 		table.scrollToAndSelectRow(0);
 	}
