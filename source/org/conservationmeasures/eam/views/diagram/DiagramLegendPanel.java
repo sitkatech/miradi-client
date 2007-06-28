@@ -11,7 +11,6 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.util.Hashtable;
 
 import javax.swing.Icon;
@@ -37,7 +36,6 @@ import org.conservationmeasures.eam.diagram.cells.DiagramTextBoxCell;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
@@ -52,11 +50,11 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.DiagramLegendQuestion;
@@ -342,10 +340,10 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	{
 		try
 		{
-			ProjectMetadata data = getProject().getMetadata();
-			getProject().executeCommand(new CommandSetObjectData(data.getRef(), ProjectMetadata.TAG_DIAGRAM_LEGEND_SETTINGS, getLegendSettings().toString()));
+			ViewData data = getProject().getCurrentViewData();
+			getProject().executeCommand(new CommandSetObjectData(data.getRef(), ViewData.TAG_DIAGRAM_LEGEND_SETTINGS, getLegendSettings().toString()));
 		}
-		catch(CommandFailedException e)
+		catch(Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unable to update project legend settings:" + e.getMessage());
@@ -357,10 +355,10 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 	{
 		try
 		{
-			ProjectMetadata data = getProject().getMetadata();
-			return  new CodeList(data.getData(ProjectMetadata.TAG_DIAGRAM_LEGEND_SETTINGS));
+			ViewData data = getProject().getCurrentViewData();
+			return  new CodeList(data.getData(ViewData.TAG_DIAGRAM_LEGEND_SETTINGS));
 		}
-		catch(ParseException e)
+		catch(Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unable to read project settings:" + e.getMessage());

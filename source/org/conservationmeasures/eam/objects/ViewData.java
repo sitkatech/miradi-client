@@ -10,6 +10,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
@@ -126,6 +127,7 @@ public class ViewData extends BaseObject
 		currentSortDirecton = new StringData();
 		expandedNodesList = new ORefListData();
 		currentDiagramObject = new ORefData();
+		legendSettings = new CodeListData();
 		
 		addField(TAG_CURRENT_DIAGRAM_REF, currentDiagramObject);
 		addField(TAG_CURRENT_MODE, currentMode);
@@ -134,6 +136,7 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_SORT_BY, currentSortBy);
 		addField(TAG_CURRENT_SORT_DIRECTION, currentSortDirecton);
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
+		addField(TAG_DIAGRAM_LEGEND_SETTINGS, legendSettings);
 	}
 	
 	public static final String TAG_CURRENT_DIAGRAM_REF = "CurrentDiagramRef";
@@ -143,7 +146,7 @@ public class ViewData extends BaseObject
 	public static final String TAG_CURRENT_SORT_BY = "CurrentSortBy";
 	public static final String TAG_CURRENT_SORT_DIRECTION = "CurrentSortDirecton";
 	public static final String TAG_CURRENT_EXPANSION_LIST  = "CurrentExpansionList";
-	
+	public static String TAG_DIAGRAM_LEGEND_SETTINGS = "DiagramLegendSettings";
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
@@ -162,4 +165,5 @@ public class ViewData extends BaseObject
 	private StringData currentSortDirecton;
 	private ORefData currentDiagramObject;
 	private ORefListData expandedNodesList;
+	CodeListData legendSettings;
 }

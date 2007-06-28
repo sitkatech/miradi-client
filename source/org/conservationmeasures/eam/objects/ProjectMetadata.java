@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.FloatData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
@@ -172,8 +171,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_COUNTRY, tncCountry);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
 		
-		legendSettings = new CodeListData();
-		addField(TAG_DIAGRAM_LEGEND_SETTINGS, legendSettings);
+
 		
 		diagramFontSize = new IntegerData();
 		diagramFontFamily = new StringData();
@@ -209,7 +207,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_ECOREGION = "TNC.Ecoregion";
 	public static final String TAG_TNC_COUNTRY = "TNC.Country";
 	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
-	public static String TAG_DIAGRAM_LEGEND_SETTINGS = "DiagramLegendSettings";
+
 	
 	public static final String TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamily";
 	public static final String TAG_DIAGRAM_FONT_SIZE = "DiagramFontSize";
@@ -239,7 +237,7 @@ public class ProjectMetadata extends BaseObject
 	StringData tncEcoregion;
 	StringData tncCountry;
 	StringData tncOperatingUnits;
-	CodeListData legendSettings;
+
 	
 	StringData diagramFontFamily;
 	IntegerData diagramFontSize;
