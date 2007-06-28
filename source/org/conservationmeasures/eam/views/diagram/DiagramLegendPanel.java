@@ -344,7 +344,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		try
 		{
 			ViewData data = getProject().getCurrentViewData();
-			getProject().executeCommand(new CommandSetObjectData(data.getRef(), ViewData.TAG_DIAGRAM_LEGEND_SETTINGS, getLegendSettings().toString()));
+			getProject().executeCommand(new CommandSetObjectData(data.getRef(), ViewData.TAG_DIAGRAM_HIDDEN_TYPES, getLegendSettings().toString()));
 		}
 		catch(Exception e)
 		{
@@ -359,7 +359,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		try
 		{
 			ViewData data = getProject().getCurrentViewData();
-			return  new CodeList(data.getData(ViewData.TAG_DIAGRAM_LEGEND_SETTINGS));
+			return  new CodeList(data.getData(ViewData.TAG_DIAGRAM_HIDDEN_TYPES));
 		}
 		catch(Exception e)
 		{

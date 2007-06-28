@@ -127,7 +127,7 @@ public class ViewData extends BaseObject
 		currentSortDirecton = new StringData();
 		expandedNodesList = new ORefListData();
 		currentDiagramObject = new ORefData();
-		legendSettings = new CodeListData();
+		diagramHiddenTypes = new CodeListData();
 		
 		addField(TAG_CURRENT_DIAGRAM_REF, currentDiagramObject);
 		addField(TAG_CURRENT_MODE, currentMode);
@@ -136,7 +136,7 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_SORT_BY, currentSortBy);
 		addField(TAG_CURRENT_SORT_DIRECTION, currentSortDirecton);
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
-		addField(TAG_DIAGRAM_LEGEND_SETTINGS, legendSettings);
+		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 	}
 	
 	public static final String TAG_CURRENT_DIAGRAM_REF = "CurrentDiagramRef";
@@ -146,7 +146,7 @@ public class ViewData extends BaseObject
 	public static final String TAG_CURRENT_SORT_BY = "CurrentSortBy";
 	public static final String TAG_CURRENT_SORT_DIRECTION = "CurrentSortDirecton";
 	public static final String TAG_CURRENT_EXPANSION_LIST  = "CurrentExpansionList";
-	public static String TAG_DIAGRAM_LEGEND_SETTINGS = "DiagramLegendSettings";
+	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
@@ -165,5 +165,5 @@ public class ViewData extends BaseObject
 	private StringData currentSortDirecton;
 	private ORefData currentDiagramObject;
 	private ORefListData expandedNodesList;
-	CodeListData legendSettings;
+	CodeListData diagramHiddenTypes;
 }
