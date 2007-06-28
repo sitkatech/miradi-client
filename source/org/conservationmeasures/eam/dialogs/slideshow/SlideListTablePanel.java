@@ -134,7 +134,20 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	
 	private void updateCurrentSelectedSlide(CommandExecutedEvent event)
 	{
-		//TODO: update slides legend settings and/or tab change
+		int selectedRow = getTable().getSelectedRow();
+		if (selectedRow<0)
+			return;
+		
+		CommandSetObjectData cmd = ((CommandSetObjectData)event.getCommand());
+		if (cmd.getFieldTag().equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES))
+		{
+			//TODO: copy codelist from this command to slide
+		}
+			
+		if (cmd.getFieldTag().equals(ViewData.TAG_CURRENT_DIAGRAM_REF))
+		{
+			//TODO: copy diag ref to slide diag ref
+		}
 	}
 
 	private boolean doesSlideNeedToBeUpdated(CommandExecutedEvent event)
