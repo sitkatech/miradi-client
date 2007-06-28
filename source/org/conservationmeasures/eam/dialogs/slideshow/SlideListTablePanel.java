@@ -98,20 +98,18 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+		int selectedRow = getTable().getSelectedRow();
+
+		if ((selectedRow >= 0) && (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME)))
 		{
-			int selectedRow = getTable().getSelectedRow();
-			//FIXME: was throwing if no row selected, so we're skipping everything for now
-			// That's probably not the right solution!
-			if(selectedRow < 0)
-				return;
-			
 			BaseObject object = getTable().getObjectTableModel().getObjectFromRow(selectedRow);
 			ObjectTableModel model = getTable().getObjectTableModel();
 			model.resetRows();
 			model.fireTableDataChanged();
+			
 			int newRow = model.findRowObject(object.getId());
-			getTable().setRowSelectionInterval(newRow, newRow);
+			if (newRow>=0)
+				getTable().setRowSelectionInterval(newRow, newRow);
 		}
 		else
 		{
