@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.wizard;
 
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 
-public abstract class ThreatRatingWizardStep extends WizardStep
+public abstract class ThreatRatingWizardStep extends SplitWizardStep
 {
 	public ThreatRatingWizardStep(WizardPanel wizardToUse)
 	{

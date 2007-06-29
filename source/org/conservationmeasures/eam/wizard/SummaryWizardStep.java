@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.wizard;
 
 import org.conservationmeasures.eam.views.summary.SummaryView;
 
-public class SummaryWizardStep extends WizardStep
+public class SummaryWizardStep extends SplitWizardStep
 {
 	public SummaryWizardStep(WizardPanel wizardToUse)
 	{

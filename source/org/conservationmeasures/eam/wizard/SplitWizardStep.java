@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 
 
-public class WizardStep extends SkeletonWizardStep
+public class SplitWizardStep extends SkeletonWizardStep
 {
-	public WizardStep(WizardPanel wizardToUse, String viewNameToUse)
+	public SplitWizardStep(WizardPanel wizardToUse, String viewNameToUse)
 	{
 		super(wizardToUse, viewNameToUse);
 

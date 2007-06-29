@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.wizard;
 
 import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
 
-public class TargetViabilityWizardStep extends WizardStep
+public class TargetViabilityWizardStep extends SplitWizardStep
 {
 
 	public TargetViabilityWizardStep(WizardPanel wizardToUse)

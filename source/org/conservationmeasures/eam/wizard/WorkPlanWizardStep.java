@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.wizard;
 
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 
-public class WorkPlanWizardStep extends WizardStep
+public class WorkPlanWizardStep extends SplitWizardStep
 {
 
 	public WorkPlanWizardStep(WizardPanel wizardToUse)

@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.wizard;
 
 import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 
-public class MonitoringPlanWizardStep extends WizardStep
+public class MonitoringPlanWizardStep extends SplitWizardStep
 {
 
 	public MonitoringPlanWizardStep(WizardPanel wizardToUse)

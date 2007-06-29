@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.views.schedule.wizard;
 
 import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
-import org.conservationmeasures.eam.wizard.WizardStep;
+import org.conservationmeasures.eam.wizard.SplitWizardStep;
 
-public class ScheduleOverviewStep extends WizardStep
+public class ScheduleOverviewStep extends SplitWizardStep
 {
 	public ScheduleOverviewStep(WizardPanel wizardToUse)
 	{

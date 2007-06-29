@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.wizard;
 
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 
-public class StrategicPlanWizardStep extends WizardStep
+public class StrategicPlanWizardStep extends SplitWizardStep
 {
 
 	public StrategicPlanWizardStep(WizardPanel wizardToUse)

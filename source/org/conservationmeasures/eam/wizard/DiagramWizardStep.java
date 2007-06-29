@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.wizard;
 
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
-public class DiagramWizardStep extends WizardStep
+public class DiagramWizardStep extends SplitWizardStep
 {
 
 	public DiagramWizardStep(WizardPanel wizardToUse)

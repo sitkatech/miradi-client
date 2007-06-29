@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.wizard;
 
 import org.conservationmeasures.eam.views.budget.BudgetView;
 
-public class FinancialWizardStep extends WizardStep
+public class FinancialWizardStep extends SplitWizardStep
 {
 
 	public FinancialWizardStep(WizardPanel wizardToUse)
