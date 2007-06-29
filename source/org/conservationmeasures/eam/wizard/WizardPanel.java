@@ -58,7 +58,8 @@ public class WizardPanel extends JPanel
 			reportError(EAM.text(errorText));
 		}
 
-		jump(destinationStepClass);
+		wizardManager.setStep(destinationStepClass);
+		getMainWindow().updateActionsAndStatusBar();
 	}
 
 	private void reportError(String msg)
@@ -74,12 +75,6 @@ public class WizardPanel extends JPanel
 		stepClass.validate();
 	}
 	
-	public void jump(Class stepMarker) throws Exception
-	{
-		wizardManager.setStep(stepMarker);
-		getMainWindow().updateActionsAndStatusBar();
-	}
-
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
