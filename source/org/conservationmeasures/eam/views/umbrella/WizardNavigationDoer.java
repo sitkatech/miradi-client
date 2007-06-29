@@ -28,7 +28,6 @@ abstract public class WizardNavigationDoer extends ViewDoer
 		try
 		{
 			SkeletonWizardStep currentStep = getWizardManager().findStep(getWizardPanel().currentStepName);
-			currentStep = getWizardManager().findStep(currentStep.getWizard().currentStepName);
 			currentStep.buttonPressed(getControlName());
 			getMainWindow().updateActionsAndStatusBar();
 		}
