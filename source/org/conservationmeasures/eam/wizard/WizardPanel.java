@@ -114,11 +114,6 @@ public class WizardPanel extends JPanel
 		setMinimumSize(new Dimension(0, 0));
 	}
 	
-	public String getViewName()
-	{
-		return view.cardName();
-	}
-	
 	Component createNavigationButtons()
 	{
 		Actions actions = mainWindow.getActions();
