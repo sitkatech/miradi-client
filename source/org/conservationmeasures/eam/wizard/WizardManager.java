@@ -453,9 +453,10 @@ public class WizardManager
 
 	public static String CONTROL_NEXT = "Next";
 	public static String CONTROL_BACK = "Back";
-	MainWindow mainWindow;
-	Hashtable stepEntries;
-	public String currentStepName;
+
+	private MainWindow mainWindow;
+	private Hashtable stepEntries;
+	private String currentStepName;
 
 }
 
