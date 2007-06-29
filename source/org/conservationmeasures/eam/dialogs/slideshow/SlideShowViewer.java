@@ -80,7 +80,6 @@ public class SlideShowViewer extends JDialog
 				if(e.getID() != KeyEvent.KEY_PRESSED)
 					break;
 				setTitle(slides[current].getLabel());
-				determineDialogSizeing();
 				repaint();
 				break;
 			case KeyEvent.VK_2:
@@ -89,11 +88,6 @@ public class SlideShowViewer extends JDialog
 		}
 	 }
 
-	private void determineDialogSizeing()
-	{
-		imgArray[current].getScaledInstance(600, -1, 0);
-		setSize(imgArray[current].getWidth(), imgArray[current].getHeight());
-	}
 	
 	 public void dispose()
 	 {
@@ -106,7 +100,7 @@ public class SlideShowViewer extends JDialog
     public void paint (Graphics g)
     {
         g.setColor(Color.white);
-        g.fillRect(0,0, 200, 200);
+        g.fillRect(0,0, getWidth(), getHeight());
         g.setColor(Color.black);
         g.drawImage(imgArray[current++], 0, 0, this);
         if (current >= imgArray.length) 
