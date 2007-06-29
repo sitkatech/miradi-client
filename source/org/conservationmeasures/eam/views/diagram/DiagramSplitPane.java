@@ -56,8 +56,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 
 	private DiagramCards createDiagramCards(int objectType) throws Exception
 	{
-		EAMObjectPool pool = project.getPool(objectType);
-		ORefList diagramObjectRefList = pool.getORefList();
+		ORefList diagramObjectRefList = getDiagramObjects(objectType);
 		DiagramCards diagramComponentCards = new DiagramCards();
 		for (int i = 0; i < diagramObjectRefList.size(); ++i)
 		{
@@ -69,6 +68,16 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		}
 	
 		return diagramComponentCards;
+	}
+
+	private ORefList getDiagramObjects(int objectType) throws Exception
+	{
+		EAMObjectPool pool = project.getPool(objectType);
+		if (pool.getORefList().size()== 0)
+			new DiagramObjectCreator(project).createlDiagramObject(objectType);
+		 
+		ORefList list = pool.getORefList();
+		return list;
 	}
 	
 	public static DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
@@ -171,6 +180,9 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 			try
 			{
 				BaseObject selectedDiagramObject = (BaseObject) selectionPanel.getSelectedValue();
+				if (selectedDiagramObject == null)
+					return;
+				
 				ORef selectedRef = selectedDiagramObject.getRef();
 				
 				ViewData currentViewDat = project.getViewData(DiagramView.getViewName());

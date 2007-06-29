@@ -575,7 +575,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			updateFactorBoundsIfRelevant(model, cmd);
 			updateFactorLinkIfRelevant(model, cmd);
 			updateScopeIfNeeded(model, cmd);
-			updateTabTitleIfNeeded(cmd);
 			refreshIfNeeded(diagramComponents[i], cmd);
 		}
 	}
@@ -679,24 +678,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		// may have added or removed a stress, modified an Annotation short label, etc.
 		diagramComponent.repaint(diagramComponent.getBounds());
-	}
-	
-	
-	void updateTabTitleIfNeeded(CommandSetObjectData cmd)
-	{
-		if (isTabTitleTextChange(cmd))
-		{
-			int tabIndex = getTabIndex(cmd.getObjectORef());
-			setTabTitle(cmd.getDataValue(), tabIndex);
-		}
-	}	
-	
-	private boolean isTabTitleTextChange(CommandSetObjectData cmd)
-	{
-		if (cmd.getObjectType() != ObjectType.RESULTS_CHAIN_DIAGRAM)
-			return false;
-		
-		return (cmd.getFieldTag().equals(DiagramObject.TAG_LABEL));
 	}
 	
 	void updateScopeIfNeeded(DiagramModel model, CommandSetObjectData cmd)
