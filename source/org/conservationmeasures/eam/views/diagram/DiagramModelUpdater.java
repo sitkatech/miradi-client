@@ -30,9 +30,6 @@ public class DiagramModelUpdater
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if (! event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-		
 		try
 		{
 			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();

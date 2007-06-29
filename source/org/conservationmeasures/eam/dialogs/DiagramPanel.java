@@ -244,6 +244,9 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		if (! event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+		
 		try
 		{
 			updateCurrentDiagramObject(event);
@@ -259,9 +262,6 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 	private void updateCurrentDiagramObject(CommandExecutedEvent event)
 	{
 		Command command = event.getCommand();
-		if (! command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-		
 		CommandSetObjectData commandSetObjectData = (CommandSetObjectData) command;
 		if (commandSetObjectData.getObjectType()!= ObjectType.VIEW_DATA)
 			return;
