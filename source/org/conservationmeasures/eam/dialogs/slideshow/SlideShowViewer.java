@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.slideshow;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.text.ParseException;
 
@@ -24,7 +26,7 @@ import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
-public class SlideShowViewer extends JDialog 
+public class SlideShowViewer extends JDialog implements WindowListener
 {
 	public SlideShowViewer(MainWindow mainWindowToUse)
 	{
@@ -34,6 +36,7 @@ public class SlideShowViewer extends JDialog
 		showSlides();
 		setAlwaysOnTop(true);
 		setSize(600,600);
+		addWindowListener(this);
 	}
 
 	private void loadSlides() 
@@ -142,6 +145,35 @@ public class SlideShowViewer extends JDialog
 	private Project getProject()
 	{
 		return mainWindow.getProject();
+	}
+	
+	public void windowActivated(WindowEvent arg0)
+	{
+	}
+
+	public void windowClosed(WindowEvent arg0)
+	{
+	}
+
+	public void windowClosing(WindowEvent arg0)
+	{
+		dispose();
+	}
+
+	public void windowDeactivated(WindowEvent arg0)
+	{
+	}
+
+	public void windowDeiconified(WindowEvent arg0)
+	{
+	}
+
+	public void windowIconified(WindowEvent arg0)
+	{
+	}
+
+	public void windowOpened(WindowEvent arg0)
+	{
 	}
 	
     
