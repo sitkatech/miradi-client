@@ -68,11 +68,6 @@ public class MonitoringView extends TabbedView
 	{
 	}
 	
-	public void jump(Class stepMarker) throws Exception
-	{
-		wizardPanel.jump(stepMarker);
-	}
-	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();

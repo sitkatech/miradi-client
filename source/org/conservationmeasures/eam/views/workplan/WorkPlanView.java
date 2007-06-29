@@ -94,10 +94,6 @@ public class WorkPlanView extends TabbedView
 		return wizardPanel;
 	}
 	
-	public void jump(Class stepMarker) throws Exception
-	{
-		wizardPanel.jump(stepMarker);
-	}
 
 
 	public void deleteTabs() throws Exception

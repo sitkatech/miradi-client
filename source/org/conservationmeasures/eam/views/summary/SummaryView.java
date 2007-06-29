@@ -109,11 +109,6 @@ public class SummaryView extends TabbedView
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 	}
 	
-	public void jump(Class stepMarker) throws Exception
-	{
-		wizardPanel.jump(stepMarker);
-	}
-
 	CrossOrganizationSummaryPanel crossOrganizationSummaryPanel;
 	TNCSummaryPanel tncSummaryPanel;
 

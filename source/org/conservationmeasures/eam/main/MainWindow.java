@@ -565,7 +565,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		try
 		{
-			getCurrentView().jump(stepMarker);
+			getWizardManager().setStep(stepMarker);
 		}
 		catch (Exception e)
 		{

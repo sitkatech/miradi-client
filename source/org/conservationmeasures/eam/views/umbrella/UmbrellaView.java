@@ -157,11 +157,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		becomeActive();
 	}
 	
-	public void jump(Class stepMarker) throws Exception
-	{
-		mainWindow.getWizardManager().setStep(stepMarker);
-	}
-
 	public void becomeActive() throws Exception
 	{
 		if(isActive)

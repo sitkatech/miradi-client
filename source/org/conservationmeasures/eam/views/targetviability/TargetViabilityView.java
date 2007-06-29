@@ -69,11 +69,6 @@ public class TargetViabilityView extends TabbedView
 		return wizardPanel;
 	}
 	
-	public void jump(Class stepMarker) throws Exception
-	{
-		wizardPanel.jump(stepMarker);
-	}
-
 	
 	private void addDoersToMap()
 	{

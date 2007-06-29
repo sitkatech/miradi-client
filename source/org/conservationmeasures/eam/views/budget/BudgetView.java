@@ -122,11 +122,6 @@ public class BudgetView extends TabbedView
 		resourceManagementPanel = null;
 	}
 	
-	public void jump(Class stepMarker) throws Exception
-	{
-		wizardPanel.jump(stepMarker);
-	}
-	
 	private void addBudgetDoersToMap()
 	{
 		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityDoer());

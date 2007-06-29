@@ -70,11 +70,6 @@ public class StrategicPlanView extends TabbedView
 		return wizardPanel;
 	}
 	
-	public void jump(Class stepMarker) throws Exception
-	{
-		wizardPanel.jump(stepMarker);
-	}
-	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();

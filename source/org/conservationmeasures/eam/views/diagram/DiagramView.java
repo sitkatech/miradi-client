@@ -702,11 +702,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 				cmd.getFieldTag().equals(DiagramFactor.TAG_SIZE));
 	}
 
-	public void jump(Class stepMarker) throws Exception
-	{
-		wizardPanel.jump(stepMarker);
-	}
-
 	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
 	{
 		if(nodePropertiesDlg != null)

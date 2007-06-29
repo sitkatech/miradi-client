@@ -232,11 +232,6 @@ public class ThreatMatrixView extends UmbrellaView
 		}
 	}
 
-	public void jump(Class stepMarker) throws Exception
-	{
-		wizardPanel.jump(stepMarker);
-	}
-	
 	ThreatMatrixTableModel model;
 	ThreatGridPanel grid;
 	ThreatRatingBundlePanel details;
