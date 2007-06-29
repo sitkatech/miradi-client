@@ -69,6 +69,7 @@ import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
+import org.conservationmeasures.eam.actions.ActionSlideShowViewer;
 import org.conservationmeasures.eam.actions.ActionToggleSlideShowPanel;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
@@ -298,6 +299,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionMoveSlideDown.class, new MoveSlideDownDoer());
 		addDoerToMap(ActionMoveSlideUp.class, new MoveSlideUpDoer());
 		addDoerToMap(ActionToggleSlideShowPanel.class, new ToggleSlideShowPanelDoer());
+		addDoerToMap(ActionSlideShowViewer.class, new SlideShowViewerDoer());
 	}
 	
 	public void tabWasSelected()

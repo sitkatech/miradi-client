@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
@@ -383,10 +384,15 @@ public class ObjectManager
 	
 	public BaseObject[] findObjects(ORefList refList)
 	{
-		BaseObject[] foundObjects = new BaseObject[refList.size()];
+		return (BaseObject[])findObjectsAsVector(refList).toArray(new BaseObject[0]);
+	}
+	
+	public Vector findObjectsAsVector(ORefList refList)
+	{
+		Vector foundObjects = new Vector();
 		for (int i = 0; i < refList.size(); ++i)
 		{
-			foundObjects[i] = findObject(refList.get(i));
+			foundObjects.add(findObject(refList.get(i)));
 		}
 		
 		return foundObjects;

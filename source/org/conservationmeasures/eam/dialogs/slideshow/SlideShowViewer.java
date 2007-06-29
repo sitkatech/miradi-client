@@ -31,6 +31,7 @@ public class SlideShowViewer extends JDialog
 		mainWindow = mainWindowToUse;
 		loadSlides();
 		showSlides();
+		setAlwaysOnTop(true);
 	}
 
 	private void loadSlides() 
@@ -39,12 +40,12 @@ public class SlideShowViewer extends JDialog
 		{
 			SlideShow show = getSlideShow();
 			ORefList slideRefs =  new ORefList(show.getData(SlideShow.TAG_SLIDE_REFS));
-			slides = (Slide[]) show.getObjectManager().findObjects(slideRefs);
+			slides  = (Slide[])show.getObjectManager().findObjectsAsVector(slideRefs).toArray(new Slide[0]);
 		}
 		catch (Exception e)
 		{
-			EAM.errorDialog("No slides to show");
-			dispose();
+			EAM.logException(e);
+			slides = new Slide[0];
 		}
 	}
 
@@ -82,6 +83,13 @@ public class SlideShowViewer extends JDialog
 		}
 	 }
 	
+	 public void dispose()
+	 {
+		 //FIXME: the doer does not seem to know when the viwer is disposed
+		 setVisible(false);
+		 mainWindow.updateActionStates();
+		 super.dispose();
+	 }
 
     public void paint (Graphics g)
     {

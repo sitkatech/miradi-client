@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.actions.ActionCreateSlide;
 import org.conservationmeasures.eam.actions.ActionDeleteSlide;
 import org.conservationmeasures.eam.actions.ActionMoveSlideDown;
 import org.conservationmeasures.eam.actions.ActionMoveSlideUp;
+import org.conservationmeasures.eam.actions.ActionSlideShowViewer;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ObjectListTablePanel;
@@ -45,7 +46,8 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		ActionCreateSlide.class,
 		ActionDeleteSlide.class,
 		ActionMoveSlideUp.class,
-		ActionMoveSlideDown.class
+		ActionMoveSlideDown.class,
+		ActionSlideShowViewer.class
 	};
 	
 	public void valueChanged(ListSelectionEvent event)

@@ -146,6 +146,7 @@ public class Actions
 		registerAction(new ActionToggleSlideShowPanel(mainWindow));
 		registerAction(new ActionMoveSlideUp(mainWindow));
 		registerAction(new ActionMoveSlideDown(mainWindow));
+		registerAction(new ActionSlideShowViewer(mainWindow));
 		
 		registerAction(new ActionConfigureLayers(mainWindow));
 		registerAction(new ActionShowSelectedChainMode(mainWindow));
