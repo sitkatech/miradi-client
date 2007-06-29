@@ -199,7 +199,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return 0;
 	}
 
-	private WizardPanel createWizardPanel()
+	private WizardPanel createWizardPanel() throws Exception
 	{
 		return new WizardPanel(this);
 	}

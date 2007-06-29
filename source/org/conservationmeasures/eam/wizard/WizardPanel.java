@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.views.noproject.NoProjectView;
 
 public class WizardPanel extends JPanel
 {
-	public WizardPanel(MainWindow mainWindowToUse)
+	public WizardPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(new BorderLayout());
 		setBackground(AppPreferences.WIZARD_BACKGROUND);
@@ -31,23 +31,8 @@ public class WizardPanel extends JPanel
 		wizardManager = mainWindow.getWizardManager();
 		setFocusCycleRoot(true);
 		navigationButtons = createNavigationButtons();
-		setupSteps();
+		wizardManager.setUpSteps(this);
 		currentStepName = getOverviewStepName(NoProjectView.getViewName());
-	}
-
-	private void setupSteps()
-	{
-		try
-		{
-			wizardManager.setUpSteps(this);
-		}
-		catch (Exception e)
-		{
-			String body = EAM.text("Wizard load failed");
-			EAM.errorDialog(body);
-			EAM.logError(body);
-			EAM.logException(e);
-		}
 	}
 
 	public void setOverViewStep(String viewName) throws Exception
