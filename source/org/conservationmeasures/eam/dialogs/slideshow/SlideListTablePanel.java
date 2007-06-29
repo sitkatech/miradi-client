@@ -110,11 +110,9 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		int selectedRow = getTable().getSelectedRow();
-		
-		if (((selectedRow >= 0) && isSetDataForSlideShow(event)))
+		BaseObject object = getSelectedObject();
+		if (((object!=null) && isSetDataForSlideShow(event)))
 		{
-			BaseObject object = getSelectedObject();
 			ObjectTableModel model = getTable().getObjectTableModel();
 			model.resetRows();
 			model.fireTableDataChanged();
