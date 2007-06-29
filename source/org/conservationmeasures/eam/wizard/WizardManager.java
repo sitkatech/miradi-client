@@ -108,7 +108,6 @@ public class WizardManager
 		return setStep(name, currentStepName);
 	}
 	
-	//TODO: To support view that are not using wizard fraimwork: need to convert them; this method should be removed after all coverted
 	public String setStep(Class step) throws Exception
 	{
 		String name = stripJumpPrefix(step);
