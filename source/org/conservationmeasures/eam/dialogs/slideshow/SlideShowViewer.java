@@ -72,19 +72,26 @@ public class SlideShowViewer extends JDialog
 	 protected void processKeyEvent(KeyEvent e) 
 	 {
 		 int keyCode = e.getKeyCode();
-		 switch (keyCode)
+		switch (keyCode)
 		{
 			case KeyEvent.VK_1:
-
-				  if (e.getID() == KeyEvent.KEY_PRESSED)
-					  setTitle(slides[current].getLabel());
-					  repaint();
-			      break;
+				if(e.getID() != KeyEvent.KEY_PRESSED)
+					break;
+				setTitle(slides[current].getLabel());
+				determineDialogSizeing();
+				repaint();
+				break;
 			case KeyEvent.VK_2:
-			      dispose();
-			      break;
+				dispose();
+				break;
 		}
 	 }
+
+	private void determineDialogSizeing()
+	{
+		imgArray[current].getScaledInstance(600, 600, 0);
+		setSize(imgArray[current].getWidth(), imgArray[current].getHeight());
+	}
 	
 	 public void dispose()
 	 {
