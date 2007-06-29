@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import javax.swing.JList;
-
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
@@ -23,7 +21,7 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 		return new ConceptualModelDiagramLegendPanel(mainWindow);
 	}
 	
-	public JList createPageList(Project project)
+	public DiagramPageList createPageList(Project project)
 	{
 		return new ConceptualModelPageList(project);
 	}

@@ -61,6 +61,7 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 	{
 		super.dispose();
 		project.removeCommandExecutedListener(this);
+		diagramSplitter.dispose();
 	}
 	
 	private DiagramSplitPane createDiagramSplitter(int objectType) throws Exception

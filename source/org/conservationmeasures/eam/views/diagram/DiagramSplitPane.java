@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.CardLayout;
 import java.util.Vector;
 
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -52,6 +51,12 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 		int scrollBarWidth = ((Integer)UIManager.get("ScrollBar.width")).intValue();
 		setDividerLocation(scrollableLegendPanel.getPreferredSize().width + scrollBarWidth);
+	}
+	
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
+		selectionPanel.dispose();
 	}
 
 	private DiagramCards createDiagramCards(int objectType) throws Exception
@@ -227,12 +232,12 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		currentRef = currentDiagramObjectRef;
 	}
 
-	abstract public JList createPageList(Project projectToUse);
+	abstract public DiagramPageList createPageList(Project projectToUse);
 	
 	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindowToUse);
 	
 	protected DiagramLegendPanel legendPanel;
-	private JList selectionPanel;
+	private DiagramPageList selectionPanel;
 	private JScrollPane scrollableLegendPanel;
 	private MainWindow mainWindow;
 	private Project project;

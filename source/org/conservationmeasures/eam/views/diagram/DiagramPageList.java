@@ -32,6 +32,11 @@ abstract public class DiagramPageList extends JList implements CommandExecutedLi
 		project.addCommandExecutedListener(this);
 	}
 	
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
+	}
+	
 	private void fillList(int objectType)
 	{
 		EAMObjectPool pool = project.getPool(objectType);
