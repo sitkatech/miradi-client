@@ -39,8 +39,6 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	public SlideListTablePanel(Project project, Actions actions, ORef oref)
 	{
 		super(project, ObjectType.SLIDE, new SlideListTableModel(project, oref), actions, buttons);
-		SlideShowViewer viwer = new SlideShowViewer(EAM.mainWindow);
-		viwer.setVisible(true);
 	}
 	
 	static Class[] buttons = new Class[] {
@@ -65,9 +63,16 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	private void processSelection(ORef oref)
 	{
 		inSelectionLogic = true;
-		getDiagramView().setDiagramTab(oref);
-		updateLegendPanel();
-		inSelectionLogic = false;
+		try
+		{
+			getDiagramView().setDiagramTab(oref);
+			updateLegendPanel();
+		}
+		finally
+		{
+			inSelectionLogic = false;
+		}
+
 	}
 	
 	protected void selectFirstRow()
@@ -114,7 +119,7 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		
 		if (((selectedRow >= 0) && isSetDataForSlideShow(event)))
 		{
-			BaseObject object = getTable().getObjectTableModel().getObjectFromRow(selectedRow);
+			BaseObject object = getSelectedObject();
 			ObjectTableModel model = getTable().getObjectTableModel();
 			model.resetRows();
 			model.fireTableDataChanged();
