@@ -31,6 +31,8 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	{
 		try
 		{
+			if(!isDiagramView())
+				return false;
 			ViewData viewData = getProject().getViewData(getView().cardName());
 			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
 			if(ViewData.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
