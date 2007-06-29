@@ -27,7 +27,7 @@ abstract public class WizardNavigationDoer extends ViewDoer
 		
 		try
 		{
-			SkeletonWizardStep currentStep = getWizardManager().findStep(getWizardPanel().currentStepName);
+			SkeletonWizardStep currentStep = getWizardManager().findStep(getWizardManager().getCurrentStepName());
 			currentStep.buttonPressed(getControlName());
 			getMainWindow().updateActionsAndStatusBar();
 		}
@@ -40,7 +40,7 @@ abstract public class WizardNavigationDoer extends ViewDoer
 
 	private Class getPotentialDestination()
 	{
-		SkeletonWizardStep currentStep = getWizardManager().findStep(getWizardPanel().currentStepName);
+		SkeletonWizardStep currentStep = getWizardManager().findStep(getWizardManager().getCurrentStepName());
 		Class destination = getWizardManager().findControlTargetStep(getControlName(), currentStep);
 		return destination;
 	}

@@ -7,10 +7,7 @@ package org.conservationmeasures.eam.wizard;
 
 import java.util.Hashtable;
 
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardAccountingAndFunding;
@@ -85,6 +82,7 @@ public class WizardManager
 	{
 		stepEntries = new Hashtable();
 		mainWindow = mainWindowToUse;
+
 	}
 	
 	public void setUpSteps(WizardPanel panel) throws Exception
@@ -101,29 +99,29 @@ public class WizardManager
 		createTargetViabilityStepEntries(panel);
 	}
 	
-	
-	public String setStep(Class step, String currentStepName) throws Exception
+	public String getCurrentStepName()
 	{
-		String name = stripJumpPrefix(step);
-		return setStep(name, currentStepName);
+		return currentStepName;
 	}
-	
+
+
 	public String setStep(Class step) throws Exception
 	{
 		String name = stripJumpPrefix(step);
-		SkeletonWizardStep newStepClass = findStep(name);
-		String viewNameNew = newStepClass.getViewName();
-		doJump(newStepClass, newStepClass, viewNameNew);
-		return "";
+		return setStep(name);
 	}
 	
-	public String setStep(String newStep, String currentStepName) throws Exception
-	{	
+	public String setStep(String newStep) throws Exception
+	{
+		if(newStep.equals(getCurrentStepName()))
+			return newStep;
+		
 		SkeletonWizardStep newStepClass = findStep(newStep);
 		
 		if (newStepClass==null) 
-			return currentStepName;
+			return getCurrentStepName();
 		
+		currentStepName = newStep;
 		newStepClass.refresh();
 		
 		String newViewName = newStepClass.getViewName();
@@ -141,24 +139,9 @@ public class WizardManager
 				mainWindow.validate();
 				mainWindow.restorePreviousDividerLocation();
 		}
-		return newStep;
+		return currentStepName;
 	}
 
-	//TODO: view switch should not happen here (Richard, with Kevin)
-	private void doJump(SkeletonWizardStep currentStepClass, SkeletonWizardStep newStepClass, String viewNameNew) throws CommandFailedException, Exception
-	{
-		mainWindow.getProject().executeCommand(new CommandBeginTransaction());
-		try
-		{
-			mainWindow.getProject().executeCommand(new CommandSwitchView(viewNameNew));
-			newStepClass.getWizard().jump(newStepClass.getClass());
-		}
-		finally
-		{
-			mainWindow.getProject().executeCommand(new CommandEndTransaction());
-		}
-	}
-	
 	public void createNoProjectStepEntries(WizardPanel panel) throws Exception
 	{	
 		createStepEntry(new NoProjectOverviewStep(panel))
@@ -452,9 +435,27 @@ public class WizardManager
 		return step.getClass().getSimpleName();
 	}
 	
+	public void setOverViewStep(String viewName) throws Exception
+	{
+		String defaultStepName = getOverviewStepName(viewName);
+		currentStepName = setStep(defaultStepName);
+	}
+
+	private String getOverviewStepName(String viewName)
+	{
+		return removeSpaces(viewName) + "OverviewStep";
+	}
+	
+	private String removeSpaces(String name)
+	{
+		return name.replaceAll(" ", "");
+	}
+
 	public static String CONTROL_NEXT = "Next";
 	public static String CONTROL_BACK = "Back";
 	MainWindow mainWindow;
 	Hashtable stepEntries;
+	public String currentStepName;
+
 }
 

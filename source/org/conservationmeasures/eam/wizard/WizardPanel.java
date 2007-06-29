@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.noproject.NoProjectView;
 
 public class WizardPanel extends JPanel
 {
@@ -32,18 +31,11 @@ public class WizardPanel extends JPanel
 		setFocusCycleRoot(true);
 		navigationButtons = createNavigationButtons();
 		wizardManager.setUpSteps(this);
-		currentStepName = getOverviewStepName(NoProjectView.getViewName());
 	}
 
-	public void setOverViewStep(String viewName) throws Exception
+	String getCurrentStepName()
 	{
-		String defaultStepName = getOverviewStepName(viewName);
-		currentStepName = wizardManager.setStep(defaultStepName, defaultStepName);
-	}
-
-	private String getOverviewStepName(String viewName)
-	{
-		return removeSpaces(viewName) + "OverviewStep";
+		return wizardManager.getCurrentStepName();
 	}
 
 	public void setContents(JPanel contents)
@@ -58,7 +50,7 @@ public class WizardPanel extends JPanel
 	
 	public void control(String controlName) throws Exception
 	{
-		SkeletonWizardStep step = wizardManager.findStep(currentStepName);
+		SkeletonWizardStep step = wizardManager.findStep(getCurrentStepName());
 		Class destinationStepClass = wizardManager.findControlTargetStep(controlName, step);
 		if (destinationStepClass==null)
 		{
@@ -75,21 +67,16 @@ public class WizardPanel extends JPanel
 		EAM.errorDialog(msg);
 	}
 
-	private String removeSpaces(String name)
-	{
-		return name.replaceAll(" ", "");
-	}
-
 	public void refresh() throws Exception
 	{
-		SkeletonWizardStep stepClass = wizardManager.findStep(currentStepName);
+		SkeletonWizardStep stepClass = wizardManager.findStep(getCurrentStepName());
 		stepClass.refresh();
 		stepClass.validate();
 	}
 	
 	public void jump(Class stepMarker) throws Exception
 	{
-		currentStepName = wizardManager.setStep(stepMarker, currentStepName);
+		wizardManager.setStep(stepMarker);
 		getMainWindow().updateActionsAndStatusBar();
 	}
 
@@ -116,7 +103,6 @@ public class WizardPanel extends JPanel
 	}
 	
 	protected MainWindow mainWindow;
-	public String currentStepName;
 	private WizardManager wizardManager;
 	Component navigationButtons;
 }

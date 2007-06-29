@@ -164,7 +164,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		getProject().addCommandExecutedListener(this);
 		isActive = true;
 		
-		mainWindow.getWizard().setOverViewStep(cardName());
+		mainWindow.getWizardManager().setOverViewStep(cardName());
 	}
 	
 	public void becomeInactive() throws Exception
