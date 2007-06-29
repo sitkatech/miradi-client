@@ -124,6 +124,11 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		return diagramCards.findByRef(getCurrentDiagramObjectRef());
 	}
 	
+	public DiagramComponent[] getAllOwenedDiagramComponents()
+	{
+		return diagramCards.getAllDiagramComponents();
+	}
+	
 	public ORef getCurrentDiagramObjectRef()
 	{
 		return currentRef;
@@ -156,7 +161,12 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 				}
 			}
 
-			return ((DiagramComponent) cards.get(0));
+			return null;
+		}
+		
+		public DiagramComponent[] getAllDiagramComponents()
+		{
+			return (DiagramComponent[]) cards.toArray(new DiagramComponent[0]);
 		}
 		
 		public int getCardCount()
@@ -232,6 +242,11 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		currentRef = currentDiagramObjectRef;
 	}
 
+	public DiagramPageList getDiagramPageList()
+	{
+		return selectionPanel;
+	}
+	
 	abstract public DiagramPageList createPageList(Project projectToUse);
 	
 	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindowToUse);

@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -27,18 +26,16 @@ public class DiagramModelUpdater
 		model = modelToUse;
 		diagramObject = diagramObjectToUse;
 	}
-	
-	public void commandExecuted(CommandExecutedEvent event)
+
+	public void commandSetObjectDataExecuted(CommandSetObjectData setObjecDataCommand)
 	{
 		try
 		{
-			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-			
-			if (! setCommand.getObjectORef().equals(diagramObject.getRef()))
+			if (! setObjecDataCommand.getObjectORef().equals(diagramObject.getRef()))
 				return;
 						
-			updateFactors(setCommand);
-			updateLinks(setCommand);
+			updateFactors(setObjecDataCommand);
+			updateLinks(setObjecDataCommand);
 			model.updateVisibilityOfFactors();
 		}
 		catch (Exception e)

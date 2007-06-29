@@ -14,4 +14,14 @@ public class ResultsChainPageList extends DiagramPageList
 	{
 		super(project, ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
+
+	public boolean isConceptualModelPageList()
+	{
+		return false;
+	}
+
+	public boolean isResultsChainPageList()
+	{
+		return true;
+	}
 }

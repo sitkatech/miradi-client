@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.Component;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -226,6 +225,11 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 		return diagramComponent.getDiagramModel();
 	}
 	
+	public DiagramComponent[] getAllSplitterDiagramComponents()
+	{
+		return getDiagramSplitPane().getAllOwenedDiagramComponents();
+	}
+	
 	public DiagramComponent getdiagramComponent()
 	{
 		DiagramComponent diagramComponent = getDiagramSplitPane().getDiagramComponent();
@@ -249,9 +253,10 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 		
 		try
 		{
-			updateCurrentDiagramObject(event);
+			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+			updateCurrentDiagramObject(setCommand);
 			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, getDiagramModel(), getDiagramObject());
-			modelUpdater.commandExecuted(event);
+			modelUpdater.commandSetObjectDataExecuted(setCommand);
 		}
 		catch(Exception e)
 		{
@@ -259,23 +264,21 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 		}
 	}
 	
-	private void updateCurrentDiagramObject(CommandExecutedEvent event)
+	private void updateCurrentDiagramObject(CommandSetObjectData setObjectDataCommand)
 	{
-		Command command = event.getCommand();
-		CommandSetObjectData commandSetObjectData = (CommandSetObjectData) command;
-		if (commandSetObjectData.getObjectType()!= ObjectType.VIEW_DATA)
+		if (setObjectDataCommand.getObjectType()!= ObjectType.VIEW_DATA)
 			return;
 		
-		if (commandSetObjectData.getFieldTag() == ViewData.TAG_CURRENT_DIAGRAM_REF)
+		if (setObjectDataCommand.getFieldTag() == ViewData.TAG_CURRENT_DIAGRAM_REF)
 		{	
-			ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
+			ViewData viewData = (ViewData) project.findObject(setObjectDataCommand.getObjectORef());
 			ORef currentDiagramObjectRef = viewData.getCurrentDiagramRef();
 			getDiagramSplitPane().setCurrentDiagramObjectRef(currentDiagramObjectRef);
 		}
 
 	}
 
-	private DiagramSplitPane getDiagramSplitPane()
+	public DiagramSplitPane getDiagramSplitPane()
 	{
 		return diagramSplitter;
 	}

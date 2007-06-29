@@ -8,7 +8,9 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Vector;
 
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
@@ -82,10 +84,12 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.dialogs.ConceptualModelDiagramPanel;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.ResultsChainDiagramPanel;
 import org.conservationmeasures.eam.dialogs.slideshow.SlideListManagementPanel;
 import org.conservationmeasures.eam.dialogs.slideshow.SlideShowDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -108,7 +112,6 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
-import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -348,13 +351,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void createResultsChainTab() throws Exception
 	{
-		DiagramPanel resultsChainPanel = new DiagramPanel(getMainWindow(), ObjectType.RESULTS_CHAIN_DIAGRAM);
+		ResultsChainDiagramPanel resultsChainPanel = new ResultsChainDiagramPanel(getMainWindow());
 		addTab(EAM.text("Results Chain"), resultsChainPanel);
 	}
 
 	private void createConceptualModelDiagramTab() throws Exception
 	{
-		DiagramPanel conceptualDiagramPanel = new DiagramPanel(getMainWindow(), ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		ConceptualModelDiagramPanel conceptualDiagramPanel = new ConceptualModelDiagramPanel(getMainWindow());
 		addTab(EAM.text("Conceptual Model"), conceptualDiagramPanel);
 	}
 	
@@ -375,11 +378,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			return false;
 		
 		DiagramPanel panel = (DiagramPanel)getTabContents(index);
-		DiagramObject diagramObject = panel.getDiagramObject();
-		if (diagramObject.getType() == ResultsChainDiagram.getObjectType())
-			return true;
-		
-		return false;
+		DiagramSplitPane diagramSplitPane = panel.getDiagramSplitPane();
+		return diagramSplitPane.getDiagramPageList().isResultsChainPageList();
 	}
 		
 	public int getTabIndex(ORef ref)
@@ -447,6 +447,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		ORefList hiddenORefs = new ORefList();
 		DiagramComponent diagramComponent = getDiagramComponent();
+		if (diagramComponent == null)
+			return;
+		
 		diagramComponent.setToDefaultBackgroundColor();
 		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
 		{
@@ -583,14 +586,15 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private DiagramComponent[] getAllDiagramComponents()
 	{
 		int tabCount = getTabCount();
-		DiagramComponent[] diagramComponents = new DiagramComponent[tabCount];
-		for (int i = 0; i < diagramComponents.length; ++i)
+		Vector allDiagramComponents = new Vector();
+		for (int i = 0; i < tabCount; ++i)
 		{
 			DiagramPanel panel = (DiagramPanel) getTabContents(i);
-			diagramComponents[i] = panel.getdiagramComponent();
+			DiagramComponent[] panelDiagramComponents = panel.getAllSplitterDiagramComponents();
+			allDiagramComponents.addAll(Arrays.asList(panelDiagramComponents));
 		}
 
-		return diagramComponents;
+		return (DiagramComponent[]) allDiagramComponents.toArray(new DiagramComponent[0]);
 	}
 
 	private void updateFactorLinkIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception

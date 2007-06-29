@@ -14,21 +14,20 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
 abstract public class DiagramPageList extends JList implements CommandExecutedListener
 {
-	public DiagramPageList(Project projectToUse, int objectType)
+	public DiagramPageList(Project projectToUse, int objectTypeToUse)
 	{
 		super();
 		project = projectToUse;
+		objectType = objectTypeToUse;
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
-		fillList(objectType);
-		//FIXME nima dispose so that listener is removed
+		fillList();
 		project.addCommandExecutedListener(this);
 	}
 	
@@ -37,7 +36,7 @@ abstract public class DiagramPageList extends JList implements CommandExecutedLi
 		project.removeCommandExecutedListener(this);
 	}
 	
-	private void fillList(int objectType)
+	private void fillList()
 	{
 		EAMObjectPool pool = project.getPool(objectType);
 		ORefList refList = pool.getORefList();
@@ -53,23 +52,17 @@ abstract public class DiagramPageList extends JList implements CommandExecutedLi
 			return;
 		
 		CommandCreateObject createCommand = (CommandCreateObject) rawCommand;
-		int objectType = createCommand.getObjectType();
-		if (!isDiagramObjectType(objectType))
+		int objectTypeFromCommand = createCommand.getObjectType();
+		if (objectType != objectTypeFromCommand)
 			return;
 	
-		fillList(objectType);
-	}
-
-	private boolean isDiagramObjectType(int objectType)
-	{
-		if (objectType == ObjectType.CONCEPTUAL_MODEL_DIAGRAM)
-			return true;
-		
-		if (objectType == ObjectType.RESULTS_CHAIN_DIAGRAM)
-			return true;
-		
-		return false;
+		fillList();
 	}
 	
+	abstract public boolean isResultsChainPageList();
+	
+	abstract public boolean isConceptualModelPageList();
+	
 	Project project;
+	int objectType;
 }

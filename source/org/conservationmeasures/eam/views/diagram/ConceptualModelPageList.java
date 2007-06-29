@@ -15,4 +15,14 @@ public class ConceptualModelPageList extends DiagramPageList
 	{
 		super(project, ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
+
+	public boolean isConceptualModelPageList()
+	{
+		return true;
+	}
+
+	public boolean isResultsChainPageList()
+	{
+		return false;
+	}
 }
