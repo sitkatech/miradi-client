@@ -5,9 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.slideshow;
 import java.awt.Color;
-import java.awt.Event;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.util.Vector;
 
 import javax.swing.JDialog;
@@ -64,12 +64,12 @@ public class SlideShowViewer extends JDialog implements Runnable
         }
 	}
 
-    public boolean mouseDown(Event  evt, int  x, int  y)
-    {
-       animThread = new Thread(this);
-       animThread.start();
-       return true;
-    }
+	 protected void processKeyEvent(KeyEvent e) 
+	 {
+	       animThread = new Thread(this);
+	       animThread.start();
+	 }
+	
 
     public void paint (Graphics g)
     {
