@@ -24,7 +24,6 @@ import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class SlideShowViewer extends JDialog 
 {
-	//TODO: early test code for slide show.....do not review 
 	public SlideShowViewer(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
