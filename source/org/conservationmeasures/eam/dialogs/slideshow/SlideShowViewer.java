@@ -39,6 +39,7 @@ public class SlideShowViewer extends JDialog implements WindowListener
 		setAlwaysOnTop(true);
 		setSize(600,600);
 		addWindowListener(this);
+		displaySlide();
 	}
 
 	private void loadSlides() 
@@ -84,10 +85,7 @@ public class SlideShowViewer extends JDialog implements WindowListener
 			case KeyEvent.VK_1:
 				if(e.getID() != KeyEvent.KEY_PRESSED)
 					break;
-				setTitle(slides[current].getLabel());
-		        image = imgArray[current].getScaledInstance(getWidth(), -1, 0);
-		        current =  (++current%imgArray.length);
-				repaint();
+				displaySlide();
 				break;
 			case KeyEvent.VK_2:
 				dispose();
@@ -104,6 +102,14 @@ public class SlideShowViewer extends JDialog implements WindowListener
 				break;
 		}
 	 }
+
+	private void displaySlide()
+	{
+		setTitle(slides[current].getLabel());
+		image = imgArray[current].getScaledInstance(getWidth(), -1, 0);
+		current =  (++current%imgArray.length);
+		repaint();
+	}
 
 	
 	 public void dispose()
