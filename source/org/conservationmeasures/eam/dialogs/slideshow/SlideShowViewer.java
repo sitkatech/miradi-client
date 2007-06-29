@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.dialogs.slideshow;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JDialog;
 
@@ -58,13 +58,13 @@ public class SlideShowViewer extends JDialog
 			return;
 		}
 		
-		imgArray = new Image[slides.length];
+		imgArray = new BufferedImage[slides.length];
 		
         for (int i=0; i<slides.length; ++i)
         {
         	Slide slide = slides[i];
         	DiagramObject diagramObject = (DiagramObject) getProject().findObject(slide.getDiagramRef());
-        	Image img = createImage(diagramObject);
+        	BufferedImage img = createImage(diagramObject);
         	imgArray[i]=img;
         }
 	}
@@ -106,7 +106,7 @@ public class SlideShowViewer extends JDialog
 
 
 	
-	public Image createImage(DiagramObject diagramObject)
+	public BufferedImage createImage(DiagramObject diagramObject)
 	{
 		return  DiagramImageCreator.getImage(mainWindow, diagramObject);
 	}
@@ -127,7 +127,7 @@ public class SlideShowViewer extends JDialog
 	}
 	
     
-    private Image[] imgArray = null;
+    private BufferedImage[] imgArray = null;
     private int current  = 0;
     private MainWindow mainWindow;
     private Slide slides[];

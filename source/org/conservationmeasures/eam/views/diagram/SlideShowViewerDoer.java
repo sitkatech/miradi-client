@@ -22,6 +22,8 @@ public class SlideShowViewerDoer extends ViewDoer
 		if (viewer.isVisible())
 			return false;
 		
+		viewer = null;
+		
 		return true;
 	}
 
