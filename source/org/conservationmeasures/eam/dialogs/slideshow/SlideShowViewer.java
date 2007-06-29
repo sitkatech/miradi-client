@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.util.Vector;
 
 import javax.swing.JDialog;
 
@@ -30,7 +29,6 @@ public class SlideShowViewer extends JDialog
 	{
 		super(mainWindowToUse);
 		mainWindow = mainWindowToUse;
-		slides = new Vector();
 		loadSlides();
 		showSlides();
 	}
@@ -39,11 +37,9 @@ public class SlideShowViewer extends JDialog
 	{
 		try 
 		{
-			ORefList slideRefs =  new ORefList(getSlideShow().getData(SlideShow.TAG_SLIDE_REFS));
-			for  (int i=0; i<slideRefs.size(); ++i)
-			{
-				slides.add(getProject().findObject(slideRefs.get(i)));
-			}
+			SlideShow show = getSlideShow();
+			ORefList slideRefs =  new ORefList(show.getData(SlideShow.TAG_SLIDE_REFS));
+			slides = (Slide[]) show.getObjectManager().findObjects(slideRefs);
 		}
 		catch (Exception e)
 		{
@@ -54,18 +50,18 @@ public class SlideShowViewer extends JDialog
 
 	private void showSlides()
 	{
-		if (slides.size()==0)
+		if (slides.length==0)
 		{
 			EAM.errorDialog("No slides to show");
 			dispose();
 			return;
 		}
 		
-		imgArray = new Image[slides.size()];
+		imgArray = new Image[slides.length];
 		
-        for (int i=0; i<slides.size(); ++i)
+        for (int i=0; i<slides.length; ++i)
         {
-        	Slide slide = (Slide)slides.get(i);
+        	Slide slide = slides[i];
         	DiagramObject diagramObject = (DiagramObject) getProject().findObject(slide.getDiagramRef());
         	Image img = createImage(diagramObject);
         	imgArray[i]=img;
@@ -123,6 +119,6 @@ public class SlideShowViewer extends JDialog
     private Image[] imgArray = null;
     private int current  = 0;
     private MainWindow mainWindow;
-    private Vector slides;
+    private Slide slides[];
 
 }
