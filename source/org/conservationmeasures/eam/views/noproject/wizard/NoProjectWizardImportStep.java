@@ -58,7 +58,7 @@ public class NoProjectWizardImportStep extends NoProjectWizardStep
 			}
 			else 
 			{
-				getMainWindow().getWizard().control(buttonName);
+				super.buttonPressed(buttonName);
 			}
 		}
 		catch(Exception e)
