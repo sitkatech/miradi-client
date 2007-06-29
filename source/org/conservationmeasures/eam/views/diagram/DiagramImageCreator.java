@@ -34,27 +34,8 @@ public class DiagramImageCreator
 	
 	static public BufferedImage getImageWithLegendSetting(MainWindow mainWindow, DiagramObject diagramObject, CodeList list)
 	{
-		try
-		{
-			DiagramComponent comp =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
-			updateLegendPanel(mainWindow, list);
-			comp.getDiagramModel().updateVisibilityOfFactors();
-			//TODO: is there a better way to do this
-			JFrame frame = new JFrame();
-			frame.add(new UiScrollPane(comp));
-			frame.pack();
-			return comp.getImage();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return null;
-		}
-	}
-	
-	static public void updateLegendPanel(MainWindow mainWindow, CodeList list)
-	{
 		DiagramLegendPanel panel = mainWindow.getDiagramView().getDiagramPanel().getDiagramLegendPanel();
 		panel.updateLegendPanel(list);
+		return getImage( mainWindow, diagramObject);
 	}
 }
