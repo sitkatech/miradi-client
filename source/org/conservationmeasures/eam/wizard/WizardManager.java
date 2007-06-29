@@ -109,36 +109,36 @@ public class WizardManager
 		currentStepName = newCurrentStepName;
 	}
 
-	public void setStep(Class step) throws Exception
+	public void setStep(Class stepClass) throws Exception
 	{
-		String name = stripJumpPrefix(step);
+		String name = stripJumpPrefix(stepClass);
 		setStep(name);
 	}
 	
-	public void setStep(String newStep) throws Exception
+	public void setStep(String newStepName) throws Exception
 	{
-		if(newStep.equals(getCurrentStepName()))
+		if(newStepName.equals(getCurrentStepName()))
 			return;
 		
-		SkeletonWizardStep newStepClass = findStep(newStep);
+		SkeletonWizardStep newStep = findStep(newStepName);
 		
-		if (newStepClass==null) 
+		if (newStep==null) 
 			return;
 		
-		String newViewName = newStepClass.getViewName();
+		String newViewName = newStep.getViewName();
 		String currentViewName = mainWindow.getCurrentView().cardName();
 		if(!newViewName.equals(currentViewName))
 		{
 			mainWindow.getProject().executeCommand(new CommandSwitchView(newViewName));
 		}
 
-		setCurrentStepName(newStep);
-		newStepClass.refresh();
+		setCurrentStepName(newStepName);
+		newStep.refresh();
 		
 		//TODO: this belongs in mainWindow
 		if (mainWindow.getWizard()!=null)
 		{
-				mainWindow.getWizard().setContents(newStepClass);
+				mainWindow.getWizard().setContents(newStep);
 				mainWindow.getWizard().refresh();
 				mainWindow.validate();
 				mainWindow.restorePreviousDividerLocation();
