@@ -39,6 +39,8 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	public SlideListTablePanel(Project project, Actions actions, ORef oref)
 	{
 		super(project, ObjectType.SLIDE, new SlideListTableModel(project, oref), actions, buttons);
+		SlideShowViewer viwer = new SlideShowViewer(EAM.mainWindow);
+		viwer.setVisible(true);
 	}
 	
 	static Class[] buttons = new Class[] {

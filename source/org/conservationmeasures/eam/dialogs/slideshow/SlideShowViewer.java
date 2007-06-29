@@ -23,10 +23,10 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
-public class SlideShowViewer extends JDialog implements Runnable
+public class SlideShowViewer extends JDialog 
 {
 	//TODO: early test code for slide show.....do not review 
-	public SlideShowViewer(MainWindow mainWindowToUse) throws Exception
+	public SlideShowViewer(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		mainWindow = mainWindowToUse;
@@ -35,12 +35,20 @@ public class SlideShowViewer extends JDialog implements Runnable
 		showSlides();
 	}
 
-	private void loadSlides() throws Exception
+	private void loadSlides() 
 	{
-		ORefList slideRefs =  new ORefList(getSlideShow().getData(SlideShow.TAG_SLIDE_REFS));
-		for  (int i=0; i<slideRefs.size(); ++i)
+		try 
 		{
-			slides.add(getProject().findObject(slideRefs.get(i)));
+			ORefList slideRefs =  new ORefList(getSlideShow().getData(SlideShow.TAG_SLIDE_REFS));
+			for  (int i=0; i<slideRefs.size(); ++i)
+			{
+				slides.add(getProject().findObject(slideRefs.get(i)));
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.errorDialog("No slides to show");
+			dispose();
 		}
 	}
 
@@ -66,8 +74,16 @@ public class SlideShowViewer extends JDialog implements Runnable
 
 	 protected void processKeyEvent(KeyEvent e) 
 	 {
-	       animThread = new Thread(this);
-	       animThread.start();
+		 int keyCode = e.getKeyCode();
+		 switch (keyCode)
+		{
+			case KeyEvent.VK_1:
+			      repaint();
+			      break;
+			case KeyEvent.VK_2:
+			      dispose();
+			      break;
+		}
 	 }
 	
 
@@ -81,18 +97,7 @@ public class SlideShowViewer extends JDialog implements Runnable
         	current=0;
     }
 
-    public void run()
-    {
-        try
-        {
-            for (;;)
-            {
-                repaint();
-                Thread.sleep(2000);
-            }								
-        }
-        catch (InterruptedException ie)	{};
-    }
+
 	
 	public Image createImage(DiagramObject diagramObject)
 	{
@@ -117,7 +122,6 @@ public class SlideShowViewer extends JDialog implements Runnable
     
     private Image[] imgArray = null;
     private int current  = 0;
-    private Thread animThread=null;
     private MainWindow mainWindow;
     private Vector slides;
 
