@@ -104,25 +104,26 @@ public class WizardManager
 		return currentStepName;
 	}
 
+	private void setCurrentStepName(String newCurrentStepName)
+	{
+		currentStepName = newCurrentStepName;
+	}
 
-	public String setStep(Class step) throws Exception
+	public void setStep(Class step) throws Exception
 	{
 		String name = stripJumpPrefix(step);
-		return setStep(name);
+		setStep(name);
 	}
 	
-	public String setStep(String newStep) throws Exception
+	public void setStep(String newStep) throws Exception
 	{
 		if(newStep.equals(getCurrentStepName()))
-			return newStep;
+			return;
 		
 		SkeletonWizardStep newStepClass = findStep(newStep);
 		
 		if (newStepClass==null) 
-			return getCurrentStepName();
-		
-		currentStepName = newStep;
-		newStepClass.refresh();
+			return;
 		
 		String newViewName = newStepClass.getViewName();
 		String currentViewName = mainWindow.getCurrentView().cardName();
@@ -131,6 +132,9 @@ public class WizardManager
 			mainWindow.getProject().executeCommand(new CommandSwitchView(newViewName));
 		}
 
+		setCurrentStepName(newStep);
+		newStepClass.refresh();
+		
 		//TODO: this belongs in mainWindow
 		if (mainWindow.getWizard()!=null)
 		{
@@ -139,7 +143,6 @@ public class WizardManager
 				mainWindow.validate();
 				mainWindow.restorePreviousDividerLocation();
 		}
-		return currentStepName;
 	}
 
 	public void createNoProjectStepEntries(WizardPanel panel) throws Exception
@@ -437,8 +440,7 @@ public class WizardManager
 	
 	public void setOverViewStep(String viewName) throws Exception
 	{
-		String defaultStepName = getOverviewStepName(viewName);
-		currentStepName = setStep(defaultStepName);
+		setStep(getOverviewStepName(viewName));
 	}
 
 	private String getOverviewStepName(String viewName)
