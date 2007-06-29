@@ -214,6 +214,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 		String property = (String) checkBox.getClientProperty(LAYER);
 		LayerManager manager = getLayerManager();
 		setLegendVisibilityOfFacactorCheckBoxes(manager, property);
+		updateVisiblity();
 		updateProjectLegendSettings(property);
 	}
 
@@ -245,9 +246,6 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 			manager.setVisibility(DiagramTextBoxCell.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
 			manager.setStressesVisible(checkBox.isSelected());
-		
-		mainWindow.getDiagramView().updateVisibilityOfFactors();
-		mainWindow.updateStatusBar();
 	}
 	
 	public void resetCheckBoxes()
@@ -335,7 +333,13 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), hiddenTypes.get(i));
 		}
 
+		updateVisiblity();
+	}
+
+	private void updateVisiblity()
+	{
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
+		mainWindow.updateStatusBar();
 	}
 	
 	
