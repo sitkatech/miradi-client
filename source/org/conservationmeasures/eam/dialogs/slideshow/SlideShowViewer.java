@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.text.ParseException;
 
 import javax.swing.JDialog;
 
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
@@ -64,7 +66,7 @@ public class SlideShowViewer extends JDialog
         {
         	Slide slide = slides[i];
         	DiagramObject diagramObject = (DiagramObject) getProject().findObject(slide.getDiagramRef());
-        	BufferedImage img = createImage(diagramObject);
+        	BufferedImage img = createImage(diagramObject, slide);
         	imgArray[i]=img;
         }
 	}
@@ -89,7 +91,7 @@ public class SlideShowViewer extends JDialog
 
 	private void determineDialogSizeing()
 	{
-		imgArray[current].getScaledInstance(600, 600, 0);
+		imgArray[current].getScaledInstance(600, -1, 0);
 		setSize(imgArray[current].getWidth(), imgArray[current].getHeight());
 	}
 	
@@ -113,11 +115,26 @@ public class SlideShowViewer extends JDialog
 
 
 	
-	public BufferedImage createImage(DiagramObject diagramObject)
+	public BufferedImage createImage(DiagramObject diagramObject, Slide slide)
 	{
-		return  DiagramImageCreator.getImage(mainWindow, diagramObject);
+		return  DiagramImageCreator.getImageWithLegendSetting(mainWindow, diagramObject, getDiagarmLegendSettingsForSlide(slide));
 	}
 
+	
+	private CodeList getDiagarmLegendSettingsForSlide(Slide slide)
+	{
+		try
+		{
+			return  new CodeList(slide.getData(Slide.TAG_DIAGRAM_LEGEND_SETTINGS));
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unable to read slide settings:" + e.getMessage());
+			return new CodeList();
+		}
+	}
+	
 	private SlideShow getSlideShow() throws CommandFailedException
 	{
 		return getDiagramView().getSlideShow();

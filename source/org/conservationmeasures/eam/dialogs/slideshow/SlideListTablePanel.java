@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.slideshow;
 
-import java.awt.Image;
 import java.text.ParseException;
 
 import javax.swing.event.ListSelectionEvent;
@@ -30,7 +29,6 @@ import org.conservationmeasures.eam.objects.SlideShow;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
 import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
@@ -79,11 +77,6 @@ public class SlideListTablePanel extends ObjectListTablePanel
 	
 	protected void selectFirstRow()
 	{
-	}
-
-	public Image createImage()
-	{
-		return  DiagramImageCreator.getImage(getMainWindow(), getDiagramView().getDiagramModel().getDiagramObject());
 	}
 
 	private MainWindow getMainWindow()
