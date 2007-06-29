@@ -24,7 +24,6 @@ public class ScheduleView extends TabbedView
 	{
 		super(mainWindowToUse);
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
-		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public String cardName() 

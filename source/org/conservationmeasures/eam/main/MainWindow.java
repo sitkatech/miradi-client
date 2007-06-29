@@ -117,11 +117,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		addWindowListener(new WindowEventHandler());
 
-		//FIXME: need to move view creation back after init problem fixed
+		wizardPanel = createWizardPanel();
 
+		
 		noProjectView = new NoProjectView(this);
-		wizardPanel = createWizardPanel(noProjectView);
-
 		summaryView = new SummaryView(this);
 		diagramView = new DiagramView(this);
 		threatMatrixView = new ThreatMatrixView(this);
@@ -200,10 +199,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return 0;
 	}
 
-	private WizardPanel createWizardPanel(UmbrellaView view)
+	private WizardPanel createWizardPanel()
 	{
-		//FIXME: ****** should pass in a no project view default page
-		return new WizardPanel(this, view);
+		return new WizardPanel(this);
 	}
 	
 	WizardPanel wizardPanel;

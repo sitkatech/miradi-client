@@ -145,6 +145,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		nullDoer = new NullDoer();
 		actionToDoerMap = new HashMap();
 		addUmbrellaDoersToMap();
+		wizardPanel = mainWindow.getWizard();
 	}
 	
 	abstract public String cardName();
@@ -168,7 +169,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		getProject().addCommandExecutedListener(this);
 		isActive = true;
 		
-		mainWindow.getWizard().setOverViewStep(this);
+		mainWindow.getWizard().setOverViewStep(cardName());
 	}
 	
 	public void becomeInactive() throws Exception

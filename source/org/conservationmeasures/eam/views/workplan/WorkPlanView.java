@@ -44,7 +44,6 @@ public class WorkPlanView extends TabbedView
 		mainWindow = mainWindowToUse;
 		addWorkPlanDoersToMap();
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
-		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public String cardName() 

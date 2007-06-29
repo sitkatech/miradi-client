@@ -33,7 +33,6 @@ public class SummaryView extends TabbedView
 	{
 		super(mainWindowToUse);
 		addSummaryDoersToMap();
-		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public String cardName() 

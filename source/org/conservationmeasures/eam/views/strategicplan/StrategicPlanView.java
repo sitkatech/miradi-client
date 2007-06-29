@@ -22,7 +22,6 @@ public class StrategicPlanView extends TabbedView
 	{
 		super(mainWindowToUse);
 		addStrategicPlanDoersToMap();
-		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 	
 	public String cardName() 

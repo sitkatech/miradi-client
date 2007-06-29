@@ -127,7 +127,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		mode = ViewData.MODE_DEFAULT;
 		
 		addDiagramViewDoersToMap();
-		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public WizardPanel createWizardPanel() throws Exception

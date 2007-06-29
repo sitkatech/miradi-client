@@ -13,12 +13,10 @@ import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardAccountingAndFunding;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardBudgetDetail;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardDemo;
 import org.conservationmeasures.eam.views.budget.wizard.FinancialOverviewStep;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.wizard.DescribeTargetStatusStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramOverviewStep;
@@ -38,31 +36,25 @@ import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardVisionStep
 import org.conservationmeasures.eam.views.diagram.wizard.EditAllStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.SelectChainStep;
-import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardSelectMethodsStep;
-import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectOverviewStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardImportStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardProjectCreateStep;
-import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.views.schedule.wizard.ScheduleOverviewStep;
-import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopObjectivesStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanOverviewStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllGoals;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllObjectives;
-import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryOverviewStep;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjecScope;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineTeamMembers;
-import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability3Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability4Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability5Step;
@@ -72,7 +64,6 @@ import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityMethodChoiceStep;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewAfterDetailedModeStep;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewStep;
-import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckTotalsStep;
@@ -80,8 +71,6 @@ import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizard
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardIrreversibilityStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardSeverityStep;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanCreateResourcesStep;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopActivitiesAndTasksStep;
@@ -98,39 +87,18 @@ public class WizardManager
 		mainWindow = mainWindowToUse;
 	}
 	
-	public void setUpSteps(UmbrellaView view, WizardPanel panel) throws Exception
+	public void setUpSteps(WizardPanel panel) throws Exception
 	{
-		String currentView = view.cardName();
-		
-		if (currentView.equals(ThreatMatrixView.getViewName()))
-			createThreatMatrixViewStepEntries(panel);
-			
-		if (currentView.equals(DiagramView.getViewName()))
-			createDigramViewStepEntries(panel);
-		
-		if (currentView.equals(MonitoringView.getViewName()))
-			createMonitoringViewStepEntries(panel);
-		
-		if (currentView.equals(WorkPlanView.getViewName()))
-			createWorkPlanStepEntries(panel);
-		
-		if (currentView.equals(SummaryView.getViewName()))
-			createSummaryStepEntries(panel);
-			
-		if (currentView.equals(ScheduleView.getViewName()))
-			createScheduleStepEntries(panel);
-		
-		if (currentView.equals(StrategicPlanView.getViewName()))
-			createStrategicPlanStepEntries(panel);
-		
-		if (currentView.equals(BudgetView.getViewName()))
-			createBudgetStepEntries(panel);
-		
-		if (currentView.equals(NoProjectView.getViewName()))
-			createNoProjectStepEntries(panel);
-		
-		if (currentView.equals(TargetViabilityView.getViewName()))
-			createTargetViabilityStepEntries(panel);
+		createThreatMatrixViewStepEntries(panel);
+		createDigramViewStepEntries(panel);
+		createMonitoringViewStepEntries(panel);
+		createWorkPlanStepEntries(panel);
+		createSummaryStepEntries(panel);
+		createScheduleStepEntries(panel);
+		createStrategicPlanStepEntries(panel);
+		createBudgetStepEntries(panel);
+		createNoProjectStepEntries(panel);
+		createTargetViabilityStepEntries(panel);
 	}
 	
 	
@@ -152,23 +120,19 @@ public class WizardManager
 	
 	public String setStep(String newStep, String currentStepName) throws Exception
 	{	
-		SkeletonWizardStep currentStepClass = findStep(currentStepName);
-		String viewNameCur = currentStepClass.getViewName();
-		
 		SkeletonWizardStep newStepClass = findStep(newStep);
 		
 		if (newStepClass==null) 
 			return currentStepName;
 		
-		String viewNameNew = newStepClass.getViewName();
-
-		if (!viewNameNew.equals(viewNameCur))
-		{
-			doJump(currentStepClass, newStepClass, viewNameNew);
-			return currentStepName;
-		}
-
 		newStepClass.refresh();
+		
+		String newViewName = newStepClass.getViewName();
+		String currentViewName = mainWindow.getCurrentView().cardName();
+		if(!newViewName.equals(currentViewName))
+		{
+			mainWindow.getProject().executeCommand(new CommandSwitchView(newViewName));
+		}
 
 		//TODO: this belongs in mainWindow
 		if (mainWindow.getWizard()!=null)

@@ -21,7 +21,6 @@ public class MonitoringView extends TabbedView
 	{
 		super(mainWindowToUse);
 		addMonitoringPlanDoersToMap();
-		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public String cardName() 

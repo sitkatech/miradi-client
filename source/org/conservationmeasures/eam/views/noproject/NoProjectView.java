@@ -17,7 +17,6 @@ public class NoProjectView extends UmbrellaView
 	public NoProjectView(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
-		wizardPanel = new WizardPanel(mainWindow, this);
 	}
 	
 	public JToolBar createToolBar()

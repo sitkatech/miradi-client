@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.wizard.WizardPanel;
 
 
 public class ThreatMatrixView extends UmbrellaView
@@ -46,7 +45,6 @@ public class ThreatMatrixView extends UmbrellaView
 		super(mainWindowToUse);
 		
 		addThreatMatrixiewDoersToMap();
-		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 
 	public JToolBar createToolBar()

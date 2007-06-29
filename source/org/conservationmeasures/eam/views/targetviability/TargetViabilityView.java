@@ -28,7 +28,6 @@ public class TargetViabilityView extends TabbedView
 	{
 		super(mainWindowToUse);
 		addDoersToMap();
-		wizardPanel = new WizardPanel(mainWindowToUse, this);
 	}
 	
 	public String cardName()
