@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.dialogs.slideshow;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -83,10 +85,22 @@ public class SlideShowViewer extends JDialog implements WindowListener
 				if(e.getID() != KeyEvent.KEY_PRESSED)
 					break;
 				setTitle(slides[current].getLabel());
+		        image = imgArray[current].getScaledInstance(getWidth(), -1, 0);
+		        current =  (++current%imgArray.length);
 				repaint();
 				break;
 			case KeyEvent.VK_2:
 				dispose();
+				break;
+			case KeyEvent.VK_3:
+				setSize(Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
+		        image = imgArray[current].getScaledInstance(getWidth(), -1, 0);
+				repaint();
+				break;
+			case KeyEvent.VK_4:
+				setSize(600,600);
+		        image = imgArray[current].getScaledInstance(getWidth(), -1, 0);
+				repaint();
 				break;
 		}
 	 }
@@ -105,9 +119,7 @@ public class SlideShowViewer extends JDialog implements WindowListener
         g.setColor(Color.white);
         g.fillRect(0,0, getWidth(), getHeight());
         g.setColor(Color.black);
-        g.drawImage(imgArray[current++], 0, 0, this);
-        if (current >= imgArray.length) 
-        	current=0;
+        g.drawImage(image, 0, 0, this);
     }
 
 
@@ -181,5 +193,6 @@ public class SlideShowViewer extends JDialog implements WindowListener
     private int current  = 0;
     private MainWindow mainWindow;
     private Slide slides[];
+    Image image;
 
 }
