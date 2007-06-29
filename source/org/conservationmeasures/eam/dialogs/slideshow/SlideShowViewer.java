@@ -32,6 +32,7 @@ public class SlideShowViewer extends JDialog
 		loadSlides();
 		showSlides();
 		setAlwaysOnTop(true);
+		setSize(600,600);
 	}
 
 	private void loadSlides() 
@@ -75,7 +76,10 @@ public class SlideShowViewer extends JDialog
 		 switch (keyCode)
 		{
 			case KeyEvent.VK_1:
-			      repaint();
+
+				  if (e.getID() == KeyEvent.KEY_PRESSED)
+					  setTitle(slides[current].getLabel());
+					  repaint();
 			      break;
 			case KeyEvent.VK_2:
 			      dispose();
@@ -85,10 +89,10 @@ public class SlideShowViewer extends JDialog
 	
 	 public void dispose()
 	 {
-		 //FIXME: the doer does not seem to know when the viwer is disposed
+		 super.dispose();
 		 setVisible(false);
 		 mainWindow.updateActionStates();
-		 super.dispose();
+
 	 }
 
     public void paint (Graphics g)
