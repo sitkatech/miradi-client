@@ -291,17 +291,17 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionReportsDemo.class, new HelpButtonDoer());
 		
 		
-		addDoerToMap(ActionViewSummary.class, new ViewSummary());
-		addDoerToMap(ActionViewDiagram.class, new ViewDiagram());
-		addDoerToMap(ActionViewThreatMatrix.class, new ViewThreatMatrix());
-		addDoerToMap(ActionViewBudget.class, new ViewBudget());
-		addDoerToMap(ActionViewWorkPlan.class, new ViewWorkPlan());
-		addDoerToMap(ActionViewMap.class, new ViewMap());
-		addDoerToMap(ActionViewImages.class, new ViewImages());
-		addDoerToMap(ActionViewSchedule.class, new ViewSchedule());
-		addDoerToMap(ActionViewStrategicPlan.class, new ViewStrategicPlan());
-		addDoerToMap(ActionViewMonitoring.class, new ViewMonitoring());
-		addDoerToMap(ActionViewTargetViability.class, new ViewTargetViability());
+		addDoerToMap(ActionViewSummary.class, new SwitchToSummaryViewDoer());
+		addDoerToMap(ActionViewDiagram.class, new SwitchToDiagramViewDoer());
+		addDoerToMap(ActionViewThreatMatrix.class, new SwitchToThreatRatingViewDoer());
+		addDoerToMap(ActionViewBudget.class, new SwitchToBudgetViewDoer());
+		addDoerToMap(ActionViewWorkPlan.class, new SwitchToWorkPlanViewDoer());
+		addDoerToMap(ActionViewMap.class, new SwitchToMapViewDoer());
+		addDoerToMap(ActionViewImages.class, new SwitchToLibraryViewDoer());
+		addDoerToMap(ActionViewSchedule.class, new SwitchToScheduleViewDoer());
+		addDoerToMap(ActionViewStrategicPlan.class, new SwitchToStrategicPlanViewDoer());
+		addDoerToMap(ActionViewMonitoring.class, new SwitchToMonitoringViewDoer());
+		addDoerToMap(ActionViewTargetViability.class, new SwitchToTargetViabilityViewDoer());
 		
 		addDoerToMap(ActionWizardNext.class, new WizardNextDoer());
 		addDoerToMap(ActionWizardPrevious.class, new WizardPreviousDoer());

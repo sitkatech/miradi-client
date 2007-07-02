@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
+import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 
-public class ViewThreatMatrix extends ViewSwitchDoer
+public class SwitchToStrategicPlanViewDoer  extends ViewSwitchDoer 
 {
 	String getViewName()
 	{
-		return ThreatMatrixView.getViewName();
+		return StrategicPlanView.getViewName();
 	}
 }

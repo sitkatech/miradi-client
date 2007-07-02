@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.views.budget.BudgetView;
+import org.conservationmeasures.eam.views.map.MapView;
 
-public class ViewBudget extends ViewSwitchDoer 
+public class SwitchToMapViewDoer extends ViewSwitchDoer 
 {
 	String getViewName()
 	{
-		return BudgetView.getViewName();
+		return MapView.getViewName();
 	}
 }

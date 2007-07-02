@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.views.schedule.ScheduleView;
+import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 
-public class ViewSchedule extends ViewSwitchDoer 
+public class SwitchToWorkPlanViewDoer extends ViewSwitchDoer 
 {
 	String getViewName()
 	{
-		return ScheduleView.getViewName();
+		return WorkPlanView.getViewName();
 	}
 }

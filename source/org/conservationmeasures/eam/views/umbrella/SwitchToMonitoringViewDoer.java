@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.views.library.LibraryView;
+import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 
-public class ViewImages extends ViewSwitchDoer 
+public class SwitchToMonitoringViewDoer extends ViewSwitchDoer
 {
 	String getViewName()
 	{
-		return LibraryView.getViewName();
+		return MonitoringView.getViewName();
 	}
 }

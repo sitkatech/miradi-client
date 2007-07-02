@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
+import org.conservationmeasures.eam.views.library.LibraryView;
 
-public class ViewStrategicPlan  extends ViewSwitchDoer 
+public class SwitchToLibraryViewDoer extends ViewSwitchDoer 
 {
 	String getViewName()
 	{
-		return StrategicPlanView.getViewName();
+		return LibraryView.getViewName();
 	}
 }

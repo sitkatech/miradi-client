@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.views.monitoring.MonitoringView;
+import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
 
-public class ViewMonitoring extends ViewSwitchDoer
+public class SwitchToTargetViabilityViewDoer extends ViewSwitchDoer
 {
 	String getViewName()
 	{
-		return MonitoringView.getViewName();
+		return TargetViabilityView.getViewName();
 	}
 }

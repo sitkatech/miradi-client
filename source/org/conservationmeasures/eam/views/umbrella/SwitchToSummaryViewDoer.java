@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.views.map.MapView;
+import org.conservationmeasures.eam.views.summary.SummaryView;
 
-public class ViewMap extends ViewSwitchDoer 
+public class SwitchToSummaryViewDoer extends ViewSwitchDoer
 {
 	String getViewName()
 	{
-		return MapView.getViewName();
+		return SummaryView.getViewName();
 	}
 }

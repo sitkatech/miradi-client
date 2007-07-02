@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.views.summary.SummaryView;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 
-public class ViewSummary extends ViewSwitchDoer
+public class SwitchToDiagramViewDoer extends ViewSwitchDoer
 {
 	String getViewName()
 	{
-		return SummaryView.getViewName();
+		return DiagramView.getViewName();
 	}
 }
