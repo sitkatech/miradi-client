@@ -106,7 +106,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		try
 		{
 			WizardManager wizardManager = getMainWindow().getWizardManager();
-			SkeletonWizardStep step = wizardManager.findStep(wizardManager.getCurrentStepName());
+			SkeletonWizardStep step = wizardManager.getCurrentStep();
 			Class destinationStepClass = wizardManager.findControlTargetStep(controlName, step);
 			if (destinationStepClass==null)
 			{

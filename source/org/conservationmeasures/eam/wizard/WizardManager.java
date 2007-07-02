@@ -54,6 +54,7 @@ import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDeve
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanOverviewStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllGoals;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllObjectives;
+import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryOverviewStep;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjecScope;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectLeader;
@@ -155,6 +156,19 @@ public class WizardManager
 
 	}
 
+	private SkeletonWizardStep getDefaultStep()
+	{
+		String stepName = getOverviewStepName(SummaryView.getViewName());
+		return findStep(stepName);
+	}
+
+	public SkeletonWizardStep getCurrentStep()
+	{
+		SkeletonWizardStep step = findStep(getCurrentStepName());
+		if(step == null)
+			step = getDefaultStep();
+		return step;
+	}
 
 	private Project getProject()
 	{

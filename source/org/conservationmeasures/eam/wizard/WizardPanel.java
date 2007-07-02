@@ -32,11 +32,6 @@ public class WizardPanel extends JPanel
 		wizardManager.setUpSteps(this);
 	}
 
-	String getCurrentStepName()
-	{
-		return wizardManager.getCurrentStepName();
-	}
-
 	public void setContents(JPanel contents)
 	{
 		removeAll();
@@ -49,7 +44,7 @@ public class WizardPanel extends JPanel
 	
 	public void refresh() throws Exception
 	{
-		SkeletonWizardStep stepClass = wizardManager.findStep(getCurrentStepName());
+		SkeletonWizardStep stepClass = wizardManager.getCurrentStep();
 		stepClass.refresh();
 		stepClass.validate();
 	}

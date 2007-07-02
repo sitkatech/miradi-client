@@ -368,22 +368,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if (getWizard() == null)
 			return;
 		
-		String currentStepName = getWizardManager().getCurrentStepName();
-		SkeletonWizardStep step = getWizardManager().findStep(currentStepName);
-		if(step == null)
-		{
-			getWizardManager().setOverViewStep(SummaryView.getViewName());
-		}
-		else
-		{
-			setViewForStep(step);
-			getWizard().setContents(step);
-			getWizard().refresh();
-		}
+		SkeletonWizardStep step = getWizardManager().getCurrentStep();
+		setViewForStep(step);
+		getWizard().setContents(step);
+		getWizard().refresh();
 		validate();
 		restorePreviousDividerLocation();
 	}
-
+	
 	private void setViewForStep(SkeletonWizardStep step) throws Exception
 	{
 		if(getCurrentView() != null && step.getViewName().equals(getCurrentView().cardName()))
