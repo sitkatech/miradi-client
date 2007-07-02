@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.FileBasedProjectServer;
 import org.conservationmeasures.eam.database.ProjectServer;
@@ -497,12 +496,6 @@ public class Project
 
 	}
 
-	public void forceMainWindowToSwitchViews(String currentView)
-	{
-		CommandSwitchView cmd = new CommandSwitchView(currentView);
-		fireCommandExecuted(cmd);
-	}
-	
 	public String getFilename()
 	{
 		if(isOpen())

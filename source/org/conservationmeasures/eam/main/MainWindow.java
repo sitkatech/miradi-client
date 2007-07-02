@@ -309,7 +309,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			project.createOrOpen(projectDirectory);
 			ProjectRepairer.repairAnyProblems(project);
-			fakeViewSwitchForMainWindow();
 			refreshWizard();
 
 			validate();
@@ -354,15 +353,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return threatMatrixView;
 	}
 
-	private void fakeViewSwitchForMainWindow()
-	{
-		String currentProjectView = project.getCurrentView();
-		if(!project.isLegalViewName(currentProjectView))
-			currentProjectView = project.DEFAULT_VIEW_NAME;
-		
-		project.forceMainWindowToSwitchViews(currentProjectView);
-	}
-
 	public void closeProject() throws Exception
 	{
 		project.close();
@@ -379,20 +369,26 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		String currentStepName = getWizardManager().getCurrentStepName();
 		SkeletonWizardStep step = getWizardManager().findStep(currentStepName);
-		setViewForStep(step);
-		getWizard().setContents(step);
-		getWizard().refresh();
+		if(step == null)
+		{
+			getWizardManager().setOverViewStep(SummaryView.getViewName());
+		}
+		else
+		{
+			setViewForStep(step);
+			getWizard().setContents(step);
+			getWizard().refresh();
+		}
 		validate();
 		restorePreviousDividerLocation();
 	}
 
 	private void setViewForStep(SkeletonWizardStep step) throws Exception
 	{
-		if(step == null || getCurrentView() == null || 
-				!step.getViewName().equals(getCurrentView().cardName()))
-		{
-			setCurrentView(step.getViewName());
-		}
+		if(getCurrentView() != null && step.getViewName().equals(getCurrentView().cardName()))
+			return;
+		
+		setCurrentView(step.getViewName());
 	}
 
 	public void updateStatusBar()
