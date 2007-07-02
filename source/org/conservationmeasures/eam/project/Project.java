@@ -749,7 +749,7 @@ public class Project
 			WORK_PLAN_VIEW_NAME,
 			MAP_VIEW_NAME,
 			SCHEDULE_VIEW_NAME,
-			IMAGES_VIEW_NAME,
+			LIBRARY_VIEW_NAME,
 			STRATEGIC_PLAN_VIEW_NAME,
 			MONITORING_VIEW_NAME,
 			TARGET_VIABILITY_NAME,
@@ -914,7 +914,7 @@ public class Project
 
 	public static final String MONITORING_VIEW_NAME = "Monitoring Plan";
 	public static final String STRATEGIC_PLAN_VIEW_NAME = "Strategic Plan";
-	public static final String IMAGES_VIEW_NAME = "Library";
+	public static final String LIBRARY_VIEW_NAME = "Library";
 	public static final String SCHEDULE_VIEW_NAME = "Schedule";
 	public static final String MAP_VIEW_NAME = "Map";
 	public static final String WORK_PLAN_VIEW_NAME = "Work Plan";

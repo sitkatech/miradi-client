@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.views.images.ImagesView;
+import org.conservationmeasures.eam.views.library.LibraryView;
 
 public class ViewImages extends ViewSwitchDoer 
 {
 	String getViewName()
 	{
-		return ImagesView.getViewName();
+		return LibraryView.getViewName();
 	}
 }

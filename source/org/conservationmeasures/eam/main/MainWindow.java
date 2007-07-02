@@ -55,7 +55,7 @@ import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
-import org.conservationmeasures.eam.views.images.ImagesView;
+import org.conservationmeasures.eam.views.library.LibraryView;
 import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
@@ -127,7 +127,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		workPlanView = new WorkPlanView(this);
 		mapView = new MapView(this);
 		calendarView = new ScheduleView(this);
-		imagesView = new ImagesView(this);
+		libraryView = new LibraryView(this);
 		strategicPlanView = new StrategicPlanView(this);
 		monitoringView = new MonitoringView(this);
 		targetViabilityView = new TargetViabilityView(this);
@@ -142,7 +142,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(workPlanView, workPlanView.cardName());
 		viewHolder.add(mapView, mapView.cardName());
 		viewHolder.add(calendarView, calendarView.cardName());
-		viewHolder.add(imagesView, imagesView.cardName());
+		viewHolder.add(libraryView, libraryView.cardName());
 		viewHolder.add(strategicPlanView, strategicPlanView.cardName());
 		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
@@ -583,8 +583,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setCurrentView(mapView);
 		else if(viewName.equals(calendarView.cardName()))
 			setCurrentView(calendarView);
-		else if(viewName.equals(imagesView.cardName()))
-			setCurrentView(imagesView);
+		else if(viewName.equals(libraryView.cardName()))
+			setCurrentView(libraryView);
 		else if(viewName.equals(strategicPlanView.cardName()))
 			setCurrentView(strategicPlanView);
 		else if(viewName.equals(monitoringView.cardName()))
@@ -810,7 +810,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private WorkPlanView workPlanView;
 	private MapView mapView;
 	private ScheduleView calendarView;
-	private ImagesView imagesView;
+	private LibraryView libraryView;
 	private StrategicPlanView strategicPlanView;
 	private TabbedView monitoringView;
 	private TargetViabilityView targetViabilityView;
