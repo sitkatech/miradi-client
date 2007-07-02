@@ -148,6 +148,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
+		updateActionStates();
 
 		if(!Arrays.asList(args).contains("--nosplash"))
 		{

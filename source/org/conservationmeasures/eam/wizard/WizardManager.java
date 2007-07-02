@@ -378,6 +378,8 @@ public class WizardManager
 				BudgetWizardDemo.class, 
 				
 				ScheduleOverviewStep.class,
+				MapOverviewStep.class,
+				LibraryOverviewStep.class,
 		};
 		
 		return entries;
