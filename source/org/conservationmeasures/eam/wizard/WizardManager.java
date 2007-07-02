@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardVisionStep
 import org.conservationmeasures.eam.views.diagram.wizard.EditAllStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.SelectChainStep;
+import org.conservationmeasures.eam.views.map.wizard.MapOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardEditIndicatorsStep;
@@ -103,6 +104,7 @@ public class WizardManager
 		createBudgetStepEntries(panel);
 		createNoProjectStepEntries(panel);
 		createTargetViabilityStepEntries(panel);
+		createMapViewStepEntries(panel);
 	}
 	
 	public String getCurrentStepName()
@@ -285,6 +287,11 @@ public class WizardManager
 			.createBackControl(ThreatRatingWizardChooseBundle.class); 
 	}
 
+	public void createMapViewStepEntries(WizardPanel panel)
+	{		
+		createStepEntry(new MapOverviewStep(panel));
+	}
+	
 
 	static Class[] getSequence()
 	{

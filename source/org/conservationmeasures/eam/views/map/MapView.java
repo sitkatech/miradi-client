@@ -5,25 +5,18 @@
 */ 
 package org.conservationmeasures.eam.views.map;
 
-import java.awt.BorderLayout;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 
-import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.FastScrollPane;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.wizard.WizardPanel;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
-public class MapView extends UmbrellaView
+public class MapView extends TabbedView
 {
 	public MapView(MainWindow mainWindowToUse)
 	{
@@ -40,49 +33,13 @@ public class MapView extends UmbrellaView
 		return Project.MAP_VIEW_NAME;
 	}
 
-	public void becomeActive() throws Exception
-	{
-		super.becomeActive();
-		JPanel panel = new JPanel(new GridLayoutPlus(0,1));
-		panel.add(getIntroText());
-		panel.add(new MapComponent(), BorderLayout.CENTER);
-		add(new FastScrollPane(panel));
-	}
-	
-
 	public JToolBar createToolBar()
 	{
 		return new MapToolBar(getActions());
 	}
 
-	public void becomeInactive() throws Exception
+	public void createTabs() throws Exception
 	{
-		super.becomeInactive();
-	}
-
-	private HtmlFormViewer getIntroText() throws Exception
-	{
-		HtmlFormViewer htmlViewer = new HtmlFormViewer(getMainWindow(),"", null);
-		htmlViewer.setText(EAM.loadResourceFile(this.getClass(), OVERVIEW_HTML));
-		
-		//TODO: Find a better way to calculate scroll bar width to subtract
-		htmlViewer.setFixedWidth(htmlViewer,this.getSize().width - 20);
-
-		return htmlViewer;
-	}
-	
-	
-	private String OVERVIEW_HTML = "Overview.html";
-
-}
-
-class MapComponent extends JTabbedPane
-{
-
-	public MapComponent()
-	{
-		setTabPlacement(JTabbedPane.TOP);
-	
 		String[] demoMaps = 
 		{
 			"base",
@@ -96,9 +53,19 @@ class MapComponent extends JTabbedPane
 			URL imageURL = MapView.class.getResource(demoMaps[i] + ".jpg");
 			JLabel image = new JLabel(new ImageIcon(imageURL));
 			image.setName(demoMaps[i]);
-			add(image);
+			addTab(image.getName(), image);
 		}
 	}
 
-}
+	public void deleteTabs() throws Exception
+	{
+		// lightweight tabs...nothing to dispose yet
+	}
 
+	public WizardPanel createWizardPanel() throws Exception
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
