@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.project.Project;
 public class DiagramModelUpdater
 {
 
+	//TODO nima dont pass in the DO since the model already has one
 	public DiagramModelUpdater(Project projectToUse, DiagramModel modelToUse, DiagramObject diagramObjectToUse)
 	{
 		project = projectToUse;

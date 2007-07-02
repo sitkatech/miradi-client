@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 
@@ -18,12 +17,9 @@ public class DiagramObjectCreator
 	{
 		project = projectToUse;
 	}
- 	
+
  	public DiagramObject createlDiagramObject(int diagramObjectType) throws Exception
  	{
- 		if (diagramObjectType != ObjectType.CONCEPTUAL_MODEL_DIAGRAM)
- 			return null;
- 		
  		CommandCreateObject createCommand = new CommandCreateObject(diagramObjectType);
  		project.executeCommand(createCommand);
  		

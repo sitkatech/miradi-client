@@ -109,7 +109,6 @@ import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
-import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.SlideShow;
@@ -381,8 +380,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		for (int i = 0; i < getTabCount(); ++i)
 		{
 			DiagramPanel panel = (DiagramPanel)getTabContents(i);
-			DiagramObject diagramObject = panel.getDiagramObject();
-			if (diagramObject.getRef().equals(ref))
+			int diagramObjectType = panel.getDiagramSplitPane().getDiagramPageList().getContentType();
+			if (diagramObjectType == ref.getObjectType())
 				return i;
 		}
 		

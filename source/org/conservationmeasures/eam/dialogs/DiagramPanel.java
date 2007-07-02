@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.Component;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -60,9 +62,9 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 	{
 		super.dispose();
 		project.removeCommandExecutedListener(this);
-		diagramSplitter.dispose();
 	}
-	
+
+	//FIXME nima push these methode to the appropriate sub class
 	private DiagramSplitPane createDiagramSplitter(int objectType) throws Exception
 	{
 		if (objectType == ResultsChainDiagram.getObjectType())
@@ -248,14 +250,66 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if (! event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			handleCommandSetObjectData((CommandSetObjectData) event.getCommand());
+		
+		if (event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+			handleCommandCreateObject((CommandCreateObject) event.getCommand());
+		
+		if (event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			handleCommandDeleteObject((CommandDeleteObject) event.getCommand());
+	}
+
+	private void handleCommandDeleteObject(CommandDeleteObject commandDeleteObject)
+	{
+		int objectTypeFromCommand = commandDeleteObject.getObjectType();
+		if (getContentType() != objectTypeFromCommand)
+			return;
+		
+		getDiagramSplitPane().getDiagramPageList().fillList();
+	}
+
+	private void handleCommandCreateObject(CommandCreateObject commandCreateObject)
+	{
+		int objectTypeFromCommand = commandCreateObject.getObjectType();
+		if (getContentType() != objectTypeFromCommand)
+			return;
+		
+		getDiagramSplitPane().getDiagramPageList().fillList();
+	}
+
+	private void handleCommandSetObjectData(CommandSetObjectData commandSetObjectData)
+	{
+		if (commandSetObjectData.getObjectType() == getContentType())
+			handleDiagramContentsChange(commandSetObjectData);
+		
+		if (commandSetObjectData.getObjectType()== ObjectType.VIEW_DATA)
+			handleViewDataContentsChange(commandSetObjectData);
+	}
+
+	private void handleViewDataContentsChange(CommandSetObjectData commandSetObjectData)
+	{
+		if (commandSetObjectData.getFieldTag() != ViewData.TAG_CURRENT_DIAGRAM_REF)
+			return;
+		
+		ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
+		ORef viewDataCurrentDiagramRef = viewData.getCurrentDiagramRef();
+		
+		if (viewDataCurrentDiagramRef.getObjectType() != getContentType())
+			return;
+
+		getDiagramSplitPane().showCard(viewDataCurrentDiagramRef);
+	}
+
+	private void handleDiagramContentsChange(CommandSetObjectData setCommand)
+	{
+		DiagramModel diagramModel = getDiagramModel();
+		if (diagramModel == null)
 			return;
 		
 		try
-		{
-			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-			updateCurrentDiagramObject(setCommand);
-			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, getDiagramModel(), getDiagramObject());
+		{			
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, diagramModel, getDiagramObject());
 			modelUpdater.commandSetObjectDataExecuted(setCommand);
 		}
 		catch(Exception e)
@@ -263,20 +317,12 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 			EAM.logException(e);
 		}
 	}
-	
-	private void updateCurrentDiagramObject(CommandSetObjectData setObjectDataCommand)
-	{
-		if (setObjectDataCommand.getObjectType()!= ObjectType.VIEW_DATA)
-			return;
-		
-		if (setObjectDataCommand.getFieldTag() == ViewData.TAG_CURRENT_DIAGRAM_REF)
-		{	
-			ViewData viewData = (ViewData) project.findObject(setObjectDataCommand.getObjectORef());
-			ORef currentDiagramObjectRef = viewData.getCurrentDiagramRef();
-			getDiagramSplitPane().setCurrentDiagramObjectRef(currentDiagramObjectRef);
-		}
 
+	private int getContentType()
+	{
+		return getDiagramSplitPane().getDiagramPageList().getContentType();
 	}
+	
 
 	public DiagramSplitPane getDiagramSplitPane()
 	{

@@ -9,16 +9,16 @@ import javax.swing.BorderFactory;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 
-abstract public class DiagramPageList extends JList implements CommandExecutedListener
+abstract public class DiagramPageList extends JList
 {
 	public DiagramPageList(Project projectToUse, int objectTypeToUse)
 	{
@@ -27,16 +27,24 @@ abstract public class DiagramPageList extends JList implements CommandExecutedLi
 		objectType = objectTypeToUse;
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
-		fillList();
-		project.addCommandExecutedListener(this);
 	}
 	
-	public void dispose()
+	public void fillListWithSelectedDiagramObject(DiagramObject diagramObject)
 	{
-		project.removeCommandExecutedListener(this);
+		try
+		{
+			fillList();
+			ViewData diagramViewData = project.getViewData(DiagramView.getViewName());
+			CommandSetObjectData setViewData = new CommandSetObjectData(diagramViewData.getRef(), ViewData.TAG_CURRENT_DIAGRAM_REF, diagramObject.getRef());
+			project.executeCommand(setViewData);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
-	
-	private void fillList()
+
+	public void fillList()
 	{
 		EAMObjectPool pool = project.getPool(objectType);
 		ORefList refList = pool.getORefList();
@@ -44,19 +52,9 @@ abstract public class DiagramPageList extends JList implements CommandExecutedLi
 		setListData(diagramObjects);
 	}
 	
-	public void commandExecuted(CommandExecutedEvent event)
+	public int getContentType()
 	{
-		
-		Command rawCommand = event.getCommand();
-		if (! rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-			return;
-		
-		CommandCreateObject createCommand = (CommandCreateObject) rawCommand;
-		int objectTypeFromCommand = createCommand.getObjectType();
-		if (objectType != objectTypeFromCommand)
-			return;
-	
-		fillList();
+		return objectType;
 	}
 	
 	abstract public boolean isResultsChainPageList();
