@@ -493,8 +493,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		try
 		{
-//			if(event.getCommandName().equals(CommandSwitchView.COMMAND_NAME))
-//				updateView();
 			if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			{
 				CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
