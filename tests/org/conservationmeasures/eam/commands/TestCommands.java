@@ -38,7 +38,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.conservationmeasures.eam.views.map.MapView;
 
 public class TestCommands extends EAMTestCase
 {
@@ -369,19 +368,6 @@ public class TestCommands extends EAMTestCase
 		}
 		EAM.setLogToConsole();
 		emptyProject.close();
-	}
-	
-	public void testCommandSwitchView() throws Exception
-	{
-		String originalViewName = project.getCurrentView();
-
-		CommandSwitchView toMap = new CommandSwitchView(MapView.getViewName());
-		project.executeCommand(toMap);
-		assertEquals("didn't switch?", toMap.getDestinationView(), project.getCurrentView());
-		assertEquals("didn't set from?", originalViewName, toMap.getPreviousView());
-		
-		project.undo();
-		assertEquals("didn't switch back?", originalViewName, project.getCurrentView());
 	}
 	
 	static class UndoListener implements CommandExecutedListener

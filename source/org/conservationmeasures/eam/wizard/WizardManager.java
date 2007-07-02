@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.wizard;
 import java.util.Hashtable;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -151,7 +150,7 @@ public class WizardManager
 		String currentViewName = getProject().getCurrentView();
 		if(!newViewName.equals(currentViewName))
 		{
-			getProject().executeCommand(new CommandSwitchView(newViewName));
+			getProject().switchToView(newViewName);
 		}
 
 	}

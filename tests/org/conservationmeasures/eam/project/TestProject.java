@@ -10,19 +10,15 @@ import java.awt.Point;
 import java.io.File;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
-import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -173,33 +169,6 @@ public class TestProject extends EAMTestCase
 		assertEquals("Didn't fix bad?", "------------------------------", Project.makeProjectFilenameLegal(bad));
 	}
 	
-	public void testViewChanges() throws Exception
-	{
-		assertEquals("didn't start in summary view?", Project.SUMMARY_VIEW_NAME, project.getCurrentView());
-		String destination = Project.MAP_VIEW_NAME;
-		CommandSwitchView toMap = new CommandSwitchView(destination);
-		project.executeCommand(toMap);
-		assertEquals("didn't update project?", destination, project.getCurrentView());
-		try
-		{
-			project.executeCommand(toMap);
-			fail("should have thrown for switch to current view");
-		}
-		catch(AlreadyInThatViewException ignoreExpected)
-		{
-		}
-		
-		Command illegalView = new CommandSwitchView("Not a legal view name");
-		try
-		{
-			project.executeCommand(illegalView);
-			fail("should have thrown for switch to bogus view name");
-		}
-		catch(CommandFailedException ignoreExpected)
-		{
-		}
-	}
-
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);

@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.commands.TestCommandEndTransaction;
 import org.conservationmeasures.eam.commands.TestCommandSetFactorSize;
 import org.conservationmeasures.eam.commands.TestCommandSetObjectData;
 import org.conservationmeasures.eam.commands.TestCommandSetThreatRating;
-import org.conservationmeasures.eam.commands.TestCommandSwitchView;
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDataUpgrader;
 import org.conservationmeasures.eam.database.TestProjectServer;
@@ -244,7 +243,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommandDeleteObject.class));
 		suite.addTest(new TestSuite(TestCommandSetFactorSize.class));
 		suite.addTest(new TestSuite(TestCommandSetThreatRating.class));
-		suite.addTest(new TestSuite(TestCommandSwitchView.class));
 		suite.addTest(new TestSuite(TestCommandBeginTransaction.class));
 		suite.addTest(new TestSuite(TestCommandEndTransaction.class));
 		
