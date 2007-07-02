@@ -45,7 +45,6 @@ import org.conservationmeasures.eam.views.workplan.DeleteWorkPlanTreeNode;
 import org.conservationmeasures.eam.views.workplan.TreeNodeDown;
 import org.conservationmeasures.eam.views.workplan.TreeNodeUp;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
-import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetView extends TabbedView
@@ -146,11 +145,6 @@ public class BudgetView extends TabbedView
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 	}
 	
-	public WizardPanel createWizardPanel() throws Exception
-	{
-		return wizardPanel;
-	}
-
 	public TaskTreeTablePanel getTaskTreeTablePanel()
 	{
 		return treeTableComponent;

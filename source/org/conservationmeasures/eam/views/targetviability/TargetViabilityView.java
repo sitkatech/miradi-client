@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.views.diagram.CreateKeyEcologicalAttributeIn
 import org.conservationmeasures.eam.views.diagram.CreateViabilityKeyEcologicalAttributeDoer;
 import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeIndicatorDoer;
-import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class TargetViabilityView extends TabbedView
 {
@@ -64,11 +63,6 @@ public class TargetViabilityView extends TabbedView
 		viabilityPanel = null;
 	}
 
-	public WizardPanel createWizardPanel() throws Exception
-	{
-		return wizardPanel;
-	}
-	
 	
 	private void addDoersToMap()
 	{

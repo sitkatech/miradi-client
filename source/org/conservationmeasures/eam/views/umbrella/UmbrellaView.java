@@ -132,7 +132,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
-import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 
@@ -145,7 +144,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		nullDoer = new NullDoer();
 		actionToDoerMap = new HashMap();
 		addUmbrellaDoersToMap();
-		wizardPanel = mainWindow.getWizard();
 	}
 	
 	abstract public String cardName();
@@ -462,6 +460,5 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	private ModelessDialogPanel activePropertiesPanel;
 	private ModelessDialogWithClose activePropertiesDlg;
-	protected WizardPanel wizardPanel;
  
 }

@@ -10,7 +10,6 @@ import javax.swing.JToolBar;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class NoProjectView extends UmbrellaView
 {
@@ -22,12 +21,6 @@ public class NoProjectView extends UmbrellaView
 	public JToolBar createToolBar()
 	{
 		return new NoProjectToolBar(getActions());
-	}
-
-	
-	public WizardPanel createWizardPanel() throws Exception
-	{
-		return wizardPanel;
 	}
 
 	
@@ -45,7 +38,7 @@ public class NoProjectView extends UmbrellaView
 	
 	public void refreshText() throws Exception
 	{
-		wizardPanel.refresh();
+		getMainWindow().getWizard().refresh();
 	}
 
 	public String cardName()

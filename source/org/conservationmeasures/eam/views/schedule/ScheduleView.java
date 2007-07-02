@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.UiScrollPane;
 
 public class ScheduleView extends TabbedView
@@ -57,10 +56,6 @@ public class ScheduleView extends TabbedView
 	}
 
 	
-	public WizardPanel createWizardPanel() throws Exception
-	{
-		return wizardPanel;
-	}
 }
 
 class ScheduleComponent extends JLabel

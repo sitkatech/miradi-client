@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class StrategicPlanView extends TabbedView
 {
@@ -65,11 +64,6 @@ public class StrategicPlanView extends TabbedView
 		goalPanel = null;
 	}
 
-	public WizardPanel createWizardPanel() throws Exception
-	{
-		return wizardPanel;
-	}
-	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();

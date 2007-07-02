@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.ModifyResource;
-import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class SummaryView extends TabbedView
 {
@@ -50,11 +49,6 @@ public class SummaryView extends TabbedView
 		return new SummaryToolBar(getMainWindow().getActions());
 	}
 	
-	public WizardPanel createWizardPanel() throws Exception 
-	{
-		return wizardPanel;
-	}
-		
 	public void createTabs() throws Exception
 	{
 		ProjectMetadata metadata = getProject().getMetadata();

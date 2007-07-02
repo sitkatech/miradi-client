@@ -119,7 +119,6 @@ import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
-import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.swing.Utilities;
 
 
@@ -133,11 +132,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDiagramViewDoersToMap();
 	}
 
-	public WizardPanel createWizardPanel() throws Exception
-	{
-		return wizardPanel;
-	}
-	
 	
 	public boolean isSlideShowVisible()
 	{
