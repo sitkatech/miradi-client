@@ -7,9 +7,14 @@ package org.conservationmeasures.eam.wizard;
 
 import java.util.Hashtable;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardAccountingAndFunding;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardBudgetDetail;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardDemo;
@@ -38,6 +43,7 @@ import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefi
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardSelectMethodsStep;
+import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectOverviewStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardImportStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardProjectCreateStep;
@@ -78,11 +84,11 @@ import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanOverviewStep;
 public class WizardManager
 {
 	
-	public WizardManager(MainWindow mainWindowToUse)
+	public WizardManager(MainWindow mainWindowToUse) throws Exception
 	{
 		stepEntries = new Hashtable();
 		mainWindow = mainWindowToUse;
-
+		setCurrentStepName(getOverviewStepName(NoProjectView.getViewName()));
 	}
 	
 	public void setUpSteps(WizardPanel panel) throws Exception
@@ -101,12 +107,25 @@ public class WizardManager
 	
 	public String getCurrentStepName()
 	{
-		return currentStepName;
+		ProjectMetadata metadata = getProject().getMetadata();
+		if(metadata == null)
+			return nonProjectCurrentStepName;
+		
+		return  metadata.getCurrentWizardScreenName();
 	}
 
-	private void setCurrentStepName(String newCurrentStepName)
+	private void setCurrentStepName(String newStepName) throws CommandFailedException, Exception
 	{
-		currentStepName = newCurrentStepName;
+		ProjectMetadata metadata = getProject().getMetadata();
+		if(metadata == null)
+		{
+			nonProjectCurrentStepName = newStepName;
+			mainWindow.refreshWizard();
+			return;
+		}
+		
+		ORef projectMetadataRef = metadata.getRef();
+		getProject().executeCommand(new CommandSetObjectData(projectMetadataRef, ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME, newStepName));
 	}
 
 	public void setStep(Class stepClass) throws Exception
@@ -117,32 +136,26 @@ public class WizardManager
 	
 	public void setStep(String newStepName) throws Exception
 	{
-		if(newStepName.equals(getCurrentStepName()))
-			return;
-		
 		SkeletonWizardStep newStep = findStep(newStepName);
 		
 		if (newStep==null) 
 			return;
 		
+		setCurrentStepName(newStepName);
+
 		String newViewName = newStep.getViewName();
-		String currentViewName = mainWindow.getCurrentView().cardName();
+		String currentViewName = getProject().getCurrentView();
 		if(!newViewName.equals(currentViewName))
 		{
-			mainWindow.getProject().executeCommand(new CommandSwitchView(newViewName));
+			getProject().executeCommand(new CommandSwitchView(newViewName));
 		}
 
-		setCurrentStepName(newStepName);
-		newStep.refresh();
-		
-		//TODO: this belongs in mainWindow
-		if (mainWindow.getWizard()!=null)
-		{
-				mainWindow.getWizard().setContents(newStep);
-				mainWindow.getWizard().refresh();
-				mainWindow.validate();
-				mainWindow.restorePreviousDividerLocation();
-		}
+	}
+
+
+	private Project getProject()
+	{
+		return mainWindow.getProject();
 	}
 
 	public void createNoProjectStepEntries(WizardPanel panel) throws Exception
@@ -458,7 +471,7 @@ public class WizardManager
 
 	private MainWindow mainWindow;
 	private Hashtable stepEntries;
-	private String currentStepName;
-
+	
+	private String nonProjectCurrentStepName;
 }
 

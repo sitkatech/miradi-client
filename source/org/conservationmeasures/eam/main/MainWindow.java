@@ -16,7 +16,6 @@ import java.awt.datatransfer.Transferable;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -31,9 +30,8 @@ import javax.swing.ToolTipManager;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.CommandSwitchView;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.InvalidDateRangeException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
@@ -71,6 +69,7 @@ import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
+import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.martus.util.DirectoryLock;
@@ -81,12 +80,12 @@ import edu.stanford.ejalbert.BrowserLauncherRunner;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner, SplitterPositionSaverAndGetter
 {
-	public MainWindow() throws IOException
+	public MainWindow() throws Exception
 	{
 		this(new Project());
 	}
 	
-	public MainWindow(Project projectToUse)
+	public MainWindow(Project projectToUse) throws Exception
 	{
 		preferences = new AppPreferences();
 		project = projectToUse;
@@ -147,9 +146,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(strategicPlanView, strategicPlanView.cardName());
 		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
-		
-		setCurrentView(noProjectView);
-		updateActionStates();
+
+		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 
 		if(!Arrays.asList(args).contains("--nosplash"))
 		{
@@ -312,6 +310,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			project.createOrOpen(projectDirectory);
 			ProjectRepairer.repairAnyProblems(project);
 			fakeViewSwitchForMainWindow();
+			refreshWizard();
 
 			validate();
 			updateTitle();
@@ -367,10 +366,35 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void closeProject() throws Exception
 	{
 		project.close();
+		getWizardManager().setOverViewStep(NoProjectView.getViewName());
+
 		updateTitle();
 		mainStatusBar.setStatus("");
 	}
 	
+	public void refreshWizard() throws Exception
+	{
+		if (getWizard() == null)
+			return;
+		
+		String currentStepName = getWizardManager().getCurrentStepName();
+		SkeletonWizardStep step = getWizardManager().findStep(currentStepName);
+		setViewForStep(step);
+		getWizard().setContents(step);
+		getWizard().refresh();
+		validate();
+		restorePreviousDividerLocation();
+	}
+
+	private void setViewForStep(SkeletonWizardStep step) throws Exception
+	{
+		if(step == null || getCurrentView() == null || 
+				!step.getViewName().equals(getCurrentView().cardName()))
+		{
+			setCurrentView(step.getViewName());
+		}
+	}
+
 	public void updateStatusBar()
 	{
 		setDiagramViewStatusBar();
@@ -473,8 +497,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		try
 		{
-			if(event.getCommand().getCommandName().equals(CommandSwitchView.COMMAND_NAME))
-				updateView();
+//			if(event.getCommandName().equals(CommandSwitchView.COMMAND_NAME))
+//				updateView();
+			if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			{
+				CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+				boolean isMetadataCommand = cmd.getObjectORef().equals(getProject().getMetadata().getRef());
+				boolean isCurrentWizardScreenChange = cmd.getFieldTag().equals(ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME);
+				if(isMetadataCommand && isCurrentWizardScreenChange)
+					refreshWizard();
+			}
 		}
 		catch (Exception e)
 		{
@@ -530,6 +562,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void updateView() throws Exception
 	{
 		String viewName = getProject().getCurrentView();
+		setCurrentView(viewName);
+	}
+
+	private void setCurrentView(String viewName) throws Exception
+	{
 		if(viewName.equals(summaryView.cardName()))
 			setCurrentView(summaryView);
 		else if(viewName.equals(diagramView.cardName()))
@@ -561,19 +598,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 	
-	public void jump(Class stepMarker) throws CommandFailedException
-	{
-		try
-		{
-			getWizardManager().setStep(stepMarker);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException(e);
-		}
-	}
-
 	public void savePreferences() throws Exception
 	{
 		boolean isMaximized = false;

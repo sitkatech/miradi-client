@@ -74,6 +74,11 @@ public class ProjectMetadata extends BaseObject
 	}
 	
 	
+	public String getCurrentWizardScreenName()
+	{
+		return currentWizardScreenName.get();
+	}
+	
 	public String getProjectName()
 	{
 		return projectName.get();
@@ -127,6 +132,7 @@ public class ProjectMetadata extends BaseObject
 	void clear()
 	{
 		super.clear();
+		currentWizardScreenName = new StringData();
 		projectName = new StringData();
 		projectScope = new StringData();
 		shortProjectScope = new StringData();
@@ -140,6 +146,7 @@ public class ProjectMetadata extends BaseObject
 		latitude = new FloatData();
 		longitude = new FloatData();
 		
+		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
 		addField(TAG_PROJECT_SCOPE, projectScope);
 		addField(TAG_SHORT_PROJECT_SCOPE, shortProjectScope);
@@ -184,6 +191,7 @@ public class ProjectMetadata extends BaseObject
 		addField(PSEUDO_TAG_DIAGRAM_FONT_SIZE, diagramFontSizeValue);
 	}
 
+	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
 	public static final String TAG_PROJECT_NAME = "ProjectName";
 	public static final String TAG_PROJECT_SCOPE = "ProjectScope";
 	public static final String TAG_SHORT_PROJECT_SCOPE = "ShortProjectScope";
@@ -215,6 +223,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamilyValue";
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
 
+
+	StringData currentWizardScreenName;
 
 	StringData projectName;
 	StringData projectScope;

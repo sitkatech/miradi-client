@@ -66,7 +66,7 @@ public class TestDiagramFactor extends EAMTestCase
 		assertFalse(target.canHaveObjectives());
 	}
 
-	public void testIndicator()
+	public void testIndicator() throws Exception
 	{
 		EAM.mainWindow = new MainWindow(project);
 		IdList indicators = directThreat.getIndicators();

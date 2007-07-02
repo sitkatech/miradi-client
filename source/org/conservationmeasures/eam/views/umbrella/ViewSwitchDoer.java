@@ -3,29 +3,21 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
+
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.MainWindowDoer;
-import org.conservationmeasures.eam.wizard.WizardManager;
 
-public class JumpDoer extends MainWindowDoer
+abstract public class ViewSwitchDoer extends MainWindowDoer
 {
-	public JumpDoer(Class actionClassToUse)
-	{
-		actionClass = actionClassToUse;
-	}
-	
+	abstract String getViewName();
+
 	public boolean isAvailable()
 	{
-		if (!getProject().isOpen()) 
-			return false;
-		
-		WizardManager wizardManager = getWizardManager();
-		return wizardManager.isValidStep(actionClass);
+		return getProject().isOpen();
 	}
 
 	public void doIt() throws CommandFailedException
@@ -33,14 +25,18 @@ public class JumpDoer extends MainWindowDoer
 		if(!isAvailable())
 			return;
 		
+		String viewName = getViewName();
+		
+		if(getProject().getCurrentView().equals(viewName))
+			return;
+		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			getWizardManager().setStep(actionClass);
+			getMainWindow().getWizardManager().setOverViewStep(viewName);
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
-			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
 		finally
@@ -48,11 +44,4 @@ public class JumpDoer extends MainWindowDoer
 			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
-
-	private WizardManager getWizardManager()
-	{
-		return getMainWindow().getWizardManager();
-	}
-
-	Class actionClass;
 }

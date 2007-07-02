@@ -13,8 +13,11 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlFormEventHandler;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
@@ -102,7 +105,17 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	{
 		try
 		{
-			getWizard().control(controlName);
+			WizardManager wizardManager = getMainWindow().getWizardManager();
+			SkeletonWizardStep step = wizardManager.findStep(wizardManager.getCurrentStepName());
+			Class destinationStepClass = wizardManager.findControlTargetStep(controlName, step);
+			if (destinationStepClass==null)
+			{
+				String errorText = "Control ("+ controlName +") not found for step: " + wizardManager.getStepName(step);
+				reportError(EAM.text(errorText));
+			}
+			
+			navigateToStep(destinationStepClass);
+			getMainWindow().updateActionsAndStatusBar();
 		}
 		catch (Exception e)
 		{
@@ -111,6 +124,29 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 			EAM.logException(e);
 		}
 	}
+
+	private void navigateToStep(Class destinationStepClass) throws Exception
+	{
+		Project project = getMainWindow().getProject();
+		project.executeCommand(new CommandBeginTransaction());
+		try
+		{
+			WizardManager wizardManager = getMainWindow().getWizardManager();
+			wizardManager.setStep(destinationStepClass);
+		}
+		finally
+		{
+			project.executeCommand(new CommandEndTransaction());
+		}
+	}
+	
+	private void reportError(String msg)
+	{
+		EAM.logError(msg);
+		EAM.errorDialog(msg);
+	}
+
+
 	
 	SkeletonWizardStep createControl(String controlName , Class controlStep)
 	{

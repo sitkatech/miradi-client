@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.actions.ActionWizardPrevious;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
 public class WizardPanel extends JPanel
@@ -48,26 +47,6 @@ public class WizardPanel extends JPanel
 		repaint();
 	} 
 	
-	public void control(String controlName) throws Exception
-	{
-		SkeletonWizardStep step = wizardManager.findStep(getCurrentStepName());
-		Class destinationStepClass = wizardManager.findControlTargetStep(controlName, step);
-		if (destinationStepClass==null)
-		{
-			String errorText = "Control ("+ controlName +") not found for step: " + wizardManager.getStepName(step);
-			reportError(EAM.text(errorText));
-		}
-
-		wizardManager.setStep(destinationStepClass);
-		getMainWindow().updateActionsAndStatusBar();
-	}
-
-	private void reportError(String msg)
-	{
-		EAM.logError(msg);
-		EAM.errorDialog(msg);
-	}
-
 	public void refresh() throws Exception
 	{
 		SkeletonWizardStep stepClass = wizardManager.findStep(getCurrentStepName());

@@ -5,33 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.commands.CommandSwitchView;
-import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.ProjectDoer;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 
-public class ViewThreatMatrix extends ProjectDoer
+public class ViewThreatMatrix extends ViewSwitchDoer
 {
-	public boolean isAvailable()
+	String getViewName()
 	{
-		return getProject().isOpen();
+		return ThreatMatrixView.getViewName();
 	}
-
-	public void doIt() throws CommandFailedException
-	{
-		if(!isAvailable())
-			return;
-		
-		try
-		{
-			getProject().executeCommand(new CommandSwitchView(ThreatMatrixView.getViewName()));
-		}
-		catch(AlreadyInThatViewException ignore)
-		{
-			// not really a problem
-		}
-	
-	}
-
 }

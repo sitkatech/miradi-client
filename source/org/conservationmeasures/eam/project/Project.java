@@ -69,7 +69,6 @@ import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
-import org.conservationmeasures.eam.views.noproject.NoProjectView;
 
 
 public class Project
@@ -530,7 +529,7 @@ public class Project
 		{
 			EAM.logException(e);
 		}
-		forceMainWindowToSwitchViews(NoProjectView.getViewName());
+		
 	}
 	
 	static public boolean isValidProjectFilename(String candidate)
