@@ -57,6 +57,11 @@ abstract public class DiagramPageList extends JList
 		return objectType;
 	}
 	
+	public int getListSize()
+	{
+		return getModel().getSize();
+	}
+	
 	abstract public boolean isResultsChainPageList();
 	
 	abstract public boolean isConceptualModelPageList();

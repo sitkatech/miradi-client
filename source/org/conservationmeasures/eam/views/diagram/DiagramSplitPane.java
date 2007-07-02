@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -65,14 +64,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 	private ORefList getDiagramObjects(int objectType) throws Exception
 	{
 		EAMObjectPool pool = project.getPool(objectType);
-		if (pool.getORefList().size()== 0 && ObjectType.CONCEPTUAL_MODEL_DIAGRAM == objectType)
-		{
-			DiagramObject newlyCreated = new DiagramObjectCreator(project).createlDiagramObject(objectType);
-			setViewDataCurrentDiagramObjectRef(newlyCreated.getRef());
-		}
-		 
-		ORefList list = pool.getORefList();
-		return list;
+		return pool.getORefList();
 	}
 	
 	public static DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
@@ -95,7 +87,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 		return scrollPane;
 	}
 	
-	protected JSplitPane createLeftPanel(int objectType)
+	protected JSplitPane createLeftPanel(int objectType) throws Exception
 	{
 		legendPanel = createLegendPanel(mainWindow);
 		scrollableLegendPanel = createLegendScrollPane();
@@ -108,6 +100,21 @@ abstract public class DiagramSplitPane extends JSplitPane
 		leftSideSplit.setBottomComponent(scrollableLegendPanel);
 		
 		return leftSideSplit;
+	}
+
+	public void setDefaultSelection() throws Exception
+	{
+		ViewData viewData = project.getCurrentViewData();
+		ORef currentDiagramObjectRef = viewData.getCurrentDiagramRef();
+		if (! currentDiagramObjectRef.isInvalid())
+		{
+			DiagramObject diagramObject = (DiagramObject) project.findObject(currentDiagramObjectRef);
+			selectionPanel.setSelectedValue(diagramObject, true);
+		}
+		else if (selectionPanel.getListSize() > 0)
+		{
+			selectionPanel.setSelectedIndex(0);
+		}
 	}
 	
 	public DiagramLegendPanel getLegendPanel()
@@ -183,7 +190,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 
 		public void valueChanged(ListSelectionEvent event)
 		{
-			setCurrentDiagram();	
+			setCurrentDiagram();
 		}
 
 		private void setCurrentDiagram()

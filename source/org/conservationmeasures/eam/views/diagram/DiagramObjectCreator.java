@@ -18,7 +18,7 @@ public class DiagramObjectCreator
 		project = projectToUse;
 	}
 
- 	public DiagramObject createlDiagramObject(int diagramObjectType) throws Exception
+ 	public DiagramObject createDiagramObject(int diagramObjectType) throws Exception
  	{
  		CommandCreateObject createCommand = new CommandCreateObject(diagramObjectType);
  		project.executeCommand(createCommand);

@@ -43,21 +43,14 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 	
 	public DiagramPanel(MainWindow mainWindowToUse, int objectType) throws Exception
 	{
-		try
-		{
-			mainWindow = mainWindowToUse;
-			project = mainWindow.getProject();
-			diagramSplitter = createDiagramSplitter(objectType);
-			add(diagramSplitter);
-			project.addCommandExecutedListener(this);
-		}
-		catch (Exception e)
-		{
-			dispose();
-			throw e;
-		}
+		mainWindow = mainWindowToUse;
+		project = mainWindow.getProject();
+		diagramSplitter = createDiagramSplitter(objectType);
+		add(diagramSplitter);
+		project.addCommandExecutedListener(this);
+		getDiagramSplitPane().setDefaultSelection();
 	}
-	
+
 	public void dispose()
 	{
 		super.dispose();

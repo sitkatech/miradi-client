@@ -50,6 +50,11 @@ public class ORef
 		return objectType;
 	}
 	
+	public boolean isInvalid()
+	{
+		return equals(INVALID);
+	}
+	
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof ORef))
@@ -81,5 +86,4 @@ public class ORef
 	
 	private int objectType;
 	private BaseId objectId;
-	
 }
