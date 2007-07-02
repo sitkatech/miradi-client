@@ -67,7 +67,6 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
-import org.conservationmeasures.eam.views.diagram.DiagramObjectCreator;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 
 
@@ -431,7 +430,7 @@ public class Project
 		threatRatingFramework.createDefaultObjectsIfNeeded();
 
 		if (getConceptualModelDiagramPool().getORefList().size() == 0)
-			new DiagramObjectCreator(this).createDiagramObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+			createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 	
 	private void createProjectMetadata() throws Exception
