@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
-import java.awt.Toolkit;
-
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.text.BadLocationException;
@@ -46,7 +44,12 @@ public class ObjectStringInputField extends ObjectTextInputField
 				if (index>=0)
 				{
 					e.getEdit().undo();
-					Toolkit.getDefaultToolkit().beep();
+					
+					// FIXME: Avoid beeping when loading legacy projects
+					// Also similar code in ObjectStringInputField, 
+					// ObjectAdjustableStringInputField, and 
+					// UiTextFieldWithLengthLimit
+					//Toolkit.getDefaultToolkit().beep();
 				}
 			}
 			catch(BadLocationException e1)

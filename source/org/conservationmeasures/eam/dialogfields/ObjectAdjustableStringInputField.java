@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
-import java.awt.Toolkit;
-
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.text.Document;
@@ -34,7 +32,11 @@ public class ObjectAdjustableStringInputField extends ObjectStringInputField
 			if (document.getLength()<=columns)
 				return;
 			e.getEdit().undo();
-			Toolkit.getDefaultToolkit().beep();
+			// FIXME: Avoid beeping when loading legacy projects
+			// Also similar code in ObjectStringInputField, 
+			// ObjectAdjustableStringInputField, and 
+			// UiTextFieldWithLengthLimit
+			//Toolkit.getDefaultToolkit().beep();
 		}
 	}
 	
