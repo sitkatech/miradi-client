@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.CardLayout;
+import java.awt.BorderLayout;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -62,9 +62,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 			ORef diagramObjectRef = diagramObjectRefList.get(i);
 			DiagramObject diagramObject = (DiagramObject) project.findObject(diagramObjectRef);
 			DiagramComponent diagramComponentToAdd = createDiagram(mainWindow, diagramObject);
-
-			String cardName = diagramObjectRef.toString();
-			diagramComponentCards.add(diagramComponentToAdd, cardName);
+			diagramComponentCards.addDiagram(diagramComponentToAdd);
 		}
 	
 		return diagramComponentCards;
@@ -163,14 +161,22 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 	{
 		public DiagramCards()
 		{
-			super(new CardLayout());
+			super(new BorderLayout());
 			cards = new Vector();
 		}
 		
-		public void add(DiagramComponent diagramComponent, String name)
+		public void showDiagram(ORef ref)
 		{
-			super.add(diagramComponent, name);
+			removeAll();
+			DiagramComponent diagramComponent = findByRef(ref);
+			if (diagramComponent != null)
+				add(diagramComponent);
 			
+			invalidate();
+		}
+		
+		public void addDiagram(DiagramComponent diagramComponent)
+		{
 			cards.add(diagramComponent);
 		}
 
@@ -210,9 +216,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 		setCurrentDiagramObjectRef(diagramObjectRef);
 		DiagramObject diagramObject = diagramComponent.getDiagramModel().getDiagramObject();
-		CardLayout cardLayout = (CardLayout) diagramCards.getLayout();
-		String cardName = diagramObjectRef.toString();
-		cardLayout.show(diagramCards, cardName);
+		diagramCards.showDiagram(diagramObjectRef);
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
 		selectionPanel.setSelectedValue(diagramObject, true);
 	}
