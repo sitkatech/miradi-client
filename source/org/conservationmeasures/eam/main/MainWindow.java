@@ -177,10 +177,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		getContentPane().removeAll();
 		
-		spliterPane = new ViewSplitPane(wizardPanel, viewHolder);
-		spliterPane.setResizeWeight(.5);
-		spliterPane.setDividerSize(15);
-		spliterPane.setDividerLocation(getHeight()/2);
+		spliterPane = new ViewSplitPane(this, wizardPanel, viewHolder);
 
 		getContentPane().add(toolBarBox, BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(spliterPane, BorderLayout.CENTER);

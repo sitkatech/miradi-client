@@ -29,6 +29,11 @@ public class PersistentSplitPane extends JSplitPane
 		setBottomComponent(bottomPanel);
 		setFocusable(false);
 	
+		restoreSavedLocation();
+	}
+	
+	public void restoreSavedLocation()
+	{
 		int splitterLocation = getSplitterLocation(splitterName);
 		setDividerLocationWithoutNotifications(splitterLocation);
 	}
@@ -52,6 +57,11 @@ public class PersistentSplitPane extends JSplitPane
 	private int getMainHeight()
 	{
 		return mainComponentSplitted.getHeight();
+	}
+	
+	public void saveCurrentLocation()
+	{
+		saveLocation(getDividerLocation());
 	}
 
 	private void saveLocation(int location)

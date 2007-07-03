@@ -7,13 +7,13 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.Component;
 
-import javax.swing.JSplitPane;
+import org.conservationmeasures.eam.main.MainWindow;
 
-public class ViewSplitPane extends JSplitPane
+public class ViewSplitPane extends PersistentSplitPane
 {
-	public ViewSplitPane(Component topPanel, Component bottomPanel) 
+	public ViewSplitPane(MainWindow mainWindow, Component topPanel, Component bottomPanel) 
 	{
-		super(JSplitPane.VERTICAL_SPLIT);
+		super(mainWindow, mainWindow, MAIN_SPLITTER, topPanel, bottomPanel);
 		setOneTouchExpandable(true);
 		setDividerSize(15);
 		setResizeWeight(.5);
@@ -21,4 +21,6 @@ public class ViewSplitPane extends JSplitPane
 		setBottomComponent(bottomPanel);
 		setFocusable(false);
 	}
+	
+	static final String MAIN_SPLITTER = "MainSplitter";
 }
