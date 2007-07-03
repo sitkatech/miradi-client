@@ -9,13 +9,13 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
-import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
 
 public class TextBoxIcon extends EamIcon
 {
 	FactorRenderer getRenderer()
 	{
-		return new RectangleRenderer();
+		return new RoundRectangleRenderer();
 	}
 	
 	Color getIconColor()
