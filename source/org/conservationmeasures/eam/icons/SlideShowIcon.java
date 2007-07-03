@@ -24,10 +24,10 @@ public class SlideShowIcon implements Icon
 	}
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
-		g.setColor(new Color(237, 185, 0));
-		g.fillOval(x, y , WIDTH, HEIGHT);
 		g.setColor(Color.BLACK);
-		g.drawOval(x, y , WIDTH, HEIGHT);
+		g.drawRect(x, y , WIDTH/2, HEIGHT/3);
+		g.drawRect(x + WIDTH/4, y + HEIGHT/4, WIDTH/2, HEIGHT/3);
+		g.drawRect(x + WIDTH/2, y + HEIGHT/2, WIDTH/2, HEIGHT/3);
 	}
 	
 	protected static final int WIDTH = 14;
