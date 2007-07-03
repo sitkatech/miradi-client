@@ -51,6 +51,7 @@ public class ResultsChainCreatorHelper
 	public BaseId createResultsChain() throws Exception
 	{
 			DiagramFactor[] diagramFactors = getSelectedAndRelatedDiagramFactors();
+			DiagramLink[] diagramLinks = getDiagramLinksInChain();
 			CommandCreateObject createResultsChain = new CommandCreateObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
 			project.executeCommand(createResultsChain);
 			
@@ -63,7 +64,6 @@ public class ResultsChainCreatorHelper
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			project.executeCommand(addFactorsToChain);
 
-			DiagramLink[] diagramLinks = getDiagramLinksInChain();
 			DiagramFactorLinkId[] clonedDiagramLinkIds = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
 			IdList diagramLinkList = new IdList(clonedDiagramLinkIds);
 			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
