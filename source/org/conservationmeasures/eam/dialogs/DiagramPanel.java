@@ -313,7 +313,7 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 
 	private int getContentType()
 	{
-		return getDiagramSplitPane().getDiagramPageList().getContentType();
+		return getDiagramSplitPane().getDiagramPageList().getManagedDiagramType();
 	}
 	
 

@@ -12,7 +12,7 @@ public class ResultsChainPageList extends DiagramPageList
 {
 	public ResultsChainPageList(Project project)
 	{
-		super(project, ObjectType.RESULTS_CHAIN_DIAGRAM);
+		super(project);
 	}
 
 	public boolean isConceptualModelPageList()
@@ -23,5 +23,10 @@ public class ResultsChainPageList extends DiagramPageList
 	public boolean isResultsChainPageList()
 	{
 		return true;
+	}
+
+	public int getManagedDiagramType()
+	{
+		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
 }

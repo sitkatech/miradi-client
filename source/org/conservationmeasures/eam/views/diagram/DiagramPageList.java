@@ -20,11 +20,10 @@ import org.conservationmeasures.eam.project.Project;
 
 abstract public class DiagramPageList extends JList
 {
-	public DiagramPageList(Project projectToUse, int objectTypeToUse)
+	public DiagramPageList(Project projectToUse)
 	{
 		super();
 		project = projectToUse;
-		objectType = objectTypeToUse;
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
 	}
@@ -46,15 +45,10 @@ abstract public class DiagramPageList extends JList
 
 	public void fillList()
 	{
-		EAMObjectPool pool = project.getPool(objectType);
+		EAMObjectPool pool = project.getPool(getManagedDiagramType());
 		ORefList refList = pool.getORefList();
 		BaseObject[] diagramObjects = project.getObjectManager().findObjects(refList);
 		setListData(diagramObjects);
-	}
-	
-	public int getContentType()
-	{
-		return objectType;
 	}
 	
 	public int getListSize()
@@ -66,6 +60,7 @@ abstract public class DiagramPageList extends JList
 	
 	abstract public boolean isConceptualModelPageList();
 	
+	abstract public int getManagedDiagramType();
+	
 	Project project;
-	int objectType;
 }

@@ -380,7 +380,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		for (int i = 0; i < getTabCount(); ++i)
 		{
 			DiagramPanel panel = (DiagramPanel)getTabContents(i);
-			int diagramObjectType = panel.getDiagramSplitPane().getDiagramPageList().getContentType();
+			int diagramObjectType = panel.getDiagramSplitPane().getDiagramPageList().getManagedDiagramType();
 			if (diagramObjectType == ref.getObjectType())
 				return i;
 		}
