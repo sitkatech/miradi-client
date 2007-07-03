@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.monitoring.wizard;
 
+import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
 import org.conservationmeasures.eam.wizard.MonitoringPlanWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -13,5 +14,15 @@ public class MonitoringPlanOverviewStep extends MonitoringPlanWizardStep
 	public MonitoringPlanOverviewStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
+	}
+
+	public String getProcessStepTitle()
+	{
+		return "";
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionViewMonitoring.class;
 	}
 }

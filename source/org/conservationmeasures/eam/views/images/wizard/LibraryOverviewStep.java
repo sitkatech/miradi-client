@@ -6,6 +6,7 @@
 
 package org.conservationmeasures.eam.views.images.wizard;
 
+import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.views.library.LibraryView;
 import org.conservationmeasures.eam.wizard.SplitWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -15,6 +16,17 @@ public class LibraryOverviewStep extends SplitWizardStep
 	public LibraryOverviewStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse, LibraryView.getViewName());
+	}
+
+
+	public String getProcessStepTitle()
+	{
+		return "";
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionViewImages.class;
 	}
 
 }

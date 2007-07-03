@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.budget.wizard;
 
+import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.wizard.FinancialWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -13,5 +14,15 @@ public class FinancialOverviewStep extends FinancialWizardStep
 	public FinancialOverviewStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
+	}
+
+	public String getProcessStepTitle()
+	{
+		return "";
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionViewBudget.class;
 	}
 }

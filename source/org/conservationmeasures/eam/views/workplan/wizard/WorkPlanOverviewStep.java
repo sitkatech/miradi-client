@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.workplan.wizard;
 
+import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WorkPlanWizardStep;
 
@@ -13,5 +14,15 @@ public class WorkPlanOverviewStep extends WorkPlanWizardStep
 	public WorkPlanOverviewStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
+	}
+
+	public String getProcessStepTitle()
+	{
+		return "";
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionViewWorkPlan.class;
 	}
 }
