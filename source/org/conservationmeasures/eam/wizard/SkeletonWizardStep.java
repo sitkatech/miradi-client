@@ -32,6 +32,16 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	abstract public void refresh() throws Exception;
 
+	public String getProcessStepTitle()
+	{
+		return "Step 2B. Strategically Select Activities";
+	}
+
+	public String getWizardScreenTitle()
+	{
+		return getHtmlBaseName();
+	}
+
 	public WizardPanel getWizard()
 	{
 		return wizard;

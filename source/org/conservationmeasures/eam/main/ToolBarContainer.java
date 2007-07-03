@@ -11,18 +11,24 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.wizard.WizardTitlePanel;
+
 public class ToolBarContainer extends JPanel
 {
-	public ToolBarContainer()
+	public ToolBarContainer(WizardTitlePanel wizardTitlePanelToUse)
 	{
 		super(new BorderLayout());
+		wizardTitlePanel = wizardTitlePanelToUse;
+
 	}
 	
 	public void setToolBar(JToolBar toolBarToUse)
 	{
 		clear();
 		toolBar = toolBarToUse;
-		add(toolBar);
+		add(toolBar, BorderLayout.CENTER);
+		
+		add(wizardTitlePanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void clear()
@@ -34,4 +40,5 @@ public class ToolBarContainer extends JPanel
 	}
 
 	JComponent toolBar;
+	private WizardTitlePanel wizardTitlePanel;
 }

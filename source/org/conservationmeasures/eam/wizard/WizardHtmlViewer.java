@@ -8,16 +8,15 @@ package org.conservationmeasures.eam.wizard;
 
 import javax.swing.text.html.StyleSheet;
 
-import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.HyperlinkHandler;
 
-public class WizardHtmlViewer extends HtmlFormViewer
+public class WizardHtmlViewer extends MiradiHtmlViewer
 {
 	public WizardHtmlViewer(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler)
 	{
-		super(mainWindow, "", hyperLinkHandler);
+		super(mainWindow, hyperLinkHandler);
 		setBackground(AppPreferences.WIZARD_BACKGROUND);
 	}
 
@@ -36,20 +35,5 @@ public class WizardHtmlViewer extends HtmlFormViewer
 	 */
 	final static String[] rules = {
 		"body {margin: 10; background-color: " + AppPreferences.WIZARD_BACKGROUND_FOR_CSS + ";}",
-		"code {}",
-		"  .viewname { font-size: 125%; font-weight: bold }",
-		"  .appname { font-size: 200%; font-weight: bold }",
-		"  .apptagline { font-size: 110%; font-weight: bold }",
-		"  .processsection { font-size: 120%; }",
-		"  .taskheading { font-size: 110%; font-weight: bold; font-style: italics; }",
-		"  .nextsteps { font-weight: 700; font-size: 100%;}",
-		"  .navigation { background-color: #eeeeee; border-width: 1; border-color: black; font-size: 100%; }",
-		"  .hintheading { font-style: italics; font-weight: bold; font-size: 100%;}",
-		"  .task {font-weight: bold; font-size: 100%;}",
-		"  .toolbarbutton {color: #A06020; font-weight: bold; font-size: 100%;}",
-		"  .hint {font-style: italics; font-size: 100%;}",
-		"  .definition {font-style: italics; font-size: 100%;}",
-		"  .intro {font-size: 120%;}",
-		"  .introdefinition {font-style: italics; font-size: 120%;}",
 	};
 }

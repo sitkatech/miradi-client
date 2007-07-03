@@ -72,6 +72,7 @@ import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
+import org.conservationmeasures.eam.wizard.WizardTitlePanel;
 import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
 
@@ -104,20 +105,18 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
 		
+		WizardTitlePanel wizardTitlePanel = new WizardTitlePanel(this);
 		mainMenuBar = new MainMenuBar(actions);
-		toolBarBox = new ToolBarContainer();
+		toolBarBox = new ToolBarContainer(wizardTitlePanel);
 		mainStatusBar = new MainStatusBar();
 		updateTitle();
 		setSize(new Dimension(900, 700));
 		setJMenuBar(mainMenuBar);
 		getContentPane().setLayout(new BorderLayout());
-		getContentPane().add(toolBarBox, BorderLayout.BEFORE_FIRST_LINE);
-		getContentPane().add(mainStatusBar, BorderLayout.AFTER_LAST_LINE);
 
 		addWindowListener(new WindowEventHandler());
 
-		wizardPanel = createWizardPanel();
-
+		wizardPanel = createWizardPanel(wizardTitlePanel);
 		
 		noProjectView = new NoProjectView(this);
 		summaryView = new SummaryView(this);
@@ -165,9 +164,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void hideDivider()
 	{
+		getContentPane().removeAll();
 		if (spliterPane!=null)
 		{
-			getContentPane().remove(spliterPane);
 			spliterPane = null;
 		}
 		
@@ -176,13 +175,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void showDivider()
 	{
-		getContentPane().remove(wizardPanel);
-
+		getContentPane().removeAll();
+		
 		spliterPane = new ViewSplitPane(wizardPanel, viewHolder);
 		spliterPane.setResizeWeight(.5);
 		spliterPane.setDividerSize(15);
 		spliterPane.setDividerLocation(getHeight()/2);
+
+		getContentPane().add(toolBarBox, BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(spliterPane, BorderLayout.CENTER);
+		getContentPane().add(mainStatusBar, BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void restorePreviousDividerLocation()
@@ -198,12 +200,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return 0;
 	}
 
-	private WizardPanel createWizardPanel() throws Exception
+	private WizardPanel createWizardPanel(WizardTitlePanel wizardTitlePanel) throws Exception
 	{
-		return new WizardPanel(this);
+		return new WizardPanel(this, wizardTitlePanel);
 	}
-	
-	WizardPanel wizardPanel;
 	
 	public WizardPanel getWizard()
 	{
@@ -810,6 +810,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	private JSplitPane spliterPane;
 	private WizardManager wizardManager;
+	private WizardPanel wizardPanel;
 	
 	private int existingCommandListenerCount;
 	private boolean preventActionUpdatesFlag;

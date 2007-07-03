@@ -21,9 +21,11 @@ import org.conservationmeasures.eam.main.MainWindow;
 
 public class WizardPanel extends JPanel
 {
-	public WizardPanel(MainWindow mainWindowToUse) throws Exception
+	public WizardPanel(MainWindow mainWindowToUse, WizardTitlePanel wizardTitlePanelToUse) throws Exception
 	{
 		super(new BorderLayout());
+		wizardTitlePanel = wizardTitlePanelToUse;
+		
 		setBackground(AppPreferences.WIZARD_BACKGROUND);
 		mainWindow = mainWindowToUse;
 		wizardManager = mainWindow.getWizardManager();
@@ -32,8 +34,11 @@ public class WizardPanel extends JPanel
 		wizardManager.setUpSteps(this);
 	}
 
-	public void setContents(JPanel contents)
+	public void setContents(SkeletonWizardStep contents)
 	{
+		setStepTitle(contents.getProcessStepTitle());
+		setScreenTitle(contents.getWizardScreenTitle());
+		
 		removeAll();
 		add(contents, BorderLayout.CENTER);
 		add(navigationButtons, BorderLayout.AFTER_LAST_LINE);
@@ -47,6 +52,16 @@ public class WizardPanel extends JPanel
 		SkeletonWizardStep stepClass = wizardManager.getCurrentStep();
 		stepClass.refresh();
 		stepClass.validate();
+	}
+	
+	public void setStepTitle(String text)
+	{
+		wizardTitlePanel.setStepTitle(text);
+	}
+	
+	public void setScreenTitle(String text)
+	{
+		wizardTitlePanel.setScreenTitle(text);
 	}
 	
 	public MainWindow getMainWindow()
@@ -73,5 +88,6 @@ public class WizardPanel extends JPanel
 	
 	protected MainWindow mainWindow;
 	private WizardManager wizardManager;
+	private WizardTitlePanel wizardTitlePanel;
 	Component navigationButtons;
 }
