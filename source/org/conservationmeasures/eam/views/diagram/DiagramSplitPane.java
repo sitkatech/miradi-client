@@ -37,7 +37,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 	{
 		mainWindow = mainWindowToUse;
 		project = mainWindow.getProject();
-		diagramCards = createDiagramCards(objectType);
+		setCreatedCards(objectType);
 		
 		setLeftComponent(createLeftPanel(objectType));
 		setRightComponent(new FastScrollPane(diagramCards));
@@ -46,6 +46,11 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 		int scrollBarWidth = ((Integer)UIManager.get("ScrollBar.width")).intValue();
 		setDividerLocation(scrollableLegendPanel.getPreferredSize().width + scrollBarWidth);
+	}
+
+	private void setCreatedCards(int objectType) throws Exception
+	{
+		diagramCards = createDiagramCards(objectType);
 	}
 	
 	public void dispose()
@@ -170,9 +175,9 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 			removeAll();
 			DiagramComponent diagramComponent = findByRef(ref);
 			if (diagramComponent != null)
-				add(diagramComponent);
+				add(diagramComponent, BorderLayout.CENTER);
 			
-			invalidate();
+			repaint();
 		}
 		
 		public void addDiagram(DiagramComponent diagramComponent)
@@ -212,7 +217,11 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 	{
 		DiagramComponent diagramComponent = diagramCards.findByRef(diagramObjectRef);
 		if (diagramComponent == null)
+		{
+			setCurrentDiagramObjectRef(diagramObjectRef);
+			diagramCards.showDiagram(diagramObjectRef);
 			return;
+		}
 		
 		setCurrentDiagramObjectRef(diagramObjectRef);
 		DiagramObject diagramObject = diagramComponent.getDiagramModel().getDiagramObject();
@@ -249,7 +258,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		if (getContentType() != objectTypeFromCommand)
 			return;
 		
-		getDiagramPageList().fillList();
+		reload();
 	}
 
 	private void handleCommandCreateObject(CommandCreateObject commandCreateObject)
@@ -258,7 +267,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		if (getContentType() != objectTypeFromCommand)
 			return;
 		
-		getDiagramPageList().fillList();
+		reload();
 	}
 
 	private void handleCommandSetObjectData(CommandSetObjectData commandSetObjectData)
@@ -278,9 +287,6 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
 		ORef viewDataCurrentDiagramRef = getCurrentDiagramRef(viewData);
 		
-		if (viewDataCurrentDiagramRef.getObjectType() != getContentType())
-			return;
-
 		showCard(viewDataCurrentDiagramRef);
 	}
 
@@ -299,6 +305,21 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	private void reload()
+	{
+		try
+		{
+			setCreatedCards(getContentType());
+			getDiagramPageList().fillList();
+		}
+		catch (Exception e)
+		{
+			//FIXME do something with this catch
+			EAM.logException(e);
+		}
+		
 	}
 
 	private int getContentType()
