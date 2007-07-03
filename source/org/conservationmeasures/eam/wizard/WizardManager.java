@@ -365,34 +365,37 @@ public class WizardManager
 				StrategicPlanDevelopObjectivesStep.class, 	
 				StrategicPlanViewAllObjectives.class,
 
+				// STEP 2B
 				SelectChainStep.class,		
 				DevelopDraftStrategiesStep.class,
 				RankDraftStrategiesStep.class,
-				EditAllStrategiesStep.class,
-				
+				EditAllStrategiesStep.class,	
 				DiagramWizardResultsChainStep.class,
 				DiagramWizardConstructInitialResultsChain.class,
 				DiagramWizardCompleteResultsChainLinks.class,
 				DiagramWizardGoodResultsChainCriteriaReview.class,
 
+				// STEP 3A
 				MonitoringPlanOverviewStep.class,
 				MonitoringWizardFocusStep.class,
-				MonitoringWizardDefineIndicatorsStep.class,
 				
+				// STEP 3B
+				MonitoringWizardDefineIndicatorsStep.class,
 				MonitoringWizardEditIndicatorsStep.class,
 				
+				// STEP 4A
 				WorkPlanOverviewStep.class,
 				MonitoringWizardSelectMethodsStep.class,
 				WorkPlanDevelopActivitiesAndTasksStep.class,
 				WorkPlanDevelopMethodsAndTasksStep.class,
 				WorkPlanCreateResourcesStep.class,
 				WorkPlanAssignResourcesStep.class,
-				
 				FinancialOverviewStep.class, 
 				BudgetWizardAccountingAndFunding.class,
 				BudgetWizardBudgetDetail.class,
 				BudgetWizardDemo.class, 
 				
+				// NOT STEPS
 				ScheduleOverviewStep.class,
 				MapOverviewStep.class,
 				LibraryOverviewStep.class,

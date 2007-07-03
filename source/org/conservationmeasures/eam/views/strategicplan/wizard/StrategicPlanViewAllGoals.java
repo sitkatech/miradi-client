@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.strategicplan.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllGoals;
+import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.StrategicPlanWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -13,5 +15,15 @@ public class StrategicPlanViewAllGoals extends StrategicPlanWizardStep
 	public StrategicPlanViewAllGoals(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
+	}
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_2A;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpStrategicPlanViewAllGoals.class;
 	}
 }
