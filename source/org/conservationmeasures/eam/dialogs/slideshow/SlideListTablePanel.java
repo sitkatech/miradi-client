@@ -143,13 +143,15 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		
 		try
 		{
-			if (cmd.getFieldTag().equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES))
+			String tag = cmd.getFieldTag();
+			if (tag.equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES))
 			{
 				getProject().executeCommand(new CommandSetObjectData(slide.getRef(), Slide.TAG_DIAGRAM_LEGEND_SETTINGS, cmd.getDataValue()));
 			}
-				
-			if (cmd.getFieldTag().equals(ViewData.TAG_CURRENT_DIAGRAM_REF))
+			
+			if (tag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF) || tag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF))
 			{
+				//FIXME: check to see if the FIXME is correct
 				//FIXME: seems to be using TAG_CURRENT_TAB and not TAG_CURRENT_DIAGRAM_REF for a tab switch????
 				getProject().executeCommand(new CommandSetObjectData(slide.getRef(), Slide.TAG_DIAGRAM_OBJECT_REF, cmd.getDataValue()));
 			}
@@ -173,8 +175,9 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		if (cmd.getObjectType()!=ViewData.getObjectType())
 			return false;
 		
-		return cmd.getFieldTag().equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES) ||
-			cmd.getFieldTag().equals(ViewData.TAG_CURRENT_DIAGRAM_REF);
+		String tag = cmd.getFieldTag();
+		return tag.equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES) ||
+			tag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF) || tag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
 	}
 	
 	private boolean isSetDataForSlideShow(CommandExecutedEvent event)

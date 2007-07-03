@@ -67,9 +67,14 @@ public class ViewData extends BaseObject
 		return new Command[] {cmd};
 	}
 	
-	public ORef getCurrentDiagramRef()
+	public ORef getCurrentConceptualModelRef()
 	{
-		return currentDiagramObject.getRawRef();
+		return currentConceptualModelRef.getRawRef();
+	}
+	
+	public ORef getCurrentResutlstChainRef()
+	{
+		return currentResultsChainRef.getRawRef();
 	}
 	
 	public void setCurrentTab(int newTab) throws Exception
@@ -126,10 +131,12 @@ public class ViewData extends BaseObject
 		currentSortBy = new StringData();
 		currentSortDirecton = new StringData();
 		expandedNodesList = new ORefListData();
-		currentDiagramObject = new ORefData();
+		currentResultsChainRef = new ORefData();
+		currentConceptualModelRef = new ORefData();
 		diagramHiddenTypes = new CodeListData();
 		
-		addField(TAG_CURRENT_DIAGRAM_REF, currentDiagramObject);
+		addField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
+		addField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
 		addField(TAG_CURRENT_MODE, currentMode);
 		addField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
 		addField(TAG_CURRENT_TAB, currentTab);
@@ -138,8 +145,9 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 	}
-	
-	public static final String TAG_CURRENT_DIAGRAM_REF = "CurrentDiagramRef";
+
+	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
+	public static final String TAG_CURRENT_RESULTS_CHAIN_REF = "CurrentResultsChainRef";
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_CHAIN_MODE_FACTOR_REFS = "ChainModeFactorRefs";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
@@ -163,7 +171,8 @@ public class ViewData extends BaseObject
 	private ORefListData chainModeFactorRefs;
 	private StringData currentSortBy;
 	private StringData currentSortDirecton;
-	private ORefData currentDiagramObject;
+	private ORefData currentResultsChainRef;
+	private ORefData currentConceptualModelRef;
 	private ORefListData expandedNodesList;
 	CodeListData diagramHiddenTypes;
 }

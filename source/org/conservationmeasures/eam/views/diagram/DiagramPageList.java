@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -39,7 +40,7 @@ abstract public class DiagramPageList extends JList
 		{
 			fillList();
 			ViewData diagramViewData = project.getViewData(DiagramView.getViewName());
-			CommandSetObjectData setViewData = new CommandSetObjectData(diagramViewData.getRef(), ViewData.TAG_CURRENT_DIAGRAM_REF, diagramObject.getRef());
+			CommandSetObjectData setViewData = new CommandSetObjectData(diagramViewData.getRef(), getCurrentDiagramViewDataTag(), diagramObject.getRef());
 			project.executeCommand(setViewData);
 		}
 		catch (Exception e)
@@ -64,10 +65,21 @@ abstract public class DiagramPageList extends JList
 	private void setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
 	{
 		ViewData currentViewDat = project.getViewData(DiagramView.getViewName());
-		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(currentViewDat.getRef(), ViewData.TAG_CURRENT_DIAGRAM_REF, selectedRef);
+		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(currentViewDat.getRef(), getCurrentDiagramViewDataTag(), selectedRef);
 		project.executeCommand(setCurrentDiagramObject);
 	}
 
+	public String getCurrentDiagramViewDataTag()
+	{
+		if (getManagedDiagramType() == ObjectType.CONCEPTUAL_MODEL_DIAGRAM)
+			return ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF;
+		
+		if (getManagedDiagramType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
+			return ViewData.TAG_CURRENT_RESULTS_CHAIN_REF;
+		
+		return EAM.text("");
+	}
+	
 	public class DiagramObjectListSelectionListener  implements ListSelectionListener
 	{
 		public DiagramObjectListSelectionListener(Project projectToUse)

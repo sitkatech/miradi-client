@@ -42,7 +42,6 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		setLeftComponent(createLeftPanel(objectType));
 		setRightComponent(new FastScrollPane(diagramCards));
 		
-		//FIXME double check to make sure this line is in right sequence
 		project.addCommandExecutedListener(this);
 		
 		int scrollBarWidth = ((Integer)UIManager.get("ScrollBar.width")).intValue();
@@ -114,7 +113,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 	public void setDefaultSelection() throws Exception
 	{
 		ViewData viewData = project.getCurrentViewData();
-		ORef currentDiagramObjectRef = viewData.getCurrentDiagramRef();
+		ORef currentDiagramObjectRef = getCurrentDiagramRef(viewData);
 		if (! currentDiagramObjectRef.isInvalid())
 		{
 			DiagramObject diagramObject = (DiagramObject) project.findObject(currentDiagramObjectRef);
@@ -269,11 +268,11 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 
 	private void handleViewDataContentsChange(CommandSetObjectData commandSetObjectData)
 	{
-		if (commandSetObjectData.getFieldTag() != ViewData.TAG_CURRENT_DIAGRAM_REF)
+		if (commandSetObjectData.getFieldTag() != selectionPanel.getCurrentDiagramViewDataTag())
 			return;
 		
 		ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
-		ORef viewDataCurrentDiagramRef = viewData.getCurrentDiagramRef();
+		ORef viewDataCurrentDiagramRef = getCurrentDiagramRef(viewData);
 		
 		if (viewDataCurrentDiagramRef.getObjectType() != getContentType())
 			return;
@@ -301,6 +300,17 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 	private int getContentType()
 	{
 		return getDiagramPageList().getManagedDiagramType();
+	}
+	
+	private ORef getCurrentDiagramRef(ViewData viewData)
+	{
+		if (getContentType() == ObjectType.CONCEPTUAL_MODEL_DIAGRAM)
+			return viewData.getCurrentConceptualModelRef();
+		
+		if (getContentType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
+			return viewData.getCurrentResutlstChainRef();
+		
+		return ORef.INVALID;
 	}
 	
 	abstract public DiagramPageList createPageList(Project projectToUse);
