@@ -18,12 +18,12 @@ public class ActionToggleSlideShowPanel extends ViewAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Toggle Slide Show Panel");
+		return EAM.text("Action|Edit Slide Show");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Toggles Slide Show Panel");
+		return EAM.text("TT|Hides or shows the Slide Show editor");
 	}
 
 }
