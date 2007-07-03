@@ -55,7 +55,8 @@ abstract public class DiagramSplitPane extends JSplitPane
 			DiagramObject diagramObject = (DiagramObject) project.findObject(diagramObjectRef);
 			DiagramComponent diagramComponentToAdd = createDiagram(mainWindow, diagramObject);
 
-			diagramComponentCards.add(diagramComponentToAdd, diagramObject.toString());
+			String cardName = diagramObjectRef.toString();
+			diagramComponentCards.add(diagramComponentToAdd, cardName);
 		}
 	
 		return diagramComponentCards;
@@ -230,7 +231,7 @@ abstract public class DiagramSplitPane extends JSplitPane
 		setCurrentDiagramObjectRef(diagramObjectRef);
 		DiagramObject diagramObject = diagramComponent.getDiagramModel().getDiagramObject();
 		CardLayout cardLayout = (CardLayout) diagramCards.getLayout();
-		String cardName = diagramObject.toString();
+		String cardName = diagramObjectRef.toString();
 		cardLayout.show(diagramCards, cardName);
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
 		selectionPanel.setSelectedValue(diagramObject, true);
