@@ -358,6 +358,7 @@ public class WizardManager
 				DiagramWizardConstructChainsStep.class,	
 				DiagramWizardReviewModelAndAdjustStep.class,		
 				
+				// STEP 2A
 				StrategicPlanOverviewStep.class,
 				StrategicPlanDevelopGoalStep.class,
 				StrategicPlanViewAllGoals.class,
