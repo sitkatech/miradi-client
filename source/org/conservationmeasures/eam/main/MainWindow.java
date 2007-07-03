@@ -107,7 +107,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		WizardTitlePanel wizardTitlePanel = new WizardTitlePanel(this);
 		mainMenuBar = new MainMenuBar(actions);
-		toolBarBox = new ToolBarContainer(wizardTitlePanel);
+		toolBarBox = new ToolBarContainer();
 		mainStatusBar = new MainStatusBar();
 		updateTitle();
 		setSize(new Dimension(900, 700));

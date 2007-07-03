@@ -40,11 +40,18 @@ public class WizardPanel extends JPanel
 		setScreenTitle(contents.getWizardScreenTitle());
 		
 		removeAll();
+		if(shouldShowWizardTitles())
+			add(wizardTitlePanel, BorderLayout.BEFORE_FIRST_LINE);
 		add(contents, BorderLayout.CENTER);
 		add(navigationButtons, BorderLayout.AFTER_LAST_LINE);
 		allowSplitterToHideUsCompletely();
 		revalidate();
 		repaint();
+	}
+
+	private boolean shouldShowWizardTitles()
+	{
+		return mainWindow.getProject().isOpen();
 	} 
 	
 	public void refresh() throws Exception
