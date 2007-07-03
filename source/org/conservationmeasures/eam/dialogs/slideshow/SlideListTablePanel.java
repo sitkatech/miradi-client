@@ -149,7 +149,7 @@ public class SlideListTablePanel extends ObjectListTablePanel
 				getProject().executeCommand(new CommandSetObjectData(slide.getRef(), Slide.TAG_DIAGRAM_LEGEND_SETTINGS, cmd.getDataValue()));
 			}
 			
-			if (tag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF) || tag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF))
+			if (isDiagramType(tag))
 			{
 				//FIXME: check to see if the FIXME is correct
 				//FIXME: seems to be using TAG_CURRENT_TAB and not TAG_CURRENT_DIAGRAM_REF for a tab switch????
@@ -161,6 +161,11 @@ public class SlideListTablePanel extends ObjectListTablePanel
 			EAM.logException(e);
 			EAM.errorDialog("Unable to update slide:" + e.getMessage());
 		}
+	}
+
+	private boolean isDiagramType(String tag)
+	{
+		return tag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF) || tag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
 	}
 
 	private boolean doesSlideNeedToBeUpdated(CommandExecutedEvent event)
@@ -176,8 +181,7 @@ public class SlideListTablePanel extends ObjectListTablePanel
 			return false;
 		
 		String tag = cmd.getFieldTag();
-		return tag.equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES) ||
-			tag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF) || tag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
+		return (tag.equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES) || isDiagramType(tag));
 	}
 	
 	private boolean isSetDataForSlideShow(CommandExecutedEvent event)
