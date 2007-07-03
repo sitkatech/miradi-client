@@ -101,8 +101,10 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		selectionPanel.fillList();
 		
 		JSplitPane leftSideSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		leftSideSplit.setTopComponent(selectionPanel);
+		JScrollPane selectionScrollPane = new JScrollPane(selectionPanel);
+		leftSideSplit.setTopComponent(selectionScrollPane);
 		leftSideSplit.setBottomComponent(scrollableLegendPanel);
+		leftSideSplit.setDividerLocation(200);
 		
 		return leftSideSplit;
 	}
