@@ -8,9 +8,6 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.Component;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
@@ -19,22 +16,17 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
-import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 import org.conservationmeasures.eam.views.diagram.DiagramSplitPane;
 
-abstract public class DiagramPanel extends DisposablePanel implements CommandExecutedListener
+abstract public class DiagramPanel extends DisposablePanel 
 {
 	public DiagramPanel(MainWindow mainWindowToUse) throws Exception
 	{
@@ -42,14 +34,13 @@ abstract public class DiagramPanel extends DisposablePanel implements CommandExe
 		project = mainWindow.getProject();
 		diagramSplitter = createDiagramSplitter();
 		add(diagramSplitter);
-		project.addCommandExecutedListener(this);
 		getDiagramSplitPane().setDefaultSelection();
 	}
 
 	public void dispose()
 	{
 		super.dispose();
-		project.removeCommandExecutedListener(this);
+		diagramSplitter.dispose();
 	}
 	
 	public DiagramObject getDiagramObject()
@@ -223,82 +214,6 @@ abstract public class DiagramPanel extends DisposablePanel implements CommandExe
 	{
 		throw new RuntimeException("Not yet implemented");
 	}
-
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			handleCommandSetObjectData((CommandSetObjectData) event.getCommand());
-		
-		if (event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-			handleCommandCreateObject((CommandCreateObject) event.getCommand());
-		
-		if (event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-			handleCommandDeleteObject((CommandDeleteObject) event.getCommand());
-	}
-
-	private void handleCommandDeleteObject(CommandDeleteObject commandDeleteObject)
-	{
-		int objectTypeFromCommand = commandDeleteObject.getObjectType();
-		if (getContentType() != objectTypeFromCommand)
-			return;
-		
-		getDiagramSplitPane().getDiagramPageList().fillList();
-	}
-
-	private void handleCommandCreateObject(CommandCreateObject commandCreateObject)
-	{
-		int objectTypeFromCommand = commandCreateObject.getObjectType();
-		if (getContentType() != objectTypeFromCommand)
-			return;
-		
-		getDiagramSplitPane().getDiagramPageList().fillList();
-	}
-
-	private void handleCommandSetObjectData(CommandSetObjectData commandSetObjectData)
-	{
-		if (commandSetObjectData.getObjectType() == getContentType())
-			handleDiagramContentsChange(commandSetObjectData);
-		
-		if (commandSetObjectData.getObjectType()== ObjectType.VIEW_DATA)
-			handleViewDataContentsChange(commandSetObjectData);
-	}
-
-	private void handleViewDataContentsChange(CommandSetObjectData commandSetObjectData)
-	{
-		if (commandSetObjectData.getFieldTag() != ViewData.TAG_CURRENT_DIAGRAM_REF)
-			return;
-		
-		ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
-		ORef viewDataCurrentDiagramRef = viewData.getCurrentDiagramRef();
-		
-		if (viewDataCurrentDiagramRef.getObjectType() != getContentType())
-			return;
-
-		getDiagramSplitPane().showCard(viewDataCurrentDiagramRef);
-	}
-
-	private void handleDiagramContentsChange(CommandSetObjectData setCommand)
-	{
-		DiagramModel diagramModel = getDiagramModel();
-		if (diagramModel == null)
-			return;
-		
-		try
-		{			
-			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, diagramModel, getDiagramObject());
-			modelUpdater.commandSetObjectDataWasExecuted(setCommand);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-
-	private int getContentType()
-	{
-		return getDiagramSplitPane().getDiagramPageList().getManagedDiagramType();
-	}
-	
 
 	public DiagramSplitPane getDiagramSplitPane()
 	{

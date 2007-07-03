@@ -15,13 +15,18 @@ import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -29,7 +34,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 
-abstract public class DiagramSplitPane extends JSplitPane
+abstract public class DiagramSplitPane extends JSplitPane implements CommandExecutedListener
 {
 	public DiagramSplitPane(MainWindow mainWindowToUse, int objectType) throws Exception
 	{
@@ -37,12 +42,19 @@ abstract public class DiagramSplitPane extends JSplitPane
 		project = mainWindow.getProject();
 		diagramCards = createDiagramCards(objectType);
 		
-		
 		setLeftComponent(createLeftPanel(objectType));
 		setRightComponent(new FastScrollPane(diagramCards));
 		
+		//FIXME double check to make sure this line is in right sequence
+		project.addCommandExecutedListener(this);
+		
 		int scrollBarWidth = ((Integer)UIManager.get("ScrollBar.width")).intValue();
 		setDividerLocation(scrollableLegendPanel.getPreferredSize().width + scrollBarWidth);
+	}
+	
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
 	}
 	
 	private DiagramCards createDiagramCards(int objectType) throws Exception
@@ -121,6 +133,20 @@ abstract public class DiagramSplitPane extends JSplitPane
 	public DiagramLegendPanel getLegendPanel()
 	{
 		return legendPanel;
+	}
+	
+	public DiagramObject getDiagramObject()
+	{
+		return getDiagramModel().getDiagramObject();
+	}
+	
+	public DiagramModel getDiagramModel()
+	{
+		DiagramComponent diagram = getDiagramComponent();
+		if (diagram != null)
+			return getDiagramComponent().getDiagramModel();
+		
+		return null;
 	}
 	
 	public DiagramComponent getDiagramComponent()
@@ -245,6 +271,81 @@ abstract public class DiagramSplitPane extends JSplitPane
 	public DiagramPageList getDiagramPageList()
 	{
 		return selectionPanel;
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			handleCommandSetObjectData((CommandSetObjectData) event.getCommand());
+		
+		if (event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+			handleCommandCreateObject((CommandCreateObject) event.getCommand());
+		
+		if (event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			handleCommandDeleteObject((CommandDeleteObject) event.getCommand());
+	}
+
+	private void handleCommandDeleteObject(CommandDeleteObject commandDeleteObject)
+	{
+		int objectTypeFromCommand = commandDeleteObject.getObjectType();
+		if (getContentType() != objectTypeFromCommand)
+			return;
+		
+		getDiagramPageList().fillList();
+	}
+
+	private void handleCommandCreateObject(CommandCreateObject commandCreateObject)
+	{
+		int objectTypeFromCommand = commandCreateObject.getObjectType();
+		if (getContentType() != objectTypeFromCommand)
+			return;
+		
+		getDiagramPageList().fillList();
+	}
+
+	private void handleCommandSetObjectData(CommandSetObjectData commandSetObjectData)
+	{
+		if (commandSetObjectData.getObjectType() == getContentType())
+			handleDiagramContentsChange(commandSetObjectData);
+		
+		if (commandSetObjectData.getObjectType()== ObjectType.VIEW_DATA)
+			handleViewDataContentsChange(commandSetObjectData);
+	}
+
+	private void handleViewDataContentsChange(CommandSetObjectData commandSetObjectData)
+	{
+		if (commandSetObjectData.getFieldTag() != ViewData.TAG_CURRENT_DIAGRAM_REF)
+			return;
+		
+		ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
+		ORef viewDataCurrentDiagramRef = viewData.getCurrentDiagramRef();
+		
+		if (viewDataCurrentDiagramRef.getObjectType() != getContentType())
+			return;
+
+		showCard(viewDataCurrentDiagramRef);
+	}
+
+	private void handleDiagramContentsChange(CommandSetObjectData setCommand)
+	{
+		DiagramModel diagramModel = getDiagramModel();
+		if (diagramModel == null)
+			return;
+		
+		try
+		{			
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, diagramModel, getDiagramObject());
+			modelUpdater.commandSetObjectDataWasExecuted(setCommand);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	private int getContentType()
+	{
+		return getDiagramPageList().getManagedDiagramType();
 	}
 	
 	abstract public DiagramPageList createPageList(Project projectToUse);
