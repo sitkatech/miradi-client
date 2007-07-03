@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.monitoring.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
+import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.MonitoringPlanWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -14,5 +16,16 @@ public class MonitoringWizardEditIndicatorsStep  extends MonitoringPlanWizardSte
 	{
 		super(wizardToUse);
 	}
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_3B;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpMonitoringWizardEditIndicatorsStep.class;
+	}
+
 }
 

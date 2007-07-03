@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.monitoring.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardSelectMethodsStep;
+import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WorkPlanWizardStep;
 
@@ -14,4 +16,15 @@ public class MonitoringWizardSelectMethodsStep extends WorkPlanWizardStep
 	{
 		super(wizardToUse);
 	}
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_4A;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpMonitoringWizardSelectMethodsStep.class;
+	}
+
 }

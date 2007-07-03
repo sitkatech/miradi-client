@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.monitoring.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
+import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -14,5 +16,16 @@ public class MonitoringWizardFocusStep extends DiagramWizardStep
 	{
 		super(wizardToUse);
 	}
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_3A;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpMonitoringWizardFocusStep.class;
+	}
+
 }
 
