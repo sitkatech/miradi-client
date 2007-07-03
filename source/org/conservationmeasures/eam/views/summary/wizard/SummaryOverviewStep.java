@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.summary.wizard;
 
+import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.wizard.SummaryWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -15,5 +16,16 @@ public class SummaryOverviewStep extends SummaryWizardStep
 	{
 		super(panelToUse);
 	}
+
+	public String getProcessStepTitle()
+	{
+		return "";
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionViewSummary.class;
+	}
+	
 }
 

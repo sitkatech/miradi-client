@@ -9,10 +9,12 @@ import java.awt.BorderLayout;
 import java.net.URL;
 import java.util.Hashtable;
 
+import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.main.EAM;
@@ -32,6 +34,11 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	abstract public void refresh() throws Exception;
 
+	public Class getAssociatedActionClass()
+	{
+		return null;
+	}
+	
 	public String getProcessStepTitle()
 	{
 		return "Step 2B. Strategically Select Activities";
@@ -39,6 +46,13 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 
 	public String getWizardScreenTitle()
 	{
+		Class associatedActionClass = getAssociatedActionClass();
+		if(associatedActionClass != null)
+		{
+			EAMAction action = getMainWindow().getActions().get(associatedActionClass);
+			if(action != null)
+				return (String)action.getValue(Action.NAME);
+		}
 		return getHtmlBaseName();
 	}
 

@@ -11,6 +11,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.util.xml.XmlUtilities;
 
@@ -36,7 +37,10 @@ public class WizardTitlePanel extends JPanel
 	
 	public void setStepTitle(String text)
 	{
-		stepTitle.setText("<div class='processsteptitle'>" + XmlUtilities.getXmlEncoded(text) + "</div>");
+		String title = EAM.text("Intro to View");
+		if(text.length() > 0)
+			title = "Step " + XmlUtilities.getXmlEncoded(text);
+		stepTitle.setText("<div class='processsteptitle'>" + title + "</div>");
 	}
 	
 	public void setScreenTitle(String text)
