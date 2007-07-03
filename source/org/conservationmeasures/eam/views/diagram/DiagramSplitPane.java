@@ -104,7 +104,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		JScrollPane selectionScrollPane = new JScrollPane(selectionPanel);
 		leftSideSplit.setTopComponent(selectionScrollPane);
 		leftSideSplit.setBottomComponent(scrollableLegendPanel);
-		leftSideSplit.setDividerLocation(200);
+		leftSideSplit.setDividerLocation(100);
 		
 		return leftSideSplit;
 	}
@@ -115,12 +115,11 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		ORef currentDiagramObjectRef = getCurrentDiagramRef(viewData);
 		if (! currentDiagramObjectRef.isInvalid())
 		{
-			DiagramObject diagramObject = (DiagramObject) project.findObject(currentDiagramObjectRef);
-			selectionPanel.setSelectedValue(diagramObject, true);
+			selectionPanel.setSelectedRow(currentDiagramObjectRef);
 		}
-		else if (selectionPanel.getListSize() > 0)
+		else if (selectionPanel.getRowCount() > 0)
 		{
-			selectionPanel.setSelectedIndex(0);
+			selectionPanel.scrollToAndSelectRow(0);
 		}
 	}
 	
@@ -245,10 +244,9 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		}
 		
 		setCurrentDiagramObjectRef(diagramObjectRef);
-		DiagramObject diagramObject = diagramComponent.getDiagramModel().getDiagramObject();
 		diagramCards.showDiagram(diagramObjectRef);
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
-		selectionPanel.setSelectedValue(diagramObject, true);
+		selectionPanel.setSelectedRow(diagramObjectRef);
 	}
 		
 	public void setCurrentDiagramObjectRef(ORef currentDiagramObjectRef)

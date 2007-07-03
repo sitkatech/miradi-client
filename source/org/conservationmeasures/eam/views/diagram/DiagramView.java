@@ -316,7 +316,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		try
 		{
 			getMainWindow().preventActionUpdates();
-			updateVisibilityOfFactors();
+			updateVisibilityOfFactorsAndClearSelectionModel();
 			if (getDiagramComponent()!=null)
 				getDiagramComponent().updateDiagramZoomSetting();
 		}
@@ -459,30 +459,47 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		getMainWindow().updateStatusBar();
 		diagramComponent.clearSelection();
 		updateLegendPanelCheckBoxes();
-		updateVisibilityOfFactors();
+		updateVisibilityOfFactorsAndClearSelectionModel();
 	}
 	
 	public void updateVisibilityOfFactors()
 	{
-		if (!getMainWindow().getCurrentView().cardName().equals(getViewName()))
-				return;
-		
+		if (!isCurrentViewDiagramView())
+			return;
+	
 		try
 		{
 			DiagramModel model = getDiagramModel();
 			if(model == null)
 				return;
 			model.updateVisibilityOfFactors();
-			
-			EAMGraphSelectionModel selectionModel = (EAMGraphSelectionModel) getDiagramComponent().getSelectionModel();
-			// TODO: Find a way to avoid the need to test for null here
-			if(selectionModel != null)
-				selectionModel.clearSelection();
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	public void updateVisibilityOfFactorsAndClearSelectionModel()
+	{
+		if (!isCurrentViewDiagramView())
+			return;
+		
+		updateVisibilityOfFactors();
+		DiagramComponent diagramComponent = getDiagramComponent();
+		if (diagramComponent == null)
+			return;
+		
+		EAMGraphSelectionModel selectionModel = (EAMGraphSelectionModel) diagramComponent.getSelectionModel();
+		// TODO: Find a way to avoid the need to test for null here
+		if(selectionModel != null)
+			selectionModel.clearSelection();
+	}
+
+
+	private boolean isCurrentViewDiagramView()
+	{
+		return getMainWindow().getCurrentView().cardName().equals(getViewName());
 	}
 
 

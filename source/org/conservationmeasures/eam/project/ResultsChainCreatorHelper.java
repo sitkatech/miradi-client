@@ -50,13 +50,13 @@ public class ResultsChainCreatorHelper
 		
 	public BaseId createResultsChain() throws Exception
 	{
+			DiagramFactor[] diagramFactors = getSelectedAndRelatedDiagramFactors();
 			CommandCreateObject createResultsChain = new CommandCreateObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
 			project.executeCommand(createResultsChain);
 			
 			BaseId newResultsChainId = createResultsChain.getCreatedId();
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId);
 			
-			DiagramFactor[] diagramFactors = getSelectedAndRelatedDiagramFactors();
 			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
 			DiagramFactorId[] clonedDiagramFactorIds = extractClonedDiagramFactors(clonedDiagramFactors);
 			IdList idList = new IdList(clonedDiagramFactorIds);

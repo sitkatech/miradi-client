@@ -338,7 +338,7 @@ abstract public class DiagramLegendPanel extends JPanel implements ActionListene
 
 	private void updateVisiblity()
 	{
-		mainWindow.getDiagramView().updateVisibilityOfFactors();
+		mainWindow.getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
 		mainWindow.updateStatusBar();
 	}
 	

@@ -78,7 +78,7 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		}
 	}
 
-	void scrollToAndSelectRow(int row)
+	public void scrollToAndSelectRow(int row)
 	{
 		if (getRowCount() <= row)
 			return;
@@ -88,6 +88,11 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		setRowSelectionInterval(row, row);
 	}
 
+	public void setSelectedRow(ORef ref)
+	{
+		int rowToSelect = getObjectTableModel().findRowObject(ref.getObjectId());
+		scrollToAndSelectRow(rowToSelect);
+	}
 	
 	public ObjectTableModel getObjectTableModel()
 	{

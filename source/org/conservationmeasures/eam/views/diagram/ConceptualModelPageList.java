@@ -5,7 +5,9 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.project.Project;
 
 
@@ -13,9 +15,14 @@ public class ConceptualModelPageList extends DiagramPageList
 {
 	public ConceptualModelPageList(Project project)
 	{
-		super(project);
+		super(project, new ObjectPoolTableModel(project, ObjectType.CONCEPTUAL_MODEL_DIAGRAM, getTags()));
 	}
 
+	private static String[] getTags()
+	{
+		return new String[] {ConceptualModelDiagram.TAG_LABEL};
+	}
+	
 	public boolean isConceptualModelPageList()
 	{
 		return true;

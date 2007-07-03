@@ -306,7 +306,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			validate();
 			updateTitle();
 			updateStatusBar();
-			getDiagramView().updateVisibilityOfFactors();
+			getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
 		}
 		catch(UnknownCommandException e)
 		{

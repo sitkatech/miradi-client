@@ -117,7 +117,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		doExtraSetup(factorId);
 
 		forceVisibleInLayerManager();
-		getDiagramView().updateVisibilityOfFactors();
+		getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
 		
 		return diagramFactor;
 	}

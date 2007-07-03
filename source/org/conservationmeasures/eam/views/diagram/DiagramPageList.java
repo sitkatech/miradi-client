@@ -6,30 +6,29 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import javax.swing.BorderFactory;
-import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.ObjectPoolTable;
+import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 
-abstract public class DiagramPageList extends JList
+abstract public class DiagramPageList extends ObjectPoolTable
 {
-	public DiagramPageList(Project projectToUse)
+	public DiagramPageList(Project projectToUse, ObjectPoolTableModel objectPoolTableModel)
 	{
-		super();
+		super(objectPoolTableModel);
 		project = projectToUse;
 		
-		addListSelectionListener(new DiagramObjectListSelectionListener(project));
+		getSelectionModel().addListSelectionListener(new DiagramObjectListSelectionListener(project));
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
 	}
@@ -51,15 +50,7 @@ abstract public class DiagramPageList extends JList
 
 	public void fillList()
 	{
-		EAMObjectPool pool = project.getPool(getManagedDiagramType());
-		ORefList refList = pool.getORefList();
-		BaseObject[] diagramObjects = project.getObjectManager().findObjects(refList);
-		setListData(diagramObjects);
-	}
-	
-	public int getListSize()
-	{
-		return getModel().getSize();
+		getObjectPoolTableModel().rowsWereAddedOrRemoved();
 	}
 	
 	private void setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
@@ -97,7 +88,7 @@ abstract public class DiagramPageList extends JList
 			try
 			{
 				ORef selectedRef = ORef.INVALID;
-				BaseObject selectedDiagramObject = (BaseObject) getSelectedValue();
+				BaseObject selectedDiagramObject = getSelectedObjects()[0];
 				if (selectedDiagramObject != null)
 					selectedRef = selectedDiagramObject.getRef();
 						
