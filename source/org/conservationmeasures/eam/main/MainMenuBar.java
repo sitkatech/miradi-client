@@ -62,6 +62,8 @@ import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
+import org.conservationmeasures.eam.actions.ActionSlideShowViewer;
+import org.conservationmeasures.eam.actions.ActionToggleSlideShowPanel;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
@@ -236,13 +238,15 @@ public class MainMenuBar extends JMenuBar
 		for(int i = 0; i < viewSwitchActions.length; ++i)
 			menu.add(viewSwitchActions[i]);
 		menu.addSeparator();
+		addMenuItem(actions, menu, ActionToggleSlideShowPanel.class, KeyEvent.VK_E);
+		addMenuItem(actions, menu, ActionSlideShowViewer.class, KeyEvent.VK_S);
+		menu.addSeparator();
 		addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_O);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionConfigureLayers.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_O);
 		addMenuItem(actions, menu, ActionShowFullModelMode.class, KeyEvent.VK_F);
-		
 		return menu;
 	}
 	
