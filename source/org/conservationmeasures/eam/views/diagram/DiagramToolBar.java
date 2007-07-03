@@ -8,17 +8,14 @@ package org.conservationmeasures.eam.views.diagram;
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.ActionCopy;
-import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
 import org.conservationmeasures.eam.actions.ActionCreateOrShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
-import org.conservationmeasures.eam.actions.ActionInsertTextBox;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
-import org.conservationmeasures.eam.actions.ActionToggleSlideShowPanel;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
@@ -36,11 +33,6 @@ public class DiagramToolBar extends EAMToolBar
 	static JComponent[][] createButtons(Actions actions, DiagramView diagramView)
 	{
 		JComponent[][] buttons = new JComponent[][] {
-			{
-				new ToolBarButton(actions, ActionInsertTextBox.class),
-				new ToolBarButton(actions, ActionCreateBendPoint.class),
-				new ToolBarButton(actions, ActionToggleSlideShowPanel.class),
-			},
 			{
 				new ToolBarButton(actions, ActionCut.class),
 				new ToolBarButton(actions, ActionCopy.class),
