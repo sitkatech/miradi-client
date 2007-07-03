@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
+import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -15,5 +17,16 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 	{
 		super(panel);
 	}
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_1C;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpThreatMatrixOverviewStep.class;
+	}
+	
 }
 

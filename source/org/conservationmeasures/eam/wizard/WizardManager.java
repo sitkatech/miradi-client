@@ -345,7 +345,6 @@ public class WizardManager
 				// STEP 1C
 				DiagramWizardIdentifyDirectThreatStep.class,
 				DiagramWizardLinkDirectThreatsToTargetsStep.class,
-				
 				ThreatMatrixOverviewStep.class,
 				ThreatRatingWizardChooseBundle.class,
 				ThreatRatingWizardScopeStep.class,
@@ -354,6 +353,7 @@ public class WizardManager
 				ThreatRatingWizardCheckBundleStep.class,
 				ThreatRatingWizardCheckTotalsStep.class,
 				
+				// STEP 1D
 				DiagramWizardIdentifyIndirectThreatStep.class,		
 				DiagramWizardConstructChainsStep.class,	
 				DiagramWizardReviewModelAndAdjustStep.class,		

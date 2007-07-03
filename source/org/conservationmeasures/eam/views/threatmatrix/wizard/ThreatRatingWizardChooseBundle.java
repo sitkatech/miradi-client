@@ -12,8 +12,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
@@ -27,6 +29,17 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		super(wizardToUse);
 	}
 
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_1C;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpThreatMatrixOverviewStep.class;
+	}
+	
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
 		ThreatMatrixTableModel model = getThreatView().getModel();

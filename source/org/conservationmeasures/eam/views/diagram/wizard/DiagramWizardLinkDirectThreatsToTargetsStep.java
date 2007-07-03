@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
+import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -15,4 +17,15 @@ public class DiagramWizardLinkDirectThreatsToTargetsStep extends DiagramWizardSt
 	{
 		super(panelToUse);
 	}
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_1C;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class;
+	}
+	
 }
