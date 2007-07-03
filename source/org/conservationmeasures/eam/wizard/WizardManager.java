@@ -318,21 +318,22 @@ public class WizardManager
 		Class[] entries = 
 		{
 				SummaryOverviewStep.class,
+				
+				// STEP 1A
 				SummaryWizardDefineTeamMembers.class,
 				SummaryWizardDefineProjectLeader.class,
+				
+				// STEP 1B
 				SummaryWizardDefineProjecScope.class,
 				SummaryWizardDefineProjectVision.class,
-				
 				DiagramOverviewStep.class,
 				DiagramWizardProjectScopeStep.class,
 				DiagramWizardVisionStep.class,
 				DiagramWizardDefineTargetsStep.class,
 				DiagramWizardReviewAndModifyTargetsStep.class,
-
 				TargetViabilityMethodChoiceStep.class,
 				DescribeTargetStatusStep.class,
 				TargetViabilityOverviewStep.class,
-				
 				TargetViability3Step.class,
 				TargetViability4Step.class,
 				TargetViability5Step.class,
@@ -341,6 +342,7 @@ public class WizardManager
 				TargetViability8Step.class,
 				TargetViabilityOverviewAfterDetailedModeStep.class,			
 
+				// STEP 1C
 				DiagramWizardIdentifyDirectThreatStep.class,
 				DiagramWizardLinkDirectThreatsToTargetsStep.class,
 				
