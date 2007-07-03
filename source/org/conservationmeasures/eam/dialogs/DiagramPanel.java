@@ -303,7 +303,7 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 		try
 		{			
 			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, diagramModel, getDiagramObject());
-			modelUpdater.commandSetObjectDataExecuted(setCommand);
+			modelUpdater.commandSetObjectDataWasExecuted(setCommand);
 		}
 		catch(Exception e)
 		{

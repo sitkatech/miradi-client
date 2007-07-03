@@ -28,15 +28,15 @@ public class DiagramModelUpdater
 		diagramObject = diagramObjectToUse;
 	}
 
-	public void commandSetObjectDataExecuted(CommandSetObjectData setObjecDataCommand)
+	public void commandSetObjectDataWasExecuted(CommandSetObjectData setObjectDataCommand)
 	{
 		try
 		{
-			if (! setObjecDataCommand.getObjectORef().equals(diagramObject.getRef()))
+			if (! setObjectDataCommand.getObjectORef().equals(diagramObject.getRef()))
 				return;
 						
-			updateFactors(setObjecDataCommand);
-			updateLinks(setObjecDataCommand);
+			updateFactors(setObjectDataCommand);
+			updateLinks(setObjectDataCommand);
 			model.updateVisibilityOfFactors();
 		}
 		catch (Exception e)
