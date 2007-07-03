@@ -41,7 +41,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	public String getProcessStepTitle()
 	{
-		return "Step 2B. Strategically Select Activities";
+		return "Step (not available)";
 	}
 
 	public String getWizardScreenTitle()
