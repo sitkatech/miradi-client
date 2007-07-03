@@ -1,5 +1,6 @@
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -31,6 +32,15 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 		
 		try
 		{
+			// NOTE: This is a hack. We only want to refresh the view IF
+			// one of our fields was changed. For now we will roughly 
+			// approximate that by saying if any project metadata field 
+			// was changed, we will refresh the view
+			if(!event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+				return;
+			CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
+			if(!command.getObjectORef().equals(getProject().getMetadata().getRef()))
+				return;
 			mainWindow.getCurrentView().refresh();
 		}
 		catch(Exception e)
