@@ -6,13 +6,18 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.views.diagram.DiagramSplitPane;
+import org.conservationmeasures.eam.views.diagram.ResultsChainDiagramSplitPane;
 
 public class ResultsChainDiagramPanel extends DiagramPanel
 {
 	public ResultsChainDiagramPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse, ObjectType.RESULTS_CHAIN_DIAGRAM);
+		super(mainWindowToUse);
 	}
 
+	protected DiagramSplitPane createDiagramSplitter() throws Exception
+	{
+		return  new ResultsChainDiagramSplitPane(mainWindow);
+	}
 }

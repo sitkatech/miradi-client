@@ -25,27 +25,22 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.diagram.ConceptualModelDiagramSplitPane;
 import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
 import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 import org.conservationmeasures.eam.views.diagram.DiagramSplitPane;
-import org.conservationmeasures.eam.views.diagram.ResultsChainDiagramSplitPane;
 
-public class DiagramPanel extends DisposablePanel implements CommandExecutedListener
+abstract public class DiagramPanel extends DisposablePanel implements CommandExecutedListener
 {
-	
-	public DiagramPanel(MainWindow mainWindowToUse, int objectType) throws Exception
+	public DiagramPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		mainWindow = mainWindowToUse;
 		project = mainWindow.getProject();
-		diagramSplitter = createDiagramSplitter(objectType);
+		diagramSplitter = createDiagramSplitter();
 		add(diagramSplitter);
 		project.addCommandExecutedListener(this);
 		getDiagramSplitPane().setDefaultSelection();
@@ -55,18 +50,6 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 	{
 		super.dispose();
 		project.removeCommandExecutedListener(this);
-	}
-
-	//FIXME nima push these methode to the appropriate sub class
-	private DiagramSplitPane createDiagramSplitter(int objectType) throws Exception
-	{
-		if (objectType == ResultsChainDiagram.getObjectType())
-			return  new ResultsChainDiagramSplitPane(mainWindow);
-
-		if (objectType == ConceptualModelDiagram.getObjectType())
-			return new ConceptualModelDiagramSplitPane(mainWindow);
-
-		throw new Exception("Found wrong type for splitter " +objectType);
 	}
 	
 	public DiagramObject getDiagramObject()
@@ -327,7 +310,9 @@ public class DiagramPanel extends DisposablePanel implements CommandExecutedList
 		return getDiagramSplitPane().getLegendPanel();
 	}
 	
+	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;
+	
 	DiagramSplitPane diagramSplitter;
 	private Project project;
-	private MainWindow mainWindow;
+	protected MainWindow mainWindow;
 }

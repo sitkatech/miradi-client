@@ -6,12 +6,18 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.views.diagram.ConceptualModelDiagramSplitPane;
+import org.conservationmeasures.eam.views.diagram.DiagramSplitPane;
 
 public class ConceptualModelDiagramPanel extends DiagramPanel
 {
 	public ConceptualModelDiagramPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse, ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		super(mainWindowToUse);
 	}
+
+	protected DiagramSplitPane createDiagramSplitter() throws Exception
+	{
+		return new ConceptualModelDiagramSplitPane(mainWindow);
+	}	
 }
