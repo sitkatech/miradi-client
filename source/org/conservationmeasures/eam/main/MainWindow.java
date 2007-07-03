@@ -187,12 +187,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getContentPane().add(mainStatusBar, BorderLayout.AFTER_LAST_LINE);
 	}
 	
-	public void restorePreviousDividerLocation()
-	{
-		if (spliterPane!=null)
-			 spliterPane.setDividerLocation(spliterPane.getLastDividerLocation());
-	}
-	
 	public int getDividerLocation()
 	{
 		if (spliterPane!=null)
@@ -373,7 +367,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getWizard().setContents(step);
 		getWizard().refresh();
 		validate();
-		restorePreviousDividerLocation();
 	}
 	
 	private void setViewForStep(SkeletonWizardStep step) throws Exception
