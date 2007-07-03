@@ -54,6 +54,7 @@ import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPreferences;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
+import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
@@ -221,9 +222,10 @@ public class MainMenuBar extends JMenuBar
 		
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionShowConceptualModel.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu, ActionShowResultsChain.class, KeyEvent.VK_S);
-		addMenuItem(actions, menu, ActionCreateResultsChain.class, KeyEvent.VK_C);
-		addMenuItem(actions, menu, ActionDeleteResultsChain.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu, ActionShowResultsChain.class, KeyEvent.VK_R);
+		addMenuItem(actions, menu, ActionCreateResultsChain.class);
+		addMenuItem(actions, menu, ActionRenameResultsChain.class);
+		addMenuItem(actions, menu, ActionDeleteResultsChain.class);
 		
 		return menu;
 	}
@@ -481,6 +483,13 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 	
+	
+	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1)
+	{
+		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(class1));
+		menu.add(menuItemNewProject);
+		return menuItemNewProject; 
+	}
 	
 	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1, int mnemonic)
 	{

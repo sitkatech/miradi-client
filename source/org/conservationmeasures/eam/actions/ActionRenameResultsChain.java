@@ -12,12 +12,12 @@ public class ActionRenameResultsChain extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Rename Result Chain");
+		return EAM.text("Action|Rename Results Chain");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Rename this Result Chain");
+		return EAM.text("TT|Rename this Results Chain");
 	}
 
 }
