@@ -173,11 +173,30 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		public void showDiagram(ORef ref)
 		{
 			removeAll();
-			DiagramComponent diagramComponent = findByRef(ref);
-			if (diagramComponent != null)			
-				add(diagramComponent);
 			
+			showFoundReloadedDiagram(ref);
+			
+			invalidate();
 			repaint();
+		}
+
+		private void showFoundReloadedDiagram(ORef ref)
+		{
+			if (ref.isInvalid())
+				return;
+			
+			try
+			{
+				//FIXME nima,  why does loading all the cards work (shows newly created RC)
+				reloadDiagramCards(ref.getObjectType());
+				DiagramComponent diagramComponent = findByRef(ref);
+				if (diagramComponent != null)			
+					add(diagramComponent);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
 		}
 		
 		public void addDiagram(DiagramComponent diagramComponent)
