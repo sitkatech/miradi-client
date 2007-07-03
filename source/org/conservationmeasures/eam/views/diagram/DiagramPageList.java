@@ -77,7 +77,7 @@ abstract public class DiagramPageList extends JList
 		if (getManagedDiagramType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
 			return ViewData.TAG_CURRENT_RESULTS_CHAIN_REF;
 		
-		return EAM.text("");
+		throw new RuntimeException("Could not find corrent tag for " + getManagedDiagramType());
 	}
 	
 	public class DiagramObjectListSelectionListener  implements ListSelectionListener
@@ -96,11 +96,11 @@ abstract public class DiagramPageList extends JList
 		{
 			try
 			{
+				ORef selectedRef = ORef.INVALID;
 				BaseObject selectedDiagramObject = (BaseObject) getSelectedValue();
-				if (selectedDiagramObject == null)
-					return;
-				
-				ORef selectedRef = selectedDiagramObject.getRef();		
+				if (selectedDiagramObject != null)
+					selectedRef = selectedDiagramObject.getRef();
+						
 				setViewDataCurrentDiagramObjectRef(selectedRef);				
 			}
 			catch(Exception e)
