@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
+import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -13,5 +15,15 @@ public class SelectChainStep extends DiagramWizardStep
 	public SelectChainStep(WizardPanel panelToUse)
 	{
 		super(panelToUse);
+	}
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_2B;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpSelectChainStep.class;
 	}
 }

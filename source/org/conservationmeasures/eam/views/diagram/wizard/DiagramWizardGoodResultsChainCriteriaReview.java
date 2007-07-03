@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
+import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -14,4 +16,15 @@ public class DiagramWizardGoodResultsChainCriteriaReview extends DiagramWizardSt
 	{
 		super(panelToUse);
 	}
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_2B;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpDiagramWizardResultsChainStep.class;
+	}
+
 }
