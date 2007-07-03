@@ -8,9 +8,12 @@ package org.conservationmeasures.eam.views.diagram;
 import javax.swing.BorderFactory;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -24,6 +27,8 @@ abstract public class DiagramPageList extends JList
 	{
 		super();
 		project = projectToUse;
+		
+		addListSelectionListener(new DiagramObjectListSelectionListener(project));
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
 	}
@@ -56,6 +61,46 @@ abstract public class DiagramPageList extends JList
 		return getModel().getSize();
 	}
 	
+	private void setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
+	{
+		ViewData currentViewDat = project.getViewData(DiagramView.getViewName());
+		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(currentViewDat.getRef(), ViewData.TAG_CURRENT_DIAGRAM_REF, selectedRef);
+		project.executeCommand(setCurrentDiagramObject);
+	}
+
+	public class DiagramObjectListSelectionListener  implements ListSelectionListener
+	{
+		public DiagramObjectListSelectionListener(Project projectToUse)
+		{
+			project = projectToUse;
+		}
+
+		public void valueChanged(ListSelectionEvent event)
+		{
+			setCurrentDiagram();
+		}
+
+		private void setCurrentDiagram()
+		{
+			try
+			{
+				BaseObject selectedDiagramObject = (BaseObject) getSelectedValue();
+				if (selectedDiagramObject == null)
+					return;
+				
+				ORef selectedRef = selectedDiagramObject.getRef();		
+				setViewDataCurrentDiagramObjectRef(selectedRef);				
+			}
+			catch(Exception e)
+			{
+				//TODO nima do somethning with this exception
+				EAM.logException(e);
+			}
+		}
+		
+		Project project;
+	}
+		
 	abstract public boolean isResultsChainPageList();
 	
 	abstract public boolean isConceptualModelPageList();

@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -28,7 +26,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -106,7 +103,6 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		scrollableLegendPanel = createLegendScrollPane();
 		selectionPanel = createPageList(mainWindow.getProject());
 		selectionPanel.fillList();
-		selectionPanel.addListSelectionListener(new DiagramObjectListSelectionListener(project, objectType));
 		
 		JSplitPane leftSideSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		leftSideSplit.setTopComponent(selectionPanel);
@@ -206,48 +202,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 		Vector cards;
 	}
-	
-	public class DiagramObjectListSelectionListener  implements ListSelectionListener
-	{
-		public DiagramObjectListSelectionListener(Project projectToUse, int objectType)
-		{
-			project = projectToUse;
-			diagramObjectType = objectType;
-		}
-
-		public void valueChanged(ListSelectionEvent event)
-		{
-			setCurrentDiagram();
-		}
-
-		private void setCurrentDiagram()
-		{
-			try
-			{
-				BaseObject selectedDiagramObject = (BaseObject) selectionPanel.getSelectedValue();
-				if (selectedDiagramObject == null)
-					return;
-				
-				ORef selectedRef = selectedDiagramObject.getRef();		
-				setViewDataCurrentDiagramObjectRef(selectedRef);				
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
 		
-		Project project;
-		int diagramObjectType;
-	}
-	
-	private void setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
-	{
-		ViewData currentViewDat = project.getViewData(DiagramView.getViewName());
-		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(currentViewDat.getRef(), ViewData.TAG_CURRENT_DIAGRAM_REF, selectedRef);
-		project.executeCommand(setCurrentDiagramObject);
-	}
-	
 	public void showCard(ORef diagramObjectRef)
 	{
 		DiagramComponent diagramComponent = diagramCards.findByRef(diagramObjectRef);
