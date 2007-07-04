@@ -334,6 +334,13 @@ public class Project
 		return projectInfo.obtainRealFactorId(proposedId);
 	}
 	
+	//FIXME nima, rename this method or change return type of createObject and remove this method
+	public ORef createObjectAndReturnRef(int objectType) throws Exception
+	{
+		BaseId createdId = createObject(objectType);
+		return new ORef(objectType, createdId);
+	}
+	
 	public BaseId createObject(int objectType) throws Exception
 	{
 		return createObject(objectType, BaseId.INVALID);
@@ -428,9 +435,17 @@ public class Project
 	private void createDefaultObjectsIfNeeded() throws Exception
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
+		createDefaultConceptualModel();
+	}
 
-		if (getConceptualModelDiagramPool().getORefList().size() == 0)
-			createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+	private void createDefaultConceptualModel() throws Exception
+	{
+		if (getConceptualModelDiagramPool().getORefList().size() != 0)
+			return;
+		
+		ORef createConceptualModelRef = createObjectAndReturnRef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		ConceptualModelDiagram conceptualModel = (ConceptualModelDiagram) findObject(createConceptualModelRef);
+		setObjectData(createConceptualModelRef, ConceptualModelDiagram.TAG_LABEL, conceptualModel.toString());
 	}
 	
 	private void createProjectMetadata() throws Exception

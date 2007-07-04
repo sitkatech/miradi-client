@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -35,5 +36,13 @@ public class ConceptualModelDiagram extends DiagramObject
 	public static int getObjectType()
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
+	}
+	
+	public String toString()
+	{
+		if (getLabel().trim().length() == 0)
+			return EAM.text("Conceptual Model Page");
+		
+		return getLabel();
 	}
 }
