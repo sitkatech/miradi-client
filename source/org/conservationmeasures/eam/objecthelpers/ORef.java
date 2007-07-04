@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.objecthelpers;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
+//FIXME add a contructor that takes a string as arg,  if it failes to constuct
+// return invalid
 public class ORef
 {
 	public ORef(int objectTypeToUse, BaseId objectIdToUse)
