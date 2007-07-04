@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -88,13 +89,31 @@ public class EAM
 		try
 		{
 			File destination = new File(getHomeDirectory(), "exceptions.log");
-			logger.setExceptionLoggingDestination(new PrintStream(new FileOutputStream(destination)));
+			FileOutputStream outputStream = new FileOutputStream(destination);
+			setExceptionLoggingDestination(outputStream);
 		}
 		catch(FileNotFoundException e)
 		{
 			System.out.println("Unable to create exception logging file: " + e.getLocalizedMessage());
 		}
 
+	}
+
+	public static void setExceptionLoggingDestination(OutputStream outputStream)
+	{
+		PrintStream printStream = new PrintStream(outputStream);
+		setExceptionLoggingDestination(printStream);
+	}
+
+
+	public static void setExceptionLoggingDestination(PrintStream printStream)
+	{
+		logger.setExceptionLoggingDestination(printStream);
+	}
+	
+	public static PrintStream getExceptionLoggingDestination()
+	{
+		return logger.getExceptionLoggingDestination();
 	}
 	
 	private static boolean handleEamToMiradiMigration()

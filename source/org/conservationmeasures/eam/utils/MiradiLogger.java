@@ -30,6 +30,11 @@ public class MiradiLogger
 		exceptionDestination = destination;
 	}
 	
+	public PrintStream getExceptionLoggingDestination()
+	{
+		return exceptionDestination;
+	}
+	
 	public void setLogToString()
 	{
 		removeAllHandlers();

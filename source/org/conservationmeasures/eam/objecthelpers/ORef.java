@@ -6,10 +6,9 @@
 package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-//FIXME add a contructor that takes a string as arg,  if it failes to constuct
-// return invalid
 public class ORef
 {
 	public ORef(int objectTypeToUse, BaseId objectIdToUse)
@@ -22,13 +21,26 @@ public class ORef
 	{
 		if (! json.has(TAG_OBJECT_TYPE))
 		{
-			objectType = ObjectType.FAKE;
-			objectId = null;
+			objectType = INVALID.getObjectType();
+			objectId = INVALID.getObjectId();
 			return;
 		}
 			
 		objectType = json.getInt(TAG_OBJECT_TYPE);
 		objectId = json.getId(TAG_OBJECT_ID);
+	}
+	
+	public static ORef createFromString(String orefAsJsonString)
+	{
+		try
+		{
+			return new ORef(new EnhancedJsonObject(orefAsJsonString));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return INVALID;
+		}
 	}
 	
 	public EnhancedJsonObject toJson()
