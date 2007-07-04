@@ -5,13 +5,25 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+
 public class RenameResultsChainDoer extends RenameDiagramObjectDoer
 {
-	public boolean isAvailable()
+	public boolean isInvalidSelection()
 	{
-		if (!super.isAvailable())
-			return false;
+		if (! getDiagramView().isResultsChainTab())
+			return true;
 		
-		return getDiagramView().isResultsChainTab();
-	}	
+		try
+		{
+			ORef currentResultsChainRef = getProject().getCurrentViewData().getCurrentResutlstChainRef();
+			return currentResultsChainRef.isInvalid();			
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		return true;
+	}
 }

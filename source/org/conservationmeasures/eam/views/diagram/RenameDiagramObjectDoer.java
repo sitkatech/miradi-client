@@ -6,15 +6,17 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.views.ViewDoer;
 
-public class RenameDiagramObjectDoer extends ViewDoer 
+abstract public class RenameDiagramObjectDoer extends ViewDoer 
 {
-	//FIXME nima sub classe need to chech to see if there is a selection
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
 			return false;
 		
 		if (!isDiagramView())
+			return false;
+		
+		if (isInvalidSelection())
 			return false;
 		
 		return true;
@@ -31,4 +33,6 @@ public class RenameDiagramObjectDoer extends ViewDoer
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
+	
+	abstract public boolean isInvalidSelection();
 }

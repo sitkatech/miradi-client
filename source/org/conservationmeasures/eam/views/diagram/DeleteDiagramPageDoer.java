@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.views.ObjectsDoer;
 
 abstract public class DeleteDiagramPageDoer extends ObjectsDoer
 {
+	//FIXME nima, this needs to be in a parent class and shared by all those that duplicate it
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())

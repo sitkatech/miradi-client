@@ -5,14 +5,26 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+
 
 public class RenameConceptualModelDoer extends RenameDiagramObjectDoer
-{
-	public boolean isAvailable()
+{	
+	public boolean isInvalidSelection()
 	{
-		if (!super.isAvailable())
-			return false;
+		if (getDiagramView().isResultsChainTab())
+			return true;
 		
-		return !getDiagramView().isResultsChainTab();
-	}	
+		try
+		{
+			ORef currentConceptualModelRef = getProject().getCurrentViewData().getCurrentConceptualModelRef();
+			return currentConceptualModelRef.isInvalid();			
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		return true;
+	}
 }
