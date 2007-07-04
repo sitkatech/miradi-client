@@ -5,25 +5,17 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.ViewData;
 
 public class DeleteResultsChainDoer extends DeleteDiagramPageDoer
 {
-	public boolean isInvalidSelection()
+	public boolean isCorrectTab()
 	{
-		if (! getDiagramView().isResultsChainTab())
-			return true;
-		
-		try
-		{
-			ORef currentResultsChainRef = getProject().getCurrentViewData().getCurrentResutlstChainRef();
-			return currentResultsChainRef.isInvalid();			
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		return true;
+		return getDiagramView().isResultsChainTab();
+	}
+	
+	public String getDiagramObjectTag()
+	{
+		return ViewData.TAG_CURRENT_RESULTS_CHAIN_REF;
 	}
 }
