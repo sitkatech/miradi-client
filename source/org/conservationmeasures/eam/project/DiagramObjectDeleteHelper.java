@@ -22,16 +22,15 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Slide;
 
-public class ResultsChainDeleteHelper
+public class DiagramObjectDeleteHelper
 {
-
-	public ResultsChainDeleteHelper(Project projectToUse, DiagramPanel diagramPanelToUse)
+	public DiagramObjectDeleteHelper(Project projectToUse, DiagramPanel diagramPanelToUse)
 	{
 		project = projectToUse;
 		diagramPanel = diagramPanelToUse;
 	}
 	
-	public void deleteResultsChain() throws Exception
+	public void deleteDiagram() throws Exception
 	{
 		DiagramObject diagramObject = diagramPanel.getDiagramObject();
 		deleteAllDiagramFactorLinks();
@@ -39,8 +38,8 @@ public class ResultsChainDeleteHelper
 		deleteAllSlideReferences(diagramObject);
 		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
 		project.executeCommands(commands);
-		CommandDeleteObject deleteResultsChain = new CommandDeleteObject(diagramObject.getRef());
-		project.executeCommand(deleteResultsChain);
+		CommandDeleteObject deleteDiagramObject = new CommandDeleteObject(diagramObject.getRef());
+		project.executeCommand(deleteDiagramObject);
 	}
 	
 	private void deleteAllSlideReferences(DiagramObject diagramObject) throws Exception

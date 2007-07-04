@@ -285,12 +285,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeIndicator.class, new DeleteKeyEcologicalAttributeIndicatorDoer());
 		addDoerToMap(ActionCreateResultsChain.class, new CreateResultsChainDoer());
 		addDoerToMap(ActionShowResultsChain.class, new ShowResultsChainDoer());
-		addDoerToMap(ActionDeleteResultsChain.class, new DeleteResultsChainDoer());
+		addDoerToMap(ActionDeleteResultsChain.class, new DeleteResultsChainPageDoer());
 		addDoerToMap(ActionShowConceptualModel.class, new ShowConceptualModelDoer());
 		addDoerToMap(ActionCreateOrShowResultsChain.class, new CreateOrShowResultsChainDoer());
 		addDoerToMap(ActionInsertTextBox.class, new InsertTextBoxDoer());
 		addDoerToMap(ActionCreateConceptualModel.class, new CreateConceptualModelDoer());
-		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelDoer());
+		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelPageDoer());
 		
 		addDoerToMap(ActionCreateSlide.class, new CreateSlideDoer());
 		addDoerToMap(ActionDeleteSlide.class, new DeleteSlideDoer());

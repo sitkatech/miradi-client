@@ -7,54 +7,48 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.DiagramObjectDeleteHelper;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public class DeleteConceptualModelDoer extends ObjectsDoer
+abstract public class DeleteDiagramPageDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
 			return false;
 		
-		if (!isDiagramView())
+		if (! isDiagramView())
 			return false;
-
-		if (getDiagramView().isResultsChainTab())
-			return false;
-
-		if (getSelectedIds().length == 1)
+		
+		if (isInvalidSelection())
 			return false;
 		
 		return true;
 	}
-	
+
 	public void doIt() throws CommandFailedException
 	{
 		if (! isAvailable())
 			return;
 		
-		Project project = getProject();
-		project.executeCommand(new CommandBeginTransaction());
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			deleteConceptualModel(project);
+			DiagramPanel diagramPanel = getDiagramView().getCurrentDiagramPanel();
+			DiagramObjectDeleteHelper deleteHelper = new DiagramObjectDeleteHelper(getProject(), diagramPanel);
+			deleteHelper.deleteDiagram();
 		}
 		catch (Exception e)
 		{
-			EAM.errorDialog("Could not delete conceptual model");
-			EAM.logException(e);
+			throw new CommandFailedException(e);
 		}
 		finally
 		{
-			project.executeCommand(new CommandEndTransaction());
+			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
 
-	private void deleteConceptualModel(Project project)
-	{
-		//FIXME finish deleting conceptula model
-	}
+	abstract public boolean isInvalidSelection();
 }
