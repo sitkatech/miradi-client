@@ -10,8 +10,7 @@ public class RenameConceptualModelDoer extends RenameDiagramObjectDoer
 {
 	public boolean isAvailable()
 	{
-		boolean isAvailable = super.isAvailable();
-		if (!isAvailable)
+		if (!super.isAvailable())
 			return false;
 		
 		return !getDiagramView().isResultsChainTab();

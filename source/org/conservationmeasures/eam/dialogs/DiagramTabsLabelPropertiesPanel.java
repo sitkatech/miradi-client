@@ -21,7 +21,7 @@ public class DiagramTabsLabelPropertiesPanel extends ObjectDataInputPanel
 		if (ref.getObjectType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
 			return EAM.text("Results Chain Properties");
 		
-		return EAM.text("Conceptual Model Properties");
+		return EAM.text("Conceptual Model Page Properties");
 	}
 	
 	private ORef ref;

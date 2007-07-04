@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 
-public class DeleteResultsChainPageDoer extends DeleteDiagramPageDoer
+public class DeleteResultsChainDoer extends DeleteDiagramPageDoer
 {
 	public boolean isInvalidSelection()
 	{

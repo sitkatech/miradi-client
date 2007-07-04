@@ -8,6 +8,7 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class RenameDiagramObjectDoer extends ViewDoer 
 {
+	//FIXME nima sub classe need to chech to see if there is a selection
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())

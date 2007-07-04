@@ -17,11 +17,11 @@ public class ActionRenameConceptualModel extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Rename Conceptual Model");
+		return EAM.text("Action|Rename Conceptual Model Page");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Rename this Conceptual Model");
+		return EAM.text("TT|Rename this Conceptual Model Page");
 	}
 }
