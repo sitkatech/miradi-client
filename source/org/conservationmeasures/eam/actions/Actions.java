@@ -278,6 +278,7 @@ public class Actions
 		registerAction(new ActionCreateBendPoint(mainWindow));
 		registerAction(new ActionDeleteBendPoint(mainWindow));
 		registerAction(new ActionRenameResultsChain(mainWindow));
+		registerAction(new ActionRenameConceptualModel(mainWindow));
 		registerAction(new ActionWizardNext(mainWindow));
 		registerAction(new ActionWizardPrevious(mainWindow));
 		registerAction(new ActionShowCellRatings(mainWindow));

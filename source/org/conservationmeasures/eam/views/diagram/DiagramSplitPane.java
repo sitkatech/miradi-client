@@ -305,7 +305,6 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 		ViewData viewData = (ViewData) project.findObject(commandSetObjectData.getObjectORef());
 		ORef viewDataCurrentDiagramRef = getCurrentDiagramRef(viewData);
-		
 		showCard(viewDataCurrentDiagramRef);
 	}
 

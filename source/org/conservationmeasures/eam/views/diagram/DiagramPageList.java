@@ -87,11 +87,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		{
 			try
 			{
-				ORef selectedRef = ORef.INVALID;
-				BaseObject selectedDiagramObject = getSelectedObjects()[0];
-				if (selectedDiagramObject != null)
-					selectedRef = selectedDiagramObject.getRef();
-						
+				ORef selectedRef = getSelectedRef();
 				setViewDataCurrentDiagramObjectRef(selectedRef);				
 			}
 			catch(Exception e)
@@ -99,6 +95,18 @@ abstract public class DiagramPageList extends ObjectPoolTable
 				//TODO nima do somethning with this exception
 				EAM.logException(e);
 			}
+		}
+
+		private ORef getSelectedRef()
+		{
+			if (getSelectedObjects().length == 0)
+				return ORef.INVALID;
+			
+			BaseObject selectedDiagramObject = getSelectedObjects()[0];
+			if (selectedDiagramObject == null)
+				return ORef.INVALID;
+			
+			return selectedDiagramObject.getRef();
 		}
 		
 		Project project;

@@ -5,7 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-public class RenameResultsChainDoer extends RenameDiagramObjectDoer
+
+public class RenameConceptualModelDoer extends RenameDiagramObjectDoer
 {
 	public boolean isAvailable()
 	{
@@ -13,6 +14,6 @@ public class RenameResultsChainDoer extends RenameDiagramObjectDoer
 		if (!isAvailable)
 			return false;
 		
-		return getDiagramView().isResultsChainTab();
+		return !getDiagramView().isResultsChainTab();
 	}	
 }
