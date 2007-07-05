@@ -28,6 +28,7 @@ public class Redo extends ProjectDoer
 	{
 		try
 		{
+			EAM.logVerbose("Redo starting");
 			Command redone = project.redo();
 			if(redone.isBeginTransaction())
 			{
@@ -44,5 +45,6 @@ public class Redo extends ProjectDoer
 			EAM.logException(e);
 			throw new CommandFailedException(EAM.text("Error during redo"), e);
 		}
+		EAM.logVerbose("Redo finished");
 	}
 }

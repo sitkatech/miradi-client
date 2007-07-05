@@ -31,6 +31,7 @@ public class Undo extends ProjectDoer
 	{
 		try
 		{
+			EAM.logVerbose("Undo starting");
 			Command undone = project.undo();
 			if(undone.isEndTransaction())
 			{
@@ -47,6 +48,7 @@ public class Undo extends ProjectDoer
 			EAM.logException(e);
 			throw new CommandFailedException(EAM.text("Error during undo"), e);
 		}
+		EAM.logVerbose("Undo finished");
 	}
 
 }
