@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 
@@ -33,26 +32,11 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		setBorder(BorderFactory.createEtchedBorder());
 	}
 	
-	public void fillListWithSelectedDiagramObject(DiagramObject diagramObject)
-	{
-		try
-		{
-			fillList();
-			ViewData diagramViewData = project.getViewData(DiagramView.getViewName());
-			CommandSetObjectData setViewData = new CommandSetObjectData(diagramViewData.getRef(), getCurrentDiagramViewDataTag(), diagramObject.getRef());
-			project.executeCommand(setViewData);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-
-	public void fillList()
+	public void listChanged()
 	{
 		getObjectPoolTableModel().rowsWereAddedOrRemoved();
 	}
-	
+
 	private void setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
 	{
 		ViewData viewData = project.getCurrentViewData();

@@ -105,7 +105,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		legendPanel = createLegendPanel(mainWindow);
 		scrollableLegendPanel = createLegendScrollPane();
 		selectionPanel = createPageList(mainWindow.getProject());
-		selectionPanel.fillList();
+		selectionPanel.listChanged();
 		
 		JSplitPane leftSideSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		JScrollPane selectionScrollPane = new JScrollPane(selectionPanel);
@@ -337,7 +337,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		try
 		{
 			reloadDiagramCards(getContentType());
-			getDiagramPageList().fillList();
+			getDiagramPageList().listChanged();
 		}
 		catch (Exception e)
 		{
