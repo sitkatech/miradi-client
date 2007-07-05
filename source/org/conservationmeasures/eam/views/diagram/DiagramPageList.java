@@ -55,27 +55,26 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	
 	private void setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
 	{
-		ViewData viewData = project.getViewData(DiagramView.getViewName());
+		ViewData viewData = project.getCurrentViewData();
 		String currentDiagramViewDataTag = getCurrentDiagramViewDataTag();
-		if (alreadySameDiagramRef(viewData, selectedRef, currentDiagramViewDataTag))
+		if (alreadySameDiagramRef(viewData, selectedRef))
 			return;
 		
 		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(viewData.getRef(), currentDiagramViewDataTag, selectedRef);
 		project.executeCommand(setCurrentDiagramObject);
 	}
 
-	private boolean alreadySameDiagramRef(ViewData viewData, ORef selectedRef, String currentDiagramViewDataTag) throws Exception
+	private boolean alreadySameDiagramRef(ViewData viewData, ORef selectedRef) throws Exception
 	{
-		ORef currentDiagramRef = getCurrentDiagramRef();
+		ORef currentDiagramRef = getCurrentDiagramRef(viewData);
 		if (currentDiagramRef.equals(selectedRef))
 			return true;
 		
 		return false;
 	}
 	
-	public ORef getCurrentDiagramRef() throws Exception
+	public ORef getCurrentDiagramRef(ViewData viewData) throws Exception
 	{
-		ViewData viewData = project.getCurrentViewData();
 		String currentDiagramViewDataTag = getCurrentDiagramViewDataTag();
 		String orefAsJsonString = viewData.getData(currentDiagramViewDataTag);
 		ORef currentDiagramObjectRef = ORef.createFromString(orefAsJsonString);

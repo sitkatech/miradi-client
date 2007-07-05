@@ -52,7 +52,8 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 
 	private void showCurrentCard() throws Exception
 	{
-		showCard(selectionPanel.getCurrentDiagramRef());
+		ViewData viewData = project.getCurrentViewData();
+		showCard(selectionPanel.getCurrentDiagramRef(viewData));
 	}
 	
 	public void dispose()
