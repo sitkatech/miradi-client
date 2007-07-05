@@ -617,6 +617,7 @@ public class Project
 		Command cmd = undoRedoState.popCommandToRedo();
 		try
 		{
+			EAM.logVerbose("Redoing: " + cmd.toString());
 			isExecuting = true;
 			executeWithoutRecording(cmd);
 			fireCommandExecuted(cmd);
@@ -630,9 +631,15 @@ public class Project
 
 	private void executeWithoutRecording(Command command) throws CommandFailedException
 	{
+		if(firingCommandExecutedEvents)
+		{
+			throw new CommandFailedException("Attempt to execute command from command listener");
+		}
 		try 
 		{
+			EAM.logVerbose("Executing: " + command.toString());
 			command.executeAndLog(this);
+			EAM.logVerbose("Finished : " + command.toString());
 		} 
 		catch (CommandFailedException e) 
 		{
@@ -676,12 +683,20 @@ public class Project
 
 	void fireCommandExecuted(Command command)
 	{
-		EAM.logVerbose("Command executed: " + command.toString());
-		CommandExecutedEvent event = new CommandExecutedEvent(command);
-		for(int i=0; i < getCommandListenerCount(); ++i)
+		EAM.logVerbose("fireCommandExecuted: " + command.toString());
+		firingCommandExecutedEvents = true;
+		try
 		{
-			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
-			listener.commandExecuted(event);
+			CommandExecutedEvent event = new CommandExecutedEvent(command);
+			for(int i=0; i < getCommandListenerCount(); ++i)
+			{
+				CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+				listener.commandExecuted(event);
+			}
+		}
+		finally
+		{
+			firingCommandExecutedEvents = false;
 		}
 	}
 	
@@ -948,6 +963,7 @@ public class Project
 	ObjectManager objectManager;
 	UndoRedoState undoRedoState;
 	boolean isExecuting;
+	boolean firingCommandExecutedEvents;
 
 	ThreatRatingFramework threatRatingFramework;
 	
