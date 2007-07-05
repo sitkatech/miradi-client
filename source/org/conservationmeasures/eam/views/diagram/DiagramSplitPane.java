@@ -47,6 +47,12 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 		int scrollBarWidth = ((Integer)UIManager.get("ScrollBar.width")).intValue();
 		setDividerLocation(scrollableLegendPanel.getPreferredSize().width + scrollBarWidth);
+		showCurrentCard();
+	}
+
+	private void showCurrentCard() throws Exception
+	{
+		showCard(selectionPanel.getCurrentDiagramRef());
 	}
 	
 	public void dispose()
