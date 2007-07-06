@@ -31,7 +31,7 @@ abstract public class DeleteDiagramPageDoer extends DiagramPageDoer
 			DiagramPanel diagramPanel = getDiagramView().getCurrentDiagramPanel();
 			DiagramObjectDeleteHelper deleteHelper = new DiagramObjectDeleteHelper(project, diagramPanel);
 			deleteHelper.deleteDiagram();
-			selectNextItem(project, diagramPanel);
+			selectFirstItem(project, diagramPanel);
 		}
 		catch (Exception e)
 		{
@@ -43,7 +43,7 @@ abstract public class DeleteDiagramPageDoer extends DiagramPageDoer
 		}
 	}
 
-	private void selectNextItem(Project project, DiagramPanel diagramPanel) throws Exception
+	private void selectFirstItem(Project project, DiagramPanel diagramPanel) throws Exception
 	{
 		ViewData viewData = project.getCurrentViewData();
 		String currentObjectTag = getDiagramObjectTag();
