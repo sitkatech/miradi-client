@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -22,6 +23,7 @@ public class ThreatReductionResult extends Factor
 	
 	public ThreatReductionResult(FactorId idToUse)
 	{
+		
 		super(idToUse, new FactorTypeThreatReductionResult());
 		clear();
 	}
@@ -83,6 +85,23 @@ public class ThreatReductionResult extends Factor
 		}
 		return list;
 	}
+	
+	public String getRelatedDirectThreat()
+	{
+		return relatedDirectThreat.get();
+	}
+	
+	void clear()
+	{
+		super.clear();
+		
+		relatedDirectThreat = new ChoiceData();
+		
+		addField(TAG_RELATED_DIRECT_THREAT_REF, relatedDirectThreat);
+	}
 
+	public static final String TAG_RELATED_DIRECT_THREAT_REF = "RelatedDirectThreatRef";
 	public static final String OBJECT_NAME = "ThreatReductionResult";
+	
+	ChoiceData relatedDirectThreat;
 }

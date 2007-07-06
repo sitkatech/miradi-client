@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.DirectThreatQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.martus.swing.UiLabel;
@@ -135,6 +136,11 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		{
 			grid.addField(createTargetStatusField(factor));
 			grid.addField(grid.createChoiceField(ObjectType.TARGET, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
+		}
+		
+		if (factor.isThreatReductionResult())
+		{
+			grid.addField(grid.createChoiceField(ObjectType.THREAT_REDUCTION_RESULT, new DirectThreatQuestion(mainWindow.getProject(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF)));
 		}
 		
 		grid.setObjectRef(factorORef);
