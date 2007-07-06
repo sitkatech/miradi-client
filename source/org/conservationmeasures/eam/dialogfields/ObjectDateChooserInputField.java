@@ -98,6 +98,11 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 		
 		public void setDate(Date newDate)
 		{
+			// NOTE: funky case where user clicks on the date icon, 
+			// and it invokes setDate BEFORE focus has transferred 
+			// to this field. So save the old field first
+			saveFocusedFieldPendingEdits();
+			
 			super.setDate(newDate);
 			setForeground(Color.blue);
 			saveDate();	

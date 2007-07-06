@@ -60,11 +60,22 @@ abstract public class ObjectDataInputField implements FocusListener
 	
 	public void focusGained(FocusEvent e)
 	{
+		EAM.logVerbose("focusGained " + tag);
+		focusedField = this;
 	}
 
 	public void focusLost(FocusEvent e)
 	{
+		EAM.logVerbose("focusLost " + tag);
 		saveIfNeeded();
+		focusedField = null;
+	}
+	
+	public static void saveFocusedFieldPendingEdits()
+	{
+		if(focusedField == null)
+			return;
+		focusedField.saveIfNeeded();
 	}
 	
 	public void updateFromObject()
@@ -134,14 +145,15 @@ abstract public class ObjectDataInputField implements FocusListener
 		try
 		{
 			project.executeCommand(cmd);
-			updateFromObject();
 		}
 		catch(CommandFailedException e)
 		{
+			EAM.logException(e);
 			notifyUserOfFailure(e);
 			setText(existingValue);
 			getComponent().requestFocus();
 		}
+		updateFromObject();
 	}
 	
 	private void notifyUserOfFailure(CommandFailedException cfe)
@@ -164,7 +176,6 @@ abstract public class ObjectDataInputField implements FocusListener
 		}
 		catch(Throwable e)
 		{
-			e.printStackTrace();
 			EAM.errorDialog(EAM.text("Text|Unknown error prevented saving this data"));
 		}
 	}
@@ -181,4 +192,6 @@ abstract public class ObjectDataInputField implements FocusListener
 	private String tag;
 	private boolean allowEdits;
 	private boolean needsSave;
+	
+	public static ObjectDataInputField focusedField;
 }
