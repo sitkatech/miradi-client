@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.json.JSONObject;
 import org.martus.util.TestCaseEnhanced;
 
@@ -20,7 +19,6 @@ public class TestProjectInfo extends TestCaseEnhanced
 	public void testJson() throws Exception
 	{
 		ProjectInfo info = new ProjectInfo();
-		info.setCurrentView("super-view");
 		info.obtainRealFactorId(new BaseId(27));
 		info.obtainRealLinkId(new BaseId(55));
 		info.getNormalIdAssigner().takeNextId();
@@ -33,7 +31,6 @@ public class TestProjectInfo extends TestCaseEnhanced
 
 	private void verifyLoadedData(ProjectInfo loaded, ProjectInfo info)
 	{
-		assertEquals("Didn't keep current view?", info.getCurrentView(), loaded.getCurrentView());
 		assertEquals("Didn't keep next id?", info.getFactorAndLinkIdAssigner().getHighestAssignedId(), loaded.getFactorAndLinkIdAssigner().getHighestAssignedId());
 		assertEquals("Didn't keep next annotation id?", info.getNormalIdAssigner().getHighestAssignedId(), loaded.getNormalIdAssigner().getHighestAssignedId());
 		assertEquals("Didn't keep metadata id?", info.getMetadataId(), loaded.getMetadataId());
@@ -51,7 +48,6 @@ public class TestProjectInfo extends TestCaseEnhanced
 	public void testClear()
 	{
 		ProjectInfo info = new ProjectInfo();
-		info.setCurrentView("super-view");
 		info.obtainRealFactorId(new BaseId(27));
 		info.getNormalIdAssigner().takeNextId();
 		assertTrue("MetadataId not invalid?", info.getMetadataId().isInvalid());
@@ -60,7 +56,6 @@ public class TestProjectInfo extends TestCaseEnhanced
 		assertEquals("set/get metadata not working?", metadataId, info.getMetadataId());
 		
 		info.clear();
-		assertEquals("Didn't clear currentView", SummaryView.getViewName(), info.getCurrentView());
 		assertEquals("didn't clear id?", -1, info.getFactorAndLinkIdAssigner().getHighestAssignedId());
 		assertEquals("didn't clear annotation id?", -1, info.getNormalIdAssigner().getHighestAssignedId());
 		assertTrue("didn't clear metadata id?", info.getMetadataId().isInvalid());

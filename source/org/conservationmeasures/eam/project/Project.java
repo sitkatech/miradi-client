@@ -70,6 +70,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.DiagramPageList;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
+import org.conservationmeasures.eam.views.summary.SummaryView;
 
 
 public class Project
@@ -101,6 +102,7 @@ public class Project
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(this);
 		
+		currentViewName = SummaryView.getViewName();
 		
 		diagramSaver = new DiagramSaver();
 		addCommandExecutedListener(diagramSaver);
@@ -264,7 +266,7 @@ public class Project
 		if(!isOpen())
 			return NO_PROJECT_VIEW_NAME;
 		
-		return projectInfo.getCurrentView();
+		return currentViewName;
 	}
 	
 	public ViewData getCurrentViewData() throws Exception
@@ -773,11 +775,7 @@ public class Project
 	
 	public void switchToView(String viewName) throws CommandFailedException
 	{
-		if(!isLegalViewName(viewName))
-			throw new CommandFailedException("Attempted switch to unknown view: " + viewName);
-		
-		projectInfo.setCurrentView(viewName);
-		
+		currentViewName = viewName;
 	}
 
 	public boolean isLegalViewName(String viewName)
@@ -996,5 +994,8 @@ public class Project
 	LayerManager layerManager;
 	DiagramSaver diagramSaver;
 	boolean inTransaction;
+	
+	// TODO: This should go away, but it's difficult
+	String currentViewName;
 }
 
