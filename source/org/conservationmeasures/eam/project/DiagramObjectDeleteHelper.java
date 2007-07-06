@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -21,6 +22,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Slide;
+import org.conservationmeasures.eam.objects.ViewData;
 
 public class DiagramObjectDeleteHelper
 {
@@ -36,10 +38,29 @@ public class DiagramObjectDeleteHelper
 		deleteAllDiagramFactorLinks();
 		deleteAllDiagramFactors();
 		deleteAllSlideReferences(diagramObject);
-		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
-		project.executeCommands(commands);
+		clearObject(diagramObject);
+		removeAsCurrentDiagram();
+		deleteDiagramObject(diagramObject);
+	}
+
+	private void deleteDiagramObject(DiagramObject diagramObject) throws CommandFailedException
+	{
 		CommandDeleteObject deleteDiagramObject = new CommandDeleteObject(diagramObject.getRef());
 		project.executeCommand(deleteDiagramObject);
+	}
+
+	private void removeAsCurrentDiagram() throws Exception, CommandFailedException
+	{
+		ViewData viewData = project.getCurrentViewData();
+		String currentDiagramViewDataTag = diagramPanel.getDiagramSplitPane().getDiagramPageList().getCurrentDiagramViewDataTag();
+		CommandSetObjectData setCurrentDiagramCommand = new CommandSetObjectData(viewData.getRef(), currentDiagramViewDataTag, ORef.INVALID);
+		project.executeCommand(setCurrentDiagramCommand);
+	}
+
+	private void clearObject(DiagramObject diagramObject) throws CommandFailedException
+	{
+		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
+		project.executeCommands(commands);
 	}
 	
 	private void deleteAllSlideReferences(DiagramObject diagramObject) throws Exception
