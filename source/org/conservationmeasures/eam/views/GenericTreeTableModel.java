@@ -27,6 +27,10 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 		return new TreePath(getRoot());
 	}
 	
+	public boolean isCellEditable(Object node, int column)
+	{
+		return false;
+	}
 
 	protected void rebuildNode()
 	{
