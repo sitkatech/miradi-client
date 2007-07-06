@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.FileBasedProjectServer;
 import org.conservationmeasures.eam.database.ProjectServer;
@@ -67,6 +68,7 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
+import org.conservationmeasures.eam.views.diagram.DiagramPageList;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 
 
@@ -510,10 +512,29 @@ public class Project
 		loadThreatRatingFramework();
 		
 		createDefaultObjectsIfNeeded();
+		setDefaultDiagramPage(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		setDefaultDiagramPage(ObjectType.RESULTS_CHAIN_DIAGRAM);
 		database.writeVersion();
 
 	}
 
+	private void setDefaultDiagramPage(int objectType) throws Exception
+	{
+		EAMObjectPool pool = getPool(objectType);
+		if (pool.size() == 0)
+			return;
+	
+		ViewData viewData = getCurrentViewData();
+		ORef currentDiagramObjectRef = DiagramPageList.getCurrentDiagramViewDataRef(viewData, objectType);
+		if (!currentDiagramObjectRef.isInvalid())
+			return;
+
+		ORef firstPoolItemRef = pool.getORefList().get(0);
+		String currentDiagramViewDataTag = DiagramPageList.getCurrentDiagramViewDataTag(objectType);
+		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(viewData.getRef(), currentDiagramViewDataTag, firstPoolItemRef);
+		executeCommand(setCurrentDiagramObject);		
+	}
+	
 	public String getFilename()
 	{
 		if(isOpen())

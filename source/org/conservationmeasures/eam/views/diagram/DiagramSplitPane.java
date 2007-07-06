@@ -52,8 +52,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 
 	private void showCurrentCard() throws Exception
 	{
-		ViewData viewData = project.getCurrentViewData();
-		showCard(selectionPanel.getCurrentDiagramRef(viewData));
+		showCard(selectionPanel.getCurrentDiagramViewDataRef());
 	}
 	
 	public void dispose()
@@ -114,20 +113,6 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		leftSideSplit.setDividerLocation(100);
 		
 		return leftSideSplit;
-	}
-
-	public void setDefaultSelection() throws Exception
-	{
-		ViewData viewData = project.getCurrentViewData();
-		ORef currentDiagramObjectRef = getCurrentDiagramRef(viewData);
-		if (! currentDiagramObjectRef.isInvalid())
-		{
-			selectionPanel.setSelectedRow(currentDiagramObjectRef);
-		}
-		else if (selectionPanel.getRowCount() > 0)
-		{
-			selectionPanel.scrollToAndSelectRow(0);
-		}
 	}
 	
 	public DiagramLegendPanel getLegendPanel()

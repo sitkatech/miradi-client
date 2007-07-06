@@ -39,42 +39,43 @@ abstract public class DiagramPageList extends ObjectPoolTable
 
 	private void setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
 	{
-		ViewData viewData = project.getCurrentViewData();
-		String currentDiagramViewDataTag = getCurrentDiagramViewDataTag();
-		if (alreadySameDiagramRef(viewData, selectedRef))
+		ORef currentDiagramRef = getCurrentDiagramViewDataRef();
+		if (currentDiagramRef.equals(selectedRef))
 			return;
 		
-		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(viewData.getRef(), currentDiagramViewDataTag, selectedRef);
+		ViewData viewData = project.getCurrentViewData();
+		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(viewData.getRef(), getCurrentDiagramViewDataTag(), selectedRef);
 		project.executeCommand(setCurrentDiagramObject);
 	}
 
-	private boolean alreadySameDiagramRef(ViewData viewData, ORef selectedRef) throws Exception
+	public static String getCurrentDiagramViewDataTag(int objectType)
 	{
-		ORef currentDiagramRef = getCurrentDiagramRef(viewData);
-		if (currentDiagramRef.equals(selectedRef))
-			return true;
-		
-		return false;
-	}
-	
-	public ORef getCurrentDiagramRef(ViewData viewData) throws Exception
-	{
-		String currentDiagramViewDataTag = getCurrentDiagramViewDataTag();
-		String orefAsJsonString = viewData.getData(currentDiagramViewDataTag);
-		ORef currentDiagramObjectRef = ORef.createFromString(orefAsJsonString);
-
-		return currentDiagramObjectRef;
-	}
-
-	public String getCurrentDiagramViewDataTag()
-	{
-		if (getManagedDiagramType() == ObjectType.CONCEPTUAL_MODEL_DIAGRAM)
+		if (objectType == ObjectType.CONCEPTUAL_MODEL_DIAGRAM)
 			return ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF;
 		
-		if (getManagedDiagramType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
+		if (objectType == ObjectType.RESULTS_CHAIN_DIAGRAM)
 			return ViewData.TAG_CURRENT_RESULTS_CHAIN_REF;
 		
-		throw new RuntimeException("Could not find corrent tag for " + getManagedDiagramType());
+		throw new RuntimeException("Could not find corrent tag for " + objectType);
+	}
+	
+	public String getCurrentDiagramViewDataTag()
+	{
+		return getCurrentDiagramViewDataTag(getManagedDiagramType());
+	}
+	
+	public ORef getCurrentDiagramViewDataRef() throws Exception
+	{
+		ViewData viewData = project.getCurrentViewData();
+		return getCurrentDiagramViewDataRef(viewData, getManagedDiagramType());
+	}
+	
+	public static ORef getCurrentDiagramViewDataRef(ViewData viewData, int objectType) throws Exception
+	{
+		String currrentDiagramViewDataTag = getCurrentDiagramViewDataTag(objectType);
+		String orefAsJsonString = viewData.getData(currrentDiagramViewDataTag);
+		
+		return ORef.createFromString(orefAsJsonString);
 	}
 	
 	public class DiagramObjectListSelectionListener  implements ListSelectionListener

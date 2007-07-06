@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.PointList;
 
 public class ResultsChainCreatorHelper
@@ -73,6 +74,11 @@ public class ResultsChainCreatorHelper
 			CommandSetObjectData setLabelCommand = new CommandSetObjectData(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId, DiagramObject.TAG_LABEL, label);
 			project.executeCommand(setLabelCommand);
 
+			ViewData viewData = project.getCurrentViewData();
+			CommandSetObjectData setCurrentDiagram = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_RESULTS_CHAIN_REF, resultsChain.getRef());
+			project.executeCommand(setCurrentDiagram);
+			
+			
 			return newResultsChainId;
 	}
 	

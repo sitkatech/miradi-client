@@ -34,7 +34,6 @@ abstract public class DiagramPanel extends DisposablePanel
 		project = mainWindow.getProject();
 		diagramSplitter = createDiagramSplitter();
 		add(diagramSplitter);
-		getDiagramSplitPane().setDefaultSelection();
 	}
 
 	public void dispose()
