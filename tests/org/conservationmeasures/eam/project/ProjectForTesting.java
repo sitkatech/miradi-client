@@ -235,7 +235,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		try
 		{
 			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(this, getDiagramModel(), getDiagramObject());
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(this, getDiagramModel());
 			modelUpdater.commandSetObjectDataWasExecuted(setCommand);
 		}
 		catch(Exception e)

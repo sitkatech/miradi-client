@@ -20,12 +20,11 @@ import org.conservationmeasures.eam.project.Project;
 public class DiagramModelUpdater
 {
 
-	//TODO nima dont pass in the DO since the model already has one
-	public DiagramModelUpdater(Project projectToUse, DiagramModel modelToUse, DiagramObject diagramObjectToUse)
+	public DiagramModelUpdater(Project projectToUse, DiagramModel modelToUse)
 	{
 		project = projectToUse;
 		model = modelToUse;
-		diagramObject = diagramObjectToUse;
+		diagramObject = model.getDiagramObject();
 	}
 
 	public void commandSetObjectDataWasExecuted(CommandSetObjectData setObjectDataCommand)

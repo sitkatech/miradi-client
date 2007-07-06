@@ -308,7 +308,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 		try
 		{			
-			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, diagramModel, getDiagramObject());
+			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, diagramModel);
 			modelUpdater.commandSetObjectDataWasExecuted(setCommand);
 		}
 		catch(Exception e)
