@@ -15,7 +15,6 @@ import java.util.Vector;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -66,18 +65,6 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		}
 	}
 	
-	public void tableChanged(TableModelEvent e)
-	{
-		super.tableChanged(e);
-		
-		if (e.getFirstRow()<0) return;
-		
-		if (e.getType()!=TableModelEvent.DELETE)
-		{
-			scrollToAndSelectRow(e.getFirstRow());
-		}
-	}
-
 	public void scrollToAndSelectRow(int row)
 	{
 		if (getRowCount() <= row)
