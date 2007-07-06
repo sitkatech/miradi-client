@@ -17,6 +17,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.DefaultCaret;
 import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextArea;
@@ -52,10 +53,18 @@ public class ObjectTextInputField extends ObjectDataInputField
 
 	public void setText(String newValue)
 	{
-		field.setText(newValue);
+		setTextWithoutScrollingToMakeFieldVisible(newValue);
 		clearNeedsSave();
 	}
 	
+	private void setTextWithoutScrollingToMakeFieldVisible(String newValue)
+	{
+		DefaultCaret caret = (DefaultCaret)field.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+		field.setText(newValue);
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+	}
+
 	public void updateEditableState()
 	{
 		boolean editable = allowEdits() && isValidObject();
