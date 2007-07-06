@@ -145,6 +145,7 @@ abstract public class ObjectDataInputField implements FocusListener
 		try
 		{
 			project.executeCommand(cmd);
+			updateFromObject();
 		}
 		catch(CommandFailedException e)
 		{
@@ -153,7 +154,6 @@ abstract public class ObjectDataInputField implements FocusListener
 			setText(existingValue);
 			getComponent().requestFocus();
 		}
-		updateFromObject();
 	}
 	
 	private void notifyUserOfFailure(CommandFailedException cfe)
