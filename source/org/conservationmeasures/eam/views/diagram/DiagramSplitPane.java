@@ -331,7 +331,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		}
 	}
 
-	private int getContentType()
+	public int getContentType()
 	{
 		return getDiagramPageList().getManagedDiagramType();
 	}
