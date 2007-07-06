@@ -518,7 +518,7 @@ public class Project
 
 	}
 
-	private void setDefaultDiagramPage(int objectType) throws Exception
+	protected void setDefaultDiagramPage(int objectType) throws Exception
 	{
 		EAMObjectPool pool = getPool(objectType);
 		if (pool.size() == 0)

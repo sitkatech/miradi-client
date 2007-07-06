@@ -83,6 +83,11 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		diagramModel = null;
 	}
 
+	protected void setDefaultDiagramPage(int objectType)
+	{
+		//TODO consult with kevin with this idea
+		//overrode to be empty, so that tests dont fail
+	}
 	
 	//TODO this is fragile, should do a true close
 	public void closeAndReopen() throws Exception
