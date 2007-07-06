@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.PointList;
 
@@ -184,7 +185,18 @@ public class ResultsChainCreatorHelper
 		CommandSetObjectData setLabelCommand = new CommandSetObjectData(ObjectType.FACTOR, newlyCreatedId, Factor.TAG_LABEL, clonedLabel);
 		project.executeCommand(setLabelCommand);
 		
+		possiblySetThreatReductionResultsDirectThreat(factor, newlyCreatedId);
+		
 		return newlyCreatedId;
+	}
+
+	private void possiblySetThreatReductionResultsDirectThreat(Factor factor, FactorId newlyCreatedId) throws CommandFailedException
+	{
+		if (! factor.isDirectThreat())
+			return;
+		
+		CommandSetObjectData setDirectThreat = new CommandSetObjectData(ObjectType.FACTOR, newlyCreatedId, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, factor.getRef().toString());
+		project.executeCommand(setDirectThreat);
 	}
 
 	private CommandCreateObject createNewFactorCommand(Factor factor) throws Exception

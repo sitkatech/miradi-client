@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
@@ -41,6 +42,7 @@ import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
@@ -339,6 +341,7 @@ public class FactorCommandHelper
 	// TODO: This method should have unit tests
 	public void deleteFactor(FactorCell factorToDelete, DiagramObject diagramObject) throws Exception
 	{
+		removeFromThreatReductionResults(factorToDelete);
 		removeFromView(factorToDelete.getWrappedId());
 		removeNodeFromDiagram(factorToDelete, diagramObject);
 		deleteDiagramFactor(factorToDelete.getDiagramFactorId());
@@ -349,6 +352,23 @@ public class FactorCommandHelper
 
 		deleteAnnotations(underlyingNode);
 		deleteUnderlyingNode(underlyingNode);
+	}
+
+	private void removeFromThreatReductionResults(FactorCell factorToDelete) throws CommandFailedException
+	{
+		Factor factor = factorToDelete.getUnderlyingObject();
+		EAMObjectPool pool = project.getPool(ObjectType.THREAT_REDUCTION_RESULT);
+		ORefList orefList = pool.getORefList();
+		for (int i = 0; i < orefList.size(); ++i)
+		{
+			ThreatReductionResult threatReductionResult = (ThreatReductionResult) project.findObject(orefList.get(i));
+			ORef directThreatRef = ORef.createFromString(threatReductionResult.getRelatedDirectThreat());
+			if (! directThreatRef.equals(factor.getRef()))
+				continue;
+			
+			CommandSetObjectData setDirectThreat = new CommandSetObjectData(threatReductionResult.getRef(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, ORef.INVALID.toString());
+			project.executeCommand(setDirectThreat);
+		}
 	}
 
 	private boolean canDeleteFactor(Factor factorToDelete)
