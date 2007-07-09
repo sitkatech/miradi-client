@@ -65,6 +65,8 @@ public class SlideListTablePanel extends ObjectListTablePanel
 		inSelectionLogic = true;
 		try
 		{
+			// FIXME: Need to force the diagram view to make this 
+			// specific diagram visible, not just pick the right tab
 			getDiagramView().setDiagramTab(oref);
 			updateLegendPanel();
 		}
@@ -146,14 +148,18 @@ public class SlideListTablePanel extends ObjectListTablePanel
 			String tag = cmd.getFieldTag();
 			if (tag.equals(ViewData.TAG_DIAGRAM_HIDDEN_TYPES))
 			{
-				getProject().executeCommand(new CommandSetObjectData(slide.getRef(), Slide.TAG_DIAGRAM_LEGEND_SETTINGS, cmd.getDataValue()));
+				// NOTE: Since we are inside commandExecuted, we can't execute another command here,
+				// which is ok, because this is purely a side effect of the actual command, so we 
+				// wouldn't want to independently undo/redo it
+				getProject().setObjectData(slide.getRef(), Slide.TAG_DIAGRAM_LEGEND_SETTINGS, cmd.getDataValue());
 			}
 			
 			if (isDiagramType(tag))
 			{
-				//FIXME: check to see if the FIXME is correct
-				//FIXME: seems to be using TAG_CURRENT_TAB and not TAG_CURRENT_DIAGRAM_REF for a tab switch????
-				getProject().executeCommand(new CommandSetObjectData(slide.getRef(), Slide.TAG_DIAGRAM_OBJECT_REF, cmd.getDataValue()));
+				// NOTE: Since we are inside commandExecuted, we can't execute another command here,
+				// which is ok, because this is purely a side effect of the actual command, so we 
+				// wouldn't want to independently undo/redo it
+				getProject().setObjectData(slide.getRef(), Slide.TAG_DIAGRAM_OBJECT_REF, cmd.getDataValue());
 			}
 		}
 		catch (Exception e)
