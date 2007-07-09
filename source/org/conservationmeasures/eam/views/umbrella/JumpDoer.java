@@ -37,6 +37,7 @@ public class JumpDoer extends MainWindowDoer
 		try
 		{
 			getWizardManager().setStep(actionClass);
+			getMainWindow().forceViewSplitterToMiddle();
 		}
 		catch (Exception e)
 		{

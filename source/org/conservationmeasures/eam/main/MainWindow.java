@@ -185,6 +185,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getContentPane().add(mainStatusBar, BorderLayout.AFTER_LAST_LINE);
 	}
 	
+	public void forceViewSplitterToMiddle()
+	{
+		if (spliterPane == null)
+			return;
+		spliterPane.setDividerLocation(spliterPane.getHeight()/2);
+	}
+	
 	public int getDividerLocation()
 	{
 		if (spliterPane!=null)
@@ -807,5 +814,4 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private int existingCommandListenerCount;
 	private boolean preventActionUpdatesFlag;
 	private Vector preventActionUpdateStack;
-	
 }
