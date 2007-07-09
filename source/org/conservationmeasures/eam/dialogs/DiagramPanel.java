@@ -224,6 +224,11 @@ abstract public class DiagramPanel extends DisposablePanel
 		return getDiagramSplitPane().getLegendPanel();
 	}
 	
+	public void showCurrentDiagram() throws Exception
+	{
+		diagramSplitter.showCurrentCard();
+	}
+	
 	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;
 	
 	DiagramSplitPane diagramSplitter;

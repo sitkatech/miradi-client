@@ -222,7 +222,8 @@ abstract public class TabbedView extends UmbrellaView
 				recordTabChangeCommand(newTab);
 
 			currentTab = newTab;
-			tabWasSelected();
+			if(!ignoreTabChanges)
+				tabWasSelected();
 		}
 
 		private void recordTabChangeCommand(int newTab)

@@ -318,9 +318,15 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		try
 		{
 			getMainWindow().preventActionUpdates();
+			getCurrentDiagramPanel().showCurrentDiagram();
 			updateVisibilityOfFactorsAndClearSelectionModel();
 			if (getDiagramComponent()!=null)
 				getDiagramComponent().updateDiagramZoomSetting();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Unknown error displaying diagram"));
 		}
 		finally
 		{
