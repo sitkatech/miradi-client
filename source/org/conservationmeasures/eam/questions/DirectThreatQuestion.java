@@ -9,9 +9,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 
@@ -24,16 +21,15 @@ public class DirectThreatQuestion extends ChoiceQuestion
 
 	static ChoiceItem[] getDirectThreatChoices(Project project)
 	{
-		EAMObjectPool pool = project.getPool(ObjectType.CAUSE);
-		ORefList orefList = pool.getORefList();
 		Vector choiceItems = new Vector();
 		ChoiceItem notSpecifiedChoice = new ChoiceItem(ORef.INVALID.toString(), EAM.text("Not Specified"));
 		choiceItems.add(notSpecifiedChoice);
-		for (int i = 0; i < orefList.size(); ++i)
+		
+		Factor[] directThreats = project.getCausePool().getDirectThreats();
+		for (int i = 0; i < directThreats.length; ++i)
 		{
-			Factor factor = (Factor) project.findObject(orefList.get(i));
-			if (factor.isDirectThreat())
-				choiceItems.add(new ChoiceItem(factor.getRef().toString(), factor.getLabel()));
+			Factor directThreat = directThreats[i];
+			choiceItems.add(new ChoiceItem(directThreat.getRef().toString(), directThreat.getLabel()));
 		}
 		
 		return (ChoiceItem[]) choiceItems.toArray(new ChoiceItem[0]);
