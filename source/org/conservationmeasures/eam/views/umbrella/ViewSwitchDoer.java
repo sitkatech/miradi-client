@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.wizard.WizardManager;
 
 abstract public class ViewSwitchDoer extends MainWindowDoer
 {
@@ -26,14 +27,17 @@ abstract public class ViewSwitchDoer extends MainWindowDoer
 			return;
 		
 		String viewName = getViewName();
+		WizardManager wizardManager = getMainWindow().getWizardManager();
+		String destinationStepName = wizardManager.getOverviewStepName(viewName);
 		
-		if(getProject().getCurrentView().equals(viewName))
+		String currentStepName = wizardManager.getCurrentStepName();
+		if(destinationStepName.equals(currentStepName))
 			return;
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			getMainWindow().getWizardManager().setOverViewStep(viewName);
+			wizardManager.setStep(destinationStepName);
 		}
 		catch(Exception e)
 		{

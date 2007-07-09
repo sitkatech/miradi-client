@@ -491,7 +491,7 @@ public class WizardManager
 		setStep(getOverviewStepName(viewName));
 	}
 
-	private String getOverviewStepName(String viewName)
+	public String getOverviewStepName(String viewName)
 	{
 		return removeSpaces(viewName) + "OverviewStep";
 	}
