@@ -42,8 +42,8 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		ORef currentDiagramRef = getCurrentDiagramViewDataRef();
 		if (currentDiagramRef.equals(selectedRef))
 			return;
-		
-		ViewData viewData = project.getCurrentViewData();
+	
+		ViewData viewData = project.getDiagramViewData();
 		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(viewData.getRef(), getCurrentDiagramViewDataTag(), selectedRef);
 		project.executeCommand(setCurrentDiagramObject);
 	}
@@ -66,7 +66,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	
 	public ORef getCurrentDiagramViewDataRef() throws Exception
 	{
-		ViewData viewData = project.getCurrentViewData();
+		ViewData viewData = project.getDiagramViewData();
 		return getCurrentDiagramViewDataRef(viewData, getManagedDiagramType());
 	}
 	

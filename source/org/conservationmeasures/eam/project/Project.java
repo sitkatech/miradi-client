@@ -69,6 +69,7 @@ import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.DiagramPageList;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 
@@ -267,6 +268,11 @@ public class Project
 			return NO_PROJECT_VIEW_NAME;
 		
 		return currentViewName;
+	}
+	
+	public ViewData getDiagramViewData() throws Exception
+	{
+		return getViewData(DiagramView.getViewName());
 	}
 	
 	public ViewData getCurrentViewData() throws Exception
