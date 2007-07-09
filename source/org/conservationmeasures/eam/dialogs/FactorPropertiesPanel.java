@@ -140,7 +140,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		
 		if (factor.isThreatReductionResult())
 		{
-			grid.addField(grid.createChoiceField(ObjectType.THREAT_REDUCTION_RESULT, new DirectThreatQuestion(mainWindow.getProject(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF)));
+			grid.addField(grid.createReadOnlyChoiceField(ObjectType.THREAT_REDUCTION_RESULT, new DirectThreatQuestion(mainWindow.getProject(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF)));
 		}
 		
 		grid.setObjectRef(factorORef);
