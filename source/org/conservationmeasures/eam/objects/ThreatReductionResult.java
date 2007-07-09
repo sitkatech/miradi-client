@@ -86,7 +86,7 @@ public class ThreatReductionResult extends Factor
 		return list;
 	}
 	
-	public String getRelatedDirectThreat()
+	public String getRelatedDirectThreatRefAsString()
 	{
 		return relatedDirectThreat.get();
 	}

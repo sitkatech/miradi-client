@@ -362,7 +362,7 @@ public class FactorCommandHelper
 		for (int i = 0; i < orefList.size(); ++i)
 		{
 			ThreatReductionResult threatReductionResult = (ThreatReductionResult) project.findObject(orefList.get(i));
-			ORef directThreatRef = ORef.createFromString(threatReductionResult.getRelatedDirectThreat());
+			ORef directThreatRef = ORef.createFromString(threatReductionResult.getRelatedDirectThreatRefAsString());
 			if (! directThreatRef.equals(factor.getRef()))
 				continue;
 			
