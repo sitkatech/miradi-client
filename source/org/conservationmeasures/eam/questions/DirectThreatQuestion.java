@@ -19,10 +19,10 @@ public class DirectThreatQuestion extends ChoiceQuestion
 {
 	public DirectThreatQuestion(Project project, String tagToUse)
 	{
-		super(tagToUse, "Direct Threat", getViabilityModeChoices(project));
+		super(tagToUse, "Direct Threat", getDirectThreatChoices(project));
 	}
 
-	static ChoiceItem[] getViabilityModeChoices(Project project)
+	static ChoiceItem[] getDirectThreatChoices(Project project)
 	{
 		EAMObjectPool pool = project.getPool(ObjectType.CAUSE);
 		ORefList orefList = pool.getORefList();
