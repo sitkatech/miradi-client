@@ -252,12 +252,12 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		Point location = getLocation();
 
-		Dimension newSize = new Dimension(forceNoneZeroEvenSnap(size.width), forceNoneZeroEvenSnap(size.height));
+		Dimension newSize = new Dimension(forceNonZeroEvenSnap(size.width), forceNonZeroEvenSnap(size.height));
 		Rectangle bounds = new Rectangle(location, newSize);
 		GraphConstants.setBounds(getAttributes(), bounds);
 	}
 
-	private int forceNoneZeroEvenSnap(int value)
+	private int forceNonZeroEvenSnap(int value)
 	{
 		//TODO this null check is here for test code
 		if (getUnderlyingObject().getObjectManager()==null)
