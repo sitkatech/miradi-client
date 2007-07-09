@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.InvalidDateRangeException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
@@ -718,6 +719,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			try
 			{
+				ObjectDataInputField.saveFocusedFieldPendingEdits();
 				exitNormally();
 			}
 			catch (Exception e)
