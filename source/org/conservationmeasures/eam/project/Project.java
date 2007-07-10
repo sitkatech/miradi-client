@@ -1001,7 +1001,7 @@ public class Project
 	DiagramSaver diagramSaver;
 	boolean inTransaction;
 	
-	// TODO: This should go away, but it's difficult
+	// FIXME: This should go away, but it's difficult
 	String currentViewName;
 }
 
