@@ -18,5 +18,7 @@ public class TargetViabilityTree extends TreeTableWithStateSaving
 		super(projectToUse, targetViabilityModelToUse);
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
+		final int CUSTOM_HEIGHT_TO_SHOW_ICON = getRowHeight() + 1;
+		setRowHeight(CUSTOM_HEIGHT_TO_SHOW_ICON);
 	}
 }
