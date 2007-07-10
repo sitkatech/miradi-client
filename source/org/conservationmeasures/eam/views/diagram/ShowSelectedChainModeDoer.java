@@ -31,6 +31,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	{
 		try
 		{
+			//FIXME this check happens twice,  and also refactor this try into a method
 			if(!isDiagramView())
 				return false;
 			ViewData viewData = getProject().getViewData(getView().cardName());
