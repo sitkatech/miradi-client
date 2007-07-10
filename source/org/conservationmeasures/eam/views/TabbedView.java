@@ -18,7 +18,6 @@ import javax.swing.event.ChangeListener;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ObjectPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
@@ -214,9 +213,7 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		public void stateChanged(ChangeEvent event)
 		{
-			ObjectDataInputField.saveFocusedFieldPendingEdits();
-			closeActivePropertiesDialog();
-
+			prepareForTabSwitch();
 			int newTab = tabs.getSelectedIndex();
 			if(!ignoreTabChanges)
 				recordTabChangeCommand(newTab);

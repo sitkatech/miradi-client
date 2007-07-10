@@ -118,6 +118,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePropertiesPanel;
@@ -170,6 +171,12 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		getProject().removeCommandExecutedListener(this);
 		isActive = false;
 		removeAll();
+	}
+	
+	public void prepareForTabSwitch()
+	{
+		ObjectDataInputField.saveFocusedFieldPendingEdits();
+		closeActivePropertiesDialog();
 	}
 	
 	public MainWindow getMainWindow()
