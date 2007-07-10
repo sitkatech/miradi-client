@@ -302,21 +302,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public void tabWasSelected()
 	{
-		if (isStategyBrainstormMode())
-		{
-			try
-			{
-				EAMAction actionShowFullModelMode = getActions().get(ActionShowFullModelMode.class);
-				actionShowFullModelMode.doAction();
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
-		super.tabWasSelected();
 		try
 		{
+			prepareForTabSwitch();
+			super.tabWasSelected();
 			getMainWindow().preventActionUpdates();
 			getCurrentDiagramPanel().showCurrentDiagram();
 			updateVisibilityOfFactorsAndClearSelectionModel();
@@ -332,6 +321,15 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		{
 			getMainWindow().allowActionUpdates();
 		}
+	}
+
+	private void prepareForTabSwitch() throws Exception
+	{
+		if (!isStategyBrainstormMode())
+			return;
+		
+		EAMAction actionShowFullModelMode = getActions().get(ActionShowFullModelMode.class);
+		actionShowFullModelMode.doAction();
 	}
 
 	public void createTabs() throws Exception
