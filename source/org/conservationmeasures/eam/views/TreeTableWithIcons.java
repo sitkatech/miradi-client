@@ -61,6 +61,9 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		setDefaultEditor(TreeTableModel.class, ce);
 		if (getRowCount()>0)
 			setRowSelectionInterval(0,0);
+		
+		final int CUSTOM_HEIGHT_TO_AVOID_ICON_CROPPING = getRowHeight() + 1;
+		setRowHeight(CUSTOM_HEIGHT_TO_AVOID_ICON_CROPPING);
 	}
 
 	public Project getProject()
