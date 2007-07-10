@@ -249,6 +249,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		CardLayout layout = (CardLayout)viewHolder.getLayout();
 		layout.show(viewHolder, view.cardName());
 		currentView = view;
+		project.switchToView(view.cardName());
 		existingCommandListenerCount = getProject().getCommandListenerCount();
 		currentView.becomeActive();
 
