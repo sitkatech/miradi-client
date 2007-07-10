@@ -11,6 +11,7 @@ import java.awt.font.TextAttribute;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
@@ -235,8 +236,13 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		
 		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
 		{
-		    ((JTextField)getComponent()).setEditable(false);
-			return super.getTableCellEditorComponent(table, value, isSelected, r, c);
+			JTextField textField = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, r, c); 
+			return convertToJLabelAvoidingEditMode(textField);
+		}
+
+		private JLabel convertToJLabelAvoidingEditMode(JTextField component2)
+		{
+			return new JLabel(component2.getText());
 		}
 	}
 	
