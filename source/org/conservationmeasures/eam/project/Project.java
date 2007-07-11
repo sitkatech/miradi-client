@@ -662,7 +662,9 @@ public class Project
 	{
 		if(firingCommandExecutedEvents)
 		{
-			throw new CommandFailedException("Attempt to execute command from command listener");
+			//FIXME re enable this and test app further to catch instances of error
+			//throw new CommandFailedException("Attempt to execute command from command listener");
+			EAM.logError(EAM.text("Attempt to execute command from command listener"));
 		}
 		try 
 		{
