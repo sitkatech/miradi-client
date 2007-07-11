@@ -586,7 +586,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 		try
 		{
-			updateAllTabs(rawCommand);
+			CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+			updateAllTabs(cmd);
+			setToDefaultMode(cmd);
 		}
 		catch (Exception e)
 		{
@@ -594,9 +596,21 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 
-	private void updateAllTabs(Command rawCommand) throws Exception
+	private void setToDefaultMode(CommandSetObjectData cmd) throws Exception
 	{
-		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+		if (cmd.getObjectType() != ObjectType.VIEW_DATA)
+			return;
+		
+		if (! cmd.getFieldTag().equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF) && !cmd.getFieldTag().equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF))
+			return;
+		
+		switchToFullMode();
+	}
+
+
+	private void updateAllTabs(CommandSetObjectData cmd) throws Exception
+	{
+		
 		String newValue = cmd.getDataValue();
 		setModeIfRelevant(cmd, newValue);
 		
