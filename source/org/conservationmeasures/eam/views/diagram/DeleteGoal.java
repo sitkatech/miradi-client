@@ -18,5 +18,4 @@ public class DeleteGoal extends DeleteAnnotationDoer
 	{
 		return Factor.TAG_GOAL_IDS;
 	}
-
 }
