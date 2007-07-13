@@ -510,16 +510,13 @@ abstract public class BaseObject
 
 		if (ValueOption.canOwnThisType(type))
 			objectTypes[i++] = ValueOption.getObjectType();
+
+		if (Cause.canOwnThisType(type))
+			objectTypes[i++] = Cause.getObjectType();
 		
 		if (Strategy.canOwnThisType(type))
 			objectTypes[i++] = Strategy.getObjectType();
 		
-		if (Task.canOwnThisType(type))
-			objectTypes[i++] = Task.getObjectType();
-
-		if (Cause.canOwnThisType(type))
-			objectTypes[i++] = Cause.getObjectType();
-				
 		if (Target.canOwnThisType(type))
 			objectTypes[i++] = Target.getObjectType();
 		
@@ -579,6 +576,9 @@ abstract public class BaseObject
 		
 		if (SlideShow.canOwnThisType(type))
 			objectTypes[i++] = SlideShow.getObjectType();
+		
+		if (Task.canOwnThisType(type))
+			objectTypes[i++] = Task.getObjectType();
 		
 		int[] outArray = new int[i];
 		System.arraycopy(objectTypes, 0, outArray, 0, i);
