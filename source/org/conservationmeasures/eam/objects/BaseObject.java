@@ -510,16 +510,16 @@ abstract public class BaseObject
 
 		if (ValueOption.canOwnThisType(type))
 			objectTypes[i++] = ValueOption.getObjectType();
-
+		
+		if (Strategy.canOwnThisType(type))
+			objectTypes[i++] = Strategy.getObjectType();
+		
 		if (Task.canOwnThisType(type))
 			objectTypes[i++] = Task.getObjectType();
 
 		if (Cause.canOwnThisType(type))
 			objectTypes[i++] = Cause.getObjectType();
-		
-		if (Strategy.canOwnThisType(type))
-			objectTypes[i++] = Strategy.getObjectType();
-		
+				
 		if (Target.canOwnThisType(type))
 			objectTypes[i++] = Target.getObjectType();
 		
