@@ -40,9 +40,14 @@ public class ConceptualModelDiagram extends DiagramObject
 	
 	public String toString()
 	{
-		if (getLabel().trim().length() == 0)
-			return EAM.text("Conceptual Model Page");
-		
 		return getLabel();
+	}
+	
+	public String getLabel()
+	{
+		if (label.toString().trim().length() == 0)
+			return EAM.text("[Main Diagram]");
+		
+		return label.toString();	
 	}
 }
