@@ -135,7 +135,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public String toString()
 	{
-		return getLabel() + Integer.toString(id.asInt());
+		return getLabel();
 	}
 	
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
