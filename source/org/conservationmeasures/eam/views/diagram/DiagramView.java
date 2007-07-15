@@ -106,7 +106,6 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -225,35 +224,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return node.getUnderlyingObject();
 	}
 	
-	public void becomeActive() throws Exception
-	{
-		super.becomeActive();
-		
-		ensureConceptualModelPageHasSelection();
-	}
-
-
-	private void ensureConceptualModelPageHasSelection() throws Exception
-	{
-		if (getSelectedTabIndex() != 0)
-			return;
-		
-		ViewData viewData = getViewData();
-		ORef currentDiagramRef = viewData.getCurrentConceptualModelRef();
-		if (!currentDiagramRef.equals(ORef.INVALID))
-			return;
-			
-		ConceptualModelDiagramPool conceptualModelPool = getProject().getConceptualModelDiagramPool();
-		if (conceptualModelPool.size() == 0)
-			return;
-		
-		ORefList orefList = conceptualModelPool.getORefList();
-		ORef firstRef = orefList.get(0);
-		
-		CommandSetObjectData setCurrentDiagramCommand = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, firstRef.toString());
-		getProject().executeCommand(setCurrentDiagramCommand);
-	}
-
 	public PropertiesDoer getPropertiesDoer()
 	{
 		return propertiesDoer;
@@ -383,6 +353,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			createResultsChainTab();
 			
 			setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
+			//TODO nima get tag using object type, diagram splitter has this info.  
+			selectFirstDiagramlPage(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
+			selectFirstDiagramlPage(ObjectType.RESULTS_CHAIN_DIAGRAM, ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
 		}
 		finally
 		{
@@ -400,6 +373,27 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		ConceptualModelDiagramPanel conceptualDiagramPanel = new ConceptualModelDiagramPanel(getMainWindow());
 		addTab(EAM.text("Conceptual Model"), conceptualDiagramPanel);
+	}
+	
+	private void selectFirstDiagramlPage(int objectType, String tag) throws Exception
+	{
+		ViewData viewData = getViewData();
+		String orefAsJsonString = viewData.getData(tag);
+		ORef currentDiagramRef = ORef.createFromString(orefAsJsonString);
+		if (!currentDiagramRef.equals(ORef.INVALID))
+			return;
+			
+		EAMObjectPool objectPool = getProject().getPool(objectType);
+		if (objectPool.size() == 0)
+			return;
+		
+		ORefList orefList = objectPool.getORefList();
+		ORef firstRef = orefList.get(0);
+		
+		//NOTE: Since we are inside commandExecuted, we can't execute another command here,
+		// which is ok, because because we are switching away from the absence of a diagram, 
+		// so there would be no requirement for undo to restore it
+		getProject().setObjectData(viewData.getRef(), tag, firstRef.toString());
 	}
 	
 	public DiagramPanel getDiagramPanel()
