@@ -92,7 +92,7 @@ public class BendPointCreator
 		{
 			Line2D.Double line = lineSegments[i];
 			Point2D point2D = Utility.convertToPoint2D(point);
-			double distance = line.ptLineDist(point2D);
+			double distance = line.ptSegDist(point2D);
 			if (distance < project.getGridSize())
 				return true;
 		}
