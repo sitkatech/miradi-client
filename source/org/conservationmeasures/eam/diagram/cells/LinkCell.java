@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.Vector;
@@ -225,16 +224,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 			Line2D.Double lineSegment = allLinkPoints.createLineSegment(fromBendPoint, toBendPoint);
 			Point2D convertedPoint = Utility.convertToPoint2D(newBendPoint);
 			
-			// FIXME: This bounds test is probably not needed if we change the 
-			// ptLineDist call below to be ptSegDist instead
-			Rectangle bound = lineSegment.getBounds();
-			bound.grow(5, 5);
-			if (! bound.contains(newBendPoint))
-			{
-				continue;
-			}
-			
-			double distance = lineSegment.ptLineDist(convertedPoint);
+			double distance = lineSegment.ptSegDist(convertedPoint);
 			if (distance < closestDistance )
 			{
 				closestDistance = distance;
