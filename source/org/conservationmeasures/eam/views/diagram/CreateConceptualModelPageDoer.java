@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -62,5 +63,9 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		DiagramObject diagramObject = (DiagramObject) project.findObject(createConceptualModel.getObjectRef());
 		CommandSetObjectData setLabel = new CommandSetObjectData(diagramObject.getRef(), DiagramObject.TAG_LABEL, diagramObject.toString());
 		project.executeCommand(setLabel);
+		
+		ViewData viewData = project.getViewData(getDiagramView().cardName());
+		CommandSetObjectData setCurrentDiagram = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, createConceptualModel.getObjectRef());
+		project.executeCommand(setCurrentDiagram);
 	}
 }
