@@ -21,11 +21,13 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Goal", def);
 		
 		
-		def = new Definition("Chain", 
-		"Chain - A sequence of linked factors in a conceptual model.  At a minimum, " +
-		"a chain will consist of a target and direct threat, although in many cases " +
-		"they will also include one or more contributing factors.  Chains represent " +
-		"the assumptions that you are making about your project site.");
+		def = new Definition("Chain",
+				"Chain - A sequence of linked factors in a diagram. " +
+				"A \"Factor Chain\" in a conceptual model shows the state " +
+				"of the world before you take action. A \"Results Chain\" " +
+				"shows the expected outcomes from the implementation of a strategy. " +
+				"Chains thus represent the assumptions you are making " +
+				"about your project site." );						
 		defs.put("Definition:Chain", def);
 		
 		
