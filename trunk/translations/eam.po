@@ -1,0 +1,1585 @@
+# English translations for PACKAGE package.
+# Copyright (C) 2007 Benetech
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-10 13:01-0500\n"
+"PO-Revision-Date: 2007-01-10 13:01-0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionAbout.java:20
+msgid "Action|About..."
+msgstr "Action|About..."
+
+#: ../source/org/conservationmeasures/eam/actions/ActionClose.java:21
+msgid "Action|Close Project"
+msgstr "Action|Close Project"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionConfigureLayers.java:20
+msgid "Action|View|Layer..."
+msgstr "Action|View|Layer..."
+
+#: ../source/org/conservationmeasures/eam/actions/ActionConfigureLayers.java:25
+msgid "TT|Hide or show portions of the diagram"
+msgstr "TT|Hide or show portions of the diagram"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionContextualHelp.java:23
+msgid "Action|ContextSensitive|Help"
+msgstr "Action|ContextSensitive|Help"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCopy.java:20
+msgid "Action|Copy"
+msgstr "Action|Copy"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCopy.java:25
+msgid "TT|Copy the selection to the clipboard"
+msgstr "TT|Copy the selection to the clipboard"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateGoal.java:20
+msgid "Action|Manage|Create Goal"
+msgstr "Action|Manage|Create Goal"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateGoal.java:25
+msgid "TT|Create a Goal"
+msgstr "TT|Create a Goal"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateIndicator.java:20
+msgid "Action|Manage|Create Indicator"
+msgstr "Action|Manage|Create Indicator"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateIndicator.java:25
+msgid "TT|Create an Indicator"
+msgstr "TT|Create an Indicator"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateObjective.java:20
+msgid "Action|Manage|Create Objective"
+msgstr "Action|Manage|Create Objective"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateObjective.java:25
+msgid "TT|Create an Objective"
+msgstr "TT|Create an Objective"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateResource.java:20
+msgid "Action|Manage|Create Resource"
+msgstr "Action|Manage|Create Resource"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateResource.java:25
+msgid "TT|Create a Resource (person, team, etc)"
+msgstr "TT|Create a Resource (person, team, etc)"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCut.java:20
+msgid "Action|Cut"
+msgstr "Action|Cut"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCut.java:25
+msgid "TT|Cut the selection to the clipboard"
+msgstr "TT|Cut the selection to the clipboard"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDelete.java:20
+msgid "Action|Delete"
+msgstr "Action|Delete"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDelete.java:25
+msgid "TT|Delete the selection"
+msgstr "TT|Delete the selection"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteActivity.java:20
+msgid "Action|Manage|Delete Activity"
+msgstr "Action|Manage|Delete Activity"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteActivity.java:25
+msgid "TT|Delete the selected Activity"
+msgstr "TT|Delete the selected Activity"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteGoal.java:20
+msgid "Action|Manage|Delete Goal"
+msgstr "Action|Manage|Delete Goal"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteGoal.java:25
+msgid "TT|Delete the selected Goal"
+msgstr "TT|Delete the selected Goal"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteIndicator.java:20
+msgid "Action|Manage|Delete Indicator"
+msgstr "Action|Manage|Delete Indicator"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteIndicator.java:25
+msgid "TT|Delete the selected Indicator"
+msgstr "TT|Delete the selected Indicator"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteObjective.java:20
+msgid "Action|Manage|Delete Objective"
+msgstr "Action|Manage|Delete Objective"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteObjective.java:25
+msgid "TT|Delete the selected Objective"
+msgstr "TT|Delete the selected Objective"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteResource.java:20
+msgid "Action|Manage|Delete Resource"
+msgstr "Action|Manage|Delete Resource"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteResource.java:25
+msgid "TT|Delete the selected Resource (person, team, etc)"
+msgstr "TT|Delete the selected Resource (person, team, etc)"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionExit.java:20
+msgid "Action|Exit"
+msgstr "Action|Exit"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionImportZippedProjectFile.java:20
+#: ../source/org/conservationmeasures/eam/actions/ActionExportZippedProjectFile.java:20
+msgid "Action|Project Zip File"
+msgstr "Action|Project Zip File"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionImportZippedProjectFile.java:25
+msgid "TT|Import zip file"
+msgstr "TT|Import zip file"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionHelpCredits.java:20
+msgid "Action|Credits"
+msgstr "Action|Credits"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionNudgeUp.java:20
+msgid "Action|Nudge Item Up"
+msgstr "Action|Nudge Item Up"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertDirectThreat.java:21
+msgid "Action|Insert|Direct Threat"
+msgstr "Action|Insert|Direct Threat"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertDirectThreat.java:26
+msgid "TT|Insert a Direct Threat"
+msgstr "TT|Insert a Direct Threat"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertDraftStrategy.java:21
+msgid "Action|Insert|Draft Strategy"
+msgstr "Action|Insert|Draft Strategy"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertDraftStrategy.java:26
+msgid "TT|Insert a draft Strategy"
+msgstr "TT|Insert a draft Strategy"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionShowFullModelMode.java:25
+msgid "Action|Show Full Model"
+msgstr "Action|Show Full Model"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionShowFullModelMode.java:30
+msgid "TT|Show the full conceptual model"
+msgstr "TT|Show the full conceptual model"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionNudgeDown.java:20
+msgid "Action|Nudge Item Down"
+msgstr "Action|Nudge Item Down"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertTarget.java:21
+msgid "Action|Insert|Target"
+msgstr "Action|Insert|Target"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertTarget.java:26
+msgid "TT|Insert a Target"
+msgstr "TT|Insert a Target"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTeamRemoveMember.java:20
+msgid "Action|Manage|Remove Member"
+msgstr "Action|Manage|Remove Member"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTeamRemoveMember.java:25
+msgid "TT|Remove a member from the team"
+msgstr "TT|Remove a member from the team"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateActivity.java:15
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeCreateActivity.java:20
+msgid "Action|Manage|Create Activity"
+msgstr "Action|Manage|Create Activity"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateActivity.java:20
+msgid "TT|Create a new Activity"
+msgstr "TT|Create a new Activity"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionNudgeRight.java:20
+msgid "Action|Nudge Item Right"
+msgstr "Action|Nudge Item Right"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionModifyResource.java:20
+msgid "Action|Manage|Modify Member ..."
+msgstr "Action|Manage|Modify Member ..."
+
+#: ../source/org/conservationmeasures/eam/actions/ActionModifyResource.java:25
+msgid "TT|Modify the selected member"
+msgstr "TT|Modify the selected member"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionNewProject.java:20
+msgid "Action|New Project"
+msgstr "Action|New Project"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionNewProject.java:25
+msgid "TT|Create a new project"
+msgstr "TT|Create a new project"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertStrategy.java:21
+msgid "Action|Insert|Strategy"
+msgstr "Action|Insert|Strategy"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertStrategy.java:26
+msgid "TT|Insert a Strategy"
+msgstr "TT|Insert a Strategy"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionShowSelectedChainMode.java:25
+msgid "Action|Show Only Selected Chain"
+msgstr "Action|Show Only Selected Chain"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionShowSelectedChainMode.java:30
+msgid "TT|Show only the selected chain"
+msgstr "TT|Show only the selected chain"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertContributingFactor.java:21
+msgid "Action|Insert|Contributing Factor"
+msgstr "Action|Insert|Contributing Factor"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertContributingFactor.java:26
+msgid "TT|Insert a Contributing Factor"
+msgstr "TT|Insert a Contributing Factor"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionNudgeLeft.java:20
+msgid "Action|Nudge Item Left"
+msgstr "Action|Nudge Item Left"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionPaste.java:28
+msgid "Action|Paste"
+msgstr "Action|Paste"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionPaste.java:33
+msgid "TT|Paste the clipboard"
+msgstr "TT|Paste the clipboard"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionPasteWithoutLinks.java:29
+msgid "Action|Paste Without Links"
+msgstr "Action|Paste Without Links"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionPasteWithoutLinks.java:34
+msgid "TT|Paste the clipboard without links"
+msgstr "TT|Paste the clipboard without links"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionPreferences.java:22
+msgid "Action|Preferences"
+msgstr "Action|Preferences"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionPrint.java:20
+msgid "Action|Print"
+msgstr "Action|Print"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionPrint.java:25
+msgid "TT|Print the current view to a printer"
+msgstr "TT|Print the current view to a printer"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionProjectSaveAs.java:20
+msgid "Action|Save Project As..."
+msgstr "Action|Save Project As..."
+
+#: ../source/org/conservationmeasures/eam/actions/ActionProjectSaveAs.java:25
+msgid "TT|Save project as"
+msgstr "TT|Save project as"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionProperties.java:20
+msgid "Action|Properties..."
+msgstr "Action|Properties..."
+
+#: ../source/org/conservationmeasures/eam/actions/ActionRedo.java:20
+msgid "Action|Redo"
+msgstr "Action|Redo"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionRedo.java:25
+msgid "TT|Redo last undone action"
+msgstr "TT|Redo last undone action"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionResourceListAdd.java:20
+msgid "Action|Manage|Add Resource"
+msgstr "Action|Manage|Add Resource"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionResourceListAdd.java:25
+msgid "TT|Add"
+msgstr "TT|Add"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionResourceListModify.java:20
+msgid "Action|Manage|Modify Resource"
+msgstr "Action|Manage|Modify Resource"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionResourceListModify.java:25
+msgid "TT|Modify resource from list"
+msgstr "TT|Modify resource from list"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionResourceListRemove.java:20
+msgid "Action|Manage|Remove Resource"
+msgstr "Action|Manage|Remove Resource"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionResourceListRemove.java:25
+#: ../source/org/conservationmeasures/eam/actions/ActionRemoveAssignment.java:25
+msgid "TT|Remove resource from list"
+msgstr "TT|Remove resource from list"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionSaveImage.java:21
+msgid "Action|Save JPEG Image"
+msgstr "Action|Save JPEG Image"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionSelectAll.java:20
+msgid "Action|Select All"
+msgstr "Action|Select All"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionSelectChain.java:20
+msgid "Action|Select Chain"
+msgstr "Action|Select Chain"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionSelectChain.java:25
+msgid "TT|Select the entire chain related to this Direct Threat"
+msgstr "TT|Select the entire chain related to this Direct Threat"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertFactorLink.java:21
+msgid "Action|Insert|Link..."
+msgstr "Action|Insert|Link..."
+
+#: ../source/org/conservationmeasures/eam/actions/ActionInsertFactorLink.java:26
+msgid "TT|Add a link between two factors"
+msgstr "TT|Add a link between two factors"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateAccountingCode.java:20
+msgid "Action|Manage|Create Accounting Code"
+msgstr "Action|Manage|Create Accounting Code"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateAccountingCode.java:25
+msgid "TT|Create an Accounting Code"
+msgstr "TT|Create an Accounting Code"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionHelpCMPStandards.java:20
+msgid "Action|CMP Standards"
+msgstr "Action|CMP Standards"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeNodeDown.java:20
+msgid "Action|Tree|Move Item Down"
+msgstr "Action|Tree|Move Item Down"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeNodeDown.java:25
+msgid "TT|Move the selected item down"
+msgstr "TT|Move the selected item down"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeNodeUp.java:20
+msgid "Action|Tree|Move Item Up"
+msgstr "Action|Tree|Move Item Up"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeNodeUp.java:25
+msgid "TT|Move the selected item up"
+msgstr "TT|Move the selected item up"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionUndo.java:20
+msgid "Action|Undo"
+msgstr "Action|Undo"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionUndo.java:25
+msgid "TT|Undo last action"
+msgstr "TT|Undo last action"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionViewPossibleResources.java:20
+msgid "Action|Manage|Add Resources..."
+msgstr "Action|Manage|Add Resources..."
+
+#: ../source/org/conservationmeasures/eam/actions/ActionViewPossibleResources.java:25
+msgid "TT|Add resources to activity"
+msgstr "TT|Add resources to activity"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionViewPossibleTeamMembers.java:20
+msgid "Action|Manage|Manage Resources..."
+msgstr "Action|Manage|Manage Resources..."
+
+#: ../source/org/conservationmeasures/eam/actions/ActionViewPossibleTeamMembers.java:25
+msgid "TT|Add people to the team"
+msgstr "TT|Add people to the team"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionZoomIn.java:20
+msgid "Action|Zoom In"
+msgstr "Action|Zoom In"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionZoomIn.java:25
+msgid "TT|Increase magnification"
+msgstr "TT|Increase magnification"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionZoomOut.java:20
+msgid "Action|Zoom Out"
+msgstr "Action|Zoom Out"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionZoomOut.java:25
+msgid "TT|Decrease magnification"
+msgstr "TT|Decrease magnification"
+
+#: ../source/org/conservationmeasures/eam/actions/MainWindowAction.java:59
+msgid "An internal error prevented this operation"
+msgstr "An internal error prevented this operation"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpActivitiesAndActionPlan.java:21
+msgid "Develop activities and action plan"
+msgstr "Develop activities and action plan"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpAdaptAndMonitorPlans.java:21
+msgid "6A. Adapt your action and monitoring plans"
+msgstr "6A. Adapt your action and monitoring plans"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpAnalyzeData.java:21
+msgid "5A. Analyze your data"
+msgstr "5A. Analyze your data"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpAnalyzeStrategies.java:21
+msgid "5B. Analyze strategies"
+msgstr "5B. Analyze strategies"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpAnalyzeProjectCapacity.java:21
+msgid "Analyze project capacity"
+msgstr "Analyze project capacity"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpAnalyzeResourcesFeasibilityAndRisk.java:21
+msgid "Analyze resources, feasibility, and risk"
+msgstr "Analyze resources, feasibility, and risk"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpArticulateCoreAssumptions.java:21
+msgid "Articulate your core assumptions"
+msgstr "Articulate your core assumptions"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpAssessStakeholders.java:21
+msgid "Assess stakeholders"
+msgstr "Assess stakeholders"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpCloseTheLoop.java:21
+msgid "Close the Loop"
+msgstr "Close the Loop"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpCommunicateResults.java:21
+msgid "5C. Communicate results within project team"
+msgstr "5C. Communicate results within project team"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpCreate.java:21
+msgid "7C. Create a learning environment"
+msgstr "7C. Create a learning environment"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpCreateModel.java:21
+msgid "Create a model"
+msgstr "Create a model"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDefineAudiences.java:21
+msgid "Clearly define audiences"
+msgstr "Clearly define audiences"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDefineIndicators.java:21
+msgid "Define indicators"
+msgstr "Define indicators"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDefineScope.java:21
+msgid "Define project scope"
+msgstr "Define project scope"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDefineTasks.java:21
+msgid "Clearly define monitoring tasks"
+msgstr "Clearly define monitoring tasks"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDescribeTargets.java:21
+msgid "Describe status of targets"
+msgstr "Describe status of targets"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDesignateLeader.java:21
+msgid "Designate a project leader & roles"
+msgstr "Designate a project leader & roles"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDetermineNeeds.java:21
+msgid "Determine what you need to know"
+msgstr "Determine what you need to know"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDevelopActivities.java:21
+msgid "Develop Gantt chart and/or calendar of project activities"
+msgstr "Develop Gantt chart and/or calendar of project activities"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDevelopBudgets.java:21
+msgid "Develop project budgets"
+msgstr "Develop project budgets"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDevelopCharter.java:21
+msgid "Develop a charter for the project"
+msgstr "Develop a charter for the project"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDevelopObjectives.java:21
+msgid "Develop objectives"
+msgstr "Develop objectives"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDevelopTargetGoals.java:21
+msgid "Develop goals for each target"
+msgstr "Develop goals for each target"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDocument.java:21
+msgid "7A. Document what you learn"
+msgstr "7A. Document what you learn"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpEstablishVision.java:21
+msgid "Establish a clear and common vision"
+msgstr "Establish a clear and common vision"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpGroundTruthRevise.java:21
+msgid "Ground truth and revise model"
+msgstr "Ground truth and revise model"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpIdentifyDirectThreats.java:21
+msgid "Identify direct threats"
+msgstr "Identify direct threats"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpMonitoringOverview.java:21
+msgid "Monitoring Overview"
+msgstr "Monitoring Overview"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpIdentifyStrategies.java:21
+msgid "Identify \"key factors\" & draft strategies"
+msgstr "Identify \"key factors\" & draft strategies"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpIdentifyTargets.java:21
+msgid "Identify and prioritize targets"
+msgstr "Identify and prioritize targets"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpImplementPlans.java:21
+msgid "4B. Implement work plans"
+msgstr "4B. Implement work plans"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpPlanDataStorage.java:21
+msgid "Plan for data storage"
+msgstr "Plan for data storage"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpRankDirectThreats.java:21
+msgid "Rank direct threats"
+msgstr "Rank direct threats"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpRankDraftStrategies.java:21
+msgid "Rank draft strategies"
+msgstr "Rank draft strategies"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpRefinePlans.java:21
+msgid "4C. Refine work plans on ongoing basis"
+msgstr "4C. Refine work plans on ongoing basis"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpResultsChains.java:21
+msgid "Develop results chains for key strategies"
+msgstr "Develop results chains for key strategies"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpSelectAppropriateMethods.java:21
+msgid "Select appropriate methods"
+msgstr "Select appropriate methods"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpSelectTeam.java:21
+msgid "Select initial project team"
+msgstr "Select initial project team"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpShare.java:21
+msgid "7B. Share what you learn"
+msgstr "7B. Share what you learn"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpShorttermPlans.java:21
+msgid "Develop short-term work plans"
+msgstr "Develop short-term work plans"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpTeamRoles.java:21
+msgid "Agree upon team roles"
+msgstr "Agree upon team roles"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpViewAllObjectives.java:21
+msgid "View all objectives"
+msgstr "View all objectives"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpStratPlanWelcome.java:21
+msgid "View Strategic Plan welcome wizard"
+msgstr "View Strategic Plan welcome wizard"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpViewAllGoals.java:21
+msgid "View all goals"
+msgstr "View all goals"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpIdentifyContributingFactors.java:21
+msgid "Identify indirect threats & opportunities"
+msgstr "Identify indirect threats & opportunities"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpEditIndicators.java:21
+msgid "Edit Indicators"
+msgstr "Edit Indicators"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpMonitoringFocus.java:21
+msgid "Monitoring Focus"
+msgstr "Monitoring Focus"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpSelectMethod.java:21
+msgid "Method selection"
+msgstr "Method selection"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpAssignResources.java:21
+msgid "Assign resources"
+msgstr "Assign resources"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDevelopMonitoringMethodsAndTasks.java:21
+msgid "Develop monitoring methods & tasks"
+msgstr "Develop monitoring methods & tasks"
+
+#: ../source/org/conservationmeasures/eam/actions/jump/ActionJumpDevelopActivitiesAndTasks.java:21
+msgid "Develop activities & tasks"
+msgstr "Develop activities & tasks"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewBudget.java:16
+msgid "Action|Financial"
+msgstr "Action|Financial"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewBudget.java:21
+msgid "TT|Switch to the Financial View"
+msgstr "TT|Switch to the Financial View"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewSchedule.java:16
+msgid "Action|Schedule"
+msgstr "Action|Schedule"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewSchedule.java:21
+msgid "TT|Switch to the Schedule"
+msgstr "TT|Switch to the Schedule"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewDiagram.java:21
+msgid "Action|Diagram"
+msgstr "Action|Diagram"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewDiagram.java:26
+msgid "TT|Switch to the Conceptual Model Diagram"
+msgstr "TT|Switch to the Conceptual Model Diagram"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewImages.java:21
+msgid "Action|Images"
+msgstr "Action|Images"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewImages.java:26
+msgid "TT|Switch to the Images View"
+msgstr "TT|Switch to the Images View"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewMap.java:16
+msgid "Action|Maps"
+msgstr "Action|Maps"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewMap.java:21
+msgid "TT|Switch to the Map View"
+msgstr "TT|Switch to the Map View"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewMonitoring.java:21
+msgid "Action|Monitoring Plan"
+msgstr "Action|Monitoring Plan"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewMonitoring.java:26
+msgid "TT|Switch to the Monitoring Plan View"
+msgstr "TT|Switch to the Monitoring Plan View"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewStrategicPlan.java:16
+msgid "Action|Strategic Plan"
+msgstr "Action|Strategic Plan"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewStrategicPlan.java:21
+msgid "TT|Switch to the Strategic Plan View"
+msgstr "TT|Switch to the Strategic Plan View"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewSummary.java:21
+msgid "Action|Summary"
+msgstr "Action|Summary"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewSummary.java:26
+msgid "TT|Switch to the Summary View"
+msgstr "TT|Switch to the Summary View"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewThreatMatrix.java:21
+msgid "Action|Threat Ratings"
+msgstr "Action|Threat Ratings"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewThreatMatrix.java:26
+msgid "TT|Switch to the Threat Rating View"
+msgstr "TT|Switch to the Threat Rating View"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewWorkPlan.java:16
+msgid "Action|Work Plan"
+msgstr "Action|Work Plan"
+
+#: ../source/org/conservationmeasures/eam/actions/views/ActionViewWorkPlan.java:21
+msgid "TT|Switch to the Work Plan View"
+msgstr "TT|Switch to the Work Plan View"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionImportTncCapWorkbook.java:20
+msgid "Action|Project TNC CAP File"
+msgstr "Action|Project TNC CAP File"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionImportTncCapWorkbook.java:25
+msgid "TT|Import to TNC CAP file"
+msgstr "TT|Import to TNC CAP file"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTeamCreateMember.java:15
+msgid "Action|Manage|Create Member"
+msgstr "Action|Manage|Create Member"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTeamCreateMember.java:20
+msgid "TT|Add member to the team"
+msgstr "TT|Add member to the team"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteWorkPlanNode.java:20
+msgid "Action|Delete Item"
+msgstr "Action|Delete Item"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteWorkPlanNode.java:25
+msgid "TT|Delete the selected item"
+msgstr "TT|Delete the selected item"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionRemoveAssignment.java:20
+msgid "Action|Remove Resource"
+msgstr "Action|Remove Resource"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionAddAssignment.java:20
+msgid "Action|Add Resource"
+msgstr "Action|Add Resource"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionAddAssignment.java:25
+msgid "TT|Add resource to list"
+msgstr "TT|Add resource to list"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteAccountingCode.java:20
+msgid "Action|Manage|Delete Accounting Code"
+msgstr "Action|Manage|Delete Accounting Code"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteAccountingCode.java:25
+msgid "TT|Delete the selected Accounting Code"
+msgstr "TT|Delete the selected Accounting Code"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteFundingSource.java:20
+msgid "Action|Manage|Delete Funding Source"
+msgstr "Action|Manage|Delete Funding Source"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionDeleteFundingSource.java:25
+msgid "TT|Delete the selected Funding Source"
+msgstr "TT|Delete the selected Funding Source"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateFundingSource.java:20
+msgid "Action|Manage|Create Funding Source"
+msgstr "Action|Manage|Create Funding Source"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionCreateFundingSource.java:25
+msgid "TT|Create a Funding Source"
+msgstr "TT|Create a Funding Source"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionImportAccountingCodes.java:20
+msgid "Action|Import Accounting Codes"
+msgstr "Action|Import Accounting Codes"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionImportAccountingCodes.java:25
+msgid "TT|Import accounting codes"
+msgstr "TT|Import accounting codes"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionExportZippedProjectFile.java:25
+msgid "TT|export to zip file"
+msgstr "TT|export to zip file"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeCreateTask.java:20
+msgid "Action|Manage|Create Task"
+msgstr "Action|Manage|Create Task"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeCreateTask.java:25
+msgid "TT|Create a Task or Subtask for the selected Item"
+msgstr "TT|Create a Task or Subtask for the selected Item"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionHelpButtonMoreInfo.java:20
+msgid "Action|More Info"
+msgstr "Action|More Info"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionHelpButtonExamples.java:20
+msgid "Action|Examples"
+msgstr "Action|Examples"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionHelpButtonWorkshop.java:20
+msgid "Action|Workshop"
+msgstr "Action|Workshop"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeCreateMethod.java:20
+msgid "Action|Manage|Create Method"
+msgstr "Action|Manage|Create Method"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeCreateMethod.java:25
+msgid "TT|Create a Method for the selected Indicator"
+msgstr "TT|Create a Method for the selected Indicator"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionTreeCreateActivity.java:25
+msgid "TT|Create an Activity for the selected Strategy"
+msgstr "TT|Create an Activity for the selected Strategy"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionHelpComingAttractions.java:20
+msgid "Action|Coming Attractions"
+msgstr "Action|Coming Attractions"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionHelpAdaptiveManagement.java:20
+msgid "Action|Adaptive Management"
+msgstr "Action|Adaptive Management"
+
+#: ../source/org/conservationmeasures/eam/actions/ActionHelpAgileSoftware.java:20
+msgid "Action|Agile Software"
+msgstr "Action|Agile Software"
+
+#: ../source/org/conservationmeasures/eam/database/DataUpgrader.java:35
+msgid "Button|Migrate"
+msgstr "Button|Migrate"
+
+#: ../source/org/conservationmeasures/eam/database/DataUpgrader.java:35
+#: ../source/org/conservationmeasures/eam/database/DataUpgrader.java:47
+#: ../source/org/conservationmeasures/eam/main/ConnectionPropertiesDialog.java:92
+#: ../source/org/conservationmeasures/eam/views/umbrella/CreateProjectDialog.java:170
+msgid "Button|Cancel"
+msgstr "Button|Cancel"
+
+#: ../source/org/conservationmeasures/eam/database/DataUpgrader.java:43
+msgid ""
+"A backup archive for this project already exists.Continuing with this "
+"migration will replace the existing backup with a new copy.It is probably "
+"safe to do this, unless an earlier migration attempt failed."
+msgstr ""
+"A backup archive for this project already exists.Continuing with this "
+"migration will replace the existing backup with a new copy.It is probably "
+"safe to do this, unless an earlier migration attempt failed."
+
+#: ../source/org/conservationmeasures/eam/database/DataUpgrader.java:47
+msgid "Button|Replace Backup"
+msgstr "Button|Replace Backup"
+
+#: ../source/org/conservationmeasures/eam/database/DataUpgrader.java:67
+msgid "Project was migrated to the current data format"
+msgstr "Project was migrated to the current data format"
+
+#: ../source/org/conservationmeasures/eam/database/DataUpgrader.java:69
+msgid ""
+"Attempt to migrate project to the current data format FAILED\n"
+"The pre-migration project was archived in: "
+msgstr ""
+"Attempt to migrate project to the current data format FAILED\n"
+"The pre-migration project was archived in: "
+
+#: ../source/org/conservationmeasures/eam/diagram/DiagramContextMenuHandler.java:79
+msgid "Menu|Insert"
+msgstr "Menu|Insert"
+
+#: ../source/org/conservationmeasures/eam/diagram/DiagramModel.java:494
+msgid "Project Scope: "
+msgstr "Project Scope: "
+
+#: ../source/org/conservationmeasures/eam/diagram/factortypes/FactorTypeDirectThreat.java:22
+msgid "Type|Direct Threat"
+msgstr "Type|Direct Threat"
+
+#: ../source/org/conservationmeasures/eam/diagram/factortypes/FactorTypeContributingFactor.java:22
+msgid "Type|Contributing Factor"
+msgstr "Type|Contributing Factor"
+
+#: ../source/org/conservationmeasures/eam/diagram/renderers/FactorRenderer.java:115
+msgid "Obj"
+msgstr "Obj"
+
+#: ../source/org/conservationmeasures/eam/diagram/renderers/FactorRenderer.java:117
+msgid "Objs"
+msgstr "Objs"
+
+#: ../source/org/conservationmeasures/eam/diagram/renderers/FactorRenderer.java:128
+msgid "Goal"
+msgstr "Goal"
+
+#: ../source/org/conservationmeasures/eam/diagram/renderers/FactorRenderer.java:130
+msgid "Goals"
+msgstr "Goals"
+
+#: ../source/org/conservationmeasures/eam/dialogfields/ObjectDataInputField.java:156
+msgid "Text|Dates must be in YYYY-MM-DD format"
+msgstr "Text|Dates must be in YYYY-MM-DD format"
+
+#: ../source/org/conservationmeasures/eam/dialogfields/ObjectDataInputField.java:169
+msgid "Text|Unknown error prevented saving this data"
+msgstr "Text|Unknown error prevented saving this data"
+
+#: ../source/org/conservationmeasures/eam/dialogfields/CodeListComponent.java:92
+msgid "Internal Error"
+msgstr "Internal Error"
+
+#: ../source/org/conservationmeasures/eam/dialogfields/ObjectDateChooserInputField.java:53
+msgid "Date Chooser"
+msgstr "Date Chooser"
+
+#: ../source/org/conservationmeasures/eam/dialogs/BudgetPropertiesPanel.java:42
+#: ../source/org/conservationmeasures/eam/views/budget/BudgetPropertiesInputPanel.java:38
+msgid "Text|Budget properties"
+msgstr "Text|Budget properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/GoalPropertiesPanel.java:45
+msgid "Title|Goal Properties"
+msgstr "Title|Goal Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/IndicatorListManagementPanel.java:26
+#: ../source/org/conservationmeasures/eam/dialogs/IndicatorPoolManagementPanel.java:27
+msgid "Tab|Indicators"
+msgstr "Tab|Indicators"
+
+#: ../source/org/conservationmeasures/eam/dialogs/IndicatorPropertiesPanel.java:49
+msgid "Title|Indicator Properties"
+msgstr "Title|Indicator Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/ActivityPoolManagementPanel.java:26
+#: ../source/org/conservationmeasures/eam/dialogs/ActivityListManagementPanel.java:21
+msgid "Tab|Activities"
+msgstr "Tab|Activities"
+
+#: ../source/org/conservationmeasures/eam/dialogs/ModelessDialogWithClose.java:47
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/wizard/ThreatRatingWizardCheckBundleStep.java:156
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/wizard/ThreatRatingWizardCheckTotalsStep.java:196
+msgid "Button|Close"
+msgstr "Button|Close"
+
+#: ../source/org/conservationmeasures/eam/dialogs/FactorDetailsPanel.java:48
+msgid "Label|Draft"
+msgstr "Label|Draft"
+
+#: ../source/org/conservationmeasures/eam/dialogs/FactorDetailsPanel.java:74
+msgid "Label|Status"
+msgstr "Label|Status"
+
+#: ../source/org/conservationmeasures/eam/dialogs/FactorDetailsPanel.java:220
+msgid ""
+")\n"
+" Please choose a specific classification not a catagory"
+msgstr ""
+")\n"
+" Please choose a specific classification not a catagory"
+
+#: ../source/org/conservationmeasures/eam/dialogs/FactorDetailsPanel.java:256
+msgid "Details"
+msgstr "Details"
+
+#: ../source/org/conservationmeasures/eam/dialogs/ObjectivePropertiesPanel.java:46
+msgid "Title|Objective Properties"
+msgstr "Title|Objective Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/PossibleTeamMembersPanel.java:19
+msgid ""
+"<html><p>This table lists all the Resources that have been created within "
+"this project. </p><p>You can select existing resources and add them to the "
+"team, or you can create new resources.</p></html"
+msgstr ""
+"<html><p>This table lists all the Resources that have been created within "
+"this project. </p><p>You can select existing resources and add them to the "
+"team, or you can create new resources.</p></html"
+
+#: ../source/org/conservationmeasures/eam/dialogs/ResourcePropertiesPanel.java:38
+msgid "Title|Resource Properties"
+msgstr "Title|Resource Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/ProjectScopePanel.java:28
+msgid "Title|Project Scope Properties"
+msgstr "Title|Project Scope Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/ResourcePoolManagementPanel.java:31
+msgid "Title|Resources"
+msgstr "Title|Resources"
+
+#: ../source/org/conservationmeasures/eam/dialogs/TaskPropertiesPanel.java:80
+#: ../source/org/conservationmeasures/eam/views/workplan/TaskPropertiesInputPanel.java:66
+msgid "Title|Task Properties"
+msgstr "Title|Task Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/ObjectiveListManagementPanel.java:26
+#: ../source/org/conservationmeasures/eam/dialogs/ObjectivePoolManagementPanel.java:27
+msgid "Tab|Objectives"
+msgstr "Tab|Objectives"
+
+#: ../source/org/conservationmeasures/eam/dialogs/GoalListManagementPanel.java:26
+#: ../source/org/conservationmeasures/eam/dialogs/GoalPoolManagementPanel.java:27
+msgid "Tab|Goals"
+msgstr "Tab|Goals"
+
+#: ../source/org/conservationmeasures/eam/dialogs/StrategyPropertiesPanel.java:41
+msgid "Title|Strategy Properties"
+msgstr "Title|Strategy Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/FactorLinkPropertiesPanel.java:27
+msgid "Link Properties"
+msgstr "Link Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/StrategyPoolManagementPanel.java:26
+msgid "Tab|Strategies"
+msgstr "Tab|Strategies"
+
+#: ../source/org/conservationmeasures/eam/dialogs/PreferencesPanel.java:183
+msgid "Preferences"
+msgstr "Preferences"
+
+#: ../source/org/conservationmeasures/eam/dialogs/WorkPlanManagementPanel.java:46
+msgid "Work Plan"
+msgstr "Work Plan"
+
+#: ../source/org/conservationmeasures/eam/dialogs/BudgetManagementPanel.java:47
+msgid "Budget"
+msgstr "Budget"
+
+#: ../source/org/conservationmeasures/eam/dialogs/AccountingCodePoolManagementPanel.java:31
+msgid "Title|Accounting Codes"
+msgstr "Title|Accounting Codes"
+
+#: ../source/org/conservationmeasures/eam/dialogs/AccountingCodePropertiesPanel.java:29
+msgid "Title|Accounting Code Properties"
+msgstr "Title|Accounting Code Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/FundingSourcePoolManagementPanel.java:31
+msgid "Title|Funding Sources"
+msgstr "Title|Funding Sources"
+
+#: ../source/org/conservationmeasures/eam/dialogs/FundingSourcePropertiesPanel.java:29
+msgid "Title|Funding Source Properties"
+msgstr "Title|Funding Source Properties"
+
+#: ../source/org/conservationmeasures/eam/dialogs/MethodPoolManagementPanel.java:26
+msgid "Tab|Methods"
+msgstr "Tab|Methods"
+
+#: ../source/org/conservationmeasures/eam/main/ConnectionPropertiesDialog.java:34
+msgid "Title|Link Properties"
+msgstr "Title|Link Properties"
+
+#: ../source/org/conservationmeasures/eam/main/ConnectionPropertiesDialog.java:61
+msgid "Label|affects"
+msgstr "Label|affects"
+
+#: ../source/org/conservationmeasures/eam/main/ConnectionPropertiesDialog.java:73
+msgid "Label|--Select One---"
+msgstr "Label|--Select One---"
+
+#: ../source/org/conservationmeasures/eam/main/ConnectionPropertiesDialog.java:89
+msgid "Button|OK"
+msgstr "Button|OK"
+
+#: ../source/org/conservationmeasures/eam/main/ConnectionPropertiesDialog.java:107
+msgid "Incomplete Link"
+msgstr "Incomplete Link"
+
+#: ../source/org/conservationmeasures/eam/main/ConnectionPropertiesDialog.java:108
+msgid "You must select one item in each of the two lists"
+msgstr "You must select one item in each of the two lists"
+
+#: ../source/org/conservationmeasures/eam/main/MainMenuBar.java:116
+msgid "MenuBar|File"
+msgstr "MenuBar|File"
+
+#: ../source/org/conservationmeasures/eam/main/MainMenuBar.java:248
+msgid "MenuBar|Edit"
+msgstr "MenuBar|Edit"
+
+#: ../source/org/conservationmeasures/eam/main/MainMenuBar.java:271
+msgid "MenuBar|Insert"
+msgstr "MenuBar|Insert"
+
+#: ../source/org/conservationmeasures/eam/main/MainMenuBar.java:288
+msgid "MenuBar|View"
+msgstr "MenuBar|View"
+
+#: ../source/org/conservationmeasures/eam/main/MainMenuBar.java:457
+msgid "MenuBar|Step-by-Step"
+msgstr "MenuBar|Step-by-Step"
+
+#: ../source/org/conservationmeasures/eam/main/MainMenuBar.java:473
+msgid "MenuBar|Help"
+msgstr "MenuBar|Help"
+
+#: ../source/org/conservationmeasures/eam/main/MainStatusBar.java:35
+msgid "Status|: Some Factors Hidden"
+msgstr "Status|: Some Factors Hidden"
+
+#: ../source/org/conservationmeasures/eam/main/MainStatusBar.java:48
+msgid "Status|Ready"
+msgstr "Status|Ready"
+
+#: ../source/org/conservationmeasures/eam/main/MainWindow.java:228
+msgid ""
+"Unknown Command\n"
+"You are probably trying to load an old project that contains obsolete "
+"commands that are no longer supported"
+msgstr ""
+"Unknown Command\n"
+"You are probably trying to load an old project that contains obsolete "
+"commands that are no longer supported"
+
+#: ../source/org/conservationmeasures/eam/main/MainWindow.java:233
+msgid "That project is in use by another copy of this application"
+msgstr "That project is in use by another copy of this application"
+
+#: ../source/org/conservationmeasures/eam/main/MainWindow.java:237
+msgid ""
+"That project cannot be opened because it was created by a newer version of "
+"this application"
+msgstr ""
+"That project cannot be opened because it was created by a newer version of "
+"this application"
+
+#: ../source/org/conservationmeasures/eam/main/MainWindow.java:241
+msgid ""
+"That project cannot be opened until it is migrated to the current data format"
+msgstr ""
+"That project cannot be opened until it is migrated to the current data format"
+
+#: ../source/org/conservationmeasures/eam/main/MainWindow.java:246
+msgid "Unknown error prevented opening that project"
+msgstr "Unknown error prevented opening that project"
+
+#: ../source/org/conservationmeasures/eam/main/ViewSwitcher.java:59
+msgid "TT|Switch to a different view"
+msgstr "TT|Switch to a different view"
+
+#: ../source/org/conservationmeasures/eam/objecthelpers/TaxonomyLoader.java:49
+msgid "--Select a classification--"
+msgstr "--Select a classification--"
+
+#: ../source/org/conservationmeasures/eam/objects/ProjectResource.java:50
+msgid "Label|(Undefined Resource)"
+msgstr "Label|(Undefined Resource)"
+
+#: ../source/org/conservationmeasures/eam/objects/AccountingCode.java:38
+#: ../source/org/conservationmeasures/eam/objects/FundingSource.java:38
+msgid "Label|(Undefined Accounting Code)"
+msgstr "Label|(Undefined Accounting Code)"
+
+#: ../source/org/conservationmeasures/eam/project/Project.java:424
+msgid "[No Project]"
+msgstr "[No Project]"
+
+#: ../source/org/conservationmeasures/eam/project/Project.java:948
+msgid "Error|Error writing to project"
+msgstr "Error|Error writing to project"
+
+#: ../source/org/conservationmeasures/eam/utils/HyperlinkLabel.java:53
+msgid "Hyperlink Label"
+msgstr "Hyperlink Label"
+
+#: ../source/org/conservationmeasures/eam/utils/EAMTreeTableModelAdapter.java:147
+msgid "Could not save tree epanded state"
+msgstr "Could not save tree epanded state"
+
+#: ../source/org/conservationmeasures/eam/utils/ZIPFileFilter.java:27
+msgid "FileFilter|ZIP (*.zip)"
+msgstr "FileFilter|ZIP (*.zip)"
+
+#: ../source/org/conservationmeasures/eam/utils/TreeTableStateSaver.java:63
+msgid "Unexpected Error has occured"
+msgstr "Unexpected Error has occured"
+
+#: ../source/org/conservationmeasures/eam/utils/XLSFileFilter.java:27
+msgid "FileFilter|XLS (*.xls)"
+msgstr "FileFilter|XLS (*.xls)"
+
+#: ../source/org/conservationmeasures/eam/views/budget/BudgetView.java:84
+msgid "Actuals - demo"
+msgstr "Actuals - demo"
+
+#: ../source/org/conservationmeasures/eam/views/budget/BudgetTable.java:159
+msgid "Resource Names"
+msgstr "Resource Names"
+
+#: ../source/org/conservationmeasures/eam/views/budget/ImportAccountingCodesDoer.java:43
+#: ../source/org/conservationmeasures/eam/views/umbrella/ImportAccountingCodesDoer.java:26
+msgid "Import Accounting Codes"
+msgstr "Import Accounting Codes"
+
+#: ../source/org/conservationmeasures/eam/views/budget/ImportAccountingCodesDoer.java:57
+#: ../source/org/conservationmeasures/eam/views/umbrella/ImportProjectDoer.java:67
+#: ../source/org/conservationmeasures/eam/views/umbrella/ImportAccountingCodesDoer.java:37
+msgid "Import Competed"
+msgstr "Import Competed"
+
+#: ../source/org/conservationmeasures/eam/views/budget/ImportAccountingCodesDoer.java:61
+msgid "Unable to process file: verify file format"
+msgstr "Unable to process file: verify file format"
+
+#: ../source/org/conservationmeasures/eam/views/schedule/ScheduleView.java:45
+msgid "Calendar"
+msgstr "Calendar"
+
+#: ../source/org/conservationmeasures/eam/views/schedule/ScheduleView.java:46
+msgid "Tasks"
+msgstr "Tasks"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/ConfigureLayers.java:32
+msgid "Title|View Layers"
+msgstr "Title|View Layers"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/DiagramLegendPanel.java:63
+msgid "LEGEND"
+msgstr "LEGEND"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/DiagramView.java:473
+msgid "Title|Factor Properties"
+msgstr "Title|Factor Properties"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertFactorLinkDoer.java:47
+msgid "Can't link an item to itself"
+msgstr "Can't link an item to itself"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertFactorLinkDoer.java:48
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertFactorLinkDoer.java:57
+msgid "Can't Create Link"
+msgstr "Can't Create Link"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertFactorLinkDoer.java:56
+msgid "Those items are already linked"
+msgstr "Those items are already linked"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertFactorLinkDoer.java:62
+msgid "Cannot create that link because it would cause a loop."
+msgstr "Cannot create that link because it would cause a loop."
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertFactorLinkDoer.java:63
+msgid "Error"
+msgstr "Error"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertDirectThreatDoer.java:24
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertContributingFactorDoer.java:24
+msgid "Label|New Factor"
+msgstr "Label|New Factor"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertDirectThreatDoer.java:43
+msgid "Text|This will not be a Direct Threat until it is linked to a Target"
+msgstr "Text|This will not be a Direct Threat until it is linked to a Target"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertTargetDoer.java:22
+msgid "Label|New Target"
+msgstr "Label|New Target"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertStrategyDoer.java:22
+msgid "Label|New Strategy"
+msgstr "Label|New Strategy"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertDraftStrategyDoer.java:49
+msgid "Label|New Draft Strategy"
+msgstr "Label|New Draft Strategy"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/Paste.java:41
+msgid "Paste between different Miradi projects not yet supported"
+msgstr "Paste between different Miradi projects not yet supported"
+
+#: ../source/org/conservationmeasures/eam/views/diagram/InsertContributingFactorDoer.java:37
+msgid "Text|This is a Direct Threat because it is linked to a Target"
+msgstr "Text|This is a Direct Threat because it is linked to a Target"
+
+#: ../source/org/conservationmeasures/eam/views/monitoring/MonitoringPanel.java:45
+#: ../source/org/conservationmeasures/eam/views/treeViews/TaskTreeTablePanel.java:87
+msgid "Error restoring tree state"
+msgstr "Error restoring tree state"
+
+#: ../source/org/conservationmeasures/eam/views/monitoring/MonitoringView.java:41
+msgid "Monitoring Plan"
+msgstr "Monitoring Plan"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/wizard/NoProjectWizardPanel.java:85
+#: ../source/org/conservationmeasures/eam/views/noproject/wizard/NoProjectWizardPanel.java:174
+msgid "Unable to process request: "
+msgstr "Unable to process request: "
+
+#: ../source/org/conservationmeasures/eam/views/noproject/wizard/NoProjectWizardPanel.java:189
+msgid "Invalid project name, choose another name."
+msgstr "Invalid project name, choose another name."
+
+#: ../source/org/conservationmeasures/eam/views/noproject/DeleteProject.java:23
+#: ../source/org/conservationmeasures/eam/views/noproject/RenameProject.java:23
+#: ../source/org/conservationmeasures/eam/views/noproject/CopyProject.java:24
+msgid "Project does not exist: "
+msgstr "Project does not exist: "
+
+#: ../source/org/conservationmeasures/eam/views/noproject/DeleteProject.java:31
+msgid ""
+"Unable to delete this project because it is in use by another copy of this "
+"application:\n"
+msgstr ""
+"Unable to delete this project because it is in use by another copy of this "
+"application:\n"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/DeleteProject.java:37
+msgid "Are you sure you want to delete this project? "
+msgstr "Are you sure you want to delete this project? "
+
+#: ../source/org/conservationmeasures/eam/views/noproject/DeleteProject.java:40
+msgid "Delete"
+msgstr "Delete"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/DeleteProject.java:40
+msgid "Keep"
+msgstr "Keep"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/DeleteProject.java:41
+msgid "Delete Project"
+msgstr "Delete Project"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/RenameProject.java:31
+msgid ""
+"Unable to rename this project because it is in use by another copy of this "
+"application:\n"
+msgstr ""
+"Unable to rename this project because it is in use by another copy of this "
+"application:\n"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/RenameProject.java:45
+#: ../source/org/conservationmeasures/eam/views/noproject/CopyProject.java:46
+msgid "Project by this name already exists, choose antother name."
+msgstr "Project by this name already exists, choose antother name."
+
+#: ../source/org/conservationmeasures/eam/views/noproject/RenameProject.java:52
+#: ../source/org/conservationmeasures/eam/views/noproject/CopyProject.java:52
+msgid "Invalid project name, choose antother name."
+msgstr "Invalid project name, choose antother name."
+
+#: ../source/org/conservationmeasures/eam/views/noproject/RenameProject.java:56
+msgid "Are you sure you want to rename project: "
+msgstr "Are you sure you want to rename project: "
+
+#: ../source/org/conservationmeasures/eam/views/noproject/RenameProject.java:59
+msgid "Rename"
+msgstr "Rename"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/RenameProject.java:59
+#: ../source/org/conservationmeasures/eam/views/noproject/CopyProject.java:59
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/CellSelectionListener.java:69
+msgid "Cancel"
+msgstr "Cancel"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/RenameProject.java:60
+msgid "Rename Project"
+msgstr "Rename Project"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/CopyProject.java:32
+msgid ""
+"Unable to copy this project because it is in use by another copy of this "
+"application:\n"
+msgstr ""
+"Unable to copy this project because it is in use by another copy of this "
+"application:\n"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/CopyProject.java:56
+msgid "Are you sure you want to copy project: "
+msgstr "Are you sure you want to copy project: "
+
+#: ../source/org/conservationmeasures/eam/views/noproject/CopyProject.java:59
+msgid "Copy"
+msgstr "Copy"
+
+#: ../source/org/conservationmeasures/eam/views/noproject/CopyProject.java:60
+msgid "Copy Project"
+msgstr "Copy Project"
+
+#: ../source/org/conservationmeasures/eam/views/strategicplan/StrategicPlanView.java:41
+msgid "Strategic Plan"
+msgstr "Strategic Plan"
+
+#: ../source/org/conservationmeasures/eam/views/summary/CrossOrganizationSummaryPanel.java:46
+msgid "Label|Team Members:"
+msgstr "Label|Team Members:"
+
+#: ../source/org/conservationmeasures/eam/views/summary/CrossOrganizationSummaryPanel.java:53
+msgid "General"
+msgstr "General"
+
+#: ../source/org/conservationmeasures/eam/views/summary/FOSSummaryPanel.java:25
+msgid "Label|FOS"
+msgstr "Label|FOS"
+
+#: ../source/org/conservationmeasures/eam/views/summary/RARESummaryPanel.java:25
+msgid "Label|RARE"
+msgstr "Label|RARE"
+
+#: ../source/org/conservationmeasures/eam/views/summary/TNCSummaryPanel.java:34
+msgid "TNC"
+msgstr "TNC"
+
+#: ../source/org/conservationmeasures/eam/views/summary/TeamRemoveMember.java:47
+msgid "Text|Unknown error prevented removing this person from the team"
+msgstr "Text|Unknown error prevented removing this person from the team"
+
+#: ../source/org/conservationmeasures/eam/views/summary/WCSSummaryPanel.java:25
+msgid "Label|WCS"
+msgstr "Label|WCS"
+
+#: ../source/org/conservationmeasures/eam/views/summary/WWFSummaryPanel.java:25
+msgid "Label|WWF"
+msgstr "Label|WWF"
+
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/CellSelectionListener.java:65
+msgid "Do you want to create a link between these this Threat and Target?"
+msgstr "Do you want to create a link between these this Threat and Target?"
+
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/CellSelectionListener.java:69
+msgid "Create Link"
+msgstr "Create Link"
+
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/CellSelectionListener.java:70
+msgid "Create a link?"
+msgstr "Create a link?"
+
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/NonEditableRowHeaderTableModel.java:31
+msgid "Summary Threat Rating"
+msgstr "Summary Threat Rating"
+
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/NonEditableRowHeaderTableModel.java:42
+msgid "THREATS"
+msgstr "THREATS"
+
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/NonEditableThreatMatrixTableModel.java:102
+msgid "Summary Target Rating"
+msgstr "Summary Target Rating"
+
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/ThreatRatingPanel.java:189
+msgid "Error setting value"
+msgstr "Error setting value"
+
+#: ../source/org/conservationmeasures/eam/views/threatmatrix/wizard/ThreatRatingWizardChooseBundle.java:70
+msgid ""
+"This threat is not currently linked to the selected target.  If you would "
+"like to link this threat to this target, please do so in the diagram view."
+msgstr ""
+"This threat is not currently linked to the selected target.  If you would "
+"like to link this threat to this target, please do so in the diagram view."
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/AboutDoer.java:47
+msgid "Title|About Miradi"
+msgstr "Title|About Miradi"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/CreateProjectDialog.java:57
+msgid "Label|Existing Projects:"
+msgstr "Label|Existing Projects:"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/CreateProjectDialog.java:59
+msgid "New Project Filename: "
+msgstr "New Project Filename: "
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/CreateProjectDialog.java:69
+msgid "Title|Create New Project"
+msgstr "Title|Create New Project"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/CreateProjectDialog.java:198
+msgid ""
+"Project filenames cannot contain punctuation other than dots, dashes, and "
+"spaces; and they cannot be longer than 32 characters. "
+msgstr ""
+"Project filenames cannot contain punctuation other than dots, dashes, and "
+"spaces; and they cannot be longer than 32 characters. "
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/CreateProjectDialog.java:209
+msgid "Cannot overwrite an open project"
+msgstr "Cannot overwrite an open project"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/CreateProjectDialog.java:216
+msgid "File exists: Cannot overwrite a non project directory"
+msgstr "File exists: Cannot overwrite a non project directory"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/CreateProjectDialog.java:221
+msgid "Title|Overwrite existing file?"
+msgstr "Title|Overwrite existing file?"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/CreateProjectDialog.java:222
+msgid "This will replace the existing file."
+msgstr "This will replace the existing file."
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/EamProjectFileFilter.java:32
+msgid "FileFilter|Project Files (*.eam)"
+msgstr "FileFilter|Project Files (*.eam)"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/ImportProjectDoer.java:39
+msgid "Import Project"
+msgstr "Import Project"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/ImportProjectDoer.java:53
+msgid "Cannot import a project that already exists: "
+msgstr "Cannot import a project that already exists: "
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/ImportProjectDoer.java:59
+msgid "Cannot import over an existing file or directory: "
+msgstr "Cannot import over an existing file or directory: "
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/JPEGFileFilter.java:31
+msgid "FileFilter|JPEG (*.jpg)"
+msgstr "FileFilter|JPEG (*.jpg)"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/NewProject.java:21
+msgid "Button|Create"
+msgstr "Button|Create"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/Redo.java:45
+msgid "Error during redo"
+msgstr "Error during redo"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/SaveAsProjectDoer.java:32
+msgid "Button|Save As"
+msgstr "Button|Save As"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/SaveImage.java:36
+msgid "Title|Save JPEG Image"
+msgstr "Title|Save JPEG Image"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/SaveImage.java:39
+msgid "TT|Save JPeg Image"
+msgstr "TT|Save JPeg Image"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/SaveImage.java:40
+msgid "Save Image"
+msgstr "Save Image"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/SaveImage.java:49
+msgid "Title|Overwrite existing image?"
+msgstr "Title|Overwrite existing image?"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/SaveImage.java:50
+msgid "This will replace the existing image with this one."
+msgstr "This will replace the existing image with this one."
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/Undo.java:48
+msgid "Error during undo"
+msgstr "Error during undo"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/HtmlViewPanel.java:44
+msgid "Title|"
+msgstr "Title|"
+
+#: ../source/org/conservationmeasures/eam/views/umbrella/ExportZippedProjectFileDoer.java:51
+msgid "Error Export To Zip: Possible Write Protected: "
+msgstr "Error Export To Zip: Possible Write Protected: "
+
+#: ../source/org/conservationmeasures/eam/views/workplan/DeleteWorkPlanTreeNode.java:66
+msgid "Are you sure you want to delete?"
+msgstr "Are you sure you want to delete?"
+
+#: ../source/org/conservationmeasures/eam/views/workplan/PossibleResourcesPanel.java:24
+msgid ""
+"<html><p>This table lists all the Resources that have been created within "
+"this project. </p><p>You can select existing resources and add them to the "
+"list of resources, or you can create new resources.</p></html"
+msgstr ""
+"<html><p>This table lists all the Resources that have been created within "
+"this project. </p><p>You can select existing resources and add them to the "
+"list of resources, or you can create new resources.</p></html"
+
+#: ../tests/org/conservationmeasures/eam/database/TestDataUpgrader.java:356
+msgid "ValueOptionIds"
+msgstr "ValueOptionIds"
+
+#: ../tests/org/conservationmeasures/eam/database/TestDataUpgrader.java:395
+msgid "CriterionIds"
+msgstr "CriterionIds"
+
+#: ../tests/org/conservationmeasures/eam/database/TestDataUpgrader.java:462
+msgid "IndicatorIds"
+msgstr "IndicatorIds"
+
+#: ../tests/org/conservationmeasures/eam/database/TestDataUpgrader.java:606
+#: ../tests/org/conservationmeasures/eam/database/TestDataUpgrader.java:613
+#: ../tests/org/conservationmeasures/eam/database/TestDataUpgrader.java:621
+msgid "ParentRef"
+msgstr "ParentRef"

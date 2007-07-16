@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="source"/>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry exported="true" kind="var" path="JUNIT_HOME/junit.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jcalendar-1.3.2/jcalendar-1.3.2.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jexcel/jxl.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/tablelayout/TableLayout.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/itext-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/jasperreports-1.3.2.jar" sourcepath="/miradi-thirdparty/Jasper/jasperreports-1.3.2-project-src.zip"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-logging-1.0.2.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-logging-api-1.0.2.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-collections-2.1.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/JUnit/bin/junit.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/martus-utils/bin/martus-utils.jar" sourcepath="/miradi-thirdparty/martus-utils/source/martus-utils-src.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/martus-swing/bin/martus-swing.jar" sourcepath="/miradi-thirdparty/martus-swing/source/martus-swing-src.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jgraph/miradi-jgraph.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
