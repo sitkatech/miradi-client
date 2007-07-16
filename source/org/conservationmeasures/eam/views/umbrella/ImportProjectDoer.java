@@ -54,7 +54,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
 			refreshNoProjectPanel();
 			currentDirectory = fileToImport.getParent();
-			EAM.notifyDialog(EAM.text("Import Competed"));
+			EAM.notifyDialog(EAM.text("Import Completed"));
 		}
 		catch(Exception e)
 		{
