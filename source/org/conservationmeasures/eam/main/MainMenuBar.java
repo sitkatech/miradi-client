@@ -21,13 +21,11 @@ import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCopyProjectTo;
 import org.conservationmeasures.eam.actions.ActionCreateBendPoint;
-import org.conservationmeasures.eam.actions.ActionCreateConceptualModel;
 import org.conservationmeasures.eam.actions.ActionCreateResultsChain;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
-import org.conservationmeasures.eam.actions.ActionDeleteConceptualModel;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportBudgetTableTree;
@@ -56,7 +54,6 @@ import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPreferences;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
-import org.conservationmeasures.eam.actions.ActionRenameConceptualModel;
 import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
@@ -228,10 +225,11 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionRenameResultsChain.class);
 		addMenuItem(actions, menu, ActionDeleteResultsChain.class);
 		
-		menu.addSeparator();
-		addMenuItem(actions, menu, ActionCreateConceptualModel.class);
-		addMenuItem(actions, menu, ActionRenameConceptualModel.class);
-		addMenuItem(actions, menu, ActionDeleteConceptualModel.class);
+		//FIXME uncomment and add to menu when multiple CMs is working
+		//menu.addSeparator();
+		//addMenuItem(actions, menu, ActionCreateConceptualModel.class);
+		//addMenuItem(actions, menu, ActionRenameConceptualModel.class);
+		//addMenuItem(actions, menu, ActionDeleteConceptualModel.class);
 		
 		return menu;
 	}
