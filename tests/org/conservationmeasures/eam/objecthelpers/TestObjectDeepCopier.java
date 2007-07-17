@@ -5,7 +5,12 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
+import java.util.Vector;
+
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestObjectDeepCopier extends EAMTestCase
@@ -17,8 +22,8 @@ public class TestObjectDeepCopier extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		super.setUp();
 		project = new ProjectForTesting(getName());
+		super.setUp();
 	}
 
 	public void tearDown() throws Exception
@@ -29,7 +34,17 @@ public class TestObjectDeepCopier extends EAMTestCase
 
 	public void testDeepCopy() throws Exception
 	{
-		//fail(); worked
+		BaseId indicatorId = project.createObject(ObjectType.INDICATOR);
+		IdList indicatorIds = new IdList();
+		indicatorIds.add(indicatorId);
+	
+		BaseId causeId = project.createFactor(ObjectType.CAUSE);
+		Cause cause = (Cause) project.findObject(new ORef(Cause.getObjectType(), causeId));
+		cause.setIndicators(indicatorIds);
+		
+		ObjectDeepCopier deepCopier = new ObjectDeepCopier(project);
+		Vector deepCopiedFactor = deepCopier.createDeepCopy(cause);		
+		assertEquals("not all objects copied?", 2, deepCopiedFactor.size());
 	}
 	
 	ProjectForTesting project;

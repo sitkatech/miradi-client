@@ -19,23 +19,31 @@ public class ObjectDeepCopier
 	
 	public Vector createDeepCopy(BaseObject objectToDeepCopy)
 	{
-		Vector allCopiedObjects = new Vector();
-		allCopiedObjects = recursivelyCreateDeepCopy(allCopiedObjects, objectToDeepCopy);
-		return allCopiedObjects;
+		clear();
+		recursivelyCreateDeepCopy(objectToDeepCopy);
+		return allOwnedObjects;
+	}
+
+	private void clear()
+	{
+		allOwnedObjects = new Vector();
 	}
 	
-	public Vector recursivelyCreateDeepCopy(Vector vector, BaseObject objectToDeepCopy)
+	private void recursivelyCreateDeepCopy(BaseObject objectToDeepCopy)
 	{
-		Vector allCopiedObjects = new Vector();
-		ORefList ownedObjects = objectToDeepCopy.getOwnedObjects(objectToDeepCopy.getType());		
+		ORefList ownedObjects = objectToDeepCopy.getAllOwnedObjects();		
+		if (objectToDeepCopy == null)
+			return;
 		
+		allOwnedObjects.add(objectToDeepCopy.toJson().toString());
 		for (int i = 0; i < ownedObjects.size(); ++i)
 		{
-			//FIXME nima finish 
+			ORef objectRef = ownedObjects.get(i);
+			BaseObject ownedObject = project.findObject(objectRef);
+			recursivelyCreateDeepCopy(ownedObject);
 		}
-		
-		return allCopiedObjects;
 	}
 	
+	Vector allOwnedObjects;
 	Project project;
 }
