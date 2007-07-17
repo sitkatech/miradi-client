@@ -46,9 +46,16 @@ public class ObjectTestCase extends EAMTestCase
 
 	public void verifyFields(int objectType) throws Exception
 	{
+		verifyObjectCount(objectType);
 		verifyFields(objectType, null);
 	}
 	
+	private void verifyObjectCount(int objectType)
+	{
+		boolean isLessThanObjectTypeCount = objectType < ObjectType.OBJECT_TYPE_COUNT;
+		assertTrue("object id not less than count", isLessThanObjectTypeCount);
+	}
+
 	public void verifyFields(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
 		Project project = createAndOpenProject();

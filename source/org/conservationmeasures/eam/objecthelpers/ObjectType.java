@@ -35,5 +35,7 @@ public class ObjectType
 	public static final int TEXT_BOX = 26;
 	public static final int SLIDE = 27;
 	public static final int SLIDESHOW = 28;
+	
+	public static final int OBJECT_TYPE_COUNT = 29;
 }
 
