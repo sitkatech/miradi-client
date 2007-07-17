@@ -46,6 +46,7 @@ import org.conservationmeasures.eam.objecthelpers.TestObjectDeepCopier;
 import org.conservationmeasures.eam.objects.TestAccountingCode;
 import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestAssignment;
+import org.conservationmeasures.eam.objects.TestBaseObjectGetAllOwnedObjects;
 import org.conservationmeasures.eam.objects.TestCause;
 import org.conservationmeasures.eam.objects.TestConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
@@ -231,6 +232,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestObjectGetTypesThatCanReferToUs.class));
 		suite.addTest(new TestSuite(TestObjectGetTypesThatCanOwnUs.class));
 		suite.addTest(new TestSuite(TestObjectFindOwnerAndFindReferrer.class));
+		suite.addTest(new TestSuite(TestBaseObjectGetAllOwnedObjects.class));
 		suite.addTest(new TestSuite(TestConceptualModelDiagram.class));
 		suite.addTest(new TestSuite(TestResultsChainDiagram.class));
 		suite.addTest(new TestSuite(TestThreatReductionResult.class));

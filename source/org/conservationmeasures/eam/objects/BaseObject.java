@@ -499,6 +499,18 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 	
+	public ORefList getAllOwnedObjects()
+	{
+		ORefList allOwnedObjects = new ORefList();
+		for (int objectTypeIndex = 0; objectTypeIndex < ObjectType.OBJECT_TYPE_COUNT; ++objectTypeIndex)
+		{
+			ORefList ownedObjects = getOwnedObjects(objectTypeIndex);
+			allOwnedObjects.addAll(ownedObjects);
+		}
+		
+		return allOwnedObjects;
+	}
+	
 	static public int[] getTypesThatCanOwnUs(int type)
 	{
 		// TODO: get rid of static number
