@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.objectdata.TestDateData;
 import org.conservationmeasures.eam.objecthelpers.TestMapList;
 import org.conservationmeasures.eam.objecthelpers.TestORef;
 import org.conservationmeasures.eam.objecthelpers.TestORefList;
+import org.conservationmeasures.eam.objecthelpers.TestObjectDeepCopier;
 import org.conservationmeasures.eam.objects.TestAccountingCode;
 import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestAssignment;
@@ -194,6 +195,7 @@ public class MainTests extends TestCase
 		//objecthelpers package
 		suite.addTest(new TestSuite(TestMapList.class));
 		suite.addTest(new TestSuite(TestORef.class));
+		suite.addTest(new TestSuite(TestObjectDeepCopier.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestActivityInsertionPoint.class));
