@@ -62,7 +62,7 @@ public class TransferableEamList implements Transferable
 	
 	public DataFlavor[] getTransferDataFlavors() 
 	{
-		DataFlavor[] flavorArray = {eamListDataFlavor};
+		DataFlavor[] flavorArray = {eamListDataFlavor, miradiListDataFlavor};
 		return flavorArray;
 	}
 
@@ -93,6 +93,7 @@ public class TransferableEamList implements Transferable
 	}
 
 	public static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
+	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableEamList.class, "Miradi Objects");
 	
 	String projectName;
 	Vector links;

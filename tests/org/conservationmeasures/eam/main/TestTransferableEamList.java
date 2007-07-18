@@ -37,7 +37,7 @@ public class TestTransferableEamList extends EAMTestCase
 		EAMGraphCell emptyCells[] = {};
 		TransferableEamList eamList = new TransferableEamList("SomeProjectName", emptyCells);
 		DataFlavor flavors[] = eamList.getTransferDataFlavors();
-		assertEquals("Should only support 1 flavor", 1, flavors.length);
+		assertEquals("Should only support 2 flavor(temporarly while in transition)?", 2, flavors.length);
 		assertEquals("EamListDataFlavor not found?", TransferableEamList.eamListDataFlavor, flavors[0]);
 	}
 	

@@ -37,11 +37,24 @@ public class Copy extends ViewDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		copySelectedItemsToClipboard();
+		copySelectedItemsToEAMClipboard();
 		getProject().getDiagramClipboard().incrementPasteCount();
+		copySelectedItemsToMiradiClipboard();
 	}
 
-	public void copySelectedItemsToClipboard()
+	private void copySelectedItemsToMiradiClipboard()
+	{
+		EAMGraphCell[] selectedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
+		if(selectedCells.length == 0)
+			return;
+
+		//FIXME nima copy/paste now add deep copies of selected objects 
+		TransferableEamList eamList = new TransferableEamList(getProject().getFilename(), selectedCells);		
+		DiagramClipboard clipboard = getProject().getDiagramClipboard();
+		clipboard.setContents(eamList, getMainWindow());
+	}
+
+	public void copySelectedItemsToEAMClipboard()
 	{
 		EAMGraphCell[] selectedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		if(selectedCells.length == 0)
@@ -51,8 +64,4 @@ public class Copy extends ViewDoer
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();
 		clipboard.setContents(eamList, getMainWindow());
 	}
-
-	
-	
-	
 }
