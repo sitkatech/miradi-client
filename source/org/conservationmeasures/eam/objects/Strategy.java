@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -106,6 +107,11 @@ public class Strategy extends Factor
 	public boolean isStatusDraft()
 	{
 		return STATUS_DRAFT.equals(status.get());
+	}
+	
+	public void addActivity(ORef activityRef)
+	{
+		activityIds.add(activityRef.getObjectId());
 	}
 	
 	public void insertActivityId(BaseId activityId, int insertAt)

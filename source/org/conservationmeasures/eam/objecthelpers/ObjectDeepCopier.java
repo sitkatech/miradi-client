@@ -31,10 +31,10 @@ public class ObjectDeepCopier
 	
 	private void recursivelyCreateDeepCopy(BaseObject objectToDeepCopy)
 	{
-		ORefList ownedObjects = objectToDeepCopy.getAllOwnedObjects();		
 		if (objectToDeepCopy == null)
 			return;
 		
+		ORefList ownedObjects = objectToDeepCopy.getAllOwnedObjects();		
 		allOwnedObjects.add(objectToDeepCopy.toJson().toString());
 		for (int i = 0; i < ownedObjects.size(); ++i)
 		{

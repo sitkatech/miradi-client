@@ -10,8 +10,11 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestObjectDeepCopier extends EAMTestCase
 {
@@ -22,8 +25,8 @@ public class TestObjectDeepCopier extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		project = new ProjectForTesting(getName());
 		super.setUp();
+		project = new ProjectForTesting(getName());
 	}
 
 	public void tearDown() throws Exception
@@ -34,17 +37,43 @@ public class TestObjectDeepCopier extends EAMTestCase
 
 	public void testDeepCopy() throws Exception
 	{
-		BaseId indicatorId = project.createObject(ObjectType.INDICATOR);
-		IdList indicatorIds = new IdList();
-		indicatorIds.add(indicatorId);
+		ORef activityRef = project.createObjectAndReturnRef(Task.getObjectType());
+		Task activity = (Task) project.findObject(activityRef);
+		IdList activityIds = new IdList();
+		activityIds.add(activityRef.getObjectId());
 	
-		BaseId causeId = project.createFactor(ObjectType.CAUSE);
-		Cause cause = (Cause) project.findObject(new ORef(Cause.getObjectType(), causeId));
-		cause.setIndicators(indicatorIds);
+		BaseId taskId = project.createObject(Task.getObjectType());
+		activity.addSubtaskId(taskId);
 		
+		ORef strategyRef = project.createObjectAndReturnRef(ObjectType.STRATEGY);
+		Strategy strategy = (Strategy) project.findObject(strategyRef);
+		assertEquals("owns objects?", 0, strategy.getAllOwnedObjects().size());
+		
+		strategy.addActivity(activityRef);
 		ObjectDeepCopier deepCopier = new ObjectDeepCopier(project);
-		Vector deepCopiedFactor = deepCopier.createDeepCopy(cause);		
-		assertEquals("not all objects copied?", 2, deepCopiedFactor.size());
+		Vector deepCopiedNull = deepCopier.createDeepCopy(null);
+		assertEquals("deep copied null?", 0, deepCopiedNull.size());
+		
+		Vector deepCopiedJsonStrings = deepCopier.createDeepCopy(strategy);		
+		assertEquals("not all objects copied?", 3, deepCopiedJsonStrings.size());
+		 
+		IdList deepCopiedFactorIds = extractRefsFromStrings(deepCopiedJsonStrings);
+		assertEquals("wrong ref count?", 3, deepCopiedFactorIds.size());
+		assertTrue("does not contain activity?", deepCopiedFactorIds.contains(activityRef.getObjectId()));
+		assertTrue("does not contain task?", deepCopiedFactorIds.contains(taskId));
+		assertTrue("does not contain strategy?", deepCopiedFactorIds.contains(strategyRef.getObjectId()));
+	}
+	
+	private IdList extractRefsFromStrings(Vector jsonStrings) throws Exception
+	{
+		IdList idList = new IdList();
+		for (int i = 0 ; i < jsonStrings.size(); ++i)
+		{
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonStrings.get(i).toString());
+			idList.add(json.getId(BaseObject.TAG_ID));
+		}
+		
+		return idList;
 	}
 	
 	ProjectForTesting project;
