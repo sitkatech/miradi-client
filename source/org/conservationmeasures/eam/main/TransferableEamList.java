@@ -34,7 +34,7 @@ public class TransferableEamList implements Transferable
 		return projectName;
 	}
 	
-	private void storeData(Object[] cells)
+	protected void storeData(Object[] cells)
 	{
 		for (int i = 0; i < cells.length; i++) 
 		{
@@ -91,7 +91,10 @@ public class TransferableEamList implements Transferable
 	{
 		return (FactorDataMap[])factors.toArray(new FactorDataMap[0]);
 	}
-
+	
+	//FIXME this is to switch between falvors while in transition
+	public static final boolean IS_EAM_FLAVOR = false;
+	
 	public static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
 	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableEamList.class, "Miradi Objects");
 	

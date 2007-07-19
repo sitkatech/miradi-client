@@ -14,6 +14,7 @@ import java.io.IOException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 
 public class Paste extends LocationDoer
@@ -50,6 +51,10 @@ public class Paste extends LocationDoer
 
 	private void pasteEAMDataFlavor(DiagramClipboard clipboard) throws UnsupportedFlavorException, IOException, Exception
 	{
+//		FIXME temp swith beween transitions of two flavors
+		if (! TransferableEamList.IS_EAM_FLAVOR)
+			return;
+
 		Transferable contents = clipboard.getContents(null);
 		if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
 			return;
@@ -74,19 +79,21 @@ public class Paste extends LocationDoer
 
 	private void pasteMiradiDataFlavor(DiagramClipboard clipboard) throws Exception
 	{
+//		FIXME temp swith beween transitions of two flavors
+		if (TransferableEamList.IS_EAM_FLAVOR)
+			return;
+
 		Transferable contents = clipboard.getContents(null);
 		if(!contents.isDataFlavorSupported(TransferableEamList.miradiListDataFlavor))
 			return;
 		
 //		FIXME nima copy/paste now add deep copies of selected objects
-//		TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
-//		FactorDataMap[] nodes = list.getArrayOfFactorDataMaps();
-//		for (int i = 0; i < nodes.length; i++) 
-//		{
-//			FactorDataMap nodeData = nodes[i];
-//			String label = nodeData.getLabel();
-//			System.out.println("lanbel = " + label);
-//		}
+		TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
+		String[] jsonsAsStrings = list.getDeepCopiesAsJsonString();
+		for (int i = 0; i < jsonsAsStrings.length; ++i)
+		{
+				//System.out.println(jsonsAsStrings[i]);
+		}
 	}
 
 	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
