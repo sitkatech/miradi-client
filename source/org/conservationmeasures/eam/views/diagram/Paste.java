@@ -10,6 +10,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -89,10 +91,23 @@ public class Paste extends LocationDoer
 		
 //		FIXME nima copy/paste now add deep copies of selected objects
 		TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
-		String[] jsonsAsStrings = list.getDeepCopiesAsJsonString();
-		for (int i = 0; i < jsonsAsStrings.length; ++i)
+		HashMap factorMap = list.getFactorMap();
+		HashMap diagramFactorMap = list.getDiagramFactorMap();
+		for (int key = 0; key < factorMap.size(); ++key)
 		{
-				//System.out.println(jsonsAsStrings[i]);
+			Vector factorJsonStrings = (Vector) factorMap.get(key);
+			printVectorContent(factorJsonStrings);
+			
+			Vector diagramFactorJsonStrings = (Vector) diagramFactorMap.get(key);
+			printVectorContent(diagramFactorJsonStrings);
+		}
+	}
+
+	private void printVectorContent(Vector jsonStrings)
+	{
+		for (int i = 0; i < jsonStrings.size(); ++i)
+		{
+			//System.out.println(jsonStrings.get(i));
 		}
 	}
 

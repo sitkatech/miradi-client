@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.PointList;
@@ -90,6 +91,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 	public FactorLink getFactorLink()
 	{
 		return link;
+	}
+	
+	public ORef getWrappedORef()
+	{
+		return link.getRef();
 	}
 	
 	private void updateBendPoints()

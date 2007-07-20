@@ -5,15 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.util.Vector;
-
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
-import org.conservationmeasures.eam.objecthelpers.ObjectDeepCopier;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -42,10 +37,10 @@ public class Copy extends ViewDoer
 	}
 
 	public void doIt() throws CommandFailedException
-	{ 
+	{
+		copySelectedItemsToMiradiClipboard();
 		copySelectedItemsToEAMClipboard();
 		getProject().getDiagramClipboard().incrementPasteCount();
-		copySelectedItemsToMiradiClipboard();
 	}
 
 	private void copySelectedItemsToMiradiClipboard()
@@ -53,33 +48,16 @@ public class Copy extends ViewDoer
 		//FIXME temp swith beween transitions of two flavors
 		if (TransferableEamList.IS_EAM_FLAVOR)
 			return;
-
+		
 		EAMGraphCell[] selectedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		if(selectedCells.length == 0)
-			return;
-
-		Vector factors = new Vector();
-		for (int i = 0; i < selectedCells.length; ++i)
-		{
-			EAMGraphCell graphCell = selectedCells[i];
-			if (graphCell.isFactor())
-				factors.addAll(getJsonAsStringDeepCopy((FactorCell)graphCell));
-		}
+		TransferableMiradiList miradiList = new TransferableMiradiList(getProject());
+		miradiList.storeData(selectedCells);
 		
-		String[] factorsAsJsonStrings = (String[]) factors.toArray(new String[0]);
-		TransferableMiradiList eamList = new TransferableMiradiList(getProject().getFilename(), factorsAsJsonStrings);		
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();
-		clipboard.setContents(eamList, getMainWindow());
+		clipboard.setContents(miradiList, getMainWindow());
 	}
-
-	private Vector getJsonAsStringDeepCopy(FactorCell cell)
-	{
-		Factor factor = (Factor) getProject().findObject(cell.getWrappedORef());
-		ObjectDeepCopier deepCopier = new ObjectDeepCopier(getProject());
-		
-		return deepCopier.createDeepCopy(factor);
-	}
-
+	
+	//TODO this method is duplicate and will go away after new miradi flavor takes over
 	public void copySelectedItemsToEAMClipboard()
 	{
 		//FIXME temp swith beween transitions of two flavors

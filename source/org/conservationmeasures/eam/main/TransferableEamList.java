@@ -17,10 +17,18 @@ import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.project.Project;
 
-public class TransferableEamList implements Transferable 
+public class TransferableEamList implements Transferable
 {
-	public TransferableEamList (String projectFileName, Object[] cells)
+	public TransferableEamList(Project projectToUse)
+	{
+		super();
+		project = projectToUse;
+		projectName = project.getFilename();
+	}
+
+	public TransferableEamList(String projectFileName, Object[] cells)
 	{
 		super();
 		projectName = projectFileName;
@@ -28,18 +36,18 @@ public class TransferableEamList implements Transferable
 		factors = new Vector();
 		storeData(cells);
 	}
-	
+
 	public String getProjectFileName()
 	{
 		return projectName;
 	}
-	
+
 	protected void storeData(Object[] cells)
 	{
-		for (int i = 0; i < cells.length; i++) 
+		for(int i = 0; i < cells.length; i++)
 		{
-			EAMGraphCell cell = (EAMGraphCell)cells[i];
-			try 
+			EAMGraphCell cell = (EAMGraphCell) cells[i];
+			try
 			{
 				if(cell.isFactorLink())
 				{
@@ -47,26 +55,26 @@ public class TransferableEamList implements Transferable
 				}
 				if(cell.isFactor())
 				{
-					Factor factor = ((FactorCell)cell).getUnderlyingObject();
+					Factor factor = ((FactorCell) cell).getUnderlyingObject();
 					FactorType factorType = factor.getNodeType();
 					FactorDataMap factorDataMap = cell.getDiagramFactor().createFactorDataMap(factorType.toString(), factor.getLabel());
 					factors.add(factorDataMap);
 				}
-			} 
-			catch (Exception e) 
+			}
+			catch(Exception e)
 			{
 				EAM.logException(e);
 			}
 		}
 	}
-	
-	public DataFlavor[] getTransferDataFlavors() 
+
+	public DataFlavor[] getTransferDataFlavors()
 	{
-		DataFlavor[] flavorArray = {eamListDataFlavor, miradiListDataFlavor};
+		DataFlavor[] flavorArray = { eamListDataFlavor, miradiListDataFlavor };
 		return flavorArray;
 	}
 
-	public boolean isDataFlavorSupported(DataFlavor flavor) 
+	public boolean isDataFlavorSupported(DataFlavor flavor)
 	{
 		DataFlavor[] flavors = getTransferDataFlavors();
 		for(int i = 0; i < flavors.length; ++i)
@@ -75,30 +83,31 @@ public class TransferableEamList implements Transferable
 		return false;
 	}
 
-	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException 
+	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException
 	{
 		if(isDataFlavorSupported(flavor))
 			return this;
 		throw new UnsupportedFlavorException(flavor);
 	}
-	
+
 	public FactorLinkDataMap[] getArrayOfFactorLinkDataMaps()
 	{
-		return (FactorLinkDataMap[])links.toArray(new FactorLinkDataMap[0]);
+		return (FactorLinkDataMap[]) links.toArray(new FactorLinkDataMap[0]);
 	}
-	
+
 	public FactorDataMap[] getArrayOfFactorDataMaps()
 	{
-		return (FactorDataMap[])factors.toArray(new FactorDataMap[0]);
+		return (FactorDataMap[]) factors.toArray(new FactorDataMap[0]);
 	}
-	
-	//FIXME this is to switch between falvors while in transition
+
+	// FIXME this is to switch between falvors while in transition
 	public static final boolean IS_EAM_FLAVOR = false;
-	
+
 	public static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
 	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableEamList.class, "Miradi Objects");
-	
+
 	String projectName;
 	Vector links;
 	Vector factors;
+	Project project;
 }
