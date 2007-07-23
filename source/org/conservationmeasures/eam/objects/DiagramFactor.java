@@ -14,8 +14,8 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.DimensionData;
+import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objectdata.PointData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -32,16 +32,17 @@ public class DiagramFactor extends BaseObject
 		super(objectManager, diagramFactorIdToUse);
 		
 		clear();
-		underlyingObjectId.setId(extraInfo.getFactorId());
+		underlyingObjectRef.set(extraInfo.getFactorRef());
 		size.setDimension(getDefaultSize());
 	}
 	
+	//FIXME nima use this to combine commont construtor code
 	public DiagramFactor(DiagramFactorId diagramFactorIdToUse, CreateDiagramFactorParameter extraInfo)
 	{
 		super(diagramFactorIdToUse);
 		
 		clear();
-		underlyingObjectId.setId(extraInfo.getFactorId());
+		underlyingObjectRef.set(extraInfo.getFactorRef());
 		size.setDimension(getDefaultSize());
 	}
 	
@@ -49,20 +50,22 @@ public class DiagramFactor extends BaseObject
 	{
 		super(objectManager, new DiagramFactorId(idToUse), json);
 		
-		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
+		ORef wrappedRef = ORef.createFromString(json.getString(TAG_WRAPPED_REF));
+		underlyingObjectRef.set(wrappedRef);
 	}
 	
 	public DiagramFactor(int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(new DiagramFactorId(idToUse), json);
 		
-		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
+		ORef wrappedRef = ORef.createFromString(json.getString(TAG_WRAPPED_REF));
+		underlyingObjectRef.set(wrappedRef);
 	}
 	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject jsonObject = super.toJson();
-		jsonObject.put(TAG_WRAPPED_ID, underlyingObjectId.toString());
+		jsonObject.put(TAG_WRAPPED_REF, underlyingObjectRef.toString());
 		
 		return jsonObject;
 	}
@@ -129,7 +132,7 @@ public class DiagramFactor extends BaseObject
 			case ObjectType.INTERMEDIATE_RESULT:
 			case ObjectType.THREAT_REDUCTION_RESULT:
 			{
-				Factor factor = objectManager.findNode(new FactorId(underlyingObjectId.getId().asInt()));
+				Factor factor = objectManager.findNode(new FactorId(underlyingObjectRef.getRawRef().getObjectId().asInt()));
 				if (factor.getType() == objectType)
 					list.add(factor.getRef());
 			}
@@ -149,13 +152,12 @@ public class DiagramFactor extends BaseObject
 	
 	public FactorId getWrappedId()
 	{
-		return new FactorId(underlyingObjectId.getId().asInt());
+		return new FactorId(getWrappedORef().getObjectId().asInt());
 	}
 	
 	public ORef getWrappedORef()
 	{
-		Factor foundFactor = objectManager.findNode(getWrappedId());
-		return foundFactor.getRef();
+		return underlyingObjectRef.getRawRef();
 	}
 
 	public Dimension getSize()
@@ -182,7 +184,7 @@ public class DiagramFactor extends BaseObject
 	{
 		FactorDataMap dataMap = new FactorDataMap();
 		dataMap.putId(TAG_ID, getDiagramFactorId());
-		dataMap.putId(TAG_WRAPPED_ID, getWrappedId());
+		dataMap.putString(TAG_WRAPPED_REF, underlyingObjectRef.get());
 		dataMap.putString(TAG_LOCATION, location.get());
 		dataMap.putString(TAG_SIZE, size.get());
 		
@@ -213,27 +215,27 @@ public class DiagramFactor extends BaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateDiagramFactorParameter(getWrappedId());
+		return new CreateDiagramFactorParameter(getWrappedORef());
 	}
 	
 	void clear()
 	{
 		super.clear();
 
-		underlyingObjectId = new BaseIdData();
 		size = new DimensionData();
 		location = new PointData();
+		underlyingObjectRef = new ORefData();
 		
-		addField(TAG_WRAPPED_ID, underlyingObjectId);
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
+		addField(TAG_WRAPPED_REF, underlyingObjectRef);
 	}
 	
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_SIZE = "Size";
-	public static final String TAG_WRAPPED_ID = "WrappedFactorId";
+	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
 	
-	private BaseIdData underlyingObjectId;
 	private DimensionData size;
 	private PointData location;
+	private ORefData underlyingObjectRef;
 }

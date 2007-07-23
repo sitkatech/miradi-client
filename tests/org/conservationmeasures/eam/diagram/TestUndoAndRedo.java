@@ -123,8 +123,8 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		project.undo();
 		
-		FactorId factorId = project.createFactor(ObjectType.CAUSE);
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		project.executeCommand(createDiagramFactorCommand);
 		
@@ -235,8 +235,8 @@ public class TestUndoAndRedo extends EAMTestCase
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.CAUSE);
 		project.executeCommand(createModelNodeCommand);
 		
-		FactorId factorId = (FactorId) createModelNodeCommand.getCreatedId();
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+		ORef factorRef = createModelNodeCommand.getObjectRef();
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		project.executeCommand(createDiagramFactorCommand);
 		

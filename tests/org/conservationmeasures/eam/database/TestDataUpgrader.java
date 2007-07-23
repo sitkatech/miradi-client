@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -118,6 +119,44 @@ public class TestDataUpgrader extends EAMTestCase
 		File objectsDir = new File(parentDir, dirName);
 		objectsDir.mkdirs();
 		return objectsDir;
+	}
+	
+	public void testUpgradeTo22ChangeWrappedIdsToRefs() throws Exception
+	{
+		String strategyString = " {\"Type\":\"Intervention\",\"Status\":\"\",\"FeasibilityRating\":\"\",\"ShortLabel\":\"\",\"ActivityIds\":\"\",\"Comment\":\"\",\"GoalIds\":\"\",\"ImpactRating\":\"\",\"IndicatorIds\":\"\",\"Label\":\"New Strategy\",\"DurationRating\":\"\",\"TimeStampModified\":\"1185205725518\",\"TaxonomyCode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"CostRating\":\"\",\"Id\":16,\"ObjectiveIds\":\"\"} "; 
+		String diagramFactorString = " {\"TimeStampModified\":\"1185205730937\",\"Size\":\"{\\\"Width\\\":120,\\\"Height\\\":60}\",\"Label\":\"\",\"WrappedFactorId\":\"16\",\"Location\":\"{\\\"Y\\\":435,\\\"X\\\":165}\",\"Id\":17} ";
+		File jsonDir = createObjectsDir(tempDirectory, "json");
+		jsonDir.mkdirs();
+		
+		File diagramFactorDir = createObjectsDir(jsonDir, "objects-18");
+		diagramFactorDir.mkdirs();
+		
+		File factorDir = createObjectsDir(jsonDir, "objects-4");
+		factorDir.mkdirs();
+		
+		int[] diagramFactorIds = {17};
+		File diagramFactorManifest = createManifestFile(diagramFactorDir, diagramFactorIds);
+		assertTrue(diagramFactorManifest.exists());
+		File diagramFactorFile = new File(diagramFactorDir, Integer.toString(diagramFactorIds[0]));
+		createFile(diagramFactorFile, diagramFactorString);
+		assertTrue(diagramFactorFile.exists());
+		
+		int[] factorIds = {16};
+		File factorManifest = createManifestFile(factorDir, factorIds);
+		assertTrue(factorManifest.exists());
+
+		File strategyFile =  new File(factorDir, Integer.toString(factorIds[0]));
+		createFile(strategyFile, strategyString);
+		assertTrue(strategyFile.exists());
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion22();
+		
+		EnhancedJsonObject conceptualModelJson = DataUpgrader.readFile(diagramFactorFile);
+		String wrappedRefAsString = conceptualModelJson.getString("WrappedFactorRef");
+		ORef wrappedFactorRef = ORef.createFromString(wrappedRefAsString);
+		ORef expectedRef = new ORef(ObjectType.STRATEGY, new BaseId(16));
+		assertEquals("wrong wrapped factor ref?", expectedRef, wrappedFactorRef);
 	}
 	
 	public void testUpgradeTo21AddLinksInAllDOsWhereNeeded() throws Exception

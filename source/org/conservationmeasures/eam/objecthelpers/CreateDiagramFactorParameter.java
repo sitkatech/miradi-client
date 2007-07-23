@@ -11,23 +11,28 @@ import org.conservationmeasures.eam.ids.FactorId;
 
 public class CreateDiagramFactorParameter extends CreateObjectParameter
 {
-	public CreateDiagramFactorParameter(FactorId factorIdToUse)
+	public CreateDiagramFactorParameter(ORef factorRefToUse)
 	{
-		factorId = factorIdToUse;
+		factorRef = factorRefToUse;
 	}
 	
 	public FactorId getFactorId()
 	{
-		return factorId;
+		return new FactorId(factorRef.getObjectId().asInt());
 	}
 
+	public ORef getFactorRef()
+	{
+		return factorRef;
+	}
+	
 	public String getFormatedDataString()
 	{
 		HashMap dataPairs = new HashMap();
-		dataPairs.put(FactorId.class.getSimpleName(), factorId);
+		dataPairs.put(ORef.class.getSimpleName(), factorRef);
 		
 		return formatDataString(dataPairs);
 	}
 	
-	FactorId factorId;
+	ORef factorRef;
 }

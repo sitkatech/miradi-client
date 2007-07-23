@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
@@ -282,8 +281,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	
 	private DiagramFactor createFactorAndDiagramFactor(int type) throws Exception
 	{
-		FactorId factorId = (FactorId)project.createObject(type);
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
+		ORef factorRef = project.createObjectAndReturnRef(type);
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
 		DiagramFactorId diagramFactorId = (DiagramFactorId)project.createObject(DiagramFactor.getObjectType(), extraInfo);
 		return (DiagramFactor)project.findObject(DiagramFactor.getObjectType(), diagramFactorId);
 	}

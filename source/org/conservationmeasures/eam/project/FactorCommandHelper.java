@@ -58,7 +58,7 @@ public class FactorCommandHelper
 		currentModel = modelToUse;
 	}
 
-	private void addCreatedFactorToConceptualModel(FactorId factorId, Point insertionLocation, Dimension size, String label) throws Exception
+	private void addCreatedFactorToConceptualModel(int objectType, FactorId factorId, Point insertionLocation, Dimension size, String label) throws Exception
 	{
     	if (!currentModel.getDiagramObject().isResultsChain())
     		return;
@@ -68,7 +68,7 @@ public class FactorCommandHelper
     	DiagramObject diagramObject = (DiagramObject) getProject().findObject(refList.get(ONLY_CONCEPTUAL_MODEL_INDEX));
 		
 
-    	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, factorId).getCreatedId();
+    	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, factorId, objectType).getCreatedId();
     	DiagramFactor createdDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, createdDiagramFactorId));
     	setLocationSizeLabel(createdDiagramFactor, insertionLocation, size, label);
 	}
@@ -81,7 +81,7 @@ public class FactorCommandHelper
 		setLocationSizeLabel(diagramFactor, insertionLocation, size, label);
 		
 		if (shouldTypeBeCopiedToConceptualModel(objectType))
-			addCreatedFactorToConceptualModel(diagramFactor.getWrappedId(), insertionLocation, size, label);
+			addCreatedFactorToConceptualModel(objectType, diagramFactor.getWrappedId(), insertionLocation, size, label);
 		
 		return createObjectCommand;
 	}
@@ -89,12 +89,12 @@ public class FactorCommandHelper
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
 	{
 		FactorId factorId = createFactor(objectType);
-		return createDiagramFactor(currentModel.getDiagramObject(), factorId);
+		return createDiagramFactor(currentModel.getDiagramObject(), factorId, objectType);
 	}
 	
-	public CommandCreateObject createDiagramFactor(DiagramObject diagramObject, FactorId factorId) throws Exception
+	public CommandCreateObject createDiagramFactor(DiagramObject diagramObject, FactorId factorId, int objectType) throws Exception
 	{
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(new ORef(objectType, factorId));
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		executeCommand(createDiagramFactor);
 		

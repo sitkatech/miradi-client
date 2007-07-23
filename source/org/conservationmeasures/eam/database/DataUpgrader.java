@@ -126,6 +126,9 @@ public class DataUpgrader extends FileBasedProjectServer
 
 			if (readDataVersion(getTopDirectory()) == 20)
 				upgradeToVersion21();
+			
+			if (readDataVersion(getTopDirectory()) == 21)
+				upgradeToVersion22();
 		}
 		finally 
 		{
@@ -134,6 +137,51 @@ public class DataUpgrader extends FileBasedProjectServer
 				
 	}
 	
+	public void upgradeToVersion22() throws Exception
+	{
+		switchDiagramFactorWrappedIdsToRefs();
+		writeVersion(22);
+	}
+	
+	private void switchDiagramFactorWrappedIdsToRefs() throws Exception
+	{
+		File jsonDir = new File(topDirectory, "json");
+		
+		File factorDir = new File(jsonDir, "objects-4");
+		if (! factorDir.exists())
+			return;
+		
+		File factorManifestFile = new File(factorDir, "manifest");
+		if (! factorManifestFile.exists())
+			throw new RuntimeException("manifest for objects-4 (Factor) directory does not exist " + factorManifestFile.getAbsolutePath());
+		
+		
+		File diagramFactorDir = new File(jsonDir, "objects-18");
+		if (! diagramFactorDir.exists())
+			return;
+		
+		File diagramFactorManifestFile = new File(diagramFactorDir, "manifest");
+		if (! diagramFactorManifestFile.exists())
+			throw new RuntimeException("manifest for objects-18 (DiagramFactor) directory does not exist " + diagramFactorManifestFile.getAbsolutePath());
+		
+		ObjectManifest diagramFactorManifest = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
+		BaseId[] diagramFactorIds = diagramFactorManifest.getAllKeys();
+		
+		Vector allFactorTypeDirs = getAllFactorTypeDirs(jsonDir);
+		Vector allManifestFiles = getAllManifestFiles(jsonDir);
+		for (int i = 0; i < diagramFactorIds.length; ++i)
+		{
+			BaseId diagramFactorId = diagramFactorIds[i];
+			File diagramFactorFile = new File(diagramFactorDir, Integer.toString(diagramFactorId.asInt()));
+			EnhancedJsonObject factorLinkJson = readFile(diagramFactorFile);
+			BaseId wrappedFactorId = new BaseId(factorLinkJson.getString("WrappedFactorId"));
+			ORef wrappedRef = getORefForFactorId(allFactorTypeDirs, allManifestFiles, wrappedFactorId);
+			
+			factorLinkJson.put("WrappedFactorRef", wrappedRef.toJson());
+			writeJson(diagramFactorFile, factorLinkJson);
+		}
+	}
+
 	public void upgradeToVersion21() throws Exception
 	{
 		new DataUpgraderDiagramObjectLinkAdder(topDirectory).addLinksInAllDiagramsWhereNeeded();
@@ -159,27 +207,11 @@ public class DataUpgrader extends FileBasedProjectServer
 		if (! linkManifestFile.exists())
 			throw new RuntimeException("manifest for objects-6 directory does not exist " + linkManifestFile.getAbsolutePath());
 		
-		Vector allFactorTypeDirs = new Vector();
-		Vector allManifestFiles = new Vector();
-		int[] typesToConsider = {ObjectType.FACTOR, ObjectType.TARGET, ObjectType.STRATEGY, ObjectType.CAUSE, ObjectType.INTERMEDIATE_RESULT, ObjectType.THREAT_REDUCTION_RESULT, ObjectType.TEXT_BOX};
-		for (int i = 0; i < typesToConsider.length; ++i)
-		{
-			
-			File factorDir = new File(jsonDir, "objects-" + typesToConsider[i]);
-			if (! factorDir.exists())
-				continue;
-					
-			File factorManifestFile = new File(factorDir, "manifest");
-			if (! factorManifestFile.exists())
-				throw new RuntimeException("manifest for objects-" + typesToConsider[i] + " directory does not exist " + factorManifestFile.getAbsolutePath());
-			
-			allFactorTypeDirs.add(factorDir);
-			allManifestFiles.add(new ObjectManifest(JSONFile.read(factorManifestFile)));
-		}
+		Vector allFactorTypeDirs = getAllFactorTypeDirs(jsonDir);
+		Vector allManifestFiles = getAllManifestFiles(jsonDir);
 		 
 		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(linkManifestFile));
 		BaseId[] allFactorLinkIds = factorLinkManifest.getAllKeys();
-		
 		
 		for (int i = 0; i < allFactorLinkIds.length; ++i)
 		{
@@ -198,6 +230,47 @@ public class DataUpgrader extends FileBasedProjectServer
 		}
 	}
 
+	private Vector getAllManifestFiles(File jsonDir) throws Exception
+	{
+		Vector allManifestFiles = new Vector();
+		int[] typesToConsider = getAllFactorTypes();
+		for (int i = 0; i < typesToConsider.length; ++i)
+		{
+			File factorDir = new File(jsonDir, "objects-" + typesToConsider[i]);
+			if (! factorDir.exists())
+				continue;
+					
+			File factorManifestFile = new File(factorDir, "manifest");
+			if (! factorManifestFile.exists())
+				throw new RuntimeException("manifest for objects-" + typesToConsider[i] + " directory does not exist " + factorManifestFile.getAbsolutePath());
+			
+			allManifestFiles.add(new ObjectManifest(JSONFile.read(factorManifestFile)));
+		}
+		
+		return allManifestFiles;
+	}
+
+	private Vector getAllFactorTypeDirs(File jsonDir)
+	{
+		Vector allFactorTypeDirs = new Vector();
+		int[] typesToConsider = getAllFactorTypes();
+		for (int i = 0; i < typesToConsider.length; ++i)
+		{
+			File factorDir = new File(jsonDir, "objects-" + typesToConsider[i]);
+			if (! factorDir.exists())
+				continue;
+					
+			allFactorTypeDirs.add(factorDir);
+		}
+
+		return allFactorTypeDirs;
+	}
+	
+	private int[] getAllFactorTypes()
+	{
+		return new int[] {ObjectType.FACTOR, ObjectType.TARGET, ObjectType.STRATEGY, ObjectType.CAUSE, ObjectType.INTERMEDIATE_RESULT, ObjectType.THREAT_REDUCTION_RESULT, ObjectType.TEXT_BOX};
+	}
+	
 	private ORef getORefForFactorId(Vector allFactorTypeDirs, Vector allManifestFiles, BaseId id) throws Exception
 	{
 		for (int i = 0; i < allFactorTypeDirs.size(); ++i)

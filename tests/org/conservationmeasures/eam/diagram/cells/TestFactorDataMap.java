@@ -10,6 +10,7 @@ import java.awt.Point;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
@@ -51,7 +52,9 @@ public class TestFactorDataMap extends EAMTestCase
 		
 		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramFactor.TAG_LOCATION));
 		assertEquals("id incorrect", diagramFactorId, nodeAData.getId(DiagramFactor.TAG_ID));
-		assertEquals("wrapped id incorrect", wrappedId, nodeAData.getId(DiagramFactor.TAG_WRAPPED_ID));
+		String orefAsJsonString = nodeAData.getString(DiagramFactor.TAG_WRAPPED_REF);
+		ORef wrappedRef = ORef.createFromString(orefAsJsonString);
+		assertEquals("wrapped id incorrect", wrappedId, wrappedRef.getObjectId());
 		assertEquals("node type incorrect", factorType, nodeAData.getFactorType());
 		assertEquals("label incorrect", label, nodeAData.getLabel());
 	}

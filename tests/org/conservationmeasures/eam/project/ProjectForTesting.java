@@ -114,6 +114,12 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		return (ProjectServerForTesting)getDatabase();
 	}
 	
+	//TODO come up with a better name or eventualy all creates should return ref
+	public ORef createFactorAndReturnRef(int objectType) throws Exception
+	{
+		return createObjectAndReturnRef(objectType);
+	}
+	
 	public FactorId createFactor(int objectType) throws Exception
 	{
 		FactorId factorId = (FactorId)createObject(objectType);

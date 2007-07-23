@@ -142,7 +142,7 @@ public class ResultsChainCreatorHelper
 			DiagramFactor diagramFactorToBeCloned = diagramFactors[i];
 			FactorId factorId = createOrReuseWrappedObject(diagramFactorToBeCloned);
 			
-			CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+			CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(new ORef(diagramFactorToBeCloned.getWrappedType(), factorId));
 			CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 			project.executeCommand(createDiagramFactor);
 			

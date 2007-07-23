@@ -416,7 +416,7 @@ public class TestCommands extends EAMTestCase
 	private DiagramFactor insertNode(int type) throws Exception
 	{
 		FactorId factorId = project.createFactor(type);
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorId);
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(new ORef(type, factorId));
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
 		project.executeCommand(createDiagramFactorCommand);
 		

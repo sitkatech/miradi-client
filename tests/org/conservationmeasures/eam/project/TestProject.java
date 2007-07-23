@@ -531,8 +531,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
-		FactorId factorId = project.createFactor(ObjectType.CAUSE);
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorId);
+		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		project.executeCommand(createDiagramFactorCommand);
 		
@@ -548,11 +548,11 @@ public class TestProject extends EAMTestCase
 	{
 		ProjectServerForTesting database = project.getTestDatabase();
 		
-		FactorId targetId = project.createFactor(ObjectType.TARGET);
-		FactorId factorId = project.createFactor(ObjectType.CAUSE);
+		ORef targetRef = project.createFactorAndReturnRef(ObjectType.TARGET);
+		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
 		int existingCalls = database.callsToWriteObject;
 		
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(targetId);
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(targetRef);
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		project.executeCommand(createDiagramFactor);
 		assertEquals(1 + existingCalls, database.callsToWriteObject);
@@ -563,7 +563,7 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(addDiagramFactor);
 		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		
-		CreateDiagramFactorParameter extraDiagramFactorInfo2 = new CreateDiagramFactorParameter(factorId);
+		CreateDiagramFactorParameter extraDiagramFactorInfo2 = new CreateDiagramFactorParameter(factorRef);
 		CommandCreateObject createDiagramFactor2 = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo2);
 		project.executeCommand(createDiagramFactor2);
 		assertEquals(3 + existingCalls, database.callsToWriteObject);
@@ -572,7 +572,7 @@ public class TestProject extends EAMTestCase
 		CommandSetObjectData addDiagramFactor2 = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId2);
 		project.executeCommand(addDiagramFactor2);
 		assertEquals(4 + existingCalls, database.callsToWriteObject);
-		FactorCell factor = project.getDiagramModel().getFactorCellByWrappedId(factorId);
+		FactorCell factor = project.getDiagramModel().getFactorCellByWrappedId(new FactorId(factorRef.getObjectId().asInt()));
 		
 		// undo the AddNode
 		project.undo();
