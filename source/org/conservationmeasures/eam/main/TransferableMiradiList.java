@@ -5,13 +5,13 @@
 */ 
 package org.conservationmeasures.eam.main;
 
-import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.objecthelpers.ObjectDeepCopier;
+import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 
 
@@ -22,64 +22,36 @@ public class TransferableMiradiList extends TransferableEamList
 		super(projectToUse);
 	}
 
-	private void clearMaps()
+	private void clear()
 	{
-		factorMap = new HashMap();
-		diagramFactorMap = new HashMap();
-		
-		factorLinkMap = new HashMap();
-		diagramLinkMap  = new HashMap();
+		factorDeepCopies = new Vector();
+		diagramFactorDeepCopies = new Vector();
 	}
 	
 	public void storeData(Object[] cells)
 	{
-		clearMaps();
+		clear();
 		ObjectDeepCopier deepCopier = new ObjectDeepCopier(project);
-		int factorMapKey = 0;
-		int linkMapKey = 0;
 		for (int i = 0; i < cells.length; i++) 
 		{
 			EAMGraphCell cell = (EAMGraphCell)cells[i];
 			if (cell.isFactor())
 			{
-				Vector factorJsonStrings = deepCopier.createDeepCopy(((FactorCell)cell).getUnderlyingObject());
-				factorMap.put(factorMapKey, factorJsonStrings);
+				FactorCell factorCell = ((FactorCell)cell);
+				Factor factor = factorCell.getUnderlyingObject();
+				Vector factorJsonStrings = deepCopier.createDeepCopy(factor);
+				factorDeepCopies.addAll(factorJsonStrings);
 
-				Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(((FactorCell)cell).getDiagramFactor());
-				diagramFactorMap.put(factorMapKey, diagramFactorJsonStrings);
-				factorMapKey++;
+				DiagramFactor diagramFactor = factorCell.getDiagramFactor();
+				Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(diagramFactor);
+				diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);
 			}
 
 			if (cell.isFactorLink())
 			{
-				Vector factorLinkJsonStrings = deepCopier.createDeepCopy(((LinkCell) cell).getFactorLink());
-				factorLinkMap.put(linkMapKey, factorLinkJsonStrings);
-
-				Vector diagramLinkJsonStrings = deepCopier.createDeepCopy(((LinkCell) cell).getDiagramFactorLink());
-				diagramLinkMap.put(linkMapKey, diagramLinkJsonStrings);
-				linkMapKey++;
+				//FXIME copy/paste code for link has to be done
 			}
 		}
-	}
-	
-	public HashMap getDiagramFactorMap()
-	{
-		return diagramFactorMap;
-	}
-
-	public HashMap getDiagramLinkMap()
-	{
-		return diagramLinkMap;
-	}
-
-	public HashMap getFactorLinkMap()
-	{
-		return factorLinkMap;
-	}
-
-	public HashMap getFactorMap()
-	{
-		return factorMap;
 	}
 	
 	//FIXME this is to switch between falvors while in transition 
@@ -88,8 +60,16 @@ public class TransferableMiradiList extends TransferableEamList
 		return false;
 	}
 	
-	HashMap factorMap;
-	HashMap diagramFactorMap;
-	HashMap factorLinkMap;
-	HashMap diagramLinkMap;
+	public Vector getDiagramFactorDeepCopies()
+	{
+		return diagramFactorDeepCopies;
+	}
+
+	public Vector getFactorDeepCopies()
+	{
+		return factorDeepCopies;
+	}
+	
+	Vector factorDeepCopies;
+	Vector diagramFactorDeepCopies;
 }

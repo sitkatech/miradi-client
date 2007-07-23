@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Paste extends LocationDoer
 {
@@ -91,24 +92,28 @@ public class Paste extends LocationDoer
 		
 //		FIXME nima copy/paste now add deep copies of selected objects
 		TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
-		HashMap factorMap = list.getFactorMap();
-		HashMap diagramFactorMap = list.getDiagramFactorMap();
-		for (int key = 0; key < factorMap.size(); ++key)
-		{
-			Vector factorJsonStrings = (Vector) factorMap.get(key);
-			printVectorContent(factorJsonStrings);
-			
-			Vector diagramFactorJsonStrings = (Vector) diagramFactorMap.get(key);
-			printVectorContent(diagramFactorJsonStrings);
-		}
+		//Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
+		Vector factorDeepCopies = list.getFactorDeepCopies();
+		createNewFactors(factorDeepCopies);
 	}
 
-	private void printVectorContent(Vector jsonStrings)
+	//FIXME finish code after migration
+	private HashMap createNewFactors(Vector factorDeepCopies) throws Exception
 	{
-		for (int i = 0; i < jsonStrings.size(); ++i)
+		HashMap newOldMap = new HashMap();
+		for (int i = 0; i < factorDeepCopies.size(); ++i)
 		{
-			//System.out.println(jsonStrings.get(i));
+			EnhancedJsonObject json = new EnhancedJsonObject(factorDeepCopies.get(i).toString());
+			System.out.println(json);
+			//BaseId oldObjectId = json.getId(BaseObject.TAG_ID);
+			//ORef newObjectRef = getProject().createObjectAndReturnRef(ObjectType.FACTOR);
+			//newOldMap.put(oldObjectId, newObjectRef.getObjectId());
+			
+			//BaseObject newObject = getProject().findObject(newObjectRef);
+			//newObject.loadDataFromJson(json, newOldMap);
 		}
+		
+		return newOldMap;
 	}
 
 	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
