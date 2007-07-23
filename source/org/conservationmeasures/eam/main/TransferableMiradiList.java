@@ -40,32 +40,24 @@ public class TransferableMiradiList extends TransferableEamList
 		for (int i = 0; i < cells.length; i++) 
 		{
 			EAMGraphCell cell = (EAMGraphCell)cells[i];
-			try 
+			if (cell.isFactor())
 			{
-				if (cell.isFactor())
-				{
-					Vector factorJsonStrings = deepCopier.createDeepCopy(((FactorCell)cell).getUnderlyingObject());
-					factorMap.put(factorMapKey, factorJsonStrings);
-					
-					Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(((FactorCell)cell).getDiagramFactor());
-					diagramFactorMap.put(factorMapKey, diagramFactorJsonStrings);
-					factorMapKey++;
-				}
+				Vector factorJsonStrings = deepCopier.createDeepCopy(((FactorCell)cell).getUnderlyingObject());
+				factorMap.put(factorMapKey, factorJsonStrings);
 
-				if (cell.isFactorLink())
-				{
-					Vector factorLinkJsonStrings = deepCopier.createDeepCopy(((LinkCell) cell).getFactorLink());
-					factorLinkMap.put(linkMapKey, factorLinkJsonStrings);
-					
-					Vector diagramLinkJsonStrings = deepCopier.createDeepCopy(((LinkCell) cell).getDiagramFactorLink());
-					diagramLinkMap.put(linkMapKey, diagramLinkJsonStrings);
-					linkMapKey++;
-				}
+				Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(((FactorCell)cell).getDiagramFactor());
+				diagramFactorMap.put(factorMapKey, diagramFactorJsonStrings);
+				factorMapKey++;
+			}
 
-			} 
-			catch (Exception e) 
+			if (cell.isFactorLink())
 			{
-				EAM.logException(e);
+				Vector factorLinkJsonStrings = deepCopier.createDeepCopy(((LinkCell) cell).getFactorLink());
+				factorLinkMap.put(linkMapKey, factorLinkJsonStrings);
+
+				Vector diagramLinkJsonStrings = deepCopier.createDeepCopy(((LinkCell) cell).getDiagramFactorLink());
+				diagramLinkMap.put(linkMapKey, diagramLinkJsonStrings);
+				linkMapKey++;
 			}
 		}
 	}

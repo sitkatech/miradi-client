@@ -38,12 +38,19 @@ public class Copy extends ViewDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		copySelectedItemsToMiradiClipboard();
-		copySelectedItemsToEAMClipboard();
-		getProject().getDiagramClipboard().incrementPasteCount();
+		try
+		{
+			copySelectedItemsToMiradiClipboard();
+			copySelectedItemsToEAMClipboard();
+			getProject().getDiagramClipboard().incrementPasteCount();
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
-	private void copySelectedItemsToMiradiClipboard()
+	private void copySelectedItemsToMiradiClipboard() throws Exception
 	{
 		//FIXME temp swith beween transitions of two flavors
 		if (TransferableEamList.IS_EAM_FLAVOR)
