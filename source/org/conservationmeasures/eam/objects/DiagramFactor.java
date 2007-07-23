@@ -36,7 +36,6 @@ public class DiagramFactor extends BaseObject
 		size.setDimension(getDefaultSize());
 	}
 	
-	//FIXME nima use this to combine commont construtor code
 	public DiagramFactor(DiagramFactorId diagramFactorIdToUse, CreateDiagramFactorParameter extraInfo)
 	{
 		super(diagramFactorIdToUse);
