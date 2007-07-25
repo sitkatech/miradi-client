@@ -17,13 +17,17 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -101,16 +105,16 @@ public class Paste extends LocationDoer
 			return;
 	
 		//TODO this transaction should be moved up to the doit method once transition is done.
-		getProject().executeCommand(new CommandEndTransaction());
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			//FIXME nima copy/paste now add deep copies of selected objects
 			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
 			Vector factorDeepCopies = list.getFactorDeepCopies();
-			createNewFactors(factorDeepCopies);
+			HashMap oldToNewFactorIdMap = createNewFactors(factorDeepCopies);
 			
-			//Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
-			//createNewDiagramFactors(diagramFactorDeepCopies, factorDeepCopies);
+			Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
+			createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorIdMap);
 		}
 		catch (Exception e)
 		{
@@ -118,7 +122,7 @@ public class Paste extends LocationDoer
 		}
 		finally
 		{
-			getProject().executeCommand(new CommandBeginTransaction());
+			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
 	
@@ -168,36 +172,36 @@ public class Paste extends LocationDoer
 		return newObject;
 	}
 	
-	//FIXME finish code after migration
-//	private void createNewDiagramFactors(Vector diagramFactorDeepCopies, HashMap oldToNewMap) throws Exception
-//	{
-//		for (int i = 0; i < diagramFactorDeepCopies.size(); ++i)
-//		{
-//			String jsonAsString = (String) diagramFactorDeepCopies.get(i);
-//			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-//			String wrappedRefAsString = json.getString(DiagramFactor.TAG_WRAPPED_REF);
-//			ORef wrappedRef = ORef.createFromString(wrappedRefAsString);
-//			BaseId newId = (BaseId) oldToNewMap.get(wrappedRef.getObjectId());
-//
-//			CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(new ORef(wrappedRef.getObjectType(), newId));
-//			CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
-//			getProject().executeCommand(createDiagramFactor);
-//
-//			ORef newDiagramFactorRef = createDiagramFactor.getObjectRef();
-//			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
-//			Command[]  commandsToLoadFromJson = newDiagramFactor.createCommandsToLoadFromJson(json);
-//			getProject().executeCommands(commandsToLoadFromJson);
-//
-//			addDiagramFactorToCurrentDiagram(newDiagramFactorRef);
-//		}
-//	}
 
-//	private void addDiagramFactorToCurrentDiagram(ORef newDiagramFactorRef) throws Exception
-//	{
-//		DiagramObject diagramObject = getDiagramView().getDiagramModel().getDiagramObject();
-//		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, newDiagramFactorRef.getObjectId());
-//		getProject().executeCommand(addDiagramFactor);
-//	}
+	private void createNewDiagramFactors(Vector diagramFactorDeepCopies, HashMap oldToNewMap) throws Exception
+	{
+		for (int i = 0; i < diagramFactorDeepCopies.size(); ++i)
+		{
+			String jsonAsString = (String) diagramFactorDeepCopies.get(i);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			String wrappedRefAsString = json.getString(DiagramFactor.TAG_WRAPPED_REF);
+			ORef wrappedRef = ORef.createFromString(wrappedRefAsString);
+			BaseId newId = (BaseId) oldToNewMap.get(wrappedRef.getObjectId());
+
+			CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(new ORef(wrappedRef.getObjectType(), newId));
+			CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
+			getProject().executeCommand(createDiagramFactor);
+
+			ORef newDiagramFactorRef = createDiagramFactor.getObjectRef();
+			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
+			Command[]  commandsToLoadFromJson = newDiagramFactor.createCommandsToLoadFromJson(json);
+			getProject().executeCommands(commandsToLoadFromJson);
+
+			addDiagramFactorToCurrentDiagram(newDiagramFactorRef);
+		}
+	}
+
+	private void addDiagramFactorToCurrentDiagram(ORef newDiagramFactorRef) throws Exception
+	{
+		DiagramObject diagramObject = getDiagramView().getDiagramModel().getDiagramObject();
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, newDiagramFactorRef.getObjectId());
+		getProject().executeCommand(addDiagramFactor);
+	}
 
 	
 //	private IdList copyIndicators(Vector factorDeepCopies, EnhancedJsonObject factorJson) throws Exception
