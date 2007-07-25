@@ -61,7 +61,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		{
 			Project realProject = new Project();
 			realProject.createOrOpen(tempDir);
-			BaseId createdId = realProject.createObject(ObjectType.RATING_CRITERION);
+			BaseId createdId = realProject.createObjectAndReturnId(ObjectType.RATING_CRITERION);
 			
 			FactorId threatId = new FactorId(283);
 			FactorId targetId = new FactorId(983);

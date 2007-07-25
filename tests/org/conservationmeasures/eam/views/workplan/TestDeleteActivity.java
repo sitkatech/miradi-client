@@ -31,7 +31,7 @@ public class TestDeleteActivity extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		try
 		{
-			BaseId rawStrategyId = project.createObject(ObjectType.STRATEGY);
+			BaseId rawStrategyId = project.createObjectAndReturnId(ObjectType.STRATEGY);
 			FactorId strategyId = new FactorId(rawStrategyId.asInt());
 			Strategy strategy = (Strategy)project.findNode(strategyId);
 

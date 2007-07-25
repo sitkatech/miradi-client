@@ -35,7 +35,7 @@ public class TestChainManager extends EAMTestCase
 	
 	public void testChain() throws Exception
 	{
-		BaseId factorId = project.createFactor(ObjectType.CAUSE);
+		BaseId factorId = project.createFactorAndReturnId(ObjectType.CAUSE);
 		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
 		BaseId taskId1 = project.addItemToIndicatorList(indicatorId, ObjectType.TASK, Indicator.TAG_TASK_IDS);
 		BaseId taskId2 = project.addItemToTaskList(taskId1, ObjectType.TASK, Task.TAG_SUBTASK_IDS);
@@ -43,7 +43,7 @@ public class TestChainManager extends EAMTestCase
 		Factor owner = cm.getDirectOrIndirectOwningFactor(new ORef(ObjectType.TASK, taskId2));
 		assertEquals(owner.getId(),factorId);
 		
-		BaseId loopTaskId1 = project.createObject(ObjectType.TASK);
+		BaseId loopTaskId1 = project.createObjectAndReturnId(ObjectType.TASK);
 		BaseId loopTaskId2 = project.addItemToTaskList(loopTaskId1, ObjectType.TASK, Task.TAG_SUBTASK_IDS);
 		IdList idList = new IdList(new BaseId[] {loopTaskId1});
 		project.setObjectData(ObjectType.TASK, loopTaskId2, Task.TAG_SUBTASK_IDS, idList.toString());

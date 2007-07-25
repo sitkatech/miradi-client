@@ -105,7 +105,7 @@ public class ThreatRatingFramework
 	private BaseId createDefaultValueOption(String label, int numericValue, Color color) throws Exception
 	{
 		int type = ObjectType.VALUE_OPTION;
-		BaseId createdId = project.createObject(type);
+		BaseId createdId = project.createObjectAndReturnId(type);
 		project.setObjectData(type, createdId, ValueOption.TAG_LABEL, label);
 		project.setObjectData(type, createdId, ValueOption.TAG_NUMERIC, Integer.toString(numericValue));
 		project.setObjectData(type, createdId, ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
@@ -115,7 +115,7 @@ public class ThreatRatingFramework
 	private BaseId createDefaultCriterion(String label) throws Exception
 	{
 		int type = ObjectType.RATING_CRITERION;
-		BaseId createdId = project.createObject(type);
+		BaseId createdId = project.createObjectAndReturnId(type);
 		project.setObjectData(type, createdId, RatingCriterion.TAG_LABEL, label);
 		return createdId;
 	}

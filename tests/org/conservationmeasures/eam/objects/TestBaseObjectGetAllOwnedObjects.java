@@ -33,7 +33,7 @@ public class TestBaseObjectGetAllOwnedObjects extends EAMTestCase
 
 	public void testGetAllOwnedObjects() throws Exception
 	{
-		BaseId factorId = project.createFactor(ObjectType.CAUSE);
+		BaseId factorId = project.createFactorAndReturnId(ObjectType.CAUSE);
 		project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
 		project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		

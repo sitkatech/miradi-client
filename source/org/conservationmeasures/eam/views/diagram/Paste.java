@@ -108,7 +108,7 @@ public class Paste extends LocationDoer
 	
 	private HashMap createNewFactors(Vector factorDeepCopies) throws Exception
 	{
-		HashMap newToOldMap = new HashMap();
+		HashMap oldToNewRefMap = new HashMap();
 		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
 		{
 			String jsonAsString = (String) factorDeepCopies.get(i);
@@ -118,10 +118,10 @@ public class Paste extends LocationDoer
 			BaseObject newObject = createObject(json);
 			loadNewObjectFromOldJosn(newObject, json);
 			
-			newToOldMap.put(newObject.getId(), oldId);			
+			oldToNewRefMap.put(newObject.getId(), oldId);			
 		}
 		
-		return newToOldMap;
+		return oldToNewRefMap;
 	}
 
 	private void loadNewObjectFromOldJosn(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException

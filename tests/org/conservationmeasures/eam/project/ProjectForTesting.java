@@ -117,12 +117,12 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	//TODO come up with a better name or eventualy all creates should return ref
 	public ORef createFactorAndReturnRef(int objectType) throws Exception
 	{
-		return createObjectAndReturnRef(objectType);
+		return createObject(objectType);
 	}
 	
-	public FactorId createFactor(int objectType) throws Exception
+	public FactorId createFactorAndReturnId(int objectType) throws Exception
 	{
-		FactorId factorId = (FactorId)createObject(objectType);
+		FactorId factorId = (FactorId)createObjectAndReturnId(objectType);
 		return factorId;
 	}
 	
@@ -161,7 +161,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	
 	public BaseId addItemToList(int sourceType, BaseId id, int type, String tag) throws Exception
 	{
-		BaseId baseId = createObject(type);
+		BaseId baseId = createObjectAndReturnId(type);
 		IdList idList = new IdList(new BaseId[] {baseId});
 		setObjectData(sourceType, id, tag, idList.toString());
 		return baseId;
@@ -221,7 +221,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	{
 		if (oRefs.size() == 0)
 		{
-			BaseId id = createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+			BaseId id = createObjectAndReturnId(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 			return (ConceptualModelDiagram) findObject(new ORef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, id));
 		}
 		if (oRefs.size() > 1)

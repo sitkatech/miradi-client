@@ -168,14 +168,14 @@ public class DataUpgrader extends FileBasedProjectServer
 		BaseId[] diagramFactorIds = diagramFactorManifest.getAllKeys();
 		
 		Vector allFactorTypeDirs = getAllFactorTypeDirs(jsonDir);
-		Vector allManifestFiles = getAllManifestFiles(jsonDir);
+		Vector allFactorManifestFiles = getAllFactorManifestFiles(jsonDir);
 		for (int i = 0; i < diagramFactorIds.length; ++i)
 		{
 			BaseId diagramFactorId = diagramFactorIds[i];
 			File diagramFactorFile = new File(diagramFactorDir, Integer.toString(diagramFactorId.asInt()));
 			EnhancedJsonObject factorLinkJson = readFile(diagramFactorFile);
 			BaseId wrappedFactorId = new BaseId(factorLinkJson.getString("WrappedFactorId"));
-			ORef wrappedRef = getORefForFactorId(allFactorTypeDirs, allManifestFiles, wrappedFactorId);
+			ORef wrappedRef = getORefForFactorId(allFactorTypeDirs, allFactorManifestFiles, wrappedFactorId);
 			
 			factorLinkJson.put("WrappedFactorRef", wrappedRef.toJson());
 			writeJson(diagramFactorFile, factorLinkJson);
@@ -208,7 +208,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			throw new RuntimeException("manifest for objects-6 directory does not exist " + linkManifestFile.getAbsolutePath());
 		
 		Vector allFactorTypeDirs = getAllFactorTypeDirs(jsonDir);
-		Vector allManifestFiles = getAllManifestFiles(jsonDir);
+		Vector allManifestFiles = getAllFactorManifestFiles(jsonDir);
 		 
 		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(linkManifestFile));
 		BaseId[] allFactorLinkIds = factorLinkManifest.getAllKeys();
@@ -230,7 +230,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		}
 	}
 
-	private Vector getAllManifestFiles(File jsonDir) throws Exception
+	private Vector getAllFactorManifestFiles(File jsonDir) throws Exception
 	{
 		Vector allManifestFiles = new Vector();
 		int[] typesToConsider = getAllFactorTypes();

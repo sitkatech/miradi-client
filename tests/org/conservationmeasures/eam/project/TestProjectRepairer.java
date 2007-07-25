@@ -48,7 +48,7 @@ public class TestProjectRepairer extends EAMTestCase
 		try
 		{
 			//BaseId orphan = project.createObject(annotationType);
-			BaseId nonOrphan = project.createObject(annotationType);
+			BaseId nonOrphan = project.createObjectAndReturnId(annotationType);
 			FactorId nodeId = (FactorId)project.createObject(nodeType, BaseId.INVALID);
 			IdList annotationIds = new IdList();
 			annotationIds.add(nonOrphan);

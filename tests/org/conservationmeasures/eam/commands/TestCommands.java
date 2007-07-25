@@ -55,7 +55,7 @@ public class TestCommands extends EAMTestCase
 
 	private void consumeNodeIdZero() throws Exception
 	{
-		project.createFactor(ObjectType.TARGET);
+		project.createFactorAndReturnId(ObjectType.TARGET);
 	}
 	
 	public void tearDown() throws Exception
@@ -67,7 +67,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandSetObjectData_RatingCriterion() throws Exception
 	{
 		int type = ObjectType.RATING_CRITERION;
-		BaseId createdId = project.createObject(type);
+		BaseId createdId = project.createObjectAndReturnId(type);
 		RatingCriterion criterion = project.getThreatRatingFramework().getCriterion(createdId);
 		
 		String field = RatingCriterion.TAG_LABEL;
@@ -126,7 +126,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDeleteObject_ThreatRatingValueOption() throws Exception
 	{
 		int type = ObjectType.VALUE_OPTION;
-		BaseId createdId = project.createObject(type);
+		BaseId createdId = project.createObjectAndReturnId(type);
 		
 		CommandDeleteObject cmd = new CommandDeleteObject(type, createdId);
 		assertEquals("wrong type?", type, cmd.getObjectType());
@@ -142,7 +142,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDeleteObject_ThreatRatingCriterion() throws Exception
 	{
 		int type = ObjectType.RATING_CRITERION;
-		BaseId createdId = project.createObject(type);
+		BaseId createdId = project.createObjectAndReturnId(type);
 		
 		CommandDeleteObject cmd = new CommandDeleteObject(type, createdId);
 		assertEquals("wrong type?", type, cmd.getObjectType());
@@ -415,7 +415,7 @@ public class TestCommands extends EAMTestCase
 
 	private DiagramFactor insertNode(int type) throws Exception
 	{
-		FactorId factorId = project.createFactor(type);
+		FactorId factorId = project.createFactorAndReturnId(type);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(new ORef(type, factorId));
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
 		project.executeCommand(createDiagramFactorCommand);

@@ -36,7 +36,7 @@ public class TestDiagramFactor extends EAMTestCase
 		project = new ProjectForTesting(getName());
 		idAssigner = new IdAssigner();
 
-		BaseId rawTargetId = project.createObject(ObjectType.TARGET);
+		BaseId rawTargetId = project.createObjectAndReturnId(ObjectType.TARGET);
 		FactorId cmTargetId = new FactorId(rawTargetId.asInt());
 		cmTarget = (Target)project.findNode(cmTargetId);
 		

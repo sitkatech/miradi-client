@@ -628,7 +628,7 @@ public class TestProject extends EAMTestCase
 		FactorCell nodeContributingFactor = project.createFactorCell(ObjectType.CAUSE);
 		FactorCell nodeDirectThreat = project.createFactorCell(ObjectType.CAUSE);
 		
-		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
+		BaseId objectiveId1 = project.createObjectAndReturnId(ObjectType.OBJECTIVE);
 		
 		IdList objectiveId = new IdList();
 		objectiveId.add(objectiveId1);
@@ -651,7 +651,7 @@ public class TestProject extends EAMTestCase
 		FactorCell nodeContributingFactor = project.createFactorCell(ObjectType.CAUSE);
 		FactorCell nodeDirectThreat = project.createFactorCell(ObjectType.CAUSE);
 		
-		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
+		IndicatorId indicatorId1 = (IndicatorId)project.createObjectAndReturnId(ObjectType.INDICATOR);
 		IdList indicators1 = new IdList();
 		indicators1.add(indicatorId1);
 		nodeContributingFactor.getUnderlyingObject().setIndicators(indicators1);
@@ -709,7 +709,7 @@ public class TestProject extends EAMTestCase
 			LinkCreator linkCreator = new LinkCreator(diskProject);
 			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(diskProject.getDiagramModel(), cause, target);
 			
-			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.STRATEGY);
+			FactorId interventionId = (FactorId)diskProject.createObjectAndReturnId(ObjectType.STRATEGY);
 			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
 			diskProject.deleteObject(object);
 	

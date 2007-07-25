@@ -132,7 +132,7 @@ public class DiagramFactor extends BaseObject
 			case ObjectType.INTERMEDIATE_RESULT:
 			case ObjectType.THREAT_REDUCTION_RESULT:
 			{
-				Factor factor = objectManager.findNode(new FactorId(underlyingObjectRef.getRawRef().getObjectId().asInt()));
+				Factor factor = objectManager.findFactor(underlyingObjectRef.getRawRef());
 				if (factor.getType() == objectType)
 					list.add(factor.getRef());
 			}

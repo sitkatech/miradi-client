@@ -37,7 +37,7 @@ public class TestSlidePool extends EAMTestCase
 
 	public void testSlide() throws Exception
 	{
-		project.createObject(Slide.getObjectType());
+		project.createObjectAndReturnId(Slide.getObjectType());
 		assertEquals("wrong direct threat count?", 1, pool.size());
 	}
 	

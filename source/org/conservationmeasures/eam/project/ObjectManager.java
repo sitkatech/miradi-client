@@ -293,6 +293,10 @@ public class ObjectManager
 		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
 	}
 	
+	public Factor findFactor(ORef ref)
+	{
+		return (Factor) findObject(ref);
+	}
 
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{

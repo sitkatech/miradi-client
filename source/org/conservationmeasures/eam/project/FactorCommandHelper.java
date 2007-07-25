@@ -68,7 +68,7 @@ public class FactorCommandHelper
     	DiagramObject diagramObject = (DiagramObject) getProject().findObject(refList.get(ONLY_CONCEPTUAL_MODEL_INDEX));
 		
 
-    	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, factorId, objectType).getCreatedId();
+    	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, objectType, factorId).getCreatedId();
     	DiagramFactor createdDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, createdDiagramFactorId));
     	setLocationSizeLabel(createdDiagramFactor, insertionLocation, size, label);
 	}
@@ -89,10 +89,10 @@ public class FactorCommandHelper
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
 	{
 		FactorId factorId = createFactor(objectType);
-		return createDiagramFactor(currentModel.getDiagramObject(), factorId, objectType);
+		return createDiagramFactor(currentModel.getDiagramObject(), objectType, factorId);
 	}
 	
-	public CommandCreateObject createDiagramFactor(DiagramObject diagramObject, FactorId factorId, int objectType) throws Exception
+	public CommandCreateObject createDiagramFactor(DiagramObject diagramObject, int objectType, FactorId factorId) throws Exception
 	{
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(new ORef(objectType, factorId));
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);

@@ -37,15 +37,15 @@ public class TestObjectDeepCopier extends EAMTestCase
 
 	public void testDeepCopy() throws Exception
 	{
-		ORef activityRef = project.createObjectAndReturnRef(Task.getObjectType());
+		ORef activityRef = project.createObject(Task.getObjectType());
 		Task activity = (Task) project.findObject(activityRef);
 		IdList activityIds = new IdList();
 		activityIds.add(activityRef.getObjectId());
 	
-		BaseId taskId = project.createObject(Task.getObjectType());
+		BaseId taskId = project.createObjectAndReturnId(Task.getObjectType());
 		activity.addSubtaskId(taskId);
 		
-		ORef strategyRef = project.createObjectAndReturnRef(ObjectType.STRATEGY);
+		ORef strategyRef = project.createObject(ObjectType.STRATEGY);
 		Strategy strategy = (Strategy) project.findObject(strategyRef);
 		assertEquals("owns objects?", 0, strategy.getAllOwnedObjects().size());
 		

@@ -74,7 +74,7 @@ public class TestObjectManager extends EAMTestCase
 		String FAIR = "2";
 		String sampleStatusCode = FAIR;
 
-		FactorId targetId = project.createFactor(ObjectType.TARGET);
+		FactorId targetId = project.createFactorAndReturnId(ObjectType.TARGET);
 		Target target = (Target)project.findNode(targetId);
 		target.setData(Target.TAG_TARGET_STATUS, sampleStatusCode);
 		
@@ -103,14 +103,14 @@ public class TestObjectManager extends EAMTestCase
 
 	private Indicator createIndicator(String status) throws Exception
 	{
-		IndicatorId indicatorId = (IndicatorId)project.createObject(ObjectType.INDICATOR);
+		IndicatorId indicatorId = (IndicatorId)project.createObjectAndReturnId(ObjectType.INDICATOR);
 		project.setObjectData(ObjectType.INDICATOR, indicatorId, Indicator.TAG_MEASUREMENT_STATUS, status);
 		return (Indicator)project.findObject(ObjectType.INDICATOR, indicatorId);
 	}
 
 	private KeyEcologicalAttribute createKEA(Indicator[] indicators) throws Exception
 	{
-		KeyEcologicalAttributeId keaId1 = (KeyEcologicalAttributeId)project.createObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+		KeyEcologicalAttributeId keaId1 = (KeyEcologicalAttributeId)project.createObjectAndReturnId(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId1);
 
 		IdList indicatorIds = new IdList();

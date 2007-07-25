@@ -101,7 +101,7 @@ public class TransferableEamList implements Transferable
 	}
 
 	// FIXME this is to switch between falvors while in transition
-	public static final boolean IS_EAM_FLAVOR = true;
+	public static final boolean IS_EAM_FLAVOR = false;
 
 	public static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
 	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableEamList.class, "Miradi Objects");

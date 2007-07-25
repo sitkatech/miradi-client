@@ -286,7 +286,7 @@ public class Project
 		if(found != null)
 			return found;
 		
-		BaseId createdId = createObject(ObjectType.VIEW_DATA);
+		BaseId createdId = createObjectAndReturnId(ObjectType.VIEW_DATA);
 		setObjectData(ObjectType.VIEW_DATA, createdId, ViewData.TAG_LABEL, viewName);
 		return getViewPool().find(createdId);
 	}
@@ -344,14 +344,13 @@ public class Project
 		return projectInfo.obtainRealFactorId(proposedId);
 	}
 	
-	//FIXME nima, rename this method or change return type of createObject and remove this method
-	public ORef createObjectAndReturnRef(int objectType) throws Exception
+	public ORef createObject(int objectType) throws Exception
 	{
-		BaseId createdId = createObject(objectType);
+		BaseId createdId = createObjectAndReturnId(objectType);
 		return new ORef(objectType, createdId);
 	}
 	
-	public BaseId createObject(int objectType) throws Exception
+	public BaseId createObjectAndReturnId(int objectType) throws Exception
 	{
 		return createObject(objectType, BaseId.INVALID);
 	}
@@ -453,14 +452,14 @@ public class Project
 		if (getConceptualModelDiagramPool().getORefList().size() != 0)
 			return;
 		
-		ORef createConceptualModelRef = createObjectAndReturnRef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		ORef createConceptualModelRef = createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		ConceptualModelDiagram conceptualModel = (ConceptualModelDiagram) findObject(createConceptualModelRef);
 		setObjectData(createConceptualModelRef, ConceptualModelDiagram.TAG_LABEL, conceptualModel.toString());
 	}
 	
 	private void createProjectMetadata() throws Exception
 	{
-		BaseId createdId = createObject(ObjectType.PROJECT_METADATA);
+		BaseId createdId = createObjectAndReturnId(ObjectType.PROJECT_METADATA);
 		projectInfo.setMetadataId(createdId);
 		getDatabase().writeProjectInfo(projectInfo);
 	}
