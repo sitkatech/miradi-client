@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -109,39 +108,45 @@ public class TestFactor extends TestCaseEnhanced
 		assertEquals("wrong objectives?", factor.getObjectives(), got.getObjectives());
 	}
 	
-	public void testFixupAllRefs() throws Exception
+	public void testFixupAllIndicatorRefs() throws Exception
 	{
-		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
-		BaseId oldIndicatorId1 = project.createFactorAndReturnId(ObjectType.INDICATOR);
-		BaseId oldIndicatorId2 = project.createFactorAndReturnId(ObjectType.INDICATOR);
+		fixupRefs(Cause.getObjectType(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
+		fixupRefs(Cause.getObjectType(), Objective.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
+		fixupRefs(Cause.getObjectType(), Goal.getObjectType(), Factor.TAG_GOAL_IDS);
+		fixupRefs(Cause.getObjectType(), KeyEcologicalAttribute.getObjectType(), Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+	}
 		
-		BaseId newIndicatorId1 = project.createFactorAndReturnId(ObjectType.INDICATOR);
-		BaseId newIndicatorId2 = project.createFactorAndReturnId(ObjectType.INDICATOR);
+	public void fixupRefs(int factorType, int annotationType, String annotationFactorTag) throws Exception
+	{
+		ORef factorRef = project.createFactorAndReturnRef(factorType);
+		BaseId oldId1 = project.createFactorAndReturnId(annotationType);
+		BaseId oldId2 = project.createFactorAndReturnId(annotationType);
 		
-		IdList indicatorIds = new IdList();
-		indicatorIds.add(oldIndicatorId1);
-		indicatorIds.add(oldIndicatorId2);
+		BaseId newId1 = project.createFactorAndReturnId(annotationType);
+		BaseId newId2 = project.createFactorAndReturnId(annotationType);
 		
-		CommandSetObjectData setFactorIndicatorIds = new CommandSetObjectData(factorRef, Factor.TAG_INDICATOR_IDS, indicatorIds.toString());
-		project.executeCommand(setFactorIndicatorIds);
+		IdList annotationIds = new IdList();
+		annotationIds.add(oldId1);
+		annotationIds.add(oldId2);
+		
+		CommandSetObjectData setFactorAnnotationIds = new CommandSetObjectData(factorRef, annotationFactorTag, annotationIds.toString());
+		project.executeCommand(setFactorAnnotationIds);
 		
 		HashMap oldToNewRefMap = new HashMap();
-		oldToNewRefMap.put(oldIndicatorId1, newIndicatorId1);
-		oldToNewRefMap.put(oldIndicatorId2, newIndicatorId2);
+		oldToNewRefMap.put(oldId1, newId1);
+		oldToNewRefMap.put(oldId2, newId2);
 		
 		Factor factor = (Factor) project.findObject(factorRef);
 		Command[] commandToFixRefs = factor.fixupAllRefs(oldToNewRefMap);
 		project.executeCommands(commandToFixRefs);
 		
-		IdList newIndicatorIds = factor.getIndicators();
-		System.out.println(newIndicatorIds);
-		assertFalse("contains wrong old indicator?", newIndicatorIds.contains(oldIndicatorId1));
-		assertFalse("contains wrong old indicator?", newIndicatorIds.contains(oldIndicatorId2));
+		IdList newAnnotationIds = new IdList(factor.getData(annotationFactorTag));
+		assertFalse("contains wrong old id?", newAnnotationIds.contains(oldId1));
+		assertFalse("contains wrong old id?", newAnnotationIds.contains(oldId2));
 		
-		assertTrue("does not contain new indicator?", newIndicatorIds.contains(newIndicatorId1));
-		assertTrue("does not contain new indicator?", newIndicatorIds.contains(newIndicatorId2));
+		assertTrue("does not contain new id?", newAnnotationIds.contains(newId1));
+		assertTrue("does not contain new id?", newAnnotationIds.contains(newId2));
 	}
-	
-	
+		
 	ProjectForTesting project;
 }

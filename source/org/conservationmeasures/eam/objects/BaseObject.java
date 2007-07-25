@@ -89,9 +89,9 @@ abstract public class BaseObject
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
-	public Command[] fixupAllRefs(HashMap oldToNewRefMap)
+	public Command[] fixupAllRefs(HashMap oldToNewRefMap) throws Exception
 	{
-		return new Command[0];
+		throw new Exception("fixupAllRefs is not supported for the BaseObject");
 	}
 	
 	public ORef getRef()

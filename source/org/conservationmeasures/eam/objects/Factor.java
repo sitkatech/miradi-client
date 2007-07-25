@@ -303,33 +303,43 @@ abstract public class Factor extends BaseObject
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
 	
-	public Command[] fixupAllRefs(HashMap oldToNewRefMap)
+	public Command[] fixupAllRefs(HashMap oldToNewRefMap) throws Exception
 	{
 		Vector commandsToFixRefs = new Vector();
-		Command commandToFixIndicatorRefs = fixUpIndicatorRefs(oldToNewRefMap);
+		
+		Command commandToFixIndicatorRefs = fixUpRefs(oldToNewRefMap, Indicator.getObjectType(), TAG_INDICATOR_IDS);
 		commandsToFixRefs.add(commandToFixIndicatorRefs);
+		
+		Command commandToFixObjectiveRefs = fixUpRefs(oldToNewRefMap, Objective.getObjectType(), TAG_OBJECTIVE_IDS);
+		commandsToFixRefs.add(commandToFixObjectiveRefs);
+		
+		Command commandToFixGoalRefs = fixUpRefs(oldToNewRefMap, Goal.getObjectType(), TAG_GOAL_IDS);
+		commandsToFixRefs.add(commandToFixGoalRefs);
+		
+		Command commandToFixKEARefs = fixUpRefs(oldToNewRefMap, KeyEcologicalAttribute.getObjectType(), TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		commandsToFixRefs.add(commandToFixKEARefs);
 		
 		return (Command[]) commandsToFixRefs.toArray(new Command[0]);
 	}
 
-	private Command fixUpIndicatorRefs(HashMap oldToNewRefMap)
+	private Command fixUpRefs(HashMap oldToNewRefMap, int annotationType, String annotationTag) throws Exception
 	{
 		//FIXME currently items ids found in list but not in map are not added to new list
-		IdList oldIndicatorList = getIndicators();
-		IdList newIndicatorList = new IdList();
-		for (int i = 0; i < oldIndicatorList.size(); ++i)
+		IdList oldList = new IdList(getData(annotationTag));
+		IdList newList = new IdList();
+		for (int i = 0; i < oldList.size(); ++i)
 		{
-			BaseId oldIndicatorId = oldIndicatorList.get(i);
-			if (oldToNewRefMap.containsKey(oldIndicatorId))
+			BaseId oldId = oldList.get(i);
+			if (oldToNewRefMap.containsKey(oldId))
 			{
-				BaseId newIndicatorId = (BaseId) oldToNewRefMap.get(oldIndicatorId);
-				newIndicatorList.add(newIndicatorId);
+				BaseId newId = (BaseId) oldToNewRefMap.get(oldId);
+				newList.add(newId);
 			}
 			else
-				EAM.logWarning("Indicator not found in new list after paste");
+				EAM.logWarning("Id for type " + annotationType + " not found in new list (" + annotationTag + ") after paste");
 		}
 		
-		return new CommandSetObjectData(getRef(), Factor.TAG_INDICATOR_IDS, newIndicatorList.toString());
+		return new CommandSetObjectData(getRef(), annotationTag, newList.toString());
 	}
 		
 	public String getPseudoData(String fieldTag)
