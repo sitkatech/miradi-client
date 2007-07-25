@@ -139,13 +139,13 @@ public class Paste extends LocationDoer
 			loadNewObjectFromOldJson(newObject, json);
 			
 			oldToNewRefMap.put(oldId, newObject.getId());
-			fixupFactorRefs(oldToNewRefMap, newObject);
+			fixupFactorRefs(newObject, oldToNewRefMap);
 		}
 		
 		return oldToNewRefMap;
 	}
 
-	private void fixupFactorRefs(HashMap oldToNewRefMap, BaseObject newObject) throws Exception
+	private void fixupFactorRefs(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
 	{
 		if (! Factor.isFactor(newObject.getType()))
 			return;
