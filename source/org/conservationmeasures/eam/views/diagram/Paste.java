@@ -109,6 +109,7 @@ public class Paste extends LocationDoer
 		try
 		{
 			//FIXME nima copy/paste now add deep copies of selected objects
+			//FIXME new pasted objects should be selected
 			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
 			Vector factorDeepCopies = list.getFactorDeepCopies();
 			HashMap oldToNewFactorIdMap = createNewFactors(factorDeepCopies);
@@ -133,11 +134,11 @@ public class Paste extends LocationDoer
 		{
 			String jsonAsString = (String) factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			
 			BaseObject newObject = createObject(json);
 			loadNewObjectFromOldJson(newObject, json);
 			
+			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			oldToNewRefMap.put(oldId, newObject.getId());
 			fixupFactorRefs(newObject, oldToNewRefMap);
 		}
@@ -171,7 +172,6 @@ public class Paste extends LocationDoer
 		
 		return newObject;
 	}
-	
 
 	private void createNewDiagramFactors(Vector diagramFactorDeepCopies, HashMap oldToNewMap) throws Exception
 	{
@@ -189,7 +189,7 @@ public class Paste extends LocationDoer
 
 			ORef newDiagramFactorRef = createDiagramFactor.getObjectRef();
 			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
-			Command[]  commandsToLoadFromJson = newDiagramFactor.createCommandsToLoadFromJson(json);
+			Command[]  commandsToLoadFromJson = newDiagramFactor.loadDataFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
 
 			addDiagramFactorToCurrentDiagram(newDiagramFactorRef);
@@ -202,42 +202,6 @@ public class Paste extends LocationDoer
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, newDiagramFactorRef.getObjectId());
 		getProject().executeCommand(addDiagramFactor);
 	}
-
-	
-//	private IdList copyIndicators(Vector factorDeepCopies, EnhancedJsonObject factorJson) throws Exception
-//	{
-//		String idListAsString = factorJson.getString(Factor.TAG_INDICATOR_IDS);
-//		IdList indicatorIds = new IdList(idListAsString);
-//		IdList newIndicators = new IdList();
-//		for (int i = 0; i < indicatorIds.size(); ++i)
-//		{
-//			EnhancedJsonObject json = findJson(factorDeepCopies, indicatorIds.get(i));
-//			CommandCreateObject createIndicator = new CommandCreateObject(ObjectType.INDICATOR);
-//			getProject().executeCommand(createIndicator);
-//		
-//			ORef newIndicatorRef = createIndicator.getObjectRef();
-//			newIndicators.add(newIndicatorRef.getObjectId());
-//			
-//			Indicator newIndicator = (Indicator) getProject().findObject(newIndicatorRef);
-//			//newIndicator.loadDataFromJson(json, new HashMap());
-//		}
-//		
-//		return newIndicators;
-//	}
-
-//	private EnhancedJsonObject findJson(Vector factorDeepCopies, BaseId idToFind) throws Exception
-//	{
-//		for (int i = 0; i < factorDeepCopies.size(); ++i)
-//		{			
-//			String jsonAsString = factorDeepCopies.get(i).toString();
-//			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-//			BaseId id = json.getId(Factor.TAG_ID);
-//			if (idToFind.equals(id))
-//				return json;
-//		}
-//		
-//		return new EnhancedJsonObject("");
-//	}
 		
 	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
 	{

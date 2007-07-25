@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -199,8 +198,7 @@ public class DiagramFactor extends BaseObject
 		return dataMap;
 	}
 
-	//FIXME do we still use this method
-	public Command[] loadDataFromJson(EnhancedJsonObject json, HashMap newOldRefMap) throws Exception
+	public Command[] loadDataFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Vector commands = new Vector();
 		String dimensionAsString = json.getString(DiagramFactor.TAG_SIZE);
