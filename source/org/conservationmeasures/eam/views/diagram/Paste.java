@@ -13,10 +13,15 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -80,6 +85,8 @@ public class Paste extends LocationDoer
 		clipboard.incrementPasteCount();
 	}
 
+	//FIXME Paste code is under construction but going in the right direction
+	//lots of unsused code commented and will uncomment and reuse.  
 	private void pasteMiradiDataFlavor(DiagramClipboard clipboard) throws Exception
 	{
 //		FIXME temp swith beween transitions of two flavors
@@ -95,27 +102,113 @@ public class Paste extends LocationDoer
 		//Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
 		Vector factorDeepCopies = list.getFactorDeepCopies();
 		createNewFactors(factorDeepCopies);
+		//printVectorContent(factorDeepCopies);
+		//createNewDiagramFactors(diagramFactorDeepCopies, factorDeepCopies);
 	}
-
-	//FIXME finish code after migration
+	
 	private HashMap createNewFactors(Vector factorDeepCopies) throws Exception
 	{
-		HashMap newOldMap = new HashMap();
-		for (int i = 0; i < factorDeepCopies.size(); ++i)
+		HashMap newToOldMap = new HashMap();
+		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
 		{
-			EnhancedJsonObject json = new EnhancedJsonObject(factorDeepCopies.get(i).toString());
-			System.out.println(json);
-			//BaseId oldObjectId = json.getId(BaseObject.TAG_ID);
-			//ORef newObjectRef = getProject().createObjectAndReturnRef(ObjectType.FACTOR);
-			//newOldMap.put(oldObjectId, newObjectRef.getObjectId());
+			String jsonAsString = (String) factorDeepCopies.get(i);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			
-			//BaseObject newObject = getProject().findObject(newObjectRef);
-			//newObject.loadDataFromJson(json, newOldMap);
+			BaseObject newObject = createObject(json);
+			loadNewObjectFromOldJosn(newObject, json);
+			
+			newToOldMap.put(newObject.getId(), oldId);			
 		}
 		
-		return newOldMap;
+		return newToOldMap;
 	}
 
+	private void loadNewObjectFromOldJosn(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
+	{
+		Command[] commandsToLoadFromJson = newObject.createCommandsToLoadFromJson(json);
+		getProject().executeCommands(commandsToLoadFromJson);
+	}
+
+	private BaseObject createObject(EnhancedJsonObject json) throws CommandFailedException
+	{
+		int type = json.getInt("Type");
+		CommandCreateObject createObject = new CommandCreateObject(type);
+		getProject().executeCommand(createObject);
+		
+		ORef newObjectRef = createObject.getObjectRef();
+		BaseObject newObject = getProject().findObject(newObjectRef);
+		
+		return newObject;
+	}
+	
+	//FIXME finish code after migration
+//	private void createNewDiagramFactors(Vector diagramFactorDeepCopies, HashMap oldToNewMap) throws Exception
+//	{
+//		for (int i = 0; i < diagramFactorDeepCopies.size(); ++i)
+//		{
+//			String jsonAsString = (String) diagramFactorDeepCopies.get(i);
+//			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+//			String wrappedRefAsString = json.getString(DiagramFactor.TAG_WRAPPED_REF);
+//			ORef wrappedRef = ORef.createFromString(wrappedRefAsString);
+//			BaseId newId = (BaseId) oldToNewMap.get(wrappedRef.getObjectId());
+//
+//			CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(new ORef(wrappedRef.getObjectType(), newId));
+//			CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
+//			getProject().executeCommand(createDiagramFactor);
+//
+//			ORef newDiagramFactorRef = createDiagramFactor.getObjectRef();
+//			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
+//			Command[]  commandsToLoadFromJson = newDiagramFactor.createCommandsToLoadFromJson(json);
+//			getProject().executeCommands(commandsToLoadFromJson);
+//
+//			addDiagramFactorToCurrentDiagram(newDiagramFactorRef);
+//		}
+//	}
+
+//	private void addDiagramFactorToCurrentDiagram(ORef newDiagramFactorRef) throws Exception
+//	{
+//		DiagramObject diagramObject = getDiagramView().getDiagramModel().getDiagramObject();
+//		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, newDiagramFactorRef.getObjectId());
+//		getProject().executeCommand(addDiagramFactor);
+//	}
+
+	
+//	private IdList copyIndicators(Vector factorDeepCopies, EnhancedJsonObject factorJson) throws Exception
+//	{
+//		String idListAsString = factorJson.getString(Factor.TAG_INDICATOR_IDS);
+//		IdList indicatorIds = new IdList(idListAsString);
+//		IdList newIndicators = new IdList();
+//		for (int i = 0; i < indicatorIds.size(); ++i)
+//		{
+//			EnhancedJsonObject json = findJson(factorDeepCopies, indicatorIds.get(i));
+//			CommandCreateObject createIndicator = new CommandCreateObject(ObjectType.INDICATOR);
+//			getProject().executeCommand(createIndicator);
+//		
+//			ORef newIndicatorRef = createIndicator.getObjectRef();
+//			newIndicators.add(newIndicatorRef.getObjectId());
+//			
+//			Indicator newIndicator = (Indicator) getProject().findObject(newIndicatorRef);
+//			//newIndicator.loadDataFromJson(json, new HashMap());
+//		}
+//		
+//		return newIndicators;
+//	}
+
+//	private EnhancedJsonObject findJson(Vector factorDeepCopies, BaseId idToFind) throws Exception
+//	{
+//		for (int i = 0; i < factorDeepCopies.size(); ++i)
+//		{			
+//			String jsonAsString = factorDeepCopies.get(i).toString();
+//			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+//			BaseId id = json.getId(Factor.TAG_ID);
+//			if (idToFind.equals(id))
+//				return json;
+//		}
+//		
+//		return new EnhancedJsonObject("");
+//	}
+		
 	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
 	{
 		factorCommandHelper.pasteFactorsAndLinksIntoProject(list, getLocation());

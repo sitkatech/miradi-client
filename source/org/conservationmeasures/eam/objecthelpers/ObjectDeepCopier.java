@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ObjectDeepCopier
 {
@@ -35,13 +36,22 @@ public class ObjectDeepCopier
 			return;
 		
 		ORefList ownedObjects = objectToDeepCopy.getAllOwnedObjects();		
-		allOwnedObjects.add(objectToDeepCopy.toJson().toString());
+		EnhancedJsonObject json = addTypeForClipboardUse(objectToDeepCopy);
+		allOwnedObjects.add(json.toString());
 		for (int i = 0; i < ownedObjects.size(); ++i)
 		{
 			ORef objectRef = ownedObjects.get(i);
 			BaseObject ownedObject = project.findObject(objectRef);
 			recursivelyCreateDeepCopy(ownedObject);
 		}
+	}
+
+	private EnhancedJsonObject addTypeForClipboardUse(BaseObject objectToDeepCopy)
+	{
+		EnhancedJsonObject jsonWithType = objectToDeepCopy.toJson();
+		jsonWithType.put("Type", objectToDeepCopy.getType());
+		
+		return jsonWithType;
 	}
 	
 	Vector allOwnedObjects;

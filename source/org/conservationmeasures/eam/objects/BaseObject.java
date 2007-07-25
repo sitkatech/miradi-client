@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
@@ -57,6 +58,11 @@ abstract public class BaseObject
 	BaseObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		this(idToUse);
+		loadFromJson(json);
+	}
+
+	public void loadFromJson(EnhancedJsonObject json) throws Exception
+	{
 		Iterator iter = fields.keySet().iterator();
 		while(iter.hasNext())
 		{
@@ -64,6 +70,23 @@ abstract public class BaseObject
 			if (!getField(tag).isPseudoField())
 				setData(tag, json.optString(tag));
 		}
+	}
+	
+	public Command[] createCommandsToLoadFromJson(EnhancedJsonObject json) throws Exception
+	{
+		Vector commands = new Vector();
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			if (getField(tag).isPseudoField())
+				continue;
+			
+			CommandSetObjectData setDataCommand = new CommandSetObjectData(getRef(), tag, json.optString(tag));
+			commands.add(setDataCommand);
+		}
+		
+		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
 	public ORef getRef()
