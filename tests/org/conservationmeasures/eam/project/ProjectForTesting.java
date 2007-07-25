@@ -122,8 +122,8 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	
 	public FactorId createFactorAndReturnId(int objectType) throws Exception
 	{
-		FactorId factorId = (FactorId)createObjectAndReturnId(objectType);
-		return factorId;
+		BaseId factorId = createObjectAndReturnId(objectType);
+		return new FactorId(factorId.asInt());
 	}
 	
 	public BaseId addItemToViewDataList(BaseId id, int type, String tag) throws Exception

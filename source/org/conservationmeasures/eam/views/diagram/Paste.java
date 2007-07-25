@@ -14,7 +14,9 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -22,6 +24,7 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -96,14 +99,27 @@ public class Paste extends LocationDoer
 		Transferable contents = clipboard.getContents(null);
 		if(!contents.isDataFlavorSupported(TransferableEamList.miradiListDataFlavor))
 			return;
-		
-//		FIXME nima copy/paste now add deep copies of selected objects
-		TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
-		//Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
-		Vector factorDeepCopies = list.getFactorDeepCopies();
-		createNewFactors(factorDeepCopies);
-		//printVectorContent(factorDeepCopies);
-		//createNewDiagramFactors(diagramFactorDeepCopies, factorDeepCopies);
+	
+		//TODO this transaction should be moved up to the doit method once transition is done.
+		getProject().executeCommand(new CommandEndTransaction());
+		try
+		{
+			//FIXME nima copy/paste now add deep copies of selected objects
+			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
+			Vector factorDeepCopies = list.getFactorDeepCopies();
+			createNewFactors(factorDeepCopies);
+			
+			//Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
+			//createNewDiagramFactors(diagramFactorDeepCopies, factorDeepCopies);
+		}
+		catch (Exception e)
+		{
+			throw e;
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandBeginTransaction());
+		}
 	}
 	
 	private HashMap createNewFactors(Vector factorDeepCopies) throws Exception
@@ -118,10 +134,20 @@ public class Paste extends LocationDoer
 			BaseObject newObject = createObject(json);
 			loadNewObjectFromOldJosn(newObject, json);
 			
-			oldToNewRefMap.put(newObject.getId(), oldId);			
+			oldToNewRefMap.put(oldId, newObject.getId());
+			fixupFactorRefs(oldToNewRefMap, newObject);
 		}
 		
 		return oldToNewRefMap;
+	}
+
+	private void fixupFactorRefs(HashMap oldToNewRefMap, BaseObject newObject) throws Exception
+	{
+		if (! Factor.isFactor(newObject.getType()))
+			return;
+		
+		Command[] commandsToFixRefs = newObject.fixupAllRefs(oldToNewRefMap);
+		getProject().executeCommands(commandsToFixRefs);
 	}
 
 	private void loadNewObjectFromOldJosn(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException

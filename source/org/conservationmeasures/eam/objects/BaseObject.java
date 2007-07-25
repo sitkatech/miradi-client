@@ -89,6 +89,11 @@ abstract public class BaseObject
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
+	public Command[] fixupAllRefs(HashMap oldToNewRefMap)
+	{
+		return new Command[0];
+	}
+	
 	public ORef getRef()
 	{
 		return new ORef(getType(), getId());

@@ -5,6 +5,11 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.HashMap;
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
@@ -297,8 +302,36 @@ abstract public class Factor extends BaseObject
 		
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
-
 	
+	public Command[] fixupAllRefs(HashMap oldToNewRefMap)
+	{
+		Vector commandsToFixRefs = new Vector();
+		Command commandToFixIndicatorRefs = fixUpIndicatorRefs(oldToNewRefMap);
+		commandsToFixRefs.add(commandToFixIndicatorRefs);
+		
+		return (Command[]) commandsToFixRefs.toArray(new Command[0]);
+	}
+
+	private Command fixUpIndicatorRefs(HashMap oldToNewRefMap)
+	{
+		//FIXME currently items ids found in list but not in map are not added to new list
+		IdList oldIndicatorList = getIndicators();
+		IdList newIndicatorList = new IdList();
+		for (int i = 0; i < oldIndicatorList.size(); ++i)
+		{
+			BaseId oldIndicatorId = oldIndicatorList.get(i);
+			if (oldToNewRefMap.containsKey(oldIndicatorId))
+			{
+				BaseId newIndicatorId = (BaseId) oldToNewRefMap.get(oldIndicatorId);
+				newIndicatorList.add(newIndicatorId);
+			}
+			else
+				EAM.logWarning("Indicator not found in new list after paste");
+		}
+		
+		return new CommandSetObjectData(getRef(), Factor.TAG_INDICATOR_IDS, newIndicatorList.toString());
+	}
+		
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_GOALS))

@@ -5,9 +5,15 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.util.HashMap;
+
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -102,6 +108,40 @@ public class TestFactor extends TestCaseEnhanced
 		assertEquals("wrong objectives count?", factor.getObjectives().size(), got.getObjectives().size());
 		assertEquals("wrong objectives?", factor.getObjectives(), got.getObjectives());
 	}
+	
+	public void testFixupAllRefs() throws Exception
+	{
+		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
+		BaseId oldIndicatorId1 = project.createFactorAndReturnId(ObjectType.INDICATOR);
+		BaseId oldIndicatorId2 = project.createFactorAndReturnId(ObjectType.INDICATOR);
+		
+		BaseId newIndicatorId1 = project.createFactorAndReturnId(ObjectType.INDICATOR);
+		BaseId newIndicatorId2 = project.createFactorAndReturnId(ObjectType.INDICATOR);
+		
+		IdList indicatorIds = new IdList();
+		indicatorIds.add(oldIndicatorId1);
+		indicatorIds.add(oldIndicatorId2);
+		
+		CommandSetObjectData setFactorIndicatorIds = new CommandSetObjectData(factorRef, Factor.TAG_INDICATOR_IDS, indicatorIds.toString());
+		project.executeCommand(setFactorIndicatorIds);
+		
+		HashMap oldToNewRefMap = new HashMap();
+		oldToNewRefMap.put(oldIndicatorId1, newIndicatorId1);
+		oldToNewRefMap.put(oldIndicatorId2, newIndicatorId2);
+		
+		Factor factor = (Factor) project.findObject(factorRef);
+		Command[] commandToFixRefs = factor.fixupAllRefs(oldToNewRefMap);
+		project.executeCommands(commandToFixRefs);
+		
+		IdList newIndicatorIds = factor.getIndicators();
+		System.out.println(newIndicatorIds);
+		assertFalse("contains wrong old indicator?", newIndicatorIds.contains(oldIndicatorId1));
+		assertFalse("contains wrong old indicator?", newIndicatorIds.contains(oldIndicatorId2));
+		
+		assertTrue("does not contain new indicator?", newIndicatorIds.contains(newIndicatorId1));
+		assertTrue("does not contain new indicator?", newIndicatorIds.contains(newIndicatorId2));
+	}
+	
 	
 	ProjectForTesting project;
 }
