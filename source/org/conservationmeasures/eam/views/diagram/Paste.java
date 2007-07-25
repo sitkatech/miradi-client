@@ -136,7 +136,7 @@ public class Paste extends LocationDoer
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			
 			BaseObject newObject = createObject(json);
-			loadNewObjectFromOldJosn(newObject, json);
+			loadNewObjectFromOldJson(newObject, json);
 			
 			oldToNewRefMap.put(oldId, newObject.getId());
 			fixupFactorRefs(oldToNewRefMap, newObject);
@@ -154,7 +154,7 @@ public class Paste extends LocationDoer
 		getProject().executeCommands(commandsToFixRefs);
 	}
 
-	private void loadNewObjectFromOldJosn(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
+	private void loadNewObjectFromOldJson(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
 	{
 		Command[] commandsToLoadFromJson = newObject.createCommandsToLoadFromJson(json);
 		getProject().executeCommands(commandsToLoadFromJson);
