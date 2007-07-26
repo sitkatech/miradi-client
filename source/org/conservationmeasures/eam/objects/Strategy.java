@@ -193,7 +193,7 @@ public class Strategy extends Factor
 		Vector commandsToFixRefs = new Vector();
 		commandsToFixRefs.addAll(Arrays.asList(commands));
 		
-		Command commandToFixActivityRefs = fixUpRefs(oldToNewRefMap, Task.getObjectType(), TAG_ACTIVITY_IDS);
+		Command commandToFixActivityRefs = fixUpRefs(TAG_ACTIVITY_IDS, Task.getObjectType(), oldToNewRefMap);
 		commandsToFixRefs.add(commandToFixActivityRefs);
 		
 		return (Command[]) commandsToFixRefs.toArray(new Command[0]);

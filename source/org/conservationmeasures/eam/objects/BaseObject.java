@@ -95,7 +95,7 @@ abstract public class BaseObject
 		throw new Exception("fixupAllRefs is not supported for the BaseObject");
 	}
 	
-	protected Command fixUpRefs(HashMap oldToNewRefMap, int annotationType, String annotationTag) throws Exception
+	protected Command fixUpRefs(String annotationTag, int annotationType, HashMap oldToNewRefMap) throws Exception
 	{
 		//FIXME currently items ids found in list but not in map are not added to new list
 		IdList oldList = new IdList(getData(annotationTag));

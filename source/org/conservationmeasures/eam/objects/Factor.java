@@ -306,16 +306,16 @@ abstract public class Factor extends BaseObject
 	{
 		Vector commandsToFixRefs = new Vector();
 		
-		Command commandToFixIndicatorRefs = fixUpRefs(oldToNewRefMap, Indicator.getObjectType(), TAG_INDICATOR_IDS);
+		Command commandToFixIndicatorRefs = fixUpRefs(TAG_INDICATOR_IDS, Indicator.getObjectType(), oldToNewRefMap);
 		commandsToFixRefs.add(commandToFixIndicatorRefs);
 		
-		Command commandToFixObjectiveRefs = fixUpRefs(oldToNewRefMap, Objective.getObjectType(), TAG_OBJECTIVE_IDS);
+		Command commandToFixObjectiveRefs = fixUpRefs(TAG_OBJECTIVE_IDS, Objective.getObjectType(), oldToNewRefMap);
 		commandsToFixRefs.add(commandToFixObjectiveRefs);
 		
-		Command commandToFixGoalRefs = fixUpRefs(oldToNewRefMap, Goal.getObjectType(), TAG_GOAL_IDS);
+		Command commandToFixGoalRefs = fixUpRefs(TAG_GOAL_IDS, Goal.getObjectType(), oldToNewRefMap);
 		commandsToFixRefs.add(commandToFixGoalRefs);
 		
-		Command commandToFixKEARefs = fixUpRefs(oldToNewRefMap, KeyEcologicalAttribute.getObjectType(), TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		Command commandToFixKEARefs = fixUpRefs(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType(), oldToNewRefMap);
 		commandsToFixRefs.add(commandToFixKEARefs);
 		
 		return (Command[]) commandsToFixRefs.toArray(new Command[0]);
