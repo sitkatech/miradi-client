@@ -36,7 +36,7 @@ public class ObjectDeepCopier
 			return;
 		
 		ORefList ownedObjects = objectToDeepCopy.getAllOwnedObjects();		
-		EnhancedJsonObject json = addTypeForClipboardUse(objectToDeepCopy);
+		EnhancedJsonObject json = getJsonWithType(objectToDeepCopy);
 		allOwnedObjects.add(json.toString());
 		for (int i = 0; i < ownedObjects.size(); ++i)
 		{
@@ -46,7 +46,7 @@ public class ObjectDeepCopier
 		}
 	}
 
-	private EnhancedJsonObject addTypeForClipboardUse(BaseObject objectToDeepCopy)
+	private EnhancedJsonObject getJsonWithType(BaseObject objectToDeepCopy)
 	{
 		EnhancedJsonObject jsonWithType = objectToDeepCopy.toJson();
 		jsonWithType.put("Type", objectToDeepCopy.getType());
