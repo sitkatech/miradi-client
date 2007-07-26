@@ -265,7 +265,6 @@ public class Paste extends LocationDoer
 			
 			Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
-
 			
 			oldToNewFactorLinkIdMap.put(oldFactorLinkId, newFactorLink.getId());
 		}
@@ -291,13 +290,18 @@ public class Paste extends LocationDoer
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 
 			BaseId oldWrappedFactorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
-			FactorLinkId oldFactorLinkId = new FactorLinkId(oldWrappedFactorLinkId.asInt());
+			BaseId newFatorLinkIdAsBaseId = (BaseId) oldToNewFactorLinkIdMap.get(oldWrappedFactorLinkId);
+			FactorLinkId newFactorLinkId = new FactorLinkId(newFatorLinkIdAsBaseId.asInt());
 
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorIdMap, json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorIdMap, json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 			
-			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(oldFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
-			BaseObject newDiagramLink = createObject(json, extraInfo);
+			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
+			DiagramLink newDiagramLink = (DiagramLink) createObject(json, extraInfo);
+			
+			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
+			getProject().executeCommands(commandsToLoadFromJson);
+			
 			addToCurrentDiagram(newDiagramLink.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
 		}
 	}
