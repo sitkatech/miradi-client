@@ -119,11 +119,11 @@ public class TestFactor extends TestCaseEnhanced
 	public void fixupRefs(int factorType, int annotationType, String annotationFactorTag) throws Exception
 	{
 		ORef factorRef = project.createFactorAndReturnRef(factorType);
-		BaseId oldId1 = project.createFactorAndReturnId(annotationType);
-		BaseId oldId2 = project.createFactorAndReturnId(annotationType);
+		BaseId oldId1 = project.createObjectAndReturnId(annotationType);
+		BaseId oldId2 = project.createObjectAndReturnId(annotationType);
 		
-		BaseId newId1 = project.createFactorAndReturnId(annotationType);
-		BaseId newId2 = project.createFactorAndReturnId(annotationType);
+		BaseId newId1 = project.createObjectAndReturnId(annotationType);
+		BaseId newId2 = project.createObjectAndReturnId(annotationType);
 		
 		IdList annotationIds = new IdList();
 		annotationIds.add(oldId1);
