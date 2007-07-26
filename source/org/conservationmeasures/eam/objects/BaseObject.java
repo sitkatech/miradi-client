@@ -109,7 +109,9 @@ abstract public class BaseObject
 				newList.add(newId);
 			}
 			else
+			{
 				EAM.logWarning("Id for type " + annotationType + " not found in new list (" + annotationTag + ") after paste");
+			}
 		}
 		
 		return new CommandSetObjectData(getRef(), annotationTag, newList.toString());
