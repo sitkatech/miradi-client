@@ -161,7 +161,7 @@ public class Paste extends LocationDoer
 
 	private void fixupRefs(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
 	{
-		Command[] commandsToFixRefs = newObject.fixupAllRefs(oldToNewRefMap);
+		Command[] commandsToFixRefs = newObject.createCommandToFixupRefLists(oldToNewRefMap);
 		getProject().executeCommands(commandsToFixRefs);
 	}
 

@@ -302,7 +302,7 @@ abstract public class Factor extends BaseObject
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
 	
-	public Command[] fixupAllRefs(HashMap oldToNewRefMap) throws Exception
+	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
 	{
 		Vector commandsToFixRefs = new Vector();
 		

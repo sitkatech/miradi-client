@@ -90,7 +90,7 @@ abstract public class BaseObject
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
-	public Command[] fixupAllRefs(HashMap oldToNewRefMap) throws Exception
+	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
 	{
 		throw new Exception("fixupAllRefs is not supported for the BaseObject");
 	}

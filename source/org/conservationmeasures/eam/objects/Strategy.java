@@ -187,9 +187,9 @@ public class Strategy extends Factor
 		return list;
 	}
 	
-	public Command[] fixupAllRefs(HashMap oldToNewRefMap) throws Exception
+	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
 	{
-		Command[] commands = super.fixupAllRefs(oldToNewRefMap);
+		Command[] commands = super.createCommandToFixupRefLists(oldToNewRefMap);
 		Vector commandsToFixRefs = new Vector();
 		commandsToFixRefs.addAll(Arrays.asList(commands));
 		

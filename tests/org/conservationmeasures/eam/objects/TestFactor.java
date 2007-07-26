@@ -137,7 +137,7 @@ public class TestFactor extends TestCaseEnhanced
 		oldToNewRefMap.put(oldId2, newId2);
 		
 		Factor factor = (Factor) project.findObject(factorRef);
-		Command[] commandToFixRefs = factor.fixupAllRefs(oldToNewRefMap);
+		Command[] commandToFixRefs = factor.createCommandToFixupRefLists(oldToNewRefMap);
 		project.executeCommands(commandToFixRefs);
 		
 		IdList newAnnotationIds = new IdList(factor.getData(annotationFactorTag));
