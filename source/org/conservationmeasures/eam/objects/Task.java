@@ -7,8 +7,10 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -67,6 +69,12 @@ public class Task extends BaseObject
 		deleteIds.add(new CommandDeleteObject(getType(), getId()));
 		
 		return deleteIds;
+	}
+	
+	public Command[] fixupAllRefs(HashMap oldToNewRefMap) throws Exception
+	{	
+		Command commandToFixSubTaskRefs = fixUpRefs(oldToNewRefMap, Task.getObjectType(), TAG_SUBTASK_IDS);	
+		return new Command[] {commandToFixSubTaskRefs};
 	}
 
 	public int getType()

@@ -5,6 +5,11 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -180,6 +185,18 @@ public class Strategy extends Factor
 
 		}
 		return list;
+	}
+	
+	public Command[] fixupAllRefs(HashMap oldToNewRefMap) throws Exception
+	{
+		Command[] commands = super.fixupAllRefs(oldToNewRefMap);
+		Vector commandsToFixRefs = new Vector();
+		commandsToFixRefs.addAll(Arrays.asList(commands));
+		
+		Command commandToFixActivityRefs = fixUpRefs(oldToNewRefMap, Task.getObjectType(), TAG_ACTIVITY_IDS);
+		commandsToFixRefs.add(commandToFixActivityRefs);
+		
+		return (Command[]) commandsToFixRefs.toArray(new Command[0]);
 	}
 
 	public int getType()

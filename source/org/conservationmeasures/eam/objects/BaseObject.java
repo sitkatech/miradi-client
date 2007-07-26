@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTextBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -92,6 +93,26 @@ abstract public class BaseObject
 	public Command[] fixupAllRefs(HashMap oldToNewRefMap) throws Exception
 	{
 		throw new Exception("fixupAllRefs is not supported for the BaseObject");
+	}
+	
+	protected Command fixUpRefs(HashMap oldToNewRefMap, int annotationType, String annotationTag) throws Exception
+	{
+		//FIXME currently items ids found in list but not in map are not added to new list
+		IdList oldList = new IdList(getData(annotationTag));
+		IdList newList = new IdList();
+		for (int i = 0; i < oldList.size(); ++i)
+		{
+			BaseId oldId = oldList.get(i);
+			if (oldToNewRefMap.containsKey(oldId))
+			{
+				BaseId newId = (BaseId) oldToNewRefMap.get(oldId);
+				newList.add(newId);
+			}
+			else
+				EAM.logWarning("Id for type " + annotationType + " not found in new list (" + annotationTag + ") after paste");
+		}
+		
+		return new CommandSetObjectData(getRef(), annotationTag, newList.toString());
 	}
 	
 	public ORef getRef()

@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
@@ -322,26 +321,6 @@ abstract public class Factor extends BaseObject
 		return (Command[]) commandsToFixRefs.toArray(new Command[0]);
 	}
 
-	private Command fixUpRefs(HashMap oldToNewRefMap, int annotationType, String annotationTag) throws Exception
-	{
-		//FIXME currently items ids found in list but not in map are not added to new list
-		IdList oldList = new IdList(getData(annotationTag));
-		IdList newList = new IdList();
-		for (int i = 0; i < oldList.size(); ++i)
-		{
-			BaseId oldId = oldList.get(i);
-			if (oldToNewRefMap.containsKey(oldId))
-			{
-				BaseId newId = (BaseId) oldToNewRefMap.get(oldId);
-				newList.add(newId);
-			}
-			else
-				EAM.logWarning("Id for type " + annotationType + " not found in new list (" + annotationTag + ") after paste");
-		}
-		
-		return new CommandSetObjectData(getRef(), annotationTag, newList.toString());
-	}
-		
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_GOALS))

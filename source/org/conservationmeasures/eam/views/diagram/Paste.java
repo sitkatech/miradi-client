@@ -28,7 +28,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -131,7 +130,7 @@ public class Paste extends LocationDoer
 	{
 		HashMap oldToNewRefMap = new HashMap();
 		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
-		{
+		{			
 			String jsonAsString = (String) factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			
@@ -140,17 +139,14 @@ public class Paste extends LocationDoer
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			oldToNewRefMap.put(oldId, newObject.getId());
-			fixupFactorRefs(newObject, oldToNewRefMap);
+			fixupRefs(newObject, oldToNewRefMap);
 		}
 		
 		return oldToNewRefMap;
 	}
 
-	private void fixupFactorRefs(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
+	private void fixupRefs(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
 	{
-		if (! Factor.isFactor(newObject.getType()))
-			return;
-		
 		Command[] commandsToFixRefs = newObject.fixupAllRefs(oldToNewRefMap);
 		getProject().executeCommands(commandsToFixRefs);
 	}
