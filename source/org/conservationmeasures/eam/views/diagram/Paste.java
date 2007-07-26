@@ -196,8 +196,7 @@ public class Paste extends LocationDoer
 		{
 			String jsonAsString = (String) diagramFactorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			String wrappedRefAsString = json.getString(DiagramFactor.TAG_WRAPPED_REF);
-			ORef wrappedRef = ORef.createFromString(wrappedRefAsString);
+			ORef wrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 			BaseId newFactorId = (BaseId) oldToNewMap.get(wrappedRef.getObjectId());
 
 			ORef newDiagramFactorRef = createDiagramFactor(wrappedRef, newFactorId);
@@ -274,7 +273,7 @@ public class Paste extends LocationDoer
 
 	private ORef getFactor(HashMap oldToNewFactorIdMap, EnhancedJsonObject json, String tag)
 	{
-		ORef oldRef = ORef.createFromString(json.getString(tag));
+		ORef oldRef = json.getRef(tag);
 		BaseId newId = (BaseId) oldToNewFactorIdMap.get(oldRef.getObjectId());
 		if (newId == null)
 			return oldRef;
