@@ -18,8 +18,11 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
@@ -108,7 +111,6 @@ public class Paste extends LocationDoer
 		try
 		{
 			//FIXME nima copy/paste now add deep copies of selected objects
-			//FIXME new pasted objects should be selected
 			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
 			Vector factorDeepCopies = list.getFactorDeepCopies();
 			HashMap oldToNewFactorIdMap = createNewFactors(factorDeepCopies);
@@ -179,17 +181,31 @@ public class Paste extends LocationDoer
 			ORef wrappedRef = ORef.createFromString(wrappedRefAsString);
 			BaseId newId = (BaseId) oldToNewMap.get(wrappedRef.getObjectId());
 
-			CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(new ORef(wrappedRef.getObjectType(), newId));
-			CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
-			getProject().executeCommand(createDiagramFactor);
-
-			ORef newDiagramFactorRef = createDiagramFactor.getObjectRef();
+			ORef newDiagramFactorRef = createDiagramFactor(wrappedRef, newId);
 			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
 			Command[]  commandsToLoadFromJson = newDiagramFactor.loadDataFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
 
 			addDiagramFactorToCurrentDiagram(newDiagramFactorRef);
+			addDiagramFactorToSelection(newDiagramFactorRef);
 		}
+	}
+
+	private void addDiagramFactorToSelection(ORef newDiagramFactorRef) throws Exception
+	{
+		DiagramModel model = getDiagramView().getDiagramModel();
+		DiagramFactorId diagramFactorId = new DiagramFactorId(newDiagramFactorRef.getObjectId().asInt());
+		FactorCell cell = model.getFactorCellById(diagramFactorId);
+		getDiagramView().getDiagramComponent().addSelectionCell(cell);
+	}
+
+	private ORef createDiagramFactor(ORef wrappedRef, BaseId newId) throws CommandFailedException
+	{
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(new ORef(wrappedRef.getObjectType(), newId));
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
+		getProject().executeCommand(createDiagramFactor);
+		
+		return createDiagramFactor.getObjectRef();
 	}
 
 	private void addDiagramFactorToCurrentDiagram(ORef newDiagramFactorRef) throws Exception
