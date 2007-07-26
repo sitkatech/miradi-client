@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -206,6 +207,11 @@ public class EnhancedJsonObject extends JSONObject
 	public BaseId getId(String tag)
 	{
 		return new BaseId(getInt(tag));
+	}
+	
+	public ORef getRef(String tag)
+	{
+		return ORef.createFromString(getString(tag));
 	}
 	
 	public BaseId optId(String tag)
