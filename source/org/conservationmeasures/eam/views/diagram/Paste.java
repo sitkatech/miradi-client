@@ -12,6 +12,7 @@ import java.awt.datatransfer.Transferable;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 
 public class Paste extends LocationDoer
@@ -35,12 +36,25 @@ public class Paste extends LocationDoer
 	{
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();
 		try 
-		{
-			//FIXME this flavor should go away, however do check to see if any of its error messeges apply to new flavor
-			//pasteEAMDataFlavor(clipboard);
-	
+		{	
+			Transferable contents = clipboard.getContents(null);
+			//FIXME remove check after transition
+			if (TransferableEamList.IS_EAM_FLAVOR)
+				return;
+
+			if(!contents.isDataFlavorSupported(TransferableEamList.miradiListDataFlavor))
+				return;
+			
+			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
 			FactorCommandHelper factorCommandHelper = new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel());
-			factorCommandHelper.pasteMiradiDataFlavor(clipboard, getLocation());
+			if (! factorCommandHelper.canPaste(list))
+			{
+				EAM.notifyDialog(EAM.text("Contributing Factors and Direct Threats cannot be pasted into a Results Chain; " +
+											"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
+				return;
+			}
+
+			factorCommandHelper.pasteMiradiDataFlavor(list, getLocation());
 			clipboard.incrementPasteCount();
 		} 
 		catch (Exception e) 
@@ -50,7 +64,7 @@ public class Paste extends LocationDoer
 		} 
 	}
 
-//TODO remove code after transion between flavors has been completed
+//TODO remove code after transistion to miradi flavor (keeping code for comparison reasons, making sure everthing is restored)
 //	private void pasteEAMDataFlavor(DiagramClipboard clipboard) throws UnsupportedFlavorException, IOException, Exception
 //	{
 //		FIXME temp swith beween transitions of two flavors
@@ -78,10 +92,10 @@ public class Paste extends LocationDoer
 //		pasteCellsIntoProject(list, factorCommandHelper);
 //		clipboard.incrementPasteCount();
 //	}
-
-
-	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
-	{
-		factorCommandHelper.pasteFactorsAndLinksIntoProject(list, getLocation());
-	}
+//
+//
+//	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
+//	{
+//		factorCommandHelper.pasteFactorsAndLinksIntoProject(list, getLocation());
+//	}
 }

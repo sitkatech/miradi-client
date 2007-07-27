@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.datatransfer.Transferable;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Vector;
@@ -56,7 +55,6 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
 import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeDoer;
-import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
@@ -214,6 +212,21 @@ public class FactorCommandHelper
 		{
 			FactorDataMap nodeData = nodes[i];
 			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE));
+			if (! canPasteTypeInCurrentTab(type))
+				return false;
+		}
+		
+		return true;
+	}
+
+	public boolean canPaste(TransferableMiradiList list) throws Exception
+	{
+		Vector<String> factorDeepCopies  = list.getFactorDeepCopies();
+		for (int i = 0; i < factorDeepCopies.size(); i++) 
+		{
+			String jsonAsString = factorDeepCopies.get(i);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			int type = json.getInt("Type");
 			if (! canPasteTypeInCurrentTab(type))
 				return false;
 		}
@@ -497,22 +510,13 @@ public class FactorCommandHelper
 	
 	//FIXME Paste code is under construction but going in the right direction
 	//lots of unsused code commented and will uncomment and reuse.  
-	public void pasteMiradiDataFlavor(DiagramClipboard clipboard, Point startPoint) throws Exception
-	{
-//		FIXME temp swith beween transitions of two flavors
-		if (TransferableEamList.IS_EAM_FLAVOR)
-			return;
-
-		Transferable contents = clipboard.getContents(null);
-		if(!contents.isDataFlavorSupported(TransferableEamList.miradiListDataFlavor))
-			return;
-	
+	public void pasteMiradiDataFlavor(TransferableMiradiList list, Point startPoint) throws Exception
+	{	
 		//TODO this transaction should be moved up to the doit method once transition is done.
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds());
-			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
 			Vector factorDeepCopies = list.getFactorDeepCopies();
 			HashMap oldToNewFactorIdMap = createNewFactors(factorDeepCopies);
 			
@@ -711,6 +715,10 @@ public class FactorCommandHelper
 
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorIdMap, json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorIdMap, json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+			//FIXME shouldnt this also be inside the factorLink creation
+			LinkCreator linkCreator = new LinkCreator(project);
+			if (linkCreator.linkWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
+				continue;
 			
 			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
 			DiagramLink newDiagramLink = (DiagramLink) createObject(json, extraInfo);
