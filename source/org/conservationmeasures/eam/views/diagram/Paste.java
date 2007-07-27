@@ -29,7 +29,8 @@ public class Paste extends LocationDoer
 		Transferable contents = clipboard.getContents(null);
 		if(contents == null)
 			return false;
-		return contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor);
+
+		return contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -38,10 +39,6 @@ public class Paste extends LocationDoer
 		try 
 		{	
 			Transferable contents = clipboard.getContents(null);
-			//FIXME remove check after transition
-			if (TransferableEamList.IS_EAM_FLAVOR)
-				return;
-
 			if(!contents.isDataFlavorSupported(TransferableEamList.miradiListDataFlavor))
 				return;
 			
@@ -63,39 +60,4 @@ public class Paste extends LocationDoer
 			throw new CommandFailedException(e);
 		} 
 	}
-
-//TODO remove code after transistion to miradi flavor (keeping code for comparison reasons, making sure everthing is restored)
-//	private void pasteEAMDataFlavor(DiagramClipboard clipboard) throws UnsupportedFlavorException, IOException, Exception
-//	{
-//		FIXME temp swith beween transitions of two flavors
-//		if (! TransferableEamList.IS_EAM_FLAVOR)
-//			return;
-//
-//		Transferable contents = clipboard.getContents(null);
-//		if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
-//			return;
-//		TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
-//		if(!list.getProjectFileName().equals(getProject().getFilename()))
-//		{
-//			EAM.notifyDialog(EAM.text("Paste between different Miradi projects not yet supported"));
-//			return;
-//		}
-//		
-//		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel());
-//		if (! factorCommandHelper.canPaste(list))
-//		{
-//			EAM.notifyDialog(EAM.text("Contributing Factors and Direct Threats cannot be pasted into a Results Chain; " +
-//										"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
-//			return;
-//		}
-//		
-//		pasteCellsIntoProject(list, factorCommandHelper);
-//		clipboard.incrementPasteCount();
-//	}
-//
-//
-//	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
-//	{
-//		factorCommandHelper.pasteFactorsAndLinksIntoProject(list, getLocation());
-//	}
 }
