@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
-import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -136,15 +135,6 @@ public class FactorCommandHelper
 		setDiagramFactorSize(diagramFactor.getDiagramFactorId(), size);
 		setDiagramFactorLocation(diagramFactor.getDiagramFactorId(), insertionLocation);
 		setDiagramFactorLabel(diagramFactor.getWrappedId(), label);
-	}
-	
-	public void pasteFactorsAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
-	{
-		executeCommand(new CommandBeginTransaction());
-		FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds());
-		pasteFactorsIntoProject(list, startPoint, dataHelper);
-		pasteLinksIntoProject(list, dataHelper, startPoint);
-		executeCommand(new CommandEndTransaction());
 	}
 	
 	public void pasteFactorsOnlyIntoProject(TransferableEamList list, Point startPoint) throws Exception
@@ -286,61 +276,7 @@ public class FactorCommandHelper
 	private FactorCell getDiagramFactorById(DiagramFactorId newNodeId) throws Exception
 	{
 		return getDiagramModel().getFactorCellById(newNodeId);
-	}
-	
-	private void pasteLinksIntoProject(TransferableEamList list, FactorDataHelper dataHelper, Point startPoint) throws Exception 
-	{
-		FactorLinkDataMap[] links = list.getArrayOfFactorLinkDataMaps();
-		for (int i = 0; i < links.length; i++) 
-		{
-			FactorLinkDataMap linkageData = links[i];
-			PointList originalBendPoints = linkageData.getBendPoints();
-			PointList movedPoints = movePoints(list, dataHelper, startPoint, originalBendPoints);
-			DiagramFactorId oldFromDiagramId = linkageData.getFromId();
-			DiagramFactorId newFromId = dataHelper.getNewId(oldFromDiagramId);
-			DiagramFactorId newToId = dataHelper.getNewId(linkageData.getToId());
-
-			LinkCreator linkCreator = new LinkCreator(project);
-			if (linkCreator.linkWasRejected(currentModel, newFromId, newToId))
-				continue;
-				
-			FactorCell newFromNode = getDiagramFactorById(newFromId);
-			FactorCell newToNode = getDiagramFactorById(newToId);
-			FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(currentModel, newFromNode.getDiagramFactor(), newToNode.getDiagramFactor());
-			DiagramLink diagramLink = currentModel.getDiagramFactorLinkbyWrappedId(factorLinkId);
-			CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(diagramLink, DiagramLink.TAG_BEND_POINTS, movedPoints);
-			project.executeCommand(setBendPoints);
-			
-			EAM.logDebug("Paste Link : " + diagramLink.getDiagramLinkageId() + " from:" + newFromId + " to:" + newToId);
-		}
-	}
-	
-	//TODO remove all code that belongs to old EAM copy paste flavor.
-	private PointList movePoints(TransferableEamList list, FactorDataHelper dataHelper, Point startPoint, PointList originalBendPoints)
-	{
-		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying(list);
-		PointList movedPoints = new PointList();
-		for (int i = 0; i < originalBendPoints.size(); ++i)
-		{
-			Point originalPoint = originalBendPoints.get(i);
-			Point movedPoint = dataHelper.getNewLocation(originalPoint, startPoint);
-			movedPoint.setLocation(movedPoint.x + offsetToAvoidOverlaying, movedPoint.y + offsetToAvoidOverlaying);
-			movedPoint = getProject().getSnapped(movedPoint);
-			movedPoints.add(movedPoint);
-		}
-		
-		return movedPoints;
-	}
-
-	private int getOffsetToAvoidOverlaying(TransferableEamList list)
-	{
-		int NO_OFFSET = 0;
-		FactorDataMap[] factorDataMaps = list.getArrayOfFactorDataMaps();
-		if (factorDataMaps.length > 0)
-			return getProject().getDiagramClipboard().getPasteOffset();
-		
-		return NO_OFFSET;
-	}
+	}	
 	
 	private PointList movePoints(int offsetToAvoidOverlaying, FactorDataHelper dataHelper, Point startPoint, PointList originalBendPoints)
 	{
