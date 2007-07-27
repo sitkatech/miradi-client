@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -39,10 +37,11 @@ public class Paste extends LocationDoer
 		try 
 		{
 			//FIXME this flavor should go away, however do check to see if any of its error messeges apply to new flavor
-			pasteEAMDataFlavor(clipboard);
+			//pasteEAMDataFlavor(clipboard);
 	
 			FactorCommandHelper factorCommandHelper = new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel());
-			factorCommandHelper.pasteMiradiDataFlavor(clipboard);
+			factorCommandHelper.pasteMiradiDataFlavor(clipboard, getLocation());
+			clipboard.incrementPasteCount();
 		} 
 		catch (Exception e) 
 		{
@@ -51,33 +50,34 @@ public class Paste extends LocationDoer
 		} 
 	}
 
-	private void pasteEAMDataFlavor(DiagramClipboard clipboard) throws UnsupportedFlavorException, IOException, Exception
-	{
+//TODO remove code after transion between flavors has been completed
+//	private void pasteEAMDataFlavor(DiagramClipboard clipboard) throws UnsupportedFlavorException, IOException, Exception
+//	{
 //		FIXME temp swith beween transitions of two flavors
-		if (! TransferableEamList.IS_EAM_FLAVOR)
-			return;
-
-		Transferable contents = clipboard.getContents(null);
-		if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
-			return;
-		TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
-		if(!list.getProjectFileName().equals(getProject().getFilename()))
-		{
-			EAM.notifyDialog(EAM.text("Paste between different Miradi projects not yet supported"));
-			return;
-		}
-		
-		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel());
-		if (! factorCommandHelper.canPaste(list))
-		{
-			EAM.notifyDialog(EAM.text("Contributing Factors and Direct Threats cannot be pasted into a Results Chain; " +
-										"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
-			return;
-		}
-		
-		pasteCellsIntoProject(list, factorCommandHelper);
-		clipboard.incrementPasteCount();
-	}
+//		if (! TransferableEamList.IS_EAM_FLAVOR)
+//			return;
+//
+//		Transferable contents = clipboard.getContents(null);
+//		if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
+//			return;
+//		TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
+//		if(!list.getProjectFileName().equals(getProject().getFilename()))
+//		{
+//			EAM.notifyDialog(EAM.text("Paste between different Miradi projects not yet supported"));
+//			return;
+//		}
+//		
+//		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel());
+//		if (! factorCommandHelper.canPaste(list))
+//		{
+//			EAM.notifyDialog(EAM.text("Contributing Factors and Direct Threats cannot be pasted into a Results Chain; " +
+//										"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
+//			return;
+//		}
+//		
+//		pasteCellsIntoProject(list, factorCommandHelper);
+//		clipboard.incrementPasteCount();
+//	}
 
 
 	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 

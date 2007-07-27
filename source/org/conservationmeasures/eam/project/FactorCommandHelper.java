@@ -302,6 +302,7 @@ public class FactorCommandHelper
 		}
 	}
 	
+	//TODO remove all code that belongs to old EAM copy paste flavor.
 	private PointList movePoints(TransferableEamList list, FactorDataHelper dataHelper, Point startPoint, PointList originalBendPoints)
 	{
 		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying(list);
@@ -327,7 +328,31 @@ public class FactorCommandHelper
 		
 		return NO_OFFSET;
 	}
+	
+	private PointList movePoints(int offsetToAvoidOverlaying, FactorDataHelper dataHelper, Point startPoint, PointList originalBendPoints)
+	{
+		PointList movedPoints = new PointList();
+		for (int i = 0; i < originalBendPoints.size(); ++i)
+		{
+			Point originalPoint = originalBendPoints.get(i);
+			Point movedPoint = dataHelper.getNewLocation(originalPoint, startPoint);
+			movedPoint.setLocation(movedPoint.x + offsetToAvoidOverlaying, movedPoint.y + offsetToAvoidOverlaying);
+			movedPoint = getProject().getSnapped(movedPoint);
+			movedPoints.add(movedPoint);
+		}
+		
+		return movedPoints;
+	}
 
+	private int getOffsetToAvoidOverlaying(Vector diagramLinkDeepCopies)
+	{
+		int NO_OFFSET = 0;
+		if (diagramLinkDeepCopies.size() > 0)
+			return getProject().getDiagramClipboard().getPasteOffset();
+		
+		return NO_OFFSET;
+	}
+	
 	public static CommandSetObjectData createSetLabelCommand(ORef ref, String newLabel)
 	{
 		return new CommandSetObjectData(ref, Factor.TAG_LABEL, newLabel);
@@ -472,7 +497,7 @@ public class FactorCommandHelper
 	
 	//FIXME Paste code is under construction but going in the right direction
 	//lots of unsused code commented and will uncomment and reuse.  
-	public void pasteMiradiDataFlavor(DiagramClipboard clipboard) throws Exception
+	public void pasteMiradiDataFlavor(DiagramClipboard clipboard, Point startPoint) throws Exception
 	{
 //		FIXME temp swith beween transitions of two flavors
 		if (TransferableEamList.IS_EAM_FLAVOR)
@@ -486,18 +511,19 @@ public class FactorCommandHelper
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
+			FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds());
 			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
 			Vector factorDeepCopies = list.getFactorDeepCopies();
 			HashMap oldToNewFactorIdMap = createNewFactors(factorDeepCopies);
 			
 			Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
-			HashMap oldToNewDiagramFactorIdMap = createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorIdMap);
+			HashMap oldToNewDiagramFactorIdMap = createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorIdMap, dataHelper, startPoint);
 			
 			Vector factorLinkDeepCopies = list.getFactorLinkDeepCopies();
 			HashMap oldToNewFactorLinkIdMap = createNewFactorLinks(factorLinkDeepCopies, oldToNewFactorIdMap);
 			
 			Vector diagramLinkDeepCopies = list.getDiagramLinkDeepCopies();
-			createNewDiagramLinks(diagramLinkDeepCopies, oldToNewFactorLinkIdMap, oldToNewDiagramFactorIdMap);
+			createNewDiagramLinks(diagramLinkDeepCopies, oldToNewFactorLinkIdMap, oldToNewDiagramFactorIdMap, dataHelper, startPoint);
 		}
 		catch (Exception e)
 		{
@@ -557,7 +583,7 @@ public class FactorCommandHelper
 		return newObject;
 	}
 
-	private HashMap createNewDiagramFactors(Vector diagramFactorDeepCopies, HashMap oldToNewMap) throws Exception
+	private HashMap createNewDiagramFactors(Vector diagramFactorDeepCopies, HashMap oldToNewMap, FactorDataHelper dataHelper, Point startPoint) throws Exception
 	{
 		ORefList diagramFactorsToSelect = new ORefList();
 		HashMap oldToNewDiagamFactorIdMap = new HashMap();
@@ -567,7 +593,11 @@ public class FactorCommandHelper
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			ORef wrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 			BaseId newFactorId = (BaseId) oldToNewMap.get(wrappedRef.getObjectId());
-
+			DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
+			
+			String newLocationAsJsonString = offSetLocation(startPoint, dataHelper, json, diagramFactorId);
+			json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
+			
 			ORef newDiagramFactorRef = createDiagramFactor(wrappedRef, newFactorId);
 			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
 			Command[]  commandsToLoadFromJson = newDiagramFactor.loadDataFromJson(json);
@@ -582,6 +612,19 @@ public class FactorCommandHelper
 		addDiagramFactorToSelection(diagramFactorsToSelect);
 		
 		return oldToNewDiagamFactorIdMap;
+	}
+
+	private String offSetLocation(Point startPoint, FactorDataHelper dataHelper, EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
+	{
+		Point point = json.getPoint(DiagramFactor.TAG_LOCATION);
+		int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
+		point.setLocation(point.x, point.y);
+		dataHelper.setOriginalLocation(diagramFactorId, point);
+		Point newLocation = dataHelper.getNewLocation(diagramFactorId, startPoint);
+		newLocation.setLocation(newLocation.x + offsetToAvoidOverlaying, newLocation.y + offsetToAvoidOverlaying);
+		newLocation = getProject().getSnapped(newLocation);
+		
+		return EnhancedJsonObject.convertFromPoint(newLocation);
 	}
 
 	private void addDiagramFactorToSelection(ORefList diagramFactorRefsToSelect) throws Exception
@@ -651,13 +694,17 @@ public class FactorCommandHelper
 		return new ORef(oldRef.getObjectType(), newId);
 	}
 	
-	private void createNewDiagramLinks(Vector diagramLinkDeepCopies, HashMap oldToNewFactorLinkIdMap, HashMap oldToNewDiagramFactorIdMap) throws Exception
-	{
+	private void createNewDiagramLinks(Vector diagramLinkDeepCopies, HashMap oldToNewFactorLinkIdMap, HashMap oldToNewDiagramFactorIdMap, FactorDataHelper dataHelper, Point startPoint) throws Exception
+	{	
+		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying(diagramLinkDeepCopies);
 		for (int i = 0; i < diagramLinkDeepCopies.size(); ++i )
 		{
 			String jsonAsString = (String) diagramLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 
+			String movedBendPointsAsString = offSetBendPoints(startPoint, dataHelper, offsetToAvoidOverlaying, json);
+			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
+			
 			BaseId oldWrappedFactorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
 			BaseId newFatorLinkIdAsBaseId = (BaseId) oldToNewFactorLinkIdMap.get(oldWrappedFactorLinkId);
 			FactorLinkId newFactorLinkId = new FactorLinkId(newFatorLinkIdAsBaseId.asInt());
@@ -673,6 +720,13 @@ public class FactorCommandHelper
 			
 			addToCurrentDiagram(newDiagramLink.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
 		}
+	}
+
+	private String offSetBendPoints(Point startPoint, FactorDataHelper dataHelper, int offsetToAvoidOverlaying, EnhancedJsonObject json) throws Exception
+	{
+		PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
+		PointList movedBendPoints = movePoints(offsetToAvoidOverlaying, dataHelper, startPoint, originalBendPoints);
+		return movedBendPoints.toString();
 	}
 
 	private DiagramFactorId getDiagramFactorId(HashMap oldToNewDiagramFactorIdMap, EnhancedJsonObject json, String tag)
