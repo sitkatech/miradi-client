@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
@@ -223,6 +224,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(2, selectedItems.length);
 	}
 	
+	//FIXME this test is never called.  write test for new paste code.
 	public void TestPasteNodesAndLinksIntoProject() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
@@ -492,7 +494,8 @@ public class TestProject extends EAMTestCase
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		Object[] selectedCells = new FactorCell[] {node1};
-		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
+		TransferableMiradiList transferableList = new TransferableMiradiList(project);
+		transferableList.storeData(selectedCells);
 		
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
 		DiagramObject diagramObject = project.getDiagramObject();
@@ -508,7 +511,7 @@ public class TestProject extends EAMTestCase
 
 		Point pastePoint = new Point(5,5);
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, project.getDiagramModel());
-		factorCommandHelper.pasteFactorsAndLinksIntoProject(transferableList, pastePoint);
+		factorCommandHelper.pasteMiradiDataFlavor(transferableList, pastePoint);
 		DiagramFactor diagramFactors[] = project.getAllDiagramFactors();
 		assertEquals(1, diagramFactors.length);
 		DiagramFactor pastedNode = diagramFactors[0];
