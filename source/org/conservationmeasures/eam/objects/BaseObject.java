@@ -92,7 +92,7 @@ abstract public class BaseObject
 	
 	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
 	{
-		throw new Exception("fixupAllRefs is not supported for the BaseObject");
+		throw new Exception("createCommandToFixupRefLists is not supported for the BaseObject");
 	}
 	
 	protected Command fixUpRefs(String annotationTag, int annotationType, HashMap oldToNewRefMap) throws Exception
