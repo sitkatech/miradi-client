@@ -224,8 +224,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(2, selectedItems.length);
 	}
 	
-	//FIXME this test is never called.  write test for new paste code.
-	public void TestPasteNodesAndLinksIntoProject() throws Exception
+	public void testPasteNodesAndLinksIntoProject() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
 
@@ -239,13 +238,14 @@ public class TestProject extends EAMTestCase
 		
 		Vector cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
-		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
+		TransferableMiradiList transferableList = new TransferableMiradiList(project);
+		transferableList.storeData(selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(1, model.getFactorLinksSize(diagramFactorId1));
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new FactorCommandHelper(project, project.getDiagramModel()).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project, project.getDiagramModel()).pasteMiradiDataFlavor(transferableList, new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(4, model.getAllDiagramFactorLinks().size());
@@ -256,7 +256,7 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.removeDiagramFactor(diagramFactorId1);
-		new FactorCommandHelper(project, project.getDiagramModel()).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project, project.getDiagramModel()).pasteMiradiDataFlavor(transferableList, new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());
 	}
