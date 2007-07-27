@@ -190,13 +190,13 @@ public class Strategy extends Factor
 	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
 	{
 		Command[] commands = super.createCommandToFixupRefLists(oldToNewRefMap);
-		Vector commandsToFixRefs = new Vector();
+		Vector<Command> commandsToFixRefs = new Vector<Command>();
 		commandsToFixRefs.addAll(Arrays.asList(commands));
 		
 		Command commandToFixActivityRefs = fixUpRefs(TAG_ACTIVITY_IDS, Task.getObjectType(), oldToNewRefMap);
 		commandsToFixRefs.add(commandToFixActivityRefs);
 		
-		return (Command[]) commandsToFixRefs.toArray(new Command[0]);
+		return commandsToFixRefs.toArray(new Command[0]);
 	}
 
 	public int getType()

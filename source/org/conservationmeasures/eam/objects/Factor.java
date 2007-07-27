@@ -304,7 +304,7 @@ abstract public class Factor extends BaseObject
 	
 	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
 	{
-		Vector commandsToFixRefs = new Vector();
+		Vector<Command> commandsToFixRefs = new Vector<Command>();
 		
 		Command commandToFixIndicatorRefs = fixUpRefs(TAG_INDICATOR_IDS, Indicator.getObjectType(), oldToNewRefMap);
 		commandsToFixRefs.add(commandToFixIndicatorRefs);
@@ -318,7 +318,7 @@ abstract public class Factor extends BaseObject
 		Command commandToFixKEARefs = fixUpRefs(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType(), oldToNewRefMap);
 		commandsToFixRefs.add(commandToFixKEARefs);
 		
-		return (Command[]) commandsToFixRefs.toArray(new Command[0]);
+		return commandsToFixRefs.toArray(new Command[0]);
 	}
 
 	public String getPseudoData(String fieldTag)
