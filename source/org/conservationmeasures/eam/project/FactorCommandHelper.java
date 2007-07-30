@@ -430,8 +430,6 @@ public class FactorCommandHelper
 		}
 	}
 	
-	//FIXME Paste code is under construction but going in the right direction
-	//lots of unsused code commented and will uncomment and reuse.  
 	public void pasteMiradiDataFlavor(TransferableMiradiList list, Point startPoint) throws Exception
 	{	
 		try
