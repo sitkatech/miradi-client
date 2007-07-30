@@ -15,9 +15,10 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 
 public class FactorDataHelper 
 {
-	public FactorDataHelper(DiagramFactorId[] diagramFactorIds)
+	public FactorDataHelper(DiagramFactorId[] diagramFactorIds, Point insertioPointToUse)
 	{
 		setInitialMappingOfIdsToOriginalIds(diagramFactorIds);
+		insertionPoint = insertioPointToUse;
 	}
 
 	public void setNewId(DiagramFactorId originalNodeId, DiagramFactorId newNodeId)
@@ -38,31 +39,31 @@ public class FactorDataHelper
 		mapNodeLocations.put(getKey(originalNodeId), originalLocation);
 	}
 
-	public Point getNewLocation(Point originalLocation, Point insertionPoint)
+	public Point getNewLocation(Point originalLocation)
 	{
-		insertionPoint = getValidatedInsertionPoint(insertionPoint);
-		return getLocation(originalLocation, insertionPoint);
+		Point validatedInsertionPoint = getValidatedInsertionPoint(insertionPoint);
+		return getLocation(originalLocation, validatedInsertionPoint);
 	}
 
-	public Point getNewLocation(DiagramFactorId originalNodeId, Point insertionPoint)
+	public Point getNewLocation(DiagramFactorId originalNodeId)
 	{
-		insertionPoint = getValidatedInsertionPoint(insertionPoint);
+		Point validatednsertionPoint = getValidatedInsertionPoint(insertionPoint);
 		Point originalNodeLocation = (Point)mapNodeLocations.get(getKey(originalNodeId));
 		
-		return getLocation(originalNodeLocation, insertionPoint);
+		return getLocation(originalNodeLocation, validatednsertionPoint);
 	}
 	
-	private Point getValidatedInsertionPoint(Point insertionPoint)
+	private Point getValidatedInsertionPoint(Point insertionPointToValidate)
 	{
-		if (insertionPoint == null)
+		if (insertionPointToValidate == null)
 			return  getLeftmostUppermostCorner();
 		
-		return insertionPoint;
+		return insertionPointToValidate;
 	}
 
-	private Point getLocation(Point originalLocation, Point insertionPoint)
+	private Point getLocation(Point originalLocation, Point point)
 	{
-		Point delta = computeDeltas(insertionPoint);
+		Point delta = computeDeltas(point);
 		int originalX = originalLocation.x;
 		int originalY = originalLocation.y;
 		
@@ -97,14 +98,14 @@ public class FactorDataHelper
 		return new Integer(value);
 	}
 	
-	public Point computeDeltas(Point insertionPoint)
+	public Point computeDeltas(Point point)
 	{
 		Point upperLeft = getLeftmostUppermostCorner();
 		if (upperLeft == null)
 			return new Point(0, 0);
 		
-		int deltaX = insertionPoint.x - upperLeft.x;
-		int deltaY = insertionPoint.y - upperLeft.y;
+		int deltaX = point.x - upperLeft.x;
+		int deltaY = point.y - upperLeft.y;
 		return new Point(deltaX, deltaY);	
 	}
 
@@ -130,4 +131,5 @@ public class FactorDataHelper
 	
 	HashMap mapNodeLocations = new HashMap();
 	HashMap mapNodeIds = new HashMap();
+	Point insertionPoint;
 }
