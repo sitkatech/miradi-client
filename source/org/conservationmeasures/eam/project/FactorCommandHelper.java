@@ -195,20 +195,6 @@ public class FactorCommandHelper
 		executeCommand(moveCommand);
 	}
 
-	public boolean canPaste(TransferableEamList list) throws Exception
-	{
-		FactorDataMap[] nodes = list.getArrayOfFactorDataMaps();
-		for (int i = 0; i < nodes.length; i++) 
-		{
-			FactorDataMap nodeData = nodes[i];
-			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE));
-			if (! canPasteTypeInCurrentTab(type))
-				return false;
-		}
-		
-		return true;
-	}
-
 	public boolean canPaste(TransferableMiradiList list) throws Exception
 	{
 		Vector<String> factorDeepCopies  = list.getFactorDeepCopies();
