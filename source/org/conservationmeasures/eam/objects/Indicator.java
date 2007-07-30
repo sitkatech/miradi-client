@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.HashMap;
+
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
@@ -184,6 +187,12 @@ public class Indicator extends BaseObject
 		addField(PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE, measurementStatusConfidenceLabel);
 		
 		addField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, futureStatusRatingLabel);
+	}
+	
+	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
+	{	
+		Command commandToFixTaskRefs = fixUpRefs(TAG_TASK_IDS, Task.getObjectType(), oldToNewRefMap);	
+		return new Command[] {commandToFixTaskRefs};
 	}
 	
 	public int getType()

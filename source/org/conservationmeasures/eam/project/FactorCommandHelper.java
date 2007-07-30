@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
@@ -46,6 +47,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
@@ -454,6 +456,9 @@ public class FactorCommandHelper
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 	
 			int type = json.getInt("Type");
+			if (! isPastable(type))
+				continue;
+			
 			BaseObject newObject = createObject(type, json);
 			loadNewObjectFromOldJson(newObject, json);
 			
@@ -464,6 +469,17 @@ public class FactorCommandHelper
 		}
 		
 		return oldToNewRefMap;
+	}
+
+	private boolean isPastable(int type)
+	{
+	 	if (type == Assignment.getObjectType()) 
+	 		return false;
+	 	
+	 	if (type == ProjectResource.getObjectType())
+	 		return false;
+	 	
+	 	return true;
 	}
 
 	private void fixupRefs(BaseObject newObject, HashMap oldToNewRefMap) throws Exception

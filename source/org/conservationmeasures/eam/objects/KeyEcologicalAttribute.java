@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.HashMap;
+
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
@@ -59,6 +62,12 @@ public class KeyEcologicalAttribute extends BaseObject
 		addField(PSEUDO_TAG_VIABILITY_STATUS, viabilityStatus);
 		addField(PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE, keyEcologicalAttributeTypeValue);
 		addField(PSEUDO_TAG_VIABILITY_STATUS_VALUE, viabilityStatusValue);
+	}
+	
+	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
+	{	
+		Command commandToFixTaskRefs = fixUpRefs(TAG_INDICATOR_IDS, Indicator.getObjectType(), oldToNewRefMap);	
+		return new Command[] {commandToFixTaskRefs};
 	}
 	
 	public int getType()
