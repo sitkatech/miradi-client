@@ -434,8 +434,6 @@ public class FactorCommandHelper
 	//lots of unsused code commented and will uncomment and reuse.  
 	public void pasteMiradiDataFlavor(TransferableMiradiList list, Point startPoint) throws Exception
 	{	
-		//TODO this transaction should be moved up to the doit method once transition is done.
-		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds());
@@ -454,10 +452,6 @@ public class FactorCommandHelper
 		catch (Exception e)
 		{
 			throw e;
-		}
-		finally
-		{
-			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
 	

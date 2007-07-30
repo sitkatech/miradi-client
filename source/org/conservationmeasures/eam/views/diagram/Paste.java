@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
@@ -36,6 +38,7 @@ public class Paste extends LocationDoer
 	public void doIt() throws CommandFailedException
 	{
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();
+		getProject().executeCommand(new CommandBeginTransaction());
 		try 
 		{	
 			Transferable contents = clipboard.getContents(null);
@@ -59,5 +62,9 @@ public class Paste extends LocationDoer
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		} 
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 }
