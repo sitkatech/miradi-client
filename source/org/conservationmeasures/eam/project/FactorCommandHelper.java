@@ -264,21 +264,6 @@ public class FactorCommandHelper
 		return getDiagramModel().getFactorCellById(newNodeId);
 	}	
 	
-	private PointList movePoints(int offsetToAvoidOverlaying, FactorDataHelper dataHelper, PointList originalBendPoints)
-	{
-		PointList movedPoints = new PointList();
-		for (int i = 0; i < originalBendPoints.size(); ++i)
-		{
-			Point originalPoint = originalBendPoints.get(i);
-			Point movedPoint = dataHelper.getNewLocation(originalPoint);
-			movedPoint.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
-			movedPoint = getProject().getSnapped(movedPoint);
-			movedPoints.add(movedPoint);
-		}
-		
-		return movedPoints;
-	}
-
 	private int getOffsetToAvoidOverlaying(Vector diagramLinkDeepCopies)
 	{
 		int NO_OFFSET = 0;
@@ -531,13 +516,32 @@ public class FactorCommandHelper
 	{
 		Point point = json.getPoint(DiagramFactor.TAG_LOCATION);
 		int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
-		point.setLocation(point.x, point.y);
-		dataHelper.setOriginalLocation(diagramFactorId, point);
-		Point newLocation = dataHelper.getNewLocation(diagramFactorId);
-		newLocation.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
-		newLocation = getProject().getSnapped(newLocation);
+		Point transLatedPoint = getSnappedTranslatedPoint(offsetToAvoidOverlaying, dataHelper, point);
 		
-		return EnhancedJsonObject.convertFromPoint(newLocation);
+		return EnhancedJsonObject.convertFromPoint(transLatedPoint);
+	}
+	
+	private String movePoints(int offsetToAvoidOverlaying, FactorDataHelper dataHelper, EnhancedJsonObject json) throws Exception
+	{
+		PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
+		PointList movedPoints = new PointList();
+		for (int i = 0; i < originalBendPoints.size(); ++i)
+		{
+			Point originalPoint = originalBendPoints.get(i);
+			Point translatedPoint = getSnappedTranslatedPoint(offsetToAvoidOverlaying, dataHelper, originalPoint);			
+			movedPoints.add(translatedPoint);
+		}
+		
+		return movedPoints.toString();
+	}
+
+	private Point getSnappedTranslatedPoint(int offsetToAvoidOverlaying, FactorDataHelper dataHelper, Point originalPoint)
+	{
+		Point translatedSnappedPoint = dataHelper.getNewLocation(originalPoint);
+		translatedSnappedPoint.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
+		translatedSnappedPoint = getProject().getSnapped(translatedSnappedPoint);
+		
+		return translatedSnappedPoint;
 	}
 
 	private void addDiagramFactorToSelection(ORefList diagramFactorRefsToSelect) throws Exception
@@ -616,7 +620,7 @@ public class FactorCommandHelper
 			String jsonAsString = (String) diagramLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			
-			String movedBendPointsAsString = offsetBendPoints(dataHelper, offsetToAvoidOverlaying, json);
+			String movedBendPointsAsString = movePoints(offsetToAvoidOverlaying, dataHelper, json);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			ORef oldWrappedFactorLinkRef = new ORef(FactorLink.getObjectType(), json.getId(DiagramLink.TAG_WRAPPED_ID));
@@ -639,13 +643,6 @@ public class FactorCommandHelper
 			
 			addToCurrentDiagram(newDiagramLink.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
 		}
-	}
-
-	private String offsetBendPoints(FactorDataHelper dataHelper, int offsetToAvoidOverlaying, EnhancedJsonObject json) throws Exception
-	{
-		PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
-		PointList movedBendPoints = movePoints(offsetToAvoidOverlaying, dataHelper, originalBendPoints);
-		return movedBendPoints.toString();
 	}
 
 	private DiagramFactorId getDiagramFactorId(HashMap oldToNewDiagramFactorRefMap, EnhancedJsonObject json, String tag)
