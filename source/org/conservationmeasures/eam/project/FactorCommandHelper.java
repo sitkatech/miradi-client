@@ -204,7 +204,10 @@ public class FactorCommandHelper
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = json.getInt("Type");
 			if (! canPasteTypeInCurrentTab(type))
+			{
+				EAM.logDebug("Cannot paste type " + type);
 				return false;
+			}
 		}
 		
 		return true;
@@ -627,7 +630,7 @@ public class FactorCommandHelper
 		ORef oldFromRef = json.getRef(FactorLink.TAG_FROM_REF);
 		ORef oldToRef = json.getRef(FactorLink.TAG_TO_REF);
 		
-		return (oldToNewFactorRefMap.get(oldFromRef) == null || oldToNewFactorRefMap.get(oldToRef) == null && !isInBetweenProjectPaste(list));
+		return ((oldToNewFactorRefMap.get(oldFromRef) == null || oldToNewFactorRefMap.get(oldToRef) == null) && !isInBetweenProjectPaste(list));
 	}
 	
 	private ORef getFactor(HashMap oldToNewFactorRefMap, EnhancedJsonObject json, String tag)
@@ -642,9 +645,6 @@ public class FactorCommandHelper
 	
 	private void createNewDiagramLinks(Vector diagramLinkDeepCopies, HashMap oldToNewFactorLinkRefMap, HashMap oldToNewDiagramFactorRefMap, FactorDataHelper dataHelper) throws Exception
 	{	
-//		if (oldToNewFactorLinkRefMap.size() == 0)
-//			return;
-		
 		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying(diagramLinkDeepCopies);
 		for (int i = 0; i < diagramLinkDeepCopies.size(); ++i )
 		{
