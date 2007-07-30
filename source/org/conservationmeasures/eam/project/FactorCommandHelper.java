@@ -247,7 +247,13 @@ public class FactorCommandHelper
 				ObjectType.INTERMEDIATE_RESULT, 
 				ObjectType.STRATEGY, 
 				ObjectType.TARGET, 
-				ObjectType.TEXT_BOX, };
+				ObjectType.TEXT_BOX, 
+				ObjectType.INDICATOR,
+				ObjectType.OBJECTIVE,
+				ObjectType.TASK,
+				ObjectType.GOAL,
+				ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,
+				};
 	}
 	
 	private int[] getConceptualDiagramPastableTypes()
@@ -256,7 +262,13 @@ public class FactorCommandHelper
 				ObjectType.CAUSE, 
 				ObjectType.STRATEGY, 
 				ObjectType.TARGET,
-				ObjectType.TEXT_BOX, };
+				ObjectType.TEXT_BOX,
+				ObjectType.INDICATOR,
+				ObjectType.OBJECTIVE,
+				ObjectType.TASK,
+				ObjectType.GOAL,
+				ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,
+				};
 	}
 
 	private FactorCell getDiagramFactorById(DiagramFactorId newNodeId) throws Exception
@@ -424,8 +436,7 @@ public class FactorCommandHelper
 		Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
 		HashMap oldToNewDiagramFactorRefMap = createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorRefMap, dataHelper);
 
-		Vector factorLinkDeepCopies = list.getFactorLinkDeepCopies();
-		HashMap oldToNewFactorLinkRefMap = createNewFactorLinks(factorLinkDeepCopies, oldToNewFactorRefMap);
+		HashMap oldToNewFactorLinkRefMap = createNewFactorLinks(oldToNewFactorRefMap, list);
 
 		Vector diagramLinkDeepCopies = list.getDiagramLinkDeepCopies();
 		createNewDiagramLinks(diagramLinkDeepCopies, oldToNewFactorLinkRefMap, oldToNewDiagramFactorRefMap, dataHelper);
@@ -577,18 +588,22 @@ public class FactorCommandHelper
 		getProject().executeCommand(addDiagramFactor);
 	}
 	
-	private HashMap createNewFactorLinks(Vector factorLinkDeepCopies, HashMap oldToNewFactorRefMap) throws Exception
+	private HashMap createNewFactorLinks(HashMap oldToNewFactorRefMap, TransferableMiradiList list) throws Exception
 	{
+		Vector factorLinkDeepCopies = list.getFactorLinkDeepCopies();
 		HashMap oldToNewFactorLinkRefMap = new HashMap();
 		for (int i = 0; i < factorLinkDeepCopies.size(); ++i)
 		{
 			String jsonAsString = (String) factorLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
+
+			if (canCreateNewFactorLink(oldToNewFactorRefMap, list, json))
+				continue;
 			
 			ORef newFromRef = getFactor(oldToNewFactorRefMap, json, FactorLink.TAG_FROM_REF);
-			ORef newToRef = getFactor(oldToNewFactorRefMap, json, FactorLink.TAG_TO_REF);
-	
+			ORef newToRef = getFactor(oldToNewFactorRefMap, json, FactorLink.TAG_TO_REF);	
+			
 			int type = json.getInt("Type");
 			CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(newFromRef, newToRef);
 			FactorLink newFactorLink = (FactorLink) createObject(type, json, extraInfo);
@@ -602,6 +617,19 @@ public class FactorCommandHelper
 		return oldToNewFactorLinkRefMap;
 	}
 
+	private boolean isInBetweenProjectPaste(TransferableMiradiList list)
+	{
+		return getProject().getFilename().equals(list.getProjectFileName());
+	}
+	
+	private boolean canCreateNewFactorLink(HashMap oldToNewFactorRefMap, TransferableMiradiList list, EnhancedJsonObject json)
+	{
+		ORef oldFromRef = json.getRef(FactorLink.TAG_FROM_REF);
+		ORef oldToRef = json.getRef(FactorLink.TAG_TO_REF);
+		
+		return (oldToNewFactorRefMap.get(oldFromRef) == null || oldToNewFactorRefMap.get(oldToRef) == null && !isInBetweenProjectPaste(list));
+	}
+	
 	private ORef getFactor(HashMap oldToNewFactorRefMap, EnhancedJsonObject json, String tag)
 	{
 		ORef oldRef = json.getRef(tag);
@@ -614,6 +642,9 @@ public class FactorCommandHelper
 	
 	private void createNewDiagramLinks(Vector diagramLinkDeepCopies, HashMap oldToNewFactorLinkRefMap, HashMap oldToNewDiagramFactorRefMap, FactorDataHelper dataHelper) throws Exception
 	{	
+//		if (oldToNewFactorLinkRefMap.size() == 0)
+//			return;
+		
 		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying(diagramLinkDeepCopies);
 		for (int i = 0; i < diagramLinkDeepCopies.size(); ++i )
 		{
@@ -625,8 +656,10 @@ public class FactorCommandHelper
 			
 			ORef oldWrappedFactorLinkRef = new ORef(FactorLink.getObjectType(), json.getId(DiagramLink.TAG_WRAPPED_ID));
 			ORef newFatorLinkRef = (ORef) oldToNewFactorLinkRefMap.get(oldWrappedFactorLinkRef);
+			if (newFatorLinkRef == null)
+				continue;
+			
 			FactorLinkId newFactorLinkId = new FactorLinkId(newFatorLinkRef.getObjectId().asInt());
-
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorRefMap, json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorRefMap, json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 			//FIXME shouldnt this also be inside the factorLink creation
