@@ -17,7 +17,6 @@ import org.json.JSONArray;
 
 public class IdList
 {
-	//FIXME write test for the having a type, getRef, addRef, containsRef...
 	public IdList(int type)
 	{
 		this();

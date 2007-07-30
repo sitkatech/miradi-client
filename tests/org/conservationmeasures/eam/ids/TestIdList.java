@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.ids;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestIdList extends EAMTestCase
@@ -126,5 +128,33 @@ public class TestIdList extends EAMTestCase
 			assertEquals("Couldn't find " + i + "?", i, list.find(ids[i]));
 		assertEquals("Found non-existant?", -1, list.find(new BaseId(27)));
 
+	}
+	
+	public void testIdListWithType()
+	{
+		IdList idListWithStrategyType = new IdList(Strategy.getObjectType());
+		Strategy strategy = new Strategy(new FactorId(1));	
+		Cause cause = new Cause(null, new FactorId(2));
+		try 
+		{
+			idListWithStrategyType.addRef(strategy.getRef());
+		}
+		catch (Exception e)
+		{
+			fail("could not add correct type to idList?");
+		}
+		
+		try 
+		{
+			idListWithStrategyType.addRef(cause.getRef());
+			fail();
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		assertTrue("does not contain strategy?", idListWithStrategyType.contains(strategy.getRef()));
+		assertFalse("does contain cause?", idListWithStrategyType.contains(cause.getRef()));
 	}
 }
