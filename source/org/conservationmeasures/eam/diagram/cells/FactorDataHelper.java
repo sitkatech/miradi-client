@@ -13,6 +13,7 @@ import java.util.Iterator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 
+//TODO come up with a better name
 public class FactorDataHelper 
 {
 	public FactorDataHelper(DiagramFactorId[] diagramFactorIds, Point insertioPointToUse)
