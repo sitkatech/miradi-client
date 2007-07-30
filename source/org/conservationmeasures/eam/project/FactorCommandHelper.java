@@ -429,28 +429,21 @@ public class FactorCommandHelper
 			getProject().executeCommands(commands);
 		}
 	}
-	
+
 	public void pasteMiradiDataFlavor(TransferableMiradiList list, Point startPoint) throws Exception
 	{	
-		try
-		{
-			FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
-			Vector factorDeepCopies = list.getFactorDeepCopies();
-			HashMap oldToNewFactorRefMap = createNewFactors(factorDeepCopies);
-			
-			Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
-			HashMap oldToNewDiagramFactorRefMap = createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorRefMap, dataHelper);
-			
-			Vector factorLinkDeepCopies = list.getFactorLinkDeepCopies();
-			HashMap oldToNewFactorLinkRefMap = createNewFactorLinks(factorLinkDeepCopies, oldToNewFactorRefMap);
-			
-			Vector diagramLinkDeepCopies = list.getDiagramLinkDeepCopies();
-			createNewDiagramLinks(diagramLinkDeepCopies, oldToNewFactorLinkRefMap, oldToNewDiagramFactorRefMap, dataHelper);
-		}
-		catch (Exception e)
-		{
-			throw e;
-		}
+		FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
+		Vector factorDeepCopies = list.getFactorDeepCopies();
+		HashMap oldToNewFactorRefMap = createNewFactors(factorDeepCopies);
+
+		Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
+		HashMap oldToNewDiagramFactorRefMap = createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorRefMap, dataHelper);
+
+		Vector factorLinkDeepCopies = list.getFactorLinkDeepCopies();
+		HashMap oldToNewFactorLinkRefMap = createNewFactorLinks(factorLinkDeepCopies, oldToNewFactorRefMap);
+
+		Vector diagramLinkDeepCopies = list.getDiagramLinkDeepCopies();
+		createNewDiagramLinks(diagramLinkDeepCopies, oldToNewFactorLinkRefMap, oldToNewDiagramFactorRefMap, dataHelper);
 	}
 	
 	private HashMap createNewFactors(Vector factorDeepCopies) throws Exception
