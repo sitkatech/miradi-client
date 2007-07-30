@@ -513,7 +513,7 @@ public class FactorCommandHelper
 			BaseId newFactorId = (BaseId) oldToNewMap.get(wrappedRef.getObjectId());
 			DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
 			
-			String newLocationAsJsonString = offSetLocation(dataHelper, json, diagramFactorId);
+			String newLocationAsJsonString = offsetLocation(dataHelper, json, diagramFactorId);
 			json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
 			
 			ORef newDiagramFactorRef = createDiagramFactor(wrappedRef, newFactorId);
@@ -532,7 +532,7 @@ public class FactorCommandHelper
 		return oldToNewDiagamFactorIdMap;
 	}
 
-	private String offSetLocation(FactorDataHelper dataHelper, EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
+	private String offsetLocation(FactorDataHelper dataHelper, EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
 	{
 		Point point = json.getPoint(DiagramFactor.TAG_LOCATION);
 		int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
@@ -620,7 +620,7 @@ public class FactorCommandHelper
 			String jsonAsString = (String) diagramLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 
-			String movedBendPointsAsString = offSetBendPoints(dataHelper, offsetToAvoidOverlaying, json);
+			String movedBendPointsAsString = offsetBendPoints(dataHelper, offsetToAvoidOverlaying, json);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			BaseId oldWrappedFactorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
@@ -644,7 +644,7 @@ public class FactorCommandHelper
 		}
 	}
 
-	private String offSetBendPoints(FactorDataHelper dataHelper, int offsetToAvoidOverlaying, EnhancedJsonObject json) throws Exception
+	private String offsetBendPoints(FactorDataHelper dataHelper, int offsetToAvoidOverlaying, EnhancedJsonObject json) throws Exception
 	{
 		PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
 		PointList movedBendPoints = movePoints(offsetToAvoidOverlaying, dataHelper, originalBendPoints);
