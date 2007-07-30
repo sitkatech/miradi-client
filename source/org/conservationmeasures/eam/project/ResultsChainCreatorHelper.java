@@ -140,9 +140,9 @@ public class ResultsChainCreatorHelper
 		for (int i  = 0; i < diagramFactors.length; i++)
 		{
 			DiagramFactor diagramFactorToBeCloned = diagramFactors[i];
-			FactorId factorId = createOrReuseWrappedObject(diagramFactorToBeCloned);
+			ORef factorRef = createOrReuseWrappedObject(diagramFactorToBeCloned);
 			
-			CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(new ORef(diagramFactorToBeCloned.getWrappedType(), factorId));
+			CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
 			CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 			project.executeCommand(createDiagramFactor);
 			
@@ -157,13 +157,13 @@ public class ResultsChainCreatorHelper
 		return originalAndClonedDiagramFactors;
 	}
 	
-	private FactorId createOrReuseWrappedObject(DiagramFactor diagramFactor) throws Exception
+	private ORef createOrReuseWrappedObject(DiagramFactor diagramFactor) throws Exception
 	{
 		if (diagramFactor.getWrappedType() == ObjectType.TARGET)
-			return diagramFactor.getWrappedId();
+			return diagramFactor.getWrappedORef();
 		
 		if (diagramFactor.getWrappedType() == ObjectType.STRATEGY)
-			return diagramFactor.getWrappedId();
+			return diagramFactor.getWrappedORef();
 		
 		if (diagramFactor.getWrappedType() == ObjectType.CAUSE)
 			return createNewFactorAndSetLabel(diagramFactor);
@@ -174,28 +174,28 @@ public class ResultsChainCreatorHelper
 		throw new Exception("wrapped type not found "+diagramFactor.getWrappedType());
 	}
 
-	private FactorId createNewFactorAndSetLabel(DiagramFactor diagramFactor) throws Exception, CommandFailedException
+	private ORef createNewFactorAndSetLabel(DiagramFactor diagramFactor) throws Exception, CommandFailedException
 	{
 		Factor factor = (Factor) project.findObject(diagramFactor.getWrappedORef());
 		CommandCreateObject createCommand = createNewFactorCommand(factor);
 		project.executeCommand(createCommand);
 		
-		FactorId newlyCreatedId = new FactorId(createCommand.getCreatedId().asInt());
+		ORef newlyCreatedRef = createCommand.getObjectRef();
 		String clonedLabel = new String("[ " + factor.getLabel() + " ]");
-		CommandSetObjectData setLabelCommand = new CommandSetObjectData(ObjectType.FACTOR, newlyCreatedId, Factor.TAG_LABEL, clonedLabel);
+		CommandSetObjectData setLabelCommand = new CommandSetObjectData(newlyCreatedRef, Factor.TAG_LABEL, clonedLabel);
 		project.executeCommand(setLabelCommand);
 		
-		possiblySetThreatReductionResultsDirectThreat(factor, newlyCreatedId);
+		possiblySetThreatReductionResultsDirectThreat(factor, newlyCreatedRef);
 		
-		return newlyCreatedId;
+		return newlyCreatedRef;
 	}
 
-	private void possiblySetThreatReductionResultsDirectThreat(Factor factor, FactorId newlyCreatedId) throws CommandFailedException
+	private void possiblySetThreatReductionResultsDirectThreat(Factor factor, ORef newlyCreatedRef) throws CommandFailedException
 	{
 		if (! factor.isDirectThreat())
 			return;
 		
-		CommandSetObjectData setDirectThreat = new CommandSetObjectData(ObjectType.FACTOR, newlyCreatedId, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, factor.getRef().toString());
+		CommandSetObjectData setDirectThreat = new CommandSetObjectData(newlyCreatedRef, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, factor.getRef().toString());
 		project.executeCommand(setDirectThreat);
 	}
 
