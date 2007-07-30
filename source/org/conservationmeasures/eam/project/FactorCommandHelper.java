@@ -160,7 +160,7 @@ public class FactorCommandHelper
 			point.setLocation(point.x, point.y);
 			dataHelper.setOriginalLocation(originalDiagramFactorId, point);
 			Point newLocation = dataHelper.getNewLocation(originalDiagramFactorId);
-			newLocation.setLocation(newLocation.x + offsetToAvoidOverlaying, newLocation.y + offsetToAvoidOverlaying);
+			newLocation.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
 			newLocation = getProject().getSnapped(newLocation);
 			
 			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE));
@@ -271,7 +271,7 @@ public class FactorCommandHelper
 		{
 			Point originalPoint = originalBendPoints.get(i);
 			Point movedPoint = dataHelper.getNewLocation(originalPoint);
-			movedPoint.setLocation(movedPoint.x + offsetToAvoidOverlaying, movedPoint.y + offsetToAvoidOverlaying);
+			movedPoint.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
 			movedPoint = getProject().getSnapped(movedPoint);
 			movedPoints.add(movedPoint);
 		}
@@ -539,7 +539,7 @@ public class FactorCommandHelper
 		point.setLocation(point.x, point.y);
 		dataHelper.setOriginalLocation(diagramFactorId, point);
 		Point newLocation = dataHelper.getNewLocation(diagramFactorId);
-		newLocation.setLocation(newLocation.x + offsetToAvoidOverlaying, newLocation.y + offsetToAvoidOverlaying);
+		newLocation.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
 		newLocation = getProject().getSnapped(newLocation);
 		
 		return EnhancedJsonObject.convertFromPoint(newLocation);
