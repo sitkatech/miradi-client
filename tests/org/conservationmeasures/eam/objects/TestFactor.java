@@ -119,33 +119,33 @@ public class TestFactor extends TestCaseEnhanced
 	public void fixupRefs(int factorType, int annotationType, String annotationFactorTag) throws Exception
 	{
 		ORef factorRef = project.createFactorAndReturnRef(factorType);
-		BaseId oldId1 = project.createObjectAndReturnId(annotationType);
-		BaseId oldId2 = project.createObjectAndReturnId(annotationType);
+		ORef oldRef1 = project.createObject(annotationType);
+		ORef oldRef2 = project.createObject(annotationType);
 		
-		BaseId newId1 = project.createObjectAndReturnId(annotationType);
-		BaseId newId2 = project.createObjectAndReturnId(annotationType);
+		ORef newRef1 = project.createObject(annotationType);
+		ORef newRef2 = project.createObject(annotationType);
 		
-		IdList annotationIds = new IdList();
-		annotationIds.add(oldId1);
-		annotationIds.add(oldId2);
+		IdList annotationIds = new IdList(annotationType);
+		annotationIds.addRef(oldRef1);
+		annotationIds.addRef(oldRef2);
 		
 		CommandSetObjectData setFactorAnnotationIds = new CommandSetObjectData(factorRef, annotationFactorTag, annotationIds.toString());
 		project.executeCommand(setFactorAnnotationIds);
 		
 		HashMap oldToNewRefMap = new HashMap();
-		oldToNewRefMap.put(oldId1, newId1);
-		oldToNewRefMap.put(oldId2, newId2);
+		oldToNewRefMap.put(oldRef1, newRef1);
+		oldToNewRefMap.put(oldRef2, newRef2);
 		
 		Factor factor = (Factor) project.findObject(factorRef);
 		Command[] commandToFixRefs = factor.createCommandToFixupRefLists(oldToNewRefMap);
 		project.executeCommands(commandToFixRefs);
 		
-		IdList newAnnotationIds = new IdList(factor.getData(annotationFactorTag));
-		assertFalse("contains wrong old id?", newAnnotationIds.contains(oldId1));
-		assertFalse("contains wrong old id?", newAnnotationIds.contains(oldId2));
+		IdList newAnnotationIds = new IdList(annotationType, factor.getData(annotationFactorTag));
+		assertFalse("contains wrong old id?", newAnnotationIds.contains(oldRef1));
+		assertFalse("contains wrong old id?", newAnnotationIds.contains(oldRef2));
 		
-		assertTrue("does not contain new id?", newAnnotationIds.contains(newId1));
-		assertTrue("does not contain new id?", newAnnotationIds.contains(newId2));
+		assertTrue("does not contain new id?", newAnnotationIds.contains(newRef1));
+		assertTrue("does not contain new id?", newAnnotationIds.contains(newRef2));
 	}
 		
 	ProjectForTesting project;

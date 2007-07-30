@@ -10,12 +10,20 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
 
 public class IdList
 {
+	//FIXME write test for the having a type, getRef, addRef, containsRef...
+	public IdList(int type)
+	{
+		this();
+		idListType = type;
+	}
+	
 	public IdList()
 	{
 		this(new Vector());
@@ -44,6 +52,12 @@ public class IdList
 		
 	}
 	
+	public IdList(int type, String listAsJsonString) throws ParseException
+	{
+		this(listAsJsonString);
+		idListType = type;
+	}
+	
 	public IdList(String listAsJsonString) throws ParseException
 	{
 		this(new EnhancedJsonObject(listAsJsonString));
@@ -69,6 +83,14 @@ public class IdList
 		return (size() == 0);
 	}
 	
+	public void addRef(ORef ref) throws Exception
+	{
+		if (idListType != ref.getObjectType())
+			throw new Exception("trying to add wrong type to idList");
+		
+		add(ref.getObjectId());
+	}
+	
 	public void add(BaseId id)
 	{
 		data.add(id);
@@ -90,9 +112,22 @@ public class IdList
 		data.insertElementAt(id, at);
 	}
 	
+	public ORef getRef(int index)
+	{
+		return new ORef(idListType, get(index));
+	}
+	
 	public BaseId get(int index)
 	{
 		return (BaseId)data.get(index);
+	}
+	
+	public boolean contains(ORef ref)
+	{
+		if (idListType != ref.getObjectType())
+			return false;
+		
+		return contains(ref.getObjectId());
 	}
 	
 	public boolean contains(BaseId id)
@@ -177,5 +212,5 @@ public class IdList
 	private static final String TAG_IDS = "Ids";
 
 	Vector data;
-
+	int idListType;
 }

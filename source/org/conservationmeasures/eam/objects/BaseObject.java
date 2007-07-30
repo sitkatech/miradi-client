@@ -98,15 +98,15 @@ abstract public class BaseObject
 	protected Command fixUpRefs(String annotationTag, int annotationType, HashMap oldToNewRefMap) throws Exception
 	{
 		//FIXME currently items ids found in list but not in map are not added to new list
-		IdList oldList = new IdList(getData(annotationTag));
-		IdList newList = new IdList();
+		IdList oldList = new IdList(annotationType, getData(annotationTag));
+		IdList newList = new IdList(annotationType);
 		for (int i = 0; i < oldList.size(); ++i)
 		{
-			BaseId oldId = oldList.get(i);
-			if (oldToNewRefMap.containsKey(oldId))
+			ORef oldRef = oldList.getRef(i);
+			if (oldToNewRefMap.containsKey(oldRef))
 			{
-				BaseId newId = (BaseId) oldToNewRefMap.get(oldId);
-				newList.add(newId);
+				ORef newRef = (ORef) oldToNewRefMap.get(oldRef);
+				newList.addRef(newRef);
 			}
 			else
 			{
