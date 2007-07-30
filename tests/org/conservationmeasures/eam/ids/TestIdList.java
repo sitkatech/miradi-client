@@ -156,5 +156,8 @@ public class TestIdList extends EAMTestCase
 		
 		assertTrue("does not contain strategy?", idListWithStrategyType.contains(strategy.getRef()));
 		assertFalse("does contain cause?", idListWithStrategyType.contains(cause.getRef()));
+		
+		assertEquals("wrong size?", 1, idListWithStrategyType.size());
+		assertEquals("wrong ref?", strategy.getRef(), idListWithStrategyType.getRef(0));
 	}
 }
