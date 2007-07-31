@@ -51,24 +51,27 @@ public class TestTransferableEamList extends EAMTestCase
 	public void testGetTransferDataFlavors() throws Exception
 	{
 		EAMGraphCell emptyCells[] = {};
-		TransferableEamList eamList = new TransferableEamList("SomeProjectName", emptyCells);
-		DataFlavor flavors[] = eamList.getTransferDataFlavors();
+		TransferableMiradiList miradiList = new TransferableMiradiList(project);
+		miradiList.storeData(emptyCells);
+		DataFlavor flavors[] = miradiList.getTransferDataFlavors();
 		assertEquals("Should only support 2 flavor(temporarly while in transition)?", 2, flavors.length);
-		assertEquals("EamListDataFlavor not found?", TransferableEamList.eamListDataFlavor, flavors[0]);
+		assertEquals("EamListDataFlavor not found?", TransferableMiradiList.eamListDataFlavor, flavors[0]);
 	}
 	
 	public void testIsDataFlavorSupported() throws Exception
 	{
 		EAMGraphCell emptyCells[] = {};
-		TransferableEamList eamList = new TransferableEamList("SomeProjectName", emptyCells);
-		assertTrue("EamListDataFlavor not supported?", eamList.isDataFlavorSupported(TransferableEamList.eamListDataFlavor));
+		TransferableMiradiList miradiList = new TransferableMiradiList(project);
+		miradiList.storeData(emptyCells);
+		assertTrue("MiradiListDataFlavor not supported?", miradiList.isDataFlavorSupported(TransferableEamList.eamListDataFlavor));
 	}
 	
 	public void testProjectFileName() throws Exception
 	{
-		String projectFileName = "blah blah";
-		TransferableEamList eamList = new TransferableEamList(projectFileName, new EAMGraphCell[0]);
-		assertEquals("wrong project filename?", projectFileName, eamList.getProjectFileName());
+		String projectFileName = project.getFilename();
+		TransferableMiradiList miradiList = new TransferableMiradiList(project);
+		miradiList.storeData(new EAMGraphCell[0]);
+		assertEquals("wrong project filename?", projectFileName, miradiList.getProjectFileName());
 	}
 
 	public void testGetTransfeData() throws Exception
