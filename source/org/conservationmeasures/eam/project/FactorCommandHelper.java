@@ -492,7 +492,7 @@ public class FactorCommandHelper
 			ORef wrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 			ORef newFactorRef = (ORef) oldToNewMap.get(wrappedRef);
 			DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
-			
+
 			String newLocationAsJsonString = offsetLocation(dataHelper, json, diagramFactorId);
 			json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
 			
@@ -515,11 +515,21 @@ public class FactorCommandHelper
 
 	private String offsetLocation(FactorDataHelper dataHelper, EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
 	{
-		Point point = json.getPoint(DiagramFactor.TAG_LOCATION);
-		int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
-		Point transLatedPoint = getSnappedTranslatedPoint(offsetToAvoidOverlaying, dataHelper, point);
+		Point originalLocation = json.getPoint(DiagramFactor.TAG_LOCATION);
+		dataHelper.setOriginalLocation(diagramFactorId, originalLocation);
+		int offsetToAvoidOverlaying = getOffset(dataHelper);
+		Point transLatedPoint = getSnappedTranslatedPoint(offsetToAvoidOverlaying, dataHelper, originalLocation);
 		
 		return EnhancedJsonObject.convertFromPoint(transLatedPoint);
+	}
+
+	private int getOffset(FactorDataHelper dataHelper)
+	{
+		Point insertionPoint = dataHelper.getInsertionLocation();
+		if (insertionPoint != null)
+			return 0;
+		
+		return getProject().getDiagramClipboard().getPasteOffset();
 	}
 	
 	private String movePoints(int offsetToAvoidOverlaying, FactorDataHelper dataHelper, EnhancedJsonObject json) throws Exception

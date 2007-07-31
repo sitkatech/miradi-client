@@ -40,6 +40,11 @@ public class FactorDataHelper
 		mapNodeLocations.put(getKey(originalNodeId), originalLocation);
 	}
 
+	public Point getInsertionLocation()
+	{
+		return insertionPoint;
+	}
+	
 	public Point getNewLocation(Point originalLocation)
 	{
 		Point validatedInsertionPoint = getValidatedInsertionPoint(insertionPoint);
