@@ -54,8 +54,8 @@ public class TestTransferableEamList extends EAMTestCase
 		TransferableMiradiList miradiList = new TransferableMiradiList(project);
 		miradiList.storeData(emptyCells);
 		DataFlavor flavors[] = miradiList.getTransferDataFlavors();
-		assertEquals("Should only support 2 flavor(temporarly while in transition)?", 2, flavors.length);
-		assertEquals("EamListDataFlavor not found?", TransferableMiradiList.eamListDataFlavor, flavors[0]);
+		assertEquals("Should only support 1 flavor?", 1, flavors.length);
+		assertEquals("MiradiListDataFlavor not found?", TransferableMiradiList.miradiListDataFlavor, flavors[0]);
 	}
 	
 	public void testIsDataFlavorSupported() throws Exception
@@ -63,7 +63,7 @@ public class TestTransferableEamList extends EAMTestCase
 		EAMGraphCell emptyCells[] = {};
 		TransferableMiradiList miradiList = new TransferableMiradiList(project);
 		miradiList.storeData(emptyCells);
-		assertTrue("MiradiListDataFlavor not supported?", miradiList.isDataFlavorSupported(TransferableEamList.eamListDataFlavor));
+		assertTrue("MiradiListDataFlavor not supported?", miradiList.isDataFlavorSupported(TransferableEamList.miradiListDataFlavor));
 	}
 	
 	public void testProjectFileName() throws Exception
