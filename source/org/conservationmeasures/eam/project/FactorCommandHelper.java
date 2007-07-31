@@ -634,11 +634,11 @@ public class FactorCommandHelper
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			ORef oldWrappedFactorLinkRef = new ORef(FactorLink.getObjectType(), json.getId(DiagramLink.TAG_WRAPPED_ID));
-			ORef newFatorLinkRef = (ORef) oldToNewFactorLinkRefMap.get(oldWrappedFactorLinkRef);
-			if (newFatorLinkRef == null)
+			ORef newFactorLinkRef = (ORef) oldToNewFactorLinkRefMap.get(oldWrappedFactorLinkRef);
+			if (newFactorLinkRef == null)
 				continue;
 			
-			FactorLinkId newFactorLinkId = new FactorLinkId(newFatorLinkRef.getObjectId().asInt());
+			FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorRefMap, json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorRefMap, json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 			//FIXME shouldnt this also be inside the factorLink creation
