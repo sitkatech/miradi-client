@@ -518,7 +518,7 @@ public class FactorCommandHelper
 		Point originalLocation = json.getPoint(DiagramFactor.TAG_LOCATION);
 		dataHelper.setOriginalLocation(diagramFactorId, originalLocation);
 		int offsetToAvoidOverlaying = getOffset(dataHelper);
-		Point transLatedPoint = getSnappedTranslatedPoint(offsetToAvoidOverlaying, dataHelper, originalLocation);
+		Point transLatedPoint = getSnappedTranslatedPoint(dataHelper, originalLocation, offsetToAvoidOverlaying);
 		
 		return EnhancedJsonObject.convertFromPoint(transLatedPoint);
 	}
@@ -532,21 +532,21 @@ public class FactorCommandHelper
 		return getProject().getDiagramClipboard().getPasteOffset();
 	}
 	
-	private String movePoints(int offsetToAvoidOverlaying, FactorDataHelper dataHelper, EnhancedJsonObject json) throws Exception
+	private String movePoints(FactorDataHelper dataHelper, EnhancedJsonObject json, int offsetToAvoidOverlaying) throws Exception
 	{
 		PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
 		PointList movedPoints = new PointList();
 		for (int i = 0; i < originalBendPoints.size(); ++i)
 		{
 			Point originalPoint = originalBendPoints.get(i);
-			Point translatedPoint = getSnappedTranslatedPoint(offsetToAvoidOverlaying, dataHelper, originalPoint);			
+			Point translatedPoint = getSnappedTranslatedPoint(dataHelper, originalPoint, offsetToAvoidOverlaying);			
 			movedPoints.add(translatedPoint);
 		}
 		
 		return movedPoints.toString();
 	}
 
-	private Point getSnappedTranslatedPoint(int offsetToAvoidOverlaying, FactorDataHelper dataHelper, Point originalPoint)
+	private Point getSnappedTranslatedPoint(FactorDataHelper dataHelper, Point originalPoint, int offsetToAvoidOverlaying)
 	{
 		Point translatedSnappedPoint = dataHelper.getNewLocation(originalPoint);
 		translatedSnappedPoint.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
@@ -648,7 +648,7 @@ public class FactorCommandHelper
 			String jsonAsString = (String) diagramLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			
-			String movedBendPointsAsString = movePoints(offsetToAvoidOverlaying, dataHelper, json);
+			String movedBendPointsAsString = movePoints(dataHelper, json, offsetToAvoidOverlaying);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			ORef oldWrappedFactorLinkRef = new ORef(FactorLink.getObjectType(), json.getId(DiagramLink.TAG_WRAPPED_ID));
