@@ -5,13 +5,13 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 
 public class PasteWithoutLinks extends Paste 
 {
-	public void pasteCellsIntoProject(TransferableEamList list, FactorCommandHelper factorCommandHelper) throws Exception 
+	public void paste(TransferableMiradiList list, FactorCommandHelper factorCommandHelper) throws Exception 
 	{
-		factorCommandHelper.pasteFactorsOnlyIntoProject(list, getLocation());
+		factorCommandHelper.pasteMiradiDataFlavorWithoutLinks(list, getLocation());
 	}
 }

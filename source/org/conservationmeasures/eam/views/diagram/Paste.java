@@ -54,7 +54,7 @@ public class Paste extends LocationDoer
 				return;
 			}
 
-			factorCommandHelper.pasteMiradiDataFlavor(list, getLocation());
+			paste(list, factorCommandHelper);
 			clipboard.incrementPasteCount();
 		} 
 		catch (Exception e) 
@@ -66,5 +66,10 @@ public class Paste extends LocationDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	protected void paste(TransferableMiradiList list, FactorCommandHelper factorCommandHelper) throws Exception
+	{
+		factorCommandHelper.pasteMiradiDataFlavor(list, getLocation());
 	}
 }

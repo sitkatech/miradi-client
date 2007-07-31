@@ -12,16 +12,12 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
-import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
-import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -30,7 +26,6 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -141,44 +136,6 @@ public class FactorCommandHelper
 		setDiagramFactorLabel(diagramFactor.getWrappedId(), label);
 	}
 	
-	public void pasteFactorsOnlyIntoProject(TransferableEamList list, Point startPoint) throws Exception
-	{
-		executeCommand(new CommandBeginTransaction());
-		FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
-		pasteFactorsIntoProject(list, dataHelper);
-		executeCommand(new CommandEndTransaction());
-	}
-
-	private void pasteFactorsIntoProject(TransferableEamList list, FactorDataHelper dataHelper) throws Exception 
-	{	
-		FactorDataMap[] nodes = list.getArrayOfFactorDataMaps();
-		for (int i = 0; i < nodes.length; i++) 
-		{
-			FactorDataMap nodeData = nodes[i];
-			String label = nodeData.getLabel();
-			Dimension originalSize = nodeData.getDimension(DiagramFactor.TAG_SIZE);
-			DiagramFactorId originalDiagramFactorId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
-			
-			Point point = nodeData.getPoint(DiagramFactor.TAG_LOCATION);
-			int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
-			point.setLocation(point.x, point.y);
-			dataHelper.setOriginalLocation(originalDiagramFactorId, point);
-			Point newLocation = dataHelper.getNewLocation(originalDiagramFactorId);
-			newLocation.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
-			newLocation = getProject().getSnapped(newLocation);
-			
-			int type = FactorType.getFactorTypeFromString(nodeData.getString(Factor.TAG_NODE_TYPE));
-			CommandCreateObject addCommand = createFactorAndDiagramFactor(type, newLocation, originalSize, label);
-			DiagramFactorId newDiagramFactorId = (DiagramFactorId) addCommand.getCreatedId();
-			dataHelper.setNewId(originalDiagramFactorId, newDiagramFactorId);
-			EAM.logDebug("Paste Node: " + newDiagramFactorId);
-			
-			FactorCell newFactorCell = getDiagramFactorById(newDiagramFactorId);
-			
-			setLocationSizeLabel(newFactorCell.getDiagramFactor(), newLocation, originalSize, label);
-		}
-	}
-
 	private void setDiagramFactorSize(DiagramFactorId diagramFactorId, Dimension originalSize) throws CommandFailedException
 	{
 		String currentSize = EnhancedJsonObject.convertFromDimension(originalSize);
@@ -284,11 +241,6 @@ public class FactorCommandHelper
 				};
 	}
 
-	private FactorCell getDiagramFactorById(DiagramFactorId newNodeId) throws Exception
-	{
-		return getDiagramModel().getFactorCellById(newNodeId);
-	}	
-	
 	private int getOffsetToAvoidOverlaying(Vector diagramLinkDeepCopies)
 	{
 		int NO_OFFSET = 0;
@@ -311,11 +263,6 @@ public class FactorCommandHelper
 	private void executeCommand(Command cmd) throws CommandFailedException
 	{
 		getProject().executeCommand(cmd);
-	}
-	
-	private DiagramModel getDiagramModel()
-	{
-		return currentModel;
 	}
 	
 	// TODO: This method should have unit tests
@@ -440,6 +387,15 @@ public class FactorCommandHelper
 		}
 	}
 
+	public void pasteMiradiDataFlavorWithoutLinks(TransferableMiradiList list, Point startPoint) throws Exception
+	{	
+		FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
+		HashMap oldToNewFactorRefMap = createNewFactors(list);
+
+		Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
+		createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorRefMap, dataHelper);
+	}
+	
 	public void pasteMiradiDataFlavor(TransferableMiradiList list, Point startPoint) throws Exception
 	{	
 		FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
