@@ -28,9 +28,11 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
+import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
@@ -258,6 +260,9 @@ public class FactorCommandHelper
 				ObjectType.TASK,
 				ObjectType.GOAL,
 				ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,
+				ObjectType.ASSIGNMENT,
+				ObjectType.ACCOUNTING_CODE,
+				ObjectType.FUNDING_SOURCE,
 				};
 	}
 	
@@ -273,6 +278,9 @@ public class FactorCommandHelper
 				ObjectType.TASK,
 				ObjectType.GOAL,
 				ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,
+				ObjectType.ASSIGNMENT,
+				ObjectType.ACCOUNTING_CODE,
+				ObjectType.FUNDING_SOURCE,
 				};
 	}
 
@@ -435,8 +443,7 @@ public class FactorCommandHelper
 	public void pasteMiradiDataFlavor(TransferableMiradiList list, Point startPoint) throws Exception
 	{	
 		FactorDataHelper dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
-		Vector factorDeepCopies = list.getFactorDeepCopies();
-		HashMap oldToNewFactorRefMap = createNewFactors(factorDeepCopies);
+		HashMap oldToNewFactorRefMap = createNewFactors(list);
 
 		Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
 		HashMap oldToNewDiagramFactorRefMap = createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorRefMap, dataHelper);
@@ -447,8 +454,9 @@ public class FactorCommandHelper
 		createNewDiagramLinks(diagramLinkDeepCopies, oldToNewFactorLinkRefMap, oldToNewDiagramFactorRefMap, dataHelper);
 	}
 	
-	private HashMap createNewFactors(Vector factorDeepCopies) throws Exception
+	private HashMap createNewFactors(TransferableMiradiList list) throws Exception
 	{
+		Vector factorDeepCopies = list.getFactorDeepCopies();
 		HashMap oldToNewRefMap = new HashMap();
 		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
 		{			
@@ -456,10 +464,11 @@ public class FactorCommandHelper
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 	
 			int type = json.getInt("Type");
-			if (! isPastable(type))
+			if (! isPastable(list, type))
 				continue;
 			
-			BaseObject newObject = createObject(type, json);
+			CreateObjectParameter extraInfo = createExtraInfo(json, type);
+			BaseObject newObject = createObject(type, json, extraInfo);
 			loadNewObjectFromOldJson(newObject, json);
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
@@ -471,12 +480,23 @@ public class FactorCommandHelper
 		return oldToNewRefMap;
 	}
 
-	private boolean isPastable(int type)
+	private CreateObjectParameter createExtraInfo(EnhancedJsonObject json, int type)
 	{
-	 	if (type == Assignment.getObjectType()) 
+		if (type == Assignment.getObjectType())
+		{
+			BaseId taskId = json.getId(Assignment.TAG_ASSIGNMENT_TASK_ID);
+			return new CreateAssignmentParameter(new TaskId(taskId.asInt()));
+		}
+			
+		return null;
+	}
+
+	private boolean isPastable(TransferableMiradiList list, int type)
+	{
+	 	if (type == Assignment.getObjectType() && !isInBetweenProjectPaste(list)) 
 	 		return false;
 	 	
-	 	if (type == ProjectResource.getObjectType())
+	 	if (type == ProjectResource.getObjectType() && !isInBetweenProjectPaste(list))
 	 		return false;
 	 	
 	 	return true;
@@ -494,11 +514,6 @@ public class FactorCommandHelper
 		getProject().executeCommands(commandsToLoadFromJson);
 	}
 
-	private BaseObject createObject(int type, EnhancedJsonObject json) throws CommandFailedException
-	{
-		return createObject(type, json, null);
-	}
-	
 	private BaseObject createObject(int type, EnhancedJsonObject json, CreateObjectParameter extraInfo) throws CommandFailedException
 	{
 		CommandCreateObject createObject = new CommandCreateObject(type, extraInfo);

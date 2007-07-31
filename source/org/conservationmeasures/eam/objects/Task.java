@@ -74,9 +74,9 @@ public class Task extends BaseObject
 	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
 	{	
 		Command commandToFixSubTaskRefs = fixUpRefs(TAG_SUBTASK_IDS, Task.getObjectType(), oldToNewRefMap);
-		CommandSetObjectData blankOutAssignmentIds = new CommandSetObjectData(getRef(), TAG_ASSIGNMENT_IDS, new IdList().toString());
+		Command commandToFixAssignmentRefs = fixUpRefs(TAG_ASSIGNMENT_IDS, Assignment.getObjectType(), oldToNewRefMap);
 		
-		return new Command[] {commandToFixSubTaskRefs, blankOutAssignmentIds};
+		return new Command[] {commandToFixSubTaskRefs, commandToFixAssignmentRefs};
 	}
 
 	public int getType()
