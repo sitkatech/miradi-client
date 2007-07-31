@@ -44,7 +44,6 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
-import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
@@ -419,6 +418,8 @@ public class FactorCommandHelper
 			String jsonAsString = (String) factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 	
+			//FIXME assignments should be pastable amongst projects,
+			//assignments refer to items that are not deep copied. such as accounting code, resource, funding source
 			int type = json.getInt("Type");
 			if (! isPastable(list, type))
 				continue;
@@ -450,9 +451,6 @@ public class FactorCommandHelper
 	private boolean isPastable(TransferableMiradiList list, int type)
 	{
 	 	if (type == Assignment.getObjectType() && !isInBetweenProjectPaste(list)) 
-	 		return false;
-	 	
-	 	if (type == ProjectResource.getObjectType() && !isInBetweenProjectPaste(list))
 	 		return false;
 	 	
 	 	return true;
