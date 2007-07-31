@@ -149,7 +149,7 @@ public class TestIdList extends EAMTestCase
 			idListWithStrategyType.addRef(cause.getRef());
 			fail();
 		}
-		catch(Exception e)
+		catch(Exception ignoreExpected)
 		{
 			
 		}
