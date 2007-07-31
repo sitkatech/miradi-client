@@ -130,19 +130,12 @@ public class TestIdList extends EAMTestCase
 
 	}
 	
-	public void testIdListWithType()
+	public void testIdListWithType() throws Exception
 	{
 		IdList idListWithStrategyType = new IdList(Strategy.getObjectType());
 		Strategy strategy = new Strategy(new FactorId(1));	
 		Cause cause = new Cause(null, new FactorId(2));
-		try 
-		{
-			idListWithStrategyType.addRef(strategy.getRef());
-		}
-		catch (Exception e)
-		{
-			fail("could not add correct type to idList?");
-		}
+		idListWithStrategyType.addRef(strategy.getRef());
 		
 		try 
 		{
