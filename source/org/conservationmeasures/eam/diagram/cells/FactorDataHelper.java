@@ -16,10 +16,10 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 //TODO come up with a better name
 public class FactorDataHelper 
 {
-	public FactorDataHelper(DiagramFactorId[] diagramFactorIds, Point insertioPointToUse)
+	public FactorDataHelper(DiagramFactorId[] diagramFactorIds, Point insertionPointToUse)
 	{
 		setInitialMappingOfIdsToOriginalIds(diagramFactorIds);
-		insertionPoint = insertioPointToUse;
+		insertionPoint = insertionPointToUse;
 	}
 
 	public void setNewId(DiagramFactorId originalNodeId, DiagramFactorId newNodeId)
