@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 
@@ -42,10 +41,10 @@ public class Paste extends LocationDoer
 		try 
 		{	
 			Transferable contents = clipboard.getContents(null);
-			if(!contents.isDataFlavorSupported(TransferableEamList.miradiListDataFlavor))
+			if(!contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor))
 				return;
 			
-			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableEamList.miradiListDataFlavor);
+			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor);
 			FactorCommandHelper factorCommandHelper = new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel());
 			if (! factorCommandHelper.canPaste(list))
 			{

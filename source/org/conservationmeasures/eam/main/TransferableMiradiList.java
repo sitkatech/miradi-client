@@ -5,6 +5,10 @@
 */ 
 package org.conservationmeasures.eam.main;
 
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
@@ -17,12 +21,41 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 
-
-public class TransferableMiradiList extends TransferableEamList
+public class TransferableMiradiList implements Transferable
 {
 	public TransferableMiradiList(Project projectToUse)
 	{
-		super(projectToUse);
+		super();
+		project = projectToUse;
+		projectName = project.getFilename();
+	}
+
+	public String getProjectFileName()
+	{
+		return projectName;
+	}
+
+	public DataFlavor[] getTransferDataFlavors()
+	{
+		DataFlavor[] flavorArray = {miradiListDataFlavor };
+		return flavorArray;
+	}
+
+	public boolean isDataFlavorSupported(DataFlavor flavor)
+	{
+		DataFlavor[] flavors = getTransferDataFlavors();
+		for(int i = 0; i < flavors.length; ++i)
+			if(flavor.equals(flavors[i]))
+				return true;
+		return false;
+	}
+
+	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException
+	{
+		if(isDataFlavorSupported(flavor))
+			return this;
+		
+		throw new UnsupportedFlavorException(flavor);
 	}
 
 	private void clear()
@@ -33,7 +66,7 @@ public class TransferableMiradiList extends TransferableEamList
 		factorLinkDeepCopies = new Vector();
 		diagramLinkDeepCopies = new Vector();
 	}
-	
+
 	public void storeData(Object[] cells)
 	{
 		clear();
@@ -55,12 +88,12 @@ public class TransferableMiradiList extends TransferableEamList
 		Factor factor = factorCell.getUnderlyingObject();
 		Vector factorJsonStrings = deepCopier.createDeepCopy(factor);
 		factorDeepCopies.addAll(factorJsonStrings);
-
+	
 		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
 		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(diagramFactor);
 		diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);	
 	}
-	
+
 	private void addFactorLinkDeepCopies(ObjectDeepCopier deepCopier, EAMGraphCell cell)
 	{
 		if (! cell.isFactorLink())
@@ -70,16 +103,10 @@ public class TransferableMiradiList extends TransferableEamList
 		FactorLink factorLink = linkCell.getFactorLink();
 		Vector factorLinkJsonStrings = deepCopier.createDeepCopy(factorLink);
 		factorLinkDeepCopies.addAll(factorLinkJsonStrings);
-
+	
 		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
 		Vector diagramLinkJsonStrings = deepCopier.createDeepCopy(diagramLink);
 		diagramLinkDeepCopies.addAll(diagramLinkJsonStrings);	
-	}
-	
-	//FIXME this is to switch between falvors while in transition 
-	public boolean isEAMFlavorSupported()
-	{
-		return false;
 	}
 	
 	public Vector getDiagramFactorDeepCopies()
@@ -91,7 +118,7 @@ public class TransferableMiradiList extends TransferableEamList
 	{
 		return factorDeepCopies;
 	}
-	
+
 	public Vector getDiagramLinkDeepCopies()
 	{
 		return diagramLinkDeepCopies;
@@ -101,7 +128,12 @@ public class TransferableMiradiList extends TransferableEamList
 	{
 		return factorLinkDeepCopies;
 	}
-	
+
+	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
+
+	String projectName;
+	Project project;
+
 	Vector factorDeepCopies;
 	Vector diagramFactorDeepCopies;
 	Vector factorLinkDeepCopies;
