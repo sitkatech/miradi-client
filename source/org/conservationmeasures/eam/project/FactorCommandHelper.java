@@ -532,9 +532,9 @@ public class FactorCommandHelper
 		return getProject().getDiagramClipboard().getPasteOffset();
 	}
 	
-	private String movePoints(FactorDataHelper dataHelper, EnhancedJsonObject json, int offsetToAvoidOverlaying) throws Exception
+	private String movePoints(FactorDataHelper dataHelper, PointList originalBendPoints, int offsetToAvoidOverlaying) throws Exception
 	{
-		PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
+		
 		PointList movedPoints = new PointList();
 		for (int i = 0; i < originalBendPoints.size(); ++i)
 		{
@@ -648,7 +648,8 @@ public class FactorCommandHelper
 			String jsonAsString = (String) diagramLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			
-			String movedBendPointsAsString = movePoints(dataHelper, json, offsetToAvoidOverlaying);
+			PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
+			String movedBendPointsAsString = movePoints(dataHelper, originalBendPoints, offsetToAvoidOverlaying);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			ORef oldWrappedFactorLinkRef = new ORef(FactorLink.getObjectType(), json.getId(DiagramLink.TAG_WRAPPED_ID));
