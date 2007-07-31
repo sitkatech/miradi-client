@@ -12,6 +12,7 @@ import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.project.Project;
 
 //TODO come up with a better name
 public class FactorDataHelper 
@@ -57,6 +58,23 @@ public class FactorDataHelper
 		Point originalNodeLocation = (Point)mapNodeLocations.get(getKey(originalNodeId));
 		
 		return getLocation(originalNodeLocation, validatednsertionPoint);
+	}
+	
+	public Point getSnappedTranslatedPoint(Project project, Point originalPoint, int offsetToAvoidOverlaying)
+	{
+		Point translatedSnappedPoint = getNewLocation(originalPoint);
+		translatedSnappedPoint.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
+		translatedSnappedPoint = project.getSnapped(translatedSnappedPoint);
+		
+		return translatedSnappedPoint;
+	}
+
+	public int getOffset(Project project)
+	{
+		if (insertionPoint != null)
+			return 0;
+		
+		return project.getDiagramClipboard().getPasteOffset();
 	}
 	
 	private Point getValidatedInsertionPoint(Point insertionPointToValidate)

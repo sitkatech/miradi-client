@@ -517,42 +517,23 @@ public class FactorCommandHelper
 	{
 		Point originalLocation = json.getPoint(DiagramFactor.TAG_LOCATION);
 		dataHelper.setOriginalLocation(diagramFactorId, originalLocation);
-		int offsetToAvoidOverlaying = getOffset(dataHelper);
-		Point transLatedPoint = getSnappedTranslatedPoint(dataHelper, originalLocation, offsetToAvoidOverlaying);
+		int offsetToAvoidOverlaying = dataHelper.getOffset(getProject());
+		Point transLatedPoint = dataHelper.getSnappedTranslatedPoint(getProject(), originalLocation, offsetToAvoidOverlaying);
 		
 		return EnhancedJsonObject.convertFromPoint(transLatedPoint);
 	}
 
-	private int getOffset(FactorDataHelper dataHelper)
-	{
-		Point insertionPoint = dataHelper.getInsertionLocation();
-		if (insertionPoint != null)
-			return 0;
-		
-		return getProject().getDiagramClipboard().getPasteOffset();
-	}
-	
 	private String movePoints(FactorDataHelper dataHelper, PointList originalBendPoints, int offsetToAvoidOverlaying) throws Exception
 	{
-		
 		PointList movedPoints = new PointList();
 		for (int i = 0; i < originalBendPoints.size(); ++i)
 		{
 			Point originalPoint = originalBendPoints.get(i);
-			Point translatedPoint = getSnappedTranslatedPoint(dataHelper, originalPoint, offsetToAvoidOverlaying);			
+			Point translatedPoint = dataHelper.getSnappedTranslatedPoint(getProject(), originalPoint, offsetToAvoidOverlaying);			
 			movedPoints.add(translatedPoint);
 		}
 		
 		return movedPoints.toString();
-	}
-
-	private Point getSnappedTranslatedPoint(FactorDataHelper dataHelper, Point originalPoint, int offsetToAvoidOverlaying)
-	{
-		Point translatedSnappedPoint = dataHelper.getNewLocation(originalPoint);
-		translatedSnappedPoint.translate(offsetToAvoidOverlaying, offsetToAvoidOverlaying);
-		translatedSnappedPoint = getProject().getSnapped(translatedSnappedPoint);
-		
-		return translatedSnappedPoint;
 	}
 
 	private void addDiagramFactorToSelection(ORefList diagramFactorRefsToSelect) throws Exception
