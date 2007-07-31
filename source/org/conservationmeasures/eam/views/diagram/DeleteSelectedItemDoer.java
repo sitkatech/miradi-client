@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.project.FactorCommandHelper;
+import org.conservationmeasures.eam.project.FactorDeleteHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -66,7 +66,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactor())
 				{
-					new FactorCommandHelper(project, model).deleteFactor((FactorCell)cell, diagramObject);
+					new FactorDeleteHelper(project, model).deleteFactor((FactorCell)cell, diagramObject);
 				}
 			}
 		}

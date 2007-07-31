@@ -7,13 +7,11 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -23,7 +21,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
@@ -35,7 +32,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -43,17 +39,9 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
-import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
-import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
-import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
-import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
 public class FactorCommandHelper
 {
@@ -264,127 +252,6 @@ public class FactorCommandHelper
 		getProject().executeCommand(cmd);
 	}
 	
-	// TODO: This method should have unit tests
-	public void deleteFactor(FactorCell factorToDelete, DiagramObject diagramObject) throws Exception
-	{
-		removeFromThreatReductionResults(factorToDelete);
-		removeFromView(factorToDelete.getWrappedId());
-		removeNodeFromDiagram(factorToDelete, diagramObject);
-		deleteDiagramFactor(factorToDelete.getDiagramFactorId());
-	
-		Factor underlyingNode = factorToDelete.getUnderlyingObject();
-		if (! canDeleteFactor(underlyingNode))
-			return;
-
-		deleteAnnotations(underlyingNode);
-		deleteUnderlyingNode(underlyingNode);
-	}
-
-	private void removeFromThreatReductionResults(FactorCell factorToDelete) throws CommandFailedException
-	{
-		Factor factor = factorToDelete.getUnderlyingObject();
-		EAMObjectPool pool = project.getPool(ObjectType.THREAT_REDUCTION_RESULT);
-		ORefList orefList = pool.getORefList();
-		for (int i = 0; i < orefList.size(); ++i)
-		{
-			ThreatReductionResult threatReductionResult = (ThreatReductionResult) project.findObject(orefList.get(i));
-			ORef directThreatRef = ORef.createFromString(threatReductionResult.getRelatedDirectThreatRefAsString());
-			if (! directThreatRef.equals(factor.getRef()))
-				continue;
-			
-			CommandSetObjectData setDirectThreat = new CommandSetObjectData(threatReductionResult.getRef(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, ORef.INVALID.toString());
-			project.executeCommand(setDirectThreat);
-		}
-	}
-
-	private boolean canDeleteFactor(Factor factorToDelete)
-	{
-		ObjectManager objectManager = project.getObjectManager();
-		ORefList referrers = factorToDelete.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_FACTOR, factorToDelete.getRef());
-		if (referrers.size() > 0)
-			return false;
-		
-		return true;
-	}
-
-	private void deleteDiagramFactor(DiagramFactorId diagramFactorId) throws CommandFailedException
-	{
-		CommandDeleteObject deleteDiagramFactorCommand = new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
-		getProject().executeCommand(deleteDiagramFactorCommand);
-	}
-
-	private void removeFromView(FactorId id) throws ParseException, Exception, CommandFailedException
-	{
-		Factor factor = getProject().findNode(id);
-		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(factor.getRef());
-		for(int i = 0; i < commandsToRemoveFromView.length; ++i)
-			getProject().executeCommand(commandsToRemoveFromView[i]);
-	}
-
-	private void removeNodeFromDiagram(FactorCell factorToDelete, DiagramObject diagramObject) throws CommandFailedException, ParseException
-	{
-		DiagramFactorId idToDelete = factorToDelete.getDiagramFactorId();
-		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
-		getProject().executeCommand(removeDiagramFactor);
-		
-		Command[] commandsToClear = factorToDelete.getDiagramFactor().createCommandsToClear();
-		getProject().executeCommands(commandsToClear);
-	}
-
-	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException
-	{
-		Command[] commandsToClear = factorToDelete.createCommandsToClear();
-		getProject().executeCommands(commandsToClear);
-		getProject().executeCommand(new CommandDeleteObject(factorToDelete.getType(), factorToDelete.getFactorId()));
-	}
-	
-	private void deleteAnnotations(Factor factorToDelete) throws Exception
-	{
-		deleteAnnotations(factorToDelete, ObjectType.GOAL, factorToDelete.TAG_GOAL_IDS);
-		deleteAnnotations(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
-		deleteAnnotations(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
-		//TODO: there is much common code between DeleteAnnotationDoer and DeleteActivity classes and this class; 
-		// for example DeleteActivity.deleteTaskTree( is general and and good not just for activities
-		// I am thinking that each object Task should be able to handle its own deletion so when you call it it would delete all its own 
-		// children inforceing referencial integrity as a cascade, instead of having the the code here.
-		if (factorToDelete.isStrategy())
-			removeAndDeleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
-		
-		if (factorToDelete.isTarget())
-			removeAndDeleteKeyEcologicalAttributesInList(factorToDelete, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
-	}
-
-	private void deleteAnnotations(Factor factorToDelete, int annotationType, String annotationListTag) throws Exception
-	{
-		IdList ids = new IdList(factorToDelete.getData(annotationListTag));
-		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
-		{
-			BaseObject thisAnnotation = getProject().findObject(annotationType, ids.get(annotationIndex));
-			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
-			getProject().executeCommands(commands);
-		}
-	}
-	
-	private void removeAndDeleteTasksInList(BaseObject objectToDelete, String annotationListTag) throws Exception
-	{
-		IdList ids = new IdList(objectToDelete.getData(annotationListTag));
-		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
-		{
-			Task childTask = (Task)getProject().findObject(ObjectType.TASK, ids.get(annotationIndex));
-			DeleteActivity.deleteTaskTree(getProject(), childTask);
-		}
-	}
-	
-	private void removeAndDeleteKeyEcologicalAttributesInList(Factor objectToDelete, String annotationListTag) throws Exception
-	{
-		IdList ids = new IdList(objectToDelete.getData(annotationListTag));
-		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
-		{
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)getProject().findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, ids.get(annotationIndex));
-			Command[] commands = DeleteKeyEcologicalAttributeDoer.buildCommandsToDeleteAnnotation(getProject(), objectToDelete, annotationListTag, kea);
-			getProject().executeCommands(commands);
-		}
-	}
 
 	public void pasteMiradiDataFlavorWithoutLinks(TransferableMiradiList list, Point startPoint) throws Exception
 	{	
@@ -421,7 +288,8 @@ public class FactorCommandHelper
 			//FIXME assignments should be pastable amongst projects,
 			//assignments refer to items that are not deep copied. such as accounting code, resource, funding source
 			int type = json.getInt("Type");
-			if (! isPastable(list, type))
+			String clipboardProjectFileName = list.getProjectFileName();
+			if (! isPastable(clipboardProjectFileName, type))
 				continue;
 			
 			CreateObjectParameter extraInfo = createExtraInfo(json, type);
@@ -448,9 +316,9 @@ public class FactorCommandHelper
 		return null;
 	}
 
-	private boolean isPastable(TransferableMiradiList list, int type)
+	private boolean isPastable(String clipboardProjectFileName, int type)
 	{
-	 	if (type == Assignment.getObjectType() && !isInBetweenProjectPaste(list)) 
+	 	if (type == Assignment.getObjectType() && !isInBetweenProjectPaste(clipboardProjectFileName)) 
 	 		return false;
 	 	
 	 	return true;
@@ -577,7 +445,8 @@ public class FactorCommandHelper
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
 
-			if (canCreateNewFactorLink(oldToNewFactorRefMap, list, json))
+			String clipboardProjectFileName = list.getProjectFileName();
+			if (canCreateNewFactorLinkFromAnotherProject(oldToNewFactorRefMap, clipboardProjectFileName, json))
 				continue;
 			
 			ORef newFromRef = getFactor(oldToNewFactorRefMap, json, FactorLink.TAG_FROM_REF);
@@ -596,17 +465,22 @@ public class FactorCommandHelper
 		return oldToNewFactorLinkRefMap;
 	}
 
-	private boolean isInBetweenProjectPaste(TransferableMiradiList list)
+	private boolean isInBetweenProjectPaste(String clipboardProjectFileName)
 	{
-		return getProject().getFilename().equals(list.getProjectFileName());
+		return getProject().getFilename().equals(clipboardProjectFileName);
 	}
 	
-	private boolean canCreateNewFactorLink(HashMap oldToNewFactorRefMap, TransferableMiradiList list, EnhancedJsonObject json)
+	private boolean canCreateNewFactorLinkFromAnotherProject(HashMap oldToNewFactorRefMap, String clipboardProjectFileName, EnhancedJsonObject json)
 	{
 		ORef oldFromRef = json.getRef(FactorLink.TAG_FROM_REF);
 		ORef oldToRef = json.getRef(FactorLink.TAG_TO_REF);
 		
-		return ((oldToNewFactorRefMap.get(oldFromRef) == null || oldToNewFactorRefMap.get(oldToRef) == null) && !isInBetweenProjectPaste(list));
+		return (haveBothFactorsBeenCopied(oldToNewFactorRefMap, oldFromRef, oldToRef) && !isInBetweenProjectPaste(clipboardProjectFileName));
+	}
+
+	private boolean haveBothFactorsBeenCopied(HashMap oldToNewFactorRefMap, ORef oldFromRef, ORef oldToRef)
+	{
+		return (oldToNewFactorRefMap.get(oldFromRef) == null || oldToNewFactorRefMap.get(oldToRef) == null);
 	}
 	
 	private ORef getFactor(HashMap oldToNewFactorRefMap, EnhancedJsonObject json, String tag)
