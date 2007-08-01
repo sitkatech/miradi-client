@@ -62,6 +62,8 @@ public class LinkCreator
 		if (! model.containsDiagramFactor(fromDiagramFactor.getDiagramFactorId()) || ! model.containsDiagramFactor(toDiagramFactor.getDiagramFactorId()))
 			return true;
 
+		if (model.areLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
+			return true;
 		
 		return false;
 	}
