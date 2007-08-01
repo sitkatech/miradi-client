@@ -14,8 +14,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.DateRangeEffortListData;
-import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -25,7 +23,7 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Assignment extends BaseObject
 {
-	public Assignment(ObjectManager objectManager, BaseId idToUse, CreateAssignmentParameter extraInfo)
+	public Assignment(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, new AssignmentId(idToUse.asInt()));
 		clear();
@@ -110,13 +108,6 @@ public class Assignment extends BaseObject
 		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_ASSIGNMENT_RESOURCE_ID, ""));
 
 		return commandsToClearSomeFields.toArray(new Command[0]);
-	}
-	
-	public CreateObjectParameter getCreationExtraInfo()
-	{
-		TaskId taskId = new TaskId(TaskId.INVALID.asInt());
-		
-		return new CreateAssignmentParameter(taskId);
 	}
 	
 	public void clear()

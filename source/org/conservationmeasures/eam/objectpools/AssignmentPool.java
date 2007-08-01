@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
@@ -33,6 +32,6 @@ public class AssignmentPool extends EAMNormalObjectPool
 	
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return new Assignment(objectManager ,actualId, (CreateAssignmentParameter)extraInfo);
+		return new Assignment(objectManager ,actualId);
 	}
 }

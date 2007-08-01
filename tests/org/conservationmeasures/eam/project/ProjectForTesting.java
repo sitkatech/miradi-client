@@ -26,7 +26,6 @@ import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -174,8 +173,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 
 	public AssignmentId createAssignment(ORef oref) throws Exception
 	{
-		CreateAssignmentParameter createAssignment = new CreateAssignmentParameter((TaskId)oref.getObjectId());
-		AssignmentId cmAssignmentId = (AssignmentId)createObject(ObjectType.ASSIGNMENT, BaseId.INVALID, createAssignment);
+		AssignmentId cmAssignmentId = (AssignmentId)createObject(ObjectType.ASSIGNMENT, BaseId.INVALID);
 		return cmAssignmentId;
 	}
 	
