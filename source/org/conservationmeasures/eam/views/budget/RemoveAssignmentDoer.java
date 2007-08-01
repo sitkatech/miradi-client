@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.budget;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -14,9 +15,8 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.Task;
@@ -57,17 +57,25 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 	public static void removeAssignment(Project project, Assignment assignmentToRemove) throws Exception
 	{
 		Vector commands = new Vector();
-		TaskId taskId = ((CreateAssignmentParameter)assignmentToRemove.getCreationExtraInfo()).getTaskId();
-		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
-		
-		Command removeIdCommand = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId());
-		commands.add(removeIdCommand);
-		
+
 		commands.addAll(Arrays.asList(assignmentToRemove.createCommandsToClear()));
+		commands.addAll(getCommandsToDereferenceTasksFromAssignment(project, assignmentToRemove));
 		
 		Command deleteCommand = new CommandDeleteObject(ObjectType.ASSIGNMENT, assignmentToRemove.getId());
 		commands.add(deleteCommand);
 		
 		project.executeCommands((Command[])commands.toArray(new Command[0]));
+	}
+
+	private static Vector getCommandsToDereferenceTasksFromAssignment(Project project, Assignment assignmentToRemove) throws ParseException
+	{
+		Vector commandsToDereferenceTasks = new Vector();
+		ORef ownerRef = assignmentToRemove.findObjectWhoOwnesUs(project.getObjectManager(), Task.getObjectType(), assignmentToRemove.getRef());
+		Task task = (Task)project.findObject(ownerRef);
+		
+		Command removeIdCommand = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId());
+		commandsToDereferenceTasks.add(removeIdCommand);
+		
+		return commandsToDereferenceTasks;
 	}
 }
