@@ -29,14 +29,12 @@ public class Assignment extends BaseObject
 	{
 		super(objectManager, new AssignmentId(idToUse.asInt()));
 		clear();
-		taskIdData.setId(extraInfo.getTaskId());
 	}
 	
 	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfo)
 	{
 		super(new AssignmentId(idToUse.asInt()));
 		clear();
-		taskIdData.setId(extraInfo.getTaskId());
 	}
 	
 	public Assignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
@@ -59,12 +57,10 @@ public class Assignment extends BaseObject
 		return ObjectType.ASSIGNMENT;
 	}
 	
-	
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
 	}
-	
 	
 	public static boolean canReferToThisType(int type)
 	{
@@ -76,13 +72,10 @@ public class Assignment extends BaseObject
 				return true;
 			case ObjectType.FUNDING_SOURCE: 
 				return true;
-			case ObjectType.TASK: 
-				return true;
 			default:
 				return false;
 		}
 	}
-	
 	
 	public ORefList getReferencedObjects(int objectType)
 	{
@@ -102,7 +95,6 @@ public class Assignment extends BaseObject
 		}
 		return list;
 	}
-	
 	
 	public DateRangeEffortList getDetails()
 	{
@@ -133,8 +125,7 @@ public class Assignment extends BaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		//TODO create TaskIdData class
-		TaskId taskId = new TaskId(taskIdData.getId().asInt());
+		TaskId taskId = new TaskId(TaskId.INVALID.asInt());
 		
 		return new CreateAssignmentParameter(taskId);
 	}
@@ -142,20 +133,17 @@ public class Assignment extends BaseObject
 	public void clear()
 	{
 		super.clear();
-		taskIdData = new BaseIdData();
 		resourceIdData = new BaseIdData();
 		detailListData = new DateRangeEffortListData();
 		accountingIdData = new BaseIdData();
 		fundingIdData = new BaseIdData();
 		
-		addNoClearField(TAG_ASSIGNMENT_TASK_ID, taskIdData);
 		addField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
 		addField(TAG_ACCOUNTING_CODE, accountingIdData);
 		addField(TAG_FUNDING_SOURCE, fundingIdData);
 	}
 	
-	public static final String TAG_ASSIGNMENT_TASK_ID = "TaskId";
 	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
 	public static final String TAG_DATERANGE_EFFORTS = "Details";
 	public static final String TAG_ACCOUNTING_CODE = "AccountingCode";
@@ -163,10 +151,8 @@ public class Assignment extends BaseObject
 	
 	public static final String OBJECT_NAME = "Assignment";
 	
-	BaseIdData taskIdData;
 	BaseIdData resourceIdData;
 	DateRangeEffortListData detailListData;
 	BaseIdData accountingIdData;
 	BaseIdData fundingIdData;
-	
 }
