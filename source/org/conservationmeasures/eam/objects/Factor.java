@@ -5,10 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.util.HashMap;
-import java.util.Vector;
-
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
@@ -302,23 +298,38 @@ abstract public class Factor extends BaseObject
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
 	
-	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
+	public int getAnnotationType(String tag)
 	{
-		Vector<Command> commandsToFixRefs = new Vector<Command>();
+		if (tag.equals(TAG_INDICATOR_IDS))
+			return Indicator.getObjectType();
 		
-		Command commandToFixIndicatorRefs = fixUpRefs(TAG_INDICATOR_IDS, Indicator.getObjectType(), oldToNewRefMap);
-		commandsToFixRefs.add(commandToFixIndicatorRefs);
+		if (tag.equals(TAG_OBJECTIVE_IDS))
+			return Objective.getObjectType();
 		
-		Command commandToFixObjectiveRefs = fixUpRefs(TAG_OBJECTIVE_IDS, Objective.getObjectType(), oldToNewRefMap);
-		commandsToFixRefs.add(commandToFixObjectiveRefs);
+		if (tag.equals(TAG_GOAL_IDS))
+			return Goal.getObjectType();
 		
-		Command commandToFixGoalRefs = fixUpRefs(TAG_GOAL_IDS, Goal.getObjectType(), oldToNewRefMap);
-		commandsToFixRefs.add(commandToFixGoalRefs);
+		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
+			return KeyEcologicalAttribute.getObjectType();
+
+		return super.getAnnotationType(tag);
+	}
+
+	public boolean isIdListTag(String tag)
+	{
+		if (tag.equals(TAG_INDICATOR_IDS))
+			return true;
 		
-		Command commandToFixKEARefs = fixUpRefs(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType(), oldToNewRefMap);
-		commandsToFixRefs.add(commandToFixKEARefs);
+		if (tag.equals(TAG_OBJECTIVE_IDS))
+			return true;
 		
-		return commandsToFixRefs.toArray(new Command[0]);
+		if (tag.equals(TAG_GOAL_IDS))
+			return true;
+		
+		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
+			return true;
+		
+		return false;
 	}
 
 	public String getPseudoData(String fieldTag)

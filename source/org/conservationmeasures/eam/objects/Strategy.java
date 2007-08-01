@@ -5,11 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Vector;
-
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -187,16 +182,20 @@ public class Strategy extends Factor
 		return list;
 	}
 	
-	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
+	public int getAnnotationType(String tag)
 	{
-		Command[] commands = super.createCommandToFixupRefLists(oldToNewRefMap);
-		Vector<Command> commandsToFixRefs = new Vector<Command>();
-		commandsToFixRefs.addAll(Arrays.asList(commands));
+		if (tag.equals(TAG_ACTIVITY_IDS))
+			return Task.getObjectType();
 		
-		Command commandToFixActivityRefs = fixUpRefs(TAG_ACTIVITY_IDS, Task.getObjectType(), oldToNewRefMap);
-		commandsToFixRefs.add(commandToFixActivityRefs);
+		return super.getAnnotationType(tag);
+	}
+
+	public boolean isIdListTag(String tag)
+	{
+		if (tag.equals(TAG_ACTIVITY_IDS))
+			return true;
 		
-		return commandsToFixRefs.toArray(new Command[0]);
+		return super.isIdListTag(tag);
 	}
 
 	public int getType()

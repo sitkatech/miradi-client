@@ -92,7 +92,19 @@ abstract public class BaseObject
 	
 	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
 	{
-		return new Command[0];
+		Vector commands = new Vector();
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			if (! isIdListTag(tag))
+				continue;
+			
+			Command commandToFixRefs = fixUpRefs(tag, getAnnotationType(tag), oldToNewRefMap);
+			commands.add(commandToFixRefs);
+		}
+		
+		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
 	protected Command fixUpRefs(String annotationTag, int annotationType, HashMap oldToNewRefMap) throws Exception
@@ -115,6 +127,16 @@ abstract public class BaseObject
 		}
 		
 		return new CommandSetObjectData(getRef(), annotationTag, newList.toString());
+	}
+	
+	public boolean isIdListTag(String tag)
+	{
+		return false;
+	}
+	
+	public int getAnnotationType(String tag)
+	{
+		throw new RuntimeException("Cannot find annotation type for " + tag);
 	}
 	
 	public ORef getRef()

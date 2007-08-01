@@ -7,10 +7,8 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -71,12 +69,26 @@ public class Task extends BaseObject
 		return deleteIds;
 	}
 	
-	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
-	{	
-		Command commandToFixSubTaskRefs = fixUpRefs(TAG_SUBTASK_IDS, Task.getObjectType(), oldToNewRefMap);
-		Command commandToFixAssignmentRefs = fixUpRefs(TAG_ASSIGNMENT_IDS, Assignment.getObjectType(), oldToNewRefMap);
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_SUBTASK_IDS))
+			return Task.getObjectType();
 		
-		return new Command[] {commandToFixSubTaskRefs, commandToFixAssignmentRefs};
+		if (tag.equals(TAG_ASSIGNMENT_IDS))
+			return Assignment.getObjectType();
+		
+		return super.getAnnotationType(tag);
+	}
+
+	public boolean isIdListTag(String tag)
+	{
+		if (tag.equals(TAG_SUBTASK_IDS))
+			return true;
+		
+		if (tag.equals(TAG_ASSIGNMENT_IDS))
+			return true;
+		
+		return false;
 	}
 
 	public int getType()
