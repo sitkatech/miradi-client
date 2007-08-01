@@ -21,10 +21,8 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
-import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
@@ -284,17 +282,19 @@ public class FactorCommandHelper
 		{			
 			String jsonAsString = (String) factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-	
-			//FIXME assignments should be pastable amongst projects,
-			//assignments refer to items that are not deep copied. such as accounting code, resource, funding source
+			System.out.println(json);
 			int type = json.getInt("Type");
 			String clipboardProjectFileName = list.getProjectFileName();
-			if (! isPastable(clipboardProjectFileName, type))
-				continue;
+			//FIXME assignments should be pastable amongst projects,
+			//assignments refer to items that are not deep copied. such as accounting code, resource, funding source
+			//if (! isPastable(clipboardProjectFileName, type))
+			//	continue;
 			
-			CreateObjectParameter extraInfo = createExtraInfo(json, type);
-			BaseObject newObject = createObject(type, json, extraInfo);
+			//TODO no longer create assignments with parent task
+			//CreateObjectParameter extraInfo = createExtraInfo(json, type);
+			BaseObject newObject = createObject(type, json, null);
 			loadNewObjectFromOldJson(newObject, json);
+			clearAssignmentFieldsForInBetweenProjectPastes(clipboardProjectFileName, newObject);
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
@@ -305,24 +305,38 @@ public class FactorCommandHelper
 		return oldToNewRefMap;
 	}
 
-	private CreateObjectParameter createExtraInfo(EnhancedJsonObject json, int type)
+	private void clearAssignmentFieldsForInBetweenProjectPastes(String clipboardProjectFileName, BaseObject newObject) throws Exception
 	{
-		if (type == Assignment.getObjectType())
-		{
-			BaseId taskId = json.getId(Assignment.TAG_ASSIGNMENT_TASK_ID);
-			return new CreateAssignmentParameter(new TaskId(taskId.asInt()));
-		}
-			
-		return null;
+		if (Assignment.getObjectType() != newObject.getType())
+			return;
+		
+		if (! isInBetweenProjectPaste(clipboardProjectFileName))
+			return;
+		
+		Assignment assignment = (Assignment) newObject;
+		Command[] commandsToClearSomeFields = assignment.getCommandsToClearSomeFields();
+		getProject().executeCommands(commandsToClearSomeFields);
 	}
 
-	private boolean isPastable(String clipboardProjectFileName, int type)
-	{
-	 	if (type == Assignment.getObjectType() && !isInBetweenProjectPaste(clipboardProjectFileName)) 
-	 		return false;
-	 	
-	 	return true;
-	}
+//TODO remove code after done removing assignemtn tasksid
+//	private CreateObjectParameter createExtraInfo(EnhancedJsonObject json, int type)
+//	{
+//		if (type == Assignment.getObjectType())
+//		{
+//			BaseId taskId = json.getId(Assignment.TAG_ASSIGNMENT_TASK_ID);
+//			return new CreateAssignmentParameter(new TaskId(taskId.asInt()));
+//		}
+//			
+//		return null;
+//	}
+//TODO remove code after done deleting assignemtn.taskId
+//	private boolean isPastable(String clipboardProjectFileName, int type)
+//	{
+//	 	if (type == Assignment.getObjectType() && !isInBetweenProjectPaste(clipboardProjectFileName)) 
+//	 		return false;
+//	 	
+//	 	return true;
+//	}
 
 	private void fixupRefs(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
 	{
@@ -467,7 +481,7 @@ public class FactorCommandHelper
 
 	private boolean isInBetweenProjectPaste(String clipboardProjectFileName)
 	{
-		return getProject().getFilename().equals(clipboardProjectFileName);
+		return ! getProject().getFilename().equals(clipboardProjectFileName);
 	}
 	
 	private boolean canCreateNewFactorLinkFromAnotherProject(HashMap oldToNewFactorRefMap, String clipboardProjectFileName, EnhancedJsonObject json)
@@ -475,7 +489,7 @@ public class FactorCommandHelper
 		ORef oldFromRef = json.getRef(FactorLink.TAG_FROM_REF);
 		ORef oldToRef = json.getRef(FactorLink.TAG_TO_REF);
 		
-		return (haveBothFactorsBeenCopied(oldToNewFactorRefMap, oldFromRef, oldToRef) && !isInBetweenProjectPaste(clipboardProjectFileName));
+		return (haveBothFactorsBeenCopied(oldToNewFactorRefMap, oldFromRef, oldToRef) && isInBetweenProjectPaste(clipboardProjectFileName));
 	}
 
 	private boolean haveBothFactorsBeenCopied(HashMap oldToNewFactorRefMap, ORef oldFromRef, ORef oldToRef)

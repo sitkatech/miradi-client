@@ -5,6 +5,10 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -116,6 +120,18 @@ public class Assignment extends BaseObject
 	public BaseId getResourceId()
 	{
 		return resourceIdData.getId();
+	}
+	
+	public Command[] getCommandsToClearSomeFields()
+	{
+		Vector<Command> commandsToClearSomeFields = new Vector();
+		
+		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_FUNDING_SOURCE, ""));
+		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_ACCOUNTING_CODE, ""));
+		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_DATERANGE_EFFORTS, ""));
+		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_ASSIGNMENT_RESOURCE_ID, ""));
+
+		return commandsToClearSomeFields.toArray(new Command[0]);
 	}
 	
 	public CreateObjectParameter getCreationExtraInfo()
