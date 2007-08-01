@@ -31,22 +31,11 @@ public class Assignment extends BaseObject
 		clear();
 	}
 	
-	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfo)
-	{
-		super(new AssignmentId(idToUse.asInt()));
-		clear();
-	}
-	
 	public Assignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager,new TaskId(idAsInt), json);
 	}
 	
-	public Assignment(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new TaskId(idAsInt), json);
-	}
-
 	public int getType()
 	{
 		return getObjectType();

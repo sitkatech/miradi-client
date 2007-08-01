@@ -11,9 +11,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -54,7 +52,7 @@ public class AddAssignmentDoer extends ObjectsDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT, createExtraInfo(project, selectedTask));
+			CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT);
 			project.executeCommand(createAssignment);
 
 			Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedTask, Task.TAG_ASSIGNMENT_IDS, createAssignment.getCreatedId());
@@ -66,12 +64,4 @@ public class AddAssignmentDoer extends ObjectsDoer
 		}
 	}
 	
-	private CreateAssignmentParameter createExtraInfo(Project project, Task selectedTask)
-	{
-		TaskId  taskId = new TaskId(selectedTask.getId().asInt());
-		
-		CreateAssignmentParameter extraInfo = new CreateAssignmentParameter(taskId);
-		
-		return extraInfo;
-	}
 }
