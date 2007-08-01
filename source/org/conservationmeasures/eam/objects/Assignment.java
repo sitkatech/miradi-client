@@ -99,9 +99,6 @@ public class Assignment extends BaseObject
 			case ObjectType.FUNDING_SOURCE: 
 				list.addAll(new ORefList(new ORef[] {new ORef(objectType, fundingIdData.getId())}));
 				break;
-			case ObjectType.TASK: 
-				list.addAll(new ORefList(new ORef[] {new ORef(objectType, taskIdData.getId())}));
-				break;
 		}
 		return list;
 	}

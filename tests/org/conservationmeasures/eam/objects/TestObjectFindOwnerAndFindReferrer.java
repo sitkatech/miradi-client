@@ -158,7 +158,6 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		verifyReferenceFunctions(1,owner, new ORef(ObjectType.PROJECT_RESOURCE, projectResourceId));
 		verifyReferenceFunctions(1,owner, new ORef(ObjectType.ACCOUNTING_CODE, accountingCodeId));
 		verifyReferenceFunctions(1,owner, new ORef(ObjectType.FUNDING_SOURCE, fundingSourceId));
-		verifyReferenceFunctions(1,owner, new ORef(ObjectType.TASK, subTaskId));
 	}
 
 
