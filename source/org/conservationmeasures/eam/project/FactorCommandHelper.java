@@ -282,7 +282,6 @@ public class FactorCommandHelper
 		{			
 			String jsonAsString = (String) factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			System.out.println(json);
 			int type = json.getInt("Type");
 			String clipboardProjectFileName = list.getProjectFileName();
 			//FIXME assignments should be pastable amongst projects,
