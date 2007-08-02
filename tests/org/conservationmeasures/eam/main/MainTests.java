@@ -261,6 +261,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestInsertFactorLinkDoer.class));
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestInsertFactorDoer.class));
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestLayerManager.class));
+		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestDiagramPaster.class));
 		
 		// view.interview package
 		
