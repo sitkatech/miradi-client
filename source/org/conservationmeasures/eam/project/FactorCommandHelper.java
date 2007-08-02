@@ -434,7 +434,7 @@ public class FactorCommandHelper
 			BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
 
 			String clipboardProjectFileName = list.getProjectFileName();
-			if (canCreateNewFactorLinkFromAnotherProject(oldToNewFactorRefMap, clipboardProjectFileName, json))
+			if (cannotCreateNewFactorLinkFromAnotherProject(oldToNewFactorRefMap, clipboardProjectFileName, json))
 				continue;
 			
 			ORef newFromRef = getFactor(oldToNewFactorRefMap, json, FactorLink.TAG_FROM_REF);
@@ -458,7 +458,7 @@ public class FactorCommandHelper
 		return ! getProject().getFilename().equals(clipboardProjectFileName);
 	}
 	
-	private boolean canCreateNewFactorLinkFromAnotherProject(HashMap oldToNewFactorRefMap, String clipboardProjectFileName, EnhancedJsonObject json)
+	private boolean cannotCreateNewFactorLinkFromAnotherProject(HashMap oldToNewFactorRefMap, String clipboardProjectFileName, EnhancedJsonObject json)
 	{
 		ORef oldFromRef = json.getRef(FactorLink.TAG_FROM_REF);
 		ORef oldToRef = json.getRef(FactorLink.TAG_TO_REF);
