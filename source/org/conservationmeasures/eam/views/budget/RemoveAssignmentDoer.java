@@ -59,7 +59,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		Vector commands = new Vector();
 
 		commands.addAll(Arrays.asList(assignmentToRemove.createCommandsToClear()));
-		commands.addAll(getCommandsToDereferenceTasksFromAssignment(project, assignmentToRemove));
+		commands.add(getCommandsToDereferenceTasksFromAssignment(project, assignmentToRemove));
 		
 		Command deleteCommand = new CommandDeleteObject(ObjectType.ASSIGNMENT, assignmentToRemove.getId());
 		commands.add(deleteCommand);
@@ -67,15 +67,12 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		project.executeCommands((Command[])commands.toArray(new Command[0]));
 	}
 
-	private static Vector getCommandsToDereferenceTasksFromAssignment(Project project, Assignment assignmentToRemove) throws ParseException
+	private static Command getCommandsToDereferenceTasksFromAssignment(Project project, Assignment assignmentToRemove) throws ParseException
 	{
-		Vector commandsToDereferenceTasks = new Vector();
 		ORef ownerRef = assignmentToRemove.findObjectWhoOwnesUs(project.getObjectManager(), Task.getObjectType(), assignmentToRemove.getRef());
-		Task task = (Task)project.findObject(ownerRef);
-		
+		Task task = (Task)project.findObject(ownerRef);	
 		Command removeIdCommand = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId());
-		commandsToDereferenceTasks.add(removeIdCommand);
 		
-		return commandsToDereferenceTasks;
+		return removeIdCommand;
 	}
 }
