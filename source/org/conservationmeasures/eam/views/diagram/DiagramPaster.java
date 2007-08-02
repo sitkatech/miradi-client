@@ -122,14 +122,14 @@ public class DiagramPaster
 			if (! newObject.isIdListTag(tag))
 				continue;
 			
-			Command commandToFixRefs = fixUpRefs(newObject, tag, newObject.getAnnotationType(tag), oldToNewRefMap);
+			Command commandToFixRefs = fixUpIdList(newObject, tag, newObject.getAnnotationType(tag), oldToNewRefMap);
 			commands.add(commandToFixRefs);
 		}
 		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
-	protected Command fixUpRefs(BaseObject newObject, String annotationTag, int annotationType, HashMap oldToNewRefMap) throws Exception
+	protected Command fixUpIdList(BaseObject newObject, String annotationTag, int annotationType, HashMap oldToNewRefMap) throws Exception
 	{
 		//FIXME currently items ids found in list but not in map are not added to new list
 		IdList oldList = new IdList(annotationType, newObject.getData(annotationTag));
