@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -107,8 +108,47 @@ public class DiagramPaster
 
 	private void fixupRefs(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
 	{
-		Command[] commandsToFixRefs = newObject.createCommandToFixupRefLists(oldToNewRefMap);
+		Command[] commandsToFixRefs = createCommandToFixupRefLists(newObject, oldToNewRefMap);
 		getProject().executeCommands(commandsToFixRefs);
+	}
+	
+	public Command[] createCommandToFixupRefLists(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
+	{
+		Vector commands = new Vector();
+		String[] fields = newObject.getFieldTags();
+		for (int i = 0; i < fields.length; ++i)
+		{
+			String tag = fields[i];
+			if (! newObject.isIdListTag(tag))
+				continue;
+			
+			Command commandToFixRefs = fixUpRefs(newObject, tag, newObject.getAnnotationType(tag), oldToNewRefMap);
+			commands.add(commandToFixRefs);
+		}
+		
+		return (Command[]) commands.toArray(new Command[0]);
+	}
+	
+	protected Command fixUpRefs(BaseObject newObject, String annotationTag, int annotationType, HashMap oldToNewRefMap) throws Exception
+	{
+		//FIXME currently items ids found in list but not in map are not added to new list
+		IdList oldList = new IdList(annotationType, newObject.getData(annotationTag));
+		IdList newList = new IdList(annotationType);
+		for (int i = 0; i < oldList.size(); ++i)
+		{
+			ORef oldRef = oldList.getRef(i);
+			if (oldToNewRefMap.containsKey(oldRef))
+			{
+				ORef newRef = (ORef) oldToNewRefMap.get(oldRef);
+				newList.addRef(newRef);
+			}
+			else
+			{
+				EAM.logWarning("Id for type " + annotationType + " not found in new list (" + annotationTag + ") after paste");
+			}
+		}
+		
+		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
 	}
 
 	private void loadNewObjectFromOldJson(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException

@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTextBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -88,45 +87,6 @@ abstract public class BaseObject
 		}
 		
 		return (Command[]) commands.toArray(new Command[0]);
-	}
-	
-	public Command[] createCommandToFixupRefLists(HashMap oldToNewRefMap) throws Exception
-	{
-		Vector commands = new Vector();
-		Iterator iter = fields.keySet().iterator();
-		while(iter.hasNext())
-		{
-			String tag = (String)iter.next();
-			if (! isIdListTag(tag))
-				continue;
-			
-			Command commandToFixRefs = fixUpRefs(tag, getAnnotationType(tag), oldToNewRefMap);
-			commands.add(commandToFixRefs);
-		}
-		
-		return (Command[]) commands.toArray(new Command[0]);
-	}
-	
-	protected Command fixUpRefs(String annotationTag, int annotationType, HashMap oldToNewRefMap) throws Exception
-	{
-		//FIXME currently items ids found in list but not in map are not added to new list
-		IdList oldList = new IdList(annotationType, getData(annotationTag));
-		IdList newList = new IdList(annotationType);
-		for (int i = 0; i < oldList.size(); ++i)
-		{
-			ORef oldRef = oldList.getRef(i);
-			if (oldToNewRefMap.containsKey(oldRef))
-			{
-				ORef newRef = (ORef) oldToNewRefMap.get(oldRef);
-				newList.addRef(newRef);
-			}
-			else
-			{
-				EAM.logWarning("Id for type " + annotationType + " not found in new list (" + annotationTag + ") after paste");
-			}
-		}
-		
-		return new CommandSetObjectData(getRef(), annotationTag, newList.toString());
 	}
 	
 	public boolean isIdListTag(String tag)

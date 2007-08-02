@@ -12,8 +12,10 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.views.diagram.DiagramPaster;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestFactor extends TestCaseEnhanced
@@ -108,6 +110,7 @@ public class TestFactor extends TestCaseEnhanced
 		assertEquals("wrong objectives?", factor.getObjectives(), got.getObjectives());
 	}
 	
+	//FIXME these tests are now for DiagramPaster and they should be moved out of here
 	public void testFixupAllIndicatorRefs() throws Exception
 	{
 		fixupRefs(Cause.getObjectType(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
@@ -136,8 +139,10 @@ public class TestFactor extends TestCaseEnhanced
 		oldToNewRefMap.put(oldRef1, newRef1);
 		oldToNewRefMap.put(oldRef2, newRef2);
 		
+		TransferableMiradiList transferableList = new TransferableMiradiList(project);
 		Factor factor = (Factor) project.findObject(factorRef);
-		Command[] commandToFixRefs = factor.createCommandToFixupRefLists(oldToNewRefMap);
+		DiagramPaster paster = new DiagramPaster(project.getDiagramModel(), transferableList);
+		Command[] commandToFixRefs = paster.createCommandToFixupRefLists(factor, oldToNewRefMap);
 		project.executeCommands(commandToFixRefs);
 		
 		IdList newAnnotationIds = new IdList(annotationType, factor.getData(annotationFactorTag));
