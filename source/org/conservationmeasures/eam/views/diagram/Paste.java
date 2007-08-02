@@ -73,7 +73,8 @@ public class Paste extends LocationDoer
 		if (!factorCommandHelper.wasAnyDataLost(list))
 			return;
 		
-		EAM.notifyDialog(EAM.text("Due to cross project pasting,  some data was lost"));
+		EAM.notifyDialog(EAM.text("Some of the data could not be moved to this project because " +
+								  "it refers to other data that only exists in the old project"));
 	}
 
 	protected void paste(TransferableMiradiList list, FactorCommandHelper factorCommandHelper) throws Exception
