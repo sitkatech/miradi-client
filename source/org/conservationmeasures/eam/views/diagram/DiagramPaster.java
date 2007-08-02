@@ -78,8 +78,7 @@ public class DiagramPaster
 			BaseObject newObject = createObject(type, json, null);
 			loadNewObjectFromOldJson(newObject, json);
 			
-			String clipboardProjectFileName = transferableList.getProjectFileName();
-			clearAssignmentFieldsForInBetweenProjectPastes(clipboardProjectFileName, newObject);
+			clearAssignmentFieldsForInBetweenProjectPastes(newObject);
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
@@ -88,12 +87,17 @@ public class DiagramPaster
 		}
 	}
 
-	private void clearAssignmentFieldsForInBetweenProjectPastes(String clipboardProjectFileName, BaseObject newObject) throws Exception
+	private String getClipboardProjectFileName()
+	{
+		return transferableList.getProjectFileName();
+	}
+
+	private void clearAssignmentFieldsForInBetweenProjectPastes(BaseObject newObject) throws Exception
 	{
 		if (Assignment.getObjectType() != newObject.getType())
 			return;
 		
-		if (! isInBetweenProjectPaste(clipboardProjectFileName))
+		if (! isInBetweenProjectPaste())
 			return;
 		
 		Assignment assignment = (Assignment) newObject;
@@ -154,15 +158,6 @@ public class DiagramPaster
 		addDiagramFactorToSelection(diagramFactorsToSelect);
 	}
 
-	private int getOffsetToAvoidOverlaying()
-	{
-		int NO_OFFSET = 0;
-		if (diagramLinkDeepCopies.size() > 0)
-			return getProject().getDiagramClipboard().getPasteOffset();
-		
-		return NO_OFFSET;
-	}
-	
 	private String offsetLocation(EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
 	{
 		Point originalLocation = json.getPoint(DiagramFactor.TAG_LOCATION);
@@ -228,8 +223,7 @@ public class DiagramPaster
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
 
-			String clipboardProjectFileName = transferableList.getProjectFileName();
-			if (cannotCreateNewFactorLinkFromAnotherProject(clipboardProjectFileName, json))
+			if (cannotCreateNewFactorLinkFromAnotherProject(json))
 				continue;
 			
 			ORef newFromRef = getFactor(json, FactorLink.TAG_FROM_REF);
@@ -246,17 +240,17 @@ public class DiagramPaster
 		}
 	}
 
-	private boolean isInBetweenProjectPaste(String clipboardProjectFileName)
+	private boolean isInBetweenProjectPaste()
 	{
-		return ! getProject().getFilename().equals(clipboardProjectFileName);
+		return ! getProject().getFilename().equals(getClipboardProjectFileName());
 	}
 	
-	private boolean cannotCreateNewFactorLinkFromAnotherProject(String clipboardProjectFileName, EnhancedJsonObject json)
+	private boolean cannotCreateNewFactorLinkFromAnotherProject(EnhancedJsonObject json)
 	{
 		ORef oldFromRef = json.getRef(FactorLink.TAG_FROM_REF);
 		ORef oldToRef = json.getRef(FactorLink.TAG_TO_REF);
 		boolean haveBothFactorsBeenCopied = haveBothFactorsBeenCopied(oldFromRef, oldToRef);
-		boolean isInBetweenProjectPaste = isInBetweenProjectPaste(clipboardProjectFileName);
+		boolean isInBetweenProjectPaste = isInBetweenProjectPaste();
 		
 		return (haveBothFactorsBeenCopied && isInBetweenProjectPaste);
 	}
@@ -268,7 +262,7 @@ public class DiagramPaster
 	
 	public boolean wasAnyDataLost() throws Exception
 	{
-		if (! isInBetweenProjectPaste(transferableList.getProjectFileName()))
+		if (! isInBetweenProjectPaste())
 			return false;
 		
 		for (int i = 0; i < factorDeepCopies.size(); ++i)
@@ -295,7 +289,7 @@ public class DiagramPaster
 	
 	private void createNewDiagramLinks() throws Exception
 	{	
-		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying();
+		int offsetToAvoidOverlaying = dataHelper.getOffset(getProject());
 		for (int i = 0; i < diagramLinkDeepCopies.size(); ++i )
 		{
 			String jsonAsString = diagramLinkDeepCopies.get(i);
