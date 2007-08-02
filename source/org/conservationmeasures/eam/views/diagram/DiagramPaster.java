@@ -51,8 +51,8 @@ public class DiagramPaster
 		dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
 		createNewFactors(list);
 
-		Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
-		createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorRefMap);
+		diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
+		createNewDiagramFactors(oldToNewFactorRefMap);
 	}
 	
 	public void pasteMiradiDataFlavor(TransferableMiradiList list, Point startPoint) throws Exception
@@ -60,8 +60,8 @@ public class DiagramPaster
 		dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
 		createNewFactors(list);
 
-		Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
-		oldToNewDiagramFactorRefMap = createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorRefMap);
+		diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
+		oldToNewDiagramFactorRefMap = createNewDiagramFactors(oldToNewFactorRefMap);
 
 		HashMap oldToNewFactorLinkRefMap = createNewFactorLinks(list);
 
@@ -128,13 +128,13 @@ public class DiagramPaster
 		return newObject;
 	}
 
-	private HashMap createNewDiagramFactors(Vector diagramFactorDeepCopies, HashMap oldToNewMap) throws Exception
+	private HashMap createNewDiagramFactors(HashMap oldToNewMap) throws Exception
 	{
 		ORefList diagramFactorsToSelect = new ORefList();
 		HashMap oldToNewDiagamFactorRefMap = new HashMap();
 		for (int i = 0; i < diagramFactorDeepCopies.size(); ++i)
 		{
-			String jsonAsString = (String) diagramFactorDeepCopies.get(i);
+			String jsonAsString = diagramFactorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			ORef wrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 			ORef newFactorRef = (ORef) oldToNewMap.get(wrappedRef);
@@ -441,6 +441,7 @@ public class DiagramPaster
 	DiagramModel currentModel;
 	
 	Vector<String> factorDeepCopies;
+	Vector<String> diagramFactorDeepCopies; 
 	
 	HashMap oldToNewFactorRefMap;
 	HashMap oldToNewDiagramFactorRefMap;
