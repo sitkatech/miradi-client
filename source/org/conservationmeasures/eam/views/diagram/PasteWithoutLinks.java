@@ -6,12 +6,11 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.main.TransferableMiradiList;
-import org.conservationmeasures.eam.project.FactorCommandHelper;
 
 public class PasteWithoutLinks extends Paste 
 {
-	public void paste(TransferableMiradiList list, FactorCommandHelper factorCommandHelper) throws Exception 
+	public void paste(TransferableMiradiList list, DiagramPaster diagramPaster) throws Exception 
 	{
-		factorCommandHelper.pasteMiradiDataFlavorWithoutLinks(list, getLocation());
+		diagramPaster.pasteMiradiDataFlavorWithoutLinks(list, getLocation());
 	}
 }

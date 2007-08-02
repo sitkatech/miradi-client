@@ -46,6 +46,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.views.diagram.DiagramPaster;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.martus.util.DirectoryUtils;
@@ -244,7 +245,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinksSize(diagramFactorId1));
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new FactorCommandHelper(project, project.getDiagramModel()).pasteMiradiDataFlavor(transferableList, new Point(5,5));
+		new DiagramPaster(project.getDiagramModel()).pasteMiradiDataFlavor(transferableList, new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(4, model.getAllDiagramFactorLinks().size());
@@ -255,7 +256,7 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.removeDiagramFactor(diagramFactorId1);
-		new FactorCommandHelper(project, project.getDiagramModel()).pasteMiradiDataFlavor(transferableList, new Point(5,5));
+		new DiagramPaster(project.getDiagramModel()).pasteMiradiDataFlavor(transferableList, new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());
 	}
@@ -479,7 +480,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinks(node2).size());
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new FactorCommandHelper(project, project.getDiagramModel()).pasteMiradiDataFlavorWithoutLinks(transferableList, new Point(5,5));
+		new DiagramPaster(project.getDiagramModel()).pasteMiradiDataFlavorWithoutLinks(transferableList, new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(2, model.getAllDiagramFactorLinks().size());
@@ -510,8 +511,8 @@ public class TestProject extends EAMTestCase
 		assertEquals("nodes  still in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		Point pastePoint = new Point(5,5);
-		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, project.getDiagramModel());
-		factorCommandHelper.pasteMiradiDataFlavor(transferableList, pastePoint);
+		DiagramPaster diagramPaster = new DiagramPaster(project.getDiagramModel());
+		diagramPaster.pasteMiradiDataFlavor(transferableList, pastePoint);
 		DiagramFactor diagramFactors[] = project.getAllDiagramFactors();
 		assertEquals(1, diagramFactors.length);
 		DiagramFactor pastedNode = diagramFactors[0];

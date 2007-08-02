@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
-import org.conservationmeasures.eam.project.FactorCommandHelper;
 
 public class Paste extends LocationDoer
 {
@@ -45,17 +44,17 @@ public class Paste extends LocationDoer
 				return;
 			
 			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor);
-			FactorCommandHelper factorCommandHelper = new FactorCommandHelper(getProject(), getDiagramView().getDiagramModel());
-			if (! factorCommandHelper.canPaste(list))
+			DiagramPaster diagramPaster = new DiagramPaster(getDiagramView().getDiagramModel());
+			if (! diagramPaster.canPaste(list))
 			{
 				EAM.notifyDialog(EAM.text("Contributing Factors and Direct Threats cannot be pasted into a Results Chain; " +
 											"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
 				return;
 			}
 
-			paste(list, factorCommandHelper);
+			paste(list, diagramPaster);
 			clipboard.incrementPasteCount();
-			possiblyNotitfyUserIfDataWasLost(list, factorCommandHelper);
+			possiblyNotitfyUserIfDataWasLost(list, diagramPaster);
 		} 
 		catch (Exception e) 
 		{
@@ -68,17 +67,17 @@ public class Paste extends LocationDoer
 		}
 	}
 
-	private void possiblyNotitfyUserIfDataWasLost(TransferableMiradiList list, FactorCommandHelper factorCommandHelper) throws Exception
+	private void possiblyNotitfyUserIfDataWasLost(TransferableMiradiList list, DiagramPaster diagramPaster) throws Exception
 	{
-		if (!factorCommandHelper.wasAnyDataLost(list))
+		if (!diagramPaster.wasAnyDataLost(list))
 			return;
 		
 		EAM.notifyDialog(EAM.text("Some of the data could not be moved to this project because " +
 								  "it refers to other data that only exists in the old project"));
 	}
 
-	protected void paste(TransferableMiradiList list, FactorCommandHelper factorCommandHelper) throws Exception
+	protected void paste(TransferableMiradiList list, DiagramPaster diagramPaster) throws Exception
 	{
-		factorCommandHelper.pasteMiradiDataFlavor(list, getLocation());
+		diagramPaster.pasteMiradiDataFlavor(list, getLocation());
 	}
 }
