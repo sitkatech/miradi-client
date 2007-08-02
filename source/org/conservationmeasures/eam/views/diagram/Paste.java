@@ -78,6 +78,6 @@ public class Paste extends LocationDoer
 
 	protected void paste(DiagramPaster diagramPaster) throws Exception
 	{
-		diagramPaster.pasteMiradiDataFlavor(getLocation());
+		diagramPaster.pasteMiradiDataFlavorFactorsAndLinks(getLocation());
 	}
 }
