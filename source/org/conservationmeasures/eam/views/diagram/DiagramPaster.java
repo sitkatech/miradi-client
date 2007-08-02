@@ -61,12 +61,12 @@ public class DiagramPaster
 		createNewFactors(list);
 
 		Vector diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
-		HashMap oldToNewDiagramFactorRefMap = createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorRefMap, dataHelper);
+		oldToNewDiagramFactorRefMap = createNewDiagramFactors(diagramFactorDeepCopies, oldToNewFactorRefMap, dataHelper);
 
 		HashMap oldToNewFactorLinkRefMap = createNewFactorLinks(list);
 
 		Vector diagramLinkDeepCopies = list.getDiagramLinkDeepCopies();
-		createNewDiagramLinks(diagramLinkDeepCopies, oldToNewFactorLinkRefMap, oldToNewDiagramFactorRefMap, dataHelper);
+		createNewDiagramLinks(diagramLinkDeepCopies, oldToNewFactorLinkRefMap, dataHelper);
 	}
 	
 	private void createNewFactors(TransferableMiradiList list) throws Exception
@@ -302,7 +302,7 @@ public class DiagramPaster
 		return newRef;
 	}
 	
-	private void createNewDiagramLinks(Vector diagramLinkDeepCopies, HashMap oldToNewFactorLinkRefMap, HashMap oldToNewDiagramFactorRefMap, FactorDataHelper dataHelper) throws Exception
+	private void createNewDiagramLinks(Vector diagramLinkDeepCopies, HashMap oldToNewFactorLinkRefMap, FactorDataHelper dataHelper) throws Exception
 	{	
 		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying(diagramLinkDeepCopies);
 		for (int i = 0; i < diagramLinkDeepCopies.size(); ++i )
@@ -320,8 +320,8 @@ public class DiagramPaster
 				continue;
 			
 			FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
-			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorRefMap, json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
-			DiagramFactorId toDiagramFactorId = getDiagramFactorId(oldToNewDiagramFactorRefMap, json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 			//FIXME shouldnt this also be inside the factorLink creation
 			LinkCreator linkCreator = new LinkCreator(project);
 			if (linkCreator.linkWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
@@ -338,7 +338,7 @@ public class DiagramPaster
 		}
 	}
 
-	private DiagramFactorId getDiagramFactorId(HashMap oldToNewDiagramFactorRefMap, EnhancedJsonObject json, String tag)
+	private DiagramFactorId getDiagramFactorId(EnhancedJsonObject json, String tag)
 	{
 		BaseId oldId = json.getId(tag);
 		ORef newRef = (ORef) oldToNewDiagramFactorRefMap.get(new ORef(ObjectType.DIAGRAM_FACTOR, oldId));
@@ -443,4 +443,5 @@ public class DiagramPaster
 	Vector<String> factorDeepCopies;
 	
 	HashMap oldToNewFactorRefMap;
+	HashMap oldToNewDiagramFactorRefMap;
 }
