@@ -283,10 +283,11 @@ public class FactorCommandHelper
 			String jsonAsString = (String) factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = json.getInt("Type");
-			String clipboardProjectFileName = list.getProjectFileName();
 
 			BaseObject newObject = createObject(type, json, null);
 			loadNewObjectFromOldJson(newObject, json);
+			
+			String clipboardProjectFileName = list.getProjectFileName();
 			clearAssignmentFieldsForInBetweenProjectPastes(clipboardProjectFileName, newObject);
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
