@@ -487,8 +487,10 @@ public class FactorCommandHelper
 	{
 		ORef oldFromRef = json.getRef(FactorLink.TAG_FROM_REF);
 		ORef oldToRef = json.getRef(FactorLink.TAG_TO_REF);
+		boolean haveBothFactorsBeenCopied = haveBothFactorsBeenCopied(oldToNewFactorRefMap, oldFromRef, oldToRef);
+		boolean isInBetweenProjectPaste = isInBetweenProjectPaste(clipboardProjectFileName);
 		
-		return (haveBothFactorsBeenCopied(oldToNewFactorRefMap, oldFromRef, oldToRef) && isInBetweenProjectPaste(clipboardProjectFileName));
+		return (haveBothFactorsBeenCopied && isInBetweenProjectPaste);
 	}
 
 	private boolean haveBothFactorsBeenCopied(HashMap oldToNewFactorRefMap, ORef oldFromRef, ORef oldToRef)
