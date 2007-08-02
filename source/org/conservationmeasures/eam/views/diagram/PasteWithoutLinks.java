@@ -10,6 +10,6 @@ public class PasteWithoutLinks extends Paste
 {
 	public void paste(DiagramPaster diagramPaster) throws Exception 
 	{
-		diagramPaster.pasteMiradiDataFlavorsFactors(getLocation());
+		diagramPaster.pasteFactors(getLocation());
 	}
 }
