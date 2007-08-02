@@ -55,6 +55,7 @@ public class Paste extends LocationDoer
 
 			paste(list, factorCommandHelper);
 			clipboard.incrementPasteCount();
+			possiblyNotitfyUserIfDataWasLost(list, factorCommandHelper);
 		} 
 		catch (Exception e) 
 		{
@@ -65,6 +66,14 @@ public class Paste extends LocationDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private void possiblyNotitfyUserIfDataWasLost(TransferableMiradiList list, FactorCommandHelper factorCommandHelper) throws Exception
+	{
+		if (!factorCommandHelper.wasAnyDataLost(list))
+			return;
+		
+		EAM.notifyDialog(EAM.text("Due to cross project pasting,  some data was lost"));
 	}
 
 	protected void paste(TransferableMiradiList list, FactorCommandHelper factorCommandHelper) throws Exception

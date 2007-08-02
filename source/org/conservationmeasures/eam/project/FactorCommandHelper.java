@@ -472,6 +472,24 @@ public class FactorCommandHelper
 		return (oldToNewFactorRefMap.get(oldFromRef) == null || oldToNewFactorRefMap.get(oldToRef) == null);
 	}
 	
+	public boolean wasAnyDataLost(TransferableMiradiList list) throws Exception
+	{
+		if (! isInBetweenProjectPaste(list.getProjectFileName()))
+			return false;
+		
+		Vector<String> factorDeepCopies = list.getFactorDeepCopies();
+		for (int i = 0; i < factorDeepCopies.size(); ++i)
+		{
+			String jsonAsString = factorDeepCopies.get(i);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			int type = json.getInt("Type");
+			if (Assignment.getObjectType() == type)
+				return true;
+		}
+		
+		return false;
+	}
+	
 	private ORef getFactor(HashMap oldToNewFactorRefMap, EnhancedJsonObject json, String tag)
 	{
 		ORef oldRef = json.getRef(tag);
