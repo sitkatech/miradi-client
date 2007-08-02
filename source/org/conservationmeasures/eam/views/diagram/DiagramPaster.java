@@ -40,38 +40,38 @@ import org.conservationmeasures.eam.utils.PointList;
 
 public class DiagramPaster
 {
-	public DiagramPaster(DiagramModel modelToUse)
+	public DiagramPaster(DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
 		currentModel = modelToUse;
 		project = currentModel.getProject();
+		transferableList = transferableListToUse;
+		
+		factorDeepCopies = transferableList.getFactorDeepCopies();
+		diagramFactorDeepCopies = transferableList.getDiagramFactorDeepCopies();
+		factorLinkDeepCopies = transferableList.getFactorLinkDeepCopies();
+		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
 	}
 	
 	public void pasteMiradiDataFlavorWithoutLinks(TransferableMiradiList list, Point startPoint) throws Exception
 	{	
 		dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
-		createNewFactors(list);
-
-		diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
-		createNewDiagramFactors(oldToNewFactorRefMap);
+		
+		createNewFactors();	
+		createNewDiagramFactors();
 	}
 	
 	public void pasteMiradiDataFlavor(TransferableMiradiList list, Point startPoint) throws Exception
 	{	
 		dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
-		createNewFactors(list);
+		createNewFactors();
+		createNewDiagramFactors();
 
-		diagramFactorDeepCopies = list.getDiagramFactorDeepCopies();
-		oldToNewDiagramFactorRefMap = createNewDiagramFactors(oldToNewFactorRefMap);
-
-		HashMap oldToNewFactorLinkRefMap = createNewFactorLinks(list);
-
-		Vector diagramLinkDeepCopies = list.getDiagramLinkDeepCopies();
-		createNewDiagramLinks(diagramLinkDeepCopies, oldToNewFactorLinkRefMap);
+		createNewFactorLinks();
+		createNewDiagramLinks();
 	}
 	
-	private void createNewFactors(TransferableMiradiList list) throws Exception
+	private void createNewFactors() throws Exception
 	{
-		factorDeepCopies = list.getFactorDeepCopies();
 		oldToNewFactorRefMap = new HashMap();
 		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
 		{			
@@ -82,7 +82,7 @@ public class DiagramPaster
 			BaseObject newObject = createObject(type, json, null);
 			loadNewObjectFromOldJson(newObject, json);
 			
-			String clipboardProjectFileName = list.getProjectFileName();
+			String clipboardProjectFileName = transferableList.getProjectFileName();
 			clearAssignmentFieldsForInBetweenProjectPastes(clipboardProjectFileName, newObject);
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
@@ -128,16 +128,16 @@ public class DiagramPaster
 		return newObject;
 	}
 
-	private HashMap createNewDiagramFactors(HashMap oldToNewMap) throws Exception
+	private void createNewDiagramFactors() throws Exception
 	{
 		ORefList diagramFactorsToSelect = new ORefList();
-		HashMap oldToNewDiagamFactorRefMap = new HashMap();
+		oldToNewDiagramFactorRefMap = new HashMap();
 		for (int i = 0; i < diagramFactorDeepCopies.size(); ++i)
 		{
 			String jsonAsString = diagramFactorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			ORef wrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
-			ORef newFactorRef = (ORef) oldToNewMap.get(wrappedRef);
+			ORef newFactorRef = (ORef) oldToNewFactorRefMap.get(wrappedRef);
 			DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
 
 			String newLocationAsJsonString = offsetLocation(json, diagramFactorId);
@@ -153,14 +153,12 @@ public class DiagramPaster
 			
 			BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
 			int type = json.getInt("Type");
-			oldToNewDiagamFactorRefMap.put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
+			oldToNewDiagramFactorRefMap.put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
 		}
 		addDiagramFactorToSelection(diagramFactorsToSelect);
-		
-		return oldToNewDiagamFactorRefMap;
 	}
 
-	private int getOffsetToAvoidOverlaying(Vector diagramLinkDeepCopies)
+	private int getOffsetToAvoidOverlaying()
 	{
 		int NO_OFFSET = 0;
 		if (diagramLinkDeepCopies.size() > 0)
@@ -225,17 +223,16 @@ public class DiagramPaster
 		getProject().executeCommand(addDiagramFactor);
 	}
 	
-	private HashMap createNewFactorLinks(TransferableMiradiList list) throws Exception
+	private void createNewFactorLinks() throws Exception
 	{
-		Vector factorLinkDeepCopies = list.getFactorLinkDeepCopies();
-		HashMap oldToNewFactorLinkRefMap = new HashMap();
+		oldToNewFactorLinkRefMap = new HashMap();
 		for (int i = 0; i < factorLinkDeepCopies.size(); ++i)
 		{
-			String jsonAsString = (String) factorLinkDeepCopies.get(i);
+			String jsonAsString = factorLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
 
-			String clipboardProjectFileName = list.getProjectFileName();
+			String clipboardProjectFileName = transferableList.getProjectFileName();
 			if (cannotCreateNewFactorLinkFromAnotherProject(clipboardProjectFileName, json))
 				continue;
 			
@@ -251,8 +248,6 @@ public class DiagramPaster
 			
 			oldToNewFactorLinkRefMap.put(new ORef(type, oldFactorLinkId), newFactorLink.getRef());
 		}
-		
-		return oldToNewFactorLinkRefMap;
 	}
 
 	private boolean isInBetweenProjectPaste(String clipboardProjectFileName)
@@ -275,9 +270,9 @@ public class DiagramPaster
 		return (oldToNewFactorRefMap.get(oldFromRef) == null || oldToNewFactorRefMap.get(oldToRef) == null);
 	}
 	
-	public boolean wasAnyDataLost(TransferableMiradiList list) throws Exception
+	public boolean wasAnyDataLost() throws Exception
 	{
-		if (! isInBetweenProjectPaste(list.getProjectFileName()))
+		if (! isInBetweenProjectPaste(transferableList.getProjectFileName()))
 			return false;
 		
 		for (int i = 0; i < factorDeepCopies.size(); ++i)
@@ -302,12 +297,12 @@ public class DiagramPaster
 		return newRef;
 	}
 	
-	private void createNewDiagramLinks(Vector diagramLinkDeepCopies, HashMap oldToNewFactorLinkRefMap) throws Exception
+	private void createNewDiagramLinks() throws Exception
 	{	
-		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying(diagramLinkDeepCopies);
+		int offsetToAvoidOverlaying = getOffsetToAvoidOverlaying();
 		for (int i = 0; i < diagramLinkDeepCopies.size(); ++i )
 		{
-			String jsonAsString = (String) diagramLinkDeepCopies.get(i);
+			String jsonAsString = diagramLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			
 			PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
@@ -348,7 +343,7 @@ public class DiagramPaster
 		return new DiagramFactorId(newRef.getObjectId().asInt());
 	}
 	
-	public boolean canPaste(TransferableMiradiList list) throws Exception
+	public boolean canPaste() throws Exception
 	{
 		for (int i = 0; i < factorDeepCopies.size(); i++) 
 		{
@@ -441,9 +436,14 @@ public class DiagramPaster
 	DiagramModel currentModel;
 	
 	Vector<String> factorDeepCopies;
-	Vector<String> diagramFactorDeepCopies; 
+	Vector<String> diagramFactorDeepCopies;
+	Vector<String> factorLinkDeepCopies;
+	Vector<String> diagramLinkDeepCopies;
 	
 	HashMap oldToNewFactorRefMap;
 	HashMap oldToNewDiagramFactorRefMap;
+	HashMap oldToNewFactorLinkRefMap;
+	
 	FactorDataHelper dataHelper;
+	TransferableMiradiList transferableList;
 }

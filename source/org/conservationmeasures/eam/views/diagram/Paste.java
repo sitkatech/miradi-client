@@ -44,8 +44,8 @@ public class Paste extends LocationDoer
 				return;
 			
 			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor);
-			DiagramPaster diagramPaster = new DiagramPaster(getDiagramView().getDiagramModel());
-			if (! diagramPaster.canPaste(list))
+			DiagramPaster diagramPaster = new DiagramPaster(getDiagramView().getDiagramModel(), list);
+			if (! diagramPaster.canPaste())
 			{
 				EAM.notifyDialog(EAM.text("Contributing Factors and Direct Threats cannot be pasted into a Results Chain; " +
 											"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
@@ -54,7 +54,7 @@ public class Paste extends LocationDoer
 
 			paste(list, diagramPaster);
 			clipboard.incrementPasteCount();
-			possiblyNotitfyUserIfDataWasLost(list, diagramPaster);
+			possiblyNotitfyUserIfDataWasLost(diagramPaster);
 		} 
 		catch (Exception e) 
 		{
@@ -67,9 +67,9 @@ public class Paste extends LocationDoer
 		}
 	}
 
-	private void possiblyNotitfyUserIfDataWasLost(TransferableMiradiList list, DiagramPaster diagramPaster) throws Exception
+	private void possiblyNotitfyUserIfDataWasLost(DiagramPaster diagramPaster) throws Exception
 	{
-		if (!diagramPaster.wasAnyDataLost(list))
+		if (!diagramPaster.wasAnyDataLost())
 			return;
 		
 		EAM.notifyDialog(EAM.text("Some of the data could not be moved to this project because " +

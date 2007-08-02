@@ -245,7 +245,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinksSize(diagramFactorId1));
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new DiagramPaster(project.getDiagramModel()).pasteMiradiDataFlavor(transferableList, new Point(5,5));
+		new DiagramPaster(project.getDiagramModel(), transferableList).pasteMiradiDataFlavor(transferableList, new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(4, model.getAllDiagramFactorLinks().size());
@@ -256,7 +256,7 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.removeDiagramFactor(diagramFactorId1);
-		new DiagramPaster(project.getDiagramModel()).pasteMiradiDataFlavor(transferableList, new Point(5,5));
+		new DiagramPaster(project.getDiagramModel(), transferableList).pasteMiradiDataFlavor(transferableList, new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());
 	}
@@ -480,7 +480,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinks(node2).size());
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new DiagramPaster(project.getDiagramModel()).pasteMiradiDataFlavorWithoutLinks(transferableList, new Point(5,5));
+		new DiagramPaster(project.getDiagramModel(), transferableList).pasteMiradiDataFlavorWithoutLinks(transferableList, new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(2, model.getAllDiagramFactorLinks().size());
@@ -511,7 +511,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("nodes  still in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		Point pastePoint = new Point(5,5);
-		DiagramPaster diagramPaster = new DiagramPaster(project.getDiagramModel());
+		DiagramPaster diagramPaster = new DiagramPaster(project.getDiagramModel(), transferableList);
 		diagramPaster.pasteMiradiDataFlavor(transferableList, pastePoint);
 		DiagramFactor diagramFactors[] = project.getAllDiagramFactors();
 		assertEquals(1, diagramFactors.length);
