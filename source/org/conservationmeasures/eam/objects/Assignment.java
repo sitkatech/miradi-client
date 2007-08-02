@@ -104,7 +104,6 @@ public class Assignment extends BaseObject
 		
 		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_FUNDING_SOURCE, ""));
 		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_ACCOUNTING_CODE, ""));
-		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_DATERANGE_EFFORTS, ""));
 		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_ASSIGNMENT_RESOURCE_ID, ""));
 
 		return commandsToClearSomeFields.toArray(new Command[0]);
