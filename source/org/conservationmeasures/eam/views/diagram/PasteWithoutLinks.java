@@ -5,12 +5,11 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.main.TransferableMiradiList;
 
 public class PasteWithoutLinks extends Paste 
 {
-	public void paste(TransferableMiradiList list, DiagramPaster diagramPaster) throws Exception 
+	public void paste(DiagramPaster diagramPaster) throws Exception 
 	{
-		diagramPaster.pasteMiradiDataFlavorWithoutLinks(list, getLocation());
+		diagramPaster.pasteMiradiDataFlavorWithoutLinks(getLocation());
 	}
 }

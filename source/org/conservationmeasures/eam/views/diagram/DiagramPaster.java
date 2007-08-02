@@ -52,15 +52,14 @@ public class DiagramPaster
 		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
 	}
 	
-	public void pasteMiradiDataFlavorWithoutLinks(TransferableMiradiList list, Point startPoint) throws Exception
+	public void pasteMiradiDataFlavorWithoutLinks(Point startPoint) throws Exception
 	{	
 		dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
-		
 		createNewFactors();	
 		createNewDiagramFactors();
 	}
 	
-	public void pasteMiradiDataFlavor(TransferableMiradiList list, Point startPoint) throws Exception
+	public void pasteMiradiDataFlavor(Point startPoint) throws Exception
 	{	
 		dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
 		createNewFactors();

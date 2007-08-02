@@ -52,7 +52,7 @@ public class Paste extends LocationDoer
 				return;
 			}
 
-			paste(list, diagramPaster);
+			paste(diagramPaster);
 			clipboard.incrementPasteCount();
 			possiblyNotitfyUserIfDataWasLost(diagramPaster);
 		} 
@@ -76,8 +76,8 @@ public class Paste extends LocationDoer
 								  "it refers to other data that only exists in the old project"));
 	}
 
-	protected void paste(TransferableMiradiList list, DiagramPaster diagramPaster) throws Exception
+	protected void paste(DiagramPaster diagramPaster) throws Exception
 	{
-		diagramPaster.pasteMiradiDataFlavor(list, getLocation());
+		diagramPaster.pasteMiradiDataFlavor(getLocation());
 	}
 }
