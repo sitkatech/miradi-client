@@ -284,13 +284,7 @@ public class FactorCommandHelper
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = json.getInt("Type");
 			String clipboardProjectFileName = list.getProjectFileName();
-			//FIXME assignments should be pastable amongst projects,
-			//assignments refer to items that are not deep copied. such as accounting code, resource, funding source
-			//if (! isPastable(clipboardProjectFileName, type))
-			//	continue;
-			
-			//TODO no longer create assignments with parent task
-			//CreateObjectParameter extraInfo = createExtraInfo(json, type);
+
 			BaseObject newObject = createObject(type, json, null);
 			loadNewObjectFromOldJson(newObject, json);
 			clearAssignmentFieldsForInBetweenProjectPastes(clipboardProjectFileName, newObject);
@@ -316,26 +310,6 @@ public class FactorCommandHelper
 		Command[] commandsToClearSomeFields = assignment.getCommandsToClearSomeFields();
 		getProject().executeCommands(commandsToClearSomeFields);
 	}
-
-//TODO remove code after done removing assignemtn tasksid
-//	private CreateObjectParameter createExtraInfo(EnhancedJsonObject json, int type)
-//	{
-//		if (type == Assignment.getObjectType())
-//		{
-//			BaseId taskId = json.getId(Assignment.TAG_ASSIGNMENT_TASK_ID);
-//			return new CreateAssignmentParameter(new TaskId(taskId.asInt()));
-//		}
-//			
-//		return null;
-//	}
-//TODO remove code after done deleting assignemtn.taskId
-//	private boolean isPastable(String clipboardProjectFileName, int type)
-//	{
-//	 	if (type == Assignment.getObjectType() && !isInBetweenProjectPaste(clipboardProjectFileName)) 
-//	 		return false;
-//	 	
-//	 	return true;
-//	}
 
 	private void fixupRefs(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
 	{
