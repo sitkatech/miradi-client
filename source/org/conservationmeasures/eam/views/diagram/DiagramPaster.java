@@ -138,7 +138,8 @@ public class DiagramPaster
 		{
 			ORef oldRef = oldList.getRef(i);
 			ORef refToAdd = fixupSingleRef(oldRef);
-			newList.addRef(refToAdd);
+			if (!refToAdd.isInvalid())
+				newList.addRef(refToAdd);
 		}
 		
 		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
@@ -149,9 +150,18 @@ public class DiagramPaster
 		if (oldToNewFactorRefMap.containsKey(oldRef))
 			return  (ORef) oldToNewFactorRefMap.get(oldRef);
 		
+		if (!isInBetweenProjectPaste())
+			return oldRef;
+		
 		return ORef.INVALID;
 	}
 
+	private ORef getFactor(EnhancedJsonObject json, String tag) throws Exception
+	{
+		ORef oldRef = json.getRef(tag);
+		return fixupSingleRef(oldRef);
+	}	
+	
 	private void loadNewObjectFromOldJson(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
 	{
 		Command[] commandsToLoadFromJson = newObject.createCommandsToLoadFromJson(json);
@@ -316,16 +326,6 @@ public class DiagramPaster
 		}
 		
 		return false;
-	}
-	
-	private ORef getFactor(EnhancedJsonObject json, String tag)
-	{
-		ORef oldRef = json.getRef(tag);
-		ORef newRef = (ORef) oldToNewFactorRefMap.get(oldRef);
-		if (newRef == null)
-			return oldRef;
-		 
-		return newRef;
 	}
 	
 	private void createNewDiagramLinks() throws Exception
