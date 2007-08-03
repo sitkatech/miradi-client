@@ -37,6 +37,8 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.FundingSource;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
@@ -127,29 +129,25 @@ public class DiagramPaster
 		if (Assignment.getObjectType() != newObject.getType())
 			return new Command[0];
 
-		Assignment assignment = (Assignment) newObject;
 		if (Assignment.TAG_ACCOUNTING_CODE.equals(tag))
-		{	
-			ORef accountingCodeRef = new ORef(AccountingCode.getObjectType(), assignment.getAccountingCodeId());
-			ORef fixedAccountingCodeId = fixupSingleRef(accountingCodeRef);
-			return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedAccountingCodeId.getObjectId().toString())};
-		}
+			return getCommandToFixId(newObject, AccountingCode.getObjectType(), tag);
 		
 		if (Assignment.TAG_FUNDING_SOURCE.equals(tag))
-		{	
-			ORef fundingSourceRef = new ORef(AccountingCode.getObjectType(), assignment.getFundingSourceId());
-			ORef fixedFundingSourceId = fixupSingleRef(fundingSourceRef);
-			return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedFundingSourceId.getObjectId().toString())};
-		}
+			return getCommandToFixId(newObject, FundingSource.getObjectType(), tag);
 
 		if (Assignment.TAG_ASSIGNMENT_RESOURCE_ID.equals(tag))
-		{	
-			ORef resourceRef = new ORef(AccountingCode.getObjectType(), assignment.getResourceId());
-			ORef fixedresourceId = fixupSingleRef(resourceRef);
-			return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedresourceId.getObjectId().toString())};
-		}
+			return getCommandToFixId(newObject, ProjectResource.getObjectType(), tag);
 		
 		return new Command[0];
+	}
+
+	private Command[] getCommandToFixId(BaseObject newObject, int annotationType, String tag) throws Exception
+	{
+		BaseId baseId = new BaseId(newObject.getData(tag));
+		ORef refToFix = new ORef(annotationType, baseId);
+		ORef fixedRef = fixupSingleRef(refToFix);
+		
+		return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedRef.getObjectId().toString())};
 	}
 
 	private Command fixUpIdList(BaseObject newObject, String annotationTag, int annotationType) throws Exception
