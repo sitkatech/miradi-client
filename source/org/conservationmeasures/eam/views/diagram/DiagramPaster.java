@@ -76,7 +76,7 @@ public class DiagramPaster
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = json.getInt("Type");
 
-			BaseObject newObject = createObject(type, json, null);
+			BaseObject newObject = createObject(type, json);
 			loadNewObjectFromOldJson(newObject, json);
 			
 			clearAssignmentFieldsForInBetweenProjectPastes(newObject);
@@ -167,7 +167,12 @@ public class DiagramPaster
 		Command[] commandsToLoadFromJson = newObject.createCommandsToLoadFromJson(json);
 		getProject().executeCommands(commandsToLoadFromJson);
 	}
-
+	
+	private BaseObject createObject(int type, EnhancedJsonObject json) throws Exception
+	{
+		return createObject(type, json, null);
+	}
+	
 	private BaseObject createObject(int type, EnhancedJsonObject json, CreateObjectParameter extraInfo) throws CommandFailedException
 	{
 		CommandCreateObject createObject = new CommandCreateObject(type, extraInfo);
