@@ -84,7 +84,7 @@ public class DiagramPaster
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
 			oldToNewFactorRefMap.put(oldObjectRef, newObject.getRef());
-			fixupRefs(newObject, oldToNewFactorRefMap);
+			fixupRefs(newObject);
 		}
 	}
 
@@ -106,13 +106,13 @@ public class DiagramPaster
 		getProject().executeCommands(commandsToClearSomeFields);
 	}
 
-	private void fixupRefs(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
+	private void fixupRefs(BaseObject newObject) throws Exception
 	{
-		Command[] commandsToFixRefs = createCommandToFixupRefLists(newObject, oldToNewRefMap);
+		Command[] commandsToFixRefs = createCommandToFixupRefLists(newObject);
 		getProject().executeCommands(commandsToFixRefs);
 	}
 	
-	public Command[] createCommandToFixupRefLists(BaseObject newObject, HashMap oldToNewRefMap) throws Exception
+	public Command[] createCommandToFixupRefLists(BaseObject newObject) throws Exception
 	{
 		Vector commands = new Vector();
 		String[] fields = newObject.getFieldTags();
@@ -122,14 +122,14 @@ public class DiagramPaster
 			if (! newObject.isIdListTag(tag))
 				continue;
 			
-			Command commandToFixRefs = fixUpIdList(newObject, tag, newObject.getAnnotationType(tag), oldToNewRefMap);
+			Command commandToFixRefs = fixUpIdList(newObject, tag, newObject.getAnnotationType(tag));
 			commands.add(commandToFixRefs);
 		}
 		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
-	protected Command fixUpIdList(BaseObject newObject, String annotationTag, int annotationType, HashMap oldToNewRefMap) throws Exception
+	private Command fixUpIdList(BaseObject newObject, String annotationTag, int annotationType) throws Exception
 	{
 		//FIXME currently items ids found in list but not in map are not added to new list
 		IdList oldList = new IdList(annotationType, newObject.getData(annotationTag));
@@ -137,9 +137,9 @@ public class DiagramPaster
 		for (int i = 0; i < oldList.size(); ++i)
 		{
 			ORef oldRef = oldList.getRef(i);
-			if (oldToNewRefMap.containsKey(oldRef))
+			if (oldToNewFactorRefMap.containsKey(oldRef))
 			{
-				ORef newRef = (ORef) oldToNewRefMap.get(oldRef);
+				ORef newRef = (ORef) oldToNewFactorRefMap.get(oldRef);
 				newList.addRef(newRef);
 			}
 			else
