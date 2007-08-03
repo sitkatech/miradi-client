@@ -119,11 +119,15 @@ public class DiagramPaster
 		for (int i = 0; i < fields.length; ++i)
 		{
 			String tag = fields[i];
-			if (! newObject.isIdListTag(tag))
-				continue;
-			
-			Command commandToFixRefs = fixUpIdList(newObject, tag, newObject.getAnnotationType(tag));
-			commands.add(commandToFixRefs);
+			if (newObject.isIdListTag(tag))
+			{
+				Command commandToFixRefs = fixUpIdList(newObject, tag, newObject.getAnnotationType(tag));
+				commands.add(commandToFixRefs);
+			}
+			else
+			{
+				//FIXME fix up ids, or in case of assignments clear them
+			}
 		}
 		
 		return (Command[]) commands.toArray(new Command[0]);
