@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
+import java.text.ParseException;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -44,13 +45,10 @@ public class Paste extends LocationDoer
 				return;
 
 			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor);
-			final String usersChoice = getUsersChoice();
+			final String usersChoice = getUsersChoice(list);
 			if (usersChoice.equals(CANCEL_BUTTON))
 				return;
 				
-			if (! list.atleastOnceFactorExists())
-				return;
-
 			DiagramPaster diagramPaster = createDiagramPasterBaseOnUserChoice(list, usersChoice);
 			if (! diagramPaster.canPaste())
 			{
@@ -74,8 +72,11 @@ public class Paste extends LocationDoer
 		}
 	}
 
-	private String getUsersChoice()
+	private String getUsersChoice(TransferableMiradiList list) throws ParseException
 	{
+		if (! list.atleastOnceFactorExists())
+			return "";
+
 		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Paste As...");
 		String[] body = {EAM.text("Do you want to paste full new copies of the factors, or aliases to the existing factors? " +
@@ -87,10 +88,10 @@ public class Paste extends LocationDoer
 	
 	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
 	{		
-		if (usersChoice.equals(AS_COPY_BUTTON))
-			return new DiagramPaster(getDiagramView().getDiagramModel(), list);
-	
-		return new DiagramAliasePaster(getDiagramView().getDiagramModel(), list);
+		if (usersChoice.equals(AS_ALIAS_BUTTON))
+			return new DiagramAliasePaster(getDiagramView().getDiagramModel(), list);
+		
+		return new DiagramPaster(getDiagramView().getDiagramModel(), list);
 	}
 
 	private void possiblyNotitfyUserIfDataWasLost(DiagramPaster diagramPaster) throws Exception
