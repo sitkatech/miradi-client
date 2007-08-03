@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -79,8 +80,6 @@ public class DiagramPaster
 			BaseObject newObject = createObject(type, json);
 			loadNewObjectFromOldJson(newObject, json);
 			
-			clearAssignmentFieldsForInBetweenProjectPastes(newObject);
-			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
 			oldToNewFactorRefMap.put(oldObjectRef, newObject.getRef());
@@ -91,19 +90,6 @@ public class DiagramPaster
 	private String getClipboardProjectFileName()
 	{
 		return transferableList.getProjectFileName();
-	}
-
-	private void clearAssignmentFieldsForInBetweenProjectPastes(BaseObject newObject) throws Exception
-	{
-		if (Assignment.getObjectType() != newObject.getType())
-			return;
-		
-		if (! isInBetweenProjectPaste())
-			return;
-		
-		Assignment assignment = (Assignment) newObject;
-		Command[] commandsToClearSomeFields = assignment.getCommandsToClearSomeFields();
-		getProject().executeCommands(commandsToClearSomeFields);
 	}
 
 	private void fixupRefs(BaseObject newObject) throws Exception
@@ -119,20 +105,54 @@ public class DiagramPaster
 		for (int i = 0; i < fields.length; ++i)
 		{
 			String tag = fields[i];
-			if (newObject.isIdListTag(tag))
-			{
-				Command commandToFixRefs = fixUpIdList(newObject, tag, newObject.getAnnotationType(tag));
-				commands.add(commandToFixRefs);
-			}
-			else
-			{
-				//FIXME fix up ids, or in case of assignments clear them
-			}
+			commands.addAll(Arrays.asList(getCommandsToFixUpIdListRefs(newObject, tag)));
+			commands.addAll(Arrays.asList(getCommandsToFixUpId(newObject, tag)));
 		}
 		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
+	private Command[] getCommandsToFixUpIdListRefs(BaseObject newObject, String tag) throws Exception
+	{
+		if (!newObject.isIdListTag(tag))
+			return new Command[0];
+		
+		Command commandToFixRefs = fixUpIdList(newObject, tag, newObject.getAnnotationType(tag));
+		return new Command[] {commandToFixRefs};
+	}
+	
+	private Command[] getCommandsToFixUpId(BaseObject newObject, String tag)
+	{
+		if (newObject.isIdListTag(tag))
+			return new Command[0];
+		
+		if (!isInBetweenProjectPaste())
+			return new Command[0];
+		
+		if (Assignment.getObjectType() != newObject.getType())
+			return new Command[0];
+			
+		if (!isTagToClear(tag))
+			return new Command[0];
+		
+		CommandSetObjectData clearFieldCommand = new CommandSetObjectData(newObject.getRef(), tag, "");
+		return new Command[] { clearFieldCommand};
+	}
+
+	private boolean isTagToClear(String tag)
+	{
+		 if (tag.equals(Assignment.TAG_FUNDING_SOURCE))
+			 return true;
+		
+		 if (tag.equals(Assignment.TAG_ACCOUNTING_CODE))
+			 return true;
+		
+		 if (tag.equals(Assignment.TAG_ASSIGNMENT_RESOURCE_ID))
+			 return true;
+		
+		return false;
+	}
+
 	private Command fixUpIdList(BaseObject newObject, String annotationTag, int annotationType) throws Exception
 	{
 		//FIXME currently items ids found in list but not in map are not added to new list

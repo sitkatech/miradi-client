@@ -5,10 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.util.Vector;
-
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -96,23 +92,6 @@ public class Assignment extends BaseObject
 	public BaseId getResourceId()
 	{
 		return resourceIdData.getId();
-	}
-	
-	//TODO  this is sort of a fixup sort of a method.  The BaseObject fixup.. method should be
-	// updated to deal with clearing none owned fields. The reason that some of these feilds are cleared is that
-	// pasting between projects, refernces objects are not deep copied, and therefore not created.  
-	// we only want to clear these fields in a paste between projects.  if baseObject.fixup.. was to deal with this
-	// it would need something more higher level then a then a map (the old project with the old refs), in order to decide if
-	// it is a inbetween project paste. 
-	public Command[] getCommandsToClearSomeFields()
-	{
-		Vector<Command> commandsToClearSomeFields = new Vector();
-		
-		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_FUNDING_SOURCE, ""));
-		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_ACCOUNTING_CODE, ""));
-		commandsToClearSomeFields.add(new CommandSetObjectData(getRef(), Assignment.TAG_ASSIGNMENT_RESOURCE_ID, ""));
-
-		return commandsToClearSomeFields.toArray(new Command[0]);
 	}
 	
 	public void clear()
