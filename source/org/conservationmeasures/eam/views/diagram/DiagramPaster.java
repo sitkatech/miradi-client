@@ -137,18 +137,20 @@ public class DiagramPaster
 		for (int i = 0; i < oldList.size(); ++i)
 		{
 			ORef oldRef = oldList.getRef(i);
-			if (oldToNewFactorRefMap.containsKey(oldRef))
-			{
-				ORef newRef = (ORef) oldToNewFactorRefMap.get(oldRef);
-				newList.addRef(newRef);
-			}
-			else
-			{
-				EAM.logWarning("Id for type " + annotationType + " not found in new list (" + annotationTag + ") after paste");
-			}
+			ORef refToAdd = fixupSingleRef(annotationTag, annotationType, oldRef);
+			newList.addRef(refToAdd);
 		}
 		
 		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
+	}
+
+	private ORef fixupSingleRef(String annotationTag, int annotationType, ORef oldRef) throws Exception
+	{
+		if (oldToNewFactorRefMap.containsKey(oldRef))
+			return  (ORef) oldToNewFactorRefMap.get(oldRef);
+		
+		EAM.logWarning("Id for type " + annotationType + " not found in new list (" + annotationTag + ") after paste");
+		return ORef.INVALID;
 	}
 
 	private void loadNewObjectFromOldJson(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
