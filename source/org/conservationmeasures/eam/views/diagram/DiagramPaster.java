@@ -221,7 +221,7 @@ public class DiagramPaster
 			String newLocationAsJsonString = offsetLocation(json, diagramFactorId);
 			json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
 			
-			ORef newDiagramFactorRef = createDiagramFactor(wrappedRef, newFactorRef);
+			ORef newDiagramFactorRef = createDiagramFactor(newFactorRef);
 			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
 			Command[]  commandsToLoadFromJson = newDiagramFactor.loadDataFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
@@ -276,7 +276,7 @@ public class DiagramPaster
 		//getDiagramView().getDiagramComponent().addSelectionCells(cells);
 	}
 
-	private ORef createDiagramFactor(ORef wrappedRef, ORef newRef) throws CommandFailedException
+	private ORef createDiagramFactor(ORef newRef) throws CommandFailedException
 	{
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(newRef);
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
