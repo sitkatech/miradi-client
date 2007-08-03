@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -106,7 +107,7 @@ public class DiagramPaster
 		{
 			String tag = fields[i];
 			commands.addAll(Arrays.asList(getCommandsToFixUpIdListRefs(newObject, tag)));
-			commands.addAll(Arrays.asList(getCommandToClearAssignmentField(newObject, tag)));
+			commands.addAll(Arrays.asList(getCommandToFixUpIdRefs(newObject, tag)));
 		}
 		
 		return (Command[]) commands.toArray(new Command[0]);
@@ -121,36 +122,37 @@ public class DiagramPaster
 		return new Command[] {commandToFixRefs};
 	}
 	
-	private Command[] getCommandToClearAssignmentField(BaseObject newObject, String tag)
+	private Command[] getCommandToFixUpIdRefs(BaseObject newObject, String tag) throws Exception
 	{
 		if (newObject.isIdListTag(tag))
 			return new Command[0];
-		
-		if (!isInBetweenProjectPaste())
-			return new Command[0];
-		
+
 		if (Assignment.getObjectType() != newObject.getType())
 			return new Command[0];
-			
-		if (!isAssignmentTagToClear(tag))
-			return new Command[0];
-		
-		CommandSetObjectData clearFieldCommand = new CommandSetObjectData(newObject.getRef(), tag, "");
-		return new Command[] { clearFieldCommand};
-	}
 
-	private boolean isAssignmentTagToClear(String tag)
-	{
-		 if (tag.equals(Assignment.TAG_FUNDING_SOURCE))
-			 return true;
+		Assignment assignment = (Assignment) newObject;
+		if (Assignment.TAG_ACCOUNTING_CODE.equals(tag))
+		{	
+			ORef accountingCodeRef = new ORef(AccountingCode.getObjectType(), assignment.getAccountingCodeId());
+			ORef fixedAccountingCodeId = fixupSingleRef(accountingCodeRef);
+			return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedAccountingCodeId.getObjectId().toString())};
+		}
 		
-		 if (tag.equals(Assignment.TAG_ACCOUNTING_CODE))
-			 return true;
+		if (Assignment.TAG_FUNDING_SOURCE.equals(tag))
+		{	
+			ORef fundingSourceRef = new ORef(AccountingCode.getObjectType(), assignment.getFundingSourceId());
+			ORef fixedFundingSourceId = fixupSingleRef(fundingSourceRef);
+			return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedFundingSourceId.getObjectId().toString())};
+		}
+
+		if (Assignment.TAG_ASSIGNMENT_RESOURCE_ID.equals(tag))
+		{	
+			ORef resourceRef = new ORef(AccountingCode.getObjectType(), assignment.getResourceId());
+			ORef fixedresourceId = fixupSingleRef(resourceRef);
+			return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedresourceId.getObjectId().toString())};
+		}
 		
-		 if (tag.equals(Assignment.TAG_ASSIGNMENT_RESOURCE_ID))
-			 return true;
-		
-		return false;
+		return new Command[0];
 	}
 
 	private Command fixUpIdList(BaseObject newObject, String annotationTag, int annotationType) throws Exception
@@ -490,6 +492,11 @@ public class DiagramPaster
 	private Project getProject()
 	{
 		return project;
+	}
+
+	public HashMap getOldToNewFactorRefMap()
+	{
+		return oldToNewFactorRefMap;
 	}
 	
 	Project project;
