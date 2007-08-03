@@ -52,7 +52,8 @@ public class Paste extends LocationDoer
 				return;
 			}
 
-			paste(diagramPaster);
+			final String usersChoice = getUsersChoice();
+			choosePasteType(diagramPaster, usersChoice);
 			clipboard.incrementPasteCount();
 			possiblyNotitfyUserIfDataWasLost(diagramPaster);
 		} 
@@ -65,6 +66,32 @@ public class Paste extends LocationDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private String getUsersChoice()
+	{
+		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
+		String title = EAM.text("Paste As...");
+		String[] body = {EAM.text("Do you want to paste full new copies of the factors, or aliases to the existing factors? " +
+								"If you paste new copies, any changes will not affect the originals. " +
+								"If you paste aliases, any changes will automatically affect both the original and the new alias.")};
+	
+		return EAM.choiceDialog(title, body, buttons);
+	}
+	
+	private void choosePasteType(DiagramPaster diagramPaster, String usersChoice) throws Exception
+	{
+		if (usersChoice.equals(CANCEL_BUTTON))
+			return;
+		
+		if (usersChoice.equals(AS_COPY_BUTTON))
+			paste(diagramPaster);
+	
+		if (! diagramPaster.atleastOnceFactorExists())
+			return;
+	
+		if (usersChoice.equals(AS_ALIAS_BUTTON))
+			pasteAliases(diagramPaster);
 	}
 
 	private void possiblyNotitfyUserIfDataWasLost(DiagramPaster diagramPaster) throws Exception
@@ -80,4 +107,14 @@ public class Paste extends LocationDoer
 	{
 		diagramPaster.pasteFactorsAndLinks(getLocation());
 	}
+	
+	protected void pasteAliases(DiagramPaster diagramPaster)
+	{
+		//FIXME add code here
+	}
+	
+	private final String AS_COPY_BUTTON = EAM.text("Button|As Copy");
+	private final String AS_ALIAS_BUTTON = EAM.text("Button|As Alias");
+	private final String CANCEL_BUTTON = EAM.text("Button|Cancel");
+
 }

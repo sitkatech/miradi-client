@@ -287,6 +287,15 @@ public class EAM
 		
 		return (dlg.getResult().equals(buttons[0]));
 	}
+	
+	public static String choiceDialog(String title, String[] body, String[] buttons)
+	{
+		UiNotifyDlg dlg = new UiNotifyDlg(mainWindow, title, body, buttons);
+		if (wasWindowClosed(dlg))
+			return "";
+		
+		return (dlg.getResult());		
+	}
 
 	private static boolean wasWindowClosed(UiNotifyDlg dlg)
 	{

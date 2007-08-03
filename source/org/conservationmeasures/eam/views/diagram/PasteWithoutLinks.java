@@ -12,4 +12,9 @@ public class PasteWithoutLinks extends Paste
 	{
 		diagramPaster.pasteFactors(getLocation());
 	}
+	
+	protected void pasteAliases(DiagramPaster diagramPaster)
+	{
+		//FIXME add code here
+	}
 }

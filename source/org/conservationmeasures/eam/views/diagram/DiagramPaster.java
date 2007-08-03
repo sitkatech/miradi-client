@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;
@@ -399,7 +400,23 @@ public class DiagramPaster
 			 
 		return new DiagramFactorId(newRef.getObjectId().asInt());
 	}
-	
+
+	public boolean atleastOnceFactorExists() throws ParseException
+	{
+		for (int i = 0; i < factorDeepCopies.size(); ++i)
+		{
+			String jsonAsString = factorDeepCopies.get(i);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			int objectToBeFoundType = json.getInt("Type");
+			BaseId objectToBeFoundId = json.getId(BaseObject.TAG_ID);
+			BaseObject foundObject = getProject().findObject(new ORef(objectToBeFoundType, objectToBeFoundId));
+			if (foundObject != null)
+				return true;
+		}
+		
+		return false;
+	}
+
 	public boolean canPaste() throws Exception
 	{
 		for (int i = 0; i < factorDeepCopies.size(); i++) 
