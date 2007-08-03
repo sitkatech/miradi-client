@@ -28,10 +28,16 @@ public class DiagramAliasePaster extends DiagramPaster
 	public void pasteFactorsAndLinks(Point startPoint) throws Exception
 	{
 		pasteFactors(startPoint);
+		createNewDiagramLinks();
 	}
 
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef)
 	{
 		return oldWrappedRef;
+	}
+	
+	public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef)
+	{
+		return oldWrappedFactorLinkRef;
 	}
 }

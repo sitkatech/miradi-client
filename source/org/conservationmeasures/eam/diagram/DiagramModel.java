@@ -220,6 +220,22 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkDeleted());
 	}
 	
+	public boolean areDiagramFactorsLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
+	{
+		Vector<DiagramLink> diagramLinks = getAllDiagramFactorLinks();
+		for (int i  = 0; i < diagramLinks.size(); ++i)
+		{
+			DiagramLink diagramLink = diagramLinks.get(i);
+			if (diagramLink.getFromDiagramFactorId().equals(fromDiagramFactorId) && diagramLink.getToDiagramFactorId().equals(toDiagramFactorId))
+				return true;
+			
+			if (diagramLink.getFromDiagramFactorId().equals(toDiagramFactorId) && diagramLink.getToDiagramFactorId().equals(fromDiagramFactorId))
+				return true;
+		}
+		
+		return false;
+	}
+	
 	public boolean areLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
 	{
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));

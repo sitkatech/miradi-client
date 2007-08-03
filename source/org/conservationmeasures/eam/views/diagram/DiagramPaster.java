@@ -359,7 +359,7 @@ public class DiagramPaster
 		return false;
 	}
 	
-	private void createNewDiagramLinks() throws Exception
+	protected void createNewDiagramLinks() throws Exception
 	{	
 		int offsetToAvoidOverlaying = dataHelper.getOffset(getProject());
 		for (int i = 0; i < diagramLinkDeepCopies.size(); ++i )
@@ -372,7 +372,7 @@ public class DiagramPaster
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			ORef oldWrappedFactorLinkRef = new ORef(FactorLink.getObjectType(), json.getId(DiagramLink.TAG_WRAPPED_ID));
-			ORef newFactorLinkRef = (ORef) oldToNewFactorLinkRefMap.get(oldWrappedFactorLinkRef);
+			ORef newFactorLinkRef = getFactorLinkRef(oldWrappedFactorLinkRef);
 			if (newFactorLinkRef == null)
 				continue;
 			
@@ -393,6 +393,11 @@ public class DiagramPaster
 			
 			addToCurrentDiagram(newDiagramLink.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
 		}
+	}
+
+	public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef)
+	{
+		return (ORef) oldToNewFactorLinkRefMap.get(oldWrappedFactorLinkRef);
 	}
 
 	private DiagramFactorId getDiagramFactorId(EnhancedJsonObject json, String tag)
