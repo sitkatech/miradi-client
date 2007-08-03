@@ -106,7 +106,7 @@ public class DiagramPaster
 		{
 			String tag = fields[i];
 			commands.addAll(Arrays.asList(getCommandsToFixUpIdListRefs(newObject, tag)));
-			commands.addAll(Arrays.asList(getCommandsToFixUpId(newObject, tag)));
+			commands.addAll(Arrays.asList(getCommandToClearAssignmentField(newObject, tag)));
 		}
 		
 		return (Command[]) commands.toArray(new Command[0]);
@@ -121,7 +121,7 @@ public class DiagramPaster
 		return new Command[] {commandToFixRefs};
 	}
 	
-	private Command[] getCommandsToFixUpId(BaseObject newObject, String tag)
+	private Command[] getCommandToClearAssignmentField(BaseObject newObject, String tag)
 	{
 		if (newObject.isIdListTag(tag))
 			return new Command[0];
@@ -132,14 +132,14 @@ public class DiagramPaster
 		if (Assignment.getObjectType() != newObject.getType())
 			return new Command[0];
 			
-		if (!isTagToClear(tag))
+		if (!isAssignmentTagToClear(tag))
 			return new Command[0];
 		
 		CommandSetObjectData clearFieldCommand = new CommandSetObjectData(newObject.getRef(), tag, "");
 		return new Command[] { clearFieldCommand};
 	}
 
-	private boolean isTagToClear(String tag)
+	private boolean isAssignmentTagToClear(String tag)
 	{
 		 if (tag.equals(Assignment.TAG_FUNDING_SOURCE))
 			 return true;
