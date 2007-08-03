@@ -124,9 +124,6 @@ public class DiagramPaster
 	
 	private Command[] getCommandToFixUpIdRefs(BaseObject newObject, String tag) throws Exception
 	{
-		if (newObject.isIdListTag(tag))
-			return new Command[0];
-
 		if (Assignment.getObjectType() != newObject.getType())
 			return new Command[0];
 
