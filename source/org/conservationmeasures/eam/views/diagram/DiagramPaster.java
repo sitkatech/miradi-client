@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
-import java.text.ParseException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;
@@ -206,7 +205,7 @@ public class DiagramPaster
 		return newObject;
 	}
 
-	private void createNewDiagramFactors() throws Exception
+	protected void createNewDiagramFactors() throws Exception
 	{
 		ORefList diagramFactorsToSelect = new ORefList();
 		oldToNewDiagramFactorRefMap = new HashMap();
@@ -214,14 +213,14 @@ public class DiagramPaster
 		{
 			String jsonAsString = diagramFactorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			ORef wrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
-			ORef newFactorRef = (ORef) oldToNewFactorRefMap.get(wrappedRef);
+			ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
+			ORef newWrappedRef = getDiagramFactorWrappedRef(oldWrappedRef);
 			DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
 
 			String newLocationAsJsonString = offsetLocation(json, diagramFactorId);
 			json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
 			
-			ORef newDiagramFactorRef = createDiagramFactor(newFactorRef);
+			ORef newDiagramFactorRef = createDiagramFactor(oldWrappedRef, newWrappedRef);
 			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
 			Command[]  commandsToLoadFromJson = newDiagramFactor.loadDataFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
@@ -236,6 +235,11 @@ public class DiagramPaster
 		addDiagramFactorToSelection(diagramFactorsToSelect);
 	}
 
+	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef)
+	{
+		return (ORef) oldToNewFactorRefMap.get(oldWrappedRef);
+	}
+	
 	private String offsetLocation(EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
 	{
 		Point originalLocation = json.getPoint(DiagramFactor.TAG_LOCATION);
@@ -276,7 +280,7 @@ public class DiagramPaster
 		//getDiagramView().getDiagramComponent().addSelectionCells(cells);
 	}
 
-	private ORef createDiagramFactor(ORef newRef) throws CommandFailedException
+	private ORef createDiagramFactor(ORef wrappedRef, ORef newRef) throws CommandFailedException
 	{
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(newRef);
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
@@ -400,23 +404,7 @@ public class DiagramPaster
 			 
 		return new DiagramFactorId(newRef.getObjectId().asInt());
 	}
-
-	public boolean atleastOnceFactorExists() throws ParseException
-	{
-		for (int i = 0; i < factorDeepCopies.size(); ++i)
-		{
-			String jsonAsString = factorDeepCopies.get(i);
-			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int objectToBeFoundType = json.getInt("Type");
-			BaseId objectToBeFoundId = json.getId(BaseObject.TAG_ID);
-			BaseObject foundObject = getProject().findObject(new ORef(objectToBeFoundType, objectToBeFoundId));
-			if (foundObject != null)
-				return true;
-		}
-		
-		return false;
-	}
-
+	
 	public boolean canPaste() throws Exception
 	{
 		for (int i = 0; i < factorDeepCopies.size(); i++) 

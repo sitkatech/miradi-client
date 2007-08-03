@@ -42,18 +42,24 @@ public class Paste extends LocationDoer
 			Transferable contents = clipboard.getContents(null);
 			if(!contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor))
 				return;
-			
+
 			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor);
-			DiagramPaster diagramPaster = new DiagramPaster(getDiagramView().getDiagramModel(), list);
+			final String usersChoice = getUsersChoice();
+			if (usersChoice.equals(CANCEL_BUTTON))
+				return;
+				
+			if (! list.atleastOnceFactorExists())
+				return;
+
+			DiagramPaster diagramPaster = createDiagramPasterBaseOnUserChoice(list, usersChoice);
 			if (! diagramPaster.canPaste())
 			{
 				EAM.notifyDialog(EAM.text("Contributing Factors and Direct Threats cannot be pasted into a Results Chain; " +
 											"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
 				return;
 			}
-
-			final String usersChoice = getUsersChoice();
-			choosePasteType(diagramPaster, usersChoice);
+			
+			paste(diagramPaster);
 			clipboard.incrementPasteCount();
 			possiblyNotitfyUserIfDataWasLost(diagramPaster);
 		} 
@@ -79,19 +85,12 @@ public class Paste extends LocationDoer
 		return EAM.choiceDialog(title, body, buttons);
 	}
 	
-	private void choosePasteType(DiagramPaster diagramPaster, String usersChoice) throws Exception
-	{
-		if (usersChoice.equals(CANCEL_BUTTON))
-			return;
-		
+	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
+	{		
 		if (usersChoice.equals(AS_COPY_BUTTON))
-			paste(diagramPaster);
+			return new DiagramPaster(getDiagramView().getDiagramModel(), list);
 	
-		if (! diagramPaster.atleastOnceFactorExists())
-			return;
-	
-		if (usersChoice.equals(AS_ALIAS_BUTTON))
-			pasteAliases(diagramPaster);
+		return new DiagramAliasePaster(getDiagramView().getDiagramModel(), list);
 	}
 
 	private void possiblyNotitfyUserIfDataWasLost(DiagramPaster diagramPaster) throws Exception
@@ -108,13 +107,7 @@ public class Paste extends LocationDoer
 		diagramPaster.pasteFactorsAndLinks(getLocation());
 	}
 	
-	protected void pasteAliases(DiagramPaster diagramPaster)
-	{
-		//FIXME add code here
-	}
-	
 	private final String AS_COPY_BUTTON = EAM.text("Button|As Copy");
 	private final String AS_ALIAS_BUTTON = EAM.text("Button|As Alias");
 	private final String CANCEL_BUTTON = EAM.text("Button|Cancel");
-
 }
