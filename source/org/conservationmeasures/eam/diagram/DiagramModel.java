@@ -265,6 +265,35 @@ public class DiagramModel extends DefaultGraphModel
 		return diagramContents.isResultsChain();
 	}
 	
+	public boolean isAliased(DiagramFactor diagramFactorToUse) throws Exception
+	{
+		DiagramFactorId[] allDiagramFactorIds = project.getAllDiagramFactorIds();
+		for (int i = 0; i < allDiagramFactorIds.length; ++i)
+		{
+			DiagramFactorId diagramFactorId = allDiagramFactorIds[i];
+			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(DiagramFactor.getObjectType(), diagramFactorId));
+			if (areAliases(diagramFactorToUse, diagramFactor))
+				return true;
+		}
+		
+		return false;
+	}
+
+	
+	private boolean areAliases(DiagramFactor diagramFactorToUse, DiagramFactor diagramFactor)
+	{
+		if (diagramFactor == null)
+			return false;
+		
+		if (! diagramFactorToUse.getWrappedORef().equals(diagramFactor.getWrappedORef()))
+			return false;
+		
+		if (diagramFactorToUse.getId().equals(diagramFactor.getId()))
+			return false;
+		
+		return true;
+	}
+
 	public FactorSet getDirectThreatChainNodes(Factor directThreat)
 	{
 		DiagramChainObject chainObject = new DiagramChainObject();
@@ -415,7 +444,7 @@ public class DiagramModel extends DefaultGraphModel
 			throw new Exception("Node doesn't exist, id: " + id);
 		return node;
 	}
-
+	
 	public DiagramFactor getDiagramFactor(FactorId id)
 	{
 		return rawGetFactorByWrappedId(id).getDiagramFactor();	
