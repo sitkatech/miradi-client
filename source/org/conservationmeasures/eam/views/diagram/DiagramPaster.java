@@ -280,9 +280,9 @@ public class DiagramPaster
 		//getDiagramView().getDiagramComponent().addSelectionCells(cells);
 	}
 
-	private ORef createDiagramFactor(ORef wrappedRef, ORef newRef) throws CommandFailedException
+	private ORef createDiagramFactor(ORef oldWrappedRef, ORef newWrappedRef) throws CommandFailedException
 	{
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(newRef);
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(newWrappedRef);
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
 		getProject().executeCommand(createDiagramFactor);
 		
