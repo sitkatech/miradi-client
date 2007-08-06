@@ -190,7 +190,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			drawChainIcon(rect, g2);
 	}
 	
-
 	public static Dimension getSizeWithoutAnnotations(Dimension size)
 	{
 		return new Dimension(size.width, size.height);
@@ -221,18 +220,15 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		icon.paintIcon(null, g2,rectangle.x, rectangle.y);
 	}
 	
-	
 	private Rectangle getResultChainRectWithinNode()
 	{
 		return node.getResultChainRectWithinNode();
 	}
 	
-	
 	private Rectangle getIndicatorRectWithinNode()
 	{
 		return node.getIndicatorRectWithinNode();
 	}
-	
 
 	Color getFillColor()
 	{
@@ -280,7 +276,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	protected static final int PRIORITY_WIDTH = 20;
 	protected static final int PRIORITY_HEIGHT = 10;
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
-
 	
 	ValueOption priority;
 	FactorCell node;
