@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 
-public class DiagramAliasePaster extends DiagramPaster
+public class DiagramAliasPaster extends DiagramPaster
 {
-	public DiagramAliasePaster(DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramAliasPaster(DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
 		super(modelToUse, transferableListToUse);
 	}

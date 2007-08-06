@@ -89,7 +89,7 @@ public class Paste extends LocationDoer
 	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
 	{		
 		if (usersChoice.equals(AS_ALIAS_BUTTON))
-			return new DiagramAliasePaster(getDiagramView().getDiagramModel(), list);
+			return new DiagramAliasPaster(getDiagramView().getDiagramModel(), list);
 		
 		return new DiagramPaster(getDiagramView().getDiagramModel(), list);
 	}
