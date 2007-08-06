@@ -244,6 +244,19 @@ public class DiagramModel extends DefaultGraphModel
 		FactorId id1 = fromDiagramFactor.getWrappedId();
 		FactorId id2 = toDiagramFactor.getWrappedId();
 		
+		return areLinked(id1, id2);
+	}
+
+	public boolean areLinked(ORef fromFactorRef, ORef toFactorRef)
+	{
+		FactorId fromFactorId = FactorId.createFromBaseId(fromFactorRef.getObjectId());
+		FactorId toFactorId = FactorId.createFromBaseId(toFactorRef.getObjectId());
+		
+		return areLinked(fromFactorId, toFactorId);
+	}
+	
+	public boolean areLinked(FactorId id1, FactorId id2)
+	{
 		Vector links = cellInventory.getAllFactorLinks();
 		for(int i = 0; i < links.size(); ++i)
 		{
@@ -253,6 +266,7 @@ public class DiagramModel extends DefaultGraphModel
 			FactorId foundId2 = link.getTo().getWrappedId();
 			if(foundId1.equals(id1) && foundId2.equals(id2))
 				return true;
+			
 			if(foundId1.equals(id2) && foundId2.equals(id1))
 				return true;
 		}
@@ -425,6 +439,12 @@ public class DiagramModel extends DefaultGraphModel
 		FactorCell cellToUpdate = getFactorCellById(diagramFactorId);
 		edit(getNestedAttributeMap(cellToUpdate), null, null, null);
 		notifyListeners(createDiagramModelEvent(cellToUpdate), new ModelEventNotifierFactorChanged());
+	}
+	
+	public boolean doesFactorExist(ORef factorRef)
+	{
+		FactorId factorId = new FactorId(factorRef.getObjectId().asInt());
+		return (rawGetFactorByWrappedId(factorId) != null);
 	}
 	
 	public boolean doesFactorExist(FactorId id)

@@ -13,4 +13,8 @@ public class FactorId extends ObjectId
 		super(idToUse);
 	}
 
+	public static FactorId createFromBaseId(BaseId id)
+	{
+		return new FactorId(id.asInt());
+	}
 }

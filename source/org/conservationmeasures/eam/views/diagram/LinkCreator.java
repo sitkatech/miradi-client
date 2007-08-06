@@ -36,6 +36,21 @@ public class LinkCreator
 		project = projectToUse;
 	}
 	
+	public boolean linkWasRejected(DiagramModel model, ORef fromFactorRef, ORef toFactorRef) throws Exception
+	{
+		if (fromFactorRef.equals(toFactorRef))
+			return true;
+		
+		if (! model.doesFactorExist(fromFactorRef) || ! model.doesFactorExist(toFactorRef))
+			return true;
+
+		if (model.areLinked(fromFactorRef, toFactorRef))
+			return true;
+		
+		return false;
+		
+	}
+	
 	public boolean linkWasRejected(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
 	{
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));

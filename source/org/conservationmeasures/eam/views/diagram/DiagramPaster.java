@@ -177,7 +177,7 @@ public class DiagramPaster
 		return ORef.INVALID;
 	}
 
-	private ORef getFactor(EnhancedJsonObject json, String tag) throws Exception
+	private ORef getFixedupFactorRef(EnhancedJsonObject json, String tag) throws Exception
 	{
 		ORef oldRef = json.getRef(tag);
 		return fixupSingleRef(oldRef);
@@ -304,12 +304,16 @@ public class DiagramPaster
 			String jsonAsString = factorLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
-
+		
 			if (cannotCreateNewFactorLinkFromAnotherProject(json))
 				continue;
 			
-			ORef newFromRef = getFactor(json, FactorLink.TAG_FROM_REF);
-			ORef newToRef = getFactor(json, FactorLink.TAG_TO_REF);	
+			ORef newFromRef = getFixedupFactorRef(json, FactorLink.TAG_FROM_REF);
+			ORef newToRef = getFixedupFactorRef(json, FactorLink.TAG_TO_REF);	
+			
+			LinkCreator linkCreator = new LinkCreator(project);
+			if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
+				continue;
 			
 			int type = json.getInt("Type");
 			CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(newFromRef, newToRef);
