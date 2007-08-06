@@ -27,10 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -57,40 +54,13 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		htmlFormViewer.setFactorCell(cell);
 		htmlFormViewer.setText(formattedLabel);
 		
-		
 		graph = graphToUse;
-		setIsAliased(view, graph);
 		selected = sel;
 		preview = previewMode;
 		installAttributes(view.getAllAttributes());
 		return this;
 	}
 
-	private void setIsAliased(CellView view, JGraph graphToUse)
-	{
-		EAMGraphCell cell = (EAMGraphCell) view.getCell();
-		if (! cell.isFactor())
-			return; 
-		
-		DiagramModel model = (DiagramModel)graphToUse.getModel();
-		FactorCell node = (FactorCell)view.getCell();
-		isAliased = isAliased(model, node);
-	}
-
-	private boolean isAliased(DiagramModel model, FactorCell node)
-	{
-		try
-		{
-			return model.isAliased(node.getDiagramFactor());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		
-		return false;
-	}
-	
 	//Windows 2000 Quirk, this needs to be set or the graphic isn't filled in
 	public static void setPaint(Graphics2D g2, Rectangle rect, Color color) 
 	{
@@ -152,20 +122,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			g2.setStroke(stroke);
 			drawBorder(g2, rect, Color.BLACK);
 		}
-		
-		drawAliasedBorder(g2, rect);
-	}
-
-	private void drawAliasedBorder(Graphics2D g2, Rectangle rect)
-	{
-		if (!isAliased)
-			return;
-		
-		Color color = graph.getHighlightColor();
-		Stroke stroke = getSelectionStroke();
-		g2.setColor(color);
-		g2.setStroke(stroke);
-		drawAliasedBorder(g2, rect, ALIASED_PINK_FACTOR_COLOR);
 	}
 
 	Stroke getStroke()
@@ -333,12 +289,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		g2.setColor(oldColor);
 	}
 	
-	public void drawAliasedBorder(Graphics2D g2, Rectangle rect, Color color)
-	{
-		Rectangle aliasedBorderRect = new Rectangle(rect.x + 2, rect.y + 2, rect.width - 4, rect.height - 4);
-		drawBorder(g2, aliasedBorderRect, color);
-	}
-
 	/*
 	 * This method has a different copyright than the rest of this file,
 	 * because it was copied directly from jgraph's VertexRenderer class:
@@ -389,7 +339,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	private static final int CORNER_SIZE = 20;
 	private static final int HANDLE_SIZE = 4;
 
-	private static final Color ALIASED_PINK_FACTOR_COLOR = new Color(255, 54, 132);
 	private static final Color LIGHT_BLUE = new Color(204,238,255);
 	public static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
 
@@ -400,6 +349,5 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	Color gradientColor;
 	boolean selected;
 	boolean preview;
-	boolean isAliased;
 }
 	
