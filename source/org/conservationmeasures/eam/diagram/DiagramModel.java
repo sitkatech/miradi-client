@@ -267,30 +267,25 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean isAliased(DiagramFactor diagramFactorToUse) throws Exception
 	{
-		DiagramFactorId[] allDiagramFactorIds = project.getAllDiagramFactorIds();
-		for (int i = 0; i < allDiagramFactorIds.length; ++i)
+		DiagramFactor[] allDiagramFactors = project.getAllDiagramFactors();
+		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
-			DiagramFactorId diagramFactorId = allDiagramFactorIds[i];
-			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(DiagramFactor.getObjectType(), diagramFactorId));
-			if (areAliases(diagramFactorToUse, diagramFactor))
+			DiagramFactor possibleAliasDiagramFactor = allDiagramFactors[i];
+			if (isAliasOf(diagramFactorToUse, possibleAliasDiagramFactor))
 				return true;
 		}
 		
 		return false;
 	}
 
-	
-	private boolean areAliases(DiagramFactor diagramFactorToUse, DiagramFactor diagramFactor)
+	private boolean isAliasOf(DiagramFactor diagramFactorToUse, DiagramFactor possibleAliasDiagramFactor)
 	{
-		if (diagramFactor == null)
+		if (diagramFactorToUse.getId().equals(possibleAliasDiagramFactor.getId()))
 			return false;
-		
-		if (! diagramFactorToUse.getWrappedORef().equals(diagramFactor.getWrappedORef()))
+
+		if (! diagramFactorToUse.getWrappedORef().equals(possibleAliasDiagramFactor.getWrappedORef()))
 			return false;
-		
-		if (diagramFactorToUse.getId().equals(diagramFactor.getId()))
-			return false;
-		
+				
 		return true;
 	}
 

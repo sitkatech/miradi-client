@@ -402,3 +402,4 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	boolean preview;
 	boolean isAliased;
 }
+	
