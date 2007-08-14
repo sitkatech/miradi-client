@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.FactorDeleteHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -47,7 +46,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		
 		DiagramView diagramView = getDiagramView();
 		DiagramModel model = diagramView.getDiagramModel();
-		DiagramObject diagramObject = model.getDiagramObject();
 
 		project.executeCommand(new CommandBeginTransaction());
 		try
@@ -66,7 +64,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactor())
 				{
-					new FactorDeleteHelper(model).deleteFactor(diagramObject, (FactorCell)cell);
+					new FactorDeleteHelper(model).deleteFactor((FactorCell)cell);
 				}
 			}
 		}

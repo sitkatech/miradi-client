@@ -38,20 +38,21 @@ public class FactorDeleteHelper
 	public FactorDeleteHelper(DiagramModel modelToUse)
 	{
 		currentModel = modelToUse;
-		project = currentModel.getProject();	
+		project = currentModel.getProject();
+		diagramObject = currentModel.getDiagramObject();
 	}
 	
-	public void deleteFactor(DiagramObject diagramObject, DiagramFactor factorToDelete) throws Exception
+	public void deleteFactor(DiagramFactor factorToDelete) throws Exception
 	{
 		FactorCell factorCellToDelete = currentModel.getFactorCellById(factorToDelete.getDiagramFactorId());
-		deleteFactor(diagramObject, factorCellToDelete);
+		deleteFactor(factorCellToDelete);
 	}
 
-	public void deleteFactor(DiagramObject diagramObject, FactorCell factorToDelete) throws Exception
+	public void deleteFactor(FactorCell factorToDelete) throws Exception
 	{
 		removeFromThreatReductionResults(factorToDelete);
 		removeFromView(factorToDelete.getWrappedId());
-		removeNodeFromDiagram(factorToDelete, diagramObject);
+		removeNodeFromDiagram(factorToDelete);
 		deleteDiagramFactor(factorToDelete.getDiagramFactorId());
 	
 		Factor underlyingNode = factorToDelete.getUnderlyingObject();
@@ -104,7 +105,7 @@ public class FactorDeleteHelper
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	private void removeNodeFromDiagram(FactorCell factorToDelete, DiagramObject diagramObject) throws CommandFailedException, ParseException
+	private void removeNodeFromDiagram(FactorCell factorToDelete) throws CommandFailedException, ParseException
 	{
 		DiagramFactorId idToDelete = factorToDelete.getDiagramFactorId();
 		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
@@ -176,4 +177,5 @@ public class FactorDeleteHelper
 	
 	Project project;
 	DiagramModel currentModel;
+	DiagramObject diagramObject;
 }
