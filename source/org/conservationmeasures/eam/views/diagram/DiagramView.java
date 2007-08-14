@@ -368,7 +368,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private void createResultsChainTab() throws Exception
 	{
 		ResultsChainDiagramPanel resultsChainPanel = new ResultsChainDiagramPanel(getMainWindow());
-		addTab(EAM.text("Results Chain"), resultsChainPanel);
+		addTab(EAM.text("Results Chains"), resultsChainPanel);
 	}
 
 	private void createConceptualModelDiagramTab() throws Exception
