@@ -279,7 +279,7 @@ public class DiagramModel extends DefaultGraphModel
 		return diagramContents.isResultsChain();
 	}
 	
-	public boolean isAliased(DiagramFactor diagramFactorToCheck) throws Exception
+	public boolean areAliases(DiagramFactor diagramFactorToCheck) throws Exception
 	{
 		DiagramFactor[] allDiagramFactors = project.getAllDiagramFactors();
 		for (int i = 0; i < allDiagramFactors.length; ++i)
@@ -292,12 +292,14 @@ public class DiagramModel extends DefaultGraphModel
 		return false;
 	}
 
-	private boolean isAliasOf(DiagramFactor diagramFactorToUse, DiagramFactor possibleAliasDiagramFactor)
+	private boolean isAliasOf(DiagramFactor diagramFactorToCheck, DiagramFactor possibleAliasDiagramFactor)
 	{
-		if (diagramFactorToUse.getId().equals(possibleAliasDiagramFactor.getId()))
+		final boolean isSameDiagramFactor = diagramFactorToCheck.getId().equals(possibleAliasDiagramFactor.getId());
+		if (isSameDiagramFactor)
 			return false;
 
-		if (! diagramFactorToUse.getWrappedORef().equals(possibleAliasDiagramFactor.getWrappedORef()))
+		final boolean isDifferentWrappedFactor = ! diagramFactorToCheck.getWrappedORef().equals(possibleAliasDiagramFactor.getWrappedORef());
+		if (isDifferentWrappedFactor)
 			return false;
 				
 		return true;

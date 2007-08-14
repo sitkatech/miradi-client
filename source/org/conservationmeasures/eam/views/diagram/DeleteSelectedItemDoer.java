@@ -66,7 +66,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactor())
 				{
-					new FactorDeleteHelper(project, model).deleteFactor((FactorCell)cell, diagramObject);
+					new FactorDeleteHelper(model).deleteFactor((FactorCell)cell, diagramObject);
 				}
 			}
 		}

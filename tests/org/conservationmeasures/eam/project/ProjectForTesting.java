@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
@@ -161,8 +162,11 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	public BaseId addItemToList(int sourceType, BaseId id, int type, String tag) throws Exception
 	{
 		BaseId baseId = createObjectAndReturnId(type);
-		IdList idList = new IdList(new BaseId[] {baseId});
-		setObjectData(sourceType, id, tag, idList.toString());
+		BaseObject foundObject = findObject(new ORef(sourceType, id));
+		IdList currentIdList = new IdList(foundObject.getData(tag));
+		currentIdList.add(baseId);
+		setObjectData(sourceType, id, tag, currentIdList.toString());
+
 		return baseId;
 	}
 

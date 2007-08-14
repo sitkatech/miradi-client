@@ -79,6 +79,7 @@ import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
 import org.conservationmeasures.eam.project.TestCausePool;
 import org.conservationmeasures.eam.project.TestChainManager;
+import org.conservationmeasures.eam.project.TestFactorDeleteHelper;
 import org.conservationmeasures.eam.project.TestFactorLinkPool;
 import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestIntermediateResultPool;
@@ -162,6 +163,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProjectZipper.class));
 		suite.addTest(new TestSuite(TestProjectUnzipper.class));
 		suite.addTest(new TestSuite(TestSlidePool.class));
+		suite.addTest(new TestSuite(TestFactorDeleteHelper.class));
 		
 		// utils package
 		suite.addTest(new TestSuite(TestEnhancedJsonObject.class));

@@ -760,7 +760,7 @@ public class TestProject extends EAMTestCase
 	private void deleteNodeAndRemoveFromDiagram(ProjectForTesting diskProject, DiagramFactor diagramFactor) throws Exception
 	{
 		DiagramModel model = diskProject.getDiagramModel();
-		FactorDeleteHelper factorHelper = new FactorDeleteHelper(diskProject, model);
+		FactorDeleteHelper factorHelper = new FactorDeleteHelper(model);
 		factorHelper.deleteFactor(model.getFactorCellById(diagramFactor.getDiagramFactorId()), diskProject.getDiagramObject());
 	}
 	

@@ -106,7 +106,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			}
 			
 			DiagramComponent diagram = (DiagramComponent)graph;
-			isAliased = model.isAliased(node.getDiagramFactor());
+			isAliased = model.areAliases(node.getDiagramFactor());
 			
 			indicatorText = null;
 			if(diagram.areIndicatorsVisible())

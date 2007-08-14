@@ -34,10 +34,10 @@ import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
 public class FactorDeleteHelper
 {
-	public FactorDeleteHelper(Project projectToUse, DiagramModel modelToUse)
+	public FactorDeleteHelper(DiagramModel modelToUse)
 	{
-		project = projectToUse;
 		currentModel = modelToUse;
+		project = currentModel.getProject();	
 	}
 
 	// TODO: This method should have unit tests
