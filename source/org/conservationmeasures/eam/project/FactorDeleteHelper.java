@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -39,7 +40,14 @@ public class FactorDeleteHelper
 		currentModel = modelToUse;
 		project = currentModel.getProject();	
 	}
+	
+	public void deleteFactor(DiagramFactor factorToDelete, DiagramObject diagramObject) throws Exception
+	{
+		FactorCell factorCellToDelete = currentModel.getFactorCellById(factorToDelete.getDiagramFactorId());
+		deleteFactor(factorCellToDelete, diagramObject);
+	}
 
+	//TODO remove this todo,  there is now a test for it
 	// TODO: This method should have unit tests
 	public void deleteFactor(FactorCell factorToDelete, DiagramObject diagramObject) throws Exception
 	{
