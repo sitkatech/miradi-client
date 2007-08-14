@@ -47,8 +47,6 @@ public class FactorDeleteHelper
 		deleteFactor(factorCellToDelete, diagramObject);
 	}
 
-	//TODO remove this todo,  there is now a test for it
-	// TODO: This method should have unit tests
 	public void deleteFactor(FactorCell factorToDelete, DiagramObject diagramObject) throws Exception
 	{
 		removeFromThreatReductionResults(factorToDelete);
