@@ -41,13 +41,13 @@ public class FactorDeleteHelper
 		project = currentModel.getProject();	
 	}
 	
-	public void deleteFactor(DiagramFactor factorToDelete, DiagramObject diagramObject) throws Exception
+	public void deleteFactor(DiagramObject diagramObject, DiagramFactor factorToDelete) throws Exception
 	{
 		FactorCell factorCellToDelete = currentModel.getFactorCellById(factorToDelete.getDiagramFactorId());
-		deleteFactor(factorCellToDelete, diagramObject);
+		deleteFactor(diagramObject, factorCellToDelete);
 	}
 
-	public void deleteFactor(FactorCell factorToDelete, DiagramObject diagramObject) throws Exception
+	public void deleteFactor(DiagramObject diagramObject, FactorCell factorToDelete) throws Exception
 	{
 		removeFromThreatReductionResults(factorToDelete);
 		removeFromView(factorToDelete.getWrappedId());

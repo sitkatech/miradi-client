@@ -761,7 +761,7 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = diskProject.getDiagramModel();
 		FactorDeleteHelper factorHelper = new FactorDeleteHelper(model);
-		factorHelper.deleteFactor(model.getFactorCellById(diagramFactor.getDiagramFactorId()), diskProject.getDiagramObject());
+		factorHelper.deleteFactor(diskProject.getDiagramObject(), model.getFactorCellById(diagramFactor.getDiagramFactorId()));
 	}
 	
 	public void testCreateNewProject() throws Exception

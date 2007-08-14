@@ -86,7 +86,7 @@ public class DiagramObjectDeleteHelper
 	{		
 		DiagramModel diagramModel = diagramPanel.getDiagramModel();
 		FactorDeleteHelper factorDeleteHelper = new FactorDeleteHelper(diagramModel);
-		factorDeleteHelper.deleteFactor(diagramFactor, diagramModel.getDiagramObject());
+		factorDeleteHelper.deleteFactor(diagramModel.getDiagramObject(), diagramFactor);
 	}
 
 	private void deleteAllDiagramFactorLinks() throws Exception
