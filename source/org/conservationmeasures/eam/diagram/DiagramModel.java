@@ -279,13 +279,13 @@ public class DiagramModel extends DefaultGraphModel
 		return diagramContents.isResultsChain();
 	}
 	
-	public boolean isAliased(DiagramFactor diagramFactorToUse) throws Exception
+	public boolean isAliased(DiagramFactor diagramFactorToCheck) throws Exception
 	{
 		DiagramFactor[] allDiagramFactors = project.getAllDiagramFactors();
 		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
 			DiagramFactor possibleAliasDiagramFactor = allDiagramFactors[i];
-			if (isAliasOf(diagramFactorToUse, possibleAliasDiagramFactor))
+			if (isAliasOf(diagramFactorToCheck, possibleAliasDiagramFactor))
 				return true;
 		}
 		
