@@ -8,10 +8,7 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestFactorDataHelper extends EAMTestCase 
@@ -20,88 +17,45 @@ public class TestFactorDataHelper extends EAMTestCase
 	{
 		super(name);
 	}
-		
-	public void setUp() throws Exception 
-	{
-		project = new ProjectForTesting(getName());
-
-		diagramFactorId1 = project.createAndAddFactorToDiagram(ObjectType.TARGET); 
-		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
-
-		diagramFactorId2 = project.createAndAddFactorToDiagram(ObjectType.TARGET);
-		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
-		
-		diagramFactorId3 = project.createAndAddFactorToDiagram(ObjectType.TARGET);
-		
-		super.setUp();
-	}
 	
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
+
+	public void tearDown() throws Exception
+	{
+		super.tearDown();
+		project.close();
+	}
+
 	public void testGetNewLocation()
 	{
-		fail();
-	}
-
-	//FIXME remove this code and finish writing test for this class
-	public void testSetGetLocation()
-	{
-//		int insertX = 0;
-//		int insertY = 0;
-//		Point insertionPoint = new Point(insertX, insertY);
-//		FactorDataHelper dataHelper = new FactorDataHelper(insertionPoint, new Point(20, 50));
-//		//dataHelper.setOriginalLocation(diagramFactorId1, nodeLocation1);
+		Point insertLocation = new Point(500, 500);
+		Point diagramFactor1Location = new Point(100, 100);
+		Point diagramFactor2Location = new Point(200, 200);
+		Point upperMostLeftMostCorner = new Point(100, 100);
+		FactorDataHelper helper = new FactorDataHelper(insertLocation, upperMostLeftMostCorner);
 		
-//		Point newNode1Location = dataHelper.getNewLocation(nodeLocation1);
-//		assertEquals(insertX, newNode1Location.x);
-//		assertEquals(insertY, newNode1Location.y);
-//		
-		//dataHelper.setOriginalLocation(diagramFactorId2, nodeLocation2);
-		//newNode1Location = dataHelper.getNewLocation(nodeLocation1);
-		//Point newNode2Location = dataHelper.getNewLocation(nodeLocation2);
-		//assertEquals(insertX + (nodeLocation1x - nodeLocation2x), newNode1Location.x);
-		//assertEquals(insertY + (nodeLocation1y - nodeLocation2y), newNode1Location.y);
-		//assertEquals(insertX, newNode2Location.x);
-		//assertEquals(insertY, newNode2Location.y);
-
-//		insertX = 50;
-//		insertY = 50;
-//		insertionPoint.setLocation(insertX, insertY); 
-//		FactorDataHelper dataHelper2 = new FactorDataHelper(insertionPoint, new Point(0, 0));
-//		dataHelper2.setOriginalLocation(diagramFactorId1, nodeLocation1);
-		//newNode1Location = dataHelper2.getNewLocation(diagramFactorId1);
-////		assertEquals(insertX, newNode1Location.x);
-//		assertEquals(insertY, newNode1Location.y);
-//		
-//		dataHelper2.setOriginalLocation(diagramFactorId2, nodeLocation2);
-//		//newNode1Location = dataHelper2.getNewLocation(diagramFactorId1);
-//		int deltaX = 45;
-//		int deltaY = 40;
-//		assertEquals(nodeLocation1x+deltaX, newNode1Location.x);
-//		assertEquals(nodeLocation1y+deltaY, newNode1Location.y);
-
-		//newNode2Location = dataHelper2.getNewLocation(diagramFactorId2);
-		//assertEquals(nodeLocation2x+deltaX, newNode2Location.x);
-		//assertEquals(nodeLocation2y+deltaY, newNode2Location.y);
+		Point newDiagramFactor1Location = helper.getNewLocation(diagramFactor1Location);
+		assertEquals("wrong location for diagram factor 1?", insertLocation, newDiagramFactor1Location);
+		
+		Point newDiagramFactor2Location = helper.getNewLocation(diagramFactor2Location);
+		assertEquals("wrong location for diagram factor 2?", new Point(600, 600), newDiagramFactor2Location); 
 	}
 	
-	final FactorId originalNodeId1 = new FactorId(1);
-	final FactorId originalNodeId2 = new FactorId(2);
-	final FactorId originalNodeId3 = new FactorId(3);
-	final DiagramFactorId newNodeId1 = new DiagramFactorId(5);
-	final DiagramFactorId newNodeId2 = new DiagramFactorId(6);
-	final DiagramFactorId newNodeId3 = new DiagramFactorId(7);
-	final FactorId unknownModelId = new FactorId(10);
-	final DiagramFactorId unknownDiagramId = new DiagramFactorId(111);
-	final int nodeLocation1x = 20;
-	final int nodeLocation1y = 50;
-	final int nodeLocation2x = 5;
-	final int nodeLocation2y = 10;
-	
-	DiagramFactorId diagramFactorId1;
-	DiagramFactorId diagramFactorId2;
-	DiagramFactorId diagramFactorId3;
-	
-	Point nodeLocation1;
-	Point nodeLocation2;
+	public void testGetSnappedTranslatedPoint()
+	{
+		int offset = 9;
+		Point insertLocation = new Point(500, 500);
+		Point diagramFactor1Location = new Point(100, 100);
+		Point upperMostLeftMostCorner = new Point(100, 100);
+		
+		FactorDataHelper helper = new FactorDataHelper(insertLocation, upperMostLeftMostCorner);
+		Point translatedSnappedOffsettedPoint1 = helper.getSnappedTranslatedPoint(project, diagramFactor1Location, offset);
+		assertEquals("wrong location for diagram factor 1?", new Point(510, 510), translatedSnappedOffsettedPoint1);
+	}
 	
 	ProjectForTesting project;
 }
