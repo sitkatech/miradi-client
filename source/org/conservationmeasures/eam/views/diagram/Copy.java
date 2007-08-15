@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -39,8 +40,9 @@ public class Copy extends ViewDoer
 
 	private void copySelectedItemsToMiradiClipboard() throws Exception
 	{
-		EAMGraphCell[] selectedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		TransferableMiradiList miradiList = new TransferableMiradiList(getProject());
+		final DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
+		EAMGraphCell[] selectedCells = diagramPanel.getSelectedAndRelatedCells();
+		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), diagramPanel.getDiagramObject());
 		miradiList.storeData(selectedCells);
 		
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();

@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 
 public class Paste extends LocationDoer
 {
@@ -75,8 +76,11 @@ public class Paste extends LocationDoer
 	private String getUsersChoice(TransferableMiradiList list) throws ParseException
 	{
 		if (! list.atleastOnceFactorExists())
-			return "";
+			return AS_COPY_BUTTON;
 
+		if (isPastingInSameDiagramAsCopiedFrom(list))
+			return AS_COPY_BUTTON;
+		
 		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Paste As...");
 		String[] body = {EAM.text("Do you want to paste full new copies of the factors, or aliases to the existing factors? " +
@@ -84,6 +88,14 @@ public class Paste extends LocationDoer
 								"If you paste aliases, any changes will automatically affect both the original and the new alias.")};
 	
 		return EAM.choiceDialog(title, body, buttons);
+	}
+
+	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
+	{
+		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectCopiedFrom().getRef();
+		ORef diagramObjectRefBeingPastedInto = getDiagramView().getDiagramPanel().getDiagramObject().getRef();
+		
+		return diagramObjecRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);
 	}
 	
 	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception

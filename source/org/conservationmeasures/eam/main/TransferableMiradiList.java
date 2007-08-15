@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectDeepCopier;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
@@ -30,11 +31,12 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TransferableMiradiList implements Transferable
 {
-	public TransferableMiradiList(Project projectToUse)
+	public TransferableMiradiList(Project projectToUse, DiagramObject diagramObjectCopiedFromToUse)
 	{
 		super();
 		project = projectToUse;
 		projectName = project.getFilename();
+		diagramObjectCopiedFrom = diagramObjectCopiedFromToUse;
 	}
 
 	public String getProjectFileName()
@@ -172,11 +174,17 @@ public class TransferableMiradiList implements Transferable
 	{
 		return rectWithUpperMostLeftMostCorner.getLocation();
 	}
+	
+	public DiagramObject getDiagramObjectCopiedFrom()
+	{
+		return diagramObjectCopiedFrom;
+	}
 
 	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
 
 	String projectName;
 	Project project;
+	DiagramObject diagramObjectCopiedFrom;
 
 	Vector factorDeepCopies;
 	Vector diagramFactorDeepCopies;

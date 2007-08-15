@@ -238,7 +238,7 @@ public class TestProject extends EAMTestCase
 		
 		Vector cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
-		TransferableMiradiList transferableList = new TransferableMiradiList(project);
+		TransferableMiradiList transferableList = new TransferableMiradiList(project, project.getDiagramObject());
 		transferableList.storeData(selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
 		assertEquals(2, model.getFactorLinks(node1).size());
@@ -473,7 +473,7 @@ public class TestProject extends EAMTestCase
 		
 		Vector cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
-		TransferableMiradiList transferableList = new TransferableMiradiList(project);
+		TransferableMiradiList transferableList = new TransferableMiradiList(project, project.getDiagramObject());
 		transferableList.storeData(selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
 		assertEquals(2, model.getFactorLinks(node1).size());
@@ -495,7 +495,7 @@ public class TestProject extends EAMTestCase
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		Object[] selectedCells = new FactorCell[] {node1};
-		TransferableMiradiList transferableList = new TransferableMiradiList(project);
+		TransferableMiradiList transferableList = new TransferableMiradiList(project, project.getDiagramObject());
 		transferableList.storeData(selectedCells);
 		
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
