@@ -243,7 +243,6 @@ public class DiagramPaster
 	private String offsetLocation(EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
 	{
 		Point originalLocation = json.getPoint(DiagramFactor.TAG_LOCATION);
-		dataHelper.setOriginalLocation(diagramFactorId, originalLocation);
 		int offsetToAvoidOverlaying = dataHelper.getOffset(getProject());
 		Point transLatedPoint = dataHelper.getSnappedTranslatedPoint(getProject(), originalLocation, offsetToAvoidOverlaying);
 		
