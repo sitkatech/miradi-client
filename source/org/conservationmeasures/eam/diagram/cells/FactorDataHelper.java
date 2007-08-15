@@ -55,10 +55,9 @@ public class FactorDataHelper
 
 	public Point getNewLocation(DiagramFactorId originalNodeId)
 	{
-		Point validatednsertionPoint = getValidatedInsertionPoint(insertionPoint);
 		Point originalNodeLocation = (Point)mapNodeLocations.get(getKey(originalNodeId));
 		
-		return getLocation(originalNodeLocation, validatednsertionPoint);
+		return getNewLocation(originalNodeLocation);
 	}
 	
 	public Point getSnappedTranslatedPoint(Project project, Point originalPoint, int offsetToAvoidOverlaying)
