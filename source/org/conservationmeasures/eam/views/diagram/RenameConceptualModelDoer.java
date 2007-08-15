@@ -19,4 +19,9 @@ public class RenameConceptualModelDoer extends RenameDiagramObjectDoer
 	{
 		return ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF;
 	}
+	
+	public boolean isLastPage()
+	{
+		return false;
+	}
 }

@@ -18,4 +18,9 @@ public class DeleteConceptualModelPageDoer extends DeleteDiagramPageDoer
 	{
 		return ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF;
 	}
+	
+	public boolean isLastPage()
+	{
+		return getProject().getConceptualModelDiagramPool().size() == 1;
+	}
 }

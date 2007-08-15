@@ -25,6 +25,9 @@ abstract public class DiagramPageDoer extends ObjectsDoer
 		if (isInvalidSelection())
 			return false;
 		
+		if (isLastPage())
+			return false;
+		
 		return true;
 	}
 	
@@ -47,4 +50,6 @@ abstract public class DiagramPageDoer extends ObjectsDoer
 	abstract public String getDiagramObjectTag();
 	
 	abstract public boolean isCorrectTab();
+	
+	abstract public boolean isLastPage();
 }

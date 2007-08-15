@@ -18,4 +18,9 @@ public class DeleteResultsChainDoer extends DeleteDiagramPageDoer
 	{
 		return ViewData.TAG_CURRENT_RESULTS_CHAIN_REF;
 	}
+	
+	public boolean isLastPage()
+	{
+		return false;
+	}
 }
