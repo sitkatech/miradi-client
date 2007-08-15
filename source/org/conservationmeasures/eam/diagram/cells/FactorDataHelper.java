@@ -86,9 +86,10 @@ public class FactorDataHelper
 		if (upperLeft == null)
 			return new Point(0, 0);
 		
-		int deltaX = point.x - upperLeft.x;
-		int deltaY = point.y - upperLeft.y;
-		return new Point(deltaX, deltaY);	
+		Point translatedPoint = new Point(point);
+		translatedPoint.translate(- upperLeft.x, - upperLeft.y);
+
+		return translatedPoint;	
 	}
 
 	private Point getLeftmostUppermostCorner()
