@@ -59,7 +59,7 @@ public class DiagramPaster
 	
 	public void pasteFactors(Point startPoint) throws Exception
 	{	
-		dataHelper = new FactorDataHelper(startPoint);
+		dataHelper = new FactorDataHelper(startPoint, transferableList.getUpperMostLeftMostCorner());
 		createNewFactors();	
 		createNewDiagramFactors();
 	}

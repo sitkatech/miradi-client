@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.main;
 
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -96,7 +98,22 @@ public class TransferableMiradiList implements Transferable
 	
 		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
 		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(diagramFactor);
-		diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);	
+		diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);
+		
+		calculateUpperMostLeftMostCorner(diagramFactor);
+	}
+
+	private void calculateUpperMostLeftMostCorner(DiagramFactor diagramFactor)
+	{
+		Point location = diagramFactor.getLocation();
+		if (rectWithUpperMostLeftMostCorner == null)
+		{
+			rectWithUpperMostLeftMostCorner = new Rectangle(location);
+		}
+		else
+		{
+			rectWithUpperMostLeftMostCorner.add(location);
+		}
 	}
 
 	private void addFactorLinkDeepCopies(ObjectDeepCopier deepCopier, EAMGraphCell cell)
@@ -150,6 +167,11 @@ public class TransferableMiradiList implements Transferable
 	{
 		return factorLinkDeepCopies;
 	}
+	
+	public Point getUpperMostLeftMostCorner()
+	{
+		return rectWithUpperMostLeftMostCorner.getLocation();
+	}
 
 	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
 
@@ -160,4 +182,6 @@ public class TransferableMiradiList implements Transferable
 	Vector diagramFactorDeepCopies;
 	Vector factorLinkDeepCopies;
 	Vector diagramLinkDeepCopies;
+	Point upperMostLeftMostCorner;
+	Rectangle rectWithUpperMostLeftMostCorner;
 }

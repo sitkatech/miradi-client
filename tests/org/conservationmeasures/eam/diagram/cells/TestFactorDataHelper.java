@@ -43,7 +43,7 @@ public class TestFactorDataHelper extends EAMTestCase
 		int insertX = 0;
 		int insertY = 0;
 		Point insertionPoint = new Point(insertX, insertY);
-		FactorDataHelper dataHelper = new FactorDataHelper(insertionPoint);
+		FactorDataHelper dataHelper = new FactorDataHelper(insertionPoint, new Point(0, 0));
 		dataHelper.setOriginalLocation(diagramFactorId1, nodeLocation1);
 		
 		Point newNode1Location = dataHelper.getNewLocation(diagramFactorId1);
@@ -61,7 +61,7 @@ public class TestFactorDataHelper extends EAMTestCase
 		insertX = 50;
 		insertY = 50;
 		insertionPoint.setLocation(insertX, insertY); 
-		FactorDataHelper dataHelper2 = new FactorDataHelper(insertionPoint);
+		FactorDataHelper dataHelper2 = new FactorDataHelper(insertionPoint, new Point(0, 0));
 		dataHelper2.setOriginalLocation(diagramFactorId1, nodeLocation1);
 		newNode1Location = dataHelper2.getNewLocation(diagramFactorId1);
 		assertEquals(insertX, newNode1Location.x);

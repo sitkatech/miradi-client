@@ -7,9 +7,7 @@
 package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -18,9 +16,10 @@ import org.conservationmeasures.eam.project.Project;
 //TODO come up with a better name
 public class FactorDataHelper 
 {
-	public FactorDataHelper(Point insertionPointToUse)
+	public FactorDataHelper(Point insertionPointToUse, Point upperMostLeftMostCornerToUse)
 	{
 		insertionPoint = insertionPointToUse;
+		upperMostLeftMostCorner = upperMostLeftMostCornerToUse;
 	}
 
 	public void setOriginalLocation(DiagramFactorId originalNodeId, Point originalLocation)
@@ -65,7 +64,7 @@ public class FactorDataHelper
 	private Point getValidatedInsertionPoint(Point insertionPointToValidate)
 	{
 		if (insertionPointToValidate == null)
-			return  getLeftmostUppermostCorner();
+			return  upperMostLeftMostCorner;
 		
 		return insertionPointToValidate;
 	}
@@ -82,7 +81,7 @@ public class FactorDataHelper
 	
 	private Point computeDeltas(Point point)
 	{
-		Point upperLeft = getLeftmostUppermostCorner();
+		Point upperLeft = upperMostLeftMostCorner;
 		if (upperLeft == null)
 			return new Point(0, 0);
 		
@@ -91,28 +90,9 @@ public class FactorDataHelper
 
 		return translatedPoint;	
 	}
-
-	private Point getLeftmostUppermostCorner()
-	{
-		if (mapNodeLocations.size() == 0)
-			return null;
-		
-		Rectangle rect = null;
-		
-		for (Iterator iter = mapNodeLocations.values().iterator(); iter.hasNext();) 
-		{
-			Point nodeLocation = (Point) iter.next();
-			if(rect==null)
-				rect = new Rectangle(nodeLocation);
-			else
-				rect.add(nodeLocation);
-		}
-		
-		Point upperLeft = rect.getLocation();
-		return upperLeft;
-	}
 	
 	HashMap mapNodeLocations = new HashMap();
 	HashMap mapNodeIds = new HashMap();
 	Point insertionPoint;
+	Point upperMostLeftMostCorner;
 }
