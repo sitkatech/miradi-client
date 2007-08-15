@@ -28,11 +28,6 @@ public class FactorDataHelper
 		mapNodeLocations.put(getKey(originalNodeId), originalLocation);
 	}
 
-	public Point getInsertionLocation()
-	{
-		return insertionPoint;
-	}
-	
 	public Point getNewLocation(Point originalLocation)
 	{
 		Point validatedInsertionPoint = getValidatedInsertionPoint(insertionPoint);		
@@ -85,7 +80,7 @@ public class FactorDataHelper
 		return new Integer(key);
 	}
 	
-	public Point computeDeltas(Point point)
+	private Point computeDeltas(Point point)
 	{
 		Point upperLeft = getLeftmostUppermostCorner();
 		if (upperLeft == null)
@@ -96,7 +91,7 @@ public class FactorDataHelper
 		return new Point(deltaX, deltaY);	
 	}
 
-	public Point getLeftmostUppermostCorner()
+	private Point getLeftmostUppermostCorner()
 	{
 		if (mapNodeLocations.size() == 0)
 			return null;
