@@ -3,6 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
+//TODO place this class in the better fit package
 package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Point;
