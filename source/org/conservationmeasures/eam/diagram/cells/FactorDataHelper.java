@@ -49,8 +49,12 @@ public class FactorDataHelper
 	
 	public Point getNewLocation(Point originalLocation)
 	{
-		Point validatedInsertionPoint = getValidatedInsertionPoint(insertionPoint);
-		return getLocation(originalLocation, validatedInsertionPoint);
+		Point validatedInsertionPoint = getValidatedInsertionPoint(insertionPoint);		
+		Point delta = computeDeltas(validatedInsertionPoint);
+		Point translatedPoint = new Point(originalLocation);
+		translatedPoint.translate(delta.x, delta.y);
+		
+		return translatedPoint;
 	}
 
 	public Point getNewLocation(DiagramFactorId originalNodeId)
@@ -85,15 +89,6 @@ public class FactorDataHelper
 		return insertionPointToValidate;
 	}
 
-	private Point getLocation(Point originalLocation, Point point)
-	{
-		Point delta = computeDeltas(point);
-		int originalX = originalLocation.x;
-		int originalY = originalLocation.y;
-		
-		return new Point(originalX + delta.x, originalY + delta.y);
-	}
-	
 	private void setInitialMappingOfIdsToOriginalIds(DiagramFactorId[] diagramFactorIds) 
 	{
 		for (int i = 0; i < diagramFactorIds.length; i++)
