@@ -38,8 +38,6 @@ public class FactorDeleteHelper
 	public FactorDeleteHelper(DiagramModel modelToUse)
 	{
 		currentModel = modelToUse;
-		project = currentModel.getProject();
-		diagramObject = currentModel.getDiagramObject();
 	}
 	
 	public void deleteFactor(DiagramFactor factorToDelete) throws Exception
@@ -67,23 +65,23 @@ public class FactorDeleteHelper
 	private void removeFromThreatReductionResults(FactorCell factorToDelete) throws CommandFailedException
 	{
 		Factor factor = factorToDelete.getUnderlyingObject();
-		EAMObjectPool pool = project.getPool(ObjectType.THREAT_REDUCTION_RESULT);
+		EAMObjectPool pool = getProject().getPool(ObjectType.THREAT_REDUCTION_RESULT);
 		ORefList orefList = pool.getORefList();
 		for (int i = 0; i < orefList.size(); ++i)
 		{
-			ThreatReductionResult threatReductionResult = (ThreatReductionResult) project.findObject(orefList.get(i));
+			ThreatReductionResult threatReductionResult = (ThreatReductionResult) getProject().findObject(orefList.get(i));
 			ORef directThreatRef = ORef.createFromString(threatReductionResult.getRelatedDirectThreatRefAsString());
 			if (! directThreatRef.equals(factor.getRef()))
 				continue;
 			
 			CommandSetObjectData setDirectThreat = new CommandSetObjectData(threatReductionResult.getRef(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, ORef.INVALID.toString());
-			project.executeCommand(setDirectThreat);
+			getProject().executeCommand(setDirectThreat);
 		}
 	}
 
 	private boolean canDeleteFactor(Factor factorToDelete)
 	{
-		ObjectManager objectManager = project.getObjectManager();
+		ObjectManager objectManager = getProject().getObjectManager();
 		ORefList referrers = factorToDelete.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_FACTOR, factorToDelete.getRef());
 		if (referrers.size() > 0)
 			return false;
@@ -108,7 +106,7 @@ public class FactorDeleteHelper
 	private void removeNodeFromDiagram(FactorCell factorToDelete) throws CommandFailedException, ParseException
 	{
 		DiagramFactorId idToDelete = factorToDelete.getDiagramFactorId();
-		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
+		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
 		getProject().executeCommand(removeDiagramFactor);
 		
 		Command[] commandsToClear = factorToDelete.getDiagramFactor().createCommandsToClear();
@@ -170,12 +168,15 @@ public class FactorDeleteHelper
 		}
 	}
 	
-	private Project getProject()
+	private DiagramObject getDiagramObject()
 	{
-		return project;
+		return currentModel.getDiagramObject();
 	}
 	
-	Project project;
+	private Project getProject()
+	{
+		return currentModel.getProject();
+	}
+	
 	DiagramModel currentModel;
-	DiagramObject diagramObject;
 }
