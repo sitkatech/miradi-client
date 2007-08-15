@@ -17,7 +17,6 @@ public class ActionCreateConceptualModel extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Create Conceptual Model");
+		return EAM.text("Action|Create Conceptual Model Page");
 	}
-
 }
