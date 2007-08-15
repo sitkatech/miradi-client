@@ -18,25 +18,11 @@ import org.conservationmeasures.eam.project.Project;
 //TODO come up with a better name
 public class FactorDataHelper 
 {
-	public FactorDataHelper(DiagramFactorId[] diagramFactorIds, Point insertionPointToUse)
+	public FactorDataHelper(Point insertionPointToUse)
 	{
-		setInitialMappingOfIdsToOriginalIds(diagramFactorIds);
 		insertionPoint = insertionPointToUse;
 	}
 
-	public void setNewId(DiagramFactorId originalNodeId, DiagramFactorId newNodeId)
-	{
-		mapNodeIds.put(getKey(originalNodeId), getValue(newNodeId));
-	}
-	
-	public DiagramFactorId getNewId(DiagramFactorId originalNodeId)
-	{
-		Integer newNodeId = (Integer)mapNodeIds.get(getKey(originalNodeId));
-		if(newNodeId == null)
-			return new DiagramFactorId(BaseId.INVALID.asInt());
-		return new DiagramFactorId(newNodeId.intValue());
-	}
-	
 	public void setOriginalLocation(DiagramFactorId originalNodeId, Point originalLocation)
 	{
 		mapNodeLocations.put(getKey(originalNodeId), originalLocation);
@@ -89,14 +75,6 @@ public class FactorDataHelper
 		return insertionPointToValidate;
 	}
 
-	private void setInitialMappingOfIdsToOriginalIds(DiagramFactorId[] diagramFactorIds) 
-	{
-		for (int i = 0; i < diagramFactorIds.length; i++)
-		{
-			setNewId(diagramFactorIds[i], diagramFactorIds[i]);
-		}
-	}
-	
 	private Integer getKey(BaseId key)
 	{
 		return getKey(key.asInt());
@@ -105,16 +83,6 @@ public class FactorDataHelper
 	private Integer getKey(int key) 
 	{
 		return new Integer(key);
-	}
-	
-	private Integer getValue(BaseId value)
-	{
-		return getValue(value.asInt());
-	}
-	
-	private Integer getValue(int value) 
-	{
-		return new Integer(value);
 	}
 	
 	public Point computeDeltas(Point point)

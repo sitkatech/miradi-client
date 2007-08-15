@@ -21,7 +21,7 @@ public class DiagramAliasPaster extends DiagramPaster
 	
 	public void pasteFactors(Point startPoint) throws Exception
 	{
-		dataHelper = new FactorDataHelper(project.getAllDiagramFactorIds(), startPoint);
+		dataHelper = new FactorDataHelper(startPoint);
 		createNewDiagramFactors();
 	}
 

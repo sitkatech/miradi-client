@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
@@ -17,13 +16,11 @@ import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestFactorDataHelper extends EAMTestCase 
 {
-
 	public TestFactorDataHelper(String name)
 	{
 		super(name);
 	}
-	
-	
+		
 	public void setUp() throws Exception 
 	{
 		project = new ProjectForTesting(getName());
@@ -40,34 +37,13 @@ public class TestFactorDataHelper extends EAMTestCase
 
 		super.setUp();
 	}
-
-
-	public void testBasics()
-	{
-		FactorDataHelper dataHelper = new FactorDataHelper(diagramFactorIds, new Point(0, 0));
-		assertEquals(diagramFactorId1, dataHelper.getNewId(diagramFactorId1));
-		assertEquals(diagramFactorId2, dataHelper.getNewId(diagramFactorId2));
-		assertEquals(diagramFactorId3, dataHelper.getNewId(diagramFactorId3));
-		assertEquals(BaseId.INVALID, dataHelper.getNewId(unknownDiagramId));
-	}
-	
-	public void testSetNewId()
-	{
-		FactorDataHelper dataHelper = new FactorDataHelper(diagramFactorIds, new Point(0, 0));
-		dataHelper.setNewId(diagramFactorId1, newNodeId1);
-		dataHelper.setNewId(diagramFactorId2, newNodeId2);
-		dataHelper.setNewId(diagramFactorId3, newNodeId3);
-		assertEquals(newNodeId1, dataHelper.getNewId(diagramFactorId1));
-		assertEquals(newNodeId2, dataHelper.getNewId(diagramFactorId2));
-		assertEquals(newNodeId3, dataHelper.getNewId(diagramFactorId3));
-	}
 	
 	public void testSetGetLocation()
 	{
 		int insertX = 0;
 		int insertY = 0;
 		Point insertionPoint = new Point(insertX, insertY);
-		FactorDataHelper dataHelper = new FactorDataHelper(diagramFactorIds, insertionPoint);
+		FactorDataHelper dataHelper = new FactorDataHelper(insertionPoint);
 		dataHelper.setOriginalLocation(diagramFactorId1, nodeLocation1);
 		
 		Point newNode1Location = dataHelper.getNewLocation(diagramFactorId1);
@@ -85,7 +61,7 @@ public class TestFactorDataHelper extends EAMTestCase
 		insertX = 50;
 		insertY = 50;
 		insertionPoint.setLocation(insertX, insertY); 
-		FactorDataHelper dataHelper2 = new FactorDataHelper(diagramFactorIds, insertionPoint);
+		FactorDataHelper dataHelper2 = new FactorDataHelper(insertionPoint);
 		dataHelper2.setOriginalLocation(diagramFactorId1, nodeLocation1);
 		newNode1Location = dataHelper2.getNewLocation(diagramFactorId1);
 		assertEquals(insertX, newNode1Location.x);
@@ -104,7 +80,6 @@ public class TestFactorDataHelper extends EAMTestCase
 		
 	}
 	
-
 	final FactorId originalNodeId1 = new FactorId(1);
 	final FactorId originalNodeId2 = new FactorId(2);
 	final FactorId originalNodeId3 = new FactorId(3);
