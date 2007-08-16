@@ -17,10 +17,5 @@ public class DeleteResultsChainDoer extends DeleteDiagramPageDoer
 	public String getDiagramObjectTag()
 	{
 		return ViewData.TAG_CURRENT_RESULTS_CHAIN_REF;
-	}
-	
-	public boolean isLastPage()
-	{
-		return false;
-	}
+	}	
 }

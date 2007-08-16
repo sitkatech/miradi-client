@@ -18,9 +18,4 @@ public class RenameResultsChainDoer extends RenameDiagramObjectDoer
 	{
 		return ViewData.TAG_CURRENT_RESULTS_CHAIN_REF;
 	}
-	
-	public boolean isLastPage()
-	{
-		return false;
-	}
 }

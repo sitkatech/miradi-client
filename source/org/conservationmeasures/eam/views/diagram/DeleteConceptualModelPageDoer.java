@@ -8,7 +8,16 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public class DeleteConceptualModelPageDoer extends DeleteDiagramPageDoer
-{	
+{
+	public boolean isAvailable()
+	{
+		boolean superIsAvailable = super.isAvailable();
+		if (superIsAvailable)
+			return hasMoreThanOnePage();
+		
+		return false;
+	}
+
 	public boolean isCorrectTab()
 	{
 		return ! getDiagramView().isResultsChainTab();
@@ -19,8 +28,8 @@ public class DeleteConceptualModelPageDoer extends DeleteDiagramPageDoer
 		return ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF;
 	}
 	
-	public boolean isLastPage()
+	public boolean hasMoreThanOnePage()
 	{
-		return getProject().getConceptualModelDiagramPool().size() == 1;
+		return getProject().getConceptualModelDiagramPool().size() > 1;
 	}
 }
