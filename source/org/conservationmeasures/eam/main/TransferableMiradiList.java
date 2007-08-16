@@ -109,13 +109,10 @@ public class TransferableMiradiList implements Transferable
 	{
 		Point location = diagramFactor.getLocation();
 		if (rectWithUpperMostLeftMostCorner == null)
-		{
 			rectWithUpperMostLeftMostCorner = new Rectangle(location);
-		}
-		else
-		{
-			rectWithUpperMostLeftMostCorner.add(location);
-		}
+		
+		rectWithUpperMostLeftMostCorner.add(location);
+	
 	}
 
 	private void addFactorLinkDeepCopies(ObjectDeepCopier deepCopier, EAMGraphCell cell)
