@@ -11,8 +11,8 @@ public class DeleteConceptualModelPageDoer extends DeleteDiagramPageDoer
 {
 	public boolean isAvailable()
 	{
-		boolean superIsAvailable = super.isAvailable();
-		if (superIsAvailable)
+		boolean isSuperAvailable = super.isAvailable();
+		if (isSuperAvailable)
 			return hasMoreThanOnePage();
 		
 		return false;
