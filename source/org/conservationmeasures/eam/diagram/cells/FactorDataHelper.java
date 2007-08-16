@@ -57,7 +57,7 @@ public class FactorDataHelper
 	private Point computeDeltas(Point point)
 	{
 		if (upperMostLeftMostCorner == null)
-			return new Point(0, 0);
+			return point;
 		
 		Point translatedPoint = new Point(point);
 		translatedPoint.translate(- upperMostLeftMostCorner.x, - upperMostLeftMostCorner.y);
