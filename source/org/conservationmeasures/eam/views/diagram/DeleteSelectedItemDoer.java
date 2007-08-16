@@ -67,8 +67,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		if(!cell.isFactor())
 			return;
 		
-		DiagramView diagramView = getDiagramView();
-		DiagramModel model = diagramView.getDiagramModel();
+		DiagramModel model = getDiagramView().getDiagramModel();
 		new FactorDeleteHelper(model).deleteFactor((FactorCell)cell);
 	}
 
