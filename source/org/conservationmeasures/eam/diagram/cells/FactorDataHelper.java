@@ -56,12 +56,11 @@ public class FactorDataHelper
 
 	private Point computeDeltas(Point point)
 	{
-		Point upperLeft = upperMostLeftMostCorner;
-		if (upperLeft == null)
+		if (upperMostLeftMostCorner == null)
 			return new Point(0, 0);
 		
 		Point translatedPoint = new Point(point);
-		translatedPoint.translate(- upperLeft.x, - upperLeft.y);
+		translatedPoint.translate(- upperMostLeftMostCorner.x, - upperMostLeftMostCorner.y);
 
 		return translatedPoint;	
 	}
