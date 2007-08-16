@@ -42,30 +42,14 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	public void doIt() throws CommandFailedException
 	{
 		EAMGraphCell[] selectedRelatedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		Project project = getProject();
-		
-		DiagramView diagramView = getDiagramView();
-		DiagramModel model = diagramView.getDiagramModel();
-
-		project.executeCommand(new CommandBeginTransaction());
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			for(int i=0; i < selectedRelatedCells.length; ++i)
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
-				if(cell.isFactorLink())
-				{
-					new LinkDeletor(project).deleteFactorLink(cell.getDiagramFactorLink().getWrappedId());
-				}
-			}
-			
-			for(int i=0; i < selectedRelatedCells.length; ++i)
-			{
-				EAMGraphCell cell = selectedRelatedCells[i];
-				if(cell.isFactor())
-				{
-					new FactorDeleteHelper(model).deleteFactor((FactorCell)cell);
-				}
+				deleteLink(cell);
+				deleteFactor(cell);
 			}
 		}
 		catch (Exception e)
@@ -74,7 +58,25 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 		finally
 		{
-			project.executeCommand(new CommandEndTransaction());
+			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private void deleteFactor(EAMGraphCell cell) throws Exception
+	{
+		if(!cell.isFactor())
+			return;
+		
+		DiagramView diagramView = getDiagramView();
+		DiagramModel model = diagramView.getDiagramModel();
+		new FactorDeleteHelper(model).deleteFactor((FactorCell)cell);
+	}
+
+	private void deleteLink(EAMGraphCell cell) throws Exception
+	{
+		if(!cell.isFactorLink())
+			return;
+		
+		new LinkDeletor(getProject()).deleteFactorLink(cell.getDiagramFactorLink().getWrappedId());
 	}
 }
