@@ -187,6 +187,5 @@ public class TransferableMiradiList implements Transferable
 	Vector diagramFactorDeepCopies;
 	Vector factorLinkDeepCopies;
 	Vector diagramLinkDeepCopies;
-	Point upperMostLeftMostCorner;
 	Rectangle rectWithUpperMostLeftMostCorner;
 }
