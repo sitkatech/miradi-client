@@ -10,7 +10,6 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.project.Project;
 
-//TODO come up with a better name
 public class PointManipulater 
 {
 	public PointManipulater(Point insertionPointToUse, Point upperMostLeftMostCornerToUse)
