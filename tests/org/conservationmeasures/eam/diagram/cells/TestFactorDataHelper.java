@@ -10,6 +10,7 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.views.diagram.PointManipulater;
 
 public class TestFactorDataHelper extends EAMTestCase 
 {

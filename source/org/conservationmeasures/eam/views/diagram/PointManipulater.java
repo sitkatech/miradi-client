@@ -4,7 +4,7 @@
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
 //TODO place this class in the better fit package
-package org.conservationmeasures.eam.diagram.cells;
+package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
