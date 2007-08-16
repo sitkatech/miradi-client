@@ -102,10 +102,10 @@ public class TransferableMiradiList implements Transferable
 		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(diagramFactor);
 		diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);
 		
-		calculateUpperMostLeftMostCorner(diagramFactor);
+		addToUpperMostLeftMostCorner(diagramFactor);
 	}
 
-	private void calculateUpperMostLeftMostCorner(DiagramFactor diagramFactor)
+	private void addToUpperMostLeftMostCorner(DiagramFactor diagramFactor)
 	{
 		Point location = diagramFactor.getLocation();
 		if (rectWithUpperMostLeftMostCorner == null)
