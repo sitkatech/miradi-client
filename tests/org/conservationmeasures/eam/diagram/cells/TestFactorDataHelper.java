@@ -36,7 +36,7 @@ public class TestFactorDataHelper extends EAMTestCase
 		Point diagramFactor1Location = new Point(100, 100);
 		Point diagramFactor2Location = new Point(200, 200);
 		Point upperMostLeftMostCorner = new Point(100, 100);
-		FactorDataHelper helper = new FactorDataHelper(insertLocation, upperMostLeftMostCorner);
+		PointManipulater helper = new PointManipulater(insertLocation, upperMostLeftMostCorner);
 		
 		Point newDiagramFactor1Location = helper.getNewLocation(diagramFactor1Location);
 		assertEquals("wrong location for diagram factor 1?", insertLocation, newDiagramFactor1Location);
@@ -52,7 +52,7 @@ public class TestFactorDataHelper extends EAMTestCase
 		Point diagramFactor1Location = new Point(100, 100);
 		Point upperMostLeftMostCorner = new Point(100, 100);
 		
-		FactorDataHelper helper = new FactorDataHelper(insertLocation, upperMostLeftMostCorner);
+		PointManipulater helper = new PointManipulater(insertLocation, upperMostLeftMostCorner);
 		Point translatedSnappedOffsettedPoint1 = helper.getSnappedTranslatedPoint(project, diagramFactor1Location, offset);
 		assertEquals("wrong location for diagram factor 1?", new Point(510, 510), translatedSnappedOffsettedPoint1);
 	}

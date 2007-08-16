@@ -11,9 +11,9 @@ import java.awt.Point;
 import org.conservationmeasures.eam.project.Project;
 
 //TODO come up with a better name
-public class FactorDataHelper 
+public class PointManipulater 
 {
-	public FactorDataHelper(Point insertionPointToUse, Point upperMostLeftMostCornerToUse)
+	public PointManipulater(Point insertionPointToUse, Point upperMostLeftMostCornerToUse)
 	{
 		insertionPoint = insertionPointToUse;
 		upperMostLeftMostCorner = upperMostLeftMostCornerToUse;
