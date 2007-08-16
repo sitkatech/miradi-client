@@ -42,7 +42,7 @@ public class Copy extends ViewDoer
 	{
 		final DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
 		EAMGraphCell[] selectedCells = diagramPanel.getSelectedAndRelatedCells();
-		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), diagramPanel.getDiagramObject());
+		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), diagramPanel.getDiagramObject().getRef());
 		miradiList.storeData(selectedCells);
 		
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();

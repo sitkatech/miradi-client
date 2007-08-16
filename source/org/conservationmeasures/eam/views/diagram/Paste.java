@@ -92,7 +92,7 @@ public class Paste extends LocationDoer
 
 	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
 	{
-		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectCopiedFrom().getRef();
+		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectRefCopiedFrom();
 		ORef diagramObjectRefBeingPastedInto = getDiagramView().getDiagramPanel().getDiagramObject().getRef();
 		
 		return diagramObjecRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);

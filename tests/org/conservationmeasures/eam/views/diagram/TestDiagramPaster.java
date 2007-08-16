@@ -70,7 +70,8 @@ public class TestDiagramPaster extends EAMTestCase
 		FactorCell factorCell = model.getFactorCellById(diagramFactor.getDiagramFactorId());
 		EAMGraphCell dataCells[] = {factorCell};
 		
-		TransferableMiradiList transferableList = new TransferableMiradiList(project, model.getDiagramObject());
+		ORef diagramObjectRef = model.getDiagramObject().getRef();
+		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
 		transferableList.storeData(dataCells);
 		Factor factor = (Factor) project.findObject(diagramFactor.getWrappedORef());
 		DiagramPaster paster = new DiagramPaster(project.getDiagramModel(), transferableList);

@@ -51,7 +51,8 @@ public class TestTransferableEamList extends EAMTestCase
 	public void testGetTransferDataFlavors() throws Exception
 	{
 		EAMGraphCell emptyCells[] = {};
-		TransferableMiradiList miradiList = new TransferableMiradiList(project, project.getDiagramObject());
+		ORef diagramObjectRef = project.getDiagramObject().getRef();
+		TransferableMiradiList miradiList = new TransferableMiradiList(project, diagramObjectRef);
 		miradiList.storeData(emptyCells);
 		DataFlavor flavors[] = miradiList.getTransferDataFlavors();
 		assertEquals("Should only support 1 flavor?", 1, flavors.length);
@@ -61,7 +62,8 @@ public class TestTransferableEamList extends EAMTestCase
 	public void testIsDataFlavorSupported() throws Exception
 	{
 		EAMGraphCell emptyCells[] = {};
-		TransferableMiradiList miradiList = new TransferableMiradiList(project, project.getDiagramObject());
+		ORef diagramObjectRef = project.getDiagramObject().getRef();
+		TransferableMiradiList miradiList = new TransferableMiradiList(project, diagramObjectRef);
 		miradiList.storeData(emptyCells);
 		assertTrue("MiradiListDataFlavor not supported?", miradiList.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor));
 	}
@@ -69,7 +71,8 @@ public class TestTransferableEamList extends EAMTestCase
 	public void testProjectFileName() throws Exception
 	{
 		String projectFileName = project.getFilename();
-		TransferableMiradiList miradiList = new TransferableMiradiList(project, project.getDiagramObject());
+		ORef diagramObjectRef = project.getDiagramObject().getRef();
+		TransferableMiradiList miradiList = new TransferableMiradiList(project, diagramObjectRef);
 		miradiList.storeData(new EAMGraphCell[0]);
 		assertEquals("wrong project filename?", projectFileName, miradiList.getProjectFileName());
 	}
@@ -99,7 +102,8 @@ public class TestTransferableEamList extends EAMTestCase
 		FactorCell factorCell2 = model.getFactorCellById(diagramFactorId2);
 		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramLink)};
 		
-		TransferableMiradiList miradiList = new TransferableMiradiList(project, project.getDiagramObject());
+		ORef diagramObjectRef = project.getDiagramObject().getRef();
+		TransferableMiradiList miradiList = new TransferableMiradiList(project, diagramObjectRef);
 		miradiList.storeData(dataCells);
 		TransferableMiradiList miradiTransferData = (TransferableMiradiList)miradiList.getTransferData(TransferableMiradiList.miradiListDataFlavor);
 		assertNotNull(miradiTransferData);
