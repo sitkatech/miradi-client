@@ -12,6 +12,8 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.views.diagram.PointManipulater;
 
+//TODO rename and move to correct package (also when moving to new package, update the code inside
+// the main test suite)
 public class TestFactorDataHelper extends EAMTestCase 
 {
 	public TestFactorDataHelper(String name)
