@@ -61,11 +61,21 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		project.executeCommand(createConceptualModel);
 		
 		DiagramObject diagramObject = (DiagramObject) project.findObject(createConceptualModel.getObjectRef());
-		CommandSetObjectData setLabel = new CommandSetObjectData(diagramObject.getRef(), DiagramObject.TAG_LABEL, diagramObject.toString());
+		CommandSetObjectData setLabel = new CommandSetObjectData(diagramObject.getRef(), DiagramObject.TAG_LABEL, getConceptualModelPageName(project, diagramObject));
 		project.executeCommand(setLabel);
 		
 		ViewData viewData = project.getViewData(getDiagramView().cardName());
 		CommandSetObjectData setCurrentDiagram = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, createConceptualModel.getObjectRef());
 		project.executeCommand(setCurrentDiagram);
+	}
+
+	private String getConceptualModelPageName(Project project, DiagramObject diagramObject)
+	{
+		int conceptualModelCount = project.getConceptualModelDiagramPool().size();
+		if (conceptualModelCount == 1)
+			return diagramObject.toString();
+		
+		return EAM.text("[Page " + Integer.toString(conceptualModelCount - 1) + "]");
+		
 	}
 }
