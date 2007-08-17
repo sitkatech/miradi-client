@@ -113,7 +113,7 @@ public class ResultsChainCreatorHelper
 
 	private String getLabel(Strategy strategy)
 	{
-		String shortLabel = strategy.getShortLabel();
+		String shortLabel = strategy.getLabel();
 		if (shortLabel.trim().length() > 0)
 			return shortLabel;
 		
