@@ -166,7 +166,7 @@ public class DiagramLink extends BaseObject
 		return getUnderlyingLink().isTargetLink();
 	}
 	
-	private FactorLink getUnderlyingLink()
+	public FactorLink getUnderlyingLink()
 	{
 		return (FactorLink)getProject().findObject(new ORef(FactorLink.getObjectType(), underlyingObjectId.getId()));
 	}
