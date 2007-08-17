@@ -68,6 +68,11 @@ abstract public class FactorCell extends EAMGraphCell
 		return id;
 	}
 	
+	public ORef getDiagramFactorRef()
+	{
+		return getDiagramFactor().getRef();
+	}
+	
 	public DiagramFactor getDiagramFactor()
 	{
 		return diagramFactor;

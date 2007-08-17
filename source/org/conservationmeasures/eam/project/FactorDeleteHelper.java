@@ -22,15 +22,18 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
 import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeDoer;
+import org.conservationmeasures.eam.views.diagram.LinkDeletor;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
 public class FactorDeleteHelper
@@ -50,8 +53,9 @@ public class FactorDeleteHelper
 	{
 		removeFromThreatReductionResults(factorToDelete);
 		removeFromView(factorToDelete.getWrappedId());
-		removeNodeFromDiagram(factorToDelete);
-		deleteDiagramFactor(factorToDelete.getDiagramFactorId());
+		removeNodeFromDiagram(getDiagramObject(), factorToDelete.getDiagramFactor());
+		removeFactorFromAllResultsChains(factorToDelete);
+		deleteDiagramFactor(factorToDelete.getDiagramFactor());
 	
 		Factor underlyingNode = factorToDelete.getUnderlyingObject();
 		if (! canDeleteFactor(underlyingNode))
@@ -61,6 +65,55 @@ public class FactorDeleteHelper
 		deleteUnderlyingNode(underlyingNode);
 	}
 
+
+	private void removeFactorFromAllResultsChains(FactorCell factorToDelete) throws Exception
+	{
+		if (!factorToDelete.isTarget())
+			return;
+		
+		ORefList allResultsChainRefs = getProject().getResultsChainDiagramPool().getORefList();
+		for (int i = 0; i < allResultsChainRefs.size(); ++i)
+		{
+			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(allResultsChainRefs.get(i));
+			removeFactorsFromResultsChain(factorToDelete, resultsChain);
+		}
+	}
+
+	private void removeFactorsFromResultsChain(FactorCell factorToDelete, ResultsChainDiagram resultsChain) throws Exception
+	{
+		DiagramFactor target = factorToDelete.getDiagramFactor();
+		ORef wrappedRef = target.getWrappedORef();
+		IdList allDiagramFactorIds = resultsChain.getAllDiagramFactorIds();
+		for (int i = 0; i < allDiagramFactorIds.size(); ++i)
+		{
+			ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), allDiagramFactorIds.get(i));
+			DiagramFactor thisDiagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRef);
+			if (!thisDiagramFactor.getWrappedORef().equals(wrappedRef))
+				continue;
+		
+			removeNodeFromDiagram(resultsChain, thisDiagramFactor);
+			removeAllAttachedLinks(resultsChain, thisDiagramFactor);
+		}
+	}
+
+	private void removeAllAttachedLinks(ResultsChainDiagram resultsChain, DiagramFactor diagramFactor) throws Exception
+	{
+		ORefList factorsAboutToBeDeleted = new ORefList();
+		factorsAboutToBeDeleted.add(diagramFactor.getRef());
+		IdList diagramLinkIds = resultsChain.getAllDiagramFactorLinkIds();
+		for (int i = 0; i < diagramLinkIds.size(); ++i)
+		{
+			ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkIds.get(i));
+			DiagramLink diagramLink = (DiagramLink) getProject().findObject(diagramLinkRef);
+			boolean sameAsFromDiagramFactor = diagramLink.getFromDiagramFactorId().equals(diagramFactor);
+			boolean sameAsToDiagramFactor = diagramLink.getToDiagramFactorId().equals(diagramFactor.getDiagramFactorId());
+			if (!sameAsFromDiagramFactor && !sameAsToDiagramFactor)
+				continue;
+			
+			LinkDeletor linkDeletor = new LinkDeletor(getProject());
+			linkDeletor.deleteFactorLink(diagramLink.getDiagramLinkageId(), factorsAboutToBeDeleted);
+		}
+	}
 
 	private void removeFromThreatReductionResults(FactorCell factorToDelete) throws CommandFailedException
 	{
@@ -89,9 +142,12 @@ public class FactorDeleteHelper
 		return true;
 	}
 
-	private void deleteDiagramFactor(DiagramFactorId diagramFactorId) throws CommandFailedException
+	private void deleteDiagramFactor(DiagramFactor diagramFactor) throws CommandFailedException
 	{
-		CommandDeleteObject deleteDiagramFactorCommand = new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
+		Command[] commandsToClear = diagramFactor.createCommandsToClear();
+		getProject().executeCommands(commandsToClear);
+		
+		CommandDeleteObject deleteDiagramFactorCommand = new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactor.getDiagramFactorId());
 		getProject().executeCommand(deleteDiagramFactorCommand);
 	}
 
@@ -103,14 +159,11 @@ public class FactorDeleteHelper
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	private void removeNodeFromDiagram(FactorCell factorToDelete) throws CommandFailedException, ParseException
+	private void removeNodeFromDiagram(DiagramObject diagramObject, DiagramFactor diagramFactor) throws CommandFailedException, ParseException
 	{
-		DiagramFactorId idToDelete = factorToDelete.getDiagramFactorId();
-		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
+		DiagramFactorId idToDelete = diagramFactor.getDiagramFactorId();
+		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
 		getProject().executeCommand(removeDiagramFactor);
-		
-		Command[] commandsToClear = factorToDelete.getDiagramFactor().createCommandsToClear();
-		getProject().executeCommands(commandsToClear);
 	}
 
 	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException
