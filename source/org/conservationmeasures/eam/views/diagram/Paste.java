@@ -95,7 +95,10 @@ public class Paste extends LocationDoer
 		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectRefCopiedFrom();
 		ORef diagramObjectRefBeingPastedInto = getDiagramView().getDiagramPanel().getDiagramObject().getRef();
 		
-		return diagramObjecRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);
+		boolean pasteInSameDiagram = diagramObjecRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);
+		boolean pasteInSameProject = list.getProjectFileName().equals(getProject().getFilename());
+		
+		return pasteInSameDiagram && pasteInSameProject;
 	}
 	
 	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
