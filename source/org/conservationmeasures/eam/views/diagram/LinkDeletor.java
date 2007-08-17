@@ -35,7 +35,6 @@ public class LinkDeletor
 		deleteDiagramLink(factorsAboutToBeDeleted, diagramLink);
 	}
 	
-	//FIXME add warning when delting all DiagramLinks for threatmatrix,  might already have diaglog, check first
 	public void deleteFactorLinkAndAllRefferers(FactorLinkId factorLinkId) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
