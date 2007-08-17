@@ -39,6 +39,7 @@ public class LinkDeletor
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
 		deleteAllReferrerDiagramLinks(factorLink);
+		deleteFactorLink(factorLink);
 	}
 	
 	private void deleteDiagramLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
