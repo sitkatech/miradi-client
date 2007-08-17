@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -26,28 +28,39 @@ public class LinkDeletor
 		project = projectToUse;
 	}
 
-	public void deleteFactorLink(FactorLinkId factorLinkId) throws Exception
+	public void deleteFactorLink(DiagramFactorLinkId diagramFactorLinkId, ORefList factorsAboutToBeDeleted) throws Exception
+	{
+		DiagramLink diagramLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkId));
+		deleteDiagramLink(factorsAboutToBeDeleted, diagramLink);
+	}
+	
+	//FIXME add warning when delting all DiagramLinks for threatmatrix,  might already have diaglog, check first
+	public void deleteFactorLinkAndAllRefferers(FactorLinkId factorLinkId) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
-		deleteFactorLink(factorLink);
+		deleteAllReferrerDiagramLinks(factorLink);
 	}
 	
-	public void deleteFactorLink(FactorLink factorLink) throws Exception
+	private void deleteDiagramLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
-		deleteAllReffererDiagramLinks(factorLink);
-		
-		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, factorLink.getId()).createCommandsToClear();
-		project.executeCommands(commandsToClear);
-		
-		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, factorLink.getId());
-		project.executeCommand(deleteLinkage);
+		deleteDiagramLink(diagramLink);
+		possiblyDeleteAllReffererDiagramLinks(factorsAboutToBeDeleted, diagramLink);
+		deleteFactorLink(diagramLink.getUnderlyingLink());
 	}
-	
-	
-	private void deleteAllReffererDiagramLinks(FactorLink link) throws Exception
+
+	private void possiblyDeleteAllReffererDiagramLinks(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
+	{
+		FactorLink factorLink = diagramLink.getUnderlyingLink();
+		if (hasToFromFactorsThatWillBeDeleted(factorsAboutToBeDeleted, factorLink))
+			return;
+		
+		deleteAllReferrerDiagramLinks(factorLink);
+	}
+
+	private void deleteAllReferrerDiagramLinks(FactorLink factorLink) throws Exception
 	{
 		ObjectManager objectManager = project.getObjectManager();
-		ORefList diagramLinkreferrers = link.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, link.getRef());
+		ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
 		deleteDiagramLinks(diagramLinkreferrers);
 	}
 
@@ -71,7 +84,36 @@ public class LinkDeletor
 		project.executeCommands(commandsToClearDiagramLink);
 
 		CommandDeleteObject removeFactorLinkCommand = new CommandDeleteObject(ObjectType.DIAGRAM_LINK, diagramLink.getDiagramLinkageId());
-		project.executeCommand(removeFactorLinkCommand);	
+		project.executeCommand(removeFactorLinkCommand);
+	}
+	
+	private void deleteFactorLink(FactorLink factorLink) throws CommandFailedException
+	{
+		ObjectManager objectManager = project.getObjectManager();
+		ORefList diagramFactorReferrers = factorLink.findObjectsThatReferToUs(objectManager, DiagramLink.getObjectType(), factorLink.getRef());
+		
+		if (diagramFactorReferrers.size() != 0)
+			return;
+		
+		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, factorLink.getId()).createCommandsToClear();
+		project.executeCommands(commandsToClear);
+		
+		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, factorLink.getId());
+		project.executeCommand(deleteLinkage);
+	}
+	
+	private boolean hasToFromFactorsThatWillBeDeleted(ORefList factorsAboutToBeDeleted, FactorLink factorLink)
+	{
+		for (int i = 0; i < factorsAboutToBeDeleted.size(); ++i)
+		{
+			ORef factorRefToBeDeleted = factorsAboutToBeDeleted.get(i);
+			ORef toRef = factorLink.getToFactorRef();
+			ORef fromRef = factorLink.getFromFactorRef();
+			if (toRef.equals(factorRefToBeDeleted) || fromRef.equals(factorRefToBeDeleted))
+				return true;
+		}
+		
+		return false;
 	}
 
 	private Project project;

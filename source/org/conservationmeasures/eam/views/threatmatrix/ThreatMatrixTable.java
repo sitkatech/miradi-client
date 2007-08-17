@@ -215,7 +215,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				new LinkDeletor(project).deleteFactorLink(modelLinkageId);
+				new LinkDeletor(project).deleteFactorLinkAndAllRefferers(modelLinkageId);
 			}
 			finally
 			{
