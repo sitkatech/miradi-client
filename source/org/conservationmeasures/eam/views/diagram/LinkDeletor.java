@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -59,9 +60,17 @@ public class LinkDeletor
 
 	private void deleteAllReferrerDiagramLinks(FactorLink factorLink) throws Exception
 	{
+		notifyUserOfAllReferringLinksBeingDeleted();		
 		ObjectManager objectManager = project.getObjectManager();
 		ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
 		deleteDiagramLinks(diagramLinkreferrers);
+	}
+
+	private void notifyUserOfAllReferringLinksBeingDeleted()
+	{
+		EAM.notifyDialog(EAM.text("As a result of this delete, all diagram" +
+				" links that share the same to and from factors in" +
+				" all the conceptual model pages will be deleted."));
 	}
 
 	private void deleteDiagramLinks(ORefList diagramLinkORefs) throws Exception
