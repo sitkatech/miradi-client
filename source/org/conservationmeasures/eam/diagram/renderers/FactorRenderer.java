@@ -284,7 +284,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		Utility.drawStringCentered(g2, ratingText, smallRect);
 	}
 	
-	public void drawAliasedBorder(Graphics2D g2, Rectangle rect, Color color)
+	private void drawAliasedBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
 		rect.grow(-2, -2);
 		drawBorder(g2, rect, color);
