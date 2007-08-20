@@ -210,13 +210,13 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			}
 		}
 
-		private void doDelete(Project project, FactorLinkId modelLinkageId) throws Exception
+		private void doDelete(Project project, FactorLinkId factorLinkId) throws Exception
 		{
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
 				notifyUserOfAllReferringLinksBeingDeleted();
-				new LinkDeletor(project).deleteFactorLinkAndAllRefferers(modelLinkageId);
+				new LinkDeletor(project).deleteFactorLinkAndAllRefferers(factorLinkId);
 			}
 			finally
 			{
