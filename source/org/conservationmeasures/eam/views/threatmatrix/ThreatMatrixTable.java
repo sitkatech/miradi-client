@@ -189,7 +189,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			Project project = model.getProject();
 			FactorId threatId = model.getThreatId(row); 
 			FactorId targetId = model.getTargetId(col);
-			FactorLinkId modelLinkageId = project.getFactorLinkPool().getLinkedId(threatId, targetId);
+			FactorLinkId factorLinkId = project.getFactorLinkPool().getLinkedId(threatId, targetId);
 
 			String[] body = new String[] {
 					EAM.text("Are sure you want to delete the link between this Threat and Target?"),
@@ -202,7 +202,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			
 			try
 			{
-				doDelete(project, modelLinkageId);
+				doDelete(project, factorLinkId);
 			}
 			catch(Exception e)
 			{
