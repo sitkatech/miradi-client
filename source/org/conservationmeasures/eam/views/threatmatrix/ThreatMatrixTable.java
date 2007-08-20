@@ -215,6 +215,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
+				notifyUserOfAllReferringLinksBeingDeleted();
 				new LinkDeletor(project).deleteFactorLinkAndAllRefferers(modelLinkageId);
 			}
 			finally
@@ -223,6 +224,12 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			}
 		}
 		
+		private void notifyUserOfAllReferringLinksBeingDeleted()
+		{
+			EAM.notifyDialog(LinkDeletor.LINK_DELETE_NOTIFY_TEXT);
+		}
+
+
 		int row;
 		int col;
 	}
