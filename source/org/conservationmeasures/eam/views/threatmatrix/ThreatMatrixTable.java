@@ -165,7 +165,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			creamMenuItem.setEnabled(!areLinked);
 			creamMenuItem.setText(EAM.text("Create Link"));
 			
-			EAMenuItem deleteMenuItem = new EAMenuItem(new ActionDeleteModelLinkage(row, col));
+			EAMenuItem deleteMenuItem = new EAMenuItem(new ActionDeleteFactorLink(row, col));
 			deleteMenuItem.setEnabled(areLinked);
 			deleteMenuItem.setText(EAM.text("Delete Link"));
 			
@@ -175,9 +175,9 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		}
 	}
 	
-	class ActionDeleteModelLinkage extends AbstractAction
+	class ActionDeleteFactorLink extends AbstractAction
 	{
-		public ActionDeleteModelLinkage(int rowToUse, int colToUse)
+		public ActionDeleteFactorLink(int rowToUse, int colToUse)
 		{
 			row = rowToUse;
 			col = colToUse;
