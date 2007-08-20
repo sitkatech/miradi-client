@@ -45,17 +45,11 @@ public class LinkDeletor
 	private void deleteDiagramLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		deleteDiagramLink(diagramLink);
-		possiblyDeleteAllReffererDiagramLinks(factorsAboutToBeDeleted, diagramLink);
-		deleteFactorLink(diagramLink.getUnderlyingLink());
-	}
-
-	private void possiblyDeleteAllReffererDiagramLinks(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
-	{
 		FactorLink factorLink = diagramLink.getUnderlyingLink();
-		if (hasToFromFactorsThatWillBeDeleted(factorsAboutToBeDeleted, factorLink))
-			return;
-		
-		deleteAllReferrerDiagramLinks(factorLink);
+		if (!hasToFromFactorsThatWillBeDeleted(factorsAboutToBeDeleted, factorLink))
+			deleteAllReferrerDiagramLinks(factorLink);
+
+		deleteFactorLink(factorLink);
 	}
 
 	private void deleteAllReferrerDiagramLinks(FactorLink factorLink) throws Exception
