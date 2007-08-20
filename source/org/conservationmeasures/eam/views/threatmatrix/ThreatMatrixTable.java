@@ -191,13 +191,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			FactorId targetId = model.getTargetId(col);
 			FactorLinkId factorLinkId = project.getFactorLinkPool().getLinkedId(threatId, targetId);
 
-			String[] body = new String[] {
-					EAM.text("Are sure you want to delete the link between this Threat and Target?"),
-					(model).getThreatName(row),
-					(model).getTargetName(col),
-					};
-			String[] buttons = new String[] {EAM.text("Delete Link"), EAM.text("Cancel")};
-			if(!EAM.confirmDialog(EAM.text("Delete a link?"), body, buttons))
+			if (!userConfirms())
 				return;
 			
 			try
@@ -215,7 +209,6 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				notifyUserOfAllReferringLinksBeingDeleted();
 				new LinkDeletor(project).deleteFactorLinkAndAllRefferers(factorLinkId);
 			}
 			finally
@@ -224,12 +217,15 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			}
 		}
 		
-		private void notifyUserOfAllReferringLinksBeingDeleted()
+		private boolean userConfirms()
 		{
-			EAM.notifyDialog(LinkDeletor.LINK_DELETE_NOTIFY_TEXT);
+			String[] body = new String[] {EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
+	  												" and Results Chains, not just this one. ")};	
+			
+			String[] buttons = new String[] {EAM.text("Delete Link"), EAM.text("Cancel")};
+			return EAM.confirmDialog(EAM.text("Delete a link?"), body, buttons);
 		}
-
-
+		
 		int row;
 		int col;
 	}
