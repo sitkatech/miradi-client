@@ -62,9 +62,8 @@ public class LinkDeletor
 
 	private void notifyUserOfAllReferringLinksBeingDeleted()
 	{
-		EAM.notifyDialog(EAM.text("As a result of this delete, all diagram" +
-				" links that share the same to and from factors in" +
-				" all the conceptual model pages will be deleted."));
+		EAM.notifyDialog(EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
+				" and Results Chains, not just this one. "));
 	}
 
 	private void deleteDiagramLinks(ORefList diagramLinkORefs) throws Exception
