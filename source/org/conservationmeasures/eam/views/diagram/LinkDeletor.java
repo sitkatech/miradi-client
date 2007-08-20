@@ -62,8 +62,7 @@ public class LinkDeletor
 
 	private void notifyUserOfAllReferringLinksBeingDeleted()
 	{
-		EAM.notifyDialog(EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
-				" and Results Chains, not just this one. "));
+		EAM.notifyDialog(LINK_DELETE_NOTIFY_TEXT);
 	}
 
 	private void deleteDiagramLinks(ORefList diagramLinkORefs) throws Exception
@@ -119,4 +118,7 @@ public class LinkDeletor
 	}
 
 	private Project project;
+	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
+																  " and Results Chains, not just this one. ");
+
 }
