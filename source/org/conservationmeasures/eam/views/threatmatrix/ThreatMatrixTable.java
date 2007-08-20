@@ -161,7 +161,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			JPopupMenu menu = new JPopupMenu();
 			boolean areLinked = table.areLinked(row, col);
 			
-			EAMenuItem creamMenuItem = new EAMenuItem(new ActionCreateModelLinkage(row, col));
+			EAMenuItem creamMenuItem = new EAMenuItem(new ActionCreateFactorLink(row, col));
 			creamMenuItem.setEnabled(!areLinked);
 			creamMenuItem.setText(EAM.text("Create Link"));
 			
@@ -234,9 +234,9 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		int col;
 	}
 	
-	class ActionCreateModelLinkage extends AbstractAction
+	class ActionCreateFactorLink extends AbstractAction
 	{
-		public ActionCreateModelLinkage(int rowToUse, int colToUse)
+		public ActionCreateFactorLink(int rowToUse, int colToUse)
 		{
 			row = rowToUse;
 			col = colToUse;
