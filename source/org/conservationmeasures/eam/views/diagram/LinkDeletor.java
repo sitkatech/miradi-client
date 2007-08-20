@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -28,9 +27,8 @@ public class LinkDeletor
 		project = projectToUse;
 	}
 
-	public void deleteFactorLink(ORefList factorsAboutToBeDeleted, DiagramFactorLinkId diagramFactorLinkId) throws Exception
+	public void deleteFactorLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
-		DiagramLink diagramLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkId));
 		deleteDiagramLink(factorsAboutToBeDeleted, diagramLink);
 	}
 	
