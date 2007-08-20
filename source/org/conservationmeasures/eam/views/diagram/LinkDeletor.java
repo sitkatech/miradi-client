@@ -29,7 +29,7 @@ public class LinkDeletor
 		project = projectToUse;
 	}
 
-	public void deleteFactorLink(DiagramFactorLinkId diagramFactorLinkId, ORefList factorsAboutToBeDeleted) throws Exception
+	public void deleteFactorLink(ORefList factorsAboutToBeDeleted, DiagramFactorLinkId diagramFactorLinkId) throws Exception
 	{
 		DiagramLink diagramLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkId));
 		deleteDiagramLink(factorsAboutToBeDeleted, diagramLink);
