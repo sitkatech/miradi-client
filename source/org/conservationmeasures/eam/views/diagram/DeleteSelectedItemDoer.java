@@ -11,8 +11,13 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramLink;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.FactorDeleteHelper;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -94,6 +99,21 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		if(!cell.isFactorLink())
 			return;
 		
-		new LinkDeletor(getProject()).deleteFactorLink(factorRefsAboutToBeDeleted, cell.getDiagramFactorLink().getDiagramLinkageId());
+		DiagramLink diagramLink = cell.getDiagramFactorLink();
+		notifyUserOfAllReferringLinksBeingDeleted(diagramLink.getUnderlyingLink());
+		new LinkDeletor(getProject()).deleteFactorLink(factorRefsAboutToBeDeleted, diagramLink.getDiagramLinkageId());
 	}
+	
+	private void notifyUserOfAllReferringLinksBeingDeleted(FactorLink factorLink)
+	{	
+		ObjectManager objectManager = getProject().getObjectManager();
+		ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
+		if (diagramLinkreferrers.size() == 1)
+			return;
+		
+		EAM.notifyDialog(LINK_DELETE_NOTIFY_TEXT);
+	}
+
+	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
+	  															  " and Results Chains, not just this one. ");
 }
