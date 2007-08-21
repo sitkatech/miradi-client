@@ -91,8 +91,8 @@ public class FactorDeleteHelper
 			if (!thisDiagramFactor.getWrappedORef().equals(wrappedRef))
 				continue;
 		
-			removeNodeFromDiagram(resultsChain, thisDiagramFactor);
 			removeAllAttachedLinks(resultsChain, thisDiagramFactor);
+			removeNodeFromDiagram(resultsChain, thisDiagramFactor);
 		}
 	}
 
