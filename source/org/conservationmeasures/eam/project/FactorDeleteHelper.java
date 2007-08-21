@@ -111,7 +111,7 @@ public class FactorDeleteHelper
 				continue;
 			
 			LinkDeletor linkDeletor = new LinkDeletor(getProject());
-			linkDeletor.deleteFactorLink(factorsAboutToBeDeleted, diagramLink);
+			linkDeletor.deleteFactorLinkAndDiagramLink(factorsAboutToBeDeleted, diagramLink);
 		}
 	}
 

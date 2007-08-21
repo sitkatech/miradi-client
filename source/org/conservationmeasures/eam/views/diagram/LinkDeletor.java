@@ -27,11 +27,6 @@ public class LinkDeletor
 		project = projectToUse;
 	}
 
-	public void deleteFactorLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
-	{
-		deleteDiagramLink(factorsAboutToBeDeleted, diagramLink);
-	}
-	
 	public void deleteFactorLinkAndAllRefferers(FactorLinkId factorLinkId) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
@@ -39,7 +34,7 @@ public class LinkDeletor
 		deleteFactorLink(factorLink);
 	}
 	
-	private void deleteDiagramLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
+	public void deleteFactorLinkAndDiagramLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		deleteDiagramLink(diagramLink);
 		FactorLink factorLink = diagramLink.getUnderlyingLink();

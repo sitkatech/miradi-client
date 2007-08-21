@@ -101,7 +101,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		
 		DiagramLink diagramLink = cell.getDiagramFactorLink();
 		notifyUserOfAllReferringLinksBeingDeleted(diagramLink.getUnderlyingLink());
-		new LinkDeletor(getProject()).deleteFactorLink(factorRefsAboutToBeDeleted, diagramLink);
+		new LinkDeletor(getProject()).deleteFactorLinkAndDiagramLink(factorRefsAboutToBeDeleted, diagramLink);
 	}
 	
 	private void notifyUserOfAllReferringLinksBeingDeleted(FactorLink factorLink)
