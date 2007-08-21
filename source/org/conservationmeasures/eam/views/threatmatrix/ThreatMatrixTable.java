@@ -28,14 +28,10 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
-import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
@@ -140,37 +136,9 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 
 	private boolean areBothFactorsContainedInAnyConceptualModel(FactorId fromFactorId, FactorId toFactorId)
 	{
-		ORef foundConceptualModel = findConceptualModelThatContainsBothFactors(fromFactorId, toFactorId);
+		ORef foundConceptualModel = getProject().findConceptualModelThatContainsBothFactors(fromFactorId, toFactorId);
 		if (! foundConceptualModel.isInvalid())
 			return true;
-		
-		return false;
-	}
-
-	private ORef findConceptualModelThatContainsBothFactors(FactorId fromFactorId, FactorId toFactorId)
-	{
-		ConceptualModelDiagramPool diagramPool = getProject().getConceptualModelDiagramPool();
-		ORefList diagramORefs = diagramPool.getORefList();
-		for (int i = 0; i < diagramORefs.size(); ++i)
-		{
-			ORef thisDiagramRef = diagramORefs.get(i);
-			ConceptualModelDiagram diagram =  (ConceptualModelDiagram) getProject().findObject(thisDiagramRef);
-			if (containsWrappedFactor(diagram.getAllDiagramFactorIds(), fromFactorId) && containsWrappedFactor(diagram.getAllDiagramFactorIds(), toFactorId))
-				return thisDiagramRef; 		
-		}
-		
-		return ORef.INVALID;
-	}
-	
-	private boolean containsWrappedFactor(IdList diagramFactorIds, FactorId fromFactorId)
-	{
-		for (int i = 0; i < diagramFactorIds.size(); ++i)
-		{
-			ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorIds.get(i));
-			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRef);
-			if (diagramFactor.getWrappedId().equals(fromFactorId))
-				return true;
-		}
 		
 		return false;
 	}
@@ -311,7 +279,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 				FactorId fromThreatId = model.getThreatId(row);
 				FactorId toTargetId = model.getTargetId(col);
 				
-				ORef conceptualModelDiagramRef = findConceptualModelThatContainsBothFactors(fromThreatId, toTargetId);
+				ORef conceptualModelDiagramRef = getProject().findConceptualModelThatContainsBothFactors(fromThreatId, toTargetId);
 				ConceptualModelDiagram conceptualModelDiagram = (ConceptualModelDiagram) getProject().findObject(conceptualModelDiagramRef);
 			
 				LinkCreator linkCreator = new LinkCreator(getProject());
