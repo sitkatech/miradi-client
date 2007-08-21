@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
@@ -234,9 +235,12 @@ public class DiagramPaster
 		addDiagramFactorToSelection(diagramFactorsToSelect);
 	}
 
-	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef)
+	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception
 	{
-		return (ORef) oldToNewFactorRefMap.get(oldWrappedRef);
+		if (! containsTargetsThatMustBePastedAsAlias())
+			return (ORef) oldToNewFactorRefMap.get(oldWrappedRef);
+		
+		return oldWrappedRef;
 	}
 	
 	private String offsetLocation(EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
@@ -428,7 +432,24 @@ public class DiagramPaster
 		
 		return true;
 	}
-
+	
+	public boolean containsTargetsThatMustBePastedAsAlias() throws Exception
+	{
+		if (! currentModel.isResultsChain())
+			return false;
+		
+		for (int i = 0; i < factorDeepCopies.size(); ++i)
+		{
+			String jsonAsString = factorDeepCopies.get(i);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			int type = json.getInt("Type");
+			if (Target.getObjectType() == type)
+				return true;
+		}
+		
+		return false;
+	}
+	 
 	private boolean canPasteTypeInCurrentTab(int type)
 	{
 		if (isResultsChain() && containsType(getResultsChainPastableTypes(), type))
