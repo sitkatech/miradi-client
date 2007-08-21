@@ -141,17 +141,26 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 
 	private boolean areBothFactorsContainedInAnyConceptualModel(FactorId fromFactorId, FactorId toFactorId)
 	{
+		ORef foundConceptualModel = findConceptualModelWithBothFactors(fromFactorId, toFactorId);
+		if (! foundConceptualModel.isInvalid())
+			return true;
+		
+		return false;
+	}
+
+	private ORef findConceptualModelWithBothFactors(FactorId fromFactorId, FactorId toFactorId)
+	{
 		ConceptualModelDiagramPool diagramPool = getProject().getConceptualModelDiagramPool();
 		ORefList diagramORefs = diagramPool.getORefList();
 		for (int i = 0; i < diagramORefs.size(); ++i)
 		{
-			ORef thisDiagram = diagramORefs.get(i);
-			ConceptualModelDiagram diagram =  (ConceptualModelDiagram) getProject().findObject(thisDiagram);
+			ORef thisDiagramRef = diagramORefs.get(i);
+			ConceptualModelDiagram diagram =  (ConceptualModelDiagram) getProject().findObject(thisDiagramRef);
 			if (containsWrappedFactor(diagram.getAllDiagramFactorIds(), fromFactorId) && containsWrappedFactor(diagram.getAllDiagramFactorIds(), toFactorId))
-				return true; 		
+				return thisDiagramRef; 		
 		}
 		
-		return false;
+		return ORef.INVALID;
 	}
 	
 	private boolean containsWrappedFactor(IdList diagramFactorIds, FactorId fromFactorId)
