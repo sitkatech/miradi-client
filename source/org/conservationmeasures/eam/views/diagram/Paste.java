@@ -75,7 +75,7 @@ public class Paste extends LocationDoer
 
 	private String getUsersChoice(TransferableMiradiList list) throws ParseException
 	{
-		if (! list.atleastOnceFactorExists())
+		if (! list.atleastOneFactorExists())
 			return AS_COPY_BUTTON;
 
 		if (isPastingInSameDiagramAsCopiedFrom(list))
