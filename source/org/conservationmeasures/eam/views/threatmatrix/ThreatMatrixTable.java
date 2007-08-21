@@ -141,14 +141,14 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 
 	private boolean areBothFactorsContainedInAnyConceptualModel(FactorId fromFactorId, FactorId toFactorId)
 	{
-		ORef foundConceptualModel = findConceptualModelWithBothFactors(fromFactorId, toFactorId);
+		ORef foundConceptualModel = findConceptualModelThatContainsBothFactors(fromFactorId, toFactorId);
 		if (! foundConceptualModel.isInvalid())
 			return true;
 		
 		return false;
 	}
 
-	private ORef findConceptualModelWithBothFactors(FactorId fromFactorId, FactorId toFactorId)
+	private ORef findConceptualModelThatContainsBothFactors(FactorId fromFactorId, FactorId toFactorId)
 	{
 		ConceptualModelDiagramPool diagramPool = getProject().getConceptualModelDiagramPool();
 		ORefList diagramORefs = diagramPool.getORefList();
