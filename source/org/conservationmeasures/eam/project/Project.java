@@ -810,6 +810,34 @@ public class Project
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
+
+	public ORef findConceptualModelThatContainsBothFactors(FactorId fromFactorId, FactorId toFactorId)
+	{
+		ConceptualModelDiagramPool diagramPool = getConceptualModelDiagramPool();
+		ORefList diagramORefs = diagramPool.getORefList();
+		for (int i = 0; i < diagramORefs.size(); ++i)
+		{
+			ORef thisDiagramRef = diagramORefs.get(i);
+			ConceptualModelDiagram diagram =  (ConceptualModelDiagram) findObject(thisDiagramRef);
+			if (containsWrappedFactor(diagram.getAllDiagramFactorIds(), fromFactorId) && containsWrappedFactor(diagram.getAllDiagramFactorIds(), toFactorId))
+				return thisDiagramRef; 		
+		}
+		
+		return ORef.INVALID;
+	}
+	
+	public boolean containsWrappedFactor(IdList diagramFactorIds, FactorId fromFactorId)
+	{
+		for (int i = 0; i < diagramFactorIds.size(); ++i)
+		{
+			ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorIds.get(i));
+			DiagramFactor diagramFactor = (DiagramFactor) findObject(diagramFactorRef);
+			if (diagramFactor.getWrappedId().equals(fromFactorId))
+				return true;
+		}
+		
+		return false;
+	}
 	
 	public DiagramLink[] getToAndFromLinks(DiagramFactorId diagramFactorId)
 	{
