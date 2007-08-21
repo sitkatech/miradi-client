@@ -306,14 +306,12 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 
 		private void createLink(ThreatMatrixTableModel model) throws CommandFailedException
 		{
+			model.getProject().executeCommand(new CommandBeginTransaction());
 			try
 			{
 				FactorId fromThreatId = model.getThreatId(row);
 				FactorId toTargetId = model.getTargetId(col);
-				
 				DiagramObject diagramObject = model.getProject().getConceptualModelDiagram();
-				model.getProject().executeCommand(new CommandBeginTransaction());
-		
 				LinkCreator linkCreator = new LinkCreator(getProject());
 				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromThreatId, toTargetId);
 			}
