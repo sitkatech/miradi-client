@@ -812,6 +812,7 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
 	
+	//FIXME error - this method is causing a bug,  remove this method and fix those who use it
 	public DiagramObject getConceptualModelDiagram()
 	{
 		ConceptualModelDiagramPool conceptualDiagramPool = getConceptualModelDiagramPool();
