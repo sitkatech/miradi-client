@@ -62,7 +62,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
-import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -811,18 +810,6 @@ public class Project
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
-	
-	//FIXME error - this method is causing a bug,  remove this method and fix those who use it
-	public DiagramObject getConceptualModelDiagram()
-	{
-		ConceptualModelDiagramPool conceptualDiagramPool = getConceptualModelDiagramPool();
-		ORefList oRefList = conceptualDiagramPool.getORefList();
-		final int ONLY_CONCEPTUAL_MODEL = 0;
-		ORef ref = oRefList.get(ONLY_CONCEPTUAL_MODEL);
-		
-		return (ConceptualModelDiagram) findObject(ref);
-	}
-	
 	
 	public DiagramLink[] getToAndFromLinks(DiagramFactorId diagramFactorId)
 	{
