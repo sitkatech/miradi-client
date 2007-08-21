@@ -129,7 +129,7 @@ public class TransferableMiradiList implements Transferable
 		diagramLinkDeepCopies.addAll(diagramLinkJsonStrings);	
 	}
 	
-	public boolean atleastOnceFactorExists() throws ParseException
+	public boolean atleastOneFactorExists() throws ParseException
 	{
 		for (int i = 0; i < factorDeepCopies.size(); ++i)
 		{
