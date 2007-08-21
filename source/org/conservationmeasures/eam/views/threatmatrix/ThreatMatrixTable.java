@@ -28,8 +28,14 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
@@ -121,8 +127,46 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		return model.getProject().isLinked(model.getThreatId(row), model.getTargetId(column));
 	}
 	
+	private boolean canBeLinked(ThreatMatrixTable table, int row, int col)
+	{
+		ThreatMatrixTableModel model = (ThreatMatrixTableModel) getModel();
+		FactorId fromFactorId = model.getThreatId(row);
+		FactorId toFactorId = model.getTargetId(col);
+		
+		if (! areBothFactorsContainedInAnyConceptualModel(fromFactorId, toFactorId))
+			return false;
+		
+		return ! table.areLinked(row, col);
+	}
 
+	private boolean areBothFactorsContainedInAnyConceptualModel(FactorId fromFactorId, FactorId toFactorId)
+	{
+		ConceptualModelDiagramPool diagramPool = getProject().getConceptualModelDiagramPool();
+		ORefList diagramORefs = diagramPool.getORefList();
+		for (int i = 0; i < diagramORefs.size(); ++i)
+		{
+			ORef thisDiagram = diagramORefs.get(i);
+			ConceptualModelDiagram diagram =  (ConceptualModelDiagram) getProject().findObject(thisDiagram);
+			if (containsWrappedFactor(diagram.getAllDiagramFactorIds(), fromFactorId) && containsWrappedFactor(diagram.getAllDiagramFactorIds(), toFactorId))
+				return true; 		
+		}
+		
+		return false;
+	}
 	
+	private boolean containsWrappedFactor(IdList diagramFactorIds, FactorId fromFactorId)
+	{
+		for (int i = 0; i < diagramFactorIds.size(); ++i)
+		{
+			ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorIds.get(i));
+			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRef);
+			if (diagramFactor.getWrappedId().equals(fromFactorId))
+				return true;
+		}
+		
+		return false;
+	}
+
 	public Project getProject()
 	{
 		ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
@@ -159,12 +203,13 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		private JPopupMenu getRightClickMenu(ThreatMatrixTable table, int row, int col)
 		{
 			JPopupMenu menu = new JPopupMenu();
-			boolean areLinked = table.areLinked(row, col);
+			boolean canBeLinked = canBeLinked(table, row, col);
 			
 			EAMenuItem creamMenuItem = new EAMenuItem(new ActionCreateFactorLink(row, col));
-			creamMenuItem.setEnabled(!areLinked);
+			creamMenuItem.setEnabled(canBeLinked);
 			creamMenuItem.setText(EAM.text("Create Link"));
 			
+			boolean areLinked = table.areLinked(row, col);
 			EAMenuItem deleteMenuItem = new EAMenuItem(new ActionDeleteFactorLink(row, col));
 			deleteMenuItem.setEnabled(areLinked);
 			deleteMenuItem.setText(EAM.text("Delete Link"));
