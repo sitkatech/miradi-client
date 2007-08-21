@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
@@ -311,9 +310,12 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			{
 				FactorId fromThreatId = model.getThreatId(row);
 				FactorId toTargetId = model.getTargetId(col);
-				DiagramObject diagramObject = model.getProject().getConceptualModelDiagram();
+				
+				ORef conceptualModelDiagramRef = findConceptualModelThatContainsBothFactors(fromThreatId, toTargetId);
+				ConceptualModelDiagram conceptualModelDiagram = (ConceptualModelDiagram) getProject().findObject(conceptualModelDiagramRef);
+			
 				LinkCreator linkCreator = new LinkCreator(getProject());
-				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromThreatId, toTargetId);
+				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(conceptualModelDiagram, fromThreatId, toTargetId);
 			}
 			catch (Exception ex)
 			{
