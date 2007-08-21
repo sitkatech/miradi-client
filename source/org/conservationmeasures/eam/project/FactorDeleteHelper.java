@@ -54,7 +54,7 @@ public class FactorDeleteHelper
 		removeFromThreatReductionResults(factorToDelete);
 		removeFromView(factorToDelete.getWrappedId());
 		removeNodeFromDiagram(getDiagramObject(), factorToDelete.getDiagramFactor());
-		removeFactorFromAllResultsChains(factorToDelete);
+		removeTargetFromAllResultsChains(factorToDelete);
 		deleteDiagramFactor(factorToDelete.getDiagramFactor());
 	
 		Factor underlyingNode = factorToDelete.getUnderlyingObject();
@@ -66,7 +66,7 @@ public class FactorDeleteHelper
 	}
 
 
-	private void removeFactorFromAllResultsChains(FactorCell factorToDelete) throws Exception
+	private void removeTargetFromAllResultsChains(FactorCell factorToDelete) throws Exception
 	{
 		if (!factorToDelete.isTarget())
 			return;
