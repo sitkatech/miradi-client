@@ -29,6 +29,7 @@ public class DiagramAliasPaster extends DiagramPaster
 	{
 		pasteFactors(startPoint);
 		createNewDiagramLinks();
+		selectNewlyPastedItems();
 	}
 
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef)
