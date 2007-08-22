@@ -35,7 +35,6 @@ import org.conservationmeasures.eam.diagram.TestProjectScopeBox;
 import org.conservationmeasures.eam.diagram.TestSetFactorSize;
 import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
 import org.conservationmeasures.eam.diagram.cells.TestDiagramFactor;
-import org.conservationmeasures.eam.diagram.cells.TestFactorDataMap;
 import org.conservationmeasures.eam.diagram.cells.TestLinkCell;
 import org.conservationmeasures.eam.ids.TestIdList;
 import org.conservationmeasures.eam.objectdata.TestDateData;
@@ -187,7 +186,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestEamGraphCell.class));
 		suite.addTest(new TestSuite(TestDiagramAddFactor.class));
 		suite.addTest(new TestSuite(TestDiagramFactor.class));
-		suite.addTest(new TestSuite(TestFactorDataMap.class));
 		suite.addTest(new TestSuite(TestSetFactorSize.class));
 		suite.addTest(new TestSuite(TestUndoAndRedo.class));
 		suite.addTest(new TestSuite(TestLinkCell.class));
