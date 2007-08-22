@@ -29,21 +29,11 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{		
-		if(!isDiagramView())
+		if(! isDiagramView())
 			return false;
 
-		try
-		{
-			ViewData viewData = getProject().getViewData(getView().cardName());
-			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
-			if(ViewData.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
-				return false;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
+		if (! isInDefaultMode())
 			return false;
-		}
 
 		if (getDiagramView().isResultsChainTab())
 			return false;
@@ -130,4 +120,24 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		ViewData viewData = getProject().getCurrentViewData();
 		return viewData.getId();
 	}
+	
+	private boolean isInDefaultMode()
+	{
+		try
+		{
+			ViewData viewData = getProject().getViewData(getView().cardName());
+			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
+			if(ViewData.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
+				return false;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+		
+		return true;
+	}
+
+
 }
