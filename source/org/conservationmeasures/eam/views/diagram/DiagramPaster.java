@@ -237,6 +237,8 @@ public class DiagramPaster
 		addDiagramFactorToSelection(diagramFactorsToSelect);
 	}
 
+	//FIXME talk to kevin about this, rename this method, or in the doer, dont follow through with 
+	//the copy if any targets are being copied to the RC,  
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception
 	{
 		if (! containsTargetsThatMustBePastedAsAlias())
