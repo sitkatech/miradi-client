@@ -11,7 +11,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.DimensionData;
@@ -179,25 +178,6 @@ public class DiagramFactor extends BaseObject
 		size.setDimension(dimensionToUse);
 	}
 	
-	public FactorDataMap createFactorDataMap(String factorType, String factorLabel)
-	{
-		FactorDataMap dataMap = new FactorDataMap();
-		dataMap.putId(TAG_ID, getDiagramFactorId());
-		dataMap.putString(TAG_WRAPPED_REF, underlyingObjectRef.get());
-		dataMap.putString(TAG_LOCATION, location.get());
-		dataMap.putString(TAG_SIZE, size.get());
-		
-		
-		// FIXME: Kevin: This is a crude hack, so we can re-create the node if it gets pasted. (Kevin)
-		// Really, for each node copied to the clipboard, we should copy 
-		// the json for both the ConceptualModelNode and for the DiagramNode.
-		// That will also fix the current bug that objectives and goals are not copied
-		dataMap.put(Factor.TAG_NODE_TYPE, factorType);
-		dataMap.put(Factor.TAG_LABEL, factorLabel);
-		
-		return dataMap;
-	}
-
 	public Command[] loadDataFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Vector commands = new Vector();
