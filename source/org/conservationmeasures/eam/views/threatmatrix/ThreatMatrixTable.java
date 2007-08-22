@@ -124,6 +124,9 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 	
 	private boolean canBeLinked(ThreatMatrixTable table, int row, int col)
 	{
+		if (table.areLinked(row, col))
+			return false;
+		
 		ThreatMatrixTableModel model = (ThreatMatrixTableModel) getModel();
 		FactorId fromFactorId = model.getThreatId(row);
 		FactorId toFactorId = model.getTargetId(col);
@@ -131,7 +134,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		if (! areBothFactorsContainedInAnyConceptualModel(fromFactorId, toFactorId))
 			return false;
 		
-		return ! table.areLinked(row, col);
+		return true;
 	}
 
 	private boolean areBothFactorsContainedInAnyConceptualModel(FactorId fromFactorId, FactorId toFactorId)
