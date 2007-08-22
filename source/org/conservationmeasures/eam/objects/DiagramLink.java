@@ -10,7 +10,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -194,18 +193,7 @@ public class DiagramLink extends BaseObject
 		else 
 			super.setData(fieldTag, dataValue);
 	}
- 
-	public FactorLinkDataMap createLinkageDataMap() throws Exception
-	{
-		FactorLinkDataMap dataMap = new FactorLinkDataMap();
-		dataMap.setId(getDiagramLinkageId());
-		dataMap.setFromId(new DiagramFactorId(fromId.getId().asInt()));
-		dataMap.setToId(new DiagramFactorId(toId.getId().asInt()));
-		dataMap.setBendPoints(new PointList(getBendPoints()));
-		
-		return dataMap;
-	}
-	
+ 	
 	public boolean bendPointAlreadyExists(Point location)
 	{
 		if (location == null)
