@@ -37,6 +37,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	public void doIt() throws CommandFailedException
 	{
 		EAMGraphCell[] selectedRelatedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
+		notifyUserIfReferringLinksBeingDeleted(selectedRelatedCells);
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
@@ -89,20 +90,36 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			return;
 		
 		DiagramLink diagramLink = cell.getDiagramLink();
-		notifyUserOfAllReferringLinksBeingDeleted(diagramLink.getUnderlyingLink());
 		new LinkDeletor(getProject()).deleteFactorLinkAndDiagramLink(factorRefsAboutToBeDeleted, diagramLink);
 	}
 	
-	private void notifyUserOfAllReferringLinksBeingDeleted(FactorLink factorLink)
-	{	
-		ObjectManager objectManager = getProject().getObjectManager();
-		ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
-		if (diagramLinkreferrers.size() == 1)
+	private void notifyUserIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
+	{
+		if (!hasLinksWithReferrers(selectedRelatedCells))
 			return;
 		
 		EAM.notifyDialog(LINK_DELETE_NOTIFY_TEXT);
 	}
-
+	
+	private boolean hasLinksWithReferrers(EAMGraphCell[] selectedRelatedCells)
+	{
+		ObjectManager objectManager = getProject().getObjectManager();
+		for(int i = 0; i < selectedRelatedCells.length; ++i)
+		{
+			EAMGraphCell cell = selectedRelatedCells[i];
+			if (! cell.isFactorLink())
+				continue;
+			
+			DiagramLink diagramLink = cell.getDiagramLink();
+			FactorLink factorLink = diagramLink.getUnderlyingLink();
+			ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
+			if (diagramLinkreferrers.size() > 0)
+				return true;
+		}
+		
+		return false;
+	}
+	
 	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
 	  															  " and Results Chains, not just this one. ");
 }
