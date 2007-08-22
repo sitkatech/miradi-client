@@ -71,24 +71,29 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			addFactorsToList(selectedNodes, nodeORefsToProcess);
 			addFactorsToList(orphanedDaftStrats, nodeORefsToProcess);
 
-			project.executeCommand(new CommandBeginTransaction());
-			try 
-			{
-				project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
-						ViewData.TAG_CHAIN_MODE_FACTOR_REFS, nodeORefsToProcess.toString()));
-				
-				project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
-						ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM));
-			}
-			finally
-			{
-				project.executeCommand(new CommandEndTransaction());
-			}
+			changeMode(project, viewId, nodeORefsToProcess);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+	}
+
+	private void changeMode(Project project, BaseId viewId, ORefList nodeORefsToProcess) throws CommandFailedException
+	{
+		project.executeCommand(new CommandBeginTransaction());
+		try 
+		{
+			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
+					ViewData.TAG_CHAIN_MODE_FACTOR_REFS, nodeORefsToProcess.toString()));
+			
+			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
+					ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM));
+		}
+		finally
+		{
+			project.executeCommand(new CommandEndTransaction());
 		}
 	}
 
