@@ -113,7 +113,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			DiagramLink diagramLink = cell.getDiagramLink();
 			FactorLink factorLink = diagramLink.getUnderlyingLink();
 			ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
-			if (diagramLinkreferrers.size() > 0)
+			if (diagramLinkreferrers.size() > 1)
 				return true;
 		}
 		
