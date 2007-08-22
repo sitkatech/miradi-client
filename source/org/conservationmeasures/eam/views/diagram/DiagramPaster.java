@@ -14,7 +14,9 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -28,7 +30,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
@@ -57,6 +58,7 @@ public class DiagramPaster
 		diagramFactorDeepCopies = transferableList.getDiagramFactorDeepCopies();
 		factorLinkDeepCopies = transferableList.getFactorLinkDeepCopies();
 		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
+		pastedCellsToSelect = new Vector();
 	}
 	
 	public void pasteFactors(Point startPoint) throws Exception
@@ -70,9 +72,20 @@ public class DiagramPaster
 	{	
 		pasteFactors(startPoint);
 		createNewFactorLinks();
-		createNewDiagramLinks();
+		createNewDiagramLinks();		
+		selectNewlyPastedItems();
 	}
 	
+	protected void selectNewlyPastedItems()
+	{
+		//NOTE if-test only exists for tests
+		if (diagramPanel == null)
+			return;
+
+		EAMGraphCell[] cellsToSelect = (EAMGraphCell[]) pastedCellsToSelect.toArray(new EAMGraphCell[0]);  
+		diagramPanel.selectCells(cellsToSelect);
+	}
+
 	private void createNewFactors() throws Exception
 	{
 		oldToNewFactorRefMap = new HashMap();
@@ -209,7 +222,6 @@ public class DiagramPaster
 
 	protected void createNewDiagramFactors() throws Exception
 	{
-		ORefList diagramFactorsToSelect = new ORefList();
 		oldToNewDiagramFactorRefMap = new HashMap();
 		for (int i = 0; i < diagramFactorDeepCopies.size(); ++i)
 		{
@@ -228,13 +240,13 @@ public class DiagramPaster
 			getProject().executeCommands(commandsToLoadFromJson);
 
 			addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
-			diagramFactorsToSelect.add(newDiagramFactorRef);
 			
 			BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
 			int type = json.getInt("Type");
 			oldToNewDiagramFactorRefMap.put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
+			addDiagramFactorsToSelection(newDiagramFactorRef);
 		}
-		addDiagramFactorToSelection(diagramFactorsToSelect);
+
 	}
 
 	//FIXME talk to kevin about this, rename this method, or in the doer, dont follow through with 
@@ -269,20 +281,20 @@ public class DiagramPaster
 		return movedPoints.toString();
 	}
 
-	private void addDiagramFactorToSelection(ORefList diagramFactorRefsToSelect) throws Exception
+	private void addDiagramFactorsToSelection(ORef diagramFactorRefToSelect) throws Exception
 	{
-		//NOTE if-test only exists for tests
-		if (diagramPanel == null)
-			return;
-		
-		for (int i = 0; i < diagramFactorRefsToSelect.size(); ++i)
-		{
-			ORef diagramFactorRefToSelect = diagramFactorRefsToSelect.get(i);
-			DiagramFactorId diagramFactorId = new DiagramFactorId(diagramFactorRefToSelect.getObjectId().asInt());
-			FactorCell cell = currentModel.getFactorCellById(diagramFactorId);
-			diagramPanel.addFactorToSelection(cell);
-		}	
+		DiagramFactorId diagramFactorId = new DiagramFactorId(diagramFactorRefToSelect.getObjectId().asInt());
+		FactorCell cell = currentModel.getFactorCellById(diagramFactorId);
+		pastedCellsToSelect.add(cell);
 	}
+	
+	private void addDiagramLinksToSelection(ORef diagramLinkRefToSelect) throws Exception
+	{
+		DiagramLink diagramLink = (DiagramLink) project.findObject(diagramLinkRefToSelect);
+		LinkCell linkCell = currentModel.getDiagramFactorLink(diagramLink);
+		pastedCellsToSelect.add(linkCell);	
+	}
+
 
 	private ORef createDiagramFactor(ORef oldWrappedRef, ORef newWrappedRef) throws CommandFailedException
 	{
@@ -398,7 +410,9 @@ public class DiagramPaster
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
 			
-			addToCurrentDiagram(newDiagramLink.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+			ORef newDiagramLinkRef = newDiagramLink.getRef();
+			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+			addDiagramLinksToSelection(newDiagramLinkRef);
 		}
 	}
 
@@ -543,4 +557,5 @@ public class DiagramPaster
 	
 	PointManipulater dataHelper;
 	TransferableMiradiList transferableList;
+	Vector pastedCellsToSelect;
 }
