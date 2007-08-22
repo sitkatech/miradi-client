@@ -59,7 +59,7 @@ public class PropertiesDoer extends LocationDoer
 			doProjectScopeProperties();
 		
 		else if(selected.isFactorLink())
-			doFactorLinkProperties(selected.getDiagramFactorLink());
+			doFactorLinkProperties(selected.getDiagramLink());
 	}
 	
 	private boolean isTextBoxFactor(DiagramFactor selected)

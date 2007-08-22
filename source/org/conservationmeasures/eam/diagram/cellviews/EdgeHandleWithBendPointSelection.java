@@ -95,7 +95,7 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		super.paint(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
 		int[] selectedIndexes = bendSelectionHelper.getSelectedIndexes();
 		for (int i = 0; i < selectedIndexes.length; ++i)
 		{

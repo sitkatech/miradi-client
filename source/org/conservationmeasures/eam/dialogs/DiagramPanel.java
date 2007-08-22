@@ -105,7 +105,7 @@ abstract public class DiagramPanel extends DisposablePanel
 			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
 			{
 				LinkCell cell = (LinkCell)allSelectedCells[i];
-				linkages.add(cell.getDiagramFactorLink());
+				linkages.add(cell.getDiagramLink());
 			}
 		}
 		return (DiagramLink[])linkages.toArray(new DiagramLink[0]);

@@ -149,7 +149,7 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	{
 		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
 		LinkCell linkCell = project.createLinkCellWithBendPoints(bendPointList);	
-		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramLink();
 		
 		assertEquals("bend points not added?", 3, diagramLink.getBendPoints().size());
 		assertEquals("bend point doestn exist?", true, diagramLink.bendPointAlreadyExists(new Point(1, 1)));

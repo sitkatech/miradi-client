@@ -27,7 +27,7 @@ public class DiagramModelEvent extends EventObject
 	
 	public DiagramLink getDiagramFactorLink()
 	{
-		return cell.getDiagramFactorLink();
+		return cell.getDiagramLink();
 	}
 	
 	private EAMGraphCell cell;

@@ -124,7 +124,7 @@ public class TransferableMiradiList implements Transferable
 		Vector factorLinkJsonStrings = deepCopier.createDeepCopy(factorLink);
 		factorLinkDeepCopies.addAll(factorLinkJsonStrings);
 	
-		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramLink();
 		Vector diagramLinkJsonStrings = deepCopier.createDeepCopy(diagramLink);
 		diagramLinkDeepCopies.addAll(diagramLinkJsonStrings);	
 	}

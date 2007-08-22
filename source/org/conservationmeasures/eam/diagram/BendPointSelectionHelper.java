@@ -101,7 +101,7 @@ public class BendPointSelectionHelper
 	
 	public void addToSelection(Point pointToSelect)
 	{
-		PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
 		for (int i = 0; i < bendPoints.size(); ++i)
 		{
 			Point point = bendPoints.get(i);
@@ -125,7 +125,7 @@ public class BendPointSelectionHelper
 	public void selectAll()
 	{
 		clearSelection();
-		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramLink();
 		PointList allBendPoints = diagramLink.getBendPoints();
 		for (int i = 0; i < allBendPoints.size(); ++i)
 		{

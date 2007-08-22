@@ -48,7 +48,7 @@ public class TestLinkCell extends EAMTestCase
 		Point bendPoint1 = new Point(3, 3);
 		LinkCell linkCell = project.createLinkCell();
 		
-		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramLink();
 		assertEquals("has bend point?", 0, diagramLink.getBendPoints().size());
 		PointList bendPoints = linkCell.getNewBendPointList(model, cache, bendPoint1);
 		assertEquals("bend point not added?", 1, bendPoints.size());
