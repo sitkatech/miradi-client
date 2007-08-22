@@ -95,13 +95,13 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	
 	private void notifyUserIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
 	{
-		if (!hasLinksWithReferrers(selectedRelatedCells))
+		if (!containsAnyLinksThatAreOnMoreThanOneDiagram(selectedRelatedCells))
 			return;
 		
 		EAM.notifyDialog(LINK_DELETE_NOTIFY_TEXT);
 	}
 	
-	private boolean hasLinksWithReferrers(EAMGraphCell[] selectedRelatedCells)
+	private boolean containsAnyLinksThatAreOnMoreThanOneDiagram(EAMGraphCell[] selectedRelatedCells)
 	{
 		ObjectManager objectManager = getProject().getObjectManager();
 		for(int i = 0; i < selectedRelatedCells.length; ++i)
