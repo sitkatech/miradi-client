@@ -385,7 +385,6 @@ public class DiagramPaster
 			FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
-			//FIXME shouldnt this also be inside the factorLink creation
 			LinkCreator linkCreator = new LinkCreator(project);
 			if (linkCreator.linkWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
 				continue;
