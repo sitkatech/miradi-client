@@ -67,6 +67,14 @@ abstract public class DiagramObject extends BaseObject
 		return null;
 	}
 	
+	public boolean containsWrappedFactor(FactorId factorId)
+	{
+		if (getDiagramFactor(factorId) != null)
+			return true;
+		
+		return false;
+	}
+	
 	public boolean isResultsChain()
 	{
 		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);

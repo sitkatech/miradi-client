@@ -819,24 +819,11 @@ public class Project
 		{
 			ORef thisDiagramRef = diagramORefs.get(i);
 			ConceptualModelDiagram diagram =  (ConceptualModelDiagram) findObject(thisDiagramRef);
-			if (containsWrappedFactor(diagram.getAllDiagramFactorIds(), fromFactorId) && containsWrappedFactor(diagram.getAllDiagramFactorIds(), toFactorId))
+			if (diagram.containsWrappedFactor(fromFactorId) && diagram.containsWrappedFactor(toFactorId))
 				return thisDiagramRef; 		
 		}
 		
 		return ORef.INVALID;
-	}
-	
-	public boolean containsWrappedFactor(IdList diagramFactorIds, FactorId fromFactorId)
-	{
-		for (int i = 0; i < diagramFactorIds.size(); ++i)
-		{
-			ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorIds.get(i));
-			DiagramFactor diagramFactor = (DiagramFactor) findObject(diagramFactorRef);
-			if (diagramFactor.getWrappedId().equals(fromFactorId))
-				return true;
-		}
-		
-		return false;
 	}
 	
 	public DiagramLink[] getToAndFromLinks(DiagramFactorId diagramFactorId)
