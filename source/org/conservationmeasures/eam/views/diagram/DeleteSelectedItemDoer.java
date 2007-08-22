@@ -22,11 +22,6 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteSelectedItemDoer extends ViewDoer
 {
-	public DeleteSelectedItemDoer()
-	{
-		super();
-	}
-	
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
