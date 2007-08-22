@@ -44,7 +44,7 @@ public class BendPointCreator
 	
 	public void insertBendPointForLink(LinkCell linkCell, Point insertPoint) throws Exception
 	{
-		DiagramLink selectedLink = linkCell.getDiagramFactorLink();
+		DiagramLink selectedLink = linkCell.getDiagramLink();
 		Point snapped = project.getSnapped(insertPoint);
 		PointList newListWithBendPoint = linkCell.getNewBendPointList(model, getCache(), snapped);
 		
@@ -78,7 +78,7 @@ public class BendPointCreator
 	{
 		PointList pointList = new PointList();
 		pointList.add(linkCell.getSourceLocation(getCache()));
-		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramLink();
 		pointList.addAll(diagramLink.getBendPoints().getAllPoints());
 		pointList.add(linkCell.getTargetLocation(getCache()));
 		

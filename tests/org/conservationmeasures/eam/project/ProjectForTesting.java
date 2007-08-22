@@ -290,7 +290,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	{
 		LinkCell linkCell = createLinkCell();
 	
-		CommandSetObjectData createBendPointsCommand =	CommandSetObjectData.createNewPointList(linkCell.getDiagramFactorLink(), DiagramLink.TAG_BEND_POINTS, bendPoints);
+		CommandSetObjectData createBendPointsCommand =	CommandSetObjectData.createNewPointList(linkCell.getDiagramLink(), DiagramLink.TAG_BEND_POINTS, bendPoints);
 		executeCommand(createBendPointsCommand);
 		
 		return linkCell;

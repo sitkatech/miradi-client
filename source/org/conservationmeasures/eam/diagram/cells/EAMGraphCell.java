@@ -32,7 +32,7 @@ public class EAMGraphCell extends DefaultGraphCell
 		return false;
 	}
 	
-	public DiagramLink getDiagramFactorLink()
+	public DiagramLink getDiagramLink()
 	{
 		return null;
 	}

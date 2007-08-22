@@ -135,7 +135,7 @@ public class NudgeDoer extends LocationDoer
 
 	private boolean wouldMoveBendPointsOutOfBounds(LinkCell linkCell, int deltaX, int deltaY)
 	{
-		PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
 		int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
 		for (int i = 0; i < selectedIndexes.length; ++i)
 		{

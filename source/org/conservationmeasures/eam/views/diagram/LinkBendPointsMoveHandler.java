@@ -50,7 +50,7 @@ public class LinkBendPointsMoveHandler
 	//TODO nima check for possible duplicate code in this class
 	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, Point2D[] bendPoints) throws Exception
 	{
-		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramLink();
 		PointList pointsToMove = diagramLink.getBendPoints().createClone();
 		
 		for (int i = 0; i < selectionIndexes.length; ++i)
@@ -71,7 +71,7 @@ public class LinkBendPointsMoveHandler
 
 	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws Exception
 	{
-		DiagramLink diagramLink = linkCell.getDiagramFactorLink();
+		DiagramLink diagramLink = linkCell.getDiagramLink();
 		PointList pointsToMove = diagramLink.getBendPoints().createClone();
 		
 		for (int i = 0; i < selectionIndexes.length; ++i)
@@ -103,7 +103,7 @@ public class LinkBendPointsMoveHandler
 		for (int i = 0; i < nearbyLinkCells.length; ++i)
 		{
 			LinkCell nearByLinkCell = nearbyLinkCells[i];
-			DiagramLink nearbyDiagramLink = nearByLinkCell.getDiagramFactorLink();
+			DiagramLink nearbyDiagramLink = nearByLinkCell.getDiagramLink();
 			if (nearByLinkCell.equals(linkCell))
 				continue;
 			

@@ -133,7 +133,7 @@ public class EAMGraphUI extends BasicGraphUI
 		private double calculateDeltaXForLink(double dx, double totDx, EAMGraphCell cell)
 		{
 			LinkCell linkCell = (LinkCell) cell;
-			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+			PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
 			int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
 			for (int j = 0 ; j < selectedIndexes.length; ++j)
 			{
@@ -163,7 +163,7 @@ public class EAMGraphUI extends BasicGraphUI
 		private double calculateDeltaYForLink(double dy, double totDy, EAMGraphCell cell)
 		{
 			LinkCell linkCell = (LinkCell) cell;
-			PointList bendPoints = linkCell.getDiagramFactorLink().getBendPoints();
+			PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
 			int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
 			for (int j = 0 ; j < selectedIndexes.length; ++j)
 			{

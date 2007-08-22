@@ -335,7 +335,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		Graphics2D g2 = (Graphics2D)fontGraphics;
 		
 		Rectangle2D centerStressWithin = linkBounds;
-		PointList points = getLinkCell().getDiagramFactorLink().getBendPoints();
+		PointList points = getLinkCell().getDiagramLink().getBendPoints();
 		if(points.size() > 0)
 		{
 			int centerPointIndex = points.size() / 2;

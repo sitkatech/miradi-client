@@ -72,8 +72,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return diagramLink.getDiagramLinkageId();
 	}
 	
-	//TODO rename to getDiagramLink()
-	public DiagramLink getDiagramFactorLink()
+	public DiagramLink getDiagramLink()
 	{
 		return diagramLink;
 	}
@@ -100,7 +99,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	private void updateBendPoints()
 	{
-		PointList bendPoints = getDiagramFactorLink().getBendPoints();
+		PointList bendPoints = getDiagramLink().getBendPoints();
 		Vector bendPointList = new Vector(bendPoints.getAllPoints());
 		Vector newList = new Vector();
 		newList.add(to.getLocation());
