@@ -269,18 +269,15 @@ public class DiagramPaster
 
 	private void addDiagramFactorToSelection(ORefList diagramFactorRefsToSelect) throws Exception
 	{
-		//FIXME refactor this code after commiting (get rid of forlopp and just select new DF as added)
-		//DiagramModel model = getDiagramView().getDiagramModel();
+		//NOTE if-test only exists for tests
+		if (diagramPanel == null)
+			return;
+		
 		for (int i = 0; i < diagramFactorRefsToSelect.size(); ++i)
 		{
 			ORef diagramFactorRefToSelect = diagramFactorRefsToSelect.get(i);
 			DiagramFactorId diagramFactorId = new DiagramFactorId(diagramFactorRefToSelect.getObjectId().asInt());
 			FactorCell cell = currentModel.getFactorCellById(diagramFactorId);
-			//NOTE test only exists for tests
-			if (diagramPanel == null)
-				continue;
-			
-			
 			diagramPanel.addFactorToSelection(cell);
 		}	
 	}
