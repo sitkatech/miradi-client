@@ -212,7 +212,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			FactorId targetId = model.getTargetId(col);
 			FactorLinkId factorLinkId = project.getFactorLinkPool().getLinkedId(threatId, targetId);
 
-			if (!userConfirms())
+			if (!userConfirmsLinkDeletion())
 				return;
 			
 			try
@@ -238,7 +238,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			}
 		}
 		
-		private boolean userConfirms()
+		private boolean userConfirmsLinkDeletion()
 		{
 			String[] body = new String[] {EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
 	  												" and Results Chains, not just this one. ")};	
