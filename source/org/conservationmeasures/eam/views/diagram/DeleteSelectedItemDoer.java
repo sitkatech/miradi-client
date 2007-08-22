@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.FactorDeleteHelper;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteSelectedItemDoer extends ViewDoer
@@ -26,11 +25,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	public DeleteSelectedItemDoer()
 	{
 		super();
-	}
-	
-	public DeleteSelectedItemDoer(Project project)
-	{
-		setProject(project);
 	}
 	
 	public boolean isAvailable()
