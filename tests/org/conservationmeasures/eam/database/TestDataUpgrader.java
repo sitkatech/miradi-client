@@ -287,7 +287,6 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(objectFile, objectString);
 	}
 	
-	//FIXME why is this test leaving orphand temp files
 	public void testUpgradeTo20AddORefsInFactorLinks() throws Exception
 	{
 		File jsonDir = new File(tempDirectory, "json");
