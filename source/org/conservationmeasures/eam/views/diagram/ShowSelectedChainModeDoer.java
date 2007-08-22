@@ -31,9 +31,9 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	{
 		try
 		{
-			//FIXME this check happens twice,  and also refactor this try into a method
 			if(!isDiagramView())
 				return false;
+
 			ViewData viewData = getProject().getViewData(getView().cardName());
 			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
 			if(ViewData.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
@@ -45,9 +45,6 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			return false;
 		}
 
-		if (!isDiagramView())
-			return false;
-		
 		if (getDiagramView().isResultsChainTab())
 			return false;
 		
