@@ -108,9 +108,9 @@ public class Paste extends LocationDoer
 	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
 	{		
 		if (usersChoice.equals(AS_ALIAS_BUTTON))
-			return new DiagramAliasPaster(getDiagramView().getDiagramModel(), list);
+			return new DiagramAliasPaster(getDiagramView().getDiagramPanel(), getDiagramView().getDiagramModel(), list);
 		
-		return new DiagramPaster(getDiagramView().getDiagramModel(), list);
+		return new DiagramPaster(getDiagramView().getDiagramPanel(), getDiagramView().getDiagramModel(), list);
 	}
 
 	private void possiblyNotitfyUserIfDataWasLost(DiagramPaster diagramPaster) throws Exception

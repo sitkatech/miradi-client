@@ -66,6 +66,11 @@ abstract public class DiagramPanel extends DisposablePanel
 		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
 	}
 	
+	public void addFactorToSelection(FactorCell factorCell)
+	{
+		getSelectionModel().addSelectionCell(factorCell);
+	}
+	
 	public void selectFactor(FactorId idToUse)
 	{
 		try
