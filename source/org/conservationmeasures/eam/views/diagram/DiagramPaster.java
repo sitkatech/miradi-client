@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -45,8 +46,9 @@ import org.conservationmeasures.eam.utils.PointList;
 
 public class DiagramPaster
 {
-	public DiagramPaster(DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
+		diagramPanel = diagramPanelToUse;
 		currentModel = modelToUse;
 		project = currentModel.getProject();
 		transferableList = transferableListToUse;
@@ -267,19 +269,20 @@ public class DiagramPaster
 
 	private void addDiagramFactorToSelection(ORefList diagramFactorRefsToSelect) throws Exception
 	{
-		//FIXME select cells after paste
+		//FIXME refactor this code after commiting (get rid of forlopp and just select new DF as added)
 		//DiagramModel model = getDiagramView().getDiagramModel();
-		Vector factorCells = new Vector();
 		for (int i = 0; i < diagramFactorRefsToSelect.size(); ++i)
 		{
 			ORef diagramFactorRefToSelect = diagramFactorRefsToSelect.get(i);
 			DiagramFactorId diagramFactorId = new DiagramFactorId(diagramFactorRefToSelect.getObjectId().asInt());
 			FactorCell cell = currentModel.getFactorCellById(diagramFactorId);
-			factorCells.add(cell);
-		}
-		
-		//FactorCell[] cells = (FactorCell[]) factorCells.toArray(new FactorCell[0]);
-		//getDiagramView().getDiagramComponent().addSelectionCells(cells);
+			//NOTE test only exists for tests
+			if (diagramPanel == null)
+				continue;
+			
+			
+			diagramPanel.addFactorToSelection(cell);
+		}	
 	}
 
 	private ORef createDiagramFactor(ORef oldWrappedRef, ORef newWrappedRef) throws CommandFailedException
@@ -529,6 +532,7 @@ public class DiagramPaster
 	
 	Project project;
 	DiagramModel currentModel;
+	DiagramPanel diagramPanel;
 	
 	Vector<String> factorDeepCopies;
 	Vector<String> diagramFactorDeepCopies;

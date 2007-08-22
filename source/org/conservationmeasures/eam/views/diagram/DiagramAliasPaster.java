@@ -8,14 +8,15 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 
 public class DiagramAliasPaster extends DiagramPaster
 {
-	public DiagramAliasPaster(DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramAliasPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
-		super(modelToUse, transferableListToUse);
+		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}
 	
 	public void pasteFactors(Point startPoint) throws Exception
