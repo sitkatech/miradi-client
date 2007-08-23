@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Goal;
+
 public class TestPlanningTreeGoalNode extends TestPlanningTree
 {
 	public TestPlanningTreeGoalNode(String name)
@@ -12,9 +15,11 @@ public class TestPlanningTreeGoalNode extends TestPlanningTree
 		super(name);
 	}
 	
-	public void testPlanningTreeGoalNodes()
+	public void testPlanningTreeGoalNodes() throws Exception
 	{
-		//TODO finish project
-		//already asserted fail (again)
+		Goal goal = getGoal();
+		String objectiveChildren = goal.getPseudoData(Goal.PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST);
+		ORefList objectiveORefs = new ORefList(objectiveChildren);
+		assertEquals("wrong objective count?", 1, objectiveORefs.size());
 	}
 }

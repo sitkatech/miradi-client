@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
@@ -16,9 +17,11 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -55,6 +58,7 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.IntermediateResult;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
@@ -402,6 +406,27 @@ public class ObjectManager
 		return foundObjects;
 	}
 	
+	public ORefList getObjectiveChildren(BaseId goalId) throws Exception
+	{
+		ORefList objectiveRefList = new ORefList();
+		FactorSet relatedNodes = new ChainManager(getProject()).findAllFactorsRelatedToThisGoal(goalId);
+		Iterator iter = relatedNodes.iterator();
+		while(iter.hasNext())
+		{
+			Factor factor = (Factor)iter.next();
+			IdList objectiveIds = factor.getObjectives();
+			for(int i = 0; i < objectiveIds.size(); ++i)
+			{
+				if(objectiveIds.get(i).isInvalid())
+					continue;
+
+				objectiveRefList.add(new ORef(Objective.getObjectType(), objectiveIds.get(i)));
+			}
+		}
+
+		return objectiveRefList;
+	}
+
 	Project project;
 
 	HashMap pools;
