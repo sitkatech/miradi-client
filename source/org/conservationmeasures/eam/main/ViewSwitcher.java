@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
+import org.conservationmeasures.eam.actions.views.ActionViewPlanning;
 import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.views.ActionViewSummary;
@@ -44,6 +45,7 @@ public class ViewSwitcher extends PanelComboBox
 			actions.get(ActionViewDiagram.class), 
 			actions.get(ActionViewTargetViability.class),
 			actions.get(ActionViewThreatMatrix.class),
+			actions.get(ActionViewPlanning.class),
 			actions.get(ActionViewStrategicPlan.class),
 			actions.get(ActionViewMonitoring.class),
 			actions.get(ActionViewWorkPlan.class), 
