@@ -406,10 +406,10 @@ public class ObjectManager
 		return foundObjects;
 	}
 	
-	public ORefList getObjectiveChildren(BaseId goalId) throws Exception
+	public ORefList getObjectiveChildren(ORef ref) throws Exception
 	{
 		ORefList objectiveRefList = new ORefList();
-		FactorSet relatedNodes = new ChainManager(getProject()).findAllFactorsRelatedToThisGoal(goalId);
+		FactorSet relatedNodes = new ChainManager(getProject()).findAllFactorsRelatedToThisObject(ref);
 		Iterator iter = relatedNodes.iterator();
 		while(iter.hasNext())
 		{
