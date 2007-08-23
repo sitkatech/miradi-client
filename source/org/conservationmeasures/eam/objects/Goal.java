@@ -61,7 +61,7 @@ public class Goal extends Desire
 	{
 		try
 		{
-			return objectManager.getObjectiveChildren(getId()).toString();
+			return objectManager.getObjectiveChildren(getRef()).toString();
 		}
 		catch (Exception e)
 		{
