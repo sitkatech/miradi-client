@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 
@@ -141,14 +142,19 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		return addItemToList(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, id,  type,  tag);
 	}
 	
-	public BaseId addItemToGoalList(BaseId id, int type, String tag) throws Exception
+	public BaseId addItemToGoalList(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ObjectType.GOAL, id,  type,  tag);
+		return addItemToList(ref.getObjectType(), ref.getObjectId(), ObjectType.GOAL,  tag);
 	}
 	
-	public BaseId addItemToObjectiveList(BaseId id, int type, String tag) throws Exception
+	public BaseId addItemToObjectiveList(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ObjectType.OBJECTIVE, id,  type,  tag);
+		return addItemToList(ref.getObjectType(), ref.getObjectId(), ObjectType.OBJECTIVE,  tag);
+	}
+	
+	public BaseId addItemToIndicatorList(ORef ref, String tag) throws Exception
+	{
+		return addItemToList(ref.getObjectType(), ref.getObjectId(), Indicator.getObjectType(), tag);
 	}
 	
 	public BaseId addItemToIndicatorList(BaseId id, int type, String tag) throws Exception
@@ -156,25 +162,24 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		return addItemToList(ObjectType.INDICATOR, id,  type,  tag);
 	}
 	
-	
 	public BaseId addItemToTaskList(BaseId id, int type, String tag) throws Exception
 	{
 		return addItemToList(ObjectType.TASK, id,  type,  tag);
 	}
-	
 	
 	public BaseId addItemToFactorList(BaseId id, int type, String tag) throws Exception
 	{
 		return addItemToList(ObjectType.FACTOR, id,  type,  tag);
 	}
 	
-	public BaseId addItemToList(int sourceType, BaseId id, int type, String tag) throws Exception
+	public BaseId addItemToList(int parentType, BaseId parentId, int typeToCreate, String tag) throws Exception
 	{
-		BaseId baseId = createObjectAndReturnId(type);
-		BaseObject foundObject = findObject(new ORef(sourceType, id));
+		BaseObject foundObject = findObject(new ORef(parentType, parentId));
 		IdList currentIdList = new IdList(foundObject.getData(tag));
+		
+		BaseId baseId = createObjectAndReturnId(typeToCreate);
 		currentIdList.add(baseId);
-		setObjectData(sourceType, id, tag, currentIdList.toString());
+		setObjectData(parentType, parentId, tag, currentIdList.toString());
 
 		return baseId;
 	}

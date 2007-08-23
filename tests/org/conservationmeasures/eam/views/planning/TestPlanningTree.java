@@ -5,17 +5,16 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
-public class TestPlanningTree extends EAMTestCase
+abstract public class TestPlanningTree extends EAMTestCase
 {
 	public TestPlanningTree(String name)
 	{
@@ -37,23 +36,27 @@ public class TestPlanningTree extends EAMTestCase
 	
 	private void setupFactors() throws Exception
 	{
-		DiagramFactor diagramStrategy1 = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
-		DiagramFactor diagramCause1 = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor diagramTarget1 = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		diagramStrategy1 = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
+		diagramCause1 = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		diagramTarget1 = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
 
-		project.createDiagramFactorLink(diagramStrategy1, diagramCause1);		
-		project.createDiagramFactorLink(diagramCause1, diagramTarget1);
+		strat1ToCause1LinkId = project.createDiagramFactorLink(diagramStrategy1, diagramCause1);		
+		cause1ToTarget1LinkId = project.createDiagramFactorLink(diagramCause1, diagramTarget1);
 		
-		project.addItemToObjectiveList(diagramCause1.getId(), Objective.getObjectType(), Cause.TAG_OBJECTIVE_IDS);
-		project.addItemToIndicatorList(diagramCause1.getId(), Indicator.getObjectType(), Cause.TAG_INDICATOR_IDS);
-		project.addItemToGoalList(diagramTarget1.getId(), Goal.getObjectType(), Target.TAG_GOAL_IDS);
-	}
-	
-	public void testPlanningTreeGoalNodes()
-	{
-		//TODO finish project
-		//already asserted fail
+		objectiveId = project.addItemToObjectiveList(diagramCause1.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
+		indicatorId = project.addItemToIndicatorList(diagramCause1.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
+		goalId = project.addItemToGoalList(diagramTarget1.getWrappedORef(), Target.TAG_GOAL_IDS);
 	}
 	
 	ProjectForTesting project;
+	DiagramFactor diagramStrategy1;		
+	DiagramFactor diagramCause1;
+	DiagramFactor diagramTarget1;
+	
+	DiagramFactorLinkId strat1ToCause1LinkId;
+	DiagramFactorLinkId cause1ToTarget1LinkId;
+	
+	BaseId indicatorId;
+	BaseId objectiveId;
+	BaseId goalId;
 }
