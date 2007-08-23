@@ -4,18 +4,18 @@
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
 
-package org.conservationmeasures.eam.views.map.wizard;
+package org.conservationmeasures.eam.views.planning.wizard;
 
-import org.conservationmeasures.eam.actions.views.ActionViewMap;
-import org.conservationmeasures.eam.views.map.MapView;
+import org.conservationmeasures.eam.actions.views.ActionViewPlanning;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.wizard.SplitWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
-public class MapOverviewStep extends SplitWizardStep
+public class PlanningOverviewStep extends SplitWizardStep
 {
-	public MapOverviewStep(WizardPanel wizardToUse)
+	public PlanningOverviewStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, MapView.getViewName());
+		super(wizardToUse, PlanningView.getViewName());
 	}
 
 	public String getProcessStepTitle()
@@ -25,6 +25,6 @@ public class MapOverviewStep extends SplitWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionViewMap.class;
+		return ActionViewPlanning.class;
 	}
 }

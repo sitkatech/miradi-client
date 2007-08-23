@@ -48,6 +48,7 @@ import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectOverviewStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardImportStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardProjectCreateStep;
+import org.conservationmeasures.eam.views.planning.wizard.PlanningOverviewStep;
 import org.conservationmeasures.eam.views.schedule.wizard.ScheduleOverviewStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopObjectivesStep;
@@ -107,6 +108,7 @@ public class WizardManager
 		createTargetViabilityStepEntries(panel);
 		createMapViewStepEntries(panel);
 		createImagesViewStepEntries(panel);
+		createPlanningViewStepEntries(panel);
 	}
 	
 	public String getCurrentStepName()
@@ -142,8 +144,11 @@ public class WizardManager
 	{
 		SkeletonWizardStep newStep = findStep(newStepName);
 		
-		if (newStep==null) 
+		if (newStep == null)
+		{
+			EAM.logError("WizardManager couldnt find step " + newStepName);
 			return;
+		}
 		
 		setCurrentStepName(newStepName);
 
@@ -302,6 +307,11 @@ public class WizardManager
 			.createBackControl(ThreatRatingWizardChooseBundle.class); 
 	}
 
+	public void createPlanningViewStepEntries(WizardPanel panel)
+	{
+		createStepEntry(new PlanningOverviewStep(panel));
+	}
+	
 	public void createMapViewStepEntries(WizardPanel panel)
 	{		
 		createStepEntry(new MapOverviewStep(panel));
@@ -399,6 +409,7 @@ public class WizardManager
 				ScheduleOverviewStep.class,
 				MapOverviewStep.class,
 				LibraryOverviewStep.class,
+				PlanningOverviewStep.class,
 		};
 		
 		return entries;
