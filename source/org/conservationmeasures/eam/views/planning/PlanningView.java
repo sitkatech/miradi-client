@@ -20,7 +20,6 @@ public class PlanningView extends UmbrellaView
 
 	public void becomeActive() throws Exception
 	{
-		System.out.println("herave");
 		super.becomeActive();
 		removeAll();
 	}
