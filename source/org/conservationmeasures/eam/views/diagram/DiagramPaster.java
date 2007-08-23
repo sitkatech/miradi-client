@@ -244,7 +244,7 @@ public class DiagramPaster
 			BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
 			int type = json.getInt("Type");
 			oldToNewDiagramFactorRefMap.put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
-			addDiagramFactorsToSelection(newDiagramFactorRef);
+			addDiagramFactorToSelection(newDiagramFactorRef);
 		}
 
 	}
@@ -281,14 +281,14 @@ public class DiagramPaster
 		return movedPoints.toString();
 	}
 
-	private void addDiagramFactorsToSelection(ORef diagramFactorRefToSelect) throws Exception
+	private void addDiagramFactorToSelection(ORef diagramFactorRefToSelect) throws Exception
 	{
 		DiagramFactorId diagramFactorId = new DiagramFactorId(diagramFactorRefToSelect.getObjectId().asInt());
 		FactorCell cell = currentModel.getFactorCellById(diagramFactorId);
 		pastedCellsToSelect.add(cell);
 	}
 	
-	private void addDiagramLinksToSelection(ORef diagramLinkRefToSelect) throws Exception
+	private void addDiagramLinkToSelection(ORef diagramLinkRefToSelect) throws Exception
 	{
 		DiagramLink diagramLink = (DiagramLink) project.findObject(diagramLinkRefToSelect);
 		LinkCell linkCell = currentModel.getDiagramFactorLink(diagramLink);
@@ -412,7 +412,7 @@ public class DiagramPaster
 			
 			ORef newDiagramLinkRef = newDiagramLink.getRef();
 			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
-			addDiagramLinksToSelection(newDiagramLinkRef);
+			addDiagramLinkToSelection(newDiagramLinkRef);
 		}
 	}
 
