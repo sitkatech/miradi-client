@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -56,16 +57,23 @@ public class Goal extends Desire
 		return false;
 	}
 	
-	private String getObjectiveChildren()
+	public String getObjectiveChildrenAsString()
 	{
-		//FIXME finish this method/test it
-		return null;
+		try
+		{
+			return objectManager.getObjectiveChildren(getId()).toString();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		return "";
 	}
 	
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST))
-			return getObjectiveChildren();
+			return getObjectiveChildrenAsString(); 
 		
 		return super.getPseudoData(fieldTag);
 	}
