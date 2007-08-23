@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -54,9 +55,33 @@ public class Goal extends Desire
 	{
 		return false;
 	}
+	
+	private String getObjectiveChildren()
+	{
+		//FIXME finish this method/test it
+		return null;
+	}
+	
+	public String getPseudoData(String fieldTag)
+	{
+		if(fieldTag.equals(PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST))
+			return getObjectiveChildren();
+		
+		return super.getPseudoData(fieldTag);
+	}
+	
+	public void clear()
+	{
+		super.clear();	
+		objectiveChildren = new ORefListData();
+		
+		addField(PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST, objectiveChildren);
+	}
 
 	public final static String PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST = "PseudoTagChildObjectiveORefList";
 	
 	//FIXME: all OBJECT_NAME reference becaseu the are used in displayes shold be static methods that call EAM.text
 	public static final String OBJECT_NAME = "Goal";
+	
+	ORefListData objectiveChildren;
 }
