@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
@@ -139,8 +140,8 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 
 	private boolean areBothFactorsContainedInAnyConceptualModel(FactorId fromFactorId, FactorId toFactorId)
 	{
-		ORef foundConceptualModel = getProject().findConceptualModelThatContainsBothFactors(fromFactorId, toFactorId);
-		if (! foundConceptualModel.isInvalid())
+		ORefList foundConceptualModels = getProject().findConceptualModelThatContainsBothFactors(fromFactorId, toFactorId);
+		if (foundConceptualModels.size() > 0)
 			return true;
 		
 		return false;
@@ -281,12 +282,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			{
 				FactorId fromThreatId = model.getThreatId(row);
 				FactorId toTargetId = model.getTargetId(col);
-				
-				ORef conceptualModelDiagramRef = getProject().findConceptualModelThatContainsBothFactors(fromThreatId, toTargetId);
-				ConceptualModelDiagram conceptualModelDiagram = (ConceptualModelDiagram) getProject().findObject(conceptualModelDiagramRef);
-			
-				LinkCreator linkCreator = new LinkCreator(getProject());
-				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(conceptualModelDiagram, fromThreatId, toTargetId);
+				createLinksInConceptualModels(fromThreatId, toTargetId);
 			}
 			catch (Exception ex)
 			{
@@ -298,6 +294,20 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			}
 		}
 		
+		private void createLinksInConceptualModels(FactorId fromThreatId, FactorId toTargetId) throws Exception
+		{
+
+			ORefList conceptualModelDiagramRefs = getProject().findConceptualModelThatContainsBothFactors(fromThreatId, toTargetId);
+			for (int i = 0; i < conceptualModelDiagramRefs.size(); ++i)
+			{
+				ORef conceptualModelDiagramRef = conceptualModelDiagramRefs.get(i);
+				ConceptualModelDiagram conceptualModelDiagram = (ConceptualModelDiagram) getProject().findObject(conceptualModelDiagramRef);
+
+				LinkCreator linkCreator = new LinkCreator(getProject());
+				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(conceptualModelDiagram, fromThreatId, toTargetId);
+			}
+		}
+
 		int row;
 		int col;
 	}
