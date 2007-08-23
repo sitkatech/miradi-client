@@ -30,6 +30,6 @@ public class PlanningView extends UmbrellaView
 
 	public JToolBar createToolBar()
 	{
-		return null;
+		return new PlanningToolBar(getActions());
 	}
 }
