@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -58,6 +60,45 @@ public class Objective extends Desire
 		return false;
 	}
 	
+	public String getPseudoChildrenAsString()
+	{
+		try
+		{
+			//FIXME planning finish		
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		return "";
+	}
+
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TAG_CHILD_STRATEGY_OREF_LIST))
+			return getPseudoChildrenAsString(); 
+		
+		if (fieldTag.equals(PSEUDO_TAG_CHILD_INDICATOR_OREF_LIST))
+			return getPseudoChildrenAsString();
+		
+		return super.getPseudoData(fieldTag);
+	}
+	
+	public void clear()
+	{
+		super.clear();	
+		strategyChildren = new ORefListData();
+		indicatorChildren = new ORefListData();
+		
+		addField(PSEUDO_TAG_CHILD_STRATEGY_OREF_LIST, strategyChildren);
+		addField(PSEUDO_TAG_CHILD_INDICATOR_OREF_LIST, indicatorChildren);
+	}
+	
 	public static final String OBJECT_NAME = "Objective";
 	
+	public final static String PSEUDO_TAG_CHILD_STRATEGY_OREF_LIST = "PseudoTagChildStrategyORefList";
+	public final static String PSEUDO_TAG_CHILD_INDICATOR_OREF_LIST = "PseudoTagChildIndicatorORefList";
+	
+	ORefListData strategyChildren;
+	ORefListData indicatorChildren;
 }
