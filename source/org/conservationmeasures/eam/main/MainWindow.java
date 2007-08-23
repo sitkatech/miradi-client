@@ -548,12 +548,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		updateActionStates();
 	}
 
-	public void updateView() throws Exception
-	{
-		String viewName = getProject().getCurrentView();
-		setCurrentView(viewName);
-	}
-
 	private void setCurrentView(String viewName) throws Exception
 	{
 		if(viewName.equals(summaryView.cardName()))
