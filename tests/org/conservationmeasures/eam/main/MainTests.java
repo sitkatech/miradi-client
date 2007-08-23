@@ -112,7 +112,11 @@ import org.conservationmeasures.eam.utils.TestTaxonomyLoader;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.budget.ImportAccountingCodesDoerTest;
 import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
+import org.conservationmeasures.eam.views.planning.TestPlanningTreeActivityNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeGoalNode;
+import org.conservationmeasures.eam.views.planning.TestPlanningTreeIndicatorNode;
+import org.conservationmeasures.eam.views.planning.TestPlanningTreeObjectiveNode;
+import org.conservationmeasures.eam.views.planning.TestPlanningTreeStrategyNode;
 import org.conservationmeasures.eam.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
@@ -266,6 +270,10 @@ public class MainTests extends TestCase
 		
 		// view.planning package
 		suite.addTest(new TestSuite(TestPlanningTreeGoalNode.class));
+		suite.addTest(new TestSuite(TestPlanningTreeObjectiveNode.class));
+		suite.addTest(new TestSuite(TestPlanningTreeStrategyNode.class));
+		suite.addTest(new TestSuite(TestPlanningTreeActivityNode.class));
+		suite.addTest(new TestSuite(TestPlanningTreeIndicatorNode.class));
 		
 		// view.strategicplan package
 		suite.addTest(new TestSuite(TestDeleteActivity.class));
