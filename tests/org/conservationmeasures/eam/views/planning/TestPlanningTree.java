@@ -40,16 +40,16 @@ abstract public class TestPlanningTree extends EAMTestCase
 	
 	private void setupFactors() throws Exception
 	{
-		diagramStrategy1 = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
-		diagramCause1 = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		diagramTarget1 = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		diagramStrategy = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
+		diagramCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		diagramTarget = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		
-		strat1ToCause1LinkId = project.createDiagramFactorLink(diagramStrategy1, diagramCause1);		
-		cause1ToTarget1LinkId = project.createDiagramFactorLink(diagramCause1, diagramTarget1);
+		stratToCauseLinkId = project.createDiagramFactorLink(diagramStrategy, diagramCause);		
+		causeToTargetLinkId = project.createDiagramFactorLink(diagramCause, diagramTarget);
 		
-		objectiveId = project.addItemToObjectiveList(diagramCause1.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
-		indicatorId = project.addItemToIndicatorList(diagramCause1.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
-		goalId = project.addItemToGoalList(diagramTarget1.getWrappedORef(), Target.TAG_GOAL_IDS);
+		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
+		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
+		goalId = project.addItemToGoalList(diagramTarget.getWrappedORef(), Target.TAG_GOAL_IDS);
 	}
 	
 	public Goal getGoal()
@@ -62,18 +62,23 @@ abstract public class TestPlanningTree extends EAMTestCase
 		return (Objective) project.findObject(new ORef(Objective.getObjectType(), objectiveId));
 	}
 	
+	public Strategy getStrategy()
+	{
+		return (Strategy) project.findObject(diagramStrategy.getWrappedORef());
+	}
+	
 	public Indicator getIndicator()
 	{
 		return (Indicator) project.findObject(new ORef(Indicator.getObjectType(), indicatorId));
 	}
 	
 	ProjectForTesting project;
-	DiagramFactor diagramStrategy1;		
-	DiagramFactor diagramCause1;
-	DiagramFactor diagramTarget1;
+	DiagramFactor diagramStrategy;		
+	DiagramFactor diagramCause;
+	DiagramFactor diagramTarget;
 	
-	DiagramFactorLinkId strat1ToCause1LinkId;
-	DiagramFactorLinkId cause1ToTarget1LinkId;
+	DiagramFactorLinkId stratToCauseLinkId;
+	DiagramFactorLinkId causeToTargetLinkId;
 	
 	BaseId indicatorId;
 	BaseId objectiveId;
