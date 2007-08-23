@@ -406,26 +406,27 @@ public class ObjectManager
 		return foundObjects;
 	}
 	
-	public ORefList getObjectiveChildren(ORef ref) throws Exception
+	public ORefList getPseudoChildren(ORef ref, String tag) throws Exception
 	{
-		ORefList objectiveRefList = new ORefList();
+		ORefList pseudoChildRefs = new ORefList();
 		FactorSet relatedNodes = new ChainManager(getProject()).findAllFactorsRelatedToThisObject(ref);
 		Iterator iter = relatedNodes.iterator();
 		while(iter.hasNext())
 		{
 			Factor factor = (Factor)iter.next();
-			IdList objectiveIds = factor.getObjectives();
-			for(int i = 0; i < objectiveIds.size(); ++i)
+			IdList ids = new IdList(factor.getData(tag));
+			for(int i = 0; i < ids.size(); ++i)
 			{
-				if(objectiveIds.get(i).isInvalid())
+				if(ids.get(i).isInvalid())
 					continue;
 
-				objectiveRefList.add(new ORef(Objective.getObjectType(), objectiveIds.get(i)));
+				pseudoChildRefs.add(new ORef(Objective.getObjectType(), ids.get(i)));
 			}
 		}
 
-		return objectiveRefList;
+		return pseudoChildRefs;
 	}
+	
 
 	Project project;
 
