@@ -141,6 +141,15 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		return addItemToList(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, id,  type,  tag);
 	}
 	
+	public BaseId addItemToGoalList(BaseId id, int type, String tag) throws Exception
+	{
+		return addItemToList(ObjectType.GOAL, id,  type,  tag);
+	}
+	
+	public BaseId addItemToObjectiveList(BaseId id, int type, String tag) throws Exception
+	{
+		return addItemToList(ObjectType.OBJECTIVE, id,  type,  tag);
+	}
 	
 	public BaseId addItemToIndicatorList(BaseId id, int type, String tag) throws Exception
 	{
