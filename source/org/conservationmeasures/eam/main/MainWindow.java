@@ -60,6 +60,7 @@ import org.conservationmeasures.eam.views.library.LibraryView;
 import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
@@ -131,6 +132,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		strategicPlanView = new StrategicPlanView(this);
 		monitoringView = new MonitoringView(this);
 		targetViabilityView = new TargetViabilityView(this);
+		planningView = new PlanningView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -146,6 +148,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(strategicPlanView, strategicPlanView.cardName());
 		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
+		viewHolder.add(planningView, planningView.cardName());
 
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 		updateActionStates();
@@ -577,6 +580,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setCurrentView(monitoringView);
 		else if (viewName.equals(targetViabilityView.cardName()))
 			setCurrentView(targetViabilityView);
+		else if(viewName.equals(planningView.cardName()))
+			setCurrentView(planningView);
 		else
 		{
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
@@ -801,6 +806,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private StrategicPlanView strategicPlanView;
 	private TabbedView monitoringView;
 	private TargetViabilityView targetViabilityView;
+	private PlanningView planningView;
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
