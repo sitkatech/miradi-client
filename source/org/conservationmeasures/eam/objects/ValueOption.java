@@ -29,14 +29,6 @@ public class ValueOption extends BaseObject
 	}
 	
 	
-	public ValueOption(ObjectManager objectManager, BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
-	{
-		super(objectManager, idToUse);
-		setData(TAG_LABEL, labelToUse);
-		numeric = numericToUse;
-		color = colorToUse;
-	}
-	
 	public ValueOption(BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
 	{
 		super(idToUse);
@@ -53,16 +45,9 @@ public class ValueOption extends BaseObject
 	}
 	
 	
-	public ValueOption(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new BaseId(idAsInt), json);
-		numeric = json.getInt(TAG_NUMERIC);
-		color = new Color(json.getInt(TAG_COLOR));
-	}
-	
 	public int getType()
-	
-	{	return getObjectType();
+	{	
+		return getObjectType();
 	}
 
 	public static int getObjectType()
