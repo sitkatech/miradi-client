@@ -74,6 +74,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
+import org.conservationmeasures.eam.actions.views.ActionViewPlanning;
 import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.views.ActionViewSummary;
@@ -132,6 +133,7 @@ public class Actions
 		registerAction(new ActionViewSummary(mainWindow));
 		registerAction(new ActionViewDiagram(mainWindow));
 		registerAction(new ActionViewThreatMatrix(mainWindow));
+		registerAction(new ActionViewPlanning(mainWindow));
 		registerAction(new ActionViewBudget(mainWindow));
 		registerAction(new ActionViewWorkPlan(mainWindow));
 		registerAction(new ActionViewMap(mainWindow));
