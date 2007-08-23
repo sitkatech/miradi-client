@@ -18,6 +18,13 @@ public class PlanningView extends UmbrellaView
 		super(mainWindowToUse);
 	}
 
+	public void becomeActive() throws Exception
+	{
+		System.out.println("herave");
+		super.becomeActive();
+		removeAll();
+	}
+
 	public String cardName()
 	{
 		return getViewName();
