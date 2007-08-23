@@ -55,6 +55,8 @@ public class Goal extends Desire
 		return false;
 	}
 
+	public final static String PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST = "PseudoTagChildObjectiveORefList";
+	
 	//FIXME: all OBJECT_NAME reference becaseu the are used in displayes shold be static methods that call EAM.text
 	public static final String OBJECT_NAME = "Goal";
 }
