@@ -12,6 +12,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -53,6 +55,16 @@ abstract public class TestPlanningTree extends EAMTestCase
 	public Goal getGoal()
 	{
 		return (Goal) project.findObject(new ORef(Goal.getObjectType(), goalId));
+	}
+	
+	public Objective getObjective()
+	{
+		return (Objective) project.findObject(new ORef(Objective.getObjectType(), objectiveId));
+	}
+	
+	public Indicator getIndicator()
+	{
+		return (Indicator) project.findObject(new ORef(Indicator.getObjectType(), indicatorId));
 	}
 	
 	ProjectForTesting project;
