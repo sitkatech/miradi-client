@@ -112,6 +112,7 @@ import org.conservationmeasures.eam.utils.TestTaxonomyLoader;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.budget.ImportAccountingCodesDoerTest;
 import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
+import org.conservationmeasures.eam.views.planning.TestPlanningTree;
 import org.conservationmeasures.eam.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
@@ -263,7 +264,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestLayerManager.class));
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestDiagramPaster.class));
 		
-		// view.interview package
+		// view.planning package
+		suite.addTest(new TestSuite(TestPlanningTree.class));
 		
 		// view.strategicplan package
 		suite.addTest(new TestSuite(TestDeleteActivity.class));
