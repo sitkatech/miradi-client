@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
@@ -91,6 +92,9 @@ public class Indicator extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_METHODS))
 			return getIndicatorMethodsSingleLine();
 		
+		if (fieldTag.equals(PSEUDO_TAG_RELATED_METHOD_OREF_LIST))
+			return getRelatedMethods().toString();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -113,6 +117,20 @@ public class Indicator extends BaseObject
 		return result.toString();
 	}
 	
+	public ORefList getRelatedMethods()
+	{
+		ORefList methodRefs = new ORefList();
+		for (int i = 0; i < taskIds.size(); ++i)
+		{
+			Task task = (Task) objectManager.findObject(new ORef(Task.getObjectType(), taskIds.get(i)));
+			if (! task.isMethod())
+				continue;
+			
+			methodRefs.add(task.getRef());
+		}
+
+		return methodRefs;	
+	}
 	
 	void clear()
 	{
@@ -289,9 +307,8 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE = "IndicatorThresholdValue";
 	
 	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "FutureStatusRatingValue";
+	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
-
-	
 	public static final String OBJECT_NAME = "Indicator";
 
 	StringData shortLabel;
