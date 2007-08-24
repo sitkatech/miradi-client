@@ -8,9 +8,10 @@ import org.conservationmeasures.eam.project.Project;
 
 public class StrategicPlanDataSource extends CommonDataSource
 {
-	public StrategicPlanDataSource(Project project)
+	public StrategicPlanDataSource(Project projectToUse)
 	{
-		super(project);
+		super(projectToUse);
+		project = projectToUse;
 		//TODO: should get the list from the TreeNodeRoot
 		ORefList list = project.getPool(Goal.getObjectType()).getORefList();
 		setObjectList(list);
@@ -18,6 +19,8 @@ public class StrategicPlanDataSource extends CommonDataSource
 	
 	public JRDataSource getRelatedObectivesToThisGoalDataSource() throws Exception
 	{
-		return new StrategicPlanRelatedObectivesToThisGoalDataSource((Goal)getCurrentObject());
+		return new StrategicPlanRelatedObectivesToThisGoalDataSource(project, (Goal)getCurrentObject());
 	}
+	
+	Project project;
 } 
