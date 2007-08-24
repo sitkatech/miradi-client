@@ -407,6 +407,7 @@ public class ObjectManager
 		return foundObjects;
 	}
 	
+	//TODO rename this method
 	public ORefList getPseudoChildren(ORef ref, String tag) throws Exception
 	{
 		ORefList pseudoChildRefs = new ORefList();
