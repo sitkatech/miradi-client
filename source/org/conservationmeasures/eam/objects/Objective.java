@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ORefListData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -60,7 +61,7 @@ public class Objective extends Desire
 		return false;
 	}
 	
-	public String getPseudoChildrenAsString()
+	public ORefList getRelatedStrategies()
 	{
 		try
 		{
@@ -70,16 +71,23 @@ public class Objective extends Desire
 		{
 			EAM.logException(e);
 		}
-		return "";
+		return new ORefList();
+	}
+	
+	public ORefList getRelatedIndidicators()
+	{
+		//FIXME fix method
+		return new ORefList();
 	}
 
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_TAG_CHILD_STRATEGY_OREF_LIST))
-			return getPseudoChildrenAsString(); 
+
+		if (fieldTag.equals(PSEUDO_TAG_RELATED_STRATEGY_OREF_LIST))
+			return getRelatedStrategies().toString(); 
 		
-		if (fieldTag.equals(PSEUDO_TAG_CHILD_INDICATOR_OREF_LIST))
-			return getPseudoChildrenAsString();
+		if (fieldTag.equals(PSEUDO_TAG_RELATED_INDICATOR_OREF_LIST))
+			return getRelatedIndidicators().toString();
 		
 		return super.getPseudoData(fieldTag);
 	}
@@ -90,14 +98,14 @@ public class Objective extends Desire
 		strategyChildren = new ORefListData();
 		indicatorChildren = new ORefListData();
 		
-		addField(PSEUDO_TAG_CHILD_STRATEGY_OREF_LIST, strategyChildren);
-		addField(PSEUDO_TAG_CHILD_INDICATOR_OREF_LIST, indicatorChildren);
+		addField(PSEUDO_TAG_RELATED_STRATEGY_OREF_LIST, strategyChildren);
+		addField(PSEUDO_TAG_RELATED_INDICATOR_OREF_LIST, indicatorChildren);
 	}
 	
 	public static final String OBJECT_NAME = "Objective";
 	
-	public final static String PSEUDO_TAG_CHILD_STRATEGY_OREF_LIST = "PseudoTagChildStrategyORefList";
-	public final static String PSEUDO_TAG_CHILD_INDICATOR_OREF_LIST = "PseudoTagChildIndicatorORefList";
+	public final static String PSEUDO_TAG_RELATED_STRATEGY_OREF_LIST = "PseudoTagRelatedStrategyORefList";
+	public final static String PSEUDO_TAG_RELATED_INDICATOR_OREF_LIST = "PseudoTagRelatedIndicatorORefList";
 	
 	ORefListData strategyChildren;
 	ORefListData indicatorChildren;
