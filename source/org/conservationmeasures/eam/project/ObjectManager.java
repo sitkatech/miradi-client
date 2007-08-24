@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
@@ -18,6 +19,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -63,6 +65,8 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
+import org.conservationmeasures.eam.views.strategicplan.StratPlanStrategy;
 
 public class ObjectManager
 {
@@ -427,6 +431,39 @@ public class ObjectManager
 		return pseudoChildRefs;
 	}
 	
+	 //TODO given an objective you should be able to get its owner which would be a factor, 
+	// then you would ask for all upstream factors from there, and filter to only pay 
+	// attention to non-draft strats
+	public StratPlanStrategy[] getStrategyNodes(Objective objective)
+	{
+		ObjectiveId objectiveId = (ObjectiveId)objective.getId();
+
+		Factor[] strategyObjects = project.getStrategyPool().getNonDraftStrategies();
+		Vector strategyVector = new Vector();
+		for(int i = 0; i < strategyObjects.length; ++i)
+		{
+			Strategy strategy = (Strategy)strategyObjects[i];
+			if(doesChainContainObjective(strategy, objectiveId))
+				strategyVector.add(new StratPlanStrategy(project, strategy));
+		}
+		StratPlanStrategy[] strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
+		Arrays.sort(strategies, new IgnoreCaseStringComparator());
+		return strategies;
+	}
+
+	public boolean doesChainContainObjective(Factor chainMember, ObjectiveId objectiveId)
+	{
+		ProjectChainObject chainObject = new ProjectChainObject();
+		chainObject.buildUpstreamDownstreamChain(chainMember);
+		Factor[] chainNodes = chainObject.getFactorsArray();
+		for(int i = 0; i < chainNodes.length; ++i)
+		{
+			if(chainNodes[i].getObjectives().contains(objectiveId))
+				return true;
+		}
+		
+		return false;
+	}
 
 	Project project;
 
