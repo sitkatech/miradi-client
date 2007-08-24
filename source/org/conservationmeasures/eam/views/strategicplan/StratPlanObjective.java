@@ -5,12 +5,17 @@
 */ 
 package org.conservationmeasures.eam.views.strategicplan;
 
+import java.util.Arrays;
+
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanObjective extends TreeTableNode
@@ -65,7 +70,16 @@ public class StratPlanObjective extends TreeTableNode
 	public void rebuild()
 	{
 		ObjectManager objectManager = project.getObjectManager();
-		strategies = objectManager.getStrategyNodes(objective.getRef());
+		ORefList strategyRefs = objectManager.getStrategyNodes(objective.getRef());
+		
+		strategies = new StratPlanStrategy[strategyRefs.size()];
+		for (int i = 0; i < strategyRefs.size(); ++i)
+		{
+			Strategy strategy = (Strategy) objectManager.findObject(strategyRefs.get(i));
+			strategies[i] = new StratPlanStrategy(project, strategy);
+		}
+		
+		Arrays.sort(strategies, new IgnoreCaseStringComparator());
 	}
 
 	Project project;
