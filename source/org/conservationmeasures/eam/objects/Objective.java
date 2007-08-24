@@ -63,26 +63,25 @@ public class Objective extends Desire
 	
 	public ORefList getRelatedStrategies()
 	{
+		return objectManager.getStrategyRefsUpstreamOfObjective(getRef());
+	}
+	
+	public ORefList getRelatedIndicators()
+	{
 		try
 		{
-			//FIXME planning finish		
+			return objectManager.getPseudoChildren(getRef(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
-		return new ORefList();
-	}
-	
-	public ORefList getRelatedIndicators()
-	{
-		//FIXME fix method
+		
 		return new ORefList();
 	}
 
 	public String getPseudoData(String fieldTag)
 	{
-
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_STRATEGY_OREF_LIST))
 			return getRelatedStrategies().toString(); 
 		
