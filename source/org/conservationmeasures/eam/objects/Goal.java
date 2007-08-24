@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ORefListData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -57,23 +58,23 @@ public class Goal extends Desire
 		return false;
 	}
 	
-	public String getObjectiveChildrenAsString()
+	public ORefList getObjectivesUpstreamOfGoal()
 	{
 		try
 		{
-			return objectManager.getPseudoChildren(getRef(), Factor.TAG_INDICATOR_IDS).toString();
+			return objectManager.getPseudoChildren(getRef(), Factor.TAG_INDICATOR_IDS);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
-		return "";
+		return new ORefList();
 	}
 	
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST))
-			return getObjectiveChildrenAsString(); 
+			return getObjectivesUpstreamOfGoal().toString(); 
 		
 		return super.getPseudoData(fieldTag);
 	}
