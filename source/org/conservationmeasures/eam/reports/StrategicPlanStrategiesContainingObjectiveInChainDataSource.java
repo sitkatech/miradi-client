@@ -12,7 +12,7 @@ public class StrategicPlanStrategiesContainingObjectiveInChainDataSource extends
 		super(projectToUse);
 
 		ObjectManager objectManager = projectToUse.getObjectManager();
-		ORefList strategyRefs = objectManager.getStrategyNodes(objective.getRef());
+		ORefList strategyRefs = objectManager.getStrategyRefsUpstreamOfObjective(objective.getRef());
 		setObjectList(strategyRefs);
 	}
 }
