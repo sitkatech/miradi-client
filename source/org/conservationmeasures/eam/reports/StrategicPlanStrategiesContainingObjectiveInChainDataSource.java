@@ -14,7 +14,7 @@ public class StrategicPlanStrategiesContainingObjectiveInChainDataSource extends
 		super(projectToUse);
 		ORefList list = new ORefList();
 		ObjectManager objectManager = projectToUse.getObjectManager();
-		StratPlanStrategy[] objectiveVector = objectManager.getStrategyNodes(objective);
+		StratPlanStrategy[] objectiveVector = objectManager.getStrategyNodes(objective.getRef());
 		for (int i=0; i<objectiveVector.length; ++i)
 		{
 			BaseObject ss = objectiveVector[i].getObject();

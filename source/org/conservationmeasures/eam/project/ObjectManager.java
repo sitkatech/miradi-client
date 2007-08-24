@@ -434,9 +434,9 @@ public class ObjectManager
 	 //TODO given an objective you should be able to get its owner which would be a factor, 
 	// then you would ask for all upstream factors from there, and filter to only pay 
 	// attention to non-draft strats
-	public StratPlanStrategy[] getStrategyNodes(Objective objective)
+	public StratPlanStrategy[] getStrategyNodes(ORef objectiveRef)
 	{
-		ObjectiveId objectiveId = (ObjectiveId)objective.getId();
+		ObjectiveId objectiveId = (ObjectiveId)objectiveRef.getObjectId();
 
 		Factor[] strategyObjects = project.getStrategyPool().getNonDraftStrategies();
 		Vector strategyVector = new Vector();

@@ -65,7 +65,7 @@ public class StratPlanObjective extends TreeTableNode
 	public void rebuild()
 	{
 		ObjectManager objectManager = project.getObjectManager();
-		strategies = objectManager.getStrategyNodes(objective);
+		strategies = objectManager.getStrategyNodes(objective.getRef());
 	}
 
 	Project project;
