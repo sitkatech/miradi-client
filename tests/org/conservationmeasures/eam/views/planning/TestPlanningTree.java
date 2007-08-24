@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
 abstract public class TestPlanningTree extends EAMTestCase
@@ -50,6 +51,7 @@ abstract public class TestPlanningTree extends EAMTestCase
 		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
 		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
 		goalId = project.addItemToGoalList(diagramTarget.getWrappedORef(), Target.TAG_GOAL_IDS);
+		taskId = project.addItemToIndicatorList(indicatorId, Task.getObjectType(), Indicator.TAG_TASK_IDS);
 	}
 	
 	public Goal getGoal()
@@ -83,4 +85,5 @@ abstract public class TestPlanningTree extends EAMTestCase
 	BaseId indicatorId;
 	BaseId objectiveId;
 	BaseId goalId;
+	BaseId taskId;
 }

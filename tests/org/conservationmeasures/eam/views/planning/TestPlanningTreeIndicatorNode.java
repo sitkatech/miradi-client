@@ -5,6 +5,11 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Task;
+
 public class TestPlanningTreeIndicatorNode extends TestPlanningTree
 {
 	public TestPlanningTreeIndicatorNode(String name)
@@ -12,8 +17,17 @@ public class TestPlanningTreeIndicatorNode extends TestPlanningTree
 		super(name);
 	}
 	
-	public void testPlanningTreeIndicatorNode()
+	public void testPlanningTreeIndicatorNode() throws Exception
 	{
-		//assert failed
+		String relatedMethods = getIndicator().getPseudoData(Indicator.PSEUDO_TAG_RELATED_METHOD_OREF_LIST);
+		ORefList methodRefs = new ORefList(relatedMethods);
+		assertEquals("wrong method count?", 1, methodRefs.size());
+		assertTrue("wrong type returned?", isMethod(methodRefs.get(0)));
+	}
+
+	private boolean isMethod(ORef ref)
+	{
+		Task task = (Task) project.findObject(ref);
+		return task.isMethod();
 	}
 }
