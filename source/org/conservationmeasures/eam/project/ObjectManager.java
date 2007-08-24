@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.project;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
@@ -65,8 +64,6 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
-import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
-import org.conservationmeasures.eam.views.strategicplan.StratPlanStrategy;
 
 public class ObjectManager
 {
@@ -434,21 +431,19 @@ public class ObjectManager
 	 //TODO given an objective you should be able to get its owner which would be a factor, 
 	// then you would ask for all upstream factors from there, and filter to only pay 
 	// attention to non-draft strats
-	public StratPlanStrategy[] getStrategyNodes(ORef objectiveRef)
+	public ORefList getStrategyNodes(ORef objectiveRef)
 	{
-		ObjectiveId objectiveId = (ObjectiveId)objectiveRef.getObjectId();
-
+		ObjectiveId objectiveId = (ObjectiveId) objectiveRef.getObjectId();
 		Factor[] strategyObjects = project.getStrategyPool().getNonDraftStrategies();
-		Vector strategyVector = new Vector();
+		ORefList strategyRefs = new ORefList();
 		for(int i = 0; i < strategyObjects.length; ++i)
 		{
 			Strategy strategy = (Strategy)strategyObjects[i];
 			if(doesChainContainObjective(strategy, objectiveId))
-				strategyVector.add(new StratPlanStrategy(project, strategy));
+				strategyRefs.add(strategy.getRef());
 		}
-		StratPlanStrategy[] strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
-		Arrays.sort(strategies, new IgnoreCaseStringComparator());
-		return strategies;
+		
+		return strategyRefs;
 	}
 
 	public boolean doesChainContainObjective(Factor chainMember, ObjectiveId objectiveId)
@@ -466,6 +461,5 @@ public class ObjectManager
 	}
 
 	Project project;
-
 	HashMap pools;
 }
