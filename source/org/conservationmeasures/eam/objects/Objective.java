@@ -74,7 +74,7 @@ public class Objective extends Desire
 		return new ORefList();
 	}
 	
-	public ORefList getRelatedIndidicators()
+	public ORefList getRelatedIndicators()
 	{
 		//FIXME fix method
 		return new ORefList();
@@ -87,7 +87,7 @@ public class Objective extends Desire
 			return getRelatedStrategies().toString(); 
 		
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_INDICATOR_OREF_LIST))
-			return getRelatedIndidicators().toString();
+			return getRelatedIndicators().toString();
 		
 		return super.getPseudoData(fieldTag);
 	}
