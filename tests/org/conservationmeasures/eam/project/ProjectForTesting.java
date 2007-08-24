@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.DiagramModelUpdater;
 
@@ -155,6 +156,11 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	public BaseId addItemToIndicatorList(ORef ref, String tag) throws Exception
 	{
 		return addItemToList(ref.getObjectType(), ref.getObjectId(), Indicator.getObjectType(), tag);
+	}
+	
+	public BaseId addActivityToStrateyList(ORef ref, String tag) throws Exception
+	{
+		return addItemToList(ref.getObjectType(), ref.getObjectId(), Task.getObjectType(), tag);
 	}
 	
 	public BaseId addItemToIndicatorList(BaseId id, int type, String tag) throws Exception

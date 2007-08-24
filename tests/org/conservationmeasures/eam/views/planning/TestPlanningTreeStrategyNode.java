@@ -5,6 +5,11 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
+
 public class TestPlanningTreeStrategyNode extends TestPlanningTree
 {
 	public TestPlanningTreeStrategyNode(String name)
@@ -12,9 +17,17 @@ public class TestPlanningTreeStrategyNode extends TestPlanningTree
 		super(name);
 	}
 	
-	public void testPlanningTreeStrategyNode()
+	public void testPlanningTreeStrategyNode() throws Exception
 	{
-		//assert failed
+		String relatedActivities = getStrategy().getPseudoData(Strategy.PSEUDO_TAG_RELATED_ACTIVITY_OREF_LIST);
+		ORefList activityRefs = new ORefList(relatedActivities);
+		assertEquals("wrong activity count?", 1, activityRefs.size());
+		assertTrue("wrong type returned?", isActivity(activityRefs.get(0)));
 	}
 
+	private boolean isActivity(ORef ref)
+	{
+		Task task = (Task) project.findObject(ref);
+		return task.isActivity();
+	}
 }

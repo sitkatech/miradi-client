@@ -52,6 +52,7 @@ abstract public class TestPlanningTree extends EAMTestCase
 		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
 		goalId = project.addItemToGoalList(diagramTarget.getWrappedORef(), Target.TAG_GOAL_IDS);
 		taskId = project.addItemToIndicatorList(indicatorId, Task.getObjectType(), Indicator.TAG_TASK_IDS);
+		activityId = project.addActivityToStrateyList(diagramStrategy.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
 	}
 	
 	public Goal getGoal()
@@ -86,4 +87,5 @@ abstract public class TestPlanningTree extends EAMTestCase
 	BaseId objectiveId;
 	BaseId goalId;
 	BaseId taskId;
+	BaseId activityId;
 }
