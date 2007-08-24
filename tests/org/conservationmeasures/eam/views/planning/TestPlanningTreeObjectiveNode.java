@@ -5,6 +5,11 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Strategy;
+
 
 public class TestPlanningTreeObjectiveNode extends TestPlanningTree
 {
@@ -15,13 +20,14 @@ public class TestPlanningTreeObjectiveNode extends TestPlanningTree
 	
 	public void testPlanningTreeObjectiveNode() throws Exception
 	{
-		//FIXME planning uncomment and finish
-		//String strategyChildren = getObjective().getPseudoData(Objective.PSEUDO_TAG_CHILD_STRATEGY_OREF_LIST);
-		//ORefList strategytORefs = new ORefList(strategyChildren);
-		//assertEquals("wrong stratgy count?", 1, strategytORefs.size());
+		String ralatedStrategies = getObjective().getPseudoData(Objective.PSEUDO_TAG_RELATED_STRATEGY_OREF_LIST);
+		ORefList strategytORefs = new ORefList(ralatedStrategies);
+		assertEquals("wrong stratgy count?", 1, strategytORefs.size());
+		assertEquals("wrong type?", Strategy.getObjectType(), strategytORefs.get(0).getObjectType());
 		
-		//String indicatorChildren = getObjective().getPseudoData(Objective.PSEUDO_TAG_CHILD_INDICATOR_OREF_LIST);
-		//ORefList indicatortORefs = new ORefList(indicatorChildren);
-		//assertEquals("wrong indicator count?", 1, indicatortORefs.size());
+		String relatedIndicators = getObjective().getPseudoData(Objective.PSEUDO_TAG_RELATED_INDICATOR_OREF_LIST);
+		ORefList indicatortORefs = new ORefList(relatedIndicators);
+		assertEquals("wrong indicator count?", 1, indicatortORefs.size());
+		assertEquals("wrong type?", Indicator.getObjectType(), indicatortORefs.get(0).getObjectType());
 	}
 }

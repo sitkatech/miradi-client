@@ -59,7 +59,6 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.IntermediateResult;
-import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
@@ -408,7 +407,7 @@ public class ObjectManager
 	}
 	
 	//TODO rename this method
-	public ORefList getPseudoChildren(ORef ref, String tag) throws Exception
+	public ORefList getPseudoChildren(ORef ref, int typeToFind, String tag) throws Exception
 	{
 		ORefList pseudoChildRefs = new ORefList();
 		FactorSet relatedNodes = new ChainManager(getProject()).findAllFactorsRelatedToThisObject(ref);
@@ -422,7 +421,7 @@ public class ObjectManager
 				if(ids.get(i).isInvalid())
 					continue;
 
-				pseudoChildRefs.add(new ORef(Objective.getObjectType(), ids.get(i)));
+				pseudoChildRefs.add(new ORef(typeToFind, ids.get(i)));
 			}
 		}
 
