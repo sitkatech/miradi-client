@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.planning;
 
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -21,7 +22,15 @@ public class PlanningView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
-		removeAll();
+		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
+	}
+	
+	public void becomeInactive() throws Exception
+	{
+		super.becomeInactive();
+		
+		planningManagementPanel.dispose();
+		planningManagementPanel = null;
 	}
 
 	public String cardName()
@@ -38,4 +47,6 @@ public class PlanningView extends UmbrellaView
 	{
 		return new PlanningToolBar(getActions());
 	}
+	
+	PlanningTreeManagementPanel planningManagementPanel;
 }
