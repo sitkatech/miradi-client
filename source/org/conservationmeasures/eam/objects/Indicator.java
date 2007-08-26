@@ -93,7 +93,7 @@ public class Indicator extends BaseObject
 			return getIndicatorMethodsSingleLine();
 		
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_METHOD_OREF_LIST))
-			return getRelatedMethods().toString();
+			return getMethods().toString();
 		
 		return super.getPseudoData(fieldTag);
 	}
@@ -117,7 +117,7 @@ public class Indicator extends BaseObject
 		return result.toString();
 	}
 	
-	public ORefList getRelatedMethods()
+	public ORefList getMethods()
 	{
 		ORefList methodRefs = new ORefList();
 		for (int i = 0; i < taskIds.size(); ++i)
