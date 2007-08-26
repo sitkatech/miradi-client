@@ -18,7 +18,7 @@ public class TestPlanningTreeGoalNode extends TestPlanningTree
 	
 	public void testPlanningTreeGoalNodes() throws Exception
 	{
-		String relatedObjectives = getGoal().getPseudoData(Goal.PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST);
+		String relatedObjectives = getGoal().getPseudoData(Goal.PSEUDO_TAG_RELATED_OBJECTIVE_OREF_LIST);
 		ORefList objectiveRefs = new ORefList(relatedObjectives);
 		assertEquals("wrong objective count?", 1, objectiveRefs.size());
 		assertEquals("wrong type returned?", Objective.getObjectType(), objectiveRefs.get(0).getObjectType());
