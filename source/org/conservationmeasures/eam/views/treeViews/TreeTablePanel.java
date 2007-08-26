@@ -141,5 +141,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected GenericTreeTableModel model;
+	
+	//FIXME remove this var and also remove it from the constructor
 	int panelObjectType;
 }
