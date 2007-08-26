@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
@@ -119,17 +118,7 @@ public class Indicator extends BaseObject
 	
 	public ORefList getMethods()
 	{
-		ORefList methodRefs = new ORefList();
-		for (int i = 0; i < taskIds.size(); ++i)
-		{
-			Task task = (Task) objectManager.findObject(new ORef(Task.getObjectType(), taskIds.get(i)));
-			if (! task.isMethod())
-				continue;
-			
-			methodRefs.add(task.getRef());
-		}
-
-		return methodRefs;	
+		return new ORefList(Task.getObjectType(), getTaskIdList());	
 	}
 	
 	void clear()
