@@ -30,12 +30,11 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class TreeTablePanel extends ObjectCollectionPanel  implements TreeSelectionListener
 {
-	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] classes, int objectType)
+	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] classes)
 	{
 		super(mainWindowToUse.getProject(), treeToUse);
 		mainWindow = mainWindowToUse;
 		tree = treeToUse;
-		panelObjectType = objectType;
 		
 		restoreTreeExpansionState();
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
@@ -141,7 +140,4 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected GenericTreeTableModel model;
-	
-	//FIXME remove this var and also remove it from the constructor
-	int panelObjectType;
 }

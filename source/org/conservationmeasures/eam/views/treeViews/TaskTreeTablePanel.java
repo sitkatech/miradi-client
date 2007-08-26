@@ -32,7 +32,7 @@ public class TaskTreeTablePanel extends TreeTablePanel  implements TreeSelection
 {
 	public TaskTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
 	{
-		super(mainWindowToUse, treeToUse, buttonActions, ObjectType.TASK);
+		super(mainWindowToUse, treeToUse, buttonActions);
 	}
 
 	//FIXME: Kevin: This code needs to be analyzed

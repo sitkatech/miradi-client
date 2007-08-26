@@ -25,7 +25,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 {
 	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
 	{
-		super( mainWindowToUse, treeToUse, buttonActions, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+		super( mainWindowToUse, treeToUse, buttonActions);
 	}
 
 
