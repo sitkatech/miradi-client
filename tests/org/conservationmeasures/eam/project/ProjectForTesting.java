@@ -158,6 +158,11 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		return addItemToList(ref.getObjectType(), ref.getObjectId(), Indicator.getObjectType(), tag);
 	}
 	
+	public BaseId addSubtaskToActivity(ORef ref, String tag) throws Exception
+	{
+		return addItemToList(ref.getObjectType(), ref.getObjectId(), Task.getObjectType(), tag);
+	}
+	
 	public BaseId addActivityToStrateyList(ORef ref, String tag) throws Exception
 	{
 		return addItemToList(ref.getObjectType(), ref.getObjectId(), Task.getObjectType(), tag);

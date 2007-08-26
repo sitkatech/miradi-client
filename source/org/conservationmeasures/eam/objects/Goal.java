@@ -73,7 +73,7 @@ public class Goal extends Desire
 	
 	public String getPseudoData(String fieldTag)
 	{
-		if(fieldTag.equals(PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST))
+		if(fieldTag.equals(PSEUDO_TAG_RELATED_OBJECTIVE_OREF_LIST))
 			return getObjectivesUpstreamOfGoal().toString(); 
 		
 		return super.getPseudoData(fieldTag);
@@ -84,10 +84,10 @@ public class Goal extends Desire
 		super.clear();	
 		objectiveChildren = new ORefListData();
 		
-		addField(PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST, objectiveChildren);
+		addField(PSEUDO_TAG_RELATED_OBJECTIVE_OREF_LIST, objectiveChildren);
 	}
 
-	public final static String PSEUDO_TAG_CHILD_OBJECTIVE_OREF_LIST = "PseudoTagChildObjectiveORefList";
+	public final static String PSEUDO_TAG_RELATED_OBJECTIVE_OREF_LIST = "PseudoTagRelatedObjectiveORefList";
 	
 	//FIXME: all OBJECT_NAME reference becaseu the are used in displayes shold be static methods that call EAM.text
 	public static final String OBJECT_NAME = "Goal";

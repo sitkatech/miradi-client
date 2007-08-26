@@ -53,6 +53,7 @@ abstract public class TestPlanningTree extends EAMTestCase
 		goalId = project.addItemToGoalList(diagramTarget.getWrappedORef(), Target.TAG_GOAL_IDS);
 		taskId = project.addItemToIndicatorList(indicatorId, Task.getObjectType(), Indicator.TAG_TASK_IDS);
 		activityId = project.addActivityToStrateyList(diagramStrategy.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
+		subtaskId = project.addSubtaskToActivity(getTask().getRef(), Task.TAG_SUBTASK_IDS);
 	}
 	
 	public Goal getGoal()
@@ -75,6 +76,16 @@ abstract public class TestPlanningTree extends EAMTestCase
 		return (Indicator) project.findObject(new ORef(Indicator.getObjectType(), indicatorId));
 	}
 	
+	public Task getTask()
+	{
+		return (Task) project.findObject(new ORef(Task.getObjectType(), taskId));
+	}
+	
+	public Task getSubtask()
+	{
+		return (Task) project.findObject(new ORef(Task.getObjectType(), subtaskId));
+	}
+	
 	ProjectForTesting project;
 	DiagramFactor diagramStrategy;		
 	DiagramFactor diagramCause;
@@ -88,4 +99,5 @@ abstract public class TestPlanningTree extends EAMTestCase
 	BaseId goalId;
 	BaseId taskId;
 	BaseId activityId;
+	BaseId subtaskId;
 }
