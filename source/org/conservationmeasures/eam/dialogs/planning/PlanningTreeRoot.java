@@ -5,24 +5,31 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.views.TreeTableNode;;
+import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class PlanningTreeRoot extends TreeTableNode
 {
-	public PlanningTreeRoot()
+	public PlanningTreeRoot(Project projectToUse)
 	{
+		project = projectToUse;
+		rebuild();
 	}
 	
 	public TreeTableNode getChild(int index)
 	{
-		return null;
+		return goalNodes[index];
 	}
 
 	public int getChildCount()
 	{
-		return 0;
+		return goalNodes.length;
 	}
 
 	public BaseObject getObject()
@@ -32,12 +39,12 @@ public class PlanningTreeRoot extends TreeTableNode
 
 	public ORef getObjectReference()
 	{
-		return null;
+		return project.getMetadata().getRef();
 	}
 
 	public int getType()
 	{
-		return 0;
+		return ProjectMetadata.getObjectType();
 	}
 
 	public Object getValueAt(int column)
@@ -45,12 +52,24 @@ public class PlanningTreeRoot extends TreeTableNode
 		return null;
 	}
 
-	public void rebuild() throws Exception
+	public void rebuild()
 	{
+		ORefList goalRefs = project.getMetadata().getAllGoalRefs();
+		goalNodes = new PlanningTreeGoalNode[goalRefs.size()]; 
+		for (int i = 0; i < goalRefs.size(); ++i)
+		{
+			ORef goalRef = goalRefs.get(i);
+			Goal goal = (Goal) project.findObject(goalRef);
+			goalNodes[i] = new PlanningTreeGoalNode(project, goal);
+		}
 	}
 
 	public String toString()
 	{
-		return null;
+		//FIXME plannig - come up with better name (if visible)
+		return EAM.text("root for now");
 	}
+	
+	Project project;
+	TreeTableNode[] goalNodes; 
 }

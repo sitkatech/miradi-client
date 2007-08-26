@@ -23,6 +23,8 @@ public class PlanningView extends UmbrellaView
 	{
 		super.becomeActive();
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
+		
+		add(planningManagementPanel);
 	}
 	
 	public void becomeInactive() throws Exception

@@ -18,6 +18,8 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return null;
+		return PANEL_DESCRIPTION;
 	}
+	
+	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 }

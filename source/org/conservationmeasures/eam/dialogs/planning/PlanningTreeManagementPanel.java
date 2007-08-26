@@ -14,16 +14,9 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
 	public PlanningTreeManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse, new PlanningTreeTablePanel(mainWindowToUse, getPlanningTreeTable(mainWindowToUse)), getPropertiesPanel(mainWindowToUse));
+		super(mainWindowToUse, PlanningTreeTablePanel.createPlanningTreeTablePenel(mainWindowToUse), getPropertiesPanel(mainWindowToUse));
 	}
 
-	public static PlanningTreeTable getPlanningTreeTable(MainWindow mainWindowToUse)
-	{
-		PlanningTreeRoot planningTreeRoot = new PlanningTreeRoot();
-		PlanningTreeModel model = new PlanningTreeModel(planningTreeRoot);
-		return new PlanningTreeTable(mainWindowToUse.getProject(), model);	
-	}
-	
 	public static PlanningTreePropertiesPanel getPropertiesPanel(MainWindow mainWindowToUse)
 	{
 		return new PlanningTreePropertiesPanel(mainWindowToUse.getProject(), ORef.INVALID);
