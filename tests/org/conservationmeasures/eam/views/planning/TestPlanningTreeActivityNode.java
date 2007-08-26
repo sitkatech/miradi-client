@@ -19,7 +19,7 @@ public class TestPlanningTreeActivityNode extends TestPlanningTree
 	{
 		String relatedTasks = getTask().getPseudoData(Task.PSEUDO_TAG_RELATED_SUBTASKS_OREF_LIST);
 		ORefList taskRefs = new ORefList(relatedTasks);
-		assertEquals("wrong objective count?", 1, taskRefs.size());
+		assertEquals("wrong subtask count?", 1, taskRefs.size());
 		assertEquals("wrong type returned?", Task.getObjectType(), taskRefs.get(0).getObjectType());
 	}
 }

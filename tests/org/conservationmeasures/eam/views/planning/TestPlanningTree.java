@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
@@ -41,6 +42,7 @@ abstract public class TestPlanningTree extends EAMTestCase
 	
 	private void setupFactors() throws Exception
 	{
+		projectMetadata = project.getMetadata();
 		diagramStrategy = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
 		diagramCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		diagramTarget = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
@@ -86,7 +88,13 @@ abstract public class TestPlanningTree extends EAMTestCase
 		return (Task) project.findObject(new ORef(Task.getObjectType(), subtaskId));
 	}
 	
+	public ProjectMetadata getProjectMetadata()
+	{
+		return projectMetadata;
+	}
+	
 	ProjectForTesting project;
+	ProjectMetadata projectMetadata;
 	DiagramFactor diagramStrategy;		
 	DiagramFactor diagramCause;
 	DiagramFactor diagramTarget;

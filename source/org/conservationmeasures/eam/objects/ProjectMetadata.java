@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objectdata.FloatData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
@@ -73,7 +74,19 @@ public class ProjectMetadata extends BaseObject
 		return super.getData(fieldTag);
 	}
 	
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TAG_RELATED_GOAL_REFS))
+			return getAllGoalRefs().toString();
+			
+		return super.getPseudoData(fieldTag);
+	}
 	
+	public ORefList getAllGoalRefs()
+	{
+		return objectManager.getGoalPool().getORefList();
+	}
+
 	public String getCurrentWizardScreenName()
 	{
 		return currentWizardScreenName.get();
@@ -222,6 +235,7 @@ public class ProjectMetadata extends BaseObject
 	
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamilyValue";
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
+	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
 
 
 	StringData currentWizardScreenName;

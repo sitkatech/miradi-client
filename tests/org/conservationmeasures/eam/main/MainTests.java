@@ -115,6 +115,7 @@ import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeActivityNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeGoalNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeIndicatorNode;
+import org.conservationmeasures.eam.views.planning.TestPlanningTreeMetadataGoals;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeObjectiveNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeStrategyNode;
 import org.conservationmeasures.eam.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
@@ -274,6 +275,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestPlanningTreeStrategyNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeActivityNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeIndicatorNode.class));
+		suite.addTest(new TestSuite(TestPlanningTreeMetadataGoals.class));
 		
 		// view.strategicplan package
 		suite.addTest(new TestSuite(TestDeleteActivity.class));
