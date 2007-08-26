@@ -135,12 +135,12 @@ public class Strategy extends Factor
 			return getStrategyRatingSummary();
 		
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_ACTIVITY_OREF_LIST))
-			return getRelatedActivities().toString();
+			return getActivities().toString();
 		
 		return super.getPseudoData(fieldTag);
 	}
 
-	private ORefList getRelatedActivities()
+	private ORefList getActivities()
 	{
 		return new ORefList(Task.getObjectType(), getActivityIds());
 	}
