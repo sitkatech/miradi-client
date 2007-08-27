@@ -60,7 +60,7 @@ public class PlanningTreeNode extends TreeTableNode
 	public void rebuild()
 	{
 		nodeObject = project.findObject(nodeRef);
-		ORefList subNodeObjectRefs = retrieveSubNodes(nodeObject);
+		ORefList subNodeObjectRefs = retrieveFilteredSubNodes(nodeObject);
 		
 		subNodes = new PlanningTreeNode[subNodeObjectRefs.size()];
 		for (int i = 0; i < subNodeObjectRefs.size(); ++i)
@@ -72,6 +72,28 @@ public class PlanningTreeNode extends TreeTableNode
 	public String toString()
 	{
 		return nodeObject.getLabel();
+	}
+	
+	public ORefList retrieveFilteredSubNodes(BaseObject object)
+	{
+		ORefList filteredList = new ORefList();
+		
+		ORefList rawList = retrieveSubNodes(object);
+		for(int i = 0; i < rawList.size(); ++i)
+		{
+			ORef ref = rawList.get(i);
+			if(shouldIncludeRef(ref))
+			{
+				filteredList.add(ref);
+			}
+			else
+			{
+				BaseObject child = project.findObject(ref);
+				filteredList.addAll(retrieveFilteredSubNodes(child));
+			}
+		}
+		
+		return filteredList;
 	}
 	
 	public ORefList retrieveSubNodes(BaseObject object)
@@ -132,6 +154,12 @@ public class PlanningTreeNode extends TreeTableNode
 	private ORefList getChildrenOfTask(Task task)
 	{
 		return task.getSubtasks();
+	}
+	
+	private boolean shouldIncludeRef(ORef ref)
+	{
+		// FIXME: Ask project whether or not this type should be in the tree
+		return true;
 	}
 	
 	Project project;
