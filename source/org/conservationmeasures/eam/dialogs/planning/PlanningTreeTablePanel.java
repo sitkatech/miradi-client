@@ -5,8 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
 
 public class PlanningTreeTablePanel extends TreeTablePanel
@@ -33,5 +35,21 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		if(!event.isSetDataCommand())
+			return;
+		
+		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+		if(cmd.getObjectType() != ViewData.getObjectType())
+			return;
+		if(!cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_TYPES))
+			return;
+		
+		getPlanningModel().rebuildEntireTree();
 	}
+	
+	PlanningTreeModel getPlanningModel()
+	{
+		return (PlanningTreeModel)getModel();
+	}
+
 }
