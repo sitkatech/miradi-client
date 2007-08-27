@@ -70,8 +70,19 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 		add(title);
 		
 		add(createLegendButtonPanel(mainWindow.getActions()));	
-		//updateCheckBoxs();
+		turnOnAllCheckBoxs();
 		setMinimumSize(new Dimension(0,0));
+	}
+	
+	private void turnOnAllCheckBoxs()
+	{
+		Object[] keys = checkBoxes.keySet().toArray();
+		for (int i=0; i<keys.length; ++i)
+		{
+			String property = ((JCheckBox)checkBoxes.get(keys[i])).getClientProperty(LAYER).toString();
+			JCheckBox checkBox = findCheckBox(property);
+			checkBox.setSelected(true);
+		}
 	}
 	
 	public void actionPerformed(ActionEvent event)
