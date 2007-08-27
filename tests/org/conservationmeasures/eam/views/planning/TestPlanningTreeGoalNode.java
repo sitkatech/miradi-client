@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.planning;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
 
 public class TestPlanningTreeGoalNode extends TestPlanningTree
@@ -18,8 +17,7 @@ public class TestPlanningTreeGoalNode extends TestPlanningTree
 	
 	public void testPlanningTreeGoalNodes() throws Exception
 	{
-		String relatedObjectives = getGoal().getPseudoData(Goal.PSEUDO_TAG_RELATED_OBJECTIVE_OREF_LIST);
-		ORefList objectiveRefs = new ORefList(relatedObjectives);
+		ORefList objectiveRefs = getGoal().getObjectivesUpstreamOfGoal();
 		assertEquals("wrong objective count?", 1, objectiveRefs.size());
 		assertEquals("wrong type returned?", Objective.getObjectType(), objectiveRefs.get(0).getObjectType());
 	}
