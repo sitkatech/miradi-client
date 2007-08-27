@@ -79,31 +79,59 @@ public class PlanningTreeNode extends TreeTableNode
 		switch (node.getType())
 		{
 			case ObjectType.PROJECT_METADATA :
-				return ((ProjectMetadata) node).getAllGoalRefs();
+				return getChildrenOfProject(node);
 			
 			case ObjectType.GOAL :
-				return ((Goal) node).getObjectivesUpstreamOfGoal();
+				return getChildrenOfGoal(node);
 			
 			case ObjectType.OBJECTIVE :
-			{
-				ORefList relatedItems = new ORefList();
-				relatedItems.addAll(((Objective) node).getRelatedStrategies());
-				relatedItems.addAll(((Objective) node).getRelatedIndicators());
-				return relatedItems;
-			}
+				return getChildrenOfObjective(node);
 				
 			case ObjectType.STRATEGY :
-				return ((Strategy) node).getActivities();
+				return getChildrenOfStrategy(node);
 				
 			case ObjectType.INDICATOR:
-				return ((Indicator) node).getMethods();
+				return getChildrenOfIndicator(node);
 			
 			case ObjectType.TASK :
-				return ((Task) node).getSubtasks();
+				return getChildrenOfTask(node);
 			
 			default :
 				throw new RuntimeException("Could not find sub node of type " + node.getType());
 		}
+	}
+
+	private ORefList getChildrenOfProject(BaseObject node)
+	{
+		return ((ProjectMetadata) node).getAllGoalRefs();
+	}
+
+	private ORefList getChildrenOfGoal(BaseObject node)
+	{
+		return ((Goal) node).getObjectivesUpstreamOfGoal();
+	}
+
+	private ORefList getChildrenOfObjective(BaseObject node)
+	{
+		ORefList relatedItems = new ORefList();
+		relatedItems.addAll(((Objective) node).getRelatedStrategies());
+		relatedItems.addAll(((Objective) node).getRelatedIndicators());
+		return relatedItems;
+	}
+
+	private ORefList getChildrenOfStrategy(BaseObject node)
+	{
+		return ((Strategy) node).getActivities();
+	}
+
+	private ORefList getChildrenOfIndicator(BaseObject node)
+	{
+		return ((Indicator) node).getMethods();
+	}
+
+	private ORefList getChildrenOfTask(BaseObject node)
+	{
+		return ((Task) node).getSubtasks();
 	}
 	
 	Project project;
