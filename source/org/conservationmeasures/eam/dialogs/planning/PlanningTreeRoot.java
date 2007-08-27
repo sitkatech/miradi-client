@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.planning;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -16,9 +17,10 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class PlanningTreeRoot extends TreeTableNode
 {
-	public PlanningTreeRoot(Project projectToUse)
+	public PlanningTreeRoot(Project projectToUse, ORef nodeRefToUse)
 	{
 		project = projectToUse;
+		nodeRef = nodeRefToUse;
 		rebuild();
 	}
 	
@@ -70,6 +72,28 @@ public class PlanningTreeRoot extends TreeTableNode
 		return EAM.text("root for now");
 	}
 	
+	public class SubNodeRetriever
+	{
+		public SubNodeRetriever()
+		{
+			
+		}
+		
+		//FIXME planning - finish this method
+		public ORefList retrieveSubNodes(ORef nodeRefToUse)
+		{
+			switch (nodeRefToUse.getObjectType())
+			{
+				case ObjectType.GOAL :
+					return new ORefList();
+				
+				default :
+					throw new RuntimeException("Could not find sub node of type " + nodeRefToUse.getObjectType());
+			}
+		}
+	}
+	
 	Project project;
-	TreeTableNode[] goalNodes; 
+	TreeTableNode[] goalNodes;
+	ORef nodeRef;
 }
