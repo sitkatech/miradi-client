@@ -17,7 +17,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 		super(mainWindowToUse, PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse), getPropertiesPanel(mainWindowToUse));
 	}
 
-	public static PlanningTreePropertiesPanel getPropertiesPanel(MainWindow mainWindowToUse)
+	public static PlanningTreePropertiesPanel getPropertiesPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		return new PlanningTreePropertiesPanel(mainWindowToUse.getProject(), ORef.INVALID);
 	}
