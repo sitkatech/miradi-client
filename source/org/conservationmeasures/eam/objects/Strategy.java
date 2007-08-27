@@ -140,7 +140,7 @@ public class Strategy extends Factor
 		return super.getPseudoData(fieldTag);
 	}
 
-	private ORefList getActivities()
+	public ORefList getActivities()
 	{
 		return new ORefList(Task.getObjectType(), getActivityIds());
 	}
