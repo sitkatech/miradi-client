@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.views.umbrella.LegendPanel;
 
 public class LayerPanel extends ModelessDialogPanel
 {
@@ -17,7 +18,7 @@ public class LayerPanel extends ModelessDialogPanel
 		add(createLegendPanel(mainWindowToUse));
 	}
 
-	private DiagramLegendPanel createLegendPanel(MainWindow mainWindowToUse)
+	private LegendPanel createLegendPanel(MainWindow mainWindowToUse)
 	{
 		if (mainWindowToUse.getDiagramView().isResultsChainTab())
 			return new ResultsChainDiagramLegendPanel(mainWindowToUse);

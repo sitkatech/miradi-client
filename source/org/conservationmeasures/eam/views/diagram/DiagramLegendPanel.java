@@ -8,15 +8,10 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
-import javax.swing.Icon;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -28,13 +23,9 @@ import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertTextBox;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTextBoxCell;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -55,24 +46,22 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.objects.ViewData;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.DiagramLegendQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.utils.LocationHolder;
 import org.conservationmeasures.eam.views.umbrella.LegendPanel;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class DiagramLegendPanel extends LegendPanel implements ActionListener
+abstract public class DiagramLegendPanel extends LegendPanel
 {
 	abstract protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel);
 	
 	public DiagramLegendPanel(MainWindow mainWindowToUse)
 	{
-		super(new BasicGridLayout(0, 1));
+		super(mainWindowToUse.getProject(), new BasicGridLayout(0, 1));
 		mainWindow = mainWindowToUse;
 		checkBoxes = new Hashtable();
 		
@@ -154,33 +143,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements ActionLi
 		jpanel.add(targetLinkCheckBox);
 	}
 	
-	protected void addButtonLineWithCheckBox(JPanel jpanel, int objectType, String objectName, EAMAction action)
-	{
-		JButton button = new LocationButton(action);
-		jpanel.add(button);
-		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		jpanel.add(findCheckBox(objectName));
-	}
-	
-	protected void addButtonLineWithoutCheckBox(JPanel jpanel, int objectType, String objectName, EAMAction action)
-	{
-		JButton button = new LocationButton(action);
-		jpanel.add(button);
-		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		jpanel.add(new UiLabel(""));
-	}
-	
-	protected void addIconLineWithCheckBox(JPanel jpanel, int objectType, String objectName, Icon icon)
-	{
-		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, findCheckBox(objectName));
-	}
-
-
-	protected void addIconLineWithoutCheckBox(JPanel jpanel, int objectType, String objectName, Icon icon)
-	{
-		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, new UiLabel(""));
-	}
-
 	private void updateCheckBoxs()
 	{
 		Object[] keys = checkBoxes.keySet().toArray();
@@ -190,25 +152,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements ActionLi
 		}
 	}
 	
-	
-	private JCheckBox createCheckBox(String objectName)
-	{
-		JCheckBox component = new PanelCheckBox();
-		checkBoxes.put(objectName, component);
-		
-		component.putClientProperty(LAYER, new String(objectName));
-		component.addActionListener(this);
-
-		return component;
-	}
-	
-	private void addIconLine(JPanel jpanel, String text, Icon icon, JComponent component)
-	{
-		jpanel.add(new JLabel(icon));
-		jpanel.add(new PanelTitleLabel(EAM.text(text)));
-		jpanel.add(component);
-	}
-
 	public void actionPerformed(ActionEvent event)
 	{
 		JCheckBox checkBox = (JCheckBox)event.getSource();
@@ -216,9 +159,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements ActionLi
 		LayerManager manager = getLayerManager();
 		setLegendVisibilityOfFacactorCheckBoxes(manager, property);
 		updateVisiblity();
-		updateProjectLegendSettings(property);
+		updateProjectLegendSettings(property, ViewData.TAG_DIAGRAM_HIDDEN_TYPES);
 	}
-
 
 	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)
 	{
@@ -289,23 +231,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements ActionLi
 			checkBox.setSelected(manager.areStressesVisible());
 	}
 	
-
-	private JCheckBox findCheckBox(Object property)
-	{
-		return (JCheckBox)checkBoxes.get(property);
-	}
-	
-	
-	public void turnOFFCheckBoxs()
-	{
-		Object[] keys = checkBoxes.keySet().toArray();
-		for (int i=0; i<keys.length; ++i)
-		{
-			findCheckBox(keys[i]).setSelected(false);
-		}
-	}
-
-	
 	public CodeList getLegendSettings()
 	{
 		CodeList hiddenTypes = new CodeList();
@@ -317,7 +242,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements ActionLi
 		}
 		return hiddenTypes;
 	}
-	
 	
 	public void updateLegendPanel(CodeList hiddenTypes)
 	{
@@ -342,23 +266,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements ActionLi
 		mainWindow.getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
 		mainWindow.updateStatusBar();
 	}
-	
-	
-	private void updateProjectLegendSettings(String property)
-	{
-		try
-		{
-			ViewData data = getProject().getCurrentViewData();
-			getProject().executeCommand(new CommandSetObjectData(data.getRef(), ViewData.TAG_DIAGRAM_HIDDEN_TYPES, getLegendSettings().toString()));
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Unable to update project legend settings:" + e.getMessage());
-		}
-	}
-
-	
+		
 	private CodeList getDiagarmLegendSettingsForSlide()
 	{
 		try
@@ -374,47 +282,13 @@ abstract public class DiagramLegendPanel extends LegendPanel implements ActionLi
 		}
 	}
 	
-
 	private LayerManager getLayerManager()
 	{
 		return mainWindow.getProject().getLayerManager();
 	}
 	
-	private Project getProject()
-	{
-		return mainWindow.getProject();
-	}
-	
-	public boolean isSelected(String property)
-	{
-		JCheckBox checkBox = findCheckBox(property);
-		
-		if (checkBox==null)
-			return false;
-		
-		return checkBox.isSelected();
-	}
-	
-	
-	class LocationButton extends PanelButton implements LocationHolder
-	{
-		LocationButton(EAMAction action)
-		{
-			super(action);
-			setText(null);
-			setMargin(new Insets(0, 0, 0 ,0));
-		}
-		
-		public boolean hasLocation()
-		{
-			return false;
-		}
-	}
-	
 	public static final String SCOPE_BOX = "ScopeBox";
 
-	private static final String LAYER = "LAYER";
 	MainWindow mainWindow;
-	JCheckBox targetLinkCheckBox; 
-	Hashtable checkBoxes;
+	JCheckBox targetLinkCheckBox;
 }

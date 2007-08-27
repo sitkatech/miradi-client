@@ -27,7 +27,7 @@ public class PlanningView extends UmbrellaView
 		super.becomeActive();
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
 		
-		PlanningViewLegendPanel legendPanel = new PlanningViewLegendPanel();
+		PlanningViewLegendPanel legendPanel = new PlanningViewLegendPanel(getProject());
 		JScrollPane legendScrollPane = new JScrollPane(legendPanel);		
 		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);

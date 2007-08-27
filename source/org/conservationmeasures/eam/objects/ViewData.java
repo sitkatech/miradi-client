@@ -134,6 +134,7 @@ public class ViewData extends BaseObject
 		currentResultsChainRef = new ORefData();
 		currentConceptualModelRef = new ORefData();
 		diagramHiddenTypes = new CodeListData();
+		planningHiddenTypes = new CodeListData();
 		
 		addField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
 		addField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
@@ -144,6 +145,7 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_SORT_DIRECTION, currentSortDirecton);
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
+		addField(TAG_PLANNING_HIDDEN_TYPES, planningHiddenTypes);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
@@ -155,6 +157,7 @@ public class ViewData extends BaseObject
 	public static final String TAG_CURRENT_SORT_DIRECTION = "CurrentSortDirecton";
 	public static final String TAG_CURRENT_EXPANSION_LIST  = "CurrentExpansionList";
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
+	public static final String TAG_PLANNING_HIDDEN_TYPES = "PlanningHiddenTypes";
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
@@ -175,4 +178,5 @@ public class ViewData extends BaseObject
 	private ORefData currentConceptualModelRef;
 	private ORefListData expandedNodesList;
 	CodeListData diagramHiddenTypes;
+	CodeListData planningHiddenTypes;
 }
