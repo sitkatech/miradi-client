@@ -212,9 +212,6 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_TASK_COST))
 			return getTaskCost();
 		
-		if (fieldTag.equals(PSEUDO_TAG_RELATED_SUBTASKS_OREF_LIST))
-			return getSubtasks().toString();
-			
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -316,7 +313,6 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_SUBTASK_TOTAL = "SubtaskTotal";
 	public final static String PSEUDO_TAG_TASK_TOTAL = "TaskTotal";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
-	public final static String PSEUDO_TAG_RELATED_SUBTASKS_OREF_LIST = "PseudoTagRelatedSubtasksORefList";
 	
 	IdListData subtaskIds;
 	IdListData assignmentIds;

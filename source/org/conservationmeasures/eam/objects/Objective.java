@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -80,32 +79,5 @@ public class Objective extends Desire
 		return new ORefList();
 	}
 
-	public String getPseudoData(String fieldTag)
-	{
-		if (fieldTag.equals(PSEUDO_TAG_RELATED_STRATEGY_OREF_LIST))
-			return getRelatedStrategies().toString(); 
-		
-		if (fieldTag.equals(PSEUDO_TAG_RELATED_INDICATOR_OREF_LIST))
-			return getRelatedIndicators().toString();
-		
-		return super.getPseudoData(fieldTag);
-	}
-	
-	public void clear()
-	{
-		super.clear();	
-		strategyChildren = new ORefListData();
-		indicatorChildren = new ORefListData();
-		
-		addField(PSEUDO_TAG_RELATED_STRATEGY_OREF_LIST, strategyChildren);
-		addField(PSEUDO_TAG_RELATED_INDICATOR_OREF_LIST, indicatorChildren);
-	}
-	
-	public static final String OBJECT_NAME = "Objective";
-	
-	public final static String PSEUDO_TAG_RELATED_STRATEGY_OREF_LIST = "PseudoTagRelatedStrategyORefList";
-	public final static String PSEUDO_TAG_RELATED_INDICATOR_OREF_LIST = "PseudoTagRelatedIndicatorORefList";
-	
-	ORefListData strategyChildren;
-	ORefListData indicatorChildren;
+	public static final String OBJECT_NAME = "Objective";	
 }

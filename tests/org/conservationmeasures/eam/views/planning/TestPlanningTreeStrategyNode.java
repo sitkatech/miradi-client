@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.planning;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 
 public class TestPlanningTreeStrategyNode extends TestPlanningTree
@@ -19,8 +18,7 @@ public class TestPlanningTreeStrategyNode extends TestPlanningTree
 	
 	public void testPlanningTreeStrategyNode() throws Exception
 	{
-		String relatedActivities = getStrategy().getPseudoData(Strategy.PSEUDO_TAG_RELATED_ACTIVITY_OREF_LIST);
-		ORefList activityRefs = new ORefList(relatedActivities);
+		ORefList activityRefs = getStrategy().getActivities();
 		assertEquals("wrong activity count?", 1, activityRefs.size());
 		assertTrue("wrong type returned?", isActivity(activityRefs.get(0)));
 	}
