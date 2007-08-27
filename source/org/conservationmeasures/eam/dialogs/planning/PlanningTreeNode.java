@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ORefListWithoutDuplicates;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
@@ -76,7 +77,7 @@ public class PlanningTreeNode extends TreeTableNode
 	
 	public ORefList retrieveFilteredSubNodes(BaseObject object)
 	{
-		ORefList filteredList = new ORefList();
+		ORefListWithoutDuplicates filteredList = new ORefListWithoutDuplicates();
 		
 		ORefList rawList = retrieveSubNodes(object);
 		for(int i = 0; i < rawList.size(); ++i)
@@ -159,6 +160,9 @@ public class PlanningTreeNode extends TreeTableNode
 	private boolean shouldIncludeRef(ORef ref)
 	{
 		// FIXME: Ask project whether or not this type should be in the tree
+		// instead of this hard-coded crap just here for testing
+//		if(ref.getObjectType() == Objective.getObjectType())
+//			return false;
 		return true;
 	}
 	
