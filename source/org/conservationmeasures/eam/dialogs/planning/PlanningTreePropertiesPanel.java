@@ -8,11 +8,15 @@ package org.conservationmeasures.eam.dialogs.planning;
 import java.awt.CardLayout;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.StrategyPropertiesPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 
@@ -29,9 +33,13 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 
 	private void createPropertiesPanels() throws Exception
 	{
+		goalPropertiesPanel = new GoalPropertiesPanel(project);
+		objectivePropertiesPanel = new ObjectivePropertiesPanel(project);
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(project);
 		strategyPropertiesPanel = new StrategyPropertiesPanel(project);
 		
+		add(goalPropertiesPanel, goalPropertiesPanel.getPanelDescription());
+		add(objectivePropertiesPanel, objectivePropertiesPanel.getPanelDescription());
 		add(indicatorPropertiesPanel, indicatorPropertiesPanel.getPanelDescription());
 		add(strategyPropertiesPanel, strategyPropertiesPanel.getPanelDescription());
 	}
@@ -45,14 +53,20 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	{
 		//FIXME Planning - is this correct to get the first ref
 		ORef firstRef = getORef(0);
-		if (Indicator.getObjectType() == firstRef.getObjectType())
+		int objectType = firstRef.getObjectType();
+		if (Goal.getObjectType() == objectType)
+			return goalPropertiesPanel.getFields();
+	
+		if (Objective.getObjectType() == objectType)
+			return objectivePropertiesPanel.getFields();
+		
+		if (Indicator.getObjectType() == objectType)
 			return indicatorPropertiesPanel.getFields();
 		
-		if (Strategy.getObjectType() == firstRef.getObjectType())
+		if (Strategy.getObjectType() == objectType)
 			return strategyPropertiesPanel.getFields();
 		
 		return super.getFields();
-	
 	}
 
 	public void setObjectRefs(ORef[] orefsToUse)
@@ -65,10 +79,17 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	{
 		//FIXME planning - should not use first ref
 		ORef firstRef = orefsToUse[0];
-		if (Indicator.getObjectType() == firstRef.getObjectType())
+		int objectType = firstRef.getObjectType();
+		if (Goal.getObjectType() == objectType)
+			return goalPropertiesPanel.getPanelDescription();
+		
+		if (Objective.getObjectType() == objectType)
+			return objectivePropertiesPanel.getPanelDescription();
+		
+		if (Indicator.getObjectType() == objectType)
 			return indicatorPropertiesPanel.getPanelDescription();
 		
-		if (Strategy.getObjectType() == firstRef.getObjectType())
+		if (Strategy.getObjectType() == objectType)
 			return strategyPropertiesPanel.getPanelDescription();
 		
 		return "";
@@ -79,6 +100,8 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	Project project;
 	CardLayout cardLayout;
 	
+	GoalPropertiesPanel goalPropertiesPanel;
+	ObjectivePropertiesPanel objectivePropertiesPanel;
 	IndicatorPropertiesPanel indicatorPropertiesPanel;
 	StrategyPropertiesPanel strategyPropertiesPanel;
 }
