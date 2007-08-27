@@ -10,6 +10,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
+import org.conservationmeasures.eam.dialogs.planning.PlanningViewLegendPanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
