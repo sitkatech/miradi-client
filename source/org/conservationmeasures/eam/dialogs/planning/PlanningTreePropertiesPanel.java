@@ -37,9 +37,9 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		return PANEL_DESCRIPTION;
 	}
 	
-	protected Vector getFields()
+	public Vector getFields()
 	{
-		return super.getFields();
+		return indicatorPropertiesPanel.getFields();
 	}
 
 	public void setObjectRefs(ORef[] orefsToUse)
