@@ -5,13 +5,15 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -26,27 +28,27 @@ public class PlanningTreeRoot extends TreeTableNode
 	
 	public TreeTableNode getChild(int index)
 	{
-		return goalNodes[index];
+		return subNodes[index];
 	}
 
 	public int getChildCount()
 	{
-		return goalNodes.length;
+		return subNodes.length;
 	}
 
 	public BaseObject getObject()
 	{
-		return null;
+		return nodeObject;
 	}
 
 	public ORef getObjectReference()
 	{
-		return project.getMetadata().getRef();
+		return nodeObject.getRef();
 	}
 
 	public int getType()
 	{
-		return ProjectMetadata.getObjectType();
+		return getObjectReference().getObjectType();
 	}
 
 	public Object getValueAt(int column)
@@ -56,20 +58,19 @@ public class PlanningTreeRoot extends TreeTableNode
 
 	public void rebuild()
 	{
-		ORefList goalRefs = project.getMetadata().getAllGoalRefs();
-		goalNodes = new PlanningTreeGoalNode[goalRefs.size()]; 
-		for (int i = 0; i < goalRefs.size(); ++i)
+		nodeObject = project.findObject(nodeRef);
+		ORefList subNodeObjectRefs = new SubNodeRetriever().retrieveSubNodes(nodeObject);
+		
+		subNodes = new PlanningTreeRoot[subNodeObjectRefs.size()];
+		for (int i = 0; i < subNodeObjectRefs.size(); ++i)
 		{
-			ORef goalRef = goalRefs.get(i);
-			Goal goal = (Goal) project.findObject(goalRef);
-			goalNodes[i] = new PlanningTreeGoalNode(project, goal);
+			subNodes[i] = new PlanningTreeRoot(project, subNodeObjectRefs.get(i));
 		}
 	}
 
 	public String toString()
 	{
-		//FIXME plannig - come up with better name (if visible)
-		return EAM.text("root for now");
+		return nodeObject.getLabel();
 	}
 	
 	public class SubNodeRetriever
@@ -79,21 +80,33 @@ public class PlanningTreeRoot extends TreeTableNode
 			
 		}
 		
-		//FIXME planning - finish this method
-		public ORefList retrieveSubNodes(ORef nodeRefToUse)
+		public ORefList retrieveSubNodes(BaseObject node)
 		{
-			switch (nodeRefToUse.getObjectType())
+			switch (node.getType())
 			{
+				case ObjectType.PROJECT_METADATA :
+					return ((ProjectMetadata) node).getAllGoalRefs();
+				
 				case ObjectType.GOAL :
-					return new ORefList();
+					return ((Goal) node).getObjectivesUpstreamOfGoal();
+				
+				case ObjectType.OBJECTIVE :
+					return ((Objective) node).getRelatedStrategies();
+					
+				case ObjectType.STRATEGY :
+					return ((Strategy) node).getActivities();
+				
+				case ObjectType.TASK :
+					return ((Task) node).getSubtasks();
 				
 				default :
-					throw new RuntimeException("Could not find sub node of type " + nodeRefToUse.getObjectType());
+					throw new RuntimeException("Could not find sub node of type " + node.getType());
 			}
 		}
 	}
 	
 	Project project;
-	TreeTableNode[] goalNodes;
+	TreeTableNode[] subNodes;
 	ORef nodeRef;
+	BaseObject nodeObject;
 }
