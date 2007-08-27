@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ORefListWithoutDuplicates;
@@ -16,7 +17,9 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class PlanningTreeNode extends TreeTableNode
@@ -159,11 +162,21 @@ public class PlanningTreeNode extends TreeTableNode
 	
 	private boolean shouldIncludeRef(ORef ref)
 	{
-		// FIXME: Ask project whether or not this type should be in the tree
-		// instead of this hard-coded crap just here for testing
-//		if(ref.getObjectType() == Objective.getObjectType())
-//			return false;
-		return true;
+
+		try
+		{
+			BaseObject thisObject = project.findObject(ref);
+
+			String tag = ViewData.TAG_PLANNING_HIDDEN_TYPES;
+			ViewData data = project.getCurrentViewData();
+			CodeList hiddenTypes = new CodeList(data.getData(tag));
+			return (!hiddenTypes.contains(thisObject.getTypeName()));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
 	}
 	
 	Project project;
