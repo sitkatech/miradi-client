@@ -314,6 +314,8 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_TASK_TOTAL = "TaskTotal";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	
+	public static final String OBJECT_NAME = "Task";
+	
 	IdListData subtaskIds;
 	IdListData assignmentIds;
 	PseudoStringData strategyLabel;

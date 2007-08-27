@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.util.Hashtable;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -63,7 +62,6 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	{
 		super(mainWindowToUse.getProject(), new BasicGridLayout(0, 1));
 		mainWindow = mainWindowToUse;
-		checkBoxes = new Hashtable();
 		
 		createLegendCheckBoxes();
 		addAllComponents();
