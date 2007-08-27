@@ -13,7 +13,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePenel(MainWindow mainWindowToUse)
 	{
-		PlanningTreeRoot planningTreeRoot = new PlanningTreeRoot(mainWindowToUse.getProject());
+		PlanningTreeRoot planningTreeRoot = new PlanningTreeRoot(mainWindowToUse.getProject(), mainWindowToUse.getProject().getMetadata().getRef());
 		PlanningTreeModel model = new PlanningTreeModel(mainWindowToUse.getProject(), planningTreeRoot);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model);	
 
