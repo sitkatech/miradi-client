@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -59,7 +60,7 @@ public class PlanningTreeNode extends TreeTableNode
 	public void rebuild()
 	{
 		nodeObject = project.findObject(nodeRef);
-		ORefList subNodeObjectRefs = new SubNodeRetriever().retrieveSubNodes(nodeObject);
+		ORefList subNodeObjectRefs = retrieveSubNodes(nodeObject);
 		
 		subNodes = new PlanningTreeNode[subNodeObjectRefs.size()];
 		for (int i = 0; i < subNodeObjectRefs.size(); ++i)
@@ -73,35 +74,35 @@ public class PlanningTreeNode extends TreeTableNode
 		return nodeObject.getLabel();
 	}
 	
-	public class SubNodeRetriever
+	public ORefList retrieveSubNodes(BaseObject node)
 	{
-		public SubNodeRetriever()
+		switch (node.getType())
 		{
+			case ObjectType.PROJECT_METADATA :
+				return ((ProjectMetadata) node).getAllGoalRefs();
 			
-		}
-		
-		public ORefList retrieveSubNodes(BaseObject node)
-		{
-			switch (node.getType())
+			case ObjectType.GOAL :
+				return ((Goal) node).getObjectivesUpstreamOfGoal();
+			
+			case ObjectType.OBJECTIVE :
 			{
-				case ObjectType.PROJECT_METADATA :
-					return ((ProjectMetadata) node).getAllGoalRefs();
-				
-				case ObjectType.GOAL :
-					return ((Goal) node).getObjectivesUpstreamOfGoal();
-				
-				case ObjectType.OBJECTIVE :
-					return ((Objective) node).getRelatedStrategies();
-					
-				case ObjectType.STRATEGY :
-					return ((Strategy) node).getActivities();
-				
-				case ObjectType.TASK :
-					return ((Task) node).getSubtasks();
-				
-				default :
-					throw new RuntimeException("Could not find sub node of type " + node.getType());
+				ORefList relatedItems = new ORefList();
+				relatedItems.addAll(((Objective) node).getRelatedStrategies());
+				relatedItems.addAll(((Objective) node).getRelatedIndicators());
+				return relatedItems;
 			}
+				
+			case ObjectType.STRATEGY :
+				return ((Strategy) node).getActivities();
+				
+			case ObjectType.INDICATOR:
+				return ((Indicator) node).getMethods();
+			
+			case ObjectType.TASK :
+				return ((Task) node).getSubtasks();
+			
+			default :
+				throw new RuntimeException("Could not find sub node of type " + node.getType());
 		}
 	}
 	
