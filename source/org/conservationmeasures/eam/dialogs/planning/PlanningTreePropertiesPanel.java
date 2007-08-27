@@ -10,8 +10,10 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.StrategyPropertiesPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
@@ -28,8 +30,10 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	private void createPropertiesPanels() throws Exception
 	{
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(project);
+		strategyPropertiesPanel = new StrategyPropertiesPanel(project);
 		
 		add(indicatorPropertiesPanel, indicatorPropertiesPanel.getPanelDescription());
+		add(strategyPropertiesPanel, strategyPropertiesPanel.getPanelDescription());
 	}
 	
 	public String getPanelDescription()
@@ -39,7 +43,16 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	
 	public Vector getFields()
 	{
-		return indicatorPropertiesPanel.getFields();
+		//FIXME Planning - is this correct to get the first ref
+		ORef firstRef = getORef(0);
+		if (Indicator.getObjectType() == firstRef.getObjectType())
+			return indicatorPropertiesPanel.getFields();
+		
+		if (Strategy.getObjectType() == firstRef.getObjectType())
+			return strategyPropertiesPanel.getFields();
+		
+		return super.getFields();
+	
 	}
 
 	public void setObjectRefs(ORef[] orefsToUse)
@@ -50,10 +63,13 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	
 	private String getDescription(ORef[] orefsToUse)
 	{
-		//FIXME should not use first ref
+		//FIXME planning - should not use first ref
 		ORef firstRef = orefsToUse[0];
 		if (Indicator.getObjectType() == firstRef.getObjectType())
 			return indicatorPropertiesPanel.getPanelDescription();
+		
+		if (Strategy.getObjectType() == firstRef.getObjectType())
+			return strategyPropertiesPanel.getPanelDescription();
 		
 		return "";
 	}
@@ -61,6 +77,8 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	Project project;
-	IndicatorPropertiesPanel indicatorPropertiesPanel;
 	CardLayout cardLayout;
+	
+	IndicatorPropertiesPanel indicatorPropertiesPanel;
+	StrategyPropertiesPanel strategyPropertiesPanel;
 }

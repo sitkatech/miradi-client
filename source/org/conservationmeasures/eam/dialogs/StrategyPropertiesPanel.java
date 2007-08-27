@@ -18,6 +18,11 @@ import org.conservationmeasures.eam.questions.StrategyTaxonomyQuestion;
 
 public class StrategyPropertiesPanel extends ObjectDataInputPanel
 {
+	public StrategyPropertiesPanel(Project projectToUse)
+	{
+		this(projectToUse, Strategy.getObjectType(), BaseId.INVALID);
+	}
+	
 	public StrategyPropertiesPanel(Project projectToUse, int objectTypeToUse, BaseId idToShow)
 	{
 		super(projectToUse, objectTypeToUse, idToShow);
