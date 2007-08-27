@@ -86,17 +86,17 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void setFocusOnFirstField()
 	{
 		//TODO: should be first non read only field.
-		if (fields.size()>0)
+		if (getFields().size() > 0)
 		{
-			((ObjectDataInputField)fields.get(0)).getComponent().requestFocusInWindow();
-			Rectangle rect = ((ObjectDataInputField)fields.get(0)).getComponent().getBounds();
+			((ObjectDataInputField)getFields().get(0)).getComponent().requestFocusInWindow();
+			Rectangle rect = ((ObjectDataInputField) getFields().get(0)).getComponent().getBounds();
 			scrollRectToVisible(rect);
 		}
 	}
 		
 	public ObjectDataInputField addField(ObjectDataInputField field)
 	{
-		fields.add(field);
+		getFields().add(field);
 		return field;
 	}
 
@@ -284,9 +284,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public void saveModifiedFields()
 	{
-		for(int i = 0; i < fields.size(); ++i)
+		for(int i = 0; i < getFields().size(); ++i)
 		{
-			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
+			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
 			field.saveIfNeeded();
 		}
 	}
@@ -294,19 +294,24 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void updateFieldsFromProject()
 	{
 		setFieldObjectIds();
-		for(int i = 0; i < fields.size(); ++i)
+		for(int i = 0; i < getFields().size(); ++i)
 		{
-			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
+			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
 			field.updateFromObject();
 		}
 		
 	}
+
+	private Vector getFields()
+	{
+		return fields;
+	}
 	
 	public void setFieldObjectIds()
 	{
-		for(int i = 0; i < fields.size(); ++i)
+		for(int i = 0; i < getFields().size(); ++i)
 		{
-			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
+			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
 			field.setObjectId(getObjectIdForType(field.getObjectType()));
 		}
 	}
