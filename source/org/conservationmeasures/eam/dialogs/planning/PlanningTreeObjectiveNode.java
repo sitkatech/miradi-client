@@ -6,45 +6,42 @@
 package org.conservationmeasures.eam.dialogs.planning;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class PlanningTreeGoalNode extends TreeTableNode
+public class PlanningTreeObjectiveNode extends TreeTableNode
 {
-	public PlanningTreeGoalNode(Project projectToUse, Goal goalToUse)
+	public PlanningTreeObjectiveNode(Project projectToUse, Objective objectiveToUse)
 	{
-		project = projectToUse; 
-		goal = goalToUse;
-		rebuild();
+		project = projectToUse;
+		objective = objectiveToUse;
 	}
-
+	
 	public TreeTableNode getChild(int index)
 	{
-		return objectiveNodes[index];
+		return null;
 	}
 
 	public int getChildCount()
 	{
-		return objectiveNodes.length;
+		return 0;
 	}
 
 	public BaseObject getObject()
 	{
-		return goal;
+		return objective;
 	}
 
 	public ORef getObjectReference()
 	{
-		return goal.getRef();
+		return objective.getRef();
 	}
 
 	public int getType()
 	{
-		return Goal.getObjectType();
+		return Objective.getObjectType();
 	}
 
 	public Object getValueAt(int column)
@@ -52,23 +49,15 @@ public class PlanningTreeGoalNode extends TreeTableNode
 		return null;
 	}
 
-	public void rebuild()
+	public void rebuild() throws Exception
 	{
-		ORefList objectiveRefs = goal.getObjectivesUpstreamOfGoal();
-		objectiveNodes = new TreeTableNode[objectiveRefs.size()];
-		for (int i = 0; i < objectiveRefs.size(); ++i)
-		{
-			Objective objective = (Objective) project.findObject(objectiveRefs.get(i));
-			objectiveNodes[i] = new PlanningTreeObjectiveNode(project, objective);
-		}	
 	}
 
 	public String toString()
 	{
-		return goal.getLabel();
+		return objective.getLabel();
 	}
 	
 	Project project;
-	Goal goal;
-	TreeTableNode[] objectiveNodes;
+	Objective objective;
 }
