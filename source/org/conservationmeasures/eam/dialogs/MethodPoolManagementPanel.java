@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -16,10 +15,10 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class MethodPoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public MethodPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
+	public MethodPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
 		super(splitPositionSaverToUse, new MethodPoolTablePanel(projectToUse),
-				new TaskPropertiesPanel(projectToUse, actions, BaseId.INVALID));
+				new TaskPropertiesPanel(projectToUse, BaseId.INVALID));
 	}
 	
 	public String getPanelDescription()

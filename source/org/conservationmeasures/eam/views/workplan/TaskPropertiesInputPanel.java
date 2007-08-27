@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.workplan;
 
 import javax.swing.BorderFactory;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -22,13 +21,13 @@ import org.conservationmeasures.eam.project.Project;
 public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 {
 	
-	public TaskPropertiesInputPanel(Project projectToUse, Actions actions, BaseId idToEdit, AssignmentEditorComponent editorComponentToUse) throws Exception
+	public TaskPropertiesInputPanel(Project projectToUse, BaseId idToEdit, AssignmentEditorComponent editorComponentToUse) throws Exception
 	{
-		this(projectToUse, actions, idToEdit);
+		this(projectToUse, idToEdit);
 		editorComponent = editorComponentToUse;
 	}
 	
-	public TaskPropertiesInputPanel(Project projectToUse, Actions actions, BaseId idToEdit) throws Exception
+	public TaskPropertiesInputPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
 		project = projectToUse;

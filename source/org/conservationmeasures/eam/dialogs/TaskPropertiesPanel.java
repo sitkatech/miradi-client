@@ -24,9 +24,9 @@ import org.conservationmeasures.eam.views.workplan.WorkPlanTableEditorComponent;
 
 public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
-	public TaskPropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	public TaskPropertiesPanel(Project projectToUse) throws Exception
 	{
-		this(projectToUse, actions, BaseId.INVALID);
+		this(projectToUse, BaseId.INVALID);
 	}
 	
 	public TaskPropertiesPanel(Project projectToUse, Actions actions, ObjectPicker objectPicker) throws Exception
@@ -41,19 +41,19 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		setBorder(BorderFactory.createEtchedBorder());
 		BudgetTableUnitsModel budgetTableUnitsModel = new BudgetTableUnitsModel(project);
 		editorComponent = new WorkPlanTableEditorComponent(actions, project, objectPicker, budgetTableUnitsModel);
-		inputPanel = new TaskPropertiesInputPanel(project, actions, idToEdit, editorComponent);
+		inputPanel = new TaskPropertiesInputPanel(project, idToEdit, editorComponent);
 		
 		setLayout(new BorderLayout());
 		add(inputPanel, BorderLayout.PAGE_START);
 		add(editorComponent, BorderLayout.CENTER);
 	}
 
-	public TaskPropertiesPanel(Project projectToUse, Actions actions, BaseId idToEdit) throws Exception
+	public TaskPropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
 		project = projectToUse;
 		setBorder(BorderFactory.createEtchedBorder());
-		inputPanel = new TaskPropertiesInputPanel(project, actions, idToEdit);
+		inputPanel = new TaskPropertiesInputPanel(project, idToEdit);
 		add(inputPanel);
 	}
 	
