@@ -40,7 +40,7 @@ public class MonitoringView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		monitoringPanel = new MonitoringPanel(getProject());
-		indicatorManagementPanel = new IndicatorPoolManagementPanel(getProject(), getMainWindow(), getActions());
+		indicatorManagementPanel = new IndicatorPoolManagementPanel(getProject(), getMainWindow());
 		addTab(EAM.text("Monitoring Plan"), monitoringPanel);
 		addNonScrollableTab(indicatorManagementPanel);
 	}

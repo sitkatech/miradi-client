@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
@@ -17,10 +16,10 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class IndicatorPoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public IndicatorPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
+	public IndicatorPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
 		super(splitPositionSaverToUse, new IndicatorPoolTablePanel(projectToUse),
-				new IndicatorPropertiesPanel(projectToUse, actions, new IndicatorId(BaseId.INVALID.asInt())));
+				new IndicatorPropertiesPanel(projectToUse, new IndicatorId(BaseId.INVALID.asInt())));
 	}
 	
 	public String getPanelDescription()
