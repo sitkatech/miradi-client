@@ -66,8 +66,8 @@ public class WorkPlanView extends TabbedView
 		taskPropertiesPanel = new TaskPropertiesPanel(getProject(), getMainWindow().getActions(), workPlanPanel.getTree());
 		workPlanManagementPanel = new WorkPlanManagementPanel(mainWindow, workPlanPanel, taskPropertiesPanel); 
 		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
-		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
-		methodPoolManagementPanel = new MethodPoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
+		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow());
+		methodPoolManagementPanel = new MethodPoolManagementPanel(getProject(), getMainWindow());
 		
 		addNonScrollableTab(workPlanManagementPanel);
 		addNonScrollableTab(activitiesManagementPanel);
