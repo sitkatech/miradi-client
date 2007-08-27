@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalId;
 import org.conservationmeasures.eam.main.EAM;
@@ -15,17 +14,17 @@ import org.conservationmeasures.eam.project.Project;
 
 public class GoalPropertiesPanel extends ObjectDataInputPanel
 {
-	public GoalPropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	public GoalPropertiesPanel(Project projectToUse) throws Exception
 	{
-		this(projectToUse, actions, new GoalId(BaseId.INVALID.asInt()));
+		this(projectToUse, new GoalId(BaseId.INVALID.asInt()));
 	}
 	
-	public GoalPropertiesPanel(Project projectToUse, Actions actions, Goal goal) throws Exception
+	public GoalPropertiesPanel(Project projectToUse, Goal goal) throws Exception
 	{
-		this(projectToUse, actions, (GoalId)goal.getId());
+		this(projectToUse, (GoalId)goal.getId());
 	}
 	
-	public GoalPropertiesPanel(Project projectToUse, Actions actions, GoalId idToShow) throws Exception
+	public GoalPropertiesPanel(Project projectToUse, GoalId idToShow) throws Exception
 	{
 		super(projectToUse, ObjectType.GOAL, idToShow);
 		
