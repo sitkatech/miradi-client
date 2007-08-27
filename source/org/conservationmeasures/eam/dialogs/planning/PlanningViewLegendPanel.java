@@ -108,11 +108,11 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 	public CodeList getLegendSettings()
 	{
 		CodeList hiddenTypes = new CodeList();
-		hiddenTypes.add(Integer.toString(Goal.getObjectType()));
-		hiddenTypes.add(Integer.toString(Objective.getObjectType()));
-		hiddenTypes.add(Integer.toString(Indicator.getObjectType()));
-		hiddenTypes.add(Integer.toString(Strategy.getObjectType()));
-		hiddenTypes.add(Integer.toString(Task.getObjectType()));
+		hiddenTypes.add(Goal.OBJECT_NAME);
+		hiddenTypes.add(Objective.OBJECT_NAME);
+		hiddenTypes.add(Indicator.OBJECT_NAME);
+		hiddenTypes.add(Strategy.OBJECT_NAME);
+		hiddenTypes.add(Task.OBJECT_NAME);
 		
 		return hiddenTypes;
 	}
