@@ -18,7 +18,9 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
 
 public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 {
@@ -30,6 +32,16 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		setLayout(cardLayout);
 		createPropertiesPanels();
 	}
+	
+	public void dispose()
+	{
+		super.dispose();
+		goalPropertiesPanel.dispose();
+		objectivePropertiesPanel.dispose();
+		indicatorPropertiesPanel.dispose();
+		strategyPropertiesPanel.dispose();
+		taskPropertiesInputPanel.dispose();
+	}
 
 	private void createPropertiesPanels() throws Exception
 	{
@@ -37,11 +49,13 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		objectivePropertiesPanel = new ObjectivePropertiesPanel(project);
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(project);
 		strategyPropertiesPanel = new StrategyPropertiesPanel(project);
+		taskPropertiesInputPanel = new TaskPropertiesInputPanel(project);
 		
 		add(goalPropertiesPanel, goalPropertiesPanel.getPanelDescription());
 		add(objectivePropertiesPanel, objectivePropertiesPanel.getPanelDescription());
 		add(indicatorPropertiesPanel, indicatorPropertiesPanel.getPanelDescription());
 		add(strategyPropertiesPanel, strategyPropertiesPanel.getPanelDescription());
+		add(taskPropertiesInputPanel, taskPropertiesInputPanel.getPanelDescription());
 	}
 	
 	public String getPanelDescription()
@@ -65,6 +79,9 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		
 		if (Strategy.getObjectType() == objectType)
 			return strategyPropertiesPanel.getFields();
+		
+		if (Task.getObjectType() == objectType)
+			return taskPropertiesInputPanel.getFields();
 		
 		return super.getFields();
 	}
@@ -92,6 +109,9 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		if (Strategy.getObjectType() == objectType)
 			return strategyPropertiesPanel.getPanelDescription();
 		
+		if (Task.getObjectType() == objectType)
+			return taskPropertiesInputPanel.getPanelDescription();
+		
 		return "";
 	}
 
@@ -104,4 +124,5 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	ObjectivePropertiesPanel objectivePropertiesPanel;
 	IndicatorPropertiesPanel indicatorPropertiesPanel;
 	StrategyPropertiesPanel strategyPropertiesPanel;
+	TaskPropertiesInputPanel taskPropertiesInputPanel;
 }

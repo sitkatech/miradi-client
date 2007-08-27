@@ -20,7 +20,10 @@ import org.conservationmeasures.eam.project.Project;
 
 public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 {
-	
+	public TaskPropertiesInputPanel(Project projectToUse) throws Exception
+	{
+		this(projectToUse, BaseId.INVALID);
+	}
 	public TaskPropertiesInputPanel(Project projectToUse, BaseId idToEdit, AssignmentEditorComponent editorComponentToUse) throws Exception
 	{
 		this(projectToUse, idToEdit);
