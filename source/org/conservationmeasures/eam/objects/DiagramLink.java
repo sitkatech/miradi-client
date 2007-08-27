@@ -90,6 +90,11 @@ public class DiagramLink extends BaseObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.DIAGRAM_LINK;
@@ -231,6 +236,8 @@ public class DiagramLink extends BaseObject
 	public static final String TAG_FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TAG_TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
 	public static final String TAG_BEND_POINTS = "BendPoints";
+	
+	static final String OBJECT_NAME = "DiagramLink";
 	
 	private BaseIdData underlyingObjectId;
 	private BaseIdData fromId;

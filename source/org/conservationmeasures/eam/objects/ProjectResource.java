@@ -46,6 +46,11 @@ public class ProjectResource extends BaseObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.PROJECT_RESOURCE;
@@ -137,6 +142,8 @@ public class ProjectResource extends BaseObject
 	
 	public static final String TAG_CUSTOM_FIELD_1 = "Custom.Custom1";
 	public static final String TAG_CUSTOM_FIELD_2 = "Custom.Custom2";
+
+	static final String OBJECT_NAME = "ProjectResource";
 
 	StringData initials;
 	StringData name;

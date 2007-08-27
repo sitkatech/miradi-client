@@ -43,6 +43,11 @@ public class FundingSource extends BaseObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.FUNDING_SOURCE;

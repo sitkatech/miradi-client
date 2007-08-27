@@ -96,6 +96,11 @@ public class ViewData extends BaseObject
 	{
 		return getObjectType();
 	}
+	
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
 
 	public static int getObjectType()
 	{
@@ -168,6 +173,7 @@ public class ViewData extends BaseObject
 	public static final String SORT_TARGETS = "TARGETS";
 	public static final String SORT_THREATS = "THREATS";
 	
+	public static final String OBJECT_NAME = "ViewData";
 	
 	private IntegerData currentTab;
 	private StringData currentMode;

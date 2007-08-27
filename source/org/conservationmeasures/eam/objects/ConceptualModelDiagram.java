@@ -32,6 +32,11 @@ public class ConceptualModelDiagram extends DiagramObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
@@ -41,4 +46,6 @@ public class ConceptualModelDiagram extends DiagramObject
 	{
 		return getLabel();
 	}
+	
+	static final String OBJECT_NAME = "ConceptualModelDiagram";
 }

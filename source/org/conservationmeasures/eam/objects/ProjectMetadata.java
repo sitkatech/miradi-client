@@ -48,6 +48,11 @@ public class ProjectMetadata extends BaseObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.PROJECT_METADATA;
@@ -237,6 +242,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
 	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
 
+	static final String OBJECT_NAME = "ProjectMetadata";
 
 	StringData currentWizardScreenName;
 

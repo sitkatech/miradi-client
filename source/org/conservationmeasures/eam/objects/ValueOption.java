@@ -50,6 +50,11 @@ public class ValueOption extends BaseObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.VALUE_OPTION;
@@ -128,6 +133,8 @@ public class ValueOption extends BaseObject
 	final public static String TAG_COLOR = "Color";
 	final private static Color INVALID_GRAY = new Color(200,200,200);
 	
+	static final String OBJECT_NAME = "ValueOption";
+
 	int numeric;
 	Color color;
 }

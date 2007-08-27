@@ -86,6 +86,11 @@ public class DiagramFactor extends BaseObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.DIAGRAM_FACTOR;
@@ -227,6 +232,8 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_SIZE = "Size";
 	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
+	
+	static final String OBJECT_NAME = "DiagramFactor";
 	
 	private DimensionData size;
 	private PointData location;
