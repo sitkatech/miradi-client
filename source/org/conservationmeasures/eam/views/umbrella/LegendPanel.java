@@ -37,6 +37,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 	{
 		super(layout);
 		project = projectToUse;
+		checkBoxes = new Hashtable();
 	}
 	
 	protected void updateProjectLegendSettings(String property, String tag)
@@ -107,7 +108,9 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 
 	protected void addIconLineWithCheckBox(JPanel jpanel, int objectType, String objectName, Icon icon)
 	{
-		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, findCheckBox(objectName));
+		JCheckBox foundCheckBox = findCheckBox(objectName);
+		String foundLabel = EAM.fieldLabel(objectType, objectName);
+		addIconLine(jpanel, foundLabel, icon, foundCheckBox);
 	}
 
 	protected void addButtonLineWithCheckBox(JPanel jpanel, int objectType, String objectName, EAMAction action)
