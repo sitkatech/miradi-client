@@ -20,7 +20,7 @@ public class IndicatorListManagementPanel extends ObjectListManagementPanel
 	public IndicatorListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef ref, Actions actions) throws Exception
 	{
 		super(splitPositionSaverToUse, new IndicatorListTablePanel(projectToUse, actions, ref),
-				new IndicatorPropertiesPanel(projectToUse, actions));
+				new IndicatorPropertiesPanel(projectToUse));
 	}
 	
 	public String getSplitterDescription()

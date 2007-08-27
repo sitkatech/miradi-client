@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -19,17 +18,17 @@ import org.conservationmeasures.eam.questions.TrendQuestion;
 
 public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 {
-	public IndicatorPropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	public IndicatorPropertiesPanel(Project projectToUse) throws Exception
 	{
-		this(projectToUse, actions, new IndicatorId(BaseId.INVALID.asInt()));
+		this(projectToUse, new IndicatorId(BaseId.INVALID.asInt()));
 	}
 	
-	public IndicatorPropertiesPanel(Project projectToUse, Actions actions, Indicator indicator) throws Exception
+	public IndicatorPropertiesPanel(Project projectToUse, Indicator indicator) throws Exception
 	{
-		this(projectToUse, actions, (IndicatorId)indicator.getId());
+		this(projectToUse, (IndicatorId)indicator.getId());
 	}
 	
-	public IndicatorPropertiesPanel(Project projectToUse, Actions actions, IndicatorId idToShow) throws Exception
+	public IndicatorPropertiesPanel(Project projectToUse, IndicatorId idToShow) throws Exception
 	{
 		super(projectToUse, ObjectType.INDICATOR, idToShow);
 
