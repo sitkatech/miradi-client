@@ -45,12 +45,28 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		try
 		{
 			ViewData data = getProject().getCurrentViewData();
-			getProject().executeCommand(new CommandSetObjectData(data.getRef(), tag, getLegendSettings().toString()));
+			CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(data.getRef(), tag, getLegendSettings().toString());
+			getProject().executeCommand(setLegendSettingsCommand);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unable to update project legend settings:" + e.getMessage());
+		}
+	}
+	
+	protected CodeList getLegendSettings(String tag)
+	{
+		try
+		{
+			ViewData data = getProject().getCurrentViewData();
+			return  new CodeList(data.getData(tag));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unable to read project settings:" + e.getMessage());
+			return new CodeList();
 		}
 	}
 	
