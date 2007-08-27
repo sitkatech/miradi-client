@@ -20,7 +20,7 @@ public class GoalListManagementPanel extends ObjectListManagementPanel
 	public GoalListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
 	{
 		super(splitPositionSaverToUse, new GoalListTablePanel(projectToUse, actions, nodeRef),
-				new GoalPropertiesPanel(projectToUse, actions));
+				new GoalPropertiesPanel(projectToUse));
 	}
 
 	public String getSplitterDescription()
