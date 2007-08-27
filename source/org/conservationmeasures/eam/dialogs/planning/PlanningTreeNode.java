@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class PlanningTreeRoot extends TreeTableNode
+public class PlanningTreeNode extends TreeTableNode
 {
-	public PlanningTreeRoot(Project projectToUse, ORef nodeRefToUse)
+	public PlanningTreeNode(Project projectToUse, ORef nodeRefToUse)
 	{
 		project = projectToUse;
 		nodeRef = nodeRefToUse;
@@ -61,10 +61,10 @@ public class PlanningTreeRoot extends TreeTableNode
 		nodeObject = project.findObject(nodeRef);
 		ORefList subNodeObjectRefs = new SubNodeRetriever().retrieveSubNodes(nodeObject);
 		
-		subNodes = new PlanningTreeRoot[subNodeObjectRefs.size()];
+		subNodes = new PlanningTreeNode[subNodeObjectRefs.size()];
 		for (int i = 0; i < subNodeObjectRefs.size(); ++i)
 		{
-			subNodes[i] = new PlanningTreeRoot(project, subNodeObjectRefs.get(i));
+			subNodes[i] = new PlanningTreeNode(project, subNodeObjectRefs.get(i));
 		}
 	}
 
