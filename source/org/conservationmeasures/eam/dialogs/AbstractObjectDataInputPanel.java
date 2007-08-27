@@ -302,7 +302,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		
 	}
 
-	private Vector getFields()
+	protected Vector getFields()
 	{
 		return fields;
 	}
