@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
@@ -24,7 +26,16 @@ public class PlanningView extends UmbrellaView
 		super.becomeActive();
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
 		
-		add(planningManagementPanel);
+		PlanningViewLegendPanel legendPanel = new PlanningViewLegendPanel();
+		JScrollPane legendScrollPane = new JScrollPane(legendPanel);		
+		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
+		horizontalSplitPane.setRightComponent(managementPanelScrollPane);
+		horizontalSplitPane.setLeftComponent(legendScrollPane);
+		horizontalSplitPane.setDividerLocation(100);
+		
+		add(horizontalSplitPane);
+		planningManagementPanel.updateSplitterLocation();
 	}
 	
 	public void becomeInactive() throws Exception

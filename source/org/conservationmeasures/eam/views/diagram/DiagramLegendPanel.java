@@ -60,12 +60,13 @@ import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.DiagramLegendQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.LocationHolder;
+import org.conservationmeasures.eam.views.umbrella.LegendPanel;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class DiagramLegendPanel extends JPanel implements ActionListener
+abstract public class DiagramLegendPanel extends LegendPanel implements ActionListener
 {
 	abstract protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel);
 	
