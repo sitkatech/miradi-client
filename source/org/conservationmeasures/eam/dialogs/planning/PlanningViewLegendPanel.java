@@ -94,12 +94,14 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 		return jPanel;
 	}
 
-	
 	public CodeList getLegendSettings()
 	{
-		//FIXME planning - add all the types here
 		CodeList hiddenTypes = new CodeList();
+		hiddenTypes.add(Integer.toString(Goal.getObjectType()));
 		hiddenTypes.add(Integer.toString(Objective.getObjectType()));
+		hiddenTypes.add(Integer.toString(Indicator.getObjectType()));
+		hiddenTypes.add(Integer.toString(Strategy.getObjectType()));
+		hiddenTypes.add(Integer.toString(Task.getObjectType()));
 		
 		return hiddenTypes;
 	}
