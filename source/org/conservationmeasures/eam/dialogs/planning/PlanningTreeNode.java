@@ -74,64 +74,64 @@ public class PlanningTreeNode extends TreeTableNode
 		return nodeObject.getLabel();
 	}
 	
-	public ORefList retrieveSubNodes(BaseObject node)
+	public ORefList retrieveSubNodes(BaseObject object)
 	{
-		switch (node.getType())
+		switch (object.getType())
 		{
 			case ObjectType.PROJECT_METADATA :
-				return getChildrenOfProject(node);
+				return getChildrenOfProject((ProjectMetadata)object);
 			
 			case ObjectType.GOAL :
-				return getChildrenOfGoal(node);
+				return getChildrenOfGoal((Goal)object);
 			
 			case ObjectType.OBJECTIVE :
-				return getChildrenOfObjective(node);
+				return getChildrenOfObjective((Objective)object);
 				
 			case ObjectType.STRATEGY :
-				return getChildrenOfStrategy(node);
+				return getChildrenOfStrategy((Strategy)object);
 				
 			case ObjectType.INDICATOR:
-				return getChildrenOfIndicator(node);
+				return getChildrenOfIndicator((Indicator)object);
 			
 			case ObjectType.TASK :
-				return getChildrenOfTask(node);
+				return getChildrenOfTask((Task)object);
 			
 			default :
-				throw new RuntimeException("Could not find sub node of type " + node.getType());
+				throw new RuntimeException("Don't know how to get subnodes for type: " + object.getType());
 		}
 	}
 
-	private ORefList getChildrenOfProject(BaseObject node)
+	private ORefList getChildrenOfProject(ProjectMetadata projectMetadata)
 	{
-		return ((ProjectMetadata) node).getAllGoalRefs();
+		return projectMetadata.getAllGoalRefs();
 	}
 
-	private ORefList getChildrenOfGoal(BaseObject node)
+	private ORefList getChildrenOfGoal(Goal goal)
 	{
-		return ((Goal) node).getObjectivesUpstreamOfGoal();
+		return goal.getObjectivesUpstreamOfGoal();
 	}
 
-	private ORefList getChildrenOfObjective(BaseObject node)
+	private ORefList getChildrenOfObjective(Objective objective)
 	{
 		ORefList relatedItems = new ORefList();
-		relatedItems.addAll(((Objective) node).getRelatedStrategies());
-		relatedItems.addAll(((Objective) node).getRelatedIndicators());
+		relatedItems.addAll(objective.getRelatedStrategies());
+		relatedItems.addAll(objective.getRelatedIndicators());
 		return relatedItems;
 	}
 
-	private ORefList getChildrenOfStrategy(BaseObject node)
+	private ORefList getChildrenOfStrategy(Strategy strategy)
 	{
-		return ((Strategy) node).getActivities();
+		return strategy.getActivities();
 	}
 
-	private ORefList getChildrenOfIndicator(BaseObject node)
+	private ORefList getChildrenOfIndicator(Indicator indicator)
 	{
-		return ((Indicator) node).getMethods();
+		return indicator.getMethods();
 	}
 
-	private ORefList getChildrenOfTask(BaseObject node)
+	private ORefList getChildrenOfTask(Task task)
 	{
-		return ((Task) node).getSubtasks();
+		return task.getSubtasks();
 	}
 	
 	Project project;
