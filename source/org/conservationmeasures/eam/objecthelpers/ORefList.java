@@ -78,7 +78,7 @@ public class ORefList
 	public void addAll(ORefList otherList)
 	{
 		for(int i = 0; i < otherList.size(); ++i)
-			data.add(otherList.get(i));
+			add(otherList.get(i));
 	}
 	
 	public void addAll(ORef[] otherList)
