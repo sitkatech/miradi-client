@@ -114,7 +114,6 @@ public class TransferableMiradiList implements Transferable
 			rectWithUpperMostLeftMostCorner = new Rectangle(location);
 		
 		rectWithUpperMostLeftMostCorner.add(location);
-	
 	}
 
 	private void addFactorLinkDeepCopies(ObjectDeepCopier deepCopier, EAMGraphCell cell)
@@ -171,6 +170,9 @@ public class TransferableMiradiList implements Transferable
 	
 	public Point getUpperMostLeftMostCorner()
 	{
+		if (rectWithUpperMostLeftMostCorner == null)
+			return new Point(0, 0);
+		
 		return rectWithUpperMostLeftMostCorner.getLocation();
 	}
 	
