@@ -53,8 +53,11 @@ public class TransferableMiradiList implements Transferable
 	{
 		DataFlavor[] flavors = getTransferDataFlavors();
 		for(int i = 0; i < flavors.length; ++i)
+		{
 			if(flavor.equals(flavors[i]))
 				return true;
+		}
+		
 		return false;
 	}
 
