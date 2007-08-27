@@ -114,6 +114,14 @@ public class Cause extends Factor
 		return getObjectType();
 	}
 	
+	public String getTypeName()
+	{
+		if(isDirectThreat())
+			return OBJECT_NAME_THREAT;
+
+		return OBJECT_NAME_CONTRIBUTING_FACTOR;
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.CAUSE;

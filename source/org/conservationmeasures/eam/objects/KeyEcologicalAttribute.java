@@ -82,6 +82,11 @@ public class KeyEcologicalAttribute extends BaseObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;

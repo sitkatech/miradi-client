@@ -37,8 +37,17 @@ public class ResultsChainDiagram extends DiagramObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
+	
+	static final String OBJECT_NAME = "ResultsChainDiagram";
+
+
 }

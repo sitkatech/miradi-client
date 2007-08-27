@@ -41,6 +41,11 @@ public class TextBox extends Factor
 		return getObjectType();
 	}
 	
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.TEXT_BOX;

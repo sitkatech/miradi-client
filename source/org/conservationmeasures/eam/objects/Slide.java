@@ -37,6 +37,11 @@ public class Slide extends BaseObject
 		return getObjectType();
 	}
 
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.SLIDE;

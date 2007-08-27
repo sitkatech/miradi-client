@@ -46,6 +46,11 @@ public class IntermediateResult extends Factor
 		return getObjectType();
 	}
 	
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.INTERMEDIATE_RESULT;

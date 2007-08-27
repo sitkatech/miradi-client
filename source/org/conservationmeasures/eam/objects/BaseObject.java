@@ -216,6 +216,7 @@ abstract public class BaseObject
 	}
 	
 	abstract public int getType();
+	abstract public String getTypeName();
 	
 	public boolean equals(Object rawOther)
 	{
