@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
@@ -19,13 +18,15 @@ public class PlanningTreeModel extends GenericTreeTableModel
 
 	public int getColumnCount()
 	{
-		return 1;
+		return columnTags.length;
 	}
 
 	public String getColumnName(int column)
 	{
-		return EAM.text("Table");
+		return columnTags[column];
 	}
 	
 	Project project;
+	
+	public static final String[] columnTags = {"Item"};
 }
