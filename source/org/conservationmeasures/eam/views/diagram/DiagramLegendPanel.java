@@ -65,7 +65,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		
 		createLegendCheckBoxes();
 		addAllComponents();
-		updateLegendPanel(getDiagarmLegendSettingsForSlide());
+		updateLegendPanel(getLegendSettings(ViewData.TAG_DIAGRAM_HIDDEN_TYPES));
 	}
 	
 	private void addAllComponents()
@@ -191,7 +191,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	
 	public void resetCheckBoxes()
 	{
-		updateLegendPanel(getDiagarmLegendSettingsForSlide());
+		updateLegendPanel(getLegendSettings(ViewData.TAG_DIAGRAM_HIDDEN_TYPES));
 	}
 	
 	public void updateCheckBox(LayerManager manager, String property)
@@ -265,21 +265,6 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		mainWindow.updateStatusBar();
 	}
 		
-	private CodeList getDiagarmLegendSettingsForSlide()
-	{
-		try
-		{
-			ViewData data = getProject().getCurrentViewData();
-			return  new CodeList(data.getData(ViewData.TAG_DIAGRAM_HIDDEN_TYPES));
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Unable to read project settings:" + e.getMessage());
-			return new CodeList();
-		}
-	}
-	
 	private LayerManager getLayerManager()
 	{
 		return mainWindow.getProject().getLayerManager();

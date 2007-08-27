@@ -49,6 +49,19 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 
 		createLegendCheckBoxes();
 		addAllComponents();
+		CodeList legendSettings = getLegendSettings(ViewData.TAG_PLANNING_HIDDEN_TYPES);
+		updateLegendPanel(legendSettings);
+	}
+	
+	public void updateLegendPanel(CodeList hiddenTypes)
+	{
+		selectAllCheckBoxs();
+		for (int i = 0; i < hiddenTypes.size(); ++i)
+		{
+			String hiddenType = hiddenTypes.get(i);
+			JCheckBox checkBox = findCheckBox(hiddenType);
+			checkBox.setSelected(false);
+		}
 	}
 	
 	private void createLegendCheckBoxes()
@@ -108,12 +121,14 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 	public CodeList getLegendSettings()
 	{
 		CodeList hiddenTypes = new CodeList();
-		hiddenTypes.add(Goal.OBJECT_NAME);
-		hiddenTypes.add(Objective.OBJECT_NAME);
-		hiddenTypes.add(Indicator.OBJECT_NAME);
-		hiddenTypes.add(Strategy.OBJECT_NAME);
-		hiddenTypes.add(Task.OBJECT_NAME);
-		
+		Object[] keys = checkBoxes.keySet().toArray();
+		for (int i = 0; i < keys.length; ++i)
+		{
+			JCheckBox checkBox = findCheckBox(keys[i]);
+			if (! checkBox.isSelected())
+				hiddenTypes.add(keys[i].toString());
+		}
+
 		return hiddenTypes;
 	}
 
