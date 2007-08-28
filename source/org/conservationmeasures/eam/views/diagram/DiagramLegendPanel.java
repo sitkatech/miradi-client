@@ -157,7 +157,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		LayerManager manager = getLayerManager();
 		setLegendVisibilityOfFacactorCheckBoxes(manager, property);
 		updateVisiblity();
-		updateLegendSettings(property, ViewData.TAG_DIAGRAM_HIDDEN_TYPES);
+		updateLegendCodeListSettings(property, ViewData.TAG_DIAGRAM_HIDDEN_TYPES);
 	}
 
 	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)

@@ -101,9 +101,10 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
 		ORef topLevelObjRef = topLevelObject.getObjectReference();
 		
-		boolean doesContain = objRefListToUse.contains(topLevelObjRef);
-		boolean isAlawysExpanded = topLevelObject.isAlwaysExpanded();
-		if ( ! (doesContain || isAlawysExpanded))
+		boolean isInExpandedList = objRefListToUse.contains(topLevelObjRef);
+		boolean isAlwaysExpanded = topLevelObject.isAlwaysExpanded();
+		boolean isExpanded = isAlwaysExpanded || isInExpandedList;
+		if(! isExpanded)
 		{
 			tree.collapsePath(thisPath);
 			return;
