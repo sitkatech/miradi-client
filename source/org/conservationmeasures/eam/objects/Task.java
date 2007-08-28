@@ -222,6 +222,10 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_TASK_COST))
 			return getTaskCost();
 		
+		//FIXME planning - get real name here
+		if (fieldTag.equals(PSEUDO_TAG_WHO))
+			return EAM.text("SomeOnee");
+		
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -304,6 +308,7 @@ public class Task extends BaseObject
 		subtaskTotal = new PseudoStringData(PSEUDO_TAG_SUBTASK_TOTAL);
 		taskTotal = new PseudoStringData(PSEUDO_TAG_TASK_TOTAL);
 		taskCost = new PseudoStringData(PSEUDO_TAG_TASK_COST);
+		who = new PseudoStringData(PSEUDO_TAG_WHO);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
@@ -312,9 +317,10 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_SUBTASK_TOTAL, subtaskTotal);
 		addField(PSEUDO_TAG_TASK_TOTAL, taskTotal);
 		addField(PSEUDO_TAG_TASK_COST, taskCost);
+		addField(PSEUDO_TAG_WHO, who);
 	}
 
-
+	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_ASSIGNMENT_IDS = "AssignmentIds";
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
@@ -322,6 +328,8 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_SUBTASK_TOTAL = "SubtaskTotal";
 	public final static String PSEUDO_TAG_TASK_TOTAL = "TaskTotal";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
+	
+	public final static String PSEUDO_TAG_WHO = "Who";
 	
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
@@ -334,4 +342,5 @@ public class Task extends BaseObject
 	PseudoStringData subtaskTotal;
 	PseudoStringData taskTotal;
 	PseudoStringData taskCost;
+	PseudoStringData who;
 }
