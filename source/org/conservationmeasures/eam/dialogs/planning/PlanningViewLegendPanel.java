@@ -18,8 +18,10 @@ import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
+import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TaskIcon;
@@ -71,6 +73,8 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 		createCheckBox(Indicator.OBJECT_NAME);
 		createCheckBox(Strategy.OBJECT_NAME);
 		createCheckBox(Task.OBJECT_NAME);
+		createCheckBox(Task.METHOD_NAME);
+		createCheckBox(Task.ACTIVITY_NAME);
 	}
 
 	private void addAllComponents()
@@ -114,6 +118,8 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 		addIconLineWithCheckBox(jPanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
 		addIconLineWithCheckBox(jPanel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
 		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon());
+		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.METHOD_NAME, new MethodIcon());
+		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon());
 		
 		return jPanel;
 	}

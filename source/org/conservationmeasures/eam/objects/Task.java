@@ -98,6 +98,12 @@ public class Task extends BaseObject
 
 	public String getTypeName()
 	{
+		if (isMethod())
+			return METHOD_NAME;
+		
+		if (isActivity())
+			return ACTIVITY_NAME;
+		
 		return OBJECT_NAME;
 	}
 
@@ -105,7 +111,6 @@ public class Task extends BaseObject
 	{
 		return ObjectType.TASK;
 	}
-	
 	
 	public static boolean canOwnThisType(int type)
 	{
@@ -288,7 +293,6 @@ public class Task extends BaseObject
 		}
 		return parent.getData(BaseObject.TAG_LABEL);
 	}
-
 	
 	public void clear()
 	{
@@ -320,6 +324,8 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	
 	public static final String OBJECT_NAME = "Task";
+	public static final String METHOD_NAME = "Method";
+	public static final String ACTIVITY_NAME = "Activity";
 	
 	IdListData subtaskIds;
 	IdListData assignmentIds;
