@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class PlanningTreeModel extends GenericTreeTableModel
 {	
-	public PlanningTreeModel(Project projectToUse, Object root)
+	public PlanningTreeModel(Project projectToUse)
 	{
-		super(root);
+		super(new PlanningTreeNode(projectToUse, projectToUse.getMetadata().getRef()));
 		project = projectToUse;
 	}
 
