@@ -28,5 +28,5 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	
 	Project project;
 	
-	public static final String[] columnTags = {"Item"};
+	public static final String[] columnTags = {"Item", "Priority", "Progress", "Who", "When", "Budget", };
 }
