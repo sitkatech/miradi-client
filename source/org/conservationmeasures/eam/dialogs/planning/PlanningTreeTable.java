@@ -13,5 +13,6 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 	public PlanningTreeTable(Project projectToUse, PlanningTreeModel planningTreeModelToUse)
 	{
 		super(projectToUse, planningTreeModelToUse);
+		setShowGrid(true);
 	}
 }
