@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
@@ -31,14 +32,11 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	{
 		PlanningTreeNode treeNode = (PlanningTreeNode) rawNode;
 		String columnTag = getTagForColumn(col);
-		try
-		{
-			return treeNode.getObject().getData(columnTag);
-		}
-		catch (Exception e)
-		{
+		BaseObject baseObject = treeNode.getObject();	
+		if (! baseObject.containedInFields(columnTag))
 			return "";
-		}
+		
+		return baseObject.getData(columnTag);
 	}
 	
 	private String getTagForColumn(int col)
