@@ -20,34 +20,26 @@ public class PlanningTreeModel extends GenericTreeTableModel
 
 	public int getColumnCount()
 	{
-		return columnNames.length;
+		return columnTags.length;
 	}
 
 	public String getColumnName(int column)
 	{
-		return columnNames[column];
+		return columnTags[column];
 	}
 	
 	public Object getValueAt(Object rawNode, int col)
 	{
 		PlanningTreeNode treeNode = (PlanningTreeNode) rawNode;
-		String columnTag = getTagForColumn(col);
+		String columnTag = getColumnName(col);
 		BaseObject baseObject = treeNode.getObject();	
-		if (! baseObject.containedInFields(columnTag))
+		if (! baseObject.doesFieldExist(columnTag))
 			return "";
 		
 		return baseObject.getData(columnTag);
 	}
 	
-	private String getTagForColumn(int col)
-	{
-		if (col == 5)
-			return Indicator.TAG_PRIORITY;
-		
-		return "";
-	}
-	
 	Project project;
 	
-	public static final String[] columnNames = {"Item", "Full Text", "% Complete","Method", "Assoc Factor", "Priority", "Progress", "Who", "When", "Budget", "Budget Total ($)"};	
+	public static final String[] columnTags = {"Item", "Full Text", "% Complete","Method", "Assoc Factor", Indicator.TAG_PRIORITY, "Progress", "Who", "When", "Budget", "Budget Total ($)"};	
 }
