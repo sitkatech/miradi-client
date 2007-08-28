@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
@@ -25,7 +24,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeModel modelToUse)
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
-		restoreTreeExpansionState();
 		model = modelToUse;
 	}
 	
@@ -52,18 +50,4 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{
 		return (PlanningTreeModel)getModel();
 	}
-	
-	protected void restoreTreeExpansionState() 
-	{
-		try
-		{
-			tree.restoreTreeState();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error restoring tree state"));
-		}
-	}
-
 }
