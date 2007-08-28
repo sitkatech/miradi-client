@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
@@ -41,5 +42,5 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	
 	Project project;
 	
-	public static final String[] columnTags = {"Item", "Full Text", "% Complete","Method", "Assoc Factor", Indicator.TAG_PRIORITY, "Progress", "Who", "When", "Budget", "Budget Total ($)"};	
+	public static final String[] columnTags = {"Item", "Full Text", "% Complete","Method", "Assoc Factor", Indicator.TAG_PRIORITY, "Progress", Task.PSEUDO_TAG_WHO, "When", "Budget", "Budget Total ($)"};	
 }
