@@ -46,6 +46,11 @@ public class WorkPlanRoot extends TreeTableNode
 	{
 		return ObjectType.FACTOR;
 	}
+	
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
 
 	public Object getValueAt(int column)
 	{

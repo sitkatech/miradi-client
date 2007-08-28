@@ -22,5 +22,9 @@ public class TargetViabilityRoot extends TargetViabilityNode
 	{
 		return null;
 	}
-
+	
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
 }

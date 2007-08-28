@@ -46,6 +46,11 @@ public class ViabilityRoot extends TreeTableNode
 	{
 		return ObjectType.FAKE;
 	}
+	
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
 
 	public Object getValueAt(int column)
 	{

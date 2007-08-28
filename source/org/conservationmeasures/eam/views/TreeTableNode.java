@@ -31,4 +31,9 @@ public abstract class TreeTableNode
 		
 		return -1;
 	}
+	
+	public boolean isAlwaysExpanded()
+	{
+		return false;
+	}
 }
