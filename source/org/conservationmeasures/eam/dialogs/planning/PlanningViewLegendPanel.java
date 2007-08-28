@@ -104,9 +104,7 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 	
 	public void actionPerformed(ActionEvent event)
 	{	
-		JCheckBox checkBox = (JCheckBox)event.getSource();
-		String property = (String) checkBox.getClientProperty(LAYER);
-		updateLegendCodeListSettings(property, ViewData.TAG_PLANNING_HIDDEN_TYPES);
+		saveSettingsToProject(ViewData.TAG_PLANNING_HIDDEN_TYPES);
 	}
 	
 	protected JPanel createLegendButtonPanel(Actions actions)
