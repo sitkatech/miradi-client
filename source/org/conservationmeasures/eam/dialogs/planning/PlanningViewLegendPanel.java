@@ -51,10 +51,10 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 
 		createLegendCheckBoxes();
 		addAllComponents();
-		updateLegendPanel();
+		updateCheckBoxesFromProjectSettings();
 	}
 	
-	public void updateLegendPanel()
+	public void updateCheckBoxesFromProjectSettings()
 	{
 		CodeList hiddenTypes = getLegendSettings(ViewData.TAG_PLANNING_HIDDEN_TYPES);
 		selectAllCheckBoxs();
