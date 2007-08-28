@@ -68,7 +68,6 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 			EAM.logException(e);
 			EAM.errorDialog("Unexpected error has occurred making the new object visible");
 		}
-
 	}
 	
 	public void selectObject(ORef ref)
@@ -93,7 +92,6 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		{
 			ignoreNotifications = false;
 		}
-		
 	}
 	
 	private void recursiveChangeNodeExpansionState(ORefList objRefListToUse, TreePath thisPath)
