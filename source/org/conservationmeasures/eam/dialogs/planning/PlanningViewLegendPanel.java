@@ -49,12 +49,12 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 
 		createLegendCheckBoxes();
 		addAllComponents();
-		CodeList legendSettings = getLegendSettings(ViewData.TAG_PLANNING_HIDDEN_TYPES);
-		updateLegendPanel(legendSettings);
+		updateLegendPanel();
 	}
 	
-	public void updateLegendPanel(CodeList hiddenTypes)
+	public void updateLegendPanel()
 	{
+		CodeList hiddenTypes = getLegendSettings(ViewData.TAG_PLANNING_HIDDEN_TYPES);
 		selectAllCheckBoxs();
 		for (int i = 0; i < hiddenTypes.size(); ++i)
 		{
@@ -90,7 +90,7 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 	private void selectAllCheckBoxs()
 	{
 		Object[] keys = checkBoxes.keySet().toArray();
-		for (int i=0; i<keys.length; ++i)
+		for (int i = 0; i < keys.length; ++i)
 		{
 			String property = ((JCheckBox)checkBoxes.get(keys[i])).getClientProperty(LAYER).toString();
 			JCheckBox checkBox = findCheckBox(property);
