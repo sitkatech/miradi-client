@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
@@ -18,15 +19,37 @@ public class PlanningTreeModel extends GenericTreeTableModel
 
 	public int getColumnCount()
 	{
-		return columnTags.length;
+		return columnNames.length;
 	}
 
 	public String getColumnName(int column)
 	{
-		return columnTags[column];
+		return columnNames[column];
+	}
+	
+	public Object getValueAt(Object rawNode, int col)
+	{
+		PlanningTreeNode treeNode = (PlanningTreeNode) rawNode;
+		String columnTag = getTagForColumn(col);
+		try
+		{
+			return treeNode.getObject().getData(columnTag);
+		}
+		catch (Exception e)
+		{
+			return "";
+		}
+	}
+	
+	private String getTagForColumn(int col)
+	{
+		if (col == 5)
+			return Indicator.TAG_PRIORITY;
+		
+		return "";
 	}
 	
 	Project project;
 	
-	public static final String[] columnTags = {"Item", "Priority", "Progress", "Who", "When", "Budget", };
+	public static final String[] columnNames = {"Item", "Full Text", "% Complete","Method", "Assoc Factor", "Priority", "Progress", "Who", "When", "Budget", "Budget Total ($)"};	
 }
