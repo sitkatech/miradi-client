@@ -51,13 +51,12 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	
 	public static final String[] columnTags = {"Item", 
 		"Full Text", 
-		"% Complete",
-		"Method", 
+		Indicator.TAG_MEASUREMENT_SUMMARY,
+		Indicator.PSEUDO_TAG_METHODS,  
 		Indicator.PSEUDO_TAG_FACTOR, 
 		Indicator.TAG_PRIORITY, 
 		Indicator.PSEUDO_TAG_STATUS_VALUE, 
-		Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
-		"When", 
-		"Budget", 
-		"Budget Total ($)"};	
+		Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+		Indicator.TAG_MEASUREMENT_DATE,
+		Task.PSEUDO_TAG_TASK_TOTAL, };	
 }

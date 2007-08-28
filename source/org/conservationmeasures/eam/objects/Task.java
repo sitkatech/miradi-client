@@ -238,22 +238,15 @@ public class Task extends BaseObject
 			ProjectResource resource = (ProjectResource) objectManager.findObject(ProjectResource.getObjectType(), resourceId);
 			if (resource == null)
 				continue;
-			
-			appendedResources += resource.toString() + getComma(i, assignmentIds.size());
+			if (i > 0)
+				appendedResources += ", "; 
+					
+			appendedResources += resource.toString();
 		}
 		
 		return appendedResources;
 	}
 	
-	private String getComma(int i, int arrayLength)
-	{
-		boolean isLastElement = i == arrayLength - 1;
-		if (isLastElement)
-			return "";
-		
-		return ", ";
-	}
-
 	public ORefList getSubtasks()
 	{
 		return new ORefList(Task.getObjectType(), getSubtaskIdList());
