@@ -245,7 +245,7 @@ abstract public class BaseObject
 			return;
 		} 
 		
-		if(!containedInFields(fieldTag))
+		if(!doesFieldExist(fieldTag))
 			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
 
 		getField(fieldTag).set(dataValue);
@@ -264,13 +264,13 @@ abstract public class BaseObject
 		if (TAG_EMPTY.equals(fieldTag))
 			return "";
 		
-		if(!containedInFields(fieldTag))
+		if(!doesFieldExist(fieldTag))
 			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag + " in object type: " + getClass().getSimpleName());
 
 		return getField(fieldTag).get();
 	}
 
-	public boolean containedInFields(String fieldTag)
+	public boolean doesFieldExist(String fieldTag)
 	{
 		return fields.containsKey(fieldTag);
 	}
