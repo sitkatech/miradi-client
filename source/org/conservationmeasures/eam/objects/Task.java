@@ -222,11 +222,36 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_TASK_COST))
 			return getTaskCost();
 		
-		//FIXME planning - get real name here
-		if (fieldTag.equals(PSEUDO_TAG_WHO))
-			return EAM.text("SomeOnee");
+		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
+			return getAppendedResourceNames();
 		
 		return super.getPseudoData(fieldTag);
+	}
+
+	public String getAppendedResourceNames()
+	{
+		String appendedResources = "";
+		for (int i = 0; i < assignmentIds.size(); ++i)
+		{
+			Assignment assignment = (Assignment) objectManager.findObject(Assignment.getObjectType(),assignmentIds.get(i));
+			BaseId resourceId = assignment.getResourceId();
+			ProjectResource resource = (ProjectResource) objectManager.findObject(ProjectResource.getObjectType(), resourceId);
+			if (resource == null)
+				continue;
+			
+			appendedResources += resource.toString() + getComma(i, assignmentIds.size());
+		}
+		
+		return appendedResources;
+	}
+	
+	private String getComma(int i, int arrayLength)
+	{
+		boolean isLastElement = i == arrayLength - 1;
+		if (isLastElement)
+			return "";
+		
+		return ", ";
 	}
 
 	public ORefList getSubtasks()
@@ -308,7 +333,7 @@ public class Task extends BaseObject
 		subtaskTotal = new PseudoStringData(PSEUDO_TAG_SUBTASK_TOTAL);
 		taskTotal = new PseudoStringData(PSEUDO_TAG_TASK_TOTAL);
 		taskCost = new PseudoStringData(PSEUDO_TAG_TASK_COST);
-		who = new PseudoStringData(PSEUDO_TAG_WHO);
+		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
@@ -317,7 +342,7 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_SUBTASK_TOTAL, subtaskTotal);
 		addField(PSEUDO_TAG_TASK_TOTAL, taskTotal);
 		addField(PSEUDO_TAG_TASK_COST, taskCost);
-		addField(PSEUDO_TAG_WHO, who);
+		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
 	}
 
 	
@@ -329,7 +354,7 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_TASK_TOTAL = "TaskTotal";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	
-	public final static String PSEUDO_TAG_WHO = "Who";
+	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
 	
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
