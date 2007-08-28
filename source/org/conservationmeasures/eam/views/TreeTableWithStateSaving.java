@@ -101,7 +101,9 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
 		ORef topLevelObjRef = topLevelObject.getObjectReference();
 		
-		if ( ! (objRefListToUse.contains(topLevelObjRef) || topLevelObjRef == null))
+		boolean doesContain = objRefListToUse.contains(topLevelObjRef);
+		boolean isNull = topLevelObjRef == null;
+		if ( ! (doesContain || isNull))
 		{
 			tree.collapsePath(thisPath);
 			return;
