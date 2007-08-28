@@ -44,6 +44,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 			return;
 		
 		getPlanningModel().rebuildEntireTree();
+		restoreTreeExpansionState();
 	}
 	
 	PlanningTreeModel getPlanningModel()
