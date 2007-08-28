@@ -70,11 +70,11 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 	{
 		createCheckBox(Goal.OBJECT_NAME);
 		createCheckBox(Objective.OBJECT_NAME);
-		createCheckBox(Indicator.OBJECT_NAME);
 		createCheckBox(Strategy.OBJECT_NAME);
-		createCheckBox(Task.OBJECT_NAME);
-		createCheckBox(Task.METHOD_NAME);
 		createCheckBox(Task.ACTIVITY_NAME);
+		createCheckBox(Indicator.OBJECT_NAME);
+		createCheckBox(Task.METHOD_NAME);
+		createCheckBox(Task.OBJECT_NAME);	
 	}
 
 	private void addAllComponents()
@@ -115,11 +115,11 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 		
 		addIconLineWithCheckBox(jPanel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jPanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
-		addIconLineWithCheckBox(jPanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
 		addIconLineWithCheckBox(jPanel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
-		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon());
-		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.METHOD_NAME, new MethodIcon());
 		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon());
+		addIconLineWithCheckBox(jPanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
+		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.METHOD_NAME, new MethodIcon());
+		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon());
 		
 		return jPanel;
 	}
