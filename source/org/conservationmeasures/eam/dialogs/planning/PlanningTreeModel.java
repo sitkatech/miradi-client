@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
@@ -23,8 +25,13 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	{
 		return columnTags.length;
 	}
-
+	
 	public String getColumnName(int column)
+	{
+		return EAM.fieldLabel(ObjectType.FAKE, getColumnTag(column));
+	}
+	
+	public String getColumnTag(int column)
 	{
 		return columnTags[column];
 	}
@@ -32,7 +39,7 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	public Object getValueAt(Object rawNode, int col)
 	{
 		PlanningTreeNode treeNode = (PlanningTreeNode) rawNode;
-		String columnTag = getColumnName(col);
+		String columnTag = getColumnTag(col);
 		BaseObject baseObject = treeNode.getObject();	
 		if (! baseObject.doesFieldExist(columnTag))
 			return "";
@@ -42,5 +49,15 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	
 	Project project;
 	
-	public static final String[] columnTags = {"Item", "Full Text", "% Complete","Method", "Assoc Factor", Indicator.TAG_PRIORITY, "Progress", Task.PSEUDO_TAG_WHO, "When", "Budget", "Budget Total ($)"};	
+	public static final String[] columnTags = {"Item", 
+		"Full Text", 
+		"% Complete",
+		"Method", 
+		Indicator.PSEUDO_TAG_FACTOR, 
+		Indicator.TAG_PRIORITY, 
+		Indicator.PSEUDO_TAG_STATUS_VALUE, 
+		Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
+		"When", 
+		"Budget", 
+		"Budget Total ($)"};	
 }
