@@ -60,6 +60,11 @@ public class StratPlanRoot extends TreeTableNode
 		return -1;
 	}
 	
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
+	
 	public void rebuild() throws Exception
 	{
 		Vector goalVector = new Vector();

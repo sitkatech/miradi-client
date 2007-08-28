@@ -55,6 +55,14 @@ public class PlanningTreeNode extends TreeTableNode
 	{
 		return getObjectReference().getObjectType();
 	}
+	
+	public boolean isAlwaysExpanded()
+	{
+		if (getType() == ProjectMetadata.getObjectType())
+			return true;
+		
+		return false;
+	}
 
 	public Object getValueAt(int column)
 	{

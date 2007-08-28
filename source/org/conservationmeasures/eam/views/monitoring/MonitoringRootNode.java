@@ -39,6 +39,11 @@ public class MonitoringRootNode extends MonitoringNode
 	{
 		return -1;
 	}
+	
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
 
 	public String toString()
 	{
@@ -67,7 +72,7 @@ public class MonitoringRootNode extends MonitoringNode
 		children = desireVector;
 		Collections.sort(children, new IgnoreCaseStringComparator());
 	}
-
+	
 	private Vector getAllDesires(DesirePool pool) throws Exception
 	{
 		BaseId[] desireIds = pool.getIds();
