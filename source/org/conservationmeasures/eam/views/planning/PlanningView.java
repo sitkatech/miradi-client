@@ -11,11 +11,12 @@ import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewLegendPanel;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.TabbedView;
 
-public class PlanningView extends UmbrellaView
+public class PlanningView extends TabbedView
 {
 	public PlanningView(MainWindow mainWindowToUse)
 	{
@@ -25,6 +26,11 @@ public class PlanningView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
+		planningManagementPanel.updateSplitterLocation();
+	}
+	
+	public void createTabs() throws Exception
+	{
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
 		
 		PlanningViewLegendPanel legendPanel = new PlanningViewLegendPanel(getMainWindow());
@@ -35,14 +41,11 @@ public class PlanningView extends UmbrellaView
 		horizontalSplitPane.setLeftComponent(legendScrollPane);
 		horizontalSplitPane.setDividerLocation(100);
 		
-		add(horizontalSplitPane);
-		planningManagementPanel.updateSplitterLocation();
+		addTab(EAM.text("Planning"), horizontalSplitPane);
 	}
-	
-	public void becomeInactive() throws Exception
+
+	public void deleteTabs() throws Exception
 	{
-		super.becomeInactive();
-		
 		planningManagementPanel.dispose();
 		planningManagementPanel = null;
 	}
