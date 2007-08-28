@@ -65,7 +65,6 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	
 	public Vector getFields()
 	{
-		//FIXME Planning - is this correct to get the first ref
 		ORef firstRef = getORef(0);
 		int objectType = firstRef.getObjectType();
 		if (Goal.getObjectType() == objectType)
@@ -94,7 +93,6 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	
 	private String getDescription(ORef[] orefsToUse)
 	{
-		//FIXME planning - should not use first ref
 		ORef firstRef = orefsToUse[0];
 		int objectType = firstRef.getObjectType();
 		if (Goal.getObjectType() == objectType)
