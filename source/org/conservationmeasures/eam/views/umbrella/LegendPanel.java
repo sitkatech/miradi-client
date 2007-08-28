@@ -40,7 +40,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		checkBoxes = new Hashtable();
 	}
 	
-	protected void updateProjectLegendSettings(String property, String tag)
+	protected void updateLegendSettings(String property, String tag)
 	{
 		try
 		{
