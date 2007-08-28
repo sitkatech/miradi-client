@@ -269,8 +269,8 @@ public class Strategy extends Factor
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
-	public static final String     STATUS_DRAFT = "Draft";
-	public static final String     STATUS_REAL = "Real";
+	public static final String STATUS_DRAFT = "Draft";
+	public static final String STATUS_REAL = "Real";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
