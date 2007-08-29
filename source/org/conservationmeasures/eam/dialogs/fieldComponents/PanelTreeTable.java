@@ -22,6 +22,11 @@ public class PanelTreeTable extends JTreeTable
 		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
+	public void rebuildTableCompletely()
+	{
+		tableChanged(null);
+	}
+	
 	//TODO: Richard: should not use static ref here
 	public MainWindow getMainWindow()
 	{
