@@ -38,7 +38,7 @@ public class PlanningView extends TabbedView
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
 		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
 		
-		JScrollPane legendScrollPane = createScrollableLengedPanel();		
+		JScrollPane legendScrollPane = createScrollableLegendPanel();		
 		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		
 		horizontalSplitPane.setRightComponent(managementPanelScrollPane);
@@ -48,7 +48,7 @@ public class PlanningView extends TabbedView
 		addTab(EAM.text("Planning"), horizontalSplitPane);
 	}
 
-	private JScrollPane createScrollableLengedPanel()
+	private JScrollPane createScrollableLegendPanel()
 	{
 		PlanningViewRowsLegendPanel rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
 		PlanningViewColumsLegendPanel columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
