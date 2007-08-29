@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
@@ -21,10 +20,10 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	{
 		super(new PlanningTreeNode(projectToUse, projectToUse.getMetadata().getRef()));
 		project = projectToUse;
-		
-		ViewData viewData = project.getCurrentViewData();
-		String codeListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
-		codeList = new CodeList(codeListAsString);
+	
+		//FIXME  this has to be done antoher way
+		codeList = new CodeList();
+		codeList.add("Item");
 	}
 
 	public int getColumnCount()

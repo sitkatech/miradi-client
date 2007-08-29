@@ -10,7 +10,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
-import org.conservationmeasures.eam.dialogs.planning.PlanningViewLegendPanel;
+import org.conservationmeasures.eam.dialogs.planning.PlanningViewRowsLegendPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -33,8 +33,8 @@ public class PlanningView extends TabbedView
 	{
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
 		
-		PlanningViewLegendPanel legendPanel = new PlanningViewLegendPanel(getMainWindow());
-		JScrollPane legendScrollPane = new JScrollPane(legendPanel);		
+		PlanningViewRowsLegendPanel legendRowsPanel = new PlanningViewRowsLegendPanel(getMainWindow());		
+		JScrollPane legendScrollPane = new JScrollPane(legendRowsPanel);		
 		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
 		horizontalSplitPane.setRightComponent(managementPanelScrollPane);

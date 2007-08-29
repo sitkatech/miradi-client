@@ -7,8 +7,10 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
 
 public class PlanningTreeTablePanel extends TreeTablePanel
@@ -40,14 +42,44 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 		if(cmd.getObjectType() != ViewData.getObjectType())
 			return;
-		if(!cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES))
+		
+		hiddenRowsChanged(cmd);
+		hiddenColumnsChanged(cmd);
+	}
+
+	private void hiddenColumnsChanged(CommandSetObjectData cmd)
+	{
+		if(! cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES))
 			return;
 		
+		try
+		{
+			String codeListAsString = cmd.getDataValue();
+			CodeList codeList = new CodeList(codeListAsString);
+			getPlanningModel().setCodeList(codeList);
+			rebuildTree();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	private void hiddenRowsChanged(CommandSetObjectData cmd)
+	{
+		if(! cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES))
+			return;
+		
+		rebuildTree();
+	}
+	
+	private void rebuildTree()
+	{
 		getPlanningModel().rebuildEntireTree();
 		restoreTreeExpansionState();
 	}
 	
-	PlanningTreeModel getPlanningModel()
+	private PlanningTreeModel getPlanningModel()
 	{
 		return (PlanningTreeModel)getModel();
 	}
