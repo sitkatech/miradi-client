@@ -23,13 +23,13 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		project = projectToUse;
 		
 		ViewData viewData = project.getCurrentViewData();
-		String codeListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_TYPES);
+		String codeListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
 		codeList = new CodeList(codeListAsString);
 	}
 
 	public int getColumnCount()
 	{
-		return columnTags.length;
+		return getColumnTags().size();
 	}
 	
 	public String getColumnName(int column)
@@ -55,17 +55,18 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	
 	public CodeList getColumnTags()
 	{
-		return new CodeList(columnTags);	
+		return codeList;	
 	}
 	
 	public void setCodeList(CodeList newCodeList)
 	{
-		//FIXME planning - set from commandListener
+		codeList = newCodeList;
 	}
 	
 	Project project;
 	CodeList codeList;
-	public static final String[] columnTags = {"Item", 
+	public static final String[] columnTags = {
+		"Item", 
 		"Full Text", 
 		Indicator.TAG_MEASUREMENT_SUMMARY,
 		Indicator.PSEUDO_TAG_METHODS,  

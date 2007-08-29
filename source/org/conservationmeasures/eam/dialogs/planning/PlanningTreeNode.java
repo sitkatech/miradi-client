@@ -175,7 +175,7 @@ public class PlanningTreeNode extends TreeTableNode
 		{
 			BaseObject thisObject = project.findObject(ref);
 
-			String tag = ViewData.TAG_PLANNING_HIDDEN_TYPES;
+			String tag = ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES;
 			ViewData data = project.getCurrentViewData();
 			CodeList hiddenTypes = new CodeList(data.getData(tag));
 			return (!hiddenTypes.contains(thisObject.getTypeName()));
