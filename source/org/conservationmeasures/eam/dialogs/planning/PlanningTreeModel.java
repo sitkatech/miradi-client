@@ -27,9 +27,9 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	public void rebuildCodeList() throws Exception
 	{
 		String codeListAsString = project.getCurrentViewData().getData(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);
-		CodeList storedList = new CodeList(codeListAsString);
-		codeList = new CodeList(columnTags);
-		codeList.subtract(storedList);
+		CodeList columnsToHide = new CodeList(codeListAsString);
+		columnsToShow = new CodeList(columnTags);
+		columnsToShow.subtract(columnsToHide);
 	}
 
 	public int getColumnCount()
@@ -60,12 +60,11 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	
 	public CodeList getColumnTags()
 	{
-		return codeList;	
+		return columnsToShow;	
 	}
 	
 	Project project;
-	CodeList codeList;
-	CodeList defaultCodeList;
+	CodeList columnsToShow;
 
 	public static final String[] columnTags = {
 		"Item", 
