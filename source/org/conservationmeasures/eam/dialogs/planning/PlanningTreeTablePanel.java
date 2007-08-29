@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
 
 public class PlanningTreeTablePanel extends TreeTablePanel
 {
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse)
+	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{ 
 		PlanningTreeModel model = new PlanningTreeModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model);	

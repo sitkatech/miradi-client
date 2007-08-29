@@ -10,15 +10,21 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class PlanningTreeModel extends GenericTreeTableModel
 {	
-	public PlanningTreeModel(Project projectToUse)
+	public PlanningTreeModel(Project projectToUse) throws Exception
 	{
 		super(new PlanningTreeNode(projectToUse, projectToUse.getMetadata().getRef()));
 		project = projectToUse;
+		
+		ViewData viewData = project.getCurrentViewData();
+		String codeListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_TYPES);
+		codeList = new CodeList(codeListAsString);
 	}
 
 	public int getColumnCount()
@@ -33,7 +39,7 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	
 	public String getColumnTag(int column)
 	{
-		return columnTags[column];
+		return getColumnTags().get(column);
 	}
 	
 	public Object getValueAt(Object rawNode, int col)
@@ -47,8 +53,18 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		return baseObject.getData(columnTag);
 	}
 	
-	Project project;
+	public CodeList getColumnTags()
+	{
+		return new CodeList(columnTags);	
+	}
 	
+	public void setCodeList(CodeList newCodeList)
+	{
+		//FIXME planning - set from commandListener
+	}
+	
+	Project project;
+	CodeList codeList;
 	public static final String[] columnTags = {"Item", 
 		"Full Text", 
 		Indicator.TAG_MEASUREMENT_SUMMARY,
