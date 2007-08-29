@@ -57,11 +57,8 @@ public class PlanningView extends TabbedView
 		legendPanel.add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
 		legendPanel.add(rowsLegendPanel);
 		legendPanel.add(columnsLegendPanel);
-		
-		
-		JScrollPane legendScrollPane = new JScrollPane(legendPanel);
-		
-		return legendScrollPane;
+			
+		return new JScrollPane(legendPanel);
 	}
 
 	public void deleteTabs() throws Exception
