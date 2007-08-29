@@ -59,6 +59,8 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	
 	public void setCodeList(CodeList newCodeList)
 	{
+		//FIXME this has to go away, here only for dev purposes
+		newCodeList.add("Item");
 		codeList = newCodeList;
 	}
 	
