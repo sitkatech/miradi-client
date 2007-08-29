@@ -42,11 +42,11 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		if(cmd.getObjectType() != ViewData.getObjectType())
 			return;
 		
-		hiddenRowsChanged(cmd);
-		hiddenColumnsChanged(cmd);
+		rowConfigurationChanged(cmd);
+		columnConfigurationChanged(cmd);
 	}
 
-	private void hiddenColumnsChanged(CommandSetObjectData cmd)
+	private void columnConfigurationChanged(CommandSetObjectData cmd)
 	{
 		if(! cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES))
 			return;
@@ -62,7 +62,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		}
 	}
 
-	private void hiddenRowsChanged(CommandSetObjectData cmd)
+	private void rowConfigurationChanged(CommandSetObjectData cmd)
 	{
 		if(! cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES))
 			return;
