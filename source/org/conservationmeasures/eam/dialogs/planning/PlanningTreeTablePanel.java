@@ -40,7 +40,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 		if(cmd.getObjectType() != ViewData.getObjectType())
 			return;
-		if(!cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_TYPES))
+		if(!cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES))
 			return;
 		
 		getPlanningModel().rebuildEntireTree();

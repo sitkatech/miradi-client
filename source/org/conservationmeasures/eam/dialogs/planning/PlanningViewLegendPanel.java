@@ -51,7 +51,7 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 	
 	public void updateCheckBoxesFromProjectSettings()
 	{
-		CodeList hiddenTypes = getLegendSettings(ViewData.TAG_PLANNING_HIDDEN_TYPES);
+		CodeList hiddenTypes = getLegendSettings(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
 		selectAllCheckBoxs();
 		for (int i = 0; i < hiddenTypes.size(); ++i)
 		{
@@ -103,7 +103,7 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 	
 	public void actionPerformed(ActionEvent event)
 	{	
-		saveSettingsToProject(ViewData.TAG_PLANNING_HIDDEN_TYPES);
+		saveSettingsToProject(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
 	}
 	
 	protected JPanel createLegendButtonPanel(Actions actions)

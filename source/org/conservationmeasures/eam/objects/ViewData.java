@@ -150,7 +150,7 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_SORT_DIRECTION, currentSortDirecton);
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
-		addField(TAG_PLANNING_HIDDEN_TYPES, planningHiddenTypes);
+		addField(TAG_PLANNING_HIDDEN_ROW_TYPES, planningHiddenTypes);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
@@ -162,7 +162,8 @@ public class ViewData extends BaseObject
 	public static final String TAG_CURRENT_SORT_DIRECTION = "CurrentSortDirecton";
 	public static final String TAG_CURRENT_EXPANSION_LIST  = "CurrentExpansionList";
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
-	public static final String TAG_PLANNING_HIDDEN_TYPES = "PlanningHiddenTypes";
+	public static final String TAG_PLANNING_HIDDEN_ROW_TYPES = "PlanningHiddenRowTypes";
+	public static final String TAG_PLANNING_HIDDEN_COL_TYPES = "PlanningHiddenColumnTypes"; 
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
