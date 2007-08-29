@@ -5,16 +5,20 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
+import org.conservationmeasures.eam.dialogs.planning.PlanningViewColumsLegendPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewRowsLegendPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
+
+import com.jhlabs.awt.BasicGridLayout;
 
 public class PlanningView extends TabbedView
 {
@@ -32,16 +36,32 @@ public class PlanningView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
-		
-		PlanningViewRowsLegendPanel legendRowsPanel = new PlanningViewRowsLegendPanel(getMainWindow());		
-		JScrollPane legendScrollPane = new JScrollPane(legendRowsPanel);		
-		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
+		
+		JScrollPane legendScrollPane = createScrollabelLengedPanel();		
+		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		
 		horizontalSplitPane.setRightComponent(managementPanelScrollPane);
 		horizontalSplitPane.setLeftComponent(legendScrollPane);
 		horizontalSplitPane.setDividerLocation(100);
 		
 		addTab(EAM.text("Planning"), horizontalSplitPane);
+	}
+
+	private JScrollPane createScrollabelLengedPanel()
+	{
+		PlanningViewRowsLegendPanel rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
+		PlanningViewColumsLegendPanel columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
+		JPanel legendPanel = new JPanel(new BasicGridLayout(2, 1));
+		
+		legendPanel.add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
+		legendPanel.add(rowsLegendPanel);
+		legendPanel.add(columnsLegendPanel);
+		
+		
+		JScrollPane legendScrollPane = new JScrollPane(legendPanel);
+		
+		return legendScrollPane;
 	}
 
 	public void deleteTabs() throws Exception
