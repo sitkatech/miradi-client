@@ -76,6 +76,7 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		Indicator.TAG_PRIORITY, 
 		Indicator.PSEUDO_TAG_STATUS_VALUE, 
 		Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+		//FIXME planning the "when" pseudo field isn't right....should be based on task assignment date ranges, not inidicator measurement date
 		Indicator.TAG_MEASUREMENT_DATE,
 		Task.PSEUDO_TAG_TASK_TOTAL, };	
 }
