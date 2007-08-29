@@ -37,7 +37,7 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 	public void updateCheckBoxesFromProjectSettings()
 	{
 		CodeList hiddenTypes = getLegendSettings(getViewDataHiddenTypesTag());
-		selectAllCheckBoxs();
+		selectAllCheckBoxes();
 		for (int i = 0; i < hiddenTypes.size(); ++i)
 		{
 			String hiddenType = hiddenTypes.get(i);
@@ -50,7 +50,7 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 	{
 		setBorder(new EmptyBorder(5,5,5,5));
 		add(createLegendButtonPanel(mainWindow.getActions()));	
-		selectAllCheckBoxs();
+		selectAllCheckBoxes();
 		setMinimumSize(new Dimension(0,0));
 	}
 
