@@ -5,19 +5,15 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -36,7 +32,6 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.umbrella.LegendPanel;
-import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -74,23 +69,27 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 		createCheckBox(Task.ACTIVITY_NAME);
 		createCheckBox(Indicator.OBJECT_NAME);
 		createCheckBox(Task.METHOD_NAME);
-		createCheckBox(Task.OBJECT_NAME);	
+		createCheckBox(Task.OBJECT_NAME);
+		
+		createCheckBox(Indicator.TAG_MEASUREMENT_SUMMARY);
+		createCheckBox(Indicator.PSEUDO_TAG_METHODS); 
+		createCheckBox(Indicator.PSEUDO_TAG_FACTOR); 
+		createCheckBox(Indicator.TAG_PRIORITY);
+		createCheckBox(Indicator.PSEUDO_TAG_STATUS_VALUE);
+		createCheckBox(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		createCheckBox(Indicator.TAG_MEASUREMENT_DATE);
+		createCheckBox(Task.PSEUDO_TAG_TASK_TOTAL);
 	}
 
 	private void addAllComponents()
 	{
 		setBorder(new EmptyBorder(5,5,5,5));
-		UiLabel title = new PanelTitleLabel(EAM.text("Planning Legend"));
-		title.setFont(title.getFont().deriveFont(Font.BOLD));
-		title.setBorder(new LineBorder(Color.BLACK, 2));
-		title.setHorizontalAlignment(UiLabel.CENTER);
-		add(title);
-		
+		add(createTitleBar(EAM.text("Control Bar")));
 		add(createLegendButtonPanel(mainWindow.getActions()));	
 		selectAllCheckBoxs();
 		setMinimumSize(new Dimension(0,0));
 	}
-	
+
 	private void selectAllCheckBoxs()
 	{
 		Object[] keys = checkBoxes.keySet().toArray();
@@ -111,6 +110,7 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(0,3));
 		
+		addTitleBar(jPanel, EAM.text("Rows"));
 		addIconLineWithCheckBox(jPanel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jPanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(jPanel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
@@ -118,6 +118,10 @@ public class PlanningViewLegendPanel extends LegendPanel implements ActionListen
 		addIconLineWithCheckBox(jPanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
 		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.METHOD_NAME, new MethodIcon());
 		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon());
+		
+		//FIXME planning - add rest of checkboxes
+		addTitleBar(jPanel, EAM.text("Columns"));
+		addCheckBoxLine(jPanel, Indicator.TAG_MEASUREMENT_SUMMARY);
 		
 		return jPanel;
 	}

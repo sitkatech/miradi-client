@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +18,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -23,6 +26,7 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -97,7 +101,25 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 			findCheckBox(keys[i]).setSelected(false);
 		}
 	}
-
+	
+	protected UiLabel createTitleBar(String text)
+	{
+		UiLabel title = new PanelTitleLabel(text);
+		title.setFont(title.getFont().deriveFont(Font.BOLD));
+		title.setBorder(new LineBorder(Color.BLACK, 2));
+		title.setHorizontalAlignment(UiLabel.CENTER);
+		
+		return title;
+	}
+	
+	protected void addTitleBar(JPanel jPanel, String text)
+	{
+		UiLabel titleBar = createTitleBar(text);
+		jPanel.add(new JLabel(""));
+		jPanel.add(titleBar);
+		jPanel.add(new JLabel(""));
+	}
+	
 	protected void addIconLine(JPanel jpanel, String text, Icon icon, JComponent component)
 	{
 		jpanel.add(new JLabel(icon));
@@ -105,17 +127,22 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		jpanel.add(component);
 	}
 
-	protected JCheckBox createCheckBox(String objectName)
+	protected void createCheckBox(String objectName)
 	{
 		JCheckBox component = new PanelCheckBox();
 		checkBoxes.put(objectName, component);
 		
 		component.putClientProperty(LAYER, new String(objectName));
 		component.addActionListener(this);
-	
-		return component;
 	}
 
+	protected void addCheckBoxLine(JPanel jpanel, String objectName)
+	{
+		JCheckBox foundCheckBox = findCheckBox(objectName);
+		String foundLabel = EAM.fieldLabel(ObjectType.FAKE, objectName);
+		addIconLine(jpanel, foundLabel, null, foundCheckBox);
+	}
+	
 	protected void addIconLineWithoutCheckBox(JPanel jpanel, int objectType, String objectName, Icon icon)
 	{
 		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, new UiLabel(""));
