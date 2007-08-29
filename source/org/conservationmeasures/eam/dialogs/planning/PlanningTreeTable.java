@@ -5,13 +5,16 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTable;
-import javax.swing.JTree;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 
@@ -20,7 +23,6 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 	public PlanningTreeTable(Project projectToUse, PlanningTreeModel planningTreeModelToUse)
 	{
 		super(projectToUse, planningTreeModelToUse);
-		setShowGrid(true);
 		setTableColumnRenderer();
 	}
 	
@@ -37,15 +39,42 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 	
 	protected static class CustomRenderer extends DefaultTableCellRenderer
 	{
-		public CustomRenderer(JTree treeToUse)
+		public CustomRenderer(TreeTableCellRenderer treeToUse)
 		{
+			tree = treeToUse;
 		}
 		
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
 			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-			//FIXME planning - add cell coloring here
+			PlanningTreeModel model = (PlanningTreeModel) tree.getModel();
+			String columnTag = model.getColumnTag(column);
+			Color backgroundColor = getBackgroundColor(columnTag);
+			setBackground(backgroundColor);
+			setGrid();
+			
+			if (isSelected)
+				setBackground(table.getSelectionBackground());
+			
 			return component;
 		}
+
+		private void setGrid()
+		{
+			setBorder(BorderFactory.createMatteBorder(1, 1, 0, 0, Color.black));
+		}
+		
+		private Color getBackgroundColor(String columnTag)
+		{
+			if (columnTag.equals(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
+				return new Color(200, 200, 255);
+			
+			if (columnTag.equals(Indicator.PSEUDO_TAG_METHODS))
+				return new Color(200, 170, 250);
+				
+			return Color.white;
+		}
+
+		TreeTableCellRenderer tree;
 	}
 }
