@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
@@ -20,10 +21,15 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	{
 		super(new PlanningTreeNode(projectToUse, projectToUse.getMetadata().getRef()));
 		project = projectToUse;
-	
-		//FIXME  this has to be done antoher way
-		codeList = new CodeList();
-		codeList.add("Item");
+		rebuildCodeList();
+	}
+
+	public void rebuildCodeList() throws Exception
+	{
+		String codeListAsString = project.getCurrentViewData().getData(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);
+		CodeList storedList = new CodeList(codeListAsString);
+		codeList = new CodeList(columnTags);
+		codeList.subtract(storedList);
 	}
 
 	public int getColumnCount()
@@ -57,15 +63,10 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		return codeList;	
 	}
 	
-	public void setCodeList(CodeList newCodeList)
-	{
-		//FIXME this has to go away, here only for dev purposes
-		newCodeList.add("Item");
-		codeList = newCodeList;
-	}
-	
 	Project project;
 	CodeList codeList;
+	CodeList defaultCodeList;
+
 	public static final String[] columnTags = {
 		"Item", 
 		"Full Text", 

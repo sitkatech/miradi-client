@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ViewData;
-import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
 
 public class PlanningTreeTablePanel extends TreeTablePanel
@@ -19,7 +18,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{ 
 		PlanningTreeModel model = new PlanningTreeModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model);	
-
+		
 		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model);
 	}
 	
@@ -54,10 +53,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		
 		try
 		{
-			String codeListAsString = cmd.getDataValue();
-			CodeList codeList = new CodeList(codeListAsString);
-			getPlanningModel().setCodeList(codeList);
-			rebuildTree();
+			getPlanningModel().rebuildCodeList();	
+			tree.tableChanged(null);
 		}
 		catch (Exception e)
 		{
@@ -70,10 +67,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		if(! cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES))
 			return;
 		
-		rebuildTree();
+		rebuildEntireTree();
 	}
 	
-	private void rebuildTree()
+	private void rebuildEntireTree()
 	{
 		getPlanningModel().rebuildEntireTree();
 		restoreTreeExpansionState();

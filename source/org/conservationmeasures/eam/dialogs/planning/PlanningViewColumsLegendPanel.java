@@ -44,9 +44,15 @@ public class PlanningViewColumsLegendPanel extends PlanningViewLegendPanel
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(0,3));
 		
-		//FIXME planning - add rest of checkboxes
 		addTitleBar(jPanel, EAM.text("Columns"));
 		addCheckBoxLine(jPanel, Indicator.TAG_MEASUREMENT_SUMMARY);
+		addCheckBoxLine(jPanel, Indicator.PSEUDO_TAG_METHODS);
+		addCheckBoxLine(jPanel, Indicator.PSEUDO_TAG_FACTOR);
+		addCheckBoxLine(jPanel, Indicator.TAG_PRIORITY);	
+		addCheckBoxLine(jPanel, Indicator.PSEUDO_TAG_STATUS_VALUE);
+		addCheckBoxLine(jPanel, Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		addCheckBoxLine(jPanel, Indicator.TAG_MEASUREMENT_DATE);				
+		addCheckBoxLine(jPanel, Task.PSEUDO_TAG_TASK_TOTAL);
 		
 		return jPanel;
 	}
