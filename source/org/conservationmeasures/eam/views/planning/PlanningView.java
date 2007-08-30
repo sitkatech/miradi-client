@@ -57,7 +57,7 @@ public class PlanningView extends TabbedView
 
 	private JScrollPane createScrollableLegendPanel()
 	{
-		PlanningCustomizationPanel planningCustomizationPanel = new PlanningCustomizationPanel();
+		PlanningCustomizationPanel planningCustomizationPanel = new PlanningCustomizationPanel(getProject());
 		PlanningViewRowsLegendPanel rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
 		PlanningViewColumsLegendPanel columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
 		JPanel legendPanel = new JPanel(new BasicGridLayout(2, 1));
