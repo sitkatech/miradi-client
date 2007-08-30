@@ -225,7 +225,38 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
 			return getAppendedResourceNames();
 		
+		if (fieldTag.equals(PSEUDO_TAG_COMBINED_EFFORT_DATES))
+			return getCombinedEffortDates();
+		
 		return super.getPseudoData(fieldTag);
+	}
+
+	private String getCombinedEffortDates()
+	{
+		try
+		{
+			return combineEffortListDateRanges(); 
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		} 
+	}
+
+	private String combineEffortListDateRanges() throws Exception
+	{
+		for (int i = 0; i < assignmentIds.size(); ++i)
+		{
+//			FIXME planning - uncomment and finish this method
+ 			//Assignment assignment = (Assignment) objectManager.findObject(Assignment.getObjectType(), assignmentIds.get(i));
+			//DateRangeEffortList effortList = assignment.getDetails();
+			//DateRange dateRange = effortList.getCombinedDateRange();
+			
+			//combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
+		}
+		
+		return "";
 	}
 
 	public String getAppendedResourceNames()
@@ -327,6 +358,7 @@ public class Task extends BaseObject
 		taskTotal = new PseudoStringData(PSEUDO_TAG_TASK_TOTAL);
 		taskCost = new PseudoStringData(PSEUDO_TAG_TASK_COST);
 		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
@@ -336,6 +368,7 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_TASK_TOTAL, taskTotal);
 		addField(PSEUDO_TAG_TASK_COST, taskCost);
 		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
+		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
 	}
 
 	
@@ -346,6 +379,7 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_SUBTASK_TOTAL = "SubtaskTotal";
 	public final static String PSEUDO_TAG_TASK_TOTAL = "TaskTotal";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
+	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	
 	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
 	
@@ -361,4 +395,5 @@ public class Task extends BaseObject
 	PseudoStringData taskTotal;
 	PseudoStringData taskCost;
 	PseudoStringData who;
+	PseudoStringData when;
 }
