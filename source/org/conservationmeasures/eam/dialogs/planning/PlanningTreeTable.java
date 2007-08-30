@@ -23,11 +23,12 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 	public PlanningTreeTable(Project projectToUse, PlanningTreeModel planningTreeModelToUse)
 	{
 		super(projectToUse, planningTreeModelToUse);
-		rebuild();
+		setTableColumnRenderer();
 	}
 
-	public void rebuild()
+	public void rebuildTableCompletely()
 	{
+		super.rebuildTableCompletely();
 		setTableColumnRenderer();
 	}
 	

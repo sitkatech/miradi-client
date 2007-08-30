@@ -127,6 +127,12 @@ public class DateRange
 	
 	public static DateRange combine(DateRange range1, DateRange range2) throws Exception
 	{
+		if (range1 == null)
+			return range2;
+		
+		if (range2 == null)
+			return range1;
+			
 		MultiCalendar combinedStartDate;
 		if (range1.getStartDate().before(range2.getStartDate()))
 			combinedStartDate = range1.getStartDate();
