@@ -42,7 +42,7 @@ public class PlanningCustomizationPanel extends JPanel
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(3, 2));
 		ButtonGroup buttonGroup = new ButtonGroup();
-		StratigicButtonHandler strategicHandler = new StratigicButtonHandler();
+		StrategicButtonHandler strategicHandler = new StrategicButtonHandler();
 		addRadioButton(jPanel, buttonGroup, strategicHandler, EAM.text("Strategic Plan"), STRATEGIC_VIEW);
 		
 		MonitoringButtonHandler monitoringHandler = new MonitoringButtonHandler();
@@ -86,7 +86,7 @@ public class PlanningCustomizationPanel extends JPanel
 		saveData(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, masterCodeList);
 	}
 	
-	public class StratigicButtonHandler implements ActionListener
+	public class StrategicButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
 		{
@@ -147,7 +147,7 @@ public class PlanningCustomizationPanel extends JPanel
 	
 	private static final String CANNED_VIEW_NAME = "cannedViewName";
 	
-	private static final String STRATEGIC_VIEW = "StratigicView";
+	private static final String STRATEGIC_VIEW = "StrategicView";
 	private static final String MONITORING_VIEW = "MonitoringView";
 	private static final String WORKPLAN_VIEW = "WorkPlanView";
 }
