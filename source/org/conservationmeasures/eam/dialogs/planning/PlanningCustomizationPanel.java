@@ -42,14 +42,9 @@ public class PlanningCustomizationPanel extends JPanel
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(3, 2));
 		ButtonGroup buttonGroup = new ButtonGroup();
-		StrategicButtonHandler strategicHandler = new StrategicButtonHandler();
-		addRadioButton(jPanel, buttonGroup, strategicHandler, EAM.text("Strategic Plan"), STRATEGIC_VIEW);
-		
-		MonitoringButtonHandler monitoringHandler = new MonitoringButtonHandler();
-		addRadioButton(jPanel, buttonGroup, monitoringHandler, EAM.text("Monitoring Plan"), MONITORING_VIEW);
-		
-		WorkPlanButtonHandler workPlanHandler = new WorkPlanButtonHandler();
-		addRadioButton(jPanel, buttonGroup, workPlanHandler, EAM.text("Work Plan"), WORKPLAN_VIEW);
+		addRadioButton(jPanel, buttonGroup, new StrategicButtonHandler(), EAM.text("Strategic Plan"), STRATEGIC_VIEW);
+		addRadioButton(jPanel, buttonGroup, new MonitoringButtonHandler(), EAM.text("Monitoring Plan"), MONITORING_VIEW);
+		addRadioButton(jPanel, buttonGroup, new WorkPlanButtonHandler(), EAM.text("Work Plan"), WORKPLAN_VIEW);
 		
 		add(jPanel);
 	}
