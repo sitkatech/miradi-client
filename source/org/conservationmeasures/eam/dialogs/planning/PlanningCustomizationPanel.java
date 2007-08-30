@@ -42,9 +42,9 @@ public class PlanningCustomizationPanel extends JPanel
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(3, 2));
 		ButtonGroup buttonGroup = new ButtonGroup();
-		addRadioButton(jPanel, buttonGroup, new StrategicButtonHandler(), EAM.text("Strategic Plan"), STRATEGIC_VIEW);
-		addRadioButton(jPanel, buttonGroup, new MonitoringButtonHandler(), EAM.text("Monitoring Plan"), MONITORING_VIEW);
-		addRadioButton(jPanel, buttonGroup, new WorkPlanButtonHandler(), EAM.text("Work Plan"), WORKPLAN_VIEW);
+		addRadioButton(jPanel, buttonGroup, new StrategicButtonHandler(), EAM.text("Strategic Plan"), STRATEGIC_PLAN);
+		addRadioButton(jPanel, buttonGroup, new MonitoringButtonHandler(), EAM.text("Monitoring Plan"), MONITORING_PLAN);
+		addRadioButton(jPanel, buttonGroup, new WorkPlanButtonHandler(), EAM.text("Work Plan"), WORKPLAN_PLAN);
 		
 		add(jPanel);
 	}
@@ -142,7 +142,7 @@ public class PlanningCustomizationPanel extends JPanel
 	
 	private static final String TAG_PREDEFINED_CONFIGURATION = "PredefinedConfuration";
 	
-	private static final String STRATEGIC_VIEW = "StrategicView";
-	private static final String MONITORING_VIEW = "MonitoringView";
-	private static final String WORKPLAN_VIEW = "WorkPlanView";
+	private static final String STRATEGIC_PLAN = "StrategicPlan";
+	private static final String MONITORING_PLAN = "MonitoringPlan";
+	private static final String WORKPLAN_PLAN = "WorkPlanPlan";
 }
