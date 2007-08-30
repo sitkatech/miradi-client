@@ -55,6 +55,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		{
 			getPlanningModel().rebuildCodeList();
 			tree.rebuildTableCompletely();
+			((PlanningTreeTable) tree).rebuild();
 		}
 		catch (Exception e)
 		{
