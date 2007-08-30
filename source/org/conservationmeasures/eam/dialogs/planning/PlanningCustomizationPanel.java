@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -15,7 +18,7 @@ import org.conservationmeasures.eam.main.EAM;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class PlanningCustomizationPanel extends JPanel
+public class PlanningCustomizationPanel extends JPanel implements ActionListener
 {
 	public PlanningCustomizationPanel()
 	{
@@ -27,25 +30,25 @@ public class PlanningCustomizationPanel extends JPanel
 	protected void createLegendButtonPanel()
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(3, 2));
-		
-		JRadioButton strategicViewRadioButton = new JRadioButton();
-		JRadioButton monitoringViewRadioButton = new JRadioButton();
-		JRadioButton workViewRadioButton = new JRadioButton();
-		
 		ButtonGroup buttonGroup = new ButtonGroup();
-		buttonGroup.add(strategicViewRadioButton);
-		buttonGroup.add(monitoringViewRadioButton);
-		buttonGroup.add(workViewRadioButton);
-		
-		jPanel.add(new JLabel(EAM.text("Strategic Plan")));
-		jPanel.add(strategicViewRadioButton);
-		
-		jPanel.add(new JLabel(EAM.text("Monitoring Plan")));
-		jPanel.add(monitoringViewRadioButton);
-		
-		jPanel.add(new JLabel(EAM.text("Work Plan")));
-		jPanel.add(workViewRadioButton);
+		addRadioButton(jPanel, buttonGroup, EAM.text("Strategic Plan"));
+		addRadioButton(jPanel, buttonGroup, EAM.text("Monitoring Plan"));
+		addRadioButton(jPanel, buttonGroup, EAM.text("Work Plan"));
 		
 		add(jPanel);
+	}
+
+	private void addRadioButton(JPanel jPanel, ButtonGroup buttonGroup, String buttonName)
+	{
+		JRadioButton radioButton = new JRadioButton();
+		buttonGroup.add(radioButton);
+		
+		jPanel.add(new JLabel(buttonName));
+		jPanel.add(radioButton);
+	}
+
+	public void actionPerformed(ActionEvent e)
+	{
+		
 	}
 }
