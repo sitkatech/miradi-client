@@ -16,10 +16,12 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
@@ -246,17 +248,21 @@ public class Task extends BaseObject
 
 	private String combineEffortListDateRanges() throws Exception
 	{
-		for (int i = 0; i < assignmentIds.size(); ++i)
+		if (assignmentIds.size() == 0)
+			return "";
+		
+		Assignment firstAssignment = (Assignment) objectManager.findObject(Assignment.getObjectType(), assignmentIds.get(0));
+		DateRangeEffortList firstEffortList = firstAssignment.getDetails();
+		DateRange combinedDateRange = firstEffortList.getCombinedDateRange();
+		for (int i = 1; i < assignmentIds.size(); ++i)
 		{
-//			FIXME planning - uncomment and finish this method
- 			//Assignment assignment = (Assignment) objectManager.findObject(Assignment.getObjectType(), assignmentIds.get(i));
-			//DateRangeEffortList effortList = assignment.getDetails();
-			//DateRange dateRange = effortList.getCombinedDateRange();
-			
-			//combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
+ 			Assignment assignment = (Assignment) objectManager.findObject(Assignment.getObjectType(), assignmentIds.get(i));
+			DateRangeEffortList effortList = assignment.getDetails();
+			DateRange dateRange = effortList.getCombinedDateRange();
+			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
 		}
 		
-		return "";
+		return combinedDateRange.toString();
 	}
 
 	public String getAppendedResourceNames()
