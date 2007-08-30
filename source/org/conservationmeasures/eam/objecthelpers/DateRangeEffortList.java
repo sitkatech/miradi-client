@@ -39,6 +39,24 @@ public class DateRangeEffortList
 		data = new Vector(listToUse);
 	}
 	
+	public DateRange getCombinedDateRange() throws Exception
+	{
+		if (data.size() == 0)
+			return null;
+		
+		DateRangeEffort firstDateRangeEffort = (DateRangeEffort)data.get(0);
+		DateRange combinedDateRange = firstDateRangeEffort.getDateRange(); 
+		final int SECOND_INDEX = 1;
+		for (int i = SECOND_INDEX; i < data.size(); ++i)
+		{
+			DateRangeEffort dateRangeEffort = (DateRangeEffort)data.get(i);
+			DateRange dateRange = dateRangeEffort.getDateRange();
+			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
+		}
+		
+		return combinedDateRange;
+	}
+	
 	public DateRangeEffort getEffortForDateRange(DateRange dateRangeToUse)
 	{
 		for (int i = 0; i < data.size(); i++)

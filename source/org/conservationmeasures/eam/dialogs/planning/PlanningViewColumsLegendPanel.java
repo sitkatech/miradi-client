@@ -36,7 +36,7 @@ public class PlanningViewColumsLegendPanel extends PlanningViewLegendPanel
 		createCheckBox(Indicator.TAG_PRIORITY);
 		createCheckBox(Indicator.PSEUDO_TAG_STATUS_VALUE);
 		createCheckBox(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		createCheckBox(Indicator.TAG_MEASUREMENT_DATE);
+		createCheckBox(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		createCheckBox(Task.PSEUDO_TAG_TASK_TOTAL);
 	}
 		
@@ -51,7 +51,7 @@ public class PlanningViewColumsLegendPanel extends PlanningViewLegendPanel
 		addCheckBoxLine(jPanel, Indicator.TAG_PRIORITY);	
 		addCheckBoxLine(jPanel, Indicator.PSEUDO_TAG_STATUS_VALUE);
 		addCheckBoxLine(jPanel, Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		addCheckBoxLine(jPanel, Indicator.TAG_MEASUREMENT_DATE);				
+		addCheckBoxLine(jPanel, Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);				
 		addCheckBoxLine(jPanel, Task.PSEUDO_TAG_TASK_TOTAL);
 		
 		return jPanel;

@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.diagram.cells.TestDiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.TestLinkCell;
 import org.conservationmeasures.eam.ids.TestIdList;
 import org.conservationmeasures.eam.objectdata.TestDateData;
+import org.conservationmeasures.eam.objecthelpers.TestDateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.TestMapList;
 import org.conservationmeasures.eam.objecthelpers.TestORef;
 import org.conservationmeasures.eam.objecthelpers.TestORefList;
@@ -203,6 +204,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestMapList.class));
 		suite.addTest(new TestSuite(TestORef.class));
 		suite.addTest(new TestSuite(TestObjectDeepCopier.class));
+		suite.addTest(new TestSuite(TestDateRangeEffortList.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestActivityInsertionPoint.class));
