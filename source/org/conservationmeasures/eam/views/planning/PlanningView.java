@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.dialogs.planning.PlanningCustomizationPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewColumsLegendPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewRowsLegendPanel;
@@ -50,11 +51,13 @@ public class PlanningView extends TabbedView
 
 	private JScrollPane createScrollableLegendPanel()
 	{
+		PlanningCustomizationPanel planningCustomizationPanel = new PlanningCustomizationPanel();
 		PlanningViewRowsLegendPanel rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
 		PlanningViewColumsLegendPanel columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
 		JPanel legendPanel = new JPanel(new BasicGridLayout(2, 1));
 		
 		legendPanel.add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
+		legendPanel.add(planningCustomizationPanel);
 		legendPanel.add(rowsLegendPanel);
 		legendPanel.add(columnsLegendPanel);
 			
