@@ -54,7 +54,7 @@ public class PlanningCustomizationPanel extends JPanel
 		JRadioButton radioButton = new JRadioButton();
 		buttonGroup.add(radioButton);
 		
-		radioButton.putClientProperty(CANNED_VIEW_NAME, propertyName);
+		radioButton.putClientProperty(TAG_PREDEFINED_CONFIGURATION, propertyName);
 		radioButton.addActionListener(handler);
 		jPanel.add(new JLabel(buttonName));
 		jPanel.add(radioButton);
@@ -140,7 +140,7 @@ public class PlanningCustomizationPanel extends JPanel
 	
 	private Project project;
 	
-	private static final String CANNED_VIEW_NAME = "cannedViewName";
+	private static final String TAG_PREDEFINED_CONFIGURATION = "PredefinedConfuration";
 	
 	private static final String STRATEGIC_VIEW = "StrategicView";
 	private static final String MONITORING_VIEW = "MonitoringView";
