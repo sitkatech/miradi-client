@@ -251,10 +251,8 @@ public class Task extends BaseObject
 		if (assignmentIds.size() == 0)
 			return "";
 		
-		Assignment firstAssignment = (Assignment) objectManager.findObject(Assignment.getObjectType(), assignmentIds.get(0));
-		DateRangeEffortList firstEffortList = firstAssignment.getDetails();
-		DateRange combinedDateRange = firstEffortList.getCombinedDateRange();
-		for (int i = 1; i < assignmentIds.size(); ++i)
+		DateRange combinedDateRange = null;
+		for (int i = 0; i < assignmentIds.size(); ++i)
 		{
  			Assignment assignment = (Assignment) objectManager.findObject(Assignment.getObjectType(), assignmentIds.get(i));
 			DateRangeEffortList effortList = assignment.getDetails();
