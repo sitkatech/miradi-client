@@ -220,19 +220,29 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		return configurationComponents.get(property);
 	}
 	
-	//TODO planning - Try to simplify the method signature and improve the name
-	private void saveCodeList(CodeList masterCodeList, CodeList rowsToShow, String dataTagToHide, String radioName)
+	private void saveCodeList(CodeList codeListToSave, String dataTagToHide, String radioName)
 	{
 		try
-		{
-			masterCodeList.subtract(rowsToShow);
+		{	
 			saveConfigeration(ViewData.TAG_PLANNING_CONFIGERATION_CHOICE, radioName);
-			saveConfigeration(dataTagToHide, masterCodeList.toString());
+			saveConfigeration(dataTagToHide, codeListToSave.toString());
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	private void saveVisibleRowList(CodeList masterCodeList, CodeList rowsToShow, String dataTagToHide, String radioName)
+	{
+		masterCodeList.subtract(rowsToShow);
+		saveCodeList(masterCodeList, dataTagToHide, radioName);
+	}
+	
+	private void saveVisibleColumnList(CodeList masterCodeList, CodeList columnsToShow, String dataTagToHide, String radioName)
+	{
+		masterCodeList.subtract(columnsToShow);
+		saveCodeList(masterCodeList, dataTagToHide, radioName);
 	}
 	
 	public HashMap getPreConfiguredButtonNames()
@@ -253,8 +263,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			saveCodeList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
-			saveCodeList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
+			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
+			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
 		}
 		
 		private CodeList getRowListToShow()
@@ -272,8 +282,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			saveCodeList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.MONITORING_PLAN_RADIO_CHOICE);
-			saveCodeList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.MONITORING_PLAN_RADIO_CHOICE);
+			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.MONITORING_PLAN_RADIO_CHOICE);
+			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.MONITORING_PLAN_RADIO_CHOICE);
 		}
 		
 		private CodeList getRowListToShow()
@@ -291,8 +301,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{			
-			saveCodeList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
-			saveCodeList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
+			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
+			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
 		}
 		
 		private CodeList getRowListToShow()
@@ -312,8 +322,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{			
-			saveCodeList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
-			saveCodeList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
+			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
+			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
 			
 			JComboBox checkBox = (JComboBox) e.getSource();
 			ComboBoxButton comboChoice = (ComboBoxButton) checkBox.getSelectedItem();
