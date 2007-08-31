@@ -57,9 +57,9 @@ public class PlanningView extends TabbedView
 
 	private JScrollPane createScrollableLegendPanel()
 	{
-		PlanningCustomizationPanel planningCustomizationPanel = new PlanningCustomizationPanel(getProject());
-		PlanningViewRowsLegendPanel rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
-		PlanningViewColumsLegendPanel columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
+		planningCustomizationPanel = new PlanningCustomizationPanel(getProject());
+		rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
+		columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
 		JPanel legendPanel = new JPanel(new BasicGridLayout(2, 1));
 		
 		legendPanel.add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
@@ -74,6 +74,9 @@ public class PlanningView extends TabbedView
 	{
 		planningManagementPanel.dispose();
 		planningManagementPanel = null;
+		
+		getProject().removeCommandExecutedListener(rowsLegendPanel);
+		getProject().removeCommandExecutedListener(columnsLegendPanel);
 	}
 
 	public String cardName()
@@ -106,4 +109,7 @@ public class PlanningView extends TabbedView
 	}
 	
 	PlanningTreeManagementPanel planningManagementPanel;
+	PlanningViewRowsLegendPanel rowsLegendPanel;
+	PlanningCustomizationPanel planningCustomizationPanel;
+	PlanningViewColumsLegendPanel columnsLegendPanel;
 }
