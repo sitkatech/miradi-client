@@ -41,7 +41,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		super();
 		project = projectToUse;
-		radioButtons = new Hashtable();
+		radioButtons = new Hashtable<String, Component>();
 		createLegendButtonPanel();
 		setBorder(BorderFactory.createTitledBorder(EAM.text("Standard Views")));
 	}
@@ -50,30 +50,43 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(3, 2));
 		ButtonGroup buttonGroup = new ButtonGroup();
-		addRadioButton(jPanel, buttonGroup, new StrategicButtonHandler(), EAM.text("Strategic Plan"), PlanningView.STRATEGIC_PLAN);
-		addRadioButton(jPanel, buttonGroup, new MonitoringButtonHandler(), EAM.text("Monitoring Plan"), PlanningView.MONITORING_PLAN);
-		addRadioButton(jPanel, buttonGroup, new WorkPlanButtonHandler(), EAM.text("Work Plan"), PlanningView.WORKPLAN_PLAN);
+		
+		JRadioButton stratRadio = createRadioButton(buttonGroup, new StrategicButtonHandler(), PlanningView.STRATEGIC_PLAN);
+		addLabeledRadioButton(jPanel, stratRadio, EAM.text("Strategic Plan"));
+		
+		JRadioButton monRadio = createRadioButton(buttonGroup, new MonitoringButtonHandler(), PlanningView.MONITORING_PLAN);
+		addLabeledRadioButton(jPanel, monRadio, EAM.text("Monitoring Plan"));
+		
+		JRadioButton workRadio = createRadioButton(buttonGroup, new WorkPlanButtonHandler(), PlanningView.WORKPLAN_PLAN);
+		addLabeledRadioButton(jPanel, workRadio, EAM.text("Work Plan"));
 		
 		add(jPanel);
+		selectRadioButton(PlanningView.STRATEGIC_PLAN);
 	}
-
-	private void addRadioButton(JPanel jPanel, ButtonGroup buttonGroup, ActionListener handler, String buttonName, String propertyName)
+	
+	private JRadioButton createRadioButton(ButtonGroup buttonGroup, ActionListener handler, String propertyName)
 	{
 		JRadioButton radioButton = new JRadioButton();
 		buttonGroup.add(radioButton);
 		
 		radioButton.putClientProperty(TAG_PREDEFINED_CONFIGURATION, propertyName);
 		radioButton.addActionListener(handler);
-		jPanel.add(new JLabel(buttonName));
-		jPanel.add(radioButton);
 		radioButtons.put(propertyName, radioButton);
-		selectRadioButton(radioButton, propertyName);
+		
+		return radioButton;
 	}
 	
-	private void selectRadioButton(JRadioButton radioButton, String propertyName)
+	private void addLabeledRadioButton(JPanel jPanel, JRadioButton radioButton, String buttonName)
+	{
+		jPanel.add(new JLabel(buttonName));
+		jPanel.add(radioButton);
+	}
+	
+	private void selectRadioButton(String propertyName)
 	{
 		try
 		{
+			JRadioButton radioButton = findRadionButton(propertyName);
 			ViewData viewData = project.getCurrentViewData();
 			String selectedRadionName = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
 			if (!propertyName.equals(selectedRadionName))
