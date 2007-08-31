@@ -35,14 +35,14 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
-		JPanel jPanel = new JPanel(new GridLayoutPlus(0,3));
-		addTitleBar(jPanel, EAM.text("Columns"));
+		JPanel panel = new JPanel(new GridLayoutPlus(0,3));
+		addTitleBar(panel, EAM.text("Columns"));
 		CodeList masterList = PlanningView.getMasterColumnList();
 		for (int i = 0; i < masterList.size(); ++i)
 		{
-			addCheckBoxLine(jPanel, masterList.get(i));
+			addCheckBoxLine(panel, masterList.get(i));
 		}
 		
-		return jPanel;
+		return panel;
 	}
 }

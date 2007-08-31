@@ -47,17 +47,17 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 	
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
-		JPanel jPanel = new JPanel(new GridLayoutPlus(0,3));
+		JPanel panel = new JPanel(new GridLayoutPlus(0,3));
 		
-		addTitleBar(jPanel, EAM.text("Rows"));
-		addIconLineWithCheckBox(jPanel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
-		addIconLineWithCheckBox(jPanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
-		addIconLineWithCheckBox(jPanel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
-		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon());
-		addIconLineWithCheckBox(jPanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
-		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.METHOD_NAME, new MethodIcon());
-		addIconLineWithCheckBox(jPanel, Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon());
+		addTitleBar(panel, EAM.text("Rows"));
+		addIconLineWithCheckBox(panel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
+		addIconLineWithCheckBox(panel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
+		addIconLineWithCheckBox(panel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
+		addIconLineWithCheckBox(panel, Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon());
+		addIconLineWithCheckBox(panel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
+		addIconLineWithCheckBox(panel, Task.getObjectType(), Task.METHOD_NAME, new MethodIcon());
+		addIconLineWithCheckBox(panel, Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon());
 		
-		return jPanel;
+		return panel;
 	}
 }

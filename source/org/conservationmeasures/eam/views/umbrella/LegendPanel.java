@@ -132,19 +132,19 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		return title;
 	}
 	
-	protected void addTitleBar(JPanel jPanel, String text)
+	protected void addTitleBar(JPanel panel, String text)
 	{
 		UiLabel titleBar = createTitleBar(text);
-		jPanel.add(new JLabel(""));
-		jPanel.add(titleBar);
-		jPanel.add(new JLabel(""));
+		panel.add(new JLabel(""));
+		panel.add(titleBar);
+		panel.add(new JLabel(""));
 	}
 	
-	protected void addIconLine(JPanel jpanel, String text, Icon icon, JComponent component)
+	protected void addIconLine(JPanel panel, String text, Icon icon, JComponent component)
 	{
-		jpanel.add(new JLabel(icon));
-		jpanel.add(new PanelTitleLabel(EAM.text(text)));
-		jpanel.add(component);
+		panel.add(new JLabel(icon));
+		panel.add(new PanelTitleLabel(EAM.text(text)));
+		panel.add(component);
 	}
 
 	protected void createCheckBox(String objectName)
@@ -156,39 +156,39 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		component.addActionListener(this);
 	}
 
-	protected void addCheckBoxLine(JPanel jpanel, String objectName)
+	protected void addCheckBoxLine(JPanel panel, String objectName)
 	{
 		JCheckBox foundCheckBox = findCheckBox(objectName);
 		String foundLabel = EAM.fieldLabel(ObjectType.FAKE, objectName);
-		addIconLine(jpanel, foundLabel, null, foundCheckBox);
+		addIconLine(panel, foundLabel, null, foundCheckBox);
 	}
 	
-	protected void addIconLineWithoutCheckBox(JPanel jpanel, int objectType, String objectName, Icon icon)
+	protected void addIconLineWithoutCheckBox(JPanel panel, int objectType, String objectName, Icon icon)
 	{
-		addIconLine(jpanel, EAM.fieldLabel(objectType, objectName), icon, new UiLabel(""));
+		addIconLine(panel, EAM.fieldLabel(objectType, objectName), icon, new UiLabel(""));
 	}
 
-	protected void addIconLineWithCheckBox(JPanel jpanel, int objectType, String objectName, Icon icon)
+	protected void addIconLineWithCheckBox(JPanel panel, int objectType, String objectName, Icon icon)
 	{
 		JCheckBox foundCheckBox = findCheckBox(objectName);
 		String foundLabel = EAM.fieldLabel(objectType, objectName);
-		addIconLine(jpanel, foundLabel, icon, foundCheckBox);
+		addIconLine(panel, foundLabel, icon, foundCheckBox);
 	}
 
-	protected void addButtonLineWithCheckBox(JPanel jpanel, int objectType, String objectName, EAMAction action)
+	protected void addButtonLineWithCheckBox(JPanel panel, int objectType, String objectName, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
-		jpanel.add(button);
-		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		jpanel.add(findCheckBox(objectName));
+		panel.add(button);
+		panel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
+		panel.add(findCheckBox(objectName));
 	}
 
-	protected void addButtonLineWithoutCheckBox(JPanel jpanel, int objectType, String objectName, EAMAction action)
+	protected void addButtonLineWithoutCheckBox(JPanel panel, int objectType, String objectName, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
-		jpanel.add(button);
-		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		jpanel.add(new UiLabel(""));
+		panel.add(button);
+		panel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
+		panel.add(new UiLabel(""));
 	}
 	
 	protected static class LocationButton extends PanelButton implements LocationHolder

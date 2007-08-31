@@ -55,24 +55,24 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	
 	protected void createLegendButtonPanel()
 	{
-		JPanel jPanel = new JPanel(new GridLayoutPlus(3, 2));
+		JPanel panel = new JPanel(new GridLayoutPlus(3, 2));
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
 		JRadioButton stratRadio = createRadioButton(buttonGroup, new StrategicButtonHandler(), PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
-		addLabeledRadioButton(jPanel, stratRadio, EAM.text("Strategic Plan"));
+		addLabeledRadioButton(panel, stratRadio, EAM.text("Strategic Plan"));
 		
 		JRadioButton monRadio = createRadioButton(buttonGroup, new MonitoringButtonHandler(), PlanningView.MONITORING_PLAN_RADIO_CHOICE);
-		addLabeledRadioButton(jPanel, monRadio, EAM.text("Monitoring Plan"));
+		addLabeledRadioButton(panel, monRadio, EAM.text("Monitoring Plan"));
 		
 		JRadioButton workRadio = createRadioButton(buttonGroup, new WorkPlanButtonHandler(), PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
-		addLabeledRadioButton(jPanel, workRadio, EAM.text("Work Plan"));
+		addLabeledRadioButton(panel, workRadio, EAM.text("Work Plan"));
 		
 		JRadioButton singleObjectRadio = createRadioButton(buttonGroup, new PreConfiguredButtonHandler(), PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
 		Object[] singleObjectComboBox = getPreConfiguredButtonNames().values().toArray();
 		JComboBox cannedComboBox = createComboBox(singleObjectComboBox, new PreConfiguredButtonHandler(), PlanningView.PRE_CONFIGURED_COMBO);
-		addDropDownRadioButton(jPanel, singleObjectRadio, cannedComboBox);
+		addDropDownRadioButton(panel, singleObjectRadio, cannedComboBox);
 		
-		add(jPanel);
+		add(panel);
 		selectRadioButton();
 		selectCheckBoxItem();
 	}
@@ -98,16 +98,16 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		return radioButton;
 	}
 	
-	private void addDropDownRadioButton(JPanel jPanel, JRadioButton radioButton, JComboBox comboBox)
+	private void addDropDownRadioButton(JPanel panel, JRadioButton radioButton, JComboBox comboBox)
 	{
-		jPanel.add(comboBox);
-		jPanel.add(radioButton);
+		panel.add(comboBox);
+		panel.add(radioButton);
 	}
 	
-	private void addLabeledRadioButton(JPanel jPanel, JRadioButton radioButton, String buttonName)
+	private void addLabeledRadioButton(JPanel panel, JRadioButton radioButton, String buttonName)
 	{
-		jPanel.add(new JLabel(buttonName));
-		jPanel.add(radioButton);
+		panel.add(new JLabel(buttonName));
+		panel.add(radioButton);
 	}
 	
 	private void selectCheckBoxItem()
