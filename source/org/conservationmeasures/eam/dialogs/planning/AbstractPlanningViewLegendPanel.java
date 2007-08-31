@@ -28,9 +28,9 @@ import org.conservationmeasures.eam.views.umbrella.LegendPanel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-abstract public class PlanningViewLegendPanel extends LegendPanel implements ActionListener, CommandExecutedListener
+abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implements ActionListener, CommandExecutedListener
 {
-	public PlanningViewLegendPanel(MainWindow mainWindowToUse)
+	public AbstractPlanningViewLegendPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse.getProject(), new BasicGridLayout(0, 1));
 		mainWindow = mainWindowToUse;
