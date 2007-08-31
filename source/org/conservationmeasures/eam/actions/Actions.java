@@ -294,6 +294,7 @@ public class Actions
 		registerAction(new ActionCreateConceptualModel(mainWindow));
 		registerAction(new ActionDeleteConceptualModel(mainWindow));
 		registerAction(new ActionCreatePlanningViewConfigeration(mainWindow));
+		registerAction(new ActionDeletePlanningViewConfigeration(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
