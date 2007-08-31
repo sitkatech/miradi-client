@@ -38,7 +38,10 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 
 		project.addCommandExecutedListener(this);
 		createCheckBoxes();
-		addAllComponents();
+		setBorder(new EmptyBorder(5,5,5,5));
+		add(createLegendButtonPanel(mainWindow.getActions()));	
+		selectAllCheckBoxes();
+		setMinimumSize(new Dimension(0,0));
 		updateCheckBoxesFromProjectSettings();
 		updateEnabledStateFromProject();
 	}
@@ -49,7 +52,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	}
 	
 	protected void createCheckBoxes()
-	{
+	{	
 		CodeList masterList = getMasterListToCreateCheckBoxesFrom();
 		for (int i = 0; i < masterList.size(); ++i)
 		{
@@ -103,14 +106,6 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			return true;
 		
 		return false;
-	}
-
-	private void addAllComponents()
-	{
-		setBorder(new EmptyBorder(5,5,5,5));
-		add(createLegendButtonPanel(mainWindow.getActions()));	
-		selectAllCheckBoxes();
-		setMinimumSize(new Dimension(0,0));
 	}
 
 	public void actionPerformed(ActionEvent event)
