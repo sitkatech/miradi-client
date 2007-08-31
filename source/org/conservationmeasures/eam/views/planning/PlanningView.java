@@ -10,6 +10,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfigeration;
+import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfigeration;
 import org.conservationmeasures.eam.dialogs.planning.PlanningCustomizationPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewColumsLegendPanel;
@@ -32,6 +34,7 @@ public class PlanningView extends TabbedView
 	public PlanningView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
+		addPlanningViewDoersToMap();
 	}
 
 	public void becomeActive() throws Exception
@@ -93,6 +96,12 @@ public class PlanningView extends TabbedView
 	public JToolBar createToolBar()
 	{
 		return new PlanningToolBar(getActions());
+	}
+	
+	private void addPlanningViewDoersToMap()
+	{
+		addDoerToMap(ActionCreatePlanningViewConfigeration.class, new CreatePlanningViewConfigerationDoer());
+		addDoerToMap(ActionDeletePlanningViewConfigeration.class, new DeletePlanningViewConfigerationDoer());
 	}
 	
 	static public CodeList getMasterRowList()
