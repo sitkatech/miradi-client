@@ -318,6 +318,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		}
 	}
 	
+	
+	//FIXME planning - split this up into two one for radio and one for combo
 	public class PreConfiguredButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
