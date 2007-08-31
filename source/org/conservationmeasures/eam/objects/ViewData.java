@@ -141,7 +141,9 @@ public class ViewData extends BaseObject
 		diagramHiddenTypes = new CodeListData();
 		planningHiddenRowTypes = new CodeListData();
 		planningHiddenColumnTypes = new CodeListData();
-		PlanningRadionChoiceName = new StringData();
+		planningRadionChoiceName = new StringData();
+		planningDropDownChoice = new StringData();
+		planningCustomizedChoice = new ORefData();
 		
 		addField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
 		addField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
@@ -154,7 +156,9 @@ public class ViewData extends BaseObject
 		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 		addField(TAG_PLANNING_HIDDEN_ROW_TYPES, planningHiddenRowTypes);
 		addField(TAG_PLANNING_HIDDEN_COL_TYPES, planningHiddenColumnTypes);
-		addField(TAG_PLANNING_RADIO_CHOICE, PlanningRadionChoiceName);
+		addField(TAG_PLANNING_RADIO_CHOICE, planningRadionChoiceName);
+		addField(TAG_PLANNING_DROP_DOWN_CHOICE, planningDropDownChoice);
+		addField(TAG_PLANNING_CUSTOMIZE_CHOICE, planningCustomizedChoice);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
@@ -169,6 +173,8 @@ public class ViewData extends BaseObject
 	public static final String TAG_PLANNING_HIDDEN_ROW_TYPES = "PlanningHiddenRowTypes";
 	public static final String TAG_PLANNING_HIDDEN_COL_TYPES = "PlanningHiddenColumnTypes";
 	public static final String TAG_PLANNING_RADIO_CHOICE = "PlanningRedioChoice";
+	public static final String TAG_PLANNING_DROP_DOWN_CHOICE = "PlanningDropDownChoice";
+	public static final String TAG_PLANNING_CUSTOMIZE_CHOICE = "PlanningCustomizeChoice";
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
@@ -192,5 +198,7 @@ public class ViewData extends BaseObject
 	private CodeListData diagramHiddenTypes;
 	private CodeListData planningHiddenRowTypes;
 	private CodeListData planningHiddenColumnTypes;
-	private StringData PlanningRadionChoiceName;
+	private StringData planningRadionChoiceName;
+	private StringData planningDropDownChoice;
+	private ORefData planningCustomizedChoice;
 }
