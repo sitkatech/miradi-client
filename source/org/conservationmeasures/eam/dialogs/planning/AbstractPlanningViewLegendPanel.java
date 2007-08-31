@@ -88,10 +88,8 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	
 	private void updateEnableStatus(String choice)
 	{
-		if (! shouldDisableAll(choice))
-			return;
-	
-		disableAllCheckBoxes();
+		if (shouldDisableAll(choice))
+			disableAllCheckBoxes();
 	}
 	
 	public boolean shouldDisableAll(String choice)
