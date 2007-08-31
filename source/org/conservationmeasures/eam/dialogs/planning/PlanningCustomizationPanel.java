@@ -116,8 +116,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			String selectedRadionName = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
-			if (! selectedRadionName.equals(PlanningView.PRE_CONFIGURED_RADIO_CHOICE))
+			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
+			if (! selectedRadioName.equals(PlanningView.PRE_CONFIGURED_RADIO_CHOICE))
 				return;
 			
 			String preconfiguredChoice = viewData.getData(ViewData.TAG_PLANNING_PRE_CONFIGURED_CHOICE);
@@ -134,8 +134,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			String selectedRadionName = getChoice(viewData);
-			JRadioButton radioButton = findRadioButton(selectedRadionName);
+			String selectedRadioName = getChoice(viewData);
+			JRadioButton radioButton = findRadioButton(selectedRadioName);
 			radioButton.setSelected(true);
 		}
 		catch (Exception e)
@@ -146,11 +146,11 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private String getChoice(ViewData viewData)
 	{
-		String selectedRadionName = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
-		if (selectedRadionName.trim().equals(""))
+		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
+		if (selectedRadioName.trim().equals(""))
 			return PlanningView.STRATEGIC_PLAN_RADIO_CHOICE;
 
-		return selectedRadionName;
+		return selectedRadioName;
 	}
 
 	private void saveData(String tag, CodeList listToHide, String radioName) throws Exception
