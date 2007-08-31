@@ -18,9 +18,12 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.umbrella.LegendPanel;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -37,6 +40,7 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 		createCheckBoxes();
 		addAllComponents();
 		updateCheckBoxesFromProjectSettings();
+		updateEnabledStateFromProject();
 	}
 	
 	protected void createCheckBoxes()
@@ -58,6 +62,42 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 			JCheckBox checkBox = findCheckBox(hiddenType);
 			checkBox.setSelected(false);
 		}
+	}
+	
+	private void updateEnabledStateFromProject()
+	{
+		try
+		{
+			ViewData viewData = project.getCurrentViewData();
+			String currentChoice = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
+			updateEnableStatus(currentChoice);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	private void updateEnableStatus(String choice)
+	{
+		if (! shouldDisableAll(choice))
+			return;
+	
+		disableAllCheckBoxes();
+	}
+	
+	public boolean shouldDisableAll(String choice)
+	{
+		if (choice.equals(PlanningView.STRATEGIC_PLAN))
+			return true;
+		
+		if (choice.equals(PlanningView.MONITORING_PLAN))
+			return true;
+		
+		if (! choice.equals(PlanningView.WORKPLAN_PLAN))
+			return true;
+		
+		return false;
 	}
 
 	private void addAllComponents()
@@ -100,10 +140,11 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 			return;
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) command;
-		if (! setCommand.getFieldTag().equals(getViewDataHiddenTypesTag()))
-			return;
+		if ( setCommand.getFieldTag().equals(getViewDataHiddenTypesTag()))
+			updateCheckBoxesFromProjectSettings();
 		
-		updateCheckBoxesFromProjectSettings();
+		if (setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_RADIO_CHOICE))
+			updateEnableStatus(setCommand.getDataValue());
 	}
 
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
