@@ -293,6 +293,7 @@ public class Actions
 		registerAction(new ActionInsertTextBox(mainWindow));
 		registerAction(new ActionCreateConceptualModel(mainWindow));
 		registerAction(new ActionDeleteConceptualModel(mainWindow));
+		registerAction(new ActionCreatePlanningViewConfigeration(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
