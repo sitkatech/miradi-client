@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class PlanningViewColumsLegendPanel extends PlanningViewLegendPanel
+public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPanel
 {
 	public PlanningViewColumsLegendPanel(MainWindow mainWindowToUse)
 	{
