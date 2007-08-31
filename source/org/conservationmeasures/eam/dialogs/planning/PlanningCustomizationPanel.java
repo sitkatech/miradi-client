@@ -116,7 +116,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
+			String selectedRadioName = viewData.getData(ViewData.PLANNING_CONFIGERATION_CHOICE);
 			if (! selectedRadioName.equals(PlanningView.PRE_CONFIGURED_RADIO_CHOICE))
 				return;
 			
@@ -146,7 +146,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private String getChoice(ViewData viewData)
 	{
-		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
+		String selectedRadioName = viewData.getData(ViewData.PLANNING_CONFIGERATION_CHOICE);
 		if (selectedRadioName.trim().equals(""))
 			return PlanningView.STRATEGIC_PLAN_RADIO_CHOICE;
 
@@ -162,7 +162,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(viewData.getRef(), tag, listToHide.toString());
 			project.executeCommand(setLegendSettingsCommand);
 			
-			CommandSetObjectData setRadioCommand = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_RADIO_CHOICE, radioName);
+			CommandSetObjectData setRadioCommand = new CommandSetObjectData(viewData.getRef(), ViewData.PLANNING_CONFIGERATION_CHOICE, radioName);
 			project.executeCommand(setRadioCommand);
 		}
 		finally
@@ -214,7 +214,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private void selectRadioButtonFromProjectSetting(CommandSetObjectData setCommand)
 	{
-		if (! setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_RADIO_CHOICE))
+		if (! setCommand.getFieldTag().equals(ViewData.PLANNING_CONFIGERATION_CHOICE))
 			return;
 		
 		updateRadioSelection(setCommand.getDataValue());
