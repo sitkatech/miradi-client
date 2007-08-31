@@ -41,7 +41,6 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 {
 	public PlanningCustomizationPanel(Project projectToUse)
 	{
-		super();
 		project = projectToUse;
 		radioButtons = new Hashtable<String, Component>();
 		project.addCommandExecutedListener(this);
