@@ -43,6 +43,11 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		updateEnabledStateFromProject();
 	}
 	
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
+	}
+	
 	protected void createCheckBoxes()
 	{
 		CodeList masterList = getMasterListToCreateCheckBoxesFrom();
