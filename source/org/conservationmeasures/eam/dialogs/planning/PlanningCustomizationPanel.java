@@ -151,18 +151,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		public void actionPerformed(ActionEvent e)
 		{
 			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, STRATEGIC_PLAN);
-			hideData(PlanningView.getMasterColumnList(), getColumnListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
-		}
-		
-		private CodeList getColumnListToShow()
-		{
-			CodeList listToShow = new CodeList();
-			listToShow.add(Indicator.TAG_PRIORITY);
-			listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-			listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-			listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
-			
-			return listToShow;
+			hideData(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
 		}
 		
 		private CodeList getRowListToShow()
@@ -181,20 +170,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		public void actionPerformed(ActionEvent e)
 		{
 			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, MONITORING_PLAN);
-			hideData(PlanningView.getMasterColumnList(), getColumnListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
-		}
-		
-		private CodeList getColumnListToShow()
-		{
-			CodeList listToShow = new CodeList();
-
-			listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-			listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-			listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
-			listToShow.add(Indicator.PSEUDO_TAG_METHODS);
-			listToShow.add(Indicator.PSEUDO_TAG_FACTOR);
-			
-			return listToShow;
+			hideData(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
 		}
 		
 		private CodeList getRowListToShow()
@@ -214,18 +190,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		public void actionPerformed(ActionEvent e)
 		{			
 			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, WORKPLAN_PLAN);
-			hideData(PlanningView.getMasterColumnList(), getColumnListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
-		}
-		
-		private CodeList getColumnListToShow()
-		{
-			CodeList listToShow = new CodeList();
-
-			listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-			listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-			listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
-			
-			return listToShow;
+			hideData(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
 		}
 		
 		private CodeList getRowListToShow()

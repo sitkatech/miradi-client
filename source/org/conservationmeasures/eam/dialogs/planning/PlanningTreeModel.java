@@ -68,7 +68,6 @@ public class PlanningTreeModel extends GenericTreeTableModel
 
 	public static final String[] columnTags = {
 		"Item", 
-		"Full Text", 
 		Indicator.TAG_MEASUREMENT_SUMMARY,
 		Indicator.PSEUDO_TAG_METHODS,  
 		Indicator.PSEUDO_TAG_FACTOR, 
