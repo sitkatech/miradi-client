@@ -75,7 +75,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		
 		add(panel);
 		selectRadioButton();
-		selectCheckBoxItem();
+		selectAppropriateCheckBoxItem();
 	}
 	
 	private JComboBox createComboBox(Object[] preconfiguredItems, ActionListener handler, String propertyName)
@@ -111,7 +111,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		panel.add(radioButton);
 	}
 	
-	private void selectCheckBoxItem()
+	private void selectAppropriateCheckBoxItem()
 	{
 		try
 		{
