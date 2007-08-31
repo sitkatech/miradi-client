@@ -5,17 +5,14 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfigeration;
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfigeration;
-import org.conservationmeasures.eam.dialogs.planning.PlanningCustomizationPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
-import org.conservationmeasures.eam.dialogs.planning.PlanningViewColumsLegendPanel;
-import org.conservationmeasures.eam.dialogs.planning.PlanningViewRowsLegendPanel;
+import org.conservationmeasures.eam.dialogs.planning.PlanningViewControlPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.Goal;
@@ -26,8 +23,6 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.TabbedView;
-
-import com.jhlabs.awt.BasicGridLayout;
 
 public class PlanningView extends TabbedView
 {
@@ -48,29 +43,14 @@ public class PlanningView extends TabbedView
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
 		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
 		
-		JScrollPane legendScrollPane = createScrollableLegendPanel();		
+		controlPanel = new PlanningViewControlPanel(getMainWindow());		
 		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		
 		horizontalSplitPane.setRightComponent(managementPanelScrollPane);
-		horizontalSplitPane.setLeftComponent(legendScrollPane);
+		horizontalSplitPane.setLeftComponent(controlPanel);
 		horizontalSplitPane.setDividerLocation(100);
 		
 		addTab(EAM.text("Planning"), horizontalSplitPane);
-	}
-
-	private JScrollPane createScrollableLegendPanel()
-	{
-		planningCustomizationPanel = new PlanningCustomizationPanel(getProject());
-		rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
-		columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
-		JPanel legendPanel = new JPanel(new BasicGridLayout(2, 1));
-		
-		legendPanel.add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
-		legendPanel.add(planningCustomizationPanel);
-		legendPanel.add(rowsLegendPanel);
-		legendPanel.add(columnsLegendPanel);
-			
-		return new JScrollPane(legendPanel);
 	}
 
 	public void deleteTabs() throws Exception
@@ -78,9 +58,7 @@ public class PlanningView extends TabbedView
 		planningManagementPanel.dispose();
 		planningManagementPanel = null;
 		
-		getProject().removeCommandExecutedListener(rowsLegendPanel);
-		getProject().removeCommandExecutedListener(columnsLegendPanel);
-		getProject().removeCommandExecutedListener(planningCustomizationPanel);
+		controlPanel.dispose();
 	}
 
 	public String cardName()
@@ -141,7 +119,5 @@ public class PlanningView extends TabbedView
 	public static final String PRE_CONFIGURED_COMBO = "PreConfiguredCombo";
 	
 	PlanningTreeManagementPanel planningManagementPanel;
-	PlanningViewRowsLegendPanel rowsLegendPanel;
-	PlanningCustomizationPanel planningCustomizationPanel;
-	PlanningViewColumsLegendPanel columnsLegendPanel;
+	PlanningViewControlPanel controlPanel;
 }
