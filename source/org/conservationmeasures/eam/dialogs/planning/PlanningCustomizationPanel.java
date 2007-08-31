@@ -74,7 +74,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		addDropDownRadioButton(panel, singleObjectRadio, cannedComboBox);
 		
 		add(panel);
-		selectRadioButton();
+		selectAppropriateRadioButton();
 		selectAppropriateCheckBoxItem();
 	}
 	
@@ -129,7 +129,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		}
 	}
 	
-	private void selectRadioButton()
+	private void selectAppropriateRadioButton()
 	{
 		try
 		{
