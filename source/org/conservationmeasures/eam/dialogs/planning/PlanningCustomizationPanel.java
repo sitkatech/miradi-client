@@ -116,11 +116,11 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			String selectedRadioName = viewData.getData(ViewData.PLANNING_CONFIGERATION_CHOICE);
+			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_CONFIGERATION_CHOICE);
 			if (! selectedRadioName.equals(PlanningView.PRE_CONFIGURED_RADIO_CHOICE))
 				return;
 			
-			String preconfiguredChoice = viewData.getData(ViewData.TAG_PLANNING_PRE_CONFIGURED_CHOICE);
+			String preconfiguredChoice = viewData.getData(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE);
 			selectComboButton(preconfiguredChoice);
 		}
 		catch (Exception e)
@@ -146,7 +146,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private String getChoice(ViewData viewData)
 	{
-		String selectedRadioName = viewData.getData(ViewData.PLANNING_CONFIGERATION_CHOICE);
+		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_CONFIGERATION_CHOICE);
 		if (selectedRadioName.trim().equals(""))
 			return PlanningView.STRATEGIC_PLAN_RADIO_CHOICE;
 
@@ -162,7 +162,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(viewData.getRef(), tag, listToHide.toString());
 			project.executeCommand(setLegendSettingsCommand);
 			
-			CommandSetObjectData setRadioCommand = new CommandSetObjectData(viewData.getRef(), ViewData.PLANNING_CONFIGERATION_CHOICE, radioName);
+			CommandSetObjectData setRadioCommand = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CONFIGERATION_CHOICE, radioName);
 			project.executeCommand(setRadioCommand);
 		}
 		finally
@@ -197,7 +197,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	
 	private void selectCombBoxFromProjectSetting(CommandSetObjectData setCommand)
 	{
-		if (! setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_PRE_CONFIGURED_CHOICE))
+		if (! setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE))
 			return;
 
 		String property = setCommand.getDataValue();
@@ -214,7 +214,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private void selectRadioButtonFromProjectSetting(CommandSetObjectData setCommand)
 	{
-		if (! setCommand.getFieldTag().equals(ViewData.PLANNING_CONFIGERATION_CHOICE))
+		if (! setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_CONFIGERATION_CHOICE))
 			return;
 		
 		updateRadioSelection(setCommand.getDataValue());
@@ -335,7 +335,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			
 			JComboBox checkBox = (JComboBox) e.getSource();
 			ComboBoxButton comboChoice = (ComboBoxButton) checkBox.getSelectedItem();
-			saveComboBox(ViewData.TAG_PLANNING_PRE_CONFIGURED_CHOICE, comboChoice.getPropertyName());
+			saveComboBox(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE, comboChoice.getPropertyName());
 		}
 		
 		private CodeList getRowListToShow()
