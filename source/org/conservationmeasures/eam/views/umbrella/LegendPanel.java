@@ -64,7 +64,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		try
 		{
 			ViewData data = getProject().getCurrentViewData();
-			return  new CodeList(data.getData(tag));
+			return new CodeList(data.getData(tag));
 		}
 		catch(Exception e)
 		{
