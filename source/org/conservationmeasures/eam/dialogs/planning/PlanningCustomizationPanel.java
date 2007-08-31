@@ -154,6 +154,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private void saveConfigeration(String tag, String newValue) throws Exception
 	{
+		//FIXME planning - look into this code, test it, was getting nested transaction exceptions
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
