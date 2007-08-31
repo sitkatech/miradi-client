@@ -34,9 +34,18 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 		project = mainWindow.getProject();
 
 		project.addCommandExecutedListener(this);
-		createLegendCheckBoxes();
+		createCheckBoxes();
 		addAllComponents();
 		updateCheckBoxesFromProjectSettings();
+	}
+	
+	protected void createCheckBoxes()
+	{
+		CodeList masterList = getMasterListToCreateCheckBoxesFrom();
+		for (int i = 0; i < masterList.size(); ++i)
+		{
+			createCheckBox(masterList.get(i));
+		}
 	}
 	
 	public void updateCheckBoxesFromProjectSettings()
@@ -91,13 +100,13 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 			return;
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) command;
-		if (!setCommand.getFieldTag().equals(getViewDataHiddenTypesTag()))
+		if (! setCommand.getFieldTag().equals(getViewDataHiddenTypesTag()))
 			return;
 		
 		updateCheckBoxesFromProjectSettings();
 	}
 
-	abstract protected void createLegendCheckBoxes();	
+	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
 	abstract protected JPanel createLegendButtonPanel(Actions actions);
 	abstract protected String getViewDataHiddenTypesTag();
 	

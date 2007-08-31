@@ -108,6 +108,21 @@ public class PlanningView extends TabbedView
 		return masterRowList;
 	}
 	
+	static public CodeList getMasterColumnList()
+	{
+		CodeList masterColumnList = new CodeList();
+		masterColumnList.add(Indicator.TAG_MEASUREMENT_SUMMARY);
+		masterColumnList.add(Indicator.PSEUDO_TAG_METHODS); 
+		masterColumnList.add(Indicator.PSEUDO_TAG_FACTOR); 
+		masterColumnList.add(Indicator.TAG_PRIORITY);
+		masterColumnList.add(Indicator.PSEUDO_TAG_STATUS_VALUE);
+		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		masterColumnList.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+		masterColumnList.add(Task.PSEUDO_TAG_TASK_TOTAL);
+
+		return masterColumnList;
+	}
+	
 	PlanningTreeManagementPanel planningManagementPanel;
 	PlanningViewRowsLegendPanel rowsLegendPanel;
 	PlanningCustomizationPanel planningCustomizationPanel;
