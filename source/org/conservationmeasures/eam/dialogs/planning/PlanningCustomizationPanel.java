@@ -129,7 +129,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			String selectedRadionName = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
+			String selectedRadionName = getChoice(viewData);
 			JRadioButton radioButton = findRadioButton(selectedRadionName);
 			radioButton.setSelected(true);
 		}
@@ -137,6 +137,15 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		{
 			EAM.logException(e);
 		}
+	}
+
+	private String getChoice(ViewData viewData)
+	{
+		String selectedRadionName = viewData.getData(ViewData.TAG_PLANNING_RADIO_CHOICE);
+		if (selectedRadionName.trim().equals(""))
+			return PlanningView.STRATEGIC_PLAN_RADIO_CHOICE;
+
+		return selectedRadionName;
 	}
 
 	private void saveData(String tag, CodeList listToHide, String radioName) throws Exception
