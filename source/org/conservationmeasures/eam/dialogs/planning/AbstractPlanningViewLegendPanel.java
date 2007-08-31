@@ -127,9 +127,9 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		return hiddenTypes;
 	}
 	
-	public void commandExecuted(CommandExecutedEvent command)
+	public void commandExecuted(CommandExecutedEvent event)
 	{
-		updateCheckBoxes(command.getCommand());
+		updateCheckBoxes(event.getCommand());
 	}
 	
 	private void updateCheckBoxes(Command command)
