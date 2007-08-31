@@ -40,15 +40,9 @@ public class PlanningViewRowsLegendPanel extends PlanningViewLegendPanel
 		return ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES;
 	}
 		
-	
-	
-	protected void createLegendCheckBoxes()
+	protected CodeList getMasterListToCreateCheckBoxesFrom()
 	{
-		CodeList masterList = PlanningView.getMasterRowList();
-		for (int i = 0; i < masterList.size(); ++i)
-		{
-			createCheckBox(masterList.get(i));
-		}
+		return PlanningView.getMasterRowList();
 	}
 	
 	protected JPanel createLegendButtonPanel(Actions actions)

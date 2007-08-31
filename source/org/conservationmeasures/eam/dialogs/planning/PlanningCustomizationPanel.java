@@ -125,7 +125,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private void updateRadioSelection(String selectedProperty)
 	{
-		(findRadionButton(selectedProperty)).setSelected(true);
+		findRadionButton(selectedProperty).setSelected(true);
 	}
 
 	private JRadioButton findRadionButton(String property)
@@ -133,13 +133,12 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		return (JRadioButton) radioButtons.get(property);
 	}
 	
-	private void hideRows(CodeList rowsToShow, String radioName)
+	private void hideData(CodeList masterCodeList, CodeList rowsToShow, String dataTagToHide, String radioName)
 	{
 		try
 		{
-			CodeList masterCodeList = PlanningView.getMasterRowList();
 			masterCodeList.subtract(rowsToShow);
-			saveData(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, masterCodeList, radioName);
+			saveData(dataTagToHide, masterCodeList, radioName);
 		}
 		catch (Exception e)
 		{
@@ -151,7 +150,19 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			hideRows(getRowListToShow(), STRATEGIC_PLAN);
+			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, STRATEGIC_PLAN);
+			hideData(PlanningView.getMasterColumnList(), getColumnListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
+		}
+		
+		private CodeList getColumnListToShow()
+		{
+			CodeList listToShow = new CodeList();
+			listToShow.add(Indicator.TAG_PRIORITY);
+			listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+			listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+			listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+			
+			return listToShow;
 		}
 		
 		private CodeList getRowListToShow()
@@ -169,7 +180,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			hideRows(getRowListToShow(), MONITORING_PLAN);
+			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, MONITORING_PLAN);
 		}
 		
 		private CodeList getRowListToShow()
@@ -188,7 +199,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{			
-			hideRows(getRowListToShow(), WORKPLAN_PLAN);
+			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, WORKPLAN_PLAN);
 		}
 		
 		private CodeList getRowListToShow()

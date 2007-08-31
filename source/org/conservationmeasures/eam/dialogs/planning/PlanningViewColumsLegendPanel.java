@@ -10,9 +10,9 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -28,31 +28,20 @@ public class PlanningViewColumsLegendPanel extends PlanningViewLegendPanel
 		return ViewData.TAG_PLANNING_HIDDEN_COL_TYPES;
 	}
 	
-	protected void createLegendCheckBoxes()
+	protected CodeList getMasterListToCreateCheckBoxesFrom()
 	{
-		createCheckBox(Indicator.TAG_MEASUREMENT_SUMMARY);
-		createCheckBox(Indicator.PSEUDO_TAG_METHODS); 
-		createCheckBox(Indicator.PSEUDO_TAG_FACTOR); 
-		createCheckBox(Indicator.TAG_PRIORITY);
-		createCheckBox(Indicator.PSEUDO_TAG_STATUS_VALUE);
-		createCheckBox(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		createCheckBox(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		createCheckBox(Task.PSEUDO_TAG_TASK_TOTAL);
+		return PlanningView.getMasterColumnList();
 	}
 		
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(0,3));
-		
 		addTitleBar(jPanel, EAM.text("Columns"));
-		addCheckBoxLine(jPanel, Indicator.TAG_MEASUREMENT_SUMMARY);
-		addCheckBoxLine(jPanel, Indicator.PSEUDO_TAG_METHODS);
-		addCheckBoxLine(jPanel, Indicator.PSEUDO_TAG_FACTOR);
-		addCheckBoxLine(jPanel, Indicator.TAG_PRIORITY);	
-		addCheckBoxLine(jPanel, Indicator.PSEUDO_TAG_STATUS_VALUE);
-		addCheckBoxLine(jPanel, Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		addCheckBoxLine(jPanel, Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);				
-		addCheckBoxLine(jPanel, Task.PSEUDO_TAG_TASK_TOTAL);
+		CodeList masterList = PlanningView.getMasterColumnList();
+		for (int i = 0; i < masterList.size(); ++i)
+		{
+			addCheckBoxLine(jPanel, masterList.get(i));
+		}
 		
 		return jPanel;
 	}
