@@ -41,6 +41,7 @@ import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.IntermediateResultPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
+import org.conservationmeasures.eam.objectpools.PlanningViewConfigeraionPool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
@@ -59,6 +60,7 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.IntermediateResult;
+import org.conservationmeasures.eam.objects.PlanningViewConfigeration;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
@@ -100,6 +102,7 @@ public class ObjectManager
 		addNormalPool(new TextBoxPool(ida));
 		addNormalPool(new SlidePool(ida));
 		addNormalPool(new SlideShowPool(ida));
+		addNormalPool(new PlanningViewConfigeraionPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -197,6 +200,11 @@ public class ObjectManager
 	public SlideShowPool getSlideShowPool()
 	{
 		return (SlideShowPool)getPool(ObjectType.SLIDESHOW);
+	}
+	
+	public PlanningViewConfigeraionPool getPlanningCongConfigeraionPool()
+	{
+		return (PlanningViewConfigeraionPool) getPool(PlanningViewConfigeration.getObjectType());
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
@@ -340,6 +348,7 @@ public class ObjectManager
 		loadPool(ObjectType.TEXT_BOX);
 		loadPool(ObjectType.SLIDE);
 		loadPool(ObjectType.SLIDESHOW);
+		loadPool(ObjectType.PLANNING_VIEW_CONFIGERATION);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
