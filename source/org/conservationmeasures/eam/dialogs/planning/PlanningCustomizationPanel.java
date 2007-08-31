@@ -67,9 +67,10 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		JRadioButton workRadio = createRadioButton(buttonGroup, new WorkPlanButtonHandler(), PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
 		addLabeledRadioButton(panel, workRadio, EAM.text("Work Plan"));
 		
-		JRadioButton singleObjectRadio = createRadioButton(buttonGroup, new PreConfiguredButtonHandler(), PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
+		PreConfiguredButtonHandler preConfiguredButtonHandler = new PreConfiguredButtonHandler();
+		JRadioButton singleObjectRadio = createRadioButton(buttonGroup, preConfiguredButtonHandler, PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
 		Object[] singleObjectComboBox = getPreConfiguredButtonNames().values().toArray();
-		JComboBox cannedComboBox = createComboBox(singleObjectComboBox, new PreConfiguredButtonHandler(), PlanningView.PRE_CONFIGURED_COMBO);
+		JComboBox cannedComboBox = createComboBox(singleObjectComboBox, preConfiguredButtonHandler, PlanningView.PRE_CONFIGURED_COMBO);
 		addDropDownRadioButton(panel, singleObjectRadio, cannedComboBox);
 		
 		add(panel);
