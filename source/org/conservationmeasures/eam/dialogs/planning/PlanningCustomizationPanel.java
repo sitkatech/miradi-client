@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -170,19 +169,16 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		Command command = event.getCommand();
-		if (! command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-		
-		selectRadioButtonFromProjectSetting((CommandSetObjectData) command);
-		selectCombBoxFromProjectSetting((CommandSetObjectData) command);
+		selectRadioButtonFromProjectSetting(event);
+		selectCombBoxFromProjectSetting(event);
 	}
 	
-	private void selectCombBoxFromProjectSetting(CommandSetObjectData setCommand)
+	private void selectCombBoxFromProjectSetting(CommandExecutedEvent event)
 	{
-		if (! setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE))
+		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE))
 			return;
 
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		String property = setCommand.getDataValue();
 		selectComboButton(property);
 	}
@@ -195,11 +191,12 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		comboBox.setSelectedItem(buttonToSelect);
 	}
 
-	private void selectRadioButtonFromProjectSetting(CommandSetObjectData setCommand)
+	private void selectRadioButtonFromProjectSetting(CommandExecutedEvent event)
 	{
-		if (! setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_CONFIGERATION_CHOICE))
+		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CONFIGERATION_CHOICE))
 			return;
-		
+	
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		updateRadioSelection(setCommand.getDataValue());
 	}
 
