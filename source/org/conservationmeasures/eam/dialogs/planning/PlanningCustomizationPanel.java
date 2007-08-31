@@ -42,7 +42,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	public PlanningCustomizationPanel(Project projectToUse)
 	{
 		project = projectToUse;
-		radioButtons = new Hashtable<String, Component>();
+		configurationComponents = new Hashtable<String, Component>();
 		project.addCommandExecutedListener(this);
 		createLegendButtonPanel();
 		setBorder(BorderFactory.createTitledBorder(EAM.text("Standard Views")));
@@ -82,7 +82,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		JComboBox comboBox = new JComboBox(preconfiguredItems);
 		comboBox.addActionListener(handler);
-		radioButtons.put(propertyName, comboBox);
+		configurationComponents.put(propertyName, comboBox);
 		
 		return comboBox;
 	}
@@ -94,7 +94,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		
 		radioButton.putClientProperty(TAG_PREDEFINED_CONFIGURATION, propertyName);
 		radioButton.addActionListener(handler);
-		radioButtons.put(propertyName, radioButton);
+		configurationComponents.put(propertyName, radioButton);
 		
 		return radioButton;
 	}
@@ -237,7 +237,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	
 	private Component findComponent(String property)
 	{
-		return radioButtons.get(property);
+		return configurationComponents.get(property);
 	}
 	
 	private void hideData(CodeList masterCodeList, CodeList rowsToShow, String dataTagToHide, String radioName)
@@ -392,6 +392,6 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	}
 
 	private Project project;
-	private Hashtable<String, Component> radioButtons;
+	private Hashtable<String, Component> configurationComponents;
 	private static final String TAG_PREDEFINED_CONFIGURATION = "PredefinedConfuration";
 }
