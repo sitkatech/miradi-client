@@ -77,6 +77,7 @@ public class PlanningView extends TabbedView
 		
 		getProject().removeCommandExecutedListener(rowsLegendPanel);
 		getProject().removeCommandExecutedListener(columnsLegendPanel);
+		getProject().removeCommandExecutedListener(planningCustomizationPanel);
 	}
 
 	public String cardName()
@@ -123,10 +124,12 @@ public class PlanningView extends TabbedView
 		return masterColumnList;
 	}
 	
-	public static final String STRATEGIC_PLAN = "StrategicPlan";
-	public static final String MONITORING_PLAN = "MonitoringPlan";
-	public static final String WORKPLAN_PLAN = "WorkPlanPlan";
-	public static final String PRE_CONFIGURED = "PreConfigured";
+	public static final String STRATEGIC_PLAN_RADIO_CHOICE = "StrategicPlanRadioChoice";
+	public static final String MONITORING_PLAN_RADIO_CHOICE = "MonitoringPlanRadioChoice";
+	public static final String WORKPLAN_PLAN_RADIO_CHOICE = "WorkPlanPlanRadioChoice";
+	public static final String PRE_CONFIGURED_RADIO_CHOICE = "PreConfiguredRadioChoice";
+	
+	public static final String PRE_CONFIGURED_COMBO = "PreConfiguredCombo";
 	
 	PlanningTreeManagementPanel planningManagementPanel;
 	PlanningViewRowsLegendPanel rowsLegendPanel;

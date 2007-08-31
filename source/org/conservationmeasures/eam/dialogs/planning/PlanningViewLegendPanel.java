@@ -88,13 +88,13 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 	
 	public boolean shouldDisableAll(String choice)
 	{
-		if (choice.equals(PlanningView.STRATEGIC_PLAN))
+		if (choice.equals(PlanningView.STRATEGIC_PLAN_RADIO_CHOICE))
 			return true;
 		
-		if (choice.equals(PlanningView.MONITORING_PLAN))
+		if (choice.equals(PlanningView.MONITORING_PLAN_RADIO_CHOICE))
 			return true;
 		
-		if (! choice.equals(PlanningView.WORKPLAN_PLAN))
+		if (! choice.equals(PlanningView.WORKPLAN_PLAN_RADIO_CHOICE))
 			return true;
 		
 		return false;

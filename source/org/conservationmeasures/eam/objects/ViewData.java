@@ -157,7 +157,7 @@ public class ViewData extends BaseObject
 		addField(TAG_PLANNING_HIDDEN_ROW_TYPES, planningHiddenRowTypes);
 		addField(TAG_PLANNING_HIDDEN_COL_TYPES, planningHiddenColumnTypes);
 		addField(TAG_PLANNING_RADIO_CHOICE, planningRadionChoiceName);
-		addField(TAG_PLANNING_DROP_DOWN_CHOICE, planningDropDownChoice);
+		addField(TAG_PLANNING_PRE_CONFIGURED_CHOICE, planningDropDownChoice);
 		addField(TAG_PLANNING_CUSTOMIZE_CHOICE, planningCustomizedChoice);
 	}
 
@@ -173,7 +173,7 @@ public class ViewData extends BaseObject
 	public static final String TAG_PLANNING_HIDDEN_ROW_TYPES = "PlanningHiddenRowTypes";
 	public static final String TAG_PLANNING_HIDDEN_COL_TYPES = "PlanningHiddenColumnTypes";
 	public static final String TAG_PLANNING_RADIO_CHOICE = "PlanningRedioChoice";
-	public static final String TAG_PLANNING_DROP_DOWN_CHOICE = "PlanningDropDownChoice";
+	public static final String TAG_PLANNING_PRE_CONFIGURED_CHOICE = "PlanningDropDownChoice";
 	public static final String TAG_PLANNING_CUSTOMIZE_CHOICE = "PlanningCustomizeChoice";
 	
 	public static final String MODE_DEFAULT = "";
