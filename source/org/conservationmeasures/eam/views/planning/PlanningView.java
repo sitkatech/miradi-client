@@ -126,7 +126,8 @@ public class PlanningView extends TabbedView
 	public static final String STRATEGIC_PLAN = "StrategicPlan";
 	public static final String MONITORING_PLAN = "MonitoringPlan";
 	public static final String WORKPLAN_PLAN = "WorkPlanPlan";
-
+	public static final String PRE_CONFIGURED = "PreConfigured";
+	
 	PlanningTreeManagementPanel planningManagementPanel;
 	PlanningViewRowsLegendPanel rowsLegendPanel;
 	PlanningCustomizationPanel planningCustomizationPanel;
