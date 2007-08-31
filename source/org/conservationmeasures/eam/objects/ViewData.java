@@ -156,9 +156,9 @@ public class ViewData extends BaseObject
 		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 		addField(TAG_PLANNING_HIDDEN_ROW_TYPES, planningHiddenRowTypes);
 		addField(TAG_PLANNING_HIDDEN_COL_TYPES, planningHiddenColumnTypes);
-		addField(PLANNING_CONFIGERATION_CHOICE, planningRadionChoiceName);
-		addField(TAG_PLANNING_PRE_CONFIGURED_CHOICE, planningDropDownChoice);
-		addField(TAG_PLANNING_CUSTOMIZE_CHOICE, planningCustomizedChoice);
+		addField(TAG_PLANNING_CONFIGERATION_CHOICE, planningRadionChoiceName);
+		addField(TAG_PLANNING_SINGLE_TYPE_CHOICE, planningDropDownChoice);
+		addField(TAG_PLANNING_CUSTOMIZED_CHOICE, planningCustomizedChoice);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
@@ -172,9 +172,9 @@ public class ViewData extends BaseObject
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
 	public static final String TAG_PLANNING_HIDDEN_ROW_TYPES = "PlanningHiddenRowTypes";
 	public static final String TAG_PLANNING_HIDDEN_COL_TYPES = "PlanningHiddenColumnTypes";
-	public static final String PLANNING_CONFIGERATION_CHOICE = "PlanningConfigerationChoice";
-	public static final String TAG_PLANNING_PRE_CONFIGURED_CHOICE = "PlanningDropDownChoice";
-	public static final String TAG_PLANNING_CUSTOMIZE_CHOICE = "PlanningCustomizeChoice";
+	public static final String TAG_PLANNING_CONFIGERATION_CHOICE = "PlanningConfigerationChoice";
+	public static final String TAG_PLANNING_SINGLE_TYPE_CHOICE = "PlanningSingleTypeChoice";
+	public static final String TAG_PLANNING_CUSTOMIZED_CHOICE = "PlanningCustomizedChoice";
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
