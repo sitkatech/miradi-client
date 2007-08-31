@@ -14,6 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -21,7 +25,7 @@ import org.conservationmeasures.eam.views.umbrella.LegendPanel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-abstract public class PlanningViewLegendPanel extends LegendPanel implements ActionListener
+abstract public class PlanningViewLegendPanel extends LegendPanel implements ActionListener, CommandExecutedListener
 {
 	public PlanningViewLegendPanel(MainWindow mainWindowToUse)
 	{
@@ -29,6 +33,7 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 		mainWindow = mainWindowToUse;
 		project = mainWindow.getProject();
 
+		project.addCommandExecutedListener(this);
 		createLegendCheckBoxes();
 		addAllComponents();
 		updateCheckBoxesFromProjectSettings();
@@ -75,6 +80,23 @@ abstract public class PlanningViewLegendPanel extends LegendPanel implements Act
 		return hiddenTypes;
 	}
 	
+	public void commandExecuted(CommandExecutedEvent command)
+	{
+		updateCheckBoxes(command.getCommand());
+	}
+	
+	private void updateCheckBoxes(Command command)
+	{
+		if (! command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) command;
+		if (!setCommand.getFieldTag().equals(getViewDataHiddenTypesTag()))
+			return;
+		
+		updateCheckBoxesFromProjectSettings();
+	}
+
 	abstract protected void createLegendCheckBoxes();	
 	abstract protected JPanel createLegendButtonPanel(Actions actions);
 	abstract protected String getViewDataHiddenTypesTag();
