@@ -50,9 +50,9 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(3, 2));
 		ButtonGroup buttonGroup = new ButtonGroup();
-		addRadioButton(jPanel, buttonGroup, new StrategicButtonHandler(), EAM.text("Strategic Plan"), STRATEGIC_PLAN);
-		addRadioButton(jPanel, buttonGroup, new MonitoringButtonHandler(), EAM.text("Monitoring Plan"), MONITORING_PLAN);
-		addRadioButton(jPanel, buttonGroup, new WorkPlanButtonHandler(), EAM.text("Work Plan"), WORKPLAN_PLAN);
+		addRadioButton(jPanel, buttonGroup, new StrategicButtonHandler(), EAM.text("Strategic Plan"), PlanningView.STRATEGIC_PLAN);
+		addRadioButton(jPanel, buttonGroup, new MonitoringButtonHandler(), EAM.text("Monitoring Plan"), PlanningView.MONITORING_PLAN);
+		addRadioButton(jPanel, buttonGroup, new WorkPlanButtonHandler(), EAM.text("Work Plan"), PlanningView.WORKPLAN_PLAN);
 		
 		add(jPanel);
 	}
@@ -150,8 +150,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, STRATEGIC_PLAN);
-			hideData(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
+			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.STRATEGIC_PLAN);
+			hideData(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.STRATEGIC_PLAN);
 		}
 		
 		private CodeList getRowListToShow()
@@ -169,8 +169,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, MONITORING_PLAN);
-			hideData(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
+			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.MONITORING_PLAN);
+			hideData(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.STRATEGIC_PLAN);
 		}
 		
 		private CodeList getRowListToShow()
@@ -189,8 +189,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{			
-			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, WORKPLAN_PLAN);
-			hideData(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, STRATEGIC_PLAN);
+			hideData(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.WORKPLAN_PLAN);
+			hideData(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.STRATEGIC_PLAN);
 		}
 		
 		private CodeList getRowListToShow()
@@ -209,8 +209,4 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	private Project project;
 	private Hashtable<String, Component> radioButtons;
 	private static final String TAG_PREDEFINED_CONFIGURATION = "PredefinedConfuration";
-	
-	private static final String STRATEGIC_PLAN = "StrategicPlan";
-	private static final String MONITORING_PLAN = "MonitoringPlan";
-	private static final String WORKPLAN_PLAN = "WorkPlanPlan";
 }
