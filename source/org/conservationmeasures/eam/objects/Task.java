@@ -260,6 +260,9 @@ public class Task extends BaseObject
 			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
 		}
 		
+		if (combinedDateRange == null)
+			return "";
+		
 		return combinedDateRange.toString();
 	}
 
