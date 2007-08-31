@@ -153,36 +153,19 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		return selectedRadioName;
 	}
 
-	private void saveData(String tag, CodeList listToHide, String radioName) throws Exception
+	private void saveConfigeration(String tag, String newValue) throws Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(viewData.getRef(), tag, listToHide.toString());
-			project.executeCommand(setLegendSettingsCommand);
-			
-			CommandSetObjectData setRadioCommand = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CONFIGERATION_CHOICE, radioName);
-			project.executeCommand(setRadioCommand);
+			CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, newValue);
+			project.executeCommand(setComboItem);
 		}
 		finally
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}		
-	}
-	
-	private void saveComboBox(String tag, String propertyName)
-	{
-		try
-		{
-			ViewData viewData = project.getCurrentViewData();
-			CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, propertyName);
-			project.executeCommand(setComboItem);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -245,7 +228,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		try
 		{
 			masterCodeList.subtract(rowsToShow);
-			saveData(dataTagToHide, masterCodeList, radioName);
+			saveConfigeration(ViewData.TAG_PLANNING_CONFIGERATION_CHOICE, radioName);
+			saveConfigeration(dataTagToHide, masterCodeList.toString());
 		}
 		catch (Exception e)
 		{
@@ -335,7 +319,19 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			
 			JComboBox checkBox = (JComboBox) e.getSource();
 			ComboBoxButton comboChoice = (ComboBoxButton) checkBox.getSelectedItem();
-			saveComboBox(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE, comboChoice.getPropertyName());
+			saveComboSelection(comboChoice);
+		}
+
+		private void saveComboSelection(ComboBoxButton comboChoice)
+		{
+			try
+			{
+				saveConfigeration(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE, comboChoice.getPropertyName());
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
 		}
 		
 		private CodeList getRowListToShow()
