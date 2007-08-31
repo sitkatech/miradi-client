@@ -68,7 +68,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		
 		PreConfiguredButtonHandler preConfiguredButtonHandler = new PreConfiguredButtonHandler();
 		JRadioButton singleObjectRadio = createRadioButton(buttonGroup, preConfiguredButtonHandler, PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
-		Object[] singleObjectComboBox = getPreConfiguredButtonNames().values().toArray();
+		Object[] singleObjectComboBox = getPreConfiguredButtons().values().toArray();
 		JComboBox cannedComboBox = createComboBox(singleObjectComboBox, preConfiguredButtonHandler, PlanningView.PRE_CONFIGURED_COMBO);
 		addDropDownRadioButton(panel, singleObjectRadio, cannedComboBox);
 		
@@ -186,7 +186,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	private void selectComboButton(String property)
 	{
 		JComboBox comboBox = findComboBox(PlanningView.PRE_CONFIGURED_COMBO);
-		HashMap preConfiguredHashMap = getPreConfiguredButtonNames();
+		HashMap preConfiguredHashMap = getPreConfiguredButtons();
 		ComboBoxButton buttonToSelect = (ComboBoxButton) preConfiguredHashMap.get(property);
 		comboBox.setSelectedItem(buttonToSelect);
 	}
@@ -245,7 +245,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		saveCodeList(masterCodeList, dataTagToHide, radioName);
 	}
 	
-	public HashMap getPreConfiguredButtonNames()
+	public HashMap getPreConfiguredButtons()
 	{
 		HashMap hashMap = new HashMap();
 		hashMap.put(Goal.OBJECT_NAME, new ComboBoxButton(Goal.OBJECT_NAME, EAM.text("Goals Only"))); 
