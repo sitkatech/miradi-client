@@ -39,9 +39,9 @@ public class PlanningViewControlPanel extends JPanel
 	
 	public void dispose()
 	{
-		getProject().removeCommandExecutedListener(rowsLegendPanel);
-		getProject().removeCommandExecutedListener(columnsLegendPanel);
-		getProject().removeCommandExecutedListener(planningCustomizationPanel);
+		rowsLegendPanel.dispose();
+		columnsLegendPanel.dispose();
+		planningCustomizationPanel.dispose();
 	}
 	
 	private MainWindow getMainWindow()

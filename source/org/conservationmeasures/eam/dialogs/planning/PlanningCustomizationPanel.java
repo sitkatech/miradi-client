@@ -47,7 +47,12 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		createLegendButtonPanel();
 		setBorder(BorderFactory.createTitledBorder(EAM.text("Standard Views")));
 	}
-
+	
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
+	}
+	
 	protected void createLegendButtonPanel()
 	{
 		JPanel jPanel = new JPanel(new GridLayoutPlus(3, 2));
