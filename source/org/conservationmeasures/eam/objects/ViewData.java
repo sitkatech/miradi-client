@@ -156,7 +156,7 @@ public class ViewData extends BaseObject
 		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 		addField(TAG_PLANNING_HIDDEN_ROW_TYPES, planningHiddenRowTypes);
 		addField(TAG_PLANNING_HIDDEN_COL_TYPES, planningHiddenColumnTypes);
-		addField(TAG_PLANNING_CONFIGERATION_CHOICE, planningRadionChoiceName);
+		addField(TAG_PLANNING_CONFIGURATION_CHOICE, planningRadionChoiceName);
 		addField(TAG_PLANNING_SINGLE_TYPE_CHOICE, planningDropDownChoice);
 		addField(TAG_PLANNING_CUSTOMIZED_CHOICE, planningCustomizedChoice);
 	}
@@ -172,7 +172,7 @@ public class ViewData extends BaseObject
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
 	public static final String TAG_PLANNING_HIDDEN_ROW_TYPES = "PlanningHiddenRowTypes";
 	public static final String TAG_PLANNING_HIDDEN_COL_TYPES = "PlanningHiddenColumnTypes";
-	public static final String TAG_PLANNING_CONFIGERATION_CHOICE = "PlanningConfigerationChoice";
+	public static final String TAG_PLANNING_CONFIGURATION_CHOICE = "PlanningConfigerationChoice";
 	public static final String TAG_PLANNING_SINGLE_TYPE_CHOICE = "PlanningSingleTypeChoice";
 	public static final String TAG_PLANNING_CUSTOMIZED_CHOICE = "PlanningCustomizedChoice";
 	
