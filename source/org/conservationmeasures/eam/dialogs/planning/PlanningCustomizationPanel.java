@@ -133,7 +133,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			String selectedRadioName = getChoice(viewData);
+			String selectedRadioName = getCurrentRadioChoice(viewData);
 			JRadioButton radioButton = findRadioButton(selectedRadioName);
 			radioButton.setSelected(true);
 		}
@@ -143,8 +143,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		}
 	}
 
-	//FIXME planning - combine two methods below Kevin??????????????
-	private String getChoice(ViewData viewData)
+	private String getCurrentRadioChoice(ViewData viewData)
 	{
 		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE);
 		boolean shouldReturnDefault = selectedRadioName.trim().equals("");
