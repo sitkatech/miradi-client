@@ -35,7 +35,7 @@ public class ObjectType
 	public static final int TEXT_BOX = 26;
 	public static final int SLIDE = 27;
 	public static final int SLIDESHOW = 28;
-	public static final int PLANNING_VIEW_CONFIGERATION = 29;
+	public static final int PLANNING_VIEW_CONFIGURATION = 29;
 	
 	public static final int OBJECT_TYPE_COUNT = 30;
 }

@@ -348,7 +348,7 @@ public class ObjectManager
 		loadPool(ObjectType.TEXT_BOX);
 		loadPool(ObjectType.SLIDE);
 		loadPool(ObjectType.SLIDESHOW);
-		loadPool(ObjectType.PLANNING_VIEW_CONFIGERATION);
+		loadPool(ObjectType.PLANNING_VIEW_CONFIGURATION);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
