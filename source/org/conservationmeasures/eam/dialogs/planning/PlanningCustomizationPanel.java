@@ -185,6 +185,15 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		selectCombBoxFromProjectSetting(event);
 	}
 	
+	private void selectRadioButtonFromProjectSetting(CommandExecutedEvent event)
+	{
+		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CONFIGURATION_CHOICE))
+			return;
+	
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		updateRadioSelection(setCommand.getDataValue());
+	}
+	
 	private void selectCombBoxFromProjectSetting(CommandExecutedEvent event)
 	{
 		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE))
@@ -201,15 +210,6 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		HashMap preConfiguredHashMap = getPreConfiguredButtons();
 		ComboBoxButton buttonToSelect = (ComboBoxButton) preConfiguredHashMap.get(property);
 		comboBox.setSelectedItem(buttonToSelect);
-	}
-
-	private void selectRadioButtonFromProjectSetting(CommandExecutedEvent event)
-	{
-		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CONFIGURATION_CHOICE))
-			return;
-	
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		updateRadioSelection(setCommand.getDataValue());
 	}
 
 	private void updateRadioSelection(String selectedProperty)
