@@ -43,11 +43,12 @@ public class PlanningView extends TabbedView
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
 		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
 		
-		controlPanel = new PlanningViewControlPanel(getMainWindow());		
+		controlPanel = new PlanningViewControlPanel(getMainWindow());
+		JScrollPane controlPanelScroller = new JScrollPane(controlPanel);
 		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		
 		horizontalSplitPane.setRightComponent(managementPanelScrollPane);
-		horizontalSplitPane.setLeftComponent(controlPanel);
+		horizontalSplitPane.setLeftComponent(controlPanelScroller);
 		horizontalSplitPane.setDividerLocation(100);
 		
 		addTab(EAM.text("Planning"), horizontalSplitPane);
