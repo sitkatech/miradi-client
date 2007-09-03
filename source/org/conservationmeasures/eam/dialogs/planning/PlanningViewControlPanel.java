@@ -7,9 +7,12 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfiguration;
+import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguration;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.martus.swing.UiButton;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -32,6 +35,8 @@ public class PlanningViewControlPanel extends JPanel
 		add(planningCustomizationPanel);
 		add(rowsLegendPanel);
 		add(columnsLegendPanel);
+		add(new UiButton(mainWindow.getActions().get(ActionCreatePlanningViewConfiguration.class)));
+		add(new UiButton(mainWindow.getActions().get(ActionDeletePlanningViewConfiguration.class)));
 	}
 	
 	public void dispose()
