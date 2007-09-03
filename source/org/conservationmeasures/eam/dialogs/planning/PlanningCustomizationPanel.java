@@ -152,7 +152,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		return selectedRadioName;
 	}
 
-	private void saveConfigeration(String tag, String newValue) throws Exception
+	private void saveConfiguration(String tag, String newValue) throws Exception
 	{
 		//FIXME planning - look into this code, test it, was getting nested transaction exceptions
 		project.executeCommand(new CommandBeginTransaction());
@@ -225,8 +225,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		try
 		{	
-			saveConfigeration(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE, radioName);
-			saveConfigeration(dataTagToHide, codeListToSave.toString());
+			saveConfiguration(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE, radioName);
+			saveConfiguration(dataTagToHide, codeListToSave.toString());
 		}
 		catch (Exception e)
 		{
@@ -337,7 +337,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		{
 			try
 			{
-				saveConfigeration(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE, comboChoice.getPropertyName());
+				saveConfiguration(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE, comboChoice.getPropertyName());
 			}
 			catch (Exception e)
 			{
