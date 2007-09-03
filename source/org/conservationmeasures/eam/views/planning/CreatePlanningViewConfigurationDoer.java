@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.planning;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
-public class DeletePlanningViewConfigerationDoer extends MainWindowDoer
+public class CreatePlanningViewConfigurationDoer extends MainWindowDoer
 {
 	public boolean isAvailable()
 	{
