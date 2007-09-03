@@ -118,8 +118,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE);
 			if (! selectedRadioName.equals(PlanningView.PRE_CONFIGURED_RADIO_CHOICE))
 				return;
-			
-			String preconfiguredChoice = viewData.getData(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE);
+
+			String preconfiguredChoice = getCurrentCheckBoxChoice(viewData);
 			selectComboButton(preconfiguredChoice);
 		}
 		catch (Exception e)
@@ -127,7 +127,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			EAM.logException(e);
 		}
 	}
-	
+
 	private void selectAppropriateRadioButton()
 	{
 		try
@@ -143,15 +143,27 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		}
 	}
 
+	//FIXME planning - combine two methods below Kevin??????????????
 	private String getChoice(ViewData viewData)
 	{
 		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE);
-		if (selectedRadioName.trim().equals(""))
+		boolean shouldReturnDefault = selectedRadioName.trim().equals("");
+		if (shouldReturnDefault)
 			return PlanningView.STRATEGIC_PLAN_RADIO_CHOICE;
 
 		return selectedRadioName;
 	}
-
+	
+	private String getCurrentCheckBoxChoice(ViewData viewData)
+	{		
+		String preconfiguredChoice = viewData.getData(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE);
+		boolean shouldReturnDefault = preconfiguredChoice.trim().equals("");
+		if (shouldReturnDefault)
+			return Goal.OBJECT_NAME;
+			
+		return preconfiguredChoice;
+	}
+	
 	private void saveConfiguration(String tag, String newValue) throws Exception
 	{
 		//FIXME planning - look into this code, test it, was getting nested transaction exceptions
