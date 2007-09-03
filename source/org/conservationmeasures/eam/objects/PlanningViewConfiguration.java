@@ -47,18 +47,18 @@ public class PlanningViewConfiguration extends BaseObject
 	void clear()
 	{
 		super.clear();
-		rowConfigerationList = new CodeListData();
-		colConfigerationList = new CodeListData();
+		rowConfigurationList = new CodeListData();
+		colConfigurationList = new CodeListData();
 		
-		addField(TAG_ROW_CONFIGERATION, rowConfigerationList);
-		addField(TAG_COL_CONFIGERATION, colConfigerationList);
+		addField(TAG_ROW_CONFIGURATION, rowConfigurationList);
+		addField(TAG_COL_CONFIGURATION, colConfigurationList);
 	}
 
-	public static final String TAG_ROW_CONFIGERATION = "TagRowConfigeration";
-	public static final String TAG_COL_CONFIGERATION = "TagColConfigeration"; 
+	public static final String TAG_ROW_CONFIGURATION = "TagRowConfiguration";
+	public static final String TAG_COL_CONFIGURATION = "TagColConfiguration"; 
 	
-	public static final String OBJECT_NAME = "PlanningViewConfigeration";
+	public static final String OBJECT_NAME = "PlanningViewConfiguration";
 	
-	CodeListData rowConfigerationList;
-	CodeListData colConfigerationList;
+	CodeListData rowConfigurationList;
+	CodeListData colConfigurationList;
 }
