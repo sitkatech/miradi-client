@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 abstract public class ViewDoer extends MainWindowDoer
@@ -28,6 +29,14 @@ abstract public class ViewDoer extends MainWindowDoer
 		throw new RuntimeException("Not in DiagramView");
 	}
 
+	public boolean isPlanningView()
+	{
+		if (! getView().cardName().equals(PlanningView.getViewName()))
+			return false;
+		
+		return true;
+	}
+	
 	public boolean isDiagramView()
 	{
 		if (! getView().cardName().equals(DiagramView.getViewName()))
