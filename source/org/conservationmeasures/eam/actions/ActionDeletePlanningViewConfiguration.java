@@ -8,21 +8,21 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionDeletePlanningViewConfigeration extends MainWindowAction
+public class ActionDeletePlanningViewConfiguration extends MainWindowAction
 {
-	public ActionDeletePlanningViewConfigeration(MainWindow mainWindowToUse)
+	public ActionDeletePlanningViewConfiguration(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Delete Configeration");
+		return EAM.text("Action|Delete Configuration");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete the Configeration");
+		return EAM.text("TT|Delete the Configuration");
 	}
 
 }
