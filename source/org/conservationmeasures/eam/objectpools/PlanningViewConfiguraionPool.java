@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.project.ObjectManager;
 
-public class PlanningViewConfigeraionPool extends EAMNormalObjectPool
+public class PlanningViewConfiguraionPool extends EAMNormalObjectPool
 {
-	public PlanningViewConfigeraionPool(IdAssigner idAssignerToUse)
+	public PlanningViewConfiguraionPool(IdAssigner idAssignerToUse)
 	{
 		super(idAssignerToUse, ObjectType.PLANNING_VIEW_CONFIGURATION);
 	}
