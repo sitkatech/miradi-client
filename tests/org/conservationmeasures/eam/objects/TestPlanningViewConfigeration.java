@@ -15,6 +15,6 @@ public class TestPlanningViewConfigeration extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(PlanningViewConfigeration.getObjectType());
+		verifyFields(PlanningViewConfiguration.getObjectType());
 	}
 }

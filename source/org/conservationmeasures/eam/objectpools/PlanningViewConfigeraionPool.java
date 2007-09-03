@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.PlanningViewConfigeration;
+import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.project.ObjectManager;
 
 public class PlanningViewConfigeraionPool extends EAMNormalObjectPool
@@ -20,13 +20,13 @@ public class PlanningViewConfigeraionPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.PLANNING_VIEW_CONFIGURATION);
 	}
 	
-	public PlanningViewConfigeration find(BaseId id)
+	public PlanningViewConfiguration find(BaseId id)
 	{
-		return (PlanningViewConfigeration) findObject(id);
+		return (PlanningViewConfiguration) findObject(id);
 	}
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new PlanningViewConfigeration(objectManager, actualId);
+		return new PlanningViewConfiguration(objectManager, actualId);
 	}
 }

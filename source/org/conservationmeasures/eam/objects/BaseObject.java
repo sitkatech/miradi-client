@@ -211,7 +211,7 @@ abstract public class BaseObject
 				return new ResultsChainDiagram(objectManager, idAsInt, json);
 				
 			case ObjectType.PLANNING_VIEW_CONFIGURATION:
-				return new PlanningViewConfigeration(objectManager, idAsInt, json);
+				return new PlanningViewConfiguration(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

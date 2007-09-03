@@ -60,7 +60,7 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.IntermediateResult;
-import org.conservationmeasures.eam.objects.PlanningViewConfigeration;
+import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
@@ -204,7 +204,7 @@ public class ObjectManager
 	
 	public PlanningViewConfigeraionPool getPlanningCongConfigeraionPool()
 	{
-		return (PlanningViewConfigeraionPool) getPool(PlanningViewConfigeration.getObjectType());
+		return (PlanningViewConfigeraionPool) getPool(PlanningViewConfiguration.getObjectType());
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception

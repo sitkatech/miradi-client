@@ -11,20 +11,20 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class PlanningViewConfigeration extends BaseObject
+public class PlanningViewConfiguration extends BaseObject
 {
-	public PlanningViewConfigeration(ObjectManager objectManager, BaseId id)
+	public PlanningViewConfiguration(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id);
 		clear();
 	}
 	
-	public PlanningViewConfigeration(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
+	public PlanningViewConfiguration(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
-	public PlanningViewConfigeration(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
+	public PlanningViewConfiguration(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
 		super(new BaseId(idAsInt), jsonObject);
 	}
