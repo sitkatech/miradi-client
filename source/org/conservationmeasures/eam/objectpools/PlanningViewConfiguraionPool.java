@@ -29,4 +29,16 @@ public class PlanningViewConfiguraionPool extends EAMNormalObjectPool
 	{
 		return new PlanningViewConfiguration(objectManager, actualId);
 	}
+	
+	public PlanningViewConfiguration[] getAllConfigurations()
+	{
+		BaseId[] allConfigurationIds = getIds();
+		PlanningViewConfiguration[] allPlanningViewConfigurations = new PlanningViewConfiguration[allConfigurationIds.length];
+		for (int i = 0; i < allPlanningViewConfigurations.length; ++i)
+		{
+			allPlanningViewConfigurations[i] = find(allConfigurationIds[i]);
+		}
+			
+		return allPlanningViewConfigurations;
+	}
 }
