@@ -8,20 +8,20 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCreatePlanningViewConfigeration extends MainWindowAction
+public class ActionCreatePlanningViewConfiguration extends MainWindowAction
 {
-	public ActionCreatePlanningViewConfigeration(MainWindow mainWindowToUse)
+	public ActionCreatePlanningViewConfiguration(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Create Configeration");
+		return EAM.text("Action|Create Configuration");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a new Configeration");
+		return EAM.text("TT|Create a new Configuration");
 	}
 }
