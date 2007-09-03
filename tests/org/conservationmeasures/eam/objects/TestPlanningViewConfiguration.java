@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.objects;
 
 
-public class TestPlanningViewConfigeration extends ObjectTestCase
+public class TestPlanningViewConfiguration extends ObjectTestCase
 {
-	public TestPlanningViewConfigeration(String name)
+	public TestPlanningViewConfiguration(String name)
 	{
 		super(name);
 	}

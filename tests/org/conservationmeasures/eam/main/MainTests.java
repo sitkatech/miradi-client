@@ -64,7 +64,7 @@ import org.conservationmeasures.eam.objects.TestObjectGetTypesThatCanOwnUs;
 import org.conservationmeasures.eam.objects.TestObjectGetTypesThatCanReferToUs;
 import org.conservationmeasures.eam.objects.TestObjectManager;
 import org.conservationmeasures.eam.objects.TestObjective;
-import org.conservationmeasures.eam.objects.TestPlanningViewConfigeration;
+import org.conservationmeasures.eam.objects.TestPlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.TestProjectMetadata;
 import org.conservationmeasures.eam.objects.TestProjectResource;
 import org.conservationmeasures.eam.objects.TestRatingCriterion;
@@ -250,7 +250,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestChainManager.class));
 		suite.addTest(new TestSuite(TestSlide.class));
 		suite.addTest(new TestSuite(TestSlideShow.class));
-		suite.addTest(new TestSuite(TestPlanningViewConfigeration.class));
+		suite.addTest(new TestSuite(TestPlanningViewConfiguration.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
