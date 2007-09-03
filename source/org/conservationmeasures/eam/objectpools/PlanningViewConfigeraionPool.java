@@ -17,7 +17,7 @@ public class PlanningViewConfigeraionPool extends EAMNormalObjectPool
 {
 	public PlanningViewConfigeraionPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ObjectType.PLANNING_VIEW_CONFIGERATION);
+		super(idAssignerToUse, ObjectType.PLANNING_VIEW_CONFIGURATION);
 	}
 	
 	public PlanningViewConfigeration find(BaseId id)

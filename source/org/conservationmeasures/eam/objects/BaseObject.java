@@ -210,7 +210,7 @@ abstract public class BaseObject
 			case ObjectType.RESULTS_CHAIN_DIAGRAM:
 				return new ResultsChainDiagram(objectManager, idAsInt, json);
 				
-			case ObjectType.PLANNING_VIEW_CONFIGERATION:
+			case ObjectType.PLANNING_VIEW_CONFIGURATION:
 				return new PlanningViewConfigeration(objectManager, idAsInt, json);
 				
 			default:

@@ -41,7 +41,7 @@ public class PlanningViewConfigeration extends BaseObject
 
 	public static int getObjectType()
 	{
-		return ObjectType.PLANNING_VIEW_CONFIGERATION;
+		return ObjectType.PLANNING_VIEW_CONFIGURATION;
 	}	
 	
 	void clear()
