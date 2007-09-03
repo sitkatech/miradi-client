@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs.planning;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -18,23 +17,21 @@ public class PlanningViewControlPanel extends JPanel
 {
 	public PlanningViewControlPanel(MainWindow mainWindowToUse)
 	{
+		super(new BasicGridLayout(2, 1));
 		mainWindow = mainWindowToUse;
-		add(createScrollableLegendPanel());
+		addLegendComponents();
 	}
 	
-	private JScrollPane createScrollableLegendPanel()
+	private void addLegendComponents()
 	{
 		planningCustomizationPanel = new PlanningCustomizationPanel(getProject());
 		rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
 		columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
-		JPanel legendPanel = new JPanel(new BasicGridLayout(2, 1));
 		
-		legendPanel.add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
-		legendPanel.add(planningCustomizationPanel);
-		legendPanel.add(rowsLegendPanel);
-		legendPanel.add(columnsLegendPanel);
-			
-		return new JScrollPane(legendPanel);
+		add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
+		add(planningCustomizationPanel);
+		add(rowsLegendPanel);
+		add(columnsLegendPanel);
 	}
 	
 	public void dispose()
