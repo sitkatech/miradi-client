@@ -78,8 +78,8 @@ public class PlanningView extends TabbedView
 	
 	private void addPlanningViewDoersToMap()
 	{
-		addDoerToMap(ActionCreatePlanningViewConfiguration.class, new CreatePlanningViewConfigerationDoer());
-		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigerationDoer());
+		addDoerToMap(ActionCreatePlanningViewConfiguration.class, new CreatePlanningViewConfigurationDoer());
+		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
 	}
 	
 	static public CodeList getMasterRowList()
