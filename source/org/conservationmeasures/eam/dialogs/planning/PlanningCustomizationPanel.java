@@ -46,7 +46,12 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		project = projectToUse;
 		configurationComponents = new Hashtable<String, Component>();
 		project.addCommandExecutedListener(this);
+		
 		rebuildLegendPanel();
+		selectAppropriateRadioButton();
+		selectAppropriateSingleLevelComboBoxItem();
+		selectAppropriateConfiguredComboBoxItem();
+
 		setBorder(BorderFactory.createTitledBorder(EAM.text("Standard Views")));
 	}
 	
@@ -57,6 +62,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	
 	protected void rebuildLegendPanel()
 	{
+		removeAll();
 		JPanel panel = new JPanel(new GridLayoutPlus(3, 2));
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
@@ -84,9 +90,6 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		addDropDownRadioButton(panel, configurableRadioButton, configurableComboBox);
 		
 		add(panel);
-		selectAppropriateRadioButton();
-		selectAppropriateSingleLevelComboBoxItem();
-		selectAppropriateConfiguredComboBoxItem();
 	}
 	
 	private JComboBox createComboBox(Object[] preconfiguredItems, ActionListener handler, String propertyName)
@@ -225,6 +228,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	
 	private void selectRadioButtonFromProjectSetting(CommandExecutedEvent event)
 	{
+		possiblyRebuild(event);
 		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_STYLE_CHOICE))
 		{
 			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
@@ -246,6 +250,14 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			return;
 		}
 	}
+
+	private void possiblyRebuild(CommandExecutedEvent event)
+	{
+		if (! (event.isCreateObjectCommand() || event.isDeleteObjectCommand()))
+			return;
+		
+		rebuildLegendPanel();
+	}
 	
 	private void selectComboButton(String property)
 	{
@@ -260,6 +272,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		JComboBox comboBox = findComboBox(PlanningView.CUSTOMIZABLE_COMBO);
 		if (refToSelect.isInvalid())
 			return;
+		
 		if (comboBox.getModel().getSize() == 0)
 			return;
 		
