@@ -202,7 +202,7 @@ public class ObjectManager
 		return (SlideShowPool)getPool(ObjectType.SLIDESHOW);
 	}
 	
-	public PlanningViewConfigurationPool getPlanningCongConfigurationPool()
+	public PlanningViewConfigurationPool getPlanningConfigurationPool()
 	{
 		return (PlanningViewConfigurationPool) getPool(PlanningViewConfiguration.getObjectType());
 	}

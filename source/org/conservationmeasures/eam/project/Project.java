@@ -259,7 +259,7 @@ public class Project
 	
 	public PlanningViewConfigurationPool getPlanningViewConfigurationPool()
 	{
-		return objectManager.getPlanningCongConfigurationPool();
+		return objectManager.getPlanningConfigurationPool();
 	}
 
 	public LayerManager getLayerManager()
