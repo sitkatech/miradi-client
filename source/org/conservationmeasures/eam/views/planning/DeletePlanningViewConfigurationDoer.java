@@ -21,7 +21,7 @@ public class DeletePlanningViewConfigurationDoer extends ViewDoer
 		if (!isPlanningView())
 			return false;
 		
-		if (!isConfigurableChoice())
+		if (!isValidConfigurarionChoice())
 			return false;
 			
 		return true;
@@ -59,13 +59,18 @@ public class DeletePlanningViewConfigurationDoer extends ViewDoer
 		}
 	}
 
-	private boolean isConfigurableChoice()
+	private boolean isValidConfigurarionChoice()
 	{
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			String currentChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-			if (currentChoice.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
+			String currentStyle = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
+			if (! currentStyle.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
+				return false;
+			
+			String orefAsString = viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+			ORef currentStyleRef = ORef.createFromString(orefAsString);
+			if (! currentStyleRef.isInvalid())
 				return true;
 		}
 		catch (Exception e)
@@ -73,6 +78,7 @@ public class DeletePlanningViewConfigurationDoer extends ViewDoer
 			EAM.logException(e);
 			return false;
 		}
+		
 		return false;
 	}
 }
