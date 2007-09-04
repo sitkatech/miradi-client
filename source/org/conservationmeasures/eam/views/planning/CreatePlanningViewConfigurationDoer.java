@@ -63,5 +63,8 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 		
 		CommandSetObjectData setHiddenColsCommand = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_COL_CONFIGURATION, hiddenColsAsString);
 		getProject().executeCommand(setHiddenColsCommand);
+		
+		CommandSetObjectData selectCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, newConfigurationRef);
+		getProject().executeCommand(selectCurrentConfiguration);
 	}
 }

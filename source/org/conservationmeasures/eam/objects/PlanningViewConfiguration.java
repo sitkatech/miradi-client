@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class PlanningViewConfiguration extends BaseObject
@@ -29,6 +30,16 @@ public class PlanningViewConfiguration extends BaseObject
 		super(new BaseId(idAsInt), jsonObject);
 	}
 
+	public CodeList getRowConfiguration()
+	{
+		return rowConfigurationList.getCodeList();
+	}
+	
+	public CodeList getColumnConfiguration()
+	{
+		return colConfigurationList.getCodeList();
+	}
+	
 	public int getType()
 	{
 		return getObjectType();
@@ -43,6 +54,12 @@ public class PlanningViewConfiguration extends BaseObject
 	{
 		return ObjectType.PLANNING_VIEW_CONFIGURATION;
 	}	
+	
+	public String toString()
+	{
+		//FIXME planning - use some sort of defualt label so its not blank
+		return getLabel();
+	}
 	
 	void clear()
 	{
