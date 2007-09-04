@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.PlanningViewConfiguraionPool;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -68,24 +69,24 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		JRadioButton workRadio = createRadioButton(buttonGroup, new WorkPlanButtonHandler(), PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
 		addLabeledRadioButton(panel, workRadio, EAM.text("Work Plan"));
 		
-		RadioButtonForComboHandler preConfiguredButtonHandler = new RadioButtonForComboHandler(PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
-		JRadioButton singleObjectRadio = createRadioButton(buttonGroup, preConfiguredButtonHandler, PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
+		RadioButtonForComboHandler preConfiguredButtonHandler = new RadioButtonForComboHandler(PlanningView.SINGLE_LEVEL_RADIO_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
+		JRadioButton singleObjectRadio = createRadioButton(buttonGroup, preConfiguredButtonHandler, PlanningView.SINGLE_LEVEL_RADIO_CHOICE);
 		Object[] singleObjectComboBox = getPreConfiguredButtons().values().toArray();
-		ComboBoxHandler comboHandler = new ComboBoxHandler(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE);
-		JComboBox cannedComboBox = createComboBox(singleObjectComboBox, comboHandler, PlanningView.PRE_CONFIGURED_COMBO);
+		SingleLevelComboBoxHandler comboHandler = new SingleLevelComboBoxHandler();
+		JComboBox cannedComboBox = createComboBox(singleObjectComboBox, comboHandler, PlanningView.SINGLE_LEVEL_COMBO);
 		addDropDownRadioButton(panel, singleObjectRadio, cannedComboBox);
 		
-		
-		RadioButtonForComboHandler configuredButtonHandler = new RadioButtonForComboHandler(PlanningView.CONFIGURABLE_RADIO_CHOICE);
-		JRadioButton configurableRadioButton = createRadioButton(buttonGroup, configuredButtonHandler, PlanningView.CONFIGURABLE_RADIO_CHOICE);
+		RadioButtonForConfigurationComboHandler configuredButtonHandler = new RadioButtonForConfigurationComboHandler();
+		JRadioButton configurableRadioButton = createRadioButton(buttonGroup, configuredButtonHandler, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 		PlanningViewConfiguration[] allConfigurations = getConfigurableChoices();
-		ComboBoxHandler configurableComboHandler = new ComboBoxHandler(ViewData.TAG_PLANNING_CUSTOMIZED_CHOICE);
-		JComboBox configurableComboBox = createComboBox(allConfigurations, configurableComboHandler, PlanningView.CONFIGURED_COMBO);
+		ConfiguredComboBoxHandler configurableComboHandler = new ConfiguredComboBoxHandler();
+		JComboBox configurableComboBox = createComboBox(allConfigurations, configurableComboHandler, PlanningView.CUSTOMIZABLE_COMBO);
 		addDropDownRadioButton(panel, configurableRadioButton, configurableComboBox);
 		
 		add(panel);
 		selectAppropriateRadioButton();
-		selectAppropriateCheckBoxItem();
+		selectAppropriateSingleLevelComboBoxItem();
+		selectAppropriateConfiguredComboBoxItem();
 	}
 	
 	private JComboBox createComboBox(Object[] preconfiguredItems, ActionListener handler, String propertyName)
@@ -102,7 +103,6 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		JRadioButton radioButton = new JRadioButton();
 		buttonGroup.add(radioButton);
 		
-		radioButton.putClientProperty(TAG_PREDEFINED_CONFIGURATION, propertyName);
 		radioButton.addActionListener(handler);
 		configurationComponents.put(propertyName, radioButton);
 		
@@ -121,17 +121,35 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		panel.add(radioButton);
 	}
 	
-	private void selectAppropriateCheckBoxItem()
+	private void selectAppropriateSingleLevelComboBoxItem()
 	{
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE);
-			if (! selectedRadioName.equals(PlanningView.PRE_CONFIGURED_RADIO_CHOICE))
+			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
+			if (! selectedRadioName.equals(PlanningView.SINGLE_LEVEL_RADIO_CHOICE))
 				return;
 
-			String preconfiguredChoice = getCurrentCheckBoxChoice(viewData);
+			String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
 			selectComboButton(preconfiguredChoice);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	private void selectAppropriateConfiguredComboBoxItem()
+	{
+		try
+		{
+			ViewData viewData = project.getCurrentViewData();
+			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
+			if (! selectedRadioName.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
+				return;
+			
+			ORef configurationChoiceRef = getCurrentConfigurationComboBoxChoice(viewData);
+			selectConfigurationComboButton(configurationChoiceRef);
 		}
 		catch (Exception e)
 		{
@@ -156,22 +174,32 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private String getCurrentRadioChoice(ViewData viewData)
 	{
-		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE);
+		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
 		boolean shouldReturnDefault = selectedRadioName.trim().equals("");
 		if (shouldReturnDefault)
 			return PlanningView.STRATEGIC_PLAN_RADIO_CHOICE;
 
 		return selectedRadioName;
 	}
-	
-	private String getCurrentCheckBoxChoice(ViewData viewData)
-	{		
-		String preconfiguredChoice = viewData.getData(ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE);
+
+	private ORef getCurrentConfigurationComboBoxChoice(ViewData viewData)
+	{	
+		String preconfiguredChoice = viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 		boolean shouldReturnDefault = preconfiguredChoice.trim().equals("");
 		if (shouldReturnDefault)
+			return ORef.INVALID;
+
+		return ORef.createFromString(preconfiguredChoice);
+	}
+	
+	private String getCurrentSingleLevelChoice(ViewData viewData)
+	{	
+		String singleLevelChoice = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		boolean shouldReturnDefault = singleLevelChoice.trim().equals("");
+		if (shouldReturnDefault)
 			return Goal.OBJECT_NAME;
-			
-		return preconfiguredChoice;
+
+		return singleLevelChoice;
 	}
 	
 	private void saveConfiguration(String tag, String newValue) throws Exception
@@ -193,34 +221,47 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		selectRadioButtonFromProjectSetting(event);
-		selectCombBoxFromProjectSetting(event);
 	}
 	
 	private void selectRadioButtonFromProjectSetting(CommandExecutedEvent event)
 	{
-		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CONFIGURATION_CHOICE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_STYLE_CHOICE))
+		{
+			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+			updateRadioSelection(setCommand.getDataValue());
 			return;
-	
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		updateRadioSelection(setCommand.getDataValue());
+		}
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
+		{
+			updateRadioSelection(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+			return;
+		}
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE))
+		{
+			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+			String property = setCommand.getDataValue();
+			selectComboButton(property);
+			return;
+		}
 	}
 	
-	private void selectCombBoxFromProjectSetting(CommandExecutedEvent event)
-	{
-		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_SINGLE_TYPE_CHOICE))
-			return;
-
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		String property = setCommand.getDataValue();
-		selectComboButton(property);
-	}
-
 	private void selectComboButton(String property)
 	{
-		JComboBox comboBox = findComboBox(PlanningView.PRE_CONFIGURED_COMBO);
+		JComboBox comboBox = findComboBox(PlanningView.SINGLE_LEVEL_COMBO);
 		HashMap preConfiguredHashMap = getPreConfiguredButtons();
 		ComboBoxButton buttonToSelect = (ComboBoxButton) preConfiguredHashMap.get(property);
 		comboBox.setSelectedItem(buttonToSelect);
+	}
+	
+	private void selectConfigurationComboButton(ORef refToSelect)
+	{
+		JComboBox comboBox = findComboBox(PlanningView.CUSTOMIZABLE_COMBO);
+		if (refToSelect.isInvalid())
+			return;
+		
+		comboBox.setSelectedIndex(0);
 	}
 
 	private void updateRadioSelection(String selectedProperty)
@@ -247,7 +288,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		try
 		{	
-			saveConfiguration(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE, radioName);
+			saveConfiguration(ViewData.TAG_PLANNING_STYLE_CHOICE, radioName);
 			saveConfiguration(dataTagToHide, codeListToSave.toString());
 		}
 		catch (Exception e)
@@ -347,20 +388,15 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		}
 	}
 	
-	public class ComboBoxHandler implements ActionListener
+	public class SingleLevelComboBoxHandler implements ActionListener
 	{
-		public ComboBoxHandler(String comboTagToUse)
-		{
-			comboTag = comboTagToUse;
-		}
-		
 		public void actionPerformed(ActionEvent e)
 		{
-			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
-			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.PRE_CONFIGURED_RADIO_CHOICE);
+			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.SINGLE_LEVEL_RADIO_CHOICE);
+			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.SINGLE_LEVEL_RADIO_CHOICE);
 
-			JComboBox checkBox = (JComboBox) e.getSource();
-			ComboBoxButton comboChoice = (ComboBoxButton) checkBox.getSelectedItem();
+			JComboBox comboBox = (JComboBox) e.getSource();
+			ComboBoxButton comboChoice = (ComboBoxButton) comboBox.getSelectedItem();
 			saveComboSelection(comboChoice);
 		}
 		
@@ -368,7 +404,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		{
 			try
 			{
-				saveConfiguration(comboTag, comboChoice.getPropertyName());
+				saveConfiguration(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, comboChoice.getPropertyName());
 			}
 			catch (Exception e)
 			{
@@ -379,21 +415,47 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		private CodeList getRowListToShow()
 		{
 			CodeList listToShow = new CodeList();
-			JComboBox comboBox = findComboBox(PlanningView.PRE_CONFIGURED_COMBO);
+			JComboBox comboBox = findComboBox(PlanningView.SINGLE_LEVEL_COMBO);
 			ComboBoxButton comboButton = (ComboBoxButton) comboBox.getSelectedItem();
 			listToShow.add(comboButton.getPropertyName());
 			
 			return listToShow;
 		}		
-		
-		private String comboTag;
 	}
+	
+	public class ConfiguredComboBoxHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			JComboBox comboBox = (JComboBox) e.getSource();
+			PlanningViewConfiguration configuration = (PlanningViewConfiguration) comboBox.getSelectedItem();
+			CodeList rowConfiguration = configuration.getRowConfiguration();
+			CodeList colConfiguration = configuration.getColumnConfiguration();
+			saveVisibleRowList(PlanningView.getMasterRowList(), rowConfiguration, ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+			saveVisibleColumnList(PlanningView.getMasterColumnList(), colConfiguration, ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+			saveComboSelection(configuration.getRef());
+		}
+		
+		private void saveComboSelection(ORef ref)
+		{
+			try
+			{
+				saveConfiguration(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, ref.toString());
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+	}
+
 	
 	public class RadioButtonForComboHandler implements ActionListener
 	{
-		public RadioButtonForComboHandler(String dropDownRadioTagToUse)
+		public RadioButtonForComboHandler(String dropDownRadioTagToUse, String planningComboTagToUse)
 		{
 			dropDownRadioTag = dropDownRadioTagToUse;
+			planningComboTag = planningComboTagToUse;
 		}
 		
 		public void actionPerformed(ActionEvent e)
@@ -405,7 +467,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		private CodeList getRowListToShow()
 		{
 			CodeList listToShow = new CodeList();
-			JComboBox comboBox = findComboBox(PlanningView.PRE_CONFIGURED_COMBO);
+			JComboBox comboBox = findComboBox(planningComboTag);
 			ComboBoxButton comboButton = (ComboBoxButton) comboBox.getSelectedItem();
 			listToShow.add(comboButton.getPropertyName());
 			
@@ -413,7 +475,28 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		}	
 		
 		private String dropDownRadioTag;
+		private String planningComboTag;
 	}
+	
+	public class RadioButtonForConfigurationComboHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{			
+			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+		}
+
+		private CodeList getRowListToShow()
+		{
+			CodeList listToShow = new CodeList();
+//			JComboBox comboBox = findComboBox(planningComboTag);
+//			ComboBoxButton comboButton = (ComboBoxButton) comboBox.getSelectedItem();
+//			listToShow.add(comboButton.getPropertyName());
+			
+			return listToShow;
+		}	
+	}
+
 	
 	public class ComboBoxButton
 	{
@@ -459,5 +542,4 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private Project project;
 	private Hashtable<String, Component> configurationComponents;
-	private static final String TAG_PREDEFINED_CONFIGURATION = "PredefinedConfuration";
 }

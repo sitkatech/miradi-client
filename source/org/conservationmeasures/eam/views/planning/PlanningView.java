@@ -118,11 +118,11 @@ public class PlanningView extends TabbedView
 	public static final String STRATEGIC_PLAN_RADIO_CHOICE = "StrategicPlanRadioChoice";
 	public static final String MONITORING_PLAN_RADIO_CHOICE = "MonitoringPlanRadioChoice";
 	public static final String WORKPLAN_PLAN_RADIO_CHOICE = "WorkPlanPlanRadioChoice";
-	public static final String PRE_CONFIGURED_RADIO_CHOICE = "PreConfiguredRadioChoice";
-	public static final String CONFIGURABLE_RADIO_CHOICE = "ConfigurableRadioChoice";
+	public static final String SINGLE_LEVEL_RADIO_CHOICE = "SingleLevelRadioChoice";
+	public static final String CUSTOMIZABLE_RADIO_CHOICE = "CustomizableRadioChoice";
 	
-	public static final String PRE_CONFIGURED_COMBO = "PreConfiguredCombo";
-	public static final String CONFIGURED_COMBO = "ConfiguredCombo";
+	public static final String SINGLE_LEVEL_COMBO = "SingleLevelCombo";
+	public static final String CUSTOMIZABLE_COMBO = "CostomizableCombo";
 	
 	PlanningTreeManagementPanel planningManagementPanel;
 	PlanningViewControlPanel controlPanel;

@@ -81,7 +81,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			String currentChoice = viewData.getData(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE);
+			String currentChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
 			updateEnableStatus(currentChoice);
 		}
 		catch (Exception e)
@@ -145,7 +145,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		if ( setCommand.getFieldTag().equals(getViewDataHiddenTypesTag()))
 			updateCheckBoxesFromProjectSettings();
 		
-		if (setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_CONFIGURATION_CHOICE))
+		if (setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
 			updateEnableStatus(setCommand.getDataValue());
 	}
 

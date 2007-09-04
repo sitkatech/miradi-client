@@ -141,9 +141,9 @@ public class ViewData extends BaseObject
 		diagramHiddenTypes = new CodeListData();
 		planningHiddenRowTypes = new CodeListData();
 		planningHiddenColumnTypes = new CodeListData();
-		planningRadionChoiceName = new StringData();
-		planningDropDownChoice = new StringData();
-		planningCustomizedChoice = new ORefData();
+		planningStyleChoice = new StringData();
+		planningSingleLevelChoice = new StringData();
+		planningCustomChoiceRef = new ORefData();
 		
 		addField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
 		addField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
@@ -156,9 +156,10 @@ public class ViewData extends BaseObject
 		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 		addField(TAG_PLANNING_HIDDEN_ROW_TYPES, planningHiddenRowTypes);
 		addField(TAG_PLANNING_HIDDEN_COL_TYPES, planningHiddenColumnTypes);
-		addField(TAG_PLANNING_CONFIGURATION_CHOICE, planningRadionChoiceName);
-		addField(TAG_PLANNING_SINGLE_TYPE_CHOICE, planningDropDownChoice);
-		addField(TAG_PLANNING_CUSTOMIZED_CHOICE, planningCustomizedChoice);
+		
+		addField(TAG_PLANNING_STYLE_CHOICE, planningStyleChoice);
+		addField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, planningSingleLevelChoice);
+		addField(TAG_PLANNING_CUSTOM_PLAN_REF, planningCustomChoiceRef);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
@@ -172,9 +173,10 @@ public class ViewData extends BaseObject
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
 	public static final String TAG_PLANNING_HIDDEN_ROW_TYPES = "PlanningHiddenRowTypes";
 	public static final String TAG_PLANNING_HIDDEN_COL_TYPES = "PlanningHiddenColumnTypes";
-	public static final String TAG_PLANNING_CONFIGURATION_CHOICE = "PlanningConfigurationChoice";
-	public static final String TAG_PLANNING_SINGLE_TYPE_CHOICE = "PlanningSingleTypeChoice";
-	public static final String TAG_PLANNING_CUSTOMIZED_CHOICE = "PlanningCustomizedChoice";
+	
+	public static final String TAG_PLANNING_STYLE_CHOICE = "PlanningStyleChoice";
+	public static final String TAG_PLANNING_SINGLE_LEVEL_CHOICE = "SingleLevelChoice";
+	public static final String TAG_PLANNING_CUSTOM_PLAN_REF = "CustomPlanRef";
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
@@ -198,7 +200,7 @@ public class ViewData extends BaseObject
 	private CodeListData diagramHiddenTypes;
 	private CodeListData planningHiddenRowTypes;
 	private CodeListData planningHiddenColumnTypes;
-	private StringData planningRadionChoiceName;
-	private StringData planningDropDownChoice;
-	private ORefData planningCustomizedChoice;
+	private StringData planningStyleChoice;
+	private StringData planningSingleLevelChoice;
+	private ORefData planningCustomChoiceRef;
 }
