@@ -459,9 +459,6 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			CodeList colConfiguration = configuration.getColumnConfiguration();
 			saveCodeList(colConfiguration, ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 			
-			//TODO planning - remove commented code
-			//saveVisibleRowList(PlanningView.getMasterRowList(), rowConfiguration, ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
-			//saveVisibleColumnList(PlanningView.getMasterColumnList(), colConfiguration, ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 			saveComboSelection(configuration.getRef());
 		}
 		
@@ -482,22 +479,19 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{			
-			saveCodeList(getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
-			//FIXME planning - add the saving of columns
-			
-			//TODO planning - remove commented code
-			//saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
-			//saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+			saveCurrentConfiguration();
 		}
 
-		private CodeList getRowListToShow()
+		private void saveCurrentConfiguration()
 		{
 			JComboBox comboBox = findComboBox(PlanningView.CUSTOMIZABLE_COMBO);
 			PlanningViewConfiguration configuration = (PlanningViewConfiguration) comboBox.getSelectedItem();
-			CodeList rowConfiguration = configuration.getRowConfiguration();
+			CodeList rowList = configuration.getRowConfiguration();
+			saveCodeList(rowList, ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 			
-			return rowConfiguration;
-		}	
+			CodeList columnList = configuration.getColumnConfiguration();
+			saveCodeList(columnList, ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+		}
 	}
 	
 	public class SingleLevelComboRadioButtonHandler implements ActionListener
