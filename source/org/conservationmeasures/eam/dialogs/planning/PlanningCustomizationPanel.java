@@ -277,10 +277,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		if (refToSelect.isInvalid())
 			return;
 		
-		if (comboBox.getModel().getSize() == 0)
-			return;
-		
-		comboBox.setSelectedIndex(0);
+		PlanningViewConfiguration configuration  = (PlanningViewConfiguration) project.findObject(refToSelect);		
+		comboBox.setSelectedItem(configuration);
 	}
 
 	private void updateRadioSelection(String selectedProperty)
