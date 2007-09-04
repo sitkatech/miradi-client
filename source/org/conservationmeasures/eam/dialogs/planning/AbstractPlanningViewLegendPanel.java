@@ -82,7 +82,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		{
 			ViewData viewData = project.getCurrentViewData();
 			String currentChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-			updateEnableStatus(currentChoice);
+			updateEnableState(currentChoice);
 		}
 		catch (Exception e)
 		{
@@ -90,24 +90,26 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		}
 	}
 	
-	private void updateEnableStatus(String choice)
+	private void updateEnableState(String choice)
 	{
-		if (shouldDisableAll(choice))
-			disableAllCheckBoxes();
+		disableAllCheckBoxes(shouldEnableAll(choice));
 	}
 	
-	public boolean shouldDisableAll(String choice)
+	public boolean shouldEnableAll(String choice)
 	{
 		if (choice.equals(PlanningView.STRATEGIC_PLAN_RADIO_CHOICE))
-			return true;
+			return false;
 		
 		if (choice.equals(PlanningView.MONITORING_PLAN_RADIO_CHOICE))
-			return true;
+			return false;
 		
-		if (! choice.equals(PlanningView.WORKPLAN_PLAN_RADIO_CHOICE))
-			return true;
+		if (choice.equals(PlanningView.WORKPLAN_PLAN_RADIO_CHOICE))
+			return false;
 		
-		return false;
+		if (choice.equals(PlanningView.SINGLE_LEVEL_RADIO_CHOICE))
+			return false;
+		
+		return true;
 	}
 
 	public void actionPerformed(ActionEvent event)
@@ -146,7 +148,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			updateCheckBoxesFromProjectSettings();
 		
 		if (setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
-			updateEnableStatus(setCommand.getDataValue());
+			updateEnableState(setCommand.getDataValue());
 	}
 
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	

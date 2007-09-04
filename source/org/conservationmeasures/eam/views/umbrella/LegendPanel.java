@@ -93,15 +93,24 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		return checkBox.isSelected();
 	}
 
-	public void disableAllCheckBoxes()
+	public void disableAllCheckBoxes(boolean enableAll)
 	{
 		Object[] keys = checkBoxes.keySet().toArray();
 		for (int i = 0; i < keys.length; ++i)
 		{
-			findCheckBox(keys[i]).setEnabled(false);
+			findCheckBox(keys[i]).setEnabled(enableAll);
 		}
 	}
 	
+	public void enableAllCheckBoxes()
+	{
+		Object[] keys = checkBoxes.keySet().toArray();
+		for (int i = 0; i < keys.length; ++i)
+		{
+			findCheckBox(keys[i]).setEnabled(true);
+		}
+	}
+
 	public void unselectAllCheckBoxes()
 	{
 		Object[] keys = checkBoxes.keySet().toArray();
