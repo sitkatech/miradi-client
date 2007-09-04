@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
 
 public class PlanningView extends TabbedView
@@ -44,12 +45,14 @@ public class PlanningView extends TabbedView
 		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
 		
 		controlPanel = new PlanningViewControlPanel(getMainWindow());
-		JScrollPane controlPanelScroller = new JScrollPane(controlPanel);
+		JScrollPane controlPanelScroller = new FastScrollPane(controlPanel);
+		controlPanelScroller.validate();
+
 		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		
-		horizontalSplitPane.setRightComponent(managementPanelScrollPane);
 		horizontalSplitPane.setLeftComponent(controlPanelScroller);
-		horizontalSplitPane.setDividerLocation(100);
+		horizontalSplitPane.setRightComponent(managementPanelScrollPane);
+		// FIXME: Should remember previous split position...this is a HACK!
+		horizontalSplitPane.setDividerLocation(controlPanel.getPreferredSize().width + 30);
 		
 		addTab(EAM.text("Planning"), horizontalSplitPane);
 	}
