@@ -50,6 +50,7 @@ import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.IntermediateResultPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
+import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
@@ -254,6 +255,11 @@ public class Project
 	public AssignmentPool getAssignmentPool()
 	{
 		return objectManager.getAssignmentPool();
+	}
+	
+	public PlanningViewConfigurationPool getPlanningViewConfigurationPool()
+	{
+		return objectManager.getPlanningCongConfigurationPool();
 	}
 
 	public LayerManager getLayerManager()
