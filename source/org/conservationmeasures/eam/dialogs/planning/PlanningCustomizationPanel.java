@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objectpools.PlanningViewConfiguraionPool;
+import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -325,7 +325,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	
 	private PlanningViewConfiguration[] getConfigurableChoices()
 	{
-		PlanningViewConfiguraionPool configurationPool = (PlanningViewConfiguraionPool) project.getPool(PlanningViewConfiguration.getObjectType());
+		PlanningViewConfigurationPool configurationPool = (PlanningViewConfigurationPool) project.getPool(PlanningViewConfiguration.getObjectType());
 		return configurationPool.getAllConfigurations();
 	}
 	
