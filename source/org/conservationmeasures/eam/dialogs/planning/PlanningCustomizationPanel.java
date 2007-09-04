@@ -260,6 +260,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		JComboBox comboBox = findComboBox(PlanningView.CUSTOMIZABLE_COMBO);
 		if (refToSelect.isInvalid())
 			return;
+		if (comboBox.getModel().getSize() == 0)
+			return;
 		
 		comboBox.setSelectedIndex(0);
 	}
@@ -427,8 +429,15 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			JComboBox comboBox = (JComboBox) e.getSource();
+			saveSelectedConfiguration((JComboBox) e.getSource());
+		}
+
+		private void saveSelectedConfiguration(JComboBox comboBox)
+		{
 			PlanningViewConfiguration configuration = (PlanningViewConfiguration) comboBox.getSelectedItem();
+			if (configuration == null)
+				return;
+			
 			CodeList rowConfiguration = configuration.getRowConfiguration();
 			CodeList colConfiguration = configuration.getColumnConfiguration();
 			saveVisibleRowList(PlanningView.getMasterRowList(), rowConfiguration, ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
