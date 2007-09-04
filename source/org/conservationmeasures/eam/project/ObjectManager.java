@@ -41,7 +41,7 @@ import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.IntermediateResultPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
-import org.conservationmeasures.eam.objectpools.PlanningViewConfiguraionPool;
+import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
@@ -102,7 +102,7 @@ public class ObjectManager
 		addNormalPool(new TextBoxPool(ida));
 		addNormalPool(new SlidePool(ida));
 		addNormalPool(new SlideShowPool(ida));
-		addNormalPool(new PlanningViewConfiguraionPool(ida));
+		addNormalPool(new PlanningViewConfigurationPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -202,9 +202,9 @@ public class ObjectManager
 		return (SlideShowPool)getPool(ObjectType.SLIDESHOW);
 	}
 	
-	public PlanningViewConfiguraionPool getPlanningCongConfiguraionPool()
+	public PlanningViewConfigurationPool getPlanningCongConfigurationPool()
 	{
-		return (PlanningViewConfiguraionPool) getPool(PlanningViewConfiguration.getObjectType());
+		return (PlanningViewConfigurationPool) getPool(PlanningViewConfiguration.getObjectType());
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
