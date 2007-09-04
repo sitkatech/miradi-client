@@ -71,8 +71,8 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			// FIXME: This avoided an exception on Kevin's machine...
 			// verify that it is legit and not just a bandaid covering 
 			// up a real bug!
-			if(checkBox != null)
-				checkBox.setSelected(false);
+			//if(checkBox != null)
+			checkBox.setSelected(false);
 		}
 	}
 	
