@@ -18,14 +18,11 @@ import org.conservationmeasures.eam.views.ViewDoer;
 public class CreatePlanningViewConfigurationDoer extends ViewDoer
 {
 	public boolean isAvailable()
-	{
-		// FIXME: Temporarily disabled for the build since it isn't working yet
-		return false;
+	{	
+		if (! isPlanningView())
+			return false;
 		
-//		if (! isPlanningView())
-//			return false;
-//		
-//		return true;
+		return true;
 	}
 
 	public void doIt() throws CommandFailedException
