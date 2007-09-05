@@ -21,13 +21,13 @@ abstract public class AbstractPlanningViewConfigurationDoer extends ViewDoer
 		if (!isPlanningView())
 			return false;
 		
-		if (!isValidConfigurarionChoice())
+		if (!isValidConfigurationChoice())
 			return false;
 			
 		return true;
 	}
 	
-	private boolean isValidConfigurarionChoice()
+	private boolean isValidConfigurationChoice()
 	{
 		try
 		{
