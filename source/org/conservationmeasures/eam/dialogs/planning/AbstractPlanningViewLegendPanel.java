@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -156,6 +157,34 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			updateEnableState(setCommand.getDataValue());
 	}
 	
+	protected void saveSettingsToProject(String tag)
+	{
+		super.saveSettingsToProject(tag);
+		savePlanningConfigurationData();
+	}
+	
+	private void savePlanningConfigurationData()
+	{
+		try
+		{
+			ViewData viewData = getProject().getCurrentViewData();
+			if (! PlanningView.isCustomizationStyle(viewData))
+				return;
+			
+			String rowListAsString = viewData.getData(getViewDataHiddenTypesTag());
+			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+			
+			CommandSetObjectData setRowListCommand = new CommandSetObjectData(configurationRef, getConfigurationTypeTag(), rowListAsString);
+			getProject().executeCommand(setRowListCommand);
+
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	abstract protected String getConfigurationTypeTag();
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
 	abstract protected JPanel createLegendButtonPanel(Actions actions);
 	abstract protected String getViewDataHiddenTypesTag();

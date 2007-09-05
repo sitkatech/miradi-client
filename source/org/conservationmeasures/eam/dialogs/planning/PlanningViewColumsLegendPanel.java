@@ -8,10 +8,8 @@ package org.conservationmeasures.eam.dialogs.planning;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -53,24 +51,8 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		return panel;
 	}
 	
-	protected void saveSettingsToProject(String tag)
+	protected String getConfigurationTypeTag()
 	{
-		super.saveSettingsToProject(tag);
-		try
-		{
-			ViewData viewData = getProject().getCurrentViewData();
-			if (! PlanningView.isCustomizationStyle(viewData))
-				return;
-			
-			String colListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);
-			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
-			
-			CommandSetObjectData setColListCommand = new CommandSetObjectData(configurationRef, PlanningViewConfiguration.TAG_COL_CONFIGURATION, colListAsString);
-			getProject().executeCommand(setColListCommand);				
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
+		return PlanningViewConfiguration.TAG_COL_CONFIGURATION;
 	}
 }

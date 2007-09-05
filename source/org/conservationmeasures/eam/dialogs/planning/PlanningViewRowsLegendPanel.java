@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.planning;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -18,7 +17,6 @@ import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TaskIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -68,24 +66,8 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		return panel;
 	}
 	
-	protected void saveSettingsToProject(String tag)
+	protected String getConfigurationTypeTag()
 	{
-		super.saveSettingsToProject(tag);
-		try
-		{
-			ViewData viewData = getProject().getCurrentViewData();
-			if (! PlanningView.isCustomizationStyle(viewData))
-				return;
-			
-			String rowListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
-			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
-			
-			CommandSetObjectData setRowListCommand = new CommandSetObjectData(configurationRef, PlanningViewConfiguration.TAG_ROW_CONFIGURATION, rowListAsString);
-			getProject().executeCommand(setRowListCommand);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
+		return PlanningViewConfiguration.TAG_ROW_CONFIGURATION;
 	}
 }
