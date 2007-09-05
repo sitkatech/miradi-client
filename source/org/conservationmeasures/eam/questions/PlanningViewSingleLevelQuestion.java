@@ -19,7 +19,7 @@ public class PlanningViewSingleLevelQuestion extends ChoiceQuestion
 		super(tagToUse, EAM.text("Single Level Style"), getSingleLevelChoices());
 	}
 
-	static ChoiceItem[] getSingleLevelChoices()
+	public static ChoiceItem[] getSingleLevelChoices()
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")),
