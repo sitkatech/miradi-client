@@ -90,6 +90,11 @@ abstract public class BaseObject
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
+	public ORef getORef(String tag) throws Exception
+	{
+		return ORef.createFromString(getData(tag));
+	}
+	
 	public CodeList getCodeList(String tag) throws Exception
 	{
 		return new CodeList(getData(tag));
