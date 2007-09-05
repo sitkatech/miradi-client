@@ -19,8 +19,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -213,17 +211,13 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	private void saveConfiguration(String tag, String newValue) throws Exception
 	{
 		//FIXME planning - look into this code, test it, was getting nested transaction exceptions
-		project.executeCommand(new CommandBeginTransaction());
-		try
-		{
-			ViewData viewData = project.getCurrentViewData();
-			CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, newValue);
-			project.executeCommand(setComboItem);
-		}
-		finally
-		{
-			project.executeCommand(new CommandEndTransaction());
-		}		
+		ViewData viewData = project.getCurrentViewData();
+		String existingValue = viewData.getData(tag);
+		if (existingValue.equals(newValue))
+			return;
+
+		CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, newValue);
+		project.executeCommand(setComboItem);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -285,6 +279,10 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		JComboBox comboBox = findComboBox(PlanningView.CUSTOMIZABLE_COMBO);
 		if (refToSelect.isInvalid())
+			return;
+		
+		PlanningViewConfiguration selectedConfiguration = (PlanningViewConfiguration) comboBox.getSelectedItem();
+		if (selectedConfiguration.getRef().equals(refToSelect))
 			return;
 		
 		PlanningViewConfiguration configuration = getConfigurationToSelect(refToSelect);
