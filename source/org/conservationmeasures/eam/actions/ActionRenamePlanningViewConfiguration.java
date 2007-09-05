@@ -17,7 +17,7 @@ public class ActionRenamePlanningViewConfiguration extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Rename Label");
+		return EAM.text("Action|Rename Configuration");
 	}
 
 	public String getToolTipText()
