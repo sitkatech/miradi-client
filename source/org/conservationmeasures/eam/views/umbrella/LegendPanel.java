@@ -37,9 +37,9 @@ import com.jhlabs.awt.BasicGridLayout;
 
 abstract public class LegendPanel extends JPanel implements ActionListener
 {
-	public LegendPanel(Project projectToUse, BasicGridLayout layout)
+	public LegendPanel(Project projectToUse)
 	{
-		super(layout);
+		super(new BasicGridLayout(0, 1));
 		project = projectToUse;
 		checkBoxes = new Hashtable();
 	}

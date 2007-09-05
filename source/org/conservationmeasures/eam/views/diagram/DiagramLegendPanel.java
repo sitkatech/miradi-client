@@ -51,7 +51,6 @@ import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.umbrella.LegendPanel;
 import org.martus.swing.UiLabel;
 
-import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class DiagramLegendPanel extends LegendPanel
@@ -60,7 +59,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	
 	public DiagramLegendPanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse.getProject(), new BasicGridLayout(0, 1));
+		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
 		
 		createLegendCheckBoxes();
