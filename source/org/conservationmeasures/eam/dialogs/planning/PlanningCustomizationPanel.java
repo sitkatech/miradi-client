@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.planning;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -34,6 +33,8 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.PlanningViewSingleLevelQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 
@@ -75,9 +76,9 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		
 		SingleLevelComboRadioButtonHandler preConfiguredButtonHandler = new SingleLevelComboRadioButtonHandler(PlanningView.SINGLE_LEVEL_RADIO_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
 		JRadioButton singleObjectRadio = createRadioButton(buttonGroup, preConfiguredButtonHandler, PlanningView.SINGLE_LEVEL_RADIO_CHOICE);
-		Object[] singleObjectComboBox = getPreConfiguredButtons().values().toArray();
+		Object[] singleLevelChoiceItems = PlanningViewSingleLevelQuestion.getSingleLevelChoices();
 		SingleLevelComboBoxHandler comboHandler = new SingleLevelComboBoxHandler();
-		JComboBox cannedComboBox = createComboBox(singleObjectComboBox, comboHandler, PlanningView.SINGLE_LEVEL_COMBO);
+		JComboBox cannedComboBox = createComboBox(singleLevelChoiceItems, comboHandler, PlanningView.SINGLE_LEVEL_COMBO);
 		addDropDownRadioButton(singleObjectRadio, cannedComboBox);
 		
 		CustomizableComboRadioButtonHandler configuredButtonHandler = new CustomizableComboRadioButtonHandler();
@@ -270,9 +271,9 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	private void selectSingleLevelComboButton(String property)
 	{
 		JComboBox comboBox = findComboBox(PlanningView.SINGLE_LEVEL_COMBO);
-		HashMap preConfiguredHashMap = getPreConfiguredButtons();
-		ComboBoxButton buttonToSelect = (ComboBoxButton) preConfiguredHashMap.get(property);
-		comboBox.setSelectedItem(buttonToSelect);
+		PlanningViewSingleLevelQuestion question = new PlanningViewSingleLevelQuestion();
+		ChoiceItem choiceItemToSelect = question.findChoiceByCode(property);
+		comboBox.setSelectedItem(choiceItemToSelect);
 	}
 	
 	private void selectConfigurationComboButton(ORef refToSelect)
@@ -340,20 +341,6 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	{
 		masterCodeList.subtract(columnsToShow);
 		saveCodeList(masterCodeList, dataTagToHide, radioName);
-	}
-	
-	public HashMap getPreConfiguredButtons()
-	{
-		HashMap hashMap = new HashMap();
-		hashMap.put(Goal.OBJECT_NAME, new ComboBoxButton(Goal.OBJECT_NAME, EAM.text("Goals Only"))); 
-		hashMap.put(Objective.OBJECT_NAME, new ComboBoxButton(Objective.OBJECT_NAME, EAM.text("Objectives Only"))); 
-		hashMap.put(Strategy.OBJECT_NAME, new ComboBoxButton(Strategy.OBJECT_NAME, EAM.text("Strategies Only"))); 
-		hashMap.put(Task.ACTIVITY_NAME, new ComboBoxButton(Task.ACTIVITY_NAME, EAM.text("Actions Only")));
-		hashMap.put(Indicator.OBJECT_NAME, new ComboBoxButton(Indicator.OBJECT_NAME, EAM.text("Indicators Only")));
-		hashMap.put(Task.METHOD_NAME, new ComboBoxButton(Task.METHOD_NAME, EAM.text("Methods Only")));
-		hashMap.put(Task.OBJECT_NAME, new ComboBoxButton(Task.OBJECT_NAME, EAM.text("Tasks Only")));
-		
-		return hashMap;
 	}
 	
 	private PlanningViewConfiguration[] getConfigurableChoices()
@@ -489,15 +476,15 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.SINGLE_LEVEL_RADIO_CHOICE);
 
 			JComboBox comboBox = (JComboBox) e.getSource();
-			ComboBoxButton comboChoice = (ComboBoxButton) comboBox.getSelectedItem();
-			saveComboSelection(comboChoice);
+			ChoiceItem choiceItem = (ChoiceItem) comboBox.getSelectedItem();
+			saveComboSelection(choiceItem);
 		}
 		
-		private void saveComboSelection(ComboBoxButton comboChoice)
+		private void saveComboSelection(ChoiceItem choiceItem)
 		{
 			try
 			{
-				saveConfiguration(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, comboChoice.getPropertyName());
+				saveConfiguration(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, choiceItem.getCode());
 			}
 			catch (Exception e)
 			{
@@ -509,8 +496,8 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		{
 			CodeList listToShow = new CodeList();
 			JComboBox comboBox = findComboBox(PlanningView.SINGLE_LEVEL_COMBO);
-			ComboBoxButton comboButton = (ComboBoxButton) comboBox.getSelectedItem();
-			listToShow.add(comboButton.getPropertyName());
+			ChoiceItem choiceItem = (ChoiceItem) comboBox.getSelectedItem();
+			listToShow.add(choiceItem.getCode());
 			
 			return listToShow;
 		}		
@@ -623,56 +610,14 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		private String getSelectedItemProperty()
 		{
 			JComboBox comboBox = findComboBox(planningComboTag);
-			ComboBoxButton comboButton = (ComboBoxButton) comboBox.getSelectedItem();
-			return comboButton.getPropertyName();
+			ChoiceItem choiceItem = (ChoiceItem) comboBox.getSelectedItem();
+			return choiceItem.getCode();
 		}
 		
 		private String dropDownRadioTag;
 		private String planningComboTag;
 	}
 		
-	public class ComboBoxButton
-	{
-		public ComboBoxButton(String propertyNameToUse, String buttonNameToUse)
-		{
-			propertyName = propertyNameToUse;
-			buttonName = buttonNameToUse;
-		}
-		
-		public String getPropertyName()
-		{
-			return propertyName;
-		}
-		
-		public String getButtonName()
-		{
-			return buttonName;
-		}
-		
-		public String toString()
-		{
-			return buttonName;
-		}
-		
-		public boolean equals(Object other)
-		{
-			if ( !(other instanceof ComboBoxButton))
-					return false;
-			
-			ComboBoxButton otherComboButton = (ComboBoxButton) other;
-			if (! buttonName.equals(otherComboButton.getButtonName()))
-				return false;
-			
-			if (! propertyName.equals(otherComboButton.getPropertyName()))
-				return false;
-			
-			return true;
-		}
-		
-		private String propertyName;
-		private String buttonName;
-	}
-
 	private Project project;
 	private Hashtable<String, Component> configurationComponents;
 }

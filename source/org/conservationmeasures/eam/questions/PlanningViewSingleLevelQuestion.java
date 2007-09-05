@@ -14,9 +14,14 @@ import org.conservationmeasures.eam.objects.Task;
 
 public class PlanningViewSingleLevelQuestion extends ChoiceQuestion
 {
-	public PlanningViewSingleLevelQuestion(String tagToUse)
+	public PlanningViewSingleLevelQuestion()
 	{
-		super(tagToUse, EAM.text("Single Level Style"), getSingleLevelChoices());
+		super(getEmptyTag(), EAM.text("Single Level Style"), getSingleLevelChoices());
+	}
+
+	private static String getEmptyTag()
+	{
+		return EAM.text("");
 	}
 
 	public static ChoiceItem[] getSingleLevelChoices()
