@@ -121,7 +121,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	{	
 		saveSettingsToProject(getViewDataHiddenTypesTag());
 	}
-
+	
 	public CodeList getLegendSettings()
 	{
 		CodeList hiddenTypes = new CodeList();
@@ -154,6 +154,11 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		
 		if (setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
 			updateEnableState(setCommand.getDataValue());
+	}
+	
+	protected boolean isCustomizationStyle(ViewData viewData)
+	{
+		return viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 	}
 
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
