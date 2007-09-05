@@ -139,7 +139,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 				return;
 
 			String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
-			selectComboButton(preconfiguredChoice);
+			selectSingleLevelComboButton(preconfiguredChoice);
 		}
 		catch (Exception e)
 		{
@@ -251,7 +251,15 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		{
 			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 			String property = setCommand.getDataValue();
-			selectComboButton(property);
+			selectSingleLevelComboButton(property);
+			return;
+		}
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL))
+		{
+			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+			ORef ref = setCommand.getObjectORef();
+			selectConfigurationComboButton(ref);
 			return;
 		}
 	}
@@ -265,7 +273,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		validate();
 	}
 	
-	private void selectComboButton(String property)
+	private void selectSingleLevelComboButton(String property)
 	{
 		JComboBox comboBox = findComboBox(PlanningView.SINGLE_LEVEL_COMBO);
 		HashMap preConfiguredHashMap = getPreConfiguredButtons();
@@ -358,9 +366,9 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		
 		Vector allConfigurationsWithFirstInvalid = new Vector();
 		allConfigurationsWithFirstInvalid.add(invalidConfiguration);
-		for (int i = 1; i < allConfigurations.length; ++i)
+		for (int i = 0; i < allConfigurations.length; ++i)
 		{
-			allConfigurationsWithFirstInvalid.add(allConfigurations);
+			allConfigurationsWithFirstInvalid.add(allConfigurations[i]);
 		}
 	 
 		return (PlanningViewConfiguration[]) allConfigurationsWithFirstInvalid.toArray(new PlanningViewConfiguration[0]);
