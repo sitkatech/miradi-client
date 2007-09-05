@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -351,18 +352,18 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	
 	private PlanningViewConfiguration[] getConfigurableChoices()
 	{
+		PlanningViewConfiguration invalidConfiguration = createDefualtInvalidConfigurationObject();
 		PlanningViewConfigurationPool configurationPool = (PlanningViewConfigurationPool) project.getPool(PlanningViewConfiguration.getObjectType());
 		PlanningViewConfiguration[] allConfigurations = configurationPool.getAllConfigurations();
-		PlanningViewConfiguration invalidConfiguration = createDefualtInvalidConfigurationObject();
 		
-		PlanningViewConfiguration[] allConfigurationsWithFirstInvalid = new PlanningViewConfiguration[allConfigurations.length + 1];
-		allConfigurationsWithFirstInvalid[0] = invalidConfiguration;
-		for (int i = 1; i < allConfigurationsWithFirstInvalid.length; ++i)
+		Vector allConfigurationsWithFirstInvalid = new Vector();
+		allConfigurationsWithFirstInvalid.add(invalidConfiguration);
+		for (int i = 1; i < allConfigurations.length; ++i)
 		{
-			allConfigurationsWithFirstInvalid[i] = allConfigurations[i - 1];
+			allConfigurationsWithFirstInvalid.add(allConfigurations);
 		}
 	 
-		return allConfigurationsWithFirstInvalid;
+		return (PlanningViewConfiguration[]) allConfigurationsWithFirstInvalid.toArray(new PlanningViewConfiguration[0]);
 	}
 
 	private PlanningViewConfiguration createDefualtInvalidConfigurationObject()
@@ -370,7 +371,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		PlanningViewConfiguration invalidConfiguration = new PlanningViewConfiguration(project.getObjectManager(), BaseId.INVALID);
 		try
 		{
-			invalidConfiguration.setLabel("My Views");
+			invalidConfiguration.setLabel("--Customize--");
 		}
 		catch (Exception e)
 		{
