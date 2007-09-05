@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -39,7 +40,7 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		return PlanningView.getMasterColumnList();
 	}
 		
-	protected JPanel createLegendButtonPanel(Actions actions)
+	protected JComponent createLegendButtonPanel(Actions actions)
 	{
 		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
 		CodeList masterList = PlanningView.getMasterColumnList();
