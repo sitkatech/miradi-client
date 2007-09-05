@@ -294,7 +294,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	private PlanningViewConfiguration getConfigurationToSelect(ORef refToSelect)
 	{
 		if (refToSelect.getObjectId().isInvalid())
-			return createDefualtInvalidConfigurationObject();
+			return createDefaultInvalidConfigurationObject();
 		
 		return (PlanningViewConfiguration) project.findObject(refToSelect);
 	}
@@ -360,7 +360,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	
 	private PlanningViewConfiguration[] getConfigurableChoices()
 	{
-		PlanningViewConfiguration invalidConfiguration = createDefualtInvalidConfigurationObject();
+		PlanningViewConfiguration invalidConfiguration = createDefaultInvalidConfigurationObject();
 		PlanningViewConfigurationPool configurationPool = (PlanningViewConfigurationPool) project.getPool(PlanningViewConfiguration.getObjectType());
 		PlanningViewConfiguration[] allConfigurations = configurationPool.getAllConfigurations();
 		
@@ -374,7 +374,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		return (PlanningViewConfiguration[]) allConfigurationsWithFirstInvalid.toArray(new PlanningViewConfiguration[0]);
 	}
 
-	private PlanningViewConfiguration createDefualtInvalidConfigurationObject()
+	private PlanningViewConfiguration createDefaultInvalidConfigurationObject()
 	{
 		PlanningViewConfiguration invalidConfiguration = new PlanningViewConfiguration(project.getObjectManager(), BaseId.INVALID);
 		try
