@@ -78,7 +78,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 				return;
 			
 			String rowListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
-			ORef configurationRef = ORef.createFromString(viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF));
+			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 			
 			CommandSetObjectData setRowListCommand = new CommandSetObjectData(configurationRef, PlanningViewConfiguration.TAG_ROW_CONFIGURATION, rowListAsString);
 			getProject().executeCommand(setRowListCommand);
