@@ -581,18 +581,51 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		public void actionPerformed(ActionEvent e)
 		{			
 			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, dropDownRadioTag);
-			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, dropDownRadioTag);
+			saveVisibleColumnList(PlanningView.getMasterColumnList(), getColumListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, dropDownRadioTag);
 		}
 
 		private CodeList getRowListToShow()
 		{
 			CodeList listToShow = new CodeList();
-			JComboBox comboBox = findComboBox(planningComboTag);
-			ComboBoxButton comboButton = (ComboBoxButton) comboBox.getSelectedItem();
-			listToShow.add(comboButton.getPropertyName());
+			String propertyName = getSelectedItemProperty();
+			listToShow.add(propertyName);
 			
 			return listToShow;
-		}	
+		}
+		
+		private CodeList getColumListToShow()
+		{
+			String propertyName = getSelectedItemProperty();
+			if (propertyName.equals(Goal.OBJECT_NAME))
+				return PlanningView.getGoalColumns();
+
+			if (propertyName.equals(Objective.OBJECT_NAME))
+				return PlanningView.getObjectiveColumns();
+			
+			if (propertyName.equals(Strategy.OBJECT_NAME))
+				return PlanningView.getStrategyColumns();
+			
+			if (propertyName.equals(Task.ACTIVITY_NAME))
+				return PlanningView.getActivityColumns();
+
+			if (propertyName.equals(Indicator.OBJECT_NAME))
+				return PlanningView.getIndicatorColumns();
+
+			if (propertyName.equals(Task.METHOD_NAME))
+				return PlanningView.getMethodColumns();
+
+			if (propertyName.equals(Task.OBJECT_NAME))
+				return PlanningView.getTaskColumns();
+			
+			return new CodeList();
+		}
+
+		private String getSelectedItemProperty()
+		{
+			JComboBox comboBox = findComboBox(planningComboTag);
+			ComboBoxButton comboButton = (ComboBoxButton) comboBox.getSelectedItem();
+			return comboButton.getPropertyName();
+		}
 		
 		private String dropDownRadioTag;
 		private String planningComboTag;
