@@ -132,27 +132,58 @@ public class PlanningView extends TabbedView
 	
 	public static CodeList getStrategyColumns()
 	{
-		return new CodeList();
+		CodeList listToShow = new CodeList();
+		listToShow.add(Indicator.TAG_PRIORITY);
+		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+
+		return listToShow;
 	}
 	
 	public static CodeList getActivityColumns()
 	{
-		return new CodeList();
+		CodeList listToShow = new CodeList();
+		listToShow.add(Indicator.TAG_PRIORITY);
+		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+
+		return listToShow;
+
 	}
 	
 	public static CodeList getIndicatorColumns()
 	{
-		return new CodeList();
+		CodeList listToShow = new CodeList();
+		listToShow.add(Indicator.TAG_PRIORITY);
+		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+
+		return listToShow;
 	}
 	
 	public static CodeList getMethodColumns()
 	{
-		return new CodeList();
+		CodeList listToShow = new CodeList();
+		listToShow.add(Indicator.TAG_PRIORITY);
+		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+
+		return listToShow;
 	}
 	
 	public static CodeList getTaskColumns()
 	{
-		return new CodeList();
+		CodeList listToShow = new CodeList();
+		listToShow.add(Indicator.TAG_PRIORITY);
+		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+
+		return listToShow;
 	}
 	
 	public static boolean isCustomizationStyle(ViewData viewData)
