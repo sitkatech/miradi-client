@@ -284,11 +284,10 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 
 	private PlanningViewConfiguration getConfigurationToSelect(ORef refToSelect)
 	{
-		PlanningViewConfiguration configuration  = (PlanningViewConfiguration) project.findObject(refToSelect);
-		if (configuration == null)
+		if (refToSelect.getObjectId().isInvalid())
 			return createDefualtInvalidConfigurationObject();
 		
-		return configuration;
+		return (PlanningViewConfiguration) project.findObject(refToSelect);
 	}
 
 	private void updateRadioSelection(String selectedProperty)
