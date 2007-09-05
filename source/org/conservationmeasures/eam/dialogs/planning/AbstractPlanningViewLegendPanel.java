@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -44,6 +45,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		setMinimumSize(new Dimension(0,0));
 		updateCheckBoxesFromProjectSettings();
 		updateEnabledStateFromProject();
+		setBorder(BorderFactory.createTitledBorder(getBorderTitle()));
 	}
 	
 	public void dispose()
@@ -157,6 +159,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
 	abstract protected JPanel createLegendButtonPanel(Actions actions);
 	abstract protected String getViewDataHiddenTypesTag();
+	abstract protected String getBorderTitle();
 	
 	MainWindow mainWindow;
 	Project project;

@@ -23,6 +23,11 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		super(mainWindowToUse);
 	}
 	
+	public String getBorderTitle()
+	{
+		return EAM.text("Columns");
+	}
+	
 	protected String getViewDataHiddenTypesTag()
 	{
 		return ViewData.TAG_PLANNING_HIDDEN_COL_TYPES;
@@ -35,8 +40,7 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
-		JPanel panel = new JPanel(new GridLayoutPlus(0,3));
-		addTitleBar(panel, EAM.text("Columns"));
+		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
 		CodeList masterList = PlanningView.getMasterColumnList();
 		for (int i = 0; i < masterList.size(); ++i)
 		{

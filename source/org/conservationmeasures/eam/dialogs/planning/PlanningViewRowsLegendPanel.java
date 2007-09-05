@@ -34,6 +34,11 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 	{
 		super(mainWindowToUse);
 	}
+
+	public String getBorderTitle()
+	{
+		return EAM.text("Rows");
+	}
 	
 	protected String getViewDataHiddenTypesTag()
 	{
@@ -47,9 +52,8 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 	
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
-		JPanel panel = new JPanel(new GridLayoutPlus(0,3));
+		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
 		
-		addTitleBar(panel, EAM.text("Rows"));
 		addIconLineWithCheckBox(panel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(panel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(panel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
