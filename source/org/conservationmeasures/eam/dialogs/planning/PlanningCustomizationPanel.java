@@ -392,7 +392,7 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		public void actionPerformed(ActionEvent e)
 		{
 			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
-			saveVisibleColumnList(PlanningView.getMasterColumnList(), new CodeList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
+			saveVisibleColumnList(PlanningView.getMasterColumnList(), getColumListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
 		}
 		
 		private CodeList getRowListToShow()
@@ -401,6 +401,18 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 			listToShow.add(Goal.OBJECT_NAME);
 			listToShow.add(Objective.OBJECT_NAME);
 			listToShow.add(Strategy.OBJECT_NAME);
+			
+			return listToShow;
+		}
+		
+		private CodeList getColumListToShow()
+		{
+			CodeList listToShow = new CodeList();
+			listToShow.add(Indicator.PSEUDO_TAG_STATUS_VALUE);			
+			listToShow.add(Indicator.TAG_PRIORITY);
+			listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+			listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+			listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
 			
 			return listToShow;
 		}
