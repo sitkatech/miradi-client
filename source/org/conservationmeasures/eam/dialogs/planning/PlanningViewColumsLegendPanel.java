@@ -59,7 +59,7 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			if (! isCustomizationStyle(viewData))
+			if (! PlanningView.isCustomizationStyle(viewData))
 				return;
 			
 			String colListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);

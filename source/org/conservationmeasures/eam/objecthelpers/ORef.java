@@ -66,7 +66,7 @@ public class ORef
 	
 	public boolean isInvalid()
 	{
-		return equals(INVALID);
+		return getObjectId().isInvalid();
 	}
 	
 	public boolean equals(Object rawOther)

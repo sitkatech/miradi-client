@@ -74,7 +74,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			if (! isCustomizationStyle(viewData))
+			if (! PlanningView.isCustomizationStyle(viewData))
 				return;
 			
 			String rowListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);

@@ -32,13 +32,7 @@ abstract public class AbstractPlanningViewConfigurationDoer extends ViewDoer
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			String currentStyle = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-			if (! currentStyle.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
-				return false;
-			
-			String orefAsString = viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
-			ORef currentStyleRef = ORef.createFromString(orefAsString);
-			if (! currentStyleRef.getObjectId().isInvalid())
+			if (PlanningView.isCustomizationStyle(viewData))
 				return true;
 		}
 		catch (Exception e)
