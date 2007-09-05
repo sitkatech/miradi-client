@@ -59,7 +59,7 @@ public class PlanningViewControlPanel extends JPanel
 	}
 
 	private MainWindow mainWindow;
-	private PlanningViewRowsLegendPanel rowsLegendPanel;
+	private AbstractPlanningViewLegendPanel rowsLegendPanel;
 	private PlanningCustomizationPanel planningCustomizationPanel;
 	private PlanningViewColumsLegendPanel columnsLegendPanel;
 }
