@@ -132,58 +132,52 @@ public class PlanningView extends TabbedView
 	
 	public static CodeList getStrategyColumns()
 	{
-		CodeList listToShow = new CodeList();
-		listToShow.add(Indicator.TAG_PRIORITY);
-		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+		String[] list = {Indicator.TAG_PRIORITY, 
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, };
 
-		return listToShow;
+		return new CodeList(list);
 	}
 	
 	public static CodeList getActivityColumns()
 	{
-		CodeList listToShow = new CodeList();
-		listToShow.add(Indicator.TAG_PRIORITY);
-		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+		String[] list = {Indicator.TAG_PRIORITY, 
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, };
 
-		return listToShow;
-
+		return new CodeList(list);
 	}
 	
 	public static CodeList getIndicatorColumns()
 	{
-		CodeList listToShow = new CodeList();
-		listToShow.add(Indicator.TAG_PRIORITY);
-		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+		String[] list = {Indicator.TAG_PRIORITY, 
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, };
 
-		return listToShow;
+		return new CodeList(list);
 	}
 	
 	public static CodeList getMethodColumns()
 	{
-		CodeList listToShow = new CodeList();
-		listToShow.add(Indicator.TAG_PRIORITY);
-		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+		String[] list = {Indicator.TAG_PRIORITY, 
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, };
 
-		return listToShow;
+		return new CodeList(list);
 	}
 	
 	public static CodeList getTaskColumns()
 	{
-		CodeList listToShow = new CodeList();
-		listToShow.add(Indicator.TAG_PRIORITY);
-		listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+		String[] list = {Indicator.TAG_PRIORITY, 
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, };
 
-		return listToShow;
+		return new CodeList(list);
 	}
 	
 	public static boolean isCustomizationStyle(ViewData viewData)
