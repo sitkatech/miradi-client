@@ -149,7 +149,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		panel.add(new JLabel(""));
 	}
 	
-	protected void addIconLine(JPanel panel, String text, Icon icon, JComponent component)
+	protected void addIconLine(JComponent panel, String text, Icon icon, JComponent component)
 	{
 		panel.add(new JLabel(icon));
 		panel.add(new PanelTitleLabel(EAM.text(text)));
@@ -165,26 +165,26 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		component.addActionListener(this);
 	}
 
-	protected void addCheckBoxLine(JPanel panel, String objectName)
+	protected void addCheckBoxLine(JComponent panel, String objectName)
 	{
 		JCheckBox foundCheckBox = findCheckBox(objectName);
 		String foundLabel = EAM.fieldLabel(ObjectType.FAKE, objectName);
 		addIconLine(panel, foundLabel, null, foundCheckBox);
 	}
 	
-	protected void addIconLineWithoutCheckBox(JPanel panel, int objectType, String objectName, Icon icon)
+	protected void addIconLineWithoutCheckBox(JComponent panel, int objectType, String objectName, Icon icon)
 	{
 		addIconLine(panel, EAM.fieldLabel(objectType, objectName), icon, new UiLabel(""));
 	}
 
-	protected void addIconLineWithCheckBox(JPanel panel, int objectType, String objectName, Icon icon)
+	protected void addIconLineWithCheckBox(JComponent panel, int objectType, String objectName, Icon icon)
 	{
 		JCheckBox foundCheckBox = findCheckBox(objectName);
 		String foundLabel = EAM.fieldLabel(objectType, objectName);
 		addIconLine(panel, foundLabel, icon, foundCheckBox);
 	}
 
-	protected void addButtonLineWithCheckBox(JPanel panel, int objectType, String objectName, EAMAction action)
+	protected void addButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
 		panel.add(button);
@@ -192,7 +192,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		panel.add(findCheckBox(objectName));
 	}
 
-	protected void addButtonLineWithoutCheckBox(JPanel panel, int objectType, String objectName, EAMAction action)
+	protected void addButtonLineWithoutCheckBox(JComponent panel, int objectType, String objectName, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
 		panel.add(button);

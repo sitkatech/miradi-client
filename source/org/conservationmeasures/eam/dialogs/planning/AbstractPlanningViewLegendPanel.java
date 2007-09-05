@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -186,7 +186,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	
 	abstract protected String getConfigurationTypeTag();
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
-	abstract protected JPanel createLegendButtonPanel(Actions actions);
+	abstract protected JComponent createLegendButtonPanel(Actions actions);
 	abstract protected String getViewDataHiddenTypesTag();
 	abstract protected String getBorderTitle();
 	
