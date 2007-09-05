@@ -16,11 +16,13 @@ import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewControlPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.FastScrollPane;
@@ -115,6 +117,15 @@ public class PlanningView extends TabbedView
 		masterColumnList.add(Task.PSEUDO_TAG_TASK_TOTAL);
 
 		return masterColumnList;
+	}
+	
+	static public boolean isCustomizationStyle(ViewData viewData)
+	{
+		ORef planningViewConfigurationRef = ORef.createFromString(viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF));
+		if (planningViewConfigurationRef.isInvalid())
+			return false;
+		
+		return viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 	}
 	
 	public static final String STRATEGIC_PLAN_RADIO_CHOICE = "StrategicPlanRadioChoice";

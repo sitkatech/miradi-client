@@ -156,11 +156,6 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			updateEnableState(setCommand.getDataValue());
 	}
 	
-	protected boolean isCustomizationStyle(ViewData viewData)
-	{
-		return viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
-	}
-
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
 	abstract protected JPanel createLegendButtonPanel(Actions actions);
 	abstract protected String getViewDataHiddenTypesTag();
