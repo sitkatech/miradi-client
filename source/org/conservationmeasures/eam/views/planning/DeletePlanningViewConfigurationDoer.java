@@ -75,7 +75,8 @@ public class DeletePlanningViewConfigurationDoer extends ViewDoer
 			
 			String orefAsString = viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 			ORef currentStyleRef = ORef.createFromString(orefAsString);
-			if (! currentStyleRef.isInvalid())
+			System.out.println("choice  = " + currentStyleRef);
+			if (! currentStyleRef.getObjectId().isInvalid())
 				return true;
 		}
 		catch (Exception e)
