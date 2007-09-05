@@ -33,10 +33,10 @@ public class PlanningViewControlPanel extends JPanel
 		
 		add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
 		add(planningCustomizationPanel);
-		add(rowsLegendPanel);
-		add(columnsLegendPanel);
 		add(new UiButton(mainWindow.getActions().get(ActionCreatePlanningViewConfiguration.class)));
 		add(new UiButton(mainWindow.getActions().get(ActionDeletePlanningViewConfiguration.class)));
+		add(rowsLegendPanel);
+		add(columnsLegendPanel);
 	}
 	
 	public void dispose()
