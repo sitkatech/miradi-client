@@ -43,7 +43,6 @@ public class RenamePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 			PlanningViewCustomLabelPropertiesPanel labelPropertiesPanel = new PlanningViewCustomLabelPropertiesPanel(getProject(), configurationRef);
 			ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), labelPropertiesPanel, labelPropertiesPanel.getPanelDescription()); 
 			getView().showFloatingPropertiesDialog(dlg);
-			setSelection(viewData);
 		}
 		catch(Exception e)
 		{
