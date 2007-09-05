@@ -21,6 +21,7 @@ import javax.swing.JRadioButton;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -277,8 +278,17 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 		if (refToSelect.isInvalid())
 			return;
 		
-		PlanningViewConfiguration configuration  = (PlanningViewConfiguration) project.findObject(refToSelect);		
+		PlanningViewConfiguration configuration = getConfigurationToSelect(refToSelect);
 		comboBox.setSelectedItem(configuration);
+	}
+
+	private PlanningViewConfiguration getConfigurationToSelect(ORef refToSelect)
+	{
+		PlanningViewConfiguration configuration  = (PlanningViewConfiguration) project.findObject(refToSelect);
+		if (configuration == null)
+			return createDefualtInvalidConfigurationObject();
+		
+		return configuration;
 	}
 
 	private void updateRadioSelection(String selectedProperty)
@@ -343,7 +353,32 @@ public class PlanningCustomizationPanel extends JPanel implements CommandExecute
 	private PlanningViewConfiguration[] getConfigurableChoices()
 	{
 		PlanningViewConfigurationPool configurationPool = (PlanningViewConfigurationPool) project.getPool(PlanningViewConfiguration.getObjectType());
-		return configurationPool.getAllConfigurations();
+		PlanningViewConfiguration[] allConfigurations = configurationPool.getAllConfigurations();
+		PlanningViewConfiguration invalidConfiguration = createDefualtInvalidConfigurationObject();
+		
+		PlanningViewConfiguration[] allConfigurationsWithFirstInvalid = new PlanningViewConfiguration[allConfigurations.length + 1];
+		allConfigurationsWithFirstInvalid[0] = invalidConfiguration;
+		for (int i = 1; i < allConfigurationsWithFirstInvalid.length; ++i)
+		{
+			allConfigurationsWithFirstInvalid[i] = allConfigurations[i - 1];
+		}
+	 
+		return allConfigurationsWithFirstInvalid;
+	}
+
+	private PlanningViewConfiguration createDefualtInvalidConfigurationObject()
+	{
+		PlanningViewConfiguration invalidConfiguration = new PlanningViewConfiguration(project.getObjectManager(), BaseId.INVALID);
+		try
+		{
+			invalidConfiguration.setLabel("My Views");
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		return invalidConfiguration;
 	}
 	
 	public class StrategicButtonHandler implements ActionListener
