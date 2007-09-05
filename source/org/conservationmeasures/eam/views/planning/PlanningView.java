@@ -120,7 +120,42 @@ public class PlanningView extends TabbedView
 		return masterColumnList;
 	}
 	
-	static public boolean isCustomizationStyle(ViewData viewData)
+	public static CodeList getGoalColumns()
+	{
+		return new CodeList();
+	}
+	
+	public static CodeList getObjectiveColumns()
+	{
+		return new CodeList();
+	}
+	
+	public static CodeList getStrategyColumns()
+	{
+		return new CodeList();
+	}
+	
+	public static CodeList getActivityColumns()
+	{
+		return new CodeList();
+	}
+	
+	public static CodeList getIndicatorColumns()
+	{
+		return new CodeList();
+	}
+	
+	public static CodeList getMethodColumns()
+	{
+		return new CodeList();
+	}
+	
+	public static CodeList getTaskColumns()
+	{
+		return new CodeList();
+	}
+	
+	public static boolean isCustomizationStyle(ViewData viewData)
 	{
 		ORef planningViewConfigurationRef = ORef.createFromString(viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF));
 		if (planningViewConfigurationRef.isInvalid())
