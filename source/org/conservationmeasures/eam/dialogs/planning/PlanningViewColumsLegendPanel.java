@@ -63,7 +63,7 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 				return;
 			
 			String colListAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);
-			ORef configurationRef = ORef.createFromString(viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF));
+			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 			
 			CommandSetObjectData setColListCommand = new CommandSetObjectData(configurationRef, PlanningViewConfiguration.TAG_COL_CONFIGURATION, colListAsString);
 			getProject().executeCommand(setColListCommand);				
