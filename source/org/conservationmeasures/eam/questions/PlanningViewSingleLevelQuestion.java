@@ -21,7 +21,7 @@ public class PlanningViewSingleLevelQuestion extends ChoiceQuestion
 
 	private static String getEmptyTag()
 	{
-		return EAM.text("");
+		return "";
 	}
 
 	public static ChoiceItem[] getSingleLevelChoices()
