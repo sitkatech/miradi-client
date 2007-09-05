@@ -5,12 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -42,23 +37,5 @@ abstract public class AbstractPlanningViewConfigurationDoer extends ViewDoer
 		}
 		
 		return false;
-	}
-
-	protected void setSelection(ViewData viewData) throws CommandFailedException
-	{
-		PlanningViewConfigurationPool pool = getProject().getPlanningViewConfigurationPool();
-		ORefList configurationRefs = pool.getORefList();
-		
-		ORef refAsSelection = getRefToSetAsSelection(configurationRefs);
-		CommandSetObjectData setCurrentCustomPlanRef = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, refAsSelection.toString());
-		getProject().executeCommand(setCurrentCustomPlanRef);
-	}
-
-	private ORef getRefToSetAsSelection(ORefList configurationRefs)
-	{
-		if (configurationRefs.size() == 0)
-			return ORef.INVALID;
-		
-		return configurationRefs.get(0);
 	}
 }
