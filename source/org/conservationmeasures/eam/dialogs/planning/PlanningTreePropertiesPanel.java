@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.CardLayout;
 
+import org.conservationmeasures.eam.dialogs.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
@@ -64,7 +65,8 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		cardLayout.show(this, getDescription(orefsToUse));
+		cardLayout.show(this, findPanel(orefsToUse).getPanelDescription());
+	
 		taskPropertiesInputPanel.setObjectRefs(orefsToUse);
 		goalPropertiesPanel.setObjectRefs(orefsToUse);
 		objectivePropertiesPanel.setObjectRefs(orefsToUse);
@@ -72,26 +74,28 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		strategyPropertiesPanel.setObjectRefs(orefsToUse);
 	}
 	
-	private String getDescription(ORef[] orefsToUse)
+	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
 	{
 		ORef firstRef = orefsToUse[0];
 		int objectType = firstRef.getObjectType();
 		if (Goal.getObjectType() == objectType)
-			return goalPropertiesPanel.getPanelDescription();
+			return goalPropertiesPanel;
 		
 		if (Objective.getObjectType() == objectType)
-			return objectivePropertiesPanel.getPanelDescription();
+			return objectivePropertiesPanel;
 		
 		if (Indicator.getObjectType() == objectType)
-			return indicatorPropertiesPanel.getPanelDescription();
+			return indicatorPropertiesPanel;
 		
 		if (Strategy.getObjectType() == objectType)
-			return strategyPropertiesPanel.getPanelDescription();
+			return strategyPropertiesPanel;
 		
 		if (Task.getObjectType() == objectType)
-			return taskPropertiesInputPanel.getPanelDescription();
+			return taskPropertiesInputPanel;
 		
-		return "";
+		
+		//FIXME planning - need to add an empty card here
+		return null;
 	}
 
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";

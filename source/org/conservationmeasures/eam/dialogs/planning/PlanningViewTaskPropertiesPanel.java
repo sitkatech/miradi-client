@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import org.conservationmeasures.eam.dialogs.DisposablePanel;
+import org.conservationmeasures.eam.dialogs.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class PlanningViewTaskPropertiesPanel extends DisposablePanel
+public class PlanningViewTaskPropertiesPanel extends DisposablePanelWithDescription
 {
 	public PlanningViewTaskPropertiesPanel(Project projectToUse) throws Exception
 	{

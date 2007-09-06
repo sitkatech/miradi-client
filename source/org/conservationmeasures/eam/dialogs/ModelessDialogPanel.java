@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
 
-abstract public class ModelessDialogPanel extends DisposablePanel
+abstract public class ModelessDialogPanel extends DisposablePanelWithDescription
 {
 	public ModelessDialogPanel()
 	{
@@ -40,6 +40,5 @@ abstract public class ModelessDialogPanel extends DisposablePanel
 	}
 
 	abstract public BaseObject getObject();
-	abstract public String getPanelDescription();
 
 }
