@@ -201,6 +201,11 @@ public class Task extends BaseObject
 		return assignmentIds.getIdList().createClone();
 	}
 	
+	public ORefList getAssignmentRefs()
+	{
+		return new ORefList(Assignment.getObjectType(), getAssignmentIdList());
+	}
+	
 	public String toString()
 	{
 		return getLabel();

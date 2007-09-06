@@ -11,6 +11,7 @@ import javax.swing.Box;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
@@ -27,13 +28,20 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		addTables();
 		addTablesToSelectionController();
 	}
-
+	
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		resourceTable.setObjectRefs(hierarchyToSelectedRef);
+	}
+	
 	private void createTables()
 	{
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		
-		resourceTable = new PlanningViewResourceTable(project);
+		PlanningViewResourceTableModel resourceTableModel = new PlanningViewResourceTableModel(project);
+		resourceTable = new PlanningViewResourceTable(resourceTableModel);
+		
 		workplanTable = new PlanningViewWorkPlanTable();
 		budgetTable = new PlanningViewBudgetTable();
 	}

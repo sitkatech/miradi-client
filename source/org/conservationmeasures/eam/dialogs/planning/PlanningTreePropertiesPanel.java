@@ -41,7 +41,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		strategyPropertiesPanel.dispose();
 		taskPropertiesInputPanel.dispose();
 	}
-
+	
 	private void createPropertiesPanels() throws Exception
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(project);
@@ -88,6 +88,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	{
 		super.setObjectRefs(orefsToUse);
 		cardLayout.show(this, getDescription(orefsToUse));
+		taskPropertiesInputPanel.setObjectRefs(orefsToUse);	
 	}
 	
 	private String getDescription(ORef[] orefsToUse)

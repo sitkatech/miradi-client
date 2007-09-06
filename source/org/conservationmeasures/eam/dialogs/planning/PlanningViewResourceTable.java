@@ -5,13 +5,21 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
 public class PlanningViewResourceTable extends TableWithHelperMethods
 {
-	public PlanningViewResourceTable(Project projectToUse)
+	public PlanningViewResourceTable(PlanningViewResourceTableModel modelToUse)
 	{
-		super(new PlanningViewResourceTableModel(projectToUse));
+		super(modelToUse);
+		model = modelToUse;
 	}
+	
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		model.setObjectRefs(hierarchyToSelectedRef);
+	}
+	
+	private PlanningViewResourceTableModel model;
 }
