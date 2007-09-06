@@ -19,7 +19,7 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanel
 	{
 		super(new BorderLayout());
 		
-		taskEditor = new PlanningViewTaskEditorComponent();
+		taskEditor = new PlanningViewAssignmentEditorComponent();
 		taskPropertiesInputPanel = new TaskPropertiesInputPanel(projectToUse);
 	
 		add(taskPropertiesInputPanel, BorderLayout.CENTER);
@@ -45,6 +45,6 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanel
 		return taskPropertiesInputPanel.getFields();
 	}
 
-	private PlanningViewTaskEditorComponent taskEditor;
+	private PlanningViewAssignmentEditorComponent taskEditor;
 	private TaskPropertiesInputPanel taskPropertiesInputPanel;
 }
