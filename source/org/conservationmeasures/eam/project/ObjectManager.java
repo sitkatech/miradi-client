@@ -192,6 +192,11 @@ public class ObjectManager
 		return (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 	
+	public ResultsChainDiagramPool getResultsChainDiagramPool()
+	{
+		return (ResultsChainDiagramPool) getPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
+	}
+	
 	public SlidePool getSlidePool()
 	{
 		return (SlidePool)getPool(ObjectType.SLIDE);
@@ -467,6 +472,19 @@ public class ObjectManager
 		}
 		
 		return false;
+	}
+	
+	public ORefList getAllDiagramObjectRefs()
+	{
+		ORefList conceptualModels = getConceptualModelDiagramPool().getORefList();
+		ORefList resultsChains = getResultsChainDiagramPool().getORefList();
+		
+		ORefList combinedORefList = new ORefList();
+		combinedORefList.addAll(conceptualModels);
+		combinedORefList.addAll(resultsChains);
+		
+		return combinedORefList;
+
 	}
 
 	Project project;

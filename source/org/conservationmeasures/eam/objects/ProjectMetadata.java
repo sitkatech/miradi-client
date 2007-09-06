@@ -91,6 +91,11 @@ public class ProjectMetadata extends BaseObject
 	{
 		return objectManager.getGoalPool().getORefList();
 	}
+	
+	public ORefList getAllDiagramObjectRefs()
+	{
+		return objectManager.getAllDiagramObjectRefs(); 
+	}
 
 	public String getCurrentWizardScreenName()
 	{

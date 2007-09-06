@@ -152,14 +152,7 @@ public class Project
 	
 	public ORefList getAllDiagramObjectRefs()
 	{
-		ORefList conceptualModels = getConceptualModelDiagramPool().getORefList();
-		ORefList resultsChains = getResultsChainDiagramPool().getORefList();
-		
-		ORefList combinedORefList = new ORefList();
-		combinedORefList.addAll(conceptualModels);
-		combinedORefList.addAll(resultsChains);
-		
-		return combinedORefList;
+		return objectManager.getAllDiagramObjectRefs();
 	}
 	
 	public ConceptualModelDiagramPool getConceptualModelDiagramPool()

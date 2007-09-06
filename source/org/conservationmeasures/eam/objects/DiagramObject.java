@@ -67,6 +67,23 @@ abstract public class DiagramObject extends BaseObject
 		return null;
 	}
 	
+	public ORefList getAllGoalRefs()
+	{
+		ORefList allGoalIds = objectManager.getGoalPool().getORefList();
+		ORefList ourGoals = new ORefList();
+		for (int i = 0; i < allGoalIds.size(); ++i)
+		{
+			ORef goalRef = allGoalIds.get(i);
+			FactorId goalId = new FactorId(goalRef.getObjectId().asInt());
+			if (! containsWrappedFactor(goalId))
+				continue;
+			
+			ourGoals.add(goalRef);
+		}
+		
+		return ourGoals;
+	}
+		
 	public boolean containsWrappedFactor(FactorId factorId)
 	{
 		if (getDiagramFactor(factorId) != null)

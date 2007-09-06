@@ -47,5 +47,5 @@ public class ConceptualModelDiagram extends DiagramObject
 		return getLabel();
 	}
 	
-	static final String OBJECT_NAME = "ConceptualModelDiagram";
+	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 }
