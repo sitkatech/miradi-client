@@ -9,11 +9,12 @@ import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 
-public class PlanningViewTaskEditorComponent extends DisposablePanel
+public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 {
-	public PlanningViewTaskEditorComponent()
+	public PlanningViewAssignmentEditorComponent()
 	{
 		super(new BorderLayout());
-		//FIXME planning - add tables here
+		
+		
 	}
 }
