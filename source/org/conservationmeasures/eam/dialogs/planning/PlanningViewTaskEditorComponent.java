@@ -9,9 +9,9 @@ import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 
-public class TaskEditorComponent extends DisposablePanel
+public class PlanningViewTaskEditorComponent extends DisposablePanel
 {
-	public TaskEditorComponent()
+	public PlanningViewTaskEditorComponent()
 	{
 		super(new BorderLayout());
 		//FIXME planning - add tables here
