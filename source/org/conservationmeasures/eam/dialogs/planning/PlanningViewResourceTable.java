@@ -5,12 +5,13 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
 public class PlanningViewResourceTable extends TableWithHelperMethods
 {
-	public PlanningViewResourceTable()
+	public PlanningViewResourceTable(Project projectToUse)
 	{
-		super(new PlanningViewResourceTableModel());
+		super(new PlanningViewResourceTableModel(projectToUse));
 	}
 }

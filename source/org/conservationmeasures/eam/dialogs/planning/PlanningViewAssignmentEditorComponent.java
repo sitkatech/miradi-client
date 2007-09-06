@@ -11,16 +11,18 @@ import javax.swing.Box;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
 public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 {
-	public PlanningViewAssignmentEditorComponent()
+	public PlanningViewAssignmentEditorComponent(Project projectToUse)
 	{
 		super(new BorderLayout());
 		
+		project = projectToUse;
 		createTables();
 		addTables();
 		addTablesToSelectionController();
@@ -31,7 +33,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		
-		resourceTable = new PlanningViewResourceTable();
+		resourceTable = new PlanningViewResourceTable(project);
 		workplanTable = new PlanningViewWorkPlanTable();
 		budgetTable = new PlanningViewBudgetTable();
 	}
@@ -60,6 +62,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		selectionController.addTable(budgetTable);
 	}
 
+	private Project project;
 	private MultiTableVerticalScrollController verticalController;
 	private MultipleTableSelectionController selectionController;
 	
