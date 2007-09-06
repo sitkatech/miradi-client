@@ -9,5 +9,8 @@ import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
 public class PlanningViewResourceTable extends TableWithHelperMethods
 {
-
+	public PlanningViewResourceTable()
+	{
+		super(new PlanningViewResourceTableModel());
+	}
 }
