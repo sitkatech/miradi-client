@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
 
@@ -20,11 +21,11 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanel
 	{
 		super(new BasicGridLayout(2, 1));
 		
-		taskEditor = new PlanningViewAssignmentEditorComponent(projectToUse);
+		assignmentEditor = new PlanningViewAssignmentEditorComponent(projectToUse);
 		taskPropertiesInputPanel = new TaskPropertiesInputPanel(projectToUse);
 	
 		add(taskPropertiesInputPanel);
-		add(taskEditor);
+		add(assignmentEditor);
 	}
 	
 	public void dispose()
@@ -32,8 +33,13 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanel
 		taskPropertiesInputPanel.dispose();
 		taskPropertiesInputPanel = null;
 		
-		taskEditor.dispose();
-		taskEditor = null;
+		assignmentEditor.dispose();
+		assignmentEditor = null;
+	}
+	
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		assignmentEditor.setObjectRefs(hierarchyToSelectedRef);
 	}
 	
 	public String getPanelDescription()
@@ -46,6 +52,6 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanel
 		return taskPropertiesInputPanel.getFields();
 	}
 
-	private PlanningViewAssignmentEditorComponent taskEditor;
+	private PlanningViewAssignmentEditorComponent assignmentEditor;
 	private TaskPropertiesInputPanel taskPropertiesInputPanel;
 }

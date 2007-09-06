@@ -7,7 +7,10 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
 public class PlanningViewResourceTableModel extends AbstractTableModel
@@ -16,6 +19,24 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	{
 		project = projectToUse;
 		assignmentRefs = new ORefList();
+	}
+	
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		ORef selectedRef = hierarchyToSelectedRef[0];
+		if (selectedRef.getObjectType() != Task.getObjectType())
+			return;
+		
+		Task task = (Task) project.findObject(selectedRef);
+		assignmentRefs = getAssignmentsForTask(task);
+	}
+	
+	private ORefList getAssignmentsForTask(Task taskToUse)
+	{
+		if (taskToUse == null)
+			return new ORefList();
+		
+		return taskToUse.getAssignmentRefs();
 	}
 	
 	public int getColumnCount()
@@ -28,9 +49,12 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		return assignmentRefs.size();
 	}
 
-	public Object getValueAt(int rowIndex, int columnIndex)
+	public Object getValueAt(int row, int column)
 	{
-		return null;
+		//FIXME planning - remove code and make it work
+		ORef assignmentRef = assignmentRefs.get(row);
+		Assignment assignment = (Assignment) project.findObject(assignmentRef);
+		return assignment;
 	}
 	
 	Project project;
