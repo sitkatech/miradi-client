@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import java.util.Vector;
-
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -47,11 +45,6 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanel
 		return EAM.text("Task Properties");
 	}
 	
-	public Vector getFields()
-	{
-		return taskPropertiesInputPanel.getFields();
-	}
-
 	private PlanningViewAssignmentEditorComponent assignmentEditor;
 	private TaskPropertiesInputPanel taskPropertiesInputPanel;
 }

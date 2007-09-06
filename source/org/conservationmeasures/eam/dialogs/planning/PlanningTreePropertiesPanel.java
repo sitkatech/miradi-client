@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.CardLayout;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
@@ -61,34 +60,16 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	{
 		return PANEL_DESCRIPTION;
 	}
-	
-	public Vector getFields()
-	{
-		ORef firstRef = getORef(0);
-		int objectType = firstRef.getObjectType();
-		if (Goal.getObjectType() == objectType)
-			return goalPropertiesPanel.getFields();
-	
-		if (Objective.getObjectType() == objectType)
-			return objectivePropertiesPanel.getFields();
-		
-		if (Indicator.getObjectType() == objectType)
-			return indicatorPropertiesPanel.getFields();
-		
-		if (Strategy.getObjectType() == objectType)
-			return strategyPropertiesPanel.getFields();
-		
-		if (Task.getObjectType() == objectType)
-			return taskPropertiesInputPanel.getFields();
-		
-		return super.getFields();
-	}
 
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
 		cardLayout.show(this, getDescription(orefsToUse));
-		taskPropertiesInputPanel.setObjectRefs(orefsToUse);	
+		taskPropertiesInputPanel.setObjectRefs(orefsToUse);
+		goalPropertiesPanel.setObjectRefs(orefsToUse);
+		objectivePropertiesPanel.setObjectRefs(orefsToUse);
+		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
+		strategyPropertiesPanel.setObjectRefs(orefsToUse);
 	}
 	
 	private String getDescription(ORef[] orefsToUse)

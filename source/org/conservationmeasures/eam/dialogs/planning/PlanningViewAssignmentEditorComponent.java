@@ -32,6 +32,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		resourceTable.setObjectRefs(hierarchyToSelectedRef);
+		resourceTableModel.fireTableDataChanged();
 	}
 	
 	private void createTables()
@@ -39,7 +40,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		
-		PlanningViewResourceTableModel resourceTableModel = new PlanningViewResourceTableModel(project);
+		resourceTableModel = new PlanningViewResourceTableModel(project);
 		resourceTable = new PlanningViewResourceTable(resourceTableModel);
 		
 		workplanTable = new PlanningViewWorkPlanTable();
@@ -77,4 +78,6 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private PlanningViewResourceTable resourceTable;
 	private PlanningViewBudgetTable budgetTable;
 	private PlanningViewWorkPlanTable workplanTable;
+	
+	private PlanningViewResourceTableModel resourceTableModel;
 }
