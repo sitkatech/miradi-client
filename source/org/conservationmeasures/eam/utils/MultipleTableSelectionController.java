@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.utils;
 
 import java.util.Vector;
 
-import javax.swing.DefaultListSelectionModel;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -27,7 +27,7 @@ public class MultipleTableSelectionController implements ListSelectionListener
 	
 	private void adjustSelectionOfAllTables(ListSelectionEvent event)
 	{
-		DefaultListSelectionModel source = (DefaultListSelectionModel) event.getSource();
+		ListSelectionModel source = (ListSelectionModel) event.getSource();
 		int leadSelectionIndex  = source.getLeadSelectionIndex();
 		for (int i = 0; i < tables.size(); ++i)
 		{
