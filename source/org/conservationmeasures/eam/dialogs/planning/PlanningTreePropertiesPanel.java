@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
 
 public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 {
@@ -49,7 +48,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		objectivePropertiesPanel = new ObjectivePropertiesPanel(project);
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(project);
 		strategyPropertiesPanel = new StrategyPropertiesPanel(project);
-		taskPropertiesInputPanel = new TaskPropertiesInputPanel(project);
+		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(project);
 		
 		add(goalPropertiesPanel, goalPropertiesPanel.getPanelDescription());
 		add(objectivePropertiesPanel, objectivePropertiesPanel.getPanelDescription());
@@ -122,5 +121,5 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	ObjectivePropertiesPanel objectivePropertiesPanel;
 	IndicatorPropertiesPanel indicatorPropertiesPanel;
 	StrategyPropertiesPanel strategyPropertiesPanel;
-	TaskPropertiesInputPanel taskPropertiesInputPanel;
+	PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
 }
