@@ -119,6 +119,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.dialogs.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePropertiesPanel;
@@ -203,7 +204,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	public void showResourcePropertiesDialog(BaseObject object) throws Exception
 	{
-		ModelessDialogPanel propertiesPanel = createPanelForDialog(object);
+		DisposablePanelWithDescription propertiesPanel = createPanelForDialog(object);
 		if(propertiesPanel == null)
 			return;
 		
@@ -233,7 +234,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 
 	}
 	
-	private ModelessDialogPanel createPanelForDialog(BaseObject object) throws Exception
+	private DisposablePanelWithDescription createPanelForDialog(BaseObject object) throws Exception
 	{	
 		return new ResourcePropertiesPanel(getProject(), object.getId());
 	}
