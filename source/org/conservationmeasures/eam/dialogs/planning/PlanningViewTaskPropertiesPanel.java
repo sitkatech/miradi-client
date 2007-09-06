@@ -38,7 +38,7 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanel
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Task Property");
+		return EAM.text("Task Properties");
 	}
 	
 	public Vector getFields()
