@@ -20,7 +20,7 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanel
 	{
 		super(new BasicGridLayout(2, 1));
 		
-		taskEditor = new PlanningViewAssignmentEditorComponent();
+		taskEditor = new PlanningViewAssignmentEditorComponent(projectToUse);
 		taskPropertiesInputPanel = new TaskPropertiesInputPanel(projectToUse);
 	
 		add(taskPropertiesInputPanel);

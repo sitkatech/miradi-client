@@ -7,20 +7,34 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.project.Project;
+
 public class PlanningViewResourceTableModel extends AbstractTableModel
 {
+	public PlanningViewResourceTableModel(Project projectToUse)
+	{
+		project = projectToUse;
+		assignmentRefs = new ORefList();
+	}
+	
 	public int getColumnCount()
 	{
-		return 0;
+		return COLUMN_COUNT;
 	}
 
 	public int getRowCount()
 	{
-		return 0;
+		return assignmentRefs.size();
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
 		return null;
 	}
+	
+	Project project;
+	private ORefList assignmentRefs;
+	
+	private static final int COLUMN_COUNT = 4;
 }
