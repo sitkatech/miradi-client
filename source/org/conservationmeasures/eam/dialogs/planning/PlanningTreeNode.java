@@ -11,10 +11,12 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ORefListWithoutDuplicates;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -83,9 +85,20 @@ public class PlanningTreeNode extends TreeTableNode
 
 	public String toString()
 	{
-		return nodeObject.getLabel();
+		return getNodeLabel();
 	}
 	
+	private String getNodeLabel()
+	{
+		if (getType() == ResultsChainDiagram.getObjectType())
+			return "RC: " + nodeObject.getLabel();
+		
+		if (getType() == ConceptualModelDiagram.getObjectType())
+			return "Conceptual Model: " + nodeObject.getLabel();
+		
+		return nodeObject.getLabel();
+	}
+
 	public ORefList retrieveFilteredSubNodes(BaseObject object)
 	{
 		ORefListWithoutDuplicates filteredList = new ORefListWithoutDuplicates();
@@ -114,7 +127,13 @@ public class PlanningTreeNode extends TreeTableNode
 		{
 			case ObjectType.PROJECT_METADATA :
 				return getChildrenOfProject((ProjectMetadata)object);
-			
+	
+			case ObjectType.CONCEPTUAL_MODEL_DIAGRAM :
+				return getChildrenOfConceptualModel((ConceptualModelDiagram) object);
+				
+			case ObjectType.RESULTS_CHAIN_DIAGRAM :
+				return getChildrenOfResultsChain((ResultsChainDiagram) object);
+				
 			case ObjectType.GOAL :
 				return getChildrenOfGoal((Goal)object);
 			
@@ -137,7 +156,17 @@ public class PlanningTreeNode extends TreeTableNode
 
 	private ORefList getChildrenOfProject(ProjectMetadata projectMetadata)
 	{
-		return projectMetadata.getAllGoalRefs();
+		return projectMetadata.getAllDiagramObjectRefs();
+	}
+	
+	private ORefList getChildrenOfConceptualModel(ConceptualModelDiagram diagram)
+	{
+		return diagram.getAllGoalRefs();
+	}
+	
+	private ORefList getChildrenOfResultsChain(ResultsChainDiagram resultsChain)
+	{
+		return resultsChain.getAllGoalRefs();
 	}
 
 	private ORefList getChildrenOfGoal(Goal goal)
