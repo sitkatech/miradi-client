@@ -92,7 +92,7 @@ public class PlanningView extends TabbedView
 	
 	static public CodeList getMasterRowList()
 	{
-		CodeList masterRowList = new CodeList();
+		final CodeList masterRowList = new CodeList();
 		masterRowList.add(Goal.OBJECT_NAME);
 		masterRowList.add(Objective.OBJECT_NAME);
 		masterRowList.add(Strategy.OBJECT_NAME);
@@ -106,7 +106,7 @@ public class PlanningView extends TabbedView
 	
 	static public CodeList getMasterColumnList()
 	{
-		CodeList masterColumnList = new CodeList();
+		final CodeList masterColumnList = new CodeList();
 		masterColumnList.add(Indicator.TAG_PRIORITY);
 		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		masterColumnList.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
