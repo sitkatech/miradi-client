@@ -49,12 +49,14 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(project);
 		strategyPropertiesPanel = new StrategyPropertiesPanel(project);
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(project);
+		blankPropertiesPanel = new BlankPropertiesPanel();
 		
 		add(goalPropertiesPanel, goalPropertiesPanel.getPanelDescription());
 		add(objectivePropertiesPanel, objectivePropertiesPanel.getPanelDescription());
 		add(indicatorPropertiesPanel, indicatorPropertiesPanel.getPanelDescription());
 		add(strategyPropertiesPanel, strategyPropertiesPanel.getPanelDescription());
 		add(taskPropertiesInputPanel, taskPropertiesInputPanel.getPanelDescription());
+		add(blankPropertiesPanel, blankPropertiesPanel.getPanelDescription());
 	}
 	
 	public String getPanelDescription()
@@ -93,9 +95,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		if (Task.getObjectType() == objectType)
 			return taskPropertiesInputPanel;
 		
-		
-		//FIXME planning - need to add an empty card here
-		return null;
+		return blankPropertiesPanel;
 	}
 
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
@@ -108,4 +108,5 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	IndicatorPropertiesPanel indicatorPropertiesPanel;
 	StrategyPropertiesPanel strategyPropertiesPanel;
 	PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
+	BlankPropertiesPanel blankPropertiesPanel;
 }
