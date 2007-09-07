@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JRadioButton;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -27,23 +29,31 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 		addActionListener(this);
 	}
 
-	public void actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent event)
 	{
-		saveRadioSelection();
+		try
+		{
+			saveRadioSelection();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Error Occurred While Trying to Save Settings"));
+		}	
 	}
 
-	private void saveRadioSelection()
+	private void saveRadioSelection() throws Exception
 	{
+		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
 			saveCurrentRadioSelection();
 			saveCurrentColumnList();
 			saveCurrentRowList();
 		}
-		catch (Exception e) 
+		finally
 		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error Occurred While Trying to Save Settings"));
+			project.executeCommand(new CommandEndTransaction());
 		}
 	}
 
