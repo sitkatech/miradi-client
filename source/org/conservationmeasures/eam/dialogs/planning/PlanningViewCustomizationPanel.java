@@ -73,8 +73,9 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		addRadioButtonToGroup(buttonGroup, monitoringRadioButton);
 		addLabeledRadioButton(monitoringRadioButton, EAM.text("Monitoring Plan"));
 		
-		JRadioButton workRadio = createRadioButton(buttonGroup, new WorkPlanButtonHandler(), PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
-		addLabeledRadioButton(workRadio, EAM.text("Work Plan"));
+		PlanningViewWorkPlanRadioButton workPlanRadioButton = new PlanningViewWorkPlanRadioButton(project);
+		addRadioButtonToGroup(buttonGroup, workPlanRadioButton);
+		addLabeledRadioButton(workPlanRadioButton, EAM.text("Work Plan"));
 		
 		SingleLevelComboRadioButtonHandler preConfiguredButtonHandler = new SingleLevelComboRadioButtonHandler(PlanningView.SINGLE_LEVEL_RADIO_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
 		JRadioButton singleObjectRadio = createRadioButton(buttonGroup, preConfiguredButtonHandler, PlanningView.SINGLE_LEVEL_RADIO_CHOICE);
@@ -447,37 +448,38 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 //			return listToShow;
 //		}
 //	}
-	
-	public class WorkPlanButtonHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{			
-			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
-			saveVisibleColumnList(PlanningView.getMasterColumnList(), getColumListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
-		}
-		
-		private CodeList getRowListToShow()
-		{
-			CodeList listToShow = new CodeList();
-			listToShow.add(Strategy.OBJECT_NAME);
-			listToShow.add(Task.ACTIVITY_NAME);
-			listToShow.add(Indicator.OBJECT_NAME);
-			listToShow.add(Task.METHOD_NAME);
-			listToShow.add(Task.OBJECT_NAME);
-			
-			return listToShow;
-		}
-		
-		private CodeList getColumListToShow()
-		{
-			CodeList listToShow = new CodeList();
-			listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-			listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-			listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
-			
-			return listToShow;
-		}
-	}
+
+//TODO planning -  remove commented code	
+//	public class WorkPlanButtonHandler implements ActionListener
+//	{
+//		public void actionPerformed(ActionEvent e)
+//		{			
+//			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
+//			saveVisibleColumnList(PlanningView.getMasterColumnList(), getColumListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.WORKPLAN_PLAN_RADIO_CHOICE);
+//		}
+//		
+//		private CodeList getRowListToShow()
+//		{
+//			CodeList listToShow = new CodeList();
+//			listToShow.add(Strategy.OBJECT_NAME);
+//			listToShow.add(Task.ACTIVITY_NAME);
+//			listToShow.add(Indicator.OBJECT_NAME);
+//			listToShow.add(Task.METHOD_NAME);
+//			listToShow.add(Task.OBJECT_NAME);
+//			
+//			return listToShow;
+//		}
+//		
+//		private CodeList getColumListToShow()
+//		{
+//			CodeList listToShow = new CodeList();
+//			listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+//			listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+//			listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+//			
+//			return listToShow;
+//		}
+//	}
 	
 	public class SingleLevelComboBoxHandler implements ActionListener
 	{
