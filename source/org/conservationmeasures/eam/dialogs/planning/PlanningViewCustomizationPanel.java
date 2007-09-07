@@ -63,38 +63,45 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	protected void rebuildLegendPanel()
 	{
 		removeAll();
+		radioGroup = new PlanningViewRadioGroup(project);
+		
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
 		PlanningViewStrategicRadioButton strategicRadioButton = new PlanningViewStrategicRadioButton(project);
-		addRadioButtonToGroup(buttonGroup, strategicRadioButton);
+		radioGroup.addRadioButtonToGroup(buttonGroup, strategicRadioButton);
 		addLabeledRadioButton(strategicRadioButton, EAM.text("Strategic Plan"));
 		
 		PlanningViewMonitoringRadioButton monitoringRadioButton = new PlanningViewMonitoringRadioButton(project);
-		addRadioButtonToGroup(buttonGroup, monitoringRadioButton);
+		radioGroup.addRadioButtonToGroup(buttonGroup, monitoringRadioButton);
 		addLabeledRadioButton(monitoringRadioButton, EAM.text("Monitoring Plan"));
 		
 		PlanningViewWorkPlanRadioButton workPlanRadioButton = new PlanningViewWorkPlanRadioButton(project);
-		addRadioButtonToGroup(buttonGroup, workPlanRadioButton);
+		radioGroup.addRadioButtonToGroup(buttonGroup, workPlanRadioButton);
 		addLabeledRadioButton(workPlanRadioButton, EAM.text("Work Plan"));
 		
-		SingleLevelComboRadioButtonHandler preConfiguredButtonHandler = new SingleLevelComboRadioButtonHandler(PlanningView.SINGLE_LEVEL_RADIO_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
-		JRadioButton singleObjectRadio = createRadioButton(buttonGroup, preConfiguredButtonHandler, PlanningView.SINGLE_LEVEL_RADIO_CHOICE);
+		
+		PlanningViewSingleLevelRadioButton singleLevelRadioButton = new PlanningViewSingleLevelRadioButton(project);
+		radioGroup.addRadioButtonToGroup(buttonGroup, singleLevelRadioButton);
+		//TODO remvoe commented code
+		//SingleLevelComboRadioButtonHandler preConfiguredButtonHandler = new SingleLevelComboRadioButtonHandler(PlanningView.SINGLE_LEVEL_RADIO_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
 		Object[] singleLevelChoiceItems = PlanningViewSingleLevelQuestion.getSingleLevelChoices();
 		SingleLevelComboBoxHandler comboHandler = new SingleLevelComboBoxHandler();
 		JComboBox cannedComboBox = createComboBox(singleLevelChoiceItems, comboHandler, PlanningView.SINGLE_LEVEL_COMBO);
-		addDropDownRadioButton(singleObjectRadio, cannedComboBox);
+		addDropDownRadioButton(singleLevelRadioButton, cannedComboBox);
 		
-		CustomizableComboRadioButtonHandler configuredButtonHandler = new CustomizableComboRadioButtonHandler();
-		JRadioButton configurableRadioButton = createRadioButton(buttonGroup, configuredButtonHandler, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+		PlanningViewCustomizationRadioButton customizationRadioButton = new PlanningViewCustomizationRadioButton(project);
+		radioGroup.addRadioButtonToGroup(buttonGroup, customizationRadioButton);
+		//TODO remvoe commented code
+		//CustomizableComboRadioButtonHandler configuredButtonHandler = new CustomizableComboRadioButtonHandler();
 		PlanningViewConfiguration[] allConfigurations = getConfigurableChoices();
 		CustomizableComboBoxHandler configurableComboHandler = new CustomizableComboBoxHandler();
 		JComboBox configurableComboBox = createComboBox(allConfigurations, configurableComboHandler, PlanningView.CUSTOMIZABLE_COMBO);
-		addDropDownRadioButton(configurableRadioButton, configurableComboBox);
+		addDropDownRadioButton(customizationRadioButton, configurableComboBox);
 	}
 	
 	private void selectDefaults()
 	{
-		selectAppropriateRadioButton();
+		radioGroup.selectAppropriateRadioButton();
 		selectAppropriateSingleLevelComboBoxItem();
 		selectAppropriateConfiguredComboBoxItem();
 	}
@@ -106,23 +113,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		configurationComponents.put(propertyName, comboBox);
 		
 		return comboBox;
-	}
-	
-	private JRadioButton createRadioButton(ButtonGroup buttonGroup, ActionListener handler, String propertyName)
-	{
-		JRadioButton radioButton = new JRadioButton();
-		buttonGroup.add(radioButton);
-		
-		radioButton.addActionListener(handler);
-		configurationComponents.put(propertyName, radioButton);
-		
-		return radioButton;
-	}
-	
-	private void addRadioButtonToGroup(ButtonGroup buttonGroup, PlanningViewRadioButton radioButton)
-	{
-		buttonGroup.add(radioButton);
-		configurationComponents.put(radioButton.getPropertyName(), radioButton);
 	}
 	
 	private void addDropDownRadioButton(JRadioButton radioButton, JComboBox comboBox)
@@ -173,31 +163,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		}
 	}
 
-	private void selectAppropriateRadioButton()
-	{
-		try
-		{
-			ViewData viewData = project.getCurrentViewData();
-			String selectedRadioName = getCurrentRadioChoice(viewData);
-			JRadioButton radioButton = findRadioButton(selectedRadioName);
-			radioButton.setSelected(true);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-
-	private String getCurrentRadioChoice(ViewData viewData)
-	{
-		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-		boolean shouldReturnDefault = selectedRadioName.trim().equals("");
-		if (shouldReturnDefault)
-			return PlanningView.STRATEGIC_PLAN_RADIO_CHOICE;
-
-		return selectedRadioName;
-	}
-
 	private ORef getCurrentConfigurationComboBoxChoice(ViewData viewData)
 	{	
 		String preconfiguredChoice = viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
@@ -241,13 +206,13 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_STYLE_CHOICE))
 		{
 			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-			updateRadioSelection(setCommand.getDataValue());
+			radioGroup.updateRadioSelection(setCommand.getDataValue());
 			return;
 		}
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
 		{
-			updateRadioSelection(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+			radioGroup.updateRadioSelection(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 			return;
 		}
 		
@@ -279,12 +244,23 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	
 	private void selectSingleLevelComboButton(String property)
 	{
-		JComboBox comboBox = findComboBox(PlanningView.SINGLE_LEVEL_COMBO);
+		JComboBox comboBox = radioGroup.findComboBox(PlanningView.SINGLE_LEVEL_COMBO);
 		PlanningViewSingleLevelQuestion question = new PlanningViewSingleLevelQuestion();
 		ChoiceItem choiceItemToSelect = question.findChoiceByCode(property);
 		comboBox.setSelectedItem(choiceItemToSelect);
 	}
+
+	//TODO these methods exist in radioGroup as well, but they use a different hashmap
+	public JComboBox findComboBox(String property)
+	{
+		return (JComboBox) findComponent(property);
+	}
 	
+	private Component findComponent(String property)
+	{
+		return configurationComponents.get(property);
+	}
+
 	private void selectConfigurationComboButton(ORef refToSelect)
 	{
 		JComboBox comboBox = findComboBox(PlanningView.CUSTOMIZABLE_COMBO);
@@ -307,26 +283,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		return (PlanningViewConfiguration) project.findObject(refToSelect);
 	}
 
-	private void updateRadioSelection(String selectedProperty)
-	{
-		findRadioButton(selectedProperty).setSelected(true);
-	}
-
-	private JRadioButton findRadioButton(String property)
-	{
-		return (JRadioButton) findComponent(property);
-	}
-	
-	private JComboBox findComboBox(String property)
-	{
-		return (JComboBox) findComponent(property);
-	}
-	
-	private Component findComponent(String property)
-	{
-		return configurationComponents.get(property);
-	}
-	
 	private void saveCodeList(CodeList codeListToSave, String dataTagToHide, String radioName)
 	{
 		try
@@ -535,4 +491,5 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		
 	private Project project;
 	private Hashtable<String, Component> configurationComponents;
+	private PlanningViewRadioGroup radioGroup;
 }
