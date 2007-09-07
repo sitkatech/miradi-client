@@ -66,8 +66,16 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 		CommandSetObjectData selectCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, newConfigurationRef);
 		getProject().executeCommand(selectCurrentConfiguration);
 		
+		CommandSetObjectData setConfigurationLabel = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_LABEL, getConfigurationDefaultLabel());
+		getProject().executeCommand(setConfigurationLabel);
+		
 		PlanningViewCustomLabelPropertiesPanel labelPropertiesPanel = new PlanningViewCustomLabelPropertiesPanel(getProject(), createConfiguration.getObjectRef());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), labelPropertiesPanel, labelPropertiesPanel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
+	}
+
+	private String getConfigurationDefaultLabel()
+	{
+		return "Customization " + getProject().getPlanningViewConfigurationPool().size(); 
 	}
 }
