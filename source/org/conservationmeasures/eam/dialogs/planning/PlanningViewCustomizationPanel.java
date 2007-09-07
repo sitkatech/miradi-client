@@ -65,8 +65,9 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		removeAll();
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
-		JRadioButton stratRadio = createRadioButton(buttonGroup, new StrategicButtonHandler(), PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
-		addLabeledRadioButton(stratRadio, EAM.text("Strategic Plan"));
+		PlanningViewStrategicRadioButton strategicRadioButton = new PlanningViewStrategicRadioButton(project);
+		addRadioButtonToGroup(buttonGroup, strategicRadioButton);
+		addLabeledRadioButton(strategicRadioButton, EAM.text("Strategic Plan"));
 		
 		JRadioButton monRadio = createRadioButton(buttonGroup, new MonitoringButtonHandler(), PlanningView.MONITORING_PLAN_RADIO_CHOICE);
 		addLabeledRadioButton(monRadio, EAM.text("Monitoring Plan"));
@@ -114,6 +115,12 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		configurationComponents.put(propertyName, radioButton);
 		
 		return radioButton;
+	}
+	
+	private void addRadioButtonToGroup(ButtonGroup buttonGroup, PlanningViewRadioButton radioButton)
+	{
+		buttonGroup.add(radioButton);
+		configurationComponents.put(radioButton.getPropertyName(), radioButton);
 	}
 	
 	private void addDropDownRadioButton(JRadioButton radioButton, JComboBox comboBox)
@@ -374,36 +381,37 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		return invalidConfiguration;
 	}
 	
-	public class StrategicButtonHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
-			saveVisibleColumnList(PlanningView.getMasterColumnList(), getColumListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
-		}
-		
-		private CodeList getRowListToShow()
-		{
-			CodeList listToShow = new CodeList();
-			listToShow.add(Goal.OBJECT_NAME);
-			listToShow.add(Objective.OBJECT_NAME);
-			listToShow.add(Strategy.OBJECT_NAME);
-			
-			return listToShow;
-		}
-		
-		private CodeList getColumListToShow()
-		{
-			CodeList listToShow = new CodeList();
-			listToShow.add(Indicator.PSEUDO_TAG_STATUS_VALUE);			
-			listToShow.add(Indicator.TAG_PRIORITY);
-			listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-			listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-			listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
-			
-			return listToShow;
-		}
-	}
+//TODO planning - remove code	
+//	public class StrategicButtonHandler implements ActionListener
+//	{
+//		public void actionPerformed(ActionEvent e)
+//		{
+//			saveVisibleRowList(PlanningView.getMasterRowList(), getRowListToShow(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
+//			saveVisibleColumnList(PlanningView.getMasterColumnList(), getColumListToShow(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
+//		}
+//		
+//		private CodeList getRowListToShow()
+//		{
+//			CodeList listToShow = new CodeList();
+//			listToShow.add(Goal.OBJECT_NAME);
+//			listToShow.add(Objective.OBJECT_NAME);
+//			listToShow.add(Strategy.OBJECT_NAME);
+//			
+//			return listToShow;
+//		}
+//		
+//		private CodeList getColumListToShow()
+//		{
+//			CodeList listToShow = new CodeList();
+//			listToShow.add(Indicator.PSEUDO_TAG_STATUS_VALUE);			
+//			listToShow.add(Indicator.TAG_PRIORITY);
+//			listToShow.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+//			listToShow.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
+//			listToShow.add(Task.PSEUDO_TAG_TASK_TOTAL);
+//			
+//			return listToShow;
+//		}
+//	}
 	
 	public class MonitoringButtonHandler implements ActionListener
 	{
