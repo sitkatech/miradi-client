@@ -5,6 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 
@@ -17,12 +21,19 @@ public class PlanningViewMonitoringRadioButton extends PlanningViewRadioButton
 
 	public String[] getColumnList()
 	{
-		return null;
+		return new String[] {Indicator.PSEUDO_TAG_STATUS_VALUE,			
+							 Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+							 Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+							 Task.PSEUDO_TAG_TASK_TOTAL,
+							 Indicator.PSEUDO_TAG_FACTOR,
+							 Indicator.PSEUDO_TAG_METHODS, };
 	}
 
 	public String[] getRowList()
 	{
-		return null;
+		return new String[] {Goal.OBJECT_NAME,
+							Objective.OBJECT_NAME,
+							Indicator.OBJECT_NAME, } ;
 	}
 
 	public String getPropertyName()
