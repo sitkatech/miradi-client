@@ -40,9 +40,9 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class PlanningCustomizationPanel extends JPanel implements CommandExecutedListener
+public class PlanningViewCustomizationPanel extends JPanel implements CommandExecutedListener
 {
-	public PlanningCustomizationPanel(Project projectToUse)
+	public PlanningViewCustomizationPanel(Project projectToUse)
 	{
 		super(new GridLayoutPlus(3, 2));
 		project = projectToUse;

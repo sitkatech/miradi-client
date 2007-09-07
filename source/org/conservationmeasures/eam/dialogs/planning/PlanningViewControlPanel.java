@@ -28,7 +28,7 @@ public class PlanningViewControlPanel extends JPanel
 	
 	private void addLegendComponents()
 	{
-		planningCustomizationPanel = new PlanningCustomizationPanel(getProject());
+		planningCustomizationPanel = new PlanningViewCustomizationPanel(getProject());
 		rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
 		columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
 		
@@ -60,6 +60,6 @@ public class PlanningViewControlPanel extends JPanel
 
 	private MainWindow mainWindow;
 	private AbstractPlanningViewLegendPanel rowsLegendPanel;
-	private PlanningCustomizationPanel planningCustomizationPanel;
+	private PlanningViewCustomizationPanel planningCustomizationPanel;
 	private PlanningViewColumsLegendPanel columnsLegendPanel;
 }
