@@ -51,12 +51,17 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(project);
 		blankPropertiesPanel = new BlankPropertiesPanel();
 		
-		add(goalPropertiesPanel, goalPropertiesPanel.getPanelDescription());
-		add(objectivePropertiesPanel, objectivePropertiesPanel.getPanelDescription());
-		add(indicatorPropertiesPanel, indicatorPropertiesPanel.getPanelDescription());
-		add(strategyPropertiesPanel, strategyPropertiesPanel.getPanelDescription());
-		add(taskPropertiesInputPanel, taskPropertiesInputPanel.getPanelDescription());
-		add(blankPropertiesPanel, blankPropertiesPanel.getPanelDescription());
+		add(goalPropertiesPanel);
+		add(objectivePropertiesPanel);
+		add(indicatorPropertiesPanel);
+		add(strategyPropertiesPanel);
+		add(taskPropertiesInputPanel);
+		add(blankPropertiesPanel);
+	}
+	
+	private void add(DisposablePanelWithDescription panelToAdd)
+	{
+		add(panelToAdd, panelToAdd.getPanelDescription());
 	}
 	
 	public String getPanelDescription()
