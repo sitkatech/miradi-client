@@ -91,9 +91,14 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 		masterList.subtract(listToSubtract);
 		return masterList.toString();
 	}
+	
+	protected Project getProject()
+	{
+		return project;
+	}
 		
-	abstract public String[] getRowList();
-	abstract public String[] getColumnList();
+	abstract public String[] getRowList() throws Exception;
+	abstract public String[] getColumnList() throws Exception;
 	abstract public String getPropertyName();
 	
 	private	Project project;
