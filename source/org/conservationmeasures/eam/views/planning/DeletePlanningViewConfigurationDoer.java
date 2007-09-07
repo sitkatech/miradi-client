@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
+import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewConfigurationDoer
@@ -41,6 +42,10 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 			ViewData viewData = getProject().getCurrentViewData();
 			String oRefAsString = viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 			ORef configurationRef = ORef.createFromString(oRefAsString);
+
+			PlanningViewConfiguration configuration = (PlanningViewConfiguration) getProject().findObject(configurationRef);
+			getProject().executeCommands(configuration.createCommandsToClear());
+			
 			CommandDeleteObject deleteConfiguration = new CommandDeleteObject(configurationRef);
 			getProject().executeCommand(deleteConfiguration);
 			
