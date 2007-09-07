@@ -6,14 +6,11 @@
 package org.conservationmeasures.eam.dialogs.planning;
 
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.UiComboBoxWithSaneActionFiring;
 
-public class PlanningViewComboBox extends UiComboBoxWithSaneActionFiring
+public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 {
-	public PlanningViewComboBox(Project projectToUse)
+	public PlanningViewCustomizationComboBox(Project projectToUse)
 	{
-		project = projectToUse;
+		super(projectToUse);
 	}
-
-	Project project;
 }
