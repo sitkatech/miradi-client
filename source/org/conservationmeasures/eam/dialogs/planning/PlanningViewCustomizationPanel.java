@@ -43,6 +43,8 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	public void dispose()
 	{
 		project.removeCommandExecutedListener(this);
+		customizationComboBox.dispose();
+		singleLevelCombo.dispose();
 	}
 	
 	protected void rebuildLegendPanel()
@@ -79,7 +81,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		addLabeledRadioButton(workPlanRadioButton, EAM.text("Work Plan"));
 		
 		
-		PlanningViewSingleLevelComboBox singleLevelCombo = new PlanningViewSingleLevelComboBox(project);
+		singleLevelCombo = new PlanningViewSingleLevelComboBox(project);
 		PlanningViewSingleLevelRadioButton singleLevelRadioButton = new PlanningViewSingleLevelRadioButton(project, singleLevelCombo);
 		radioGroup.addRadioButtonToGroup(buttonGroup, singleLevelRadioButton);
 		radioGroup.addComboBoxToHashMap(singleLevelCombo);
@@ -91,7 +93,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		//JComboBox cannedComboBox = createComboBox(singleLevelChoiceItems, comboHandler, PlanningView.SINGLE_LEVEL_COMBO);
 		
 
-		PlanningViewCustomizationComboBox customizationComboBox = new PlanningViewCustomizationComboBox(project);
+		customizationComboBox = new PlanningViewCustomizationComboBox(project);
 		PlanningViewCustomizationRadioButton customizationRadioButton = new PlanningViewCustomizationRadioButton(project, customizationComboBox);
 		radioGroup.addComboBoxToHashMap(customizationComboBox);
 		radioGroup.addRadioButtonToGroup(buttonGroup, customizationRadioButton);
@@ -491,4 +493,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		
 	private Project project;
 	private PlanningViewRadioGroup radioGroup;
+	private PlanningViewSingleLevelComboBox singleLevelCombo;
+	private PlanningViewCustomizationComboBox customizationComboBox;
 }
