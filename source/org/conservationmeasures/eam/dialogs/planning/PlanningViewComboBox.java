@@ -30,7 +30,6 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		setSelectionFromProjectSetting();
 	}
 	
-	//FIXME plannng - make sure this is getting called
 	public void dispose()
 	{
 		project.removeCommandExecutedListener(this);
