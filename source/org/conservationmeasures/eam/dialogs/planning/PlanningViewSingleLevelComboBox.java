@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -20,7 +19,7 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 {
-	public PlanningViewSingleLevelComboBox(Project projectToUse)
+	public PlanningViewSingleLevelComboBox(Project projectToUse) throws Exception
 	{
 		super(projectToUse, new PlanningViewSingleLevelQuestion().getChoices());
 	}
@@ -71,22 +70,15 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		return new CodeList();
 	}
 	
-	public void setSelectionFromProjectSetting()
+	public void setSelectionFromProjectSetting() throws Exception
 	{
-		try
-		{
-			ViewData viewData = getProject().getCurrentViewData();
-			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-			if (! selectedRadioName.equals(PlanningView.SINGLE_LEVEL_RADIO_CHOICE))
-				return;
+		ViewData viewData = getProject().getCurrentViewData();
+		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
+		if (! selectedRadioName.equals(PlanningView.SINGLE_LEVEL_RADIO_CHOICE))
+			return;
 
-			String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
-			selectSingleLevelComboButton(preconfiguredChoice);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
+		selectSingleLevelComboButton(preconfiguredChoice);
 	}
 	
 	private String getCurrentSingleLevelChoice(ViewData viewData)

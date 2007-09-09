@@ -49,6 +49,19 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	
 	protected void rebuildLegendPanel()
 	{
+		try
+		{
+			rebuildPanel();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Error Occurred While in Planning View Leged Panel"));
+		}
+	}
+	
+	protected void rebuildPanel() throws Exception
+	{
 		removeAll();
 		radioGroup = new PlanningViewRadioGroup(project);
 		
