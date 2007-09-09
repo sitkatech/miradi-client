@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.JComboBox;
-
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -17,10 +15,10 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.utils.UiComboBoxWithSaneActionFiring;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 
-//TODO extends UiComboBoxWithSaneActionFiring
-abstract public class PlanningViewComboBox extends JComboBox implements CommandExecutedListener, RowColumnProvider
+abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFiring implements CommandExecutedListener, RowColumnProvider
 {
 	public PlanningViewComboBox(Project projectToUse, ChoiceItem[] choices) throws Exception
 	{
