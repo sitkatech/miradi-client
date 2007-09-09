@@ -12,7 +12,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.planning.PlanningView;
@@ -63,19 +62,12 @@ public class PlanningViewRadioGroup
 		findRadioButton(selectedProperty).setSelected(true);
 	}
 	
-	public void selectAppropriateRadioButton()
+	public void selectAppropriateRadioButton() throws Exception
 	{
-		try
-		{
-			ViewData viewData = project.getCurrentViewData();
-			String selectedRadioName = getCurrentRadioChoice(viewData);
-			JRadioButton radioButton = findRadioButton(selectedRadioName);
-			radioButton.setSelected(true);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		ViewData viewData = project.getCurrentViewData();
+		String selectedRadioName = getCurrentRadioChoice(viewData);
+		JRadioButton radioButton = findRadioButton(selectedRadioName);
+		radioButton.setSelected(true);
 	}
 	
 	public String getCurrentRadioChoice(ViewData viewData)

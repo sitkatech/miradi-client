@@ -37,8 +37,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		project.addCommandExecutedListener(this);
 		
 		rebuildLegendPanel();
-		selectDefaults();
-
 		setBorder(BorderFactory.createTitledBorder(EAM.text("Standard Views")));
 	}
 	
@@ -52,6 +50,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		try
 		{
 			rebuildPanel();
+			selectDefaults();
 		}
 		catch (Exception e)
 		{
@@ -102,10 +101,9 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		//PlanningViewConfiguration[] allConfigurations = getConfigurableChoices();
 		//CustomizableComboBoxHandler configurableComboHandler = new CustomizableComboBoxHandler();
 		//JComboBox configurableComboBox = createComboBox(allConfigurations, configurableComboHandler, PlanningView.CUSTOMIZABLE_COMBO);
-		
 	}
 	
-	private void selectDefaults()
+	private void selectDefaults() throws Exception
 	{
 		radioGroup.selectAppropriateRadioButton();
 		selectAppropriateSingleLevelComboBoxItem();
