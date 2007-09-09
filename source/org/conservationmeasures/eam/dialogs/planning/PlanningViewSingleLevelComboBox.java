@@ -13,4 +13,19 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 	{
 		super(projectToUse);
 	}
+
+	public String[] getColumnList() throws Exception
+	{
+		return null;
+	}
+
+	public String getPropertyName()
+	{
+		return null;
+	}
+
+	public String[] getRowList() throws Exception
+	{
+		return null;
+	}
 }
