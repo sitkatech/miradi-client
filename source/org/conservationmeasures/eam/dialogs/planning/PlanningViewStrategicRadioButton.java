@@ -5,11 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 
@@ -17,23 +12,7 @@ public class PlanningViewStrategicRadioButton extends PlanningViewRadioButton
 {
 	public PlanningViewStrategicRadioButton(Project projectToUse)
 	{
-		super(projectToUse);
-	}
-
-	public String[] getColumnList()
-	{
-		return new String[] {Indicator.PSEUDO_TAG_STATUS_VALUE,			
-							 Indicator.TAG_PRIORITY,
-							 Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-							 Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-							 Task.PSEUDO_TAG_TASK_TOTAL, };
-	}
-
-	public String[] getRowList()
-	{
-		return new String[] {Goal.OBJECT_NAME,
-							Objective.OBJECT_NAME,
-							Strategy.OBJECT_NAME,};
+		super(projectToUse, new StrategicRowColumnProvider());
 	}
 	
 	public String getPropertyName()

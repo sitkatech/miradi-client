@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class PlanningViewCustomizationRadioButton extends PlanningViewRadioButton
 {
-	public PlanningViewCustomizationRadioButton(Project projectToUse)
+	public PlanningViewCustomizationRadioButton(Project projectToUse, RowColumnProvider rowColumnProvider)
 	{
-		super(projectToUse);
+		super(projectToUse, rowColumnProvider);
 	}
 
 	public String[] getColumnList() throws Exception

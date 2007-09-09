@@ -11,6 +11,16 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
 
 public class UiComboBoxWithSaneActionFiring extends PanelComboBox
 {
+	public UiComboBoxWithSaneActionFiring()
+	{
+		super();
+	}
+	
+	public UiComboBoxWithSaneActionFiring(Object[] choices)
+	{
+		super(choices);
+	}
+
 	public void setSelectedItemWithoutFiring(Object anObject)
 	{
 		EventListenerList listeners = listenerList;

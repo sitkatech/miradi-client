@@ -169,10 +169,12 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			if (! PlanningView.isCustomizationStyle(viewData))
 				return;
 			
-			String rowListAsString = viewData.getData(getViewDataHiddenTypesTag());
+			String listAsString = viewData.getData(getViewDataHiddenTypesTag());
 			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+			CodeList masterList = getMasterListToCreateCheckBoxesFrom();
+			masterList.subtract(new CodeList(listAsString));
 			
-			CommandSetObjectData setRowListCommand = new CommandSetObjectData(configurationRef, getConfigurationTypeTag(), rowListAsString);
+			CommandSetObjectData setRowListCommand = new CommandSetObjectData(configurationRef, getConfigurationTypeTag(), masterList.toString());
 			getProject().executeCommand(setRowListCommand);
 
 		}
