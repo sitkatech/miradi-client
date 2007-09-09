@@ -65,6 +65,21 @@ public class ChoiceItem
 		selectable = selectableToUse;
 	}
 	
+	public boolean equals(Object other)
+	{
+		if (! (other instanceof ChoiceItem))
+			return false;
+		
+		ChoiceItem otherChoiceItem = (ChoiceItem) other;
+		if (! otherChoiceItem.getCode().equals(getCode()))
+			return false;
+		
+		if (! otherChoiceItem.getLabel().equals(getLabel()))
+			return false;
+		
+		return true;
+	}
+	
 	boolean selectable;
 	String code;
 	String label;
