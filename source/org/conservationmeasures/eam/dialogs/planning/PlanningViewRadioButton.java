@@ -16,8 +16,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.views.planning.PlanningView;
 
 //FIXME planning - this class should extend UiRadioButton but it cant since UiRadioButton has no constructor that takes in 0 args
 abstract public class PlanningViewRadioButton extends JRadioButton implements ActionListener
@@ -48,26 +46,28 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 		try
 		{
 			saveCurrentRadioSelection();
-			saveCurrentColumnList();
-			saveCurrentRowList();
+			//TODO plananing remove commented code
+			//saveCurrentColumnList();
+			//saveCurrentRowList();
 		}
 		finally
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
 	}
+	
+//TODO plananing remove commented code
+//	private void saveCurrentRowList() throws Exception
+//	{
+//		String rowListAsString = getListToSave(PlanningView.getMasterRowList(), getRowList());
+//		save(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, rowListAsString);
+//	}
 
-	private void saveCurrentRowList() throws Exception
-	{
-		String rowListAsString = getListToSave(PlanningView.getMasterRowList(), getRowList());
-		save(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, rowListAsString);
-	}
-
-	private void saveCurrentColumnList() throws Exception
-	{
-		String columnListAsString = getListToSave(PlanningView.getMasterColumnList(), getColumnList());
-		save(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, columnListAsString);
-	}
+//	private void saveCurrentColumnList() throws Exception
+//	{
+//		String columnListAsString = getListToSave(PlanningView.getMasterColumnList(), getColumnList());
+//		save(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, columnListAsString);
+//	}
 
 	private void saveCurrentRadioSelection() throws Exception
 	{
@@ -84,13 +84,14 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 		CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, newValue);
 		project.executeCommand(setComboItem);
 	}
-	
-	private String getListToSave(CodeList masterList, String[] listAsString) throws Exception
-	{
-		CodeList listToSubtract = new CodeList(listAsString);
-		masterList.subtract(listToSubtract);
-		return masterList.toString();
-	}
+
+//TODO plananing remove commented code
+//	private String getListToSave(CodeList masterList, String[] listAsString) throws Exception
+//	{
+//		CodeList listToSubtract = new CodeList(listAsString);
+//		masterList.subtract(listToSubtract);
+//		return masterList.toString();
+//	}
 	
 	protected Project getProject()
 	{
