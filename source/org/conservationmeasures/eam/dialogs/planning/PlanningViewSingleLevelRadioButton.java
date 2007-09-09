@@ -10,19 +10,9 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class PlanningViewSingleLevelRadioButton extends PlanningViewRadioButton
 {
-	public PlanningViewSingleLevelRadioButton(Project projectToUse)
+	public PlanningViewSingleLevelRadioButton(Project projectToUse, RowColumnProvider rowColumnProvider)
 	{
-		super(projectToUse);
-	}
-
-	public String[] getColumnList()
-	{
-		return null;
-	}
-
-	public String[] getRowList()
-	{
-		return null;
+		super(projectToUse, rowColumnProvider);
 	}
 
 	public String getPropertyName()

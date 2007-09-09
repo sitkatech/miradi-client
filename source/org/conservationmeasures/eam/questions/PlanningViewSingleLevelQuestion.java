@@ -24,7 +24,7 @@ public class PlanningViewSingleLevelQuestion extends ChoiceQuestion
 		return "";
 	}
 
-	public static ChoiceItem[] getSingleLevelChoices()
+	private static ChoiceItem[] getSingleLevelChoices()
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")),

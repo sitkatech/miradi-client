@@ -27,23 +27,20 @@ public class PlanningViewRadioGroup
 	
 	public void rebuildGroup()
 	{
+		//FIXME planning - finish this
 		configurationComponents = new Hashtable<String, Component>();
-		ButtonGroup buttonGroup = new ButtonGroup();
-		
-		PlanningViewStrategicRadioButton strategicRadioButton = new PlanningViewStrategicRadioButton(project);
-		addRadioButtonToGroup(buttonGroup, strategicRadioButton);
-		
-		PlanningViewMonitoringRadioButton monitoringRadioButton = new PlanningViewMonitoringRadioButton(project);
-		addRadioButtonToGroup(buttonGroup, monitoringRadioButton);
-		
-		PlanningViewWorkPlanRadioButton workPlanRadioButton = new PlanningViewWorkPlanRadioButton(project);
-		addRadioButtonToGroup(buttonGroup, workPlanRadioButton);	
+		//ButtonGroup buttonGroup = new ButtonGroup();		
 	}
 	
 	public void addRadioButtonToGroup(ButtonGroup buttonGroup, PlanningViewRadioButton radioButton)
 	{
 		buttonGroup.add(radioButton);
 		configurationComponents.put(radioButton.getPropertyName(), radioButton);
+	}
+	
+	public void addComboBoxToHashMap(PlanningViewComboBox comboBoxToAdd)
+	{
+		configurationComponents.put(comboBoxToAdd.getPropertyName(), comboBoxToAdd);
 	}
 	
 	public JRadioButton findRadioButton(String property)

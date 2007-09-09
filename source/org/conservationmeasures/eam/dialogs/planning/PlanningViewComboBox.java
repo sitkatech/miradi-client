@@ -5,19 +5,83 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.UiComboBoxWithSaneActionFiring;
+import java.awt.event.ActionEvent;
 
-abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFiring
+import javax.swing.JComboBox;
+
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.planning.PlanningView;
+
+//TODO extends UiComboBoxWithSaneActionFiring
+abstract public class PlanningViewComboBox extends JComboBox implements CommandExecutedListener, RowColumnProvider
 {
-	public PlanningViewComboBox(Project projectToUse)
+	public PlanningViewComboBox(Project projectToUse, ChoiceItem[] choices)
 	{
+		super(choices);
+		
 		project = projectToUse;
+		addActionListener(this);
+		project.addCommandExecutedListener(this);
+		setSelectionFromProjectSetting();
 	}
 	
-	abstract public String[] getRowList() throws Exception;
-	abstract public String[] getColumnList() throws Exception;
-	abstract public String getPropertyName();
+	//FIXME plannng - make sure this is getting called
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
+	}
+	
+	public void actionPerformed(ActionEvent event)
+	{
+		try
+		{
+			CodeList masterRowList = PlanningView.getMasterRowList();
+			masterRowList.subtract(getRowList());
+			saveSelectedItem(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, masterRowList.toString());
+			
+			CodeList masterColumnList = PlanningView.getMasterColumnList();
+			masterRowList.subtract(getColumnList());
+			saveSelectedItem(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, masterColumnList.toString());
+			
+			ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
+			saveSelectedItem(getChoiceTag(), selectedItem.getCode().toString());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
 
-	Project project;
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+	}
+
+	private void saveSelectedItem(String tag, String newValue) throws Exception
+	{	
+		ViewData viewData = getProject().getCurrentViewData();
+		String existingValue = viewData.getData(tag);
+		if (existingValue.equals(newValue))
+			return;
+
+		CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, newValue);
+		getProject().executeCommand(setComboItem);
+	}
+	
+	protected Project getProject()
+	{
+		return project;
+	}
+	
+	abstract public void setSelectionFromProjectSetting();
+	abstract public String getChoiceTag();
+	
+	private Project project;
+	
 }
