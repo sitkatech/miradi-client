@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 //TODO extends UiComboBoxWithSaneActionFiring
 abstract public class PlanningViewComboBox extends JComboBox implements CommandExecutedListener, RowColumnProvider
 {
-	public PlanningViewComboBox(Project projectToUse, ChoiceItem[] choices)
+	public PlanningViewComboBox(Project projectToUse, ChoiceItem[] choices) throws Exception
 	{
 		super(choices);
 		
@@ -79,7 +79,7 @@ abstract public class PlanningViewComboBox extends JComboBox implements CommandE
 		return project;
 	}
 	
-	abstract public void setSelectionFromProjectSetting();
+	abstract public void setSelectionFromProjectSetting() throws Exception;
 	abstract public String getChoiceTag();
 	
 	private Project project;

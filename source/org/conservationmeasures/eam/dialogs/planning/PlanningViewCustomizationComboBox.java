@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 {
-	public PlanningViewCustomizationComboBox(Project projectToUse)
+	public PlanningViewCustomizationComboBox(Project projectToUse) throws Exception
 	{
 		super(projectToUse, new PlanningViewCustomizationQuestion(projectToUse).getChoices());
 	}
@@ -62,9 +62,9 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		return PlanningView.CUSTOMIZABLE_COMBO;
 	}
 	
-	public void setSelectionFromProjectSetting()
+	public void setSelectionFromProjectSetting() throws Exception
 	{
-		
+	
 	}
 	
 	public String getChoiceTag()
