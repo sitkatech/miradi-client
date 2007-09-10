@@ -49,7 +49,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			saveSelectedItem(ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.SINGLE_LEVEL_RADIO_CHOICE);
+			saveSelectedItem(ViewData.TAG_PLANNING_STYLE_CHOICE, getChoiceTag());
 			
 			saveSubtractedList(PlanningView.getMasterRowList(), getRowList(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
 			saveSubtractedList(PlanningView.getMasterColumnList(), getColumnList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);
