@@ -117,6 +117,8 @@ public class DiagramFactor extends BaseObject
 				return true;
 			case ObjectType.THREAT_REDUCTION_RESULT:
 				return true;
+			case ObjectType.TEXT_BOX:
+				return true;
 				
 			default:
 				return false;
@@ -134,6 +136,7 @@ public class DiagramFactor extends BaseObject
 			case ObjectType.CAUSE:
 			case ObjectType.INTERMEDIATE_RESULT:
 			case ObjectType.THREAT_REDUCTION_RESULT:
+			case ObjectType.TEXT_BOX:
 			{
 				Factor factor = objectManager.findFactor(underlyingObjectRef.getRawRef());
 				if (factor.getType() == objectType)
