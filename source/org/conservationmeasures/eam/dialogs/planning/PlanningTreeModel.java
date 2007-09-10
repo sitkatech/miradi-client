@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class PlanningTreeModel extends GenericTreeTableModel
 {	
@@ -49,9 +50,12 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	
 	public Object getValueAt(Object rawNode, int col)
 	{
-		PlanningTreeNode treeNode = (PlanningTreeNode) rawNode;
+		TreeTableNode treeNode = (TreeTableNode) rawNode;
 		String columnTag = getColumnTag(col);
-		BaseObject baseObject = treeNode.getObject();	
+		BaseObject baseObject = treeNode.getObject();
+		if(baseObject == null)
+			return "";
+		
 		if (! baseObject.doesFieldExist(columnTag))
 			return "";
 		
