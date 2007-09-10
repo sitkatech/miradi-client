@@ -109,10 +109,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		try
 		{
 			ViewData viewData = project.getCurrentViewData();
-			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-			if (! selectedRadioName.equals(PlanningView.SINGLE_LEVEL_RADIO_CHOICE))
-				return;
-
 			String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
 			setComboBoxSelection(PlanningView.SINGLE_LEVEL_COMBO, preconfiguredChoice);
 		}
