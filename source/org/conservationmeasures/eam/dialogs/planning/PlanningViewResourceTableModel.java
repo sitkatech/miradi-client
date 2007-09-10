@@ -23,6 +23,9 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
+		if(hierarchyToSelectedRef.length == 0)
+			return;
+		
 		ORef selectedRef = hierarchyToSelectedRef[0];
 		if (selectedRef.getObjectType() != Task.getObjectType())
 			return;
