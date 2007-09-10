@@ -67,6 +67,7 @@ abstract public class DiagramObject extends BaseObject
 		return null;
 	}
 	
+	// TODO: This really should have a test
 	public ORefList getAllGoalRefs()
 	{
 		ORefList allGoalIds = objectManager.getGoalPool().getORefList();
@@ -74,14 +75,27 @@ abstract public class DiagramObject extends BaseObject
 		for (int i = 0; i < allGoalIds.size(); ++i)
 		{
 			ORef goalRef = allGoalIds.get(i);
-			FactorId goalId = new FactorId(goalRef.getObjectId().asInt());
-			if (! containsWrappedFactor(goalId))
-				continue;
-			
-			ourGoals.add(goalRef);
+			if(isThisGoalOurs(goalRef))
+				ourGoals.add(goalRef);
 		}
 		
 		return ourGoals;
+	}
+
+	// TODO: This really should have a test
+	private boolean isThisGoalOurs(ORef goalRef)
+	{
+		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
+		for(int dfr = 0; dfr < diagramFactorRefs.size(); ++dfr)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor) objectManager.findObject(diagramFactorRefs.get(dfr));
+			ORef factorRef = diagramFactor.getWrappedORef();
+			Factor factor = objectManager.findFactor(factorRef);
+			if(factor.getAllOwnedObjects().contains(goalRef))
+				return true;
+		}
+		
+		return false;
 	}
 		
 	public boolean containsWrappedFactor(FactorId factorId)
@@ -100,6 +114,11 @@ abstract public class DiagramObject extends BaseObject
 	public IdList getAllDiagramFactorIds()
 	{
 		return allDiagramFactorIds.getIdList();
+	}
+	
+	private ORefList getAllDiagramFactorRefs()
+	{
+		return new ORefList(DiagramFactor.getObjectType(), getAllDiagramFactorIds());
 	}
 	
 	public IdList getAllDiagramFactorLinkIds()
