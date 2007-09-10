@@ -26,12 +26,11 @@ public class PlanningViewRadioGroup
 	
 	public void rebuildGroup()
 	{
-		//FIXME planning - finish this
 		configurationComponents = new Hashtable<String, Component>();
-		//ButtonGroup buttonGroup = new ButtonGroup();		
+		buttonGroup = new ButtonGroup();		
 	}
 	
-	public void addRadioButtonToGroup(ButtonGroup buttonGroup, PlanningViewRadioButton radioButton)
+	public void addRadioButtonToGroup(PlanningViewRadioButton radioButton)
 	{
 		buttonGroup.add(radioButton);
 		configurationComponents.put(radioButton.getPropertyName(), radioButton);
@@ -82,4 +81,5 @@ public class PlanningViewRadioGroup
 	
 	private Project project;
 	private Hashtable<String, Component> configurationComponents;
+	private ButtonGroup buttonGroup;
 }
