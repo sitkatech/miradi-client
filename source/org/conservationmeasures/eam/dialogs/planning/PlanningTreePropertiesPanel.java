@@ -83,6 +83,9 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	
 	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
 	{
+		if(orefsToUse.length == 0)
+			return blankPropertiesPanel;
+		
 		ORef firstRef = orefsToUse[0];
 		int objectType = firstRef.getObjectType();
 		if (Goal.getObjectType() == objectType)
