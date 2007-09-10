@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.event.ActionEvent;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.UiComboBoxWithSaneActionFiring;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 
-abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFiring implements CommandExecutedListener, RowColumnProvider
+abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFiring implements RowColumnProvider
 {
 	public PlanningViewComboBox(Project projectToUse, ChoiceItem[] choices) throws Exception
 	{
@@ -26,29 +26,17 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		
 		project = projectToUse;
 		addActionListener(this);
-		project.addCommandExecutedListener(this);
 		setSelectionFromProjectSetting();
 	}
 	
-	public void dispose()
-	{
-		project.removeCommandExecutedListener(this);
-	}
-	
 	public void actionPerformed(ActionEvent event)
-	{
+	{		
 		try
 		{
-			CodeList masterRowList = PlanningView.getMasterRowList();
-			masterRowList.subtract(getRowList());
-			saveSelectedItem(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, masterRowList.toString());
+			if (isSameSelection())
+				return;
 			
-			CodeList masterColumnList = PlanningView.getMasterColumnList();
-			masterRowList.subtract(getColumnList());
-			saveSelectedItem(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, masterColumnList.toString());
-			
-			ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
-			saveSelectedItem(getChoiceTag(), selectedItem.getCode().toString());
+			saveState();
 		}
 		catch (Exception e)
 		{
@@ -56,8 +44,29 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		}
 	}
 
-	public void commandExecuted(CommandExecutedEvent event)
+	private void saveState() throws Exception
 	{
+		project.executeCommand(new CommandBeginTransaction());
+		try
+		{
+			saveSelectedItem(ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.SINGLE_LEVEL_RADIO_CHOICE);
+			
+			saveSubtractedList(PlanningView.getMasterRowList(), getRowList(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
+			saveSubtractedList(PlanningView.getMasterColumnList(), getColumnList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);
+
+			ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
+			saveSelectedItem(getChoiceTag(), selectedItem.getCode().toString());
+		}
+		finally
+		{
+			project.executeCommand(new CommandEndTransaction());
+		}
+	}
+
+	private void saveSubtractedList(CodeList masterList, CodeList list, String hiddenTypeTag) throws Exception
+	{
+		masterList.subtract(list);
+		saveSelectedItem(hiddenTypeTag, masterList.toString());
 	}
 
 	private void saveSelectedItem(String tag, String newValue) throws Exception
@@ -70,7 +79,19 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, newValue);
 		getProject().executeCommand(setComboItem);
 	}
-	
+
+	private boolean isSameSelection() throws Exception
+	{
+		ViewData viewData = getProject().getCurrentViewData();
+		String existingValue = viewData.getData(getChoiceTag());
+		ChoiceItem currentChoiceItem = (ChoiceItem) getSelectedItem();
+		
+		if (currentChoiceItem.getCode().equals(existingValue))
+			return true;
+		
+		return false;
+	}
+
 	protected Project getProject()
 	{
 		return project;
