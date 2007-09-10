@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -114,10 +115,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	private void selectAppropriateConfiguredComboBoxItem() throws Exception
 	{
 		ViewData viewData = project.getCurrentViewData();
-		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-		if (! selectedRadioName.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
-			return;
-
 		ORef configurationChoiceRef = getCurrentConfigurationComboBoxChoice(viewData);
 		selectConfigurationComboButton(configurationChoiceRef);
 	}
@@ -188,11 +185,29 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 
 	private void possiblyRebuild(CommandExecutedEvent event)
 	{
-		if (! (event.isCreateObjectCommand() || event.isDeleteObjectCommand()))
+		if (! shouldRebuild(event))
 			return;
 		
 		rebuildLegendPanel();
 		validate();
+	}
+	
+	private boolean shouldRebuild(CommandExecutedEvent event)
+	{
+		if (event.isCreateObjectCommand())
+			return true;
+		
+		if (event.isDeleteObjectCommand())
+			return true;
+		
+		if (! event.isSetDataCommand())
+			return false;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		if (! setCommand.getFieldTag().equals(BaseObject.TAG_LABEL))
+			return false;
+		
+		return true;
 	}
 	
 	private void setComboBoxSelection(String comboName, String itemProperty)
