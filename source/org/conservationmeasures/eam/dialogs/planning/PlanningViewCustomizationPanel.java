@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import java.awt.Component;
+
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -65,28 +67,28 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		
 		PlanningViewStrategicRadioButton strategicRadioButton = new PlanningViewStrategicRadioButton(project);
 		radioGroup.addRadioButtonToGroup(strategicRadioButton);
-		addLabeledRadioButton(strategicRadioButton, EAM.text("Strategic Plan"));
+		addRadioButtonWithLeftComponent(strategicRadioButton, new JLabel(EAM.text("Strategic Plan")));
 		
 		PlanningViewMonitoringRadioButton monitoringRadioButton = new PlanningViewMonitoringRadioButton(project);
 		radioGroup.addRadioButtonToGroup(monitoringRadioButton);
-		addLabeledRadioButton(monitoringRadioButton, EAM.text("Monitoring Plan"));
+		addRadioButtonWithLeftComponent(monitoringRadioButton, new JLabel(EAM.text("Monitoring Plan")));
 		
 		PlanningViewWorkPlanRadioButton workPlanRadioButton = new PlanningViewWorkPlanRadioButton(project);
 		radioGroup.addRadioButtonToGroup(workPlanRadioButton);
-		addLabeledRadioButton(workPlanRadioButton, EAM.text("Work Plan"));
+		addRadioButtonWithLeftComponent(workPlanRadioButton, new JLabel(EAM.text("Work Plan")));
 		
 		
 		singleLevelCombo = new PlanningViewSingleLevelComboBox(project);
 		PlanningViewSingleLevelRadioButton singleLevelRadioButton = new PlanningViewSingleLevelRadioButton(project, singleLevelCombo);
 		radioGroup.addRadioButtonToGroup(singleLevelRadioButton);
 		radioGroup.addComboBoxToHashMap(singleLevelCombo);
-		addDropDownRadioButton(singleLevelRadioButton, singleLevelCombo);
+		addRadioButtonWithLeftComponent(singleLevelRadioButton, singleLevelCombo);
 
 		customizationComboBox = new PlanningViewCustomizationComboBox(project);
 		PlanningViewCustomizationRadioButton customizationRadioButton = new PlanningViewCustomizationRadioButton(project, customizationComboBox);
 		radioGroup.addComboBoxToHashMap(customizationComboBox);
 		radioGroup.addRadioButtonToGroup(customizationRadioButton);
-		addDropDownRadioButton(customizationRadioButton, customizationComboBox);
+		addRadioButtonWithLeftComponent(customizationRadioButton, customizationComboBox);
 	}
 	
 	private void selectDefaults() throws Exception
@@ -96,15 +98,9 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		selectAppropriateConfiguredComboBoxItem();
 	}
 	
-	private void addDropDownRadioButton(JRadioButton radioButton, JComboBox comboBox)
+	private void addRadioButtonWithLeftComponent(JRadioButton radioButton, Component leftComponent)
 	{
-		add(comboBox);
-		add(radioButton);
-	}
-	
-	private void addLabeledRadioButton(JRadioButton radioButton, String buttonName)
-	{
-		add(new JLabel(buttonName));
+		add(leftComponent);
 		add(radioButton);
 	}
 	
