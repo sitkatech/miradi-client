@@ -43,8 +43,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	public void dispose()
 	{
 		project.removeCommandExecutedListener(this);
-		customizationComboBox.dispose();
-		singleLevelCombo.dispose();
 	}
 	
 	protected void rebuildLegendPanel()
@@ -134,7 +132,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 				return;
 
 			String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
-			selectSingleLevelComboButton(preconfiguredChoice);
+			setComboBoxSelection(PlanningView.SINGLE_LEVEL_COMBO, preconfiguredChoice);
 		}
 		catch (Exception e)
 		{
@@ -202,14 +200,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 			return;
 		}
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE))
-		{
-			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-			String property = setCommand.getDataValue();
-			selectSingleLevelComboButton(property);
-			return;
-		}
-		
 		if (event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL))
 		{
 			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
@@ -217,6 +207,19 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 			selectConfigurationComboButton(ref);
 			return;
 		}
+		
+		setSingleLevelComboSelection(event, ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
+
+	}
+
+	private void setSingleLevelComboSelection(CommandExecutedEvent event, String choice, String comboPropertyName)
+	{
+		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), choice))
+			return;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		String property = setCommand.getDataValue();
+		setComboBoxSelection(comboPropertyName, property);
 	}
 
 	private void possiblyRebuild(CommandExecutedEvent event)
@@ -228,11 +231,15 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		validate();
 	}
 	
-	private void selectSingleLevelComboButton(String property)
-	{
-		JComboBox comboBox = radioGroup.findComboBox(PlanningView.SINGLE_LEVEL_COMBO);
+	private void setComboBoxSelection(String comboName, String itemProperty)
+	{		
+		JComboBox comboBox = radioGroup.findComboBox(comboName);
+		ChoiceItem currentSelection = (ChoiceItem)comboBox.getSelectedItem();
 		PlanningViewSingleLevelQuestion question = new PlanningViewSingleLevelQuestion();
-		ChoiceItem choiceItemToSelect = question.findChoiceByCode(property);
+		ChoiceItem choiceItemToSelect = question.findChoiceByCode(itemProperty);
+		if (currentSelection.equals(choiceItemToSelect))
+			return;
+		
 		comboBox.setSelectedItem(choiceItemToSelect);
 	}
 
