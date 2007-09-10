@@ -104,36 +104,22 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		add(radioButton);
 	}
 	
-	private void selectAppropriateSingleLevelComboBoxItem()
+	private void selectAppropriateSingleLevelComboBoxItem() throws Exception
 	{
-		try
-		{
-			ViewData viewData = project.getCurrentViewData();
-			String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
-			setComboBoxSelection(PlanningView.SINGLE_LEVEL_COMBO, preconfiguredChoice);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		ViewData viewData = project.getCurrentViewData();
+		String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
+		setComboBoxSelection(PlanningView.SINGLE_LEVEL_COMBO, preconfiguredChoice);
 	}
 	
-	private void selectAppropriateConfiguredComboBoxItem()
+	private void selectAppropriateConfiguredComboBoxItem() throws Exception
 	{
-		try
-		{
-			ViewData viewData = project.getCurrentViewData();
-			String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-			if (! selectedRadioName.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
-				return;
-			
-			ORef configurationChoiceRef = getCurrentConfigurationComboBoxChoice(viewData);
-			selectConfigurationComboButton(configurationChoiceRef);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		ViewData viewData = project.getCurrentViewData();
+		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
+		if (! selectedRadioName.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
+			return;
+
+		ORef configurationChoiceRef = getCurrentConfigurationComboBoxChoice(viewData);
+		selectConfigurationComboButton(configurationChoiceRef);
 	}
 
 	private ORef getCurrentConfigurationComboBoxChoice(ViewData viewData)
