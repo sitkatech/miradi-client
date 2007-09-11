@@ -20,7 +20,9 @@ public class PlanningTreeModel extends GenericTreeTableModel
 {	
 	public PlanningTreeModel(Project projectToUse) throws Exception
 	{
+		// FIXME: When the new nodes are working, remove the old super call
 		super(new PlanningTreeNode(projectToUse, projectToUse.getMetadata().getRef()));
+//		super(new PlanningTreeRootNode(projectToUse));
 		project = projectToUse;
 		rebuildCodeList();
 	}
