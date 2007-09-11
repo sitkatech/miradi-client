@@ -100,17 +100,23 @@ public class FactorLink extends BaseObject
 			case ObjectType.TARGET:
 			{
 				Factor toFactor = (Factor) objectManager.findObject(getToFactorRef());
-				boolean shouldAddToFactor = (toFactor!= null && toFactor.getType() == objectType);
-				if (shouldAddToFactor)
+				if (shouldAddFactor(objectType, toFactor))
 					list.add(toFactor.getRef());
 				
 				Factor fromFactor = (Factor) objectManager.findObject(getFromFactorRef());
-				boolean shouldAddFromFactor = (fromFactor != null && fromFactor.getType() == objectType);
-				if (shouldAddFromFactor)
+				if (shouldAddFactor(objectType, fromFactor))
 					list.add(fromFactor.getRef());
 			}
 		}
 		return list;
+	}
+
+	private boolean shouldAddFactor(int objectType, Factor factorToAdd)
+	{
+		if (factorToAdd == null)
+			return false;
+		
+		return factorToAdd.getType() == objectType;
 	}
 	
 	public ORef getFromFactorRef()
