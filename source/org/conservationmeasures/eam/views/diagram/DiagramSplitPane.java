@@ -162,7 +162,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 			cards = new Vector();
 		}
 
-		public void showDiagram(ORef ref)
+		public void showDiagram(ORef ref) throws Exception
 		{
 			removeAll();
 			
@@ -172,23 +172,16 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 			repaint();
 		}
 
-		private void showFoundReloadedDiagram(ORef ref)
+		private void showFoundReloadedDiagram(ORef ref) throws Exception
 		{
 			if (ref.isInvalid())
 				return;
 			
-			try
-			{
-				//FIXME nima,  why does loading all the cards work (shows newly created RC)
-				reloadDiagramCards(ref.getObjectType());
-				DiagramComponent diagramComponent = findByRef(ref);
-				if (diagramComponent != null)			
-					add(diagramComponent);
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-			}
+			//FIXME nima,  why does loading all the cards work (shows newly created RC)
+			reloadDiagramCards(ref.getObjectType());
+			DiagramComponent diagramComponent = findByRef(ref);
+			if (diagramComponent != null)			
+				add(diagramComponent);
 		}
 		
 		public void addDiagram(DiagramComponent diagramComponent)
@@ -226,14 +219,25 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 	public void showCard(ORef diagramObjectRef)
 	{
-		DiagramComponent diagramComponent = diagramCards.findByRef(diagramObjectRef);
-		setCurrentDiagramObjectRef(diagramObjectRef);
-		diagramCards.showDiagram(diagramObjectRef);
-		if (diagramComponent == null)
-			return;
-		
-		mainWindow.getDiagramView().updateVisibilityOfFactors();
-		selectionPanel.setSelectedRow(diagramObjectRef);
+		try
+		{
+			setCurrentDiagramObjectRef(diagramObjectRef);
+			diagramCards.showDiagram(diagramObjectRef);
+			DiagramComponent diagramComponent = diagramCards.findByRef(diagramObjectRef);
+			if (diagramComponent == null)
+				return;
+
+			mainWindow.getDiagramView().updateVisibilityOfFactors();
+			selectionPanel.setSelectedRow(diagramObjectRef);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("An error is preventing this diagram from displaying correctly. " +
+									 "Most likely, the project has gotten corrupted. Please contact " +
+									 "the Miradi team for help and advice. We recommend that you not " +
+									 "make any changes to this project until this problem has been resolved."));
+		}		
 	}
 		
 	public void setCurrentDiagramObjectRef(ORef currentDiagramObjectRef)
