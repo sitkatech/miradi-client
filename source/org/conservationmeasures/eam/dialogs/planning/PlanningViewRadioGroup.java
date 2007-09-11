@@ -43,7 +43,10 @@ public class PlanningViewRadioGroup
 	
 	public JRadioButton findRadioButton(String property)
 	{
-		return (JRadioButton) findComponent(property);
+		if (! property.trim().equals(""))
+			return (JRadioButton) findComponent(property);
+		
+		return (JRadioButton) findComponent(PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
 	}
 	
 	public JComboBox findComboBox(String property)
