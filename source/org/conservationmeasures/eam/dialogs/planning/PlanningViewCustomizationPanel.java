@@ -148,17 +148,21 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	private void selectRadioButtonFromProjectSetting(CommandExecutedEvent event)
 	{
 		possiblyRebuild(event);
-		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_STYLE_CHOICE))
-		{
-			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-			radioGroup.updateRadioSelection(setCommand.getDataValue());
-			return;
-		}
-		
+		updateRadioButtonSelection(event);
 		setCustomizationComboSelection(event);
 		setSingleLevelComboSelection(event, ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
 	}
 
+	private void updateRadioButtonSelection(CommandExecutedEvent event)
+	{
+		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_STYLE_CHOICE))
+			return;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		radioGroup.updateRadioSelection(setCommand.getDataValue());
+		return;
+	}
+	
 	private void setCustomizationComboSelection(CommandExecutedEvent event)
 	{
 		if (! event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL))
