@@ -239,10 +239,10 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 
 	private ChoiceItem getConfigurationToSelect(ORef refToSelect)
 	{
-		if (refToSelect.getObjectId().isInvalid())
+		PlanningViewConfiguration configuration = (PlanningViewConfiguration) project.findObject(refToSelect);
+		if (configuration == null)
 			return PlanningViewCustomizationQuestion.createDefaultInvalidConfigurationObject(project);
 		
-		PlanningViewConfiguration configuration = (PlanningViewConfiguration) project.findObject(refToSelect);
 		return new ChoiceItem(configuration.getRef().toString(), configuration.getLabel());
 	}
 			

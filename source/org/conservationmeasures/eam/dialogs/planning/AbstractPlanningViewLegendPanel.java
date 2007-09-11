@@ -16,6 +16,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -118,7 +120,28 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 
 	public void actionPerformed(ActionEvent event)
 	{	
-		saveSettingsToProject(getViewDataHiddenTypesTag());
+		try
+		{
+			saveSettingsAsTransction();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Error Occured While Saving Setting"));
+		}
+	}
+
+	private void saveSettingsAsTransction() throws Exception
+	{
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			saveSettingsToProject(getViewDataHiddenTypesTag());	
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 	
 	public CodeList getLegendSettings()
@@ -171,12 +194,8 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			
 			String listAsString = viewData.getData(getViewDataHiddenTypesTag());
 			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
-			CodeList masterList = getMasterListToCreateCheckBoxesFrom();
-			masterList.subtract(new CodeList(listAsString));
-			
-			CommandSetObjectData setRowListCommand = new CommandSetObjectData(configurationRef, getConfigurationTypeTag(), masterList.toString());
+			CommandSetObjectData setRowListCommand = new CommandSetObjectData(configurationRef, getConfigurationTypeTag(), listAsString);
 			getProject().executeCommand(setRowListCommand);
-
 		}
 		catch(Exception e)
 		{
