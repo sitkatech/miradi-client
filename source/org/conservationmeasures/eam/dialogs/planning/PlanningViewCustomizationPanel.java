@@ -161,18 +161,21 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 			return;
 		}
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL))
-		{
-			CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-			ORef ref = setCommand.getObjectORef();
-			selectConfigurationComboButton(ref);
-			return;
-		}
-		
+		setCustomizationComboSelection(event);
 		setSingleLevelComboSelection(event, PlanningView.SINGLE_LEVEL_RADIO_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
 
 	}
 
+	private void setCustomizationComboSelection(CommandExecutedEvent event)
+	{
+		if (! event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL))
+			return;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		ORef ref = setCommand.getObjectORef();
+		selectConfigurationComboButton(ref);
+	}
+	
 	private void setSingleLevelComboSelection(CommandExecutedEvent event, String choice, String comboPropertyName)
 	{
 		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), choice))
