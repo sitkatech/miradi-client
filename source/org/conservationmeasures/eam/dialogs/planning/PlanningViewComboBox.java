@@ -24,7 +24,6 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		
 		project = projectToUse;
 		addActionListener(this);
-		setSelectionFromProjectSetting();
 	}
 	
 	public void actionPerformed(ActionEvent event)
@@ -87,8 +86,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	{
 		return project;
 	}
-	
-	abstract public void setSelectionFromProjectSetting() throws Exception;
+
 	abstract public String getChoiceTag();
 	abstract public String getRadioTag();
 	
