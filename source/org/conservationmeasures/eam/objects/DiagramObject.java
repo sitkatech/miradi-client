@@ -71,19 +71,31 @@ abstract public class DiagramObject extends BaseObject
 	public ORefList getAllGoalRefs()
 	{
 		ORefList allGoalIds = objectManager.getGoalPool().getORefList();
-		ORefList ourGoals = new ORefList();
-		for (int i = 0; i < allGoalIds.size(); ++i)
-		{
-			ORef goalRef = allGoalIds.get(i);
-			if(isThisGoalOurs(goalRef))
-				ourGoals.add(goalRef);
-		}
-		
-		return ourGoals;
+		return getAnnotationInThisDiagram(allGoalIds);
 	}
 
 	// TODO: This really should have a test
-	private boolean isThisGoalOurs(ORef goalRef)
+	public ORefList getAllObjectiveRefs()
+	{
+		ORefList allObjectiveIds = objectManager.getObjectivePool().getORefList();
+		return getAnnotationInThisDiagram(allObjectiveIds);
+	}
+
+	// TODO: This really should have a test
+	private ORefList getAnnotationInThisDiagram(ORefList allAnnotationIds)
+	{
+		ORefList ourAnnotations = new ORefList();
+		for (int i = 0; i < allAnnotationIds.size(); ++i)
+		{
+			ORef goalRef = allAnnotationIds.get(i);
+			if(isAnnotationInThisDiagram(goalRef))
+				ourAnnotations.add(goalRef);
+		}
+		return ourAnnotations;
+	}
+
+	// TODO: This really should have a test
+	private boolean isAnnotationInThisDiagram(ORef annotationRef)
 	{
 		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
 		for(int dfr = 0; dfr < diagramFactorRefs.size(); ++dfr)
@@ -91,7 +103,7 @@ abstract public class DiagramObject extends BaseObject
 			DiagramFactor diagramFactor = (DiagramFactor) objectManager.findObject(diagramFactorRefs.get(dfr));
 			ORef factorRef = diagramFactor.getWrappedORef();
 			Factor factor = objectManager.findFactor(factorRef);
-			if(factor.getAllOwnedObjects().contains(goalRef))
+			if(factor.getAllOwnedObjects().contains(annotationRef))
 				return true;
 		}
 		
