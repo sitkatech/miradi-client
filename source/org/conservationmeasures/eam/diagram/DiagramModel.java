@@ -73,6 +73,7 @@ public class DiagramModel extends DefaultGraphModel
 		
 	public void clear()
 	{
+		isDamaged = false;
 		while(getRootCount() > 0)
 			remove(new Object[] {getRootAt(0)});
 
@@ -647,15 +648,31 @@ public class DiagramModel extends DefaultGraphModel
 		clear();
 		addFactorsToModel(diagramContents.toJson());
 		addLinksToModel(diagramContents.toJson());
+		
+		if (! isDamaged())
+			return;
+		
+		EAM.errorDialog(EAM.text("An error is preventing this diagram from displaying correctly. " +
+				 "Most likely, the project has gotten corrupted. Please contact " +
+				 "the Miradi team for help and advice. We recommend that you not " +
+				 "make any changes to this project until this problem has been resolved."));
 	}
 
 	private void addFactorsToModel(EnhancedJsonObject json) throws Exception
 	{
 		IdList diagramFactorIds = new IdList(json.getString(TAG_DIAGRAM_FACTOR_IDS));
-		for(int i=0; i < diagramFactorIds.size(); ++i)
+		for(int i = 0; i < diagramFactorIds.size(); ++i)
 		{
-			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorIds.get(i));
-			addDiagramFactor(diagramFactor);
+			try
+			{
+				DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorIds.get(i));
+				addDiagramFactor(diagramFactor);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				isDamaged = true;
+			}
 		}
 	}
 	
@@ -748,6 +765,10 @@ public class DiagramModel extends DefaultGraphModel
 		return graphLayoutCache;
 	}
 	
+	private boolean isDamaged()
+	{
+		return isDamaged;
+	}
 		
 	private static final String TAG_TYPE = "Type";
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
@@ -765,5 +786,6 @@ public class DiagramModel extends DefaultGraphModel
 	
 	HashMap factorsToDiagramFactors;
 	GraphLayoutCache graphLayoutCache;
+	private boolean isDamaged;
 }
 
