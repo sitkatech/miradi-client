@@ -62,11 +62,6 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		return PlanningView.CUSTOMIZABLE_COMBO;
 	}
 	
-	public void setSelectionFromProjectSetting() throws Exception
-	{
-	
-	}
-	
 	public String getChoiceTag()
 	{
 		return ViewData.TAG_PLANNING_CUSTOM_PLAN_REF;

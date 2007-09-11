@@ -81,34 +81,6 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		return masterColumnList;
 	}
 
-	public void setSelectionFromProjectSetting() throws Exception
-	{
-		ViewData viewData = getProject().getCurrentViewData();
-		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-		if (! selectedRadioName.equals(PlanningView.SINGLE_LEVEL_RADIO_CHOICE))
-			return;
-
-		String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
-		selectSingleLevelComboButton(preconfiguredChoice);
-	}
-	
-	private String getCurrentSingleLevelChoice(ViewData viewData)
-	{	
-		String singleLevelChoice = viewData.getData(getChoiceTag());
-		boolean shouldReturnDefault = singleLevelChoice.trim().equals("");
-		if (shouldReturnDefault)
-			return Goal.OBJECT_NAME;
-
-		return singleLevelChoice;
-	}
-	
-	private void selectSingleLevelComboButton(String property)
-	{
-		PlanningViewSingleLevelQuestion question = new PlanningViewSingleLevelQuestion();
-		ChoiceItem choiceItemToSelect = question.findChoiceByCode(property);
-		setSelectedItem(choiceItemToSelect);
-	}
-
 	public String getChoiceTag()
 	{
 		return ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE;
