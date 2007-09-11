@@ -229,12 +229,9 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		DiagramComponent diagramComponent = diagramCards.findByRef(diagramObjectRef);
 		setCurrentDiagramObjectRef(diagramObjectRef);
 		diagramCards.showDiagram(diagramObjectRef);
-
 		if (diagramComponent == null)
 			return;
 		
-		setCurrentDiagramObjectRef(diagramObjectRef);
-		diagramCards.showDiagram(diagramObjectRef);
 		mainWindow.getDiagramView().updateVisibilityOfFactors();
 		selectionPanel.setSelectedRow(diagramObjectRef);
 	}
