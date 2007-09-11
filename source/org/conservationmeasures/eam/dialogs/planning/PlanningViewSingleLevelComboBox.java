@@ -28,8 +28,10 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 	{
 		CodeList listToShow = new CodeList();
 		listToShow.add(getSelectedItemProperty());
-
-		return listToShow;
+		CodeList masterRowList = PlanningView.getMasterRowList();
+		masterRowList.subtract(listToShow);
+	
+		return masterRowList;
 	}
 	
 	private String getSelectedItemProperty()
@@ -45,31 +47,40 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 
 	public CodeList getColumnList() throws Exception
 	{
+		
 		String propertyName = getSelectedItemProperty();
 		if (propertyName.equals(Goal.OBJECT_NAME))
-			return PlanningView.getGoalColumns();
+			return getSubtractedList(PlanningView.getGoalColumns());
 
 		if (propertyName.equals(Objective.OBJECT_NAME))
-			return PlanningView.getObjectiveColumns();
+			return getSubtractedList(PlanningView.getObjectiveColumns());
 		
 		if (propertyName.equals(Strategy.OBJECT_NAME))
-			return PlanningView.getStrategyColumns();
+			return getSubtractedList(PlanningView.getStrategyColumns());
 		
 		if (propertyName.equals(Task.ACTIVITY_NAME))
-			return PlanningView.getActivityColumns();
+			return getSubtractedList(PlanningView.getActivityColumns());
 
 		if (propertyName.equals(Indicator.OBJECT_NAME))
-			return PlanningView.getIndicatorColumns();
+			return getSubtractedList(PlanningView.getIndicatorColumns());
 
 		if (propertyName.equals(Task.METHOD_NAME))
-			return PlanningView.getMethodColumns();
+			return getSubtractedList(PlanningView.getMethodColumns());
 
 		if (propertyName.equals(Task.OBJECT_NAME))
-			return PlanningView.getTaskColumns();
+			return getSubtractedList(PlanningView.getTaskColumns());
 		
 		return new CodeList();
 	}
 	
+	//FIXME planning - have the PlanningView.getXXXColumns return list to hide not show
+	private CodeList getSubtractedList(CodeList listToSubtract)
+	{
+		CodeList masterColumnList = PlanningView.getMasterColumnList();
+		masterColumnList.subtract(listToSubtract);
+		return masterColumnList;
+	}
+
 	public void setSelectionFromProjectSetting() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
