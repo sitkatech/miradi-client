@@ -9,7 +9,6 @@ import java.awt.Component;
 import java.util.Hashtable;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 
 import org.conservationmeasures.eam.objects.ViewData;
@@ -36,22 +35,12 @@ public class PlanningViewRadioGroup
 		configurationComponents.put(radioButton.getPropertyName(), radioButton);
 	}
 	
-	public void addComboBoxToHashMap(PlanningViewComboBox comboBoxToAdd)
-	{
-		configurationComponents.put(comboBoxToAdd.getPropertyName(), comboBoxToAdd);
-	}
-	
 	public JRadioButton findRadioButton(String property)
 	{
 		if (! property.trim().equals(""))
 			return (JRadioButton) findComponent(property);
 		
 		return (JRadioButton) findComponent(PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
-	}
-	
-	public JComboBox findComboBox(String property)
-	{
-		return (JComboBox) findComponent(property);
 	}
 	
 	private Component findComponent(String property)

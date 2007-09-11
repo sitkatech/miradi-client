@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.Component;
+import java.util.Hashtable;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
@@ -65,6 +66,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	{
 		removeAll();
 		radioGroup = new PlanningViewRadioGroup(project);
+		comboBoxes = new Hashtable();
 		
 		PlanningViewStrategicRadioButton strategicRadioButton = new PlanningViewStrategicRadioButton(project);
 		radioGroup.addRadioButtonToGroup(strategicRadioButton);
@@ -82,12 +84,12 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		singleLevelCombo = new PlanningViewSingleLevelComboBox(project);
 		PlanningViewSingleLevelRadioButton singleLevelRadioButton = new PlanningViewSingleLevelRadioButton(project, singleLevelCombo);
 		radioGroup.addRadioButtonToGroup(singleLevelRadioButton);
-		radioGroup.addComboBoxToHashMap(singleLevelCombo);
+		comboBoxes.put(singleLevelCombo.getPropertyName(), singleLevelCombo);
 		addRadioButtonWithLeftComponent(singleLevelRadioButton, singleLevelCombo);
 
 		customizationComboBox = new PlanningViewCustomizationComboBox(project);
 		PlanningViewCustomizationRadioButton customizationRadioButton = new PlanningViewCustomizationRadioButton(project, customizationComboBox);
-		radioGroup.addComboBoxToHashMap(customizationComboBox);
+		comboBoxes.put(customizationComboBox.getPropertyName(), customizationComboBox);
 		radioGroup.addRadioButtonToGroup(customizationRadioButton);
 		addRadioButtonWithLeftComponent(customizationRadioButton, customizationComboBox);
 	}
@@ -206,7 +208,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	
 	private void setComboBoxSelection(String comboName, String itemProperty)
 	{		
-		JComboBox comboBox = radioGroup.findComboBox(comboName);
+		JComboBox comboBox = (JComboBox) comboBoxes.get(comboName);
 		ChoiceItem currentSelection = (ChoiceItem)comboBox.getSelectedItem();
 		PlanningViewSingleLevelQuestion question = new PlanningViewSingleLevelQuestion();
 		ChoiceItem choiceItemToSelect = question.findChoiceByCode(itemProperty);
@@ -218,7 +220,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 
 	private void selectConfigurationComboButton(ORef refToSelect)
 	{
-		JComboBox comboBox = radioGroup.findComboBox(PlanningView.CUSTOMIZABLE_COMBO);
+		JComboBox comboBox = (JComboBox) comboBoxes.get(PlanningView.CUSTOMIZABLE_COMBO);
 		if (refToSelect.isInvalid())
 			return;
 		
@@ -244,4 +246,5 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	private PlanningViewRadioGroup radioGroup;
 	private PlanningViewSingleLevelComboBox singleLevelCombo;
 	private PlanningViewCustomizationComboBox customizationComboBox;
+	private Hashtable<String, Component> comboBoxes;
 }
