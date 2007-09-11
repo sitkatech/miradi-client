@@ -38,7 +38,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		project = projectToUse;
 		project.addCommandExecutedListener(this);
 		
-		rebuildLegendPanel();
+		rebuildCustomizationPanel();
 		setBorder(BorderFactory.createTitledBorder(EAM.text("Standard Views")));
 	}
 	
@@ -47,7 +47,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		project.removeCommandExecutedListener(this);
 	}
 	
-	protected void rebuildLegendPanel()
+	protected void rebuildCustomizationPanel()
 	{
 		try
 		{
@@ -182,7 +182,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		if (! shouldRebuild(event))
 			return;
 		
-		rebuildLegendPanel();
+		rebuildCustomizationPanel();
 		validate();
 	}
 	
