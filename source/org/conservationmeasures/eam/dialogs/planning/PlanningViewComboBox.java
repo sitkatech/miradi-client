@@ -14,9 +14,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.UiComboBoxWithSaneActionFiring;
-import org.conservationmeasures.eam.views.planning.PlanningView;
 
 abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFiring implements RowColumnProvider
 {
@@ -50,23 +48,16 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		try
 		{
 			saveSelectedItem(ViewData.TAG_PLANNING_STYLE_CHOICE, getRadioTag());
-			
-			saveSubtractedList(PlanningView.getMasterRowList(), getRowList(), ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
-			saveSubtractedList(PlanningView.getMasterColumnList(), getColumnList(), ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);
-
 			ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
 			saveSelectedItem(getChoiceTag(), selectedItem.getCode().toString());
+			
+			saveSelectedItem(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, getRowList().toString());
+			saveSelectedItem(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, getColumnList().toString());
 		}
 		finally
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
-	}
-
-	private void saveSubtractedList(CodeList masterList, CodeList list, String hiddenTypeTag) throws Exception
-	{
-		masterList.subtract(list);
-		saveSelectedItem(hiddenTypeTag, masterList.toString());
 	}
 
 	private void saveSelectedItem(String tag, String newValue) throws Exception

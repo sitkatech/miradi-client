@@ -16,8 +16,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.views.planning.PlanningView;
 
 //FIXME planning - this class should extend UiRadioButton but it cant since UiRadioButton has no constructor that takes in 0 args
 abstract public class PlanningViewRadioButton extends JRadioButton implements ActionListener
@@ -60,13 +58,13 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 	
 	private void saveCurrentRowList() throws Exception
 	{
-		String rowListAsString = getListToSave(PlanningView.getMasterRowList(), rowColumnProvider.getRowList());
+		String rowListAsString = rowColumnProvider.getRowList().toString();
 		save(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, rowListAsString);
 	}
 
 	private void saveCurrentColumnList() throws Exception
 	{
-		String columnListAsString = getListToSave(PlanningView.getMasterColumnList(), rowColumnProvider.getColumnList());
+		String columnListAsString = rowColumnProvider.getColumnList().toString();
 		save(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, columnListAsString);
 	}
 
@@ -86,12 +84,6 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 		project.executeCommand(setComboItem);
 	}
 
-	private String getListToSave(CodeList masterList, CodeList listToSubtract) throws Exception
-	{
-		masterList.subtract(listToSubtract);
-		return masterList.toString();
-	}
-	
 	protected Project getProject()
 	{
 		return project;
