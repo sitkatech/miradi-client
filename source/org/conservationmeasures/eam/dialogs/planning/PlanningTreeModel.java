@@ -9,8 +9,6 @@ import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeRootN
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -29,9 +27,11 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	public void rebuildCodeList() throws Exception
 	{
 		String codeListAsString = project.getCurrentViewData().getData(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES);
-		CodeList columnsToHide = new CodeList(codeListAsString);
-		columnsToShow = new CodeList(columnTags);
-		columnsToShow.subtract(columnsToHide);
+		CodeList listToShow = new CodeList(codeListAsString);
+		columnsToShow = new CodeList();
+		final String DEFAULT_COLUM = "Item";
+		columnsToShow.add(DEFAULT_COLUM);
+		columnsToShow.addAll(listToShow);
 	}
 
 	public int getColumnCount()
@@ -69,16 +69,5 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	}
 	
 	Project project;
-	CodeList columnsToShow;
-
-	public static final String[] columnTags = {
-		"Item", 
-		Indicator.TAG_MEASUREMENT_SUMMARY,
-		Indicator.PSEUDO_TAG_METHODS,  
-		Indicator.PSEUDO_TAG_FACTOR, 
-		Indicator.TAG_PRIORITY, 
-		Indicator.PSEUDO_TAG_STATUS_VALUE, 
-		Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-		Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-		Task.PSEUDO_TAG_TASK_TOTAL, };	
+	CodeList columnsToShow;	
 }
