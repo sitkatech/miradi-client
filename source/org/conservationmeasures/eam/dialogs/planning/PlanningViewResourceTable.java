@@ -5,7 +5,25 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import java.awt.Color;
+import java.awt.Component;
+
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objectpools.ResourcePool;
+import org.conservationmeasures.eam.objects.AccountingCode;
+import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.FundingSource;
+import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
 public class PlanningViewResourceTable extends TableWithHelperMethods
@@ -14,6 +32,8 @@ public class PlanningViewResourceTable extends TableWithHelperMethods
 	{
 		super(modelToUse);
 		model = modelToUse;
+
+		addColumnEditorsAndRenderers();
 	}
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
@@ -21,5 +41,120 @@ public class PlanningViewResourceTable extends TableWithHelperMethods
 		model.setObjectRefs(hierarchyToSelectedRef);
 	}
 	
+	private void addColumnEditorsAndRenderers()
+	{
+		for (int i = 0; i < model.getColumnCount(); ++i)
+		{
+			createResourceCombo(i);
+			createFundingSourceColumn(i);
+			createAccountingCodeColumn(i);
+		}
+	}
+	
+	private void createAccountingCodeColumn(int column)
+	{
+		if (! model.isAccountingCodeColumn(column))
+			return;
+		
+		AccountingCode[] accountingCodes = getObjectManager().getAccountingCodePool().getAllAccountingCodes();
+		AccountingCode invalidAccountingCode = new AccountingCode(getObjectManager(), BaseId.INVALID);
+		createComboColumn(accountingCodes, column, invalidAccountingCode);
+	}
+	
+	private void createResourceCombo(int column)
+	{
+		if (! model.isResourceColumn(column))
+			return;
+		
+		ProjectResource[] resources = getAllProjectResources();
+		ProjectResource invalidResource = new ProjectResource(getObjectManager(), BaseId.INVALID);
+		createComboColumn(resources, column, invalidResource);
+	}
+	
+	private void createFundingSourceColumn(int column)
+	{
+		if (! model.isFundingSourceColumn(column))
+			return;
+
+		FundingSource[] fundingSources = getObjectManager().getFundingSourcePool().getAllFundingSources();
+		FundingSource invalidFundintSource = new FundingSource(getObjectManager(), BaseId.INVALID);
+		createComboColumn(fundingSources, column, invalidFundintSource);
+	}
+	
+	private void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
+	{
+		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
+		JComboBox comboBox = new JComboBox(comboContent);
+		
+		TableColumn tableColumn = getColumnModel().getColumn(col);
+		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
+		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
+	}
+
+	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
+	{
+		final int EMPTY_SPACE = 0;
+		BaseObject[]  comboContent = new BaseObject[content.length + 1];
+		comboContent[EMPTY_SPACE] = invalidObject;
+
+		try
+		{
+			invalidObject.setLabel(" ");
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	
+		System.arraycopy(content, 0, comboContent, 1, content.length);	
+		return comboContent;
+	}
+	
+	public ProjectResource[] getAllProjectResources()
+	{
+		return  getResourcePool().getAllProjectResources();
+	}
+	
+	public ResourcePool getResourcePool()
+	{
+		return getObjectManager().getResourcePool();
+	}
+
+	private Project getProject()
+	{
+		return model.getProject();
+	}
+	
+	private ObjectManager getObjectManager()
+	{
+		return getProject().getObjectManager();
+	}
+	
 	private PlanningViewResourceTableModel model;
 }
+
+class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
+{
+    public ComboBoxRenderer(Object[] items) 
+    {
+        super(items);
+    }
+
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) 
+    {
+        if (isSelected) 
+        	setColors(table.getSelectionBackground(), table.getSelectionForeground());
+        else 
+        	setColors(table.getBackground(), table.getForeground());
+        
+        setSelectedItem(value);
+        return this;
+    }
+    
+    private void setColors(Color background, Color foreground)
+    {
+        setForeground(foreground);
+        setBackground(background);
+    }
+}
+

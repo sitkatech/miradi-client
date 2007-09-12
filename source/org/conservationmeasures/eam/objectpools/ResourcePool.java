@@ -35,5 +35,15 @@ public class ResourcePool extends EAMNormalObjectPool
 		return new ProjectResource(objectManager, actualId);
 	}
 
-
+	public ProjectResource[] getAllProjectResources()
+	{
+		BaseId[] allIds = getIds();
+		ProjectResource[] allProjectResources = new ProjectResource[allIds.length];
+		for (int i = 0; i < allProjectResources.length; ++i)
+		{
+			allProjectResources[i] = find(allIds[i]);
+		}
+		
+		return allProjectResources;
+	}
 }
