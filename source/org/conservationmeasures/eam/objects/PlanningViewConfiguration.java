@@ -57,7 +57,6 @@ public class PlanningViewConfiguration extends BaseObject
 	
 	public String toString()
 	{
-		//FIXME planning - use some sort of defualt label so its not blank
 		return getLabel();
 	}
 	
