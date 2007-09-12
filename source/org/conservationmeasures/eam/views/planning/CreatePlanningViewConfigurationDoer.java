@@ -53,6 +53,9 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 		String visibleRowsAsString = viewData.getData(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES);
 		String visibleColsAsString = viewData.getData(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES);
 		
+		CommandSetObjectData selectInvalidCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, ORef.INVALID);
+		getProject().executeCommand(selectInvalidCurrentConfiguration);
+		
 		CommandCreateObject createConfiguration = new CommandCreateObject(PlanningViewConfiguration.getObjectType());
 		getProject().executeCommand(createConfiguration);
 		

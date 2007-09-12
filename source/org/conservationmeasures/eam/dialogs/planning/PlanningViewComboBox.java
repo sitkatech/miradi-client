@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
@@ -47,9 +46,8 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			saveSelectedItem(ViewData.TAG_PLANNING_STYLE_CHOICE, getRadioTag());
 			ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
-			saveSelectedItem(getChoiceTag(), selectedItem.getCode().toString());
+			saveSelectedItem(getChoiceTag(), selectedItem.getCode());
 			
 			saveSelectedItem(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES, getRowListToShow().toString());
 			saveSelectedItem(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES, getColumnListToShow().toString());
@@ -74,14 +72,13 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	private boolean ignoreSaving() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
-		ORef existingRef = viewData.getORef(getChoiceTag());
+		String existingValue = viewData.getData(getChoiceTag());
 		ChoiceItem currentChoiceItem = (ChoiceItem) getSelectedItem();
 		
 		if (currentChoiceItem == null)
 			return true;
 		
-		ORef codeAsRef = ORef.createFromString(currentChoiceItem.getCode());
-		if (codeAsRef.equals(existingRef))
+		if (currentChoiceItem.getCode().equals(existingValue))
 			return true;
 		
 		return false;

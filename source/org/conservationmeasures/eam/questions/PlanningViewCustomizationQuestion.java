@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.project.Project;
@@ -29,23 +30,22 @@ public class PlanningViewCustomizationQuestion extends ChoiceQuestion
 	{
 		ChoiceItem invalidChoice = createDefaultInvalidConfigurationObject(project);
 		PlanningViewConfigurationPool configurationPool = (PlanningViewConfigurationPool) project.getPool(PlanningViewConfiguration.getObjectType());
-		PlanningViewConfiguration[] allConfigurations = configurationPool.getAllConfigurations();
+		ORefList allConfigurationRefs = configurationPool.getORefList();
 
 		Vector allChoiceItemsWithFirstInvalid = new Vector();
 		allChoiceItemsWithFirstInvalid.add(invalidChoice);
-		for (int i = 0; i < allConfigurations.length; ++i)
+		for (int i = 0; i < allConfigurationRefs.size(); ++i)
 		{
-			PlanningViewConfiguration configuration = allConfigurations[i];
-			ChoiceItem choiceItem = createChoiceItem(configuration);
+			ChoiceItem choiceItem = createChoiceItem(project, allConfigurationRefs.get(i));
 			allChoiceItemsWithFirstInvalid.add(choiceItem);
 		}
 
 		return (ChoiceItem[]) allChoiceItemsWithFirstInvalid.toArray(new ChoiceItem[0]);	
 	}
 
-	private static ChoiceItem createChoiceItem(PlanningViewConfiguration configuration)
+	private static ChoiceItem createChoiceItem(Project project, ORef configurationRef)
 	{
-		return new ChoiceItem(configuration.getRef().toString(), configuration.getLabel());
+		return new ObjectChoiceItem(project, configurationRef);
 	}
 	
 	public static ChoiceItem createDefaultInvalidConfigurationObject(Project projectToUse)

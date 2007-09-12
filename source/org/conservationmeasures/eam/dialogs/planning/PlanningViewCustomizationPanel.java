@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -143,11 +142,19 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		refillCustomizationComboBox(event);
-		updateRadioButtonSelection(event);
-		setCustomizationComboSelection(event);
-		setCustomizationRadioButton(event);
-		setSingleLevelComboSelection(event, ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
+		try
+		{
+			refillCustomizationComboBox(event);
+			updateRadioButtonSelection(event);
+			setCustomizationComboSelection(event);
+			setCustomizationRadioButton(event);
+			setSingleLevelComboSelection(event, ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Unexpected Error Occurred"));
+		}
 	}
 	
 	private void updateRadioButtonSelection(CommandExecutedEvent event)
@@ -168,21 +175,14 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		radioGroup.updateRadioSelection(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 	}
 	
-	private void setCustomizationComboSelection(CommandExecutedEvent event)
+	private void setCustomizationComboSelection(CommandExecutedEvent event) throws Exception
 	{
 		boolean isLabelChange = event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL);
 		boolean isSelectionChange = event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 		if (! (isLabelChange || isSelectionChange))
 			return;
 		
-		try
-		{
-			selectAppropriateConfiguredComboBoxItem();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
+		selectAppropriateConfiguredComboBoxItem();
 	}
 	
 	private void setSingleLevelComboSelection(CommandExecutedEvent event, String choice, String comboPropertyName)
@@ -195,7 +195,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		setComboBoxSelection(comboPropertyName, property);
 	}
 
-	private void refillCustomizationComboBox(CommandExecutedEvent event)
+	private void refillCustomizationComboBox(CommandExecutedEvent event) throws Exception
 	{
 		if (! shouldRebuild(event))
 			return;
@@ -207,6 +207,8 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		{
 			comboBox.addItem(choices[i]);
 		}
+		
+		selectAppropriateConfiguredComboBoxItem();
 	}
 	
 	private boolean shouldRebuild(CommandExecutedEvent event)
@@ -217,14 +219,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		if (event.isDeleteObjectCommand())
 			return true;
 		
-		if (! event.isSetDataCommand())
-			return false;
-		
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		if (! setCommand.getFieldTag().equals(BaseObject.TAG_LABEL))
-			return false;
-		
-		return true;
+		return false;
 	}
 	
 	private void setComboBoxSelection(String comboName, String itemProperty)
@@ -242,24 +237,16 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	private void setCustomizationComboBoxSelection(ORef refToSelect)
 	{
 		JComboBox comboBox = (JComboBox) comboBoxes.get(PlanningView.CUSTOMIZABLE_COMBO);
-		if (refToSelect.isInvalid())
-			return;
-		
-		ChoiceItem choiceItem = (ChoiceItem) comboBox.getSelectedItem();
-		ORef currentRef = ORef.createFromString(choiceItem.getCode());
-		if (currentRef.equals(refToSelect))
-			return;
-		
 		ChoiceItem choiceToSelect = getConfigurationToSelect(refToSelect);
 		comboBox.setSelectedItem(choiceToSelect);
 	}
 
 	private ChoiceItem getConfigurationToSelect(ORef refToSelect)
 	{
-		PlanningViewConfiguration configuration = (PlanningViewConfiguration) project.findObject(refToSelect);
-		if (configuration == null)
+		if (refToSelect.isInvalid())
 			return PlanningViewCustomizationQuestion.createDefaultInvalidConfigurationObject(project);
 		
+		PlanningViewConfiguration configuration = (PlanningViewConfiguration) project.findObject(refToSelect);
 		return new ChoiceItem(configuration.getRef().toString(), configuration.getLabel());
 	}
 			
