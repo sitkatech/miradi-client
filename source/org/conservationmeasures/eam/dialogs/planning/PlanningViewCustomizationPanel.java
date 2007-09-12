@@ -118,7 +118,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	{
 		ViewData viewData = project.getCurrentViewData();
 		ORef configurationChoiceRef = getCurrentConfigurationComboBoxChoice(viewData);
-		selectConfigurationComboButton(configurationChoiceRef);
+		setCustomizationComboBoxSelection(configurationChoiceRef);
 	}
 
 	private ORef getCurrentConfigurationComboBoxChoice(ViewData viewData)
@@ -170,12 +170,19 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	
 	private void setCustomizationComboSelection(CommandExecutedEvent event)
 	{
-		if (! event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL))
+		boolean isLabelChange = event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL);
+		boolean isSelectionChange = event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+		if (! (isLabelChange || isSelectionChange))
 			return;
 		
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		ORef ref = setCommand.getObjectORef();
-		selectConfigurationComboButton(ref);
+		try
+		{
+			selectAppropriateConfiguredComboBoxItem();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 	
 	private void setSingleLevelComboSelection(CommandExecutedEvent event, String choice, String comboPropertyName)
@@ -232,7 +239,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		comboBox.setSelectedItem(choiceItemToSelect);
 	}
 
-	private void selectConfigurationComboButton(ORef refToSelect)
+	private void setCustomizationComboBoxSelection(ORef refToSelect)
 	{
 		JComboBox comboBox = (JComboBox) comboBoxes.get(PlanningView.CUSTOMIZABLE_COMBO);
 		if (refToSelect.isInvalid())
