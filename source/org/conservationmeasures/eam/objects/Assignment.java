@@ -94,14 +94,29 @@ public class Assignment extends BaseObject
 		resourceIdData.setId(resourceIdToUse);
 	}
 	
+	public ORef getFundingSourceRef()
+	{
+		return new ORef(FundingSource.getObjectType(), getFundingSourceId());
+	}
+	
 	public BaseId getFundingSourceId()
 	{
 		return fundingIdData.getId();
 	}
 	
+	public ORef getAccountingCodeRef()
+	{
+		return new ORef(AccountingCode.getObjectType(), getAccountingCodeId());
+	}
+	
 	public BaseId getAccountingCodeId()
 	{
 		return accountingIdData.getId();
+	}
+	
+	public ORef getResourceRef()
+	{
+		return new ORef(ProjectResource.getObjectType(), getResourceId());
 	}
 	
 	public BaseId getResourceId()
