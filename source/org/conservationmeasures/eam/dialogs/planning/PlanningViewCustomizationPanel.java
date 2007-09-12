@@ -147,7 +147,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 			refillCustomizationComboBox(event);
 			updateRadioButtonSelection(event);
 			setCustomizationComboSelection(event);
-			setCustomizationRadioButton(event);
 			setSingleLevelComboSelection(event, ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, PlanningView.SINGLE_LEVEL_COMBO);
 		}
 		catch(Exception e)
@@ -165,14 +164,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		radioGroup.updateRadioSelection(setCommand.getDataValue());
 		return;
-	}
-	
-	private void setCustomizationRadioButton(CommandExecutedEvent event)
-	{
-		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
-			return;
-			
-		radioGroup.updateRadioSelection(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 	}
 	
 	private void setCustomizationComboSelection(CommandExecutedEvent event) throws Exception
