@@ -123,22 +123,21 @@ public class PlanningView extends TabbedView
 	public static CodeList getGoalColumns()
 	{
 		
-		return getMasterColumnList();
+		return new CodeList();
 	}
 	
 	public static CodeList getObjectiveColumns()
 	{
-		return getMasterColumnList();
+		return new CodeList();
 	}
 	
 	public static CodeList getStrategyColumns()
 	{
-		
 		String[] list = {
-				Indicator.PSEUDO_TAG_FACTOR,
-				Indicator.TAG_MEASUREMENT_SUMMARY,
-				Indicator.PSEUDO_TAG_METHODS,
-				Indicator.PSEUDO_TAG_STATUS_VALUE, };
+		Indicator.TAG_PRIORITY,
+		Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+		Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+		Task.PSEUDO_TAG_TASK_TOTAL, };
 			
 		return new CodeList(list);
 	}
@@ -146,10 +145,10 @@ public class PlanningView extends TabbedView
 	public static CodeList getActivityColumns()
 	{
 		String[] list = {
-				Indicator.PSEUDO_TAG_FACTOR,
-				Indicator.TAG_MEASUREMENT_SUMMARY,
-				Indicator.PSEUDO_TAG_METHODS,
-				Indicator.PSEUDO_TAG_STATUS_VALUE, };
+				Indicator.TAG_PRIORITY,
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, };
 			
 		return new CodeList(list);
 	}
@@ -157,10 +156,10 @@ public class PlanningView extends TabbedView
 	public static CodeList getIndicatorColumns()
 	{
 		String[] list = {
-		Indicator.PSEUDO_TAG_FACTOR,
-		Indicator.TAG_MEASUREMENT_SUMMARY,
-		Indicator.PSEUDO_TAG_METHODS,
-		Indicator.PSEUDO_TAG_STATUS_VALUE, };
+				Indicator.TAG_PRIORITY,
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, };
 	
 		return new CodeList(list);
 	}
@@ -168,10 +167,10 @@ public class PlanningView extends TabbedView
 	public static CodeList getMethodColumns()
 	{
 		String[] list = {
-		Indicator.PSEUDO_TAG_FACTOR,
-		Indicator.TAG_MEASUREMENT_SUMMARY,
-		Indicator.PSEUDO_TAG_METHODS,
-		Indicator.PSEUDO_TAG_STATUS_VALUE, };
+				Indicator.TAG_PRIORITY,
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, };
 	
 		return new CodeList(list);
 	}
@@ -179,10 +178,10 @@ public class PlanningView extends TabbedView
 	public static CodeList getTaskColumns()
 	{		
 		String[] list = {
-		Indicator.PSEUDO_TAG_FACTOR, 
-		Indicator.TAG_MEASUREMENT_SUMMARY,
-		Indicator.PSEUDO_TAG_METHODS,
-		Indicator.PSEUDO_TAG_STATUS_VALUE, };
+				Indicator.TAG_PRIORITY,
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, };
 		
 		return new CodeList(list);
 	}
