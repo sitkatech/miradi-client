@@ -48,7 +48,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 
 	private void columnConfigurationChanged(CommandSetObjectData cmd)
 	{
-		if(! cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES))
+		if(! cmd.getFieldTag().equals(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES))
 			return;
 		
 		try
@@ -64,7 +64,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 
 	private void rowConfigurationChanged(CommandSetObjectData cmd)
 	{
-		if(! cmd.getFieldTag().equals(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES))
+		if(! cmd.getFieldTag().equals(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES))
 			return;
 		
 		rebuildEntireTree();

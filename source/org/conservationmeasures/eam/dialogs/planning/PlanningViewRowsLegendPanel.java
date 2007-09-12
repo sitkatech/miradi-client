@@ -42,9 +42,9 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		return EAM.text("Rows");
 	}
 	
-	protected String getViewDataHiddenTypesTag()
+	protected String getViewDataVisibleTypesTag()
 	{
-		return ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES;
+		return ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES;
 	}
 		
 	protected CodeList getMasterListToCreateCheckBoxesFrom()

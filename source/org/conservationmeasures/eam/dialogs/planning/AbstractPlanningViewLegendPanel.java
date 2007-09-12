@@ -65,12 +65,11 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	
 	public void updateCheckBoxesFromProjectSettings()
 	{
-		CodeList hiddenTypes = getLegendSettings(getViewDataHiddenTypesTag());
-		selectAllCheckBoxes();
-		for (int i = 0; i < hiddenTypes.size(); ++i)
+		CodeList visibleTypes = getLegendSettings(getViewDataVisibleTypesTag());
+		for (int i = 0; i < visibleTypes.size(); ++i)
 		{
-			String hiddenType = hiddenTypes.get(i);
-			JCheckBox checkBox = findCheckBox(hiddenType);
+			String visibleType = visibleTypes.get(i);
+			JCheckBox checkBox = findCheckBox(visibleType);
 			// FIXME: This avoided an exception on Kevin's machine...
 			// verify that it is legit and not just a bandaid covering 
 			// up a real bug!
@@ -78,7 +77,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			if(checkBox == null)
 				continue;
 			
-			checkBox.setSelected(false);
+			checkBox.setSelected(true);
 		}
 	}
 	
@@ -136,7 +135,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			saveSettingsToProject(getViewDataHiddenTypesTag());	
+			saveSettingsToProject(getViewDataVisibleTypesTag());	
 		}
 		finally
 		{
@@ -146,18 +145,16 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	
 	public CodeList getLegendSettings()
 	{
-		CodeList hiddenTypes = new CodeList();
+		CodeList shownTypes = new CodeList();
 		Object[] keys = checkBoxes.keySet().toArray();
 		for (int i = 0; i < keys.length; ++i)
 		{
 			JCheckBox checkBox = findCheckBox(keys[i]);
 			if (checkBox.isSelected())
-				continue;
-			
-			hiddenTypes.add(keys[i].toString());
+				shownTypes.add(keys[i].toString());
 		}
 
-		return hiddenTypes;
+		return shownTypes;
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -171,7 +168,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			return;
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) command;
-		if ( setCommand.getFieldTag().equals(getViewDataHiddenTypesTag()))
+		if ( setCommand.getFieldTag().equals(getViewDataVisibleTypesTag()))
 			updateCheckBoxesFromProjectSettings();
 		
 		if (setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
@@ -192,7 +189,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			if (! PlanningView.isCustomizationStyle(viewData))
 				return;
 			
-			String listAsString = viewData.getData(getViewDataHiddenTypesTag());
+			String listAsString = viewData.getData(getViewDataVisibleTypesTag());
 			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 			CommandSetObjectData setRowListCommand = new CommandSetObjectData(configurationRef, getConfigurationTypeTag(), listAsString);
 			getProject().executeCommand(setRowListCommand);
@@ -206,7 +203,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	abstract protected String getConfigurationTypeTag();
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
 	abstract protected JComponent createLegendButtonPanel(Actions actions);
-	abstract protected String getViewDataHiddenTypesTag();
+	abstract protected String getViewDataVisibleTypesTag();
 	abstract protected String getBorderTitle();
 	
 	MainWindow mainWindow;

@@ -51,8 +51,8 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 			ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
 			saveSelectedItem(getChoiceTag(), selectedItem.getCode().toString());
 			
-			saveSelectedItem(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, getRowListToShow().toString());
-			saveSelectedItem(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, getColumnListToShow().toString());
+			saveSelectedItem(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES, getRowListToShow().toString());
+			saveSelectedItem(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES, getColumnListToShow().toString());
 		}
 		finally
 		{

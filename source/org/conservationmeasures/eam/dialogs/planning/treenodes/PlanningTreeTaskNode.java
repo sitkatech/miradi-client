@@ -17,8 +17,8 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		task = (Task)project.findObject(taskRef);
 		
 		ViewData viewData = project.getCurrentViewData();
-		CodeList hiddenRows = viewData.getCodeList(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
-		if(!hiddenRows.contains(Task.OBJECT_NAME))
+		CodeList objectTypesToShow = viewData.getCodeList(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES);
+		if(objectTypesToShow.contains(Task.OBJECT_NAME))
 			addAllSubtasks();
 	}
 
