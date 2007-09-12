@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class StrategicRowColumnProvider implements RowColumnProvider
 {
-	public CodeList getColumnList()
+	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {Indicator.PSEUDO_TAG_STATUS_VALUE,			
 							 Indicator.TAG_PRIORITY,
@@ -24,7 +24,7 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 							 Task.PSEUDO_TAG_TASK_TOTAL, });
 	}
 
-	public CodeList getRowList()
+	public CodeList getRowListToShow()
 	{
 		return new CodeList(new String[] {Goal.OBJECT_NAME,
 							Objective.OBJECT_NAME,

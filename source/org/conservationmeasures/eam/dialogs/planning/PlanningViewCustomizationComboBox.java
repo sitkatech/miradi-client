@@ -20,12 +20,12 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		super(projectToUse, new PlanningViewCustomizationQuestion(projectToUse).getChoices());
 	}
 	
-	public CodeList getColumnList() throws Exception
+	public CodeList getColumnListToShow() throws Exception
 	{
 		return getList(PlanningViewConfiguration.TAG_COL_CONFIGURATION);
 	}
 
-	public CodeList getRowList() throws Exception
+	public CodeList getRowListToShow() throws Exception
 	{
 		return getList(PlanningViewConfiguration.TAG_ROW_CONFIGURATION);
 	}
