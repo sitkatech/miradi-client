@@ -9,6 +9,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
@@ -39,6 +41,8 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 	public PlanningViewRowsLegendPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
+		updateCheckBoxesFromProjectSettings();
+
 	}
 
 	public String getBorderTitle()
@@ -76,5 +80,23 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 	protected String getConfigurationTypeTag()
 	{
 		return PlanningViewConfiguration.TAG_ROW_CONFIGURATION;
+	}
+
+	void updateCheckBoxes(Command command)
+	{
+		super.updateCheckBoxes(command);
+		if(!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+		CommandSetObjectData cmd = (CommandSetObjectData)command;
+		if(!cmd.getFieldTag().equals(getViewDataVisibleTypesTag()))
+			return;
+		
+		updateCheckBoxesFromProjectSettings();
+	}
+
+	public void updateCheckBoxesFromProjectSettings()
+	{
+		CodeList visibleTypes = getLegendSettings(getViewDataVisibleTypesTag());
+		updateCheckboxes(visibleTypes);
 	}
 }

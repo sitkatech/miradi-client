@@ -43,7 +43,6 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		setBorder(new EmptyBorder(5,5,5,5));
 		add(createLegendButtonPanel(mainWindow.getActions()));	
 		setMinimumSize(new Dimension(0,0));
-		updateCheckBoxesFromProjectSettings();
 		updateEnabledStateFromProject();
 		setBorder(BorderFactory.createTitledBorder(getBorderTitle()));
 	}
@@ -62,9 +61,8 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		}
 	}
 	
-	public void updateCheckBoxesFromProjectSettings()
+	protected void updateCheckboxes(CodeList visibleTypes)
 	{
-		CodeList visibleTypes = getLegendSettings(getViewDataVisibleTypesTag());
 		setAllCheckboxes(false);
 		for (int i = 0; i < visibleTypes.size(); ++i)
 		{
@@ -162,15 +160,12 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		updateCheckBoxes(event.getCommand());
 	}
 	
-	private void updateCheckBoxes(Command command)
+	void updateCheckBoxes(Command command)
 	{
 		if (! command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			return;
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) command;
-		if ( setCommand.getFieldTag().equals(getViewDataVisibleTypesTag()))
-			updateCheckBoxesFromProjectSettings();
-		
 		if (setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
 			updateEnableState(setCommand.getDataValue());
 	}
