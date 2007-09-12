@@ -48,6 +48,11 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		{
 			ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
 			saveSelectedItem(getChoiceTag(), selectedItem.getCode());
+		
+			ViewData viewData = getProject().getCurrentViewData();
+			String currentRadioChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
+			if (! currentRadioChoice.equals(getRadioTag()))
+				return;
 			
 			saveSelectedItem(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES, getRowListToShow().toString());
 			saveSelectedItem(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES, getColumnListToShow().toString());
