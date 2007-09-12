@@ -14,7 +14,7 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 		goal = (Goal)project.findObject(goalRef);
 	}
 
-	public boolean attemptToAdd(ORef refToAdd)
+	public boolean attemptToAdd(ORef refToAdd) throws Exception
 	{
 		boolean wasAdded = attemptToAddToChildren(refToAdd);
 			

@@ -14,7 +14,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		super(projectToUse);
 	}
 
-	protected boolean attemptToAddToPage(DiagramObject page, ORef refToAdd)
+	protected boolean attemptToAddToPage(DiagramObject page, ORef refToAdd) throws Exception
 	{
 		boolean wasAdded = attemptToAddToChildren(refToAdd);
 		if(wasAdded)
