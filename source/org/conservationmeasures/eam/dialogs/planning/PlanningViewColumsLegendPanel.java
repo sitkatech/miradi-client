@@ -22,7 +22,7 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPanel
 {
-	public PlanningViewColumsLegendPanel(MainWindow mainWindowToUse)
+	public PlanningViewColumsLegendPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		updateCheckBoxesFromProjectSettings();
@@ -70,12 +70,19 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		if(!cmd.getFieldTag().equals(getViewDataVisibleTypesTag()))
 			return;
 		
-		updateCheckBoxesFromProjectSettings();
+		try
+		{
+			updateCheckBoxesFromProjectSettings();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
-	public void updateCheckBoxesFromProjectSettings()
+	public void updateCheckBoxesFromProjectSettings() throws Exception
 	{
-		CodeList visibleTypes = getLegendSettings(getViewDataVisibleTypesTag());
+		CodeList visibleTypes = ColumnManager.getVisibleColumnCodes(getViewData());
 		updateCheckboxes(visibleTypes);
 	}
 }

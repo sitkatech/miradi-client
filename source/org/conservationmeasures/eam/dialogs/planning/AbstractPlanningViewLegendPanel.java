@@ -195,6 +195,11 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		}
 	}
 	
+	ViewData getViewData() throws Exception
+	{
+		return project.getViewData(PlanningView.getViewName());
+	}
+	
 	abstract protected String getConfigurationTypeTag();
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
 	abstract protected JComponent createLegendButtonPanel(Actions actions);

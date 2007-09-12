@@ -19,14 +19,14 @@ import com.jhlabs.awt.BasicGridLayout;
 
 public class PlanningViewControlPanel extends JPanel
 {
-	public PlanningViewControlPanel(MainWindow mainWindowToUse)
+	public PlanningViewControlPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(new BasicGridLayout(2, 1));
 		mainWindow = mainWindowToUse;
 		addLegendComponents();
 	}
 	
-	private void addLegendComponents()
+	private void addLegendComponents() throws Exception
 	{
 		planningCustomizationPanel = new PlanningViewCustomizationPanel(getProject());
 		rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
