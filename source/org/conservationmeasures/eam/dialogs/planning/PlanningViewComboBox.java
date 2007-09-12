@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
@@ -30,7 +31,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	{		
 		try
 		{
-			if (isSameSelection())
+			if (ignoreSaving())
 				return;
 			
 			saveState();
@@ -70,13 +71,20 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		getProject().executeCommand(setComboItem);
 	}
 
-	private boolean isSameSelection() throws Exception
+	private boolean ignoreSaving() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
-		String existingValue = viewData.getData(getChoiceTag());
+		ORef existingRef = viewData.getORef(getChoiceTag());
 		ChoiceItem currentChoiceItem = (ChoiceItem) getSelectedItem();
 		
-		if (currentChoiceItem.getCode().equals(existingValue))
+		if (currentChoiceItem == null)
+			return true;
+		
+		ORef codeAsRef = ORef.createFromString(currentChoiceItem.getCode());
+		if (codeAsRef.equals(ORef.INVALID))
+			return true;
+			
+		if (codeAsRef.equals(existingRef))
 			return true;
 		
 		return false;
