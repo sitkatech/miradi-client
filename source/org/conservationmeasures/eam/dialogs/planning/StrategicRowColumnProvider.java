@@ -5,9 +5,11 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -17,16 +19,20 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 {
 	public CodeList getColumnListToShow()
 	{
-		return new CodeList(new String[] {Indicator.PSEUDO_TAG_STATUS_VALUE,			
-							 Indicator.TAG_PRIORITY,
-							 Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-							 Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-							 Task.PSEUDO_TAG_TASK_TOTAL, });
+		return new CodeList(new String[] {
+							Indicator.PSEUDO_TAG_STATUS_VALUE,			
+							Indicator.TAG_PRIORITY,
+							Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+							Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+							Task.PSEUDO_TAG_TASK_TOTAL, });
 	}
 
 	public CodeList getRowListToShow()
 	{
-		return new CodeList(new String[] {Goal.OBJECT_NAME,
+		return new CodeList(new String[] {
+							ConceptualModelDiagram.OBJECT_NAME,
+							ResultsChainDiagram.OBJECT_NAME,
+							Goal.OBJECT_NAME,
 							Objective.OBJECT_NAME,
 							Strategy.OBJECT_NAME,});
 	}

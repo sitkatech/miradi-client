@@ -17,9 +17,11 @@ import org.conservationmeasures.eam.dialogs.planning.PlanningViewControlPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -93,6 +95,8 @@ public class PlanningView extends TabbedView
 	static public CodeList getMasterRowList()
 	{
 		CodeList masterRowList = new CodeList();
+		masterRowList.add(ConceptualModelDiagram.OBJECT_NAME);
+		masterRowList.add(ResultsChainDiagram.OBJECT_NAME);
 		masterRowList.add(Goal.OBJECT_NAME);
 		masterRowList.add(Objective.OBJECT_NAME);
 		masterRowList.add(Strategy.OBJECT_NAME);
