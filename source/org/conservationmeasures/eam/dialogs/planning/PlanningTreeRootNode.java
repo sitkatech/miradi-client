@@ -7,7 +7,9 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class PlanningTreeRootNode extends AbstractPlanningTreeNode
@@ -64,10 +66,9 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		addIndicators();
 		addActivitiesAndMethods();
 		
-		// TODO: Finish implementation of pruning
-		//ViewData viewData = project.getCurrentViewData();
-		//CodeList hide = viewData.getCodeList(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
-		//pruneUnwantedLayers(hide);
+		ViewData viewData = project.getCurrentViewData();
+		CodeList hide = viewData.getCodeList(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
+		pruneUnwantedLayers(hide);
 	}
 	
 	private void addConceptualModel()
