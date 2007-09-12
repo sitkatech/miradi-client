@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.views.planning.PlanningView;
+import org.conservationmeasures.eam.views.planning.ColumnManager;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -37,13 +37,13 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 	
 	protected CodeList getMasterListToCreateCheckBoxesFrom()
 	{
-		return PlanningView.getMasterColumnList();
+		return ColumnManager.getMasterColumnList();
 	}
 		
 	protected JComponent createLegendButtonPanel(Actions actions)
 	{
 		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
-		CodeList masterList = PlanningView.getMasterColumnList();
+		CodeList masterList = ColumnManager.getMasterColumnList();
 		for (int i = 0; i < masterList.size(); ++i)
 		{
 			addCheckBoxLine(panel, masterList.get(i));
