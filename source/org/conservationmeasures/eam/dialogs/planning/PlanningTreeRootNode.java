@@ -83,7 +83,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 			children.add(new PlanningTreeResultsChainNode(project, resultsChainRefs.get(i)));
 	}
 
-	private void addGoals()
+	private void addGoals() throws Exception
 	{
 		ORefList goalRefs = project.getGoalPool().getORefList();
 		for(int i = 0; i < goalRefs.size(); ++i)
@@ -95,7 +95,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		
 	}
 	
-	private void addObjectives()
+	private void addObjectives() throws Exception
 	{
 		ORefList objectiveRefs = project.getObjectivePool().getORefList();
 		for(int i = 0; i < objectiveRefs.size(); ++i)
@@ -107,7 +107,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		
 	}
 	
-	private void addStrategies()
+	private void addStrategies() throws Exception
 	{
 		ORefList strategyRefs = project.getStrategyPool().getORefList();
 		for(int i = 0; i < strategyRefs.size(); ++i)
@@ -122,7 +122,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		}
 	}
 	
-	private void addIndicators()
+	private void addIndicators() throws Exception
 	{
 		ORefList indicatorRefs = project.getIndicatorPool().getORefList();
 		for(int i = 0; i < indicatorRefs.size(); ++i)
@@ -134,7 +134,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		
 	}
 	
-	private void addActivitiesAndMethods()
+	private void addActivitiesAndMethods() throws Exception
 	{
 		ORefList taskRefs = project.getTaskPool().getORefList();
 		for(int i = 0; i < taskRefs.size(); ++i)

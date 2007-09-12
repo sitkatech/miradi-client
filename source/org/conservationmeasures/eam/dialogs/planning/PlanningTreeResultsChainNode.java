@@ -13,7 +13,7 @@ public class PlanningTreeResultsChainNode extends AbstractPlanningTreeDiagramNod
 		object = (ResultsChainDiagram)project.findObject(refToUse);
 	}
 
-	public boolean attemptToAdd(ORef refToAdd)
+	public boolean attemptToAdd(ORef refToAdd) throws Exception
 	{
 		return attemptToAddToPage(object, refToAdd);
 	}

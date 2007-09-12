@@ -14,7 +14,7 @@ public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeDiagram
 		super(projectToUse);
 	}
 	
-	public boolean attemptToAdd(ORef refToAdd)
+	public boolean attemptToAdd(ORef refToAdd) throws Exception
 	{
 		boolean wasAdded = false;
 		

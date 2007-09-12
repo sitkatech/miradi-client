@@ -13,7 +13,7 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 		strategy = (Strategy)project.findObject(strategyRef);
 	}
 
-	public boolean attemptToAdd(ORef refToAdd)
+	public boolean attemptToAdd(ORef refToAdd) throws Exception
 	{
 		if(attemptToAddToChildren(refToAdd))
 			return true;

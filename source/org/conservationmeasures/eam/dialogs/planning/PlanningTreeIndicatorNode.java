@@ -13,7 +13,7 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 		indicator = (Indicator)project.findObject(indicatorRef);
 	}
 
-	public boolean attemptToAdd(ORef refToAdd)
+	public boolean attemptToAdd(ORef refToAdd) throws Exception
 	{
 		if(attemptToAddToChildren(refToAdd))
 			return true;

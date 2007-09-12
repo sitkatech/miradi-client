@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public abstract class AbstractPlanningTreeNode extends TreeTableNode
 {
-	abstract public boolean attemptToAdd(ORef refToAdd);
+	abstract public boolean attemptToAdd(ORef refToAdd) throws Exception;
 
 	public AbstractPlanningTreeNode(Project projectToUse)
 	{
@@ -54,7 +54,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return getObject().getLabel();
 	}
 
-	protected boolean attemptToAddToChildren(ORef refToAdd)
+	protected boolean attemptToAddToChildren(ORef refToAdd) throws Exception
 	{
 		boolean wasAdded = false;
 		
