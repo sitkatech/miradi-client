@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 
-public class RatingIcon extends EamIcon
+public class RatingIcon extends AbstractShapeIcon
 {
 	public RatingIcon(ChoiceItem option)
 	{

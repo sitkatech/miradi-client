@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.IconHexagonRenderer;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 
-public class DraftStrategyIcon extends EamIcon
+public class DraftStrategyIcon extends AbstractShapeIcon
 {
 	FactorRenderer getRenderer()
 	{

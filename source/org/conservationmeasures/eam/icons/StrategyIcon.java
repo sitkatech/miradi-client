@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.diagram.renderers.IconHexagonRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
-public class StrategyIcon extends EamIcon
+public class StrategyIcon extends AbstractShapeIcon
 {
 	FactorRenderer getRenderer()
 	{

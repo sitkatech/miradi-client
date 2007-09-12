@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
-public class StressIcon extends EamIcon 
+public class StressIcon extends AbstractShapeIcon 
 {
 	FactorRenderer getRenderer() 
 	{

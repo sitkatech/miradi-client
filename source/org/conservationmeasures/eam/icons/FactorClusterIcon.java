@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
 
-public class FactorClusterIcon extends EamIcon
+public class FactorClusterIcon extends AbstractShapeIcon
 {
 	FactorRenderer getRenderer()
 	{

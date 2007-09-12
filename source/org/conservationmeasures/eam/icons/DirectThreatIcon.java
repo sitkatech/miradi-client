@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
-public class DirectThreatIcon extends EamIcon 
+public class DirectThreatIcon extends AbstractShapeIcon 
 {
 
 	FactorRenderer getRenderer() 
