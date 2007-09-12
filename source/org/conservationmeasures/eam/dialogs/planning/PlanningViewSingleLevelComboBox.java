@@ -50,37 +50,29 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		
 		String propertyName = getSelectedItemProperty();
 		if (propertyName.equals(Goal.OBJECT_NAME))
-			return getSubtractedList(PlanningView.getGoalColumns());
+			return PlanningView.getGoalColumns();
 
 		if (propertyName.equals(Objective.OBJECT_NAME))
-			return getSubtractedList(PlanningView.getObjectiveColumns());
+			return PlanningView.getObjectiveColumns();
 		
 		if (propertyName.equals(Strategy.OBJECT_NAME))
-			return getSubtractedList(PlanningView.getStrategyColumns());
+			return PlanningView.getStrategyColumns();
 		
 		if (propertyName.equals(Task.ACTIVITY_NAME))
-			return getSubtractedList(PlanningView.getActivityColumns());
+			return PlanningView.getActivityColumns();
 
 		if (propertyName.equals(Indicator.OBJECT_NAME))
-			return getSubtractedList(PlanningView.getIndicatorColumns());
+			return PlanningView.getIndicatorColumns();
 
 		if (propertyName.equals(Task.METHOD_NAME))
-			return getSubtractedList(PlanningView.getMethodColumns());
+			return PlanningView.getMethodColumns();
 
 		if (propertyName.equals(Task.OBJECT_NAME))
-			return getSubtractedList(PlanningView.getTaskColumns());
+			return PlanningView.getTaskColumns();
 		
 		return new CodeList();
 	}
 	
-	//FIXME planning - have the PlanningView.getXXXColumns return list to hide not show
-	private CodeList getSubtractedList(CodeList listToSubtract)
-	{
-		CodeList masterColumnList = PlanningView.getMasterColumnList();
-		masterColumnList.subtract(listToSubtract);
-		return masterColumnList;
-	}
-
 	public String getChoiceTag()
 	{
 		return ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE;
