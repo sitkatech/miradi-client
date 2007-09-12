@@ -42,7 +42,6 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		createCheckBoxes();
 		setBorder(new EmptyBorder(5,5,5,5));
 		add(createLegendButtonPanel(mainWindow.getActions()));	
-		selectAllCheckBoxes();
 		setMinimumSize(new Dimension(0,0));
 		updateCheckBoxesFromProjectSettings();
 		updateEnabledStateFromProject();
