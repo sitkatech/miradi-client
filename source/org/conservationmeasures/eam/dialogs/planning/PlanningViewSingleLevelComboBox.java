@@ -24,7 +24,7 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		super(projectToUse, new PlanningViewSingleLevelQuestion().getChoices());
 	}
 	
-	public CodeList getRowList() throws Exception
+	public CodeList getRowListToShow() throws Exception
 	{
 		CodeList listToShow = new CodeList();
 		listToShow.add(getSelectedItemProperty());
@@ -45,7 +45,7 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		return PlanningView.SINGLE_LEVEL_COMBO;
 	}
 
-	public CodeList getColumnList() throws Exception
+	public CodeList getColumnListToShow() throws Exception
 	{
 		
 		String propertyName = getSelectedItemProperty();

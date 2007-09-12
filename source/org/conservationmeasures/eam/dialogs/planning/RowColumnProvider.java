@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.utils.CodeList;
 
 public interface RowColumnProvider
 {
-	public CodeList getRowList() throws Exception;
-	public CodeList getColumnList() throws Exception;
+	public CodeList getRowListToShow() throws Exception;
+	public CodeList getColumnListToShow() throws Exception;
 	public String getPropertyName();
 }

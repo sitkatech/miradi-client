@@ -58,13 +58,13 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 	
 	private void saveCurrentRowList() throws Exception
 	{
-		String rowListAsString = rowColumnProvider.getRowList().toString();
+		String rowListAsString = rowColumnProvider.getRowListToShow().toString();
 		save(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, rowListAsString);
 	}
 
 	private void saveCurrentColumnList() throws Exception
 	{
-		String columnListAsString = rowColumnProvider.getColumnList().toString();
+		String columnListAsString = rowColumnProvider.getColumnListToShow().toString();
 		save(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, columnListAsString);
 	}
 

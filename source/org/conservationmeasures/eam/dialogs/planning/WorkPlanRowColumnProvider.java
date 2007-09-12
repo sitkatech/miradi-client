@@ -13,14 +13,14 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class WorkPlanRowColumnProvider implements RowColumnProvider
 {
-	public CodeList getColumnList()
+	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 							 Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 							 Task.PSEUDO_TAG_TASK_TOTAL, });
 	}
 
-	public CodeList getRowList()
+	public CodeList getRowListToShow()
 	{
 		return new CodeList(new String[] {Strategy.OBJECT_NAME,
 							Task.ACTIVITY_NAME,
