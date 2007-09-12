@@ -28,19 +28,17 @@ public class PlanningViewCustomizationQuestion extends ChoiceQuestion
 	
 	private static ChoiceItem[] getCustomizationChoices(Project project)
 	{
-		ChoiceItem invalidChoice = createDefaultInvalidConfigurationObject(project);
 		PlanningViewConfigurationPool configurationPool = (PlanningViewConfigurationPool) project.getPool(PlanningViewConfiguration.getObjectType());
 		ORefList allConfigurationRefs = configurationPool.getORefList();
 
-		Vector allChoiceItemsWithFirstInvalid = new Vector();
-		allChoiceItemsWithFirstInvalid.add(invalidChoice);
+		Vector allCustomizations = new Vector();
 		for (int i = 0; i < allConfigurationRefs.size(); ++i)
 		{
 			ChoiceItem choiceItem = createChoiceItem(project, allConfigurationRefs.get(i));
-			allChoiceItemsWithFirstInvalid.add(choiceItem);
+			allCustomizations.add(choiceItem);
 		}
 
-		return (ChoiceItem[]) allChoiceItemsWithFirstInvalid.toArray(new ChoiceItem[0]);	
+		return (ChoiceItem[]) allCustomizations.toArray(new ChoiceItem[0]);	
 	}
 
 	private static ChoiceItem createChoiceItem(Project project, ORef configurationRef)
@@ -48,8 +46,4 @@ public class PlanningViewCustomizationQuestion extends ChoiceQuestion
 		return new ObjectChoiceItem(project, configurationRef);
 	}
 	
-	public static ChoiceItem createDefaultInvalidConfigurationObject(Project projectToUse)
-	{	
-		return new ChoiceItem(ORef.INVALID.toString(), EAM.text("--Customize--"));
-	}
 }

@@ -64,6 +64,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -443,11 +444,21 @@ public class Project
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
 		createDefaultConceptualModel();
+		createDefaultPlanningCustomization();
+	}
+
+	private void createDefaultPlanningCustomization() throws Exception
+	{
+		if(getPlanningViewConfigurationPool().getORefList().size() > 0)
+			return;
+		
+		ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
+		setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, EAM.text("[Customization]"));
 	}
 
 	private void createDefaultConceptualModel() throws Exception
 	{
-		if (getConceptualModelDiagramPool().getORefList().size() != 0)
+		if (getConceptualModelDiagramPool().getORefList().size() > 0)
 			return;
 		
 		ORef createConceptualModelRef = createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);

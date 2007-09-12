@@ -17,6 +17,14 @@ import org.conservationmeasures.eam.objects.ViewData;
 
 public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewConfigurationDoer
 {
+	public boolean isAvailable()
+	{
+		if(getProject().getPlanningViewConfigurationPool().getORefList().size() < 2)
+			return false;
+		
+		return super.isAvailable();
+	}
+
 	public void doIt() throws CommandFailedException
 	{
 		if (! isAvailable())
