@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
-public class IntermediateResultIcon extends EamIcon
+public class IntermediateResultIcon extends AbstractShapeIcon
 {
 	FactorRenderer getRenderer()
 	{

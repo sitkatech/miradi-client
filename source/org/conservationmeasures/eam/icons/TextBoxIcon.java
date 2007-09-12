@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
 
-public class TextBoxIcon extends EamIcon
+public class TextBoxIcon extends AbstractShapeIcon
 {
 	FactorRenderer getRenderer()
 	{

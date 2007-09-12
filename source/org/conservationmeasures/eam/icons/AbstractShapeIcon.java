@@ -11,26 +11,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import javax.swing.Icon;
-
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 
 
-abstract public class EamIcon implements Icon 
+abstract public class AbstractShapeIcon extends AbstractMiradiIcon
 {
 	
 	abstract FactorRenderer getRenderer();
 	abstract Color getIconColor();
-	
-	public int getIconHeight()
-	{
-		return 16;
-	}
-
-	public int getIconWidth()
-	{
-		return 16;
-	}
 	
 	public void paintIcon(Component sample, Graphics g, int x, int y)
 	{

@@ -10,14 +10,14 @@ import java.awt.Color;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.objects.Factor;
 
-public class FactorIcon extends EamIcon
+public class FactorIcon extends AbstractShapeIcon
 {
 	public FactorIcon(Factor factorToUse)
 	{
 		factor = factorToUse;
 	}
 	
-	private EamIcon findCorrespondingIcon()
+	private AbstractShapeIcon findCorrespondingIcon()
 	{
 		if (factor.isStrategy())
 			return new StrategyIcon();
@@ -41,6 +41,6 @@ public class FactorIcon extends EamIcon
 		return findCorrespondingIcon().getRenderer();
 	}
 
-	EamIcon icon;
+	AbstractShapeIcon icon;
 	Factor factor;
 }

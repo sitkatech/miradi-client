@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
-public class TargetIcon extends EamIcon
+public class TargetIcon extends AbstractShapeIcon
 {
 	FactorRenderer getRenderer()
 	{

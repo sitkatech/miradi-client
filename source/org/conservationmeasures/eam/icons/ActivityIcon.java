@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
-public class ActivityIcon extends EamIcon
+public class ActivityIcon extends AbstractShapeIcon
 {
 	FactorRenderer getRenderer()
 	{

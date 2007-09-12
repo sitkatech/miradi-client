@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.objects.ValueOption;
 
-public class ThreatPriorityIcon extends EamIcon 
+public class ThreatPriorityIcon extends AbstractShapeIcon 
 {
 	public ThreatPriorityIcon(ValueOption option)
 	{

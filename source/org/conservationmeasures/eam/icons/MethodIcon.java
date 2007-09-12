@@ -10,7 +10,7 @@ import java.awt.Color;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
 
-public class MethodIcon extends EamIcon
+public class MethodIcon extends AbstractShapeIcon
 {
 	FactorRenderer getRenderer()
 	{
