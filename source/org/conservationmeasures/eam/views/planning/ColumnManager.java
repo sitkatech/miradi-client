@@ -137,6 +137,9 @@ public class ColumnManager
 	private static CodeList getVisibleColumnsForSingleType(ViewData viewData)
 	{
 		String propertyName = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		if(propertyName.length() == 0)
+			return ColumnManager.getGoalColumns();
+		
 		if (propertyName.equals(Goal.OBJECT_NAME))
 			return ColumnManager.getGoalColumns();
 	
