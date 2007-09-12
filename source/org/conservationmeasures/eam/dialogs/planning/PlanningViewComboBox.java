@@ -81,9 +81,6 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 			return true;
 		
 		ORef codeAsRef = ORef.createFromString(currentChoiceItem.getCode());
-		if (codeAsRef.equals(ORef.INVALID))
-			return true;
-			
 		if (codeAsRef.equals(existingRef))
 			return true;
 		
