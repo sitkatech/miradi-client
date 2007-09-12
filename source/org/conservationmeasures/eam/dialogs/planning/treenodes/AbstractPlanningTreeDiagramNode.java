@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.dialogs.planning;
+package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.DiagramObject;

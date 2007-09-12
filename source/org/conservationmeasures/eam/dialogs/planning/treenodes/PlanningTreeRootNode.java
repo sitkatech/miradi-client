@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.dialogs.planning;
+package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
