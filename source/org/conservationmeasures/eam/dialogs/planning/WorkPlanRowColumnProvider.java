@@ -5,7 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -22,11 +24,14 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 
 	public CodeList getRowListToShow()
 	{
-		return new CodeList(new String[] {Strategy.OBJECT_NAME,
-							Task.ACTIVITY_NAME,
-							Indicator.OBJECT_NAME,
-							Task.METHOD_NAME,
-							Task.OBJECT_NAME, });
+		return new CodeList(new String[] {
+				ConceptualModelDiagram.OBJECT_NAME,
+				ResultsChainDiagram.OBJECT_NAME,
+				Strategy.OBJECT_NAME,
+				Task.ACTIVITY_NAME,
+				Indicator.OBJECT_NAME,
+				Task.METHOD_NAME,
+				Task.OBJECT_NAME, });
 	}
 	
 	public String getPropertyName()

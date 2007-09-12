@@ -1,5 +1,6 @@
 package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -68,18 +69,38 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
 	{
+System.out.println("Pruning " + getObjectReference());
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector();
+		HashSet<ORef> newChildRefs = new HashSet();
 		for(int i = 0; i < children.size(); ++i)
 		{
 			AbstractPlanningTreeNode child = children.get(i);
 			child.pruneUnwantedLayers(objectTypesToShow);
 			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
 			if(isChildVisible)
-				newChildren.add(child);
+			{
+				if(!newChildRefs.contains(child.getObjectReference()))
+				{
+					newChildren.add(child);
+					newChildRefs.add(child.getObjectReference());
+				}
+			}
 			else
-				newChildren.addAll(child.getChildren());
+			{
+				for(int grandchild = 0; grandchild < child.getChildCount(); ++grandchild)
+				{
+					AbstractPlanningTreeNode newChild = child.getChildren().get(grandchild);
+					if(!newChildRefs.contains(newChild.getObjectReference()))
+					{
+System.out.println("Adding " + newChild.getObjectReference() + " to " + getObjectReference());
+						newChildren.add(newChild);
+						newChildRefs.add(child.getObjectReference());
+					}
+				}
+			}
 		}
 		children = newChildren;
+System.out.println("Finished " + getObjectReference());
 	}
 	
 	private Vector<AbstractPlanningTreeNode> getChildren()
