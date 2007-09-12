@@ -69,7 +69,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
 	{
-System.out.println("Pruning " + getObjectReference());
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector();
 		HashSet<ORef> newChildRefs = new HashSet();
 		for(int i = 0; i < children.size(); ++i)
@@ -92,15 +91,13 @@ System.out.println("Pruning " + getObjectReference());
 					AbstractPlanningTreeNode newChild = child.getChildren().get(grandchild);
 					if(!newChildRefs.contains(newChild.getObjectReference()))
 					{
-System.out.println("Adding " + newChild.getObjectReference() + " to " + getObjectReference());
 						newChildren.add(newChild);
-						newChildRefs.add(child.getObjectReference());
+						newChildRefs.add(newChild.getObjectReference());
 					}
 				}
 			}
 		}
 		children = newChildren;
-System.out.println("Finished " + getObjectReference());
 	}
 	
 	private Vector<AbstractPlanningTreeNode> getChildren()
