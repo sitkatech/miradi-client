@@ -67,7 +67,7 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		return ViewData.TAG_PLANNING_CUSTOM_PLAN_REF;
 	}
 	
-	public String getRadioTag()
+	public String getChosenRadioTag()
 	{
 		return PlanningView.CUSTOMIZABLE_RADIO_CHOICE;
 	}

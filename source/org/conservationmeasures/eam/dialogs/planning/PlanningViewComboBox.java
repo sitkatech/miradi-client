@@ -51,7 +51,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		
 			ViewData viewData = getProject().getCurrentViewData();
 			String currentRadioChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-			if (! currentRadioChoice.equals(getRadioTag()))
+			if (! currentRadioChoice.equals(getChosenRadioTag()))
 				return;
 			
 			saveSelectedItem(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES, getRowListToShow().toString());
@@ -95,7 +95,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	}
 
 	abstract public String getChoiceTag();
-	abstract public String getRadioTag();
+	abstract public String getChosenRadioTag();
 	
 	private Project project;
 	
