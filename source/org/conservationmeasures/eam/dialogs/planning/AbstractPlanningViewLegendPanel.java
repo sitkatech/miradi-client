@@ -65,6 +65,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	public void updateCheckBoxesFromProjectSettings()
 	{
 		CodeList visibleTypes = getLegendSettings(getViewDataVisibleTypesTag());
+		setAllCheckboxes(false);
 		for (int i = 0; i < visibleTypes.size(); ++i)
 		{
 			String visibleType = visibleTypes.get(i);
