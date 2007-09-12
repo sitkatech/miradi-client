@@ -28,10 +28,7 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 	{
 		CodeList listToShow = new CodeList();
 		listToShow.add(getSelectedItemProperty());
-		CodeList masterRowList = PlanningView.getMasterRowList();
-		masterRowList.subtract(listToShow);
-	
-		return masterRowList;
+		return listToShow;
 	}
 	
 	private String getSelectedItemProperty()
