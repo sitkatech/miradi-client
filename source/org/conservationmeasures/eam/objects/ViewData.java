@@ -139,8 +139,8 @@ public class ViewData extends BaseObject
 		currentResultsChainRef = new ORefData();
 		currentConceptualModelRef = new ORefData();
 		diagramHiddenTypes = new CodeListData();
-		planningHiddenRowTypes = new CodeListData();
-		planningHiddenColumnTypes = new CodeListData();
+		planningVisibleRowTypes = new CodeListData();
+		planningVisibleColumnTypes = new CodeListData();
 		planningStyleChoice = new StringData();
 		planningSingleLevelChoice = new StringData();
 		planningCustomChoiceRef = new ORefData();
@@ -154,8 +154,8 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_SORT_DIRECTION, currentSortDirecton);
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
-		addField(TAG_PLANNING_HIDDEN_ROW_TYPES, planningHiddenRowTypes);
-		addField(TAG_PLANNING_HIDDEN_COL_TYPES, planningHiddenColumnTypes);
+		addField(TAG_PLANNING_VISIBLE_ROW_TYPES, planningVisibleRowTypes);
+		addField(TAG_PLANNING_VISIBLE_COL_TYPES, planningVisibleColumnTypes);
 		
 		addField(TAG_PLANNING_STYLE_CHOICE, planningStyleChoice);
 		addField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, planningSingleLevelChoice);
@@ -171,8 +171,8 @@ public class ViewData extends BaseObject
 	public static final String TAG_CURRENT_SORT_DIRECTION = "CurrentSortDirecton";
 	public static final String TAG_CURRENT_EXPANSION_LIST  = "CurrentExpansionList";
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
-	public static final String TAG_PLANNING_HIDDEN_ROW_TYPES = "PlanningHiddenRowTypes";
-	public static final String TAG_PLANNING_HIDDEN_COL_TYPES = "PlanningHiddenColumnTypes";
+	public static final String TAG_PLANNING_VISIBLE_ROW_TYPES = "PlanningVisibleRowTypes";
+	public static final String TAG_PLANNING_VISIBLE_COL_TYPES = "PlanningVisibleColumnTypes";
 	
 	public static final String TAG_PLANNING_STYLE_CHOICE = "PlanningStyleChoice";
 	public static final String TAG_PLANNING_SINGLE_LEVEL_CHOICE = "SingleLevelChoice";
@@ -198,8 +198,8 @@ public class ViewData extends BaseObject
 	private ORefData currentConceptualModelRef;
 	private ORefListData expandedNodesList;
 	private CodeListData diagramHiddenTypes;
-	private CodeListData planningHiddenRowTypes;
-	private CodeListData planningHiddenColumnTypes;
+	private CodeListData planningVisibleRowTypes;
+	private CodeListData planningVisibleColumnTypes;
 	private StringData planningStyleChoice;
 	private StringData planningSingleLevelChoice;
 	private ORefData planningCustomChoiceRef;

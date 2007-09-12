@@ -47,8 +47,8 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 		try
 		{
 			saveCurrentRadioSelection();
-			saveCurrentColumnList();
-			saveCurrentRowList();
+			saveCurrentVisibleColumnList();
+			saveCurrentVisibleRowList();
 		}
 		finally
 		{
@@ -56,16 +56,16 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 		}
 	}
 	
-	private void saveCurrentRowList() throws Exception
+	private void saveCurrentVisibleRowList() throws Exception
 	{
 		String rowListAsString = rowColumnProvider.getRowListToShow().toString();
-		save(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES, rowListAsString);
+		save(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES, rowListAsString);
 	}
 
-	private void saveCurrentColumnList() throws Exception
+	private void saveCurrentVisibleColumnList() throws Exception
 	{
 		String columnListAsString = rowColumnProvider.getColumnListToShow().toString();
-		save(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES, columnListAsString);
+		save(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES, columnListAsString);
 	}
 
 	private void saveCurrentRadioSelection() throws Exception

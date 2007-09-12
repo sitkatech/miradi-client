@@ -28,7 +28,7 @@ public class PlanningTreeModel extends GenericTreeTableModel
 
 	public void rebuildCodeList() throws Exception
 	{
-		String codeListAsString = project.getCurrentViewData().getData(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);
+		String codeListAsString = project.getCurrentViewData().getData(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES);
 		CodeList columnsToHide = new CodeList(codeListAsString);
 		columnsToShow = new CodeList(columnTags);
 		columnsToShow.subtract(columnsToHide);

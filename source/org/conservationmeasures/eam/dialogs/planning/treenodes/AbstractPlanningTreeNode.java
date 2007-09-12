@@ -66,18 +66,18 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return wasAdded;
 	}
 	
-	protected void pruneUnwantedLayers(CodeList objectTypesToHide)
+	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
 	{
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector();
 		for(int i = 0; i < children.size(); ++i)
 		{
 			AbstractPlanningTreeNode child = children.get(i);
-			child.pruneUnwantedLayers(objectTypesToHide);
-			boolean isChildHidden = objectTypesToHide.contains(child.getObjectTypeName());
-			if(isChildHidden)
-				newChildren.addAll(child.getChildren());
-			else
+			child.pruneUnwantedLayers(objectTypesToShow);
+			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
+			if(isChildVisible)
 				newChildren.add(child);
+			else
+				newChildren.addAll(child.getChildren());
 		}
 		children = newChildren;
 	}

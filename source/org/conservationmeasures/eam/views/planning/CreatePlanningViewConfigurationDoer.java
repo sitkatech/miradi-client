@@ -50,18 +50,18 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 	private void createPlanningViewConfiguration() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
-		String hiddenRowsAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
-		String hiddenColsAsString = viewData.getData(ViewData.TAG_PLANNING_HIDDEN_COL_TYPES);
+		String visibleRowsAsString = viewData.getData(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES);
+		String visibleColsAsString = viewData.getData(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES);
 		
 		CommandCreateObject createConfiguration = new CommandCreateObject(PlanningViewConfiguration.getObjectType());
 		getProject().executeCommand(createConfiguration);
 		
 		ORef newConfigurationRef = createConfiguration.getObjectRef();
-		CommandSetObjectData setHiddenRowsCommand = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_ROW_CONFIGURATION, hiddenRowsAsString);
-		getProject().executeCommand(setHiddenRowsCommand);
+		CommandSetObjectData setVisibleRowsCommand = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_ROW_CONFIGURATION, visibleRowsAsString);
+		getProject().executeCommand(setVisibleRowsCommand);
 		
-		CommandSetObjectData setHiddenColsCommand = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_COL_CONFIGURATION, hiddenColsAsString);
-		getProject().executeCommand(setHiddenColsCommand);
+		CommandSetObjectData setVisibleColsCommand = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_COL_CONFIGURATION, visibleColsAsString);
+		getProject().executeCommand(setVisibleColsCommand);
 		
 		CommandSetObjectData selectCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, newConfigurationRef);
 		getProject().executeCommand(selectCurrentConfiguration);

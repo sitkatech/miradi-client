@@ -67,8 +67,8 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		addActivitiesAndMethods();
 		
 		ViewData viewData = project.getCurrentViewData();
-		CodeList hide = viewData.getCodeList(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
-		pruneUnwantedLayers(hide);
+		CodeList typesToShow = viewData.getCodeList(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES);
+		pruneUnwantedLayers(typesToShow);
 	}
 	
 	private void addConceptualModel()
