@@ -32,9 +32,6 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 	
 	private CodeList getList(String tag) throws Exception
 	{
-		if (isInvalidConfiguration())
-			return new CodeList();
-		
 		return new CodeList(findConfiguration().getData(tag)); 
 	}
 	
@@ -47,14 +44,6 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 	{
 		ViewData viewData = getProject().getCurrentViewData();
 		return viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
-	}
-	
-	private boolean isInvalidConfiguration() throws Exception
-	{
-		if (getCurrentConfigurationRef().isInvalid())
-			return true;
-		
-		return false;
 	}
 	
 	public String getPropertyName()
