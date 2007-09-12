@@ -13,7 +13,6 @@ import javax.swing.JRadioButton;
 
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class PlanningViewRadioGroup
 {
@@ -37,10 +36,7 @@ public class PlanningViewRadioGroup
 	
 	public JRadioButton findRadioButton(String property)
 	{
-		if (! property.trim().equals(""))
-			return (JRadioButton) findComponent(property);
-		
-		return (JRadioButton) findComponent(PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
+		return (JRadioButton) findComponent(property);
 	}
 	
 	private Component findComponent(String property)
@@ -56,19 +52,12 @@ public class PlanningViewRadioGroup
 	public void selectAppropriateRadioButton() throws Exception
 	{
 		ViewData viewData = project.getCurrentViewData();
-		String selectedRadioName = getCurrentRadioChoice(viewData);
-		JRadioButton radioButton = findRadioButton(selectedRadioName);
-		radioButton.setSelected(true);
-	}
-	
-	public String getCurrentRadioChoice(ViewData viewData)
-	{
 		String selectedRadioName = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-		boolean shouldReturnDefault = selectedRadioName.trim().equals("");
-		if (shouldReturnDefault)
-			return PlanningView.STRATEGIC_PLAN_RADIO_CHOICE;
-
-		return selectedRadioName;
+		JRadioButton radioButton = findRadioButton(selectedRadioName);
+		if (radioButton == null)
+			return;
+		
+		radioButton.setSelected(true);
 	}
 	
 	private Project project;
