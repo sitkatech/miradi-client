@@ -44,6 +44,11 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		return taskToUse.getAssignmentRefs();
 	}
 	
+	public boolean isCellEditable(int row, int column)
+	{
+		return ! isResourceCostColumn(column);
+	}
+	
 	public int getColumnCount()
 	{
 		return COLUMN_COUNT;
@@ -113,27 +118,32 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		return baseObject.toString();
 	}
 
-	protected boolean isResourceColumn(int column)
+	public boolean isResourceColumn(int column)
 	{
 		return RESOURCE_COLUMM == column;
 	}
 	
-	protected boolean isFundingSourceColumn(int column)
+	public boolean isFundingSourceColumn(int column)
 	{
 		return FUNDING_SOURCE_COLUMN == column;
 	}
 	
-	protected boolean isAccountingCodeColumn(int column)
+	public boolean isAccountingCodeColumn(int column)
 	{
 		return ACCOUNTING_CODE_COLUMN == column;
 	}
 	
-	protected boolean isResourceCostColumn(int column)
+	public boolean isResourceCostColumn(int column)
 	{
 		return RESOURCE_COST_COLUMN == column;
 	}
 	
-	Project project;
+	public Project getProject()
+	{
+		return project;
+	}	
+	
+	private Project project;
 	private ORefList assignmentRefs;
 	
 	private static final int COLUMN_COUNT = 4;
