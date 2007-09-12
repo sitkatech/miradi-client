@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class MonitoringRowColumnProvider implements RowColumnProvider
 {
-	public CodeList getColumnListToShow() throws Exception
+	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {Indicator.PSEUDO_TAG_STATUS_VALUE,			
 				 			 			  Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,

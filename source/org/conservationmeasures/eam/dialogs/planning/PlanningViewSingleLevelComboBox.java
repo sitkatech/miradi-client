@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.PlanningViewSingleLevelQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.planning.ColumnManager;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
@@ -47,25 +48,25 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		
 		String propertyName = getSelectedItemProperty();
 		if (propertyName.equals(Goal.OBJECT_NAME))
-			return PlanningView.getGoalColumns();
+			return ColumnManager.getGoalColumns();
 
 		if (propertyName.equals(Objective.OBJECT_NAME))
-			return PlanningView.getObjectiveColumns();
+			return ColumnManager.getObjectiveColumns();
 		
 		if (propertyName.equals(Strategy.OBJECT_NAME))
-			return PlanningView.getStrategyColumns();
+			return ColumnManager.getStrategyColumns();
 		
 		if (propertyName.equals(Task.ACTIVITY_NAME))
-			return PlanningView.getActivityColumns();
+			return ColumnManager.getActivityColumns();
 
 		if (propertyName.equals(Indicator.OBJECT_NAME))
-			return PlanningView.getIndicatorColumns();
+			return ColumnManager.getIndicatorColumns();
 
 		if (propertyName.equals(Task.METHOD_NAME))
-			return PlanningView.getMethodColumns();
+			return ColumnManager.getMethodColumns();
 
 		if (propertyName.equals(Task.OBJECT_NAME))
-			return PlanningView.getTaskColumns();
+			return ColumnManager.getTaskColumns();
 		
 		return new CodeList();
 	}

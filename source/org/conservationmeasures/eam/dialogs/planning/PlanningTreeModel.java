@@ -9,11 +9,11 @@ import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeRootN
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
+import org.conservationmeasures.eam.views.planning.ColumnManager;
 
 public class PlanningTreeModel extends GenericTreeTableModel
 {	
@@ -26,12 +26,10 @@ public class PlanningTreeModel extends GenericTreeTableModel
 
 	public void rebuildCodeList() throws Exception
 	{
-		String codeListAsString = project.getCurrentViewData().getData(ViewData.TAG_PLANNING_VISIBLE_COL_TYPES);
-		CodeList listToShow = new CodeList(codeListAsString);
 		columnsToShow = new CodeList();
-		final String DEFAULT_COLUM = "Item";
-		columnsToShow.add(DEFAULT_COLUM);
-		columnsToShow.addAll(listToShow);
+		final String DEFAULT_COLUMN = "Item";
+		columnsToShow.add(DEFAULT_COLUMN);
+		columnsToShow.addAll(ColumnManager.getVisibleColumnCodes(project.getCurrentViewData()));
 	}
 
 	public int getColumnCount()
