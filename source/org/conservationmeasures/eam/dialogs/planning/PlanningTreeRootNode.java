@@ -10,11 +10,11 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class PlanningTreeRootNode extends TreeTableNode
+public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 {
 	public PlanningTreeRootNode(Project projectToUse) throws Exception
 	{
-		project = projectToUse;
+		super(projectToUse);
 		rebuild();
 	}
 	
@@ -48,6 +48,11 @@ public class PlanningTreeRootNode extends TreeTableNode
 		return null;
 	}
 
+	public boolean attemptToAdd(ORef refToAdd)
+	{
+		return false;
+	}
+
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
@@ -58,8 +63,13 @@ public class PlanningTreeRootNode extends TreeTableNode
 		addStrategies();
 		addIndicators();
 		addActivitiesAndMethods();
+		
+		// TODO: Finish implementation of pruning
+		//ViewData viewData = project.getCurrentViewData();
+		//CodeList hide = viewData.getCodeList(ViewData.TAG_PLANNING_HIDDEN_ROW_TYPES);
+		//pruneUnwantedLayers(hide);
 	}
-
+	
 	private void addConceptualModel()
 	{
 		children.add(new PlanningTreeConceptualModelNode(project));
@@ -78,7 +88,7 @@ public class PlanningTreeRootNode extends TreeTableNode
 		for(int i = 0; i < goalRefs.size(); ++i)
 		{
 			ORef goalRef = goalRefs.get(i);
-			if(!attemptToAddObjectToChildren(goalRef))
+			if(!attemptToAddToChildren(goalRef))
 				children.add(new PlanningTreeGoalNode(project, goalRef));
 		}
 		
@@ -90,7 +100,7 @@ public class PlanningTreeRootNode extends TreeTableNode
 		for(int i = 0; i < objectiveRefs.size(); ++i)
 		{
 			ORef objectiveRef = objectiveRefs.get(i);
-			if(!attemptToAddObjectToChildren(objectiveRef))
+			if(!attemptToAddToChildren(objectiveRef))
 				children.add(new PlanningTreeObjectiveNode(project, objectiveRef));
 		}
 		
@@ -106,7 +116,7 @@ public class PlanningTreeRootNode extends TreeTableNode
 			if(strategy.isStatusDraft())
 				continue;
 			
-			if(!attemptToAddObjectToChildren(strategyRef))
+			if(!attemptToAddToChildren(strategyRef))
 				children.add(new PlanningTreeStrategyNode(project, strategyRef));
 		}
 	}
@@ -117,7 +127,7 @@ public class PlanningTreeRootNode extends TreeTableNode
 		for(int i = 0; i < indicatorRefs.size(); ++i)
 		{
 			ORef indicatorRef = indicatorRefs.get(i);
-			if(!attemptToAddObjectToChildren(indicatorRef))
+			if(!attemptToAddToChildren(indicatorRef))
 				children.add(new PlanningTreeIndicatorNode(project, indicatorRef));
 		}
 		
@@ -133,23 +143,9 @@ public class PlanningTreeRootNode extends TreeTableNode
 			if(!task.isActivity() && !task.isMethod())
 				continue;
 			
-			if(!attemptToAddObjectToChildren(taskRef))
+			if(!attemptToAddToChildren(taskRef))
 				children.add(new PlanningTreeTaskNode(project, taskRef));
 		}
 	}
 	
-	private boolean attemptToAddObjectToChildren(ORef refToAdd)
-	{
-		boolean wasAdded = false;
-		for(int i = 0; i < children.size(); ++i)
-		{
-			if(children.get(i).attemptToAdd(refToAdd))
-				wasAdded = true;
-		}
-		
-		return wasAdded;
-	}
-
-	Project project;
-	Vector<AbstractPlanningTreeNode> children;
 }
