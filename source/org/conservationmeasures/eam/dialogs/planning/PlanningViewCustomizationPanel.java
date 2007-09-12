@@ -143,7 +143,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		possiblyRebuild(event);
+		refillCustomizationComboBox(event);
 		updateRadioButtonSelection(event);
 		setCustomizationComboSelection(event);
 		setCustomizationRadioButton(event);
@@ -188,13 +188,18 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		setComboBoxSelection(comboPropertyName, property);
 	}
 
-	private void possiblyRebuild(CommandExecutedEvent event)
+	private void refillCustomizationComboBox(CommandExecutedEvent event)
 	{
 		if (! shouldRebuild(event))
 			return;
-		
-		rebuildCustomizationPanel();
-		validate();
+	
+		PlanningViewCustomizationComboBox comboBox = (PlanningViewCustomizationComboBox) comboBoxes.get(PlanningView.CUSTOMIZABLE_COMBO);
+		comboBox.removeAllItems();
+		ChoiceItem[] choices = new PlanningViewCustomizationQuestion(project).getChoices();
+		for (int i = 0; i< choices.length; ++i)
+		{
+			comboBox.addItem(choices[i]);
+		}
 	}
 	
 	private boolean shouldRebuild(CommandExecutedEvent event)
