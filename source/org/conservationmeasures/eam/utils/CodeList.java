@@ -59,6 +59,11 @@ public class CodeList
 	{
 		data.add(code);
 	}
+	
+	public void addAll(CodeList listToAdd)
+	{
+		data.addAll(Arrays.asList(listToAdd.toArray()));
+	}
 		
 	public String get(int index)
 	{
