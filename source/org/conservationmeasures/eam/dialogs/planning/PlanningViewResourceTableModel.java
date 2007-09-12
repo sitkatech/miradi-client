@@ -10,6 +10,8 @@ import javax.swing.table.AbstractTableModel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
@@ -54,14 +56,90 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 
 	public Object getValueAt(int row, int column)
 	{
-		//FIXME planning - remove code and make it work
+		return getCellValue(row, column);
+	}
+	
+	private Object getCellValue(int row, int column)
+	{
 		ORef assignmentRef = assignmentRefs.get(row);
 		Assignment assignment = (Assignment) project.findObject(assignmentRef);
-		return assignment;
+		if (isResourceColumn(column))
+			return getResource(assignment);
+		
+		if (isFundingSourceColumn(column))
+			return getFundingSource(assignment);
+		
+		if (isAccountingCodeColumn(column))
+			return getAccountingCode(assignment);
+		
+		if (isResourceCostColumn(column))
+			return getResourceCost(assignment);
+		
+		return null;
+	}
+
+	private String getResource(Assignment assignment)
+	{
+		ORef resourceRef = assignment.getResourceRef();
+		return getObjectLabel(resourceRef);
+	}
+	
+	private String getFundingSource(Assignment assignment)
+	{
+		ORef fundingSourceRef = assignment.getFundingSourceRef();
+		return getObjectLabel(fundingSourceRef);
+	}
+	
+	private String getAccountingCode(Assignment assignment)
+	{
+		ORef accountingCodeRef = assignment.getAccountingCodeRef();
+		return getObjectLabel(accountingCodeRef);
+	}
+	
+	private String getResourceCost(Assignment assignment)
+	{
+		ORef resourceRef = assignment.getResourceRef();
+		ProjectResource resource = (ProjectResource) project.findObject(resourceRef);
+		double cost = resource.getCostPerUnit();
+		return Double.toString(cost);
+	}
+
+	private String getObjectLabel(ORef ref)
+	{
+		BaseObject baseObject = project.findObject(ref);
+		if (baseObject == null)
+			return "";
+		
+		return baseObject.toString();
+	}
+
+	protected boolean isResourceColumn(int column)
+	{
+		return RESOURCE_COLUMM == column;
+	}
+	
+	protected boolean isFundingSourceColumn(int column)
+	{
+		return FUNDING_SOURCE_COLUMN == column;
+	}
+	
+	protected boolean isAccountingCodeColumn(int column)
+	{
+		return ACCOUNTING_CODE_COLUMN == column;
+	}
+	
+	protected boolean isResourceCostColumn(int column)
+	{
+		return RESOURCE_COST_COLUMN == column;
 	}
 	
 	Project project;
 	private ORefList assignmentRefs;
 	
 	private static final int COLUMN_COUNT = 4;
+	
+	private static final int RESOURCE_COLUMM = 0;
+	private static final int ACCOUNTING_CODE_COLUMN = 1;
+	private static final int FUNDING_SOURCE_COLUMN = 2;
+	private static final int RESOURCE_COST_COLUMN = 3;
 }
