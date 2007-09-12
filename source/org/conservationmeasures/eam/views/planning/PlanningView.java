@@ -122,61 +122,68 @@ public class PlanningView extends TabbedView
 	
 	public static CodeList getGoalColumns()
 	{
-		return new CodeList();
+		
+		return getMasterColumnList();
 	}
 	
 	public static CodeList getObjectiveColumns()
 	{
-		return new CodeList();
+		return getMasterColumnList();
 	}
 	
 	public static CodeList getStrategyColumns()
 	{
-		String[] list = {Indicator.TAG_PRIORITY, 
-				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
-				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, };
-
+		
+		String[] list = {
+				Indicator.PSEUDO_TAG_FACTOR,
+				Indicator.TAG_MEASUREMENT_SUMMARY,
+				Indicator.PSEUDO_TAG_METHODS,
+				Indicator.PSEUDO_TAG_STATUS_VALUE, };
+			
 		return new CodeList(list);
 	}
 	
 	public static CodeList getActivityColumns()
 	{
-		String[] list = {Indicator.TAG_PRIORITY, 
-				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
-				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, };
-
+		String[] list = {
+				Indicator.PSEUDO_TAG_FACTOR,
+				Indicator.TAG_MEASUREMENT_SUMMARY,
+				Indicator.PSEUDO_TAG_METHODS,
+				Indicator.PSEUDO_TAG_STATUS_VALUE, };
+			
 		return new CodeList(list);
 	}
 	
 	public static CodeList getIndicatorColumns()
 	{
-		String[] list = {Indicator.TAG_PRIORITY, 
-				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
-				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, };
-
+		String[] list = {
+		Indicator.PSEUDO_TAG_FACTOR,
+		Indicator.TAG_MEASUREMENT_SUMMARY,
+		Indicator.PSEUDO_TAG_METHODS,
+		Indicator.PSEUDO_TAG_STATUS_VALUE, };
+	
 		return new CodeList(list);
 	}
 	
 	public static CodeList getMethodColumns()
 	{
-		String[] list = {Indicator.TAG_PRIORITY, 
-				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
-				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, };
-
+		String[] list = {
+		Indicator.PSEUDO_TAG_FACTOR,
+		Indicator.TAG_MEASUREMENT_SUMMARY,
+		Indicator.PSEUDO_TAG_METHODS,
+		Indicator.PSEUDO_TAG_STATUS_VALUE, };
+	
 		return new CodeList(list);
 	}
 	
 	public static CodeList getTaskColumns()
-	{
-		String[] list = {Indicator.TAG_PRIORITY, 
-				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, 
-				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, };
-
+	{		
+		String[] list = {
+		Indicator.PSEUDO_TAG_FACTOR, 
+		Indicator.TAG_MEASUREMENT_SUMMARY,
+		Indicator.PSEUDO_TAG_METHODS,
+		Indicator.PSEUDO_TAG_STATUS_VALUE, };
+		
 		return new CodeList(list);
 	}
 	
