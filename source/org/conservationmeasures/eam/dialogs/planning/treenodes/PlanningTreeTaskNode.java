@@ -7,6 +7,7 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.planning.RowManager;
 
 public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 {
@@ -17,7 +18,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		task = (Task)project.findObject(taskRef);
 		
 		ViewData viewData = project.getCurrentViewData();
-		CodeList objectTypesToShow = viewData.getCodeList(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES);
+		CodeList objectTypesToShow = RowManager.getVisibleRowCodes(viewData);
 		if(objectTypesToShow.contains(Task.OBJECT_NAME))
 			addAllSubtasks();
 	}
