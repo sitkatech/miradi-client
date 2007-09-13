@@ -12,7 +12,7 @@ public class PlanningViewCustomizationRadioButton extends PlanningViewRadioButto
 {
 	public PlanningViewCustomizationRadioButton(Project projectToUse, RowColumnProvider rowColumnProvider)
 	{
-		super(projectToUse, rowColumnProvider);
+		super(projectToUse);
 	}
 	
 	public String getPropertyName()

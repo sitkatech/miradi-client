@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.project.Project;
 //FIXME planning - this class should extend UiRadioButton but it cant since UiRadioButton has no constructor that takes in 0 args
 abstract public class PlanningViewRadioButton extends JRadioButton implements ActionListener
 {
-	public PlanningViewRadioButton(Project projectToUse, RowColumnProvider rowColumnProviderToUse)
+	public PlanningViewRadioButton(Project projectToUse)
 	{	
 		super();
 		project = projectToUse;
