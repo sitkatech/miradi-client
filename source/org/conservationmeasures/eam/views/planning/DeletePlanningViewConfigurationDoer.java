@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 
@@ -48,7 +49,7 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 			ViewData viewData = getProject().getCurrentViewData();
 			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 			
-			setSelection(viewData);
+			selectOtherConfiguration(configurationRef);
 			
 			PlanningViewConfiguration configuration = (PlanningViewConfiguration) getProject().findObject(configurationRef);
 			getProject().executeCommands(configuration.createCommandsToClear());
@@ -62,9 +63,12 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 		}
 	}
 	
-	protected void setSelection(ViewData viewData) throws CommandFailedException
+	protected void selectOtherConfiguration(ORef itemNotToSelect) throws Exception
 	{
-		ORef refAsSelection = ORef.INVALID;
+		ViewData viewData = getProject().getCurrentViewData();
+		ORefList existing = getProject().getPlanningViewConfigurationPool().getORefList();
+		int next = (existing.find(itemNotToSelect) + 1) % existing.size();
+		ORef refAsSelection = existing.get(next);
 		CommandSetObjectData setCurrentCustomPlanRef = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, refAsSelection.toString());
 		getProject().executeCommand(setCurrentCustomPlanRef);
 	}
