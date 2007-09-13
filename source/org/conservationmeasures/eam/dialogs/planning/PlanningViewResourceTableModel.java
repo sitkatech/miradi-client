@@ -135,19 +135,19 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	private BaseObject getResource(Assignment assignment)
 	{
 		ORef resourceRef = assignment.getResourceRef();
-		return getObjectLabel(resourceRef);
+		return findObject(resourceRef);
 	}
 	
 	private BaseObject getFundingSource(Assignment assignment)
 	{
 		ORef fundingSourceRef = assignment.getFundingSourceRef();
-		return getObjectLabel(fundingSourceRef);
+		return findObject(fundingSourceRef);
 	}
 	
 	private BaseObject getAccountingCode(Assignment assignment)
 	{
 		ORef accountingCodeRef = assignment.getAccountingCodeRef();
-		return getObjectLabel(accountingCodeRef);
+		return findObject(accountingCodeRef);
 	}
 	
 	private String getResourceCost(Assignment assignment)
@@ -169,9 +169,8 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		double cost = resource.getCostPerUnit();
 		return Double.toString(cost);
 	}
-
-	//TODO planning table - rename method
-	private BaseObject getObjectLabel(ORef ref)
+	
+	private BaseObject findObject(ORef ref)
 	{
 		return project.findObject(ref);
 	}
