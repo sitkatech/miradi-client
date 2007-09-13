@@ -7,12 +7,14 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.CardLayout;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.StrategyPropertiesPanel;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Goal;
@@ -106,6 +108,21 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		return blankPropertiesPanel;
 	}
 	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			updateTable();
+	}
+	
+	public void updateTable()
+	{
+		if (taskPropertiesInputPanel == null)
+			return;
+		
+		taskPropertiesInputPanel.dataWasChanged();
+	}
+		
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private MainWindow mainWindow;

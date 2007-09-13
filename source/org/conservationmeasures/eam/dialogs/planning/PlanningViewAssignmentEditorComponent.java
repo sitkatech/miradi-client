@@ -14,8 +14,11 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
@@ -38,6 +41,11 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
+		if (hierarchyToSelectedRef.length == 0)
+			setTaskId(BaseId.INVALID);
+		else
+			setTaskId(hierarchyToSelectedRef[0].getObjectId());
+
 		resourceTable.setObjectRefs(hierarchyToSelectedRef);
 		resourceTableModel.fireTableDataChanged();
 	}
@@ -85,6 +93,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		JPanel box = new JPanel(layout);
 		
+		//FIXME planning - add this button as well		
 		//ObjectsActionButton addButton = createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), objectPicker);
 		//box.add(addButton);
 		
@@ -102,6 +111,18 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private Actions getActions()
 	{
 		return mainWindow.getActions();
+	}
+	
+	public void dataWasChanged()
+	{
+		resourceTableModel.dataWasChanged();
+		resourceTable.repaint();
+	}
+	
+	private void setTaskId(BaseId taskId)
+	{ 
+		Task task = (Task)getProject().findObject(ObjectType.TASK, taskId);
+		resourceTableModel.setTask(task);
 	}
 
 	private MainWindow mainWindow;
