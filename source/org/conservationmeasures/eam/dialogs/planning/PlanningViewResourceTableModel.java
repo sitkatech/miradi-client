@@ -56,7 +56,13 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		
 	public boolean isCellEditable(int row, int column)
 	{
-		return ! isResourceCostColumn(column);
+		if (isResourceCostPerUnitColumn(column))
+			return false;
+		
+		if (isResourceCostColumn(column))
+			return false;
+		
+		return true;
 	}
 	
 	public int getColumnCount()
@@ -81,14 +87,18 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		if (isResourceColumn(column))
 			return getResource(assignment);
 		
+		if (isResourceCostColumn(column))
+			return getResourceCost(assignment);
+		
+		if (isResourceCostPerUnitColumn(column))
+			return getResourceCostPerUnit(assignment);
+		
 		if (isFundingSourceColumn(column))
 			return getFundingSource(assignment);
 		
 		if (isAccountingCodeColumn(column))
 			return getAccountingCode(assignment);
 		
-		if (isResourceCostColumn(column))
-			return getResourceCost(assignment);
 		
 		return null;
 	}
@@ -142,12 +152,25 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	
 	private String getResourceCost(Assignment assignment)
 	{
+		ProjectResource resource = findProjectResource(assignment);
+		return resource.getCostUnit();
+	}
+
+	private ProjectResource findProjectResource(Assignment assignment)
+	{
 		ORef resourceRef = assignment.getResourceRef();
 		ProjectResource resource = (ProjectResource) project.findObject(resourceRef);
+		return resource;
+	}
+	
+	private Object getResourceCostPerUnit(Assignment assignment)
+	{
+		ProjectResource resource = findProjectResource(assignment);
 		double cost = resource.getCostPerUnit();
 		return Double.toString(cost);
 	}
 
+	//TODO planning table - rename method
 	private BaseObject getObjectLabel(ORef ref)
 	{
 		return project.findObject(ref);
@@ -173,6 +196,11 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		return RESOURCE_COST_COLUMN == column;
 	}
 	
+	public boolean isResourceCostPerUnitColumn(int column)
+	{
+		return RESOURCE_COST_PER_UNIT_COLUMN == column;
+	}
+	
 	public Project getProject()
 	{
 		return project;
@@ -181,10 +209,12 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	private Project project;
 	private ORefList assignmentRefs;
 	
-	private static final int COLUMN_COUNT = 4;
+	private static final int COLUMN_COUNT = 5;
 	
 	private static final int RESOURCE_COLUMM = 0;
-	private static final int ACCOUNTING_CODE_COLUMN = 1;
-	private static final int FUNDING_SOURCE_COLUMN = 2;
-	private static final int RESOURCE_COST_COLUMN = 3;
+	private static final int RESOURCE_COST_COLUMN = 1;
+	private static final int RESOURCE_COST_PER_UNIT_COLUMN = 2;
+	private static final int ACCOUNTING_CODE_COLUMN = 3;
+	private static final int FUNDING_SOURCE_COLUMN = 4;
+	
 }
