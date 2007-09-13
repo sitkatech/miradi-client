@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.FundingSource;
@@ -108,6 +109,7 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	{
 		ORef assignmentRefForRow = getAssignmentForRow(row);
 		setResourceCell(value, assignmentRefForRow, column);
+		setAccountingCode(value, assignmentRefForRow, column);
 		setFundingSource(value, assignmentRefForRow, column);
 	}
 	
@@ -134,6 +136,30 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		}
 	}
 	
+	public void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
+	{
+		if (! isAccountingCodeColumn(column))
+			return;
+		
+		AccountingCode accountingCode = (AccountingCode)value;
+		setAccountingCode(accountingCode, assignmentRefForRow);
+		return;
+	}
+	
+	public void setAccountingCode(AccountingCode accountingCode, ORef  assignmentRef)
+	{
+		try
+		{
+			BaseId accountingCodeId = accountingCode.getId();
+			Command command = new CommandSetObjectData(assignmentRef, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId.toString());
+			project.executeCommand(command);
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+		}
+	}
+		
 	private void setFundingSource(Object value, ORef assignmentRefForRow, int column)
 	{
 		if (! isFundingSourceColumn(column))
