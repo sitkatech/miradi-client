@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -76,8 +77,23 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		return ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE;
 	}
 	
-	public String getChosenRadioTag()
+	boolean needsSave() throws Exception 
 	{
-		return PlanningView.SINGLE_LEVEL_RADIO_CHOICE;
+		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
+		String existingValue = viewData.getData(getChoiceTag());
+
+		if(existingValue.length() == 0 && getSelectedIndex() == 0)
+			return false;
+		
+		ChoiceItem currentChoiceItem = (ChoiceItem) getSelectedItem();
+		if (currentChoiceItem == null)
+			return false;
+		
+		if (currentChoiceItem.getCode().equals(existingValue))
+			return false;
+		
+		EAM.logVerbose("From " + existingValue + " to " + currentChoiceItem.getCode());
+		return true;
 	}
+
 }

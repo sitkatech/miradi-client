@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.planning;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -96,8 +97,24 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		return ViewData.TAG_PLANNING_CUSTOM_PLAN_REF;
 	}
 	
-	public String getChosenRadioTag()
+	 boolean needsSave() throws Exception 
 	{
-		return PlanningView.CUSTOMIZABLE_RADIO_CHOICE;
+		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
+		ORef existingRef = viewData.getORef(getChoiceTag());
+
+		if(existingRef.isInvalid() && getSelectedIndex() == 0)
+			return false;
+		
+		ChoiceItem currentChoiceItem = (ChoiceItem) getSelectedItem();
+		if (currentChoiceItem == null)
+			return false;
+		
+		if (currentChoiceItem.getCode().equals(existingRef.toString()))
+			return false;
+		
+		EAM.logVerbose("From " + existingRef + " to " + currentChoiceItem.getCode());
+		return true;
 	}
+
+
 }

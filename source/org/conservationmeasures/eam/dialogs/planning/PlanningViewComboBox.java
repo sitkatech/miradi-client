@@ -30,19 +30,20 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	{		
 		try
 		{
-			if (ignoreSaving())
-				return;
-			
-			saveState();
+			saveStateIfNeeded();
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
+			EAM.errorDialog("Error: " + e.getMessage());
 		}
 	}
 
-	private void saveState() throws Exception
+	private void saveStateIfNeeded() throws Exception
 	{
+		if (!needsSave())
+			return;
+
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
@@ -66,28 +67,14 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		getProject().executeCommand(setComboItem);
 	}
 
-	private boolean ignoreSaving() throws Exception
-	{
-		ViewData viewData = getProject().getCurrentViewData();
-		String existingValue = viewData.getData(getChoiceTag());
-		ChoiceItem currentChoiceItem = (ChoiceItem) getSelectedItem();
-		
-		if (currentChoiceItem == null)
-			return true;
-		
-		if (currentChoiceItem.getCode().equals(existingValue))
-			return true;
-		
-		return false;
-	}
-
+	
 	protected Project getProject()
 	{
 		return project;
 	}
 
 	abstract public String getChoiceTag();
-	abstract public String getChosenRadioTag();
+	abstract boolean needsSave() throws Exception;
 	
 	private Project project;
 	
