@@ -9,15 +9,11 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
-import org.conservationmeasures.eam.views.planning.PlanningView;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -33,11 +29,6 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 	public String getBorderTitle()
 	{
 		return EAM.text("Columns");
-	}
-	
-	protected String getViewDataVisibleTypesTag()
-	{
-		return ViewData.TAG_PLANNING_VISIBLE_COL_TYPES;
 	}
 	
 	protected CodeList getMasterListToCreateCheckBoxesFrom()
@@ -62,21 +53,8 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		return PlanningViewConfiguration.TAG_COL_CONFIGURATION;
 	}
 
-	void updateCheckBoxes(Command command) throws Exception
+	protected CodeList getVisibleTypes() throws Exception
 	{
-		super.updateCheckBoxes(command);
-		if(!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-		CommandSetObjectData cmd = (CommandSetObjectData)command;
-		if(!PlanningView.isRowOrColumnChangingCommand(cmd))
-			return;
-		
-		updateCheckBoxesFromProjectSettings();
-	}
-
-	public void updateCheckBoxesFromProjectSettings() throws Exception
-	{
-		CodeList visibleTypes = ColumnManager.getVisibleColumnCodes(getViewData());
-		updateCheckboxes(visibleTypes);
+		return ColumnManager.getVisibleColumnCodes(getViewData());
 	}
 }

@@ -133,7 +133,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			saveSettingsToProject(getViewDataVisibleTypesTag());	
+			saveSettingsToProject(null);	
 		}
 		finally
 		{
@@ -176,11 +176,14 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		CommandSetObjectData setCommand = (CommandSetObjectData) command;
 		if (setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
 			updateEnableState(setCommand.getDataValue());
+
+		if(PlanningView.isRowOrColumnChangingCommand(setCommand))
+			updateCheckBoxesFromProjectSettings();
 	}
 	
 	protected void saveSettingsToProject(String tag)
 	{
-		super.saveSettingsToProject(tag);
+		// NOTE: We don't invoke super here because we don't want to save our data to ViewData
 		savePlanningConfigurationData();
 	}
 	
@@ -192,7 +195,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 			if (! PlanningView.isCustomizationStyle(viewData))
 				return;
 			
-			String listAsString = viewData.getData(getViewDataVisibleTypesTag());
+			String listAsString = getLegendSettings().toString();
 			ORef configurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 			CommandSetObjectData setRowListCommand = new CommandSetObjectData(configurationRef, getConfigurationTypeTag(), listAsString);
 			getProject().executeCommand(setRowListCommand);
@@ -203,6 +206,11 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		}
 	}
 	
+	public void updateCheckBoxesFromProjectSettings() throws Exception
+	{
+		updateCheckboxes(getVisibleTypes());
+	}
+
 	ViewData getViewData() throws Exception
 	{
 		return project.getViewData(PlanningView.getViewName());
@@ -211,8 +219,8 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	abstract protected String getConfigurationTypeTag();
 	abstract protected CodeList getMasterListToCreateCheckBoxesFrom();	
 	abstract protected JComponent createLegendButtonPanel(Actions actions);
-	abstract protected String getViewDataVisibleTypesTag();
 	abstract protected String getBorderTitle();
+	abstract protected CodeList getVisibleTypes() throws Exception;
 	
 	MainWindow mainWindow;
 	Project project;
