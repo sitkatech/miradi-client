@@ -12,7 +12,7 @@ public class PlanningViewSingleLevelRadioButton extends PlanningViewRadioButton
 {
 	public PlanningViewSingleLevelRadioButton(Project projectToUse, RowColumnProvider rowColumnProvider)
 	{
-		super(projectToUse, rowColumnProvider);
+		super(projectToUse);
 	}
 
 	public String getPropertyName()

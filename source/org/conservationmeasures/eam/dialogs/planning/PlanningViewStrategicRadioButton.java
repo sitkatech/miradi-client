@@ -12,7 +12,7 @@ public class PlanningViewStrategicRadioButton extends PlanningViewRadioButton
 {
 	public PlanningViewStrategicRadioButton(Project projectToUse)
 	{
-		super(projectToUse, new StrategicRowColumnProvider());
+		super(projectToUse);
 	}
 	
 	public String getPropertyName()

@@ -12,7 +12,7 @@ public class PlanningViewMonitoringRadioButton extends PlanningViewRadioButton
 {
 	public PlanningViewMonitoringRadioButton(Project projectToUse)
 	{
-		super(projectToUse, new MonitoringRowColumnProvider());
+		super(projectToUse);
 	}
 
 	public String getPropertyName()
