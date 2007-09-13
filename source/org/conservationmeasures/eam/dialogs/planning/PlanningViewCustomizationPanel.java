@@ -24,7 +24,6 @@ import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.PlanningViewCustomizationQuestion;
 import org.conservationmeasures.eam.questions.PlanningViewSingleLevelQuestion;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 
@@ -188,29 +187,12 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 
 	private void refillCustomizationComboBox(CommandExecutedEvent event) throws Exception
 	{
-		if (! shouldRebuild(event))
-			return;
-	
 		PlanningViewCustomizationComboBox comboBox = (PlanningViewCustomizationComboBox) comboBoxes.get(PlanningView.CUSTOMIZABLE_COMBO);
-		comboBox.removeAllItems();
-		ChoiceItem[] choices = new PlanningViewCustomizationQuestion(project).getChoices();
-		for (int i = 0; i< choices.length; ++i)
-		{
-			comboBox.addItem(choices[i]);
-		}
+
+		if (event.isDeleteObjectCommand() || event.isCreateObjectCommand())
+			comboBox.syncContentsWithProject();
 		
 		selectAppropriateConfiguredComboBoxItem();
-	}
-	
-	private boolean shouldRebuild(CommandExecutedEvent event)
-	{
-		if (event.isCreateObjectCommand())
-			return true;
-		
-		if (event.isDeleteObjectCommand())
-			return true;
-		
-		return false;
 	}
 	
 	private void setComboBoxSelection(String comboName, String itemProperty)
