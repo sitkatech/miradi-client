@@ -9,12 +9,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
+import org.conservationmeasures.eam.dialogs.planning.PlanningTreePropertiesPanel;
+import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
+import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTablePanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewControlPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -24,6 +28,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.budget.AddAssignmentDoer;
 import org.conservationmeasures.eam.views.budget.RemoveAssignmentDoer;
 
 public class PlanningView extends TabbedView
@@ -42,7 +47,10 @@ public class PlanningView extends TabbedView
 	
 	public void createTabs() throws Exception
 	{
-		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow());
+		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
+		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable) planningTreeTablePanel.getTree();
+		PlanningTreePropertiesPanel planningTreePropertiesPanel = new PlanningTreePropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
+		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
 		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
 		
 		controlPanel = new PlanningViewControlPanel(getMainWindow());
@@ -87,6 +95,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
+		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandSetObjectData cmd)

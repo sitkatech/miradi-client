@@ -8,20 +8,15 @@ package org.conservationmeasures.eam.dialogs.planning;
 import org.conservationmeasures.eam.dialogs.ObjectListManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 
 public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
-	public PlanningTreeManagementPanel(MainWindow mainWindowToUse) throws Exception
+	public PlanningTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreePropertiesPanel planningTreePropertiesPanel) throws Exception
 	{
-		super(mainWindowToUse, PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse), getPropertiesPanel(mainWindowToUse));
+		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
+		
 	}
 
-	public static PlanningTreePropertiesPanel getPropertiesPanel(MainWindow mainWindowToUse) throws Exception
-	{
-		return new PlanningTreePropertiesPanel(mainWindowToUse, ORef.INVALID);
-	}
-	
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;

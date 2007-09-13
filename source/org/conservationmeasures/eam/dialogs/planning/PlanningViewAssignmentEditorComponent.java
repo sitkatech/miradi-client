@@ -11,6 +11,7 @@ import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
@@ -24,16 +25,18 @@ import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
 public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 {
-	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse)
+	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse)
 	{
 		super(new BorderLayout());
 		
 		mainWindow = mainWindowToUse;
+		objectPicker = objectPickerToUse;
 		createTables();
 		addTables();
 		addTablesToSelectionController();
@@ -92,10 +95,9 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	{
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		JPanel box = new JPanel(layout);
-		
-		//FIXME planning - add this button as well		
-		//ObjectsActionButton addButton = createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), objectPicker);
-		//box.add(addButton);
+				
+		ObjectsActionButton addButton = createObjectsActionButton(getActions().getObjectsAction(ActionAddAssignment.class), objectPicker);
+		box.add(addButton);
 		
 		ObjectsActionButton removeButton = createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), resourceTable);
 		box.add(removeButton);
@@ -134,4 +136,5 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private PlanningViewWorkPlanTable workplanTable;
 	
 	private PlanningViewResourceTableModel resourceTableModel;
+	private ObjectPicker objectPicker;
 }

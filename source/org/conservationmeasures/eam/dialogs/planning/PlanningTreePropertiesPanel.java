@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.CardLayout;
 
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
@@ -22,13 +21,15 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 {
-	public PlanningTreePropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
+	public PlanningTreePropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), orefToUse);
 		mainWindow = mainWindowToUse;
+		objectPicker = objectPickerToUse;
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		createPropertiesPanels();
@@ -50,7 +51,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject());
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject());
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getProject());
-		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(mainWindow);
+		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(mainWindow, objectPicker);
 		blankPropertiesPanel = new BlankPropertiesPanel();
 		
 		add(goalPropertiesPanel);
@@ -111,7 +112,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+		if (event.isSetDataCommand())
 			updateTable();
 	}
 	
@@ -126,6 +127,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private MainWindow mainWindow;
+	private ObjectPicker objectPicker;
 	private CardLayout cardLayout;
 	
 	private GoalPropertiesPanel goalPropertiesPanel;

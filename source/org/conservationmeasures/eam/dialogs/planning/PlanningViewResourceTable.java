@@ -17,6 +17,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.AccountingCode;
@@ -89,12 +90,32 @@ public class PlanningViewResourceTable extends TableWithHelperMethods implements
 	
 	private void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
 	{
-		JComboBox comboBox = new JComboBox(content);
+		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
+		JComboBox comboBox = new JComboBox(comboContent);
 		TableColumn tableColumn = getColumnModel().getColumn(col);
 		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
-		tableColumn.setCellRenderer(new ComboBoxRenderer(content));
+		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
 	}
+	
+	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
+	{
+		final int EMPTY_SPACE = 0;
+		BaseObject[]  comboContent = new BaseObject[content.length + 1];
+		comboContent[EMPTY_SPACE] = invalidObject;
 
+		try
+		{
+			invalidObject.setLabel(" ");
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	
+		System.arraycopy(content, 0, comboContent, 1, content.length);	
+		return comboContent;
+	}
+	
 	public ProjectResource[] getAllProjectResources()
 	{
 		return  getResourcePool().getAllProjectResources();
