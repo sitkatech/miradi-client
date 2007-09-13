@@ -7,20 +7,20 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
 public class PlanningViewTaskPropertiesPanel extends DisposablePanelWithDescription
 {
-	public PlanningViewTaskPropertiesPanel(Project projectToUse) throws Exception
+	public PlanningViewTaskPropertiesPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(new BasicGridLayout(2, 1));
 		
-		assignmentEditor = new PlanningViewAssignmentEditorComponent(projectToUse);
-		taskPropertiesInputPanel = new TaskPropertiesInputPanel(projectToUse);
+		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse);
+		taskPropertiesInputPanel = new TaskPropertiesInputPanel(mainWindowToUse.getProject());
 	
 		add(taskPropertiesInputPanel);
 		add(assignmentEditor);
