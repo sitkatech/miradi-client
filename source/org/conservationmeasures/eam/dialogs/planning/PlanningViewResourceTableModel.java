@@ -119,21 +119,8 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 			return;
 
 		ProjectResource projectResource = (ProjectResource)value;
-		setResource(assignmentRefForRow, projectResource);
-	}
-	
-	public void setResource(ORef assignmentRef, ProjectResource projectResource)
-	{
-		try
-		{
-			BaseId resourceId = projectResource.getId();
-			Command command = new CommandSetObjectData(assignmentRef, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId.toString());
-			project.executeCommand(command);
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-		}
+		BaseId resourceId = projectResource.getId();
+		setAssignmentData(assignmentRefForRow, resourceId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
 	}
 	
 	public void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
@@ -142,39 +129,26 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 			return;
 		
 		AccountingCode accountingCode = (AccountingCode)value;
-		setAccountingCode(accountingCode, assignmentRefForRow);
+		BaseId accountingCodeId = accountingCode.getId();
+		setAssignmentData(assignmentRefForRow, accountingCodeId, Assignment.TAG_ACCOUNTING_CODE);
 		return;
 	}
 	
-	public void setAccountingCode(AccountingCode accountingCode, ORef  assignmentRef)
-	{
-		try
-		{
-			BaseId accountingCodeId = accountingCode.getId();
-			Command command = new CommandSetObjectData(assignmentRef, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId.toString());
-			project.executeCommand(command);
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-		}
-	}
-		
 	private void setFundingSource(Object value, ORef assignmentRefForRow, int column)
 	{
 		if (! isFundingSourceColumn(column))
 			return;
 		
 		FundingSource fundingSource = (FundingSource)value;
-		setFundingSource(fundingSource, assignmentRefForRow);
+		BaseId fundingSourceId = fundingSource.getId();
+		setAssignmentData(assignmentRefForRow, fundingSourceId, Assignment.TAG_FUNDING_SOURCE);
 	}
 
-	public void setFundingSource(FundingSource fundingSource, ORef  assignmentRef)
+	public void setAssignmentData(ORef  assignmentRef, BaseId idToSave, String fieldTag)
 	{
 		try
 		{
-			BaseId fundingSourceId = fundingSource.getId();
-			Command command = new CommandSetObjectData(assignmentRef, Assignment.TAG_FUNDING_SOURCE, fundingSourceId.toString());
+			Command command = new CommandSetObjectData(assignmentRef, fieldTag, idToSave.toString());
 			project.executeCommand(command);
 		}
 		catch(CommandFailedException e)
@@ -182,7 +156,7 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 			EAM.logException(e);
 		}
 	}
-	
+		
 	private BaseObject getResource(Assignment assignment)
 	{
 		ORef resourceRef = assignment.getResourceRef();
