@@ -96,6 +96,11 @@ public class ProjectResource extends BaseObject
 		return Double.parseDouble(costPerUnit.toString());
 	}
 	
+	public String getCostUnit()
+	{
+		return costUnit.get();
+	}
+	
 	public void clear()
 	{
 		super.clear();
