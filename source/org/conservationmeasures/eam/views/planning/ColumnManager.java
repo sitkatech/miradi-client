@@ -112,6 +112,8 @@ public class ColumnManager
 			return getVisibleColumnsForSingleType(viewData);
 		else if(style.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
 			return getVisibleColumnsForCustomization(viewData);
+		else if(style.equals(""))
+			return getStrategicPlanColumns();
 		else
 		{
 			EAM.logError("getVisibleColumnCodes unknown style: " + style);
