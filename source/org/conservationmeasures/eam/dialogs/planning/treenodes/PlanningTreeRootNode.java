@@ -9,8 +9,8 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.TreeTableNode;
+import org.conservationmeasures.eam.views.planning.RowManager;
 
 public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 {
@@ -67,8 +67,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		addActivitiesAndMethods();
 		
 		ViewData viewData = project.getCurrentViewData();
-		CodeList typesToShow = viewData.getCodeList(ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES);
-		pruneUnwantedLayers(typesToShow);
+		pruneUnwantedLayers(RowManager.getVisibleRowCodes(viewData));
 	}
 	
 	private void addConceptualModel()

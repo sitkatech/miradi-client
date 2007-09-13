@@ -42,7 +42,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		try
 		{
 			if(PlanningView.isRowOrColumnChangingCommand(cmd))
-				rebuildAfterColumnChange();
+				rebuildEntireTreeTable();
 		}
 		catch(Exception e)
 		{
@@ -51,19 +51,19 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		}
 	}
 	
-	private void rebuildAfterColumnChange() throws Exception
+	private void rebuildEntireTreeTable() throws Exception
 	{
+		// TODO: Perhaps possibly detect exactly what changed and 
+		// only rebuild the columns or the rows rather than always doing both
+		
+		// NOTE: The following rebuild the columns but don't touch the tree
 		getPlanningModel().rebuildCodeList();
 		tree.rebuildTableCompletely();
+		
+		// NOTE: The following rebuild the tree but don't touch the columns
+		getPlanningModel().rebuildEntireTree();
+		restoreTreeExpansionState();
 	}
-
-// TODO: This is a possible alternative to rebuildAfterColumnChange
-// If that is not working, try this. If that is working, delete this
-//	private void rebuildAfterRowChange()
-//	{
-//		getPlanningModel().rebuildEntireTree();
-//		restoreTreeExpansionState();
-//	}
 
 	private PlanningTreeModel getPlanningModel()
 	{
