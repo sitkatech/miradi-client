@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.planning;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.planning.PlanningViewCustomLabelPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewCustomLabelPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
