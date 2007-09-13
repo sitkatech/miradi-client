@@ -80,6 +80,13 @@ public class ChoiceItem
 		return true;
 	}
 	
+	public int hashCode()
+	{
+		return code.hashCode();
+	}
+
+
+
 	boolean selectable;
 	String code;
 	String label;
