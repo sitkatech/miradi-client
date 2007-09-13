@@ -15,7 +15,6 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.AccountingCode;
@@ -34,6 +33,8 @@ public class PlanningViewResourceTable extends TableWithHelperMethods
 		model = modelToUse;
 
 		addColumnEditorsAndRenderers();
+		//TODO planning table - find better solution
+		setRowHeight(getRowHeight() + 10);
 	}
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
@@ -83,33 +84,12 @@ public class PlanningViewResourceTable extends TableWithHelperMethods
 	
 	private void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
 	{
-		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
-		JComboBox comboBox = new JComboBox(comboContent);
-		
+		JComboBox comboBox = new JComboBox(content);
 		TableColumn tableColumn = getColumnModel().getColumn(col);
 		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
-		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
+		tableColumn.setCellRenderer(new ComboBoxRenderer(content));
 	}
 
-	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
-	{
-		final int EMPTY_SPACE = 0;
-		BaseObject[]  comboContent = new BaseObject[content.length + 1];
-		comboContent[EMPTY_SPACE] = invalidObject;
-
-		try
-		{
-			invalidObject.setLabel(" ");
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-	
-		System.arraycopy(content, 0, comboContent, 1, content.length);	
-		return comboContent;
-	}
-	
 	public ProjectResource[] getAllProjectResources()
 	{
 		return  getResourcePool().getAllProjectResources();
@@ -146,7 +126,7 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
         	setColors(table.getSelectionBackground(), table.getSelectionForeground());
         else 
         	setColors(table.getBackground(), table.getForeground());
-        
+
         setSelectedItem(value);
         return this;
     }
