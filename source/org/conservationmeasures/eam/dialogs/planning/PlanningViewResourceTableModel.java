@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -107,6 +108,7 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	{
 		ORef assignmentRefForRow = getAssignmentForRow(row);
 		setResourceCell(value, assignmentRefForRow, column);
+		setFundingSource(value, assignmentRefForRow, column);
 	}
 	
 	private void setResourceCell(Object value, ORef assignmentRefForRow, int column)
@@ -117,13 +119,36 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		ProjectResource projectResource = (ProjectResource)value;
 		setResource(assignmentRefForRow, projectResource);
 	}
-
+	
 	public void setResource(ORef assignmentRef, ProjectResource projectResource)
 	{
 		try
 		{
 			BaseId resourceId = projectResource.getId();
 			Command command = new CommandSetObjectData(assignmentRef, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId.toString());
+			project.executeCommand(command);
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	private void setFundingSource(Object value, ORef assignmentRefForRow, int column)
+	{
+		if (! isFundingSourceColumn(column))
+			return;
+		
+		FundingSource fundingSource = (FundingSource)value;
+		setFundingSource(fundingSource, assignmentRefForRow);
+	}
+
+	public void setFundingSource(FundingSource fundingSource, ORef  assignmentRef)
+	{
+		try
+		{
+			BaseId fundingSourceId = fundingSource.getId();
+			Command command = new CommandSetObjectData(assignmentRef, Assignment.TAG_FUNDING_SOURCE, fundingSourceId.toString());
 			project.executeCommand(command);
 		}
 		catch(CommandFailedException e)
