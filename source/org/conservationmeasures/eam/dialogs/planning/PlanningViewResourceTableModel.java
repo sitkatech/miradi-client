@@ -67,6 +67,26 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		return true;
 	}
 	
+	public String getColumnName(int column)
+	{
+		if (isResourceColumn(column))
+			return EAM.text("Resource (Who)");
+		
+		if (isResourceCostPerUnitColumn(column))
+			return EAM.text("Unit");
+		
+		if (isResourceCostColumn(column))
+			return EAM.text("Cost/Unit");
+		
+		if (isAccountingCodeColumn(column))
+			return EAM.text("Acc Code");
+		
+		if (isFundingSourceColumn(column))
+			return EAM.text("Funding Source");
+		
+		return null;
+	}
+	
 	public int getColumnCount()
 	{
 		return COLUMN_COUNT;
