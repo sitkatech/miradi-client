@@ -234,6 +234,9 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	private String getResourceCost(Assignment assignment)
 	{
 		ProjectResource resource = findProjectResource(assignment);
+		if (resource == null)
+			return "";
+		
 		return resource.getCostUnit();
 	}
 
@@ -247,6 +250,9 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	private Object getResourceCostPerUnit(Assignment assignment)
 	{
 		ProjectResource resource = findProjectResource(assignment);
+		if (resource == null)
+			return "";
+				
 		double cost = resource.getCostPerUnit();
 		return Double.toString(cost);
 	}
