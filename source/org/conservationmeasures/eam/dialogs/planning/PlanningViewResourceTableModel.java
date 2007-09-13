@@ -115,10 +115,10 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 			return;
 
 		ProjectResource projectResource = (ProjectResource)value;
-		setResource(projectResource, assignmentRefForRow);
+		setResource(assignmentRefForRow, projectResource);
 	}
 
-	public void setResource(ProjectResource projectResource, ORef assignmentRef)
+	public void setResource(ORef assignmentRef, ProjectResource projectResource)
 	{
 		try
 		{
