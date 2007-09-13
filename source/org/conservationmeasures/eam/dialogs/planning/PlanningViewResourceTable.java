@@ -35,7 +35,8 @@ public class PlanningViewResourceTable extends TableWithHelperMethods implements
 	{
 		super(modelToUse);
 		model = modelToUse;
-
+		
+		selectionListeners = new Vector();
 		addColumnEditorsAndRenderers();
 		//TODO planning table - find better solution
 		setRowHeight(getRowHeight() + 10);

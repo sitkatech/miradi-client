@@ -13,20 +13,20 @@ import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.StrategyPropertiesPanel;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 {
-	public PlanningTreePropertiesPanel(Project projectToUse, ORef orefToUse) throws Exception
+	public PlanningTreePropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
-		super(projectToUse, orefToUse);
-		project = projectToUse;
+		super(mainWindowToUse.getProject(), orefToUse);
+		mainWindow = mainWindowToUse;
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		createPropertiesPanels();
@@ -44,11 +44,11 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	
 	private void createPropertiesPanels() throws Exception
 	{
-		goalPropertiesPanel = new GoalPropertiesPanel(project);
-		objectivePropertiesPanel = new ObjectivePropertiesPanel(project);
-		indicatorPropertiesPanel = new IndicatorPropertiesPanel(project);
-		strategyPropertiesPanel = new StrategyPropertiesPanel(project);
-		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(project);
+		goalPropertiesPanel = new GoalPropertiesPanel(getProject());
+		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject());
+		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject());
+		strategyPropertiesPanel = new StrategyPropertiesPanel(getProject());
+		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(mainWindow);
 		blankPropertiesPanel = new BlankPropertiesPanel();
 		
 		add(goalPropertiesPanel);
@@ -105,16 +105,16 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		
 		return blankPropertiesPanel;
 	}
-
+	
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
-	Project project;
-	CardLayout cardLayout;
+	private MainWindow mainWindow;
+	private CardLayout cardLayout;
 	
-	GoalPropertiesPanel goalPropertiesPanel;
-	ObjectivePropertiesPanel objectivePropertiesPanel;
-	IndicatorPropertiesPanel indicatorPropertiesPanel;
-	StrategyPropertiesPanel strategyPropertiesPanel;
-	PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
-	BlankPropertiesPanel blankPropertiesPanel;
+	private GoalPropertiesPanel goalPropertiesPanel;
+	private ObjectivePropertiesPanel objectivePropertiesPanel;
+	private IndicatorPropertiesPanel indicatorPropertiesPanel;
+	private StrategyPropertiesPanel strategyPropertiesPanel;
+	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
+	private BlankPropertiesPanel blankPropertiesPanel;
 }

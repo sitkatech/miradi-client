@@ -8,22 +8,29 @@ package org.conservationmeasures.eam.dialogs.planning;
 import java.awt.BorderLayout;
 
 import javax.swing.Box;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
+
+import com.jhlabs.awt.GridLayoutPlus;
 
 public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 {
-	public PlanningViewAssignmentEditorComponent(Project projectToUse)
+	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse)
 	{
 		super(new BorderLayout());
 		
-		project = projectToUse;
+		mainWindow = mainWindowToUse;
 		createTables();
 		addTables();
 		addTablesToSelectionController();
@@ -40,7 +47,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		
-		resourceTableModel = new PlanningViewResourceTableModel(project);
+		resourceTableModel = new PlanningViewResourceTableModel(getProject());
 		resourceTable = new PlanningViewResourceTable(resourceTableModel);
 		
 		workplanTable = new PlanningViewWorkPlanTable();
@@ -54,7 +61,9 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		addVerticalScrollableControlledTable(horizontalBox, workplanTable);
 		addVerticalScrollableControlledTable(horizontalBox, budgetTable);
 		
-		add(horizontalBox);
+		add(horizontalBox, BorderLayout.CENTER);
+		//TODO planning - put in line begins to avoid scorlling while in dev mode
+		add(createButtonBar(), BorderLayout.BEFORE_LINE_BEGINS);
 	}
 
 	private void addVerticalScrollableControlledTable(Box horizontalBox, TableWithHelperMethods tableToAdd)
@@ -70,8 +79,32 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		selectionController.addTable(workplanTable);
 		selectionController.addTable(budgetTable);
 	}
+	
+	protected JPanel createButtonBar()
+	{
+		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
+		JPanel box = new JPanel(layout);
+		
+		//ObjectsActionButton addButton = createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), objectPicker);
+		//box.add(addButton);
+		
+		ObjectsActionButton removeButton = createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), resourceTable);
+		box.add(removeButton);
+		
+		return box;
+	}
+	
+	private Project getProject()
+	{
+		return mainWindow.getProject();
+	}
+	
+	private Actions getActions()
+	{
+		return mainWindow.getActions();
+	}
 
-	private Project project;
+	private MainWindow mainWindow;
 	private MultiTableVerticalScrollController verticalController;
 	private MultipleTableSelectionController selectionController;
 	
