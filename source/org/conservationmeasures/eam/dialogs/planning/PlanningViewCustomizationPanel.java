@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -191,6 +192,9 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 
 		if (event.isDeleteObjectCommand() || event.isCreateObjectCommand())
 			comboBox.syncContentsWithProject();
+		
+		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), BaseObject.TAG_LABEL))
+			comboBox.repaint();
 		
 		selectAppropriateConfiguredComboBoxItem();
 	}
