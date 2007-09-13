@@ -7,6 +7,11 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Assignment;
@@ -44,6 +49,11 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		return taskToUse.getAssignmentRefs();
 	}
 	
+	private ORef getAssignmentForRow(int row)
+	{
+		return assignmentRefs.get(row);
+	}
+		
 	public boolean isCellEditable(int row, int column)
 	{
 		return ! isResourceCostColumn(column);
@@ -66,7 +76,7 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	
 	private Object getCellValue(int row, int column)
 	{
-		ORef assignmentRef = assignmentRefs.get(row);
+		ORef assignmentRef = getAssignmentForRow(row);
 		Assignment assignment = (Assignment) project.findObject(assignmentRef);
 		if (isResourceColumn(column))
 			return getResource(assignment);
@@ -83,19 +93,48 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		return null;
 	}
 
-	private String getResource(Assignment assignment)
+	public void setValueAt(Object value, int row, int column)
+	{
+		ORef assignmentRefForRow = getAssignmentForRow(row);
+		setResourceCell(value, assignmentRefForRow, column);
+	}
+	
+	private void setResourceCell(Object value, ORef assignmentRefForRow, int column)
+	{
+		if (! isResourceColumn(column))
+			return;
+
+		ProjectResource projectResource = (ProjectResource)value;
+		setResource(projectResource, assignmentRefForRow);
+	}
+
+	public void setResource(ProjectResource projectResource, ORef assignmentRef)
+	{
+		try
+		{
+			BaseId resourceId = projectResource.getId();
+			Command command = new CommandSetObjectData(assignmentRef, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId.toString());
+			project.executeCommand(command);
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	private BaseObject getResource(Assignment assignment)
 	{
 		ORef resourceRef = assignment.getResourceRef();
 		return getObjectLabel(resourceRef);
 	}
 	
-	private String getFundingSource(Assignment assignment)
+	private BaseObject getFundingSource(Assignment assignment)
 	{
 		ORef fundingSourceRef = assignment.getFundingSourceRef();
 		return getObjectLabel(fundingSourceRef);
 	}
 	
-	private String getAccountingCode(Assignment assignment)
+	private BaseObject getAccountingCode(Assignment assignment)
 	{
 		ORef accountingCodeRef = assignment.getAccountingCodeRef();
 		return getObjectLabel(accountingCodeRef);
@@ -109,13 +148,9 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		return Double.toString(cost);
 	}
 
-	private String getObjectLabel(ORef ref)
+	private BaseObject getObjectLabel(ORef ref)
 	{
-		BaseObject baseObject = project.findObject(ref);
-		if (baseObject == null)
-			return "";
-		
-		return baseObject.toString();
+		return project.findObject(ref);
 	}
 
 	public boolean isResourceColumn(int column)
