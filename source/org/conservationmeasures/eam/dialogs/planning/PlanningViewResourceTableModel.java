@@ -39,10 +39,46 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		if (selectedRef.getObjectType() != Task.getObjectType())
 			return;
 		
-		Task task = (Task) project.findObject(selectedRef);
+		task = (Task) project.findObject(selectedRef);
 		assignmentRefs = getAssignmentsForTask(task);
 	}
 	
+	public void setTask(Task taskToUse)
+	{
+		if (isAlreadyCurrentTask(taskToUse))
+			return;
+			
+		task = taskToUse;
+		updateAssignmentIdList();	
+	}
+	
+	public void dataWasChanged()
+	{
+		if (isAlreadyCurrentAssignmentIdList())
+			return;
+		
+		updateAssignmentIdList();
+	}
+
+	private boolean isAlreadyCurrentTask(Task taskToUse)
+	{
+		 if(task == null || taskToUse == null)
+			 return false;
+		 
+		 return task.getId().equals(taskToUse.getId());
+	}
+	
+	private boolean isAlreadyCurrentAssignmentIdList()
+	{
+		return assignmentRefs.equals(getAssignmentsForTask(task));
+	}
+	
+	private void updateAssignmentIdList()
+	{
+		assignmentRefs = getAssignmentsForTask(task);
+		fireTableDataChanged();
+	}
+		
 	private ORefList getAssignmentsForTask(Task taskToUse)
 	{
 		if (taskToUse == null)
@@ -252,6 +288,7 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 	
 	private Project project;
 	private ORefList assignmentRefs;
+	private Task task;
 	
 	private static final int COLUMN_COUNT = 5;
 	

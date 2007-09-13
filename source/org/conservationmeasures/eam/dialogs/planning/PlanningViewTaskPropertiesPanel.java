@@ -37,12 +37,17 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanelWithDescript
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
-		assignmentEditor.setObjectRefs(hierarchyToSelectedRef);
+		assignmentEditor.setObjectRefs(hierarchyToSelectedRef);		
 	}
 	
 	public String getPanelDescription()
 	{
 		return EAM.text("Task Properties");
+	}
+	
+	public void dataWasChanged()
+	{
+		assignmentEditor.dataWasChanged();
 	}
 	
 	private PlanningViewAssignmentEditorComponent assignmentEditor;
