@@ -12,6 +12,7 @@ import javax.swing.JToolBar;
 import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewControlPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -21,6 +22,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -92,6 +94,29 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
 	}
 	
+	public static boolean isRowOrColumnChangingCommand(CommandSetObjectData cmd)
+	{
+		if(cmd.getObjectType() == ViewData.getObjectType())
+		{
+			if(cmd.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
+				return true;
+			if(cmd.getFieldTag().equals(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE))
+				return true;
+			if(cmd.getFieldTag().equals(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
+				return true;
+		}
+		
+		if(cmd.getObjectType() == PlanningViewConfiguration.getObjectType())
+		{
+			if(cmd.getFieldTag().equals(PlanningViewConfiguration.TAG_COL_CONFIGURATION))
+				return true;
+			if(cmd.getFieldTag().equals(PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
+				return true;
+		}
+		
+		return false;
+	}
+
 	static public CodeList getMasterRowList()
 	{
 		CodeList masterRowList = new CodeList();

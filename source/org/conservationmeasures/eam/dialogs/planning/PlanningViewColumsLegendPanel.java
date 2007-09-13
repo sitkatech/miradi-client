@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -61,23 +62,16 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		return PlanningViewConfiguration.TAG_COL_CONFIGURATION;
 	}
 
-	void updateCheckBoxes(Command command)
+	void updateCheckBoxes(Command command) throws Exception
 	{
 		super.updateCheckBoxes(command);
 		if(!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			return;
 		CommandSetObjectData cmd = (CommandSetObjectData)command;
-		if(!cmd.getFieldTag().equals(getViewDataVisibleTypesTag()))
+		if(!PlanningView.isRowOrColumnChangingCommand(cmd))
 			return;
 		
-		try
-		{
-			updateCheckBoxesFromProjectSettings();
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		updateCheckBoxesFromProjectSettings();
 	}
 
 	public void updateCheckBoxesFromProjectSettings() throws Exception

@@ -82,7 +82,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		return PlanningViewConfiguration.TAG_ROW_CONFIGURATION;
 	}
 
-	void updateCheckBoxes(Command command)
+	void updateCheckBoxes(Command command) throws Exception
 	{
 		super.updateCheckBoxes(command);
 		if(!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))

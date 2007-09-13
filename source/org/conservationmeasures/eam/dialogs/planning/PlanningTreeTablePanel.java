@@ -9,8 +9,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
-import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
 
 public class PlanningTreeTablePanel extends TreeTablePanel
@@ -42,12 +41,12 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 		try
 		{
-			if(forcesTableRebuild(cmd))
+			if(PlanningView.isRowOrColumnChangingCommand(cmd))
 				rebuildAfterColumnChange();
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			EAM.errorDialog("Error occurred: " + e.getMessage());
 		}
 	}
@@ -65,29 +64,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 //		getPlanningModel().rebuildEntireTree();
 //		restoreTreeExpansionState();
 //	}
-
-	private boolean forcesTableRebuild(CommandSetObjectData cmd)
-	{
-		if(cmd.getObjectType() == ViewData.getObjectType())
-		{
-			if(cmd.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
-				return true;
-			if(cmd.getFieldTag().equals(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE))
-				return true;
-			if(cmd.getFieldTag().equals(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
-				return true;
-		}
-		
-		if(cmd.getObjectType() == PlanningViewConfiguration.getObjectType())
-		{
-			if(cmd.getFieldTag().equals(PlanningViewConfiguration.TAG_COL_CONFIGURATION))
-				return true;
-			if(cmd.getFieldTag().equals(PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
-				return true;
-		}
-		
-		return false;
-	}
 
 	private PlanningTreeModel getPlanningModel()
 	{
