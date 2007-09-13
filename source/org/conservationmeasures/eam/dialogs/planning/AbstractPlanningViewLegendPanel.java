@@ -157,10 +157,18 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		updateCheckBoxes(event.getCommand());
+		try
+		{
+			updateCheckBoxes(event.getCommand());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Error: " + e.getMessage());
+		}
 	}
 	
-	void updateCheckBoxes(Command command)
+	void updateCheckBoxes(Command command) throws Exception
 	{
 		if (! command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			return;
