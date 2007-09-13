@@ -9,8 +9,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
@@ -30,9 +28,7 @@ import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.planning.RowManager;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -51,11 +47,6 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		return EAM.text("Rows");
 	}
 	
-	protected String getViewDataVisibleTypesTag()
-	{
-		return ViewData.TAG_PLANNING_VISIBLE_ROW_TYPES;
-	}
-		
 	protected CodeList getMasterListToCreateCheckBoxesFrom()
 	{
 		return RowManager.getMasterRowList();
@@ -83,21 +74,8 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		return PlanningViewConfiguration.TAG_ROW_CONFIGURATION;
 	}
 
-	void updateCheckBoxes(Command command) throws Exception
+	protected CodeList getVisibleTypes() throws Exception
 	{
-		super.updateCheckBoxes(command);
-		if(!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-		CommandSetObjectData cmd = (CommandSetObjectData)command;
-		if(!PlanningView.isRowOrColumnChangingCommand(cmd))
-			return;
-		
-		updateCheckBoxesFromProjectSettings();
-	}
-
-	public void updateCheckBoxesFromProjectSettings() throws Exception
-	{
-		CodeList visibleTypes = RowManager.getVisibleRowCodes(getViewData());
-		updateCheckboxes(visibleTypes);
+		return RowManager.getVisibleRowCodes(getViewData());
 	}
 }
