@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTablePanel;
-import org.conservationmeasures.eam.dialogs.planning.PlanningViewControlPanel;
+import org.conservationmeasures.eam.dialogs.planning.legend.PlanningViewControlPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;

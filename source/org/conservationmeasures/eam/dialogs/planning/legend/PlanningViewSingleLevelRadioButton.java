@@ -3,20 +3,21 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.dialogs.planning;
+package org.conservationmeasures.eam.dialogs.planning.legend;
 
+import org.conservationmeasures.eam.dialogs.planning.RowColumnProvider;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 
-public class PlanningViewMonitoringRadioButton extends PlanningViewRadioButton
+public class PlanningViewSingleLevelRadioButton extends PlanningViewRadioButton
 {
-	public PlanningViewMonitoringRadioButton(Project projectToUse)
+	public PlanningViewSingleLevelRadioButton(Project projectToUse, RowColumnProvider rowColumnProvider)
 	{
 		super(projectToUse);
 	}
 
 	public String getPropertyName()
 	{
-		return PlanningView.MONITORING_PLAN_RADIO_CHOICE;
+		return PlanningView.SINGLE_LEVEL_RADIO_CHOICE;
 	}
 }
