@@ -35,13 +35,12 @@ public class ColumnManager
 
 	public static CodeList getGoalColumns()
 	{
-		
-		return new CodeList();
+		return getMasterColumnList();
 	}
 
 	public static CodeList getObjectiveColumns()
 	{
-		return new CodeList();
+		return getMasterColumnList();
 	}
 
 	public static CodeList getStrategyColumns()
