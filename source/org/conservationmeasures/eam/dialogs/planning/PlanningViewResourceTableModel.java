@@ -51,7 +51,7 @@ public class PlanningViewResourceTableModel extends AbstractTableModel
 		return taskToUse.getAssignmentRefs();
 	}
 	
-	private ORef getAssignmentForRow(int row)
+	public ORef getAssignmentForRow(int row)
 	{
 		return assignmentRefs.get(row);
 	}

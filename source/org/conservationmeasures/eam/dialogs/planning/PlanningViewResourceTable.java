@@ -7,10 +7,12 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
@@ -24,8 +26,10 @@ import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
+import org.conservationmeasures.eam.views.TreeTableNode;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-public class PlanningViewResourceTable extends TableWithHelperMethods
+public class PlanningViewResourceTable extends TableWithHelperMethods implements ObjectPicker
 {
 	public PlanningViewResourceTable(PlanningViewResourceTableModel modelToUse)
 	{
@@ -110,6 +114,56 @@ public class PlanningViewResourceTable extends TableWithHelperMethods
 		return getProject().getObjectManager();
 	}
 	
+	public TreeTableNode[] getSelectedTreeNodes()
+	{
+		return null;
+	}
+
+	public BaseObject[] getSelectedObjects()
+	{
+		int selectedRow = getSelectedRow();
+		if (selectedRow < 0)
+			return new BaseObject[0];
+		
+		ORef selectedAssignmentRef = model.getAssignmentForRow(selectedRow);
+		BaseObject selectedAssignment = getProject().findObject(selectedAssignmentRef);
+		if (selectedAssignment == null)
+			return new BaseObject[0];
+	
+		return new BaseObject[] {selectedAssignment};
+	}
+
+	public void ensureObjectVisible(ORef ref)
+	{
+		// TODO Auto-generated method stub
+		// we should scroll the table as needed to make this 
+		// probably-newly-created object visible
+	}
+
+	public void addSelectionChangeListener(SelectionChangeListener listener)
+	{
+		selectionListeners.add(listener);
+	}
+
+	public void removeSelectionChangeListener(SelectionChangeListener listener)
+	{
+		selectionListeners.remove(listener);
+	}
+
+	public void valueChanged(ListSelectionEvent e)
+	{
+		super.valueChanged(e);
+		if(selectionListeners == null)	
+			return;
+		
+		for(int i = 0; i < selectionListeners.size(); ++i)
+		{
+			SelectionChangeListener listener = (SelectionChangeListener)selectionListeners.get(i);
+			listener.selectionHasChanged();
+		}
+	}
+	
+	private Vector selectionListeners;
 	private PlanningViewResourceTableModel model;
 }
 
