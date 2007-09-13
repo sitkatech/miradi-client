@@ -32,13 +32,14 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.planning.RowManager;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
 public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 {
-	public PlanningViewRowsLegendPanel(MainWindow mainWindowToUse)
+	public PlanningViewRowsLegendPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		updateCheckBoxesFromProjectSettings();
@@ -88,15 +89,15 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		if(!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			return;
 		CommandSetObjectData cmd = (CommandSetObjectData)command;
-		if(!cmd.getFieldTag().equals(getViewDataVisibleTypesTag()))
+		if(!PlanningView.isRowOrColumnChangingCommand(cmd))
 			return;
 		
 		updateCheckBoxesFromProjectSettings();
 	}
 
-	public void updateCheckBoxesFromProjectSettings()
+	public void updateCheckBoxesFromProjectSettings() throws Exception
 	{
-		CodeList visibleTypes = getLegendSettings(getViewDataVisibleTypesTag());
+		CodeList visibleTypes = RowManager.getVisibleRowCodes(getViewData());
 		updateCheckboxes(visibleTypes);
 	}
 }
