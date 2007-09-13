@@ -18,17 +18,9 @@ import org.conservationmeasures.eam.dialogs.planning.PlanningViewControlPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
-import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
-import org.conservationmeasures.eam.objects.ResultsChainDiagram;
-import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
 
@@ -117,22 +109,6 @@ public class PlanningView extends TabbedView
 		return false;
 	}
 
-	static public CodeList getMasterRowList()
-	{
-		CodeList masterRowList = new CodeList();
-		masterRowList.add(ConceptualModelDiagram.OBJECT_NAME);
-		masterRowList.add(ResultsChainDiagram.OBJECT_NAME);
-		masterRowList.add(Goal.OBJECT_NAME);
-		masterRowList.add(Objective.OBJECT_NAME);
-		masterRowList.add(Strategy.OBJECT_NAME);
-		masterRowList.add(Task.ACTIVITY_NAME);
-		masterRowList.add(Indicator.OBJECT_NAME);
-		masterRowList.add(Task.METHOD_NAME);
-		masterRowList.add(Task.OBJECT_NAME);
-
-		return masterRowList;
-	}
-	
 	public static boolean isCustomizationStyle(ViewData viewData)
 	{
 		ORef planningViewConfigurationRef = ORef.createFromString(viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF));

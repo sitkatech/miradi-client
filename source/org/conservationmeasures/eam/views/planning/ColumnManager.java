@@ -170,11 +170,14 @@ public class ColumnManager
 		try
 		{
 			ORef customizationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+			if(customizationRef.isInvalid())
+				return new CodeList();
 			PlanningViewConfiguration customization = (PlanningViewConfiguration)viewData.getProject().findObject(customizationRef);
 			return customization.getColumnConfiguration();
 		}
 		catch(Exception e)
 		{
+			EAM.logException(e);
 			EAM.errorDialog("Error: Unable to read customized columns");
 			return new CodeList();
 		}
