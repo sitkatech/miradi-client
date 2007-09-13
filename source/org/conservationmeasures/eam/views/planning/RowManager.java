@@ -48,6 +48,8 @@ public class RowManager
 			return getVisibleRowsForSingleType(viewData);
 		else if(style.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
 			return getVisibleRowsForCustomization(viewData);
+		else if(style.equals(""))
+			return getStrategicPlanRows();
 		else
 		{
 			EAM.logError("getVisibleRowCodes unknown style: " + style);
