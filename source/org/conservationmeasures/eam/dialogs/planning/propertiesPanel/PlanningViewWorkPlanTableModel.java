@@ -72,7 +72,6 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 	
 	public void setUnitsForColumn(Object value, int row, int column) throws Exception
 	{
-		DateRangeEffortList effortList = getDateRangeEffortList(row);
 		DateRangeEffort effort = getDateRangeEffort(row, column);
 		double units = 0;
 		if (effort == null)
@@ -83,6 +82,7 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 			units = Double.parseDouble(valueAsString);
 
 		Assignment assignment = getAssignment(row);
+		DateRangeEffortList effortList = getDateRangeEffortList(row);
 		setUnits(assignment, effortList, effort, units);
 	}
 	
