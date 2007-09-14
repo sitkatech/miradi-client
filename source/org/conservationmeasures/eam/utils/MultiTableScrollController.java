@@ -10,9 +10,10 @@ import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.util.Vector;
 
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
-public class MultiTableScrollController implements AdjustmentListener
+abstract public class MultiTableScrollController implements AdjustmentListener
 {
 	public MultiTableScrollController(int orientationToUse)
 	{
@@ -21,10 +22,10 @@ public class MultiTableScrollController implements AdjustmentListener
 
 	public void addTable(JScrollPane scrollPaneToAdd)
 	{
-		scrollPaneToAdd.getVerticalScrollBar().addAdjustmentListener(this);
+		getScrollBar(scrollPaneToAdd).addAdjustmentListener(this);
 		scrollPanes.add(scrollPaneToAdd);
 	}
-	
+
 	public void adjustmentValueChanged(AdjustmentEvent event)
 	{
 		adjustAllScrollBars(event);
@@ -41,10 +42,12 @@ public class MultiTableScrollController implements AdjustmentListener
         for (int i = 0; i < scrollPanes.size(); ++i)
         {
         	JScrollPane currentPane = scrollPanes.get(i);
-        	currentPane.getVerticalScrollBar().setValue(valueToSetTo);
+        	getScrollBar(currentPane).setValue(valueToSetTo);
         }
 	}
 	
+	abstract protected JScrollBar getScrollBar(JScrollPane scrollPaneToAdd);	
+
 	private Vector<JScrollPane> scrollPanes = new Vector();
 	private int orientation;
 }
