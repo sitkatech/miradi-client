@@ -15,6 +15,8 @@ import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguratio
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
+import org.conservationmeasures.eam.actions.ActionTreeCreateActivityIconOnly;
+import org.conservationmeasures.eam.actions.ActionTreeCreateMethodIconOnly;
 import org.conservationmeasures.eam.actions.ActionTreeCreateTaskIconOnly;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
@@ -37,6 +39,8 @@ import org.conservationmeasures.eam.views.budget.RemoveAssignmentDoer;
 import org.conservationmeasures.eam.views.planning.doers.CreatePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.planning.doers.DeletePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.planning.doers.RenamePlanningViewConfigurationDoer;
+import org.conservationmeasures.eam.views.planning.doers.TreeNodeCreateActivityDoer;
+import org.conservationmeasures.eam.views.planning.doers.TreeNodeCreateMethodDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeDeleteDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeDownDoer;
@@ -110,6 +114,8 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUpDoer());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDownDoer());
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
+		addDoerToMap(ActionTreeCreateActivityIconOnly.class, new TreeNodeCreateActivityDoer());
+		addDoerToMap(ActionTreeCreateMethodIconOnly.class, new TreeNodeCreateMethodDoer());
 		addDoerToMap(ActionTreeCreateTaskIconOnly.class, new TreeNodeCreateTaskDoer());
 	}
 	

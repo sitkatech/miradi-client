@@ -13,7 +13,12 @@ public class ActionTreeCreateActivity extends ObjectsAction
 {
 	public ActionTreeCreateActivity(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new ActivityIcon());
+		this(mainWindowToUse, getLabel());
+	}
+
+	public ActionTreeCreateActivity(MainWindow mainWindowToUse, String label)
+	{
+		super(mainWindowToUse, label, new ActivityIcon());
 	}
 
 	private static String getLabel()
