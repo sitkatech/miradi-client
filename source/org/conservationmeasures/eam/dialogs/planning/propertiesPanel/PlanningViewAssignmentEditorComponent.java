@@ -21,10 +21,10 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
-import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -64,6 +64,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	{
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
+		horizontalController = new MultiTableHorizontalScrollController();
 		
 		resourceTableModel = new PlanningViewResourceTableModel(getProject());
 		resourceTable = new PlanningViewResourceTable(resourceTableModel);
@@ -81,21 +82,32 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private void addTables()
 	{
 		Box horizontalBox = Box.createHorizontalBox();
-		addVerticalScrollableControlledTable(horizontalBox, resourceTable);
-		addVerticalScrollableControlledTable(horizontalBox, workplanTable);
-		addVerticalScrollableControlledTable(horizontalBox, budgetTable);
-		addVerticalScrollableControlledTable(horizontalBox, budgetTotalsTable);
+		JScrollPane resourceScroller = new JScrollPane(resourceTable);
+		resourceScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		resourceScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		addVerticalScrollableControlledTable(horizontalBox, resourceScroller);
+		
+		JScrollPane workPlanScroller = new JScrollPane(workplanTable);
+		workPlanScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		addVerticalScrollableControlledTable(horizontalBox, workPlanScroller);
+		
+		JScrollPane budgetScroller = new JScrollPane(budgetTable);
+		budgetScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		addVerticalScrollableControlledTable(horizontalBox, budgetScroller);
+		
+		JScrollPane budgetTotalsScroller = new JScrollPane(budgetTotalsTable);
+		budgetTotalsScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		addVerticalScrollableControlledTable(horizontalBox, budgetTotalsScroller);
 		
 		add(horizontalBox, BorderLayout.CENTER);
-		//TODO planning - put in line begins to avoid scorlling while in dev mode
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 
-	private void addVerticalScrollableControlledTable(Box horizontalBox, TableWithHelperMethods tableToAdd)
+	private void addVerticalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
 	{
-		JScrollPane resourceScroller = new JScrollPane(tableToAdd);
-		verticalController.addTable(resourceScroller);
-		horizontalBox.add(resourceScroller);
+		verticalController.addTable(scroller);
+		horizontalController.addTable(scroller);
+		horizontalBox.add(scroller);
 	}
 
 	private void addTablesToSelectionController()
@@ -154,6 +166,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 
 	private MainWindow mainWindow;
 	private MultiTableVerticalScrollController verticalController;
+	private MultiTableHorizontalScrollController horizontalController;
 	private MultipleTableSelectionController selectionController;
 	
 	private PlanningViewResourceTable resourceTable;
