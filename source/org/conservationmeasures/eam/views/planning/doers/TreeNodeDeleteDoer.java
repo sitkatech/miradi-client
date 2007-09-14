@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.planning.doers;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
 public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 {
@@ -24,6 +25,12 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 
 	public void doIt() throws CommandFailedException
 	{
+		if (!isAvailable())
+			return;
+		
+		BaseObject selected = getSingleSelectedObject();
+		if(selected.getType() == Task.getObjectType())
+			DeleteActivity.deleteTask(getProject(), (Task)selected);
 	}
 
 }
