@@ -7,10 +7,18 @@ package org.conservationmeasures.eam.utils;
 
 import java.awt.Adjustable;
 
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+
 public class MultiTableHorizontalScrollController extends MultiTableScrollController
 {
 	public MultiTableHorizontalScrollController()
 	{
 		super(Adjustable.HORIZONTAL);
+	}
+	
+	protected JScrollBar getScrollBar(JScrollPane scrollPaneToAdd)
+	{
+		return scrollPaneToAdd.getHorizontalScrollBar();
 	}
 }
