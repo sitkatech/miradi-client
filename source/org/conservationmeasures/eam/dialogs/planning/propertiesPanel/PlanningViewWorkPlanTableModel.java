@@ -22,6 +22,11 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignme
 		return true;
 	}
 	
+	public String getColumnName(int col)
+	{
+		return dateRanges[col].toString();
+	}
+	
 	public int getColumnCount()
 	{
 		return dateRanges.length;
