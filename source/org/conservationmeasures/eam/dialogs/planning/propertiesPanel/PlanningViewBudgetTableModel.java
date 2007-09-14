@@ -64,10 +64,5 @@ public class PlanningViewBudgetTableModel extends PlanningViewAbstractBudgetTabl
 		return currencyFormatter.format(units * costPerUnit);
 	}
 	
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex)
-	{
-		//read only cells
-	}
-	
 	private DecimalFormat currencyFormatter;
 }
