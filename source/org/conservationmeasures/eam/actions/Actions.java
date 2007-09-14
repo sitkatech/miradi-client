@@ -160,7 +160,9 @@ public class Actions
 		registerAction(new ActionNudgeLeft(mainWindow));
 		registerAction(new ActionNudgeRight(mainWindow));
 		registerAction(new ActionTreeCreateActivity(mainWindow));
+		registerAction(new ActionTreeCreateActivityIconOnly(mainWindow));
 		registerAction(new ActionTreeCreateMethod(mainWindow));
+		registerAction(new ActionTreeCreateMethodIconOnly(mainWindow));
 		registerAction(new ActionTreeCreateTask(mainWindow));
 		registerAction(new ActionTreeCreateTaskIconOnly(mainWindow));
 		registerAction(new ActionCreateActivity(mainWindow));

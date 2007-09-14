@@ -13,7 +13,12 @@ public class ActionTreeCreateMethod extends ObjectsAction
 {
 	public ActionTreeCreateMethod(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new MethodIcon());
+		this(mainWindowToUse, getLabel());
+	}
+
+	public ActionTreeCreateMethod(MainWindow mainWindowToUse, String label)
+	{
+		super(mainWindowToUse, label, new MethodIcon());
 	}
 
 	private static String getLabel()

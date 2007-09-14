@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.dialogs.planning.legend;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
-import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
+import org.conservationmeasures.eam.actions.ActionTreeCreateActivityIconOnly;
+import org.conservationmeasures.eam.actions.ActionTreeCreateMethodIconOnly;
 import org.conservationmeasures.eam.actions.ActionTreeCreateTaskIconOnly;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
@@ -61,9 +61,9 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		addIconLineWithCheckBox(panel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(panel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(panel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
-		addButtonLineWithCheckBox(panel, Task.getObjectType(), Task.ACTIVITY_NAME, actions.get(ActionTreeCreateActivity.class));
+		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.ACTIVITY_NAME, actions.getObjectsAction(ActionTreeCreateActivityIconOnly.class), picker);
 		addIconLineWithCheckBox(panel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
-		addButtonLineWithCheckBox(panel, Task.getObjectType(), Task.METHOD_NAME, actions.get(ActionTreeCreateMethod.class));
+		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.METHOD_NAME, actions.getObjectsAction(ActionTreeCreateMethodIconOnly.class), picker);
 		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.OBJECT_NAME, actions.getObjectsAction(ActionTreeCreateTaskIconOnly.class), picker);
 		
 		return panel;

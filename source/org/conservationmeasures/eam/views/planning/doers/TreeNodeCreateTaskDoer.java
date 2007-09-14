@@ -50,7 +50,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
-	private boolean canOwnTask(BaseObject object)
+	boolean canOwnTask(BaseObject object)
 	{
 		if(object.getType() == Task.getObjectType())
 			return true;
