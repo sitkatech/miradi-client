@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -22,7 +20,7 @@ import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningViewResourceTableModel extends AbstractTableModel
+public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignmentTabelModel
 {
 	public PlanningViewResourceTableModel(Project projectToUse)
 	{
