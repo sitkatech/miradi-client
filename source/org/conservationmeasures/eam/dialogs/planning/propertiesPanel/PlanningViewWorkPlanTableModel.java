@@ -7,12 +7,15 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.text.DecimalFormat;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
+import org.conservationmeasures.eam.utils.DateRangeEffort;
 
 public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignmentTabelModel
 {
@@ -87,9 +90,53 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignme
 		return dREffortList;
 	}
 	
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex)
+	public void setValueAt(Object value, int row, int column)
 	{
+		setUnitsForColumn(value, row, column);
+	}
+	
+	public void setUnitsForColumn(Object value, int row, int column)
+	{
+		try
+		{
+			Assignment assignment = getAssignment(row);
+			DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+			DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[column]);
+
+			double units = 0;
+			String valueAsString = value.toString().trim();
+			if (! valueAsString.equals(""))
+				units = Double.parseDouble(valueAsString);
+
+			if (effort == null)
+				effort = new DateRangeEffort("", units, dateRanges[column]);
+
+			setUnits(assignment, effortList, effort, units);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	public void setUnits(Assignment assignment, DateRangeEffortList effortList, DateRangeEffort effort, double units) throws Exception
+	{
+		effort.setUnitQuantity(units);
+		effortList.setDateRangeEffort(effort);
+		String newEffortListString = effortList.toString();
+		if(newEffortListString.equals(assignment.getData(assignment.TAG_DATERANGE_EFFORTS)))
+			return;
 		
+		Command command = new CommandSetObjectData(assignment.getType(), assignment.getId(), assignment.TAG_DATERANGE_EFFORTS, newEffortListString);
+		getProject().executeCommand(command);
+	}
+	
+	public DateRangeEffort getDateRangeEffort(Assignment assignment, DateRange dateRange) throws Exception
+	{
+		DateRangeEffort dateRangeEffort = null;
+		DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+		dateRangeEffort = effortList.getEffortForDateRange(dateRange);
+		return dateRangeEffort;
 	}
 	
 	private DateRange[] dateRanges;
