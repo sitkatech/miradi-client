@@ -52,10 +52,12 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
 		workPlanModel.setObjectRefs(hierarchyToSelectedRef);
 		budgetModel.setObjectRefs(hierarchyToSelectedRef);
+		budgetTotalsModel.setObjectRefs(hierarchyToSelectedRef);
 		
 		resourceTableModel.fireTableDataChanged();
 		workPlanModel.fireTableDataChanged();
 		budgetModel.fireTableDataChanged();
+		budgetTotalsModel.fireTableDataChanged();
 	}
 	
 	private void createTables() throws Exception
@@ -71,6 +73,9 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		
 		budgetModel = new PlanningViewBudgetTableModel(getProject());
 		budgetTable = new PlanningViewBudgetTable(budgetModel);
+		
+		budgetTotalsModel = new PlanningViewBudgetTotalsTableModel(getProject());
+		budgetTotalsTable = new PlanningViewBudgetTotalsTable(budgetTotalsModel);
 	}
 	
 	private void addTables()
@@ -79,6 +84,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		addVerticalScrollableControlledTable(horizontalBox, resourceTable);
 		addVerticalScrollableControlledTable(horizontalBox, workplanTable);
 		addVerticalScrollableControlledTable(horizontalBox, budgetTable);
+		addVerticalScrollableControlledTable(horizontalBox, budgetTotalsTable);
 		
 		add(horizontalBox, BorderLayout.CENTER);
 		//TODO planning - put in line begins to avoid scorlling while in dev mode
@@ -97,6 +103,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		selectionController.addTable(resourceTable);
 		selectionController.addTable(workplanTable);
 		selectionController.addTable(budgetTable);
+		selectionController.addTable(budgetTotalsTable);
 	}
 	
 	protected JPanel createButtonBar()
@@ -128,10 +135,12 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		resourceTableModel.dataWasChanged();
 		workPlanModel.dataWasChanged();
 		budgetModel.dataWasChanged();
+		budgetTotalsModel.dataWasChanged();
 		
 		resourceTable.repaint();
 		workplanTable.repaint();
 		budgetTable.repaint();
+		budgetTotalsTable.repaint();
 	}
 	
 	private void setTaskId(BaseId taskId)
@@ -140,6 +149,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		resourceTableModel.setTask(task);
 		workPlanModel.setTask(task);
 		budgetModel.setTask(task);
+		budgetTotalsModel.setTask(task);
 	}
 
 	private MainWindow mainWindow;
@@ -149,9 +159,11 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private PlanningViewResourceTable resourceTable;
 	private PlanningViewWorkPlanTable workplanTable;
 	private PlanningViewBudgetTable budgetTable;
+	private PlanningViewBudgetTotalsTable budgetTotalsTable;
 	
 	private PlanningViewResourceTableModel resourceTableModel;
 	private PlanningViewAbstractBudgetTableModel workPlanModel;
 	private PlanningViewBudgetTableModel budgetModel;
+	private PlanningViewBudgetTotalsTableModel budgetTotalsModel;
 	private ObjectPicker objectPicker;
 }
