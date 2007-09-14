@@ -5,11 +5,14 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import javax.swing.JTable;
+
 
 public class PlanningViewBudgetTable extends PlanningViewAbstractTable
 {
 	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{
 		super(modelToUse);
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 }
