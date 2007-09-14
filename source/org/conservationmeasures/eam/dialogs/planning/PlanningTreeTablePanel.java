@@ -103,6 +103,11 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		if(selected.length == 1)
 			selectedRef = selected[0].getRef();
 		rebuildEntireTreeTable();
+		selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef);
+	}
+
+	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef)
+	{
 		SwingUtilities.invokeLater(new Reselecter(tree, selectedRef));
 	}
 	
