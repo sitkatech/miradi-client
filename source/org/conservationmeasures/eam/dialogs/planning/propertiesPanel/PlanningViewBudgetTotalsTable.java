@@ -16,15 +16,9 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTable
 		super(model);
 	}
 	
-//	public Dimension getPreferredSize()
-//	{
-//		Dimension preferredDimension = super.getPreferredSize();
-//		return new Dimension(50, preferredDimension.height);
-//	}
-	
-	public Dimension getMaximumSize()
+	public Dimension getPreferredScrollableViewportSize()
 	{
-		Dimension maximumDimension = super.getMaximumSize();
+		Dimension maximumDimension = super.getPreferredScrollableViewportSize();
 		return new Dimension(50, maximumDimension.height);
 	}
 
