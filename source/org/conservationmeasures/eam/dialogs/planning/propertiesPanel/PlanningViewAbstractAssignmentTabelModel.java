@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
 abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractTableModel
@@ -15,6 +17,7 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractT
 	public PlanningViewAbstractAssignmentTabelModel(Project projectToUse)
 	{
 		project = projectToUse;
+		assignmentRefs = new ORefList();
 	}
 
 	public Project getProject()
@@ -22,5 +25,9 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractT
 		return project;
 	}
 
+	protected ORefList assignmentRefs;
+	protected Task task;
+	
 	private Project project;
+	
 }
