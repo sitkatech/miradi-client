@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import javax.swing.SwingUtilities;
+
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
@@ -12,6 +14,12 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
 
@@ -50,6 +58,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		{
 			if(PlanningView.isRowOrColumnChangingCommand(cmd))
 				rebuildEntireTreeTable();
+			
+			if(isTaskMove(cmd))
+				rebuildNode(cmd.getObjectORef());
 		}
 		catch(Exception e)
 		{
@@ -58,6 +69,19 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		}
 	}
 	
+	private boolean isTaskMove(CommandSetObjectData cmd)
+	{
+		int type = cmd.getObjectType();
+		String tag = cmd.getFieldTag();
+		if(type == Task.getObjectType() && tag.equals(Task.TAG_SUBTASK_IDS))
+			return true;
+		if(type == Strategy.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
+			return true;
+		if(type == Indicator.getObjectType() && tag.equals(Indicator.TAG_TASK_IDS))
+			return true;
+		return false;
+	}
+
 	private void rebuildEntireTreeTable() throws Exception
 	{
 		// TODO: Perhaps possibly detect exactly what changed and 
@@ -70,6 +94,33 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getPlanningModel().rebuildEntireTree();
 		restoreTreeExpansionState();
+	}
+
+	private void rebuildNode(ORef objectORef) throws Exception
+	{
+		ORef selectedRef = ORef.INVALID;
+		BaseObject[] selected = tree.getSelectedObjects();
+		if(selected.length == 1)
+			selectedRef = selected[0].getRef();
+		rebuildEntireTreeTable();
+		SwingUtilities.invokeLater(new Reselecter(tree, selectedRef));
+	}
+	
+	class Reselecter implements Runnable
+	{
+		public Reselecter(TreeTableWithStateSaving treeTableToUse, ORef refToSelect)
+		{
+			treeTable = treeTableToUse;
+			ref = refToSelect;
+		}
+		
+		public void run()
+		{
+			treeTable.selectObject(ref);
+		}
+		
+		TreeTableWithStateSaving treeTable;
+		ORef ref;
 	}
 
 	private PlanningTreeModel getPlanningModel()
