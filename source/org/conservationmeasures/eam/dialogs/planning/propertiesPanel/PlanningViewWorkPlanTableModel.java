@@ -39,7 +39,7 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 	private Object getUnits(int row, int column) throws Exception
 	{
 		DateRangeEffortList effortList;
-		effortList = getDateRangeEffortList(getAssignment(row));
+		effortList = getAssignment(row).getDateRangeEffortList();
 		DateRange dateRange = dateRanges[column];
 		
 		return getUnit(effortList, dateRange);
@@ -74,7 +74,7 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 	public void setUnitsForColumn(Object value, int row, int column) throws Exception
 	{
 		Assignment assignment = getAssignment(row);
-		DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
 		DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[column]);
 
 		double units = 0;
@@ -103,7 +103,7 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 	public DateRangeEffort getDateRangeEffort(Assignment assignment, DateRange dateRange) throws Exception
 	{
 		DateRangeEffort dateRangeEffort = null;
-		DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
 		dateRangeEffort = effortList.getEffortForDateRange(dateRange);
 		return dateRangeEffort;
 	}
