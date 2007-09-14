@@ -104,14 +104,20 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 					{
 						newChildren.add(newChild);
 						newChildRefs.add(newChild.getObjectReference());
-						Collections.sort(newChildren, new NodeSorter());
 					}
 				}
 			}
 		}
+		if(shouldSortChildren())
+			Collections.sort(newChildren, new NodeSorter());
 		children = newChildren;
 	}
 	
+	boolean shouldSortChildren()
+	{
+		return true;
+	}
+
 	class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 	{
 		public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
