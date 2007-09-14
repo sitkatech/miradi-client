@@ -66,7 +66,6 @@ public class PlanningView extends TabbedView
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable) planningTreeTablePanel.getTree();
 		PlanningTreePropertiesPanel planningTreePropertiesPanel = new PlanningTreePropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
-		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
 		
 		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
 		JScrollPane controlPanelScroller = new FastScrollPane(controlPanel);
@@ -74,7 +73,7 @@ public class PlanningView extends TabbedView
 
 		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		horizontalSplitPane.setLeftComponent(controlPanelScroller);
-		horizontalSplitPane.setRightComponent(managementPanelScrollPane);
+		horizontalSplitPane.setRightComponent(planningManagementPanel);
 		// FIXME: Should remember previous split position...this is a HACK!
 		horizontalSplitPane.setDividerLocation(controlPanel.getPreferredSize().width + 30);
 		
