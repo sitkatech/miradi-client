@@ -7,20 +7,42 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectCalendar;
+import org.conservationmeasures.eam.utils.DateRange;
+
 public class PlanningViewWorkPlanTableModel extends AbstractTableModel
 {
+	public PlanningViewWorkPlanTableModel(Project projectToUse) throws Exception
+	{
+		project = projectToUse;
+		dateRanges = new ProjectCalendar(project).getQuarterlyDateDanges();
+		assignmentRefs = new ORefList();
+	}	
+	
+	public ORef getAssignmentRefForRow(int row)
+	{
+		return assignmentRefs.get(row);
+	}
+	
 	public int getColumnCount()
 	{
-		return 0;
+		return dateRanges.length;
 	}
 
 	public int getRowCount()
 	{
-		return 0;
+		return assignmentRefs.size();
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		return null;
+		return "";
 	}
+	
+	private Project project;
+	private DateRange[] dateRanges;
+	private ORefList assignmentRefs;
 }

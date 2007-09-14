@@ -5,12 +5,13 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
 public class PlanningViewWorkPlanTable extends TableWithHelperMethods
 {
-	public PlanningViewWorkPlanTable()
+	public PlanningViewWorkPlanTable(Project projectToUse) throws Exception
 	{
-		super(new PlanningViewWorkPlanTableModel());
+		super(new PlanningViewWorkPlanTableModel(projectToUse));
 	}
 }
