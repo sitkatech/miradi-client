@@ -5,15 +5,11 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
-public class PlanningViewBudgetTable extends TableWithHelperMethods
+public class PlanningViewBudgetTable extends PlanningViewAbstractTable
 {
 	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{
 		super(modelToUse);
-		
-		//TODO planning table - find better solution - check the other tables two planning tables too
-		setRowHeight(getRowHeight() + 10);
 	}
 }
