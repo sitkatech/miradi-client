@@ -140,6 +140,9 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTable impleme
 		if (selectedRow < 0)
 			return new BaseObject[0];
 		
+		if (selectedRow >=  model.getRowCount())
+			return new BaseObject[0];
+		
 		Assignment selectedAssignment = model.getAssignment(selectedRow);
 		if (selectedAssignment == null)
 			return new BaseObject[0];
