@@ -25,7 +25,6 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 	public PlanningViewResourceTableModel(Project projectToUse)
 	{
 		super(projectToUse);
-		assignmentRefs = new ORefList();
 	}
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
@@ -284,9 +283,6 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 	{
 		return RESOURCE_COST_PER_UNIT_COLUMN == column;
 	}
-	
-	private ORefList assignmentRefs;
-	private Task task;
 	
 	private static final int COLUMN_COUNT = 5;
 	
