@@ -94,6 +94,8 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractT
 		return (Assignment) getProject().findObject(getAssignmentForRow(row));
 	}
 	
+	//FIXME planning table - there should be methods that return the raw value,  then that value
+	//can be used in budgetmodel to calculate the cost. (cost per unit and units need to return raw values)
 	protected Object getResourceCostPerUnit(Assignment assignment)
 	{
 		ProjectResource resource = findProjectResource(assignment);
