@@ -5,9 +5,21 @@
 */ 
 package org.conservationmeasures.eam.views.planning.doers;
 
+import java.text.ParseException;
+
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 {
@@ -27,7 +39,15 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 		if(!isAvailable())
 			return;
 		
-		System.out.println("*************************");
+		try
+		{
+			createTask(getProject(), getSingleSelectedObject(), getPicker());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Error: " + e.getMessage());
+		}
 	}
 	
 	private boolean canOwnTask(BaseObject object)
@@ -38,4 +58,25 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 		return false;
 	}
 
+	public static void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
+	{
+		project.executeCommand(new CommandBeginTransaction());
+		try
+		{
+			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
+			project.executeCommand(create);
+			BaseId createdId = create.getCreatedId();
+
+			String containerTag = AbstractTreeNodeMoveDoer.getTaskIdsTag(parent);
+			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(parent, containerTag, createdId);
+			project.executeCommand(addChildCommand);
+			
+			ORef createdRef = new ORef(ObjectType.TASK, createdId);
+			picker.ensureObjectVisible(createdRef);
+		}
+		finally
+		{
+			project.executeCommand(new CommandEndTransaction());
+		}
+	}
 }
