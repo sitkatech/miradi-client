@@ -9,7 +9,6 @@ import java.text.DecimalFormat;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
@@ -65,20 +64,6 @@ public class PlanningViewBudgetTableModel extends PlanningViewAbstractBudgetTabl
 		return currencyFormatter.format(units * costPerUnit);
 	}
 	
-	public String getUnit(DateRangeEffortList effortList, DateRange dateRange) throws Exception
-	{
-		double units = effortList.getTotalUnitQuantity(dateRange);
-		return decimalFormatter.format(units);
-	}
-		
-	public ProjectResource getCurrentResource(Assignment assignment)
-	{
-		ORef resourceRef = assignment.getResourceRef();
-		ProjectResource resource = (ProjectResource) getProject().findObject(resourceRef);
-		
-		return resource;
-	}
-		
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex)
 	{
 		//read only cells
