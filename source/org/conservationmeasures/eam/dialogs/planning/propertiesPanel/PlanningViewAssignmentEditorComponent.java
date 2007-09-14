@@ -67,7 +67,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		workPlanModel = new PlanningViewWorkPlanTableModel(getProject());
 		workplanTable = new PlanningViewWorkPlanTable(getProject(), workPlanModel);
 		
-		budgetModel = new PlanningViewBudgetTableModel();
+		budgetModel = new PlanningViewBudgetTableModel(getProject());
 		budgetTable = new PlanningViewBudgetTable(budgetModel);
 	}
 	

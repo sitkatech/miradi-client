@@ -5,10 +5,20 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import javax.swing.table.AbstractTableModel;
+import org.conservationmeasures.eam.project.Project;
 
-public class PlanningViewBudgetTableModel extends AbstractTableModel
+public class PlanningViewBudgetTableModel extends PlanningViewAbstractAssignmentTabelModel
 {
+	public PlanningViewBudgetTableModel(Project projectToUse)
+	{
+		super(projectToUse);
+	}
+
+	public boolean isCellEditable(int rowIndex, int columnIndex)
+	{
+		return true;
+	}
+	
 	public int getColumnCount()
 	{
 		return 0;
