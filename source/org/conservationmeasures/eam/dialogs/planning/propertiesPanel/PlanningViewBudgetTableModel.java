@@ -18,4 +18,8 @@ public class PlanningViewBudgetTableModel extends PlanningViewAbstractBudgetTabl
 	{
 		return null;
 	}
+	
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex)
+	{
+	}
 }
