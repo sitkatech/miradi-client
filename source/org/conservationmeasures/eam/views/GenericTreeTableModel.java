@@ -79,6 +79,10 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 		fireTreeNodesChanged(nodeToRepaint, pathToParent.getPath(), childIndex, childObject);
 	}
 	
+	public TreePath findObject(TreePath pathToStartSearch, ORef ref)
+	{
+		return findObject(pathToStartSearch, ref.getObjectType(), ref.getObjectId());
+	}
 
 	public TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
 	{
