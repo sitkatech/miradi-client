@@ -33,6 +33,11 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		return task;
 	}
 	
+	boolean shouldSortChildren()
+	{
+		return false;
+	}
+
 	private void addAllSubtasks() throws Exception
 	{
 		ORefList subtaskRefs = task.getSubtasks();
