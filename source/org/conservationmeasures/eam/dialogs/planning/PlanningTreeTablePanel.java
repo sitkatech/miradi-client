@@ -60,7 +60,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 				rebuildEntireTreeTable();
 			
 			if(isTaskMove(cmd))
-				rebuildNode(cmd.getObjectORef());
+				rebuildEntireTreeTable();
 		}
 		catch(Exception e)
 		{
@@ -84,6 +84,11 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 
 	private void rebuildEntireTreeTable() throws Exception
 	{
+		ORef selectedRef = ORef.INVALID;
+		BaseObject[] selected = tree.getSelectedObjects();
+		if(selected.length == 1)
+			selectedRef = selected[0].getRef();
+
 		// TODO: Perhaps possibly detect exactly what changed and 
 		// only rebuild the columns or the rows rather than always doing both
 		
@@ -94,15 +99,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getPlanningModel().rebuildEntireTree();
 		restoreTreeExpansionState();
-	}
 
-	private void rebuildNode(ORef objectORef) throws Exception
-	{
-		ORef selectedRef = ORef.INVALID;
-		BaseObject[] selected = tree.getSelectedObjects();
-		if(selected.length == 1)
-			selectedRef = selected[0].getRef();
-		rebuildEntireTreeTable();
 		selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef);
 	}
 
