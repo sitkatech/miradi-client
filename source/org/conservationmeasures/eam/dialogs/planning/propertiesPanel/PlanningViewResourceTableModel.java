@@ -167,23 +167,6 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		
 		return resource.getCostUnit();
 	}
-
-	private ProjectResource findProjectResource(Assignment assignment)
-	{
-		ORef resourceRef = assignment.getResourceRef();
-		ProjectResource resource = (ProjectResource) getProject().findObject(resourceRef);
-		return resource;
-	}
-	
-	private Object getResourceCostPerUnit(Assignment assignment)
-	{
-		ProjectResource resource = findProjectResource(assignment);
-		if (resource == null)
-			return "";
-				
-		double cost = resource.getCostPerUnit();
-		return Double.toString(cost);
-	}
 	
 	private BaseObject findObject(ORef ref)
 	{
