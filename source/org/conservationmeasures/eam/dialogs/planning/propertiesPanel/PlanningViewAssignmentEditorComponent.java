@@ -51,9 +51,11 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 
 		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
 		workPlanModel.setObjectRefs(hierarchyToSelectedRef);
+		budgetModel.setObjectRefs(hierarchyToSelectedRef);
 		
 		resourceTableModel.fireTableDataChanged();
 		workPlanModel.fireTableDataChanged();
+		budgetModel.fireTableDataChanged();
 	}
 	
 	private void createTables() throws Exception
@@ -125,9 +127,11 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	{
 		resourceTableModel.dataWasChanged();
 		workPlanModel.dataWasChanged();
+		budgetModel.dataWasChanged();
 		
 		resourceTable.repaint();
 		workplanTable.repaint();
+		budgetTable.repaint();
 	}
 	
 	private void setTaskId(BaseId taskId)
@@ -135,6 +139,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		Task task = (Task)getProject().findObject(ObjectType.TASK, taskId);
 		resourceTableModel.setTask(task);
 		workPlanModel.setTask(task);
+		budgetModel.setTask(task);
 	}
 
 	private MainWindow mainWindow;
