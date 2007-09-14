@@ -41,6 +41,11 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return getObject().getTypeName();
 	}
 	
+	public int getObjectType()
+	{
+		return getObjectReference().getObjectType();
+	}
+	
 	public TreeTableNode getChild(int index)
 	{
 		return children.get(index);
@@ -122,21 +127,21 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
 		{
-			ORef refA = nodeA.getObjectReference();
-			ORef refB = nodeB.getObjectReference();
 
-			int typeSortLocationA = getTypeSortLocation(refA);
-			int typeSortLocationB = getTypeSortLocation(refB);
+			int typeSortLocationA = getTypeSortLocation(nodeA.getObjectType());
+			int typeSortLocationB = getTypeSortLocation(nodeB.getObjectType());
 			int diff = typeSortLocationA - typeSortLocationB;
 			if(diff != 0)
 				return diff;
 			
+			ORef refA = nodeA.getObjectReference();
+			ORef refB = nodeB.getObjectReference();
 			String labelA = project.getObjectData(refA, BaseObject.TAG_LABEL);
 			String labelB = project.getObjectData(refB, BaseObject.TAG_LABEL);
 			return labelA.compareTo(labelB);
 		}
 		
-		int getTypeSortLocation(ORef ref)
+		int getTypeSortLocation(int type)
 		{
 			int[] sortOrder = new int[] {
 				ConceptualModelDiagram.getObjectType(),
@@ -148,7 +153,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 				Task.getObjectType(),
 			};
 			
-			int type = ref.getObjectType();
 			for(int i = 0; i < sortOrder.length; ++i)
 				if(type == sortOrder[i])
 					return i;

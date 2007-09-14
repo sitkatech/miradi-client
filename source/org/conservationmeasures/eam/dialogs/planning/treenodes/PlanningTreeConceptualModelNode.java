@@ -39,6 +39,11 @@ public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeDiagram
 		return ConceptualModelDiagram.OBJECT_NAME;
 	}
 
+	public int getObjectType()
+	{
+		return ConceptualModelDiagram.getObjectType();
+	}
+
 	public String toString()
 	{
 		return EAM.text("Conceptual Model");
