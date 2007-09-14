@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.planning;
+package org.conservationmeasures.eam.views.planning.doers;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
@@ -14,6 +14,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.views.planning.ColumnManager;
+import org.conservationmeasures.eam.views.planning.RowManager;
 
 public class CreatePlanningViewConfigurationDoer extends ViewDoer
 {
