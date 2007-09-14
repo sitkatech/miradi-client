@@ -30,6 +30,9 @@ import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.AddAssignmentDoer;
 import org.conservationmeasures.eam.views.budget.RemoveAssignmentDoer;
+import org.conservationmeasures.eam.views.planning.doers.CreatePlanningViewConfigurationDoer;
+import org.conservationmeasures.eam.views.planning.doers.DeletePlanningViewConfigurationDoer;
+import org.conservationmeasures.eam.views.planning.doers.RenamePlanningViewConfigurationDoer;
 
 public class PlanningView extends TabbedView
 {
