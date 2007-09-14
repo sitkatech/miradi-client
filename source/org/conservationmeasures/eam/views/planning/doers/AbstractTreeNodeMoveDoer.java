@@ -27,7 +27,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 		try
 		{
 			Task task = getSingleSelectedTask();
-			if(task == null)
+			if(task == null || !task.isTask())
 				return false;
 			
 			IdList siblings = getSiblingList(task);
@@ -39,7 +39,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 				return false;
 	
 			int newPosition = oldPosition + getDelta();
-			if(newPosition < 0 || newPosition > siblings.size())
+			if(newPosition < 0 || newPosition >= siblings.size())
 				return false;
 			return true;
 		}
