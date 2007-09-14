@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
+import org.conservationmeasures.eam.utils.DateRangeEffort;
 
 abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewAbstractAssignmentTabelModel
 {
@@ -53,7 +54,28 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 		
 		return resource;
 	}
-
+	
+	protected Object getUnits(int row, int column) throws Exception
+	{
+		DateRangeEffortList effortList = getDateRangeEffortList(row);
+		DateRange dateRange = dateRanges[column];
+		
+		return getUnit(effortList, dateRange);
+	}
+	
+	protected DateRangeEffortList getDateRangeEffortList(int row) throws Exception
+	{
+		return getAssignment(row).getDateRangeEffortList();
+	}
+		
+	protected DateRangeEffort getDateRangeEffort(Assignment assignment, DateRange dateRange) throws Exception
+	{
+		DateRangeEffort dateRangeEffort = null;
+		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
+		dateRangeEffort = effortList.getEffortForDateRange(dateRange);
+		return dateRangeEffort;
+	}
+	
 	protected DateRange[] dateRanges;
 	protected DecimalFormat decimalFormatter;
 }
