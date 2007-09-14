@@ -39,7 +39,7 @@ public class PlanningViewResourceTable extends TableWithHelperMethods implements
 		
 		selectionListeners = new Vector();
 		addColumnEditorsAndRenderers();
-		//TODO planning table - find better solution
+		//TODO planning table - find better solution - check the other tables two planning tables too
 		setRowHeight(getRowHeight() + 10);
 	}
 		
