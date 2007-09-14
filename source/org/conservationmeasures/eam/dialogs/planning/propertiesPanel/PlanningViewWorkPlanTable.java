@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
 public class PlanningViewWorkPlanTable extends TableWithHelperMethods
 {
-	public PlanningViewWorkPlanTable(Project projectToUse) throws Exception
+	public PlanningViewWorkPlanTable(Project projectToUse, PlanningViewWorkPlanTableModel modelToUse) throws Exception
 	{
-		super(new PlanningViewWorkPlanTableModel(projectToUse));
+		super(modelToUse);
 	}
 }
