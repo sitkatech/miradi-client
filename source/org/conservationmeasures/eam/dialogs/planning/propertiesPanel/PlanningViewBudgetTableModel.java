@@ -24,29 +24,34 @@ public class PlanningViewBudgetTableModel extends PlanningViewAbstractBudgetTabl
 		
 		currencyFormatter = getProject().getCurrencyFormatter();
 	}
+	
+	public boolean isCellEditable(int rowIndex, int columnIndex)
+	{
+		return false;
+	}
 
 	public Object getValueAt(int row, int column)
 	{
-		return getCost(row, column);
-	}
-	
-	private Object getCost(int row, int column)
-	{
 		try
 		{
-			Assignment assignment = getAssignment(row);
-			DateRangeEffortList effortList = getDateRangeEffortList(assignment);
-			DateRange dateRange = dateRanges[column];
-			ProjectResource currentResource = getCurrentResource(assignment);
-
-			return getCost(currentResource, effortList, dateRange);
+			return getCost(row, column);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
-		
+
 		return "";
+	}
+	
+	private Object getCost(int row, int column) throws Exception
+	{
+		Assignment assignment = getAssignment(row);
+		DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+		DateRange dateRange = dateRanges[column];
+		ProjectResource currentResource = getCurrentResource(assignment);
+
+		return getCost(currentResource, effortList, dateRange);
 	}
 	
 	public Object getCost(ProjectResource currentResource, DateRangeEffortList effortList, DateRange dateRange) throws Exception
@@ -76,6 +81,7 @@ public class PlanningViewBudgetTableModel extends PlanningViewAbstractBudgetTabl
 		
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex)
 	{
+		//read only cells
 	}
 	
 	private DecimalFormat currencyFormatter;
