@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTotalsTableModel
+public class PlanningViewWorkPlanTotalsTableModel extends PlanningViewAbstractTotalsTableModel
 {
-	public PlanningViewBudgetTotalsTableModel(Project projectToUse)
+	public PlanningViewWorkPlanTotalsTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}
