@@ -13,5 +13,8 @@ public class PlanningViewWorkPlanTable extends TableWithHelperMethods
 	public PlanningViewWorkPlanTable(Project projectToUse, PlanningViewWorkPlanTableModel modelToUse) throws Exception
 	{
 		super(modelToUse);
+
+		//TODO planning table - find better solution - check the other tables two planning tables too
+		setRowHeight(getRowHeight() + 10);
 	}
 }
