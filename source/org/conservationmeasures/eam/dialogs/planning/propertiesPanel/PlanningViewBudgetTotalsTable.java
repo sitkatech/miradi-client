@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import javax.swing.table.TableModel;
 
-public class PlanningViewBudgetTotalsColumn extends PlanningViewAbstractTable
+public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTable
 {
-	public PlanningViewBudgetTotalsColumn(TableModel model)
+	public PlanningViewBudgetTotalsTable(TableModel model)
 	{
 		super(model);
 	}
