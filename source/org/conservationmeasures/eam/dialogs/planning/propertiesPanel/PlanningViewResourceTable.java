@@ -42,12 +42,7 @@ public class PlanningViewResourceTable extends TableWithHelperMethods implements
 		//TODO planning table - find better solution
 		setRowHeight(getRowHeight() + 10);
 	}
-	
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
-	{
-		model.setObjectRefs(hierarchyToSelectedRef);
-	}
-	
+		
 	private void addColumnEditorsAndRenderers()
 	{
 		for (int i = 0; i < model.getColumnCount(); ++i)

@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
@@ -15,7 +14,7 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignme
 	public PlanningViewWorkPlanTableModel(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
-		dateRanges = new ProjectCalendar(project).getQuarterlyDateDanges();
+		dateRanges = new ProjectCalendar(getProject()).getQuarterlyDateDanges();
 	}	
 	
 	public boolean isCellEditable(int rowIndex, int columnIndex)
@@ -43,7 +42,5 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignme
 		
 	}
 	
-	private Project project;
 	private DateRange[] dateRanges;
-	private ORefList assignmentRefs;
 }

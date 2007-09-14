@@ -49,8 +49,11 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		else
 			setTaskId(hierarchyToSelectedRef[0].getObjectId());
 
-		resourceTable.setObjectRefs(hierarchyToSelectedRef);
+		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
+		workPlanModel.setObjectRefs(hierarchyToSelectedRef);
+		
 		resourceTableModel.fireTableDataChanged();
+		workPlanModel.fireTableDataChanged();
 	}
 	
 	private void createTables() throws Exception
@@ -61,7 +64,8 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		resourceTableModel = new PlanningViewResourceTableModel(getProject());
 		resourceTable = new PlanningViewResourceTable(resourceTableModel);
 		
-		workplanTable = new PlanningViewWorkPlanTable(getProject());
+		workPlanModel = new PlanningViewWorkPlanTableModel(getProject());
+		workplanTable = new PlanningViewWorkPlanTable(getProject(), workPlanModel);
 		budgetTable = new PlanningViewBudgetTable();
 	}
 	
@@ -118,13 +122,17 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	public void dataWasChanged()
 	{
 		resourceTableModel.dataWasChanged();
+		workPlanModel.dataWasChanged();
+		
 		resourceTable.repaint();
+		workplanTable.repaint();
 	}
 	
 	private void setTaskId(BaseId taskId)
 	{ 
 		Task task = (Task)getProject().findObject(ObjectType.TASK, taskId);
 		resourceTableModel.setTask(task);
+		workPlanModel.setTask(task);
 	}
 
 	private MainWindow mainWindow;
@@ -136,5 +144,6 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private PlanningViewWorkPlanTable workplanTable;
 	
 	private PlanningViewResourceTableModel resourceTableModel;
+	private PlanningViewWorkPlanTableModel workPlanModel;
 	private ObjectPicker objectPicker;
 }
