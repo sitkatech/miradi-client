@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguratio
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
+import org.conservationmeasures.eam.actions.ActionTreeCreateTaskIconOnly;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -36,6 +37,7 @@ import org.conservationmeasures.eam.views.budget.RemoveAssignmentDoer;
 import org.conservationmeasures.eam.views.planning.doers.CreatePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.planning.doers.DeletePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.planning.doers.RenamePlanningViewConfigurationDoer;
+import org.conservationmeasures.eam.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeDeleteDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeDownDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeUpDoer;
@@ -62,7 +64,7 @@ public class PlanningView extends TabbedView
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
 		JScrollPane managementPanelScrollPane = new JScrollPane(planningManagementPanel);
 		
-		controlPanel = new PlanningViewControlPanel(getMainWindow());
+		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
 		JScrollPane controlPanelScroller = new FastScrollPane(controlPanel);
 		controlPanelScroller.validate();
 
@@ -108,6 +110,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUpDoer());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDownDoer());
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
+		addDoerToMap(ActionTreeCreateTaskIconOnly.class, new TreeNodeCreateTaskDoer());
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandSetObjectData cmd)

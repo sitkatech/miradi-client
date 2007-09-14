@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -29,14 +30,16 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.umbrella.LegendPanel;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implements ActionListener, CommandExecutedListener
 {
-	public AbstractPlanningViewLegendPanel(MainWindow mainWindowToUse)
+	public AbstractPlanningViewLegendPanel(MainWindow mainWindowToUse, PlanningTreeTable treeAsObjectPicker)
 	{
 		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
 		project = mainWindow.getProject();
+		picker = treeAsObjectPicker;
 
 		project.addCommandExecutedListener(this);
 		createCheckBoxes();
@@ -225,4 +228,5 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	MainWindow mainWindow;
 	Project project;
 	JCheckBox objectiveCheckBox;
+	ObjectPicker picker;
 }

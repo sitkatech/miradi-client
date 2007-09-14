@@ -13,7 +13,12 @@ public class ActionTreeCreateTask extends ObjectsAction
 {
 	public ActionTreeCreateTask(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new TaskIcon());
+		this(mainWindowToUse, getLabel());
+	}
+
+	public ActionTreeCreateTask(MainWindow mainWindowToUse, String labelToUse)
+	{
+		super(mainWindowToUse, labelToUse, new TaskIcon());
 	}
 
 	private static String getLabel()

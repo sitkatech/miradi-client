@@ -21,7 +21,7 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 {
 	public PlanningViewColumsLegendPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, null);
 		updateCheckBoxesFromProjectSettings();
 
 	}
