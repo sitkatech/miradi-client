@@ -20,8 +20,8 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanelWithDescript
 	{
 		super(new BasicGridLayout(2, 1));
 		
-		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse, objectPickerToUse);
 		taskPropertiesInputPanel = new TaskPropertiesInputPanel(mainWindowToUse.getProject());
+		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse, objectPickerToUse);
 	
 		add(taskPropertiesInputPanel);
 		add(assignmentEditor);
@@ -51,6 +51,6 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanelWithDescript
 		assignmentEditor.dataWasChanged();
 	}
 	
-	private PlanningViewAssignmentEditorComponent assignmentEditor;
 	private TaskPropertiesInputPanel taskPropertiesInputPanel;
+	private PlanningViewAssignmentEditorComponent assignmentEditor;
 }
