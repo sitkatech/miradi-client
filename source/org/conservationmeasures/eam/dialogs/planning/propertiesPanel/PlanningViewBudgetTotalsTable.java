@@ -16,10 +16,10 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTable
 		super(model);
 	}
 	
+	//FIXME planning table - come up with a better plan
 	public Dimension getPreferredScrollableViewportSize()
 	{
-		Dimension maximumDimension = super.getPreferredScrollableViewportSize();
-		return new Dimension(50, maximumDimension.height);
+		Dimension preferredScrollableViewportSize = super.getPreferredScrollableViewportSize();
+		return new Dimension(50, preferredScrollableViewportSize.height);
 	}
-
 }
