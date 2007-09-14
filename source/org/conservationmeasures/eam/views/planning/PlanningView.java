@@ -12,6 +12,7 @@ import javax.swing.JToolBar;
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguration;
+import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
@@ -35,6 +36,7 @@ import org.conservationmeasures.eam.views.budget.RemoveAssignmentDoer;
 import org.conservationmeasures.eam.views.planning.doers.CreatePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.planning.doers.DeletePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.planning.doers.RenamePlanningViewConfigurationDoer;
+import org.conservationmeasures.eam.views.planning.doers.TreeNodeDeleteDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeDownDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeUpDoer;
 
@@ -105,6 +107,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUpDoer());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDownDoer());
+		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandSetObjectData cmd)
