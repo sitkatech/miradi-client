@@ -91,6 +91,9 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 
 	public void setValueAt(Object value, int row, int column)
 	{
+		if (value == null)
+			return;
+		
 		ORef assignmentRefForRow = getAssignmentForRow(row);
 		setResourceCell(value, assignmentRefForRow, column);
 		setAccountingCode(value, assignmentRefForRow, column);
