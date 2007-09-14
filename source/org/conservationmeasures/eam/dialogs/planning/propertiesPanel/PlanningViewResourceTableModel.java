@@ -42,10 +42,10 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 			return EAM.text("Resource (Who)");
 		
 		if (isResourceCostPerUnitColumn(column))
-			return EAM.text("Unit");
-		
-		if (isResourceCostColumn(column))
 			return EAM.text("Cost/Unit");
+			
+		if (isResourceCostColumn(column))
+			return EAM.text("Unit");
 		
 		if (isAccountingCodeColumn(column))
 			return EAM.text("Acc Code");
