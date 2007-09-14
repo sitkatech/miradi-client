@@ -47,7 +47,7 @@ public class PlanningViewBudgetTableModel extends PlanningViewAbstractBudgetTabl
 	private Object getCost(int row, int column) throws Exception
 	{
 		Assignment assignment = getAssignment(row);
-		DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
 		DateRange dateRange = dateRanges[column];
 		ProjectResource currentResource = getCurrentResource(assignment);
 

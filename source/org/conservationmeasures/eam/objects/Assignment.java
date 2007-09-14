@@ -119,6 +119,12 @@ public class Assignment extends BaseObject
 		return new ORef(ProjectResource.getObjectType(), getResourceId());
 	}
 	
+	public DateRangeEffortList getDateRangeEffortList() throws Exception
+	{
+		String dREffortListAsString = getData(Assignment.TAG_DATERANGE_EFFORTS);
+		return new DateRangeEffortList(dREffortListAsString);
+	}
+	
 	public BaseId getResourceId()
 	{
 		return resourceIdData.getId();
