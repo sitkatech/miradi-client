@@ -18,9 +18,4 @@ abstract public class PlanningViewAbstractTotalsTableModel extends PlanningViewA
 	{
 		return 1;
 	}
-
-	public int getRowCount()
-	{
-		return 0;
-	}
 }

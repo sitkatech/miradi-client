@@ -61,11 +61,6 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		return COLUMN_COUNT;
 	}
 
-	public int getRowCount()
-	{
-		return assignmentRefs.size();
-	}
-
 	public Object getValueAt(int row, int column)
 	{
 		return getCellValue(row, column);
