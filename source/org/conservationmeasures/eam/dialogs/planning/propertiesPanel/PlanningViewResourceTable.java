@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.AccountingCode;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -139,8 +140,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTable impleme
 		if (selectedRow < 0)
 			return new BaseObject[0];
 		
-		ORef selectedAssignmentRef = model.getAssignmentForRow(selectedRow);
-		BaseObject selectedAssignment = getProject().findObject(selectedAssignmentRef);
+		Assignment selectedAssignment = model.getAssignment(selectedRow);
 		if (selectedAssignment == null)
 			return new BaseObject[0];
 	
