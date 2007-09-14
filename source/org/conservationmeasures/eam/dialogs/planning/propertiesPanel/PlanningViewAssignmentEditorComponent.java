@@ -88,7 +88,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		
 		add(horizontalBox, BorderLayout.CENTER);
 		//TODO planning - put in line begins to avoid scorlling while in dev mode
-		add(createButtonBar(), BorderLayout.BEFORE_LINE_BEGINS);
+		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 
 	private void addVerticalScrollableControlledTable(Box horizontalBox, TableWithHelperMethods tableToAdd)
@@ -108,7 +108,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	
 	protected JPanel createButtonBar()
 	{
-		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
+		GridLayoutPlus layout = new GridLayoutPlus(1, 0);
 		JPanel box = new JPanel(layout);
 				
 		ObjectsActionButton addButton = createObjectsActionButton(getActions().getObjectsAction(ActionAddAssignment.class), objectPicker);
