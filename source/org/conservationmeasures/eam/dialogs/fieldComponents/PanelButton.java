@@ -5,8 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs.fieldComponents;
 
+import java.awt.Insets;
+
+import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.Icon;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -23,12 +25,10 @@ public class PanelButton extends UiButton
 	public PanelButton(Action action)
 	{
 		super(action);
-		setFont(getMainWindow().getUserDataPanelFont());
-	}
-	
-	public PanelButton(Icon icon)
-	{
-		super(icon);
+		String name = (String)action.getValue(AbstractAction.NAME);
+		if(name == null || name.length() == 0)
+			setMargin(new Insets(1,1,1,1));
+
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	

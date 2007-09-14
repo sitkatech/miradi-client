@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
@@ -31,6 +32,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.LocationHolder;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -192,6 +194,15 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 	protected void addButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
+		panel.add(button);
+		panel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
+		panel.add(findCheckBox(objectName));
+	}
+
+	protected void addPickerButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, ObjectsAction action, ObjectPicker picker)
+	{
+		ObjectsActionButton button = new ObjectsActionButton(action, picker);
+		
 		panel.add(button);
 		panel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
 		panel.add(findCheckBox(objectName));

@@ -162,6 +162,7 @@ public class Actions
 		registerAction(new ActionTreeCreateActivity(mainWindow));
 		registerAction(new ActionTreeCreateMethod(mainWindow));
 		registerAction(new ActionTreeCreateTask(mainWindow));
+		registerAction(new ActionTreeCreateTaskIconOnly(mainWindow));
 		registerAction(new ActionCreateActivity(mainWindow));
 		registerAction(new ActionDeleteActivity(mainWindow));
 		registerAction(new ActionCreateResource(mainWindow));

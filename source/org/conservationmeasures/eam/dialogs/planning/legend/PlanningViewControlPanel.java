@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
+import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -19,17 +20,17 @@ import com.jhlabs.awt.BasicGridLayout;
 
 public class PlanningViewControlPanel extends JPanel
 {
-	public PlanningViewControlPanel(MainWindow mainWindowToUse) throws Exception
+	public PlanningViewControlPanel(MainWindow mainWindowToUse, PlanningTreeTable treeAsObjectPicker) throws Exception
 	{
 		super(new BasicGridLayout(2, 1));
 		mainWindow = mainWindowToUse;
-		addLegendComponents();
+		addLegendComponents(treeAsObjectPicker);
 	}
 	
-	private void addLegendComponents() throws Exception
+	private void addLegendComponents(PlanningTreeTable treeAsObjectPicker) throws Exception
 	{
 		planningCustomizationPanel = new PlanningViewCustomizationPanel(getProject());
-		rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow());
+		rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow(), treeAsObjectPicker);
 		columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
 		
 		add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));

@@ -10,8 +10,9 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
 import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
-import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
+import org.conservationmeasures.eam.actions.ActionTreeCreateTaskIconOnly;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -35,11 +36,10 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 {
-	public PlanningViewRowsLegendPanel(MainWindow mainWindowToUse) throws Exception
+	public PlanningViewRowsLegendPanel(MainWindow mainWindowToUse, PlanningTreeTable treeAsObjectPicker) throws Exception
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, treeAsObjectPicker);
 		updateCheckBoxesFromProjectSettings();
-
 	}
 
 	public String getBorderTitle()
@@ -64,7 +64,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		addButtonLineWithCheckBox(panel, Task.getObjectType(), Task.ACTIVITY_NAME, actions.get(ActionTreeCreateActivity.class));
 		addIconLineWithCheckBox(panel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
 		addButtonLineWithCheckBox(panel, Task.getObjectType(), Task.METHOD_NAME, actions.get(ActionTreeCreateMethod.class));
-		addButtonLineWithCheckBox(panel, Task.getObjectType(), Task.OBJECT_NAME, actions.get(ActionTreeCreateTask.class));
+		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.OBJECT_NAME, actions.getObjectsAction(ActionTreeCreateTaskIconOnly.class), picker);
 		
 		return panel;
 	}
@@ -78,4 +78,5 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 	{
 		return RowManager.getVisibleRowCodes(getViewData());
 	}
+
 }
