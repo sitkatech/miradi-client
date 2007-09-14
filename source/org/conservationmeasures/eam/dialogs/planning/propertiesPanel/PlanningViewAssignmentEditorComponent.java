@@ -66,7 +66,9 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		
 		workPlanModel = new PlanningViewWorkPlanTableModel(getProject());
 		workplanTable = new PlanningViewWorkPlanTable(getProject(), workPlanModel);
-		budgetTable = new PlanningViewBudgetTable();
+		
+		budgetModel = new PlanningViewBudgetTableModel();
+		budgetTable = new PlanningViewBudgetTable(budgetModel);
 	}
 	
 	private void addTables()
@@ -140,10 +142,11 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private MultipleTableSelectionController selectionController;
 	
 	private PlanningViewResourceTable resourceTable;
-	private PlanningViewBudgetTable budgetTable;
 	private PlanningViewWorkPlanTable workplanTable;
+	private PlanningViewBudgetTable budgetTable;
 	
 	private PlanningViewResourceTableModel resourceTableModel;
 	private PlanningViewWorkPlanTableModel workPlanModel;
+	private PlanningViewBudgetTableModel budgetModel;
 	private ObjectPicker objectPicker;
 }

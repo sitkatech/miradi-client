@@ -9,8 +9,8 @@ import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
 public class PlanningViewBudgetTable extends TableWithHelperMethods
 {
-	public PlanningViewBudgetTable()
+	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{
-		super(new PlanningViewBudgetTableModel());
+		super(modelToUse);
 	}
 }
