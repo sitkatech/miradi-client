@@ -10,6 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
@@ -92,7 +93,24 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractT
 	{
 		return (Assignment) getProject().findObject(getAssignmentForRow(row));
 	}
-
+	
+	protected Object getResourceCostPerUnit(Assignment assignment)
+	{
+		ProjectResource resource = findProjectResource(assignment);
+		if (resource == null)
+			return "";
+				
+		double cost = resource.getCostPerUnit();
+		return Double.toString(cost);
+	}
+	
+	protected ProjectResource findProjectResource(Assignment assignment)
+	{
+		ORef resourceRef = assignment.getResourceRef();
+		ProjectResource resource = (ProjectResource) getProject().findObject(resourceRef);
+		return resource;
+	}
+	
 	public Project getProject()
 	{
 		return project;
