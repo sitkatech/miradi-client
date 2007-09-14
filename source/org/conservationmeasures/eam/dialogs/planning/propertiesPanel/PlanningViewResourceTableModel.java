@@ -11,13 +11,11 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
 public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignmentTabelModel
@@ -27,68 +25,6 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		super(projectToUse);
 	}
 	
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
-	{
-		if(hierarchyToSelectedRef.length == 0)
-			return;
-		
-		ORef selectedRef = hierarchyToSelectedRef[0];
-		if (selectedRef.getObjectType() != Task.getObjectType())
-			return;
-		
-		task = (Task) getProject().findObject(selectedRef);
-		assignmentRefs = getAssignmentsForTask(task);
-	}
-	
-	public void setTask(Task taskToUse)
-	{
-		if (isAlreadyCurrentTask(taskToUse))
-			return;
-			
-		task = taskToUse;
-		updateAssignmentIdList();	
-	}
-	
-	public void dataWasChanged()
-	{
-		if (isAlreadyCurrentAssignmentIdList())
-			return;
-		
-		updateAssignmentIdList();
-	}
-
-	private boolean isAlreadyCurrentTask(Task taskToUse)
-	{
-		 if(task == null || taskToUse == null)
-			 return false;
-		 
-		 return task.getId().equals(taskToUse.getId());
-	}
-	
-	private boolean isAlreadyCurrentAssignmentIdList()
-	{
-		return assignmentRefs.equals(getAssignmentsForTask(task));
-	}
-	
-	private void updateAssignmentIdList()
-	{
-		assignmentRefs = getAssignmentsForTask(task);
-		fireTableDataChanged();
-	}
-		
-	private ORefList getAssignmentsForTask(Task taskToUse)
-	{
-		if (taskToUse == null)
-			return new ORefList();
-		
-		return taskToUse.getAssignmentRefs();
-	}
-	
-	public ORef getAssignmentForRow(int row)
-	{
-		return assignmentRefs.get(row);
-	}
-		
 	public boolean isCellEditable(int row, int column)
 	{
 		if (isResourceCostPerUnitColumn(column))
@@ -291,5 +227,4 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 	private static final int RESOURCE_COST_PER_UNIT_COLUMN = 2;
 	private static final int ACCOUNTING_CODE_COLUMN = 3;
 	private static final int FUNDING_SOURCE_COLUMN = 4;
-	
 }
