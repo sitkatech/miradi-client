@@ -58,13 +58,6 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 		return decimalFormatter.format(units);
 	}
 	
-	public DateRangeEffortList getDateRangeEffortList(Assignment assignment) throws Exception
-	{
-		String dREffortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
-		DateRangeEffortList dREffortList = new DateRangeEffortList(dREffortListAsString);
-		return dREffortList;
-	}
-	
 	public void setValueAt(Object value, int row, int column)
 	{
 		setUnitsForColumn(value, row, column);
