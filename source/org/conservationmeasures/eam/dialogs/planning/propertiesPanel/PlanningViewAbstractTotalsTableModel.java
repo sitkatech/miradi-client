@@ -7,15 +7,20 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTotalsTableModel
+abstract public class PlanningViewAbstractTotalsTableModel extends PlanningViewAbstractAssignmentTabelModel
 {
-	public PlanningViewBudgetTotalsTableModel(Project projectToUse)
+	public PlanningViewAbstractTotalsTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}
-
-	public Object getValueAt(int rowIndex, int columnIndex)
+	
+	public int getColumnCount()
 	{
-		return null;
+		return 1;
+	}
+
+	public int getRowCount()
+	{
+		return 0;
 	}
 }
