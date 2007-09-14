@@ -24,7 +24,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 {
 	public PlanningViewResourceTableModel(Project projectToUse)
 	{
-		project = projectToUse;
+		super(projectToUse);
 		assignmentRefs = new ORefList();
 	}
 	
@@ -37,7 +37,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		if (selectedRef.getObjectType() != Task.getObjectType())
 			return;
 		
-		task = (Task) project.findObject(selectedRef);
+		task = (Task) getProject().findObject(selectedRef);
 		assignmentRefs = getAssignmentsForTask(task);
 	}
 	
@@ -139,7 +139,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 	private Object getCellValue(int row, int column)
 	{
 		ORef assignmentRef = getAssignmentForRow(row);
-		Assignment assignment = (Assignment) project.findObject(assignmentRef);
+		Assignment assignment = (Assignment) getProject().findObject(assignmentRef);
 		if (isResourceColumn(column))
 			return getResource(assignment);
 		
@@ -203,7 +203,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		try
 		{
 			Command command = new CommandSetObjectData(assignmentRef, fieldTag, idToSave.toString());
-			project.executeCommand(command);
+			getProject().executeCommand(command);
 		}
 		catch(CommandFailedException e)
 		{
@@ -241,7 +241,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 	private ProjectResource findProjectResource(Assignment assignment)
 	{
 		ORef resourceRef = assignment.getResourceRef();
-		ProjectResource resource = (ProjectResource) project.findObject(resourceRef);
+		ProjectResource resource = (ProjectResource) getProject().findObject(resourceRef);
 		return resource;
 	}
 	
@@ -257,7 +257,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 	
 	private BaseObject findObject(ORef ref)
 	{
-		return project.findObject(ref);
+		return getProject().findObject(ref);
 	}
 
 	public boolean isResourceColumn(int column)
@@ -285,12 +285,6 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		return RESOURCE_COST_PER_UNIT_COLUMN == column;
 	}
 	
-	public Project getProject()
-	{
-		return project;
-	}	
-	
-	private Project project;
 	private ORefList assignmentRefs;
 	private Task task;
 	
