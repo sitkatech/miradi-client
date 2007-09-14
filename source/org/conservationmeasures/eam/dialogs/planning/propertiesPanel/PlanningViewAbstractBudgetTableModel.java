@@ -40,11 +40,6 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 		return dateRanges.length;
 	}
 
-	public int getRowCount()
-	{
-		return assignmentRefs.size();
-	}
-	
 	public String getUnit(DateRangeEffortList effortList, DateRange dateRange) throws Exception
 	{
 		double units = effortList.getTotalUnitQuantity(dateRange);

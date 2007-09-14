@@ -15,11 +15,15 @@ import org.conservationmeasures.eam.project.Project;
 
 abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractTableModel
 {
-
 	public PlanningViewAbstractAssignmentTabelModel(Project projectToUse)
 	{
 		project = projectToUse;
 		assignmentRefs = new ORefList();
+	}
+	
+	public int getRowCount()
+	{
+		return assignmentRefs.size();
 	}
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
