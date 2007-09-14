@@ -31,7 +31,7 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 {
-	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse)
+	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(new BorderLayout());
 		
@@ -53,7 +53,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		resourceTableModel.fireTableDataChanged();
 	}
 	
-	private void createTables()
+	private void createTables() throws Exception
 	{
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
@@ -61,7 +61,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		resourceTableModel = new PlanningViewResourceTableModel(getProject());
 		resourceTable = new PlanningViewResourceTable(resourceTableModel);
 		
-		workplanTable = new PlanningViewWorkPlanTable();
+		workplanTable = new PlanningViewWorkPlanTable(getProject());
 		budgetTable = new PlanningViewBudgetTable();
 	}
 	
