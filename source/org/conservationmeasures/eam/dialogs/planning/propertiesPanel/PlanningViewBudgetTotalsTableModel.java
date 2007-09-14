@@ -27,7 +27,7 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 	
 	public String getColumnName(int column)
 	{
-		return "Total";
+		return EAM.text("Total");
 	}
 
 	public Object getValueAt(int row, int column)
