@@ -9,6 +9,7 @@ import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
@@ -81,6 +82,11 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractT
 	public ORef getAssignmentForRow(int row)
 	{
 		return assignmentRefs.get(row);
+	}
+	
+	public Assignment getAssignment(int row)
+	{
+		return (Assignment) getProject().findObject(getAssignmentForRow(row));
 	}
 
 	public Project getProject()

@@ -5,6 +5,11 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import java.text.DecimalFormat;
+
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
@@ -14,7 +19,9 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignme
 	public PlanningViewWorkPlanTableModel(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
+		
 		dateRanges = new ProjectCalendar(getProject()).getQuarterlyDateDanges();
+		decimalFormatter = getProject().getDecimalFormatter();
 	}	
 	
 	public boolean isCellEditable(int rowIndex, int columnIndex)
@@ -37,9 +44,47 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignme
 		return assignmentRefs.size();
 	}
 
-	public Object getValueAt(int rowIndex, int columnIndex)
+	public Object getValueAt(int row, int column)
 	{
-		return "under dev";
+		return getUnits(row, column);
+	}
+	
+	private Object getUnits(int row, int column)
+	{
+		DateRangeEffortList effortList;
+		try
+		{
+			effortList = getDateRangeEffortList(getAssignment(row));
+			DateRange dateRange = dateRanges[column];
+			return getUnit(effortList, dateRange);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		return "";
+	}
+	
+	public String getUnit(DateRangeEffortList effortList, DateRange dateRange)
+	{
+		double units = 0.0;
+		try
+		{
+			units = effortList.getTotalUnitQuantity(dateRange);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		return decimalFormatter.format(units);
+	}
+	
+	public DateRangeEffortList getDateRangeEffortList(Assignment assignment) throws Exception
+	{
+		String dREffortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
+		DateRangeEffortList dREffortList = new DateRangeEffortList(dREffortListAsString);
+		return dREffortList;
 	}
 	
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex)
@@ -48,4 +93,5 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignme
 	}
 	
 	private DateRange[] dateRanges;
+	private DecimalFormat decimalFormatter;
 }
