@@ -40,9 +40,9 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
 		add(uiScrollPane, BorderLayout.CENTER);
 		
-		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
+		GridLayoutPlus layout = new GridLayoutPlus(1, 0);
 		JPanel buttonBox = new JPanel(layout);
-		add(buttonBox,BorderLayout.AFTER_LINE_ENDS);
+		add(buttonBox,BorderLayout.AFTER_LAST_LINE);
 		addButtonsToBox(classes, buttonBox, mainWindow.getActions());
 
 		tree.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

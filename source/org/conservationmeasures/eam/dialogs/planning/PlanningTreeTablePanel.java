@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
+import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
+import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
@@ -30,7 +33,11 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	
 	private static Class[] getButtonActions()
 	{
-		return new Class[] {};
+		return new Class[] {
+			ActionDeletePlanningViewTreeNode.class,
+			ActionTreeNodeUp.class,
+			ActionTreeNodeDown.class,
+		};
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)

@@ -296,6 +296,7 @@ public class Actions
 		registerAction(new ActionCreatePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionDeletePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionRenamePlanningViewConfiguration(mainWindow));
+		registerAction(new ActionDeletePlanningViewTreeNode(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
