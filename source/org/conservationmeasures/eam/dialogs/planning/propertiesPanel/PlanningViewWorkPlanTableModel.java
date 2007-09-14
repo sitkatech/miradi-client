@@ -5,26 +5,22 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import javax.swing.table.AbstractTableModel;
-
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
 
-public class PlanningViewWorkPlanTableModel extends AbstractTableModel
+public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignmentTabelModel
 {
 	public PlanningViewWorkPlanTableModel(Project projectToUse) throws Exception
 	{
-		project = projectToUse;
+		super(projectToUse);
 		dateRanges = new ProjectCalendar(project).getQuarterlyDateDanges();
-		assignmentRefs = new ORefList();
 	}	
 	
-	public ORef getAssignmentRefForRow(int row)
+	public boolean isCellEditable(int rowIndex, int columnIndex)
 	{
-		return assignmentRefs.get(row);
+		return true;
 	}
 	
 	public int getColumnCount()
@@ -39,7 +35,12 @@ public class PlanningViewWorkPlanTableModel extends AbstractTableModel
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		return "";
+		return "under dev";
+	}
+	
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex)
+	{
+		
 	}
 	
 	private Project project;
