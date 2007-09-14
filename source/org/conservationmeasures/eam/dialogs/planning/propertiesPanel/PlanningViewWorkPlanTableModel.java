@@ -24,24 +24,25 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 	
 	public Object getValueAt(int row, int column)
 	{
-		return getUnits(row, column);
-	}
-	
-	private Object getUnits(int row, int column)
-	{
-		DateRangeEffortList effortList;
 		try
 		{
-			effortList = getDateRangeEffortList(getAssignment(row));
-			DateRange dateRange = dateRanges[column];
-			return getUnit(effortList, dateRange);
+			return getUnits(row, column);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
-		
+
 		return "";
+	}
+	
+	private Object getUnits(int row, int column) throws Exception
+	{
+		DateRangeEffortList effortList;
+		effortList = getDateRangeEffortList(getAssignment(row));
+		DateRange dateRange = dateRanges[column];
+		
+		return getUnit(effortList, dateRange);
 	}
 	
 	public String getUnit(DateRangeEffortList effortList, DateRange dateRange)
@@ -60,31 +61,31 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 	
 	public void setValueAt(Object value, int row, int column)
 	{
-		setUnitsForColumn(value, row, column);
-	}
-	
-	public void setUnitsForColumn(Object value, int row, int column)
-	{
 		try
 		{
-			Assignment assignment = getAssignment(row);
-			DateRangeEffortList effortList = getDateRangeEffortList(assignment);
-			DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[column]);
-
-			double units = 0;
-			String valueAsString = value.toString().trim();
-			if (! valueAsString.equals(""))
-				units = Double.parseDouble(valueAsString);
-
-			if (effort == null)
-				effort = new DateRangeEffort("", units, dateRanges[column]);
-
-			setUnits(assignment, effortList, effort, units);
+			setUnitsForColumn(value, row, column);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	public void setUnitsForColumn(Object value, int row, int column) throws Exception
+	{
+		Assignment assignment = getAssignment(row);
+		DateRangeEffortList effortList = getDateRangeEffortList(assignment);
+		DateRangeEffort effort = getDateRangeEffort(assignment, dateRanges[column]);
+
+		double units = 0;
+		String valueAsString = value.toString().trim();
+		if (! valueAsString.equals(""))
+			units = Double.parseDouble(valueAsString);
+
+		if (effort == null)
+			effort = new DateRangeEffort("", units, dateRanges[column]);
+
+		setUnits(assignment, effortList, effort, units);
 	}
 	
 	public void setUnits(Assignment assignment, DateRangeEffortList effortList, DateRangeEffort effort, double units) throws Exception
