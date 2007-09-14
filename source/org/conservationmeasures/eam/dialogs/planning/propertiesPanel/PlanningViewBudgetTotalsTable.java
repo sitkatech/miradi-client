@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import java.awt.Dimension;
 
 import javax.swing.table.TableModel;
 
@@ -15,11 +14,10 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTable
 	{
 		super(model);
 	}
-	
-	//FIXME planning table - come up with a better plan
-	public Dimension getPreferredScrollableViewportSize()
+
+	int getPreferredScrollableViewportWidth()
 	{
-		Dimension preferredScrollableViewportSize = super.getPreferredScrollableViewportSize();
-		return new Dimension(50, preferredScrollableViewportSize.height);
+		return 50;
 	}
+	
 }

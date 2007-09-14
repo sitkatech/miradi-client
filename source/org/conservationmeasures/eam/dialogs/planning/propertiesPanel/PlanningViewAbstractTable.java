@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import java.awt.Dimension;
+
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
@@ -17,5 +19,22 @@ public class PlanningViewAbstractTable extends TableWithHelperMethods
 
 		//TODO planning table - find better solution - check the other tables two planning tables too
 		setRowHeight(getRowHeight() + 10);
+	}
+
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		int preferredHeight = getPreferredScrollableViewportHeight();
+		int preferredWidth = getPreferredScrollableViewportWidth();
+		return new Dimension(preferredWidth, preferredHeight);
+	}
+
+	int getPreferredScrollableViewportWidth()
+	{
+		return 250;
+	}
+
+	int getPreferredScrollableViewportHeight()
+	{
+		return getRowHeight() * 5;
 	}
 }
