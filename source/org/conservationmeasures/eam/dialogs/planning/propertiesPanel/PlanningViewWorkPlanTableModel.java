@@ -36,14 +36,6 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 		return "";
 	}
 	
-	private Object getUnits(int row, int column) throws Exception
-	{
-		DateRangeEffortList effortList = getDateRangeEffortList(row);
-		DateRange dateRange = dateRanges[column];
-		
-		return getUnit(effortList, dateRange);
-	}
-	
 	public String getUnit(DateRangeEffortList effortList, DateRange dateRange)
 	{
 		double units = 0.0;
@@ -96,19 +88,6 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 		
 		Command command = new CommandSetObjectData(assignment.getType(), assignment.getId(), assignment.TAG_DATERANGE_EFFORTS, newEffortListString);
 		getProject().executeCommand(command);
-	}
-	
-	public DateRangeEffort getDateRangeEffort(Assignment assignment, DateRange dateRange) throws Exception
-	{
-		DateRangeEffort dateRangeEffort = null;
-		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
-		dateRangeEffort = effortList.getEffortForDateRange(dateRange);
-		return dateRangeEffort;
-	}
-	
-	private DateRangeEffortList getDateRangeEffortList(int row) throws Exception
-	{
-		return getAssignment(row).getDateRangeEffortList();
 	}
 	
 	private DateRangeEffort getDateRangeEffort(int row, int column) throws Exception
