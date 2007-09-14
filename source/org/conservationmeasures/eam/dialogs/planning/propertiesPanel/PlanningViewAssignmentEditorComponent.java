@@ -146,7 +146,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private PlanningViewBudgetTable budgetTable;
 	
 	private PlanningViewResourceTableModel resourceTableModel;
-	private PlanningViewWorkPlanTableModel workPlanModel;
+	private PlanningViewAbstractBudgetTableModel workPlanModel;
 	private PlanningViewBudgetTableModel budgetModel;
 	private ObjectPicker objectPicker;
 }
