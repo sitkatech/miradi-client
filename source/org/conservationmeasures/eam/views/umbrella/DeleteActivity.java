@@ -51,9 +51,9 @@ public class DeleteActivity extends ObjectsDoer
 
 	public static void deleteTask(Project project, Task selectedTask) throws CommandFailedException
 	{
-		String[] buttons = {"Delete", "Retain", };
-		String[] confirmText = {"Are you sure you want to delete?"};
-		if(!EAM.confirmDialog("Delete", confirmText, buttons))
+		String[] buttons = {EAM.text("Button|Delete"), EAM.text("Button|Retain"), };
+		String[] confirmText = {EAM.text("This will delete any subtasks too. Are you sure you want to delete?")};
+		if(!EAM.confirmDialog(EAM.text("Title|Delete"), confirmText, buttons))
 			return;
 		
 		project.executeCommand(new CommandBeginTransaction());
