@@ -48,7 +48,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 			return EAM.text("Unit");
 		
 		if (isAccountingCodeColumn(column))
-			return EAM.text("Acc Code");
+			return EAM.text("Acct Code");
 		
 		if (isFundingSourceColumn(column))
 			return EAM.text("Funding Source");
