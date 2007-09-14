@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionTreeCreateMethod extends ObjectsAction
 {
 	public ActionTreeCreateMethod(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new MethodIcon());
 	}
 
 	private static String getLabel()

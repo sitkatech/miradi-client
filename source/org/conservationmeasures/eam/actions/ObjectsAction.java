@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -15,6 +17,11 @@ public class ObjectsAction extends ViewAction implements SelectionChangeListener
 	public ObjectsAction(MainWindow mainWindowToUse, String label)
 	{
 		super(mainWindowToUse, label);
+	}
+	
+	public ObjectsAction(MainWindow mainWindowToUse, String label, Icon icon)
+	{
+		super(mainWindowToUse, label, icon);
 	}
 	
 	public boolean isObjectAction()

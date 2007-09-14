@@ -8,16 +8,16 @@ package org.conservationmeasures.eam.dialogs.planning.legend;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
+import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
+import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
-import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
-import org.conservationmeasures.eam.icons.TaskIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
@@ -61,10 +61,10 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		addIconLineWithCheckBox(panel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(panel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(panel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
-		addIconLineWithCheckBox(panel, Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon());
+		addButtonLineWithCheckBox(panel, Task.getObjectType(), Task.ACTIVITY_NAME, actions.get(ActionTreeCreateActivity.class));
 		addIconLineWithCheckBox(panel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
-		addIconLineWithCheckBox(panel, Task.getObjectType(), Task.METHOD_NAME, new MethodIcon());
-		addIconLineWithCheckBox(panel, Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon());
+		addButtonLineWithCheckBox(panel, Task.getObjectType(), Task.METHOD_NAME, actions.get(ActionTreeCreateMethod.class));
+		addButtonLineWithCheckBox(panel, Task.getObjectType(), Task.OBJECT_NAME, actions.get(ActionTreeCreateTask.class));
 		
 		return panel;
 	}
