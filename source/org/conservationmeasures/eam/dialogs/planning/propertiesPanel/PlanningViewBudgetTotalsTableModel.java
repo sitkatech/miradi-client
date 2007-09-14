@@ -32,28 +32,23 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 
 	public Object getValueAt(int row, int column)
 	{
-		return getTotalCost(row);
-	}
-	
-	private Object getTotalCost(int row)
-	{
-		Assignment assignment = getAssignment(row);
-		return getTotalCost(assignment);
-	}
-	
-	public String getTotalCost(Assignment assignment)
-	{		
 		try
 		{
-			DateRange combinedDateRange = getCombinedDateRange();
-			double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
-			return currencyFormatter.format(totalCost);
+			return getTotalCost(row);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
 		return "";
+	}
+	
+	public String getTotalCost(int row) throws Exception
+	{	
+		Assignment assignment = getAssignment(row);	
+		DateRange combinedDateRange = getCombinedDateRange();
+		double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
+		return currencyFormatter.format(totalCost);
 	}
 	
 	public DateRange getCombinedDateRange() throws Exception
