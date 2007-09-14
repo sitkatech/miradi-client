@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import java.awt.Dimension;
+
 import javax.swing.table.TableModel;
 
 public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTable
@@ -13,4 +15,17 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTable
 	{
 		super(model);
 	}
+	
+//	public Dimension getPreferredSize()
+//	{
+//		Dimension preferredDimension = super.getPreferredSize();
+//		return new Dimension(50, preferredDimension.height);
+//	}
+	
+	public Dimension getMaximumSize()
+	{
+		Dimension maximumDimension = super.getMaximumSize();
+		return new Dimension(50, maximumDimension.height);
+	}
+
 }
