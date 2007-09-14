@@ -26,11 +26,10 @@ import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-public class PlanningViewResourceTable extends TableWithHelperMethods implements ObjectPicker
+public class PlanningViewResourceTable extends PlanningViewAbstractTable implements ObjectPicker
 {
 	public PlanningViewResourceTable(PlanningViewResourceTableModel modelToUse)
 	{
@@ -39,8 +38,6 @@ public class PlanningViewResourceTable extends TableWithHelperMethods implements
 		
 		selectionListeners = new Vector();
 		addColumnEditorsAndRenderers();
-		//TODO planning table - find better solution - check the other tables two planning tables too
-		setRowHeight(getRowHeight() + 10);
 	}
 		
 	private void addColumnEditorsAndRenderers()
