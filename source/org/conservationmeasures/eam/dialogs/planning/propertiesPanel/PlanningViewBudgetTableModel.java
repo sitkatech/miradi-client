@@ -7,26 +7,11 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningViewBudgetTableModel extends PlanningViewAbstractAssignmentTabelModel
+public class PlanningViewBudgetTableModel extends PlanningViewAbstractBudgetTableModel
 {
-	public PlanningViewBudgetTableModel(Project projectToUse)
+	public PlanningViewBudgetTableModel(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
-	}
-
-	public boolean isCellEditable(int rowIndex, int columnIndex)
-	{
-		return true;
-	}
-	
-	public int getColumnCount()
-	{
-		return 0;
-	}
-
-	public int getRowCount()
-	{
-		return 0;
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)

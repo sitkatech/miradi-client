@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import java.text.DecimalFormat;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -13,40 +12,16 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 
-public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignmentTabelModel
+public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTableModel
 {
 	public PlanningViewWorkPlanTableModel(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
-		
-		dateRanges = new ProjectCalendar(getProject()).getQuarterlyDateDanges();
-		decimalFormatter = getProject().getDecimalFormatter();
 	}	
 	
-	public boolean isCellEditable(int rowIndex, int columnIndex)
-	{
-		return true;
-	}
-	
-	public String getColumnName(int col)
-	{
-		return dateRanges[col].toString();
-	}
-	
-	public int getColumnCount()
-	{
-		return dateRanges.length;
-	}
-
-	public int getRowCount()
-	{
-		return assignmentRefs.size();
-	}
-
 	public Object getValueAt(int row, int column)
 	{
 		return getUnits(row, column);
@@ -138,7 +113,4 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignme
 		dateRangeEffort = effortList.getEffortForDateRange(dateRange);
 		return dateRangeEffort;
 	}
-	
-	private DateRange[] dateRanges;
-	private DecimalFormat decimalFormatter;
 }
