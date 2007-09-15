@@ -350,7 +350,7 @@ public class Task extends BaseObject
 	private String getLabelOfTaskParent()
 	{
 
-		BaseObject parent = objectManager.findObject(getOwnerRef());
+		BaseObject parent = getOwner();
 		if(parent == null)
 		{
 			EAM.logDebug("Parent of task " + getId() + " not found: " + getOwnerRef());
