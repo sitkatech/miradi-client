@@ -422,18 +422,33 @@ abstract public class BaseObject
 		return noneClearedFieldTags;
 	}
 
+	public Factor[] getUpstreamDownstreamFactors()
+	{
+		Factor owner = getDirectOrIndirectOwningFactor();
+		if(owner == null)
+			return new Factor[0];
+		
+		ProjectChainObject chainObject = new ProjectChainObject();
+		chainObject.buildUpstreamDownstreamChain(owner);
+		return chainObject.getFactorsArray();
+	}
+	
+	public Factor[] getUpstreamFactors()
+	{
+		Factor owner = getDirectOrIndirectOwningFactor();
+		if(owner == null)
+			return new Factor[0];
+		
+		ProjectChainObject chainObject = new ProjectChainObject();
+		chainObject.buildUpstreamChain(owner);
+		return chainObject.getFactorsArray();
+	}
 	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
 	{
 		try
 		{
-			Factor owner = getDirectOrIndirectOwningFactor();
-			if(owner == null)
-				return "";
-			
-			ProjectChainObject chainObject = new ProjectChainObject();
-			chainObject.buildUpstreamDownstreamChain(owner);
-			Factor[] upstreamDownstreamFactors = chainObject.getFactorsArray();
+			Factor[] upstreamDownstreamFactors = getUpstreamDownstreamFactors();
 			filterSet.attemptToAddAll(upstreamDownstreamFactors);
 			return getLabelsAsMultiline(filterSet);
 		}

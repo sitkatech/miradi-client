@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -77,12 +76,7 @@ public class Objective extends Desire
 	{
 		ORefList indicatorRefs = new ORefList();
 		
-		Factor owner = getDirectOrIndirectOwningFactor();
-		if(owner == null)
-			return new ORefList();
-		ProjectChainObject chainObject = new ProjectChainObject();
-		chainObject.buildUpstreamDownstreamChain(owner);
-		Factor[] upstreamDownstreamFactors = chainObject.getFactorsArray();
+		Factor[] upstreamDownstreamFactors = getUpstreamDownstreamFactors();
 		for(int i = 0; i < upstreamDownstreamFactors.length; ++i)
 		{
 			IdList indicatorIds = upstreamDownstreamFactors[i].getDirectOrIndirectIndicators();
