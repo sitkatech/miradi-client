@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -433,7 +434,7 @@ abstract public class BaseObject
 	{	
 		try
 		{
-			return objectManager.getChainManager().findAllFactorsRelatedToThisObject(getRef());
+			return new ChainManager(getProject()).findAllFactorsRelatedToThisObject(getRef());
 		}
 		catch (Exception e)
 		{

@@ -6,6 +6,7 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.views.monitoring.MonitoringGoalNode;
 import org.conservationmeasures.eam.views.monitoring.MonitoringIndicatorNode;
 
@@ -15,7 +16,7 @@ public class MonitoringPlanRelatedIndicatorsToThisGoalDataSource extends CommonD
 	public MonitoringPlanRelatedIndicatorsToThisGoalDataSource(Goal goal) throws Exception
 	{
 		super(goal.getProject());
-		FactorSet relatedNodes = goal.getObjectManager().getChainManager().findAllFactorsRelatedToThisGoal(goal.getId());
+		FactorSet relatedNodes = new ChainManager(goal.getProject()).findAllFactorsRelatedToThisGoal(goal.getId());
 		MonitoringGoalNode.createIndicatorNodes(project, relatedNodes);
 		Vector indicatorVector = MonitoringGoalNode.createIndicatorNodes(project, relatedNodes);
 		ORefList list = new ORefList();

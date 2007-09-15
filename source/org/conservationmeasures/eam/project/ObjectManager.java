@@ -392,12 +392,6 @@ public class ObjectManager
 		return getProject().getDatabase();
 	}
 
-	//TODO: there shold be a better way to get to the chain manager then having to expose it here
-	public ChainManager getChainManager()
-	{
-		return new ChainManager(getProject());
-	}
-	
 	//TODO: there shold be a better way to get to the project file name then having to expose it here
 	public String getFileName()
 	{
