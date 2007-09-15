@@ -28,9 +28,9 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -425,21 +425,22 @@ abstract public class BaseObject
 	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
 	{
-		Factor[] cmNodes = getRelatedFactors().toNodeArray();
-		filterSet.attemptToAddAll(cmNodes);
-		return getLabelsAsMultiline(filterSet);
-	}
-	
-	public FactorSet getRelatedFactors()
-	{	
 		try
 		{
-			return new ChainManager(getProject()).findAllFactorsRelatedToThisObject(getRef());
+			Factor owner = getDirectOrIndirectOwningFactor();
+			if(owner == null)
+				return "";
+			
+			ProjectChainObject chainObject = new ProjectChainObject();
+			chainObject.buildUpstreamDownstreamChain(owner);
+			Factor[] upstreamDownstreamFactors = chainObject.getFactorsArray();
+			filterSet.attemptToAddAll(upstreamDownstreamFactors);
+			return getLabelsAsMultiline(filterSet);
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			EAM.logException(e);
-			return new FactorSet();
+			return "";
 		}
 	}
 	
