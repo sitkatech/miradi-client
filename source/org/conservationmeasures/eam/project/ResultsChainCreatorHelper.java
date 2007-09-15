@@ -238,7 +238,9 @@ public class ResultsChainCreatorHelper
 		Vector allDiagramFactors = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			ChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
+			Factor factor = selectedFactorCells[i].getUnderlyingObject();
+			DiagramChainObject chainObject = factor.getDiagramChainBuilder();
+			chainObject.buildNormalChain(model, factor);
 			Factor[] factorsArray = chainObject.getFactorsArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
@@ -301,21 +303,14 @@ public class ResultsChainCreatorHelper
 		Vector allDiagramLinks = new Vector();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			ChainObject chainObject = createDiagramChainObject(selectedFactorCells, i);
+			Factor factor = selectedFactorCells[i].getUnderlyingObject();
+			DiagramChainObject chainObject = factor.getDiagramChainBuilder();
+			chainObject.buildNormalChain(model, factor);
 			Vector diagramLinks = convertToDiagramLinks(chainObject.getFactorLinksArray());
 			allDiagramLinks.addAll(diagramLinks);
 		}
 		
 		return (DiagramLink[]) allDiagramLinks.toArray(new DiagramLink[0]);
-	}
-
-	private ChainObject createDiagramChainObject(FactorCell[] selectedFactorCells, int i)
-	{
-		DiagramChainObject chainObject = new DiagramChainObject();
-		Factor factor = selectedFactorCells[i].getUnderlyingObject();
-		chainObject.buildNormalChain(model, factor);
-		
-		return chainObject;
 	}
 
 	private Vector convertToDiagramLinks(FactorLink[] links) throws Exception
