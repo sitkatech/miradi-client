@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.project;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
@@ -20,7 +19,6 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -416,21 +414,8 @@ public class ObjectManager
 	
 	public ORefList getStrategyRefsUpstreamOfObjective(ORef objectiveRef)
 	{
-		ORefList strategyRefs = new ORefList();
-		
 		Objective objective = (Objective)findObject(objectiveRef);
-		Factor owner = (Factor)objective.getOwner();
-		chainBuilder.buildUpstreamChain(owner);
-		FactorSet upstreamFactors = chainBuilder.getFactors();
-		Iterator iter = upstreamFactors.iterator();
-		while(iter.hasNext())
-		{
-			Factor factor = (Factor)iter.next();
-			if(factor.isStrategy() && !factor.isStatusDraft())
-				strategyRefs.add(factor.getRef());
-		}
-		
-		return strategyRefs;
+		return objective.getUpstreamNonDraftStrategies();
 	}
 
 	public ORefList getAllDiagramObjectRefs()
