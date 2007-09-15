@@ -440,8 +440,7 @@ abstract public class BaseObject
 			return new Factor[0];
 		
 		ProjectChainObject chainObject = getProjectChainBuilder();
-		chainObject.buildUpstreamDownstreamChain(owner);
-		return chainObject.getFactors().toFactorArray();
+		return chainObject.buildUpstreamDownstreamChainAndGetFactors(owner).toFactorArray();
 	}
 	
 	public Factor[] getUpstreamFactors()
