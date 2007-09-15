@@ -9,6 +9,9 @@ import java.awt.BorderLayout;
 
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
@@ -55,7 +58,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private void createBudgetTable(PlanningTreeTable treeTableToUse) throws Exception
 	{
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), (TreeTableModelAdapter)treeTableToUse.getModel());
-		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel);		
+		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel);
+		new ModelUpdater((TreeTableModelAdapter)treeTableToUse.getModel(), annualTotalsModel);
 	}
 	
 	private void addSyncedAnnualsTotalsTable(PlanningTreeTable treeTableToUse)
@@ -183,4 +187,20 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private MultipleTableSelectionController selectionController;
 	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private PlanningViewBudgetAnnualTotalsTable annualTotalsTable;
+}
+
+class ModelUpdater implements TableModelListener
+{
+	public ModelUpdater(TreeTableModelAdapter adapter, AbstractTableModel modelToUpdateToUse)
+	{
+		modelToUpdate = modelToUpdateToUse;
+		adapter.addTableModelListener(this);
+	}
+	
+	public void tableChanged(TableModelEvent e)
+	{
+		modelToUpdate.fireTableDataChanged();
+	}
+	
+	AbstractTableModel modelToUpdate;
 }
