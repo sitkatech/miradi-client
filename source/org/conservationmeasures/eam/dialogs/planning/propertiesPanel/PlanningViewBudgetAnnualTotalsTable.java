@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import javax.swing.JTable;
+
 import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
 public class PlanningViewBudgetAnnualTotalsTable extends TableWithHelperMethods
@@ -12,5 +14,6 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithHelperMethods
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model)
 	{
 		super(model);
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 }

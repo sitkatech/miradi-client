@@ -37,8 +37,8 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		tree = treeToUse;
 		
 		restoreTreeExpansionState();
-		UiScrollPane uiScrollPane = new UiScrollPane(tree);
-		add(uiScrollPane, BorderLayout.CENTER);
+		treeTableScrollPane = new UiScrollPane(tree);
+		add(treeTableScrollPane, BorderLayout.CENTER);
 		
 		GridLayoutPlus layout = new GridLayoutPlus(1, 0);
 		JPanel buttonBox = new JPanel(layout);
@@ -136,8 +136,14 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	public void setSelectedObject(ORef ref)
 	{
 	}
+	
+	protected UiScrollPane getTreeTableScrollPane()
+	{
+		return treeTableScrollPane;
+	}
 
 	MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected GenericTreeTableModel model;
+	protected UiScrollPane treeTableScrollPane;
 }

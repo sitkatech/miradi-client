@@ -5,12 +5,17 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalTableModel;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalsTable;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -19,9 +24,15 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
+import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
+import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
+import org.martus.swing.UiScrollPane;
+
+import com.java.sun.jtreetable.TreeTableModelAdapter;
 
 public class PlanningTreeTablePanel extends TreeTablePanel
 {
@@ -37,6 +48,43 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
+		createBudgetTable(treeToUse);
+		addSyncedAnnualsTotalsTable(treeToUse);
+	}
+
+	private void createBudgetTable(PlanningTreeTable treeTableToUse)
+	{
+		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel((TreeTableModelAdapter)treeTableToUse.getModel());
+		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel);		
+	}
+	
+	private void addSyncedAnnualsTotalsTable(PlanningTreeTable treeTableToUse)
+	{
+		selectionController = new MultipleTableSelectionController();
+		verticalController = new MultiTableVerticalScrollController();
+		horizontalController = new MultiTableHorizontalScrollController();
+
+		syncRowHeightSizes(treeTableToUse);
+
+		UiScrollPane annualTotalsScrollPane = new UiScrollPane(annualTotalsTable);
+		annualTotalsScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		add(annualTotalsScrollPane, BorderLayout.AFTER_LINE_ENDS);
+	
+		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		getTreeTableScrollPane().setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		verticalController.addTable(annualTotalsScrollPane);
+		verticalController.addTable(getTreeTableScrollPane());
+		
+		horizontalController.addTable(annualTotalsScrollPane);
+		horizontalController.addTable(getTreeTableScrollPane());
+		
+		selectionController.addTable(annualTotalsTable);
+		selectionController.addTable(treeTableToUse);
+	}
+
+	private void syncRowHeightSizes(PlanningTreeTable treeTableToUse)
+	{
+		annualTotalsTable.setRowHeight(treeTableToUse.getRowHeight());
 	}
 	
 	private static Class[] getButtonActions()
@@ -129,4 +177,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{
 		return (PlanningTreeModel)getModel();
 	}
+	
+	private MultiTableVerticalScrollController verticalController;
+	private MultiTableHorizontalScrollController horizontalController;
+	private MultipleTableSelectionController selectionController;
+	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
+	private PlanningViewBudgetAnnualTotalsTable annualTotalsTable;
 }
