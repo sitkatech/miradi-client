@@ -14,8 +14,8 @@ import org.conservationmeasures.eam.objects.FactorLink;
 
 abstract public class ChainObject
 {	
-	abstract FactorSet getAllLinkedFactors(int direction);
-	abstract FactorSet getDirectlyLinkedFactors(int direction);
+	abstract protected FactorSet getAllLinkedFactors(int direction);
+	abstract protected FactorSet getDirectlyLinkedFactors(int direction);
 
 
 	public FactorSet getFactors()

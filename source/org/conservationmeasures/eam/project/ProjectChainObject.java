@@ -66,7 +66,7 @@ public class ProjectChainObject  extends ChainObject
 		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
-	FactorSet getAllLinkedFactors(int direction)
+	protected FactorSet getAllLinkedFactors(int direction)
 	{
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
@@ -98,7 +98,7 @@ public class ProjectChainObject  extends ChainObject
 		return linkedFactors;
 	}
 
-	FactorSet getDirectlyLinkedFactors(int direction)
+	protected FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
