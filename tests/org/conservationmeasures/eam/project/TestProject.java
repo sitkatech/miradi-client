@@ -45,6 +45,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.reports.ChainManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.DiagramPaster;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
