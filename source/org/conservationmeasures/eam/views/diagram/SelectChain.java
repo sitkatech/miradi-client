@@ -79,8 +79,7 @@ public class SelectChain extends ViewDoer
 		{
 			FactorCell selectedFactor = factors[i];
 			DiagramChainObject chainObject = new DiagramChainObject();
-			chainObject.buildNormalChain(diagramModel, selectedFactor.getUnderlyingObject());
-			Factor[] chainNodes = chainObject.getFactors().toFactorArray();
+			Factor[] chainNodes = chainObject.buildNormalChainAndGetFactors(diagramModel, selectedFactor.getUnderlyingObject()).toFactorArray();
 			nodes.addAll(Arrays.asList(chainNodes));
 		}
 		return (Factor[])nodes.toArray(new Factor[0]);
@@ -96,14 +95,12 @@ public class SelectChain extends ViewDoer
 			
 			DiagramChainObject upstreamChain = new DiagramChainObject();
 			Factor from = diagramModel.getProject().findNode(cell.getFrom().getWrappedId());
-			upstreamChain.buildUpstreamChain(diagramModel, from);
-			Factor[] upstreamFactors = upstreamChain.getFactors().toFactorArray();
+			Factor[] upstreamFactors = upstreamChain.buildUpstreamChainAndGetFactors(diagramModel, from).toFactorArray();
 			nodes.addAll(Arrays.asList(upstreamFactors));
 			
 			DiagramChainObject downstreamChain = new DiagramChainObject();
 			Factor to = diagramModel.getProject().findNode(cell.getTo().getWrappedId());
-			downstreamChain.buildDownstreamChain(diagramModel, to);
-			Factor[] downstreamFactors = downstreamChain.getFactors().toFactorArray();
+			Factor[] downstreamFactors = downstreamChain.buildDownstreamChainAndGetFactors(diagramModel, to).toFactorArray();
 			nodes.addAll(Arrays.asList(downstreamFactors));
 		}
 		return (Factor[])nodes.toArray(new Factor[0]);
