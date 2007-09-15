@@ -6,7 +6,6 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.views.monitoring.MonitoringGoalNode;
 import org.conservationmeasures.eam.views.monitoring.MonitoringIndicatorNode;
 

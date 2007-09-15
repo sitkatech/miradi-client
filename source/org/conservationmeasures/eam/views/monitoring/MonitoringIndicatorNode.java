@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.views.monitoring;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.reports.ChainManager;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringIndicatorNode extends MonitoringNode

@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.project;
+package org.conservationmeasures.eam.reports;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
@@ -11,6 +11,9 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectChainObject;
+
 
 public class ChainManager
 {
