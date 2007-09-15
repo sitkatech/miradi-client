@@ -22,6 +22,12 @@ public class ProjectChainObject  extends ChainObject
 		return getFactors();
 	}
 	
+	public FactorSet buildUpstreamDownstreamChainAndGetFactors(Factor factor)
+	{
+		buildUpstreamDownstreamChain(factor);
+		return getFactors();
+	}
+	
 	private void buildDirectThreatChain(Factor factor)
 	{
 		initializeChain(factor);
