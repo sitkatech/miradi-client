@@ -314,43 +314,37 @@ public class DiagramModel extends DefaultGraphModel
 	public FactorSet getDirectThreatChainNodes(Factor directThreat)
 	{
 		DiagramChainObject chainObject = getChainBuilder();
-		chainObject.buildDirectThreatChain(this, directThreat);
-		return chainObject.getFactors();
+		return chainObject.buildDirectThreatChainAndGetFactors(this, directThreat);
 	}
 	
 	public FactorSet getNodesInChain(Factor startingFactor)
 	{
 		DiagramChainObject chainObject = getChainBuilder();
-		chainObject.buildNormalChain(this, startingFactor);
-		return chainObject.getFactors();
+		return chainObject.buildNormalChainAndGetFactors(this, startingFactor);
 	}
 		
 	public FactorSet getAllUpstreamDownstreamNodes(Factor startingFactor)
 	{
 		DiagramChainObject chainObject = getChainBuilder();
-		chainObject.buildUpstreamDownstreamChain(this, startingFactor);
-		return chainObject.getFactors();
+		return chainObject.buildUpstreamDownstreamChainAndGetFactors(this, startingFactor);
 	}
 
 	public FactorSet getAllUpstreamNodes(Factor startingFactor)
 	{
 		DiagramChainObject chainObject = getChainBuilder();
-		chainObject.buildUpstreamChain(this, startingFactor);
-		return chainObject.getFactors();
+		return chainObject.buildUpstreamChainAndGetFactors(this, startingFactor);
 	}
 	
 	public FactorSet getAllDownstreamNodes(Factor startingFactor)
 	{
 		DiagramChainObject chainObject = getChainBuilder();
-		chainObject.buildDownstreamChain(this, startingFactor);
-		return chainObject.getFactors();
+		return chainObject.buildDownstreamChainAndGetFactors(this, startingFactor);
 	}
 
 	public FactorSet getDirectlyLinkedUpstreamNodes(Factor startingFactor)
 	{
 		DiagramChainObject chainObject = getChainBuilder();
-		chainObject.buildDirectlyLinkedUpstreamChain(this, startingFactor);
-		return chainObject.getFactors();
+		return chainObject.buildDirectlyLinkedUpstreamChainAndGetFactors(this, startingFactor);
 	}
 	
 	public void moveFactors(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception
