@@ -24,6 +24,7 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 	{
 		super(projectToUse, planningTreeModelToUse);
 		setTableColumnRenderer();
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 
 	public void rebuildTableCompletely()
