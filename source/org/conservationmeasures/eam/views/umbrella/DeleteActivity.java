@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -87,8 +86,7 @@ public class DeleteActivity extends ObjectsDoer
 	{
 		Vector commandsToDeleteTasks = new Vector();
 		
-		ORef parentRef = task.getOwnerRef();
-		BaseObject parentObject = project.findObject(parentRef.getObjectType(), parentRef.getObjectId());
+		BaseObject parentObject = task.getOwner();
 		CommandSetObjectData commandSetObjectData;
 		if (task.isActivity())
 			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Strategy.TAG_ACTIVITY_IDS, task.getId());
