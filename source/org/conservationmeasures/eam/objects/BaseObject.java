@@ -505,13 +505,20 @@ abstract public class BaseObject
 
 	public ORef getOwnerRef()
 	{
+		if(cachedOwnerRef != null)
+			return cachedOwnerRef;
+		
 		int[] objectTypes = getTypesThatCanOwnUs(getType());
 		for (int i=0; i<objectTypes.length; ++i)
 		{
 			ORef oref = findObjectWhoOwnesUs(objectManager, objectTypes[i], getRef());
 			if (oref != null)
-				return oref;
+			{
+				cachedOwnerRef = oref;
+				return cachedOwnerRef;
+			}
 		}
+		
 		return ORef.INVALID;
 	}
 
@@ -871,6 +878,7 @@ abstract public class BaseObject
 	
 	BaseId id;
 	StringData label;
+	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
 	private HashMap fields;
 	private Vector noneClearedFieldTags;
