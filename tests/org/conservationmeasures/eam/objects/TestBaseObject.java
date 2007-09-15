@@ -6,15 +6,16 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
-public class TestBaseObjectGetAllOwnedObjects extends EAMTestCase
+public class TestBaseObject extends EAMTestCase
 {
-	public TestBaseObjectGetAllOwnedObjects(String name)
+	public TestBaseObject(String name)
 	{
 		super(name);
 	}
@@ -29,6 +30,19 @@ public class TestBaseObjectGetAllOwnedObjects extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+	}
+	
+	public void testGetOwnerRef() throws Exception
+	{
+		ORef taskRef = project.createFactorAndReturnRef(Task.getObjectType());
+		Task task = (Task)project.findObject(taskRef);
+		assertEquals("Unset owner not invalid?", ORef.INVALID, task.getOwnerRef());
+		
+		ORef parentRef = project.createFactorAndReturnRef(Task.getObjectType());
+		Task parent = (Task)project.findObject(parentRef);
+		IdList children = new IdList(new BaseId[] {task.getId()});
+		parent.setData(Task.TAG_SUBTASK_IDS, children.toString());
+		assertEquals("Owner not detected?", parentRef, task.getOwnerRef());
 	}
 
 	public void testGetAllOwnedObjects() throws Exception
