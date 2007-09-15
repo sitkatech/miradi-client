@@ -240,8 +240,7 @@ public class ResultsChainCreatorHelper
 		{
 			Factor factor = selectedFactorCells[i].getUnderlyingObject();
 			DiagramChainObject chainObject = factor.getDiagramChainBuilder();
-			chainObject.buildNormalChain(model, factor);
-			Factor[] factorsArray = chainObject.getFactors().toFactorArray();
+			Factor[] factorsArray = chainObject.buildNormalChainAndGetFactors(model, factor).toFactorArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
 			allDiagramFactors.addAll(diagramFactors);
