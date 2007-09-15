@@ -95,6 +95,11 @@ public class DiagramModel extends DefaultGraphModel
 		return project;
 	}
 	
+	DiagramChainObject getChainBuilder()
+	{
+		return new DiagramChainObject();
+	}
+	
 	public ThreatRatingFramework getThreatRatingFramework()
 	{
 		return project.getThreatRatingFramework();
@@ -308,42 +313,42 @@ public class DiagramModel extends DefaultGraphModel
 
 	public FactorSet getDirectThreatChainNodes(Factor directThreat)
 	{
-		DiagramChainObject chainObject = new DiagramChainObject();
+		DiagramChainObject chainObject = getChainBuilder();
 		chainObject.buildDirectThreatChain(this, directThreat);
 		return chainObject.getFactors();
 	}
 	
 	public FactorSet getNodesInChain(Factor startingFactor)
 	{
-		DiagramChainObject chainObject = new DiagramChainObject();
+		DiagramChainObject chainObject = getChainBuilder();
 		chainObject.buildNormalChain(this, startingFactor);
 		return chainObject.getFactors();
 	}
 		
 	public FactorSet getAllUpstreamDownstreamNodes(Factor startingFactor)
 	{
-		DiagramChainObject chainObject = new DiagramChainObject();
+		DiagramChainObject chainObject = getChainBuilder();
 		chainObject.buildUpstreamDownstreamChain(this, startingFactor);
 		return chainObject.getFactors();
 	}
 
 	public FactorSet getAllUpstreamNodes(Factor startingFactor)
 	{
-		DiagramChainObject chainObject = new DiagramChainObject();
+		DiagramChainObject chainObject = getChainBuilder();
 		chainObject.buildUpstreamChain(this, startingFactor);
 		return chainObject.getFactors();
 	}
 	
 	public FactorSet getAllDownstreamNodes(Factor startingFactor)
 	{
-		DiagramChainObject chainObject = new DiagramChainObject();
+		DiagramChainObject chainObject = getChainBuilder();
 		chainObject.buildDownstreamChain(this, startingFactor);
 		return chainObject.getFactors();
 	}
 
 	public FactorSet getDirectlyLinkedUpstreamNodes(Factor startingFactor)
 	{
-		DiagramChainObject chainObject = new DiagramChainObject();
+		DiagramChainObject chainObject = getChainBuilder();
 		chainObject.buildDirectlyLinkedUpstreamChain(this, startingFactor);
 		return chainObject.getFactors();
 	}
