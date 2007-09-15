@@ -66,9 +66,18 @@ public class Objective extends Desire
 		return false;
 	}
 	
-	public ORefList getRelatedStrategies()
+	public ORefList getUpstreamNonDraftStrategies()
 	{
-		return objectManager.getStrategyRefsUpstreamOfObjective(getRef());
+		ORefList nonDraftStrategyRefs = new ORefList();
+		Factor[] upstreamFactors = getUpstreamFactors();
+		for(int i = 0; i < upstreamFactors.length; ++i)
+		{
+			Factor factor = upstreamFactors[i];
+			if(factor.isStrategy() && !factor.isStatusDraft())
+				nonDraftStrategyRefs.add(factor.getRef());
+		}
+
+		return nonDraftStrategyRefs;
 	}
 	
 	// TODO: Consider combining with Goal.getUpstreamObjectives

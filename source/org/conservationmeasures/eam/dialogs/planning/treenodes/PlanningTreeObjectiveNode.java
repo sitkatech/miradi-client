@@ -18,7 +18,7 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 	{
 		boolean wasAdded = attemptToAddToChildren(refToAdd);
 		
-		ORefList strategies = objective.getRelatedStrategies();
+		ORefList strategies = objective.getUpstreamNonDraftStrategies();
 		if(strategies.contains(refToAdd))
 		{
 			children.add(new PlanningTreeStrategyNode(project, refToAdd));
