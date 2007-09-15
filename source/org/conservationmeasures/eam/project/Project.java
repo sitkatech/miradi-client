@@ -359,6 +359,11 @@ public class Project
 		return createObject(objectType, objectId, null);
 	}
 	
+	public ORef createObjectAndReturnRef(int objectType, CreateObjectParameter extraInfo) throws Exception
+	{
+		return new ORef(objectType, createObject(objectType, extraInfo));
+	}
+	
 	public BaseId createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
 		return createObject(objectType, BaseId.INVALID, extraInfo);

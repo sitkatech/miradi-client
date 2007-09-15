@@ -236,6 +236,7 @@ public class ObjectManager
 				EAMObjectPool pool = getPool(objectType);
 				pool.put(realId, cmLinkage);
 				createdId = cmLinkage.getId();
+				getProjectChainBuilder().clearCaches();
 				break;
 			}
 			default:
@@ -261,6 +262,8 @@ public class ObjectManager
 			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
 		pool.remove(objectId);
 		getDatabase().deleteObject(objectType, objectId);
+		if(objectType == FactorLink.getObjectType())
+			getProjectChainBuilder().clearCaches();
 	}
 
 	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception

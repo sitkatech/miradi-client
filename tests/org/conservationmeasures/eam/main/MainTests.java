@@ -65,6 +65,7 @@ import org.conservationmeasures.eam.objects.TestObjectGetTypesThatCanReferToUs;
 import org.conservationmeasures.eam.objects.TestObjectManager;
 import org.conservationmeasures.eam.objects.TestObjective;
 import org.conservationmeasures.eam.objects.TestPlanningViewConfiguration;
+import org.conservationmeasures.eam.objects.TestProjectChainObject;
 import org.conservationmeasures.eam.objects.TestProjectMetadata;
 import org.conservationmeasures.eam.objects.TestProjectResource;
 import org.conservationmeasures.eam.objects.TestRatingCriterion;
@@ -192,7 +193,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestBendPointSelectionHelper.class));
 		suite.addTest(new TestSuite(TestLinkBendPointsMoveHandler.class));
 
-		// nodes package
+		// factors package
 		suite.addTest(new TestSuite(TestDiagramAddFactorLink.class));
 		suite.addTest(new TestSuite(TestDelete.class));
 		suite.addTest(new TestSuite(TestEamGraphCell.class));
@@ -227,6 +228,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestKeyEcologicalAttribute.class));
 		suite.addTest(new TestSuite(TestObjective.class));
 		suite.addTest(new TestSuite(TestObjectManager.class));
+		suite.addTest(new TestSuite(TestProjectChainObject.class));
 		suite.addTest(new TestSuite(TestProjectMetadata.class));
 		suite.addTest(new TestSuite(TestProjectResource.class));
 		suite.addTest(new TestSuite(TestTask.class));
