@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 
 public class ProjectChainObject  extends ChainObject
 {
-	public void buildDirectThreatChain(Factor factor)
+	private void buildDirectThreatChain(Factor factor)
 	{
 		initializeChain(factor);
 		if(startingFactor.isDirectThreat())
@@ -66,7 +66,7 @@ public class ProjectChainObject  extends ChainObject
 		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
-	public FactorSet getAllLinkedFactors(int direction)
+	FactorSet getAllLinkedFactors(int direction)
 	{
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
@@ -98,7 +98,7 @@ public class ProjectChainObject  extends ChainObject
 		return linkedFactors;
 	}
 
-	public FactorSet getDirectlyLinkedFactors(int direction)
+	FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
