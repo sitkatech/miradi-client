@@ -361,7 +361,7 @@ abstract public class Factor extends BaseObject
 	
 	private String getFactorRelatedDirectThreats()
 	{
-		ProjectChainObject chain = getChainBuilder();
+		ProjectChainObject chain = getProjectChainBuilder();
 		chain.buildNormalChain(this);
 		DirectThreatSet directThreats = new DirectThreatSet(chain.getFactors());
 		
@@ -370,7 +370,7 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedTargets()
 	{
-		ProjectChainObject chain = getChainBuilder();
+		ProjectChainObject chain = getProjectChainBuilder();
 		chain.buildNormalChain(this);
 		TargetSet directThreats = new TargetSet(chain.getFactors());
 		
