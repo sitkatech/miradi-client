@@ -45,7 +45,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 	{
 		HashSet indicatorIds = getFactorIndicatorIds(factor);
 		
-		ProjectChainObject chainObject = new ProjectChainObject();
+		ProjectChainObject chainObject = factor.getChainBuilder();
 		chainObject.buildUpstreamChain(factor);
 		FactorSet chain = chainObject.getFactors();
 		Iterator chainNodesIterator = chain.iterator();

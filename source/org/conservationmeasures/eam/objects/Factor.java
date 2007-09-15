@@ -351,7 +351,7 @@ abstract public class Factor extends BaseObject
 	
 	private String getFactorRelatedDirectThreats()
 	{
-		ProjectChainObject chain = new ProjectChainObject();
+		ProjectChainObject chain = getChainBuilder();
 		chain.buildNormalChain(this);
 		DirectThreatSet directThreats = new DirectThreatSet(chain.getFactors());
 		
@@ -360,7 +360,7 @@ abstract public class Factor extends BaseObject
 
 	private String getFactorRelatedTargets()
 	{
-		ProjectChainObject chain = new ProjectChainObject();
+		ProjectChainObject chain = getChainBuilder();
 		chain.buildNormalChain(this);
 		TargetSet directThreats = new TargetSet(chain.getFactors());
 		
@@ -379,7 +379,7 @@ abstract public class Factor extends BaseObject
 	
 	private String getFactorDesires(int desireType, String desireIdsTag)
 	{
-		ProjectChainObject chain = new ProjectChainObject();
+		ProjectChainObject chain = getChainBuilder();
 		chain.buildDownstreamChain(this);
 		
 		IdList allDesireIds = new IdList();
