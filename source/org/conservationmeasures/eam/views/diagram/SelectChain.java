@@ -97,15 +97,13 @@ public class SelectChain extends ViewDoer
 			DiagramChainObject upstreamChain = new DiagramChainObject();
 			Factor from = diagramModel.getProject().findNode(cell.getFrom().getWrappedId());
 			upstreamChain.buildUpstreamChain(diagramModel, from);
+			Factor[] upstreamFactors = upstreamChain.getFactorsArray();
+			nodes.addAll(Arrays.asList(upstreamFactors));
 			
 			DiagramChainObject downstreamChain = new DiagramChainObject();
 			Factor to = diagramModel.getProject().findNode(cell.getTo().getWrappedId());
 			downstreamChain.buildDownstreamChain(diagramModel, to);
-			
-			Factor[] upstreamFactors = upstreamChain.getFactorsArray();
 			Factor[] downstreamFactors = downstreamChain.getFactorsArray();
-			
-			nodes.addAll(Arrays.asList(upstreamFactors));
 			nodes.addAll(Arrays.asList(downstreamFactors));
 		}
 		return (Factor[])nodes.toArray(new Factor[0]);
