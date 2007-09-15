@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
@@ -113,5 +114,5 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
 	private BudgetTotalsCalculator totalCalculator;
 	private Project project;
 	
-	private static final String COST_COLUMN_NAME = "Total";
+	private static final String COST_COLUMN_NAME = EAM.text("Budget Total ($)");
 }
