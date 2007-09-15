@@ -44,7 +44,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model);
 	}
 	
-	private PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeModel modelToUse)
+	private PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
@@ -52,9 +52,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		addSyncedAnnualsTotalsTable(treeToUse);
 	}
 
-	private void createBudgetTable(PlanningTreeTable treeTableToUse)
+	private void createBudgetTable(PlanningTreeTable treeTableToUse) throws Exception
 	{
-		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel((TreeTableModelAdapter)treeTableToUse.getModel());
+		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), (TreeTableModelAdapter)treeTableToUse.getModel());
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel);		
 	}
 	
