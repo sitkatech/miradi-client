@@ -21,6 +21,15 @@ import org.conservationmeasures.eam.project.ChainObject;
 //factor so that many of these methods could be moved to the super
 public class DiagramChainObject extends ChainObject
 {
+	public FactorLink[] buildNormalChainAndGetFactorLinks(DiagramModel model, Factor factor)
+	{
+		buildNormalChain(model, factor);
+		return getFactorLinksArray();
+	}
+	
+
+	
+	
 	public void buildDirectThreatChain(DiagramModel model, Factor factor)
 	{
 		initializeChain(model, factor);
