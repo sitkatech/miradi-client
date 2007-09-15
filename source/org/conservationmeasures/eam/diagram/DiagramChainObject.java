@@ -27,7 +27,41 @@ public class DiagramChainObject extends ChainObject
 		return getFactorLinksArray();
 	}
 	
-
+	public FactorSet buildNormalChainAndGetFactors(DiagramModel model, Factor factor)
+	{
+		buildNormalChain(model, factor);
+		return getFactors();
+	}
+	
+	public FactorSet buildUpstreamChainAndGetFactors(DiagramModel model, Factor factor)
+	{
+		buildUpstreamChain(model, factor);
+		return getFactors();
+	}
+	
+	public FactorSet buildDownstreamChainAndGetFactors(DiagramModel model, Factor factor)
+	{
+		buildDownstreamChain(model, factor);
+		return getFactors();
+	}
+	
+	public FactorSet buildUpstreamDownstreamChainAndGetFactors(DiagramModel model, Factor factor)
+	{
+		buildUpstreamDownstreamChain(model, factor);
+		return getFactors();
+	}
+	
+	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramModel model, Factor factor)
+	{
+		buildDirectlyLinkedUpstreamChain(model, factor);
+		return getFactors();
+	}
+	
+	public FactorSet buildDirectThreatChainAndGetFactors(DiagramModel model, Factor factor)
+	{
+		buildDirectThreatChain(model, factor);
+		return getFactors();
+	}
 	
 	
 	public void buildDirectThreatChain(DiagramModel model, Factor factor)
