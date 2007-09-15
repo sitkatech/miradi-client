@@ -71,7 +71,7 @@ public class DiagramChainObject extends ChainObject
 		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
-	public FactorSet getAllLinkedFactors(int direction)
+	FactorSet getAllLinkedFactors(int direction)
 	{
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
@@ -104,7 +104,7 @@ public class DiagramChainObject extends ChainObject
 		return linkedFactors;
 	}
 
-	public FactorSet getDirectlyLinkedFactors(int direction)
+	FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
