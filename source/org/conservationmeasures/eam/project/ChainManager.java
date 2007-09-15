@@ -19,22 +19,6 @@ public class ChainManager
 		project = projectToUse;
 	}
 	
-	public Factor getDirectOrIndirectOwningFactor(ORef ref) throws Exception
-	{
-		BaseObject owner = getProject().findObject(ref);
-		int AVOID_INFINITE_LOOP = 10000;
-		for(int i = 0; i < AVOID_INFINITE_LOOP; ++i)
-		{
-			if(Factor.isFactor(owner.getType()))
-				return (Factor)owner;
-			owner = owner.getOwner();
-			if(owner == null)
-				break;
-		}
-		return null;
-	}
- 
-
 	public FactorSet findAllFactorsRelatedToThisIndicator(BaseId indicatorId) throws Exception
 	{
 		ORef ref = new ORef(ObjectType.INDICATOR, indicatorId);
@@ -55,7 +39,8 @@ public class ChainManager
 
 	public FactorSet findAllFactorsRelatedToThisObject(ORef ref) throws Exception
 	{
-		Factor owningFactor = getDirectOrIndirectOwningFactor(ref);
+		BaseObject owner = getProject().findObject(ref);
+		Factor owningFactor = owner.getDirectOrIndirectOwningFactor();
 		FactorSet relatedFactors = new FactorSet();
 		
 		if(owningFactor != null)
