@@ -18,7 +18,7 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 	{
 		boolean wasAdded = attemptToAddToChildren(refToAdd);
 			
-		ORefList objectives = goal.getObjectivesUpstreamOfGoal();
+		ORefList objectives = goal.getUpstreamObjectives();
 		if(objectives.contains(refToAdd))
 		{
 			children.add(new PlanningTreeObjectiveNode(project, refToAdd));
