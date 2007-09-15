@@ -81,14 +81,14 @@ public class Objective extends Desire
 	}
 	
 	// TODO: Consider combining with Goal.getUpstreamObjectives
-	public ORefList getUpstreamAndDownstreamIndicators()
+	public ORefList getUpstreamIndicators()
 	{
 		ORefList indicatorRefs = new ORefList();
 		
-		Factor[] upstreamDownstreamFactors = getUpstreamDownstreamFactors();
-		for(int i = 0; i < upstreamDownstreamFactors.length; ++i)
+		Factor[] upstreamFactors = getUpstreamFactors();
+		for(int i = 0; i < upstreamFactors.length; ++i)
 		{
-			IdList indicatorIds = upstreamDownstreamFactors[i].getDirectOrIndirectIndicators();
+			IdList indicatorIds = upstreamFactors[i].getDirectOrIndirectIndicators();
 			for(int idIndex = 0; idIndex < indicatorIds.size(); ++idIndex)
 			{
 				BaseId indicatorId = indicatorIds.get(idIndex);

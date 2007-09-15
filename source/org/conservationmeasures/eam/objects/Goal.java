@@ -63,7 +63,7 @@ public class Goal extends Desire
 		return false;
 	}
 	
-	// TODO: Consider combining with Objective.getUpstreamDownstreamIndicators
+	// TODO: Consider combining with Objective.getUpstreamIndicators
 	public ORefList getUpstreamObjectives()
 	{
 		ORefList objectiveRefs = new ORefList();
