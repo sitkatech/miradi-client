@@ -38,8 +38,8 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanelWithDescript
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
-		assignmentEditor.setObjectRefs(hierarchyToSelectedRef);
 		taskPropertiesInputPanel.setObjectRefs(hierarchyToSelectedRef);
+		assignmentEditor.setObjectRefs(hierarchyToSelectedRef);
 	}
 	
 	public String getPanelDescription()
