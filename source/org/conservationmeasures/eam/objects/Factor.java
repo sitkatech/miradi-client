@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
@@ -362,8 +363,8 @@ abstract public class Factor extends BaseObject
 	private String getFactorRelatedDirectThreats()
 	{
 		ProjectChainObject chain = getProjectChainBuilder();
-		chain.buildNormalChain(this);
-		DirectThreatSet directThreats = new DirectThreatSet(chain.getFactors());
+		FactorSet factors = chain.buildNormalChainAndGetFactors(this);
+		DirectThreatSet directThreats = new DirectThreatSet(factors);
 		
 		return getLabelsAsMultiline(directThreats);
 	}
@@ -371,8 +372,8 @@ abstract public class Factor extends BaseObject
 	private String getFactorRelatedTargets()
 	{
 		ProjectChainObject chain = getProjectChainBuilder();
-		chain.buildNormalChain(this);
-		TargetSet directThreats = new TargetSet(chain.getFactors());
+		FactorSet factors = chain.buildNormalChainAndGetFactors(this);
+		TargetSet directThreats = new TargetSet(factors);
 		
 		return getLabelsAsMultiline(directThreats);
 	}

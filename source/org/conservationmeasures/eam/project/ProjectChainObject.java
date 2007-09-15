@@ -28,6 +28,12 @@ public class ProjectChainObject  extends ChainObject
 		return getFactors();
 	}
 	
+	public FactorSet buildNormalChainAndGetFactors(Factor factor)
+	{
+		buildNormalChain(factor);
+		return getFactors();
+	}
+	
 	private void buildDirectThreatChain(Factor factor)
 	{
 		initializeChain(factor);
