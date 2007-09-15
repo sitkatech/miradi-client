@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.DiagramChainObject;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
@@ -129,6 +130,11 @@ abstract public class BaseObject
 	public ProjectChainObject getProjectChainBuilder()
 	{
 		return getObjectManager().getProjectChainBuilder();
+	}
+	
+	public DiagramChainObject getDiagramChainBuilder()
+	{
+		return getObjectManager().getDiagramChainBuilder();
 	}
 		
 	public static BaseObject createFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json) throws Exception
