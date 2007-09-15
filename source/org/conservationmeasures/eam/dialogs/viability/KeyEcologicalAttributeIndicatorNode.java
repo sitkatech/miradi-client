@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.viability;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -63,11 +62,6 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 		return getObject().getData(tag);
 	}
 
-	ChainManager getChainManager()
-	{
-		return new ChainManager(project);
-	}
-	
 	public void rebuild() throws Exception
 	{
 	}
