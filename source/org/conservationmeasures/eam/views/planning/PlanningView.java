@@ -10,9 +10,16 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
+import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
+import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
 import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfiguration;
+import org.conservationmeasures.eam.actions.ActionCreateResource;
+import org.conservationmeasures.eam.actions.ActionDeleteAccountingCode;
+import org.conservationmeasures.eam.actions.ActionDeleteFundingSource;
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
+import org.conservationmeasures.eam.actions.ActionDeleteResource;
+import org.conservationmeasures.eam.actions.ActionImportAccountingCodes;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionTreeCreateActivityIconOnly;
@@ -21,6 +28,9 @@ import org.conservationmeasures.eam.actions.ActionTreeCreateTaskIconOnly;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.AccountingCodePoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.FundingSourcePoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTablePanel;
@@ -35,6 +45,11 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.AddAssignmentDoer;
+import org.conservationmeasures.eam.views.budget.CreateAccountingCodeDoer;
+import org.conservationmeasures.eam.views.budget.CreateFundingSourceDoer;
+import org.conservationmeasures.eam.views.budget.DeleteAccountingCodeDoer;
+import org.conservationmeasures.eam.views.budget.DeleteFundingSourceDoer;
+import org.conservationmeasures.eam.views.budget.ImportAccountingCodesDoer;
 import org.conservationmeasures.eam.views.budget.RemoveAssignmentDoer;
 import org.conservationmeasures.eam.views.planning.doers.CreatePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.planning.doers.DeletePlanningViewConfigurationDoer;
@@ -45,6 +60,8 @@ import org.conservationmeasures.eam.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeDeleteDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeDownDoer;
 import org.conservationmeasures.eam.views.planning.doers.TreeNodeUpDoer;
+import org.conservationmeasures.eam.views.umbrella.CreateResource;
+import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 
 public class PlanningView extends TabbedView
 {
@@ -58,6 +75,9 @@ public class PlanningView extends TabbedView
 	{
 		super.becomeActive();
 		planningManagementPanel.updateSplitterLocation();
+		resourceManagementPanel.updateSplitterLocation();
+		accountingCodePoolManagementPanel.updateSplitterLocation();
+		fundingSourcePoolManagementPanel.updateSplitterLocation();
 	}
 	
 	public void createTabs() throws Exception
@@ -66,6 +86,9 @@ public class PlanningView extends TabbedView
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable) planningTreeTablePanel.getTree();
 		PlanningTreePropertiesPanel planningTreePropertiesPanel = new PlanningTreePropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
+		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
+		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
+		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
 		
 		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
 		JScrollPane controlPanelScroller = new FastScrollPane(controlPanel);
@@ -78,12 +101,24 @@ public class PlanningView extends TabbedView
 		horizontalSplitPane.setDividerLocation(controlPanel.getPreferredSize().width + 30);
 		
 		addTab(EAM.text("Planning"), horizontalSplitPane);
+		addNonScrollableTab(resourceManagementPanel);
+		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);
+		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel.getIcon(), fundingSourcePoolManagementPanel);
 	}
 
 	public void deleteTabs() throws Exception
 	{
 		planningManagementPanel.dispose();
 		planningManagementPanel = null;
+		
+		resourceManagementPanel.dispose();
+		resourceManagementPanel = null;
+		
+		accountingCodePoolManagementPanel.dispose();
+		accountingCodePoolManagementPanel = null;
+		
+		fundingSourcePoolManagementPanel.dispose();
+		fundingSourcePoolManagementPanel = null;
 		
 		controlPanel.dispose();
 	}
@@ -116,6 +151,16 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeCreateActivityIconOnly.class, new TreeNodeCreateActivityDoer());
 		addDoerToMap(ActionTreeCreateMethodIconOnly.class, new TreeNodeCreateMethodDoer());
 		addDoerToMap(ActionTreeCreateTaskIconOnly.class, new TreeNodeCreateTaskDoer());
+				
+		addDoerToMap(ActionCreateResource.class, new CreateResource());
+		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
+
+		addDoerToMap(ActionCreateAccountingCode.class, new CreateAccountingCodeDoer());
+		addDoerToMap(ActionDeleteAccountingCode.class, new DeleteAccountingCodeDoer());
+		addDoerToMap(ActionImportAccountingCodes.class, new ImportAccountingCodesDoer());
+
+		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
+		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());		
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandSetObjectData cmd)
@@ -159,6 +204,9 @@ public class PlanningView extends TabbedView
 	public static final String SINGLE_LEVEL_COMBO = "SingleLevelCombo";
 	public static final String CUSTOMIZABLE_COMBO = "CostomizableCombo";
 	
-	PlanningTreeManagementPanel planningManagementPanel;
-	PlanningViewControlPanel controlPanel;
+	private PlanningViewControlPanel controlPanel;
+	private PlanningTreeManagementPanel planningManagementPanel;
+	private ResourcePoolManagementPanel resourceManagementPanel;
+	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
+	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
 }
