@@ -241,7 +241,7 @@ public class ResultsChainCreatorHelper
 			Factor factor = selectedFactorCells[i].getUnderlyingObject();
 			DiagramChainObject chainObject = factor.getDiagramChainBuilder();
 			chainObject.buildNormalChain(model, factor);
-			Factor[] factorsArray = chainObject.getFactorsArray();
+			Factor[] factorsArray = chainObject.getFactors().toFactorArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
 			allDiagramFactors.addAll(diagramFactors);
