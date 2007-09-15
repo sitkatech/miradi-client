@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
@@ -37,8 +36,7 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 			if (! task.isActivity())
 				continue;
 			
-			ORef parentRef = task.getOwnerRef();
-			Factor factor = (Factor)project.findObject(parentRef);
+			Factor factor = (Factor)task.getOwner();
 			if (factor.isStatusDraft())
 				continue;
 			
