@@ -23,11 +23,6 @@ abstract public class ChainObject
 		return factorSet;
 	}
 
-	public Factor[] getFactorsArray()
-	{	
-		return (Factor[])factorSet.toArray(new Factor[0]);
-	}
-
 	protected FactorLink[] getFactorLinksArray()
 	{
 		return (FactorLink[])processedLinks.toArray(new FactorLink[0]);

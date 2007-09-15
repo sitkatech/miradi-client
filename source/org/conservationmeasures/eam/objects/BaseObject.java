@@ -441,7 +441,7 @@ abstract public class BaseObject
 		
 		ProjectChainObject chainObject = getProjectChainBuilder();
 		chainObject.buildUpstreamDownstreamChain(owner);
-		return chainObject.getFactorsArray();
+		return chainObject.getFactors().toFactorArray();
 	}
 	
 	public Factor[] getUpstreamFactors()
@@ -452,7 +452,7 @@ abstract public class BaseObject
 		
 		ProjectChainObject chainObject = getProjectChainBuilder();
 		chainObject.buildUpstreamChain(owner);
-		return chainObject.getFactorsArray();
+		return chainObject.getFactors().toFactorArray();
 	}
 	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
