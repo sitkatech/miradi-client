@@ -68,7 +68,7 @@ public class ObjectManager
 	public ObjectManager(Project projectToUse)
 	{
 		project = projectToUse;
-		chainBuilder = new ProjectChainObject();
+		projectChainBuilder = new ProjectChainObject();
 
 		pools = new HashMap();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
@@ -103,9 +103,9 @@ public class ObjectManager
 		addNormalPool(new PlanningViewConfigurationPool(ida));
 	}
 	
-	public ProjectChainObject getChainBuilder()
+	public ProjectChainObject getProjectChainBuilder()
 	{
-		return chainBuilder;
+		return projectChainBuilder;
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -437,6 +437,6 @@ public class ObjectManager
 	}
 
 	Project project;
-	ProjectChainObject chainBuilder;
+	ProjectChainObject projectChainBuilder;
 	HashMap pools;
 }
