@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.reports.ChainManager;
 
 public class TestChainManager extends EAMTestCase
 {
@@ -24,6 +25,12 @@ public class TestChainManager extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+	}
+	
+	public void testBasics()
+	{
+		// TODO: if ChainManager still exists, it would be nice to have tests for it
+		new ChainManager(project);
 	}
 	
 	ProjectForTesting project;
