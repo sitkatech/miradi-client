@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -412,28 +411,6 @@ public class ObjectManager
 		}
 		
 		return foundObjects;
-	}
-	
-	//TODO rename this method
-	public ORefList getPseudoChildren(ORef ref, int typeToFind, String tag) throws Exception
-	{
-		ORefList pseudoChildRefs = new ORefList();
-		FactorSet relatedNodes = new ChainManager(getProject()).findAllFactorsRelatedToThisObject(ref);
-		Iterator iter = relatedNodes.iterator();
-		while(iter.hasNext())
-		{
-			Factor factor = (Factor)iter.next();
-			IdList ids = new IdList(factor.getData(tag));
-			for(int i = 0; i < ids.size(); ++i)
-			{
-				if(ids.get(i).isInvalid())
-					continue;
-
-				pseudoChildRefs.add(new ORef(typeToFind, ids.get(i)));
-			}
-		}
-
-		return pseudoChildRefs;
 	}
 	
 	public ORefList getStrategyRefsUpstreamOfObjective(ORef objectiveRef)

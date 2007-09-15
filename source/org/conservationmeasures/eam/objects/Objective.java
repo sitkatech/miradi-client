@@ -6,11 +6,13 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ObjectiveId;
-import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -70,18 +72,31 @@ public class Objective extends Desire
 		return objectManager.getStrategyRefsUpstreamOfObjective(getRef());
 	}
 	
-	public ORefList getRelatedIndicators()
+	// TODO: Consider combining with Goal.getUpstreamObjectives
+	public ORefList getUpstreamAndDownstreamIndicators()
 	{
-		try
+		ORefList indicatorRefs = new ORefList();
+		
+		Factor owner = getDirectOrIndirectOwningFactor();
+		if(owner == null)
+			return new ORefList();
+		ProjectChainObject chainObject = new ProjectChainObject();
+		chainObject.buildUpstreamDownstreamChain(owner);
+		Factor[] upstreamDownstreamFactors = chainObject.getFactorsArray();
+		for(int i = 0; i < upstreamDownstreamFactors.length; ++i)
 		{
-			return objectManager.getPseudoChildren(getRef(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
+			IdList indicatorIds = upstreamDownstreamFactors[i].getDirectOrIndirectIndicators();
+			for(int idIndex = 0; idIndex < indicatorIds.size(); ++idIndex)
+			{
+				BaseId indicatorId = indicatorIds.get(idIndex);
+				if(indicatorId.isInvalid())
+					continue;
+				indicatorRefs.add(new ORef(Indicator.getObjectType(), indicatorId));
+			}
 		}
 		
-		return new ORefList();
+		return indicatorRefs;
+		
 	}
 
 	public static final String OBJECT_NAME = "Objective";	
