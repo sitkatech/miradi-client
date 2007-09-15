@@ -6,16 +6,29 @@
 
 package org.conservationmeasures.eam.project;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 
 public class ProjectChainObject  extends ChainObject
 {
+	public ProjectChainObject()
+	{
+		clearCaches();
+	}
+
+	void clearCaches()
+	{
+		cachedUpstreamChain = new HashMap();
+		cachedDownstreamChain = new HashMap();
+	}
+	
 	public FactorSet buildUpstreamChainAndGetFactors(Factor factor)
 	{
 		buildUpstreamChain(factor);
@@ -86,6 +99,9 @@ public class ProjectChainObject  extends ChainObject
 	
 	protected FactorSet getAllLinkedFactors(int direction)
 	{
+		HashMap<ORef, FactorSet> cache = getCache(direction);
+		if(cache.containsKey(startingFactor.getRef()))
+			return cache.get(startingFactor.getRef());
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
 		linkedFactors.attemptToAdd(startingFactor);
@@ -113,6 +129,7 @@ public class ProjectChainObject  extends ChainObject
 			unprocessedFactors.remove(thisFactor);
 		}
 		
+		cache.put(startingFactor.getRef(), linkedFactors);
 		return linkedFactors;
 	}
 
@@ -130,10 +147,26 @@ public class ProjectChainObject  extends ChainObject
 		return results;
 	}
 	
+	private HashMap<ORef, FactorSet> getCache(int direction)
+	{
+		switch(direction)
+		{
+			case FactorLink.FROM:
+				return cachedDownstreamChain;
+			case FactorLink.TO:
+				return cachedUpstreamChain;
+		}
+		
+		throw new RuntimeException("Unknown direction: " + direction);
+	}
+	
 	private void initializeChain(Factor factor)
 	{
 		this.startingFactor = factor;
 		factorSet = new FactorSet();
 		processedLinks = new Vector();
 	}
+	
+	HashMap<ORef, FactorSet> cachedUpstreamChain;
+	HashMap<ORef, FactorSet> cachedDownstreamChain;
 }
