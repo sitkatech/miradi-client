@@ -763,15 +763,18 @@ abstract public class BaseObject
 	
 	public Factor getDirectOrIndirectOwningFactor()
 	{
-		BaseObject owner = this;
+		ORef ownerRef = getRef();
 		int AVOID_INFINITE_LOOP = 10000;
 		for(int i = 0; i < AVOID_INFINITE_LOOP; ++i)
 		{
+			if(ownerRef.isInvalid())
+				return null;
+			
+			BaseObject owner = getObjectManager().findObject(ownerRef);
 			if(Factor.isFactor(owner.getType()))
 				return (Factor)owner;
-			owner = owner.getOwner();
-			if(owner == null)
-				break;
+			
+			ownerRef = owner.getOwnerRef();
 		}
 		return null;
 	}
