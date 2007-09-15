@@ -28,7 +28,7 @@ abstract public class ChainObject
 		return (Factor[])factorSet.toArray(new Factor[0]);
 	}
 
-	public FactorLink[] getFactorLinksArray()
+	protected FactorLink[] getFactorLinksArray()
 	{
 		return (FactorLink[])processedLinks.toArray(new FactorLink[0]);
 	}
