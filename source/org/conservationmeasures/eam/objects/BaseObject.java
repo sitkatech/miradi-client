@@ -125,6 +125,11 @@ abstract public class BaseObject
 	{
 		return objectManager.getProject();
 	}
+	
+	public ProjectChainObject getChainBuilder()
+	{
+		return getObjectManager().getChainBuilder();
+	}
 		
 	public static BaseObject createFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json) throws Exception
 	{
@@ -428,7 +433,7 @@ abstract public class BaseObject
 		if(owner == null)
 			return new Factor[0];
 		
-		ProjectChainObject chainObject = new ProjectChainObject();
+		ProjectChainObject chainObject = getChainBuilder();
 		chainObject.buildUpstreamDownstreamChain(owner);
 		return chainObject.getFactorsArray();
 	}
@@ -439,7 +444,7 @@ abstract public class BaseObject
 		if(owner == null)
 			return new Factor[0];
 		
-		ProjectChainObject chainObject = new ProjectChainObject();
+		ProjectChainObject chainObject = getChainBuilder();
 		chainObject.buildUpstreamChain(owner);
 		return chainObject.getFactorsArray();
 	}

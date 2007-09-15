@@ -102,6 +102,11 @@ public class ObjectManager
 		addNormalPool(new SlideShowPool(ida));
 		addNormalPool(new PlanningViewConfigurationPool(ida));
 	}
+	
+	public ProjectChainObject getChainBuilder()
+	{
+		return chainBuilder;
+	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
 	{
