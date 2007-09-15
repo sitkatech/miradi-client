@@ -199,7 +199,7 @@ public class TestDiagramModel extends EAMTestCase
 	
 	private Set getLabelSet(FactorSet gotChainNodes)
 	{
-		Factor[] factors = gotChainNodes.toNodeArray();
+		Factor[] factors = gotChainNodes.toFactorArray();
 		HashSet set = new HashSet();
 		for (int i = 0; i < factors.length; ++i)
 		{

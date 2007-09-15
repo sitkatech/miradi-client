@@ -28,7 +28,7 @@ public class FactorSet implements Collection
 	
 	public void attemptToAddAll(FactorSet nodesToAdd)
 	{
-		attemptToAddAll(nodesToAdd.toNodeArray());
+		attemptToAddAll(nodesToAdd.toFactorArray());
 	}
 	
 	public void attemptToAddAll(Factor[] nodesToAdd)
@@ -56,7 +56,7 @@ public class FactorSet implements Collection
 
 	}
 
-	public Factor[] toNodeArray()
+	public Factor[] toFactorArray()
 	{
 		return (Factor[])nodes.toArray(new Factor[0]);
 
