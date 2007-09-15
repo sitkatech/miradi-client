@@ -44,7 +44,7 @@ public class ProjectChainObject  extends ChainObject
 		}
 	}
 
-	public void buildNormalChain(Factor factor)
+	protected void buildNormalChain(Factor factor)
 	{
 		initializeChain(factor);
 		if (startingFactor.isDirectThreat())
@@ -53,32 +53,32 @@ public class ProjectChainObject  extends ChainObject
 			buildUpstreamDownstreamChain(factor);
 	}
 	
-	public void buildUpstreamDownstreamChain(Factor factor)
+	protected void buildUpstreamDownstreamChain(Factor factor)
 	{
 		initializeChain(factor);
 		factorSet.attemptToAddAll(getAllDownstreamFactors());
 		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
-	public void buildUpstreamChain(Factor factor)
+	protected void buildUpstreamChain(Factor factor)
 	{
 		initializeChain(factor);
 		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
-	public void buildDownstreamChain(Factor factor)
+	protected void buildDownstreamChain(Factor factor)
 	{
 		initializeChain(factor);
 		factorSet.attemptToAddAll(getAllDownstreamFactors());
 	}
 	
-	public void buidDirectlyLinkedDownstreamChain(Factor factor)
+	protected void buidDirectlyLinkedDownstreamChain(Factor factor)
 	{
 		initializeChain(factor);
 		factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
 	}
 	
-	public void buildDirectlyLinkedUpstreamChain(Factor factor)
+	protected void buildDirectlyLinkedUpstreamChain(Factor factor)
 	{
 		initializeChain(factor);
 		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());

@@ -64,7 +64,7 @@ public class DiagramChainObject extends ChainObject
 	}
 	
 	
-	public void buildDirectThreatChain(DiagramModel model, Factor factor)
+	protected void buildDirectThreatChain(DiagramModel model, Factor factor)
 	{
 		initializeChain(model, factor);
 		if(startingFactor.isDirectThreat())
@@ -74,7 +74,7 @@ public class DiagramChainObject extends ChainObject
 		}
 	}
 
-	public void buildNormalChain(DiagramModel model, Factor factor)
+	protected void buildNormalChain(DiagramModel model, Factor factor)
 	{
 		initializeChain(model, factor);
 		if (startingFactor.isDirectThreat())
@@ -83,32 +83,32 @@ public class DiagramChainObject extends ChainObject
 			buildUpstreamDownstreamChain(model, factor);
 	}
 	
-	public void buildUpstreamDownstreamChain(DiagramModel model, Factor factor)
+	protected void buildUpstreamDownstreamChain(DiagramModel model, Factor factor)
 	{
 		initializeChain(model, factor);
 		factorSet.attemptToAddAll(getAllDownstreamFactors());
 		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
-	public void buildUpstreamChain(DiagramModel model, Factor factor)
+	protected void buildUpstreamChain(DiagramModel model, Factor factor)
 	{
 		initializeChain(model, factor);
 		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
-	public void buildDownstreamChain(DiagramModel model, Factor factor)
+	protected void buildDownstreamChain(DiagramModel model, Factor factor)
 	{
 		initializeChain(model, factor);
 		factorSet.attemptToAddAll(getAllDownstreamFactors());
 	}
 	
-	public void buidDirectlyLinkedDownstreamChain(DiagramModel model, Factor factor)
+	protected void buidDirectlyLinkedDownstreamChain(DiagramModel model, Factor factor)
 	{
 		initializeChain(model, factor);
 		factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
 	}
 	
-	public void buildDirectlyLinkedUpstreamChain(DiagramModel model, Factor factor)
+	protected void buildDirectlyLinkedUpstreamChain(DiagramModel model, Factor factor)
 	{
 		initializeChain(model, factor);
 		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());

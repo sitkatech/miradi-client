@@ -18,7 +18,7 @@ abstract public class ChainObject
 	abstract protected FactorSet getDirectlyLinkedFactors(int direction);
 
 
-	public FactorSet getFactors()
+	protected FactorSet getFactors()
 	{
 		return factorSet;
 	}
