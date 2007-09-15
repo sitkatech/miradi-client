@@ -498,7 +498,7 @@ abstract public class BaseObject
 	public BaseObject getOwner()
 	{
 		ORef oref = getOwnerRef();
-		if (oref==null)
+		if (oref==null || oref.isInvalid())
 			return null;
 		return objectManager.findObject(oref);
 	}
