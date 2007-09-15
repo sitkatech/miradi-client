@@ -512,7 +512,7 @@ abstract public class BaseObject
 			if (oref != null)
 				return oref;
 		}
-		return null;
+		return ORef.INVALID;
 	}
 
 	
