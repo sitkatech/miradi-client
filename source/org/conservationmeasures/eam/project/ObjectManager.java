@@ -70,6 +70,7 @@ public class ObjectManager
 	public ObjectManager(Project projectToUse)
 	{
 		project = projectToUse;
+		chainBuilder = new ProjectChainObject();
 
 		pools = new HashMap();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
@@ -419,7 +420,6 @@ public class ObjectManager
 		
 		Objective objective = (Objective)findObject(objectiveRef);
 		Factor owner = (Factor)objective.getOwner();
-		ProjectChainObject chainBuilder = new ProjectChainObject();
 		chainBuilder.buildUpstreamChain(owner);
 		FactorSet upstreamFactors = chainBuilder.getFactors();
 		Iterator iter = upstreamFactors.iterator();
@@ -447,5 +447,6 @@ public class ObjectManager
 	}
 
 	Project project;
+	ProjectChainObject chainBuilder;
 	HashMap pools;
 }
