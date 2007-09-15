@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -60,6 +59,7 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.IntermediateResult;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
@@ -442,38 +442,26 @@ public class ObjectManager
 		return pseudoChildRefs;
 	}
 	
-	 //TODO given an objective you should be able to get its owner which would be a factor, 
-	// then you would ask for all upstream factors from there, and filter to only pay 
-	// attention to non-draft strats
 	public ORefList getStrategyRefsUpstreamOfObjective(ORef objectiveRef)
 	{
-		ObjectiveId objectiveId = (ObjectiveId) objectiveRef.getObjectId();
-		Factor[] strategyObjects = project.getStrategyPool().getNonDraftStrategies();
 		ORefList strategyRefs = new ORefList();
-		for(int i = 0; i < strategyObjects.length; ++i)
+		
+		Objective objective = (Objective)findObject(objectiveRef);
+		Factor owner = (Factor)objective.getOwner();
+		ProjectChainObject chainBuilder = new ProjectChainObject();
+		chainBuilder.buildUpstreamChain(owner);
+		FactorSet upstreamFactors = chainBuilder.getFactors();
+		Iterator iter = upstreamFactors.iterator();
+		while(iter.hasNext())
 		{
-			Strategy strategy = (Strategy)strategyObjects[i];
-			if(doesChainContainObjective(strategy, objectiveId))
-				strategyRefs.add(strategy.getRef());
+			Factor factor = (Factor)iter.next();
+			if(factor.isStrategy() && !factor.isStatusDraft())
+				strategyRefs.add(factor.getRef());
 		}
 		
 		return strategyRefs;
 	}
 
-	public boolean doesChainContainObjective(Factor chainMember, ObjectiveId objectiveId)
-	{
-		ProjectChainObject chainObject = new ProjectChainObject();
-		chainObject.buildUpstreamDownstreamChain(chainMember);
-		Factor[] chainNodes = chainObject.getFactorsArray();
-		for(int i = 0; i < chainNodes.length; ++i)
-		{
-			if(chainNodes[i].getObjectives().contains(objectiveId))
-				return true;
-		}
-		
-		return false;
-	}
-	
 	public ORefList getAllDiagramObjectRefs()
 	{
 		ORefList conceptualModels = getConceptualModelDiagramPool().getORefList();
