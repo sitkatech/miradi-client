@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
+import org.conservationmeasures.eam.diagram.DiagramChainObject;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -69,6 +70,7 @@ public class ObjectManager
 	{
 		project = projectToUse;
 		projectChainBuilder = new ProjectChainObject();
+		diagramChainBuilder = new DiagramChainObject();
 
 		pools = new HashMap();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
@@ -106,6 +108,11 @@ public class ObjectManager
 	public ProjectChainObject getProjectChainBuilder()
 	{
 		return projectChainBuilder;
+	}
+	
+	public DiagramChainObject getDiagramChainBuilder()
+	{
+		return diagramChainBuilder;
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -438,5 +445,6 @@ public class ObjectManager
 
 	Project project;
 	ProjectChainObject projectChainBuilder;
+	DiagramChainObject diagramChainBuilder;
 	HashMap pools;
 }

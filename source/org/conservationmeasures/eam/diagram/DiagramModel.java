@@ -97,7 +97,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	DiagramChainObject getChainBuilder()
 	{
-		return new DiagramChainObject();
+		return getDiagramObject().getDiagramChainBuilder();
 	}
 	
 	public ThreatRatingFramework getThreatRatingFramework()
