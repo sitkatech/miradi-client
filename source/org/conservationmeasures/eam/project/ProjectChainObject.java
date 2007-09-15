@@ -16,6 +16,12 @@ import org.conservationmeasures.eam.objects.FactorLink;
 
 public class ProjectChainObject  extends ChainObject
 {
+	public FactorSet buildUpstreamChainAndGetFactors(Factor factor)
+	{
+		buildUpstreamChain(factor);
+		return getFactors();
+	}
+	
 	private void buildDirectThreatChain(Factor factor)
 	{
 		initializeChain(factor);

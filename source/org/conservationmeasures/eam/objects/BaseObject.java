@@ -451,8 +451,7 @@ abstract public class BaseObject
 			return new Factor[0];
 		
 		ProjectChainObject chainObject = getProjectChainBuilder();
-		chainObject.buildUpstreamChain(owner);
-		return chainObject.getFactors().toFactorArray();
+		return chainObject.buildUpstreamChainAndGetFactors(owner).toFactorArray();
 	}
 	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
