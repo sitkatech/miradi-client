@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
@@ -334,19 +336,27 @@ abstract public class Factor extends BaseObject
 
 	public String getPseudoData(String fieldTag)
 	{
-		if(fieldTag.equals(PSEUDO_TAG_GOALS))
-			return getFactorGoals();
-		
-		if(fieldTag.equals(PSEUDO_TAG_OBJECTIVES))
-			return getFactorObjectives();
-		
-		if(fieldTag.equals(PSEUDO_TAG_DIRECT_THREATS))
-			return getFactorRelatedDirectThreats();
-		
-		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
-			return getFactorRelatedTargets();
-		
-		return super.getPseudoData(fieldTag);
+		try
+		{
+			if(fieldTag.equals(PSEUDO_TAG_GOALS))
+				return getFactorGoalsAsMultiline();
+			
+			if(fieldTag.equals(PSEUDO_TAG_OBJECTIVES))
+				return getFactorObjectivesAsMultiline();
+			
+			if(fieldTag.equals(PSEUDO_TAG_DIRECT_THREATS))
+				return getFactorRelatedDirectThreats();
+			
+			if(fieldTag.equals(PSEUDO_TAG_TARGETS))
+				return getFactorRelatedTargets();
+			
+			return super.getPseudoData(fieldTag);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 	
 	private String getFactorRelatedDirectThreats()
@@ -367,51 +377,16 @@ abstract public class Factor extends BaseObject
 		return getLabelsAsMultiline(directThreats);
 	}
 	
-	private String getFactorGoals()
+	private String getFactorGoalsAsMultiline() throws ParseException
 	{
-		return getFactorDesires(ObjectType.GOAL, Factor.TAG_GOAL_IDS);
+		IdList theseDesireIds = new IdList(getData(TAG_GOAL_IDS));
+		return getDesiresAsMultiline(ObjectType.GOAL, theseDesireIds);
 	}
 
-	private String getFactorObjectives()
+	private String getFactorObjectivesAsMultiline() throws ParseException
 	{
-		return getFactorDesires(ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
-	}
-	
-	private String getFactorDesires(int desireType, String desireIdsTag)
-	{
-		ProjectChainObject chain = getChainBuilder();
-		chain.buildDownstreamChain(this);
-		
-		IdList allDesireIds = new IdList();
-		Factor[] factors = chain.getFactorsArray();
-		for(int i = 0; i < factors.length; ++i)
-		{
-			Factor factor = factors[i];
-			IdList theseDesireIds = getIdList(desireIdsTag, factor);
-			addMissingIds(allDesireIds, theseDesireIds);
-		}
-		
-		return getDesiresAsMultiline(desireType, allDesireIds);
-	}
-
-	private IdList getIdList(String desireIdsTag, Factor factor)
-	{
-		try
-		{
-			return new IdList(factor.getData(desireIdsTag));
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return new IdList();
-		}
-	}
-	
-	private void addMissingIds(IdList destination, IdList source)
-	{
-		for(int i = 0; i < source.size(); ++i)
-			if(!destination.contains(source.get(i)))
-				destination.add(source.get(i));
+		IdList theseDesireIds = new IdList(getData(TAG_OBJECTIVE_IDS));
+		return getDesiresAsMultiline(ObjectType.OBJECTIVE, theseDesireIds);
 	}
 	
 	private String getDesiresAsMultiline(int desireType, IdList desireIds)
