@@ -41,11 +41,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return getObject().getTypeName();
 	}
 	
-	public int getObjectType()
-	{
-		return getObjectReference().getObjectType();
-	}
-	
 	public TreeTableNode getChild(int index)
 	{
 		return children.get(index);
@@ -128,8 +123,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
 		{
 
-			int typeSortLocationA = getTypeSortLocation(nodeA.getObjectType());
-			int typeSortLocationB = getTypeSortLocation(nodeB.getObjectType());
+			int typeSortLocationA = getTypeSortLocation(nodeA.getType());
+			int typeSortLocationB = getTypeSortLocation(nodeB.getType());
 			int diff = typeSortLocationA - typeSortLocationB;
 			if(diff != 0)
 				return diff;

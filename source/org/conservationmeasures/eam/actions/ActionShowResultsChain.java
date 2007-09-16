@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,14 +14,9 @@ public class ActionShowResultsChain extends ViewAction
 {
 	public ActionShowResultsChain(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), getIconName());
+		super(mainWindow, getLabel(), new ResultsChainIcon());
 	}
 	
-	public static String getIconName()
-	{
-		return "icons/showResultsChain.png";
-	}
-
 	private static String getLabel()
 	{
 		return EAM.text("Action|Show Results Chain");

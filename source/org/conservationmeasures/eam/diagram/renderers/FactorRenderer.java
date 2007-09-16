@@ -47,10 +47,10 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 
-import org.conservationmeasures.eam.actions.ActionShowResultsChain;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
@@ -227,8 +227,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private void drawChainIcon(Rectangle rect, Graphics2D g2) 
 	{
-		//TODO: rather then pulling the icon resource path from the action class or harding code it , it would be better if we pulled them from a property file by name for common resource paths.
-		MiradiResourceImageIcon icon = new MiradiResourceImageIcon(ActionShowResultsChain.getIconName());
+		MiradiResourceImageIcon icon = new ResultsChainIcon();
 		Rectangle rectangle = getResultChainRectWithinNode();
 		icon.paintIcon(null, g2,rectangle.x, rectangle.y);
 	}
