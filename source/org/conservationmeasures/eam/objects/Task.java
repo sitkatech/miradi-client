@@ -331,12 +331,15 @@ public class Task extends BaseObject
 		{
 			BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(objectManager.getProject());
 			double totalTaskCost = calculator.getTotalTaskCost((TaskId)getId());
+			if (totalTaskCost == 0)
+				return "";
+					
 			return formateResults(totalTaskCost);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			return "0";
+			return "";
 		}
 	}
 
