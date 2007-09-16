@@ -7,12 +7,12 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.text.DecimalFormat;
 
+import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsCalculator;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
-import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
 public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTotalsTableModel
 {
@@ -20,7 +20,7 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 	{
 		super(projectToUse);
 		
-		totalsCalculator = new BudgetTotalsCalculator(getProject());
+		totalsCalculator = new PlanniningViewBudgetTotalsCalculator(getProject());
 		dateRanges = new ProjectCalendar(getProject()).getQuarterlyDateDanges();
 		currencyFormatter = getProject().getCurrencyFormatter();
 	}
@@ -58,5 +58,5 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 	
 	private DecimalFormat currencyFormatter;
 	private DateRange[] dateRanges;
-	private BudgetTotalsCalculator totalsCalculator;
+	private PlanniningViewBudgetTotalsCalculator totalsCalculator;
 }
