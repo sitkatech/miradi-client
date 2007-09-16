@@ -336,12 +336,12 @@ public class AppPreferences
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 	
-	public static final Color CONTROL_PANEL_BACKGROUND = new Color(160, 240, 255);
+	public static final Color CONTROL_PANEL_BACKGROUND = new Color(0xe8, 0xee, 0xf7);
 	
-	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(64, 128, 255);
-	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(255, 200, 0);
-	public static final Color BUDGET_TABLE_BACKGROUND = new Color(160, 255, 100);
-	public static final Color BUDGET_TOTAL_TABLE_BACKGROUND = new Color(80, 220, 50);
+	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(0x99, 0xcc, 0xff);
+	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(0xff, 0x99, 0x00);
+	public static final Color BUDGET_TABLE_BACKGROUND = new Color(0xcc, 0xff, 0xcc);
+	public static final Color BUDGET_TOTAL_TABLE_BACKGROUND = new Color(0x00, 0xff, 0x00);
 	
 	public Color strategyColor;
 	public Color activitiesColor;
