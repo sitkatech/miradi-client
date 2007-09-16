@@ -24,5 +24,5 @@ public class FastScrollPane extends UiScrollPane
 		getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT_INCREMENT);
 	}
 	
-	int SCROLL_UNIT_INCREMENT = 15;
+	public static final int SCROLL_UNIT_INCREMENT = 15;
 }
