@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
@@ -55,6 +56,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 	protected JComponent createLegendButtonPanel(Actions actions)
 	{
 		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
+		panel.setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		
 		addIconLineWithCheckBox(panel, ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon());
 		addIconLineWithCheckBox(panel, ResultsChainDiagram.getObjectType(), ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon());

@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -44,6 +45,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		super(new BasicGridLayout(0, 1));
 		project = projectToUse;
 		checkBoxes = new Hashtable();
+		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 	}
 	
 	protected void saveSettingsToProject(String tag)
@@ -144,16 +146,9 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		title.setFont(title.getFont().deriveFont(Font.BOLD));
 		title.setBorder(new LineBorder(Color.BLACK, 2));
 		title.setHorizontalAlignment(UiLabel.CENTER);
+		title.setBackground(getBackground());
 		
 		return title;
-	}
-	
-	protected void addTitleBar(JPanel panel, String text)
-	{
-		UiLabel titleBar = createTitleBar(text);
-		panel.add(new JLabel(""));
-		panel.add(titleBar);
-		panel.add(new JLabel(""));
 	}
 	
 	protected void addIconLine(JComponent panel, String text, Icon icon, JComponent component)

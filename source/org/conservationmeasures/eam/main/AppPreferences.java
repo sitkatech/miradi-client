@@ -336,6 +336,8 @@ public class AppPreferences
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 	
+	public static final Color CONTROL_PANEL_BACKGROUND = new Color(160, 240, 255);
+	
 	public Color strategyColor;
 	public Color activitiesColor;
 	public Color contributingFactorColor;
