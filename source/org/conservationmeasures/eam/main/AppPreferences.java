@@ -338,6 +338,11 @@ public class AppPreferences
 	
 	public static final Color CONTROL_PANEL_BACKGROUND = new Color(160, 240, 255);
 	
+	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(64, 128, 255);
+	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(255, 200, 0);
+	public static final Color BUDGET_TABLE_BACKGROUND = new Color(160, 255, 100);
+	public static final Color BUDGET_TOTAL_TABLE_BACKGROUND = new Color(80, 220, 50);
+	
 	public Color strategyColor;
 	public Color activitiesColor;
 	public Color contributingFactorColor;

@@ -8,11 +8,15 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import javax.swing.table.TableModel;
 
+import org.conservationmeasures.eam.main.AppPreferences;
+
 public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTable
 {
 	public PlanningViewBudgetTotalsTable(TableModel model)
 	{
 		super(model);
+		setBackground(AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND);
+		getTableHeader().setBackground(getBackground());
 	}
 
 	int getPreferredScrollableViewportWidth()
