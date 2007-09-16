@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -40,22 +41,24 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 		for (int i  = STARTING_TABLE_COLUMN; i < columnCount; ++i)
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(i);
-			tableColumn.setCellRenderer(new CustomRenderer(tree));
+			tableColumn.setCellRenderer(new CustomRenderer(tree, getProject()));
 		}
 	}
 	
 	protected static class CustomRenderer extends DefaultTableCellRenderer
 	{
-		public CustomRenderer(TreeTableCellRenderer treeToUse)
+		public CustomRenderer(TreeTableCellRenderer treeToUse, Project projectToUse)
 		{
 			tree = treeToUse;
+			project = projectToUse;
 		}
 		
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
 			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 			PlanningTreeModel model = (PlanningTreeModel) tree.getModel();
-			String columnTag = model.getColumnTag(column);
+			int modelColumn = table.convertColumnIndexToModel(column);
+			String columnTag = model.getColumnTag(modelColumn);
 			Color backgroundColor = getBackgroundColor(columnTag);
 			setBackground(backgroundColor);
 			setGrid();
@@ -74,14 +77,21 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 		private Color getBackgroundColor(String columnTag)
 		{
 			if (columnTag.equals(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
-				return new Color(200, 200, 255);
+				return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 			
 			if (columnTag.equals(Indicator.PSEUDO_TAG_METHODS))
-				return new Color(200, 170, 250);
+				return AppPreferences.INDICATOR_COLOR;
+			
+			if(columnTag.equals(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES))
+				return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
+			
+			if(columnTag.equals(Task.PSEUDO_TAG_TASK_TOTAL))
+				return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 				
 			return Color.white;
 		}
 
 		TreeTableCellRenderer tree;
+		Project project;
 	}
 }

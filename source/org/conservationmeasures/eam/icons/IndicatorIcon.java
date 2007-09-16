@@ -13,8 +13,8 @@ import java.awt.Rectangle;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.TriangleRenderer;
+import org.conservationmeasures.eam.main.AppPreferences;
 
 public class IndicatorIcon implements Icon
 {
@@ -32,7 +32,7 @@ public class IndicatorIcon implements Icon
 	{
 		Rectangle rect = new Rectangle(x+1, y+1, WIDTH-2, HEIGHT-2);
 		Polygon triangle = TriangleRenderer.buildTriangle(rect);
-		g.setColor(FactorRenderer.INDICATOR_COLOR);
+		g.setColor(AppPreferences.INDICATOR_COLOR);
 		g.fillPolygon(triangle);
 		g.setColor(Color.BLACK);
 		g.drawPolygon(triangle);
