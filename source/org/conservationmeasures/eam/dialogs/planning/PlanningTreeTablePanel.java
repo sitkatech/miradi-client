@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -113,6 +114,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 			
 			if(isTaskMove(cmd))
 				rebuildEntireTreeTable();
+			
+			if(isBudgetTableCellChange(cmd))
+				rebuildEntireTreeTable();
 		}
 		catch(Exception e)
 		{
@@ -131,6 +135,25 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 			return true;
 		if(type == Indicator.getObjectType() && tag.equals(Indicator.TAG_TASK_IDS))
 			return true;
+		return false;
+	}
+	
+	private boolean isBudgetTableCellChange(CommandSetObjectData cmd)
+	{
+		int type = cmd.getObjectType();
+		String tag = cmd.getFieldTag();
+		if (type == Assignment.getObjectType() && tag.equals(Assignment.TAG_DATERANGE_EFFORTS))
+			return true;
+		
+		if (type == Assignment.getObjectType() && tag.equals(Assignment.TAG_ACCOUNTING_CODE))
+			return true;
+		
+		if (type == Assignment.getObjectType() && tag.equals(Assignment.TAG_FUNDING_SOURCE))
+			return true;
+		
+		if (type == Assignment.getObjectType() && tag.equals(Assignment.TAG_ASSIGNMENT_RESOURCE_ID))
+			return true;
+		
 		return false;
 	}
 
