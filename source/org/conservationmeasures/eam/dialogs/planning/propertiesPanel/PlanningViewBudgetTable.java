@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import javax.swing.JTable;
 
+import org.conservationmeasures.eam.main.AppPreferences;
+
 
 public class PlanningViewBudgetTable extends PlanningViewAbstractTable
 {
@@ -14,5 +16,7 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractTable
 	{
 		super(modelToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		setBackground(AppPreferences.BUDGET_TABLE_BACKGROUND);
+		getTableHeader().setBackground(getBackground());
 	}
 }

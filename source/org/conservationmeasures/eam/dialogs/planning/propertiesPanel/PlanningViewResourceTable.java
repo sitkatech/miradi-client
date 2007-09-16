@@ -17,6 +17,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
@@ -37,6 +38,8 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTable impleme
 		super(modelToUse);
 		model = modelToUse;
 		
+		setBackground(AppPreferences.RESOURCE_TABLE_BACKGROUND);
+		getTableHeader().setBackground(getBackground());
 		selectionListeners = new Vector();
 		addColumnEditorsAndRenderers();
 	}
