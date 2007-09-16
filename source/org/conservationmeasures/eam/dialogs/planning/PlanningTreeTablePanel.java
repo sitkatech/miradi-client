@@ -115,7 +115,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 			if(isTaskMove(cmd))
 				rebuildEntireTreeTable();
 			
-			if(isBudgetTableCellChange(cmd))
+			if(isBudgetTableCellChange(event))
 				rebuildEntireTreeTable();
 		}
 		catch(Exception e)
@@ -138,20 +138,18 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		return false;
 	}
 	
-	private boolean isBudgetTableCellChange(CommandSetObjectData cmd)
+	private boolean isBudgetTableCellChange(CommandExecutedEvent event)
 	{
-		int type = cmd.getObjectType();
-		String tag = cmd.getFieldTag();
-		if (type == Assignment.getObjectType() && tag.equals(Assignment.TAG_DATERANGE_EFFORTS))
+		if (event.isSetDataCommandWithThisTypeAndTag(Assignment.getObjectType(), Assignment.TAG_DATERANGE_EFFORTS))
 			return true;
 		
-		if (type == Assignment.getObjectType() && tag.equals(Assignment.TAG_ACCOUNTING_CODE))
+		if (event.isSetDataCommandWithThisTypeAndTag(Assignment.getObjectType(), Assignment.TAG_ACCOUNTING_CODE))
 			return true;
 		
-		if (type == Assignment.getObjectType() && tag.equals(Assignment.TAG_FUNDING_SOURCE))
+		if (event.isSetDataCommandWithThisTypeAndTag(Assignment.getObjectType(), Assignment.TAG_FUNDING_SOURCE))
 			return true;
 		
-		if (type == Assignment.getObjectType() && tag.equals(Assignment.TAG_ASSIGNMENT_RESOURCE_ID))
+		if (event.isSetDataCommandWithThisTypeAndTag(Assignment.getObjectType(), Assignment.TAG_ASSIGNMENT_RESOURCE_ID))
 			return true;
 		
 		return false;
