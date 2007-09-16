@@ -6,9 +6,12 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.Box;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
@@ -21,11 +24,13 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
+import org.martus.swing.UiScrollPane;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -82,32 +87,57 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private void addTables()
 	{
 		Box horizontalBox = Box.createHorizontalBox();
-		JScrollPane resourceScroller = createScrollPane(resourceTable);
-		resourceScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-		resourceScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		JScrollPane resourceScroller = new ScrollPaneWithInvisibleVerticalScrollBar(resourceTable);
 		addVerticalScrollableControlledTable(horizontalBox, resourceScroller);
-		
-		JScrollPane workPlanScroller = createScrollPane(workplanTable);
-		workPlanScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+
+		JScrollPane workPlanScroller = new ScrollPaneWithInvisibleVerticalScrollBar(workplanTable);
 		addVerticalScrollableControlledTable(horizontalBox, workPlanScroller);
 		
-		JScrollPane budgetScroller = createScrollPane(budgetTable);
-		budgetScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		JScrollPane budgetScroller = new ScrollPaneWithInvisibleVerticalScrollBar(budgetTable);
 		addVerticalScrollableControlledTable(horizontalBox, budgetScroller);
 		
-		JScrollPane budgetTotalsScroller = createScrollPane(budgetTotalsTable);
-		budgetTotalsScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		JScrollPane budgetTotalsScroller = new AssignmentTableScrollPane(budgetTotalsTable);
 		addVerticalScrollableControlledTable(horizontalBox, budgetTotalsScroller);
 		
 		add(horizontalBox, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
-
-	private JScrollPane createScrollPane(PlanningViewAbstractTable table)
+	
+	class AssignmentTableScrollPane extends UiScrollPane
 	{
-		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.getViewport().setBackground(table.getBackground());
-		return scrollPane;
+		public AssignmentTableScrollPane(JComponent contents)
+		{
+			super(contents);
+			setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			getViewport().setBackground(contents.getBackground());
+			
+		}
+	}
+	
+	class ScrollPaneWithInvisibleVerticalScrollBar extends AssignmentTableScrollPane
+	{
+		public ScrollPaneWithInvisibleVerticalScrollBar(JComponent contents)
+		{
+			super(contents);
+			setVerticalScrollBar(new InvisibleScrollBar());
+		}
+	}
+	
+	class InvisibleScrollBar extends JScrollBar
+	{
+		public InvisibleScrollBar()
+		{
+			setUnitIncrement(FastScrollPane.SCROLL_UNIT_INCREMENT);
+		}
+		
+		public Dimension getPreferredSize()
+		{
+			Dimension dimension = super.getPreferredSize();
+			dimension.width = 0;
+			return dimension;
+		}
+		
 	}
 
 	private void addVerticalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
