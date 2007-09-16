@@ -152,6 +152,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		if (event.isSetDataCommandWithThisTypeAndTag(Assignment.getObjectType(), Assignment.TAG_ASSIGNMENT_RESOURCE_ID))
 			return true;
 		
+		if (event.isSetDataCommandWithThisTypeAndTag(Task.getObjectType(), Task.TAG_LABEL))
+			return true;
+		
 		return false;
 	}
 
