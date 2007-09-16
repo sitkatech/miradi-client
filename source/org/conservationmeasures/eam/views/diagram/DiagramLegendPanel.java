@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ProjectScopeIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.Cause;
@@ -108,6 +109,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
+		jpanel.setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		
 		addIconLineWithCheckBox(jpanel, ConceptualModelDiagram.getObjectType(), SCOPE_BOX, new ProjectScopeIcon());
 		

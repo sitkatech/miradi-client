@@ -10,7 +10,9 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -24,6 +26,8 @@ public class PlanningViewControlPanel extends JPanel
 	{
 		super(new BasicGridLayout(2, 1));
 		mainWindow = mainWindowToUse;
+		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+
 		addLegendComponents(treeAsObjectPicker);
 	}
 	
@@ -35,11 +39,17 @@ public class PlanningViewControlPanel extends JPanel
 		
 		add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
 		add(planningCustomizationPanel);
-		add(new UiButton(mainWindow.getActions().get(ActionCreatePlanningViewConfiguration.class)));
-		add(new UiButton(mainWindow.getActions().get(ActionRenamePlanningViewConfiguration.class)));
-		add(new UiButton(mainWindow.getActions().get(ActionDeletePlanningViewConfiguration.class)));		
+		add(createLegendButton(mainWindow.getActions().get(ActionCreatePlanningViewConfiguration.class)));
+		add(createLegendButton(mainWindow.getActions().get(ActionRenamePlanningViewConfiguration.class)));
+		add(createLegendButton(mainWindow.getActions().get(ActionDeletePlanningViewConfiguration.class)));		
 		add(rowsLegendPanel);
 		add(columnsLegendPanel);
+	}
+
+	private UiButton createLegendButton(EAMAction action)
+	{
+		UiButton button = new UiButton(action);
+		return button;
 	}
 	
 	public void dispose()

@@ -9,6 +9,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
@@ -39,6 +40,8 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 	protected JComponent createLegendButtonPanel(Actions actions)
 	{
 		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
+		panel.setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+
 		CodeList masterList = ColumnManager.getMasterColumnList();
 		for (int i = 0; i < masterList.size(); ++i)
 		{

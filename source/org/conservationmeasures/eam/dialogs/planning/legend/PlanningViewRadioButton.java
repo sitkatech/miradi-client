@@ -13,6 +13,7 @@ import javax.swing.JRadioButton;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -24,6 +25,7 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 	{	
 		super();
 		project = projectToUse;
+		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		addActionListener(this);
 	}
 

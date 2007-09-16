@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -36,10 +37,11 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	{
 		super(new GridLayoutPlus(3, 2));
 		project = projectToUse;
-		project.addCommandExecutedListener(this);
-		
+
+		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		rebuildCustomizationPanel();
 		setBorder(BorderFactory.createTitledBorder(EAM.text("Standard Views")));
+		project.addCommandExecutedListener(this);
 	}
 	
 	public void dispose()

@@ -41,13 +41,13 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		project = mainWindow.getProject();
 		picker = treeAsObjectPicker;
 
-		project.addCommandExecutedListener(this);
 		createCheckBoxes();
 		setBorder(new EmptyBorder(5,5,5,5));
 		add(createLegendButtonPanel(mainWindow.getActions()));	
 		setMinimumSize(new Dimension(0,0));
 		updateEnabledStateFromProject();
 		setBorder(BorderFactory.createTitledBorder(getBorderTitle()));
+		project.addCommandExecutedListener(this);
 	}
 	
 	public void dispose()

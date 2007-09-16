@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.fieldComponents;
 
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.UiCheckBox;
@@ -26,6 +27,7 @@ public class PanelCheckBox extends UiCheckBox
 	{
 		super(fieldLabel);
 		setFont(getMainWindow().getUserDataPanelFont());
+		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 	}
 	
 	//TODO: Richard: should not use static ref here
