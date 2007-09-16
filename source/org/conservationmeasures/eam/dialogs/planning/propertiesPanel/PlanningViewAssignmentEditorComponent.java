@@ -82,25 +82,32 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private void addTables()
 	{
 		Box horizontalBox = Box.createHorizontalBox();
-		JScrollPane resourceScroller = new JScrollPane(resourceTable);
+		JScrollPane resourceScroller = createScrollPane(resourceTable);
 		resourceScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		resourceScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		addVerticalScrollableControlledTable(horizontalBox, resourceScroller);
 		
-		JScrollPane workPlanScroller = new JScrollPane(workplanTable);
+		JScrollPane workPlanScroller = createScrollPane(workplanTable);
 		workPlanScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		addVerticalScrollableControlledTable(horizontalBox, workPlanScroller);
 		
-		JScrollPane budgetScroller = new JScrollPane(budgetTable);
+		JScrollPane budgetScroller = createScrollPane(budgetTable);
 		budgetScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		addVerticalScrollableControlledTable(horizontalBox, budgetScroller);
 		
-		JScrollPane budgetTotalsScroller = new JScrollPane(budgetTotalsTable);
+		JScrollPane budgetTotalsScroller = createScrollPane(budgetTotalsTable);
 		budgetTotalsScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		addVerticalScrollableControlledTable(horizontalBox, budgetTotalsScroller);
 		
 		add(horizontalBox, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
+	}
+
+	private JScrollPane createScrollPane(PlanningViewAbstractTable table)
+	{
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.getViewport().setBackground(table.getBackground());
+		return scrollPane;
 	}
 
 	private void addVerticalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
