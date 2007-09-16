@@ -10,12 +10,12 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsCalculator;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.views.TreeTableNode;
-import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
@@ -26,7 +26,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
 		project = projectToUse;
 		adapter = adapterToUse;
 
-		totalCalculator = new BudgetTotalsCalculator(project);
+		totalCalculator = new PlanniningViewBudgetTotalsCalculator(project);
 		yearlyDateRanges = new ProjectCalendar(project).getYearlyDateRanges();
 		currencyFormatter = project.getCurrencyFormatter();
 	
@@ -111,7 +111,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
 	private DateRange combinedDataRange;
 	private Vector columnNames;
 	private Vector yearlyDateRanges;
-	private BudgetTotalsCalculator totalCalculator;
+	private PlanniningViewBudgetTotalsCalculator totalCalculator;
 	private Project project;
 	
 	private static final String COST_COLUMN_NAME = EAM.text("Budget Total ($)");

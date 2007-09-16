@@ -321,90 +321,7 @@ public class PlanniningViewBudgetTotalsCalculator
 	
 	//TODO budget code - Refactor this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	public double getTotalIndicatorsCost(IdList idList, DateRange dateRange) throws Exception
-	{
-		double totalIndicatorsCost = 0.0;
-		for (int i = 0; i < idList.size(); i++)
-			totalIndicatorsCost += getTotalIndicatorCost(new ORef(ObjectType.INDICATOR, idList.get(i)), dateRange);
-		
-		return totalIndicatorsCost;
-	}
 	
-	
-	private double getFactorTotals(TreeTableNode node, DateRange dateRange) throws Exception
-	{
-		double childrenTotal = 0.0;
-		for (int i = 0; i < node.getChildCount(); i++)
-		{
-			ORef ref = node.getChild(i).getObjectReference();
-			IdList indicatorIds = new IdList(project.getObjectData(ref.getObjectType(), ref.getObjectId(), Factor.TAG_INDICATOR_IDS));
-			
-			childrenTotal += getTotalIndicatorsCost(indicatorIds, dateRange);
-		}
-		return childrenTotal;
-	}
-	
-	
-	private double getStrategiesChildrenTotal(TreeTableNode node, DateRange dateRange) throws Exception
-	{
-		double childrenTotal = 0.0;
-		for (int i = 0; i < node.getChildCount(); i++)
-		{
-			BaseObject object = node.getChild(i).getObject();
-			Strategy strategy = (Strategy)object;
-			childrenTotal += getTotalStrategyCost(strategy, dateRange);
-		}
-		return childrenTotal;
-	}
-
-	
-	private double getFactorTotal(TreeTableNode node, DateRange dateRange) throws Exception
-	{
-		ORef nodeRef = node.getObjectReference();
-		if(nodeRef.equals(EAM.WORKPLAN_STRATEGY_ROOT))
-			return getStrategiesChildrenTotal(node, dateRange);
-		else if(nodeRef.equals(EAM.WORKPLAN_MONITORING_ROOT))
-			return getFactorTotals(node, dateRange);
-
-		throw new RuntimeException("Unexpected tree node root: " + nodeRef);
-	}
-
-	
-	public double getTotalFakeCost(TreeTableNode node, DateRange dateRange) throws Exception
-	{
-		if (node.getChildCount() <= 0)
-			return 0.0;
-		
-		TreeTableNode child = node.getChild(0);
-		if (child == null)
-			return 0.0;
-		
-		int type = child.getObjectReference().getObjectType();
-		if (Factor.isFactor(type))
-			return getFactorTotal(node, dateRange);
-		if (type == ObjectType.INDICATOR)
-			return getIndicatorTotal(node, dateRange);
-		return 0.0;
-	}
-	
-	private double getIndicatorTotal(TreeTableNode node, DateRange dateRange) throws Exception
-	{
-		ORef nodeRef = node.getObjectReference();
-		if(nodeRef.equals(EAM.WORKPLAN_STRATEGY_ROOT))
-			return getStrategiesChildrenTotal(node, dateRange);
-		
-		else if(nodeRef.equals(EAM.WORKPLAN_MONITORING_ROOT))
-			return getIndicatorTotals(node, dateRange);
-
-		throw new RuntimeException("Unexpected tree node root: " + nodeRef);
-	}
-
-	private double getIndicatorTotals(TreeTableNode node, DateRange dateRange) throws Exception
-	{
-		IdList indicatorIds = project.getIndicatorPool().getIdList();
-		return getTotalIndicatorsCost(indicatorIds, dateRange);
-	}
-
 	public double getTotalTaskCost(TaskId taskId, DateRange dateRange) throws Exception 
 	{
 		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
@@ -461,9 +378,6 @@ public class PlanniningViewBudgetTotalsCalculator
 
 			if (oRef.getObjectType() == ObjectType.TASK)
 				return getTotalTaskCost(new TaskId(oRef.getObjectId().asInt()), dateRange);
-			
-			if (oRef.getObjectType() == ObjectType.FAKE)
-				return getTotalFakeCost(node, dateRange);				
 		}
 		catch (Exception e)
 		{
