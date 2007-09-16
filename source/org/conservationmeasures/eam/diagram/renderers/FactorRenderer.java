@@ -52,6 +52,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -216,8 +217,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		TriangleRenderer indicatorRenderer = new TriangleRenderer();
 		Rectangle smallTriangle = getIndicatorRectWithinNode();
 		smallTriangle.translate(rect.x, rect.y);
-		setPaint(g2, smallTriangle, INDICATOR_COLOR);
-		indicatorRenderer.fillShape(g2, smallTriangle, INDICATOR_COLOR);
+		setPaint(g2, smallTriangle, AppPreferences.INDICATOR_COLOR);
+		indicatorRenderer.fillShape(g2, smallTriangle, AppPreferences.INDICATOR_COLOR);
 		drawAnnotationBorder(g2, smallTriangle, indicatorRenderer);
 		smallTriangle.setLocation(smallTriangle.x, smallTriangle.y + (INDICATOR_HEIGHT / 4));
 		
@@ -291,11 +292,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	}
 
 	private static final Color ALIASED_PINK_FACTOR_COLOR = new Color(255, 54, 132);
-	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	protected static final int PRIORITY_WIDTH = 20;
 	protected static final int PRIORITY_HEIGHT = 10;
-	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
-	
 	ValueOption priority;
 	FactorCell node;
 	ChoiceItem rating;

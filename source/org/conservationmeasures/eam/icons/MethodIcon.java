@@ -9,6 +9,7 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
+import org.conservationmeasures.eam.main.AppPreferences;
 
 public class MethodIcon extends AbstractShapeIcon
 {
@@ -19,6 +20,6 @@ public class MethodIcon extends AbstractShapeIcon
 	
 	Color getIconColor()
 	{
-		return FactorRenderer.INDICATOR_COLOR;
+		return AppPreferences.INDICATOR_COLOR;
 	}
 }
