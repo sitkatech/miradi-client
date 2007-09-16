@@ -23,12 +23,14 @@ import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
 import org.conservationmeasures.eam.icons.ActivityIcon;
+import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.icons.FactorIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
+import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.icons.TaskIcon;
 import org.conservationmeasures.eam.main.EAM;
@@ -36,7 +38,9 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -139,6 +143,18 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			taskRenderer.setOpenIcon(new TaskIcon());
 			taskRenderer.setLeafIcon(new TaskIcon());
 			taskRenderer.setFont(getItalicFont());
+			
+			conceptualModelRenderer = new DefaultTreeCellRenderer();
+			conceptualModelRenderer.setClosedIcon(new ConceptualModelIcon());
+			conceptualModelRenderer.setOpenIcon(new ConceptualModelIcon());
+			conceptualModelRenderer.setLeafIcon(new ConceptualModelIcon());
+			conceptualModelRenderer.setFont(getBoldFont());
+
+			resultsChainRenderer = new DefaultTreeCellRenderer();
+			resultsChainRenderer.setClosedIcon(new ResultsChainIcon());
+			resultsChainRenderer.setOpenIcon(new ResultsChainIcon());
+			resultsChainRenderer.setLeafIcon(new ResultsChainIcon());
+			resultsChainRenderer.setFont(getBoldFont());
 
 			stringNoIconRenderer = new DefaultTreeCellRenderer();
 			stringNoIconRenderer.setClosedIcon(null);
@@ -158,6 +174,10 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			TreeTableNode node = (TreeTableNode) value;
 			if (node.getType() == ObjectType.FAKE)
 				renderer  = stringNoIconRenderer;
+			else if(node.getType() == ConceptualModelDiagram.getObjectType())
+				renderer = conceptualModelRenderer;
+			else if(node.getType() == ResultsChainDiagram.getObjectType())
+				renderer = resultsChainRenderer;
 			else if(node.getType() == ObjectType.TARGET)
 				renderer = targetRenderer;
 			else if(node.getType() == ObjectType.INDICATOR)
@@ -221,6 +241,8 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		DefaultTreeCellRenderer activityRenderer;
 		DefaultTreeCellRenderer methodRenderer;
 		DefaultTreeCellRenderer taskRenderer;
+		DefaultTreeCellRenderer conceptualModelRenderer;
+		DefaultTreeCellRenderer resultsChainRenderer;
 		DefaultTreeCellRenderer defaultRenderer;
 		DefaultTreeCellRenderer factorRenderer;
 		DefaultTreeCellRenderer stringNoIconRenderer;

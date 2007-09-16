@@ -94,6 +94,8 @@ import org.conservationmeasures.eam.dialogs.ResultsChainDiagramPanel;
 import org.conservationmeasures.eam.dialogs.slideshow.SlideListManagementPanel;
 import org.conservationmeasures.eam.dialogs.slideshow.SlideShowDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.icons.ConceptualModelIcon;
+import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -368,13 +370,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private void createResultsChainTab() throws Exception
 	{
 		ResultsChainDiagramPanel resultsChainPanel = new ResultsChainDiagramPanel(getMainWindow());
-		addTab(EAM.text("Results Chains"), resultsChainPanel);
+		addTab(EAM.text("Results Chains"), new ResultsChainIcon(), resultsChainPanel);
 	}
 
 	private void createConceptualModelDiagramTab() throws Exception
 	{
 		ConceptualModelDiagramPanel conceptualDiagramPanel = new ConceptualModelDiagramPanel(getMainWindow());
-		addTab(EAM.text("Conceptual Model"), conceptualDiagramPanel);
+		addTab(EAM.text("Conceptual Model"), new ConceptualModelIcon(), conceptualDiagramPanel);
 	}
 	
 	private void ensureDiagramIsSelected(int objectType, String tag) throws Exception

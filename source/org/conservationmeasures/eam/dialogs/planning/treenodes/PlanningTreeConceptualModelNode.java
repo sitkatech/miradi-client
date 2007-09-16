@@ -39,7 +39,7 @@ public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeDiagram
 		return ConceptualModelDiagram.OBJECT_NAME;
 	}
 
-	public int getObjectType()
+	public int getType()
 	{
 		return ConceptualModelDiagram.getObjectType();
 	}

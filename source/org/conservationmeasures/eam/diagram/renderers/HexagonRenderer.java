@@ -72,7 +72,7 @@ public class HexagonRenderer extends FactorRenderer
 		return dashedStroke;
 	}
 
-	static Polygon buildHexagon(Rectangle rect)
+	public static Polygon buildHexagon(Rectangle rect)
 	{
 		int left = rect.x;
 		int top = rect.y;

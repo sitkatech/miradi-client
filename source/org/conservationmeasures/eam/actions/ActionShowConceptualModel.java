@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -12,14 +13,9 @@ public class ActionShowConceptualModel extends ViewAction
 {
 	public ActionShowConceptualModel(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), getIconName());
+		super(mainWindow, getLabel(), new ConceptualModelIcon());
 	}
 	
-	public static String getIconName()
-	{
-		return "icons/showConceptualModel.png";
-	}
-
 	private static String getLabel()
 	{
 		return EAM.text("Action|Show Conceptual Model");
