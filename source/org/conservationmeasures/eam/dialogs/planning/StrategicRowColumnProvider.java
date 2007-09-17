@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 
@@ -19,11 +18,12 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {
-							Strategy.PSEUDO_TAG_RATING_SUMMARY,
-							Strategy.TAG_STATUS,
-							Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-							Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-							Task.PSEUDO_TAG_TASK_TOTAL, });
+							Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE,
+//							Strategy.PSEUDO_TAG_PROGRESS,
+//							Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+//							Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+//							Task.PSEUDO_TAG_TASK_TOTAL, 
+							});
 	}
 
 	public CodeList getRowListToShow()

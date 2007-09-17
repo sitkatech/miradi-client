@@ -5,6 +5,7 @@ import org.conservationmeasures.eam.dialogs.planning.StrategicRowColumnProvider;
 import org.conservationmeasures.eam.dialogs.planning.WorkPlanRowColumnProvider;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -20,36 +21,55 @@ public class ColumnManager
 	static public CodeList getMasterColumnList()
 	{
 		CodeList masterColumnList = new CodeList();
+		
+		masterColumnList.add(Desire.TAG_SHORT_LABEL);
+		masterColumnList.add(Desire.TAG_FULL_TEXT);
+		masterColumnList.add(Indicator.PSEUDO_TAG_METHODS); 
+		masterColumnList.add(Indicator.PSEUDO_TAG_FACTOR);
+		masterColumnList.add(Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE);
 		masterColumnList.add(Indicator.TAG_PRIORITY);
+		masterColumnList.add(Indicator.PSEUDO_TAG_STATUS_VALUE);
+
 		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		masterColumnList.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		masterColumnList.add(Task.PSEUDO_TAG_TASK_TOTAL);
 		
-		masterColumnList.add(Indicator.PSEUDO_TAG_FACTOR);
-		masterColumnList.add(Indicator.TAG_MEASUREMENT_SUMMARY);
-		masterColumnList.add(Indicator.PSEUDO_TAG_METHODS); 
-		masterColumnList.add(Indicator.PSEUDO_TAG_STATUS_VALUE);
 		
 		return masterColumnList;
 	}
 
 	public static CodeList getGoalColumns()
 	{
-		return getMasterColumnList();
+		String[] list = {
+			Goal.TAG_SHORT_LABEL,
+			Goal.TAG_FULL_TEXT,
+			Goal.PSEUDO_TAG_FACTOR,
+			// % complete,
+			// Budget total,
+		};
+		return new CodeList(list);
 	}
 
 	public static CodeList getObjectiveColumns()
 	{
-		return getMasterColumnList();
+		String[] list = {
+				Objective.TAG_SHORT_LABEL,
+				Objective.TAG_FULL_TEXT,
+				Objective.PSEUDO_TAG_FACTOR,
+				// % complete,
+				// Budget total,
+			};
+			return new CodeList(list);
 	}
 
 	public static CodeList getStrategyColumns()
 	{
 		String[] list = {
-		Indicator.TAG_PRIORITY,
-		Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-		Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-		Task.PSEUDO_TAG_TASK_TOTAL, };
+				Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE,
+//				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+//				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+//				Task.PSEUDO_TAG_TASK_TOTAL, 
+		};
 			
 		return new CodeList(list);
 	}
@@ -57,10 +77,10 @@ public class ColumnManager
 	public static CodeList getActivityColumns()
 	{
 		String[] list = {
-				Indicator.TAG_PRIORITY,
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, };
+				Task.PSEUDO_TAG_TASK_TOTAL, 
+				};
 			
 		return new CodeList(list);
 	}
@@ -68,10 +88,12 @@ public class ColumnManager
 	public static CodeList getIndicatorColumns()
 	{
 		String[] list = {
-				Indicator.TAG_PRIORITY,
-				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, };
+				Indicator.PSEUDO_TAG_PRIORITY_VALUE,
+				Indicator.PSEUDO_TAG_STATUS_VALUE,
+//				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+//				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+//				Task.PSEUDO_TAG_TASK_TOTAL, 
+				};
 	
 		return new CodeList(list);
 	}
@@ -79,10 +101,10 @@ public class ColumnManager
 	public static CodeList getMethodColumns()
 	{
 		String[] list = {
-				Indicator.TAG_PRIORITY,
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, };
+				Task.PSEUDO_TAG_TASK_TOTAL, 
+				};
 	
 		return new CodeList(list);
 	}
@@ -90,10 +112,10 @@ public class ColumnManager
 	public static CodeList getTaskColumns()
 	{		
 		String[] list = {
-				Indicator.TAG_PRIORITY,
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, };
+				Task.PSEUDO_TAG_TASK_TOTAL, 
+				};
 		
 		return new CodeList(list);
 	}
