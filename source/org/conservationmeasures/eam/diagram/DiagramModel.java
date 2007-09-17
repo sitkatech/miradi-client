@@ -57,6 +57,7 @@ import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.views.diagram.EntireConceptualModel;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
@@ -285,9 +286,9 @@ public class DiagramModel extends DefaultGraphModel
 		return diagramContents.isResultsChain();
 	}
 	
-	public boolean areAliases(DiagramFactor diagramFactorToCheck) throws Exception
+	public boolean areAliasesInConceptualModelsOnly(DiagramFactor diagramFactorToCheck) throws Exception
 	{
-		DiagramFactor[] allDiagramFactors = project.getAllDiagramFactors();
+		DiagramFactor[] allDiagramFactors = EntireConceptualModel.getAllDiagramFactorsInAllConceptualModels(project);
 		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
 			DiagramFactor possibleAliasDiagramFactor = allDiagramFactors[i];
