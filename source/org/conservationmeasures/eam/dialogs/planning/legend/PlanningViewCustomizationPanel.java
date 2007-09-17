@@ -193,12 +193,13 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		PlanningViewCustomizationComboBox comboBox = (PlanningViewCustomizationComboBox) comboBoxes.get(PlanningView.CUSTOMIZABLE_COMBO);
 
 		if (event.isDeleteObjectCommand() || event.isCreateObjectCommand())
+		{
 			comboBox.syncContentsWithProject();
+			selectAppropriateConfiguredComboBoxItem();
+		}
 		
 		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), BaseObject.TAG_LABEL))
 			comboBox.repaint();
-		
-		selectAppropriateConfiguredComboBoxItem();
 	}
 	
 	private void setComboBoxSelection(String comboName, String itemProperty)
