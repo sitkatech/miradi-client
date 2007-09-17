@@ -67,6 +67,20 @@ abstract public class DiagramObject extends BaseObject
 		return null;
 	}
 	
+	public DiagramFactor getDiagramFactor(ORef factorRef)
+	{
+		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
+		for (int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			ORef diagramFactorRef = diagramFactorRefs.get(i);
+			DiagramFactor diagramFactor = (DiagramFactor) getObjectManager().findObject(diagramFactorRef);
+			if (diagramFactor.getWrappedORef().equals(factorRef))
+				return diagramFactor;
+		}
+		
+		return null;
+	}
+	
 	// TODO: This really should have a test
 	public ORefList getAllGoalRefs()
 	{
@@ -109,7 +123,18 @@ abstract public class DiagramObject extends BaseObject
 		
 		return false;
 	}
+	
+	public boolean containsWrappedFactorRef(ORef factorRef)
+	{
+		if (! Factor.isFactor(factorRef))
+			return false;
 		
+		if (getDiagramFactor(factorRef) == null)
+			return false;
+		
+		return true;
+	}
+	
 	public boolean containsWrappedFactor(FactorId factorId)
 	{
 		if (getDiagramFactor(factorId) != null)

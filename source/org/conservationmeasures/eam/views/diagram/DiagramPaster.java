@@ -231,6 +231,9 @@ public class DiagramPaster
 			ORef newWrappedRef = getDiagramFactorWrappedRef(oldWrappedRef);
 			DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
 
+			if (diagramAlreadyContainsAlias(newWrappedRef))
+				continue;
+			
 			String newLocationAsJsonString = offsetLocation(json, diagramFactorId);
 			json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
 			
@@ -246,7 +249,12 @@ public class DiagramPaster
 			oldToNewDiagramFactorRefMap.put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
 			addDiagramFactorToSelection(newDiagramFactorRef);
 		}
+	}
 
+	private boolean diagramAlreadyContainsAlias(ORef oldWrappedRef)
+	{
+		DiagramObject diagramObject = getDiagramObject();
+		return diagramObject.containsWrappedFactorRef(oldWrappedRef);
 	}
 
 	//FIXME talk to kevin about this, rename this method, or in the doer, dont follow through with 
@@ -307,7 +315,7 @@ public class DiagramPaster
 
 	private void addToCurrentDiagram(ORef newDiagramFactorRef, String tag) throws Exception
 	{
-		DiagramObject diagramObject = currentModel.getDiagramObject();
+		DiagramObject diagramObject = getDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, tag, newDiagramFactorRef.getObjectId());
 		getProject().executeCommand(addDiagramFactor);
 	}
@@ -478,7 +486,7 @@ public class DiagramPaster
 
 	private boolean isResultsChain()
 	{
-		DiagramObject diagramObject = currentModel.getDiagramObject();
+		DiagramObject diagramObject = getDiagramObject();
 		if (diagramObject.getType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
 			return true;
 		
@@ -540,6 +548,11 @@ public class DiagramPaster
 	public HashMap getOldToNewFactorRefMap()
 	{
 		return oldToNewFactorRefMap;
+	}
+	
+	private DiagramObject getDiagramObject()
+	{
+		return currentModel.getDiagramObject();
 	}
 	
 	Project project;
