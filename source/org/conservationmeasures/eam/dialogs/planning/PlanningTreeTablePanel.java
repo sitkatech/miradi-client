@@ -193,6 +193,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_TOTAL))
 		{
+			getTreeTableScrollPane().hideVerticalScrollBar();
 			splitter.setRightComponent(annualTotalsScrollPane);
 			validate();
 			int HACK_REASONABLE_INITIAL_SPLITTER_LOCATION = 500;
@@ -200,6 +201,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		}
 		else
 		{
+			getTreeTableScrollPane().showVerticalScrollBar();
 			splitter.setRightComponent(new JPanel());
 			splitter.setDividerLocation(1.0);
 			validate();

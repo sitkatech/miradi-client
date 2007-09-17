@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.treeViews;
 import java.awt.BorderLayout;
 import java.util.Vector;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.TreeSelectionEvent;
@@ -20,6 +21,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
@@ -37,7 +39,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		tree = treeToUse;
 		
 		restoreTreeExpansionState();
-		treeTableScrollPane = new UiScrollPane(tree);
+		treeTableScrollPane = new ScrollPaneWithHideableScrollBar(tree);
 		add(treeTableScrollPane, BorderLayout.CENTER);
 		
 		GridLayoutPlus layout = new GridLayoutPlus(1, 0);
@@ -137,13 +139,35 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	{
 	}
 	
-	protected UiScrollPane getTreeTableScrollPane()
+	protected ScrollPaneWithHideableScrollBar getTreeTableScrollPane()
 	{
 		return treeTableScrollPane;
+	}
+	
+	public static class ScrollPaneWithHideableScrollBar extends UiScrollPane
+	{
+		public ScrollPaneWithHideableScrollBar(JComponent component)
+		{
+			super(component);
+			hideableScrollBar = new HideableScrollBar();
+			setVerticalScrollBar(hideableScrollBar);
+		}
+		
+		public void showVerticalScrollBar()
+		{
+			hideableScrollBar.visible = true;
+		}
+		
+		public void hideVerticalScrollBar()
+		{
+			hideableScrollBar.visible = false;
+		}
+		
+		HideableScrollBar hideableScrollBar;
 	}
 
 	MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected GenericTreeTableModel model;
-	protected UiScrollPane treeTableScrollPane;
+	protected ScrollPaneWithHideableScrollBar treeTableScrollPane;
 }

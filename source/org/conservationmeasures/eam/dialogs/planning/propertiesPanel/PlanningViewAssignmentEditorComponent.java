@@ -6,12 +6,10 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
@@ -24,7 +22,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
@@ -120,26 +118,12 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		public ScrollPaneWithInvisibleVerticalScrollBar(JComponent contents)
 		{
 			super(contents);
-			setVerticalScrollBar(new InvisibleScrollBar());
+			HideableScrollBar hideableScrollBar = new HideableScrollBar();
+			hideableScrollBar.visible = false;
+			setVerticalScrollBar(hideableScrollBar);
 		}
 	}
 	
-	class InvisibleScrollBar extends JScrollBar
-	{
-		public InvisibleScrollBar()
-		{
-			setUnitIncrement(FastScrollPane.SCROLL_UNIT_INCREMENT);
-		}
-		
-		public Dimension getPreferredSize()
-		{
-			Dimension dimension = super.getPreferredSize();
-			dimension.width = 0;
-			return dimension;
-		}
-		
-	}
-
 	private void addVerticalAndHorizontalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
 	{
 		horizontalController.addTable(scroller);
