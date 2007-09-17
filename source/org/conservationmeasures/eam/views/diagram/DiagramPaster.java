@@ -429,8 +429,8 @@ public class DiagramPaster
 
 	protected void wrapExistingLinksForDiagramFactors() throws Exception
 	{
-		Collection values = oldToNewDiagramFactorRefMap.values();
-		ORef newDiagramFactorRefs[] = (ORef[]) values.toArray(new ORef[0]);
+		Collection newRefs = oldToNewDiagramFactorRefMap.values();
+		ORef newDiagramFactorRefs[] = (ORef[]) newRefs.toArray(new ORef[0]);
 		for (int i= 0; i < newDiagramFactorRefs.length; ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRefs[i]);			
