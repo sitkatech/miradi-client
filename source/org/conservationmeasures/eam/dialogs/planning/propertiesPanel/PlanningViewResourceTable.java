@@ -38,7 +38,6 @@ public class PlanningViewResourceTable extends PlanningViewTableWithSizedColumns
 		super(modelToUse);
 		model = modelToUse;
 		
-		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setBackground(AppPreferences.RESOURCE_TABLE_BACKGROUND);
 		getTableHeader().setBackground(getBackground());
 		selectionListeners = new Vector();
