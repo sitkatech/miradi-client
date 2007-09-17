@@ -38,16 +38,18 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTable impleme
 		super(modelToUse);
 		model = modelToUse;
 		
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setBackground(AppPreferences.RESOURCE_TABLE_BACKGROUND);
 		getTableHeader().setBackground(getBackground());
 		selectionListeners = new Vector();
-		addColumnEditorsAndRenderers();
+		addSizedColumnEditorsAndRenderers();
 	}
 		
-	private void addColumnEditorsAndRenderers()
+	private void addSizedColumnEditorsAndRenderers()
 	{
 		for (int i = 0; i < model.getColumnCount(); ++i)
 		{
+			setColumnWidthToHeaderWidth(i);
 			createResourceCombo(i);
 			createFundingSourceColumn(i);
 			createAccountingCodeColumn(i);
