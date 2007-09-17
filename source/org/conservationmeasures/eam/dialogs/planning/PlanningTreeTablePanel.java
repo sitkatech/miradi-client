@@ -76,7 +76,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		annualTotalsTable.setRowHeight(treeTableToUse.getRowHeight());
 		annualTotalsScrollPane = new UiScrollPane(annualTotalsTable);
 		annualTotalsScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		addAnnualTotalsScrollPane();
+		add(annualTotalsScrollPane, BorderLayout.AFTER_LINE_ENDS);
 	
 		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		getTreeTableScrollPane().setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -184,25 +184,20 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	
 	private void possiblyRemoveAnnualTotalScrollPane() throws Exception
 	{
-		addAnnualTotalsScrollPane();
-		removeAnnualTotalsScrollableTable();
+		remove(annualTotalsScrollPane);
+		addAnnualTotalsScrollableTable();
 		validate();
 	}
 
-	private void addAnnualTotalsScrollPane()
+	private void addAnnualTotalsScrollableTable() throws Exception
 	{
-		add(annualTotalsScrollPane, BorderLayout.AFTER_LINE_ENDS);
-	}
-
-	private void removeAnnualTotalsScrollableTable() throws Exception
-	{
-		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
-		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_TOTAL))
+		if (! columnsToShow.contains(Task.PSEUDO_TAG_TASK_TOTAL))
 			return;
 		
-		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		remove(annualTotalsScrollPane);
+		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		add(annualTotalsScrollPane, BorderLayout.AFTER_LINE_ENDS);
 	}
 
 	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef)
