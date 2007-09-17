@@ -9,7 +9,9 @@ import java.awt.BorderLayout;
 import java.util.Arrays;
 import java.util.Vector;
 
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -56,12 +58,20 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
+		splitter = new JSplitPane();
+		add(splitter, BorderLayout.CENTER);
+		splitter.setLeftComponent(getTreeTableScrollPane());
 		
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		horizontalController = new MultiTableHorizontalScrollController();
+		
+		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		getTreeTableScrollPane().setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		
 		createBudgetTable(treeToUse);
 		rebuildSyncedAnnualsTotalsTable(treeToUse);
+		updateSplitterRightSideContents();
 	}
 
 	private void createBudgetTable(PlanningTreeTable treeTableToUse) throws Exception
@@ -76,10 +86,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		annualTotalsTable.setRowHeight(treeTableToUse.getRowHeight());
 		annualTotalsScrollPane = new UiScrollPane(annualTotalsTable);
 		annualTotalsScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		add(annualTotalsScrollPane, BorderLayout.AFTER_LINE_ENDS);
 	
-		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-		getTreeTableScrollPane().setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		verticalController.addTable(annualTotalsScrollPane);
 		verticalController.addTable(getTreeTableScrollPane());
 		
@@ -166,7 +173,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 
 	private void rebuildEntireTreeTable() throws Exception
 	{
-		possiblyRemoveAnnualTotalScrollPane();
 		ORef selectedRef = ORef.INVALID;
 		BaseObject[] selected = tree.getSelectedObjects();
 		if(selected.length == 1)
@@ -182,26 +188,28 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getPlanningModel().rebuildEntireTree();
 		restoreTreeExpansionState();
+		updateSplitterRightSideContents();
 
 		selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef);
 	}
 	
-	private void possiblyRemoveAnnualTotalScrollPane() throws Exception
+	private void updateSplitterRightSideContents() throws Exception
 	{
-		remove(annualTotalsScrollPane);
-		addAnnualTotalsScrollableTable();
-		validate();
-	}
-
-	private void addAnnualTotalsScrollableTable() throws Exception
-	{
-		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
-		if (! columnsToShow.contains(Task.PSEUDO_TAG_TASK_TOTAL))
-			return;
+		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_TOTAL))
+		{
+			splitter.setRightComponent(annualTotalsScrollPane);
+			validate();
+			int HACK_REASONABLE_INITIAL_SPLITTER_LOCATION = 500;
+			splitter.setDividerLocation(HACK_REASONABLE_INITIAL_SPLITTER_LOCATION);
+		}
+		else
+		{
+			splitter.setRightComponent(new JPanel());
+			splitter.setDividerLocation(1.0);
+			validate();
+		}
 		
-		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-		add(annualTotalsScrollPane, BorderLayout.AFTER_LINE_ENDS);
 	}
 
 	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef)
@@ -230,6 +238,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{
 		return (PlanningTreeModel)getModel();
 	}
+
+	private JSplitPane splitter;
 	
 	private MultiTableVerticalScrollController verticalController;
 	private MultiTableHorizontalScrollController horizontalController;
