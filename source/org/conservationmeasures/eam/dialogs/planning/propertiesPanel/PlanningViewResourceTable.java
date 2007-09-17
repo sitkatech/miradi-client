@@ -43,7 +43,12 @@ public class PlanningViewResourceTable extends PlanningViewTableWithSizedColumns
 		selectionListeners = new Vector();
 		addColumnEditorsAndRenderers();
 	}
-		
+	
+	int getPreferredScrollableViewportWidth()
+	{
+		return getPreferredSize().width;
+	}
+	
 	private void addColumnEditorsAndRenderers()
 	{
 		for (int i = 0; i < model.getColumnCount(); ++i)
