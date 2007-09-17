@@ -47,8 +47,9 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		HashSet choicesInList = getCurrentChoicesInList();
 		for(int i = 0; i < choicesInProject.length; ++i)
 		{
-			if(!choicesInList.contains(choicesInProject[i]))
-				addItem(choicesInProject[i]);
+			ChoiceItem thisItem = choicesInProject[i];
+			if(!choicesInList.contains(thisItem))
+				addItem(thisItem);
 		}
 	}
 	
@@ -58,8 +59,9 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		HashSet choicesInProject = new HashSet(Arrays.asList(choicesInProjectAsArray));
 		for(int i = getItemCount() - 1; i >= 0; --i)
 		{
-			if(!choicesInProject.contains(getItemAt(i)))
-				removeItem(i);
+			ChoiceItem thisItem = (ChoiceItem)getItemAt(i);
+			if(!choicesInProject.contains(thisItem))
+				removeItemAt(i);
 		}
 	}
 
