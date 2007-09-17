@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.BorderLayout;
+import java.util.Arrays;
+import java.util.Vector;
 
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
@@ -23,7 +25,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -32,6 +33,7 @@ import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
+import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
 import org.conservationmeasures.eam.views.planning.PlanningView;
@@ -142,22 +144,26 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	
 	private boolean isBudgetTableCellChange(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(Assignment.getObjectType(), Assignment.TAG_DATERANGE_EFFORTS))
-			return true;
+		if (! event.isSetDataCommand())
+			return false;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(Assignment.getObjectType(), Assignment.TAG_ACCOUNTING_CODE))
-			return true;
+		TreeTableNode node = getSelectedTreeNode();
+		if (node == null)
+			return false;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(Assignment.getObjectType(), Assignment.TAG_FUNDING_SOURCE))
-			return true;
+		BaseObject selectedObject = node.getObject(); 
+		if (selectedObject == null)
+			return false;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(Assignment.getObjectType(), Assignment.TAG_ASSIGNMENT_RESOURCE_ID))
-			return true;
+		String[] fieldTags = selectedObject.getFieldTags();
+		Vector fields = new Vector(Arrays.asList(fieldTags));
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		int setType = setCommand.getObjectType();
+		String setField = setCommand.getFieldTag();
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(Task.getObjectType(), Task.TAG_LABEL))
-			return true;
-		
-		return false;
+		boolean sameType = (selectedObject.getType() == setType);
+		boolean containsField = (fields.contains(setField));
+		return (sameType && containsField);
 	}
 
 	private void rebuildEntireTreeTable() throws Exception
