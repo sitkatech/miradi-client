@@ -31,17 +31,17 @@ public class LinkDeletor
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
 		deleteAllReferrerDiagramLinks(factorLink);
-		deleteFactorLink(factorLink);
+		deleteFactorLinkIfOrphaned(factorLink);
 	}
 	
 	public void deleteFactorLinkAndDiagramLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		deleteDiagramLink(diagramLink);
 		FactorLink factorLink = diagramLink.getUnderlyingLink();
-		if (!hasToFromFactorsThatWillBeDeleted(factorsAboutToBeDeleted, factorLink))
+		if (!isToOrFromFactorBeingDeleted(factorsAboutToBeDeleted, factorLink))
 			deleteAllReferrerDiagramLinks(factorLink);
 
-		deleteFactorLink(factorLink);
+		deleteFactorLinkIfOrphaned(factorLink);
 	}
 
 	private void deleteAllReferrerDiagramLinks(FactorLink factorLink) throws Exception
@@ -74,7 +74,7 @@ public class LinkDeletor
 		project.executeCommand(removeFactorLinkCommand);
 	}
 	
-	private void deleteFactorLink(FactorLink factorLink) throws CommandFailedException
+	private void deleteFactorLinkIfOrphaned(FactorLink factorLink) throws CommandFailedException
 	{
 		ObjectManager objectManager = project.getObjectManager();
 		ORefList diagramFactorReferrers = factorLink.findObjectsThatReferToUs(objectManager, DiagramLink.getObjectType(), factorLink.getRef());
@@ -89,7 +89,7 @@ public class LinkDeletor
 		project.executeCommand(deleteLinkage);
 	}
 	
-	private boolean hasToFromFactorsThatWillBeDeleted(ORefList factorsAboutToBeDeleted, FactorLink factorLink)
+	private boolean isToOrFromFactorBeingDeleted(ORefList factorsAboutToBeDeleted, FactorLink factorLink)
 	{
 		for (int i = 0; i < factorsAboutToBeDeleted.size(); ++i)
 		{
