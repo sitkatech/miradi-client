@@ -123,6 +123,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		}
 	}
 	
+	//TODO this should use that getTasksTag (or something like that) method
+	//from email :Please put a todo in isTaskMove that it should use that 
+	//getTasksTag method (or whatever it's called) that I mentioned the 
+	//other day. I know that one is my code not yours.
 	private boolean isTaskMove(CommandSetObjectData cmd)
 	{
 		int type = cmd.getObjectType();
