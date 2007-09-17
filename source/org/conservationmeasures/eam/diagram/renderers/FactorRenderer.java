@@ -49,6 +49,7 @@ import java.awt.Stroke;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.ids.IdList;
@@ -70,6 +71,7 @@ import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
+import org.martus.util.xml.XmlUtilities;
 
 
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
@@ -108,6 +110,10 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			
 			DiagramComponent diagram = (DiagramComponent)graph;
 			isAliased = model.areAliasesInConceptualModelsOnly(node.getDiagramFactor());
+			
+			EAMGraphCell cell = (EAMGraphCell)view.getCell();
+			String formattedLabel =  XmlUtilities.getXmlEncoded(cell.toString());
+			setHtmlFormViewerText(getAdditionalHtmlFontTags() + formattedLabel);
 			
 			indicatorText = null;
 			if(diagram.areIndicatorsVisible())
