@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -30,6 +31,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
@@ -37,6 +39,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -313,10 +316,10 @@ public class DiagramPaster
 		return createDiagramFactor.getObjectRef();
 	}
 
-	private void addToCurrentDiagram(ORef newDiagramFactorRef, String tag) throws Exception
+	private void addToCurrentDiagram(ORef refToAppend, String tag) throws Exception
 	{
 		DiagramObject diagramObject = getDiagramObject();
-		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, tag, newDiagramFactorRef.getObjectId());
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, tag, refToAppend.getObjectId());
 		getProject().executeCommand(addDiagramFactor);
 	}
 	
@@ -417,10 +420,46 @@ public class DiagramPaster
 			
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
+	
+			addDiagramLinkAsSelectedToDiagram(newDiagramLink);
+		}
+	}
+
+	private void addDiagramLinkAsSelectedToDiagram(DiagramLink newDiagramLink) throws Exception
+	{
+		ORef newDiagramLinkRef = newDiagramLink.getRef();
+		addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+		addDiagramLinkToSelection(newDiagramLinkRef);
+	}
+	
+	protected void wrapExistingLinksForDiagramFactors() throws Exception
+	{
+		Collection values = oldToNewDiagramFactorRefMap.values();
+		ORef newDiagramFactorRefs[] = (ORef[]) values.toArray(new ORef[0]);
+		for (int i= 0; i < newDiagramFactorRefs.length; ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRefs[i]);			
+			createDiagramFactorLink(diagramFactor.getWrappedORef());
+		}
+	}
+
+	private void createDiagramFactorLink(ORef factorRef) throws Exception
+	{
+		Factor factor = (Factor) getProject().findObject(factorRef);
+		ORefList factorLinks = factor.findObjectsThatReferToUs(FactorLink.getObjectType());
+		DiagramObject diagramObject = getDiagramObject();
+		for (int i = 0; i < factorLinks.size(); ++i)
+		{
+			FactorLink factorLink = (FactorLink) getProject().findObject(factorLinks.get(i));
+			DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(factorLink.getFromFactorRef());
+			DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(factorLink.getToFactorRef());
+			if (fromDiagramFactor == null || toDiagramFactor == null)
+				continue;
 			
-			ORef newDiagramLinkRef = newDiagramLink.getRef();
-			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
-			addDiagramLinkToSelection(newDiagramLinkRef);
+			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLink.getFactorLinkId(), fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
+			//TODO after commit, remove unused json arg from method
+			DiagramLink newDiagramLink = (DiagramLink) createObject(DiagramLink.getObjectType(), null, extraInfo);	
+			addDiagramLinkAsSelectedToDiagram(newDiagramLink);		
 		}
 	}
 
@@ -504,6 +543,7 @@ public class DiagramPaster
 		return false;
 	}
 	
+	//TODO simplify the two below methods,  duplicate code
 	private int[] getResultsChainPastableTypes()
 	{
 		return new int[] {
