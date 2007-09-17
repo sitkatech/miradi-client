@@ -39,7 +39,8 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithHelperMethods
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
 			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-			setBackground(getBackgroundColor(table.getColumnCount(), column));
+			int modelColumn = table.convertColumnIndexToModel(column);
+			setBackground(getBackgroundColor(table.getColumnCount(), modelColumn));
 			
 			if (isSelected)
 				setBackground(table.getSelectionBackground());
