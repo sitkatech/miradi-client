@@ -10,7 +10,7 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.main.AppPreferences;
 
 
-public class PlanningViewBudgetTable extends PlanningViewAbstractTable
+public class PlanningViewBudgetTable extends PlanningViewTableWithSizedColumns
 {
 	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{

@@ -10,7 +10,7 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningViewWorkPlanTable extends PlanningViewAbstractTable
+public class PlanningViewWorkPlanTable extends PlanningViewTableWithSizedColumns
 {
 	public PlanningViewWorkPlanTable(Project projectToUse, PlanningViewAbstractBudgetTableModel modelToUse) throws Exception
 	{

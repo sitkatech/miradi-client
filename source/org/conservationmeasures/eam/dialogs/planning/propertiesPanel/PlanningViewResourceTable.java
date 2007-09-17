@@ -31,7 +31,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-public class PlanningViewResourceTable extends PlanningViewAbstractTable implements ObjectPicker
+public class PlanningViewResourceTable extends PlanningViewTableWithSizedColumns implements ObjectPicker
 {
 	public PlanningViewResourceTable(PlanningViewResourceTableModel modelToUse)
 	{
@@ -42,14 +42,13 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTable impleme
 		setBackground(AppPreferences.RESOURCE_TABLE_BACKGROUND);
 		getTableHeader().setBackground(getBackground());
 		selectionListeners = new Vector();
-		addSizedColumnEditorsAndRenderers();
+		addColumnEditorsAndRenderers();
 	}
 		
-	private void addSizedColumnEditorsAndRenderers()
+	private void addColumnEditorsAndRenderers()
 	{
 		for (int i = 0; i < model.getColumnCount(); ++i)
 		{
-			setColumnWidthToHeaderWidth(i);
 			createResourceCombo(i);
 			createFundingSourceColumn(i);
 			createAccountingCodeColumn(i);
