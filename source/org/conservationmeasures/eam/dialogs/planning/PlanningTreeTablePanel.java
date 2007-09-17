@@ -162,7 +162,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 
 	private void rebuildEntireTreeTable() throws Exception
 	{
-		possibleyRemoveAnnualTotalScrollPane();
+		possiblyRemoveAnnualTotalScrollPane();
 		ORef selectedRef = ORef.INVALID;
 		BaseObject[] selected = tree.getSelectedObjects();
 		if(selected.length == 1)
@@ -182,7 +182,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef);
 	}
 	
-	private void possibleyRemoveAnnualTotalScrollPane() throws Exception
+	private void possiblyRemoveAnnualTotalScrollPane() throws Exception
 	{
 		addAnnualTotalsScrollPane();
 		removeAnnualTotalsScrollableTable();
