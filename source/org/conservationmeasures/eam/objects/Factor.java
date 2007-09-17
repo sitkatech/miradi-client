@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
@@ -156,6 +157,11 @@ abstract public class Factor extends BaseObject
 	public void setGoals(IdList goalsToUse)
 	{
 		goals.set(goalsToUse);
+	}
+	
+	public static boolean isFactor(ORef refToUse)
+	{
+		return isFactor(refToUse.getObjectType());
 	}
 	
 	public static boolean isFactor(int typeToUse)
