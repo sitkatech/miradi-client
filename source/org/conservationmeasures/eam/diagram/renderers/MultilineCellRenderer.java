@@ -52,13 +52,18 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		
 		String formattedLabel =  XmlUtilities.getXmlEncoded(text);
 		htmlFormViewer.setFactorCell(cell);
-		htmlFormViewer.setText(formattedLabel);
+		htmlFormViewer.setText(getAdditionalHtmlFontTags() + formattedLabel);
 		
 		graph = graphToUse;
 		selected = sel;
 		preview = previewMode;
 		installAttributes(view.getAllAttributes());
 		return this;
+	}
+	
+	protected String getAdditionalHtmlFontTags()
+	{
+		return "";
 	}
 
 	//Windows 2000 Quirk, this needs to be set or the graphic isn't filled in

@@ -153,6 +153,14 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return this;
 	}
 	
+	protected String getAdditionalHtmlFontTags()
+	{
+		if (!isAliased)
+			return "";
+	
+		return "<i>";
+	}
+
 	private boolean shouldDisplayResultsChainIcon(DiagramModel model, Strategy strategy)
 	{
 		ORefList resultsChains = strategy.getResultsChains();
@@ -190,23 +198,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		if(stragetyInResultsChain)
 			drawChainIcon(rect, g2);
-		
-		drawAliasedBorder(g2, rect);
 	}
 	
 	public static Dimension getSizeWithoutAnnotations(Dimension size)
 	{
 		return new Dimension(size.width, size.height);
-	}
-	
-	protected void drawAliasedBorder(Graphics2D g2, Rectangle rect)
-	{
-		if (!isAliased)
-			return;
-		
-		Stroke stroke = getSelectionStroke();
-		g2.setStroke(stroke);
-		drawAliasedBorder(g2, rect, ALIASED_PINK_FACTOR_COLOR);
 	}
 	
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
@@ -284,13 +280,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		Utility.drawStringCentered(g2, ratingText, smallRect);
 	}
 	
-	private void drawAliasedBorder(Graphics2D g2, Rectangle rect, Color color)
-	{
-		rect.grow(-2, -2);
-		drawBorder(g2, rect, color);
-	}
-
-	private static final Color ALIASED_PINK_FACTOR_COLOR = new Color(255, 54, 132);
 	protected static final int PRIORITY_WIDTH = 20;
 	protected static final int PRIORITY_HEIGHT = 10;
 	ValueOption priority;
