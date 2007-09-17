@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -32,9 +33,34 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 	{
 		super.rebuildTableCompletely();
 		setTableColumnRenderer();
-		getColumnModel().getColumn(0).setMinWidth(200);
+		setColumnWidths();
+	}
+
+	private void setColumnWidths()
+	{
+		PlanningTreeModel model = (PlanningTreeModel) getTree().getModel();
+		int columnCount = getColumnModel().getColumnCount();
+		for (int i = 0; i < columnCount; ++i)
+		{
+			int convertColumnIndexToModel = convertColumnIndexToModel(i);
+			setColumnWidthToHeaderWidth(convertColumnIndexToModel);
+			String columnTag = model.getColumnTag(convertColumnIndexToModel);
+			int columnWidth = getColumnWidth(convertColumnIndexToModel, columnTag);
+			setColumnWidth(convertColumnIndexToModel, columnWidth);
+		}
 	}
 	
+	private int getColumnWidth(int columnIndex, String columnTag)
+	{
+		if (columnTag.equals("Item") || columnTag.equals(Indicator.PSEUDO_TAG_METHODS) || columnTag.equals(Desire.TAG_FULL_TEXT))		
+			return 200;
+			
+		if (columnTag.equals(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML) || columnTag.equals(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES))
+			return 100;
+		
+		return getColumnHeaderWidth(columnIndex);
+	}
+
 	private void setTableColumnRenderer()
 	{
 		final int STARTING_TABLE_COLUMN = 1;
