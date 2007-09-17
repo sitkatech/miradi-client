@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 public class PlanningViewTableWithSizedColumns extends PlanningViewAbstractTable
@@ -12,6 +13,7 @@ public class PlanningViewTableWithSizedColumns extends PlanningViewAbstractTable
 	public PlanningViewTableWithSizedColumns(TableModel modelToUse)
 	{
 		super(modelToUse);
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		addSizedColumnEditorsAndRenderers(modelToUse);
 	}
 		
