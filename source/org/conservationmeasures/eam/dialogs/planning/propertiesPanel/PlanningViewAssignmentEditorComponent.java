@@ -91,13 +91,13 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		addVerticalScrollableControlledTable(horizontalBox, resourceScroller);
 
 		JScrollPane workPlanScroller = new ScrollPaneWithInvisibleVerticalScrollBar(workplanTable);
-		addVerticalScrollableControlledTable(horizontalBox, workPlanScroller);
+		addVerticalAndHorizontalScrollableControlledTable(horizontalBox, workPlanScroller);
 		
 		JScrollPane budgetScroller = new ScrollPaneWithInvisibleVerticalScrollBar(budgetTable);
-		addVerticalScrollableControlledTable(horizontalBox, budgetScroller);
+		addVerticalAndHorizontalScrollableControlledTable(horizontalBox, budgetScroller);
 		
 		JScrollPane budgetTotalsScroller = new AssignmentTableScrollPane(budgetTotalsTable);
-		addVerticalScrollableControlledTable(horizontalBox, budgetTotalsScroller);
+		addVerticalAndHorizontalScrollableControlledTable(horizontalBox, budgetTotalsScroller);
 		
 		add(horizontalBox, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
@@ -140,10 +140,15 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		
 	}
 
+	private void addVerticalAndHorizontalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
+	{
+		horizontalController.addTable(scroller);
+		addVerticalScrollableControlledTable(horizontalBox, scroller);	
+	}
+	
 	private void addVerticalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
 	{
 		verticalController.addTable(scroller);
-		horizontalController.addTable(scroller);
 		horizontalBox.add(scroller);
 	}
 
