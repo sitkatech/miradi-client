@@ -56,25 +56,24 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
+		
+		selectionController = new MultipleTableSelectionController();
+		verticalController = new MultiTableVerticalScrollController();
+		horizontalController = new MultiTableHorizontalScrollController();
 		createBudgetTable(treeToUse);
 		rebuildSyncedAnnualsTotalsTable(treeToUse);
 	}
 
 	private void createBudgetTable(PlanningTreeTable treeTableToUse) throws Exception
 	{
-		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), (TreeTableModelAdapter)treeTableToUse.getModel());
+		PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), (TreeTableModelAdapter)treeTableToUse.getModel());
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel);
 		new ModelUpdater((TreeTableModelAdapter)treeTableToUse.getModel(), annualTotalsModel);
 	}
 	
 	private void rebuildSyncedAnnualsTotalsTable(PlanningTreeTable treeTableToUse)
 	{
-		selectionController = new MultipleTableSelectionController();
-		verticalController = new MultiTableVerticalScrollController();
-		horizontalController = new MultiTableHorizontalScrollController();
-
-		syncRowHeightSizes(treeTableToUse);
-
+		annualTotalsTable.setRowHeight(treeTableToUse.getRowHeight());
 		annualTotalsScrollPane = new UiScrollPane(annualTotalsTable);
 		annualTotalsScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		addAnnualTotalsScrollPane();
@@ -91,11 +90,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		selectionController.addTable(treeTableToUse);
 	}
 
-	private void syncRowHeightSizes(PlanningTreeTable treeTableToUse)
-	{
-		annualTotalsTable.setRowHeight(treeTableToUse.getRowHeight());
-	}
-	
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
@@ -241,7 +235,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private MultiTableVerticalScrollController verticalController;
 	private MultiTableHorizontalScrollController horizontalController;
 	private MultipleTableSelectionController selectionController;
-	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private PlanningViewBudgetAnnualTotalsTable annualTotalsTable;
 	private UiScrollPane annualTotalsScrollPane;
 }
