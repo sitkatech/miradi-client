@@ -434,11 +434,11 @@ public class DiagramPaster
 		for (int i= 0; i < newDiagramFactorRefs.length; ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRefs[i]);			
-			createDiagramFactorLink(diagramFactor.getWrappedORef());
+			wrapExistingLinksForThisFactor(diagramFactor.getWrappedORef());
 		}
 	}
 
-	private void createDiagramFactorLink(ORef factorRef) throws Exception
+	private void wrapExistingLinksForThisFactor(ORef factorRef) throws Exception
 	{
 		Factor factor = (Factor) getProject().findObject(factorRef);
 		ORefList factorLinks = factor.findObjectsThatReferToUs(FactorLink.getObjectType());
