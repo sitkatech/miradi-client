@@ -17,9 +17,12 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 {
 	public CodeList getColumnListToShow()
 	{
-		return new CodeList(new String[] {Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-							 Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-							 Task.PSEUDO_TAG_TASK_TOTAL, });
+		return new CodeList(new String[] {
+				Indicator.PSEUDO_TAG_STATUS_VALUE,
+				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				Task.PSEUDO_TAG_TASK_TOTAL, 
+				});
 	}
 
 	public CodeList getRowListToShow()
