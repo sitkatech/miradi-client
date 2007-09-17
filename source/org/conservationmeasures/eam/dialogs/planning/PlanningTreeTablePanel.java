@@ -196,8 +196,16 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 			getTreeTableScrollPane().hideVerticalScrollBar();
 			splitter.setRightComponent(annualTotalsScrollPane);
 			validate();
-			int HACK_REASONABLE_INITIAL_SPLITTER_LOCATION = 500;
-			splitter.setDividerLocation(HACK_REASONABLE_INITIAL_SPLITTER_LOCATION);
+
+			int proposedWidth = getTree().getPreferredSize().width;
+			int reservedWidth = annualTotalsScrollPane.getPreferredSize().width;
+			int currentWidth = getWidth();
+			if(currentWidth > 0)
+			{
+				int maxWidth = currentWidth - reservedWidth;
+				proposedWidth = Math.min(proposedWidth, maxWidth);
+			}
+			splitter.setDividerLocation(proposedWidth);
 		}
 		else
 		{
