@@ -77,8 +77,14 @@ abstract public class TabbedView extends UmbrellaView
 		finally
 		{
 			ignoreTabChanges = false;
-			validate();
 		}
+
+		forceLayoutSoSplittersWork();
+	}
+
+	private void forceLayoutSoSplittersWork()
+	{
+		getTopLevelAncestor().validate();
 	}
 
 	public void becomeInactive() throws Exception
