@@ -32,7 +32,6 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -64,7 +63,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
-		horizontalController = new MultiTableHorizontalScrollController();
 		
 		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		getTreeTableScrollPane().setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -89,9 +87,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	
 		verticalController.addTable(annualTotalsScrollPane);
 		verticalController.addTable(getTreeTableScrollPane());
-		
-		horizontalController.addTable(annualTotalsScrollPane);
-		horizontalController.addTable(getTreeTableScrollPane());
 		
 		selectionController.addTable(annualTotalsTable);
 		selectionController.addTable(treeTableToUse);
@@ -242,7 +237,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private JSplitPane splitter;
 	
 	private MultiTableVerticalScrollController verticalController;
-	private MultiTableHorizontalScrollController horizontalController;
 	private MultipleTableSelectionController selectionController;
 	private PlanningViewBudgetAnnualTotalsTable annualTotalsTable;
 	private UiScrollPane annualTotalsScrollPane;
