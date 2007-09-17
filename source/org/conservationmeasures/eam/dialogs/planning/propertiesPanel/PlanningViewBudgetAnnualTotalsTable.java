@@ -13,15 +13,13 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
-public class PlanningViewBudgetAnnualTotalsTable extends TableWithHelperMethods
+public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewTableWithSizedColumns
 {
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model)
 	{
 		super(model);
 		setTableColumnRenderer();
-		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 	
 	private void setTableColumnRenderer()
