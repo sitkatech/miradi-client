@@ -128,7 +128,7 @@ abstract public class DiagramObject extends BaseObject
 		return allDiagramFactorIds.getIdList();
 	}
 	
-	private ORefList getAllDiagramFactorRefs()
+	public ORefList getAllDiagramFactorRefs()
 	{
 		return new ORefList(DiagramFactor.getObjectType(), getAllDiagramFactorIds());
 	}
