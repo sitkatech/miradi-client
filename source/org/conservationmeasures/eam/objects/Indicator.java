@@ -286,21 +286,21 @@ public class Indicator extends BaseObject
 	public static final String TAG_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
 	public static final String TAG_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
 
-	public static final String PSEUDO_TAG_TARGETS = "PsuedoTagTargets";
-	public static final String PSEUDO_TAG_DIRECT_THREATS = "PsuedoTagDirectThreats";
-	public static final String PSEUDO_TAG_STRATEGIES = "PsuedoTagStrategies";
+	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
+	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
+	public static final String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
-	public static final String PSEUDO_TAG_METHODS = "PsuedoTagMethods";
+	public static final String PSEUDO_TAG_METHODS = "PseudoTagMethods";
 	
-	public static final String PSEUDO_TAG_PRIORITY_VALUE = "PsuedoTagPriorityValue";
-	public static final String PSEUDO_TAG_STATUS_VALUE  = "PsuedoTagStatusValue";
-	public static final String PSEUDO_TAG_MEASUREMENT_TREND_VALUE = "PsuedoTagMeasurementTrendValue";
-	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_VALUE  = "PsuedoTagMeasurementStatusValue";
-	public static final String PSEUDO_TAG_RATING_SOURCE_VALUE = "PsuedoTagRatingSourceValue";
-	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE = "PsuedoTagMeasurementStatusConfidenceValue";
-	public static final String PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE = "PsuedoTagIndicatorThresholdValue";
+	public static final String PSEUDO_TAG_PRIORITY_VALUE = "PseudoTagPriorityValue";
+	public static final String PSEUDO_TAG_STATUS_VALUE  = "PseudoTagStatusValue";
+	public static final String PSEUDO_TAG_MEASUREMENT_TREND_VALUE = "PseudoTagMeasurementTrendValue";
+	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_VALUE  = "PseudoTagMeasurementStatusValue";
+	public static final String PSEUDO_TAG_RATING_SOURCE_VALUE = "PseudoTagRatingSourceValue";
+	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE = "PseudoTagMeasurementStatusConfidenceValue";
+	public static final String PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE = "PseudoTagIndicatorThresholdValue";
 	
-	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "PsuedoTagFutureStatusRatingValue";
+	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "PseudoTagFutureStatusRatingValue";
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
 	public static final String OBJECT_NAME = "Indicator";
