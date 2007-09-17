@@ -421,17 +421,12 @@ public class DiagramPaster
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
 	
-			addDiagramLinkAsSelectedToDiagram(newDiagramLink);
+			ORef newDiagramLinkRef = newDiagramLink.getRef();
+			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+			addDiagramLinkToSelection(newDiagramLinkRef);
 		}
 	}
 
-	private void addDiagramLinkAsSelectedToDiagram(DiagramLink newDiagramLink) throws Exception
-	{
-		ORef newDiagramLinkRef = newDiagramLink.getRef();
-		addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
-		addDiagramLinkToSelection(newDiagramLinkRef);
-	}
-	
 	protected void wrapExistingLinksForDiagramFactors() throws Exception
 	{
 		Collection values = oldToNewDiagramFactorRefMap.values();
@@ -458,7 +453,9 @@ public class DiagramPaster
 			
 			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLink.getFactorLinkId(), fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
 			DiagramLink newDiagramLink = (DiagramLink) createObject(DiagramLink.getObjectType(), extraInfo);	
-			addDiagramLinkAsSelectedToDiagram(newDiagramLink);		
+			ORef newDiagramLinkRef = newDiagramLink.getRef();
+			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+			addDiagramLinkToSelection(newDiagramLinkRef);		
 		}
 	}
 
