@@ -98,7 +98,7 @@ public class DiagramPaster
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = json.getInt("Type");
 
-			BaseObject newObject = createObject(type, json);
+			BaseObject newObject = createObject(type);
 			loadNewObjectFromOldJson(newObject, json);
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
@@ -207,12 +207,12 @@ public class DiagramPaster
 		getProject().executeCommands(commandsToLoadFromJson);
 	}
 	
-	private BaseObject createObject(int type, EnhancedJsonObject json) throws Exception
+	private BaseObject createObject(int type) throws Exception
 	{
-		return createObject(type, json, null);
+		return createObject(type, null);
 	}
 	
-	private BaseObject createObject(int type, EnhancedJsonObject json, CreateObjectParameter extraInfo) throws CommandFailedException
+	private BaseObject createObject(int type, CreateObjectParameter extraInfo) throws CommandFailedException
 	{
 		CommandCreateObject createObject = new CommandCreateObject(type, extraInfo);
 		getProject().executeCommand(createObject);
@@ -344,7 +344,7 @@ public class DiagramPaster
 			
 			int type = json.getInt("Type");
 			CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(newFromRef, newToRef);
-			FactorLink newFactorLink = (FactorLink) createObject(type, json, extraInfo);
+			FactorLink newFactorLink = (FactorLink) createObject(type, extraInfo);
 			
 			Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
@@ -416,7 +416,7 @@ public class DiagramPaster
 			
 			int type = json.getInt("Type");
 			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
-			DiagramLink newDiagramLink = (DiagramLink) createObject(type, json, extraInfo);
+			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
 			getProject().executeCommands(commandsToLoadFromJson);
@@ -457,8 +457,7 @@ public class DiagramPaster
 				continue;
 			
 			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLink.getFactorLinkId(), fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
-			//TODO after commit, remove unused json arg from method
-			DiagramLink newDiagramLink = (DiagramLink) createObject(DiagramLink.getObjectType(), null, extraInfo);	
+			DiagramLink newDiagramLink = (DiagramLink) createObject(DiagramLink.getObjectType(), extraInfo);	
 			addDiagramLinkAsSelectedToDiagram(newDiagramLink);		
 		}
 	}
