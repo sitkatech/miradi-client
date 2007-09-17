@@ -82,7 +82,7 @@ public class Paste extends LocationDoer
 		if (! list.atleastOneFactorExists())
 			return AS_COPY_BUTTON;
 
-		if (isPastingInSameDiagramAsCopiedFrom(list))
+		if (isPastingInDiagramWithExistingEqualAlias(list))
 			return AS_COPY_BUTTON;
 		
 		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
@@ -94,7 +94,7 @@ public class Paste extends LocationDoer
 		return EAM.choiceDialog(title, body, buttons);
 	}
 
-	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
+	private boolean isPastingInDiagramWithExistingEqualAlias(TransferableMiradiList list)
 	{
 		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectRefCopiedFrom();
 		ORef diagramObjectRefBeingPastedInto = getDiagramView().getDiagramPanel().getDiagramObject().getRef();
