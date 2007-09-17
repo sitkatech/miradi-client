@@ -32,6 +32,7 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 	{
 		super.rebuildTableCompletely();
 		setTableColumnRenderer();
+		getColumnModel().getColumn(0).setMinWidth(200);
 	}
 	
 	private void setTableColumnRenderer()
