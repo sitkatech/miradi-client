@@ -11,26 +11,41 @@ import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfiguratio
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.martus.swing.UiButton;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class PlanningViewControlPanel extends JPanel
+public class PlanningViewControlPanel extends DisposablePanel implements CommandExecutedListener
 {
 	public PlanningViewControlPanel(MainWindow mainWindowToUse, PlanningTreeTable treeAsObjectPicker) throws Exception
 	{
 		super(new BasicGridLayout(2, 1));
 		mainWindow = mainWindowToUse;
+		getProject().addCommandExecutedListener(this);
 		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
-
+		createCustomizationButtons();
 		addLegendComponents(treeAsObjectPicker);
 	}
 	
+	public void dispose()
+	{
+		getProject().removeCommandExecutedListener(this);
+		rowsLegendPanel.dispose();
+		columnsLegendPanel.dispose();
+		planningCustomizationPanel.dispose();
+	}
+		
 	private void addLegendComponents(PlanningTreeTable treeAsObjectPicker) throws Exception
 	{
 		planningCustomizationPanel = new PlanningViewCustomizationPanel(getProject());
@@ -44,27 +59,36 @@ public class PlanningViewControlPanel extends JPanel
 		add(columnsLegendPanel);
 	}
 
+	private void createCustomizationButtons()
+	{
+		createConfigurationButton = createLegendButton(mainWindow.getActions().get(ActionCreatePlanningViewConfiguration.class));
+		renameConfigurationButton = createLegendButton(mainWindow.getActions().get(ActionRenamePlanningViewConfiguration.class));
+		deleteConfigurationButton = createLegendButton(mainWindow.getActions().get(ActionDeletePlanningViewConfiguration.class));
+	}
+	
 	private JPanel createCustomizationButtonPanel()
 	{
 		JPanel customizationButtonPanel = new JPanel(new BasicGridLayout(3, 1));
-		customizationButtonPanel.add(createLegendButton(mainWindow.getActions().get(ActionCreatePlanningViewConfiguration.class)));
-		customizationButtonPanel.add(createLegendButton(mainWindow.getActions().get(ActionRenamePlanningViewConfiguration.class)));
-		customizationButtonPanel.add(createLegendButton(mainWindow.getActions().get(ActionDeletePlanningViewConfiguration.class)));
 		
-		return customizationButtonPanel;
+		customizationButtonPanel.add(createConfigurationButton);
+		customizationButtonPanel.add(renameConfigurationButton);
+		customizationButtonPanel.add(deleteConfigurationButton);
+		
+		return customizationButtonPanel; 
+	}
+
+	private void setVisibility(boolean isVisible)
+	{
+		renameConfigurationButton.setVisible(isVisible);
+		deleteConfigurationButton.setVisible(isVisible);
+		rowsLegendPanel.setVisible(isVisible);
+		columnsLegendPanel.setVisible(isVisible);
 	}
 	
 	private UiButton createLegendButton(EAMAction action)
 	{
 		UiButton button = new UiButton(action);
 		return button;
-	}
-	
-	public void dispose()
-	{
-		rowsLegendPanel.dispose();
-		columnsLegendPanel.dispose();
-		planningCustomizationPanel.dispose();
 	}
 	
 	private MainWindow getMainWindow()
@@ -76,7 +100,22 @@ public class PlanningViewControlPanel extends JPanel
 	{
 		return getMainWindow().getProject();
 	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		if (! event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_STYLE_CHOICE))
+			return;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		String newStyleChoice = setCommand.getDataValue();
+		boolean shouldHideItsACustomizableRadioChoice = newStyleChoice.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+		setVisibility(shouldHideItsACustomizableRadioChoice);
+	}
 
+	 
+	private UiButton createConfigurationButton;
+	private UiButton renameConfigurationButton;
+	private UiButton deleteConfigurationButton; 
 	private MainWindow mainWindow;
 	private AbstractPlanningViewLegendPanel rowsLegendPanel;
 	private PlanningViewCustomizationPanel planningCustomizationPanel;
