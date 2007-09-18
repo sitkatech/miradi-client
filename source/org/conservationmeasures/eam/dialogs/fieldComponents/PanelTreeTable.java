@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.fieldComponents;
 
 import java.awt.Component;
 
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -30,7 +31,8 @@ public class PanelTreeTable extends JTreeTable
 	
 	public void rebuildTableCompletely()
 	{
-		tableChanged(null);
+		createDefaultColumnsFromModel();
+		tableChanged(new TableModelEvent(getModel(), 0, getModel().getRowCount() - 1));
 	}
 	
 	//TODO: Richard: should not use static ref here
