@@ -362,6 +362,18 @@ public class Task extends BaseObject
 		return parent.getData(BaseObject.TAG_LABEL);
 	}
 	
+	public static String getChildTaskTypeCode(int parentType)
+	{
+		if(parentType == Strategy.getObjectType())
+			return ACTIVITY_NAME;
+		
+		if(parentType == Indicator.getObjectType())
+			return METHOD_NAME;
+		
+		return OBJECT_NAME;
+	}
+
+
 	public void clear()
 	{
 		super.clear();
