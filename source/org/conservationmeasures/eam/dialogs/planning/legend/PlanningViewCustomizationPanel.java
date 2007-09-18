@@ -40,7 +40,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 
 		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		rebuildCustomizationPanel();
-		setBorder(BorderFactory.createTitledBorder(EAM.text("Standard Views")));
+		setBorder(BorderFactory.createTitledBorder(EAM.text("Planning Views")));
 		project.addCommandExecutedListener(this);
 	}
 	
