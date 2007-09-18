@@ -22,7 +22,7 @@ public class ActionDeletePlanningViewConfiguration extends MainWindowAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete the Custom");
+		return EAM.text("TT|Delete the selected Custom Planning View");
 	}
 
 }
