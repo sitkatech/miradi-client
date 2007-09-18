@@ -192,7 +192,10 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	
 	public void resetCheckBoxes()
 	{
+		removeAll();
+		addAllComponents();
 		updateLegendPanel(getLegendSettings(ViewData.TAG_DIAGRAM_HIDDEN_TYPES));
+		validate();
 	}
 	
 	public void updateCheckBox(LayerManager manager, String property)
