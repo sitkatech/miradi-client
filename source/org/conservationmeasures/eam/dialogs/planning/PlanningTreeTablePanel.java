@@ -115,7 +115,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 			if(isTaskMove(cmd))
 				rebuildEntireTreeTable();
 			
-			if(isBudgetTableCellChange(event))
+			if(isSelectedObjectModification(event))
 				rebuildEntireTreeTable();
 		}
 		catch(Exception e)
@@ -123,6 +123,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 			EAM.logException(e);
 			EAM.errorDialog("Error occurred: " + e.getMessage());
 		}
+		
 	}
 	
 	//TODO this should use that getTasksTag (or something like that) method
@@ -142,7 +143,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		return false;
 	}
 	
-	private boolean isBudgetTableCellChange(CommandExecutedEvent event)
+	private boolean isSelectedObjectModification(CommandExecutedEvent event)
 	{
 		if (! event.isSetDataCommand())
 			return false;
