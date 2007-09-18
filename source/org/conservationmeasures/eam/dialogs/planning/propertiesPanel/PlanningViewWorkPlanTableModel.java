@@ -22,6 +22,14 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 		super(projectToUse);
 	}	
 	
+	public boolean isCellEditable(int row, int column)
+	{
+		if ((column + 1) % 5 == 0)
+			return false;
+		
+		return true;
+	}
+	
 	public Object getValueAt(int row, int column)
 	{
 		try
