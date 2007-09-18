@@ -13,9 +13,9 @@ public class InsertStrategyDoer extends InsertFactorDoer
 {
 	public boolean isAvailable()
 	{
-		if (!getProject().isOpen()) 
+		if (!super.isAvailable())
 			return false;
-		
+				
 		return true;
 	}
 	

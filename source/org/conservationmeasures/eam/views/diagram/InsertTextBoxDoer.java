@@ -13,9 +13,9 @@ public class InsertTextBoxDoer extends InsertFactorDoer
 {
 	public boolean isAvailable()
 	{
-		if (!getProject().isOpen()) 
+		if (!super.isAvailable())
 			return false;
-		
+				
 		if (!isDiagramView())
 			return false;
 		

@@ -18,10 +18,15 @@ public class InsertFactorLinkDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
+		if (! getProject().isOpen())
+			return false;
+		
 		if (!isDiagramView())
 			return false;
 		
-		
+		if (getDiagramView().getDiagramModel() == null)
+			return false;
+				
 		return (getDiagramView().getDiagramModel().getFactorCount() >= 2);
 	}
 
