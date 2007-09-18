@@ -36,6 +36,9 @@ public class PlanningViewControlPanel extends DisposablePanel implements Command
 		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		createCustomizationButtons();
 		addLegendComponents(treeAsObjectPicker);
+		
+		ViewData viewData = getProject().getCurrentViewData();
+		updateVisibility(viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE));
 	}
 	
 	public void dispose()
@@ -77,8 +80,9 @@ public class PlanningViewControlPanel extends DisposablePanel implements Command
 		return customizationButtonPanel; 
 	}
 
-	private void setVisibility(boolean isVisible)
+	private void updateVisibility(String newStyleChoice)
 	{
+		boolean isVisible = newStyleChoice.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 		renameConfigurationButton.setVisible(isVisible);
 		deleteConfigurationButton.setVisible(isVisible);
 		rowsLegendPanel.setVisible(isVisible);
@@ -107,12 +111,9 @@ public class PlanningViewControlPanel extends DisposablePanel implements Command
 			return;
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		String newStyleChoice = setCommand.getDataValue();
-		boolean shouldHideItsACustomizableRadioChoice = newStyleChoice.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
-		setVisibility(shouldHideItsACustomizableRadioChoice);
+		updateVisibility(setCommand.getDataValue());
 	}
 
-	 
 	private UiButton createConfigurationButton;
 	private UiButton renameConfigurationButton;
 	private UiButton deleteConfigurationButton; 
