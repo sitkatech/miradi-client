@@ -34,6 +34,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 		if (! getProject().isOpen())
 			return false;
 		
+		if (!isDiagramView())
+			return false;
+		
 		if (getDiagramView().getDiagramModel() == null)
 			return false;
 		
