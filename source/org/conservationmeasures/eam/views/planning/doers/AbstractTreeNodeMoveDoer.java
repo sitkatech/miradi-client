@@ -16,6 +16,10 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.planning.PlanningView;
+import org.conservationmeasures.eam.views.planning.RowManager;
 
 
 abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
@@ -41,6 +45,10 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 			int newPosition = oldPosition + getDelta();
 			if(newPosition < 0 || newPosition >= siblings.size())
 				return false;
+			
+			if(!parentIsVisible(task))
+				return false;
+			
 			return true;
 		}
 		catch(Exception e)
@@ -120,5 +128,12 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 		String parentTasksTag = getTaskIdsTag(parent);
 		IdList siblings = new IdList(parent.getData(parentTasksTag));
 		return siblings;
+	}
+	
+	private boolean parentIsVisible(Task task) throws Exception
+	{
+		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
+		CodeList visibleRowCodes = RowManager.getVisibleRowCodes(viewData);
+		return (visibleRowCodes.contains(task.getParentTypeCode()));
 	}
 }
