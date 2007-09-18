@@ -356,7 +356,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			createConceptualModelDiagramTab();
 			createResultsChainTab();
 			
-			setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 			//TODO nima get tag using object type, diagram splitter has this info.  
 			ensureDiagramIsSelected(ConceptualModelDiagram.getObjectType(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 			ensureDiagramIsSelected(ResultsChainDiagram.getObjectType(), ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
@@ -365,6 +364,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		{
 			getMainWindow().allowActionUpdates();
 		}
+	}
+	
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 	}
 
 	private void createResultsChainTab() throws Exception
