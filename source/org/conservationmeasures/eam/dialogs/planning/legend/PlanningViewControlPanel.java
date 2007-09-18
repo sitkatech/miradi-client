@@ -46,7 +46,7 @@ public class PlanningViewControlPanel extends JPanel
 
 	private JPanel createCustomizationButtonPanel()
 	{
-		JPanel customizationButtonPanel = new JPanel(new BasicGridLayout(3, 0));
+		JPanel customizationButtonPanel = new JPanel(new BasicGridLayout(3, 1));
 		customizationButtonPanel.add(createLegendButton(mainWindow.getActions().get(ActionCreatePlanningViewConfiguration.class)));
 		customizationButtonPanel.add(createLegendButton(mainWindow.getActions().get(ActionRenamePlanningViewConfiguration.class)));
 		customizationButtonPanel.add(createLegendButton(mainWindow.getActions().get(ActionDeletePlanningViewConfiguration.class)));
