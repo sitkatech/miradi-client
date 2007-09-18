@@ -17,11 +17,11 @@ public class ActionCreatePlanningViewConfiguration extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Create Configuration");
+		return EAM.text("Action|Create Custom");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a new Configuration");
+		return EAM.text("TT|Create a new Custom");
 	}
 }
