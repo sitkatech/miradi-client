@@ -99,6 +99,14 @@ public class TestTask extends ObjectTestCase
 		Task got = (Task)BaseObject.createFromJson(project.getObjectManager(), parent.getType(), parent.toJson());
 		assertEquals("wrong count?", parent.getSubtaskCount(), got.getSubtaskCount());
 	}
+	
+	public void testGetChildTaskTypeCode()
+	{
+		assertEquals(Task.ACTIVITY_NAME, Task.getChildTaskTypeCode(Strategy.getObjectType()));
+		assertEquals(Task.METHOD_NAME, Task.getChildTaskTypeCode(Indicator.getObjectType()));
+		assertEquals(Task.OBJECT_NAME, Task.getChildTaskTypeCode(Task.getObjectType()));
+		assertEquals(Task.OBJECT_NAME, Task.getChildTaskTypeCode(AccountingCode.getObjectType()));
+	}
 
 	private Task createBasicTree() throws Exception
 	{
