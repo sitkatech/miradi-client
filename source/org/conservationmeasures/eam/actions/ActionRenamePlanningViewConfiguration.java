@@ -22,6 +22,6 @@ public class ActionRenamePlanningViewConfiguration extends MainWindowAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Rename the selected Custom");
+		return EAM.text("TT|Rename the selected Custom Planning View");
 	}
 }
