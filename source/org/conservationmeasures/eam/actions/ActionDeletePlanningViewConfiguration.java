@@ -17,12 +17,12 @@ public class ActionDeletePlanningViewConfiguration extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Delete Configuration");
+		return EAM.text("Action|Delete Custom");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete the Configuration");
+		return EAM.text("TT|Delete the Custom");
 	}
 
 }

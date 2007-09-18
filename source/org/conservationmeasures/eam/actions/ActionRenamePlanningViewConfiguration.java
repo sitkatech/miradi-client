@@ -17,11 +17,11 @@ public class ActionRenamePlanningViewConfiguration extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Rename Configuration");
+		return EAM.text("Action|Rename Custom");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Rename the selected Configuration");
+		return EAM.text("TT|Rename the selected Custom");
 	}
 }
