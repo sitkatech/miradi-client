@@ -42,11 +42,11 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 		int columnCount = getColumnModel().getColumnCount();
 		for (int i = 0; i < columnCount; ++i)
 		{
-			int convertColumnIndexToModel = convertColumnIndexToModel(i);
-			setColumnWidthToHeaderWidth(convertColumnIndexToModel);
-			String columnTag = model.getColumnTag(convertColumnIndexToModel);
-			int columnWidth = getColumnWidth(convertColumnIndexToModel, columnTag);
-			setColumnWidth(convertColumnIndexToModel, columnWidth);
+			int realColumn = convertColumnIndexToModel(i);
+			setColumnWidthToHeaderWidth(realColumn);
+			String columnTag = model.getColumnTag(realColumn);
+			int columnWidth = getColumnWidth(realColumn, columnTag);
+			setColumnWidth(realColumn, columnWidth);
 		}
 	}
 	
