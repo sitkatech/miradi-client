@@ -15,8 +15,9 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 {
 	public boolean isAvailable()
 	{
-		if (!getProject().isOpen()) 
+		if (!super.isAvailable())
 			return false;
+				
 		return !getDiagramView().isResultsChainTab();
 	}
 	

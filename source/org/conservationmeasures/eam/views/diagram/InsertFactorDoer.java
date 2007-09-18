@@ -31,7 +31,13 @@ abstract public class InsertFactorDoer extends LocationDoer
 
 	public boolean isAvailable()
 	{
-		return getProject().isOpen();
+		if (getDiagramView().getDiagramModel() == null)
+			return false;
+		
+		if (! getProject().isOpen())
+			return false;
+		
+		return true;
 	}
 
 	public void doIt() throws CommandFailedException
