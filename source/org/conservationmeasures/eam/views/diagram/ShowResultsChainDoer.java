@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ShowResultsChainDoer extends ViewDoer
@@ -59,6 +60,7 @@ public class ShowResultsChainDoer extends ViewDoer
 		ORefList resultsChains = strategy.getResultsChains();
 		final int FIRST_IN_LIST = 0;
 		ORef firstChain = resultsChains.get(FIRST_IN_LIST);
+		diagramView.setMode(ViewData.MODE_DEFAULT);
 		diagramView.setDiagramTab(firstChain);
 	}
 }
