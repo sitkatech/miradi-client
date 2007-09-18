@@ -13,6 +13,16 @@ import java.awt.Rectangle;
 
 public class RoundRectangleRenderer extends RectangleRenderer
 {
+	public RoundRectangleRenderer()
+	{	
+		minimumArcSize = 5;
+	}
+	
+	public RoundRectangleRenderer(int minumArcSizeToUse)
+	{
+		minimumArcSize = minumArcSizeToUse;
+	}
+	
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
 		Graphics2D g2 = (Graphics2D)g;
@@ -34,14 +44,19 @@ public class RoundRectangleRenderer extends RectangleRenderer
 	int getArcWidth(Rectangle rect)
 	{
 		int proposedArc = rect.width / 20;
-		return Math.max(proposedArc, MINIMUM_ARC);
+		return Math.max(proposedArc, getMinimumArcSize());
 	}
 	
 	int getArcHeight(Rectangle rect)
 	{
 		int proposedArc = rect.height / 20;
-		return Math.max(proposedArc, MINIMUM_ARC);
+		return Math.max(proposedArc, getMinimumArcSize());
 	}
 
-	final static int MINIMUM_ARC = 5;
+	public int getMinimumArcSize()
+	{
+		return minimumArcSize;
+	}
+	
+	private int minimumArcSize;
 }
