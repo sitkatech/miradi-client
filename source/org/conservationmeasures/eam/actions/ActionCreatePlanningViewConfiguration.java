@@ -22,6 +22,6 @@ public class ActionCreatePlanningViewConfiguration extends MainWindowAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a new Custom");
+		return EAM.text("TT|Create a new Custom Planning View");
 	}
 }
