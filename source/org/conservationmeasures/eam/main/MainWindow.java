@@ -356,6 +356,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		return threatMatrixView;
 	}
+	
+	public PlanningView getPlanningView()
+	{
+		return planningView;
+	}
 
 	public void closeProject() throws Exception
 	{
