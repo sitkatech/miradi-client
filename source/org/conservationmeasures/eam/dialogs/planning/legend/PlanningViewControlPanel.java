@@ -39,13 +39,21 @@ public class PlanningViewControlPanel extends JPanel
 		
 		add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
 		add(planningCustomizationPanel);
-		add(createLegendButton(mainWindow.getActions().get(ActionCreatePlanningViewConfiguration.class)));
-		add(createLegendButton(mainWindow.getActions().get(ActionRenamePlanningViewConfiguration.class)));
-		add(createLegendButton(mainWindow.getActions().get(ActionDeletePlanningViewConfiguration.class)));		
+		planningCustomizationPanel.add(createCustomizationButtonPanel());		
 		add(rowsLegendPanel);
 		add(columnsLegendPanel);
 	}
 
+	private JPanel createCustomizationButtonPanel()
+	{
+		JPanel customizationButtonPanel = new JPanel(new BasicGridLayout(3, 0));
+		customizationButtonPanel.add(createLegendButton(mainWindow.getActions().get(ActionCreatePlanningViewConfiguration.class)));
+		customizationButtonPanel.add(createLegendButton(mainWindow.getActions().get(ActionRenamePlanningViewConfiguration.class)));
+		customizationButtonPanel.add(createLegendButton(mainWindow.getActions().get(ActionDeletePlanningViewConfiguration.class)));
+		
+		return customizationButtonPanel;
+	}
+	
 	private UiButton createLegendButton(EAMAction action)
 	{
 		UiButton button = new UiButton(action);
