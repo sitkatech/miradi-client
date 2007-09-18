@@ -30,7 +30,6 @@ public class Copy extends ViewDoer
 		try
 		{
 			copySelectedItemsToMiradiClipboard();
-			getProject().getDiagramClipboard().incrementPasteCount();
 		}
 		catch (Exception e)
 		{
