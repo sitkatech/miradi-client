@@ -295,6 +295,23 @@ public class Task extends BaseObject
 		return new ORefList(Task.getObjectType(), getSubtaskIdList());
 	}
 	
+	public String getParentTypeCode()
+	{
+		if(isActivity())
+			return Strategy.OBJECT_NAME;
+		
+		if(isMethod())
+			return Indicator.OBJECT_NAME;
+		
+		Task owner = (Task)getOwner();
+		if(owner.isActivity())
+			return ACTIVITY_NAME;
+		if(owner.isMethod())
+			return METHOD_NAME;
+		
+		return OBJECT_NAME;
+	}
+	
 	private String getTaskCost()
 	{
 		try
@@ -372,6 +389,7 @@ public class Task extends BaseObject
 		
 		return OBJECT_NAME;
 	}
+	
 
 
 	public void clear()
