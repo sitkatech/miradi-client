@@ -32,6 +32,11 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		columnsToShow.add(DEFAULT_COLUMN);
 		columnsToShow.addAll(ColumnManager.getVisibleColumnCodes(project.getCurrentViewData()));
 		
+		doNotAllowBudgetDetailColumn();
+	}
+
+	private void doNotAllowBudgetDetailColumn()
+	{
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 			columnsToShow.removeCode(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
 	}
