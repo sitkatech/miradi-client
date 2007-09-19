@@ -55,7 +55,11 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 		
 		try
 		{
-			createTask(getProject(), getSingleSelectedObject(), getPicker());
+			BaseObject selectedObject = getSingleSelectedObject();
+			if (! userConfirmsCreateTask(selectedObject))
+				return;
+			
+			createTask(getProject(), selectedObject, getPicker());
 		}
 		catch(Exception e)
 		{
@@ -64,6 +68,32 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
+	private boolean userConfirmsCreateTask(BaseObject selectedObject)
+	{
+		if (selectedObject.getType() != Task.getObjectType())
+			return false;
+		
+		Task task = (Task) selectedObject;
+		if (task.getAssignmentRefs().size() == 0)
+			return true;
+		
+		return hasUserConfirmed();
+	}
+	
+	private boolean hasUserConfirmed()
+	{
+		final String CANCEL = "Cancel";
+		final String CREATE = "Create";
+		String[] buttons = {CANCEL, CREATE};
+		String title = EAM.text("Create Task");
+		String[] body = {EAM.text("This task already has resources assigned to it. If a task has subtasks, " +
+									"those subtasks will be used for all budget calculations, " +
+									"and any resource assignments will be ignored. Are you sure you want to create a subtask?")};
+	
+		String userChoice = EAM.choiceDialog(title, body, buttons);
+		return userChoice.equals(CREATE);
+	}
+
 	boolean canOwnTask(BaseObject object)
 	{
 		if(object.getType() == Task.getObjectType())
