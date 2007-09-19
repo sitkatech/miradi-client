@@ -47,7 +47,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	private void addCommonFields()
 	{
 		addField(createStringField(ObjectType.TASK, Task.TAG_LABEL));
-		addField(createReadonlyTextField(Task.PSEUDO_TAG_TASK_TOTAL));
+		addField(createReadonlyTextField(Task.PSEUDO_TAG_TASK_BUDGET_TOTAL));
 		updateFieldsFromProject();
 	}
 

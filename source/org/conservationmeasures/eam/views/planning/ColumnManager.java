@@ -32,8 +32,8 @@ public class ColumnManager
 
 		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		masterColumnList.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		masterColumnList.add(Task.PSEUDO_TAG_TASK_TOTAL);
-		masterColumnList.add(Task.PSEUDO_TAG_TASK_DETAILS);
+		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_TOTAL);
+		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
 			
 		return masterColumnList;
 	}
@@ -79,7 +79,7 @@ public class ColumnManager
 		String[] list = {
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_DETAILS, 
+				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL, 
 				};
 			
 		return new CodeList(list);
@@ -103,7 +103,7 @@ public class ColumnManager
 		String[] list = {
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_DETAILS, 
+				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL, 
 				};
 	
 		return new CodeList(list);
@@ -114,7 +114,7 @@ public class ColumnManager
 		String[] list = {
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_DETAILS, 
+				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL, 
 				};
 		
 		return new CodeList(list);
