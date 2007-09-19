@@ -20,6 +20,8 @@ import javax.swing.table.AbstractTableModel;
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalTableModel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalsTable;
@@ -103,20 +105,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if(!event.isSetDataCommand())
-			return;
-		
-		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 		try
-		{
-			if(PlanningView.isRowOrColumnChangingCommand(cmd))
-				rebuildEntireTreeTable();
-			
-			if(isTaskMove(cmd))
-				rebuildEntireTreeTable();
-			
-			if(isSelectedObjectModification(event))
-				rebuildEntireTreeTable();
+		{		
+			if (doesCommandForceRebuild(event))
+				rebuildEntireTreeTable();	
 		}
 		catch(Exception e)
 		{
@@ -126,14 +118,59 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		
 	}
 	
+	private boolean doesCommandForceRebuild(CommandExecutedEvent event)
+	{
+		if(PlanningView.isRowOrColumnChangingCommand(event))
+			return true;
+		
+		if(isTaskMove(event))
+			return true;
+		
+		if(isSelectedObjectModification(event))
+			return true;
+		
+		if(isCreate(event) || isDeleteCommand(event))
+			return true;
+		
+		return false;
+	}
+	
+	private boolean isDeleteCommand(CommandExecutedEvent event)
+	{
+		if (! event.isDeleteObjectCommand())
+			return false;
+		
+		CommandCreateObject createCommand = (CommandCreateObject) event.getCommand();
+		if (createCommand.getObjectType() != Task.getObjectType())
+			return false;
+		
+		return true;
+	}
+
+	private boolean isCreate(CommandExecutedEvent event)
+	{
+		if (! event.isCreateObjectCommand())
+			return false;
+
+		CommandDeleteObject deleteCommand = (CommandDeleteObject) event.getCommand();
+		if (deleteCommand.getObjectType() != Task.getObjectType())
+			return false;
+		
+		return true;
+	}
+
 	//TODO this should use that getTasksTag (or something like that) method
 	//from email :Please put a todo in isTaskMove that it should use that 
 	//getTasksTag method (or whatever it's called) that I mentioned the 
 	//other day. I know that one is my code not yours.
-	private boolean isTaskMove(CommandSetObjectData cmd)
+	private boolean isTaskMove(CommandExecutedEvent event)
 	{
-		int type = cmd.getObjectType();
-		String tag = cmd.getFieldTag();
+		if (! event.isSetDataCommand())
+			return false;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		int type = setCommand.getObjectType();
+		String tag = setCommand.getFieldTag();
 		if(type == Task.getObjectType() && tag.equals(Task.TAG_SUBTASK_IDS))
 			return true;
 		if(type == Strategy.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))

@@ -36,6 +36,7 @@ import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTablePanel;
 import org.conservationmeasures.eam.dialogs.planning.legend.PlanningViewControlPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -163,23 +164,27 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());		
 	}
 	
-	public static boolean isRowOrColumnChangingCommand(CommandSetObjectData cmd)
+	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
 	{
-		if(cmd.getObjectType() == ViewData.getObjectType())
+		if (! event.isSetDataCommand())
+			return false;
+	
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		if(setCommand.getObjectType() == ViewData.getObjectType())
 		{
-			if(cmd.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
+			if(setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
 				return true;
-			if(cmd.getFieldTag().equals(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE))
+			if(setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE))
 				return true;
-			if(cmd.getFieldTag().equals(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
+			if(setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
 				return true;
 		}
 		
-		if(cmd.getObjectType() == PlanningViewConfiguration.getObjectType())
+		if(setCommand.getObjectType() == PlanningViewConfiguration.getObjectType())
 		{
-			if(cmd.getFieldTag().equals(PlanningViewConfiguration.TAG_COL_CONFIGURATION))
+			if(setCommand.getFieldTag().equals(PlanningViewConfiguration.TAG_COL_CONFIGURATION))
 				return true;
-			if(cmd.getFieldTag().equals(PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
+			if(setCommand.getFieldTag().equals(PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
 				return true;
 		}
 		
