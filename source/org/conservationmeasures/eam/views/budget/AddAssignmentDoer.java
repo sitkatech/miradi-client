@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class AddAssignmentDoer extends ObjectsDoer
@@ -37,7 +36,14 @@ public class AddAssignmentDoer extends ObjectsDoer
 
 		try 
 		{
-			createAssignment(getProject());
+			Task selectedTask = (Task)getProject().findObject(ObjectType.TASK, getSelectedIds()[0]);
+			if (selectedTask.getSubtaskCount() > 0)
+			{
+				EAM.errorDialog(EAM.text("Resources cannot be added to this task because it already has subtasks."));
+				return;
+			}
+			
+			createAssignment(selectedTask);
 		}
 		catch (Exception e)
 		{
@@ -45,22 +51,20 @@ public class AddAssignmentDoer extends ObjectsDoer
 		}
 	}
 
-	private void createAssignment(Project project) throws Exception
+	private void createAssignment(Task selectedTask) throws Exception
 	{
-		Task selectedTask = (Task)project.findObject(ObjectType.TASK, getSelectedIds()[0]);
-
-		project.executeCommand(new CommandBeginTransaction());
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT);
-			project.executeCommand(createAssignment);
+			getProject().executeCommand(createAssignment);
 
 			Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedTask, Task.TAG_ASSIGNMENT_IDS, createAssignment.getCreatedId());
-			project.executeCommand(appendAssignment);
+			getProject().executeCommand(appendAssignment);
 		}
 		finally 
 		{
-			project.executeCommand(new CommandEndTransaction());	
+			getProject().executeCommand(new CommandEndTransaction());	
 		}
 	}
 	
