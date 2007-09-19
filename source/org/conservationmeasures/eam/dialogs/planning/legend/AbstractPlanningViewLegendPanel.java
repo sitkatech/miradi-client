@@ -15,7 +15,6 @@ import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -162,7 +161,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 	{
 		try
 		{
-			updateCheckBoxes(event.getCommand());
+			updateCheckBoxes(event);
 		}
 		catch(Exception e)
 		{
@@ -171,16 +170,12 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		}
 	}
 	
-	void updateCheckBoxes(Command command) throws Exception
+	void updateCheckBoxes(CommandExecutedEvent event) throws Exception
 	{
-		if (! command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-		
-		CommandSetObjectData setCommand = (CommandSetObjectData) command;
-		if (setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_STYLE_CHOICE))
-			updateEnableState(setCommand.getDataValue());
+		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_STYLE_CHOICE))
+			updateEnableState(((CommandSetObjectData) event.getCommand()).getDataValue());
 
-		if(PlanningView.isRowOrColumnChangingCommand(setCommand))
+		if(PlanningView.isRowOrColumnChangingCommand(event))
 			updateCheckBoxesFromProjectSettings();
 	}
 	
