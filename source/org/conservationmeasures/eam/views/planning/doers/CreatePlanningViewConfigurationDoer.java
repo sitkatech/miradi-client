@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.planning.RowManager;
 
 public class CreatePlanningViewConfigurationDoer extends ViewDoer
@@ -70,6 +71,8 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 		CommandSetObjectData setConfigurationLabel = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_LABEL, getConfigurationDefaultLabel(getProject()));
 		getProject().executeCommand(setConfigurationLabel);
 		
+		CommandSetObjectData setStyleChoice = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
+		getProject().executeCommand(setStyleChoice);
 	}
 
 	public static String getConfigurationDefaultLabel(Project project)
