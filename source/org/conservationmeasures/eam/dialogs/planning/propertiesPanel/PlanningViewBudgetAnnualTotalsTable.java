@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -39,10 +40,11 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewTableWithSi
 			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 			int modelColumn = table.convertColumnIndexToModel(column);
 			setBackground(getBackgroundColor(table.getColumnCount(), modelColumn));
+			setHorizontalAlignment(JLabel.RIGHT);
 			
 			if (isSelected)
 				setBackground(table.getSelectionBackground());
-			
+					
 			return component;
 		}
 
