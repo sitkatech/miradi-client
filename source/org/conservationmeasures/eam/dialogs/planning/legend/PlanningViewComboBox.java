@@ -77,16 +77,11 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	
 	private Vector getRadioSaveCommands() throws Exception
 	{
-		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
-		String newValue = selectedItem.getCode();
-		ViewData viewData = getProject().getCurrentViewData();
-		String existingValue = viewData.getData(getChoiceTag());
-		boolean isSameComboSeletion = existingValue.equals(newValue);
-		//FIXME this if is wrong
-		if (! needsSave() || isSameComboSeletion)
+		if (! needsSave())
 			return new Vector();
 		
 		Vector radioSaveCommands = new Vector();
+		ViewData viewData = getProject().getCurrentViewData();
 		String existingStyleChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
 		if (existingStyleChoice.equals(getRadioChoicTag()))
 			return new Vector();
