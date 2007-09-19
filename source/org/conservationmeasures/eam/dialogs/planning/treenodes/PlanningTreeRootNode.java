@@ -70,6 +70,11 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		pruneUnwantedLayers(RowManager.getVisibleRowCodes(viewData));
 	}
 	
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
+
 	private void addConceptualModel()
 	{
 		children.add(new PlanningTreeConceptualModelNode(project));
