@@ -33,9 +33,6 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	{		
 		try
 		{
-			if (!needsSave())
-				return;
-			
 			saveState();
 		}
 		catch (Exception e)
@@ -66,13 +63,13 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 
 	private Vector getComboSaveCommnds() throws Exception
 	{
+		if (! needsSave())
+			return new Vector();
+		
 		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
 		String newValue = selectedItem.getCode();
 		Vector comboSaveCommands = new Vector();
 		ViewData viewData = getProject().getCurrentViewData();
-		String existingValue = viewData.getData(getChoiceTag());
-		if (existingValue.equals(newValue))
-			return new Vector();
 
 		comboSaveCommands.add(new CommandSetObjectData(viewData.getRef(), getChoiceTag(), newValue));
 		return comboSaveCommands;
@@ -80,8 +77,16 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	
 	private Vector getRadioSaveCommands() throws Exception
 	{
-		Vector radioSaveCommands = new Vector();
+		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
+		String newValue = selectedItem.getCode();
 		ViewData viewData = getProject().getCurrentViewData();
+		String existingValue = viewData.getData(getChoiceTag());
+		boolean isSameComboSeletion = existingValue.equals(newValue);
+		//FIXME this if is wrong
+		if (! needsSave() || isSameComboSeletion)
+			return new Vector();
+		
+		Vector radioSaveCommands = new Vector();
 		String existingStyleChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
 		if (existingStyleChoice.equals(getRadioChoicTag()))
 			return new Vector();
