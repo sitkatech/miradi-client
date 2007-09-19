@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeRootN
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
@@ -30,6 +31,11 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		final String DEFAULT_COLUMN = "Item";
 		columnsToShow.add(DEFAULT_COLUMN);
 		columnsToShow.addAll(ColumnManager.getVisibleColumnCodes(project.getCurrentViewData()));
+		
+		if (! columnsToShow.contains(Task.PSEUDO_TAG_TASK_DETAILS))
+			return;
+		
+		columnsToShow.removeCode(Task.PSEUDO_TAG_TASK_DETAILS);
 	}
 
 	public int getColumnCount()

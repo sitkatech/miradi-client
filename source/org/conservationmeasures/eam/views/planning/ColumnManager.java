@@ -33,8 +33,8 @@ public class ColumnManager
 		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		masterColumnList.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		masterColumnList.add(Task.PSEUDO_TAG_TASK_TOTAL);
-		
-		
+		masterColumnList.add(Task.PSEUDO_TAG_TASK_DETAILS);
+			
 		return masterColumnList;
 	}
 
