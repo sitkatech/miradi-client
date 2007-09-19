@@ -76,7 +76,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 
 	private void createBudgetTable(PlanningTreeTable treeTableToUse) throws Exception
 	{
-		PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), (TreeTableModelAdapter)treeTableToUse.getModel());
+		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), (TreeTableModelAdapter)treeTableToUse.getModel());
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel);
 		new ModelUpdater((TreeTableModelAdapter)treeTableToUse.getModel(), annualTotalsModel);
 	}
@@ -140,8 +140,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		if (! event.isDeleteObjectCommand())
 			return false;
 		
-		CommandCreateObject createCommand = (CommandCreateObject) event.getCommand();
-		if (createCommand.getObjectType() != Task.getObjectType())
+		CommandDeleteObject deleteCommand = (CommandDeleteObject) event.getCommand();
+		if (deleteCommand.getObjectType() != Task.getObjectType())
 			return false;
 		
 		return true;
@@ -152,8 +152,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		if (! event.isCreateObjectCommand())
 			return false;
 
-		CommandDeleteObject deleteCommand = (CommandDeleteObject) event.getCommand();
-		if (deleteCommand.getObjectType() != Task.getObjectType())
+		CommandCreateObject createCommand = (CommandCreateObject) event.getCommand();
+		if (createCommand.getObjectType() != Task.getObjectType())
 			return false;
 		
 		return true;
@@ -213,13 +213,14 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 
 		// TODO: Perhaps possibly detect exactly what changed and 
 		// only rebuild the columns or the rows rather than always doing both
-		
+	
 		// NOTE: The following rebuild the columns but don't touch the tree
 		getPlanningModel().rebuildCodeList();
 		tree.rebuildTableCompletely();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getPlanningModel().rebuildEntireTree();
+		annualTotalsModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateSplitterRightSideContents();
 
@@ -287,6 +288,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private MultiTableVerticalScrollController verticalController;
 	private MultipleTableSelectionController selectionController;
 	private PlanningViewBudgetAnnualTotalsTable annualTotalsTable;
+	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private UiScrollPane annualTotalsScrollPane;
 }
 
