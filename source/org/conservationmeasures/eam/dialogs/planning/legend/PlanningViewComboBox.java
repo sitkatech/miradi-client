@@ -31,7 +31,10 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	{		
 		try
 		{
-			saveStateIfNeeded();
+			if (!needsSave())
+				return;
+			
+			saveState();
 		}
 		catch (Exception e)
 		{
@@ -40,11 +43,8 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		}
 	}
 
-	private void saveStateIfNeeded() throws Exception
+	private void saveState() throws Exception
 	{
-		if (!needsSave())
-			return;
-
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
