@@ -202,6 +202,18 @@ public class EAM
 		logger.logDebug(text);
 	}
 	
+	public static void logStackTrace()
+	{
+		try
+		{
+			throw new Exception();
+		}
+		catch(Exception e)
+		{
+			logger.logException(e);
+		}
+	}
+
 	public static void logVerbose(String text)
 	{
 		logger.logVerbose(text);
