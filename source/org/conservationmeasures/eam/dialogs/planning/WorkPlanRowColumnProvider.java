@@ -21,7 +21,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 				Indicator.PSEUDO_TAG_STATUS_VALUE,
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, 
+				Task.PSEUDO_TAG_TASK_DETAILS,
 				});
 	}
 
