@@ -216,7 +216,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 
 	private void setCustomizationComboBoxSelection(ORef refToSelect)
 	{
-		JComboBox comboBox = (JComboBox) comboBoxes.get(PlanningView.CUSTOMIZABLE_COMBO);
+		PlanningViewComboBox comboBox = (PlanningViewComboBox) comboBoxes.get(PlanningView.CUSTOMIZABLE_COMBO);
 		if(refToSelect.isInvalid())
 		{
 			comboBox.setSelectedIndex(0);
@@ -225,7 +225,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		
 		PlanningViewConfiguration configuration = (PlanningViewConfiguration) project.findObject(refToSelect);
 		ChoiceItem choiceToSelect = new ChoiceItem(configuration.getRef().toString(), configuration.getLabel());
-		comboBox.setSelectedItem(choiceToSelect);
+		comboBox.setSelectedItemWithoutFiring(choiceToSelect);
 	}
 
 	private Project project;
