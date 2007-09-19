@@ -873,8 +873,8 @@ abstract public class BaseObject
 	public static final String TAG_EMPTY = "EMPTY";
 	
 	public static final String DEFAULT_LABEL = "";
-
-
+	
+	public static final String PSEUDO_TAG_BUDGET_TOTAL = "pseudoBudgetTotal";
 	
 	BaseId id;
 	StringData label;
