@@ -20,7 +20,7 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 	{
 		return new CodeList(new String[] {
 							Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE,
-							Task.PSEUDO_TAG_TASK_TOTAL,
+							Task.PSEUDO_TAG_TASK_BUDGET_TOTAL,
 //							Strategy.PSEUDO_TAG_PROGRESS,
 //							Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //							Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,

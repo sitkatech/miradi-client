@@ -223,7 +223,7 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_SUBTASK_TOTAL))
 			return getSubtaskTotalCost();
 		
-		if (fieldTag.equals(PSEUDO_TAG_TASK_TOTAL))
+		if (fieldTag.equals(PSEUDO_TAG_TASK_BUDGET_TOTAL))
 			return getTaskTotalCost();
 		
 		if (fieldTag.equals(PSEUDO_TAG_TASK_COST))
@@ -404,7 +404,7 @@ public class Task extends BaseObject
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
 		subtaskTotal = new PseudoStringData(PSEUDO_TAG_SUBTASK_TOTAL);
-		taskTotal = new PseudoStringData(PSEUDO_TAG_TASK_TOTAL);
+		taskTotal = new PseudoStringData(PSEUDO_TAG_TASK_BUDGET_TOTAL);
 		taskCost = new PseudoStringData(PSEUDO_TAG_TASK_COST);
 		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
@@ -414,7 +414,7 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
 		addField(PSEUDO_TAG_SUBTASK_TOTAL, subtaskTotal);
-		addField(PSEUDO_TAG_TASK_TOTAL, taskTotal);
+		addField(PSEUDO_TAG_TASK_BUDGET_TOTAL, taskTotal);
 		addField(PSEUDO_TAG_TASK_COST, taskCost);
 		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
 		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
@@ -426,8 +426,8 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public final static String PSEUDO_TAG_SUBTASK_TOTAL = "SubtaskTotal";
-	public final static String PSEUDO_TAG_TASK_TOTAL = "TaskTotal";
-	public final static String PSEUDO_TAG_TASK_DETAILS = "TaskDetail";
+	public final static String PSEUDO_TAG_TASK_BUDGET_TOTAL = "TaskBudgetTotal";
+	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "TaskBudgetDetail";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	

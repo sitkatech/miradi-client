@@ -230,7 +230,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private void updateSplitterRightSideContents() throws Exception
 	{
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
-		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_DETAILS))
+		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			getTreeTableScrollPane().hideVerticalScrollBar();
 			splitter.setRightComponent(annualTotalsScrollPane);
