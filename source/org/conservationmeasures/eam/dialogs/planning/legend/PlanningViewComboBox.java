@@ -50,6 +50,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		{
 			ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
 			saveSelectedItem(getChoiceTag(), selectedItem.getCode());
+			saveRadioSelection();
 		}
 		finally
 		{
@@ -67,13 +68,24 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, newValue);
 		getProject().executeCommand(setComboItem);
 	}
+	
+	private void saveRadioSelection() throws Exception
+	{
+		ViewData viewData = getProject().getCurrentViewData();
+		String existingStyleChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
+		if (existingStyleChoice.equals(getRadioChoicTag()))
+			return;
 
+		CommandSetObjectData setSelectedRadio = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, getRadioChoicTag());
+		getProject().executeCommand(setSelectedRadio);
+	}
 	
 	protected Project getProject()
 	{
 		return project;
 	}
 
+	abstract public String getRadioChoicTag();
 	abstract public String getChoiceTag();
 	abstract boolean needsSave() throws Exception;
 	

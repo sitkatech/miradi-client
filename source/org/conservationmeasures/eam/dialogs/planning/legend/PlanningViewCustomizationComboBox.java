@@ -99,7 +99,12 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		return ViewData.TAG_PLANNING_CUSTOM_PLAN_REF;
 	}
 	
-	 boolean needsSave() throws Exception 
+	public String getRadioChoicTag()
+	{
+		return PlanningView.CUSTOMIZABLE_RADIO_CHOICE;
+	}
+	
+	boolean needsSave() throws Exception 
 	{
 		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
 		ORef existingRef = viewData.getORef(getChoiceTag());
