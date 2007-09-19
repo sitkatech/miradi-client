@@ -72,6 +72,7 @@ import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.DiagramPageList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
+import org.conservationmeasures.eam.views.planning.doers.CreatePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 
 
@@ -458,7 +459,7 @@ public class Project
 			return;
 		
 		ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
-		setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, EAM.text("[Custom 1]"));
+		setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewConfigurationDoer.getConfigurationDefaultLabel(this));
 	}
 
 	private void createDefaultConceptualModel() throws Exception
