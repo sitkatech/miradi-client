@@ -6,7 +6,9 @@
 package org.conservationmeasures.eam.dialogs.planning.legend;
 
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -44,13 +46,17 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	}
 
 	private void saveState() throws Exception
-	{
+	{	
+		Vector commands = new Vector();
+		commands.addAll(getComboSaveCommnds());
+		commands.addAll(getRadioSaveCommands());
+		if (commands.size() == 0)
+			return;
+		
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
-			saveSelectedItem(getChoiceTag(), selectedItem.getCode());
-			saveRadioSelection();
+			getProject().executeCommands((Command[])commands.toArray(new Command[0]));
 		}
 		finally
 		{
@@ -58,26 +64,30 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		}
 	}
 
-	private void saveSelectedItem(String tag, String newValue) throws Exception
-	{	
+	private Vector getComboSaveCommnds() throws Exception
+	{
+		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
+		String newValue = selectedItem.getCode();
+		Vector comboSaveCommands = new Vector();
 		ViewData viewData = getProject().getCurrentViewData();
-		String existingValue = viewData.getData(tag);
+		String existingValue = viewData.getData(getChoiceTag());
 		if (existingValue.equals(newValue))
-			return;
+			return new Vector();
 
-		CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, newValue);
-		getProject().executeCommand(setComboItem);
+		comboSaveCommands.add(new CommandSetObjectData(viewData.getRef(), getChoiceTag(), newValue));
+		return comboSaveCommands;
 	}
 	
-	private void saveRadioSelection() throws Exception
+	private Vector getRadioSaveCommands() throws Exception
 	{
+		Vector radioSaveCommands = new Vector();
 		ViewData viewData = getProject().getCurrentViewData();
 		String existingStyleChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
 		if (existingStyleChoice.equals(getRadioChoicTag()))
-			return;
+			return new Vector();
 
-		CommandSetObjectData setSelectedRadio = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, getRadioChoicTag());
-		getProject().executeCommand(setSelectedRadio);
+		radioSaveCommands.add(new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, getRadioChoicTag()));
+		return radioSaveCommands;
 	}
 	
 	protected Project getProject()
