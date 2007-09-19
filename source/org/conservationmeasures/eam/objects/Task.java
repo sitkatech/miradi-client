@@ -427,6 +427,7 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public final static String PSEUDO_TAG_SUBTASK_TOTAL = "SubtaskTotal";
 	public final static String PSEUDO_TAG_TASK_TOTAL = "TaskTotal";
+	public final static String PSEUDO_TAG_TASK_DETAILS = "TaskDetail";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	
