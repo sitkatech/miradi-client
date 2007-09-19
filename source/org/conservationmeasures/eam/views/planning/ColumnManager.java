@@ -79,7 +79,7 @@ public class ColumnManager
 		String[] list = {
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, 
+				Task.PSEUDO_TAG_TASK_DETAILS, 
 				};
 			
 		return new CodeList(list);
@@ -103,7 +103,7 @@ public class ColumnManager
 		String[] list = {
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, 
+				Task.PSEUDO_TAG_TASK_DETAILS, 
 				};
 	
 		return new CodeList(list);
@@ -114,7 +114,7 @@ public class ColumnManager
 		String[] list = {
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-				Task.PSEUDO_TAG_TASK_TOTAL, 
+				Task.PSEUDO_TAG_TASK_DETAILS, 
 				};
 		
 		return new CodeList(list);
