@@ -458,7 +458,7 @@ public class Project
 			return;
 		
 		ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
-		setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, EAM.text("[Customization]"));
+		setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, EAM.text("[Custom 1]"));
 	}
 
 	private void createDefaultConceptualModel() throws Exception
