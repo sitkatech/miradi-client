@@ -242,7 +242,17 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			return combineEffortListDateRanges(); 
+			DateRange combinedDateRange = combineEffortListDateRanges(); 
+			if (combinedDateRange == null || assignmentIds.size() == 0)
+				return "";
+			
+			int startYear = combinedDateRange.getStartDate().getGregorianYear();
+			int endYear = combinedDateRange.getEndDate().getGregorianYear();
+			
+			if (startYear == endYear)
+				return Integer.toString(startYear);
+			
+			return  Integer.toString(startYear) +" - "+ Integer.toString(endYear);
 		}
 		catch (Exception e)
 		{
@@ -251,11 +261,8 @@ public class Task extends BaseObject
 		} 
 	}
 
-	private String combineEffortListDateRanges() throws Exception
+	private DateRange combineEffortListDateRanges() throws Exception
 	{
-		if (assignmentIds.size() == 0)
-			return "";
-		
 		DateRange combinedDateRange = null;
 		for (int i = 0; i < assignmentIds.size(); ++i)
 		{
@@ -265,10 +272,7 @@ public class Task extends BaseObject
 			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
 		}
 		
-		if (combinedDateRange == null)
-			return "";
-		
-		return combinedDateRange.toString();
+		return combinedDateRange;
 	}
 
 	public String getAppendedResourceNames()
