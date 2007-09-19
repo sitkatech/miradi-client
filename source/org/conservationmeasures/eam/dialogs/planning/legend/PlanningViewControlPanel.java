@@ -85,7 +85,6 @@ public class PlanningViewControlPanel extends DisposablePanel implements Command
 		boolean isVisible = newStyleChoice.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 		renameConfigurationButton.setVisible(isVisible);
 		deleteConfigurationButton.setVisible(isVisible);
-		rowsLegendPanel.setVisible(isVisible);
 		columnsLegendPanel.setVisible(isVisible);
 	}
 	
