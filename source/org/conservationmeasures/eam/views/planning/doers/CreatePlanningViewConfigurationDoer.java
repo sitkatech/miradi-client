@@ -73,6 +73,6 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 
 	private String getConfigurationDefaultLabel()
 	{
-		return "Customization " + getProject().getPlanningViewConfigurationPool().size(); 
+		return "[Custom " + getProject().getPlanningViewConfigurationPool().size() + "]"; 
 	}
 }
