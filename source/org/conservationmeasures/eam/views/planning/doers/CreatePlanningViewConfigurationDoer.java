@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
 import org.conservationmeasures.eam.views.planning.RowManager;
@@ -66,13 +67,13 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 		CommandSetObjectData selectCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, newConfigurationRef);
 		getProject().executeCommand(selectCurrentConfiguration);
 		
-		CommandSetObjectData setConfigurationLabel = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_LABEL, getConfigurationDefaultLabel());
+		CommandSetObjectData setConfigurationLabel = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_LABEL, getConfigurationDefaultLabel(getProject()));
 		getProject().executeCommand(setConfigurationLabel);
 		
 	}
 
-	private String getConfigurationDefaultLabel()
+	public static String getConfigurationDefaultLabel(Project project)
 	{
-		return "[Custom " + getProject().getPlanningViewConfigurationPool().size() + "]"; 
+		return "[Custom " + project.getPlanningViewConfigurationPool().size() + "]"; 
 	}
 }
