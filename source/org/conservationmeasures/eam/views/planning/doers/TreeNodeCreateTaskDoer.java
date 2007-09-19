@@ -17,10 +17,13 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.utils.ConstantButtonNames;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.planning.RowManager;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -68,8 +71,15 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
+	//TODO refactor this method
 	private boolean userConfirmsCreateTask(BaseObject selectedObject)
 	{
+		if (selectedObject.getType() == Indicator.getObjectType())
+			return true;
+		
+		if (selectedObject.getType() == Strategy.getObjectType())
+			return true;
+		
 		if (selectedObject.getType() != Task.getObjectType())
 			return false;
 		
@@ -77,23 +87,16 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 		if (task.getAssignmentRefs().size() == 0)
 			return true;
 		
-		return hasUserConfirmed();
-	}
-	
-	private boolean hasUserConfirmed()
-	{
-		final String CANCEL = "Cancel";
-		final String CREATE = "Create";
-		String[] buttons = {CANCEL, CREATE};
+		String[] buttons = {ConstantButtonNames.CANCEL, ConstantButtonNames.CREATE};
 		String title = EAM.text("Create Task");
 		String[] body = {EAM.text("This task already has resources assigned to it. If a task has subtasks, " +
 									"those subtasks will be used for all budget calculations, " +
 									"and any resource assignments will be ignored. Are you sure you want to create a subtask?")};
-	
+		
 		String userChoice = EAM.choiceDialog(title, body, buttons);
-		return userChoice.equals(CREATE);
+		return userChoice.equals(ConstantButtonNames.CREATE);
 	}
-
+	
 	boolean canOwnTask(BaseObject object)
 	{
 		if(object.getType() == Task.getObjectType())
