@@ -77,7 +77,7 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		return ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE;
 	}
 	
-	public String getRadioChoicTag()
+	public String getStyleChoiceName()
 	{
 		return PlanningView.SINGLE_LEVEL_RADIO_CHOICE;
 	}
