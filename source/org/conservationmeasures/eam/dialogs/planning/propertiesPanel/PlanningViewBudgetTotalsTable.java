@@ -6,11 +6,13 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 
+import java.awt.Color;
+
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.AppPreferences;
 
-public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWithSizedColumns
+public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractRightAlignedTable
 {
 	public PlanningViewBudgetTotalsTable(TableModel model)
 	{
@@ -28,4 +30,9 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWith
 	{
 		return 125;
 	}	
+	
+	public Color getColumnBackGroundColor(int columnCount, int column)
+	{
+		return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
+	}
 }

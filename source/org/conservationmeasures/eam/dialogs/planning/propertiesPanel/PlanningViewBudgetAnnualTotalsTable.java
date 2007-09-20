@@ -6,31 +6,15 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
-import java.awt.Component;
-
-import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.main.AppPreferences;
 
-public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractTableWithSizedColumns
+
+public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractRightAlignedTable
 {
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model)
 	{
-		super(model);
-		setTableColumnRenderer();
-	}
-	
-	private void setTableColumnRenderer()
-	{
-		int columnCount = getColumnModel().getColumnCount();
-		for (int col = 0; col < columnCount; ++col)
-		{	
-			TableColumn tableColumn = getColumnModel().getColumn(col);
-			tableColumn.setCellRenderer(new CustomRenderer());
-		}
+		super(model);	
 	}
 	
 	protected int getColumnWidth(int column)
@@ -38,28 +22,12 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractTab
 		return 125;
 	}	
 	
-	public static class CustomRenderer extends DefaultTableCellRenderer
+	public Color getColumnBackGroundColor(int columnCount, int column)
 	{
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
-		{
-			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-			int modelColumn = table.convertColumnIndexToModel(column);
-			setBackground(getBackgroundColor(table.getColumnCount(), modelColumn));
-			setHorizontalAlignment(JLabel.RIGHT);
-			
-			if (isSelected)
-				setBackground(table.getSelectionBackground());
-					
-			return component;
-		}
-
-		private Color getBackgroundColor(int columnCount, int column)
-		{
-			final int TOTALS_COLUMN = columnCount - 1;
-			if (column == TOTALS_COLUMN)
-				return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
-			
-			return AppPreferences.BUDGET_TABLE_BACKGROUND;
-		}
+		final int TOTALS_COLUMN = columnCount - 1;
+		if (column == TOTALS_COLUMN)
+			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
+		
+		return AppPreferences.BUDGET_TABLE_BACKGROUND;
 	}
 }
