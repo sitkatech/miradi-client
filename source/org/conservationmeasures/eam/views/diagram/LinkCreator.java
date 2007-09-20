@@ -61,6 +61,9 @@ public class LinkCreator
 	
 	public boolean linkWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
+		if (fromDiagramFactor == null || toDiagramFactor == null)
+			return true;
+		
 		if(fromDiagramFactor.getDiagramFactorId().equals(toDiagramFactor.getDiagramFactorId()))
 		{
 			String[] body = {EAM.text("Can't link an item to itself"), };
