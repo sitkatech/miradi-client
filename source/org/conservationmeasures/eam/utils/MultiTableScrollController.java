@@ -28,6 +28,8 @@ abstract public class MultiTableScrollController implements AdjustmentListener
 
 	public void adjustmentValueChanged(AdjustmentEvent event)
 	{
+		if(disableListening)
+			return;
 		adjustAllScrollBars(event);
 	}
 	
@@ -38,11 +40,21 @@ abstract public class MultiTableScrollController implements AdjustmentListener
         if (sourceOrientation != orientation)
         	return;
         
-        int valueToSetTo = event.getValue();
-        for (int i = 0; i < scrollPanes.size(); ++i)
+        disableListening = true;
+        try
         {
-        	JScrollPane currentPane = scrollPanes.get(i);
-        	getScrollBar(currentPane).setValue(valueToSetTo);
+	        double percentToSetTo = ((double)event.getValue()) / (source.getMaximum() - source.getMinimum());
+	        for (int i = 0; i < scrollPanes.size(); ++i)
+	        {
+	        	JScrollPane currentPane = scrollPanes.get(i);
+	        	JScrollBar scrollBar = getScrollBar(currentPane);
+	            int valueToSetTo = (int) (percentToSetTo * (scrollBar.getMaximum() - scrollBar.getMinimum()));
+	            scrollBar.setValue(valueToSetTo);
+	        }
+        }
+        finally
+        {
+        	disableListening = false;
         }
 	}
 	
@@ -50,4 +62,6 @@ abstract public class MultiTableScrollController implements AdjustmentListener
 
 	private Vector<JScrollPane> scrollPanes = new Vector();
 	private int orientation;
+	
+	private boolean disableListening;
 }
