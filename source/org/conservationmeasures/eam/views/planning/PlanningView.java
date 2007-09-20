@@ -5,8 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionAssignResource;
@@ -108,14 +110,12 @@ public class PlanningView extends TabbedView
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
 		
 		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
-		JScrollPane controlPanelScroller = new FastScrollPane(controlPanel);
-		controlPanelScroller.validate();
+		FastScrollPane controlBarScrollPane = new FastScrollPane(controlPanel);
+		controlBarScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-		JSplitPane horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		horizontalSplitPane.setLeftComponent(controlPanelScroller);
-		horizontalSplitPane.setRightComponent(planningManagementPanel);
-		// FIXME: Should remember previous split position...this is a HACK!
-		horizontalSplitPane.setDividerLocation(controlPanel.getPreferredSize().width + 30);
+		JPanel horizontalSplitPane = new JPanel(new BorderLayout());
+		horizontalSplitPane.add(controlBarScrollPane, BorderLayout.BEFORE_LINE_BEGINS);
+		horizontalSplitPane.add(planningManagementPanel, BorderLayout.CENTER);
 		
 		addTab(EAM.text("Planning"), horizontalSplitPane);
 		addNonScrollableTab(resourceManagementPanel);
