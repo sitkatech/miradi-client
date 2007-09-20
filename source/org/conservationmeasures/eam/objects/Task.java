@@ -347,7 +347,11 @@ public class Task extends BaseObject
 	}
 
 	private String getTaskTotalCost()
-	{		
+	{	
+		//FIXME finish this method
+		//if (getSubtaskCount() > 0)
+		//	return getSubtaskTotalCost();
+		
 		try
 		{
 			BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(objectManager.getProject());
