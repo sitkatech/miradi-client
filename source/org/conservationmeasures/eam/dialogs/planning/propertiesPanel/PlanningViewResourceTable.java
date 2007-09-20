@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
@@ -97,11 +99,21 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 	
 	private void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
 	{
+		Arrays.sort(content, new SorterByToString());
 		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
 		PanelComboBox comboBox = new PanelComboBox(comboContent);
 		TableColumn tableColumn = getColumnModel().getColumn(col);
 		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
 		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
+	}
+	
+	class SorterByToString implements Comparator<BaseObject>
+	{
+		public int compare(BaseObject o1, BaseObject o2)
+		{
+			return o1.toString().compareToIgnoreCase(o2.toString());
+		}
+		
 	}
 	
 	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
