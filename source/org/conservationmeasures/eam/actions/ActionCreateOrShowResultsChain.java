@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import org.conservationmeasures.eam.icons.CreateResultsChainIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -12,15 +13,9 @@ public class ActionCreateOrShowResultsChain extends ViewAction
 {
 	public ActionCreateOrShowResultsChain(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), getIconName());
+		super(mainWindow, getLabel(), new CreateResultsChainIcon());
 	}
 	
-	//TODO vertify that this image is used for this action
-	public static String getIconName()
-	{
-		return "icons/showResultsChain.png";
-	}
-
 	//TODO verify text for label and tooltip
 	private static String getLabel()
 	{
