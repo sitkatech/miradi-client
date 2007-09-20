@@ -12,12 +12,11 @@ import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.FactorDeleteHelper;
-import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteSelectedItemDoer extends ViewDoer
@@ -59,22 +58,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	private ORefList extractFactors(EAMGraphCell[] selectedRelatedCells)
-	{
-		ORefList factorRefList = new ORefList();
-		for (int i = 0; i < selectedRelatedCells.length; ++i)
-		{
-			EAMGraphCell cell = selectedRelatedCells[i];
-			if (!cell.isFactor())
-				continue;
-			
-			FactorCell factorCell = (FactorCell) cell;
-			factorRefList.add(factorCell.getWrappedORef());
-		}
-		
-		return factorRefList;
-	}
-
 	private void deleteFactor(EAMGraphCell cell) throws Exception
 	{
 		if(!cell.isFactor())
@@ -92,32 +75,63 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		DiagramLink diagramLink = cell.getDiagramLink();
 		new LinkDeletor(getProject()).deleteFactorLinkAndDiagramLink(factorRefsAboutToBeDeleted, diagramLink);
 	}
-	
+
 	private void notifyUserIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
 	{
-		if (!containsAnyLinksThatAreOnMoreThanOneDiagram(selectedRelatedCells))
+		if (!shouldNotifyUserOfLinksBeingDeletedInOtherPages(selectedRelatedCells, extractDiagramFactors(selectedRelatedCells)))
 			return;
 		
 		EAM.notifyDialog(LINK_DELETE_NOTIFY_TEXT);
 	}
-	
-	private boolean containsAnyLinksThatAreOnMoreThanOneDiagram(EAMGraphCell[] selectedRelatedCells)
-	{
-		ObjectManager objectManager = getProject().getObjectManager();
-		for(int i = 0; i < selectedRelatedCells.length; ++i)
+	 
+	private boolean shouldNotifyUserOfLinksBeingDeletedInOtherPages(EAMGraphCell[] selectedRelatedCells, ORefList diagramFactorRefs)
+	{	
+		for (int i = 0; i < selectedRelatedCells.length; ++i)
 		{
 			EAMGraphCell cell = selectedRelatedCells[i];
 			if (! cell.isFactorLink())
 				continue;
 			
 			DiagramLink diagramLink = cell.getDiagramLink();
-			FactorLink factorLink = diagramLink.getUnderlyingLink();
-			ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
-			if (diagramLinkreferrers.size() > 1)
+			ORef fromDiagramFactorRef =  new ORef(DiagramFactor.getObjectType(), diagramLink.getFromDiagramFactorId());
+			ORef toDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramLink.getToDiagramFactorId());
+			if (!diagramFactorRefs.contains(fromDiagramFactorRef) && !diagramFactorRefs.contains(toDiagramFactorRef))
 				return true;
 		}
 		
 		return false;
+	}
+	
+	private ORefList extractFactors(EAMGraphCell[] selectedRelatedCells)
+	{
+		ORefList factorRefList = new ORefList();
+		for (int i = 0; i < selectedRelatedCells.length; ++i)
+		{
+			EAMGraphCell cell = selectedRelatedCells[i];
+			if (!cell.isFactor())
+				continue;
+			
+			FactorCell factorCell = (FactorCell) cell;
+			factorRefList.add(factorCell.getWrappedORef());
+		}
+		
+		return factorRefList;
+	}
+	
+	private ORefList extractDiagramFactors(EAMGraphCell[] selectedRelatedCells)
+	{
+		ORefList diagramFactorRefList = new ORefList();
+		for (int i = 0; i < selectedRelatedCells.length; ++i)
+		{
+			EAMGraphCell cell = selectedRelatedCells[i];
+			if (!cell.isFactor())
+				continue;
+			
+			FactorCell factorCell = (FactorCell) cell;
+			diagramFactorRefList.add(factorCell.getDiagramFactorRef());
+		}
+		
+		return diagramFactorRefList;
 	}
 	
 	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
