@@ -16,7 +16,6 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractRightAlignedTab
 	{
 		super(modelToUse);
 		setBackground(AppPreferences.BUDGET_TABLE_BACKGROUND);
-		getTableHeader().setBackground(getBackground());
 	}
 
 	protected int getColumnWidth(int column)
