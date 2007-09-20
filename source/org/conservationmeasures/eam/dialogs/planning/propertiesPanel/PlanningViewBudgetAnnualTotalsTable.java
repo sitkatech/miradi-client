@@ -34,6 +34,11 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewTableWithSi
 		}
 	}
 	
+	protected int getColumnWidth(int column)
+	{
+		return getColumnHeaderWidth(column);
+	}	
+	
 	public static class CustomRenderer extends DefaultTableCellRenderer
 	{
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
@@ -57,5 +62,5 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewTableWithSi
 			
 			return AppPreferences.BUDGET_TABLE_BACKGROUND;
 		}
-	}	
+	}
 }

@@ -16,4 +16,9 @@ public class PlanningViewBudgetTable extends PlanningViewTableWithSizedColumns
 		setBackground(AppPreferences.BUDGET_TABLE_BACKGROUND);
 		getTableHeader().setBackground(getBackground());
 	}
+
+	protected int getColumnWidth(int column)
+	{
+		return getColumnHeaderWidth(column);
+	}
 }
