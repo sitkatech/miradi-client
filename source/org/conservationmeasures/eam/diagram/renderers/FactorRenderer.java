@@ -51,6 +51,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.icons.AbstractMiradiIcon;
 import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -66,7 +67,6 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
-import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -229,7 +229,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private void drawChainIcon(Rectangle rect, Graphics2D g2) 
 	{
-		MiradiResourceImageIcon icon = new ResultsChainIcon();
+		AbstractMiradiIcon icon = new ResultsChainIcon();
 		Rectangle rectangle = getResultChainRectWithinNode();
 		icon.paintIcon(null, g2,rectangle.x, rectangle.y);
 	}

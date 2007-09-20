@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import org.conservationmeasures.eam.icons.CreateResultsChainIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -12,14 +13,9 @@ public class ActionCreateResultsChain extends MainWindowAction
 {
 	public ActionCreateResultsChain(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), getIconName());
+		super(mainWindow, getLabel(), new CreateResultsChainIcon());
 	}
 	
-	private static String getIconName()
-	{
-		return "icons/createResultsChain.png";
-	}
-
 	private static String getLabel()
 	{
 		return EAM.text("Action|Create Results Chain");
