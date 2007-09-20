@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningViewWorkPlanTable extends PlanningViewTableWithSizedColumns
+public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithSizedColumns
 {
 	public PlanningViewWorkPlanTable(Project projectToUse, PlanningViewAbstractBudgetTableModel modelToUse) throws Exception
 	{

@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import org.conservationmeasures.eam.main.AppPreferences;
 
 
-public class PlanningViewBudgetTable extends PlanningViewTableWithSizedColumns
+public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithSizedColumns
 {
 	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{

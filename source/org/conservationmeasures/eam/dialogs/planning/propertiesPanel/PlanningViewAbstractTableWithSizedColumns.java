@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
-abstract public class PlanningViewTableWithSizedColumns extends PlanningViewAbstractTable
+abstract public class PlanningViewAbstractTableWithSizedColumns extends PlanningViewAbstractTable
 {
-	public PlanningViewTableWithSizedColumns(TableModel modelToUse)
+	public PlanningViewAbstractTableWithSizedColumns(TableModel modelToUse)
 	{
 		super(modelToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
