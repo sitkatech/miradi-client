@@ -175,6 +175,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		budgetModel.dataWasChanged();
 		budgetTotalsModel.dataWasChanged();
 		
+		resourceTable.rebuildColumnEditorsAndRenderers();
 		resourceTable.repaint();
 		workplanTable.repaint();
 		budgetTable.repaint();

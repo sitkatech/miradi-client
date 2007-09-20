@@ -43,7 +43,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 		
 		setBackground(AppPreferences.RESOURCE_TABLE_BACKGROUND);
 		selectionListeners = new Vector();
-		addColumnEditorsAndRenderers();
+		rebuildColumnEditorsAndRenderers();
 	}
 	
 	int getPreferredScrollableViewportWidth()
@@ -56,7 +56,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 		return getColumnHeaderWidth(column);
 	}	
 	
-	private void addColumnEditorsAndRenderers()
+	public void rebuildColumnEditorsAndRenderers()
 	{
 		for (int i = 0; i < model.getColumnCount(); ++i)
 		{
