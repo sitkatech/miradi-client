@@ -16,6 +16,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
@@ -97,7 +98,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 	private void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
 	{
 		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
-		JComboBox comboBox = new JComboBox(comboContent);
+		PanelComboBox comboBox = new PanelComboBox(comboContent);
 		TableColumn tableColumn = getColumnModel().getColumn(col);
 		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
 		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
