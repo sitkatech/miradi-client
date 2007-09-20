@@ -24,7 +24,7 @@ public class AccountCodeIcon implements Icon
 	}
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
-		g.setColor(new Color(237, 185, 0));
+		g.setColor(new Color(0xee, 0xdd, 0x22));
 		g.fillOval(x, y , WIDTH, HEIGHT);
 		g.setColor(Color.BLACK);
 		g.drawOval(x, y , WIDTH, HEIGHT);
