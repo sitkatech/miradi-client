@@ -14,7 +14,6 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithSize
 	{
 		super(modelToUse);
 		setBackground(AppPreferences.WORKPLAN_TABLE_BACKGROUND);
-		getTableHeader().setBackground(getBackground());
 	}
 	
 	protected int getColumnWidth(int column)

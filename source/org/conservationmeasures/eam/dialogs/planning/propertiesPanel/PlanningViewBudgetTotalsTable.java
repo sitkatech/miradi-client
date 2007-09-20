@@ -18,7 +18,6 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractRightAlig
 	{
 		super(model);
 		setBackground(AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND);
-		getTableHeader().setBackground(getBackground());
 	}
 
 	int getPreferredScrollableViewportWidth()

@@ -42,7 +42,6 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 		model = modelToUse;
 		
 		setBackground(AppPreferences.RESOURCE_TABLE_BACKGROUND);
-		getTableHeader().setBackground(getBackground());
 		selectionListeners = new Vector();
 		addColumnEditorsAndRenderers();
 	}
