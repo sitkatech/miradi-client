@@ -24,6 +24,8 @@ public class ObjectPoolTableModel extends ObjectTableModel
 	
 	public IdList getLatestIdListFromProject()
 	{
-		return project.getPool(getRowObjectType()).getIdList();
+		IdList idList = project.getPool(getRowObjectType()).getIdList();
+		idList.sort();
+		return idList;
 	}
 }
