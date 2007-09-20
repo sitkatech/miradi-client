@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguratio
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -90,7 +91,7 @@ public class PlanningViewControlPanel extends DisposablePanel implements Command
 	
 	private UiButton createLegendButton(EAMAction action)
 	{
-		UiButton button = new UiButton(action);
+		PanelButton button = new PanelButton(action);
 		return button;
 	}
 	
