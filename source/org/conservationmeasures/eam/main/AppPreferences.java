@@ -322,6 +322,7 @@ public class AppPreferences
 	public static final String TAG_TAGGED_INTS = "TaggedInts";
 	public static final String TAG_TAGGED_STRINGS = "TaggedStrings";
 	public static final String TAG_DIAGRAM_ZOOM = "DiagramZoom";
+	public static final String TAG_PLANNING_VIEW_FIRST_TIME_USE_BOOLEAN = "PlanningViewFirstTimeUse";
 	
 	public static final String TAG_WIZARD_FONT_FAMILY = "WizardFontFamily";
 	public static final String TAG_WIZARD_FONT_SIZE = "WizardFontSize";
