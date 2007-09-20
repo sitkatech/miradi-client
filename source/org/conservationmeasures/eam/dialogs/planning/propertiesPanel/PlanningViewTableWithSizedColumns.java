@@ -14,10 +14,10 @@ public class PlanningViewTableWithSizedColumns extends PlanningViewAbstractTable
 	{
 		super(modelToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		addSizedColumnEditorsAndRenderers(modelToUse);
+		setColumnWidthsToHeaderWidths(modelToUse);
 	}
 		
-	private void addSizedColumnEditorsAndRenderers(TableModel modelToUse)
+	private void setColumnWidthsToHeaderWidths(TableModel modelToUse)
 	{
 		for (int i = 0; i < modelToUse.getColumnCount(); ++i)
 		{
