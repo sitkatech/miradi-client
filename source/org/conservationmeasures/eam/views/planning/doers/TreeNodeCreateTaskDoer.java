@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.planning.doers;
 
 import java.text.ParseException;
 
+import javax.swing.SwingUtilities;
+
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -112,7 +114,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 		return (visibleRowCodes.contains(Task.getChildTaskTypeCode(parentType)));
 	}
 	
-	public static void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
+	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
@@ -126,11 +128,34 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
 			project.executeCommand(addChildCommand);
 			
 			ORef createdRef = new ORef(ObjectType.TASK, createdId);
-			picker.ensureObjectVisible(createdRef);
+			selectObjectAfterSwingClearsItDueToCreateTask(picker, createdRef);		
 		}
 		finally
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
+	}
+	
+	//TODO this shoul be done more cleanly inside the Planning view Tree table
+	private void selectObjectAfterSwingClearsItDueToCreateTask(ObjectPicker picker, ORef selectedRef)
+	{
+		SwingUtilities.invokeLater(new Reselecter(picker, selectedRef));
+	}
+	
+	class Reselecter implements Runnable
+	{
+		public Reselecter(ObjectPicker pickerToUse, ORef refToSelect)
+		{
+			picker = pickerToUse;
+			ref = refToSelect;
+		}
+		
+		public void run()
+		{
+			picker.ensureObjectVisible(ref);
+		}
+		
+		ObjectPicker picker;
+		ORef ref;
 	}
 }
