@@ -9,7 +9,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JToolBar;
 
-import org.conservationmeasures.eam.actions.ActionAddAssignment;
+import org.conservationmeasures.eam.actions.ActionAssignResource;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
@@ -129,7 +129,7 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 		
-		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
+		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
 	}
 	

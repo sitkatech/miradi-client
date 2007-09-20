@@ -12,7 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import org.conservationmeasures.eam.actions.ActionAddAssignment;
+import org.conservationmeasures.eam.actions.ActionAssignResource;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
@@ -149,7 +149,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		GridLayoutPlus layout = new GridLayoutPlus(1, 0);
 		JPanel box = new JPanel(layout);
 				
-		ObjectsActionButton addButton = createObjectsActionButton(getActions().getObjectsAction(ActionAddAssignment.class), objectPicker);
+		ObjectsActionButton addButton = createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), objectPicker);
 		box.add(addButton);
 		
 		ObjectsActionButton removeButton = createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), resourceTable);

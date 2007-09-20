@@ -14,7 +14,7 @@ import javax.swing.JViewport;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.conservationmeasures.eam.actions.ActionAddAssignment;
+import org.conservationmeasures.eam.actions.ActionAssignResource;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
@@ -78,7 +78,7 @@ abstract public class AssignmentEditorComponent extends DisposablePanel
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		JPanel box = new JPanel(layout);
 		
-		ObjectsActionButton addButton = createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), objectPicker);
+		ObjectsActionButton addButton = createObjectsActionButton(actions.getObjectsAction(ActionAssignResource.class), objectPicker);
 		box.add(addButton);
 		
 		ObjectsActionButton removeButton = createObjectsActionButton(actions.getObjectsAction(ActionRemoveAssignment.class), lockedTable);

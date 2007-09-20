@@ -9,7 +9,7 @@ import java.awt.Component;
 
 import javax.swing.JToolBar;
 
-import org.conservationmeasures.eam.actions.ActionAddAssignment;
+import org.conservationmeasures.eam.actions.ActionAssignResource;
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
 import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
@@ -130,7 +130,7 @@ public class BudgetView extends TabbedView
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 
-		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
+		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
 		
 		addDoerToMap(ActionCreateAccountingCode.class, new CreateAccountingCodeDoer());
