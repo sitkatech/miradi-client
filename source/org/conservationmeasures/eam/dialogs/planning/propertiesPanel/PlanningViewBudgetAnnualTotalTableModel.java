@@ -114,5 +114,5 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
 	private PlanniningViewBudgetTotalsCalculator totalCalculator;
 	private Project project;
 	
-	private static final String COST_COLUMN_NAME = EAM.text("Budget Total ($)");
+	public static final String COST_COLUMN_NAME = EAM.text("Budget Total ($)");
 }

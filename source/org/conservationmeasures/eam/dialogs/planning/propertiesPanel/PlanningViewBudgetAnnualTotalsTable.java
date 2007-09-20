@@ -26,10 +26,15 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewTableWithSi
 	private void setTableColumnRenderer()
 	{
 		int columnCount = getColumnModel().getColumnCount();
-		for (int i = 0; i < columnCount; ++i)
+		for (int col = 0; col < columnCount; ++col)
 		{	
-			TableColumn tableColumn = getColumnModel().getColumn(i);
+			TableColumn tableColumn = getColumnModel().getColumn(col);
 			tableColumn.setCellRenderer(new CustomRenderer());
+			int modelColumn = convertColumnIndexToModel(col);
+			String columnName = getModel().getColumnName(modelColumn);
+			if(! columnName.equals(PlanningViewBudgetAnnualTotalTableModel.COST_COLUMN_NAME))
+				setColumnWidth(col, 70);
+			
 		}
 	}
 	
