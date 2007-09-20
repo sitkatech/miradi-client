@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
-import org.conservationmeasures.eam.actions.ActionAddAssignment;
+import org.conservationmeasures.eam.actions.ActionAssignResource;
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
 import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
 import org.conservationmeasures.eam.actions.ActionCreatePlanningViewConfiguration;
@@ -148,7 +148,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
-		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
+		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUpDoer());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDownDoer());
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());

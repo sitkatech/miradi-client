@@ -8,20 +8,20 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionAddAssignment extends ObjectsAction
+public class ActionAssignResource extends ObjectsAction
 {
-	public ActionAddAssignment(MainWindow mainWindowToUse)
+	public ActionAssignResource(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	public static String getLabel()
 	{
-		return EAM.text("Action|Add Resource");
+		return EAM.text("Action|Assign Resource");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Add resource to list");
+		return EAM.text("TT|Assign a resource to this task");
 	}
 }
