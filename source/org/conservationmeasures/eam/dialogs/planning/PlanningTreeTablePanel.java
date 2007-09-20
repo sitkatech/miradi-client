@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -199,12 +200,16 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		if (selectedObject == null)
 			return false;
 		
-		String[] fieldTags = selectedObject.getFieldTags();
-		Vector fields = new Vector(Arrays.asList(fieldTags));
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		int setType = setCommand.getObjectType();
+		if(setType == Assignment.getObjectType())
+			return true;
+		
 		String setField = setCommand.getFieldTag();
 		
+		String[] fieldTags = selectedObject.getFieldTags();
+		Vector fields = new Vector(Arrays.asList(fieldTags));
+
 		boolean sameType = (selectedObject.getType() == setType);
 		boolean containsField = (fields.contains(setField));
 		return (sameType && containsField);
