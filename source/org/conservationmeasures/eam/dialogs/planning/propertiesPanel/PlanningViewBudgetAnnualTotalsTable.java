@@ -30,11 +30,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewTableWithSi
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(col);
 			tableColumn.setCellRenderer(new CustomRenderer());
-			int modelColumn = convertColumnIndexToModel(col);
-			String columnName = getModel().getColumnName(modelColumn);
-			if(! columnName.equals(PlanningViewBudgetAnnualTotalTableModel.COST_COLUMN_NAME))
-				setColumnWidth(col, 70);
-			
+			setColumnWidth(col, 125);
 		}
 	}
 	
