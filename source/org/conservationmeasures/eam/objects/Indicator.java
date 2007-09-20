@@ -286,21 +286,22 @@ public class Indicator extends BaseObject
 	public static final String TAG_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
 	public static final String TAG_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
 
-	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
-	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
-	public static final String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
-	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
-	public static final String PSEUDO_TAG_METHODS = "PseudoTagMethods";
 	
-	public static final String PSEUDO_TAG_PRIORITY_VALUE = "PseudoTagPriorityValue";
-	public static final String PSEUDO_TAG_STATUS_VALUE  = "PseudoTagStatusValue";
-	public static final String PSEUDO_TAG_MEASUREMENT_TREND_VALUE = "PseudoTagMeasurementTrendValue";
-	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_VALUE  = "PseudoTagMeasurementStatusValue";
-	public static final String PSEUDO_TAG_RATING_SOURCE_VALUE = "PseudoTagRatingSourceValue";
-	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE = "PseudoTagMeasurementStatusConfidenceValue";
-	public static final String PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE = "PseudoTagIndicatorThresholdValue";
+	// NOTE: Can't change the following tags unless we recompile the jasper reports
+	public static final String PSEUDO_TAG_FACTOR = "Factor";
+	public static final String PSEUDO_TAG_TARGETS = "Targets";
+	public static final String PSEUDO_TAG_DIRECT_THREATS = "DirectThreats";
+	public static final String PSEUDO_TAG_STRATEGIES = "Strategies";
+	public static final String PSEUDO_TAG_METHODS = "Methods";
+	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_VALUE  = "MeasurementStatusValue";
+	public static final String PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE = "IndicatorThresholdValue";
+	public static final String PSEUDO_TAG_RATING_SOURCE_VALUE = "RatingSourceValue";
+	public static final String PSEUDO_TAG_PRIORITY_VALUE = "PriorityValue";
+	public static final String PSEUDO_TAG_MEASUREMENT_TREND_VALUE = "MeasurementTrendValue";
+	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE = "MeasurementStatusConfidenceValue";
+	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "FutureStatusRatingValue";
+	public static final String PSEUDO_TAG_STATUS_VALUE  = "StatusValue";
 	
-	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "PseudoTagFutureStatusRatingValue";
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
 	public static final String OBJECT_NAME = "Indicator";
