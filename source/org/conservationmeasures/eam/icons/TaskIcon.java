@@ -20,8 +20,8 @@ public class TaskIcon extends AbstractMiradiIcon
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
 		g.setColor(TASK_COLOR);
-		g.drawOval(x/4, y/4, getIconWidth()/2, getIconHeight()/2);
-		g.fillOval(x/4, y/4, getIconWidth()/2, getIconHeight()/2);
+		g.drawOval(x + getIconWidth()/4, y + getIconHeight()/4, getIconWidth()/2, getIconHeight()/2);
+		g.fillOval(x + getIconWidth()/4, y + getIconHeight()/4, getIconWidth()/2, getIconHeight()/2);
 	}
 
 	public static final Color TASK_COLOR = Color.BLACK;
