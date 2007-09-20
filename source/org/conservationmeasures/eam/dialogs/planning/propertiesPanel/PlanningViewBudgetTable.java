@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.main.AppPreferences;
 
 
@@ -20,11 +18,7 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractRightAlignedTab
 
 	protected int getColumnWidth(int column)
 	{
-		return getColumnHeaderWidth(column);
+		return 125;
 	}
 	
-	public Color getColumnBackGroundColor(int columnCount, int column)
-	{
-		return AppPreferences.BUDGET_TABLE_BACKGROUND;
-	}
 }
