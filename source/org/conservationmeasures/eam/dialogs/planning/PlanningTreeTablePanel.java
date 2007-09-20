@@ -74,7 +74,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		
 		createBudgetTable(treeToUse);
 		rebuildSyncedAnnualsTotalsTable(treeToUse);
-		updateSplitterRightSideContents();
+		rebuildEntireTreeTable();
 	}
 
 	private void createBudgetTable(PlanningTreeTable treeTableToUse) throws Exception
@@ -256,7 +256,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		{
 			getTreeTableScrollPane().showVerticalScrollBar();
 			splitter.setRightComponent(new JPanel());
-			splitter.setDividerLocation(1.0);
+			splitter.setDividerLocation(Integer.MAX_VALUE);
 			validate();
 		}
 		
