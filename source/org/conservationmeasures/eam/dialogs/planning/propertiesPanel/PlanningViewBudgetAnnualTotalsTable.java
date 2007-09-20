@@ -30,13 +30,12 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractTab
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(col);
 			tableColumn.setCellRenderer(new CustomRenderer());
-			setColumnWidth(col, 125);
 		}
 	}
 	
 	protected int getColumnWidth(int column)
 	{
-		return getColumnHeaderWidth(column);
+		return 125;
 	}	
 	
 	public static class CustomRenderer extends DefaultTableCellRenderer
