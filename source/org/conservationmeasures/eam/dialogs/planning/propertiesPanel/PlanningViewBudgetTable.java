@@ -5,10 +5,12 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import java.awt.Color;
+
 import org.conservationmeasures.eam.main.AppPreferences;
 
 
-public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithSizedColumns
+public class PlanningViewBudgetTable extends PlanningViewAbstractRightAlignedTable
 {
 	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{
@@ -20,5 +22,10 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithSizedC
 	protected int getColumnWidth(int column)
 	{
 		return getColumnHeaderWidth(column);
+	}
+	
+	public Color getColumnBackGroundColor(int columnCount, int column)
+	{
+		return AppPreferences.BUDGET_TABLE_BACKGROUND;
 	}
 }
