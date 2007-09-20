@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +17,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitledBorder;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -45,7 +45,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		add(createLegendButtonPanel(mainWindow.getActions()));	
 		setMinimumSize(new Dimension(0,0));
 		updateEnabledStateFromProject();
-		setBorder(BorderFactory.createTitledBorder(getBorderTitle()));
+		setBorder(new PanelTitledBorder(getBorderTitle()));
 		project.addCommandExecutedListener(this);
 	}
 	

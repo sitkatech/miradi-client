@@ -8,13 +8,13 @@ package org.conservationmeasures.eam.dialogs.planning.legend;
 import java.awt.Component;
 import java.util.Hashtable;
 
-import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitledBorder;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -40,7 +40,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 
 		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		rebuildCustomizationPanel();
-		setBorder(BorderFactory.createTitledBorder(EAM.text("Planning Views")));
+		setBorder(new PanelTitledBorder(EAM.text("Planning Views")));
 		project.addCommandExecutedListener(this);
 	}
 	
