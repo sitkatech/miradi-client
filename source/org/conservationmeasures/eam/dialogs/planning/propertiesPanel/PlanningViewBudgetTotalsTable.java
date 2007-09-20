@@ -21,7 +21,11 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewTableWithSizedCol
 
 	int getPreferredScrollableViewportWidth()
 	{
-		return 50;
+		return 125;
 	}
 	
+	protected int getColumnWidth(int column)
+	{
+		return 125;
+	}	
 }

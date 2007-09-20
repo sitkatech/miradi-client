@@ -8,20 +8,22 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
-public class PlanningViewTableWithSizedColumns extends PlanningViewAbstractTable
+abstract public class PlanningViewTableWithSizedColumns extends PlanningViewAbstractTable
 {
 	public PlanningViewTableWithSizedColumns(TableModel modelToUse)
 	{
 		super(modelToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		setColumnWidthsToHeaderWidths(modelToUse);
+		setAppropriateColumnWidths(modelToUse);
 	}
 		
-	private void setColumnWidthsToHeaderWidths(TableModel modelToUse)
+	private void setAppropriateColumnWidths(TableModel modelToUse)
 	{
-		for (int i = 0; i < modelToUse.getColumnCount(); ++i)
+		for (int column = 0; column < modelToUse.getColumnCount(); ++column)
 		{
-			setColumnWidthToHeaderWidth(i);
+			setColumnWidth(column, getColumnWidth(column));
 		}
 	}
+	
+	abstract protected int getColumnWidth(int column);
 }

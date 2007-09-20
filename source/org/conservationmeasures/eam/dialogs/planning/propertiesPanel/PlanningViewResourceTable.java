@@ -49,6 +49,11 @@ public class PlanningViewResourceTable extends PlanningViewTableWithSizedColumns
 		return getPreferredSize().width;
 	}
 	
+	protected int getColumnWidth(int column)
+	{
+		return getColumnHeaderWidth(column);
+	}	
+	
 	private void addColumnEditorsAndRenderers()
 	{
 		for (int i = 0; i < model.getColumnCount(); ++i)
