@@ -95,7 +95,7 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		addVerticalAndHorizontalScrollableControlledTable(horizontalBox, budgetScroller);
 		
 		JScrollPane budgetTotalsScroller = new AssignmentTableScrollPane(budgetTotalsTable);
-		addVerticalAndHorizontalScrollableControlledTable(horizontalBox, budgetTotalsScroller);
+		addVerticalScrollableControlledTable(horizontalBox, budgetTotalsScroller);
 		
 		add(horizontalBox, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
