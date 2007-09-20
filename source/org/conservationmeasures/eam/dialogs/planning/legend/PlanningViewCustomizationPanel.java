@@ -10,11 +10,11 @@ import java.util.Hashtable;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -71,15 +71,15 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		
 		PlanningViewStrategicRadioButton strategicRadioButton = new PlanningViewStrategicRadioButton(project);
 		radioGroup.addRadioButtonToGroup(strategicRadioButton);
-		addRadioButtonWithLeftComponent(strategicRadioButton, new JLabel(EAM.text("Strategic Plan")));
+		addRadioButtonWithLeftComponent(strategicRadioButton, new PanelTitleLabel(EAM.text("Strategic Plan")));
 		
 		PlanningViewMonitoringRadioButton monitoringRadioButton = new PlanningViewMonitoringRadioButton(project);
 		radioGroup.addRadioButtonToGroup(monitoringRadioButton);
-		addRadioButtonWithLeftComponent(monitoringRadioButton, new JLabel(EAM.text("Monitoring Plan")));
+		addRadioButtonWithLeftComponent(monitoringRadioButton, new PanelTitleLabel(EAM.text("Monitoring Plan")));
 		
 		PlanningViewWorkPlanRadioButton workPlanRadioButton = new PlanningViewWorkPlanRadioButton(project);
 		radioGroup.addRadioButtonToGroup(workPlanRadioButton);
-		addRadioButtonWithLeftComponent(workPlanRadioButton, new JLabel(EAM.text("Work Plan")));
+		addRadioButtonWithLeftComponent(workPlanRadioButton, new PanelTitleLabel(EAM.text("Work Plan")));
 		
 		
 		singleLevelCombo = new PlanningViewSingleLevelComboBox(project);
