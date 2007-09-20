@@ -59,7 +59,7 @@ public class Paste extends LocationDoer
 			}
 			if (diagramPaster.containsTargetsThatMustBePastedAsAlias() && usersChoice.equals(AS_COPY_BUTTON))
 			{
-				EAM.notifyDialog(EAM.text("Targets cannot be copied into a Results Chain, they will be created as aliases."));
+				EAM.notifyDialog(EAM.text("Targets cannot be copied into a Results Chain, they will be shared instead."));
 			}
 				
 			paste(diagramPaster);
@@ -87,9 +87,9 @@ public class Paste extends LocationDoer
 		
 		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Paste As...");
-		String[] body = {EAM.text("Do you want to paste full new copies of the factors, or aliases to the existing factors? " +
+		String[] body = {EAM.text("Do you want to paste full new copies of the factors, or share the existing factors? " +
 								"If you paste new copies, any changes will not affect the originals. " +
-								"If you paste aliases, any changes will automatically affect both the original and the new alias.")};
+								"If you share, any changes will automatically affect all the diagrams.")};
 	
 		return EAM.choiceDialog(title, body, buttons);
 	}
@@ -128,6 +128,6 @@ public class Paste extends LocationDoer
 	}
 	
 	private final String AS_COPY_BUTTON = EAM.text("Button|As Copy");
-	private final String AS_ALIAS_BUTTON = EAM.text("Button|As Alias");
+	private final String AS_ALIAS_BUTTON = EAM.text("Button|Shared");
 	private final String CANCEL_BUTTON = EAM.text("Button|Cancel");
 }
