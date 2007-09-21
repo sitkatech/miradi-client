@@ -76,6 +76,9 @@ public class RowManager
 	private static CodeList getVisibleRowsForSingleType(ViewData viewData)
 	{
 		String singleType = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		if(singleType.length() == 0)
+			singleType = Goal.OBJECT_NAME;
+		
 		CodeList codes = new CodeList();
 		codes.add(singleType);
 		return codes;
