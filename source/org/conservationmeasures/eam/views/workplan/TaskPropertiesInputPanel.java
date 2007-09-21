@@ -102,6 +102,9 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 			return false;
 		
 		ORef firstRef = orefsToUse[0];
+		if(firstRef.isInvalid())
+			return false;
+		
 		BaseObject foundObject = getProject().findObject(firstRef);
 		if (foundObject.getType() != Task.getObjectType())
 			return false;
