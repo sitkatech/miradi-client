@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -57,6 +58,10 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 	
 	private void createConceptualModelPage(Project project) throws Exception
 	{
+		ViewData viewData = project.getViewData(getDiagramView().cardName());
+		CommandSetObjectData setCurrentDiagramToInvalid = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, ORef.INVALID);
+		project.executeCommand(setCurrentDiagramToInvalid);
+		
 		CommandCreateObject createConceptualModel = new CommandCreateObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		project.executeCommand(createConceptualModel);
 		
@@ -64,7 +69,6 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		CommandSetObjectData setLabel = new CommandSetObjectData(diagramObject.getRef(), DiagramObject.TAG_LABEL, getConceptualModelPageName(project, diagramObject));
 		project.executeCommand(setLabel);
 		
-		ViewData viewData = project.getViewData(getDiagramView().cardName());
 		CommandSetObjectData setCurrentDiagram = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, createConceptualModel.getObjectRef());
 		project.executeCommand(setCurrentDiagram);
 	}
