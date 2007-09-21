@@ -50,6 +50,7 @@ import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.AddAssignmentDoer;
 import org.conservationmeasures.eam.views.budget.CreateAccountingCodeDoer;
@@ -95,7 +96,8 @@ public class PlanningView extends TabbedView
 		if (! tag.equals(""))
 			return;
 		
-		EAM.notifyDialog(EAM.text("This View is Still Under Construction"));
+		Class defaultResouceClass = getMainWindow().getCurrentView().getClass();
+		new HtmlViewPanel(getMainWindow(), "First Time Using Planning View", defaultResouceClass, "firstTimeInPlanningNotification.html").showAsOkDialog();
 		getMainWindow().setTaggedString(AppPreferences.TAG_PLANNING_VIEW_FIRST_TIME_USE_BOOLEAN, "false");
 	}
 	
