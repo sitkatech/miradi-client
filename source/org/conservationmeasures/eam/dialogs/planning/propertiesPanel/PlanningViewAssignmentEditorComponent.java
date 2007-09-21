@@ -185,6 +185,12 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 	private void setTaskId(BaseId taskId)
 	{ 
 		Task task = (Task)getProject().findObject(ObjectType.TASK, taskId);
+		
+		//FIXME need to this for all the tables.  not doing it now becuase resourcetable.stopCellEditing
+		//throws command exec inside commandExected exceptions.  also these tables need to be inside a container
+		//that way we just loop through the tbales.  
+		workplanTable.stopCellEditing();
+		
 		resourceTableModel.setTask(task);
 		workPlanModel.setTask(task);
 		budgetModel.setTask(task);
