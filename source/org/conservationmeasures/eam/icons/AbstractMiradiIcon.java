@@ -20,19 +20,25 @@ public abstract class AbstractMiradiIcon implements Icon
 	
 	void drawCreatePlus(Component c, Graphics g, int x, int y)
 	{
-		int plusCenterX = x+getIconWidth() - plusSize()/2;
-		int plusCenterY = y + plusSize()/2;
+		int plusRight = x + getIconWidth();
+		int plusLeft = plusRight - plusSize() - 1;
+		int plusTop = y;
+		int plusBottom = plusTop + plusSize() + 1;
+
+		int plusCenterX = plusLeft + plusSize()/2; 
+		int plusCenterY = plusTop + plusSize()/2;
+		
 		Color old = g.getColor();
 		g.setColor(Color.RED);
-		g.drawLine(plusCenterX, y, plusCenterX, y + plusSize());
-		g.drawLine(plusCenterX+1, y, plusCenterX+1, y + plusSize());
-		g.drawLine(x + getIconWidth() - plusSize(), plusCenterY, x + getIconWidth(), plusCenterY);
-		g.drawLine(x + getIconWidth() - plusSize(), plusCenterY+1, x + getIconWidth(), plusCenterY+1);
+		g.drawLine(plusCenterX, plusTop, plusCenterX, plusBottom);
+		g.drawLine(plusCenterX+1, plusTop, plusCenterX+1, plusBottom);
+		g.drawLine(plusLeft, plusCenterY, plusRight, plusCenterY);
+		g.drawLine(plusLeft, plusCenterY+1, plusRight, plusCenterY+1);
 		g.setColor(old);
 	}
 	
 	int plusSize()
 	{
-		return getIconHeight() / 3;
+		return 6;
 	}
 }
