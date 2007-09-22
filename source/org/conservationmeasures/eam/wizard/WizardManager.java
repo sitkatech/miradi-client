@@ -34,27 +34,23 @@ import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardResultsCha
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardReviewAndModifyTargetsStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardReviewModelAndAdjustStep;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardVisionStep;
-import org.conservationmeasures.eam.views.diagram.wizard.EditAllStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.views.diagram.wizard.SelectChainStep;
 import org.conservationmeasures.eam.views.images.wizard.LibraryOverviewStep;
 import org.conservationmeasures.eam.views.map.wizard.MapOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefineIndicatorsStep;
-import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
-import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardSelectMethodsStep;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectOverviewStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardImportStep;
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardProjectCreateStep;
 import org.conservationmeasures.eam.views.planning.wizard.PlanningOverviewStep;
+import org.conservationmeasures.eam.views.planning.wizard.ReviewStratAndMonPlansStep;
 import org.conservationmeasures.eam.views.schedule.wizard.ScheduleOverviewStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopObjectivesStep;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanOverviewStep;
-import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllGoals;
-import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanViewAllObjectives;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryOverviewStep;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjecScope;
@@ -204,8 +200,6 @@ public class WizardManager
 	public void createStrategicPlanStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new StrategicPlanOverviewStep(panel));
-		createStepEntry(new StrategicPlanViewAllGoals(panel));
-		createStepEntry(new StrategicPlanViewAllObjectives(panel));
 	}
 	
 	public void createScheduleStepEntries(WizardPanel panel)
@@ -233,7 +227,6 @@ public class WizardManager
 	public void createWorkPlanStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new WorkPlanOverviewStep(panel));
-		createStepEntry(new MonitoringWizardSelectMethodsStep(panel));;
 		createStepEntry(new WorkPlanDevelopActivitiesAndTasksStep(panel));
 		createStepEntry(new WorkPlanDevelopMethodsAndTasksStep(panel));
 		createStepEntry(new WorkPlanCreateResourcesStep(panel));
@@ -243,7 +236,6 @@ public class WizardManager
 	public void createMonitoringViewStepEntries(WizardPanel panel)
 	{		
 		createStepEntry(new MonitoringPlanOverviewStep(panel));
-		createStepEntry(new MonitoringWizardEditIndicatorsStep(panel));
 	}
 	
 	public void createDigramViewStepEntries(WizardPanel panel)
@@ -273,7 +265,6 @@ public class WizardManager
 		createStepEntry(new SelectChainStep(panel));		
 		createStepEntry(new DevelopDraftStrategiesStep(panel));
 		createStepEntry(new RankDraftStrategiesStep(panel));
-		createStepEntry(new EditAllStrategiesStep(panel));
 		createStepEntry(new StrategicPlanDevelopGoalStep(panel));
 		createStepEntry(new StrategicPlanDevelopObjectivesStep(panel));		
 		createStepEntry(new MonitoringWizardFocusStep(panel));		
@@ -310,6 +301,7 @@ public class WizardManager
 	public void createPlanningViewStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new PlanningOverviewStep(panel));
+		createStepEntry(new ReviewStratAndMonPlansStep(panel));
 	}
 	
 	public void createMapViewStepEntries(WizardPanel panel)
@@ -371,15 +363,12 @@ public class WizardManager
 				// STEP 2A
 				StrategicPlanOverviewStep.class,
 				StrategicPlanDevelopGoalStep.class,
-				StrategicPlanViewAllGoals.class,
 				StrategicPlanDevelopObjectivesStep.class, 	
-				StrategicPlanViewAllObjectives.class,
 
 				// STEP 2B
 				SelectChainStep.class,		
 				DevelopDraftStrategiesStep.class,
 				RankDraftStrategiesStep.class,
-				EditAllStrategiesStep.class,	
 				DiagramWizardResultsChainStep.class,
 				DiagramWizardConstructInitialResultsChain.class,
 				DiagramWizardCompleteResultsChainLinks.class,
@@ -391,11 +380,11 @@ public class WizardManager
 				
 				// STEP 3B
 				MonitoringWizardDefineIndicatorsStep.class,
-				MonitoringWizardEditIndicatorsStep.class,
+				PlanningOverviewStep.class,
+				ReviewStratAndMonPlansStep.class,
 				
 				// STEP 4A
 				WorkPlanOverviewStep.class,
-				MonitoringWizardSelectMethodsStep.class,
 				WorkPlanDevelopActivitiesAndTasksStep.class,
 				WorkPlanDevelopMethodsAndTasksStep.class,
 				WorkPlanCreateResourcesStep.class,
@@ -409,7 +398,6 @@ public class WizardManager
 				ScheduleOverviewStep.class,
 				MapOverviewStep.class,
 				LibraryOverviewStep.class,
-				PlanningOverviewStep.class,
 		};
 		
 		return entries;
