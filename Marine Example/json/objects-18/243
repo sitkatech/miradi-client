@@ -1,1 +1,1 @@
-{"TimeStampModified":"1179631884370","Size":"{\"Width\":120,\"Height\":60}","Label":"","WrappedFactorId":"19","Location":"{\"Y\":30,\"X\":510}","Id":243}
+{"TimeStampModified":"1179631884370","Size":"{\"Width\":120,\"Height\":60}","WrappedFactorRef":{"ObjectType":20,"ObjectId":19},"Label":"","WrappedFactorId":"19","Id":243,"Location":"{\"Y\":30,\"X\":510}"}
