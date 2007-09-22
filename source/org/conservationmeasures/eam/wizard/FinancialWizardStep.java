@@ -6,14 +6,14 @@
 
 package org.conservationmeasures.eam.wizard;
 
-import org.conservationmeasures.eam.views.budget.BudgetView;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class FinancialWizardStep extends SplitWizardStep
 {
 
 	public FinancialWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, BudgetView.getViewName());
+		super(wizardToUse, PlanningView.getViewName());
 	}
 
 }

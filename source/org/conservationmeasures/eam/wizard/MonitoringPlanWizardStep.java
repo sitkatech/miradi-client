@@ -6,14 +6,14 @@
 
 package org.conservationmeasures.eam.wizard;
 
-import org.conservationmeasures.eam.views.monitoring.MonitoringView;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class MonitoringPlanWizardStep extends SplitWizardStep
 {
 
 	public MonitoringPlanWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, MonitoringView.getViewName());
+		super(wizardToUse, PlanningView.getViewName());
 	}
 
 }
