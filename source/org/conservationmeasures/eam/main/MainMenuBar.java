@@ -99,6 +99,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocus
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
@@ -359,11 +360,12 @@ public class MainMenuBar extends JMenuBar
 		menu4a.setMnemonic(KeyEvent.VK_D);
 		menu4a.setIcon(new MiradiResourceImageIcon("icons/blankicon.png"));
 		
+		addMenuItem(actions, menu4a, ActionJumpReviewStratAndMonPlansStep.class, KeyEvent.VK_R);
 		addMenuItem(actions, menu4a, ActionJumpWorkPlanDevelopActivitiesAndTasksStep.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu4a, ActionJumpWorkPlanDevelopMethodsAndTasksStep.class, KeyEvent.VK_M);
 		addMenuItem(actions, menu4a, ActionJumpWorkPlanAssignResourcesStep.class, KeyEvent.VK_T);
-		addMenuItem(actions, menu4a, ActionJumpScheduleOverviewStep.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu4a, ActionJumpFinancialOverviewStep.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu4a, ActionJumpScheduleOverviewStep.class, KeyEvent.VK_S);
+		addMenuItem(actions, menu4a, ActionJumpFinancialOverviewStep.class, KeyEvent.VK_F);
 
 		menu4.add(menu4a);
 		
