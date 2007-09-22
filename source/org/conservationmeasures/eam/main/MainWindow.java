@@ -53,16 +53,12 @@ import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.Doer;
-import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.library.LibraryView;
 import org.conservationmeasures.eam.views.map.MapView;
-import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.schedule.ScheduleView;
-import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
@@ -70,7 +66,6 @@ import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
-import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -124,13 +119,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		summaryView = new SummaryView(this);
 		diagramView = new DiagramView(this);
 		threatMatrixView = new ThreatMatrixView(this);
-		budgetView = new BudgetView(this);
-		workPlanView = new WorkPlanView(this);
+//		budgetView = new BudgetView(this);
+//		workPlanView = new WorkPlanView(this);
 		mapView = new MapView(this);
 		calendarView = new ScheduleView(this);
 		libraryView = new LibraryView(this);
-		strategicPlanView = new StrategicPlanView(this);
-		monitoringView = new MonitoringView(this);
+//		strategicPlanView = new StrategicPlanView(this);
+//		monitoringView = new MonitoringView(this);
 		targetViabilityView = new TargetViabilityView(this);
 		planningView = new PlanningView(this);
 
@@ -140,13 +135,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(summaryView, summaryView.cardName());
 		viewHolder.add(diagramView, diagramView.cardName());
 		viewHolder.add(threatMatrixView, threatMatrixView.cardName());
-		viewHolder.add(budgetView, budgetView.cardName());
-		viewHolder.add(workPlanView, workPlanView.cardName());
+//		viewHolder.add(budgetView, budgetView.cardName());
+//		viewHolder.add(workPlanView, workPlanView.cardName());
 		viewHolder.add(mapView, mapView.cardName());
 		viewHolder.add(calendarView, calendarView.cardName());
 		viewHolder.add(libraryView, libraryView.cardName());
-		viewHolder.add(strategicPlanView, strategicPlanView.cardName());
-		viewHolder.add(monitoringView, monitoringView.cardName());
+//		viewHolder.add(strategicPlanView, strategicPlanView.cardName());
+//		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		viewHolder.add(planningView, planningView.cardName());
 
@@ -563,20 +558,20 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setCurrentView(noProjectView);
 		else if(viewName.equals(threatMatrixView.cardName()))
 			setCurrentView(threatMatrixView);
-		else if(viewName.equals(budgetView.cardName()))
-			setCurrentView(budgetView);
-		else if(viewName.equals(workPlanView.cardName()))
-			setCurrentView(workPlanView);
+//		else if(viewName.equals(budgetView.cardName()))
+//			setCurrentView(budgetView);
+//		else if(viewName.equals(workPlanView.cardName()))
+//			setCurrentView(workPlanView);
 		else if(viewName.equals(mapView.cardName()))
 			setCurrentView(mapView);
 		else if(viewName.equals(calendarView.cardName()))
 			setCurrentView(calendarView);
 		else if(viewName.equals(libraryView.cardName()))
 			setCurrentView(libraryView);
-		else if(viewName.equals(strategicPlanView.cardName()))
-			setCurrentView(strategicPlanView);
-		else if(viewName.equals(monitoringView.cardName()))
-			setCurrentView(monitoringView);
+//		else if(viewName.equals(strategicPlanView.cardName()))
+//			setCurrentView(strategicPlanView);
+//		else if(viewName.equals(monitoringView.cardName()))
+//			setCurrentView(monitoringView);
 		else if (viewName.equals(targetViabilityView.cardName()))
 			setCurrentView(targetViabilityView);
 		else if(viewName.equals(planningView.cardName()))
@@ -797,13 +792,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private UmbrellaView summaryView;
 	private DiagramView diagramView;
 	private ThreatMatrixView threatMatrixView;
-	private BudgetView budgetView;
-	private WorkPlanView workPlanView;
+//	private BudgetView budgetView;
+//	private WorkPlanView workPlanView;
 	private MapView mapView;
 	private ScheduleView calendarView;
 	private LibraryView libraryView;
-	private StrategicPlanView strategicPlanView;
-	private TabbedView monitoringView;
+//	private StrategicPlanView strategicPlanView;
+//	private TabbedView monitoringView;
 	private TargetViabilityView targetViabilityView;
 	private PlanningView planningView;
 	

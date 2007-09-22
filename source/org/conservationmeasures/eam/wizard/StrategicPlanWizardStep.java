@@ -6,14 +6,14 @@
 
 package org.conservationmeasures.eam.wizard;
 
-import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class StrategicPlanWizardStep extends SplitWizardStep
 {
 
 	public StrategicPlanWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, StrategicPlanView.getViewName());
+		super(wizardToUse, PlanningView.getViewName());
 	}
 
 }

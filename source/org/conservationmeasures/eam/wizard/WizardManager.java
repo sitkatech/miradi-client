@@ -192,9 +192,6 @@ public class WizardManager
 	public void createBudgetStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new FinancialOverviewStep(panel));
-		createStepEntry(new BudgetWizardAccountingAndFunding(panel));
-		createStepEntry(new BudgetWizardBudgetDetail(panel));
-		createStepEntry(new BudgetWizardDemo(panel));
 	}
 	
 	public void createStrategicPlanStepEntries(WizardPanel panel)
@@ -227,10 +224,6 @@ public class WizardManager
 	public void createWorkPlanStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new WorkPlanOverviewStep(panel));
-		createStepEntry(new WorkPlanDevelopActivitiesAndTasksStep(panel));
-		createStepEntry(new WorkPlanDevelopMethodsAndTasksStep(panel));
-		createStepEntry(new WorkPlanCreateResourcesStep(panel));
-		createStepEntry(new WorkPlanAssignResourcesStep(panel));
 	}
 	
 	public void createMonitoringViewStepEntries(WizardPanel panel)
@@ -302,6 +295,13 @@ public class WizardManager
 	{
 		createStepEntry(new PlanningOverviewStep(panel));
 		createStepEntry(new ReviewStratAndMonPlansStep(panel));
+		createStepEntry(new WorkPlanDevelopActivitiesAndTasksStep(panel));
+		createStepEntry(new WorkPlanDevelopMethodsAndTasksStep(panel));
+		createStepEntry(new WorkPlanCreateResourcesStep(panel));
+		createStepEntry(new WorkPlanAssignResourcesStep(panel));
+		createStepEntry(new BudgetWizardAccountingAndFunding(panel));
+		createStepEntry(new BudgetWizardBudgetDetail(panel));
+		createStepEntry(new BudgetWizardDemo(panel));
 	}
 	
 	public void createMapViewStepEntries(WizardPanel panel)
@@ -361,7 +361,7 @@ public class WizardManager
 				DiagramWizardReviewModelAndAdjustStep.class,		
 				
 				// STEP 2A
-				StrategicPlanOverviewStep.class,
+//				StrategicPlanOverviewStep.class,
 				StrategicPlanDevelopGoalStep.class,
 				StrategicPlanDevelopObjectivesStep.class, 	
 
@@ -375,7 +375,7 @@ public class WizardManager
 				DiagramWizardGoodResultsChainCriteriaReview.class,
 
 				// STEP 3A
-				MonitoringPlanOverviewStep.class,
+//				MonitoringPlanOverviewStep.class,
 				MonitoringWizardFocusStep.class,
 				
 				// STEP 3B
@@ -384,12 +384,12 @@ public class WizardManager
 				ReviewStratAndMonPlansStep.class,
 				
 				// STEP 4A
-				WorkPlanOverviewStep.class,
+//				WorkPlanOverviewStep.class,
 				WorkPlanDevelopActivitiesAndTasksStep.class,
 				WorkPlanDevelopMethodsAndTasksStep.class,
 				WorkPlanCreateResourcesStep.class,
 				WorkPlanAssignResourcesStep.class,
-				FinancialOverviewStep.class, 
+//				FinancialOverviewStep.class, 
 				BudgetWizardAccountingAndFunding.class,
 				BudgetWizardBudgetDetail.class,
 				BudgetWizardDemo.class, 

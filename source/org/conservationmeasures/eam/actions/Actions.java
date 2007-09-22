@@ -37,15 +37,14 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewMo
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardVisionStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategiesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpFinancialOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringPlanOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardSelectMethodsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
+import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
@@ -69,7 +68,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpThreatRatingWizardChe
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanOverviewStep;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
@@ -227,6 +225,7 @@ public class Actions
 		registerAction(new ActionJumpArticulateCoreAssumptions(mainWindow));
 		registerAction(new ActionJumpDiagramWizardReviewModelAndAdjustStep(mainWindow));
 		registerAction(new ActionJumpGroundTruthRevise(mainWindow));
+		registerAction(new ActionJumpPlanningOverviewStep(mainWindow));
 		registerAction(new ActionJumpStrategicPlanDevelopGoalStep(mainWindow));
 		registerAction(new ActionJumpSelectChainStep(mainWindow));
 		registerAction(new ActionJumpStrategicPlanDevelopObjectivesStep(mainWindow));
@@ -243,7 +242,7 @@ public class Actions
 		registerAction(new ActionJumpShorttermPlans(mainWindow));
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 		registerAction(new ActionJumpDefineTasks(mainWindow));
-		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
+//		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
 		registerAction(new ActionJumpTeamRoles(mainWindow));
 		registerAction(new ActionJumpImplementPlans(mainWindow));
 		registerAction(new ActionJumpRefinePlans(mainWindow));
@@ -260,7 +259,7 @@ public class Actions
 		registerAction(new ActionJumpStrategicPlanViewAllObjectives(mainWindow));
 		registerAction(new ActionJumpStrategicPlanHowToConstructStep(mainWindow));
 		registerAction(new ActionJumpMonitoringWizardEditIndicatorsStep(mainWindow));
-		registerAction(new ActionJumpMonitoringPlanOverviewStep(mainWindow));
+//		registerAction(new ActionJumpMonitoringPlanOverviewStep(mainWindow));
 		registerAction(new ActionJumpMonitoringWizardSelectMethodsStep(mainWindow));
 		registerAction(new ActionJumpWorkPlanAssignResourcesStep(mainWindow));
 		registerAction(new ActionJumpWorkPlanDevelopMethodsAndTasksStep(mainWindow));
@@ -274,13 +273,13 @@ public class Actions
 		registerAction(new ActionJumpWorkPlanDevelopMethodsAndTasksStep(mainWindow));
 		
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
-		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
+//		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
 		registerAction(new ActionJumpBudgetFutureDemo(mainWindow));
 		registerAction(new ActionConfigureExport(mainWindow));
 		registerAction(new ActionDatabasesDemo(mainWindow));
 		registerAction(new ActionReportsDemo(mainWindow));
 		registerAction(new ActionJumpDiagramOverviewStep(mainWindow));
-		registerAction(new ActionJumpWorkPlanOverviewStep(mainWindow));
+//		registerAction(new ActionJumpWorkPlanOverviewStep(mainWindow));
 		registerAction(new ActionExportBudgetTableTree(mainWindow));
 		registerAction(new ActionCreateBendPoint(mainWindow));
 		registerAction(new ActionDeleteBendPoint(mainWindow));

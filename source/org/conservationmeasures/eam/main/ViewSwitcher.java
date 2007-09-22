@@ -13,18 +13,14 @@ import javax.swing.Action;
 import javax.swing.JComboBox;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
-import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
 import org.conservationmeasures.eam.actions.views.ActionViewPlanning;
 import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
-import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewTargetViability;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
-import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
 
 public class ViewSwitcher extends PanelComboBox
@@ -46,10 +42,10 @@ public class ViewSwitcher extends PanelComboBox
 			actions.get(ActionViewTargetViability.class),
 			actions.get(ActionViewThreatMatrix.class),
 			actions.get(ActionViewPlanning.class),
-			actions.get(ActionViewStrategicPlan.class),
-			actions.get(ActionViewMonitoring.class),
-			actions.get(ActionViewWorkPlan.class), 
-			actions.get(ActionViewBudget.class), 
+//			actions.get(ActionViewStrategicPlan.class),
+//			actions.get(ActionViewMonitoring.class),
+//			actions.get(ActionViewWorkPlan.class), 
+//			actions.get(ActionViewBudget.class), 
 			actions.get(ActionViewSchedule.class),
 			actions.get(ActionViewMap.class),
 			actions.get(ActionViewImages.class),
