@@ -384,7 +384,7 @@ public class WizardManager
 				ReviewStratAndMonPlansStep.class,
 				
 				// STEP 4A
-//				WorkPlanOverviewStep.class,
+				WorkPlanOverviewStep.class,
 				WorkPlanDevelopActivitiesAndTasksStep.class,
 				WorkPlanDevelopMethodsAndTasksStep.class,
 				WorkPlanCreateResourcesStep.class,
