@@ -70,9 +70,12 @@ abstract public class PlanningViewAbstractTableWithSizedColumns extends Planning
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
 			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-			setForeground(getForegroundColor(row, column));
-			int modelColumn = table.convertColumnIndexToModel(column);
-			setBackground(getColumnBackGroundColor(table.getColumnCount(), modelColumn));
+			if(!isSelected)
+			{
+				setForeground(getForegroundColor(row, column));
+				int modelColumn = table.convertColumnIndexToModel(column);
+				setBackground(getColumnBackGroundColor(table.getColumnCount(), modelColumn));
+			}
 			setHorizontalAlignment(getColumnAlignment());
 			
 			if (isSelected)
