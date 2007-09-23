@@ -1,1 +1,1 @@
-{"AccountingCode":"-1","FundingSource":"151","Label":"","ResourceId":"19","TaskId":"46","Id":127,"Details":"{\"DateRangeEfforts\":[]}"}
+{"AccountingCode":"531","TimeStampModified":"1190579607406","FundingSource":"151","Label":"","ResourceId":"19","Id":127,"Details":"{\"DateRangeEfforts\":[{\"NumberOfUnits\":5,\"CostUnitCode\":\"\",\"DateRange\":{\"EndDate\":\"2007-03-31\",\"StartDate\":\"2007-01-01\"}},{\"NumberOfUnits\":2,\"CostUnitCode\":\"\",\"DateRange\":{\"EndDate\":\"2007-06-30\",\"StartDate\":\"2007-04-01\"}}]}"}
