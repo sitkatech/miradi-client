@@ -148,6 +148,23 @@ abstract public class DiagramObject extends BaseObject
 		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
+	//TODO the majority of this method was copied form DiagramModel.  this also has a test, so everyone should start using this method.
+	public boolean areDiagramFactorsLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
+	{
+		ORefList diagramLinkRefs = getAllDiagramLinkRefs();
+		for (int i  = 0; i < diagramLinkRefs.size(); ++i)
+		{
+			DiagramLink diagramLink = (DiagramLink) getObjectManager().findObject(diagramLinkRefs.get(i));
+			if (diagramLink.getFromDiagramFactorId().equals(fromDiagramFactorId) && diagramLink.getToDiagramFactorId().equals(toDiagramFactorId))
+				return true;
+			
+			if (diagramLink.getFromDiagramFactorId().equals(toDiagramFactorId) && diagramLink.getToDiagramFactorId().equals(fromDiagramFactorId))
+				return true;
+		}
+		
+		return false;
+	}
+	
 	public IdList getAllDiagramFactorIds()
 	{
 		return allDiagramFactorIds.getIdList();
@@ -156,6 +173,11 @@ abstract public class DiagramObject extends BaseObject
 	public ORefList getAllDiagramFactorRefs()
 	{
 		return new ORefList(DiagramFactor.getObjectType(), getAllDiagramFactorIds());
+	}
+	
+	public ORefList getAllDiagramLinkRefs()
+	{
+		return new ORefList(DiagramLink.getObjectType(), getAllDiagramFactorLinkIds());
 	}
 	
 	public IdList getAllDiagramFactorLinkIds()

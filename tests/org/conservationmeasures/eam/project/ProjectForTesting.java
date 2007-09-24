@@ -288,7 +288,12 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	
 	public void addDiagramLinkToModel(DiagramLink diagramLink) throws Exception 
 	{
-		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkageId());
+		 addDiagramLinkToModel(diagramLink.getDiagramLinkageId());
+	}
+	
+	public void addDiagramLinkToModel(DiagramFactorLinkId diagramLinkId) throws Exception
+	{
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkId);
 		executeCommand(addLink);
 	}
 	

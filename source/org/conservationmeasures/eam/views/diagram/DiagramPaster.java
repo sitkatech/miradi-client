@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -77,6 +76,7 @@ public class DiagramPaster
 		createNewFactorLinks();
 		createNewDiagramLinks();		
 		selectNewlyPastedItems();
+		wrapExistingLinksForDiagramFactorsInAllConceptualModels();
 	}
 	
 	protected void selectNewlyPastedItems()
@@ -316,11 +316,15 @@ public class DiagramPaster
 		return createDiagramFactor.getObjectRef();
 	}
 
+	private void addToDiagramObject(DiagramObject diagramObjectToAddTo, ORef refToAppend, String tag) throws Exception
+	{
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObjectToAddTo, tag, refToAppend.getObjectId());
+		getProject().executeCommand(addDiagramFactor);
+	}
+	
 	private void addToCurrentDiagram(ORef refToAppend, String tag) throws Exception
 	{
-		DiagramObject diagramObject = getDiagramObject();
-		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, tag, refToAppend.getObjectId());
-		getProject().executeCommand(addDiagramFactor);
+		addToDiagramObject(getDiagramObject(), refToAppend, tag);
 	}
 	
 	private void createNewFactorLinks() throws Exception
@@ -427,34 +431,45 @@ public class DiagramPaster
 		}
 	}
 
-	protected void wrapExistingLinksForDiagramFactors() throws Exception
+	protected void wrapExistingLinksForDiagramFactorsInAllConceptualModels() throws Exception
 	{
-		Collection newRefs = oldToNewDiagramFactorRefMap.values();
-		ORef newDiagramFactorRefs[] = (ORef[]) newRefs.toArray(new ORef[0]);
-		for (int i= 0; i < newDiagramFactorRefs.length; ++i)
+		ORefList conceptualDiagramRefs = getProject().getConceptualModelDiagramPool().getORefList();
+		for (int i = 0; i < conceptualDiagramRefs.size(); ++i)
 		{
-			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRefs[i]);			
-			wrapExistingLinksForThisFactor(diagramFactor.getWrappedORef());
+			DiagramObject diagramObject = (DiagramObject) getProject().findObject(conceptualDiagramRefs.get(i));
+			wrapExistingLinksForDiagramFactors(diagramObject);
 		}
 	}
-
-	private void wrapExistingLinksForThisFactor(ORef factorRef) throws Exception
+	
+	private void wrapExistingLinksForDiagramFactors(DiagramObject diagramObjectToUse) throws Exception
+	{
+		ORefList diagramFactorRefs = diagramObjectToUse.getAllDiagramFactorRefs();
+		for (int i= 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRefs.get(i));			
+			wrapExistingLinksForThisFactor(diagramObjectToUse, diagramFactor.getWrappedORef());
+		}
+	}
+	
+	private void wrapExistingLinksForThisFactor(DiagramObject diagramObjectToUse, ORef factorRef) throws Exception
 	{
 		Factor factor = (Factor) getProject().findObject(factorRef);
 		ORefList factorLinks = factor.findObjectsThatReferToUs(FactorLink.getObjectType());
-		DiagramObject diagramObject = getDiagramObject();
 		for (int i = 0; i < factorLinks.size(); ++i)
 		{
 			FactorLink factorLink = (FactorLink) getProject().findObject(factorLinks.get(i));
-			DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(factorLink.getFromFactorRef());
-			DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(factorLink.getToFactorRef());
+			DiagramFactor fromDiagramFactor = diagramObjectToUse.getDiagramFactor(factorLink.getFromFactorRef());
+			DiagramFactor toDiagramFactor = diagramObjectToUse.getDiagramFactor(factorLink.getToFactorRef());
 			if (fromDiagramFactor == null || toDiagramFactor == null)
+				continue;
+			
+			if (diagramObjectToUse.areDiagramFactorsLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
 				continue;
 			
 			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLink.getFactorLinkId(), fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
 			DiagramLink newDiagramLink = (DiagramLink) createObject(DiagramLink.getObjectType(), extraInfo);	
 			ORef newDiagramLinkRef = newDiagramLink.getRef();
-			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+			addToDiagramObject(diagramObjectToUse, newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
 			addDiagramLinkToSelection(newDiagramLinkRef);		
 		}
 	}
