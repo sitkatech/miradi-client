@@ -115,6 +115,10 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			FactorCell diagramFactor = model.getFactorCellByWrappedId(factors[i].getFactorId());
 			if (model.getFactorLinks(diagramFactor).size() > 0) 
 				continue;
+			
+			if (diagramFactor ==  null)
+				continue;
+			
 			diagramFactors.add(diagramFactor);
 		}
 		return (FactorCell[])diagramFactors.toArray(new FactorCell[0]);
