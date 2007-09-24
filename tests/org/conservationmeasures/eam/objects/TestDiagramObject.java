@@ -38,9 +38,11 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramFactorLinkId diagramLinkId = project.createDiagramFactorLink(cause, target);
 		project.addDiagramLinkToModel(diagramLinkId);
 		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinked(cause.getDiagramFactorId(), target.getDiagramFactorId()));
+		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinked(target.getDiagramFactorId(), cause.getDiagramFactorId()));
 		
 		DiagramFactor nonLinkedCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinked(nonLinkedCause.getDiagramFactorId(), target.getDiagramFactorId()));
+		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinked(target.getDiagramFactorId(), nonLinkedCause.getDiagramFactorId()));
 	}
 	
 	ProjectForTesting project;
