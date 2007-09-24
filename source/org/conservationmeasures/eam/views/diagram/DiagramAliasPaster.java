@@ -23,7 +23,6 @@ public class DiagramAliasPaster extends DiagramPaster
 	{
 		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
 		createNewDiagramFactors();
-		wrapExistingLinksForDiagramFactors();
 	}
 
 	public void pasteFactorsAndLinks(Point startPoint) throws Exception
@@ -31,6 +30,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		pasteFactors(startPoint);
 		createNewDiagramLinks();
 		selectNewlyPastedItems();
+		wrapExistingLinksForDiagramFactorsInAllConceptualModels();
 	}
 
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef)
