@@ -76,7 +76,6 @@ public class DiagramPaster
 		createNewFactorLinks();
 		createNewDiagramLinks();		
 		selectNewlyPastedItems();
-		wrapExistingLinksForDiagramFactorsInAllConceptualModels();
 	}
 	
 	protected void selectNewlyPastedItems()
@@ -431,7 +430,7 @@ public class DiagramPaster
 		}
 	}
 
-	protected void wrapExistingLinksForDiagramFactorsInAllConceptualModels() throws Exception
+	public void wrapExistingLinksForDiagramFactorsInAllConceptualModels() throws Exception
 	{
 		ORefList conceptualDiagramRefs = getProject().getConceptualModelDiagramPool().getORefList();
 		for (int i = 0; i < conceptualDiagramRefs.size(); ++i)
