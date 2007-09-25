@@ -273,7 +273,10 @@ public class EAM
 	public static void panic(Exception e)
 	{
 		logException(e);
-		errorDialog(EAM.text("An Unexpected Error Happened: " + e.getMessage() + ". Please Try Restarting Miradi."));
+		errorDialog(EAM.text("An unexpected error occurred: " + e.getMessage() +
+							 "\n\nPlease report this to the Miradi support team." +
+							 "\n\nMiradi has attempted to save your latest changes, and will now exit."));
+		System.exit(0);
 	}
 	
 	public static void errorDialog(String errorMessage)
