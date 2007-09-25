@@ -265,7 +265,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorLoggedWithDialog(e); 
+			EAM.panic(e); 
 		}
 	}
 

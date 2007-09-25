@@ -95,7 +95,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 			}
 			catch(Exception e)
 			{
-				EAM.unexpectedErrorLoggedWithDialog(e);
+				EAM.panic(e);
 			}
 		}
 
