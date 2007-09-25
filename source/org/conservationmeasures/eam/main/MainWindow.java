@@ -157,7 +157,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		setVisible(true);
 		if(preferences.getIsMaximized())
+		{
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
+		}
 		else
 		{
 			setSize(preferences.getMainWindowWidth(), preferences.getMainWindowHeight());
