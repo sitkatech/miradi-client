@@ -252,17 +252,24 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			handleCommandSetObjectData((CommandSetObjectData) event.getCommand());
-		
-		if (event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-			handleCommandCreateObject((CommandCreateObject) event.getCommand());
-		
-		if (event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-			handleCommandDeleteObject((CommandDeleteObject) event.getCommand());
+		try
+		{
+			if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+				handleCommandSetObjectData((CommandSetObjectData) event.getCommand());
+
+			if (event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+				handleCommandCreateObject((CommandCreateObject) event.getCommand());
+
+			if (event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+				handleCommandDeleteObject((CommandDeleteObject) event.getCommand());
+		}
+		catch(Exception e)
+		{
+			EAM.unexpectedErrorLoggedWithDialog(e); 
+		}
 	}
 
-	private void handleCommandDeleteObject(CommandDeleteObject commandDeleteObject)
+	private void handleCommandDeleteObject(CommandDeleteObject commandDeleteObject) throws Exception
 	{
 		int objectTypeFromCommand = commandDeleteObject.getObjectType();
 		if (getContentType() != objectTypeFromCommand)
@@ -271,7 +278,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		reload();
 	}
 
-	private void handleCommandCreateObject(CommandCreateObject commandCreateObject)
+	private void handleCommandCreateObject(CommandCreateObject commandCreateObject) throws Exception
 	{
 		int objectTypeFromCommand = commandCreateObject.getObjectType();
 		if (getContentType() != objectTypeFromCommand)
@@ -280,7 +287,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		reload();
 	}
 
-	private void handleCommandSetObjectData(CommandSetObjectData commandSetObjectData)
+	private void handleCommandSetObjectData(CommandSetObjectData commandSetObjectData) throws Exception
 	{
 		if (commandSetObjectData.getObjectType() == getContentType())
 			handleDiagramContentsChange(commandSetObjectData);
@@ -299,35 +306,20 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		showCard(viewDataCurrentDiagramRef);
 	}
 
-	private void handleDiagramContentsChange(CommandSetObjectData setCommand)
+	private void handleDiagramContentsChange(CommandSetObjectData setCommand) throws Exception
 	{
 		DiagramModel diagramModel = getDiagramModel();
 		if (diagramModel == null)
 			return;
-		
-		try
-		{			
-			DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, diagramModel);
-			modelUpdater.commandSetObjectDataWasExecuted(setCommand);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
+
+		DiagramModelUpdater modelUpdater = new DiagramModelUpdater(project, diagramModel);
+		modelUpdater.commandSetObjectDataWasExecuted(setCommand);
 	}
 	
-	private void reload()
+	private void reload() throws Exception
 	{
-		try
-		{
-			reloadDiagramCards(getContentType());
-			getDiagramPageList().listChanged();
-		}
-		catch (Exception e)
-		{
-			//FIXME do something with this catch
-			EAM.logException(e);
-		}
+		reloadDiagramCards(getContentType());
+		getDiagramPageList().listChanged();
 	}
 
 	public int getContentType()
