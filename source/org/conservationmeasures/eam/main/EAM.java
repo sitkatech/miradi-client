@@ -270,6 +270,12 @@ public class EAM
 	///////////////////////////////////////////////////////////////////
 	// Dialogs
 
+	public static void unexpectedErrorLoggedWithDialog(Exception e)
+	{
+		logException(e);
+		errorDialog(EAM.text("An Unexpected Error Happened: " + e.getMessage() + ". Please Try Restarting Miradi."));
+	}
+	
 	public static void errorDialog(String errorMessage)
 	{
 		okDialog("Error", new String[] {errorMessage});
