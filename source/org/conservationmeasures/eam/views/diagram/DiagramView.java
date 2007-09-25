@@ -637,6 +637,15 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if (! cmd.getFieldTag().equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF) && !cmd.getFieldTag().equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF))
 			return;
 		
+		ViewData viewData = getProject().getCurrentViewData();
+		String currentDiagramPage = viewData.getData(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
+		if (cmd.getDataValue().equals(currentDiagramPage))
+			return;
+		
+		String currentResultsChainPageRef = viewData.getData(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF); 
+		if (cmd.getDataValue().equals(currentResultsChainPageRef))
+			return;
+				
 		switchToFullMode();
 	}
 

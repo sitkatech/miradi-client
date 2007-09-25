@@ -5,11 +5,14 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.util.Vector;
+
 import javax.swing.BorderFactory;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -39,15 +42,16 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		getObjectPoolTableModel().rowsWereAddedOrRemoved();
 	}
 
-	private void setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
+	private Vector setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
 	{
 		ORef currentDiagramRef = getCurrentDiagramViewDataRef();
 		if (currentDiagramRef.equals(selectedRef))
-			return;
+			return new Vector();
 	
+		Vector commandsVector = new Vector();
 		ViewData viewData = project.getDiagramViewData();
-		CommandSetObjectData setCurrentDiagramObject = new CommandSetObjectData(viewData.getRef(), getCurrentDiagramViewDataTag(), selectedRef);
-		project.executeCommand(setCurrentDiagramObject);
+		commandsVector.add(new CommandSetObjectData(viewData.getRef(), getCurrentDiagramViewDataTag(), selectedRef));
+		return commandsVector;
 	}
 
 	public static String getCurrentDiagramViewDataTag(int objectType)
@@ -101,12 +105,18 @@ abstract public class DiagramPageList extends ObjectPoolTable
 
 		private void setCurrentDiagram() throws Exception
 		{
+			Vector commandsToExecute = new Vector();
+			commandsToExecute.addAll(ensureDefaultMode());
+			ORef selectedRef = getSelectedRef();
+			commandsToExecute.addAll(setViewDataCurrentDiagramObjectRef(selectedRef));
+			
+			if (commandsToExecute.size() == 0)
+				return;
+			
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				ORef selectedRef = getSelectedRef();
-				ensureDefaultMode();
-				setViewDataCurrentDiagramObjectRef(selectedRef);				
+				project.executeCommands((Command[]) commandsToExecute.toArray(new Command[0]));
 			}
 			finally
 			{
@@ -114,14 +124,15 @@ abstract public class DiagramPageList extends ObjectPoolTable
 			}
 		}
 
-		private void ensureDefaultMode() throws Exception
+		private Vector ensureDefaultMode() throws Exception
 		{
 			ViewData viewData = project.getCurrentViewData();
 			if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
-				return;
+				return new Vector();
 			
-			CommandSetObjectData setDefaultMode = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
-			project.executeCommand(setDefaultMode);
+			Vector defaultCommandVector = new Vector();
+			defaultCommandVector.add(new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT));
+			return defaultCommandVector;
 		}
 
 		private ORef getSelectedRef()

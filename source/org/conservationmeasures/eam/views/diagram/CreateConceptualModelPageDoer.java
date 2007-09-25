@@ -43,6 +43,7 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
+			setToDefaultMode();
 			createConceptualModelPage(project);
 		}
 		catch (Exception e)
@@ -54,6 +55,16 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
+	}
+	
+	private void setToDefaultMode() throws Exception
+	{
+		ViewData viewData = getProject().getCurrentViewData();
+		if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
+			return;
+	
+		CommandSetObjectData setMode = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
+		getProject().executeCommand(setMode);
 	}
 	
 	private void createConceptualModelPage(Project project) throws Exception
