@@ -10,6 +10,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ObjectPoolTable;
 import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
@@ -87,21 +89,39 @@ abstract public class DiagramPageList extends ObjectPoolTable
 
 		public void valueChanged(ListSelectionEvent event)
 		{
-			setCurrentDiagram();
-		}
-
-		private void setCurrentDiagram()
-		{
 			try
 			{
-				ORef selectedRef = getSelectedRef();
-				setViewDataCurrentDiagramObjectRef(selectedRef);				
+				setCurrentDiagram();
 			}
 			catch(Exception e)
 			{
-				//TODO nima do somethning with this exception
-				EAM.logException(e);
+				EAM.unexpectedErrorLoggedWithDialog(e);
 			}
+		}
+
+		private void setCurrentDiagram() throws Exception
+		{
+			project.executeCommand(new CommandBeginTransaction());
+			try
+			{
+				ORef selectedRef = getSelectedRef();
+				ensureDefaultMode();
+				setViewDataCurrentDiagramObjectRef(selectedRef);				
+			}
+			finally
+			{
+				project.executeCommand(new CommandEndTransaction());
+			}
+		}
+
+		private void ensureDefaultMode() throws Exception
+		{
+			ViewData viewData = project.getCurrentViewData();
+			if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
+				return;
+			
+			CommandSetObjectData setDefaultMode = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
+			project.executeCommand(setDefaultMode);
 		}
 
 		private ORef getSelectedRef()
