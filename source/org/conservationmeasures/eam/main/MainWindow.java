@@ -158,6 +158,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		setVisible(true);
 		if(preferences.getIsMaximized())
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
+		else
+		{
+			setSize(preferences.getMainWindowWidth(), preferences.getMainWindowHeight());
+			setLocation(preferences.getMainWindowXPosition(), preferences.getMainWindowYPosition());
+		}
 	}
 	
 	
@@ -588,7 +593,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		boolean isMaximized = false;
 		if((getExtendedState() & MAXIMIZED_BOTH) != 0)
 			isMaximized = true;
+		
 		preferences.setIsMaximized(isMaximized);
+		preferences.setMainWindowHeigth(getHeight());
+		preferences.setMainWindowWidth(getWidth());
+		preferences.setMainWindowXPosition(getLocation().x);
+		preferences.setMainWindowYPosition(getLocation().y);
 		preferences.save(getPreferencesFile());
 		getCurrentView().refresh();
 	}
