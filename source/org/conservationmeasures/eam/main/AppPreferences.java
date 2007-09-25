@@ -313,8 +313,8 @@ public class AppPreferences
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
 		mainWindowHeight = json.optInt(TAG_MAIN_WINDOW_HEIGHT, 600);
 		mainWindowWidth = json.optInt(TAG_MAIN_WINDOW_WIDTH, 800);
-		mainWindowXPosition = json.optInt(TAG_MAIN_WINDOW_X_POSITION, 0);
-		mainWindowYPosition = json.optInt(TAG_MAIN_WINDOW_Y_POSITION, 0);
+		mainWindowXPosition = json.optInt(TAG_MAIN_WINDOW_X_POSITION, 100);
+		mainWindowYPosition = json.optInt(TAG_MAIN_WINDOW_Y_POSITION, 100);
 		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, false);
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
