@@ -53,6 +53,47 @@ public class AppPreferences
 		return isMaximized;
 	}
 	
+	public void setMainWindowHeigth(int mainWindowHeightToUse)
+	{
+		mainWindowHeight = mainWindowHeightToUse;
+	}
+	
+	public int getMainWindowHeight()
+	{
+		return mainWindowHeight;
+	}
+	
+	public void setMainWindowWidth(int mainwWindowWidthToUse)
+	{
+		mainWindowWidth = mainwWindowWidthToUse;
+	}
+	
+	public void setMainWindowXPosition(int xPosition)
+	{
+		mainWindowXPosition = xPosition;
+	}
+	
+	public int getMainWindowXPosition()
+	{
+		return mainWindowXPosition;
+	}
+	
+	public void setMainWindowYPosition(int yPosition)
+	{
+		mainWindowYPosition = yPosition;
+	}
+	
+	public int getMainWindowYPosition()
+	{
+		return mainWindowYPosition;
+	}
+
+	
+	public int getMainWindowWidth()
+	{
+		return mainWindowWidth;
+	}
+	
 	public Color getColor(String tag)
 	{
 		if(tag.equals(TAG_COLOR_STRATEGY))
@@ -212,6 +253,10 @@ public class AppPreferences
 		json.put(TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
 		json.put(TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
+		json.put(TAG_MAIN_WINDOW_HEIGHT, mainWindowHeight);
+		json.put(TAG_MAIN_WINDOW_WIDTH, mainWindowWidth);
+		json.put(TAG_MAIN_WINDOW_X_POSITION, mainWindowXPosition);
+		json.put(TAG_MAIN_WINDOW_Y_POSITION, mainWindowYPosition);
 		json.put(TAG_GRID_VISIBLE, isGridVisible);
 		json.put(TAG_CELL_RATINGS_VISIBLE, isCellRatingsVisible);
 		
@@ -266,6 +311,10 @@ public class AppPreferences
 		
 		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, true);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
+		mainWindowHeight = json.optInt(TAG_MAIN_WINDOW_HEIGHT, 600);
+		mainWindowWidth = json.optInt(TAG_MAIN_WINDOW_WIDTH, 800);
+		mainWindowXPosition = json.optInt(TAG_MAIN_WINDOW_X_POSITION, 0);
+		mainWindowYPosition = json.optInt(TAG_MAIN_WINDOW_Y_POSITION, 0);
 		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, false);
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
@@ -317,6 +366,11 @@ public class AppPreferences
 	public static final String TAG_COLOR_INTERMEDIATE_RESULT = "ColorIntermediateResult";
 	public static final String TAG_COLOR_THREAT_REDUCTION_RESULT = "ColorThreatReductionResult";
 	public static final String TAG_IS_MAXIMIZED = "IsMaximized";
+	public static final String TAG_MAIN_WINDOW_HEIGHT = "MainWindowHeight";
+	public static final String TAG_MAIN_WINDOW_WIDTH = "MainWindowWidth";
+	public static final String TAG_MAIN_WINDOW_X_POSITION = "MainwWindowX";
+	public static final String TAG_MAIN_WINDOW_Y_POSITION = "MainwWindowY";
+	
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
 	public static final String TAG_TAGGED_INTS = "TaggedInts";
@@ -359,6 +413,10 @@ public class AppPreferences
 	private boolean isGridVisible; 
 	private boolean isCellRatingsVisible;
 	private boolean isMaximized;
+	private int mainWindowHeight;
+	private int mainWindowWidth;
+	private int mainWindowXPosition;
+	private int mainWindowYPosition;
 	
 	private double diagramZoomSetting;
 	
