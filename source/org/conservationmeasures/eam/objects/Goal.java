@@ -84,6 +84,5 @@ public class Goal extends Desire
 		return objectiveRefs;
 	}
 	
-	//FIXME: all OBJECT_NAME reference becaseu the are used in displayes shold be static methods that call EAM.text
 	public static final String OBJECT_NAME = "Goal";
 }
