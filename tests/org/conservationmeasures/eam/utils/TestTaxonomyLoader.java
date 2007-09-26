@@ -10,7 +10,7 @@ import java.io.BufferedReader;
 import java.io.StringReader;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
 public class TestTaxonomyLoader extends EAMTestCase
@@ -23,13 +23,13 @@ public class TestTaxonomyLoader extends EAMTestCase
 
 	public void testNoDataReturnsDefautSelection() throws Exception
 	{
-		TaxonomyItem[] taxonomyItem = loadDelimitedData(new StringReader(""));
+		TwoLevelEntry[] taxonomyItem = loadDelimitedData(new StringReader(""));
 		assertEquals(1, taxonomyItem.length);
 	}
 
 	public void testOne() throws Exception
 	{
-		TaxonomyItem[] taxonomyItem = loadDelimitedData(new StringReader(" # \t \"header\" \t \"xxxx\" \n" +
+		TwoLevelEntry[] taxonomyItem = loadDelimitedData(new StringReader(" # \t \"header\" \t \"xxxx\" \n" +
 				" H10.10 \t \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" "));
 		assertEquals(3, taxonomyItem.length);
 		assertEquals("--Select a classification--", taxonomyItem[0].getTaxonomyDescription());
@@ -40,10 +40,10 @@ public class TestTaxonomyLoader extends EAMTestCase
 	}
 	
 
-	private TaxonomyItem[] loadDelimitedData(StringReader stringReader) throws Exception
+	private TwoLevelEntry[] loadDelimitedData(StringReader stringReader) throws Exception
 	{
 		BufferedReader reader = new BufferedReader( stringReader );
-		TaxonomyItem[] taxonomyItem = TaxonomyLoader.load(reader);
+		TwoLevelEntry[] taxonomyItem = TaxonomyLoader.load(reader);
 		return taxonomyItem;
 	}
 

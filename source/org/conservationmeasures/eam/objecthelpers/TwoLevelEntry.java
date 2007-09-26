@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
-public class TaxonomyItem
+public class TwoLevelEntry
 {
 	
-	public TaxonomyItem(String code, String description)
+	public TwoLevelEntry(String code, String description)
 	{
 		taxonomyCode = code;
 		taxonomyDescription = description;

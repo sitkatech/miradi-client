@@ -17,35 +17,35 @@ import org.conservationmeasures.eam.utils.DelimitedFileLoader;
 //TODO this is a duplicate of TaxonomyLoad
 public class TwoLevelFileLoader
 {
-	public static TaxonomyItem[] load(String resourceFileName) throws Exception
+	public static TwoLevelEntry[] load(String resourceFileName) throws Exception
 	{
 		if (tablePreLoad.contains(resourceFileName))
-			return (TaxonomyItem[])tablePreLoad.get(resourceFileName);
+			return (TwoLevelEntry[])tablePreLoad.get(resourceFileName);
 		
 		InputStream is = EAM.class.getResourceAsStream(resourceFileName);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-		TaxonomyItem[] table = getTaxomonies(reader);
+		TwoLevelEntry[] table = getTaxomonies(reader);
 		tablePreLoad.put(resourceFileName, table);
 		reader.close();
 		return table;
 	}
 
-	public static TaxonomyItem[] load(BufferedReader reader) throws Exception
+	public static TwoLevelEntry[] load(BufferedReader reader) throws Exception
 	{
 		return getTaxomonies(reader);
 	}
 	
-	private static TaxonomyItem[] getTaxomonies(BufferedReader reader) throws IOException
+	private static TwoLevelEntry[] getTaxomonies(BufferedReader reader) throws IOException
 	{
 		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
 		Vector taxonomyItems = processVector(fileVector);
-		return (TaxonomyItem[]) taxonomyItems.toArray(new TaxonomyItem[0]);
+		return (TwoLevelEntry[]) taxonomyItems.toArray(new TwoLevelEntry[0]);
 	}
 	
 	private static Vector processVector(Vector fileVector)
 	{
 		Vector taxonomyItems = new Vector();
-		taxonomyItems.add(new TaxonomyItem("", EAM.text("--Select a classification--")));
+		taxonomyItems.add(new TwoLevelEntry("", EAM.text("--Select a classification--")));
 
 		String prevLevel1Code = "";
 		int level1Index = 0;
@@ -62,12 +62,12 @@ public class TwoLevelFileLoader
 			{
 				level2Index = 0;
 				String taxonomyLevelText = ++level1Index + "   "+ level1Descriptor;
-				taxonomyItems.add(new TaxonomyItem(getLevel1Code(code), taxonomyLevelText));
+				taxonomyItems.add(new TwoLevelEntry(getLevel1Code(code), taxonomyLevelText));
 			}
 			
 			++level2Index;
 			String taxonomyLevel2Text = "    " + level1Index + "." + level2Index + "    " + level2Descriptor;
-			taxonomyItems.add(new TaxonomyItem(code, taxonomyLevel2Text));
+			taxonomyItems.add(new TwoLevelEntry(code, taxonomyLevel2Text));
 
 			prevLevel1Code = getLevel1Code(code);
 		}

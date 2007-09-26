@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.questions;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
 public abstract class ClassificationQuestion extends ChoiceQuestion
@@ -22,7 +22,7 @@ public abstract class ClassificationQuestion extends ChoiceQuestion
 		try 
 		{
 			Vector chocies = new Vector();
-			TaxonomyItem[] taxonomyItems = TaxonomyLoader.load(fileName);
+			TwoLevelEntry[] taxonomyItems = TaxonomyLoader.load(fileName);
 
 			for (int i=0; i<taxonomyItems.length; ++i)
 			{
