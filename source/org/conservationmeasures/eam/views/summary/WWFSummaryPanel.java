@@ -6,18 +6,23 @@
 package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 
 public class WWFSummaryPanel extends ObjectDataInputPanel
 {
 	
-	public WWFSummaryPanel(Project projectToUse, ProjectMetadata metadata)
+	public WWFSummaryPanel(Project projectToUse, ProjectMetadata metaDataToUse)
 	{
-		super(projectToUse, metadata.getType(), metadata.getId());
-		add(new PanelTitleLabel("Not implemented yet"));
+		super(projectToUse, ORef.INVALID);
+
+		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME, 50));
+		
+		
+		//FIXME add WwfProjectData ref 
+		setObjectRefs(new ORef[] {metaDataToUse.getRef()});
 	}
 
 	public String getPanelDescription()
