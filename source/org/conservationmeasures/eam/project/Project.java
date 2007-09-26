@@ -61,6 +61,7 @@ import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.TextBoxPool;
 import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objectpools.WwfProjectDataPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -70,6 +71,7 @@ import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.objects.WwfProjectData;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.DiagramPageList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -158,6 +160,11 @@ public class Project
 	public ORefList getAllDiagramObjectRefs()
 	{
 		return objectManager.getAllDiagramObjectRefs();
+	}
+	
+	public WwfProjectDataPool getWwfProjectDataPool()
+	{
+		return (WwfProjectDataPool) getPool(WwfProjectData.getObjectType());
 	}
 	
 	public ConceptualModelDiagramPool getConceptualModelDiagramPool()
@@ -456,6 +463,7 @@ public class Project
 		createDefaultConceptualModel();
 		createSelectedDefaultPlanningCustomization();
 		selectPlanningViewStrategicRadioButton();
+		createDefaultWwfProjectDataObject();
 	}
 
 	private void createSelectedDefaultPlanningCustomization() throws Exception
@@ -492,6 +500,11 @@ public class Project
 		ViewData planningViewData = getViewData(PlanningView.getViewName());
 		if (planningViewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).length() == 0)
 			setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
+	}
+	
+	private void createDefaultWwfProjectDataObject() throws Exception
+	{
+		createObject(WwfProjectData.getObjectType());
 	}
 	
 	private void openProject(File projectDirectory) throws Exception

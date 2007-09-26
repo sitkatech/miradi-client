@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -56,7 +57,15 @@ public class WwfProjectData extends BaseObject
 	void clear()
 	{
 		super.clear();
+		
+		relatedProjects = new StringData();
+		
+		addField(TAG_RELATED_PROJECTS, relatedProjects);
 	}
+
+	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
 	
-	public static final String OBJECT_NAME = "WwfProjectData";	
+	public static final String OBJECT_NAME = "WwfProjectData";
+	
+	private StringData relatedProjects;
 }
