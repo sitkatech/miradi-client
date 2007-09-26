@@ -15,8 +15,11 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.PlanningViewCustomizationQuestion;
 
 //FIXME planning - this class should extend UiRadioButton but it cant since UiRadioButton has no constructor that takes in 0 args
 abstract public class PlanningViewRadioButton extends JRadioButton implements ActionListener
@@ -48,6 +51,7 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 		try
 		{
 			saveCurrentRadioSelection();
+			saveCustomizationComboSelection();
 		}
 		finally
 		{
@@ -69,6 +73,26 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 
 		CommandSetObjectData setComboItem = new CommandSetObjectData(viewData.getRef(), tag, newValue);
 		project.executeCommand(setComboItem);
+	}
+	
+	private void saveCustomizationComboSelection() throws Exception
+	{
+		save(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, getCustomizationComboRefToSelect().toString());
+	}
+
+	private ORef getCustomizationComboRefToSelect() throws Exception
+	{
+		ViewData viewData = getProject().getCurrentViewData();
+		ORef customRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+		if (!customRef.isInvalid())
+			return customRef;
+		
+		PlanningViewCustomizationQuestion question = new PlanningViewCustomizationQuestion(getProject());
+		ChoiceItem[] choices = question.getChoices();
+		if (choices.length == 0)
+			return ORef.INVALID;
+		
+		return ORef.createFromString(choices[0].getCode());
 	}
 
 	protected Project getProject()
