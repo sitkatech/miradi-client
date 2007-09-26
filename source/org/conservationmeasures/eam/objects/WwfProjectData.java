@@ -59,13 +59,17 @@ public class WwfProjectData extends BaseObject
 		super.clear();
 		
 		relatedProjects = new StringData();
+		projectNumber = new StringData();
 		
 		addField(TAG_RELATED_PROJECTS, relatedProjects);
+		addField(TAG_PROJECT_NUMBER, projectNumber);
 	}
 
 	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
+	public static final String TAG_PROJECT_NUMBER = "ProjectNumber";
 	
 	public static final String OBJECT_NAME = "WwfProjectData";
 	
 	private StringData relatedProjects;
+	private StringData projectNumber;
 }
