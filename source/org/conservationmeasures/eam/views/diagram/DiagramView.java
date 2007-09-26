@@ -634,7 +634,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if (cmd.getObjectType() != ObjectType.VIEW_DATA)
 			return;
 		
-		if (! cmd.getFieldTag().equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF) && !cmd.getFieldTag().equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF))
+		if (! isDiagramObjectTag(cmd.getFieldTag()))
 			return;
 		
 		ViewData viewData = getProject().getCurrentViewData();
@@ -647,6 +647,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			return;
 				
 		switchToFullMode();
+	}
+
+
+	private boolean isDiagramObjectTag(String tag)
+	{
+		return (tag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF)) && (tag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF));
 	}
 
 
