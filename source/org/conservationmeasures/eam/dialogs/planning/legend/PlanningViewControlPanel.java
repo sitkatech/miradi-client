@@ -33,13 +33,14 @@ public class PlanningViewControlPanel extends DisposablePanel implements Command
 	{
 		super(new BasicGridLayout(2, 1));
 		mainWindow = mainWindowToUse;
-		getProject().addCommandExecutedListener(this);
+		
 		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		createCustomizationButtons();
 		addLegendComponents(treeAsObjectPicker);
 		
 		ViewData viewData = getProject().getCurrentViewData();
 		updateVisibility(viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE));
+		getProject().addCommandExecutedListener(this);
 	}
 	
 	public void dispose()
