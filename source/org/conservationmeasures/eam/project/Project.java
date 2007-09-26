@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.FileBasedProjectServer;
@@ -650,6 +652,19 @@ public class Project
 	{
 		for(int i = 0; i < commands.length; ++i)
 			executeCommand(commands[i]);
+	}
+	
+	public void executeCommandsAsTransaction(Command[] commands) throws CommandFailedException
+	{
+		executeCommand(new CommandBeginTransaction());
+		try
+		{
+			executeCommands(commands);
+		}
+		finally
+		{
+			executeCommand(new CommandEndTransaction());
+		}
 	}
 	
 	public Command undo() throws CommandFailedException
