@@ -25,8 +25,8 @@ public class StrategyTaxonomyQuestion extends ChoiceQuestion
 			for (int i=0; i<taxonomyItems.length; ++i)
 			{
 				choiceItems[i] = 
-					new ChoiceItem(taxonomyItems[i].getTaxonomyCode(), 
-						taxonomyItems[i].getTaxonomyDescription());
+					new ChoiceItem(taxonomyItems[i].getEntryCode(), 
+						taxonomyItems[i].getEntryDescription());
 			}
 			return choiceItems;
 		}

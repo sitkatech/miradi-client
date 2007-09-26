@@ -26,7 +26,7 @@ public class TwoLevelQuestion extends ChoiceQuestion
 
 			for (int i = 0; i < twoLevelEntry.length; ++i)
 			{
-				ChoiceItem choice = new ChoiceItem(twoLevelEntry[i].getTaxonomyCode(), twoLevelEntry[i].getTaxonomyDescription());
+				ChoiceItem choice = new ChoiceItem(twoLevelEntry[i].getEntryCode(), twoLevelEntry[i].getEntryDescription());
 				choice.setSelectable(twoLevelEntry[i].isLeaf());
 				chocies.add(choice);
 			}
