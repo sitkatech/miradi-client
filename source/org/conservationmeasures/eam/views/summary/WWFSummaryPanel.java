@@ -8,7 +8,10 @@ package org.conservationmeasures.eam.views.summary;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objectpools.WwfProjectDataPool;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.objects.WwfProjectData;
 import org.conservationmeasures.eam.project.Project;
 
 public class WWFSummaryPanel extends ObjectDataInputPanel
@@ -18,11 +21,20 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 
-		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME, 50));
+		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME));
+		addField(createStringField(WwfProjectData.getObjectType(), WwfProjectData.TAG_RELATED_PROJECTS));
 		
+		setObjectRefs(new ORef[] {metaDataToUse.getRef(), getWwfProjectDataRef()});
+	}
+	
+	private ORef getWwfProjectDataRef()
+	{
+		WwfProjectDataPool pool = getProject().getWwfProjectDataPool();
+		ORefList wwfProjectDataRefs = pool.getORefList();
+		if (wwfProjectDataRefs.size() == 0)
+			return ORef.INVALID;
 		
-		//FIXME add WwfProjectData ref 
-		setObjectRefs(new ORef[] {metaDataToUse.getRef()});
+		return wwfProjectDataRefs.get(0);
 	}
 
 	public String getPanelDescription()
