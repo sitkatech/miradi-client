@@ -24,12 +24,9 @@ public class TwoLevelQuestion extends ChoiceQuestion
 			Vector chocies = new Vector();
 			TwoLevelEntry[] twoLevelEntry = TwoLevelFileLoader.load(fileName);
 
-			for (int i=0; i<twoLevelEntry.length; ++i)
+			for (int i = 0; i < twoLevelEntry.length; ++i)
 			{
-
-				ChoiceItem choice = new ChoiceItem(
-						twoLevelEntry[i].getTaxonomyCode(), 
-						twoLevelEntry[i].getTaxonomyDescription());
+				ChoiceItem choice = new ChoiceItem(twoLevelEntry[i].getTaxonomyCode(), twoLevelEntry[i].getTaxonomyDescription());
 				choice.setSelectable(twoLevelEntry[i].isLeaf());
 				chocies.add(choice);
 			}
