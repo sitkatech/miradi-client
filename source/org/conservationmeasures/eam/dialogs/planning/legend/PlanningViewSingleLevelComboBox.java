@@ -82,7 +82,7 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		return PlanningView.SINGLE_LEVEL_RADIO_CHOICE;
 	}
 	
-	boolean needsSave() throws Exception 
+	boolean comboBoxNeedsSave() throws Exception 
 	{
 		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
 		String existingValue = viewData.getData(getChoiceTag());

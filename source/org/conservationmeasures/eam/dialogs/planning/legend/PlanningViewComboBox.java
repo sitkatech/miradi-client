@@ -63,7 +63,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 
 	private Vector getComboSaveCommnds() throws Exception
 	{
-		if (! needsSave())
+		if (! comboBoxNeedsSave())
 			return new Vector();
 		
 		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
@@ -77,7 +77,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	
 	private Vector getRadioSaveCommands() throws Exception
 	{
-		if (! needsSave())
+		if (! comboBoxNeedsSave())
 			return new Vector();
 		
 		Vector radioSaveCommands = new Vector();
@@ -97,7 +97,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 
 	abstract public String getStyleChoiceName();
 	abstract public String getChoiceTag();
-	abstract boolean needsSave() throws Exception;
+	abstract boolean comboBoxNeedsSave() throws Exception;
 	
 	private Project project;
 	

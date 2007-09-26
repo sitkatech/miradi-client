@@ -104,7 +104,7 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		return PlanningView.CUSTOMIZABLE_RADIO_CHOICE;
 	}
 	
-	boolean needsSave() throws Exception 
+	boolean comboBoxNeedsSave() throws Exception 
 	{
 		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
 		ORef existingRef = viewData.getORef(getChoiceTag());
