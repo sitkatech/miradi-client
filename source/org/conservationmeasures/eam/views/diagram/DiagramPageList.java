@@ -110,7 +110,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 			if (commandsToExecute.size() == 0)
 				return;
 			
-			project.executeCommands((Command[]) commandsToExecute.toArray(new Command[0]));		
+			project.executeCommandsAsTransaction((Command[]) commandsToExecute.toArray(new Command[0]));		
 		}
 
 		private Vector ensureDefaultMode() throws Exception
