@@ -107,8 +107,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		{
 			Vector commandsToExecute = new Vector();
 			commandsToExecute.addAll(ensureDefaultMode());
-			ORef selectedRef = getSelectedRef();
-			commandsToExecute.addAll(buildCommandsToSetCurrentDiagramObjectRef(selectedRef));
+			commandsToExecute.addAll(buildCommandsToSetCurrentDiagramObjectRef(getSelectedRef()));
 			
 			if (commandsToExecute.size() == 0)
 				return;
