@@ -5,35 +5,12 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
-public class StrategyTaxonomyQuestion extends ChoiceQuestion
+public class StrategyTaxonomyQuestion extends TwoLevelQuestion
 {
 	public StrategyTaxonomyQuestion(String tag)
 	{
-		super(tag, "Strategy Taxonomy Translations", getImpactChoices());
-	}
-	
-	static ChoiceItem[] getImpactChoices()
-	{
-		try 
-		{
-			TwoLevelEntry[] taxonomyItems = TaxonomyLoader.load(TaxonomyLoader.STRATEGY_TAXONOMIES_FILE);
-			ChoiceItem[] choiceItems =  new ChoiceItem[taxonomyItems.length]; 
-			for (int i=0; i<taxonomyItems.length; ++i)
-			{
-				choiceItems[i] = 
-					new ChoiceItem(taxonomyItems[i].getEntryCode(), 
-						taxonomyItems[i].getEntryDescription());
-			}
-			return choiceItems;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new ChoiceItem[0];
-		}
+		super(tag, "Strategy Taxonomy Translations", TaxonomyLoader.STRATEGY_TAXONOMIES_FILE);
 	}
 }
