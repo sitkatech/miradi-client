@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.planning;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -23,7 +22,7 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 		return new CodeList(new String[] {
 							Desire.TAG_SHORT_LABEL,	
 							Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE,
-							Indicator.PSEUDO_TAG_FACTOR,
+							Desire.PSEUDO_TAG_FACTOR,
 							Task.PSEUDO_TAG_TASK_BUDGET_TOTAL,
 //							Strategy.PSEUDO_TAG_PROGRESS,
 //							Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,

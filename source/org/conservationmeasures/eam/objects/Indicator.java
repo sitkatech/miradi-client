@@ -85,7 +85,7 @@ public class Indicator extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_STRATEGIES))
 			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
 		
-		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
+		if(fieldTag.equals(PSEUDO_TAG_FACTOR) || fieldTag.equals(LEGACY_PSEUDO_TAG_FACTOR))
 			return getOwner().getLabel();
 		
 		if(fieldTag.equals(PSEUDO_TAG_METHODS))
@@ -182,6 +182,7 @@ public class Indicator extends BaseObject
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
 		addField(PSEUDO_TAG_STRATEGIES, multiLineStrategies);
 		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
+		addField(LEGACY_PSEUDO_TAG_FACTOR, multiLineFactor);
 		addField(PSEUDO_TAG_METHODS, multiLineMethods);
 		addField(PSEUDO_TAG_PRIORITY_VALUE, priorityLabel);
 		addField(PSEUDO_TAG_STATUS_VALUE, statusLabel);
@@ -286,9 +287,10 @@ public class Indicator extends BaseObject
 	public static final String TAG_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
 	public static final String TAG_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
 
+	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	
 	// NOTE: Can't change the following tags unless we recompile the jasper reports
-	public static final String PSEUDO_TAG_FACTOR = "Factor";
+	public static final String LEGACY_PSEUDO_TAG_FACTOR = "Factor";
 	public static final String PSEUDO_TAG_TARGETS = "Targets";
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "DirectThreats";
 	public static final String PSEUDO_TAG_STRATEGIES = "Strategies";
