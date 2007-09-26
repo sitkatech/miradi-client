@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.questions;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
 public class StrategyTaxonomyQuestion extends ChoiceQuestion
@@ -20,7 +20,7 @@ public class StrategyTaxonomyQuestion extends ChoiceQuestion
 	{
 		try 
 		{
-			TaxonomyItem[] taxonomyItems = TaxonomyLoader.load(TaxonomyLoader.STRATEGY_TAXONOMIES_FILE);
+			TwoLevelEntry[] taxonomyItems = TaxonomyLoader.load(TaxonomyLoader.STRATEGY_TAXONOMIES_FILE);
 			ChoiceItem[] choiceItems =  new ChoiceItem[taxonomyItems.length]; 
 			for (int i=0; i<taxonomyItems.length; ++i)
 			{
