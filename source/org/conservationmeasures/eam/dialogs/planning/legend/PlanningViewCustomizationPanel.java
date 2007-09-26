@@ -165,7 +165,6 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		radioGroup.updateRadioSelection(setCommand.getDataValue());
-		return;
 	}
 	
 	private void setCustomizationComboSelection(CommandExecutedEvent event) throws Exception
