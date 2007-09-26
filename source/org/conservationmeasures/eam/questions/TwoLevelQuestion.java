@@ -35,7 +35,7 @@ public class TwoLevelQuestion extends ChoiceQuestion
 		}
 		catch (Exception e)
 		{
-			throw new RuntimeException("error processing classifications:" + fileName);
+			throw new RuntimeException("error processing two level entry inside:" + fileName);
 		}
 	}
 }
