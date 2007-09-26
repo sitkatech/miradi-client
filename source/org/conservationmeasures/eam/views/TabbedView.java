@@ -71,8 +71,7 @@ abstract public class TabbedView extends UmbrellaView
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
-			EAM.errorDialog("Unexpected error switching view");
+			EAM.panic(e);
 		}
 		finally
 		{
