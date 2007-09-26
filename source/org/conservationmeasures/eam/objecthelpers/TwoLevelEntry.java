@@ -11,7 +11,7 @@ public class TwoLevelEntry
 	public TwoLevelEntry(String code, String description)
 	{
 		entryCode = code;
-		taxonomyDescription = description;
+		entryDescription = description;
 	}
 
 	public String getEntryCode()
@@ -21,7 +21,7 @@ public class TwoLevelEntry
 
 	public String getEntryDescription()
 	{
-		return taxonomyDescription;
+		return entryDescription;
 	}
 
 	public String toString()
@@ -46,6 +46,6 @@ public class TwoLevelEntry
 
 	
 	String entryCode;
-	String taxonomyDescription;
+	String entryDescription;
 	
 }
