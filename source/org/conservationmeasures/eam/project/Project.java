@@ -488,10 +488,8 @@ public class Project
 	private void selectPlanningViewStrategicRadioButton() throws Exception
 	{
 		ViewData planningViewData = getViewData(PlanningView.getViewName());
-		if (!planningViewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).equals(""))
-			return;
-		
-		setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
+		if (planningViewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).length() == 0)
+			setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
 	}
 	
 	private void openProject(File projectDirectory) throws Exception
