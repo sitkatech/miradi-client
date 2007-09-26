@@ -43,8 +43,9 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			setToDefaultMode();
-			createConceptualModelPage(project);
+			ViewData viewData = project.getViewData(getDiagramView().cardName());
+			setToDefaultMode(viewData);
+			createConceptualModelPage(viewData);
 		}
 		catch (Exception e)
 		{
@@ -57,9 +58,8 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		}
 	}
 	
-	private void setToDefaultMode() throws Exception
+	private void setToDefaultMode(ViewData viewData) throws Exception
 	{
-		ViewData viewData = getProject().getCurrentViewData();
 		if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
 			return;
 	
@@ -67,21 +67,20 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		getProject().executeCommand(setMode);
 	}
 	
-	private void createConceptualModelPage(Project project) throws Exception
+	private void createConceptualModelPage(ViewData viewData) throws Exception
 	{
-		ViewData viewData = project.getViewData(getDiagramView().cardName());
 		CommandSetObjectData setCurrentDiagramToInvalid = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, ORef.INVALID);
-		project.executeCommand(setCurrentDiagramToInvalid);
+		getProject().executeCommand(setCurrentDiagramToInvalid);
 		
 		CommandCreateObject createConceptualModel = new CommandCreateObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		project.executeCommand(createConceptualModel);
+		getProject().executeCommand(createConceptualModel);
 		
-		DiagramObject diagramObject = (DiagramObject) project.findObject(createConceptualModel.getObjectRef());
-		CommandSetObjectData setLabel = new CommandSetObjectData(diagramObject.getRef(), DiagramObject.TAG_LABEL, getConceptualModelPageName(project, diagramObject));
-		project.executeCommand(setLabel);
+		DiagramObject diagramObject = (DiagramObject) getProject().findObject(createConceptualModel.getObjectRef());
+		CommandSetObjectData setLabel = new CommandSetObjectData(diagramObject.getRef(), DiagramObject.TAG_LABEL, getConceptualModelPageName(getProject(), diagramObject));
+		getProject().executeCommand(setLabel);
 		
 		CommandSetObjectData setCurrentDiagram = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, createConceptualModel.getObjectRef());
-		project.executeCommand(setCurrentDiagram);
+		getProject().executeCommand(setCurrentDiagram);
 	}
 
 	private String getConceptualModelPageName(Project project, DiagramObject diagramObject)
