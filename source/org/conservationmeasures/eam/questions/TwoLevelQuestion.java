@@ -22,15 +22,15 @@ public class TwoLevelQuestion extends ChoiceQuestion
 		try 
 		{
 			Vector chocies = new Vector();
-			TwoLevelEntry[] taxonomyItems = TwoLevelFileLoader.load(fileName);
+			TwoLevelEntry[] twoLevelEntry = TwoLevelFileLoader.load(fileName);
 
-			for (int i=0; i<taxonomyItems.length; ++i)
+			for (int i=0; i<twoLevelEntry.length; ++i)
 			{
 
 				ChoiceItem choice = new ChoiceItem(
-						taxonomyItems[i].getTaxonomyCode(), 
-						taxonomyItems[i].getTaxonomyDescription());
-				choice.setSelectable(taxonomyItems[i].isLeaf());
+						twoLevelEntry[i].getTaxonomyCode(), 
+						twoLevelEntry[i].getTaxonomyDescription());
+				choice.setSelectable(twoLevelEntry[i].isLeaf());
 				chocies.add(choice);
 			}
 			
