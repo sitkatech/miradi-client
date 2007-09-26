@@ -10,13 +10,13 @@ public class TwoLevelEntry
 	
 	public TwoLevelEntry(String code, String description)
 	{
-		taxonomyCode = code;
+		entryCode = code;
 		taxonomyDescription = description;
 	}
 
 	public String getEntryCode()
 	{
-		return taxonomyCode;
+		return entryCode;
 	}
 
 	public String getEntryDescription()
@@ -34,18 +34,18 @@ public class TwoLevelEntry
 	{
 		if(isEmptyItem())
 			return true;
-		if(taxonomyCode.indexOf(".") >= 0)
+		if(entryCode.indexOf(".") >= 0)
 			return true;
 		return false;
 	}
 
 	private boolean isEmptyItem()
 	{
-		return taxonomyCode.length()==0;
+		return entryCode.length()==0;
 	}
 
 	
-	String taxonomyCode;
+	String entryCode;
 	String taxonomyDescription;
 	
 }
