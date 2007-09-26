@@ -4,6 +4,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
@@ -24,6 +26,15 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 			children.add(new PlanningTreeObjectiveNode(project, refToAdd));
 			wasAdded = true;
 		}
+		
+		Target target = (Target)goal.getDirectOrIndirectOwningFactor();
+		ORefList indicators = new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators());
+		if(indicators.contains(refToAdd))
+		{
+			children.add(new PlanningTreeIndicatorNode(project, refToAdd));
+			wasAdded = true;
+		}
+		
 		
 		return wasAdded;
 	}

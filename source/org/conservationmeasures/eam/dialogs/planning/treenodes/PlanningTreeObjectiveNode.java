@@ -25,8 +25,6 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 			wasAdded = true;
 		}
 
-		// FIXME: For some reason, this is not returning indicators that 
-		// are attached to KEA's in Targets using detailed viability method
 		ORefList indicators = objective.getUpstreamIndicators();
 		if(indicators.contains(refToAdd))
 		{
