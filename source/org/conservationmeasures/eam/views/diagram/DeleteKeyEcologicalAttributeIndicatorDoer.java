@@ -51,7 +51,7 @@ public class DeleteKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 		try
 		{
 			Command[] commands = createDeleteCommands(project, selectedIndicatorNode); 
-			project.executeCommands(commands);
+			project.executeCommandsWithoutTransaction(commands);
 		}
 		catch(Exception e)
 		{

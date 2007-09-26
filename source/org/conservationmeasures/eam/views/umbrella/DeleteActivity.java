@@ -79,7 +79,7 @@ public class DeleteActivity extends ObjectsDoer
 	
 	private static void executeDeleteCommands(Project project, Command[] commands) throws ParseException, CommandFailedException
 	{
-		project.executeCommands(commands);
+		project.executeCommandsWithoutTransaction(commands);
 	}
 
 	private static Command[] createDeleteCommands(Project project, Task task) throws Exception

@@ -52,7 +52,7 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 			selectOtherConfiguration(configurationRef);
 			
 			PlanningViewConfiguration configuration = (PlanningViewConfiguration) getProject().findObject(configurationRef);
-			getProject().executeCommands(configuration.createCommandsToClear());
+			getProject().executeCommandsWithoutTransaction(configuration.createCommandsToClear());
 			
 			CommandDeleteObject deleteConfiguration = new CommandDeleteObject(configurationRef);
 			getProject().executeCommand(deleteConfiguration);

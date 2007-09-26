@@ -46,7 +46,7 @@ public class DeleteFundingSourceDoer extends ObjectsDoer
 			{
 				int type = resource.getType();
 				BaseId id = idToRemove;
-				getProject().executeCommands(resource.createCommandsToClear());
+				getProject().executeCommandsWithoutTransaction(resource.createCommandsToClear());
 				getProject().executeCommand(new CommandDeleteObject(type, id));
 			}
 			finally

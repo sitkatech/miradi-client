@@ -54,10 +54,10 @@ public class DeleteResource extends ObjectsDoer
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				project.executeCommands(getClearAssignmentResourcesCommands(allThatUseThisResource));
+				project.executeCommandsWithoutTransaction(getClearAssignmentResourcesCommands(allThatUseThisResource));
 				int type = resource.getType();
 				BaseId id = idToRemove;
-				project.executeCommands(resource.createCommandsToClear());
+				project.executeCommandsWithoutTransaction(resource.createCommandsToClear());
 				project.executeCommand(new CommandDeleteObject(type, id));
 			}
 			finally

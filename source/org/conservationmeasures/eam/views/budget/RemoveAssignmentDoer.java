@@ -64,7 +64,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		Command deleteCommand = new CommandDeleteObject(ObjectType.ASSIGNMENT, assignmentToRemove.getId());
 		commands.add(deleteCommand);
 		
-		project.executeCommands((Command[])commands.toArray(new Command[0]));
+		project.executeCommandsWithoutTransaction((Command[])commands.toArray(new Command[0]));
 	}
 
 	private static Command getCommandsToRemoveAssignmenRefFromTask(Project project, Assignment assignmentToRemove) throws ParseException

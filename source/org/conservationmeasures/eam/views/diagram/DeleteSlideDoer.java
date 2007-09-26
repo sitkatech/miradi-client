@@ -50,7 +50,7 @@ public class DeleteSlideDoer extends ObjectsDoer
 		{
 			BaseObject slideShow = getDiagramView().getSlideShow();
 			getProject().executeCommand(CommandSetObjectData.createRemoveORefCommand(slideShow, SlideShow.TAG_SLIDE_REFS, slide.getRef()));
-			getProject().executeCommands(slide.createCommandsToClear());
+			getProject().executeCommandsWithoutTransaction(slide.createCommandsToClear());
 			getProject().executeCommand(new CommandDeleteObject(slide.getRef()));
 		}
 		catch(Exception e)
