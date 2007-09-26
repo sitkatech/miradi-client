@@ -661,7 +661,7 @@ public class Project
 		}
 	}
 	
-	public void executeCommands(Command[] commands) throws CommandFailedException
+	public void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
 	{
 		for(int i = 0; i < commands.length; ++i)
 			executeCommand(commands[i]);
@@ -672,7 +672,7 @@ public class Project
 		executeCommand(new CommandBeginTransaction());
 		try
 		{
-			executeCommands(commands);
+			executeCommandsWithoutTransaction(commands);
 		}
 		finally
 		{

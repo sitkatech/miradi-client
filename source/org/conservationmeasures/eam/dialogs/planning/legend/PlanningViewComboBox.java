@@ -53,7 +53,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			getProject().executeCommands((Command[])commands.toArray(new Command[0]));
+			getProject().executeCommandsWithoutTransaction((Command[])commands.toArray(new Command[0]));
 		}
 		finally
 		{

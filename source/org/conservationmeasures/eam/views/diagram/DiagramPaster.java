@@ -115,7 +115,7 @@ public class DiagramPaster
 	private void fixupRefs(BaseObject newObject) throws Exception
 	{
 		Command[] commandsToFixRefs = createCommandToFixupRefLists(newObject);
-		getProject().executeCommands(commandsToFixRefs);
+		getProject().executeCommandsWithoutTransaction(commandsToFixRefs);
 	}
 	
 	public Command[] createCommandToFixupRefLists(BaseObject newObject) throws Exception
@@ -203,7 +203,7 @@ public class DiagramPaster
 	private void loadNewObjectFromOldJson(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
 	{
 		Command[] commandsToLoadFromJson = newObject.createCommandsToLoadFromJson(json);
-		getProject().executeCommands(commandsToLoadFromJson);
+		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 	}
 	
 	private BaseObject createObject(int type) throws Exception
@@ -242,7 +242,7 @@ public class DiagramPaster
 			ORef newDiagramFactorRef = createDiagramFactor(oldWrappedRef, newWrappedRef);
 			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
 			Command[]  commandsToLoadFromJson = newDiagramFactor.loadDataFromJson(json);
-			getProject().executeCommands(commandsToLoadFromJson);
+			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 
 			addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 			
@@ -350,7 +350,7 @@ public class DiagramPaster
 			FactorLink newFactorLink = (FactorLink) createObject(type, extraInfo);
 			
 			Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
-			getProject().executeCommands(commandsToLoadFromJson);
+			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 			
 			oldToNewFactorLinkRefMap.put(new ORef(type, oldFactorLinkId), newFactorLink.getRef());
 		}
@@ -422,7 +422,7 @@ public class DiagramPaster
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
-			getProject().executeCommands(commandsToLoadFromJson);
+			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 	
 			ORef newDiagramLinkRef = newDiagramLink.getRef();
 			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);

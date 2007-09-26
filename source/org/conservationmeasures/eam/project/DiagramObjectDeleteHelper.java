@@ -58,7 +58,7 @@ public class DiagramObjectDeleteHelper
 	private void clearObject(DiagramObject diagramObject) throws CommandFailedException
 	{
 		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
-		project.executeCommands(commands);
+		project.executeCommandsWithoutTransaction(commands);
 	}
 	
 	private void deleteAllSlideReferences(DiagramObject diagramObject) throws Exception
@@ -109,7 +109,7 @@ public class DiagramObjectDeleteHelper
 		project.executeCommand(removeFactorLinkFromChain);
 	
 		Command[] commandsToClear = diagramLink.createCommandsToClear();
-		project.executeCommands(commandsToClear);
+		project.executeCommandsWithoutTransaction(commandsToClear);
 		
 		CommandDeleteObject deleteDiagramLink = new CommandDeleteObject(diagramLink.getRef());
 		project.executeCommand(deleteDiagramLink);
@@ -122,7 +122,7 @@ public class DiagramObjectDeleteHelper
 			return;
 		
 		Command[] commandsToClearFactorLink = factorLink.createCommandsToClear();
-		project.executeCommands(commandsToClearFactorLink);
+		project.executeCommandsWithoutTransaction(commandsToClearFactorLink);
 		
 		CommandDeleteObject deleteFactorLink = new CommandDeleteObject(factorLink.getRef());
 		project.executeCommand(deleteFactorLink);

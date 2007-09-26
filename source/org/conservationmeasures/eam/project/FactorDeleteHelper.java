@@ -145,7 +145,7 @@ public class FactorDeleteHelper
 	private void deleteDiagramFactor(DiagramFactor diagramFactor) throws CommandFailedException
 	{
 		Command[] commandsToClear = diagramFactor.createCommandsToClear();
-		getProject().executeCommands(commandsToClear);
+		getProject().executeCommandsWithoutTransaction(commandsToClear);
 		
 		CommandDeleteObject deleteDiagramFactorCommand = new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactor.getDiagramFactorId());
 		getProject().executeCommand(deleteDiagramFactorCommand);
@@ -169,7 +169,7 @@ public class FactorDeleteHelper
 	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException
 	{
 		Command[] commandsToClear = factorToDelete.createCommandsToClear();
-		getProject().executeCommands(commandsToClear);
+		getProject().executeCommandsWithoutTransaction(commandsToClear);
 		getProject().executeCommand(new CommandDeleteObject(factorToDelete.getType(), factorToDelete.getFactorId()));
 	}
 	
@@ -196,7 +196,7 @@ public class FactorDeleteHelper
 		{
 			BaseObject thisAnnotation = getProject().findObject(annotationType, ids.get(annotationIndex));
 			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
-			getProject().executeCommands(commands);
+			getProject().executeCommandsWithoutTransaction(commands);
 		}
 	}
 	
@@ -217,7 +217,7 @@ public class FactorDeleteHelper
 		{
 			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)getProject().findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, ids.get(annotationIndex));
 			Command[] commands = DeleteKeyEcologicalAttributeDoer.buildCommandsToDeleteAnnotation(getProject(), objectToDelete, annotationListTag, kea);
-			getProject().executeCommands(commands);
+			getProject().executeCommandsWithoutTransaction(commands);
 		}
 	}
 	

@@ -68,7 +68,7 @@ public class LinkDeletor
 		project.executeCommand(removeDiagramFactorLink);
 
 		Command[] commandsToClearDiagramLink = diagramLink.createCommandsToClear();
-		project.executeCommands(commandsToClearDiagramLink);
+		project.executeCommandsWithoutTransaction(commandsToClearDiagramLink);
 
 		CommandDeleteObject removeFactorLinkCommand = new CommandDeleteObject(ObjectType.DIAGRAM_LINK, diagramLink.getDiagramLinkageId());
 		project.executeCommand(removeFactorLinkCommand);
@@ -83,7 +83,7 @@ public class LinkDeletor
 			return;
 		
 		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, factorLink.getId()).createCommandsToClear();
-		project.executeCommands(commandsToClear);
+		project.executeCommandsWithoutTransaction(commandsToClear);
 		
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, factorLink.getId());
 		project.executeCommand(deleteLinkage);
