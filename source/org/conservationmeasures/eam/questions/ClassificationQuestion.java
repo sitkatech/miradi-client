@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.questions;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 
 public abstract class ClassificationQuestion extends ChoiceQuestion
 {
