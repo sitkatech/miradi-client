@@ -77,9 +77,6 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	
 	private Vector getRadioSaveCommands() throws Exception
 	{
-		if (! comboBoxNeedsSave())
-			return new Vector();
-		
 		Vector radioSaveCommands = new Vector();
 		ViewData viewData = getProject().getCurrentViewData();
 		String existingStyleChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
