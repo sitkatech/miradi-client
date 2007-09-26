@@ -14,10 +14,10 @@ public class TwoLevelQuestion extends ChoiceQuestion
 {
 	public TwoLevelQuestion(String tagToUse, String labelToUse,	String fileNameToUse)
 	{
-		super(tagToUse, labelToUse, getImpactChoices(fileNameToUse));
+		super(tagToUse, labelToUse, getTwoLevelChoices(fileNameToUse));
 	}
 	
-	private static ChoiceItem[] getImpactChoices(String fileName)
+	private static ChoiceItem[] getTwoLevelChoices(String fileName)
 	{
 		try 
 		{
