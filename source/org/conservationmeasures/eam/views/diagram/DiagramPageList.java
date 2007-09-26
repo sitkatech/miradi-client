@@ -13,8 +13,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ObjectPoolTable;
 import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
@@ -112,15 +110,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 			if (commandsToExecute.size() == 0)
 				return;
 			
-			project.executeCommand(new CommandBeginTransaction());
-			try
-			{
-				project.executeCommands((Command[]) commandsToExecute.toArray(new Command[0]));
-			}
-			finally
-			{
-				project.executeCommand(new CommandEndTransaction());
-			}
+			project.executeCommands((Command[]) commandsToExecute.toArray(new Command[0]));		
 		}
 
 		private Vector ensureDefaultMode() throws Exception
