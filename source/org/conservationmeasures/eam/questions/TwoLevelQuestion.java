@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.questions;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class TwoLevelQuestion extends ChoiceQuestion
 {
@@ -22,7 +22,7 @@ public class TwoLevelQuestion extends ChoiceQuestion
 		try 
 		{
 			Vector chocies = new Vector();
-			TwoLevelEntry[] taxonomyItems = TaxonomyLoader.load(fileName);
+			TwoLevelEntry[] taxonomyItems = TwoLevelFileLoader.load(fileName);
 
 			for (int i=0; i<taxonomyItems.length; ++i)
 			{
