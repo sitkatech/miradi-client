@@ -452,17 +452,20 @@ public class Project
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
 		createDefaultConceptualModel();
-		createDefaultPlanningCustomization();
+		createSelectedDefaultPlanningCustomization();
 		selectPlanningViewStrategicRadioButton();
 	}
 
-	private void createDefaultPlanningCustomization() throws Exception
+	private void createSelectedDefaultPlanningCustomization() throws Exception
 	{
 		if(getPlanningViewConfigurationPool().getORefList().size() > 0)
 			return;
 		
 		ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
 		setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewConfigurationDoer.getConfigurationDefaultLabel(this));
+		
+		ViewData planningViewData = getViewData(PlanningView.getViewName());
+		setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, createPlanningConfiguration.toString());
 	}
 
 	private void createDefaultConceptualModel() throws Exception
@@ -490,7 +493,7 @@ public class Project
 		
 		setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
 	}
-
+	
 	private void openProject(File projectDirectory) throws Exception
 	{
 		if(getDatabase().readDataVersion(projectDirectory) > ProjectServer.DATA_VERSION)
