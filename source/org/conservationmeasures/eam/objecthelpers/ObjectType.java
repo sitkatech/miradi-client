@@ -36,7 +36,8 @@ public class ObjectType
 	public static final int SLIDE = 27;
 	public static final int SLIDESHOW = 28;
 	public static final int PLANNING_VIEW_CONFIGURATION = 29;
+	public static final int WWF_PROJECT_DATA = 30;
 	
-	public static final int OBJECT_TYPE_COUNT = 30;
+	public static final int OBJECT_TYPE_COUNT = 31;	
 }
 
