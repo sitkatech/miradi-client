@@ -42,7 +42,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		getObjectPoolTableModel().rowsWereAddedOrRemoved();
 	}
 
-	private Vector setViewDataCurrentDiagramObjectRef(ORef selectedRef) throws Exception
+	private Vector buildCommandsToSetCurrentDiagramObjectRef(ORef selectedRef) throws Exception
 	{
 		ORef currentDiagramRef = getCurrentDiagramViewDataRef();
 		if (currentDiagramRef.equals(selectedRef))
@@ -108,7 +108,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 			Vector commandsToExecute = new Vector();
 			commandsToExecute.addAll(ensureDefaultMode());
 			ORef selectedRef = getSelectedRef();
-			commandsToExecute.addAll(setViewDataCurrentDiagramObjectRef(selectedRef));
+			commandsToExecute.addAll(buildCommandsToSetCurrentDiagramObjectRef(selectedRef));
 			
 			if (commandsToExecute.size() == 0)
 				return;
