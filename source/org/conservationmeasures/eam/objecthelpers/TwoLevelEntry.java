@@ -14,19 +14,19 @@ public class TwoLevelEntry
 		taxonomyDescription = description;
 	}
 
-	public String getTaxonomyCode()
+	public String getEntryCode()
 	{
 		return taxonomyCode;
 	}
 
-	public String getTaxonomyDescription()
+	public String getEntryDescription()
 	{
 		return taxonomyDescription;
 	}
 
 	public String toString()
 	{
-		return getTaxonomyDescription();
+		return getEntryDescription();
 
 	}
 	
