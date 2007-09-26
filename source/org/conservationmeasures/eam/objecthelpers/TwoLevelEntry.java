@@ -27,7 +27,6 @@ public class TwoLevelEntry
 	public String toString()
 	{
 		return getEntryDescription();
-
 	}
 	
 	public boolean isLeaf() 
@@ -44,8 +43,6 @@ public class TwoLevelEntry
 		return entryCode.length()==0;
 	}
 
-	
-	String entryCode;
-	String entryDescription;
-	
+	private String entryCode;
+	private String entryDescription;
 }
