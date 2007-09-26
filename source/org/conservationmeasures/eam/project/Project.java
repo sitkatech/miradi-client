@@ -72,6 +72,7 @@ import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.DiagramPageList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
+import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.planning.doers.CreatePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 
@@ -446,11 +447,13 @@ public class Project
 		os.close();
 	}
 	
+	//TODO rename method to reflect what happing, create and selection change
 	private void createDefaultObjectsIfNeeded() throws Exception
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
 		createDefaultConceptualModel();
 		createDefaultPlanningCustomization();
+		selectPlanningViewStrategicRadioButton();
 	}
 
 	private void createDefaultPlanningCustomization() throws Exception
@@ -477,6 +480,15 @@ public class Project
 		BaseId createdId = createObjectAndReturnId(ObjectType.PROJECT_METADATA);
 		projectInfo.setMetadataId(createdId);
 		getDatabase().writeProjectInfo(projectInfo);
+	}
+	
+	private void selectPlanningViewStrategicRadioButton() throws Exception
+	{
+		ViewData planningViewData = getViewData(PlanningView.getViewName());
+		if (!planningViewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).equals(""))
+			return;
+		
+		setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
 	}
 
 	private void openProject(File projectDirectory) throws Exception
