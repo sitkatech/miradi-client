@@ -24,13 +24,13 @@ import javax.swing.tree.TreeSelectionModel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.ConceptualModelIcon;
-import org.conservationmeasures.eam.icons.FactorIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ResultsChainIcon;
+import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.icons.TaskIcon;
 import org.conservationmeasures.eam.main.EAM;
@@ -101,6 +101,12 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			targetRenderer.setOpenIcon(new TargetIcon());
 			targetRenderer.setLeafIcon(new TargetIcon());
 			targetRenderer.setFont(getBoldFont());
+
+			strategyRenderer = new DefaultTreeCellRenderer();
+			strategyRenderer.setClosedIcon(new StrategyIcon());
+			strategyRenderer.setOpenIcon(new StrategyIcon());
+			strategyRenderer.setLeafIcon(new StrategyIcon());
+			strategyRenderer.setFont(getPlainFont());
 
 			objectiveRenderer = new DefaultTreeCellRenderer();
 			objectiveRenderer.setClosedIcon(new ObjectiveIcon());
@@ -207,14 +213,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 
 		protected DefaultTreeCellRenderer getStrategyRenderer(Factor factor)
 		{
-			DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
-			FactorIcon factorIcon = new FactorIcon(factor);
-
-			renderer.setClosedIcon(factorIcon);
-			renderer.setOpenIcon(factorIcon);
-			renderer.setLeafIcon(factorIcon);
-			
-			return renderer;
+			return strategyRenderer;
 		}
 		
 		public static Font getBoldFont()
@@ -235,6 +234,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		}
 
 		DefaultTreeCellRenderer targetRenderer;
+		DefaultTreeCellRenderer strategyRenderer;
 		DefaultTreeCellRenderer objectiveRenderer;
 		DefaultTreeCellRenderer goalRenderer;
 		DefaultTreeCellRenderer indicatorRenderer;
