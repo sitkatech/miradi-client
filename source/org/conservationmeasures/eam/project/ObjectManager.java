@@ -52,6 +52,7 @@ import org.conservationmeasures.eam.objectpools.TextBoxPool;
 import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objectpools.WwfProjectDataPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
@@ -103,6 +104,7 @@ public class ObjectManager
 		addNormalPool(new SlidePool(ida));
 		addNormalPool(new SlideShowPool(ida));
 		addNormalPool(new PlanningViewConfigurationPool(ida));
+		addNormalPool(new WwfProjectDataPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -367,6 +369,7 @@ public class ObjectManager
 		loadPool(ObjectType.SLIDE);
 		loadPool(ObjectType.SLIDESHOW);
 		loadPool(ObjectType.PLANNING_VIEW_CONFIGURATION);
+		loadPool(ObjectType.WWF_PROJECT_DATA);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
