@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.questions;
 
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 
-public class ThreatClassificationQuestion  extends ClassificationQuestion
+public class ThreatClassificationQuestion  extends TaxonomyClassificationQuestion
 {
 	public ThreatClassificationQuestion(String tag)
 	{

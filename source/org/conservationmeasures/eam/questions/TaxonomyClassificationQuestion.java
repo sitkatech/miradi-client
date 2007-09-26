@@ -10,9 +10,9 @@ import java.util.Vector;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 
-public abstract class ClassificationQuestion extends ChoiceQuestion
+public abstract class TaxonomyClassificationQuestion extends ChoiceQuestion
 {
-	public ClassificationQuestion(String tag, String fileName)
+	public TaxonomyClassificationQuestion(String tag, String fileName)
 	{
 		super(tag, "Taxonomy Classifications", getImpactChoices(fileName));
 	}
