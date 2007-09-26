@@ -80,6 +80,7 @@ import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
 import org.conservationmeasures.eam.objects.TestThreatReductionResult;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
+import org.conservationmeasures.eam.objects.TestWwfProjectData;
 import org.conservationmeasures.eam.project.TestCausePool;
 import org.conservationmeasures.eam.project.TestChainManager;
 import org.conservationmeasures.eam.project.TestFactorDeleteHelper;
@@ -259,6 +260,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestSlideShow.class));
 		suite.addTest(new TestSuite(TestPlanningViewConfiguration.class));
 		suite.addTest(new TestSuite(TestDiagramObject.class));
+		suite.addTest(new TestSuite(TestWwfProjectData.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

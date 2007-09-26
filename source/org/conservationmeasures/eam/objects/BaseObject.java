@@ -236,6 +236,9 @@ abstract public class BaseObject
 			case ObjectType.PLANNING_VIEW_CONFIGURATION:
 				return new PlanningViewConfiguration(objectManager, idAsInt, json);
 				
+			case ObjectType.WWF_PROJECT_DATA:
+				return new WwfProjectData(objectManager, idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
