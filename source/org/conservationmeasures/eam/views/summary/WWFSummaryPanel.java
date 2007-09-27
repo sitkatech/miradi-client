@@ -25,7 +25,7 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME));
 		addField(createStringField(WwfProjectData.getObjectType(), WwfProjectData.TAG_RELATED_PROJECTS));
 		addField(createStringField(WwfProjectData.getObjectType(), WwfProjectData.TAG_PROJECT_NUMBER, 20));
-		addField(createMultiCodeField(new WwfManagingOfficesQuestion(WwfProjectData.TAG_MANAGING_OFFICES)));
+		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfManagingOfficesQuestion(WwfProjectData.TAG_MANAGING_OFFICES)));
 		
 		
 		setObjectRefs(new ORef[] {metaDataToUse.getRef(), getWwfProjectDataRef()});

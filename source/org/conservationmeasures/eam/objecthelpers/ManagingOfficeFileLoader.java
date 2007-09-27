@@ -20,8 +20,8 @@ public class ManagingOfficeFileLoader extends TwoLevelFileLoader
 		for (int i  = 0; i < fileVector.size(); ++i)
 		{
 			Vector row = (Vector) fileVector.get(i);
-			String officeName = (String) row.get(0);
-			String officeCode = (String) row.get(1);
+			String officeCode = (String) row.get(0);
+			String officeName = (String) row.get(3);
 		
 			entries.add(new TwoLevelEntry(officeCode, officeName));
 		}

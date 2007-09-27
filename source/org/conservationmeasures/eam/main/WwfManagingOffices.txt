@@ -1,11 +1,67 @@
-International Secretariat	Intl Secretariat
-CARPO, Cameroon	CARPO
-EARPO, Nairobi	EARPO
-Madagascar	Madagascar
-Nigeria: NCF - Nigerian Conservation Foundation	Nigeria
-SARPO, Zimbabwe	SARPO
-South Africa	South Africa
-Tanzania	Tanzania
-WARPO, Ghana	WARPO, Ghana
-WARPO, Senegal	WARPO, Senegal
-Australia	Australia
+F101	EM	Global	International Secretariat	Intl Secretariat
+F102	AM	Africa/Madagascar	CARPO, Cameroon	CARPO
+F103	AM	Africa/Madagascar	EARPO, Nairobi	EARPO
+F104	AM	Africa/Madagascar	Madagascar	Madagascar
+F105	AM	Africa/Madagascar	Nigeria: NCF - Nigerian Conservation Foundation	Nigeria
+F106	AM	Africa/Madagascar	SARPO, Zimbabwe	SARPO
+F107	AM	Africa/Madagascar	South Africa	South Africa
+F108	AM	Africa/Madagascar	Tanzania	Tanzania
+F109	AM	Africa/Madagascar	WARPO, Ghana	WARPO, Ghana
+F110	AM	Africa/Madagascar	WARPO, Senegal	WARPO, Senegal
+F111	AP	Asia Pacific	Australia	Australia
+F112	AP	Asia Pacific	Bhutan	Bhutan
+F113	AP	Asia Pacific	China	China
+F114	AP	Asia Pacific	Greater Mekong	Greater Mekong
+F115	AP	Asia Pacific	Hong Kong	Hong Kong
+F116	AP	Asia Pacific	India	India
+F117	AP	Asia Pacific	Indonesia	Indonesia
+F118	AP	Asia Pacific	Japan	Japan
+F119	AP	Asia Pacific	Malaysia	Malaysia
+F120	AP	Asia Pacific	Nepal	Nepal
+F121	AP	Asia Pacific	New Zealand	New Zealand
+F122	AP	Asia Pacific	Pakistan	Pakistan
+F123	AP	Asia Pacific	Philippines	Philippines
+F124	AP	Asia Pacific	South Pacific	South Pacific
+F125	EM	Europe	Austria	Austria
+F126	EM	Europe	Belgium	Belgium
+F127	EM	Europe	Caucasus	Caucasus
+F128	EM	Europe	Danube/Carpathian	Danube/Carpathian
+F129	EM	Europe	Denmark	Denmark
+F130	EM	Europe	EPO - European Policy Office	EPO
+F131	EM	Europe	Finland	Finland
+F132	EM	Europe	France	France
+F133	EM	Europe	Germany	Germany
+F134	EM	Europe	Greece	Greece
+F135	EM	Europe	Hungary	Hungary
+F136	EM	Europe	Italy	Italy
+F137	EM	Europe	Latvia: Pasaules Dabas Fonds	Latvia
+F138	EM	Europe	Mediterranean	Mediterranean
+F139	EM	Europe	Mongolia	Mongolia
+F140	EM	Europe	Netherlands	Netherlands
+F141	EM	Europe	Norway	Norway
+F142	EM	Europe	Poland	Poland
+F143	EM	Europe	Russia	Russia
+F144	EM	Europe	Spain	Spain
+F145	EM	Europe	Sweden	Sweden
+F146	EM	Europe	Switzerland	Switzerland
+F147	EM	Europe	Turkey	Turkey
+F148	EM	Europe	U.K.	U.K.
+F167	EM	Europe	United Arab Emirates	United Arab Emirates
+F149	LA	Latin America & Caribbean	Argentina: FVSA - Fundación Vida Silvestre Argentina	Argentina
+F150	LA	Latin America & Caribbean	Bolivia	Bolivia
+F151	LA	Latin America & Caribbean	Brazil	Brazil
+F152	LA	Latin America & Caribbean	Central America RPO, Costa Rica	Costa Rica
+F153	LA	Latin America & Caribbean	Chile	Chile
+F154	LA	Latin America & Caribbean	Colombia	Colombia
+F155	LA	Latin America & Caribbean	Ecuador: Fundación Natura	Ecuador
+F156	LA	Latin America & Caribbean	Ecuador-Galapagos	Ecuador-Galapagos
+F157	LA	Latin America & Caribbean	Guianas	Guianas
+F158	LA	Latin America & Caribbean	LAC Secretariat	LAC Secretariat
+F159	LA	Latin America & Caribbean	Mexico	Mexico
+F160	LA	Latin America & Caribbean	Paraguay	Paraguay
+F161	LA	Latin America & Caribbean	Peru	Peru
+F162	LA	Latin America & Caribbean	TRAFFIC-South America	TRAFFIC
+F163	LA	Latin America & Caribbean	Venezuela: FUDENA - Fundación Para la Defensa de la Naturaleza	Venezuela
+F164	NA	North America	Canada	Canada
+F165	NA	North America	MPO - Macroeconomics Policy Office	MPO
+F166	NA	North America	U.S.A.	U.S.A.
