@@ -10,19 +10,20 @@ import java.util.Vector;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
-public class TwoLevelQuestion extends ChoiceQuestion
+public class TwoLevelQuestion extends DynamicChoiceQuestion
 {
 	public TwoLevelQuestion(String tagToUse, String labelToUse,	TwoLevelFileLoader twoLevelFileLoaderToUse)
 	{
-		super(tagToUse, labelToUse, getTwoLevelChoices(twoLevelFileLoaderToUse));
+		super(tagToUse, labelToUse);
+		twoLevelFileLoader = twoLevelFileLoaderToUse;
 	}
 	
-	private static ChoiceItem[] getTwoLevelChoices(TwoLevelFileLoader twoLevelFileLoaderToUse)
+	public ChoiceItem[] getChoices()
 	{
 		try 
 		{
 			Vector chocies = new Vector();
-			TwoLevelEntry[] twoLevelEntry = twoLevelFileLoaderToUse.load();
+			TwoLevelEntry[] twoLevelEntry = twoLevelFileLoader.load();
 
 			for (int i = 0; i < twoLevelEntry.length; ++i)
 			{
@@ -35,7 +36,9 @@ public class TwoLevelQuestion extends ChoiceQuestion
 		}
 		catch (Exception e)
 		{
-			throw new RuntimeException("error processing two level entry inside:" + twoLevelFileLoaderToUse.getFileName());
+			throw new RuntimeException("error processing two level entry inside:" + twoLevelFileLoader.getFileName());
 		}
 	}
+	
+	private TwoLevelFileLoader twoLevelFileLoader;
 }
