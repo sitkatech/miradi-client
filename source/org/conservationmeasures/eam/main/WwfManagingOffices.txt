@@ -1,4 +1,3 @@
-#managing offices
 International Secretariat	Intl Secretariat
 CARPO, Cameroon	CARPO
 EARPO, Nairobi	EARPO
