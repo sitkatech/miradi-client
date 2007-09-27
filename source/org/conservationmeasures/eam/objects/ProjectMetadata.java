@@ -16,6 +16,8 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
+import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ProjectMetadata extends BaseObject
@@ -75,7 +77,7 @@ public class ProjectMetadata extends BaseObject
 	{
 		if(fieldTag.equals(PSEUDO_TAG_PROJECT_FILENAME))
 			return objectManager.getFileName();
-
+		
 		return super.getData(fieldTag);
 	}
 	
@@ -83,13 +85,40 @@ public class ProjectMetadata extends BaseObject
 	{
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_GOAL_REFS))
 			return getAllGoalRefs().toString();
+		
+		if (fieldTag.equals(PSEUDO_TAG_PROJECT_TEAM_MEMBERS))
+			return getTeamMemberRefs().toString();
 			
 		return super.getPseudoData(fieldTag);
 	}
-	
+
 	public ORefList getAllGoalRefs()
 	{
 		return objectManager.getGoalPool().getORefList();
+	}
+		
+	private ORefList getTeamMemberRefs()
+	{
+		ORefList teamMembers = new ORefList();
+		try
+		{
+			ProjectResource[] projectResources = getProject().getAllProjectResources();
+			for (int i = 0; i < projectResources.length; ++i)
+			{
+				CodeList codeRoles = projectResources[i].getCodeList(ProjectResource.TAG_ROLE_CODES);
+				if (!codeRoles.contains(ResourceRoleQuestion.TeamMemberRoleCode))
+					continue;
+				
+				teamMembers.add(projectResources[i].getRef());
+			}
+		}
+		catch (Exception e)
+		{
+			//FIXME is this what we want here
+			throw new RuntimeException();
+		}
+
+		return teamMembers;
 	}
 	
 	public ORefList getAllDiagramObjectRefs()
@@ -210,11 +239,13 @@ public class ProjectMetadata extends BaseObject
 		diagramFontFamily = new StringData();
 		diagramFontSizeValue = new PseudoQuestionData(new FontSizeQuestion(TAG_DIAGRAM_FONT_SIZE));
 		diagramFontFamilyValue = new PseudoQuestionData(new FontFamiliyQuestion(TAG_DIAGRAM_FONT_FAMILY));
+		projectTeamMembers = new PseudoORefListData(PSEUDO_TAG_PROJECT_TEAM_MEMBERS);
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
 		addField(PSEUDO_TAG_DIAGRAM_FONT_FAMILY, diagramFontFamilyValue);
 		addField(PSEUDO_TAG_DIAGRAM_FONT_SIZE, diagramFontSizeValue);
+		addField(PSEUDO_TAG_PROJECT_TEAM_MEMBERS, projectTeamMembers);
 	}
 
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
@@ -251,6 +282,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamilyValue";
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
 	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
+	public static final String PSEUDO_TAG_PROJECT_TEAM_MEMBERS = "PseudoTagProjectTeamMembers";
 
 	static final String OBJECT_NAME = "ProjectMetadata";
 
@@ -286,4 +318,5 @@ public class ProjectMetadata extends BaseObject
 	
 	PseudoQuestionData diagramFontFamilyValue;
 	PseudoQuestionData diagramFontSizeValue;
+	private PseudoORefListData projectTeamMembers;
 }
