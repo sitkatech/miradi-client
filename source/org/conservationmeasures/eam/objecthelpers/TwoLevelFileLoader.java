@@ -60,4 +60,5 @@ abstract public class TwoLevelFileLoader
 	public final static String THREAT_TAXONOMIES_FILE = "ThreatTaxonomies.txt";
 	public final static String WWF_MANAGING_OFFICES_FILE = "WwfManagingOffices.txt";
 	public final static String WWF_REGIONS_FILE = "WwfRegions.txt";
+	public final static String WWF_COUNTRIES_FILE = "WwfCountries.txt";
 }
