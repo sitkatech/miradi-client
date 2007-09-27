@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -60,7 +61,7 @@ public class WwfProjectData extends BaseObject
 		
 		relatedProjects = new StringData();
 		projectNumber = new StringData();
-		managingOffices = new StringData();
+		managingOffices = new CodeListData();
 		
 		addField(TAG_RELATED_PROJECTS, relatedProjects);
 		addField(TAG_PROJECT_NUMBER, projectNumber);
@@ -75,5 +76,5 @@ public class WwfProjectData extends BaseObject
 	
 	private StringData relatedProjects;
 	private StringData projectNumber;
-	private StringData managingOffices;
+	private CodeListData managingOffices;
 }
