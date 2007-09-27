@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.WwfProjectData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.WwfEcoRegionsQuestion;
 import org.conservationmeasures.eam.questions.WwfCountriesQuestion;
+import org.conservationmeasures.eam.questions.WwfLinkToGlobalTargetsQuestion;
 import org.conservationmeasures.eam.questions.WwfManagingOfficesQuestion;
 import org.conservationmeasures.eam.questions.WwfRegionsQuestion;
 
@@ -33,6 +34,7 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfRegionsQuestion(WwfProjectData.TAG_REGIONS)));
 		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfCountriesQuestion(WwfProjectData.TAG_COUNTRIES)));
 		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfEcoRegionsQuestion(WwfProjectData.TAG_ECOREGIONS)));
+		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfLinkToGlobalTargetsQuestion(WwfProjectData.TAG_LINK_TO_GLOBAL_TARGETS)));
 		
 		
 		setObjectRefs(new ORef[] {metaDataToUse.getRef(), getWwfProjectDataRef()});
