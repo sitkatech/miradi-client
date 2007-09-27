@@ -13,38 +13,38 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
-public class TestTaxonomyLoader extends EAMTestCase
+public class TestLevelLevelFileLoader extends EAMTestCase
 {
 
-	public TestTaxonomyLoader(String name)
+	public TestLevelLevelFileLoader(String name)
 	{
 		super(name);
 	}
 
 	public void testNoDataReturnsDefautSelection() throws Exception
 	{
-		TwoLevelEntry[] taxonomyItem = loadDelimitedData(new StringReader(""));
-		assertEquals(1, taxonomyItem.length);
+		TwoLevelEntry[] twoLevelItem = loadDelimitedData(new StringReader(""));
+		assertEquals(1, twoLevelItem.length);
 	}
 
 	public void testOne() throws Exception
 	{
-		TwoLevelEntry[] taxonomyItem = loadDelimitedData(new StringReader(" # \t \"header\" \t \"xxxx\" \n" +
+		TwoLevelEntry[] twoLevelItem = loadDelimitedData(new StringReader(" # \t \"header\" \t \"xxxx\" \n" +
 				" H10.10 \t \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" "));
-		assertEquals(3, taxonomyItem.length);
-		assertEquals("--Select a classification--", taxonomyItem[0].getEntryDescription());
-		assertEquals("H10", taxonomyItem[1].getEntryCode());		
-		assertEquals(true, taxonomyItem[1].getEntryDescription().endsWith("my level 1 descriptor"));
-		assertEquals("H10.10", taxonomyItem[2].getEntryCode());
-		assertEquals(true, taxonomyItem[2].getEntryDescription().endsWith("my level 2 descriptor"));
+		assertEquals(3, twoLevelItem.length);
+		assertEquals("--Select a classification--", twoLevelItem[0].getEntryDescription());
+		assertEquals("H10", twoLevelItem[1].getEntryCode());		
+		assertEquals(true, twoLevelItem[1].getEntryDescription().endsWith("my level 1 descriptor"));
+		assertEquals("H10.10", twoLevelItem[2].getEntryCode());
+		assertEquals(true, twoLevelItem[2].getEntryDescription().endsWith("my level 2 descriptor"));
 	}
 	
 
 	private TwoLevelEntry[] loadDelimitedData(StringReader stringReader) throws Exception
 	{
 		BufferedReader reader = new BufferedReader( stringReader );
-		TwoLevelEntry[] taxonomyItem = TwoLevelFileLoader.load(reader);
-		return taxonomyItem;
+		TwoLevelEntry[] twoLevelItem = TwoLevelFileLoader.load(reader);
+		return twoLevelItem;
 	}
 
 
