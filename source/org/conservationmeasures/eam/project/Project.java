@@ -504,6 +504,9 @@ public class Project
 	
 	private void createDefaultWwfProjectDataObject() throws Exception
 	{
+		if (getWwfProjectDataPool().getORefList().size() > 0)
+			return;
+		
 		createObject(WwfProjectData.getObjectType());
 	}
 	
