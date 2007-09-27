@@ -15,17 +15,22 @@ import java.util.Vector;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.DelimitedFileLoader;
 
-public class TwoLevelFileLoader
+abstract public class TwoLevelFileLoader
 {
-	public TwoLevelEntry[] load(String resourceFileName) throws Exception
+	public TwoLevelFileLoader(String fileNameToUse)
 	{
-		if (tablePreLoad.contains(resourceFileName))
-			return (TwoLevelEntry[])tablePreLoad.get(resourceFileName);
+		fileName = fileNameToUse;
+	}
+	
+	public TwoLevelEntry[] load() throws Exception
+	{
+		if (tablePreLoad.contains(fileName))
+			return (TwoLevelEntry[])tablePreLoad.get(fileName);
 		
-		InputStream is = EAM.class.getResourceAsStream(resourceFileName);
+		InputStream is = EAM.class.getResourceAsStream(fileName);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 		TwoLevelEntry[] table = getTaxomonies(reader);
-		tablePreLoad.put(resourceFileName, table);
+		tablePreLoad.put(fileName, table);
 		reader.close();
 		return table;
 	}
@@ -42,44 +47,15 @@ public class TwoLevelFileLoader
 		return (TwoLevelEntry[]) taxonomyItems.toArray(new TwoLevelEntry[0]);
 	}
 	
-	private Vector processVector(Vector fileVector)
+	public String getFileName()
 	{
-		Vector taxonomyItems = new Vector();
-		taxonomyItems.add(new TwoLevelEntry("", EAM.text("--Select a classification--")));
-
-		String prevLevel1Code = "";
-		int level1Index = 0;
-		int level2Index = 0;
-		int firstNonHeaderRow = 1;
-		for(int i = firstNonHeaderRow; i < fileVector.size(); ++i)
-		{
-			Vector row = (Vector) fileVector.get(i);
-			String code = (String) row.get(0);
-			String level1Descriptor = (String) row.get(1);
-			String level2Descriptor = (String) row.get(2);
-
-			if(!getLevel1Code(code).equals(prevLevel1Code))
-			{
-				level2Index = 0;
-				String taxonomyLevelText = ++level1Index + "   "+ level1Descriptor;
-				taxonomyItems.add(new TwoLevelEntry(getLevel1Code(code), taxonomyLevelText));
-			}
-			
-			++level2Index;
-			String taxonomyLevel2Text = "    " + level1Index + "." + level2Index + "    " + level2Descriptor;
-			taxonomyItems.add(new TwoLevelEntry(code, taxonomyLevel2Text));
-
-			prevLevel1Code = getLevel1Code(code);
-		}
-		return taxonomyItems;
-	}
-
-	private String getLevel1Code(String code)
-	{
-		return code.substring(0, code.indexOf("."));
+		return null;
 	}
 	
-	private static Hashtable tablePreLoad = new Hashtable();
+	abstract protected Vector processVector(Vector fileVector);
+
+	private String fileName;
+	private Hashtable tablePreLoad = new Hashtable();
 	public final static String STRATEGY_TAXONOMIES_FILE = "StrategyTaxonomies.txt";
 	public final static String THREAT_TAXONOMIES_FILE = "ThreatTaxonomies.txt";
 	public final static String WWF_MANAGING_OFFICES_FILE = "WwfManagingOffices.txt";
