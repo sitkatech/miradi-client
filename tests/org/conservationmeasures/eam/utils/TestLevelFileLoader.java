@@ -13,10 +13,10 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyFileLoader;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
 
-public class TestLevelLevelFileLoader extends EAMTestCase
+public class TestLevelFileLoader extends EAMTestCase
 {
 
-	public TestLevelLevelFileLoader(String name)
+	public TestLevelFileLoader(String name)
 	{
 		super(name);
 	}
