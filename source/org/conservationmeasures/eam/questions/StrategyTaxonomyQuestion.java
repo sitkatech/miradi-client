@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class StrategyTaxonomyQuestion extends TwoLevelQuestion
 {
 	public StrategyTaxonomyQuestion(String tag)
 	{
-		super(tag, "Strategy Taxonomy Translations", TaxonomyLoader.STRATEGY_TAXONOMIES_FILE);
+		super(tag, "Strategy Taxonomy Translations", TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE);
 	}
 }
