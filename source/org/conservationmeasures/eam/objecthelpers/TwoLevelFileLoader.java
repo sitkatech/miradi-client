@@ -49,7 +49,7 @@ abstract public class TwoLevelFileLoader
 	
 	public String getFileName()
 	{
-		return null;
+		return fileName;
 	}
 	
 	abstract protected Vector processVector(Vector fileVector);
