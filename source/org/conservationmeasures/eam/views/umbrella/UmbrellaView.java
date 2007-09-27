@@ -135,6 +135,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
+import org.conservationmeasures.eam.views.umbrella.doers.CopyProjectToDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;

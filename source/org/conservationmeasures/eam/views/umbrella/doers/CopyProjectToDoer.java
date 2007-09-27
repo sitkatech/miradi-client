@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.umbrella;
+package org.conservationmeasures.eam.views.umbrella.doers;
 
 import java.io.File;
 
@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.project.ProjectUnzipper;
 import org.conservationmeasures.eam.project.ProjectZipper;
 import org.conservationmeasures.eam.utils.ZIPFileFilter;
 import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
 
 public class CopyProjectToDoer extends MainWindowDoer
 {
