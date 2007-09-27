@@ -1,0 +1,237 @@
+1	Terrestrial	Afrotropical	Guinean Moist Forests	Benin, Côte d’Ivoire, Ghana, Guinea, Liberia, Sierra Leone, Togo	
+2	Terrestrial	Afrotropical	Congolian Coastal Forests	Angola, Cameroon, Democratic Republic of Congo, Equatorial Guinea, Gabon, Nigeria, São Tomé & Príncipe, Republic of Congo	
+3	Terrestrial	Afrotropical	Cameroon Highlands Forests	Cameroon, Equatorial Guinea, Nigeria	
+4	Terrestrial	Afrotropical	Northeastern Congo Basin Moist Forests	Central African Republic, Democratic Republic of Congo	
+5	Terrestrial	Afrotropical	Central Congo Basin Moist Forests	Democratic Republic of Congo	
+6	Terrestrial	Afrotropical	Western Congo Basin Moist Forests	Cameroon, Central African Republic, Democratic Republic of Congo, Gabon, Republic of Congo	
+7	Terrestrial	Afrotropical	Albertine Rift Montane Forests	Burundi, Democratic Republic of Congo, Rwanda, Tanzania, Uganda	
+8	Terrestrial	Afrotropical	East African Coastal Forests	Kenya, Somalia, Tanzania	
+9	Terrestrial	Afrotropical	Eastern Arc Montane Forests	Kenya, Tanzania	
+10	Terrestrial	Afrotropical	Madagascar Forests and Shrublands	Madagascar	
+11	Terrestrial	Afrotropical	Seychelles and Mascarenes Moist Forests	Mauritius, Reunion (France), Seychelles	
+12	Terrestrial	Australasia	Sulawesi Moist Forests	Indonesia	
+13	Terrestrial	Australasia	Moluccas Moist Forests	Indonesia	
+14	Terrestrial	Australasia	Southern New Guinea Lowland Forests	Indonesia, Papua New Guinea	
+15	Terrestrial	Australasia	New Guinea Montane Forests	Indonesia, Papua New Guinea	
+16	Terrestrial	Australasia	Solomons-Vanuatu-Bismarck Moist Forests	Papua New Guinea, Solomon Islands, Vanuatu	
+17	Terrestrial	Australasia	Queensland Tropical Forests	Australia	
+18	Terrestrial	Australasia	New Caledonia Moist Forests	New Caledonia (France)	
+19	Terrestrial	Australasia	Lord Howe-Norfolk Islands Forests	Australia	
+20	Terrestrial	Indo-Malayan	Southwestern Ghats Moist Forests	India	
+21	Terrestrial	Indo-Malayan	Sri Lankan Moist Forests	Sri Lanka	
+22	Terrestrial	Indo-Malayan	Northern Indochina Subtropical Moist Forests	China, Laos, Myanmar, Thailand, Vietnam	
+23	Terrestrial	Indo-Malayan	Southeast China-Hainan Moist Forests	China, Vietnam	
+24	Terrestrial	Indo-Malayan	Taiwan Montane Forests	China	
+25	Terrestrial	Indo-Malayan	Annamite Range Moist Forests	Cambodia, Laos, Vietnam	
+26	Terrestrial	Indo-Malayan	Sumatran Islands Lowland and Montane Forests	Indonesia	
+27	Terrestrial	Indo-Malayan	Philippines Moist Forests	Philippines	
+28	Terrestrial	Indo-Malayan	Palawan Moist Forests	Philippines	
+29	Terrestrial	Indo-Malayan	Kayah-Karen / Tenasserim Moist Forests	Malaysia, Myanmar, Thailand	
+30	Terrestrial	Indo-Malayan	Peninsular Malaysian Lowland and Mountain Forests	Indonesia, Malaysia, Singapore, Thailand	
+31	Terrestrial	Indo-Malayan	Borneo Lowland and Montane Forests	Brunei, Indonesia, Malaysia	
+32	Terrestrial	Indo-Malayan	Nansei Shoto Archipelago Forests	Japan	
+33	Terrestrial	Indo-Malayan	Eastern Deccan Plateau Moist Forests	India	
+34	Terrestrial	Indo-Malayan	Naga-Manupuri-Chin Hills Moist Forests	Bangladesh, India, Myanmar	
+35	Terrestrial	Indo-Malayan	Cardamom Mountains Moist Forests	Cambodia, Thailand	
+36	Terrestrial	Indo-Malayan	Western Java Mountain Forests	Indonesia	
+37	Terrestrial	Neotropical	Greater Antillean Moist Forests	Cuba, Dominican Republic, Haiti, Jamaica, Puerto Rico (United States)	
+38	Terrestrial	Neotropical	Talamancan and Isthmian Pacific Forests	Costa Rica, Panama	
+39	Terrestrial	Neotropical	Chocó-Darién Moist Forests	Colombia, Ecuador, Panama	
+40	Terrestrial	Neotropical	Northern Andean Montane Forests	Colombia, Ecuador, Venezuela, Peru	
+41	Terrestrial	Neotropical	Coastal Venezuela Montane Forests	Venezuela	
+42	Terrestrial	Neotropical	Guianan Moist Forests	Brazil, French Guiana (France), Guyana, Suriname, Venezuela	
+43	Terrestrial	Neotropical	Napo Moist Forests	Colombia, Ecuador, Peru	
+44	Terrestrial	Neotropical	Río Negro-Juruá Moist Forests	Brazil, Colombia, Peru, Venezuela	
+45	Terrestrial	Neotropical	Guayanan Highlands Forests	Brazil, Colombia, Guayana, Suriname, Venezuela	
+46	Terrestrial	Neotropical	Central Andean Yungas	Argentina, Bolivia, Peru	
+47	Terrestrial	Neotropical	Southwestern Amazonian Moist Forests	Bolivia, Brazil, Peru	
+48	Terrestrial	Neotropical	Atlantic Forests	Argentina, Brazil, Paraguay	
+49	Terrestrial	Oceania	South Pacific Islands Forests	American Samoa (United States), Cook Islands (New Zealand), Fiji, French Polynesia (France), Niue (New Zealand), Samoa, Tonga, Wallis and Futuna Islands (France)	
+50	Terrestrial	Oceania	Hawaii Moist Forests	Hawaii (United States)	
+51	Terrestrial	Afrotropical	Madagascar Dry Forests	Madagascar	
+52	Terrestrial	Australasia	Nusu Tenggara Dry Forests	Indonesia	
+53	Terrestrial	Australasia	New Caledonia Dry Forests	New Caledonia (France)	
+54	Terrestrial	Indo-Malayan	Indochina Dry Forests	Cambodia, Laos, Thailand, Vietnam	
+55	Terrestrial	Indo-Malayan	Chhota-Nagpur Dry Forests	India	
+56	Terrestrial	Neotropical	Mexican Dry Forest	Guatemala, Mexico	
+57	Terrestrial	Neotropical	Tumbesian-Andean Valleys Dry Forests	Colombia, Ecuador, Peru	
+58	Terrestrial	Neotropical	Chiquitano Dry Forest	Bolivia, Brazil	
+59	Terrestrial	Neotropical	Atlantic Dry Forests	Brazil	
+60	Terrestrial	Oceania	Hawaii's Dry Forests	Hawaii (United States)	
+61	Terrestrial	Nearctic	Sierra Madre Oriental and Occidental Pine-Oak Forests	Mexico, United States	
+62	Terrestrial	Neotropical	Greater Antillean Pine Forests	Cuba, Dominican Republic, Haiti	
+63	Terrestrial	Neotropical	Mesoamerican Pine-Oak Forests	El Salvador, Guatemala, Honduras, Mexico, Nicaragua	
+64	Terrestrial	Australasia	Eastern Australia Temperate Forests	Australia	
+65	Terrestrial	Australasia	Tasmanian Temperate Rain Forests	Australia	
+66	Terrestrial	Australasia	New Zealand Temperate Forests	New Zealand	
+67	Terrestrial	Indo-Malayan	Eastern Himalayan Broadleaf and Conifer Forests	Bhutan, China, India, Myanmar, Nepal	
+68	Terrestrial	Indo-Malayan	Western Himalayan Temperate Forests	Afghanistan, India, Nepal, Pakistan	
+69	Terrestrial	Nearctic	Appalachian and Mixed Mesophytic Forests	United States	
+70	Terrestrial	Palearctic	Southwest China Temperate Forests	China	
+71	Terrestrial	Palearctic	Russian Far East Temperate Forests	Russia	
+72	Terrestrial	Nearctic	Pacific Temperate Rainforests	Canada, United States	
+73	Terrestrial	Nearctic	Klamath-Siskiyou Coniferous Forests	United States	
+74	Terrestrial	Nearctic	Sierra Nevada Coniferous Forests	United States	
+75	Terrestrial	Nearctic	Southeastern Coniferous and Broadleaf Forests	United States	
+76	Terrestrial	Neotropical	Valdivian Temperate Rainforests / Juan Fernandez Islands	Argentina, Chile	
+77	Terrestrial	Palearctic	European-Mediterranean Montane Mixed Forests	Albania, Algeria, Andorra, Austria, Bosnia and Herzegovina, Bulgaria, Croatia, Czech Republic, France, Germany, Greece, Italy, Liechtenstein, Macedonia, Morocco, Poland, Romania, Russia, Slovakia, Slovenia	
+78	Terrestrial	Palearctic	Caucasus-Anatolian-Hyrcanian Temperate Forests	Armenia, Azerbaijan, Bulgaria, Georgia, Iran, Russia, Turkey, Turkmenistan	
+79	Terrestrial	Palearctic	Altai-Sayan Montane Forests	China, Kazakstan, Mongolia, Russia	
+80	Terrestrial	Palearctic	Hengduan Shan Coniferous Forests	China	
+81	Terrestrial	Nearctic	Muskwa / Slave Lake Boreal Forests	Canada	
+82	Terrestrial	Nearctic	Canadian Boreal Forests	Canada	
+83	Terrestrial	Palearctic	Ural Mountains Taiga	Russia	
+84	Terrestrial	Palearctic	Eastern Siberian Taiga	Russia	
+85	Terrestrial	Palearctic	Kamchatka Taiga and Grasslands	Russia	
+86	Terrestrial	Afrotropical	Horn of Africa Acacia Savannas	Eritrea, Ethiopia, Kenya, Somalia, Sudan	
+87	Terrestrial	Afrotropical	East African Acacia Savannas	Ethiopia, Kenya, Sudan, Tanzania, Uganda	
+88	Terrestrial	Afrotropical	Central and Eastern Miombo Woodlands	Angola, Botswana, Burundi, Democratic Republic of Congo, Malawi, Mozambique, Namibia, Tanzania, Zambia, Zimbabwe	
+89	Terrestrial	Afrotropical	Sudanian Savannas	Cameroon, Central African Republic, Chad, Nigeria, Democratic Republic of Congo, Eritrea, Ethiopia, Kenya, Nigeria, Sudan, Uganda	
+90	Terrestrial	Australasia	Northern Australia and Trans-Fly Savannas	Australia, Indonesia, Papua New Guinea	
+91	Terrestrial	Indo-Malayan	Terai-Duar Savannas and Grasslands	Bangladesh, Bhutan, India, Nepal	
+92	Terrestrial	Neotropical	Llanos Savannas	Colombia, Venezuela	
+93	Terrestrial	Neotropical	Cerrado Woodlands and Savannas	Bolivia, Brazil, Paraguay	
+94	Terrestrial	Nearctic	Northern Prairie	Canada, United States	
+95	Terrestrial	Neotropical	Patagonian Steppe	Argentina, Chile	
+96	Terrestrial	Palearctic	Daurian Steppe	China, Mongolia, Russia	
+97	Terrestrial	Afrotropical	Sudd-Sahelian Flooded Grasslands and Savannas	Cameroon, Chad, Ethiopia, Mali, Niger, Nigeria, Sudan, Uganda	
+98	Terrestrial	Afrotropical	Zambezian Flooded Savannas	Angola, Botswana, Democratic Republic of Congo, Malawi, Mozambique, Namibia, Tanzania, Zambia	
+99	Terrestrial	Indo-Malayan	Rann of Kutch Flooded Grasslands	India, Pakistan	
+100	Terrestrial	Neotropical	Everglades Flooded Grasslands	United States	
+101	Terrestrial	Neotropical	Pantanal Flooded Savannas	Bolivia, Brazil, Paraguay	
+102	Terrestrial	Afrotropical	Ethiopian Highlands	Eritrea, Ethiopia, Sudan	
+103	Terrestrial	Afrotropical	Southern Rift Montane Woodlands	Malawi, Mozambique, Tanzania, Zambia	
+104	Terrestrial	Afrotropical	East African Moorlands	Democratic Republic of Congo, Kenya, Rwanda, Tanzania, Uganda	
+105	Terrestrial	Afrotropical	Drakensberg Montane Shrublands and Woodlands	Lesotho, South Africa, Swaziland	
+106	Terrestrial	Australasia	Central Range Subalpine Grasslands	Indonesia, Papua New Guinea	
+107	Terrestrial	Indo-Malayan	Kinabalu Montane Scrub	Malaysia	
+108	Terrestrial	Neotropical	Northern Andean Paramo	Colombia, Ecuador, Peru, Venezuela	
+109	Terrestrial	Neotropical	Central Andean Dry Puna	Argentina, Bolivia, Chile, Peru	
+110	Terrestrial	Palearctic	Tibetan Plateau Steppe	Afghanistan, China, India, Pakistan, Tajikistan	
+111	Terrestrial	Palearctic	Middle Asian Montane Steppe and Woodlands	Afghanistan, China, Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan	
+112	Terrestrial	Palearctic	Eastern Himalayan Alpine Meadows	Bhutan, China, India, Myanmar, Nepal	
+113	Terrestrial	Nearctic	Alaskan North Slope Coastal Tundra	Canada, United States	
+114	Terrestrial	Nearctic	Canadian Low Arctic Tundra	Canada	
+115	Terrestrial	Palearctic	Fenno-Scandia Alpine Tundra and Taiga	Finland, Norway, Russia, Sweden	
+116	Terrestrial	Palearctic	Taimyr and Siberian Coastal Tundra	Russia	
+117	Terrestrial	Palearctic	Chukote Coastal Tundra	Russia	
+118	Terrestrial	Afrotropical	Fynbos	South Africa	
+119	Terrestrial	Australasia	Southwestern Australia Forests and Scrub	Australia	
+120	Terrestrial	Australasia	Southern Australia Mallee and Woodlands	Australia	
+121	Terrestrial	Nearctic	California Chaparral and Woodlands	Mexico, United States	
+122	Terrestrial	Neotropical	Chilean Matorral	Chile	
+123	Terrestrial	Palearctic	Mediterranean Forests, Woodlands and Scrub	Albania, Algeria, Bosnia and Herzegovina, Bulgaria, Canary Islands (Spain), Croatia, Cyprus, Egypt, France, Gibraltar (United Kingdom), Greece, Iraq, Israel, Italy, Jordan, Lebanon, Libya, Macedonia, Madeira Islands (Portugal), Malta, Monaco, Morocco, Portugal, San Marino, Slovenia, Spain, Syria, Tunisia, Turkey, Western Sahara (Morocco), Yugoslavia	
+124	Terrestrial	Afrotropical	Namib-Karoo-Kaokeveld Deserts	Angola, Namibia, South Africa	
+125	Terrestrial	Afrotropical	Madagascar Spiny Thicket	Madagascar	
+126	Terrestrial	Afrotropical	Socotra Island Desert	Yemen	
+127	Terrestrial	Afrotropical	Arabian Highland Woodlands and Shrublands	Oman, Saudi Arabia, United Arab Emirates, Yemen	
+128	Terrestrial	Australasia	Carnavon Xeric Scrub	Australia	
+129	Terrestrial	Australasia	Great Sandy-Tanami Deserts	Australia	
+130	Terrestrial	Nearctic	Sonoran-Baja Deserts	Mexico, United States	
+131	Terrestrial	Nearctic	Chihuahuan-Tehuacán Deserts	Mexico, United States	
+132	Terrestrial	Neotropical	Galápagos Islands Scrub	Ecuador	
+133	Terrestrial	Neotropical	Atacama-Sechura Deserts	Chile, Peru	
+134	Terrestrial	Palearctic	Central Asian Deserts	Kazakstan, Kyrgyzstan, Uzbekistan, Turkmenistan	
+135	Terrestrial	Afrotropical	Gulf of Guinea Mangroves	Angola, Cameroon, Democratic Republic of Congo, Equatorial Guinea, Gabon, Ghana, Nigeria	
+136	Terrestrial	Afrotropical	East African Mangroves	Kenya, Mozambique, Somalia, Tanzania	
+137	Terrestrial	Afrotropical	Madagascar Mangroves	Madagascar	
+138	Terrestrial	Australasia	New Guinea Mangroves	Indonesia, Papua New Guinea	
+139	Terrestrial	Indo-Malayan	Sundarbans Mangroves	Bangladesh, India	
+140	Terrestrial	Indo-Malayan	Greater Sundas Mangroves	Brunei, Indonesia, Malaysia	
+141	Terrestrial	Neotropical	Guianan-Amazon Mangroves	Brazil, French Guiana (France), Suriname, Trinidad and Tobago, Venezuela	
+142	Terrestrial	Neotropical	Panama Bight Mangroves	Colombia, Ecuador, Panama, Peru	
+143	Freshwater	Afrotropical	Congo River and Flooded Forests	Angola, Democratic Republic of Congo, Republic of Congo	
+144	Freshwater	Indo-Malayan	Mekong River	Cambodia, China, Laos, Myanmar, Thailand, Vietnam	
+145	Freshwater	Nearctic	Colorado River	Mexico, United States	
+146	Freshwater	Nearctic	Lower Mississippi River	United States	
+147	Freshwater	Neotropical	Amazon River and Flooded Forests	Brazil, Colombia, Peru	
+148	Freshwater	Neotropical	Orinoco River and Flooded Forests	Brazil, Colombia, Venezuela	
+149	Freshwater	Palearctic	Yangtze River and Lakes	China	
+150	Freshwater	Afrotropical	Congo Basin Piedmont Rivers and Streams	Angola, Cameroon, Central African Republic, Democratic Republic of Congo, Gabon, Republic of Congo, Sudan	
+151	Freshwater	Nearctic	Mississippi Piedmont Rivers and Streams	United States	
+152	Freshwater	Neotropical	Upper Amazon Rivers and Streams	Bolivia, Brazil, Colombia, Ecuador, French Guiana (France), Guyana, Peru, Suriname, Venezuela	
+153	Freshwater	Neotropical	Upper Paraná Rivers and Streams	Argentina, Brazil, Paraguay	
+154	Freshwater	Neotropical	Brazilian Shield Amazonian Rivers and Streams	Bolivia, Brazil, Paraguay	
+155	Freshwater	Afrotropical	Niger River Delta	Nigeria	
+156	Freshwater	Indo-Malayan	Indus River Delta	India, Pakistan	
+157	Freshwater	Palearctic	Volga River Delta	Kazakhstan, Russia	
+158	Freshwater	Palearctic	Mesopotamian Delta and Marshes	Iran, Iraq, Kuwait	
+159	Freshwater	Palearctic	Danube River Delta	Bulgaria, Moldova, Romania, Ukraine, Yugoslavia	
+160	Freshwater	Palearctic	Lena River Delta	Russia	
+161	Freshwater	Afrotropical	Upper Guinea Rivers and Streams	Côte D’Ivoire, Guinea, Liberia, Sierra Leone	
+162	Freshwater	Afrotropical	Madagascar Freshwater	Madagascar	
+163	Freshwater	Afrotropical	Gulf of Guinea Rivers and Streams	Angola, Cameroon, Democratic Republic of Congo, Equatorial Guinea, Gabon, Nigeria, Republic of Congo	
+164	Freshwater	Afrotropical	Cape Rivers and Streams	South Africa	
+165	Freshwater	Australasia	New Guinea Rivers and Streams	Indonesia, Papua New Guinea	
+166	Freshwater	Australasia	New Caledonia Rivers and Streams	New Caledonia (France)	
+167	Freshwater	Australasia	Kimberley Rivers and Streams	Australia	
+168	Freshwater	Australasia	Southwest Australia Rivers and Streams	Australia	
+169	Freshwater	Australasia	Eastern Australia Rivers and Streams	Australia	
+170	Freshwater	Indo-Malayan	Xi Jiang Rivers and Streams	China, Vietnam	
+171	Freshwater	Indo-Malayan	Western Ghats Rivers and Streams	India	
+172	Freshwater	Indo-Malayan	Southwestern Sri Lanka Rivers and Streams	Sri Lanka	
+173	Freshwater	Indo-Malayan	Salween River	China, Myanmar, Thailand	
+174	Freshwater	Indo-Malayan	Sundaland Rivers and Swamps	Brunei, Malaysia, Indonesia, Singapore	
+175	Freshwater	Nearctic	Southeastern Rivers and Streams	United States	
+176	Freshwater	Nearctic	Pacific Northwest Coastal Rivers and Streams	United States	
+177	Freshwater	Nearctic	Gulf of Alaska Coastal Rivers and Streams	Canada, United States	
+178	Freshwater	Neotropical	Guianan Freshwater	Brazil, French Guiana (France), Guyana, Suriname, Venezuela	
+179	Freshwater	Neotropical	Greater Antillean Freshwater	Cuba, Dominican Republic, Haiti, Puerto Rico (United States)	
+180	Freshwater	Palearctic	Balkan Rivers and Streams	Albania, Bosnia and Herzogovina, Bulgaria, Croatia, Greece, Macedonia, Turkey, Yugoslavia	
+181	Freshwater	Palearctic	Russian Far East Rivers and Wetlands	China, Mongolia, Russia	
+182	Freshwater	Afrotropical	Rift Valley Lakes	Burundi, Democratic Republic of Congo, Ethiopia, Kenya, Malawi, Mozambique, Rwanda, Tanzania, Uganda, Zambia	
+183	Freshwater	Neotropical	High Andean Lakes	Argentina, Bolivia, Chile, Peru	
+184	Freshwater	Palearctic	Lake Baikal	Russia	
+185	Freshwater	Palearctic	Lake Biwa	Japan	
+186	Freshwater	Afrotropical	Cameroon Crater Lakes	Cameroon	
+187	Freshwater	Australasia	Lakes Kutubu and Sentani	Indonesia, Papua New Guinea	
+188	Freshwater	Australasia	Central Sulawesi Lakes	Indonesia	
+189	Freshwater	Indo-Malayan	Philippines Freshwater	Philippines	
+190	Freshwater	Indo-Malayan	Lake Inle	Myanmar	
+191	Freshwater	Indo-Malayan	Yunnan Lakes and Streams	China	
+192	Freshwater	Neotropical	Mexican Highland Lakes	Mexico	
+193	Freshwater	Australasia	Central Australian Freshwater	Australia	
+194	Freshwater	Nearctic	Chihuahuan Freshwater	Mexico, United States	
+195	Freshwater	Palearctic	Anatolian Freshwater	Syria, Turkey	
+196	Marine	Antarctic	Antarctic Peninsula & Weddell Sea	Antarctic Peninsula & Weddell Sea	
+197	Marine	Arctic	Bering Sea	Canada, Russia, United States	
+198	Marine	Arctic	Barents-Kara Sea	Norway, Russia	
+199	Marine	Mediterranean	Mediterranean Sea	Albania, Algeria, Bosnia and Herzegovina, Croatia, Cyprus, Egypt, France, Gibraltar (United Kingdom), Greece, Israel, Italy, Lebanon, Libya, Malta, Monaco, Morocco, Slovenia, Spain, Syria, Tunisia, Turkey, Yugoslavia	
+200	Marine	North Temperate Atlantic	Northeast Atlantic Shelf Marine	Belgium, Denmark, Estonia, Finland, France, Germany, Ireland, Latvia, Lithuania, Netherlands, Norway, Poland, Russia, Sweden, United Kingdom	
+201	Marine	North Temperate Atlantic	Grand Banks	Canada, St. Pierre and Miquelon (France), United States	
+202	Marine	North Temperate Atlantic	Chesapeake Bay	United States	
+203	Marine	North Temperate Indo-Pacific	Yellow Sea	China, North Korea, South Korea	
+204	Marine	North Temperate Indo-Pacific	Okhotsk Sea	Japan, Russia	
+205	Marine	Southern Ocean	Patagonian Southwest Atlantic	Argentina, Brazil, Chile, Uruguay	
+206	Marine	Southern Ocean	Southern Australian Marine	Australia	
+207	Marine	Southern Ocean	New Zealand Marine	New Zealand	
+208	Marine	North Temperate Indo-Pacific	Californian Current	Canada, Mexico, United States	
+209	Marine	South Temperate Atlantic	Benguela Current	Namibia, South Africa	
+210	Marine	South Temperate Indo-Pacific	Humboldt Current	Chile, Ecuador, Peru	
+211	Marine	South Temperate Indo-Pacific	Agulhas Current	Mozambique, South Africa	
+212	Marine	Central Indo-Pacific	Western Australian Marine	Australia	
+213	Marine	Eastern Indo-Pacific	Panama Bight	Colombia, Ecuador, Panama	
+214	Marine	Eastern Indo-Pacific	Gulf of California	Mexico	
+215	Marine	Eastern Indo-Pacific	Galápagos Marine	Ecuador	
+216	Marine	Eastern Tropical Atlantic	Canary Current	Canary Islands (Spain), Gambia, Guinea-Bissau, Mauritania, Morocco, Senegal, Western Sahara (Morocco)	
+217	Marine	Central Indo-Pacific	Nansei Shoto	Japan	
+218	Marine	Central Indo-Pacific	Sulu-Sulawesi Seas	Indonesia, Malaysia, Philippines	
+219	Marine	Central Indo-Pacific	Bismarck-Solomon Seas	Indonesia, Papua New Guinea, Solomon Islands	
+220	Marine	Central Indo-Pacific	Banda-Flores Sea	Indonesia	
+221	Marine	Central Indo-Pacific	New Caledonia Barrier Reef	New Caledonia (France)	
+222	Marine	Central Indo-Pacific	Great Barrier Reef	Australia	
+223	Marine	Central Indo-Pacific	Lord Howe-Norfolk Islands Marine	Australia	
+224	Marine	Central Indo-Pacific	Palau Marine	Palau	
+225	Marine	Central Indo-Pacific	Andaman Sea	Andaman and Nicobar Islands (India), Indonesia, Malasia, Myanmar, Thailand	
+226	Marine	Eastern Indo-Pacific	Tahitian Marine	Cook Islands (New Zealand), French Polynesia (France)	
+227	Marine	Eastern Indo-Pacific	Hawaiian Marine	Hawaii (United States)	
+228	Marine	Eastern Indo-Pacific	Rapa Nui	Chile	
+229	Marine	Eastern Indo-Pacific	Fiji Barrier Reef	Fiji	
+230	Marine	Western Indo-Pacific	Maldives, Chagos, Lakshadweep Atolls	Chagos Archipelago (United Kingdom), India, Maldives, Sri Lanka	
+231	Marine	Western Indo-Pacific	Red Sea	Djibouti, Egypt, Eritrea, Israel, Jordan, Saudi Arabia, Sudan, Yemen	
+232	Marine	Western Indo-Pacific	Arabian Sea	Djibouti, Iran, Oman, Pakistan, Qatar, Saudi Arabia, Somalia, United Arab Emirates, Yemen	
+233	Marine	Western Indo-Pacific	East African Marine	Kenya, Mozambique, Somalia, Tanzania	
+235	Marine	Western Tropical Atlantic	Mesoamerican Reef	Belize, Guatemala, Honduras, Mexico	
+236	Marine	Western Tropical Atlantic	Greater Antillean Marine	Bahamas, Cayman Islands (United Kingdom), Cuba, Dominican Republic, Haiti, Jamaica, Puerto Rico (United States), Turks and Caicos Islands (United Kingdom), United States	
+237	Marine	Western Tropical Atlantic	Southern Caribbean Sea	Aruba (Netherlands), Columbia, Netherlands Antilles (Netherlands), Panama, Trinidad and Tobago, Venezuela	
+238	Marine	Western Tropical Atlantic	Northeast Brazil Shelf Marine	Brazil	
