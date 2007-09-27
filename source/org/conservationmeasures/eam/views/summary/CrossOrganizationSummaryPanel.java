@@ -31,6 +31,9 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 		addField(createStringField(metadata.TAG_SHORT_PROJECT_VISION));
 		addField(createMultilineField(metadata.TAG_PROJECT_VISION));
 		addField(createNumericField(metadata.TAG_CURRENCY_DECIMAL_PLACES, 2));
+		addField(createNumericField(metadata.TAG_TOTAL_BUDGET_FOR_FUNDING));
+		addField(createNumericField(metadata.TAG_BUDGET_SECURED_PERCENT));
+
 
 		addFieldWithCustomLabelAndHint(createNumericField(metadata.TAG_PROJECT_LATITUDE, 10), "(Latitude must be -90.0000 to +90.0000)");
 		addFieldWithCustomLabelAndHint(createNumericField(metadata.TAG_PROJECT_LONGITUDE, 10), "(Longitude must be -180.0000 to +180.0000)");

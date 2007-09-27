@@ -168,6 +168,8 @@ public class ProjectMetadata extends BaseObject
 		currencyDecimalPlaces = new IntegerData();
 		latitude = new FloatData();
 		longitude = new FloatData();
+		totalBudgetForFunding = new NumberData();
+		budgetSecuredPercent = new NumberData();
 		
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -182,6 +184,8 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_CURRENCY_DECIMAL_PLACES, currencyDecimalPlaces);
 		addField(TAG_PROJECT_LATITUDE, latitude);
 		addField(TAG_PROJECT_LONGITUDE, longitude);
+		addField(TAG_TOTAL_BUDGET_FOR_FUNDING, totalBudgetForFunding);
+		addField(TAG_BUDGET_SECURED_PERCENT, budgetSecuredPercent);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -200,7 +204,6 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_ECOREGION, tncEcoregion);
 		addField(TAG_TNC_COUNTRY, tncCountry);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
-		
 
 		
 		diagramFontSize = new IntegerData();
@@ -226,6 +229,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_CURRENCY_DECIMAL_PLACES = "CurrencyDecimalPlaces";
 	public static final String TAG_PROJECT_LATITUDE = "ProjectLatitude";
 	public static final String TAG_PROJECT_LONGITUDE = "ProjectLongitude";
+	public static final String TAG_TOTAL_BUDGET_FOR_FUNDING = "TotalBudgetForFunding";
+	public static final String TAG_BUDGET_SECURED_PERCENT = "BudgetSecuredPercent";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -263,6 +268,8 @@ public class ProjectMetadata extends BaseObject
 	IntegerData currencyDecimalPlaces;
 	FloatData latitude;
 	FloatData longitude;
+	private NumberData totalBudgetForFunding;
+	private NumberData budgetSecuredPercent;
 	
 	StringData tncLessonsLearned;
 	StringData tncWorkbookVersionNumber;
