@@ -114,7 +114,7 @@ import org.conservationmeasures.eam.utils.TestJTextile;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestPointList;
 import org.conservationmeasures.eam.utils.TestStringMapData;
-import org.conservationmeasures.eam.utils.TestLevelLevelFileLoader;
+import org.conservationmeasures.eam.utils.TestLevelFileLoader;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.budget.ImportAccountingCodesDoerTest;
 import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
@@ -184,7 +184,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestLogging.class));
 		suite.addTest(new TestSuite(TestTranslations.class));
 		suite.addTest(new TestSuite(TestDelimitedFileLoader.class));
-		suite.addTest(new TestSuite(TestLevelLevelFileLoader.class));
+		suite.addTest(new TestSuite(TestLevelFileLoader.class));
 		suite.addTest(new TestSuite(TestDateRange.class));
 		
 		// diagram package
