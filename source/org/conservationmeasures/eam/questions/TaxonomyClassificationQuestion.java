@@ -5,11 +5,13 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
+import org.conservationmeasures.eam.objecthelpers.TaxonomyFileLoader;
+
 
 public abstract class TaxonomyClassificationQuestion extends TwoLevelQuestion
 {
 	public TaxonomyClassificationQuestion(String tag, String fileName)
 	{
-		super(tag, "Taxonomy Classifications", fileName);
+		super(tag, "Taxonomy Classifications", new TaxonomyFileLoader(fileName));
 	}
 }

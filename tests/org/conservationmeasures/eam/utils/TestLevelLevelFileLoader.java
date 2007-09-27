@@ -10,8 +10,8 @@ import java.io.BufferedReader;
 import java.io.StringReader;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.TaxonomyFileLoader;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
-import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class TestLevelLevelFileLoader extends EAMTestCase
 {
@@ -43,7 +43,7 @@ public class TestLevelLevelFileLoader extends EAMTestCase
 	private TwoLevelEntry[] loadDelimitedData(StringReader stringReader) throws Exception
 	{
 		BufferedReader reader = new BufferedReader( stringReader );
-		TwoLevelEntry[] twoLevelItem = new TwoLevelFileLoader().load(reader);
+		TwoLevelEntry[] twoLevelItem = new TaxonomyFileLoader("").load(reader);
 		return twoLevelItem;
 	}
 
