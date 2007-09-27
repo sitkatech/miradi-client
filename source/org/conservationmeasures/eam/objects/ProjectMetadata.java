@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.FloatData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
@@ -111,14 +112,14 @@ public class ProjectMetadata extends BaseObject
 				
 				teamMembers.add(projectResources[i].getRef());
 			}
+			
+			return teamMembers;
 		}
 		catch (Exception e)
 		{
-			//FIXME is this what we want here
-			throw new RuntimeException();
+			EAM.logException(e);
+			return new ORefList();
 		}
-
-		return teamMembers;
 	}
 	
 	public ORefList getAllDiagramObjectRefs()
