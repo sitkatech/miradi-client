@@ -12,9 +12,14 @@ public class ChoiceQuestion
 {
 	public ChoiceQuestion(String tagToUse, String labelToUse, ChoiceItem[] choicesToUse)
 	{
+		this(tagToUse, labelToUse);
+		choices = choicesToUse;
+	}
+	
+	public ChoiceQuestion(String tagToUse, String labelToUse)
+	{
 		tag = tagToUse;
 		label = labelToUse;
-		choices = choicesToUse;
 	}
 	
 	public String getTag()
