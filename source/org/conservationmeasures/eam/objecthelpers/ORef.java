@@ -5,9 +5,12 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
+import java.io.IOException;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.martus.util.UnicodeWriter;
 
 public class ORef
 {
@@ -91,6 +94,11 @@ public class ORef
 		if (objectId == null)
 			return "";
 		return toJson().toString();
+	}
+	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		out.write(getObjectType() + ":" + getObjectId());
 	}
 	
 	public static ORef INVALID = new ORef(ObjectType.FAKE, BaseId.INVALID);

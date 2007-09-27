@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
@@ -64,6 +65,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
+import org.martus.util.UnicodeWriter;
 
 public class ObjectManager
 {
@@ -449,6 +451,19 @@ public class ObjectManager
 
 	}
 
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		out.writeln("<ObjectPools>");
+		Iterator iter = pools.keySet().iterator();
+		while(iter.hasNext())
+		{
+			EAMObjectPool pool = (EAMObjectPool)pools.get(iter.next());
+			pool.toXml(out);
+		}
+		out.writeln("</ObjectPools>");
+		
+	}
+	
 	Project project;
 	ProjectChainObject projectChainBuilder;
 	DiagramChainObject diagramChainBuilder;

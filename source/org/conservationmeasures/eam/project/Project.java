@@ -79,6 +79,9 @@ import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.planning.doers.CreatePlanningViewConfigurationDoer;
 import org.conservationmeasures.eam.views.summary.SummaryView;
+import org.martus.util.MultiCalendar;
+import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
 
 
 public class Project
@@ -645,6 +648,15 @@ public class Project
 		}
 
 		return new String(asArray);
+	}
+	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		out.writeln("<MiradiProject>");
+		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getFilename()) + "</FileName>");
+		out.writeln("<ExportDate>" + new MultiCalendar().toIsoDateString() + "</ExportDate>");
+		objectManager.toXml(out);
+		out.writeln("</MiradiProject>");
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////

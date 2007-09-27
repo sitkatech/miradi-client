@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Vector;
@@ -13,6 +14,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
+import org.martus.util.UnicodeWriter;
 
 public class ORefList
 {
@@ -162,6 +164,16 @@ public class ORefList
 		return (size() == 0);
 	}
 	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		for(int i = 0; i < size(); ++i)
+		{
+			if(i > 0)
+				out.write(",");
+			get(i).toXml(out);
+		}
+	}
+
 	private Vector data;
 	private static final String TAG_REFERENCES = "References";
 }

@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,6 +36,7 @@ import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 
 abstract public class BaseObject
@@ -414,6 +416,24 @@ abstract public class BaseObject
 		}
 		
 		return json;
+	}
+	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		out.writeln("<" + getTypeName() + ">");
+		out.writeln("<Id>" + id.asInt() + "</Id>");
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			if(isPseudoField(tag))
+				continue;
+			ObjectData data = getField(tag);
+			out.write("<" + tag + ">");
+			data.toXml(out);
+			out.writeln("</" + tag + ">");
+		}
+		out.writeln("</" + getTypeName() + ">");
 	}
 	
 	public static String toHtml(BaseObject[] resources)
