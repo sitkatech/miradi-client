@@ -5,10 +5,13 @@
 */ 
 package org.conservationmeasures.eam.objectpools;
 
+import java.io.IOException;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.martus.util.UnicodeWriter;
 
 public class EAMObjectPool extends ObjectPool
 {
@@ -31,6 +34,17 @@ public class EAMObjectPool extends ObjectPool
 	public int getObjectType()
 	{
 		return objectType;
+	}
+	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		out.writeln("<Pool type='" + objectType + "'>");
+		IdList ids = getIdList();
+		for(int i = 0; i < ids.size(); ++i)
+		{
+			findObject(ids.get(i)).toXml(out);
+		}
+		out.writeln("</Pool>");
 	}
 	
 	int objectType;

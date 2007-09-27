@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.actions.ActionCopyProjectTo;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
+import org.conservationmeasures.eam.actions.ActionExportProjectXml;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
 import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
@@ -134,6 +135,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
+import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 
@@ -286,6 +288,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionExportZippedProjectFile.class, new ExportZippedProjectFileDoer());
 		addDoerToMap(ActionImportZippedProjectFile.class, new ImportZippedProjectFileDoer());
 		addDoerToMap(ActionExportProjectReportFile.class, new ExportProjectReportFileDoer());
+		addDoerToMap(ActionExportProjectXml.class, new ExportProjectXmlDoer());
 		addDoerToMap(ActionConfigureExport.class, new HelpButtonDoer());
 		addDoerToMap(ActionDatabasesDemo.class, new HelpButtonDoer());
 		addDoerToMap(ActionReportsDemo.class, new HelpButtonDoer());

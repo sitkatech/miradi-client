@@ -5,6 +5,11 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
+import java.io.IOException;
+
+import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
+
 
 abstract public class ObjectData
 {
@@ -16,6 +21,11 @@ abstract public class ObjectData
 	final public String toString()
 	{
 		return get();
+	}
+	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		out.write(XmlUtilities.getXmlEncoded(get()));
 	}
 	
 	public boolean isPseudoField()

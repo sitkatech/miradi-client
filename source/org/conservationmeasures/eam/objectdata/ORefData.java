@@ -5,8 +5,11 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
+import java.io.IOException;
+
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.martus.util.UnicodeWriter;
 
 public class ORefData extends ObjectData
 {
@@ -65,6 +68,11 @@ public class ORefData extends ObjectData
 			ref = ORef.INVALID;
 		else
 			ref = new ORef(new EnhancedJsonObject(newValue));
+	}
+
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		ref.toXml(out);
 	}
 
 	ORef ref;

@@ -30,8 +30,8 @@ import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
 import org.conservationmeasures.eam.actions.ActionDeleteConceptualModel;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionExit;
-import org.conservationmeasures.eam.actions.ActionExportBudgetTableTree;
 import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
+import org.conservationmeasures.eam.actions.ActionExportProjectXml;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
 import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
@@ -156,8 +156,11 @@ public class MainMenuBar extends JMenuBar
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
 		addMenuItem(actions, menu, ActionExportProjectReportFile.class, KeyEvent.VK_P);
-		
-		addMenuItem(actions, menu, ActionExportBudgetTableTree.class, KeyEvent.VK_F);
+		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
+	
+// This feature will have to be rewritten to work with the new Planning View
+//		addMenuItem(actions, menu, ActionExportBudgetTableTree.class, KeyEvent.VK_F);
+		menu.addSeparator();
 		
 		JMenuItem item = addMenuItem(actions, menu,ActionReportsDemo.class, KeyEvent.VK_D);
 		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO_AND_DATABASES, HelpButtonData.IMPORT_AND_EXPORT_HTML));

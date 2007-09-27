@@ -119,6 +119,7 @@ public class Actions
 		registerAction(new ActionCopyProjectTo(mainWindow));
 		registerAction(new ActionExportZippedProjectFile(mainWindow));
 		registerAction(new ActionExportProjectReportFile(mainWindow));
+		registerAction(new ActionExportProjectXml(mainWindow));
 		registerAction(new ActionImportZippedProjectFile(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImage(mainWindow));

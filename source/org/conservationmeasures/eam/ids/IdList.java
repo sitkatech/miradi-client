@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.ids;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
+import org.martus.util.UnicodeWriter;
 
 public class IdList
 {
@@ -206,6 +208,16 @@ public class IdList
 		}
 			
 		return intArray;
+	}
+
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		for(int i = 0; i < size(); ++i)
+		{
+			if(i > 0)
+				out.write(",");
+			out.write(get(i).toString());
+		}
 	}
 
 	private static final String TAG_IDS = "Ids";

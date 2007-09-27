@@ -5,11 +5,13 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.martus.util.UnicodeWriter;
 
 public class IdListData extends ObjectData
 {
@@ -90,6 +92,10 @@ public class IdListData extends ObjectData
 		return ids.hashCode();
 	}
 	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		ids.toXml(out);
+	}
 	
 	IdList ids;
 }
