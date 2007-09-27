@@ -63,17 +63,20 @@ public class WwfProjectData extends BaseObject
 		projectNumber = new StringData();
 		managingOffices = new CodeListData();
 		regions = new CodeListData();
+		countries = new CodeListData();
 		
 		addField(TAG_RELATED_PROJECTS, relatedProjects);
 		addField(TAG_PROJECT_NUMBER, projectNumber);
 		addField(TAG_MANAGING_OFFICES, managingOffices);
 		addField(TAG_REGIONS, regions);
+		addField(TAG_COUNTRIES, countries);
 	}
 
 	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
 	public static final String TAG_PROJECT_NUMBER = "ProjectNumber";
 	public static final String TAG_MANAGING_OFFICES = "ManagingOffices";
 	public static final String TAG_REGIONS = "Regions";
+	public static final String TAG_COUNTRIES = "Countries";
 	
 	public static final String OBJECT_NAME = "WwfProjectData";
 	
@@ -82,4 +85,5 @@ public class WwfProjectData extends BaseObject
 	private StringData projectNumber;
 	private CodeListData managingOffices;
 	private CodeListData regions;
+	private CodeListData countries;
 }
