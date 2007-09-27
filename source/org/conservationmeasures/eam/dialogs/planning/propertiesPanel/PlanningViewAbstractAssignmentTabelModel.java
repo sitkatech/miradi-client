@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import java.text.DecimalFormat;
+
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -20,6 +22,7 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractT
 	{
 		project = projectToUse;
 		assignmentRefs = new ORefList();
+		currencyFormatter = getProject().getCurrencyFormatter();
 	}
 	
 	public int getRowCount()
@@ -103,7 +106,7 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractT
 			return "";
 				
 		double cost = resource.getCostPerUnit();
-		return Double.toString(cost);
+		return currencyFormatter.format(cost);
 	}
 	
 	protected ProjectResource findProjectResource(Assignment assignment)
@@ -122,5 +125,5 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractT
 	protected Task task;
 	
 	private Project project;
-	
+	protected DecimalFormat currencyFormatter;
 }
