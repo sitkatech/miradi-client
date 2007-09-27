@@ -20,11 +20,11 @@ public class EcoRegionsFileLoader extends TwoLevelFileLoader
 		for (int i  = 0; i < fileVector.size(); ++i)
 		{
 			Vector row = (Vector) fileVector.get(i);
-			//FIXME summary - wwf tab - which columns should be in UI
-			String officeCode = (String) row.get(0);
-			String officeName = (String) row.get(1);
+
+			String regionCode = (String) row.get(0);
+			String regionName = (String) row.get(1) + " - " + (String) row.get(2) + " - " +(String) row.get(3);
 		
-			entries.add(new TwoLevelEntry(officeCode, officeName));
+			entries.add(new TwoLevelEntry(regionCode, regionName));
 		}
 		return entries;
 	}
