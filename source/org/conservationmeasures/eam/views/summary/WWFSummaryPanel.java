@@ -28,6 +28,7 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME));
 		addField(createDateChooserField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_START_DATE));
+		addField(createDateChooserField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_EXPECTED_END_DATE));
 		addField(createStringField(WwfProjectData.getObjectType(), WwfProjectData.TAG_RELATED_PROJECTS));
 		addField(createStringField(WwfProjectData.getObjectType(), WwfProjectData.TAG_PROJECT_NUMBER, 20));
 		addField(createMultilineField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_VISION));
