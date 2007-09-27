@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.utils.DelimitedFileLoader;
 
 public class TwoLevelFileLoader
 {
-	public static TwoLevelEntry[] load(String resourceFileName) throws Exception
+	public TwoLevelEntry[] load(String resourceFileName) throws Exception
 	{
 		if (tablePreLoad.contains(resourceFileName))
 			return (TwoLevelEntry[])tablePreLoad.get(resourceFileName);
@@ -30,19 +30,19 @@ public class TwoLevelFileLoader
 		return table;
 	}
 
-	public static TwoLevelEntry[] load(BufferedReader reader) throws Exception
+	public TwoLevelEntry[] load(BufferedReader reader) throws Exception
 	{
 		return getTaxomonies(reader);
 	}
 	
-	private static TwoLevelEntry[] getTaxomonies(BufferedReader reader) throws IOException
+	private TwoLevelEntry[] getTaxomonies(BufferedReader reader) throws IOException
 	{
 		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
 		Vector taxonomyItems = processVector(fileVector);
 		return (TwoLevelEntry[]) taxonomyItems.toArray(new TwoLevelEntry[0]);
 	}
 	
-	private static Vector processVector(Vector fileVector)
+	private Vector processVector(Vector fileVector)
 	{
 		Vector taxonomyItems = new Vector();
 		taxonomyItems.add(new TwoLevelEntry("", EAM.text("--Select a classification--")));
@@ -74,7 +74,7 @@ public class TwoLevelFileLoader
 		return taxonomyItems;
 	}
 
-	private static String getLevel1Code(String code)
+	private String getLevel1Code(String code)
 	{
 		return code.substring(0, code.indexOf("."));
 	}

@@ -43,7 +43,7 @@ public class TestLevelLevelFileLoader extends EAMTestCase
 	private TwoLevelEntry[] loadDelimitedData(StringReader stringReader) throws Exception
 	{
 		BufferedReader reader = new BufferedReader( stringReader );
-		TwoLevelEntry[] twoLevelItem = TwoLevelFileLoader.load(reader);
+		TwoLevelEntry[] twoLevelItem = new TwoLevelFileLoader().load(reader);
 		return twoLevelItem;
 	}
 
