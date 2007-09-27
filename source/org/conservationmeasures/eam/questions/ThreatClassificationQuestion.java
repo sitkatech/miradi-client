@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class ThreatClassificationQuestion  extends TaxonomyClassificationQuestion
 {
@@ -14,5 +14,5 @@ public class ThreatClassificationQuestion  extends TaxonomyClassificationQuestio
 		super(tag, taxonomyFile);
 	}
 
-	private static String taxonomyFile = TaxonomyLoader.THREAT_TAXONOMIES_FILE;
+	private static String taxonomyFile = TwoLevelFileLoader.THREAT_TAXONOMIES_FILE;
 }
