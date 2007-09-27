@@ -14,7 +14,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.DelimitedFileLoader;
-//TODO this is a duplicate of TaxonomyLoad
+
 public class TwoLevelFileLoader
 {
 	public static TwoLevelEntry[] load(String resourceFileName) throws Exception
