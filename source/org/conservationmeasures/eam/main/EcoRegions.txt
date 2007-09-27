@@ -1,5 +1,5 @@
-1	Terrestrial	Afrotropical	Guinean Moist Forests	Benin, Côte d’Ivoire, Ghana, Guinea, Liberia, Sierra Leone, Togo	
-2	Terrestrial	Afrotropical	Congolian Coastal Forests	Angola, Cameroon, Democratic Republic of Congo, Equatorial Guinea, Gabon, Nigeria, São Tomé & Príncipe, Republic of Congo	
+1	Terrestrial	Afrotropical	Guinean Moist Forests	Benin, Cote d'Ivoire, Ghana, Guinea, Liberia, Sierra Leone, Togo	
+2	Terrestrial	Afrotropical	Congolian Coastal Forests	Angola, Cameroon, Democratic Republic of Congo, Equatorial Guinea, Gabon, Nigeria, Sao Tome & Principe, Republic of Congo	
 3	Terrestrial	Afrotropical	Cameroon Highlands Forests	Cameroon, Equatorial Guinea, Nigeria	
 4	Terrestrial	Afrotropical	Northeastern Congo Basin Moist Forests	Central African Republic, Democratic Republic of Congo	
 5	Terrestrial	Afrotropical	Central Congo Basin Moist Forests	Democratic Republic of Congo	
@@ -36,12 +36,12 @@
 36	Terrestrial	Indo-Malayan	Western Java Mountain Forests	Indonesia	
 37	Terrestrial	Neotropical	Greater Antillean Moist Forests	Cuba, Dominican Republic, Haiti, Jamaica, Puerto Rico (United States)	
 38	Terrestrial	Neotropical	Talamancan and Isthmian Pacific Forests	Costa Rica, Panama	
-39	Terrestrial	Neotropical	Chocó-Darién Moist Forests	Colombia, Ecuador, Panama	
+39	Terrestrial	Neotropical	Choco-Darien Moist Forests	Colombia, Ecuador, Panama	
 40	Terrestrial	Neotropical	Northern Andean Montane Forests	Colombia, Ecuador, Venezuela, Peru	
 41	Terrestrial	Neotropical	Coastal Venezuela Montane Forests	Venezuela	
 42	Terrestrial	Neotropical	Guianan Moist Forests	Brazil, French Guiana (France), Guyana, Suriname, Venezuela	
 43	Terrestrial	Neotropical	Napo Moist Forests	Colombia, Ecuador, Peru	
-44	Terrestrial	Neotropical	Río Negro-Juruá Moist Forests	Brazil, Colombia, Peru, Venezuela	
+44	Terrestrial	Neotropical	Rio Negro-Jurua Moist Forests	Brazil, Colombia, Peru, Venezuela	
 45	Terrestrial	Neotropical	Guayanan Highlands Forests	Brazil, Colombia, Guayana, Suriname, Venezuela	
 46	Terrestrial	Neotropical	Central Andean Yungas	Argentina, Bolivia, Peru	
 47	Terrestrial	Neotropical	Southwestern Amazonian Moist Forests	Bolivia, Brazil, Peru	
@@ -128,8 +128,8 @@
 128	Terrestrial	Australasia	Carnavon Xeric Scrub	Australia	
 129	Terrestrial	Australasia	Great Sandy-Tanami Deserts	Australia	
 130	Terrestrial	Nearctic	Sonoran-Baja Deserts	Mexico, United States	
-131	Terrestrial	Nearctic	Chihuahuan-Tehuacán Deserts	Mexico, United States	
-132	Terrestrial	Neotropical	Galápagos Islands Scrub	Ecuador	
+131	Terrestrial	Nearctic	Chihuahuan-Tehuacan Deserts	Mexico, United States	
+132	Terrestrial	Neotropical	Galapagos Islands Scrub	Ecuador	
 133	Terrestrial	Neotropical	Atacama-Sechura Deserts	Chile, Peru	
 134	Terrestrial	Palearctic	Central Asian Deserts	Kazakstan, Kyrgyzstan, Uzbekistan, Turkmenistan	
 135	Terrestrial	Afrotropical	Gulf of Guinea Mangroves	Angola, Cameroon, Democratic Republic of Congo, Equatorial Guinea, Gabon, Ghana, Nigeria	
@@ -150,7 +150,7 @@
 150	Freshwater	Afrotropical	Congo Basin Piedmont Rivers and Streams	Angola, Cameroon, Central African Republic, Democratic Republic of Congo, Gabon, Republic of Congo, Sudan	
 151	Freshwater	Nearctic	Mississippi Piedmont Rivers and Streams	United States	
 152	Freshwater	Neotropical	Upper Amazon Rivers and Streams	Bolivia, Brazil, Colombia, Ecuador, French Guiana (France), Guyana, Peru, Suriname, Venezuela	
-153	Freshwater	Neotropical	Upper Paraná Rivers and Streams	Argentina, Brazil, Paraguay	
+153	Freshwater	Neotropical	Upper Parana Rivers and Streams	Argentina, Brazil, Paraguay	
 154	Freshwater	Neotropical	Brazilian Shield Amazonian Rivers and Streams	Bolivia, Brazil, Paraguay	
 155	Freshwater	Afrotropical	Niger River Delta	Nigeria	
 156	Freshwater	Indo-Malayan	Indus River Delta	India, Pakistan	
@@ -158,7 +158,7 @@
 158	Freshwater	Palearctic	Mesopotamian Delta and Marshes	Iran, Iraq, Kuwait	
 159	Freshwater	Palearctic	Danube River Delta	Bulgaria, Moldova, Romania, Ukraine, Yugoslavia	
 160	Freshwater	Palearctic	Lena River Delta	Russia	
-161	Freshwater	Afrotropical	Upper Guinea Rivers and Streams	Côte D’Ivoire, Guinea, Liberia, Sierra Leone	
+161	Freshwater	Afrotropical	Upper Guinea Rivers and Streams	Cote D'Ivoire, Guinea, Liberia, Sierra Leone	
 162	Freshwater	Afrotropical	Madagascar Freshwater	Madagascar	
 163	Freshwater	Afrotropical	Gulf of Guinea Rivers and Streams	Angola, Cameroon, Democratic Republic of Congo, Equatorial Guinea, Gabon, Nigeria, Republic of Congo	
 164	Freshwater	Afrotropical	Cape Rivers and Streams	South Africa	
@@ -212,7 +212,7 @@
 212	Marine	Central Indo-Pacific	Western Australian Marine	Australia	
 213	Marine	Eastern Indo-Pacific	Panama Bight	Colombia, Ecuador, Panama	
 214	Marine	Eastern Indo-Pacific	Gulf of California	Mexico	
-215	Marine	Eastern Indo-Pacific	Galápagos Marine	Ecuador	
+215	Marine	Eastern Indo-Pacific	Galapagos Marine	Ecuador	
 216	Marine	Eastern Tropical Atlantic	Canary Current	Canary Islands (Spain), Gambia, Guinea-Bissau, Mauritania, Morocco, Senegal, Western Sahara (Morocco)	
 217	Marine	Central Indo-Pacific	Nansei Shoto	Japan	
 218	Marine	Central Indo-Pacific	Sulu-Sulawesi Seas	Indonesia, Malaysia, Philippines	

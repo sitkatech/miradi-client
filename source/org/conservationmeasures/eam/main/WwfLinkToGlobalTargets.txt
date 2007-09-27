@@ -1,10 +1,10 @@
-FL 1	The establishment and maintenance of viable, representative networks of protected areas in the world’s threatened and most biologically significant forest regions, by 2010.
+FL 1	The establishment and maintenance of viable, representative networks of protected areas in the world's threatened and most biologically significant forest regions, by 2010.
 FL 2	By 2010, improved management in 200 million hectares across the world's production forests, through a combination of credible certification and a step-wise approach improved forest management.
 FL 3	By 2020, restore forest goods, services and processes in 20 landscapes of outstanding importance within priority ecoregions to regain ecological integrity and enhance human well-being.
 LW 1	Freshwater habitats and environmental processes are maintained or restored in at least 50 river basins and ecoregions by 2010.  
 LW 2	Water use policies and practices adopted by at least 100 governments, and 10 industry sectors or international processes, contribute to conserving the environment of priority river basins and ecoregions by 2010.
 LW 3	250 million hectares of representative freshwater habitats world-wide are protected and more sustainably managed by 2010.
-ES 1	The establishment and implementation of a network of effectively managed, ecologically representative MPAs covering at least 10% of the world’s seas by the year 2020
+ES 1	The establishment and implementation of a network of effectively managed, ecologically representative MPAs covering at least 10% of the world's seas by the year 2020
 ES 2	To halve the number of fish stocks which are currently categorised by FAO as over-exploited or depleted, by 2020, and to maintain the status of all sustainably exploited fish stocks
 SP 1	By 2010, populations of priority species are stabilized or increased or their critical habitats safeguarded.
 SP 2	By 2010, at least 10 priority species or species groups are no longer endangered by over-exploitation.

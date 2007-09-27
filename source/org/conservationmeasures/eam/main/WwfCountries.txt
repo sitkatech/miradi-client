@@ -1,5 +1,5 @@
 AFG	Afghanistan
-ALA	Åland Islands
+ALA	Aland Islands
 ALB	Albania
 DZA	Algeria
 ASM	American Samoa
@@ -51,7 +51,7 @@ COM	Comoros
 COG	Congo
 COK	Cook Islands
 CRI	Costa Rica
-CIV	Côte d'Ivoire
+CIV	Cote d'Ivoire
 ISO3V10	Country_Standard
 HRV	Croatia
 CUB	Cuba
@@ -177,7 +177,7 @@ PRI	Puerto Rico
 QAT	Qatar
 KOR	Republic of Korea
 MDA	Republic of Moldova
-REU	Réunion
+REU	Reunion
 ROU	Romania
 RUS	Russian Federation
 RWA	Rwanda
