@@ -60,16 +60,20 @@ public class WwfProjectData extends BaseObject
 		
 		relatedProjects = new StringData();
 		projectNumber = new StringData();
+		managingOffices = new StringData();
 		
 		addField(TAG_RELATED_PROJECTS, relatedProjects);
 		addField(TAG_PROJECT_NUMBER, projectNumber);
+		addField(TAG_MANAGING_OFFICES, managingOffices);
 	}
 
 	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
 	public static final String TAG_PROJECT_NUMBER = "ProjectNumber";
+	public static final String TAG_MANAGING_OFFICES = "ManagingOffices";
 	
 	public static final String OBJECT_NAME = "WwfProjectData";
 	
 	private StringData relatedProjects;
 	private StringData projectNumber;
+	private StringData managingOffices;
 }
