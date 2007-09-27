@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-public class ViabilityModeQuestion extends ChoiceQuestion
+public class ViabilityModeQuestion extends StaticChoiceQuestion
 {
 	public ViabilityModeQuestion(String tagToUse)
 	{

@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 
 
-public class TrendQuestion extends ChoiceQuestion
+public class TrendQuestion extends StaticChoiceQuestion
 {
 	public TrendQuestion(String tagToUse)
 	{

@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.questions;
 
 
-public class KeyEcologicalAttributeTypeQuestion extends ChoiceQuestion
+public class KeyEcologicalAttributeTypeQuestion extends StaticChoiceQuestion
 {
 	public KeyEcologicalAttributeTypeQuestion(String tag)
 	{

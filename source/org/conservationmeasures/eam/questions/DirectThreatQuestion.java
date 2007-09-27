@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 
-public class DirectThreatQuestion extends ChoiceQuestion
+public class DirectThreatQuestion extends StaticChoiceQuestion
 {
 	public DirectThreatQuestion(Project project, String tagToUse)
 	{

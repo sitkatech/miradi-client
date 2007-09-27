@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
 
-public class DiagramLegendQuestion extends ChoiceQuestion
+public class DiagramLegendQuestion extends StaticChoiceQuestion
 {
 	public DiagramLegendQuestion(String tagToUse)
 	{

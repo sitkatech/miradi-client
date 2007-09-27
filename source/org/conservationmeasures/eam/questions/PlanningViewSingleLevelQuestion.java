@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 
-public class PlanningViewSingleLevelQuestion extends ChoiceQuestion
+public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
 {
 	public PlanningViewSingleLevelQuestion()
 	{

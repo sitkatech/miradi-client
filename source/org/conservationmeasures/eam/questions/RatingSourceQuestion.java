@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.questions;
 
 
-public class RatingSourceQuestion extends ChoiceQuestion
+public class RatingSourceQuestion extends StaticChoiceQuestion
 {
 	public RatingSourceQuestion(String tag)
 	{

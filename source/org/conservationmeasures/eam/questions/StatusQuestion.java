@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
 
-public class StatusQuestion extends ChoiceQuestion
+public class StatusQuestion extends StaticChoiceQuestion
 {
 	public StatusQuestion(String tagToUse)
 	{

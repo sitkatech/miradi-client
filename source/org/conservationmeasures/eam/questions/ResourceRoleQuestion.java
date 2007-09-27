@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.questions;
 
 
 
-public class ResourceRoleQuestion extends ChoiceQuestion
+public class ResourceRoleQuestion extends StaticChoiceQuestion
 {
 	public ResourceRoleQuestion(String tagToUse)
 	{
