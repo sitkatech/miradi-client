@@ -11,7 +11,7 @@ import java.io.StringReader;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
-import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class TestTaxonomyLoader extends EAMTestCase
 {
@@ -43,7 +43,7 @@ public class TestTaxonomyLoader extends EAMTestCase
 	private TwoLevelEntry[] loadDelimitedData(StringReader stringReader) throws Exception
 	{
 		BufferedReader reader = new BufferedReader( stringReader );
-		TwoLevelEntry[] taxonomyItem = TaxonomyLoader.load(reader);
+		TwoLevelEntry[] taxonomyItem = TwoLevelFileLoader.load(reader);
 		return taxonomyItem;
 	}
 
