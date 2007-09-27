@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectRaitingChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
+import org.conservationmeasures.eam.dialogfields.ObjectReadonlyObjectList;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringMapTableField;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -250,6 +251,10 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectReadonlyChoiceField(project, objectType, getObjectIdForType(objectType), question);
 	}
 	
+	public ObjectDataInputField createReadOnlyObjectList(int objectType, String tag)
+	{
+		return new ObjectReadonlyObjectList(project, objectType, getObjectIdForType(objectType), tag); 
+	}
 	
 	public BaseId getObjectIdForType(int objectType)
 	{

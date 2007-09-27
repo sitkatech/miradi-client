@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeThreatReductio
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -886,10 +887,50 @@ abstract public class BaseObject
 		{
 			return get().hashCode();
 		}
-		
+
 		String psuedoTag;
 	}
-	
+
+	public class PseudoORefListData extends ORefListData
+	{
+		public PseudoORefListData(String tag)
+		{
+			psuedoTag = tag;
+		}
+
+		public boolean isPseudoField()
+		{
+			return true;
+		}
+
+		public void set(String newValue) throws Exception
+		{
+			if (newValue.length()!=0)
+				throw new RuntimeException("Set not allowed in a pseuod field");
+		}
+
+		public String get()
+		{
+			return getPseudoData(psuedoTag);
+		}
+
+		public boolean equals(Object rawOther)
+		{
+			if(!(rawOther instanceof StringData))
+				return false;
+
+			StringData other = (StringData)rawOther;
+			return get().equals(other.get());
+		}
+
+		public int hashCode()
+		{
+			return get().hashCode();
+		}
+
+		String psuedoTag;
+	}
+
 	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
