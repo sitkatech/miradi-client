@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.WwfProjectData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.WwfManagingOfficesQuestion;
+import org.conservationmeasures.eam.questions.WwfRegionsQuestion;
 
 public class WWFSummaryPanel extends ObjectDataInputPanel
 {
@@ -26,6 +27,7 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 		addField(createStringField(WwfProjectData.getObjectType(), WwfProjectData.TAG_RELATED_PROJECTS));
 		addField(createStringField(WwfProjectData.getObjectType(), WwfProjectData.TAG_PROJECT_NUMBER, 20));
 		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfManagingOfficesQuestion(WwfProjectData.TAG_MANAGING_OFFICES)));
+		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfRegionsQuestion(WwfProjectData.TAG_REGIONS)));
 		
 		
 		setObjectRefs(new ORef[] {metaDataToUse.getRef(), getWwfProjectDataRef()});
