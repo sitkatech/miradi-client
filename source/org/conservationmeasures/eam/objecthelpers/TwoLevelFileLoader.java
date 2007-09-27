@@ -82,5 +82,5 @@ public class TwoLevelFileLoader
 	private static Hashtable tablePreLoad = new Hashtable();
 	public final static String STRATEGY_TAXONOMIES_FILE = "StrategyTaxonomies.txt";
 	public final static String THREAT_TAXONOMIES_FILE = "ThreatTaxonomies.txt";
-
+	public final static String WWF_MANAGING_OFFICES_FILE = "WwfManagingOfficesFile";
 }
