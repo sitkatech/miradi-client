@@ -22,7 +22,7 @@ public class TwoLevelQuestion extends ChoiceQuestion
 		try 
 		{
 			Vector chocies = new Vector();
-			TwoLevelEntry[] twoLevelEntry = TwoLevelFileLoader.load(fileName);
+			TwoLevelEntry[] twoLevelEntry = new TwoLevelFileLoader().load(fileName);
 
 			for (int i = 0; i < twoLevelEntry.length; ++i)
 			{
