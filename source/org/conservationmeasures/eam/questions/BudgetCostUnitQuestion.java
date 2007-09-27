@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.questions;
 
 
-public class BudgetCostUnitQuestion extends ChoiceQuestion
+public class BudgetCostUnitQuestion extends StaticChoiceQuestion
 {
 	public BudgetCostUnitQuestion(String tagToUse)
 	{

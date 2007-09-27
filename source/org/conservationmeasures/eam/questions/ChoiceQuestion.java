@@ -8,14 +8,8 @@ package org.conservationmeasures.eam.questions;
 import java.awt.Color;
 
 
-public class ChoiceQuestion
+public abstract class ChoiceQuestion
 {
-	public ChoiceQuestion(String tagToUse, String labelToUse, ChoiceItem[] choicesToUse)
-	{
-		this(tagToUse, labelToUse);
-		choices = choicesToUse;
-	}
-	
 	public ChoiceQuestion(String tagToUse, String labelToUse)
 	{
 		tag = tagToUse;
@@ -32,21 +26,19 @@ public class ChoiceQuestion
 		return label;
 	}
 	
-	public ChoiceItem[] getChoices()
-	{
-		return choices;
-	}
+	abstract public ChoiceItem[] getChoices();
 	
 	public ChoiceItem findChoiceByCode(String code)
 	{
 		int index = findIndexByCode(code);
 		if (index<0)
 			return null;
-		return choices[index];
+		return getChoices()[index];
 	}
 	
 	public int findIndexByCode(String code)
 	{
+		ChoiceItem[] choices = getChoices();
 		for(int i = 0; i < choices.length; ++i)
 			if(choices[i].getCode().equals(code))
 				return i;
@@ -64,5 +56,4 @@ public class ChoiceQuestion
 	
 	String tag;
 	String label;
-	ChoiceItem[] choices;
 }

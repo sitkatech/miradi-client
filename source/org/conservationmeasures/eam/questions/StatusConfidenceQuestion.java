@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.questions;
 
 
-public class StatusConfidenceQuestion extends ChoiceQuestion
+public class StatusConfidenceQuestion extends StaticChoiceQuestion
 {
 	public StatusConfidenceQuestion(String tag)
 	{

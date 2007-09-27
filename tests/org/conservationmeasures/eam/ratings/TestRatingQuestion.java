@@ -10,6 +10,7 @@ import java.awt.Color;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.questions.StaticChoiceQuestion;
 
 public class TestRatingQuestion extends EAMTestCase
 {
@@ -24,7 +25,7 @@ public class TestRatingQuestion extends EAMTestCase
 			new ChoiceItem("", "None", Color.BLACK),
 			new ChoiceItem("1", "Low", Color.GREEN),
 		};
-		ChoiceQuestion question = new ChoiceQuestion("Feasibility", "Feasibility and Cost", choices);
+		ChoiceQuestion question = new StaticChoiceQuestion("Feasibility", "Feasibility and Cost", choices);
 		assertEquals("Feasibility", question.getTag());
 		assertEquals("Feasibility and Cost", question.getLabel());
 		assertEquals(2, question.getChoices().length);

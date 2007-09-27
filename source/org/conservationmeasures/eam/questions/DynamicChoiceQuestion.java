@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-public class DynamicChoiceQuestion extends ChoiceQuestion
+public abstract class DynamicChoiceQuestion extends ChoiceQuestion
 {
 	public DynamicChoiceQuestion(String tagToUse, String labelToUse)
 	{

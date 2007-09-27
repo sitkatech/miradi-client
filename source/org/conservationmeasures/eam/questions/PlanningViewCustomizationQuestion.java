@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningViewCustomizationQuestion extends ChoiceQuestion
+public class PlanningViewCustomizationQuestion extends StaticChoiceQuestion
 {
 	public PlanningViewCustomizationQuestion(Project projectToUse)
 	{

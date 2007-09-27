@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.questions;
 import java.awt.Color;
 
 
-public class StrategyCostQuestion extends ChoiceQuestion
+public class StrategyCostQuestion extends StaticChoiceQuestion
 {
 	public StrategyCostQuestion(String tag)
 	{

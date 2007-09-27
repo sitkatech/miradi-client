@@ -1,6 +1,6 @@
 package org.conservationmeasures.eam.questions;
 
-public class FontSizeQuestion extends ChoiceQuestion
+public class FontSizeQuestion extends StaticChoiceQuestion
 {
 	public FontSizeQuestion(String tag)
 	{
