@@ -401,7 +401,7 @@ public class Task extends BaseObject
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
 		subtaskTotal = new PseudoStringData(PSEUDO_TAG_SUBTASK_TOTAL);
-		taskTotal = new PseudoStringData(PSEUDO_TAG_TASK_BUDGET_TOTAL);
+		taskTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		taskCost = new PseudoStringData(PSEUDO_TAG_TASK_COST);
 		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
@@ -411,7 +411,7 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
 		addField(PSEUDO_TAG_SUBTASK_TOTAL, subtaskTotal);
-		addField(PSEUDO_TAG_TASK_BUDGET_TOTAL, taskTotal);
+		addField(PSEUDO_TAG_BUDGET_TOTAL, taskTotal);
 		addField(PSEUDO_TAG_TASK_COST, taskCost);
 		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
 		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);

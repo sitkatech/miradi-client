@@ -34,7 +34,7 @@ public class ColumnManager
 		
 		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		masterColumnList.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		masterColumnList.add(BaseObject.PSEUDO_TAG_TASK_BUDGET_TOTAL);
+		masterColumnList.add(BaseObject.PSEUDO_TAG_BUDGET_TOTAL);
 		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
 			
 		return masterColumnList;

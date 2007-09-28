@@ -28,7 +28,7 @@ public class BudgetPropertiesInputPanel extends ObjectDataInputPanel
 		addField(createStringField(Task.TAG_LABEL));
 		addField(createReadonlyTextField(Task.PSEUDO_TAG_TASK_COST));
 		addField(createReadonlyTextField(Task.PSEUDO_TAG_SUBTASK_TOTAL));
-		addField(createReadonlyTextField(Task.PSEUDO_TAG_TASK_BUDGET_TOTAL));
+		addField(createReadonlyTextField(Task.PSEUDO_TAG_BUDGET_TOTAL));
 		
 		updateFieldsFromProject();
 	}

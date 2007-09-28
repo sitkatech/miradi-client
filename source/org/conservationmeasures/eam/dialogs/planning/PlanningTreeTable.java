@@ -111,7 +111,7 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 			if(columnTag.equals(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES))
 				return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
 			
-			if(columnTag.equals(Task.PSEUDO_TAG_TASK_BUDGET_TOTAL))
+			if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
 				return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 				
 			return Color.white;
