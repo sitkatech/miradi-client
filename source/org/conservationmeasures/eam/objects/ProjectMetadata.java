@@ -281,7 +281,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamilyValue";
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
 	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
-	public static final String PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS = "PseudoTagProjectTeamMembers";
+	public static final String PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS = "PseudoTagProjectTeamMembersRefs";
 
 	static final String OBJECT_NAME = "ProjectMetadata";
 
