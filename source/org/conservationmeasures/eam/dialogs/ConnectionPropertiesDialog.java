@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.dialogs;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -19,11 +19,11 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.dialogs.DiagramPanel;
-import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
