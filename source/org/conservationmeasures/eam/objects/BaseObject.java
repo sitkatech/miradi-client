@@ -810,6 +810,7 @@ abstract public class BaseObject
 		return null;
 	}
 
+	//FIXME move these classes into their own class in order to avoid dup code and inner classes
 	public class PseudoQuestionData  extends ObjectData
 	{
 	
