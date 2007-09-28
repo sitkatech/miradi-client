@@ -1,8 +1,14 @@
 package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
+import java.util.HashSet;
+
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 
@@ -49,5 +55,74 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			return false;
 		
 		return page.getAllObjectiveRefs().contains(refToAdd);
+	}
+
+	protected void addGoalsAsChildren(ORefList goalRefs) throws Exception
+	{
+		for(int i = 0; i < goalRefs.size(); ++i)
+		{
+			children.add(new PlanningTreeGoalNode(project, goalRefs.get(i)));
+		}
+	}
+	
+	protected void addMissingObjectivesAsChildren(DiagramObject diagram) throws Exception
+	{
+		HashSet<ORef> everythingInTree = getAllRefsInTree();
+		ORefList objectivesInPage = diagram.getAllObjectiveRefs();
+		for(int i = 0; i < objectivesInPage.size(); ++i)
+		{
+			ORef ref = objectivesInPage.get(i);
+			if(everythingInTree.contains(ref))
+				continue;
+			
+			children.add(new PlanningTreeObjectiveNode(project, ref));
+		}
+	}
+	
+	protected ORefList getPotentialChildStrategyRefs(DiagramObject diagram)
+	{
+		ORefList strategyRefs = new ORefList();
+		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(diagramFactorRefs.get(i));
+			ORef factorRef = diagramFactor.getWrappedORef();
+			Factor factor = (Factor) project.findObject(factorRef);
+			if(!factor.isStrategy())
+				continue;
+			
+			if(factor.isStatusDraft())
+				continue;
+			
+			strategyRefs.add(factor.getRef());
+
+		}
+		
+		return strategyRefs;
+	}
+	
+	protected ORefList getPotentialChildrenIndicatorRefs(DiagramObject diagram)
+	{
+		ORefList potentialChildrenRefs = new ORefList();
+		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(diagramFactorRefs.get(i));
+			ORef factorRef = diagramFactor.getWrappedORef();
+			Factor factor = (Factor) project.findObject(factorRef);
+			ORefList indicatorRefs = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
+			potentialChildrenRefs.addAll(indicatorRefs);
+		}
+		
+		return potentialChildrenRefs;
+	}
+
+	protected void rebuild(DiagramObject diagram) throws Exception
+	{
+		ORefList goalRefs = diagram.getAllGoalRefs();
+		addGoalsAsChildren(goalRefs);
+		addMissingObjectivesAsChildren(diagram);
+		addMissingStrategiesAsChildren();
+		addMissingIndicatorsAsChildren();
 	}
 }
