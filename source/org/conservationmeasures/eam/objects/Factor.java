@@ -357,6 +357,9 @@ abstract public class Factor extends BaseObject
 			if(fieldTag.equals(PSEUDO_TAG_TARGETS))
 				return getFactorRelatedTargets();
 			
+			if(fieldTag.equals(PSEUDO_TAG_DIAGRAM_REFS))
+				return getDiagramRefsContainingThisFactor().toString();
+			
 			return super.getPseudoData(fieldTag);
 		}
 		catch(Exception e)
@@ -382,6 +385,20 @@ abstract public class Factor extends BaseObject
 		TargetSet directThreats = new TargetSet(factors);
 		
 		return getLabelsAsMultiline(directThreats);
+	}
+	
+	private ORefList getDiagramRefsContainingThisFactor()
+	{
+		ORefList diagramRefs = new ORefList();
+		
+		ORefList diagramFactorRefs = findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor)getProject().findObject(diagramFactorRefs.get(i));
+			diagramRefs.add(diagramFactor.getOwnerRef());
+		}
+		
+		return diagramRefs;
 	}
 	
 	private String getFactorGoalsAsMultiline() throws ParseException
@@ -422,6 +439,7 @@ abstract public class Factor extends BaseObject
 		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);
 		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
+		pseudoDiagramRefs = new PseudoORefListData(PSEUDO_TAG_DIAGRAM_REFS);
 		
 		addField(TAG_COMMENT, comment);
 		addField(TAG_INDICATOR_IDS, indicators);
@@ -432,6 +450,7 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_OBJECTIVES, multiLineObjectives);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDeirectThreats);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
+		addField(PSEUDO_TAG_DIAGRAM_REFS, pseudoDiagramRefs);
 	}
 
 	public static final FactorType TYPE_TEXT_BOX = new FactorTypeTextBox();
@@ -451,6 +470,7 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_OBJECTIVES = "PseudoTagObjectives";
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
+	public static final String PSEUDO_TAG_DIAGRAM_REFS = "PseudoTagDiagramRefs";
 	
 	private FactorType type;
 	private StringData comment;
@@ -464,4 +484,5 @@ abstract public class Factor extends BaseObject
 	PseudoStringData multiLineObjectives;
 	PseudoStringData multiLineDeirectThreats;
 	PseudoStringData multiLineTargets;
+	private PseudoORefListData pseudoDiagramRefs;
 }
