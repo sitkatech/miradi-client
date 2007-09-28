@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.dialogs.ConnectionPropertiesDialog;
+import org.conservationmeasures.eam.dialogs.LinkCreateDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -33,7 +33,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 	public void doIt() throws CommandFailedException
 	{
 		DiagramView diagramView = getDiagramView();
-		ConnectionPropertiesDialog dialog = new ConnectionPropertiesDialog(getMainWindow(), diagramView.getDiagramPanel());
+		LinkCreateDialog dialog = new LinkCreateDialog(getMainWindow(), diagramView.getDiagramPanel());
 		dialog.setVisible(true);
 		if(!dialog.getResult())
 			return;
