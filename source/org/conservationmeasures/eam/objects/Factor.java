@@ -358,7 +358,7 @@ abstract public class Factor extends BaseObject
 				return getFactorRelatedTargets();
 			
 			if(fieldTag.equals(PSEUDO_TAG_DIAGRAM_REFS))
-				return getDiagramRefsContainingThisFactor().toString();
+				return DiagramObject.getDiagramRefsContainingThisFactor(getProject(), getRef()).toString();
 			
 			return super.getPseudoData(fieldTag);
 		}
@@ -385,20 +385,6 @@ abstract public class Factor extends BaseObject
 		TargetSet directThreats = new TargetSet(factors);
 		
 		return getLabelsAsMultiline(directThreats);
-	}
-	
-	private ORefList getDiagramRefsContainingThisFactor()
-	{
-		ORefList diagramRefs = new ORefList();
-		
-		ORefList diagramFactorRefs = findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		for(int i = 0; i < diagramFactorRefs.size(); ++i)
-		{
-			DiagramFactor diagramFactor = (DiagramFactor)getProject().findObject(diagramFactorRefs.get(i));
-			diagramRefs.add(diagramFactor.getOwnerRef());
-		}
-		
-		return diagramRefs;
 	}
 	
 	private String getFactorGoalsAsMultiline() throws ParseException
