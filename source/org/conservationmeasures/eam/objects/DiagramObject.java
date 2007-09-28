@@ -231,16 +231,24 @@ abstract public class DiagramObject extends BaseObject
 	{
 		ORefList diagramRefs = new ORefList();
 		BaseObject foundObject = projectToUse.findObject(ref);
-		ORefList diagramFactorRefs = foundObject.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		ORefList referrerRefs = getObjectsThatRefferTo(foundObject);
+		for(int i = 0; i < referrerRefs.size(); ++i)
 		{
-			DiagramFactor diagramFactor = (DiagramFactor)projectToUse.findObject(diagramFactorRefs.get(i));
-			diagramRefs.add(diagramFactor.getOwnerRef());
+			BaseObject object = projectToUse.findObject(referrerRefs.get(i));
+			diagramRefs.add(object.getOwnerRef());
 		}
 		
 		return diagramRefs;
 	}
 	
+	private static ORefList getObjectsThatRefferTo(BaseObject foundObject)
+	{
+		if (Factor.isFactor(foundObject.getRef()))
+			return foundObject.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		
+		return foundObject.findObjectsThatReferToUs(DiagramLink.getObjectType());
+	}
+
 	public void clear()
 	{
 		super.clear();
