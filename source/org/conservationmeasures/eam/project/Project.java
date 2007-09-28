@@ -487,8 +487,7 @@ public class Project
 			return;
 		
 		ORef createConceptualModelRef = createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		ConceptualModelDiagram conceptualModel = (ConceptualModelDiagram) findObject(createConceptualModelRef);
-		setObjectData(createConceptualModelRef, ConceptualModelDiagram.TAG_LABEL, conceptualModel.toString());
+		setObjectData(createConceptualModelRef, ConceptualModelDiagram.TAG_LABEL, EAM.text("[Main Diagram]"));
 	}
 	
 	private void createProjectMetadata() throws Exception
