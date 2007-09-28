@@ -106,7 +106,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			strategyRenderer.setClosedIcon(new StrategyIcon());
 			strategyRenderer.setOpenIcon(new StrategyIcon());
 			strategyRenderer.setLeafIcon(new StrategyIcon());
-			strategyRenderer.setFont(getPlainFont());
+			strategyRenderer.setFont(getBoldFont());
 
 			objectiveRenderer = new DefaultTreeCellRenderer();
 			objectiveRenderer.setClosedIcon(new ObjectiveIcon());
