@@ -29,7 +29,8 @@ public class ColumnManager
 		masterColumnList.add(Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE);
 		masterColumnList.add(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
 		masterColumnList.add(Indicator.PSEUDO_TAG_STATUS_VALUE);
-
+		masterColumnList.add(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
+		
 		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		masterColumnList.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_TOTAL);
@@ -66,6 +67,7 @@ public class ColumnManager
 	{
 		String[] list = {
 				Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE,
+				Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
 //				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 //				Task.PSEUDO_TAG_TASK_TOTAL, 

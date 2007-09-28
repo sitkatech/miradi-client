@@ -24,6 +24,7 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 							Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE,
 							Desire.PSEUDO_TAG_FACTOR,
 							Task.PSEUDO_TAG_TASK_BUDGET_TOTAL,
+							Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
 //							Strategy.PSEUDO_TAG_PROGRESS,
 //							Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //							Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
