@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.util.Vector;
+
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -16,6 +18,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.FactorDeleteHelper;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -78,14 +82,21 @@ public class DeleteSelectedItemDoer extends ViewDoer
 
 	private void notifyUserIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
 	{
-		if (!shouldNotifyUserOfLinksBeingDeletedInOtherPages(selectedRelatedCells, extractDiagramFactors(selectedRelatedCells)))
+		Vector diagramNames = shouldNotifyUserOfLinksBeingDeletedInOtherPages(selectedRelatedCells, extractDiagramFactors(selectedRelatedCells));
+		if (diagramNames.size() <= 1)
 			return;
-		
-		EAM.notifyDialog(LINK_DELETE_NOTIFY_TEXT);
+
+		String notifyDiaglogText = LINK_DELETE_NOTIFY_TEXT; 
+		for (int i = 0 ; i < diagramNames.size(); ++i)
+		{
+			notifyDiaglogText += " \n " + diagramNames.get(i);
+		}
+		EAM.notifyDialog(notifyDiaglogText);
 	}
-	 
-	private boolean shouldNotifyUserOfLinksBeingDeletedInOtherPages(EAMGraphCell[] selectedRelatedCells, ORefList diagramFactorRefs)
+
+	private Vector shouldNotifyUserOfLinksBeingDeletedInOtherPages(EAMGraphCell[] selectedRelatedCells, ORefList diagramFactorRefs)
 	{	
+		Vector diagramNames = new Vector(); 
 		for (int i = 0; i < selectedRelatedCells.length; ++i)
 		{
 			EAMGraphCell cell = selectedRelatedCells[i];
@@ -93,15 +104,39 @@ public class DeleteSelectedItemDoer extends ViewDoer
 				continue;
 			
 			DiagramLink diagramLink = cell.getDiagramLink();
+			FactorLink factorLink = diagramLink.getUnderlyingLink();
 			ORef fromDiagramFactorRef =  new ORef(DiagramFactor.getObjectType(), diagramLink.getFromDiagramFactorId());
 			ORef toDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramLink.getToDiagramFactorId());
-			if (!diagramFactorRefs.contains(fromDiagramFactorRef) && !diagramFactorRefs.contains(toDiagramFactorRef))
-				return true;
+			ORefList diagramLinkRefs = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+			boolean containsBothFromAndTo = !diagramFactorRefs.contains(fromDiagramFactorRef) && !diagramFactorRefs.contains(toDiagramFactorRef);
+			boolean hasMoreThanOneRefferer = diagramLinkRefs.size() > 1;
+			if (hasMoreThanOneRefferer && containsBothFromAndTo)
+				diagramNames.addAll(getAllDiagramsThatRefer(diagramNames, factorLink));
 		}
 		
-		return false;
+		return diagramNames;
 	}
 	
+	private Vector getAllDiagramsThatRefer(Vector existingDiagramNames, FactorLink factorLink)
+	{
+		Vector diagramNames = new Vector();
+		ORefList diagramRefs = DiagramObject.getDiagramRefsContainingThisFactor(getProject(), factorLink.getRef());
+		for (int i = 0; i < diagramRefs.size(); ++i)
+		{
+			DiagramObject diagramObject = (DiagramObject) getProject().findObject(diagramRefs.get(i));
+			String diagramObjectLabel = diagramObject.toString();
+			if (existingDiagramNames.contains(diagramObjectLabel))
+				continue;
+			
+			if (diagramObjectLabel.length() == 0)
+				diagramObjectLabel = EAM.text("[Main Diagram]");
+			
+			diagramNames.add(diagramObjectLabel);
+		}
+		
+		return diagramNames;
+	}
+
 	private ORefList extractFactors(EAMGraphCell[] selectedRelatedCells)
 	{
 		ORefList factorRefList = new ORefList();
