@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -223,9 +224,6 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_SUBTASK_TOTAL))
 			return getSubtaskTotalCost();
 		
-		if (fieldTag.equals(PSEUDO_TAG_TASK_BUDGET_TOTAL))
-			return getTaskTotalCost();
-		
 		if (fieldTag.equals(PSEUDO_TAG_TASK_COST))
 			return getTaskCost();
 		
@@ -346,23 +344,19 @@ public class Task extends BaseObject
 		}
 	}
 
-	private String getTaskTotalCost()
+	public String getBudgetTotals()
 	{	
 		try
 		{
 			if (getSubtaskCount() > 0)
 				return getSubtaskTotalCost();
 			
-			BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(objectManager.getProject());
-			double totalTaskCost = calculator.getTotalTaskCost((TaskId)getId());
-			if (totalTaskCost == 0)
-				return "";
-					
-			return formateResults(totalTaskCost);
+			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
+			EAM.logWarning("Error occurred while calculating budget total for task");
 			return "";
 		}
 	}
