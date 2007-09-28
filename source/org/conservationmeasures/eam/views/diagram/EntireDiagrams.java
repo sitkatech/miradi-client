@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.project.Project;
 
-public class EntireConceptualModel
+public class EntireDiagrams
 {
 	public static DiagramFactor[] getAllDiagramFactorsInAllConceptualModels(Project project)
 	{
