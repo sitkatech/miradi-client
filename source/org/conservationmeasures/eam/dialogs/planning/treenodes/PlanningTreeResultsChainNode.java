@@ -21,11 +21,6 @@ public class PlanningTreeResultsChainNode extends AbstractPlanningTreeDiagramNod
 		rebuild(diagram);
 	}
 
-	public boolean attemptToAdd(ORef refToAdd) throws Exception
-	{
-		return attemptToAddToPage(object, refToAdd);
-	}
-
 	public BaseObject getObject()
 	{
 		return object;

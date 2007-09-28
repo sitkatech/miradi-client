@@ -22,20 +22,6 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 			children.add(new PlanningTreeTaskNode(project, activityRefs.get(i)));
 	}
 
-	public boolean attemptToAdd(ORef refToAdd) throws Exception
-	{
-		if(attemptToAddToChildren(refToAdd))
-			return true;
-		
-		if(strategy.getActivities().contains(refToAdd))
-		{
-			children.add(new PlanningTreeTaskNode(project, refToAdd));
-			return true;
-		}
-
-		return false;
-	}
-
 	public BaseObject getObject()
 	{
 		return strategy;

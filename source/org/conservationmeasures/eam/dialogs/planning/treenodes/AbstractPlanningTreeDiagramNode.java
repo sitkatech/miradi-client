@@ -20,27 +20,6 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		super(projectToUse);
 	}
 
-	protected boolean attemptToAddToPage(DiagramObject page, ORef refToAdd) throws Exception
-	{
-		boolean wasAdded = attemptToAddToChildren(refToAdd);
-		if(wasAdded)
-			return wasAdded;
-		
-		if(isGoalOnThisPage(page, refToAdd))
-		{
-			children.add(new PlanningTreeGoalNode(project, refToAdd));
-			wasAdded = true;
-		}
-		
-		if(isObjectiveOnThisPage(page, refToAdd))
-		{
-			children.add(new PlanningTreeObjectiveNode(project, refToAdd));
-			wasAdded = true;
-		}
-		
-		return wasAdded;		
-	}
-
 	boolean isGoalOnThisPage(DiagramObject page, ORef refToAdd)
 	{
 		if(refToAdd.getObjectType() != Goal.getObjectType())
