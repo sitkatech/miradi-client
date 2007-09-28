@@ -288,7 +288,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean areAliasesInConceptualModelsOnly(DiagramFactor diagramFactorToCheck) throws Exception
 	{
-		DiagramFactor[] allDiagramFactors = EntireDiagrams.getAllDiagramFactorsInAllConceptualModels(project);
+		DiagramFactor[] allDiagramFactors = EntireDiagrams.getAllDiagramFactorsInAllDiagrams(project);
 		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
 			DiagramFactor possibleAliasDiagramFactor = allDiagramFactors[i];
