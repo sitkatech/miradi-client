@@ -89,6 +89,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			updateEditabilityOfTargetStatusField();
 		}
 		
+		addField(createReadOnlyObjectList(getFactor().getType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
+		
 		updateFieldsFromProject();
 
 		if(getFactor().isTarget())
