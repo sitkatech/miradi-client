@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class DiagramObject extends BaseObject
@@ -223,6 +224,21 @@ abstract public class DiagramObject extends BaseObject
 				break;
 		}
 		return list;
+	}
+	
+	//TODO not sure this the right place for this method
+	public static ORefList getDiagramRefsContainingThisFactor(Project projectToUse, ORef ref)
+	{
+		ORefList diagramRefs = new ORefList();
+		BaseObject foundObject = projectToUse.findObject(ref);
+		ORefList diagramFactorRefs = foundObject.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor)projectToUse.findObject(diagramFactorRefs.get(i));
+			diagramRefs.add(diagramFactor.getOwnerRef());
+		}
+		
+		return diagramRefs;
 	}
 	
 	public void clear()
