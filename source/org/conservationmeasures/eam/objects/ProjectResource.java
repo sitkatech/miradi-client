@@ -8,12 +8,13 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.NumberData;
-import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ProjectResource extends BaseObject
@@ -65,6 +66,15 @@ public class ProjectResource extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
+		return false;
+	}
+	
+	public boolean hasRole(String code) throws Exception
+	{
+		CodeList codeRoles = getCodeList(ProjectResource.TAG_ROLE_CODES);
+		if (codeRoles.contains(code))
+			return true;
+		
 		return false;
 	}
 

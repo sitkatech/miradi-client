@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
-import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ProjectMetadata extends BaseObject
@@ -106,8 +105,7 @@ public class ProjectMetadata extends BaseObject
 			ProjectResource[] projectResources = getProject().getAllProjectResources();
 			for (int i = 0; i < projectResources.length; ++i)
 			{
-				CodeList codeRoles = projectResources[i].getCodeList(ProjectResource.TAG_ROLE_CODES);
-				if (!codeRoles.contains(ResourceRoleQuestion.TeamMemberRoleCode))
+				if (! projectResources[i].hasRole(ResourceRoleQuestion.TeamMemberRoleCode))
 					continue;
 				
 				teamMembers.add(projectResources[i].getRef());
