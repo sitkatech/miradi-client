@@ -429,7 +429,6 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public final static String PSEUDO_TAG_SUBTASK_TOTAL = "SubtaskTotal";
-	public final static String PSEUDO_TAG_TASK_BUDGET_TOTAL = "TaskBudgetTotal";
 	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "TaskBudgetDetail";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
