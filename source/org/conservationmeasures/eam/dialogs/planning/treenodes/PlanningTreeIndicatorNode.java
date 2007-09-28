@@ -27,5 +27,10 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 		return indicator;
 	}
 
+	boolean shouldSortChildren()
+	{
+		return false;
+	}
+
 	Indicator indicator;
 }
