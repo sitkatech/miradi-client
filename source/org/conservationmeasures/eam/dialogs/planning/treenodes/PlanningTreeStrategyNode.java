@@ -27,5 +27,10 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 		return strategy;
 	}
 
+	boolean shouldSortChildren()
+	{
+		return false;
+	}
+
 	Strategy strategy;
 }
