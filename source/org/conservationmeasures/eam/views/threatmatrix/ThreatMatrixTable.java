@@ -117,20 +117,22 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		bundleColumnSortHandler.sort(sortColumn);
 	}
 
-	public boolean areLinked(int row, int column)
+	public boolean areLinked(int row, int tableColumn)
 	{
 		ThreatMatrixTableModel model = (ThreatMatrixTableModel) getModel();
-		return model.getProject().isLinked(model.getThreatId(row), model.getTargetId(column));
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		return model.getProject().isLinked(model.getThreatId(row), model.getTargetId(modelColumn));
 	}
 	
-	private boolean canBeLinked(ThreatMatrixTable table, int row, int col)
+	private boolean canBeLinked(ThreatMatrixTable table, int row, int tableColumn)
 	{
-		if (table.areLinked(row, col))
+		if (table.areLinked(row, tableColumn))
 			return false;
 		
+		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ThreatMatrixTableModel model = (ThreatMatrixTableModel) getModel();
 		FactorId fromFactorId = model.getThreatId(row);
-		FactorId toFactorId = model.getTargetId(col);
+		FactorId toFactorId = model.getTargetId(modelColumn);
 		
 		if (! areBothFactorsContainedInAnyConceptualModel(fromFactorId, toFactorId))
 			return false;
@@ -173,24 +175,26 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			ThreatMatrixTable table = (ThreatMatrixTable) event.getSource();
 	    	ThreatMatrixTableModel model = (ThreatMatrixTableModel)table.getModel();
 			int row = table.rowAtPoint(event.getPoint());
-			int col = table.columnAtPoint(event.getPoint());
-			if(model.isSummaryData(row, col))
+			int tableColumn = table.columnAtPoint(event.getPoint());
+			int modelColumn = table.convertColumnIndexToModel(tableColumn);
+			if(model.isSummaryData(row, modelColumn))
 				return;
-			JPopupMenu menu = getRightClickMenu(table, row, col);
+			JPopupMenu menu = getRightClickMenu(table, row, tableColumn);
 			menu.show(table, event.getX(), event.getY());
 		}
 	    
-		private JPopupMenu getRightClickMenu(ThreatMatrixTable table, int row, int col)
+		private JPopupMenu getRightClickMenu(ThreatMatrixTable table, int row, int tableColumn)
 		{
 			JPopupMenu menu = new JPopupMenu();
-			boolean canBeLinked = canBeLinked(table, row, col);
-			
-			EAMenuItem creamMenuItem = new EAMenuItem(new ActionCreateFactorLink(row, col));
+			boolean canBeLinked = canBeLinked(table, row, tableColumn);
+			int modelColumn = table.convertColumnIndexToModel(tableColumn);
+
+			EAMenuItem creamMenuItem = new EAMenuItem(new ActionCreateFactorLink(row, modelColumn));
 			creamMenuItem.setEnabled(canBeLinked);
 			creamMenuItem.setText(EAM.text("Create Link"));
 			
-			boolean areLinked = table.areLinked(row, col);
-			EAMenuItem deleteMenuItem = new EAMenuItem(new ActionDeleteFactorLink(row, col));
+			boolean areLinked = table.areLinked(row, tableColumn);
+			EAMenuItem deleteMenuItem = new EAMenuItem(new ActionDeleteFactorLink(row, modelColumn));
 			deleteMenuItem.setEnabled(areLinked);
 			deleteMenuItem.setText(EAM.text("Delete Link"));
 			
@@ -202,10 +206,10 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 	
 	class ActionDeleteFactorLink extends AbstractAction
 	{
-		public ActionDeleteFactorLink(int rowToUse, int colToUse)
+		public ActionDeleteFactorLink(int rowToUse, int modelColumnToUse)
 		{
 			row = rowToUse;
-			col = colToUse;
+			modelColumn = modelColumnToUse;
 		}
 		
 		public void actionPerformed(ActionEvent event)
@@ -213,7 +217,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
 			Project project = model.getProject();
 			FactorId threatId = model.getThreatId(row); 
-			FactorId targetId = model.getTargetId(col);
+			FactorId targetId = model.getTargetId(modelColumn);
 			FactorLinkId factorLinkId = project.getFactorLinkPool().getLinkedId(threatId, targetId);
 
 			if (!userConfirmsLinkDeletion())
@@ -252,15 +256,15 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		}
 		
 		int row;
-		int col;
+		int modelColumn;
 	}
 	
 	class ActionCreateFactorLink extends AbstractAction
 	{
-		public ActionCreateFactorLink(int rowToUse, int colToUse)
+		public ActionCreateFactorLink(int rowToUse, int modelColumnToUse)
 		{
 			row = rowToUse;
-			col = colToUse;
+			modelColumn = modelColumnToUse;
 		}
 		
 		public void actionPerformed(ActionEvent e)
@@ -281,7 +285,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 			try
 			{
 				FactorId fromThreatId = model.getThreatId(row);
-				FactorId toTargetId = model.getTargetId(col);
+				FactorId toTargetId = model.getTargetId(modelColumn);
 				createLinksInConceptualModels(fromThreatId, toTargetId);
 			}
 			catch (Exception ex)
@@ -309,7 +313,7 @@ public class ThreatMatrixTable extends TableWithHelperMethods
 		}
 
 		int row;
-		int col;
+		int modelColumn;
 	}
 	
 	private BundleColumnSortHandler bundleColumnSortHandler;
