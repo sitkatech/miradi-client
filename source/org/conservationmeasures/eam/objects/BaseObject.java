@@ -939,7 +939,7 @@ abstract public class BaseObject
 	
 	public static final String DEFAULT_LABEL = "";
 	
-	public static final String PSEUDO_TAG_BUDGET_TOTAL = "pseudoBudgetTotal";
+	public final static String PSEUDO_TAG_TASK_BUDGET_TOTAL = "TaskBudgetTotal";
 	
 	BaseId id;
 	StringData label;

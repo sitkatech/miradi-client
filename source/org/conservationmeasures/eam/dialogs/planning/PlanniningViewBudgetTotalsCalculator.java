@@ -363,29 +363,30 @@ public class PlanniningViewBudgetTotalsCalculator
 		return getTotalTasksCost(indicator.getTaskIdList(), dateRange);
 	}
 	
-	public double calculateTotalCost(TreeTableNode node, DateRange dateRange)
+	public double calculateTotalCost(ORef ref, DateRange dateRange)
 	{
 		try
 		{
-			ORef oRef = node.getObjectReference();
-			int type = node.getObjectReference().getObjectType();
-
-			if (type == ObjectType.INDICATOR)
-				return getTotalIndicatorCost(oRef, dateRange);
+			if (ref.getObjectType() == ObjectType.INDICATOR)
+				return getTotalIndicatorCost(ref, dateRange);
 			
-			if (type == ObjectType.STRATEGY)
-				return getTotalStrategyCost(getFactor(oRef), dateRange);
+			if (ref.getObjectType() == ObjectType.STRATEGY)
+				return getTotalStrategyCost(getFactor(ref), dateRange);
 
-			if (oRef.getObjectType() == ObjectType.TASK)
-				return getTotalTaskCost(new TaskId(oRef.getObjectId().asInt()), dateRange);
+			if (ref.getObjectType() == ObjectType.TASK)
+				return getTotalTaskCost(new TaskId(ref.getObjectId().asInt()), dateRange);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
-		return  0.0;
+		return  0.0;		
 	}
-
+	
+	public double calculateTotalCost(TreeTableNode node, DateRange dateRange)
+	{
+		return calculateTotalCost(node.getObjectReference(), dateRange);
+	}
 	
 	private void calculateTotalAssignment(Task task, DateRange dateRangeToUse) throws Exception
 	{
