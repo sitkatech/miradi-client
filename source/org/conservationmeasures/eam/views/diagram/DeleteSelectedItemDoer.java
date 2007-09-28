@@ -127,7 +127,8 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			String diagramObjectLabel = diagramObject.toString();
 			if (existingDiagramNames.contains(diagramObjectLabel))
 				continue;
-			
+	
+			//FIXME First main diagram does not have a name,  
 			if (diagramObjectLabel.length() == 0)
 				diagramObjectLabel = EAM.text("[Main Diagram]");
 			
