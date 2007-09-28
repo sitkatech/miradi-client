@@ -24,7 +24,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 
 		addField(createStringField(ProjectResource.TAG_NAME));
 		addFieldWithCustomLabelAndHint(createStringField(ProjectResource.TAG_INITIALS,STD_SHORT), "(for people, use their initials)");
-		addField(createMultiCodeField(new ResourceRoleQuestion(ProjectResource.TAG_ROLE_CODES)));
+		addField(createMultiCodeField(new ResourceRoleQuestion(ProjectResource.TAG_ROLE_CODES), 3));
 		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
 		addField(createStringField(ProjectResource.TAG_POSITION));
 		addField(createStringField(ProjectResource.TAG_PHONE_NUMBER));

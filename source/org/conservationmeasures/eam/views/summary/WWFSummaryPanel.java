@@ -36,11 +36,11 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 		addField(createNumericField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_BUDGET_SECURED_PERCENT));
 		addField(createReadOnlyObjectList(ProjectMetadata.getObjectType(), ProjectMetadata.PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS));
 		
-		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfManagingOfficesQuestion(WwfProjectData.TAG_MANAGING_OFFICES)));
-		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfRegionsQuestion(WwfProjectData.TAG_REGIONS)));
-		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfCountriesQuestion(WwfProjectData.TAG_COUNTRIES)));
-		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfEcoRegionsQuestion(WwfProjectData.TAG_ECOREGIONS)));
-		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfLinkToGlobalTargetsQuestion(WwfProjectData.TAG_LINK_TO_GLOBAL_TARGETS)));
+		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfManagingOfficesQuestion(WwfProjectData.TAG_MANAGING_OFFICES), 1));
+		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfRegionsQuestion(WwfProjectData.TAG_REGIONS), 1));
+		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfCountriesQuestion(WwfProjectData.TAG_COUNTRIES), 1));
+		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfEcoRegionsQuestion(WwfProjectData.TAG_ECOREGIONS), 1));
+		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfLinkToGlobalTargetsQuestion(WwfProjectData.TAG_LINK_TO_GLOBAL_TARGETS), 1));
 		
 		
 		setObjectRefs(new ORef[] {metaDataToUse.getRef(), getWwfProjectDataRef()});
