@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.project.Project;
 
 public class EntireDiagrams
 {
-	public static DiagramFactor[] getAllDiagramFactorsInAllConceptualModels(Project project)
+	public static DiagramFactor[] getAllDiagramFactorsInAllDiagrams(Project project)
 	{
 		Vector diagramFactors = new Vector();
 		ORefList conceptualModels = project.getConceptualModelDiagramPool().getORefList();
