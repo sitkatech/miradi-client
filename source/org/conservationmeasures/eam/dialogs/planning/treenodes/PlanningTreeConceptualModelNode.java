@@ -1,7 +1,6 @@
 package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
@@ -52,21 +51,6 @@ public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeDiagram
 		}
 
 		return indicatorRefs;
-	}
-
-	public boolean attemptToAdd(ORef refToAdd) throws Exception
-	{
-		boolean wasAdded = false;
-		
-		ORefList pageRefs = project.getConceptualModelDiagramPool().getORefList();
-		for(int i = 0; i < pageRefs.size(); ++i)
-		{
-			ConceptualModelDiagram page = (ConceptualModelDiagram) project.findObject(pageRefs.get(i));
-			if(attemptToAddToPage(page, refToAdd))
-				wasAdded = true;
-		}
-		
-		return wasAdded;
 	}
 
 	public BaseObject getObject()

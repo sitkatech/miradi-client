@@ -22,8 +22,6 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public abstract class AbstractPlanningTreeNode extends TreeTableNode
 {
-	abstract public boolean attemptToAdd(ORef refToAdd) throws Exception;
-
 	public AbstractPlanningTreeNode(Project projectToUse)
 	{
 		project = projectToUse;
@@ -67,18 +65,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return getObject().getLabel();
 	}
 
-	protected boolean attemptToAddToChildren(ORef refToAdd) throws Exception
-	{
-		boolean wasAdded = false;
-		
-		for(int i = 0; i < children.size(); ++i)
-		{
-			if(children.get(i).attemptToAdd(refToAdd))
-				wasAdded = true;
-		}
-		return wasAdded;
-	}
-	
 	protected HashSet<ORef> getAllRefsInTree()
 	{
 		HashSet<ORef> refs = new HashSet();

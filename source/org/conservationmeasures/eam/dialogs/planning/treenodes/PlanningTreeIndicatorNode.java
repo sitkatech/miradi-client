@@ -22,20 +22,6 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 			children.add(new PlanningTreeTaskNode(project, methodRefs.get(i)));
 	}
 
-	public boolean attemptToAdd(ORef refToAdd) throws Exception
-	{
-		if(attemptToAddToChildren(refToAdd))
-			return true;
-		
-		if(indicator.getMethods().contains(refToAdd))
-		{
-			children.add(new PlanningTreeTaskNode(project, refToAdd));
-			return true;
-		}
-
-		return false;
-	}
-
 	public BaseObject getObject()
 	{
 		return indicator;
