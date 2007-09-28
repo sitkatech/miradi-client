@@ -28,9 +28,4 @@ public class ObjectCurrencyInputField extends ObjectStringInputField
 		}
 		super.setText(newValue);
 	}
-	
-	public String getText()
-	{
-		return super.getText();
-	}
 }
