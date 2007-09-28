@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.planning.legend;
 import java.awt.Component;
 import java.util.Hashtable;
 
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -97,8 +96,9 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	
 	private void selectDefaults() throws Exception
 	{
-		radioGroup.selectAppropriateRadioButton();
 		selectAppropriateSingleLevelComboBoxItem();
+		selectAppropriateConfiguredComboBoxItem();
+		radioGroup.selectAppropriateRadioButton();
 	}
 	
 	private void addRadioButtonWithLeftComponent(JRadioButton radioButton, Component leftComponent)
@@ -202,14 +202,14 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 	
 	private void setComboBoxSelection(String comboName, String itemProperty)
 	{		
-		JComboBox comboBox = (JComboBox) comboBoxes.get(comboName);
+		PlanningViewComboBox comboBox = (PlanningViewComboBox) comboBoxes.get(comboName);
 		ChoiceItem currentSelection = (ChoiceItem)comboBox.getSelectedItem();
 		PlanningViewSingleLevelQuestion question = new PlanningViewSingleLevelQuestion();
 		ChoiceItem choiceItemToSelect = question.findChoiceByCode(itemProperty);
 		if (currentSelection.equals(choiceItemToSelect))
 			return;
 		
-		comboBox.setSelectedItem(choiceItemToSelect);
+		comboBox.setSelectedItemWithoutFiring(choiceItemToSelect);
 	}
 
 	private void setCustomizationComboBoxSelection(ORef refToSelect)
