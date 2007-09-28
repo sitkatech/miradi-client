@@ -37,9 +37,9 @@ import org.martus.swing.Utilities;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class ConnectionPropertiesDialog extends EAMDialog implements ActionListener
+public class LinkCreateDialog extends EAMDialog implements ActionListener
 {
-	public ConnectionPropertiesDialog(MainWindow parent, DiagramPanel panelToUse) throws HeadlessException
+	public LinkCreateDialog(MainWindow parent, DiagramPanel panelToUse) throws HeadlessException
 	{
 		super(parent, EAM.text("Title|Link Properties"));
 		
