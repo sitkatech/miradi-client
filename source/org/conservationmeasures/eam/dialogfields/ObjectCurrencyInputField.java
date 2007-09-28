@@ -31,16 +31,6 @@ public class ObjectCurrencyInputField extends ObjectStringInputField
 	
 	public String getText()
 	{
-		String text = super.getText();
-		try
-		{
-			double parsed = Double.parseDouble(text);
-			return Double.toString(parsed);
-		}
-		catch (Exception e)
-		{
-			//Ignore. we dont care if it failed due to parsing a none double value
-			return text;
-		}
+		return super.getText();
 	}
 }
