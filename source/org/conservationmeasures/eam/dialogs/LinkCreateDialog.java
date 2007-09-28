@@ -7,14 +7,16 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -29,13 +31,15 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.martus.swing.UiButton;
-import org.martus.swing.UiComboBox;
+import org.martus.swing.UiList;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 
-import com.jhlabs.awt.BasicGridLayout;
+import com.jhlabs.awt.Alignment;
+import com.jhlabs.awt.GridLayoutPlus;
 
 public class LinkCreateDialog extends EAMDialog implements ActionListener
 {
@@ -63,32 +67,59 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 		linkToList = createChoices(FactorLink.TO);
 		DiagramComponent diagram = diagramPanel.getdiagramComponent();
 
-		FactorCell firstSelected = diagram.getSelectedFactor(0);
-		if(firstSelected != null)
-			linkFromList.setSelectedItem(new FactorDropDownItem(firstSelected.getUnderlyingObject(), firstSelected.getDiagramFactor()));
+		GridLayoutPlus layout = new GridLayoutPlus(2,1);
+		layout.setFill(Alignment.FILL_NONE);
+		layout.setAlignment(Alignment.CENTER);
+		JPanel vbox = new JPanel(layout);
 		
-		FactorCell secondSelected = diagram.getSelectedFactor(1);
-		if(secondSelected != null)
-			linkToList.setSelectedItem(new FactorDropDownItem(secondSelected.getUnderlyingObject(), secondSelected.getDiagramFactor()));
-
-		JPanel vbox = new JPanel(new BasicGridLayout(2,1));
+		FastScrollPane fromScroller = createScroller(linkFromList);
+		FastScrollPane toScroller = createScroller(linkToList);
 		
 		Box box = Box.createHorizontalBox();
-		Component[] components = {linkFromList, new PanelTitleLabel(EAM.text("Label| affects ")), linkToList};
+		Component[] components = {
+				fromScroller, 
+				Box.createHorizontalStrut(20), 
+				new PanelTitleLabel(EAM.text("Label|--- affects -->")), 
+				Box.createHorizontalStrut(20), 
+				toScroller,
+		};
 		Utilities.addComponentsRespectingOrientation(box, components);
 		vbox.add(box);
 
+		FactorCell firstSelected = diagram.getSelectedFactor(0);
+		FactorCell secondSelected = diagram.getSelectedFactor(1);
 		if (firstSelected==null || secondSelected==null)
-			vbox.add(new PanelTitleLabel(EAM.text("  HINT: You can quickly add links by selecting the first factor, " +
-			"holding Ctrl while selecting the second factor, and then hitting the add link button.  ")));
+		{
+			vbox.add(new PanelTitleLabel(EAM.text("<html>" +
+					"<br>" +
+					"<em><strong>HINT:</strong> You can quickly add links by selecting both factors in the diagram before hitting the Create Link button. <br>" +
+					"On most systems, to select the second factor, hold down Ctrl while clicking the second factor in the diagram.<br>" +
+					"")));
+		}
 			
+		if(firstSelected != null)
+			linkFromList.setSelectedValue(new FactorDropDownItem(firstSelected.getUnderlyingObject(), firstSelected.getDiagramFactor()), true);
+		
+		if(secondSelected != null)
+			linkToList.setSelectedValue(new FactorDropDownItem(secondSelected.getUnderlyingObject(), secondSelected.getDiagramFactor()), true);
+
 		return vbox;
 	}
 	
-	private UiComboBox createChoices(int linkFromTo)
+	private FastScrollPane createScroller(UiList listToWrap)
 	{
-		UiComboBox comboBox = new UiComboBox();
-		comboBox.addItem(EAM.text("Label|--Select One---"));
+		Dimension baseDimension = listToWrap.getPreferredScrollableViewportSize();
+		final int ARBITRARY_REASONABLE_WIDTH = 300;
+		final int ARBITRARY_REASONABLE_HEIGHT = 400;
+		int width = Math.min(ARBITRARY_REASONABLE_WIDTH, baseDimension.width);
+		int height = Math.min(ARBITRARY_REASONABLE_HEIGHT, baseDimension.height);
+		FastScrollPane scroller = new FastScrollPane(listToWrap);
+		scroller.getViewport().setPreferredSize(new Dimension(width, height));
+		return scroller;
+	}
+	
+	private UiList createChoices(int linkFromTo)
+	{
 		
 		DiagramModel model = diagramPanel.getDiagramModel();
 		DiagramFactor[] allDiagramFactors = model.getAllDiagramFactorsAsArray();
@@ -101,8 +132,11 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 			Factor factor = factors[i];
 			dropDownItems.add(new FactorDropDownItem(factor, filteredDiagramFactors[i]));
 		}
-		
-		return addItemsToComboBoxAndSort(comboBox, dropDownItems);
+
+		Collections.sort(dropDownItems, new IgnoreCaseStringComparator());
+		UiList list = new UiList(dropDownItems);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		return list;
 	}
 
 	private DiagramFactor[] getFilteredDiagramFactors(DiagramFactor[] allDiagramFactors)
@@ -115,18 +149,6 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 		}
 			
 		return (DiagramFactor[]) filterdDiagramFactors.toArray(new DiagramFactor[0]);
-	}
-
-	private UiComboBox addItemsToComboBoxAndSort(UiComboBox comboBox, Vector dropDownItems)
-	{
-		FactorDropDownItem[] items = (FactorDropDownItem[]) dropDownItems.toArray(new FactorDropDownItem[0]);
-		Arrays.sort(items, new IgnoreCaseStringComparator());
-		for (int i = 0; i < items.length; i++)
-		{
-			comboBox.addItem(items[i]);
-		}
-		
-		return comboBox;
 	}
 
 	private Factor[] convertToFactorList(Project project, DiagramFactor[] allDiagramFactors)
@@ -202,7 +224,7 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 	{
 		if(event.getSource() == okButton)
 		{
-			if(linkFromList.getSelectedIndex() == 0 || linkToList.getSelectedIndex() == 0)
+			if(linkFromList.getSelectedIndex() < 0 || linkToList.getSelectedIndex() < 0)
 			{
 				String title = EAM.text("Incomplete Link");
 				String body = EAM.text("You must select one item in each of the two lists");
@@ -222,20 +244,20 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 	
 	public DiagramFactor getFrom()
 	{
-		FactorDropDownItem item = (FactorDropDownItem)linkFromList.getSelectedItem();
+		FactorDropDownItem item = (FactorDropDownItem)linkFromList.getSelectedValue();
 		return item.getDiagramFactor();
 	}
 	
 	public DiagramFactor getTo()
 	{
-		FactorDropDownItem item = (FactorDropDownItem)linkToList.getSelectedItem();
+		FactorDropDownItem item = (FactorDropDownItem)linkToList.getSelectedValue();
 		return item.getDiagramFactor();
 	}
 	
 	DiagramPanel diagramPanel;
 	boolean result;
-	UiComboBox linkFromList;
-	UiComboBox linkToList;
+	UiList linkFromList;
+	UiList linkToList;
 	UiButton okButton;
 	UiButton cancelButton;
 }
