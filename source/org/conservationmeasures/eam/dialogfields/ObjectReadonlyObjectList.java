@@ -34,13 +34,8 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 			String names = "";
 			for (int i = 0; i < orefList.size(); ++i)
 			{
-				BaseObject object = project.findObject(orefList.get(i));
-				if (i > 0)
-				{
-					names += "\n";
-				}
-				
-				names += object.toString();
+				BaseObject object = project.findObject(orefList.get(i)); 
+				names += object.toString() + "\n";
 			}
 			textArea.setText(names);
 		}
