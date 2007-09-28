@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -222,6 +223,20 @@ public class Strategy extends Factor
 	public String getShortLabel()
 	{
 		return shortLabel.toString();
+	}
+	
+	public String getBudgetTotals()
+	{
+		try
+		{
+			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.logWarning("Error occurred while calculating budget total for strategy");
+			return "";
+		}
 	}
 	
 	void clear()

@@ -318,14 +318,20 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
+	public String getBudgetTotals()
+	{
+		return "";
+	}
+	
 	void clear()
 	{
 		label = new StringData();
+		budgetTotal = new PseudoStringData(PSEUDO_TAG_TASK_BUDGET_TOTAL);
 		
 		fields = new HashMap();
 		noneClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
-
+		addField(PSEUDO_TAG_TASK_BUDGET_TOTAL, budgetTotal);
 	}
 	
 	void addField(String tag, ObjectData data)
@@ -789,6 +795,9 @@ abstract public class BaseObject
 
 	public String getPseudoData(String fieldTag)
 	{
+		if(fieldTag.equals(PSEUDO_TAG_TASK_BUDGET_TOTAL))
+			return getBudgetTotals();
+		
 		return getData(fieldTag);
 	}
 	
@@ -939,10 +948,12 @@ abstract public class BaseObject
 	
 	public static final String DEFAULT_LABEL = "";
 	
+	//TODO rename this and remove Task;
 	public final static String PSEUDO_TAG_TASK_BUDGET_TOTAL = "TaskBudgetTotal";
 	
 	BaseId id;
 	StringData label;
+	private PseudoStringData budgetTotal;
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
 	private HashMap fields;

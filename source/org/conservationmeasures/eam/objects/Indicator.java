@@ -5,9 +5,11 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
@@ -97,7 +99,19 @@ public class Indicator extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 	
-	
+	public String getBudgetTotals()
+	{
+		try
+		{
+			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.logWarning("Error occurred while calculating budget total for indicator");
+			return "";
+		}
+	}
 	
 	private String getIndicatorMethodsSingleLine()
 	{

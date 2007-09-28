@@ -67,6 +67,9 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		if (! baseObject.doesFieldExist(columnTag))
 			return "";
 		
+		if (baseObject.isPseudoField(columnTag))
+			return baseObject.getPseudoData(columnTag);
+			
 		return baseObject.getData(columnTag);
 	}
 	

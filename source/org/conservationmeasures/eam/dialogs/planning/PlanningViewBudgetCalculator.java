@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -18,7 +19,7 @@ public class PlanningViewBudgetCalculator
 	{
 		totalCalculator = new PlanniningViewBudgetTotalsCalculator(projectToUse);
 		yearlyDateRanges = new ProjectCalendar(projectToUse).getYearlyDateRanges();
-	
+		currencyFormatter = projectToUse.getCurrencyFormatter();
 		combineAllDateRangesIntoOne();
 	}
 	
@@ -34,7 +35,17 @@ public class PlanningViewBudgetCalculator
        return totalCalculator.calculateTotalCost(ref, combinedDataRange);
 	}
 	
+	public String getBudgetTotals(ORef ref) throws Exception
+	{
+		double total = getTotal(ref);
+		if (total == 0)
+			return "";
+			
+		return currencyFormatter.format(total);
+	}
+	
+	private DecimalFormat currencyFormatter;
 	private DateRange combinedDataRange;
 	private Vector yearlyDateRanges;
-	private PlanniningViewBudgetTotalsCalculator totalCalculator;	
+	private PlanniningViewBudgetTotalsCalculator totalCalculator;
 }

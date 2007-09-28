@@ -5,6 +5,7 @@ import org.conservationmeasures.eam.dialogs.planning.StrategicRowColumnProvider;
 import org.conservationmeasures.eam.dialogs.planning.WorkPlanRowColumnProvider;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -33,7 +34,7 @@ public class ColumnManager
 		
 		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		masterColumnList.add(Task.PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_TOTAL);
+		masterColumnList.add(BaseObject.PSEUDO_TAG_TASK_BUDGET_TOTAL);
 		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
 			
 		return masterColumnList;
