@@ -89,7 +89,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		String notifyDiaglogText = LINK_DELETE_NOTIFY_TEXT; 
 		for (int i = 0 ; i < diagramNames.size(); ++i)
 		{
-			notifyDiaglogText += " \n " + diagramNames.get(i);
+			notifyDiaglogText += " \n - " + diagramNames.get(i);
 		}
 		EAM.notifyDialog(notifyDiaglogText);
 	}
@@ -128,10 +128,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			if (existingDiagramNames.contains(diagramObjectLabel))
 				continue;
 	
-			//FIXME First main diagram does not have a name,  
-			if (diagramObjectLabel.length() == 0)
-				diagramObjectLabel = EAM.text("[Main Diagram]");
-			
 			diagramNames.add(diagramObjectLabel);
 		}
 		
