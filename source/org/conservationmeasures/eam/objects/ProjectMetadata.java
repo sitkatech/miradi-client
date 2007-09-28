@@ -87,7 +87,7 @@ public class ProjectMetadata extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_GOAL_REFS))
 			return getAllGoalRefs().toString();
 		
-		if (fieldTag.equals(PSEUDO_TAG_PROJECT_TEAM_MEMBERS))
+		if (fieldTag.equals(PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS))
 			return getTeamMemberRefs().toString();
 			
 		return super.getPseudoData(fieldTag);
@@ -240,13 +240,13 @@ public class ProjectMetadata extends BaseObject
 		diagramFontFamily = new StringData();
 		diagramFontSizeValue = new PseudoQuestionData(new FontSizeQuestion(TAG_DIAGRAM_FONT_SIZE));
 		diagramFontFamilyValue = new PseudoQuestionData(new FontFamiliyQuestion(TAG_DIAGRAM_FONT_FAMILY));
-		projectTeamMembers = new PseudoORefListData(PSEUDO_TAG_PROJECT_TEAM_MEMBERS);
+		projectTeamMembers = new PseudoORefListData(PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS);
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
 		addField(PSEUDO_TAG_DIAGRAM_FONT_FAMILY, diagramFontFamilyValue);
 		addField(PSEUDO_TAG_DIAGRAM_FONT_SIZE, diagramFontSizeValue);
-		addField(PSEUDO_TAG_PROJECT_TEAM_MEMBERS, projectTeamMembers);
+		addField(PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS, projectTeamMembers);
 	}
 
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
@@ -283,7 +283,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamilyValue";
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
 	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
-	public static final String PSEUDO_TAG_PROJECT_TEAM_MEMBERS = "PseudoTagProjectTeamMembers";
+	public static final String PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS = "PseudoTagProjectTeamMembers";
 
 	static final String OBJECT_NAME = "ProjectMetadata";
 
