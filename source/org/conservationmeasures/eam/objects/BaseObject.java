@@ -949,7 +949,7 @@ abstract public class BaseObject
 	public static final String DEFAULT_LABEL = "";
 	
 	//TODO rename this and remove Task;
-	public final static String PSEUDO_TAG_TASK_BUDGET_TOTAL = "TaskBudgetTotal";
+	public final static String PSEUDO_TAG_TASK_BUDGET_TOTAL = "PseudoTaskBudgetTotal";
 	
 	BaseId id;
 	StringData label;
