@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectCheckBoxField;
 import org.conservationmeasures.eam.dialogfields.ObjectChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectClassificationChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectCodeListField;
+import org.conservationmeasures.eam.dialogfields.ObjectCurrencyInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDateChooserInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectIconChoiceField;
@@ -158,6 +159,10 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectNumericInputField(project, objectType, getObjectIdForType(objectType), tag, column);
 	}
 	
+	public ObjectDataInputField createCurrencyField(String tag)
+	{
+		return new ObjectCurrencyInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, 10);
+	}
 
 	public ObjectDataInputField createNumericField(String tag)
 	{

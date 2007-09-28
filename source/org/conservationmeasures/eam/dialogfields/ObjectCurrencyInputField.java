@@ -14,4 +14,33 @@ public class ObjectCurrencyInputField extends ObjectStringInputField
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, columnsToUse);
 	}
+	
+	public void setText(String newValue)
+	{
+		try
+		{
+			double valueToFormat = Double.parseDouble(newValue);
+			newValue = project.getCurrencyFormatter().format(valueToFormat);
+		}
+		catch (Exception e) 
+		{
+			//Ignore. we dont care if it failed due to parsing a none double value
+		}
+		super.setText(newValue);
+	}
+	
+	public String getText()
+	{
+		String text = super.getText();
+		try
+		{
+			double parsed = Double.parseDouble(text);
+			return Double.toString(parsed);
+		}
+		catch (Exception e)
+		{
+			//Ignore. we dont care if it failed due to parsing a none double value
+			return text;
+		}
+	}
 }
