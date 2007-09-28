@@ -9,11 +9,51 @@ import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeDiagramNode
 {
-	PlanningTreeConceptualModelNode(Project projectToUse)
+	PlanningTreeConceptualModelNode(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
+		rebuild();
 	}
 	
+	public void rebuild() throws Exception
+	{
+		ORefList pageRefs = project.getConceptualModelDiagramPool().getORefList();
+		for(int i = 0; i < pageRefs.size(); ++i)
+		{
+			ConceptualModelDiagram page = (ConceptualModelDiagram) project.findObject(pageRefs.get(i));
+			rebuild(page);
+		}
+		
+	}
+	
+	protected ORefList getPotentialChildrenStrategyRefs()
+	{
+		ORefList strategyRefs = new ORefList();
+		
+		ORefList pageRefs = project.getConceptualModelDiagramPool().getORefList();
+		for(int i = 0; i < pageRefs.size(); ++i)
+		{
+			ConceptualModelDiagram page = (ConceptualModelDiagram) project.findObject(pageRefs.get(i));
+			strategyRefs.addAll(getPotentialChildStrategyRefs(page));
+		}
+		
+		return strategyRefs;
+	}
+	
+	protected ORefList getPotentialChildrenIndicatorRefs()
+	{
+		ORefList indicatorRefs = new ORefList();
+		
+		ORefList pageRefs = project.getConceptualModelDiagramPool().getORefList();
+		for(int i = 0; i < pageRefs.size(); ++i)
+		{
+			ConceptualModelDiagram page = (ConceptualModelDiagram) project.findObject(pageRefs.get(i));
+			indicatorRefs.addAll(getPotentialChildrenIndicatorRefs(page));
+		}
+
+		return indicatorRefs;
+	}
+
 	public boolean attemptToAdd(ORef refToAdd) throws Exception
 	{
 		boolean wasAdded = false;

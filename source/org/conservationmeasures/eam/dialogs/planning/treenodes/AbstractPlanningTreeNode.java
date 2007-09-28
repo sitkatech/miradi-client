@@ -7,6 +7,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Goal;
@@ -76,6 +77,30 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 				wasAdded = true;
 		}
 		return wasAdded;
+	}
+	
+	protected HashSet<ORef> getAllRefsInTree()
+	{
+		HashSet<ORef> refs = new HashSet();
+		for(int i = 0; i < children.size(); ++i)
+		{
+			AbstractPlanningTreeNode child = children.get(i);
+			refs.addAll(child.getAllRefsInTree());
+		}
+		
+		refs.add(getObjectReference());
+		
+		return refs;
+	}
+	
+	protected ORefList getPotentialChildrenStrategyRefs()
+	{
+		return new ORefList();
+	}
+
+	protected ORefList getPotentialChildrenIndicatorRefs()
+	{
+		return new ORefList();
 	}
 	
 	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
@@ -162,6 +187,34 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return children;
 	}
 
+	protected void addMissingStrategiesAsChildren() throws Exception
+	{
+		HashSet<ORef> everythingInTree = getAllRefsInTree();
+		ORefList upstreamStrategyRefs = getPotentialChildrenStrategyRefs();
+		for(int i = 0; i < upstreamStrategyRefs.size(); ++i)
+		{
+			ORef ref = upstreamStrategyRefs.get(i);
+			if(everythingInTree.contains(ref))
+				continue;
+			
+			children.add(new PlanningTreeStrategyNode(project, ref));
+		}
+	}
+
+	protected void addMissingIndicatorsAsChildren() throws Exception
+	{
+		HashSet<ORef> everythingInTree = getAllRefsInTree();
+		ORefList potentialChildrenIndicatorRefs = getPotentialChildrenIndicatorRefs();
+		for(int i = 0; i < potentialChildrenIndicatorRefs.size(); ++i)
+		{
+			ORef ref = potentialChildrenIndicatorRefs.get(i);
+			if(everythingInTree.contains(ref))
+				continue;
+			
+			children.add(new PlanningTreeIndicatorNode(project, ref));
+		}
+	}
+	
 	protected Project project;
 	protected Vector<AbstractPlanningTreeNode> children;
 }
