@@ -26,7 +26,12 @@ public class CodeListComponent extends JPanel implements ItemListener
 {
 	public CodeListComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
 	{
-		super(new BasicGridLayout(0,3));
+		this(questionToUse, 3, listener);
+	}
+	
+	public CodeListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
+	{
+		setLayout(new BasicGridLayout(0,columnCount));
 		listSelectionListener = listener;
 		ChoiceItem[] choices = questionToUse.getChoices();
 		choiceItems = new ChoiceItem[choices.length];
