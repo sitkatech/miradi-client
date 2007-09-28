@@ -29,8 +29,10 @@ public class ObjectCodeListField extends ObjectDataInputField implements ListSel
 		codeListEditor = new CodeListComponent(questionToUse, columnCount, this);
 		component = new FastScrollPane(codeListEditor);
 		Dimension preferredSize = component.getPreferredSize();
-		int width = Math.min(preferredSize.width, 800);
-		int height = Math.min(preferredSize.height, 200);
+		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
+		final int ARBITRARY_REASONABLE_MAX_HEIGHT = 200;
+		int width = Math.min(preferredSize.width, ARBITRARY_REASONABLE_MAX_WIDTH);
+		int height = Math.min(preferredSize.height, ARBITRARY_REASONABLE_MAX_HEIGHT);
 		component.getViewport().setPreferredSize(new Dimension(width, height));
 	}
 	
