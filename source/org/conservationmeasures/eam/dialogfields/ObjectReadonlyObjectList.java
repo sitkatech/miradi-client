@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import javax.swing.JComponent;
-import javax.swing.JTextArea;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextArea;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -20,8 +20,9 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 	public ObjectReadonlyObjectList(Project projectToUse, int objectTypeToUse, BaseId idToUse, String tagToUse)
 	{
 		super(projectToUse, objectTypeToUse, idToUse, tagToUse);
-		
-		textArea = new JTextArea();
+		textArea = new PanelTextArea("");
+		textArea.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+		textArea.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 	}
 
 	private void updateComponent()
@@ -65,5 +66,5 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 	{
 	}
 
-	private JTextArea textArea;
+	private PanelTextArea textArea;
 }
