@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class EntireDiagrams
+public class GroupOfDiagrams
 {
 	public static DiagramFactor[] getAllDiagramFactorsInAllDiagrams(Project project)
 	{
