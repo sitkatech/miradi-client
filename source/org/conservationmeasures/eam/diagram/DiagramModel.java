@@ -286,19 +286,30 @@ public class DiagramModel extends DefaultGraphModel
 		return diagramContents.isResultsChain();
 	}
 	
-	public boolean isShared(DiagramFactor diagramFactorToCheck) throws Exception
+	public boolean isSharedInResultsChain(DiagramFactor diagramFactorToCheck)
 	{
-		DiagramFactor[] allDiagramFactors = GroupOfDiagrams.getAllDiagramFactorsInAllDiagrams(project);
-		for (int i = 0; i < allDiagramFactors.length; ++i)
+		DiagramFactor[] allResultsChainDiagramFactors = GroupOfDiagrams.findAllResultsChainDiagrams(project);
+		return isSharedInDiagramFactors(allResultsChainDiagramFactors, diagramFactorToCheck);
+	}
+	
+	public boolean isSharedInConceptualModel(DiagramFactor diagramFactorToCheck)
+	{
+		DiagramFactor[] allConceptualModelDiagramFactors = GroupOfDiagrams.findAllConceptualModelDiagrams(project);
+		return isSharedInDiagramFactors(allConceptualModelDiagramFactors, diagramFactorToCheck);
+	}
+	
+	public boolean isSharedInDiagramFactors(DiagramFactor[] diagramFactorsToCheck, DiagramFactor diagramFactorToCheck)
+	{
+		for (int i = 0; i < diagramFactorsToCheck.length; ++i)
 		{
-			DiagramFactor possibleAliasDiagramFactor = allDiagramFactors[i];
+			DiagramFactor possibleAliasDiagramFactor = diagramFactorsToCheck[i];
 			if (isAliasOf(diagramFactorToCheck, possibleAliasDiagramFactor))
 				return true;
 		}
 		
-		return false;
+		return false;	
 	}
-
+	
 	private boolean isAliasOf(DiagramFactor diagramFactorToCheck, DiagramFactor possibleAliasDiagramFactor)
 	{
 		final boolean isSameDiagramFactor = diagramFactorToCheck.getId().equals(possibleAliasDiagramFactor.getId());
