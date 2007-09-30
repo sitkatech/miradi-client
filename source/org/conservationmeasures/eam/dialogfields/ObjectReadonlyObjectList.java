@@ -5,36 +5,29 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
-import javax.swing.JComponent;
-
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextArea;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class ObjectReadonlyObjectList extends ObjectDataInputField
+public class ObjectReadonlyObjectList extends ObjectMultilineInputField
 {
 	public ObjectReadonlyObjectList(Project projectToUse, int objectTypeToUse, BaseId idToUse, String tagToUse)
 	{
-		super(projectToUse, objectTypeToUse, idToUse, tagToUse);
-		textArea = new PanelTextArea("");
-		textArea.setDisabledTextColor(EAM.READONLY_FOREGROUND_COLOR);
-		textArea.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-		textArea.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-		
-		// NOTE: Remove this if we add a ScrollPane
-		setDefaultFieldBorder();
+		super(projectToUse, objectTypeToUse, idToUse, tagToUse, COLUMNS);
 	}
 
-	private void updateComponent()
+	public String getText()
+	{
+		return null;
+	}
+
+	public void setText(String newValue)
 	{
 		try
 		{
-			BaseObject foundObject = getProject().findObject(new ORef(getObjectType(), getObjectId()));
-			ORefList orefList = new ORefList(foundObject.getData(getTag()));
+			ORefList orefList = new ORefList(newValue);
 			
 			String names = "";
 			for (int i = 0; i < orefList.size(); ++i)
@@ -45,33 +38,22 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 					names += "\n";
 				names += object.toString();
 			}
-			textArea.setText(names);
+			super.setText(names);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
 	}
-
-	public void updateFromObject()
-	{
-		super.updateFromObject();
-		updateComponent();
-	}
 	
-	public JComponent getComponent()
+	public boolean allowEdits()
 	{
-		return textArea;
+		return false;
 	}
 
-	public String getText()
-	{
-		return null;
-	}
 
-	public void setText(String newValue)
-	{
-	}
-
-	private PanelTextArea textArea;
+	// FIXME: We really don't want to set the number of columns here,
+	// so we probably need to change this to use a list widget 
+	// instead of a text area
+	static final int COLUMNS = 40;
 }
