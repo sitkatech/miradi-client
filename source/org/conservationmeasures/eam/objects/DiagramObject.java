@@ -227,28 +227,36 @@ abstract public class DiagramObject extends BaseObject
 	}
 	
 	//TODO not sure this the right place for this method
-	public static ORefList getDiagramRefsContainingThisFactor(Project projectToUse, ORef ref)
+	public static ORefList getDiagramRefsContainingFactor(Project projectToUse, ORef factorRef)
 	{
-		ORefList diagramRefs = new ORefList();
-		BaseObject foundObject = projectToUse.findObject(ref);
-		ORefList referrerRefs = getObjectsThatRefferTo(foundObject);
+		if (! Factor.isFactor(factorRef))
+			return new ORefList();
+		
+		return findOwnersOfObject(projectToUse, factorRef, DiagramFactor.getObjectType());
+	}
+	
+	public static ORefList getDiagramRefsContainingLink(Project projectToUse, ORef factorLinkRef)
+	{
+		if (factorLinkRef.getObjectType() != FactorLink.getObjectType())
+			return new ORefList();
+
+		return findOwnersOfObject(projectToUse, factorLinkRef, DiagramLink.getObjectType());
+	}
+
+	private static ORefList findOwnersOfObject(Project projectToUse, ORef ref, int objectType)
+	{
+		ORefList referrers = new ORefList();
+		BaseObject underlyingFactorOrLink = projectToUse.findObject(ref);
+		ORefList referrerRefs = underlyingFactorOrLink.findObjectsThatReferToUs(objectType);
 		for(int i = 0; i < referrerRefs.size(); ++i)
 		{
 			BaseObject object = projectToUse.findObject(referrerRefs.get(i));
-			diagramRefs.add(object.getOwnerRef());
+			referrers.add(object.getOwnerRef());
 		}
 		
-		return diagramRefs;
+		return referrers;
 	}
 	
-	private static ORefList getObjectsThatRefferTo(BaseObject foundObject)
-	{
-		if (Factor.isFactor(foundObject.getRef()))
-			return foundObject.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		
-		return foundObject.findObjectsThatReferToUs(DiagramLink.getObjectType());
-	}
-
 	public void clear()
 	{
 		super.clear();
