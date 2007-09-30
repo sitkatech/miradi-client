@@ -39,6 +39,8 @@ public class ObjectTextInputField extends ObjectDataInputField
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
 		field.addMouseListener(new MouseHandler());
+		
+		setDefaultFieldBorder();
 	}	
 
 	public JComponent getComponent()
