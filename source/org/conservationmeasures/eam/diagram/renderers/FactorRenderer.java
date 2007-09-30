@@ -109,7 +109,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			}
 			
 			DiagramComponent diagram = (DiagramComponent)graph;
-			isAliased = model.areAliasesInConceptualModelsOnly(node.getDiagramFactor());
+			isAliased = model.isShared(node.getDiagramFactor());
 			
 			EAMGraphCell cell = (EAMGraphCell)view.getCell();
 			String formattedLabel =  XmlUtilities.getXmlEncoded(cell.toString());
