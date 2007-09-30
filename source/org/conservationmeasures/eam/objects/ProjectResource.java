@@ -80,6 +80,11 @@ public class ProjectResource extends BaseObject
 
 	public String toString()
 	{
+		return name.get();
+	}
+	
+	public String getWho()
+	{
 		String result = initials.get();
 		if(result.length() > 0)
 			return result;
