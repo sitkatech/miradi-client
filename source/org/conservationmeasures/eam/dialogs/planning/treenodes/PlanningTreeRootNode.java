@@ -5,8 +5,11 @@ import java.util.Vector;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.planning.RowManager;
 
@@ -56,11 +59,22 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		addConceptualModel();
-		addResultsChainDiagrams();
-		
+
 		ViewData viewData = project.getCurrentViewData();
-		pruneUnwantedLayers(RowManager.getVisibleRowCodes(viewData));
+		CodeList visibleRowCodes = RowManager.getVisibleRowCodes(viewData);
+
+		boolean isConceptualModelVisible = visibleRowCodes.contains(ConceptualModelDiagram.OBJECT_NAME);
+		boolean isResultsChainVisible = visibleRowCodes.contains(ResultsChainDiagram.OBJECT_NAME);
+		
+		boolean includeConceptualModelItems = isConceptualModelVisible || !isResultsChainVisible;
+		boolean includeResultsChainItems = isResultsChainVisible || !isConceptualModelVisible;
+		
+		if(includeConceptualModelItems)
+			addConceptualModel();
+		if(includeResultsChainItems)
+			addResultsChainDiagrams();
+		
+		pruneUnwantedLayers(visibleRowCodes);
 	}
 	
 	public boolean isAlwaysExpanded()
