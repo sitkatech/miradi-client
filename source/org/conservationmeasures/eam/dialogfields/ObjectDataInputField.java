@@ -5,9 +5,11 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -154,6 +156,11 @@ abstract public class ObjectDataInputField implements FocusListener
 			setText(existingValue);
 			getComponent().requestFocus();
 		}
+	}
+	
+	void setDefaultFieldBorder()
+	{
+		getComponent().setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 	
 	private void notifyUserOfFailure(CommandFailedException cfe)
