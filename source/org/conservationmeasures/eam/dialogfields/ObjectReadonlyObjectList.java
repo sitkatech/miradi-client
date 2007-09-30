@@ -5,17 +5,31 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import java.util.Collections;
+import java.util.Vector;
+
+import javax.swing.JComponent;
+import javax.swing.table.DefaultTableModel;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
+import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
-public class ObjectReadonlyObjectList extends ObjectMultilineInputField
+public class ObjectReadonlyObjectList extends ObjectDataInputField
 {
 	public ObjectReadonlyObjectList(Project projectToUse, int objectTypeToUse, BaseId idToUse, String tagToUse)
 	{
-		super(projectToUse, objectTypeToUse, idToUse, tagToUse, COLUMNS);
+		super(projectToUse, objectTypeToUse, idToUse, tagToUse);
+		model = new DefaultTableModel();
+		model.setColumnCount(1);
+		table = new TableWithHelperMethods(model);
+		setDefaultFieldBorder();
+		table.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+		table.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 	}
 
 	public String getText()
@@ -29,16 +43,21 @@ public class ObjectReadonlyObjectList extends ObjectMultilineInputField
 		{
 			ORefList orefList = new ORefList(newValue);
 			
-			String names = "";
+			Vector names = new Vector();
 			for (int i = 0; i < orefList.size(); ++i)
 			{
 				BaseObject object = project.findObject(orefList.get(i)); 
-				
-				if(i > 0)
-					names += "\n";
-				names += object.toString();
+				names.add(object.toString());
 			}
-			super.setText(names);
+			Collections.sort(names, new IgnoreCaseStringComparator());
+			
+			model.setRowCount(names.size());
+			for(int row = 0; row < names.size(); ++row)
+				model.setValueAt(names.get(row), row, 0);
+			
+			table.resizeTable();
+			int ARBITRARY_REASONABLE_WIDTH = 300;
+			table.setColumnWidth(0, ARBITRARY_REASONABLE_WIDTH);
 		}
 		catch (Exception e)
 		{
@@ -51,9 +70,11 @@ public class ObjectReadonlyObjectList extends ObjectMultilineInputField
 		return false;
 	}
 
-
-	// FIXME: We really don't want to set the number of columns here,
-	// so we probably need to change this to use a list widget 
-	// instead of a text area
-	static final int COLUMNS = 40;
+	public JComponent getComponent()
+	{
+		return table;
+	}
+	
+	private DefaultTableModel model;
+	private TableWithHelperMethods table;
 }
