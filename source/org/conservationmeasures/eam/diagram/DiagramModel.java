@@ -286,7 +286,7 @@ public class DiagramModel extends DefaultGraphModel
 		return diagramContents.isResultsChain();
 	}
 	
-	public boolean areAliasesInConceptualModelsOnly(DiagramFactor diagramFactorToCheck) throws Exception
+	public boolean isShared(DiagramFactor diagramFactorToCheck) throws Exception
 	{
 		DiagramFactor[] allDiagramFactors = GroupOfDiagrams.getAllDiagramFactorsInAllDiagrams(project);
 		for (int i = 0; i < allDiagramFactors.length; ++i)
