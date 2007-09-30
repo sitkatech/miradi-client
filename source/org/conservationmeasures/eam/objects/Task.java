@@ -286,7 +286,7 @@ public class Task extends BaseObject
 			if (i > 0)
 				appendedResources += ", "; 
 					
-			appendedResources += resource.toString();
+			appendedResources += resource.getWho();
 		}
 		
 		return appendedResources;
