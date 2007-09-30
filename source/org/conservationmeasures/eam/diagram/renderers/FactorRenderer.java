@@ -109,7 +109,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			}
 			
 			DiagramComponent diagram = (DiagramComponent)graph;
-			isAliased = model.isShared(node.getDiagramFactor());
+			isAliased = shouldMarkAsShared(model);
 			
 			EAMGraphCell cell = (EAMGraphCell)view.getCell();
 			String formattedLabel =  XmlUtilities.getXmlEncoded(cell.toString());
@@ -159,6 +159,21 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return this;
 	}
 	
+	private boolean shouldMarkAsShared(DiagramModel model)
+	{
+		boolean isSharedInCoceptualModel = model.isSharedInConceptualModel(node.getDiagramFactor());
+		boolean isSharedInResultsChain = model.isSharedInResultsChain(node.getDiagramFactor());
+		boolean isResultsChain = model.isResultsChain();
+		boolean isSharedAnyWhere = isSharedInResultsChain || isSharedInCoceptualModel;
+		
+		if (isSharedAnyWhere && isResultsChain)
+			return true;
+		
+		if (isSharedInCoceptualModel && !isResultsChain)
+			return true;
+		
+		return false;
+	}
 	protected String getAdditionalHtmlFontTags()
 	{
 		if (!isAliased)

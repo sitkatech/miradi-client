@@ -13,29 +13,31 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 
 public class GroupOfDiagrams
-{
-	public static DiagramFactor[] getAllDiagramFactorsInAllDiagrams(Project project)
+{	
+	public static DiagramFactor[] findAllConceptualModelDiagrams(Project project)
 	{
-		ORefList allDiagramRefs = getAllDiagramRefs(project);
+		ORefList allConceptualModels = project.getConceptualModelDiagramPool().getORefList();
+		return findAllDiagramFactorsInDiagramObjects(project, allConceptualModels);
+	}
+
+	public static DiagramFactor[] findAllResultsChainDiagrams(Project project)
+	{
+		ORefList allConceptualModels = project.getResultsChainDiagramPool().getORefList();
+		return findAllDiagramFactorsInDiagramObjects(project, allConceptualModels);
+	}
+
+	private static DiagramFactor[] findAllDiagramFactorsInDiagramObjects(Project project, ORefList diagramObjectRefs)
+	{
 		Vector diagramFactors = new Vector();
-		for (int i = 0; i < allDiagramRefs.size(); ++i)
+		for (int i = 0; i < diagramObjectRefs.size(); ++i)
 		{
-			DiagramObject diagramObject = (DiagramObject) project.findObject(allDiagramRefs.get(i));
+			DiagramObject diagramObject = (DiagramObject) project.findObject(diagramObjectRefs.get(i));
 			diagramFactors.addAll(getAllDiagramFactors(project, diagramObject));
 		}
 		
 		return (DiagramFactor[]) diagramFactors.toArray(new DiagramFactor[0]);
 	}
 
-	private static ORefList getAllDiagramRefs(Project project)
-	{
-		ORefList allDiagramRefs = new ORefList();
-		allDiagramRefs.addAll(project.getConceptualModelDiagramPool().getORefList());
-		allDiagramRefs.addAll(project.getResultsChainDiagramPool().getORefList());
-
-		return allDiagramRefs;
-	}
-	
 	public static Vector getAllDiagramFactors(Project project, DiagramObject diagramObject)
 	{
 		Vector diagramFactors = new Vector();
