@@ -358,7 +358,7 @@ abstract public class Factor extends BaseObject
 				return getFactorRelatedTargets();
 			
 			if(fieldTag.equals(PSEUDO_TAG_DIAGRAM_REFS))
-				return DiagramObject.getDiagramRefsContainingThisFactor(getProject(), getRef()).toString();
+				return DiagramObject.getDiagramRefsContainingFactor(getProject(), getRef()).toString();
 			
 			return super.getPseudoData(fieldTag);
 		}

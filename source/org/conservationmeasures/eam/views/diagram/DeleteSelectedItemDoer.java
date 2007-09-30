@@ -120,7 +120,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	private Vector getAllDiagramsThatRefer(Vector existingDiagramNames, FactorLink factorLink)
 	{
 		Vector diagramNames = new Vector();
-		ORefList diagramRefs = DiagramObject.getDiagramRefsContainingThisFactor(getProject(), factorLink.getRef());
+		ORefList diagramRefs = DiagramObject.getDiagramRefsContainingLink(getProject(), factorLink.getRef());
 		for (int i = 0; i < diagramRefs.size(); ++i)
 		{
 			DiagramObject diagramObject = (DiagramObject) getProject().findObject(diagramRefs.get(i));
