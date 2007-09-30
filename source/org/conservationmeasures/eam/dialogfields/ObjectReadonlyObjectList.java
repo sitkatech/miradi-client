@@ -21,8 +21,12 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 	{
 		super(projectToUse, objectTypeToUse, idToUse, tagToUse);
 		textArea = new PanelTextArea("");
+		textArea.setDisabledTextColor(EAM.READONLY_FOREGROUND_COLOR);
 		textArea.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		textArea.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+		
+		// NOTE: Remove this if we add a ScrollPane
+		setDefaultFieldBorder();
 	}
 
 	private void updateComponent()
@@ -36,7 +40,10 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 			for (int i = 0; i < orefList.size(); ++i)
 			{
 				BaseObject object = project.findObject(orefList.get(i)); 
-				names += object.toString() + "\n";
+				
+				if(i > 0)
+					names += "\n";
+				names += object.toString();
 			}
 			textArea.setText(names);
 		}
