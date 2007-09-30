@@ -157,6 +157,13 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		panel.add(new PanelTitleLabel(EAM.text(text)));
 		panel.add(component);
 	}
+	
+	protected void addSeparator(JComponent panel)
+	{
+		panel.add(new JLabel(" "));
+		panel.add(new JLabel(" "));
+		panel.add(new JLabel(" "));
+	}
 
 	protected void createCheckBox(String objectName)
 	{
