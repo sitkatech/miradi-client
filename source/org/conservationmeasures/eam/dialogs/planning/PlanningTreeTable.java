@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
@@ -87,6 +88,9 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 			String columnTag = model.getColumnTag(modelColumn);
 			Color backgroundColor = getBackgroundColor(columnTag);
 			setBackground(backgroundColor);
+			if (model.getColumnTag(column).equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
+				setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
+			
 			setGrid();
 			
 			if (isSelected)
