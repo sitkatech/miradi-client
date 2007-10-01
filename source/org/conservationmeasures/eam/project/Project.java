@@ -459,8 +459,7 @@ public class Project
 		os.close();
 	}
 	
-	//TODO rename method to reflect what happing, create and selection change
-	private void createDefaultObjectsIfNeeded() throws Exception
+	private void applyDefaultBehavior() throws Exception
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
 		createDefaultConceptualModel();
@@ -578,7 +577,7 @@ public class Project
 		
 		loadThreatRatingFramework();
 		
-		createDefaultObjectsIfNeeded();
+		applyDefaultBehavior();
 		setDefaultDiagramPage(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		setDefaultDiagramPage(ObjectType.RESULTS_CHAIN_DIAGRAM);
 		database.writeVersion();
