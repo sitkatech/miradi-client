@@ -484,7 +484,7 @@ public class Project
 	
 	private void selectDefaultPlanningCustomization() throws Exception
 	{
-		ORef currentCustomizationRef = getCurrentViewData().getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+		ORef currentCustomizationRef = getViewData(PlanningView.getViewName()).getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 		if (! currentCustomizationRef.isInvalid())
 			return;
 		
