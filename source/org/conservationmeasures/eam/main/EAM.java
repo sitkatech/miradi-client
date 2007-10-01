@@ -309,6 +309,12 @@ public class EAM
 		return (dlg.getResult().equals(buttons[0]));
 	}
 	
+	public static boolean confirmDeletRetainDialog(String[] body)
+	{
+		String[] buttons = {EAM.text("Delete"), EAM.text("Retain"), };
+		return EAM.confirmDialog(EAM.text("Delete"), body, buttons);
+	}
+	
 	public static String choiceDialog(String title, String[] body, String[] buttons)
 	{
 		UiNotifyDlg dlg = new UiNotifyDlg(mainWindow, title, body, buttons);

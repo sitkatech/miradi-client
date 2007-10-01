@@ -40,7 +40,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	public void doIt() throws CommandFailedException
 	{
 		EAMGraphCell[] selectedRelatedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		notifyUserIfReferringLinksBeingDeleted(selectedRelatedCells);
+		if (! confirmIfReferringLinksBeingDeleted(selectedRelatedCells))
+			return;
+		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
@@ -80,18 +82,19 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		new LinkDeletor(getProject()).deleteFactorLinkAndDiagramLink(factorRefsAboutToBeDeleted, diagramLink);
 	}
 
-	private void notifyUserIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
+	private boolean confirmIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
 	{
 		Vector diagramNames = shouldNotifyUserOfLinksBeingDeletedInOtherPages(selectedRelatedCells, extractDiagramFactors(selectedRelatedCells));
 		if (diagramNames.size() <= 1)
-			return;
+			return true;
 
 		String notifyDiaglogText = LINK_DELETE_NOTIFY_TEXT; 
 		for (int i = 0 ; i < diagramNames.size(); ++i)
 		{
 			notifyDiaglogText += " \n - " + diagramNames.get(i);
 		}
-		EAM.notifyDialog(notifyDiaglogText);
+		
+		return EAM.confirmDeletRetainDialog(new String[]{notifyDiaglogText});
 	}
 
 	private Vector shouldNotifyUserOfLinksBeingDeletedInOtherPages(EAMGraphCell[] selectedRelatedCells, ORefList diagramFactorRefs)
