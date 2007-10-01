@@ -155,6 +155,11 @@ public class DiagramLink extends BaseObject
 		return (DiagramFactorLinkId)getId(); 
 	}
 	
+	public ORef getWrappedRef()
+	{
+		return getUnderlyingLink().getRef();
+	}
+	
 	public FactorLinkId getWrappedId()
 	{
 		return new FactorLinkId(underlyingObjectId.getId().asInt());
