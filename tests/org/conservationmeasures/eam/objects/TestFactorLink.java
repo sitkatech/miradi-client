@@ -1,6 +1,6 @@
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
@@ -63,7 +63,7 @@ public class TestFactorLink extends EAMTestCase
 	
 	public void testExtraInfo() throws Exception
 	{
-		DiagramFactorLinkId diagramLinkId = project.createDiagramFactorLink(nodeA, nodeB);
+		BaseId diagramLinkId = project.createDiagramFactorLink(nodeA, nodeB);
 		DiagramLink diagramLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramLinkId));
 		FactorLink linkage = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, diagramLink.getWrappedId()));
 		
