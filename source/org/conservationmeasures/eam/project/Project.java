@@ -464,12 +464,13 @@ public class Project
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
 		createDefaultConceptualModel();
-		createSelectedDefaultPlanningCustomization();
+		createDefaultPlanningCustomization();
+		selectDefaultPlanningCustomization();
 		selectPlanningViewStrategicRadioButton();
 		createDefaultWwfProjectDataObject();
 	}
 
-	private void createSelectedDefaultPlanningCustomization() throws Exception
+	private void createDefaultPlanningCustomization() throws Exception
 	{
 		if(getPlanningViewConfigurationPool().getORefList().size() > 0)
 			return;
@@ -479,6 +480,17 @@ public class Project
 		
 		ViewData planningViewData = getViewData(PlanningView.getViewName());
 		setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, createPlanningConfiguration.toString());
+	}
+	
+	private void selectDefaultPlanningCustomization() throws Exception
+	{
+		ORef currentCustomizationRef = getCurrentViewData().getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+		if (! currentCustomizationRef.isInvalid())
+			return;
+		
+		ORefList contomizationRefs = getPlanningViewConfigurationPool().getORefList();
+		ViewData planningViewData = getViewData(PlanningView.getViewName());
+		setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, contomizationRefs.get(0).toString());
 	}
 
 	private void createDefaultConceptualModel() throws Exception
