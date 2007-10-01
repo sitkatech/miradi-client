@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
 public class TestDiagramObject extends ObjectTestCase
@@ -35,7 +35,7 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramObject diagramObject = project.getDiagramObject();
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinked(cause.getDiagramFactorId(), target.getDiagramFactorId()));
 		
-		DiagramFactorLinkId diagramLinkId = project.createDiagramFactorLink(cause, target);
+		BaseId diagramLinkId = project.createDiagramFactorLink(cause, target);
 		project.addDiagramLinkToModel(diagramLinkId);
 		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinked(cause.getDiagramFactorId(), target.getDiagramFactorId()));
 		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinked(target.getDiagramFactorId(), cause.getDiagramFactorId()));

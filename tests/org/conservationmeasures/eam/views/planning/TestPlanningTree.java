@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.planning;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Cause;
@@ -99,8 +98,8 @@ abstract public class TestPlanningTree extends EAMTestCase
 	DiagramFactor diagramCause;
 	DiagramFactor diagramTarget;
 	
-	DiagramFactorLinkId stratToCauseLinkId;
-	DiagramFactorLinkId causeToTargetLinkId;
+	BaseId stratToCauseLinkId;
+	BaseId causeToTargetLinkId;
 	
 	BaseId indicatorId;
 	BaseId objectiveId;

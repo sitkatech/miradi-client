@@ -9,7 +9,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -51,7 +51,7 @@ public class SampleDiagramBuilder
 
 	private static void addDiagramFactorLink(ProjectForTesting project, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception, ParseException, CommandFailedException
 	{
-		DiagramFactorLinkId linkId = project.createDiagramFactorLink(fromDiagramFactor, toDiagramFactor);
+		BaseId linkId = project.createDiagramFactorLink(fromDiagramFactor, toDiagramFactor);
 		DiagramObject diagramObject = project.getDiagramObject();
 		CommandSetObjectData addDiagramFactorLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, linkId);
 		project.executeCommand(addDiagramFactorLink);
