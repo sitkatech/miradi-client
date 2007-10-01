@@ -859,11 +859,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM);
 	}
 	
-	PropertiesDoer propertiesDoer;
-	String mode;
+	private PropertiesDoer propertiesDoer;
+	private String mode;
 	
-	SlideShowDialog slideShowDlg;
-	ModelessDialogWithClose nodePropertiesDlg;
-	FactorPropertiesPanel nodePropertiesPanel;
-
+	private SlideShowDialog slideShowDlg;
+	private ModelessDialogWithClose nodePropertiesDlg;
+	private FactorPropertiesPanel nodePropertiesPanel;
 }
