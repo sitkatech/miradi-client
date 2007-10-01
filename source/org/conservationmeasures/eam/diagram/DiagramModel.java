@@ -298,11 +298,11 @@ public class DiagramModel extends DefaultGraphModel
 		return isSharedInDiagramFactors(allConceptualModelDiagramFactors, diagramFactorToCheck);
 	}
 	
-	public boolean isSharedInDiagramFactors(DiagramFactor[] diagramFactorsToCheck, DiagramFactor diagramFactorToCheck)
+	public boolean isSharedInDiagramFactors(DiagramFactor[] potentialShares, DiagramFactor diagramFactorToCheck)
 	{
-		for (int i = 0; i < diagramFactorsToCheck.length; ++i)
+		for (int i = 0; i < potentialShares.length; ++i)
 		{
-			DiagramFactor possibleAliasDiagramFactor = diagramFactorsToCheck[i];
+			DiagramFactor possibleAliasDiagramFactor = potentialShares[i];
 			if (isAliasOf(diagramFactorToCheck, possibleAliasDiagramFactor))
 				return true;
 		}
