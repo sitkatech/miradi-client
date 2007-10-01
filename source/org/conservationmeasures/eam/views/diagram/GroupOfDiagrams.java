@@ -50,4 +50,13 @@ public class GroupOfDiagrams
 		
 		return diagramFactors;
 	}
+	
+	public static ORefList getAllDiagramObjects(Project project)
+	{
+		ORefList allDiagramObjectRefs = new ORefList();
+		allDiagramObjectRefs.addAll(project.getConceptualModelDiagramPool().getORefList());
+		allDiagramObjectRefs.addAll(project.getResultsChainDiagramPool().getORefList());
+		
+		return allDiagramObjectRefs;
+	}
 }

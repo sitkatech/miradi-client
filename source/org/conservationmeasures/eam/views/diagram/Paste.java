@@ -125,7 +125,7 @@ public class Paste extends LocationDoer
 	protected void paste(DiagramPaster diagramPaster) throws Exception
 	{
 		diagramPaster.pasteFactorsAndLinks(getLocation());
-		diagramPaster.wrapExistingLinksForDiagramFactorsInAllConceptualModels();
+		diagramPaster.wrapExistingLinksForDiagramFactorsInAllDiagramObjects();
 	}
 	
 	private final String AS_COPY_BUTTON = EAM.text("Button|As Copy");
