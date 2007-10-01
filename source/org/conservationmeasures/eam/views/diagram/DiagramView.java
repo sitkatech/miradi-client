@@ -14,7 +14,6 @@ import java.util.Vector;
 
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
-import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCloneGoal;
@@ -859,8 +858,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		return getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM);
 	}
-	
-	JSplitPane bigSplitter;
 	
 	PropertiesDoer propertiesDoer;
 	String mode;
