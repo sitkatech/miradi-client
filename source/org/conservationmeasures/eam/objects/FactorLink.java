@@ -95,6 +95,8 @@ public class FactorLink extends BaseObject
 		
 		switch(objectType)
 		{
+			case ObjectType.THREAT_REDUCTION_RESULT:
+			case ObjectType.INTERMEDIATE_RESULT:
 			case ObjectType.CAUSE:
 			case ObjectType.STRATEGY:
 			case ObjectType.TARGET:

@@ -430,12 +430,12 @@ public class DiagramPaster
 		}
 	}
 
-	public void wrapExistingLinksForDiagramFactorsInAllConceptualModels() throws Exception
+	public void wrapExistingLinksForDiagramFactorsInAllDiagramObjects() throws Exception
 	{
-		ORefList conceptualDiagramRefs = getProject().getConceptualModelDiagramPool().getORefList();
-		for (int i = 0; i < conceptualDiagramRefs.size(); ++i)
+		ORefList allDiagramObjects = GroupOfDiagrams.getAllDiagramObjects(getProject());
+		for (int i = 0; i < allDiagramObjects.size(); ++i)
 		{
-			DiagramObject diagramObject = (DiagramObject) getProject().findObject(conceptualDiagramRefs.get(i));
+			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjects.get(i));
 			wrapExistingLinksForDiagramFactors(diagramObject);
 		}
 	}
