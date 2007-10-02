@@ -526,7 +526,7 @@ public class Project
 	private void eliminateBlankConceptualModelPages() throws Exception
 	{
 		ORefList diagramPageRefs = getConceptualModelDiagramPool().getORefList();
-		String defaultDiagramPageLabel = getDefaulyDiagramPageName(diagramPageRefs);		
+		String defaultDiagramPageLabel = getDefaultDiagramPageName(diagramPageRefs);		
 		for (int i = 0; i < diagramPageRefs.size(); ++i)
 		{
 			ORef diagramPageRef = diagramPageRefs.get(i);
@@ -538,7 +538,7 @@ public class Project
 		}
 	}
 
-	private String getDefaulyDiagramPageName(ORefList diagramPageRefs)
+	private String getDefaultDiagramPageName(ORefList diagramPageRefs)
 	{
 		if (diagramPageRefs.size() > 1)
 			return EAM.text("[Not Named]");
