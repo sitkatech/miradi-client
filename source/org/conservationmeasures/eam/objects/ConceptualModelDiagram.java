@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -48,4 +49,6 @@ public class ConceptualModelDiagram extends DiagramObject
 	}
 	
 	public static final String OBJECT_NAME = "ConceptualModelDiagram";
+	public static final String DEFAULT_MAIN_NAME = EAM.text("[Main Diagram]");
+	public static final String DEFAULT_BLANK_NAME = EAM.text("[Not Named]");
 }

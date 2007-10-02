@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
@@ -27,8 +26,8 @@ public class ConceptualModelPoolTableModel extends ObjectPoolTableModel
 		ConceptualModelDiagram conceptualModelDiagram = (ConceptualModelDiagram) getProject().findObject(rowObjectRef);
 		ORefList diagramPageRefs = getProject().getConceptualModelDiagramPool().getORefList();
 		if (conceptualModelDiagram.toString().trim().length() == 0 && diagramPageRefs.size() == 1)
-			return EAM.text("[Main Diagram]");
+			return ConceptualModelDiagram.DEFAULT_MAIN_NAME;
 		
-		return EAM.text("[Not Named]");
+		return ConceptualModelDiagram.DEFAULT_BLANK_NAME;
 	}
 }
