@@ -37,7 +37,7 @@ public class WizardPanel extends JPanel
 	public void setContents(SkeletonWizardStep contents)
 	{
 		setStepTitle(contents.getProcessStepTitle());
-		setScreenTitle(contents.getWizardScreenTitle());
+		setScreenTitle(contents.getWizardScreenTitle() + getSubHeading(contents));
 		
 		removeAll();
 		if(shouldShowWizardTitles())
@@ -47,6 +47,14 @@ public class WizardPanel extends JPanel
 		allowSplitterToHideUsCompletely();
 		revalidate();
 		repaint();
+	}
+
+	private String getSubHeading(SkeletonWizardStep contents)
+	{
+		if (contents.getSubHeading() == null)
+			return "";
+		
+		return " (" + contents.getSubHeading() + ")";
 	}
 
 	private boolean shouldShowWizardTitles()
