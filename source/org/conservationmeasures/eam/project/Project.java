@@ -467,6 +467,7 @@ public class Project
 		selectDefaultPlanningCustomization();
 		selectPlanningViewStrategicRadioButton();
 		createDefaultWwfProjectDataObject();
+		eliminateBlankDiagramNames();
 	}
 
 	private void createDefaultPlanningCustomization() throws Exception
@@ -497,8 +498,7 @@ public class Project
 		if (getConceptualModelDiagramPool().getORefList().size() > 0)
 			return;
 		
-		ORef createConceptualModelRef = createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		setObjectData(createConceptualModelRef, ConceptualModelDiagram.TAG_LABEL, EAM.text("[Main Diagram]"));
+		createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 	
 	private void createProjectMetadata() throws Exception
@@ -521,6 +521,29 @@ public class Project
 			return;
 		
 		createObject(WwfProjectData.getObjectType());
+	}
+	
+	private void eliminateBlankDiagramNames() throws Exception
+	{
+		ORefList diagramPageRefs = getConceptualModelDiagramPool().getORefList();
+		String defaultDiagramPageLabel = getDefaulyDiagramPageName(diagramPageRefs);		
+		for (int i = 0; i < diagramPageRefs.size(); ++i)
+		{
+			ORef diagramPageRef = diagramPageRefs.get(i);
+			ConceptualModelDiagram diagramPage = (ConceptualModelDiagram) findObject(diagramPageRef);
+			if (diagramPage.toString().length() != 0)
+				continue;
+			
+			setObjectData(diagramPageRef, ConceptualModelDiagram.TAG_LABEL, defaultDiagramPageLabel);
+		}
+	}
+
+	private String getDefaulyDiagramPageName(ORefList diagramPageRefs)
+	{
+		if (diagramPageRefs.size() > 1)
+			return EAM.text("[Not Named]");
+		
+		return EAM.text("[Main Diagram]");
 	}
 	
 	private void openProject(File projectDirectory) throws Exception
