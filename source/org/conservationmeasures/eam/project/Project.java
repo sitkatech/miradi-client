@@ -541,9 +541,9 @@ public class Project
 	private String getDefaultDiagramPageName(ORefList diagramPageRefs)
 	{
 		if (diagramPageRefs.size() > 1)
-			return EAM.text("[Not Named]");
+			return ConceptualModelDiagram.DEFAULT_BLANK_NAME;
 		
-		return EAM.text("[Main Diagram]");
+		return ConceptualModelDiagram.DEFAULT_MAIN_NAME;
 	}
 	
 	private void openProject(File projectDirectory) throws Exception
