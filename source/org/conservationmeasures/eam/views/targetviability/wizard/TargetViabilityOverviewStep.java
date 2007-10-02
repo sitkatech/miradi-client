@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.targetviability.wizard;
 
 import org.conservationmeasures.eam.actions.views.ActionViewTargetViability;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.wizard.TargetViabilityWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -24,5 +25,10 @@ public class TargetViabilityOverviewStep extends TargetViabilityWizardStep
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewTargetViability.class;
+	}
+	
+	public String getSubHeading()
+	{
+		return EAM.text("Page 1");
 	}
 }

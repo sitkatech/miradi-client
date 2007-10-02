@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.targetviability.wizard;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -27,4 +28,8 @@ public class TargetViability5Step extends DiagramWizardStep
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
 
+	public String getSubHeading()
+	{
+		return EAM.text("Page 4");
+	}
 }
