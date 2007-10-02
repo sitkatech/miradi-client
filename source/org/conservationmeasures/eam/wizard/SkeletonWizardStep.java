@@ -66,6 +66,11 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		return viewName;
 	}
 	
+	public String getSubHeading()
+	{
+		return null;
+	}
+	
 	public String getTextLeft() throws Exception
 	{
 		if (!doesExist(LEFT))
