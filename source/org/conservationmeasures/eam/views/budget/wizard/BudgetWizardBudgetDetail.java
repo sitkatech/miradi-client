@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.budget.wizard;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningOverviewStep;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.FinancialWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -27,4 +28,8 @@ public class BudgetWizardBudgetDetail extends FinancialWizardStep
 		return ActionJumpPlanningOverviewStep.class;
 	}
 
+	public String getSubHeading()
+	{
+		return EAM.text("Page 2");
+	}
 }
