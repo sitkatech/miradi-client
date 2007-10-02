@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.workplan.wizard;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WorkPlanWizardStep;
@@ -27,4 +28,8 @@ public class WorkPlanAssignResourcesStep extends WorkPlanWizardStep
 		return ActionJumpWorkPlanAssignResourcesStep.class;
 	}
 
+	public String getSubHeading()
+	{
+		return EAM.text("Page 3");
+	}
 }
