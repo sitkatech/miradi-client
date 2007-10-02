@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
@@ -46,7 +47,12 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 			Vector names = new Vector();
 			for (int i = 0; i < orefList.size(); ++i)
 			{
-				BaseObject object = project.findObject(orefList.get(i)); 
+				ORef ref = orefList.get(i);
+				//TODO these invalid refs (orphaned DF)should get auto-repaired during project open at some point
+				if (ref.isInvalid())
+					continue;
+				
+				BaseObject object = project.findObject(ref); 
 				names.add(object.toString());
 			}
 			Collections.sort(names, new IgnoreCaseStringComparator());
