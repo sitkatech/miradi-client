@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -28,5 +29,9 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 		return ActionJumpThreatMatrixOverviewStep.class;
 	}
 	
+	public String getSubHeading()
+	{
+		return EAM.text("Page 7");
+	}
 }
 
