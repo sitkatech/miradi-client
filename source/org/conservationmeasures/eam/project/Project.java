@@ -467,7 +467,7 @@ public class Project
 		selectDefaultPlanningCustomization();
 		selectPlanningViewStrategicRadioButton();
 		createDefaultWwfProjectDataObject();
-		eliminateBlankDiagramNames();
+		eliminateBlankConceptualModelPages();
 	}
 
 	private void createDefaultPlanningCustomization() throws Exception
@@ -523,7 +523,7 @@ public class Project
 		createObject(WwfProjectData.getObjectType());
 	}
 	
-	private void eliminateBlankDiagramNames() throws Exception
+	private void eliminateBlankConceptualModelPages() throws Exception
 	{
 		ORefList diagramPageRefs = getConceptualModelDiagramPool().getORefList();
 		String defaultDiagramPageLabel = getDefaulyDiagramPageName(diagramPageRefs);		
