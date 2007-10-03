@@ -18,5 +18,6 @@ public class ProcessMenu1 extends MiradiMenu
 		setMnemonic(KeyEvent.VK_C);
 		
 		add(new ProcessMenu1a(actions));
+		add(new ProcessMenu1b(actions));
 	}
 }
