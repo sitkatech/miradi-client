@@ -15,7 +15,7 @@ import javax.swing.JComponent;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.ProcessSteps;
+import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;

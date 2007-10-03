@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.monitoring.wizard;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
-import org.conservationmeasures.eam.main.ProcessSteps;
+import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.MonitoringPlanWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 

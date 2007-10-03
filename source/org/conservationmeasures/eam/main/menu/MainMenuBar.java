@@ -113,7 +113,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivi
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
-import org.conservationmeasures.eam.main.ProcessSteps;
 import org.conservationmeasures.eam.main.ViewSwitcher;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;

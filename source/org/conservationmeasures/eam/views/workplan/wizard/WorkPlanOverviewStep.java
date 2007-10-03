@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.workplan.wizard;
 
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
-import org.conservationmeasures.eam.main.ProcessSteps;
+import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WorkPlanWizardStep;
 

@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.planning.wizard;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.ProcessSteps;
+import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.wizard.SplitWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
