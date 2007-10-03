@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.exceptions.InvalidDateRangeException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.menu.MainMenuBar;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;

@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.main.menu;
 
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
@@ -111,6 +111,10 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewS
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.EAMenuItem;
+import org.conservationmeasures.eam.main.ProcessSteps;
+import org.conservationmeasures.eam.main.ViewSwitcher;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
