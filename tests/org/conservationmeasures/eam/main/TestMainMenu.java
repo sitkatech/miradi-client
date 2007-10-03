@@ -11,6 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.main.menu.MainMenuBar;
 
 
 public class TestMainMenu extends EAMTestCase
