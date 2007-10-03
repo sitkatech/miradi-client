@@ -17,5 +17,6 @@ public class ProcessSteps
 	public static final String PROCESS_STEP_2C = "2C. Develop Operational Plan";
 	public static final String PROCESS_STEP_3A = "3A. Develop Short-Term Work Plan";
 	public static final String PROCESS_STEP_3B = "3B. Develop and Refine Project Budget";
+	public static final String PROCESS_STEP_3C = "3C. Implement Plans";
 	public static final String PROCESS_STEP_4A = "4A. Develop Detailed Short-Term Work Plan";
 }

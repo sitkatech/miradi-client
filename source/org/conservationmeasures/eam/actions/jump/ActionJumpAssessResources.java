@@ -18,7 +18,7 @@ public class ActionJumpAssessResources extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Assess human, financial & other resources");
+		return EAM.text("Assess human, financial and other resources");
 	}
 
 }
