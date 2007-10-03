@@ -76,7 +76,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpFinancialOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
-import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpImplementWorkPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
@@ -366,7 +366,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 //		addJumpDoerToMap(ActionJumpFinancialOverviewStep.class);
 		addJumpDoerToMap(ActionJumpTeamRoles.class);
 		addJumpDoerToMap(ActionJumpRefinePlans.class);
-		addJumpDoerToMap(ActionJumpImplementPlans.class);
+		addJumpDoerToMap(ActionJumpImplementWorkPlan.class);
 		
 		addJumpDoerToMap(ActionJumpAnalyzeData.class);
 		addJumpDoerToMap(ActionJumpAnalyzeStrategies.class);
