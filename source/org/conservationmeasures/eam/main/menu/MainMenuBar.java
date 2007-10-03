@@ -77,24 +77,12 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
-import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
-import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
 import org.conservationmeasures.eam.main.ViewSwitcher;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
-import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
@@ -244,53 +232,6 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 	
-	private JMenu createMenu3(Actions actions)
-	{
-		JMenu menu3 = new JMenu("3. Plan Your Monitoring");
-		menu3.setMnemonic(KeyEvent.VK_P);
-		
-		JMenu menu3a = new JMenu(ProcessSteps.PROCESS_STEP_3A);
-		menu3a.setMnemonic(KeyEvent.VK_F);
-		
-		addMenuItem(actions, menu3a, ActionJumpMonitoringWizardFocusStep.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu3a, ActionJumpDefineAudiences.class, KeyEvent.VK_D);
-		
-		JMenu menu3b = new JMenu(ProcessSteps.PROCESS_STEP_3B);
-		menu3b.setMnemonic(KeyEvent.VK_D);
-		
-		addMenuItem(actions, menu3b, ActionJumpMonitoringWizardDefineIndicatorsStep.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu3b, ActionJumpPlanDataStorage.class, KeyEvent.VK_P);
-
-		menu3.add(menu3a);
-		menu3.add(menu3b);
-		return menu3;
-	}
-	
-	private JMenu createMenu4(Actions actions)
-	{
-		JMenu menu4 = new JMenu("4. Implement Actions and Monitoring");
-		menu4.setMnemonic(KeyEvent.VK_I);
-		
-
-		JMenu menu4a = new JMenu(ProcessSteps.PROCESS_STEP_4A);
-		menu4a.setMnemonic(KeyEvent.VK_D);
-		menu4a.setIcon(new MiradiResourceImageIcon("icons/blankicon.png"));
-		
-		addMenuItem(actions, menu4a, ActionJumpReviewStratAndMonPlansStep.class, KeyEvent.VK_R);
-		addMenuItem(actions, menu4a, ActionJumpWorkPlanDevelopActivitiesAndTasksStep.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu4a, ActionJumpWorkPlanDevelopMethodsAndTasksStep.class, KeyEvent.VK_M);
-		addMenuItem(actions, menu4a, ActionJumpWorkPlanAssignResourcesStep.class, KeyEvent.VK_T);
-		addMenuItem(actions, menu4a, ActionJumpScheduleOverviewStep.class, KeyEvent.VK_S);
-//		addMenuItem(actions, menu4a, ActionJumpFinancialOverviewStep.class, KeyEvent.VK_F);
-
-		menu4.add(menu4a);
-		
-		addMenuItem(actions, menu4, ActionJumpImplementPlans.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu4, ActionJumpRefinePlans.class, KeyEvent.VK_R);
-
-		return menu4;
-	}
-	
 	private JMenu createMenu5(Actions actions)
 	{
 		JMenu menu5 = new JMenu("5. Analyze");
@@ -335,8 +276,8 @@ public class MainMenuBar extends JMenuBar
 		
 		menu.add(new ProcessMenu1(actions));
 		menu.add(new ProcessMenu2(actions));
-		menu.add(createMenu3(actions));
-		menu.add(createMenu4(actions));
+		menu.add(new ProcessMenu3(actions));
+		menu.add(new ProcessMenu4(actions));
 		menu.add(createMenu5(actions));
 		menu.add(createMenu6(actions));
 		menu.add(createMenu7(actions));
