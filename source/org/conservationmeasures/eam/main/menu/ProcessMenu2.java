@@ -15,7 +15,7 @@ public class ProcessMenu2 extends MiradiMenu
 	public ProcessMenu2(Actions actionsToUse)
 	{
 		super(EAM.text("2. Plan Your Actions"), actionsToUse);
-		setMnemonic(KeyEvent.VK_C);
+		setMnemonic(KeyEvent.VK_A);
 		
 		add(new ProcessMenu2a(actions));
 		add(new ProcessMenu2b(actions));
