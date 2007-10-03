@@ -17,6 +17,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacit
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAssessResources;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAssessRisks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetFutureDemo;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
@@ -46,6 +48,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditI
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardSelectMethodsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
+import org.conservationmeasures.eam.actions.jump.ActionJumpPlanProjectLifespan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
@@ -280,6 +283,9 @@ public class Actions
 		registerAction(new ActionJumpDiagramWizardConstructChainsStep(mainWindow));
 		registerAction(new ActionJumpFinalizeConceptualModel(mainWindow));
 		registerAction(new ActionJumpFinalizeMonitoringPlan(mainWindow));
+		registerAction(new ActionJumpAssessResources(mainWindow));
+		registerAction(new ActionJumpAssessRisks(mainWindow));
+		registerAction(new ActionJumpPlanProjectLifespan(mainWindow));
 		
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
