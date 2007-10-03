@@ -8,8 +8,9 @@ package org.conservationmeasures.eam.main.menu;
 import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
+import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetWizardAccountingAndFunding;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopFundingProposals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpObtainFinancing;
 
 public class ProcessMenu3b extends MiradiMenu
 {
@@ -18,5 +19,8 @@ public class ProcessMenu3b extends MiradiMenu
 		super(ProcessSteps.PROCESS_STEP_3B, actions);
 		setMnemonic(KeyEvent.VK_D);
 		
+		addMenuItem(ActionJumpBudgetWizardAccountingAndFunding.class, KeyEvent.VK_E);
+		addMenuItem(ActionJumpDevelopFundingProposals.class, KeyEvent.VK_D);
+		addMenuItem(ActionJumpObtainFinancing.class, KeyEvent.VK_O);
 	}
 }

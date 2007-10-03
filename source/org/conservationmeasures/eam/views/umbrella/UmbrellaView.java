@@ -56,6 +56,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetFutureDemo;
+import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetWizardAccountingAndFunding;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
@@ -69,10 +70,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTa
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpFinancialOverviewStep;
@@ -97,7 +96,9 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopO
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanHowToConstructStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
@@ -354,6 +355,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		
 //		addJumpDoerToMap(ActionJumpMonitoringPlanOverviewStep.class);
 		addJumpDoerToMap(ActionJumpMonitoringWizardSelectMethodsStep.class);
+		
+		addJumpDoerToMap(ActionJumpBudgetWizardAccountingAndFunding.class);
 		
 		addJumpDoerToMap(ActionJumpPlanningOverviewStep.class);
 		addJumpDoerToMap(ActionJumpReviewStratAndMonPlansStep.class);
