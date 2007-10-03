@@ -9,15 +9,17 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpReviewStratAndMonPlansStep extends MainWindowAction
+public class ActionJumpFinalizeMonitoringPlan extends MainWindowAction
 {
-	public ActionJumpReviewStratAndMonPlansStep(MainWindow mainWindowToUse)
+	public ActionJumpFinalizeMonitoringPlan(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
-	private static String getLabel()
+	static String getLabel()
 	{
-		return EAM.text("Finalize Strategic Plan");
+		return EAM.text("Finalize monitoring plan");
 	}
+
+
 }

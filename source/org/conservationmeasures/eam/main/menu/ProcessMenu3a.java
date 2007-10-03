@@ -18,8 +18,6 @@ public class ProcessMenu3a extends MiradiMenu
 		super(ProcessSteps.PROCESS_STEP_3A, actionsToUse);
 		setMnemonic(KeyEvent.VK_F);
 		
-		addMenuItem(ActionJumpMonitoringWizardFocusStep.class, KeyEvent.VK_M);
-		addMenuItem(ActionJumpDefineAudiences.class, KeyEvent.VK_A);
 	}
 
 }

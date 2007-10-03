@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewMo
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeConceptualModel;
+import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeMonitoringPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
@@ -278,6 +279,7 @@ public class Actions
 		registerAction(new ActionJumpDevelopMap(mainWindow));
 		registerAction(new ActionJumpDiagramWizardConstructChainsStep(mainWindow));
 		registerAction(new ActionJumpFinalizeConceptualModel(mainWindow));
+		registerAction(new ActionJumpFinalizeMonitoringPlan(mainWindow));
 		
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
