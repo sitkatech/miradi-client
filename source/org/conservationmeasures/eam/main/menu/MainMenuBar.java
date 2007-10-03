@@ -235,8 +235,6 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new ProcessMenu3(actions));
 		menu.add(new ProcessMenu4(actions));
 		menu.add(new ProcessMenu5(actions));
-		menu.add(new ProcessMenu6(actions));
-		menu.add(new ProcessMenu7(actions));
 		menu.add(new JMenuItem(actions.get(ActionJumpCloseTheLoop.class)));
 		return menu;
 	}

@@ -5,19 +5,15 @@
 */ 
 package org.conservationmeasures.eam.main.menu;
 
-import java.awt.event.KeyEvent;
-
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.main.EAM;
 
-public class ProcessMenu6 extends MiradiMenu
+public class ProcessMenu5a extends MiradiMenu
 {
-	public ProcessMenu6(Actions actions)
+	public ProcessMenu5a(Actions actions)
 	{
-		super(EAM.text("6. Use/Adapt"), actions);
-		setMnemonic(KeyEvent.VK_U);
+		super(ProcessSteps.PROCESS_STEP_5A, actions);
 		
-		addMenuItem(ActionJumpAdaptAndMonitorPlans.class, KeyEvent.VK_A);
+		addDisabledMenuItem(EAM.text("Document key results and lessons"));
 	}
 }
