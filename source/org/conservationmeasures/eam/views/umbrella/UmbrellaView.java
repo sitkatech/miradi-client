@@ -64,14 +64,15 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardConstructChainsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardVisionStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpFinancialOverviewStep;
@@ -315,14 +316,15 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpSummaryWizardDefineProjectLeader.class);
 		addJumpDoerToMap(ActionJumpDevelopCharter.class);
 		
-		addJumpDoerToMap(ActionJumpDiagramWizardProjectScopeStep.class);
-		addJumpDoerToMap(ActionJumpDiagramWizardVisionStep.class);
+		addJumpDoerToMap(ActionJumpSummaryWizardDefineProjecScope.class);
+		addJumpDoerToMap(ActionJumpSummaryWizardDefineProjectVision.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardDefineTargetsStep.class);
 		addJumpDoerToMap(ActionJumpTargetViabilityMethodChoiceStep.class);
 		addJumpDoerToMap(ActionJumpTargetViability3Step.class);
 		
 		addJumpDoerToMap(ActionJumpDiagramWizardIdentifyDirectThreatStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class);
+		addJumpDoerToMap(ActionJumpDiagramWizardConstructChainsStep.class);
 		addJumpDoerToMap(ActionJumpThreatMatrixOverviewStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardIdentifyIndirectThreatStep.class);
 		addJumpDoerToMap(ActionJumpAssessStakeholders.class);

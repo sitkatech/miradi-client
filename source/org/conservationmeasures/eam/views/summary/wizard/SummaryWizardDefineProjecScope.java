@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.summary.wizard;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.SummaryWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -24,7 +24,7 @@ public class SummaryWizardDefineProjecScope extends SummaryWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpDiagramWizardProjectScopeStep.class;
+		return ActionJumpSummaryWizardDefineProjecScope.class;
 	}
 	
 }

@@ -8,9 +8,10 @@ package org.conservationmeasures.eam.main.menu;
 import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMap;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardVisionStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 
 public class ProcessMenu1b extends MiradiMenu
@@ -20,8 +21,9 @@ public class ProcessMenu1b extends MiradiMenu
 		super(ProcessSteps.PROCESS_STEP_1B, actionsToUse);
 		setMnemonic(KeyEvent.VK_D);
 		
-		addMenuItem(ActionJumpDiagramWizardProjectScopeStep.class, KeyEvent.VK_D);
-		addMenuItem(ActionJumpDiagramWizardVisionStep.class, KeyEvent.VK_E);
+		addMenuItem(ActionJumpSummaryWizardDefineProjecScope.class, KeyEvent.VK_D);
+		addMenuItem(ActionJumpDevelopMap.class, KeyEvent.VK_M);
+		addMenuItem(ActionJumpSummaryWizardDefineProjectVision.class, KeyEvent.VK_E);
 		addMenuItem(ActionJumpDiagramWizardDefineTargetsStep.class, KeyEvent.VK_I);
 		addMenuItem(ActionJumpTargetViabilityMethodChoiceStep.class, KeyEvent.VK_V);
 	}

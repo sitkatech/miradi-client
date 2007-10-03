@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.wizard;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardConstructChainsStep;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -25,7 +25,7 @@ public class DiagramWizardConstructChainsStep extends DiagramWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpDiagramWizardIdentifyIndirectThreatStep.class;
+		return ActionJumpDiagramWizardConstructChainsStep.class;
 	}
 	
 }

@@ -9,16 +9,16 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDiagramWizardVisionStep extends MainWindowAction
+public class ActionJumpSummaryWizardDefineProjecScope extends MainWindowAction
 {
-	public ActionJumpDiagramWizardVisionStep(MainWindow mainWindowToUse)
+	public ActionJumpSummaryWizardDefineProjecScope(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
-	
+
 	static String getLabel()
 	{
-		return EAM.text("Establish a Clear and Common Vision");
+		return EAM.text("Define Project Scope");
 	}
 	
 }
