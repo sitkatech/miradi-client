@@ -8,6 +8,11 @@ package org.conservationmeasures.eam.main.menu;
 import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeConceptualModel;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
 
@@ -19,6 +24,12 @@ public class ProcessMenu2a extends MiradiMenu
 		setMnemonic(KeyEvent.VK_D);
 		
 		addMenuItem(ActionJumpStrategicPlanDevelopGoalStep.class, KeyEvent.VK_G);
+		addMenuItem(ActionJumpSelectChainStep.class, KeyEvent.VK_I);
+		addMenuItem(ActionJumpRankDraftStrategiesStep.class, KeyEvent.VK_S);
+		addMenuItem(ActionJumpDiagramWizardResultsChainStep.class, KeyEvent.VK_R);
 		addMenuItem(ActionJumpStrategicPlanDevelopObjectivesStep.class, KeyEvent.VK_O);
+		addMenuItem(ActionJumpFinalizeConceptualModel.class, KeyEvent.VK_F);
+		addMenuItem(ActionJumpReviewStratAndMonPlansStep.class, KeyEvent.VK_E);
+		//addMenuItem(ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);
 	}
 }
