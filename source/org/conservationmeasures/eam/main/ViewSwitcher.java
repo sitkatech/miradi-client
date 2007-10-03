@@ -46,8 +46,8 @@ public class ViewSwitcher extends PanelComboBox
 //			actions.get(ActionViewMonitoring.class),
 //			actions.get(ActionViewWorkPlan.class), 
 //			actions.get(ActionViewBudget.class), 
-			actions.get(ActionViewSchedule.class),
 			actions.get(ActionViewMap.class),
+			actions.get(ActionViewSchedule.class),
 			actions.get(ActionViewImages.class),
 		};
 		return views;
