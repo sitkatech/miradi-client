@@ -18,6 +18,6 @@ public class ActionJumpWorkPlanDevelopMethodsAndTasksStep extends MainWindowActi
 	
 	static String getLabel()
 	{
-		return EAM.text("Develop Monitoring Methods & Tasks");
+		return EAM.text("Detail methods, tasks, and responsibilities");
 	}
 }

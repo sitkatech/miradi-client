@@ -18,7 +18,7 @@ public class ActionJumpStrategicPlanDevelopObjectivesStep extends MainWindowActi
 	
 	private static String getLabel()
 	{
-		return EAM.text("Develop Objectives"); 
+		return EAM.text("Develop objectives"); 
 	}
 
 }

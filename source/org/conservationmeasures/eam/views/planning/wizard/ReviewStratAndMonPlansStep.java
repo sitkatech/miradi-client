@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.planning.wizard;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.wizard.SplitWizardStep;
@@ -29,8 +28,4 @@ public class ReviewStratAndMonPlansStep extends SplitWizardStep
 		return ActionJumpReviewStratAndMonPlansStep.class;
 	}
 
-	public String getSubHeading()
-	{
-		return EAM.text("Page 2");
-	}
 }

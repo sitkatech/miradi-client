@@ -18,7 +18,7 @@ public class ActionJumpDiagramWizardIdentifyIndirectThreatStep extends MainWindo
 	
 	static String getLabel()
 	{
-		return EAM.text("Identify Indirect Threats & Opportunities");
+		return EAM.text("Identify indirect threats and opportunities");
 	}
 	
 }

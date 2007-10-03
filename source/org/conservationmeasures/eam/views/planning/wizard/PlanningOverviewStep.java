@@ -7,7 +7,6 @@
 package org.conservationmeasures.eam.views.planning.wizard;
 
 import org.conservationmeasures.eam.actions.views.ActionViewPlanning;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.wizard.SplitWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -29,8 +28,4 @@ public class PlanningOverviewStep extends SplitWizardStep
 		return ActionViewPlanning.class;
 	}
 	
-	public String getSubHeading()
-	{
-		return EAM.text("Page 1");
-	}
 }

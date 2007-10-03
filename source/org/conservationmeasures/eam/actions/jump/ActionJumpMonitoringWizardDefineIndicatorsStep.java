@@ -18,7 +18,7 @@ public class ActionJumpMonitoringWizardDefineIndicatorsStep extends MainWindowAc
 	
 	private static String getLabel()
 	{
-		return EAM.text("Define Indicators"); 
+		return EAM.text("Define indicators"); 
 	}
 
 }

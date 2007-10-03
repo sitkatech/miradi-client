@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -28,10 +27,6 @@ public class ThreatMatrixOverviewStep extends ThreatRatingWizardStep
 		return ActionViewThreatMatrix.class;
 	}
 	
-	public String getSubHeading()
-	{
-		return EAM.text("Page 1");
-	}
 }
 
 

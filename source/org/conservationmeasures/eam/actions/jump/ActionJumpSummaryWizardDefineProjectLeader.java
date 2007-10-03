@@ -18,7 +18,7 @@ public class ActionJumpSummaryWizardDefineProjectLeader extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Designate a Project Leader & Roles");
+		return EAM.text("Identify key skills");
 	}
 
 }

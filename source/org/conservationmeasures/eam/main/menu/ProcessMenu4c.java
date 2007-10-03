@@ -15,6 +15,6 @@ public class ProcessMenu4c extends MiradiMenu
 	{
 		super(ProcessSteps.PROCESS_STEP_4C, actions);
 
-		addDisabledMenuItem(EAM.text("Revise Project Plan: Strategic, Monitoring, Operational, and Work Plans"));
+		addDisabledMenuItem(EAM.text("Revise project plan: strategic, monitoring, operational, and work plans"));
 	}
 }

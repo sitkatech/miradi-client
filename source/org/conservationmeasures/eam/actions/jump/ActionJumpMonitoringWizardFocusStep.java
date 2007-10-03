@@ -18,7 +18,7 @@ public class ActionJumpMonitoringWizardFocusStep extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Determine What You Need to Know");
+		return EAM.text("Define audiences and information needs");
 	}
 	
 }

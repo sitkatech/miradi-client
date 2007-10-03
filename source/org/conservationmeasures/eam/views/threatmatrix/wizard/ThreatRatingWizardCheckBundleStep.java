@@ -31,7 +31,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 6");
+		return EAM.text("Page 5");
 	}
 }
 

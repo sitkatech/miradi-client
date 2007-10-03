@@ -18,7 +18,7 @@ public class ActionJumpSummaryWizardDefineTeamMembers extends MainWindowAction
 
 	static String getLabel()
 	{
-		return EAM.text("Select Team Members");
+		return EAM.text("Select initial team members");
 	}
 	
 }

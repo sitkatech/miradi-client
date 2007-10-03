@@ -19,7 +19,7 @@ public class ActionJumpImplementStrategicAndMonitoringPlans extends
 
 	private static String getLabel()
 	{
-		return EAM.text("Implement Strategic and Monitoring Plans");
+		return EAM.text("Implement strategic and monitoring plans");
 	}
 
 }

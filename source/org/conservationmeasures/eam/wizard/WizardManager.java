@@ -363,15 +363,18 @@ public class WizardManager
 				ThreatRatingWizardCheckTotalsStep.class,
 				
 				// STEP 1D
-				DiagramWizardIdentifyIndirectThreatStep.class,		
+				DiagramWizardIdentifyIndirectThreatStep.class,	
+				// need AssessStakeholders here
 				DiagramWizardConstructChainsStep.class,	
 				DiagramWizardReviewModelAndAdjustStep.class,		
 				
 				// STEP 2A
 //				StrategicPlanOverviewStep.class,
 				StrategicPlanDevelopGoalStep.class,
+				
 				SelectChainStep.class,		
 				DevelopDraftStrategiesStep.class,
+				
 				RankDraftStrategiesStep.class,
 
 				DiagramWizardResultsChainStep.class,
@@ -392,6 +395,7 @@ public class WizardManager
 				// STEP 3A
 				WorkPlanOverviewStep.class,
 				WorkPlanDevelopActivitiesAndTasksStep.class,
+				
 				WorkPlanDevelopMethodsAndTasksStep.class,
 				WorkPlanCreateResourcesStep.class,
 				WorkPlanAssignResourcesStep.class,

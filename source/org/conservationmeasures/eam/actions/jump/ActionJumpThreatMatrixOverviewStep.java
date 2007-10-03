@@ -18,7 +18,7 @@ public class ActionJumpThreatMatrixOverviewStep extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Rank Direct Threats");
+		return EAM.text("Rank direct threats");
 	}
 	
 }

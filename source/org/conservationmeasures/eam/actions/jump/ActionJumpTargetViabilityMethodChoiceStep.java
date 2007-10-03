@@ -13,7 +13,7 @@ public class ActionJumpTargetViabilityMethodChoiceStep extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Describe Status of Targets"); 
+		return EAM.text("Describe status of targets"); 
 	}
 
 }
