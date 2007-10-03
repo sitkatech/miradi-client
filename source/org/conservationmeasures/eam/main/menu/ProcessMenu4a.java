@@ -24,8 +24,7 @@ public class ProcessMenu4a extends MiradiMenu
 		setIcon(new MiradiResourceImageIcon("icons/blankicon.png"));
 		
 		addMenuItem(ActionJumpReviewStratAndMonPlansStep.class, KeyEvent.VK_R);
-		addMenuItem(ActionJumpWorkPlanDevelopActivitiesAndTasksStep.class, KeyEvent.VK_A);
-		addMenuItem(ActionJumpWorkPlanDevelopMethodsAndTasksStep.class, KeyEvent.VK_M);
+
 		addMenuItem(ActionJumpWorkPlanAssignResourcesStep.class, KeyEvent.VK_T);
 		addMenuItem(ActionJumpScheduleOverviewStep.class, KeyEvent.VK_S);
 //		addMenuItem(ActionJumpFinancialOverviewStep.class, KeyEvent.VK_F);
