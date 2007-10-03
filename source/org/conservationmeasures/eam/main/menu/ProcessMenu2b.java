@@ -20,9 +20,5 @@ public class ProcessMenu2b extends MiradiMenu
 		super(ProcessSteps.PROCESS_STEP_2B, actions);
 		setMnemonic(KeyEvent.VK_S);
 		
-		addMenuItem(ActionJumpSelectChainStep.class, KeyEvent.VK_I);
-		addMenuItem(ActionJumpRankDraftStrategiesStep.class, KeyEvent.VK_S);
-		addMenuItem(ActionJumpDiagramWizardResultsChainStep.class, KeyEvent.VK_R);
-		addMenuItem(ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);
 	}
 }

@@ -33,12 +33,11 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTa
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategiesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeConceptualModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
@@ -60,7 +59,9 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopO
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanHowToConstructStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanViewAllObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
@@ -276,6 +277,7 @@ public class Actions
 		registerAction(new ActionJumpWorkPlanDevelopMethodsAndTasksStep(mainWindow));
 		registerAction(new ActionJumpDevelopMap(mainWindow));
 		registerAction(new ActionJumpDiagramWizardConstructChainsStep(mainWindow));
+		registerAction(new ActionJumpFinalizeConceptualModel(mainWindow));
 		
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
