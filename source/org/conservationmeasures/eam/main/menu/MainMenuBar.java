@@ -73,26 +73,20 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
-import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
@@ -250,30 +244,6 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 	
-	private JMenu createMenu2(Actions actions)
-	{
-		JMenu menu2 = new JMenu("2. Plan Your Actions");
-		menu2.setMnemonic(KeyEvent.VK_P);
-		
-		JMenu menu2a = new JMenu(ProcessSteps.PROCESS_STEP_2A);
-		menu2a.setMnemonic(KeyEvent.VK_D);
-		
-		addMenuItem(actions, menu2a, ActionJumpStrategicPlanDevelopGoalStep.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu2a, ActionJumpStrategicPlanDevelopObjectivesStep.class, KeyEvent.VK_D);
-		
-		JMenu menu2b = new JMenu(ProcessSteps.PROCESS_STEP_2B);
-		menu2b.setMnemonic(KeyEvent.VK_S);
-		
-		addMenuItem(actions, menu2b, ActionJumpSelectChainStep.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu2b, ActionJumpRankDraftStrategiesStep.class, KeyEvent.VK_R);
-		addMenuItem(actions, menu2b, ActionJumpDiagramWizardResultsChainStep.class, KeyEvent.VK_R);
-		addMenuItem(actions, menu2b, ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);
-
-		menu2.add(menu2a);
-		menu2.add(menu2b);
-		return menu2;
-	}
-	
 	private JMenu createMenu3(Actions actions)
 	{
 		JMenu menu3 = new JMenu("3. Plan Your Monitoring");
@@ -364,7 +334,7 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_S);
 		
 		menu.add(new ProcessMenu1(actions));
-		menu.add(createMenu2(actions));
+		menu.add(new ProcessMenu2(actions));
 		menu.add(createMenu3(actions));
 		menu.add(createMenu4(actions));
 		menu.add(createMenu5(actions));
