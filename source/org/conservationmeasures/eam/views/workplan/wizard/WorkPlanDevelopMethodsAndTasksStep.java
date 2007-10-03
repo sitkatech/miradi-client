@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.workplan.wizard;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.ProcessSteps;
+import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WorkPlanWizardStep;
 

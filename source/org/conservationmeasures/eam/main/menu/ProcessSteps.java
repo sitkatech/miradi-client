@@ -4,7 +4,7 @@
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
 
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.main.menu;
 
 public class ProcessSteps
 {
