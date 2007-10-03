@@ -71,14 +71,7 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
-import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
-import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
-import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMenuItem;
 import org.conservationmeasures.eam.main.ViewSwitcher;
@@ -232,43 +225,6 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 	
-	private JMenu createMenu5(Actions actions)
-	{
-		JMenu menu5 = new JMenu("5. Analyze");
-		menu5.setMnemonic(KeyEvent.VK_A);
-		
-		addMenuItem(actions, menu5, ActionJumpAnalyzeData.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu5, ActionJumpAnalyzeStrategies.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu5, ActionJumpCommunicateResults.class, KeyEvent.VK_C);
-		
-		return menu5;
-	}
-	
-	private JMenu createMenu6(Actions actions)
-	{
-		JMenu menu6 = new JMenu("6. Use/Adapt");
-		menu6.setMnemonic(KeyEvent.VK_U);
-		addMenuItem(actions, menu6, ActionJumpAdaptAndMonitorPlans.class, KeyEvent.VK_A);
-		return menu6;
-	}
-	
-	private JMenu createMenu7(Actions actions)
-	{
-		JMenu menu7 = new JMenu("7. Capture and Share Learning");
-		menu7.setMnemonic(KeyEvent.VK_C);
-		
-		addMenuItem(actions, menu7, ActionJumpDocument.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu7, ActionJumpShare.class, KeyEvent.VK_S);
-		addMenuItem(actions, menu7, ActionJumpCreate.class, KeyEvent.VK_C);
-		
-		return menu7;
-	}
-
-	private JMenuItem createMenu8(Actions actions)
-	{
-		return new JMenuItem(actions.get(ActionJumpCloseTheLoop.class));
-	}
-	
 	private JMenu createProcessMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-Step"));
@@ -278,10 +234,10 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new ProcessMenu2(actions));
 		menu.add(new ProcessMenu3(actions));
 		menu.add(new ProcessMenu4(actions));
-		menu.add(createMenu5(actions));
-		menu.add(createMenu6(actions));
-		menu.add(createMenu7(actions));
-		menu.add(createMenu8(actions));
+		menu.add(new ProcessMenu5(actions));
+		menu.add(new ProcessMenu6(actions));
+		menu.add(new ProcessMenu7(actions));
+		menu.add(new JMenuItem(actions.get(ActionJumpCloseTheLoop.class)));
 		return menu;
 	}
 
