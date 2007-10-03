@@ -9,16 +9,17 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpImplementWorkPlan extends MainWindowAction
+public class ActionJumpImplementStrategicAndMonitoringPlans extends
+		MainWindowAction
 {
-	public ActionJumpImplementWorkPlan(MainWindow mainWindowToUse)
+	public ActionJumpImplementStrategicAndMonitoringPlans(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Implement Work Plan");
+		return EAM.text("Implement Strategic and Monitoring Plans");
 	}
 
 }
