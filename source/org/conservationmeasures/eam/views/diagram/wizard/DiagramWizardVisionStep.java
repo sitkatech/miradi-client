@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.wizard;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardVisionStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -23,6 +23,6 @@ public class DiagramWizardVisionStep extends DiagramWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpDiagramWizardVisionStep.class;
+		return ActionJumpSummaryWizardDefineProjectVision.class;
 	}
 }
