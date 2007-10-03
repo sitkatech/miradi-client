@@ -267,8 +267,7 @@ public class MainMenuBar extends JMenuBar
 	
 	private JMenu createMenu1(Actions actions)
 	{
-		JMenu menu1 = new JMenu("1. Conceptualize Your Project");
-		menu1.setMnemonic(KeyEvent.VK_C);
+		JMenu menu1 = new ProcessMenu1(actions);
 		
 		JMenu menu1a = new JMenu(ProcessSteps.PROCESS_STEP_1A);
 		menu1a.setMnemonic(KeyEvent.VK_D);
