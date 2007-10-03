@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.main.menu;
 import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpImplementWorkPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.main.EAM;
 
@@ -20,7 +20,7 @@ public class ProcessMenu4 extends MiradiMenu
 		setMnemonic(KeyEvent.VK_I);
 		
 		add(new ProcessMenu4a(actions));
-		addMenuItem(ActionJumpImplementPlans.class, KeyEvent.VK_I);
+		addMenuItem(ActionJumpImplementWorkPlan.class, KeyEvent.VK_I);
 		addMenuItem(ActionJumpRefinePlans.class, KeyEvent.VK_R);
 
 	}
