@@ -73,21 +73,14 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeStrategies;
-import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
-import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
@@ -100,7 +93,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
@@ -258,31 +250,6 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 	
-	private JMenu createMenu1(Actions actions)
-	{
-		JMenu menu1c = new JMenu(ProcessSteps.PROCESS_STEP_1C);
-		menu1c.setMnemonic(KeyEvent.VK_U);
-		
-		addMenuItem(actions, menu1c, ActionJumpDiagramWizardIdentifyDirectThreatStep.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu1c, ActionJumpThreatMatrixOverviewStep.class, KeyEvent.VK_R);
-		
-		JMenu menu1d = new JMenu(ProcessSteps.PROCESS_STEP_1D);
-		menu1d.setMnemonic(KeyEvent.VK_M);
-		
-		addMenuItem(actions, menu1d, ActionJumpDiagramWizardIdentifyIndirectThreatStep.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu1d, ActionJumpAssessStakeholders.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu1d, ActionJumpAnalyzeProjectCapacity.class, KeyEvent.VK_A);
-		
-		addMenuItem(actions, menu1d, ActionJumpArticulateCoreAssumptions.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu1d, ActionJumpDiagramWizardReviewModelAndAdjustStep.class, KeyEvent.VK_C);
-		addMenuItem(actions, menu1d, ActionJumpGroundTruthRevise.class, KeyEvent.VK_G);
-		
-		JMenu menu1 = new ProcessMenu1(actions);
-		menu1.add(menu1c);
-		menu1.add(menu1d);
-		return menu1;
-	}
-	
 	private JMenu createMenu2(Actions actions)
 	{
 		JMenu menu2 = new JMenu("2. Plan Your Actions");
@@ -396,7 +363,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-Step"));
 		menu.setMnemonic(KeyEvent.VK_S);
 		
-		menu.add(createMenu1(actions));
+		menu.add(new ProcessMenu1(actions));
 		menu.add(createMenu2(actions));
 		menu.add(createMenu3(actions));
 		menu.add(createMenu4(actions));
