@@ -19,6 +19,7 @@ public class ProcessMenu2 extends MiradiMenu
 		
 		add(new ProcessMenu2a(actions));
 		add(new ProcessMenu2b(actions));
+		add(new ProcessMenu2c(actions));
 	}
 
 }
