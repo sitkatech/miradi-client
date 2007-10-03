@@ -18,7 +18,7 @@ public class ActionJumpDevelopCharter extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Develop a Charter for the Project"); 
+		return EAM.text("Agree on roles and responsibilities"); 
 	}
 
 }

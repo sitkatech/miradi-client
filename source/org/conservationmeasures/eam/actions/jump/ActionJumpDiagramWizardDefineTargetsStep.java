@@ -18,7 +18,7 @@ public class ActionJumpDiagramWizardDefineTargetsStep extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Identify and Prioritize Targets");
+		return EAM.text("Select conservation targets");
 	}
 	
 }

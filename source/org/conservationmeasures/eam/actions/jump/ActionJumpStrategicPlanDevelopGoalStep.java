@@ -18,7 +18,7 @@ public class ActionJumpStrategicPlanDevelopGoalStep extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Develop Goals for Each Target"); 
+		return EAM.text("Develop goals for each target"); 
 	}
 
 }

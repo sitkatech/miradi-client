@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.wizard;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
@@ -26,7 +26,7 @@ public class DiagramWizardLinkDirectThreatsToTargetsStep extends DiagramWizardSt
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class;
+		return ActionJumpDiagramWizardIdentifyDirectThreatStep.class;
 	}
 	
 	public String getSubHeading()

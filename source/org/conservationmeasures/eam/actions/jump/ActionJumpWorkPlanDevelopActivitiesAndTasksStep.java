@@ -18,6 +18,6 @@ public class ActionJumpWorkPlanDevelopActivitiesAndTasksStep extends MainWindowA
 	
 	static String getLabel()
 	{
-		return EAM.text("Develop Activities & Tasks");
+		return EAM.text("Detail activities, tasks, and responsibilities");
 	}
 }

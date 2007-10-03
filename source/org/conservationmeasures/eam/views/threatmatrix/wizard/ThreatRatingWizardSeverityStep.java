@@ -35,6 +35,6 @@ public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 4");
+		return EAM.text("Page 3");
 	}
 }

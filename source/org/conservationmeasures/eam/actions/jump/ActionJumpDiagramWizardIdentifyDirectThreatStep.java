@@ -18,7 +18,7 @@ public class ActionJumpDiagramWizardIdentifyDirectThreatStep extends MainWindowA
 	
 	static String getLabel()
 	{
-		return EAM.text("Identify Direct Threats");
+		return EAM.text("Identify direct threats");
 	}
 	
 }

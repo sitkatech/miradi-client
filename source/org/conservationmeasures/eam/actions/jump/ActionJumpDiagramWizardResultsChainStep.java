@@ -18,7 +18,7 @@ public class ActionJumpDiagramWizardResultsChainStep extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Develop Results Chains for Key Strategies"); 
+		return EAM.text("Create results chains showing assumptions"); 
 	}
 
 }

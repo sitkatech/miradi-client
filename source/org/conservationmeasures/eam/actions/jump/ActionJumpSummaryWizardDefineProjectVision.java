@@ -18,7 +18,7 @@ public class ActionJumpSummaryWizardDefineProjectVision extends MainWindowAction
 	
 	static String getLabel()
 	{
-		return EAM.text("Establish a Clear and Common Vision");
+		return EAM.text("Agree on project vision");
 	}
 	
 }

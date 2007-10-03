@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.wizard;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
@@ -25,7 +25,7 @@ public class DevelopDraftStrategiesStep extends DiagramWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpDevelopDraftStrategiesStep.class;
+		return ActionJumpSelectChainStep.class;
 	}
 	
 	public String getSubHeading()

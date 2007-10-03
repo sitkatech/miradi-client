@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.workplan.wizard;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -25,7 +25,7 @@ public class WorkPlanAssignResourcesStep extends WorkPlanWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpWorkPlanAssignResourcesStep.class;
+		return ActionJumpWorkPlanDevelopMethodsAndTasksStep.class;
 	}
 
 	public String getSubHeading()

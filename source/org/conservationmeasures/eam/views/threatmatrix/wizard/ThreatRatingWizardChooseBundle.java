@@ -158,7 +158,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 2");
+		return EAM.text("Page 1");
 	}
 
 	static final String SELECT_A_TARGET = "--Select a Target";

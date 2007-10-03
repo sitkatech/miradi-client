@@ -18,7 +18,7 @@ public class ActionJumpSummaryWizardDefineProjecScope extends MainWindowAction
 
 	static String getLabel()
 	{
-		return EAM.text("Define Project Scope");
+		return EAM.text("Define project scope");
 	}
 	
 }

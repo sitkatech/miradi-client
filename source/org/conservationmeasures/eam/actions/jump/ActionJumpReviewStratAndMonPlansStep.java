@@ -18,6 +18,6 @@ public class ActionJumpReviewStratAndMonPlansStep extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Finalize Strategic Plan");
+		return EAM.text("Finalize strategic plan");
 	}
 }

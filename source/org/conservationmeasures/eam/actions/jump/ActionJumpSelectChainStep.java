@@ -18,7 +18,7 @@ public class ActionJumpSelectChainStep extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Identify \"Key Factors\" & Draft Strategies"); 
+		return EAM.text("Identify \"key factors\" and draft strategies"); 
 	}
 
 }

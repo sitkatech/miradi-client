@@ -18,7 +18,7 @@ public class ActionJumpDiagramWizardReviewModelAndAdjustStep extends MainWindowA
 	
 	static String getLabel()
 	{
-		return EAM.text("Create a Model");
+		return EAM.text("Ground-truth and revise model");
 	}
 	
 }
