@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMap;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardConstructChainsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
@@ -286,6 +287,7 @@ public class Actions
 		registerAction(new ActionJumpAssessResources(mainWindow));
 		registerAction(new ActionJumpAssessRisks(mainWindow));
 		registerAction(new ActionJumpPlanProjectLifespan(mainWindow));
+		registerAction(new ActionJumpDevelopSchedule(mainWindow));
 		
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
