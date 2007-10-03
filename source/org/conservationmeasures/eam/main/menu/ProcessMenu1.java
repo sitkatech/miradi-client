@@ -16,5 +16,7 @@ public class ProcessMenu1 extends MiradiMenu
 	{
 		super(EAM.text("1. Conceptualize Project"), actions);
 		setMnemonic(KeyEvent.VK_C);
+		
+		add(new ProcessMenu1a(actions));
 	}
 }

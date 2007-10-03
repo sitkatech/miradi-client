@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.main.menu;
 import javax.swing.JMenu;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.main.EAMenuItem;
 
 public abstract class MiradiMenu extends JMenu
 {
@@ -15,6 +16,12 @@ public abstract class MiradiMenu extends JMenu
 	{
 		super(text);
 		actions = actionsToUse;
+	}
+	
+	void addMenuItem(Class actionClass, int mnemonic)
+	{
+		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(actionClass), mnemonic);
+		add(menuItemNewProject);
 	}
 	
 	Actions actions;

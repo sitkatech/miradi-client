@@ -82,7 +82,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
@@ -104,8 +103,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
@@ -267,14 +264,7 @@ public class MainMenuBar extends JMenuBar
 	
 	private JMenu createMenu1(Actions actions)
 	{
-		JMenu menu1 = new ProcessMenu1(actions);
 		
-		JMenu menu1a = new JMenu(ProcessSteps.PROCESS_STEP_1A);
-		menu1a.setMnemonic(KeyEvent.VK_D);
-		
-		addMenuItem(actions, menu1a, ActionJumpSummaryWizardDefineTeamMembers.class, KeyEvent.VK_S);
-		addMenuItem(actions, menu1a, ActionJumpSummaryWizardDefineProjectLeader.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu1a, ActionJumpDevelopCharter.class, KeyEvent.VK_D);
 	
 		JMenu menu1b = new JMenu(ProcessSteps.PROCESS_STEP_1B);
 		menu1b.setMnemonic(KeyEvent.VK_D);
@@ -301,7 +291,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu1d, ActionJumpDiagramWizardReviewModelAndAdjustStep.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu1d, ActionJumpGroundTruthRevise.class, KeyEvent.VK_G);
 		
-		menu1.add(menu1a);
+		JMenu menu1 = new ProcessMenu1(actions);
 		menu1.add(menu1b);
 		menu1.add(menu1c);
 		menu1.add(menu1d);
