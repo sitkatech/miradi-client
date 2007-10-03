@@ -8,12 +8,7 @@ package org.conservationmeasures.eam.main.menu;
 import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
-import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
+import org.conservationmeasures.eam.main.EAM;
 
 public class ProcessMenu4a extends MiradiMenu
 {
@@ -21,12 +16,11 @@ public class ProcessMenu4a extends MiradiMenu
 	{
 		super(ProcessSteps.PROCESS_STEP_4A, actions);
 		setMnemonic(KeyEvent.VK_D);
-		setIcon(new MiradiResourceImageIcon("icons/blankicon.png"));
-		
-		addMenuItem(ActionJumpReviewStratAndMonPlansStep.class, KeyEvent.VK_R);
 
-		addMenuItem(ActionJumpWorkPlanAssignResourcesStep.class, KeyEvent.VK_T);
-		addMenuItem(ActionJumpScheduleOverviewStep.class, KeyEvent.VK_S);
+		addDisabledMenuItem(EAM.text("Develop systems for recording, storing, processing and backing up project data"));
+//		addMenuItem(ActionJumpReviewStratAndMonPlansStep.class, KeyEvent.VK_R);
+//		addMenuItem(ActionJumpWorkPlanAssignResourcesStep.class, KeyEvent.VK_T);
+//		addMenuItem(ActionJumpScheduleOverviewStep.class, KeyEvent.VK_S);
 //		addMenuItem(ActionJumpFinancialOverviewStep.class, KeyEvent.VK_F);
 	}
 }
