@@ -327,12 +327,18 @@ public class WizardManager
 				
 				// STEP 1B
 				SummaryWizardDefineProjecScope.class,
+
+				// (later this will go here)
+				//MapOverviewStep.class,
+
 				SummaryWizardDefineProjectVision.class,
 				DiagramOverviewStep.class,
 				DiagramWizardProjectScopeStep.class,
 				DiagramWizardVisionStep.class,
+
 				DiagramWizardDefineTargetsStep.class,
 				DiagramWizardReviewAndModifyTargetsStep.class,
+				
 				TargetViabilityMethodChoiceStep.class,
 				DescribeTargetStatusStep.class,
 				TargetViabilityOverviewStep.class,
@@ -347,6 +353,7 @@ public class WizardManager
 				// STEP 1C
 				DiagramWizardIdentifyDirectThreatStep.class,
 				DiagramWizardLinkDirectThreatsToTargetsStep.class,
+
 				ThreatMatrixOverviewStep.class,
 				ThreatRatingWizardChooseBundle.class,
 				ThreatRatingWizardScopeStep.class,
@@ -363,40 +370,46 @@ public class WizardManager
 				// STEP 2A
 //				StrategicPlanOverviewStep.class,
 				StrategicPlanDevelopGoalStep.class,
-				StrategicPlanDevelopObjectivesStep.class, 	
-
-				// STEP 2B
 				SelectChainStep.class,		
 				DevelopDraftStrategiesStep.class,
 				RankDraftStrategiesStep.class,
+
 				DiagramWizardResultsChainStep.class,
 				DiagramWizardConstructInitialResultsChain.class,
 				DiagramWizardCompleteResultsChainLinks.class,
 				DiagramWizardGoodResultsChainCriteriaReview.class,
 
-				// STEP 3A
-//				MonitoringPlanOverviewStep.class,
-				MonitoringWizardFocusStep.class,
-				
-				// STEP 3B
-				MonitoringWizardDefineIndicatorsStep.class,
+				StrategicPlanDevelopObjectivesStep.class, 	
+
 				PlanningOverviewStep.class,
 				ReviewStratAndMonPlansStep.class,
-				
-				// STEP 4A
+
+				// STEP 2B
+//				MonitoringPlanOverviewStep.class,
+				MonitoringWizardFocusStep.class,
+				MonitoringWizardDefineIndicatorsStep.class,
+
+				// STEP 3A
 				WorkPlanOverviewStep.class,
 				WorkPlanDevelopActivitiesAndTasksStep.class,
 				WorkPlanDevelopMethodsAndTasksStep.class,
 				WorkPlanCreateResourcesStep.class,
 				WorkPlanAssignResourcesStep.class,
-//				FinancialOverviewStep.class, 
+
+				// (later this will go here)
+				//ScheduleOverviewStep.class,
+				
+				// STEP 3B
 				BudgetWizardAccountingAndFunding.class,
 				BudgetWizardBudgetDetail.class,
 				BudgetWizardDemo.class, 
 				
+				// STEP 4A
+//				FinancialOverviewStep.class, 
+				
 				// NOT STEPS
-				ScheduleOverviewStep.class,
 				MapOverviewStep.class,
+				ScheduleOverviewStep.class,
 				LibraryOverviewStep.class,
 		};
 		
