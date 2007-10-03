@@ -8,10 +8,9 @@ package org.conservationmeasures.eam.main.menu;
 import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeMonitoringPlan;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
 
 public class ProcessMenu2b extends MiradiMenu
 {
@@ -20,5 +19,10 @@ public class ProcessMenu2b extends MiradiMenu
 		super(ProcessSteps.PROCESS_STEP_2B, actions);
 		setMnemonic(KeyEvent.VK_S);
 		
+		addMenuItem(ActionJumpMonitoringWizardFocusStep.class, KeyEvent.VK_M);
+		//addMenuItem(ActionJumpDefineAudiences.class, KeyEvent.VK_A);
+		addMenuItem(ActionJumpMonitoringWizardDefineIndicatorsStep.class, KeyEvent.VK_I);
+		//addMenuItem(ActionJumpPlanDataStorage.class, KeyEvent.VK_D);
+		addMenuItem(ActionJumpFinalizeMonitoringPlan.class, KeyEvent.VK_F);
 	}
 }
