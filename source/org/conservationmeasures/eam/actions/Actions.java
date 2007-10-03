@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAssessResources;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessRisks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetFutureDemo;
+import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetWizardAccountingAndFunding;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
@@ -28,6 +29,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopFundingProposals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMap;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopSchedule;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
@@ -48,6 +50,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefin
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocusStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardSelectMethodsStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpObtainFinancing;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanProjectLifespan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningOverviewStep;
@@ -288,6 +291,9 @@ public class Actions
 		registerAction(new ActionJumpAssessRisks(mainWindow));
 		registerAction(new ActionJumpPlanProjectLifespan(mainWindow));
 		registerAction(new ActionJumpDevelopSchedule(mainWindow));
+		registerAction(new ActionJumpBudgetWizardAccountingAndFunding(mainWindow));
+		registerAction(new ActionJumpDevelopFundingProposals(mainWindow));
+		registerAction(new ActionJumpObtainFinancing(mainWindow));
 		
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));

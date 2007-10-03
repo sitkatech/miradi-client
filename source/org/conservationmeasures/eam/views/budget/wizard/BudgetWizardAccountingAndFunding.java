@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.budget.wizard;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpBudgetWizardAccountingAndFunding;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.FinancialWizardStep;
@@ -25,7 +25,7 @@ public class BudgetWizardAccountingAndFunding extends FinancialWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpPlanningOverviewStep.class;
+		return ActionJumpBudgetWizardAccountingAndFunding.class;
 	}
 
 	public String getSubHeading()
