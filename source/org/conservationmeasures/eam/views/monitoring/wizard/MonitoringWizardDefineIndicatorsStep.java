@@ -20,7 +20,7 @@ public class MonitoringWizardDefineIndicatorsStep extends DiagramWizardStep
 	
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_3B;
+		return ProcessSteps.PROCESS_STEP_2B;
 	}
 
 	public Class getAssociatedActionClass()

@@ -20,7 +20,7 @@ public class DiagramWizardResultsChainStep extends DiagramWizardStep
 	
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_2B;
+		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
 	public Class getAssociatedActionClass()
