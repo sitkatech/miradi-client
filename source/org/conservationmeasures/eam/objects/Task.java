@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
+import org.conservationmeasures.eam.views.planning.doers.BudgetTotalsCalculator;
 
 public class Task extends BaseObject
 {

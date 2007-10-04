@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.views.planning.doers.ImportAccountingCodesDoer;
 
 public class ImportAccountingCodesDoerTest extends EAMTestCase
 {
