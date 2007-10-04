@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.noproject.wizard;
+package org.conservationmeasures.eam.wizard.noproject;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
