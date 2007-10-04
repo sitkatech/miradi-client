@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardImport
 import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardProjectCreateStep;
 import org.conservationmeasures.eam.views.planning.wizard.PlanningOverviewStep;
 import org.conservationmeasures.eam.views.planning.wizard.ReviewStratAndMonPlansStep;
-import org.conservationmeasures.eam.views.schedule.wizard.ScheduleOverviewStep;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryOverviewStep;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjecScope;
@@ -78,6 +77,7 @@ import org.conservationmeasures.eam.wizard.planning.WorkPlanCreateResourcesStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanOverviewStep;
+import org.conservationmeasures.eam.wizard.schedule.ScheduleOverviewStep;
 
 
 public class WizardManager
