@@ -27,11 +27,6 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	{
 		this(projectToUse, BaseId.INVALID);
 	}
-	public TaskPropertiesInputPanel(Project projectToUse, BaseId idToEdit, AssignmentEditorComponent editorComponentToUse) throws Exception
-	{
-		this(projectToUse, idToEdit);
-		editorComponent = editorComponentToUse;
-	}
 	
 	public TaskPropertiesInputPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
@@ -60,14 +55,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		updatedWarningMessageVisiblity(orefsToUse);
-		
-		if (editorComponent == null)
-			return;
-		if (orefsToUse.length==0)
-			editorComponent.setTaskId(BaseId.INVALID);
-		else
-			editorComponent.setTaskId(orefsToUse[0].getObjectId());
+		updatedWarningMessageVisiblity(orefsToUse);		
 	}
 
 	
@@ -78,10 +66,6 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		
 	public void updateTable()
 	{
-		if (editorComponent == null)
-			return;
-		
-		editorComponent.dataWasChanged();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -117,6 +101,5 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	}
 	
 	Project project;
-	AssignmentEditorComponent editorComponent;
 	PanelTitleLabel hasBothSubTaskAssignmentsWarningLabel;
 }
