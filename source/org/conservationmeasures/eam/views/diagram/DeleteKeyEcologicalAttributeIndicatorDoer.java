@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
-import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 
 public class DeleteKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 {
@@ -70,6 +69,4 @@ public class DeleteKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
 		BaseObject thisAnnotation = project.findObject(ObjectType.INDICATOR, selectedIndicatorNode.getObject().getId());
 		return DeleteIndicator.buildCommandsToDeleteAnnotation(project, keaNode.getObject(), KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
 	}
-
-	WorkPlanView view;
 }

@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
-import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 
 public class DeleteActivity extends ObjectsDoer
 {
@@ -103,6 +102,4 @@ public class DeleteActivity extends ObjectsDoer
 		
 		return (Command[])commandsToDeleteTasks.toArray(new Command[0]);
 	}
-
-	WorkPlanView view;
 }
