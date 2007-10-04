@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
 
 public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
