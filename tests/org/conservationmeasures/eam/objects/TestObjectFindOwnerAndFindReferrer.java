@@ -178,23 +178,29 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		verifyReferenceFunctions(1,owner, orefFactor);
 	}
 	
-	
 	public void testDiagramFactorLinkAndLinkFactorRefer() throws Exception
 	{
-		DiagramFactor strategy = project.createDiagramFactorAndAddToDiagram(ObjectType.STRATEGY);
-		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		verifyDiagramFactorLinkAndLinkFactorRefer(ObjectType.STRATEGY, ObjectType.CAUSE);
+		verifyDiagramFactorLinkAndLinkFactorRefer(ObjectType.CAUSE, ObjectType.TARGET);
+		verifyDiagramFactorLinkAndLinkFactorRefer(ObjectType.INTERMEDIATE_RESULT, ObjectType.THREAT_REDUCTION_RESULT);
+	}
+	
+	public void verifyDiagramFactorLinkAndLinkFactorRefer(int fromType, int toType) throws Exception
+	{
+		DiagramFactor from = project.createDiagramFactorAndAddToDiagram(fromType);
+		DiagramFactor to = project.createDiagramFactorAndAddToDiagram(toType);
 
-		ORef stratCauseLinkRef = project.createDiagramLink(strategy, cause);
-		DiagramLink stratCauseLink = (DiagramLink) project.findObject(stratCauseLinkRef);
+		ORef diagramLinkRef = project.createDiagramLink(from, to);
+		DiagramLink diagramLink = (DiagramLink) project.findObject(diagramLinkRef);
 		
 		//----------- start test -----------
 
-		verifyReferenceFunctions(1, stratCauseLink.getWrappedRef(), strategy.getWrappedORef());
-		verifyReferenceFunctions(1, stratCauseLink.getWrappedRef(), cause.getWrappedORef());
+		verifyReferenceFunctions(1, diagramLink.getWrappedRef(), from.getWrappedORef());
+		verifyReferenceFunctions(1, diagramLink.getWrappedRef(), to.getWrappedORef());
     	
-		verifyReferenceFunctions(2, stratCauseLinkRef, cause.getRef());
-		verifyReferenceFunctions(2, stratCauseLinkRef, strategy.getRef());
-		verifyReferenceFunctions(1, stratCauseLinkRef, stratCauseLink.getWrappedRef());
+		verifyReferenceFunctions(2, diagramLinkRef, to.getRef());
+		verifyReferenceFunctions(2, diagramLinkRef, from.getRef());
+		verifyReferenceFunctions(1, diagramLinkRef, diagramLink.getWrappedRef());
 	}
 	
 	public void testIndicatorOwn() throws Exception
@@ -287,8 +293,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseObject referredObject =  project.getObjectManager().findObject(referred);
 		ORefList foundReferrers2 = referredObject.findObjectThatReferToUs();
 		assertContains(referrer, foundReferrers2.toArray());
-	}
-	
+	}	
 	
 	private void verifyReferenced(int size, ORef referrer, ORef referred)
 	{
