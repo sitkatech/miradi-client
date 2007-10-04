@@ -18,24 +18,6 @@ import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardAccountingAn
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardBudgetDetail;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardDemo;
 import org.conservationmeasures.eam.views.budget.wizard.FinancialOverviewStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DescribeTargetStatusStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DevelopDraftStrategiesStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramOverviewStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardCompleteResultsChainLinks;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardConstructChainsStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardConstructInitialResultsChain;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardDefineTargetsStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardGoodResultsChainCriteriaReview;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardIdentifyDirectThreatStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardIdentifyIndirectThreatStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardLinkDirectThreatsToTargetsStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardProjectScopeStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardResultsChainStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardReviewAndModifyTargetsStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardReviewModelAndAdjustStep;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardVisionStep;
-import org.conservationmeasures.eam.views.diagram.wizard.RankDraftStrategiesStep;
-import org.conservationmeasures.eam.views.diagram.wizard.SelectChainStep;
 import org.conservationmeasures.eam.views.images.wizard.LibraryOverviewStep;
 import org.conservationmeasures.eam.views.map.wizard.MapOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanOverviewStep;
@@ -78,6 +60,24 @@ import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanCreateResource
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanOverviewStep;
+import org.conservationmeasures.eam.wizard.diagram.DescribeTargetStatusStep;
+import org.conservationmeasures.eam.wizard.diagram.DevelopDraftStrategiesStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramOverviewStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardCompleteResultsChainLinks;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardConstructChainsStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardConstructInitialResultsChain;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardDefineTargetsStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardGoodResultsChainCriteriaReview;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardIdentifyDirectThreatStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardIdentifyIndirectThreatStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardLinkDirectThreatsToTargetsStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardProjectScopeStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardResultsChainStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardReviewAndModifyTargetsStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardReviewModelAndAdjustStep;
+import org.conservationmeasures.eam.wizard.diagram.DiagramWizardVisionStep;
+import org.conservationmeasures.eam.wizard.diagram.RankDraftStrategiesStep;
+import org.conservationmeasures.eam.wizard.diagram.SelectChainStep;
 
 
 public class WizardManager

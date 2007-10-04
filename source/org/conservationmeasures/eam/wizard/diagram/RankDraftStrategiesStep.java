@@ -3,17 +3,16 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.diagram.wizard;
+package org.conservationmeasures.eam.wizard.diagram;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
-import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
-public class DiagramWizardGoodResultsChainCriteriaReview extends DiagramWizardStep
+public class RankDraftStrategiesStep extends DiagramWizardStep
 {
-	public DiagramWizardGoodResultsChainCriteriaReview(WizardPanel panelToUse)
+	public RankDraftStrategiesStep(WizardPanel panelToUse)
 	{
 		super(panelToUse);
 	}
@@ -25,11 +24,5 @@ public class DiagramWizardGoodResultsChainCriteriaReview extends DiagramWizardSt
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpDiagramWizardResultsChainStep.class;
-	}
-
-	public String getSubHeading()
-	{
-		return EAM.text("Page 4");
-	}
-}
+		return ActionJumpRankDraftStrategiesStep.class;
+	}}
