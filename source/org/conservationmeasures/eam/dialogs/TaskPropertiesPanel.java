@@ -5,22 +5,16 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
 import javax.swing.BorderFactory;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.budget.BudgetTableUnitsModel;
-import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.conservationmeasures.eam.views.workplan.AssignmentEditorComponent;
 import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
-import org.conservationmeasures.eam.views.workplan.WorkPlanTableEditorComponent;
 
 public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
@@ -29,25 +23,6 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		this(projectToUse, BaseId.INVALID);
 	}
 	
-	public TaskPropertiesPanel(Project projectToUse, Actions actions, ObjectPicker objectPicker) throws Exception
-	{
-		this(projectToUse, actions, BaseId.INVALID, objectPicker);
-	}
-	
-	public TaskPropertiesPanel(Project projectToUse, Actions actions, BaseId idToEdit, ObjectPicker objectPicker) throws Exception
-	{
-		super(projectToUse, ObjectType.TASK, idToEdit);
-		project = projectToUse;
-		setBorder(BorderFactory.createEtchedBorder());
-		BudgetTableUnitsModel budgetTableUnitsModel = new BudgetTableUnitsModel(project);
-		editorComponent = new WorkPlanTableEditorComponent(actions, project, objectPicker, budgetTableUnitsModel);
-		inputPanel = new TaskPropertiesInputPanel(project, idToEdit, editorComponent);
-		
-		setLayout(new BorderLayout());
-		add(inputPanel, BorderLayout.PAGE_START);
-		add(editorComponent, BorderLayout.CENTER);
-	}
-
 	public TaskPropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
