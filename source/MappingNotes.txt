@@ -1,0 +1,44 @@
+We have found three potential candidates for a built-in GIS mapping component:
+
+jhlabs.com
+  A lightweight Java map viewer/editor. Viewer is available under Apache license,
+  but editor is currently proprietary
+  
+openmap.org
+  Probably the most mature, but has not released any new versions for a year or two. 
+  Available under a non-standard license which probably isn't GPL-compatible. 
+  We might be able to negotiate something with them.
+  
+openjump.org
+  New kid on the block, and seems to be actively developed. GPL license.
+  
+
+Here is some sample but non-working code that tries to use openjump:
+
+		LayerManager manager = new LayerManager();
+		LayerViewPanelContext context = this;
+		LayerViewPanel lvp = new LayerViewPanel(manager, context);
+		manager.setCoordinateSystem(new CoordinateSystem("Projection", 0, new LatLong()));
+		
+		
+		FeatureSchema schema = new FeatureSchema();
+		FeatureCollection features = new FeatureDataset(schema);
+		Feature circleFeature = new BasicFeature(schema);
+		PrecisionModel precisionModel = new PrecisionModel(PrecisionModel.FLOATING);
+		GeometryFactory factory = new GeometryFactory(precisionModel);
+		Coordinate[] coordinates = new Coordinate[] {
+			new Coordinate(0, 0),
+			new Coordinate(1, 0),
+			new Coordinate(1, 1),
+			new Coordinate(0, 0),
+		};
+		CoordinateSequence sequence = new CoordinateArraySequence(coordinates);
+		LineString[] lines = new LineString[] {
+			new LineString(sequence, factory),
+		};
+		Geometry geometry = new MultiLineString(lines, factory);
+		circleFeature.setGeometry(geometry);
+		Layer circle = new Layer("circle", Color.RED, features, manager);
+		circle.setVisible(true);
+		manager.addLayer("Circle", circle);
+		add(lvp, BorderLayout.CENTER);
