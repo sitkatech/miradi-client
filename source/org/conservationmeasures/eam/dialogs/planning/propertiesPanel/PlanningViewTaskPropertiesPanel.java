@@ -6,11 +6,11 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanelWithDescription;
+import org.conservationmeasures.eam.dialogs.TaskPropertiesInputPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
