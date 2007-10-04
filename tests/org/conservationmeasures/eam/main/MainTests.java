@@ -44,7 +44,6 @@ import org.conservationmeasures.eam.objecthelpers.TestORef;
 import org.conservationmeasures.eam.objecthelpers.TestORefList;
 import org.conservationmeasures.eam.objecthelpers.TestObjectDeepCopier;
 import org.conservationmeasures.eam.objects.TestAccountingCode;
-import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestAssignment;
 import org.conservationmeasures.eam.objects.TestBaseObject;
 import org.conservationmeasures.eam.objects.TestCause;
@@ -215,7 +214,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDateRangeEffortList.class));
 		
 		// objects package
-		suite.addTest(new TestSuite(TestActivityInsertionPoint.class));
 		suite.addTest(new TestSuite(TestStrategy.class));
 		suite.addTest(new TestSuite(TestCause.class));
 		suite.addTest(new TestSuite(TestDiagramFactorLink.class));
