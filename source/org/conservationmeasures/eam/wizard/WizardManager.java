@@ -55,11 +55,6 @@ import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizard
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardIrreversibilityStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardSeverityStep;
-import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanAssignResourcesStep;
-import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanCreateResourcesStep;
-import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopActivitiesAndTasksStep;
-import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanDevelopMethodsAndTasksStep;
-import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanOverviewStep;
 import org.conservationmeasures.eam.wizard.diagram.DescribeTargetStatusStep;
 import org.conservationmeasures.eam.wizard.diagram.DevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.wizard.diagram.DiagramOverviewStep;
@@ -78,6 +73,11 @@ import org.conservationmeasures.eam.wizard.diagram.DiagramWizardReviewModelAndAd
 import org.conservationmeasures.eam.wizard.diagram.DiagramWizardVisionStep;
 import org.conservationmeasures.eam.wizard.diagram.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.wizard.diagram.SelectChainStep;
+import org.conservationmeasures.eam.wizard.planning.WorkPlanAssignResourcesStep;
+import org.conservationmeasures.eam.wizard.planning.WorkPlanCreateResourcesStep;
+import org.conservationmeasures.eam.wizard.planning.WorkPlanDevelopActivitiesAndTasksStep;
+import org.conservationmeasures.eam.wizard.planning.WorkPlanDevelopMethodsAndTasksStep;
+import org.conservationmeasures.eam.wizard.planning.WorkPlanOverviewStep;
 
 
 public class WizardManager
