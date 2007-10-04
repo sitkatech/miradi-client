@@ -45,9 +45,4 @@ public class MiradiDataSource extends CommonDataSource
 	{
 		return new MonitoringPlanDataSource(project);
 	}
-	
-	public JRDataSource getBudgetPlanDataSource()
-	{
-		return new BudgetPlanDataSource(project);
-	}
 } 
