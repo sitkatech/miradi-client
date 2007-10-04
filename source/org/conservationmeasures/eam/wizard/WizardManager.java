@@ -20,9 +20,6 @@ import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanOvervi
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
-import org.conservationmeasures.eam.views.noproject.wizard.NoProjectOverviewStep;
-import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardImportStep;
-import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardProjectCreateStep;
 import org.conservationmeasures.eam.views.planning.wizard.PlanningOverviewStep;
 import org.conservationmeasures.eam.views.planning.wizard.ReviewStratAndMonPlansStep;
 import org.conservationmeasures.eam.views.summary.SummaryView;
@@ -65,6 +62,9 @@ import org.conservationmeasures.eam.wizard.diagram.DiagramWizardReviewModelAndAd
 import org.conservationmeasures.eam.wizard.diagram.DiagramWizardVisionStep;
 import org.conservationmeasures.eam.wizard.diagram.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.wizard.diagram.SelectChainStep;
+import org.conservationmeasures.eam.wizard.noproject.NoProjectOverviewStep;
+import org.conservationmeasures.eam.wizard.noproject.NoProjectWizardImportStep;
+import org.conservationmeasures.eam.wizard.noproject.NoProjectWizardProjectCreateStep;
 import org.conservationmeasures.eam.wizard.planning.BudgetWizardAccountingAndFunding;
 import org.conservationmeasures.eam.wizard.planning.BudgetWizardBudgetDetail;
 import org.conservationmeasures.eam.wizard.planning.BudgetWizardDemo;
