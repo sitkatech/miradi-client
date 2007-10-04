@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -182,34 +181,20 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	
 	public void testDiagramFactorLinkAndLinkFactorRefer() throws Exception
 	{
-		//TODO: look at this method to refactor
-		DiagramFactor intervention = project.createDiagramFactorAndAddToDiagram(ObjectType.STRATEGY);
+		DiagramFactor strategy = project.createDiagramFactorAndAddToDiagram(ObjectType.STRATEGY);
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(intervention.getWrappedORef(), cause.getWrappedORef());
-		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
-    	project.executeCommand(createModelLinkage);
-    	FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
-		
-    	DiagramFactorId fromDiagramFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
-		DiagramFactorId toDiagramFactorId =  project.createAndAddFactorToDiagram(ObjectType.TARGET);
-		
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
-		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
-    	project.executeCommand(createDiagramLinkCommand);
-    	DiagramFactorLinkId diagramFactorLinkId = (DiagramFactorLinkId)createDiagramLinkCommand.getCreatedId();
 
+		ORef stratCauseLinkRef = project.createDiagramLink(strategy, cause);
+		DiagramLink stratCauseLink = (DiagramLink) project.findObject(stratCauseLinkRef);
+		
 		//----------- start test -----------
 
+		verifyReferenceFunctions(1, stratCauseLink.getWrappedRef(), strategy.getWrappedORef());
+		verifyReferenceFunctions(1, stratCauseLink.getWrappedRef(), cause.getWrappedORef());
     	
-    	ORef linkRef = new ORef(ObjectType.FACTOR_LINK, modelLinkageId);
-		verifyReferenceFunctions(1,linkRef, new ORef(ObjectType.STRATEGY, intervention.getWrappedId()));
-		verifyReferenceFunctions(1,linkRef, new ORef(ObjectType.CAUSE, cause.getWrappedId()));
-    	
-		ORef diagramLinkRef = new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkId);
-		verifyReferenceFunctions(2,diagramLinkRef, new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
-		verifyReferenceFunctions(2,diagramLinkRef, new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
-		verifyReferenceFunctions(1,diagramLinkRef, new ORef(ObjectType.FACTOR_LINK, modelLinkageId));
+		verifyReferenceFunctions(2, stratCauseLinkRef, cause.getRef());
+		verifyReferenceFunctions(2, stratCauseLinkRef, strategy.getRef());
+		verifyReferenceFunctions(1, stratCauseLinkRef, stratCauseLink.getWrappedRef());
 	}
 	
 	public void testIndicatorOwn() throws Exception
