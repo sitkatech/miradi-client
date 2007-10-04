@@ -44,7 +44,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
 import org.conservationmeasures.eam.views.planning.PlanningView;
-import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
+import org.conservationmeasures.eam.views.umbrella.TreeTablePanel;
 import org.martus.swing.UiScrollPane;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;

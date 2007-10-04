@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
-import org.conservationmeasures.eam.views.treeViews.TreeTablePanel;
+import org.conservationmeasures.eam.views.umbrella.TreeTablePanel;
 
 public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 {
