@@ -20,7 +20,7 @@ public class WorkPlanAssignResourcesStep extends WorkPlanWizardStep
 	
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_4A;
+		return ProcessSteps.PROCESS_STEP_3A;
 	}
 
 	public Class getAssociatedActionClass()

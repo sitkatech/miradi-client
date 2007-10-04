@@ -20,7 +20,7 @@ public class ReviewStratAndMonPlansStep extends SplitWizardStep
 
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_4A;
+		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
 	public Class getAssociatedActionClass()

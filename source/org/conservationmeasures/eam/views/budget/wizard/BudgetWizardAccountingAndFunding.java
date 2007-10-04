@@ -20,7 +20,7 @@ public class BudgetWizardAccountingAndFunding extends FinancialWizardStep
 	
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_4A;
+		return ProcessSteps.PROCESS_STEP_3B;
 	}
 
 	public Class getAssociatedActionClass()

@@ -19,7 +19,7 @@ public class MonitoringWizardFocusStep extends DiagramWizardStep
 	
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_3A;
+		return ProcessSteps.PROCESS_STEP_2B;
 	}
 
 	public Class getAssociatedActionClass()
