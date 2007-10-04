@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.workplan.wizard;
+package org.conservationmeasures.eam.wizard.planning;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.main.EAM;
@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WorkPlanWizardStep;
 
-public class WorkPlanCreateResourcesStep extends WorkPlanWizardStep
+public class WorkPlanAssignResourcesStep extends WorkPlanWizardStep
 {
-	public WorkPlanCreateResourcesStep(WizardPanel wizardToUse)
+	public WorkPlanAssignResourcesStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -30,6 +30,6 @@ public class WorkPlanCreateResourcesStep extends WorkPlanWizardStep
 
 	public String getSubHeading()
 	{
-		return EAM.text("Page 2");
+		return EAM.text("Page 3");
 	}
 }
