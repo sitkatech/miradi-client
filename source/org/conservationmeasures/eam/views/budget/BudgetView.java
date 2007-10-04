@@ -23,8 +23,6 @@ import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
 import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
 import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
-import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
-import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.dialogs.AccountingCodePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetPropertiesPanel;
@@ -42,8 +40,6 @@ import org.conservationmeasures.eam.views.workplan.CreateActivityDoer;
 import org.conservationmeasures.eam.views.workplan.CreateMethodDoer;
 import org.conservationmeasures.eam.views.workplan.CreateTaskDoer;
 import org.conservationmeasures.eam.views.workplan.DeleteWorkPlanTreeNode;
-import org.conservationmeasures.eam.views.workplan.TreeNodeDown;
-import org.conservationmeasures.eam.views.workplan.TreeNodeUp;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 import org.martus.swing.UiScrollPane;
 
@@ -127,8 +123,6 @@ public class BudgetView extends TabbedView
 		addDoerToMap(ActionTreeCreateMethod.class, new CreateMethodDoer());
 		addDoerToMap(ActionTreeCreateTask.class, new CreateTaskDoer());
 		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
-		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
-		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 
 		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
