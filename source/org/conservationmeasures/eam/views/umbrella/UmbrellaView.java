@@ -132,7 +132,6 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
-import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 import org.conservationmeasures.eam.views.umbrella.doers.CopyProjectToDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
 import org.martus.swing.UiLabel;
@@ -215,11 +214,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	}
 	
 	public BaseObject getSelectedObject()
-	{
-		return null;
-	}
-	
-	public TaskTreeTablePanel getTaskTreeTablePanel()
 	{
 		return null;
 	}
