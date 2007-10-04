@@ -164,6 +164,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		verifyDiagramReference(ObjectType.TARGET);
 		verifyDiagramReference(ObjectType.INTERMEDIATE_RESULT);
 		verifyDiagramReference(ObjectType.THREAT_REDUCTION_RESULT);
+		verifyDiagramReference(ObjectType.TEXT_BOX);
 	}
 
 	private void verifyDiagramReference(int type) throws Exception
