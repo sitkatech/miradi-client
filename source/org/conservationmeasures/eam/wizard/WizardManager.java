@@ -30,9 +30,6 @@ import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardProjec
 import org.conservationmeasures.eam.views.planning.wizard.PlanningOverviewStep;
 import org.conservationmeasures.eam.views.planning.wizard.ReviewStratAndMonPlansStep;
 import org.conservationmeasures.eam.views.schedule.wizard.ScheduleOverviewStep;
-import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopGoalStep;
-import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanDevelopObjectivesStep;
-import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanOverviewStep;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryOverviewStep;
 import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjecScope;
@@ -73,6 +70,9 @@ import org.conservationmeasures.eam.wizard.diagram.DiagramWizardReviewModelAndAd
 import org.conservationmeasures.eam.wizard.diagram.DiagramWizardVisionStep;
 import org.conservationmeasures.eam.wizard.diagram.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.wizard.diagram.SelectChainStep;
+import org.conservationmeasures.eam.wizard.planning.StrategicPlanDevelopGoalStep;
+import org.conservationmeasures.eam.wizard.planning.StrategicPlanDevelopObjectivesStep;
+import org.conservationmeasures.eam.wizard.planning.StrategicPlanOverviewStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanAssignResourcesStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanCreateResourcesStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanDevelopActivitiesAndTasksStep;
