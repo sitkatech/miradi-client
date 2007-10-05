@@ -77,9 +77,9 @@ public class LinkDeletor
 	private void deleteFactorLinkIfOrphaned(FactorLink factorLink) throws CommandFailedException
 	{
 		ObjectManager objectManager = project.getObjectManager();
-		ORefList diagramFactorReferrers = factorLink.findObjectsThatReferToUs(objectManager, DiagramLink.getObjectType(), factorLink.getRef());
+		ORefList diagramLinkReferrers = factorLink.findObjectsThatReferToUs(objectManager, DiagramLink.getObjectType(), factorLink.getRef());
 		
-		if (diagramFactorReferrers.size() != 0)
+		if (diagramLinkReferrers.size() != 0)
 			return;
 		
 		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, factorLink.getId()).createCommandsToClear();
