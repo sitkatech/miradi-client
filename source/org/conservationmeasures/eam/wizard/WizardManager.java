@@ -19,14 +19,7 @@ import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanOvervi
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
-import org.conservationmeasures.eam.views.planning.wizard.PlanningOverviewStep;
-import org.conservationmeasures.eam.views.planning.wizard.ReviewStratAndMonPlansStep;
 import org.conservationmeasures.eam.views.summary.SummaryView;
-import org.conservationmeasures.eam.views.summary.wizard.SummaryOverviewStep;
-import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjecScope;
-import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectLeader;
-import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineProjectVision;
-import org.conservationmeasures.eam.views.summary.wizard.SummaryWizardDefineTeamMembers;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability3Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability4Step;
 import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability5Step;
@@ -69,6 +62,8 @@ import org.conservationmeasures.eam.wizard.planning.BudgetWizardAccountingAndFun
 import org.conservationmeasures.eam.wizard.planning.BudgetWizardBudgetDetail;
 import org.conservationmeasures.eam.wizard.planning.BudgetWizardDemo;
 import org.conservationmeasures.eam.wizard.planning.FinancialOverviewStep;
+import org.conservationmeasures.eam.wizard.planning.PlanningOverviewStep;
+import org.conservationmeasures.eam.wizard.planning.ReviewStratAndMonPlansStep;
 import org.conservationmeasures.eam.wizard.planning.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.wizard.planning.StrategicPlanDevelopObjectivesStep;
 import org.conservationmeasures.eam.wizard.planning.StrategicPlanOverviewStep;
@@ -78,6 +73,11 @@ import org.conservationmeasures.eam.wizard.planning.WorkPlanDevelopActivitiesAnd
 import org.conservationmeasures.eam.wizard.planning.WorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanOverviewStep;
 import org.conservationmeasures.eam.wizard.schedule.ScheduleOverviewStep;
+import org.conservationmeasures.eam.wizard.summary.SummaryOverviewStep;
+import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjecScope;
+import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjectLeader;
+import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjectVision;
+import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineTeamMembers;
 
 
 public class WizardManager

@@ -3,28 +3,30 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.summary.wizard;
+package org.conservationmeasures.eam.wizard.summary;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.SummaryWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
-public class SummaryWizardDefineProjecScope extends SummaryWizardStep
+public class SummaryWizardDefineProjectLeader extends SummaryWizardStep
 {
-	public SummaryWizardDefineProjecScope(WizardPanel panelToUse) 
+	public SummaryWizardDefineProjectLeader(WizardPanel panelToUse) 
 	{
 		super(panelToUse);
 	}
 
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_1B;
+		return ProcessSteps.PROCESS_STEP_1A;
 	}
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpSummaryWizardDefineProjecScope.class;
+		return ActionJumpSummaryWizardDefineProjectLeader.class;
 	}
 	
 }
+
+
