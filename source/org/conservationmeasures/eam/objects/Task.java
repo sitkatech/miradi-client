@@ -174,7 +174,8 @@ public class Task extends BaseObject
 		if (getOwnerRef() == null)
 			return false;
 		
-		return getOwnerRef().getObjectType() == ObjectType.INDICATOR;
+		ORefList referrers = findObjectsThatReferToUs(Indicator.getObjectType());
+		return referrers.size() > 0;
 	}
 
 	public void addSubtaskId(BaseId subtaskId)

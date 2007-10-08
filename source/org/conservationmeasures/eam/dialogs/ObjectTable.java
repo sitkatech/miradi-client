@@ -20,6 +20,7 @@ import javax.swing.table.JTableHeader;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
@@ -98,6 +99,11 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		for(int i = 0; i < objects.length; ++i)
 			objects[i] = getObjectFromRow(rows[i]);
 		return objects;
+	}
+	
+	public ORefList getSelectionHierarchay()
+	{
+		return null;
 	}
 
 	public void ensureObjectVisible(ORef ref)

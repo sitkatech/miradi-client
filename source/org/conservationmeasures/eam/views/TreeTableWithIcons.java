@@ -19,6 +19,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
+import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
@@ -35,6 +36,7 @@ import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.icons.TaskIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -293,6 +295,22 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			return new BaseObject[0];
 		
 		return new BaseObject[] {foundObject};
+	}
+	
+	public ORefList getSelectionHierarchay()
+	{
+		TreePath selectionPath = getTree().getSelectionModel().getSelectionPath();
+		if (selectionPath == null)
+			return new ORefList();
+		
+		ORefList selectionHierarchyNodeRefs = new ORefList();
+		for(int i = 0; i < selectionPath.getPathCount(); ++i)
+		{
+			TreeTableNode node = (TreeTableNode) selectionPath.getPathComponent(i);
+			selectionHierarchyNodeRefs.add(node.getObjectReference());
+		}
+		
+		return selectionHierarchyNodeRefs;
 	}
 
 	public void ensureObjectVisible(ORef ref)

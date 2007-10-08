@@ -242,6 +242,11 @@ public class Indicator extends BaseObject
 	
 	public static boolean canOwnThisType(int type)
 	{
+		return false;
+	}
+		
+	public static boolean canReferToThisType(int type)
+	{
 		switch(type)
 		{
 			case ObjectType.TASK: 
@@ -251,16 +256,9 @@ public class Indicator extends BaseObject
 		}
 	}
 	
-	
-	public static boolean canReferToThisType(int type)
+	public ORefList getReferencedObjects(int objectType)
 	{
-		return false;
-	}
-
-	
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
+		ORefList list = super.getReferencedObjects(objectType);
 		
 		switch(objectType)
 		{
@@ -270,7 +268,7 @@ public class Indicator extends BaseObject
 		}
 		return list;
 	}
-	
+
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);
