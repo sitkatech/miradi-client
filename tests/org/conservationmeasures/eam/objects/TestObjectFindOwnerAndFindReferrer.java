@@ -92,7 +92,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	   	ORef owner = new ORef(ObjectType.STRATEGY, factorId);
 		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
 		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.TASK, taskId));
+		verifyRefer(owner, new ORef(ObjectType.TASK, taskId));
 	}
 
 	public void testTargetOwn() throws Exception

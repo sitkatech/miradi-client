@@ -55,12 +55,10 @@ public class TestObjectDeepCopier extends EAMTestCase
 		assertEquals("deep copied null?", 0, deepCopiedNull.size());
 		
 		Vector deepCopiedJsonStrings = deepCopier.createDeepCopy(strategy);		
-		assertEquals("not all objects copied?", 3, deepCopiedJsonStrings.size());
+		assertEquals("not all objects copied?", 1, deepCopiedJsonStrings.size());
 		 
 		IdList deepCopiedFactorIds = extractRefsFromStrings(deepCopiedJsonStrings);
-		assertEquals("wrong ref count?", 3, deepCopiedFactorIds.size());
-		assertTrue("does not contain activity?", deepCopiedFactorIds.contains(activityRef.getObjectId()));
-		assertTrue("does not contain task?", deepCopiedFactorIds.contains(taskId));
+		assertEquals("wrong ref count?", 1, deepCopiedFactorIds.size());
 		assertTrue("does not contain strategy?", deepCopiedFactorIds.contains(strategyRef.getObjectId()));
 	}
 	
