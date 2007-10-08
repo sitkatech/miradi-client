@@ -11,6 +11,8 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -72,12 +74,11 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 			newSiblings.removeId(task.getId());
 			newSiblings.insertAt(task.getId(), wasAt + getDelta());
 	
-			BaseObject parent = task.getOwner();
+			ORef parentRef = getParentOfTask(task);
+			BaseObject parent = getProject().findObject(parentRef);
 			String tag = getTaskIdsTag(parent);
 			CommandSetObjectData cmd = new CommandSetObjectData(parent.getRef(), tag, newSiblings.toString());
 			getProject().executeCommand(cmd);
-	
-			//getPanel().selectObject(selected);
 		}
 		catch(Exception e)
 		{
@@ -117,10 +118,38 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 
 	private IdList getSiblingList(Task task) throws Exception
 	{
-		BaseObject parent = task.getOwner();
+		ORef parentRef = getParentOfTask(task);
+		if (parentRef.isInvalid())
+			return new IdList();
+		
+		BaseObject parent = getProject().findObject(parentRef);
 		if(parent == null)
 			return new IdList();
+		
 		return getCurrentTaskList(parent);
+	}
+
+	private ORef getParentOfTask(Task task)
+	{
+		ORefList selectionHierarchy = getSelectionHierarchy();
+		ORefList referrerRefs = getAllReferrersAndOwners(task);
+		for(int i = 0; i < referrerRefs.size(); ++i)
+		{
+			if (selectionHierarchy.contains(referrerRefs.get(i)))
+				return referrerRefs.get(i);
+		}
+		
+		return ORef.INVALID;
+	}
+
+	private ORefList getAllReferrersAndOwners(Task task)
+	{
+		ORefList allReferrers = new ORefList();
+		allReferrers.addAll(task.findObjectsThatReferToUs(Indicator.getObjectType()));
+		allReferrers.addAll(task.findObjectsThatReferToUs(Strategy.getObjectType()));
+		allReferrers.add(task.getOwnerRef());
+		
+		return allReferrers;
 	}
 
 	private IdList getCurrentTaskList(BaseObject parent) throws Exception, ParseException

@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
@@ -173,6 +174,11 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 			return new BaseObject[0];
 	
 		return new BaseObject[] {selectedAssignment};
+	}
+	
+	public ORefList getSelectionHierarchay()
+	{
+		return null;
 	}
 
 	public void ensureObjectVisible(ORef ref)

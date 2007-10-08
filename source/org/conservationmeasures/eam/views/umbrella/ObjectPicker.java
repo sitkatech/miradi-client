@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -19,6 +20,7 @@ public interface ObjectPicker
 	
 	public void addSelectionChangeListener(SelectionChangeListener listener);
 	public void removeSelectionChangeListener(SelectionChangeListener listener);
+	public ORefList getSelectionHierarchay();
 	
 	public interface SelectionChangeListener
 	{

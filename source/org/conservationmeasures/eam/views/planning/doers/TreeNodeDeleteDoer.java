@@ -14,13 +14,14 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 {
 	public boolean isAvailable()
 	{
-		BaseObject selected = getSingleSelectedObject();
-		if(selected == null)
+		//FIXME temporarly disabled
+		//BaseObject selected = getSingleSelectedObject();
+		//if(selected == null)
 			return false;
-		if(selected.getType() != Task.getObjectType())
-			return false;
+		//if(selected.getType() != Task.getObjectType())
+		//	return false;
 		
-		return true;
+		//return true;
 	}
 
 	public void doIt() throws CommandFailedException

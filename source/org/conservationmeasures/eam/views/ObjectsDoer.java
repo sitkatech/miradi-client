@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
@@ -28,10 +29,19 @@ abstract public class ObjectsDoer extends ViewDoer
 		return picker.getSelectedTreeNodes();
 	}
 	
+	public ORefList getSelectionHierarchy()
+	{
+		if (picker == null)
+			return new ORefList();
+		
+		return picker.getSelectionHierarchay();
+	}
+	
 	public BaseObject[] getObjects()
 	{
 		if(picker == null)
 			return new BaseObject[0];
+		
 		return picker.getSelectedObjects();
 	}
 	

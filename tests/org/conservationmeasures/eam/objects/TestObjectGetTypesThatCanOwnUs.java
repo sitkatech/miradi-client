@@ -28,7 +28,7 @@ public class TestObjectGetTypesThatCanOwnUs extends EAMTestCase
 		assertContains(ObjectType.TARGET, BaseObject.getTypesThatCanOwnUs(ObjectType.GOAL));
 		assertContains(ObjectType.TARGET, BaseObject.getTypesThatCanOwnUs(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE));
 
-		assertContains(ObjectType.INDICATOR, BaseObject.getTypesThatCanOwnUs(ObjectType.TASK));
+		assertContains(ObjectType.INDICATOR, BaseObject.getTypesThatCanReferToUs(ObjectType.TASK));
 
 		assertContains(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, BaseObject.getTypesThatCanOwnUs(ObjectType.INDICATOR));
 		
