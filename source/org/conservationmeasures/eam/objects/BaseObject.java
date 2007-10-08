@@ -241,6 +241,9 @@ abstract public class BaseObject
 				
 			case ObjectType.WWF_PROJECT_DATA:
 				return new WwfProjectData(objectManager, idAsInt, json);
+			
+			case ObjectType.COST_ALLOCATION_RULE:
+				return new CostAllocationRule(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

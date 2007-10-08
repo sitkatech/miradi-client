@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.CausePool;
 import org.conservationmeasures.eam.objectpools.ConceptualModelDiagramPool;
+import org.conservationmeasures.eam.objectpools.CostAllocationRulePool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
@@ -107,6 +108,7 @@ public class ObjectManager
 		addNormalPool(new SlideShowPool(ida));
 		addNormalPool(new PlanningViewConfigurationPool(ida));
 		addNormalPool(new WwfProjectDataPool(ida));
+		addNormalPool(new CostAllocationRulePool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -372,6 +374,7 @@ public class ObjectManager
 		loadPool(ObjectType.SLIDESHOW);
 		loadPool(ObjectType.PLANNING_VIEW_CONFIGURATION);
 		loadPool(ObjectType.WWF_PROJECT_DATA);
+		loadPool(ObjectType.COST_ALLOCATION_RULE);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
