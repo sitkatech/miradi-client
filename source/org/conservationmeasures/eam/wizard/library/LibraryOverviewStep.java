@@ -4,7 +4,7 @@
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
 
-package org.conservationmeasures.eam.views.images.wizard;
+package org.conservationmeasures.eam.wizard.library;
 
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.views.library.LibraryView;
