@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.images.wizard.LibraryOverviewStep;
-import org.conservationmeasures.eam.views.map.wizard.MapOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanOverviewStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
@@ -62,6 +61,7 @@ import org.conservationmeasures.eam.wizard.diagram.DiagramWizardReviewModelAndAd
 import org.conservationmeasures.eam.wizard.diagram.DiagramWizardVisionStep;
 import org.conservationmeasures.eam.wizard.diagram.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.wizard.diagram.SelectChainStep;
+import org.conservationmeasures.eam.wizard.map.MapOverviewStep;
 import org.conservationmeasures.eam.wizard.noproject.NoProjectOverviewStep;
 import org.conservationmeasures.eam.wizard.noproject.NoProjectWizardImportStep;
 import org.conservationmeasures.eam.wizard.noproject.NoProjectWizardProjectCreateStep;
