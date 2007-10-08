@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.targetviability.wizard;
+package org.conservationmeasures.eam.wizard.targetviability;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.conservationmeasures.eam.main.EAM;
@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
-public class TargetViability6Step extends DiagramWizardStep
+public class TargetViability4Step extends DiagramWizardStep
 {
-	public TargetViability6Step(WizardPanel wizardToUse)
+	public TargetViability4Step(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -27,9 +27,9 @@ public class TargetViability6Step extends DiagramWizardStep
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
-
+	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 5");
+		return EAM.text("Page 3");
 	}
 }
