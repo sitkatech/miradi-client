@@ -8,10 +8,8 @@ package org.conservationmeasures.eam.views.workplan;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -31,18 +29,17 @@ public class TestDeleteActivity extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		try
 		{
-			BaseId rawStrategyId = project.createObjectAndReturnId(ObjectType.STRATEGY);
-			FactorId strategyId = new FactorId(rawStrategyId.asInt());
-			Strategy strategy = (Strategy)project.findNode(strategyId);
+			ORef strategyRef = project.createObject(Strategy.getObjectType());
+			Strategy strategy = (Strategy)project.findObject(strategyRef);
 
-			BaseId parentHasChildId = project.createObject(ObjectType.TASK, BaseId.INVALID);
-			Task parentHasChild = (Task)project.findObject(ObjectType.TASK, parentHasChildId);
+			ORef parentHasChildRef = project.createObject(Task.getObjectType());
+			Task parentHasChild = (Task)project.findObject(parentHasChildRef);
 			
-			BaseId parentHasNoChildId  = project.createObject(ObjectType.TASK, BaseId.INVALID);
-			Task parentNoChild = (Task)project.findObject(ObjectType.TASK, parentHasNoChildId);
+			ORef parentHasNoChildRef  = project.createObject(Task.getObjectType());
+			Task parentNoChild = (Task)project.findObject(parentHasNoChildRef);
 			
-			BaseId leafChildId = project.createObject(ObjectType.TASK, BaseId.INVALID);
-			Task leafChild = (Task)project.findObject(ObjectType.TASK, leafChildId);
+			ORef leafChildRef = project.createObject(Task.getObjectType());
+			Task leafChild = (Task)project.findObject(leafChildRef);
 			
 			CommandSetObjectData addResource1 = CommandSetObjectData.createAppendIdCommand(strategy, Strategy.TAG_ACTIVITY_IDS, parentNoChild.getId());
 			project.executeCommand(addResource1);
@@ -71,7 +68,7 @@ public class TestDeleteActivity extends EAMTestCase
 			Undo.undo(project);
 			assertEquals("Didn't delete activity?", 2, strategy.getActivityIds().size());
 			
-			parentHasChild = (Task)project.findObject(ObjectType.TASK, parentHasChildId);
+			parentHasChild = (Task)project.findObject(parentHasChildRef);
 			assertEquals("Didn't restore child?", 1, parentHasChild.getSubtaskCount());
 		}
 		finally

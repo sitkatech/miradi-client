@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -84,22 +85,55 @@ public class DeleteActivity extends ObjectsDoer
 	private static Command[] createDeleteCommands(Project project, Task task) throws Exception
 	{
 		Vector commandsToDeleteTasks = new Vector();
-		
-		BaseObject parentObject = task.getOwner();
-		CommandSetObjectData commandSetObjectData;
-		if (task.isActivity())
-			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Strategy.TAG_ACTIVITY_IDS, task.getId());
-		else if (task.isMethod())
-			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Indicator.TAG_TASK_IDS, task.getId());
-		else if (task.isTask())
-			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Task.TAG_SUBTASK_IDS, task.getId());
-		else
-			throw new RuntimeException("uknown task type "+task.getId());
-		
-		commandsToDeleteTasks.add(commandSetObjectData);
-		Vector returnedDeleteTaskCommands = task.getDeleteSelfAndSubtasksCommands(project);
-		commandsToDeleteTasks.addAll(returnedDeleteTaskCommands);
+		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, task));
+		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, task));
+		commandsToDeleteTasks.addAll(buildRemoveCommandsForTaskIds(project, task));
+		commandsToDeleteTasks.addAll(task.getDeleteSelfAndSubtasksCommands(project));
 		
 		return (Command[])commandsToDeleteTasks.toArray(new Command[0]);
+	}
+	
+	private static Vector buildRemoveCommandsForActivityIds(Project project, Task task) throws ParseException
+	{
+		if (! task.isActivity())
+			return new Vector();
+		
+		Vector removeCommands = new Vector();
+		ORefList referrerRefs = task.findObjectsThatReferToUs(Strategy.getObjectType());
+		for (int i = 0; i < referrerRefs.size(); ++i)
+		{
+			BaseObject referrrer = project.findObject(referrerRefs.get(i));
+			removeCommands.add(CommandSetObjectData.createRemoveIdCommand(referrrer, Strategy.TAG_ACTIVITY_IDS, task.getId()));
+		}
+		
+		return removeCommands;
+	}
+	
+	private static Vector buildRemoveCommandsForMethodIds(Project project, Task task) throws ParseException
+	{
+		if (! task.isMethod())
+			return new Vector();
+		
+		Vector removeCommands = new Vector();
+		ORefList referrerRefs = task.findObjectsThatReferToUs(Indicator.getObjectType());
+		for (int i = 0; i < referrerRefs.size(); ++i)
+		{
+			BaseObject referrrer = project.findObject(referrerRefs.get(i));
+			removeCommands.add(CommandSetObjectData.createRemoveIdCommand(referrrer, Indicator.TAG_TASK_IDS, task.getId()));
+		}
+		
+		return removeCommands;
+	}
+	
+	private static Vector buildRemoveCommandsForTaskIds(Project project, Task task) throws ParseException
+	{
+		if (! task.isTask())
+			return new Vector();
+		
+		Vector removeCommands = new Vector();
+		BaseObject parentObject = task.getOwner();
+		removeCommands.add(CommandSetObjectData.createRemoveIdCommand(parentObject,	Task.TAG_SUBTASK_IDS, task.getId()));
+		
+		return removeCommands;
 	}
 }

@@ -166,7 +166,8 @@ public class Task extends BaseObject
 		if (getOwnerRef() == null)
 			return false;
 		
-		return Factor.isFactor(getOwnerRef().getObjectType());
+		ORefList referrers = findObjectsThatReferToUs(Strategy.getObjectType());
+		return referrers.size() > 0;
 	}
 
 	public boolean isMethod()

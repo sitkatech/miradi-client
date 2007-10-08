@@ -62,11 +62,33 @@ public class Strategy extends Factor
 		{
 			case ObjectType.OBJECTIVE: 
 				return true;
+			default:
+				return false;
+		}
+	}
+	
+	public static boolean canReferToThisType(int type)
+	{
+		switch(type)
+		{
 			case ObjectType.TASK: 
 				return true;
 			default:
 				return false;
 		}
+	}
+	
+	public ORefList getReferencedObjects(int objectType)
+	{
+		ORefList list = super.getReferencedObjects(objectType);
+		
+		switch(objectType)
+		{
+			case ObjectType.TASK: 
+				list.addAll(new ORefList(objectType, getActivityIds()));
+				break;
+		}
+		return list;
 	}
 	
 	public ORefList getResultsChains()
@@ -181,10 +203,6 @@ public class Strategy extends Factor
 			case ObjectType.OBJECTIVE: 
 				list.addAll(new ORefList(objectType, getObjectives()));
 				break;
-			case ObjectType.TASK: 
-				list.addAll(new ORefList(objectType, getActivityIds()));
-				break;
-
 		}
 		return list;
 	}
