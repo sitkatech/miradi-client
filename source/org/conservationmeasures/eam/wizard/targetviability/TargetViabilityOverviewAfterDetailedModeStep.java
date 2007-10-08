@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.views.targetviability.wizard;
+package org.conservationmeasures.eam.wizard.targetviability;
 
 import org.conservationmeasures.eam.actions.views.ActionViewTargetViability;
 import org.conservationmeasures.eam.wizard.TargetViabilityWizardStep;

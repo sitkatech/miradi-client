@@ -20,15 +20,6 @@ import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefi
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability3Step;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability4Step;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability5Step;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability6Step;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability7Step;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViability8Step;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityMethodChoiceStep;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewAfterDetailedModeStep;
-import org.conservationmeasures.eam.views.targetviability.wizard.TargetViabilityOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckTotalsStep;
@@ -78,6 +69,15 @@ import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjecScop
 import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineTeamMembers;
+import org.conservationmeasures.eam.wizard.targetviability.TargetViability3Step;
+import org.conservationmeasures.eam.wizard.targetviability.TargetViability4Step;
+import org.conservationmeasures.eam.wizard.targetviability.TargetViability5Step;
+import org.conservationmeasures.eam.wizard.targetviability.TargetViability6Step;
+import org.conservationmeasures.eam.wizard.targetviability.TargetViability7Step;
+import org.conservationmeasures.eam.wizard.targetviability.TargetViability8Step;
+import org.conservationmeasures.eam.wizard.targetviability.TargetViabilityMethodChoiceStep;
+import org.conservationmeasures.eam.wizard.targetviability.TargetViabilityOverviewAfterDetailedModeStep;
+import org.conservationmeasures.eam.wizard.targetviability.TargetViabilityOverviewStep;
 
 
 public class WizardManager
