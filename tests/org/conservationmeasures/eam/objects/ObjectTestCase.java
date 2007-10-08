@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.DateRangeEffortListData;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
@@ -147,6 +148,9 @@ public class ObjectTestCase extends EAMTestCase
 		if(field instanceof ORefData)
 			return ORef.INVALID.toString();
 		
+		if (field instanceof IntegerData)
+			return new IntegerData().toString();
+		
 		return "";
 	}
 	
@@ -224,6 +228,10 @@ public class ObjectTestCase extends EAMTestCase
 			codeList.add("B1");
 			return codeList.toString();
 			
+		}
+		else if (field instanceof IntegerData)
+		{
+			return "3";
 		}
 		else
 		{
