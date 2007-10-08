@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.threatmatrix.wizard;
+package org.conservationmeasures.eam.wizard.threatmatrix;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.conservationmeasures.eam.main.EAM;
@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
 
-public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
+public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 {
-	public ThreatRatingWizardCheckTotalsStep(WizardPanel panel)
+	public ThreatRatingWizardCheckBundleStep(WizardPanel panel)
 	{
 		super(panel);
 	}
@@ -31,7 +31,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 6");
+		return EAM.text("Page 5");
 	}
 }
 
