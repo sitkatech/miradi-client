@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.util.Hashtable;
 
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckTotalsStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardCheckBundleStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardCheckTotalsStep;
 
 public class DefinitionCommonTerms
 {

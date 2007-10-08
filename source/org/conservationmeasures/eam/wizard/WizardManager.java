@@ -20,13 +20,6 @@ import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardDefi
 import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatMatrixOverviewStep;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckBundleStep;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardCheckTotalsStep;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardChooseBundle;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardIrreversibilityStep;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardScopeStep;
-import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardSeverityStep;
 import org.conservationmeasures.eam.wizard.diagram.DescribeTargetStatusStep;
 import org.conservationmeasures.eam.wizard.diagram.DevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.wizard.diagram.DiagramOverviewStep;
@@ -78,6 +71,13 @@ import org.conservationmeasures.eam.wizard.targetviability.TargetViability8Step;
 import org.conservationmeasures.eam.wizard.targetviability.TargetViabilityMethodChoiceStep;
 import org.conservationmeasures.eam.wizard.targetviability.TargetViabilityOverviewAfterDetailedModeStep;
 import org.conservationmeasures.eam.wizard.targetviability.TargetViabilityOverviewStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatMatrixOverviewStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardCheckBundleStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardCheckTotalsStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardChooseBundle;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardIrreversibilityStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardScopeStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardSeverityStep;
 
 
 public class WizardManager
