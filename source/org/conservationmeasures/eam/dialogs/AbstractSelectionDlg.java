@@ -47,7 +47,7 @@ abstract public class AbstractSelectionDlg extends EAMDialog implements ListSele
 		Utilities.centerDlg(this);
 	}
 	
-	public BaseObject getSelectedAnnotaton()
+	public BaseObject getSelectedObject()
 	{
 		return objectSelected;
 	}

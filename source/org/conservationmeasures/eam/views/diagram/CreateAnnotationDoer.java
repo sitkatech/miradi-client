@@ -81,7 +81,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	{
 		AnnotationSelectionDlg list = new AnnotationSelectionDlg(getMainWindow(), title, tablePanel);
 		list.setVisible(true);
-		return list.getSelectedAnnotaton();
+		return list.getSelectedObject();
 	}
 	
 	protected void setAnnotationToClone(BaseObject baseObject)

@@ -28,7 +28,7 @@ public class ShareActivityDoer extends LocationDoer
 			return;
 		
 		DiagramFactor diagramFactor = selected.getDiagramFactor();
-		ActivityShareSelectionDiaglog list = new ActivityShareSelectionDiaglog(getMainWindow(), EAM.text("Share Activity"), new ActivityPoolTablePanel(getProject(), diagramFactor.getWrappedORef()));
-		list.setVisible(true);	
+		ActivityShareSelectionDiaglog listDialog = new ActivityShareSelectionDiaglog(getMainWindow(), EAM.text("Share Activity"), new ActivityPoolTablePanel(getProject(), diagramFactor.getWrappedORef()));
+		listDialog.setVisible(true);	
 	}
 }
