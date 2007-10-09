@@ -20,7 +20,7 @@ public interface ObjectPicker
 	
 	public void addSelectionChangeListener(SelectionChangeListener listener);
 	public void removeSelectionChangeListener(SelectionChangeListener listener);
-	public ORefList getSelectionHierarchay();
+	public ORefList getSelectionHierarchy();
 	
 	public interface SelectionChangeListener
 	{

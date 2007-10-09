@@ -176,7 +176,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 		return new BaseObject[] {selectedAssignment};
 	}
 	
-	public ORefList getSelectionHierarchay()
+	public ORefList getSelectionHierarchy()
 	{
 		return null;
 	}

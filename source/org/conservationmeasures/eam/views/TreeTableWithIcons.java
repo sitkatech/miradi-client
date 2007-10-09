@@ -297,7 +297,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		return new BaseObject[] {foundObject};
 	}
 	
-	public ORefList getSelectionHierarchay()
+	public ORefList getSelectionHierarchy()
 	{
 		TreePath selectionPath = getTree().getSelectionModel().getSelectionPath();
 		if (selectionPath == null)
