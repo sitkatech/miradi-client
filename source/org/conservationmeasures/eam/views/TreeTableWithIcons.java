@@ -304,8 +304,8 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			return new ORefList();
 		
 		ORefList selectionHierarchyNodeRefs = new ORefList();
-		for(int i = 0; i < selectionPath.getPathCount(); ++i)
-		{
+		for(int i = selectionPath.getPathCount() - 1; i >=0 ; --i)
+		{			
 			TreeTableNode node = (TreeTableNode) selectionPath.getPathComponent(i);
 			selectionHierarchyNodeRefs.add(node.getObjectReference());
 		}
