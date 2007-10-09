@@ -4,9 +4,9 @@ import org.conservationmeasures.eam.dialogs.ActivityPoolTablePanel;
 import org.conservationmeasures.eam.dialogs.diagram.ActivityShareSelectionDiaglog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public class ShareActivityDoer extends ViewDoer
+public class ShareActivityDoer extends ObjectsDoer
 {	
 	public boolean isAvailable()
 	{
