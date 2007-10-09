@@ -27,6 +27,8 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	
 	public int getRowCount()
 	{
+		//FIXME obviously this is not enough,  since adding annotiontation does not update the table
+		//try adding an indicator inside a properties dialog.  
 		resetRows();
 		return getIdList().size();
 	}
