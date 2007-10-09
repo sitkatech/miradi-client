@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
@@ -21,13 +20,12 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 	
 	private static final String[] COLUMN_TAGS = new String[] {
 		Task.TAG_LABEL,
-		Task.PSEUDO_TAG_STRATEGY_LABEL,
+		//FIXME include associated factor
 	};
 	
 	public IdList getLatestIdListFromProject()
 	{
 		IdList filteredTasks = new IdList();
-		
 		IdList tasks = super.getLatestIdListFromProject();
 		for (int i=0; i<tasks.size(); ++i)
 		{
@@ -35,15 +33,10 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
 			if (! task.isActivity())
 				continue;
-			
-			Factor factor = (Factor)task.getOwner();
-			if (factor.isStatusDraft())
-				continue;
-			
+
 			filteredTasks.add(baseId);
 		}
+		
 		return filteredTasks;
 	}
-
-
 }

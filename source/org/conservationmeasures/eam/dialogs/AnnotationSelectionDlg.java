@@ -27,6 +27,7 @@ import org.martus.swing.Utilities;
 
 public class AnnotationSelectionDlg extends EAMDialog implements ListSelectionListener
 {
+	//FIXME make abstract and use for Share activities
 	public AnnotationSelectionDlg(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{
 		super(mainWindow);
