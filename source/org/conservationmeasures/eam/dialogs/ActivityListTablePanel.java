@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ActionCreateActivity;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
+import org.conservationmeasures.eam.actions.ActionShareActivity;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -23,6 +24,7 @@ public class ActivityListTablePanel extends ObjectListTablePanel
 	
 	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateActivity.class,
-		ActionDeleteActivity.class
+		ActionDeleteActivity.class,
+		ActionShareActivity.class,
 	};
 }
