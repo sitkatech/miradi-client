@@ -38,9 +38,6 @@ public class ShareableActivityPoolTableModel extends ObjectPoolTableModel
 			if (! task.isActivity())
 				continue;
 			
-			if (isReferedToByAllDraftStrategyies(task))
-				continue;
-			
 			if (parentActivityRefs.contains(task.getRef()))
 				continue;
 			
@@ -50,18 +47,5 @@ public class ShareableActivityPoolTableModel extends ObjectPoolTableModel
 		return filteredTaskRefs.convertToIdList(Task.getObjectType());
 	}
 
-	private boolean isReferedToByAllDraftStrategyies(Task task)
-	{
-		ORefList strategyReferrerRefs = task.findObjectsThatReferToUs(Strategy.getObjectType());
-		for (int i = 0; i < strategyReferrerRefs.size(); ++i)
-		{
-			Strategy strategy = (Strategy) getProject().findObject(strategyReferrerRefs.get(i));
-			if (! strategy.isStatusDraft())
-				return false;
-		}
-		
-		return true;
-	}
-	
 	private ORef parentRef;
 }
