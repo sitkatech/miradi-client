@@ -7,7 +7,9 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
@@ -33,10 +35,26 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
 			if (! task.isActivity())
 				continue;
-
+			
+			if (isReferedToByDraftStrategyies(task))
+				continue;
+			
 			filteredTasks.add(baseId);
 		}
 		
 		return filteredTasks;
+	}
+
+	private boolean isReferedToByDraftStrategyies(Task task)
+	{
+		ORefList strategyReferrerRefs = task.findObjectsThatReferToUs(Strategy.getObjectType());
+		for (int i = 0; i < strategyReferrerRefs.size(); ++i)
+		{
+			Strategy strategy = (Strategy) getProject().findObject(strategyReferrerRefs.get(i));
+			if (strategy.isStatusDraft())
+				return true;
+		}
+		
+		return false;
 	}
 }
