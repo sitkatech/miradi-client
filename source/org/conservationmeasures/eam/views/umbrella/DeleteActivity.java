@@ -95,36 +95,20 @@ public class DeleteActivity extends ObjectsDoer
 		return (Command[])commandsToDeleteTasks.toArray(new Command[0]);
 	}
 	
-	private static Vector buildRemoveCommandsForActivityIds(Project project, Task task) throws ParseException
+	private static Vector buildRemoveCommandsForActivityIds(Project project, Task task) throws Exception
 	{
 		if (! task.isActivity())
 			return new Vector();
 		
-		Vector removeCommands = new Vector();
-		ORefList referrerRefs = task.findObjectsThatReferToUs(Strategy.getObjectType());
-		for (int i = 0; i < referrerRefs.size(); ++i)
-		{
-			BaseObject referrrer = project.findObject(referrerRefs.get(i));
-			removeCommands.add(CommandSetObjectData.createRemoveIdCommand(referrrer, Strategy.TAG_ACTIVITY_IDS, task.getId()));
-		}
-		
-		return removeCommands;
+		return buildRemoveCommands(project, Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS, task);
 	}
 	
-	private static Vector buildRemoveCommandsForMethodIds(Project project, Task task) throws ParseException
+	private static Vector buildRemoveCommandsForMethodIds(Project project, Task task) throws Exception
 	{
 		if (! task.isMethod())
 			return new Vector();
 		
-		Vector removeCommands = new Vector();
-		ORefList referrerRefs = task.findObjectsThatReferToUs(Indicator.getObjectType());
-		for (int i = 0; i < referrerRefs.size(); ++i)
-		{
-			BaseObject referrrer = project.findObject(referrerRefs.get(i));
-			removeCommands.add(CommandSetObjectData.createRemoveIdCommand(referrrer, Indicator.TAG_TASK_IDS, task.getId()));
-		}
-		
-		return removeCommands;
+		return buildRemoveCommands(project, Indicator.getObjectType(), Indicator.TAG_TASK_IDS, task);
 	}
 	
 	private static Vector buildRemoveCommandsForTaskIds(Project project, Task task) throws ParseException
@@ -137,5 +121,18 @@ public class DeleteActivity extends ObjectsDoer
 		removeCommands.add(CommandSetObjectData.createRemoveIdCommand(parentObject,	Task.TAG_SUBTASK_IDS, task.getId()));
 		
 		return removeCommands;
+	}
+	
+	private static Vector buildRemoveCommands(Project project, int parentType, String tag, Task task) throws Exception
+	{
+		Vector removeCommands = new Vector();
+		ORefList referrerRefs = task.findObjectsThatReferToUs(parentType);
+		for (int i = 0; i < referrerRefs.size(); ++i)
+		{
+			BaseObject referrer = project.findObject(referrerRefs.get(i));
+			removeCommands.add(CommandSetObjectData.createRemoveIdCommand(referrer, tag, task.getId()));
+		}
+		
+		return removeCommands;		
 	}
 }
