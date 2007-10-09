@@ -27,10 +27,7 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	
 	public int getRowCount()
 	{
-		//FIXME obviously this is not enough,  since adding annotiontation does not update the table
-		//try adding an indicator inside a properties dialog.  
-		resetRows();
-		return getIdList().size();
+		return getRowObjectIds().size();
 	}
 	
 	void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
@@ -53,7 +50,7 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	{
 		try
 		{
-			BaseId rowObjectId = getIdList().get(row);
+			BaseId rowObjectId = getRowObjectIds().get(row);
 			BaseObject rowObject = project.findObject(rowObjectType, rowObjectId);
 			if(rowObject == null)
 				EAM.logDebug("ObjectTableModel.getObjectFromRow: Missing object: " + new ORef(rowObjectType, rowObjectId));
@@ -133,12 +130,6 @@ abstract public class ObjectTableModel extends AbstractTableModel
 			fireTableDataChanged();
 	}
 
-
-	public IdList getIdList()
-	{
-		return getRowObjectIds();
-	}
-
 	public String getColumnTag(int column)
 	{
 		return columnTags[column];
@@ -164,8 +155,11 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		rowObjectIds = rowObjectIdsToUse;
 	}
 
-	IdList getRowObjectIds()
+	private IdList getRowObjectIds()
 	{
+		if (rowObjectIds == null)
+			resetRows();
+			
 		return rowObjectIds;
 	}
 
