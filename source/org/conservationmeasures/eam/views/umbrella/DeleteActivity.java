@@ -76,17 +76,20 @@ public class DeleteActivity extends ObjectsDoer
 		Command[] commandToDeleteTasks = createDeleteCommands(project, selectionHierarchy, selectedTask); 
 		executeDeleteCommands(project, commandToDeleteTasks);
 		
-		deleteOrphandTask(project, selectedTask);
-	}
-	
-	private static void deleteOrphandTask(Project project, Task selectedTask) throws Exception
-	{
-		ORefList referrers = selectedTask.findObjectThatReferToUs();
-		if (referrers.size() > 0)
+		if (! isOrphandTask(selectedTask))
 			return;
 		
 		Vector commandsToDeletTask = selectedTask.getDeleteSelfAndSubtasksCommands(project);
 		project.executeCommandsWithoutTransaction((Command[]) commandsToDeletTask.toArray(new Command[0]));
+	}
+	
+	private static boolean isOrphandTask(Task selectedTask) throws Exception
+	{
+		ORefList referrers = selectedTask.findObjectThatReferToUs();
+		if (referrers.size() > 0)
+			return false;
+		
+		return true;
 	}
 
 	private static void executeDeleteCommands(Project project, Command[] commands) throws ParseException, CommandFailedException
