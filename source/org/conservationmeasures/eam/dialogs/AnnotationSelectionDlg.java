@@ -1,11 +1,5 @@
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -16,27 +10,13 @@ public class AnnotationSelectionDlg extends AbstractSelectionDlg
 		super(mainWindow, title, poolTable);
 	}
 
-	protected PanelButton createCustomButton()
+	protected String createCustomButtonLabel()
 	{
-		return  new PanelButton(new CloneAction());
+		return  EAM.text("Clone");
 	}
 	
-	protected PanelTitleLabel getPanelTitleInstructions()
+	protected String getPanelTitleInstructions()
 	{
-		return new PanelTitleLabel(EAM.text("Please select which item should be cloned into this factor, then press the Clone button"));
-	}
-	
-	class CloneAction extends AbstractAction
-	{
-		public CloneAction()
-		{
-			super(EAM.text("Clone"));
-		}
-
-		public void actionPerformed(ActionEvent arg0)
-		{
-			objectSelected = list.getSelectedObject();
-			dispose();
-		}
+		return EAM.text("Please select which item should be cloned into this factor, then press the Clone button");
 	}
 }

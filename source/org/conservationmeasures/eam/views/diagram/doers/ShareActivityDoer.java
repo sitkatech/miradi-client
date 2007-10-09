@@ -1,7 +1,7 @@
 package org.conservationmeasures.eam.views.diagram.doers;
 
 import org.conservationmeasures.eam.dialogs.ActivityPoolTablePanel;
-import org.conservationmeasures.eam.dialogs.AnnotationSelectionDlg;
+import org.conservationmeasures.eam.dialogs.diagram.ActivityShareSelectionDiaglog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -21,7 +21,7 @@ public class ShareActivityDoer extends ViewDoer
 		if (! isAvailable())
 			return;
 		
-		AnnotationSelectionDlg list = new AnnotationSelectionDlg(getMainWindow(), EAM.text("Share Activity"), new ActivityPoolTablePanel(getProject()));
+		ActivityShareSelectionDiaglog list = new ActivityShareSelectionDiaglog(getMainWindow(), EAM.text("Share Activity"), new ActivityPoolTablePanel(getProject()));
 		list.setVisible(true);	
 	}
 }
