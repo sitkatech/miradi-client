@@ -712,7 +712,17 @@ public class Project
 	public void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
 	{
 		for(int i = 0; i < commands.length; ++i)
+		{
 			executeCommand(commands[i]);
+		}
+	}
+
+	public void executeCommandsWithoutTransaction(Vector commands) throws CommandFailedException
+	{
+		for(int i = 0; i < commands.size(); ++i)
+		{
+			executeCommand((Command) commands.get(i));
+		}
 	}
 	
 	public void executeCommandsAsTransaction(Command[] commands) throws CommandFailedException
