@@ -74,7 +74,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 			newSiblings.removeId(task.getId());
 			newSiblings.insertAt(task.getId(), wasAt + getDelta());
 	
-			ORef parentRef = getParentOfTask(task);
+			ORef parentRef = getSelectedParentRef(task);
 			BaseObject parent = getProject().findObject(parentRef);
 			String tag = getTaskIdsTag(parent);
 			CommandSetObjectData cmd = new CommandSetObjectData(parent.getRef(), tag, newSiblings.toString());
@@ -118,7 +118,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 
 	private IdList getSiblingList(Task task) throws Exception
 	{
-		ORef parentRef = getParentOfTask(task);
+		ORef parentRef = getSelectedParentRef(task);
 		if (parentRef.isInvalid())
 			return new IdList();
 		
@@ -129,7 +129,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 		return getCurrentTaskList(parent);
 	}
 
-	private ORef getParentOfTask(Task task)
+	private ORef getSelectedParentRef(Task task)
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();
 		ORefList referrerRefs = getAllReferrersAndOwners(task);
