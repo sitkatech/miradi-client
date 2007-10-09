@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
-public class ActivityPoolTableModel extends ObjectPoolTableModel
+public class ShareableActivityPoolTableModel extends ObjectPoolTableModel
 {
-	public ActivityPoolTableModel(Project projectToUse, ORef parentRefToUse)
+	public ShareableActivityPoolTableModel(Project projectToUse, ORef parentRefToUse)
 	{
 		super(projectToUse, ObjectType.TASK, COLUMN_TAGS);
 		parentRef = parentRefToUse;
@@ -38,7 +38,7 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 			if (! task.isActivity())
 				continue;
 			
-			if (isReferedToByDraftStrategyies(task))
+			if (isReferedToByAllDraftStrategyies(task))
 				continue;
 			
 			if (parentActivityRefs.contains(task.getRef()))
@@ -50,17 +50,17 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 		return filteredTaskRefs.convertToIdList(Task.getObjectType());
 	}
 
-	private boolean isReferedToByDraftStrategyies(Task task)
+	private boolean isReferedToByAllDraftStrategyies(Task task)
 	{
 		ORefList strategyReferrerRefs = task.findObjectsThatReferToUs(Strategy.getObjectType());
 		for (int i = 0; i < strategyReferrerRefs.size(); ++i)
 		{
 			Strategy strategy = (Strategy) getProject().findObject(strategyReferrerRefs.get(i));
-			if (strategy.isStatusDraft())
-				return true;
+			if (! strategy.isStatusDraft())
+				return false;
 		}
 		
-		return false;
+		return true;
 	}
 	
 	private ORef parentRef;

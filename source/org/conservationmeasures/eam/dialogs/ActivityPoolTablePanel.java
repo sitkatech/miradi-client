@@ -13,6 +13,6 @@ public class ActivityPoolTablePanel extends ObjectPoolTablePanel
 {
 	public ActivityPoolTablePanel(Project project, ORef parentRef)
 	{
-		super(project, ObjectType.TASK, new ActivityPoolTableModel(project, parentRef));
+		super(project, ObjectType.TASK, new ShareableActivityPoolTableModel(project, parentRef));
 	}
 }
