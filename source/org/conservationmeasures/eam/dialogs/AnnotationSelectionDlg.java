@@ -1,11 +1,9 @@
-package org.conservationmeasures.eam.dialogs.diagram;
+package org.conservationmeasures.eam.dialogs;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import org.conservationmeasures.eam.dialogs.AbstractSelectionDlg;
-import org.conservationmeasures.eam.dialogs.ObjectTablePanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
