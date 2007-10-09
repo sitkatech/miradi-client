@@ -7,6 +7,9 @@ public class ShareActivityDoer extends ViewDoer
 {	
 	public boolean isAvailable()
 	{
+		if (! isDiagramView())
+			return false;
+	
 		return true;
 	}
 
