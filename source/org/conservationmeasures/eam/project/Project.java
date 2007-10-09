@@ -719,10 +719,7 @@ public class Project
 
 	public void executeCommandsWithoutTransaction(Vector commands) throws CommandFailedException
 	{
-		for(int i = 0; i < commands.size(); ++i)
-		{
-			executeCommand((Command) commands.get(i));
-		}
+		executeCommandsWithoutTransaction((Command[]) commands.toArray(new Command[0]));
 	}
 	
 	public void executeCommandsAsTransaction(Command[] commands) throws CommandFailedException
