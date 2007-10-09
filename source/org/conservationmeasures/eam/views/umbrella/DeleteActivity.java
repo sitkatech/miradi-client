@@ -87,28 +87,28 @@ public class DeleteActivity extends ObjectsDoer
 		
 		//FIXME need to consider parent hierachy when creating commands.  first refactor dup code.  
 		Vector commandsToDeleteTasks = new Vector();
-		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, task));
-		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, task));
+		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, selectionHierarchy, task));
+		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, selectionHierarchy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForTaskIds(project, task));
 		commandsToDeleteTasks.addAll(task.getDeleteSelfAndSubtasksCommands(project));
 		
 		return (Command[])commandsToDeleteTasks.toArray(new Command[0]);
 	}
 	
-	private static Vector buildRemoveCommandsForActivityIds(Project project, Task task) throws Exception
+	private static Vector buildRemoveCommandsForActivityIds(Project project, ORefList selectionHierarchy, Task task) throws Exception
 	{
 		if (! task.isActivity())
 			return new Vector();
 		
-		return buildRemoveCommands(project, Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS, task);
+		return buildRemoveCommands(project, Strategy.getObjectType(), selectionHierarchy, Strategy.TAG_ACTIVITY_IDS, task);
 	}
 	
-	private static Vector buildRemoveCommandsForMethodIds(Project project, Task task) throws Exception
+	private static Vector buildRemoveCommandsForMethodIds(Project project, ORefList selectionHierarchy, Task task) throws Exception
 	{
 		if (! task.isMethod())
 			return new Vector();
 		
-		return buildRemoveCommands(project, Indicator.getObjectType(), Indicator.TAG_TASK_IDS, task);
+		return buildRemoveCommands(project, Indicator.getObjectType(), selectionHierarchy, Indicator.TAG_TASK_IDS, task);
 	}
 	
 	private static Vector buildRemoveCommandsForTaskIds(Project project, Task task) throws ParseException
@@ -123,14 +123,15 @@ public class DeleteActivity extends ObjectsDoer
 		return removeCommands;
 	}
 	
-	private static Vector buildRemoveCommands(Project project, int parentType, String tag, Task task) throws Exception
+	private static Vector buildRemoveCommands(Project project, int parentType, ORefList selectionHierarchy, String tag, Task task) throws Exception
 	{
 		Vector removeCommands = new Vector();
 		ORefList referrerRefs = task.findObjectsThatReferToUs(parentType);
 		for (int i = 0; i < referrerRefs.size(); ++i)
 		{
 			BaseObject referrer = project.findObject(referrerRefs.get(i));
-			removeCommands.add(CommandSetObjectData.createRemoveIdCommand(referrer, tag, task.getId()));
+			if (selectionHierarchy.contains(referrer.getRef()))
+				removeCommands.add(CommandSetObjectData.createRemoveIdCommand(referrer, tag, task.getId()));
 		}
 		
 		return removeCommands;		
