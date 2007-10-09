@@ -1,7 +1,7 @@
 package org.conservationmeasures.eam.views.diagram.doers;
 
 import org.conservationmeasures.eam.dialogs.ActivityPoolTablePanel;
-import org.conservationmeasures.eam.dialogs.AnnotationSelectionDlg;
+import org.conservationmeasures.eam.dialogs.diagram.AnnotationSelectionDlg;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.ViewDoer;
