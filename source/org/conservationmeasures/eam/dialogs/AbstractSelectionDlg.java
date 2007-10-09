@@ -33,7 +33,7 @@ abstract public class AbstractSelectionDlg extends EAMDialog implements ListSele
 		list = poolTable;
 		list.getTable().addListSelectionListener(this);
 		Box box = Box.createVerticalBox();
-		box.add(getPanelTitleInstructions());
+		box.add(new PanelTitleLabel(getPanelTitleInstructions()));
 		box.add(list, BorderLayout.AFTER_LAST_LINE);
 		
 		setTitle(title);
@@ -61,7 +61,7 @@ abstract public class AbstractSelectionDlg extends EAMDialog implements ListSele
 	private Box createButtonBar()
 	{
 		PanelButton cancelButton = new PanelButton(new CancelAction());
-		customButton = createCustomButton();
+		customButton = new PanelButton(new CustomAction(createCustomButtonLabel()));
 		customButton.setEnabled(false);
 		getRootPane().setDefaultButton(cancelButton);
 		Box buttonBar = Box.createHorizontalBox();
@@ -88,9 +88,24 @@ abstract public class AbstractSelectionDlg extends EAMDialog implements ListSele
 		}
 	}
 	
-	abstract protected PanelButton createCustomButton();
+	class CustomAction extends AbstractAction
+	{
+		public CustomAction(String label)
+		{
+			super(label);
+		}
+
+		public void actionPerformed(ActionEvent arg0)
+		{
+			objectSelected = list.getSelectedObject();
+			dispose();
+		}
+	}
+
 	
-	abstract protected PanelTitleLabel getPanelTitleInstructions();
+	abstract protected String createCustomButtonLabel();
+	
+	abstract protected String getPanelTitleInstructions();
 	
 	private PanelButton customButton;
 	protected ObjectTablePanel list;
