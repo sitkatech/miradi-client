@@ -67,6 +67,7 @@ import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
+import org.conservationmeasures.eam.actions.ActionShareActivity;
 import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
 import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowResultsChain;
@@ -120,6 +121,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.martus.swing.Utilities;
@@ -269,6 +271,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionCreateActivity.class, new CreateActivityDoer());
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity());
+		addDoerToMap(ActionShareActivity.class, new ShareActivityDoer());
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionCloneObjective.class, new CloneObjectiveDoer());
