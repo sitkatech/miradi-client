@@ -510,6 +510,9 @@ public class DiagramPaster
 		if (! currentModel.isResultsChain())
 			return false;
 		
+		if (isInBetweenProjectPaste())
+			return false;
+		
 		for (int i = 0; i < factorDeepCopies.size(); ++i)
 		{
 			String jsonAsString = factorDeepCopies.get(i);
