@@ -101,7 +101,7 @@ public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPic
 		return objects;
 	}
 	
-	public ORefList getSelectionHierarchay()
+	public ORefList getSelectionHierarchy()
 	{
 		return null;
 	}

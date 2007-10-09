@@ -34,7 +34,7 @@ abstract public class ObjectsDoer extends ViewDoer
 		if (picker == null)
 			return new ORefList();
 		
-		return picker.getSelectionHierarchay();
+		return picker.getSelectionHierarchy();
 	}
 	
 	public BaseObject[] getObjects()
