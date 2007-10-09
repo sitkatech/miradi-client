@@ -57,12 +57,12 @@ public class TestDeleteActivity extends EAMTestCase
 			Undo.undo(project);
 			assertEquals("Didn't restore subtasks?", 1, parentHasChild.getSubtaskCount());
 			
-			transactionDeleteTask(project, parentNoChild.getRef(), parentNoChild);
+			transactionDeleteTask(project, strategy.getRef(), parentNoChild);
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
 			Undo.undo(project);
 			assertEquals("Didn't restore activity?", 2, strategy.getActivityIds().size());
 			
-			transactionDeleteTask(project, parentHasChildRef, parentHasChild);
+			transactionDeleteTask(project, strategy.getRef(), parentHasChild);
 			parentHasChild = null;
 		
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
