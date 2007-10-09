@@ -178,6 +178,11 @@ public class Task extends BaseObject
 		ORefList referrers = findObjectsThatReferToUs(Indicator.getObjectType());
 		return referrers.size() > 0;
 	}
+	
+	public boolean isOrphandTask()
+	{
+		return !hasReferrers();
+	}
 
 	public void addSubtaskId(BaseId subtaskId)
 	{

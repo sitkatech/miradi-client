@@ -607,7 +607,15 @@ abstract public class BaseObject
 		return matchList;
 	}
 	
+	public boolean hasReferrers()
+	{
+		ORefList referrers = findObjectThatReferToUs();
+		if (referrers.size() > 0)
+			return true;
 
+		return false;
+	}
+	
 	public ORefList getReferencedObjects(int objectType)
 	{
 		return new ORefList();
