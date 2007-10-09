@@ -183,6 +183,21 @@ public class ORefList
 			get(i).toXml(out);
 		}
 	}
+	
+	public IdList convertToIdList(int objectType)
+	{
+		IdList convertedList = new IdList();
+		for (int i = 0; i < data.size(); ++i)
+		{
+			ORef refToConvert = (ORef) data.get(i);
+			if (refToConvert.getObjectType() != objectType)
+				throw new RuntimeException("Found wrong type " + refToConvert.getObjectType() + " in ORefList thought to contain " + objectType);
+			
+			convertedList.add(refToConvert.getObjectId());
+		}
+		
+		return convertedList;
+	}
 
 	private Vector data;
 	private static final String TAG_REFERENCES = "References";

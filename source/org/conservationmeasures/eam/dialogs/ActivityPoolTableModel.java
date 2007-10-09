@@ -5,8 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -15,9 +15,10 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ActivityPoolTableModel extends ObjectPoolTableModel
 {
-	public ActivityPoolTableModel(Project projectToUse)
+	public ActivityPoolTableModel(Project projectToUse, ORef parentRefToUse)
 	{
 		super(projectToUse, ObjectType.TASK, COLUMN_TAGS);
+		parentRef = parentRefToUse;
 	}
 	
 	private static final String[] COLUMN_TAGS = new String[] {
@@ -27,22 +28,26 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 	
 	public IdList getLatestIdListFromProject()
 	{
-		IdList filteredTasks = new IdList();
-		IdList tasks = super.getLatestIdListFromProject();
-		for (int i=0; i<tasks.size(); ++i)
+		ORefList filteredTaskRefs = new ORefList();
+		Strategy  parentStrategy = (Strategy) getProject().findObject(parentRef);
+		ORefList parentActivityRefs = parentStrategy.getActivities();
+		ORefList taskRefs = new ORefList(Task.getObjectType(), super.getLatestIdListFromProject());
+		for (int i = 0; i < taskRefs.size(); ++i)
 		{
-			BaseId baseId = tasks.get(i);
-			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
+			Task task = (Task) project.findObject(taskRefs.get(i));
 			if (! task.isActivity())
 				continue;
 			
 			if (isReferedToByDraftStrategyies(task))
 				continue;
 			
-			filteredTasks.add(baseId);
+			if (parentActivityRefs.contains(task.getRef()))
+				continue;
+			
+			filteredTaskRefs.add(taskRefs.get(i));
 		}
-		
-		return filteredTasks;
+				
+		return filteredTaskRefs.convertToIdList(Task.getObjectType());
 	}
 
 	private boolean isReferedToByDraftStrategyies(Task task)
@@ -57,4 +62,6 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 		
 		return false;
 	}
+	
+	private ORef parentRef;
 }

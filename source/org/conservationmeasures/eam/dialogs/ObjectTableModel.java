@@ -27,6 +27,7 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	
 	public int getRowCount()
 	{
+		resetRows();
 		return getIdList().size();
 	}
 	
@@ -36,14 +37,14 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		for(int i = 0; i < existingRowIndexesInNewOrder.length; ++i)
 		{
 			int nextExistingRowIndex = existingRowIndexesInNewOrder[i].intValue();
-			newList.add(rowObjectIds.get(nextExistingRowIndex));
+			newList.add(getRowObjectIds().get(nextExistingRowIndex));
 		}
-		rowObjectIds = newList;
+		setRowObjectIds(newList);
 	}
 
 	public void resetRows()
 	{
-		rowObjectIds = getLatestIdListFromProject();
+		setRowObjectIds(getLatestIdListFromProject());
 	}
 	
 	public BaseObject getObjectFromRow(int row) throws RuntimeException
@@ -83,7 +84,7 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	{
 		try
 		{
-			ORef rowObjectRef = new ORef(rowObjectType, rowObjectIds.get(row));
+			ORef rowObjectRef = new ORef(rowObjectType, getRowObjectIds().get(row));
 			return getValueToDisplay(rowObjectRef, getColumnTag(column));
 		}
 		catch(Exception e)
@@ -102,9 +103,9 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	{
 		IdList availableIds = getLatestIdListFromProject();
 		IdList newList = new IdList();
-		for(int i = 0; i < rowObjectIds.size(); ++i)
+		for(int i = 0; i < getRowObjectIds().size(); ++i)
 		{
-			BaseId thisId = rowObjectIds.get(i);
+			BaseId thisId = getRowObjectIds().get(i);
 			if(availableIds.contains(thisId))
 			{
 				newList.add(thisId);
@@ -116,13 +117,13 @@ abstract public class ObjectTableModel extends AbstractTableModel
 			newList.add(availableIds.get(i));
 		}
 		
-		int priorCount = rowObjectIds.size();
+		int priorCount = getRowObjectIds().size();
 		
 		//NOTE: Assumes one row at a time insert or delete
 		if (newList.size() == priorCount) 
 			return;
 		
-		rowObjectIds = newList;
+		setRowObjectIds(newList);
 		
 		if (newList.size() > priorCount)
 			fireTableRowsInserted(newList.size()-1, newList.size()-1);
@@ -133,7 +134,7 @@ abstract public class ObjectTableModel extends AbstractTableModel
 
 	public IdList getIdList()
 	{
-		return rowObjectIds;
+		return getRowObjectIds();
 	}
 
 	public String getColumnTag(int column)
@@ -156,9 +157,18 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		return project;
 	}
 
+	void setRowObjectIds(IdList rowObjectIdsToUse)
+	{
+		rowObjectIds = rowObjectIdsToUse;
+	}
+
+	IdList getRowObjectIds()
+	{
+		return rowObjectIds;
+	}
 
 	Project project;
 	int rowObjectType;
-	IdList rowObjectIds;
+	private IdList rowObjectIds;
 	String[] columnTags;
 }
