@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.martus.swing.Utilities;
 
-public class AbstractSelectionDlg extends EAMDialog implements ListSelectionListener
+abstract public class AbstractSelectionDlg extends EAMDialog implements ListSelectionListener
 {
 	public AbstractSelectionDlg(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{
@@ -33,7 +33,7 @@ public class AbstractSelectionDlg extends EAMDialog implements ListSelectionList
 		list = poolTable;
 		list.getTable().addListSelectionListener(this);
 		Box box = Box.createVerticalBox();
-		box.add(new PanelTitleLabel(EAM.text("Please select which item should be cloned into this factor, then press the Clone button")));
+		box.add(getPanelTitleInstructions());
 		box.add(list, BorderLayout.AFTER_LAST_LINE);
 		
 		setTitle(title);
@@ -52,7 +52,6 @@ public class AbstractSelectionDlg extends EAMDialog implements ListSelectionList
 		return objectSelected;
 	}
 	
-
 	public void dispose()
 	{
 		super.dispose();
@@ -62,34 +61,19 @@ public class AbstractSelectionDlg extends EAMDialog implements ListSelectionList
 	private Box createButtonBar()
 	{
 		PanelButton cancelButton = new PanelButton(new CancelAction());
-		cloneButton = new PanelButton(new CloneAction());
-		cloneButton.setEnabled(false);
+		customButton = createCustomButton();
+		customButton.setEnabled(false);
 		getRootPane().setDefaultButton(cancelButton);
 		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), cloneButton,  Box.createHorizontalStrut(10), cancelButton};
+		Component[] components = new Component[] {Box.createHorizontalGlue(), customButton,  Box.createHorizontalStrut(10), cancelButton};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 		return buttonBar;
 	}
 	
 	public void valueChanged(ListSelectionEvent e)
 	{
-		cloneButton.setEnabled(true);
+		customButton.setEnabled(true);
 	}
-	
-	class CloneAction extends AbstractAction
-	{
-		public CloneAction()
-		{
-			super(EAM.text("Clone"));
-		}
-
-		public void actionPerformed(ActionEvent arg0)
-		{
-			objectSelected = list.getSelectedObject();
-			dispose();
-		}
-	}
-	
 	
 	class CancelAction extends AbstractAction
 	{
@@ -104,8 +88,12 @@ public class AbstractSelectionDlg extends EAMDialog implements ListSelectionList
 		}
 	}
 	
-	PanelButton cloneButton;
-	ObjectTablePanel list;
-	BaseObject objectSelected;
+	abstract protected PanelButton createCustomButton();
+	
+	abstract protected PanelTitleLabel getPanelTitleInstructions();
+	
+	private PanelButton customButton;
+	protected ObjectTablePanel list;
+	protected BaseObject objectSelected;
 }
 
