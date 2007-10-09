@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
@@ -46,6 +47,15 @@ public class ORefList
 		this();
 		for (int i=0; i<orefs.length; ++i)
 			add(orefs[i]);
+	}
+	
+	public ORefList(BaseObject[] baseObjects)
+	{
+		this();
+		for (int i = 0; i < baseObjects.length; ++i)
+		{
+			add(baseObjects[i].getRef());
+		}
 	}
 	
 	public ORefList(int objectType, IdList idList)
