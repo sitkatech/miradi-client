@@ -14,14 +14,13 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 {
 	public boolean isAvailable()
 	{
-		//FIXME temporarly disabled
-		//BaseObject selected = getSingleSelectedObject();
-		//if(selected == null)
+		BaseObject selected = getSingleSelectedObject();
+		if(selected == null)
 			return false;
-		//if(selected.getType() != Task.getObjectType())
-		//	return false;
+		if(selected.getType() != Task.getObjectType())
+			return false;
 		
-		//return true;
+		return true;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -31,7 +30,7 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		
 		BaseObject selected = getSingleSelectedObject();
 		if(selected.getType() == Task.getObjectType())
-			DeleteActivity.deleteTask(getProject(), (Task)selected);
+			DeleteActivity.deleteTask(getProject(), getSelectionHierarchy(), (Task)selected);
 	}
 
 }

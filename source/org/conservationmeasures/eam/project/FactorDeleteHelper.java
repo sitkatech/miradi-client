@@ -148,11 +148,13 @@ public class FactorDeleteHelper
 	
 	private void removeAndDeleteTasksInList(BaseObject objectToDelete, String annotationListTag) throws Exception
 	{
+		ORefList hierarchyWithParent = new ORefList();
+		hierarchyWithParent.add(objectToDelete.getRef());
 		IdList ids = new IdList(objectToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			Task childTask = (Task)getProject().findObject(ObjectType.TASK, ids.get(annotationIndex));
-			DeleteActivity.deleteTaskTree(getProject(), childTask);
+			DeleteActivity.deleteTaskTree(getProject(), hierarchyWithParent, childTask);
 		}
 	}
 	

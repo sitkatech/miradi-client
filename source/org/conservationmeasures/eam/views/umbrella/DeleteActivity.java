@@ -45,10 +45,10 @@ public class DeleteActivity extends ObjectsDoer
 			return;
 	
 		Task selectedTask = (Task)getObjects()[0];
-		deleteTask(getProject(), selectedTask);
+		deleteTask(getProject(), getSelectionHierarchy(), selectedTask);
 	}
 
-	public static void deleteTask(Project project, Task selectedTask) throws CommandFailedException
+	public static void deleteTask(Project project, ORefList selectionHierarchy, Task selectedTask) throws CommandFailedException
 	{
 		String[] buttons = {EAM.text("Button|Delete"), EAM.text("Button|Retain"), };
 		String[] confirmText = {EAM.text("This will delete any subtasks too. Are you sure you want to delete?")};
@@ -58,7 +58,7 @@ public class DeleteActivity extends ObjectsDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			deleteTaskTree(project, selectedTask);
+			deleteTaskTree(project, selectionHierarchy, selectedTask);
 		}
 		catch(Exception e)
 		{
@@ -71,9 +71,9 @@ public class DeleteActivity extends ObjectsDoer
 		}
 	}
 
-	public static void deleteTaskTree(Project project, Task selectedTask) throws Exception
+	public static void deleteTaskTree(Project project, ORefList selectionHierarchy, Task selectedTask) throws Exception
 	{
-		Command[] commandToDeleteTasks = createDeleteCommands(project, selectedTask); 
+		Command[] commandToDeleteTasks = createDeleteCommands(project, selectionHierarchy, selectedTask); 
 		executeDeleteCommands(project, commandToDeleteTasks);
 	}
 	
@@ -82,8 +82,10 @@ public class DeleteActivity extends ObjectsDoer
 		project.executeCommandsWithoutTransaction(commands);
 	}
 
-	private static Command[] createDeleteCommands(Project project, Task task) throws Exception
+	private static Command[] createDeleteCommands(Project project, ORefList selectionHierarchy, Task task) throws Exception
 	{
+		
+		//FIXME need to consider parent hierachy when creating commands.  first refactor dup code.  
 		Vector commandsToDeleteTasks = new Vector();
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, task));

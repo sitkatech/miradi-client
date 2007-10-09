@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -51,17 +52,17 @@ public class TestDeleteActivity extends EAMTestCase
 			project.executeCommand(addResource3);
 			
 			assertEquals("Parent doesn't have child?", 1, parentHasChild.getSubtaskCount());
-			transactionDeleteTask(project, leafChild);
+			transactionDeleteTask(project, parentHasChildRef, leafChild);
 			assertEquals("Didn't delete subtasks?", 0, parentHasChild.getSubtaskCount());
 			Undo.undo(project);
 			assertEquals("Didn't restore subtasks?", 1, parentHasChild.getSubtaskCount());
 			
-			transactionDeleteTask(project, parentNoChild);
+			transactionDeleteTask(project, parentNoChild.getRef(), parentNoChild);
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
 			Undo.undo(project);
 			assertEquals("Didn't restore activity?", 2, strategy.getActivityIds().size());
 			
-			transactionDeleteTask(project, parentHasChild);
+			transactionDeleteTask(project, parentHasChildRef, parentHasChild);
 			parentHasChild = null;
 		
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
@@ -77,12 +78,14 @@ public class TestDeleteActivity extends EAMTestCase
 		}
 	}
 
-	private void transactionDeleteTask(Project project, Task leafChild) throws Exception
+	private void transactionDeleteTask(Project project, ORef parentRef, Task leafChild) throws Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			DeleteActivity.deleteTaskTree(project, leafChild);
+			ORefList parentChildHierarchy = new ORefList();
+			parentChildHierarchy.add(parentRef);
+			DeleteActivity.deleteTaskTree(project, parentChildHierarchy, leafChild);
 		}
 		finally
 		{
