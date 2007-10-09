@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.umbrella;
 import java.text.ParseException;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -73,14 +72,14 @@ public class DeleteActivity extends ObjectsDoer
 
 	public static void deleteTaskTree(Project project, ORefList selectionHierarchy, Task selectedTask) throws Exception
 	{
-		Command[] commandToDeleteTasks = createDeleteCommands(project, selectionHierarchy, selectedTask); 
+		Vector commandToDeleteTasks = createDeleteCommands(project, selectionHierarchy, selectedTask); 
 		executeDeleteCommands(project, commandToDeleteTasks);
 		
 		if (! isOrphandTask(selectedTask))
 			return;
 		
 		Vector commandsToDeletTask = selectedTask.getDeleteSelfAndSubtasksCommands(project);
-		project.executeCommandsWithoutTransaction((Command[]) commandsToDeletTask.toArray(new Command[0]));
+		project.executeCommandsWithoutTransaction(commandsToDeletTask);
 	}
 	
 	private static boolean isOrphandTask(Task selectedTask) throws Exception
@@ -92,12 +91,12 @@ public class DeleteActivity extends ObjectsDoer
 		return true;
 	}
 
-	private static void executeDeleteCommands(Project project, Command[] commands) throws ParseException, CommandFailedException
+	private static void executeDeleteCommands(Project project, Vector commands) throws ParseException, CommandFailedException
 	{
 		project.executeCommandsWithoutTransaction(commands);
 	}
 
-	private static Command[] createDeleteCommands(Project project, ORefList selectionHierarchy, Task task) throws Exception
+	private static Vector createDeleteCommands(Project project, ORefList selectionHierarchy, Task task) throws Exception
 	{
 		
 		//FIXME need to consider parent hierachy when creating commands.  first refactor dup code.  
@@ -106,7 +105,7 @@ public class DeleteActivity extends ObjectsDoer
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, selectionHierarchy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForTaskIds(project, task));
 		
-		return (Command[])commandsToDeleteTasks.toArray(new Command[0]);
+		return commandsToDeleteTasks;
 	}
 	
 	private static Vector buildRemoveCommandsForActivityIds(Project project, ORefList selectionHierarchy, Task task) throws Exception
