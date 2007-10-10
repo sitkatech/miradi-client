@@ -12,6 +12,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
+import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsCalculator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -24,7 +25,6 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.conservationmeasures.eam.views.planning.doers.BudgetTotalsCalculator;
 
 public class Task extends BaseObject
 {
@@ -325,7 +325,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(objectManager.getProject());
+			PlanniningViewBudgetTotalsCalculator calculator = new PlanniningViewBudgetTotalsCalculator(objectManager.getProject());
 			double cost = calculator.getTaskCost((TaskId)getId());
 			return formateResults(cost);
 		}
@@ -340,7 +340,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(objectManager.getProject());
+			PlanniningViewBudgetTotalsCalculator calculator = new PlanniningViewBudgetTotalsCalculator(objectManager.getProject());
 			double subtaskTotalCost = calculator.getTotalTasksCost(getSubtaskIdList());
 			return formateResults(subtaskTotalCost);
 		}
