@@ -183,6 +183,7 @@ public class Actions
 		registerAction(new ActionModifyResource(mainWindow));
 		registerAction(new ActionDeleteResource(mainWindow));
 		registerAction(new ActionShareActivity(mainWindow));
+		registerAction(new ActionShareMethod(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));
