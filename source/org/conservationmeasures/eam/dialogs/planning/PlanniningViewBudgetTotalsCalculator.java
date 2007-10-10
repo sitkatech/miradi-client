@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -61,38 +60,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		ProjectResource resource = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId);
 		
 		return resource;
-	}
-	
-	public double getTotalIndicatorsCost(IdList idList) throws Exception
-	{
-		double totalIndicatorsCost = 0.0;
-		for (int i = 0; i < idList.size(); i++)
-			totalIndicatorsCost += getTotalIndicatorCost(new ORef(ObjectType.INDICATOR, idList.get(i)));
-		
-		return totalIndicatorsCost;
-	}
-	
-	public double getTotalIndicatorCost(ORef oRef) throws Exception
-	{
-		Indicator indicator = (Indicator)project.findObject(oRef.getObjectType(), oRef.getObjectId());
-		return getTotalTasksCost(indicator.getTaskIdList());
-	}
-	
-	public double getTotalStrategyCost(Factor factor) throws Exception
-	{
-		double totalStrategyCost = 0.0;
-		if (!factor.isStrategy())
-			return totalStrategyCost;
-		
-		Strategy strategy = (Strategy)factor;
-		IdList idList = strategy.getActivityIds();
-		for (int i = 0; i < idList.size(); i++)
-		{
-			Task task = (Task)project.findObject(ObjectType.TASK, idList.get(i));
-			totalStrategyCost += getTotalCost(task);	
-		}
-		
-		return totalStrategyCost;
 	}
 	
 	public double getTaskCost(TaskId taskId) throws Exception
@@ -156,8 +123,6 @@ public class PlanniningViewBudgetTotalsCalculator
 			}
 		}
 	}
-	
-	//TODO budget code - Refactor this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	private double computeTotalOfChildTasks(ORef parentRef, String tasksTag, DateRange dateRange) throws Exception
 	{
