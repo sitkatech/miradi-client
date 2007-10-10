@@ -7,7 +7,7 @@ public class ShareMethodDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		return true;
+		return false;
 	}
 
 	public void doIt() throws CommandFailedException
