@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.planning;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -173,27 +172,21 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalParentCost;
 	}
 
-	public double calculateTotalCost(ORef ref, DateRange dateRange)
+	public double calculateTotalCost(ORef ref, DateRange dateRange) throws Exception
 	{
-		try
-		{
-			if (ref.getObjectType() == ObjectType.INDICATOR)
-				return computeTotalOfChildTasks(ref, Indicator.TAG_TASK_IDS, dateRange);
-			
-			if (ref.getObjectType() == ObjectType.STRATEGY)
-				return computeTotalOfChildTasks(ref, Strategy.TAG_ACTIVITY_IDS, dateRange);
+		if (ref.getObjectType() == ObjectType.INDICATOR)
+			return computeTotalOfChildTasks(ref, Indicator.TAG_TASK_IDS, dateRange);
 
-			if (ref.getObjectType() == ObjectType.TASK)
-				return getTotalCost(ref, dateRange);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		if (ref.getObjectType() == ObjectType.STRATEGY)
+			return computeTotalOfChildTasks(ref, Strategy.TAG_ACTIVITY_IDS, dateRange);
+
+		if (ref.getObjectType() == ObjectType.TASK)
+			return getTotalCost(ref, dateRange);
+		
 		return  0.0;		
 	}
 	
-	public double calculateTotalCost(TreeTableNode node, DateRange dateRange)
+	public double calculateTotalCost(TreeTableNode node, DateRange dateRange) throws Exception
 	{
 		return calculateTotalCost(node.getObjectReference(), dateRange);
 	}
