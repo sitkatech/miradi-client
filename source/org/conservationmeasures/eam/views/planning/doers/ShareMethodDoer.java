@@ -1,7 +1,7 @@
 package org.conservationmeasures.eam.views.planning.doers;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.MethodPoolTablePanel;
+import org.conservationmeasures.eam.dialogs.ShareableMethodPoolTablePanel;
 import org.conservationmeasures.eam.dialogs.diagram.ShareSelectionDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -26,7 +26,7 @@ public class ShareMethodDoer extends AbstractTreeNodeCreateTaskDoer
 			return;
 		
 		ORef selectedRef = getSelectedRef();
-		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), EAM.text("Share Method"), new MethodPoolTablePanel(getProject(), selectedRef));
+		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), EAM.text("Share Method"), new ShareableMethodPoolTablePanel(getProject(), selectedRef));
 		listDialog.setVisible(true);
 		
 		appendSelectedActivity(selectedRef, (Task) listDialog.getSelectedObject());

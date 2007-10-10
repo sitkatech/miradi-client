@@ -4,9 +4,9 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
-public class MethodPoolTablePanel extends ObjectPoolTablePanel
+public class ShareableMethodPoolTablePanel extends ObjectPoolTablePanel
 {
-	public MethodPoolTablePanel(Project project, ORef parentRef)
+	public ShareableMethodPoolTablePanel(Project project, ORef parentRef)
 	{
 		super(project, ObjectType.TASK, new ShareableMethodPoolTableModel(project, parentRef));
 	}
