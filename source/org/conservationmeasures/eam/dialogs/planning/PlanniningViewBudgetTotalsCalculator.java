@@ -158,12 +158,6 @@ public class PlanniningViewBudgetTotalsCalculator
 	}
 	
 	//TODO budget code - Refactor this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-	
-	public double getTotalTaskCost(ORef taskRef, DateRange dateRange) throws Exception 
-	{
-		return getTotalCost(taskRef, dateRange);
-	}
 	
 	private double getTotalStrategyCost(ORef strategyRef, DateRange dateRange) throws Exception
 	{
@@ -201,7 +195,7 @@ public class PlanniningViewBudgetTotalsCalculator
 				return getTotalStrategyCost(ref, dateRange);
 
 			if (ref.getObjectType() == ObjectType.TASK)
-				return getTotalTaskCost(ref, dateRange);
+				return getTotalCost(ref, dateRange);
 		}
 		catch (Exception e)
 		{
