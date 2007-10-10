@@ -7,9 +7,6 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestORefList extends EAMTestCase
@@ -30,6 +27,24 @@ public class TestORefList extends EAMTestCase
 		
 		ORef gotObjRef = objRefList.get(0);
 		assertEquals("object references equal?", objectRef, gotObjRef);
+	}
+	
+	public void testORefListJsonConstructor()
+	{
+//TODO	This test cannot pass because ORefList(json) constructor does a optArray and we dont enforce the json
+//to contain refs only.  We can either enforce at the fieldTag level to make sure all tags end with ref
+//		IdList idList = new IdList();
+//		idList.add(new BaseId(10));
+//		idList.add(new BaseId(11));
+//		
+//		try
+//		{
+//			new ORefList(idList.toString());
+//			fail("should not be able to construct and orefList with wrong json");
+//		}
+//		catch(ParseException e)
+//		{
+//		}
 	}
 	
 	public void testORefListExtract()
