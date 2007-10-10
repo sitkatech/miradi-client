@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.views.diagram.doers;
+package org.conservationmeasures.eam.views.planning.doers;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.ObjectsDoer;
