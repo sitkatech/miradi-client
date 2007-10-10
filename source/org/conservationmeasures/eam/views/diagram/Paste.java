@@ -85,6 +85,9 @@ public class Paste extends LocationDoer
 		if (isPastingInSameDiagramAsCopiedFrom(list))
 			return AS_COPY_BUTTON;
 		
+		if (!isPasteInSameProject(list))
+			return AS_COPY_BUTTON;
+		
 		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Paste As...");
 		String[] body = {EAM.text("Do you want to paste full new copies of the factors, or share the existing factors? " +
@@ -100,9 +103,12 @@ public class Paste extends LocationDoer
 		ORef diagramObjectRefBeingPastedInto = getDiagramView().getDiagramPanel().getDiagramObject().getRef();
 		
 		boolean pasteInSameDiagram = diagramObjecRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);
-		boolean pasteInSameProject = list.getProjectFileName().equals(getProject().getFilename());
-		
-		return pasteInSameDiagram && pasteInSameProject;
+		return pasteInSameDiagram && isPasteInSameProject(list);
+	}
+
+	private boolean isPasteInSameProject(TransferableMiradiList list)
+	{
+		return list.getProjectFileName().equals(getProject().getFilename());
 	}
 	
 	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
