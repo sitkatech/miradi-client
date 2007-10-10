@@ -150,7 +150,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			taskRenderer.setClosedIcon(new TaskIcon());
 			taskRenderer.setOpenIcon(new TaskIcon());
 			taskRenderer.setLeafIcon(new TaskIcon());
-			taskRenderer.setFont(getItalicFont());
+			taskRenderer.setFont(getPlainFont());
 			
 			conceptualModelRenderer = new DefaultTreeCellRenderer();
 			conceptualModelRenderer.setClosedIcon(new ConceptualModelIcon());
@@ -207,10 +207,20 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		private TreeCellRenderer getTaskRenderer(Task task)
 		{
 			if(task.isActivity())
-				return activityRenderer;
+				return getRendererWithSetSharedTaskItalicFont(activityRenderer, task);
 			if(task.isMethod())
-				return methodRenderer;
+				return getRendererWithSetSharedTaskItalicFont(methodRenderer, task);
+			
 			return taskRenderer;
+		}
+		
+		private DefaultTreeCellRenderer getRendererWithSetSharedTaskItalicFont(DefaultTreeCellRenderer renderer, Task task)
+		{
+			renderer.setFont(getPlainFont());
+			if (task.isShared())
+				renderer.setFont(getItalicFont()); 
+		
+			return renderer;
 		}
 
 		protected DefaultTreeCellRenderer getStrategyRenderer(Factor factor)

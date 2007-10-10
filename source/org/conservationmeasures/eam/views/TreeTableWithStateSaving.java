@@ -75,6 +75,11 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		TreePath path = getTreeTableModel().getPathOfNode(ref.getObjectType(), ref.getObjectId());
 		tree.setSelectionPath(path);
 	}
+	
+	public Object getObjectForRow(int row) 
+	{
+		return treeTableModelAdapter.nodeForRow(row);
+	}
 
 	void updateTreeExpansion(ORefList expandedList)
 	{
@@ -171,7 +176,6 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		return objRefList;
 	}
 
-	
 	protected EAMTreeTableModelAdapter treeTableModelAdapter;
 
 	private boolean ignoreNotifications;

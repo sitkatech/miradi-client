@@ -183,6 +183,11 @@ public class Task extends BaseObject
 	{
 		return !hasReferrers();
 	}
+	
+	public boolean isShared()
+	{
+		return findObjectThatReferToUs().size() > 1;
+	}
 
 	public void addSubtaskId(BaseId subtaskId)
 	{
