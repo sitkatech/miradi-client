@@ -65,10 +65,10 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
 
 	public Object getValueAt(int row, int column)
 	{
-		Object rawTreeNode = adapter.nodeForRow(row);
+		Object rawTreeNode = getNodeForRow(row);
 		return getValueAt(rawTreeNode, column);
 	}
-	
+
 	public Object getValueAt(Object rawNode, int column)
 	{
 		try
@@ -85,6 +85,11 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
 		}
 	}
 	
+	public Object getNodeForRow(int row)
+	{
+		return adapter.nodeForRow(row);
+	}
+		
 	private Object getYearlyTotal(Object rawNode, int column) throws Exception
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
