@@ -63,12 +63,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		return resource;
 	}
 	
-	private Factor getFactor(ORef oRef)
-	{
-		return (Factor)project.findObject(oRef);
-	}
-
-	
 	public double getTotalIndicatorsCost(IdList idList) throws Exception
 	{
 		double totalIndicatorsCost = 0.0;
@@ -171,11 +165,12 @@ public class PlanniningViewBudgetTotalsCalculator
 		return getTotalCost(task, dateRange);
 	}
 	
-	private double getTotalStrategyCost(Factor factor, DateRange dateRange) throws Exception
+	private double getTotalStrategyCost(ORef strategyRef, DateRange dateRange) throws Exception
 	{
-		double totalStrategyCost = 0.0;
-		Strategy strategy = (Strategy)factor;
+
+		Strategy strategy = (Strategy) project.findObject(strategyRef);
 		ORefList activityRefs = strategy.getActivityRefs();
+		double totalStrategyCost = 0.0;
 		for (int i = 0; i < activityRefs.size(); ++i)
 		{
 			Task task = (Task)project.findObject(activityRefs.get(i));
@@ -212,7 +207,7 @@ public class PlanniningViewBudgetTotalsCalculator
 				return getTotalIndicatorCost(ref, dateRange);
 			
 			if (ref.getObjectType() == ObjectType.STRATEGY)
-				return getTotalStrategyCost(getFactor(ref), dateRange);
+				return getTotalStrategyCost(ref, dateRange);
 
 			if (ref.getObjectType() == ObjectType.TASK)
 				return getTotalTaskCost(new TaskId(ref.getObjectId().asInt()), dateRange);
