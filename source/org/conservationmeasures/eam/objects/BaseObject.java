@@ -100,11 +100,6 @@ abstract public class BaseObject
 		return ORef.createFromString(getData(tag));
 	}
 	
-	public ORefList getORefList(String tag) throws Exception
-	{
-		return new ORefList(getData(tag));
-	}
-	
 	public CodeList getCodeList(String tag) throws Exception
 	{
 		return new CodeList(getData(tag));

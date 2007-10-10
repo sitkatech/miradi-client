@@ -162,7 +162,8 @@ public class PlanniningViewBudgetTotalsCalculator
 	private double computeTotalOfChildTasks(ORef parentRef, String tasksTag, DateRange dateRange) throws Exception
 	{
 		BaseObject parentOfTasks = project.findObject(parentRef);
-		ORefList taskRefs = parentOfTasks.getORefList(tasksTag);
+		IdList taskIds = new IdList(parentOfTasks.getData(tasksTag));
+		ORefList taskRefs = new ORefList(Task.getObjectType(), taskIds);
 		double totalParentCost = 0.0;
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
