@@ -30,7 +30,7 @@ public class PlanningViewBudgetCalculator
 		combinedDataRange = DateRange.combine(startDateRange, endDateRange);
 	}
 	
-	public double getTotal(ORef ref)
+	public double getTotal(ORef ref) throws Exception
 	{
        return totalCalculator.calculateTotalCost(ref, combinedDataRange);
 	}

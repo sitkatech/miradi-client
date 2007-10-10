@@ -71,13 +71,21 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
 	
 	public Object getValueAt(Object rawNode, int column)
 	{
-		if (isCostColumn(column))
-			return getCost(rawNode);
+		try
+		{
+			if (isCostColumn(column))
+				return getCost(rawNode);
 		
-		return getYearlyTotal(rawNode, column);
+			return getYearlyTotal(rawNode, column);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return EAM.text("[ERROR]");
+		}
 	}
 	
-	private Object getYearlyTotal(Object rawNode, int column)
+	private Object getYearlyTotal(Object rawNode, int column) throws Exception
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
 		DateRange dateRange = (DateRange)columnNames.get(column);
@@ -89,7 +97,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
 		return  currencyFormatter.format(yearlyTotal);
 	}
 
-	private Object getCost(Object rawNode)
+	private Object getCost(Object rawNode) throws Exception
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
 		double totalCost = totalCalculator.calculateTotalCost(node, combinedDataRange);
