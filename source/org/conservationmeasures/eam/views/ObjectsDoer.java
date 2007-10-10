@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -73,10 +74,16 @@ abstract public class ObjectsDoer extends ViewDoer
 	
 	public BaseId getSelectedId()
 	{
+		return getSelectedRef().getObjectId();
+	}
+	
+	public ORef getSelectedRef()
+	{
 		BaseObject selected = getObjects()[0];
 		if(selected == null)
-			return BaseId.INVALID;
-		return selected.getId();
+			return ORef.INVALID;
+		
+		return selected.getRef();
 	}
 	
 	public void clearSelection()
