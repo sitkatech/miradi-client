@@ -398,7 +398,23 @@ public class Task extends BaseObject
 		return OBJECT_NAME;
 	}
 	
-
+	public static String getTaskIdsTag(BaseObject container) throws Exception
+	{
+		int type = container.getType();
+		switch(type)
+		{
+			case ObjectType.TASK:
+				return Task.TAG_SUBTASK_IDS;
+				
+			case ObjectType.STRATEGY:
+				return Strategy.TAG_ACTIVITY_IDS;
+				
+			case ObjectType.INDICATOR:
+				return Indicator.TAG_TASK_IDS;
+		}
+		
+		throw new Exception("getTaskIdsTag called for non-task container type " + type);
+	}
 
 	public void clear()
 	{

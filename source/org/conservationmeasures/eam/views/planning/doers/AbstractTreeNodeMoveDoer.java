@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -76,7 +75,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 	
 			ORef parentRef = getSelectedParentRef(task);
 			BaseObject parent = getProject().findObject(parentRef);
-			String tag = getTaskIdsTag(parent);
+			String tag = Task.getTaskIdsTag(parent);
 			CommandSetObjectData cmd = new CommandSetObjectData(parent.getRef(), tag, newSiblings.toString());
 			getProject().executeCommand(cmd);
 		}
@@ -86,22 +85,6 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 			EAM.errorDialog("Error: " + e.getMessage());
 		}
 		
-	}
-
-	public static String getTaskIdsTag(BaseObject container) throws Exception
-	{
-		int type = container.getType();
-		switch(type)
-		{
-			case ObjectType.TASK:
-				return Task.TAG_SUBTASK_IDS;
-			case ObjectType.STRATEGY:
-				return Strategy.TAG_ACTIVITY_IDS;
-			case ObjectType.INDICATOR:
-				return Indicator.TAG_TASK_IDS;
-		}
-		
-		throw new Exception("getTaskIdsTag called for non-task container type " + type);
 	}
 
 	Task getSingleSelectedTask()
@@ -154,7 +137,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 
 	private IdList getCurrentTaskList(BaseObject parent) throws Exception, ParseException
 	{
-		String parentTasksTag = getTaskIdsTag(parent);
+		String parentTasksTag = Task.getTaskIdsTag(parent);
 		IdList siblings = new IdList(parent.getData(parentTasksTag));
 		return siblings;
 	}
