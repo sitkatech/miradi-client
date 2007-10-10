@@ -80,10 +80,9 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalTaskCost;
 	}
 
-	public double getTotalCost(ORef taskRef, DateRange dateRange) throws Exception
+	public double getTotalCost(Task task, DateRange dateRange) throws Exception
 	{
 		totalCost = 0.0;
-		Task task = (Task) project.findObject(taskRef);
 		calculateTotalAssignment(task, dateRange);
 		return totalCost;
 	}
@@ -132,12 +131,21 @@ public class PlanniningViewBudgetTotalsCalculator
 		double totalParentCost = 0.0;
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
-			totalParentCost += getTotalCost(taskRefs.get(i), dateRange);	
+			Task task = (Task) project.findObject(taskRefs.get(i));
+			double taskTotalCost = getTotalCost(task, dateRange);
+			double allocationFraction = getAllocationFraction(parentRef, task);
+			totalParentCost += (taskTotalCost * allocationFraction);	
 		}
 		
 		return totalParentCost;
 	}
 
+	private double getAllocationFraction(ORef parentRef, Task task)
+	{
+		ORefList allReferrers = task.findObjectsThatReferToUs(parentRef.getObjectType());
+		return (1.0 / allReferrers.size());
+	}
+	
 	public double calculateTotalCost(ORef ref, DateRange dateRange) throws Exception
 	{
 		if (ref.getObjectType() == ObjectType.INDICATOR)
@@ -147,7 +155,7 @@ public class PlanniningViewBudgetTotalsCalculator
 			return computeTotalOfChildTasks(ref, Strategy.TAG_ACTIVITY_IDS, dateRange);
 
 		if (ref.getObjectType() == ObjectType.TASK)
-			return getTotalCost(ref, dateRange);
+			return getTotalCost((Task)project.findObject(ref), dateRange);
 		
 		return  0.0;		
 	}
