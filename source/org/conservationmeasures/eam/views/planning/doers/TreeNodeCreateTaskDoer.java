@@ -99,14 +99,6 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		return userChoice.equals(ConstantButtonNames.CREATE);
 	}
 	
-	boolean canOwnTask(BaseObject object)
-	{
-		if(object.getType() == Task.getObjectType())
-			return true;
-		
-		return false;
-	}
-	
 	private boolean childTaskWouldBeVisible(int parentType) throws Exception
 	{
 		ViewData viewData = getProject().getViewData(PlanningView.getViewName());

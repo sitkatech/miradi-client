@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 
 public class TreeNodeCreateActivityDoer extends TreeNodeCreateTaskDoer
 {
-	boolean canOwnTask(BaseObject object)
+	protected boolean canOwnTask(BaseObject object)
 	{
 		if(object.getType() == Strategy.getObjectType())
 			return true;
