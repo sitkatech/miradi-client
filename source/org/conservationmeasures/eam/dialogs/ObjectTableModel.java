@@ -100,15 +100,21 @@ abstract public class ObjectTableModel extends AbstractTableModel
 
 	public void rowsWereAddedOrRemoved()
 	{
+		//NOTE: Assumes one row at a time insert or delete
 		IdList availableIds = getLatestIdListFromProject();
 		IdList newList = new IdList();
-		for(int i = 0; i < getRowObjectIds().size(); ++i)
+		int deletedRowIndex = 0;
+		for(int row = 0; row < getRowObjectIds().size(); ++row)
 		{
-			BaseId thisId = getRowObjectIds().get(i);
+			BaseId thisId = getRowObjectIds().get(row);
 			if(availableIds.contains(thisId))
 			{
 				newList.add(thisId);
 				availableIds.removeId(thisId);
+			}
+			else
+			{
+				deletedRowIndex = row;
 			}
 		}
 		for(int i = 0; i < availableIds.size(); ++i)
@@ -117,17 +123,12 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		}
 		
 		int priorCount = getRowObjectIds().size();
-		
-		//NOTE: Assumes one row at a time insert or delete
-		if (newList.size() == priorCount) 
-			return;
-		
 		setRowObjectIds(newList);
 		
 		if (newList.size() > priorCount)
 			fireTableRowsInserted(newList.size()-1, newList.size()-1);
-		else
-			fireTableDataChanged();
+		else if (newList.size() < priorCount)
+			fireTableRowsDeleted(deletedRowIndex, deletedRowIndex);
 	}
 
 	public String getColumnTag(int column)
