@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -30,21 +29,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		project = projectToUse;
 	}
 	
-	public double getTotalUnits(IdList assignmentIdList, DateRange dateRange) throws Exception
-	{
-		double totalDateRangeUnits = 0.0;
-		for (int i = 0 ; i < assignmentIdList.size(); i++)
-			totalDateRangeUnits += getTotalUnits(assignmentIdList.get(i), dateRange);
-		
-		return totalDateRangeUnits;
-	}
-	
-	public double getTotalUnits(BaseId assignmentId, DateRange dateRange) throws Exception
-	{
-		Assignment assignment = (Assignment)project.findObject(ObjectType.ASSIGNMENT, assignmentId);
-		return getTotalUnits(assignment, dateRange);
-	}
-	
 	public double getTotalUnits(Assignment assignment, DateRange dateRange) throws Exception
 	{
 		DateRangeEffortList effortList = getDateRangeEffortList(assignment);
@@ -55,21 +39,6 @@ public class PlanniningViewBudgetTotalsCalculator
 	{
 		String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
 		return new DateRangeEffortList(effortListAsString);
-	}
-	
-	public double getTotalCost(IdList assignmentIds, DateRange dateRange) throws Exception
-	{
-		double totalDateRangeCost = 0.0;
-		for (int i = 0; i < assignmentIds.size(); i++)
-			totalDateRangeCost += getTotalCost(assignmentIds.get(i), dateRange);
-		
-		return totalDateRangeCost;
-	}
-	
-	public double getTotalCost(BaseId assignmentId, DateRange dateRange) throws Exception
-	{
-		Assignment assignment = (Assignment)project.findObject(ObjectType.ASSIGNMENT, assignmentId);
-		return getTotalCost(assignment, dateRange);
 	}
 	
 	public double getTotalCost(Assignment assignment, DateRange dateRange) throws Exception
@@ -93,34 +62,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		return resource;
 	}
 	
-	public double calculateTotalCost(TreeTableNode node)
-	{
-		try
-		{
-			ORef oRef = node.getObjectReference();
-			int type = node.getObjectReference().getObjectType();
-
-			if (type == ObjectType.INDICATOR)
-				return getTotalIndicatorCost(oRef);
-			
-			if (Factor.isFactor(type))
-				return getTotalFactorCost(getFactor(oRef));
-
-			if (oRef.getObjectType() == ObjectType.TASK)
-				return getTotalTaskCost(new TaskId(oRef.getObjectId().asInt()));
-			
-			if (oRef.getObjectType() == ObjectType.FAKE)
-				return getTotalFakeCost(node);				
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		return  0.0;
-	}
-	
-	
-
 	private Factor getFactor(ORef oRef)
 	{
 		return (Factor)project.findObject(oRef.getObjectType(), oRef.getObjectId());
@@ -142,14 +83,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		return getTotalTasksCost(indicator.getTaskIdList());
 	}
 	
-	public double getTotalFactorCost(Factor factor) throws Exception
-	{
-		if (factor.getIndicators().size() > 0)
-			return getIndicatorTotal(factor);
-		
-		return getTotalStrategyCost(factor);
-	}
-	
 	public double getTotalStrategyCost(Factor factor) throws Exception
 	{
 		double totalStrategyCost = 0.0;
@@ -167,19 +100,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalStrategyCost;
 	}
 	
-	private double getIndicatorTotal(Factor factor) throws Exception
-	{
-		double totalIndicatorCost = 0.0;
-		IdList idList = factor.getIndicators();
-		for (int i = 0; i < idList.size(); i++)
-		{
-			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, idList.get(i));
-			IdList taskIds = indicator.getTaskIdList();
-			totalIndicatorCost += getTotalTasksCost(taskIds);
-		}
-		return totalIndicatorCost;
-	}
-
 	public double getTaskCost(TaskId taskId) throws Exception
 	{
 		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
@@ -198,12 +118,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalTaskCost;
 	}
 
-	public double getTotalTaskCost(TaskId taskId) throws Exception 
-	{
-		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
-		return getTotalCost(task);
-	}
-	
 	public double getTotalCost(Task task, DateRange dateRange) throws Exception
 	{
 		totalCost = 0.0;
@@ -216,78 +130,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		totalCost = 0.0;
 		calculateTotalAssignment(task);
 		return totalCost;
-	}
-	
-	public double getTotalFakeCost(TreeTableNode node) throws Exception
-	{
-		if (node.getChildCount() <= 0)
-			return 0.0;
-		
-		TreeTableNode child = node.getChild(0);
-		if (child == null)
-			return 0.0;
-		
-		int type = child.getObjectReference().getObjectType();
-		if (Factor.isFactor(type))
-			return getFactorTotal(node);
-		
-		if (type == ObjectType.INDICATOR)
-			return getIndicatorTotal(node);
-		
-		return 0.0;
-	}
-	
-	private double getIndicatorTotal(TreeTableNode node) throws Exception
-	{
-		ORef nodeRef = node.getObjectReference();
-		if(nodeRef.equals(EAM.WORKPLAN_STRATEGY_ROOT))
-			return getStrategiesChildrenTotal(node);
-		else if(nodeRef.equals(EAM.WORKPLAN_MONITORING_ROOT))
-			return getIndicatorTotals(node);
-
-		throw new RuntimeException("Unexpected tree node root: " + nodeRef);
-	}
-
-	private double getIndicatorTotals(TreeTableNode node) throws Exception
-	{
-		IdList indicatorIds = project.getIndicatorPool().getIdList();
-		return getTotalIndicatorsCost(indicatorIds); 
-	}
-
-	private double getFactorTotal(TreeTableNode node) throws Exception
-	{
-		ORef nodeRef = node.getObjectReference();
-		if(nodeRef.equals(EAM.WORKPLAN_STRATEGY_ROOT))
-			return getStrategiesChildrenTotal(node);
-		else if(nodeRef.equals(EAM.WORKPLAN_MONITORING_ROOT))
-			return getFactorTotals(node);
-
-		throw new RuntimeException("Unexpected tree node root: " + nodeRef);
-	}
-	
-	private double getStrategiesChildrenTotal(TreeTableNode node) throws Exception
-	{
-		double childrenTotal = 0.0;
-		for (int i = 0; i < node.getChildCount(); i++)
-		{
-			BaseObject object = node.getChild(i).getObject();
-			Strategy strategy = (Strategy)object;
-			childrenTotal += getTotalStrategyCost(strategy);
-		}
-		return childrenTotal;
-	}
-
-	private double getFactorTotals(TreeTableNode node) throws Exception
-	{
-		double childrenTotal = 0.0;
-		for (int i = 0; i < node.getChildCount(); i++)
-		{
-			ORef ref = node.getChild(i).getObjectReference();
-			IdList indicatorIds = new IdList(project.getObjectData(ref.getObjectType(), ref.getObjectId(), Factor.TAG_INDICATOR_IDS));
-			
-			childrenTotal += getTotalIndicatorsCost(indicatorIds);
-		}
-		return childrenTotal;
 	}
 	
 	private void calculateTotalAssignment(Task task) throws Exception
@@ -416,10 +258,7 @@ public class PlanniningViewBudgetTotalsCalculator
 			}
 		}
 	}
-
-	
 	
 	double totalCost;
 	private Project project;
-
 }
