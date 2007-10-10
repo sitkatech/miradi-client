@@ -175,10 +175,10 @@ public class PlanniningViewBudgetTotalsCalculator
 	{
 		double totalStrategyCost = 0.0;
 		Strategy strategy = (Strategy)factor;
-		IdList idList = strategy.getActivityIds();
-		for (int i = 0; i < idList.size(); i++)
+		ORefList activityRefs = strategy.getActivityRefs();
+		for (int i = 0; i < activityRefs.size(); ++i)
 		{
-			Task task = (Task)project.findObject(ObjectType.TASK, idList.get(i));
+			Task task = (Task)project.findObject(activityRefs.get(i));
 			totalStrategyCost += getTotalCost(task, dateRange);	
 		}
 		
