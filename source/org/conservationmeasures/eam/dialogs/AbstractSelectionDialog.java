@@ -25,9 +25,9 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.martus.swing.Utilities;
 
-abstract public class AbstractSelectionDlg extends EAMDialog implements ListSelectionListener
+abstract public class AbstractSelectionDialog extends EAMDialog implements ListSelectionListener
 {
-	public AbstractSelectionDlg(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
+	public AbstractSelectionDialog(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{
 		super(mainWindow);
 		list = poolTable;

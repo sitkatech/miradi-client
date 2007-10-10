@@ -3,7 +3,7 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class AnnotationSelectionDlg extends AbstractSelectionDlg
+public class AnnotationSelectionDlg extends AbstractSelectionDialog
 {
 	public AnnotationSelectionDlg(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{

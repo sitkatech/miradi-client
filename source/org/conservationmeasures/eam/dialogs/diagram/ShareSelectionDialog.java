@@ -1,11 +1,11 @@
 package org.conservationmeasures.eam.dialogs.diagram;
 
-import org.conservationmeasures.eam.dialogs.AbstractSelectionDlg;
+import org.conservationmeasures.eam.dialogs.AbstractSelectionDialog;
 import org.conservationmeasures.eam.dialogs.ObjectTablePanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ShareSelectionDialog extends AbstractSelectionDlg
+public class ShareSelectionDialog extends AbstractSelectionDialog
 {
 	public ShareSelectionDialog(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{
