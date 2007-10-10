@@ -83,7 +83,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 			project.executeCommand(create);
 			BaseId createdId = create.getCreatedId();
 
-			String containerTag = AbstractTreeNodeMoveDoer.getTaskIdsTag(parent);
+			String containerTag = Task.getTaskIdsTag(parent);
 			CommandSetObjectData addChildCommand = CommandSetObjectData.createAppendIdCommand(parent, containerTag, createdId);
 			project.executeCommand(addChildCommand);
 			
