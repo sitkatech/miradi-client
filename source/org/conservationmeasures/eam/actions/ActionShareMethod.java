@@ -17,6 +17,6 @@ public class ActionShareMethod extends MainWindowAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Share an existing Method into this Strategy");
+		return EAM.text("TT|Share an existing Method into this Indicator");
 	}
 }
