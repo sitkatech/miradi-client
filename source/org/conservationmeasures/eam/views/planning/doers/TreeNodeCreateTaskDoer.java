@@ -30,7 +30,7 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.planning.RowManager;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-public class TreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
+public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 {
 	public boolean isAvailable()
 	{
