@@ -65,7 +65,7 @@ public class PlanniningViewBudgetTotalsCalculator
 	
 	private Factor getFactor(ORef oRef)
 	{
-		return (Factor)project.findObject(oRef.getObjectType(), oRef.getObjectId());
+		return (Factor)project.findObject(oRef);
 	}
 
 	
