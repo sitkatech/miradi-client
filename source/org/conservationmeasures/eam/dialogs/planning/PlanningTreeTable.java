@@ -19,6 +19,8 @@ import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
+import org.conservationmeasures.eam.views.TreeTableWithIcons;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 
 public class PlanningTreeTable extends TreeTableWithStateSaving
@@ -72,7 +74,7 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 		}
 	}
 	
-	protected static class CustomRenderer extends DefaultTableCellRenderer
+	protected class CustomRenderer extends DefaultTableCellRenderer
 	{
 		public CustomRenderer(TreeTableCellRenderer treeToUse, Project projectToUse)
 		{
@@ -91,12 +93,25 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 			if (model.getColumnTag(column).equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 				setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 			
+			italicizeSharedTasks((TreeTableNode) getObjectForRow(row));
 			setGrid();
 			
 			if (isSelected)
 				setBackground(table.getSelectionBackground());
 			
 			return component;
+		}
+
+		private void italicizeSharedTasks(TreeTableNode node)
+		{
+			if (node.getType() != Task.getObjectType())
+				return;
+			
+			Task task = (Task) node.getObject();
+			if (!task.isShared())
+				return;
+			
+			setFont(TreeTableWithIcons.Renderer.getItalicFont());
 		}
 
 		private void setGrid()
