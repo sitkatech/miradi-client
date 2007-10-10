@@ -1,12 +1,16 @@
 package org.conservationmeasures.eam.views.planning.doers;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.ObjectsDoer;
+import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Indicator;
 
-public class ShareMethodDoer extends ObjectsDoer
-{
-	public boolean isAvailable()
+public class ShareMethodDoer extends AbstractTreeNodeCreateTaskDoer
+{	
+	protected boolean canOwnTask(BaseObject object)
 	{
+		if(object.getType() == Indicator.getObjectType())
+			return true;
+		
 		return false;
 	}
 
