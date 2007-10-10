@@ -171,12 +171,9 @@ public class PlanniningViewBudgetTotalsCalculator
 		return getTotalCost(task, dateRange);
 	}
 	
-	public double getTotalStrategyCost(Factor factor, DateRange dateRange) throws Exception
+	private double getTotalStrategyCost(Factor factor, DateRange dateRange) throws Exception
 	{
 		double totalStrategyCost = 0.0;
-		if (!factor.isStrategy())
-			return totalStrategyCost;
-		
 		Strategy strategy = (Strategy)factor;
 		IdList idList = strategy.getActivityIds();
 		for (int i = 0; i < idList.size(); i++)
