@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.Factor;
@@ -187,12 +188,13 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalStrategyCost;
 	}
 
-	public double getTotalTasksCost(IdList taskIds, DateRange dateRange) throws Exception
+	public double getTotalTasksCost(Indicator indicator, DateRange dateRange) throws Exception
 	{
+		ORefList taskRefs = indicator.getTaskRefs();
 		double totalTaskCost = 0.0;
-		for (int i = 0; i < taskIds.size(); i++)
+		for (int i = 0; i < taskRefs.size(); i++)
 		{
-			Task task = (Task)project.findObject(ObjectType.TASK, taskIds.get(i));
+			Task task = (Task)project.findObject(taskRefs.get(i));
 			totalTaskCost += getTotalCost(task, dateRange);
 		}
 		return totalTaskCost;
@@ -202,7 +204,7 @@ public class PlanniningViewBudgetTotalsCalculator
 	public double getTotalIndicatorCost(ORef oRef, DateRange dateRange) throws Exception
 	{
 		Indicator indicator = (Indicator)project.findObject(oRef.getObjectType(), oRef.getObjectId());
-		return getTotalTasksCost(indicator.getTaskIdList(), dateRange);
+		return getTotalTasksCost(indicator, dateRange);
 	}
 	
 	public double calculateTotalCost(ORef ref, DateRange dateRange)

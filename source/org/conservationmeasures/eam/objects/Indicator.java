@@ -67,6 +67,11 @@ public class Indicator extends BaseObject
 		return taskIds.getIdList().createClone();
 	}
 	
+	public ORefList getTaskRefs()
+	{
+		return new ORefList(Task.getObjectType(), getTaskIdList());
+	}
+	
 	public void addTaskId(BaseId taskId)
 	{
 		taskIds.add(taskId);
