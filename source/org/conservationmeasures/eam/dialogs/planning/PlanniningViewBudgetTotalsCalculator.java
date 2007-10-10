@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -159,29 +160,17 @@ public class PlanniningViewBudgetTotalsCalculator
 	
 	//TODO budget code - Refactor this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
-	private double getTotalStrategyCost(ORef strategyRef, DateRange dateRange) throws Exception
+	private double computeTotalOfChildTasks(ORef parentRef, String tasksTag, DateRange dateRange) throws Exception
 	{
-		Strategy strategy = (Strategy) project.findObject(strategyRef);
-		ORefList activityRefs = strategy.getActivityRefs();
-		double totalStrategyCost = 0.0;
-		for (int i = 0; i < activityRefs.size(); ++i)
+		BaseObject parentOfTasks = project.findObject(parentRef);
+		ORefList taskRefs = parentOfTasks.getORefList(tasksTag);
+		double totalParentCost = 0.0;
+		for (int i = 0; i < taskRefs.size(); ++i)
 		{
-			totalStrategyCost += getTotalCost(activityRefs.get(i), dateRange);	
+			totalParentCost += getTotalCost(taskRefs.get(i), dateRange);	
 		}
 		
-		return totalStrategyCost;
-	}
-
-	private double getTotalIndicatorCost(ORef indicatorRef, DateRange dateRange) throws Exception
-	{
-		Indicator indicator = (Indicator)project.findObject(indicatorRef);
-		ORefList taskRefs = indicator.getTaskRefs();
-		double totalTaskCost = 0.0;
-		for (int i = 0; i < taskRefs.size(); i++)
-		{
-			totalTaskCost += getTotalCost(taskRefs.get(i), dateRange);
-		}
-		return totalTaskCost;
+		return totalParentCost;
 	}
 
 	public double calculateTotalCost(ORef ref, DateRange dateRange)
@@ -189,10 +178,10 @@ public class PlanniningViewBudgetTotalsCalculator
 		try
 		{
 			if (ref.getObjectType() == ObjectType.INDICATOR)
-				return getTotalIndicatorCost(ref, dateRange);
+				return computeTotalOfChildTasks(ref, Indicator.TAG_TASK_IDS, dateRange);
 			
 			if (ref.getObjectType() == ObjectType.STRATEGY)
-				return getTotalStrategyCost(ref, dateRange);
+				return computeTotalOfChildTasks(ref, Strategy.TAG_ACTIVITY_IDS, dateRange);
 
 			if (ref.getObjectType() == ObjectType.TASK)
 				return getTotalCost(ref, dateRange);
