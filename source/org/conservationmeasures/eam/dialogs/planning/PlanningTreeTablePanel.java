@@ -18,6 +18,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
+import org.conservationmeasures.eam.actions.ActionShareMethod;
 import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
 import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
 import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
@@ -103,6 +104,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		return new Class[] {
 			ActionTreeCreateActivity.class,
 			ActionTreeCreateMethod.class,
+			ActionShareMethod.class,
 			ActionTreeCreateTask.class,
 			ActionDeletePlanningViewTreeNode.class,
 			ActionTreeNodeUp.class,
