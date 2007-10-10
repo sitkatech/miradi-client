@@ -3,7 +3,7 @@ package org.conservationmeasures.eam.views.diagram.doers;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.dialogs.ActivityPoolTablePanel;
-import org.conservationmeasures.eam.dialogs.diagram.ActivityShareSelectionDiaglog;
+import org.conservationmeasures.eam.dialogs.diagram.ShareSelectionDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -31,7 +31,7 @@ public class ShareActivityDoer extends LocationDoer
 			return;
 		
 		DiagramFactor diagramFactor = selected.getDiagramFactor();
-		ActivityShareSelectionDiaglog listDialog = new ActivityShareSelectionDiaglog(getMainWindow(), EAM.text("Share Activity"), new ActivityPoolTablePanel(getProject(), diagramFactor.getWrappedORef()));
+		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), EAM.text("Share Activity"), new ActivityPoolTablePanel(getProject(), diagramFactor.getWrappedORef()));
 		listDialog.setVisible(true);
 		
 		appendSelectedActivity(diagramFactor, (Task) listDialog.getSelectedObject());

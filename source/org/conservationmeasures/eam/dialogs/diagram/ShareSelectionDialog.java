@@ -5,9 +5,9 @@ import org.conservationmeasures.eam.dialogs.ObjectTablePanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActivityShareSelectionDiaglog extends AbstractSelectionDlg
+public class ShareSelectionDialog extends AbstractSelectionDlg
 {
-	public ActivityShareSelectionDiaglog(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
+	public ShareSelectionDialog(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{
 		super(mainWindow, title, poolTable);
 	}
