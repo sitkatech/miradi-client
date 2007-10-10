@@ -261,6 +261,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		}
 	}
 	
-	double totalCost;
+	private double totalCost;
 	private Project project;
 }
