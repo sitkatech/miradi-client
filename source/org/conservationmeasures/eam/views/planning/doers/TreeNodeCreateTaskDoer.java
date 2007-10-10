@@ -22,37 +22,12 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.ConstantButtonNames;
-import org.conservationmeasures.eam.views.planning.PlanningView;
-import org.conservationmeasures.eam.views.planning.RowManager;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 {
-	public boolean isAvailable()
-	{
-		try
-		{
-			BaseObject selected = getSingleSelectedObject();
-			if(selected == null)
-				return false;
-			if(!canOwnTask(selected))
-				return false;
-			if(!childTaskWouldBeVisible(selected.getType()))
-				return false;
-			
-			return true;
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
-	}
-
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
@@ -97,13 +72,6 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		
 		String userChoice = EAM.choiceDialog(title, body, buttons);
 		return userChoice.equals(ConstantButtonNames.CREATE);
-	}
-	
-	private boolean childTaskWouldBeVisible(int parentType) throws Exception
-	{
-		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
-		CodeList visibleRowCodes = RowManager.getVisibleRowCodes(viewData);
-		return (visibleRowCodes.contains(Task.getChildTaskTypeCode(parentType)));
 	}
 	
 	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
