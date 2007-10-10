@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
-public class ActivityPoolTablePanel extends ObjectPoolTablePanel
+public class ShareableActivityPoolTablePanel extends ObjectPoolTablePanel
 {
-	public ActivityPoolTablePanel(Project project, ORef parentRef)
+	public ShareableActivityPoolTablePanel(Project project, ORef parentRef)
 	{
 		super(project, ObjectType.TASK, new ShareableActivityPoolTableModel(project, parentRef));
 	}
