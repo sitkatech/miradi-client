@@ -92,7 +92,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		return customFont;
 	}
 
-	protected static class Renderer extends DefaultTreeCellRenderer
+	public static class Renderer extends DefaultTreeCellRenderer
 	{		
 		public Renderer()
 		{

@@ -6,8 +6,12 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.views.TreeTableNode;
+import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
 
 public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractRightAlignedTable
@@ -29,5 +33,19 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractRig
 			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 		
 		return AppPreferences.BUDGET_TABLE_BACKGROUND;
+	}
+	
+	protected Font getRowFont(int row)
+	{
+		PlanningViewBudgetAnnualTotalTableModel model = (PlanningViewBudgetAnnualTotalTableModel) getModel();
+		TreeTableNode node = (TreeTableNode) model.getNodeForRow(row);
+		if (node.getType() != Task.getObjectType())
+			return TreeTableWithIcons.Renderer.getPlainFont();
+		
+		Task task = (Task) node.getObject();
+		if (!task.isShared())
+			return TreeTableWithIcons.Renderer.getPlainFont();
+		
+		return TreeTableWithIcons.Renderer.getItalicFont();
 	}
 }

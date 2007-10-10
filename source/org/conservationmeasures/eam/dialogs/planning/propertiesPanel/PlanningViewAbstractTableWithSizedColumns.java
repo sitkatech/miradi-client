@@ -7,12 +7,15 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
+
+import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
 abstract public class PlanningViewAbstractTableWithSizedColumns extends PlanningViewAbstractTable
 {
@@ -53,6 +56,11 @@ abstract public class PlanningViewAbstractTableWithSizedColumns extends Planning
 		return getBackground();
 	}
 	
+	protected Font getRowFont(int row)
+	{
+		return TreeTableWithIcons.Renderer.getPlainFont();
+	}
+	
 	protected Color getForegroundColor(int row, int column)
 	{
 		if(isCellEditable(row, column))
@@ -75,6 +83,7 @@ abstract public class PlanningViewAbstractTableWithSizedColumns extends Planning
 				setForeground(getForegroundColor(row, column));
 				int modelColumn = table.convertColumnIndexToModel(column);
 				setBackground(getColumnBackGroundColor(table.getColumnCount(), modelColumn));
+				setFont(getRowFont(row));
 			}
 			setHorizontalAlignment(getColumnAlignment());
 			
