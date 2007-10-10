@@ -167,7 +167,6 @@ public class PlanniningViewBudgetTotalsCalculator
 	
 	private double getTotalStrategyCost(ORef strategyRef, DateRange dateRange) throws Exception
 	{
-
 		Strategy strategy = (Strategy) project.findObject(strategyRef);
 		ORefList activityRefs = strategy.getActivityRefs();
 		double totalStrategyCost = 0.0;
@@ -180,8 +179,9 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalStrategyCost;
 	}
 
-	public double getTotalTasksCost(Indicator indicator, DateRange dateRange) throws Exception
+	private double getTotalIndicatorCost(ORef indicatorRef, DateRange dateRange) throws Exception
 	{
+		Indicator indicator = (Indicator)project.findObject(indicatorRef);
 		ORefList taskRefs = indicator.getTaskRefs();
 		double totalTaskCost = 0.0;
 		for (int i = 0; i < taskRefs.size(); i++)
@@ -192,13 +192,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalTaskCost;
 	}
 
-	
-	public double getTotalIndicatorCost(ORef oRef, DateRange dateRange) throws Exception
-	{
-		Indicator indicator = (Indicator)project.findObject(oRef.getObjectType(), oRef.getObjectId());
-		return getTotalTasksCost(indicator, dateRange);
-	}
-	
 	public double calculateTotalCost(ORef ref, DateRange dateRange)
 	{
 		try
