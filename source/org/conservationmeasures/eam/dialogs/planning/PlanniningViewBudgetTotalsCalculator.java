@@ -113,9 +113,10 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalTaskCost;
 	}
 
-	public double getTotalCost(Task task, DateRange dateRange) throws Exception
+	public double getTotalCost(ORef taskRef, DateRange dateRange) throws Exception
 	{
 		totalCost = 0.0;
+		Task task = (Task) project.findObject(taskRef);
 		calculateTotalAssignment(task, dateRange);
 		return totalCost;
 	}
@@ -161,8 +162,7 @@ public class PlanniningViewBudgetTotalsCalculator
 	
 	public double getTotalTaskCost(ORef taskRef, DateRange dateRange) throws Exception 
 	{
-		Task task = (Task)project.findObject(taskRef);
-		return getTotalCost(task, dateRange);
+		return getTotalCost(taskRef, dateRange);
 	}
 	
 	private double getTotalStrategyCost(ORef strategyRef, DateRange dateRange) throws Exception
@@ -172,8 +172,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		double totalStrategyCost = 0.0;
 		for (int i = 0; i < activityRefs.size(); ++i)
 		{
-			Task task = (Task)project.findObject(activityRefs.get(i));
-			totalStrategyCost += getTotalCost(task, dateRange);	
+			totalStrategyCost += getTotalCost(activityRefs.get(i), dateRange);	
 		}
 		
 		return totalStrategyCost;
@@ -186,8 +185,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		double totalTaskCost = 0.0;
 		for (int i = 0; i < taskRefs.size(); i++)
 		{
-			Task task = (Task)project.findObject(taskRefs.get(i));
-			totalTaskCost += getTotalCost(task, dateRange);
+			totalTaskCost += getTotalCost(taskRefs.get(i), dateRange);
 		}
 		return totalTaskCost;
 	}
