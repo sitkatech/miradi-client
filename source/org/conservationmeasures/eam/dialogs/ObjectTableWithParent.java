@@ -2,7 +2,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 
-public class ObjectTableWithParent extends ObjectTable
+public class ObjectTableWithParent extends ObjectListTable
 {
 	public ObjectTableWithParent(ObjectListTableModel modelToUse)
 	{
