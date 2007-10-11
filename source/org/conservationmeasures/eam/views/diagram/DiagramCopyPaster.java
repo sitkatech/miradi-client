@@ -31,10 +31,7 @@ public class DiagramCopyPaster extends DiagramPaster
 	
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception
 	{
-		if (! containsTargetsThatMustBePastedAsAlias())
-			return (ORef) oldToNewFactorRefMap.get(oldWrappedRef);
-		
-		return oldWrappedRef;
+		return (ORef) oldToNewFactorRefMap.get(oldWrappedRef);
 	}
 	
 	public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef)
