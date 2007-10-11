@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
-import org.conservationmeasures.eam.views.TreeTableWithIcons;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 
 public class PlanningTreeTable extends TreeTableWithStateSaving
@@ -108,10 +107,7 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 				return;
 			
 			Task task = (Task) node.getObject();
-			if (!task.isShared())
-				return;
-			
-			setFont(TreeTableWithIcons.Renderer.getItalicFont());
+			setFont(getSharedTaskFont(task));
 		}
 
 		private void setGrid()
