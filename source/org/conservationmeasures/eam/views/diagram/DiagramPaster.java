@@ -47,7 +47,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 
-public class DiagramPaster
+abstract public class DiagramPaster
 {
 	public DiagramPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
@@ -62,22 +62,7 @@ public class DiagramPaster
 		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
 		pastedCellsToSelect = new Vector();
 	}
-	
-	public void pasteFactors(Point startPoint) throws Exception
-	{	
-		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
-		createNewFactors();	
-		createNewDiagramFactors();
-	}
-	
-	public void pasteFactorsAndLinks(Point startPoint) throws Exception
-	{	
-		pasteFactors(startPoint);
-		createNewFactorLinks();
-		createNewDiagramLinks();		
-		selectNewlyPastedItems();
-	}
-	
+
 	protected void selectNewlyPastedItems()
 	{
 		//NOTE if-test only exists for tests
@@ -88,7 +73,7 @@ public class DiagramPaster
 		diagramPanel.selectCells(cellsToSelect);
 	}
 
-	private void createNewFactors() throws Exception
+	protected void createNewFactors() throws Exception
 	{
 		oldToNewFactorRefMap = new HashMap();
 		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
@@ -259,16 +244,6 @@ public class DiagramPaster
 		return diagramObject.containsWrappedFactorRef(oldWrappedRef);
 	}
 
-	//FIXME talk to kevin about this, rename this method, or in the doer, dont follow through with 
-	//the copy if any targets are being copied to the RC,  
-	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception
-	{
-		if (! containsTargetsThatMustBePastedAsAlias())
-			return (ORef) oldToNewFactorRefMap.get(oldWrappedRef);
-		
-		return oldWrappedRef;
-	}
-	
 	private String offsetLocation(EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
 	{
 		Point originalLocation = json.getPoint(DiagramFactor.TAG_LOCATION);
@@ -326,7 +301,7 @@ public class DiagramPaster
 		addToDiagramObject(getDiagramObject(), refToAppend, tag);
 	}
 	
-	private void createNewFactorLinks() throws Exception
+	protected void createNewFactorLinks() throws Exception
 	{
 		oldToNewFactorLinkRefMap = new HashMap();
 		for (int i = 0; i < factorLinkDeepCopies.size(); ++i)
@@ -473,11 +448,6 @@ public class DiagramPaster
 		}
 	}
 
-	public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef)
-	{
-		return (ORef) oldToNewFactorLinkRefMap.get(oldWrappedFactorLinkRef);
-	}
-
 	private DiagramFactorId getDiagramFactorId(EnhancedJsonObject json, String tag)
 	{
 		BaseId oldId = json.getId(tag);
@@ -607,6 +577,14 @@ public class DiagramPaster
 	{
 		return currentModel.getDiagramObject();
 	}
+	
+	abstract public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef);	
+
+	abstract public void pasteFactors(Point startPoint) throws Exception;
+	
+	abstract public void pasteFactorsAndLinks(Point startPoint) throws Exception;
+	
+	abstract public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception;	
 	
 	Project project;
 	DiagramModel currentModel;

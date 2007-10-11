@@ -116,7 +116,7 @@ public class Paste extends LocationDoer
 		if (usersChoice.equals(AS_ALIAS_BUTTON))
 			return new DiagramAliasPaster(getDiagramView().getDiagramPanel(), getDiagramView().getDiagramModel(), list);
 		
-		return new DiagramPaster(getDiagramView().getDiagramPanel(), getDiagramView().getDiagramModel(), list);
+		return new DiagramCopyPaster(getDiagramView().getDiagramPanel(), getDiagramView().getDiagramModel(), list);
 	}
 
 	private void possiblyNotitfyUserIfDataWasLost(DiagramPaster diagramPaster) throws Exception
