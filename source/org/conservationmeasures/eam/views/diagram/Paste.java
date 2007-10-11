@@ -57,11 +57,7 @@ public class Paste extends LocationDoer
 											"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
 				return;
 			}
-			if (diagramPaster.containsTargetsThatMustBePastedAsAlias() && usersChoice.equals(AS_COPY_BUTTON))
-			{
-				EAM.notifyDialog(EAM.text("Targets cannot be copied into a Results Chain, they will be shared instead."));
-			}
-				
+
 			paste(diagramPaster);
 			clipboard.incrementPasteCount();
 			possiblyNotitfyUserIfDataWasLost(diagramPaster);
