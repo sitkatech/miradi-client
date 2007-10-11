@@ -6,9 +6,9 @@ import org.conservationmeasures.eam.dialogs.ShareableActivityPoolTablePanel;
 import org.conservationmeasures.eam.dialogs.diagram.ShareSelectionDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.diagram.LocationDoer;
 
 public class ShareActivityDoer extends LocationDoer
@@ -34,15 +34,18 @@ public class ShareActivityDoer extends LocationDoer
 		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), EAM.text("Share Activity"), new ShareableActivityPoolTablePanel(getProject(), diagramFactor.getWrappedORef()));
 		listDialog.setVisible(true);
 		
-		appendSelectedActivity(diagramFactor, (Task) listDialog.getSelectedObject());
+		appendSelectedActivity(diagramFactor, listDialog.getSelectedObject());
 	}
 
-	private void appendSelectedActivity(DiagramFactor diagramFactor, Task taskToShare) throws CommandFailedException
+	private void appendSelectedActivity(DiagramFactor diagramFactor, BaseObject objectToShare) throws CommandFailedException
 	{
+		if (objectToShare == null)
+			return;
+		
 		try
 		{
 			Strategy strategy = (Strategy) getProject().findObject(diagramFactor.getWrappedORef());
-			CommandSetObjectData appendActivityCommand = CommandSetObjectData.createAppendIdCommand(strategy, Strategy.TAG_ACTIVITY_IDS, taskToShare.getId());
+			CommandSetObjectData appendActivityCommand = CommandSetObjectData.createAppendIdCommand(strategy, Strategy.TAG_ACTIVITY_IDS, objectToShare.getId());
 			getProject().executeCommand(appendActivityCommand);
 		}
 		catch (Exception e)

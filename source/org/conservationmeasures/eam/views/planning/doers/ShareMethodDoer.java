@@ -8,7 +8,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.Task;
 
 public class ShareMethodDoer extends AbstractTreeNodeCreateTaskDoer
 {	
@@ -29,15 +28,18 @@ public class ShareMethodDoer extends AbstractTreeNodeCreateTaskDoer
 		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), EAM.text("Share Method"), new ShareableMethodPoolTablePanel(getProject(), selectedRef));
 		listDialog.setVisible(true);
 		
-		appendSelectedActivity(selectedRef, (Task) listDialog.getSelectedObject());
+		appendSelectedActivity(selectedRef, listDialog.getSelectedObject());
 	}
 
-	private void appendSelectedActivity(ORef indicatorRef, Task taskToShare) throws CommandFailedException
+	private void appendSelectedActivity(ORef indicatorRef, BaseObject objectToShare) throws CommandFailedException
 	{
+		if (objectToShare == null)
+			return;
+		
 		try
 		{
 			Indicator indicator = (Indicator) getProject().findObject(indicatorRef);
-			CommandSetObjectData appendMethodCommand = CommandSetObjectData.createAppendIdCommand(indicator, Indicator.TAG_TASK_IDS, taskToShare.getId());
+			CommandSetObjectData appendMethodCommand = CommandSetObjectData.createAppendIdCommand(indicator, Indicator.TAG_TASK_IDS, objectToShare.getId());
 			getProject().executeCommand(appendMethodCommand);
 		}
 		catch (Exception e)
