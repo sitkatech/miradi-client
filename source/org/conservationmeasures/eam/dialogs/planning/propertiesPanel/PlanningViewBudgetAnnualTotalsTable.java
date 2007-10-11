@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Font;
 
 import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
@@ -39,13 +38,6 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractRig
 	{
 		PlanningViewBudgetAnnualTotalTableModel model = (PlanningViewBudgetAnnualTotalTableModel) getModel();
 		TreeTableNode node = (TreeTableNode) model.getNodeForRow(row);
-		if (node.getType() != Task.getObjectType())
-			return TreeTableWithIcons.Renderer.getPlainFont();
-		
-		Task task = (Task) node.getObject();
-		if (!task.isShared())
-			return TreeTableWithIcons.Renderer.getPlainFont();
-		
-		return TreeTableWithIcons.Renderer.getItalicFont();
+		return TreeTableWithIcons.getSharedTaskFont(node);
 	}
 }

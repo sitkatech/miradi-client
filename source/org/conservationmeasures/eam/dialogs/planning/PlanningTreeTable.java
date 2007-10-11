@@ -92,22 +92,13 @@ public class PlanningTreeTable extends TreeTableWithStateSaving
 			if (model.getColumnTag(column).equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 				setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 			
-			italicizeSharedTasks((TreeTableNode) getObjectForRow(row));
+			setFont(getSharedTaskFont(((TreeTableNode) getObjectForRow(row))));
 			setGrid();
 			
 			if (isSelected)
 				setBackground(table.getSelectionBackground());
 			
 			return component;
-		}
-
-		private void italicizeSharedTasks(TreeTableNode node)
-		{
-			if (node.getType() != Task.getObjectType())
-				return;
-			
-			Task task = (Task) node.getObject();
-			setFont(getSharedTaskFont(task));
 		}
 
 		private void setGrid()

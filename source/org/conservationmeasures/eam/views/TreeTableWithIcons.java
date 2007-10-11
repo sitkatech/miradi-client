@@ -99,6 +99,14 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		
 		return Renderer.getPlainFont();
 	}
+	
+	public static Font getSharedTaskFont(TreeTableNode node)
+	{
+		if (node.getType() != Task.getObjectType())
+			return Renderer.getPlainFont();
+			
+		return getSharedTaskFont((Task) node.getObject());	
+	}
 
 	public static class Renderer extends DefaultTreeCellRenderer
 	{		
