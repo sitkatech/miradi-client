@@ -8,11 +8,17 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
 public class ObjectListTableModel extends ObjectTableModel
 {
+	public ObjectListTableModel(Project projectToUse, ORef containingRef, String idListFieldTag, int listedItemType, String[] columnTags)
+	{
+		this(projectToUse, containingRef.getObjectType(), containingRef.getObjectId(), idListFieldTag, listedItemType, columnTags);
+	}
+	
 	public ObjectListTableModel(Project projectToUse, int objectType, BaseId objectId, 
 			String idListFieldTag, int listedItemType, String tableColumnTag)
 	{
@@ -28,6 +34,11 @@ public class ObjectListTableModel extends ObjectTableModel
 		tagOfIdList = idListFieldTag;
 
 		setRowObjectIds(getLatestIdListFromProject());
+	}
+	
+	public ORef getContainingRef()
+	{
+		return new ORef(getContainingObjectType(), getContainingObjectId());
 	}
 	
 	public int getContainingObjectType()

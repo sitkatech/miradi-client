@@ -13,13 +13,11 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
-public class ActivityListTablePanel extends ObjectListTablePanel
+public class ActivityListTablePanel extends ObjectListTablePanelWithParent
 {
 	public ActivityListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
 	{
-		super(projectToUse, ObjectType.TASK, 
-				new ActivityListTableModel(projectToUse, nodeRef), 
-				actions, buttonActionClasses);
+		super(projectToUse, ObjectType.TASK, new ActivityListTableModel(projectToUse, nodeRef),	actions, buttonActionClasses);
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {
