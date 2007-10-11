@@ -47,6 +47,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.reports.ChainManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.views.diagram.DiagramCopyPaster;
 import org.conservationmeasures.eam.views.diagram.DiagramPaster;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
@@ -247,7 +248,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinksSize(diagramFactorId1));
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new DiagramPaster(null, project.getDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
+		new DiagramCopyPaster(null, project.getDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(4, model.getAllDiagramFactorLinks().size());
@@ -258,7 +259,7 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.removeDiagramFactor(diagramFactorId1);
-		new DiagramPaster(null, project.getDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
+		new DiagramCopyPaster(null, project.getDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());
 	}
@@ -483,7 +484,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinks(node2).size());
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new DiagramPaster(null, project.getDiagramModel(), transferableList).pasteFactors(new Point(5,5));
+		new DiagramCopyPaster(null, project.getDiagramModel(), transferableList).pasteFactors(new Point(5,5));
 		DiagramFactorId[] diagramFactorIds = project.getAllDiagramFactorIds();
 		assertEquals(4, diagramFactorIds.length);
 		assertEquals(2, model.getAllDiagramFactorLinks().size());
@@ -515,7 +516,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("nodes  still in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		Point pastePoint = new Point(5,5);
-		DiagramPaster diagramPaster = new DiagramPaster(null, project.getDiagramModel(), transferableList);
+		DiagramPaster diagramPaster = new DiagramCopyPaster(null, project.getDiagramModel(), transferableList);
 		diagramPaster.pasteFactorsAndLinks(pastePoint);
 		DiagramFactor diagramFactors[] = project.getAllDiagramFactors();
 		assertEquals(1, diagramFactors.length);
