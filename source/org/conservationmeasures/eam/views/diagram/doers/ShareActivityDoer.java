@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.views.diagram.LocationDoer;
+import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public class ShareActivityDoer extends LocationDoer
+public class ShareActivityDoer extends ObjectsDoer
 {	
 	public boolean isAvailable()
 	{

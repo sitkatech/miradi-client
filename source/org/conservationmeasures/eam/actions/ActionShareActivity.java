@@ -3,7 +3,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionShareActivity extends MainWindowAction
+public class ActionShareActivity extends ObjectsAction
 {
 	public ActionShareActivity(MainWindow mainWindowToUse)
 	{
