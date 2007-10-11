@@ -91,6 +91,14 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 	    Font customFont = new Font(map);
 		return customFont;
 	}
+	
+	public static Font getSharedTaskFont(Task task)
+	{
+		if (task.isShared())
+			return Renderer.getItalicFont();
+		
+		return Renderer.getPlainFont();
+	}
 
 	public static class Renderer extends DefaultTreeCellRenderer
 	{		
@@ -216,13 +224,10 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		
 		private DefaultTreeCellRenderer getRendererWithSetSharedTaskItalicFont(DefaultTreeCellRenderer renderer, Task task)
 		{
-			renderer.setFont(getPlainFont());
-			if (task.isShared())
-				renderer.setFont(getItalicFont()); 
-		
+			renderer.setFont(getSharedTaskFont(task));
 			return renderer;
 		}
-
+		
 		protected DefaultTreeCellRenderer getStrategyRenderer(Factor factor)
 		{
 			return strategyRenderer;
