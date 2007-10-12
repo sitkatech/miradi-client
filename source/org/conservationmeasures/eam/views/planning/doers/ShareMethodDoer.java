@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 
-public class ShareMethodDoer extends AbstractTreeNodeCreateTaskDoer
+public class ShareMethodDoer extends AbstractShareDoer
 {	
 	protected boolean canOwnTask(BaseObject object)
 	{
