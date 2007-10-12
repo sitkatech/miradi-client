@@ -1,6 +1,5 @@
 package org.conservationmeasures.eam.views.planning.doers;
 
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.ShareableMethodPoolTablePanel;
 import org.conservationmeasures.eam.dialogs.diagram.ShareSelectionDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -29,22 +28,5 @@ public class ShareMethodDoer extends AbstractShareDoer
 		listDialog.setVisible(true);
 		
 		appendSelectedObjectAsShared(selectedRef, Indicator.TAG_TASK_IDS, listDialog.getSelectedObject());
-	}
-
-	protected void appendSelectedObjectAsShared(ORef parentOfSharedRef, String tag, BaseObject objectToShare) throws CommandFailedException
-	{
-		if (objectToShare == null)
-			return;
-		
-		try
-		{
-			BaseObject parentOfShared = getProject().findObject(parentOfSharedRef);
-			CommandSetObjectData appendSharedObjectCommand = CommandSetObjectData.createAppendIdCommand(parentOfShared, tag, objectToShare.getId());
-			getProject().executeCommand(appendSharedObjectCommand);
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
 	}
 }
