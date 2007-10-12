@@ -12,6 +12,9 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 {
 	protected void appendSelectedObjectAsShared(ORef parentOfSharedRef, String tag) throws CommandFailedException
 	{
+		if (parentOfSharedRef.isInvalid())
+			return; 
+		
 		BaseObject objectToShare = getUserChoiceOfSharedObject(parentOfSharedRef);
 		if (objectToShare == null)
 			return;
@@ -39,4 +42,6 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 	abstract protected String getShareDialogTitle();
 	
 	abstract protected ObjectPoolTablePanel getShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs);
+	
+	abstract protected ORef getParentOfShareableObjects();
 }
