@@ -10,8 +10,9 @@ import org.conservationmeasures.eam.objects.BaseObject;
 
 abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 {
-	protected void appendSelectedObjectAsShared(ORef parentOfSharedRef, String tag) throws CommandFailedException
+	protected void appendSelectedObjectAsShared() throws CommandFailedException
 	{
+		ORef parentOfSharedRef = getParentRefOfShareableObjects();
 		if (parentOfSharedRef.isInvalid())
 			return; 
 		
@@ -22,7 +23,7 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 		try
 		{
 			BaseObject parentOfShared = getProject().findObject(parentOfSharedRef);
-			CommandSetObjectData appendSharedObjectCommand = CommandSetObjectData.createAppendIdCommand(parentOfShared, tag, objectToShare.getId());
+			CommandSetObjectData appendSharedObjectCommand = CommandSetObjectData.createAppendIdCommand(parentOfShared, getParentTaskIdsTag(), objectToShare.getId());
 			getProject().executeCommand(appendSharedObjectCommand);
 		}
 		catch (Exception e)
@@ -46,4 +47,12 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 	abstract protected ORef getParentRefOfShareableObjects();
 	
 	abstract protected String getParentTaskIdsTag();
+
+	public void doIt() throws CommandFailedException
+	{
+		if (!isAvailable())
+			return;
+		
+		appendSelectedObjectAsShared();
+	}
 }

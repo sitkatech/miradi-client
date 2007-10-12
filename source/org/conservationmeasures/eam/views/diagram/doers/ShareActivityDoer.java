@@ -3,7 +3,6 @@ package org.conservationmeasures.eam.views.diagram.doers;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.dialogs.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.dialogs.ShareableActivityPoolTablePanel;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -19,14 +18,6 @@ public class ShareActivityDoer extends AbstractShareDoer
 		return true;
 	}
 
-	public void doIt() throws CommandFailedException
-	{
-		if (! isAvailable())
-			return;
-		
-		appendSelectedObjectAsShared(getParentRefOfShareableObjects(), getParentTaskIdsTag());
-	}
-	
 	protected String getParentTaskIdsTag()
 	{
 		return Strategy.TAG_ACTIVITY_IDS;
