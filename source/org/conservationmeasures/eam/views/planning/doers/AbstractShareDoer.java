@@ -18,7 +18,7 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 		appendSelectedObjectAsShared();
 	}
 	
-	protected void appendSelectedObjectAsShared() throws CommandFailedException
+	private void appendSelectedObjectAsShared() throws CommandFailedException
 	{
 		ORef parentOfSharedRef = getParentRefOfShareableObjects();
 		if (parentOfSharedRef.isInvalid())
