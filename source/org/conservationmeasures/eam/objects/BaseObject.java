@@ -538,9 +538,10 @@ abstract public class BaseObject
 
 	public ORef getOwnerRef()
 	{
-		if(cachedOwnerRef != null)
+		if(isCachedOwnerValid)
 			return cachedOwnerRef;
-		
+
+		cachedOwnerRef = ORef.INVALID;
 		int[] objectTypes = getTypesThatCanOwnUs(getType());
 		for (int i=0; i<objectTypes.length; ++i)
 		{
@@ -548,11 +549,12 @@ abstract public class BaseObject
 			if (oref != null)
 			{
 				cachedOwnerRef = oref;
-				return cachedOwnerRef;
+				break;
 			}
 		}
 		
-		return ORef.INVALID;
+		isCachedOwnerValid = true;
+		return cachedOwnerRef;
 	}
 
 	
@@ -964,6 +966,7 @@ abstract public class BaseObject
 	BaseId id;
 	StringData label;
 	private PseudoStringData budgetTotal;
+	private boolean isCachedOwnerValid;
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
 	private HashMap fields;

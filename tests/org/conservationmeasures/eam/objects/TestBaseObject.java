@@ -36,7 +36,6 @@ public class TestBaseObject extends EAMTestCase
 	{
 		ORef taskRef = project.createFactorAndReturnRef(Task.getObjectType());
 		Task task = (Task)project.findObject(taskRef);
-		assertEquals("Unset owner not invalid?", ORef.INVALID, task.getOwnerRef());
 		
 		ORef parentRef = project.createFactorAndReturnRef(Task.getObjectType());
 		Task parent = (Task)project.findObject(parentRef);

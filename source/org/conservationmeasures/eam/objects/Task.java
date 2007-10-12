@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -101,13 +102,8 @@ public class Task extends BaseObject
 
 	public String getTypeName()
 	{
-		if (isMethod())
-			return METHOD_NAME;
-		
-		if (isActivity())
-			return ACTIVITY_NAME;
-		
-		return OBJECT_NAME;
+		ensureCachedTypeStringIsValid();
+		return cachedObjectTypeName;
 	}
 
 	public static int getObjectType()
@@ -155,28 +151,44 @@ public class Task extends BaseObject
 	//but if it is a user level task as opposed to a method or an activity
 	public boolean isTask()
 	{
-		if (getOwnerRef() == null)
-			return false;
-		
-		return getOwnerRef().getObjectType() == ObjectType.TASK;
+		ensureCachedTypeStringIsValid();
+		return (OBJECT_NAME.equals(cachedObjectTypeName));
 	}
 
 	public boolean isActivity()
 	{
-		if (getOwnerRef() == null)
-			return false;
-		
-		ORefList referrers = findObjectsThatReferToUs(Strategy.getObjectType());
-		return referrers.size() > 0;
+		ensureCachedTypeStringIsValid();
+		return (ACTIVITY_NAME.equals(cachedObjectTypeName));
 	}
 
 	public boolean isMethod()
 	{
-		if (getOwnerRef() == null)
-			return false;
+		ensureCachedTypeStringIsValid();
+		return (METHOD_NAME.equals(cachedObjectTypeName));
+	}
+	
+	private void ensureCachedTypeStringIsValid()
+	{
+		ORef ownerRef = getOwnerRef();
+		if (ownerRef != null && !ownerRef.isInvalid())
+		{
+			cachedObjectTypeName = OBJECT_NAME;
+			return;
+		}
 		
-		ORefList referrers = findObjectsThatReferToUs(Indicator.getObjectType());
-		return referrers.size() > 0;
+		ORefList strategyReferrers = findObjectsThatReferToUs(Strategy.getObjectType());
+		if(strategyReferrers.size() > 0)
+		{
+			cachedObjectTypeName = ACTIVITY_NAME;
+			return;
+		}
+		
+		ORefList indicatorReferrers = findObjectsThatReferToUs(Indicator.getObjectType());
+		if(indicatorReferrers.size() > 0)
+		{
+			cachedObjectTypeName = METHOD_NAME;
+			return;
+		}
 	}
 	
 	public boolean isOrphandTask()
@@ -460,6 +472,8 @@ public class Task extends BaseObject
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
 	public static final String ACTIVITY_NAME = "Activity";
+	
+	private String cachedObjectTypeName;
 	
 	IdListData subtaskIds;
 	IdListData assignmentIds;
