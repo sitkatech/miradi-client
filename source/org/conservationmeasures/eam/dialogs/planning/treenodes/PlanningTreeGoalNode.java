@@ -7,6 +7,8 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
@@ -59,6 +61,15 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 			potentialChildIndicatorRefs.addAll(indicatorRefs);
 		}
 		return potentialChildIndicatorRefs;
+	}
+	
+	int[] getNodeSortOrder()
+	{
+		return new int[] {
+				Strategy.getObjectType(),
+				Indicator.getObjectType(),
+				Objective.getObjectType(),
+			};
 	}
 
 	public BaseObject getObject()
