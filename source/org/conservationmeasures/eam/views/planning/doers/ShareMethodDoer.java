@@ -28,19 +28,19 @@ public class ShareMethodDoer extends AbstractShareDoer
 		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), EAM.text("Share Method"), new ShareableMethodPoolTablePanel(getProject(), selectedRef));
 		listDialog.setVisible(true);
 		
-		appendSelectedActivity(selectedRef, listDialog.getSelectedObject());
+		appendSelectedObjectAsShared(selectedRef, Indicator.TAG_TASK_IDS, listDialog.getSelectedObject());
 	}
 
-	private void appendSelectedActivity(ORef indicatorRef, BaseObject objectToShare) throws CommandFailedException
+	protected void appendSelectedObjectAsShared(ORef parentOfSharedRef, String tag, BaseObject objectToShare) throws CommandFailedException
 	{
 		if (objectToShare == null)
 			return;
 		
 		try
 		{
-			Indicator indicator = (Indicator) getProject().findObject(indicatorRef);
-			CommandSetObjectData appendMethodCommand = CommandSetObjectData.createAppendIdCommand(indicator, Indicator.TAG_TASK_IDS, objectToShare.getId());
-			getProject().executeCommand(appendMethodCommand);
+			BaseObject parentOfShared = getProject().findObject(parentOfSharedRef);
+			CommandSetObjectData appendSharedObjectCommand = CommandSetObjectData.createAppendIdCommand(parentOfShared, tag, objectToShare.getId());
+			getProject().executeCommand(appendSharedObjectCommand);
 		}
 		catch (Exception e)
 		{
