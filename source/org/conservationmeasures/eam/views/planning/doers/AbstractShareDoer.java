@@ -1,6 +1,8 @@
 package org.conservationmeasures.eam.views.planning.doers;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.ObjectPoolTablePanel;
+import org.conservationmeasures.eam.dialogs.diagram.ShareSelectionDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -8,8 +10,9 @@ import org.conservationmeasures.eam.objects.BaseObject;
 
 abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 {
-	protected void appendSelectedObjectAsShared(ORef parentOfSharedRef, String tag, BaseObject objectToShare) throws CommandFailedException
+	protected void appendSelectedObjectAsShared(ORef parentOfSharedRef, String tag) throws CommandFailedException
 	{
+		BaseObject objectToShare = getUserChoiceOfSharedObject(parentOfSharedRef);
 		if (objectToShare == null)
 			return;
 		
@@ -24,4 +27,16 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 			throw new CommandFailedException(e);
 		}
 	}
+	
+	protected BaseObject getUserChoiceOfSharedObject(ORef parentOfSharedObjectRefs)
+	{
+		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), getShareDialogTitle(), getShareableObjectPoolTablePanel(parentOfSharedObjectRefs));
+		listDialog.setVisible(true);
+		
+		return listDialog.getSelectedObject();
+	}
+	
+	abstract protected String getShareDialogTitle();
+	
+	abstract protected ObjectPoolTablePanel getShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs);
 }
