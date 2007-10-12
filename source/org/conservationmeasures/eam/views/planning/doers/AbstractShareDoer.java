@@ -22,9 +22,12 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 	{
 		ORef parentOfSharedRef = getParentRefOfShareableObjects();
 		if (parentOfSharedRef.isInvalid())
-			return; 
+			return;
+	
+		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), getShareDialogTitle(), getShareableObjectPoolTablePanel(parentOfSharedRef));
+		listDialog.setVisible(true); 
 		
-		BaseObject objectToShare = getUserChoiceOfSharedObject(parentOfSharedRef);
+		BaseObject objectToShare = listDialog.getSelectedObject();
 		if (objectToShare == null)
 			return;
 		
@@ -38,14 +41,6 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 		{
 			throw new CommandFailedException(e);
 		}
-	}
-	
-	protected BaseObject getUserChoiceOfSharedObject(ORef parentOfSharedObjectRefs)
-	{
-		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), getShareDialogTitle(), getShareableObjectPoolTablePanel(parentOfSharedObjectRefs));
-		listDialog.setVisible(true);
-		
-		return listDialog.getSelectedObject();
 	}
 	
 	abstract protected String getShareDialogTitle();
