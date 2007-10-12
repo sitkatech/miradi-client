@@ -149,15 +149,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		
 		int getTypeSortLocation(int type)
 		{
-			int[] sortOrder = new int[] {
-				ConceptualModelDiagram.getObjectType(),
-				ResultsChainDiagram.getObjectType(),
-				Goal.getObjectType(),
-				Objective.getObjectType(),
-				Strategy.getObjectType(),
-				Indicator.getObjectType(),
-				Task.getObjectType(),
-			};
+			int[] sortOrder = getNodeSortOrder();
 			
 			for(int i = 0; i < sortOrder.length; ++i)
 				if(type == sortOrder[i])
@@ -165,7 +157,20 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			EAM.logError("NodeSorter unknown type: " + type);
 			return sortOrder.length;
 		}
-		
+
+	}
+	
+	int[] getNodeSortOrder()
+	{
+		return new int[] {
+			ConceptualModelDiagram.getObjectType(),
+			ResultsChainDiagram.getObjectType(),
+			Goal.getObjectType(),
+			Objective.getObjectType(),
+			Strategy.getObjectType(),
+			Indicator.getObjectType(),
+			Task.getObjectType(),
+		};
 	}
 	
 	private Vector<AbstractPlanningTreeNode> getChildren()
