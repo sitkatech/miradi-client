@@ -94,6 +94,9 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 	
 	public static Font getSharedTaskFont(Task task)
 	{
+		if (task.isMethod() && task.isShared())
+			return Renderer.getItalicBoldFont();
+		
 		if (task.isShared())
 			return Renderer.getItalicFont();
 		
@@ -136,7 +139,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			indicatorRenderer.setClosedIcon(new IndicatorIcon());
 			indicatorRenderer.setOpenIcon(new IndicatorIcon());
 			indicatorRenderer.setLeafIcon(new IndicatorIcon());
-			indicatorRenderer.setFont(getPlainFont());
+			indicatorRenderer.setFont(getBoldFont());
 			
 			goalRenderer = new DefaultTreeCellRenderer();
 			goalRenderer.setClosedIcon(new GoalIcon());
@@ -256,6 +259,12 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		{
 			Font defaultFont = EAM.mainWindow.getUserDataPanelFont();
 			return defaultFont.deriveFont(Font.ITALIC);
+		}
+		
+		public static Font getItalicBoldFont()
+		{
+			Font defaultFont = EAM.mainWindow.getUserDataPanelFont();
+			return defaultFont.deriveFont(Font.BOLD + Font.ITALIC);
 		}
 
 		DefaultTreeCellRenderer targetRenderer;
