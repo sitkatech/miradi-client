@@ -2,7 +2,6 @@ package org.conservationmeasures.eam.views.planning.doers;
 
 import org.conservationmeasures.eam.dialogs.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.dialogs.ShareableMethodPoolTablePanel;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -16,14 +15,6 @@ public class ShareMethodDoer extends AbstractShareDoer
 			return true;
 		
 		return false;
-	}
-
-	public void doIt() throws CommandFailedException
-	{
-		if (!isAvailable())
-			return;
-		
-		appendSelectedObjectAsShared(getParentRefOfShareableObjects(), getParentTaskIdsTag());
 	}
 
 	protected String getParentTaskIdsTag()
