@@ -169,13 +169,6 @@ public class Task extends BaseObject
 	
 	private void ensureCachedTypeStringIsValid()
 	{
-		ORef ownerRef = getOwnerRef();
-		if (ownerRef != null && !ownerRef.isInvalid())
-		{
-			cachedObjectTypeName = OBJECT_NAME;
-			return;
-		}
-		
 		ORefList strategyReferrers = findObjectsThatReferToUs(Strategy.getObjectType());
 		if(strategyReferrers.size() > 0)
 		{
@@ -189,6 +182,16 @@ public class Task extends BaseObject
 			cachedObjectTypeName = METHOD_NAME;
 			return;
 		}
+
+		// FIXME: We should be able to do this test first, but in Marine Example 1.0.7
+		// there are Activities that somehow have owners
+		ORef ownerRef = getOwnerRef();
+		if (ownerRef != null && !ownerRef.isInvalid())
+		{
+			cachedObjectTypeName = OBJECT_NAME;
+			return;
+		}
+		
 	}
 	
 	public boolean isOrphandTask()
