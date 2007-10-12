@@ -24,7 +24,12 @@ public class ShareActivityDoer extends AbstractShareDoer
 		if (! isAvailable())
 			return;
 		
-		appendSelectedObjectAsShared(getParentRefOfShareableObjects(), Strategy.TAG_ACTIVITY_IDS);
+		appendSelectedObjectAsShared(getParentRefOfShareableObjects(), getParentTaskIdsTag());
+	}
+	
+	protected String getParentTaskIdsTag()
+	{
+		return Strategy.TAG_ACTIVITY_IDS;
 	}
 
 	protected String getShareDialogTitle()

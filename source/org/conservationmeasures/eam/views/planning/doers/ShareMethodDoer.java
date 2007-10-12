@@ -23,7 +23,12 @@ public class ShareMethodDoer extends AbstractShareDoer
 		if (!isAvailable())
 			return;
 		
-		appendSelectedObjectAsShared(getParentRefOfShareableObjects(), Indicator.TAG_TASK_IDS);
+		appendSelectedObjectAsShared(getParentRefOfShareableObjects(), getParentTaskIdsTag());
+	}
+
+	protected String getParentTaskIdsTag()
+	{
+		return Indicator.TAG_TASK_IDS;
 	}
 
 	protected ORef getParentRefOfShareableObjects()
