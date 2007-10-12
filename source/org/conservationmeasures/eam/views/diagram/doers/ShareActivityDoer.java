@@ -24,7 +24,7 @@ public class ShareActivityDoer extends AbstractShareDoer
 		if (! isAvailable())
 			return;
 		
-		appendSelectedObjectAsShared(getParentOfShareableObjects(), Strategy.TAG_ACTIVITY_IDS);
+		appendSelectedObjectAsShared(getParentRefOfShareableObjects(), Strategy.TAG_ACTIVITY_IDS);
 	}
 
 	protected String getShareDialogTitle()
@@ -37,7 +37,7 @@ public class ShareActivityDoer extends AbstractShareDoer
 		return new ShareableActivityPoolTablePanel(getProject(), parentOfSharedObjectRefs);
 	}
 
-	protected ORef getParentOfShareableObjects()
+	protected ORef getParentRefOfShareableObjects()
 	{
 		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
 		if (! selected.isFactor())
