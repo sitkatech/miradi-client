@@ -6,7 +6,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeDiagramNode
+public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeNode
 {
 	PlanningTreeConceptualModelNode(Project projectToUse) throws Exception
 	{
@@ -24,34 +24,6 @@ public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeDiagram
 		
 	}
 	
-	protected ORefList getPotentialChildrenStrategyRefs()
-	{
-		ORefList strategyRefs = new ORefList();
-		
-		ORefList pageRefs = project.getConceptualModelDiagramPool().getORefList();
-		for(int i = 0; i < pageRefs.size(); ++i)
-		{
-			ConceptualModelDiagram page = (ConceptualModelDiagram) project.findObject(pageRefs.get(i));
-			strategyRefs.addAll(getPotentialChildStrategyRefs(page));
-		}
-		
-		return strategyRefs;
-	}
-	
-	protected ORefList getPotentialChildrenIndicatorRefs()
-	{
-		ORefList indicatorRefs = new ORefList();
-		
-		ORefList pageRefs = project.getConceptualModelDiagramPool().getORefList();
-		for(int i = 0; i < pageRefs.size(); ++i)
-		{
-			ConceptualModelDiagram page = (ConceptualModelDiagram) project.findObject(pageRefs.get(i));
-			indicatorRefs.addAll(getPotentialChildrenIndicatorRefs(page));
-		}
-
-		return indicatorRefs;
-	}
-
 	public BaseObject getObject()
 	{
 		return null;
