@@ -220,8 +220,51 @@ public class EnhancedJsonObject extends JSONObject
 			return getId(tag);
 		return BaseId.INVALID;
 	}
+	
+	public boolean equals(Object rawOther)
+	{
+		if(! (rawOther instanceof EnhancedJsonObject))
+			return false;
+		
+		EnhancedJsonObject other = (EnhancedJsonObject)rawOther;
+		
+		// NOTE: we would love to access the hashmap directly, 
+		// but they used default permissions instead of protected
+		
+		Iterator iter = keys();
+		if(length() != other.length())
+			return false;
+		
+		while(iter.hasNext())
+		{
+			String key = (String)iter.next();
+			if(!other.has(key))
+				return false;
+			Object thisValue = get(key);
+			Object otherValue = other.get(key);
+			if(thisValue.equals(otherValue))
+				continue;
+			
+			if(thisValue instanceof String)
+			{
+				try
+				{
+					EnhancedJsonObject thisJson = new EnhancedJsonObject((String)thisValue);
+					EnhancedJsonObject otherJson = new EnhancedJsonObject((String)otherValue);
+					if(!thisJson.equals(otherJson))
+						return false;
+				}
+				catch(Exception e)
+				{
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}
 
-	  //TODO should be improved at some point, but this works
+	//NOTE: could be improved at some point, but this works
 	public int hashCode()
 	{
 		return length();

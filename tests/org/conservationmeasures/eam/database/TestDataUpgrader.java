@@ -614,8 +614,8 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		String file91Content = readFile(file1);
 		String file92Content = readFile(file2);
-		assertEquals("file 91 content the same?", expected91Content.trim(), file91Content.trim());
-		assertEquals("file 92 content the same?", expected92Content.trim(), file92Content.trim());
+		assertEquals("file 91 content the same?", new EnhancedJsonObject(expected91Content), new EnhancedJsonObject(file91Content));
+		assertEquals("file 92 content the same?", new EnhancedJsonObject(expected92Content), new EnhancedJsonObject(file92Content));
 		
 		File manifestFile = new File(objects18Dir, "manifest");
 		String migratedManifestContents = readFile(manifestFile);
