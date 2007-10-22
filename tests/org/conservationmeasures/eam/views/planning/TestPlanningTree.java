@@ -46,8 +46,8 @@ abstract public class TestPlanningTree extends EAMTestCase
 		diagramCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		diagramTarget = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		
-		stratToCauseLinkId = project.createDiagramFactorLink(diagramStrategy, diagramCause);		
-		causeToTargetLinkId = project.createDiagramFactorLink(diagramCause, diagramTarget);
+		stratToCauseLinkId = project.createDiagramLinkAndAddToDiagram(diagramStrategy, diagramCause).getObjectId();		
+		causeToTargetLinkId = project.createDiagramLinkAndAddToDiagram(diagramCause, diagramTarget).getObjectId();
 		
 		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
 		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
