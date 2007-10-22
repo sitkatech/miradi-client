@@ -17,7 +17,7 @@ public class TestPlanningTreeGoalNode extends TestPlanningTree
 	
 	public void testPlanningTreeGoalNodes() throws Exception
 	{
-		ORefList objectiveRefs = getGoal().getUpstreamObjectives();
+		ORefList objectiveRefs = getGoal().getUpstreamObjectives(project.getDiagramObject());
 		assertEquals("wrong objective count?", 1, objectiveRefs.size());
 		assertEquals("wrong type returned?", Objective.getObjectType(), objectiveRefs.get(0).getObjectType());
 	}

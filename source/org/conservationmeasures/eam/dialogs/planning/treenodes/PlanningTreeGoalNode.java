@@ -4,6 +4,7 @@ package org.conservationmeasures.eam.dialogs.planning.treenodes;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -13,16 +14,17 @@ import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeGoalNode(Project projectToUse, ORef goalRef) throws Exception
+	public PlanningTreeGoalNode(Project projectToUse, DiagramObject diagramToUse, ORef goalRef) throws Exception
 	{
 		super(projectToUse);
+		diagram = diagramToUse;
 		goal = (Goal)project.findObject(goalRef);
 		rebuild();
 	}
 	
 	public void rebuild() throws Exception
 	{
-		ORefList objectives = goal.getUpstreamObjectives();
+		ORefList objectives = goal.getUpstreamObjectives(diagram);
 		for(int i = 0; i < objectives.size(); ++i)
 			children.add(new PlanningTreeObjectiveNode(project, objectives.get(i)));
 		
@@ -77,5 +79,6 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 		return goal;
 	}
 
+	DiagramObject diagram;
 	Goal goal;
 }

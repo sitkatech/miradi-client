@@ -55,7 +55,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 	{
 		for(int i = 0; i < goalRefs.size(); ++i)
 		{
-			children.add(new PlanningTreeGoalNode(project, goalRefs.get(i)));
+			children.add(new PlanningTreeGoalNode(project, object, goalRefs.get(i)));
 		}
 	}
 	

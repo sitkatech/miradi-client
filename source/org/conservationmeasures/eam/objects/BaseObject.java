@@ -486,6 +486,16 @@ abstract public class BaseObject
 		return chainObject.buildUpstreamChainAndGetFactors(owner).toFactorArray();
 	}
 	
+	public Factor[] getUpstreamFactors(DiagramObject diagram)
+	{
+		Factor owner = getDirectOrIndirectOwningFactor();
+		if(owner == null)
+			return new Factor[0];
+		
+		DiagramChainObject chainObject = getDiagramChainBuilder();
+		return chainObject.buildUpstreamChainAndGetFactors(diagram, owner).toFactorArray();
+	}
+	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
 	{
 		try
