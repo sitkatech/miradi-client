@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -18,6 +19,20 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 	public AbstractPlanningTreeDiagramNode(Project projectToUse)
 	{
 		super(projectToUse);
+	}
+
+	public void rebuild() throws Exception
+	{
+		ORefList goalRefs = object.getAllGoalRefs();
+		addGoalsAsChildren(goalRefs);
+		addMissingObjectivesAsChildren(object);
+		addMissingStrategiesAsChildren();
+		addMissingIndicatorsAsChildren();
+	}
+
+	public BaseObject getObject()
+	{
+		return object;
 	}
 
 	boolean isGoalOnThisPage(DiagramObject page, ORef refToAdd)
@@ -96,12 +111,15 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		return potentialChildrenRefs;
 	}
 
-	protected void rebuild(DiagramObject diagram) throws Exception
+	protected ORefList getPotentialChildrenStrategyRefs()
 	{
-		ORefList goalRefs = diagram.getAllGoalRefs();
-		addGoalsAsChildren(goalRefs);
-		addMissingObjectivesAsChildren(diagram);
-		addMissingStrategiesAsChildren();
-		addMissingIndicatorsAsChildren();
+		return getPotentialChildStrategyRefs(object);
 	}
+
+	protected ORefList getPotentialChildrenIndicatorRefs()
+	{
+		return getPotentialChildrenIndicatorRefs(object);
+	}
+
+	protected DiagramObject object;
 }
