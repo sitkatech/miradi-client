@@ -36,7 +36,7 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 	{
 		// FIXME: Probably should use a HashSet to avoid dupes
 		ORefList upstreamStrategyRefs = new ORefList();
-		Factor[] upstreamFactors = goal.getUpstreamFactors();
+		Factor[] upstreamFactors = goal.getUpstreamFactors(diagram);
 		for(int i = 0; i < upstreamFactors.length; ++i)
 		{
 			Factor factor = upstreamFactors[i];
