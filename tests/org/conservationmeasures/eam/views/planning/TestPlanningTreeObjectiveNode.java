@@ -19,7 +19,7 @@ public class TestPlanningTreeObjectiveNode extends TestPlanningTree
 	
 	public void testPlanningTreeObjectiveNode() throws Exception
 	{
-		ORefList strategytORefs = getObjective().getUpstreamNonDraftStrategies();
+		ORefList strategytORefs = getObjective().getUpstreamNonDraftStrategies(project.getDiagramObject());
 		assertEquals("wrong stratgy count?", 1, strategytORefs.size());
 		assertEquals("wrong type?", Strategy.getObjectType(), strategytORefs.get(0).getObjectType());
 		
