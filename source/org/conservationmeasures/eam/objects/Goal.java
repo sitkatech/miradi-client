@@ -64,11 +64,11 @@ public class Goal extends Desire
 	}
 	
 	// TODO: Consider combining with Objective.getUpstreamIndicators
-	public ORefList getUpstreamObjectives()
+	public ORefList getUpstreamObjectives(DiagramObject diagram)
 	{
 		ORefList objectiveRefs = new ORefList();
 		
-		Factor[] upstreamFactors = getUpstreamFactors();
+		Factor[] upstreamFactors = getUpstreamFactors(diagram);
 		for(int i = 0; i < upstreamFactors.length; ++i)
 		{
 			IdList objectiveIds = upstreamFactors[i].getObjectives();
