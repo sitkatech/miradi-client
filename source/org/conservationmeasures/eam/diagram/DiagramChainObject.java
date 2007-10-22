@@ -10,8 +10,10 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.ChainObject;
@@ -119,11 +121,12 @@ public class DiagramChainObject extends ChainObject
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
 		linkedFactors.attemptToAdd(startingFactor);
-		DiagramLink[] allDiagramLinks = diagramModel.getAllDiagramLinksAsArray();
-		
-		for(int i = 0; i < allDiagramLinks.length; ++i)
+
+		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
+		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 		{
-			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
+			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
+			FactorLinkId wrappedId = link.getWrappedId();
 			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
 			processLink(unprocessedFactors, startingFactor, thisLink, direction);
 		}		
@@ -134,9 +137,10 @@ public class DiagramChainObject extends ChainObject
 			if (!linkedFactors.contains(thisFactor))
 			{
 				linkedFactors.attemptToAdd(thisFactor);
-				for(int i = 0; i < allDiagramLinks.length; ++i)
+				for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 				{
-					FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
+					DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
+					FactorLinkId wrappedId = link.getWrappedId();
 					FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
 					processLink(unprocessedFactors, thisFactor, thisLink, direction);
 				}
@@ -152,10 +156,11 @@ public class DiagramChainObject extends ChainObject
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
 		
-		DiagramLink[] allDiagramLinks = diagramModel.getAllDiagramLinksAsArray();
-		for(int i = 0; i < allDiagramLinks.length; ++i)
+		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
+		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 		{
-			FactorLinkId wrappedId = allDiagramLinks[i].getWrappedId();
+			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
+			FactorLinkId wrappedId = link.getWrappedId();
 			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
 			processLink(results, startingFactor, thisLink, direction);
 		}
@@ -164,11 +169,11 @@ public class DiagramChainObject extends ChainObject
 	
 	private void initializeChain(DiagramModel model, Factor factor)
 	{
-		this.diagramModel = model;
+		diagramObject = model.getDiagramObject();
 		this.startingFactor = factor;
 		factorSet = new FactorSet();
 		processedLinks = new Vector();
 	}
 	
-	private DiagramModel diagramModel;
+	private DiagramObject diagramObject;
 }
