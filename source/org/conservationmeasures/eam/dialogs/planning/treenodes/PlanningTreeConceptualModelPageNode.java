@@ -6,8 +6,6 @@
 package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.project.Project;
 
@@ -20,31 +18,9 @@ public class PlanningTreeConceptualModelPageNode extends AbstractPlanningTreeDia
 		rebuild();
 	}
 
-	public void rebuild() throws Exception
-	{
-		ConceptualModelDiagram diagram = (ConceptualModelDiagram) project.findObject(getObjectReference());
-		rebuild(diagram);
-	}
-
 	public String getObjectTypeName()
 	{
 		return "Never Visible";
 	}
 
-	public BaseObject getObject()
-	{
-		return object;
-	}
-
-	protected ORefList getPotentialChildrenStrategyRefs()
-	{
-		return getPotentialChildStrategyRefs(object);
-	}
-
-	protected ORefList getPotentialChildrenIndicatorRefs()
-	{
-		return getPotentialChildrenIndicatorRefs(object);
-	}
-
-	ConceptualModelDiagram object;
 }
