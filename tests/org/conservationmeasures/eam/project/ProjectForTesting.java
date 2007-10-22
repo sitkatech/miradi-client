@@ -302,6 +302,16 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		DiagramFactor to = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		return createDiagramFactorLink(from, to);
 	}
+
+	public ORef createDiagramLinkAndAddToDiagram(DiagramFactor from, DiagramFactor to) throws Exception
+	{
+		ORef linkRef = createDiagramLink(from, to);
+		
+		IdList links = getDiagramObject().getAllDiagramFactorLinkIds();
+		links.add(linkRef.getObjectId());
+		getDiagramObject().setData(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, links.toString());
+		return linkRef;
+	}
 	
 	public BaseId createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
