@@ -60,7 +60,6 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.IntermediateResult;
-import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
@@ -435,12 +434,6 @@ public class ObjectManager
 		return foundObjects;
 	}
 	
-	public ORefList getStrategyRefsUpstreamOfObjective(ORef objectiveRef)
-	{
-		Objective objective = (Objective)findObject(objectiveRef);
-		return objective.getUpstreamNonDraftStrategies();
-	}
-
 	public ORefList getAllDiagramObjectRefs()
 	{
 		ORefList conceptualModels = getConceptualModelDiagramPool().getORefList();
