@@ -66,10 +66,10 @@ public class Objective extends Desire
 		return false;
 	}
 	
-	public ORefList getUpstreamNonDraftStrategies()
+	public ORefList getUpstreamNonDraftStrategies(DiagramObject diagram)
 	{
 		ORefList nonDraftStrategyRefs = new ORefList();
-		Factor[] upstreamFactors = getUpstreamFactors();
+		Factor[] upstreamFactors = getUpstreamFactors(diagram);
 		for(int i = 0; i < upstreamFactors.length; ++i)
 		{
 			Factor factor = upstreamFactors[i];

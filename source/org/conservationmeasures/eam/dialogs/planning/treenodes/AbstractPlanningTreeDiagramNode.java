@@ -69,7 +69,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			if(everythingInTree.contains(ref))
 				continue;
 			
-			children.add(new PlanningTreeObjectiveNode(project, ref));
+			children.add(new PlanningTreeObjectiveNode(project, diagram, ref));
 		}
 	}
 	
