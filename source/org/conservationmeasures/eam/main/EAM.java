@@ -399,7 +399,9 @@ public class EAM
 		File newLoadPath = getAlternateDirectory(relativePath);
 		if (newLoadPath.exists())
 		{
-			 return newLoadPath.toURL();
+			// NOTE: toURL was deprecated. I assume there is a cleaner replacement, 
+			// but this works.
+			return new URL("File://" + newLoadPath.getAbsolutePath());
 		}
 		EAM.logVerbose("File not found in external resource directory directory:" + newLoadPath);
 		return url;
