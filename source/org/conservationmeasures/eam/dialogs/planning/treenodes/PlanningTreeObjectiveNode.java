@@ -23,7 +23,7 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 		for(int i = 0; i < strategies.size(); ++i)
 			children.add(new PlanningTreeStrategyNode(project, strategies.get(i)));
 		
-		ORefList indicatorRefs = objective.getUpstreamIndicators();
+		ORefList indicatorRefs = objective.getUpstreamIndicators(diagram);
 		for(int i = 0; i < indicatorRefs.size(); ++i)
 			children.add(new PlanningTreeIndicatorNode(project, indicatorRefs.get(i)));
 	}
