@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -31,21 +30,6 @@ public class FactorCommandHelper
 		project = projectToUse;
 		currentModel = modelToUse;
 	}
-
-	private void addCreatedFactorToConceptualModel(int objectType, FactorId factorId, Point insertionLocation, Dimension size, String label) throws Exception
-	{
-    	if (!currentModel.getDiagramObject().isResultsChain())
-    		return;
-    	
-    	final int ONLY_CONCEPTUAL_MODEL_INDEX = 0;
-    	ORefList refList = getProject().getConceptualModelDiagramPool().getORefList();
-    	DiagramObject diagramObject = (DiagramObject) getProject().findObject(refList.get(ONLY_CONCEPTUAL_MODEL_INDEX));
-		
-
-    	DiagramFactorId createdDiagramFactorId = (DiagramFactorId) createDiagramFactor(diagramObject, objectType, factorId).getCreatedId();
-    	DiagramFactor createdDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, createdDiagramFactorId));
-    	setLocationSizeLabel(createdDiagramFactor, insertionLocation, size, label);
-	}
 	
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType, Point insertionLocation, Dimension size, String label) throws Exception
 	{
@@ -53,9 +37,6 @@ public class FactorCommandHelper
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createObjectCommand.getCreatedId();
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
 		setLocationSizeLabel(diagramFactor, insertionLocation, size, label);
-		
-		if (shouldTypeBeCopiedToConceptualModel(objectType))
-			addCreatedFactorToConceptualModel(objectType, diagramFactor.getWrappedId(), insertionLocation, size, label);
 		
 		return createObjectCommand;
 	}
@@ -92,11 +73,6 @@ public class FactorCommandHelper
 		return (FactorId) createFactorCommand.getCreatedId();
 	}
 
-	private boolean shouldTypeBeCopiedToConceptualModel(int objectType)
-	{
-		return ObjectType.STRATEGY == objectType;
-	}
-	
 	private void setLocationSizeLabel(DiagramFactor diagramFactor, Point insertionLocation, Dimension size, String label) throws CommandFailedException, Exception
 	{
 		setDiagramFactorSize(diagramFactor.getDiagramFactorId(), size);
