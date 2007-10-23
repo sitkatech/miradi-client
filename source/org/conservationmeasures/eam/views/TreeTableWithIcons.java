@@ -94,16 +94,14 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 	
 	public static Font getSharedTaskFont(Task task)
 	{
-		if (task.isMethod() && task.isShared())
-			return Renderer.getItalicBoldFont();
-		
-		if (task.isMethod())
-			return Renderer.getBoldFont();
-		
+		int style = Font.PLAIN;
 		if (task.isShared())
-			return Renderer.getItalicFont();
-		
-		return Renderer.getPlainFont();
+			style += Font.ITALIC;
+
+		if (task.isMethod())
+			style += Font.BOLD;
+				
+		return Renderer.deriveFont(style);
 	}
 	
 	public static Font getSharedTaskFont(TreeTableNode node)
@@ -249,25 +247,18 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		
 		public static Font getBoldFont()
 		{
-			Font defaultFont = EAM.mainWindow.getUserDataPanelFont();
-			return defaultFont.deriveFont(Font.BOLD);
+			return deriveFont(Font.BOLD);
 		}
 
 		public static Font getPlainFont()
 		{
-			return EAM.mainWindow.getUserDataPanelFont();
+			return deriveFont(Font.PLAIN);
 		}
 		
-		public static Font getItalicFont()
+		public static Font deriveFont(int style)
 		{
 			Font defaultFont = EAM.mainWindow.getUserDataPanelFont();
-			return defaultFont.deriveFont(Font.ITALIC);
-		}
-		
-		public static Font getItalicBoldFont()
-		{
-			Font defaultFont = EAM.mainWindow.getUserDataPanelFont();
-			return defaultFont.deriveFont(Font.BOLD + Font.ITALIC);
+			return defaultFont.deriveFont(style);
 		}
 
 		DefaultTreeCellRenderer targetRenderer;
