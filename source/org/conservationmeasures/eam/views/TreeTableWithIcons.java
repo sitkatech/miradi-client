@@ -97,6 +97,9 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		if (task.isMethod() && task.isShared())
 			return Renderer.getItalicBoldFont();
 		
+		if (task.isMethod())
+			return Renderer.getBoldFont();
+		
 		if (task.isShared())
 			return Renderer.getItalicFont();
 		
