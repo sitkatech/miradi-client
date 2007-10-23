@@ -10,7 +10,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 
-public class BoldedStrategyIndicatorTableTree extends TreeTableWithStateSaving
+public class BoldedStrategyIndicatorTableTree extends TreeTableWithColumnWidthSaving
 {
 	public BoldedStrategyIndicatorTableTree(Project projectToUse, GenericTreeTableModel treeTableModel)
 	{
