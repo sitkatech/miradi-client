@@ -772,9 +772,7 @@ public class Project
 	{
 		if(firingCommandExecutedEvents)
 		{
-			String notificationText = EAM.text("Attempt to execute command from command listener");
-			EAM.logError(notificationText);
-			EAM.notifyDialog(notificationText);
+			EAM.internalError(EAM.text("Attempt to execute command from command listener"));
 		}
 		try 
 		{

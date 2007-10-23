@@ -6,12 +6,14 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.Color;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -217,6 +219,30 @@ public class EAM
 	public static void logVerbose(String text)
 	{
 		logger.logVerbose(text);
+	}
+	
+	public static void internalError(String notificationText)
+	{
+		try
+		{
+			logError(notificationText);
+			throw new Exception(notificationText);
+		}
+		catch (Exception e)
+		{
+			logException(e);
+			notifyDialog(convertExceptionToString(e));
+		}
+	}
+
+	public static String convertExceptionToString(Exception exceptionToConvert)
+	{
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		PrintWriter printWriter = new PrintWriter(byteArrayOutputStream);
+		exceptionToConvert.printStackTrace(printWriter);
+		printWriter.close();
+
+		return byteArrayOutputStream.toString();
 	}
 	
 	private static final class MainWindowRunner implements Runnable
