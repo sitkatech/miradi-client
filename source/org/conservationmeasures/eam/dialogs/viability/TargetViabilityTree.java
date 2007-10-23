@@ -22,6 +22,11 @@ public class TargetViabilityTree extends TreeTableWithColumnWidthSaving
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setColumnWidths();
 	}
+	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
 
 	// NOTE: This code is duplicated in PlanningTreeTable...should they be combined?
 	private void setColumnWidths()
@@ -45,5 +50,5 @@ public class TargetViabilityTree extends TreeTableWithColumnWidthSaving
 		return 200;
 	}
 
-
+	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTreeTable";
 }
