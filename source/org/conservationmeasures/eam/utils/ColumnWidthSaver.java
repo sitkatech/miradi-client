@@ -3,13 +3,15 @@ package org.conservationmeasures.eam.utils;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JTable;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
+import org.conservationmeasures.eam.views.TreeTableWithColumnWidthSaving;
 
 public class ColumnWidthSaver extends MouseAdapter
 {
-	public ColumnWidthSaver(JTable tableToUse)
+	public ColumnWidthSaver(TreeTableWithColumnWidthSaving tableToUse)
 	{
 		table = tableToUse;
+		model = (GenericTreeTableModel) table.getModel();
 	}
 
 	public void mouseReleased(MouseEvent e)
@@ -19,11 +21,13 @@ public class ColumnWidthSaver extends MouseAdapter
 	
 	private void saveColumnWidths()
 	{
-		for (int i = 0; i < table.getColumnCount(); ++i)
-		{
+		for (int i = 0; i < model.getColumnCount(); ++i)
+		{		
+			model.getColumnTag(i);	
 			//FIXME save each width
 		}
 	}
 
-	private JTable table;
+	private TreeTableWithColumnWidthSaving table;
+	private GenericTreeTableModel model;
 }

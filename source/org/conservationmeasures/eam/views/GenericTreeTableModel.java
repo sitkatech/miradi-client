@@ -132,4 +132,5 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 		return node.getChildCount();
 	}
 	
+	abstract public String getColumnTag(int column);
 }
