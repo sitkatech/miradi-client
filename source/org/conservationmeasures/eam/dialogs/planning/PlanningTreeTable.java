@@ -30,6 +30,11 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 		setTableColumnRenderer();
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
+	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
 
 	public void rebuildTableCompletely()
 	{
@@ -126,4 +131,6 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 		TreeTableCellRenderer tree;
 		Project project;
 	}
+	
+	public static final String UNIQUE_IDENTIFIER = "PlanningTreeTable";
 }
