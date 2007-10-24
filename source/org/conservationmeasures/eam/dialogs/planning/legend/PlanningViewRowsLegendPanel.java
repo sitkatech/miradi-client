@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
+import org.conservationmeasures.eam.icons.ThreatReductionResultIcon;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -34,6 +35,7 @@ import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.RowManager;
 
@@ -71,6 +73,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		addIconLineWithCheckBox(panel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(panel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(panel, Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon());
+		addIconLineWithCheckBox(panel, ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon());
 		addIconLineWithCheckBox(panel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
 		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.ACTIVITY_NAME, actions.getObjectsAction(ActionTreeCreateActivityIconOnly.class), picker);
 		addIconLineWithCheckBox(panel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());

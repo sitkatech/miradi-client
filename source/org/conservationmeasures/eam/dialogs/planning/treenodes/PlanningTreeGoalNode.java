@@ -10,11 +10,13 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
@@ -30,7 +32,11 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
-		createAndAddChildren(extractDirectThreatRefs(goal.getUpstreamFactors(diagram)), diagram);
+		Factor[] upstreamFactors = goal.getUpstreamFactors(diagram);
+		if(diagram.isResultsChain())
+			createAndAddChildren(extractThreatReductionResultRefs(upstreamFactors), diagram);
+		else
+			createAndAddChildren(extractDirectThreatRefs(upstreamFactors), diagram);
 		
 		addMissingUpstreamObjectives(diagram);
 		addMissingUpstreamNonDraftStrategies(diagram);
@@ -43,6 +49,7 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 				Strategy.getObjectType(),
 				Indicator.getObjectType(),
 				Cause.getObjectType(),
+				ThreatReductionResult.getObjectType(),
 				Objective.getObjectType(),
 				Task.getObjectType(),
 			};
