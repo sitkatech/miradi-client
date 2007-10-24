@@ -95,8 +95,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	private void addResultsChainDiagrams() throws Exception
 	{
 		ORefList resultsChainRefs = project.getResultsChainDiagramPool().getORefList();
-		for(int i = 0; i < resultsChainRefs.size(); ++i)
-			createAndAddChild(resultsChainRefs.get(i), null);
+		createAndAddChildren(resultsChainRefs, null);
 	}
 
 }

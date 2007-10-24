@@ -22,11 +22,7 @@ public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		ORefList pageRefs = project.getConceptualModelDiagramPool().getORefList();
-		for(int i = 0; i < pageRefs.size(); ++i)
-		{
-			createAndAddChild(pageRefs.get(i), null);
-		}
-		
+		createAndAddChildren(pageRefs, null);
 	}
 	
 	public BaseObject getObject()
