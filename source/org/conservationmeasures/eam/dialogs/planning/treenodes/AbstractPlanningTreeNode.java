@@ -187,25 +187,20 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 
 	protected void addMissingStrategiesAsChildren() throws Exception
 	{
-		HashSet<ORef> everythingInTree = getAllRefsInTree();
-		ORefList upstreamStrategyRefs = getPotentialChildrenStrategyRefs();
-		for(int i = 0; i < upstreamStrategyRefs.size(); ++i)
-		{
-			ORef ref = upstreamStrategyRefs.get(i);
-			if(everythingInTree.contains(ref))
-				continue;
-			
-			createAndAddChild(ref, null);
-		}
+		addMissingChildren(getPotentialChildrenStrategyRefs());
 	}
 
 	protected void addMissingIndicatorsAsChildren() throws Exception
 	{
+		addMissingChildren(getPotentialChildrenIndicatorRefs());
+	}
+
+	private void addMissingChildren(ORefList potentialChildRefs) throws Exception
+	{
 		HashSet<ORef> everythingInTree = getAllRefsInTree();
-		ORefList potentialChildrenIndicatorRefs = getPotentialChildrenIndicatorRefs();
-		for(int i = 0; i < potentialChildrenIndicatorRefs.size(); ++i)
+		for(int i = 0; i < potentialChildRefs.size(); ++i)
 		{
-			ORef ref = potentialChildrenIndicatorRefs.get(i);
+			ORef ref = potentialChildRefs.get(i);
 			if(everythingInTree.contains(ref))
 				continue;
 			
