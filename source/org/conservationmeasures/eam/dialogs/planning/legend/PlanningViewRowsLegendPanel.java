@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
+import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -29,6 +30,7 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.RowManager;
@@ -63,6 +65,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 
 		addSeparator(panel);
 		
+		addIconLineWithCheckBox(panel, Target.getObjectType(), Target.OBJECT_NAME, new TargetIcon());
 		addIconLineWithCheckBox(panel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(panel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(panel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());

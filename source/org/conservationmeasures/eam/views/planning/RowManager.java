@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -24,6 +25,7 @@ public class RowManager
 		CodeList masterRowList = new CodeList();
 		masterRowList.add(ConceptualModelDiagram.OBJECT_NAME);
 		masterRowList.add(ResultsChainDiagram.OBJECT_NAME);
+		masterRowList.add(Target.OBJECT_NAME);
 		masterRowList.add(Goal.OBJECT_NAME);
 		masterRowList.add(Objective.OBJECT_NAME);
 		masterRowList.add(Strategy.OBJECT_NAME);

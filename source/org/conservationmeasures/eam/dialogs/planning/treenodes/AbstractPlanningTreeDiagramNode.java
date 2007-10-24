@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 
 
@@ -28,8 +29,15 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 
 	public void rebuild() throws Exception
 	{
-		ORefList goalRefs = object.getAllGoalRefs();
-		addGoalsAsChildren(goalRefs);
+		ORefList diagramFactorRefs = object.getAllDiagramFactorRefs();
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor)project.findObject(diagramFactorRefs.get(i));
+			if(diagramFactor.getWrappedType() != Target.getObjectType())
+				continue;
+			
+			children.add(new PlanningTreeTargetNode(project, object, diagramFactor.getWrappedORef()));
+		}
 		addMissingObjectivesAsChildren(object);
 		addMissingStrategiesAsChildren();
 		addMissingIndicatorsAsChildren();
@@ -56,14 +64,6 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		return page.getAllObjectiveRefs().contains(refToAdd);
 	}
 
-	protected void addGoalsAsChildren(ORefList goalRefs) throws Exception
-	{
-		for(int i = 0; i < goalRefs.size(); ++i)
-		{
-			children.add(new PlanningTreeGoalNode(project, object, goalRefs.get(i)));
-		}
-	}
-	
 	protected void addMissingObjectivesAsChildren(DiagramObject diagram) throws Exception
 	{
 		HashSet<ORef> everythingInTree = getAllRefsInTree();

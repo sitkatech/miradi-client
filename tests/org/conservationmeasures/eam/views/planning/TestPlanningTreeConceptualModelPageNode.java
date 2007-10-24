@@ -18,6 +18,6 @@ public class TestPlanningTreeConceptualModelPageNode extends TestPlanningTree
 	{
 		PlanningTreeConceptualModelPageNode node = new PlanningTreeConceptualModelPageNode(project, project.getDiagramObject().getRef());
 		assertEquals(1, node.getChildCount());
-		assertEquals(getGoal().getRef(), node.getChild(0).getObjectReference());
+		assertEquals(getTarget().getRef(), node.getChild(0).getObjectReference());
 	}
 }
