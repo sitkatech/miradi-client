@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -167,6 +168,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			Target.getObjectType(),
 			Goal.getObjectType(),
 			Cause.getObjectType(),
+			ThreatReductionResult.getObjectType(),
 			Objective.getObjectType(),
 			Strategy.getObjectType(),
 			Indicator.getObjectType(),
@@ -218,6 +220,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeObjectiveNode(project, diagram, refToAdd);
 		if(type == Cause.getObjectType())
 			return new PlanningTreeDirectThreatNode(project, diagram, refToAdd);
+		if(type == ThreatReductionResult.getObjectType())
+			return new PlanningTreeThreatReductionResultNode(project, diagram, refToAdd);
 		if(type == Strategy.getObjectType())
 			return new PlanningTreeStrategyNode(project, refToAdd);
 		if(type == Indicator.getObjectType())
@@ -242,6 +246,21 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			upstreamDirectThreatRefs.add(factor.getRef());
 		}
 		return upstreamDirectThreatRefs;
+	}
+
+	protected ORefList extractThreatReductionResultRefs(Factor[] factors)
+	{
+		// FIXME: Probably should use a HashSet to avoid dupes
+		ORefList upstreamThreatReductionResultRefs = new ORefList();
+		for(int i = 0; i < factors.length; ++i)
+		{
+			Factor factor = factors[i];
+			if(!factor.isThreatReductionResult())
+				continue;
+			
+			upstreamThreatReductionResultRefs.add(factor.getRef());
+		}
+		return upstreamThreatReductionResultRefs;
 	}
 
 	protected ORefList extractNonDraftStrategyRefs(Factor[] factors)
@@ -291,6 +310,16 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected void addMissingUpstreamObjectives(DiagramObject diagram) throws Exception
 	{
 		addMissingChildren(extractObjectiveRefs(getObject().getUpstreamFactors(diagram)), diagram);
+	}
+
+	protected void addMissingUpstreamDirectThreats(DiagramObject diagram) throws Exception
+	{
+		addMissingChildren(extractDirectThreatRefs(getObject().getUpstreamFactors(diagram)), diagram);
+	}
+
+	protected void addMissingUpstreamThreatReductionResults(DiagramObject diagram) throws Exception
+	{
+		addMissingChildren(extractThreatReductionResultRefs(getObject().getUpstreamFactors(diagram)), diagram);
 	}
 
 	protected void addMissingUpstreamNonDraftStrategies(DiagramObject diagram) throws Exception

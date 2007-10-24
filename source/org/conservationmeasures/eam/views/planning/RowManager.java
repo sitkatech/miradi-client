@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.CodeList;
 
@@ -30,6 +31,7 @@ public class RowManager
 		masterRowList.add(Goal.OBJECT_NAME);
 		masterRowList.add(Objective.OBJECT_NAME);
 		masterRowList.add(Cause.OBJECT_NAME_THREAT);
+		masterRowList.add(ThreatReductionResult.OBJECT_NAME);
 		masterRowList.add(Strategy.OBJECT_NAME);
 		masterRowList.add(Task.ACTIVITY_NAME);
 		masterRowList.add(Indicator.OBJECT_NAME);
