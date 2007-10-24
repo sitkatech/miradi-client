@@ -10,11 +10,12 @@ import javax.swing.tree.TreePath;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
 import com.java.sun.jtreetable.TreeTableModel;
 
-public abstract class GenericTreeTableModel extends AbstractTreeTableModel
+public abstract class GenericTreeTableModel extends AbstractTreeTableModel implements ColumnTagProvider
 {
 	
 	public GenericTreeTableModel(Object root)
@@ -131,6 +132,4 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 		TreeTableNode node = (TreeTableNode)rawNode;
 		return node.getChildCount();
 	}
-	
-	abstract public String getColumnTag(int column);
 }
