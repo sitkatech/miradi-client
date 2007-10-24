@@ -29,23 +29,23 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 
 	public void rebuild() throws Exception
 	{
-		ORefList diagramFactorRefs = object.getAllDiagramFactorRefs();
+		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor)project.findObject(diagramFactorRefs.get(i));
 			if(diagramFactor.getWrappedType() != Target.getObjectType())
 				continue;
 			
-			children.add(new PlanningTreeTargetNode(project, object, diagramFactor.getWrappedORef()));
+			children.add(new PlanningTreeTargetNode(project, diagramObject, diagramFactor.getWrappedORef()));
 		}
-		addMissingObjectivesAsChildren(object);
+		addMissingObjectivesAsChildren(diagramObject);
 		addMissingStrategiesAsChildren();
 		addMissingIndicatorsAsChildren();
 	}
 
 	public BaseObject getObject()
 	{
-		return object;
+		return diagramObject;
 	}
 
 	boolean isGoalOnThisPage(DiagramObject page, ORef refToAdd)
@@ -78,10 +78,10 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		}
 	}
 	
-	protected ORefList getPotentialChildStrategyRefs(DiagramObject diagram)
+	protected ORefList getPotentialChildrenStrategyRefs()
 	{
 		ORefList strategyRefs = new ORefList();
-		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
+		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(diagramFactorRefs.get(i));
@@ -99,11 +99,11 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		
 		return strategyRefs;
 	}
-	
-	protected ORefList getPotentialChildrenIndicatorRefs(DiagramObject diagram)
+
+	protected ORefList getPotentialChildrenIndicatorRefs()
 	{
 		ORefList potentialChildrenRefs = new ORefList();
-		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
+		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(diagramFactorRefs.get(i));
@@ -116,15 +116,5 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		return potentialChildrenRefs;
 	}
 
-	protected ORefList getPotentialChildrenStrategyRefs()
-	{
-		return getPotentialChildStrategyRefs(object);
-	}
-
-	protected ORefList getPotentialChildrenIndicatorRefs()
-	{
-		return getPotentialChildrenIndicatorRefs(object);
-	}
-
-	protected DiagramObject object;
+	protected DiagramObject diagramObject;
 }
