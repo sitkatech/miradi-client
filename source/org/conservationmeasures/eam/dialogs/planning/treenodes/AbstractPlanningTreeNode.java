@@ -87,16 +87,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return refs;
 	}
 	
-	protected ORefList getPotentialChildrenStrategyRefs()
-	{
-		return new ORefList();
-	}
-
-	protected ORefList getPotentialChildrenIndicatorRefs()
-	{
-		return new ORefList();
-	}
-	
 	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
 	{
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector();
@@ -186,17 +176,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return children;
 	}
 
-	protected void addMissingStrategiesAsChildren() throws Exception
-	{
-		addMissingChildren(getPotentialChildrenStrategyRefs());
-	}
-
-	protected void addMissingIndicatorsAsChildren() throws Exception
-	{
-		addMissingChildren(getPotentialChildrenIndicatorRefs());
-	}
-
-	private void addMissingChildren(ORefList potentialChildRefs) throws Exception
+	protected void addMissingChildren(ORefList potentialChildRefs) throws Exception
 	{
 		HashSet<ORef> everythingInTree = getAllRefsInTree();
 		for(int i = 0; i < potentialChildRefs.size(); ++i)
