@@ -22,10 +22,20 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		super(projectToUse);
 		task = (Task)project.findObject(taskRef);
 		
+		rebuild();
+	}
+
+	public void rebuild() throws Exception
+	{
+		// NOTE: Speed optimization
 		ViewData viewData = project.getCurrentViewData();
 		CodeList objectTypesToShow = RowManager.getVisibleRowCodes(viewData);
-		if(objectTypesToShow.contains(Task.OBJECT_NAME))
-			addAllSubtasks();
+		if(!objectTypesToShow.contains(Task.OBJECT_NAME))
+			return;
+		
+		ORefList subtaskRefs = task.getSubtasks();
+		for(int i = 0; i < subtaskRefs.size(); ++i)
+			createAndAddChild(subtaskRefs.get(i), null);
 	}
 
 	public boolean attemptToAdd(ORef refToAdd)
@@ -41,13 +51,6 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	boolean shouldSortChildren()
 	{
 		return false;
-	}
-
-	private void addAllSubtasks() throws Exception
-	{
-		ORefList subtaskRefs = task.getSubtasks();
-		for(int i = 0; i < subtaskRefs.size(); ++i)
-			createAndAddChild(subtaskRefs.get(i), null);
 	}
 
 	Task task;
