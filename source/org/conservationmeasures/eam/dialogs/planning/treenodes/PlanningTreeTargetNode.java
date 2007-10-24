@@ -21,7 +21,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	public PlanningTreeTargetNode(Project projectToUse, DiagramObject diagramToUse, ORef targetRef) throws Exception
 	{
 		super(projectToUse);
-		diagram = diagramToUse;
+		diagramObject = diagramToUse;
 		target = (Target)project.findObject(targetRef);
 		rebuild();
 	}
@@ -29,7 +29,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		ORefList goals = target.getOwnedObjects(Goal.getObjectType());
-		createAndAddChildren(goals, diagram);
+		createAndAddChildren(goals, diagramObject);
 		
 		addMissingChildren(getPotentialChildrenStrategyRefs());
 		addMissingChildren(getPotentialChildrenIndicatorRefs());
@@ -37,12 +37,12 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	
 	protected ORefList getPotentialChildrenStrategyRefs()
 	{
-		return extractNonDraftStrategyRefs(target.getUpstreamFactors(diagram));
+		return extractNonDraftStrategyRefs(target.getUpstreamFactors(diagramObject));
 	}
 
 	protected ORefList getPotentialChildrenIndicatorRefs()
 	{
-		return extractIndicatorRefs(target.getUpstreamFactors(diagram));
+		return extractIndicatorRefs(target.getUpstreamFactors(diagramObject));
 	}
 	
 	int[] getNodeSortOrder()
@@ -60,6 +60,6 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 		return target;
 	}
 
-	DiagramObject diagram;
+	DiagramObject diagramObject;
 	Target target;
 }
