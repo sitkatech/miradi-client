@@ -16,7 +16,7 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
 
-public class TableWithHelperMethods extends PanelTable
+abstract public class TableWithHelperMethods extends PanelTable
 {
 	public TableWithHelperMethods()
 	{

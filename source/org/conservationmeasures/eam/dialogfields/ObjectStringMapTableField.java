@@ -28,7 +28,7 @@ import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
 import org.conservationmeasures.eam.utils.StringMapData;
-import org.conservationmeasures.eam.utils.TableWithHelperMethods;
+import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 import org.martus.swing.UiScrollPane;
 
 public class ObjectStringMapTableField extends ObjectDataInputField
@@ -134,7 +134,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	}
 	
 	
-	class MyTable extends TableWithHelperMethods
+	class MyTable extends TableWithColumnWidthSaver
 	{
 		public MyTable(DefaultTableModel model)
 		{
