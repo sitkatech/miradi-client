@@ -25,6 +25,7 @@ import javax.swing.tree.TreeSelectionModel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.ConceptualModelIcon;
+import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
@@ -124,6 +125,12 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			targetRenderer.setLeafIcon(new TargetIcon());
 			targetRenderer.setFont(getBoldFont());
 
+			directThreatRenderer = new DefaultTreeCellRenderer();
+			directThreatRenderer.setClosedIcon(new DirectThreatIcon());
+			directThreatRenderer.setOpenIcon(new DirectThreatIcon());
+			directThreatRenderer.setLeafIcon(new DirectThreatIcon());
+			directThreatRenderer.setFont(getPlainFont());
+
 			strategyRenderer = new DefaultTreeCellRenderer();
 			strategyRenderer.setClosedIcon(new StrategyIcon());
 			strategyRenderer.setOpenIcon(new StrategyIcon());
@@ -208,6 +215,8 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 				renderer = resultsChainRenderer;
 			else if(node.getType() == ObjectType.TARGET)
 				renderer = targetRenderer;
+			else if(node.getType() == ObjectType.CAUSE)
+				renderer = directThreatRenderer;
 			else if(node.getType() == ObjectType.INDICATOR)
 				renderer = indicatorRenderer;
 			else if(node.getType() == ObjectType.STRATEGY)
@@ -275,6 +284,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		DefaultTreeCellRenderer factorRenderer;
 		DefaultTreeCellRenderer stringNoIconRenderer;
 		DefaultTreeCellRenderer keyEcologicalAttributeRenderer;
+		DefaultTreeCellRenderer directThreatRenderer;
 	}
 
 	class NonEditableTreeTableCellEditor extends TreeTableCellEditor
