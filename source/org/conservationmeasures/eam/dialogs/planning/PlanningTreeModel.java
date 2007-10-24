@@ -28,7 +28,6 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	public void rebuildCodeList() throws Exception
 	{
 		columnsToShow = new CodeList();
-		final String DEFAULT_COLUMN = "Item";
 		columnsToShow.add(DEFAULT_COLUMN);
 		columnsToShow.addAll(ColumnManager.getVisibleColumnCodes(project.getCurrentViewData()));
 		
@@ -78,6 +77,6 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		return columnsToShow;	
 	}
 	
-	Project project;
-	CodeList columnsToShow;	
+	private Project project;
+	private CodeList columnsToShow;
 }

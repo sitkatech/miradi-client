@@ -132,4 +132,6 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		TreeTableNode node = (TreeTableNode)rawNode;
 		return node.getChildCount();
 	}
+	
+	public static final String DEFAULT_COLUMN = "Item";
 }
