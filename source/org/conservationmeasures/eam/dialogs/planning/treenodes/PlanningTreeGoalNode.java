@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -43,18 +42,9 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 
 	protected ORefList getPotentialChildrenIndicatorRefs()
 	{
-		// FIXME: Probably should use a HashSet to avoid dupes
-		ORefList potentialChildIndicatorRefs = new ORefList();
-		Factor[] upstreamFactors = goal.getUpstreamFactors(diagram);
-		for(int i = 0; i < upstreamFactors.length; ++i)
-		{
-			Factor factor = upstreamFactors[i];
-			ORefList indicatorRefs = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
-			potentialChildIndicatorRefs.addAll(indicatorRefs);
-		}
-		return potentialChildIndicatorRefs;
+		return extractIndicatorRefs(goal.getUpstreamFactors(diagram));
 	}
-	
+
 	int[] getNodeSortOrder()
 	{
 		return new int[] {

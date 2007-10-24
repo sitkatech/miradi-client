@@ -262,6 +262,19 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return upstreamStrategyRefs;
 	}
 
+	protected ORefList extractIndicatorRefs(Factor[] upstreamFactors)
+	{
+		// FIXME: Probably should use a HashSet to avoid dupes
+		ORefList potentialChildIndicatorRefs = new ORefList();
+		for(int i = 0; i < upstreamFactors.length; ++i)
+		{
+			Factor factor = upstreamFactors[i];
+			ORefList indicatorRefs = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
+			potentialChildIndicatorRefs.addAll(indicatorRefs);
+		}
+		return potentialChildIndicatorRefs;
+	}
+
 	protected Project project;
 	protected Vector<AbstractPlanningTreeNode> children;
 }
