@@ -5,8 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeGoalNode;
 
 public class TestPlanningTreeGoalNode extends TestPlanningTree
 {
@@ -17,8 +16,8 @@ public class TestPlanningTreeGoalNode extends TestPlanningTree
 	
 	public void testPlanningTreeGoalNodes() throws Exception
 	{
-		ORefList objectiveRefs = getGoal().getUpstreamObjectives(project.getDiagramObject());
-		assertEquals("wrong objective count?", 1, objectiveRefs.size());
-		assertEquals("wrong type returned?", Objective.getObjectType(), objectiveRefs.get(0).getObjectType());
+		PlanningTreeGoalNode node = new PlanningTreeGoalNode(project, project.getDiagramObject(), getGoal().getRef());
+		assertEquals("wrong child count?", 1, node.getChildCount());
+		assertEquals("wrong child?", getObjective().getRef(), node.getChild(0).getObjectReference());
 	}
 }
