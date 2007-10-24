@@ -18,6 +18,6 @@ public class TestPlanningTreeGoalNode extends TestPlanningTree
 	{
 		PlanningTreeGoalNode node = new PlanningTreeGoalNode(project, project.getDiagramObject(), getGoal().getRef());
 		assertEquals("wrong child count?", 1, node.getChildCount());
-		assertEquals("wrong child?", getObjective().getRef(), node.getChild(0).getObjectReference());
+		assertEquals("wrong child?", getThreat().getRef(), node.getChild(0).getObjectReference());
 	}
 }

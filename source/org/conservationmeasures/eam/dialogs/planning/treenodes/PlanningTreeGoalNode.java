@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -29,8 +30,9 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
-		createAndAddChildren(goal.getUpstreamObjectives(diagram), diagram);
+		createAndAddChildren(extractDirectThreatRefs(goal.getUpstreamFactors(diagram)), diagram);
 		
+		addMissingUpstreamObjectives(diagram);
 		addMissingUpstreamNonDraftStrategies(diagram);
 		addMissingUpstreamIndicators(diagram);
 	}
@@ -40,6 +42,7 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 		return new int[] {
 				Strategy.getObjectType(),
 				Indicator.getObjectType(),
+				Cause.getObjectType(),
 				Objective.getObjectType(),
 				Task.getObjectType(),
 			};

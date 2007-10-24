@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -165,6 +166,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			ResultsChainDiagram.getObjectType(),
 			Target.getObjectType(),
 			Goal.getObjectType(),
+			Cause.getObjectType(),
 			Objective.getObjectType(),
 			Strategy.getObjectType(),
 			Indicator.getObjectType(),
@@ -214,6 +216,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeGoalNode(project, diagram, refToAdd);
 		if(type == Objective.getObjectType())
 			return new PlanningTreeObjectiveNode(project, diagram, refToAdd);
+		if(type == Cause.getObjectType())
+			return new PlanningTreeDirectThreatNode(project, diagram, refToAdd);
 		if(type == Strategy.getObjectType())
 			return new PlanningTreeStrategyNode(project, refToAdd);
 		if(type == Indicator.getObjectType())
@@ -223,6 +227,21 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		
 		
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
+	}
+
+	protected ORefList extractDirectThreatRefs(Factor[] factors)
+	{
+		// FIXME: Probably should use a HashSet to avoid dupes
+		ORefList upstreamDirectThreatRefs = new ORefList();
+		for(int i = 0; i < factors.length; ++i)
+		{
+			Factor factor = factors[i];
+			if(!factor.isDirectThreat())
+				continue;
+			
+			upstreamDirectThreatRefs.add(factor.getRef());
+		}
+		return upstreamDirectThreatRefs;
 	}
 
 	protected ORefList extractNonDraftStrategyRefs(Factor[] factors)

@@ -9,41 +9,36 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
+public class PlanningTreeDirectThreatNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeTargetNode(Project projectToUse, DiagramObject diagramToUse, ORef targetRef) throws Exception
+	public PlanningTreeDirectThreatNode(Project projectToUse, DiagramObject diagramToUse, ORef threatRef) throws Exception
 	{
 		super(projectToUse);
 		diagramObject = diagramToUse;
-		target = (Target)project.findObject(targetRef);
+		threat = (Cause)project.findObject(threatRef);
 		rebuild();
 	}
 	
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
-		createAndAddChildren(target.getOwnedObjects(Goal.getObjectType()), diagram);
+		createAndAddChildren(threat.getUpstreamObjectives(diagram), diagram);
 		
-		addMissingUpstreamObjectives(diagram);
 		addMissingUpstreamNonDraftStrategies(diagram);
 		addMissingUpstreamIndicators(diagram);
 	}
-	
+
 	int[] getNodeSortOrder()
 	{
 		return new int[] {
-				Goal.getObjectType(),
 				Strategy.getObjectType(),
 				Indicator.getObjectType(),
-				Cause.getObjectType(),
 				Objective.getObjectType(),
 				Task.getObjectType(),
 			};
@@ -51,9 +46,9 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 
 	public BaseObject getObject()
 	{
-		return target;
+		return threat;
 	}
 
 	DiagramObject diagramObject;
-	Target target;
+	Cause threat;
 }
