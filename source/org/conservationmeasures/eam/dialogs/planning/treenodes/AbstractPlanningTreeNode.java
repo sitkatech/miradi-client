@@ -163,6 +163,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return new int[] {
 			ConceptualModelDiagram.getObjectType(),
 			ResultsChainDiagram.getObjectType(),
+			Target.getObjectType(),
 			Goal.getObjectType(),
 			Objective.getObjectType(),
 			Strategy.getObjectType(),

@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
@@ -42,6 +43,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 				Strategy.getObjectType(),
 				Indicator.getObjectType(),
 				Objective.getObjectType(),
+				Task.getObjectType(),
 			};
 	}
 
