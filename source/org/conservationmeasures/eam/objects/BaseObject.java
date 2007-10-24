@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTextBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
@@ -840,6 +841,26 @@ abstract public class BaseObject
 			ownerRef = owner.getOwnerRef();
 		}
 		return null;
+	}
+
+	public ORefList getUpstreamObjectives(DiagramObject diagram)
+	{
+		ORefList objectiveRefs = new ORefList();
+		
+		Factor[] upstreamFactors = getUpstreamFactors(diagram);
+		for(int i = 0; i < upstreamFactors.length; ++i)
+		{
+			IdList objectiveIds = upstreamFactors[i].getObjectives();
+			for(int idIndex = 0; idIndex < objectiveIds.size(); ++idIndex)
+			{
+				BaseId objectiveId = objectiveIds.get(idIndex);
+				if(objectiveId.isInvalid())
+					continue;
+	
+				objectiveRefs.add(new ORef(Objective.getObjectType(), objectiveId));
+			}
+		}
+		return objectiveRefs;
 	}
 
 	//FIXME move these classes into their own class in order to avoid dup code and inner classes
