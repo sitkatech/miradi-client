@@ -324,6 +324,12 @@ public class Project
 		return objectManager.findNode(nodeId);
 	}
 	
+	public Factor findFactor(ORef factorRef)
+	{
+		return objectManager.findFactor(factorRef);
+	}
+
+	
 	public ProjectInfo getProjectInfo()
 	{
 		return projectInfo;
@@ -1114,5 +1120,6 @@ public class Project
 	
 	// FIXME: This should go away, but it's difficult
 	String currentViewName;
+
 }
 
