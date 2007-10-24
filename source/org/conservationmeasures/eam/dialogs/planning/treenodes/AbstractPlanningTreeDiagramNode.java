@@ -39,8 +39,8 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			createAndAddChild(diagramFactor.getWrappedORef(), diagramObject);
 		}
 		addMissingObjectivesAsChildren(diagramObject);
-		addMissingStrategiesAsChildren();
-		addMissingIndicatorsAsChildren();
+		addMissingChildren(getPotentialChildrenStrategyRefs());
+		addMissingChildren(getPotentialChildrenIndicatorRefs());
 	}
 
 	public BaseObject getObject()
