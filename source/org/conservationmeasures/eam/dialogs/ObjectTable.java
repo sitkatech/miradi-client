@@ -42,28 +42,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		ColumnSortListener sortListener = new ColumnSortListener(this);
 		columnHeader.addMouseListener(sortListener);
 		resizeTable(4);
-		setColumnWidths();
-	}
-	
-	public void setColumnWidths()
-	{
 		setAutoResizeMode(AUTO_RESIZE_OFF);
-		ObjectTableModel model = getObjectTableModel();
-		for(int col = 0; col < getColumnCount(); ++col)
-		{
-			switch(ColumnTypes.getColumnType(model.getRowObjectType(), model.getColumnTag(col)))
-			{
-				case ColumnTypes.COLUMN_TYPE_SHORT_LABEL:
-					setColumnWidth(col, Math.max(getColumnHeaderWidth(col),72));
-					break;
-				case ColumnTypes.COLUMN_TYPE_ITEM_LIST:
-					setColumnWidth(col, 300);
-					break;
-				default:
-					setColumnWidth(col, 216);
-					break;
-			}
-		}
 	}
 	
 	public void scrollToAndSelectRow(int row)
