@@ -125,6 +125,7 @@ import org.conservationmeasures.eam.views.planning.TestPlanningTreeIndicatorNode
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeMetadataGoals;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeObjectiveNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeStrategyNode;
+import org.conservationmeasures.eam.views.planning.TestPlanningTreeTargetNode;
 import org.conservationmeasures.eam.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
@@ -286,6 +287,7 @@ public class MainTests extends TestCase
 		
 		// view.planning package
 		suite.addTest(new TestSuite(TestPlanningTreeGoalNode.class));
+		suite.addTest(new TestSuite(TestPlanningTreeTargetNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeConceptualModelPageNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeObjectiveNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeStrategyNode.class));
