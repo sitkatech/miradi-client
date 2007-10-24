@@ -15,7 +15,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
 import javax.swing.text.JTextComponent;
@@ -26,6 +25,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.utils.GenericDefaultTableModel;
 import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
 import org.conservationmeasures.eam.utils.StringMapData;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
@@ -39,7 +39,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		question = questionToUse;
 		String[][] data = new String[][]{{}};
 		String[] names = getColumnNames(questionToUse);
-		table = new MyTable(new DefaultTableModel(data,names));
+		table = new MyTable(new GenericDefaultTableModel(data,names));
 		addFocusListener();
 		table.setRowHeight(20);
 	    table.getModel().addTableModelListener(new TableChangeHandler());
@@ -136,7 +136,7 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 	
 	class MyTable extends TableWithColumnWidthSaver
 	{
-		public MyTable(DefaultTableModel model)
+		public MyTable(GenericDefaultTableModel model)
 		{
 			super(model);
 			setSingleCellEditor();

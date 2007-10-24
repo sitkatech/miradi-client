@@ -13,10 +13,11 @@ import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
+import org.conservationmeasures.eam.utils.ColumnTagProvider;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 
-abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewAbstractAssignmentTabelModel
+abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewAbstractAssignmentTabelModel implements ColumnTagProvider
 {
 	public PlanningViewAbstractBudgetTableModel(Project projectToUse) throws Exception
 	{
@@ -74,6 +75,11 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
 		dateRangeEffort = effortList.getEffortForDateRange(dateRange);
 		return dateRangeEffort;
+	}
+	
+	public String getColumnTag(int column)
+	{
+		return getColumnName(column);
 	}
 	
 	protected DateRange[] dateRanges;

@@ -34,11 +34,11 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
+import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.conservationmeasures.eam.views.diagram.LinkDeletor;
 
-public class ThreatMatrixTable extends TableWithColumnWidthSaver
+public class ThreatMatrixTable extends TableWithHelperMethods
 {
 	public ThreatMatrixTable(ThreatMatrixTableModel model, ThreatGridPanel panel)
 	{

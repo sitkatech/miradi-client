@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.JComponent;
-import javax.swing.table.DefaultTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -17,6 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.GenericDefaultTableModel;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.utils.SimpleTableWithInheritedFunctionality;
 
@@ -25,7 +25,7 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 	public ObjectReadonlyObjectList(Project projectToUse, int objectTypeToUse, BaseId idToUse, String tagToUse)
 	{
 		super(projectToUse, objectTypeToUse, idToUse, tagToUse);
-		model = new DefaultTableModel();
+		model = new GenericDefaultTableModel();
 		model.setColumnCount(1);
 		table = new SimpleTableWithInheritedFunctionality(model);
 		setDefaultFieldBorder();
@@ -81,6 +81,6 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 		return table;
 	}
 	
-	private DefaultTableModel model;
+	private GenericDefaultTableModel model;
 	private SimpleTableWithInheritedFunctionality table;
 }
