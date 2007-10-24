@@ -14,13 +14,13 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 {
 	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, FactorId targetId)
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(projectToUse, new TargetViabilityRoot(projectToUse, targetId));
+		ViabilityTreeModel model = new ViabilityTreeModel(new TargetViabilityRoot(projectToUse, targetId));
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
 	}
 
 	public static TargetViabililtyTreePanel createTargetViabilityPoolPanel(MainWindow mainWindowToUse, Project projectToUse)
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(projectToUse, new ViabilityRoot(projectToUse));
+		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(projectToUse));
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
 	}
 
