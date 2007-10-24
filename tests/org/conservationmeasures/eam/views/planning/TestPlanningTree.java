@@ -87,6 +87,11 @@ abstract public class TestPlanningTree extends EAMTestCase
 		return (Task) project.findObject(new ORef(Task.getObjectType(), subtaskId));
 	}
 	
+	public Target getTarget()
+	{
+		return (Target) project.findObject(diagramTarget.getWrappedORef());
+	}
+	
 	public ProjectMetadata getProjectMetadata()
 	{
 		return projectMetadata;
