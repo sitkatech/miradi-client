@@ -31,18 +31,18 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 		ORefList objectives = goal.getUpstreamObjectives(diagramObject);
 		createAndAddChildren(objectives, diagramObject);
 		
-		addMissingChildren(getPotentialChildrenStrategyRefs());
-		addMissingChildren(getPotentialChildrenIndicatorRefs());
+		addMissingChildren(getPotentialChildrenStrategyRefs(diagramObject));
+		addMissingChildren(getPotentialChildrenIndicatorRefs(diagramObject));
 	}
 	
-	protected ORefList getPotentialChildrenStrategyRefs()
+	protected ORefList getPotentialChildrenStrategyRefs(DiagramObject diagram)
 	{
-		return extractNonDraftStrategyRefs(goal.getUpstreamFactors(diagramObject));
+		return extractNonDraftStrategyRefs(getObject().getUpstreamFactors(diagram));
 	}
 
-	protected ORefList getPotentialChildrenIndicatorRefs()
+	protected ORefList getPotentialChildrenIndicatorRefs(DiagramObject diagram)
 	{
-		return extractIndicatorRefs(goal.getUpstreamFactors(diagramObject));
+		return extractIndicatorRefs(getObject().getUpstreamFactors(diagram));
 	}
 
 	int[] getNodeSortOrder()
