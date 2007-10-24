@@ -5,6 +5,7 @@ import org.conservationmeasures.eam.dialogs.planning.StrategicRowColumnProvider;
 import org.conservationmeasures.eam.dialogs.planning.WorkPlanRowColumnProvider;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -28,6 +29,7 @@ public class RowManager
 		masterRowList.add(Target.OBJECT_NAME);
 		masterRowList.add(Goal.OBJECT_NAME);
 		masterRowList.add(Objective.OBJECT_NAME);
+		masterRowList.add(Cause.OBJECT_NAME_THREAT);
 		masterRowList.add(Strategy.OBJECT_NAME);
 		masterRowList.add(Task.ACTIVITY_NAME);
 		masterRowList.add(Indicator.OBJECT_NAME);

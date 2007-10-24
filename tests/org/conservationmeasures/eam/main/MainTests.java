@@ -120,6 +120,7 @@ import org.conservationmeasures.eam.views.budget.ImportAccountingCodesDoerTest;
 import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeActivityNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeConceptualModelPageNode;
+import org.conservationmeasures.eam.views.planning.TestPlanningTreeDirectThreatNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeGoalNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeIndicatorNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeMetadataGoals;
@@ -288,6 +289,7 @@ public class MainTests extends TestCase
 		// view.planning package
 		suite.addTest(new TestSuite(TestPlanningTreeGoalNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeTargetNode.class));
+		suite.addTest(new TestSuite(TestPlanningTreeDirectThreatNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeConceptualModelPageNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeObjectiveNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeStrategyNode.class));
