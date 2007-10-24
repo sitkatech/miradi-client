@@ -28,4 +28,10 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractRightAlig
 		return 125;
 	}	
 	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+	
+	public static final String UNIQUE_IDENTIFIER = "PlanningViewBudgetTotalsTable";
 }

@@ -107,6 +107,11 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
 	}
 	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+	
 	class SorterByToString implements Comparator<BaseObject>
 	{
 		public int compare(BaseObject o1, BaseObject o2)
@@ -213,6 +218,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 	
 	private Vector selectionListeners;
 	private PlanningViewResourceTableModel model;
+    public static final String UNIQUE_IDENTIFIER = "PlanningViewResourceTable";
 }
 
 class ComboBoxRenderer extends JComboBox implements TableCellRenderer 

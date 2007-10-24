@@ -8,4 +8,11 @@ public class SimpleTableWithInheritedFunctionality extends TableWithColumnWidthS
 	{	
 		super(model);
 	}
+	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+	
+	public static final String UNIQUE_IDENTIFIER = "SimpleTableWithInheritedFunctionality";
 }

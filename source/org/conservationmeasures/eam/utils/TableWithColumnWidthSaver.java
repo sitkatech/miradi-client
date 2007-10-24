@@ -12,4 +12,6 @@ abstract public class TableWithColumnWidthSaver extends TableWithHelperMethods
 	{
 		super(model);
 	}
+	
+	abstract public String getUniqueTableIdentifier();
 }
