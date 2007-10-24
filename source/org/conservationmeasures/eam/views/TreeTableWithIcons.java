@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.icons.TaskIcon;
+import org.conservationmeasures.eam.icons.ThreatReductionResultIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -131,6 +132,12 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			directThreatRenderer.setLeafIcon(new DirectThreatIcon());
 			directThreatRenderer.setFont(getPlainFont());
 
+			threatReductionResultRenderer = new DefaultTreeCellRenderer();
+			threatReductionResultRenderer.setClosedIcon(new ThreatReductionResultIcon());
+			threatReductionResultRenderer.setOpenIcon(new ThreatReductionResultIcon());
+			threatReductionResultRenderer.setLeafIcon(new ThreatReductionResultIcon());
+			threatReductionResultRenderer.setFont(getPlainFont());
+
 			strategyRenderer = new DefaultTreeCellRenderer();
 			strategyRenderer.setClosedIcon(new StrategyIcon());
 			strategyRenderer.setOpenIcon(new StrategyIcon());
@@ -217,6 +224,8 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 				renderer = targetRenderer;
 			else if(node.getType() == ObjectType.CAUSE)
 				renderer = directThreatRenderer;
+			else if(node.getType() == ObjectType.THREAT_REDUCTION_RESULT)
+				renderer = threatReductionResultRenderer;
 			else if(node.getType() == ObjectType.INDICATOR)
 				renderer = indicatorRenderer;
 			else if(node.getType() == ObjectType.STRATEGY)
@@ -285,6 +294,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		DefaultTreeCellRenderer stringNoIconRenderer;
 		DefaultTreeCellRenderer keyEcologicalAttributeRenderer;
 		DefaultTreeCellRenderer directThreatRenderer;
+		DefaultTreeCellRenderer threatReductionResultRenderer;
 	}
 
 	class NonEditableTreeTableCellEditor extends TreeTableCellEditor
