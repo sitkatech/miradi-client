@@ -195,7 +195,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			if(everythingInTree.contains(ref))
 				continue;
 			
-			children.add(new PlanningTreeStrategyNode(project, ref));
+			createAndAddChild(ref, null);
 		}
 	}
 
@@ -209,7 +209,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			if(everythingInTree.contains(ref))
 				continue;
 			
-			children.add(new PlanningTreeIndicatorNode(project, ref));
+			createAndAddChild(ref, null);
 		}
 	}
 	
