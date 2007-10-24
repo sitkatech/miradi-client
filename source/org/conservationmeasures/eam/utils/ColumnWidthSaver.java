@@ -11,6 +11,7 @@ public class ColumnWidthSaver extends MouseAdapter
 	public ColumnWidthSaver(TreeTableWithColumnWidthSaving tableToUse)
 	{
 		table = tableToUse;
+		model = table.getTreeTableModel();
 	}
 
 	public void mouseReleased(MouseEvent e)
@@ -27,7 +28,6 @@ public class ColumnWidthSaver extends MouseAdapter
 		}
 	}
 
-	//TODO make var into private.
-	TreeTableWithColumnWidthSaving table;
+	private TreeTableWithColumnWidthSaving table;
 	private GenericTreeTableModel model;
 }
