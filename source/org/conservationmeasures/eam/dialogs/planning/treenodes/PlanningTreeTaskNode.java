@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -33,9 +32,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		if(!objectTypesToShow.contains(Task.OBJECT_NAME))
 			return;
 		
-		ORefList subtaskRefs = task.getSubtasks();
-		for(int i = 0; i < subtaskRefs.size(); ++i)
-			createAndAddChild(subtaskRefs.get(i), null);
+		createAndAddChildren(task.getSubtasks(), null);
 	}
 
 	public boolean attemptToAdd(ORef refToAdd)
