@@ -22,11 +22,21 @@ public class ColumnWidthSaver extends MouseAdapter
 		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
 		{	
 			int modelColumn = table.convertColumnIndexToModel(tableColumn);
-			int columnWidth = EAM.mainWindow.getAppPreferences().getTaggedInt(getKey(modelColumn));
-			table.setColumnWidth(modelColumn, columnWidth);
+			table.setColumnWidth(modelColumn, getColumnWidth(modelColumn));
 		}
 	}
 	
+	private int getColumnWidth(int modelColumn)
+	{
+		int columnWidth = EAM.mainWindow.getAppPreferences().getTaggedInt(getKey(modelColumn));
+		if (columnWidth > 0)
+			return columnWidth;
+		else if (modelColumn == 0)
+			return 250;
+		else
+			return 125;
+	}
+
 	public void mouseReleased(MouseEvent e)
 	{
 		saveColumnWidths();
