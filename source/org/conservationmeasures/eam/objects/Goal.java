@@ -6,9 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -61,27 +58,6 @@ public class Goal extends Desire
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
-	}
-	
-	// TODO: Consider combining with Objective.getUpstreamIndicators
-	public ORefList getUpstreamObjectives(DiagramObject diagram)
-	{
-		ORefList objectiveRefs = new ORefList();
-		
-		Factor[] upstreamFactors = getUpstreamFactors(diagram);
-		for(int i = 0; i < upstreamFactors.length; ++i)
-		{
-			IdList objectiveIds = upstreamFactors[i].getObjectives();
-			for(int idIndex = 0; idIndex < objectiveIds.size(); ++idIndex)
-			{
-				BaseId objectiveId = objectiveIds.get(idIndex);
-				if(objectiveId.isInvalid())
-					continue;
-
-				objectiveRefs.add(new ORef(Objective.getObjectType(), objectiveId));
-			}
-		}
-		return objectiveRefs;
 	}
 	
 	public static final String OBJECT_NAME = "Goal";
