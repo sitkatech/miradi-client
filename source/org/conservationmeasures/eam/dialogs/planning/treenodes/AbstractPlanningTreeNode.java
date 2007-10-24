@@ -176,7 +176,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return children;
 	}
 
-	protected void addMissingChildren(ORefList potentialChildRefs) throws Exception
+	protected void addMissingChildren(ORefList potentialChildRefs, DiagramObject diagram) throws Exception
 	{
 		HashSet<ORef> everythingInTree = getAllRefsInTree();
 		for(int i = 0; i < potentialChildRefs.size(); ++i)
@@ -185,7 +185,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			if(everythingInTree.contains(ref))
 				continue;
 			
-			createAndAddChild(ref, null);
+			createAndAddChild(ref, diagram);
 		}
 	}
 	
@@ -270,17 +270,17 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 
 	protected void addMissingUpstreamObjectives(DiagramObject diagram) throws Exception
 	{
-		addMissingChildren(extractObjectiveRefs(getObject().getUpstreamFactors(diagram)));
+		addMissingChildren(extractObjectiveRefs(getObject().getUpstreamFactors(diagram)), diagram);
 	}
 
 	protected void addMissingUpstreamNonDraftStrategies(DiagramObject diagram) throws Exception
 	{
-		addMissingChildren(extractNonDraftStrategyRefs(getObject().getUpstreamFactors(diagram)));
+		addMissingChildren(extractNonDraftStrategyRefs(getObject().getUpstreamFactors(diagram)), diagram);
 	}
 
 	protected void addMissingUpstreamIndicators(DiagramObject diagram) throws Exception
 	{
-		addMissingChildren(extractIndicatorRefs(getObject().getUpstreamFactors(diagram)));
+		addMissingChildren(extractIndicatorRefs(getObject().getUpstreamFactors(diagram)), diagram);
 	}
 
 	protected Project project;

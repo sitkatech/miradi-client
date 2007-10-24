@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
-import java.util.HashSet;
-
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -14,7 +12,6 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
@@ -38,9 +35,13 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			
 			createAndAddChild(diagramFactor.getWrappedORef(), diagramObject);
 		}
-		addMissingObjectivesAsChildren(diagramObject);
-		addMissingChildren(getPotentialChildrenStrategyRefs());
-		addMissingChildren(getPotentialChildrenIndicatorRefs());
+		
+		Factor[] allWrappedFactors = diagramObject.getAllWrappedFactors();
+
+		// NOTE: No need to search for Goals because they can only be inside Targets
+		addMissingChildren(diagramObject.getAllObjectiveRefs(), diagramObject);
+		addMissingChildren(extractNonDraftStrategyRefs(allWrappedFactors), diagramObject);
+		addMissingChildren(extractIndicatorRefs(allWrappedFactors), diagramObject);
 	}
 
 	public BaseObject getObject()
@@ -62,58 +63,6 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			return false;
 		
 		return page.getAllObjectiveRefs().contains(refToAdd);
-	}
-
-	protected void addMissingObjectivesAsChildren(DiagramObject diagram) throws Exception
-	{
-		HashSet<ORef> everythingInTree = getAllRefsInTree();
-		ORefList objectivesInPage = diagram.getAllObjectiveRefs();
-		for(int i = 0; i < objectivesInPage.size(); ++i)
-		{
-			ORef ref = objectivesInPage.get(i);
-			if(everythingInTree.contains(ref))
-				continue;
-			
-			createAndAddChild(ref, diagram);
-		}
-	}
-	
-	protected ORefList getPotentialChildrenStrategyRefs()
-	{
-		ORefList strategyRefs = new ORefList();
-		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
-		for(int i = 0; i < diagramFactorRefs.size(); ++i)
-		{
-			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(diagramFactorRefs.get(i));
-			ORef factorRef = diagramFactor.getWrappedORef();
-			Factor factor = (Factor) project.findObject(factorRef);
-			if(!factor.isStrategy())
-				continue;
-			
-			if(factor.isStatusDraft())
-				continue;
-			
-			strategyRefs.add(factor.getRef());
-
-		}
-		
-		return strategyRefs;
-	}
-
-	protected ORefList getPotentialChildrenIndicatorRefs()
-	{
-		ORefList potentialChildrenRefs = new ORefList();
-		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
-		for(int i = 0; i < diagramFactorRefs.size(); ++i)
-		{
-			DiagramFactor diagramFactor = (DiagramFactor) project.findObject(diagramFactorRefs.get(i));
-			ORef factorRef = diagramFactor.getWrappedORef();
-			Factor factor = (Factor) project.findObject(factorRef);
-			ORefList indicatorRefs = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
-			potentialChildrenRefs.addAll(indicatorRefs);
-		}
-		
-		return potentialChildrenRefs;
 	}
 
 	protected DiagramObject diagramObject;
