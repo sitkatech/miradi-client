@@ -38,21 +38,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	
 	protected ORefList getPotentialChildrenStrategyRefs()
 	{
-		// FIXME: Probably should use a HashSet to avoid dupes
-		ORefList upstreamStrategyRefs = new ORefList();
-		Factor[] upstreamFactors = target.getUpstreamFactors(diagram);
-		for(int i = 0; i < upstreamFactors.length; ++i)
-		{
-			Factor factor = upstreamFactors[i];
-			if(!factor.isStrategy())
-				continue;
-			
-			if(factor.isStatusDraft())
-				continue;
-			
-			upstreamStrategyRefs.add(factor.getRef());
-		}
-		return upstreamStrategyRefs;
+		return extractNonDraftStrategyRefs(target.getUpstreamFactors(diagram));
 	}
 
 	protected ORefList getPotentialChildrenIndicatorRefs()
