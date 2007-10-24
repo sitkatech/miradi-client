@@ -40,6 +40,7 @@ public class ViabilityTreeModel extends GenericTreeTableModel
 		return KeyEcologicalAttribute.getObjectType();
 	}
 	
-	public static String[] columnTags = {"Item", Indicator.TAG_STATUS, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE};
+	public static String[] columnTags = {DEFAULT_COLUMN, Indicator.TAG_STATUS, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE};
+	//TODO remove this unsused variable 
 	Project project;
 }
