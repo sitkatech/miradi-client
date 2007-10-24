@@ -184,20 +184,6 @@ public class AppPreferences
 		return value;
 	}
 	
-	public void setTaggedHashMap(String tag, HashMap value)
-	{
-		taggedHashMap.put(tag, value);
-	}
-	
-	public HashMap getTaggedHashMap(String tag)
-	{
-		HashMap value = (HashMap) taggedHashMap.get(tag);
-		if (value == null)
-			return new HashMap();
-		
-		return value;
-	}
-
 	public int getPanelFontSize()
 	{
 		return panelFontSize;
@@ -441,5 +427,4 @@ public class AppPreferences
 	
 	private HashMap taggedIntMap;
 	private HashMap taggedStringMap;
-	private HashMap taggedHashMap;
 }
