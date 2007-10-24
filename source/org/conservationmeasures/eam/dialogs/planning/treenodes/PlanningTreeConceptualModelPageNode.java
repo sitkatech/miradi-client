@@ -14,7 +14,7 @@ public class PlanningTreeConceptualModelPageNode extends AbstractPlanningTreeDia
 	public PlanningTreeConceptualModelPageNode(Project projectToUse, ORef refToUse) throws Exception
 	{
 		super(projectToUse);
-		object = (ConceptualModelDiagram)project.findObject(refToUse);
+		diagramObject = (ConceptualModelDiagram)project.findObject(refToUse);
 		rebuild();
 	}
 

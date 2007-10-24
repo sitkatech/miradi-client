@@ -14,7 +14,7 @@ public class PlanningTreeResultsChainNode extends AbstractPlanningTreeDiagramNod
 	public PlanningTreeResultsChainNode(Project projectToUse, ORef refToUse) throws Exception
 	{
 		super(projectToUse);
-		object = (ResultsChainDiagram)project.findObject(refToUse);
+		diagramObject = (ResultsChainDiagram)project.findObject(refToUse);
 		rebuild();
 	}
 }
