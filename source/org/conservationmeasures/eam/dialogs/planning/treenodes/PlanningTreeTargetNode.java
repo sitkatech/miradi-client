@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Goal;
@@ -28,22 +27,12 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	
 	public void rebuild() throws Exception
 	{
-		ORefList goals = target.getOwnedObjects(Goal.getObjectType());
 		DiagramObject diagram = diagramObject;
-		createAndAddChildren(goals, diagram);
+		createAndAddChildren(target.getOwnedObjects(Goal.getObjectType()), diagram);
 		
-		addMissingChildren(getPotentialChildrenStrategyRefs(diagram));
-		addMissingChildren(getPotentialChildrenIndicatorRefs(diagram));
-	}
-	
-	protected ORefList getPotentialChildrenStrategyRefs(DiagramObject diagram)
-	{
-		return extractNonDraftStrategyRefs(getObject().getUpstreamFactors(diagram));
-	}
-
-	protected ORefList getPotentialChildrenIndicatorRefs(DiagramObject diagram)
-	{
-		return extractIndicatorRefs(getObject().getUpstreamFactors(diagram));
+		addMissingUpstreamObjectives(diagram);
+		addMissingUpstreamNonDraftStrategies(diagram);
+		addMissingUpstreamIndicators(diagram);
 	}
 	
 	int[] getNodeSortOrder()

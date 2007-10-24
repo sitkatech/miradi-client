@@ -255,6 +255,34 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return potentialChildIndicatorRefs;
 	}
 
+	protected ORefList extractObjectiveRefs(Factor[] upstreamFactors)
+	{
+		// FIXME: Probably should use a HashSet to avoid dupes
+		ORefList potentialChildObjectiveRefs = new ORefList();
+		for(int i = 0; i < upstreamFactors.length; ++i)
+		{
+			Factor factor = upstreamFactors[i];
+			ORefList objectiveRefs = new ORefList(Objective.getObjectType(), factor.getObjectives());
+			potentialChildObjectiveRefs.addAll(objectiveRefs);
+		}
+		return potentialChildObjectiveRefs;
+	}
+
+	protected void addMissingUpstreamObjectives(DiagramObject diagram) throws Exception
+	{
+		addMissingChildren(extractObjectiveRefs(getObject().getUpstreamFactors(diagram)));
+	}
+
+	protected void addMissingUpstreamNonDraftStrategies(DiagramObject diagram) throws Exception
+	{
+		addMissingChildren(extractNonDraftStrategyRefs(getObject().getUpstreamFactors(diagram)));
+	}
+
+	protected void addMissingUpstreamIndicators(DiagramObject diagram) throws Exception
+	{
+		addMissingChildren(extractIndicatorRefs(getObject().getUpstreamFactors(diagram)));
+	}
+
 	protected Project project;
 	protected Vector<AbstractPlanningTreeNode> children;
 }
