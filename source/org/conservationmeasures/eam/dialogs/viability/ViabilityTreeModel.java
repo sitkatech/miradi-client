@@ -8,15 +8,13 @@ package org.conservationmeasures.eam.dialogs.viability;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class ViabilityTreeModel extends GenericTreeTableModel
 {
-	public ViabilityTreeModel(Project projectToUse, Object root)
+	public ViabilityTreeModel(Object root)
 	{
 		super(root);
-		project = projectToUse;
 	}
 
 	public int getColumnCount()
@@ -41,6 +39,4 @@ public class ViabilityTreeModel extends GenericTreeTableModel
 	}
 	
 	public static String[] columnTags = {DEFAULT_COLUMN, Indicator.TAG_STATUS, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE};
-	//TODO remove this unsused variable 
-	Project project;
 }
