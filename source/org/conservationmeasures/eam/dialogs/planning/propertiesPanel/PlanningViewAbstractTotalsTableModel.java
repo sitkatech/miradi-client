@@ -6,8 +6,9 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
-abstract public class PlanningViewAbstractTotalsTableModel extends PlanningViewAbstractAssignmentTabelModel
+abstract public class PlanningViewAbstractTotalsTableModel extends PlanningViewAbstractAssignmentTabelModel implements ColumnTagProvider
 {
 	public PlanningViewAbstractTotalsTableModel(Project projectToUse)
 	{
@@ -17,5 +18,10 @@ abstract public class PlanningViewAbstractTotalsTableModel extends PlanningViewA
 	public int getColumnCount()
 	{
 		return 1;
+	}
+	
+	public String getColumnTag(int column)
+	{
+		return getColumnName(column);
 	}
 }

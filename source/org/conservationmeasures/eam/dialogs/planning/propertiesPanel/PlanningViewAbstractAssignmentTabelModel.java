@@ -15,8 +15,9 @@ import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
-abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractTableModel
+abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractTableModel implements ColumnTagProvider
 {
 	public PlanningViewAbstractAssignmentTabelModel(Project projectToUse)
 	{

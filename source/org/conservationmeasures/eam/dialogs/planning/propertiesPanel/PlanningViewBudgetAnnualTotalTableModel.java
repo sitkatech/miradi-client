@@ -14,12 +14,13 @@ import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsC
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
+import org.conservationmeasures.eam.utils.ColumnTagProvider;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
-public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
+public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel implements ColumnTagProvider
 {
 	public PlanningViewBudgetAnnualTotalTableModel(Project projectToUse, TreeTableModelAdapter adapterToUse) throws Exception
 	{
@@ -116,6 +117,11 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel
 	private boolean isCostColumn(int column)
 	{
 		return column == getColumnCount() - 1;
+	}
+	
+	public String getColumnTag(int column)
+	{
+		return getColumnName(column);
 	}
 	
 	private TreeTableModelAdapter adapter;

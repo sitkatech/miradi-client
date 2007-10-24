@@ -17,8 +17,9 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
-public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignmentTabelModel
+public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignmentTabelModel implements ColumnTagProvider
 {
 	public PlanningViewResourceTableModel(Project projectToUse)
 	{
@@ -199,6 +200,11 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 	public boolean isResourceCostPerUnitColumn(int column)
 	{
 		return RESOURCE_COST_PER_UNIT_COLUMN == column;
+	}
+	
+	public String getColumnTag(int column)
+	{
+		return getColumnName(column);
 	}
 	
 	private static final int COLUMN_COUNT = 5;

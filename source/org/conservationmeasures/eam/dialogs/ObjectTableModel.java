@@ -13,8 +13,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
-abstract public class ObjectTableModel extends AbstractTableModel
+abstract public class ObjectTableModel extends AbstractTableModel implements ColumnTagProvider
 {
 	public ObjectTableModel(Project projectToUse, int listedItemType, String[] tableColumnTags)
 	{
