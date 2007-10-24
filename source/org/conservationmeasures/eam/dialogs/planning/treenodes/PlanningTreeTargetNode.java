@@ -29,10 +29,11 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		ORefList goals = target.getOwnedObjects(Goal.getObjectType());
-		createAndAddChildren(goals, diagramObject);
+		DiagramObject diagram = diagramObject;
+		createAndAddChildren(goals, diagram);
 		
-		addMissingChildren(getPotentialChildrenStrategyRefs(diagramObject));
-		addMissingChildren(getPotentialChildrenIndicatorRefs(diagramObject));
+		addMissingChildren(getPotentialChildrenStrategyRefs(diagram));
+		addMissingChildren(getPotentialChildrenIndicatorRefs(diagram));
 	}
 	
 	protected ORefList getPotentialChildrenStrategyRefs(DiagramObject diagram)
