@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -241,6 +242,24 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		
 		
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
+	}
+
+	protected ORefList extractNonDraftStrategyRefs(Factor[] factors)
+	{
+		// FIXME: Probably should use a HashSet to avoid dupes
+		ORefList upstreamStrategyRefs = new ORefList();
+		for(int i = 0; i < factors.length; ++i)
+		{
+			Factor factor = factors[i];
+			if(!factor.isStrategy())
+				continue;
+			
+			if(factor.isStatusDraft())
+				continue;
+			
+			upstreamStrategyRefs.add(factor.getRef());
+		}
+		return upstreamStrategyRefs;
 	}
 
 	protected Project project;
