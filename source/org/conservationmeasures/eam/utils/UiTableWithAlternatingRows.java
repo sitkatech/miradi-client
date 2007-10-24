@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-public class UiTableWithAlternatingRows extends TableWithColumnWidthSaver
+abstract public class UiTableWithAlternatingRows extends TableWithColumnWidthSaver
 {
 	public UiTableWithAlternatingRows()
 	{
