@@ -28,7 +28,7 @@ public class ColumnWidthSaver extends MouseAdapter
 	
 	private int getColumnWidth(int modelColumn)
 	{
-		int columnWidth = EAM.mainWindow.getAppPreferences().getTaggedInt(getKey(modelColumn));
+		int columnWidth = EAM.mainWindow.getAppPreferences().getTaggedInt(getColumnWidthKey(modelColumn));
 		if (columnWidth > 0)
 			return columnWidth;
 		else if (modelColumn == 0)
@@ -48,11 +48,11 @@ public class ColumnWidthSaver extends MouseAdapter
 		{		
 			int modelColumn = table.convertColumnIndexToModel(tableColumn);
 			TableColumn column = table.getColumnModel().getColumn(modelColumn);
-			EAM.mainWindow.getAppPreferences().setTaggedInt(getKey(modelColumn), column.getWidth());
+			EAM.mainWindow.getAppPreferences().setTaggedInt(getColumnWidthKey(modelColumn), column.getWidth());
 		}
 	}
 	
-	private String getKey(int modelColumn)
+	private String getColumnWidthKey(int modelColumn)
 	{
 		String columnTag = model.getColumnTag(modelColumn);
 		String tableIdentifier = table.getUniqueTableIdentifier();
