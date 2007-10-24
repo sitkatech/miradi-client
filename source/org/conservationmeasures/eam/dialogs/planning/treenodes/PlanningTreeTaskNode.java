@@ -35,11 +35,6 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		createAndAddChildren(task.getSubtasks(), null);
 	}
 
-	public boolean attemptToAdd(ORef refToAdd)
-	{
-		return false;
-	}
-
 	public BaseObject getObject()
 	{
 		return task;
