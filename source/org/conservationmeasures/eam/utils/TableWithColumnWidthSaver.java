@@ -14,4 +14,6 @@ abstract public class TableWithColumnWidthSaver extends TableWithHelperMethods
 	}
 	
 	abstract public String getUniqueTableIdentifier();
+	
+	ColumnWidthSaver columnWidthSaver;
 }

@@ -3,26 +3,28 @@ package org.conservationmeasures.eam.utils;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.views.GenericTreeTableModel;
-import org.conservationmeasures.eam.views.TreeTableWithColumnWidthSaving;
 
 public class ColumnWidthSaver extends MouseAdapter
 {
-	public ColumnWidthSaver(TreeTableWithColumnWidthSaving tableToUse)
+	public ColumnWidthSaver(JTable tableToUse, ColumnTagProvider tagProviderToUse, String uniqueTableIdentifierToUse)
 	{
 		table = tableToUse;
-		model = table.getTreeTableModel();
+		tagProvider = tagProviderToUse;
+		uniqueTableIdentifier = uniqueTableIdentifierToUse;
 	}
 	
 	public void restoreColumnWidths()
 	{
-		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
+		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{	
 			int modelColumn = table.convertColumnIndexToModel(tableColumn);
-			table.setColumnWidth(modelColumn, getColumnWidth(modelColumn));
+			TableColumn column = table.getColumnModel().getColumn(modelColumn);
+			column.setWidth(getColumnWidth(modelColumn));
+			column.setPreferredWidth(getColumnWidth(modelColumn));
 		}
 	}
 	
@@ -44,7 +46,7 @@ public class ColumnWidthSaver extends MouseAdapter
 	
 	private void saveColumnWidths()
 	{
-		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
+		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{		
 			int modelColumn = table.convertColumnIndexToModel(tableColumn);
 			TableColumn column = table.getColumnModel().getColumn(modelColumn);
@@ -54,12 +56,11 @@ public class ColumnWidthSaver extends MouseAdapter
 	
 	private String getColumnWidthKey(int modelColumn)
 	{
-		String columnTag = model.getColumnTag(modelColumn);
-		String tableIdentifier = table.getUniqueTableIdentifier();
-		
-		return tableIdentifier + "." + columnTag;
+		String columnTag = tagProvider.getColumnTag(modelColumn);
+		return uniqueTableIdentifier + "." + columnTag;
 	}
 
-	private TreeTableWithColumnWidthSaving table;
-	private GenericTreeTableModel model;
+	private JTable table;
+	private ColumnTagProvider tagProvider;
+	private String uniqueTableIdentifier;
 }
