@@ -186,6 +186,19 @@ abstract public class DiagramObject extends BaseObject
 		return allDiagramFactorLinkIds.getIdList();
 	}
 	
+	public Factor[] getAllWrappedFactors()
+	{
+		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
+		Factor[] factors = new Factor[diagramFactorRefs.size()];
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRefs.get(i));
+			factors[i] = getProject().findFactor(diagramFactor.getWrappedORef());
+		}
+		
+		return factors;
+	}
+	
 	//TODO nima write test for this method
 	public boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
 	{
