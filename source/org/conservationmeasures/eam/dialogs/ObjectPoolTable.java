@@ -40,4 +40,11 @@ public class ObjectPoolTable extends ObjectTable
 		super.updateTableAfterObjectDeleted(deletedObjectRef);
 		getObjectPoolTableModel().rowsWereAddedOrRemoved();
 	}
+	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}	
+	
+	public static final String UNIQUE_IDENTIFIER = "ObjectPoolTable";
 }

@@ -40,4 +40,11 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractRig
 		TreeTableNode node = (TreeTableNode) model.getNodeForRow(row);
 		return TreeTableWithIcons.getSharedTaskFont(node);
 	}
+	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+	
+	public static final String UNIQUE_IDENTIFIER = "PlanningViewBudgetAnnualTotalsTable";
 }

@@ -21,4 +21,10 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractRightAlignedTab
 		return 125;
 	}
 	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+	
+	public static final String UNIQUE_IDENTIFIER = "PlanningViewBudgetTable";
 }

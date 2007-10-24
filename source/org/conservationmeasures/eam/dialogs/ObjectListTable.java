@@ -23,6 +23,11 @@ public class ObjectListTable extends ObjectTable
 		resizeTable(4);
 	}
 	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+	
 	public ObjectListTableModel getObjectListTableModel()
 	{
 		return (ObjectListTableModel)getModel();
@@ -76,5 +81,5 @@ public class ObjectListTable extends ObjectTable
 			setRowSelectionInterval(desiredSelectionRow, desiredSelectionRow);
 	}
 	
-
+	public static final String UNIQUE_IDENTIFIER = "ObjectListTable";
 }

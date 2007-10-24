@@ -141,6 +141,11 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 			super(model);
 			setSingleCellEditor();
 		}
+		
+		public String getUniqueTableIdentifier()
+		{
+			return UNIQUE_IDENTIFIER;
+		}
 
 		public Component prepareEditor(TableCellEditor editor, int row, int column)
 		{
@@ -189,7 +194,9 @@ public class ObjectStringMapTableField extends ObjectDataInputField
 		}
 
 	}
-	boolean avoidSaveDuringInternalSet;
-	ChoiceQuestion question;
-	JTable table;
+	private boolean avoidSaveDuringInternalSet;
+	private ChoiceQuestion question;
+	protected JTable table;
+	
+	public static final String UNIQUE_IDENTIFIER = "ObjectStringMapTableField";
 }

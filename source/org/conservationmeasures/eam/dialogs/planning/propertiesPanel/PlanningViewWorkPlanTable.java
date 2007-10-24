@@ -36,4 +36,11 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractRightAlignedT
 	{
 		return getColumnHeaderWidth(column);
 	}
+	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+	
+	public static final String UNIQUE_IDENTIFIER = "PlanningViewWorkPlanTable";
 }

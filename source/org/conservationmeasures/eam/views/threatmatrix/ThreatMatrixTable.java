@@ -155,6 +155,11 @@ public class ThreatMatrixTable extends TableWithColumnWidthSaver
 		return model.getProject();
 	}
 	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+	
 	class TableMouseAdapter extends MouseAdapter
 	{
 	    public void mousePressed(MouseEvent event)
@@ -318,4 +323,5 @@ public class ThreatMatrixTable extends TableWithColumnWidthSaver
 	
 	private BundleColumnSortHandler bundleColumnSortHandler;
 	private final static Graphics staticGraphics = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
+    public static final String UNIQUE_IDENTIFIER = "ThreatMatrixTable";
 }
