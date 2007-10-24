@@ -96,10 +96,10 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 	{
 		int style = Font.PLAIN;
 		if (task.isShared())
-			style += Font.ITALIC;
+			style |= Font.ITALIC;
 
 		if (task.isMethod())
-			style += Font.BOLD;
+			style |= Font.BOLD;
 				
 		return Renderer.deriveFont(style);
 	}
