@@ -92,6 +92,11 @@ abstract public class TestPlanningTree extends EAMTestCase
 		return (Target) project.findObject(diagramTarget.getWrappedORef());
 	}
 	
+	public Cause getThreat()
+	{
+		return (Cause) project.findObject(diagramCause.getWrappedORef());
+	}
+	
 	public ProjectMetadata getProjectMetadata()
 	{
 		return projectMetadata;
