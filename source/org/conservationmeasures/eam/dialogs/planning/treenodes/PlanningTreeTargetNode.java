@@ -31,7 +31,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	{
 		ORefList goals = target.getOwnedObjects(Goal.getObjectType());
 		for(int i = 0; i < goals.size(); ++i)
-			children.add(new PlanningTreeGoalNode(project, diagram, goals.get(i)));
+			createAndAddChild(goals.get(i), diagram);
 		
 		addMissingStrategiesAsChildren();
 		addMissingIndicatorsAsChildren();
