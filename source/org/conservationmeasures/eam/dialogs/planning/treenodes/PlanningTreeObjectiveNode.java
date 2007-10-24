@@ -26,11 +26,11 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 	{
 		ORefList strategies = objective.getUpstreamNonDraftStrategies(diagram);
 		for(int i = 0; i < strategies.size(); ++i)
-			children.add(new PlanningTreeStrategyNode(project, strategies.get(i)));
+			createAndAddChild(strategies.get(i), diagram);
 		
 		ORefList indicatorRefs = objective.getUpstreamIndicators(diagram);
 		for(int i = 0; i < indicatorRefs.size(); ++i)
-			children.add(new PlanningTreeIndicatorNode(project, indicatorRefs.get(i)));
+			createAndAddChild(indicatorRefs.get(i), diagram);
 	}
 
 	public BaseObject getObject()

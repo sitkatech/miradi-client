@@ -24,7 +24,7 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 	{
 		ORefList activityRefs = strategy.getActivities();
 		for(int i = 0; i < activityRefs.size(); ++i)
-			children.add(new PlanningTreeTaskNode(project, activityRefs.get(i)));
+			createAndAddChild(activityRefs.get(i), null);
 	}
 
 	public BaseObject getObject()

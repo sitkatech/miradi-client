@@ -47,7 +47,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	{
 		ORefList subtaskRefs = task.getSubtasks();
 		for(int i = 0; i < subtaskRefs.size(); ++i)
-			children.add(new PlanningTreeTaskNode(project, subtaskRefs.get(i)));
+			createAndAddChild(subtaskRefs.get(i), null);
 	}
 
 	Task task;

@@ -96,7 +96,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	{
 		ORefList resultsChainRefs = project.getResultsChainDiagramPool().getORefList();
 		for(int i = 0; i < resultsChainRefs.size(); ++i)
-			children.add(new PlanningTreeResultsChainNode(project, resultsChainRefs.get(i)));
+			createAndAddChild(resultsChainRefs.get(i), null);
 	}
 
 }

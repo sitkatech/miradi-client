@@ -223,10 +223,21 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		int type = refToAdd.getObjectType();
 		if(type == ConceptualModelDiagram.getObjectType())
 			return new PlanningTreeConceptualModelPageNode(project, refToAdd);
+		if(type == ResultsChainDiagram.getObjectType())
+			return new PlanningTreeResultsChainNode(project, refToAdd);
 		if(type == Target.getObjectType())
 			return new PlanningTreeTargetNode(project, diagram, refToAdd);
+		if(type == Goal.getObjectType())
+			return new PlanningTreeGoalNode(project, diagram, refToAdd);
 		if(type == Objective.getObjectType())
 			return new PlanningTreeObjectiveNode(project, diagram, refToAdd);
+		if(type == Strategy.getObjectType())
+			return new PlanningTreeStrategyNode(project, refToAdd);
+		if(type == Indicator.getObjectType())
+			return new PlanningTreeIndicatorNode(project, refToAdd);
+		if(type == Task.getObjectType())
+			return new PlanningTreeTaskNode(project, refToAdd);
+		
 		
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}
