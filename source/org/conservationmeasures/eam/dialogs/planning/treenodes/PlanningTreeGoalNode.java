@@ -30,8 +30,7 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		ORefList objectives = goal.getUpstreamObjectives(diagram);
-		for(int i = 0; i < objectives.size(); ++i)
-			createAndAddChild(objectives.get(i), diagram);
+		createAndAddChildren(objectives, diagram);
 		
 		addMissingStrategiesAsChildren();
 		addMissingIndicatorsAsChildren();

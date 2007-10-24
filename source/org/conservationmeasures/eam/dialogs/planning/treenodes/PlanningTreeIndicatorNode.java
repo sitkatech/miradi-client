@@ -23,8 +23,7 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		ORefList methodRefs = indicator.getMethods();
-		for(int i = 0; i < methodRefs.size(); ++i)
-			createAndAddChild(methodRefs.get(i), null);
+		createAndAddChildren(methodRefs, null);
 	}
 
 	public BaseObject getObject()

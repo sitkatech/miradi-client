@@ -25,12 +25,10 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		ORefList strategies = objective.getUpstreamNonDraftStrategies(diagram);
-		for(int i = 0; i < strategies.size(); ++i)
-			createAndAddChild(strategies.get(i), diagram);
+		createAndAddChildren(strategies, diagram);
 		
 		ORefList indicatorRefs = objective.getUpstreamIndicators(diagram);
-		for(int i = 0; i < indicatorRefs.size(); ++i)
-			createAndAddChild(indicatorRefs.get(i), diagram);
+		createAndAddChildren(indicatorRefs, diagram);
 	}
 
 	public BaseObject getObject()
