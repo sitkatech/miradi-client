@@ -39,6 +39,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		Factor[] allWrappedFactors = diagramObject.getAllWrappedFactors();
 
 		// NOTE: No need to search for Goals because they can only be inside Targets
+		// NOTE: No need to search for Direct Threats because they can only be upstream of Targets
 		addMissingChildren(diagramObject.getAllObjectiveRefs(), diagramObject);
 		addMissingChildren(extractNonDraftStrategyRefs(allWrappedFactors), diagramObject);
 		addMissingChildren(extractIndicatorRefs(allWrappedFactors), diagramObject);
