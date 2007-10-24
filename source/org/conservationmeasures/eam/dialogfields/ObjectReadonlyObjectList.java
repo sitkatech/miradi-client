@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
-import org.conservationmeasures.eam.utils.TableWithHelperMethods;
+import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
 public class ObjectReadonlyObjectList extends ObjectDataInputField
 {
@@ -27,7 +27,7 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 		super(projectToUse, objectTypeToUse, idToUse, tagToUse);
 		model = new DefaultTableModel();
 		model.setColumnCount(1);
-		table = new TableWithHelperMethods(model);
+		table = new TableWithColumnWidthSaver(model);
 		setDefaultFieldBorder();
 		table.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		table.setBackground(EAM.READONLY_BACKGROUND_COLOR);
@@ -82,5 +82,5 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 	}
 	
 	private DefaultTableModel model;
-	private TableWithHelperMethods table;
+	private TableWithColumnWidthSaver table;
 }

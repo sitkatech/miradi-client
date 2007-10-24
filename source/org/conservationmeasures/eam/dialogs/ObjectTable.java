@@ -27,7 +27,7 @@ import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker
+abstract public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker
 {
 	public ObjectTable(ObjectTableModel modelToUse)
 	{

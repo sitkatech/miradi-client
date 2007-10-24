@@ -10,9 +10,9 @@ import java.awt.Dimension;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.utils.TableWithHelperMethods;
+import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
-public class PlanningViewAbstractTable extends TableWithHelperMethods
+public class PlanningViewAbstractTable extends TableWithColumnWidthSaver
 {
 	public PlanningViewAbstractTable(TableModel  modelToUse)
 	{
