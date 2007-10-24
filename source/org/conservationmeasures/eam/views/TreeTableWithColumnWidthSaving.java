@@ -8,8 +8,17 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithStateS
 	public TreeTableWithColumnWidthSaving(Project projectToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(projectToUse, treeTableModel);
-		getTableHeader().addMouseListener(new ColumnWidthSaver(this));
+		columnWidthSaver = new ColumnWidthSaver(this);
+		getTableHeader().addMouseListener(columnWidthSaver);
 	}
 	
+	public void rebuildTableCompletely()
+	{
+		super.rebuildTableCompletely();
+		columnWidthSaver.restoreColumnWidths();
+	}
+
 	abstract public String getUniqueTableIdentifier();
+	
+	private ColumnWidthSaver columnWidthSaver;
 }
