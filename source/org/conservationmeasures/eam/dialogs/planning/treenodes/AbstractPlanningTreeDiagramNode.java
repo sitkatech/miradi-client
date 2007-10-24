@@ -36,7 +36,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			if(diagramFactor.getWrappedType() != Target.getObjectType())
 				continue;
 			
-			children.add(new PlanningTreeTargetNode(project, diagramObject, diagramFactor.getWrappedORef()));
+			createAndAddChild(diagramFactor.getWrappedORef(), diagramObject);
 		}
 		addMissingObjectivesAsChildren(diagramObject);
 		addMissingStrategiesAsChildren();
@@ -74,7 +74,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			if(everythingInTree.contains(ref))
 				continue;
 			
-			children.add(new PlanningTreeObjectiveNode(project, diagram, ref));
+			createAndAddChild(ref, diagram);
 		}
 	}
 	

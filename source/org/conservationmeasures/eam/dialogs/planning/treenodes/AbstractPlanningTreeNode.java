@@ -15,11 +15,13 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -211,6 +213,24 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		}
 	}
 	
+	protected void createAndAddChild(ORef refToAdd, DiagramObject diagram) throws Exception
+	{
+		children.add(createChildNode(refToAdd, diagram));
+	}
+
+	private AbstractPlanningTreeNode createChildNode(ORef refToAdd, DiagramObject diagram) throws Exception
+	{
+		int type = refToAdd.getObjectType();
+		if(type == ConceptualModelDiagram.getObjectType())
+			return new PlanningTreeConceptualModelPageNode(project, refToAdd);
+		if(type == Target.getObjectType())
+			return new PlanningTreeTargetNode(project, diagram, refToAdd);
+		if(type == Objective.getObjectType())
+			return new PlanningTreeObjectiveNode(project, diagram, refToAdd);
+		
+		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
+	}
+
 	protected Project project;
 	protected Vector<AbstractPlanningTreeNode> children;
 }

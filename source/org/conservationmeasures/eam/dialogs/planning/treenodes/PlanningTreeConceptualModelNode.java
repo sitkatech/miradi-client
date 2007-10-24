@@ -24,7 +24,7 @@ public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeNode
 		ORefList pageRefs = project.getConceptualModelDiagramPool().getORefList();
 		for(int i = 0; i < pageRefs.size(); ++i)
 		{
-			children.add(new PlanningTreeConceptualModelPageNode(project, pageRefs.get(i)));
+			createAndAddChild(pageRefs.get(i), null);
 		}
 		
 	}
