@@ -133,7 +133,7 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		swingTreeExpansionWasChanged();
 	}
 	
-	void swingTreeExpansionWasChanged()
+	private void swingTreeExpansionWasChanged()
 	{
 		if(ignoreNotifications)
 			return;
@@ -141,25 +141,38 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		try
 		{
 			int rowCount = tree.getRowCount();
-			ORefList objRefList = new ORefList();
+			ORefList newExpansionRefs = getExpandedNodeList();
 			for (int i = 0; i < rowCount; i ++)
 			{
 				TreePath treePath = tree.getPathForRow(i);
 				if (tree.isExpanded(treePath))
 				{
 					TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
-					ORef objectReference = node.getObjectReference();
-					if (objectReference != null)
-						objRefList.add(objectReference);
+					ORef nodeRef = node.getObjectReference();
+					if (nodeRef != null && !newExpansionRefs.contains(nodeRef))
+						newExpansionRefs.add(nodeRef);
+				}
+				
+				if (tree.isCollapsed(treePath))
+				{
+					TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
+					ORef nodeRef = node.getObjectReference();
+					if (newExpansionRefs.contains(nodeRef) && isParentNode(node))
+						newExpansionRefs.remove(nodeRef);
 				}
 			}
-			saveExpandedPath(objRefList);
+			saveExpandedPath(newExpansionRefs);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unexpected error has occurred saving tree expansion state");
 		}
+	}
+
+	private boolean isParentNode(TreeTableNode node)
+	{
+		return node.getChildCount() != 0;
 	}
 
 	private void saveExpandedPath(ORefList newObjRefList) throws Exception
