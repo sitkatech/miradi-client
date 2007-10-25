@@ -25,7 +25,7 @@ public class ObjectListTable extends ObjectTable
 	
 	public String getUniqueTableIdentifier()
 	{
-		return UNIQUE_IDENTIFIER;
+		return UNIQUE_IDENTIFIER + getObjectTableModel().getRowObjectType();
 	}
 	
 	public ObjectListTableModel getObjectListTableModel()
