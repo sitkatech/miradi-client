@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.IntermediateResultPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
+import org.conservationmeasures.eam.objectpools.MeasurementPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
@@ -108,6 +109,7 @@ public class ObjectManager
 		addNormalPool(new PlanningViewConfigurationPool(ida));
 		addNormalPool(new WwfProjectDataPool(ida));
 		addNormalPool(new CostAllocationRulePool(ida));
+		addNormalPool(new MeasurementPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -374,6 +376,7 @@ public class ObjectManager
 		loadPool(ObjectType.PLANNING_VIEW_CONFIGURATION);
 		loadPool(ObjectType.WWF_PROJECT_DATA);
 		loadPool(ObjectType.COST_ALLOCATION_RULE);
+		loadPool(ObjectType.MEASUREMENT);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
