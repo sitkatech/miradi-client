@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class TargetViabilityNode extends TreeTableNode
 {
-	public TargetViabilityNode(Project projectToUse, FactorId targetId)
+	public TargetViabilityNode(Project projectToUse, FactorId targetId) throws Exception
 	{
 		project = projectToUse;
 		target = (Target)project.findNode(targetId);
@@ -73,12 +73,12 @@ public class TargetViabilityNode extends TreeTableNode
 		return target.getId();
 	}
 	
-	public void rebuild()
+	public void rebuild() throws Exception
 	{
 		children = getKeaNodes(target);
 	}
 
-	static public KeyEcologicalAttributeNode[] getKeaNodes(Target target)
+	static public KeyEcologicalAttributeNode[] getKeaNodes(Target target) throws Exception
 	{
 		Project project = target.getProject();
 		IdList keas = target.getKeyEcologicalAttributes();

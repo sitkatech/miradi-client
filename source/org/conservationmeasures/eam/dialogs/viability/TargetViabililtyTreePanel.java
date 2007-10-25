@@ -12,13 +12,13 @@ import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 {
-	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, FactorId targetId)
+	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, FactorId targetId) throws Exception
 	{
 		ViabilityTreeModel model = new ViabilityTreeModel(new TargetViabilityRoot(projectToUse, targetId));
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
 	}
 
-	public static TargetViabililtyTreePanel createTargetViabilityPoolPanel(MainWindow mainWindowToUse, Project projectToUse)
+	public static TargetViabililtyTreePanel createTargetViabilityPoolPanel(MainWindow mainWindowToUse, Project projectToUse) throws Exception
 	{
 		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(projectToUse));
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);

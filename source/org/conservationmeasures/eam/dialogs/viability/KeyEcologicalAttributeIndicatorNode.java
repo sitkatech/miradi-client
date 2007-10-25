@@ -6,18 +6,21 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 {
-	public KeyEcologicalAttributeIndicatorNode(Project projectToUse, KeyEcologicalAttributeNode parent, Indicator indicatorToUse)
+	public KeyEcologicalAttributeIndicatorNode(Project projectToUse, KeyEcologicalAttributeNode parent, Indicator indicatorToUse) throws Exception
 	{
 		project = projectToUse;
 		indicator = indicatorToUse;
 		keyEcologicalAttributesNode = parent;
+		rebuild();
 	}
 	
 	public BaseObject getObject()
@@ -42,12 +45,12 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 
 	public int getChildCount()
 	{
-		return 0;
+		return measurements.length;
 	}
 
 	public TreeTableNode getChild(int index)
 	{
-		return null;
+		return measurements[index];
 	}
 	
 	public TreeTableNode getParentNode()
@@ -64,15 +67,23 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 
 	public void rebuild() throws Exception
 	{
+		ORefList measurementRefs = indicator.getMeasurementRefs();
+		measurements = new KeyEcologicalAttributeMeasurementNode[measurementRefs.size()];
+		for (int i = 0; i < measurementRefs.size(); ++i)
+		{
+			Measurement measurement = (Measurement) project.findObject(measurementRefs.get(i));
+			measurements[i] = new KeyEcologicalAttributeMeasurementNode(this, measurement);
+		}
 	}
 	
 	public static final String[] COLUMN_TAGS = {
 		Indicator.TAG_LABEL,
 		Indicator.PSEUDO_TAG_MEASUREMENT_STATUS_VALUE, 
 		Indicator.TAG_EMPTY,
-		};
+	};
 	
-	Project project;
-	Indicator indicator;
-	KeyEcologicalAttributeNode keyEcologicalAttributesNode;
+	private Project project;
+	private Indicator indicator;
+	private KeyEcologicalAttributeNode keyEcologicalAttributesNode;
+	private KeyEcologicalAttributeMeasurementNode[] measurements;
 }
