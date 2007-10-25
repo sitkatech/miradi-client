@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
@@ -155,6 +156,7 @@ public class Indicator extends BaseObject
 		measurementDetail= new StringData();
 		measurementStatusConfidence = new ChoiceData();
 		ratingSource= new ChoiceData();
+		measurementRefs = new ORefListData();
 		
 		futureStatusRating = new ChoiceData();
 		futureStatusDate = new DateData();;
@@ -190,6 +192,7 @@ public class Indicator extends BaseObject
 		addField(TAG_MEASUREMENT_DETAIL, measurementDetail);
 		addField(TAG_MEASUREMENT_STATUS_CONFIDENCE, measurementStatusConfidence);
 		addField(TAG_RATING_SOURCE, ratingSource);
+		addField(TAG_MEASUREMENT_REFS, measurementRefs);
 		
 		addField(TAG_FUTURE_STATUS_RATING, futureStatusRating);
 		addField(TAG_FUTURE_STATUS_DATE, futureStatusDate);
@@ -298,6 +301,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_MEASUREMENT_DETAIL = "MeasurementDetail";
 	public static final String TAG_MEASUREMENT_STATUS_CONFIDENCE = "MeasurementStatusConfidence";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
+	public static final String TAG_MEASUREMENT_REFS = "MeasurementRefs";
 	
 	public static final String TAG_FUTURE_STATUS_RATING  = "FutureStatusRating";
 	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";
@@ -325,38 +329,38 @@ public class Indicator extends BaseObject
 
 	public static final String OBJECT_NAME = "Indicator";
 
-	StringData shortLabel;
-	ChoiceData priority;
-	ChoiceData status;
-	IdListData taskIds;
-	StringMapData indicatorThreshold;
-	ChoiceData measurementTrend;
-	ChoiceData measurementStatus;
-	DateData measurementDate;
-	StringData measurementSummary;
-	StringData measurementDetail;
-	ChoiceData measurementStatusConfidence;
-	ChoiceData ratingSource;
+	private StringData shortLabel;
+	private ChoiceData priority;
+	private ChoiceData status;
+	private IdListData taskIds;
+	private StringMapData indicatorThreshold;
+	private ChoiceData measurementTrend;
+	private ChoiceData measurementStatus;
+	private DateData measurementDate;
+	private StringData measurementSummary;
+	private StringData measurementDetail;
+	private ChoiceData measurementStatusConfidence;
+	private ChoiceData ratingSource;
+	private ORefListData measurementRefs;
 	
-	ChoiceData futureStatusRating;
-	DateData futureStatusDate;
-	StringData futureStatusSummary;
-	StringData futureStatusDetail;
+	private ChoiceData futureStatusRating;
+	private DateData futureStatusDate;
+	private StringData futureStatusSummary;
+	private StringData futureStatusDetail;
 	
-	PseudoStringData multiLineTargets;
-	PseudoStringData multiLineDirectThreats;
-	PseudoStringData multiLineStrategies;
-	PseudoStringData multiLineFactor;
-	PseudoStringData multiLineMethods;
-	PseudoStringData indicatorThresholdLabel;
+	private PseudoStringData multiLineTargets;
+	private PseudoStringData multiLineDirectThreats;
+	private PseudoStringData multiLineStrategies;
+	private PseudoStringData multiLineFactor;
+	private PseudoStringData multiLineMethods;
+	private PseudoStringData indicatorThresholdLabel;
 	
-	PseudoQuestionData priorityLabel;
-	PseudoQuestionData statusLabel;
-	PseudoQuestionData measurementTrendLabel;
-	PseudoQuestionData measurementStatusLabel;
-	PseudoQuestionData ratingSourceLabel;
-	PseudoQuestionData measurementStatusConfidenceLabel;
+	private PseudoQuestionData priorityLabel;
+	private PseudoQuestionData statusLabel;
+	private PseudoQuestionData measurementTrendLabel;
+	private PseudoQuestionData measurementStatusLabel;
+	private PseudoQuestionData ratingSourceLabel;
+	private PseudoQuestionData measurementStatusConfidenceLabel;
 	
-	PseudoQuestionData futureStatusRatingLabel;
-	
+	private PseudoQuestionData futureStatusRatingLabel;
 }
