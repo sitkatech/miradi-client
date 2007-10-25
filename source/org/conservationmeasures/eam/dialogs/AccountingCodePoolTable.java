@@ -11,4 +11,12 @@ public class AccountingCodePoolTable extends ObjectPoolTable
 	{
 		super(modelToUse);
 	}
+	
+	public String getUniqueTableIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}	
+	
+	public static final String UNIQUE_IDENTIFIER = "AccountingCodePoolTable";
+
 }
