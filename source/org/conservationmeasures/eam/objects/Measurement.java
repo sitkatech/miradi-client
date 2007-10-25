@@ -6,9 +6,6 @@ import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
-import org.conservationmeasures.eam.questions.StatusQuestion;
-import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Measurement extends BaseObject
@@ -76,9 +73,6 @@ public class Measurement extends BaseObject
 		measurementSummary= new StringData();
 		measurementDetail= new StringData();
 		measurementStatusConfidence = new ChoiceData();		
-		measurementTrendLabel = new PseudoQuestionData(new TrendQuestion(TAG_MEASUREMENT_TREND));
-		measurementStatusLabel = new PseudoQuestionData(new StatusQuestion(TAG_MEASUREMENT_STATUS));
-		measurementStatusConfidenceLabel = new PseudoQuestionData(new StatusConfidenceQuestion(TAG_MEASUREMENT_STATUS_CONFIDENCE));
 
 		addField(TAG_MEASUREMENT_TREND, measurementTrend);
 		addField(TAG_MEASUREMENT_STATUS, measurementStatus);
@@ -86,9 +80,6 @@ public class Measurement extends BaseObject
 		addField(TAG_MEASUREMENT_SUMMARY, measurementSummary);
 		addField(TAG_MEASUREMENT_DETAIL, measurementDetail);
 		addField(TAG_MEASUREMENT_STATUS_CONFIDENCE, measurementStatusConfidence);
-		addField(PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE, measurementStatusConfidenceLabel);
-		addField(PSEUDO_TAG_MEASUREMENT_STATUS_VALUE, measurementStatusLabel);
-		addField(PSEUDO_TAG_MEASUREMENT_TREND_VALUE, measurementTrendLabel);
 	}
 	
 	public static final String OBJECT_NAME = "Measurement";
@@ -99,17 +90,11 @@ public class Measurement extends BaseObject
 	public static final String TAG_MEASUREMENT_SUMMARY = "MeasurementSummary";
 	public static final String TAG_MEASUREMENT_DETAIL = "MeasurementDetail";
 	public static final String TAG_MEASUREMENT_STATUS_CONFIDENCE = "MeasurementStatusConfidence";
-	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE = "MeasurementStatusConfidenceValue";
-	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_VALUE  = "MeasurementStatusValue";
-	public static final String PSEUDO_TAG_MEASUREMENT_TREND_VALUE = "MeasurementTrendValue";
-	
-	private PseudoQuestionData measurementStatusLabel;
+
 	private ChoiceData measurementTrend;
 	private ChoiceData measurementStatus;
 	private DateData measurementDate;
 	private StringData measurementSummary;
 	private StringData measurementDetail;
 	private ChoiceData measurementStatusConfidence;
-	private PseudoQuestionData measurementTrendLabel;
-	private PseudoQuestionData measurementStatusConfidenceLabel;
 }
