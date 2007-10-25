@@ -16,22 +16,13 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.ObjectsDoer;
+import org.conservationmeasures.eam.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer;
 
-public class DeleteKeyEcologicalAttributeIndicatorDoer extends ObjectsDoer
-{
-	public boolean isAvailable()
+public class DeleteKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
+{	
+	public int getRequiredObjectType()
 	{
-		if (getObjects() == null)
-			return false;
-		
-		if ((getObjects().length != 1))
-			return false;
-		
-		if (getSelectedObjectType() != ObjectType.INDICATOR)
-			return false;
-		
-		return true;
+		return ObjectType.INDICATOR;
 	}
 
 	public void doIt() throws CommandFailedException
