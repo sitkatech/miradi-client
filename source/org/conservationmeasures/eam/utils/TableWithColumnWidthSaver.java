@@ -18,6 +18,9 @@ abstract public class TableWithColumnWidthSaver extends TableWithHelperMethods
 	
 	private void addColumnWidthSaver()
 	{
+		if (! shouldSaveColumnWidth())
+			return; 
+		
 		columnWidthSaver = new ColumnWidthSaver(this, (ColumnTagProvider)getModel(), getUniqueTableIdentifier());
 		getTableHeader().addMouseListener(columnWidthSaver);
 		columnWidthSaver.restoreColumnWidths();
@@ -29,6 +32,11 @@ abstract public class TableWithColumnWidthSaver extends TableWithHelperMethods
 		super.tableChanged(e);
 		if (columnWidthSaver != null)
 			columnWidthSaver.restoreColumnWidths();
+	}
+	
+	public boolean shouldSaveColumnWidth()
+	{
+		return true;
 	}
 	
 	abstract public String getUniqueTableIdentifier();
