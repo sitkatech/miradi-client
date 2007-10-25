@@ -9,9 +9,9 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.utils.TableWithSunBugWorkarounds;
+import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 
-public class PanelTable extends TableWithSunBugWorkarounds
+public class PanelTable extends TableWithHelperMethods
 {
 	public PanelTable()
 	{
