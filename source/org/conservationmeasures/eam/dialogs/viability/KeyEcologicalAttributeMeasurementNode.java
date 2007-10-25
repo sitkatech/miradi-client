@@ -7,7 +7,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 {
-	public KeyEcologicalAttributeMeasurementNode(KeyEcologicalAttributeNode parent, Measurement measurementToUse)
+	public KeyEcologicalAttributeMeasurementNode(KeyEcologicalAttributeIndicatorNode parent, Measurement measurementToUse)
 	{
 		measurement = measurementToUse;
 		keyEcologicalAttributesNode = parent;
@@ -62,5 +62,5 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	public static final String[] COLUMN_TAGS = {Measurement.TAG_LABEL,};
 	
 	private Measurement measurement;
-	private KeyEcologicalAttributeNode keyEcologicalAttributesNode;
+	private KeyEcologicalAttributeIndicatorNode keyEcologicalAttributesNode;
 }

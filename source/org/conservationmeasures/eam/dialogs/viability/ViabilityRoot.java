@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class ViabilityRoot extends TreeTableNode
 {
-	public ViabilityRoot(Project projectToUse)
+	public ViabilityRoot(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 		rebuild();
@@ -66,7 +66,7 @@ public class ViabilityRoot extends TreeTableNode
 	{
 		return null;
 	}
-	public void rebuild()
+	public void rebuild() throws Exception
 	{
 		Vector vector = new Vector();
 		vector.add(new ViabilityProjectNode(project));

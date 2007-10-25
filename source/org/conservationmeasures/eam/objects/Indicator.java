@@ -141,6 +141,11 @@ public class Indicator extends BaseObject
 		return new ORefList(Task.getObjectType(), getTaskIdList());	
 	}
 	
+	public ORefList getMeasurementRefs()
+	{
+		return measurementRefs.getORefList();
+	}
+	
 	void clear()
 	{
 		super.clear();

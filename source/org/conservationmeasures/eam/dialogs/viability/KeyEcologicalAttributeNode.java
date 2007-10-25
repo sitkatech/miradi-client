@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeNode extends TreeTableNode
 {
-	public KeyEcologicalAttributeNode(Project projectToUse, KeyEcologicalAttribute keaToUse)
+	public KeyEcologicalAttributeNode(Project projectToUse, KeyEcologicalAttribute keaToUse) throws Exception
 	{
 		project = projectToUse;
 		kea = keaToUse;
@@ -67,7 +67,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		return kea.getId();
 	}
 
-	public void rebuild()
+	public void rebuild() throws Exception
 	{
 		int childCount = kea.getIndicatorIds().size();
 		Vector indicatorVector = new Vector();
@@ -86,11 +86,8 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		KeyEcologicalAttribute.PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE
 		};
 	
-
-	Vector children;
-	Project project;
-	KeyEcologicalAttribute kea;
-	KeyEcologicalAttributeIndicatorNode[] indicators;
-
+	private Project project;
+	private KeyEcologicalAttribute kea;
+	private KeyEcologicalAttributeIndicatorNode[] indicators;
 }
 

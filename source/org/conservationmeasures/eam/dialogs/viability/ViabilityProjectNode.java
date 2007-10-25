@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class ViabilityProjectNode extends TreeTableNode
 {
-	public ViabilityProjectNode(Project projectToUse)
+	public ViabilityProjectNode(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 		statusQuestion = new StatusQuestion(Target.TAG_TARGET_STATUS);
@@ -72,7 +72,7 @@ public class ViabilityProjectNode extends TreeTableNode
 		return null;
 	}
 	
-	public void rebuild()
+	public void rebuild() throws Exception
 	{
 		Vector vector = new Vector();
 		Target[] factors  = project.getTargetPool().getTargets();

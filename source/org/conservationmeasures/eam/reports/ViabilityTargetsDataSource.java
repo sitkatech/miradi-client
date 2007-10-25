@@ -23,7 +23,7 @@ public class ViabilityTargetsDataSource extends CommonDataSource
 		setObjectList(list);
 	}
 	
-	public JRDataSource getKeyEcologicalAttrubutesDataSource()
+	public JRDataSource getKeyEcologicalAttrubutesDataSource() throws Exception
 	{
 		return new KeyEcologicalAttrubutesDataSource((Target)getCurrentObject());
 	}
