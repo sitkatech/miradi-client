@@ -28,6 +28,11 @@ abstract public class TableWithColumnWidthSaver extends PanelTable
 		columnWidthSaver.restoreColumnWidths();
 	}
 	
+	protected int getSavedColumnWidth(int column)
+	{
+		return columnWidthSaver.getColumnWidth(column);
+	}
+	
 	//FIXME is this enough 
 	public void tableChanged(TableModelEvent e)
 	{
