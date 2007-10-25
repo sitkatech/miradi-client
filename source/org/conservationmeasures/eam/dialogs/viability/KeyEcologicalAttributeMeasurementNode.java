@@ -59,7 +59,8 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	{
 	}
 	
-	public static final String[] COLUMN_TAGS = {Measurement.TAG_LABEL,};
+	//FIXME should add more valuable columns,  just did this so it works and i can move on.  
+	public static final String[] COLUMN_TAGS = {Measurement.TAG_LABEL,Measurement.TAG_LABEL, Measurement.TAG_LABEL};
 	
 	private Measurement measurement;
 	private KeyEcologicalAttributeIndicatorNode keyEcologicalAttributesNode;
