@@ -56,6 +56,11 @@ abstract public class TableWithHelperMethods extends PanelTable
 		columnToAdjust.setWidth(width);
 	}
 
+	public void resizeTable()
+	{
+		resizeTable(getModel().getRowCount());
+	}
+	
 	public void resizeTable(int rowCount)
 	{
 		Dimension d = getPreferredScrollableViewportSize();
