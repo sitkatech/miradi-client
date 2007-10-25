@@ -7,6 +7,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class ColumnWidthSaver extends MouseAdapter
@@ -35,10 +36,21 @@ public class ColumnWidthSaver extends MouseAdapter
 		int columnWidth = EAM.mainWindow.getAppPreferences().getTaggedInt(getColumnWidthKey(modelColumn));
 		if (columnWidth > 0)
 			return columnWidth;
-		else if (columnTag.equals(GenericTreeTableModel.DEFAULT_COLUMN))
+		else if (isWideColumn(columnTag))
 			return 200;
 		else
 			return 75;
+	}
+
+	private boolean isWideColumn(String columnTag)
+	{
+		if (columnTag.equals(GenericTreeTableModel.DEFAULT_COLUMN))
+			return true;
+		
+		if (columnTag.equals(BaseObject.TAG_LABEL))
+			return true;
+		
+		return false;
 	}
 
 	public void mouseReleased(MouseEvent e)
