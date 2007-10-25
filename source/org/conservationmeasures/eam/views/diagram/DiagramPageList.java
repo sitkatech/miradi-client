@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -33,6 +34,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		getSelectionModel().addListSelectionListener(new DiagramObjectListSelectionListener(project));
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
+		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	}
 	
 	public void listChanged()
@@ -138,7 +140,12 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		
 		Project project;
 	}
-		
+	
+	public boolean shouldSaveColumnWidth()
+	{
+		return false;
+	}
+	
 	abstract public boolean isResultsChainPageList();
 	
 	abstract public boolean isConceptualModelPageList();
