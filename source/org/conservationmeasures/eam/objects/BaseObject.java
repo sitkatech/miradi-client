@@ -246,6 +246,9 @@ abstract public class BaseObject
 			case ObjectType.COST_ALLOCATION_RULE:
 				return new CostAllocationRule(objectManager, idAsInt, json);
 				
+			case ObjectType.MEASUREMENT:
+				return new Measurement(objectManager, idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
