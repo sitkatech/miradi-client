@@ -30,7 +30,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		}
 	}
 	
-	private int getColumnWidth(int modelColumn)
+	protected int getColumnWidth(int modelColumn)
 	{
 		String columnTag = tagProvider.getColumnTag(modelColumn);
 		int columnWidth = EAM.mainWindow.getAppPreferences().getTaggedInt(getColumnWidthKey(modelColumn));
