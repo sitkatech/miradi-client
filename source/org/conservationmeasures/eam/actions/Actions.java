@@ -201,6 +201,8 @@ public class Actions
 		registerAction(new ActionDeleteKeyEcologicalAttribute(mainWindow));
 		registerAction(new ActionCreateKeyEcologicalAttributeIndicator(mainWindow));
 		registerAction(new ActionDeleteKeyEcologicalAttributeIndicator(mainWindow));
+		registerAction(new ActionCreateKeyEcologicalAttributeMeasurement(mainWindow));
+		registerAction(new ActionDeleteKeyEcologicalAttributeMeasurement(mainWindow));
 	
 		registerAction(new ActionViewPossibleTeamMembers(mainWindow));
 		registerAction(new ActionTeamCreateMember(mainWindow));
