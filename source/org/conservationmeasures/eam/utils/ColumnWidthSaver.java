@@ -34,12 +34,18 @@ public class ColumnWidthSaver extends MouseAdapter
 	{
 		String columnTag = tagProvider.getColumnTag(modelColumn);
 		int columnWidth = EAM.mainWindow.getAppPreferences().getTaggedInt(getColumnWidthKey(modelColumn));
+		int columnHeaderWidth = TableWithHelperMethods.getColumnHeaderWidth(table, modelColumn);
 		if (columnWidth > 0)
 			return columnWidth;
+		
 		else if (isWideColumn(columnTag))
 			return DEFAULT_WIDE_COLUMN_WIDTH;
-		else
+		
+		else if (columnHeaderWidth < DEFAULT_NARROW_COLUMN_WIDTH)
 			return DEFAULT_NARROW_COLUMN_WIDTH;
+		
+		else
+			return columnHeaderWidth;
 	}
 
 	private boolean isWideColumn(String columnTag)

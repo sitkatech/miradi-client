@@ -9,6 +9,7 @@ package org.conservationmeasures.eam.utils;
 import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -25,24 +26,39 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		super(model);
 	}
 
+	public void setColumnWidthToHeaderWidth(int column)
+	{
+		setColumnWidth(column, getColumnHeaderWidth(this, column));
+	}
+	
 	public int getColumnHeaderWidth(int column) 
 	{
-		TableColumn columnToAdjust = getColumnModel().getColumn(column);
+		return getColumnHeaderWidth(this, column);
+	}
+
+	public static int getColumnHeaderWidth(JTable table, int column) 
+	{
+		TableColumn columnToAdjust = table.getColumnModel().getColumn(column);
 		String padding = "    ";
 		String value = (String)columnToAdjust.getHeaderValue() + padding;
-		return getRenderedWidth(column, value);
+		return getRenderedWidth(table, column, value);
 	}
 	
 	public int getRenderedWidth(int column, String value) 
 	{
-		TableColumn columnToAdjust = getColumnModel().getColumn(column);
+		return getRenderedWidth(this, column, value);
+	}
+	
+	public static int getRenderedWidth(JTable table, int column, String value)
+	{
+		TableColumn columnToAdjust = table.getColumnModel().getColumn(column);
 		TableCellRenderer renderer = columnToAdjust.getHeaderRenderer();
 		if(renderer == null)
 		{
-			JTableHeader header = getTableHeader();
+			JTableHeader header = table.getTableHeader();
 			renderer = header.getDefaultRenderer();
 		}
-		Component c = renderer.getTableCellRendererComponent(this, value, true, true, -1, column);
+		Component c = renderer.getTableCellRendererComponent(table, value, true, true, -1, column);
 		int width = c.getPreferredSize().width;
 		return width;
 	}
