@@ -6,13 +6,12 @@
 
 package org.conservationmeasures.eam.utils;
 
+import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.table.TableModel;
 
-import org.martus.swing.UiTable;
-
-public class TableWithSunBugWorkarounds extends UiTable
+public class TableWithSunBugWorkarounds extends JTable
 {
 	public TableWithSunBugWorkarounds()
 	{
