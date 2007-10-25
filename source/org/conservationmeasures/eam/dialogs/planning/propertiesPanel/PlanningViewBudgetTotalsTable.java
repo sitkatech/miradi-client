@@ -9,6 +9,7 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.utils.ColumnWidthSaver;
 
 public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractRightAlignedTable
 {
@@ -20,7 +21,7 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractRightAlig
 
 	int getPreferredScrollableViewportWidth()
 	{
-		return 125;
+		return ColumnWidthSaver.DEFAULT_NARROW_COLUMN_WIDTH + 1;
 	}
 	
 	protected int getColumnWidth(int column)

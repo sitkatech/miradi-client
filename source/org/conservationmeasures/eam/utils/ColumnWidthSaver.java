@@ -37,9 +37,9 @@ public class ColumnWidthSaver extends MouseAdapter
 		if (columnWidth > 0)
 			return columnWidth;
 		else if (isWideColumn(columnTag))
-			return 200;
+			return DEFAULT_WIDE_COLUMN_WIDTH;
 		else
-			return 75;
+			return DEFAULT_NARROW_COLUMN_WIDTH;
 	}
 
 	private boolean isWideColumn(String columnTag)
@@ -77,4 +77,6 @@ public class ColumnWidthSaver extends MouseAdapter
 	private JTable table;
 	private ColumnTagProvider tagProvider;
 	private String uniqueTableIdentifier;
+	public static final int DEFAULT_NARROW_COLUMN_WIDTH = 75;
+	public static final int DEFAULT_WIDE_COLUMN_WIDTH = 200;
 }
