@@ -25,6 +25,7 @@ import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -34,11 +35,10 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.TableWithHelperMethods;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.conservationmeasures.eam.views.diagram.LinkDeletor;
 
-public class ThreatMatrixTable extends TableWithHelperMethods
+public class ThreatMatrixTable extends PanelTable
 {
 	public ThreatMatrixTable(ThreatMatrixTableModel model, ThreatGridPanel panel)
 	{

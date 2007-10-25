@@ -3,7 +3,9 @@ package org.conservationmeasures.eam.utils;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableModel;
 
-abstract public class TableWithColumnWidthSaver extends TableWithHelperMethods
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
+
+abstract public class TableWithColumnWidthSaver extends PanelTable
 {
 	public TableWithColumnWidthSaver()
 	{

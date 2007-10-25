@@ -14,9 +14,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
-
-abstract public class TableWithHelperMethods extends PanelTable
+abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 {
 	public TableWithHelperMethods()
 	{
