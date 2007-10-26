@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 
-public class KeyEcologicalAttrubutesDataSource extends CommonDataSource
+public class KeyEcologicalAttributesDataSource extends CommonDataSource
 {
-	public KeyEcologicalAttrubutesDataSource(Target target) throws Exception
+	public KeyEcologicalAttributesDataSource(Target target) throws Exception
 	{
 		super(target.getProject());
 		if (target.isViabilityModeTNC())
