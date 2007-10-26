@@ -82,7 +82,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		int type = annotationToDelete.getType();
 		BaseId idToRemove = annotationToDelete.getId();
 		commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationIdListTag, idToRemove));
-		commands.addAll(buildCommandsToDeleteSubTasks(project, type, idToRemove));
+		commands.addAll(buildCommandsToDeleteMethods(project, type, idToRemove));
 		commands.addAll(buildCommandsToDeleteKEAIndicators(project, type, idToRemove));
 		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 		commands.add(new CommandDeleteObject(type, idToRemove));
@@ -123,7 +123,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 	
-	private static Vector buildCommandsToDeleteSubTasks(Project project, int type, BaseId id) throws Exception
+	private static Vector buildCommandsToDeleteMethods(Project project, int type, BaseId id) throws Exception
 	{
 		Vector commands = new Vector();
 		if (type != ObjectType.INDICATOR)
