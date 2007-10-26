@@ -129,6 +129,9 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 21)
 				upgradeToVersion22();
+			
+			if (readDataVersion(getTopDirectory()) == 22)
+				upgradeToVersion23();
 		}
 		finally 
 		{
@@ -137,6 +140,18 @@ public class DataUpgrader extends FileBasedProjectServer
 				
 	}
 	
+	public void upgradeToVersion23() throws Exception
+	{
+		createMeasurementFromDataInIndicator();
+		//FIXME uncomment and bump up version 
+		//writeVersion(23);
+	}
+	
+	private void createMeasurementFromDataInIndicator()
+	{
+		
+	}
+
 	public void upgradeToVersion22() throws Exception
 	{
 		switchDiagramFactorWrappedIdsToRefs();
