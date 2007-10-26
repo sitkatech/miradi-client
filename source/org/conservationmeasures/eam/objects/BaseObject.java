@@ -637,6 +637,18 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 	
+	public ORefList getAllReferncedObjects()
+	{
+		ORefList allReferencedObjects = new ORefList();
+		for (int objectTypeIndex = 0; objectTypeIndex < ObjectType.OBJECT_TYPE_COUNT; ++objectTypeIndex)
+		{
+			ORefList referencedObjects = getReferencedObjects(objectTypeIndex);
+			allReferencedObjects.addAll(referencedObjects);
+		}
+		
+		return allReferencedObjects;	
+	}
+	
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();

@@ -10,13 +10,22 @@ import java.awt.Point;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.PoolWithIdAssigner;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
 {
+	public static void scanForCorruptedObjects(Project project) throws Exception
+	{
+		ProjectRepairer repairer = new ProjectRepairer(project);
+		repairer.possiblyShowCorruptedObjectsWarningDialog();
+	}
+	
 	public static void repairAnyProblems(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
@@ -96,7 +105,71 @@ public class ProjectRepairer
 	private void logAndContinue(Exception e)
 	{
 		EAM.logException(e);
-	}	
+	}
 	
-	Project project;
+	public void possiblyShowCorruptedObjectsWarningDialog() throws Exception
+	{
+		ORefList corruptedObjectRefs = findAllCorruptedObjects();
+		if (corruptedObjectRefs.size() == 0 )
+			return;
+		
+		for (int i = 0; i < corruptedObjectRefs.size(); ++i)
+		{
+			EAM.logError("found corrupted object: " + corruptedObjectRefs.get(i));
+		}
+		
+		EAM.notifyDialog("This project has some data corruption, " +
+						 "which may cause error messages or unexpected results within " +
+						 "Miradi. Please contact the Miradi team to report this problem, " +
+						 "and/or to have them repair this project.");
+	}
+	
+	public ORefList findAllCorruptedObjects() throws Exception
+	{
+		ORefList corruptedObjectRefs = new ORefList();
+		for (int objectType = 0; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
+		{
+			PoolWithIdAssigner pool = (PoolWithIdAssigner) project.getPool(objectType);
+			if (pool == null)
+				continue;
+			
+			corruptedObjectRefs.addAll(scanObjects(pool.getORefList()));
+		}
+		
+		return corruptedObjectRefs;
+	}
+	
+	private ORefList scanObjects(ORefList refList) throws Exception
+	{
+		ORefList corruptedObjectRefs = new ORefList();
+		for (int i = 0; i < refList.size(); ++i)
+		{
+			BaseObject foundObject = project.findObject(refList.get(i));
+			ORefList ownedAndReferredRefs = new ORefList();
+			ownedAndReferredRefs.addAll(foundObject.getAllReferncedObjects());
+			ownedAndReferredRefs.addAll(foundObject.getAllOwnedObjects());
+			
+			corruptedObjectRefs.addAll(findCorruptedObjects(ownedAndReferredRefs));
+		}
+		
+		return corruptedObjectRefs;
+	}
+
+	private ORefList findCorruptedObjects(ORefList ownedAndReferredRefs)
+	{
+		ORefList corruptedObjectRefs = new ORefList();
+		for (int i = 0; i < ownedAndReferredRefs.size(); ++i)
+		{
+			ORef ref = ownedAndReferredRefs.get(i);
+			BaseObject foundObject = project.findObject(ref);
+			if (foundObject != null || ref.isInvalid())
+				continue;
+			
+			corruptedObjectRefs.add(ref);
+		}
+		
+		return corruptedObjectRefs;
+	}
+
+	private Project project;
 }
