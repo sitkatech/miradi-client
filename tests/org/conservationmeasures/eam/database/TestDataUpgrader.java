@@ -121,6 +121,11 @@ public class TestDataUpgrader extends EAMTestCase
 		return objectsDir;
 	}
 	
+	public void testUpdateTo23SwitchDiagramFactorWrappedIdsToRefs() throws Exception
+	{
+		
+	}
+	
 	public void testUpgradeTo22ChangeWrappedIdsToRefs() throws Exception
 	{
 		String strategyString = " {\"Type\":\"Intervention\",\"Status\":\"\",\"FeasibilityRating\":\"\",\"ShortLabel\":\"\",\"ActivityIds\":\"\",\"Comment\":\"\",\"GoalIds\":\"\",\"ImpactRating\":\"\",\"IndicatorIds\":\"\",\"Label\":\"New Strategy\",\"DurationRating\":\"\",\"TimeStampModified\":\"1185205725518\",\"TaxonomyCode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"CostRating\":\"\",\"Id\":16,\"ObjectiveIds\":\"\"} "; 
