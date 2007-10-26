@@ -322,6 +322,8 @@ public class ObjectManager
 		}
 		
 		EAMObjectPool pool = getPool(objectType);
+		if(pool == null)
+			throw new RuntimeException("Attempted to find object of unknown type: " + objectType);
 		return pool.findObject(objectId);
 	}
 	
