@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -133,9 +134,12 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		for (int i  = 0; i < subtaskList.size(); i++)
 		{
 			Task taskToDelete = (Task)project.findObject(ObjectType.TASK, subtaskList.get(i));
-			Vector returnedDeleteCommands = taskToDelete.getDeleteSelfAndSubtasksCommands(project);
-			
-			commands.addAll(returnedDeleteCommands);
+			ORefList referrers = taskToDelete.findObjectsThatReferToUs(Indicator.getObjectType());
+			if (referrers.size() == 1)
+			{
+				Vector returnedDeleteCommands = taskToDelete.getDeleteSelfAndSubtasksCommands(project);		
+				commands.addAll(returnedDeleteCommands);
+			}
 		}
 		
 		return commands;
