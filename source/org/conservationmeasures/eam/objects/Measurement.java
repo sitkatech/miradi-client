@@ -67,34 +67,34 @@ public class Measurement extends BaseObject
 	{
 		super.clear();
 		
-		measurementTrend= new ChoiceData();
-		measurementStatus= new ChoiceData();
-		measurementDate= new DateData();;
-		measurementSummary= new StringData();
-		measurementDetail= new StringData();
-		measurementStatusConfidence = new ChoiceData();		
+		trend= new ChoiceData();
+		status= new ChoiceData();
+		date= new DateData();;
+		summary= new StringData();
+		detail= new StringData();
+		statusConfidence = new ChoiceData();		
 
-		addField(TAG_MEASUREMENT_TREND, measurementTrend);
-		addField(TAG_MEASUREMENT_STATUS, measurementStatus);
-		addField(TAG_MEASUREMENT_DATE, measurementDate);
-		addField(TAG_MEASUREMENT_SUMMARY, measurementSummary);
-		addField(TAG_MEASUREMENT_DETAIL, measurementDetail);
-		addField(TAG_MEASUREMENT_STATUS_CONFIDENCE, measurementStatusConfidence);
+		addField(TAG_TREND, trend);
+		addField(TAG_STATUS, status);
+		addField(TAG_DATE, date);
+		addField(TAG_SUMMARY, summary);
+		addField(TAG_DETAIL, detail);
+		addField(TAG_STATUS_CONFIDENCE, statusConfidence);
 	}
 	
 	public static final String OBJECT_NAME = "Measurement";
 	
-	public static final String TAG_MEASUREMENT_TREND = "MeasurementTrend";
-	public static final String TAG_MEASUREMENT_STATUS  = "MeasurementStatus";
-	public static final String TAG_MEASUREMENT_DATE = "MeasurementDate";
-	public static final String TAG_MEASUREMENT_SUMMARY = "MeasurementSummary";
-	public static final String TAG_MEASUREMENT_DETAIL = "MeasurementDetail";
-	public static final String TAG_MEASUREMENT_STATUS_CONFIDENCE = "MeasurementStatusConfidence";
+	public static final String TAG_TREND = "Trend";
+	public static final String TAG_STATUS  = "Status";
+	public static final String TAG_DATE = "Date";
+	public static final String TAG_SUMMARY = "Summary";
+	public static final String TAG_DETAIL = "Detail";
+	public static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
 
-	private ChoiceData measurementTrend;
-	private ChoiceData measurementStatus;
-	private DateData measurementDate;
-	private StringData measurementSummary;
-	private StringData measurementDetail;
-	private ChoiceData measurementStatusConfidence;
+	private ChoiceData trend;
+	private ChoiceData status;
+	private DateData date;
+	private StringData summary;
+	private StringData detail;
+	private ChoiceData statusConfidence;
 }
