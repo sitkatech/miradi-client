@@ -316,6 +316,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			project.createOrOpen(projectDirectory);
 			ProjectRepairer.repairAnyProblems(project);
+			ProjectRepairer.scanForCorruptedObjects(project);
 			refreshWizard();
 
 			validate();
