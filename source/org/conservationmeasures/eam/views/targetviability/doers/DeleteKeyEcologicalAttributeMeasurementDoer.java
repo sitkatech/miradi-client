@@ -33,6 +33,8 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 		}
 	}
 	
+	//FIXME This code looks geared towards "owns", not "refers". Needs a significant
+	//overhaul, I (kevin) think. (Could be wrong, of course).
 	public void deleteMeasurement() throws CommandFailedException
 	{
 		KeyEcologicalAttributeMeasurementNode measurementNode = (KeyEcologicalAttributeMeasurementNode) getSelectedTreeNodes()[0];
