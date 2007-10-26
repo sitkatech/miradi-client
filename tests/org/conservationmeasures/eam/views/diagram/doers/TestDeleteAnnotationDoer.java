@@ -4,6 +4,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -62,7 +63,14 @@ public class TestDeleteAnnotationDoer extends EAMTestCase
 		project.executeCommandsAsTransaction(commandsToRemoveIndicator1);
 		
 		Task foundMethod = (Task) project.findObject(methodRef);
-		assertEquals("method was deleted?", method.getRef(), foundMethod.getRef());	
+		assertEquals("method was deleted?", method.getRef(), foundMethod.getRef());
+		
+		ORefList referrers = method.findObjectsThatReferToUs(Indicator.getObjectType());
+		assertEquals("wrong number of referrers?", 1, referrers.size());
+		assertEquals("incorrect referrer?", indicator2.getRef(), referrers.get(0));
+		
+		Indicator foundIndicator1 = (Indicator) project.findObject(indicatorRef1);
+		assertEquals("indicator1 was not deleted?", null, foundIndicator1);
 	}
 	
 	private ProjectForTesting project;
