@@ -133,11 +133,11 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		IdList subtaskList = indicator.getTaskIdList();
 		for (int i  = 0; i < subtaskList.size(); i++)
 		{
-			Task taskToDelete = (Task)project.findObject(ObjectType.TASK, subtaskList.get(i));
-			ORefList referrers = taskToDelete.findObjectsThatReferToUs(Indicator.getObjectType());
+			Task methodToDelete = (Task)project.findObject(ObjectType.TASK, subtaskList.get(i));
+			ORefList referrers = methodToDelete.findObjectsThatReferToUs(Indicator.getObjectType());
 			if (referrers.size() == 1)
 			{
-				Vector returnedDeleteCommands = taskToDelete.getDeleteSelfAndSubtasksCommands(project);		
+				Vector returnedDeleteCommands = methodToDelete.getDeleteSelfAndSubtasksCommands(project);		
 				commands.addAll(returnedDeleteCommands);
 			}
 		}
