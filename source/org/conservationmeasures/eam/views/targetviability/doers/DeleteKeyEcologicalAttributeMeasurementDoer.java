@@ -8,8 +8,10 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeIndicatorNode;
 import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeMeasurementNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 
 public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcologicalAttributeDoer
 {
@@ -32,22 +34,25 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 			throw new CommandFailedException(e);
 		}
 	}
-	
-	//FIXME This code looks geared towards "owns", not "refers". Needs a significant
-	//overhaul, I (kevin) think. (Could be wrong, of course).
+
 	public void deleteMeasurement() throws CommandFailedException
 	{
 		KeyEcologicalAttributeMeasurementNode measurementNode = (KeyEcologicalAttributeMeasurementNode) getSelectedTreeNodes()[0];
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			Command[] commands = measurementNode.getObject().createCommandsToClear(); 
-			getProject().executeCommandsWithoutTransaction(commands);
-			
+			Measurement measurement = (Measurement) measurementNode.getObject();
 			KeyEcologicalAttributeIndicatorNode indicatorNode = (KeyEcologicalAttributeIndicatorNode) measurementNode.getParentNode();
 			Indicator indicator = (Indicator) indicatorNode.getObject();
 			CommandSetObjectData removeMeasurement = CommandSetObjectData.createRemoveORefCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementNode.getObjectReference());
 			getProject().executeCommand(removeMeasurement);
+			
+			ORefList referrerRefs = measurement.findObjectThatReferToUs();
+			if (referrerRefs.size() > 0)
+				return;
+			
+			Command[] commandsToClear = measurement.createCommandsToClear();
+			getProject().executeCommandsWithoutTransaction(commandsToClear);
 			
 			CommandDeleteObject deleteMeasurement = new CommandDeleteObject(measurementNode.getObjectReference());
 			getProject().executeCommand(deleteMeasurement);
