@@ -25,6 +25,6 @@ public class ViabilityTargetsDataSource extends CommonDataSource
 	
 	public JRDataSource getKeyEcologicalAttrubutesDataSource() throws Exception
 	{
-		return new KeyEcologicalAttrubutesDataSource((Target)getCurrentObject());
+		return new KeyEcologicalAttributesDataSource((Target)getCurrentObject());
 	}
 } 
