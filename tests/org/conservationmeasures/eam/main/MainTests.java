@@ -119,6 +119,7 @@ import org.conservationmeasures.eam.utils.TestTaxonomyFileLoader;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.budget.ImportAccountingCodesDoerTest;
 import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
+import org.conservationmeasures.eam.views.diagram.doers.TestDeleteAnnotationDoer;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeActivityNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeConceptualModelPageNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeDirectThreatNode;
@@ -287,6 +288,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestInsertFactorDoer.class));
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestLayerManager.class));
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestDiagramPaster.class));
+		suite.addTest(new TestSuite(TestDeleteAnnotationDoer.class));
 		
 		// view.planning package
 		suite.addTest(new TestSuite(TestPlanningTreeGoalNode.class));
