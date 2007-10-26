@@ -345,6 +345,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("Unknown error prevented opening that project"));
+			try
+			{
+				project.close();
+			}
+			catch(Exception e1)
+			{
+				EAM.panic(e1);
+			}
 		}
 		
 		updateActionStates();
