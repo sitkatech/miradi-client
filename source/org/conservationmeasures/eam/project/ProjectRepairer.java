@@ -161,8 +161,11 @@ public class ProjectRepairer
 		for (int i = 0; i < ownedAndReferredRefs.size(); ++i)
 		{
 			ORef ref = ownedAndReferredRefs.get(i);
+			if (ref.isInvalid())
+				continue;
+			
 			BaseObject foundObject = project.findObject(ref);
-			if (foundObject != null || ref.isInvalid())
+			if (foundObject != null)
 				continue;
 			
 			corruptedObjectRefs.add(ref);
