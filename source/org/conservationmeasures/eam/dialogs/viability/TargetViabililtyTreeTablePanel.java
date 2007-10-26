@@ -9,8 +9,10 @@ import java.awt.Dimension;
 
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIndicator;
+import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeMeasurement;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIndicator;
+import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -69,8 +71,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			ActionDeleteKeyEcologicalAttribute.class,
 			ActionCreateKeyEcologicalAttributeIndicator.class,
 			ActionDeleteKeyEcologicalAttributeIndicator.class,
-			//TODO temporarly removed
-			//ActionCreateKeyEcologicalAttributeMeasurement.class,
-			//ActionDeleteKeyEcologicalAttributeMeasurement.class, 
+			ActionCreateKeyEcologicalAttributeMeasurement.class,
+			ActionDeleteKeyEcologicalAttributeMeasurement.class, 
 			};
 }
