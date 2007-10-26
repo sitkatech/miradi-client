@@ -10,7 +10,7 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	public KeyEcologicalAttributeMeasurementNode(KeyEcologicalAttributeIndicatorNode parent, Measurement measurementToUse)
 	{
 		measurement = measurementToUse;
-		keyEcologicalAttributesNode = parent;
+		parentNode = parent;
 	}
 	
 	public BaseObject getObject()
@@ -45,7 +45,7 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	
 	public TreeTableNode getParentNode()
 	{
-		return keyEcologicalAttributesNode;
+		return parentNode;
 	}
 
 	//TODO: this method could be pulled up to the supper
@@ -63,5 +63,5 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	public static final String[] COLUMN_TAGS = {Measurement.TAG_LABEL,Measurement.TAG_LABEL, Measurement.TAG_LABEL};
 	
 	private Measurement measurement;
-	private KeyEcologicalAttributeIndicatorNode keyEcologicalAttributesNode;
+	private KeyEcologicalAttributeIndicatorNode parentNode;
 }
