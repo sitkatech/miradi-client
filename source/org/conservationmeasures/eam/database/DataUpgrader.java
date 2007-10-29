@@ -19,7 +19,9 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.ProjectZipper;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
@@ -167,6 +169,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		ObjectManifest indicatorManifest = new ObjectManifest(JSONFile.read(indicatorManifestFile));
 		int highestId = readHighestIdInProjectFile(jsonDir);
 		EnhancedJsonObject measurementManifestJson = new EnhancedJsonObject();
+		ORefList measurementRefs = new ORefList();
 		measurementManifestJson.put("Type", "ObjectManifest");
 		BaseId[] indicatorIds = indicatorManifest.getAllKeys();
 		for (int i = 0; i < indicatorIds.length; ++i)
@@ -195,6 +198,10 @@ public class DataUpgrader extends FileBasedProjectServer
 			measurementJson.put("Summary", summary);
 			measurementJson.put("Detail", detail);
 			measurementJson.put("StatusConfidence", statusConfidence);
+			
+			measurementRefs.add(new ORef(Measurement.getObjectType(), new BaseId(highestId)));
+			indicatorJson.put("MeasurementRefs", measurementRefs.toString());
+			writeJson(indicatorFile, indicatorJson);
 			
 			File measurementFile = new File(measurementDir, Integer.toString(highestId));
 			createFile(measurementFile, measurementJson.toString());

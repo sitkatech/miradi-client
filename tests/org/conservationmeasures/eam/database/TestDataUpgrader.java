@@ -17,10 +17,12 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
@@ -171,6 +173,12 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("wrong summary value?", "CS summary label", measurementJson.getString("Summary"));
 		assertEquals("wrong status value?", "CS detail text", measurementJson.getString("Detail"));
 		assertEquals("wrong status confidence value?", "RapidAssessment", measurementJson.getString("StatusConfidence"));
+		
+		EnhancedJsonObject indicatorWithJsonObject = DataUpgrader.readFile(indicator17WithMeasurementDataFile);
+		String measurementRefsAsString = indicatorWithJsonObject.getString("MeasurementRefs");
+		ORefList measurementRefs = new ORefList(measurementRefsAsString);
+		assertEquals("wrong number of refs in list?", 1, measurementRefs.size());
+		assertEquals("wrong ref in list?", new ORef(Measurement.getObjectType(), new BaseId(19)), measurementRefs.get(0));
 	}
 	
 	public void testUpgradeTo22ChangeWrappedIdsToRefs() throws Exception
