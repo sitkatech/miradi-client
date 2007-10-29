@@ -180,7 +180,8 @@ public class DataUpgrader extends FileBasedProjectServer
 			String summary = indicatorJson.getString("MeasurementSummary");
 			String detail = indicatorJson.getString("MeasurementDetail");
 			String statusConfidence = indicatorJson.getString("MeasurementStatusConfidence");
-			if (trend.length() == 0 && status.length() == 0 && date.length() == 0 && summary.length() == 0 && detail.length() == 0 && statusConfidence.length() == 0)
+			boolean hasMeasurementData = trend.length() > 0 || status.length() > 0 || date.length() > 0 || summary.length() > 0 || detail.length() > 0 || statusConfidence.length() > 0;
+			if (!hasMeasurementData)
 				continue;
 			
 			measurementManifestJson.put(Integer.toString(++highestId), "true");
