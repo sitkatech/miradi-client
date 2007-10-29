@@ -60,11 +60,6 @@ public class Measurement extends BaseObject
 	
 	public String toString()
 	{
-		return getLabel();
-	}
-	
-	public String getLabel()
-	{
 		return date.toString();
 	}
 	
