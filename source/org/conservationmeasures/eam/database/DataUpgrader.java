@@ -167,7 +167,8 @@ public class DataUpgrader extends FileBasedProjectServer
 		ObjectManifest indicatorManifest = new ObjectManifest(JSONFile.read(indicatorManifestFile));
 		BaseId[] indicatorIds = indicatorManifest.getAllKeys();
 		int highestId = readHighestIdInProjectFile(jsonDir);
-		String measurementManifestContents = "{\"Type\":\"ObjectManifest\"";
+		EnhancedJsonObject measurementManifestJson = new EnhancedJsonObject();
+		measurementManifestJson.put("Type", "ObjectManifest");
 		for (int i = 0; i < indicatorIds.length; ++i)
 		{	
 			BaseId indicatorId = indicatorIds[i];
@@ -182,8 +183,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			if (trend.length() == 0 && status.length() == 0 && date.length() == 0 && summary.length() == 0 && detail.length() == 0 && statusConfidence.length() == 0)
 				continue;
 			
-			highestId++;
-			measurementManifestContents += ",\"" + highestId + "\":true";
+			measurementManifestJson.put(Integer.toString(++highestId), "true");
 			
 			EnhancedJsonObject measurementJson = new EnhancedJsonObject();
 			measurementJson.put("Id", Integer.toString(highestId));
@@ -199,9 +199,8 @@ public class DataUpgrader extends FileBasedProjectServer
 			createFile(idFile, measurementJson.toString());
 		}
 		
-		measurementManifestContents += "}";
 		File manifestFile = new File(measurementDir, "manifest");
-		createFile(manifestFile, measurementManifestContents);
+		writeJson(manifestFile, measurementManifestJson);
 		writeHighestIdToProjectFile(jsonDir, highestId);
 	}
 
