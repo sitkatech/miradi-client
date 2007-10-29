@@ -63,6 +63,11 @@ public class Measurement extends BaseObject
 		return getLabel();
 	}
 	
+	public String getLabel()
+	{
+		return date.toString();
+	}
+	
 	public void clear()
 	{
 		super.clear();
