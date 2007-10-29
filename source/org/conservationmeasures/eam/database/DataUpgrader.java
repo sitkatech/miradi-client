@@ -165,10 +165,10 @@ public class DataUpgrader extends FileBasedProjectServer
 		measurementDir.mkdirs();
 		
 		ObjectManifest indicatorManifest = new ObjectManifest(JSONFile.read(indicatorManifestFile));
-		BaseId[] indicatorIds = indicatorManifest.getAllKeys();
 		int highestId = readHighestIdInProjectFile(jsonDir);
 		EnhancedJsonObject measurementManifestJson = new EnhancedJsonObject();
 		measurementManifestJson.put("Type", "ObjectManifest");
+		BaseId[] indicatorIds = indicatorManifest.getAllKeys();
 		for (int i = 0; i < indicatorIds.length; ++i)
 		{	
 			BaseId indicatorId = indicatorIds[i];
