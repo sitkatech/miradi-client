@@ -127,6 +127,7 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		String indicatorWithMeasurementData = "{\"MeasurementDate\":\"2007-10-02\",\"Status\":\"\",\"MeasurementStatus\":\"\",\"RatingSource\":\"\",\"ShortLabel\":\"1111111111\",\"MeasurementDetail\":\"CS detail text\",\"Priority\":\"\",\"FutureStatusRating\":\"\",\"MeasurementRefs\":\"\",\"Label\":\"1111111111\",\"MeasurementTrend\":\"Unknown\",\"FutureStatusSummary\":\"\",\"MeasurementStatusConfidence\":\"RapidAssessment\",\"TimeStampModified\":\"1193620397190\",\"MeasurementSummary\":\"CS summary label\",\"TaskIds\":\"\",\"IndicatorThresholds\":\"\",\"FutureStatusDetail\":\"\",\"FutureStatusDate\":\"\",\"Id\":17}";
 		String indicatorWithoutMeasurementData = "{\"MeasurementDate\":\"\",\"Status\":\"\",\"MeasurementStatus\":\"\",\"RatingSource\":\"\",\"ShortLabel\":\"\",\"MeasurementDetail\":\"\",\"Priority\":\"\",\"FutureStatusRating\":\"\",\"MeasurementRefs\":\"\",\"Label\":\"no CS data\",\"MeasurementTrend\":\"\",\"FutureStatusSummary\":\"\",\"MeasurementStatusConfidence\":\"\",\"TimeStampModified\":\"1193620417567\",\"MeasurementSummary\":\"\",\"TaskIds\":\"\",\"IndicatorThresholds\":\"\",\"FutureStatusDetail\":\"\",\"FutureStatusDate\":\"\",\"Id\":18}";
+		String indicatorWithoutMeasurementFields = "{\"Status\":\"\",\"RatingSource\":\"\",\"ShortLabel\":\"\",\"Priority\":\"\",\"FutureStatusRating\":\"\",\"Label\":\"no CS data\",\"FutureStatusSummary\":\"\",\"TimeStampModified\":\"1193620417567\",\"TaskIds\":\"\",\"IndicatorThresholds\":\"\",\"FutureStatusDetail\":\"\",\"FutureStatusDate\":\"\",\"Id\":19}";
 		File jsonDir = new File(tempDirectory, "json");
 		jsonDir.mkdirs();
 		
@@ -136,7 +137,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File indicatorDir = createObjectsDir(jsonDir, "objects-8");
 		indicatorDir.mkdirs();
 		
-		int[] indicatorIds = {17, 18};
+		int[] indicatorIds = {17, 18, 19};
 		File indicatorManifestFile = createManifestFile(indicatorDir, indicatorIds);
 		assertTrue(indicatorManifestFile.exists());
 		
@@ -147,6 +148,10 @@ public class TestDataUpgrader extends EAMTestCase
 		File indicator18WithoutMeasurementDataFile = new File(indicatorDir, Integer.toString(indicatorIds[1]));
 		createFile(indicator18WithoutMeasurementDataFile, indicatorWithoutMeasurementData);
 		assertTrue(indicator18WithoutMeasurementDataFile.exists());
+		
+		File indicator19WithoutMeasurementFieldsFile = new File(indicatorDir, Integer.toString(indicatorIds[2]));
+		createFile(indicator19WithoutMeasurementFieldsFile, indicatorWithoutMeasurementFields);
+		assertTrue(indicator19WithoutMeasurementFieldsFile.exists());
 
 		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion23();

@@ -177,12 +177,12 @@ public class DataUpgrader extends FileBasedProjectServer
 			BaseId indicatorId = indicatorIds[i];
 			File indicatorFile = new File(indicatorDir, Integer.toString(indicatorId.asInt()));
 			EnhancedJsonObject indicatorJson = readFile(indicatorFile);
-			String trend = indicatorJson.getString("MeasurementTrend");
-			String status = indicatorJson.getString("MeasurementStatus");
-			String date = indicatorJson.getString("MeasurementDate");
-			String summary = indicatorJson.getString("MeasurementSummary");
-			String detail = indicatorJson.getString("MeasurementDetail");
-			String statusConfidence = indicatorJson.getString("MeasurementStatusConfidence");
+			String trend = indicatorJson.optString("MeasurementTrend");
+			String status = indicatorJson.optString("MeasurementStatus");
+			String date = indicatorJson.optString("MeasurementDate");
+			String summary = indicatorJson.optString("MeasurementSummary");
+			String detail = indicatorJson.optString("MeasurementDetail");
+			String statusConfidence = indicatorJson.optString("MeasurementStatusConfidence");
 			boolean hasMeasurementData = trend.length() > 0 || status.length() > 0 || date.length() > 0 || summary.length() > 0 || detail.length() > 0 || statusConfidence.length() > 0;
 			if (!hasMeasurementData)
 				continue;
