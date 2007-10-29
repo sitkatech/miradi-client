@@ -141,15 +141,68 @@ public class DataUpgrader extends FileBasedProjectServer
 	}
 	
 	public void upgradeToVersion23() throws Exception
-	{
+	{ 
 		createMeasurementFromDataInIndicator();
-		//FIXME uncomment and bump up version 
-		//writeVersion(23);
+		writeVersion(23);
 	}
 	
-	private void createMeasurementFromDataInIndicator()
+	private void createMeasurementFromDataInIndicator() throws Exception
 	{
+		File jsonDir = new File(topDirectory, "json");
 		
+		File indicatorDir = new File(jsonDir, "objects-8");
+		if (! indicatorDir.exists())
+			return;
+	
+		File measurementDir = new File(jsonDir, "objects-32");
+		if (measurementDir.exists())
+			return;
+		
+		File indicatorManifestFile = new File(indicatorDir, "manifest");
+		if (! indicatorManifestFile.exists())
+			throw new RuntimeException("manifest for objects-8 (Indicator) directory does not exist " + indicatorManifestFile.getAbsolutePath());
+		
+		measurementDir.mkdirs();
+		
+		ObjectManifest indicatorManifest = new ObjectManifest(JSONFile.read(indicatorManifestFile));
+		BaseId[] indicatorIds = indicatorManifest.getAllKeys();
+		int highestId = readHighestIdInProjectFile(jsonDir);
+		String measurementManifestContents = "{\"Type\":\"ObjectManifest\"";
+		for (int i = 0; i < indicatorIds.length; ++i)
+		{	
+			BaseId indicatorId = indicatorIds[i];
+			File indicatorFile = new File(indicatorDir, Integer.toString(indicatorId.asInt()));
+			EnhancedJsonObject indicatorJson = readFile(indicatorFile);
+			String trend = indicatorJson.getString("MeasurementTrend");
+			String status = indicatorJson.getString("MeasurementStatus");
+			String date = indicatorJson.getString("MeasurementDate");
+			String summary = indicatorJson.getString("MeasurementSummary");
+			String detail = indicatorJson.getString("MeasurementDetail");
+			String statusConfidence = indicatorJson.getString("MeasurementStatusConfidence");
+			if (trend.length() == 0 && status.length() == 0 && date.length() == 0 && summary.length() == 0 && detail.length() == 0 && statusConfidence.length() == 0)
+				continue;
+			
+			highestId++;
+			measurementManifestContents += ",\"" + highestId + "\":true";
+			
+			EnhancedJsonObject measurementJson = new EnhancedJsonObject();
+			measurementJson.put("Id", Integer.toString(highestId));
+			measurementJson.put("Label", "");
+			measurementJson.put("Trend", trend);
+			measurementJson.put("Status", status);
+			measurementJson.put("Date", date);
+			measurementJson.put("Summary", summary);
+			measurementJson.put("Detail", detail);
+			measurementJson.put("StatusConfidence", statusConfidence);
+			
+			File idFile = new File(measurementDir, Integer.toString(highestId));
+			createFile(idFile, measurementJson.toString());
+		}
+		
+		measurementManifestContents += "}";
+		File manifestFile = new File(measurementDir, "manifest");
+		createFile(manifestFile, measurementManifestContents);
+		writeHighestIdToProjectFile(jsonDir, highestId);
 	}
 
 	public void upgradeToVersion22() throws Exception

@@ -121,9 +121,56 @@ public class TestDataUpgrader extends EAMTestCase
 		return objectsDir;
 	}
 	
-	public void testUpdateTo23SwitchDiagramFactorWrappedIdsToRefs() throws Exception
+	public void testUpdateTo23CreateMeasurementFromDataInIndicator() throws Exception
 	{
+		String indicatorWithMeasurementData = "{\"MeasurementDate\":\"2007-10-02\",\"Status\":\"\",\"MeasurementStatus\":\"\",\"RatingSource\":\"\",\"ShortLabel\":\"1111111111\",\"MeasurementDetail\":\"CS detail text\",\"Priority\":\"\",\"FutureStatusRating\":\"\",\"MeasurementRefs\":\"\",\"Label\":\"1111111111\",\"MeasurementTrend\":\"Unknown\",\"FutureStatusSummary\":\"\",\"MeasurementStatusConfidence\":\"RapidAssessment\",\"TimeStampModified\":\"1193620397190\",\"MeasurementSummary\":\"CS summary label\",\"TaskIds\":\"\",\"IndicatorThresholds\":\"\",\"FutureStatusDetail\":\"\",\"FutureStatusDate\":\"\",\"Id\":17}";
+		String indicatorWithoutMeasurementData = "{\"MeasurementDate\":\"\",\"Status\":\"\",\"MeasurementStatus\":\"\",\"RatingSource\":\"\",\"ShortLabel\":\"\",\"MeasurementDetail\":\"\",\"Priority\":\"\",\"FutureStatusRating\":\"\",\"MeasurementRefs\":\"\",\"Label\":\"no CS data\",\"MeasurementTrend\":\"\",\"FutureStatusSummary\":\"\",\"MeasurementStatusConfidence\":\"\",\"TimeStampModified\":\"1193620417567\",\"MeasurementSummary\":\"\",\"TaskIds\":\"\",\"IndicatorThresholds\":\"\",\"FutureStatusDetail\":\"\",\"FutureStatusDate\":\"\",\"Id\":18}";
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
 		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":18}");
+		
+		File indicatorDir = createObjectsDir(jsonDir, "objects-8");
+		indicatorDir.mkdirs();
+		
+		int[] indicatorIds = {17, 18};
+		File indicatorManifestFile = createManifestFile(indicatorDir, indicatorIds);
+		assertTrue(indicatorManifestFile.exists());
+		
+		File indicator17WithMeasurementDataFile = new File(indicatorDir, Integer.toString(indicatorIds[0]));
+		createFile(indicator17WithMeasurementDataFile, indicatorWithMeasurementData);
+		assertTrue(indicator17WithMeasurementDataFile.exists());
+		
+		File indicator18WithoutMeasurementDataFile = new File(indicatorDir, Integer.toString(indicatorIds[1]));
+		createFile(indicator18WithoutMeasurementDataFile, indicatorWithoutMeasurementData);
+		assertTrue(indicator18WithoutMeasurementDataFile.exists());
+
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion23();
+		
+		File measurementDir = new File(jsonDir, "objects-32");
+		assertTrue("measurment dir does not exist?", measurementDir.exists());
+		
+		File measurementManifestFile = new File(measurementDir, "manifest");
+		assertTrue("measurement manifest does not exist?", measurementManifestFile.exists());
+		ObjectManifest measurementObjectManifestFile = new ObjectManifest(JSONFile.read(measurementManifestFile));
+		BaseId[] allMeasurementIds = measurementObjectManifestFile.getAllKeys();
+		assertEquals("wrong number of measurements created?", 1, allMeasurementIds.length);
+			
+		String idAsString = Integer.toString(19);
+		File measurementFile = new File(measurementDir, idAsString);
+		assertTrue("measurement file does not exist?", measurementFile.exists());
+		EnhancedJsonObject measurementJson = DataUpgrader.readFile(measurementFile);
+		assertEquals("wrong id?", "19", measurementJson.getString("Id"));
+		assertEquals("wrong label?", "", measurementJson.getString("Label"));
+		
+		assertEquals("wrong trend value?", "Unknown", measurementJson.getString("Trend"));
+		assertEquals("wrong status value?", "", measurementJson.getString("Status"));
+		assertEquals("wrong date value?", "2007-10-02", measurementJson.getString("Date"));
+		assertEquals("wrong summary value?", "CS summary label", measurementJson.getString("Summary"));
+		assertEquals("wrong status value?", "CS detail text", measurementJson.getString("Detail"));
+		assertEquals("wrong status confidence value?", "RapidAssessment", measurementJson.getString("StatusConfidence"));
 	}
 	
 	public void testUpgradeTo22ChangeWrappedIdsToRefs() throws Exception
@@ -327,8 +374,7 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		File causeFile = new File(factorObjects, "45");
 		createFile(causeFile, causeString);
-	
-		
+			
 		File linkObjects = new File(jsonDir, "objects-6");
 		linkObjects.mkdirs();
 		
