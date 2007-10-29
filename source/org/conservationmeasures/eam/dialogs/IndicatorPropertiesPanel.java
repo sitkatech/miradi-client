@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
@@ -43,11 +44,11 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_TARGETS));
 		
-		addField(createDateChooserField(Indicator.TAG_MEASUREMENT_DATE));
-		addField(createStringField(Indicator.TAG_MEASUREMENT_SUMMARY));
-		addField(createMultilineField(Indicator.TAG_MEASUREMENT_DETAIL));
-		addField(createIconChoiceField(ObjectType.INDICATOR, new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND)));
-		addField(createChoiceField(Indicator.getObjectType(), new StatusConfidenceQuestion(Indicator.TAG_MEASUREMENT_STATUS_CONFIDENCE)));
+		addField(createDateChooserField(Measurement.getObjectType(), Measurement.TAG_DATE));
+		addField(createStringField(Measurement.getObjectType(), Measurement.TAG_SUMMARY));
+		addField(createMultilineField(Measurement.getObjectType(), Measurement.TAG_DETAIL));
+		addField(createIconChoiceField(Measurement.getObjectType(), new TrendQuestion(Measurement.TAG_TREND)));
+		addField(createChoiceField(Measurement.getObjectType(), new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
 				
 		updateFieldsFromProject();
 	}
