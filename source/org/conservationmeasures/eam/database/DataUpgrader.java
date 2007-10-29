@@ -160,7 +160,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		File indicatorManifestFile = new File(indicatorDir, "manifest");
 		if (! indicatorManifestFile.exists())
-			throw new RuntimeException("manifest for objects-8 (Indicator) directory does not exist " + indicatorManifestFile.getAbsolutePath());
+			return;
 		
 		measurementDir.mkdirs();
 		
