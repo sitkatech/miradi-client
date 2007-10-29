@@ -169,7 +169,6 @@ public class DataUpgrader extends FileBasedProjectServer
 		ObjectManifest indicatorManifest = new ObjectManifest(JSONFile.read(indicatorManifestFile));
 		int highestId = readHighestIdInProjectFile(jsonDir);
 		EnhancedJsonObject measurementManifestJson = new EnhancedJsonObject();
-		ORefList measurementRefs = new ORefList();
 		measurementManifestJson.put("Type", "ObjectManifest");
 		BaseId[] indicatorIds = indicatorManifest.getAllKeys();
 		for (int i = 0; i < indicatorIds.length; ++i)
@@ -198,7 +197,8 @@ public class DataUpgrader extends FileBasedProjectServer
 			measurementJson.put("Summary", summary);
 			measurementJson.put("Detail", detail);
 			measurementJson.put("StatusConfidence", statusConfidence);
-			
+		
+			ORefList measurementRefs = new ORefList();
 			measurementRefs.add(new ORef(Measurement.getObjectType(), new BaseId(highestId)));
 			indicatorJson.put("MeasurementRefs", measurementRefs.toString());
 			writeJson(indicatorFile, indicatorJson);
