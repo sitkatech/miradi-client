@@ -14,7 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -43,98 +43,51 @@ import org.conservationmeasures.eam.questions.RatingSourceQuestion;
 import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
-import org.martus.swing.UiLabel;
-
-import com.jhlabs.awt.GridLayoutPlus;
+import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
 public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpecial
 {
 	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));
-		ObjectDataInputField keaLabel = addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
-		ObjectDataInputField keaDesc = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
-		ObjectDataInputField keaType = addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
+		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 		
-		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
-		ObjectDataInputField indicatorShortLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL,STD_SHORT));
-		ObjectDataInputField indicatorPriority = addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
-		ObjectDataInputField monitoringStatus = addField(createChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
+		indicatorThreshold = (ViabilityRatingsTableField) addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD)));		
+		JPanel mainPropertiesPanel = createGridLayoutPanel(4, 1);
+		createKeaPropertiesPanel(mainPropertiesPanel);
+		createIndicatorPropertiesPanel(mainPropertiesPanel);
+		createMeasurementPropertiesPanel(mainPropertiesPanel);
+		createIndicatorFutureStatusPanel(mainPropertiesPanel);
 		
+		addFieldComponent(mainPropertiesPanel);
+		updateFieldsFromProject();
+	}
+	
+	private void createIndicatorFutureStatusPanel(JPanel mainPropertiesPanel)
+	{
+		ObjectDataInputField futureStatusRating = addField(createRatingChoiceField(ObjectType.INDICATOR, new StatusQuestion(Indicator.TAG_FUTURE_STATUS_RATING)));
+		ObjectDataInputField futureStatusDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DATE));
+		ObjectDataInputField futureStatusSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_SUMMARY,STD_SHORT));
+		ObjectDataInputField futureStatusDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DETAIL,NARROW_DETAILS));
+
+		JPanel box8 = createGridLayoutPanel(1,5);
+		addBoldedTextBorder(box8, "Future Status");
+		box8.add(createColumnJPanel(futureStatusRating));
+		box8.add(createColumnJPanel(futureStatusDate));
+		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
+		box8.add(createColumnJPanelWithIcon(futureStatusSummary, new GoalIcon()));
+		box8.add(createColumnJPanel(futureStatusDetail));
+		mainPropertiesPanel.add(box8);		
+	}
+
+	private void createMeasurementPropertiesPanel(JPanel mainPropertiesPanel)
+	{
 		ObjectDataInputField measurementStatus = addField(createRatingChoiceField(ObjectType.MEASUREMENT, new StatusQuestion(Measurement.TAG_STATUS)));  
 		ObjectDataInputField measurementTrend = addField(createIconChoiceField(ObjectType.MEASUREMENT, new TrendQuestion(Measurement.TAG_TREND)));
 		ObjectDataInputField measurementDate = addField(createDateChooserField(ObjectType.MEASUREMENT, Measurement.TAG_DATE));
 		ObjectDataInputField measurementSummary = addField(createStringField(ObjectType.MEASUREMENT, Measurement.TAG_SUMMARY,STD_SHORT));
 		ObjectDataInputField measurementDetail = addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_DETAIL,NARROW_DETAILS));
 		ObjectDataInputField measureementStatusConfidence = addField(createChoiceField(ObjectType.MEASUREMENT,  new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
-		
-		ObjectDataInputField ratingSource = addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
-		indicatorThreshold = (ViabilityRatingsTableField)
-			addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD)));
-		
-
-
-		ObjectDataInputField futureStatusRating = addField(createRatingChoiceField(ObjectType.INDICATOR, new StatusQuestion(Indicator.TAG_FUTURE_STATUS_RATING)));
-		ObjectDataInputField futureStatusDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DATE));
-		ObjectDataInputField futureStatusSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_SUMMARY,STD_SHORT));
-		ObjectDataInputField futureStatusDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DETAIL,NARROW_DETAILS));
-		
-		
-		JPanel main = new JPanel(new GridLayoutPlus(0, 1));
-		
-		JPanel mainGridPanel = createGridLayoutPanel(0,2);
-		
-		// KEA Section 
-		JPanel box1 = createGridLayoutPanel(1,2);
-		box1.add(createColumnJPanel(keaLabel));
-		box1.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box1.add(createColumnJPanel(keaType));
-		mainGridPanel.add(makeSectionLabel("KEA"));
-		mainGridPanel.add(box1);
-		
-		
-		JPanel keaDescPanel = createGridLayoutPanel(1,2);
-		keaDescPanel.add(createColumnJPanel(keaDesc));
-		mainGridPanel.add(new UiLabel(""));
-		mainGridPanel.add(keaDescPanel);
-		
-		addBlankLine(mainGridPanel);
-		
-		// Indicator Section 
-		JPanel box2 = createGridLayoutPanel(1,2);
-		box2.add(createColumnJPanel(indicatorLabel));
-		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box2.add(createColumnJPanel(indicatorShortLabel));
-		mainGridPanel.add(makeSectionLabel("Indicator"));
-		mainGridPanel.add(box2);
-		
-		JPanel boxIndrPrty = createGridLayoutPanel(1,5);
-		boxIndrPrty.add(createColumnJPanel(indicatorPriority));
-		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
-		boxIndrPrty.add(createColumnJPanel(monitoringStatus));
-		mainGridPanel.add(new UiLabel(""));
-		mainGridPanel.add(boxIndrPrty);
-		
-		boxIndrPrty.add(Box.createVerticalStrut((3*STD_SPACE_20)));
-		
-		// Indicator Rating Section
-		mainGridPanel.add(makeBoldLabel(indicatorThreshold));
-		JPanel box3 = createGridLayoutPanel(0,2);
-		box3.add(indicatorThreshold.getComponent());
-		JPanel box4 = createGridLayoutPanel(2,1);
-		Box optionPanel = createOptionGroup();
-		box4.add(optionPanel);
-		box4.add(createColumnJPanel(ratingSource, ratingSource.getComponent().getPreferredSize()));
-		box3.add(box4);
-		mainGridPanel.add(box3);
-		
-		addBlankLine(mainGridPanel);
-		
-		mainGridPanel.add(makeSectionLabel(EAM.text("Current Status")));
-		JPanel boxx = createGridLayoutPanel(1,4);
-		mainGridPanel.add(boxx);
-		
-		// Current Status section
+	
 		JPanel box5 = createGridLayoutPanel(1,5);
 		box5.add(createColumnJPanel(measurementStatus));
 		box5.add(createColumnJPanel(measurementDate));
@@ -142,65 +95,77 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		box5.add(createColumnJPanelWithIcon(measurementSummary,new IndicatorIcon()));
 		box5.add(createColumnJPanel(measurementDetail));
 
-		UiLabel currentStatusSectionLabel = makeSectionLabel(EAM.text("(CS)"));
-		mainGridPanel.add(currentStatusSectionLabel);
-		mainGridPanel.add(box5);
-		
 		JPanel box6 = createGridLayoutPanel(1,5);
 		box6.add(createColumnJPanel(measurementTrend));
 		box6.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box6.add(add(createColumnJPanel(measureementStatusConfidence)));
-		mainGridPanel.add(new UiLabel(""));
-		mainGridPanel.add(box6);
 		
-		addBlankLine(mainGridPanel);
-		
-		// Future Status section
-		mainGridPanel.add(makeSectionLabel(EAM.text("Future Status")));
-		
-		JPanel box7 = createGridLayoutPanel(1,4);
-		mainGridPanel.add(box7);
-		
-		JPanel box8 = createGridLayoutPanel(1,5);
-		box8.add(createColumnJPanel(futureStatusRating));
-		box8.add(createColumnJPanel(futureStatusDate));
-		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box8.add(createColumnJPanelWithIcon(futureStatusSummary, new GoalIcon()));
-		box8.add(createColumnJPanel(futureStatusDetail));
-		UiLabel futureStatusSectionLabel = makeSectionLabel(EAM.text("(FS)"));
-		mainGridPanel.add(futureStatusSectionLabel);
-		mainGridPanel.add(box8);
-		
-		main.add(mainGridPanel);
-		
-		addFieldComponent(main);
-		updateFieldsFromProject();
-	}
-	
-	private void addBlankLine(JPanel mainGridPanel)
-	{
-		mainGridPanel.add(new UiLabel("  "));
-		mainGridPanel.add(new UiLabel("  "));
-	}
-	
-	private UiLabel makeSectionLabel(String field)
-	{
-		UiLabel label = new PanelTitleLabel(field);
-		label.setVerticalAlignment(SwingConstants.TOP);
-		return makeBold(label);
+		JPanel mainPanel = createGridLayoutPanel(2, 1);
+		addBoldedTextBorder(mainPanel, "CS");
+		mainPanel.add(box5);
+		mainPanel.add(box6);
+		mainPropertiesPanel.add(mainPanel);		
 	}
 
-	private UiLabel makeBoldLabel(ObjectDataInputField field)
+	private void createIndicatorPropertiesPanel(JPanel mainPropertiesPanel)
 	{
-		return makeBold(createLabel(field));
+		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
+		ObjectDataInputField indicatorShortLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL,STD_SHORT));
+		ObjectDataInputField indicatorPriority = addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
+		ObjectDataInputField monitoringStatus = addField(createChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
+		ObjectDataInputField ratingSource = addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
+		
+		JPanel box2 = createGridLayoutPanel(1,2);
+		box2.add(createColumnJPanel(indicatorLabel));
+		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
+		box2.add(createColumnJPanel(indicatorShortLabel));
+		
+		JPanel boxIndrPrty = createGridLayoutPanel(1,5);
+		boxIndrPrty.add(createColumnJPanel(indicatorPriority));
+		boxIndrPrty.add(Box.createHorizontalStrut(STD_SPACE_20));
+		boxIndrPrty.add(createColumnJPanel(monitoringStatus));
+		boxIndrPrty.add(Box.createVerticalStrut((3*STD_SPACE_20)));
+		
+		JPanel box3 = createGridLayoutPanel(0,2);
+		box3.add(indicatorThreshold.getComponent());
+		JPanel box4 = createGridLayoutPanel(2,1);
+		Box optionPanel = createOptionGroup();
+		box4.add(optionPanel);
+		box4.add(createColumnJPanel(ratingSource, ratingSource.getComponent().getPreferredSize()));
+		box3.add(box4);		
+		
+		JPanel mainIndicatorPanel = createGridLayoutPanel(3, 1);
+		addBoldedTextBorder(mainIndicatorPanel, "Indicator");
+		mainIndicatorPanel.add(box2);
+		mainIndicatorPanel.add(boxIndrPrty);
+		mainIndicatorPanel.add(box3);
+		mainPropertiesPanel.add(mainIndicatorPanel);
 	}
-	
 
-	private UiLabel makeBold(UiLabel label)
+	private void createKeaPropertiesPanel(JPanel mainPropertiesPanelPanel)
 	{
-		Font font = label.getFont();
-		label.setFont(font.deriveFont(Font.BOLD));
-		return label;
+		ObjectDataInputField keaLabel = addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
+		ObjectDataInputField keaDescription = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
+		ObjectDataInputField keaType = addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
+
+		JPanel keaPanel = createGridLayoutPanel(1,2);
+		keaPanel.add(createColumnJPanel(keaLabel));
+		keaPanel.add(Box.createHorizontalStrut(STD_SPACE_20));
+		keaPanel.add(createColumnJPanel(keaType));
+		
+		JPanel keaDescPanel = createGridLayoutPanel(1,2);
+		keaDescPanel.add(createColumnJPanel(keaDescription));
+		
+		JPanel mainKeaPanel = createGridLayoutPanel(3, 1);
+		addBoldedTextBorder(mainKeaPanel, "KEA");
+		mainKeaPanel.add(keaPanel);
+		mainKeaPanel.add(keaDescPanel);
+		mainPropertiesPanelPanel.add(mainKeaPanel);
+	}
+
+	private void addBoldedTextBorder(JPanel panel, String title)
+	{
+		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), EAM.text(title), TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION, TreeTableWithIcons.Renderer.deriveFont(Font.BOLD)));
 	}
 	
 	private Box createOptionGroup()
