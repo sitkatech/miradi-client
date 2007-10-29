@@ -186,18 +186,18 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			measurementManifestJson.put(Integer.toString(++highestId), "true");
 			
-			EnhancedJsonObject measurementJson = new EnhancedJsonObject();
-			measurementJson.put("Id", Integer.toString(highestId));
-			measurementJson.put("Label", "");
-			measurementJson.put("Trend", trend);
-			measurementJson.put("Status", status);
-			measurementJson.put("Date", date);
-			measurementJson.put("Summary", summary);
-			measurementJson.put("Detail", detail);
-			measurementJson.put("StatusConfidence", statusConfidence);
+			EnhancedJsonObject measurementFile = new EnhancedJsonObject();
+			measurementFile.put("Id", Integer.toString(highestId));
+			measurementFile.put("Label", "");
+			measurementFile.put("Trend", trend);
+			measurementFile.put("Status", status);
+			measurementFile.put("Date", date);
+			measurementFile.put("Summary", summary);
+			measurementFile.put("Detail", detail);
+			measurementFile.put("StatusConfidence", statusConfidence);
 			
 			File idFile = new File(measurementDir, Integer.toString(highestId));
-			createFile(idFile, measurementJson.toString());
+			createFile(idFile, measurementFile.toString());
 		}
 		
 		File manifestFile = new File(measurementDir, "manifest");
