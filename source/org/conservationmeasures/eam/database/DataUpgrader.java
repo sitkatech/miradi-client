@@ -200,9 +200,9 @@ public class DataUpgrader extends FileBasedProjectServer
 			createFile(idFile, measurementFile.toString());
 		}
 		
+		writeHighestIdToProjectFile(jsonDir, highestId);
 		File manifestFile = new File(measurementDir, "manifest");
 		writeJson(manifestFile, measurementManifestJson);
-		writeHighestIdToProjectFile(jsonDir, highestId);
 	}
 
 	public void upgradeToVersion22() throws Exception
