@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.questions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -34,6 +35,7 @@ public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
 				new ChoiceItem(Indicator.OBJECT_NAME, EAM.text("Indicators Only")),
 				new ChoiceItem(Task.METHOD_NAME, EAM.text("Methods Only")),
 				new ChoiceItem(Task.OBJECT_NAME, EAM.text("Tasks Only")),
+				new ChoiceItem(Measurement.OBJECT_NAME, EAM.text("Measurements Only")),
 		};
 	}
 }
