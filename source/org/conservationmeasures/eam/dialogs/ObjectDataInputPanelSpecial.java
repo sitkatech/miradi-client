@@ -8,19 +8,24 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableWithIcons;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.Alignment;
@@ -111,5 +116,8 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		return panel;
 	}
 	
-	
+	public void addBoldedTextBorder(JPanel panel, String title)
+	{
+		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), EAM.text(title), TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION, TreeTableWithIcons.Renderer.deriveFont(Font.BOLD)));
+	}
 }

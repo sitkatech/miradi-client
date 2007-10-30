@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -14,7 +13,6 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -32,18 +30,15 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
-import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.questions.RatingSourceQuestion;
 import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
-import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
 public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpecial
 {
@@ -53,30 +48,14 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		indicatorThreshold = (ViabilityRatingsTableField) addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD)));		
 		JPanel mainPropertiesPanel = createGridLayoutPanel(4, 1);
-		createKeaPropertiesPanel(mainPropertiesPanel);
+		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(projectToUse, actions);
+		mainPropertiesPanel.add(targetViabilityKeaPropertiesPanel);
 		createIndicatorPropertiesPanel(mainPropertiesPanel);
 		createMeasurementPropertiesPanel(mainPropertiesPanel);
 		createIndicatorFutureStatusPanel(mainPropertiesPanel);
 		
 		addFieldComponent(mainPropertiesPanel);
 		updateFieldsFromProject();
-	}
-	
-	private void createIndicatorFutureStatusPanel(JPanel mainPropertiesPanel)
-	{
-		ObjectDataInputField futureStatusRating = addField(createRatingChoiceField(ObjectType.INDICATOR, new StatusQuestion(Indicator.TAG_FUTURE_STATUS_RATING)));
-		ObjectDataInputField futureStatusDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DATE));
-		ObjectDataInputField futureStatusSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_SUMMARY,STD_SHORT));
-		ObjectDataInputField futureStatusDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DETAIL,NARROW_DETAILS));
-
-		JPanel box8 = createGridLayoutPanel(1,5);
-		addBoldedTextBorder(box8, "Future Status");
-		box8.add(createColumnJPanel(futureStatusRating));
-		box8.add(createColumnJPanel(futureStatusDate));
-		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box8.add(createColumnJPanelWithIcon(futureStatusSummary, new GoalIcon()));
-		box8.add(createColumnJPanel(futureStatusDetail));
-		mainPropertiesPanel.add(box8);		
 	}
 
 	private void createMeasurementPropertiesPanel(JPanel mainPropertiesPanel)
@@ -140,34 +119,25 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		mainIndicatorPanel.add(boxIndrPrty);
 		mainIndicatorPanel.add(box3);
 		mainPropertiesPanel.add(mainIndicatorPanel);
-	}
+	}	
 
-	private void createKeaPropertiesPanel(JPanel mainPropertiesPanelPanel)
+	private void createIndicatorFutureStatusPanel(JPanel mainPropertiesPanel)
 	{
-		ObjectDataInputField keaLabel = addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
-		ObjectDataInputField keaDescription = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
-		ObjectDataInputField keaType = addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
+		ObjectDataInputField futureStatusRating = addField(createRatingChoiceField(ObjectType.INDICATOR, new StatusQuestion(Indicator.TAG_FUTURE_STATUS_RATING)));
+		ObjectDataInputField futureStatusDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DATE));
+		ObjectDataInputField futureStatusSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_SUMMARY,STD_SHORT));
+		ObjectDataInputField futureStatusDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DETAIL,NARROW_DETAILS));
 
-		JPanel keaPanel = createGridLayoutPanel(1,2);
-		keaPanel.add(createColumnJPanel(keaLabel));
-		keaPanel.add(Box.createHorizontalStrut(STD_SPACE_20));
-		keaPanel.add(createColumnJPanel(keaType));
-		
-		JPanel keaDescPanel = createGridLayoutPanel(1,2);
-		keaDescPanel.add(createColumnJPanel(keaDescription));
-		
-		JPanel mainKeaPanel = createGridLayoutPanel(3, 1);
-		addBoldedTextBorder(mainKeaPanel, "KEA");
-		mainKeaPanel.add(keaPanel);
-		mainKeaPanel.add(keaDescPanel);
-		mainPropertiesPanelPanel.add(mainKeaPanel);
+		JPanel box8 = createGridLayoutPanel(1,5);
+		addBoldedTextBorder(box8, "Future Status");
+		box8.add(createColumnJPanel(futureStatusRating));
+		box8.add(createColumnJPanel(futureStatusDate));
+		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
+		box8.add(createColumnJPanelWithIcon(futureStatusSummary, new GoalIcon()));
+		box8.add(createColumnJPanel(futureStatusDetail));
+		mainPropertiesPanel.add(box8);		
 	}
 
-	private void addBoldedTextBorder(JPanel panel, String title)
-	{
-		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), EAM.text(title), TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION, TreeTableWithIcons.Renderer.deriveFont(Font.BOLD)));
-	}
-	
 	private Box createOptionGroup()
 	{
 		Box box = Box.createVerticalBox();
@@ -231,8 +201,14 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		}
 	}
 	
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		super.setObjectRefs(orefsToUse);
+		targetViabilityKeaPropertiesPanel.setObjectRefs(orefsToUse);	
+	}
+
 	private ViabilityRatingsTableField indicatorThreshold;
 	private static final int STD_SPACE_20 = 20;
 	private static final int NARROW_DETAILS = 30;
-
+	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 }
