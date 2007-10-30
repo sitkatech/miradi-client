@@ -146,6 +146,79 @@ public class Indicator extends BaseObject
 		return measurementRefs.getORefList();
 	}
 	
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_TASK_IDS))
+			return Task.getObjectType();
+		
+		return super.getAnnotationType(tag);
+	}
+
+	public boolean isIdListTag(String tag)
+	{
+		if (tag.equals(TAG_TASK_IDS))
+			return true;
+		
+		return super.isIdListTag(tag);
+	}
+	
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.INDICATOR;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+		
+	public static boolean canReferToThisType(int type)
+	{
+		switch(type)
+		{
+			case ObjectType.TASK: 
+				return true;
+			default:
+				return false;
+		}
+	}
+	
+	public ORefList getReferencedObjects(int objectType)
+	{
+		ORefList list = super.getReferencedObjects(objectType);
+		
+		switch(objectType)
+		{
+			case ObjectType.TASK: 
+				list.addAll(new ORefList(objectType, getTaskIdList()));
+				break;
+		}
+		return list;
+	}
+
+	public String getShortLabel()
+	{
+		return getData(TAG_SHORT_LABEL);
+	}
+	
+	public String toString()
+	{
+		if(getId().isInvalid())
+			return "(None)";
+		return combineShortLabelAndLabel(shortLabel.toString(), getLabel());
+	}
+	
 	void clear()
 	{
 		super.clear();
@@ -219,79 +292,6 @@ public class Indicator extends BaseObject
 		addField(PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE, measurementStatusConfidenceLabel);
 		
 		addField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, futureStatusRatingLabel);
-	}
-	
-	public int getAnnotationType(String tag)
-	{
-		if (tag.equals(TAG_TASK_IDS))
-			return Task.getObjectType();
-		
-		return super.getAnnotationType(tag);
-	}
-
-	public boolean isIdListTag(String tag)
-	{
-		if (tag.equals(TAG_TASK_IDS))
-			return true;
-		
-		return super.isIdListTag(tag);
-	}
-	
-	public int getType()
-	{
-		return getObjectType();
-	}
-
-	public String getTypeName()
-	{
-		return OBJECT_NAME;
-	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.INDICATOR;
-	}
-	
-	
-	public static boolean canOwnThisType(int type)
-	{
-		return false;
-	}
-		
-	public static boolean canReferToThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.TASK: 
-				return true;
-			default:
-				return false;
-		}
-	}
-	
-	public ORefList getReferencedObjects(int objectType)
-	{
-		ORefList list = super.getReferencedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.TASK: 
-				list.addAll(new ORefList(objectType, getTaskIdList()));
-				break;
-		}
-		return list;
-	}
-
-	public String getShortLabel()
-	{
-		return getData(TAG_SHORT_LABEL);
-	}
-	
-	public String toString()
-	{
-		if(getId().isInvalid())
-			return "(None)";
-		return combineShortLabelAndLabel(shortLabel.toString(), getLabel());
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
