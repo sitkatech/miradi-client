@@ -13,11 +13,13 @@ import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.StrategyPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.planning.MeasurementPropertiesPanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -43,6 +45,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		indicatorPropertiesPanel.dispose();
 		strategyPropertiesPanel.dispose();
 		taskPropertiesInputPanel.dispose();
+		measurementPropertiesPanel.dispose();
 	}
 	
 	private void createPropertiesPanels() throws Exception
@@ -53,6 +56,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getProject());
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(mainWindow, objectPicker);
 		blankPropertiesPanel = new BlankPropertiesPanel();
+		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		
 		add(goalPropertiesPanel);
 		add(objectivePropertiesPanel);
@@ -60,6 +64,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		add(strategyPropertiesPanel);
 		add(taskPropertiesInputPanel);
 		add(blankPropertiesPanel);
+		add(measurementPropertiesPanel);
 	}
 	
 	private void add(DisposablePanelWithDescription panelToAdd)
@@ -82,6 +87,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		objectivePropertiesPanel.setObjectRefs(orefsToUse);
 		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		strategyPropertiesPanel.setObjectRefs(orefsToUse);
+		measurementPropertiesPanel.setObjectRefs(orefsToUse);
 	}
 	
 	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
@@ -105,6 +111,9 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		
 		if (Task.getObjectType() == objectType)
 			return taskPropertiesInputPanel;
+		
+		if (Measurement.getObjectType() == objectType)
+			return measurementPropertiesPanel;
 		
 		return blankPropertiesPanel;
 	}
@@ -136,4 +145,5 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
+	private MeasurementPropertiesPanel measurementPropertiesPanel;
 }
