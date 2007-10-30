@@ -57,6 +57,12 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		addFieldComponent(mainPropertiesPanel);
 		updateFieldsFromProject();
 	}
+	
+	public void dispose()
+	{
+		super.dispose();
+		targetViabilityKeaPropertiesPanel.dispose();
+	}
 
 	private void createMeasurementPropertiesPanel(JPanel mainPropertiesPanel)
 	{
