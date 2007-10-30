@@ -45,11 +45,8 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		table.setShowHorizontalLines(false);
 		table.setIntercellSpacing(new Dimension(3,0));
 		currentRowHeight = table.getRowHeight();
-		showThreshold = true;
 		showStatus = true;
 	}
-
-
 	
 	private void setIconRow(ORef oref)
 	{	
@@ -63,7 +60,6 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	
 	public void showThreshold(boolean show)
 	{
-		showThreshold = show;
 		if (show)
 		{
 			table.setRowHeight(0, currentRowHeight);
@@ -74,7 +70,6 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		}
 	}
 	
-
 	public void showStatus(boolean show)
 	{
 		showStatus = show;
@@ -120,13 +115,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			model.setValueAt("", 2, i);
 		}
 	}
-	
-	
-	public void repaint()
-	{
-		table.repaint();
-	}
-	
+		
 	class TableCellRenderer extends DefaultTableCellRenderer
 	{
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
@@ -156,12 +145,10 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			return getComponent(comp, column);
 		}
 
-
 		private Icon getTrendIcon()
 		{
 			return new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND).findChoiceByCode(measurementTrendCode).getIcon();
 		}
-		
 		
 		private JComponent getComponent(JComponent comp, int column)
 		{
@@ -187,7 +174,6 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			return true;
 		}
 		
-
 		public void updateEditableState(JComponent comp)
 		{
 			boolean editable = allowEdits() && isValidObject();
@@ -198,7 +184,6 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 				comp.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 			}
 		}
-
 	}
 	
 	class HeaderRenderer extends DefaultTableCellRenderer
@@ -213,19 +198,15 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 			field.setBackground(question.getChoices()[column+1].getColor());
 			return field;
 		}
-		
 	}
 	
-	
-
-	boolean showThreshold;
-	boolean showStatus;
-	String measurementStatusCode;
-	String measurementSummary;
-	String measurementTrendCode;
-	String futureStatusCode;
-	String futureStatusSummary;
-	ChoiceQuestion question;
-	DefaultTableModel model;
-	int currentRowHeight;
+	private boolean showStatus;
+	private String measurementStatusCode;
+	private String measurementSummary;
+	private String measurementTrendCode;
+	private String futureStatusCode;
+	private String futureStatusSummary;
+	private ChoiceQuestion question;
+	private DefaultTableModel model;
+	private int currentRowHeight;
 }
