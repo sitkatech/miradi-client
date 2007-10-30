@@ -24,6 +24,9 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 	{
 		ORefList methodRefs = indicator.getMethods();
 		createAndAddChildren(methodRefs, null);
+		
+		ORefList measurementRefs = indicator.getMeasurementRefs();
+		createAndAddChildren(measurementRefs, null);
 	}
 
 	public BaseObject getObject()
