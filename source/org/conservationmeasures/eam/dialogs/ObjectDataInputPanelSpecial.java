@@ -120,4 +120,6 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	{
 		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), EAM.text(title), TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION, TreeTableWithIcons.Renderer.deriveFont(Font.BOLD)));
 	}
+	
+	protected static final int STD_SPACE_20 = 20;
 }
