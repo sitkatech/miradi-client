@@ -8,7 +8,6 @@ import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanelSpecial;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -46,10 +45,5 @@ public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelSpeci
 		mainKeaPanel.add(keaPanel);
 		mainKeaPanel.add(keaDescPanel);
 		mainPropertiesPanelPanel.add(mainKeaPanel);
-	}
-	
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Key Ecological Attribute Properties");
 	}
 }

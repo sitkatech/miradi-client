@@ -100,11 +100,6 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		return check;
 	}
 	
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Key Ecological Attribute Properties");
-	}
-	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
