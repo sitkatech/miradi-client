@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -122,6 +123,16 @@ public class ColumnManager
 		
 		return new CodeList(list);
 	}
+	
+	public static CodeList getMeasurementColumns()
+	{
+		//FIXME add the right tags here.  All measurement fields?
+		String[] list = {
+				Measurement.TAG_DATE,
+				};
+	
+		return new CodeList(list);		
+	}
 
 	public static CodeList getVisibleColumnCodes(ViewData viewData)
 	{
@@ -186,6 +197,9 @@ public class ColumnManager
 	
 		if (propertyName.equals(Task.OBJECT_NAME))
 			return ColumnManager.getTaskColumns();
+		
+		if (propertyName.equals(Measurement.OBJECT_NAME))
+			return ColumnManager.getMeasurementColumns();
 		
 		EAM.logError("getVisibleColumnsForSingleType unknown choice: " + propertyName);
 		return new CodeList();
