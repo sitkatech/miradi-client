@@ -13,11 +13,10 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -53,10 +52,12 @@ public class ShowFullModelModeDoer extends ViewDoer
 		try
 		{
 			ORefList factorsToMakeSelected = getFactorsToMakeSelected();
-			
-			BaseId viewId = getCurrentViewId();
-			getProject().executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
-					ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT));
+			ORef viewDataRef = getProject().getCurrentViewData().getRef();
+			CommandSetObjectData clearBrainsStormNodeList = new CommandSetObjectData(viewDataRef, ViewData.TAG_CHAIN_MODE_FACTOR_REFS, "");
+			getProject().executeCommand(clearBrainsStormNodeList);
+						
+			CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
+			getProject().executeCommand(changeToDefaultMode);
 			
 			selectFactors(factorsToMakeSelected);
 			
@@ -93,12 +94,5 @@ public class ShowFullModelModeDoer extends ViewDoer
 			if (glc.isVisible(diagramFactor))
 				diagramComponent.addSelectionCell(diagramFactor);
 		}
-	}
-	
-	
-	private BaseId getCurrentViewId() throws Exception
-	{
-		ViewData viewData = getProject().getCurrentViewData();
-		return viewData.getId();
 	}
 }
