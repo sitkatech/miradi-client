@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.planning;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Task;
@@ -37,7 +38,8 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
 				Indicator.OBJECT_NAME, 
-				Task.METHOD_NAME, });
+				Task.METHOD_NAME,
+				Measurement.OBJECT_NAME, });
 	}
 	
 	public String getPropertyName()

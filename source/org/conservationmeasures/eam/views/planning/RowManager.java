@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
@@ -37,6 +38,7 @@ public class RowManager
 		masterRowList.add(Indicator.OBJECT_NAME);
 		masterRowList.add(Task.METHOD_NAME);
 		masterRowList.add(Task.OBJECT_NAME);
+		masterRowList.add(Measurement.OBJECT_NAME);
 	
 		return masterRowList;
 	}

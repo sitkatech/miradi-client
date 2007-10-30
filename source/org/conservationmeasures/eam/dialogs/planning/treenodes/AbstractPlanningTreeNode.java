@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -228,7 +229,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeIndicatorNode(project, refToAdd);
 		if(type == Task.getObjectType())
 			return new PlanningTreeTaskNode(project, refToAdd);
-		
+		if (type == Measurement.getObjectType())
+			return new PlanningTreeMeasurementNode(project, refToAdd);
 		
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}
