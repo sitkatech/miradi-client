@@ -122,4 +122,5 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 	}
 	
 	protected static final int STD_SPACE_20 = 20;
+	protected static final int NARROW_DETAILS = 30;
 }
