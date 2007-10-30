@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanelSpecial;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
@@ -43,11 +42,6 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		targetViabilityIndicatorPropertiesPanel.dispose();
 		targetViabilityMeasurementPropertiesPanel.dispose();
 		targetViabilityFutureStatusPropertiesPanel.dispose();
-	}
-
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Key Ecological Attribute Properties");
 	}
 	
 	public void setObjectRefs(ORef[] orefsToUse)
