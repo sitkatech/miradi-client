@@ -166,7 +166,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		HideableScrollBar hideableScrollBar;
 	}
 
-	MainWindow mainWindow;
+	private MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
 	protected GenericTreeTableModel model;
 	protected ScrollPaneWithHideableScrollBar treeTableScrollPane;
