@@ -36,7 +36,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-public class PlanningViewResourceTable extends PlanningViewAbstractTable implements ObjectPicker
+public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize implements ObjectPicker
 {
 	public PlanningViewResourceTable(PlanningViewResourceTableModel modelToUse)
 	{
