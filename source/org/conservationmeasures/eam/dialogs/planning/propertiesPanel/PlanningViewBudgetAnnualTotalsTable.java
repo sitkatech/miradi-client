@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
 
-public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractTableWithColoredColumns
+public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewFullSizeTable
 {
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model)
 	{
