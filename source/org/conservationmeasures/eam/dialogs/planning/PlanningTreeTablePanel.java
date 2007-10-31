@@ -6,11 +6,12 @@
 package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.BorderLayout;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
@@ -54,7 +55,7 @@ import org.conservationmeasures.eam.views.umbrella.TreeTablePanel;
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 import com.jhlabs.awt.BasicGridLayout;
 
-public class PlanningTreeTablePanel extends TreeTablePanel
+public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheelListener
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{ 
@@ -73,6 +74,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
 		mainPanel.add(treeTableScrollPane, BorderLayout.CENTER);
 		mainScrollPane = new FastScrollPane(mainPanel);
+		treeTableScrollPane.addMouseWheelListener(this);
 		add(mainScrollPane);
 		
 		selectionController = new MultipleTableSelectionController();
@@ -101,12 +103,13 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	
 	private void turnOffVerticalHorizontalScrolling(FastScrollPane scrollPaneToUse)
 	{
-		scrollPaneToUse.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPaneToUse.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPaneToUse.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	}
 	
 	private void rebuildSyncedTable(PlanningTreeTable treeTableToUse, FastScrollPane scrollPaneToUse, JTable tableToUse)
 	{
+		scrollPaneToUse.addMouseWheelListener(this);
 		tableToUse.setRowHeight(treeTableToUse.getRowHeight());	
 		turnOffVerticalHorizontalScrolling(scrollPaneToUse);
 		
@@ -300,6 +303,11 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private PlanningTreeModel getPlanningModel()
 	{
 		return (PlanningTreeModel)getModel();
+	}
+	
+	public void mouseWheelMoved(MouseWheelEvent e)
+	{
+		mainScrollPane.processMouseWheelEvent(e);
 	}
 	
 	private JPanel mainPanel;

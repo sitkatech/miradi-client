@@ -162,8 +162,8 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		{
 			hideableScrollBar.visible = false;
 		}
-		
-		HideableScrollBar hideableScrollBar;
+
+		private HideableScrollBar hideableScrollBar;
 	}
 
 	private MainWindow mainWindow;
