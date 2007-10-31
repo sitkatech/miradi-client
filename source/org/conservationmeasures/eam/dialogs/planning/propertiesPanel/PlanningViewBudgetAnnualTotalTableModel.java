@@ -8,24 +8,20 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.text.DecimalFormat;
 import java.util.Vector;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsCalculator;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
-import org.conservationmeasures.eam.utils.ColumnTagProvider;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
-public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel implements ColumnTagProvider
+public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
 	public PlanningViewBudgetAnnualTotalTableModel(Project projectToUse, TreeTableModelAdapter adapterToUse) throws Exception
 	{
-		project = projectToUse;
-		adapter = adapterToUse;
+		super(projectToUse, adapterToUse);
 
 		totalCalculator = new PlanniningViewBudgetTotalsCalculator(project);
 		yearlyDateRanges = new ProjectCalendar(project).getYearlyDateRanges();
@@ -59,11 +55,6 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel 
 		return columnNames.size();
 	}
 	
-	public int getRowCount()
-	{
-		return adapter.getRowCount();
-	}
-
 	public Object getValueAt(int row, int column)
 	{
 		Object rawTreeNode = getNodeForRow(row);
@@ -86,11 +77,6 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel 
 		}
 	}
 	
-	public Object getNodeForRow(int row)
-	{
-		return adapter.nodeForRow(row);
-	}
-		
 	private Object getYearlyTotal(Object rawNode, int column) throws Exception
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
@@ -119,19 +105,12 @@ public class PlanningViewBudgetAnnualTotalTableModel extends AbstractTableModel 
 		return column == getColumnCount() - 1;
 	}
 	
-	public String getColumnTag(int column)
-	{
-		return getColumnName(column);
-	}
-	
-	private TreeTableModelAdapter adapter;
-	DecimalFormat currencyFormatter;
+	private DecimalFormat currencyFormatter;
 	
 	private DateRange combinedDataRange;
 	private Vector columnNames;
 	private Vector yearlyDateRanges;
 	private PlanniningViewBudgetTotalsCalculator totalCalculator;
-	private Project project;
 	
 	public static final String COST_COLUMN_NAME = EAM.text("Budget Total ($)");
 }

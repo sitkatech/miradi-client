@@ -1,0 +1,33 @@
+/* 
+* Copyright 2005-2007, Wildlife Conservation Society, 
+* Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
+
+import org.conservationmeasures.eam.objects.Measurement;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
+
+import com.java.sun.jtreetable.TreeTableModelAdapter;
+
+public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
+{
+	public PlanningViewMeasurementTableModel(Project projectToUse, TreeTableModelAdapter adapterToUse) throws Exception
+	{
+		super(projectToUse, adapterToUse);
+	}
+
+	public int getColumnCount()
+	{
+		return columnTags.length;
+	}
+
+	public Object getValueAt(int row, int column)
+	{
+		TreeTableNode node = (TreeTableNode) getNodeForRow(row);
+		return node.getObject().getData(columnTags[column]);
+	}
+	
+	public final static String[] columnTags = {Measurement.TAG_DATE, Measurement.TAG_DETAIL, Measurement.TAG_TREND, Measurement.TAG_STATUS_CONFIDENCE};
+}
