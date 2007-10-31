@@ -7,10 +7,8 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.LayoutManager2;
 
-import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.utils.FastScrollPane;
@@ -53,12 +51,6 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 	public void updateSplitterLocationToMiddle()
 	{
 		splitter.setSplitterLocationToMiddle(getSplitterDescription());
-	}
-	
-	protected void setComponentPreferredSize(JComponent component)
-	{
-		Dimension dimension = new Dimension(0,200);
-		component.setPreferredSize(dimension);
 	}
 	
 	public String getSplitterDescription()
