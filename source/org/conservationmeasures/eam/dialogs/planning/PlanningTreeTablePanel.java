@@ -251,12 +251,12 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		annualTotalsModel.fireTableDataChanged();
 		measurementModel.fireTableDataChanged();
 		restoreTreeExpansionState();
-		updateSplitterRightSideContents();
+		updateRightSideTablePanels();
 
 		selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef);
 	}
 	
-	private void updateSplitterRightSideContents() throws Exception
+	private void updateRightSideTablePanels() throws Exception
 	{
 		mainPanel.removeAll();
 		mainPanel.add(treeTableScrollPane);
