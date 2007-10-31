@@ -64,9 +64,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
-		splitter = new JSplitPane();
-		add(splitter, BorderLayout.CENTER);
-		splitter.setLeftComponent(getTreeTableScrollPane());
+		mainSplitter = new JSplitPane();
+		add(mainSplitter, BorderLayout.CENTER);
+		mainSplitter.setLeftComponent(getTreeTableScrollPane());
 		
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
@@ -246,7 +246,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			getTreeTableScrollPane().hideVerticalScrollBar();
-			splitter.setRightComponent(annualTotalsScrollPane);
+			mainSplitter.setRightComponent(annualTotalsScrollPane);
 			validate();
 
 			int proposedWidth = getTree().getPreferredSize().width;
@@ -257,13 +257,13 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 				int maxWidth = currentWidth - reservedWidth;
 				proposedWidth = Math.min(proposedWidth, maxWidth);
 			}
-			splitter.setDividerLocation(proposedWidth);
+			mainSplitter.setDividerLocation(proposedWidth);
 		}
 		else
 		{
 			getTreeTableScrollPane().showVerticalScrollBar();
-			splitter.setRightComponent(new JPanel());
-			splitter.setDividerLocation(Integer.MAX_VALUE);
+			mainSplitter.setRightComponent(new JPanel());
+			mainSplitter.setDividerLocation(Integer.MAX_VALUE);
 			validate();
 		}
 		
@@ -296,7 +296,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		return (PlanningTreeModel)getModel();
 	}
 
-	private JSplitPane splitter;
+	private JSplitPane mainSplitter;
 	
 	private MultiTableVerticalScrollController verticalController;
 	private MultipleTableSelectionController selectionController;
