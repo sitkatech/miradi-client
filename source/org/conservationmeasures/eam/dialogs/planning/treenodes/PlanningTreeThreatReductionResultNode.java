@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -41,6 +42,7 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 				Indicator.getObjectType(),
 				Objective.getObjectType(),
 				Task.getObjectType(),
+				Measurement.getObjectType(),
 			};
 	}
 
