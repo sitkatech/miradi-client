@@ -102,7 +102,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private void turnOffVerticalHorizontalScrolling(UiScrollPane scrollPaneToUse)
 	{
 		scrollPaneToUse.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPaneToUse.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPaneToUse.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	}
 	
 	private void rebuildSyncedTable(PlanningTreeTable treeTableToUse, UiScrollPane scrollPaneToUse, JTable tableToUse)
