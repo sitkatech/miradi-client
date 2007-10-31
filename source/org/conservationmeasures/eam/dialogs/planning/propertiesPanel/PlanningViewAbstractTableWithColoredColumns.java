@@ -17,9 +17,9 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
-abstract public class PlanningViewAbstractTableWithSizedColumns extends PlanningViewAbstractTable
+abstract public class PlanningViewAbstractTableWithColoredColumns extends PlanningViewAbstractTable
 {
-	public PlanningViewAbstractTableWithSizedColumns(TableModel modelToUse)
+	public PlanningViewAbstractTableWithColoredColumns(TableModel modelToUse)
 	{
 		super(modelToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

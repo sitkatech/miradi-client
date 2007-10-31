@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
 
-public class PlanningViewMeasurementTable extends PlanningViewAbstractTableWithSizedColumns
+public class PlanningViewMeasurementTable extends PlanningViewAbstractTableWithColoredColumns
 {
 	public PlanningViewMeasurementTable(PlanningViewMeasurementTableModel model)
 	{
