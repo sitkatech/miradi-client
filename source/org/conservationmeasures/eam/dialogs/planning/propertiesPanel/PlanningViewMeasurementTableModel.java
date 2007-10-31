@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -22,10 +23,18 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	{
 		return columnTags.length;
 	}
-
+	
+	public String getColumnName(int column)
+	{
+		return EAM.fieldLabel(Measurement.getObjectType(), columnTags[column]);
+	}
+	
 	public Object getValueAt(int row, int column)
 	{
 		TreeTableNode node = (TreeTableNode) getNodeForRow(row);
+		if (node.getType() != Measurement.getObjectType())
+			return "";
+		
 		return node.getObject().getData(columnTags[column]);
 	}
 	

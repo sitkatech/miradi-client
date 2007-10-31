@@ -11,7 +11,8 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -29,6 +30,8 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalTableModel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalsTable;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTable;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTableModel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -36,10 +39,10 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
@@ -49,6 +52,7 @@ import org.conservationmeasures.eam.views.umbrella.TreeTablePanel;
 import org.martus.swing.UiScrollPane;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
+import com.jhlabs.awt.BasicGridLayout;
 
 public class PlanningTreeTablePanel extends TreeTablePanel
 {
@@ -64,38 +68,49 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
-		mainSplitter = new JSplitPane();
-		add(mainSplitter, BorderLayout.CENTER);
-		mainSplitter.setLeftComponent(getTreeTableScrollPane());
+		
+		mainPanel = new JPanel(new BasicGridLayout(1, 3));
+		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
+		mainPanel.add(treeTableScrollPane, BorderLayout.CENTER);
+		mainScrollPane = new UiScrollPane(mainPanel);
+		add(mainScrollPane);
 		
 		selectionController = new MultipleTableSelectionController();
-		verticalController = new MultiTableVerticalScrollController();
 		
-		getTreeTableScrollPane().setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		getTreeTableScrollPane().setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		createRightSideTables(treeToUse);
+		annualTotalsScrollPane = new UiScrollPane(annualTotalsTable);
+		rebuildSyncedTable(treeToUse, annualTotalsScrollPane, annualTotalsTable);
 		
-		createBudgetTable(treeToUse);
-		rebuildSyncedAnnualsTotalsTable(treeToUse);
+		measurementScrollPane = new UiScrollPane(measurementTable);
+		rebuildSyncedTable(treeToUse, measurementScrollPane, measurementTable);
 		rebuildEntireTreeTable();
 	}
 
-	private void createBudgetTable(PlanningTreeTable treeTableToUse) throws Exception
+	private void createRightSideTables(PlanningTreeTable treeTableToUse) throws Exception
 	{
-		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), (TreeTableModelAdapter)treeTableToUse.getModel());
+		TreeTableModelAdapter treeTableModelAdapter = (TreeTableModelAdapter)treeTableToUse.getModel();
+		
+		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeTableModelAdapter);
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel);
-		new ModelUpdater((TreeTableModelAdapter)treeTableToUse.getModel(), annualTotalsModel);
+		new ModelUpdater(treeTableModelAdapter, annualTotalsModel);
+		
+		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTableModelAdapter);
+		measurementTable = new PlanningViewMeasurementTable(measurementModel);
+		new ModelUpdater(treeTableModelAdapter, measurementModel);
 	}
 	
-	private void rebuildSyncedAnnualsTotalsTable(PlanningTreeTable treeTableToUse)
+	private void turnOffVerticalHorizontalScrolling(UiScrollPane scrollPaneToUse)
 	{
-		annualTotalsTable.setRowHeight(treeTableToUse.getRowHeight());
-		annualTotalsScrollPane = new UiScrollPane(annualTotalsTable);
-		annualTotalsScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPaneToUse.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPaneToUse.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	}
 	
-		verticalController.addTable(annualTotalsScrollPane);
-		verticalController.addTable(getTreeTableScrollPane());
+	private void rebuildSyncedTable(PlanningTreeTable treeTableToUse, UiScrollPane scrollPaneToUse, JTable tableToUse)
+	{
+		tableToUse.setRowHeight(treeTableToUse.getRowHeight());	
+		turnOffVerticalHorizontalScrolling(scrollPaneToUse);
 		
-		selectionController.addTable(annualTotalsTable);
+		selectionController.addTable(tableToUse);
 		selectionController.addTable(treeTableToUse);
 	}
 
@@ -234,6 +249,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getPlanningModel().rebuildEntireTree();
 		annualTotalsModel.fireTableDataChanged();
+		measurementModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateSplitterRightSideContents();
 
@@ -242,31 +258,21 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	
 	private void updateSplitterRightSideContents() throws Exception
 	{
+		mainPanel.removeAll();
+		mainPanel.add(treeTableScrollPane);
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
-			getTreeTableScrollPane().hideVerticalScrollBar();
-			mainSplitter.setRightComponent(annualTotalsScrollPane);
-			validate();
-
-			int proposedWidth = getTree().getPreferredSize().width;
-			int reservedWidth = annualTotalsScrollPane.getPreferredSize().width;
-			int currentWidth = getWidth();
-			if(currentWidth > 0)
-			{
-				int maxWidth = currentWidth - reservedWidth;
-				proposedWidth = Math.min(proposedWidth, maxWidth);
-			}
-			mainSplitter.setDividerLocation(proposedWidth);
+			
+			mainPanel.add(annualTotalsScrollPane);
 		}
-		else
+		if (columnsToShow.contains(Measurement.PSEUDO_TAG_MEASUREMENT_FIELDS))
 		{
-			getTreeTableScrollPane().showVerticalScrollBar();
-			mainSplitter.setRightComponent(new JPanel());
-			mainSplitter.setDividerLocation(Integer.MAX_VALUE);
-			validate();
+			mainPanel.add(measurementScrollPane);
 		}
 		
+		validate();
+		repaint();
 	}
 
 	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef)
@@ -295,14 +301,16 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	{
 		return (PlanningTreeModel)getModel();
 	}
-
-	private JSplitPane mainSplitter;
 	
-	private MultiTableVerticalScrollController verticalController;
+	private JPanel mainPanel;
 	private MultipleTableSelectionController selectionController;
 	private PlanningViewBudgetAnnualTotalsTable annualTotalsTable;
 	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
+	private PlanningViewMeasurementTable measurementTable;
+	private PlanningViewMeasurementTableModel measurementModel;
 	private UiScrollPane annualTotalsScrollPane;
+	private UiScrollPane measurementScrollPane;
+	private UiScrollPane mainScrollPane;
 }
 
 class ModelUpdater implements TableModelListener
@@ -318,5 +326,5 @@ class ModelUpdater implements TableModelListener
 		modelToUpdate.fireTableDataChanged();
 	}
 	
-	AbstractTableModel modelToUpdate;
+	private AbstractTableModel modelToUpdate;
 }
