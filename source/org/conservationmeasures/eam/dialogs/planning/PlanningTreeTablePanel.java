@@ -43,13 +43,13 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.views.umbrella.TreeTablePanel;
-import org.martus.swing.UiScrollPane;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 import com.jhlabs.awt.BasicGridLayout;
@@ -72,16 +72,16 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		mainPanel = new JPanel(new BasicGridLayout(1, 3));
 		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
 		mainPanel.add(treeTableScrollPane, BorderLayout.CENTER);
-		mainScrollPane = new UiScrollPane(mainPanel);
+		mainScrollPane = new FastScrollPane(mainPanel);
 		add(mainScrollPane);
 		
 		selectionController = new MultipleTableSelectionController();
 		
 		createRightSideTables(treeToUse);
-		annualTotalsScrollPane = new UiScrollPane(annualTotalsTable);
+		annualTotalsScrollPane = new FastScrollPane(annualTotalsTable);
 		rebuildSyncedTable(treeToUse, annualTotalsScrollPane, annualTotalsTable);
 		
-		measurementScrollPane = new UiScrollPane(measurementTable);
+		measurementScrollPane = new FastScrollPane(measurementTable);
 		rebuildSyncedTable(treeToUse, measurementScrollPane, measurementTable);
 		rebuildEntireTreeTable();
 	}
@@ -99,13 +99,13 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		new ModelUpdater(treeTableModelAdapter, measurementModel);
 	}
 	
-	private void turnOffVerticalHorizontalScrolling(UiScrollPane scrollPaneToUse)
+	private void turnOffVerticalHorizontalScrolling(FastScrollPane scrollPaneToUse)
 	{
 		scrollPaneToUse.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPaneToUse.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	}
 	
-	private void rebuildSyncedTable(PlanningTreeTable treeTableToUse, UiScrollPane scrollPaneToUse, JTable tableToUse)
+	private void rebuildSyncedTable(PlanningTreeTable treeTableToUse, FastScrollPane scrollPaneToUse, JTable tableToUse)
 	{
 		tableToUse.setRowHeight(treeTableToUse.getRowHeight());	
 		turnOffVerticalHorizontalScrolling(scrollPaneToUse);
@@ -308,9 +308,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private PlanningViewMeasurementTable measurementTable;
 	private PlanningViewMeasurementTableModel measurementModel;
-	private UiScrollPane annualTotalsScrollPane;
-	private UiScrollPane measurementScrollPane;
-	private UiScrollPane mainScrollPane;
+	private FastScrollPane annualTotalsScrollPane;
+	private FastScrollPane measurementScrollPane;
+	private FastScrollPane mainScrollPane;
 }
 
 class ModelUpdater implements TableModelListener
