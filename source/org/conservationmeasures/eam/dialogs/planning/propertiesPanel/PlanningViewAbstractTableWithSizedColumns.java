@@ -23,19 +23,9 @@ abstract public class PlanningViewAbstractTableWithSizedColumns extends Planning
 	{
 		super(modelToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		setAppropriateColumnWidths(modelToUse);
 		setTableColumnRenderer();
-
 	}
 		
-	private void setAppropriateColumnWidths(TableModel modelToUse)
-	{
-		for (int column = 0; column < modelToUse.getColumnCount(); ++column)
-		{
-			setColumnWidth(column, getColumnWidth(column));
-		}
-	}
-	
 	private void setTableColumnRenderer()
 	{
 		int columnCount = getColumnModel().getColumnCount();
