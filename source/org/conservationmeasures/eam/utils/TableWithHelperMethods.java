@@ -11,6 +11,7 @@ import java.awt.Dimension;
 
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
@@ -98,6 +99,15 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		return width;
 	}
 	
-	int maxGridWidthPixels;
-	boolean useMaxWidth;
+	public void stopCellEditing()
+	{
+		TableCellEditor editor = getCellEditor();
+		if (editor == null)
+			return;
+	
+		editor.stopCellEditing();
+	}
+
+	private	int maxGridWidthPixels;
+	private	boolean useMaxWidth;
 }
