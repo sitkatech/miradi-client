@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTable;
@@ -52,6 +53,11 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 		}
 	}
 	
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		return getPreferredSize();
+	}
+
 	protected class CustomRenderer extends DefaultTableCellRenderer
 	{
 		public CustomRenderer(TreeTableCellRenderer treeToUse, Project projectToUse)
