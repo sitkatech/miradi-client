@@ -9,9 +9,9 @@ import java.awt.Dimension;
 
 import javax.swing.table.TableModel;
 
-abstract public class PlanningViewAbstractTable extends PlanningViewAbstractTableWithColoredColumns
+abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSize extends PlanningViewAbstractTableWithColoredColumns
 {
-	public PlanningViewAbstractTable(TableModel  modelToUse)
+	public PlanningViewAbstractTableWithPreferredScrollableViewportSize(TableModel  modelToUse)
 	{
 		super(modelToUse);
 
