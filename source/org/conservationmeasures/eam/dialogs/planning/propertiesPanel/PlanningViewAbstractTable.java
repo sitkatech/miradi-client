@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Dimension;
 
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
@@ -37,14 +36,5 @@ abstract public class PlanningViewAbstractTable extends TableWithColumnWidthSave
 	int getPreferredScrollableViewportHeight()
 	{
 		return getRowHeight() * 5;
-	}
-	
-	public void stopCellEditing()
-	{
-		TableCellEditor editor = getCellEditor();
-		if (editor == null)
-			return;
-
-		editor.stopCellEditing();
 	}
 }
