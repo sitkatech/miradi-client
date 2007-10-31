@@ -15,9 +15,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
+import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
-abstract public class PlanningViewAbstractTableWithColoredColumns extends PlanningViewAbstractTable
+abstract public class PlanningViewAbstractTableWithColoredColumns extends TableWithColumnWidthSaver
 {
 	public PlanningViewAbstractTableWithColoredColumns(TableModel modelToUse)
 	{

@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import org.conservationmeasures.eam.main.AppPreferences;
 
 
-public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithColoredColumns
+public class PlanningViewBudgetTable extends PlanningViewAbstractTable
 {
 	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{

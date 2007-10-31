@@ -9,9 +9,7 @@ import java.awt.Dimension;
 
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
-
-abstract public class PlanningViewAbstractTable extends TableWithColumnWidthSaver
+abstract public class PlanningViewAbstractTable extends PlanningViewAbstractTableWithColoredColumns
 {
 	public PlanningViewAbstractTable(TableModel  modelToUse)
 	{

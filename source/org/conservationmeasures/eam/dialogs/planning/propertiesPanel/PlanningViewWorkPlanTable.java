@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
 
-public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithColoredColumns
+public class PlanningViewWorkPlanTable extends PlanningViewAbstractTable
 {
 	public PlanningViewWorkPlanTable(Project projectToUse, PlanningViewAbstractBudgetTableModel modelToUse) throws Exception
 	{
