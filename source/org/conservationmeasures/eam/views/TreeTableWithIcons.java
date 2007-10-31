@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
+import org.conservationmeasures.eam.icons.MeasurementIcon;
 import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ResultsChainIcon;
@@ -117,9 +118,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 	public static class Renderer extends DefaultTreeCellRenderer
 	{		
 		public Renderer()
-		{
-			factorRenderer = new DefaultTreeCellRenderer();
-			
+		{	
 			targetRenderer = new DefaultTreeCellRenderer();
 			targetRenderer.setClosedIcon(new TargetIcon());
 			targetRenderer.setOpenIcon(new TargetIcon());
@@ -207,6 +206,11 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			
 			defaultRenderer = new DefaultTreeCellRenderer();
 			defaultRenderer.setFont(getPlainFont());
+			
+			measurementRenderer = new DefaultTreeCellRenderer();
+			measurementRenderer.setClosedIcon(new MeasurementIcon());
+			measurementRenderer.setOpenIcon(new MeasurementIcon());
+			measurementRenderer.setLeafIcon(new MeasurementIcon());
 		}
 
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
@@ -238,6 +242,8 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 				renderer = getTaskRenderer((Task)node.getObject());
 			else if(node.getType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 				renderer = keyEcologicalAttributeRenderer;
+			else if(node.getType() == ObjectType.MEASUREMENT)
+				renderer = measurementRenderer;
 			
 			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 		}
@@ -279,22 +285,22 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 			return defaultFont.deriveFont(style);
 		}
 
-		DefaultTreeCellRenderer targetRenderer;
-		DefaultTreeCellRenderer strategyRenderer;
-		DefaultTreeCellRenderer objectiveRenderer;
-		DefaultTreeCellRenderer goalRenderer;
-		DefaultTreeCellRenderer indicatorRenderer;
-		DefaultTreeCellRenderer activityRenderer;
-		DefaultTreeCellRenderer methodRenderer;
-		DefaultTreeCellRenderer taskRenderer;
-		DefaultTreeCellRenderer conceptualModelRenderer;
-		DefaultTreeCellRenderer resultsChainRenderer;
-		DefaultTreeCellRenderer defaultRenderer;
-		DefaultTreeCellRenderer factorRenderer;
-		DefaultTreeCellRenderer stringNoIconRenderer;
-		DefaultTreeCellRenderer keyEcologicalAttributeRenderer;
-		DefaultTreeCellRenderer directThreatRenderer;
-		DefaultTreeCellRenderer threatReductionResultRenderer;
+		private DefaultTreeCellRenderer targetRenderer;
+		private DefaultTreeCellRenderer strategyRenderer;
+		private DefaultTreeCellRenderer objectiveRenderer;
+		private DefaultTreeCellRenderer goalRenderer;
+		private DefaultTreeCellRenderer indicatorRenderer;
+		private DefaultTreeCellRenderer activityRenderer;
+		private DefaultTreeCellRenderer methodRenderer;
+		private DefaultTreeCellRenderer taskRenderer;
+		private DefaultTreeCellRenderer conceptualModelRenderer;
+		private DefaultTreeCellRenderer resultsChainRenderer;
+		private DefaultTreeCellRenderer defaultRenderer;
+		private DefaultTreeCellRenderer stringNoIconRenderer;
+		private DefaultTreeCellRenderer keyEcologicalAttributeRenderer;
+		private DefaultTreeCellRenderer directThreatRenderer;
+		private DefaultTreeCellRenderer threatReductionResultRenderer;
+		private	DefaultTreeCellRenderer measurementRenderer;
 	}
 
 	class NonEditableTreeTableCellEditor extends TreeTableCellEditor

@@ -17,11 +17,11 @@ import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
+import org.conservationmeasures.eam.icons.MeasurementIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
-import org.conservationmeasures.eam.icons.TaskIcon;
 import org.conservationmeasures.eam.icons.ThreatReductionResultIcon;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
@@ -81,7 +81,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		addIconLineWithCheckBox(panel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
 		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.METHOD_NAME, actions.getObjectsAction(ActionTreeCreateMethodIconOnly.class), picker);
 		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.OBJECT_NAME, actions.getObjectsAction(ActionTreeCreateTaskIconOnly.class), picker);
-		addIconLineWithCheckBox(panel, Measurement.getObjectType(), Measurement.OBJECT_NAME, new TaskIcon());
+		addIconLineWithCheckBox(panel, Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon());
 		
 		return panel;
 	}
