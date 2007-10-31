@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import javax.swing.table.TableModel;
 
-public class PlanningViewWorkPlanTotalsTable extends PlanningViewAbstractTableWithColoredColumns
+public class PlanningViewWorkPlanTotalsTable extends PlanningViewAbstractTable
 {
 	public PlanningViewWorkPlanTotalsTable(TableModel model)
 	{

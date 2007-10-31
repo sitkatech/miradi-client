@@ -11,7 +11,7 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.AppPreferences;
 
-public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWithColoredColumns
+public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTable
 {
 	public PlanningViewBudgetTotalsTable(TableModel model)
 	{
