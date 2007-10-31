@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.utils;
 
 import java.awt.Component;
+import java.awt.event.MouseWheelEvent;
 
 import org.martus.swing.UiScrollPane;
 
@@ -22,6 +23,12 @@ public class FastScrollPane extends UiScrollPane
 	{
 		getHorizontalScrollBar().setUnitIncrement(SCROLL_UNIT_INCREMENT);
 		getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT_INCREMENT);
+	}
+	
+	public void processMouseWheelEvent(MouseWheelEvent e)
+	{
+		//note: overriding to change visibility
+		super.processMouseWheelEvent(e);
 	}
 	
 	public static final int SCROLL_UNIT_INCREMENT = 15;
