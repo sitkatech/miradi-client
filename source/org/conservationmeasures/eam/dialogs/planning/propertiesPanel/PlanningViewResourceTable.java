@@ -13,6 +13,7 @@ import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableCellRenderer;
@@ -105,6 +106,11 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithSize
 		TableColumn tableColumn = getColumnModel().getColumn(col);
 		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
 		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
+	}
+	
+	public int getColumnAlignment()
+	{
+		return JLabel.RIGHT;
 	}
 	
 	public String getUniqueTableIdentifier()

@@ -8,12 +8,14 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.JLabel;
+
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
 
-public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractRightAlignedTable
+public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractTableWithSizedColumns
 {
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model)
 	{
@@ -39,6 +41,11 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewAbstractRig
 		PlanningViewBudgetAnnualTotalTableModel model = (PlanningViewBudgetAnnualTotalTableModel) getModel();
 		TreeTableNode node = (TreeTableNode) model.getNodeForRow(row);
 		return TreeTableWithIcons.getSharedTaskFont(node);
+	}
+	
+	public int getColumnAlignment()
+	{
+		return JLabel.RIGHT;
 	}
 	
 	public String getUniqueTableIdentifier()

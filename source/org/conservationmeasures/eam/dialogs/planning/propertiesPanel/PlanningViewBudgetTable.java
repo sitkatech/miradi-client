@@ -5,10 +5,12 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import javax.swing.JLabel;
+
 import org.conservationmeasures.eam.main.AppPreferences;
 
 
-public class PlanningViewBudgetTable extends PlanningViewAbstractRightAlignedTable
+public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithSizedColumns
 {
 	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{
@@ -19,6 +21,11 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractRightAlignedTab
 	protected int getColumnWidth(int column)
 	{
 		return 125;
+	}
+	
+	public int getColumnAlignment()
+	{
+		return JLabel.RIGHT;
 	}
 	
 	public String getUniqueTableIdentifier()
