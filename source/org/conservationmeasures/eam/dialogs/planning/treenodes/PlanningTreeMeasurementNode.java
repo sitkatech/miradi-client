@@ -27,6 +27,11 @@ public class PlanningTreeMeasurementNode extends AbstractPlanningTreeNode
 	{
 		return false;
 	}
+	
+	public String toString()
+	{
+		return measurement.toString();
+	}
 
 	private Measurement measurement;
 }
