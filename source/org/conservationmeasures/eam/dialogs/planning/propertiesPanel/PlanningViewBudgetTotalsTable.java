@@ -6,11 +6,12 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 
+import javax.swing.JLabel;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.AppPreferences;
 
-public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractRightAlignedTable
+public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWithSizedColumns
 {
 	public PlanningViewBudgetTotalsTable(TableModel model)
 	{
@@ -27,6 +28,11 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractRightAlig
 	{
 		return 125;
 	}	
+	
+	public int getColumnAlignment()
+	{
+		return JLabel.RIGHT;
+	}
 	
 	public String getUniqueTableIdentifier()
 	{
