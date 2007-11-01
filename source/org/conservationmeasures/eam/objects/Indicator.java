@@ -30,7 +30,6 @@ import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.StringMapData;
-import org.martus.util.MultiCalendar;
 
 public class Indicator extends BaseObject
 {
@@ -148,22 +147,25 @@ public class Indicator extends BaseObject
 	
 	public ORef getLatestMeasurementRef()
 	{
-		MultiCalendar latest = null;
-		ORef latestMeasurementRef = ORef.INVALID; 
+		Measurement latestMeasurementToFind = null; 
 		for (int i = 0; i < getMeasurementRefs().size(); ++i)
 		{
 			Measurement measurement = (Measurement) objectManager.findObject(getMeasurementRefs().get(i));
 			if (i == 0)
-				latest = measurement.getDate();
+				latestMeasurementToFind = measurement;
 			
-			if (latest.before(measurement.getDate()))
+			String thisDateAsString = measurement.getData(Measurement.TAG_DATE);
+			String latestDateAsString = latestMeasurementToFind.getData(Measurement.TAG_DATE);
+			if (thisDateAsString.compareTo(latestDateAsString) > 0)
 			{
-				latest = measurement.getDate();
-				latestMeasurementRef = measurement.getRef();
+				latestMeasurementToFind = measurement;
 			}
 		}
 		
-		return latestMeasurementRef;
+		if (latestMeasurementToFind == null)
+			return ORef.INVALID;
+		
+		return latestMeasurementToFind.getRef();
 	}
 	
 	public ORefList getMeasurementRefs()

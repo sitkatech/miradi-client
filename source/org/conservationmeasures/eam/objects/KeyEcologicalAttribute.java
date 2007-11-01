@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -147,7 +148,12 @@ public class KeyEcologicalAttribute extends BaseObject
 		CodeList statuses = new CodeList();
 		for(int i = 0; i < indicatorIds.size(); ++i)
 		{
-			String status = objectManager.getObjectData(ObjectType.INDICATOR, indicatorIds.get(i), Indicator.TAG_MEASUREMENT_STATUS);
+			Indicator indicator = (Indicator) objectManager.findObject(new ORef(Indicator.getObjectType(), indicatorIds.get(i)));
+			ORef latestMeasurementRef = indicator.getLatestMeasurementRef();
+			if (latestMeasurementRef.isInvalid())
+				continue;
+			
+			String status = objectManager.getObjectData(latestMeasurementRef, Measurement.TAG_STATUS);
 			statuses.add(status);
 		}
 		return TNCViabilityFormula.getAverageRatingCode(statuses);
