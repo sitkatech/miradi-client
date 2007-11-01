@@ -3,6 +3,7 @@ package org.conservationmeasures.eam.dialogs.viability;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Measurement;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
@@ -52,16 +53,40 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
-		return getObject().getData(tag);
+		String statusData = getObject().getData(Measurement.TAG_STATUS);
+		String summaryData = getObject().getData(Measurement.TAG_SUMMARY);
+		if (tag.equals(POOR) && StatusQuestion.POOR.equals(statusData))
+			return summaryData;
+
+		if (tag.equals(FAIR) && StatusQuestion.FAIR.equals(statusData))
+			return summaryData;
+
+		if (tag.equals(GOOD) && StatusQuestion.GOOD.equals(statusData))
+			return summaryData;
+
+		if (tag.equals(VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
+			return summaryData;
+		
+		return "";
 	}
 
 	public void rebuild() throws Exception
 	{
 	}
-	
-	//FIXME should add more valuable columns,  just did this so it works and i can move on.  
-	public static final String[] COLUMN_TAGS = {Measurement.TAG_LABEL,Measurement.TAG_LABEL, Measurement.TAG_LABEL};
+
+	public static final String POOR = "Poor";
+	public static final String FAIR = "Fair";
+	public static final String GOOD = "Good";
+	public static final String VERY_GOOD = "VeryGood";
+  
+	public static final String[] COLUMN_TAGS = {Measurement.TAG_EMPTY,
+												Measurement.TAG_EMPTY, 
+												Measurement.TAG_EMPTY,
+												POOR,
+												FAIR,
+												GOOD,
+												VERY_GOOD,};
 	
 	private Measurement measurement;
-	private KeyEcologicalAttributeIndicatorNode parentNode;
+	private KeyEcologicalAttributeIndicatorNode parentNode;	
 }

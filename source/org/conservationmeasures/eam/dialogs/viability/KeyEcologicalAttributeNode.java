@@ -83,7 +83,12 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 	public static final String[] COLUMN_TAGS = {
 		KeyEcologicalAttribute.TAG_LABEL, 
 		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS_VALUE, 
-		KeyEcologicalAttribute.PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE
+		KeyEcologicalAttribute.PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
 		};
 	
 	private Project project;
