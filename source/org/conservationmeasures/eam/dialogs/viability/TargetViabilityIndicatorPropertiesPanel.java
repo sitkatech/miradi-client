@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
@@ -104,9 +105,9 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 	{
 		super.commandExecuted(event);
 		final boolean areIndicatorMeasurementFields = 
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_SUMMARY) ||
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_STATUS) ||
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_MEASUREMENT_TREND) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Measurement.TAG_SUMMARY) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Measurement.TAG_STATUS) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Measurement.TAG_TREND) ||
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_FUTURE_STATUS_SUMMARY) ||
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_FUTURE_STATUS_RATING);
 		

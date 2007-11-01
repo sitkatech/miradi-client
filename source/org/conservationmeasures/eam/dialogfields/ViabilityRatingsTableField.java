@@ -60,8 +60,8 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		
 		Measurement latestMeasurement = (Measurement) getProject().findObject(latestMeasurementRef);
 		measurementSummary = latestMeasurement.getData(Measurement.TAG_SUMMARY);
-		measurementStatusCode = indicator.getData(Measurement.TAG_STATUS);
-		measurementTrendCode = indicator.getData(Measurement.TAG_TREND);
+		measurementStatusCode = latestMeasurement.getData(Measurement.TAG_STATUS);
+		measurementTrendCode = latestMeasurement.getData(Measurement.TAG_TREND);
 	}
 	
 	public void showThreshold(boolean show)
@@ -153,7 +153,7 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 
 		private Icon getTrendIcon()
 		{
-			return new TrendQuestion(Indicator.TAG_MEASUREMENT_TREND).findChoiceByCode(measurementTrendCode).getIcon();
+			return new TrendQuestion(Measurement.TAG_TREND).findChoiceByCode(measurementTrendCode).getIcon();
 		}
 		
 		private JComponent getComponent(JComponent comp, int column)
