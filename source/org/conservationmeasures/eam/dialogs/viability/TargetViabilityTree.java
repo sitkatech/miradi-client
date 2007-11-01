@@ -20,7 +20,7 @@ public class TargetViabilityTree extends TreeTableWithColumnWidthSaving
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		setColumnWidths();
+		rebuildTableCompletely();
 	}
 	
 	public String getUniqueTableIdentifier()
@@ -28,27 +28,5 @@ public class TargetViabilityTree extends TreeTableWithColumnWidthSaving
 		return UNIQUE_IDENTIFIER;
 	}
 
-	// NOTE: This code is duplicated in PlanningTreeTable...should they be combined?
-	private void setColumnWidths()
-	{
-		ViabilityTreeModel model = (ViabilityTreeModel) getTree().getModel();
-		int columnCount = getColumnModel().getColumnCount();
-		for (int i = 0; i < columnCount; ++i)
-		{
-			int realColumn = convertColumnIndexToModel(i);
-			String columnTag = model.getColumnTag(realColumn);
-			int columnWidth = getColumnWidth(realColumn, columnTag);
-			setColumnWidth(realColumn, columnWidth);
-		}
-	}
-	
-	private int getColumnWidth(int columnIndex, String columnTag)
-	{
-		if (columnTag.equals("Item"))		
-			return 400;
-			
-		return 200;
-	}
-
-	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTreeTable";
+	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 }
