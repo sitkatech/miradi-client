@@ -7,6 +7,7 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.martus.util.MultiCalendar;
 
 public class Measurement extends BaseObject
 {
@@ -56,6 +57,11 @@ public class Measurement extends BaseObject
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
+	}
+	
+	public MultiCalendar getDate()
+	{
+		return date.getDate();
 	}
 	
 	public String toString()

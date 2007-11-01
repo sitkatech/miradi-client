@@ -53,6 +53,11 @@ public class DateData extends ObjectData
 			return "";
 		return date.toIsoDateString();
 	}
+	
+	public MultiCalendar getDate()
+	{
+		return date;
+	}
 
 	public boolean equals(Object rawOther)
 	{
@@ -68,5 +73,5 @@ public class DateData extends ObjectData
 		return date.hashCode();
 	}
 	
-	MultiCalendar date;
+	private MultiCalendar date;
 }
