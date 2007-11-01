@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -59,11 +58,15 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 		return keyEcologicalAttributesNode;
 	}
 
-	//TODO: this method could be pulled up to the supper
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
-		return EAM.fieldLabel(Indicator.getObjectType(), tag);
+		String data = getObject().getData(tag);
+		if (!tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
+			return data;
+		
+		final int FIRST_TWO_COLUM_COUNT = 2;
+		return ((Indicator)getObject()).getThreshold().get(Integer.toString(column - FIRST_TWO_COLUM_COUNT));
 	}
 
 	public void rebuild() throws Exception
@@ -81,10 +84,12 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 		Indicator.TAG_LABEL,
 		Measurement.TAG_STATUS, 
 		Indicator.TAG_EMPTY,
-		Indicator.TAG_EMPTY,
-		Indicator.TAG_EMPTY,
-		Indicator.TAG_EMPTY,
-		Indicator.TAG_EMPTY,
+		
+		Indicator.TAG_INDICATOR_THRESHOLD,
+		Indicator.TAG_INDICATOR_THRESHOLD,
+		Indicator.TAG_INDICATOR_THRESHOLD,
+		Indicator.TAG_INDICATOR_THRESHOLD,
+		
 		Indicator.TAG_RATING_SOURCE
 	};
 	
