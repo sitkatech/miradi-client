@@ -67,6 +67,9 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 		if (tag.equals(VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
 			return summaryData;
 		
+		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
+			return getObject().getData(Measurement.TAG_STATUS_CONFIDENCE);
+		
 		return "";
 	}
 
@@ -78,14 +81,15 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	public static final String FAIR = "Fair";
 	public static final String GOOD = "Good";
 	public static final String VERY_GOOD = "VeryGood";
-  
+	
 	public static final String[] COLUMN_TAGS = {Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY, 
 												Measurement.TAG_EMPTY,
 												POOR,
 												FAIR,
 												GOOD,
-												VERY_GOOD,};
+												VERY_GOOD,
+												Measurement.TAG_STATUS_CONFIDENCE};
 	
 	private Measurement measurement;
 	private KeyEcologicalAttributeIndicatorNode parentNode;	

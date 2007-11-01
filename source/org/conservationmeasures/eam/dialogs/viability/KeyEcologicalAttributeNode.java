@@ -89,6 +89,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		KeyEcologicalAttribute.TAG_EMPTY,
 		KeyEcologicalAttribute.TAG_EMPTY,
 		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
 		};
 	
 	private Project project;
