@@ -52,15 +52,6 @@ public class TestIndicator extends ObjectTestCase
 		CommandSetObjectData setMeasurements = new CommandSetObjectData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, measurementRefList.toString());
 		project.executeCommand(setMeasurements);
 		
-		try
-		{
-			indicator.getLatestMeasurementRef();		
-		}
-		catch (Exception e)
-		{
-			fail("has measurment with date?");
-		}
-	
 		MultiCalendar expectedBefore = MultiCalendar.createFromGregorianYearMonthDay(1000, 1, 1);
 		CommandSetObjectData setMeasurement1Date = new CommandSetObjectData(measurementRef1, Measurement.TAG_DATE, expectedBefore.toIsoDateString());
 		project.executeCommand(setMeasurement1Date);
