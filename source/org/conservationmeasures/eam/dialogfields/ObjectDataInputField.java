@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.InvalidDateException;
 import org.conservationmeasures.eam.utils.InvalidNumberException;
@@ -34,6 +35,11 @@ abstract public class ObjectDataInputField implements FocusListener
 	abstract public JComponent getComponent();
 	abstract public String getText();
 	abstract public void setText(String newValue);
+	
+	public ORef getORef()
+	{
+		return new ORef(getObjectType(), getObjectId());
+	}
 	
 	public int getObjectType()
 	{
