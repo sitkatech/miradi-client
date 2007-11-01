@@ -41,26 +41,33 @@ public class TestIndicator extends ObjectTestCase
 	{
 		ORef indicatorRef = project.createObject(Indicator.getObjectType());
 		Indicator indicator = (Indicator) project.findObject(indicatorRef);
-		String latestMeasurmentRefAsString1 = indicator.getPseudoData(indicator.PSEUDO_TAG_LATEST_MEASUREMENT_REF);
-		ORef latestMeasurementRef1 = ORef.createFromString(latestMeasurmentRefAsString1);
-		assertEquals("Found date?", ORef.INVALID, latestMeasurementRef1);
+		assertEquals("Found date?", ORef.INVALID, indicator.getLatestMeasurementRef());
 		
 		ORef measurementRef1 = project.createObject(Measurement.getObjectType());
-		MultiCalendar expectedBefore = MultiCalendar.createFromGregorianYearMonthDay(1000, 1, 1);
-		CommandSetObjectData setMeasurement1Date = new CommandSetObjectData(measurementRef1, Measurement.TAG_DATE, expectedBefore.toIsoDateString());
-		project.executeCommand(setMeasurement1Date);
-		
-		MultiCalendar expectedAfter = MultiCalendar.createFromGregorianYearMonthDay(2000, 1, 1);
 		ORef measurementRef2 = project.createObject(Measurement.getObjectType());
-		CommandSetObjectData setMeasurement2Date = new CommandSetObjectData(measurementRef2, Measurement.TAG_DATE, expectedAfter.toIsoDateString());
-		project.executeCommand(setMeasurement2Date);
-		
 		ORefList measurementRefList = new ORefList();
 		measurementRefList.add(measurementRef1);
 		measurementRefList.add(measurementRef2);
 		
 		CommandSetObjectData setMeasurements = new CommandSetObjectData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, measurementRefList.toString());
 		project.executeCommand(setMeasurements);
+		
+		try
+		{
+			indicator.getLatestMeasurementRef();		
+		}
+		catch (Exception e)
+		{
+			fail("has measurment with date?");
+		}
+	
+		MultiCalendar expectedBefore = MultiCalendar.createFromGregorianYearMonthDay(1000, 1, 1);
+		CommandSetObjectData setMeasurement1Date = new CommandSetObjectData(measurementRef1, Measurement.TAG_DATE, expectedBefore.toIsoDateString());
+		project.executeCommand(setMeasurement1Date);
+
+		MultiCalendar expectedAfter = MultiCalendar.createFromGregorianYearMonthDay(2000, 1, 1);
+		CommandSetObjectData setMeasurement2Date = new CommandSetObjectData(measurementRef2, Measurement.TAG_DATE, expectedAfter.toIsoDateString());
+		project.executeCommand(setMeasurement2Date);
 		
 		String latestMeasurmentRefAsString2 = indicator.getPseudoData(indicator.PSEUDO_TAG_LATEST_MEASUREMENT_REF);
 		ORef latestMeasurementRef2 = ORef.createFromString(latestMeasurmentRefAsString2);

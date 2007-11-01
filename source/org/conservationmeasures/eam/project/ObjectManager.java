@@ -339,9 +339,14 @@ public class ObjectManager
 
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
-		BaseObject object = findObject(new ORef(objectType, objectId));
+		return getObjectData(new ORef(objectType, objectId), fieldTag);
+	}
+	
+	public String getObjectData(ORef ref, String fieldTag)
+	{
+		BaseObject object = findObject(ref);
 		if(object == null)
-			EAM.logDebug("getObjectData no such object: " + objectType + ":" + objectId + " fieldTag=" + fieldTag);
+			EAM.logDebug("getObjectData no such object: " + ref + " fieldTag=" + fieldTag);
 		return object.getData(fieldTag);
 	}
 

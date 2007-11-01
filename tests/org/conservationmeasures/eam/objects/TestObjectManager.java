@@ -8,11 +8,12 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -103,9 +104,14 @@ public class TestObjectManager extends EAMTestCase
 
 	private Indicator createIndicator(String status) throws Exception
 	{
-		IndicatorId indicatorId = (IndicatorId)project.createObjectAndReturnId(ObjectType.INDICATOR);
-		project.setObjectData(ObjectType.INDICATOR, indicatorId, Indicator.TAG_MEASUREMENT_STATUS, status);
-		return (Indicator)project.findObject(ObjectType.INDICATOR, indicatorId);
+		ORef indicatorRef = project.createObject(Indicator.getObjectType());
+		ORef measurementRef = project.createObject(Measurement.getObjectType());
+		project.setObjectData(measurementRef, Measurement.TAG_STATUS, status);
+		ORefList measurementRefs = new ORefList();
+		measurementRefs.add(measurementRef);
+		
+		project.setObjectData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, measurementRefs.toString());
+		return (Indicator)project.findObject(indicatorRef);
 	}
 
 	private KeyEcologicalAttribute createKEA(Indicator[] indicators) throws Exception
