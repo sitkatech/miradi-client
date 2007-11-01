@@ -80,6 +80,11 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 		Indicator.TAG_LABEL,
 		Measurement.TAG_STATUS, 
 		Indicator.TAG_EMPTY,
+		Indicator.TAG_EMPTY,
+		Indicator.TAG_EMPTY,
+		Indicator.TAG_EMPTY,
+		Indicator.TAG_EMPTY,
+		Indicator.TAG_EMPTY,
 	};
 	
 	private Project project;
