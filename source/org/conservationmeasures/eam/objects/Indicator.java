@@ -77,6 +77,11 @@ public class Indicator extends BaseObject
 		taskIds.add(taskId);
 	}
 	
+	public StringMapData getThreshold()
+	{
+		return indicatorThreshold;
+	}
+	
 	//TODO: several pseudo fields are shared between Indicator and Desires; this may indicate a need for a common super class
 	public String getPseudoData(String fieldTag)
 	{
