@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -62,7 +63,7 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
-		return getObject().getData(tag);
+		return EAM.fieldLabel(Indicator.getObjectType(), tag);
 	}
 
 	public void rebuild() throws Exception
@@ -84,7 +85,7 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 		Indicator.TAG_EMPTY,
 		Indicator.TAG_EMPTY,
 		Indicator.TAG_EMPTY,
-		Indicator.TAG_EMPTY,
+		Indicator.TAG_RATING_SOURCE
 	};
 	
 	private Project project;

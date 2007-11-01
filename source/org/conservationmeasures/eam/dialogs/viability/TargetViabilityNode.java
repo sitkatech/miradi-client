@@ -107,6 +107,7 @@ public class TargetViabilityNode extends TreeTableNode
 		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,
+		Target.TAG_EMPTY,
 		};
 	
 	private Project project;
