@@ -17,10 +17,17 @@ import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.project.Project;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
@@ -48,6 +55,46 @@ abstract public class FactorCell extends EAMGraphCell
 		setPreviousSize(size);
 	}
 	
+	public String getToolTipString(Point p) 
+	{
+		Point cellOrigin = getLocation();
+		p.translate(-cellOrigin.x, -cellOrigin.y);
+
+		Factor factor = getUnderlyingObject();
+		Project project = factor.getProject();
+		String label = factor.getLabel();
+		String tip = "<html><b>" + label + "</b>";
+		
+		String header = "";
+		ORefList bullets = new ORefList();
+		if(isPointInIndicator(p))
+		{
+			header = EAM.text("Indicators:");
+			bullets = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
+		}
+		else if(isPointInGoal(p))
+		{
+			header = EAM.text("Goals:");
+			bullets = new ORefList(Goal.getObjectType(), factor.getGoals());
+		}
+		else if(isPointInObjective(p))
+		{
+			header = EAM.text("Objectives:");
+			bullets = new ORefList(Objective.getObjectType(), factor.getObjectives());
+		}
+		
+		if(bullets.size() == 0)
+			return tip;
+		
+		tip += "<hr>" + header + "<ul>";
+		for(int i = 0; i < bullets.size(); ++i)
+		{
+			BaseObject object = project.findObject(bullets.get(i));
+			tip += "<li>" + object.toString() + "</li>";
+		}
+		return tip;
+	}
+
 	public Rectangle getRectangle()
 	{
 		return new Rectangle(getLocation(), getSize());

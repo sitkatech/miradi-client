@@ -12,6 +12,8 @@ import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.ToolTipManager;
+
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -120,6 +122,28 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			return;
 		
 		moveHasHappened();
+	}
+
+	public void mouseEntered(MouseEvent arg0)
+	{
+		ToolTipManager toolTipManager = ToolTipManager.sharedInstance();
+		savedToolTipInitialDelay = toolTipManager.getInitialDelay();
+		savedToolTipReshowDelay = toolTipManager.getReshowDelay();
+		savedToolTipDismissDelay = toolTipManager.getDismissDelay();
+		toolTipManager.setInitialDelay(TOOLTIP_DEFAULT_MILLIS);
+		toolTipManager.setReshowDelay(TOOLTIP_ALWAYS_WAIT_BEFORE_RESHOW);
+		toolTipManager.setDismissDelay(TOOLTIP_NEVER_AUTO_DISMISS);
+
+		super.mouseEntered(arg0);
+	}
+
+	public void mouseExited(MouseEvent arg0)
+	{
+		super.mouseExited(arg0);
+		ToolTipManager toolTipManager = ToolTipManager.sharedInstance();
+		toolTipManager.setInitialDelay(savedToolTipInitialDelay);
+		toolTipManager.setReshowDelay(savedToolTipReshowDelay);
+		toolTipManager.setDismissDelay(savedToolTipDismissDelay);
 	}
 
 	private void moveHasHappened()
@@ -272,8 +296,15 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		linksWithSelectedBendPoints = (LinkCell[]) linksWithSelectedbendPoints.toArray(new LinkCell[0]);
 	}
 
-	MainWindow mainWindow;
-	Point dragStartedAt;
-	Object[] selectedCells;
-	LinkCell[] linksWithSelectedBendPoints;
+	private static final int TOOLTIP_DEFAULT_MILLIS = 2000;
+	private static final int TOOLTIP_ALWAYS_WAIT_BEFORE_RESHOW = 0;
+	private static final int TOOLTIP_NEVER_AUTO_DISMISS = Integer.MAX_VALUE;
+
+	private MainWindow mainWindow;
+	private Point dragStartedAt;
+	private Object[] selectedCells;
+	private LinkCell[] linksWithSelectedBendPoints;
+	private int savedToolTipInitialDelay;
+	private int savedToolTipReshowDelay;
+	private int savedToolTipDismissDelay;
 }
