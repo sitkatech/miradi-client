@@ -78,7 +78,7 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 	
 	public static final String[] COLUMN_TAGS = {
 		Indicator.TAG_LABEL,
-		Indicator.PSEUDO_TAG_MEASUREMENT_STATUS_VALUE, 
+		Measurement.TAG_STATUS, 
 		Indicator.TAG_EMPTY,
 	};
 	
