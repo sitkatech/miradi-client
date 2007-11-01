@@ -85,6 +85,13 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		MouseEventHandler mouseHandler = new MouseEventHandler(mainWindow);
 		addMouseListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
+		
+		enableToolTips();
+	}
+
+	private void enableToolTips()
+	{
+		setToolTipText("");
 	}
 	
 	private void ensureCellPerimetersAreRespectedByLinksWithBendPoints()
@@ -92,8 +99,17 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		PortView.allowPortMagic = false;
 	}
 
-    	
-    public void updateDiagramComponent()
+	public String getToolTipText(MouseEvent event)
+	{
+		Object cell = getFirstCellForLocation(event.getX(), event.getY());
+		if (cell instanceof FactorCell) 
+		{
+			return ((FactorCell) cell).getToolTipString(event.getPoint());
+		}
+		return null;
+	}
+
+	public void updateDiagramComponent()
     {
 		boolean isGridVisible = mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE);
 		setGridVisible(isGridVisible);
