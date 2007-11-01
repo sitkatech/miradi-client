@@ -24,8 +24,8 @@ import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
@@ -50,12 +50,18 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	
 	private void setIconRow(ORef oref)
 	{	
-		BaseObject object = getProject().findObject(oref);
-		futureStatusSummary = object.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		futureStatusCode = object.getData(Indicator.TAG_FUTURE_STATUS_RATING);
-		measurementSummary = object.getData(Indicator.TAG_MEASUREMENT_SUMMARY);
-		measurementStatusCode = object.getData(Indicator.TAG_MEASUREMENT_STATUS);
-		measurementTrendCode = object.getData(Indicator.TAG_MEASUREMENT_TREND);
+		Indicator indicator = (Indicator) getProject().findObject(oref);
+		futureStatusSummary = indicator.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		futureStatusCode = indicator.getData(Indicator.TAG_FUTURE_STATUS_RATING);
+		
+		ORef latestMeasurementRef = indicator.getLatestMeasurementRef();
+		if (latestMeasurementRef.isInvalid())
+			return;
+		
+		Measurement latestMeasurement = (Measurement) getProject().findObject(latestMeasurementRef);
+		measurementSummary = latestMeasurement.getData(Measurement.TAG_SUMMARY);
+		measurementStatusCode = indicator.getData(Measurement.TAG_STATUS);
+		measurementTrendCode = indicator.getData(Measurement.TAG_TREND);
 	}
 	
 	public void showThreshold(boolean show)
