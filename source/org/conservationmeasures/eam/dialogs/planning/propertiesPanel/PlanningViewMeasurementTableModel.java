@@ -38,5 +38,5 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		return node.getObject().getData(columnTags[column]);
 	}
 	
-	public final static String[] columnTags = {Measurement.TAG_DATE, Measurement.TAG_DETAIL, Measurement.TAG_TREND, Measurement.TAG_STATUS_CONFIDENCE};
+	public final static String[] columnTags = {Measurement.TAG_DATE, Measurement.TAG_SUMMARY, Measurement.TAG_TREND, Measurement.TAG_STATUS_CONFIDENCE};
 }
