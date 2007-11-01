@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
@@ -29,6 +30,7 @@ import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.StringMapData;
+import org.martus.util.MultiCalendar;
 
 public class Indicator extends BaseObject
 {
@@ -102,6 +104,9 @@ public class Indicator extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_METHOD_OREF_LIST))
 			return getMethods().toString();
 		
+		if (fieldTag.equals(PSEUDO_TAG_LATEST_MEASUREMENT_REF))
+			return getLatestMeasurementRef().toString();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -139,6 +144,26 @@ public class Indicator extends BaseObject
 	public ORefList getMethods()
 	{
 		return new ORefList(Task.getObjectType(), getTaskIdList());	
+	}
+	
+	public ORef getLatestMeasurementRef()
+	{
+		MultiCalendar latest = null;
+		ORef latestMeasurementRef = ORef.INVALID; 
+		for (int i = 0; i < getMeasurementRefs().size(); ++i)
+		{
+			Measurement measurement = (Measurement) objectManager.findObject(getMeasurementRefs().get(i));
+			if (i == 0)
+				latest = measurement.getDate();
+			
+			if (latest.before(measurement.getDate()))
+			{
+				latest = measurement.getDate();
+				latestMeasurementRef = measurement.getRef();
+			}
+		}
+		
+		return latestMeasurementRef;
 	}
 	
 	public ORefList getMeasurementRefs()
@@ -254,6 +279,7 @@ public class Indicator extends BaseObject
 		measurementStatusLabel = new PseudoQuestionData(new StatusQuestion(TAG_MEASUREMENT_STATUS));
 		ratingSourceLabel = new PseudoQuestionData(new RatingSourceQuestion(TAG_RATING_SOURCE));
 		measurementStatusConfidenceLabel = new PseudoQuestionData(new StatusConfidenceQuestion(TAG_MEASUREMENT_STATUS_CONFIDENCE));
+		latestMeasurement = new PseudoQuestionData(new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD));
 		
 		futureStatusRatingLabel = new PseudoQuestionData(new StatusQuestion(TAG_FUTURE_STATUS_RATING));
 		
@@ -292,6 +318,7 @@ public class Indicator extends BaseObject
 		addField(PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE, measurementStatusConfidenceLabel);
 		
 		addField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, futureStatusRatingLabel);
+		addField(PSEUDO_TAG_LATEST_MEASUREMENT_REF, latestMeasurement);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
@@ -329,6 +356,7 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_MEASUREMENT_STATUS_CONFIDENCE_VALUE = "MeasurementStatusConfidenceValue";
 	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "FutureStatusRatingValue";
 	public static final String PSEUDO_TAG_STATUS_VALUE  = "StatusValue";
+	public static final String PSEUDO_TAG_LATEST_MEASUREMENT_REF = "LatestMeasurementRef";
 	
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
@@ -368,4 +396,5 @@ public class Indicator extends BaseObject
 	private PseudoQuestionData measurementStatusConfidenceLabel;
 	
 	private PseudoQuestionData futureStatusRatingLabel;
+	private PseudoQuestionData latestMeasurement;
 }
