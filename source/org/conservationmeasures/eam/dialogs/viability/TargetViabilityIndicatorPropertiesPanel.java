@@ -105,9 +105,10 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 	{
 		super.commandExecuted(event);
 		final boolean areIndicatorMeasurementFields = 
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Measurement.TAG_SUMMARY) ||
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Measurement.TAG_STATUS) ||
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Measurement.TAG_TREND) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.MEASUREMENT,Measurement.TAG_SUMMARY) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.MEASUREMENT,Measurement.TAG_STATUS) ||
+			event.isSetDataCommandWithThisTypeAndTag(ObjectType.MEASUREMENT,Measurement.TAG_TREND) ||
+			
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_FUTURE_STATUS_SUMMARY) ||
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.INDICATOR,Indicator.TAG_FUTURE_STATUS_RATING);
 		
