@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanelSpecial;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.layout.OneColumnPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
@@ -21,7 +22,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	{
 		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 				
-		JPanel mainPropertiesPanel = createGridLayoutPanel(4, 1);
+		JPanel mainPropertiesPanel = new OneColumnPanel();
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(projectToUse, actions);
 		targetViabilityIndicatorPropertiesPanel = new TargetViabilityIndicatorPropertiesPanel(projectToUse, actions);
 		targetViabilityMeasurementPropertiesPanel = new TargetViabilityMeasurementPropertiesPanel(projectToUse, actions);
