@@ -368,7 +368,7 @@ public class Actions
 				e.printStackTrace();
 			}
 		}
-		EAM.logDebug("updateActionStates");
+		EAM.logVerbose("updateActionStates");
 		Collection actualActions = actions.values();
 		Iterator iter = actualActions.iterator();
 		while(iter.hasNext())
