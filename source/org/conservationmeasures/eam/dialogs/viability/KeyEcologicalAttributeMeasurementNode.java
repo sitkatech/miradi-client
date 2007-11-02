@@ -77,10 +77,10 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	{
 	}
 
-	public static final String POOR = "Poor";
-	public static final String FAIR = "Fair";
-	public static final String GOOD = "Good";
-	public static final String VERY_GOOD = "VeryGood";
+	public static final String POOR = StatusQuestion.POOR;
+	public static final String FAIR = StatusQuestion.FAIR;
+	public static final String GOOD = StatusQuestion.GOOD;
+	public static final String VERY_GOOD = StatusQuestion.VERY_GOOD;
 	
 	public static final String[] COLUMN_TAGS = {Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY, 
