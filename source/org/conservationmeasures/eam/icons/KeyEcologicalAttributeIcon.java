@@ -5,22 +5,12 @@
 */ 
 package org.conservationmeasures.eam.icons;
 
-import java.awt.Color;
+import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 
-import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
-import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
-
-public class KeyEcologicalAttributeIcon  extends AbstractShapeIcon 
+public class KeyEcologicalAttributeIcon  extends MiradiResourceImageIcon
 {
-
-	FactorRenderer getRenderer() 
+	public KeyEcologicalAttributeIcon()
 	{
-		return new RoundRectangleRenderer();
+		super("images/key16.png");
 	}
-
-	Color getIconColor() 
-	{
-		return Color.GREEN;
-	}
-
 }
