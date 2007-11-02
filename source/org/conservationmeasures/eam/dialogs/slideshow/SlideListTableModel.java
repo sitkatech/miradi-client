@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.slideshow;
 
-import org.conservationmeasures.eam.dialogs.ObjectListTableModel;
+import org.conservationmeasures.eam.dialogs.base.ObjectListTableModel;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;

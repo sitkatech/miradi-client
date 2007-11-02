@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
-import org.conservationmeasures.eam.dialogs.ObjectListTableModel;
+import org.conservationmeasures.eam.dialogs.base.ObjectListTableModel;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;

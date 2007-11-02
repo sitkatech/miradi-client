@@ -1,7 +1,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.dialogs.DiagramTabsLabelPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.diagram.DiagramTabsLabelPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramObject;
 

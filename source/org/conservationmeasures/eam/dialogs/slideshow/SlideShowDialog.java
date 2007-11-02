@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.slideshow;
 
 import javax.swing.Box;
 
-import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.main.MainWindow;
 
 public class SlideShowDialog extends ModelessDialogWithClose

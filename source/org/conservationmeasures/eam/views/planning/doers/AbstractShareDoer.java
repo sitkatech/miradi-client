@@ -1,7 +1,7 @@
 package org.conservationmeasures.eam.views.planning.doers;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.ObjectPoolTablePanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.dialogs.diagram.ShareSelectionDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objecthelpers.ORef;

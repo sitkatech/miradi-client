@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguratio
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.DisposablePanel;
+import org.conservationmeasures.eam.dialogs.base.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.main.AppPreferences;

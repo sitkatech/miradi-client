@@ -1,5 +1,7 @@
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.dialogs.base.AbstractSelectionDialog;
+import org.conservationmeasures.eam.dialogs.base.ObjectTablePanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 

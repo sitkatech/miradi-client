@@ -7,12 +7,12 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.CardLayout;
 
-import org.conservationmeasures.eam.dialogs.DisposablePanelWithDescription;
-import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
-import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
-import org.conservationmeasures.eam.dialogs.StrategyPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
+import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.diagram.StrategyPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.goal.GoalPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.indicator.IndicatorPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.objective.ObjectivePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.MeasurementPropertiesPanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;

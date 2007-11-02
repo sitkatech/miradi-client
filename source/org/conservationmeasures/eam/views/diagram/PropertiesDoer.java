@@ -9,12 +9,12 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
-import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesDialog;
-import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.ProjectScopePanel;
-import org.conservationmeasures.eam.dialogs.TextBoxPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.diagram.FactorLinkPropertiesDialog;
+import org.conservationmeasures.eam.dialogs.diagram.FactorLinkPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.diagram.FactorPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.diagram.ProjectScopePanel;
+import org.conservationmeasures.eam.dialogs.diagram.TextBoxPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;

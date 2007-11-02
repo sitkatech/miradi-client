@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
 import org.conservationmeasures.eam.main.EAM;

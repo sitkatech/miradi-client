@@ -1,8 +1,8 @@
 package org.conservationmeasures.eam.views.diagram.doers;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.dialogs.ObjectPoolTablePanel;
-import org.conservationmeasures.eam.dialogs.ShareableActivityPoolTablePanel;
+import org.conservationmeasures.eam.dialogs.activity.ShareableActivityPoolTablePanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Strategy;

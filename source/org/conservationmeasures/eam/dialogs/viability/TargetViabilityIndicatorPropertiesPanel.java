@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
-import org.conservationmeasures.eam.dialogs.ObjectDataInputPanelSpecial;
+import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.BaseId;
