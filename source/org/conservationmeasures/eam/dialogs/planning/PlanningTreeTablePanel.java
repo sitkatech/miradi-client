@@ -33,6 +33,9 @@ import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningVie
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalsTable;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTable;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTableModel;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTablePanel;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -46,11 +49,8 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
-import org.conservationmeasures.eam.views.TreeTableNode;
-import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
 import org.conservationmeasures.eam.views.planning.PlanningView;
-import org.conservationmeasures.eam.views.umbrella.TreeTablePanel;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 import com.jhlabs.awt.BasicGridLayout;

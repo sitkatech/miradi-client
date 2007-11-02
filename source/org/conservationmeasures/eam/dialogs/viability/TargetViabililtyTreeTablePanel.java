@@ -13,15 +13,15 @@ import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeMe
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
+import org.conservationmeasures.eam.dialogs.treetables.GenericTreeTableModel;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTablePanel;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.GenericTreeTableModel;
-import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
-import org.conservationmeasures.eam.views.umbrella.TreeTablePanel;
 
 public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 {

@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.views.umbrella;
+package org.conservationmeasures.eam.dialogs.treetables;
 
 import java.awt.BorderLayout;
 import java.util.Vector;
@@ -23,9 +23,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
-import org.conservationmeasures.eam.views.GenericTreeTableModel;
-import org.conservationmeasures.eam.views.TreeTableNode;
-import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 import org.martus.swing.UiButton;
 
 import com.jhlabs.awt.GridLayoutPlus;

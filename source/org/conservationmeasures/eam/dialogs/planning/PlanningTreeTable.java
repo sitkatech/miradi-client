@@ -11,8 +11,8 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableCellRendererWithColor;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.TreeTableWithColumnWidthSaving;
 
 public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 {

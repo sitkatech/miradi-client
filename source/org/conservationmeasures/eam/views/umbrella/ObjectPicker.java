@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.views.TreeTableNode;
 
 public interface ObjectPicker
 {

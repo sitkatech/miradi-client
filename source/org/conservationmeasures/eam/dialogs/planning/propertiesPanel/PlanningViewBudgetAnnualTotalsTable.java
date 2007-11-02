@@ -10,9 +10,9 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.views.TreeTableNode;
-import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
 
 public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewFullSizeTable

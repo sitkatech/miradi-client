@@ -10,11 +10,11 @@ import org.conservationmeasures.eam.actions.ActionCreateIndicatorMeasurement;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicatorMeasurement;
 import org.conservationmeasures.eam.dialogs.diagram.FactorTreeTableNode;
+import org.conservationmeasures.eam.dialogs.treetables.GenericTreeTableModel;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 {

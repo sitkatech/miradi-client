@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -15,7 +16,6 @@ import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.planning.RowManager;
 
 public class PlanningTreeRootNode extends AbstractPlanningTreeNode

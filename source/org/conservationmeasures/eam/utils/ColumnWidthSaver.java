@@ -6,9 +6,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
+import org.conservationmeasures.eam.dialogs.treetables.GenericTreeTableModel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class ColumnWidthSaver extends MouseAdapter
 {

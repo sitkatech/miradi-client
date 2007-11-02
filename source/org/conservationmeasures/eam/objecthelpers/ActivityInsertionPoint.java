@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.views.TreeTableNode;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 
 public class ActivityInsertionPoint
 {
