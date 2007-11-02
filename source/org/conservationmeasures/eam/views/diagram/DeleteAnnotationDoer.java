@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -18,12 +19,14 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
@@ -82,6 +85,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		int type = annotationToDelete.getType();
 		BaseId idToRemove = annotationToDelete.getId();
 		commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationIdListTag, idToRemove));
+		commands.addAll(buildCommandsToDeleteMeasurements(project, new ORef(type, idToRemove)));
 		commands.addAll(buildCommandsToDeleteMethods(project, type, idToRemove));
 		commands.addAll(buildCommandsToDeleteKEAIndicators(project, type, idToRemove));
 		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
@@ -120,6 +124,29 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 			commands.addAll(Arrays.asList(deleteCommands));
 		}
 
+		return commands;
+	}
+	
+	private static Collection buildCommandsToDeleteMeasurements(Project project, ORef ref) throws Exception
+	{
+		Vector commands = new Vector();
+		if (ref.getObjectType() != ObjectType.INDICATOR)
+			return commands;
+
+		Indicator indicator = (Indicator)project.findObject(ref);
+		ORefList measurementRefs = indicator.getMeasurementRefs();
+		for (int i  = 0; i < measurementRefs.size(); i++)
+		{
+			ORef measurementRef = measurementRefs.get(i);
+			Measurement measurementToDelete = (Measurement) project.findObject(measurementRef);
+			ORefList referrers = measurementToDelete.findObjectsThatReferToUs(Indicator.getObjectType());
+			if (referrers.size() == 1)
+			{
+				commands.addAll(Arrays.asList(measurementToDelete.createCommandsToClear()));
+				commands.add(new CommandDeleteObject(measurementRef));
+			}
+		}
+		
 		return commands;
 	}
 	
