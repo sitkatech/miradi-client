@@ -21,14 +21,12 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.Project;
 
 public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 {
-	public TreeTableCellRendererWithColor(TreeTableWithIcons treeTableToUse, Project projectToUse)
+	public TreeTableCellRendererWithColor(TreeTableWithIcons treeTableToUse)
 	{
 		treeTable = treeTableToUse;
-		project = projectToUse;
 	}
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
@@ -74,5 +72,4 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 	}
 
 	TreeTableWithIcons treeTable;
-	Project project;
 }

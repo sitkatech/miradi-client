@@ -41,7 +41,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 		for (int i  = STARTING_TABLE_COLUMN; i < columnCount; ++i)
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(i);
-			tableColumn.setCellRenderer(new TreeTableCellRendererWithColor(this, getProject()));
+			tableColumn.setCellRenderer(new TreeTableCellRendererWithColor(this));
 		}
 	}
 	
