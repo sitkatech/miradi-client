@@ -36,13 +36,13 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model, buttonActions);
 	}
 	
-	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericTreeTableModel model)
+	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, ViabilityTreeModel model)
 	{
 		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
 	}
 	
-	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericTreeTableModel model, Class[] buttonActionsToUse)
+	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, ViabilityTreeModel model, Class[] buttonActionsToUse)
 	{
 		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, tree, model, buttonActionsToUse);
