@@ -128,6 +128,11 @@ abstract public class Factor extends BaseObject
 		return indicators.getIdList();
 	}
 	
+	public ORefList getIndicatorRefs()
+	{
+		return new ORefList(Indicator.getObjectType(), getIndicators());
+	}
+	
 	public void setIndicators(IdList indicatorsToUse)
 	{
 		indicators.set(indicatorsToUse);

@@ -190,7 +190,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 
 		if (factor.canHaveIndicators())
 		{
-			indicatorsTab = new IndicatorListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			indicatorsTab = new TargetViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
 		}
 		
@@ -314,7 +314,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	JTabbedPane tabs;
 	FactorSummaryPanel detailsTab;
 	ObjectiveListManagementPanel objectivesTab;
-	IndicatorListManagementPanel indicatorsTab;
+	TargetViabilityTreeManagementPanel indicatorsTab;
 	GoalListManagementPanel goalsTab;
 	TargetViabilityTreeManagementPanel viabilityTab;
 	ActivityListManagementPanel activitiesTab;
