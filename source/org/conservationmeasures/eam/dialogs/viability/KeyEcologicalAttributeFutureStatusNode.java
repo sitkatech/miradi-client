@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
 
 public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 {
@@ -35,7 +36,7 @@ public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 
 	public String toString()
 	{
-		return "";
+		return parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_DATE);
 	}
 
 	public int getChildCount()
