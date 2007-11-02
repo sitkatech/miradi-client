@@ -76,11 +76,6 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		tree.setSelectionPath(path);
 	}
 	
-	public Object getObjectForRow(int row) 
-	{
-		return treeTableModelAdapter.nodeForRow(row);
-	}
-
 	void updateTreeExpansion(ORefList expandedList)
 	{
 		ignoreNotifications = true;

@@ -86,6 +86,12 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		return treeTableModel;
 	}
 	
+	public Object getObjectForRow(int row) 
+	{
+		TreePath treePath = tree.getPathForRow(row);
+		return treePath.getLastPathComponent();         
+	}
+
 	public static Font createFristLevelFont(Font defaultFontToUse)
 	{
 		Map map = defaultFontToUse.getAttributes();

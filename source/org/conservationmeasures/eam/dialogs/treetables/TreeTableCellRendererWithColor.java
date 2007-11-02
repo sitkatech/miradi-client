@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.project.Project;
 
 public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 {
-	public TreeTableCellRendererWithColor(TreeTableWithStateSaving treeTableToUse, Project projectToUse)
+	public TreeTableCellRendererWithColor(TreeTableWithIcons treeTableToUse, Project projectToUse)
 	{
 		treeTable = treeTableToUse;
 		project = projectToUse;
@@ -73,6 +73,6 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 		return Color.white;
 	}
 
-	TreeTableWithStateSaving treeTable;
+	TreeTableWithIcons treeTable;
 	Project project;
 }
