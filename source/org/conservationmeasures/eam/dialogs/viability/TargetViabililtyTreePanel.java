@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
-import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeMeasurement;
+import org.conservationmeasures.eam.actions.ActionCreateIndicatorMeasurement;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
-import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
+import org.conservationmeasures.eam.actions.ActionDeleteIndicatorMeasurement;
 import org.conservationmeasures.eam.dialogs.diagram.FactorTreeTableNode;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -63,7 +63,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 	static final Class[] buttonActions = new Class[] {
 		ActionCreateIndicator.class,
 		ActionDeleteIndicator.class,
-		ActionCreateKeyEcologicalAttributeMeasurement.class,
-		ActionDeleteKeyEcologicalAttributeMeasurement.class, 
+		ActionCreateIndicatorMeasurement.class,
+		ActionDeleteIndicatorMeasurement.class, 
 		};
 }
