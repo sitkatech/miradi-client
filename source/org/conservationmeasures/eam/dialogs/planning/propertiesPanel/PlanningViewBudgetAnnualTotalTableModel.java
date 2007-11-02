@@ -9,11 +9,11 @@ import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsCalculator;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
-import org.conservationmeasures.eam.views.TreeTableNode;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 

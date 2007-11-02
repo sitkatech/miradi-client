@@ -1,10 +1,10 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.questions.StatusQuestion;
-import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 {

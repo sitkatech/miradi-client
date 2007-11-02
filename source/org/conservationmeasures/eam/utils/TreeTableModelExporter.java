@@ -12,7 +12,7 @@ import java.util.Vector;
 
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.views.TreeTableNode;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 
 import com.java.sun.jtreetable.TreeTableModel;
 

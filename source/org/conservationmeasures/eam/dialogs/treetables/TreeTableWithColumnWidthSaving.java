@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.views;
+package org.conservationmeasures.eam.dialogs.treetables;
 
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ColumnWidthSaver;

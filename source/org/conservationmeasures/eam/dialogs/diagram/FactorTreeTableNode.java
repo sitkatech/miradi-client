@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.diagram;
 
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeIndicatorNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -13,7 +14,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class FactorTreeTableNode extends TreeTableNode
 {
