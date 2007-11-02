@@ -219,6 +219,8 @@ public class Indicator extends BaseObject
 		{
 			case ObjectType.TASK: 
 				return true;
+			case ObjectType.MEASUREMENT:
+				return true;
 			default:
 				return false;
 		}
@@ -232,6 +234,9 @@ public class Indicator extends BaseObject
 		{
 			case ObjectType.TASK: 
 				list.addAll(new ORefList(objectType, getTaskIdList()));
+				break;
+			case ObjectType.MEASUREMENT:
+				list.addAll(getMeasurementRefs());
 				break;
 		}
 		return list;
