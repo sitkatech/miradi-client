@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
+import java.util.Vector;
+
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -72,12 +74,15 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		ORefList measurementRefs = indicator.getMeasurementRefs();
-		measurements = new KeyEcologicalAttributeMeasurementNode[measurementRefs.size()];
+		Vector measurementsAndFutureStartus = new Vector();
 		for (int i = 0; i < measurementRefs.size(); ++i)
 		{
 			Measurement measurement = (Measurement) project.findObject(measurementRefs.get(i));
-			measurements[i] = new KeyEcologicalAttributeMeasurementNode(this, measurement);
+			measurementsAndFutureStartus.add(new KeyEcologicalAttributeMeasurementNode(this, measurement));
 		}
+		
+		measurementsAndFutureStartus.add(new KeyEcologicalAttributeFutureStatusNode(this));
+		measurements = (TreeTableNode[]) measurementsAndFutureStartus.toArray(new TreeTableNode[0]); 
 	}
 	
 	public static final String[] COLUMN_TAGS = {
@@ -96,5 +101,5 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 	private Project project;
 	private Indicator indicator;
 	private TreeTableNode keyEcologicalAttributesNode;
-	private KeyEcologicalAttributeMeasurementNode[] measurements;
+	private TreeTableNode[] measurements;
 }
