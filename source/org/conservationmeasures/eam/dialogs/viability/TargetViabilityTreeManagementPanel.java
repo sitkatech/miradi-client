@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
 import org.conservationmeasures.eam.dialogs.DirectIndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectListManagementPanel;
+import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -25,13 +26,16 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	{
 		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.mainWindow, projectToUse, nodeId),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
-
+		panelDescription = PANEL_DESCRIPTION_VIABILITY;
+		icon = new KeyEcologicalAttributeIcon();
 	}
 	
 	public TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
 		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(EAM.mainWindow, projectToUse),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
+		panelDescription = PANEL_DESCRIPTION_VIABILITY;
+		icon = new KeyEcologicalAttributeIcon();
 
 	}
 	
@@ -39,6 +43,8 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	{
 		super(mainWindowToUse, TargetViabililtyTreePanel.createTargetViabilityIndicatorPoolPanel(EAM.mainWindow, factorRef, mainWindowToUse.getProject()),
 				new DirectIndicatorPropertiesPanel(mainWindowToUse.getProject(), ORef.INVALID));
+		panelDescription = PANEL_DESCRIPTION_INDICATORS;
+		icon = new IndicatorIcon();
 	}
 	
 	public String getSplitterDescription()
@@ -48,12 +54,12 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 
 	public String getPanelDescription()
 	{
-		return PANEL_DESCRIPTION;
+		return panelDescription;
 	}
 	
 	public Icon getIcon()
 	{
-		return new KeyEcologicalAttributeIcon();
+		return icon;
 	}
 	
 	public Class getJumpActionClass()
@@ -61,5 +67,9 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 		return ActionJumpTargetViability3Step.class;
 	}
 	
-	private static String PANEL_DESCRIPTION = EAM.text("Tab|Viability"); 
+	private String panelDescription;
+	private Icon icon;
+	
+	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability"); 
+	private static String PANEL_DESCRIPTION_INDICATORS = EAM.text("Tab|Indicators"); 
 }
