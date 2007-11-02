@@ -5,6 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
+import org.conservationmeasures.eam.actions.ActionCreateIndicator;
+import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeMeasurement;
+import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
+import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.conservationmeasures.eam.dialogs.diagram.FactorTreeTableNode;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -29,7 +33,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 	public static TargetViabililtyTreePanel createTargetViabilityIndicatorPoolPanel(MainWindow mainWindowToUse, ORef factorRef, Project projectToUse) throws Exception
 	{
 		ViabilityTreeModel model = new ViabilityTreeModel(new FactorTreeTableNode(projectToUse, factorRef));
-		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
+		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model, buttonActions);
 	}
 	
 	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericTreeTableModel model)
@@ -37,10 +41,29 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
 	}
+	
+	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericTreeTableModel model, Class[] buttonActionsToUse)
+	{
+		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
+		return new TargetViabililtyTreePanel(mainWindowToUse, tree, model, buttonActionsToUse);
+	}
 
 	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTree treeToUse, GenericTreeTableModel modelToUse)
 	{
 		super(mainWindowToUse, projectToUse, treeToUse);
 		model = modelToUse;
 	}
+	
+	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, TargetViabilityTree treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActionsToUse)
+	{
+		super(mainWindowToUse, treeToUse, buttonActionsToUse);
+		model = modelToUse;
+	}
+	
+	static final Class[] buttonActions = new Class[] {
+		ActionCreateIndicator.class,
+		ActionDeleteIndicator.class,
+		ActionCreateKeyEcologicalAttributeMeasurement.class,
+		ActionDeleteKeyEcologicalAttributeMeasurement.class, 
+		};
 }

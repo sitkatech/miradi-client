@@ -27,16 +27,18 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 {
 	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
 	{
-		super( mainWindowToUse, treeToUse, buttonActions);
+		this( mainWindowToUse, treeToUse, buttonActions);
 	}
 
-
-
+	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionToUse)
+	{
+		super(mainWindowToUse, treeToUse, buttonActionToUse);
+	}
+	
 	public Dimension getPreferredSize()
 	{
 		return new Dimension(super.getPreferredSize().width, 100);
 	}
-
 
 	//FIXME: Kevin: This code needs to be analyzed
 	// to see if it really needs to rebuld its tree under all these conditions
