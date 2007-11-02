@@ -50,7 +50,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 		for (int i  = STARTING_TABLE_COLUMN; i < columnCount; ++i)
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(i);
-			tableColumn.setCellRenderer(new CustomRenderer(this, getProject()));
+			tableColumn.setCellRenderer(new TreeTableCellRendererWithColor(this, getProject()));
 		}
 	}
 	
@@ -59,9 +59,9 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 		return getPreferredSize();
 	}
 
-	static class CustomRenderer extends DefaultTableCellRenderer
+	static class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 	{
-		public CustomRenderer(TreeTableWithStateSaving treeTableToUse, Project projectToUse)
+		public TreeTableCellRendererWithColor(TreeTableWithStateSaving treeTableToUse, Project projectToUse)
 		{
 			treeTable = treeTableToUse;
 			project = projectToUse;
