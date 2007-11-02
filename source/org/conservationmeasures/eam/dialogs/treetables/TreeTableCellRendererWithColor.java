@@ -15,7 +15,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import org.conservationmeasures.eam.dialogs.planning.PlanningTreeModel;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -32,7 +31,7 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
 		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		PlanningTreeModel model = (PlanningTreeModel) treeTable.getTreeTableModel();
+		GenericTreeTableModel model = treeTable.getTreeTableModel();
 		int modelColumn = table.convertColumnIndexToModel(column);
 		String columnTag = model.getColumnTag(modelColumn);
 		Color backgroundColor = getBackgroundColor(columnTag);
@@ -40,7 +39,7 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 		if (model.getColumnTag(column).equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		
-		table.setFont(PlanningTreeTable.getSharedTaskFont(((TreeTableNode) treeTable.getObjectForRow(row))));
+		setFont(PlanningTreeTable.getSharedTaskFont(((TreeTableNode) treeTable.getObjectForRow(row))));
 		setGrid();
 		
 		if (isSelected)
@@ -54,7 +53,7 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 		setBorder(BorderFactory.createMatteBorder(1, 1, 0, 0, Color.black));
 	}
 	
-	private Color getBackgroundColor(String columnTag)
+	protected Color getBackgroundColor(String columnTag)
 	{
 		if (columnTag.equals(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
 			return AppPreferences.RESOURCE_TABLE_BACKGROUND;
