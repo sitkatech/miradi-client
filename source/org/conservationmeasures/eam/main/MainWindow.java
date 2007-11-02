@@ -257,9 +257,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		currentView = view;
 		project.switchToView(view.cardName());
 		existingCommandListenerCount = getProject().getCommandListenerCount();
-		currentView.becomeActive();
-
-		updateToolBar();
+		preventActionUpdates();
+		try
+		{
+			currentView.becomeActive();
+			updateToolBar();
+		}
+		finally
+		{
+			allowActionUpdates();
+		}
 	}
 
 	public void updateToolBar()
@@ -312,6 +319,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void createOrOpenProject(File projectDirectory)
 	{
+		preventActionUpdates();
 		try
 		{
 			project.createOrOpen(projectDirectory);
@@ -354,9 +362,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 				EAM.panic(e1);
 			}
 		}
-		
-		updateActionStates();
-		
+		finally
+		{
+			allowActionUpdates();
+		}
 	}
 	
 	public DiagramView getDiagramView()
@@ -533,7 +542,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		if(shouldPreventActionUpdates())
 			return;
-		SwingUtilities.invokeLater(new ActionUpdater());
+		new ActionUpdater().run();
 	}
 
 	class ActionUpdater implements Runnable
