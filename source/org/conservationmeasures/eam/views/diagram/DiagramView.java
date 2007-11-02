@@ -314,10 +314,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public void tabWasSelected()
 	{
+		getMainWindow().preventActionUpdates();
 		try
 		{
 			super.tabWasSelected();
-			getMainWindow().preventActionUpdates();
 			getCurrentDiagramPanel().showCurrentDiagram();
 			updateVisibilityOfFactorsAndClearSelectionModel();
 			if (getDiagramComponent()!=null)
@@ -455,7 +455,15 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void updateLegendPanelCheckBoxes()
 	{
-		getDiagramPanel().getDiagramLegendPanel().resetCheckBoxes();
+		getMainWindow().preventActionUpdates();
+		try
+		{
+			getDiagramPanel().getDiagramLegendPanel().resetCheckBoxes();
+		}
+		finally
+		{
+			getMainWindow().allowActionUpdates();
+		}
 	}
 
 	public void setTabToConceptualModel()

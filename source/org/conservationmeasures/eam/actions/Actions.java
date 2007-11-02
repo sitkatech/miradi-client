@@ -92,6 +92,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewTargetViability;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
 public class Actions
@@ -353,12 +354,26 @@ public class Actions
 
 	public void updateActionStates()
 	{
+		boolean verbose = false;
+		if(verbose)
+		{
+			try
+			{
+				throw new Exception();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		EAM.logDebug("updateActionStates");
 		Collection actualActions = actions.values();
 		Iterator iter = actualActions.iterator();
 		while(iter.hasNext())
 		{
 			EAMAction action = (EAMAction)iter.next();
-			action.updateEnabledState();
+			boolean shouldBeEnabled = action.shouldBeEnabled();
+			action.setEnabled(shouldBeEnabled);
 		}
 	}
 	
