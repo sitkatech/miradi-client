@@ -115,8 +115,7 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		if (areIndicatorMeasurementFields)
 		{
 			CommandSetObjectData  command = (CommandSetObjectData) event.getCommand();
-			ORef ref = new ORef(command.getObjectType(), command.getObjectId());
-			indicatorThreshold.setIconRowObject(ref);
+			indicatorThreshold.setIconRowObject(command.getObjectORef());
 		}
 	}
 	
