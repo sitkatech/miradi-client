@@ -9,10 +9,13 @@ import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
+import org.conservationmeasures.eam.dialogs.DirectIndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectListManagementPanel;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
@@ -30,6 +33,12 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(EAM.mainWindow, projectToUse),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
 
+	}
+	
+	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
+	{
+		super(mainWindowToUse, TargetViabililtyTreePanel.createTargetViabilityIndicatorPoolPanel(EAM.mainWindow, factorRef, mainWindowToUse.getProject()),
+				new DirectIndicatorPropertiesPanel(mainWindowToUse.getProject(), ORef.INVALID));
 	}
 	
 	public String getSplitterDescription()
