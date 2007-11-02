@@ -50,6 +50,9 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 	
 	public void setIconRow()
 	{	
+		if (getORef().isInvalid())
+			return;
+		
 		Indicator indicator = (Indicator) getProject().findObject(getORef());
 		futureStatusSummary = indicator.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		futureStatusCode = indicator.getData(Indicator.TAG_FUTURE_STATUS_RATING);
