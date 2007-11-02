@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.dialogs.DiagramPanel;
+import org.conservationmeasures.eam.dialogs.diagram.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;

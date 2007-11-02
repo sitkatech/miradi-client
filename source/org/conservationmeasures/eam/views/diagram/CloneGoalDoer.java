@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.dialogs.GoalPoolTablePanel;
+import org.conservationmeasures.eam.dialogs.goal.GoalPoolTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;

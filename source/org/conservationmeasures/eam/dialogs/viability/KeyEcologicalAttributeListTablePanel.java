@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs.viability;
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogs.ObjectListTablePanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectListTablePanel;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;

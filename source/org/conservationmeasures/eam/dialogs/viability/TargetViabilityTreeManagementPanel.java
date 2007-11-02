@@ -9,8 +9,8 @@ import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
-import org.conservationmeasures.eam.dialogs.DirectIndicatorPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.ObjectListManagementPanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
+import org.conservationmeasures.eam.dialogs.indicator.DirectIndicatorPropertiesPanel;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.ids.FactorId;

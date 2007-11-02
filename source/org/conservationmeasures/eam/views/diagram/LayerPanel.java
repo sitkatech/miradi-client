@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
+import org.conservationmeasures.eam.dialogs.base.ModelessDialogPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.BaseObject;

@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import org.conservationmeasures.eam.dialogs.DisposablePanelWithDescription;
+import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
 
 public class BlankPropertiesPanel extends DisposablePanelWithDescription
 {

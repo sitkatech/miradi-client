@@ -22,7 +22,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.dialogs.EAMDialog;
+import org.conservationmeasures.eam.dialogs.base.EAMDialog;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;

@@ -5,8 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.dialogs.PreferencesDialog;
-import org.conservationmeasures.eam.dialogs.PreferencesPanel;
+import org.conservationmeasures.eam.dialogs.base.PreferencesDialog;
+import org.conservationmeasures.eam.dialogs.base.PreferencesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.martus.swing.Utilities;

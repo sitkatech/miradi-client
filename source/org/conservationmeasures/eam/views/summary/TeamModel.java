@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.summary;
 
-import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
+import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;

@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.slideshow;
 
-import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;

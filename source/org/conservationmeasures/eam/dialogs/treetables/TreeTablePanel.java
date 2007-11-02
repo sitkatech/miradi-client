@@ -16,7 +16,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogs.ObjectCollectionPanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectCollectionPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;

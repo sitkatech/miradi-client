@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs.viability;
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogs.ObjectListManagementPanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;

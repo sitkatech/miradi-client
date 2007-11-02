@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.dialogs.DiagramPanel;
+import org.conservationmeasures.eam.dialogs.diagram.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.views.ViewDoer;

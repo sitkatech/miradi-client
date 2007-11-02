@@ -15,8 +15,8 @@ import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.ObjectPoolTable;
-import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
+import org.conservationmeasures.eam.dialogs.base.ObjectPoolTable;
+import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;

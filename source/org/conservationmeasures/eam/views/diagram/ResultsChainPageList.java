@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
+import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.project.Project;

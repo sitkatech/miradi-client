@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
-import org.conservationmeasures.eam.dialogs.ObjectDataInputPanelSpecial;
+import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;

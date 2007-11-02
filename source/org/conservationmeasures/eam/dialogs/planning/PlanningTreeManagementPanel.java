@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import org.conservationmeasures.eam.dialogs.ObjectListManagementPanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
