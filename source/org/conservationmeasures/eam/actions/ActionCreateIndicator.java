@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCreateIndicator extends MainWindowAction
+public class ActionCreateIndicator extends ObjectsAction
 {
 	public ActionCreateIndicator(MainWindow mainWindowToUse)
 	{
