@@ -134,6 +134,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 			return commands;
 
 		Indicator indicator = (Indicator)project.findObject(ref);
+		CommandSetObjectData clearIndicatorMeasurements = new CommandSetObjectData(ref, Indicator.TAG_MEASUREMENT_REFS, new ORefList().toString());
+		commands.add(clearIndicatorMeasurements);
+		
 		ORefList measurementRefs = indicator.getMeasurementRefs();
 		for (int i  = 0; i < measurementRefs.size(); i++)
 		{
