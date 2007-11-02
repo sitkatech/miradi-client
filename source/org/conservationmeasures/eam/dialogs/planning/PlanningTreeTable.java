@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.TreeTableWithColumnWidthSaving;
+import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 
 public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 {
@@ -49,7 +50,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 		for (int i  = STARTING_TABLE_COLUMN; i < columnCount; ++i)
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(i);
-			tableColumn.setCellRenderer(new CustomRenderer(tree, getProject()));
+			tableColumn.setCellRenderer(new CustomRenderer(this, getProject()));
 		}
 	}
 	
@@ -58,18 +59,18 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 		return getPreferredSize();
 	}
 
-	protected class CustomRenderer extends DefaultTableCellRenderer
+	static class CustomRenderer extends DefaultTableCellRenderer
 	{
-		public CustomRenderer(TreeTableCellRenderer treeToUse, Project projectToUse)
+		public CustomRenderer(TreeTableWithStateSaving treeTableToUse, Project projectToUse)
 		{
-			tree = treeToUse;
+			treeTable = treeTableToUse;
 			project = projectToUse;
 		}
 		
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
 			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-			PlanningTreeModel model = (PlanningTreeModel) tree.getModel();
+			PlanningTreeModel model = (PlanningTreeModel) treeTable.getTreeTableModel();
 			int modelColumn = table.convertColumnIndexToModel(column);
 			String columnTag = model.getColumnTag(modelColumn);
 			Color backgroundColor = getBackgroundColor(columnTag);
@@ -77,7 +78,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 			if (model.getColumnTag(column).equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 				setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 			
-			setFont(getSharedTaskFont(((TreeTableNode) getObjectForRow(row))));
+			setFont(getSharedTaskFont(((TreeTableNode) treeTable.getObjectForRow(row))));
 			setGrid();
 			
 			if (isSelected)
@@ -108,7 +109,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 			return Color.white;
 		}
 
-		TreeTableCellRenderer tree;
+		TreeTableWithStateSaving treeTable;
 		Project project;
 	}
 	
