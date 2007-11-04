@@ -22,6 +22,11 @@ public class Miradi
 		if(!EAM.initialize())
 			System.exit(1);
 		
+		EAM.setLogLevel(EAM.LOG_DEBUG);
+		if(Arrays.asList(args).contains("--verbose"))
+			EAM.setLogLevel(EAM.LOG_VERBOSE);
+		EAM.setExceptionLoggingDestination();
+		
 		try
 		{
 			addThirdPartyJarsToClasspath();
@@ -48,15 +53,19 @@ public class Miradi
 	
 	private static File getAppCodeDirectory() throws URISyntaxException
 	{
-		String imagesURIString = Miradi.class.getResource("/").toURI().toString();
+		String imagesURIString = Miradi.class.getResource("/images").toURI().toString();
 		String imagesPathString = stripPrefix(imagesURIString);
 	
 		int bangAt = imagesPathString.indexOf('!');
 		if(bangAt < 0)
-			return new File(stripPrefix(imagesURIString));
+		{
+			File imagesDirectory = new File(stripPrefix(imagesURIString));
+			return imagesDirectory.getParentFile();
+		}
 		
 		String jarURIString = imagesPathString.substring(0, bangAt);
-		return new File(stripPrefix(jarURIString));
+		File jarFile = new File(stripPrefix(jarURIString));
+		return jarFile.getParentFile();
 	}
 
 	private static String stripPrefix(String uri)
@@ -67,11 +76,6 @@ public class Miradi
 
 	public static void start(String[] args)
 	{
-		EAM.setLogLevel(EAM.LOG_DEBUG);
-		if(Arrays.asList(args).contains("--verbose"))
-			EAM.setLogLevel(EAM.LOG_VERBOSE);
-		EAM.setExceptionLoggingDestination();
-		
 		try
 		{
 			setBestLookAndFeel();
