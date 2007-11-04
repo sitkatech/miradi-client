@@ -47,6 +47,6 @@ public class PanelTitleLabel extends UiLabel
 	//TODO: Richard: should not use static ref here
 	public MainWindow getMainWindow()
 	{
-		return EAM.mainWindow;
+		return EAM.getMainWindow();
 	}
 }

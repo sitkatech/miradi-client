@@ -51,7 +51,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	
 	public Color getColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
 	}
 
 

@@ -83,7 +83,7 @@ public class SlideListTablePanel extends ObjectListTablePanel
 
 	private MainWindow getMainWindow()
 	{
-		return EAM.mainWindow;
+		return EAM.getMainWindow();
 	}
 	
 	

@@ -21,6 +21,6 @@ public class IntermediateResultIcon extends AbstractShapeIcon
 	
 	Color getIconColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
 	}
 }

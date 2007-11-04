@@ -21,6 +21,6 @@ public class DiagramThreatReductionResultCell extends FactorCell
 
 	public Color getColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);
 	}
 }

@@ -55,7 +55,7 @@ public abstract class AbstractDiagramIcon extends AbstractMiradiIcon
 
 	Color getFactorColor(String tag)
 	{
-		return EAM.mainWindow.getColorPreference(tag);
+		return EAM.getMainWindow().getColorPreference(tag);
 	}
 
 	protected int getFactorHeight()

@@ -287,7 +287,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		
 		public static Font deriveFont(int style)
 		{
-			Font defaultFont = EAM.mainWindow.getUserDataPanelFont();
+			Font defaultFont = EAM.getMainWindow().getUserDataPanelFont();
 			return defaultFont.deriveFont(style);
 		}
 

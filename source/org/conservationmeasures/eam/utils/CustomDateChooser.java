@@ -24,7 +24,7 @@ public class CustomDateChooser extends JDateChooser
 		calendarButton.addMouseListener(new CustomMouseListener());
 		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
-		setFont(EAM.mainWindow.getUserDataPanelFont());
+		setFont(EAM.getMainWindow().getUserDataPanelFont());
 	}
 
 	class MonthChangeListener implements PropertyChangeListener

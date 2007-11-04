@@ -23,7 +23,7 @@ public class TargetIcon extends AbstractShapeIcon
 	
 	Color getIconColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_TARGET);
 	}
 	
 	static public Icon createDisabledIcon()

@@ -23,9 +23,9 @@ public class DiagramCauseCell extends FactorCell
 	public Color getColor()
 	{
 		if(isContributingFactor())
-			return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
+			return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
 		if(isDirectThreat())
-			return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT);
+			return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT);
 		if(isStress())
 			return DiagramConstants.COLOR_STRESS;
 		

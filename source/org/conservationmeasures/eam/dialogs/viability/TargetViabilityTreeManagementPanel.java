@@ -24,7 +24,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 {
 	public TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.mainWindow, projectToUse, nodeId),
+		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.getMainWindow(), projectToUse, nodeId),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
 		panelDescription = PANEL_DESCRIPTION_VIABILITY;
 		icon = new KeyEcologicalAttributeIcon();
@@ -32,7 +32,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	
 	public TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(EAM.mainWindow, projectToUse),
+		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(EAM.getMainWindow(), projectToUse),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
 		panelDescription = PANEL_DESCRIPTION_VIABILITY;
 		icon = new KeyEcologicalAttributeIcon();
@@ -41,7 +41,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	
 	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
 	{
-		super(mainWindowToUse, TargetViabililtyTreePanel.createTargetViabilityIndicatorPoolPanel(EAM.mainWindow, factorRef, mainWindowToUse.getProject()),
+		super(mainWindowToUse, TargetViabililtyTreePanel.createTargetViabilityIndicatorPoolPanel(EAM.getMainWindow(), factorRef, mainWindowToUse.getProject()),
 				new DirectIndicatorPropertiesPanel(mainWindowToUse.getProject(), ORef.INVALID));
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;
 		icon = new IndicatorIcon();

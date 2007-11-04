@@ -256,8 +256,8 @@ public class EAM
 		{
 			try
 			{
-				mainWindow = new MainWindow();
-				mainWindow.start(args);
+				setMainWindow(new MainWindow());
+				getMainWindow().start(args);
 			}
 			catch(Exception e)
 			{
@@ -317,7 +317,7 @@ public class EAM
 
 	public static void okDialog(String title, String[] body)
 	{
-		new UiNotifyDlg(mainWindow, title, body, new String[] {text("Button|OK")});
+		new UiNotifyDlg(getMainWindow(), title, body, new String[] {text("Button|OK")});
 	}
 
 	public static boolean confirmDialog(String title, String[] body)
@@ -328,7 +328,7 @@ public class EAM
 
 	public static boolean confirmDialog(String title, String[] body, String[] buttons)
 	{
-		UiNotifyDlg dlg = new UiNotifyDlg(mainWindow, title, body, buttons);
+		UiNotifyDlg dlg = new UiNotifyDlg(getMainWindow(), title, body, buttons);
 		if (wasWindowClosed(dlg))
 			return false;
 		
@@ -343,7 +343,7 @@ public class EAM
 	
 	public static String choiceDialog(String title, String[] body, String[] buttons)
 	{
-		UiNotifyDlg dlg = new UiNotifyDlg(mainWindow, title, body, buttons);
+		UiNotifyDlg dlg = new UiNotifyDlg(getMainWindow(), title, body, buttons);
 		if (wasWindowClosed(dlg))
 			return "";
 		
@@ -448,12 +448,23 @@ public class EAM
 
 	///////////////////////////////////////////////////////////////////
 	
+	public static void setMainWindow(MainWindow mainWindow)
+	{
+		EAM.mainWindow = mainWindow;
+	}
+
+
+	public static MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+
 	private final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
 	
 	public static int STANDARD_SCROLL_INCREMENT = 12;
 
 	public static String NEWLINE = System.getProperty("line.separator");
-	public static MainWindow mainWindow;
+	private static MainWindow mainWindow;
 	public static String PROJECT_EXTENSION = ".eam";
 	public static final Color READONLY_BACKGROUND_COLOR = Color.LIGHT_GRAY;
 	public static final Color READONLY_FOREGROUND_COLOR = Color.black;

@@ -69,8 +69,8 @@ public abstract class MainWindowAction extends EAMAction
 
 	public void doAction(EventObject event) throws CommandFailedException
 	{
-		Cursor prevCursor = EAM.mainWindow.getCursor();
-		EAM.mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		Cursor prevCursor = EAM.getMainWindow().getCursor();
+		EAM.getMainWindow().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		
 		try
 		{
@@ -79,7 +79,7 @@ public abstract class MainWindowAction extends EAMAction
 		}
 		finally
 		{
-			EAM.mainWindow.setCursor(prevCursor);
+			EAM.getMainWindow().setCursor(prevCursor);
 		}
 	}
 	

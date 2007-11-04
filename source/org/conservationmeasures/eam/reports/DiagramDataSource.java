@@ -31,7 +31,7 @@ public class DiagramDataSource extends CommonDataSource
 	public Image getDiagramImage()
 	{
 		DiagramObject diagramObject = (DiagramObject)getCurrentObject();
-		return DiagramImageCreator.getImage(EAM.mainWindow, diagramObject);
+		return DiagramImageCreator.getImage(EAM.getMainWindow(), diagramObject);
 	}
 	
 } 

@@ -35,6 +35,6 @@ public class PanelTable extends TableWithHelperMethods
 	//TODO: Richard: should not use static ref here
 	private MainWindow getMainWindow()
 	{
-		return EAM.mainWindow;
+		return EAM.getMainWindow();
 	}
 }

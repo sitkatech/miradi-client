@@ -25,7 +25,7 @@ public class DiagramTargetCell extends FactorCell
 
 	public Color getColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_TARGET);
 	}
 	
 	public Dimension getInsetDimension()

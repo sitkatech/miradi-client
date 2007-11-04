@@ -20,6 +20,6 @@ public class PanelTitledBorder extends TitledBorder
 	//TODO: Richard: should not use static ref here
 	static private MainWindow getMainWindow()
 	{
-		return EAM.mainWindow;
+		return EAM.getMainWindow();
 	}
 }

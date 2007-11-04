@@ -68,10 +68,10 @@ public class TestDiagramFactor extends EAMTestCase
 
 	public void testIndicator() throws Exception
 	{
-		EAM.mainWindow = new MainWindow(project);
+		EAM.setMainWindow(new MainWindow(project));
 		IdList indicators = directThreat.getIndicators();
 		assertEquals(0, indicators.size());
-		EAM.mainWindow = null;
+		EAM.setMainWindow(null);
 	}
 	
 	public void testGoals()

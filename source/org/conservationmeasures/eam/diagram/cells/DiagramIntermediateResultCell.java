@@ -22,6 +22,6 @@ public class DiagramIntermediateResultCell extends FactorCell
 
 	public Color getColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
 	}
 }
