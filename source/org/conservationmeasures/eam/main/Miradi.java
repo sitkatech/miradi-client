@@ -13,6 +13,7 @@ public class Miradi
 {
 	public static void main(String[] args)
 	{
+		EAM.initialize();
 		try
 		{
 			addThirdPartyJarsToClasspath();
@@ -23,16 +24,16 @@ public class Miradi
 			System.out.println("Error initializing Miradi");
 			System.exit(1);
 		}
-		EAM.main(args);
+		EAM.start(args);
 	}
 
 	private static void addThirdPartyJarsToClasspath() throws Exception
 	{
 		String jarSubdirectoryName = "ThirdParty";
 		File miradiDirectory = getAppCodeDirectory();
-		System.out.println("Miradi code running from: " + miradiDirectory.getAbsolutePath());
+		EAM.logVerbose("Miradi code running from: " + miradiDirectory.getAbsolutePath());
 		File thirdPartyDirectory = new File(miradiDirectory, jarSubdirectoryName);
-		System.out.println("Adding jars to classpath: " + thirdPartyDirectory.getAbsolutePath());
+		EAM.logVerbose("Adding jars to classpath: " + thirdPartyDirectory.getAbsolutePath());
 		RuntimeJarLoader.addJarsInSubdirectoryToClasspath(thirdPartyDirectory);
 	}
 	
