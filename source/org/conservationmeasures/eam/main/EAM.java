@@ -33,9 +33,6 @@ import org.martus.util.UnicodeReader;
 
 public class EAM
 {
-
-	// MUST be positioned before main() so it gets initialized first
-
 	public static void main(String[] args)
 	{
 		logger = new MiradiLogger();
