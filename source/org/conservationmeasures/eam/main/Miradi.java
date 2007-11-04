@@ -19,7 +19,9 @@ public class Miradi
 {
 	public static void main(String[] args)
 	{
-		EAM.initialize();
+		if(!EAM.initialize())
+			System.exit(1);
+		
 		try
 		{
 			addThirdPartyJarsToClasspath();
@@ -31,9 +33,6 @@ public class Miradi
 			System.exit(1);
 		}
 
-		if(!Miradi.handleEamToMiradiMigration())
-			return;
-		
 		Miradi.start(args);
 	}
 
@@ -64,50 +63,6 @@ public class Miradi
 	{
 		int startOfRealPath = uri.indexOf(':') + 1;
 		return uri.substring(startOfRealPath);
-	}
-
-	static boolean handleEamToMiradiMigration()
-	{
-		File miradiDirectory = EAM.getHomeDirectory();
-		if(miradiDirectory.exists())
-			return true;
-		
-		File oldEamDirectory = EAM.getOldEamHomeDirectory();
-		if(!oldEamDirectory.exists())
-			return true;
-		
-		String[] miradiMigrationText = {
-			"Miradi has detected some e-Adaptive Management ",
-			"projects and settings on this computer, which can ",
-			"automatically be imported into Miradi.",
-			"",
-			"If you want to run Miradi without performing this migration, ",
-			"delete the e-Adaptive Management project directory ",
-			"(" + oldEamDirectory + "), or rename it to something else",
-			"",
-			"Do you want to Import the old data, or Exit Miradi?",
-			"",
-		};
-		if(!EAM.confirmDialog("e-Adaptive Management Data Import", miradiMigrationText, new String[] {"Import", "Exit"}))
-			return false;
-		
-		oldEamDirectory.renameTo(miradiDirectory);
-		if(oldEamDirectory.exists() || !miradiDirectory.exists())
-		{
-			EAM.errorDialog("Import failed. Be sure no projects are open, and that you " +
-					"have permission to create " + miradiDirectory.getAbsolutePath());
-			return false;
-		}
-		
-		String[] importCompleteText = {
-			"Import complete.",
-			"",
-			"We strongly recommend that you uninstall e-Adaptive Management, ",
-			"if you have not already done so. It is now obsolete, having been ",
-			"replaced by Miradi.",
-		};
-		EAM.okDialog("Import Complete", importCompleteText);
-		return true;
 	}
 
 	public static void start(String[] args)
