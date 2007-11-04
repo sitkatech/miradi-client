@@ -39,8 +39,8 @@ public class TestLinkCell extends EAMTestCase
 	public void testGetNewBendPointList() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		EAM.mainWindow = new MainWindow(project);
-		DiagramComponent diagramComponent = new DiagramComponent(EAM.mainWindow);
+		EAM.setMainWindow(new MainWindow(project));
+		DiagramComponent diagramComponent = new DiagramComponent(EAM.getMainWindow());
 		diagramComponent.setModel(model);
 		GraphLayoutCache cache = project.getDiagramModel().getGraphLayoutCache();
 		diagramComponent.setGraphLayoutCache(cache);

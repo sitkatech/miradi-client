@@ -23,7 +23,7 @@ public class StrategyIcon extends AbstractShapeIcon
 	
 	Color getIconColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
 	}
 	
 	static public Icon createDisabledIcon()

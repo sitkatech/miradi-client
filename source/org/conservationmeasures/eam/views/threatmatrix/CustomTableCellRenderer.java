@@ -94,7 +94,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 	private AppPreferences getAppPreferences()
 	{
 		//TODO: shold be a better way to get preferences, instead of this , or going in via the view which we can not use here do to image print
-		return EAM.mainWindow.getAppPreferences();
+		return EAM.getMainWindow().getAppPreferences();
 	}
 
 	private ThreatRatingFramework getThreatRatingFramework()

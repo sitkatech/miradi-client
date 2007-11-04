@@ -21,6 +21,6 @@ public class ActivityIcon extends AbstractShapeIcon
 	
 	Color getIconColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES);
 	}
 }

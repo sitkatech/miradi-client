@@ -25,7 +25,7 @@ public class DiagramStrategyCell extends FactorCell
 		if(isStatusDraft())
 			return DiagramConstants.COLOR_DRAFT_STRATEGY;
 		
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
 	}
 
 }

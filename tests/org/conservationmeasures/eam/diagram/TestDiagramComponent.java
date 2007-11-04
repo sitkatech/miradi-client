@@ -57,8 +57,8 @@ public class TestDiagramComponent extends EAMTestCase
 	
 	public void testSelectAll() throws Exception
 	{
-		EAM.mainWindow = new MainWindow(project);
-		DiagramComponent diagramComponent = new DiagramComponent(EAM.mainWindow);
+		EAM.setMainWindow(new MainWindow(project));
+		DiagramComponent diagramComponent = new DiagramComponent(EAM.getMainWindow());
 		diagramComponent.setModel(project.getDiagramModel());
 		diagramComponent.setGraphLayoutCache(project.getDiagramModel().getGraphLayoutCache());
 		
@@ -87,6 +87,6 @@ public class TestDiagramComponent extends EAMTestCase
 		Object[] selectionCells = diagramComponent.getSelectionCells();
 		assertEquals("Selection count wrong?", 1, selectionCells.length);
 		assertEquals("Wrong selection?", visibleNode, selectionCells[0]);
-		EAM.mainWindow = null;
+		EAM.setMainWindow(null);
 	}
 }

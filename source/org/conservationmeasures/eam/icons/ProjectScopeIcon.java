@@ -21,6 +21,6 @@ public class ProjectScopeIcon extends AbstractShapeIcon
 	
 	Color getIconColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
 	}
 }

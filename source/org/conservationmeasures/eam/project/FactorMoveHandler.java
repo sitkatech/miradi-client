@@ -63,7 +63,7 @@ public class FactorMoveHandler
 			 * The workaround is to re-select what is selected, so the cached values inside 
 			 * jgraph get reset to their proper values.
 			 */
-			MainWindow mainWindow = EAM.mainWindow;
+			MainWindow mainWindow = EAM.getMainWindow();
 			if(mainWindow != null)
 			{
 				DiagramComponent diagram = mainWindow.getDiagramComponent();

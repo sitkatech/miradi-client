@@ -24,7 +24,7 @@ public class DirectThreatIcon extends AbstractShapeIcon
 
 	Color getIconColor() 
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT);
 	}
 	
 	static public Icon createDisabledIcon()
