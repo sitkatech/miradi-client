@@ -33,9 +33,13 @@ import org.martus.util.UnicodeReader;
 
 public class EAM
 {
-	public static void main(String[] args)
+	public static void initialize()
 	{
 		logger = new MiradiLogger();
+	}
+
+	public static void start(String[] args)
+	{
 		if(!handleEamToMiradiMigration())
 			return;
 		
