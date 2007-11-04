@@ -30,9 +30,13 @@ import org.martus.util.UnicodeReader;
 
 public class EAM
 {
-	public static void initialize()
+	public static boolean initialize()
 	{
 		logger = new MiradiLogger();
+		if(!EAM.handleEamToMiradiMigration())
+			return false;
+		
+		return true;
 	}
 
 	public static String getJavaVersion()
@@ -356,6 +360,50 @@ public class EAM
 		return mainWindow;
 	}
 
+	static boolean handleEamToMiradiMigration()
+	{
+		File miradiDirectory = getHomeDirectory();
+		if(miradiDirectory.exists())
+			return true;
+		
+		File oldEamDirectory = getOldEamHomeDirectory();
+		if(!oldEamDirectory.exists())
+			return true;
+		
+		String[] miradiMigrationText = {
+			"Miradi has detected some e-Adaptive Management ",
+			"projects and settings on this computer, which can ",
+			"automatically be imported into Miradi.",
+			"",
+			"If you want to run Miradi without performing this migration, ",
+			"delete the e-Adaptive Management project directory ",
+			"(" + oldEamDirectory + "), or rename it to something else",
+			"",
+			"Do you want to Import the old data, or Exit Miradi?",
+			"",
+		};
+		if(!confirmDialog("e-Adaptive Management Data Import", miradiMigrationText, new String[] {"Import", "Exit"}))
+			return false;
+		
+		oldEamDirectory.renameTo(miradiDirectory);
+		if(oldEamDirectory.exists() || !miradiDirectory.exists())
+		{
+			errorDialog("Import failed. Be sure no projects are open, and that you " +
+					"have permission to create " + miradiDirectory.getAbsolutePath());
+			return false;
+		}
+		
+		String[] importCompleteText = {
+			"Import complete.",
+			"",
+			"We strongly recommend that you uninstall e-Adaptive Management, ",
+			"if you have not already done so. It is now obsolete, having been ",
+			"replaced by Miradi.",
+		};
+		okDialog("Import Complete", importCompleteText);
+		return true;
+	}
+
 	private final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
 	
 	public static int STANDARD_SCROLL_INCREMENT = 12;
@@ -371,6 +419,7 @@ public class EAM
 	
 	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
+
 
 }
 
