@@ -16,11 +16,8 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Locale;
 
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -38,43 +35,11 @@ public class EAM
 		logger = new MiradiLogger();
 	}
 
-	public static void start(String[] args)
-	{
-		if(!handleEamToMiradiMigration())
-			return;
-		
-		setLogLevel(LOG_DEBUG);
-		if(Arrays.asList(args).contains("--verbose"))
-			setLogLevel(LOG_VERBOSE);
-		setExceptionLoggingDestination();
-		
-		try
-		{
-			setBestLookAndFeel();
-			VersionConstants.setVersionString();
-			Translation.loadFieldLabels();
-			SwingUtilities.invokeAndWait(new MainWindowRunner(args));
-		}
-		catch(Exception e)
-		{
-			logException(e);
-			errorDialog(e.getMessage());
-		}
-	}
-
-	
 	public static String getJavaVersion()
 	{
 		return System.getProperty("java.version");
 	}
 	
-	static void setBestLookAndFeel() throws Exception
-	{
-		if(System.getProperty("os.name").equals("Linux"))
-			return;
-		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	}
-
 	public static File getHomeDirectory()
 	{
 		File home = new File(System.getProperty("user.home"), "Miradi");
@@ -117,50 +82,6 @@ public class EAM
 	public static PrintStream getExceptionLoggingDestination()
 	{
 		return logger.getExceptionLoggingDestination();
-	}
-	
-	private static boolean handleEamToMiradiMigration()
-	{
-		File miradiDirectory = EAM.getHomeDirectory();
-		if(miradiDirectory.exists())
-			return true;
-		
-		File oldEamDirectory = EAM.getOldEamHomeDirectory();
-		if(!oldEamDirectory.exists())
-			return true;
-		
-		String[] miradiMigrationText = {
-			"Miradi has detected some e-Adaptive Management ",
-			"projects and settings on this computer, which can ",
-			"automatically be imported into Miradi.",
-			"",
-			"If you want to run Miradi without performing this migration, ",
-			"delete the e-Adaptive Management project directory ",
-			"(" + oldEamDirectory + "), or rename it to something else",
-			"",
-			"Do you want to Import the old data, or Exit Miradi?",
-			"",
-		};
-		if(!EAM.confirmDialog("e-Adaptive Management Data Import", miradiMigrationText, new String[] {"Import", "Exit"}))
-			return false;
-		
-		oldEamDirectory.renameTo(miradiDirectory);
-		if(oldEamDirectory.exists() || !miradiDirectory.exists())
-		{
-			EAM.errorDialog("Import failed. Be sure no projects are open, and that you " +
-					"have permission to create " + miradiDirectory.getAbsolutePath());
-			return false;
-		}
-		
-		String[] importCompleteText = {
-			"Import complete.",
-			"",
-			"We strongly recommend that you uninstall e-Adaptive Management, ",
-			"if you have not already done so. It is now obsolete, having been ",
-			"replaced by Miradi.",
-		};
-		EAM.okDialog("Import Complete", importCompleteText);
-		return true;
 	}
 	
 	///////////////////////////////////////////////////////////////////
@@ -244,31 +165,6 @@ public class EAM
 		printWriter.close();
 
 		return byteArrayOutputStream.toString();
-	}
-	
-	private static final class MainWindowRunner implements Runnable
-	{
-		MainWindowRunner(String[] argsToUse)
-		{
-			args = argsToUse;
-		}
-		
-		public void run()
-		{
-			try
-			{
-				setMainWindow(new MainWindow());
-				getMainWindow().start(args);
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-				errorDialog("Unexpected error: " + e.getMessage());
-				System.exit(1);
-			}
-		}
-		
-		String[] args;
 	}
 	
 	public static final int LOG_QUIET = MiradiLogger.LOG_QUIET;
