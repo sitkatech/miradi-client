@@ -35,10 +35,10 @@ public class EAM
 {
 
 	// MUST be positioned before main() so it gets initialized first
-	private static MiradiLogger logger = new MiradiLogger();
 
 	public static void main(String[] args)
 	{
+		logger = new MiradiLogger();
 		if(!handleEamToMiradiMigration())
 			return;
 		
@@ -464,6 +464,7 @@ public class EAM
 	public static int STANDARD_SCROLL_INCREMENT = 12;
 
 	public static String NEWLINE = System.getProperty("line.separator");
+	private static MiradiLogger logger;
 	private static MainWindow mainWindow;
 	public static String PROJECT_EXTENSION = ".eam";
 	public static final Color READONLY_BACKGROUND_COLOR = Color.LIGHT_GRAY;
