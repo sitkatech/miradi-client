@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -35,6 +36,7 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		doNotAllowBudgetDetailColumn();
 	}
 
+	//TODO rename this method to reflect what its doing
 	private void doNotAllowBudgetDetailColumn()
 	{
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
@@ -42,6 +44,9 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		
 		if (columnsToShow.contains(Measurement.PSEUDO_TAG_MEASUREMENT_FIELDS))
 			columnsToShow.removeCode(Measurement.PSEUDO_TAG_MEASUREMENT_FIELDS);
+		
+		if (columnsToShow.contains(Indicator.TAG_FUTURE_STATUS_SUMMARY))
+			columnsToShow.removeCode(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 	}
 
 	public int getColumnCount()
