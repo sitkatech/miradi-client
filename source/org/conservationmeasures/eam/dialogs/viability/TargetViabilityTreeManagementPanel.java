@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.dialogs.indicator.DirectIndicatorPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -45,6 +46,23 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 				new DirectIndicatorPropertiesPanel(mainWindowToUse.getProject(), ORef.INVALID));
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;
 		icon = new IndicatorIcon();
+	}  
+	
+	//TODO should use this contructor instead of the constructor that creates DirectIndicatorPropertiesPanel, would be better to have a PlanningTreePropertiesPanel
+	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, TargetViabililtyTreePanel treePanel, PlanningTreePropertiesPanel propertiesPanel) throws Exception
+	{
+		super(mainWindowToUse, treePanel, propertiesPanel);
+		panelDescription = PANEL_DESCRIPTION_INDICATORS;
+		icon = new IndicatorIcon();
+	}
+	
+	
+	public static TargetViabilityTreeManagementPanel createTargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
+	{
+		TargetViabililtyTreePanel treePanel = TargetViabililtyTreePanel.createTargetViabilityIndicatorPoolPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject());
+		PlanningTreePropertiesPanel propertiesPanel = new PlanningTreePropertiesPanel(mainWindowToUse, ORef.INVALID, treePanel.getTree());
+		
+		return new TargetViabilityTreeManagementPanel(mainWindowToUse, treePanel, propertiesPanel);
 	}
 	
 	public String getSplitterDescription()
