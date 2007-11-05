@@ -67,7 +67,8 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		if (!tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 			return data;
 		
-		return ((Indicator)getObject()).getThreshold().get(Integer.toString(column - getFirstIndexOfThreshold()));
+		int threasholdColumn = column - getFirstIndexOfThreshold();
+		return indicator.getThreshold().get(Integer.toString(threasholdColumn));
 	}
 	
 	public int getFirstIndexOfThreshold()
