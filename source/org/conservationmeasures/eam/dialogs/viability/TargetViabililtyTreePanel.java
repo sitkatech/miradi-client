@@ -30,7 +30,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
 	}
 
-	public static TargetViabililtyTreePanel createTargetViabilityIndicatorPoolPanel(MainWindow mainWindowToUse, ORef factorRef, Project projectToUse) throws Exception
+	public static TargetViabililtyTreePanel createFactorIndicatorPanel(MainWindow mainWindowToUse, ORef factorRef, Project projectToUse) throws Exception
 	{
 		ViabilityTreeModel model = new ViabilityTreeModel(new FactorTreeTableNode(projectToUse, factorRef));
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model, buttonActions);

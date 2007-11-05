@@ -42,7 +42,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	
 	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
 	{
-		super(mainWindowToUse, TargetViabililtyTreePanel.createTargetViabilityIndicatorPoolPanel(EAM.getMainWindow(), factorRef, mainWindowToUse.getProject()),
+		super(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(EAM.getMainWindow(), factorRef, mainWindowToUse.getProject()),
 				new DirectIndicatorPropertiesPanel(mainWindowToUse.getProject(), ORef.INVALID));
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;
 		icon = new IndicatorIcon();
@@ -59,7 +59,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	
 	public static TargetViabilityTreeManagementPanel createTargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
 	{
-		TargetViabililtyTreePanel treePanel = TargetViabililtyTreePanel.createTargetViabilityIndicatorPoolPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject());
+		TargetViabililtyTreePanel treePanel = TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject());
 		PlanningTreePropertiesPanel propertiesPanel = new PlanningTreePropertiesPanel(mainWindowToUse, ORef.INVALID, treePanel.getTree());
 		
 		return new TargetViabilityTreeManagementPanel(mainWindowToUse, treePanel, propertiesPanel);
