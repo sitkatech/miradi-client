@@ -67,8 +67,18 @@ public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
 		if (!tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 			return data;
 		
-		final int FIRST_TWO_COLUM_COUNT = 2;
-		return ((Indicator)getObject()).getThreshold().get(Integer.toString(column - FIRST_TWO_COLUM_COUNT));
+		return ((Indicator)getObject()).getThreshold().get(Integer.toString(column - getFirstIndexOfThreshold()));
+	}
+	
+	public int getFirstIndexOfThreshold()
+	{
+		for (int index = -1; index < COLUMN_TAGS.length - 1; ++index)
+		{
+			if (COLUMN_TAGS[index + 1].equals(Indicator.TAG_INDICATOR_THRESHOLD))
+				return index;
+		}
+		
+		throw new RuntimeException("Could not find Threshold in array.");
 	}
 
 	public void rebuild() throws Exception
