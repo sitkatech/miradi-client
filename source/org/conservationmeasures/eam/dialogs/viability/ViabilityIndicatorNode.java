@@ -67,16 +67,16 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		if (!tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 			return data;
 		
-		int threasholdColumn = column - getFirstIndexOfThreshold();
+		int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
 		return indicator.getThreshold().get(Integer.toString(threasholdColumn));
 	}
 	
 	public int getFirstIndexOfThreshold()
 	{
-		for (int index = -1; index < COLUMN_TAGS.length - 1; ++index)
+		for (int i = 0; i < COLUMN_TAGS.length; ++i)
 		{
-			if (COLUMN_TAGS[index + 1].equals(Indicator.TAG_INDICATOR_THRESHOLD))
-				return index;
+			if (COLUMN_TAGS[i].equals(Indicator.TAG_INDICATOR_THRESHOLD))
+				return i;
 		}
 		
 		throw new RuntimeException("Could not find Threshold in array.");
