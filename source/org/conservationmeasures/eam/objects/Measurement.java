@@ -97,7 +97,7 @@ public class Measurement extends BaseObject
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
 
-	public static final String PSEUDO_TAG_MEASUREMENT_FIELDS = "PseudoMeasurementFields";
+	public static final String META_COLUMN_TAG = "MetaColumnTag";
 
 	private ChoiceData trend;
 	private ChoiceData status;
