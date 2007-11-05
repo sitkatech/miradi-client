@@ -42,8 +42,8 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 			columnsToShow.removeCode(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
 		
-		if (columnsToShow.contains(Measurement.PSEUDO_TAG_MEASUREMENT_FIELDS))
-			columnsToShow.removeCode(Measurement.PSEUDO_TAG_MEASUREMENT_FIELDS);
+		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
+			columnsToShow.removeCode(Measurement.META_COLUMN_TAG);
 		
 		if (columnsToShow.contains(Indicator.TAG_FUTURE_STATUS_SUMMARY))
 			columnsToShow.removeCode(Indicator.TAG_FUTURE_STATUS_SUMMARY);

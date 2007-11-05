@@ -279,7 +279,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		{
 			mainPanel.add(annualTotalsScrollPane);
 		}
-		if (columnsToShow.contains(Measurement.PSEUDO_TAG_MEASUREMENT_FIELDS))
+		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			mainPanel.add(measurementScrollPane);
 		}
