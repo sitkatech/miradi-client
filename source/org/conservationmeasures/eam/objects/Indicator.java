@@ -343,6 +343,7 @@ public class Indicator extends BaseObject
 	
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
+	public static final String META_COLUMN_TAG = "IndicatorMetaColumnTag"; 
 	public static final String OBJECT_NAME = "Indicator";
 
 	private StringData shortLabel;
