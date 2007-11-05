@@ -30,9 +30,11 @@ import org.martus.util.UnicodeReader;
 
 public class EAM
 {
+	// NOTE: This MUST be the first thing in the class so it is initialized first!
+	private static MiradiLogger logger = new MiradiLogger();
+
 	public static boolean initialize()
 	{
-		logger = new MiradiLogger();
 		if(!EAM.handleEamToMiradiMigration())
 			return false;
 		
@@ -409,7 +411,6 @@ public class EAM
 	public static int STANDARD_SCROLL_INCREMENT = 12;
 
 	public static String NEWLINE = System.getProperty("line.separator");
-	private static MiradiLogger logger;
 	private static MainWindow mainWindow;
 	public static String PROJECT_EXTENSION = ".eam";
 	public static final Color READONLY_BACKGROUND_COLOR = Color.LIGHT_GRAY;
