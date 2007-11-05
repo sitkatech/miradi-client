@@ -5,24 +5,13 @@
 */ 
 package org.conservationmeasures.eam.icons;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 
-public class MeasurementIcon extends AbstractMiradiIcon
+public class MeasurementIcon extends MiradiResourceImageIcon
 {
-	public void paintIcon(Component c, Graphics g, int x, int y)
+	public MeasurementIcon()
 	{
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-
-		g.setColor(MEASUREMENT_COLOR);
-		g.drawOval(x + getIconWidth()/4, y + getIconHeight()/4, getIconWidth()/2, getIconHeight()/2);
-		g.fillOval(x + getIconWidth()/4, y + getIconHeight()/4, getIconWidth()/2, getIconHeight()/2);
+		super("icons/icon_ruler.png");
 	}
 
-	public static final Color MEASUREMENT_COLOR = Color.PINK;
 }
