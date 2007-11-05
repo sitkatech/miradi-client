@@ -249,6 +249,8 @@ public class ObjectManager
 			default:
 			{
 				EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
+				if(pool == null)
+					throw new RuntimeException("No pool for " + objectType);
 				BaseObject created = pool.createObject(this, objectId, extraInfo);
 				getDatabase().writeObject(created);
 				createdId = created.getId();
