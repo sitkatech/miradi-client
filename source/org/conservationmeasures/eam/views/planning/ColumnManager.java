@@ -38,7 +38,7 @@ public class ColumnManager
 		masterColumnList.add(BaseObject.PSEUDO_TAG_BUDGET_TOTAL);
 		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
 		masterColumnList.add(Measurement.META_COLUMN_TAG);
-		masterColumnList.add(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		masterColumnList.add(Indicator.META_COLUMN_TAG);
 			
 		return masterColumnList;
 	}

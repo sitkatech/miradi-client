@@ -45,8 +45,8 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 			columnsToShow.removeCode(Measurement.META_COLUMN_TAG);
 		
-		if (columnsToShow.contains(Indicator.TAG_FUTURE_STATUS_SUMMARY))
-			columnsToShow.removeCode(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
+			columnsToShow.removeCode(Indicator.META_COLUMN_TAG);
 	}
 
 	public int getColumnCount()

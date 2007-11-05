@@ -283,7 +283,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		{
 			mainPanel.add(measurementScrollPane);
 		}
-		if (columnsToShow.contains(Indicator.TAG_FUTURE_STATUS_SUMMARY))
+		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
 			mainPanel.add(futureStatusScrollPane);
 		}
