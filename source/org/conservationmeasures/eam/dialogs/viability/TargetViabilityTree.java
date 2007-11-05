@@ -65,11 +65,10 @@ public class TargetViabilityTree extends TreeTableWithColumnWidthSaving
 			super(treeTableToUse);
 		}
 
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean arg2, boolean arg3, int row, int tableColumn)
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean arg3, int row, int tableColumn)
 		{
-			Component renderer = super.getTableCellRendererComponent(table, value, arg2, arg3, row, tableColumn);
-			String columnTag = getColumnTag(tableColumn);
-			Color color = getBackgroundColor(columnTag);
+			Component renderer = super.getTableCellRendererComponent(table, value, isSelected, arg3, row, tableColumn);
+			Color color = renderer.getBackground();
 			if(value != null && ((String)value).trim().length() > 0)
 			{
 				ChoiceItem choice = getViabilityModel().getValueColumnChoice(getColumnTag(tableColumn));
