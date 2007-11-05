@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 
-public class KeyEcologicalAttributeIndicatorNode extends TreeTableNode
+public class ViabilityIndicatorNode extends TreeTableNode
 {
-	public KeyEcologicalAttributeIndicatorNode(Project projectToUse, TreeTableNode parent, Indicator indicatorToUse) throws Exception
+	public ViabilityIndicatorNode(Project projectToUse, TreeTableNode parent, Indicator indicatorToUse) throws Exception
 	{
 		project = projectToUse;
 		indicator = indicatorToUse;

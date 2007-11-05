@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeIndicatorNode;
+import org.conservationmeasures.eam.dialogs.viability.ViabilityIndicatorNode;
 import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -30,11 +30,11 @@ public class DeleteKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcolog
 		if(!isAvailable())
 			return;
 	
-		KeyEcologicalAttributeIndicatorNode selectedIndicatorNode = (KeyEcologicalAttributeIndicatorNode)getSelectedTreeNodes()[0];
+		ViabilityIndicatorNode selectedIndicatorNode = (ViabilityIndicatorNode)getSelectedTreeNodes()[0];
 		deleteIndicator(getProject(), selectedIndicatorNode);
 	}
 
-	public static void deleteIndicator(Project project, KeyEcologicalAttributeIndicatorNode selectedIndicatorNode) throws CommandFailedException
+	public static void deleteIndicator(Project project, ViabilityIndicatorNode selectedIndicatorNode) throws CommandFailedException
 	{
 
 		project.executeCommand(new CommandBeginTransaction());
@@ -54,7 +54,7 @@ public class DeleteKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcolog
 		}
 	}
 
-	public static Command[] createDeleteCommands(Project project, KeyEcologicalAttributeIndicatorNode selectedIndicatorNode) throws Exception
+	public static Command[] createDeleteCommands(Project project, ViabilityIndicatorNode selectedIndicatorNode) throws Exception
 	{
 		KeyEcologicalAttributeNode  keaNode = (KeyEcologicalAttributeNode)selectedIndicatorNode.getParentNode();
 		BaseObject thisAnnotation = project.findObject(ObjectType.INDICATOR, selectedIndicatorNode.getObject().getId());

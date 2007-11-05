@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.dialogs.diagram;
 
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
-import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeIndicatorNode;
+import org.conservationmeasures.eam.dialogs.viability.ViabilityIndicatorNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -71,15 +71,15 @@ public class FactorTreeTableNode extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		ORefList indicatorRefs = factor.getIndicatorRefs();
-		indicators = new KeyEcologicalAttributeIndicatorNode[indicatorRefs.size()];
+		indicators = new ViabilityIndicatorNode[indicatorRefs.size()];
 		for (int i = 0; i < indicatorRefs.size(); ++i)
 		{
 			Indicator thisIndicator = (Indicator) project.findObject(indicatorRefs.get(i));
-			indicators[i] = new KeyEcologicalAttributeIndicatorNode(project, this, thisIndicator);
+			indicators[i] = new ViabilityIndicatorNode(project, this, thisIndicator);
 		}
 	}
 	
-	private KeyEcologicalAttributeIndicatorNode[] indicators;
+	private ViabilityIndicatorNode[] indicators;
 	private Project project;
 	private Factor factor;
 }

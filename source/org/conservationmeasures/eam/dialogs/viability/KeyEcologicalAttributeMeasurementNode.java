@@ -8,7 +8,7 @@ import org.conservationmeasures.eam.questions.StatusQuestion;
 
 public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 {
-	public KeyEcologicalAttributeMeasurementNode(KeyEcologicalAttributeIndicatorNode parent, Measurement measurementToUse)
+	public KeyEcologicalAttributeMeasurementNode(ViabilityIndicatorNode parent, Measurement measurementToUse)
 	{
 		measurement = measurementToUse;
 		parentNode = parent;
@@ -92,5 +92,5 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 												Measurement.TAG_STATUS_CONFIDENCE};
 	
 	private Measurement measurement;
-	private KeyEcologicalAttributeIndicatorNode parentNode;	
+	private ViabilityIndicatorNode parentNode;	
 }

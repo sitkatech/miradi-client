@@ -5,7 +5,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeIndicatorNode;
+import org.conservationmeasures.eam.dialogs.viability.ViabilityIndicatorNode;
 import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeMeasurementNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -42,7 +42,7 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 		try
 		{
 			Measurement measurement = (Measurement) measurementNode.getObject();
-			KeyEcologicalAttributeIndicatorNode indicatorNode = (KeyEcologicalAttributeIndicatorNode) measurementNode.getParentNode();
+			ViabilityIndicatorNode indicatorNode = (ViabilityIndicatorNode) measurementNode.getParentNode();
 			Indicator indicator = (Indicator) indicatorNode.getObject();
 			CommandSetObjectData removeMeasurement = CommandSetObjectData.createRemoveORefCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementNode.getObjectReference());
 			getProject().executeCommand(removeMeasurement);
