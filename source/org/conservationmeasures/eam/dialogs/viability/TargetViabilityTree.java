@@ -16,6 +16,8 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableCellRendererWith
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
+import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
@@ -46,8 +48,13 @@ public class TargetViabilityTree extends TreeTableWithColumnWidthSaving
 		TreeTableNode node = (TreeTableNode)getObjectForRow(row);
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		String columnTag = getViabilityModel().getColumnTag(modelColumn);
-		if(node.getType() == Measurement.getObjectType() && getViabilityModel().isValueColumn(columnTag))
+		boolean isMeasurementNode = node.getType() == Measurement.getObjectType();
+		boolean isIndicatorNode = node.getType() == Indicator.getObjectType();
+		boolean isFutureStatusNode = node.getType() == Goal.getObjectType() && node.getObject().getType() == Indicator.getObjectType();
+		boolean isValueColumn = getViabilityModel().isValueColumn(columnTag);
+		if((isMeasurementNode || isIndicatorNode || isFutureStatusNode) && isValueColumn)
 			return measurementValueRenderer;
+			
 		return otherRenderer;
 	}
 
