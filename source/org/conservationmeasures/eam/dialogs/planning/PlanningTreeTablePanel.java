@@ -31,6 +31,8 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalTableModel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalsTable;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewFutureStatusTable;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewFutureStatusTableModel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTable;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTableModel;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
@@ -70,7 +72,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
 		
-		mainPanel = new JPanel(new BasicGridLayout(1, 3));
+		mainPanel = new JPanel(new BasicGridLayout(1, 4));
 		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
 		mainPanel.add(treeTableScrollPane, BorderLayout.CENTER);
 		mainScrollPane = new FastScrollPane(mainPanel);
@@ -85,6 +87,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		
 		measurementScrollPane = new FastScrollPane(measurementTable);
 		rebuildSyncedTable(treeToUse, measurementScrollPane, measurementTable);
+		
+		futureStatusScrollPane = new FastScrollPane(futureStatusTable);
+		rebuildSyncedTable(treeToUse, futureStatusScrollPane, futureStatusTable);
+		
 		rebuildEntireTreeTable();
 	}
 
@@ -99,6 +105,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTableModelAdapter);
 		measurementTable = new PlanningViewMeasurementTable(measurementModel);
 		new ModelUpdater(treeTableModelAdapter, measurementModel);
+		
+		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeTableModelAdapter);
+		futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel);
+		new ModelUpdater(treeTableModelAdapter, futureStatusModel);
 	}
 	
 	private void turnOffVerticalHorizontalScrolling(FastScrollPane scrollPaneToUse)
@@ -253,6 +263,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		getPlanningModel().rebuildEntireTree();
 		annualTotalsModel.fireTableDataChanged();
 		measurementModel.fireTableDataChanged();
+		futureStatusModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
@@ -266,12 +277,15 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
-			
 			mainPanel.add(annualTotalsScrollPane);
 		}
 		if (columnsToShow.contains(Measurement.PSEUDO_TAG_MEASUREMENT_FIELDS))
 		{
 			mainPanel.add(measurementScrollPane);
+		}
+		if (columnsToShow.contains(Indicator.TAG_FUTURE_STATUS_SUMMARY))
+		{
+			mainPanel.add(futureStatusScrollPane);
 		}
 		
 		validate();
@@ -316,8 +330,11 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private PlanningViewMeasurementTable measurementTable;
 	private PlanningViewMeasurementTableModel measurementModel;
+	private PlanningViewFutureStatusTable futureStatusTable;
+	private PlanningViewFutureStatusTableModel futureStatusModel;
 	private FastScrollPane annualTotalsScrollPane;
 	private FastScrollPane measurementScrollPane;
+	private FastScrollPane futureStatusScrollPane;
 	private FastScrollPane mainScrollPane;
 }
 
