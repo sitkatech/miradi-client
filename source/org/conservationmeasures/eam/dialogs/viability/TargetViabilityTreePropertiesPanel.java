@@ -29,8 +29,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		targetViabilityFutureStatusPropertiesPanel = new TargetViabilityFutureStatusPropertiesPanel(projectToUse, actions);
 		mainPropertiesPanel.add(targetViabilityKeaPropertiesPanel);
 		mainPropertiesPanel.add(targetViabilityIndicatorPropertiesPanel);
-		mainPropertiesPanel.add(targetViabilityMeasurementPropertiesPanel);
 		mainPropertiesPanel.add(targetViabilityFutureStatusPropertiesPanel);
+		mainPropertiesPanel.add(targetViabilityMeasurementPropertiesPanel);
 
 		addFieldComponent(mainPropertiesPanel);
 		updateFieldsFromProject();
