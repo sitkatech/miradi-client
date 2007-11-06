@@ -41,8 +41,8 @@ public class TargetViabilityFutureStatusPropertiesPanel extends ObjectDataInputP
 
 		JPanel box8 = createGridLayoutPanel(1,5);
 		addBoldedTextBorder(box8, "Future Status");
-		box8.add(createColumnJPanel(futureStatusRating));
 		box8.add(createColumnJPanel(futureStatusDate));
+		box8.add(createColumnJPanel(futureStatusRating));
 		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box8.add(createColumnJPanelWithIcon(futureStatusSummary, new GoalIcon()));
 		box8.add(createColumnJPanel(futureStatusDetail));

@@ -44,8 +44,8 @@ public class TargetViabilityMeasurementPropertiesPanel extends ObjectDataInputPa
 		ObjectDataInputField measureementStatusConfidence = addField(createChoiceField(ObjectType.MEASUREMENT,  new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
 	
 		JPanel box5 = createGridLayoutPanel(1,5);
-		box5.add(createColumnJPanel(measurementStatus));
 		box5.add(createColumnJPanel(measurementDate));
+		box5.add(createColumnJPanel(measurementStatus));
 		box5.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box5.add(createColumnJPanelWithIcon(measurementSummary,new IndicatorIcon()));
 		box5.add(createColumnJPanel(measurementDetail));
