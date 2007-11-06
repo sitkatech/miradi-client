@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Measurement;
@@ -56,7 +57,7 @@ public class TargetViabilityMeasurementPropertiesPanel extends ObjectDataInputPa
 		box6.add(add(createColumnJPanel(measureementStatusConfidence)));
 		
 		JPanel mainPanel = createGridLayoutPanel(2, 1);
-		addBoldedTextBorder(mainPanel, "CS");
+		addBoldedTextBorder(mainPanel, EAM.text("Current Status"));
 		mainPanel.add(box5);
 		mainPanel.add(box6);
 		mainPropertiesPanel.add(mainPanel);		

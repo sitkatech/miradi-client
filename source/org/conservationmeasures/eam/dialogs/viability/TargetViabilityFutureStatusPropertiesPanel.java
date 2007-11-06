@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -40,7 +41,7 @@ public class TargetViabilityFutureStatusPropertiesPanel extends ObjectDataInputP
 		ObjectDataInputField futureStatusDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DETAIL,NARROW_DETAILS));
 
 		JPanel box8 = createGridLayoutPanel(1,5);
-		addBoldedTextBorder(box8, "Future Status");
+		addBoldedTextBorder(box8, EAM.text("Future Status"));
 		box8.add(createColumnJPanel(futureStatusDate));
 		box8.add(createColumnJPanel(futureStatusRating));
 		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
