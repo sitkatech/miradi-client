@@ -44,7 +44,7 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		if (shouldDeleteFromParentOnly())
 			return;
 		
-		DeleteActivity.deleteTask(getProject(), selectedTaskToDelete.findObjectThatReferToUs(), selectedTaskToDelete);
+		DeleteActivity.deleteTask(getProject(), selectedTaskToDelete.findObjectsThatReferToUs(), selectedTaskToDelete);
 	}
 
 	private void possiblyDeleteFromParentOnly(Task selectedTaskToDelete) throws CommandFailedException
@@ -58,7 +58,7 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 	private boolean shouldDeleteFromParentOnly()
 	{
 		Task selectedTask = (Task) getSingleSelectedObject();
-		ORefList referrers = selectedTask.findObjectThatReferToUs();
+		ORefList referrers = selectedTask.findObjectsThatReferToUs();
 		ORefList selectionHierarchy = getSelectionHierarchy();
 		for (int i = 0; i < selectionHierarchy.size(); ++i)
 		{

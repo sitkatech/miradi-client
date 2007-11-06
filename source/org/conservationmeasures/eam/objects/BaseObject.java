@@ -588,8 +588,7 @@ abstract public class BaseObject
 		return null;
 	}
 
-	//TODO rename this to findObjectsThatReferToUs
-	public ORefList findObjectThatReferToUs()
+	public ORefList findObjectsThatReferToUs()
 	{
 		ORefList owners = new ORefList();
 		int[] objectTypes = getTypesThatCanReferToUs(getType());
@@ -626,7 +625,7 @@ abstract public class BaseObject
 	
 	public boolean hasReferrers()
 	{
-		ORefList referrers = findObjectThatReferToUs();
+		ORefList referrers = findObjectsThatReferToUs();
 		if (referrers.size() > 0)
 			return true;
 
