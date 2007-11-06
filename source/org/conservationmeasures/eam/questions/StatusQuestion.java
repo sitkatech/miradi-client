@@ -25,7 +25,7 @@ public class StatusQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static ChoiceItem getChoiceItem(String intAsString)
+	public static ChoiceItem getChoiceItemFromCodeAsString(String intAsString)
 	{
 		try
 		{
