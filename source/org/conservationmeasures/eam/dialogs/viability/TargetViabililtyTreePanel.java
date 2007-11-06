@@ -38,23 +38,23 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 	
 	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, ViabilityTreeModel model)
 	{
-		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
+		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(projectToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
 	}
 	
 	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, ViabilityTreeModel model, Class[] buttonActionsToUse)
 	{
-		TargetViabilityTree tree = new TargetViabilityTree(projectToUse, model);
+		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(projectToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, tree, model, buttonActionsToUse);
 	}
 
-	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTree treeToUse, GenericTreeTableModel modelToUse)
+	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTreeTable treeToUse, GenericTreeTableModel modelToUse)
 	{
 		super(mainWindowToUse, projectToUse, treeToUse);
 		model = modelToUse;
 	}
 	
-	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, TargetViabilityTree treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActionsToUse)
+	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, TargetViabilityTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActionsToUse)
 	{
 		super(mainWindowToUse, treeToUse, buttonActionsToUse);
 		model = modelToUse;
