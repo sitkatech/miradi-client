@@ -588,6 +588,7 @@ abstract public class BaseObject
 		return null;
 	}
 
+	//TODO rename this to findObjectsThatReferToUs
 	public ORefList findObjectThatReferToUs()
 	{
 		ORefList owners = new ORefList();
