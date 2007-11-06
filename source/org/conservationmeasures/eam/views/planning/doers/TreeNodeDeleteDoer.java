@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.planning.doers;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
@@ -29,8 +30,43 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 			return;
 		
 		BaseObject selected = getSingleSelectedObject();
-		if(selected.getType() == Task.getObjectType())
-			DeleteActivity.deleteTask(getProject(), getSelectionHierarchy(), (Task)selected);
+		if(selected.getType() != Task.getObjectType())
+			return;
+		
+		
+		possiblyDeleteFromParentOnly((Task) selected);
+		possiblyDeleteFromAllParents((Task) selected);
+			
+	}
+	
+	private void possiblyDeleteFromAllParents(Task selectedTaskToDelete) throws CommandFailedException
+	{
+		if (shouldDeleteFromParentOnly())
+			return;
+		
+		DeleteActivity.deleteTask(getProject(), selectedTaskToDelete.findObjectThatReferToUs(), selectedTaskToDelete);
+	}
+
+	private void possiblyDeleteFromParentOnly(Task selectedTaskToDelete) throws CommandFailedException
+	{
+		if (!shouldDeleteFromParentOnly())
+			return;
+		
+		DeleteActivity.deleteTask(getProject(), getSelectionHierarchy(), selectedTaskToDelete);
+	}
+
+	private boolean shouldDeleteFromParentOnly()
+	{
+		Task selectedTask = (Task) getSingleSelectedObject();
+		ORefList referrers = selectedTask.findObjectThatReferToUs();
+		ORefList selectionHierarchy = getSelectionHierarchy();
+		for (int i = 0; i < selectionHierarchy.size(); ++i)
+		{
+			if (referrers.contains(selectionHierarchy.get(i)))
+				return true;
+		}
+		
+		return false;
 	}
 
 }
