@@ -53,7 +53,7 @@ public class DeleteActivity extends ObjectsDoer
 		dialogText.add(EAM.text("This will delete any subtasks too. Are you sure you want to delete?"));
 		boolean containsMoreThanOneParent = possibleParents.getOverlappingRefs(selectedTask.findObjectsThatReferToUs()).size() > 1;
 		if (containsMoreThanOneParent)
-			dialogText.add(EAM.text("Deleting this will also remove it from all parents."));
+			dialogText.add(EAM.text("This item is shared, so will be deleted from multiple places."));
 		
 		String[] buttons = {EAM.text("Button|Delete"), EAM.text("Button|Retain"), };
 		if(!EAM.confirmDialog(EAM.text("Title|Delete"), (String[]) dialogText.toArray(new String[0]), buttons))
