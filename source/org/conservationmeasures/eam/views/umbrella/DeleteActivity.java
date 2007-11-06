@@ -44,16 +44,32 @@ public class DeleteActivity extends ObjectsDoer
 			return;
 	
 		Task selectedTask = (Task)getObjects()[0];
-		deleteTask(getProject(), getSelectionHierarchy(), selectedTask);
+		deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), selectedTask);
 	}
 
-	public static void deleteTask(Project project, ORefList selectionHierarchy, Task selectedTask) throws CommandFailedException
+	public static void deleteTaskWithUserConfirmation(Project project, ORefList selectionHierarchy, Task selectedTask) throws CommandFailedException
+	{
+		String[] confirmText = {EAM.text("This will delete any subtasks too. Are you sure you want to delete?")};
+		deleteTask(project, selectionHierarchy, selectedTask, confirmText);
+	}
+	
+	public static void deleteTaskFromAllParentsWithUserConfirmation(Project project, ORefList selectionHierarchy, Task selectedTask) throws CommandFailedException
+	{
+		String[] confirmText = {EAM.text("This will delete from all parents as well as it will delete any subtasks too. Are you sure you want to delete?")};
+		deleteTask(project, selectionHierarchy, selectedTask, confirmText);
+	}
+	
+	private static void deleteTask(Project project, ORefList selectionHierarchy, Task selectedTask, String confirmationText[]) throws CommandFailedException
 	{
 		String[] buttons = {EAM.text("Button|Delete"), EAM.text("Button|Retain"), };
-		String[] confirmText = {EAM.text("This will delete any subtasks too. Are you sure you want to delete?")};
-		if(!EAM.confirmDialog(EAM.text("Title|Delete"), confirmText, buttons))
+		if(!EAM.confirmDialog(EAM.text("Title|Delete"), confirmationText, buttons))
 			return;
 		
+		deleteTask(project, selectionHierarchy, selectedTask);
+	}
+	
+	private static void deleteTask(Project project, ORefList selectionHierarchy, Task selectedTask) throws CommandFailedException
+	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
