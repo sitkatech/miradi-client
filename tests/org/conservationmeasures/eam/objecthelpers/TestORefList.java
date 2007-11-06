@@ -75,4 +75,17 @@ public class TestORefList extends EAMTestCase
 		orefList1.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
 		assertTrue("does not contain ref from other list?", orefList1.containsAnyOf(orefList2));
 	}
+	
+	public void testGetOverlappingRefs()
+	{
+		ORefList orefList1 = new ORefList();
+		orefList1.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
+		
+		ORefList orefList2 = new ORefList();
+		assertEquals("has overlapping refs?", 0, orefList1.getOverlappingRefs(orefList2).size());
+		
+		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(4)));
+		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
+		assertEquals("has overlapping refs?", 1, orefList1.getOverlappingRefs(orefList2).size());
+	}
 }
