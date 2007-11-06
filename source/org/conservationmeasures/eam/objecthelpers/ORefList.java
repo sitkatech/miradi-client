@@ -149,6 +149,17 @@ public class ORefList
 		return data.contains(objectRef);
 	}
 	
+	public boolean containsAnyOf(ORefList otherList)
+	{
+		for (int i = 0; i < data.size(); ++i)
+		{
+			if (otherList.contains((ORef) data.get(i)))
+				return true;
+		}
+		
+		return false;
+	}
+	
 	public int find(ORef oref)
 	{
 	  for (int i=0; i<data.size(); ++i)

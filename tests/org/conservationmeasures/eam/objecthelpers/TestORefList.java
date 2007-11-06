@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestORefList extends EAMTestCase
@@ -58,5 +59,20 @@ public class TestORefList extends EAMTestCase
 		assertTrue(goalList.contains(objectRef1));
 		assertTrue(goalList.contains(objectRef2));
 		assertFalse(goalList.contains(objectRef3));
+	}
+	
+	public void testContainsAnyOf() 
+	{
+		ORefList orefList1 = new ORefList();
+		ORefList orefList2 = new ORefList();
+		assertFalse("contains refs from other list?", orefList1.containsAnyOf(orefList2));
+		assertFalse("contains refs from other list?", orefList2.containsAnyOf(orefList1));
+		
+		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(4)));
+		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
+		assertFalse("contains refs from other list?", orefList1.containsAnyOf(orefList2));
+		
+		orefList1.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
+		assertTrue("does not contain ref from other list?", orefList1.containsAnyOf(orefList2));
 	}
 }
