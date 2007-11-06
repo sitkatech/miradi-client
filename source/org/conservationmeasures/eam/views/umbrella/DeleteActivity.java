@@ -50,11 +50,11 @@ public class DeleteActivity extends ObjectsDoer
 	public static void deleteTaskWithUserConfirmation(Project project, ORefList possibleParents, Task selectedTask) throws CommandFailedException
 	{
 		Vector dialogText = new Vector();
-		dialogText.add(EAM.text("All subtasks within this item will be removed as well."));
 		boolean containsMoreThanOneParent = possibleParents.getOverlappingRefs(selectedTask.findObjectsThatReferToUs()).size() > 1;
 		if (containsMoreThanOneParent)
 			dialogText.add(EAM.text("This item is shared, so will be deleted from multiple places."));
 		
+		dialogText.add(EAM.text("All subtasks within this item will be removed as well."));
 		String[] buttons = {EAM.text("Button|Delete"), EAM.text("Button|Retain"), };
 		if(!EAM.confirmDialog(EAM.text("Title|Delete"), (String[]) dialogText.toArray(new String[0]), buttons))
 			return;
