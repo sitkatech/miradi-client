@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 
 public class ViabilityIndicatorNode extends TreeTableNode
 {
@@ -64,6 +65,9 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	{
 		String tag = COLUMN_TAGS[column];
 		String data = getObject().getData(tag);
+		if (tag.equals(Measurement.TAG_STATUS))
+			return StatusQuestion.getChoiceItem(data).getLabel();
+		
 		if (!tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 			return data;
 		
