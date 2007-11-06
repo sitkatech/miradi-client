@@ -37,7 +37,7 @@ public class DeleteResource extends ObjectsDoer
 		ProjectResource resource = (ProjectResource)getObjects()[0];
 		BaseId idToRemove = resource.getId();
 		Vector dialogText = new Vector();
-		ORefList allThatUseThisResource = resource.findObjectThatReferToUs();
+		ORefList allThatUseThisResource = resource.findObjectsThatReferToUs();
 
 		//TODO fix dialog text
 		if (allThatUseThisResource.size() > 0)

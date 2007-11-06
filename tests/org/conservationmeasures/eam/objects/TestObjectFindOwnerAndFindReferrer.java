@@ -289,7 +289,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		assertEquals(referrer.getObjectId(), foundReferrers1.get(0).getObjectId());
 
 		BaseObject referredObject =  project.getObjectManager().findObject(referred);
-		ORefList foundReferrers2 = referredObject.findObjectThatReferToUs();
+		ORefList foundReferrers2 = referredObject.findObjectsThatReferToUs();
 		assertContains(referrer, foundReferrers2.toArray());
 	}	
 	

@@ -201,7 +201,7 @@ public class Task extends BaseObject
 	
 	public boolean isShared()
 	{
-		return findObjectThatReferToUs().size() > 1;
+		return findObjectsThatReferToUs().size() > 1;
 	}
 
 	public void addSubtaskId(BaseId subtaskId)
