@@ -151,13 +151,20 @@ public class ORefList
 	
 	public boolean containsAnyOf(ORefList otherList)
 	{
+		return getOverlappingRefs(otherList).size() > 0;
+	}
+	
+	public ORefList getOverlappingRefs(ORefList otherList)
+	{
+		ORefList overlappingRefs = new ORefList();
 		for (int i = 0; i < data.size(); ++i)
 		{
-			if (otherList.contains((ORef) data.get(i)))
-				return true;
+			ORef thisRef = (ORef) data.get(i);
+			if (otherList.contains(thisRef))
+				overlappingRefs.add((ORef) data.get(i));
 		}
 		
-		return false;
+		return overlappingRefs;		
 	}
 	
 	public int find(ORef oref)

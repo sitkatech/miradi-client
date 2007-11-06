@@ -37,19 +37,14 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		if (shouldDeleteFromParentOnly(selectedTaskToDelete))
 			DeleteActivity.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), selectedTaskToDelete);
 		else
-			DeleteActivity.deleteTaskFromAllParentsWithUserConfirmation(getProject(), selectedTaskToDelete.findObjectsThatReferToUs(), selectedTaskToDelete);
+			DeleteActivity.deleteTaskWithUserConfirmation(getProject(), selectedTaskToDelete.findObjectsThatReferToUs(), selectedTaskToDelete);
 	}
 	
 	private boolean shouldDeleteFromParentOnly(Task selectedTaskToDelete)
 	{
 		ORefList referrers = selectedTaskToDelete.findObjectsThatReferToUs();
 		ORefList selectionHierarchy = getSelectionHierarchy();
-		for (int i = 0; i < selectionHierarchy.size(); ++i)
-		{
-			if (referrers.contains(selectionHierarchy.get(i)))
-				return true;
-		}
 		
-		return false;
+		return selectionHierarchy.containsAnyOf(referrers);
 	}
 }
