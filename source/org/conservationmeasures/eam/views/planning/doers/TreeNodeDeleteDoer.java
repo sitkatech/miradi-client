@@ -33,32 +33,29 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		if(selected.getType() != Task.getObjectType())
 			return;
 		
-		
-		possiblyDeleteFromParentOnly((Task) selected);
 		possiblyDeleteFromAllParents((Task) selected);
-			
+		possiblyDeleteFromParentOnly((Task) selected);
 	}
 	
 	private void possiblyDeleteFromAllParents(Task selectedTaskToDelete) throws CommandFailedException
 	{
-		if (shouldDeleteFromParentOnly())
+		if (shouldDeleteFromParentOnly(selectedTaskToDelete))
 			return;
 		
-		DeleteActivity.deleteTask(getProject(), selectedTaskToDelete.findObjectsThatReferToUs(), selectedTaskToDelete);
+		DeleteActivity.deleteTaskFromAllParentsWithUserConfirmation(getProject(), selectedTaskToDelete.findObjectsThatReferToUs(), selectedTaskToDelete);
 	}
 
 	private void possiblyDeleteFromParentOnly(Task selectedTaskToDelete) throws CommandFailedException
 	{
-		if (!shouldDeleteFromParentOnly())
+		if (!shouldDeleteFromParentOnly(selectedTaskToDelete))
 			return;
 		
-		DeleteActivity.deleteTask(getProject(), getSelectionHierarchy(), selectedTaskToDelete);
+		DeleteActivity.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), selectedTaskToDelete);
 	}
 
-	private boolean shouldDeleteFromParentOnly()
+	private boolean shouldDeleteFromParentOnly(Task selectedTaskToDelete)
 	{
-		Task selectedTask = (Task) getSingleSelectedObject();
-		ORefList referrers = selectedTask.findObjectsThatReferToUs();
+		ORefList referrers = selectedTaskToDelete.findObjectsThatReferToUs();
 		ORefList selectionHierarchy = getSelectionHierarchy();
 		for (int i = 0; i < selectionHierarchy.size(); ++i)
 		{
@@ -68,5 +65,4 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		
 		return false;
 	}
-
 }
