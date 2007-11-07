@@ -65,6 +65,5 @@ public class ViabilityTreeModel extends GenericTreeTableModel
 										 KeyEcologicalAttributeMeasurementNode.VERY_GOOD,
 										 Measurement.TAG_STATUS_CONFIDENCE,};
 
-	StatusQuestion statusQuestion;
-
+	private StatusQuestion statusQuestion;
 }
