@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.EAM;
@@ -25,7 +24,6 @@ public class Undo extends ProjectDoer
 		if(!isAvailable())
 			return;
 
-		ObjectDataInputField.saveFocusedFieldPendingEdits();
 		undo(getProject());
 	}
 
