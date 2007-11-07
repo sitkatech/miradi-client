@@ -11,6 +11,7 @@ import java.util.EventObject;
 
 import javax.swing.Icon;
 
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -74,6 +75,8 @@ public abstract class MainWindowAction extends EAMAction
 		
 		try
 		{
+			ObjectDataInputField.saveFocusedFieldPendingEdits();
+			
 			getDoer().doIt(event);
 			getMainWindow().updateActionStates();
 		}
