@@ -25,23 +25,9 @@ public class StatusQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static ChoiceItem getChoiceItemFromCodeAsString(String intAsString)
-	{
-		try
-		{
-			int parsed = Integer.parseInt(intAsString);
-			return getStatuses()[parsed];
-		}
-		catch (Exception e)
-		{
-			return getStatuses()[0];
-		}
-	}
-	
 	public static final String UNSPECIFIED = "";
 	public static final String POOR = "1";
 	public static final String FAIR = "2";
 	public static final String GOOD = "3";
 	public static final String VERY_GOOD = "4";
-
 }
