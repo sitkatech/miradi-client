@@ -509,6 +509,7 @@ abstract public class DiagramPaster
 	private int[] getResultsChainPastableTypes()
 	{
 		return new int[] {
+				ObjectType.THREAT_REDUCTION_RESULT,
 				ObjectType.INTERMEDIATE_RESULT, 
 				ObjectType.STRATEGY, 
 				ObjectType.TARGET, 
