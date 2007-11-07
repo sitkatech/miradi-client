@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectChainObject;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -899,6 +900,11 @@ abstract public class BaseObject
 		public String get()
 		{
 			return  question.findChoiceByCode(getPseudoData(question.getTag())).getLabel();
+		}
+		
+		public ChoiceItem getChoiceItem()
+		{
+			return question.findChoiceByCode(getPseudoData(question.getTag()));
 		}
 
 		public boolean equals(Object rawOther)

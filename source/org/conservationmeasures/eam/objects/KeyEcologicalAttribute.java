@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.TNCViabilityFormula;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -141,6 +142,11 @@ public class KeyEcologicalAttribute extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_VIABILITY_STATUS))
 			return computeTNCViability();
 		return super.getPseudoData(fieldTag);
+	}
+	
+	public ChoiceItem getViabilityStatusValue()
+	{
+		return viabilityStatusValue.getChoiceItem();
 	}
 	
 	public String computeTNCViability()

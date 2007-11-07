@@ -128,6 +128,10 @@ public class Target extends Factor
 		return list;
 	}
 	
+	public ChoiceItem getPseudoTargetViabilityChoiceItem()
+	{
+		return targetViabilityLabel.getChoiceItem();
+	}
 	
 	public String getBasicTargetStatus()
 	{

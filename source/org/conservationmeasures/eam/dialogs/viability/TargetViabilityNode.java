@@ -57,6 +57,9 @@ public class TargetViabilityNode extends TreeTableNode
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
+		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE))
+			return target.getPseudoTargetViabilityChoiceItem();
+		
 		return target.getData(tag);
 	}
 

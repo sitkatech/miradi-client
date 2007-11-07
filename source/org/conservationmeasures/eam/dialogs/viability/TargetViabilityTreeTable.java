@@ -18,7 +18,9 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthS
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Measurement;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 
@@ -33,6 +35,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		
 		measurementValueRenderer = new MeasurementValueRenderer(this);
 		otherRenderer = new TreeTableCellRendererWithColor(this);
+		statusQuestionRenderer = new ChoiceItemRenderer(this);
 		rebuildTableCompletely();
 	}
 	
@@ -54,10 +57,39 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		boolean isValueColumn = getViabilityModel().isValueColumn(columnTag);
 		if((isMeasurementNode || isIndicatorNode || isFutureStatusNode) && isValueColumn)
 			return measurementValueRenderer;
-			
+		
+		boolean isChoiceItemColumn = columnTag == Indicator.TAG_STATUS || 
+									 columnTag == Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE || 
+									 columnTag == KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS_VALUE || 
+									 columnTag == Measurement.TAG_STATUS;
+		if (isChoiceItemColumn)
+			return statusQuestionRenderer;
+		
 		return otherRenderer;
 	}
 
+	class ChoiceItemRenderer extends TreeTableCellRendererWithColor
+	{
+		public ChoiceItemRenderer(TreeTableWithIcons treeTableToUse)
+		{
+			super(treeTableToUse);
+		}
+		
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
+		{
+			Component renderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+			String columnTag = getColumnTag(tableColumn);
+			Color color = getBackgroundColor(columnTag);
+			if(value != null && !value.equals(""))
+				color = ((ChoiceItem) value).getColor();
+
+			renderer.setBackground(color);
+			if(isSelected)
+				renderer.setBackground(table.getSelectionBackground());
+			return renderer;
+		}
+	}
+	
 	class MeasurementValueRenderer extends TreeTableCellRendererWithColor
 	{
 		public MeasurementValueRenderer(TreeTableWithIcons treeTableToUse)
@@ -94,6 +126,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 	
 	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 
-	TableCellRenderer measurementValueRenderer;
-	TreeTableCellRendererWithColor otherRenderer;
+	private TableCellRenderer measurementValueRenderer;
+	private TreeTableCellRendererWithColor otherRenderer;
+	private ChoiceItemRenderer statusQuestionRenderer;
 }
