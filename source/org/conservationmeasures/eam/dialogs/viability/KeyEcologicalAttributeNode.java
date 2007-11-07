@@ -53,6 +53,9 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
+		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS_VALUE))
+			return kea.getViabilityStatusValue();
+		
 		return kea.getData(tag);
 	}
 

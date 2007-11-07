@@ -66,7 +66,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		String tag = COLUMN_TAGS[column];
 		String data = getObject().getData(tag);
 		if (tag.equals(Measurement.TAG_STATUS))
-			return StatusQuestion.getChoiceItemFromCodeAsString(data).getLabel();
+			return StatusQuestion.getChoiceItemFromCodeAsString(data);
 		
 		if (!tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 			return data;
