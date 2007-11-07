@@ -76,9 +76,9 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 			super(treeTableToUse);
 		}
 
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean arg2, boolean arg3, int row, int tableColumn)
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 		{
-			Component renderer = super.getTableCellRendererComponent(table, value, arg2, arg3, row, tableColumn);
+			Component renderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 			String columnTag = getColumnTag(tableColumn);
 			Color color = getBackgroundColor(columnTag);
 			if(value != null && ((String)value).trim().length() > 0)
@@ -87,6 +87,9 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 				color = choice.getColor();
 			}
 			renderer.setBackground(color);
+			if (isSelected)
+				setBackground(table.getSelectionBackground());
+			
 			return renderer;
 		}
 	}
