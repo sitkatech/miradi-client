@@ -12,6 +12,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.conservationmeasures.eam.dialogs.treetables.ChoiceItemRenderer;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableCellRendererWithColor;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
@@ -68,28 +69,6 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		return otherRenderer;
 	}
 
-	class ChoiceItemRenderer extends TreeTableCellRendererWithColor
-	{
-		public ChoiceItemRenderer(TreeTableWithIcons treeTableToUse)
-		{
-			super(treeTableToUse);
-		}
-		
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
-		{
-			Component renderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-			String columnTag = getColumnTag(tableColumn);
-			Color color = getBackgroundColor(columnTag);
-			if(value != null && !value.equals(""))
-				color = ((ChoiceItem) value).getColor();
-
-			renderer.setBackground(color);
-			if(isSelected)
-				renderer.setBackground(table.getSelectionBackground());
-			return renderer;
-		}
-	}
-	
 	class MeasurementValueRenderer extends TreeTableCellRendererWithColor
 	{
 		public MeasurementValueRenderer(TreeTableWithIcons treeTableToUse)
@@ -110,10 +89,9 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 			renderer.setBackground(color);
 			return renderer;
 		}
-		
 	}
 	
-	private String getColumnTag(int tableColumn)
+	public String getColumnTag(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		return getViabilityModel().getColumnTag(modelColumn);
