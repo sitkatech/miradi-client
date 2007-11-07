@@ -70,7 +70,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		throw new Exception("Can't call rebuild on " + getClass().getCanonicalName());
 	}
-
+	
 	public String toString()
 	{
 		return getObject().getLabel();
@@ -196,6 +196,22 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		}
 	}
 	
+	public double calculateAllocationPercentage(Task task)
+	{
+		ORefList referrers = task.findObjectsThatReferToUs();
+		return (1.0 / referrers.size());
+	}
+	
+	protected void createAndAddTaskNodes(ORefList taskRefs) throws Exception
+	{
+		for(int i = 0; i < taskRefs.size(); ++i)
+		{
+			ORef taskRef = taskRefs.get(i);
+			Task task = (Task) project.findObject(taskRef);
+			children.add(new PlanningTreeTaskNode(project, taskRef, calculateAllocationPercentage(task)));
+		}
+	}
+	
 	protected void createAndAddChildren(ORefList refsToAdd, DiagramObject diagram) throws Exception
 	{
 		for(int i = 0; i < refsToAdd.size(); ++i)
@@ -228,8 +244,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeStrategyNode(project, refToAdd);
 		if(type == Indicator.getObjectType())
 			return new PlanningTreeIndicatorNode(project, refToAdd);
-		if(type == Task.getObjectType())
-			return new PlanningTreeTaskNode(project, refToAdd);
 		if (type == Measurement.getObjectType())
 			return new PlanningTreeMeasurementNode(project, refToAdd);
 		
