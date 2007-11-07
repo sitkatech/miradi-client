@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -80,6 +81,15 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalTaskCost;
 	}
 
+	public double getProportionalizedTotalTaskCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
+	{
+		totalCost = 0.0;
+		calculateTotalAssignment((Task) baseObject, dateRange);
+		totalCost = totalCost * costAllocationPercentage;
+		
+		return totalCost;
+	}
+	
 	public double getTotalCost(Task task, DateRange dateRange) throws Exception
 	{
 		totalCost = 0.0;
@@ -123,46 +133,56 @@ public class PlanniningViewBudgetTotalsCalculator
 		}
 	}
 	
-	private double computeTotalOfChildTasks(ORef parentRef, String tasksTag, DateRange dateRange) throws Exception
+	private double computeTotalOfChildTasks(BaseObject baseObject, String tasksTag, DateRange dateRange) throws Exception
 	{
-		BaseObject parentOfTasks = project.findObject(parentRef);
-		IdList taskIds = new IdList(parentOfTasks.getData(tasksTag));
+		IdList taskIds = new IdList(baseObject.getData(tasksTag));
 		ORefList taskRefs = new ORefList(Task.getObjectType(), taskIds);
 		double totalParentCost = 0.0;
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task task = (Task) project.findObject(taskRefs.get(i));
 			double taskTotalCost = getTotalCost(task, dateRange);
-			double allocationFraction = getAllocationFraction(parentRef, task);
+			double allocationFraction = getAllocationFraction(baseObject.getRef(), task);
 			totalParentCost += (taskTotalCost * allocationFraction);	
 		}
 		
 		return totalParentCost;
 	}
-
+	
 	private double getAllocationFraction(ORef parentRef, Task task)
 	{
 		ORefList allReferrers = task.findObjectsThatReferToUs(parentRef.getObjectType());
 		return (1.0 / allReferrers.size());
 	}
 	
-	public double calculateTotalCost(ORef ref, DateRange dateRange) throws Exception
+	public double calculateTotalCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
-		if (ref.getObjectType() == ObjectType.INDICATOR)
-			return computeTotalOfChildTasks(ref, Indicator.TAG_TASK_IDS, dateRange);
+		if (baseObject.getType() == ObjectType.INDICATOR)
+			return computeTotalOfChildTasks(baseObject, Indicator.TAG_TASK_IDS, dateRange);
 
-		if (ref.getObjectType() == ObjectType.STRATEGY)
-			return computeTotalOfChildTasks(ref, Strategy.TAG_ACTIVITY_IDS, dateRange);
+		if (baseObject.getType() == ObjectType.STRATEGY)
+			return computeTotalOfChildTasks(baseObject, Strategy.TAG_ACTIVITY_IDS, dateRange);
 
-		if (ref.getObjectType() == ObjectType.TASK)
-			return getTotalCost((Task)project.findObject(ref), dateRange);
+		if (baseObject.getType() == ObjectType.TASK)
+			return getProportionalizedTotalTaskCost(baseObject, dateRange, costAllocationPercentage);
 		
 		return  0.0;		
 	}
 	
+	public double calculateTotalCost(ORef ref, DateRange dateRange) throws Exception
+	{
+		double calculatedCostAllocationPercentage = 1;
+		BaseObject foundObject = project.findObject(ref);
+		return calculateTotalCost(foundObject, dateRange, calculatedCostAllocationPercentage);
+	}
+	
 	public double calculateTotalCost(TreeTableNode node, DateRange dateRange) throws Exception
 	{
-		return calculateTotalCost(node.getObjectReference(), dateRange);
+		double costAllocationPercentage = 1;
+		if (node.getType() == Task.getObjectType())
+			costAllocationPercentage = ((PlanningTreeTaskNode) node).getCostAllocationPercentage();
+			
+		return calculateTotalCost(node.getObject(), dateRange, costAllocationPercentage);
 	}
 	
 	private void calculateTotalAssignment(Task task, DateRange dateRangeToUse) throws Exception

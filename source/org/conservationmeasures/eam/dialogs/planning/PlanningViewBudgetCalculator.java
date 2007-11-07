@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.planning;
 import java.text.DecimalFormat;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
@@ -30,20 +31,26 @@ public class PlanningViewBudgetCalculator
 		combinedDataRange = DateRange.combine(startDateRange, endDateRange);
 	}
 	
-	public double getTotal(ORef ref) throws Exception
-	{
-       return totalCalculator.calculateTotalCost(ref, combinedDataRange);
-	}
-	
 	public String getBudgetTotals(ORef ref) throws Exception
 	{
-		double total = getTotal(ref);
+		double total = totalCalculator.calculateTotalCost(ref, combinedDataRange);
+		return format(total);
+	}
+
+	public String getBudgetTotals(TreeTableNode node) throws Exception
+	{
+		double total = totalCalculator.calculateTotalCost(node, combinedDataRange);
+		return format(total);
+	}
+	
+	private String format(double total)
+	{
 		if (total == 0)
 			return "";
 			
 		return currencyFormatter.format(total);
 	}
-	
+		
 	private DecimalFormat currencyFormatter;
 	private DateRange combinedDataRange;
 	private Vector yearlyDateRanges;

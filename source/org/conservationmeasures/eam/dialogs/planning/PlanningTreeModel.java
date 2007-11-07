@@ -74,10 +74,26 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		if (! baseObject.doesFieldExist(columnTag))
 			return "";
 		
+		if (baseObject.getType() == Task.getObjectType() && columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
+			return getTaskBudgetTotal(treeNode);
+		
 		if (baseObject.isPseudoField(columnTag))
 			return baseObject.getPseudoData(columnTag);
 			
 		return baseObject.getData(columnTag);
+	}
+
+	private Object getTaskBudgetTotal(TreeTableNode treeNode)
+	{
+		try
+		{
+			return new PlanningViewBudgetCalculator(project).getBudgetTotals(treeNode);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 	
 	public CodeList getColumnTags()

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
@@ -21,7 +22,8 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 	
 	public void rebuild() throws Exception
 	{
-		createAndAddChildren(strategy.getActivities(), null);
+		ORefList activityRefs = strategy.getActivities();
+		createAndAddTaskNodes(activityRefs);
 	}
 
 	public BaseObject getObject()
