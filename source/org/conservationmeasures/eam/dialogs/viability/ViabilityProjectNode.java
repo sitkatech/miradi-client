@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusQuestion;
@@ -53,7 +54,7 @@ public class ViabilityProjectNode extends TreeTableNode
 
 	public Object getValueAt(int column)
 	{
-		if (ViabilityTreeModel.columnTags[column].equals("Status"))
+		if (ViabilityTreeModel.columnTags[column].equals(Indicator.TAG_STATUS))
 		{
 			String code = Target.computeTNCViability(project);
 			return statusQuestion.findChoiceByCode(code);
