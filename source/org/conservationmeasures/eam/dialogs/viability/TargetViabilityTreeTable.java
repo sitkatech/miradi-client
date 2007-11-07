@@ -86,7 +86,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 			String columnTag = getColumnTag(tableColumn);
 			Color color = getBackgroundColor(columnTag);
 			renderer.setIcon(null);
-			if(value != null && ((String)value).trim().length() > 0)
+			if(value != null && !value.equals(""))
 			{
 				ChoiceItem choice = getViabilityModel().getValueColumnChoice(getColumnTag(tableColumn));
 				color = choice.getColor();
