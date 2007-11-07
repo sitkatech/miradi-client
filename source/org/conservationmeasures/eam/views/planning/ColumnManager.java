@@ -6,6 +6,7 @@ import org.conservationmeasures.eam.dialogs.planning.WorkPlanRowColumnProvider;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -13,7 +14,9 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.CodeList;
 
@@ -135,6 +138,32 @@ public class ColumnManager
 	
 		return new CodeList(list);		
 	}
+	
+	private static CodeList getTargetColumns()
+	{
+		String[] list = {
+				Target.TAG_TARGET_STATUS,
+				Target.PSEUDO_TAG_BUDGET_TOTAL,
+				};
+		return new CodeList(list);		
+	}
+
+	private static CodeList getDirectThreatsColumns()
+	{
+		String[] list = {
+				Cause.TAG_TAXONOMY_CODE,
+				Cause.PSEUDO_TAG_BUDGET_TOTAL
+				};
+		return new CodeList(list);		
+	}
+
+	private static CodeList getThreatReductionResultColumns()
+	{
+		String[] list = {
+				ThreatReductionResult.PSEUDO_TAG_BUDGET_TOTAL,
+				};
+		return new CodeList(list);		
+	}
 
 	public static CodeList getVisibleColumnCodes(ViewData viewData)
 	{
@@ -202,6 +231,15 @@ public class ColumnManager
 		
 		if (propertyName.equals(Measurement.OBJECT_NAME))
 			return ColumnManager.getMeasurementColumns();
+		
+		if (propertyName.equals(Target.OBJECT_NAME))
+			return ColumnManager.getTargetColumns();
+		
+		if (propertyName.equals(Cause.OBJECT_NAME_THREAT))
+			return ColumnManager.getDirectThreatsColumns();
+		
+		if (propertyName.equals(ThreatReductionResult.OBJECT_NAME))
+			return ColumnManager.getThreatReductionResultColumns();
 		
 		EAM.logError("getVisibleColumnsForSingleType unknown choice: " + propertyName);
 		return new CodeList();

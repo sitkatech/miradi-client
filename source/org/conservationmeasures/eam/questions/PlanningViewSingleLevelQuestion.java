@@ -6,12 +6,15 @@
 package org.conservationmeasures.eam.questions;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 
 public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
 {
@@ -28,6 +31,9 @@ public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getSingleLevelChoices()
 	{
 		return new ChoiceItem[] {
+				new ChoiceItem(Target.OBJECT_NAME, EAM.text("Targets Only")),
+				new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threats Only")),
+				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, EAM.text("Threat Reduction Results Only")),
 				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")),
 				new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objectives Only")),
 				new ChoiceItem(Strategy.OBJECT_NAME, EAM.text("Strategies Only")),
