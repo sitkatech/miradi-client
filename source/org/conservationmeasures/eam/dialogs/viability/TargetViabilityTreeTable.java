@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.dialogs.viability;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
@@ -17,6 +19,7 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableCellRendererWith
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
+import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -24,6 +27,7 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.TrendQuestion;
 
 public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving 
 {
@@ -78,13 +82,15 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 		{
-			Component renderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+			JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 			String columnTag = getColumnTag(tableColumn);
 			Color color = getBackgroundColor(columnTag);
+			renderer.setIcon(null);
 			if(value != null && ((String)value).trim().length() > 0)
 			{
 				ChoiceItem choice = getViabilityModel().getValueColumnChoice(getColumnTag(tableColumn));
 				color = choice.getColor();
+				renderer.setIcon(getCellIcon(row, choice));
 			}
 			renderer.setBackground(color);
 			if (isSelected)
@@ -94,6 +100,27 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		}
 	}
 	
+	public Icon getCellIcon(int row, ChoiceItem choice)
+	{
+		TreeTableNode node = (TreeTableNode) getObjectForRow(row);
+		if (node.getType() == Goal.getObjectType())
+			return new GoalIcon();
+		
+		if (node.getType() != Measurement.getObjectType())
+			return null;
+		
+		String trendData = node.getObject().getData(Measurement.TAG_TREND);
+		return getTrendIcon(trendData);
+	}
+	
+	public Icon getTrendIcon(String measurementTrendCode)
+	{
+		TrendQuestion trendQuestion = new TrendQuestion(Measurement.TAG_TREND);
+		ChoiceItem findChoiceByCode = trendQuestion.findChoiceByCode(measurementTrendCode);
+		
+		return findChoiceByCode.getIcon();
+	}
+
 	public String getColumnTag(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
