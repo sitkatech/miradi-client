@@ -295,7 +295,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		private DefaultTreeCellRenderer strategyRenderer;
 		private DefaultTreeCellRenderer objectiveRenderer;
 		private DefaultTreeCellRenderer goalRenderer;
-		private DefaultTreeCellRenderer indicatorRenderer;
+		protected DefaultTreeCellRenderer indicatorRenderer;
 		private DefaultTreeCellRenderer activityRenderer;
 		private DefaultTreeCellRenderer methodRenderer;
 		private DefaultTreeCellRenderer taskRenderer;

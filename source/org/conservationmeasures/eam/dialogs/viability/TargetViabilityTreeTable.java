@@ -37,7 +37,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
+		getTree().setCellRenderer(new ViabilityTreeCellRenderer());
 		measurementValueRenderer = new MeasurementValueRenderer(this);
 		otherRenderer = new TreeTableCellRendererWithColor(this);
 		statusQuestionRenderer = new ChoiceItemRenderer(this);
@@ -99,6 +99,15 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 				setBackground(table.getSelectionBackground());
 			
 			return renderer;
+		}
+	}
+	
+	public class ViabilityTreeCellRenderer extends Renderer
+	{
+		public ViabilityTreeCellRenderer()
+		{
+			super();
+			indicatorRenderer.setFont(getPlainFont());
 		}
 	}
 	
