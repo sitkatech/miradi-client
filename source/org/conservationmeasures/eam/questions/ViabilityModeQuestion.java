@@ -15,8 +15,8 @@ public class ViabilityModeQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getViabilityModeChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Basic"),
-				new ChoiceItem("TNC", "Detailed"),
+				new ChoiceItem("", "Simple"),
+				new ChoiceItem("TNC", "Key Attribute"),
 		};
 	}
 	public static String TNC_STYLE_CODE = "TNC";
