@@ -73,17 +73,6 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:Label}]]></textFieldExpression>
 				</textField>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="12"
-						y="13"
-						width="402"
-						height="13"
-						key="MiradisDiagramReport-1"
-						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.StrategicPlanRelatedObectivesToThisGoalDataSource)$P{REPORT_DATA_SOURCE}).getStrategiesContainingObjectiveInChainDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "MiardisRelatedStrategyReport.jasper")]]></subreportExpression>
-				</subreport>
 			</band>
 		</detail>
 		<columnFooter>

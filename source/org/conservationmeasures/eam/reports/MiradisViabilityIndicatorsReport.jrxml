@@ -24,16 +24,10 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
-	<field name="Label:MeasurementDate" class="java.lang.String"/>
-	<field name="MeasurementDate" class="java.lang.String"/>
 	<field name="Label:ShortLabel" class="java.lang.String"/>
 	<field name="ShortLabel" class="java.lang.String"/>
 	<field name="Label:Strategies" class="java.lang.String"/>
 	<field name="Strategies" class="java.lang.String"/>
-	<field name="Label:MeasurementStatusValue" class="java.lang.String"/>
-	<field name="MeasurementStatusValue" class="java.lang.String"/>
-	<field name="Label:MeasurementDetail" class="java.lang.String"/>
-	<field name="MeasurementDetail" class="java.lang.String"/>
 	<field name="Label:Targets" class="java.lang.String"/>
 	<field name="Targets" class="java.lang.String"/>
 	<field name="Label:Label" class="java.lang.String"/>
@@ -46,16 +40,10 @@
 	<field name="RatingSourceValue" class="java.lang.String"/>
 	<field name="Label:PriorityValue" class="java.lang.String"/>
 	<field name="PriorityValue" class="java.lang.String"/>
-	<field name="Label:MeasurementTrendValue" class="java.lang.String"/>
-	<field name="MeasurementTrendValue" class="java.lang.String"/>
 	<field name="Label:Factor" class="java.lang.String"/>
 	<field name="Factor" class="java.lang.String"/>
 	<field name="Label:DirectThreats" class="java.lang.String"/>
 	<field name="DirectThreats" class="java.lang.String"/>
-	<field name="Label:MeasurementSummary" class="java.lang.String"/>
-	<field name="MeasurementSummary" class="java.lang.String"/>
-	<field name="Label:MeasurementStatusConfidenceValue" class="java.lang.String"/>
-	<field name="MeasurementStatusConfidenceValue" class="java.lang.String"/>
 	<field name="Label:FutureStatusRatingValue" class="java.lang.String"/>
 	<field name="FutureStatusRatingValue" class="java.lang.String"/>
 	<field name="Label:FutureStatusDate" class="java.lang.String"/>
@@ -110,20 +98,6 @@
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{FutureStatusRatingValue}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="170"
-						y="150"
-						width="150"
-						height="20"
-						key="MeasurementStatusConfidenceValue"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{MeasurementStatusConfidenceValue}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -184,34 +158,6 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="10"
-						y="20"
-						width="150"
-						height="20"
-						key="Label:MeasurementDate"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:MeasurementDate}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="170"
-						y="20"
-						width="150"
-						height="20"
-						key="MeasurementDate"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{MeasurementDate}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="10"
 						y="30"
 						width="150"
 						height="20"
@@ -264,62 +210,6 @@
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Strategies}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="10"
-						y="50"
-						width="150"
-						height="20"
-						key="Label:MeasurementStatusValue"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:MeasurementStatusValue}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="170"
-						y="50"
-						width="150"
-						height="20"
-						key="MeasurementStatusValue"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{MeasurementStatusValue}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="10"
-						y="60"
-						width="150"
-						height="20"
-						key="Label:MeasurementDetail"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:MeasurementDetail}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="170"
-						y="60"
-						width="150"
-						height="20"
-						key="MeasurementDetail"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{MeasurementDetail}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -492,34 +382,6 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="10"
-						y="120"
-						width="150"
-						height="20"
-						key="Label:MeasurementTrendValue"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:MeasurementTrendValue}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="170"
-						y="120"
-						width="150"
-						height="20"
-						key="MeasurementTrendValue"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{MeasurementTrendValue}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="10"
 						y="130"
 						width="150"
 						height="20"
@@ -572,20 +434,6 @@
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DirectThreats}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="10"
-						y="155"
-						width="150"
-						height="13"
-						key="Label:MeasurementStatusConfidenceValue"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label:MeasurementStatusConfidenceValue}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement

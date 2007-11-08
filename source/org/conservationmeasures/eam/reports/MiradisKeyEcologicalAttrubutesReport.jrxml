@@ -185,7 +185,7 @@
 						height="17"
 						key="subreport-1"
 						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.KeyEcologicalAttrubutesDataSource)$P{REPORT_DATA_SOURCE}).getViabilityIndicatorsDataSource()]]></dataSourceExpression>
+					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.KeyEcologicalAttributesDataSource)$P{REPORT_DATA_SOURCE}).getViabilityIndicatorsDataSource()]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisViabilityIndicatorsReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
