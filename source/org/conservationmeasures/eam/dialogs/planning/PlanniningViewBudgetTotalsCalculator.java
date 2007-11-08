@@ -169,9 +169,8 @@ public class PlanniningViewBudgetTotalsCalculator
 	
 	public double calculateTotalCost(ORef ref, DateRange dateRange) throws Exception
 	{
-		double calculatedCostAllocationPercentage = 1;
 		BaseObject foundObject = project.findObject(ref);
-		return calculateTotalCost(foundObject, dateRange, calculatedCostAllocationPercentage);
+		return calculateTotalCost(foundObject, dateRange, 1.0);
 	}
 		
 	private void calculateTotalAssignment(Task task, DateRange dateRangeToUse) throws Exception
