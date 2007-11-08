@@ -22,12 +22,12 @@ public class ActionShowSelectedChainMode extends ViewAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Show Selected Factor Chain");
+		return EAM.text("Action|Brainstorm Mode");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Show only the selected factor chain");
+		return EAM.text("TT|Isolate the selected factor chain in Brainstorm Mode");
 	}
 
 }
