@@ -9,8 +9,10 @@ import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsCalculator;
+import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
@@ -65,10 +67,14 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	{
 		try
 		{
+			TreeTableNode node = (TreeTableNode)rawNode;
+			if (node.getObject() == null)
+				return "";
+			
 			if (isCostColumn(column))
-				return getCost(rawNode);
+				return getCost(node);
 		
-			return getYearlyTotal(rawNode, column);
+			return getYearlyTotal(node, column);
 		}
 		catch (Exception e)
 		{
@@ -77,23 +83,27 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		}
 	}
 	
-	private Object getYearlyTotal(Object rawNode, int column) throws Exception
-	{
-		TreeTableNode node = (TreeTableNode)rawNode;
+	private Object getYearlyTotal(TreeTableNode node, int column) throws Exception
+	{	
 		DateRange dateRange = (DateRange)columnNames.get(column);
-        double yearlyTotal = totalCalculator.calculateTotalCost(node, dateRange);
-        
+        double yearlyTotal = totalCalculator.calculateTotalCost(node.getObject(), dateRange, getCostAllocationProportion(node));        
         if (yearlyTotal == 0)
         	return "";
         
 		return  currencyFormatter.format(yearlyTotal);
 	}
 
-	private Object getCost(Object rawNode) throws Exception
+	private double getCostAllocationProportion(TreeTableNode node)
 	{
-		TreeTableNode node = (TreeTableNode)rawNode;
-		double totalCost = totalCalculator.calculateTotalCost(node, combinedDataRange);
+		if (node.getType() != Task.getObjectType())
+			return 1.0;
 		
+		return ((PlanningTreeTaskNode) node).getCostAllocationProportion();
+	}
+
+	private Object getCost(TreeTableNode node) throws Exception
+	{
+		double totalCost = totalCalculator.calculateTotalCost(node.getObject(), combinedDataRange, getCostAllocationProportion(node));		
 		if (totalCost == 0)
         	return "";
         

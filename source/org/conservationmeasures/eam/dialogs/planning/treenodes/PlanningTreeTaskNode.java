@@ -17,11 +17,11 @@ import org.conservationmeasures.eam.views.planning.RowManager;
 public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 {
 
-	public PlanningTreeTaskNode(Project projectToUse, ORef taskRef, double costAllocationPercentageToUse) throws Exception
+	public PlanningTreeTaskNode(Project projectToUse, ORef taskRef, double costAllocationProportionToUse) throws Exception
 	{
 		super(projectToUse);
 		task = (Task)project.findObject(taskRef);
-		costAllocationPercentage = costAllocationPercentageToUse;
+		costAllocationProportion = costAllocationProportionToUse;
 		
 		rebuild();
 	}
@@ -38,7 +38,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		for(int i = 0; i < subtaskRefs.size(); ++i)
 		{
 			ORef taskRef = subtaskRefs.get(i);
-			children.add(new PlanningTreeTaskNode(project, taskRef, getCostAllocationPercentage()));
+			children.add(new PlanningTreeTaskNode(project, taskRef, getCostAllocationProportion()));
 		}
 	}
 
@@ -47,9 +47,9 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		return task;
 	}
 	
-	public double getCostAllocationPercentage()
+	public double getCostAllocationProportion()
 	{
-		return costAllocationPercentage;
+		return costAllocationProportion;
 	}
 	
 	boolean shouldSortChildren()
@@ -58,5 +58,5 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	}
 
 	private Task task;
-	private double costAllocationPercentage;
+	private double costAllocationProportion;
 }

@@ -196,7 +196,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		}
 	}
 	
-	public double calculateAllocationPercentage(Task task)
+	public double calculateAllocationProportion(Task task)
 	{
 		ORefList referrers = task.findObjectsThatReferToUs();
 		return (1.0 / referrers.size());
@@ -208,7 +208,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		{
 			ORef taskRef = taskRefs.get(i);
 			Task task = (Task) project.findObject(taskRef);
-			children.add(new PlanningTreeTaskNode(project, taskRef, calculateAllocationPercentage(task)));
+			children.add(new PlanningTreeTaskNode(project, taskRef, calculateAllocationProportion(task)));
 		}
 	}
 	

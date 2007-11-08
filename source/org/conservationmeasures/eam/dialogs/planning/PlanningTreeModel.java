@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.planning;
 
 import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeRootNode;
+import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.GenericTreeTableModel;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
@@ -75,7 +76,7 @@ public class PlanningTreeModel extends GenericTreeTableModel
 			return "";
 		
 		if (baseObject.getType() == Task.getObjectType() && columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
-			return getTaskBudgetTotal(treeNode);
+			return getTaskBudgetTotal((PlanningTreeTaskNode) treeNode);
 		
 		if (baseObject.isPseudoField(columnTag))
 			return baseObject.getPseudoData(columnTag);
@@ -83,11 +84,11 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		return baseObject.getData(columnTag);
 	}
 
-	private Object getTaskBudgetTotal(TreeTableNode treeNode)
+	private Object getTaskBudgetTotal(PlanningTreeTaskNode taskNode)
 	{
 		try
 		{
-			return new PlanningViewBudgetCalculator(project).getBudgetTotals(treeNode);
+			return new PlanningViewBudgetCalculator(project).getBudgetTotals(taskNode.getObject(), taskNode.getCostAllocationProportion());
 		}
 		catch(Exception e)
 		{

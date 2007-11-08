@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.dialogs.planning;
 import java.text.DecimalFormat;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
@@ -37,9 +37,9 @@ public class PlanningViewBudgetCalculator
 		return format(total);
 	}
 
-	public String getBudgetTotals(TreeTableNode node) throws Exception
+	public String getBudgetTotals(BaseObject baseObject, double costAllocationProportion) throws Exception
 	{
-		double total = totalCalculator.calculateTotalCost(node, combinedDataRange);
+		double total = totalCalculator.calculateTotalCost(baseObject, combinedDataRange, costAllocationProportion);
 		return format(total);
 	}
 	
