@@ -10,15 +10,19 @@ package org.conservationmeasures.eam.dialogs.treetables;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons.Renderer;
 import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 
 public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
@@ -39,13 +43,21 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 		if (model.getColumnTag(column).equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		
-		setFont(PlanningTreeTable.getSharedTaskFont(((TreeTableNode) treeTable.getObjectForRow(row))));
+		setFont(getRowFont(row));
 		setGrid();
-		
 		if (isSelected)
 			setBackground(table.getSelectionBackground());
 		
 		return component;
+	}
+
+	protected Font getRowFont(int row)
+	{
+		TreeTableNode objectForRow = (TreeTableNode) treeTable.getObjectForRow(row);
+		if (objectForRow.getType() == Target.getObjectType() || objectForRow.getType() == ObjectType.FAKE)
+			return Renderer.getBoldFont();
+		
+		return PlanningTreeTable.getSharedTaskFont((objectForRow));
 	}
 
 	private void setGrid()
@@ -70,5 +82,5 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 		return Color.white;
 	}
 
-	TreeTableWithIcons treeTable;
+	protected TreeTableWithIcons treeTable;
 }
