@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
-public class ViabilityIndicatorNode extends TreeTableNode
+public class ViabilityIndicatorNode extends ViabilityTreeTableNode
 {
 	public ViabilityIndicatorNode(Project projectToUse, TreeTableNode parent, Indicator indicatorToUse) throws Exception
 	{
@@ -102,6 +102,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	
 	public static final String[] COLUMN_TAGS = {
 		Indicator.TAG_LABEL,
+		Indicator.TAG_EMPTY,
 		Measurement.TAG_STATUS, 
 		Indicator.TAG_EMPTY,
 		

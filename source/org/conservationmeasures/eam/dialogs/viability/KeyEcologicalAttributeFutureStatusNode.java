@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
-public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
+public class KeyEcologicalAttributeFutureStatusNode extends ViabilityTreeTableNode
 {
 	public KeyEcologicalAttributeFutureStatusNode(TreeTableNode parentNodeToUse) throws Exception
 	{
@@ -80,6 +80,7 @@ public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 	}
 	
 	public static final String[] COLUMN_TAGS = {
+		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY, 
 		Goal.TAG_EMPTY,

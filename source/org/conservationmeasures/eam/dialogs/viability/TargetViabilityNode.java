@@ -13,14 +13,14 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 
-public class TargetViabilityNode extends TreeTableNode
+public class TargetViabilityNode extends ViabilityTreeTableNode
 {
 	public TargetViabilityNode(Project projectToUse, FactorId targetId) throws Exception
 	{
@@ -57,18 +57,20 @@ public class TargetViabilityNode extends TreeTableNode
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
+		String rawValue = target.getData(tag);
+
+		if(tag.equals(Target.TAG_VIABILITY_MODE))
+			return new ViabilityModeQuestion(tag).findChoiceByCode(rawValue);
+		
 		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE))
 			return target.getPseudoTargetViabilityChoiceItem();
 		
-		return target.getData(tag);
+		return rawValue;
 	}
 
 	public String toString()
 	{
-		String label = target.getLabel();
-		if (!target.isViabilityModeTNC())
-			label = label + EAM.text(" (Basic Method)");
-		return label;
+		return target.getLabel();
 	}
 	
 	public BaseId getId()
@@ -104,6 +106,7 @@ public class TargetViabilityNode extends TreeTableNode
 	
 	public static final String[] COLUMN_TAGS = {
 		Target.TAG_EMPTY, 
+		Target.TAG_VIABILITY_MODE, 
 		Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE, 
 		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,
