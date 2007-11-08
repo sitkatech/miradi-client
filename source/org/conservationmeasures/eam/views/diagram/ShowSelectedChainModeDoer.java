@@ -18,9 +18,12 @@ import org.conservationmeasures.eam.dialogs.diagram.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -107,23 +110,33 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 
 	private FactorCell[] getOrphanedDraftStrategies(Project project, DiagramView view, DiagramComponent diagram)
 	{
-		Vector diagramFactors = new Vector();
+		Vector factorCells = new Vector();
 		DiagramModel model = view.getDiagramModel();
 		Factor[] factors = project.getStrategyPool().getDraftStrategies();
 		for (int i=0; i<factors.length; ++i)
 		{
-			FactorCell diagramFactor = model.getFactorCellByWrappedId(factors[i].getFactorId());
-			if (model.getFactorLinks(diagramFactor).size() > 0) 
+			FactorCell factorCell = model.getFactorCellByWrappedId(factors[i].getFactorId());			
+			if (model.getFactorLinks(factorCell).size() > 0 && !isDraft(factorCell.getWrappedORef())) 
 				continue;
 			
-			if (diagramFactor ==  null)
+			if (factorCell == null)
 				continue;
 			
-			diagramFactors.add(diagramFactor);
+			factorCells.add(factorCell);
 		}
-		return (FactorCell[])diagramFactors.toArray(new FactorCell[0]);
+		return (FactorCell[])factorCells.toArray(new FactorCell[0]);
 	}
 	
+	private boolean isDraft(ORef wrappedRef)
+	{
+		BaseObject baseObject = getProject().findObject(wrappedRef);
+		if (baseObject.getType() != Strategy.getObjectType())
+			return false;
+		
+		Strategy strategy = (Strategy) baseObject;
+		return strategy.isStatusDraft();
+	}
+
 	private BaseId getCurrentViewId() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
