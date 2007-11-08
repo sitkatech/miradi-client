@@ -101,28 +101,6 @@
 						positionType="Float"
 						isPrintWhenDetailOverflows="true"/>
 				</break>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="38"
-						y="101"
-						width="402"
-						height="12"
-						key="MiradisStrategicPlanReport"
-						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getStrategicPlanDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisStrategicPlanReport.jasper")]]></subreportExpression>
-				</subreport>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="38"
-						y="133"
-						width="402"
-						height="12"
-						key="MiradisMonitoringPlanReport"
-						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getMonitoringPlanDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisMonitoringPlanReport.jasper")]]></subreportExpression>
-				</subreport>
 				<break>
 					<reportElement
 						x="0"
@@ -143,17 +121,6 @@
 						positionType="Float"
 						isPrintWhenDetailOverflows="true"/>
 				</break>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="38"
-						y="167"
-						width="402"
-						height="12"
-						key="MiradisBudgetReport"
-						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((org.conservationmeasures.eam.reports.MiradiDataSource)$P{REPORT_DATA_SOURCE}).getBudgetPlanDataSource()]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.EAM.getResourceURL(org.conservationmeasures.eam.reports.MiradiReport.class, "MiradisBudgetPlanReport.jasper")]]></subreportExpression>
-				</subreport>
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="38"
