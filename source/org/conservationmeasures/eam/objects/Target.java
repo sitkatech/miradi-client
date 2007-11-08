@@ -140,7 +140,12 @@ public class Target extends Factor
 	
 	public boolean isViabilityModeTNC()
 	{
-		return viabiltyMode.get().equals(ViabilityModeQuestion.TNC_STYLE_CODE);
+		return getViabilityMode().equals(ViabilityModeQuestion.TNC_STYLE_CODE);
+	}
+
+	public String getViabilityMode()
+	{
+		return viabiltyMode.get();
 	}
 	
 	public ChoiceItem[] getKeyEcologicalAttributesTypes()
