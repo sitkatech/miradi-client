@@ -63,10 +63,12 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		if((isMeasurementNode || isIndicatorNode || isFutureStatusNode) && isValueColumn)
 			return measurementValueRenderer;
 		
-		boolean isChoiceItemColumn = columnTag == Indicator.TAG_STATUS || 
-									 columnTag == Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE || 
-									 columnTag == KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS_VALUE || 
-									 columnTag == Measurement.TAG_STATUS;
+		boolean isChoiceItemColumn =
+			columnTag == Target.TAG_VIABILITY_MODE || 
+			columnTag == Indicator.TAG_STATUS || 
+			columnTag == Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE || 
+			columnTag == KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS_VALUE || 
+			columnTag == Measurement.TAG_STATUS_CONFIDENCE;
 		if (isChoiceItemColumn)
 			return statusQuestionRenderer;
 		

@@ -4,9 +4,11 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Measurement;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
-public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
+public class KeyEcologicalAttributeMeasurementNode extends ViabilityTreeTableNode
 {
 	public KeyEcologicalAttributeMeasurementNode(ViabilityIndicatorNode parent, Measurement measurementToUse)
 	{
@@ -68,7 +70,11 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 			return summaryData;
 		
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
-			return getObject().getData(Measurement.TAG_STATUS_CONFIDENCE);
+		{
+			String rawValue = getObject().getData(tag);
+			ChoiceItem choiceItem = new StatusConfidenceQuestion(tag).findChoiceByCode(rawValue);
+			return choiceItem;
+		}
 		
 		return "";
 	}
@@ -83,6 +89,7 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	public static final String VERY_GOOD = StatusQuestion.VERY_GOOD;
 	
 	public static final String[] COLUMN_TAGS = {Measurement.TAG_EMPTY,
+												Measurement.TAG_EMPTY, 
 												Measurement.TAG_EMPTY, 
 												Measurement.TAG_EMPTY,
 												POOR,

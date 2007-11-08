@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Measurement;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
@@ -43,6 +44,10 @@ public class ViabilityTreeModel extends GenericTreeTableModel
 	
 	private int getObjectTypeForColumnLabel(String tag)
 	{
+		if(tag.equals(Target.TAG_VIABILITY_MODE))
+			return Target.getObjectType();
+		else if(tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
+			return Measurement.getObjectType();
 		return KeyEcologicalAttribute.getObjectType();
 	}
 	
@@ -57,6 +62,7 @@ public class ViabilityTreeModel extends GenericTreeTableModel
 	}
 
 	public static String[] columnTags = {DEFAULT_COLUMN, 
+										 Target.TAG_VIABILITY_MODE,
 										 Indicator.TAG_STATUS, 
 										 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 										 KeyEcologicalAttributeMeasurementNode.POOR,

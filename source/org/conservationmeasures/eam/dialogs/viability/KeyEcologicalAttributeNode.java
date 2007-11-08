@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 
-public class KeyEcologicalAttributeNode extends TreeTableNode
+public class KeyEcologicalAttributeNode extends ViabilityTreeTableNode
 {
 	public KeyEcologicalAttributeNode(Project projectToUse, KeyEcologicalAttribute keaToUse) throws Exception
 	{
@@ -85,6 +85,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 	
 	public static final String[] COLUMN_TAGS = {
 		KeyEcologicalAttribute.TAG_LABEL, 
+		KeyEcologicalAttribute.TAG_EMPTY,
 		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS_VALUE, 
 		KeyEcologicalAttribute.PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE,
 		KeyEcologicalAttribute.TAG_EMPTY,
