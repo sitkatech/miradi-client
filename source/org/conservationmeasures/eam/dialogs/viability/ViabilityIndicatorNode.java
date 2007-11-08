@@ -111,7 +111,7 @@ public class ViabilityIndicatorNode extends ViabilityTreeTableNode
 		Indicator.TAG_INDICATOR_THRESHOLD,
 		Indicator.TAG_INDICATOR_THRESHOLD,
 		
-		Indicator.TAG_RATING_SOURCE
+		Indicator.TAG_EMPTY,
 	};
 	
 	private Project project;
