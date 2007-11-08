@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -175,16 +173,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		BaseObject foundObject = project.findObject(ref);
 		return calculateTotalCost(foundObject, dateRange, calculatedCostAllocationPercentage);
 	}
-	
-	public double calculateTotalCost(TreeTableNode node, DateRange dateRange) throws Exception
-	{
-		double costAllocationPercentage = 1;
-		if (node.getType() == Task.getObjectType())
-			costAllocationPercentage = ((PlanningTreeTaskNode) node).getCostAllocationPercentage();
-			
-		return calculateTotalCost(node.getObject(), dateRange, costAllocationPercentage);
-	}
-	
+		
 	private void calculateTotalAssignment(Task task, DateRange dateRangeToUse) throws Exception
 	{
 		sumTotals(task, dateRangeToUse);
