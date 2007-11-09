@@ -89,24 +89,20 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		return diagram;
 	}
 
-	private JScrollPane createLegendScrollPane()
-	{
-		JScrollPane scrollPane = new JScrollPane(legendPanel);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		
-		return scrollPane;
-	}
-	
 	protected JSplitPane createLeftPanel(int objectType) throws Exception
 	{
-		legendPanel = createLegendPanel(mainWindow);
-		scrollableLegendPanel = createLegendScrollPane();
 		selectionPanel = createPageList(mainWindow.getProject());
 		selectionPanel.listChanged();
-		
-		JSplitPane leftSideSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		JScrollPane selectionScrollPane = new JScrollPane(selectionPanel);
+		selectionScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		selectionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+		legendPanel = createLegendPanel(mainWindow);
+		scrollableLegendPanel = new JScrollPane(legendPanel);
+		scrollableLegendPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollableLegendPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+		JSplitPane leftSideSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		leftSideSplit.setTopComponent(selectionScrollPane);
 		leftSideSplit.setBottomComponent(scrollableLegendPanel);
 		leftSideSplit.setDividerLocation(100);
