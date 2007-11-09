@@ -10,6 +10,7 @@ import javax.swing.Icon;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
+import org.conservationmeasures.eam.views.Doer;
 
 public abstract class EAMAction extends AbstractAction
 {
@@ -24,6 +25,7 @@ public abstract class EAMAction extends AbstractAction
 	}
 	
 	public abstract void doAction() throws CommandFailedException;
+	public abstract Doer getDoer();
 	
 	public boolean isObjectAction()
 	{
