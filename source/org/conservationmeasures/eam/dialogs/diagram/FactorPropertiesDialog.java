@@ -1,6 +1,7 @@
 package org.conservationmeasures.eam.dialogs.diagram;
 
 import javax.swing.Box;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
@@ -15,6 +16,11 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 		factorPanel = panel;
 	}
 	
+	protected JComponent createMainPanel()
+	{
+		return getWrappedPanel();
+	}
+
 	public void addAdditionalButtons(Box buttonBar)
 	{
 		createDirectionsButton(buttonBar);
