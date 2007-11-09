@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.Box;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.EAMAction;
@@ -34,13 +35,19 @@ public class ModelessDialogWithClose extends EAMDialog implements WindowListener
 		mainWindow = parent;
 		wrappedPanel = panel;
 	
-		JPanel mainPanel = new JPanel(new BorderLayout());
-		mainPanel.add(wrappedPanel, BorderLayout.CENTER);
-		getContentPane().add(new FastScrollPane(mainPanel));
+		getContentPane().add(createMainPanel());
 		getContentPane().add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		pack();
 		Utilities.fitInScreen(this);
 		addWindowListener(this);
+	}
+
+	protected JComponent createMainPanel()
+	{
+		JPanel mainPanel = new JPanel(new BorderLayout());
+		mainPanel.add(wrappedPanel, BorderLayout.CENTER);
+		FastScrollPane mainScrollPane = new FastScrollPane(mainPanel);
+		return mainScrollPane;
 	}
 	
 	public JPanel getWrappedPanel()
