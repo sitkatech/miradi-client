@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.views.Doer;
 import org.martus.swing.UiButton;
 import org.martus.swing.Utilities;
 
@@ -119,6 +120,11 @@ public class ModelessDialogWithClose extends EAMDialog implements WindowListener
 		{
 			if (getJumpAction()!=null)
 				mainWindow.getActions().get(getJumpAction()).doAction();
+		}
+		
+		public Doer getDoer()
+		{
+			return null;
 		}
 
 		public void actionPerformed(ActionEvent e)
