@@ -117,10 +117,8 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		for (int i=0; i<draftStrategies.length; ++i)
 		{
 			FactorCell draftStrategyCell = model.getFactorCellByWrappedId(draftStrategies[i].getFactorId());
-			if (!isOrphan(model, draftStrategyCell))
-				continue;
-			
-			orphanedDraftStrategies.add(draftStrategyCell);
+			if (isOrphan(model, draftStrategyCell))
+				orphanedDraftStrategies.add(draftStrategyCell);
 		}
 		return (FactorCell[])orphanedDraftStrategies.toArray(new FactorCell[0]);
 	}
