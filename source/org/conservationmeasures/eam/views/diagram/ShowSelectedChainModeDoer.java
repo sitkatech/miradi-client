@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -110,21 +111,45 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 
 	private FactorCell[] getOrphanedDraftStrategies(Project project, DiagramView view, DiagramComponent diagram)
 	{
-		Vector factorCells = new Vector();
+		Vector orphanedDraftStrategies = new Vector();
 		DiagramModel model = view.getDiagramModel();
-		Factor[] factors = project.getStrategyPool().getDraftStrategies();
-		for (int i=0; i<factors.length; ++i)
+		Factor[] draftStrategies = project.getStrategyPool().getDraftStrategies();
+		for (int i=0; i<draftStrategies.length; ++i)
 		{
-			FactorCell factorCell = model.getFactorCellByWrappedId(factors[i].getFactorId());			
-			if (model.getFactorLinks(factorCell).size() > 0 && !isDraft(factorCell.getWrappedORef())) 
+			FactorCell draftStrategyCell = model.getFactorCellByWrappedId(draftStrategies[i].getFactorId());
+			if (!isOrphan(model, draftStrategyCell))
 				continue;
 			
-			if (factorCell == null)
-				continue;
-			
-			factorCells.add(factorCell);
+			orphanedDraftStrategies.add(draftStrategyCell);
 		}
-		return (FactorCell[])factorCells.toArray(new FactorCell[0]);
+		return (FactorCell[])orphanedDraftStrategies.toArray(new FactorCell[0]);
+	}
+	
+	private boolean isOrphan(DiagramModel model, FactorCell draftStrategyCell)
+	{
+		if (draftStrategyCell == null)
+			return false;
+		
+		if (isLinkedToNonDraft(model, draftStrategyCell))
+			return false;
+		
+		return true;
+	}
+	
+	private boolean isLinkedToNonDraft(DiagramModel model, FactorCell draftStrategyCell)
+	{
+		DiagramFactor[] diagramFactors = model.getAllDiagramFactorsAsArray();
+		for (int i = 0; i < diagramFactors.length; ++i)
+		{
+			DiagramFactor thisDiagramFactor = diagramFactors[i];			
+			if (isDraft(thisDiagramFactor.getWrappedORef()))
+				continue;
+			
+			if (model.areLinked(draftStrategyCell.getWrappedId(), thisDiagramFactor.getWrappedId()))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	private boolean isDraft(ORef wrappedRef)
