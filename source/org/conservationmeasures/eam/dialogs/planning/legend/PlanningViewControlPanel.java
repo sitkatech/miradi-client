@@ -14,10 +14,8 @@ import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
-import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -32,7 +30,6 @@ public class PlanningViewControlPanel extends ControlPanel implements CommandExe
 	{
 		mainWindow = mainWindowToUse;
 		
-		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		createCustomizationButtons();
 		addLegendComponents(treeAsObjectPicker);
 		
@@ -55,7 +52,6 @@ public class PlanningViewControlPanel extends ControlPanel implements CommandExe
 		rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow(), treeAsObjectPicker);
 		columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
 		
-		add(rowsLegendPanel.createTitleBar(EAM.text("Control Bar")));
 		add(planningCustomizationPanel);
 		planningCustomizationPanel.add(createCustomizationButtonPanel());		
 		add(rowsLegendPanel);
