@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.main.AppPreferences;
+
 public class PlanningViewMeasurementTable extends PlanningViewFullSizeTable
 {
 	public PlanningViewMeasurementTable(PlanningViewMeasurementTableModel model)
@@ -16,7 +18,7 @@ public class PlanningViewMeasurementTable extends PlanningViewFullSizeTable
 	
 	public Color getColumnBackGroundColor(int columnCount, int column)
 	{
-		return Color.PINK;
+		return AppPreferences.MEASUREMENT_COLOR_BACKGROUND;
 	}
 	
 	public String getUniqueTableIdentifier()

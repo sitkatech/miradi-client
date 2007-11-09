@@ -399,6 +399,7 @@ public class AppPreferences
 	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(0xff, 0xCC, 0x44);
 	public static final Color BUDGET_TABLE_BACKGROUND = new Color(0xcc, 0xff, 0xcc);
 	public static final Color BUDGET_TOTAL_TABLE_BACKGROUND = new Color(0x00, 0xff, 0x00);
+	public static final Color MEASUREMENT_COLOR_BACKGROUND = new Color(0xff, 0xf0, 0xb6);
 	
 	public Color strategyColor;
 	public Color activitiesColor;
