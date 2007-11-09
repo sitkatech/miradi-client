@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.BorderLayout;
 import java.util.Vector;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -89,7 +90,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		return diagram;
 	}
 
-	protected JSplitPane createLeftPanel(int objectType) throws Exception
+	protected JComponent createLeftPanel(int objectType) throws Exception
 	{
 		selectionPanel = createPageList(mainWindow.getProject());
 		selectionPanel.listChanged();
