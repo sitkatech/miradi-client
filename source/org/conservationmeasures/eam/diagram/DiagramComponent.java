@@ -308,6 +308,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL, pasteAction);
 		Action deleteAction = actions.get(ActionDelete.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_DELETE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
+		KeyBinder.bindKey(this, KeyEvent.VK_BACK_SPACE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
 		Action zoomInAction = actions.get(ActionZoomIn.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_EQUALS, KeyBinder.KEY_MODIFIER_CTRL, zoomInAction);
 		Action zoomOutAction = actions.get(ActionZoomOut.class);
