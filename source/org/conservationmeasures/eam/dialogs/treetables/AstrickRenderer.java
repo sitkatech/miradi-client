@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTableWithColoredColumns;
-import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 
 public class AstrickRenderer extends RendererWithCustomAlignedFontText
 {
@@ -23,9 +22,7 @@ public class AstrickRenderer extends RendererWithCustomAlignedFontText
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
 		JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		PlanningViewAbstractTreeTableSyncedTableModel model = (PlanningViewAbstractTreeTableSyncedTableModel) planningViewTable.getModel();
-		TreeTableNode node = (TreeTableNode) model.getNodeForRow(row);
-		TreeTableCellRendererWithColor.addAstrickToTaskRows(node, label);
+		addAstrickToTaskRows(getNodeForRow(row), label);
 
 		return label;
 	}

@@ -8,11 +8,11 @@ package org.conservationmeasures.eam.dialogs.treetables;
 import java.awt.Component;
 
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
 
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTableWithColoredColumns;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 
-public class RendererWithCustomAlignedFontText extends DefaultTableCellRenderer
+public class RendererWithCustomAlignedFontText extends RendererWithHelperMethods
 {
 	public RendererWithCustomAlignedFontText(PlanningViewAbstractTableWithColoredColumns tableToUse)
 	{
@@ -35,6 +35,12 @@ public class RendererWithCustomAlignedFontText extends DefaultTableCellRenderer
 			setBackground(table.getSelectionBackground());
 				
 		return component;
+	}
+
+	public TreeTableNode getNodeForRow(int row)
+	{
+		PlanningViewAbstractTreeTableSyncedTableModel model = (PlanningViewAbstractTreeTableSyncedTableModel) planningViewTable.getModel();
+		return(TreeTableNode) model.getNodeForRow(row);
 	}
 	
 	protected PlanningViewAbstractTableWithColoredColumns planningViewTable;
