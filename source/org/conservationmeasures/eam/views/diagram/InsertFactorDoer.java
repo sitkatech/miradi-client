@@ -14,10 +14,12 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
@@ -37,7 +39,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		if (!isDiagramView())
 			return false;
 		
-		if (getDiagramView().getDiagramModel() == null)
+		if (getDiagramModel() == null)
 			return false;
 		
 		return true;
@@ -50,7 +52,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		
 		Project project = getProject();
 		FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
-
+		LinkCell[] selectedLinkCells = getDiagramView().getDiagramPanel().getOnlySelectedLinkCells();
 		DiagramFactor diagramFactor = null;
 		project.executeCommand(new CommandBeginTransaction());
 		try
@@ -87,7 +89,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			{
 				notLinkingToAnyFactors();
 			}
-			
+			insertInMiddleOfSelectedLink(selectedLinkCells, diagramFactor);
 			selectNewFactor(id);
 			launchPropertiesEditor(diagramFactor);
 		}
@@ -98,7 +100,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		}
 	}
 	
-    protected void selectNewFactor(FactorId idToUse)
+	protected void selectNewFactor(FactorId idToUse)
 	{
 		getDiagramView().getDiagramPanel().selectFactor(idToUse);
 	}
@@ -117,7 +119,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, DiagramFactor.getDefaultSize(factorType).width);
 		Point snappedPoint  = project.getSnapped(deltaPoint);
 		
-		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getDiagramView().getDiagramModel());
+		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getDiagramModel());
 		CommandCreateObject createCommand = factorCommandHelper.createFactorAndDiagramFactor(factorType, snappedPoint, DiagramFactor.getDefaultSize(factorType), getInitialText());
 		DiagramFactorId id = (DiagramFactorId) createCommand.getCreatedId();
 				
@@ -137,7 +139,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return createAt;
 		
 		if (factorType == ObjectType.TARGET)
-			return getTargetLocation(getDiagramView().getDiagramModel(), getDiagramVisibleRect(), factorWidth);
+			return getTargetLocation(getDiagramModel(), getDiagramVisibleRect(), factorWidth);
 		
 		return getNonTargetDeltaPoint(selectedFactors, factorType, factorWidth);
 	}
@@ -222,7 +224,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		{
 			DiagramFactor toDiagramFactor = nodesToLinkTo[i].getDiagramFactor();
 			LinkCreator linkCreator = new LinkCreator(getProject());
-			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramView().getDiagramModel(), newlyInserted, toDiagramFactor);
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), newlyInserted, toDiagramFactor);
 		}
 	}
 
@@ -235,6 +237,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		}
 		return true;
 	}
+	
 	private boolean linkableType(int type)
 	{
 		if (type == ObjectType.TEXT_BOX)
@@ -242,14 +245,41 @@ abstract public class InsertFactorDoer extends LocationDoer
 		
 		return true; 
 	}
+	
 	protected void notLinkingToAnyFactors() throws CommandFailedException
 	{
-		
 	}
 
 	protected void doExtraSetup(FactorId id) throws CommandFailedException
 	{
+	}
+	
+    private void insertInMiddleOfSelectedLink(LinkCell[] selectedLinkCells, DiagramFactor newlyIndertedDiagramFactor) throws Exception
+	{
+    	if (selectedLinkCells.length != 1)
+    		return;
 
+    	getProject().executeCommand(new CommandBeginTransaction());
+    	try
+    	{
+    		LinkCell linkCell = selectedLinkCells[0];
+    		DiagramFactor originalFromDiagramFactor = linkCell.getFrom().getDiagramFactor();
+    		DiagramFactor originalToDiagramFactor = linkCell.getTo().getDiagramFactor();
+
+    		LinkCreator linkCreator = new LinkCreator(getProject());			
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), originalFromDiagramFactor, newlyIndertedDiagramFactor);
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), newlyIndertedDiagramFactor, originalToDiagramFactor);
+    		new LinkDeletor(getProject()).deleteFactorLinkAndDiagramLink(new ORefList(), linkCell.getDiagramLink());
+    	}
+    	finally 
+    	{
+    		getProject().executeCommand(new CommandEndTransaction());
+    	}
+	}
+	
+	private DiagramModel getDiagramModel()
+	{
+		return getDiagramView().getDiagramModel();
 	}
 	
 	public static final int TARGET_TOP_LOCATION = 150;
