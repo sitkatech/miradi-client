@@ -22,11 +22,11 @@ public class ActionShowFullModelMode extends ViewAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Show Full Model");
+		return EAM.text("Action|Show Full Diagram");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Show the full conceptual model");
+		return EAM.text("TT|Show the full conceptual model page");
 	}
 }
