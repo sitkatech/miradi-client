@@ -32,7 +32,7 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 		return EAM.text("Label|New Factor");
 	}
 
-	void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] factorsToLinkTo) throws Exception
+	protected void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] factorsToLinkTo) throws Exception
 	{
 		super.linkToPreviouslySelectedFactors(newlyInserted, factorsToLinkTo);
 		Factor insertedNode = getProject().findNode(newlyInserted.getWrappedId());
@@ -40,13 +40,13 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 			warnNotDirectThreat();
 	}
 
-	void notLinkingToAnyFactors() throws CommandFailedException
+	protected void notLinkingToAnyFactors() throws CommandFailedException
 	{
 		super.notLinkingToAnyFactors();
 		warnNotDirectThreat();
 	}
 
-	void warnNotDirectThreat()
+	private void warnNotDirectThreat()
 	{
 		EAM.notifyDialog(EAM.text("Text|This will not be a Direct Threat until it is linked to a Target"));
 	}

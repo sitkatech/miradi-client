@@ -31,7 +31,7 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 		return EAM.text("Label|New Factor");
 	}
 
-	void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] factorsToLinkTo) throws Exception
+	protected void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] factorsToLinkTo) throws Exception
 	{
 		super.linkToPreviouslySelectedFactors(newlyInserted, factorsToLinkTo);
 		Factor insertedNode = getProject().findNode(newlyInserted.getWrappedId());

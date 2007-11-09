@@ -47,7 +47,7 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 		return EAM.text("Label|New Draft Strategy");
 	}
 
-	void doExtraSetup(FactorId id) throws CommandFailedException
+	protected void doExtraSetup(FactorId id) throws CommandFailedException
 	{
 		CommandSetObjectData setStatusCommand = new CommandSetObjectData(ObjectType.STRATEGY, id, Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		getProject().executeCommand(setStatusCommand);
