@@ -18,7 +18,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
-import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons.Renderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -27,7 +26,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 
-public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
+public class TreeTableCellRendererWithColor extends RendererWithHelperMethods
 {
 	public TreeTableCellRendererWithColor(TreeTableWithIcons treeTableToUse)
 	{
@@ -45,8 +44,7 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 		if (model.getColumnTag(column).equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		
-		TreeTableNode node = (TreeTableNode) treeTable.getObjectForRow(row);
-		addAstrickToTaskRows(node, label);		
+		addAstrickToTaskRows(getNodeForRow(row), label);		
 		
 		setFont(getRowFont(row));
 		setGrid();
@@ -56,23 +54,9 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 		return label;
 	}
 
-	public static void addAstrickToTaskRows(TreeTableNode node, JLabel label)
-	{
-		 if (label.getText().length() == 0)
-			 return;
-		 
-		if (node.getType() != Task.getObjectType())
-			return;
-		
-		PlanningTreeTaskNode taskNode = (PlanningTreeTaskNode) node;
-		double nodeCostAlloctionProportion = taskNode.getCostAllocationProportion();
-		if (nodeCostAlloctionProportion < 1.0)
-			label.setText(label.getText() + "*");
-	}
-
 	protected Font getRowFont(int row)
 	{
-		TreeTableNode objectForRow = (TreeTableNode) treeTable.getObjectForRow(row);
+		TreeTableNode objectForRow = getNodeForRow(row);
 		if (objectForRow.getType() == Target.getObjectType() || objectForRow.getType() == ObjectType.FAKE)
 			return Renderer.getBoldFont();
 		
@@ -99,6 +83,11 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 			
 		return Color.white;
+	}
+
+	public TreeTableNode getNodeForRow(int row)
+	{
+		return (TreeTableNode) treeTable.getObjectForRow(row);
 	}
 
 	protected TreeTableWithIcons treeTable;
