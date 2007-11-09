@@ -52,7 +52,7 @@ public abstract class LocationAction extends MainWindowAction
 		return doer.isAvailable();
 	}
 
-	Doer getDoer()
+	public Doer getDoer()
 	{
 		Doer doer = super.getDoer();
 		if(doer != null)

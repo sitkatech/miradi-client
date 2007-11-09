@@ -94,7 +94,7 @@ public abstract class MainWindowAction extends EAMAction
 		return doer.isAvailable();
 	}
 	
-	Doer getDoer()
+	public Doer getDoer()
 	{
 		UmbrellaView currentView = mainWindow.getCurrentView();
 		if(currentView == null)
