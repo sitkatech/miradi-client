@@ -5,16 +5,13 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
@@ -50,7 +47,6 @@ import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.DiagramLegendQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.umbrella.LegendPanel;
-import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -71,11 +67,6 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	private void addAllComponents()
 	{
 		setBorder(new EmptyBorder(5,5,5,5));
-		UiLabel title = new PanelTitleLabel(EAM.text("LEGEND"));
-		title.setFont(title.getFont().deriveFont(Font.BOLD));
-		title.setBorder(new LineBorder(Color.BLACK, 2));
-		title.setHorizontalAlignment(UiLabel.CENTER);
-		add(title);
 		
 		add(createLegendButtonPanel(mainWindow.getActions()));
 		updateCheckBoxs();

@@ -6,19 +6,25 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -31,6 +37,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.martus.swing.UiLabel;
 
 abstract public class DiagramSplitPane extends JSplitPane implements CommandExecutedListener
 {
@@ -92,23 +99,43 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 
 	protected JComponent createLeftPanel(int objectType) throws Exception
 	{
+		// NOTE: This code is convoluted, but I couldn't find a simpler way to have 
+		// the table at the top be fixed-height but variable width
+		
 		selectionPanel = createPageList(mainWindow.getProject());
 		selectionPanel.listChanged();
 		JScrollPane selectionScrollPane = new JScrollPane(selectionPanel);
 		selectionScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		selectionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		Border cushion = BorderFactory.createEmptyBorder(5,5,5,5);
+		Border newBorder = BorderFactory.createCompoundBorder(cushion, selectionScrollPane.getBorder());
+		selectionScrollPane.setBorder(newBorder);
 
 		legendPanel = createLegendPanel(mainWindow);
 		scrollableLegendPanel = new JScrollPane(legendPanel);
 		scrollableLegendPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollableLegendPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-		JSplitPane leftSideSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		leftSideSplit.setTopComponent(selectionScrollPane);
-		leftSideSplit.setBottomComponent(scrollableLegendPanel);
-		leftSideSplit.setDividerLocation(100);
+		JPanel topPanel = new JPanel(new BorderLayout());
+		UiLabel title = createControlPanelTitle();
+		topPanel.add(title, BorderLayout.BEFORE_FIRST_LINE);
+		topPanel.add(selectionScrollPane, BorderLayout.AFTER_LAST_LINE);
 		
-		return leftSideSplit;
+		JPanel box = new JPanel(new BorderLayout());
+		box.add(topPanel, BorderLayout.BEFORE_FIRST_LINE);
+		box.add(scrollableLegendPanel, BorderLayout.CENTER);
+		
+		return box;
+	}
+	
+	// TODO: Should be combined with similar code in ControlPanel
+	public UiLabel createControlPanelTitle()
+	{
+		UiLabel title = new PanelTitleLabel(EAM.text("Control Bar"));
+		title.setFont(title.getFont().deriveFont(Font.BOLD));
+		title.setBorder(new LineBorder(Color.BLACK, 2));
+		title.setHorizontalAlignment(UiLabel.CENTER);
+		return title;
 	}
 	
 	public DiagramLegendPanel getLegendPanel()
