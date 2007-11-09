@@ -13,10 +13,12 @@ import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
+import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons.Renderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -34,7 +36,7 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
-		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+		JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		GenericTreeTableModel model = treeTable.getTreeTableModel();
 		int modelColumn = table.convertColumnIndexToModel(column);
 		String columnTag = model.getColumnTag(modelColumn);
@@ -43,12 +45,29 @@ public class TreeTableCellRendererWithColor extends DefaultTableCellRenderer
 		if (model.getColumnTag(column).equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		
+		TreeTableNode node = (TreeTableNode) treeTable.getObjectForRow(row);
+		addAstrickToTaskRows(node, label);		
+		
 		setFont(getRowFont(row));
 		setGrid();
 		if (isSelected)
 			setBackground(table.getSelectionBackground());
 		
-		return component;
+		return label;
+	}
+
+	public static void addAstrickToTaskRows(TreeTableNode node, JLabel label)
+	{
+		 if (label.getText().length() == 0)
+			 return;
+		 
+		if (node.getType() != Task.getObjectType())
+			return;
+		
+		PlanningTreeTaskNode taskNode = (PlanningTreeTaskNode) node;
+		double nodeCostAlloctionProportion = taskNode.getCostAllocationProportion();
+		if (nodeCostAlloctionProportion < 1.0)
+			label.setText(label.getText() + "*");
 	}
 
 	protected Font getRowFont(int row)
