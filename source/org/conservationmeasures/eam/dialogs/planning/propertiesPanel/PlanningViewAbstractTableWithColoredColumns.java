@@ -6,15 +6,14 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
+import org.conservationmeasures.eam.dialogs.treetables.RendererWithCustomAlignedFontText;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
@@ -33,7 +32,7 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends TableW
 		for (int col = 0; col < columnCount; ++col)
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(col);
-			tableColumn.setCellRenderer(new CustomRenderer());
+			tableColumn.setCellRenderer(new RendererWithCustomAlignedFontText(this));
 		}
 	}
 	
@@ -42,47 +41,25 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends TableW
 		return getColumnHeaderWidth(column);
 	}
 	
-	protected Color getColumnBackGroundColor(int columnCount, int modelColumn)
+	public Color getColumnBackGroundColor(int columnCount, int modelColumn)
 	{
 		return getBackground();
 	}
 	
-	protected Font getRowFont(int row)
+	public Font getRowFont(int row)
 	{
 		return TreeTableWithIcons.Renderer.getPlainFont();
 	}
 	
-	protected Color getForegroundColor(int row, int column)
+	public Color getForegroundColor(int row, int column)
 	{
 		if(isCellEditable(row, column))
 			return Color.BLUE.darker();
 		return Color.BLACK;
 	}
 	
-	protected int getColumnAlignment()
+	public int getColumnAlignment()
 	{
 		return JLabel.LEFT;
-	}
-
-	public class CustomRenderer extends DefaultTableCellRenderer
-	{
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
-		{
-			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-			if(!isSelected)
-			{
-				setForeground(getForegroundColor(row, column));
-				int modelColumn = table.convertColumnIndexToModel(column);
-				setBackground(getColumnBackGroundColor(table.getColumnCount(), modelColumn));
-				setFont(getRowFont(row));
-			}
-			setHorizontalAlignment(getColumnAlignment());
-			
-			if (isSelected)
-				setBackground(table.getSelectionBackground());
-					
-			return component;
-		}
-
 	}
 }
