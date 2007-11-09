@@ -210,7 +210,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return new Point(x, nodeLocation.y);
 	}
 	
-	void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] nodesToLinkTo) throws Exception
+	protected void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] nodesToLinkTo) throws Exception
 	{
 		if (! linkableType(newlyInserted.getWrappedType()))
 			return;
@@ -242,12 +242,12 @@ abstract public class InsertFactorDoer extends LocationDoer
 		
 		return true; 
 	}
-	void notLinkingToAnyFactors() throws CommandFailedException
+	protected void notLinkingToAnyFactors() throws CommandFailedException
 	{
-
+		
 	}
 
-	void doExtraSetup(FactorId id) throws CommandFailedException
+	protected void doExtraSetup(FactorId id) throws CommandFailedException
 	{
 
 	}
