@@ -104,7 +104,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 		selectionPanel = createPageList(mainWindow.getProject());
 		selectionPanel.listChanged();
-		JScrollPane selectionScrollPane = new JScrollPane(selectionPanel);
+		JScrollPane selectionScrollPane = new FastScrollPane(selectionPanel);
 		selectionScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		selectionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		Border cushion = BorderFactory.createEmptyBorder(5,5,5,5);
@@ -112,7 +112,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		selectionScrollPane.setBorder(newBorder);
 
 		legendPanel = createLegendPanel(mainWindow);
-		scrollableLegendPanel = new JScrollPane(legendPanel);
+		scrollableLegendPanel = new FastScrollPane(legendPanel);
 		scrollableLegendPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollableLegendPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
