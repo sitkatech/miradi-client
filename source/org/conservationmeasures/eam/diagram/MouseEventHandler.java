@@ -296,7 +296,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		linksWithSelectedBendPoints = (LinkCell[]) linksWithSelectedbendPoints.toArray(new LinkCell[0]);
 	}
 
-	private static final int TOOLTIP_DEFAULT_MILLIS = 2000;
+	private static final int TOOLTIP_DEFAULT_MILLIS = 1000;
 	private static final int TOOLTIP_ALWAYS_WAIT_BEFORE_RESHOW = 0;
 	private static final int TOOLTIP_NEVER_AUTO_DISMISS = Integer.MAX_VALUE;
 
