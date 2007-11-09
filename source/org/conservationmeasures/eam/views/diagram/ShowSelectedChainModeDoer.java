@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.diagram.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -22,7 +23,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -136,20 +136,26 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	
 	private boolean isLinkedToNonDraft(DiagramModel model, FactorCell draftStrategyCell)
 	{
-		DiagramFactor[] diagramFactors = model.getAllDiagramFactorsAsArray();
-		for (int i = 0; i < diagramFactors.length; ++i)
+		LinkCell[] linkCells = (LinkCell[]) model.getFactorLinks(draftStrategyCell).toArray(new LinkCell[0]);
+		for (int i = 0; i < linkCells.length; ++i)
 		{
-			DiagramFactor thisDiagramFactor = diagramFactors[i];			
-			if (isDraft(thisDiagramFactor.getWrappedORef()))
-				continue;
-			
-			if (model.areLinked(draftStrategyCell.getWrappedId(), thisDiagramFactor.getWrappedId()))
+			LinkCell thisLinkCell = linkCells[i];
+			FactorCell otherEnd = getOppositeLinkEnd(thisLinkCell, draftStrategyCell);	
+			if (!isDraft(otherEnd.getWrappedORef()))
 				return true;
 		}
 		
 		return false;
 	}
 	
+	private FactorCell getOppositeLinkEnd(LinkCell thisLinkCell, FactorCell draftStrategyCell)
+	{
+		if (draftStrategyCell.equals(thisLinkCell.getFrom()))
+			return thisLinkCell.getTo();
+		
+		return thisLinkCell.getFrom();
+	}
+
 	private boolean isDraft(ORef wrappedRef)
 	{
 		BaseObject baseObject = getProject().findObject(wrappedRef);
