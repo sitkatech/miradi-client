@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguratio
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.base.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -27,11 +26,10 @@ import org.martus.swing.UiButton;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class PlanningViewControlPanel extends DisposablePanel implements CommandExecutedListener
+public class PlanningViewControlPanel extends ControlPanel implements CommandExecutedListener
 {
 	public PlanningViewControlPanel(MainWindow mainWindowToUse, PlanningTreeTable treeAsObjectPicker) throws Exception
 	{
-		super(new BasicGridLayout(2, 1));
 		mainWindow = mainWindowToUse;
 		
 		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
