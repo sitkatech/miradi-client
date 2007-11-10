@@ -90,7 +90,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 			renderer.setIcon(null);
 			if(value != null && !value.equals(""))
 			{
-				ChoiceItem choice = getViabilityModel().getValueColumnChoice(getColumnTag(tableColumn));
+				ChoiceItem choice = getViabilityModel().getValueColumnChoice(columnTag);
 				color = choice.getColor();
 				renderer.setIcon(getCellIcon(row, choice));
 			}
@@ -100,6 +100,28 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 			
 			return renderer;
 		}
+
+		public Icon getCellIcon(int row, ChoiceItem choice)
+		{
+			TreeTableNode node = nodeProvider.getNodeForRow(row);
+			if (node.getType() == Goal.getObjectType())
+				return new GoalIcon();
+			
+			if (node.getType() != Measurement.getObjectType())
+				return null;
+			
+			String trendData = node.getObject().getData(Measurement.TAG_TREND);
+			return getTrendIcon(trendData);
+		}
+		
+		public Icon getTrendIcon(String measurementTrendCode)
+		{
+			TrendQuestion trendQuestion = new TrendQuestion(Measurement.TAG_TREND);
+			ChoiceItem findChoiceByCode = trendQuestion.findChoiceByCode(measurementTrendCode);
+			
+			return findChoiceByCode.getIcon();
+		}
+
 	}
 	
 	public class ViabilityTreeCellRenderer extends Renderer
@@ -111,27 +133,6 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		}
 	}
 	
-	public Icon getCellIcon(int row, ChoiceItem choice)
-	{
-		TreeTableNode node = (TreeTableNode) getObjectForRow(row);
-		if (node.getType() == Goal.getObjectType())
-			return new GoalIcon();
-		
-		if (node.getType() != Measurement.getObjectType())
-			return null;
-		
-		String trendData = node.getObject().getData(Measurement.TAG_TREND);
-		return getTrendIcon(trendData);
-	}
-	
-	public Icon getTrendIcon(String measurementTrendCode)
-	{
-		TrendQuestion trendQuestion = new TrendQuestion(Measurement.TAG_TREND);
-		ChoiceItem findChoiceByCode = trendQuestion.findChoiceByCode(measurementTrendCode);
-		
-		return findChoiceByCode.getIcon();
-	}
-
 	private ViabilityTreeModel getViabilityModel()
 	{
 		return (ViabilityTreeModel)getTreeTableModel();
