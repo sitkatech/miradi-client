@@ -41,7 +41,7 @@ public class TreeTableCellRendererWithColor extends RendererWithHelperMethods
 		String columnTag = model.getColumnTag(modelColumn);
 		Color backgroundColor = getBackgroundColor(columnTag);
 		setBackground(backgroundColor);
-		if (model.getColumnTag(column).equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
+		if (columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 			setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		
 		addAstrickToTaskRows(getNodeForRow(row), label);		
