@@ -7,12 +7,14 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.TreeNodeForRowProvider;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
-abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends AbstractTableModel  implements ColumnTagProvider
+abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends AbstractTableModel implements ColumnTagProvider, TreeNodeForRowProvider
 {
 	public PlanningViewAbstractTreeTableSyncedTableModel(Project projectToUse, TreeTableModelAdapter adapterToUse) throws Exception
 	{
@@ -30,9 +32,9 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Abst
 		return getColumnName(column);
 	}
 		
-	public Object getNodeForRow(int row)
+	public TreeTableNode getNodeForRow(int row)
 	{
-		return adapter.nodeForRow(row);
+		return (TreeTableNode)adapter.nodeForRow(row);
 	}
 		
 	protected Project project;

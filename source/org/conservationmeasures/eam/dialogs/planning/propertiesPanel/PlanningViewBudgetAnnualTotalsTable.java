@@ -15,9 +15,10 @@ import org.conservationmeasures.eam.dialogs.treetables.AstrickRenderer;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 
 
-public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewFullSizeTable
+public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 {
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model)
 	{
@@ -46,7 +47,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends PlanningViewFullSizeTab
 	public Font getRowFont(int row)
 	{
 		PlanningViewBudgetAnnualTotalTableModel model = (PlanningViewBudgetAnnualTotalTableModel) getModel();
-		TreeTableNode node = (TreeTableNode) model.getNodeForRow(row);
+		TreeTableNode node = model.getNodeForRow(row);
 		return TreeTableWithIcons.getSharedTaskFont(node);
 	}
 	

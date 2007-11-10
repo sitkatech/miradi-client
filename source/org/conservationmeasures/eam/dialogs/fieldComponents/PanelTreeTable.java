@@ -11,14 +11,16 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import javax.swing.tree.TreePath;
 
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
 import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class PanelTreeTable extends JTreeTable
+public class PanelTreeTable extends JTreeTable implements TreeNodeForRowProvider
 {
 
 	public PanelTreeTable(TreeTableModel treeTableModel)
@@ -75,5 +77,16 @@ public class PanelTreeTable extends JTreeTable
 		Component c = renderer.getTableCellRendererComponent(this, value, true, true, -1, column);
 		int width = c.getPreferredSize().width;
 		return width;
+	}
+
+	public Object getObjectForRow(int row)
+	{
+		TreePath treePath = tree.getPathForRow(row);
+		return treePath.getLastPathComponent();         
+	}
+
+	public TreeTableNode getNodeForRow(int row)
+	{
+		return (TreeTableNode)getObjectForRow(row);
 	}
 }

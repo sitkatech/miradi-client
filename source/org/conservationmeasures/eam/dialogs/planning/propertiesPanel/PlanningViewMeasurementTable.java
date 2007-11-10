@@ -8,8 +8,9 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 
-public class PlanningViewMeasurementTable extends PlanningViewFullSizeTable
+public class PlanningViewMeasurementTable extends TableWithTreeTableNodes
 {
 	public PlanningViewMeasurementTable(PlanningViewMeasurementTableModel model)
 	{
