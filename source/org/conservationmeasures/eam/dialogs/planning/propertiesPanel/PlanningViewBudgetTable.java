@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import java.awt.Color;
+
 import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -15,7 +17,12 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithPrefer
 	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{
 		super(modelToUse);
-		setBackground(AppPreferences.BUDGET_TABLE_BACKGROUND);
+		setBackground(getColumnBackGroundColor(0, 0));
+	}
+
+	public Color getColumnBackGroundColor(int columnCount, int column)
+	{
+		return AppPreferences.BUDGET_TABLE_BACKGROUND;
 	}
 
 	protected int getColumnWidth(int column)
