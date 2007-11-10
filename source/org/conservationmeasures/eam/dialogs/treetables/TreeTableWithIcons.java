@@ -396,6 +396,12 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 		}
 	}
 
+	public String getColumnTag(int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		return getTreeTableModel().getColumnTag(modelColumn);
+	}
+
 	private GenericTreeTableModel treeTableModel;
 	Project project;
 	Vector selectionListeners;

@@ -15,13 +15,21 @@ abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable 
 	public TableWithTreeTableNodes(PlanningViewAbstractTreeTableSyncedTableModel modelToUse)
 	{
 		super(modelToUse);
-		nodeProvider = modelToUse;
 	}
 
 	public TreeTableNode getNodeForRow(int row)
 	{
-		return nodeProvider.getNodeForRow(row);
+		return getSyncedModel().getNodeForRow(row);
+	}
+	
+	PlanningViewAbstractTreeTableSyncedTableModel getSyncedModel()
+	{
+		return (PlanningViewAbstractTreeTableSyncedTableModel)getModel();
 	}
 
-	TreeNodeForRowProvider nodeProvider;
+	public String getColumnTag(int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		return getSyncedModel().getColumnTag(modelColumn);
+	}
 }
