@@ -33,12 +33,10 @@ public class TreeTableCellRendererWithColor extends RendererWithHelperMethods
 		treeTable = treeTableToUse;
 	}
 	
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		GenericTreeTableModel model = treeTable.getTreeTableModel();
-		int modelColumn = table.convertColumnIndexToModel(column);
-		String columnTag = model.getColumnTag(modelColumn);
+		JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+		String columnTag = treeTable.getColumnTag(tableColumn);
 		Color backgroundColor = getBackgroundColor(columnTag);
 		setBackground(backgroundColor);
 		if (columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
