@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.TreeNodeForRowProvider;
 import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTable;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons.Renderer;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -28,15 +29,15 @@ import org.conservationmeasures.eam.objects.Task;
 
 public class TreeTableCellRendererWithColor extends RendererWithHelperMethods
 {
-	public TreeTableCellRendererWithColor(TreeTableWithIcons treeTableToUse)
+	public TreeTableCellRendererWithColor(TreeNodeForRowProvider providerToUse)
 	{
-		treeTable = treeTableToUse;
+		nodeProvider = providerToUse;
 	}
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		String columnTag = treeTable.getColumnTag(tableColumn);
+		String columnTag = nodeProvider.getColumnTag(tableColumn);
 		Color backgroundColor = getBackgroundColor(columnTag);
 		setBackground(backgroundColor);
 		if (columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
@@ -85,8 +86,8 @@ public class TreeTableCellRendererWithColor extends RendererWithHelperMethods
 
 	public TreeTableNode getNodeForRow(int row)
 	{
-		return treeTable.getNodeForRow(row);
+		return nodeProvider.getNodeForRow(row);
 	}
 
-	protected TreeTableWithIcons treeTable;
+	protected TreeNodeForRowProvider nodeProvider;
 }
