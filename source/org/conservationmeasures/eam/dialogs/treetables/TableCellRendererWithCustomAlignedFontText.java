@@ -11,7 +11,6 @@ import java.awt.Component;
 import javax.swing.JTable;
 
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTableWithColoredColumns;
-import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 
 public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelperMethods
 {
@@ -44,12 +43,6 @@ public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelp
 		if(table.isCellEditable(row, column))
 			return Color.BLUE.darker();
 		return Color.BLACK;
-	}
-	
-	public TreeTableNode getNodeForRow(int row)
-	{
-		PlanningViewAbstractTreeTableSyncedTableModel model = (PlanningViewAbstractTreeTableSyncedTableModel) planningViewTable.getModel();
-		return model.getNodeForRow(row);
 	}
 	
 	protected PlanningViewAbstractTableWithColoredColumns planningViewTable;
