@@ -87,7 +87,7 @@ public class TreeTableCellRendererWithColor extends RendererWithHelperMethods
 
 	public TreeTableNode getNodeForRow(int row)
 	{
-		return (TreeTableNode) treeTable.getObjectForRow(row);
+		return treeTable.getNodeForRow(row);
 	}
 
 	protected TreeTableWithIcons treeTable;
