@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
 
 public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving 
@@ -75,7 +76,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		return otherRenderer;
 	}
 
-	class MeasurementValueRenderer extends TableCellRendererWithColor
+	static class MeasurementValueRenderer extends TableCellRendererWithColor
 	{
 		public MeasurementValueRenderer(TreeNodeForRowProvider providerToUse)
 		{
@@ -90,7 +91,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 			renderer.setIcon(null);
 			if(value != null && !value.equals(""))
 			{
-				ChoiceItem choice = getViabilityModel().getValueColumnChoice(columnTag);
+				ChoiceItem choice = new StatusQuestion("").findChoiceByCode(columnTag);
 				color = choice.getColor();
 				renderer.setIcon(getCellIcon(row, choice));
 			}
