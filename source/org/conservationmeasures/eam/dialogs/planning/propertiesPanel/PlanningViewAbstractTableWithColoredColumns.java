@@ -51,13 +51,6 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends TableW
 		return TreeTableWithIcons.Renderer.getPlainFont();
 	}
 	
-	public Color getForegroundColor(int row, int column)
-	{
-		if(isCellEditable(row, column))
-			return Color.BLUE.darker();
-		return Color.BLACK;
-	}
-	
 	public int getColumnAlignment()
 	{
 		return JLabel.LEFT;

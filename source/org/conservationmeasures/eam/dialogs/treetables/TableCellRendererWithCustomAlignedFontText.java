@@ -27,7 +27,7 @@ public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelp
 		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		if(!isSelected)
 		{
-			setForeground(planningViewTable.getForegroundColor(row, column));
+			setForeground(getForegroundColor(table, row, column));
 			setBackground(backgroundColor);
 			setFont(planningViewTable.getRowFont(row));
 		}
@@ -39,6 +39,13 @@ public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelp
 		return component;
 	}
 
+	public Color getForegroundColor(JTable table, int row, int column)
+	{
+		if(table.isCellEditable(row, column))
+			return Color.BLUE.darker();
+		return Color.BLACK;
+	}
+	
 	public TreeTableNode getNodeForRow(int row)
 	{
 		PlanningViewAbstractTreeTableSyncedTableModel model = (PlanningViewAbstractTreeTableSyncedTableModel) planningViewTable.getModel();
