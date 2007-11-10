@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.treetables;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JTable;
@@ -14,10 +15,11 @@ import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningVie
 
 public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelperMethods
 {
-	public TableCellRendererWithCustomAlignedFontText(PlanningViewAbstractTableWithColoredColumns tableToUse, int alignmentToUse)
+	public TableCellRendererWithCustomAlignedFontText(PlanningViewAbstractTableWithColoredColumns tableToUse, int alignmentToUse, Color backgroundColorToUse)
 	{
 		planningViewTable = tableToUse;
 		alignment = alignmentToUse;
+		backgroundColor = backgroundColorToUse;
 	}
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
@@ -26,8 +28,7 @@ public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelp
 		if(!isSelected)
 		{
 			setForeground(planningViewTable.getForegroundColor(row, column));
-			int modelColumn = table.convertColumnIndexToModel(column);
-			setBackground(planningViewTable.getColumnBackGroundColor(table.getColumnCount(), modelColumn));
+			setBackground(backgroundColor);
 			setFont(planningViewTable.getRowFont(row));
 		}
 		setHorizontalAlignment(alignment);
@@ -46,4 +47,5 @@ public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelp
 	
 	protected PlanningViewAbstractTableWithColoredColumns planningViewTable;
 	private int alignment;
+	private Color backgroundColor;
 }

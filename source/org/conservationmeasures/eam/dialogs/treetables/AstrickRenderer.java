@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.treetables;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JLabel;
@@ -15,9 +16,9 @@ import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 
 public class AstrickRenderer extends TableCellRendererWithCustomAlignedFontText
 {
-	public AstrickRenderer(TableWithTreeTableNodes tableToUse)
+	public AstrickRenderer(TableWithTreeTableNodes tableToUse, Color backgroundColorToUse)
 	{
-		super(tableToUse, tableToUse.getColumnAlignment());
+		super(tableToUse, tableToUse.getColumnAlignment(), backgroundColorToUse);
 		nodeProvider = tableToUse;
 	}
 
