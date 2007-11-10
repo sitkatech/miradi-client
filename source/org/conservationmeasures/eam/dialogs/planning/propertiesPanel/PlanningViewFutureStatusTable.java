@@ -8,8 +8,9 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
+import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 
-public class PlanningViewFutureStatusTable extends PlanningViewFullSizeTable
+public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes
 {
 	public PlanningViewFutureStatusTable(PlanningViewFutureStatusTableModel model)
 	{

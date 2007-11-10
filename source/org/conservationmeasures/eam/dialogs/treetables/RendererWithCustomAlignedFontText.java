@@ -40,7 +40,7 @@ public class RendererWithCustomAlignedFontText extends RendererWithHelperMethods
 	public TreeTableNode getNodeForRow(int row)
 	{
 		PlanningViewAbstractTreeTableSyncedTableModel model = (PlanningViewAbstractTreeTableSyncedTableModel) planningViewTable.getModel();
-		return(TreeTableNode) model.getNodeForRow(row);
+		return model.getNodeForRow(row);
 	}
 	
 	protected PlanningViewAbstractTableWithColoredColumns planningViewTable;
