@@ -6,11 +6,12 @@
 package org.conservationmeasures.eam.dialogs.treetables;
 
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.objects.Task;
 
-abstract public class RendererWithHelperMethods extends RendererWithNodeForRow
+abstract public class RendererWithHelperMethods extends DefaultTableCellRenderer
 {
 	public void addAstrickToTaskRows(TreeTableNode node, JLabel label)
 	{
