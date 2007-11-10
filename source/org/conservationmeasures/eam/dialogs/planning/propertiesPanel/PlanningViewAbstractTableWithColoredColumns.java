@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.dialogs.treetables.RendererWithCustomAlignedFontText;
+import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererWithCustomAlignedFontText;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
@@ -32,7 +32,7 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends TableW
 		for (int col = 0; col < columnCount; ++col)
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(col);
-			tableColumn.setCellRenderer(new RendererWithCustomAlignedFontText(this));
+			tableColumn.setCellRenderer(new TableCellRendererWithCustomAlignedFontText(this));
 		}
 	}
 	
