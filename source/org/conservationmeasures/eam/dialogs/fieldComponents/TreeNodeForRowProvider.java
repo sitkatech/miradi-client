@@ -10,4 +10,5 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 public interface TreeNodeForRowProvider
 {
 	TreeTableNode getNodeForRow(int row);
+	String getColumnTag(int tableColumn);
 }

@@ -132,12 +132,6 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		return findChoiceByCode.getIcon();
 	}
 
-	public String getColumnTag(int tableColumn)
-	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		return getViabilityModel().getColumnTag(modelColumn);
-	}
-
 	private ViabilityTreeModel getViabilityModel()
 	{
 		return (ViabilityTreeModel)getTreeTableModel();
