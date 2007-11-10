@@ -14,9 +14,10 @@ import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningVie
 
 public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelperMethods
 {
-	public TableCellRendererWithCustomAlignedFontText(PlanningViewAbstractTableWithColoredColumns tableToUse)
+	public TableCellRendererWithCustomAlignedFontText(PlanningViewAbstractTableWithColoredColumns tableToUse, int alignmentToUse)
 	{
 		planningViewTable = tableToUse;
+		alignment = alignmentToUse;
 	}
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
@@ -29,7 +30,7 @@ public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelp
 			setBackground(planningViewTable.getColumnBackGroundColor(table.getColumnCount(), modelColumn));
 			setFont(planningViewTable.getRowFont(row));
 		}
-		setHorizontalAlignment(planningViewTable.getColumnAlignment());
+		setHorizontalAlignment(alignment);
 		
 		if (isSelected)
 			setBackground(table.getSelectionBackground());
@@ -44,4 +45,5 @@ public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelp
 	}
 	
 	protected PlanningViewAbstractTableWithColoredColumns planningViewTable;
+	private int alignment;
 }

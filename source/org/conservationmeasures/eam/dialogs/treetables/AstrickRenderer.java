@@ -17,7 +17,7 @@ public class AstrickRenderer extends TableCellRendererWithCustomAlignedFontText
 {
 	public AstrickRenderer(TableWithTreeTableNodes tableToUse)
 	{
-		super(tableToUse);
+		super(tableToUse, tableToUse.getColumnAlignment());
 		nodeProvider = tableToUse;
 	}
 

@@ -32,7 +32,7 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends TableW
 		for (int col = 0; col < columnCount; ++col)
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(col);
-			tableColumn.setCellRenderer(new TableCellRendererWithCustomAlignedFontText(this));
+			tableColumn.setCellRenderer(new TableCellRendererWithCustomAlignedFontText(this, getColumnAlignment()));
 		}
 	}
 	
