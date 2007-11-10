@@ -14,11 +14,11 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.TreeNodeForRowProvider;
 import org.conservationmeasures.eam.dialogs.treetables.ChoiceItemRenderer;
 import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererWithColor;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -77,15 +77,15 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 
 	class MeasurementValueRenderer extends TableCellRendererWithColor
 	{
-		public MeasurementValueRenderer(TreeTableWithIcons treeTableToUse)
+		public MeasurementValueRenderer(TreeNodeForRowProvider providerToUse)
 		{
-			super(treeTableToUse);
+			super(providerToUse);
 		}
 
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 		{
 			JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-			String columnTag = getColumnTag(tableColumn);
+			String columnTag = nodeProvider.getColumnTag(tableColumn);
 			Color color = getBackgroundColor(columnTag);
 			renderer.setIcon(null);
 			if(value != null && !value.equals(""))
