@@ -12,9 +12,9 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTableWithColoredColumns;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 
-public class RendererWithCustomAlignedFontText extends RendererWithHelperMethods
+public class TableCellRendererWithCustomAlignedFontText extends RendererWithHelperMethods
 {
-	public RendererWithCustomAlignedFontText(PlanningViewAbstractTableWithColoredColumns tableToUse)
+	public TableCellRendererWithCustomAlignedFontText(PlanningViewAbstractTableWithColoredColumns tableToUse)
 	{
 		planningViewTable = tableToUse;
 	}

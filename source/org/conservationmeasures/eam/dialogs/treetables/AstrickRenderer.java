@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.dialogs.fieldComponents.TreeNodeForRowProvider;
 import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 
-public class AstrickRenderer extends RendererWithCustomAlignedFontText
+public class AstrickRenderer extends TableCellRendererWithCustomAlignedFontText
 {
 	public AstrickRenderer(TableWithTreeTableNodes tableToUse)
 	{
