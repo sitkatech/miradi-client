@@ -10,7 +10,7 @@ import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableCellRendererWithColor;
+import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererWithColor;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.conservationmeasures.eam.project.Project;
 
@@ -41,7 +41,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving
 		for (int i  = STARTING_TABLE_COLUMN; i < columnCount; ++i)
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(i);
-			tableColumn.setCellRenderer(new TreeTableCellRendererWithColor(this));
+			tableColumn.setCellRenderer(new TableCellRendererWithColor(this));
 		}
 	}
 	

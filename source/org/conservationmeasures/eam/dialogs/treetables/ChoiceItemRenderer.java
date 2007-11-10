@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.dialogs.viability.TargetViabilityTreeTable;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 
-public class ChoiceItemRenderer extends TreeTableCellRendererWithColor
+public class ChoiceItemRenderer extends TableCellRendererWithColor
 {
 	public ChoiceItemRenderer(TreeTableWithIcons treeTableToUse)
 	{

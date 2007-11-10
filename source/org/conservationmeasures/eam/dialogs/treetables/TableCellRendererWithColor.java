@@ -27,9 +27,9 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 
-public class TreeTableCellRendererWithColor extends RendererWithHelperMethods
+public class TableCellRendererWithColor extends RendererWithHelperMethods
 {
-	public TreeTableCellRendererWithColor(TreeNodeForRowProvider providerToUse)
+	public TableCellRendererWithColor(TreeNodeForRowProvider providerToUse)
 	{
 		nodeProvider = providerToUse;
 	}

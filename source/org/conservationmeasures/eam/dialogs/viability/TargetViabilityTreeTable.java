@@ -15,7 +15,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.dialogs.treetables.ChoiceItemRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableCellRendererWithColor;
+import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererWithColor;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
@@ -39,7 +39,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer());
 		measurementValueRenderer = new MeasurementValueRenderer(this);
-		otherRenderer = new TreeTableCellRendererWithColor(this);
+		otherRenderer = new TableCellRendererWithColor(this);
 		statusQuestionRenderer = new ChoiceItemRenderer(this);
 		rebuildTableCompletely();
 	}
@@ -75,7 +75,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		return otherRenderer;
 	}
 
-	class MeasurementValueRenderer extends TreeTableCellRendererWithColor
+	class MeasurementValueRenderer extends TableCellRendererWithColor
 	{
 		public MeasurementValueRenderer(TreeTableWithIcons treeTableToUse)
 		{
@@ -140,6 +140,6 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 
 	private TableCellRenderer measurementValueRenderer;
-	private TreeTableCellRendererWithColor otherRenderer;
+	private TableCellRendererWithColor otherRenderer;
 	private ChoiceItemRenderer statusQuestionRenderer;
 }
