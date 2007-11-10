@@ -11,7 +11,7 @@ import javax.swing.table.TableModel;
 
 abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSize extends PlanningViewAbstractTableWithColoredColumns
 {
-	public PlanningViewAbstractTableWithPreferredScrollableViewportSize(TableModel  modelToUse)
+	public PlanningViewAbstractTableWithPreferredScrollableViewportSize(TableModel modelToUse)
 	{
 		super(modelToUse);
 
