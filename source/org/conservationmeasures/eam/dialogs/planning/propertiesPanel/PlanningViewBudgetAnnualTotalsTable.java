@@ -27,7 +27,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	
 	public TableCellRenderer getCellRenderer(int row, int column)
 	{
-		return new AstrickRenderer(this);	
+		return new AstrickRenderer(this, getColumnBackGroundColor(getColumnCount(), column));	
 	}
 	
 	protected int getColumnWidth(int column)
