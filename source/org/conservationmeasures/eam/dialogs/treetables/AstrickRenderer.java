@@ -10,21 +10,25 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTableWithColoredColumns;
+import org.conservationmeasures.eam.dialogs.fieldComponents.TreeNodeForRowProvider;
+import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 
 public class AstrickRenderer extends RendererWithCustomAlignedFontText
 {
-	public AstrickRenderer(PlanningViewAbstractTableWithColoredColumns tableToUse)
+	public AstrickRenderer(TableWithTreeTableNodes tableToUse)
 	{
 		super(tableToUse);
+		nodeProvider = tableToUse;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
 		JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		addAstrickToTaskRows(getNodeForRow(row), label);
+		addAstrickToTaskRows(nodeProvider.getNodeForRow(row), label);
 
 		return label;
 	}
+	
+	TreeNodeForRowProvider nodeProvider;
 }
 
