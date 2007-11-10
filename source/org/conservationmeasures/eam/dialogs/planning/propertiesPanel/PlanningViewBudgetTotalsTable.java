@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 
+import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.table.TableModel;
 
@@ -16,7 +18,12 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWith
 	public PlanningViewBudgetTotalsTable(TableModel model)
 	{
 		super(model);
-		setBackground(AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND);
+		setBackground(getColumnBackGroundColor(0, 0));
+	}
+
+	public Color getColumnBackGroundColor(int columnCount, int column)
+	{
+		return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 	}
 
 	int getPreferredScrollableViewportWidth()

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
+import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.table.TableColumn;
 
@@ -18,10 +20,15 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPref
 	public PlanningViewWorkPlanTable(Project projectToUse, PlanningViewAbstractBudgetTableModel modelToUse) throws Exception
 	{
 		super(modelToUse);
-		setBackground(AppPreferences.WORKPLAN_TABLE_BACKGROUND);	
+		setBackground(getColumnBackGroundColor(0, 0));	
 		setSingleCellEditor();
 	}
 	
+	public Color getColumnBackGroundColor(int columnCount, int column)
+	{
+		return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
+	}
+
 	private void setSingleCellEditor()
 	{
 		int colCount = getColumnCount();
