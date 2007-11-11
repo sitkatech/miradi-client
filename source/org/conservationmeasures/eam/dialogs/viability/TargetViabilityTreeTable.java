@@ -10,10 +10,12 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.conservationmeasures.eam.dialogs.treetables.ChoiceItemRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererWithColor;
+import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.treetables.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.treetables.RowBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -21,7 +23,7 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 
-public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving 
+public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving implements RowBaseObjectProvider 
 {
 	public TargetViabilityTreeTable(Project projectToUse, ViabilityTreeModel targetViabilityModelToUse)
 	{
@@ -31,8 +33,8 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer());
 		measurementValueRenderer = new MeasurementValueRenderer(this);
-		otherRenderer = new TableCellRendererWithColor(this);
-		statusQuestionRenderer = new ChoiceItemRenderer(this);
+		otherRenderer = new BasicTableCellRenderer();
+		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this);
 		rebuildTableCompletely();
 	}
 	
@@ -41,6 +43,11 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 		return UNIQUE_IDENTIFIER;
 	}
 	
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		return getNodeForRow(row).getObject();
+	}
+
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		if(tableColumn == 0)
@@ -84,6 +91,6 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving
 	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 
 	private TableCellRenderer measurementValueRenderer;
-	private TableCellRendererWithColor otherRenderer;
-	private ChoiceItemRenderer statusQuestionRenderer;
+	private BasicTableCellRenderer otherRenderer;
+	private ChoiceItemTableCellRenderer statusQuestionRenderer;
 }
