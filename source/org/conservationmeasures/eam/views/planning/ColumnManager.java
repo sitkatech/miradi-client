@@ -31,9 +31,9 @@ public class ColumnManager
 		masterColumnList.add(Desire.TAG_FULL_TEXT);
 		masterColumnList.add(Indicator.PSEUDO_TAG_METHODS); 
 		masterColumnList.add(Indicator.PSEUDO_TAG_FACTOR);
-		masterColumnList.add(Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE);
-		masterColumnList.add(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
-		masterColumnList.add(Indicator.PSEUDO_TAG_STATUS_VALUE);
+		masterColumnList.add(Strategy.PSEUDO_TAG_RATING_SUMMARY);
+		masterColumnList.add(Indicator.TAG_PRIORITY);
+		masterColumnList.add(Indicator.TAG_STATUS);
 		masterColumnList.add(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		
 		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);

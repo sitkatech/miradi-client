@@ -22,8 +22,8 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 		return new CodeList(new String[] {
 				Indicator.PSEUDO_TAG_METHODS, 
 				Indicator.PSEUDO_TAG_FACTOR,
-				Indicator.PSEUDO_TAG_PRIORITY_VALUE,
-				Indicator.PSEUDO_TAG_STATUS_VALUE,
+				Indicator.TAG_PRIORITY,
+				Indicator.TAG_STATUS,
 				Task.PSEUDO_TAG_BUDGET_TOTAL,
 //				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
