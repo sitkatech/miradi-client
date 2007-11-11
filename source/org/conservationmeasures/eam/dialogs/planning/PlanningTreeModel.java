@@ -14,8 +14,12 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
+import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
 
@@ -78,10 +82,21 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		if (baseObject.getType() == Task.getObjectType() && columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 			return getTaskBudgetTotal((PlanningTreeTaskNode) treeNode);
 		
+		String rawValue = "";
 		if (baseObject.isPseudoField(columnTag))
-			return baseObject.getPseudoData(columnTag);
-			
-		return baseObject.getData(columnTag);
+			rawValue = baseObject.getPseudoData(columnTag);
+		else
+			rawValue = baseObject.getData(columnTag);
+		
+		
+		if(columnTag.equals(Indicator.TAG_PRIORITY))
+			return new PriorityRatingQuestion(columnTag).findChoiceByCode(rawValue);
+		if(columnTag.equals(Indicator.TAG_STATUS))
+			return new IndicatorStatusRatingQuestion(columnTag).findChoiceByCode(rawValue);
+		if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
+			return new StrategyRatingSummaryQuestion(columnTag).findChoiceByCode(rawValue);
+		
+		return rawValue;
 	}
 
 	private Object getTaskBudgetTotal(PlanningTreeTaskNode taskNode)
