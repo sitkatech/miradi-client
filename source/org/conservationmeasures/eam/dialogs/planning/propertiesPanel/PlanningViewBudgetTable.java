@@ -8,7 +8,10 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 
 import javax.swing.JLabel;
+import javax.swing.table.TableCellRenderer;
 
+import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.treetables.NumericTableCellRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 
 
@@ -18,8 +21,15 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithPrefer
 	{
 		super(modelToUse);
 		setBackground(getColumnBackGroundColor(0));
+		renderer = new NumericTableCellRenderer(modelToUse);
 	}
 
+	public TableCellRenderer getCellRenderer(int row, int column)
+	{
+		renderer.setCellBackgroundColor(getColumnBackGroundColor(column));
+		return renderer;	
+	}
+	
 	public Color getColumnBackGroundColor(int column)
 	{
 		return AppPreferences.BUDGET_TABLE_BACKGROUND;
@@ -41,4 +51,6 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithPrefer
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewBudgetTable";
+
+	private BasicTableCellRenderer renderer;
 }
