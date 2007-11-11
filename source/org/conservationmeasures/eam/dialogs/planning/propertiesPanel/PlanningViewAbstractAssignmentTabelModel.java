@@ -9,15 +9,17 @@ import java.text.DecimalFormat;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.dialogs.treetables.RowBaseObjectProvider;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
-abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractTableModel implements ColumnTagProvider
+abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractTableModel implements ColumnTagProvider, RowBaseObjectProvider
 {
 	public PlanningViewAbstractAssignmentTabelModel(Project projectToUse)
 	{
@@ -96,6 +98,11 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends AbstractT
 	public Assignment getAssignment(int row)
 	{
 		return (Assignment) getProject().findObject(getAssignmentForRow(row));
+	}
+	
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		return getAssignment(row);
 	}
 	
 	//FIXME planning table - there should be methods that return the raw value,  then that value
