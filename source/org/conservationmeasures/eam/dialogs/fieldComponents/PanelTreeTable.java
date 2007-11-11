@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
 
-abstract public class PanelTreeTable extends JTreeTable implements TreeNodeForRowProvider
+abstract public class PanelTreeTable extends JTreeTable 
 {
 
 	public PanelTreeTable(TreeTableModel treeTableModel)
