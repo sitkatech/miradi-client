@@ -10,7 +10,7 @@ import java.awt.Color;
 import javax.swing.table.TableCellRenderer;
 
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 
 public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes

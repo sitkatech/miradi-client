@@ -9,7 +9,7 @@ import java.awt.Color;
 
 import javax.swing.table.TableCellRenderer;
 
-import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 

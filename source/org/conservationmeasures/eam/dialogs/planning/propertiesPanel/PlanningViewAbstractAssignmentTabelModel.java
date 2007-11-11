@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 
 import javax.swing.table.AbstractTableModel;
 
-import org.conservationmeasures.eam.dialogs.treetables.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Assignment;

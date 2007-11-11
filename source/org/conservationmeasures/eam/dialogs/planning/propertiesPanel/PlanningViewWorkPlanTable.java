@@ -12,8 +12,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextField;
-import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.NumericTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.NumericTableCellRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
