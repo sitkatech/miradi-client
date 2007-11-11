@@ -40,7 +40,7 @@ public class TableCellRendererForObjects extends BasicTableCellRenderer
 	
 	boolean isSharedObject(int row)
 	{
-		BaseObject object = objectProvider.getBaseObjectForRow(row);
+		BaseObject object = getBaseObjectForRow(row);
 		if(object == null)
 			return false;
 		
@@ -51,5 +51,16 @@ public class TableCellRendererForObjects extends BasicTableCellRenderer
 		return task.isShared();
 	}
 
-	RowBaseObjectProvider objectProvider;
+	protected BaseObject getBaseObjectForRow(int row)
+	{
+		BaseObject object = objectProvider.getBaseObjectForRow(row);
+		return object;
+	}
+	
+	protected RowBaseObjectProvider getObjectProvider()
+	{
+		return objectProvider;
+	}
+
+	private RowBaseObjectProvider objectProvider;
 }
