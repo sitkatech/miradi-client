@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.table.TableCellRenderer;
 
 import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.NumericTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.treetables.PossiblyAllocatedNumericTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -24,7 +24,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model)
 	{
 		super(model);
-		renderer = new NumericTableCellRenderer(this);
+		renderer = new PossiblyAllocatedNumericTableCellRenderer(model);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int column)
